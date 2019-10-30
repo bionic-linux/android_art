@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6a64dd_23089954",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-30T10:41:52Z",
+      "side": 1,
+      "message": "Suggest having a method GetTaskCount() in utils.{h,cc} instead since what\u0027s really being matched is the number of sub-directories (entry-\u003ed_type \u003d\u003d DT_DIR) rather than the number of files. The code is fine for the specific directory used though.",
+      "range": {
+        "startLine": 491,
+        "startChar": 4,
+        "endLine": 491,
+        "endChar": 31
+      },
+      "revId": "e2f9bc2b80b1aa787406d91b36ba0e42ae34d8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
