@@ -16,6 +16,24 @@
       "revId": "60fc4db2b21a72704bad53f32688142f74704de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c85b2d_233eb17a",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-30T15:25:28Z",
+      "side": 1,
+      "message": "No, not sure why PS3 has it but not PS4. Done.",
+      "parentUuid": "ee08337f_9706b32a",
+      "revId": "60fc4db2b21a72704bad53f32688142f74704de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
