@@ -16,6 +16,47 @@
       "revId": "99c285857c4a89edb23fea913550f1c2abf0fa45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb308149_48451d55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-31T09:46:37Z",
+      "side": 1,
+      "message": "jfyi, \"git cherry-pick -x\" will do this for you when cherry picking at the command line.",
+      "parentUuid": "b748fe87_e73d8045",
+      "revId": "99c285857c4a89edb23fea913550f1c2abf0fa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8871d33e_50c17cfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-31T09:46:37Z",
+      "side": 1,
+      "message": "Suggest Merged-In: to avoid automerger woes.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "99c285857c4a89edb23fea913550f1c2abf0fa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
