@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39306e0c_622c8b43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-11-05T11:37:32Z",
+      "side": 1,
+      "message": "Can you also add:\n\n  Bug: 125474642\n\nhere?",
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636003e7_dd10b519",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-11-05T11:37:32Z",
+      "side": 1,
+      "message": "Note: These steps could be part of a new test (not needed for this change, but we should talk about it).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40f1a81d_e5247960",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-11-05T11:37:32Z",
+      "side": 1,
+      "message": "Jiyong, Dario, is this OK to change the structure of this JSON manifest, in the light of b/143654022?",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 3,
+        "endChar": 14
+      },
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
