@@ -104,6 +104,30 @@
       "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cac2bda_df15842b",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2019-11-05T13:48:28Z",
+      "side": 1,
+      "message": "yep I don\u0027t see any problem here (problem is with additions)",
+      "parentUuid": "40f1a81d_e5247960",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 3,
+        "endChar": 14
+      },
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
