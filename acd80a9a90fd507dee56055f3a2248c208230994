@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff1d1c2e_a7e850a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-05T12:13:25Z",
+      "side": 1,
+      "message": "Sure, thanks for pointing at the bug.",
+      "parentUuid": "39306e0c_622c8b43",
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "636003e7_dd10b519",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-11-05T11:37:32Z",
       "side": 1,
       "message": "Note: These steps could be part of a new test (not needed for this change, but we should talk about it).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "acd80a9a90fd507dee56055f3a2248c208230994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7327973a_1659a40f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-05T12:13:25Z",
+      "side": 1,
+      "message": "We should ask Nikita and Dario what is the easiest and safest way to test apex installation; it seems a common problem for all apexes.",
+      "parentUuid": "636003e7_dd10b519",
       "range": {
         "startLine": 21,
         "startChar": 0,
