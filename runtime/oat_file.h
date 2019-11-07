@@ -34,7 +34,6 @@
 #include "dex/utf.h"
 #include "index_bss_mapping.h"
 #include "mirror/object.h"
-#include "oat.h"
 #include "runtime.h"
 
 namespace art {
@@ -60,6 +59,19 @@ namespace collector {
 class DummyOatFile;
 }  // namespace collector
 }  // namespace gc
+
+// OatMethodOffsets are currently 5x32-bits=160-bits long, so if we can
+// save even one OatMethodOffsets struct, the more complicated encoding
+// using a bitmap pays for itself since few classes will have 160
+// methods.
+enum OatClassType {
+  kOatClassAllCompiled = 0,   // OatClass is followed by an OatMethodOffsets for each method.
+  kOatClassSomeCompiled = 1,  // A bitmap of which OatMethodOffsets are present follows the OatClass.
+  kOatClassNoneCompiled = 2,  // All methods are interpreted so no OatMethodOffsets are necessary.
+  kOatClassMax = 3,
+};
+
+std::ostream& operator<<(std::ostream& os, const OatClassType& rhs);
 
 // Runtime representation of the OAT file format which holds compiler output.
 // The class opens an OAT file from storage and maps it to memory, typically with
