@@ -25,8 +25,6 @@ using namespace vixl::aarch64;  // NOLINT(build/namespaces)
 namespace art {
 namespace arm64 {
 
-using helpers::ARM64EncodableConstantOrRegister;
-using helpers::Arm64CanEncodeConstantAsImmediate;
 using helpers::DRegisterFrom;
 using helpers::HeapOperand;
 using helpers::InputRegisterAt;
@@ -36,13 +34,41 @@ using helpers::OutputRegister;
 using helpers::QRegisterFrom;
 using helpers::StackOperandFrom;
 using helpers::VRegisterFrom;
+using helpers::ZRegisterFrom;
 using helpers::XRegisterFrom;
 
 #define __ GetVIXLAssembler()->
 
-// Returns whether dot product instructions should be emitted.
-static bool ShouldEmitDotProductInstructions(const CodeGeneratorARM64* codegen_) {
-  return codegen_->GetInstructionSetFeatures().HasDotProd();
+// Returns whether the value of the constant can be directly encoded into the instruction as
+// immediate.
+static bool SVECanEncodeConstantAsImmediate(HConstant* constant, HInstruction* instr) {
+  if (instr->IsVecReplicateScalar()) {
+    if (constant->IsLongConstant()) {
+      return false;
+    } else if (constant->IsFloatConstant()) {
+      return vixl::aarch64::Assembler::IsImmFP32(constant->AsFloatConstant()->GetValue());
+    } else if (constant->IsDoubleConstant()) {
+      return vixl::aarch64::Assembler::IsImmFP64(constant->AsDoubleConstant()->GetValue());
+    }
+    // TODO: Make use of shift part of DUP instruction.
+    int64_t value = CodeGenerator::GetInt64ValueOf(constant);
+    return IsInt<8>(value);
+  }
+
+  return false;
+}
+
+// Returns
+//  - constant location - if 'constant' is an actual constant and its value can be
+//    encoded into the instruction.
+//  - register location otherwise.
+inline Location SVEEncodableConstantOrRegister(HInstruction* constant, HInstruction* instr) {
+  if (constant->IsConstant()
+      && SVECanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
+    return Location::ConstantLocation(constant->AsConstant());
+  }
+
+  return Location::RequiresRegister();
 }
 
 void LocationsBuilderARM64Sve::VisitVecReplicateScalar(HVecReplicateScalar* instruction) {
@@ -56,13 +82,13 @@ void LocationsBuilderARM64Sve::VisitVecReplicateScalar(HVecReplicateScalar* inst
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
     case DataType::Type::kInt64:
-      locations->SetInAt(0, ARM64EncodableConstantOrRegister(input, instruction));
+      locations->SetInAt(0, SVEEncodableConstantOrRegister(input, instruction));
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
       if (input->IsConstant() &&
-          Arm64CanEncodeConstantAsImmediate(input->AsConstant(), instruction)) {
+          SVECanEncodeConstantAsImmediate(input->AsConstant(), instruction)) {
         locations->SetInAt(0, Location::ConstantLocation(input->AsConstant()));
         locations->SetOut(Location::RequiresFpuRegister());
       } else {
@@ -77,59 +103,60 @@ void LocationsBuilderARM64Sve::VisitVecReplicateScalar(HVecReplicateScalar* inst
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScalar* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
   Location src_loc = locations->InAt(0);
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister dst = ZRegisterFrom(locations->Out());
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Movi(dst.V16B(), Int64FromLocation(src_loc));
+        __ Dup(dst.VnB(), Int64FromLocation(src_loc));
       } else {
-        __ Dup(dst.V16B(), InputRegisterAt(instruction, 0));
+        __ Dup(dst.VnB(), InputRegisterAt(instruction, 0));
       }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Movi(dst.V8H(), Int64FromLocation(src_loc));
+        __ Dup(dst.VnH(), Int64FromLocation(src_loc));
       } else {
-        __ Dup(dst.V8H(), InputRegisterAt(instruction, 0));
+        __ Dup(dst.VnH(), InputRegisterAt(instruction, 0));
       }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Movi(dst.V4S(), Int64FromLocation(src_loc));
+        __ Dup(dst.VnS(), Int64FromLocation(src_loc));
       } else {
-        __ Dup(dst.V4S(), InputRegisterAt(instruction, 0));
+        __ Dup(dst.VnS(), InputRegisterAt(instruction, 0));
       }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Movi(dst.V2D(), Int64FromLocation(src_loc));
+        __ Dup(dst.VnD(), Int64FromLocation(src_loc));
       } else {
-        __ Dup(dst.V2D(), XRegisterFrom(src_loc));
+        __ Dup(dst.VnD(), XRegisterFrom(src_loc));
       }
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Fmov(dst.V4S(), src_loc.GetConstant()->AsFloatConstant()->GetValue());
+        __ Fdup(dst.VnS(), src_loc.GetConstant()->AsFloatConstant()->GetValue());
       } else {
-        __ Dup(dst.V4S(), VRegisterFrom(src_loc).V4S(), 0);
+        __ Dup(dst.VnS(), ZRegisterFrom(src_loc).VnS(), 0);
       }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
-        __ Fmov(dst.V2D(), src_loc.GetConstant()->AsDoubleConstant()->GetValue());
+        __ Fdup(dst.VnD(), src_loc.GetConstant()->AsDoubleConstant()->GetValue());
       } else {
-        __ Dup(dst.V2D(), VRegisterFrom(src_loc).V2D(), 0);
+        __ Dup(dst.VnD(), ZRegisterFrom(src_loc).VnD(), 0);
       }
       break;
     default:
@@ -163,8 +190,9 @@ void LocationsBuilderARM64Sve::VisitVecExtractScalar(HVecExtractScalar* instruct
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecExtractScalar(HVecExtractScalar* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
+  const VRegister src = VRegisterFrom(locations->InAt(0));
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
@@ -218,32 +246,31 @@ void LocationsBuilderARM64Sve::VisitVecReduce(HVecReduce* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecReduce(HVecReduce* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
-  VRegister dst = DRegisterFrom(locations->Out());
+  const ZRegister src = ZRegisterFrom(locations->InAt(0));
+  const VRegister dst = DRegisterFrom(locations->Out());
+  const PRegister p_reg = LoopPReg();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
-          __ Addv(dst.S(), src.V4S());
+          __ Saddv(dst.S(), p_reg, src.VnS());
           break;
-        case HVecReduce::kMin:
-          __ Sminv(dst.S(), src.V4S());
-          break;
-        case HVecReduce::kMax:
-          __ Smaxv(dst.S(), src.V4S());
-          break;
+        default:
+          LOG(FATAL) << "Unsupported SIMD instruction";
+          UNREACHABLE();
       }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
-          __ Addp(dst.D(), src.V2D());
+          __ Uaddv(dst.D(), p_reg, src.VnD());
           break;
         default:
-          LOG(FATAL) << "Unsupported SIMD min/max";
+          LOG(FATAL) << "Unsupported SIMD instruction";
           UNREACHABLE();
       }
       break;
@@ -258,14 +285,16 @@ void LocationsBuilderARM64Sve::VisitVecCnv(HVecCnv* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecCnv(HVecCnv* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister src = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   DataType::Type from = instruction->GetInputType();
   DataType::Type to = instruction->GetResultType();
   if (from == DataType::Type::kInt32 && to == DataType::Type::kFloat32) {
     DCHECK_EQ(4u, instruction->GetVectorLength());
-    __ Scvtf(dst.V4S(), src.V4S());
+    __ Scvtf(dst.VnS(), p_reg, src.VnS());
   } else {
     LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
   }
@@ -276,35 +305,37 @@ void LocationsBuilderARM64Sve::VisitVecNeg(HVecNeg* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecNeg(HVecNeg* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister src = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Neg(dst.V16B(), src.V16B());
+      __ Neg(dst.VnB(), p_reg, src.VnB());
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Neg(dst.V8H(), src.V8H());
+      __ Neg(dst.VnH(), p_reg, src.VnH());
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Neg(dst.V4S(), src.V4S());
+      __ Neg(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Neg(dst.V2D(), src.V2D());
+      __ Neg(dst.VnD(), p_reg, src.VnD());
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fneg(dst.V4S(), src.V4S());
+      __ Fneg(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fneg(dst.V2D(), src.V2D());
+      __ Fneg(dst.VnD(), p_reg, src.VnD());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -317,33 +348,35 @@ void LocationsBuilderARM64Sve::VisitVecAbs(HVecAbs* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecAbs(HVecAbs* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister src = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Abs(dst.V16B(), src.V16B());
+      __ Abs(dst.VnB(), p_reg, src.VnB());
       break;
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Abs(dst.V8H(), src.V8H());
+      __ Abs(dst.VnH(), p_reg, src.VnH());
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Abs(dst.V4S(), src.V4S());
+      __ Abs(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Abs(dst.V2D(), src.V2D());
+      __ Abs(dst.VnD(), p_reg, src.VnD());
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fabs(dst.V4S(), src.V4S());
+      __ Fabs(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fabs(dst.V2D(), src.V2D());
+      __ Fabs(dst.VnD(), p_reg, src.VnD());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -356,22 +389,34 @@ void LocationsBuilderARM64Sve::VisitVecNot(HVecNot* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecNot(HVecNot* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister src = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister src = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:  // special case boolean-not
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Movi(dst.V16B(), 1);
-      __ Eor(dst.V16B(), dst.V16B(), src.V16B());
+      __ Dup(dst.VnB(), 1);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Eor(dst.VnB(), dst.VnB(), src.VnB());
+      } else {
+        __ Eor(dst.VnB(), p_reg, dst.VnB(), src.VnB());
+      }
       break;
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      __ Not(dst.VnB(), p_reg, src.VnB());
+      break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
+      __ Not(dst.VnH(), p_reg, src.VnH());
+      break;
     case DataType::Type::kInt32:
+      __ Not(dst.VnS(), p_reg, src.VnS());
+      break;
     case DataType::Type::kInt64:
-      __ Not(dst.V16B(), src.V16B());  // lanes do not matter
+      __ Not(dst.VnD(), p_reg, src.VnD());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -394,7 +439,7 @@ static void CreateVecBinOpLocations(ArenaAllocator* allocator, HVecBinaryOperati
     case DataType::Type::kFloat64:
       locations->SetInAt(0, Location::RequiresFpuRegister());
       locations->SetInAt(1, Location::RequiresFpuRegister());
-      locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
+      locations->SetOut(Location::SameAsFirstInput());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -407,36 +452,62 @@ void LocationsBuilderARM64Sve::VisitVecAdd(HVecAdd* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Add(dst.V16B(), lhs.V16B(), rhs.V16B());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Add(dst.VnB(), lhs.VnB(), rhs.VnB());
+      } else {
+        __ Add(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
+      }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Add(dst.V8H(), lhs.V8H(), rhs.V8H());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Add(dst.VnH(), lhs.VnH(), rhs.VnH());
+      } else {
+        __ Add(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
+      }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Add(dst.V4S(), lhs.V4S(), rhs.V4S());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Add(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Add(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Add(dst.V2D(), lhs.V2D(), rhs.V2D());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Add(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Add(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fadd(dst.V4S(), lhs.V4S(), rhs.V4S());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fadd(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Fadd(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS(), StrictNaNPropagation);
+      }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fadd(dst.V2D(), lhs.V2D(), rhs.V2D());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fadd(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Fadd(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD(), StrictNaNPropagation);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -445,75 +516,23 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
 }
 
 void LocationsBuilderARM64Sve::VisitVecSaturationAdd(HVecSaturationAdd* instruction) {
-  CreateVecBinOpLocations(GetGraph()->GetAllocator(), instruction);
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecSaturationAdd(HVecSaturationAdd* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
-  switch (instruction->GetPackedType()) {
-    case DataType::Type::kUint8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Uqadd(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Sqadd(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Uqadd(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Sqadd(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-      UNREACHABLE();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecHalvingAdd(HVecHalvingAdd* instruction) {
-  CreateVecBinOpLocations(GetGraph()->GetAllocator(), instruction);
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecHalvingAdd(HVecHalvingAdd* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
-  switch (instruction->GetPackedType()) {
-    case DataType::Type::kUint8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Urhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
-          : __ Uhadd(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Srhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
-          : __ Shadd(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Urhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
-          : __ Uhadd(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Srhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
-          : __ Shadd(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-      UNREACHABLE();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecSub(HVecSub* instruction) {
@@ -521,36 +540,62 @@ void LocationsBuilderARM64Sve::VisitVecSub(HVecSub* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Sub(dst.V16B(), lhs.V16B(), rhs.V16B());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Sub(dst.VnB(), lhs.VnB(), rhs.VnB());
+      } else {
+        __ Sub(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
+      }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Sub(dst.V8H(), lhs.V8H(), rhs.V8H());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Sub(dst.VnH(), lhs.VnH(), rhs.VnH());
+      } else {
+        __ Sub(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
+      }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Sub(dst.V4S(), lhs.V4S(), rhs.V4S());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Sub(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Sub(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Sub(dst.V2D(), lhs.V2D(), rhs.V2D());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Sub(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Sub(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fsub(dst.V4S(), lhs.V4S(), rhs.V4S());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fsub(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Fsub(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fsub(dst.V2D(), lhs.V2D(), rhs.V2D());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fsub(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Fsub(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -559,35 +604,13 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
 }
 
 void LocationsBuilderARM64Sve::VisitVecSaturationSub(HVecSaturationSub* instruction) {
-  CreateVecBinOpLocations(GetGraph()->GetAllocator(), instruction);
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecSaturationSub(HVecSaturationSub* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
-  switch (instruction->GetPackedType()) {
-    case DataType::Type::kUint8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Uqsub(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Sqsub(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Uqsub(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Sqsub(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-      UNREACHABLE();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecMul(HVecMul* instruction) {
@@ -595,32 +618,46 @@ void LocationsBuilderARM64Sve::VisitVecMul(HVecMul* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecMul(HVecMul* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Mul(dst.V16B(), lhs.V16B(), rhs.V16B());
+      __ Mul(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Mul(dst.V8H(), lhs.V8H(), rhs.V8H());
+      __ Mul(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Mul(dst.V4S(), lhs.V4S(), rhs.V4S());
+      __ Mul(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      break;
+    case DataType::Type::kInt64:
+      DCHECK_EQ(2u, instruction->GetVectorLength());
+      __ Mul(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fmul(dst.V4S(), lhs.V4S(), rhs.V4S());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fmul(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Fmul(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS(), StrictNaNPropagation);
+      }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fmul(dst.V2D(), lhs.V2D(), rhs.V2D());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Fmul(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Fmul(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD(), StrictNaNPropagation);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -633,18 +670,22 @@ void LocationsBuilderARM64Sve::VisitVecDiv(HVecDiv* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecDiv(HVecDiv* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
+
+  // TODO: Consider other options other than StrictNaNPropagation.
   switch (instruction->GetPackedType()) {
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fdiv(dst.V4S(), lhs.V4S(), rhs.V4S());
+      __ Fdiv(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fdiv(dst.V2D(), lhs.V2D(), rhs.V2D());
+      __ Fdiv(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -653,99 +694,23 @@ void InstructionCodeGeneratorARM64Sve::VisitVecDiv(HVecDiv* instruction) {
 }
 
 void LocationsBuilderARM64Sve::VisitVecMin(HVecMin* instruction) {
-  CreateVecBinOpLocations(GetGraph()->GetAllocator(), instruction);
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecMin(HVecMin* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
-  switch (instruction->GetPackedType()) {
-    case DataType::Type::kUint8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Umin(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Smin(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Umin(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Smin(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kUint32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Umin(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Smin(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fmin(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fmin(dst.V2D(), lhs.V2D(), rhs.V2D());
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-      UNREACHABLE();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecMax(HVecMax* instruction) {
-  CreateVecBinOpLocations(GetGraph()->GetAllocator(), instruction);
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecMax(HVecMax* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
-  switch (instruction->GetPackedType()) {
-    case DataType::Type::kUint8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Umax(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Smax(dst.V16B(), lhs.V16B(), rhs.V16B());
-      break;
-    case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Umax(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Smax(dst.V8H(), lhs.V8H(), rhs.V8H());
-      break;
-    case DataType::Type::kUint32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Umax(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Smax(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Fmax(dst.V4S(), lhs.V4S(), rhs.V4S());
-      break;
-    case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Fmax(dst.V2D(), lhs.V2D(), rhs.V2D());
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-      UNREACHABLE();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecAnd(HVecAnd* instruction) {
@@ -754,21 +719,45 @@ void LocationsBuilderARM64Sve::VisitVecAnd(HVecAnd* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecAnd(HVecAnd* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ And(dst.VnB(), lhs.VnB(), rhs.VnB());
+      } else {
+        __ And(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
+      }
+      break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ And(dst.VnH(), lhs.VnH(), rhs.VnH());
+      } else {
+        __ And(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
+      }
+      break;
     case DataType::Type::kInt32:
-    case DataType::Type::kInt64:
     case DataType::Type::kFloat32:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ And(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ And(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
+      break;
+    case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      __ And(dst.V16B(), lhs.V16B(), rhs.V16B());  // lanes do not matter
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ And(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ And(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -790,21 +779,45 @@ void LocationsBuilderARM64Sve::VisitVecOr(HVecOr* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecOr(HVecOr* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Orr(dst.VnB(), lhs.VnB(), rhs.VnB());
+      } else {
+        __ Orr(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
+      }
+      break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Orr(dst.VnH(), lhs.VnH(), rhs.VnH());
+      } else {
+        __ Orr(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
+      }
+      break;
     case DataType::Type::kInt32:
-    case DataType::Type::kInt64:
     case DataType::Type::kFloat32:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Orr(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Orr(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
+      break;
+    case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      __ Orr(dst.V16B(), lhs.V16B(), rhs.V16B());  // lanes do not matter
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Orr(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Orr(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -817,21 +830,45 @@ void LocationsBuilderARM64Sve::VisitVecXor(HVecXor* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecXor(HVecXor* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister rhs = VRegisterFrom(locations->InAt(1));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Eor(dst.VnB(), lhs.VnB(), rhs.VnB());
+      } else {
+        __ Eor(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
+      }
+      break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Eor(dst.VnH(), lhs.VnH(), rhs.VnH());
+      } else {
+        __ Eor(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
+      }
+      break;
     case DataType::Type::kInt32:
-    case DataType::Type::kInt64:
     case DataType::Type::kFloat32:
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Eor(dst.VnS(), lhs.VnS(), rhs.VnS());
+      } else {
+        __ Eor(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
+      }
+      break;
+    case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      __ Eor(dst.V16B(), lhs.V16B(), rhs.V16B());  // lanes do not matter
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Eor(dst.VnD(), lhs.VnD(), rhs.VnD());
+      } else {
+        __ Eor(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -864,28 +901,46 @@ void LocationsBuilderARM64Sve::VisitVecShl(HVecShl* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecShl(HVecShl* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Shl(dst.V16B(), lhs.V16B(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsl(dst.VnB(), lhs.VnB(), value);
+      } else {
+        __ Lsl(dst.VnB(), p_reg, lhs.VnB(), value);
+      }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Shl(dst.V8H(), lhs.V8H(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsl(dst.VnH(), lhs.VnH(), value);
+      } else {
+        __ Lsl(dst.VnH(), p_reg, lhs.VnH(), value);
+      }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Shl(dst.V4S(), lhs.V4S(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsl(dst.VnS(), lhs.VnS(), value);
+      } else {
+        __ Lsl(dst.VnS(), p_reg, lhs.VnS(), value);
+      }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Shl(dst.V2D(), lhs.V2D(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsl(dst.VnD(), lhs.VnD(), value);
+      } else {
+        __ Lsl(dst.VnD(), p_reg, lhs.VnD(), value);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -898,28 +953,46 @@ void LocationsBuilderARM64Sve::VisitVecShr(HVecShr* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecShr(HVecShr* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Sshr(dst.V16B(), lhs.V16B(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Asr(dst.VnB(), lhs.VnB(), value);
+      } else {
+        __ Asr(dst.VnB(), p_reg, lhs.VnB(), value);
+      }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Sshr(dst.V8H(), lhs.V8H(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Asr(dst.VnH(), lhs.VnH(), value);
+      } else {
+        __ Asr(dst.VnH(), p_reg, lhs.VnH(), value);
+      }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Sshr(dst.V4S(), lhs.V4S(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Asr(dst.VnS(), lhs.VnS(), value);
+      } else {
+        __ Asr(dst.VnS(), p_reg, lhs.VnS(), value);
+      }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Sshr(dst.V2D(), lhs.V2D(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Asr(dst.VnD(), lhs.VnD(), value);
+      } else {
+        __ Asr(dst.VnD(), p_reg, lhs.VnD(), value);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -932,28 +1005,46 @@ void LocationsBuilderARM64Sve::VisitVecUShr(HVecUShr* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister lhs = VRegisterFrom(locations->InAt(0));
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister lhs = ZRegisterFrom(locations->InAt(0));
+  const ZRegister dst = ZRegisterFrom(locations->Out());
+  const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      __ Ushr(dst.V16B(), lhs.V16B(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsr(dst.VnB(), lhs.VnB(), value);
+      } else {
+        __ Lsr(dst.VnB(), p_reg, lhs.VnB(), value);
+      }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      __ Ushr(dst.V8H(), lhs.V8H(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsr(dst.VnH(), lhs.VnH(), value);
+      } else {
+        __ Lsr(dst.VnH(), p_reg, lhs.VnH(), value);
+      }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      __ Ushr(dst.V4S(), lhs.V4S(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsr(dst.VnS(), lhs.VnS(), value);
+      } else {
+        __ Lsr(dst.VnS(), p_reg, lhs.VnS(), value);
+      }
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      __ Ushr(dst.V2D(), lhs.V2D(), value);
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        __ Lsr(dst.VnD(), lhs.VnD(), value);
+      } else {
+        __ Lsr(dst.VnD(), p_reg, lhs.VnD(), value);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -964,7 +1055,7 @@ void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
 void LocationsBuilderARM64Sve::VisitVecSetScalars(HVecSetScalars* instruction) {
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
 
-  DCHECK_EQ(1u, instruction->InputCount());  // only one input currently implemented
+  DCHECK_EQ(2u, instruction->InputCount());  // only one input currently implemented + predicate.
 
   HInstruction* input = instruction->InputAt(0);
   bool is_zero = IsZeroBitPattern(input);
@@ -994,14 +1085,16 @@ void LocationsBuilderARM64Sve::VisitVecSetScalars(HVecSetScalars* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecSetScalars(HVecSetScalars* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister dst = VRegisterFrom(locations->Out());
+  const ZRegister z_dst = ZRegisterFrom(locations->Out());
 
-  DCHECK_EQ(1u, instruction->InputCount());  // only one input currently implemented
+  DCHECK_EQ(2u, instruction->InputCount());  // only one input currently implemented + predicate.
 
   // Zero out all other elements first.
-  __ Movi(dst.V16B(), 0);
+  __ Dup(z_dst.VnB(), 0);
 
+  const VRegister dst = VRegisterFrom(locations->Out());
   // Shorthand for any type of zero.
   if (IsZeroBitPattern(instruction->InputAt(0))) {
     return;
@@ -1062,11 +1155,14 @@ void LocationsBuilderARM64Sve::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate
 // Some early revisions of the Cortex-A53 have an erratum (835769) whereby it is possible for a
 // 64-bit scalar multiply-accumulate instruction in AArch64 state to generate an incorrect result.
 // However vector MultiplyAccumulate instruction is not affected.
-void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instruction) {
+void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(
+    HVecMultiplyAccumulate* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
-  VRegister acc = VRegisterFrom(locations->InAt(0));
-  VRegister left = VRegisterFrom(locations->InAt(1));
-  VRegister right = VRegisterFrom(locations->InAt(2));
+  const ZRegister acc = ZRegisterFrom(locations->InAt(0));
+  const ZRegister left = ZRegisterFrom(locations->InAt(1));
+  const ZRegister right = ZRegisterFrom(locations->InAt(2));
+  const PRegisterM p_reg = LoopPReg().Merging();
 
   DCHECK(locations->InAt(0).Equals(locations->Out()));
 
@@ -1075,26 +1171,26 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(HVecMultiplyAc
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
-        __ Mla(acc.V16B(), left.V16B(), right.V16B());
+        __ Mla(acc.VnB(), p_reg, acc.VnB(), left.VnB(), right.VnB());
       } else {
-        __ Mls(acc.V16B(), left.V16B(), right.V16B());
+        __ Mls(acc.VnB(), p_reg, acc.VnB(), left.VnB(), right.VnB());
       }
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
-        __ Mla(acc.V8H(), left.V8H(), right.V8H());
+        __ Mla(acc.VnH(), p_reg, acc.VnB(), left.VnH(), right.VnH());
       } else {
-        __ Mls(acc.V8H(), left.V8H(), right.V8H());
+        __ Mls(acc.VnH(), p_reg, acc.VnB(), left.VnH(), right.VnH());
       }
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
-        __ Mla(acc.V4S(), left.V4S(), right.V4S());
+        __ Mla(acc.VnS(), p_reg, acc.VnB(), left.VnS(), right.VnS());
       } else {
-        __ Mls(acc.V4S(), left.V4S(), right.V4S());
+        __ Mls(acc.VnS(), p_reg, acc.VnB(), left.VnS(), right.VnS());
       }
       break;
     default:
@@ -1104,185 +1200,13 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(HVecMultiplyAc
 }
 
 void LocationsBuilderARM64Sve::VisitVecSADAccumulate(HVecSADAccumulate* instruction) {
-  CreateVecAccumLocations(GetGraph()->GetAllocator(), instruction);
-  // Some conversions require temporary registers.
-  LocationSummary* locations = instruction->GetLocations();
-  HVecOperation* a = instruction->InputAt(1)->AsVecOperation();
-  HVecOperation* b = instruction->InputAt(2)->AsVecOperation();
-  DCHECK_EQ(HVecOperation::ToSignedType(a->GetPackedType()),
-            HVecOperation::ToSignedType(b->GetPackedType()));
-  switch (a->GetPackedType()) {
-    case DataType::Type::kUint8:
-    case DataType::Type::kInt8:
-      switch (instruction->GetPackedType()) {
-        case DataType::Type::kInt64:
-          locations->AddTemp(Location::RequiresFpuRegister());
-          locations->AddTemp(Location::RequiresFpuRegister());
-          FALLTHROUGH_INTENDED;
-        case DataType::Type::kInt32:
-          locations->AddTemp(Location::RequiresFpuRegister());
-          locations->AddTemp(Location::RequiresFpuRegister());
-          break;
-        default:
-          break;
-      }
-      break;
-    case DataType::Type::kUint16:
-    case DataType::Type::kInt16:
-      if (instruction->GetPackedType() == DataType::Type::kInt64) {
-        locations->AddTemp(Location::RequiresFpuRegister());
-        locations->AddTemp(Location::RequiresFpuRegister());
-      }
-      break;
-    case DataType::Type::kInt32:
-    case DataType::Type::kInt64:
-      if (instruction->GetPackedType() == a->GetPackedType()) {
-        locations->AddTemp(Location::RequiresFpuRegister());
-      }
-      break;
-    default:
-      break;
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecSADAccumulate(HVecSADAccumulate* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  VRegister acc = VRegisterFrom(locations->InAt(0));
-  VRegister left = VRegisterFrom(locations->InAt(1));
-  VRegister right = VRegisterFrom(locations->InAt(2));
-
-  DCHECK(locations->InAt(0).Equals(locations->Out()));
-
-  // Handle all feasible acc_T += sad(a_S, b_S) type combinations (T x S).
-  HVecOperation* a = instruction->InputAt(1)->AsVecOperation();
-  HVecOperation* b = instruction->InputAt(2)->AsVecOperation();
-  DCHECK_EQ(HVecOperation::ToSignedType(a->GetPackedType()),
-            HVecOperation::ToSignedType(b->GetPackedType()));
-  switch (a->GetPackedType()) {
-    case DataType::Type::kUint8:
-    case DataType::Type::kInt8:
-      DCHECK_EQ(16u, a->GetVectorLength());
-      switch (instruction->GetPackedType()) {
-        case DataType::Type::kInt16:
-          DCHECK_EQ(8u, instruction->GetVectorLength());
-          __ Sabal(acc.V8H(), left.V8B(), right.V8B());
-          __ Sabal2(acc.V8H(), left.V16B(), right.V16B());
-          break;
-        case DataType::Type::kInt32: {
-          DCHECK_EQ(4u, instruction->GetVectorLength());
-          VRegister tmp1 = VRegisterFrom(locations->GetTemp(0));
-          VRegister tmp2 = VRegisterFrom(locations->GetTemp(1));
-          __ Sxtl(tmp1.V8H(), left.V8B());
-          __ Sxtl(tmp2.V8H(), right.V8B());
-          __ Sabal(acc.V4S(), tmp1.V4H(), tmp2.V4H());
-          __ Sabal2(acc.V4S(), tmp1.V8H(), tmp2.V8H());
-          __ Sxtl2(tmp1.V8H(), left.V16B());
-          __ Sxtl2(tmp2.V8H(), right.V16B());
-          __ Sabal(acc.V4S(), tmp1.V4H(), tmp2.V4H());
-          __ Sabal2(acc.V4S(), tmp1.V8H(), tmp2.V8H());
-          break;
-        }
-        case DataType::Type::kInt64: {
-          DCHECK_EQ(2u, instruction->GetVectorLength());
-          VRegister tmp1 = VRegisterFrom(locations->GetTemp(0));
-          VRegister tmp2 = VRegisterFrom(locations->GetTemp(1));
-          VRegister tmp3 = VRegisterFrom(locations->GetTemp(2));
-          VRegister tmp4 = VRegisterFrom(locations->GetTemp(3));
-          __ Sxtl(tmp1.V8H(), left.V8B());
-          __ Sxtl(tmp2.V8H(), right.V8B());
-          __ Sxtl(tmp3.V4S(), tmp1.V4H());
-          __ Sxtl(tmp4.V4S(), tmp2.V4H());
-          __ Sabal(acc.V2D(), tmp3.V2S(), tmp4.V2S());
-          __ Sabal2(acc.V2D(), tmp3.V4S(), tmp4.V4S());
-          __ Sxtl2(tmp3.V4S(), tmp1.V8H());
-          __ Sxtl2(tmp4.V4S(), tmp2.V8H());
-          __ Sabal(acc.V2D(), tmp3.V2S(), tmp4.V2S());
-          __ Sabal2(acc.V2D(), tmp3.V4S(), tmp4.V4S());
-          __ Sxtl2(tmp1.V8H(), left.V16B());
-          __ Sxtl2(tmp2.V8H(), right.V16B());
-          __ Sxtl(tmp3.V4S(), tmp1.V4H());
-          __ Sxtl(tmp4.V4S(), tmp2.V4H());
-          __ Sabal(acc.V2D(), tmp3.V2S(), tmp4.V2S());
-          __ Sabal2(acc.V2D(), tmp3.V4S(), tmp4.V4S());
-          __ Sxtl2(tmp3.V4S(), tmp1.V8H());
-          __ Sxtl2(tmp4.V4S(), tmp2.V8H());
-          __ Sabal(acc.V2D(), tmp3.V2S(), tmp4.V2S());
-          __ Sabal2(acc.V2D(), tmp3.V4S(), tmp4.V4S());
-          break;
-        }
-        default:
-          LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-          UNREACHABLE();
-      }
-      break;
-    case DataType::Type::kUint16:
-    case DataType::Type::kInt16:
-      DCHECK_EQ(8u, a->GetVectorLength());
-      switch (instruction->GetPackedType()) {
-        case DataType::Type::kInt32:
-          DCHECK_EQ(4u, instruction->GetVectorLength());
-          __ Sabal(acc.V4S(), left.V4H(), right.V4H());
-          __ Sabal2(acc.V4S(), left.V8H(), right.V8H());
-          break;
-        case DataType::Type::kInt64: {
-          DCHECK_EQ(2u, instruction->GetVectorLength());
-          VRegister tmp1 = VRegisterFrom(locations->GetTemp(0));
-          VRegister tmp2 = VRegisterFrom(locations->GetTemp(1));
-          __ Sxtl(tmp1.V4S(), left.V4H());
-          __ Sxtl(tmp2.V4S(), right.V4H());
-          __ Sabal(acc.V2D(), tmp1.V2S(), tmp2.V2S());
-          __ Sabal2(acc.V2D(), tmp1.V4S(), tmp2.V4S());
-          __ Sxtl2(tmp1.V4S(), left.V8H());
-          __ Sxtl2(tmp2.V4S(), right.V8H());
-          __ Sabal(acc.V2D(), tmp1.V2S(), tmp2.V2S());
-          __ Sabal2(acc.V2D(), tmp1.V4S(), tmp2.V4S());
-          break;
-        }
-        default:
-          LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-          UNREACHABLE();
-      }
-      break;
-    case DataType::Type::kInt32:
-      DCHECK_EQ(4u, a->GetVectorLength());
-      switch (instruction->GetPackedType()) {
-        case DataType::Type::kInt32: {
-          DCHECK_EQ(4u, instruction->GetVectorLength());
-          VRegister tmp = VRegisterFrom(locations->GetTemp(0));
-          __ Sub(tmp.V4S(), left.V4S(), right.V4S());
-          __ Abs(tmp.V4S(), tmp.V4S());
-          __ Add(acc.V4S(), acc.V4S(), tmp.V4S());
-          break;
-        }
-        case DataType::Type::kInt64:
-          DCHECK_EQ(2u, instruction->GetVectorLength());
-          __ Sabal(acc.V2D(), left.V2S(), right.V2S());
-          __ Sabal2(acc.V2D(), left.V4S(), right.V4S());
-          break;
-        default:
-          LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-          UNREACHABLE();
-      }
-      break;
-    case DataType::Type::kInt64:
-      DCHECK_EQ(2u, a->GetVectorLength());
-      switch (instruction->GetPackedType()) {
-        case DataType::Type::kInt64: {
-          DCHECK_EQ(2u, instruction->GetVectorLength());
-          VRegister tmp = VRegisterFrom(locations->GetTemp(0));
-          __ Sub(tmp.V2D(), left.V2D(), right.V2D());
-          __ Abs(tmp.V2D(), tmp.V2D());
-          __ Add(acc.V2D(), acc.V2D(), tmp.V2D());
-          break;
-        }
-        default:
-          LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-          UNREACHABLE();
-      }
-      break;
-    default:
-      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
-  }
+  LOG(FATAL) << "Unsupported SIMD instruction " << instruction->GetId();
+  UNREACHABLE();
 }
 
 void LocationsBuilderARM64Sve::VisitVecDotProd(HVecDotProd* instruction) {
@@ -1293,19 +1217,17 @@ void LocationsBuilderARM64Sve::VisitVecDotProd(HVecDotProd* instruction) {
   locations->SetInAt(2, Location::RequiresFpuRegister());
   locations->SetOut(Location::SameAsFirstInput());
 
-  // For Int8 and Uint8 general case we need a temp register.
-  if ((DataType::Size(instruction->InputAt(1)->AsVecOperation()->GetPackedType()) == 1) &&
-      !ShouldEmitDotProductInstructions(codegen_)) {
-    locations->AddTemp(Location::RequiresFpuRegister());
-  }
+  locations->AddTemp(Location::RequiresFpuRegister());
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecDotProd(HVecDotProd* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
   DCHECK(locations->InAt(0).Equals(locations->Out()));
-  VRegister acc = VRegisterFrom(locations->InAt(0));
-  VRegister left = VRegisterFrom(locations->InAt(1));
-  VRegister right = VRegisterFrom(locations->InAt(2));
+  const ZRegister acc = ZRegisterFrom(locations->InAt(0));
+  const ZRegister left = ZRegisterFrom(locations->InAt(1));
+  const ZRegister right = ZRegisterFrom(locations->InAt(2));
+  const PRegisterM p_reg = LoopPReg().Merging();
   HVecOperation* a = instruction->InputAt(1)->AsVecOperation();
   HVecOperation* b = instruction->InputAt(2)->AsVecOperation();
   DCHECK_EQ(HVecOperation::ToSignedType(a->GetPackedType()),
@@ -1317,45 +1239,29 @@ void InstructionCodeGeneratorARM64Sve::VisitVecDotProd(HVecDotProd* instruction)
   switch (inputs_data_size) {
     case 1u: {
       DCHECK_EQ(16u, a->GetVectorLength());
-      if (instruction->IsZeroExtending()) {
-        if (ShouldEmitDotProductInstructions(codegen_)) {
-          __ Udot(acc.V4S(), left.V16B(), right.V16B());
+      if (CouldUseUnpredicatedVersion(instruction)) {
+        if (instruction->IsZeroExtending()) {
+          __ Udot(acc.VnS(), acc.VnS(), left.VnB(), right.VnB());
         } else {
-          VRegister tmp = VRegisterFrom(locations->GetTemp(0));
-          __ Umull(tmp.V8H(), left.V8B(), right.V8B());
-          __ Uaddw(acc.V4S(), acc.V4S(), tmp.V4H());
-          __ Uaddw2(acc.V4S(), acc.V4S(), tmp.V8H());
-
-          __ Umull2(tmp.V8H(), left.V16B(), right.V16B());
-          __ Uaddw(acc.V4S(), acc.V4S(), tmp.V4H());
-          __ Uaddw2(acc.V4S(), acc.V4S(), tmp.V8H());
+          __ Sdot(acc.VnS(), acc.VnS(), left.VnB(), right.VnB());
         }
       } else {
-        if (ShouldEmitDotProductInstructions(codegen_)) {
-          __ Sdot(acc.V4S(), left.V16B(), right.V16B());
-        } else {
-          VRegister tmp = VRegisterFrom(locations->GetTemp(0));
-          __ Smull(tmp.V8H(), left.V8B(), right.V8B());
-          __ Saddw(acc.V4S(), acc.V4S(), tmp.V4H());
-          __ Saddw2(acc.V4S(), acc.V4S(), tmp.V8H());
+        UseScratchRegisterScope temps(GetVIXLAssembler());
+        const ZRegister tmp0 = temps.AcquireZ();
+        const ZRegister tmp1 = ZRegisterFrom(locations->GetTemp(0));
 
-          __ Smull2(tmp.V8H(), left.V16B(), right.V16B());
-          __ Saddw(acc.V4S(), acc.V4S(), tmp.V4H());
-          __ Saddw2(acc.V4S(), acc.V4S(), tmp.V8H());
+        __ Dup(tmp0.VnB(), 0u);
+        __ Mov(tmp1, tmp0);
+        __ Mov(tmp0.VnB(), p_reg, left.VnB());
+        __ Mov(tmp1.VnB(), p_reg, right.VnB());
+        if (instruction->IsZeroExtending()) {
+          __ Udot(acc.VnS(), acc.VnS(), tmp0.VnB(), tmp1.VnB());
+        } else {
+          __ Sdot(acc.VnS(), acc.VnS(), tmp0.VnB(), tmp1.VnB());
         }
       }
       break;
     }
-    case 2u:
-      DCHECK_EQ(8u, a->GetVectorLength());
-      if (instruction->IsZeroExtending()) {
-        __ Umlal(acc.V4S(), left.V4H(), right.V4H());
-        __ Umlal2(acc.V4S(), left.V8H(), right.V8H());
-      } else {
-        __ Smlal(acc.V4S(), left.V4H(), right.V4H());
-        __ Smlal2(acc.V4S(), left.V8H(), right.V8H());
-      }
-      break;
     default:
       LOG(FATAL) << "Unsupported SIMD type size: " << inputs_data_size;
   }
@@ -1395,54 +1301,39 @@ void LocationsBuilderARM64Sve::VisitVecLoad(HVecLoad* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecLoad(HVecLoad* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
   size_t size = DataType::Size(instruction->GetPackedType());
-  VRegister reg = VRegisterFrom(locations->Out());
+  const ZRegister reg = ZRegisterFrom(locations->Out());
   UseScratchRegisterScope temps(GetVIXLAssembler());
   Register scratch;
+  const PRegisterZ p_reg = LoopPReg().Zeroing();
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt16:  // (short) s.charAt(.) can yield HVecLoad/Int16/StringCharAt.
     case DataType::Type::kUint16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      // Special handling of compressed/uncompressed string load.
-      if (mirror::kUseStringCompression && instruction->IsStringCharAt()) {
-        vixl::aarch64::Label uncompressed_load, done;
-        // Test compression bit.
-        static_assert(static_cast<uint32_t>(mirror::StringCompressionFlag::kCompressed) == 0u,
-                      "Expecting 0=compressed, 1=uncompressed");
-        uint32_t count_offset = mirror::String::CountOffset().Uint32Value();
-        Register length = temps.AcquireW();
-        __ Ldr(length, HeapOperand(InputRegisterAt(instruction, 0), count_offset));
-        __ Tbnz(length.W(), 0, &uncompressed_load);
-        temps.Release(length);  // no longer needed
-        // Zero extend 8 compressed bytes into 8 chars.
-        __ Ldr(DRegisterFrom(locations->Out()).V8B(),
-               VecNeonAddress(instruction, &temps, 1, /*is_string_char_at*/ true, &scratch));
-        __ Uxtl(reg.V8H(), reg.V8B());
-        __ B(&done);
-        if (scratch.IsValid()) {
-          temps.Release(scratch);  // if used, no longer needed
-        }
-        // Load 8 direct uncompressed chars.
-        __ Bind(&uncompressed_load);
-        __ Ldr(reg,
-               VecNeonAddress(instruction, &temps, size, /*is_string_char_at*/ true, &scratch));
-        __ Bind(&done);
-        return;
-      }
-      FALLTHROUGH_INTENDED;
+      __ Ld1h(reg.VnH(), p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      DCHECK_EQ(16u, instruction->GetVectorLength());
+      __ Ld1b(reg.VnB(), p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
+      DCHECK_EQ(4u, instruction->GetVectorLength());
+      __ Ld1w(reg.VnS(), p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      DCHECK_LE(2u, instruction->GetVectorLength());
-      DCHECK_LE(instruction->GetVectorLength(), 16u);
-      __ Ldr(reg,
-             VecNeonAddress(instruction, &temps, size, instruction->IsStringCharAt(), &scratch));
+      DCHECK_EQ(2u, instruction->GetVectorLength());
+      __ Ld1d(reg.VnD(), p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1455,26 +1346,39 @@ void LocationsBuilderARM64Sve::VisitVecStore(HVecStore* instruction) {
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecStore(HVecStore* instruction) {
+  DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
   size_t size = DataType::Size(instruction->GetPackedType());
-  VRegister reg = VRegisterFrom(locations->InAt(2));
+  const ZRegister reg = ZRegisterFrom(locations->InAt(2));
   UseScratchRegisterScope temps(GetVIXLAssembler());
   Register scratch;
+  const PRegisterZ p_reg = LoopPReg().Zeroing();
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
+      DCHECK_EQ(16u, instruction->GetVectorLength());
+      __ St1b(reg.VnB(), p_reg,
+          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
+      DCHECK_EQ(8u, instruction->GetVectorLength());
+      __ St1h(reg.VnH(), p_reg,
+          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
+      DCHECK_EQ(4u, instruction->GetVectorLength());
+      __ St1w(reg.VnS(), p_reg,
+          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      DCHECK_LE(2u, instruction->GetVectorLength());
-      DCHECK_LE(instruction->GetVectorLength(), 16u);
-      __ Str(reg,
-             VecNeonAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      DCHECK_EQ(2u, instruction->GetVectorLength());
+      __ St1d(reg.VnD(), p_reg,
+          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1483,33 +1387,94 @@ void InstructionCodeGeneratorARM64Sve::VisitVecStore(HVecStore* instruction) {
 }
 
 void LocationsBuilderARM64Sve::VisitVecPredSetAll(HVecPredSetAll* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
+  DCHECK(instruction->InputAt(0)->IsIntConstant());
+  locations->SetInAt(0, Location::NoLocation());
+  locations->SetOut(Location::NoLocation());
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecPredSetAll(HVecPredSetAll* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  // Instruction is not predicated, see nodes_vector.h
+  DCHECK(!instruction->IsPredicated());
+  const PRegister p_reg = LoopPReg();
+
+  switch (instruction->GetPackedType()) {
+    case DataType::Type::kBool:
+    case DataType::Type::kUint8:
+    case DataType::Type::kInt8:
+      DCHECK_EQ(16u, instruction->GetVectorLength());
+      __ Ptrue(p_reg.VnB(), vixl::aarch64::SVE_ALL);
+      break;
+    case DataType::Type::kUint16:
+    case DataType::Type::kInt16:
+      DCHECK_EQ(8u, instruction->GetVectorLength());
+      __ Ptrue(p_reg.VnH(), vixl::aarch64::SVE_ALL);
+      break;
+    case DataType::Type::kInt32:
+    case DataType::Type::kFloat32:
+      DCHECK_EQ(4u, instruction->GetVectorLength());
+      __ Ptrue(p_reg.VnS(), vixl::aarch64::SVE_ALL);
+      break;
+    case DataType::Type::kInt64:
+    case DataType::Type::kFloat64:
+      DCHECK_EQ(2u, instruction->GetVectorLength());
+      __ Ptrue(p_reg.VnD(), vixl::aarch64::SVE_ALL);
+      break;
+    default:
+      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
+      UNREACHABLE();
+  }
 }
 
 void LocationsBuilderARM64Sve::VisitVecPredWhile(HVecPredWhile* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
+  locations->SetInAt(0, Location::RequiresRegister());
+  locations->SetInAt(1, Location::RequiresRegister());
+  // Instruction doesn't need a core register as out location; this is a hack to workaround
+  // absence of support for vector predicates in register allocation.
+  // TODO: Support SIMD types in register allocator.
+  locations->SetOut(Location::RequiresRegister());
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecPredWhile(HVecPredWhile* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  // Instruction is not predicated, see nodes_vector.h
+  DCHECK(!instruction->IsPredicated());
+  Register left = InputRegisterAt(instruction, 0);
+  Register right = InputRegisterAt(instruction, 1);
+
+  switch (instruction->GetVectorLength()) {
+    case 16u:
+      __ Whilelo(LoopPReg().VnB(), left, right);
+      break;
+    case 8u:
+      __ Whilelo(LoopPReg().VnH(), left, right);
+      break;
+    case 4u:
+      __ Whilelo(LoopPReg().VnS(), left, right);
+      break;
+    case 2u:
+      __ Whilelo(LoopPReg().VnD(), left, right);
+      break;
+    default:
+      LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
+      UNREACHABLE();
+  }
 }
 
 void LocationsBuilderARM64Sve::VisitVecPredCondition(HVecPredCondition* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
+  locations->SetInAt(0, Location::NoLocation());
+  locations->SetOut(Location::RequiresRegister());
 }
 
 void InstructionCodeGeneratorARM64Sve::VisitVecPredCondition(HVecPredCondition* instruction) {
-  LOG(FATAL) << "No SIMD for " << instruction->GetId();
-  UNREACHABLE();
+  // Instruction is not predicated, see nodes_vector.h
+  DCHECK(!instruction->IsPredicated());
+  Register reg = OutputRegister(instruction);
+  // Currently VecPredCondition is only used as part of vectorized loop check condition
+  // evaluation.
+  DCHECK(instruction->GetPCondKind() == HVecPredCondition::PCondKind::kNFirst);
+  __ Cset(reg, pl);
 }
 
 Location InstructionCodeGeneratorARM64Sve::AllocateSIMDScratchLocation(
@@ -1547,13 +1512,13 @@ void InstructionCodeGeneratorARM64Sve::MoveToSIMDStackSlot(Location destination,
     DCHECK(source.IsSIMDStackSlot());
     UseScratchRegisterScope temps(GetVIXLAssembler());
     if (GetVIXLAssembler()->GetScratchVRegisterList()->IsEmpty()) {
-      Register temp = temps.AcquireX();
+      const Register temp = temps.AcquireX();
       __ Ldr(temp, MemOperand(sp, source.GetStackIndex()));
       __ Str(temp, MemOperand(sp, destination.GetStackIndex()));
       __ Ldr(temp, MemOperand(sp, source.GetStackIndex() + kArm64WordSize));
       __ Str(temp, MemOperand(sp, destination.GetStackIndex() + kArm64WordSize));
     } else {
-      VRegister temp = temps.AcquireVRegisterOfSize(kQRegSize);
+      const VRegister temp = temps.AcquireVRegisterOfSize(kQRegSize);
       __ Ldr(temp, StackOperandFrom(source));
       __ Str(temp, StackOperandFrom(destination));
     }

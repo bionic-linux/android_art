@@ -6836,7 +6836,7 @@ void CodeGeneratorARM64::EmitJitRootPatches(uint8_t* code, const uint8_t* roots_
   }
 }
 
-MemOperand InstructionCodeGeneratorARM64::VecNeonAddress(
+MemOperand InstructionCodeGeneratorARM64::VecNEONAddress(
     HVecMemoryOperation* instruction,
     UseScratchRegisterScope* temps_scope,
     size_t size,
@@ -6866,6 +6866,40 @@ MemOperand InstructionCodeGeneratorARM64::VecNeonAddress(
     *scratch = temps_scope->AcquireSameSizeAs(base);
     __ Add(*scratch, base, Operand(WRegisterFrom(index), LSL, shift));
     return HeapOperand(*scratch, offset);
+  }
+}
+
+SVEMemOperand InstructionCodeGeneratorARM64::VecSVEAddress(
+    HVecMemoryOperation* instruction,
+    UseScratchRegisterScope* temps_scope,
+    size_t size,
+    bool is_string_char_at,
+    /*out*/ Register* scratch) {
+  LocationSummary* locations = instruction->GetLocations();
+  Register base = InputRegisterAt(instruction, 0);
+
+  if (instruction->InputAt(1)->IsIntermediateAddressIndex()) {
+    DCHECK(!is_string_char_at);
+    return SVEMemOperand(base.X(), InputRegisterAt(instruction, 1).X());
+  }
+
+  Location index = locations->InAt(1);
+  uint32_t offset = is_string_char_at
+      ? mirror::String::ValueOffset().Uint32Value()
+      : mirror::Array::DataOffset(size).Uint32Value();
+  size_t shift = ComponentSizeShiftWidth(size);
+
+  // HIntermediateAddress optimization is only applied for scalar ArrayGet and ArraySet.
+  DCHECK(!instruction->InputAt(0)->IsIntermediateAddress());
+
+  *scratch = temps_scope->AcquireSameSizeAs(base);
+  if (index.IsConstant()) {
+    offset += Int64FromLocation(index) << shift;
+    __ Add(*scratch, base, offset);
+    return SVEMemOperand(scratch->X());
+  } else {
+    __ Add(*scratch, base, offset);
+    return SVEMemOperand(scratch->X(), XRegisterFrom(index), LSL, shift);
   }
 }
 
