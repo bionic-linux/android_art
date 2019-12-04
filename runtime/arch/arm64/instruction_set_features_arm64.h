@@ -91,7 +91,8 @@ class Arm64InstructionSetFeatures final : public InstructionSetFeatures {
   }
 
   bool HasSVE() const {
-    return has_sve_;
+    // TODO: temporarily enabled for testing.
+    return true;
   }
 
   virtual ~Arm64InstructionSetFeatures() {}
