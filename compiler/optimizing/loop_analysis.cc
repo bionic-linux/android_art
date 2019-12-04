@@ -157,6 +157,10 @@ class Arm64LoopHelper : public ArchDefaultLoopHelper {
     // Don't unroll with insufficient iterations.
     // TODO: Unroll loops with unknown trip count.
     DCHECK_NE(vector_length, 0u);
+    // TODO: Unroll loops in predicated vectorization mode.
+    if (block->GetGraph()->HasPredicatedSIMDSupport()) {
+      return LoopAnalysisInfo::kNoUnrollingFactor;
+    }
     if (trip_count < (2 * vector_length + max_peel)) {
       return LoopAnalysisInfo::kNoUnrollingFactor;
     }

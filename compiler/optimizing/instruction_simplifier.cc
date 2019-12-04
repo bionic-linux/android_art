@@ -274,56 +274,74 @@ bool InstructionSimplifierVisitor::TryCombineVecMultiplyAccumulate(HVecMul* mul)
   }
 
   ArenaAllocator* allocator = mul->GetBlock()->GetGraph()->GetAllocator();
+  if (!mul->HasOnlyOneNonEnvironmentUse()) {
+    return false;
+  }
+  HInstruction* binop = mul->GetUses().front().GetUser();
+  if (!(binop->IsVecAdd() || binop->IsVecSub())) {
+    return false;
+  }
 
-  if (mul->HasOnlyOneNonEnvironmentUse()) {
-    HInstruction* use = mul->GetUses().front().GetUser();
-    if (use->IsVecAdd() || use->IsVecSub()) {
-      // Replace code looking like
-      //    VECMUL tmp, x, y
-      //    VECADD/SUB dst, acc, tmp
-      // with
-      //    VECMULACC dst, acc, x, y
-      // Note that we do not want to (unconditionally) perform the merge when the
-      // multiplication has multiple uses and it can be merged in all of them.
-      // Multiple uses could happen on the same control-flow path, and we would
-      // then increase the amount of work. In the future we could try to evaluate
-      // whether all uses are on different control-flow paths (using dominance and
-      // reverse-dominance information) and only perform the merge when they are.
-      HInstruction* accumulator = nullptr;
-      HVecBinaryOperation* binop = use->AsVecBinaryOperation();
-      HInstruction* binop_left = binop->GetLeft();
-      HInstruction* binop_right = binop->GetRight();
-      // This is always true since the `HVecMul` has only one use (which is checked above).
-      DCHECK_NE(binop_left, binop_right);
-      if (binop_right == mul) {
-        accumulator = binop_left;
-      } else if (use->IsVecAdd()) {
-        DCHECK_EQ(binop_left, mul);
-        accumulator = binop_right;
-      }
+  // Replace code looking like
+  //    VECMUL tmp, x, y
+  //    VECADD/SUB dst, acc, tmp
+  // with
+  //    VECMULACC dst, acc, x, y
+  // Note that we do not want to (unconditionally) perform the merge when the
+  // multiplication has multiple uses and it can be merged in all of them.
+  // Multiple uses could happen on the same control-flow path, and we would
+  // then increase the amount of work. In the future we could try to evaluate
+  // whether all uses are on different control-flow paths (using dominance and
+  // reverse-dominance information) and only perform the merge when they are.
+  HInstruction* accumulator = nullptr;
+  HVecBinaryOperation* vec_binop = binop->AsVecBinaryOperation();
+  HInstruction* binop_left = vec_binop->GetLeft();
+  HInstruction* binop_right = vec_binop->GetRight();
+  // This is always true since the `HVecMul` has only one use (which is checked above).
+  DCHECK_NE(binop_left, binop_right);
+  if (binop_right == mul) {
+    accumulator = binop_left;
+  } else {
+    DCHECK_EQ(binop_left, mul);
+    // Only addition is commutative.
+    if (!binop->IsVecAdd()) {
+      return false;
+    }
+    accumulator = binop_right;
+  }
 
-      HInstruction::InstructionKind kind =
-          use->IsVecAdd() ? HInstruction::kAdd : HInstruction::kSub;
-      if (accumulator != nullptr) {
-        HVecMultiplyAccumulate* mulacc =
-            new (allocator) HVecMultiplyAccumulate(allocator,
-                                                   kind,
-                                                   accumulator,
-                                                   mul->GetLeft(),
-                                                   mul->GetRight(),
-                                                   binop->GetPackedType(),
-                                                   binop->GetVectorLength(),
-                                                   binop->GetDexPc());
+  DCHECK(accumulator != nullptr);
+  HInstruction::InstructionKind kind =
+      binop->IsVecAdd() ? HInstruction::kAdd : HInstruction::kSub;
 
-        binop->GetBlock()->ReplaceAndRemoveInstructionWith(binop, mulacc);
-        DCHECK(!mul->HasUses());
-        mul->GetBlock()->RemoveInstruction(mul);
-        return true;
-      }
+  HVecPredSetOperation* binop_predicate = nullptr;
+  if (GetGraph()->HasPredicatedSIMDSupport()) {
+    binop_predicate = vec_binop->GetGoverningPredicate();
+    if (mul->GetGoverningPredicate() != binop_predicate) {
+      // Binop and mul must be predicated by the same instruction.
+      return false;
     }
   }
 
-  return false;
+  HVecMultiplyAccumulate* mulacc =
+      new (allocator) HVecMultiplyAccumulate(allocator,
+                                             kind,
+                                             accumulator,
+                                             mul->GetLeft(),
+                                             mul->GetRight(),
+                                             vec_binop->GetPackedType(),
+                                             vec_binop->GetVectorLength(),
+                                             vec_binop->GetDexPc());
+
+  if (GetGraph()->HasPredicatedSIMDSupport()) {
+    mulacc->SetGoverningPredicate(binop_predicate);
+  }
+
+
+  vec_binop->GetBlock()->ReplaceAndRemoveInstructionWith(vec_binop, mulacc);
+  DCHECK(!mul->HasUses());
+  mul->GetBlock()->RemoveInstruction(mul);
+  return true;
 }
 
 void InstructionSimplifierVisitor::VisitShift(HBinaryOperation* instruction) {
