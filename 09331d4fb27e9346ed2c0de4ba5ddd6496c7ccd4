@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70314dd8_22839791",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-10T09:21:27Z",
+      "side": 1,
+      "message": "nit: add comment (Same as commit message).",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 14
+      },
+      "revId": "09331d4fb27e9346ed2c0de4ba5ddd6496c7ccd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
