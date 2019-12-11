@@ -1,0 +1,9 @@
+Autosubmit+1: Alex Light <allight@google.com>
+Code-Review+2: Guang Zhu <guangzhu@google.com>
+DrNo-Review+1: Guang Zhu <guangzhu@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 11 Dec 2019 02:19:00 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1184920
+Project: platform/art
+Branch: refs/heads/android10-tests-dev
