@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Joseph Murphy <murj@google.com>
+Autosubmit+1: Joseph Murphy <murj@google.com>
+Build-Cop-Override+1: Joseph Murphy <murj@google.com>
+Submitted-by: Joseph Murphy <murj@google.com>
+Submitted-at: Thu, 19 Dec 2019 01:20:00 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1194367
+Project: platform/art
+Branch: refs/heads/master
