@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bae8fb1_7565dde0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:37:54Z",
+      "side": 1,
+      "message": "I think Martin\u0027s and my comments from https://android-review.googlesource.com/c/platform/build/soong/+/1194016/2//COMMIT_MSG also apply here.",
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a282ab4_dfd98086",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:37:54Z",
+      "side": 1,
+      "message": "Nit: the boot image extension",
+      "range": {
+        "startLine": 280,
+        "startChar": 8,
+        "endLine": 280,
+        "endChar": 28
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11624da9_c99c387d",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:37:54Z",
+      "side": 1,
+      "message": "I think this should be a call to `GetArtRootSafe()`. Or maybe the ART APEX location should be passed as an argument to GetDefaultBootImageLocation (like the Android Root)?",
+      "range": {
+        "startLine": 282,
+        "startChar": 22,
+        "endLine": 282,
+        "endChar": 48
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
