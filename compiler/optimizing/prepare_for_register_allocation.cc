@@ -148,6 +148,10 @@ void PrepareForRegisterAllocation::VisitClinitCheck(HClinitCheck* check) {
       if (user->IsInvokeStaticOrDirect()) {
         user->AsInvokeStaticOrDirect()->RemoveExplicitClinitCheck(
             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
+        //This "check" instruction is going to remove,
+        //Clear the env. use records of the instruction for users
+        //It could help to check with CanMoveClinitCheck()
+        check->RemoveEnvironment();
       }
     }
   }
