@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Jiyong Park <jiyong@google.com>
+Verified+1: Orion Hodson <oth@google.com>
+Code-Review+2: Orion Hodson <oth@google.com>
+Autosubmit+1: Orion Hodson <oth@google.com>
+Submitted-by: Orion Hodson <oth@google.com>
+Submitted-at: Fri, 03 Jan 2020 12:08:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1200101
+Project: platform/art
+Branch: refs/heads/master
