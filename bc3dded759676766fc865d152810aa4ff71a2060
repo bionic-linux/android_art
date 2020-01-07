@@ -22,6 +22,30 @@
       "revId": "bc3dded759676766fc865d152810aa4ff71a2060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fc8780_d59173e2",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1367072
+      },
+      "writtenOn": "2020-01-07T15:01:49Z",
+      "side": 1,
+      "message": "Got it, the dead LoadClass has been handled in line 168 of CL 973746.\nThanks.",
+      "parentUuid": "91feece5_c2a6e5be",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 35
+      },
+      "revId": "bc3dded759676766fc865d152810aa4ff71a2060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
