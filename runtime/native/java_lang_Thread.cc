@@ -112,6 +112,13 @@ static jint Thread_nativeGetStatus(JNIEnv* env, jobject java_thread, jboolean ha
   return -1;  // Unreachable.
 }
 
+static jint Thread_nativeGetTid(JNIEnv* env, jobject java_thread) {
+  ScopedFastNativeObjectAccess soa(env);
+  MutexLock mu(soa.Self(), *Locks::thread_list_lock_);
+  Thread* thread = Thread::FromManagedThread(soa, java_thread);
+  return (thread != nullptr) ? thread->GetTid() : 0;
+}
+
 static jboolean Thread_holdsLock(JNIEnv* env, jclass, jobject java_object) {
   ScopedObjectAccess soa(env);
   ObjPtr<mirror::Object> object = soa.Decode<mirror::Object>(java_object);
@@ -200,6 +207,7 @@ static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(Thread, isInterrupted, "()Z"),
   NATIVE_METHOD(Thread, nativeCreate, "(Ljava/lang/Thread;JZ)V"),
   NATIVE_METHOD(Thread, nativeGetStatus, "(Z)I"),
+  NATIVE_METHOD(Thread, nativeGetTid, "()I"),
   NATIVE_METHOD(Thread, holdsLock, "(Ljava/lang/Object;)Z"),
   FAST_NATIVE_METHOD(Thread, interrupt0, "()V"),
   NATIVE_METHOD(Thread, setNativeName, "(Ljava/lang/String;)V"),
