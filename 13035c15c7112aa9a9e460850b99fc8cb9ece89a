@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dec42fba_b611f0be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bae8fb1_7565dde0",
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a282ab4_dfd98086",
         "filename": "libartbase/base/file_utils.cc",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ffed85a9_ee522cc6",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a282ab4_dfd98086",
+      "range": {
+        "startLine": 280,
+        "startChar": 8,
+        "endLine": 280,
+        "endChar": 28
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11624da9_c99c387d",
         "filename": "libartbase/base/file_utils.cc",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93b8e5f_117a5257",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:09Z",
+      "side": 1,
+      "message": "Thanks, I used GetArtRoot() --- it\u0027s like GetArtRootSafe, but does not default to empty location and fails instead.",
+      "parentUuid": "11624da9_c99c387d",
+      "range": {
+        "startLine": 282,
+        "startChar": 22,
+        "endLine": 282,
+        "endChar": 48
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
