@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb33b462_7b540458",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2020-01-08T13:23:49Z",
+      "side": 1,
+      "message": "There is also Thread.getId() but I\u0027m guessing that that is currently different because it\u0027s currently generated in .java land and (from what I can tell) never passed to native code.\n\nIs the native code that decides on the native thread id in ART or some Kernel function? Should Thread.getId() return that value?",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 48
+      },
+      "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
