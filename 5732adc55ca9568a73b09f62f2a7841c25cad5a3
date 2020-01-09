@@ -46,6 +46,30 @@
       "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b7e2e7_8269809e",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-01-09T10:35:00Z",
+      "side": 1,
+      "message": "Holy smokes, I wouldn\u0027t have been able to recall sequential managed thread assignment, but just wow. Anyone that calls Process.setThreadPriority(thread.getThreadId(), priority) today is just plain wrong if thread !\u003d Thread.currentThread().",
+      "parentUuid": "531426a0_9c95d235",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 48
+      },
+      "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
