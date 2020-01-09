@@ -22,6 +22,30 @@
       "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531426a0_9c95d235",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2020-01-09T03:38:04Z",
+      "side": 1,
+      "message": "Yes, as you mentioned, Thread.getId() just returned the id generated in java land (a sequentially incremental number). It is different than what thread-\u003eGetTid() returned here, which is the tid of kernel thread got from native gettid() call eventually, IIUC. I also printed some log to verify the id number is expected locally.\n\nAbout should Thread.getId() returns that value, I\u0027m not quite sure about the use cases of this function, and if it will break something if we change it. For example, the thread-\u003eGetTid() will return 0 if the native thread is not created yet while Thread.getId() will return a positive number already. I guess I cannot answer this question :)",
+      "parentUuid": "fb33b462_7b540458",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 48
+      },
+      "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
