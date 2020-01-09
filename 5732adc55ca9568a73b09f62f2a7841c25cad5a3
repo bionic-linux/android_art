@@ -70,6 +70,30 @@
       "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b225e6_229ab6b8",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2020-01-09T11:51:51Z",
+      "side": 1,
+      "message": "It seems there are several getThreadId() definitions, may I know which one you are referring to?",
+      "parentUuid": "91b7e2e7_8269809e",
+      "range": {
+        "startLine": 119,
+        "startChar": 31,
+        "endLine": 119,
+        "endChar": 48
+      },
+      "revId": "5732adc55ca9568a73b09f62f2a7841c25cad5a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
