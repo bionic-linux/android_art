@@ -128,6 +128,30 @@
       "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab95ed4a_b21fe212",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-09T11:07:26Z",
+      "side": 1,
+      "message": "Roland: I rolled back to kAndroidArtApexDefaultPath after a failed test: https://android-build.googleplex.com/builds/pending/P11306560/art-test/latest/view/logs/build.log",
+      "parentUuid": "d93b8e5f_117a5257",
+      "range": {
+        "startLine": 282,
+        "startChar": 22,
+        "endLine": 282,
+        "endChar": 48
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
