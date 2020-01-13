@@ -152,6 +152,30 @@
       "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a809e828_8fc9abeb",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-01-13T18:07:28Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll take a look at this.",
+      "parentUuid": "ab95ed4a_b21fe212",
+      "range": {
+        "startLine": 282,
+        "startChar": 22,
+        "endLine": 282,
+        "endChar": 48
+      },
+      "revId": "13035c15c7112aa9a9e460850b99fc8cb9ece89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
