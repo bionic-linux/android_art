@@ -48,6 +48,7 @@ enum LockLevel : uint8_t {
   kJniIdLock,
   kNativeDebugInterfaceLock,
   kSignalHandlingLock,
+  kRecursiveRWMutexLock,
   // A generic lock level for mutexs that should not allow any additional mutexes to be gained after
   // acquiring it.
   kGenericBottomLock,

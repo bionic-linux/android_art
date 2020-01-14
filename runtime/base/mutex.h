@@ -24,6 +24,7 @@
 
 #include <iosfwd>
 #include <string>
+#include <unordered_map>
 
 #include <android-base/logging.h>
 
@@ -298,7 +299,9 @@ class LOCKABLE Mutex : public BaseMutex {
 std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
 class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
  public:
-  explicit ReaderWriterMutex(const char* name, LockLevel level = kDefaultMutexLevel);
+  explicit ReaderWriterMutex(const char* name,
+                             LockLevel level = kDefaultMutexLevel,
+                             bool recursive = false);
   ~ReaderWriterMutex();
 
   bool IsReaderWriterMutex() const override { return true; }
@@ -382,6 +385,10 @@ class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
   void WakeupToRespondToEmptyCheckpoint() override;
 
  private:
+  // Return a mutable reference to the recursion count for the given thread.
+  size_t GetReaderRecursionCount(Thread* self);
+  size_t& GetReaderRecursionCountRef(Thread* self) REQUIRES(reader_recursion_count_lock_.value());
+
 #if ART_USE_FUTEXES
   // Out-of-inline path for handling contention for a SharedLock.
   void HandleSharedLockContention(Thread* self, int32_t cur_state);
@@ -399,6 +406,16 @@ class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
   pthread_rwlock_t rwlock_;
   Atomic<pid_t> exclusive_owner_;  // Writes guarded by rwlock_. Asynchronous reads are OK.
 #endif
+
+  // If it is recursive.
+  const bool recursive_;
+  // Mutex for reader-recursion-count map.
+  std::optional<art::Mutex> reader_recursion_count_lock_;
+  // Number of recursive read locks we have.
+  std::unordered_map<Thread*, size_t> reader_recursion_count_map_;
+  // Number of recursive write locks we have.
+  size_t writer_recursion_count_;  // Guarded by this lock.
+
   DISALLOW_COPY_AND_ASSIGN(ReaderWriterMutex);
 };
 
