@@ -652,12 +652,12 @@ void Mutex::WakeupToRespondToEmptyCheckpoint() {
 #endif
 }
 
-ReaderWriterMutex::ReaderWriterMutex(const char* name, LockLevel level)
+ReaderWriterMutex::ReaderWriterMutex(const char* name, LockLevel level, bool recursive)
     : BaseMutex(name, level)
 #if ART_USE_FUTEXES
     , state_(0), exclusive_owner_(0), num_contenders_(0)
 #endif
-{
+    , recursive_(recursive), reader_recursion_count_(0), writer_recursion_count_(0) {
 #if !ART_USE_FUTEXES
   CHECK_MUTEX_CALL(pthread_rwlock_init, (&rwlock_, nullptr));
 #endif
@@ -682,6 +682,12 @@ ReaderWriterMutex::~ReaderWriterMutex() {
 
 void ReaderWriterMutex::ExclusiveLock(Thread* self) {
   DCHECK(self == nullptr || self == Thread::Current());
+  if (UNLIKELY(recursive_) && IsExclusiveHeld(self)) {
+    CHECK_EQ(reader_recursion_count_, 0u) << "Cannot recursively lock exclusive after already"
+                                         << " having gained recursive shared locks on " << *this;
+    ++writer_recursion_count_;
+    return;
+  }
   AssertNotExclusiveHeld(self);
 #if ART_USE_FUTEXES
   bool done = false;
@@ -723,6 +729,12 @@ void ReaderWriterMutex::ExclusiveLock(Thread* self) {
 void ReaderWriterMutex::ExclusiveUnlock(Thread* self) {
   DCHECK(self == nullptr || self == Thread::Current());
   AssertExclusiveHeld(self);
+  if (UNLIKELY(recursive_) && writer_recursion_count_ > 0u) {
+    CHECK_EQ(reader_recursion_count_, 0u) << "Cannot recursively unlock exclusive before releasing"
+                                         << " all shared recursive locks on " << *this;
+    --writer_recursion_count_;
+    return;
+  }
   RegisterAsUnlocked(self);
   DCHECK_NE(GetExclusiveOwnerTid(), 0);
 #if ART_USE_FUTEXES
@@ -754,6 +766,12 @@ void ReaderWriterMutex::ExclusiveUnlock(Thread* self) {
 #if HAVE_TIMED_RWLOCK
 bool ReaderWriterMutex::ExclusiveLockWithTimeout(Thread* self, int64_t ms, int32_t ns) {
   DCHECK(self == nullptr || self == Thread::Current());
+  if (UNLIKELY(recursive_) && IsExclusiveHeld(self)) {
+    CHECK_EQ(reader_recursion_count_, 0u) << "Cannot recursively lock exclusive after already"
+                                         << " having gained recursive shared locks on " << *this;
+    ++writer_recursion_count_;
+    return true;
+  }
 #if ART_USE_FUTEXES
   bool done = false;
   timespec end_abs_ts;
@@ -834,6 +852,10 @@ void ReaderWriterMutex::HandleSharedLockContention(Thread* self, int32_t cur_sta
 
 bool ReaderWriterMutex::SharedTryLock(Thread* self) {
   DCHECK(self == nullptr || self == Thread::Current());
+  if (UNLIKELY(recursive_) && IsSharedHeld(self)) {
+    ++reader_recursion_count_;
+    return true;
+  }
 #if ART_USE_FUTEXES
   bool done = false;
   do {

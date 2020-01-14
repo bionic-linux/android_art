@@ -298,7 +298,9 @@ class LOCKABLE Mutex : public BaseMutex {
 std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
 class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
  public:
-  explicit ReaderWriterMutex(const char* name, LockLevel level = kDefaultMutexLevel);
+  explicit ReaderWriterMutex(const char* name,
+                             LockLevel level = kDefaultMutexLevel,
+                             bool recursive = false);
   ~ReaderWriterMutex();
 
   bool IsReaderWriterMutex() const override { return true; }
@@ -399,6 +401,14 @@ class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
   pthread_rwlock_t rwlock_;
   Atomic<pid_t> exclusive_owner_;  // Writes guarded by rwlock_. Asynchronous reads are OK.
 #endif
+
+  // If it is recursive.
+  const bool recursive_;  // Guarded this lock.
+  // Number of recursive read locks we have.
+  mutable size_t reader_recursion_count_;  // Guarded this lock.
+  // Number of recursive write locks we have.
+  mutable size_t writer_recursion_count_;  // Guarded this lock.
+
   DISALLOW_COPY_AND_ASSIGN(ReaderWriterMutex);
 };
 

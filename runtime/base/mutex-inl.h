@@ -176,6 +176,10 @@ inline void BaseMutex::RegisterAsUnlocked(Thread* self) {
 
 inline void ReaderWriterMutex::SharedLock(Thread* self) {
   DCHECK(self == nullptr || self == Thread::Current());
+  if (UNLIKELY(recursive_) && IsSharedHeld(self)) {
+    ++reader_recursion_count_;
+    return;
+  }
 #if ART_USE_FUTEXES
   bool done = false;
   do {
@@ -197,8 +201,13 @@ inline void ReaderWriterMutex::SharedLock(Thread* self) {
 
 inline void ReaderWriterMutex::SharedUnlock(Thread* self) {
   DCHECK(self == nullptr || self == Thread::Current());
-  DCHECK(GetExclusiveOwnerTid() == 0 || GetExclusiveOwnerTid() == -1);
+  DCHECK(GetExclusiveOwnerTid() == 0 || GetExclusiveOwnerTid() == -1 ||
+         (recursive_ && IsExclusiveHeld(self) && reader_recursion_count_ > 0u));
   AssertSharedHeld(self);
+  if (UNLIKELY(recursive_) && reader_recursion_count_ > 0u) {
+    --reader_recursion_count_;
+    return;
+  }
   RegisterAsUnlocked(self);
 #if ART_USE_FUTEXES
   bool done = false;
