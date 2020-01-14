@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a50ae7ea_6a5ecb5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-01-14T09:57:24Z",
+      "side": 1,
+      "message": "Can you add a pointer to the bug for context? Thanks",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "077df52e17829beb036f75b2f41c0bcddc110ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c64e1353_792c1407",
         "filename": "runtime/base/mutex.h",
         "patchSetId": 1
