@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c64e1353_792c1407",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-01-14T09:45:01Z",
+      "side": 1,
+      "message": "Avoid this? (the need for it reads odd - doesn\u0027t a lock/unlock on a mutex already require non-const?)",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 9
+      },
+      "revId": "077df52e17829beb036f75b2f41c0bcddc110ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
