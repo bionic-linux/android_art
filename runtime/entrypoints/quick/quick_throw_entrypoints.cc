@@ -21,6 +21,7 @@
 #include "common_throws.h"
 #include "mirror/object-inl.h"
 #include "nth_caller_visitor.h"
+#include "stack.h"
 #include "thread.h"
 #include "well_known_classes.h"
 
@@ -118,7 +119,10 @@ extern "C" NO_RETURN void artThrowClassCastException(mirror::Class* dest_type,
   if (dest_type == nullptr) {
     // Find the target class for check cast using the bitstring check (dest_type == null).
     NthCallerVisitor visitor(self, 0u);
-    visitor.WalkStack();
+    {
+      ScopedSharedStackWalkLock ssswl(self, visitor);
+      visitor.WalkStack();
+    }
     DCHECK(visitor.caller != nullptr);
     uint32_t dex_pc = visitor.GetDexPc();
     CodeItemDataAccessor accessor(*visitor.caller->GetDexFile(), visitor.caller->GetCodeItem());

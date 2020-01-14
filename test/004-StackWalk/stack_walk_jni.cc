@@ -19,6 +19,7 @@
 #include "art_method-inl.h"
 #include "check_reference_map_visitor.h"
 #include "jni.h"
+#include "stack.h"
 
 namespace art {
 
@@ -95,6 +96,7 @@ extern "C" JNIEXPORT jint JNICALL Java_Main_testStackWalk(JNIEnv*, jobject, jint
 
   // Visitor
   TestReferenceMapVisitor mapper(soa.Self());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), mapper);
   mapper.WalkStack();
   CHECK(mapper.found_f_);
   CHECK(mapper.found_g_);

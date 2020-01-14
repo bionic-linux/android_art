@@ -68,6 +68,7 @@ extern "C" JNIEXPORT void JNICALL Java_Main_testVisitLocks(JNIEnv*, jclass) {
   };
   Context* context = Context::Create();
   VisitLocks vl(soa.Self(), context);
+  ScopedSharedStackWalkLock ssswl(soa.Self(), vl);
   vl.WalkStack();
   delete context;
 }

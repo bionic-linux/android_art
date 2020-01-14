@@ -32,6 +32,7 @@
 #include "nativehelper/scoped_local_ref.h"
 #include "nth_caller_visitor.h"
 #include "scoped_thread_state_change-inl.h"
+#include "stack.h"
 #include "stack_reference.h"
 #include "thread-inl.h"
 #include "well_known_classes.h"
@@ -986,6 +987,7 @@ bool UnboxPrimitiveForResult(ObjPtr<mirror::Object> o,
 
 ObjPtr<mirror::Class> GetCallingClass(Thread* self, size_t num_frames) {
   NthCallerVisitor visitor(self, num_frames);
+  ScopedSharedStackWalkLock ssswl(self, visitor);
   visitor.WalkStack();
   return visitor.caller != nullptr ? visitor.caller->GetDeclaringClass() : nullptr;
 }

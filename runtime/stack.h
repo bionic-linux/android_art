@@ -21,11 +21,14 @@
 #include <stdint.h>
 #include <string>
 
+#include "android-base/thread_annotations.h"
 #include "base/locks.h"
 #include "base/macros.h"
+#include "base/mutex.h"
 #include "obj_ptr.h"
 #include "quick/quick_method_frame_info.h"
 #include "stack_map.h"
+#include "thread.h"
 
 namespace art {
 
@@ -38,8 +41,10 @@ class Context;
 class HandleScope;
 class OatQuickMethodHeader;
 class ShadowFrame;
-class Thread;
 union JValue;
+
+class ScopedExclusiveStackWalkLock;
+class ScopedSharedStackWalkLock;
 
 // The kind of vreg being accessed in calls to Set/GetVReg.
 enum VRegKind {
@@ -135,7 +140,7 @@ class StackVisitor {
   StackVisitor(StackVisitor&&) = default;
 
   // Return 'true' if we should continue to visit more frames, 'false' to stop.
-  virtual bool VisitFrame() REQUIRES_SHARED(Locks::mutator_lock_) = 0;
+  virtual bool VisitFrame() REQUIRES_SHARED(Locks::mutator_lock_, GetStackWalkMutex()) = 0;
 
   enum class CountTransitions {
     kYes,
@@ -143,10 +148,12 @@ class StackVisitor {
   };
 
   template <CountTransitions kCount = CountTransitions::kYes>
-  void WalkStack(bool include_transitions = false) REQUIRES_SHARED(Locks::mutator_lock_);
+  void WalkStack(bool include_transitions = false)
+      REQUIRES_SHARED(Locks::mutator_lock_, GetStackWalkMutex());
 
   // Convenience helper function to walk the stack with a lambda as a visitor.
   template <CountTransitions kCountTransitions = CountTransitions::kYes,
+            bool kExclusiveStackWalk = false,
             typename T>
   ALWAYS_INLINE static void WalkStack(const T& fn,
                                       Thread* thread,
@@ -155,6 +162,29 @@ class StackVisitor {
                                       bool check_suspended = true,
                                       bool include_transitions = false)
       REQUIRES_SHARED(Locks::mutator_lock_) {
+    if constexpr (kExclusiveStackWalk) {
+      WriterMutexLock rml(Thread::Current(), *thread->GetStackWalkMutex());
+      WalkStackLocked<kCountTransitions, T>(
+          fn, thread, context, walk_kind, check_suspended, include_transitions);
+    } else {
+      ReaderMutexLock rml(Thread::Current(), *thread->GetStackWalkMutex());
+      WalkStackLocked<kCountTransitions, T>(
+          fn, thread, context, walk_kind, check_suspended, include_transitions);
+    }
+  }
+
+  // Convenience helper function to walk the stack with a lambda as a visitor.
+  // NO_THREAD_SAFETY_ANALYSIS since annotalysis seems to have trouble with the callers.
+  template <CountTransitions kCountTransitions = CountTransitions::kYes,
+            typename T>
+  ALWAYS_INLINE static void WalkStackLocked(const T& fn,
+                                            Thread* thread,
+                                            Context* context,
+                                            StackWalkKind walk_kind,
+                                            bool check_suspended = true,
+                                            bool include_transitions = false)
+      REQUIRES_SHARED(Locks::mutator_lock_, thread->GetStackWalkMutex())
+      NO_THREAD_SAFETY_ANALYSIS {
     class LambdaStackVisitor : public StackVisitor {
      public:
       LambdaStackVisitor(const T& fn,
@@ -164,7 +194,7 @@ class StackVisitor {
                          bool check_suspended = true)
           : StackVisitor(thread, context, walk_kind, check_suspended), fn_(fn) {}
 
-      bool VisitFrame() override REQUIRES_SHARED(Locks::mutator_lock_) {
+      bool VisitFrame() override REQUIRES_SHARED(Locks::mutator_lock_, GetStackWalkMutex()) {
         return fn_(this);
       }
 
@@ -172,11 +202,16 @@ class StackVisitor {
       T fn_;
     };
     LambdaStackVisitor visitor(fn, thread, context, walk_kind, check_suspended);
+    visitor.GetThread()->GetStackWalkMutex()->AssertSharedHeld(Thread::Current());
     visitor.template WalkStack<kCountTransitions>(include_transitions);
   }
 
   Thread* GetThread() const {
     return thread_;
+  }
+
+  ReaderWriterMutex* GetStackWalkMutex() const LOCK_RETURNED(thread_->GetStackWalkMutex()) {
+    return thread_->GetStackWalkMutex();
   }
 
   ArtMethod* GetMethod() const REQUIRES_SHARED(Locks::mutator_lock_);
@@ -370,9 +405,34 @@ class StackVisitor {
   mutable std::pair<const OatQuickMethodHeader*, CodeInfo> cur_inline_info_;
   mutable std::pair<uintptr_t, StackMap> cur_stack_map_;
 
+  friend class ScopedExclusiveStackWalkLock;
+  friend class ScopedSharedStackWalkLock;
+
  protected:
   Context* const context_;
   const bool check_suspended_;
+};
+
+class SCOPED_CAPABILITY ScopedExclusiveStackWalkLock {
+ public:
+  ScopedExclusiveStackWalkLock(Thread* self, StackVisitor& visitor)
+      EXCLUSIVE_LOCK_FUNCTION(visitor.GetStackWalkMutex())
+      : wml_(self, *visitor.GetStackWalkMutex()) {}
+  ~ScopedExclusiveStackWalkLock() UNLOCK_FUNCTION() {}
+
+ private:
+  WriterMutexLock wml_;
+};
+
+class SCOPED_CAPABILITY ScopedSharedStackWalkLock {
+ public:
+  ScopedSharedStackWalkLock(Thread* self, StackVisitor& visitor)
+      ACQUIRE(visitor.GetStackWalkMutex())
+      : rml_(self, *visitor.GetStackWalkMutex()) {}
+  ~ScopedSharedStackWalkLock() RELEASE() {}
+
+ private:
+  ReaderMutexLock rml_;
 };
 
 }  // namespace art

@@ -31,6 +31,7 @@
 #include "art_method-inl.h"
 #include "base/enums.h"
 #include "base/memory_tool.h"
+#include "base/mutex.h"
 #include "base/safe_map.h"
 #include "base/strlcpy.h"
 #include "base/time_utils.h"
@@ -931,6 +932,7 @@ JDWP::JdwpError Dbg::GetOwnedMonitors(JDWP::ObjectId thread_id,
   }
   std::unique_ptr<Context> context(Context::Create());
   OwnedMonitorVisitor visitor(thread, context.get(), monitors, stack_depths);
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
   visitor.WalkStack();
   return JDWP::ERR_NONE;
 }
@@ -3749,6 +3751,7 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
 
   Thread* const thread = sts.GetThread();
   SingleStepStackVisitor visitor(thread);
+  ScopedExclusiveStackWalkLock seswl(self, visitor);
   visitor.WalkStack();
 
   // Allocate single step.

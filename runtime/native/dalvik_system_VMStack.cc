@@ -30,6 +30,7 @@
 #include "nth_caller_visitor.h"
 #include "scoped_fast_native_object_access-inl.h"
 #include "scoped_thread_state_change-inl.h"
+#include "stack.h"
 #include "thread_list.h"
 
 namespace art {
@@ -99,7 +100,10 @@ static jint VMStack_fillStackTraceElements(JNIEnv* env, jclass, jobject javaThre
 static jobject VMStack_getCallingClassLoader(JNIEnv* env, jclass) {
   ScopedFastNativeObjectAccess soa(env);
   NthCallerVisitor visitor(soa.Self(), 2);
-  visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
+    visitor.WalkStack();
+  }
   if (UNLIKELY(visitor.caller == nullptr)) {
     // The caller is an attached native thread.
     return nullptr;
@@ -131,7 +135,10 @@ static jobject VMStack_getClosestUserClassLoader(JNIEnv* env, jclass) {
   };
   ScopedFastNativeObjectAccess soa(env);
   ClosestUserClassLoaderVisitor visitor(soa.Self());
-  visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
+    visitor.WalkStack();
+  }
   return soa.AddLocalReference<jobject>(visitor.class_loader);
 }
 
@@ -139,7 +146,10 @@ static jobject VMStack_getClosestUserClassLoader(JNIEnv* env, jclass) {
 static jclass VMStack_getStackClass2(JNIEnv* env, jclass) {
   ScopedFastNativeObjectAccess soa(env);
   NthCallerVisitor visitor(soa.Self(), 3);
-  visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
+    visitor.WalkStack();
+  }
   if (UNLIKELY(visitor.caller == nullptr)) {
     // The caller is an attached native thread.
     return nullptr;

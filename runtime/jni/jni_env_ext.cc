@@ -32,6 +32,7 @@
 #include "mirror/object-inl.h"
 #include "nth_caller_visitor.h"
 #include "scoped_thread_state_change.h"
+#include "stack.h"
 #include "thread-current-inl.h"
 #include "thread_list.h"
 
@@ -173,6 +174,7 @@ Offset JNIEnvExt::SelfOffset(size_t pointer_size) {
 // Use some defining part of the caller's frame as the identifying mark for the JNI segment.
 static uintptr_t GetJavaCallFrame(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {
   NthCallerVisitor zeroth_caller(self, 0, false);
+  ScopedSharedStackWalkLock ssswl(self, zeroth_caller);
   zeroth_caller.WalkStack();
   if (zeroth_caller.caller == nullptr) {
     // No Java code, must be from pure native code.

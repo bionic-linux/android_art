@@ -90,7 +90,10 @@ jobject GetProxyReferenceArgument(size_t arg_pos, size_t proxy_method_frame_dept
   std::unique_ptr<Context> context(Context::Create());
 
   GetProxyQuickFrameVisitor visitor(self, context.get(), proxy_method_frame_depth);
-  visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
+    visitor.WalkStack();
+  }
   ArtMethod** quick_frame = visitor.GetQuickFrame();
   CHECK(quick_frame != nullptr);
 

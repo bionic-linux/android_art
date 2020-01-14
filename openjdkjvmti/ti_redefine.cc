@@ -295,6 +295,7 @@ class ObsoleteMethodStackVisitor : public art::StackVisitor {
                                        allocator,
                                        obsoleted_methods,
                                        obsolete_maps);
+    art::ScopedExclusiveStackWalkLock seswl(art::Thread::Current(), visitor);
     visitor.WalkStack();
   }
 

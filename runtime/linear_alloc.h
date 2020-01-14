@@ -18,6 +18,7 @@
 #define ART_RUNTIME_LINEAR_ALLOC_H_
 
 #include "base/arena_allocator.h"
+#include "base/locks.h"
 #include "base/mutex.h"
 
 namespace art {
@@ -54,7 +55,7 @@ class LinearAlloc {
   bool ContainsUnsafe(void* ptr) const NO_THREAD_SAFETY_ANALYSIS;
 
  private:
-  mutable Mutex lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
+  mutable Mutex lock_ BOTTOM_MUTEX_ACQUIRED_AFTER;
   ArenaAllocator allocator_ GUARDED_BY(lock_);
 
   DISALLOW_IMPLICIT_CONSTRUCTORS(LinearAlloc);

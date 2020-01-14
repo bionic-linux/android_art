@@ -51,6 +51,7 @@
 #include "reflective_handle_scope-inl.h"
 #include "scoped_fast_native_object_access-inl.h"
 #include "scoped_thread_state_change-inl.h"
+#include "stack.h"
 #include "well_known_classes.h"
 
 namespace art {
@@ -103,7 +104,10 @@ static hiddenapi::AccessContext GetReflectionCaller(Thread* self)
   };
 
   FirstExternalCallerVisitor visitor(self);
-  visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(self, visitor);
+    visitor.WalkStack();
+  }
 
   // Construct AccessContext from the calling class found on the stack.
   // If the calling class cannot be determined, e.g. unattached threads,

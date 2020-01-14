@@ -131,6 +131,7 @@ extern "C" JNIEXPORT void JNICALL Java_PhiLiveness_regsNativeCall(
   ScopedObjectAccess soa(Thread::Current());
   std::unique_ptr<Context> context(Context::Create());
   TestVisitor visitor(soa.Self(), context.get());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
   visitor.WalkStack();
   CHECK(visitor.did_check_);
 }
@@ -144,6 +145,7 @@ extern "C" JNIEXPORT void JNICALL Java_PhiLiveness_regsNativeCallWithParameters(
   int32_t cast = bit_cast<int32_t, float>(float_value);
   CHECK_EQ(cast, 0);
   TestVisitor visitor(soa.Self(), context.get());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
   visitor.WalkStack();
   CHECK(visitor.did_check_);
 }

@@ -36,6 +36,7 @@
 #include "oat_quick_method_header.h"
 #include "reflection.h"
 #include "scoped_thread_state_change-inl.h"
+#include "stack.h"
 #include "well_known_classes.h"
 
 namespace art {
@@ -218,6 +219,7 @@ static inline ArtMethod* DoGetCalleeSaveMethodCaller(ArtMethod* outer_method,
       // Note that do_caller_check is optional, as this method can be called by
       // stubs, and tests without a proper call stack.
       NthCallerVisitor visitor(Thread::Current(), 1, true);
+      ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
       visitor.WalkStack();
       CHECK_EQ(caller, visitor.caller);
     }
@@ -225,6 +227,7 @@ static inline ArtMethod* DoGetCalleeSaveMethodCaller(ArtMethod* outer_method,
     // We're instrumenting, just use the StackVisitor which knows how to
     // handle instrumented frames.
     NthCallerVisitor visitor(Thread::Current(), 1, true);
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
     visitor.WalkStack();
     caller = visitor.caller;
   }
