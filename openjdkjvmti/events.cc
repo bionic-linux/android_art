@@ -988,6 +988,7 @@ class JvmtiMethodTraceListener final : public art::instrumentation::Instrumentat
                             context.get(),
                             /*out*/ out_method,
                             /*out*/ dex_pc);
+    art::ScopedSharedStackWalkLock ssswl(self, clf);
     clf.WalkStack(/* include_transitions= */ false);
   }
 

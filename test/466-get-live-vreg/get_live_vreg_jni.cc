@@ -81,6 +81,7 @@ extern "C" JNIEXPORT void JNICALL Java_Main_doStaticNativeCallLiveVreg(JNIEnv*, 
   ScopedObjectAccess soa(Thread::Current());
   std::unique_ptr<Context> context(Context::Create());
   TestVisitor visitor(soa.Self(), context.get());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
   visitor.WalkStack();
   CHECK(visitor.found_method_);
 }

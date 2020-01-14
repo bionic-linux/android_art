@@ -69,6 +69,7 @@ enum LockLevel : uint8_t {
   kThreadWaitLock,
   kCHALock,
   kJitCodeCacheLock,
+  kThreadStackWalkLock,
   kRosAllocGlobalLock,
   kRosAllocBracketLock,
   kRosAllocBulkFreeLock,

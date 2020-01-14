@@ -565,7 +565,10 @@ class CommonLocalVariableClosure : public art::Closure {
       art::ScopedAssertNoThreadSuspension sants("CommonLocalVariableClosure::Run");
       std::unique_ptr<art::Context> context(art::Context::Create());
       FindFrameAtDepthVisitor visitor(self, context.get(), depth_);
-      visitor.WalkStack();
+      {
+        art::ScopedExclusiveStackWalkLock ssswl(art::Thread::Current(), visitor);
+        visitor.WalkStack();
+      }
       if (!visitor.FoundFrame()) {
         // Must have been a bad depth.
         result_ = ERR(NO_MORE_FRAMES);
@@ -1152,6 +1155,7 @@ class GetLocalInstanceClosure : public art::Closure {
     art::Locks::mutator_lock_->AssertSharedHeld(art::Thread::Current());
     std::unique_ptr<art::Context> context(art::Context::Create());
     FindFrameAtDepthVisitor visitor(self, context.get(), depth_);
+    art::ScopedSharedStackWalkLock ssswl(self, visitor);
     visitor.WalkStack();
     if (!visitor.FoundFrame()) {
       // Must have been a bad depth.

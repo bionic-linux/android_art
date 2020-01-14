@@ -124,6 +124,7 @@ extern "C" JNIEXPORT jint JNICALL Java_Main_doNativeCall(JNIEnv*, jobject value)
   ScopedObjectAccess soa(Thread::Current());
   std::unique_ptr<Context> context(Context::Create());
   TestVisitor visitor(soa.Self(), context.get(), soa.Decode<mirror::Object>(value).Ptr());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), visitor);
   visitor.WalkStack();
   return visitor.found_method_index_;
 }

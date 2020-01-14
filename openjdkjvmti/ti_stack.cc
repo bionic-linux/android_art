@@ -170,6 +170,7 @@ struct GetStackTraceVectorClosure : public art::Closure {
       frames.push_back(info);
     };
     auto visitor = MakeStackTraceVisitor(self, start_input, stop_input, frames_fn);
+    art::ScopedSharedStackWalkLock ssswl(art::Thread::Current(), visitor);
     visitor.WalkStack(/* include_transitions= */ false);
 
     start_result = visitor.start;
@@ -238,6 +239,7 @@ struct GetStackTraceDirectClosure : public art::Closure {
       ++index;
     };
     auto visitor = MakeStackTraceVisitor(self, start_input, stop_input, frames_fn);
+    art::ScopedSharedStackWalkLock ssswl(art::Thread::Current(), visitor);
     visitor.WalkStack(/* include_transitions= */ false);
   }
 
@@ -352,6 +354,7 @@ struct GetAllStackTracesVectorClosure : public art::Closure {
       thread_frames->push_back(info);
     };
     auto visitor = MakeStackTraceVisitor(thread, 0u, stop_input, frames_fn);
+    art::ScopedSharedStackWalkLock ssswl(art::Thread::Current(), visitor);
     visitor.WalkStack(/* include_transitions= */ false);
   }
 
@@ -905,7 +908,10 @@ struct MonitorInfoClosure : public art::Closure {
     art::Locks::mutator_lock_->AssertSharedHeld(art::Thread::Current());
     // Find the monitors on the stack.
     MonitorVisitor visitor(target);
-    visitor.WalkStack(/* include_transitions= */ false);
+    {
+      art::ScopedSharedStackWalkLock ssswl(art::Thread::Current(), visitor);
+      visitor.WalkStack(/* include_transitions= */ false);
+    }
     // Find any other monitors, including ones acquired in native code.
     art::RootInfo root_info(art::kRootVMInternal);
     target->GetJniEnv()->VisitMonitorRoots(&visitor, root_info);
@@ -1065,7 +1071,10 @@ jvmtiError StackUtil::NotifyFramePop(jvmtiEnv* env, jthread thread, jint depth) 
   // THREAD_NOT_SUSPENDED though. Find the requested stack frame.
   std::unique_ptr<art::Context> context(art::Context::Create());
   FindFrameAtDepthVisitor visitor(target, context.get(), depth);
-  visitor.WalkStack();
+  {
+    art::ScopedSharedStackWalkLock ssswl(art::Thread::Current(), visitor);
+    visitor.WalkStack();
+  }
   if (!visitor.FoundFrame()) {
     art::Locks::thread_list_lock_->ExclusiveUnlock(self);
     return ERR(NO_MORE_FRAMES);
@@ -1160,7 +1169,10 @@ class NonStandardExitFrames {
     std::unique_ptr<art::Context> context(art::Context::Create());
     FindFrameAtDepthVisitor final_frame(target_, context.get(), 0);
     FindFrameAtDepthVisitor penultimate_frame(target_, context.get(), 1);
+    art::WriterMutexLock mu(art::Thread::Current(), *target_->GetStackWalkMutex());
+    final_frame.GetStackWalkMutex()->AssertExclusiveHeld(art::Thread::Current());
     final_frame.WalkStack();
+    penultimate_frame.GetStackWalkMutex()->AssertExclusiveHeld(art::Thread::Current());
     penultimate_frame.WalkStack();
 
     if (!final_frame.FoundFrame() || !penultimate_frame.FoundFrame()) {

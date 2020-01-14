@@ -715,6 +715,7 @@ static void HandleDeoptimization(JValue* result,
       }
     };
     DummyStackVisitor dsv(self);
+    ScopedSharedStackWalkLock ssswl(self, dsv);
     dsv.WalkStack();
   }
 

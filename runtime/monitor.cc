@@ -187,6 +187,7 @@ void Monitor::SetLockingMethod(Thread* owner) {
       uint32_t dex_pc_;
     };
     NextMethodVisitor nmv(owner_.load(std::memory_order_relaxed));
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), nmv);
     nmv.WalkStack();
     lock_owner_method = nmv.method_;
     lock_owner_dex_pc = nmv.dex_pc_;

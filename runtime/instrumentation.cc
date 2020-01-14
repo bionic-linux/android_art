@@ -27,6 +27,7 @@
 #include "art_method-inl.h"
 #include "base/atomic.h"
 #include "base/callee_save_type.h"
+#include "base/mutex.h"
 #include "class_linker.h"
 #include "debugger.h"
 #include "dex/dex_file-inl.h"
@@ -49,13 +50,14 @@
 #include "nth_caller_visitor.h"
 #include "oat_quick_method_header.h"
 #include "runtime-inl.h"
+#include "stack.h"
 #include "thread.h"
 #include "thread_list.h"
 
 namespace art {
 namespace instrumentation {
 
-constexpr bool kVerboseInstrumentation = false;
+constexpr bool kVerboseInstrumentation = true;
 
 void InstrumentationListener::MethodExited(
     Thread* thread,
@@ -428,7 +430,10 @@ void InstrumentationInstallStack(Thread* thread, void* arg)
   uintptr_t instrumentation_exit_pc = reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc());
   InstallStackVisitor visitor(
       thread, context.get(), instrumentation_exit_pc, instrumentation->current_force_deopt_id_);
-  visitor.WalkStack(true);
+  {
+    ScopedExclusiveStackWalkLock seswl(Thread::Current(), visitor);
+    visitor.WalkStack(true);
+  }
   CHECK_EQ(visitor.dex_pcs_.size(), thread->GetInstrumentationStack()->size());
 
   if (instrumentation->ShouldNotifyMethodEnterExitEvents()) {
@@ -536,12 +541,14 @@ static void InstrumentationRestoreStack(Thread* thread, void* arg)
     thread->GetThreadName(thread_name);
     LOG(INFO) << "Removing exit stubs in " << thread_name;
   }
+  WriterMutexLock mu(Thread::Current(), *thread->GetStackWalkMutex());
   std::deque<instrumentation::InstrumentationStackFrame>* stack = thread->GetInstrumentationStack();
   if (stack->size() > 0) {
     Instrumentation* instrumentation = reinterpret_cast<Instrumentation*>(arg);
     uintptr_t instrumentation_exit_pc =
         reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc());
     RestoreStackVisitor visitor(thread, instrumentation_exit_pc, instrumentation);
+    visitor.GetStackWalkMutex()->AssertSharedHeld(Thread::Current());
     visitor.WalkStack(true);
     CHECK_EQ(visitor.frames_removed_, stack->size());
     while (stack->size() > 0) {
@@ -1592,7 +1599,10 @@ TwoWordReturn Instrumentation::PopInstrumentationStackFrame(Thread* self,
   // Deoptimize if the caller needs to continue execution in the interpreter. Do nothing if we get
   // back to an upcall.
   NthCallerVisitor visitor(self, 1, true);
-  visitor.WalkStack(true);
+  {
+    ScopedSharedStackWalkLock ssswl(self, visitor);
+    visitor.WalkStack(true);
+  }
   bool deoptimize = (visitor.caller != nullptr) &&
                     (interpreter_stubs_installed_ || IsDeoptimized(visitor.caller) ||
                     self->IsForceInterpreter() ||

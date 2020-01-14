@@ -109,6 +109,7 @@ static void DoCollectNonDebuggableCallback(Thread* thread, void* data)
     ClassSet* class_set_;
   };
   NonDebuggableStacksVisitor visitor(thread, reinterpret_cast<ClassSet*>(data));
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
   visitor.WalkStack();
 }
 

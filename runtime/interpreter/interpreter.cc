@@ -714,6 +714,7 @@ bool PrevFrameWillRetry(Thread* self, const ShadowFrame& frame) {
   ShadowFrame* prev_frame = frame.GetLink();
   if (prev_frame == nullptr) {
     NthCallerVisitor vis(self, 1, false);
+    ScopedSharedStackWalkLock ssswl(self, vis);
     vis.WalkStack();
     prev_frame = vis.GetCurrentShadowFrame();
     if (prev_frame == nullptr) {

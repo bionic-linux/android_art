@@ -258,6 +258,7 @@ class CHACheckpoint final : public Closure {
     Thread* self = Thread::Current();
     ScopedObjectAccess soa(self);
     CHAStackVisitor visitor(thread, nullptr, method_headers_);
+    ScopedSharedStackWalkLock ssswl(self, visitor);
     visitor.WalkStack();
     barrier_.Pass(self);
   }

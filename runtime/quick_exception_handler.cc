@@ -214,7 +214,10 @@ void QuickExceptionHandler::FindCatch(ObjPtr<mirror::Throwable> exception) {
                                    &exception_ref,
                                    this,
                                    /*skip_frames=*/already_popped);
-    visitor.WalkStack(true);
+    {
+      ScopedSharedStackWalkLock ssswl(self_, visitor);
+      visitor.WalkStack(true);
+    }
     uint32_t new_pop_count = handler_frame_depth_;
     DCHECK_GE(new_pop_count, already_popped);
     already_popped = new_pop_count;
@@ -619,7 +622,10 @@ void QuickExceptionHandler::DeoptimizeStack() {
   }
 
   DeoptimizeStackVisitor visitor(self_, context_, this, false);
-  visitor.WalkStack(true);
+  {
+    ScopedExclusiveStackWalkLock seswl(self_, visitor);
+    visitor.WalkStack(true);
+  }
   PrepareForLongJumpToInvokeStubOrInterpreterBridge();
 }
 
@@ -627,7 +633,10 @@ void QuickExceptionHandler::DeoptimizeSingleFrame(DeoptimizationKind kind) {
   DCHECK(is_deoptimization_);
 
   DeoptimizeStackVisitor visitor(self_, context_, this, true);
-  visitor.WalkStack(true);
+  {
+    ScopedExclusiveStackWalkLock seswl(self_, visitor);
+    visitor.WalkStack(true);
+  }
 
   // Compiled code made an explicit deoptimization.
   ArtMethod* deopt_method = visitor.GetSingleFrameDeoptMethod();

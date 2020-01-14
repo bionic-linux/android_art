@@ -46,6 +46,7 @@ extern "C" JNIEXPORT void JNICALL Java_Main_disableStackFrameAsserts(JNIEnv* env
 static jboolean IsInterpreted(JNIEnv* env, jclass, size_t level) {
   ScopedObjectAccess soa(env);
   NthCallerVisitor caller(soa.Self(), level, false);
+  ScopedSharedStackWalkLock ssswl(soa.Self(), caller);
   caller.WalkStack();
   CHECK(caller.caller != nullptr);
   bool is_shadow_frame = (caller.GetCurrentShadowFrame() != nullptr);
@@ -137,6 +138,7 @@ extern "C" JNIEXPORT void JNICALL Java_Main_assertIsInterpreted(JNIEnv* env, jcl
 static jboolean IsManaged(JNIEnv* env, jclass, size_t level) {
   ScopedObjectAccess soa(env);
   NthCallerVisitor caller(soa.Self(), level, false);
+  ScopedSharedStackWalkLock ssswl(soa.Self(), caller);
   caller.WalkStack();
   CHECK(caller.caller != nullptr);
   return caller.GetCurrentShadowFrame() != nullptr ? JNI_FALSE : JNI_TRUE;

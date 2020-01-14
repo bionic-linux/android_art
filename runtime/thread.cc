@@ -2163,6 +2163,7 @@ void Thread::DumpJavaStack(std::ostream& os, bool check_suspended, bool dump_loc
   std::unique_ptr<Context> context(Context::Create());
   StackDumpVisitor dumper(os, const_cast<Thread*>(this), context.get(),
                           !tls32_.throwing_OutOfMemoryError, check_suspended, dump_locks);
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), dumper);
   dumper.WalkStack();
 }
 
@@ -2297,6 +2298,8 @@ Thread::Thread(bool daemon)
     : tls32_(daemon),
       wait_monitor_(nullptr),
       is_runtime_thread_(false) {
+  stack_walk_mutex_ = new ReaderWriterMutex(
+      "a thread stack-walk mutex", LockLevel::kThreadStackWalkLock, /*recursive=*/true);
   wait_mutex_ = new Mutex("a thread wait mutex", LockLevel::kThreadWaitLock);
   wait_cond_ = new ConditionVariable("a thread wait condition variable", *wait_mutex_);
   tlsPtr_.instrumentation_stack = new std::deque<instrumentation::InstrumentationStackFrame>;
@@ -2489,6 +2492,7 @@ Thread::~Thread() {
 
   delete wait_cond_;
   delete wait_mutex_;
+  delete stack_walk_mutex_;
 
   if (tlsPtr_.long_jump_context != nullptr) {
     delete tlsPtr_.long_jump_context;
@@ -2827,7 +2831,10 @@ jobject Thread::CreateInternalStackTrace(const ScopedObjectAccessAlreadyRunnable
   FetchStackTraceVisitor count_visitor(const_cast<Thread*>(this),
                                        &saved_frames[0],
                                        kMaxSavedFrames);
-  count_visitor.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), count_visitor);
+    count_visitor.WalkStack();
+  }
   const uint32_t depth = count_visitor.GetDepth();
   const uint32_t skip_depth = count_visitor.GetSkipDepth();
 
@@ -2845,6 +2852,7 @@ jobject Thread::CreateInternalStackTrace(const ScopedObjectAccessAlreadyRunnable
       build_trace_visitor.AddFrame(saved_frames[i].first, saved_frames[i].second);
     }
   } else {
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), build_trace_visitor);
     build_trace_visitor.WalkStack();
   }
 
@@ -2868,6 +2876,7 @@ template jobject Thread::CreateInternalStackTrace<true>(
 bool Thread::IsExceptionThrownByCurrentMethod(ObjPtr<mirror::Throwable> exception) const {
   // Only count the depth since we do not pass a stack frame array as an argument.
   FetchStackTraceVisitor count_visitor(const_cast<Thread*>(this));
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), count_visitor);
   count_visitor.WalkStack();
   return count_visitor.GetDepth() == static_cast<uint32_t>(exception->GetStackDepth());
 }
@@ -3072,7 +3081,10 @@ jobjectArray Thread::CreateAnnotatedStackTrace(const ScopedObjectAccessAlreadyRu
 
   std::unique_ptr<Context> context(Context::Create());
   CollectFramesAndLocksStackVisitor dumper(soa, const_cast<Thread*>(this), context.get());
-  dumper.WalkStack();
+  {
+    ScopedSharedStackWalkLock ssswl(soa.Self(), dumper);
+    dumper.WalkStack();
+  }
 
   // There should not be a pending exception. Otherwise, return with it pending.
   if (IsExceptionPending()) {
@@ -3579,7 +3591,12 @@ void Thread::QuickDeliverException() {
   bool force_deopt = false;
   if (Runtime::Current()->AreNonStandardExitsEnabled() || kIsDebugBuild) {
     NthCallerVisitor visitor(this, 0, false);
-    visitor.WalkStack();
+    // TODO It might be good to hold this lock for the entire interval but it shouldn't be needed
+    // and it confuses the annotalysis.
+    {
+      ScopedSharedStackWalkLock ssswl(this, visitor);
+      visitor.WalkStack();
+    }
     cf = visitor.GetCurrentShadowFrame();
     if (cf == nullptr) {
       cf = FindDebuggerShadowFrame(visitor.GetFrameId());
@@ -3589,6 +3606,7 @@ void Thread::QuickDeliverException() {
     if (kIsDebugBuild && force_frame_pop) {
       DCHECK(Runtime::Current()->AreNonStandardExitsEnabled());
       NthCallerVisitor penultimate_visitor(this, 1, false);
+      ScopedSharedStackWalkLock ssswl(this, penultimate_visitor);
       penultimate_visitor.WalkStack();
       ShadowFrame* penultimate_frame = penultimate_visitor.GetCurrentShadowFrame();
       if (penultimate_frame == nullptr) {
@@ -3602,7 +3620,10 @@ void Thread::QuickDeliverException() {
   }
   if (Dbg::IsForcedInterpreterNeededForException(this) || force_deopt || IsForceInterpreter()) {
     NthCallerVisitor visitor(this, 0, false);
-    visitor.WalkStack();
+    {
+      ScopedSharedStackWalkLock ssswl(this, visitor);
+      visitor.WalkStack();
+    }
     if (Runtime::Current()->IsAsyncDeoptimizeable(visitor.caller_pc)) {
       // method_type shouldn't matter due to exception handling.
       const DeoptimizationMethodType method_type = DeoptimizationMethodType::kDefault;
@@ -4069,8 +4090,11 @@ void Thread::VisitRoots(RootVisitor* visitor) {
   // Visit roots on this thread's stack
   RuntimeContextType context;
   RootCallbackVisitor visitor_to_callback(visitor, thread_id);
-  ReferenceMapVisitor<RootCallbackVisitor, kPrecise> mapper(this, &context, visitor_to_callback);
-  mapper.template WalkStack<StackVisitor::CountTransitions::kNo>(false);
+  {
+    ReferenceMapVisitor<RootCallbackVisitor, kPrecise> mapper(this, &context, visitor_to_callback);
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), mapper);
+    mapper.template WalkStack<StackVisitor::CountTransitions::kNo>(false);
+  }
   for (instrumentation::InstrumentationStackFrame& frame : *GetInstrumentationStack()) {
     visitor->VisitRootIfNonNull(&frame.this_object_, RootInfo(kRootVMInternal, thread_id));
   }
@@ -4133,6 +4157,7 @@ void Thread::VerifyStackImpl() {
     std::unique_ptr<Context> context(Context::Create());
     RootCallbackVisitor visitor_to_callback(&visitor, GetThreadId());
     ReferenceMapVisitor<RootCallbackVisitor> mapper(this, context.get(), visitor_to_callback);
+    ScopedSharedStackWalkLock ssswl(Thread::Current(), mapper);
     mapper.WalkStack();
   }
 }

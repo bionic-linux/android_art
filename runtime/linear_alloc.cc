@@ -16,12 +16,13 @@
 
 #include "linear_alloc.h"
 
+#include "base/locks.h"
 #include "thread-current-inl.h"
 
 namespace art {
 
-LinearAlloc::LinearAlloc(ArenaPool* pool) : lock_("linear alloc"), allocator_(pool) {
-}
+LinearAlloc::LinearAlloc(ArenaPool* pool)
+    : lock_("linear alloc", LockLevel::kGenericBottomLock), allocator_(pool) {}
 
 void* LinearAlloc::Realloc(Thread* self, void* ptr, size_t old_size, size_t new_size) {
   MutexLock mu(self, lock_);

@@ -316,6 +316,7 @@ class Thread {
   void SetFlipFunction(Closure* function);
   Closure* GetFlipFunction();
 
+
   gc::accounting::AtomicStack<mirror::Object>* GetThreadLocalMarkStack() {
     CHECK(kUseReadBarrier);
     return tlsPtr_.thread_local_mark_stack;
@@ -607,6 +608,10 @@ class Thread {
   void NotifyLocked(Thread* self) REQUIRES(wait_mutex_);
 
  public:
+  ReaderWriterMutex* GetStackWalkMutex() const LOCK_RETURNED(stack_walk_mutex_) {
+    return stack_walk_mutex_;
+  }
+
   Mutex* GetWaitMutex() const LOCK_RETURNED(wait_mutex_) {
     return wait_mutex_;
   }
@@ -1872,6 +1877,9 @@ class Thread {
 
   // Guards the 'wait_monitor_' members.
   Mutex* wait_mutex_ DEFAULT_MUTEX_ACQUIRED_AFTER;
+
+  // Used to prevent concurrent modification/iteration of the threads stack.
+  ReaderWriterMutex* stack_walk_mutex_ ACQUIRED_AFTER(Locks::jit_lock_);
 
   // Condition variable waited upon during a wait.
   ConditionVariable* wait_cond_ GUARDED_BY(wait_mutex_);

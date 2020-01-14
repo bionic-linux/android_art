@@ -23,6 +23,7 @@
 #include "art_method-inl.h"
 #include "base/callee_save_type.h"
 #include "base/enums.h"
+#include "base/globals.h"
 #include "base/hex_dump.h"
 #include "dex/dex_file_types.h"
 #include "entrypoints/entrypoint_utils-inl.h"
@@ -577,6 +578,7 @@ size_t StackVisitor::ComputeNumFrames(Thread* thread, StackWalkKind walk_kind) {
     size_t frames;
   };
   NumFramesVisitor visitor(thread, walk_kind);
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
   visitor.WalkStack(true);
   return visitor.frames;
 }
@@ -617,6 +619,7 @@ bool StackVisitor::GetNextMethodAndDexPc(ArtMethod** next_method, uint32_t* next
     uint32_t next_dex_pc_;
   };
   HasMoreFramesVisitor visitor(thread_, walk_kind_, GetNumFrames(), GetFrameHeight());
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
   visitor.WalkStack(true);
   *next_method = visitor.next_method_;
   *next_dex_pc = visitor.next_dex_pc_;
@@ -634,6 +637,7 @@ void StackVisitor::DescribeStack(Thread* thread) {
     }
   };
   DescribeStackVisitor visitor(thread);
+  ScopedSharedStackWalkLock ssswl(Thread::Current(), visitor);
   visitor.WalkStack(true);
 }
 
@@ -841,6 +845,9 @@ QuickMethodFrameInfo StackVisitor::GetCurrentQuickFrameInfo() const {
 
 template <StackVisitor::CountTransitions kCount>
 void StackVisitor::WalkStack(bool include_transitions) {
+  if (kIsDebugBuild) {
+    thread_->GetStackWalkMutex()->AssertSharedHeld(Thread::Current());
+  }
   if (check_suspended_) {
     DCHECK(thread_ == Thread::Current() || thread_->IsSuspended());
   }

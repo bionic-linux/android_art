@@ -58,6 +58,7 @@
 #include "nativehelper/scoped_local_ref.h"
 #include "nth_caller_visitor.h"
 #include "reflection.h"
+#include "stack.h"
 #include "thread-inl.h"
 #include "transaction.h"
 #include "well_known_classes.h"
@@ -1737,6 +1738,7 @@ void UnstartedRuntime::UnstartedJNIVMStackGetStackClass2(
     Thread* self, ArtMethod* method ATTRIBUTE_UNUSED, mirror::Object* receiver ATTRIBUTE_UNUSED,
     uint32_t* args ATTRIBUTE_UNUSED, JValue* result) {
   NthCallerVisitor visitor(self, 3);
+  ScopedSharedStackWalkLock ssswl(self, visitor);
   visitor.WalkStack();
   if (visitor.caller != nullptr) {
     result->SetL(visitor.caller->GetDeclaringClass());

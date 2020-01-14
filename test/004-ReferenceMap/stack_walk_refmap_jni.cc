@@ -203,6 +203,7 @@ extern "C" JNIEXPORT jint JNICALL Java_Main_refmap(JNIEnv*, jobject, jint count)
   // Visitor
   ScopedObjectAccess soa(Thread::Current());
   ReferenceMap2Visitor mapper(soa.Self());
+  ScopedSharedStackWalkLock ssswl(soa.Self(), mapper);
   mapper.WalkStack();
 
   return count + 1;
