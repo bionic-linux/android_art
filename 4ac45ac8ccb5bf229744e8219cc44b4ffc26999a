@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c79539_faecec23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-01-15T14:53:45Z",
+      "side": 1,
+      "message": "Is there an existing test that covers the new code here?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "4ac45ac8ccb5bf229744e8219cc44b4ffc26999a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a6b6f8_8b1d7ab5",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-01-15T14:53:45Z",
+      "side": 1,
+      "message": "Explain map and index by Thread*.",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 44
+      },
+      "revId": "4ac45ac8ccb5bf229744e8219cc44b4ffc26999a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
