@@ -444,6 +444,14 @@ bool OatFileManager::ShouldLoadAppImage(CheckCollisionResult check_collision_res
   return false;
 }
 
+static bool IsAppImageExist(const OatFile* oat_file) {
+  std::string art_file = ReplaceFileExtension(oat_file->GetLocation(), "art");
+  if (art_file.empty() || !OS::FileExists(art_file.c_str())) {
+    return false;
+  }
+  return true;
+}
+
 std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
     const char* dex_location,
     jobject class_loader,
@@ -543,7 +551,8 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
       // We need to throw away the image space if we are debuggable but the oat-file source of the
       // image is not otherwise we might get classes with inlined methods or other such things.
       std::unique_ptr<gc::space::ImageSpace> image_space;
-      if (ShouldLoadAppImage(check_collision_result,
+      bool app_image_exist = IsAppImageExist(source_oat_file);
+      if (app_image_exist && ShouldLoadAppImage(check_collision_result,
                              source_oat_file,
                              context.get(),
                              &error_msg)) {
