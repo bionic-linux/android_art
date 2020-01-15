@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cf71a88_d2db0107",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-01-15T15:04:03Z",
+      "side": 1,
+      "message": "Why not FAST_NATIVE_METHOD? (Currently getNativeTid uses ScopedFastNativeObjectAccess, which seems mis-matched).",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "0911d2786a99e811feec572992f436c7ba725fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
