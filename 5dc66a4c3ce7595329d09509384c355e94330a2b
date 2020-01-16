@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eff29076_1d9a43de",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-16T19:52:39Z",
+      "side": 1,
+      "message": "Just checking, there\u0027ll be a separate one for the host SDK? How do the module_exports below relate to the sdk modules?",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "5dc66a4c3ce7595329d09509384c355e94330a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
