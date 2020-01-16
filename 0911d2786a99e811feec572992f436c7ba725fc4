@@ -22,6 +22,30 @@
       "revId": "0911d2786a99e811feec572992f436c7ba725fc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "265c78d7_07507c29",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1324603
+      },
+      "writtenOn": "2020-01-16T09:18:33Z",
+      "side": 1,
+      "message": "You are right. Done, thanks.",
+      "parentUuid": "5cf71a88_d2db0107",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "0911d2786a99e811feec572992f436c7ba725fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
