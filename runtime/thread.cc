@@ -627,8 +627,8 @@ void* Thread::CreateCallback(void* arg) {
     self->DeleteJPeer(self->GetJniEnv());
     self->SetThreadName(self->GetThreadName()->ToModifiedUtf8().c_str());
 
-    ArtField* priorityField = jni::DecodeArtField(WellKnownClasses::java_lang_Thread_priority);
-    self->SetNativePriority(priorityField->GetInt(self->tlsPtr_.opeer));
+    // ArtField* priorityField = jni::DecodeArtField(WellKnownClasses::java_lang_Thread_priority);
+    // self->SetNativePriority(priorityField->GetInt(self->tlsPtr_.opeer));
 
     runtime->GetRuntimeCallbacks()->ThreadStart(self);
 
