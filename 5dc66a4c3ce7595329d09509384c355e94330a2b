@@ -46,6 +46,30 @@
       "revId": "5dc66a4c3ce7595329d09509384c355e94330a2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "940759d1_04568099",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-17T16:42:12Z",
+      "side": 1,
+      "message": "Aha! I didn\u0027t understand that from go/Android.bp. May I suggest clarifying this a bit in the doc comments?",
+      "parentUuid": "ff14d172_ab117e79",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "5dc66a4c3ce7595329d09509384c355e94330a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
