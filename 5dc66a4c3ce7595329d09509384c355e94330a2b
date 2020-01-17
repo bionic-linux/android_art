@@ -22,6 +22,30 @@
       "revId": "5dc66a4c3ce7595329d09509384c355e94330a2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff14d172_ab117e79",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-17T09:21:52Z",
+      "side": 1,
+      "message": "There isn\u0027t a host sdk there is a host module_exports below. A module_exports is (at the moment) a rebadged sdk that allows a few more module types to be used, e.g. java_tests.",
+      "parentUuid": "eff29076_1d9a43de",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "5dc66a4c3ce7595329d09509384c355e94330a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
