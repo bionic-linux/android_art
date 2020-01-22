@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Aurimas Liutikas <aurimas@google.com>
+Code-Review+2: Mathieu Chartier <mathieuc@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Hans Boehm <hboehm@google.com>
+Submitted-at: Wed, 22 Jan 2020 04:04:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1214681
+Project: platform/art
+Branch: refs/heads/master
