@@ -22,6 +22,30 @@
       "revId": "0eba844b82d21af0caad0cfd3c5ee1aad8875373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330bc03f_61e7d71d",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-01-23T15:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f572dbc_a4226b93",
+      "range": {
+        "startLine": 793,
+        "startChar": 63,
+        "endLine": 793,
+        "endChar": 94
+      },
+      "revId": "0eba844b82d21af0caad0cfd3c5ee1aad8875373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
