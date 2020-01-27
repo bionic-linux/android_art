@@ -1,0 +1,9 @@
+Code-Review+2: Ryan Savitski <rsavitski@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Florian Mayer <fmayer@google.com>
+Submitted-at: Mon, 27 Jan 2020 17:00:22 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1217313
+Project: platform/art
+Branch: refs/heads/master
