@@ -36,7 +36,7 @@ namespace android {
 namespace {
 
 constexpr const char* kDefaultNamespaceName = "default";
-constexpr const char* kPlatformNamespaceName = "platform";
+constexpr const char* kPlatformNamespaceName = "system";
 
 std::string GetLinkerError(bool is_bridged) {
   const char* msg = is_bridged ? NativeBridgeGetError() : dlerror();
@@ -65,7 +65,7 @@ Result<NativeLoaderNamespace> NativeLoaderNamespace::GetExportedNamespace(const 
 }
 
 // The platform namespace is called "default" for binaries in /system and
-// "platform" for those in the Runtime APEX. Try "platform" first since
+// "system" for those in the Runtime APEX. Try "system" first since
 // "default" always exists.
 Result<NativeLoaderNamespace> NativeLoaderNamespace::GetPlatformNamespace(bool is_bridged) {
   auto ns = GetExportedNamespace(kPlatformNamespaceName, is_bridged);
