@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c94d1214_199c4bf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-01T22:45:42Z",
+      "side": 1,
+      "message": "Thanks, this inconsistency has bothered me too. However, I think we ought to be consistent throughout to avoid confusion, so I\u0027d appreciate if you could cover the other \"platform namespace\" mentions. I e.g. see some in library_namespaces.cpp, mostly in comments.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "eda33738efd9ba0ee9bf4a6428cdb5ef4e110bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee83f98e_5deeab59",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-01T22:45:42Z",
+      "side": 1,
+      "message": "Please rename identifiers too.",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "eda33738efd9ba0ee9bf4a6428cdb5ef4e110bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
