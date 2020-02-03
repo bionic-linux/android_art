@@ -198,6 +198,10 @@ class Thread {
   // Process pending thread suspension request and handle if pending.
   void CheckSuspend() REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // In a debug build, check that we only hold acceptable mutexes for weak ref accesss.
+  // The list of acceptable mutexes includes cond_var_mutex.
+  void CheckWeakRefMutexes(BaseMutex* cond_var_mutex);
+
   // Process a pending empty checkpoint if pending.
   void CheckEmptyCheckpointFromWeakRefAccess(BaseMutex* cond_var_mutex);
   void CheckEmptyCheckpointFromMutex();

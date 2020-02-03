@@ -846,10 +846,11 @@ bool JavaVMExt::IsWeakGlobalCleared(Thread* self, IndirectRef ref) {
   DCHECK_EQ(IndirectReferenceTable::GetIndirectRefKind(ref), kWeakGlobal);
   MutexLock mu(self, *Locks::jni_weak_globals_lock_);
   while (UNLIKELY(!MayAccessWeakGlobals(self))) {
-    // Check and run the empty checkpoint before blocking so the empty checkpoint will work in the
-    // presence of threads blocking for weak ref access.
-    self->CheckEmptyCheckpointFromWeakRefAccess(Locks::jni_weak_globals_lock_);
-    weak_globals_add_condition_.WaitHoldingLocks(self);
+    self->CheckWeakRefMutexes(Locks::jni_weak_globals_lock_);
+    {
+      ScopedThreadSuspension sts(self, kNative);
+      weak_globals_add_condition_.WaitHoldingLocks(self);
+    }
   }
   // When just checking a weak ref has been cleared, avoid triggering the read barrier in decode
   // (DecodeWeakGlobal) so that we won't accidentally mark the object alive. Since the cleared

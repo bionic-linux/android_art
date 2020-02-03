@@ -64,25 +64,28 @@ inline void Thread::CheckSuspend() {
   }
 }
 
+inline void Thread::CheckWeakRefMutexes(BaseMutex* cond_var_mutex) {
+  DCHECK_EQ(Thread::Current(), this);
+  if (kIsDebugBuild) {
+    for (int i = kLockLevelCount - 1; i >= 0; --i) {
+      BaseMutex* held_mutex = GetHeldMutex(static_cast<LockLevel>(i));
+      if (held_mutex != nullptr &&
+          held_mutex != Locks::mutator_lock_ &&
+          held_mutex != cond_var_mutex) {
+        CHECK(Locks::IsExpectedOnWeakRefAccess(held_mutex))
+            << "Holding unexpected mutex " << held_mutex->GetName()
+            << " when accessing weak ref";
+      }
+    }
+  }
+}
+
 inline void Thread::CheckEmptyCheckpointFromWeakRefAccess(BaseMutex* cond_var_mutex) {
-  Thread* self = Thread::Current();
-  DCHECK_EQ(self, this);
+  DCHECK_EQ(Thread::Current(), this);
   for (;;) {
     if (ReadFlag(kEmptyCheckpointRequest)) {
       RunEmptyCheckpoint();
-      // Check we hold only an expected mutex when accessing weak ref.
-      if (kIsDebugBuild) {
-        for (int i = kLockLevelCount - 1; i >= 0; --i) {
-          BaseMutex* held_mutex = self->GetHeldMutex(static_cast<LockLevel>(i));
-          if (held_mutex != nullptr &&
-              held_mutex != Locks::mutator_lock_ &&
-              held_mutex != cond_var_mutex) {
-            CHECK(Locks::IsExpectedOnWeakRefAccess(held_mutex))
-                << "Holding unexpected mutex " << held_mutex->GetName()
-                << " when accessing weak ref";
-          }
-        }
-      }
+      CheckWeakRefMutexes(cond_var_mutex);
     } else {
       break;
     }
