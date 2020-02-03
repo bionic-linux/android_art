@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54648578_9a7f4c61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-03T03:50:41Z",
+      "side": 1,
+      "message": "I updated some more texts / functions from platform to system.",
+      "parentUuid": "c94d1214_199c4bf8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "eda33738efd9ba0ee9bf4a6428cdb5ef4e110bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee83f98e_5deeab59",
         "filename": "libnativeloader/native_loader_namespace.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "eda33738efd9ba0ee9bf4a6428cdb5ef4e110bea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1db05a_0a78e2ed",
+        "filename": "libnativeloader/native_loader_namespace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-03T03:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee83f98e_5deeab59",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "eda33738efd9ba0ee9bf4a6428cdb5ef4e110bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
