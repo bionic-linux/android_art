@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "781fa16a_35c4d6b7",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-02-05T09:02:30Z",
+      "side": 1,
+      "message": "Please just delete lines.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 75
+      },
+      "revId": "ad82801aeabf8217ed23e9c02839a38be5793086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
