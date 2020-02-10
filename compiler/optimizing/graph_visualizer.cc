@@ -906,6 +906,16 @@ void HGraphVisualizer::PrintHeader(const char* method_name) const {
   printer.Flush();
 }
 
+std::string HGraphVisualizer::InsertMetaDataAsCompilationBlock(const std::string& meta_data) {
+  std::string time_str = std::to_string(time(nullptr));
+  std::string quoted_meta_data = "\"" + meta_data + "\"";
+  return "begin_compilation\n"
+         "  name " + quoted_meta_data + "\n"
+         "  method " + quoted_meta_data + "\n"
+         "  date " + time_str + "\n"
+         "end_compilation\n";
+}
+
 void HGraphVisualizer::DumpGraph(const char* pass_name,
                                  bool is_after_pass,
                                  bool graph_in_bad_state) const {
