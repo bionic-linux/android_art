@@ -75,7 +75,7 @@ namespace.platform.visible = true
 namespace.platform.search.paths = /system/${LIB}
 namespace.platform.asan.search.paths = /data/asan/system/${LIB}
 
-namespace.platform.links = art
+namespace.platform.links = art,adbd
 namespace.platform.link.art.shared_libs  = libandroidicu.so
 namespace.platform.link.art.shared_libs += libdexfile_external.so
 namespace.platform.link.art.shared_libs += libdexfiled_external.so
@@ -89,6 +89,10 @@ namespace.platform.link.art.shared_libs += libnativeloader.so
 # TODO(b/122876336): Remove libpac.so once it's migrated to Webview
 namespace.platform.link.art.shared_libs += libpac.so
 
+namespace.platform.link.adbd.shared_libs = libadb_pairing_auth.so
+namespace.platform.link.adbd.shared_libs += libadb_pairing_connection.so
+namespace.platform.link.adbd.shared_libs += libadb_pairing_server.so
+
 # /system/lib/libc.so, etc are symlinks to
 # /apex/com.android.runtime/lib/bionic/libc.so, etc. Add the path to the
 # permitted paths because linker uses realpath(3) to check the accessibility
@@ -99,7 +103,9 @@ namespace.platform.link.art.shared_libs += libpac.so
 # /system/lib but fails to pass the accessibility test because of its realpath.
 # It's better to not depend on the ordering if possible.
 namespace.platform.permitted.paths = /apex/com.android.runtime/${LIB}/bionic
+namespace.platform.permitted.paths += /apex/com.android.adbd/${LIB}
 namespace.platform.asan.permitted.paths = /apex/com.android.runtime/${LIB}/bionic
+namespace.platform.asan.permitted.paths += /apex/com.android.adbd/${LIB}
 
 # Note that we don't need to link the art namespace with conscrypt:
 # the runtime Java code and binaries do not explicitly load native libraries
