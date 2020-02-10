@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a19ec51_cceea4c6",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-10T09:01:05Z",
+      "side": 1,
+      "message": "there is no \u0027platform\u0027 namespace defined in this file. I guess you meant \u0027system\u0027.",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "fd6297223f296b273f53bd79a816a76f5303f133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1f10f1_51dcfff8",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-10T09:01:05Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be needed",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 70
+      },
+      "revId": "fd6297223f296b273f53bd79a816a76f5303f133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
