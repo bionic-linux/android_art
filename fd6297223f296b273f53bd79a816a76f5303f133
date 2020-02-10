@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1eb862a1_d7912c24",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-10T10:45:34Z",
+      "side": 1,
+      "message": "FYI this has changed very recently: aosp/1229612.",
+      "parentUuid": "9a19ec51_cceea4c6",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "fd6297223f296b273f53bd79a816a76f5303f133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e1f10f1_51dcfff8",
         "filename": "build/apex/ld.config.txt",
         "patchSetId": 4
