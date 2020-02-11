@@ -118,6 +118,30 @@
       "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af29b9f0_1710d224",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-11T21:15:13Z",
+      "side": 1,
+      "message": "Actually the task is already finished. All linker configuration for binaries within the APEX are now generated from linkerconfig.",
+      "parentUuid": "94429f91_a2d4d1e1",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
