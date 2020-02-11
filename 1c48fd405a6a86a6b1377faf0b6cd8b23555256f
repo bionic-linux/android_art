@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bb31b3d_b0d6f2da",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-11T18:46:44Z",
+      "side": 1,
+      "message": "Why is X19 no longer callee save? I see no change related to it (was it in the previous CL aosp/1206444?), and I see X19 listed here: https://source.corp.google.com/aosp-master/art/compiler/jni/quick/arm64/calling_convention_arm64.cc;l\u003d123",
+      "range": {
+        "startLine": 1889,
+        "startChar": 0,
+        "endLine": 1889,
+        "endChar": 39
+      },
+      "revId": "1c48fd405a6a86a6b1377faf0b6cd8b23555256f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
