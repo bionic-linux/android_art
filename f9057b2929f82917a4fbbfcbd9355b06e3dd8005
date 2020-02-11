@@ -22,6 +22,30 @@
       "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6491dace_05f0b099",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-11T17:29:28Z",
+      "side": 1,
+      "message": "That\u0027s correct! This file is no longer in use from R. You should add those library files into required libs of ApexSystem like you did in systemdefault. https://source.corp.google.com/android/system/linkerconfig/contents/namespace/apexplatform.cc;cl\u003dmaster;l\u003d31",
+      "parentUuid": "1f913dcb_8b1b1d7d",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
