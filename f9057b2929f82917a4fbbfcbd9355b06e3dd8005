@@ -94,6 +94,30 @@
       "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94429f91_a2d4d1e1",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-11T19:28:14Z",
+      "side": 1,
+      "message": "The changes I landed recently (https://android-review.googlesource.com/c/platform/art/+/1227177/) were for the \"system\" linker configuration file (`/linkerconfig/ld.config.txt`); we are not generating the ART APEX  linker configuration file (`/apex/com.android.art/etc/ld.config.txt`) in the ART chroot-based testing environment (yet).\n\nKiyoung, have you already scheduled the migration to auto-generated APEX linker configuration files?",
+      "parentUuid": "e0662c79_07f3f25c",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
