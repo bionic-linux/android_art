@@ -46,6 +46,30 @@
       "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ebf676_dda8246f",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-11T17:45:01Z",
+      "side": 1,
+      "message": "Just to avoid confusion, art still needs this file for test environment. This change is still valid.",
+      "parentUuid": "6491dace_05f0b099",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
