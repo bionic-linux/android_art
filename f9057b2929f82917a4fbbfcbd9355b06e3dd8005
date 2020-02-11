@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f913dcb_8b1b1d7d",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-11T15:40:37Z",
+      "side": 1,
+      "message": "Kiyoung, I am not sure if this case can be supported when we migrate to the auto-generated ld.config.txt. Can you confirm?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 66
+      },
+      "revId": "f9057b2929f82917a4fbbfcbd9355b06e3dd8005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
