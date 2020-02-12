@@ -99,6 +99,7 @@ static std::unordered_map<std::string, Platform::mock_namespace_handle> namespac
     {"vndk", TO_MOCK_NAMESPACE(TO_ANDROID_NAMESPACE("vndk"))},
     {"com.android.neuralnetworks", TO_MOCK_NAMESPACE(TO_ANDROID_NAMESPACE("com.android.neuralnetworks"))},
     {"com.android.cronet", TO_MOCK_NAMESPACE(TO_ANDROID_NAMESPACE("com.android.cronet"))},
+    {"com.android.os.statsd", TO_MOCK_NAMESPACE(TO_ANDROID_NAMESPACE("com.android.os.statsd"))},
 };
 
 // The actual gmock object
