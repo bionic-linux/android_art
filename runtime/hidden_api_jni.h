@@ -17,6 +17,8 @@
 #ifndef ART_RUNTIME_HIDDEN_API_JNI_H_
 #define ART_RUNTIME_HIDDEN_API_JNI_H_
 
+#include <optional>
+
 #include "base/macros.h"
 
 namespace art {
@@ -37,16 +39,25 @@ class ScopedCorePlatformApiCheck final {
   static bool IsCurrentCallerApproved(Thread* self);
 
  private:
-  // Captures calling PC for frame above the frame allocating the current ScopedCorePlatformApiCheck
-  // instance.
-  void* CaptureCallerPc();
-
   // Instances should only be stack allocated, copy and assignment not useful.
   DISALLOW_ALLOCATION();
   DISALLOW_COPY_AND_ASSIGN(ScopedCorePlatformApiCheck);
 };
 
-void JniInitializeNativeCallerCheck();
+// Kind of memory page from mapped shared object files.
+enum class SharedObjectKind {
+  kNativeCorePlatform = 0,   // Part of the Native Core Platform.
+  kOther = 1                 // Anything not in the Native Core Platform.
+};
+
+
+class JniLibraryPathClassifier {
+ public:
+  virtual std::optional<SharedObjectKind> Classify(const char* so_name) = 0;
+  virtual ~JniLibraryPathClassifier() {}
+};
+
+void JniInitializeNativeCallerCheck(JniLibraryPathClassifier* fc = nullptr);
 void JniShutdownNativeCallerCheck();
 
 }  // namespace hiddenapi
