@@ -19,7 +19,7 @@ import os
 
 from common.archs                     import archs_list
 from common.logger                    import Logger
-from file_format.c1visualizer.parser  import ParseC1visualizerStream
+from file_format.c1visualizer.parser  import ParseC1visualizerSeekableStream
 from file_format.checker.parser       import ParseCheckerStream
 from match.file                       import MatchFiles
 
@@ -45,13 +45,15 @@ def ParseArguments():
 
 
 def ListPasses(outputFilename):
-  c1File = ParseC1visualizerStream(os.path.basename(outputFilename), open(outputFilename, "r"))
+  c1File = ParseC1visualizerSeekableStream(os.path.basename(outputFilename),
+                                           open(outputFilename, "r"))
   for compiler_pass in c1File.passes:
     Logger.log(compiler_pass.name)
 
 
 def DumpPass(outputFilename, passName):
-  c1File = ParseC1visualizerStream(os.path.basename(outputFilename), open(outputFilename, "r"))
+  c1File = ParseC1visualizerSeekableStream(os.path.basename(outputFilename),
+                                           open(outputFilename, "r"))
   compiler_pass = c1File.findPass(passName)
   if compiler_pass:
     maxLineNo = compiler_pass.startLineNo + len(compiler_pass.body)
@@ -86,7 +88,8 @@ def FindCheckerFiles(path):
 
 
 def RunTests(checkPrefix, checkPath, outputFilename, targetArch, debuggableMode):
-  c1File = ParseC1visualizerStream(os.path.basename(outputFilename), open(outputFilename, "r"))
+  c1File = ParseC1visualizerSeekableStream(os.path.basename(outputFilename),
+                                           open(outputFilename, "r"))
   for checkFilename in FindCheckerFiles(checkPath):
     checkerFile = ParseCheckerStream(os.path.basename(checkFilename),
                                      checkPrefix,

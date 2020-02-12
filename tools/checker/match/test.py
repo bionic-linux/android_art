@@ -14,7 +14,7 @@
 
 from common.immutables               import ImmutableDict
 from common.testing                  import ToUnicode
-from file_format.c1visualizer.parser import ParseC1visualizerStream
+from file_format.c1visualizer.parser import ParseC1visualizerSeekableStream
 from file_format.c1visualizer.struct import C1visualizerFile, C1visualizerPass
 from file_format.checker.parser      import ParseCheckerStream, ParseCheckerStatement
 from file_format.checker.struct      import CheckerFile, TestCase, TestStatement
@@ -103,12 +103,30 @@ class MatchLines_Test(unittest.TestCase):
 
 class MatchFiles_Test(unittest.TestCase):
 
-  def assertMatches(self, checkerString, c1String):
+  def assertMatches(self, checkerString, c1String, instructionSetFeatures=None):
     checkerString = \
       """
         /// CHECK-START: MyMethod MyPass
       """ + checkerString
-    c1String = \
+    featureString = ""
+    if instructionSetFeatures:
+      joinedFeatures = ""
+      for i, featureName in enumerate(instructionSetFeatures):
+        enabled = instructionSetFeatures[featureName]
+        if not enabled:
+          joinedFeatures += '-'
+        joinedFeatures += featureName
+        if i < len(instructionSetFeatures) - 1:
+          joinedFeatures += ','
+      featureString = \
+        """
+          begin_compilation
+            name "isa_features:""" + joinedFeatures + """\"
+            method "isa_features:""" + joinedFeatures + """\"
+            date 1234
+          end_compilation
+        """
+    c1String = featureString + \
       """
         begin_compilation
           name "MyMethod"
@@ -122,14 +140,14 @@ class MatchFiles_Test(unittest.TestCase):
         end_cfg
       """
     checkerFile = ParseCheckerStream("<test-file>", "CHECK", io.StringIO(ToUnicode(checkerString)))
-    c1File = ParseC1visualizerStream("<c1-file>", io.StringIO(ToUnicode(c1String)))
+    c1File = ParseC1visualizerSeekableStream("<c1-file>", io.StringIO(ToUnicode(c1String)))
     assert len(checkerFile.testCases) == 1
     assert len(c1File.passes) == 1
-    MatchTestCase(checkerFile.testCases[0], c1File.passes[0])
+    MatchTestCase(checkerFile.testCases[0], c1File.passes[0], c1File.instructionSetFeatures)
 
-  def assertDoesNotMatch(self, checkerString, c1String):
+  def assertDoesNotMatch(self, checkerString, c1String, instructionSetFeatures=None):
     with self.assertRaises(MatchFailedException):
-      self.assertMatches(checkerString, c1String)
+      self.assertMatches(checkerString, c1String, instructionSetFeatures)
 
   def assertBadStructure(self, checkerString, c1String):
     with self.assertRaises(BadStructureException):
@@ -916,3 +934,37 @@ class MatchFiles_Test(unittest.TestCase):
       """
       foo
       """)
+
+  def test_isaHasFeature(self):
+    self.assertMatches(
+      """
+        /// CHECK-EVAL: isaHasFeature('feature1') and not isaHasFeature('feature2')
+      """,
+      """
+      foo
+      """,
+      ImmutableDict({"feature1": True})
+    )
+    self.assertDoesNotMatch(
+      """
+        /// CHECK-EVAL: not isaHasFeature('feature1')
+      """,
+      """
+      foo
+      """,
+      ImmutableDict({"feature1": True})
+    )
+    self.assertMatches(
+      """
+        /// CHECK-IF: isaHasFeature('feature2')
+        ///   CHECK: bar1
+        /// CHECK-ELSE:
+        ///   CHECK: bar2
+        /// CHECK-FI:
+      """,
+      """
+      foo
+      bar1
+      """,
+      ImmutableDict({"feature1": False, "feature2": True})
+    )
