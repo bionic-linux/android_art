@@ -111,6 +111,8 @@ def getEvalText(expression, variables, pos):
 
 def EvaluateLine(checkerLine, variables):
   assert checkerLine.isEvalContentStatement()
+  isaHasFeature = lambda feature: feature in variables["ISA_FEATURES"] and \
+                                  variables["ISA_FEATURES"][feature]
   eval_string = "".join(map(lambda expr: getEvalText(expr, variables, checkerLine),
                             checkerLine.expressions))
   return eval(eval_string)

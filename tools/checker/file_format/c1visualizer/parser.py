@@ -18,6 +18,77 @@ from file_format.c1visualizer.struct import C1visualizerFile, C1visualizerPass
 
 import re
 
+def ParseC1visualizerSeekableStream(fileName, seekableStream):
+  c1File = C1visualizerFile(fileName)
+  AddISAFeaturesFromStream(c1File, seekableStream)
+
+  # AddISAFeaturesFromStream read the first 5 lines of the file and moved the stream pointer to the
+  # the 6th line.
+  # The first optimisation pass will always be after the ISA features metadata block (if present),
+  # or at the beginning of the file (if the ISA features metadata block is not present).
+  # If those 5 lines contained the ISA features metadata block, the stream pointer is already
+  # pointing to the first optimisation pass, which will be read by AddPassesFromStream.
+  # If they didn't contain the ISA features, we need to jump back to the beginning of the file.
+  if not c1File.instructionSetFeatures:
+    seekableStream.seek(0)
+
+  AddPassesFromStream(fileName, c1File, seekableStream)
+  return c1File
+
+# AddISAFeaturesFromStream parses the first 5 lines of the stream and stores the ISA features (when
+# present) in the c1File.
+def AddISAFeaturesFromStream(c1File, stream):
+  # If the .cfg includes the list of ISA features, we expect to find them at the beginning of the
+  # file as a fake compilation block in the following form:
+  # begin_compilation
+  #   name "isa_features:feature1,-feature2"
+  #   method "isa_features:feature1,-feature2"
+  #   date 1580721972
+  # end_compilation
+
+  # Read the file header, which is composed of 5 lines.
+  # Line at idx 1 is potentially containing the ISA features.
+  lines = ReadLines(stream, 5)
+  if not lines:
+    return
+  featuresLine = lines[1]
+
+  # If the header contains the ISA features, store them in c1File.
+  if re.match('name "isa_features:[\w,-]+"', featuresLine):
+    methodName = featuresLine.split("\"")[1]
+    rawFeatures = methodName.split("isa_features:")[1].split(",")
+
+    # Create a map of features in the form {featureName: isEnabled}.
+    features = {}
+    for rf in rawFeatures:
+      featureName = rf
+      isEnabled = True
+      # A '-' in front of the feature name indicates that the feature wasn't enabled at compile
+      # time.
+      if rf[0] == '-':
+        featureName = rf[1:]
+        isEnabled = False
+      features[featureName] = isEnabled
+
+    c1File.setISAFeatures(features)
+
+# ReadLines reads n non-empty lines from the current cursor position, strips them and returns
+# them as a list. Empty lines will be skipped.
+def ReadLines(stream, n):
+  if n == 0:
+    return []
+  lines = []
+  readLines = 0
+  for line in stream:
+    line = line.strip()
+    if not line:
+      continue
+    lines.append(line)
+    readLines += 1
+    if readLines == n:
+      break
+  return lines
+
 class C1ParserState:
   OutsideBlock, InsideCompilationBlock, StartingCfgBlock, InsideCfgBlock = range(4)
 
@@ -26,7 +97,8 @@ class C1ParserState:
     self.lastMethodName = None
 
 def __parseC1Line(line, lineNo, state, fileName):
-  """ This function is invoked on each line of the output file and returns
+  """ This function is invoked on each line of the output file after the initial
+      chunk that contains the list of ISA features (if exists) and returns
       a triplet which instructs the parser how the line should be handled. If the
       line is to be included in the current group, it is returned in the first
       value. If the line starts a new output group, the name of the group is
@@ -78,8 +150,7 @@ def __parseC1Line(line, lineNo, state, fileName):
     else:
       Logger.fail("C1visualizer line not inside a group", fileName, lineNo)
 
-def ParseC1visualizerStream(fileName, stream):
-  c1File = C1visualizerFile(fileName)
+def AddPassesFromStream(fileName, c1File, stream):
   state = C1ParserState()
   fnProcessLine = lambda line, lineNo: __parseC1Line(line, lineNo, state, fileName)
   fnLineOutsideChunk = lambda line, lineNo: \
@@ -87,4 +158,3 @@ def ParseC1visualizerStream(fileName, stream):
   for passName, passLines, startLineNo, testArch in \
       SplitStream(stream, fnProcessLine, fnLineOutsideChunk):
     C1visualizerPass(c1File, passName, passLines, startLineNo + 1)
-  return c1File

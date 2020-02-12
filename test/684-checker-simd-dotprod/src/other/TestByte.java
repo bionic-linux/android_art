@@ -89,7 +89,48 @@ public class TestByte {
   //
   /// CHECK-DAG: <<Reduce:d\d+>>  VecReduce [<<Phi2>>]                                  loop:none
   /// CHECK-DAG:                  VecExtractScalar [<<Reduce>>]                         loop:none
-  public static final int testDotProdComplex(byte[] a, byte[] b) {
+
+  /*
+  FIXME:
+  This test might clash with the build time switch kArm64EmitDotProdInstructions in the future.
+
+  If udot/sdot are supported, codegen_->GetInstructionSetFeatures().HasDotProd() should return true,
+  and that is the information that gets dumped to the .cfg file. Checker will therefore expect
+  udot/sdot instructions to be used, as it's unaware of the effect of kArm64EmitDotProdInstructions.
+
+  This code has been tested successfully on a Pixel 3 and a Pixel 4.
+  In both cases, codegen_->GetInstructionSetFeatures().HasDotProd() returns false.
+  The reason why it returns false on the Pixel 4 is that there is no specialised BoardConfig.mk for
+  that device in device/generic/art, therefore the build is performed for a generic arm64 device,
+  where dotprod is not enabled.
+
+  If BoardConfig.mk for the Pixel 4 will be added in the future and
+  codegen_->GetInstructionSetFeatures().HasDotProd() will start returning true, the
+  kArm64EmitDotProdInstructions flags should be removed.
+  */
+  /// CHECK-START-ARM64: int other.TestByte.testDotProdComplex(byte[], byte[]) disassembly (after)
+  /// CHECK:        VecAdd
+  /// CHECK-NEXT:   add <<VecAdd1:v\d+.\d+[a-z]+>>, <<VecAdd1>>, <<VecAdd2:v\d+.\d+[a-z]+>>
+  /// CHECK:        VecAdd
+  /// CHECK-NEXT:   add <<VecAdd3:v\d+.\d+[a-z]+>>, <<VecAdd3>>, <<VecAdd2>>
+  /// CHECK-IF:     isaHasFeature("dotprod")
+  ///               CHECK:          VecDotProd
+  ///               CHECK-NEXT:     sdot {{v\d+.\d+[a-z]+}}, <<VecAdd1>>, <<VecAdd3>>
+  ///               CHECK-NOT:      smull
+  ///               CHECK-NOT:      saddw
+  /// CHECK-ELSE:
+  ///               CHECK:          VecDotProd
+  ///               CHECK-NEXT:     smull <<Smull1:v\d+.\d+[a-z]+>>, {{v\d+.\d+[a-z]+}}, {{v\d+.\d+[a-z]+}}
+  ///               CHECK-NEXT:     saddw <<Saddw1:v\d+.\d+[a-z]+>>, <<Saddw1>>, <<Saddw2:v\d+.\d+[a-z]+>>
+  ///               CHECK-NEXT:     saddw2 <<Saddw1>>, <<Saddw1>>, <<Smull1>>
+  ///               CHECK-NEXT:     smull2 <<Smull1>>, <<VecAdd1>>, <<VecAdd3>>
+  ///               CHECK-NEXT:     saddw <<Saddw1>>, <<Saddw1>>, <<Saddw2>>
+  ///               CHECK-NEXT:     saddw2 <<Saddw1>>, <<Saddw1>>, <<Smull1>>
+  ///               CHECK-NOT:      sdot
+  /// CHECK-FI:
+  /// CHECK:        Add
+  /// CHECK-NEXT:   add <<Add1:w\d+>>, <<Add1>>, {{\#0x\d+}} (16)
+public static final int testDotProdComplex(byte[] a, byte[] b) {
     int s = 1;
     for (int i = 0; i < b.length; i++) {
       int temp = ((byte)(a[i] + 1)) * ((byte)(b[i] + 1));
