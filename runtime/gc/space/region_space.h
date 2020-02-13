@@ -43,6 +43,9 @@ namespace space {
 // only enable it in debug mode.
 static constexpr bool kCyclicRegionAllocation = kIsDebugBuild;
 
+// Constant used to mark the non-zero pages before madvise(MADV_FREE) them.
+static constexpr uint8_t kMadvFreeMagic = 0xdf;
+
 // A space that consists of equal-sized regions.
 class RegionSpace final : public ContinuousMemMapAllocSpace {
  public:
@@ -366,6 +369,8 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     }
   }
 
+  ALWAYS_INLINE static void ZeroAllocRange(uint8_t* start, size_t length);
+
   // Increment object allocation count for region containing ref.
   void RecordAlloc(mirror::Object* ref) REQUIRES(!region_lock_);
 
@@ -426,6 +431,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
     void Clear(bool zero_and_release_pages);
 
+    template <bool kForEvac>
     ALWAYS_INLINE mirror::Object* Alloc(size_t num_bytes,
                                         /* out */ size_t* bytes_allocated,
                                         /* out */ size_t* usable_size,
@@ -645,6 +651,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return RefToRegionLocked(ref);
   }
 
+  void PurgePages(void* address, size_t length);
   void TraceHeapSize() REQUIRES(region_lock_);
 
   Region* RefToRegionUnlocked(mirror::Object* ref) NO_THREAD_SAFETY_ANALYSIS {
@@ -737,6 +744,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
   // Cached version of Heap::use_generational_cc_.
   const bool use_generational_cc_;
   uint32_t time_;                  // The time as the number of collections since the startup.
+  int purge_advice_;
   size_t num_regions_;             // The number of regions in this space.
   // The number of non-free regions in this space.
   size_t num_non_free_regions_ GUARDED_BY(region_lock_);

@@ -141,7 +141,17 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
   DCHECK(!full_region_.IsFree());
   DCHECK(full_region_.IsAllocated());
   size_t ignored;
-  DCHECK(full_region_.Alloc(kAlignment, &ignored, nullptr, &ignored) == nullptr);
+  DCHECK(full_region_.Alloc</*kForEvac*/true>(kAlignment, &ignored, nullptr, &ignored) == nullptr);
+
+  DCHECK(IsAligned<kPageSize>(regions_[0].Begin()));
+  purge_advice_ = MADV_DONTNEED;
+#if !defined(__WIN32__) && defined(MADV_FREE)
+  if (madvise(regions_[0].Begin(), kRegionSize, MADV_FREE) == 0) {
+    purge_advice_ = MADV_FREE;
+  } else {
+    DCHECK(errno == EINVAL);
+  }
+#endif
   // Protect the whole region space from the start.
   Protect();
 }
@@ -450,16 +460,30 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
     // (see b/62194020).
     uint8_t* clear_block_begin = nullptr;
     uint8_t* clear_block_end = nullptr;
-    auto expand_madvise_range = [&madvise_list, &clear_block_begin, &clear_block_end] (Region* r) {
-      if (clear_block_end != r->Begin()) {
-        if (clear_block_begin != nullptr) {
-          DCHECK(clear_block_end != nullptr);
-          madvise_list.push_back(std::pair(clear_block_begin, clear_block_end));
-        }
-        clear_block_begin = r->Begin();
-      }
-      clear_block_end = r->End();
-    };
+    auto expand_madvise_range =
+        [&madvise_list, &clear_block_begin, &clear_block_end, this] (Region* r) {
+          if (clear_block_end != r->Begin()) {
+            if (clear_block_begin != nullptr) {
+              DCHECK(clear_block_end != nullptr);
+              madvise_list.push_back(std::pair(clear_block_begin, clear_block_end));
+            }
+            clear_block_begin = r->Begin();
+          }
+          clear_block_end = r->End();
+          // Mark the first byte of every page so that we can catch during
+          // TLAB allocation if the page is already reclaimed by the kernel and
+          // hence cleaned, or not.
+          if (purge_advice_ != MADV_DONTNEED) {
+            uint8_t* mark_begin_page = r->Begin();
+            // Only pages up to r->Top() need to be marked.
+            uint8_t* const mark_end_page = AlignUp(r->Top(), kPageSize);
+            DCHECK(r->IsLarge() || mark_end_page <= r->End());
+            while (mark_begin_page < mark_end_page) {
+              *mark_begin_page = kMadvFreeMagic;
+              mark_begin_page += kPageSize;
+            }
+          }
+        };
     for (size_t i = 0; i < std::min(num_regions_, non_free_region_index_limit_); ++i) {
       Region* r = &regions_[i];
       // The following check goes through objects in the region, therefore it
@@ -500,7 +524,7 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
 
   // Madvise the memory ranges.
   for (const auto &iter : madvise_list) {
-    ZeroAndProtectRegion(iter.first, iter.second);
+    PurgePages(iter.first, iter.second - iter.first);
     if (clear_bitmap) {
       GetLiveBitmap()->ClearRange(
           reinterpret_cast<mirror::Object*>(iter.first),
@@ -628,6 +652,19 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
   evac_region_ = nullptr;
   num_non_free_regions_ += num_evac_regions_;
   num_evac_regions_ = 0;
+}
+
+void RegionSpace::PurgePages(void* address, size_t length) {
+  DCHECK(IsAligned<kPageSize>(address));
+  if (length == 0) {
+    return;
+  }
+#ifdef _WIN32
+  LOG(WARNING) << "PurgePages does not madvise on Windows.";
+#else
+  CHECK_NE(madvise(address, length, purge_advice_), -1)
+      << "madvise failed: " << strerror(errno);
+#endif
 }
 
 void RegionSpace::CheckLiveBytesAgainstRegionBitmap(Region* r) {
@@ -867,6 +904,9 @@ bool RegionSpace::AllocNewTlab(Thread* self,
   if (r != nullptr) {
     uint8_t* start = pos != nullptr ? pos : r->Begin();
     DCHECK_ALIGNED(start, kObjectAlignment);
+    // If we are allocating a partially utilized TLAB, then the tlab is already
+    // clean from [pos, r->Top()).
+    ZeroAllocRange(pos != nullptr ? r->Top() : r->Begin(), *bytes_tl_bulk_allocated);
     r->is_a_tlab_ = true;
     r->thread_ = self;
     r->SetTop(r->End());
