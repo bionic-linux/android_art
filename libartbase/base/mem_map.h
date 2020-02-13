@@ -423,6 +423,8 @@ std::ostream& operator<<(std::ostream& os, const MemMap& mem_map);
 // Zero and release pages if possible, no requirements on alignments.
 void ZeroAndReleasePages(void* address, size_t length);
 
+void MadviseFree(void* address, size_t length);
+
 }  // namespace art
 
 #endif  // ART_LIBARTBASE_BASE_MEM_MAP_H_
