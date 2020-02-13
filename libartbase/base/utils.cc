@@ -156,6 +156,24 @@ bool FlushCpuCaches(void* begin, void* end) {
 
 #endif
 
+bool KernelVersionLower(int required_major, int required_minor) {
+#if defined(__linux__)
+  struct utsname uts;
+  int major, minor;
+  CHECK_EQ(uname(&uts), 0);
+  CHECK_EQ(strcmp(uts.sysname, "Linux"), 0);
+  CHECK_EQ(sscanf(uts.release, "%d.%d", &major, &minor), 2);
+  if (major < required_major || (major == required_major && minor < required_minor)) {
+    return true;
+  } else {
+    return false;
+  }
+#else
+  // On non-linux builds assume that the kernel version is lower than required.
+  return true;
+#endif
+}
+
 bool CacheOperationsMaySegFault() {
 #if defined(__linux__) && defined(__aarch64__)
   // Avoid issue on older ARM64 kernels where data cache operations could be classified as writes
@@ -165,14 +183,7 @@ bool CacheOperationsMaySegFault() {
   //
   // This behaviour means we should avoid the dual view JIT on the device. This is just
   // an issue when running tests on devices that have an old kernel.
-  static constexpr int kRequiredMajor = 3;
-  static constexpr int kRequiredMinor = 12;
-  struct utsname uts;
-  int major, minor;
-  if (uname(&uts) != 0 ||
-      strcmp(uts.sysname, "Linux") != 0 ||
-      sscanf(uts.release, "%d.%d", &major, &minor) != 2 ||
-      (major < kRequiredMajor || (major == kRequiredMajor && minor < kRequiredMinor))) {
+  if (KernelVersionLower(3, 12)) {
     return true;
   }
 #endif
