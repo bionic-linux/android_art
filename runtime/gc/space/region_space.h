@@ -43,6 +43,9 @@ namespace space {
 // only enable it in debug mode.
 static constexpr bool kCyclicRegionAllocation = kIsDebugBuild;
 
+// Constant used to mark the non-zero pages before madvise(MADV_FREE) them.
+static constexpr uint8_t kMadvFreeMagic = 0xdf;
+
 // A space that consists of equal-sized regions.
 class RegionSpace final : public ContinuousMemMapAllocSpace {
  public:
@@ -366,6 +369,8 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     }
   }
 
+  ALWAYS_INLINE static void ZeroAllocRange(uint8_t* start, size_t length);
+
   // Increment object allocation count for region containing ref.
   void RecordAlloc(mirror::Object* ref) REQUIRES(!region_lock_);
 
@@ -426,6 +431,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
     void Clear(bool zero_and_release_pages);
 
+    template <bool kForEvac>
     ALWAYS_INLINE mirror::Object* Alloc(size_t num_bytes,
                                         /* out */ size_t* bytes_allocated,
                                         /* out */ size_t* usable_size,
