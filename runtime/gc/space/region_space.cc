@@ -141,7 +141,7 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
   DCHECK(!full_region_.IsFree());
   DCHECK(full_region_.IsAllocated());
   size_t ignored;
-  DCHECK(full_region_.Alloc(kAlignment, &ignored, nullptr, &ignored) == nullptr);
+  DCHECK(full_region_.Alloc</*kForEvac*/true>(kAlignment, &ignored, nullptr, &ignored) == nullptr);
   // Protect the whole region space from the start.
   Protect();
 }
@@ -411,8 +411,18 @@ void RegionSpace::SetFromSpace(accounting::ReadBarrierTable* rb_table,
   evac_region_ = &full_region_;
 }
 
-static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end) {
-  ZeroAndReleasePages(begin, end - begin);
+static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end, bool use_madv_free) {
+  /*
+  if (use_madv_free) {
+    DCHECK(IsAligned<kPageSize>(begin) && IsAligned<kPageSize>(end));
+    // Mark the first byte of every page non-zero so that we can catch during
+    // TLAB allocation if the page is cleaned by the kernel or not.
+    for (; begin < end; begin += kPageSize) {
+      *begin = kMadvFreeConst;
+    }
+  }
+  */
+  ZeroAndReleasePages(begin, end - begin, use_madv_free);
   if (kProtectClearedRegions) {
     CheckedCall(mprotect, __FUNCTION__, begin, end - begin, PROT_NONE);
   }
@@ -459,6 +469,19 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
         clear_block_begin = r->Begin();
       }
       clear_block_end = r->End();
+      // Mark the first byte of every page so that we can catch during
+      // TLAB allocation if the page is already reclaimed by the kernel and
+      // hence cleaned, or not.
+      {
+        uint8_t* mark_begin_page = r->Begin();
+        // Only pages up to r->Top() need to be marked.
+        uint8_t* const mark_end_page = AlignUp(r->Top(), kPageSize);
+        DCHECK(r->IsLarge() || mark_end_page <= r->End());
+        while (mark_begin_page < mark_end_page) {
+          *mark_begin_page = kMadvFreeConst;
+          mark_begin_page += kPageSize;
+        }
+      }
     };
     for (size_t i = 0; i < std::min(num_regions_, non_free_region_index_limit_); ++i) {
       Region* r = &regions_[i];
@@ -500,7 +523,7 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
 
   // Madvise the memory ranges.
   for (const auto &iter : madvise_list) {
-    ZeroAndProtectRegion(iter.first, iter.second);
+    ZeroAndProtectRegion(iter.first, iter.second, /*use_madv_free=*/true);
     if (clear_bitmap) {
       GetLiveBitmap()->ClearRange(
           reinterpret_cast<mirror::Object*>(iter.first),
@@ -862,11 +885,14 @@ bool RegionSpace::AllocNewTlab(Thread* self,
   }
   if (r == nullptr) {
     // Fallback to allocating an entire region as TLAB.
-    r = AllocateRegion(/*for_evac=*/ false);
+    r = AllocateRegion</*kForEvac*/ false>();
   }
   if (r != nullptr) {
     uint8_t* start = pos != nullptr ? pos : r->Begin();
     DCHECK_ALIGNED(start, kObjectAlignment);
+    // If we are allocating a partially utilized TLAB, then the tlab is already
+    // clean from [pos, r->Top()).
+    ZeroAllocRange(pos != nullptr ? r->Top() : r->Begin(), *bytes_tl_bulk_allocated);
     r->is_a_tlab_ = true;
     r->thread_ = self;
     r->SetTop(r->End());
@@ -1008,7 +1034,7 @@ void RegionSpace::Region::Clear(bool zero_and_release_pages) {
   alloc_time_ = 0;
   live_bytes_ = static_cast<size_t>(-1);
   if (zero_and_release_pages) {
-    ZeroAndProtectRegion(begin_, end_);
+    ZeroAndProtectRegion(begin_, end_, /*use_madv_free=*/false);
   }
   is_newly_allocated_ = false;
   is_a_tlab_ = false;
@@ -1018,44 +1044,6 @@ void RegionSpace::Region::Clear(bool zero_and_release_pages) {
 void RegionSpace::TraceHeapSize() {
   Heap* heap = Runtime::Current()->GetHeap();
   heap->TraceHeapSize(heap->GetBytesAllocated() + EvacBytes());
-}
-
-RegionSpace::Region* RegionSpace::AllocateRegion(bool for_evac) {
-  if (!for_evac && (num_non_free_regions_ + 1) * 2 > num_regions_) {
-    return nullptr;
-  }
-  for (size_t i = 0; i < num_regions_; ++i) {
-    // When using the cyclic region allocation strategy, try to
-    // allocate a region starting from the last cyclic allocated
-    // region marker. Otherwise, try to allocate a region starting
-    // from the beginning of the region space.
-    size_t region_index = kCyclicRegionAllocation
-        ? ((cyclic_alloc_region_index_ + i) % num_regions_)
-        : i;
-    Region* r = &regions_[region_index];
-    if (r->IsFree()) {
-      r->Unfree(this, time_);
-      if (use_generational_cc_) {
-        // TODO: Add an explanation for this assertion.
-        DCHECK(!for_evac || !r->is_newly_allocated_);
-      }
-      if (for_evac) {
-        ++num_evac_regions_;
-        TraceHeapSize();
-        // Evac doesn't count as newly allocated.
-      } else {
-        r->SetNewlyAllocated();
-        ++num_non_free_regions_;
-      }
-      if (kCyclicRegionAllocation) {
-        // Move the cyclic allocation region marker to the region
-        // following the one that was just allocated.
-        cyclic_alloc_region_index_ = (region_index + 1) % num_regions_;
-      }
-      return r;
-    }
-  }
-  return nullptr;
 }
 
 void RegionSpace::Region::MarkAsAllocated(RegionSpace* region_space, uint32_t alloc_time) {

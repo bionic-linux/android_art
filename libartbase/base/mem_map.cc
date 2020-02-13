@@ -45,6 +45,11 @@
 #define MAP_ANONYMOUS MAP_ANON
 #endif
 
+// The host sysroot doesn't have MADV_FREE defined.
+#ifndef MADV_FREE
+#define MADV_FREE 8
+#endif
+
 namespace art {
 
 using android::base::StringPrintf;
@@ -1219,7 +1224,7 @@ void MemMap::TryReadable() {
   }
 }
 
-void ZeroAndReleasePages(void* address, size_t length) {
+void ZeroAndReleasePages(void* address, size_t length, bool use_madv_free) {
   if (length == 0) {
     return;
   }
@@ -1239,7 +1244,9 @@ void ZeroAndReleasePages(void* address, size_t length) {
 #ifdef _WIN32
     LOG(WARNING) << "ZeroAndReleasePages does not madvise on Windows.";
 #else
-    CHECK_NE(madvise(page_begin, page_end - page_begin, MADV_DONTNEED), -1) << "madvise failed";
+    CHECK_NE(madvise(page_begin,
+                     page_end - page_begin,
+                     use_madv_free ? MADV_FREE: MADV_DONTNEED), -1) << "madvise failed";
 #endif
     std::fill(page_end, mem_end, 0);
   }
