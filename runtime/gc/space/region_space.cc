@@ -24,6 +24,10 @@
 #include "mirror/object-inl.h"
 #include "thread_list.h"
 
+#if defined(__linux__)
+#include <sys/utsname.h>
+#endif
+
 namespace art {
 namespace gc {
 namespace space {
@@ -46,6 +50,12 @@ static constexpr uint32_t kPoisonDeadObject = 0xBADDB01D;  // "BADDROID"
 
 // Whether we check a region's live bytes count against the region bitmap.
 static constexpr bool kCheckLiveBytesAgainstRegionBitmap = kIsDebugBuild;
+
+#ifndef MADV_FREE
+const int RegionSpace::gPurgeAdvice = MADV_DONTNEED;
+#else
+const int RegionSpace::gPurgeAdvice = KernelVersionLower(4, 12) ? MADV_DONTNEED : MADV_FREE;
+#endif
 
 MemMap RegionSpace::CreateMemMap(const std::string& name,
                                  size_t capacity,
@@ -141,7 +151,7 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
   DCHECK(!full_region_.IsFree());
   DCHECK(full_region_.IsAllocated());
   size_t ignored;
-  DCHECK(full_region_.Alloc(kAlignment, &ignored, nullptr, &ignored) == nullptr);
+  DCHECK(full_region_.Alloc</*kForEvac*/true>(kAlignment, &ignored, nullptr, &ignored) == nullptr);
   // Protect the whole region space from the start.
   Protect();
 }
@@ -497,17 +507,58 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
       madvise_list.push_back(std::pair(clear_block_begin, clear_block_end));
     }
   }
-
-  // Madvise the memory ranges.
-  for (const auto &iter : madvise_list) {
-    ZeroAndProtectRegion(iter.first, iter.second);
-    if (clear_bitmap) {
-      GetLiveBitmap()->ClearRange(
-          reinterpret_cast<mirror::Object*>(iter.first),
-          reinterpret_cast<mirror::Object*>(iter.second));
+  {
+    // Madvise the memory ranges.
+    std::unique_ptr<unsigned char[]> vec(new unsigned char[kPageSize]);
+    for (const auto &iter : madvise_list) {
+      const size_t len = iter.second - iter.first;
+      uint8_t* mark_begin_page = iter.first;
+      if (gPurgeAdvice != MADV_DONTNEED) {
+        bool mark_all_pages = false;
+        const size_t num_pages = len / kPageSize;
+        // Mark only resident pages to recognize cleared pages.
+        // mincore() is a linux-specific syscall.
+#if defined(__linux__)
+        // Avoid dynamic allocation in every iteration.
+        unsigned char *vec_ptr = vec.get();
+        if (UNLIKELY(num_pages > kPageSize)) {
+          vec_ptr = new unsigned char[num_pages];
+        }
+        if (mincore(mark_begin_page, len, vec_ptr) == 0) {
+          for (size_t i = 0; i < num_pages; i++) {
+            if ((vec_ptr[i] & 0x1) != 0) {
+              *mark_begin_page = kMadvFreeMagic;
+            }
+            mark_begin_page += kPageSize;
+          }
+        } else {
+          LOG(WARNING) << "Call to mincore() on memory range [0x" << std::hex << iter.first
+                       << ", 0x" << iter.second << std::dec << ") failed: " << strerror(errno);
+          // If mincore fails, then mark all pages.
+          mark_all_pages = true;
+        }
+        if (UNLIKELY(num_pages > kPageSize)) {
+          delete[] vec_ptr;
+        }
+#else
+        mark_all_pages = true;
+#endif
+        if (mark_all_pages) {
+          for (size_t i = 0; i < num_pages; i++) {
+            *mark_begin_page = kMadvFreeMagic;
+            mark_begin_page += kPageSize;
+          }
+        }
+      }
+      PurgePages(mark_begin_page, len);
+      if (clear_bitmap) {
+        GetLiveBitmap()->ClearRange(
+            reinterpret_cast<mirror::Object*>(iter.first),
+            reinterpret_cast<mirror::Object*>(iter.second));
+      }
     }
+    madvise_list.clear();
   }
-  madvise_list.clear();
 
   // Iterate over regions again and actually make the from space regions
   // available for allocation.
@@ -628,6 +679,19 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
   evac_region_ = nullptr;
   num_non_free_regions_ += num_evac_regions_;
   num_evac_regions_ = 0;
+}
+
+void RegionSpace::PurgePages(void* address, size_t length) {
+  DCHECK(IsAligned<kPageSize>(address));
+  if (length == 0) {
+    return;
+  }
+#ifdef _WIN32
+  LOG(WARNING) << "PurgePages does not madvise on Windows.";
+#else
+  CHECK_NE(madvise(address, length, gPurgeAdvice), -1)
+      << "madvise failed: " << strerror(errno);
+#endif
 }
 
 void RegionSpace::CheckLiveBytesAgainstRegionBitmap(Region* r) {
@@ -867,6 +931,9 @@ bool RegionSpace::AllocNewTlab(Thread* self,
   if (r != nullptr) {
     uint8_t* start = pos != nullptr ? pos : r->Begin();
     DCHECK_ALIGNED(start, kObjectAlignment);
+    // If we are allocating a partially utilized TLAB, then the tlab is already
+    // clean from [pos, r->Top()).
+    ZeroAllocRange(pos != nullptr ? r->Top() : r->Begin(), *bytes_tl_bulk_allocated);
     r->is_a_tlab_ = true;
     r->thread_ = self;
     r->SetTop(r->End());
