@@ -56,26 +56,26 @@ inline mirror::Object* RegionSpace::AllocNonvirtual(size_t num_bytes,
   mirror::Object* obj;
   if (LIKELY(num_bytes <= kRegionSize)) {
     // Non-large object.
-    obj = (kForEvac ? evac_region_ : current_region_)->Alloc(num_bytes,
-                                                             bytes_allocated,
-                                                             usable_size,
-                                                             bytes_tl_bulk_allocated);
+    obj = (kForEvac ? evac_region_ : current_region_)->Alloc<kForEvac>(num_bytes,
+                                                                       bytes_allocated,
+                                                                       usable_size,
+                                                                       bytes_tl_bulk_allocated);
     if (LIKELY(obj != nullptr)) {
       return obj;
     }
     MutexLock mu(Thread::Current(), region_lock_);
     // Retry with current region since another thread may have updated
     // current_region_ or evac_region_.  TODO: fix race.
-    obj = (kForEvac ? evac_region_ : current_region_)->Alloc(num_bytes,
-                                                             bytes_allocated,
-                                                             usable_size,
-                                                             bytes_tl_bulk_allocated);
+    obj = (kForEvac ? evac_region_ : current_region_)->Alloc<kForEvac>(num_bytes,
+                                                                       bytes_allocated,
+                                                                       usable_size,
+                                                                       bytes_tl_bulk_allocated);
     if (LIKELY(obj != nullptr)) {
       return obj;
     }
     Region* r = AllocateRegion(kForEvac);
     if (LIKELY(r != nullptr)) {
-      obj = r->Alloc(num_bytes, bytes_allocated, usable_size, bytes_tl_bulk_allocated);
+      obj = r->Alloc<kForEvac>(num_bytes, bytes_allocated, usable_size, bytes_tl_bulk_allocated);
       CHECK(obj != nullptr);
       // Do our allocation before setting the region, this makes sure no threads race ahead
       // and fill in the region before we allocate the object. b/63153464
@@ -96,6 +96,47 @@ inline mirror::Object* RegionSpace::AllocNonvirtual(size_t num_bytes,
   return nullptr;
 }
 
+inline void RegionSpace::ZeroAllocRange(uint8_t* start, size_t length) {
+  if (gPurgeAdvice == MADV_DONTNEED) {
+    return;
+  }
+  uint8_t* const end = start + length;
+  DCHECK_LE(start, end);
+  uint8_t* page_begin = AlignUp(start, kPageSize);
+  uint8_t* const page_end = AlignDown(end, kPageSize);
+  DCHECK_LE(page_end, end);
+  DCHECK_GE(page_begin, start);
+  if (page_begin >= page_end) {
+    std::fill(start, end, 0);
+  } else {
+    // Coalesce non-zero pages and then call std::fill on it.
+    uint8_t* zero_range_begin = start;
+    uint8_t* zero_range_end = page_begin;
+    do {
+      if (*page_begin != 0) {
+        DCHECK(*page_begin == kMadvFreeMagic);
+        if (zero_range_begin == nullptr) {
+          zero_range_begin = zero_range_end = page_begin;
+        }
+        zero_range_end += kPageSize;
+      } else if (zero_range_begin != nullptr) {
+        DCHECK_GE(zero_range_end, zero_range_begin);
+        std::fill(zero_range_begin, zero_range_end, 0);
+        zero_range_begin = nullptr;
+      }
+      page_begin += kPageSize;
+    } while (page_begin < page_end);
+    if (zero_range_begin != nullptr) {
+      DCHECK_GT(zero_range_end, zero_range_begin);
+      DCHECK_EQ(zero_range_end, page_end);
+      std::fill(zero_range_begin, end, 0);
+    } else {
+      std::fill(page_end, end, 0);
+    }
+  }
+}
+
+template <bool kForEvac>
 inline mirror::Object* RegionSpace::Region::Alloc(size_t num_bytes,
                                                   /* out */ size_t* bytes_allocated,
                                                   /* out */ size_t* usable_size,
@@ -120,6 +161,10 @@ inline mirror::Object* RegionSpace::Region::Alloc(size_t num_bytes,
     *usable_size = num_bytes;
   }
   *bytes_tl_bulk_allocated = num_bytes;
+  // We don't need to clean allocations for evacuation as we memcpy in that case.
+  if (!kForEvac) {
+    ZeroAllocRange(old_top, num_bytes);
+  }
   return reinterpret_cast<mirror::Object*>(old_top);
 }
 
@@ -283,6 +328,14 @@ inline void RegionSpace::WalkNonLargeRegion(Visitor&& visitor, const Region* r) 
         reinterpret_cast<uintptr_t>(top),
         visitor);
   } else {
+    // When using MADV_FREE instead of MADV_DONTNEED for release regions' pages
+    // in ClearFromSpace(), we may have non-zero pages beyond r->Top().
+    // This can happen only with regions which are TLABs. Therefore, we can
+    // fetch the right pos from thread-local TLAB values.
+    if (r->is_a_tlab_) {
+      DCHECK(r->thread_ != nullptr);
+      top = r->thread_->GetTlabPos();
+    }
     while (pos < top) {
       mirror::Object* obj = reinterpret_cast<mirror::Object*>(pos);
       if (obj->GetClass<kDefaultVerifyFlags, kWithoutReadBarrier>() != nullptr) {
@@ -371,8 +424,13 @@ inline mirror::Object* RegionSpace::AllocLarge(size_t num_bytes,
                                          usable_size,
                                          bytes_tl_bulk_allocated);
   }
-  if (kForEvac && region != nullptr) {
-    TraceHeapSize();
+  if (kForEvac) {
+    if (region != nullptr) {
+      TraceHeapSize();
+    }
+  } else {
+    // We don't need to clean allocations for evacuation as we memcpy in that case.
+    ZeroAllocRange(reinterpret_cast<uint8_t*>(region), *bytes_tl_bulk_allocated);
   }
   return region;
 }
