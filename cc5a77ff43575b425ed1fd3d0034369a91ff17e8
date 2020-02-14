@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4a36cb0_d618e138",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-14T21:02:54Z",
+      "side": 1,
+      "message": "Looks like this is defined in bionic/libc/kernel/uapi/asm-generic/mman-common.h. Can you reuse that?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "cc5a77ff43575b425ed1fd3d0034369a91ff17e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ba6122_ac54405d",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-14T21:02:54Z",
+      "side": 1,
+      "message": "Please check errno before falling back to MADV_DONTNEED. You probably don\u0027t want to fall back if errno is EAGAIN or EPERM. I think you would get EINVAL if advise is not supported.",
+      "range": {
+        "startLine": 1235,
+        "startChar": 5,
+        "endLine": 1236,
+        "endChar": 18
+      },
+      "revId": "cc5a77ff43575b425ed1fd3d0034369a91ff17e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff4edf72_e5c86ba3",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-14T21:02:54Z",
+      "side": 1,
+      "message": "Do you need to check if start+length overflows? basically DCHECK_LE(start, end); ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 23,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "cc5a77ff43575b425ed1fd3d0034369a91ff17e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2253590_80dd694d",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-14T21:02:54Z",
+      "side": 1,
+      "message": "IIUC this code simply zeroes out a range between \"start\" and \"end\" page by page + the non-aligned parts. The code seems a bit too complicated for that. How about instead:\n\nif (start \u003c page_begin) std::fill(start, page_begin, 0);\nwhile (page_begin \u003c page_end) {\n  std::fill(page_begin, page_begin + kPageSize, 0);\n  page_begin +\u003d kPageSize;\n}\nif (page_end \u003c end) std::fill(page_end, end, 0);\n\nOr did I misunderstand the code?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 5
+      },
+      "revId": "cc5a77ff43575b425ed1fd3d0034369a91ff17e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599b71ef_1a225465",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-14T21:02:54Z",
+      "side": 1,
+      "message": "Is explanation so complicated that it can\u0027t be added now? If so please file a bug and add bug number next to TODO.",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 55
+      },
+      "revId": "cc5a77ff43575b425ed1fd3d0034369a91ff17e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
