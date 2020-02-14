@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b69fdde8_b4b1c421",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1242539
+      },
+      "writtenOn": "2020-02-14T23:08:18Z",
+      "side": 1,
+      "message": "I think you should sync your repo. I believe these are out of date changes.\n\nhttps://cs.corp.google.com/android/art/libnativeloader/library_namespaces.cpp?type\u003dcs\u0026q\u003dlibrary_name\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d47",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "5ba0ce515b8eac8b53985b67ca0954c19efebc66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
