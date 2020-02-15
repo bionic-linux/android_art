@@ -1,0 +1,10 @@
+Verified+1: Calin Juravle <calin@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Calin Juravle <calin@google.com>
+Submitted-at: Sat, 15 Feb 2020 01:18:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1235889
+Project: platform/art
+Branch: refs/heads/master
