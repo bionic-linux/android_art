@@ -22,6 +22,30 @@
       "revId": "6fda9e148694cceb2e5ef8b747d7d03bf28b24b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b929f58_49f67e07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-15T04:19:41Z",
+      "side": 1,
+      "message": "There are instructions in [1]. I condense them down to the following, but YMMV:\n\n  lunch aosp_arm64-eng\n  art/tools/buildbot-build.sh --target\n  art/tools/buildbot-teardown-device.sh \u0026\u0026 \\\n  art/tools/buildbot-cleanup-device.sh \u0026\u0026 \\\n  art/tools/buildbot-setup-device.sh \u0026\u0026 \\\n  art/tools/buildbot-sync.sh\n\nAnd then it should be enough to run some random test, say:\n\n  art/test/testrunner/testrunner.py --target --64 --optimizing -t 525\n\nThanks!\n\n[1] http://devops-console-stagingoss/android/platform/superproject/+/master:art/test/README.chroot.md",
+      "parentUuid": "17d9f8e2_f90b71a5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "6fda9e148694cceb2e5ef8b747d7d03bf28b24b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
