@@ -46,6 +46,30 @@
       "revId": "6fda9e148694cceb2e5ef8b747d7d03bf28b24b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3807d897_2d9a76a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-02-15T05:36:50Z",
+      "side": 1,
+      "message": "Thanks! I tested it and confirmed to pass the test.",
+      "parentUuid": "5b929f58_49f67e07",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "6fda9e148694cceb2e5ef8b747d7d03bf28b24b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
