@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74f4702c_58c25021",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-18T22:25:45Z",
+      "side": 1,
+      "message": "As I mentioned, how about using MADV_FREE for 4.12+ because MADV_FREE in old verions(4.5 ~ 4.11) fallback to MADV_DONTNEED in kernel unless system has swap. However, from 4.12, regardless of swap existence, MADV_FREE will work without fallback MADV_DONTNEED. Moreover, from 4.12, we uses file lru to reclaim MADV_FREE pages instead of anon lru, which ends up reclaim easier.",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
