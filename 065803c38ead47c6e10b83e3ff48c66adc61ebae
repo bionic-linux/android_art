@@ -22,6 +22,30 @@
       "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f51c48f_684b4bf5",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T22:46:44Z",
+      "side": 1,
+      "message": "I checked on Pixel 3 devices, which have kernel 4.9. But they also have swap, so it works. The performance improvement on Pixel 3 devices confirms this. Also, even if we use MADV_FREE on a \u003c4.12 kernel with no swap, it will anyway work as MADV_DONTNEED.\n\nIf you still think that it should be enabled only after",
+      "parentUuid": "74f4702c_58c25021",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
