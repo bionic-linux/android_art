@@ -46,6 +46,30 @@
       "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbb12a7_4c9d3bba",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T23:05:00Z",
+      "side": 1,
+      "message": "Sorry for the typo.\n\nI meant to say, If you still think that it should be enabled only on \u003e\u003d4.12, then will do so.",
+      "parentUuid": "3f51c48f_684b4bf5",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
