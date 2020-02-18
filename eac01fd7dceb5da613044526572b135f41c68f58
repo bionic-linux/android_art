@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "98c8c3ad_781b5d2f",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-18T19:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a2504b6_1a65caf9",
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88082b48_9cf5bfef",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "ClearFromSpace is called at end of every GC cycle to reclaim all the memory pages corresponding to freed space. There are objects in the memory range and some of them are read from during GC, so must be in the RAM, right?",
       "parentUuid": "44504c8a_6f6cfb78",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c75d158_a847453e",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-18T19:07:33Z",
+      "side": 1,
+      "message": "Depends on how GC works. For example, if we do gc very rarely, the objects in GC space had swapped by kernel\u0027s LRU or by AppCompaction. Thus, marking for the page will cause swapping-in which ends up charging the memory and freed later.",
+      "parentUuid": "0cb31604_e3da7b43",
       "range": {
         "startLine": 462,
         "startChar": 0,
