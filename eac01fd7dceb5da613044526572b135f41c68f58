@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2a2504b6_1a65caf9",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T19:00:24Z",
+      "side": 1,
+      "message": "Actually it\u0027s a problem only in cases where either the MADV_FREE is not implemented or for host builds (see the comment above).\n\nIdeally I wanted to define MADV_FREE as MADV_DONTNEED, which would inherently take care of the fall-back I have implemented in MAdviseFree() below. The reason I instead set it to 8 is so that golem results can be obtained, which are run on hosts.\n\nFixed in latest patch.",
+      "parentUuid": "f0e4430a_9e1bdf8b",
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88082b48_9cf5bfef",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-18T17:25:09Z",
       "side": 1,
       "message": "Can\u0027t we check kernel version \u003e\u003d 4.12 in build time? I hope so.\nIf it\u0027s possible, we could call MADV_DONTNEED or MADV_FREE selectively without relying on the error value.\nI also hope to see different function name(e.g., purge_range or whatever to cover both meaning) instead of MadviseFree because the implementation will support madv_dontneed as well as madvise_free.",
+      "range": {
+        "startLine": 1237,
+        "startChar": 0,
+        "endLine": 1238,
+        "endChar": 26
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91357102_ba0d81a3",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T19:00:24Z",
+      "side": 1,
+      "message": "It\u0027ll be fixed with the change I\u0027m proposing for the MADV_FREE macro above.\n\nChanged the name in latest patch.",
+      "parentUuid": "88082b48_9cf5bfef",
       "range": {
         "startLine": 1237,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0cb31604_e3da7b43",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T19:00:24Z",
+      "side": 1,
+      "message": "ClearFromSpace is called at end of every GC cycle to reclaim all the memory pages corresponding to freed space. There are objects in the memory range and some of them are read from during GC, so must be in the RAM, right?",
+      "parentUuid": "44504c8a_6f6cfb78",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a16500db_20d8f0c4",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0bd7bf_36d29092",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T19:00:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16500db_20d8f0c4",
+      "range": {
+        "startLine": 47,
+        "startChar": 25,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
