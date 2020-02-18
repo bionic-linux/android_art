@@ -197,6 +197,30 @@
     },
     {
       "key": {
+        "uuid": "0caec1e0_5e656eaf",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-18T19:30:55Z",
+      "side": 1,
+      "message": "GC runs in two phases. The first phase is where objects are traversed through. It is expected that some pages that are MADV_FREE\u0027ed are touched at this time. Immediately following this first phase is when we call ClearFromSpace.\n\nIdeally I\u0027d love not to mark the pages, but there isn\u0027t any guarantee that the first word (or any chosen word for that matter) is always non-zero and hence can be tested later during allocation.\n\nBy the end of first phase I can gather info on which pages were untouched, and then skip marking them here, but then the same problem as described in previous para.\n\nWhile it is possible that pages that were untouched during GC are re-faulted, but they will immediately after MADV_FREE\u0027ed as well. So will that not suffice?\n\nI\u0027d really appreciate any suggestions on how differently this can be implemented.",
+      "parentUuid": "2b013a16_ee182cfa",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a16500db_20d8f0c4",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
