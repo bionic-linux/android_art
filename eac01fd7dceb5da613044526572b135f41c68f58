@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "2b013a16_ee182cfa",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-18T19:11:20Z",
+      "side": 1,
+      "message": "IOW if kernel evicted the page from LRU before GC got to run then this marking will cause a page refault.",
+      "parentUuid": "6c75d158_a847453e",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a16500db_20d8f0c4",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
