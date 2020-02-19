@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28cfc503_a67227bf",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-19T00:50:06Z",
+      "side": 1,
+      "message": "Sorry, I couldn\u0027t understand the point of purge_advise_.\nWhy couldn\u0027t you do it?\n\n#if !defined(__WIN32__) \u0026\u0026 defined(MADV_FREE)\n  purge_advise \u003d MADV_FREE;\nelse\n  purge_advise \u003d MADV_DONTNEED;\n#endif\nret \u003d madvise(xxx, yyy, purge_advise);",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b77a095a_6d96ed07",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-19T00:50:06Z",
+      "side": 1,
+      "message": "Can\u0027t we add #ifdef trick you added above? So that, marking the page will work only if the madvise is MADV_FREE.",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 11
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554a4a30_7d5b3727",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-19T00:50:06Z",
+      "side": 1,
+      "message": "Questions goes here again. What\u0027s the point of keeping purge_advise_ variable instead of ifdef machinery? It seems I am missing something now.",
+      "range": {
+        "startLine": 665,
+        "startChar": 36,
+        "endLine": 665,
+        "endChar": 49
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
