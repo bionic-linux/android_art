@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Hans Boehm <hboehm@google.com>
+Code-Review+2: Orion Hodson <oth@google.com>
+Presubmit-Ready+1: Hans Boehm <hboehm@google.com>
+Submitted-by: Alex Light <allight@google.com>
+Submitted-at: Wed, 19 Feb 2020 20:52:31 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1239889
+Project: platform/art
+Branch: refs/heads/master
