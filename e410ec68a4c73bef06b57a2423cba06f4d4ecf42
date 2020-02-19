@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87845e98_6d6bddba",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-19T01:13:55Z",
+      "side": 1,
+      "message": "The problem is that treehugger tests are failing on some builds where MADV_FREE is defined in headers but the system is running an old kernel where it\u0027s not implemented. Furthermore, the earlier trick of checking the kernel version is also not working as there seems to be no way to identify kernel version statically. I have been recommended not to use LINUX_VERSION_CODE approach.\nThat\u0027s why I\u0027m having to actually perform a madvise(MADV_FREE) call at runtime, and then have a variable (purge_advice_) set accordingly.\n\nWould really appreciate if any cleaner workaround is available. Please suggest.",
+      "parentUuid": "28cfc503_a67227bf",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
