@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "21c5bc49_dd44b780",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-19T18:13:40Z",
+      "side": 1,
+      "message": "I\u0027ll use uname. Thanks for the suggestion.\n\nMinchan, I\u0027m still not sure why we should restrict the change to \u003e\u003d4.12? For kernel versions [4.5, 4.12) either the device will have swap and hence MADV_FREE will be effective, and otherwise it will fallback MADV_DONTNEED, which doesn\u0027t have any overhead.",
+      "parentUuid": "5a0cedf0_180014e2",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
