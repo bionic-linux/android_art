@@ -53,6 +53,7 @@ jclass WellKnownClasses::dalvik_system_EmulatedStackFrame;
 jclass WellKnownClasses::dalvik_system_InMemoryDexClassLoader;
 jclass WellKnownClasses::dalvik_system_PathClassLoader;
 jclass WellKnownClasses::dalvik_system_VMRuntime;
+jclass WellKnownClasses::java_io_FileDescriptor;
 jclass WellKnownClasses::java_lang_annotation_Annotation__array;
 jclass WellKnownClasses::java_lang_BootClassLoader;
 jclass WellKnownClasses::java_lang_ClassLoader;
@@ -75,8 +76,10 @@ jclass WellKnownClasses::java_lang_System;
 jclass WellKnownClasses::java_lang_Thread;
 jclass WellKnownClasses::java_lang_ThreadGroup;
 jclass WellKnownClasses::java_lang_Throwable;
+jclass WellKnownClasses::java_nio_Buffer;
 jclass WellKnownClasses::java_nio_ByteBuffer;
 jclass WellKnownClasses::java_nio_DirectByteBuffer;
+jclass WellKnownClasses::java_nio_NIOAccess;
 jclass WellKnownClasses::java_util_Collections;
 jclass WellKnownClasses::java_util_function_Consumer;
 jclass WellKnownClasses::libcore_reflect_AnnotationFactory;
@@ -336,6 +339,7 @@ void WellKnownClasses::Init(JNIEnv* env) {
   dalvik_system_PathClassLoader = CacheClass(env, "dalvik/system/PathClassLoader");
   dalvik_system_VMRuntime = CacheClass(env, "dalvik/system/VMRuntime");
 
+  java_io_FileDescriptor = CacheClass(env, "java/io/FileDescriptor");
   java_lang_annotation_Annotation__array = CacheClass(env, "[Ljava/lang/annotation/Annotation;");
   java_lang_BootClassLoader = CacheClass(env, "java/lang/BootClassLoader");
   java_lang_ClassLoader = CacheClass(env, "java/lang/ClassLoader");
@@ -358,8 +362,10 @@ void WellKnownClasses::Init(JNIEnv* env) {
   java_lang_Thread = CacheClass(env, "java/lang/Thread");
   java_lang_ThreadGroup = CacheClass(env, "java/lang/ThreadGroup");
   java_lang_Throwable = CacheClass(env, "java/lang/Throwable");
+  java_nio_Buffer = CacheClass(env, "java/nio/Buffer");
   java_nio_ByteBuffer = CacheClass(env, "java/nio/ByteBuffer");
   java_nio_DirectByteBuffer = CacheClass(env, "java/nio/DirectByteBuffer");
+  java_nio_NIOAccess = CacheClass(env, "java/nio/NIOAccess");
   java_util_Collections = CacheClass(env, "java/util/Collections");
   java_util_function_Consumer = CacheClass(env, "java/util/function/Consumer");
   libcore_reflect_AnnotationFactory = CacheClass(env, "libcore/reflect/AnnotationFactory");
@@ -496,6 +502,7 @@ void WellKnownClasses::Clear() {
   dalvik_system_EmulatedStackFrame = nullptr;
   dalvik_system_PathClassLoader = nullptr;
   dalvik_system_VMRuntime = nullptr;
+  java_io_FileDescriptor = nullptr;
   java_lang_annotation_Annotation__array = nullptr;
   java_lang_BootClassLoader = nullptr;
   java_lang_ClassLoader = nullptr;
@@ -519,8 +526,10 @@ void WellKnownClasses::Clear() {
   java_lang_ThreadGroup = nullptr;
   java_lang_Throwable = nullptr;
   java_util_Collections = nullptr;
+  java_nio_Buffer = nullptr;
   java_nio_ByteBuffer = nullptr;
   java_nio_DirectByteBuffer = nullptr;
+  java_nio_NIOAccess = nullptr;
   libcore_reflect_AnnotationFactory = nullptr;
   libcore_reflect_AnnotationMember = nullptr;
   libcore_util_EmptyArray = nullptr;

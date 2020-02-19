@@ -26,6 +26,7 @@
 #include "mirror/class-inl.h"
 #include "reflection.h"
 #include "runtime.h"
+#include "well_known_classes.h"
 
 namespace art {
 namespace hiddenapi {
@@ -265,9 +266,32 @@ ALWAYS_INLINE inline uint32_t CreateRuntimeFlags(T* member) REQUIRES_SHARED(Lock
   return detail::CreateRuntimeFlags_Impl(detail::GetDexFlags(member));
 }
 
+ALWAYS_INLINE inline bool IsNativeCorePlatformApi(ObjPtr<mirror::Class> cls)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  // Classes that have internals exposed by the native Core Platform API defined in
+  // libnativehelper.
+  //
+  // java.lang.ref.Reference and java.lang.String are also cached by libnativehelper, but do not
+  // require access to otherwise inaccessible fields or methods.
+  jclass native_core_platform_api_classes[] = {
+    WellKnownClasses::java_io_FileDescriptor,
+    WellKnownClasses::java_nio_Buffer,
+    WellKnownClasses::java_nio_NIOAccess,
+  };
+  for (jclass java_class : native_core_platform_api_classes) {
+    if (java_class != nullptr && cls == WellKnownClasses::ToClass(java_class)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Extracts hiddenapi runtime flags from access flags of ArtField.
 ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtField* field)
     REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (IsNativeCorePlatformApi(field->GetDeclaringClass())) {
+    return kAccCorePlatformApi;
+  }
   return field->GetAccessFlags() & kAccHiddenapiBits;
 }
 
@@ -275,6 +299,9 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtField* field)
 // Uses hardcoded values for intrinsics.
 ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (IsNativeCorePlatformApi(method->GetDeclaringClass())) {
+    return kAccCorePlatformApi;
+  }
   if (UNLIKELY(method->IsIntrinsic())) {
     switch (static_cast<Intrinsics>(method->GetIntrinsic())) {
       case Intrinsics::kSystemArrayCopyChar:

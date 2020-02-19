@@ -68,6 +68,7 @@ struct WellKnownClasses {
   static jclass dalvik_system_InMemoryDexClassLoader;
   static jclass dalvik_system_PathClassLoader;
   static jclass dalvik_system_VMRuntime;
+  static jclass java_io_FileDescriptor;
   static jclass java_lang_annotation_Annotation__array;
   static jclass java_lang_BootClassLoader;
   static jclass java_lang_ClassLoader;
@@ -90,10 +91,12 @@ struct WellKnownClasses {
   static jclass java_lang_Thread;
   static jclass java_lang_ThreadGroup;
   static jclass java_lang_Throwable;
-  static jclass java_util_Collections;
-  static jclass java_util_function_Consumer;
+  static jclass java_nio_Buffer;
   static jclass java_nio_ByteBuffer;
   static jclass java_nio_DirectByteBuffer;
+  static jclass java_nio_NIOAccess;
+  static jclass java_util_Collections;
+  static jclass java_util_function_Consumer;
   static jclass libcore_reflect_AnnotationFactory;
   static jclass libcore_reflect_AnnotationMember;
   static jclass libcore_util_EmptyArray;
