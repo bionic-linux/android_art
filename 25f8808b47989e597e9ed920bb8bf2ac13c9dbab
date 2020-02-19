@@ -16,6 +16,24 @@
       "revId": "25f8808b47989e597e9ed920bb8bf2ac13c9dbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f691bdf_2862ef05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-19T18:29:37Z",
+      "side": 1,
+      "message": "I\u0027ve put this CL (https://android-review.googlesource.com/c/platform/art/+/1239591) and https://android-review.googlesource.com/c/platform/art/+/1238372 in the same topic: https://android-review.googlesource.com/q/topic:%22revert-suffixed-dex2oat-usage-in-art-run-tests%22+(status:open%20OR%20status:merged).\n\nI\u0027ve kept https://android-review.googlesource.com/c/platform/art/+/1239726 out of it, as it can be submitted before independently.",
+      "parentUuid": "ee1f1293_21d71e23",
+      "revId": "25f8808b47989e597e9ed920bb8bf2ac13c9dbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
