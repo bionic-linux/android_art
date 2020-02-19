@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "abecdced_3051ac23",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-19T03:19:23Z",
+      "side": 1,
+      "message": "Correct me if I\u0027m wrong, but how can we figure out at build time whether the kernel on which the build will run has MADV_FREE implemented or not? I guess we can only guess that based on LINUX_VERSION_CODE, which is a defined macro in headers.\n\nThe particular builds that are failing in treehugger are art-linux-bionic-zipapex, which seems to use bionic libc (with MADV_FREE defined and LINUX_VERSION_CODE \u003e 4.5) on very old kernel versions.",
+      "parentUuid": "119c8e1a_ada3ced9",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
