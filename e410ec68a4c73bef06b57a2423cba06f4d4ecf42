@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2e073480_f159e708",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-02-19T08:16:41Z",
+      "side": 1,
+      "message": "We shouldn\u0027t be figuring out at build time the version of the kernel. Instead, we need to query at runtime.",
+      "parentUuid": "abecdced_3051ac23",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
