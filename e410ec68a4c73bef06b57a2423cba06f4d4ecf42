@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "1e872907_01f9e404",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-19T15:24:34Z",
+      "side": 1,
+      "message": "That means uname is only way to detect it?\nThen, hopefully, we could parse the version at bootstrap phase somewhere so keep it to use the variable without further calling of uname whenever we trigger events.",
+      "parentUuid": "2e073480_f159e708",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
