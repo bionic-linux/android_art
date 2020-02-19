@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee1f1293_21d71e23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-19T17:42:45Z",
+      "side": 1,
+      "message": "Make a topic of this and the other two CLs that address the ticket?",
+      "revId": "25f8808b47989e597e9ed920bb8bf2ac13c9dbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
