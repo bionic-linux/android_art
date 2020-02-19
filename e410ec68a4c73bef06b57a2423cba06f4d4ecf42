@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "356f862e_65b078a6",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-02-19T16:26:03Z",
+      "side": 1,
+      "message": "Not sure if ART can use this but libvintf seems to support Linux Kernel version run-time detection: https://cs.corp.google.com/aosp-android10/system/libvintf/include/vintf/RuntimeInfo.h?l\u003d56\n\nvintf::VintfObject::GetInstance()-\u003egetRuntimeInfo()-\u003ekernelVersion();",
+      "parentUuid": "1e872907_01f9e404",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
