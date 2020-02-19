@@ -70,6 +70,30 @@
       "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a562ecbf_533a3a93",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1275554
+      },
+      "writtenOn": "2020-02-19T00:33:45Z",
+      "side": 1,
+      "message": "Personally, I think that would be better with 4.12+ for start because it would make less noise across vendors which someone has swap, the others has no swap. Once we verify the upside in heavy memory pressure system(because 4.9 kernel is more popular in less memory system compared to 4.14), maybe we could backport the feature for swapless MADV_FREE to common kernel 4.9 if common kernel team still accepts it to 4.9 kernel. Ccing Suren and Tim to hear opinions.",
+      "parentUuid": "1fbb12a7_4c9d3bba",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "065803c38ead47c6e10b83e3ff48c66adc61ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
