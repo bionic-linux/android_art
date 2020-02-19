@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "5a0cedf0_180014e2",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-02-19T16:47:50Z",
+      "side": 1,
+      "message": "Unfortunately, we\u0027re cutting down on our dependencies. We\u0027re already using uname in a couple of places in ART, it shouldn\u0027t be a problem to do it for this case.",
+      "parentUuid": "356f862e_65b078a6",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 45
+      },
+      "revId": "e410ec68a4c73bef06b57a2423cba06f4d4ecf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77a095a_6d96ed07",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 10
