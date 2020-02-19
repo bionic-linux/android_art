@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dad128da_8f2e76b9",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-19T21:52:07Z",
+      "side": 0,
+      "message": "I think this belongs better here since it may be executed repeatedly in the args loop. There\u0027s no observable effect of that for these lines though, so it\u0027s optional.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 62
+      },
+      "revId": "3e79fe05ad384087f04a13462e5b2c1180544f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
