@@ -317,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "41ba426c_a2ce25db",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-20T22:41:00Z",
+      "side": 1,
+      "message": "This way I would require lesser number of madvise syscalls. Imagine, if a range of address space has inter-mixed swapped-out and in-RAM pages, then I would require doing multiple madvise syscalls. With this, I can just choose which pages to touch using mincore(2), and then make 1 madvise(MADV_FREE) call for the entire range.",
+      "parentUuid": "21721eb7_8f32f5c4",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a16500db_20d8f0c4",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
