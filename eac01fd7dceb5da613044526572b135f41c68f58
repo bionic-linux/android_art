@@ -269,6 +269,30 @@
     },
     {
       "key": {
+        "uuid": "709fe871_f90eb94d",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-02-20T22:27:17Z",
+      "side": 1,
+      "message": "BTW, isn\u0027t it enough to call MADV_FREE (without writing into), instead of MADV_DONTNEED, a swapped out page? I mean what is the behavior when a swapped out page is MADV_FREE\u0027ed? Is it still lazily freed, or given that it\u0027s anyway not in the RAM, it\u0027s immediately reclaimed from swap?",
+      "parentUuid": "761f5fc9_108dffb2",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 31
+      },
+      "revId": "eac01fd7dceb5da613044526572b135f41c68f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a16500db_20d8f0c4",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
