@@ -70,6 +70,24 @@
       "revId": "25f8808b47989e597e9ed920bb8bf2ac13c9dbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e604fd3_5b28f1d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-20T18:10:54Z",
+      "side": 1,
+      "message": "\u003e It might be wise to delay submitting this until https://r.android.com/1239726 has brewed for a bit then.\n\nThat was my plan. :-)",
+      "parentUuid": "2d7c8e92_06612438",
+      "revId": "25f8808b47989e597e9ed920bb8bf2ac13c9dbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

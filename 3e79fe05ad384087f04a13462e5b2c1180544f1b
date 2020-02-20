@@ -22,6 +22,30 @@
       "revId": "3e79fe05ad384087f04a13462e5b2c1180544f1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "596f953e_140e18b4",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-20T18:10:54Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "dad128da_8f2e76b9",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 62
+      },
+      "revId": "3e79fe05ad384087f04a13462e5b2c1180544f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
