@@ -1,0 +1,10 @@
+Verified+1: Roland Levillain <rpl@google.com>
+Code-Review+2: Martin Stjernholm <mast@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Roland Levillain <rpl@google.com>
+Submitted-at: Fri, 21 Feb 2020 13:02:51 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1241112
+Project: platform/art
+Branch: refs/heads/master
