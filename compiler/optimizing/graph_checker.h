@@ -69,6 +69,8 @@ class GraphChecker : public HGraphDelegateVisitor {
   void VisitTryBoundary(HTryBoundary* try_boundary) override;
   void VisitTypeConversion(HTypeConversion* instruction) override;
 
+  void VisitVecOperation(HVecOperation* instruction) override;
+
   void CheckTypeCheckBitstringInput(HTypeCheckInstruction* check,
                                     size_t input_pos,
                                     bool check_value,

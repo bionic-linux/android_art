@@ -339,6 +339,7 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
         has_try_catch_(false),
         has_monitor_operations_(false),
         has_simd_(false),
+        has_predicated_simd_support_(false),
         has_loops_(false),
         has_irreducible_loops_(false),
         dead_reference_safe_(dead_reference_safe),
@@ -618,6 +619,9 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   bool HasSIMD() const { return has_simd_; }
   void SetHasSIMD(bool value) { has_simd_ = value; }
 
+  bool HasPredicatedSIMDSupport() const { return has_predicated_simd_support_; }
+  void SetHasPredicatedSIMDSupport(bool value) { has_predicated_simd_support_ = value; }
+
   bool HasLoops() const { return has_loops_; }
   void SetHasLoops(bool value) { has_loops_ = value; }
 
@@ -719,6 +723,9 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   // code generators may have to be more careful spilling the wider
   // contents of SIMD registers.
   bool has_simd_;
+
+  // Flag whether predicated SIMD instructions are supported.
+  bool has_predicated_simd_support_;
 
   // Flag whether there are any loops in the graph. We can skip loop
   // optimization if it's false. It's only best effort to keep it up
@@ -1509,6 +1516,9 @@ class HLoopInformationOutwardIterator : public ValueObject {
   M(VecDotProd, VecOperation)                                           \
   M(VecLoad, VecMemoryOperation)                                        \
   M(VecStore, VecMemoryOperation)                                       \
+  M(VecPredSetAll, VecPredSetOperation)                                 \
+  M(VecPredWhile, VecPredSetOperation)                                  \
+  M(VecPredCondition, VecOperation)                                     \
 
 #define FOR_EACH_CONCRETE_INSTRUCTION_COMMON(M)                         \
   FOR_EACH_CONCRETE_INSTRUCTION_SCALAR_COMMON(M)                        \
@@ -1569,7 +1579,8 @@ class HLoopInformationOutwardIterator : public ValueObject {
   M(VecOperation, Instruction)                                          \
   M(VecUnaryOperation, VecOperation)                                    \
   M(VecBinaryOperation, VecOperation)                                   \
-  M(VecMemoryOperation, VecOperation)
+  M(VecMemoryOperation, VecOperation)                                   \
+  M(VecPredSetOperation, VecOperation)
 
 #define FOR_EACH_INSTRUCTION(M)                                         \
   FOR_EACH_CONCRETE_INSTRUCTION(M)                                      \

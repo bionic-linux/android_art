@@ -821,6 +821,7 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
     MaybeRecordStat(compilation_stats_.get(), MethodCompilationStat::kNotCompiledNoCodegen);
     return nullptr;
   }
+  graph->SetHasPredicatedSIMDSupport(codegen->SupportsPredicatedSIMD());
   codegen->GetAssembler()->cfi().SetEnabled(compiler_options.GenerateAnyDebugInfo());
 
   PassObserver pass_observer(graph,
@@ -946,6 +947,7 @@ CodeGenerator* OptimizingCompiler::TryCompileIntrinsic(
   if (codegen.get() == nullptr) {
     return nullptr;
   }
+  graph->SetHasPredicatedSIMDSupport(codegen->SupportsPredicatedSIMD());
   codegen->GetAssembler()->cfi().SetEnabled(compiler_options.GenerateAnyDebugInfo());
 
   PassObserver pass_observer(graph,

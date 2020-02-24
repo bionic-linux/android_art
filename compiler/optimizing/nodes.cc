@@ -2456,6 +2456,9 @@ HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
   if (HasSIMD()) {
     outer_graph->SetHasSIMD(true);
   }
+  if (HasPredicatedSIMDSupport()) {
+    outer_graph->SetHasPredicatedSIMDSupport(true);
+  }
 
   HInstruction* return_value = nullptr;
   if (GetBlocks().size() == 3) {

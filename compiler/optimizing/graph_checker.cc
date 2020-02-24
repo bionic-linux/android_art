@@ -1141,4 +1141,14 @@ void GraphChecker::VisitTypeConversion(HTypeConversion* instruction) {
   }
 }
 
+void GraphChecker::VisitVecOperation(HVecOperation* instruction) {
+  VisitInstruction(instruction);
+  if (instruction->MustBePredicated() != instruction->IsPredicated()) {
+    AddError(StringPrintf(
+             "%s %d predication mode is incorrect; see HVecOperation::MustBePredicated.",
+             instruction->DebugName(),
+             instruction->GetId()));
+  }
+}
+
 }  // namespace art
