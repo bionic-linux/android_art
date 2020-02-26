@@ -51,8 +51,8 @@ void Arm64JNIMacroAssembler::FinalizeCode() {
   ___ FinalizeCode();
 }
 
-void Arm64JNIMacroAssembler::GetCurrentThread(ManagedRegister tr) {
-  ___ Mov(reg_x(tr.AsArm64().AsXRegister()), reg_x(TR));
+void Arm64JNIMacroAssembler::GetCurrentThread(ManagedRegister dest) {
+  ___ Mov(reg_x(dest.AsArm64().AsXRegister()), reg_x(TR));
 }
 
 void Arm64JNIMacroAssembler::GetCurrentThread(FrameOffset offset, ManagedRegister /* scratch */) {
@@ -162,23 +162,18 @@ void Arm64JNIMacroAssembler::StoreRawPtr(FrameOffset offs, ManagedRegister m_src
   StoreToOffset(src.AsXRegister(), SP, offs.Int32Value());
 }
 
-void Arm64JNIMacroAssembler::StoreImmediateToFrame(FrameOffset offs,
-                                                   uint32_t imm,
-                                                   ManagedRegister m_scratch) {
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  CHECK(scratch.IsXRegister()) << scratch;
-  LoadImmediate(scratch.AsXRegister(), imm);
-  StoreWToOffset(kStoreWord, scratch.AsOverlappingWRegister(), SP,
-                 offs.Int32Value());
+void Arm64JNIMacroAssembler::StoreImmediateToFrame(FrameOffset offs, uint32_t imm) {
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireW();
+  ___ Mov(temp.X(), imm);  // TODO: Use W register.
+  ___ Str(temp, MEM_OP(reg_x(SP), offs.Int32Value()));
 }
 
-void Arm64JNIMacroAssembler::StoreStackOffsetToThread(ThreadOffset64 tr_offs,
-                                                      FrameOffset fr_offs,
-                                                      ManagedRegister m_scratch) {
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  CHECK(scratch.IsXRegister()) << scratch;
-  AddConstant(scratch.AsXRegister(), SP, fr_offs.Int32Value());
-  StoreToOffset(scratch.AsXRegister(), TR, tr_offs.Int32Value());
+void Arm64JNIMacroAssembler::StoreStackOffsetToThread(ThreadOffset64 tr_offs, FrameOffset fr_offs) {
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
+  ___ Add(temp, reg_x(SP), fr_offs.Int32Value());
+  ___ Str(temp, MEM_OP(reg_x(TR), tr_offs.Int32Value()));
 }
 
 void Arm64JNIMacroAssembler::StoreStackPointerToThread(ThreadOffset64 tr_offs) {
@@ -188,15 +183,10 @@ void Arm64JNIMacroAssembler::StoreStackPointerToThread(ThreadOffset64 tr_offs) {
   ___ Str(temp, MEM_OP(reg_x(TR), tr_offs.Int32Value()));
 }
 
-void Arm64JNIMacroAssembler::StoreSpanning(FrameOffset dest_off,
-                                           ManagedRegister m_source,
-                                           FrameOffset in_off,
-                                           ManagedRegister m_scratch) {
-  Arm64ManagedRegister source = m_source.AsArm64();
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  StoreToOffset(source.AsXRegister(), SP, dest_off.Int32Value());
-  LoadFromOffset(scratch.AsXRegister(), SP, in_off.Int32Value());
-  StoreToOffset(scratch.AsXRegister(), SP, dest_off.Int32Value() + 8);
+void Arm64JNIMacroAssembler::StoreSpanning(FrameOffset dest_off ATTRIBUTE_UNUSED,
+                                           ManagedRegister m_source ATTRIBUTE_UNUSED,
+                                           FrameOffset in_off ATTRIBUTE_UNUSED) {
+  UNIMPLEMENTED(FATAL);  // this case only currently exists for ARM
 }
 
 // Load routines.
@@ -365,13 +355,11 @@ void Arm64JNIMacroAssembler::Move(ManagedRegister m_dst, ManagedRegister m_src, 
   }
 }
 
-void Arm64JNIMacroAssembler::CopyRawPtrFromThread(FrameOffset fr_offs,
-                                                  ThreadOffset64 tr_offs,
-                                                  ManagedRegister m_scratch) {
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  CHECK(scratch.IsXRegister()) << scratch;
-  LoadFromOffset(scratch.AsXRegister(), TR, tr_offs.Int32Value());
-  StoreToOffset(scratch.AsXRegister(), SP, fr_offs.Int32Value());
+void Arm64JNIMacroAssembler::CopyRawPtrFromThread(FrameOffset fr_offs, ThreadOffset64 tr_offs) {
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
+  ___ Ldr(temp, MEM_OP(reg_x(TR), tr_offs.Int32Value()));
+  ___ Str(temp, MEM_OP(sp, fr_offs.Int32Value()));
 }
 
 void Arm64JNIMacroAssembler::CopyRawPtrToThread(ThreadOffset64 tr_offs,
@@ -539,35 +527,34 @@ void Arm64JNIMacroAssembler::VerifyObject(FrameOffset /*src*/, bool /*could_be_n
   // TODO: not validating references.
 }
 
-void Arm64JNIMacroAssembler::Jump(ManagedRegister m_base, Offset offs, ManagedRegister m_scratch) {
+void Arm64JNIMacroAssembler::Jump(ManagedRegister m_base, Offset offs) {
   Arm64ManagedRegister base = m_base.AsArm64();
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
   CHECK(base.IsXRegister()) << base;
-  CHECK(scratch.IsXRegister()) << scratch;
-  LoadFromOffset(scratch.AsXRegister(), base.AsXRegister(), offs.Int32Value());
-  ___ Br(reg_x(scratch.AsXRegister()));
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
+  ___ Ldr(temp, MEM_OP(reg_x(base.AsXRegister()), offs.Int32Value()));
+  ___ Br(temp);
 }
 
-void Arm64JNIMacroAssembler::Call(ManagedRegister m_base, Offset offs, ManagedRegister m_scratch) {
+void Arm64JNIMacroAssembler::Call(ManagedRegister m_base, Offset offs) {
   Arm64ManagedRegister base = m_base.AsArm64();
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
   CHECK(base.IsXRegister()) << base;
-  CHECK(scratch.IsXRegister()) << scratch;
-  LoadFromOffset(scratch.AsXRegister(), base.AsXRegister(), offs.Int32Value());
-  ___ Blr(reg_x(scratch.AsXRegister()));
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
+  ___ Ldr(temp, MEM_OP(reg_x(base.AsXRegister()), offs.Int32Value()));
+  ___ Blr(temp);
 }
 
-void Arm64JNIMacroAssembler::Call(FrameOffset base, Offset offs, ManagedRegister m_scratch) {
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  CHECK(scratch.IsXRegister()) << scratch;
+void Arm64JNIMacroAssembler::Call(FrameOffset base, Offset offs) {
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
   // Call *(*(SP + base) + offset)
-  LoadFromOffset(scratch.AsXRegister(), SP, base.Int32Value());
-  LoadFromOffset(scratch.AsXRegister(), scratch.AsXRegister(), offs.Int32Value());
-  ___ Blr(reg_x(scratch.AsXRegister()));
+  ___ Ldr(temp, MEM_OP(reg_x(SP), base.Int32Value()));
+  ___ Ldr(temp, MEM_OP(temp, offs.Int32Value()));
+  ___ Blr(temp);
 }
 
-void Arm64JNIMacroAssembler::CallFromThread(ThreadOffset64 offset ATTRIBUTE_UNUSED,
-                                            ManagedRegister scratch ATTRIBUTE_UNUSED) {
+void Arm64JNIMacroAssembler::CallFromThread(ThreadOffset64 offset ATTRIBUTE_UNUSED) {
   UNIMPLEMENTED(FATAL) << "Unimplemented Call() variant";
 }
 
@@ -601,23 +588,23 @@ void Arm64JNIMacroAssembler::CreateHandleScopeEntry(ManagedRegister m_out_reg,
 
 void Arm64JNIMacroAssembler::CreateHandleScopeEntry(FrameOffset out_off,
                                                     FrameOffset handle_scope_offset,
-                                                    ManagedRegister m_scratch,
                                                     bool null_allowed) {
-  Arm64ManagedRegister scratch = m_scratch.AsArm64();
-  CHECK(scratch.IsXRegister()) << scratch;
+  UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
+  Register temp = temps.AcquireX();
   if (null_allowed) {
-    LoadWFromOffset(kLoadWord, scratch.AsOverlappingWRegister(), SP,
-                    handle_scope_offset.Int32Value());
+    // TODO: Clean this up; load to temp2 (W register), use xzr for CSEL, reorder ADD earlier.
+    Register temp2 = temps.AcquireW();
+    ___ Ldr(temp.W(), MEM_OP(reg_x(SP), handle_scope_offset.Int32Value()));
     // Null values get a handle scope entry value of 0.  Otherwise, the handle scope entry is
     // the address in the handle scope holding the reference.
     // e.g. scratch = (scratch == 0) ? 0 : (SP+handle_scope_offset)
-    ___ Cmp(reg_w(scratch.AsOverlappingWRegister()), 0);
-    // Move this logic in add constants with flags.
-    AddConstant(scratch.AsXRegister(), SP, handle_scope_offset.Int32Value(), ne);
+    ___ Cmp(temp.W(), 0);
+    ___ Add(temp2.X(), reg_x(SP), handle_scope_offset.Int32Value());
+    ___ Csel(temp, temp2.X(), temp, ne);
   } else {
-    AddConstant(scratch.AsXRegister(), SP, handle_scope_offset.Int32Value(), al);
+    ___ Add(temp, reg_x(SP), handle_scope_offset.Int32Value());
   }
-  StoreToOffset(scratch.AsXRegister(), SP, out_off.Int32Value());
+  ___ Str(temp, MEM_OP(reg_x(SP), out_off.Int32Value()));
 }
 
 void Arm64JNIMacroAssembler::LoadReferenceFromHandleScope(ManagedRegister m_out_reg,
@@ -702,8 +689,7 @@ void Arm64JNIMacroAssembler::EmitExceptionPoll(Arm64Exception* exception) {
 
 void Arm64JNIMacroAssembler::BuildFrame(size_t frame_size,
                                         ManagedRegister method_reg,
-                                        ArrayRef<const ManagedRegister> callee_save_regs,
-                                        const ManagedRegisterEntrySpills& entry_spills) {
+                                        ArrayRef<const ManagedRegister> callee_save_regs) {
   // Setup VIXL CPURegList for callee-saves.
   CPURegList core_reg_list(CPURegister::kRegister, kXRegSize, 0);
   CPURegList fp_reg_list(CPURegister::kVRegister, kDRegSize, 0);
@@ -734,28 +720,6 @@ void Arm64JNIMacroAssembler::BuildFrame(size_t frame_size,
     // Write ArtMethod*
     DCHECK(X0 == method_reg.AsArm64().AsXRegister());
     StoreToOffset(X0, SP, 0);
-  }
-
-  // Write out entry spills
-  int32_t offset = frame_size + static_cast<size_t>(kArm64PointerSize);
-  for (const ManagedRegisterSpill& spill : entry_spills) {
-    Arm64ManagedRegister reg = spill.AsArm64();
-    if (reg.IsNoRegister()) {
-      // only increment stack offset.
-      offset += spill.getSize();
-    } else if (reg.IsXRegister()) {
-      StoreToOffset(reg.AsXRegister(), SP, offset);
-      offset += 8;
-    } else if (reg.IsWRegister()) {
-      StoreWToOffset(kStoreWord, reg.AsWRegister(), SP, offset);
-      offset += 4;
-    } else if (reg.IsDRegister()) {
-      StoreDToOffset(reg.AsDRegister(), SP, offset);
-      offset += 8;
-    } else if (reg.IsSRegister()) {
-      StoreSToOffset(reg.AsSRegister(), SP, offset);
-      offset += 4;
-    }
   }
 }
 

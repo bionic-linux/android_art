@@ -40,9 +40,8 @@ class X86_64ManagedRuntimeCallingConvention final : public ManagedRuntimeCalling
   bool IsCurrentParamOnStack() override;
   ManagedRegister CurrentParamRegister() override;
   FrameOffset CurrentParamStackOffset() override;
-  const ManagedRegisterEntrySpills& EntrySpills() override;
+
  private:
-  ManagedRegisterEntrySpills entry_spills_;
   DISALLOW_COPY_AND_ASSIGN(X86_64ManagedRuntimeCallingConvention);
 };
 

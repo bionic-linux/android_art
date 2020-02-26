@@ -44,8 +44,7 @@ class X86JNIMacroAssembler final : public JNIMacroAssemblerFwd<X86Assembler, Poi
   // Emit code that will create an activation on the stack
   void BuildFrame(size_t frame_size,
                   ManagedRegister method_reg,
-                  ArrayRef<const ManagedRegister> callee_save_regs,
-                  const ManagedRegisterEntrySpills& entry_spills) override;
+                  ArrayRef<const ManagedRegister> callee_save_regs) override;
 
   // Emit code that will remove an activation from the stack
   void RemoveFrame(size_t frame_size,
@@ -60,16 +59,13 @@ class X86JNIMacroAssembler final : public JNIMacroAssemblerFwd<X86Assembler, Poi
   void StoreRef(FrameOffset dest, ManagedRegister src) override;
   void StoreRawPtr(FrameOffset dest, ManagedRegister src) override;
 
-  void StoreImmediateToFrame(FrameOffset dest, uint32_t imm, ManagedRegister scratch) override;
+  void StoreImmediateToFrame(FrameOffset dest, uint32_t imm) override;
 
-  void StoreStackOffsetToThread(ThreadOffset32 thr_offs,
-                                FrameOffset fr_offs,
-                                ManagedRegister scratch) override;
+  void StoreStackOffsetToThread(ThreadOffset32 thr_offs, FrameOffset fr_offs) override;
 
   void StoreStackPointerToThread(ThreadOffset32 thr_offs) override;
 
-  void StoreSpanning(FrameOffset dest, ManagedRegister src, FrameOffset in_off,
-                     ManagedRegister scratch) override;
+  void StoreSpanning(FrameOffset dest, ManagedRegister src, FrameOffset in_off) override;
 
   // Load routines
   void Load(ManagedRegister dest, FrameOffset src, size_t size) override;
@@ -88,9 +84,7 @@ class X86JNIMacroAssembler final : public JNIMacroAssemblerFwd<X86Assembler, Poi
   // Copying routines
   void Move(ManagedRegister dest, ManagedRegister src, size_t size) override;
 
-  void CopyRawPtrFromThread(FrameOffset fr_offs,
-                            ThreadOffset32 thr_offs,
-                            ManagedRegister scratch) override;
+  void CopyRawPtrFromThread(FrameOffset fr_offs, ThreadOffset32 thr_offs) override;
 
   void CopyRawPtrToThread(ThreadOffset32 thr_offs, FrameOffset fr_offs, ManagedRegister scratch)
       override;
@@ -123,20 +117,23 @@ class X86JNIMacroAssembler final : public JNIMacroAssemblerFwd<X86Assembler, Poi
   void ZeroExtend(ManagedRegister mreg, size_t size) override;
 
   // Exploit fast access in managed code to Thread::Current()
-  void GetCurrentThread(ManagedRegister tr) override;
+  void GetCurrentThread(ManagedRegister dest) override;
   void GetCurrentThread(FrameOffset dest_offset, ManagedRegister scratch) override;
 
   // Set up out_reg to hold a Object** into the handle scope, or to be null if the
   // value is null and null_allowed. in_reg holds a possibly stale reference
   // that can be used to avoid loading the handle scope entry to see if the value is
   // null.
-  void CreateHandleScopeEntry(ManagedRegister out_reg, FrameOffset handlescope_offset,
-                              ManagedRegister in_reg, bool null_allowed) override;
+  void CreateHandleScopeEntry(ManagedRegister out_reg,
+                              FrameOffset handlescope_offset,
+                              ManagedRegister in_reg,
+                              bool null_allowed) override;
 
   // Set up out_off to hold a Object** into the handle scope, or to be null if the
   // value is null and null_allowed.
-  void CreateHandleScopeEntry(FrameOffset out_off, FrameOffset handlescope_offset,
-                              ManagedRegister scratch, bool null_allowed) override;
+  void CreateHandleScopeEntry(FrameOffset out_off,
+                              FrameOffset handlescope_offset,
+                              bool null_allowed) override;
 
   // src holds a handle scope entry (Object**) load this into dst
   void LoadReferenceFromHandleScope(ManagedRegister dst, ManagedRegister src) override;
@@ -147,12 +144,12 @@ class X86JNIMacroAssembler final : public JNIMacroAssemblerFwd<X86Assembler, Poi
   void VerifyObject(FrameOffset src, bool could_be_null) override;
 
   // Jump to address held at [base+offset] (used for tail calls).
-  void Jump(ManagedRegister base, Offset offset, ManagedRegister scratch) override;
+  void Jump(ManagedRegister base, Offset offset) override;
 
   // Call to address held at [base+offset]
-  void Call(ManagedRegister base, Offset offset, ManagedRegister scratch) override;
-  void Call(FrameOffset base, Offset offset, ManagedRegister scratch) override;
-  void CallFromThread(ThreadOffset32 offset, ManagedRegister scratch) override;
+  void Call(ManagedRegister base, Offset offset) override;
+  void Call(FrameOffset base, Offset offset) override;
+  void CallFromThread(ThreadOffset32 offset) override;
 
   // Generate code to check if Thread::Current()->exception_ is non-null
   // and branch to a ExceptionSlowPath if it is.
