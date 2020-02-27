@@ -75,7 +75,7 @@ elif [[ $mode == "target" ]]; then
     exit 1
   fi
   make_command="build/soong/soong_ui.bash --make-mode $j_arg $extra_args $showcommands build-art-target-tests $common_targets"
-  make_command+=" libnetd_client-target toybox toolbox sh"
+  make_command+=" toybox toolbox sh"
   make_command+=" debuggerd su gdbserver"
   make_command+=" libstdc++ "
   make_command+=" ${ANDROID_PRODUCT_OUT#"${ANDROID_BUILD_TOP}/"}/system/etc/public.libraries.txt"

@@ -105,6 +105,10 @@ $(call add-clean-step, find $(OUT_DIR) -name "*.oat" -o -name "*.odex" -o -name 
 # Remove empty dir for art APEX because it will be created on demand while mounting release|debug
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/apex/com.android.art)
 
+# Remove `libnetd_client`, which is no longer built nor installed as
+# part of ART's testing.
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/lib*/libnetd_client.so)
+
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
