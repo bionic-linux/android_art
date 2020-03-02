@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba14190e_d15368d4",
+        "filename": "compiler/jni/jni_cfi_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-02T08:33:47Z",
+      "side": 1,
+      "message": "nit: add comment what this is for",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "819e6e6a_d26d929b",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-02T08:33:47Z",
+      "side": 1,
+      "message": "Should you submit this fix standalone, in case it makes other tests fail?",
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a383f239_c9bbc391",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-02T08:33:47Z",
+      "side": 1,
+      "message": "nit: add a comment. Looks like it\u0027s the same code as in the JNI assembler? Refactor?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c012a834_fd4dd0cd",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-02T08:33:47Z",
+      "side": 1,
+      "message": "In the compiler, I think we have TMP which is R11. Is that available?",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
