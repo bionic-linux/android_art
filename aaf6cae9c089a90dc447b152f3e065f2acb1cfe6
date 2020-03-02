@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d90cf082_39b71e9d",
+        "filename": "compiler/jni/jni_cfi_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-02T10:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba14190e_d15368d4",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "819e6e6a_d26d929b",
         "filename": "compiler/utils/assembler_test_base.h",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcad3c5d_f0b7491e",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-02T10:22:31Z",
+      "side": 1,
+      "message": "That\u0027s unlikely. I do run \"Test: m test-art-host-gtests\" and these assembler tests are running only on host.",
+      "parentUuid": "819e6e6a_d26d929b",
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d2ddd80c_499080ae",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-02T10:22:31Z",
+      "side": 1,
+      "message": "Added a comment.\n\nNot refactoring: This is supposed to test the assembler, so relying on code from JNI compiler would be wrong. (And the code in JNI compiler has several TODO comments and as such should be rewritten in near future anyway.)",
+      "parentUuid": "a383f239_c9bbc391",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c012a834_fd4dd0cd",
         "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5bc16d_f7860594",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-02T10:22:31Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "c012a834_fd4dd0cd",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "aaf6cae9c089a90dc447b152f3e065f2acb1cfe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
