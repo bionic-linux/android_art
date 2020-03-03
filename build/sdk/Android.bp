@@ -26,6 +26,7 @@ sdk {
     ],
 }
 
+/*
 // Exported host tools and libraries.
 module_exports {
     name: "art-module-host-exports",
@@ -51,6 +52,7 @@ module_exports {
         "dex2oatd",
     ],
 }
+*/
 
 // Exported tests and supporting libraries
 module_exports {
