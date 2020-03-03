@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2f04b4_dc824711",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-03T12:51:17Z",
+      "side": 1,
+      "message": "Can you add a comment why this is commented out? (ie copy the commit message).",
+      "revId": "d234faec199cd6b0e1cb8c83a498f9d5c8bfbb17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
