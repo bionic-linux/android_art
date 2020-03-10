@@ -41,8 +41,10 @@
 #include "art_method-inl.h"
 #include "base/enums.h"
 #include "base/globals.h"
+#include "base/locks.h"
 #include "base/macros.h"
 #include "base/mutex-inl.h"
+#include "class_linker.h"
 #include "deopt_manager.h"
 #include "dex/code_item_accessors-inl.h"
 #include "dex/code_item_accessors.h"
@@ -55,10 +57,14 @@
 #include "events-inl.h"
 #include "gc_root-inl.h"
 #include "handle.h"
+#include "handle_scope.h"
 #include "jit/jit.h"
+#include "jit/profiling_info.h"
+#include "jni.h"
 #include "jni/jni_internal.h"
 #include "jvmti.h"
 #include "mirror/class-inl.h"
+#include "mirror/class-refvisitor-inl.h"
 #include "mirror/class_loader.h"
 #include "mirror/object-inl.h"
 #include "mirror/object_array-inl.h"
@@ -73,6 +79,7 @@
 #include "thread-current-inl.h"
 #include "thread.h"
 #include "thread_list.h"
+#include "thread_state.h"
 #include "ti_logging.h"
 #include "ti_stack.h"
 #include "ti_thread.h"
@@ -82,6 +89,111 @@
 #include "verifier/method_verifier-inl.h"
 
 namespace openjdkjvmti {
+
+jvmtiError MethodUtil::VisitMethodArgumentProfiles(
+    jvmtiEnv* jvmti,
+    jclass selector,
+    void (*visitor_no_profile)(
+        jvmtiEnv* jvmti, JNIEnv* jni, jclass decl_class, jmethodID meth, void* thunk),
+    void (*visitor_profile)(jvmtiEnv* jvmti,
+                            JNIEnv* jni,
+                            jclass decl_class,
+                            jmethodID meth,
+                            jint count,
+                            jint num_arguments,
+                            jboolean* method_parameter_megamorphic,
+                            const char* const value_field,
+                            jint* num_recorded_parameter_values,
+                            jvalue** parameter_values,
+                            void* thunk),
+    void* thunk) {
+  if (jvmti == nullptr) {
+    return ERR(INVALID_ENVIRONMENT);
+  }
+  art::Thread* self = art::Thread::Current();
+  if (self == nullptr) {
+    return ERR(UNATTACHED_THREAD);
+  }
+  if (visitor_no_profile == nullptr) {
+    visitor_no_profile = [](jvmtiEnv*, JNIEnv*, jclass, jmethodID, void*) {};
+  }
+  if (visitor_profile == nullptr) {
+    visitor_profile =
+        [](jvmtiEnv*, JNIEnv*, jclass, jmethodID, jint, jint, jboolean*, const char* const, jint*, jvalue**, void*) {};
+  }
+  art::ScopedObjectAccess soa(self);
+  art::JNIEnvExt* env = self->GetJniEnv();
+  auto visit_class =
+      [&](art::ObjPtr<art::mirror::Class> klass) REQUIRES_SHARED(art::Locks::mutator_lock_) {
+        art::StackHandleScope<1> hs(self);
+        art::Handle<art::mirror::Class> k(hs.NewHandle(klass));
+        ScopedLocalRef<jclass> slr(env, static_cast<jclass>(env->NewLocalRef(k.Get())));
+        k->VisitMethods(
+            [&](art::ArtMethod* method) REQUIRES_SHARED(art::Locks::mutator_lock_) {
+              jmethodID method_id = art::jni::EncodeArtMethod(method);
+              const char* const shorty = method->GetInterfaceMethodIfProxy(art::kRuntimePointerSize)->GetShorty() + 1;
+              art::ProfilingInfo* pi = method->GetProfilingInfo(art::kRuntimePointerSize);
+              if (pi == nullptr) {
+                art::ScopedThreadSuspension sts(self, art::ThreadState::kNative);
+                visitor_no_profile(jvmti, env, slr.get(), method_id, thunk);
+                return;
+              } else {
+                std::vector<jboolean> megamorphics;
+                std::vector<jint> num_records;
+                std::vector<std::vector<jvalue>> records;
+                std::vector<jvalue*> res_records;
+                for (art::ParameterInfo* param = pi->GetParameterInfoArray();
+                     param != pi->GetParameterInfoArray() + pi->GetParameterCount();
+                     ++param) {
+                  art::ReaderMutexLock mu(self, param->mutex_);
+                  megamorphics.push_back(param->IsMegamorphic());
+                  jint recs = param->num_set_;
+                  num_records.push_back(recs);
+                  std::vector<jvalue> cur_record;
+                  DCHECK(recs == 0 || param->GetType() != art::Primitive::kPrimNot)
+                      << recs << ", type: " << param->GetType();
+                  for (jint i = 0; i < recs; ++i) {
+                    cur_record.push_back(jvalue { .j = param->data_[i].GetJ() });
+                  }
+                  records.emplace_back(std::move(cur_record));
+                }
+                for (auto rec : records) {
+                  res_records.push_back(rec.data());
+                }
+                DCHECK_EQ(megamorphics.size(), num_records.size());
+                DCHECK_EQ(megamorphics.size(), res_records.size());
+                art::ScopedThreadSuspension sts(self, art::ThreadState::kNative);
+                visitor_profile(jvmti,
+                                env,
+                                slr.get(),
+                                method_id,
+                                pi->GetBaselineHotnessCount(),
+                                megamorphics.size(),
+                                megamorphics.data(),
+                                shorty,
+                                num_records.data(),
+                                res_records.data(),
+                                thunk);
+              }
+            },
+            art::kRuntimePointerSize);
+        return true;
+      };
+  if (selector != nullptr) {
+    art::StackHandleScope<2> hs(self);
+    art::Handle<art::mirror::Object> sel(hs.NewHandle(self->DecodeJObject(selector)));
+    if (!sel->IsClass()) {
+      JVMTI_LOG(INFO, jvmti) << "Selector must be null or a jclass for VisitMethodArgumentProfiles";
+      return ERR(ILLEGAL_ARGUMENT);
+    }
+    art::MutableHandle<art::mirror::Class> klass(hs.NewHandle(sel->AsClass()));
+    klass->VisitClassHeirarchy(visit_class);
+  } else {
+    art::ClassFuncVisitor cfv(visit_class);
+    art::Runtime::Current()->GetClassLinker()->VisitClassesWithoutClassesLock(&cfv);
+  }
+  return OK;
+}
 
 struct TiMethodCallback : public art::MethodCallback {
   void RegisterNativeMethod(art::ArtMethod* method,

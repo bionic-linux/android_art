@@ -1160,6 +1160,10 @@ class MANAGED Class final : public Object {
   template<ReadBarrierOption kReadBarrierOption = kWithReadBarrier, class Visitor>
   void VisitFields(Visitor visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Visit this class and all the supertypes.
+  template<ReadBarrierOption kReadBarrierOption = kWithReadBarrier, class Visitor>
+  void VisitClassHeirarchy(Visitor visitor) REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Get one of the primitive classes.
   static ObjPtr<mirror::Class> GetPrimitiveClass(ObjPtr<mirror::String> name)
       REQUIRES_SHARED(Locks::mutator_lock_);

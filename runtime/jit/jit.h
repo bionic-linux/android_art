@@ -39,6 +39,7 @@ class ClassLinker;
 class DexFile;
 class OatDexFile;
 struct RuntimeArgumentMap;
+class ShadowFrame;
 union JValue;
 
 namespace mirror {
@@ -302,7 +303,7 @@ class Jit {
   void WaitForCompilationToFinish(Thread* self);
 
   // Profiling methods.
-  void MethodEntered(Thread* thread, ArtMethod* method)
+  void MethodEntered(Thread* thread, ArtMethod* method, ShadowFrame* frame)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   ALWAYS_INLINE void AddSamples(Thread* self,

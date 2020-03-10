@@ -91,6 +91,18 @@ void Class::VisitFields(Visitor visitor) {
   }
 }
 
+
+// Visit this class and all the supertypes.
+template<ReadBarrierOption kReadBarrierOption, class Visitor>
+void Class::VisitClassHeirarchy(Visitor visitor) {
+  StackHandleScope<1> hs(Thread::Current());
+  MutableHandle<mirror::Class> cur(hs.NewHandle(this));
+  for (; !cur->IsObjectClass(); cur.Assign(cur->GetSuperClass())) {
+    visitor(cur.Get());
+  }
+  visitor(cur.Get());
+}
+
 }  // namespace mirror
 }  // namespace art
 

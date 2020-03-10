@@ -2190,7 +2190,7 @@ extern "C" const void* artQuickGenericJniTrampoline(Thread* self,
   // We can now walk the stack if needed by JIT GC from MethodEntered() for JIT-on-first-use.
   jit::Jit* jit = runtime->GetJit();
   if (jit != nullptr) {
-    jit->MethodEntered(self, called);
+    jit->MethodEntered(self, called, nullptr);
   }
 
   // We can set the entrypoint of a native method to generic JNI even when the

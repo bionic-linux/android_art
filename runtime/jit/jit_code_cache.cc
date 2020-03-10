@@ -341,6 +341,7 @@ const void* JitCodeCache::FindCompiledCodeForInstrumentation(ArtMethod* method) 
 
 const void* JitCodeCache::GetSavedEntryPointOfPreCompiledMethod(ArtMethod* method) {
   if (method->IsPreCompiled()) {
+    DCHECK(!Runtime::Current()->IsJavaDebuggable());
     const void* code_ptr = nullptr;
     if (method->GetDeclaringClass()->GetClassLoader() == nullptr) {
       code_ptr = zygote_map_.GetCodeFor(method);
@@ -886,6 +887,7 @@ void JitCodeCache::ClearEntryPointsInZygoteExecSpace() {
     if (IsInZygoteExecSpace(method->GetEntryPointFromQuickCompiledCode())) {
       method->SetEntryPointFromQuickCompiledCode(GetQuickToInterpreterBridge());
     }
+    method->ClearPreCompiled();
   }
 }
 
@@ -1450,9 +1452,12 @@ ProfilingInfo* JitCodeCache::AddProfilingInfo(Thread* self,
 ProfilingInfo* JitCodeCache::AddProfilingInfoInternal(Thread* self ATTRIBUTE_UNUSED,
                                                       ArtMethod* method,
                                                       const std::vector<uint32_t>& entries) {
-  size_t profile_info_size = RoundUp(
+  size_t profile_info_size_without_parameters = RoundUp(
       sizeof(ProfilingInfo) + sizeof(InlineCache) * entries.size(),
-      sizeof(void*));
+      alignof(ParameterInfo));
+  size_t profile_info_size = RoundUp(profile_info_size_without_parameters +
+                                         sizeof(ParameterInfo) * method->GetNumberOfParameters(),
+                                     sizeof(void*));
 
   // Check whether some other thread has concurrently created it.
   ProfilingInfo* info = method->GetProfilingInfo(kRuntimePointerSize);

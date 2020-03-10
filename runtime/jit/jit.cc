@@ -1533,7 +1533,7 @@ class ScopedSetRuntimeThread {
   bool was_runtime_thread_;
 };
 
-void Jit::MethodEntered(Thread* thread, ArtMethod* method) {
+void Jit::MethodEntered(Thread* thread, ArtMethod* method, ShadowFrame* frame) {
   Runtime* runtime = Runtime::Current();
   if (UNLIKELY(runtime->UseJitCompilation() && JitAtFirstUse())) {
     ArtMethod* np_method = method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
@@ -1563,6 +1563,11 @@ void Jit::MethodEntered(Thread* thread, ArtMethod* method) {
         method, profiling_info->GetSavedEntryPoint());
   } else {
     AddSamples(thread, method, 1, /* with_backedges= */false);
+    profiling_info = method->GetProfilingInfo(kRuntimePointerSize);
+    LOG(INFO) << "jit entry of " << method->PrettyMethod() << " with frame " << frame;
+    if (profiling_info != nullptr && frame != nullptr) {
+      profiling_info->AddParameterInfo(thread, frame);
+    }
   }
 }
 

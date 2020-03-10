@@ -17,11 +17,19 @@
 #ifndef ART_RUNTIME_JIT_PROFILING_INFO_H_
 #define ART_RUNTIME_JIT_PROFILING_INFO_H_
 
+#include <array>
 #include <vector>
+#include <jni.h>
 
+#include "android-base/thread_annotations.h"
+#include "base/bit_utils.h"
 #include "base/macros.h"
+#include "base/mutex.h"
 #include "gc_root.h"
+#include "jvalue.h"
+#include "managed_stack.h"
 #include "offsets.h"
+#include "dex/primitive.h"
 
 namespace art {
 
@@ -57,12 +65,34 @@ class InlineCache {
   DISALLOW_COPY_AND_ASSIGN(InlineCache);
 };
 
+constexpr size_t kMegamorphicParameterLimit = 4;
+class ParameterInfo {
+ public:
+  explicit ParameterInfo(Primitive::Type type);
+  bool IsMegamorphic() const {
+    return is_megamorphic_;
+  }
+  Primitive::Type GetType() const {
+    return type_;
+  }
+  void AddParameterValue(Thread* self, const JValue& val);
+
+  const Primitive::Type type_;
+  std::atomic<bool> is_megamorphic_;
+  size_t num_set_;
+  ReaderWriterMutex mutex_;
+  std::array<JValue, kMegamorphicParameterLimit> data_ GUARDED_BY(mutex_);
+};
+
 /**
  * Profiling info for a method, created and filled by the interpreter once the
  * method is warm, and used by the compiler to drive optimizations.
  */
 class ProfilingInfo {
  public:
+  // Need to destroy the parameters.
+  ~ProfilingInfo();
+
   // Create a ProfilingInfo for 'method'. Return whether it succeeded, or if it is
   // not needed in case the method does not have virtual/interface invocations.
   static bool Create(Thread* self, ArtMethod* method, bool retry_allocation)
@@ -74,6 +104,8 @@ class ProfilingInfo {
       // which can be concurrently collected.
       REQUIRES(Roles::uninterruptible_)
       REQUIRES_SHARED(Locks::mutator_lock_);
+
+  void AddParameterInfo(Thread* self, ShadowFrame* sf) REQUIRES_SHARED(Locks::mutator_lock_);
 
   ArtMethod* GetMethod() const {
     return method_;
@@ -138,6 +170,15 @@ class ProfilingInfo {
     return baseline_hotness_count_;
   }
 
+  ParameterInfo* GetParameterInfoArray() {
+    return AlignUp(reinterpret_cast<ParameterInfo*>(cache_ + number_of_inline_caches_),
+                   alignof(ParameterInfo));
+  }
+
+  uint32_t GetParameterCount() const {
+    return number_of_parameters_;
+  }
+
  private:
   ProfilingInfo(ArtMethod* method, const std::vector<uint32_t>& entries);
 
@@ -158,6 +199,8 @@ class ProfilingInfo {
   // Number of instructions we are profiling in the ArtMethod.
   const uint32_t number_of_inline_caches_;
 
+  const uint32_t number_of_parameters_;
+
   // When the compiler inlines the method associated to this ProfilingInfo,
   // it updates this counter so that the GC does not try to clear the inline caches.
   uint16_t current_inline_uses_;
@@ -170,6 +213,10 @@ class ProfilingInfo {
 
   // Dynamically allocated array of size `number_of_inline_caches_`.
   InlineCache cache_[0];
+
+  // Dynamically allocated array of size `method_->GetNumberOfParamaters()` located after the
+  // cache_ array. This should never be directly accessed.
+  // ParameterInfo parameter_info_[0];
 
   friend class jit::JitCodeCache;
 

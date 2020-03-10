@@ -45,6 +45,24 @@ class MethodUtil {
   static void Register(EventHandler* event_handler);
   static void Unregister();
 
+  static jvmtiError VisitMethodArgumentProfiles(
+      jvmtiEnv* env,
+      jclass selector,
+      void (*visitor_no_profile)(
+          jvmtiEnv* jvmti, JNIEnv* jni, jclass decl_class, jmethodID meth, void* thunk),
+      void (*visitor_profile)(jvmtiEnv* jvmti,
+                              JNIEnv* jni,
+                              jclass decl_class,
+                              jmethodID meth,
+                              jint count,
+                              jint num_parameters,
+                              jboolean* method_parameter_megamorphic,
+                              const char* const value_field,
+                              jint* num_recorded_parameter_values,
+                              jvalue** parameter_values,
+                              void* thunk),
+      void* thunk);
+
   static jvmtiError GetBytecodes(jvmtiEnv* env,
                                  jmethodID method,
                                  jint* count_ptr,

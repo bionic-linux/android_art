@@ -87,7 +87,17 @@ union PACKED(alignof(mirror::Object*)) JValue {
   float f;
   double d;
   mirror::Object* l;
+
+  friend bool operator==(const JValue&, const JValue&);
 };
+
+bool inline operator==(const JValue& left, const JValue& right) {
+  return left.j == right.j;
+}
+
+bool inline operator!=(const JValue& left, const JValue& right) {
+  return !(left == right);
+}
 
 }  // namespace art
 

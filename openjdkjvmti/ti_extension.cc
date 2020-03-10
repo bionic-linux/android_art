@@ -43,6 +43,7 @@
 #include "ti_dump.h"
 #include "ti_heap.h"
 #include "ti_logging.h"
+#include "ti_method.h"
 #include "ti_monitor.h"
 #include "ti_redefine.h"
 #include "ti_search.h"
@@ -501,6 +502,58 @@ jvmtiError ExtensionUtil::GetExtensionFunctions(jvmtiEnv* env,
       {
         { "option", JVMTI_KIND_IN_BUF, JVMTI_TYPE_CCHAR, false },
         { "enable", JVMTI_KIND_IN, JVMTI_TYPE_JBOOLEAN, false },
+      },
+      {
+         ERR(NULL_POINTER),
+         ERR(ILLEGAL_ARGUMENT),
+      });
+  if (error != ERR(NONE)) {
+    return error;
+  }
+  // VisitMethodProfilingInfo
+  error = add_extension(
+      reinterpret_cast<jvmtiExtensionFunction>(MethodUtil::VisitMethodArgumentProfiles),
+      "com.android.art.internal.visit_method_profiling_info",
+      "Internal API. No stability requirements.\n"
+      "Allows agents to view the method parameter profiling info of all methods.\n"
+      "\n"
+      "Signature is as follows.\n"
+      "\n"
+      "static jvmtiError VisitMethodArgumentProfiles(\n"
+      "    jvmtiEnv* env,\n"
+      "    jclass selector,\n"
+      "    void (*visitor_no_profile)(\n"
+      "        jvmtiEnv* jvmti, JNIEnv* jni, jclass decl_class, jmethodID meth, void* thunk),\n"
+      "    void (*visitor_profile)(jvmtiEnv* jvmti,\n"
+      "                            JNIEnv* jni,\n"
+      "                            jclass decl_class,\n"
+      "                            jmethodID meth,\n"
+      "                            jint count,\n"
+      "                            jint num_parameters,\n"
+      "                            jboolean* method_parameter_megamorphic,\n"
+      "                            const char* const value_field,\n"
+      "                            jint* num_recorded_parameter_values,\n"
+      "                            jvalue** parameter_values,\n"
+      "                            void* thunk),\n"
+      "    void* thunk);\n"
+      "\n"
+      "This will call visitor_profile with the declaring-class, method, baseline-hotness-count,"
+      " number of parameters, an array of which parameters are considered mega-morphic, an array of"
+      " how many parameter values are recorded for each parameter and an array of arrays of"
+      " parameter values for each method with profiling info.\n"
+      "\n"
+      "The value_field argument is the 'JNI type descriptor' for the values in that parameter or"
+      " 'L' for non-primitive values.\n"
+      "\n"
+      "For each method without profiling info the visitor_no_profile callback will be executed.\n"
+      "\n"
+      "If selector is set we will only call the callbacks on methods of that class or its"
+      " superclassses.",
+      {
+        {"selector", JVMTI_KIND_IN, JVMTI_TYPE_JCLASS, true},
+        {"visitor_no_profile", JVMTI_KIND_IN, JVMTI_TYPE_CVOID, true},
+        {"visitor_profile", JVMTI_KIND_IN, JVMTI_TYPE_CVOID, true},
+        {"thunk", JVMTI_KIND_IN, JVMTI_TYPE_CVOID, true},
       },
       {
          ERR(NULL_POINTER),
