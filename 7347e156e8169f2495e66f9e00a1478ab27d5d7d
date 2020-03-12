@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "308c898e_940159f7",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-12T17:05:33Z",
+      "side": 1,
+      "message": "Bad rebase?",
+      "range": {
+        "startLine": 1351,
+        "startChar": 0,
+        "endLine": 1356,
+        "endChar": 6
+      },
+      "revId": "7347e156e8169f2495e66f9e00a1478ab27d5d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
