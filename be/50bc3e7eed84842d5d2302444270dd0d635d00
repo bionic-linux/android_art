@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Tim Joines <tjoines@google.com>
+Verified+1: Greg Kaiser <gkaiser@google.com>
+Autosubmit+1: Greg Kaiser <gkaiser@google.com>
+Build-Cop-Override+1: Anthony Stange <stange@google.com>
+Submitted-by: Tim Joines <tjoines@google.com>
+Submitted-at: Wed, 18 Mar 2020 19:46:46 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1261706
+Project: platform/art
+Branch: refs/heads/master
