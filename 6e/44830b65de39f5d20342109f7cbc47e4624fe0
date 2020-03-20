@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Paul Duffin <paulduffin@google.com>
+Autosubmit+1: Paul Duffin <paulduffin@google.com>
+Code-Review+2: Martin Stjernholm <mast@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 20 Mar 2020 14:10:09 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1263039
+Project: platform/art
+Branch: refs/heads/master
