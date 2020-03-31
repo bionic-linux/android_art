@@ -382,7 +382,8 @@ inline void DexCache::VisitReferences(ObjPtr<Class> klass, const Visitor& visito
     }
 
     GcRoot<mirror::String>* const preresolved_strings = GetPreResolvedStrings();
-    const size_t num_preresolved_strings = NumPreResolvedStrings();
+    const size_t num_preresolved_strings =
+        (preresolved_strings != nullptr) ? NumPreResolvedStrings() : 0u;
     for (size_t i = 0; i != num_preresolved_strings; ++i) {
       visitor.VisitRootIfNonNull(preresolved_strings[i].AddressWithoutBarrier());
     }
