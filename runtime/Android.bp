@@ -405,9 +405,10 @@ libart_cc_defaults {
     header_libs: [
         "art_cmdlineparser_headers",
         "cpp-define-generator-definitions",
+        "jni_headers",
+        "jni_platform_headers",
         "libicuuc_headers",
         "libnativehelper_header_only",
-        "jni_platform_headers",
     ],
     shared_libs: [
         "libartpalette",
