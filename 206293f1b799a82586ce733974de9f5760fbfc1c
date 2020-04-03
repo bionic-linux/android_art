@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7886a48_57886f3d",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2020-04-03T16:13:38Z",
+      "side": 1,
+      "message": "Nit: For the style, it\u0027s recommended to use { for all blocks",
+      "range": {
+        "startLine": 1626,
+        "startChar": 22,
+        "endLine": 1626,
+        "endChar": 23
+      },
+      "revId": "206293f1b799a82586ce733974de9f5760fbfc1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56fa9c60_835aa0a8",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2020-04-03T16:13:38Z",
+      "side": 1,
+      "message": "Nit: For the style, it\u0027s recommended to use { for all blocks",
+      "range": {
+        "startLine": 1640,
+        "startChar": 22,
+        "endLine": 1640,
+        "endChar": 23
+      },
+      "revId": "206293f1b799a82586ce733974de9f5760fbfc1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
