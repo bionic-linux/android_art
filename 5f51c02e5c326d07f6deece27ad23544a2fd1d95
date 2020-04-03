@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "249eac45_337dd126",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T15:35:26Z",
+      "side": 1,
+      "message": "You prefer being explicit about it in each case rather than adding it here?",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "5f51c02e5c326d07f6deece27ad23544a2fd1d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
