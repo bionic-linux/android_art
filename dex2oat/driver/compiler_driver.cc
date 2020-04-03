@@ -1577,6 +1577,7 @@ static void CheckAndClearResolveException(Thread* self)
   self->ClearException();
 }
 
+
 class ResolveClassFieldsAndMethodsVisitor : public CompilationVisitor {
  public:
   explicit ResolveClassFieldsAndMethodsVisitor(const ParallelCompilationManager* manager)
@@ -1621,10 +1622,9 @@ class ResolveClassFieldsAndMethodsVisitor : public CompilationVisitor {
         if (resolving_class_loader != soa.Decode<mirror::ClassLoader>(jclass_loader)) {
           // Redefinition via different ClassLoaders.
           // This OptStat stuff is to enable logging from the APK scanner.
+          LOG(INFO) << "OptStat#LinkageRedefinition." << hklass->PrettyClass() << ": 1";
           if (is_fatal)
-            LOG(FATAL) << "OptStat#" << hklass->PrettyClassAndClassLoader() << ": 1";
-          else
-            LOG(ERROR)
+            LOG(FATAL)
                 << "LINKAGE VIOLATION: "
                 << hklass->PrettyClassAndClassLoader()
                 << " was redefined";
@@ -1636,10 +1636,9 @@ class ResolveClassFieldsAndMethodsVisitor : public CompilationVisitor {
                                                        hs.NewHandle(resolving_class_loader)))) {
           // Subclassing of java.lang.ClassLoader.
           // This OptStat stuff is to enable logging from the APK scanner.
+          LOG(INFO) << "OptStat#LinkageClassLoaderWasSubclassed." << hklass->PrettyClass() << ": 1";
           if (is_fatal)
-            LOG(FATAL) << "OptStat#" << hklass->PrettyClassAndClassLoader() << ": 1";
-          else
-            LOG(ERROR)
+            LOG(FATAL)
                 << "LINKAGE VIOLATION: "
                 << hklass->PrettyClassAndClassLoader()
                 << " is a subclass of java.lang.ClassLoader";
