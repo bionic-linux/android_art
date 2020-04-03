@@ -22,6 +22,30 @@
       "revId": "5f51c02e5c326d07f6deece27ad23544a2fd1d95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d44a80_1860a1b3",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-04-03T16:48:17Z",
+      "side": 1,
+      "message": "We\u0027re explicit here because art/dt_fd_forward/Android.bp has dependencies on art_defaults and javavm_headers. The latter are provided by oj-libjdwp and include an external jni.h. The was what Dan mentioned in http://b/152482542#comment8.",
+      "parentUuid": "249eac45_337dd126",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "5f51c02e5c326d07f6deece27ad23544a2fd1d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
