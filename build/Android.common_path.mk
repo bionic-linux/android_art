@@ -74,7 +74,7 @@ HOST_CORE_IMG_LOCATION := $(HOST_OUT_JAVA_LIBRARIES)/core.art
 TARGET_CORE_IMG_LOCATION := $(ART_TARGET_TEST_OUT)/core.art
 
 # Modules to compile for core.art.
-CORE_IMG_JARS := core-oj core-libart core-icu4j okhttp bouncycastle apache-xml
+CORE_IMG_JARS := core-oj core-libart okhttp bouncycastle apache-xml
 HOST_CORE_IMG_JARS   := $(addsuffix -hostdex,$(CORE_IMG_JARS))
 TARGET_CORE_IMG_JARS := $(CORE_IMG_JARS)
 HOST_CORE_IMG_DEX_LOCATIONS   := $(foreach jar,$(HOST_CORE_IMG_JARS),  $(HOST_OUT_JAVA_LIBRARIES)/$(jar).jar)
@@ -100,7 +100,7 @@ HOST_TEST_CORE_JARS   := $(addsuffix -hostdex,$(CORE_IMG_JARS) conscrypt)
 ART_HOST_DEX_DEPENDENCIES := $(foreach jar,$(HOST_TEST_CORE_JARS),$(HOST_OUT_JAVA_LIBRARIES)/$(jar).jar)
 ART_TARGET_DEX_DEPENDENCIES := com.android.art.testing com.android.conscrypt
 
-ART_CORE_SHARED_LIBRARIES := libicu_jni libjavacore libopenjdk libopenjdkjvm libopenjdkjvmti
+ART_CORE_SHARED_LIBRARIES := libjavacore libopenjdk libopenjdkjvm libopenjdkjvmti
 ART_CORE_SHARED_DEBUG_LIBRARIES := libopenjdkd libopenjdkjvmd libopenjdkjvmtid
 ART_HOST_SHARED_LIBRARY_DEPENDENCIES := $(foreach lib,$(ART_CORE_SHARED_LIBRARIES), $(ART_HOST_OUT_SHARED_LIBRARIES)/$(lib)$(ART_HOST_SHLIB_EXTENSION))
 ART_HOST_SHARED_LIBRARY_DEBUG_DEPENDENCIES := $(foreach lib,$(ART_CORE_SHARED_DEBUG_LIBRARIES), $(ART_HOST_OUT_SHARED_LIBRARIES)/$(lib)$(ART_HOST_SHLIB_EXTENSION))
@@ -156,5 +156,7 @@ TESTING_ART_APEX := com.android.art.testing
 
 # Conscrypt APEX
 CONSCRYPT_APEX := com.android.conscrypt
+# i18n APEX
+I18N_APEX := com.android.i18n
 
 endif # ART_ANDROID_COMMON_PATH_MK
