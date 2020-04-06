@@ -22,6 +22,30 @@
       "revId": "bfb10b06b6946f664895d1e1c95dfa734a28f596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d576a9_a5ffabb9",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2020-04-06T15:47:17Z",
+      "side": 1,
+      "message": "It does check SELinux as well. connect(2) also checks for write on the socket domain as well.\n\nI do not think we would catch a missing connect rule, if we had write. But that would be a very weird state to be.\n\nI think this is neater than actually connecting, but that is also fine with me. WDYT?",
+      "parentUuid": "534849f8_5ddd1de3",
+      "range": {
+        "startLine": 129,
+        "startChar": 50,
+        "endLine": 129,
+        "endChar": 87
+      },
+      "revId": "bfb10b06b6946f664895d1e1c95dfa734a28f596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
