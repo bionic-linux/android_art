@@ -56,7 +56,7 @@ constexpr const char* kVendorPublicLibrariesFile = "/vendor/etc/public.libraries
 constexpr const char* kLlndkLibrariesFile = "/apex/com.android.vndk.v{}/etc/llndk.libraries.{}.txt";
 constexpr const char* kVndkLibrariesFile = "/apex/com.android.vndk.v{}/etc/vndksp.libraries.{}.txt";
 
-const std::vector<const std::string> kArtApexPublicLibraries = {
+const std::vector<const std::string> ki18nApexPublicLibraries = {
     "libicuuc.so",
     "libicui18n.so",
 };
@@ -194,13 +194,13 @@ static std::string InitDefaultPublicLibraries(bool for_preload) {
     return android::base::Join(*sonames, ':');
   }
 
-  // Remove the public libs in the art namespace.
+  // Remove the public libs in the i18n namespace.
   // These libs are listed in public.android.txt, but we don't want the rest of android
   // in default namespace to dlopen the libs.
   // For example, libicuuc.so is exposed to classloader namespace from art namespace.
   // Unfortunately, it does not have stable C symbols, and default namespace should only use
   // stable symbols in libandroidicu.so. http://b/120786417
-  for (const std::string& lib_name : kArtApexPublicLibraries) {
+  for (const std::string& lib_name : ki18nApexPublicLibraries) {
     std::string path(kArtApexLibPath);
     path.append("/").append(lib_name);
 
@@ -225,9 +225,9 @@ static std::string InitDefaultPublicLibraries(bool for_preload) {
   return android::base::Join(*sonames, ':');
 }
 
-static std::string InitArtPublicLibraries() {
-  CHECK_GT((int)sizeof(kArtApexPublicLibraries), 0);
-  std::string list = android::base::Join(kArtApexPublicLibraries, ":");
+static std::string Initi18nPublicLibraries() {
+  CHECK_GT((int)sizeof(ki18nApexPublicLibraries), 0);
+  std::string list = android::base::Join(ki18nApexPublicLibraries, ":");
 
   std::string additional_libs = additional_public_libraries();
   if (!additional_libs.empty()) {
@@ -343,8 +343,8 @@ const std::string& default_public_libraries() {
   return list;
 }
 
-const std::string& art_public_libraries() {
-  static std::string list = InitArtPublicLibraries();
+const std::string& i18n_public_libraries() {
+  static std::string list = Initi18nPublicLibraries();
   return list;
 }
 

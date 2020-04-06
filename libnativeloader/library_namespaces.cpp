@@ -263,7 +263,7 @@ Result<NativeLoaderNamespace*> LibraryNamespaces::Create(JNIEnv* env, uint32_t t
   auto art_ns = NativeLoaderNamespace::GetExportedNamespace(kArtNamespaceName, is_bridged);
   // ART APEX does not exist on host, and under certain build conditions.
   if (art_ns.ok()) {
-    linked = app_ns->Link(*art_ns, art_public_libraries());
+    linked = app_ns->Link(*art_ns, i18n_public_libraries());
     if (!linked.ok()) {
       return linked.error();
     }
