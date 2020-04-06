@@ -360,7 +360,7 @@ class NativeLoaderTest_Create : public NativeLoaderTest {
   bool expected_link_with_neuralnetworks_ns = true;
   bool expected_link_with_statsd_ns = true;
   std::string expected_shared_libs_to_platform_ns = default_public_libraries();
-  std::string expected_shared_libs_to_art_ns = art_public_libraries();
+  std::string expected_shared_libs_to_art_ns = i18n_public_libraries();
   std::string expected_shared_libs_to_sphal_ns = vendor_public_libraries();
   std::string expected_shared_libs_to_vndk_ns = vndksp_libraries_vendor();
   std::string expected_shared_libs_to_vndk_product_ns = vndksp_libraries_product();
@@ -387,7 +387,7 @@ class NativeLoaderTest_Create : public NativeLoaderTest {
           .WillOnce(Return(true));
     }
     if (expected_link_with_art_ns) {
-      EXPECT_CALL(*mock, mock_link_namespaces(Eq(IsBridged()), _, NsEq("com_android_art"),
+      EXPECT_CALL(*mock, mock_link_namespaces(Eq(IsBridged()), _, NsEq("com_android_i18n"),
                                               StrEq(expected_shared_libs_to_art_ns)))
           .WillOnce(Return(true));
     }
