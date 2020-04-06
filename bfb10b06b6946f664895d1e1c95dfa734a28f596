@@ -46,6 +46,30 @@
       "revId": "bfb10b06b6946f664895d1e1c95dfa734a28f596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028af380_7a157ff3",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-04-06T15:55:22Z",
+      "side": 1,
+      "message": "imo, connect is a bit more self-explanatory (the only reason I believe this access() is because you\u0027ve tried it in practice), but I\u0027m also fine with this as it doesn\u0027t require creating FDs.",
+      "parentUuid": "a9d576a9_a5ffabb9",
+      "range": {
+        "startLine": 129,
+        "startChar": 50,
+        "endLine": 129,
+        "endChar": 87
+      },
+      "revId": "bfb10b06b6946f664895d1e1c95dfa734a28f596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
