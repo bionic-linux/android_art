@@ -67,6 +67,9 @@ TEST_F(ImageSpaceTest, StringDeduplication) {
   ASSERT_NE(std::string::npos, bcp.back().find("conscrypt"));
   bcp.pop_back();
   bcp_locations.pop_back();
+  ASSERT_NE(std::string::npos, bcp.back().find("core-icu4j"));
+  bcp.pop_back();
+  bcp_locations.pop_back();
   std::string base_bcp_string = android::base::Join(bcp, ':');
   std::string base_bcp_locations_string = android::base::Join(bcp_locations, ':');
   std::string base_image_location = GetImageLocation();
