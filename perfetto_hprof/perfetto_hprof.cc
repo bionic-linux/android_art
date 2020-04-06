@@ -23,8 +23,10 @@
 #include <inttypes.h>
 #include <sched.h>
 #include <signal.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/un.h>
 #include <sys/wait.h>
 #include <thread>
 #include <time.h>
@@ -114,6 +116,16 @@ void ArmWatchdogOrDie() {
   }
 }
 
+bool CanConnectToSocket(const char* name) {
+  struct sockaddr_un addr = {};
+  addr.sun_family = AF_UNIX;
+  strncpy(addr.sun_path, name, sizeof(addr.sun_path) - 1);
+  int fd = socket(AF_UNIX, SOCK_STREAM, 0);
+  bool connected = connect(fd, reinterpret_cast<struct sockaddr*>(&addr), sizeof(addr)) == 0;
+  close(fd);
+  return connected;
+}
+
 constexpr size_t kMaxCmdlineSize = 512;
 
 class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
@@ -125,6 +137,12 @@ class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
     std::unique_ptr<perfetto::protos::pbzero::JavaHprofConfig::Decoder> cfg(
         new perfetto::protos::pbzero::JavaHprofConfig::Decoder(
           args.config->java_hprof_config_raw()));
+
+    if (args.config->enable_extra_guardrails() && !CanConnectToSocket("/dev/socket/heapprofd")) {
+      LOG(ERROR) << "rejecting extra guardrails";
+      enabled_ = false;
+      return;
+    }
 
     uint64_t self_pid = static_cast<uint64_t>(getpid());
     for (auto pid_it = cfg->pid(); pid_it; ++pid_it) {
