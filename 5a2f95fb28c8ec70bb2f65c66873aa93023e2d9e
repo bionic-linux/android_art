@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "314942ed_45860bd4",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2020-04-06T17:43:37Z",
+      "side": 1,
+      "message": "perhaps OR in:\n\"| SOCK_NONBLOCK | SOCK_CLOEXEC\"\n(the latter definitely, the earlier more so for consistency with similar code we authored)",
+      "range": {
+        "startLine": 123,
+        "startChar": 27,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "5a2f95fb28c8ec70bb2f65c66873aa93023e2d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
