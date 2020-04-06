@@ -126,6 +126,12 @@ class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
         new perfetto::protos::pbzero::JavaHprofConfig::Decoder(
           args.config->java_hprof_config_raw()));
 
+    if (args.config->enable_extra_guardrails() && access("/dev/socket/heapprofd", R_OK) == -1) {
+      LOG(ERROR) << "rejecting extra guardrails";
+      enabled_ = false;
+      return;
+    }
+
     uint64_t self_pid = static_cast<uint64_t>(getpid());
     for (auto pid_it = cfg->pid(); pid_it; ++pid_it) {
       if (*pid_it == self_pid) {
