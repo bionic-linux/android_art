@@ -188,9 +188,8 @@ TEST_F(Dex2oatImageTest, TestModesAndFilters) {
   // and we also need the core-icu4j if we want to compile these with full profile.
   ASSERT_NE(std::string::npos, libcore_dex_files[0].find("core-oj"));
   ASSERT_NE(std::string::npos, libcore_dex_files[1].find("core-libart"));
-  ASSERT_NE(std::string::npos, libcore_dex_files[2].find("core-icu4j"));
   ArrayRef<const std::string> dex_files =
-      ArrayRef<const std::string>(libcore_dex_files).SubArray(/*pos=*/ 0u, /*length=*/ 3u);
+      ArrayRef<const std::string>(libcore_dex_files).SubArray(/*pos=*/ 0u, /*length=*/ 2u);
 
   ImageSizes base_sizes = CompileImageAndGetSizes(dex_files, {});
   ImageSizes everything_sizes;
@@ -274,22 +273,21 @@ TEST_F(Dex2oatImageTest, TestExtension) {
 
   ArrayRef<const std::string> full_bcp(libcore_dex_files);
   size_t total_dex_files = full_bcp.size();
-  ASSERT_GE(total_dex_files, 5u);  // 3 for "head", 1 for "tail", at least one for "mid", see below.
+  ASSERT_GE(total_dex_files, 5u);  // 2 for "head", 2 for "tail", at least one for "mid", see below.
 
   // The primary image must contain at least core-oj and core-libart to initialize the runtime
-  // and we also need the core-icu4j if we want to compile these with full profile.
   ASSERT_NE(std::string::npos, full_bcp[0].find("core-oj"));
   ASSERT_NE(std::string::npos, full_bcp[1].find("core-libart"));
-  ASSERT_NE(std::string::npos, full_bcp[2].find("core-icu4j"));
-  ArrayRef<const std::string> head_dex_files = full_bcp.SubArray(/*pos=*/ 0u, /*length=*/ 3u);
-  // Middle part is everything else except for conscrypt.
+  ArrayRef<const std::string> head_dex_files = full_bcp.SubArray(/*pos=*/ 0u, /*length=*/ 2u);
+  // Middle part is everything else except for core-icu4j, conscrypt.
+  ASSERT_NE(std::string::npos, full_bcp[full_bcp.size() - 2u].find("core-icu4j"));
   ASSERT_NE(std::string::npos, full_bcp[full_bcp.size() - 1u].find("conscrypt"));
   ArrayRef<const std::string> mid_bcp =
-      full_bcp.SubArray(/*pos=*/ 0u, /*length=*/ total_dex_files - 1u);
-  ArrayRef<const std::string> mid_dex_files = mid_bcp.SubArray(/*pos=*/ 3u);
+      full_bcp.SubArray(/*pos=*/ 0u, /*length=*/ total_dex_files - 2u);
+  ArrayRef<const std::string> mid_dex_files = mid_bcp.SubArray(/*pos=*/ 1u);
   // Tail is just the conscrypt.
   ArrayRef<const std::string> tail_dex_files =
-      full_bcp.SubArray(/*pos=*/ total_dex_files - 1u, /*length=*/ 1u);
+      full_bcp.SubArray(/*pos=*/ total_dex_files - 2u, /*length=*/ 2u);
 
   // Prepare the "head", "mid" and "tail" names and locations.
   std::string base_name = "core.art";
@@ -303,10 +301,10 @@ TEST_F(Dex2oatImageTest, TestExtension) {
   size_t mid_slash_pos = mid_location.rfind('/');
   ASSERT_NE(std::string::npos, mid_slash_pos);
   std::string mid_name = mid_location.substr(mid_slash_pos + 1u);
-  CHECK_EQ(1u, tail_dex_files.size());
+  CHECK_EQ(2u, tail_dex_files.size());
   std::vector<std::string> expanded_tail = gc::space::ImageSpace::ExpandMultiImageLocations(
       tail_dex_files, base_location, /*boot_image_extension=*/ true);
-  CHECK_EQ(1u, expanded_tail.size());
+  CHECK_EQ(2u, expanded_tail.size());
   std::string tail_location = expanded_tail[0];
   size_t tail_slash_pos = tail_location.rfind('/');
   ASSERT_NE(std::string::npos, tail_slash_pos);
