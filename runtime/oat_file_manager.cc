@@ -655,6 +655,35 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
     Runtime::Current()->GetJit()->RegisterDexFiles(dex_files, class_loader);
   }
 
+  // Verify if any of the dex files being loaded is already in the class path.
+  // If so, report an error with the current stack trace.
+  // Most likely the developer didn't intend to do this because it will waste
+  // performance and memory.
+  if (context != nullptr) {
+    std::vector<const DexFile*> already_exists_in_classpath =
+        context->CheckForDuplicateDexFiles(MakeNonOwningPointerVector(dex_files));
+    if (!already_exists_in_classpath.empty()) {
+      std::string duplicates = already_exists_in_classpath[0]->GetLocation();
+      for (size_t i = 1; i < already_exists_in_classpath.size(); i++) {
+        duplicates += "," + already_exists_in_classpath[i]->GetLocation();
+      }
+
+      std::ostringstream out;
+      out << "Trying to load dex files which is already loaded in the same ClassLoader hierarchy.\n"
+        << "This is a strong indication of bad ClassLoader construct which leads to poor "
+        << "performance and wastes memory.\n"
+        << "The list of duplicate dex files is: " << duplicates << "\n"
+        << "The current class loader context is: " << context->EncodeContextForOatFile("") << "\n"
+        << "Java stack trace:\n";
+
+      {
+        ScopedObjectAccess soa(self);
+        self->DumpJavaStack(out);
+      }
+
+      LOG(ERROR) << out.str();
+    }
+  }
   return dex_files;
 }
 
