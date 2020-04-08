@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "062fa7f5_60bd414b",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-08T08:46:30Z",
+      "side": 1,
+      "message": "I\u0027d actually prefer a WARNING (if ERROR does get reported, but not WARNING, then OK to keep ERROR).\n\nAlso, can you add a comment that there\u0027s nothing actionable from the ART side, only the app.",
+      "range": {
+        "startLine": 684,
+        "startChar": 10,
+        "endLine": 684,
+        "endChar": 15
+      },
+      "revId": "62fefc2fd1d2abda53508dce8afef1f0ba159f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
