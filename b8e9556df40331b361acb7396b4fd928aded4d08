@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d74cd1c_e04b47ee",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-08T20:32:30Z",
+      "side": 1,
+      "message": "loader",
+      "range": {
+        "startLine": 663,
+        "startChar": 44,
+        "endLine": 663,
+        "endChar": 50
+      },
+      "revId": "b8e9556df40331b361acb7396b4fd928aded4d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70c52b87_74a36c18",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-08T20:32:30Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 690,
+        "startChar": 68,
+        "endLine": 690,
+        "endChar": 70
+      },
+      "revId": "b8e9556df40331b361acb7396b4fd928aded4d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
