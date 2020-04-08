@@ -573,6 +573,9 @@ class Heap {
     return region_space_;
   }
 
+  space::BumpPointerspace* GetBumpPointerSpace() const {
+    return bump_pointer_space_;
+  }
   // Implements java.lang.Runtime.maxMemory, returning the maximum amount of memory a program can
   // consume. For a regular VM this would relate to the -Xmx option and would return -1 if no Xmx
   // were specified. Android apps start with a growth limit (small heap size) which is
