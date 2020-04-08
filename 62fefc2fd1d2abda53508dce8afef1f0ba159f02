@@ -22,6 +22,30 @@
       "revId": "62fefc2fd1d2abda53508dce8afef1f0ba159f02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d58de2_711604e3",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T19:38:49Z",
+      "side": 1,
+      "message": "Unfortunately neither warning nor error will be reported. Looks like only .wtf logs can be reported and we\u0027ll need a reflection call for that. I\u0027ll leave the log as is for now.\n\nIf I configure this as a WARNING I can\u0027t run-test it anymore :(.\nI think ERROR should be good to highlight the severity but I don\u0027t mind setting it to WARNING and removing the run-test.",
+      "parentUuid": "062fa7f5_60bd414b",
+      "range": {
+        "startLine": 684,
+        "startChar": 10,
+        "endLine": 684,
+        "endChar": 15
+      },
+      "revId": "62fefc2fd1d2abda53508dce8afef1f0ba159f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
