@@ -130,6 +130,33 @@ class AtomicStack {
     }
   }
 
+  // Bump the back index by the given number of slots. Returns false if this
+  // operation will overflow the stack.
+  bool BumpBack(size_t num_slots, StackReference<T>** start_address,
+                StackReference<T>** end_address)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (kIsDebugBuild) {
+      debug_is_sorted_ = false;
+    }
+    const int32_t index = back_index_.load(std::memory_order_relaxed);
+    const int32_t new_index = index + num_slots;
+    if (UNLIKELY(static_cast<size_t>(new_index) >= growth_limit_) {
+      // Stack overflow.
+      return false;
+    }
+    back_index_.store(new_index, std::memory_order_relaxed);
+    *start_address = begin_ + index;
+    *end_address = begin_ + new_index;
+    if (kIsDebugBuild) {
+      // Check the memory is zero.
+      for (int32_t i = index; i < new_index; i++) {
+        DCHECK_EQ(begin_[i].AsMirrorPtr(), static_cast<T*>(nullptr))
+            << "i=" << i << " index=" << index << " new_index=" << new_index;
+      }
+    }
+    return true;
+  }
+
   void PushBack(T* value) REQUIRES_SHARED(Locks::mutator_lock_) {
     if (kIsDebugBuild) {
       debug_is_sorted_ = false;

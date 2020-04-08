@@ -97,11 +97,11 @@ class BumpPointerSpace final : public ContinuousMemMapAllocSpace {
   }
 
   accounting::ContinuousSpaceBitmap* GetLiveBitmap() override {
-    return nullptr;
+    return &mark_bitmap_;
   }
 
   accounting::ContinuousSpaceBitmap* GetMarkBitmap() override {
-    return nullptr;
+    return &mark_bitmap_;
   }
 
   // Reset the space to empty.
@@ -195,6 +195,9 @@ class BumpPointerSpace final : public ContinuousMemMapAllocSpace {
     size_t size_;  // Size of the block in bytes, does not include the header.
     size_t unused_;  // Ensures alignment of kAlignment.
   };
+
+  // Mark bitmap used by the GC.
+  accounting::ContinuousSpaceBitmap mark_bitmap_;
 
   static_assert(sizeof(BlockHeader) % kAlignment == 0,
                 "continuous block must be kAlignment aligned");
