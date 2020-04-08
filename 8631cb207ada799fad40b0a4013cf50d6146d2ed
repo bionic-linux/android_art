@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77743c87_0c3cf8e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7b6fbc0_95b57032",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f2a4f95_c2b87f73",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cce344_e1e395e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "I wonder if those can be captured in metrics. I\u0027ll chat with Ilkos. Other than that, ERROR/WARNING sounds good for me.",
+      "parentUuid": "1f2a4f95_c2b87f73",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ea36c3dd_7e21e8dd",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "43231e2c_e5b59c13",
+      "range": {
+        "startLine": 172,
+        "startChar": 39,
+        "endLine": 172,
+        "endChar": 40
+      },
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13c9d0ea_fa22d246",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "33b6700e_64385e84",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "It\u0027s a good point. I am still tempted to leave it for all. \nI strongly doubt that anyone is adding dupes to the classpath intentionally (unless there\u0027s some esoteric use cases). \n\nAlso, the class path check is omitted in a few cases where it could be relevant (I\u0027m thinking of secondary dex files before optimizations and gms modules)",
+      "parentUuid": "13c9d0ea_fa22d246",
+      "range": {
+        "startLine": 664,
+        "startChar": 17,
+        "endLine": 664,
+        "endChar": 42
+      },
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30b48336_acaccd63",
         "filename": "test/726-load-duplicate-dex-files/expected.txt",
         "patchSetId": 1
@@ -105,6 +201,24 @@
       "writtenOn": "2020-04-07T13:02:37Z",
       "side": 1,
       "message": "Can you check this works for both device and host? Logging is bit iffy for run-tests.",
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572473bc_24ff5fc2",
+        "filename": "test/726-load-duplicate-dex-files/expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "host is ok.\n\nI wasn\u0027t able to test on a device. For some reason cuttlefish is not run-test friendly :(. Still looking into it. I think it should be ok because I used a pattern that\u0027s used in a few other tests.",
+      "parentUuid": "30b48336_acaccd63",
       "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -125,6 +239,24 @@
       "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696d7c36_3410d12f",
+        "filename": "test/726-load-duplicate-dex-files/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-04-08T01:47:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ad42a3_d75959a3",
+      "revId": "8631cb207ada799fad40b0a4013cf50d6146d2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
