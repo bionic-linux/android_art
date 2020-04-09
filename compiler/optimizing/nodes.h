@@ -4149,8 +4149,6 @@ class HCompare final : public HBinaryOperation {
                          SideEffectsForArchRuntimeCalls(comparison_type),
                          dex_pc) {
     SetPackedField<ComparisonBiasField>(bias);
-    DCHECK_EQ(comparison_type, DataType::Kind(first->GetType()));
-    DCHECK_EQ(comparison_type, DataType::Kind(second->GetType()));
   }
 
   template <typename T>
@@ -5542,8 +5540,6 @@ class HRor final : public HBinaryOperation {
  public:
   HRor(DataType::Type result_type, HInstruction* value, HInstruction* distance)
       : HBinaryOperation(kRor, result_type, value, distance) {
-    DCHECK_EQ(result_type, DataType::Kind(value->GetType()));
-    DCHECK_EQ(DataType::Type::kInt32, DataType::Kind(distance->GetType()));
   }
 
   template <typename T>
@@ -6181,8 +6177,7 @@ class HBoundsCheck final : public HExpression<2> {
                HInstruction* length,
                uint32_t dex_pc,
                bool is_string_char_at = false)
-      : HExpression(kBoundsCheck, index->GetType(), SideEffects::None(), dex_pc) {
-    DCHECK_EQ(DataType::Type::kInt32, DataType::Kind(index->GetType()));
+      : HExpression(kBoundsCheck, DataType::Type::kInt32, SideEffects::None(), dex_pc) {
     SetPackedFlag<kFlagIsStringCharAt>(is_string_char_at);
     SetRawInputAt(0, index);
     SetRawInputAt(1, length);

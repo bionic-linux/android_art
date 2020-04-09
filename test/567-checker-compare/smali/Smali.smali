@@ -20,14 +20,6 @@
 ##  CHECK-DAG:     <<One:i\d+>>    IntConstant 1
 ##  CHECK-DAG:     <<PhiX:i\d+>>   Phi [<<One>>,<<Zero>>]
 ##  CHECK-DAG:     <<PhiY:i\d+>>   Phi [<<One>>,<<Zero>>]
-##  CHECK-DAG:     <<Result:i\d+>> InvokeStaticOrDirect [<<PhiX>>,<<PhiY>>{{(,[ij]\d+)?}}] intrinsic:IntegerCompare
-##  CHECK-DAG:                     Return [<<Result>>]
-
-##  CHECK-START: int Smali.compareBooleans(boolean, boolean) instruction_simplifier (after)
-##  CHECK-DAG:     <<Zero:i\d+>>   IntConstant 0
-##  CHECK-DAG:     <<One:i\d+>>    IntConstant 1
-##  CHECK-DAG:     <<PhiX:i\d+>>   Phi [<<One>>,<<Zero>>]
-##  CHECK-DAG:     <<PhiY:i\d+>>   Phi [<<One>>,<<Zero>>]
 ##  CHECK-DAG:     <<Result:i\d+>> Compare [<<PhiX>>,<<PhiY>>]
 ##  CHECK-DAG:                     Return [<<Result>>]
 
