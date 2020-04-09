@@ -243,17 +243,16 @@ class HInstructionBuilder : public ValueObject {
                                      uint32_t dex_pc,
                                      HInvoke* invoke);
 
-  bool SetupInvokeArguments(HInvoke* invoke,
+  bool SetupInvokeArguments(HInstruction* invoke,
                             const InstructionOperands& operands,
                             const char* shorty,
                             size_t start_index,
-                            size_t* argument_index);
+                            size_t argument_index);
 
   bool HandleInvoke(HInvoke* invoke,
                     const InstructionOperands& operands,
                     const char* shorty,
-                    bool is_unresolved,
-                    HClinitCheck* clinit_check = nullptr);
+                    bool is_unresolved);
 
   bool HandleStringInit(HInvoke* invoke,
                         const InstructionOperands& operands,
@@ -264,6 +263,14 @@ class HInstructionBuilder : public ValueObject {
       uint32_t dex_pc,
       ArtMethod* method,
       HInvokeStaticOrDirect::ClinitCheckRequirement* clinit_check_requirement);
+
+  // Try to build a replacement for an intrinsic invoke. Returns true on success,
+  // false on failure. Failure can be either lack of replacement HIR classes, or
+  // input register mismatch.
+  bool BuildSimpleIntrinsic(ArtMethod* method,
+                            uint32_t dex_pc,
+                            const InstructionOperands& operands,
+                            const char* shorty);
 
   // Build a HNewInstance instruction.
   HNewInstance* BuildNewInstance(dex::TypeIndex type_index, uint32_t dex_pc);

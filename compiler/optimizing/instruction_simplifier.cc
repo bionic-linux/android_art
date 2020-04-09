@@ -121,9 +121,6 @@ class InstructionSimplifierVisitor : public HGraphDelegateVisitor {
   void SimplifyReturnThis(HInvoke* invoke);
   void SimplifyAllocationIntrinsic(HInvoke* invoke);
   void SimplifyMemBarrier(HInvoke* invoke, MemBarrierKind barrier_kind);
-  void SimplifyMin(HInvoke* invoke, DataType::Type type);
-  void SimplifyMax(HInvoke* invoke, DataType::Type type);
-  void SimplifyAbs(HInvoke* invoke, DataType::Type type);
 
   CodeGenerator* codegen_;
   OptimizingCompilerStats* stats_;
@@ -2671,27 +2668,6 @@ void InstructionSimplifierVisitor::SimplifyMemBarrier(HInvoke* invoke,
   invoke->GetBlock()->ReplaceAndRemoveInstructionWith(invoke, mem_barrier);
 }
 
-void InstructionSimplifierVisitor::SimplifyMin(HInvoke* invoke, DataType::Type type) {
-  DCHECK(invoke->IsInvokeStaticOrDirect());
-  HMin* min = new (GetGraph()->GetAllocator())
-      HMin(type, invoke->InputAt(0), invoke->InputAt(1), invoke->GetDexPc());
-  invoke->GetBlock()->ReplaceAndRemoveInstructionWith(invoke, min);
-}
-
-void InstructionSimplifierVisitor::SimplifyMax(HInvoke* invoke, DataType::Type type) {
-  DCHECK(invoke->IsInvokeStaticOrDirect());
-  HMax* max = new (GetGraph()->GetAllocator())
-      HMax(type, invoke->InputAt(0), invoke->InputAt(1), invoke->GetDexPc());
-  invoke->GetBlock()->ReplaceAndRemoveInstructionWith(invoke, max);
-}
-
-void InstructionSimplifierVisitor::SimplifyAbs(HInvoke* invoke, DataType::Type type) {
-  DCHECK(invoke->IsInvokeStaticOrDirect());
-  HAbs* abs = new (GetGraph()->GetAllocator())
-      HAbs(type, invoke->InputAt(0), invoke->GetDexPc());
-  invoke->GetBlock()->ReplaceAndRemoveInstructionWith(invoke, abs);
-}
-
 void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
   switch (instruction->GetIntrinsic()) {
     case Intrinsics::kStringEquals:
@@ -2789,41 +2765,20 @@ void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
       SimplifyMemBarrier(instruction, MemBarrierKind::kStoreStore);
       break;
     case Intrinsics::kMathMinIntInt:
-      SimplifyMin(instruction, DataType::Type::kInt32);
-      break;
     case Intrinsics::kMathMinLongLong:
-      SimplifyMin(instruction, DataType::Type::kInt64);
-      break;
     case Intrinsics::kMathMinFloatFloat:
-      SimplifyMin(instruction, DataType::Type::kFloat32);
-      break;
     case Intrinsics::kMathMinDoubleDouble:
-      SimplifyMin(instruction, DataType::Type::kFloat64);
-      break;
     case Intrinsics::kMathMaxIntInt:
-      SimplifyMax(instruction, DataType::Type::kInt32);
-      break;
     case Intrinsics::kMathMaxLongLong:
-      SimplifyMax(instruction, DataType::Type::kInt64);
-      break;
     case Intrinsics::kMathMaxFloatFloat:
-      SimplifyMax(instruction, DataType::Type::kFloat32);
-      break;
     case Intrinsics::kMathMaxDoubleDouble:
-      SimplifyMax(instruction, DataType::Type::kFloat64);
-      break;
     case Intrinsics::kMathAbsInt:
-      SimplifyAbs(instruction, DataType::Type::kInt32);
-      break;
     case Intrinsics::kMathAbsLong:
-      SimplifyAbs(instruction, DataType::Type::kInt64);
-      break;
     case Intrinsics::kMathAbsFloat:
-      SimplifyAbs(instruction, DataType::Type::kFloat32);
-      break;
     case Intrinsics::kMathAbsDouble:
-      SimplifyAbs(instruction, DataType::Type::kFloat64);
-      break;
+      // These are replaced by HIR in the instruction builder.
+      LOG(FATAL) << "Unexpected " << static_cast<Intrinsics>(instruction->GetIntrinsic());
+      UNREACHABLE();
     default:
       break;
   }
