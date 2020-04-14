@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed0d921b_dd48689f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-14T20:21:47Z",
+      "side": 1,
+      "message": "\u0026 ?",
+      "range": {
+        "startLine": 460,
+        "startChar": 56,
+        "endLine": 460,
+        "endChar": 58
+      },
+      "revId": "c6530037c031f6e84eff7746749bcd234e3eadba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e0a49c_95ba1ef2",
+        "filename": "compiler/optimizing/superblock_cloner.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-14T20:21:47Z",
+      "side": 1,
+      "message": "Unrelated?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "c6530037c031f6e84eff7746749bcd234e3eadba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
