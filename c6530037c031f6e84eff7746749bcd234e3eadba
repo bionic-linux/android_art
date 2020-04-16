@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e0774cf_830868c8",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-04-16T22:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed0d921b_dd48689f",
+      "range": {
+        "startLine": 460,
+        "startChar": 56,
+        "endLine": 460,
+        "endChar": 58
+      },
+      "revId": "c6530037c031f6e84eff7746749bcd234e3eadba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3e0a49c_95ba1ef2",
         "filename": "compiler/optimizing/superblock_cloner.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c6530037c031f6e84eff7746749bcd234e3eadba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bebd71a_43e60865",
+        "filename": "compiler/optimizing/superblock_cloner.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-04-16T22:58:30Z",
+      "side": 1,
+      "message": "It is related actually: before if compile_options_ was null (e.g. for gtests), peeling/unrolling were not applied, which made loop_optimization_test fail.\n\nbool HLoopOptimization::TryPeelingAndUnrolling(LoopNode* node) {\n  // Don\u0027t run peeling/unrolling if compiler_options_ is nullptr (i.e., running under tests)\n  // as InstructionSet is needed.\n  if (compiler_options_ \u003d\u003d nullptr) {\n    return false;\n  }",
+      "parentUuid": "b3e0a49c_95ba1ef2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 50
+      },
+      "revId": "c6530037c031f6e84eff7746749bcd234e3eadba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
