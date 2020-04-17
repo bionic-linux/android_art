@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ed8d509_edbc16b1",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-04-17T02:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acefbe0b_8e5eff70",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e358549a_20b691ab",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "9352117c_deeffc5d",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-04-17T02:01:10Z",
+      "side": 1,
+      "message": "May be Minchan can throw some more light.\n\nBTW, it is clarified in a comment in kernel source code (https://elixir.bootlin.com/linux/latest/source/mm/madvise.c#L593) that it immediately releases swap entry. Besides, as the name of the advise suggests, it is intended to free memory. For a page which isn\u0027t in RAM at the time of the call, it doesn\u0027t make sense for the kernel to bring that page back in RAM.\n\nRegarding mincore() not being linux-specific. If there\u0027s a way to test if mincore exist or not, then I\u0027m fine with making this code kernel-generic.",
+      "parentUuid": "2ceb4f4c_96534f69",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
@@ -83,6 +131,30 @@
       "writtenOn": "2020-04-17T00:18:53Z",
       "side": 1,
       "message": "Should this just be a comment? Is this actually informative if it\u0027s repeated many times on the log?",
+      "range": {
+        "startLine": 689,
+        "startChar": 2,
+        "endLine": 689,
+        "endChar": 60
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064dc6ac_b8363127",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-04-17T02:01:10Z",
+      "side": 1,
+      "message": "I took the idea from the definition of MemMap::MadviseDontNeedAndZero(), which handles it this way.\n\nShould I just return for Windows without any comment?",
+      "parentUuid": "c2300eb0_239452e7",
       "range": {
         "startLine": 689,
         "startChar": 2,
