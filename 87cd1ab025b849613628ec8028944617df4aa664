@@ -19,6 +19,167 @@
     },
     {
       "key": {
+        "uuid": "c29cdf3e_0fd4de2b",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "DCHECK_EQ ?",
+      "range": {
+        "startLine": 1048,
+        "startChar": 6,
+        "endLine": 1048,
+        "endChar": 12
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8729fa70_9bc293c1",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "DCHECK_EQ ?",
+      "range": {
+        "startLine": 1050,
+        "startChar": 6,
+        "endLine": 1050,
+        "endChar": 12
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492dccb0_400cd4b5",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1492,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "Maybe it is easier to have one check at the beginning of the function, and not worry about argument_length_error afterwards:\n\n  strlen(shorty) \u003d\u003d number_of_operands + (receiver_arg \u003d\u003d ReceiverArg::kNone ? 0 : 1)",
+      "range": {
+        "startLine": 1489,
+        "startChar": 0,
+        "endLine": 1492,
+        "endChar": 5
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b8ecf6_1e200658",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "DCHECK_EQ ?",
+      "range": {
+        "startLine": 1510,
+        "startChar": 4,
+        "endLine": 1510,
+        "endChar": 10
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21f7fa5_50cb9beb",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "DCHECK_EQ ?\n\nAt this point I think there must be some reason for not using it, so not commenting in similar cases.",
+      "range": {
+        "startLine": 1533,
+        "startChar": 4,
+        "endLine": 1533,
+        "endChar": 10
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac429d31_956243a9",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "Can you add a comment why other intrinsics cannot be handled here? Also, I\u0027d prefer an explicit list of all intrinsics that cannot be handled, and an UNREACHABLE() in the default case. Otherwise one might add a simple instinsic and forget to add it here.",
+      "range": {
+        "startLine": 1684,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 19
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2beab79_e6a19b51",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "If you move this switch before the main switch, you can overwrite instrinsic type (e.g. left shift -\u003e right shift) and avoid DCHECKS. And the appending order would be more natural.",
+      "range": {
+        "startLine": 1696,
+        "startChar": 0,
+        "endLine": 1696,
+        "endChar": 35
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c60627e9_6c5cff1f",
         "filename": "compiler/optimizing/instruction_builder.h",
         "patchSetId": 3
@@ -42,6 +203,29 @@
     },
     {
       "key": {
+        "uuid": "3dafe06e_fcdf26a2",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "String.\u003cinit\u003e ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 71,
+        "endLine": 251,
+        "endChar": 84
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0ea1d03_df7e3efb",
         "filename": "compiler/optimizing/instruction_builder.h",
         "patchSetId": 3
@@ -58,6 +242,29 @@
         "startChar": 28,
         "endLine": 253,
         "endChar": 40
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549ec2ae_9cca3f07",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2673,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-17T11:03:18Z",
+      "side": 1,
+      "message": "Why is this a break? Doesn\u0027t switch cover all cases (then add a comment why other cases are not handled). Otherwise maybe make it UNREACHABLE() to prevent forgetting to handle a new intrinsic type?",
+      "range": {
+        "startLine": 2673,
+        "startChar": 0,
+        "endLine": 2673,
+        "endChar": 12
       },
       "revId": "87cd1ab025b849613628ec8028944617df4aa664",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
