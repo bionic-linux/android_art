@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2ceb4f4c_96534f69",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-17T00:23:32Z",
+      "side": 1,
+      "message": "I just found the earlier discussion, but I\u0027m still not really convinced. Assuming I\u0027m not overlooking something, I would also be very reluctant to rely on undocumented kernel properties.",
+      "parentUuid": "e358549a_20b691ab",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
