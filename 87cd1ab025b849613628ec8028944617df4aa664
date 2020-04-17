@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da2e899_10ed6ce5",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-17T09:30:52Z",
+      "side": 1,
+      "message": "Can you add a comment that for this case, we expect the instruction simplifier to take care of intrinsifying the call?",
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60627e9_6c5cff1f",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-17T09:30:52Z",
+      "side": 1,
+      "message": "\u0027d\u0027 ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 38,
+        "endLine": 251,
+        "endChar": 39
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ea1d03_df7e3efb",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-17T09:30:52Z",
+      "side": 1,
+      "message": "Can you add a comment why this is not just HInvoke anymore?",
+      "range": {
+        "startLine": 253,
+        "startChar": 28,
+        "endLine": 253,
+        "endChar": 40
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
