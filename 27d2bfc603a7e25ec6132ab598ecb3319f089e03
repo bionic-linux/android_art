@@ -22,6 +22,30 @@
       "revId": "27d2bfc603a7e25ec6132ab598ecb3319f089e03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f6fee5_a465aaf1",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 0,
+      "message": "I see very little value in doing this DCHECK(). `HInvoke`s are initialized based on the strlen(shorty) and shall pass the check. OTOH, some intrinsic replacements do not have the right InputCount(), namely isNaN creates HNotEqual and copies the single argument also to the second input.",
+      "parentUuid": "7346a583_e6991c43",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1468,
+        "endChar": 58
+      },
+      "revId": "27d2bfc603a7e25ec6132ab598ecb3319f089e03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

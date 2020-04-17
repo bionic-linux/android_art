@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fee65ade_fd3c8350",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "It\u0027s not really about the instruction simplifier anymore, it\u0027s about leaf methods, see OptimizingCompiler::TryCompileIntrinsic(). For example, we do not have HIR for DoubleDoubleToRawLongBits but it should yield a leaf method.\n\nAdded a comment.",
+      "parentUuid": "6da2e899_10ed6ce5",
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c29cdf3e_0fd4de2b",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "87cd1ab025b849613628ec8028944617df4aa664",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7825362f_fda8e0cc",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Done. (I had to check that we have the appropriate operator\u003c\u003c.)",
+      "parentUuid": "c29cdf3e_0fd4de2b",
+      "range": {
+        "startLine": 1048,
+        "startChar": 6,
+        "endLine": 1048,
+        "endChar": 12
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "acb665df_ce925287",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "There is no value in printing the runtime value of the pointer. And I find DCHECK_EQ for pointers dangerous as you could easily use it for `const uint8_t*` that does not point to a C string and the operator\u003c\u003c could cause SIGSEGV, especially if the pointer is null.",
+      "parentUuid": "8729fa70_9bc293c1",
+      "range": {
+        "startLine": 1050,
+        "startChar": 6,
+        "endLine": 1050,
+        "endChar": 12
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492dccb0_400cd4b5",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "87cd1ab025b849613628ec8028944617df4aa664",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d89f1de_a79290f5",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1492,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "That\u0027s not so easy, see the `if (is_wide) { i++; }` below.",
+      "parentUuid": "492dccb0_400cd4b5",
+      "range": {
+        "startLine": 1489,
+        "startChar": 0,
+        "endLine": 1492,
+        "endChar": 5
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "b1ee5017_03ffa570",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "No, same as above.",
+      "parentUuid": "83b8ecf6_1e200658",
+      "range": {
+        "startLine": 1510,
+        "startChar": 4,
+        "endLine": 1510,
+        "endChar": 10
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f21f7fa5_50cb9beb",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -131,6 +245,30 @@
       "revId": "87cd1ab025b849613628ec8028944617df4aa664",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b4b5b2_91fbad80",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Exactly.",
+      "parentUuid": "f21f7fa5_50cb9beb",
+      "range": {
+        "startLine": 1533,
+        "startChar": 4,
+        "endLine": 1533,
+        "endChar": 10
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "a6b29030_b3d74a8e",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Added a comment.\n\nDo you really want to require modification of this file whenever we add an intrinsic?\n\nWhen adding HIR for another intrinsic, it should be added here in the first place.",
+      "parentUuid": "ac429d31_956243a9",
+      "range": {
+        "startLine": 1684,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 19
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2beab79_e6a19b51",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -168,6 +330,30 @@
       "writtenOn": "2020-04-17T11:03:18Z",
       "side": 1,
       "message": "If you move this switch before the main switch, you can overwrite instrinsic type (e.g. left shift -\u003e right shift) and avoid DCHECKS. And the appending order would be more natural.",
+      "range": {
+        "startLine": 1696,
+        "startChar": 0,
+        "endLine": 1696,
+        "endChar": 35
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962ac6d1_483bf08c",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1696,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "I originally wrote this with `HInstruction* preprocess_right` and `HInstruction* postprocess` filled in in the above `switch` but it was messy (especially for String.charAt) and I would have needed another `bool duplicate_arg` for \"isNaN\". So I rewrote it like this and consider it much cleaner.",
+      "parentUuid": "f2beab79_e6a19b51",
       "range": {
         "startLine": 1696,
         "startChar": 0,
@@ -226,6 +412,54 @@
     },
     {
       "key": {
+        "uuid": "962da04b_335d76e0",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dafe06e_fcdf26a2",
+      "range": {
+        "startLine": 251,
+        "startChar": 71,
+        "endLine": 251,
+        "endChar": 84
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bedb38b1_47dc1422",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60627e9_6c5cff1f",
+      "range": {
+        "startLine": 251,
+        "startChar": 38,
+        "endLine": 251,
+        "endChar": 39
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0ea1d03_df7e3efb",
         "filename": "compiler/optimizing/instruction_builder.h",
         "patchSetId": 3
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "4cef9a69_382274aa",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "There is a comment at the start of the implementation. Should I move it here? (I don\u0027t want to duplicate it.)",
+      "parentUuid": "d0ea1d03_df7e3efb",
+      "range": {
+        "startLine": 253,
+        "startChar": 28,
+        "endLine": 253,
+        "endChar": 40
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "549ec2ae_9cca3f07",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 3
@@ -260,6 +518,30 @@
       "writtenOn": "2020-04-17T11:03:18Z",
       "side": 1,
       "message": "Why is this a break? Doesn\u0027t switch cover all cases (then add a comment why other cases are not handled). Otherwise maybe make it UNREACHABLE() to prevent forgetting to handle a new intrinsic type?",
+      "range": {
+        "startLine": 2673,
+        "startChar": 0,
+        "endLine": 2673,
+        "endChar": 12
+      },
+      "revId": "87cd1ab025b849613628ec8028944617df4aa664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e4260d_c50b1732",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2673,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-17T12:20:10Z",
+      "side": 1,
+      "message": "Do you want to require modification of this file whenever we add a new intrinsic?",
+      "parentUuid": "549ec2ae_9cca3f07",
       "range": {
         "startLine": 2673,
         "startChar": 0,
