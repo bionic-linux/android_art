@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "14a72505_eaad9dee",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-18T00:18:19Z",
+      "side": 1,
+      "message": "I\u0027m fine with only using it on Linux. I don\u0027t think performance elsewhere matters much. I would just change the comment to \"Use mincore() only on Linux.\"\n\nI\u0027m hesitant to rely on a kernel code comment for correctness. Somebody may decide to implement this differently next week. I\u0027m also worried about something getting paged in during this as a result of misspeculation of some sort. That may be impossible, but that claim seems to rely on all kinds of subtle hardware, OS, compiler, and runtime properties. Can prefetches ever cause page faults?\n\nWhat does MADV_DONT_NEED do for pages that are not \"in core\"? Is it cheap? Can we just use MADV_DONT_NEED for such pages?",
+      "parentUuid": "9352117c_deeffc5d",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I took the idea from the definition of MemMap::MadviseDontNeedAndZero(), which handles it this way.\n\nShould I just return for Windows without any comment?",
       "parentUuid": "c2300eb0_239452e7",
+      "range": {
+        "startLine": 689,
+        "startChar": 2,
+        "endLine": 689,
+        "endChar": 60
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "031e9f3a_0291c2e5",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-18T00:18:19Z",
+      "side": 1,
+      "message": "I would do that, i.e. change this to\n\n// PurgePages does not madvise on Windows.\n\nI don\u0027t think the log entry is actionable. And it will be repetitive.",
+      "parentUuid": "064dc6ac_b8363127",
       "range": {
         "startLine": 689,
         "startChar": 2,
