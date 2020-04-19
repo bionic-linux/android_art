@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "21364080_c2959937",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-04-19T04:38:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure if h/w prefetch can cause page fault. Good question! I guess it can. Even if it does, in our case it is guaranteed that the pages in these regions aren\u0027t touched by anyone from this point on.\n\nMADV_DONTNEED \u0027zaps\u0027 all pages in the given range. It is comparatively expensive as it\u0027s blocking. Furthermore, intermixing MADV_FREE and MADV_DONTNEED will make it even more expensive due to invocation of additional syscalls.\n\nHow about this: I\u0027ll perform another mincore after madvise(MADV_FREE). If it shows that any new pages have been brought in core (which were not in core as per first mincore), then will call madvise(MADV_FREE) (after marking them) on them. Any pages that are not in core as per both calls to mincore is guaranteed to be taken care by the first madvise(MADV_FREE).",
+      "parentUuid": "14a72505_eaad9dee",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
