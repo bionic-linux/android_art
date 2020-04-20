@@ -25,14 +25,15 @@ art_cc_library {
         "micro-native/micro_native.cc",
         "scoped-primitive-array/scoped_primitive_array.cc",
     ],
-    shared_libs: [
-        "libart",
-        "libbacktrace",
-        "libbase",
-        "libnativehelper",
-    ],
     cflags: [
         "-Wno-frame-larger-than=",
+    ],
+    header_libs: [
+        "libnativehelper_header_only",
+    ],
+    shared_libs: [
+        "libart",
+        "libbase",
     ],
 }
 
