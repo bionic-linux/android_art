@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f987ab71_b3c1d4ad",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-20T14:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c87a0de_00b532a9",
+      "range": {
+        "startLine": 534,
+        "startChar": 2,
+        "endLine": 534,
+        "endChar": 20
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4228c9cd_089f86d3",
         "filename": "Android.mk",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-20T14:17:53Z",
       "side": 1,
       "message": "Is this necessary? You already have `$(RELEASE_ART_APEX)` as a dependency.",
+      "range": {
+        "startLine": 696,
+        "startChar": 44,
+        "endLine": 696,
+        "endChar": 63
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3a71e0_d03ca849",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-20T14:22:08Z",
+      "side": 1,
+      "message": "How does com.android.art.release force the build of com.android.runtime?",
+      "parentUuid": "4228c9cd_089f86d3",
       "range": {
         "startLine": 696,
         "startChar": 44,
