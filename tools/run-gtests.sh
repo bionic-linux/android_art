@@ -49,6 +49,7 @@ else
 fi
 
 failing_tests=()
+tests="/apex/com.android.art/bin/art/arm64/oatdump_app_test"
 
 for t in $tests; do
   echo "$t"
