@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a9d5ed_80cfb531",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:22:06Z",
+      "side": 1,
+      "message": "Nit:\n\n  path +\u003d Is64BitInstructionSet(kRuntimeISA) ? \"64\" : \"32\";",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "f5d13cda782dbd0efd0fd4158bb9d57ab54e0334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7fa3000_162f7a92",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:22:06Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 3
+      },
+      "revId": "f5d13cda782dbd0efd0fd4158bb9d57ab54e0334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
