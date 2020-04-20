@@ -93,6 +93,30 @@
       "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc5ff24_7c02043a",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:33:20Z",
+      "side": 1,
+      "message": "Module `com.android.runtime` is a phony module, i.e. an alias which either point at `com.android.runtime.release` or `com.android.runtime.debug` (see https://android.googlesource.com/platform/art/+/refs/heads/master/Android.mk#294).\n\nI\u0027m not sure to understand what `com.android.runtime` is adding here. If the Android product you\u0027re building is a `userdebug` or `eng` build, this will add a dependency on `com.android.art.debug`, which is probably not what you want.",
+      "parentUuid": "ee3a71e0_d03ca849",
+      "range": {
+        "startLine": 696,
+        "startChar": 44,
+        "endLine": 696,
+        "endChar": 63
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
