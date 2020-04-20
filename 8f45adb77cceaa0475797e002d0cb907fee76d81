@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c87a0de_00b532a9",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:17:53Z",
+      "side": 1,
+      "message": "Also remove this one?",
+      "range": {
+        "startLine": 534,
+        "startChar": 2,
+        "endLine": 534,
+        "endChar": 20
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4228c9cd_089f86d3",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:17:53Z",
+      "side": 1,
+      "message": "Is this necessary? You already have `$(RELEASE_ART_APEX)` as a dependency.",
+      "range": {
+        "startLine": 696,
+        "startChar": 44,
+        "endLine": 696,
+        "endChar": 63
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
