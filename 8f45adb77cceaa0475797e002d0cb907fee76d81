@@ -141,6 +141,30 @@
       "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33609aaa_b520569b",
+        "filename": "Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-20T14:36:21Z",
+      "side": 1,
+      "message": "Oh right! Sorry about the confusion. :)",
+      "parentUuid": "fbcc825f_ca00c6d7",
+      "range": {
+        "startLine": 696,
+        "startChar": 44,
+        "endLine": 696,
+        "endChar": 63
+      },
+      "revId": "8f45adb77cceaa0475797e002d0cb907fee76d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
