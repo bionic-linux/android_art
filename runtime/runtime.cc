@@ -818,6 +818,11 @@ std::string Runtime::GetCompilerExecutable() const {
   if (kIsDebugBuild) {
     compiler_executable += 'd';
   }
+  if (Is64BitInstructionSet(kRuntimeISA)) {
+    compiler_executable += "64";
+  } else {
+    compiler_executable += "32";
+  }
   return compiler_executable;
 }
 
