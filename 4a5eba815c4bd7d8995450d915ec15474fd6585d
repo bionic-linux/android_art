@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "00193ea6_e6c6ebb7",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-21T01:12:31Z",
+      "side": 1,
+      "message": "We know that MADV_DONTNEED is slow even for pages that are already paged out? Logically it seems that MADV_FREE and MADV_DONT_NEED should do roughly the same thing in this case, namely discard the page and map it to be zero-filled on access? Or the issue is that MADV_FREE still does this in the background?\n\nDo we ever page out dirty Java heap pages, e.g. to compressed RAM? If not, I guess we should be fine.\n\nIs there a way to test for the kernel property? Is there a way to dirty a page and then force it to be paged out? That, together with the second mincore() call, would give me sufficient confidence, I think. Do you understand empirically which pages are paged out? Just the ones we didn\u0027t actually touch?",
+      "parentUuid": "21364080_c2959937",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
