@@ -1,0 +1,9 @@
+Code-Review+2: Roland Levillain <rpl@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Ready+1: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Wed, 22 Apr 2020 17:14:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1292896
+Project: platform/art
+Branch: refs/heads/master
