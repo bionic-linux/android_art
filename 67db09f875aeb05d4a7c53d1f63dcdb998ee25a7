@@ -16,6 +16,29 @@
       "revId": "67db09f875aeb05d4a7c53d1f63dcdb998ee25a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8606ea_da9e4e77",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-23T11:05:07Z",
+      "side": 1,
+      "message": "tools/run-libcore-tests.sh is currently broken. I will fix it in a later patchset.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 72
+      },
+      "revId": "67db09f875aeb05d4a7c53d1f63dcdb998ee25a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
