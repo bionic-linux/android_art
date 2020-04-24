@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "459db03e_e83811d4",
+        "filename": "dex2oat/dex2oat_image_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-24T09:47:59Z",
+      "side": 1,
+      "message": "Victor, I agree that the total count is \u003e\u003d 5 whether core-icu4j is in \"mid\" or in \"tail\". I think Vladimir means that the assert should be \"\u003e\u003d 4\" not \"\u003e\u003d 5\" because for the test it only matters which jars are in \"head\" and \"tail\", but it doesn\u0027t care exactly how many jars are in \"mid\" (at least one). Since core-icu4j is just one of the few jars in \"mid\", it is not necessary to explicitly account for it. Not sure if it helps.",
+      "parentUuid": "5be35297_0f374737",
+      "range": {
+        "startLine": 276,
+        "startChar": 29,
+        "endLine": 276,
+        "endChar": 31
+      },
+      "revId": "67db09f875aeb05d4a7c53d1f63dcdb998ee25a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30bc7d80_c98ad6ae",
         "filename": "dex2oat/dex2oat_image_test.cc",
         "patchSetId": 11
