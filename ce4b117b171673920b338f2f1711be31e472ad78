@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9c712d6_60b2236f",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-24T09:44:36Z",
+      "side": 1,
+      "message": "Should this be checked line 275 (and 285)? Or if ART doesn\u0027t offer public libraries anymore, should we check that and remove lines 266-270?",
+      "range": {
+        "startLine": 266,
+        "startChar": 21,
+        "endLine": 266,
+        "endChar": 52
+      },
+      "revId": "ce4b117b171673920b338f2f1711be31e472ad78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb692195_60de188f",
+        "filename": "tools/bootjars.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-24T09:44:36Z",
+      "side": 1,
+      "message": "With the \"stem\" on the build rule, this shouldn\u0027t be needed.",
+      "range": {
+        "startLine": 85,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "ce4b117b171673920b338f2f1711be31e472ad78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
