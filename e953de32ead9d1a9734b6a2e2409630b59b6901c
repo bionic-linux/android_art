@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd14dabf_8e0adeff",
+        "filename": "dex2oat/dex2oat_image_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-24T15:00:55Z",
+      "side": 1,
+      "message": "This test really doesn\u0027t care about the core-icu4j. Please, do a partial revert and let the \"tail\" contain only conscrypt.",
+      "range": {
+        "startLine": 281,
+        "startChar": 47,
+        "endLine": 281,
+        "endChar": 57
+      },
+      "revId": "e953de32ead9d1a9734b6a2e2409630b59b6901c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
