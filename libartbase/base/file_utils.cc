@@ -442,10 +442,14 @@ static bool IsLocationOnModule(const char* full_path,
 }
 
 bool LocationIsOnSystemFramework(const char* full_path) {
-  return IsLocationOnModule(full_path,
+  return (IsLocationOnModule(full_path,
                             kAndroidRootEnvVar,
                             kAndroidRootDefaultPath,
-                            /* subdir= */ "framework/");
+                            /* subdir= */ "framework/")
+          || IsLocationOnModule(full_path,
+                            kAndroidRootEnvVar,
+                            kAndroidRootDefaultPath,
+                            /* subdir= */ "system_ext/framework/"));
 }
 
 bool LocationIsOnConscryptModule(const char* full_path) {
