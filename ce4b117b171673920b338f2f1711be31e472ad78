@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e110fb8f_b593ed02",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-24T10:18:32Z",
+      "side": 1,
+      "message": "i18n_public_libraries is statically assert non-empty in the other place.\n\nart_public_libraries() is normally empty, but has extra public libraries from ANDROID_ADDITIONAL_PUBLIC_LIBRARIES for platform testing. I don\u0027t know what platform testing is, but just keep this working here. I have now added a comment. PTAL.",
+      "parentUuid": "e9c712d6_60b2236f",
+      "range": {
+        "startLine": 266,
+        "startChar": 21,
+        "endLine": 266,
+        "endChar": 52
+      },
+      "revId": "ce4b117b171673920b338f2f1711be31e472ad78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb692195_60de188f",
         "filename": "tools/bootjars.sh",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-24T09:44:36Z",
       "side": 1,
       "message": "With the \"stem\" on the build rule, this shouldn\u0027t be needed.",
+      "range": {
+        "startLine": 85,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "ce4b117b171673920b338f2f1711be31e472ad78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741ca14f_37d47799",
+        "filename": "tools/bootjars.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-24T10:18:32Z",
+      "side": 1,
+      "message": "I have specified \"stem\" in the build rule, but the intermediates path still has use  module name, but not the name in stem. Not sure why, but apparently, conscrypt has the same problem as shown in the AndroidSdk.java in vogar.",
+      "parentUuid": "fb692195_60de188f",
       "range": {
         "startLine": 85,
         "startChar": 20,
