@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "ca9636ce_8edbe642",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-04-25T01:00:05Z",
+      "side": 1,
+      "message": "As per our discussion, I tried the change wherein we simply madv_free the entire range that we want to reclaim, and then memset the entire TLAB, unconditionally. But this seems to be expensive than the current patch-set on this CL. Some of the number are as follows:\n\nMicroAllocBaseline        : 9        8\nMicroAllocOneFinal        : 10       8\nMicroAllocTwoFinal        : 11       8\nMicroAllocThreeFinal      : 13       10\nMicroAllocThreeFinalTwice : 26       20\nMicroAllocThreeFinalThrice: 38       30\nBinaryTrees               : 84       73\n\nThe numbers are in nanoseconds. The first column is for the simple change that we discussed, and the second column is the latest patch-set. Needless to say that without this CL, i.e. with madv_dontneed the numbers are far more worse. So clearly.",
+      "parentUuid": "00193ea6_e6c6ebb7",
+      "range": {
+        "startLine": 519,
+        "startChar": 11,
+        "endLine": 519,
+        "endChar": 36
+      },
+      "revId": "4a5eba815c4bd7d8995450d915ec15474fd6585d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2300eb0_239452e7",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 14
