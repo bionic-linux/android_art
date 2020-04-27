@@ -118,6 +118,30 @@
       "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bf9d330_f980a966",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-27T11:29:45Z",
+      "side": 1,
+      "message": "This would not be unaligned on 32-bit systems but, for the record, we require 32-bit ARM to be configured to permit unaligned reads/writes (single-register, non-atomic) with a control flag. We can use unaligned reads/writes just fine on arm64 (probably subject to the same control flag as on 32-bit ARM) and, if I remember correctly, the performance suffers only if a read crosses a 64B boundary for or write crosses a 128B boundary.",
+      "parentUuid": "f57e3dda_6a764573",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
