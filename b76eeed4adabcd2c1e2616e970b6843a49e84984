@@ -46,6 +46,30 @@
       "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47d1f7c7_e3f50eee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-27T09:58:05Z",
+      "side": 1,
+      "message": "Thanks! Can you expand whether that\u0027s for performance reasons? Correctness?",
+      "parentUuid": "8695f1a6_9c78dca7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
