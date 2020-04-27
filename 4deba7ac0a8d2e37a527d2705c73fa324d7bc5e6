@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b9135aa_596361d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-27T16:06:22Z",
+      "side": 1,
+      "message": "Done. The test passes",
+      "parentUuid": "f1c59f18_918c8edc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "4deba7ac0a8d2e37a527d2705c73fa324d7bc5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00a2f360_1ea910a7",
         "filename": "Android.mk",
         "patchSetId": 14
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c066ecc7_4187202c",
+        "filename": "Android.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-27T16:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00a2f360_1ea910a7",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 641,
+        "endChar": 70
+      },
+      "revId": "4deba7ac0a8d2e37a527d2705c73fa324d7bc5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93f4f7bd_1ab5decf",
         "filename": "tools/bootjars.sh",
         "patchSetId": 14
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-27T15:01:31Z",
       "side": 1,
       "message": "The logic here seems to contradict the comment in https://android-review.googlesource.com/c/platform/art/+/1283897/14/build/Android.bp#281 – which one is correct?",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "4deba7ac0a8d2e37a527d2705c73fa324d7bc5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cec785_4d44420e",
+        "filename": "tools/bootjars.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-04-27T16:06:22Z",
+      "side": 1,
+      "message": "Are you asking about the comment related to \"stem\" attribute? bootjar.sh is referencing the hostdex in the intermediates directory, and the comment is about the installed file.",
+      "parentUuid": "93f4f7bd_1ab5decf",
       "range": {
         "startLine": 84,
         "startChar": 6,
