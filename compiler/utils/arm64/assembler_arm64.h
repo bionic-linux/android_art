@@ -98,6 +98,9 @@ class Arm64Assembler final : public Assembler {
   void SpillRegisters(vixl::aarch64::CPURegList registers, int offset);
   void UnspillRegisters(vixl::aarch64::CPURegList registers, int offset);
 
+  // A helper to save/restore a list of ZRegisters to a specified stack offset location.
+  void SaveRestoreZRegisterList(uint32_t vreg_bit_vector, int64_t stack_offset, bool is_save);
+
   // Jump to address (not setting link register)
   void JumpTo(ManagedRegister m_base, Offset offs, ManagedRegister m_scratch);
 

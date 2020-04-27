@@ -16,6 +16,7 @@
 
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "assembler_arm64.h"
+#include "base/bit_utils_iterator.h"
 #include "entrypoints/quick/quick_entrypoints.h"
 #include "heap_poisoning.h"
 #include "offsets.h"
@@ -159,6 +160,26 @@ void Arm64Assembler::UnspillRegisters(CPURegList registers, int offset) {
     cfi_.Restore(DWARFReg(dst0));
   }
   DCHECK(registers.IsEmpty());
+}
+
+void Arm64Assembler::SaveRestoreZRegisterList(uint32_t vreg_bit_vector,
+                                              int64_t stack_offset,
+                                              bool is_save) {
+  if (vreg_bit_vector == 0) {
+    return;
+  }
+  UseScratchRegisterScope temps(GetVIXLAssembler());
+  Register temp = temps.AcquireX();
+  ___ Add(temp, sp, stack_offset);
+  size_t slot_no = 0;
+  for (uint32_t i : LowToHighBits(vreg_bit_vector)) {
+    if (is_save) {
+      ___ Str(ZRegister(i), SVEMemOperand(temp, slot_no, SVE_MUL_VL));
+    } else {
+      ___ Ldr(ZRegister(i), SVEMemOperand(temp, slot_no, SVE_MUL_VL));
+    }
+    slot_no++;
+  }
 }
 
 void Arm64Assembler::PoisonHeapReference(Register reg) {
