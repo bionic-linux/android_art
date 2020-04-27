@@ -140,6 +140,30 @@
       "revId": "4deba7ac0a8d2e37a527d2705c73fa324d7bc5e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8ca684_d17e7ad9",
+        "filename": "tools/bootjars.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-27T16:30:20Z",
+      "side": 1,
+      "message": "I see; thanks for the explanation!",
+      "parentUuid": "02cec785_4d44420e",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "4deba7ac0a8d2e37a527d2705c73fa324d7bc5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
