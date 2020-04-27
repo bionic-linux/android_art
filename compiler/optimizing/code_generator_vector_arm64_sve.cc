@@ -17,6 +17,7 @@
 #include "code_generator_arm64.h"
 
 #include "arch/arm64/instruction_set_features_arm64.h"
+#include "base/bit_utils_iterator.h"
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
 
@@ -33,6 +34,7 @@ using helpers::LocationFrom;
 using helpers::OutputRegister;
 using helpers::QRegisterFrom;
 using helpers::StackOperandFrom;
+using helpers::SveStackOperandFrom;
 using helpers::VRegisterFrom;
 using helpers::ZRegisterFrom;
 using helpers::XRegisterFrom;
@@ -71,6 +73,11 @@ inline Location SVEEncodableConstantOrRegister(HInstruction* constant, HInstruct
   return Location::RequiresRegister();
 }
 
+void InstructionCodeGeneratorARM64Sve::ValidateVectorLength(HVecOperation* instr) const {
+  DCHECK_EQ(DataType::Size(instr->GetPackedType()) * instr->GetVectorLength(),
+            codegen_->GetSIMDRegisterWidth());
+}
+
 void LocationsBuilderARM64Sve::VisitVecReplicateScalar(HVecReplicateScalar* instruction) {
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
   HInstruction* input = instruction->InputAt(0);
@@ -107,11 +114,12 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
   LocationSummary* locations = instruction->GetLocations();
   Location src_loc = locations->InAt(0);
   const ZRegister dst = ZRegisterFrom(locations->Out());
+
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Dup(dst.VnB(), Int64FromLocation(src_loc));
       } else {
@@ -120,7 +128,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Dup(dst.VnH(), Int64FromLocation(src_loc));
       } else {
@@ -128,7 +135,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Dup(dst.VnS(), Int64FromLocation(src_loc));
       } else {
@@ -136,7 +142,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Dup(dst.VnD(), Int64FromLocation(src_loc));
       } else {
@@ -144,7 +149,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
       }
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Fdup(dst.VnS(), src_loc.GetConstant()->AsFloatConstant()->GetValue());
       } else {
@@ -152,7 +156,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReplicateScalar(HVecReplicateScal
       }
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (src_loc.IsConstant()) {
         __ Fdup(dst.VnD(), src_loc.GetConstant()->AsDoubleConstant()->GetValue());
       } else {
@@ -193,19 +196,16 @@ void InstructionCodeGeneratorARM64Sve::VisitVecExtractScalar(HVecExtractScalar* 
   DCHECK(instruction->IsPredicated());
   LocationSummary* locations = instruction->GetLocations();
   const VRegister src = VRegisterFrom(locations->InAt(0));
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Umov(OutputRegister(instruction), src.V4S(), 0);
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Umov(OutputRegister(instruction), src.V2D(), 0);
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      DCHECK_LE(2u, instruction->GetVectorLength());
-      DCHECK_LE(instruction->GetVectorLength(), 4u);
       DCHECK(locations->InAt(0).Equals(locations->Out()));  // no code required
       break;
     default:
@@ -251,9 +251,9 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReduce(HVecReduce* instruction) {
   const ZRegister src = ZRegisterFrom(locations->InAt(0));
   const VRegister dst = DRegisterFrom(locations->Out());
   const PRegister p_reg = LoopPReg();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
           __ Saddv(dst.S(), p_reg, src.VnS());
@@ -264,7 +264,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecReduce(HVecReduce* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
           __ Uaddv(dst.D(), p_reg, src.VnD());
@@ -292,8 +291,8 @@ void InstructionCodeGeneratorARM64Sve::VisitVecCnv(HVecCnv* instruction) {
   const PRegisterM p_reg = LoopPReg().Merging();
   DataType::Type from = instruction->GetInputType();
   DataType::Type to = instruction->GetResultType();
+  ValidateVectorLength(instruction);
   if (from == DataType::Type::kInt32 && to == DataType::Type::kFloat32) {
-    DCHECK_EQ(4u, instruction->GetVectorLength());
     __ Scvtf(dst.VnS(), p_reg, src.VnS());
   } else {
     LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -310,31 +309,26 @@ void InstructionCodeGeneratorARM64Sve::VisitVecNeg(HVecNeg* instruction) {
   const ZRegister src = ZRegisterFrom(locations->InAt(0));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Neg(dst.VnB(), p_reg, src.VnB());
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Neg(dst.VnH(), p_reg, src.VnH());
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Neg(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Neg(dst.VnD(), p_reg, src.VnD());
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Fneg(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Fneg(dst.VnD(), p_reg, src.VnD());
       break;
     default:
@@ -353,29 +347,24 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAbs(HVecAbs* instruction) {
   const ZRegister src = ZRegisterFrom(locations->InAt(0));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Abs(dst.VnB(), p_reg, src.VnB());
       break;
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Abs(dst.VnH(), p_reg, src.VnH());
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Abs(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Abs(dst.VnD(), p_reg, src.VnD());
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Fabs(dst.VnS(), p_reg, src.VnS());
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Fabs(dst.VnD(), p_reg, src.VnD());
       break;
     default:
@@ -394,9 +383,9 @@ void InstructionCodeGeneratorARM64Sve::VisitVecNot(HVecNot* instruction) {
   const ZRegister src = ZRegisterFrom(locations->InAt(0));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:  // special case boolean-not
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Dup(dst.VnB(), 1);
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Eor(dst.VnB(), dst.VnB(), src.VnB());
@@ -458,10 +447,10 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Add(dst.VnB(), lhs.VnB(), rhs.VnB());
       } else {
@@ -470,7 +459,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Add(dst.VnH(), lhs.VnH(), rhs.VnH());
       } else {
@@ -478,7 +466,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Add(dst.VnS(), lhs.VnS(), rhs.VnS());
       } else {
@@ -486,7 +473,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Add(dst.VnD(), lhs.VnD(), rhs.VnD());
       } else {
@@ -494,7 +480,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
       }
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fadd(dst.VnS(), lhs.VnS(), rhs.VnS());
       } else {
@@ -502,7 +487,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAdd(HVecAdd* instruction) {
       }
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fadd(dst.VnD(), lhs.VnD(), rhs.VnD());
       } else {
@@ -546,10 +530,10 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Sub(dst.VnB(), lhs.VnB(), rhs.VnB());
       } else {
@@ -558,7 +542,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Sub(dst.VnH(), lhs.VnH(), rhs.VnH());
       } else {
@@ -566,7 +549,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Sub(dst.VnS(), lhs.VnS(), rhs.VnS());
       } else {
@@ -574,7 +556,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Sub(dst.VnD(), lhs.VnD(), rhs.VnD());
       } else {
@@ -582,7 +563,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
       }
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fsub(dst.VnS(), lhs.VnS(), rhs.VnS());
       } else {
@@ -590,7 +570,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSub(HVecSub* instruction) {
       }
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fsub(dst.VnD(), lhs.VnD(), rhs.VnD());
       } else {
@@ -624,27 +603,23 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMul(HVecMul* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Mul(dst.VnB(), p_reg, lhs.VnB(), rhs.VnB());
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Mul(dst.VnH(), p_reg, lhs.VnH(), rhs.VnH());
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Mul(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Mul(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
       break;
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fmul(dst.VnS(), lhs.VnS(), rhs.VnS());
       } else {
@@ -652,7 +627,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMul(HVecMul* instruction) {
       }
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Fmul(dst.VnD(), lhs.VnD(), rhs.VnD());
       } else {
@@ -676,15 +650,14 @@ void InstructionCodeGeneratorARM64Sve::VisitVecDiv(HVecDiv* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
 
   // TODO: Consider other options other than StrictNaNPropagation.
   switch (instruction->GetPackedType()) {
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Fdiv(dst.VnS(), p_reg, lhs.VnS(), rhs.VnS());
       break;
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Fdiv(dst.VnD(), p_reg, lhs.VnD(), rhs.VnD());
       break;
     default:
@@ -725,6 +698,7 @@ void InstructionCodeGeneratorARM64Sve::VisitVecAnd(HVecAnd* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
@@ -785,6 +759,7 @@ void InstructionCodeGeneratorARM64Sve::VisitVecOr(HVecOr* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
@@ -836,6 +811,7 @@ void InstructionCodeGeneratorARM64Sve::VisitVecXor(HVecXor* instruction) {
   const ZRegister rhs = ZRegisterFrom(locations->InAt(1));
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
@@ -907,10 +883,10 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShl(HVecShl* instruction) {
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsl(dst.VnB(), lhs.VnB(), value);
       } else {
@@ -919,7 +895,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShl(HVecShl* instruction) {
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsl(dst.VnH(), lhs.VnH(), value);
       } else {
@@ -927,7 +902,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShl(HVecShl* instruction) {
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsl(dst.VnS(), lhs.VnS(), value);
       } else {
@@ -935,7 +909,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShl(HVecShl* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsl(dst.VnD(), lhs.VnD(), value);
       } else {
@@ -959,10 +932,10 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShr(HVecShr* instruction) {
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Asr(dst.VnB(), lhs.VnB(), value);
       } else {
@@ -971,7 +944,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShr(HVecShr* instruction) {
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Asr(dst.VnH(), lhs.VnH(), value);
       } else {
@@ -979,7 +951,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShr(HVecShr* instruction) {
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Asr(dst.VnS(), lhs.VnS(), value);
       } else {
@@ -987,7 +958,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecShr(HVecShr* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Asr(dst.VnD(), lhs.VnD(), value);
       } else {
@@ -1011,10 +981,10 @@ void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
   const ZRegister dst = ZRegisterFrom(locations->Out());
   const PRegisterM p_reg = LoopPReg().Merging();
   int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  ValidateVectorLength(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsr(dst.VnB(), lhs.VnB(), value);
       } else {
@@ -1023,7 +993,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsr(dst.VnH(), lhs.VnH(), value);
       } else {
@@ -1031,7 +1000,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsr(dst.VnS(), lhs.VnS(), value);
       } else {
@@ -1039,7 +1007,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecUShr(HVecUShr* instruction) {
       }
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         __ Lsr(dst.VnD(), lhs.VnD(), value);
       } else {
@@ -1099,26 +1066,23 @@ void InstructionCodeGeneratorARM64Sve::VisitVecSetScalars(HVecSetScalars* instru
   if (IsZeroBitPattern(instruction->InputAt(0))) {
     return;
   }
+  ValidateVectorLength(instruction);
 
   // Set required elements.
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Mov(dst.V16B(), 0, InputRegisterAt(instruction, 0));
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Mov(dst.V8H(), 0, InputRegisterAt(instruction, 0));
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Mov(dst.V4S(), 0, InputRegisterAt(instruction, 0));
       break;
     case DataType::Type::kInt64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Mov(dst.V2D(), 0, InputRegisterAt(instruction, 0));
       break;
     default:
@@ -1165,11 +1129,11 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(
   const PRegisterM p_reg = LoopPReg().Merging();
 
   DCHECK(locations->InAt(0).Equals(locations->Out()));
+  ValidateVectorLength(instruction);
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
         __ Mla(acc.VnB(), p_reg, acc.VnB(), left.VnB(), right.VnB());
       } else {
@@ -1178,7 +1142,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
         __ Mla(acc.VnH(), p_reg, acc.VnB(), left.VnH(), right.VnH());
       } else {
@@ -1186,7 +1149,6 @@ void InstructionCodeGeneratorARM64Sve::VisitVecMultiplyAccumulate(
       }
       break;
     case DataType::Type::kInt32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       if (instruction->GetOpKind() == HInstruction::kAdd) {
         __ Mla(acc.VnS(), p_reg, acc.VnB(), left.VnS(), right.VnS());
       } else {
@@ -1233,12 +1195,11 @@ void InstructionCodeGeneratorARM64Sve::VisitVecDotProd(HVecDotProd* instruction)
   DCHECK_EQ(HVecOperation::ToSignedType(a->GetPackedType()),
             HVecOperation::ToSignedType(b->GetPackedType()));
   DCHECK_EQ(instruction->GetPackedType(), DataType::Type::kInt32);
-  DCHECK_EQ(4u, instruction->GetVectorLength());
+  ValidateVectorLength(instruction);
 
   size_t inputs_data_size = DataType::Size(a->GetPackedType());
   switch (inputs_data_size) {
     case 1u: {
-      DCHECK_EQ(16u, a->GetVectorLength());
       if (CouldUseUnpredicatedVersion(instruction)) {
         if (instruction->IsZeroExtending()) {
           __ Udot(acc.VnS(), acc.VnS(), left.VnB(), right.VnB());
@@ -1308,30 +1269,27 @@ void InstructionCodeGeneratorARM64Sve::VisitVecLoad(HVecLoad* instruction) {
   UseScratchRegisterScope temps(GetVIXLAssembler());
   Register scratch;
   const PRegisterZ p_reg = LoopPReg().Zeroing();
+  ValidateVectorLength(instruction);
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt16:  // (short) s.charAt(.) can yield HVecLoad/Int16/StringCharAt.
     case DataType::Type::kUint16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Ld1h(reg.VnH(), p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Ld1b(reg.VnB(), p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Ld1w(reg.VnS(), p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Ld1d(reg.VnD(), p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
@@ -1353,30 +1311,27 @@ void InstructionCodeGeneratorARM64Sve::VisitVecStore(HVecStore* instruction) {
   UseScratchRegisterScope temps(GetVIXLAssembler());
   Register scratch;
   const PRegisterZ p_reg = LoopPReg().Zeroing();
+  ValidateVectorLength(instruction);
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ St1b(reg.VnB(), p_reg,
           VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ St1h(reg.VnH(), p_reg,
           VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ St1w(reg.VnS(), p_reg,
           VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ St1d(reg.VnD(), p_reg,
           VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
@@ -1402,22 +1357,18 @@ void InstructionCodeGeneratorARM64Sve::VisitVecPredSetAll(HVecPredSetAll* instru
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      DCHECK_EQ(16u, instruction->GetVectorLength());
       __ Ptrue(p_reg.VnB(), vixl::aarch64::SVE_ALL);
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      DCHECK_EQ(8u, instruction->GetVectorLength());
       __ Ptrue(p_reg.VnH(), vixl::aarch64::SVE_ALL);
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      DCHECK_EQ(4u, instruction->GetVectorLength());
       __ Ptrue(p_reg.VnS(), vixl::aarch64::SVE_ALL);
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      DCHECK_EQ(2u, instruction->GetVectorLength());
       __ Ptrue(p_reg.VnD(), vixl::aarch64::SVE_ALL);
       break;
     default:
@@ -1442,17 +1393,19 @@ void InstructionCodeGeneratorARM64Sve::VisitVecPredWhile(HVecPredWhile* instruct
   Register left = InputRegisterAt(instruction, 0);
   Register right = InputRegisterAt(instruction, 1);
 
-  switch (instruction->GetVectorLength()) {
-    case 16u:
+  DCHECK_EQ(codegen_->GetSIMDRegisterWidth() % instruction->GetVectorLength(), 0u);
+
+  switch (codegen_->GetSIMDRegisterWidth() / instruction->GetVectorLength()) {
+    case 1u:
       __ Whilelo(LoopPReg().VnB(), left, right);
       break;
-    case 8u:
+    case 2u:
       __ Whilelo(LoopPReg().VnH(), left, right);
       break;
     case 4u:
       __ Whilelo(LoopPReg().VnS(), left, right);
       break;
-    case 2u:
+    case 8u:
       __ Whilelo(LoopPReg().VnD(), left, right);
       break;
     default:
@@ -1479,49 +1432,89 @@ void InstructionCodeGeneratorARM64Sve::VisitVecPredCondition(HVecPredCondition* 
 
 Location InstructionCodeGeneratorARM64Sve::AllocateSIMDScratchLocation(
     vixl::aarch64::UseScratchRegisterScope* scope) {
-  DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
-  return LocationFrom(scope->AcquireVRegisterOfSize(kQRegSize));
+  return LocationFrom(scope->AcquireZ());
 }
 
 void InstructionCodeGeneratorARM64Sve::FreeSIMDScratchLocation(Location loc,
     vixl::aarch64::UseScratchRegisterScope* scope) {
-  DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
-  scope->Release(QRegisterFrom(loc));
+  scope->Release(ZRegisterFrom(loc));
 }
 
 void InstructionCodeGeneratorARM64Sve::LoadSIMDRegFromStack(Location destination,
                                                             Location source) {
-  DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
-  __ Ldr(QRegisterFrom(destination), StackOperandFrom(source));
+  __ Ldr(ZRegisterFrom(destination), SveStackOperandFrom(source));
 }
 
 void InstructionCodeGeneratorARM64Sve::MoveSIMDRegToSIMDReg(Location destination,
                                                             Location source) {
-  DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
-  __ Mov(QRegisterFrom(destination), QRegisterFrom(source));
+  __ Mov(ZRegisterFrom(destination), ZRegisterFrom(source));
 }
 
 void InstructionCodeGeneratorARM64Sve::MoveToSIMDStackSlot(Location destination,
                                                            Location source) {
   DCHECK(destination.IsSIMDStackSlot());
-  DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
 
   if (source.IsFpuRegister()) {
-    __ Str(QRegisterFrom(source), StackOperandFrom(destination));
+    __ Str(ZRegisterFrom(source), SveStackOperandFrom(destination));
   } else {
     DCHECK(source.IsSIMDStackSlot());
     UseScratchRegisterScope temps(GetVIXLAssembler());
     if (GetVIXLAssembler()->GetScratchVRegisterList()->IsEmpty()) {
+      // Very rare situation, only when there are cycles in ParallelMoveResolver graph.
       const Register temp = temps.AcquireX();
-      __ Ldr(temp, MemOperand(sp, source.GetStackIndex()));
-      __ Str(temp, MemOperand(sp, destination.GetStackIndex()));
-      __ Ldr(temp, MemOperand(sp, source.GetStackIndex() + kArm64WordSize));
-      __ Str(temp, MemOperand(sp, destination.GetStackIndex() + kArm64WordSize));
+      DCHECK_EQ(codegen_->GetSIMDRegisterWidth() % kArm64WordSize, 0u);
+      // Emit a number of LDR/STR (XRegister, 64-bit) to cover the whole SIMD register size
+      // when copying a stack slot.
+      for (size_t offset = 0, e = codegen_->GetSIMDRegisterWidth();
+           offset < e;
+           offset += kArm64WordSize) {
+        __ Ldr(temp, MemOperand(sp, source.GetStackIndex() + offset));
+        __ Str(temp, MemOperand(sp, destination.GetStackIndex() + offset));
+      }
     } else {
-      const VRegister temp = temps.AcquireVRegisterOfSize(kQRegSize);
-      __ Ldr(temp, StackOperandFrom(source));
-      __ Str(temp, StackOperandFrom(destination));
+      const ZRegister temp = temps.AcquireZ();
+      __ Ldr(temp, SveStackOperandFrom(source));
+      __ Str(temp, SveStackOperandFrom(destination));
     }
+  }
+}
+
+void InstructionCodeGeneratorARM64Sve::SaveRestoreLiveRegistersHelper(LocationSummary* locations,
+                                                                      int64_t spill_offset,
+                                                                      bool is_save) {
+  const uint32_t core_spills = codegen_->GetSlowPathSpills(locations, /* core_registers= */ true);
+  const uint32_t fp_spills = codegen_->GetSlowPathSpills(locations, /* core_registers= */ false);
+  DCHECK(helpers::ArtVixlRegCodeCoherentForRegSet(core_spills,
+                                                  codegen_->GetNumberOfCoreRegisters(),
+                                                  fp_spills,
+                                                  codegen_->GetNumberOfFloatingPointRegisters()));
+  MacroAssembler* masm = GetVIXLAssembler();
+  Register base = masm->StackPointer();
+
+  CPURegList core_list = CPURegList(CPURegister::kRegister, kXRegSize, core_spills);
+  int64_t core_spill_size = core_list.GetTotalSizeInBytes();
+  int64_t fp_spill_offset = spill_offset + core_spill_size;
+
+  if (codegen_->GetGraph()->HasSIMD()) {
+    if (is_save) {
+      __ StoreCPURegList(core_list, MemOperand(base, spill_offset));
+    } else {
+      __ LoadCPURegList(core_list, MemOperand(base, spill_offset));
+    }
+    GetAssembler()->SaveRestoreZRegisterList(fp_spills, fp_spill_offset, is_save);
+    return;
+  }
+
+  // Case when we only need to restore D-registers.
+  DCHECK(!codegen_->GetGraph()->HasSIMD());
+  DCHECK_LE(codegen_->GetSlowPathFPWidth(), kDRegSizeInBytes);
+  CPURegList fp_list = CPURegList(CPURegister::kVRegister, kDRegSize, fp_spills);
+  if (is_save) {
+    __ StoreCPURegList(core_list, MemOperand(base, spill_offset));
+    __ StoreCPURegList(fp_list, MemOperand(base, fp_spill_offset));
+  } else {
+    __ LoadCPURegList(core_list, MemOperand(base, spill_offset));
+    __ LoadCPURegList(fp_list, MemOperand(base, fp_spill_offset));
   }
 }
 
