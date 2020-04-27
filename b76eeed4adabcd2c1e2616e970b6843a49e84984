@@ -94,6 +94,30 @@
       "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f57e3dda_6a764573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-27T11:16:10Z",
+      "side": 1,
+      "message": "What are the unaligned access rules on ARM?\nOld CPUs did just SEGV, new CPUs will do it but slower.\nDoes it mean that per-spec, depending on hardware, some CPU may still opt to SEGV even nowadays?",
+      "parentUuid": "f6e4da13_3a1f8c88",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
