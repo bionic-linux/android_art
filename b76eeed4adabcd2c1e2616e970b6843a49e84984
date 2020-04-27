@@ -70,6 +70,30 @@
       "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6e4da13_3a1f8c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-27T10:01:33Z",
+      "side": 1,
+      "message": "Storing pointers at unaligned addresses is just ugly. And some architectures may like it less than others. The performance difference should be totally lost in noise.",
+      "parentUuid": "47d1f7c7_e3f50eee",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
