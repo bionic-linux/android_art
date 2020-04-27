@@ -22,6 +22,30 @@
       "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8695f1a6_9c78dca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-27T09:55:48Z",
+      "side": 1,
+      "message": "Updated commit message.",
+      "parentUuid": "bd25a641_e6759c48",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b76eeed4adabcd2c1e2616e970b6843a49e84984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
