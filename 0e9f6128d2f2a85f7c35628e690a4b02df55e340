@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35c4dfee_19a37686",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2020-04-28T22:59:55Z",
+      "side": 1,
+      "message": "Can you also inspect the dex2oat invocation of the art script to validate it generates an app image with this change?",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
