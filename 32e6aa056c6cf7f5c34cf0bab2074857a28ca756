@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "852972b2_be38e846",
+        "filename": "Android.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-28T08:58:08Z",
+      "side": 1,
+      "message": "Note: I expect this to not mix well when people alternate calling the `build-art-target-golem` and other build rules, but the whole rule is fragile anyway, so I guess it\u0027s fine for now. :)",
+      "range": {
+        "startLine": 714,
+        "startChar": 1,
+        "endLine": 714,
+        "endChar": 85
+      },
+      "revId": "32e6aa056c6cf7f5c34cf0bab2074857a28ca756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
