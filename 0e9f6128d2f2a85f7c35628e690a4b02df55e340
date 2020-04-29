@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1570ed7_381fbe80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2020-04-29T16:48:01Z",
+      "side": 1,
+      "message": "I saw the --app-image-file argument, and there was a .art file along side the .odex file, so it looks like it\u0027s working.",
+      "parentUuid": "35c4dfee_19a37686",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 58
+      },
+      "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6ed7ee_d8979613",
         "filename": "tools/art",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0851f010_96ae093a",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2020-04-29T16:48:01Z",
+      "side": 1,
+      "message": "I actually just added that for debugging and meant to remove it before uploading. It\u0027s removed now.",
+      "parentUuid": "9c6ed7ee_d8979613",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 51
+      },
+      "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
