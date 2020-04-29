@@ -22,6 +22,29 @@
       "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6ed7ee_d8979613",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-29T08:30:54Z",
+      "side": 1,
+      "message": "Surround the echo with if [ \"$VERBOSE\" \u003d \"yes\" ];",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 51
+      },
+      "revId": "0e9f6128d2f2a85f7c35628e690a4b02df55e340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
