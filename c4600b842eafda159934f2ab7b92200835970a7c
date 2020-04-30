@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1216cdf1_e417e74d",
+        "filename": "libnativeloader/README.md",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-04-30T08:36:09Z",
+      "side": 1,
+      "message": "Über-Nit: Is this the right case for this acronym?",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "c4600b842eafda159934f2ab7b92200835970a7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
