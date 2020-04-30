@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002750776",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1299493?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "6f27d834_1ca6be89",
+          "description": "Change to \"compiler/optimizing/nodes_vector.h\"",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 113,
+                "startChar": 25,
+                "endLine": 113,
+                "endChar": 32
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "62d9a00c_fcd5da60",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-30T16:42:11Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002750776",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1299493?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "dfed71c7_d95dfd20",
+          "description": "Change to \"compiler/optimizing/nodes_vector.h\"",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 1223,
+                "startChar": 18,
+                "endLine": 1223,
+                "endChar": 23
+              },
+              "replacement": "of"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "5f678684_a2b1700a",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-30T16:42:11Z",
+      "side": 1,
+      "message": "Common typo found: \"of of\" -- should it be \"of\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1223,
+        "startChar": 18,
+        "endLine": 1223,
+        "endChar": 23
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
