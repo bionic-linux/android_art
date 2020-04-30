@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98aa4bf5_d6af3d65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-30T22:19:40Z",
+      "side": 1,
+      "message": "\"pages about to be used for new allocations are properly cleared.\"?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "7b3f04d81ef8fe7b23d960374be93cf492e3a420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e488dce0_48998b7c",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-30T22:19:40Z",
+      "side": 1,
+      "message": "Possibly in a follow-up CL, can we arrange to read these only once? This isn\u0027t a regression, but this function now looks cheaper than it is ...",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "7b3f04d81ef8fe7b23d960374be93cf492e3a420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71060613_a9187f33",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-30T22:19:40Z",
+      "side": 1,
+      "message": "Just double-checking: We never allocate from the end of a partially-filled forEvac region, right? I don\u0027t think so, but ...",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 39
+      },
+      "revId": "7b3f04d81ef8fe7b23d960374be93cf492e3a420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58f311ef_68391ea8",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-30T22:19:40Z",
+      "side": 1,
+      "message": "Nit:\nI normally prefer\n#ifdef _WIN32\n  // PurgePages does not madvise on Windows.\n#else\n  ...\n\nEither is OK with me.",
+      "range": {
+        "startLine": 647,
+        "startChar": 2,
+        "endLine": 647,
+        "endChar": 44
+      },
+      "revId": "7b3f04d81ef8fe7b23d960374be93cf492e3a420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e119503_93546c7f",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-04-30T22:19:40Z",
+      "side": 1,
+      "message": "Another nit: I would do CHECK_EQ(..., 0) to avoid negatives.",
+      "range": {
+        "startLine": 649,
+        "startChar": 2,
+        "endLine": 649,
+        "endChar": 54
+      },
+      "revId": "7b3f04d81ef8fe7b23d960374be93cf492e3a420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
