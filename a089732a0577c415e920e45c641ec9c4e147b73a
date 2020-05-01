@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adf78c48_3e7ffcc0",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-01T08:58:20Z",
+      "side": 1,
+      "message": "Given I18N is on the platform, I think it makes more sense to have its domain be \"kPlatform\"? This shouldn\u0027t trigger a warning when calling a method from I18N to ART which is marked @CorePlatformAPI?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "a089732a0577c415e920e45c641ec9c4e147b73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
