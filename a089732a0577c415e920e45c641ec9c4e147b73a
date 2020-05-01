@@ -22,6 +22,30 @@
       "revId": "a089732a0577c415e920e45c641ec9c4e147b73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ba3d08_05ab6402",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-05-01T09:39:15Z",
+      "side": 1,
+      "message": "I don\u0027t necessarily disagree, but in that case why does conscrypt get a pass here?",
+      "parentUuid": "adf78c48_3e7ffcc0",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "a089732a0577c415e920e45c641ec9c4e147b73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
