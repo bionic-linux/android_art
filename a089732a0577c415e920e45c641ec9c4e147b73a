@@ -46,6 +46,30 @@
       "revId": "a089732a0577c415e920e45c641ec9c4e147b73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e25e5be_e2fd16dc",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-01T10:03:10Z",
+      "side": 1,
+      "message": "I was drawing the line between updatable / non-updatable. And I agree that looks arbitrary again given line 102.\n\nLet\u0027s go with this CL if it addresses the warning.",
+      "parentUuid": "47ba3d08_05ab6402",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "a089732a0577c415e920e45c641ec9c4e147b73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
