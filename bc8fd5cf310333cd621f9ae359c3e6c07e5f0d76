@@ -22,6 +22,30 @@
       "revId": "bc8fd5cf310333cd621f9ae359c3e6c07e5f0d76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2525ff89_ef166343",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-05-04T20:56:23Z",
+      "side": 1,
+      "message": "Sorry that I indent this existing code accidentally. I have removed the indentation now.",
+      "parentUuid": "8370b08b_16f97f2c",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "bc8fd5cf310333cd621f9ae359c3e6c07e5f0d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
