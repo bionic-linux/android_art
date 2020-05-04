@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8370b08b_16f97f2c",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-04T18:44:26Z",
+      "side": 1,
+      "message": "I think this would be cleaner:\n\n  CHECK(!kArtApexPublicLibraries.empty())\n      \u003c\u003c \"kArtApexPublicLibraries.size()\u003d\" \u003c\u003c kArtApexPublicLibraries.size();",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "bc8fd5cf310333cd621f9ae359c3e6c07e5f0d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
