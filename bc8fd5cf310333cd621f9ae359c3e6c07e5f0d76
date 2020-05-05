@@ -46,6 +46,30 @@
       "revId": "bc8fd5cf310333cd621f9ae359c3e6c07e5f0d76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19d0c4c_f2882654",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-05T08:51:16Z",
+      "side": 1,
+      "message": "I see; I thought this was part of your change.",
+      "parentUuid": "2525ff89_ef166343",
+      "range": {
+        "startLine": 233,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "bc8fd5cf310333cd621f9ae359c3e6c07e5f0d76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
