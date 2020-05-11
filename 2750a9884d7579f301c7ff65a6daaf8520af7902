@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da28665e_be3e893f",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-05-11T17:13:38Z",
+      "side": 1,
+      "message": "It would be good to add a comment in a later CL explaining why accesses to this are thread-safe.\n\nThat would probably involve adding a comment to DumpPerformanceInfo() that, at least in production code, it should only be called during process shutdown. It says that elsewhere, but not by the function declaration.",
+      "range": {
+        "startLine": 754,
+        "startChar": 2,
+        "endLine": 754,
+        "endChar": 92
+      },
+      "revId": "2750a9884d7579f301c7ff65a6daaf8520af7902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
