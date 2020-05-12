@@ -3061,11 +3061,15 @@ void InstructionCodeGeneratorARM64::GenerateResultDivRemWithAnyConstant(
     Register temp_result,
     Register out,
     UseScratchRegisterScope* temps_scope) {
+  bool use_cond_inc = false;
+
   // As magic_number can be modified to fit into 32 bits, check whether the correction is needed.
   if (NeedToAddDividend(magic_number, divisor)) {
-    __ Add(temp_result, temp_result, dividend);
+    __ Adds(temp_result, temp_result, dividend);
+    use_cond_inc = true;
   } else if (NeedToSubDividend(magic_number, divisor)) {
-    __ Sub(temp_result, temp_result, dividend);
+    __ Subs(temp_result, temp_result, dividend);
+    use_cond_inc = true;
   }
 
   if (final_right_shift != 0) {
@@ -3073,7 +3077,11 @@ void InstructionCodeGeneratorARM64::GenerateResultDivRemWithAnyConstant(
   }
 
   Register& result = (is_rem) ? temp_result : out;
-  __ Add(result, temp_result, Operand(temp_result, LSR, temp_result.GetSizeInBits() - 1));
+  if (use_cond_inc) {
+    __ Cinc(result, temp_result, mi);
+  } else {
+    __ Add(result, temp_result, Operand(temp_result, LSR, temp_result.GetSizeInBits() - 1));
+  }
   if (is_rem) {
     // TODO: Strength reduction for msub.
     Register temp_imm = temps_scope->AcquireSameSizeAs(out);
