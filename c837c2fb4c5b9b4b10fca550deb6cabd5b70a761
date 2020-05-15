@@ -45,6 +45,30 @@
       "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56320a79_f50a25c4",
+        "filename": "tools/compile-jar.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-15T10:16:19Z",
+      "side": 1,
+      "message": "It\u0027s a quick-and-dirty way to get correct BCP: services.odex is one example of a file that has correct BCP and that happens to be close at hand. Otherwise it has no special connection to boot image.",
+      "parentUuid": "92201ca1_12e49d22",
+      "range": {
+        "startLine": 37,
+        "startChar": 84,
+        "endLine": 37,
+        "endChar": 97
+      },
+      "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
