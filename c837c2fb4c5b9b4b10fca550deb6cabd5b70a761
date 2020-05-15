@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c6fa8ad_1ad42836",
+        "filename": "tools/compile-jar.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-15T10:00:51Z",
+      "side": 1,
+      "message": "Out of date?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92201ca1_12e49d22",
+        "filename": "tools/compile-jar.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-15T10:00:51Z",
+      "side": 1,
+      "message": "Why do we need services.odex for this file?",
+      "range": {
+        "startLine": 37,
+        "startChar": 84,
+        "endLine": 37,
+        "endChar": 97
+      },
+      "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
