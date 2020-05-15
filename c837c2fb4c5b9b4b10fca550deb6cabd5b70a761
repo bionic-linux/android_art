@@ -69,6 +69,30 @@
       "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025091db_242bd4d2",
+        "filename": "tools/compile-jar.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-15T13:13:06Z",
+      "side": 1,
+      "message": "I see thanks (Mathieu, would be worth adding that as a comment).",
+      "parentUuid": "56320a79_f50a25c4",
+      "range": {
+        "startLine": 37,
+        "startChar": 84,
+        "endLine": 37,
+        "endChar": 97
+      },
+      "revId": "c837c2fb4c5b9b4b10fca550deb6cabd5b70a761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
