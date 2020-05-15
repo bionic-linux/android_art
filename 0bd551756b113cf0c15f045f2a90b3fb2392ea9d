@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8842662_d22e13fd",
+        "filename": "test/411-checker-hdiv-hrem-const/src/RemTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-15T09:50:33Z",
+      "side": 1,
+      "message": "Typo: many spaces instead of line break.",
+      "range": {
+        "startLine": 340,
+        "startChar": 23,
+        "endLine": 340,
+        "endChar": 208
+      },
+      "revId": "0bd551756b113cf0c15f045f2a90b3fb2392ea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
