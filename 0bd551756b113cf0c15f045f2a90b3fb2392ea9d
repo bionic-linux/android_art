@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "07047e56_930a8fb4",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3064,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-15T09:51:33Z",
+      "side": 1,
+      "message": "nit: add a comment around this variable (eg like the commit message).",
+      "revId": "0bd551756b113cf0c15f045f2a90b3fb2392ea9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8842662_d22e13fd",
         "filename": "test/411-checker-hdiv-hrem-const/src/RemTest.java",
         "patchSetId": 2
