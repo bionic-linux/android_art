@@ -72,6 +72,15 @@ constexpr size_t kMemoryToolStackGuardSizeScale = 1;
 # define ATTRIBUTE_NO_SANITIZE_HWADDRESS
 #endif
 
+template<typename PtrType>
+static inline PtrType* HWASanUntag(PtrType* p) {
+#if __has_feature(hwaddress_sanitizer) && defined(__aarch64__)
+  return reinterpret_cast<PtrType*>(reinterpret_cast<uintptr_t>(p) & ((1ULL << 56) - 1));
+#else
+  return p;
+#endif
+}
+
 }  // namespace art
 
 #endif  // ART_LIBARTBASE_BASE_MEMORY_TOOL_H_

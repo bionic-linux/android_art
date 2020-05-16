@@ -107,7 +107,7 @@ void CommonCompilerTest::MakeExecutable(const void* code_start, size_t code_leng
   uintptr_t base = RoundDown(data, kPageSize);
   uintptr_t limit = RoundUp(data + code_length, kPageSize);
   uintptr_t len = limit - base;
-  int result = mprotect(reinterpret_cast<void*>(base), len, PROT_READ | PROT_WRITE | PROT_EXEC);
+  int result = mprotect(HWASanUntag(reinterpret_cast<void*>(base)), len, PROT_READ | PROT_WRITE | PROT_EXEC);
   CHECK_EQ(result, 0);
 
   CHECK(FlushCpuCaches(reinterpret_cast<void*>(base), reinterpret_cast<void*>(base + len)));
