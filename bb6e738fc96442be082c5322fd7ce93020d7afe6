@@ -46,6 +46,30 @@
       "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9cf4c0d_fff71603",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-18T13:18:58Z",
+      "side": 1,
+      "message": "Maybe because it could have requirement on stack size lower than asan?",
+      "parentUuid": "83219a45_003d2662",
+      "range": {
+        "startLine": 1912,
+        "startChar": 42,
+        "endLine": 1912,
+        "endChar": 61
+      },
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
