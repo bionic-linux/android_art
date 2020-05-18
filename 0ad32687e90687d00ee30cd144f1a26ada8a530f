@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46d3ea1e_746dd7a6",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-18T08:41:41Z",
+      "side": 1,
+      "message": "Line too long. Also, could you add a comment for the use of HWASanUntag?",
+      "revId": "0ad32687e90687d00ee30cd144f1a26ada8a530f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590dd339_0b641fc2",
+        "filename": "libartbase/base/memory_tool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-18T08:41:41Z",
+      "side": 1,
+      "message": "Nit: add comment what this is about.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "0ad32687e90687d00ee30cd144f1a26ada8a530f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29bc3c80_b0be22a1",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-18T08:41:41Z",
+      "side": 1,
+      "message": "nit: add a comment why.",
+      "range": {
+        "startLine": 117,
+        "startChar": 55,
+        "endLine": 117,
+        "endChar": 66
+      },
+      "revId": "0ad32687e90687d00ee30cd144f1a26ada8a530f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
