@@ -70,6 +70,47 @@
       "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "633fe124_fc20157e",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-05-19T21:37:20Z",
+      "side": 1,
+      "message": "hwasan and asan are actually quite different here. Inlining should not create huge stack frames with hwasan because it does not suppress stack slot reuse the same way that asan does.",
+      "parentUuid": "a9cf4c0d_fff71603",
+      "range": {
+        "startLine": 1912,
+        "startChar": 42,
+        "endLine": 1912,
+        "endChar": 61
+      },
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c7efbb_24bbe174",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-05-19T21:37:20Z",
+      "side": 1,
+      "message": "FYI the program counter can not be tagged (not with hwasan, not with Arm MTE). If you jump to the generated code, the tag would need to be removed.",
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
