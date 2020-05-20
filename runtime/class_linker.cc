@@ -1134,7 +1134,10 @@ void ClassLinker::RunRootClinits(Thread* self) {
       StackHandleScope<1> hs(self);
       Handle<mirror::Class> h_class(hs.NewHandle(c));
       EnsureInitialized(self, h_class, true, true);
-      self->AssertNoPendingException();
+      if (self->IsExceptionPending()) {
+        LOG(FATAL) << "Exception when initializing " << h_class->PrettyClass()
+            << ": " << self->GetException()->Dump();
+      }
     } else {
       DCHECK(c->IsInitialized());
     }
