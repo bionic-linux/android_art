@@ -153,6 +153,24 @@
       "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f751cd98_408ff03f",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-05-20T17:57:02Z",
+      "side": 1,
+      "message": "Yes, you are right, that\u0027s exactly what happens.",
+      "parentUuid": "e66a3cbf_e25a6397",
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
