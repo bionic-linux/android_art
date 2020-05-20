@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c1a29a8c_84d77fb9",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-20T12:32:26Z",
+      "side": 1,
+      "message": "I guess it might still be increasing the stack size somehow.\nThe interpreter tests were failing, and this fixed it.",
+      "parentUuid": "633fe124_fc20157e",
+      "range": {
+        "startLine": 1912,
+        "startChar": 42,
+        "endLine": 1912,
+        "endChar": 61
+      },
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2c7efbb_24bbe174",
         "filename": "runtime/oat_quick_method_header.h",
         "patchSetId": 4
@@ -111,6 +135,24 @@
       "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66a3cbf_e25a6397",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-20T12:32:26Z",
+      "side": 1,
+      "message": "I am not sure where the jump is, but it seems to work as-is.\nAny chance the tag is removed automatically when branched to?",
+      "parentUuid": "f2c7efbb_24bbe174",
+      "revId": "bb6e738fc96442be082c5322fd7ce93020d7afe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
