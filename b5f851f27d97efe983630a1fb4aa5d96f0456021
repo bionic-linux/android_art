@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f615629_950ce278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487ad9bd_599d6ad4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef737558_4d0c5154",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6e6db9f3_16c44aed",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef737558_4d0c5154",
+      "range": {
+        "startLine": 113,
+        "startChar": 25,
+        "endLine": 113,
+        "endChar": 32
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f6adcf8_08a26b61",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2020-05-04T14:07:05Z",
       "side": 1,
       "message": "Can this be a debug-only check?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d6ac2a_3b52496c",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "It is only used in graph_checker - I guess it only runs in debug mode.",
+      "parentUuid": "1f6adcf8_08a26b61",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -95,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "44a3b58a_3f75da0a",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "782a1699_b56ada93",
+      "range": {
+        "startLine": 125,
+        "startChar": 29,
+        "endLine": 125,
+        "endChar": 86
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "195329cc_1b141829",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -115,6 +211,30 @@
       "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7811aa30_7d819fda",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195329cc_1b141829",
+      "range": {
+        "startLine": 1222,
+        "startChar": 38,
+        "endLine": 1222,
+        "endChar": 40
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "36683191_6b14fc89",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6975835b_48d2dde5",
+      "range": {
+        "startLine": 1223,
+        "startChar": 18,
+        "endLine": 1223,
+        "endChar": 23
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e633d1_873795bf",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -162,6 +306,30 @@
       "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe78227_83c0311e",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e633d1_873795bf",
+      "range": {
+        "startLine": 1232,
+        "startChar": 66,
+        "endLine": 1232,
+        "endChar": 70
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "30876ece_ab32b9c4",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "\"and I would use small letters for scalars and capital letters for vectors\" - Done.\n\"S(n) \u003d X + n\" - actually it would be S: s(n) \u003d x + n.",
+      "parentUuid": "a513d168_c707d146",
+      "range": {
+        "startLine": 1316,
+        "startChar": 53,
+        "endLine": 1316,
+        "endChar": 66
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cb94c45_96d0a521",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -208,6 +400,30 @@
       "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9f8eb46_b9efe99d",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-20T10:30:14Z",
+      "side": 1,
+      "message": "1. Those corresponds 1-2-1 to condition tests described in SVE suppliment (2.2 Process state, PSTATE) so I would prefer to keep them close to the ISA definitions.\n\n2. As for mutual exclusiveness - those conditions kinds corresponds to combinations of PSTATE flags so they are not expected to be exclusive.\n\nLink\nhttps://developer.arm.com/docs/ddi0584/ag/arm-architecture-reference-manual-supplement-the-scalable-vector-extension-sve-for-armv8-a",
+      "parentUuid": "0cb94c45_96d0a521",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1398,
+        "endChar": 0
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
