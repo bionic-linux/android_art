@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddc7de7d_ddbf1f22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-20T18:22:51Z",
+      "side": 1,
+      "message": "Could you add\n\n  Bug: 147876827\n\nhere?",
+      "revId": "0ce4bd806870690b111e4fcbde7759d1cc9347bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdca514a_7797464a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-20T18:22:51Z",
+      "side": 1,
+      "message": "art/tools/checker/run_unit_tests.py",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "0ce4bd806870690b111e4fcbde7759d1cc9347bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b3bf94e_314e117e",
+        "filename": "tools/checker/match/file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-20T18:22:51Z",
+      "side": 1,
+      "message": "Could you take this opportunity of this change to replace this with \"a\"? Thanks!",
+      "range": {
+        "startLine": 100,
+        "startChar": 35,
+        "endLine": 100,
+        "endChar": 37
+      },
+      "revId": "0ce4bd806870690b111e4fcbde7759d1cc9347bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11832e19_c2b53fb3",
+        "filename": "tools/checker/match/file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-20T18:22:51Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 167,
+        "startChar": 35,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "0ce4bd806870690b111e4fcbde7759d1cc9347bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
