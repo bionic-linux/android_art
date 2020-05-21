@@ -22,6 +22,30 @@
       "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d3348d_7d25a228",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-21T11:29:10Z",
+      "side": 1,
+      "message": "As I wrote, the call to ClassLinker::EnsureInitialized() is responsible for updating the entrypoint. You should tell gerrit to show you a few more lines above the removed code to see that call.",
+      "parentUuid": "0607ce13_c5b06b79",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
