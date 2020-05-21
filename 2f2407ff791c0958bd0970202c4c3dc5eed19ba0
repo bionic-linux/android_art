@@ -70,6 +70,30 @@
       "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c091eba_b7c6191b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-21T11:55:59Z",
+      "side": 1,
+      "message": "My `this` actually refers to both.\n\nIs PS2 better?",
+      "parentUuid": "5bcfe2e5_63d94628",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
