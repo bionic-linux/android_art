@@ -50,6 +50,8 @@ public class Main {
         ncdfe.printStackTrace();
       }
     }
+
+    bad.$noinline$testResolutionTrampoline();
   }
 
   public static void hierarchyTest() {
@@ -140,6 +142,14 @@ class Bad {
     public static int $inline$getBadStaticValue() {
       return Bad.staticValue;
     }
+  }
+
+  public void $noinline$testResolutionTrampoline() {
+    $noinline$testResolutionTrampolineCallee();
+  }
+
+  private void $noinline$testResolutionTrampolineCallee() {
+    System.out.println("Bad.$noinline$testResolutionTrampolineCallee()");
   }
 }
 
