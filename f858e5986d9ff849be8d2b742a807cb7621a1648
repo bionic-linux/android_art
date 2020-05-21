@@ -46,6 +46,30 @@
       "revId": "f858e5986d9ff849be8d2b742a807cb7621a1648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13d5739_e6663934",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T14:02:09Z",
+      "side": 1,
+      "message": "Yes. That was a bad advice on my side. The reproducer is very simple (I didn\u0027t bother figuring out the high-level target that triggered it):\n\n  m out/target/common/cpplint/art__compiler__optimizing__nodes_vector.h",
+      "parentUuid": "c70cd888_191cda53",
+      "range": {
+        "startLine": 1402,
+        "startChar": 12,
+        "endLine": 1402,
+        "endChar": 13
+      },
+      "revId": "f858e5986d9ff849be8d2b742a807cb7621a1648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
