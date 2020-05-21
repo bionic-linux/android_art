@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "88328ed7_320014f6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-21T19:39:16Z",
+      "side": 1,
+      "message": "My goal was to allow each SIMD instruction class be either predicated or not for all of the instances without doubling the amount of HVecOperation classes. So the invariant needs to be validated as robustly as possible; HVecOperation::MustBePredicated() needs to have access to the semantic value \"has_predicated_simd_support_\" and it is much easier to have it accessible through HGraph (accessing CompilerOptions might not be an option in some cases). For instance, whenever you create a new VecOperation outside loop vectorizer (e.g. InstructionSimplifier) you want to check whether the instruction is expected to be predicated.\n\nIt might not be the most elegant solution though but it makes things a little less brittle with a kinda straightforward approach. What do you think?",
+      "parentUuid": "6537a622_bfbd0a51",
+      "range": {
+        "startLine": 728,
+        "startChar": 7,
+        "endLine": 728,
+        "endChar": 35
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef737558_4d0c5154",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -495,6 +519,30 @@
       "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da60d0e_318f5585",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-21T19:39:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60b26dd_2a2b9562",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1398,
+        "endChar": 0
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -70,6 +70,30 @@
       "revId": "f858e5986d9ff849be8d2b742a807cb7621a1648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38594aaa_436507ad",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-05-21T19:39:16Z",
+      "side": 1,
+      "message": "It looks like the command is \"m cpplint-art\", thanks for the hints!\n\nFixed now.",
+      "parentUuid": "d13d5739_e6663934",
+      "range": {
+        "startLine": 1402,
+        "startChar": 12,
+        "endLine": 1402,
+        "endChar": 13
+      },
+      "revId": "f858e5986d9ff849be8d2b742a807cb7621a1648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
