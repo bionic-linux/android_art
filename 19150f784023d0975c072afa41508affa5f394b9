@@ -16,6 +16,24 @@
       "revId": "19150f784023d0975c072afa41508affa5f394b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ded664_be92e5ec",
+        "filename": "test/174-escaping-instance-of-bad-class/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-21T14:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a96278d_11a239e8",
+      "revId": "19150f784023d0975c072afa41508affa5f394b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
