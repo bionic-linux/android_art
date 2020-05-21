@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0607ce13_c5b06b79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T11:17:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand the change when I look at the changed code. It seems that previously the code only updated the entrypoint when the class was initialized (as in `called_class-\u003eIsInitialized()`), and now the code doesn\u0027t update the entrypoint at all.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
