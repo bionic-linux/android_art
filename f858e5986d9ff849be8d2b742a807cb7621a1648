@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a452538b_3183729a",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T12:54:19Z",
+      "side": 1,
+      "message": "Got presubmit error on cpplint \"At least two spaces is best between code and comments\", please shift comments at lines 1397-1404 one space to the right. (I think you can reproduce with `m checkbuild`, but it\u0027s the only error.)",
+      "range": {
+        "startLine": 1402,
+        "startChar": 12,
+        "endLine": 1402,
+        "endChar": 13
+      },
+      "revId": "f858e5986d9ff849be8d2b742a807cb7621a1648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
