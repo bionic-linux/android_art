@@ -46,6 +46,30 @@
       "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bcfe2e5_63d94628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T11:37:20Z",
+      "side": 1,
+      "message": "I actually looked at the call to `ClassLinker::EnsureInitialized()` at line 1382, but I misunderstood your commit message as \"..entrypoint cannot be updated until the class is visibly initialized and this (visibly-initialization) is already handled by..\" instead of \"..entrypoint cannot be updated until the class is visibly initialized and this (updating entrypoint) is already handled by..\". So I thought it\u0027s not getting updated.\n\nNit: reword commit message to clarify what is already done in `ClassLinker::EnsureInitialized()`.",
+      "parentUuid": "31d3348d_7d25a228",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "2f2407ff791c0958bd0970202c4c3dc5eed19ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
