@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "bf76b4a7_8fc0f23a",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T11:31:06Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "51d6ac2a_3b52496c",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "782a1699_b56ada93",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 1
@@ -424,6 +448,30 @@
       "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f60b26dd_2a2b9562",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T11:31:06Z",
+      "side": 1,
+      "message": "I see, thanks for the link. Can you add a comment referencing ARM docs (links may be unstable, but there must be some stable addressing of ARM reference manual sections)?",
+      "parentUuid": "e9f8eb46_b9efe99d",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1398,
+        "endChar": 0
+      },
+      "revId": "b5f851f27d97efe983630a1fb4aa5d96f0456021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
