@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bf6996b_c4b8ad2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-26T10:45:50Z",
+      "side": 1,
+      "message": "No, but rephrased to make a proper sentence.",
+      "parentUuid": "be330a04_f74a366f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "5fc91340ff9e4c346fd6ee1b2472811f2929c649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "579c0f94_fe8ab579",
         "filename": "tools/buildbot-sync.sh",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "5fc91340ff9e4c346fd6ee1b2472811f2929c649",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825b2160_54af6b3d",
+        "filename": "tools/buildbot-sync.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-26T10:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579c0f94_fe8ab579",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 8
+      },
+      "revId": "5fc91340ff9e4c346fd6ee1b2472811f2929c649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
