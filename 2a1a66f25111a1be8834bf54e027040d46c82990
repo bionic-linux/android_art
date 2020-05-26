@@ -22,6 +22,30 @@
       "revId": "2a1a66f25111a1be8834bf54e027040d46c82990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424b5ad3_2399f3fe",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-26T13:46:34Z",
+      "side": 1,
+      "message": "Done in PS3, just in case.",
+      "parentUuid": "b16b7b06_d4a20230",
+      "range": {
+        "startLine": 1276,
+        "startChar": 53,
+        "endLine": 1276,
+        "endChar": 68
+      },
+      "revId": "2a1a66f25111a1be8834bf54e027040d46c82990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
