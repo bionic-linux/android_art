@@ -1,0 +1,325 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1093c57_72b932ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Could the format be changed to avoid the duplication, e.g.:\n\n  name \"isa_features\"\n  method \"feature1,-feature2\"\n\n?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c463523_2a736076",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Could you add\n\n  Bug: 147876827\n\nhere?",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ee8754_8d11894a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "art/tools/checker/run_unit_tests.py",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e560cec5_286b8e8f",
+        "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "We could set up a new board config in device/generic/art for this case, so that one can test this feature on compatible devices?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9196b77_f128f9d5",
+        "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "I think we usually try to avoid FIXMEs (unless we know they\u0027ll be addressed in a follow-up patch). I\u0027d recommend using a TODO instead:\n\n  /* Note: This test might clash with the build time switch kArm64EmitDotProdInstructions in\n     the future.\n    \n     If udot/sdot are supported, codegen_-\u003eGetInstructionSetFeatures().HasDotProd() should\n     return true, and that is the information that gets dumped to the .cfg file. Checker will\n     therefore expect udot/sdot instructions to be used, as it\u0027s unaware of the effect of\n     kArm64EmitDotProdInstructions.\n    \n     This code has been tested successfully on a Pixel 3 and a Pixel 4.\n     In both cases, codegen_-\u003eGetInstructionSetFeatures().HasDotProd() returns false.\n     The reason why it returns false on the Pixel 4 is that there is no specialised\n     BoardConfig.mk for that device in device/generic/art, therefore the build is performed\n     for a generic arm64 device, where dotprod is not enabled.\n    \n     TODO: If BoardConfig.mk for the Pixel 4 is added in the future and\n     codegen_-\u003eGetInstructionSetFeatures().HasDotProd() starts returning true, the\n     kArm64EmitDotProdInstructions flags should be removed. */",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f690a1_5c6aefc5",
+        "filename": "tools/checker/file_format/c1visualizer/parser.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Instead of implementing this as a special case at the beginning of the file (and requiring it to be seekable), could you instead implement this as a special case when a block contains `name \"isa_features\"` in `__parseC1Line`?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd966548_7f773a05",
+        "filename": "tools/checker/file_format/c1visualizer/parser.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Please keep the newline at the end of the file.",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a22d47_2de85aba",
+        "filename": "tools/checker/file_format/c1visualizer/struct.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Style: Keep `import` statements sorted (within each `import` group).",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c067e4c8_741e7e89",
+        "filename": "tools/checker/file_format/c1visualizer/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Style: Keep `import` statements sorted (within each `import` group).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3729ce56_083104b3",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Rename as `hasIsaFeature`, which seems easier to read?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c733de_ca0fe9b8",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "I\u0027d replace this with:\n\n  variables[\"ISA_FEATURES\"].get(feature, False)",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 68
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62abae27_f936f6c1",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Please keep the newline at the end of the file.",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b402ce43_f7b92e66",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Maybe use `string.join` here instead of manually implementing it?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47189fb7_7beb70e8",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "I think we usually try to use string formatting for such cases:\n\n  \"\"\"\n    begin_compilation\n      name \"isa_features:%s\"\n      method \"isa_features:%s\"\n      date 1234\n    end_compilation\n  \"\"\" % (joinedFeatures, joinedFeatures)",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c946802_6c971da6",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-26T19:06:12Z",
+      "side": 1,
+      "message": "Please keep the newline at the end of the file.",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
