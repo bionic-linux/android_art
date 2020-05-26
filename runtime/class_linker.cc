@@ -3444,9 +3444,14 @@ const void* ClassLinker::GetQuickOatCodeFor(ArtMethod* method) {
   if (method->IsProxyMethod()) {
     return GetQuickProxyInvokeHandler();
   }
-  const void* code = method->GetOatMethodQuickCode(GetImagePointerSize());
-  if (code != nullptr) {
-    return code;
+  const void* code = nullptr;
+
+  if (Runtime::Current()->IsJavaDebuggable()) {
+    // When we run in debuggable mode, we don't use any AOT code.
+    method->GetOatMethodQuickCode(GetImagePointerSize());
+    if (code != nullptr) {
+      return code;
+    }
   }
 
   jit::Jit* jit = Runtime::Current()->GetJit();
@@ -3506,16 +3511,14 @@ bool ClassLinker::ShouldUseInterpreterEntrypoint(ArtMethod* method, const void* 
     return ShouldUseInterpreterEntrypoint(method, instr_target);
   }
 
-  if (runtime->IsJavaDebuggable()) {
-    // For simplicity, we ignore precompiled code and go to the interpreter
-    // assuming we don't already have jitted code.
-    // We could look at the oat file where `quick_code` is being defined,
-    // and check whether it's been compiled debuggable, but we decided to
-    // only rely on the JIT for debuggable apps.
-    jit::Jit* jit = Runtime::Current()->GetJit();
-    return (jit == nullptr) || !jit->GetCodeCache()->ContainsPc(quick_code);
+  // At this point, if the given code is from JIT, we can use it.
+  jit::Jit* jit = Runtime::Current()->GetJit();
+  if ((jit != nullptr) && jit->GetCodeCache()->ContainsPc(quick_code)) {
+    return false;
   }
 
+  // Native debuggable makes code run JIT at first use, and therefore must be
+  // checked before checking Nterp.
   if (runtime->IsNativeDebuggable()) {
     DCHECK(runtime->UseJitCompilation() && runtime->GetJit()->JitAtFirstUse());
     // If we are doing native debugging, ignore application's AOT code,
@@ -3524,6 +3527,22 @@ bool ClassLinker::ShouldUseInterpreterEntrypoint(ArtMethod* method, const void* 
     // since the JIT-at-first-use is blocking and would result in non-negligible
     // startup performance impact.
     return !runtime->GetHeap()->IsInBootImageOatFile(quick_code);
+  }
+
+  // At this point, if the given code is from Nterp, we can use it.
+  if (quick_code == interpreter::GetNterpEntryPoint()) {
+    return false;
+  }
+
+  if (runtime->IsJavaDebuggable()) {
+    // For simplicity, we ignore precompiled code and go to the interpreter.
+    // We could look at the oat file where `quick_code` is being defined,
+    // and check whether it's been compiled debuggable, but we decided to
+    // only rely on the JIT for debuggable apps.
+    // Nterp can always be debuggable.
+    // Entrypoint is from AOT code, just discard it and return that we need the
+    // interpreter.
+    return true;
   }
 
   return false;
