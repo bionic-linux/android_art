@@ -255,6 +255,7 @@ java_library {
     name: "conscrypt-host",
     installable: true,
     hostdex: true,
+    device_supported: false,
     static_libs: ["conscrypt"],
 
     // Tests and build files rely on this file to be installed as "conscrypt-hostdex",
@@ -275,6 +276,7 @@ java_library {
     name: "core-icu4j-host",
     installable: true,
     hostdex: true,
+    device_supported: false,
     static_libs: ["core-icu4j"],
 
     // Tests and build files rely on this file to be installed as "core-icu4j-hostdex",
