@@ -22,6 +22,30 @@
       "revId": "5261c07036eabcd484f1a6bbe8a5ba6fd4b83e14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4437a2d_7ca377cc",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-05-27T08:26:08Z",
+      "side": 1,
+      "message": "In lines 1277-1278 we do the check for both at the same time, so it is sufficient to check one of these. If there were separate updates for data and names, we would have to do both checks here.\n\nThe CHECK_EQ()s below make sure that we get both sizes right.",
+      "parentUuid": "71d2ea6a_565a0b5a",
+      "range": {
+        "startLine": 1336,
+        "startChar": 6,
+        "endLine": 1336,
+        "endChar": 54
+      },
+      "revId": "5261c07036eabcd484f1a6bbe8a5ba6fd4b83e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
