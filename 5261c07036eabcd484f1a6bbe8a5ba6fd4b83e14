@@ -46,6 +46,30 @@
       "revId": "5261c07036eabcd484f1a6bbe8a5ba6fd4b83e14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ea87e7_1b441651",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-05-27T18:05:40Z",
+      "side": 1,
+      "message": "Thanks. I misread what this was checking.",
+      "parentUuid": "c4437a2d_7ca377cc",
+      "range": {
+        "startLine": 1336,
+        "startChar": 6,
+        "endLine": 1336,
+        "endChar": 54
+      },
+      "revId": "5261c07036eabcd484f1a6bbe8a5ba6fd4b83e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
