@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a06f47e_462707a4",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-05-27T08:49:17Z",
+      "side": 1,
+      "message": "I\u0027d prefer if this isn\u0027t attached to the graph. Whoever is asking for this should ask to the codegen instead.",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 36
+      },
+      "revId": "cb0b175b2905791459af743a0303aaf49a1974cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
