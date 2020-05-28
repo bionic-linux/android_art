@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e74b04c_7e9d3aa4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T11:44:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure there\u0027s a lot of value in splitting the original parser file, especially after the comments I made in https://android-review.googlesource.com/c/platform/art/+/1290997/2/tools/checker/file_format/c1visualizer/parser.py.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 67
+      },
+      "revId": "2c6c9cbb05acc6d969f56c81ecf9a6e18d0c4cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9702cff7_48cab857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T11:44:13Z",
+      "side": 1,
+      "message": "Could you add\n\n  Bug: 147876827\n\nhere?",
+      "revId": "2c6c9cbb05acc6d969f56c81ecf9a6e18d0c4cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbd4ddb_090165cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T11:44:13Z",
+      "side": 1,
+      "message": "art/tools/checker/run_unit_tests.py",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "2c6c9cbb05acc6d969f56c81ecf9a6e18d0c4cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
