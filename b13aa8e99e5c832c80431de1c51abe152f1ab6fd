@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79d36714_9ecf7ca3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "See also comments in https://android-review.googlesource.com/c/platform/art/+/1290997/2/tools/checker/file_format/c1visualizer/parser.py.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b64651_9c68496a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "\"(see https://android-review.googlesource.com/c/platform/art/+/1290997)\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3565f45b_65f8c22b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "Could you add\n\n  Bug: 147876827\n\nhere?",
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9ed2da_e7f70747",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "art/tools/checker/run_unit_tests.py",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3de8ad34_a9df641a",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "I\u0027d use `StringPrintf` here.",
+      "range": {
+        "startLine": 912,
+        "startChar": 9,
+        "endLine": 916,
+        "endChar": 29
+      },
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a497a5c2_cf6d8d29",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T12:04:31Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 11
+      },
+      "revId": "b13aa8e99e5c832c80431de1c51abe152f1ab6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
