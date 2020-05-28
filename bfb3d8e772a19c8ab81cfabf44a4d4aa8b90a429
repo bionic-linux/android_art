@@ -22,6 +22,53 @@
       "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ea25068_3e47c622",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T08:58:20Z",
+      "side": 1,
+      "message": "(Artem confirmed he observed this in his testing in an offline discussion.)",
+      "parentUuid": "f452e06c_f88569ec",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6892f88c_d7f2a1cc",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-05-28T08:58:20Z",
+      "side": 1,
+      "message": "Should we increase the timeout value as well?",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
