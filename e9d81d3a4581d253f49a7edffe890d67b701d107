@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01014cfa_4f8a77aa",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-06-17T14:04:14Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1200,
+        "startChar": 21,
+        "endLine": 1200,
+        "endChar": 24
+      },
+      "revId": "e9d81d3a4581d253f49a7edffe890d67b701d107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
