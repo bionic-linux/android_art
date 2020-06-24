@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1deb8d19_ef341330",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "The taken suggestion to reuse regular \"begin_compilation\" block for ISA features block(instead of seekable file implementation) means that those will share the same format. But \"name\" and \"method\" are already being duplicated for regular \"begin_compilation\". Changing that would also require changing HGraphVisualizer::InsertMetaDataAsCompilationBlock functionality. Would suggest to change the format for regular blocks as well?",
+      "parentUuid": "d1093c57_72b932ef",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c463523_2a736076",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f560e5e2_3df4d2c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c463523_2a736076",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "733088c9_47de9cd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ee8754_8d11894a",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e560cec5_286b8e8f",
         "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2020-05-26T19:06:12Z",
       "side": 1,
       "message": "We could set up a new board config in device/generic/art for this case, so that one can test this feature on compatible devices?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a631891a_89cc70f2",
+        "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Yep, this sounds good, will do it.\n\nI think the change to this test file - actual enablement checking of DotProd could go to a separate CL; this CL could rely on unit tests only. What do you think?",
+      "parentUuid": "e560cec5_286b8e8f",
       "range": {
         "startLine": 103,
         "startChar": 2,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "cd126655_b101ed89",
+        "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Comment above applies.",
+      "parentUuid": "b9196b77_f128f9d5",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4f690a1_5c6aefc5",
         "filename": "tools/checker/file_format/c1visualizer/parser.py",
         "patchSetId": 2
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "ca0b2dc5_4c9f8d21",
+        "filename": "tools/checker/file_format/c1visualizer/parser.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f690a1_5c6aefc5",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd966548_7f773a05",
         "filename": "tools/checker/file_format/c1visualizer/parser.py",
         "patchSetId": 2
@@ -148,6 +286,24 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760a9b7f_6569c2a8",
+        "filename": "tools/checker/file_format/c1visualizer/parser.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd966548_7f773a05",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "fbfdcab3_3562c855",
+        "filename": "tools/checker/file_format/c1visualizer/struct.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a22d47_2de85aba",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c067e4c8_741e7e89",
         "filename": "tools/checker/file_format/c1visualizer/test.py",
         "patchSetId": 2
@@ -194,6 +374,30 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9592da_1e0f97ee",
+        "filename": "tools/checker/file_format/c1visualizer/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c067e4c8_741e7e89",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 78
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "43f46700_8b41ac4d",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3729ce56_083104b3",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10c733de_ca0fe9b8",
         "filename": "tools/checker/match/line.py",
         "patchSetId": 2
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "af67a4bc_78e74c93",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c733de_ca0fe9b8",
+      "range": {
+        "startLine": 114,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 68
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62abae27_f936f6c1",
         "filename": "tools/checker/match/line.py",
         "patchSetId": 2
@@ -257,6 +509,24 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07709213_0cce0ec5",
+        "filename": "tools/checker/match/line.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62abae27_f936f6c1",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "4373d0e3_54222556",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b402ce43_f7b92e66",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47189fb7_7beb70e8",
         "filename": "tools/checker/match/test.py",
         "patchSetId": 2
@@ -306,6 +600,30 @@
     },
     {
       "key": {
+        "uuid": "f4afcae1_d9094a52",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47189fb7_7beb70e8",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c946802_6c971da6",
         "filename": "tools/checker/match/test.py",
         "patchSetId": 2
@@ -320,6 +638,24 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d9bfec_c9f25152",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-06-24T01:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c946802_6c971da6",
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
