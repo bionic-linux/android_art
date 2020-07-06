@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2899414_e407aa83",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1083259
+      },
+      "writtenOn": "2020-07-06T08:35:01Z",
+      "side": 1,
+      "message": "Assume byte_count is bigger than actual size, for example 4, and bytes_read is 2. In this case, reading itself is no problem, but this API will return false. Is this intentional? I think returning true is right because all data is read. What do you think about?",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
