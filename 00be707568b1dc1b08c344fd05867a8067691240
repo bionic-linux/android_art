@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdd34c4c_79308735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-06T16:27:24Z",
+      "side": 1,
+      "message": "\u003e Patch Set 6:\n\u003e \n\u003e Polite ping! :)\n\nHi Artem, sorry for the delay. Will look into this ASAP.",
+      "revId": "00be707568b1dc1b08c344fd05867a8067691240",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
