@@ -34,6 +34,24 @@
       "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3048b5_9b0bfcd0",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1083259
+      },
+      "writtenOn": "2020-07-06T23:39:47Z",
+      "side": 1,
+      "message": "If it\u0027s your intention, there\u0027s no problem and I will use read function. But I think most of cases we use pass a bigger buffer size in general because it\u0027s difficult to know the exact byte.",
+      "parentUuid": "9ff17a68_251280f1",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
