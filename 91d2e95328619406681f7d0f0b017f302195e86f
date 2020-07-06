@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "903255bc_7b12d83c",
+        "filename": "test/181-biginteger/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-07-06T19:23:47Z",
+      "side": 1,
+      "message": "You\u0027re right that the base conversion should be excluded, and probably be benchmarked separately. It should be in the noise (one computation vs. 1000, all with roughly the same asymptotic complexity), but it wasn\u0027t completely clear it actually is. I\u0027ll fix. The primary intent is to time or test the harmonic() computation.\n\nI like your restructured version better. Thanks! Will fix.\n\nMy high level question is how our current boringssl-plus-java-layer BigInteger implementation compares to a pure Java one. Cf aosp/1331512. The short tentative answer is that it\u0027s a mixed bag.",
+      "parentUuid": "8fc92e65_98733a3e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "91d2e95328619406681f7d0f0b017f302195e86f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83f6c31f_169d3e7d",
         "filename": "test/181-biginteger/src/Main.java",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "91d2e95328619406681f7d0f0b017f302195e86f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c9a4ed_a8e64603",
+        "filename": "test/181-biginteger/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-07-06T19:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f6c31f_169d3e7d",
+      "revId": "91d2e95328619406681f7d0f0b017f302195e86f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
