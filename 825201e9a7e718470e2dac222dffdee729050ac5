@@ -16,6 +16,24 @@
       "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff17a68_251280f1",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2020-07-06T16:47:02Z",
+      "side": 1,
+      "message": "I think the point of ReadFully is you are expecting byte_count bytes. So if you pass in 4 when there were only 2, the caller has made a mistake and probably deserves an error?",
+      "parentUuid": "c2899414_e407aa83",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
