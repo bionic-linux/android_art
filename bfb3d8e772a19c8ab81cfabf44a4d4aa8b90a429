@@ -69,6 +69,30 @@
       "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4187605_771a1247",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1724960
+      },
+      "writtenOn": "2020-07-07T11:58:49Z",
+      "side": 1,
+      "message": "FYI, running `adb shell ps` on a `sdk_phone_arm64-eng` emulator took up to 35 seconds. Increasing the timeout value (or using the introduced flag) could help with running tests on arm64 emulators in the future.",
+      "parentUuid": "6892f88c_d7f2a1cc",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
