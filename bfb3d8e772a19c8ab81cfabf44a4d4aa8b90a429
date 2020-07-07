@@ -93,6 +93,53 @@
       "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db3552a_8ad2e8f9",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-07T16:34:43Z",
+      "side": 1,
+      "message": "Thanks for the update. Don\u0027t hesitate to upload a follow-up CL increasing this timeout value.",
+      "parentUuid": "a4187605_771a1247",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 10
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3cf07d4_ed712ada",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-07T16:34:43Z",
+      "side": 1,
+      "message": "Nit: Please use this syntax:\n\n  [[ $? \u003d\u003d 124 ]] \u0026\u0026 [[ \"$ART_TEST_DONT_REBOOT_DEVICE\" !\u003d true ]]",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
