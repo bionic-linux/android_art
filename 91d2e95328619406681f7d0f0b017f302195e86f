@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c200e431_8687b70d",
+        "filename": "test/181-biginteger/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-07-07T18:00:49Z",
+      "side": 1,
+      "message": "Thanks! It would be very useful to run them once we can compare to a more final version of aosp/1331512, especially if it covers other functionality. I\u0027d really like to catch any significant regressions.\n\nMuch of the point here is to see how the performance scales with size. In general, the current approach works quite well for very large (thousands of digits) BigIntegers, since the actual computation overhead dominates the GC overhead. It works much less well for small BigIntegers, such as those used defensively to avoid integer overflow errors, where the GC and reference processing overhead dominates.\n\nI don\u0027t think this code is commonly performance-critical enough to worry about percents in execution time. But I\u0027m sometimes seeing an order of magnitude difference, in either direction depending on benchmark and input size.",
+      "parentUuid": "12e97bde_03c84b46",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "91d2e95328619406681f7d0f0b017f302195e86f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83f6c31f_169d3e7d",
         "filename": "test/181-biginteger/src/Main.java",
         "patchSetId": 1
