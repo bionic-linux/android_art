@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c17f6b22_6aacbf32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-10T18:33:26Z",
+      "side": 1,
+      "message": "Example failure: https://ci.chromium.org/p/art/builders/ci/host-x86_64-poison-debug/5348\n\nhttps://logs.chromium.org/logs/art/buildbucket/cr-buildbucket.appspot.com/8875158482312044784/+/steps/test_gtest/0/stdout\n\n[ RUN      ] ArmVIXLAssemblerTest.VixlJniHelpers\nart/compiler/utils/assembler_thumb_test.cc:(59) Failure in test ArmVIXLAssemblerTest.VixlJniHelpers\nExpected equality of these values:\n...\nWith diff:\n@@ -85,5 +85,5 @@\n       fa: d9 f8 a4 c0                   ldr.w r12, [r9, #164]\n       fe: bc f1 00 0f                   cmp.w r12, #0\n-     102: 71 d1                         bne #226\n+     102: 71 d1                         bne #226 \u003c.text+0x1e8\u003e\n      104: cd f8 ff c7                   str.w r12, [sp, #2047]\n      108: cd f8 ff c7                   str.w r12, [sp, #2047]\n@@ -142,6 +142,6 @@\n      1dc: cd f8 ff c7                   str.w r12, [sp, #2047]\n      1e0: cd f8 ff c7                   str.w r12, [sp, #2047]\n-     1e4: 00 f0 02 b8                   b.w #4\n-     1e8: 00 f0 1b b8                   b.w #54\n+     1e4: 00 f0 02 b8                   b.w #4 \u003c.text+0x1ec\u003e\n+     1e8: 00 f0 1b b8                   b.w #54 \u003c.text+0x222\u003e\n      1ec: cd f8 ff c7                   str.w r12, [sp, #2047]\n      1f0: cd f8 ff c7                   str.w r12, [sp, #2047]\n...\nArmVIXLAssemblerTest.VixlJniHelpers exited with exitcode 1.\n[  FAILED  ] ArmVIXLAssemblerTest.VixlJniHelpers (517 ms)\n",
+      "revId": "6673106a6b268108c7ae95f39f0c526b2b085898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
