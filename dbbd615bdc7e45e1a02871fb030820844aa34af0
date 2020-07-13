@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f364fa7a_e2464041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-13T23:56:31Z",
+      "side": 1,
+      "message": "I threw this together today and yesterday while traveling. The help text isn\u0027t as nicely formatted as what it replaces (or what\u0027s made by things like pythons argparse) but it is actually linked to the parsing so it shouldn\u0027t get out of date. WDYT?",
+      "revId": "dbbd615bdc7e45e1a02871fb030820844aa34af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
