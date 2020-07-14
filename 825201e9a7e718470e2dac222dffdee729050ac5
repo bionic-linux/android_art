@@ -52,6 +52,24 @@
       "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb3c23d_c327e664",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-14T20:17:47Z",
+      "side": 1,
+      "message": "yes, that\u0027s exactly it --- ReadFully is for cases where you know exactly how many bytes you\u0027re expecting. something like android::base::ReadFdToString is meant for \"read the rest, however much that might be\".",
+      "parentUuid": "bb3048b5_9b0bfcd0",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
