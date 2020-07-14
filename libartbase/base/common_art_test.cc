@@ -20,7 +20,9 @@
 #include <dirent.h>
 #include <dlfcn.h>
 #include <fcntl.h>
+#include <cstdlib>
 #include <filesystem>
+#include <system_error>
 #include <ftw.h>
 #include <libgen.h>
 #include <stdlib.h>
@@ -168,9 +170,13 @@ std::string CommonArtTestImpl::GetAndroidBuildTop() {
   CHECK(!android_build_top.empty());
 
   // Check that the expected directory matches the environment variable.
+  std::error_code ec;
   const char* android_build_top_from_env = getenv("ANDROID_BUILD_TOP");
+  android_build_top = std::filesystem::path(android_build_top).string();
+  CHECK(!android_build_top.empty());
   if (android_build_top_from_env != nullptr) {
-    CHECK_EQ(android_build_top, android_build_top_from_env);
+    CHECK_EQ(std::filesystem::weakly_canonical(android_build_top).string(),
+             std::filesystem::weakly_canonical(android_build_top_from_env).string());
   } else {
     setenv("ANDROID_BUILD_TOP", android_build_top.c_str(), /*overwrite=*/0);
   }
@@ -182,16 +188,28 @@ std::string CommonArtTestImpl::GetAndroidBuildTop() {
 
 std::string CommonArtTestImpl::GetAndroidHostOut() {
   CHECK(IsHost());
-  std::string android_host_out = GetAndroidBuildTop() + "out/host/linux-x86";
 
   // Check that the expected directory matches the environment variable.
   const char* android_host_out_from_env = getenv("ANDROID_HOST_OUT");
+  const char* android_out_dir = getenv("OUT_DIR");
+  // Take account of OUT_DIR setting.
+  if (android_out_dir == nullptr) {
+    android_out_dir = "out";
+  }
+  std::string android_host_out;
+  if (android_out_dir[0] == '/') {
+    android_host_out = (std::filesystem::path(android_out_dir) / "host" / "linux-x86").string();
+  } else {
+    android_host_out = (std::filesystem::path(GetAndroidBuildTop()) / android_out_dir / "host" / "linux-x86").string();
+  }
+  std::filesystem::path expected(android_host_out);
   if (android_host_out_from_env != nullptr) {
-    CHECK_EQ(android_host_out, android_host_out_from_env);
+    std::filesystem::path from_env(std::filesystem::weakly_canonical(android_host_out_from_env));
+    CHECK_EQ(std::filesystem::weakly_canonical(expected).string(), from_env.string());
   } else {
     setenv("ANDROID_HOST_OUT", android_host_out.c_str(), /*overwrite=*/0);
   }
-  return android_host_out;
+  return expected.string();
 }
 
 void CommonArtTestImpl::SetUpAndroidRootEnvVars() {
