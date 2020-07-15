@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4bc365e_8581805d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-15T16:12:08Z",
+      "side": 1,
+      "message": "originally this code was written for a different project inside google (a fuse daemon for caching build artifacts). there was never a case where someone using this API needed that operation (because the equivalents of ReadFdToString/ReadFileToString were available in that codebase too).",
+      "parentUuid": "0394e8e1_d56e2958",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2899414_e407aa83",
         "filename": "runtime/base/unix_file/fd_file.cc",
         "patchSetId": 1
