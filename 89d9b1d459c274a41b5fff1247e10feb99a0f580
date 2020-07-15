@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "879d943e_aea87981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-15T00:45:59Z",
+      "side": 1,
+      "message": "ptal. Needs More CANONICAL!",
+      "revId": "89d9b1d459c274a41b5fff1247e10feb99a0f580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
