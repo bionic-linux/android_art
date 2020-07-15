@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0394e8e1_d56e2958",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083259
+      },
+      "writtenOn": "2020-07-15T00:01:53Z",
+      "side": 1,
+      "message": "Got it perfectly, one more comment, why don\u0027t you put API similar to ReadFdToString in fd_file?",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2899414_e407aa83",
         "filename": "runtime/base/unix_file/fd_file.cc",
         "patchSetId": 1
@@ -70,6 +87,24 @@
       "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8617e8ab_88195c15",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1083259
+      },
+      "writtenOn": "2020-07-15T00:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cb3c23d_c327e664",
+      "revId": "825201e9a7e718470e2dac222dffdee729050ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
