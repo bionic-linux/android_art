@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Martin Stjernholm <mast@google.com>
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Bypass-Presubmit+1: Ulyana Trafimovich <skvadrik@google.com>
+Submitted-by: Ulyana Trafimovich <skvadrik@google.com>
+Submitted-at: Thu, 16 Jul 2020 14:29:52 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1364816
+Project: platform/art
+Branch: refs/heads/master
