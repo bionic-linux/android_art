@@ -16,6 +16,29 @@
       "revId": "755a322c27d6315202e30bd5b358632d88343cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b869716e_907e43e9",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2020-07-16T17:16:55Z",
+      "side": 1,
+      "message": "Can this string be empty now? .back() doesn\u0027t work for empty strings.",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "755a322c27d6315202e30bd5b358632d88343cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
