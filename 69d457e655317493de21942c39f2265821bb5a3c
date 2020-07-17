@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b36aff6_d7fdd294",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-07-17T13:22:09Z",
+      "side": 1,
+      "message": "checking",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "69d457e655317493de21942c39f2265821bb5a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "807d1a0b_e5baf398",
         "filename": "libartbase/base/common_art_test.cc",
         "patchSetId": 5
