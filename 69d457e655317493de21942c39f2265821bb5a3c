@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "807d1a0b_e5baf398",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-07-17T13:20:41Z",
+      "side": 1,
+      "message": "According to its doc, it requires the provided path to exist. Otherwise it is an error.\nYou can try: canonical( const std::filesystem::path\u0026 p, std::error_code\u0026 ec ) and check\nthe status ec.",
+      "range": {
+        "startLine": 173,
+        "startChar": 22,
+        "endLine": 173,
+        "endChar": 48
+      },
+      "revId": "69d457e655317493de21942c39f2265821bb5a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
