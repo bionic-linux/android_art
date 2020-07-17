@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "042828c3_c2e8b767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-17T17:54:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b36aff6_d7fdd294",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "69d457e655317493de21942c39f2265821bb5a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e2b494f_17287678",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -62,6 +86,30 @@
       "revId": "69d457e655317493de21942c39f2265821bb5a3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc5f92f_3e688c9a",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-17T17:54:41Z",
+      "side": 1,
+      "message": "Thank you! I was banging my head against a wall trying to figure this out.",
+      "parentUuid": "807d1a0b_e5baf398",
+      "range": {
+        "startLine": 173,
+        "startChar": 22,
+        "endLine": 173,
+        "endChar": 48
+      },
+      "revId": "69d457e655317493de21942c39f2265821bb5a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
