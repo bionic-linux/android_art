@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "aca1839c_f6dbdec4",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-07-17T22:54:30Z",
+      "side": 1,
+      "message": "Might be redundant as well.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "677b61b8f0060be33134bffecb3cb4d2ddca8b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88a96891_c6bafe47",
         "filename": "libartbase/base/common_art_test.cc",
         "patchSetId": 7
