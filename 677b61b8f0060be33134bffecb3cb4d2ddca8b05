@@ -16,6 +16,29 @@
       "revId": "677b61b8f0060be33134bffecb3cb4d2ddca8b05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a96891_c6bafe47",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-07-17T22:53:10Z",
+      "side": 1,
+      "message": "There are no uses of this.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "677b61b8f0060be33134bffecb3cb4d2ddca8b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
