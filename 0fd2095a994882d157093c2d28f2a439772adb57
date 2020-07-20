@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0f567d18_f59aa91b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-20T14:59:21Z",
+      "side": 1,
+      "message": "My bad, I did not realize that `name` and `method` were already the same. I don\u0027t think there\u0027s any need to change this.",
+      "parentUuid": "1deb8d19_ef341330",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c463523_2a736076",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -175,6 +199,30 @@
       "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099f8cb9_ff7a9fc9",
+        "filename": "test/684-checker-simd-dotprod/src/other/TestByte.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-20T14:59:21Z",
+      "side": 1,
+      "message": "Yes, moving this check to another CL (which seems to be https://android-review.googlesource.com/c/platform/art/+/1352360 IIUC) sounds good to me.",
+      "parentUuid": "a631891a_89cc70f2",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "0fd2095a994882d157093c2d28f2a439772adb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
