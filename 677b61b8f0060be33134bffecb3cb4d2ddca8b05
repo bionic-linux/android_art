@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "c14ab14a_efb15b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-07-20T18:12:16Z",
+      "side": 1,
+      "message": "Apologies Alex.  I had to refactor the code a bit to make it work on eng-prod, and I didn\u0027t take this into account.\n\nFor the record, where are you hitting the issue?  Is there some odd build broken?  Do you customize the OUT_DIR in your own local development?\n\nPS: In terms of resolving the issue, this CLs is fine by me.  However, I would be also happy with just removing the offending DCHECK line (and returning the value obtained from getenv).",
+      "revId": "677b61b8f0060be33134bffecb3cb4d2ddca8b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aca1839c_f6dbdec4",
         "filename": "libartbase/base/common_art_test.cc",
         "patchSetId": 7
