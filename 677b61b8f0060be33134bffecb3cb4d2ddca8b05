@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "8448c467_e221ee81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-20T18:44:00Z",
+      "side": 1,
+      "message": "No problem. I customize OUT_DIR which I know is a not totally supported configuration.",
+      "parentUuid": "c14ab14a_efb15b5d",
+      "revId": "677b61b8f0060be33134bffecb3cb4d2ddca8b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aca1839c_f6dbdec4",
         "filename": "libartbase/base/common_art_test.cc",
         "patchSetId": 7
