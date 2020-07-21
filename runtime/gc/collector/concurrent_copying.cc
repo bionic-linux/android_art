@@ -31,6 +31,7 @@
 #include "gc/accounting/mod_union_table-inl.h"
 #include "gc/accounting/read_barrier_table.h"
 #include "gc/accounting/space_bitmap-inl.h"
+#include "gc/accounting/remembered_set.h"
 #include "gc/gc_pause_listener.h"
 #include "gc/reference_processor.h"
 #include "gc/space/image_space.h"
@@ -67,9 +68,15 @@ static constexpr size_t kSweepArrayChunkFreeSize = 1024;
 // Verify that there are no missing card marks.
 static constexpr bool kVerifyNoMissingCardMarks = kIsDebugBuild;
 
+uint8_t ConcurrentCopying::tenure_threshold_ = space::RegionSpace::kRegionMaxAgeTenureThreshold;
+
+using RegionGen = space::RegionSpace::RegionGen;
+
 ConcurrentCopying::ConcurrentCopying(Heap* heap,
-                                     bool young_gen,
+                                     GcType type,
                                      bool use_generational_cc,
+                                     bool use_midterm_cc,
+                                     bool use_dynamic_threshold,
                                      const std::string& name_prefix,
                                      bool measure_read_barrier_slow_path)
     : GarbageCollector(heap,
@@ -81,7 +88,9 @@ ConcurrentCopying::ConcurrentCopying(Heap* heap,
                                                      kDefaultGcMarkStackSize,
                                                      kDefaultGcMarkStackSize)),
       use_generational_cc_(use_generational_cc),
-      young_gen_(young_gen),
+      use_midterm_cc_(use_midterm_cc),
+      type_(type),
+      use_dynamic_threshold_(use_dynamic_threshold),
       rb_mark_bit_stack_(accounting::ObjectStack::Create("rb copying gc mark stack",
                                                          kReadBarrierMarkStackSize,
                                                          kReadBarrierMarkStackSize)),
@@ -117,10 +126,15 @@ ConcurrentCopying::ConcurrentCopying(Heap* heap,
       gc_grays_immune_objects_(false),
       immune_gray_stack_lock_("concurrent copying immune gray stack lock",
                               kMarkSweepMarkStackLock),
-      num_bytes_allocated_before_gc_(0) {
+      num_bytes_allocated_before_gc_(0),
+      rebuild_rem_sets_during_mark_phase_(false) {
   static_assert(space::RegionSpace::kRegionSize == accounting::ReadBarrierTable::kRegionSize,
                 "The region space size and the read barrier table region size must match");
-  CHECK(use_generational_cc_ || !young_gen_);
+  CHECK(IsYoungGC() || IsMidTermGC() || IsFullGC())
+    << "Unsupported GcType -" << type_ << " for CC";
+  CHECK(use_generational_cc_ || !IsYoungGC());
+  CHECK(use_midterm_cc_ || !IsMidTermGC());
+  CHECK(!use_dynamic_threshold_ || use_midterm_cc_);
   Thread* self = Thread::Current();
   {
     ReaderMutexLock mu(self, *Locks::heap_bitmap_lock_);
@@ -195,7 +209,7 @@ void ConcurrentCopying::RunPhases() {
     InitializePhase();
     // In case of forced evacuation, all regions are evacuated and hence no
     // need to compute live_bytes.
-    if (use_generational_cc_ && !young_gen_ && !force_evacuate_all_) {
+    if (use_generational_cc_ && !IsYoungGC() && !force_evacuate_all_) {
       MarkingPhase();
     }
   }
@@ -329,25 +343,48 @@ void ConcurrentCopying::BindBitmaps() {
       if (use_generational_cc_) {
         if (space == region_space_) {
           region_space_bitmap_ = region_space_->GetMarkBitmap();
-        } else if (young_gen_ && space->IsContinuousMemMapAllocSpace()) {
+          if (IsMidTermGC()) {
+            // Clear the bitmaps for Aged regions.
+            region_space_->ClearBitmap(static_cast<uint8_t>(RegionGen::kRegionGenAged) |
+                                       static_cast<uint8_t>(RegionGen::kRegionGenTenuring));
+          } else if (IsFullGC()) {
+            region_space_bitmap_->Clear();
+          }
+        } else if (!IsFullGC() && space->IsContinuousMemMapAllocSpace()) {
           DCHECK_EQ(space->GetGcRetentionPolicy(), space::kGcRetentionPolicyAlwaysCollect);
           space->AsContinuousMemMapAllocSpace()->BindLiveToMarkBitmap();
         }
-        if (young_gen_) {
-          // Age all of the cards for the region space so that we know which evac regions to scan.
-          heap_->GetCardTable()->ModifyCardsAtomic(space->Begin(),
-                                                   space->End(),
-                                                   AgeCardVisitor(),
-                                                   VoidFunctor());
+        if (use_midterm_cc_) {
+          // We have to remember the dirty cards irrespective of young_gen,
+          // to be able to later use them for inter-gen reference scanning
+          ClearDirtyCards(space);
+
+          if (IsFullGC() && rebuild_rem_sets_during_mark_phase_) {
+            DCHECK_NE(tenure_threshold_, region_space_->GetTenureThreshold());
+            // In a full-heap GC cycle, when we are going to re-build our Remsets,
+            // the card-table corresponding to region-space and
+            // non-moving space can be cleared, because this cycle only needs to
+            // capture writes during the marking phase of this cycle to catch
+            // objects that skipped marking due to heap mutation.
+            heap_->GetCardTable()->ClearCardRange(space->Begin(), space->Limit());
+          }
         } else {
-          // In a full-heap GC cycle, the card-table corresponding to region-space and
-          // non-moving space can be cleared, because this cycle only needs to
-          // capture writes during the marking phase of this cycle to catch
-          // objects that skipped marking due to heap mutation. Furthermore,
-          // if the next GC is a young-gen cycle, then it only needs writes to
-          // be captured after the thread-flip of this GC cycle, as that is when
-          // the young-gen for the next GC cycle starts getting populated.
-          heap_->GetCardTable()->ClearCardRange(space->Begin(), space->Limit());
+          if (IsYoungGC()) {
+            // Age all of the cards for the region space so that we know which evac regions to scan.
+            heap_->GetCardTable()->ModifyCardsAtomic(space->Begin(),
+                                                    space->End(),
+                                                    AgeCardVisitor(),
+                                                    VoidFunctor());
+          } else {
+            // In a full-heap GC cycle, the card-table corresponding to region-space and
+            // non-moving space can be cleared, because this cycle only needs to
+            // capture writes during the marking phase of this cycle to catch
+            // objects that skipped marking due to heap mutation. Furthermore,
+            // if the next GC is a young-gen cycle, then it only needs writes to
+            // be captured after the thread-flip of this GC cycle, as that is when
+            // the young-gen for the next GC cycle starts getting populated.
+            heap_->GetCardTable()->ClearCardRange(space->Begin(), space->Limit());
+          }
         }
       } else {
         if (space == region_space_) {
@@ -359,7 +396,7 @@ void ConcurrentCopying::BindBitmaps() {
       }
     }
   }
-  if (use_generational_cc_ && young_gen_) {
+  if (use_generational_cc_ && !IsFullGC()) {
     for (const auto& space : GetHeap()->GetDiscontinuousSpaces()) {
       CHECK(space->IsLargeObjectSpace());
       space->AsLargeObjectSpace()->CopyLiveToMarked();
@@ -384,6 +421,13 @@ void ConcurrentCopying::InitializePhase() {
     rb_slow_path_count_gc_.store(0, std::memory_order_relaxed);
   }
 
+  if (use_midterm_cc_) {
+    region_space_rem_set_ = heap_->FindRememberedSetFromSpace(region_space_);
+    non_moving_space_rem_set_ = heap_->FindRememberedSetFromSpace(heap_->non_moving_space_);
+    DCHECK(region_space_rem_set_ != nullptr);
+    DCHECK(non_moving_space_rem_set_ != nullptr);
+  }
+
   immune_spaces_.Reset();
   bytes_moved_.store(0, std::memory_order_relaxed);
   objects_moved_.store(0, std::memory_order_relaxed);
@@ -392,7 +436,7 @@ void ConcurrentCopying::InitializePhase() {
   GcCause gc_cause = GetCurrentIteration()->GetGcCause();
 
   force_evacuate_all_ = false;
-  if (!use_generational_cc_ || !young_gen_) {
+  if (!use_generational_cc_ || IsFullGC()) {
     if (gc_cause == kGcCauseExplicit ||
         gc_cause == kGcCauseCollectorTransition ||
         GetCurrentIteration()->GetClearSoftReferences()) {
@@ -413,7 +457,7 @@ void ConcurrentCopying::InitializePhase() {
   }
   BindBitmaps();
   if (kVerboseMode) {
-    LOG(INFO) << "young_gen=" << std::boolalpha << young_gen_ << std::noboolalpha;
+    LOG(INFO) << "GcType=" << type_;
     LOG(INFO) << "force_evacuate_all=" << std::boolalpha << force_evacuate_all_ << std::noboolalpha;
     LOG(INFO) << "Largest immune region: " << immune_spaces_.GetLargestImmuneRegion().Begin()
               << "-" << immune_spaces_.GetLargestImmuneRegion().End();
@@ -421,9 +465,6 @@ void ConcurrentCopying::InitializePhase() {
       LOG(INFO) << "Immune space: " << *space;
     }
     LOG(INFO) << "GC end of InitializePhase";
-  }
-  if (use_generational_cc_ && !young_gen_) {
-    region_space_bitmap_->Clear();
   }
   mark_stack_mode_.store(ConcurrentCopying::kMarkStackModeThreadLocal, std::memory_order_relaxed);
   // Mark all of the zygote large objects without graying them.
@@ -518,15 +559,18 @@ class ConcurrentCopying::FlipCallback : public Closure {
     TimingLogger::ScopedTiming split("(Paused)FlipCallback", cc->GetTimings());
     // Note: self is not necessarily equal to thread since thread may be suspended.
     Thread* self = Thread::Current();
-    if (kVerifyNoMissingCardMarks && cc->young_gen_) {
+    if (kVerifyNoMissingCardMarks && (cc->IsYoungGC() || cc->use_midterm_cc_)) {
       cc->VerifyNoMissingCardMarks();
     }
     CHECK_EQ(thread, self);
     Locks::mutator_lock_->AssertExclusiveHeld(self);
     space::RegionSpace::EvacMode evac_mode = space::RegionSpace::kEvacModeLivePercentNewlyAllocated;
-    if (cc->young_gen_) {
+    if (cc->IsYoungGC()) {
       CHECK(!cc->force_evacuate_all_);
       evac_mode = space::RegionSpace::kEvacModeNewlyAllocated;
+    } else if (cc->use_midterm_cc_ && cc->IsMidTermGC()) {
+      CHECK(!cc->force_evacuate_all_);
+      evac_mode = space::RegionSpace::kEvacModeAgedLivePercentNewlyAllocated;
     } else if (cc->force_evacuate_all_) {
       evac_mode = space::RegionSpace::kEvacModeForceAll;
     }
@@ -657,9 +701,12 @@ void ConcurrentCopying::VerifyGrayImmuneObjects() {
 
 class ConcurrentCopying::VerifyNoMissingCardMarkVisitor {
  public:
-  VerifyNoMissingCardMarkVisitor(ConcurrentCopying* cc, ObjPtr<mirror::Object> holder)
+  VerifyNoMissingCardMarkVisitor(ConcurrentCopying* cc, ObjPtr<mirror::Object> holder,
+                                 uint8_t card, bool card_remembered)
     : cc_(cc),
-      holder_(holder) {}
+      holder_(holder),
+      card_(card),
+      card_remembered_(card_remembered) {}
 
   void operator()(ObjPtr<mirror::Object> obj,
                   MemberOffset offset,
@@ -691,37 +738,97 @@ class ConcurrentCopying::VerifyNoMissingCardMarkVisitor {
 
   void CheckReference(mirror::Object* ref, int32_t offset = -1) const
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    if (ref != nullptr && cc_->region_space_->IsInNewlyAllocatedRegion(ref)) {
+    if (ref == nullptr) {
+      return;
+    }
+    bool failed_to_remember = false;
+    if (!card_remembered_) {
+      RegionGen ref_gen = cc_->region_space_->GetGen</*kEvacuating=*/ false>(ref);
+      if (cc_->IsYoungGC()) {
+        failed_to_remember = (ref_gen <= RegionGen::kRegionGenTenuring);
+      } else {
+        // MidTermGC/FullGC would have forgotten tenuring-inter-gen refs
+        failed_to_remember = (ref_gen < RegionGen::kRegionGenTenuring);
+      }
+    }
+    // 1. Clean cards must not have reference to newly allocated region (cannot check for Full-GC)
+    // 2. If using midterm GC all inter-gen references from tenured object must be remembered
+    if ((!cc_->IsFullGC() && card_ == gc::accounting::CardTable::kCardClean &&
+         cc_->region_space_->IsInNewlyAllocatedRegion(ref)) ||
+         failed_to_remember) {
       LOG(FATAL_WITHOUT_ABORT)
         << holder_->PrettyTypeOf() << "(" << holder_.Ptr() << ") references object "
-        << ref->PrettyTypeOf() << "(" << ref << ") in newly allocated region at offset=" << offset;
+        << ref->PrettyTypeOf() << "(" << ref
+        << ") in younger/newly allocated region at offset=" << offset;
+      LOG(FATAL_WITHOUT_ABORT) << "GcType=" << cc_->type_;
       LOG(FATAL_WITHOUT_ABORT) << "time=" << cc_->region_space_->Time();
       constexpr const char* kIndent = "  ";
+      // Remove memory protection from the region space and log debugging information.
+      cc_->region_space_->Unprotect();
       LOG(FATAL_WITHOUT_ABORT) << cc_->DumpReferenceInfo(holder_.Ptr(), "holder_", kIndent);
       LOG(FATAL_WITHOUT_ABORT) << cc_->DumpReferenceInfo(ref, "ref", kIndent);
-      LOG(FATAL) << "Unexpected reference to newly allocated region.";
+      LOG(FATAL) << "Unexpected reference to younger/newly allocated region.";
     }
   }
 
  private:
   ConcurrentCopying* const cc_;
   const ObjPtr<mirror::Object> holder_;
+  const uint8_t card_;
+  const bool card_remembered_;
 };
 
 void ConcurrentCopying::VerifyNoMissingCardMarks() {
   auto visitor = [&](mirror::Object* obj)
       REQUIRES(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_) {
-    // Objects on clean cards should never have references to newly allocated regions. Note
-    // that aged cards are also not clean.
-    if (heap_->GetCardTable()->GetCard(obj) == gc::accounting::CardTable::kCardClean) {
-      VerifyNoMissingCardMarkVisitor internal_visitor(this, /*holder=*/ obj);
+    uint8_t* card = heap_->GetCardTable()->CardFromAddr(reinterpret_cast<uint8_t*>(obj));
+    RegionGen obj_gen = RegionGen::kRegionGenTenured;
+    accounting::RememberedSet* rem_set = nullptr;
+    if (region_space_->HasAddress(obj)) {
+      rem_set = region_space_rem_set_;
+      obj_gen = region_space_->GetGen</*kEvacuating=*/ false>(obj);
+    } else if (heap_->non_moving_space_->HasAddress(obj)) {
+      rem_set = non_moving_space_rem_set_;
+    }
+
+    // 1. Objects on clean cards should never have references to newly allocated regions. Note
+    //    that aged cards are also not clean.
+    //    For YoungGC, we scan aged cards as well so it is safe, even if they have references
+    //    to newly allocated regions.
+    //    For MidTermGC/FullGC, all aged cards are already scanned during marking phase
+    // 2. If using midterm CC all inter-gen references from tenured objects must be remembered
+    if ((!IsFullGC() && *card == gc::accounting::CardTable::kCardClean) ||
+        (use_midterm_cc_ && rem_set != nullptr &&
+         obj_gen == RegionGen::kRegionGenTenured &&
+         !rem_set->ContainsCard(card) && *card != gc::accounting::CardTable::kCardDirty)) {
+      // Fake that we remember the card for unwanted cases
+      bool card_remembered = (!use_midterm_cc_ || obj_gen != RegionGen::kRegionGenTenured ||
+                              rem_set == nullptr || rem_set->ContainsCard(card));
+      if (IsFullGC()) {
+        // When we are building rem-sets
+        // We may have missed marking some tenured refs during the mark phase
+        // Dont expect such cards to be remembered, so fake it here
+        // Such objects will be remembered after thread-flip
+        // TODO: This is expected only when rebuilding rem-sets, try to incorporate the exact case
+        card_remembered |= !TestMarkBitmapForRef(obj);
+      }
+      VerifyNoMissingCardMarkVisitor internal_visitor(this, /*holder=*/ obj,
+                                                      *card,
+                                                      card_remembered);
       obj->VisitReferences</*kVisitNativeRoots=*/true, kVerifyNone, kWithoutReadBarrier>(
           internal_visitor, internal_visitor);
     }
   };
   TimingLogger::ScopedTiming split(__FUNCTION__, GetTimings());
-  region_space_->Walk(visitor);
+  if (use_midterm_cc_ && IsFullGC()) {
+    // For Full-GC we cannot validate dirty card sanity as we may clear cards.
+    // So we walk the tenured-gen and validate the rem-sets if using mid-term CC.
+    // TODO: Handle the rebuilding rem-sets case, so we can walk entire region-space.
+    region_space_->WalkTenuredGen(visitor);
+  } else {
+    region_space_->Walk(visitor);
+  }
   {
     ReaderMutexLock rmu(Thread::Current(), *Locks::heap_bitmap_lock_);
     heap_->GetLiveBitmap()->Visit(visitor);
@@ -869,12 +976,14 @@ inline void ConcurrentCopying::ScanImmuneObject(mirror::Object* obj) {
   DCHECK(obj != nullptr);
   DCHECK(immune_spaces_.ContainsObject(obj));
   // Update the fields without graying it or pushing it onto the mark stack.
-  if (use_generational_cc_ && young_gen_) {
+  if (use_generational_cc_ && IsYoungGC()) {
     // Young GC does not care about references to unevac space. It is safe to not gray these as
     // long as scan immune objects happens after scanning the dirty cards.
-    Scan<true>(obj);
+    Scan<RegionTypeFlag::kIgnoreUnevacFromSpace>(obj);
+  } else if (use_midterm_cc_ && IsMidTermGC()) {
+    Scan<RegionTypeFlag::kIgnoreUnevacFromSpaceTenured>(obj);
   } else {
-    Scan<false>(obj);
+    Scan<RegionTypeFlag::kIgnoreNone>(obj);
   }
 }
 
@@ -1036,21 +1145,28 @@ void ConcurrentCopying::CaptureThreadRootsForMarking() {
 }
 
 // Used to scan ref fields of an object.
-template <bool kHandleInterRegionRefs>
+template <bool kHandleInterRegionRefs, bool kHandleInterGenRefs>
 class ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor {
  public:
   explicit ComputeLiveBytesAndMarkRefFieldsVisitor(ConcurrentCopying* collector,
                                                    size_t obj_region_idx)
       : collector_(collector),
       obj_region_idx_(obj_region_idx),
-      contains_inter_region_idx_(false) {}
+      contains_inter_region_idx_(false),
+      contains_inter_gen_refs_(false),
+      contains_non_tenuring_inter_gen_refs_(false) {}
 
   void operator()(mirror::Object* obj, MemberOffset offset, bool /* is_static */) const
       ALWAYS_INLINE
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES_SHARED(Locks::heap_bitmap_lock_) {
-    DCHECK_EQ(collector_->RegionSpace()->RegionIdxForRef(obj), obj_region_idx_);
-    DCHECK(kHandleInterRegionRefs || collector_->immune_spaces_.ContainsObject(obj));
+    DCHECK(!kHandleInterRegionRefs ||
+           collector_->RegionSpace()->RegionIdxForRef(obj) == obj_region_idx_);
+    DCHECK(kHandleInterRegionRefs || (collector_->IsMidTermGC() && kHandleInterGenRefs) ||
+           collector_->immune_spaces_.ContainsObject(obj));
+    DCHECK(!kHandleInterGenRefs ||
+           collector_->RegionSpace()->GetGen</*kEvacuating=*/ false>(obj) >=
+            RegionGen::kRegionGenTenured);
     CheckReference(obj->GetFieldObject<mirror::Object, kVerifyNone, kWithoutReadBarrier>(offset));
   }
 
@@ -1066,6 +1182,10 @@ class ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor {
         && !contains_inter_region_idx_
         && ref->AsReference()->GetReferent<kWithoutReadBarrier>() != nullptr) {
       contains_inter_region_idx_ = true;
+    }
+
+    if (kHandleInterGenRefs) {
+      CheckForInterGenReferences(ref->AsReference()->GetReferent<kWithoutReadBarrier>());
     }
   }
 
@@ -1087,6 +1207,15 @@ class ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor {
     return contains_inter_region_idx_;
   }
 
+  bool ContainsInterGenRefs() const ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_) {
+    return contains_inter_gen_refs_;
+  }
+
+  bool ContainsNonTenuringInterGenRefs() const
+      ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_) {
+    return contains_non_tenuring_inter_gen_refs_;
+  }
+
  private:
   void CheckReference(mirror::Object* ref) const
       REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -1095,6 +1224,20 @@ class ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor {
       return;
     }
     if (!collector_->TestAndSetMarkBitForRef(ref)) {
+      // Dont expect to see any tenured objects here for mid_term GC.
+      DCHECK(!collector_->IsMidTermGC() ||
+             collector_->region_space_->GetGen</*kEvacuating=*/ false>(ref) !=
+              RegionGen::kRegionGenTenured);
+      // A newly marked non-moving-space object could potentially have young refs
+      // We may have forgotten the card as they were unmarked on alloc stack in the last cycle.
+      // Note: This happens only with MidTermGC as we forget some cards while scanning rem-sets
+      // Case-5: Inter-gen refs from non-moving space objects either new
+      //         or newly marked as they were on alloc stack the last cycle
+      // TODO: Is it cleaner, if we just consider to remember aged cards as well ?
+      if (collector_->IsMidTermGC() &&
+          collector_->heap_->non_moving_space_->HasAddress(ref)) {
+        collector_->RememberCard(ref);
+      }
       collector_->PushOntoLocalMarkStack(ref);
     }
     if (kHandleInterRegionRefs && !contains_inter_region_idx_) {
@@ -1106,19 +1249,41 @@ class ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor {
         contains_inter_region_idx_ = true;
       }
     }
+    CheckForInterGenReferences(ref);
+  }
+
+  void CheckForInterGenReferences(mirror::Object* ref) const ALWAYS_INLINE
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (kHandleInterGenRefs && !contains_non_tenuring_inter_gen_refs_) {
+      RegionGen ref_gen = collector_->RegionSpace()->GetGen</*kEvacuating=*/ false>(ref);
+      contains_non_tenuring_inter_gen_refs_ = (ref_gen < RegionGen::kRegionGenTenuring);
+      if (!contains_inter_gen_refs_) {
+        contains_inter_gen_refs_ = (ref_gen <= RegionGen::kRegionGenTenuring);
+      }
+    }
   }
 
   ConcurrentCopying* const collector_;
   const size_t obj_region_idx_;
   mutable bool contains_inter_region_idx_;
+  mutable bool contains_inter_gen_refs_;
+  mutable bool contains_non_tenuring_inter_gen_refs_;
 };
 
+template <bool kRememberInterGenRefs>
 void ConcurrentCopying::AddLiveBytesAndScanRef(mirror::Object* ref) {
   DCHECK(ref != nullptr);
   DCHECK(!immune_spaces_.ContainsObject(ref));
   DCHECK(TestMarkBitmapForRef(ref));
   size_t obj_region_idx = static_cast<size_t>(-1);
+  bool containsInterRegionRefs = false;
+  // Note that we use TenuredGen for all non-region space objects, so that
+  // we dont consider any references from them into TenuredGen of region space
+  RegionGen obj_gen = RegionGen::kRegionGenTenured;
   if (LIKELY(region_space_->HasAddress(ref))) {
+    if (kRememberInterGenRefs) {
+      obj_gen = region_space_->GetGen</*kEvacuating=*/ false>(ref);
+    }
     obj_region_idx = region_space_->RegionIdxForRefUnchecked(ref);
     // Add live bytes to the corresponding region
     if (!region_space_->IsRegionNewlyAllocated(obj_region_idx)) {
@@ -1129,13 +1294,32 @@ void ConcurrentCopying::AddLiveBytesAndScanRef(mirror::Object* ref) {
       region_space_->AddLiveBytes(ref, alloc_size);
     }
   }
-  ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ true>
-      visitor(this, obj_region_idx);
-  ref->VisitReferences</*kVisitNativeRoots=*/ true, kDefaultVerifyFlags, kWithoutReadBarrier>(
-      visitor, visitor);
+  if (kRememberInterGenRefs && obj_gen == RegionGen::kRegionGenTenured) {
+    ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ true,
+                                            /*kHandleInterGenRefs=*/ true>
+        visitor(this, obj_region_idx);
+    ref->VisitReferences</*kVisitNativeRoots=*/ true, kDefaultVerifyFlags, kWithoutReadBarrier>(
+        visitor, visitor);
+    if (visitor.ContainsNonTenuringInterGenRefs()) {
+      // This must happen only on a region space/non-moving space object
+      // We use the same assumption as used below for obj_region_idx = -1
+      DCHECK(region_space_->HasAddress(ref) || heap_->GetNonMovingSpace()->HasAddress(ref));
+      // Case-4: Inter-gen refs due to tenure threshold updation.
+      //         We are re-building Remsets here as the gen-boundary has changed.
+      RememberCard(ref);
+    }
+    containsInterRegionRefs = visitor.ContainsInterRegionRefs();
+  } else {
+    ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ true,
+                                            /*kHandleInterGenRefs=*/ false>
+        visitor(this, obj_region_idx);
+    ref->VisitReferences</*kVisitNativeRoots=*/ true, kDefaultVerifyFlags, kWithoutReadBarrier>(
+        visitor, visitor);
+    containsInterRegionRefs = visitor.ContainsInterRegionRefs();
+  }
   // Mark the corresponding card dirty if the object contains any
   // inter-region reference.
-  if (visitor.ContainsInterRegionRefs()) {
+  if (containsInterRegionRefs) {
     if (obj_region_idx == static_cast<size_t>(-1)) {
       // If an inter-region ref has been found in a non-region-space, then it
       // must be non-moving-space. This is because this function cannot be
@@ -1221,21 +1405,37 @@ void ConcurrentCopying::PushOntoLocalMarkStack(mirror::Object* ref) {
 
 void ConcurrentCopying::ProcessMarkStackForMarkingAndComputeLiveBytes() {
   // Process thread-local mark stack containing thread roots
-  ProcessThreadLocalMarkStacks(/* disable_weak_ref_access */ false,
-                               /* checkpoint_callback */ nullptr,
-                               [this] (mirror::Object* ref)
-                                   REQUIRES_SHARED(Locks::mutator_lock_) {
-                                 AddLiveBytesAndScanRef(ref);
-                               });
+  if (LIKELY(!use_midterm_cc_ || !rebuild_rem_sets_during_mark_phase_)) {
+    ProcessThreadLocalMarkStacks(/* disable_weak_ref_access */ false,
+                            /* checkpoint_callback */ nullptr,
+                            [this] (mirror::Object* ref)
+                                REQUIRES_SHARED(Locks::mutator_lock_) {
+                              AddLiveBytesAndScanRef</*kRememberInterGenRefs*/ false>(ref);
+                            });
+  } else {
+    ProcessThreadLocalMarkStacks(/* disable_weak_ref_access */ false,
+                            /* checkpoint_callback */ nullptr,
+                            [this] (mirror::Object* ref)
+                                REQUIRES_SHARED(Locks::mutator_lock_) {
+                              AddLiveBytesAndScanRef</*kRememberInterGenRefs*/ true>(ref);
+                            });
+  }
   {
     MutexLock mu(thread_running_gc_, mark_stack_lock_);
     CHECK(revoked_mark_stacks_.empty());
     CHECK_EQ(pooled_mark_stacks_.size(), kMarkStackPoolSize);
   }
 
-  while (!gc_mark_stack_->IsEmpty()) {
-    mirror::Object* ref = gc_mark_stack_->PopBack();
-    AddLiveBytesAndScanRef(ref);
+  if (LIKELY(!use_midterm_cc_ || !rebuild_rem_sets_during_mark_phase_)) {
+    while (!gc_mark_stack_->IsEmpty()) {
+      mirror::Object* ref = gc_mark_stack_->PopBack();
+      AddLiveBytesAndScanRef</*kRememberInterGenRefs*/ false>(ref);
+    }
+  } else {
+    while (!gc_mark_stack_->IsEmpty()) {
+      mirror::Object* ref = gc_mark_stack_->PopBack();
+      AddLiveBytesAndScanRef</*kRememberInterGenRefs*/ true>(ref);
+    }
   }
 }
 
@@ -1244,7 +1444,8 @@ class ConcurrentCopying::ImmuneSpaceCaptureRefsVisitor {
   explicit ImmuneSpaceCaptureRefsVisitor(ConcurrentCopying* cc) : collector_(cc) {}
 
   ALWAYS_INLINE void operator()(mirror::Object* obj) const REQUIRES_SHARED(Locks::mutator_lock_) {
-    ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ false>
+    ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ false,
+                                            /*kHandleInterGenRefs*/ false>
         visitor(collector_, /*obj_region_idx*/ static_cast<size_t>(-1));
     obj->VisitReferences</*kVisitNativeRoots=*/true, kDefaultVerifyFlags, kWithoutReadBarrier>(
         visitor, visitor);
@@ -1256,6 +1457,39 @@ class ConcurrentCopying::ImmuneSpaceCaptureRefsVisitor {
 
  private:
   ConcurrentCopying* const collector_;
+};
+
+class ConcurrentCopying::RememberedSetMarkingVisitor :
+  public accounting::RememberedSetObjectVisitor {
+ public:
+  explicit RememberedSetMarkingVisitor(ConcurrentCopying* cc,
+                                       accounting::ContinuousSpaceBitmap* inter_region_bitmap)
+      : cc_(cc),
+        inter_region_bitmap_(inter_region_bitmap) { }
+
+  void operator()(ObjPtr<mirror::Object> obj) const REQUIRES(Locks::heap_bitmap_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    mirror::Object* ref = obj.Ptr();
+    DCHECK(cc_->region_space_->GetGen</*kEvacuating=*/ false>(ref) >=
+           RegionGen::kRegionGenTenured);
+    ConcurrentCopying::ComputeLiveBytesAndMarkRefFieldsVisitor</*kHandleInterRegionRefs*/ false,
+                                                               /*kHandleInterGenRefs*/ true>
+        visitor(cc_, static_cast<size_t>(-1));
+    ref->VisitReferences</*kVisitNativeRoots=*/ true, kDefaultVerifyFlags, kWithoutReadBarrier>(
+        visitor, visitor);
+    if (visitor.ContainsInterGenRefs()) {
+      // By the end of this cycle, some of the regions will be tenuring
+      // Remembering cards having such refs is not useful beyond this cycle.
+      UpdateRefsToTargetSpace(visitor.ContainsNonTenuringInterGenRefs());
+      // We dont care about inter-region refs here, only inter-gen refs are interesting to us
+      // Note: We care about tenuring-inter-gen refs as well, we have to scan after thread-flip.
+      inter_region_bitmap_->Set(ref);
+    }
+  }
+
+ private:
+  ConcurrentCopying* const cc_;
+  accounting::ContinuousSpaceBitmap* const inter_region_bitmap_;
 };
 
 /* Invariants for two-phase CC
@@ -1326,12 +1560,13 @@ void ConcurrentCopying::MarkingPhase() {
   }
   accounting::CardTable* const card_table = heap_->GetCardTable();
   Thread* const self = Thread::Current();
+  DCHECK(!IsYoungGC());
   CHECK_EQ(self, thread_running_gc_);
   // Clear live_bytes_ of every non-free region, except the ones that are newly
   // allocated.
-  region_space_->SetAllRegionLiveBytesZero();
+  region_space_->SetAllRegionLiveBytesZero(IsMidTermGC());
   if (kIsDebugBuild) {
-    region_space_->AssertAllRegionLiveBytesZeroOrCleared();
+    region_space_->AssertAllRegionLiveBytesZeroOrCleared(IsMidTermGC());
   }
   // Scan immune spaces
   {
@@ -1354,6 +1589,53 @@ void ConcurrentCopying::MarkingPhase() {
       }
     }
   }
+  if (use_midterm_cc_) {
+    if (IsMidTermGC()) {
+      if (kVerboseMode) {
+        LOG(INFO) << "GC ScanRememberedSets for mid-term GC";
+      }
+      // Scan the tenured/Non-Moving objects which may have references to region space
+      // Remembered Sets are roots for a mid-term GC
+      TimingLogger::ScopedTiming split2("ScanRememberedSets", GetTimings());
+      WriterMutexLock rmu(Thread::Current(), *Locks::heap_bitmap_lock_);
+      for (space::ContinuousSpace* space : GetHeap()->GetContinuousSpaces()) {
+        if (space->IsImageSpace() || space->IsZygoteSpace()) {
+          continue;
+        }
+        accounting::RememberedSet* rem_set = nullptr;
+        if (space == region_space_) {
+          rem_set = region_space_rem_set_;
+        } else {
+          DCHECK_EQ(space, heap_->non_moving_space_);
+          rem_set = non_moving_space_rem_set_;
+        }
+        DCHECK(rem_set != nullptr);
+        RememberedSetMarkingVisitor rem_set_obj_marking_visitor(
+                                                        this,
+                                                        space == region_space_ ?
+                                                          &region_space_inter_region_bitmap_ :
+                                                          &non_moving_space_inter_region_bitmap_);
+        rem_set->UpdateAndMarkReferences(region_space_/*target_space*/,
+                                        this/*collector*/,
+                                        &rem_set_obj_marking_visitor);
+      }
+      if (kVerboseMode) {
+        LOG(INFO) << "GC end of ScanRememberedSets for mid-term GC";
+      }
+    } else if (rebuild_rem_sets_during_mark_phase_) {
+      // We are going to rebuild our Remsets for the new tenure threshold,
+      // Let Region Space know about it and invalidate our RemSets
+      DCHECK_NE(tenure_threshold_, region_space_->GetTenureThreshold());
+      region_space_->SetTenureThreshold(tenure_threshold_);
+      if (kVerboseMode) {
+        LOG(INFO) << "Clear and rebuild rem-sets, new tenure threshold="
+          << (size_t)tenure_threshold_;
+      }
+      DCHECK(use_midterm_cc_);
+      region_space_rem_set_->Empty();
+      non_moving_space_rem_set_->Empty();
+    }
+  }
   // Scan runtime roots
   {
     TimingLogger::ScopedTiming split2("VisitConcurrentRoots", GetTimings());
@@ -1371,14 +1653,48 @@ void ConcurrentCopying::MarkingPhase() {
   // Process mark stack
   ProcessMarkStackForMarkingAndComputeLiveBytes();
 
+  if (use_midterm_cc_ && !IsMidTermGC() && use_dynamic_threshold_) {
+    if (rebuild_rem_sets_during_mark_phase_) {
+      // We have just finished rebuilding rem-sets
+      // This is not a completion as there may still be some references
+      // that we have missed out. They will be captured after thread-flip anyway.
+      rebuild_rem_sets_during_mark_phase_ = false;
+      // In case mid-term GC is disabled, Lets turn on Mid Term GC again
+      heap_->SetIgnoreMidTerm(false);
+    }
+    int new_threshold = region_space_->ComputeTenureThreshold();
+    if (new_threshold == 0) {
+      // The new threshold suggests mid-term GC may not perform better than a Full GC.
+      // So disable mid-term GC
+      heap_->SetIgnoreMidTerm(true);
+    } else if (new_threshold != tenure_threshold_) {
+      // Threshold has changed from last known value
+      // Remember the update, so that we rebuild Remsets in the next Full cycle
+      // We cannot update the Region space yet, as it would invalidate our RemSets,
+      // and leave mid-term GC in a limbo at the end of this cycle.
+      // Any scheduling as per gc plan will fail.
+      // Note: We will notify region space in the next Full-GC after re-building Remsets.
+      tenure_threshold_ = new_threshold;
+      rebuild_rem_sets_during_mark_phase_ = true;
+    } else {
+      // We have computed the same threshold as before => our RemSets are populated appropriately
+      // In case mid-term GC is disabled, Lets turn on Mid Term GC again
+      heap_->SetIgnoreMidTerm(false);
+    }
+  }
   if (kVerboseMode) {
     LOG(INFO) << "GC end of MarkingPhase";
   }
 }
 
-template <bool kNoUnEvac>
+template <ConcurrentCopying::RegionTypeFlag kRegionTypeFlag, bool kCheckForInterGenRefs>
 void ConcurrentCopying::ScanDirtyObject(mirror::Object* obj) {
-  Scan<kNoUnEvac>(obj);
+  if (kCheckForInterGenRefs && use_midterm_cc_ &&
+      region_space_->GetGen</*kEvacuating=*/ true>(obj) == RegionGen::kRegionGenTenuring) {
+    Scan<kRegionTypeFlag, /*kRememberInterGenRefs=*/true>(obj);
+  } else {
+    Scan<kRegionTypeFlag>(obj);
+  }
   // Set the read-barrier state of a reference-type object to gray if its
   // referent is not marked yet. This is to ensure that if GetReferent() is
   // called, it triggers the read-barrier to process the referent before use.
@@ -1454,7 +1770,7 @@ void ConcurrentCopying::CopyingPhase() {
             // corresponding mark-bit and, for region space objects,
             // decrementing the object's size from the corresponding region's
             // live_bytes.
-            if (young_gen_) {
+            if (IsYoungGC()) {
               // Don't push or gray unevac refs.
               if (kIsDebugBuild && space == region_space_) {
                 // We may get unevac large objects.
@@ -1464,30 +1780,48 @@ void ConcurrentCopying::CopyingPhase() {
                   LOG(FATAL) << "Scanning " << obj << " not in unevac space";
                 }
               }
-              ScanDirtyObject</*kNoUnEvac*/ true>(obj);
+              ScanDirtyObject<RegionTypeFlag::kIgnoreUnevacFromSpace>(obj);
             } else if (space != region_space_) {
               DCHECK(space == heap_->non_moving_space_);
               // We need to process un-evac references as they may be unprocessed,
               // if they skipped the marking phase due to heap mutation.
-              ScanDirtyObject</*kNoUnEvac*/ false>(obj);
+              // For Mid-term, we cannot have any unprocessed Tenured objects
+              // Dont bother checking intergen refs as the dirty cards are anyway remembered
+              if (IsMidTermGC()) {
+                ScanDirtyObject<RegionTypeFlag::kIgnoreUnevacFromSpaceTenured>(obj);
+              } else {
+                ScanDirtyObject<RegionTypeFlag::kIgnoreNone>(obj);
+              }
               non_moving_space_inter_region_bitmap_.Clear(obj);
             } else if (region_space_->IsInUnevacFromSpace(obj)) {
-              ScanDirtyObject</*kNoUnEvac*/ false>(obj);
+              if (IsMidTermGC()) {
+                ScanDirtyObject<RegionTypeFlag::kIgnoreUnevacFromSpaceTenured>(obj);
+              } else {
+                ScanDirtyObject<RegionTypeFlag::kIgnoreNone>(obj);
+              }
               region_space_inter_region_bitmap_.Clear(obj);
             }
           },
-          accounting::CardTable::kCardAged);
+          // If we are running a 2-phase GC, only dirty cards are interesting.
+          // Aged cards are already scanned in marking phase.
+          IsYoungGC() ? accounting::CardTable::kCardAged : accounting::CardTable::kCardDirty);
 
-      if (!young_gen_) {
-        auto visitor = [this](mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_) {
+      if (!IsYoungGC()) {
+        if (space == region_space_) {
+          auto visitor = [this](mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_) {
                          // We don't need to process un-evac references as any unprocessed
                          // ones will be taken care of in the card-table scan above.
-                         ScanDirtyObject</*kNoUnEvac*/ true>(obj);
+                         // Remember if there are any intergen refs from tenuring objects
+                         ScanDirtyObject<RegionTypeFlag::kIgnoreUnevacFromSpace, true>(obj);
                        };
-        if (space == region_space_) {
           region_space_->ScanUnevacFromSpace(&region_space_inter_region_bitmap_, visitor);
         } else {
           DCHECK(space == heap_->non_moving_space_);
+          auto visitor = [this](mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_) {
+                         // We don't need to process un-evac references as any unprocessed
+                         // ones will be taken care of in the card-table scan above.
+                         ScanDirtyObject<RegionTypeFlag::kIgnoreUnevacFromSpace>(obj);
+                       };
           non_moving_space_inter_region_bitmap_.VisitMarkedRange(
               reinterpret_cast<uintptr_t>(space->Begin()),
               reinterpret_cast<uintptr_t>(space->End()),
@@ -2163,7 +2497,7 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
         << " rb_state=" << to_ref->GetReadBarrierState()
         << " is_marked=" << IsMarked(to_ref)
         << " type=" << to_ref->PrettyTypeOf()
-        << " young_gen=" << std::boolalpha << young_gen_ << std::noboolalpha
+        << " GcType=" << type_
         << " space=" << heap_->DumpSpaceNameFromAddress(to_ref)
         << " region_type=" << rtype
         // TODO: Temporary; remove this when this is no longer needed (b/116087961).
@@ -2175,12 +2509,18 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
   DCHECK(!region_space_->IsInNewlyAllocatedRegion(to_ref)) << to_ref;
   bool perform_scan = false;
   switch (rtype) {
+    case space::RegionSpace::RegionType::kRegionTypeUnevacFromSpaceTenured:
+      DCHECK(use_midterm_cc_);
+      [[clang::fallthrough]];
     case space::RegionSpace::RegionType::kRegionTypeUnevacFromSpace:
       // Mark the bitmap only in the GC thread here so that we don't need a CAS.
       if (!kUseBakerReadBarrier || !region_space_bitmap_->Set(to_ref)) {
+        // For young gen or mid term we dont expect un-marked UnevacFromSpaceTenured object.
+        DCHECK(rtype == space::RegionSpace::RegionType::kRegionTypeUnevacFromSpace ||
+               (use_midterm_cc_ && IsFullGC()));
         // It may be already marked if we accidentally pushed the same object twice due to the racy
         // bitmap read in MarkUnevacFromSpaceRegion.
-        if (use_generational_cc_ && young_gen_) {
+        if (use_generational_cc_ && IsYoungGC()) {
           CHECK(region_space_->IsLargeObject(to_ref));
           region_space_->ZeroLiveBytesForLargeObject(to_ref);
         }
@@ -2242,10 +2582,29 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
       }
   }
   if (perform_scan) {
-    if (use_generational_cc_ && young_gen_) {
-      Scan<true>(to_ref);
+    if (use_generational_cc_ && IsYoungGC()) {
+      Scan<RegionTypeFlag::kIgnoreUnevacFromSpace>(to_ref);
+    } else if (use_midterm_cc_) {
+      // A newly marked non-moving space or region_space tenured/tenuring object
+      // Can potentially have references to younger regions
+      // TODO: LOS will not have references to region_space objects, try avoiding
+      if (region_space_->GetGen</*kEvacuating=*/ true>(to_ref) >=
+            RegionGen::kRegionGenTenuring) {
+        if (IsMidTermGC()) {
+          Scan<RegionTypeFlag::kIgnoreUnevacFromSpaceTenured,
+               /*kRememberInterGenRefs=*/true>(to_ref);
+        } else {
+          Scan<RegionTypeFlag::kIgnoreNone, /*kRememberInterGenRefs*/true>(to_ref);
+        }
+      } else {
+        if (IsMidTermGC()) {
+          Scan<RegionTypeFlag::kIgnoreUnevacFromSpaceTenured>(to_ref);
+        } else {
+          Scan<RegionTypeFlag::kIgnoreNone>(to_ref);
+        }
+      }
     } else {
-      Scan<false>(to_ref);
+      Scan<RegionTypeFlag::kIgnoreNone>(to_ref);
     }
   }
   if (kUseBakerReadBarrier) {
@@ -2254,7 +2613,7 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
         << " rb_state=" << to_ref->GetReadBarrierState()
         << " is_marked=" << IsMarked(to_ref)
         << " type=" << to_ref->PrettyTypeOf()
-        << " young_gen=" << std::boolalpha << young_gen_ << std::noboolalpha
+        << " GcType=" << type_
         << " space=" << heap_->DumpSpaceNameFromAddress(to_ref)
         << " region_type=" << rtype
         // TODO: Temporary; remove this when this is no longer needed (b/116087961).
@@ -2402,7 +2761,7 @@ void ConcurrentCopying::SweepSystemWeaks(Thread* self) {
 }
 
 void ConcurrentCopying::Sweep(bool swap_bitmaps) {
-  if (use_generational_cc_ && young_gen_) {
+  if (use_generational_cc_ && (IsYoungGC() || IsMidTermGC())) {
     // Only sweep objects on the live stack.
     SweepArray(heap_->GetLiveStack(), /* swap_bitmaps= */ false);
   } else {
@@ -2605,7 +2964,7 @@ void ConcurrentCopying::CaptureRssAtPeak() {
     // card table
     add_gc_range(heap_->GetCardTable()->MemMapBegin(), heap_->GetCardTable()->MemMapSize());
     // inter-region refs
-    if (use_generational_cc_ && !young_gen_) {
+    if (use_generational_cc_ && !IsYoungGC()) {
       // region space
       add_gc_range(region_space_inter_region_bitmap_.Begin(),
                    region_space_inter_region_bitmap_.Size());
@@ -2688,12 +3047,22 @@ void ConcurrentCopying::ReclaimPhase() {
       gc_count_++;
     }
 
+    if (use_midterm_cc_ && IsFullGC()) {
+      // Cards in From-Space of TenuredGen are no loner useful.
+      // Trim the rem-set
+      using RegionType = space::RegionSpace::RegionType;
+      region_space_->VisitRegions<RegionType::kRegionTypeFromSpace>(
+                                          static_cast<uint8_t>(RegionGen::kRegionGenTenured),
+                                          [this] (uint8_t* begin, uint8_t* end) {
+                                            region_space_rem_set_->DropCardRange(begin, end);
+                                          });
+    }
     // Cleared bytes and objects, populated by the call to RegionSpace::ClearFromSpace below.
     uint64_t cleared_bytes;
     uint64_t cleared_objects;
     {
       TimingLogger::ScopedTiming split4("ClearFromSpace", GetTimings());
-      region_space_->ClearFromSpace(&cleared_bytes, &cleared_objects, /*clear_bitmap*/ !young_gen_);
+      region_space_->ClearFromSpace(&cleared_bytes, &cleared_objects, /*clear_bitmap*/ !IsYoungGC(), IsMidTermGC());
       // `cleared_bytes` and `cleared_objects` may be greater than the from space equivalents since
       // RegionSpace::ClearFromSpace may clear empty unevac regions.
       CHECK_GE(cleared_bytes, from_bytes);
@@ -2789,7 +3158,8 @@ void ConcurrentCopying::AssertToSpaceInvariant(mirror::Object* obj,
       if (type == RegionType::kRegionTypeToSpace) {
         // OK.
         return;
-      } else if (type == RegionType::kRegionTypeUnevacFromSpace) {
+      } else if (type == RegionType::kRegionTypeUnevacFromSpace ||
+                 type == RegionType::kRegionTypeUnevacFromSpaceTenured) {
         if (!IsMarkedInUnevacFromSpace(ref)) {
           LOG(FATAL_WITHOUT_ABORT) << "Found unmarked reference in unevac from-space:";
           // Remove memory protection from the region space and log debugging information.
@@ -2895,7 +3265,8 @@ void ConcurrentCopying::AssertToSpaceInvariant(GcRootSource* gc_root_source,
       if (type == RegionType::kRegionTypeToSpace) {
         // OK.
         return;
-      } else if (type == RegionType::kRegionTypeUnevacFromSpace) {
+      } else if (type == RegionType::kRegionTypeUnevacFromSpace ||
+                 type == RegionType::kRegionTypeUnevacFromSpaceTenured) {
         if (!IsMarkedInUnevacFromSpace(ref)) {
           LOG(FATAL_WITHOUT_ABORT) << "Found unmarked reference in unevac from-space:";
           // Remove memory protection from the region space and log debugging information.
@@ -3046,7 +3417,7 @@ void ConcurrentCopying::AssertToSpaceInvariantInNonMovingSpace(mirror::Object* o
         << " ref=" << ref
         << " rb_state=" << ref->GetReadBarrierState()
         << " is_marking=" << std::boolalpha << is_marking_ << std::noboolalpha
-        << " young_gen=" << std::boolalpha << young_gen_ << std::noboolalpha
+        << " GcType=" << type_
         << " done_scanning="
         << std::boolalpha << done_scanning_.load(std::memory_order_acquire) << std::noboolalpha
         << " self=" << Thread::Current();
@@ -3054,25 +3425,37 @@ void ConcurrentCopying::AssertToSpaceInvariantInNonMovingSpace(mirror::Object* o
 }
 
 // Used to scan ref fields of an object.
-template <bool kNoUnEvac>
+template <ConcurrentCopying::RegionTypeFlag kRegionTypeFlag , bool kRememberInterGenRefs>
 class ConcurrentCopying::RefFieldsVisitor {
  public:
   explicit RefFieldsVisitor(ConcurrentCopying* collector, Thread* const thread)
-      : collector_(collector), thread_(thread) {
-    // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-    DCHECK(!kNoUnEvac || collector_->use_generational_cc_);
+      : collector_(collector), thread_(thread),
+        contains_inter_gen_refs_(false) {
+    // Cannot have any other flags except 'kIgnoreNone' when Generational CC collection is disabled.
+    DCHECK((kRegionTypeFlag == RegionTypeFlag::kIgnoreNone) || collector_->use_generational_cc_);
+    DCHECK((kRegionTypeFlag != RegionTypeFlag::kIgnoreUnevacFromSpaceTenured) || collector_->use_midterm_cc_);
+    DCHECK(!kRememberInterGenRefs || collector_->use_midterm_cc_);
   }
 
   void operator()(mirror::Object* obj, MemberOffset offset, bool /* is_static */)
       const ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES_SHARED(Locks::heap_bitmap_lock_) {
-    collector_->Process<kNoUnEvac>(obj, offset);
+    collector_->Process<kRegionTypeFlag>(obj, offset);
+    if (kRememberInterGenRefs && !contains_inter_gen_refs_) {
+      CheckForInterGenRefs(obj->GetFieldObject<mirror::Object,
+                                                    kVerifyNone,
+                                                    kWithoutReadBarrier,
+                                                    false>(offset));
+    }
   }
 
   void operator()(ObjPtr<mirror::Class> klass, ObjPtr<mirror::Reference> ref) const
       REQUIRES_SHARED(Locks::mutator_lock_) ALWAYS_INLINE {
     CHECK(klass->IsTypeOfReferenceClass());
     collector_->DelayReferenceReferent(klass, ref);
+    if (kRememberInterGenRefs && !contains_inter_gen_refs_) {
+      CheckForInterGenRefs(ref->GetReferent<kWithoutReadBarrier>());
+    }
   }
 
   void VisitRootIfNonNull(mirror::CompressedReference<mirror::Object>* root) const
@@ -3087,17 +3470,34 @@ class ConcurrentCopying::RefFieldsVisitor {
       ALWAYS_INLINE
       REQUIRES_SHARED(Locks::mutator_lock_) {
     collector_->MarkRoot</*kGrayImmuneObject=*/false>(thread_, root);
+    if (kRememberInterGenRefs && !contains_inter_gen_refs_) {
+      CheckForInterGenRefs(root->AsMirrorPtr());
+    }
   }
 
+  bool ContainsInterGenRefs() { return contains_inter_gen_refs_; }
+
  private:
+  inline void CheckForInterGenRefs(mirror::Object* obj) const
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (collector_->RegionSpace()->GetGen</*kEvacuating=*/ true>(obj) <
+        RegionGen::kRegionGenTenuring) {
+      contains_inter_gen_refs_ = true;
+    }
+  }
+
   ConcurrentCopying* const collector_;
   Thread* const thread_;
+  mutable bool contains_inter_gen_refs_;
 };
 
-template <bool kNoUnEvac>
+template <ConcurrentCopying::RegionTypeFlag kRegionTypeFlag, bool kRememberInterGenRefs>
 inline void ConcurrentCopying::Scan(mirror::Object* to_ref) {
-  // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-  DCHECK(!kNoUnEvac || use_generational_cc_);
+  // Cannot have any other flags except 'kIgnoreNone' when Generational CC collection is disabled.
+  DCHECK((kRegionTypeFlag == RegionTypeFlag::kIgnoreNone) || use_generational_cc_);
+  DCHECK((kRegionTypeFlag != RegionTypeFlag::kIgnoreUnevacFromSpaceTenured) || use_midterm_cc_);
+  DCHECK(use_midterm_cc_ || !kRememberInterGenRefs);
+
   if (kDisallowReadBarrierDuringScan && !Runtime::Current()->IsActiveTransaction()) {
     // Avoid all read barriers during visit references to help performance.
     // Don't do this in transaction mode because we may read the old value of an field which may
@@ -3106,23 +3506,32 @@ inline void ConcurrentCopying::Scan(mirror::Object* to_ref) {
   }
   DCHECK(!region_space_->IsInFromSpace(to_ref));
   DCHECK_EQ(Thread::Current(), thread_running_gc_);
-  RefFieldsVisitor<kNoUnEvac> visitor(this, thread_running_gc_);
+  DCHECK(!kRememberInterGenRefs ||
+        region_space_->GetGen</*kEvacuating=*/ true>(to_ref) >= RegionGen::kRegionGenTenuring);
+  RefFieldsVisitor<kRegionTypeFlag,
+                   kRememberInterGenRefs> visitor(this, thread_running_gc_);
   // Disable the read barrier for a performance reason.
   to_ref->VisitReferences</*kVisitNativeRoots=*/true, kDefaultVerifyFlags, kWithoutReadBarrier>(
       visitor, visitor);
+  if (kRememberInterGenRefs && visitor.ContainsInterGenRefs()) {
+    // Case 2/3: Inter-gen references due to evacuation/Unevac promotion by GC
+    RememberCard(to_ref);
+  }
   if (kDisallowReadBarrierDuringScan && !Runtime::Current()->IsActiveTransaction()) {
     thread_running_gc_->ModifyDebugDisallowReadBarrier(-1);
   }
 }
 
-template <bool kNoUnEvac>
+template <ConcurrentCopying::RegionTypeFlag kRegionTypeFlag>
 inline void ConcurrentCopying::Process(mirror::Object* obj, MemberOffset offset) {
-  // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-  DCHECK(!kNoUnEvac || use_generational_cc_);
+  // Cannot have any other flags except 'kIgnoreNone' when Generational CC collection is disabled.
+  DCHECK((kRegionTypeFlag == RegionTypeFlag::kIgnoreNone) || use_generational_cc_);
+  DCHECK((kRegionTypeFlag != RegionTypeFlag::kIgnoreUnevacFromSpaceTenured) || use_midterm_cc_);
   DCHECK_EQ(Thread::Current(), thread_running_gc_);
   mirror::Object* ref = obj->GetFieldObject<
       mirror::Object, kVerifyNone, kWithoutReadBarrier, false>(offset);
-  mirror::Object* to_ref = Mark</*kGrayImmuneObject=*/false, kNoUnEvac, /*kFromGCThread=*/true>(
+  mirror::Object* to_ref = Mark</*kGrayImmuneObject=*/false, kRegionTypeFlag,
+                                /*kFromGCThread=*/true>(
       thread_running_gc_,
       ref,
       /*holder=*/ obj,
@@ -3279,16 +3688,22 @@ void ConcurrentCopying::FillWithDummyObject(Thread* const self,
 }
 
 // Reuse the memory blocks that were copy of objects that were lost in race.
-mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, size_t alloc_size) {
+mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, size_t alloc_size,
+                                                          uint8_t age) {
   // Try to reuse the blocks that were unused due to CAS failures.
   CHECK_ALIGNED(alloc_size, space::RegionSpace::kAlignment);
   size_t min_object_size = RoundUp(sizeof(mirror::Object), space::RegionSpace::kAlignment);
   size_t byte_size;
   uint8_t* addr;
+  CHECK(age < kAgeSkipBlockMapSize);
+  std::multimap<size_t, uint8_t*>* skipped_blocks_map = &age_skipped_blocks_map_[age];
+  if (skipped_blocks_map->empty()) {
+    return nullptr;
+  }
   {
     MutexLock mu(self, skipped_blocks_lock_);
-    auto it = skipped_blocks_map_.lower_bound(alloc_size);
-    if (it == skipped_blocks_map_.end()) {
+    auto it = skipped_blocks_map->lower_bound(alloc_size);
+    if (it == skipped_blocks_map->end()) {
       // Not found.
       return nullptr;
     }
@@ -3296,8 +3711,8 @@ mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, si
     CHECK_GE(byte_size, alloc_size);
     if (byte_size > alloc_size && byte_size - alloc_size < min_object_size) {
       // If remainder would be too small for a dummy object, retry with a larger request size.
-      it = skipped_blocks_map_.lower_bound(alloc_size + min_object_size);
-      if (it == skipped_blocks_map_.end()) {
+      it = skipped_blocks_map->lower_bound(alloc_size + min_object_size);
+      if (it == skipped_blocks_map->end()) {
         // Not found.
         return nullptr;
       }
@@ -3306,7 +3721,7 @@ mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, si
           << "byte_size=" << byte_size << " it->first=" << it->first << " alloc_size=" << alloc_size;
     }
     // Found a block.
-    CHECK(it != skipped_blocks_map_.end());
+    CHECK(it != skipped_blocks_map->end());
     byte_size = it->first;
     addr = it->second;
     CHECK_GE(byte_size, alloc_size);
@@ -3315,7 +3730,7 @@ mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, si
     if (kVerboseMode) {
       LOG(INFO) << "Reusing skipped bytes : " << reinterpret_cast<void*>(addr) << ", " << byte_size;
     }
-    skipped_blocks_map_.erase(it);
+    skipped_blocks_map->erase(it);
   }
   memset(addr, 0, byte_size);
   if (byte_size > alloc_size) {
@@ -3331,7 +3746,7 @@ mirror::Object* ConcurrentCopying::AllocateInSkippedBlock(Thread* const self, si
     CHECK(region_space_->IsInToSpace(reinterpret_cast<mirror::Object*>(addr + alloc_size)));
     {
       MutexLock mu(self, skipped_blocks_lock_);
-      skipped_blocks_map_.insert(std::make_pair(byte_size - alloc_size, addr + alloc_size));
+      skipped_blocks_map->insert(std::make_pair(byte_size - alloc_size, addr + alloc_size));
     }
   }
   return reinterpret_cast<mirror::Object*>(addr);
@@ -3357,19 +3772,20 @@ mirror::Object* ConcurrentCopying::Copy(Thread* const self,
   size_t region_space_alloc_size = (obj_size <= space::RegionSpace::kRegionSize)
       ? RoundUp(obj_size, space::RegionSpace::kAlignment)
       : RoundUp(obj_size, space::RegionSpace::kRegionSize);
+  uint8_t age = region_space_->GetAgeForForwarding(from_ref);
   size_t region_space_bytes_allocated = 0U;
   size_t non_moving_space_bytes_allocated = 0U;
   size_t bytes_allocated = 0U;
   size_t dummy;
   bool fall_back_to_non_moving = false;
   mirror::Object* to_ref = region_space_->AllocNonvirtual</*kForEvac=*/ true>(
-      region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
+      region_space_alloc_size, age, &region_space_bytes_allocated, nullptr, &dummy);
   bytes_allocated = region_space_bytes_allocated;
   if (LIKELY(to_ref != nullptr)) {
     DCHECK_EQ(region_space_alloc_size, region_space_bytes_allocated);
   } else {
     // Failed to allocate in the region space. Try the skipped blocks.
-    to_ref = AllocateInSkippedBlock(self, region_space_alloc_size);
+    to_ref = AllocateInSkippedBlock(self, region_space_alloc_size, age);
     if (to_ref != nullptr) {
       // Succeeded to allocate in a skipped block.
       if (heap_->use_tlab_) {
@@ -3437,8 +3853,8 @@ mirror::Object* ConcurrentCopying::Copy(Thread* const self,
           to_space_bytes_skipped_.fetch_add(bytes_allocated, std::memory_order_relaxed);
           to_space_objects_skipped_.fetch_add(1, std::memory_order_relaxed);
           MutexLock mu(self, skipped_blocks_lock_);
-          skipped_blocks_map_.insert(std::make_pair(bytes_allocated,
-                                                    reinterpret_cast<uint8_t*>(to_ref)));
+          age_skipped_blocks_map_[age].insert(std::make_pair(bytes_allocated,
+                                          reinterpret_cast<uint8_t*>(to_ref)));
         }
       } else {
         DCHECK(heap_->non_moving_space_->HasAddress(to_ref));
@@ -3492,7 +3908,7 @@ mirror::Object* ConcurrentCopying::Copy(Thread* const self,
       } else {
         DCHECK(heap_->non_moving_space_->HasAddress(to_ref));
         DCHECK_EQ(bytes_allocated, non_moving_space_bytes_allocated);
-        if (!use_generational_cc_ || !young_gen_) {
+        if (!use_generational_cc_ || IsFullGC()) {
           // Mark it in the live bitmap.
           CHECK(!heap_->non_moving_space_->GetLiveBitmap()->AtomicTestAndSet(to_ref));
         }
@@ -3528,7 +3944,8 @@ mirror::Object* ConcurrentCopying::IsMarked(mirror::Object* from_ref) {
     DCHECK(to_ref == nullptr || region_space_->IsInToSpace(to_ref) ||
            heap_->non_moving_space_->HasAddress(to_ref))
         << "from_ref=" << from_ref << " to_ref=" << to_ref;
-  } else if (rtype == space::RegionSpace::RegionType::kRegionTypeUnevacFromSpace) {
+  } else if (rtype == space::RegionSpace::RegionType::kRegionTypeUnevacFromSpace ||
+             rtype == space::RegionSpace::RegionType::kRegionTypeUnevacFromSpaceTenured) {
     if (IsMarkedInUnevacFromSpace(from_ref)) {
       to_ref = from_ref;
     } else {
@@ -3662,13 +4079,15 @@ void ConcurrentCopying::FinishPhase() {
     TimingLogger::ScopedTiming split("ClearRegionSpaceCards", GetTimings());
     // We do not currently use the region space cards at all, madvise them away to save ram.
     heap_->GetCardTable()->ClearCardRange(region_space_->Begin(), region_space_->Limit());
-  } else if (use_generational_cc_ && !young_gen_) {
+  } else if (use_generational_cc_ && !IsYoungGC()) {
     region_space_inter_region_bitmap_.Clear();
     non_moving_space_inter_region_bitmap_.Clear();
   }
   {
     MutexLock mu(self, skipped_blocks_lock_);
-    skipped_blocks_map_.clear();
+    for (size_t i = 0; i < kAgeSkipBlockMapSize; ++i) {
+      age_skipped_blocks_map_[i].clear();
+    }
   }
   {
     ReaderMutexLock mu(self, *Locks::mutator_lock_);
@@ -3770,8 +4189,8 @@ mirror::Object* ConcurrentCopying::MarkFromReadBarrierWithMeasurements(Thread* c
   ScopedTrace tr(__FUNCTION__);
   const uint64_t start_time = measure_read_barrier_slow_path_ ? NanoTime() : 0u;
   mirror::Object* ret =
-      Mark</*kGrayImmuneObject=*/true, /*kNoUnEvac=*/false, /*kFromGCThread=*/false>(self,
-                                                                                     from_ref);
+      Mark</*kGrayImmuneObject=*/true, RegionTypeFlag::kIgnoreNone,
+           /*kFromGCThread=*/false>(self, from_ref);
   if (measure_read_barrier_slow_path_) {
     rb_slow_path_ns_.fetch_add(NanoTime() - start_time, std::memory_order_relaxed);
   }
@@ -3794,13 +4213,13 @@ void ConcurrentCopying::DumpPerformanceInfo(std::ostream& os) {
     os << "GC slow path count " << rb_slow_path_count_gc_total_ << "\n";
   }
 
-  os << "Average " << (young_gen_ ? "minor" : "major") << " GC reclaim bytes ratio "
+  os << "Average " << (IsYoungGC() ? "minor" : "major") << " GC reclaim bytes ratio "
      << (reclaimed_bytes_ratio_sum_ / num_gc_cycles) << " over " << num_gc_cycles
      << " GC cycles\n";
 
-  os << "Average " << (young_gen_ ? "minor" : "major") << " GC copied live bytes ratio "
+  os << "Average " << (IsYoungGC() ? "minor" : "major") << " GC copied live bytes ratio "
      << (copied_live_bytes_ratio_sum_ / gc_count_) << " over " << gc_count_
-     << " " << (young_gen_ ? "minor" : "major") << " GCs\n";
+     << " " << (IsYoungGC() ? "minor" : "major") << " GCs\n";
 
   os << "Cumulative bytes moved "
      << cumulative_bytes_moved_.load(std::memory_order_relaxed) << "\n";
@@ -3813,8 +4232,48 @@ void ConcurrentCopying::DumpPerformanceInfo(std::ostream& os) {
      << ") / " << region_space_->GetNumRegions() / 2 << " ("
      << PrettySize(region_space_->GetNumRegions() * space::RegionSpace::kRegionSize / 2)
      << ")\n";
-  if (!young_gen_) {
+  if (!IsYoungGC()) {
     os << "Total madvise time " << PrettyDuration(region_space_->GetMadviseTime()) << "\n";
+  }
+}
+
+void ConcurrentCopying::RememberCard(mirror::Object* ref) {
+  DCHECK(use_generational_cc_ && use_midterm_cc_);
+  uint8_t* card = GetHeap()->GetCardTable()->CardFromAddr(ref);
+  if (region_space_->HasAddress(ref)) {
+    region_space_rem_set_->AddDirtyCard(card);
+  } else {
+    DCHECK(heap_->GetNonMovingSpace()->HasAddress(ref));
+    non_moving_space_rem_set_->AddDirtyCard(card);
+  }
+}
+
+void ConcurrentCopying::ClearDirtyCards(space::ContinuousSpace* space) {
+  accounting::CardTable* const card_table = heap_->GetCardTable();
+  DCHECK(use_generational_cc_ && use_midterm_cc_);
+  if (space == region_space_) {
+    DCHECK(region_space_rem_set_ != nullptr);
+    // Clear only the cards belonging to Tenured regions
+    card_table->ModifyCardsAtomic(
+        region_space_->Begin(),
+        region_space_->End(),
+        AgeCardVisitor(),
+        [this, card_table] (uint8_t* card,
+                            uint8_t expected_value,
+                            uint8_t new_value ATTRIBUTE_UNUSED) {
+          mirror::Object* obj = reinterpret_cast<mirror::Object*>(card_table->AddrFromCard(card));
+          if (expected_value == accounting::CardTable::kCardDirty &&
+              (region_space_->GetGen</*kEvacuating=*/ false>(obj) ==
+                RegionGen::kRegionGenTenured)) {
+            // Case-1: Inter-gen references because of Heap mutation
+            region_space_rem_set_->AddDirtyCard(card);
+          }
+        });
+  } else {
+    DCHECK(space == heap_->non_moving_space_);
+    DCHECK(non_moving_space_rem_set_ != nullptr);
+    // Case-1: Inter-gen references because of Heap mutation
+    non_moving_space_rem_set_->ClearCards();
   }
 }
 

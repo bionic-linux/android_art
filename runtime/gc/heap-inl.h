@@ -379,6 +379,7 @@ inline mirror::Object* Heap::TryToAllocate(Thread* self,
       DCHECK(region_space_ != nullptr);
       alloc_size = RoundUp(alloc_size, space::RegionSpace::kAlignment);
       ret = region_space_->AllocNonvirtual<false>(alloc_size,
+                                                  space::RegionSpace::kRegionAgeNewlyAllocated,
                                                   bytes_allocated,
                                                   usable_size,
                                                   bytes_tl_bulk_allocated);

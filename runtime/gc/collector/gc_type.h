@@ -30,6 +30,9 @@ enum GcType {
   kGcTypeNone,
   // Sticky mark bits GC that attempts to only free objects allocated since the last GC.
   kGcTypeSticky,
+  // Mid Term GC that marks and frees objects living for a certain collections as
+  // defined by tenure threshold.
+  kGcTypeMidTerm,
   // Partial GC that marks the application heap but not the Zygote.
   kGcTypePartial,
   // Full GC that marks and frees in both the application and Zygote heap.

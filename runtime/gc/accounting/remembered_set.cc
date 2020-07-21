@@ -110,40 +110,40 @@ class RememberedSetReferenceVisitor {
   bool* const contains_reference_to_target_space_;
 };
 
-class RememberedSetObjectVisitor {
+class RememberedSetDefaultObjectVisitor : public RememberedSetObjectVisitor {
  public:
-  RememberedSetObjectVisitor(space::ContinuousSpace* target_space,
-                             bool* const contains_reference_to_target_space,
-                             collector::GarbageCollector* collector)
-      : collector_(collector), target_space_(target_space),
-        contains_reference_to_target_space_(contains_reference_to_target_space) {}
+  RememberedSetDefaultObjectVisitor() {}
+  virtual ~RememberedSetDefaultObjectVisitor() {}
 
-  void operator()(ObjPtr<mirror::Object> obj) const REQUIRES(Locks::heap_bitmap_lock_)
+  inline void operator()(ObjPtr<mirror::Object> obj) const
+      REQUIRES(Locks::heap_bitmap_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    RememberedSetReferenceVisitor visitor(target_space_, contains_reference_to_target_space_,
+    bool contains_ref_to_target_space = false;
+    RememberedSetReferenceVisitor visitor(target_space_, &contains_ref_to_target_space,
                                           collector_);
     obj->VisitReferences(visitor, visitor);
+    UpdateRefsToTargetSpace(contains_ref_to_target_space);
   }
-
- private:
-  collector::GarbageCollector* const collector_;
-  space::ContinuousSpace* const target_space_;
-  bool* const contains_reference_to_target_space_;
 };
 
 void RememberedSet::UpdateAndMarkReferences(space::ContinuousSpace* target_space,
-                                            collector::GarbageCollector* collector) {
+                                            collector::GarbageCollector* collector,
+                                            RememberedSetObjectVisitor* obj_visitor) {
+  RememberedSetDefaultObjectVisitor rem_set_default_visitor;
   CardTable* card_table = heap_->GetCardTable();
   bool contains_reference_to_target_space = false;
-  RememberedSetObjectVisitor obj_visitor(target_space, &contains_reference_to_target_space,
-                                         collector);
+  if (obj_visitor == nullptr) {
+    obj_visitor = &rem_set_default_visitor;
+  }
+  obj_visitor->Init(target_space, &contains_reference_to_target_space,
+                    collector);
   ContinuousSpaceBitmap* bitmap = space_->GetLiveBitmap();
   CardSet remove_card_set;
   for (uint8_t* const card_addr : dirty_cards_) {
     contains_reference_to_target_space = false;
     uintptr_t start = reinterpret_cast<uintptr_t>(card_table->AddrFromCard(card_addr));
     DCHECK(space_->HasAddress(reinterpret_cast<mirror::Object*>(start)));
-    bitmap->VisitMarkedRange(start, start + CardTable::kCardSize, obj_visitor);
+    bitmap->VisitMarkedRange(start, start + CardTable::kCardSize, *obj_visitor);
     if (!contains_reference_to_target_space) {
       // It was in the dirty card set, but it didn't actually contain
       // a reference to the target space. So, remove it from the dirty
@@ -180,6 +180,41 @@ void RememberedSet::AssertAllDirtyCardsAreWithinSpace() const {
     DCHECK_LE(space_->Begin(), start);
     DCHECK_LE(end, space_->Limit());
   }
+}
+
+void RememberedSet::DropCardRange(uint8_t* start, uint8_t* end) {
+  CardTable* card_table = heap_->GetCardTable();
+  CardSet remove_card_set;
+  for (uint8_t* const card_addr : dirty_cards_) {
+    auto obj = reinterpret_cast<mirror::Object*>(card_table->AddrFromCard(card_addr));
+    if (obj >= reinterpret_cast<mirror::Object*>(start) &&
+        obj < reinterpret_cast<mirror::Object*>(end)) {
+      remove_card_set.insert(card_addr);
+    }
+  }
+
+  for (uint8_t* const card_addr : remove_card_set) {
+    DCHECK(dirty_cards_.find(card_addr) != dirty_cards_.end());
+    dirty_cards_.erase(card_addr);
+  }
+  remove_card_set.clear();
+}
+
+void RememberedSet::AddDirtyCard(uint8_t* card) {
+  if (dirty_cards_.find(card) == dirty_cards_.end()) {
+    mirror::Object* start = reinterpret_cast<mirror::Object*>(
+        heap_->GetCardTable()->AddrFromCard(card));
+    DCHECK(space_->HasAddress(start));
+    dirty_cards_.insert(card);
+  }
+}
+
+bool RememberedSet::ContainsCard(uint8_t* card) {
+  return (dirty_cards_.find(card) != dirty_cards_.end());
+}
+
+void RememberedSet::Empty() {
+  dirty_cards_.clear();
 }
 
 }  // namespace accounting

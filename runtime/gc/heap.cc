@@ -114,6 +114,10 @@ static constexpr size_t kMaxConcurrentRemainingBytes = 512 * KB;
 static double GetStickyGcThroughputAdjustment(bool use_generational_cc) {
   return use_generational_cc ? 0.5 : 1.0;
 }
+static constexpr size_t kRemainingFullCollectorBeforeMidTerm = 2;
+static double GetMidTermGcThroughputAdjustment() {
+  return 0.75;
+}
 // Whether or not we compact the zygote in PreZygoteFork.
 static constexpr bool kCompactZygote = kMovingCollector;
 // How many reserve entries are at the end of the allocation stack, these are only needed if the
@@ -241,6 +245,8 @@ Heap::Heap(size_t initial_size,
            bool measure_gc_performance,
            bool use_homogeneous_space_compaction_for_oom,
            bool use_generational_cc,
+           bool use_midterm_cc,
+           size_t tenure_threshold,
            uint64_t min_interval_homogeneous_space_compaction_by_oom,
            bool dump_region_info_before_gc,
            bool dump_region_info_after_gc,
@@ -275,6 +281,9 @@ Heap::Heap(size_t initial_size,
       thread_running_gc_(nullptr),
       last_gc_type_(collector::kGcTypeNone),
       next_gc_type_(collector::kGcTypePartial),
+      preferred_non_sticky_gc_type_(collector::kGcTypeNone),
+      preferred_non_sticky_remaining_count_(kRemainingFullCollectorBeforeMidTerm),
+      ignore_mid_term_(false),
       capacity_(capacity),
       growth_limit_(growth_limit),
       target_footprint_(initial_size),
@@ -324,6 +333,7 @@ Heap::Heap(size_t initial_size,
       semi_space_collector_(nullptr),
       active_concurrent_copying_collector_(nullptr),
       young_concurrent_copying_collector_(nullptr),
+      midterm_concurrent_copying_collector_(nullptr),
       concurrent_copying_collector_(nullptr),
       is_running_on_memory_tool_(Runtime::Current()->IsRunningOnMemoryTool()),
       use_tlab_(use_tlab),
@@ -335,6 +345,7 @@ Heap::Heap(size_t initial_size,
       pending_heap_trim_(nullptr),
       use_homogeneous_space_compaction_for_oom_(use_homogeneous_space_compaction_for_oom),
       use_generational_cc_(use_generational_cc),
+      use_midterm_cc_(use_midterm_cc),
       running_collection_is_blocking_(false),
       blocking_gc_count_(0U),
       blocking_gc_time_(0U),
@@ -555,8 +566,9 @@ Heap::Heap(size_t initial_size,
         space::RegionSpace::CreateMemMap(kRegionSpaceName, capacity_ * 2, request_begin);
     CHECK(region_space_mem_map.IsValid()) << "No region space mem map";
     region_space_ = space::RegionSpace::Create(
-        kRegionSpaceName, std::move(region_space_mem_map), use_generational_cc_);
+        kRegionSpaceName, std::move(region_space_mem_map), use_generational_cc_, use_midterm_cc_);
     AddSpace(region_space_);
+    region_space_->SetTenureThreshold(tenure_threshold);
   } else if (IsMovingGc(foreground_collector_type_)) {
     // Create bump pointer spaces.
     // We only to create the bump pointer if the foreground collector is a compacting GC.
@@ -695,18 +707,36 @@ Heap::Heap(size_t initial_size,
       garbage_collectors_.push_back(semi_space_collector_);
     }
     if (MayUseCollector(kCollectorTypeCC)) {
+      // If tenure threshold is default, we would compute it dynamically,
+      // else, we would use the set value for the run.
+      bool dyn_threshold = (use_midterm_cc_ &&
+                            tenure_threshold == space::RegionSpace::kRegionMaxAgeTenureThreshold);
       concurrent_copying_collector_ = new collector::ConcurrentCopying(this,
-                                                                       /*young_gen=*/false,
+                                                                       collector::kGcTypePartial,
                                                                        use_generational_cc_,
+                                                                       use_midterm_cc_,
+                                                                       dyn_threshold,
                                                                        "",
                                                                        measure_gc_performance);
       if (use_generational_cc_) {
         young_concurrent_copying_collector_ = new collector::ConcurrentCopying(
             this,
-            /*young_gen=*/true,
+            collector::kGcTypeSticky,
             use_generational_cc_,
+            use_midterm_cc_,
+            dyn_threshold,
             "young",
             measure_gc_performance);
+        if (use_midterm_cc_) {
+          midterm_concurrent_copying_collector_ = new collector::ConcurrentCopying(
+            this,
+            collector::kGcTypeMidTerm,
+            use_generational_cc_,
+            use_midterm_cc_,
+            dyn_threshold,
+            "mid-term",
+            measure_gc_performance);
+        }
       }
       active_concurrent_copying_collector_ = concurrent_copying_collector_;
       DCHECK(region_space_ != nullptr);
@@ -716,10 +746,21 @@ Heap::Heap(size_t initial_size,
         // At this point, non-moving space should be created.
         DCHECK(non_moving_space_ != nullptr);
         concurrent_copying_collector_->CreateInterRegionRefBitmaps();
+        if (use_midterm_cc_) {
+          midterm_concurrent_copying_collector_->SetRegionSpace(region_space_);
+          midterm_concurrent_copying_collector_->CreateInterRegionRefBitmaps();
+          accounting::RememberedSet* region_space_rem_set =
+              new accounting::RememberedSet("Region space remembered set", this, region_space_);
+          CHECK(region_space_rem_set != nullptr) << "Failed to create region space remembered set";
+          AddRememberedSet(region_space_rem_set);
+        }
       }
       garbage_collectors_.push_back(concurrent_copying_collector_);
       if (use_generational_cc_) {
         garbage_collectors_.push_back(young_concurrent_copying_collector_);
+        if (use_midterm_cc_) {
+          garbage_collectors_.push_back(midterm_concurrent_copying_collector_);
+        }
       }
     }
   }
@@ -2138,6 +2179,9 @@ void Heap::ChangeCollector(CollectorType collector_type) {
       case kCollectorTypeCC: {
         if (use_generational_cc_) {
           gc_plan_.push_back(collector::kGcTypeSticky);
+          if (use_midterm_cc_) {
+            gc_plan_.push_back(collector::kGcTypeMidTerm);
+          }
         }
         gc_plan_.push_back(collector::kGcTypeFull);
         if (use_tlab_) {
@@ -2639,8 +2683,13 @@ collector::GcType Heap::CollectGarbageInternal(collector::GcType gc_type,
         if (use_generational_cc_) {
           // TODO: Other threads must do the flip checkpoint before they start poking at
           // active_concurrent_copying_collector_. So we should not concurrency here.
-          active_concurrent_copying_collector_ = (gc_type == collector::kGcTypeSticky) ?
-              young_concurrent_copying_collector_ : concurrent_copying_collector_;
+          if (gc_type == collector::kGcTypeSticky) {
+            active_concurrent_copying_collector_ = young_concurrent_copying_collector_;
+          } else if (use_midterm_cc_ && gc_type == collector::kGcTypeMidTerm) {
+            active_concurrent_copying_collector_ = midterm_concurrent_copying_collector_;
+          } else {
+            active_concurrent_copying_collector_ = concurrent_copying_collector_;
+          }
           DCHECK(active_concurrent_copying_collector_->RegionSpace() == region_space_);
         }
         collector = active_concurrent_copying_collector_;
@@ -3523,6 +3572,45 @@ void Heap::GrowForUtilization(collector::GarbageCollector* collector_ran,
   // Use the multiplier to grow more for foreground.
   const double multiplier = HeapGrowthMultiplier();
   if (gc_type != collector::kGcTypeSticky) {
+    if (use_midterm_cc_) {
+      // We want to determine if the GC we ran now, is doing a good job and
+      // choose a preference for non_sticky_type
+      collector::GarbageCollector* mid_term_collector =
+        FindCollectorByGcType(collector::kGcTypeMidTerm);
+      // remove preference, to get default non sticky type collector
+      preferred_non_sticky_gc_type_ = collector::kGcTypeNone;
+      double midterm_gc_throughput_adjustment = GetMidTermGcThroughputAdjustment();
+      if (mid_term_collector != nullptr && !ignore_mid_term_) {
+        // Find what the next non sticky collector will be.
+        collector::GarbageCollector* non_sticky_collector =
+            FindCollectorByGcType(NonStickyGcType());
+        if (use_generational_cc_) {
+          if (non_sticky_collector == nullptr) {
+            non_sticky_collector = FindCollectorByGcType(collector::kGcTypePartial);
+          }
+          CHECK(non_sticky_collector != nullptr);
+        }
+        if (gc_type == collector::kGcTypeMidTerm) {
+          // If we did a good job, restore the preference
+          if (non_sticky_collector->NumberOfIterations() >= kRemainingFullCollectorBeforeMidTerm &&
+              current_gc_iteration_.GetEstimatedThroughput() * midterm_gc_throughput_adjustment  >=
+              non_sticky_collector->GetEstimatedMeanThroughput()) {
+            preferred_non_sticky_gc_type_ = collector::kGcTypeMidTerm;
+          } else {
+            preferred_non_sticky_remaining_count_ = kRemainingFullCollectorBeforeMidTerm;
+          }
+        } else {
+          // Set the preference if mid_term has been doing a good job or if its time to try it out
+          if (--preferred_non_sticky_remaining_count_ == 0 ||
+              (mid_term_collector->NumberOfIterations() > 0 &&
+              non_sticky_collector->NumberOfIterations() >= kRemainingFullCollectorBeforeMidTerm &&
+              mid_term_collector->GetEstimatedMeanThroughput() * midterm_gc_throughput_adjustment >
+              non_sticky_collector->GetEstimatedMeanThroughput())) {
+            preferred_non_sticky_gc_type_ = collector::kGcTypeMidTerm;
+          }
+        }
+      }
+    }
     // Grow the heap for non sticky GC.
     uint64_t delta = bytes_allocated * (1.0 / GetTargetHeapUtilization() - 1.0);
     DCHECK_LE(delta, std::numeric_limits<size_t>::max()) << "bytes_allocated=" << bytes_allocated
@@ -3555,6 +3643,10 @@ void Heap::GrowForUtilization(collector::GarbageCollector* collector_ran,
         non_sticky_collector->NumberOfIterations() > 0 &&
         bytes_allocated <= (IsGcConcurrent() ? concurrent_start_bytes_ : target_footprint)) {
       next_gc_type_ = collector::kGcTypeSticky;
+      if (use_midterm_cc_ && !ignore_mid_term_) {
+        // Sticky GC seems to be doing a good job, mid-term might do a good job as well.
+        preferred_non_sticky_gc_type_ = collector::kGcTypeMidTerm;
+      }
     } else {
       next_gc_type_ = non_sticky_gc_type;
     }
@@ -4213,6 +4305,7 @@ mirror::Object* Heap::AllocWithNewTLAB(Thread* self,
         if (!region_space_->AllocNewTlab(self, new_tlab_size, bytes_tl_bulk_allocated)) {
           // Failed to allocate a tlab. Try non-tlab.
           return region_space_->AllocNonvirtual<false>(alloc_size,
+                                                       space::RegionSpace::kRegionAgeNewlyAllocated,
                                                        bytes_allocated,
                                                        usable_size,
                                                        bytes_tl_bulk_allocated);
@@ -4222,6 +4315,7 @@ mirror::Object* Heap::AllocWithNewTLAB(Thread* self,
         // Check OOME for a non-tlab allocation.
         if (!IsOutOfMemoryOnAllocation(allocator_type, alloc_size, grow)) {
           return region_space_->AllocNonvirtual<false>(alloc_size,
+                                                       space::RegionSpace::kRegionAgeNewlyAllocated,
                                                        bytes_allocated,
                                                        usable_size,
                                                        bytes_tl_bulk_allocated);
@@ -4233,6 +4327,7 @@ mirror::Object* Heap::AllocWithNewTLAB(Thread* self,
       // Large. Check OOME.
       if (LIKELY(!IsOutOfMemoryOnAllocation(allocator_type, alloc_size, grow))) {
         return region_space_->AllocNonvirtual<false>(alloc_size,
+                                                     space::RegionSpace::kRegionAgeNewlyAllocated,
                                                      bytes_allocated,
                                                      usable_size,
                                                      bytes_tl_bulk_allocated);
