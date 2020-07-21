@@ -1,0 +1,312 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "8cbbfacd_dccebec7",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 811,
+                "startChar": 10,
+                "endLine": 811,
+                "endChar": 16
+              },
+              "replacement": " Don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "fd2e585f_d0116a8d",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" Dont \" -- should it be \" Don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 811,
+        "startChar": 10,
+        "endLine": 811,
+        "endChar": 16
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "61c0dec6_b2280591",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 1227,
+                "startChar": 8,
+                "endLine": 1227,
+                "endChar": 14
+              },
+              "replacement": " Don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2685109a_d957cc9e",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" Dont \" -- should it be \" Don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1227,
+        "startChar": 8,
+        "endLine": 1227,
+        "endChar": 14
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "71fb519a_c7ffcced",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 1281,
+                "startChar": 7,
+                "endLine": 1281,
+                "endChar": 13
+              },
+              "replacement": " don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a1a4adbe_aa9925e2",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" dont \" -- should it be \" don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1281,
+        "startChar": 7,
+        "endLine": 1281,
+        "endChar": 13
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "cfb125df_e28f585a",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 1484,
+                "startChar": 11,
+                "endLine": 1484,
+                "endChar": 17
+              },
+              "replacement": " don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c92cdbbc_965a70df",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" dont \" -- should it be \" don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1484,
+        "startChar": 11,
+        "endLine": 1484,
+        "endChar": 17
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "02cd3fd6_162f2b54",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 1789,
+                "startChar": 16,
+                "endLine": 1789,
+                "endChar": 22
+              },
+              "replacement": " Don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "245c5e6d_ee0da708",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" Dont \" -- should it be \" Don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1789,
+        "startChar": 16,
+        "endLine": 1789,
+        "endChar": 22
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "0f5dea53_fa0aca41",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.cc",
+              "range": {
+                "startLine": 2518,
+                "startChar": 39,
+                "endLine": 2518,
+                "endChar": 45
+              },
+              "replacement": " don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0c345f2a_fba9c81d",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2518,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" dont \" -- should it be \" don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 2518,
+        "startChar": 39,
+        "endLine": 2518,
+        "endChar": 45
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003954322",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1368198?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "d778f5e8_d15104f1",
+          "description": "Change to \"runtime/gc/collector/concurrent_copying.h\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/concurrent_copying.h",
+              "range": {
+                "startLine": 469,
+                "startChar": 21,
+                "endLine": 469,
+                "endChar": 29
+              },
+              "replacement": " doesn\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b3370dcf_86551bb7",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-21T07:08:53Z",
+      "side": 1,
+      "message": "Common typo found: \" doesnt \" -- should it be \" doesn\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 469,
+        "startChar": 21,
+        "endLine": 469,
+        "endChar": 29
+      },
+      "revId": "f8fab48291a1e58cf1fc482c5fc75a34a9c49610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
