@@ -28,10 +28,6 @@ namespace art {
 namespace gc {
 namespace space {
 
-// If a region has live objects whose size is less than this percent
-// value of the region size, evaculate the region.
-static constexpr uint kEvacuateLivePercentThreshold = 75U;
-
 // Whether we protect the unused and cleared regions.
 static constexpr bool kProtectClearedRegions = kIsDebugBuild;
 
@@ -46,6 +42,9 @@ static constexpr uint32_t kPoisonDeadObject = 0xBADDB01D;  // "BADDROID"
 
 // Whether we check a region's live bytes count against the region bitmap.
 static constexpr bool kCheckLiveBytesAgainstRegionBitmap = kIsDebugBuild;
+
+uint8_t RegionSpace::tenure_threshold_ = RegionSpace::kRegionMaxAgeTenureThreshold;
+bool RegionSpace::use_midterm_cc_ = true;
 
 MemMap RegionSpace::CreateMemMap(const std::string& name,
                                  size_t capacity,
@@ -95,11 +94,11 @@ MemMap RegionSpace::CreateMemMap(const std::string& name,
 }
 
 RegionSpace* RegionSpace::Create(
-    const std::string& name, MemMap&& mem_map, bool use_generational_cc) {
-  return new RegionSpace(name, std::move(mem_map), use_generational_cc);
+    const std::string& name, MemMap&& mem_map, bool use_generational_cc, bool use_midterm_cc) {
+  return new RegionSpace(name, std::move(mem_map), use_generational_cc, use_midterm_cc);
 }
 
-RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_generational_cc)
+RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_generational_cc, bool use_midterm_cc)
     : ContinuousMemMapAllocSpace(name,
                                  std::move(mem_map),
                                  mem_map.Begin(),
@@ -116,10 +115,10 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
       max_peak_num_non_free_regions_(0U),
       non_free_region_index_limit_(0U),
       current_region_(&full_region_),
-      evac_region_(nullptr),
       cyclic_alloc_region_index_(0U) {
   CHECK_ALIGNED(mem_map_.Size(), kRegionSize);
   CHECK_ALIGNED(mem_map_.Begin(), kRegionSize);
+  use_midterm_cc_ = use_midterm_cc;
   DCHECK_GT(num_regions_, 0U);
   regions_.reset(new Region[num_regions_]);
   uint8_t* region_addr = mem_map_.Begin();
@@ -141,6 +140,9 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map, bool use_gen
   }
   DCHECK(!full_region_.IsFree());
   DCHECK(full_region_.IsAllocated());
+  for (uint8_t age = 0; age < kAgeRegionMapSize; ++age) {
+    evac_region_[age] = nullptr;
+  }
   size_t ignored;
   DCHECK(full_region_.Alloc(kAlignment, &ignored, nullptr, &ignored) == nullptr);
   // Protect the whole region space from the start.
@@ -183,11 +185,27 @@ size_t RegionSpace::ToSpaceSize() {
   return num_regions * kRegionSize;
 }
 
+size_t RegionSpace::TenuredGenSize(int threshold) {
+  uint64_t num_regions = 0;
+  MutexLock mu(Thread::Current(), region_lock_);
+  for (size_t i = 0; i < num_regions_; ++i) {
+    Region* r = &regions_[i];
+    if (r->Age() > threshold) {
+      ++num_regions;
+    }
+  }
+  return num_regions * kRegionSize;
+}
+
 void RegionSpace::Region::SetAsUnevacFromSpace(bool clear_live_bytes) {
   // Live bytes are only preserved (i.e. not cleared) during sticky-bit CC collections.
   DCHECK(GetUseGenerationalCC() || clear_live_bytes);
   DCHECK(!IsFree() && IsInToSpace());
-  type_ = RegionType::kRegionTypeUnevacFromSpace;
+  if (use_midterm_cc_ && IsTenured()) {
+    type_ = RegionType::kRegionTypeUnevacFromSpaceTenured;
+  } else {
+    type_ = RegionType::kRegionTypeUnevacFromSpace;
+  }
   if (IsNewlyAllocated()) {
     // A newly allocated region set as unevac from-space must be
     // a large or large tail region.
@@ -265,7 +283,8 @@ inline bool RegionSpace::Region::ShouldBeEvacuated(EvacMode evac_mode) {
       // so we prefer not to evacuate it.
       result = false;
     }
-  } else if (evac_mode == kEvacModeLivePercentNewlyAllocated) {
+  } else if (evac_mode == kEvacModeLivePercentNewlyAllocated ||
+             (IsAged() && evac_mode == kEvacModeAgedLivePercentNewlyAllocated)) {
     bool is_live_percent_valid = (live_bytes_ != static_cast<size_t>(-1));
     if (is_live_percent_valid) {
       DCHECK(IsInToSpace());
@@ -409,7 +428,9 @@ void RegionSpace::SetFromSpace(accounting::ReadBarrierTable* rb_table,
   }
   DCHECK_EQ(num_expected_large_tails, 0U);
   current_region_ = &full_region_;
-  evac_region_ = &full_region_;
+  for (uint8_t age = 0; age < kAgeRegionMapSize; ++age) {
+    evac_region_[age] = &full_region_;
+  }
 }
 
 static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end) {
@@ -421,7 +442,8 @@ static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end) {
 
 void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
                                  /* out */ uint64_t* cleared_objects,
-                                 const bool clear_bitmap) {
+                                 const bool clear_bitmap,
+                                 bool mid_term) {
   DCHECK(cleared_bytes != nullptr);
   DCHECK(cleared_objects != nullptr);
   *cleared_bytes = 0;
@@ -554,7 +576,7 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
         }
         continue;
       }
-      r->SetUnevacFromSpaceAsToSpace();
+      r->SetUnevacFromSpaceAsToSpace(!clear_bitmap, mid_term);
       if (r->AllAllocatedBytesAreLive()) {
         // Try to optimize the number of ClearRange calls by checking whether the next regions
         // can also be cleared.
@@ -566,7 +588,7 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
             break;
           }
           CHECK(cur->IsInUnevacFromSpace());
-          cur->SetUnevacFromSpaceAsToSpace();
+          cur->SetUnevacFromSpaceAsToSpace(!clear_bitmap, mid_term);
           ++regions_to_clear_bitmap;
         }
 
@@ -631,7 +653,9 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
   }
   // Update non_free_region_index_limit_.
   SetNonFreeRegionLimit(new_non_free_region_index_limit);
-  evac_region_ = nullptr;
+  for (uint8_t age = 0; age < kAgeRegionMapSize; ++age) {
+    evac_region_[age] = nullptr;
+  }
   num_non_free_regions_ += num_evac_regions_;
   num_evac_regions_ = 0;
 }
@@ -774,7 +798,9 @@ void RegionSpace::Clear() {
   SetNonFreeRegionLimit(0);
   DCHECK_EQ(num_non_free_regions_, 0u);
   current_region_ = &full_region_;
-  evac_region_ = &full_region_;
+  for (uint8_t age = 0; age < kAgeRegionMapSize; ++age) {
+    evac_region_[age] = &full_region_;
+  }
 }
 
 void RegionSpace::Protect() {
@@ -827,6 +853,74 @@ void RegionSpace::DumpRegions(std::ostream& os) {
   }
 }
 
+uint8_t RegionSpace::ComputeTenureThreshold() {
+  int newThreshold = tenure_threshold_;
+  size_t cumulative_ratio[kAgeRegionMapSize];
+  // Tolerance, small value results in volatility, large value results in stagnation
+  // Optimum is b/w 0.05 - 0.10 to keep results adaptive but less volatile
+  float kUpperGamma = 0.10f;
+  float kLowerGamma = 0.05f;
+  size_t age_min_cumulative = 1;
+
+  size_t live_ratio[kAgeRegionMapSize];
+  size_t num_regions[kAgeRegionMapSize];
+  CHECK(use_midterm_cc_);
+  for (int age = 0; age < kAgeRegionMapSize; ++age) {
+    live_ratio[age] = 0;
+    num_regions[age] = 0;
+  }
+  {
+    MutexLock mu(Thread::Current(), region_lock_);
+    for (size_t i = 0; i < num_regions_; ++i) {
+      Region* reg = &regions_[i];
+      if (!reg->IsFree() && !reg->IsLargeTail()) {
+        ++num_regions[reg->Age()];
+        size_t bytes_allocated = RoundUp(reg->BytesAllocated(), kRegionSize);
+        live_ratio[reg->Age()] += (reg->live_bytes_ * 100U <
+                                   bytes_allocated * kEvacuateLivePercentThreshold) ?
+                                    (reg->live_bytes_ * 100U / bytes_allocated) : 100U;
+      }
+    }
+  }
+  size_t sum_of_ratio = 0;
+  size_t sum_of_regions = 0;
+  for (int age = 1; age < kAgeRegionMapSize; ++age) {
+    sum_of_ratio += live_ratio[age];
+    sum_of_regions += num_regions[age];
+    cumulative_ratio[age] = (sum_of_regions > 0) ? (sum_of_ratio/sum_of_regions) : 0;
+    age_min_cumulative = (cumulative_ratio[age] < cumulative_ratio[age_min_cumulative]) ?
+                            age : age_min_cumulative;
+  }
+
+  size_t r_min = cumulative_ratio[age_min_cumulative];
+  size_t r_maxTenured = cumulative_ratio[kRegionMaxAgeTenured];
+  size_t target_ratio = r_min + (((r_maxTenured - r_min) * kRegionAgeMidTermAdjustment)/100);
+  // Search for new threshold, if our existing threshold is not-useful (or)
+  // the cumulative ratio of the existing threshold is within tolerance limits to target ratio.
+  if (tenure_threshold_ >= kRegionMaxAgeTenureThreshold ||
+      cumulative_ratio[tenure_threshold_] * (1 - kLowerGamma) >= target_ratio ||
+      cumulative_ratio[tenure_threshold_] * (1 + kUpperGamma) <= target_ratio) {
+    newThreshold = age_min_cumulative;
+    for (int age = 1; age < kRegionMaxAgeTenured; ++age) {
+      if (cumulative_ratio[age] > target_ratio) {
+        break;
+      }
+      newThreshold = (num_regions[age] > 0) ? age : newThreshold;
+    }
+  }
+  // If TenuredGen is empty, this threshold is no good as mid-term GC = Full-GC
+  newThreshold = (TenuredGenSize(newThreshold) > 0) ? newThreshold : 0;
+  return newThreshold;
+}
+
+void RegionSpace::ClearBitmap(const uint8_t regionGenFlags) {
+  VisitRegions<RegionType::kRegionTypeAll> (regionGenFlags,
+                    [this](uint8_t* begin, uint8_t* end) {
+                      mark_bitmap_.ClearRange(reinterpret_cast<mirror::Object*>(begin),
+                                              reinterpret_cast<mirror::Object*>(end));
+                    });
+}
+
 void RegionSpace::DumpNonFreeRegions(std::ostream& os) {
   MutexLock mu(Thread::Current(), region_lock_);
   for (size_t i = 0; i < num_regions_; ++i) {
@@ -872,6 +966,7 @@ bool RegionSpace::AllocNewTlab(Thread* self,
   }
   if (r != nullptr) {
     uint8_t* start = pos != nullptr ? pos : r->Begin();
+    DCHECK(r->Age() == kRegionAgeNewlyAllocated);
     DCHECK_ALIGNED(start, kObjectAlignment);
     r->is_a_tlab_ = true;
     r->thread_ = self;
@@ -949,6 +1044,7 @@ void RegionSpace::Region::Dump(std::ostream& os) const {
      << reinterpret_cast<void*>(begin_)
      << "-" << reinterpret_cast<void*>(Top())
      << "-" << reinterpret_cast<void*>(end_)
+     << " age=" << (size_t)age_
      << " state=" << state_
      << " type=" << type_
      << " objects_allocated=" << objects_allocated_
@@ -1008,6 +1104,7 @@ size_t RegionSpace::AllocationSizeNonvirtual(mirror::Object* obj, size_t* usable
 
 void RegionSpace::Region::Clear(bool zero_and_release_pages) {
   top_.store(begin_, std::memory_order_relaxed);
+  age_ = kRegionAgeNewlyAllocated;
   state_ = RegionState::kRegionStateFree;
   type_ = RegionType::kRegionTypeNone;
   objects_allocated_.store(0, std::memory_order_relaxed);

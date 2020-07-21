@@ -697,6 +697,9 @@ void Runtime::PostZygoteFork() {
 void Runtime::CallExitHook(jint status) {
   if (exit_ != nullptr) {
     ScopedThreadStateChange tsc(Thread::Current(), kNative);
+    if (dump_gc_performance_on_shutdown_) {
+      heap_->DumpGcPerformanceInfo(LOG_STREAM(INFO));
+    }
     exit_(status);
     LOG(WARNING) << "Exit hook returned instead of exiting!";
   }
@@ -1377,6 +1380,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
 
   // Generational CC collection is currently only compatible with Baker read barriers.
   bool use_generational_cc = kUseBakerReadBarrier && xgc_option.generational_cc;
+  bool use_midterm_cc = use_generational_cc && xgc_option.midterm_cc;
 
   image_space_loading_order_ = runtime_options.GetOrDefault(Opt::ImageSpaceLoadingOrder);
 
@@ -1422,6 +1426,8 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
                        xgc_option.measure_,
                        runtime_options.GetOrDefault(Opt::EnableHSpaceCompactForOOM),
                        use_generational_cc,
+                       use_midterm_cc,
+                       runtime_options.GetOrDefault(Opt::TenureThreshold),
                        runtime_options.GetOrDefault(Opt::HSpaceCompactForOOMMinIntervalsMs),
                        runtime_options.Exists(Opt::DumpRegionInfoBeforeGC),
                        runtime_options.Exists(Opt::DumpRegionInfoAfterGC),

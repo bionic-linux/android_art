@@ -222,6 +222,8 @@ class Heap {
        bool measure_gc_performance,
        bool use_homogeneous_space_compaction,
        bool use_generational_cc,
+       bool use_midterm_cc,
+       size_t tenure_threshold,
        uint64_t min_interval_homogeneous_space_compaction_by_oom,
        bool dump_region_info_before_gc,
        bool dump_region_info_after_gc,
@@ -551,6 +553,10 @@ class Heap {
     return use_generational_cc_;
   }
 
+  bool GetUseMidTermCC() const {
+    return use_midterm_cc_;
+  }
+
   // Returns the number of objects currently allocated.
   size_t GetObjectsAllocated() const
       REQUIRES(!Locks::heap_bitmap_lock_);
@@ -798,8 +804,14 @@ class Heap {
   // Returns the active concurrent copying collector.
   collector::ConcurrentCopying* ConcurrentCopyingCollector() {
     if (use_generational_cc_) {
-      DCHECK((active_concurrent_copying_collector_ == concurrent_copying_collector_) ||
-             (active_concurrent_copying_collector_ == young_concurrent_copying_collector_));
+      if (use_midterm_cc_) {
+        DCHECK((active_concurrent_copying_collector_ == concurrent_copying_collector_) ||
+              (active_concurrent_copying_collector_ == young_concurrent_copying_collector_) ||
+              (active_concurrent_copying_collector_ == midterm_concurrent_copying_collector_));
+      } else {
+        DCHECK((active_concurrent_copying_collector_ == concurrent_copying_collector_) ||
+              (active_concurrent_copying_collector_ == young_concurrent_copying_collector_));
+      }
     } else {
       DCHECK_EQ(active_concurrent_copying_collector_, concurrent_copying_collector_);
     }
@@ -919,6 +931,8 @@ class Heap {
   const Verification* GetVerification() const;
 
   void PostForkChildAction(Thread* self);
+  ALWAYS_INLINE void SetIgnoreMidTerm(bool bIgnore) { ignore_mid_term_ = bIgnore; }
+  ALWAYS_INLINE bool IgnoreMidTerm() { return ignore_mid_term_; }
 
   void TraceHeapSize(size_t heap_size);
 
@@ -1193,6 +1207,9 @@ class Heap {
                !*backtrace_lock_, !process_state_update_lock_);
 
   collector::GcType NonStickyGcType() const {
+    if (preferred_non_sticky_gc_type_ != collector::kGcTypeNone) {
+      return preferred_non_sticky_gc_type_;
+    }
     return HasZygoteSpace() ? collector::kGcTypePartial : collector::kGcTypeFull;
   }
 
@@ -1346,6 +1363,9 @@ class Heap {
   // Last Gc type we ran. Used by WaitForConcurrentGc to know which Gc was waited on.
   volatile collector::GcType last_gc_type_ GUARDED_BY(gc_complete_lock_);
   collector::GcType next_gc_type_;
+  collector::GcType preferred_non_sticky_gc_type_;
+  size_t preferred_non_sticky_remaining_count_;
+  bool ignore_mid_term_;
 
   // Maximum size that the heap can reach.
   size_t capacity_;
@@ -1509,6 +1529,7 @@ class Heap {
   collector::SemiSpace* semi_space_collector_;
   collector::ConcurrentCopying* active_concurrent_copying_collector_;
   collector::ConcurrentCopying* young_concurrent_copying_collector_;
+  collector::ConcurrentCopying* midterm_concurrent_copying_collector_;
   collector::ConcurrentCopying* concurrent_copying_collector_;
 
   const bool is_running_on_memory_tool_;
@@ -1550,6 +1571,7 @@ class Heap {
   // (CC) collector, i.e. use sticky-bit CC for minor collections and (full) CC
   // for major collections. Set in Heap constructor.
   const bool use_generational_cc_;
+  const bool use_midterm_cc_;
 
   // True if the currently running collection has made some thread wait.
   bool running_collection_is_blocking_ GUARDED_BY(gc_complete_lock_);

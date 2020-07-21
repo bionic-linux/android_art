@@ -482,6 +482,7 @@ struct XGcOption {
   bool verify_pre_gc_heap_ = false;
   bool verify_pre_sweeping_heap_ = kIsDebugBuild;
   bool generational_cc = kEnableGenerationalCCByDefault;
+  bool midterm_cc = generational_cc;
   bool verify_post_gc_heap_ = false;
   bool verify_pre_gc_rosalloc_ = kIsDebugBuild;
   bool verify_pre_sweeping_rosalloc_ = false;
@@ -524,6 +525,10 @@ struct CmdlineType<XGcOption> : CmdlineTypeParser<XGcOption> {
         // for compatibility reasons (this should not prevent the runtime from
         // starting up).
         xgc.generational_cc = false;
+      } else if (gc_option == "midterm_cc") {
+        xgc.midterm_cc = true;
+      } else if (gc_option == "nomidterm_cc") {
+        xgc.midterm_cc = false;
       } else if (gc_option == "postverify") {
         xgc.verify_post_gc_heap_ = true;
       } else if (gc_option == "nopostverify") {
@@ -556,13 +561,14 @@ struct CmdlineType<XGcOption> : CmdlineTypeParser<XGcOption> {
       }
     }
 
+    xgc.midterm_cc &= xgc.generational_cc;
     return Result::Success(std::move(xgc));
   }
 
   static const char* Name() { return "XgcOption"; }
   static const char* DescribeType() {
     return "MS|nonconccurent|concurrent|CMS|SS|CC|[no]preverify[_rosalloc]|"
-           "[no]presweepingverify[_rosalloc]|[no]generation_cc|[no]postverify[_rosalloc]|"
+           "[no]presweepingverify[_rosalloc]|[no]generational_cc|[no]midterm_cc|[no]postverify[_rosalloc]|"
            "[no]gcstress|measure|[no]precisce|[no]verifycardtable";
   }
 };
