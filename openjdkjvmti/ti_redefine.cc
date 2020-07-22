@@ -261,6 +261,7 @@ class ObsoleteMap {
 
 // This visitor walks thread stacks and allocates and sets up the obsolete methods. It also does
 // some basic soundness checks that the obsolete method is valid.
+>>>>>>> 461bfbe4c... Update language to comply with Android’s inclusive language guidance
 class ObsoleteMethodStackVisitor : public art::StackVisitor {
  protected:
   ObsoleteMethodStackVisitor(
