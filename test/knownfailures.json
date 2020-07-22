@@ -1972,6 +1972,7 @@
                   "2033-shutdown-mechanics",
                   "2035-structural-native-method",
                   "2036-jni-filechannel",
+                  "2036-structural-subclass-shadow",
                   "1987-structural-redefine-recursive-stack-scope"
                  ],
         "variant": "simulate-arm64",
