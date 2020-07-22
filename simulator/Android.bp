@@ -24,16 +24,21 @@ cc_library_headers {
     ],
 }
 
-cc_defaults {
+art_cc_defaults {
     name: "libart_simulator_defaults",
     host_supported: true,
-    device_supported: false,
 
     defaults: ["art_defaults"],
     srcs: [
         "code_simulator.cc",
-        "code_simulator_arm64.cc",
     ],
+    codegen: {
+        arm64: {
+            srcs: [
+                "code_simulator_arm64.cc",
+            ],
+        },
+    },
     shared_libs: [
         "libbase",
         "liblog",
@@ -56,6 +61,10 @@ art_cc_library {
         "libartbase",
         "libvixl",
     ],
+    apex_available: [
+        "com.android.art.release",
+        "com.android.art.debug",
+    ],
 }
 
 art_cc_library {
@@ -68,6 +77,9 @@ art_cc_library {
         "libartd",
         "libartbased",
         "libvixld",
+    ],
+    apex_available: [
+        "com.android.art.debug",
     ],
 }
 

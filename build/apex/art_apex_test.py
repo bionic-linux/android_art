@@ -691,6 +691,7 @@ class DebugChecker:
     self._checker.check_native_library('libopenjdkjvmtid')
     self._checker.check_native_library('libprofiled')
     # Only on ARM/ARM64
+    self._checker.check_optional_native_library('libartd-simulator')
     self._checker.check_optional_native_library('libartd-simulator-container')
 
     # Check internal libraries for Managed Core Library.
