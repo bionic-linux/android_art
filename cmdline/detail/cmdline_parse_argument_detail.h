@@ -189,7 +189,7 @@ struct CmdlineParserArgumentInfo {
   // Mark the argument definition as completed, do not mutate the object anymore after this
   // call is done.
   //
-  // Performs several sanity checks and token calculations.
+  // Performs several validity checks and token calculations.
   void CompleteArgument() {
     assert(names_.size() >= 1);
     assert(!is_completed_);

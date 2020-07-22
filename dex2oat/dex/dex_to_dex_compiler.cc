@@ -581,7 +581,7 @@ CompiledMethod* DexToDexCompiler::CompileMethod(
       CHECK(inserted) << "Failed to insert " << dex_file.PrettyMethod(method_idx);
     }
 
-    // Easy sanity check is to check that the existing stuff matches by re-quickening using the
+    // Easy validity check is to check that the existing stuff matches by re-quickening using the
     // newly produced quicken data.
     // Note that this needs to be behind the lock for this case since we may unquicken in another
     // thread.
@@ -594,7 +594,7 @@ CompiledMethod* DexToDexCompiler::CompileMethod(
     CompilationState state(this, unit, compilation_level, /*quicken_data*/ nullptr);
     quicken_data = state.Compile();
 
-    // Easy sanity check is to check that the existing stuff matches by re-quickening using the
+    // Easy validity check is to check that the existing stuff matches by re-quickening using the
     // newly produced quicken data.
     if (kIsDebugBuild) {
       CompilationState state2(this, unit, compilation_level, &quicken_data);
