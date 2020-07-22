@@ -186,7 +186,7 @@ class ObsoleteMap {
       DCHECK(obsolete_dex_caches_->Get(next_free_slot_) != nullptr);
       next_free_slot_++;
     }
-    // Sanity check that the same slot in obsolete_dex_caches_ is free.
+    // Check that the same slot in obsolete_dex_caches_ is free.
     DCHECK(obsolete_dex_caches_->Get(next_free_slot_) == nullptr);
   }
 
@@ -260,7 +260,7 @@ class ObsoleteMap {
 };
 
 // This visitor walks thread stacks and allocates and sets up the obsolete methods. It also does
-// some basic sanity checks that the obsolete method is sane.
+// some basic checks that the obsolete method is sane.
 class ObsoleteMethodStackVisitor : public art::StackVisitor {
  protected:
   ObsoleteMethodStackVisitor(
