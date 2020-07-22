@@ -1,0 +1,10 @@
+Code-Review+2: Alex Light <allight@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Andrew Scull <ascull@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 22 Jul 2020 15:28:34 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1370076
+Project: platform/art
+Branch: refs/heads/master
