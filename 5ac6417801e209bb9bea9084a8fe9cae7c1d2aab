@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab452a46_91287aef",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2485,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-23T14:00:19Z",
+      "side": 1,
+      "message": "Remove blank line.",
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f04a6c9_25c9a3e7",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-23T14:00:19Z",
+      "side": 1,
+      "message": "We usually use several line comments starting with \"//\".",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1089,
+        "endChar": 68
+      },
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a125c638_99bdc69f",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-23T14:00:19Z",
+      "side": 1,
+      "message": "You could pass \"/*target_method\u003d*/ nullptr\" and even DCHECK() that in the ResolveMethod().",
+      "range": {
+        "startLine": 1097,
+        "startChar": 44,
+        "endLine": 1097,
+        "endChar": 58
+      },
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
