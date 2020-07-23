@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a15681b_3cab4559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T01:10:37Z",
+      "side": 1,
+      "message": "Thanks Ian 😊",
+      "revId": "54ec9ec271df3300426cdc6f67b05a9ab0b9aabd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e51f85f_e7942cd9",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T01:10:37Z",
+      "side": 1,
+      "message": "here \"validity\" doesn\u0027t make sense. Maybe use \"verify\"",
+      "range": {
+        "startLine": 1995,
+        "startChar": 35,
+        "endLine": 1995,
+        "endChar": 49
+      },
+      "revId": "54ec9ec271df3300426cdc6f67b05a9ab0b9aabd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81505619_95562c34",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T01:10:37Z",
+      "side": 1,
+      "message": "this reads a bit odd to me: maybe \"check the validity of\"\n\nSimilar in other cases.",
+      "range": {
+        "startLine": 60,
+        "startChar": 76,
+        "endLine": 60,
+        "endChar": 90
+      },
+      "revId": "54ec9ec271df3300426cdc6f67b05a9ab0b9aabd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5583ff78_f2f45196",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T01:10:37Z",
+      "side": 1,
+      "message": "Verify",
+      "range": {
+        "startLine": 260,
+        "startChar": 7,
+        "endLine": 260,
+        "endChar": 15
+      },
+      "revId": "54ec9ec271df3300426cdc6f67b05a9ab0b9aabd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0edc0ed5_601a1ce1",
+        "filename": "runtime/elf_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T01:10:37Z",
+      "side": 1,
+      "message": "I would remove all these from this file.",
+      "range": {
+        "startLine": 552,
+        "startChar": 68,
+        "endLine": 552,
+        "endChar": 93
+      },
+      "revId": "54ec9ec271df3300426cdc6f67b05a9ab0b9aabd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
