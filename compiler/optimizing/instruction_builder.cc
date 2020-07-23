@@ -931,10 +931,12 @@ static ArtMethod* ResolveMethod(uint16_t method_idx,
   } else if (*invoke_type == kVirtual) {
     // For HInvokeVirtual we need the vtable index.
     *target_method = MethodReference(/*file=*/ nullptr, resolved_method->GetVtableIndex());
-  } else {
-    DCHECK_EQ(*invoke_type, kInterface);
+  } else if (*invoke_type == kInterface){
     // For HInvokeInterface we need the IMT index.
     *target_method = MethodReference(/*file=*/ nullptr, ImTable::GetImtIndex(resolved_method));
+  } else {
+    // For HInvokePolymorphic we don't need the target method yet
+    DCHECK_EQ(*invoke_type, kPolymorphic);
   }
 
   *is_string_constructor =
@@ -1082,11 +1084,24 @@ bool HInstructionBuilder::BuildInvokePolymorphic(uint32_t dex_pc,
   DCHECK_EQ(1 + ArtMethod::NumArgRegisters(shorty), operands.GetNumberOfOperands());
   DataType::Type return_type = DataType::FromShorty(shorty[0]);
   size_t number_of_arguments = strlen(shorty);
+  /* We use ResolveMethod which is also used in BuildInvoke in order to
+   * not duplicate code. As such, we need to provide target_method and
+   * is_string_constructor even if we don't need them afterwards. */
+  InvokeType invoke_type = InvokeType::kPolymorphic;
+  MethodReference target_method(nullptr, 0u);
+  bool is_string_constructor = false;
+  ArtMethod* resolved_method = ResolveMethod(method_idx,
+                                            graph_->GetArtMethod(),
+                                            *dex_compilation_unit_,
+                                            &invoke_type,
+                                            &target_method,
+                                            &is_string_constructor);
   HInvoke* invoke = new (allocator_) HInvokePolymorphic(allocator_,
                                                         number_of_arguments,
                                                         return_type,
                                                         dex_pc,
-                                                        method_idx);
+                                                        method_idx,
+                                                        resolved_method);
   return HandleInvoke(invoke, operands, shorty, /* is_unresolved= */ false);
 }
 

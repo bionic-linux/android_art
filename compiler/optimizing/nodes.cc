@@ -3159,11 +3159,8 @@ static inline IntrinsicExceptions GetExceptionsIntrinsic(Intrinsics i) {
 }
 
 void HInvoke::SetResolvedMethod(ArtMethod* method) {
-  // TODO: b/65872996 The intent is that polymorphic signature methods should
-  // be compiler intrinsics. At present, they are only interpreter intrinsics.
   if (method != nullptr &&
-      method->IsIntrinsic() &&
-      !method->IsPolymorphicSignature()) {
+      method->IsIntrinsic()) {
     Intrinsics intrinsic = static_cast<Intrinsics>(method->GetIntrinsic());
     SetIntrinsic(intrinsic,
                  NeedsEnvironmentOrCacheIntrinsic(intrinsic),
