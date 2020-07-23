@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2658b9e0_74341151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-23T14:07:04Z",
+      "side": 1,
+      "message": "Hi Xueliang,\n\nI rebased the patch on top of the recent change https://r.android.com/1372097 (which is needed to reduce the overhead on loading shared library libart(d)-simulator-container.so, and also to fix failures in our benchmarking environment, Golem).",
+      "revId": "1e0a92701f58e17914c55fb573b65c776bd834f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
