@@ -16,6 +16,23 @@
       "revId": "02e2445e765ac3220e958c5c2496b63e8986d2f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d130366c_8adfcda0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-23T13:30:40Z",
+      "side": 1,
+      "message": "Thanks Orion!\n\nBypassing presubmit because the only failed test is unrelated (selinux denials at boot, also visible on quarterdeck: https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI23500005351541157\u0026testResultId\u003dTR50310891663075559\u0026redirect\u003d).",
+      "revId": "02e2445e765ac3220e958c5c2496b63e8986d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
