@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0186be20_bbb917a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060219
+      },
+      "writtenOn": "2020-07-23T16:29:25Z",
+      "side": 1,
+      "message": "Apologies, missed removing the conflict marker after the rebase.",
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
