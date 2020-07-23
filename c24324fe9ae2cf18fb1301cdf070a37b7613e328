@@ -16,6 +16,24 @@
       "revId": "c24324fe9ae2cf18fb1301cdf070a37b7613e328",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4ebae19_e0531c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T15:45:16Z",
+      "side": 1,
+      "message": "There quick-and-dirty script is attached to (b/160161783) if that helps. Not production ready.\n\nThe script would be defeated by non-space separators, camel-casing WhiteHat, or non-space separators WHITE_HAT.",
+      "parentUuid": "83f2e55e_729b761c",
+      "revId": "c24324fe9ae2cf18fb1301cdf070a37b7613e328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
