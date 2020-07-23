@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "1607cd11_b83f7556",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2485,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-23T15:26:38Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "ab452a46_91287aef",
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f04a6c9_25c9a3e7",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 1
@@ -94,6 +112,30 @@
       "writtenOn": "2020-07-23T14:00:19Z",
       "side": 1,
       "message": "We usually use several line comments starting with \"//\".",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1089,
+        "endChar": 68
+      },
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75895c5c_ed89533e",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-23T15:26:38Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "4f04a6c9_25c9a3e7",
       "range": {
         "startLine": 1087,
         "startChar": 2,
@@ -140,6 +182,30 @@
       "writtenOn": "2020-07-23T14:02:31Z",
       "side": 1,
       "message": "fits on one line.",
+      "range": {
+        "startLine": 3162,
+        "startChar": 0,
+        "endLine": 3163,
+        "endChar": 30
+      },
+      "revId": "5ac6417801e209bb9bea9084a8fe9cae7c1d2aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc40b394_159ce28b",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3163,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-23T15:26:38Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "8988ac2e_f9b55391",
       "range": {
         "startLine": 3162,
         "startChar": 0,
