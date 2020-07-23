@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f2e55e_729b761c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060219
+      },
+      "writtenOn": "2020-07-23T15:38:52Z",
+      "side": 1,
+      "message": "Adding in Sam/Ally for FYI regarding the spreadsheet and script discrepancies.",
+      "revId": "c24324fe9ae2cf18fb1301cdf070a37b7613e328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da51a804_4c631ce4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1060219
+      },
+      "writtenOn": "2020-07-23T15:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "282196b9_40eb2ab1",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "461bfbe4cc28cc9404f6df6c698929967772caae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "261b7fc9_0c0652e1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-07-23T08:56:16Z",
       "side": 1,
       "message": "Great, thanks Ian!\n\nWe have an ART specific bug too (b/161336379) and as a team we were probably planning to start in earnest in the fixit week. Good to have a head start here.\n\nWhilst I appreciate the intent, I am not a fan of the central tracking document and per-file ownership. It\u0027d be better to have an automated count of issues in projects and work on getting that down to zero real issues (tooling probably has some false positives). Teams should try to burn down their own issues in fixit week and then volunteers step in after to fix remaining issues.\n\nA quick-and-dirty script I wrote yesterday (attached to the bug) reveals many more issues in art/ than the trix has. I don\u0027t think going back and updating a trix for these issues is a good use of time, e.g. there\u0027s a 1000+ uses of \u0027dummy\u0027 in art including code and file names.\n",
+      "revId": "461bfbe4cc28cc9404f6df6c698929967772caae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d29762_45efa93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060219
+      },
+      "writtenOn": "2020-07-23T15:38:52Z",
+      "side": 1,
+      "message": "Thank you, Orion! I was planning to take on a few more of the art/ items in the spreadsheet. Would you prefer I hold off until after the fixit week?",
+      "parentUuid": "261b7fc9_0c0652e1",
       "revId": "461bfbe4cc28cc9404f6df6c698929967772caae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
