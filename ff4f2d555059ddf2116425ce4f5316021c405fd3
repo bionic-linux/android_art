@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abc23c37_f7a897c7",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-07-23T01:45:34Z",
+      "side": 1,
+      "message": "NIT: missed one.",
+      "range": {
+        "startLine": 263,
+        "startChar": 49,
+        "endLine": 263,
+        "endChar": 53
+      },
+      "revId": "ff4f2d555059ddf2116425ce4f5316021c405fd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
