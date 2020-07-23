@@ -16,6 +16,115 @@
       "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d22c5d6_502940e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T16:47:24Z",
+      "side": 1,
+      "message": "Sorry Ian, I missed a few line width issues.",
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee2af26f_a3a8931a",
+        "filename": "cmdline/cmdline_parser.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T16:47:24Z",
+      "side": 1,
+      "message": "Exceeds 100 chars line width, break before \"copied\"",
+      "range": {
+        "startLine": 487,
+        "startChar": 44,
+        "endLine": 487,
+        "endChar": 103
+      },
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e7b6b8_56fbcd5f",
+        "filename": "dex2oat/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T16:47:24Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 584,
+        "startChar": 3,
+        "endLine": 584,
+        "endChar": 104
+      },
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16713633_1bc4a2e9",
+        "filename": "dex2oat/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T16:47:24Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 104
+      },
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb003c9_fb4e7fa9",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T16:47:24Z",
+      "side": 1,
+      "message": "line too long,  break before \"locks\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 60,
+        "endChar": 103
+      },
+      "revId": "b0ba02c7b13772ebe2c623779b91fbb3668989b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
