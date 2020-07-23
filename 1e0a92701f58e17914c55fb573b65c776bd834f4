@@ -16,6 +16,24 @@
       "revId": "1e0a92701f58e17914c55fb573b65c776bd834f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3590d1d_eac25109",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096678
+      },
+      "writtenOn": "2020-07-23T17:43:42Z",
+      "side": 1,
+      "message": "Hi Ulya,\nThanks for the update. I\u0027ve tested locally, this CL does fix the problem of generating libartd-simulator.so.\n\nRegarding the failure 2036-structural-subclass-shadow you mentioned in the commit message, I didn\u0027t take deep investigation yet, but it failed just like other 19xx/20xx-structrual tests running on simulator in knowfailures.json: there is SEGV fault in OatFileAssistant::LoadDexFiles(); I\u0027m not sure when this 2036-structural-subclass-shadow starts to appear in the tree, but I\u0027m quite sure it is not caused by this CL.",
+      "parentUuid": "2658b9e0_74341151",
+      "revId": "1e0a92701f58e17914c55fb573b65c776bd834f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
