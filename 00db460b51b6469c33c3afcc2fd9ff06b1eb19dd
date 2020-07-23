@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43866ad6_3d985168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-23T14:14:47Z",
+      "side": 1,
+      "message": "This CL does not touch anything that the failing TH test actually tests.",
+      "revId": "00db460b51b6469c33c3afcc2fd9ff06b1eb19dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
