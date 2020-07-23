@@ -16,6 +16,29 @@
       "revId": "150d9e60db07b971ae18de96455834f1169d8241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06847c3_5a9de605",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-23T23:37:01Z",
+      "side": 1,
+      "message": "add docs on what\u0027s the difference between ANDROID_HOST_OUT and OUT_DIR. And when one would use one of them or both.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 50
+      },
+      "revId": "150d9e60db07b971ae18de96455834f1169d8241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
