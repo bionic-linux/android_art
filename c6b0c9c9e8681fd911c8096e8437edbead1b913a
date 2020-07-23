@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0f9b94_6f26d0a4",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-23T21:06:00Z",
+      "side": 1,
+      "message": "One of the presubmit failures is here (missing space before {). [ The other presubmit failure is unrelated ].",
+      "range": {
+        "startLine": 934,
+        "startChar": 40,
+        "endLine": 934,
+        "endChar": 41
+      },
+      "revId": "c6b0c9c9e8681fd911c8096e8437edbead1b913a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
