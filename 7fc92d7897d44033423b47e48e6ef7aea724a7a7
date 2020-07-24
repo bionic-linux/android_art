@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba25aa16_5677f9f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514166
+      },
+      "writtenOn": "2020-07-24T07:43:18Z",
+      "side": 1,
+      "message": "Fixed Lint errors and performance issue with -Xgc:nomidterm_cc",
+      "revId": "7fc92d7897d44033423b47e48e6ef7aea724a7a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
