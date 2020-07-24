@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56a648a9_a3a5987f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4511,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-24T14:36:08Z",
+      "side": 1,
+      "message": "Can you add a comment what this resolved_method refers to in the context of InvokePolymorphic?",
+      "range": {
+        "startLine": 4511,
+        "startChar": 0,
+        "endLine": 4511,
+        "endChar": 48
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4385201a_bc465a32",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-24T14:36:08Z",
+      "side": 1,
+      "message": "I guess we need this change due to calling ResolveMethod in the compiler? Why did we not need it before when resolving the method in the verifier/interpreter?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8a824e_09aa678f",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-24T14:36:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
