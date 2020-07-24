@@ -140,6 +140,30 @@
       "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2088ab91_944b8aa0",
+        "filename": "tools/buildbot-setup-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-07-24T13:05:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cf07d4_ed712ada",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 58
+      },
+      "revId": "bfb3d8e772a19c8ab81cfabf44a4d4aa8b90a429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
