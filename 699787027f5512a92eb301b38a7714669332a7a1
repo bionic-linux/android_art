@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76b562d1_83d5dd36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060219
+      },
+      "writtenOn": "2020-07-24T00:15:48Z",
+      "side": 1,
+      "message": "The test which is failing appears unrelated and long failing. Would it be OK for me to bypass presubmit?",
+      "revId": "699787027f5512a92eb301b38a7714669332a7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
