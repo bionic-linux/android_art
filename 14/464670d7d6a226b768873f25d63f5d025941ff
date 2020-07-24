@@ -1,0 +1,12 @@
+Autosubmit+1: Ian Pedowitz <ijpedowitz@google.com>
+Autosubmit+1: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Bypass-Presubmit+1: Ian Pedowitz <ijpedowitz@google.com>
+Submitted-by: Ian Pedowitz <ijpedowitz@google.com>
+Submitted-at: Fri, 24 Jul 2020 18:26:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1372536
+Project: platform/art
+Branch: refs/heads/master
