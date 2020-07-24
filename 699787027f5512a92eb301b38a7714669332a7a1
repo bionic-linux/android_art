@@ -16,6 +16,24 @@
       "revId": "699787027f5512a92eb301b38a7714669332a7a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5de12d6c_b2da90f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-07-24T00:25:55Z",
+      "side": 1,
+      "message": "The only failing test is `DeviceBootTest.DeviceBootTest#SELinuxUncheckedDenialBootTest`.\n\nIt\u0027s ok to bypass in this case.",
+      "parentUuid": "76b562d1_83d5dd36",
+      "revId": "699787027f5512a92eb301b38a7714669332a7a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
