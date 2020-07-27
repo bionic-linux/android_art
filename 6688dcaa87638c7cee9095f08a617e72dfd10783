@@ -16,6 +16,69 @@
       "revId": "6688dcaa87638c7cee9095f08a617e72dfd10783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "442d45b2_f8916e7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T18:21:11Z",
+      "side": 1,
+      "message": "LGTM, just a couple of additional nits.",
+      "revId": "6688dcaa87638c7cee9095f08a617e72dfd10783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a24cfb5_724de731",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T18:21:11Z",
+      "side": 1,
+      "message": "Style: I think we usually favor this syntax:\n\n  std::string(\"isa:\")",
+      "range": {
+        "startLine": 444,
+        "startChar": 6,
+        "endLine": 444,
+        "endChar": 26
+      },
+      "revId": "6688dcaa87638c7cee9095f08a617e72dfd10783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6883d69_ecb0edbd",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T18:21:11Z",
+      "side": 1,
+      "message": "Suggestion: You could also introduce a variable like this:\n\n  no_isa \u003d None\n\nin this function, then use it here (and below).",
+      "range": {
+        "startLine": 952,
+        "startChar": 6,
+        "endLine": 952,
+        "endChar": 21
+      },
+      "revId": "6688dcaa87638c7cee9095f08a617e72dfd10783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
