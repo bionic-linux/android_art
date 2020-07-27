@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2dac4fc8_f0fa2bf8",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-27T16:50:13Z",
+      "side": 1,
+      "message": "I am not sure. As far as I can see, there are additional checks done for kVirtual. I think that a VarHandle access mode is both kVirtual and kPolymorphic. @Orion what do you think?",
+      "parentUuid": "61daa15e_a3266748",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8a824e_09aa678f",
         "filename": "runtime/class_linker-inl.h",
         "patchSetId": 5
