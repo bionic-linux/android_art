@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1730232f_2b2c6a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1724960
+      },
+      "writtenOn": "2020-07-27T13:58:03Z",
+      "side": 1,
+      "message": "Thanks for the CL Evgeny.",
+      "revId": "5113361574962f30f6586e2a2a9b68694fdb5d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d31ac58_0220eab3",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1724960
+      },
+      "writtenOn": "2020-07-27T13:58:03Z",
+      "side": 1,
+      "message": "Nit: I think the control flow could be clearer here. Maybe something like this?\n\n    metaDataString \u003d \"\"\n    metaData \u003d \"\"\n\n    if isa:\n      metaData +\u003d \"isa:\" + isa\n\n    if instructionSetFeatures:\n      if metaData:\n        metaData +\u003d \" \"\n      # ...\n\n    if metaData:\n      metaDataString \u003d \\\n      # ...",
+      "revId": "5113361574962f30f6586e2a2a9b68694fdb5d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc51128d_ada3d095",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1724960
+      },
+      "writtenOn": "2020-07-27T13:58:03Z",
+      "side": 1,
+      "message": "There is a space missing before `\u003d`.",
+      "revId": "5113361574962f30f6586e2a2a9b68694fdb5d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b401c26_3f7fb783",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1724960
+      },
+      "writtenOn": "2020-07-27T13:58:03Z",
+      "side": 1,
+      "message": "`isa` should be passed to `self.assertMatches`.",
+      "revId": "5113361574962f30f6586e2a2a9b68694fdb5d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
