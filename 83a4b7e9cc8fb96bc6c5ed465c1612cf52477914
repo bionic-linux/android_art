@@ -33,6 +33,115 @@
       "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cdd1d7e_c7cc3c79",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T16:53:57Z",
+      "side": 1,
+      "message": "Could you turn this into:\n\n  std::string isa_string \u003d\n      \"isa:\" + GetInstructionSetString(features-\u003eGetInstructionSet());\n\n?",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 71
+      },
+      "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec9db34_589b5e52",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T16:53:57Z",
+      "side": 1,
+      "message": "Nit: I think this style is easier to read:\n\n  *visualizer_output_\n      \u003c\u003c HGraphVisualizer::InsertMetaDataAsCompilationBlock(isa_string + \" \" + features_string);",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 93
+      },
+      "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc083185_97a6bd0f",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T16:53:57Z",
+      "side": 1,
+      "message": "Nit: Swap these arguments, to match the order in the examples?",
+      "range": {
+        "startLine": 106,
+        "startChar": 51,
+        "endLine": 106,
+        "endChar": 88
+      },
+      "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc15c0d_20c991b5",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T16:53:57Z",
+      "side": 1,
+      "message": "Nit: Ditto?",
+      "range": {
+        "startLine": 154,
+        "startChar": 56,
+        "endLine": 154,
+        "endChar": 93
+      },
+      "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e132bb_c8eb39df",
+        "filename": "tools/checker/match/test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-27T16:53:57Z",
+      "side": 1,
+      "message": "Nit: Could you also remove this superfluous empty line?",
+      "revId": "83a4b7e9cc8fb96bc6c5ed465c1612cf52477914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
