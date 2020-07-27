@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "64143172_2c486cf6",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-27T20:31:46Z",
+      "side": 1,
+      "message": "Polymorphic calls are not virtual: they cannot be overriden by design (in the RI).\n\nThe verifier will fail hard if an invoke-polymorphic occurs for any class other than MethodHandle and VarHandle (as they require runtime magic).\n\nThe verifier calls ResolveMethod\u003c\u003e() with kInvokePolymorphic. There is a patch for the interpreter here:\n\nhttps://android-review.googlesource.com/c/platform/art/+/1373856\n\nDo we actually have extra calls to ResolveMethod\u003c\u003e here? Plain invokes and invoke-polymorphic have different paths to ResolveMethod\u003c\u003e because the bytecode forms are different and they are decoded in the methods that call ResolveMethod\u003c\u003e.",
+      "parentUuid": "2dac4fc8_f0fa2bf8",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8a824e_09aa678f",
         "filename": "runtime/class_linker-inl.h",
         "patchSetId": 5
