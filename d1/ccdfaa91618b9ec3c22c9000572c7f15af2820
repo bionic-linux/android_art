@@ -1,0 +1,9 @@
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Orion Hodson <oth@google.com>
+Bypass-Presubmit+1: Orion Hodson <oth@google.com>
+Submitted-by: Orion Hodson <oth@google.com>
+Submitted-at: Mon, 27 Jul 2020 17:07:13 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1372295
+Project: platform/art
+Branch: refs/heads/master
