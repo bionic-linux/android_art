@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53e6a5ac_38e19ac1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4511,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-27T13:25:47Z",
+      "side": 1,
+      "message": "I added a comment in another commit",
+      "parentUuid": "56a648a9_a3a5987f",
+      "range": {
+        "startLine": 4511,
+        "startChar": 0,
+        "endLine": 4511,
+        "endChar": 48
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4385201a_bc465a32",
         "filename": "runtime/art_method-inl.h",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e86591de_c12abb59",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-27T13:25:47Z",
+      "side": 1,
+      "message": "Yes, you are right. We did not need it before because ResolveMethod is called with kVirtual from interpreter instead of kPolymorphic. For now, the right way seemed to use kPolymorphic so I added this case.",
+      "parentUuid": "4385201a_bc465a32",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8a824e_09aa678f",
         "filename": "runtime/class_linker-inl.h",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b6faad2_21343d38",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-27T13:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8a824e_09aa678f",
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
