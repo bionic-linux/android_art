@@ -22,6 +22,30 @@
       "revId": "ffbc12b67bba58adc82423a1abec053a6975c790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386cd4c7_efb2da27",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1467579
+      },
+      "writtenOn": "2020-07-27T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2469e72_ee09094b",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "ffbc12b67bba58adc82423a1abec053a6975c790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
