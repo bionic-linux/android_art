@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "61daa15e_a3266748",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-27T13:35:06Z",
+      "side": 1,
+      "message": "Can we have the interpreter/verifier change its lookup of invoke-polymorphic with kPolymorphic? The lookups should be consistent between the various ways of executing the bytecode.",
+      "parentUuid": "e86591de_c12abb59",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8a824e_09aa678f",
         "filename": "runtime/class_linker-inl.h",
         "patchSetId": 5
