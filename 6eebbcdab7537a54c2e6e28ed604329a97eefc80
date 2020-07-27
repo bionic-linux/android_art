@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5cb71de_0765bee1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4512,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-27T13:38:04Z",
+      "side": 1,
+      "message": "But can you also point out what is the resolved method supposed to be? Is it MethodHandle.invoke, or is it the actual resolved target of the method handle?",
+      "range": {
+        "startLine": 4511,
+        "startChar": 0,
+        "endLine": 4512,
+        "endChar": 54
+      },
+      "revId": "6eebbcdab7537a54c2e6e28ed604329a97eefc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
