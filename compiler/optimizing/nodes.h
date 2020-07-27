@@ -4508,6 +4508,8 @@ class HInvokePolymorphic final : public HInvoke {
                      DataType::Type return_type,
                      uint32_t dex_pc,
                      uint32_t dex_method_index,
+                     // resolved_method is needed to pass intrinsic information
+                     // to the HInvokePolymorphic node
                      ArtMethod* resolved_method)
       : HInvoke(kInvokePolymorphic,
                 allocator,
