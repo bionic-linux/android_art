@@ -16,6 +16,29 @@
       "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4345c92c_df3d5ee5",
+        "filename": "test/163-app-image-methods/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2020-07-28T20:09:20Z",
+      "side": 1,
+      "message": "Should we check index is not equal to result.length? If it is we might have failed to fill the heap.",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
