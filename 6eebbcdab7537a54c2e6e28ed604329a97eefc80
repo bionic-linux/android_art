@@ -22,6 +22,30 @@
       "revId": "6eebbcdab7537a54c2e6e28ed604329a97eefc80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06335b2_15a20fe9",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4512,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-28T07:53:24Z",
+      "side": 1,
+      "message": "I updated the comment",
+      "parentUuid": "a5cb71de_0765bee1",
+      "range": {
+        "startLine": 4511,
+        "startChar": 0,
+        "endLine": 4512,
+        "endChar": 54
+      },
+      "revId": "6eebbcdab7537a54c2e6e28ed604329a97eefc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
