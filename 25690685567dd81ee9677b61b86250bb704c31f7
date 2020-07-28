@@ -22,6 +22,30 @@
       "revId": "25690685567dd81ee9677b61b86250bb704c31f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b98843c_02c212d4",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-28T16:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c033c3_4e8d2902",
+      "range": {
+        "startLine": 190,
+        "startChar": 23,
+        "endLine": 190,
+        "endChar": 25
+      },
+      "revId": "25690685567dd81ee9677b61b86250bb704c31f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
