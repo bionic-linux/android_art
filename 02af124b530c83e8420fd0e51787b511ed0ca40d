@@ -16,6 +16,23 @@
       "revId": "02af124b530c83e8420fd0e51787b511ed0ca40d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "363eed7f_efd31a30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-28T08:55:39Z",
+      "side": 1,
+      "message": "The topic here was \"master\", which I\u0027ve dropped in gerrit here since it\u0027s not unique and it pairs this CL with other CLs in gerrit.",
+      "revId": "02af124b530c83e8420fd0e51787b511ed0ca40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
