@@ -87,6 +87,30 @@
       "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c38793_25b1d0b8",
+        "filename": "test/163-app-image-methods/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-07-28T22:20:02Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s an improvement. The doubling of the backing array in ArrayList can cause us to throw OOM long before the memory is all gone. In fact, we should probably stop doing that  if there\u0027s any chance the array will have to grow. Just throwing an out-of-bounds exception seems fine; we should never get close to that happening. And that happens automatically if we just omit the check, right?",
+      "parentUuid": "1ec3ffd5_0ddf3c8a",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
