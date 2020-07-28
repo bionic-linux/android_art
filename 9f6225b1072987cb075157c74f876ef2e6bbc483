@@ -63,6 +63,30 @@
       "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec3ffd5_0ddf3c8a",
+        "filename": "test/163-app-image-methods/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-07-28T21:58:00Z",
+      "side": 1,
+      "message": "How about I change the implementation to use ArrayList instead of array? There are some tests that already does that.",
+      "parentUuid": "ea8a14e3_ec04f0cf",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
