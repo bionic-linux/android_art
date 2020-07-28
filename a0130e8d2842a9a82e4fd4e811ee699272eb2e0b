@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "4b1cd527_05bfd7fc",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-28T07:26:22Z",
+      "side": 1,
+      "message": "Yes, ResolveMethod\u003c\u003e is called in order to obtain the corresponding ArtMethod object, which contains the intrinsic index. We need to set the intrinsic index on the HInvokePolymorphic node.\n\nResolveMethod is called in a wrapper with the same name in BuildInvokePolymorphic (compiler/optimizing/instruction_builder.cc:1093)",
+      "parentUuid": "64143172_2c486cf6",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "a0130e8d2842a9a82e4fd4e811ee699272eb2e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8a824e_09aa678f",
         "filename": "runtime/class_linker-inl.h",
         "patchSetId": 5
