@@ -52,6 +52,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "803a8c48_7da1c2c9",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-30T15:32:12Z",
+      "side": 1,
+      "message": "I tried to use IsRegisterKind, but there are some other things to change. There is also the CHECK on the next line that needs changing (for register pairs). What\u0027s more important though is that I\u0027m not entirely sure the MoveFromReturnRegister method can handle all these cases on all architectures (register, fpu register, register pair, fpu register pair). And since varhandles don\u0027t need any move anyway, I thought it is safer to avoid a change there. However, I can explore more and see if I can make it work without splitting the MoveFromReturnRegister, if you want.",
+      "parentUuid": "89ca43c8_3c312b31",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
