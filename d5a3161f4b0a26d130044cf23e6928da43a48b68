@@ -70,6 +70,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad2e450_6b3f0caf",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-30T15:45:12Z",
+      "side": 1,
+      "message": "Then we should do a `DCHECK(!invoke_-\u003eGetLocations()-\u003eGetLiveRegisters()-\u003eOverlapsRegisters(out))` and define the `OverlapsRegisters()` to handle all register kinds (core/FP, single/pair).",
+      "parentUuid": "803a8c48_7da1c2c9",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
