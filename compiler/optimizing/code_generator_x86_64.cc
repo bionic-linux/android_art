@@ -7807,19 +7807,27 @@ Address CodeGeneratorX86_64::LiteralInt64Address(int64_t v) {
   return Address::RIP(fixup);
 }
 
-// TODO: trg as memory.
-void CodeGeneratorX86_64::MoveFromReturnRegister(Location trg, DataType::Type type) {
+bool CodeGeneratorX86_64::NeedsMoveFromReturnRegister(Location trg, DataType::Type type) {
   if (!trg.IsValid()) {
     DCHECK_EQ(type, DataType::Type::kVoid);
-    return;
+    return false;
   }
-
-  DCHECK_NE(type, DataType::Type::kVoid);
 
   Location return_loc = InvokeDexCallingConventionVisitorX86_64().GetReturnLocation(type);
   if (trg.Equals(return_loc)) {
-    return;
+    return false;
   }
+
+  return true;
+}
+
+// TODO: trg as memory.
+void CodeGeneratorX86_64::MoveFromReturnRegister(Location trg, DataType::Type type) {
+  DCHECK(trg.IsValid());
+  DCHECK_NE(type, DataType::Type::kVoid);
+
+  Location return_loc = InvokeDexCallingConventionVisitorX86_64().GetReturnLocation(type);
+  DCHECK(!trg.Equals(return_loc));
 
   // Let the parallel move resolver take care of all of this.
   HParallelMove parallel_move(GetGraph()->GetAllocator());

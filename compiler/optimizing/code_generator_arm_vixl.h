@@ -585,6 +585,7 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   void GenerateVirtualCall(
       HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
 
+  bool NeedsMoveFromReturnRegister(Location trg, DataType::Type type) override;
   void MoveFromReturnRegister(Location trg, DataType::Type type) override;
 
   // The PcRelativePatchInfo is used for PC-relative addressing of methods/strings/types,

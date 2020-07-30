@@ -4585,12 +4585,22 @@ void CodeGeneratorARM64::GenerateVirtualCall(
   }
 }
 
-void CodeGeneratorARM64::MoveFromReturnRegister(Location trg, DataType::Type type) {
+bool CodeGeneratorARM64::NeedsMoveFromReturnRegister(Location trg, DataType::Type type) {
   if (!trg.IsValid()) {
-    DCHECK(type == DataType::Type::kVoid);
-    return;
+    DCHECK_EQ(type, DataType::Type::kVoid);
+    return false;
   }
 
+  Location return_loc = InvokeDexCallingConventionVisitorARM64().GetReturnLocation(type);
+  if (trg.Equals(return_loc)) {
+    return false;
+  }
+
+  return true;
+}
+
+void CodeGeneratorARM64::MoveFromReturnRegister(Location trg, DataType::Type type) {
+  DCHECK(trg.IsValid());
   DCHECK_NE(type, DataType::Type::kVoid);
 
   if (DataType::IsIntegralType(type) || type == DataType::Type::kReference) {

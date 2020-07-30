@@ -687,6 +687,8 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   virtual void GenerateVirtualCall(
       HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) = 0;
 
+  // Check if the result of a call needs to be copied to a given target.
+  virtual bool NeedsMoveFromReturnRegister(Location trg, DataType::Type type) = 0;
   // Copy the result of a call into the given target.
   virtual void MoveFromReturnRegister(Location trg, DataType::Type type) = 0;
 

@@ -480,6 +480,7 @@ class CodeGeneratorX86 : public CodeGenerator {
                               dex::TypeIndex type_index,
                               Handle<mirror::Class> handle);
 
+  bool NeedsMoveFromReturnRegister(Location trg, DataType::Type type) override;
   void MoveFromReturnRegister(Location trg, DataType::Type type) override;
 
   // Emit linker patches.

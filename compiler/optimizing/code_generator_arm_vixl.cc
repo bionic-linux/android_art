@@ -9631,19 +9631,27 @@ void InstructionCodeGeneratorARMVIXL::VisitPackedSwitch(HPackedSwitch* switch_in
   }
 }
 
-// Copy the result of a call into the given target.
-void CodeGeneratorARMVIXL::MoveFromReturnRegister(Location trg, DataType::Type type) {
+bool CodeGeneratorARMVIXL::NeedsMoveFromReturnRegister(Location trg, DataType::Type type) {
   if (!trg.IsValid()) {
     DCHECK_EQ(type, DataType::Type::kVoid);
-    return;
+    return false;
   }
 
+  Location return_loc = InvokeDexCallingConventionVisitorARMVIXL().GetReturnLocation(type);
+  if (trg.Equals(return_loc)) {
+    return false;
+  }
+
+  return true;
+}
+
+// Copy the result of a call into the given target.
+void CodeGeneratorARMVIXL::MoveFromReturnRegister(Location trg, DataType::Type type) {
+  DCHECK(trg.IsValid());
   DCHECK_NE(type, DataType::Type::kVoid);
 
   Location return_loc = InvokeDexCallingConventionVisitorARMVIXL().GetReturnLocation(type);
-  if (return_loc.Equals(trg)) {
-    return;
-  }
+  DCHECK(!return_loc.Equals(trg));
 
   // TODO: Consider pairs in the parallel move resolver, then this could be nicely merged
   //       with the last branch.

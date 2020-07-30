@@ -693,6 +693,7 @@ class CodeGeneratorARM64 : public CodeGenerator {
   void GenerateVirtualCall(
       HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
 
+  bool NeedsMoveFromReturnRegister(Location trg, DataType::Type type) override;
   void MoveFromReturnRegister(Location trg, DataType::Type type) override;
 
   // Add a new boot image intrinsic patch for an instruction and return the label

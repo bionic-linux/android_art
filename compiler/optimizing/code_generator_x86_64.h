@@ -606,6 +606,7 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // Store a 64 bit value into a DoubleStackSlot in the most efficient manner.
   void Store64BitValueToStack(Location dest, int64_t value);
 
+  bool NeedsMoveFromReturnRegister(Location trg, DataType::Type type) override;
   void MoveFromReturnRegister(Location trg, DataType::Type type) override;
 
   // Assign a 64 bit constant to an address.

@@ -8601,19 +8601,27 @@ Address CodeGeneratorX86::LiteralCaseTable(HX86PackedSwitch* switch_instr,
   return Address(reg, value, TIMES_4, kPlaceholder32BitOffset, table_fixup);
 }
 
-// TODO: target as memory.
-void CodeGeneratorX86::MoveFromReturnRegister(Location target, DataType::Type type) {
+bool CodeGeneratorX86::NeedsMoveFromReturnRegister(Location target, DataType::Type type) {
   if (!target.IsValid()) {
     DCHECK_EQ(type, DataType::Type::kVoid);
-    return;
+    return false;
   }
-
-  DCHECK_NE(type, DataType::Type::kVoid);
 
   Location return_loc = InvokeDexCallingConventionVisitorX86().GetReturnLocation(type);
   if (target.Equals(return_loc)) {
-    return;
+    return false;
   }
+
+  return true;
+}
+
+// TODO: target as memory.
+void CodeGeneratorX86::MoveFromReturnRegister(Location target, DataType::Type type) {
+  DCHECK(target.IsValid());
+  DCHECK_NE(type, DataType::Type::kVoid);
+
+  Location return_loc = InvokeDexCallingConventionVisitorX86().GetReturnLocation(type);
+  DCHECK(!target.Equals(return_loc));
 
   // TODO: Consider pairs in the parallel move resolver, then this could be nicely merged
   //       with the else branch.
