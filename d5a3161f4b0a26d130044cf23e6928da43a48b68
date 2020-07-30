@@ -34,6 +34,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ca43c8_3c312b31",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-30T15:12:01Z",
+      "side": 1,
+      "message": "Ah, odd that we didn\u0027t have such return types before in this slow path, but you can replace the DCHECK with out.IsRegisterKind.",
+      "parentUuid": "952bfe65_bb29eda2",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
