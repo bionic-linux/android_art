@@ -16,6 +16,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "952bfe65_bb29eda2",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-30T15:09:08Z",
+      "side": 1,
+      "message": "I needed this because the DCHECK(out.IsRegister()) fails for some varhandles, as they might expect the output to be in a register pair or fpu register. The locations are built using the dex calling convention, so there is no need for a move in the case of varhandles. Therefore, I needed to check if the move is necessary before the DCHECK.",
+      "parentUuid": "61f2f667_214fe902",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
