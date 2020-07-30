@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61f2f667_214fe902",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-07-30T15:01:29Z",
+      "side": 1,
+      "message": "Why do you need this change? The check in MoveFromReturnRegister whether we actually need to emit a move should be enough.",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
