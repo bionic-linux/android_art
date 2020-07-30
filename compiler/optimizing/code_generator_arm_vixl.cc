@@ -9641,7 +9641,7 @@ void CodeGeneratorARMVIXL::MoveFromReturnRegister(Location trg, DataType::Type t
   DCHECK_NE(type, DataType::Type::kVoid);
 
   Location return_loc = InvokeDexCallingConventionVisitorARMVIXL().GetReturnLocation(type);
-  if (return_loc.Equals(trg)) {
+  if (trg.Equals(return_loc)) {
     return;
   }
 

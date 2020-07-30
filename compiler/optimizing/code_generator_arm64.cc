@@ -4587,7 +4587,7 @@ void CodeGeneratorARM64::GenerateVirtualCall(
 
 void CodeGeneratorARM64::MoveFromReturnRegister(Location trg, DataType::Type type) {
   if (!trg.IsValid()) {
-    DCHECK(type == DataType::Type::kVoid);
+    DCHECK_EQ(type, DataType::Type::kVoid);
     return;
   }
 

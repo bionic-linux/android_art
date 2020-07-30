@@ -31,6 +31,7 @@
 #include "mirror/object_array-inl.h"
 #include "mirror/reference.h"
 #include "mirror/string.h"
+#include "mirror/var_handle.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread-current-inl.h"
 #include "utils/x86/assembler_x86.h"
@@ -3064,6 +3065,118 @@ void IntrinsicCodeGeneratorX86::VisitIntegerDivideUnsigned(HInvoke* invoke) {
   __ Bind(slow_path->GetExitLabel());
 }
 
+static void CreateVarHandleLocationSummary(HInvoke* invoke, ArenaAllocator* allocator) {
+  InvokeDexCallingConventionVisitorX86 visitor;
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
+
+  for (size_t i = 0; i < invoke->GetNumberOfArguments(); i++) {
+    HInstruction* input = invoke->InputAt(i);
+    locations->SetInAt(i, visitor.GetNextLocation(input->GetType()));
+  }
+
+  locations->SetOut(visitor.GetReturnLocation(invoke->GetType()));
+}
+
+#define INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(Name)                   \
+void IntrinsicLocationsBuilderX86::Visit ## Name(HInvoke* invoke) {   \
+  CreateVarHandleLocationSummary(invoke, allocator_);                 \
+}
+
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleCompareAndExchange)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleCompareAndExchangeAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleCompareAndExchangeRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleCompareAndSet)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGet)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndAdd)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndAddAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndAddRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseAnd)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseAndAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseAndRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseOr)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseOrAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseOrRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseXor)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseXorAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndBitwiseXorRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndSet)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndSetAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetAndSetRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetOpaque)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleGetVolatile)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleSet)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleSetOpaque)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleSetRelease)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleSetVolatile)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleWeakCompareAndSet)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleWeakCompareAndSetAcquire)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleWeakCompareAndSetPlain)
+INTRINSIC_VARHANDLE_LOCATIONS_BUILDER(VarHandleWeakCompareAndSetRelease)
+
+
+static void GenerateVarHandleCode(HInvoke* invoke, CodeGeneratorX86* codegen) {
+  X86Assembler* assembler = codegen->GetAssembler();
+  Register varhandle_object = invoke->GetLocations()->InAt(0).AsRegister<Register>();
+  const uint32_t access_modes_bitmask_offset =
+      mirror::VarHandle::AccessModesBitMaskOffset().Uint32Value();
+  mirror::VarHandle::AccessMode access_mode =
+      mirror::VarHandle::GetAccessModeByIntrinsic(invoke->GetIntrinsic());
+  const uint32_t access_mode_bit = 1u << static_cast<uint32_t>(access_mode);
+
+  // If the access mode is not supported, bail to runtime implementation to handle
+  __ testl(Address(varhandle_object, access_modes_bitmask_offset), Immediate(access_mode_bit));
+  SlowPathCode* slow_path = new (codegen->GetScopedAllocator()) IntrinsicSlowPathX86(invoke);
+  codegen->AddSlowPath(slow_path);
+  __ j(kZero, slow_path->GetEntryLabel());
+
+  // For now, none of the access modes are compiled. The runtime handles them on
+  // both slow path and main path.
+  // TODO: replace calling the runtime with actual assembly code
+  codegen->GenerateInvokePolymorphicCall(invoke->AsInvokePolymorphic());
+
+  __ Bind(slow_path->GetExitLabel());
+}
+
+#define INTRINSIC_VARHANDLE_CODE_GENERATOR(Name)                   \
+void IntrinsicCodeGeneratorX86::Visit ## Name(HInvoke* invoke) {   \
+  GenerateVarHandleCode(invoke, codegen_);                         \
+}
+
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleCompareAndExchange)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleCompareAndExchangeAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleCompareAndExchangeRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleCompareAndSet)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGet)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndAdd)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndAddAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndAddRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseAnd)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseAndAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseAndRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseOr)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseOrAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseOrRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseXor)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseXorAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndBitwiseXorRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndSet)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndSetAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetAndSetRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetOpaque)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleGetVolatile)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleSet)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleSetOpaque)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleSetRelease)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleSetVolatile)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleWeakCompareAndSet)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleWeakCompareAndSetAcquire)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleWeakCompareAndSetPlain)
+INTRINSIC_VARHANDLE_CODE_GENERATOR(VarHandleWeakCompareAndSetRelease)
+
+
 UNIMPLEMENTED_INTRINSIC(X86, MathRoundDouble)
 UNIMPLEMENTED_INTRINSIC(X86, ReferenceGetReferent)
 UNIMPLEMENTED_INTRINSIC(X86, FloatIsInfinite)
@@ -3115,37 +3228,6 @@ UNIMPLEMENTED_INTRINSIC(X86, VarHandleLoadLoadFence)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleStoreStoreFence)
 UNIMPLEMENTED_INTRINSIC(X86, MethodHandleInvokeExact)
 UNIMPLEMENTED_INTRINSIC(X86, MethodHandleInvoke)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleCompareAndExchange)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleCompareAndExchangeAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleCompareAndExchangeRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleCompareAndSet)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGet)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndAdd)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndAddAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndAddRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseAnd)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseAndAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseAndRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseOr)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseOrAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseOrRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseXor)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseXorAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndBitwiseXorRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndSet)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndSetAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndSetRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetOpaque)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetVolatile)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleSet)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetOpaque)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetRelease)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetVolatile)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleWeakCompareAndSet)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleWeakCompareAndSetAcquire)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleWeakCompareAndSetPlain)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleWeakCompareAndSetRelease)
 
 UNREACHABLE_INTRINSICS(X86)
 
