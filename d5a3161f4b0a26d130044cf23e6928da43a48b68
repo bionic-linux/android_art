@@ -106,6 +106,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989d94b3_ed4662df",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-31T08:21:48Z",
+      "side": 1,
+      "message": "The check here is intended to prevent the `out` being overwritten by the RestoreLiveRegisters() below.",
+      "parentUuid": "1472dbe1_9b6ed6e0",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
