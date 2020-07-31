@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1d0a4b08_60650e95",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4590,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-31T13:58:21Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "765f813b_a422322d",
+      "range": {
+        "startLine": 4590,
+        "startChar": 4,
+        "endLine": 4590,
+        "endChar": 43
+      },
+      "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c73b9b5d_f1ad3301",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c1b34f1_e3f754cf",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9644,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-31T13:58:21Z",
+      "side": 1,
+      "message": "Sorry about this small change, in the first patch set I moved this in another method and then I changed it back by hand. Apparently not in the exact same it was before. I fixed it",
+      "parentUuid": "c73b9b5d_f1ad3301",
+      "range": {
+        "startLine": 9644,
+        "startChar": 2,
+        "endLine": 9644,
+        "endChar": 31
+      },
+      "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
