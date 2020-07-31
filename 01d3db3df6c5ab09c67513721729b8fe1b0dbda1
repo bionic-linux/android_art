@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7f0198a_0139c762",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-31T16:00:55Z",
+      "side": 1,
+      "message": "We need to update GenerateInvokePolymorphicCall() to take a slow path and pass `this`. Besides keeping the code clean, it\u0027s also necessary if we ever want to create a LocationSummary that does not indicate call on main path; otherwise, we\u0027ll hit a DCHECK() in CodeGenerator::ValidateInvokeRuntime().",
+      "range": {
+        "startLine": 72,
+        "startChar": 75,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b3f3718_c8531a97",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
