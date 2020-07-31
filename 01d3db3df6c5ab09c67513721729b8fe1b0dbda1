@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b3f3718_c8531a97",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-31T08:48:07Z",
+      "side": 1,
+      "message": "There is very little value of implementing an intrinsic by adding a check and then doing the same call we used to do before on the main path (as well as slow path). I would prefer to start with an actual intrinsic implementation for VarHandleGet for static primitive fields.",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29384b00_69b3d0ac",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-31T08:48:07Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
