@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2b7fba56_17e854c9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-07-31T15:46:06Z",
+      "side": 1,
+      "message": "I agree that we should do it in steps and this change adds value by updating the slow path and implementing one check.\n\nIt would have been enough to do that for a single intrinsic (say VarHandleGet which you will probably implement first) instead of applying this to all of them. We still go to the runtime for both main path and slow path, so we\u0027re not properly testing the implemented check. And implementations for the different VarHandle intrinsics are likely to diverge so the INTRINSIC_VARHANDLE_CODE_GENERATOR macro will probably have to be dropped. If you want to keep it this way for the time being, that\u0027s OK, I\u0027m just saying you will most likely have to rewite this part anyway.",
+      "parentUuid": "d954f1c1_56216aac",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29384b00_69b3d0ac",
         "filename": "compiler/optimizing/locations.h",
         "patchSetId": 2
