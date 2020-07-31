@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d954f1c1_56216aac",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-31T09:00:32Z",
+      "side": 1,
+      "message": "I agree that there is no benefit in calling the runtime on both paths but the purpose of this commit is only to add the check for supported access modes. I can\u0027t implement a whole operation until I have all the checks done. I think that all the guard checks, the method type checking and an operation would be too much for a single commit. This is why I wanted to do the checks in some preparatory commits.",
+      "parentUuid": "0b3f3718_c8531a97",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29384b00_69b3d0ac",
         "filename": "compiler/optimizing/locations.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def5d3b4_1f2fc8be",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-31T09:00:32Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "29384b00_69b3d0ac",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
