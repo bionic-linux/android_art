@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8a5e09a_3fbe4ce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-31T12:45:43Z",
+      "side": 1,
+      "message": "A couple of minor comments, but otherwise I think this is a reasonable step along the path.",
+      "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765f813b_a422322d",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4590,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-31T12:45:43Z",
+      "side": 1,
+      "message": "Suggest dropping this too as it\u0027s not directly necessary for the rest of this change here.",
+      "range": {
+        "startLine": 4590,
+        "startChar": 4,
+        "endLine": 4590,
+        "endChar": 43
+      },
+      "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73b9b5d_f1ad3301",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 9644,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-07-31T12:45:43Z",
+      "side": 1,
+      "message": "Can we drop this as it\u0027s unnecessary?",
+      "range": {
+        "startLine": 9644,
+        "startChar": 2,
+        "endLine": 9644,
+        "endChar": 31
+      },
+      "revId": "6789ef523602f88e847ef9b6c57ba998cf0e38f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
