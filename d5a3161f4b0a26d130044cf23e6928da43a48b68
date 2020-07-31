@@ -124,6 +124,24 @@
       "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9944323_b5268e53",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-07-31T08:38:54Z",
+      "side": 1,
+      "message": "Thank you Nicolas for looking on MoveFromReturnRegister implementation! I followed Vladimir\u0027s suggestion on implementing OverlapsRegisters. MoveFromReturnRegister is back at its original state and I removed NeedsMoveFromReturnRegister.",
+      "parentUuid": "1472dbe1_9b6ed6e0",
+      "revId": "d5a3161f4b0a26d130044cf23e6928da43a48b68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
