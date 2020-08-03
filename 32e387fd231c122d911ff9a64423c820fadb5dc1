@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d529edd3_743414f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-03T20:10:45Z",
+      "side": 1,
+      "message": "The benchmark part can be extracted to run on golem.\n\nI think we should keep the run-tests for correctness and if we need the benchmark we can put it to go/lem.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
