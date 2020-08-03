@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70414c57_e30ab8c6",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-03T07:25:21Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 104
+      },
+      "revId": "28c4e7b219e55d13bf560860a57512ccc133b275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
