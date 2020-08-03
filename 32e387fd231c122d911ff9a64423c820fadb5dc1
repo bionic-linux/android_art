@@ -22,6 +22,30 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c483da_9b97adc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-08-03T22:25:21Z",
+      "side": 1,
+      "message": "I think the problem with that is that the benchmark was used to obtain the sets of 15 measurements for aosp/1331512. And I think we need all of them when evaluating BigInteger changes. I don\u0027t know of a way to generate groups of measurements like that in go/lem. Do we really want 15 BigInteger benchmarks in go/lem?\n\nThis is essentially a way of preserving the benchmarking code, getting some added test coverage, without regularly reporting a bunch of rather specialized benchmarks.\n\nIf we want something in go/lem (probably we do) I\u0027d suggest that we  limit it to the harmonic series benchmark run on something like 50 digit integers, and modPow run at 1000 digits, and leave it at those two. Two BigInteger benchmarks seems reasonable to me. (It might make sense to use BigDecimal for the first one, since that has better coverage, and the code is more natural.)",
+      "parentUuid": "d529edd3_743414f1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
