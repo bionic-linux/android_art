@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1a1bf0d_fa20870a",
+        "filename": "compiler/optimizing/intrinsics_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-03T07:18:54Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "f7f0198a_0139c762",
+      "range": {
+        "startLine": 72,
+        "startChar": 75,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b3f3718_c8531a97",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
