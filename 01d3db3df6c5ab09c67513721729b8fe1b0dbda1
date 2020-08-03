@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "ab4347d8_851e5d0f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3137,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-03T06:41:26Z",
+      "side": 1,
+      "message": "Intrinsics implementation will diverge, it is true. But there will be a common part that generates the checks, so I was thinking to do all the checks in GenerateVarHandleCode and then use a switch instruction to call a method specific to that VarHandle access mode (using a similar macro).\n\nAs you suggested, I applied the macro only for VarHandleGet and left all the other access modes as unimplemented. I kept the macro so that when all the checks are done and I can start implementing actual operations, I will use it for all implemented access modes to generate the checks.",
+      "parentUuid": "2b7fba56_17e854c9",
+      "revId": "01d3db3df6c5ab09c67513721729b8fe1b0dbda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29384b00_69b3d0ac",
         "filename": "compiler/optimizing/locations.h",
         "patchSetId": 2
