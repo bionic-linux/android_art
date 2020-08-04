@@ -46,6 +46,30 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d75a4fb_febf36f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-08-04T01:01:07Z",
+      "side": 1,
+      "message": "In go/lem you can run the benchmarks with a WIP CL which does not require submission: so it should be easy to analyze and leaves a trace (so it\u0027s easier to quote and not subject to possible error measurements). \n\nI don\u0027t have a strong opinion whether or not we want to run these specialized benchmarks all the time: are they expensive? if they are fast to run we might as well.\n\nDaulet/Pete, does libcore have any other benchmarks?",
+      "parentUuid": "95c483da_9b97adc8",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
