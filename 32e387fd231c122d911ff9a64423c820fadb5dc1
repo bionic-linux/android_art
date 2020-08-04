@@ -87,6 +87,23 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12349692_ccdbe860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-08-04T16:04:15Z",
+      "side": 1,
+      "message": "I also found another benchmark which uses BigInteger: http://gas.dia.unisa.it/projects/jpbc/benchmark.html",
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
