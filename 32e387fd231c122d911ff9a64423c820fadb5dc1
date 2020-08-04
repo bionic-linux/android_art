@@ -70,6 +70,23 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da162870_0a5ff6a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-08-04T13:40:19Z",
+      "side": 1,
+      "message": "Hi Hans,\n\nI ran the Pi digits benchmark (https://android-git.linaro.org/linaro/art-testing.git/tree/benchmarks/benchmarksgame/pidigits.java) for aosp/1331512 on Pixel 2. \u0027aosp/1331512\u0027 is 3.5 times slower than the current implementation. BigInteger hottest methods:\n\n7.53%     java.math.BigInteger.multiplyByInt\n6.67%     java.math.BigInteger.divideAndRemainder\n2.97%     java.math.BigInteger.add\n2.88%     java.math.BigInteger.subtract\n1.52%     java.math.BigInteger.shiftLeft\n0.13%     java.math.BigInteger.multiply\n",
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
