@@ -104,6 +104,24 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88986259_bd1741ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2020-08-05T16:49:26Z",
+      "side": 1,
+      "message": "To increase the running time I made the following changes to the benchmark:\n\n```\ndiff --git a/benchmarks/benchmarksgame/pidigits.java b/benchmarks/benchmarksgame/pidigits.java\nindex ce67e73..fc47289 100644\n--- a/benchmarks/benchmarksgame/pidigits.java\n+++ b/benchmarks/benchmarksgame/pidigits.java\n@@ -28,7 +28,9 @@ import java.math.BigInteger;\n public class pidigits {\n // CHECKSTYLE.ON: TypeName\n   static final int L \u003d 10;\n-  private static final int PREDEFINED_N_DIGITS \u003d 27;\n+  private static final int PREDEFINED_N_DIGITS \u003d 5000;\n+\n+  public int[] ds;\n\n   public static void old_main() {\n     int n \u003d PREDEFINED_N_DIGITS;\n@@ -36,15 +38,10 @@ public class pidigits {\n\n     PiDigitSpigot digits \u003d new PiDigitSpigot();\n\n-    while (n \u003e 0) {\n-      if (n \u003e\u003d L) {\n-        for (int i \u003d 0; i \u003c L; i++) digits.next();\n-        j +\u003d L;\n-      } else {\n-        for (int i \u003d 0; i \u003c n; i++) digits.next();\n-        j +\u003d n;\n-      }\n-      n -\u003d L;\n+    int[] ds \u003d new int[n];\n+\n+    for (int i \u003d 0; i \u003c n; ++i) {\n+      ds[i] \u003d digits.next();\n     }\n   }\n\n@@ -55,18 +52,6 @@ public class pidigits {\n   }\n\n   public boolean verifyPidigits() {\n-    PiDigitSpigot digits \u003d new PiDigitSpigot();\n-\n-    for (int i \u003d 0; i \u003c PREDEFINED_N_DIGITS; ++i) {\n-      digits.next();\n-    }\n-    int expected \u003d 3;\n-    int found \u003d digits.next();\n-\n-    if (expected !\u003d found) {\n-      System.out.println(\"ERROR: Expected \" + expected + \" but found \" + found);\n-      return false;\n-    }\n     return true;\n   }\n```",
+      "parentUuid": "da162870_0a5ff6a3",
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
