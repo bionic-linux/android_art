@@ -122,6 +122,24 @@
       "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a9a6ec_8fadce52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-08-06T00:11:53Z",
+      "side": 1,
+      "message": "I looked a bit at what this does on host. It didn\u0027t seem to actually produce digits of pi. It seems to build up rather large numbers (on the order of the number of digits being computed, maybe a bit more) inside the transformations. So it\u0027s mostly either dividing two numbers of very similar magnitude, or performing operations on one very large and one small integer. Everything is thus linear time.\n\nWith the original 27 digit version of the benchmark, I would expect the OpenJDK code to be much faster than the current code, since OpenJDK avoids all the reference processing. With the modified version, your result is much less surprising. I would expect OpenJDK to be slower since the reference processing is much less significant, and:\n\n1) It uses 32- rather than 64-bit digits.\n2) The inner loop is Java rather than C++.\n3) We may be garbage collecting more frequently and using less space because everything is now in the Java heap\n\nBut I\u0027m also probably handling this case poorly in division. I believe I currently fall back to boringssl if both arguments are large, even if they\u0027re of similar size. That\u0027s probably a mistake. I\u0027ll revisit.",
+      "parentUuid": "da162870_0a5ff6a3",
+      "revId": "32e387fd231c122d911ff9a64423c820fadb5dc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
