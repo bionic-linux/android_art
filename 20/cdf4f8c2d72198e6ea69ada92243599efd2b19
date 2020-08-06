@@ -1,0 +1,8 @@
+Bypass-Presubmit+1: Insaf Latypov <saferif@google.com>
+Build-Cop-Override+1: Insaf Latypov <saferif@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Insaf Latypov <saferif@google.com>
+Submitted-at: Thu, 06 Aug 2020 16:02:50 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1393102
+Project: platform/art
+Branch: refs/heads/master
