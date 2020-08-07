@@ -16,6 +16,29 @@
       "revId": "d1a783a9184ada0abd8926cdaa784fe9cbe40fc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c8bd01b_9e76b398",
+        "filename": "test/common/runtime_state.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-07T14:40:23Z",
+      "side": 1,
+      "message": "There\u0027s only 1 exit condition here, which could be in the while().",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "d1a783a9184ada0abd8926cdaa784fe9cbe40fc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
