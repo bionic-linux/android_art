@@ -111,6 +111,30 @@
       "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cbfcc46_50973706",
+        "filename": "test/163-app-image-methods/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-08-11T17:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16c38793_25b1d0b8",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "9f6225b1072987cb075157c74f876ef2e6bbc483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
