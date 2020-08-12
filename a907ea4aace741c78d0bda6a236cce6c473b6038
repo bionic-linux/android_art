@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52c28ae0_09ec4382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-12T08:59:21Z",
+      "side": 1,
+      "message": "Premature +2 to unblock Forrest run.",
+      "revId": "a907ea4aace741c78d0bda6a236cce6c473b6038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
