@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b20641_6fe6ae0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-08-12T10:49:47Z",
+      "side": 1,
+      "message": "I\u0027m removing the topic of this change, as another unrelated CL (https://android-review.googlesource.com/c/platform/hardware/intel/audio_media/+/166920) uses the same topic name (\"master\").",
+      "revId": "1b169cf333df4b38c1a1128fb7b0a8adcd63caba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
