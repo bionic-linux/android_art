@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7943c556_ef683e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-08-13T20:24:52Z",
+      "side": 1,
+      "message": "I\u0027ve made the change removing array bound check and to rely on the exeception, as Hans suggested. PTAL",
+      "revId": "f9219c82e489d96740ebdaa31b5a45d675ada5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
