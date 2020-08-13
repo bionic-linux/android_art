@@ -22,6 +22,30 @@
       "revId": "048d02e8b27b6d331d68722d984c52d9fda66679",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb92098b_c2211e4d",
+        "filename": "tools/class2nonsdklist/src/com/android/class2nonsdklist/Class2NonSdkList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-08-13T16:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f82e9e7_8649ed4c",
+      "range": {
+        "startLine": 140,
+        "startChar": 33,
+        "endLine": 140,
+        "endChar": 37
+      },
+      "revId": "048d02e8b27b6d331d68722d984c52d9fda66679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
