@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7331e667_9c344fb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-08-13T20:09:15Z",
+      "side": 1,
+      "message": "Both Treehugger failures were the same unrelated build failure, which I believe has since been fixed:\n\nsystem/bt/gd/hal/hci_hal_host_rootcanal.cc:336:24: error: no member named \u0027capture\u0027 in \u0027bluetooth::hal::SnoopLogger\u0027; did you mean \u0027Capture\u0027?\n      btsnoop_logger_-\u003ecapture(receivedHciPacket, SnoopLogger::Direction::INCOMING, SnoopLogger::PacketType::ISO);\n                       ^~~~~~~\n                       Capture\nsystem/bt/gd/hal/snoop_logger.h:88:8: note: \u0027Capture\u0027 declared here\n  void Capture(const HciPacket\u0026 packet, Direction direction, PacketType type);\n       ^",
+      "revId": "87d6987b89e36d71842dc40869fb365462125a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
