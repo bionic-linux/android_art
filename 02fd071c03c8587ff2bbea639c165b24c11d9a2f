@@ -16,6 +16,24 @@
       "revId": "02fd071c03c8587ff2bbea639c165b24c11d9a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f230ad3_5321e342",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 8
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-08-14T00:36:33Z",
+      "side": 1,
+      "message": "I think this should now be fixed, via 2 more CLs: aosp/1398862 and aosp/1399288 .\n\nBetween this and the 14K line CL that got us here, my average CL size isn\u0027t too bad :-)\n\nSorry about that ...",
+      "parentUuid": "39c08464_7d2e5240",
+      "revId": "02fd071c03c8587ff2bbea639c165b24c11d9a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
