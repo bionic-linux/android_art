@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd5e4fec_0b896000",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-17T14:04:17Z",
+      "side": 1,
+      "message": "Is the existence of $(TARGET_OUT)/lib and $(TARGET_OUT)/lib64 mutually exclusive depending on TARGET_ARCH?",
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
