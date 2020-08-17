@@ -39,6 +39,7 @@ class ArtMethod;
 class ClassLinker;
 class DexFile;
 class OatDexFile;
+class ProfilingInfo;
 struct RuntimeArgumentMap;
 union JValue;
 
@@ -513,6 +514,7 @@ class ScopedJitSuspend {
 };
 
 }  // namespace jit
+
 }  // namespace art
 
 #endif  // ART_RUNTIME_JIT_JIT_H_
