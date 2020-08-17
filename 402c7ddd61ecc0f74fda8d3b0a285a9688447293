@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93ceaa54_63a482df",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-17T14:20:28Z",
+      "side": 1,
+      "message": "More or less - golem builds only build for single arch.",
+      "parentUuid": "fd5e4fec_0b896000",
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "189414b7_dff36128",
         "filename": "Android.mk",
         "patchSetId": 1
