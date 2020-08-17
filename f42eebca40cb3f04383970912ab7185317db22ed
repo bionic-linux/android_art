@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3265701_8dc3a5bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-08-17T19:03:27Z",
+      "side": 1,
+      "message": "This is a refinement/fix of aosp/1401271.\nI submitted that anyway, since it fixed the more immediate problem. This should make it actually correct.",
+      "revId": "f42eebca40cb3f04383970912ab7185317db22ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
