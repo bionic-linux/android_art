@@ -16,6 +16,29 @@
       "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189414b7_dff36128",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-17T14:20:13Z",
+      "side": 1,
+      "message": "What\u0027s the plan for these? They\u0027ll need to go into the prebuilt impl directory too, don\u0027t they?",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 58
+      },
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
