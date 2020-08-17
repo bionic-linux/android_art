@@ -57,6 +57,30 @@
       "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0839d923_c01806df",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-17T14:23:48Z",
+      "side": 1,
+      "message": "Yes - right now they\u0027re in system/core and we have that at the source level, but eventually we won\u0027t and will be using prebuilts.",
+      "parentUuid": "189414b7_dff36128",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 58
+      },
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
