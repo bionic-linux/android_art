@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "efa2e80a_8d723f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-17T14:39:01Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd5e4fec_0b896000",
         "filename": "Android.mk",
         "patchSetId": 1
@@ -34,6 +51,24 @@
       "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27bb633_f8c1b390",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-17T14:39:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93ceaa54_63a482df",
+      "revId": "402c7ddd61ecc0f74fda8d3b0a285a9688447293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
