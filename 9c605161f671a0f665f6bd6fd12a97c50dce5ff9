@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a72daebc_045b979d",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-17T16:24:22Z",
+      "side": 1,
+      "message": "Add space",
+      "range": {
+        "startLine": 2108,
+        "startChar": 37,
+        "endLine": 2108,
+        "endChar": 38
+      },
+      "revId": "9c605161f671a0f665f6bd6fd12a97c50dce5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0293da5_c5ba09de",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3443,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-17T16:24:22Z",
+      "side": 1,
+      "message": "We should not need the mutator lock for this. (And we should not need the \"soa\" above.)",
+      "range": {
+        "startLine": 3443,
+        "startChar": 33,
+        "endLine": 3443,
+        "endChar": 47
+      },
+      "revId": "9c605161f671a0f665f6bd6fd12a97c50dce5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94882c35_9f4c59c3",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-17T16:24:22Z",
+      "side": 1,
+      "message": "Unused in this header file.",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "9c605161f671a0f665f6bd6fd12a97c50dce5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec0b483_3e11eb33",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-17T16:24:22Z",
+      "side": 1,
+      "message": "Are we going to leak all `ProfilingInfo`s now?",
+      "range": {
+        "startLine": 1347,
+        "startChar": 7,
+        "endLine": 1347,
+        "endChar": 11
+      },
+      "revId": "9c605161f671a0f665f6bd6fd12a97c50dce5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92af0311_3b2f29fc",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-17T16:24:22Z",
+      "side": 1,
+      "message": "This is locking the same mutex twice in a row. But it looks difficult to work around that without substantially rewriting the API.",
+      "range": {
+        "startLine": 1647,
+        "startChar": 6,
+        "endLine": 1652,
+        "endChar": 47
+      },
+      "revId": "9c605161f671a0f665f6bd6fd12a97c50dce5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
