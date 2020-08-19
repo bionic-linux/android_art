@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9dead629_104c7b46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T11:07:48Z",
+      "side": 1,
+      "message": "As we discussed 712 fails too with no mods and with similar stack trace:\n\n+dex2oatd F 08-19 11:27:20 852231 852231 image_writer.cc:1448] Check failed: KeepClass(klass) java.lang.Class\u003cWidget\u003e Type\u003dRootJNIGlobal thread_id\u003d0 \u003d 0x13e00108(dalvik.system.PathClassLoader) -\u003e 0x13e00180(java.lang.DexCache).!nativeRoot -\u003e 0x13e00320(java.lang.invoke.MethodType).!nativeRoot -\u003e 0x13e00380(java.lang.Class\u003cWidget\u003e).rtype\n+Runtime aborting...\n+Skipping all-threads dump as mutator lock is exclusively held.Aborting thread:\n+dex2oatd E 08-19 11:27:20 852231 852231 mutex-inl.h:136] Lock level violation: holding \"mutator lock\" (level MutatorLock - 72) while locking \"mutator lock\" (level MutatorLock - 72)\n+dex2oatd E 08-19 11:27:20 852231 852231 thread-inl.h:158] holding \"abort lock\" at point where thread suspension is expected\n+\"main\" prio\u003d5 tid\u003d1 WaitingForVisitObjects (still starting up)\n+  | group\u003d\"\" sCount\u003d0 ucsCount\u003d0 flags\u003d0 obj\u003d(nil) self\u003d0x5617e6cd51a0\n+  | sysTid\u003d852231 nice\u003d0 cgrp\u003ddefault sched\u003d0/0 handle\u003d0x7fcdf4c1a740\n+  | state\u003dR schedstat\u003d( 743551607 72054181 466 ) utm\u003d70 stm\u003d3 core\u003d14 HZ\u003d100\n+  | stack\u003d0x7ffd23bfd000-0x7ffd23bff000 stackSize\u003d8176KB\n+  | held mutexes\u003d \"abort lock\"\n...\n+  native: #06 pc 000000000016d29b  /media/oth/raid0/oth-src/aosp/out/host/linux-x86/bin/dex2oatd64 (art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32::operator()(art::mirror::Object*) const+587)\n+  native:   art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32::operator()(art::mirror::Object*) const\n+  native:    art/dex2oat/linker/image_writer.cc:1448\n+  native: #07 pc 000000000014204e  /media/oth/raid0/oth-src/aosp/out/host/linux-x86/bin/dex2oatd64 (art::linker::ImageWriter::CheckNonImageClassesRemoved()+1102)\n+  native:   void art::gc::space::RegionSpace::WalkNonLargeRegion\u003cart::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026\u003e(art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026, art::gc::space::RegionSpace::Region const*)\n+  native:    art/runtime/gc/space/region_space-inl.h:289\n+  native:   void art::gc::space::RegionSpace::WalkInternal\u003cfalse, art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026\u003e(art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026)\n+  native:    art/runtime/gc/space/region_space-inl.h:252\n+  native:   void art::gc::space::RegionSpace::Walk\u003cart::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026\u003e(art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026)\n+  native:    art/runtime/gc/space/region_space-inl.h:300\n+  native:   void art::gc::Heap::VisitObjectsInternalRegionSpace\u003cart::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026\u003e(art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026)\n+  native:    art/runtime/gc/heap-visit-objects-inl.h:100\n+  native:   void art::gc::Heap::VisitObjects\u003cart::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026\u003e(art::linker::ImageWriter::CheckNonImageClassesRemoved()::$_32\u0026)\n+  native:    art/runtime/gc/heap-visit-objects-inl.h:55\n+  native:   art::linker::ImageWriter::CheckNonImageClassesRemoved()\n+  native:    art/dex2oat/linker/image_writer.cc:1454\n+  native: #08 pc 000000000014111d  /media/oth/raid0/oth-src/aosp/out/host/linux-x86/bin/dex2oatd64 (art::linker::ImageWriter::PrepareImageAddressSpace(bool, art::TimingLogger*)+2701)\n+  native:   art::linker::ImageWriter::PrepareImageAddressSpace(bool, art::TimingLogger*)\n+  native:    art/dex2oat/linker/image_writer.cc:269\n+  native: #09 pc 00000000000cdb7d  /media/oth/raid0/oth-src/aosp/out/host/linux-x86/bin/dex2oatd64 (art::Dex2Oat::WriteOutputFiles(_jobject*)+381)\n+  native:   art::Dex2Oat::WriteOutputFiles(_jobject*)\n+  native:    art/dex2oat/dex2oat.cc:2291\n+  native: #10 pc 00000000000b6328  /media/oth/raid0/oth-src/aosp/out/host/linux-x86/bin/dex2oatd64 (main+1160)\n+  native:   art::CompileImage(art::Dex2Oat\u0026)\n+  native:    art/dex2oat/dex2oat.cc:3151\n+  native:   art::Dex2oat(int, char**)\n+  native:    art/dex2oat/dex2oat.cc:3300",
+      "parentUuid": "602dae47_24ffa85b",
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c847ac98_73e58325",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "6b0374b8_6e59af13",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3154,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T11:07:48Z",
+      "side": 1,
+      "message": "Yes, you could look at ArtMethod::ResolveReturnType() as example of how to do this.",
+      "parentUuid": "d428be7b_fc2e164a",
+      "range": {
+        "startLine": 3150,
+        "startChar": 4,
+        "endLine": 3154,
+        "endChar": 75
+      },
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecf63a1c_49821d97",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -76,6 +118,30 @@
       "writtenOn": "2020-08-19T10:19:48Z",
       "side": 1,
       "message": "This does not work for primitive types for AOT-compiled code. When we load the boot image (for example in zygote), we relocate it in memory (unless we specify -Xnorelocate, which we do for most testing), so this shall yield false negatives and go to the runtime. It will not work for references either, with the additional caveat that their classes do not need to be in the boot image.\n\nWe would need to re-create the InstructionCodeGeneratorX86::VisitLoadClass() with the different load kinds. I\u0027m wondering if we could just create the LoadClass here (with explicit locations and the load kind provided by HSharpening) and call the codegen but the x86 has the added difficulty of missing PC-relative addressing, so we\u0027d also need an additional X86ComputeBaseMethodAddress for some load kinds. Or maybe we should insert the LoadClass in InstructionBuilder and let the x86::PCRelativeHandlerVisitor insert the X86ComputeBaseMethodAddress when needed.",
+      "range": {
+        "startLine": 3158,
+        "startChar": 18,
+        "endLine": 3158,
+        "endChar": 67
+      },
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dbbe8df_d035fba6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3158,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-19T11:07:48Z",
+      "side": 1,
+      "message": "Phew! One issue here is that is just one accessor: GET. Some accessors would need two of these checks be it return type plus an argument (e.g. GET_AND_SET), two arguments (e.g. COMPARE_AND_SET), or 3 arguments (e.g. COMPARE_AND_EXCHANGE), etc.\n\nIn order to make progress we could consider using an entrypoint to check var types are compatible. Obviously there\u0027s a big performance hit with that, but this might be a reasonable intermediate step with a more optimal approach as a longer term goal.",
+      "parentUuid": "ecf63a1c_49821d97",
       "range": {
         "startLine": 3158,
         "startChar": 18,
