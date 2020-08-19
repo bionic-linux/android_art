@@ -16,6 +16,75 @@
       "revId": "0195b90063d5de03adef113af547ebb184eca77a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c847ac98_73e58325",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-19T10:19:48Z",
+      "side": 1,
+      "message": "This does not work as reference load needs a read barrier.",
+      "range": {
+        "startLine": 1477,
+        "startChar": 4,
+        "endLine": 1478,
+        "endChar": 47
+      },
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d428be7b_fc2e164a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3154,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-19T10:19:48Z",
+      "side": 1,
+      "message": "We could just resolve the return type from the proto in this case.",
+      "range": {
+        "startLine": 3150,
+        "startChar": 4,
+        "endLine": 3154,
+        "endChar": 75
+      },
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf63a1c_49821d97",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3158,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-19T10:19:48Z",
+      "side": 1,
+      "message": "This does not work for primitive types for AOT-compiled code. When we load the boot image (for example in zygote), we relocate it in memory (unless we specify -Xnorelocate, which we do for most testing), so this shall yield false negatives and go to the runtime. It will not work for references either, with the additional caveat that their classes do not need to be in the boot image.\n\nWe would need to re-create the InstructionCodeGeneratorX86::VisitLoadClass() with the different load kinds. I\u0027m wondering if we could just create the LoadClass here (with explicit locations and the load kind provided by HSharpening) and call the codegen but the x86 has the added difficulty of missing PC-relative addressing, so we\u0027d also need an additional X86ComputeBaseMethodAddress for some load kinds. Or maybe we should insert the LoadClass in InstructionBuilder and let the x86::PCRelativeHandlerVisitor insert the X86ComputeBaseMethodAddress when needed.",
+      "range": {
+        "startLine": 3158,
+        "startChar": 18,
+        "endLine": 3158,
+        "endChar": 67
+      },
+      "revId": "0195b90063d5de03adef113af547ebb184eca77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
