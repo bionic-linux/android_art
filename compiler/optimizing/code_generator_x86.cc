@@ -1474,6 +1474,7 @@ void CodeGeneratorX86::MoveFromMemory(DataType::Type dst_type,
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kUint32:
+    case DataType::Type::kReference:
       __ movl(dst.AsRegister<Register>(), src);
       break;
     case DataType::Type::kInt64:
@@ -1490,7 +1491,6 @@ void CodeGeneratorX86::MoveFromMemory(DataType::Type dst_type,
       __ movsd(dst.AsFpuRegister<XmmRegister>(), src);
       break;
     case DataType::Type::kVoid:
-    case DataType::Type::kReference:
       LOG(FATAL) << "Unreachable type " << dst_type;
   }
 }

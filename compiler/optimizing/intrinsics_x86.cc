@@ -28,6 +28,7 @@
 #include "intrinsics.h"
 #include "intrinsics_utils.h"
 #include "lock_word.h"
+#include "method_handles-inl.h"
 #include "mirror/array-inl.h"
 #include "mirror/object_array-inl.h"
 #include "mirror/reference.h"
@@ -3080,12 +3081,6 @@ void IntrinsicLocationsBuilderX86::VisitVarHandleGet(HInvoke* invoke) {
     return;
   }
 
-  if (type == DataType::Type::kReference) {
-    // Reference return type is not implemented yet
-    // TODO: implement for kReference
-    return;
-  }
-
   if (invoke->GetNumberOfArguments() == 1u) {
     // Static field get
     ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
@@ -3099,6 +3094,7 @@ void IntrinsicLocationsBuilderX86::VisitVarHandleGet(HInvoke* invoke) {
         locations->AddTemp(Location::RequiresRegister());
         FALLTHROUGH_INTENDED;
       case DataType::Type::kInt32:
+      case DataType::Type::kReference:
         locations->SetOut(Location::RequiresRegister());
         break;
       default:
@@ -3126,12 +3122,10 @@ void IntrinsicCodeGeneratorX86::VisitVarHandleGet(HInvoke* invoke) {
   const uint32_t access_mode_bit = 1u << static_cast<uint32_t>(access_mode);
   const uint32_t var_type_offset = mirror::VarHandle::VarTypeOffset().Uint32Value();
   const uint32_t coordtype0_offset = mirror::VarHandle::CoordinateType0Offset().Uint32Value();
-  const uint32_t primitive_type_offset = mirror::Class::PrimitiveTypeOffset().Uint32Value();
+  // const uint32_t primitive_type_offset = mirror::Class::PrimitiveTypeOffset().Uint32Value();
   DataType::Type type = invoke->GetType();
   // For now, only primitive types are supported
   DCHECK_NE(type, DataType::Type::kVoid);
-  DCHECK_NE(type, DataType::Type::kReference);
-  uint32_t primitive_type = static_cast<uint32_t>(DataTypeToPrimitive(type));
   Register temp = locations->GetTemp(0).AsRegister<Register>();
 
   // If the access mode is not supported, bail to runtime implementation to handle
@@ -3144,7 +3138,25 @@ void IntrinsicCodeGeneratorX86::VisitVarHandleGet(HInvoke* invoke) {
   // read barrier when loading a reference only for loading constant field through the reference.
   __ movl(temp, Address(varhandle_object, var_type_offset));
   __ MaybeUnpoisonHeapReference(temp);
-  __ cmpw(Address(temp, primitive_type_offset), Immediate(primitive_type));
+  // I replaced the primitiveType field comparison with actual class object comparison. This works
+  // well for primitive classes (int.class, long.class, etc) but for normal object a check fails.
+  // TODO: add check if varType inherits callsite type, after it works with an exact match.
+  {
+    Thread* self = Thread::Current();
+    ScopedObjectAccess soa(self);
+    StackHandleScope<1> hs(self);
+    ArtMethod* referrer = codegen_->GetGraph()->GetArtMethod();
+    dex::ProtoIndex proto_idx = invoke->AsInvokePolymorphic()->GetDexProtoIndex();
+    ObjPtr<mirror::MethodType> method_type =
+        Runtime::Current()->GetClassLinker()->ResolveMethodType(self,
+                                                                proto_idx,
+                                                                referrer);
+    Handle<mirror::Class> ret_type = hs.NewHandle(method_type->GetRType());
+
+    // I used this log to check if the MethodType object is as I was expecting
+    // LOG(FATAL_WITHOUT_ABORT) << "===== method type rtype: " << method_type->PrettyDescriptor() << "\n";
+    __ cmpl(temp, Immediate(ret_type.GetReference()->AsVRegValue()));
+  }
   __ j(kNotEqual, slow_path->GetEntryLabel());
 
   // Check that the varhandle references a static field by checking that coordinateType0 == null.

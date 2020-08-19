@@ -32,6 +32,7 @@
 #include "base/stl_util.h"
 #include "base/transform_array_ref.h"
 #include "art_method.h"
+#include "class_linker.h"
 #include "class_root.h"
 #include "compilation_kind.h"
 #include "data_type.h"
@@ -40,14 +41,19 @@
 #include "dex/dex_file_types.h"
 #include "dex/invoke_type.h"
 #include "dex/method_reference.h"
+#include "entrypoints/entrypoint_utils.h"
 #include "entrypoints/quick/quick_entrypoints_enum.h"
 #include "handle.h"
 #include "handle_scope.h"
 #include "intrinsics_enum.h"
 #include "locations.h"
 #include "mirror/class.h"
+#include "mirror/class-inl.h"
 #include "mirror/method_type.h"
+#include "mirror/method_type-inl.h"
 #include "offsets.h"
+#include "runtime.h"
+#include "scoped_thread_state_change.h"
 
 namespace art {
 
@@ -4519,7 +4525,9 @@ class HInvokePolymorphic final : public HInvoke {
                      // resolved_method is the ArtMethod object corresponding to the polymorphic
                      // method (e.g. VarHandle.get), resolved using the class linker. It is needed
                      // to pass intrinsic information to the HInvokePolymorphic node.
-                     ArtMethod* resolved_method)
+                     ArtMethod* resolved_method,
+                    //  ArtMethod* referrer,
+                     dex::ProtoIndex proto_idx)
       : HInvoke(kInvokePolymorphic,
                 allocator,
                 number_of_arguments,
@@ -4529,13 +4537,39 @@ class HInvokePolymorphic final : public HInvoke {
                 dex_method_index,
                 resolved_method,
                 kPolymorphic) {
+
+    // if (proto_idx == dex::ProtoIndex::Invalid()) {
+    //   LOG(FATAL) << "===== abort mission\n";
+    // }
+    // if (resolved_method->IsIntrinsic()) {
+    //   Thread *self = Thread::Current();
+    //   ScopedObjectAccess soa(self);
+    //   StackHandleScope<3> hs(self);
+    //   method_type_ =
+    //     hs.NewHandle(Runtime::Current()->GetClassLinker()->ResolveMethodType(self,
+    //                                                                          proto_idx,
+    //                                                                          referrer));
+    //   method_type_ = method_type.Get();
+    //   if (method_type_ == nullptr) {
+    //     LOG(FATAL_WITHOUT_ABORT) << "===== HInvolePolymorphic: no method type handle\n";
+    //   } else if (method_type_.Get() == nullptr) {
+    //     LOG(FATAL_WITHOUT_ABORT) << "===== HInvolePolymorphic: no method type\n";
+    //   }
+    //   LOG(FATAL_WITHOUT_ABORT) << "===== pretty descriptor:" << method_type_.Get()->PrettyDescriptor() << '\n';
+    // }
+    proto_idx_ = proto_idx;
   }
 
   bool IsClonable() const override { return true; }
 
+  // Handle<mirror::MethodType> GetCallsiteMethodType() { return method_type_; }
+  dex::ProtoIndex GetDexProtoIndex() { return proto_idx_; }
+
   DECLARE_INSTRUCTION(InvokePolymorphic);
 
  protected:
+  // Handle<mirror::MethodType> method_type_;
+  dex::ProtoIndex proto_idx_;
   DEFAULT_COPY_CONSTRUCTOR(InvokePolymorphic);
 };
 

@@ -1,0 +1,5 @@
+MyTestInt
+MyTestLong
+MyTestBool
+MyTestChar
+MyTestReference

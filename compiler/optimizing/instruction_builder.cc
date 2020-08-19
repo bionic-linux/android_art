@@ -1105,7 +1105,9 @@ bool HInstructionBuilder::BuildInvokePolymorphic(uint32_t dex_pc,
                                                         return_type,
                                                         dex_pc,
                                                         method_idx,
-                                                        resolved_method);
+                                                        resolved_method,
+                                                        // graph_->GetArtMethod(),
+                                                        proto_idx);
   return HandleInvoke(invoke, operands, shorty, /* is_unresolved= */ false);
 }
 
