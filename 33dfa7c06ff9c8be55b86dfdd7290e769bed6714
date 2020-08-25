@@ -34,6 +34,24 @@
       "revId": "33dfa7c06ff9c8be55b86dfdd7290e769bed6714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edd750ed_cf8fe8bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-25T09:11:39Z",
+      "side": 1,
+      "message": "That\u0027s just output from a LoadClass, so it should be OK. (And we\u0027re only comparing against it, not reading fields from it.)",
+      "parentUuid": "2b15d6a3_7d99a5a8",
+      "revId": "33dfa7c06ff9c8be55b86dfdd7290e769bed6714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
