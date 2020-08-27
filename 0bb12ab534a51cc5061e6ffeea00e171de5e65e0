@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa7e77b5_73942559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-27T15:43:09Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10ac73cb_3d11ce1b",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -18,6 +35,29 @@
         "startChar": 80,
         "endLine": 3144,
         "endChar": 11
+      },
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647afbaf_14799c60",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-27T15:43:09Z",
+      "side": 1,
+      "message": "Can this comment be split into two parts?\n\nOne part covering the primitive type matching and the subsequent CheckCast if the varType and return type of the call site are references.\n\nThe other covers the read barrier explanation.",
+      "range": {
+        "startLine": 3143,
+        "startChar": 2,
+        "endLine": 3144,
+        "endChar": 92
       },
       "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
