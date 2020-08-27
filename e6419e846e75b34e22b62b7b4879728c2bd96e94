@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c50ce5_b68d07b3",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-27T13:48:43Z",
+      "side": 1,
+      "message": "Style: Always use `{ ... }` rather than plain statement for conditional code.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 4,
+        "endLine": 1171,
+        "endChar": 17
+      },
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5556536_d21632e1",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-27T13:48:43Z",
+      "side": 1,
+      "message": "Add a comment that we add the type check because intrinsic implementations do not type-check the retrieved reference.\n\nAnd I\u0027m starting to think that ReferenceTypePropagation needs to explicitly handle InvokePolymorphic as the return type from the ProtoId can be more specific than that of the resolved method (which is always Object for VarHandle.get()). When we fix that, we also need to make sure the type for this particular case is just Object, so that the CheckCast you\u0027re creating is not optimized away. Can you add a FIXME comment to ReferenceTypePropagation::VisitInvoke()?",
+      "range": {
+        "startLine": 1183,
+        "startChar": 4,
+        "endLine": 1183,
+        "endChar": 18
+      },
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dfe259e_5a9f8f25",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-27T13:48:43Z",
+      "side": 1,
+      "message": "I would drop the blank line between the two overloads because the comment above applies to both.",
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321998d5_613c61b6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-27T13:48:43Z",
+      "side": 1,
+      "message": "We should do this check also for references (DataTypeToPrimitive() shall return Primitive::kPrimNot) to avoid reading primitive types as references.",
+      "range": {
+        "startLine": 3150,
+        "startChar": 4,
+        "endLine": 3150,
+        "endChar": 77
+      },
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
