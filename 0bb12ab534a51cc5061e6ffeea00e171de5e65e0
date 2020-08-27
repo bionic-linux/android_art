@@ -62,6 +62,30 @@
       "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b028ab_99a451ed",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-27T16:00:40Z",
+      "side": 1,
+      "message": "Sounds good. I would also describe the \"HCheckCast\" as an \"additional check\" because we still do the primitive type check to make sure it\u0027s a reference.",
+      "parentUuid": "647afbaf_14799c60",
+      "range": {
+        "startLine": 3143,
+        "startChar": 2,
+        "endLine": 3144,
+        "endChar": 92
+      },
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
