@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d61313cc_63c3a639",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-27T15:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c50ce5_b68d07b3",
+      "range": {
+        "startLine": 1171,
+        "startChar": 4,
+        "endLine": 1171,
+        "endChar": 17
+      },
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5556536_d21632e1",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 1
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3b966767_3e6858db",
+        "filename": "compiler/optimizing/instruction_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-27T15:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dfe259e_5a9f8f25",
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321998d5_613c61b6",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -85,6 +127,30 @@
       "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9331b04c_ec399214",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-27T15:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321998d5_613c61b6",
+      "range": {
+        "startLine": 3150,
+        "startChar": 4,
+        "endLine": 3150,
+        "endChar": 77
+      },
+      "revId": "e6419e846e75b34e22b62b7b4879728c2bd96e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
