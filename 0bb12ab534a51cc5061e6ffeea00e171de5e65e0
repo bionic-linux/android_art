@@ -134,6 +134,30 @@
       "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c6671e_33ae3a1f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-28T08:32:39Z",
+      "side": 1,
+      "message": "Yes, thanks.\n\nA couple of wording nits \"a HCheckCast\" and \"loading a primitive\" rather than \"loading constant\".",
+      "parentUuid": "2536600d_fac66537",
+      "range": {
+        "startLine": 3143,
+        "startChar": 2,
+        "endLine": 3144,
+        "endChar": 92
+      },
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
