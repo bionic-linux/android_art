@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "621d9a25_d493ac87",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-28T09:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97597f90_86f387c7",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8cbc407_ed8e6d38",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-28T08:19:05Z",
       "side": 1,
       "message": "Is there value in having the same passed arguments as host? If not, we could remove a few of them.",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773958e6_2cb633b6",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-28T09:31:34Z",
+      "side": 1,
+      "message": "Locations are gone. Not sure if there are any others that are redundant here?",
+      "parentUuid": "d8cbc407_ed8e6d38",
       "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
