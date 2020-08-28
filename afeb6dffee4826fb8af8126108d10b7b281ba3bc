@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97597f90_86f387c7",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-28T08:19:05Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s used, but note theres zygote32_64 too.",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8cbc407_ed8e6d38",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-28T08:19:05Z",
+      "side": 1,
+      "message": "Is there value in having the same passed arguments as host? If not, we could remove a few of them.",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
