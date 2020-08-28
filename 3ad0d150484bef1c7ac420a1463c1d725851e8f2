@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fad6b4bd_1db7ceff",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-08-28T09:23:13Z",
+      "side": 1,
+      "message": "Needs a space, linter fails in presubmit.",
+      "range": {
+        "startLine": 1170,
+        "startChar": 2,
+        "endLine": 1170,
+        "endChar": 5
+      },
+      "revId": "3ad0d150484bef1c7ac420a1463c1d725851e8f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
