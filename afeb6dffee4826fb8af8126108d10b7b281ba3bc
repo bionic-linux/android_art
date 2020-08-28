@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d2795117_e777301f",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-28T19:45:39Z",
+      "side": 1,
+      "message": "Style: Maybe stick to $(...) everywhere.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97597f90_86f387c7",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 2

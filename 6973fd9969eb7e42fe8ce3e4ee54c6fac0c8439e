@@ -16,6 +16,29 @@
       "revId": "6973fd9969eb7e42fe8ce3e4ee54c6fac0c8439e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e5613ea_88be70c0",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-28T19:45:39Z",
+      "side": 1,
+      "message": "If this script is to be thrown away soon then maybe it doesn\u0027t matter, but the two dex2oat command lines are pretty long and has a lot commonality, so it could help to factor that out to a shared variable.",
+      "range": {
+        "startLine": 211,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "6973fd9969eb7e42fe8ce3e4ee54c6fac0c8439e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
