@@ -86,6 +86,54 @@
       "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2536600d_fac66537",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-28T06:29:42Z",
+      "side": 1,
+      "message": "Is that ok?",
+      "parentUuid": "52b028ab_99a451ed",
+      "range": {
+        "startLine": 3143,
+        "startChar": 2,
+        "endLine": 3144,
+        "endChar": 92
+      },
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca45d6e7_93c31d94",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-28T06:29:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10ac73cb_3d11ce1b",
+      "range": {
+        "startLine": 3143,
+        "startChar": 80,
+        "endLine": 3144,
+        "endChar": 11
+      },
+      "revId": "0bb12ab534a51cc5061e6ffeea00e171de5e65e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
