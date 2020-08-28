@@ -69,6 +69,24 @@
       "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e246aa49_26061d0a",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-28T09:35:01Z",
+      "side": 1,
+      "message": "We could remove --write-invocation-to, --generate-build-id, --swap-file, (maybe -Xms and -Xmx),  --instruction-set-variant and --instruction-set-features given they are default (though we could use a system property to find them), --swap-file, --force-determinism and --no-inline-from.",
+      "parentUuid": "773958e6_2cb633b6",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
