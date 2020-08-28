@@ -22,6 +22,30 @@
       "revId": "a8345f8e9fcda36f90b1d73466f921542325348a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605c2f73_1f3047c9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3145,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-08-28T09:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02abd2d_9e909e5d",
+      "range": {
+        "startLine": 3145,
+        "startChar": 79,
+        "endLine": 3145,
+        "endChar": 88
+      },
+      "revId": "a8345f8e9fcda36f90b1d73466f921542325348a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
