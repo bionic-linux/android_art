@@ -61,6 +61,7 @@ const std::vector<const std::string> kArtApexPublicLibraries = {
 };
 
 const std::vector<const std::string> ki18nApexPublicLibraries = {
+    "libicu.so",
     "libicuuc.so",
     "libicui18n.so",
 };
