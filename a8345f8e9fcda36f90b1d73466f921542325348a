@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b02abd2d_9e909e5d",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3145,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-08-28T09:30:59Z",
+      "side": 1,
+      "message": "This should be \"constant\".\n\nThe Class::primitive_type_ is set during Class initialization and then remains immutable, so from-space and to-space Class objects shall have the same primitive_type_. Otherwise, we would need the read barrier.",
+      "range": {
+        "startLine": 3145,
+        "startChar": 79,
+        "endLine": 3145,
+        "endChar": 88
+      },
+      "revId": "a8345f8e9fcda36f90b1d73466f921542325348a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
