@@ -4520,7 +4520,8 @@ class HInvokePolymorphic final : public HInvoke {
                      // resolved_method is the ArtMethod object corresponding to the polymorphic
                      // method (e.g. VarHandle.get), resolved using the class linker. It is needed
                      // to pass intrinsic information to the HInvokePolymorphic node.
-                     ArtMethod* resolved_method)
+                     ArtMethod* resolved_method,
+                     dex::ProtoIndex proto_idx)
       : HInvoke(kInvokePolymorphic,
                 allocator,
                 number_of_arguments,
@@ -4530,13 +4531,19 @@ class HInvokePolymorphic final : public HInvoke {
                 dex_method_index,
                 resolved_method,
                 kPolymorphic) {
+    // LOG(FATAL_WITHOUT_ABORT) << "===== proto index: " << proto_idx;
+    proto_idx_ = proto_idx;
+    // LOG(FATAL_WITHOUT_ABORT) << "===== right after proto index set$$$$$$$\n";
   }
 
   bool IsClonable() const override { return true; }
 
+  dex::ProtoIndex GetProtoIndex() { return proto_idx_; }
+
   DECLARE_INSTRUCTION(InvokePolymorphic);
 
  protected:
+  dex::ProtoIndex proto_idx_;
   DEFAULT_COPY_CONSTRUCTOR(InvokePolymorphic);
 };
 
