@@ -16,6 +16,29 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9d54af4_f5bb210f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "Let\u0027s drop for now.",
+      "range": {
+        "startLine": 3168,
+        "startChar": 0,
+        "endLine": 3170,
+        "endChar": 20
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "959061a2_7380a431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "Quite a change!",
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3277b7d0_a72d3acb",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3069,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "GetExpectedVarHandleKind?\n\nThis is making an educated guess of the expected kind of the VarHandle rather than looking at the VarHandle class. This method should have a descriptive comment to clarify.",
+      "range": {
+        "startLine": 3069,
+        "startChar": 25,
+        "endLine": 3069,
+        "endChar": 26
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff6ffb9_33df1e9d",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3076,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "Suggest dropping the unimplemented Array case and explicitly checking number of arguments to determine whether it might be a static field get or an instance field get.\n\nAs-is, this seems a little fragile and doesn\u0027t scale because Array, ByteArrayView and ByteBufferView all have 2 co-ordinates will fail tests without further introspection.",
+      "range": {
+        "startLine": 3076,
+        "startChar": 13,
+        "endLine": 3076,
+        "endChar": 74
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc79cd4_8a2b96ff",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3088,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "expected_kind",
+      "range": {
+        "startLine": 3088,
+        "startChar": 66,
+        "endLine": 3088,
+        "endChar": 70
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24c51d65_aadaa027",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3090,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "spello",
+      "range": {
+        "startLine": 3090,
+        "startChar": 75,
+        "endLine": 3090,
+        "endChar": 84
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b119eb6d_e247699c",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3131,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "Left over?",
+      "range": {
+        "startLine": 3131,
+        "startChar": 6,
+        "endLine": 3131,
+        "endChar": 69
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05703c90_5a695b8c",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3211,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "DCHECK_GT()...but isn\u0027t DCHECK_EQ(..., 2) what\u0027s supported.",
+      "range": {
+        "startLine": 3211,
+        "startChar": 4,
+        "endLine": 3211,
+        "endChar": 10
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dddfb95e_ae465501",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3346,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "Unnecessary.",
+      "range": {
+        "startLine": 3346,
+        "startChar": 46,
+        "endLine": 3346,
+        "endChar": 66
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0e7dbc_fdaa4564",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3346,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "static and instance fields",
+      "range": {
+        "startLine": 3346,
+        "startChar": 12,
+        "endLine": 3346,
+        "endChar": 17
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "056febe6_20d16497",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3507,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "nit: not a parameter name",
+      "range": {
+        "startLine": 3507,
+        "startChar": 43,
+        "endLine": 3507,
+        "endChar": 69
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a26d5aa_4ff6965f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3510,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-01T15:02:14Z",
+      "side": 1,
+      "message": "nit: not a parameter name",
+      "range": {
+        "startLine": 3510,
+        "startChar": 52,
+        "endLine": 3510,
+        "endChar": 78
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
