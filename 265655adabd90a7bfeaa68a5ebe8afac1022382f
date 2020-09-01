@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "73759c9a_4f0d11d0",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "There are no bytecode constraints that would guarantee this.",
+      "range": {
+        "startLine": 3075,
+        "startChar": 6,
+        "endLine": 3075,
+        "endChar": 65
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4be3290_d0aedce6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3079,
+        "startChar": 6,
+        "endLine": 3079,
+        "endChar": 65
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d43d93_966615e7",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3087,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "I would prefer smaller helper functions, such as GenerateVarHandleAccessModeCheck(), GenerateVarHandleStaticFieldCheck(), GenerateVarHandleInstanceFieldObjectCheck().",
+      "range": {
+        "startLine": 3087,
+        "startChar": 12,
+        "endLine": 3087,
+        "endChar": 41
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9d54af4_f5bb210f",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -36,6 +105,207 @@
         "endLine": 3170,
         "endChar": 20
       },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574d3ec1_702931cf",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3174,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "This is not a good name as the function does not emit a field load. It just loads to `temp` the object (class object for static fields) from/to which to load/store the value.\n\nThis is related to comments on lines 3307 and 3477 which should be rephrased.",
+      "range": {
+        "startLine": 3174,
+        "startChar": 12,
+        "endLine": 3174,
+        "endChar": 38
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0ae32a_50540578",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3214,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "We could avoid the move by doing the load directly on the object register. One way to do that is to return the register for the load from this function.\n\n(This could have been done in https://android-review.googlesource.com/1413975 but at this point I\u0027d like to see that CL submitted as is.)",
+      "range": {
+        "startLine": 3214,
+        "startChar": 6,
+        "endLine": 3214,
+        "endChar": 55
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "612f6680_cd382bd6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3373,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "Why not register? That would simplify the code and you may not need so many temps.",
+      "range": {
+        "startLine": 3373,
+        "startChar": 24,
+        "endLine": 3373,
+        "endChar": 39
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f533cced_2dea94c9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "Why not register?",
+      "range": {
+        "startLine": 3376,
+        "startChar": 4,
+        "endLine": 3376,
+        "endChar": 41
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a36813_c40a2dea",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3403,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "FpuRegisterOrConstant?",
+      "range": {
+        "startLine": 3403,
+        "startChar": 48,
+        "endLine": 3403,
+        "endChar": 67
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "409cd47d_c75dc635",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3452,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "Same as lines 3293-3300, except for some differences in comments. Add a helper function.",
+      "range": {
+        "startLine": 3446,
+        "startChar": 2,
+        "endLine": 3452,
+        "endChar": 46
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe815fb2_178f591e",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3469,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "Slightly misleading as the varType may be an interface type or array type. In these cases we deliberately rely on the slow-path to do the right checks.",
+      "range": {
+        "startLine": 3468,
+        "startChar": 73,
+        "endLine": 3469,
+        "endChar": 18
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca1ec09_d91dcd74",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3501,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "The only reference constant is the HNullConstant, so we know this is 0. But since this is just copied from HandleFieldSet, I\u0027m OK with keeping this code as is. (Maybe I\u0027ll clean it up later.)",
+      "range": {
+        "startLine": 3501,
+        "startChar": 6,
+        "endLine": 3501,
+        "endChar": 70
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f6234cd_83408a9f",
+        "filename": "runtime/mirror/var_handle.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-01T15:16:06Z",
+      "side": 1,
+      "message": "This is used only by the compiler. I would try refactoring the code to avoid this enum (related to my comment about smaller helper functions instead of GenerateVarHandleCommonChecks()) but if you want to keep it move it somewhere under compiler, for example to compiler/optimizing/intrinsics.h around the IntrinsicOptimizations.",
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
