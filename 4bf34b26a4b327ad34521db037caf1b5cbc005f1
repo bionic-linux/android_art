@@ -16,6 +16,23 @@
       "revId": "4bf34b26a4b327ad34521db037caf1b5cbc005f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d48010f6_3103e93b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1083259
+      },
+      "writtenOn": "2020-09-01T23:59:42Z",
+      "side": 1,
+      "message": "I have tested it works well, of course LGTM.",
+      "revId": "4bf34b26a4b327ad34521db037caf1b5cbc005f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
