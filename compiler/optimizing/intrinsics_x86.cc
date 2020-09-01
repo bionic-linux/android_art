@@ -3066,6 +3066,159 @@ void IntrinsicCodeGeneratorX86::VisitIntegerDivideUnsigned(HInvoke* invoke) {
   __ Bind(slow_path->GetExitLabel());
 }
 
+static mirror::VarHandle::Kind GetVarHandleKind(HInvoke *invoke) {
+  uint32_t number_of_arguments = invoke->GetNumberOfArguments();
+
+  switch (invoke->GetIntrinsic()) {
+    case Intrinsics::kVarHandleGet:
+      // T Op(C0..CN)
+      DCHECK(number_of_arguments > 0 && number_of_arguments < 4);
+      return static_cast<mirror::VarHandle::Kind>(number_of_arguments - 1);
+    case Intrinsics::kVarHandleSet:
+      // void Op(C0..CN, T)
+      DCHECK(number_of_arguments > 1 && number_of_arguments < 5);
+      return static_cast<mirror::VarHandle::Kind>(number_of_arguments - 2);
+    default:
+      // Unimplemented instrinsics.
+      UNREACHABLE();
+  }
+}
+
+static void GenerateVarHandleCommonChecks(HInvoke *invoke,
+                                          mirror::VarHandle::Kind kind,
+                                          Register temp,
+                                          // This second temporary is only necesarry if the
+                                          // VarHandle is not in a register
+                                          Register temp2,
+                                          SlowPathCode* slow_path,
+                                          X86Assembler* assembler) {
+  LocationSummary* locations = invoke->GetLocations();
+  const uint32_t coordtype0_offset = mirror::VarHandle::CoordinateType0Offset().Uint32Value();
+  const uint32_t access_modes_bitmask_offset =
+      mirror::VarHandle::AccessModesBitMaskOffset().Uint32Value();
+  mirror::VarHandle::AccessMode access_mode =
+      mirror::VarHandle::GetAccessModeByIntrinsic(invoke->GetIntrinsic());
+  const uint32_t access_mode_bit = 1u << static_cast<uint32_t>(access_mode);
+  Location varhandle_object_loc = locations->InAt(0);
+  Register varhandle_object;
+
+  if (varhandle_object_loc.IsRegister()) {
+    varhandle_object = varhandle_object_loc.AsRegister<Register>();
+  } else {
+    DCHECK(locations->InAt(0).IsStackSlot());
+    // If the VarHandle object is not in a register, use the second temporary register.
+    varhandle_object = temp2;
+    __ movl(varhandle_object, Address(ESP, varhandle_object_loc.GetStackIndex()));
+  }
+
+  // If the access mode is not supported, bail to runtime implementation to handle
+  __ testl(Address(varhandle_object, access_modes_bitmask_offset), Immediate(access_mode_bit));
+  __ j(kNotEqual, slow_path->GetEntryLabel());
+
+  switch (kind) {
+    case mirror::VarHandle::Kind::kStaticField:
+      // Check that the VarHandle references a static field by checking that coordinateType0 == null.
+      // Do not emit read barrier (or unpoison the reference) for comparing to null.
+      __ cmpl(Address(varhandle_object, coordtype0_offset), Immediate(0));
+      __ j(kNotEqual, slow_path->GetEntryLabel());
+      break;
+    case mirror::VarHandle::Kind::kInstanceField: {
+      const uint32_t class_offset = mirror::Object::ClassOffset().Uint32Value();
+      const uint32_t super_class_offset = mirror::Class::SuperClassOffset().Uint32Value();
+      const uint32_t coordtype1_offset = mirror::VarHandle::CoordinateType1Offset().Uint32Value();
+      NearLabel check_type_compatibility, type_matched;
+      DCHECK(invoke->GetNumberOfArguments() > 1);
+      // Register object = locations->InAt(1).AsRegister<Register>();
+      Location object_loc = locations->InAt(1);
+      Register object;
+      if (object_loc.IsRegister()) {
+        object = object_loc.AsRegister<Register>();
+      } else {
+        // We use the temporary register to load the class of the object and then to iterate
+        // through the inheritance chain, so it is safe to use the same register to store
+        // the object in order to get its class.
+        DCHECK(object_loc.IsStackSlot());
+        object = temp;
+        __ movl(object, Address(ESP, object_loc.GetStackIndex()));
+      }
+
+      // Check that the VarHandle references an instance field by checking that
+      // coordinateType1 == null. coordinateType0 should be not null, but this is handled by the
+      // type compatibility check with the source object's type, which will fail for null.
+      __ cmpl(Address(varhandle_object, coordtype1_offset), Immediate(0));
+      __ j(kNotEqual, slow_path->GetEntryLabel());
+
+      // Check the object's class against coordinateType0. Do not unpoison for in-memory comparison.
+      // We deliberately avoid the read barrier, letting the slow path handle the false negatives.
+      __ movl(temp, Address(object, class_offset));
+      __ Bind(&check_type_compatibility);
+      __ cmpl(temp, Address(varhandle_object, coordtype0_offset));
+      __ j(kEqual, &type_matched);
+      // Load the super class.
+      __ MaybeUnpoisonHeapReference(temp);
+      __ movl(temp, Address(temp, super_class_offset));
+      // If the super class is null, we reached the root of the hierarchy. The types are not
+      // compatible.
+      __ testl(temp, temp);
+      __ j(kEqual, slow_path->GetEntryLabel());
+      __ jmp(&check_type_compatibility);
+      __ Bind(&type_matched);
+      break;
+    }
+    case mirror::VarHandle::Kind::kArray:
+      // Unimplemented. TODO: support arrays
+      UNREACHABLE();
+  }
+}
+
+static void GenerateVarHandleFieldLoad(HInvoke* invoke,
+                                       mirror::VarHandle::Kind kind,
+                                       Register temp,
+                                       Register offset,
+                                       CodeGeneratorX86* codegen) {
+  X86Assembler* assembler = codegen->GetAssembler();
+  LocationSummary* locations = invoke->GetLocations();
+  const uint32_t artfield_offset = mirror::FieldVarHandle::ArtFieldOffset().Uint32Value();
+  const uint32_t offset_offset = ArtField::OffsetOffset().Uint32Value();
+  const uint32_t declaring_class_offset = ArtField::DeclaringClassOffset().Uint32Value();
+  Location varhandle_object_loc = locations->InAt(0);
+  Register varhandle_object;
+
+  if (varhandle_object_loc.IsRegister()) {
+    varhandle_object = varhandle_object_loc.AsRegister<Register>();
+  } else {
+    DCHECK(locations->InAt(0).IsStackSlot());
+    // If the VarHandle object is not in a register, use the temporary
+    varhandle_object = temp;
+    __ movl(varhandle_object, Address(ESP, varhandle_object_loc.GetStackIndex()));
+  }
+
+  // Load the ArtField and the offset
+  __ movl(temp, Address(varhandle_object, artfield_offset));
+  __ movl(offset, Address(temp, offset_offset));
+  if (kind == mirror::VarHandle::Kind::kStaticField) {
+    // Load the declaring class
+    InstructionCodeGeneratorX86* instr_codegen =
+        down_cast<InstructionCodeGeneratorX86*>(codegen->GetInstructionVisitor());
+    instr_codegen->GenerateGcRootFieldLoad(invoke,
+                                            Location::RegisterLocation(temp),
+                                            Address(temp, declaring_class_offset),
+                                            /* fixup_label= */ nullptr,
+                                            kCompilerReadBarrierOption);
+  } else {
+    DCHECK_EQ(kind, mirror::VarHandle::Kind::kInstanceField);
+    // Move the object to temp register, to load the field value afterwards
+    DCHECK(invoke->GetNumberOfArguments() > 1);
+    Location object_loc = locations->InAt(1);
+    if (object_loc.IsRegister()) {
+      __ movl(temp, object_loc.AsRegister<Register>());
+    } else {
+      DCHECK(object_loc.IsStackSlot());
+      __ movl(temp, Address(ESP, object_loc.GetStackIndex()));
+    }
+  }
+}
+
 void IntrinsicLocationsBuilderX86::VisitVarHandleGet(HInvoke* invoke) {
   // The only read barrier implementation supporting the
   // VarHandleGet intrinsic is the Baker-style read barriers.
@@ -3124,26 +3277,18 @@ void IntrinsicCodeGeneratorX86::VisitVarHandleGet(HInvoke* invoke) {
   X86Assembler* assembler = codegen_->GetAssembler();
   LocationSummary* locations = invoke->GetLocations();
   Register varhandle_object = locations->InAt(0).AsRegister<Register>();
-  const uint32_t access_modes_bitmask_offset =
-      mirror::VarHandle::AccessModesBitMaskOffset().Uint32Value();
-  mirror::VarHandle::AccessMode access_mode =
-      mirror::VarHandle::GetAccessModeByIntrinsic(invoke->GetIntrinsic());
-  const uint32_t access_mode_bit = 1u << static_cast<uint32_t>(access_mode);
-  const uint32_t coordtype0_offset = mirror::VarHandle::CoordinateType0Offset().Uint32Value();
   const uint32_t var_type_offset = mirror::VarHandle::VarTypeOffset().Uint32Value();
   const uint32_t primitive_type_offset = mirror::Class::PrimitiveTypeOffset().Uint32Value();
   DataType::Type type = invoke->GetType();
   const uint32_t primitive_type = static_cast<uint32_t>(DataTypeToPrimitive(type));
   DCHECK_NE(type, DataType::Type::kVoid);
   Register temp = locations->GetTemp(0).AsRegister<Register>();
-  InstructionCodeGeneratorX86* instr_codegen =
-      down_cast<InstructionCodeGeneratorX86*>(codegen_->GetInstructionVisitor());
-
-  // If the access mode is not supported, bail to runtime implementation to handle
-  __ testl(Address(varhandle_object, access_modes_bitmask_offset), Immediate(access_mode_bit));
+  mirror::VarHandle::Kind vh_kind = GetVarHandleKind(invoke);
   SlowPathCode* slow_path = new (codegen_->GetScopedAllocator()) IntrinsicSlowPathX86(invoke);
   codegen_->AddSlowPath(slow_path);
-  __ j(kZero, slow_path->GetEntryLabel());
+
+  // The varhandle object is in a register, so we don't need a second temporary
+  GenerateVarHandleCommonChecks(invoke, vh_kind, temp, Register::kNoRegister, slow_path, assembler);
 
   // Check the varType.primitiveType against the type we're trying to retrieve. Reference types
   // are also checked later by a HCheckCast node as an additional check.
@@ -3158,57 +3303,9 @@ void IntrinsicCodeGeneratorX86::VisitVarHandleGet(HInvoke* invoke) {
   // Use 'out' as a temporary register if it's a core register
   Register offset =
       out.IsRegister() ? out.AsRegister<Register>() : locations->GetTemp(1).AsRegister<Register>();
-  const uint32_t artfield_offset = mirror::FieldVarHandle::ArtFieldOffset().Uint32Value();
-  const uint32_t offset_offset = ArtField::OffsetOffset().Uint32Value();
-  const uint32_t declaring_class_offset = ArtField::DeclaringClassOffset().Uint32Value();
 
-  // Load the ArtField, the offset and declaring class
-  __ movl(temp, Address(varhandle_object, artfield_offset));
-  __ movl(offset, Address(temp, offset_offset));
-  if (invoke->GetNumberOfArguments() == 1) {
-    // Check that the varhandle references a static field by checking that coordinateType0 == null.
-    // Do not emit read barrier (or unpoison the reference) for comparing to null.
-    __ cmpl(Address(varhandle_object, coordtype0_offset), Immediate(0));
-    __ j(kNotEqual, slow_path->GetEntryLabel());
-    instr_codegen->GenerateGcRootFieldLoad(invoke,
-                                          Location::RegisterLocation(temp),
-                                          Address(temp, declaring_class_offset),
-                                          /* fixup_label= */ nullptr,
-                                          kCompilerReadBarrierOption);
-  } else {
-    // Instance field
-    DCHECK_EQ(invoke->GetNumberOfArguments(), 2u);
-    Register object = locations->InAt(1).AsRegister<Register>();
-    const uint32_t class_offset = mirror::Object::ClassOffset().Uint32Value();
-    const uint32_t super_class_offset = mirror::Class::SuperClassOffset().Uint32Value();
-    const uint32_t coordtype1_offset = mirror::VarHandle::CoordinateType1Offset().Uint32Value();
-    NearLabel check_type_compatibility, type_matched;
-
-    // Check that the VarHandle references an instance field by checking that
-    // coordinateType1 == null. coordinateType0 should be not null, but this is handled by the
-    // type compatibility check with the source object's type, which will fail for null.
-    __ cmpl(Address(varhandle_object, coordtype1_offset), Immediate(0));
-    __ j(kNotEqual, slow_path->GetEntryLabel());
-
-    // Check the object's class against coordinateType0. Do not unpoison for in-memory comparison.
-    // We deliberately avoid the read barrier, letting the slow path handle the false negatives.
-    __ movl(temp, Address(object, class_offset));
-    __ Bind(&check_type_compatibility);
-    __ cmpl(temp, Address(varhandle_object, coordtype0_offset));
-    __ j(kEqual, &type_matched);
-    // Load the super class.
-    __ MaybeUnpoisonHeapReference(temp);
-    __ movl(temp, Address(temp, super_class_offset));
-    // If the super class is null, we reached the root of the hierarchy. The types are not
-    // compatible.
-    __ testl(temp, temp);
-    __ j(kEqual, slow_path->GetEntryLabel());
-    __ jmp(&check_type_compatibility);
-    __ Bind(&type_matched);
-
-    // Move the object to temp register, to load the field
-    __ movl(temp, object);
-  }
+  // Load the field referred by the VarHandle
+  GenerateVarHandleFieldLoad(invoke, vh_kind, temp, offset, codegen_);
 
   // Load the value from the field
   CodeGeneratorX86* codegen_x86 = down_cast<CodeGeneratorX86*>(codegen_);
@@ -3225,6 +3322,192 @@ void IntrinsicCodeGeneratorX86::VisitVarHandleGet(HInvoke* invoke) {
     }
   } else {
     codegen_x86->MoveFromMemory(type, out, temp, offset);
+  }
+
+  __ Bind(slow_path->GetExitLabel());
+}
+
+void IntrinsicLocationsBuilderX86::VisitVarHandleSet(HInvoke* invoke) {
+  // The only read barrier implementation supporting the
+  // VarHandleGet intrinsic is the Baker-style read barriers.
+  if (kEmitCompilerReadBarrier && !kUseBakerReadBarrier) {
+    return;
+  }
+
+  DataType::Type type = invoke->GetType();
+  uint32_t number_of_arguments = invoke->GetNumberOfArguments();
+
+  if (type != DataType::Type::kVoid) {
+    // Return type should be void for set.
+    return;
+  }
+
+  if (number_of_arguments < 2 || number_of_arguments > 3) {
+    // Only field VarHandle is supported now. TODO: support arrays
+    return;
+  }
+
+  if (number_of_arguments == 3 &&
+      invoke->InputAt(1)->GetType() != DataType::Type::kReference) {
+    // For instance fields, the source object must be a reference
+    return;
+  }
+
+  // The last argument should be the value we intend to set.
+  uint32_t value_index = number_of_arguments - 1;
+  HInstruction* value = invoke->InputAt(value_index);
+  DataType::Type value_type = value->GetType();
+  if (value_type == DataType::Type::kInt64 && !value->IsConstant()) {
+    // We avoid the case of a non-constant Int64 value because we would need to place it in a
+    // register pair. If the slow path is taken, the ParallelMove might fail to move the pair
+    // according to the X86DexCallingConvention in case of an overlap (e.g., move the int64 value
+    // from <EAX, EBX> to <EBX, ECX>).
+    return;
+  }
+
+  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  LocationSummary* locations = new (allocator) LocationSummary(
+      invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
+  locations->AddTemp(Location::RequiresRegister());
+  locations->AddTemp(Location::RequiresRegister());
+  locations->SetInAt(0, Location::Any());
+  if (number_of_arguments == 3) {
+    // For instance fields, this is the source object
+    locations->SetInAt(1, Location::Any());
+  }
+
+  switch (value_type) {
+    case DataType::Type::kBool:
+    case DataType::Type::kInt8:
+    case DataType::Type::kUint8:
+      // Ensure the value is in a byte register
+      locations->SetInAt(value_index, Location::RegisterLocation(EAX));
+      break;
+    case DataType::Type::kInt16:
+    case DataType::Type::kUint16:
+    case DataType::Type::kInt32:
+      locations->SetInAt(value_index, Location::RegisterOrConstant(value));
+      break;
+    case DataType::Type::kInt64:
+      // We only handle constant int64 values.
+      DCHECK(value->IsConstant());
+      locations->SetInAt(value_index, Location::ConstantLocation(value->AsConstant()));
+      break;
+    case DataType::Type::kReference:
+      // Another temporary is necessary for the card. Make sure the card is in a byte register.
+      locations->AddTemp(Location::RegisterLocation(EAX));
+      locations->SetInAt(value_index, Location::RequiresRegister());
+      break;
+    default:
+      DCHECK(DataType::IsFloatingPointType(value_type));
+      locations->SetInAt(value_index, Location::RequiresFpuRegister());
+  }
+}
+
+void IntrinsicCodeGeneratorX86::VisitVarHandleSet(HInvoke* invoke) {
+  // The only read barrier implementation supporting the
+  // VarHandleGet intrinsic is the Baker-style read barriers.
+  DCHECK(!kEmitCompilerReadBarrier || kUseBakerReadBarrier);
+
+  X86Assembler* assembler = codegen_->GetAssembler();
+  LocationSummary* locations = invoke->GetLocations();
+  const uint32_t var_type_offset = mirror::VarHandle::VarTypeOffset().Uint32Value();
+  const uint32_t primitive_type_offset = mirror::Class::PrimitiveTypeOffset().Uint32Value();
+  // The value we want to set is the last argument
+  uint32_t value_index = invoke->GetNumberOfArguments() - 1;
+  Location value = locations->InAt(value_index);
+  DataType::Type value_type = invoke->InputAt(value_index)->GetType();
+  const uint32_t value_primitive_type = static_cast<uint32_t>(DataTypeToPrimitive(value_type));
+  Register temp = locations->GetTemp(0).AsRegister<Register>();
+  Register temp2 = locations->GetTemp(1).AsRegister<Register>();
+  mirror::VarHandle::Kind vh_kind = GetVarHandleKind(invoke);
+  SlowPathCode* slow_path = new (codegen_->GetScopedAllocator()) IntrinsicSlowPathX86(invoke);
+  codegen_->AddSlowPath(slow_path);
+
+  GenerateVarHandleCommonChecks(invoke,
+                                vh_kind,
+                                temp,
+                                // The varhandle might not be in a register, so we need another
+                                // temporary for the common checks
+                                temp2,
+                                slow_path,
+                                assembler);
+
+  Location varhandle_object_loc = locations->InAt(0);
+  Register varhandle_object;
+  if (varhandle_object_loc.IsRegister()) {
+    varhandle_object = varhandle_object_loc.AsRegister<Register>();
+  } else {
+    DCHECK(locations->InAt(0).IsStackSlot());
+    // If the VarHandle object is not in a register, use the temporary
+    varhandle_object = temp;
+    __ movl(varhandle_object, Address(ESP, varhandle_object_loc.GetStackIndex()));
+  }
+  // Check the varType.primitiveType against the type of the value we're trying to set.
+  // We do not need a read barrier when loading a reference only for loading a constant field
+  // through the reference.
+  __ movl(temp, Address(varhandle_object, var_type_offset));
+  __ MaybeUnpoisonHeapReference(temp);
+  __ cmpw(Address(temp, primitive_type_offset), Immediate(value_primitive_type));
+  __ j(kNotEqual, slow_path->GetEntryLabel());
+  if (value_type == DataType::Type::kReference) {
+    Register value_reg = value.AsRegister<Register>();
+    const uint32_t class_offset = mirror::Object::ClassOffset().Uint32Value();
+    const uint32_t super_class_offset = mirror::Class::SuperClassOffset().Uint32Value();
+    NearLabel check_type_compatibility, type_matched;
+
+    // Check the object's class against coordinateType0. Do not unpoison for in-memory comparison.
+    // We deliberately avoid the read barrier, letting the slow path handle the false negatives.
+    __ movl(temp, Address(value_reg, class_offset));
+    __ Bind(&check_type_compatibility);
+    __ cmpl(temp, Address(varhandle_object, var_type_offset));
+    __ j(kEqual, &type_matched);
+    // Load the super class.
+    __ MaybeUnpoisonHeapReference(temp);
+    __ movl(temp, Address(temp, super_class_offset));
+    // If the super class is null, we reached the root of the hierarchy. The types are not
+    // compatible.
+    __ testl(temp, temp);
+    __ j(kEqual, slow_path->GetEntryLabel());
+    __ jmp(&check_type_compatibility);
+    __ Bind(&type_matched);
+  }
+
+  Register offset = temp2;
+  // Load the field referred by the VarHandle
+  GenerateVarHandleFieldLoad(invoke,
+                             vh_kind,
+                             /* declaring class or object= */temp,
+                             offset,
+                             codegen_);
+
+  // Store the value to the field
+  CodeGeneratorX86* codegen_x86 = down_cast<CodeGeneratorX86*>(codegen_);
+  if (value_type == DataType::Type::kReference) {
+    bool needs_write_barrier =
+      CodeGenerator::StoreNeedsWriteBarrier(value_type, invoke->InputAt(value_index));
+    Register value_reg = value.AsRegister<Register>();
+    // Temporary register for the card. May be used for reference poisoning too.
+    Register card = locations->GetTemp(2).AsRegister<Register>();
+
+    if (kPoisonHeapReferences && needs_write_barrier) {
+      // Note that in the case where `value` is a null reference,
+      // we do not enter this block, as the reference does not
+      // need poisoning.
+      __ movl(card, value_reg);
+      __ PoisonHeapReference(card);
+      __ movl(Address(temp, offset, TIMES_1, 0), card);
+    } else if (value.IsConstant()) {
+      int32_t v = CodeGenerator::GetInt32ValueOf(value.GetConstant());
+      __ movl(Address(temp, offset, TIMES_1, 0), Immediate(v));
+    } else {
+      __ movl(Address(temp, offset, TIMES_1, 0), value_reg);
+    }
+    if (needs_write_barrier) {
+      codegen_->MarkGCCard(temp2, card, /* object or declaring class= */temp, value_reg, false);
+    }
+  } else {
+    codegen_x86->MoveToMemory(value_type, value, /* object or declaring class= */ temp, offset);
   }
 
   __ Bind(slow_path->GetExitLabel());
@@ -3304,7 +3587,6 @@ UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndSetAcquire)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetAndSetRelease)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetOpaque)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleGetVolatile)
-UNIMPLEMENTED_INTRINSIC(X86, VarHandleSet)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetOpaque)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetRelease)
 UNIMPLEMENTED_INTRINSIC(X86, VarHandleSetVolatile)
