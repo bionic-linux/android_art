@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab7e8a1_162ce8c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-01T13:28:36Z",
+      "side": 1,
+      "message": "I did not implement the int64 non-constant case in this commit as I said during the standup meeting because I am not sure yet how to treat it. I will add another CL for that case.",
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
