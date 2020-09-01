@@ -95,6 +95,12 @@ class MANAGED VarHandle : public Object {
   };
   constexpr static size_t kNumberOfAccessModes = static_cast<size_t>(AccessMode::kLast) + 1u;
 
+  enum Kind {
+    kStaticField,
+    kInstanceField,
+    kArray
+  };
+
   // Returns true if the AccessMode specified is a supported operation.
   bool IsAccessModeSupported(AccessMode accessMode) REQUIRES_SHARED(Locks::mutator_lock_) {
     return (GetAccessModesBitMask() & (1u << static_cast<uint32_t>(accessMode))) != 0;
