@@ -677,7 +677,7 @@ libE.so nopreload
 
 TEST(NativeLoaderConfigParser, RejectMalformed) {
   ASSERT_FALSE(ParseConfig("libA.so 32 64", always_true).ok());
-  ASSERT_FALSE(ParseConfig("libA.so 32 32", always_true).ok());
+  ASSERT_TRUE(ParseConfig("libA.so 32 32", always_true).ok());
   ASSERT_FALSE(ParseConfig("libA.so 32 nopreload 64", always_true).ok());
   ASSERT_FALSE(ParseConfig("32 libA.so nopreload", always_true).ok());
   ASSERT_FALSE(ParseConfig("nopreload libA.so 32", always_true).ok());
