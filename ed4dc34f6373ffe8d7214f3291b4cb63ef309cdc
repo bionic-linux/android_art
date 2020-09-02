@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e04ff62a_9d20d214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T14:32:08Z",
+      "side": 1,
+      "message": "It looks like there are more discrepancies compared to artifacts on /system with the recent changes here. Need to look into this.",
+      "revId": "ed4dc34f6373ffe8d7214f3291b4cb63ef309cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
