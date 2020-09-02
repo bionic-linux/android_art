@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1d77528b_7e7871b6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3069,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3277b7d0_a72d3acb",
+      "range": {
+        "startLine": 3069,
+        "startChar": 25,
+        "endLine": 3069,
+        "endChar": 26
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eff6ffb9_33df1e9d",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e81be4_ae4d43da",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3076,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eff6ffb9_33df1e9d",
+      "range": {
+        "startLine": 3076,
+        "startChar": 13,
+        "endLine": 3076,
+        "endChar": 74
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "ffa2d247_6618f474",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3088,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc79cd4_8a2b96ff",
+      "range": {
+        "startLine": 3088,
+        "startChar": 66,
+        "endLine": 3088,
+        "endChar": 70
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24c51d65_aadaa027",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -108,6 +180,30 @@
       "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e376bb1_daca2854",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3090,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c51d65_aadaa027",
+      "range": {
+        "startLine": 3090,
+        "startChar": 75,
+        "endLine": 3090,
+        "endChar": 84
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "1c352fb5_9a581c77",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3131,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b119eb6d_e247699c",
+      "range": {
+        "startLine": 3131,
+        "startChar": 6,
+        "endLine": 3131,
+        "endChar": 69
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05703c90_5a695b8c",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -154,6 +274,30 @@
       "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceaf56af_09da5168",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3211,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "The number of arguments won\u0027t necessarily be 2, since I call this helper method in both get and set (probably in compareAndSet too). Replaced with a DCHECK_GT",
+      "parentUuid": "05703c90_5a695b8c",
+      "range": {
+        "startLine": 3211,
+        "startChar": 4,
+        "endLine": 3211,
+        "endChar": 10
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +347,54 @@
     },
     {
       "key": {
+        "uuid": "f85a5bab_29a32bde",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3346,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dddfb95e_ae465501",
+      "range": {
+        "startLine": 3346,
+        "startChar": 46,
+        "endLine": 3346,
+        "endChar": 66
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25fcec39_216edf7d",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3346,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff0e7dbc_fdaa4564",
+      "range": {
+        "startLine": 3346,
+        "startChar": 12,
+        "endLine": 3346,
+        "endChar": 17
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "056febe6_20d16497",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -226,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "71fc51f1_9e696e40",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3507,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056febe6_20d16497",
+      "range": {
+        "startLine": 3507,
+        "startChar": 43,
+        "endLine": 3507,
+        "endChar": 69
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26d5aa_4ff6965f",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -246,6 +462,30 @@
       "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9456c2_d6da78fd",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3510,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a26d5aa_4ff6965f",
+      "range": {
+        "startLine": 3510,
+        "startChar": 52,
+        "endLine": 3510,
+        "endChar": 78
+      },
+      "revId": "610491ef308bb09c38f75cea5bddbd17eebcb9df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

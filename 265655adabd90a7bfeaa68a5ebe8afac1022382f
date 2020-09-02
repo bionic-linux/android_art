@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "50d467fd_06310e3c",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "I don\u0027t rely on bytecode constraints. This method should not be called for an inappropriate number of arguments (the IntrinsicLocationsBuilder should go to runtime)",
+      "parentUuid": "73759c9a_4f0d11d0",
+      "range": {
+        "startLine": 3075,
+        "startChar": 6,
+        "endLine": 3075,
+        "endChar": 65
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4be3290_d0aedce6",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3375dda4_cca36c71",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3079,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4be3290_d0aedce6",
+      "range": {
+        "startLine": 3079,
+        "startChar": 6,
+        "endLine": 3079,
+        "endChar": 65
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "c9ff38bc_ad186b52",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3087,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "I refactorized the method into smaller helper functions but I kept it. If you want, I\u0027ll remove it but I don\u0027t see why we should duplicate the calls of those small helpers.",
+      "parentUuid": "51d43d93_966615e7",
+      "range": {
+        "startLine": 3087,
+        "startChar": 12,
+        "endLine": 3087,
+        "endChar": 41
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d54af4_f5bb210f",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -108,6 +180,30 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2e7b6e_42d18676",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d54af4_f5bb210f",
+      "range": {
+        "startLine": 3168,
+        "startChar": 0,
+        "endLine": 3170,
+        "endChar": 20
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "32457271_640994d6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3174,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574d3ec1_702931cf",
+      "range": {
+        "startLine": 3174,
+        "startChar": 12,
+        "endLine": 3174,
+        "endChar": 38
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f0ae32a_50540578",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -154,6 +274,30 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2cbcf4a_2a9e9e16",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3214,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0ae32a_50540578",
+      "range": {
+        "startLine": 3214,
+        "startChar": 6,
+        "endLine": 3214,
+        "endChar": 55
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "00333687_ec7469b7",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3373,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "For static reference fields I still need the same temps, since the first two contain the declaring class and the offset and MarkGCCard needs them, the register value and another temporary for the card. I miscounted the case for non-const int64, I thought there are no registers left for the varhandle object in that case but there are enough. And I don\u0027t treat that case yet anyway.",
+      "parentUuid": "612f6680_cd382bd6",
+      "range": {
+        "startLine": 3373,
+        "startChar": 24,
+        "endLine": 3373,
+        "endChar": 39
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f533cced_2dea94c9",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -200,6 +368,30 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f256ee46_48458419",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3376,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "I didn\u0027t assign a register for the object because I was moving it anyway, but as you suggested in another comment I avoided the move.",
+      "parentUuid": "f533cced_2dea94c9",
+      "range": {
+        "startLine": 3376,
+        "startChar": 4,
+        "endLine": 3376,
+        "endChar": 41
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "f3476937_0c8f8f2b",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3403,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a36813_c40a2dea",
+      "range": {
+        "startLine": 3403,
+        "startChar": 48,
+        "endLine": 3403,
+        "endChar": 67
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "409cd47d_c75dc635",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "364dbe04_334274de",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3452,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409cd47d_c75dc635",
+      "range": {
+        "startLine": 3446,
+        "startChar": 2,
+        "endLine": 3452,
+        "endChar": 46
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe815fb2_178f591e",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -269,6 +509,30 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83daea41_6b5aa848",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3469,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe815fb2_178f591e",
+      "range": {
+        "startLine": 3468,
+        "startChar": 73,
+        "endLine": 3469,
+        "endChar": 18
+      },
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -309,6 +573,24 @@
       "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b9e5ac_e5a5d6fe",
+        "filename": "runtime/mirror/var_handle.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T12:18:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6234cd_83408a9f",
+      "revId": "265655adabd90a7bfeaa68a5ebe8afac1022382f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
