@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38b10b70_a2720266",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T12:50:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2795117_e777301f",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97597f90_86f387c7",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 2
@@ -110,6 +134,24 @@
       "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7920e9dd_47b285be",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T12:50:28Z",
+      "side": 1,
+      "message": "Done, but have kept the -Xms,-Xmx arguments (but nothing in this script is final).",
+      "parentUuid": "e246aa49_26061d0a",
+      "revId": "afeb6dffee4826fb8af8126108d10b7b281ba3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

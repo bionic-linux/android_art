@@ -39,6 +39,30 @@
       "revId": "6973fd9969eb7e42fe8ce3e4ee54c6fac0c8439e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4fcc451_9acbc5cb",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T12:50:28Z",
+      "side": 1,
+      "message": "Removed these per ngeoffray\u0027s comment about dropping args from host.",
+      "parentUuid": "9e5613ea_88be70c0",
+      "range": {
+        "startLine": 211,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 45
+      },
+      "revId": "6973fd9969eb7e42fe8ce3e4ee54c6fac0c8439e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
