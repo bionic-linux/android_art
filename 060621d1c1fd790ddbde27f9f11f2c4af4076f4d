@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a77d3292_474048eb",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3069,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T16:32:01Z",
+      "side": 1,
+      "message": "Avoid abbreviations in method and variable names if possible (see Naming section of Android Runtime C++ guide).",
+      "range": {
+        "startLine": 3069,
+        "startChar": 47,
+        "endLine": 3069,
+        "endChar": 50
+      },
+      "revId": "060621d1c1fd790ddbde27f9f11f2c4af4076f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c6e3fa_22fbe32f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3084,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T16:32:01Z",
+      "side": 1,
+      "message": "The CL here (https://r.android.com/1418728) exposes some helper methods from var_handles.cc and adds constants for the min and max number of co-ordinates that perhaps allows this to be written in a more explanatory fashion:\n\n```\nVarHandle::AccessModeTemplate access_mode_template \u003d \n  VarHandle::GetAccessModeTemplateByIntrinsic(invoke-\u003eGetIntrinsic()).\nuint32_t var_type_count \u003d VarHandle::GetNumberOfVarTypeParameters(access_mode_template);\nuint32_t accessor_argument_count \u003d invoke-\u003eGetNumberOfArguments() - 1;\nDCHECK_GE(accessor_argument_count, VarHandle::kMinCoordinateTypes + var_type_count);\nDCHECK_LE(accessor_argument_count, VarHandle::kMaxCoordinateTypes + var_type_count);\nreturn accessor_argument_count - var_type_count;\n```",
+      "range": {
+        "startLine": 3070,
+        "startChar": 0,
+        "endLine": 3084,
+        "endChar": 3
+      },
+      "revId": "060621d1c1fd790ddbde27f9f11f2c4af4076f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6282bcb2_8783ccba",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3164,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T16:32:01Z",
+      "side": 1,
+      "message": "defer definition until point of use, prefer name without abbreviation.",
+      "range": {
+        "startLine": 3164,
+        "startChar": 2,
+        "endLine": 3164,
+        "endChar": 81
+      },
+      "revId": "060621d1c1fd790ddbde27f9f11f2c4af4076f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2521252d_b1f450f9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3207,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T16:32:01Z",
+      "side": 1,
+      "message": "A comment explaining return value and offset would be helpful here, ie it is not clear to the reader that offset is set in this method or what it is set to. There is a comment when it\u0027s called, but on it\u0027s own this function is a little cryptic.",
+      "range": {
+        "startLine": 3207,
+        "startChar": 48,
+        "endLine": 3207,
+        "endChar": 64
+      },
+      "revId": "060621d1c1fd790ddbde27f9f11f2c4af4076f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea976a2b_b1499ea9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3211,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T16:32:01Z",
+      "side": 1,
+      "message": "Method is easier to read if this definition is before point of use.\nhttps://google.github.io/styleguide/cppguide.html#Local_Variables",
+      "range": {
+        "startLine": 3211,
+        "startChar": 2,
+        "endLine": 3211,
+        "endChar": 81
+      },
+      "revId": "060621d1c1fd790ddbde27f9f11f2c4af4076f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
