@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "53fdae71_0a6a27e0",
+        "filename": "test/457-regs/run",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T09:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee4f8cff_5e865720",
+      "revId": "f236381d7f1cc377574224b92304ad8720547c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf6a95c8_304bdbae",
         "filename": "test/457-regs/src/Main.java",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "f236381d7f1cc377574224b92304ad8720547c3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e57e955_c1d0a210",
+        "filename": "test/457-regs/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T09:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf6a95c8_304bdbae",
+      "revId": "f236381d7f1cc377574224b92304ad8720547c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
