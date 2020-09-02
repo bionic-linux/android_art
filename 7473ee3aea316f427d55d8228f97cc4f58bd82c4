@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41fc4d9f_29d0312b",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "Why are we keeping these?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 65
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731be088_5893a328",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e0d093_0e881dd0",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "065dbf33_f7d10223",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "This looks like temporary checks? Add a TODO that we should remove it as they won\u0027t make sense later on?",
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec31981_a4bdd0ac",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "nit: add comments on why the profile could not be there?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 4
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa602f3_a08a8c5a",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "Drop this to make consistent with the boot compilations?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bb9fba_28def00c",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "I think that\u0027s the default and can be dropped.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241b1dc8_11e63356",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T13:10:31Z",
+      "side": 1,
+      "message": "Use $filter",
+      "range": {
+        "startLine": 209,
+        "startChar": 29,
+        "endLine": 209,
+        "endChar": 34
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
