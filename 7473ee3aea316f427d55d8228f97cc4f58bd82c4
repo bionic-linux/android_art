@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "75679459_c82cdaef",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T14:38:17Z",
+      "side": 1,
+      "message": "Ah now I understand: probably only services.jar has a profile? I\u0027d call this out instead of mentioning jar sizes - theoretically we should also get profiles for the remaining jars.",
+      "parentUuid": "bd595628_421816df",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 4
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaa602f3_a08a8c5a",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 4

@@ -16,6 +16,29 @@
       "revId": "ed4dc34f6373ffe8d7214f3291b4cb63ef309cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "701738b4_d05d665d",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-02T14:38:17Z",
+      "side": 1,
+      "message": "check sounds overloaded in this context :) How about --compare-size ?",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "ed4dc34f6373ffe8d7214f3291b4cb63ef309cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
