@@ -45,6 +45,30 @@
       "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d507634_2466b09b",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3369,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-02T13:19:04Z",
+      "side": 1,
+      "message": "Maybe I understand it wrong, but I think that is the value type from the call site. InputAt (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/nodes.h;l\u003d2163) gives the input from input records, which seems to be filled with callsite operands (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/instruction_builder.cc;l\u003d2725;drc\u003dmaster) by BuildInvokePolymorphic -\u003e SetupInvokeArguments -\u003e SetRawInputAt (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/nodes.h;l\u003d2174;drc\u003dmaster)\n\nAm I wrong with this? If so, I should try to get the callsite MethodType object",
+      "parentUuid": "48e1eb68_94fc80ac",
+      "range": {
+        "startLine": 3369,
+        "startChar": 17,
+        "endLine": 3369,
+        "endChar": 46
+      },
+      "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
