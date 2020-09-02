@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32a0e211_9c3affa8",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3112,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T13:03:03Z",
+      "side": 1,
+      "message": "I think this comment is unnecessary but you can keep it if you think it adds value.",
+      "range": {
+        "startLine": 3112,
+        "startChar": 39,
+        "endLine": 3112,
+        "endChar": 98
+      },
+      "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48e1eb68_94fc80ac",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3369,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T13:03:03Z",
+      "side": 1,
+      "message": "We should use the value type from the call site. The type from the input is shall be wrong for 8-bit and 16-bit constants and Phis, implicit conversions, patterns simplified by InstructionSimplifier, etc.",
+      "range": {
+        "startLine": 3369,
+        "startChar": 17,
+        "endLine": 3369,
+        "endChar": 46
+      },
+      "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
