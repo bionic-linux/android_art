@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "58c33858_7fc853d3",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3274,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T13:34:32Z",
+      "side": 1,
+      "message": "Do we need to distinguish 8-bit types and use a specific 8-bit register here just like lines 3395-3400? Are we just being \"lucky\" with the register allocator when running the tests?",
+      "range": {
+        "startLine": 3274,
+        "startChar": 10,
+        "endLine": 3274,
+        "endChar": 30
+      },
+      "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48e1eb68_94fc80ac",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 4
@@ -60,6 +83,30 @@
       "side": 1,
       "message": "Maybe I understand it wrong, but I think that is the value type from the call site. InputAt (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/nodes.h;l\u003d2163) gives the input from input records, which seems to be filled with callsite operands (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/instruction_builder.cc;l\u003d2725;drc\u003dmaster) by BuildInvokePolymorphic -\u003e SetupInvokeArguments -\u003e SetRawInputAt (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/nodes.h;l\u003d2174;drc\u003dmaster)\n\nAm I wrong with this? If so, I should try to get the callsite MethodType object",
       "parentUuid": "48e1eb68_94fc80ac",
+      "range": {
+        "startLine": 3369,
+        "startChar": 17,
+        "endLine": 3369,
+        "endChar": 46
+      },
+      "revId": "f52dacc1773e07fea6eaf4ba4af029c199d600f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e2615d_ff3033c8",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3369,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T13:34:32Z",
+      "side": 1,
+      "message": "Consider\n\n  byte b;\n  if (cond) {\n    b \u003d method1();\n  } else {\n    b \u003d method2();\n  }\n  // The Phi for `b` here (used as `value` below) has type Int32. \n  static_byte_field_var_handle.set(b);  // Call site type is `byte`.\n\nWe need to get the type from the call site and the shorty from the proto should be good enough, we do not need precise type for references. It seems the HInvokePolymorpic does not record the `proto_idx`, so we shall need to add that.",
+      "parentUuid": "8d507634_2466b09b",
       "range": {
         "startLine": 3369,
         "startChar": 17,
