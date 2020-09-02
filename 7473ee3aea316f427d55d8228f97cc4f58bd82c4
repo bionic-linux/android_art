@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "f898f883_e5722687",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T19:39:16Z",
+      "side": 1,
+      "message": "Done. We have two profiles for non-bcp jar: services.jar and org.apache.http.legacy.jar. The latter doesn\u0027t get recompiled here.",
+      "parentUuid": "75679459_c82cdaef",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 4
+      },
+      "revId": "7473ee3aea316f427d55d8228f97cc4f58bd82c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaa602f3_a08a8c5a",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 4

@@ -39,6 +39,30 @@
       "revId": "ed4dc34f6373ffe8d7214f3291b4cb63ef309cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f83c823_452b40fb",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-02T19:39:16Z",
+      "side": 1,
+      "message": "--compare-files since we compare contents.",
+      "parentUuid": "701738b4_d05d665d",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "ed4dc34f6373ffe8d7214f3291b4cb63ef309cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
