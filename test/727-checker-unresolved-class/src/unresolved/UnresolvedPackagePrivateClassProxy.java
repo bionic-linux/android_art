@@ -14,18 +14,7 @@
  * limitations under the License.
  */
 
-import resolved.PackagePrivateSubclassOfUnresolvedClassProxy;
-import resolved.PublicSubclassOfUnresolvedClass;
-import resolved.PublicSubclassOfUnresolvedClass2;
-import unresolved.UnresolvedPackagePrivateClassProxy;
-import unresolved.UnresolvedPublicClass;
+package unresolved;
 
-public class Test {
-  public static void $noinline$main() {
-    UnresolvedPublicClass.$noinline$main();
-    UnresolvedPackagePrivateClassProxy.$noinline$main();
-    PublicSubclassOfUnresolvedClass.$noinline$main();
-    PublicSubclassOfUnresolvedClass2.$noinline$main();
-    PackagePrivateSubclassOfUnresolvedClassProxy.$noinline$main();
-  }
+public class UnresolvedPackagePrivateClassProxy extends UnresolvedPackagePrivateClass {
 }

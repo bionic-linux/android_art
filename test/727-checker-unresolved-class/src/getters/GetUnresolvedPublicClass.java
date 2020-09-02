@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-import resolved.PackagePrivateSubclassOfUnresolvedClassProxy;
-import resolved.PublicSubclassOfUnresolvedClass;
-import resolved.PublicSubclassOfUnresolvedClass2;
-import unresolved.UnresolvedPackagePrivateClassProxy;
+package getters;
+
 import unresolved.UnresolvedPublicClass;
 
-public class Test {
-  public static void $noinline$main() {
-    UnresolvedPublicClass.$noinline$main();
-    UnresolvedPackagePrivateClassProxy.$noinline$main();
-    PublicSubclassOfUnresolvedClass.$noinline$main();
-    PublicSubclassOfUnresolvedClass2.$noinline$main();
-    PackagePrivateSubclassOfUnresolvedClassProxy.$noinline$main();
+public class GetUnresolvedPublicClass {
+  // TODO: Make $inline$
+  public static Class<?> get() {
+    return UnresolvedPublicClass.class;
   }
 }

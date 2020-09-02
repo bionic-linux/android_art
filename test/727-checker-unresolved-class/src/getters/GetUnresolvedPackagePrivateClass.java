@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-import resolved.PackagePrivateSubclassOfUnresolvedClassProxy;
-import resolved.PublicSubclassOfUnresolvedClass;
-import resolved.PublicSubclassOfUnresolvedClass2;
-import unresolved.UnresolvedPackagePrivateClassProxy;
-import unresolved.UnresolvedPublicClass;
+package getters;
 
-public class Test {
-  public static void $noinline$main() {
-    UnresolvedPublicClass.$noinline$main();
-    UnresolvedPackagePrivateClassProxy.$noinline$main();
-    PublicSubclassOfUnresolvedClass.$noinline$main();
-    PublicSubclassOfUnresolvedClass2.$noinline$main();
-    PackagePrivateSubclassOfUnresolvedClassProxy.$noinline$main();
+import unresolved.UnresolvedPackagePrivateClass;
+
+public class GetUnresolvedPackagePrivateClass {
+  // TODO: When we relax verifier to ignore access check failures,
+  // change this method to `$inline$`.
+  public static Class<?> get() {
+    return UnresolvedPackagePrivateClass.class;
   }
 }
