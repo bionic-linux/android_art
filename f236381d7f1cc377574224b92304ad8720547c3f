@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee4f8cff_5e865720",
+        "filename": "test/457-regs/run",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T08:48:40Z",
+      "side": 1,
+      "message": "Remove blank lines at end of file.",
+      "revId": "f236381d7f1cc377574224b92304ad8720547c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6a95c8_304bdbae",
+        "filename": "test/457-regs/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-02T08:48:40Z",
+      "side": 1,
+      "message": "Remove one blank line.",
+      "revId": "f236381d7f1cc377574224b92304ad8720547c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
