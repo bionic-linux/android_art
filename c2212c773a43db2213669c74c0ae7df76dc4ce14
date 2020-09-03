@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02f3cbad_9c934245",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-03T14:19:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "95da7fd6_200dc32c",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "c2212c773a43db2213669c74c0ae7df76dc4ce14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cc8619c_7a376f48",
         "filename": "tools/compile_bcp.sh",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "c2212c773a43db2213669c74c0ae7df76dc4ce14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e9f0d5_ce71c2c5",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-03T14:19:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5cc8619c_7a376f48",
+      "range": {
+        "startLine": 213,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 50
+      },
+      "revId": "c2212c773a43db2213669c74c0ae7df76dc4ce14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
