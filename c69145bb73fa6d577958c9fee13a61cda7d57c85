@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e68523_6765a3b7",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 3237,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T13:57:27Z",
+      "side": 1,
+      "message": "TH complains:\n\nart/compiler/optimizing/intrinsics_x86.cc:3237:  Consider using DCHECK_EQ instead of DCHECK(a \u003d\u003d b)  [readability/check] [2]",
+      "range": {
+        "startLine": 3237,
+        "startChar": 2,
+        "endLine": 3237,
+        "endChar": 43
+      },
+      "revId": "c69145bb73fa6d577958c9fee13a61cda7d57c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
