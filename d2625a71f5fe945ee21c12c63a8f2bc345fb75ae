@@ -214,6 +214,29 @@
     },
     {
       "key": {
+        "uuid": "1acc2f69_d7aa2991",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3242,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-03T12:00:22Z",
+      "side": 1,
+      "message": "nit: indent is out by 1.",
+      "range": {
+        "startLine": 3239,
+        "startChar": 0,
+        "endLine": 3242,
+        "endChar": 72
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b02f969d_6e48f577",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
