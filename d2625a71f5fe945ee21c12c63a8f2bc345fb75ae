@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a38063d0_43f9757d",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T11:35:45Z",
+      "side": 1,
+      "message": "That\u0027s interesting, maybe we should investigate further with\n\n  DCHECK(invoke-\u003eIsInvokePolymorphic())\n      \u003c\u003c invoke-\u003eGetBlock()-\u003eGetGraph()-\u003ePrettyMethod()\n      \u003c\u003c \" \" \u003c\u003c invoke-\u003eDebugName() \u003c\u003c \"@\" \u003c\u003c invoke-\u003eGetdexPc()\n      \u003c\u003c \" \" \u003c\u003c invoke-\u003eGetIntrinsic();\n\nand check the bytecode that led to this.",
+      "parentUuid": "046ba802_2e39a417",
+      "range": {
+        "startLine": 3080,
+        "startChar": 2,
+        "endLine": 3080,
+        "endChar": 36
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c7d8ce1_d0eb59d5",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 6
