@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95da7fd6_200dc32c",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-03T12:55:23Z",
+      "side": 1,
+      "message": "As discussed this morning, the contents will definitely differ. Do you still want to do some comparisons?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "c2212c773a43db2213669c74c0ae7df76dc4ce14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc8619c_7a376f48",
+        "filename": "tools/compile_bcp.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-03T12:55:23Z",
+      "side": 1,
+      "message": "Note that for correctness, passing DEX2OATBOOTCLASSPATH means we need to pass dalvik.vm.dex2oat-updatable-bcp-packages-file (which you mention line 28). Not having it can lead to weird bugs which could warrant even fixing it in this proof of concept implementation.",
+      "range": {
+        "startLine": 213,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 50
+      },
+      "revId": "c2212c773a43db2213669c74c0ae7df76dc4ce14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
