@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4685caf_ecdccdb7",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-09-03T16:00:21Z",
+      "side": 1,
+      "message": "Thanks for the heads-up, but I will wait for CL submitted before I abandon this CL.",
+      "parentUuid": "18caa23f_a0dd4dc9",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "a29e9b9557d5d2baf6a1f8fbe7bbe99829aa23a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7dc2a72_e0069118",
         "filename": "libnativeloader/public_libraries.cpp",
         "patchSetId": 1
