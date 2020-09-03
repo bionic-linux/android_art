@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "81d9c072_039157d7",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-03T12:58:26Z",
+      "side": 1,
+      "message": "The issue is in HInstructionBuilder::BuildIntrinsic which does not know about SignaturePolymorphic methods.",
+      "parentUuid": "a38063d0_43f9757d",
+      "range": {
+        "startLine": 3080,
+        "startChar": 2,
+        "endLine": 3080,
+        "endChar": 36
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c7d8ce1_d0eb59d5",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 6
