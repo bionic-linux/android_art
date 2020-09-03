@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18caa23f_a0dd4dc9",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T15:19:14Z",
+      "side": 1,
+      "message": "I believe all of this gets redundant with https://r.android.com/1416069.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "a29e9b9557d5d2baf6a1f8fbe7bbe99829aa23a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7dc2a72_e0069118",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T15:19:14Z",
+      "side": 1,
+      "message": "This conflicts with https://r.android.com/1416069 and won\u0027t be necessary after it. If you can I suggest waiting a few days to let that and related linkerconfig CLs land.",
+      "revId": "a29e9b9557d5d2baf6a1f8fbe7bbe99829aa23a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
