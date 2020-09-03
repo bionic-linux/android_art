@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "0f78f29b_4cedb323",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T13:36:58Z",
+      "side": 1,
+      "message": "I see. So, we could just guard against that in OptimizingCompiler::TryCompileIntrinsic().",
+      "parentUuid": "81d9c072_039157d7",
+      "range": {
+        "startLine": 3080,
+        "startChar": 2,
+        "endLine": 3080,
+        "endChar": 36
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c7d8ce1_d0eb59d5",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 6
