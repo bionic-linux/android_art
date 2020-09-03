@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13d98ff6_9746bcf4",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T10:34:08Z",
+      "side": 1,
+      "message": "These DCHECK()s can fail when called from the IntrinsicLocationsBuilderX86.",
+      "range": {
+        "startLine": 3074,
+        "startChar": 2,
+        "endLine": 3075,
+        "endChar": 94
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ccad10_6db3a618",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3080,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T10:34:08Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we DCHECK() this? We\u0027re using it only for InvokePolymorphic, right? (And remove \"Maybe\" from the function name.)",
+      "range": {
+        "startLine": 3080,
+        "startChar": 2,
+        "endLine": 3080,
+        "endChar": 36
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7d8ce1_d0eb59d5",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3081,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T10:34:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this here.",
+      "range": {
+        "startLine": 3081,
+        "startChar": 4,
+        "endLine": 3081,
+        "endChar": 46
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721a11bf_32087c1e",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T10:34:08Z",
+      "side": 1,
+      "message": "typo\n\nAnd maybe rephrase this as the field offset being _loaded_ to the `offset` register.",
+      "range": {
+        "startLine": 3218,
+        "startChar": 40,
+        "endLine": 3218,
+        "endChar": 46
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02f969d_6e48f577",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4536,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-03T10:34:08Z",
+      "side": 1,
+      "message": "Remove logs and initialize the `proto_idx_` in the initializer-list.",
+      "range": {
+        "startLine": 4534,
+        "startChar": 4,
+        "endLine": 4536,
+        "endChar": 80
+      },
+      "revId": "d2625a71f5fe945ee21c12c63a8f2bc345fb75ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
