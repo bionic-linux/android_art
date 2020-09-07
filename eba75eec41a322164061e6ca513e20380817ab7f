@@ -34,6 +34,24 @@
       "revId": "eba75eec41a322164061e6ca513e20380817ab7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d06ce1d_25e8e71c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-07T08:16:13Z",
+      "side": 1,
+      "message": "No, that is not necessary. I just saw that when `kPoisonHeapReferences \u0026\u0026 needs_write_barrier` is true, I was writing the wrong register to the field. And somehow the tests didn\u0027t complain, so I\u0027m thinking maybe there are additional configurations I missed.",
+      "parentUuid": "66a9fdff_a8d5282c",
+      "revId": "eba75eec41a322164061e6ca513e20380817ab7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
