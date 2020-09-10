@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ccaaf56f_530cd26f",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-10T15:38:08Z",
+      "side": 1,
+      "message": "Aha, it\u0027s for preloading. Very well then.\n\nI see some other libs in this list that cannot be motivated by that, but they\u0027re a different story, I\u0027ll make a note to self to clean them up.",
+      "parentUuid": "739705c7_8523421f",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "a29e9b9557d5d2baf6a1f8fbe7bbe99829aa23a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7dc2a72_e0069118",
         "filename": "libnativeloader/public_libraries.cpp",
         "patchSetId": 1
