@@ -188,6 +188,30 @@
       "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9557916d_fc4cefb9",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-11T15:19:39Z",
+      "side": 1,
+      "message": "gerrit overlaps, treat as done for now.",
+      "parentUuid": "7f7de8d6_698be269",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
