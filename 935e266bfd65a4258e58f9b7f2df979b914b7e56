@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e548cb4b_c6e3c1b8",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T14:04:26Z",
+      "side": 1,
+      "message": "ACK. OK keep as is.",
+      "parentUuid": "6f939a05_23b35db8",
+      "range": {
+        "startLine": 1968,
+        "startChar": 19,
+        "endLine": 1969,
+        "endChar": 38
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "384afe25_b200dd6a",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -153,6 +177,30 @@
       "side": 1,
       "message": "If we place output in EAX then we can\u0027t use the out register for the field offset, as we currently do because both the offset and expected value are needed at the same time. We will need another register and we don\u0027t have one, all 6 are used. We can\u0027t place the offset in one of the two temps because both are modified by MarkGCCard and GenerateReferenceLoadWithBakerReadBarrier.\n\nMaybe it would be better to go back to the solution were the expected value was put on the stack and moved in EAX. Then I think we are able to put out in EAX",
       "parentUuid": "9a8f6e28_c0dc5bcc",
+      "range": {
+        "startLine": 3608,
+        "startChar": 30,
+        "endLine": 3608,
+        "endChar": 48
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b2dafa_b9c21e0e",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T14:04:26Z",
+      "side": 1,
+      "message": "Let\u0027s count the core registers we need:\n\n  EAX \u003d out \u003d expected (temp for float)\n  new_value (temp for float)\n  varhandle\n  object (temp for static field)\n  index\n\nAnd we need 2 temps for references. As far as I know, we have 7 available registers: EAX, EBX, ECX, EDX, ESI, EDI, EBP. Is any of them blocked for some reason?",
+      "parentUuid": "2aedaf20_c39167c5",
       "range": {
         "startLine": 3608,
         "startChar": 30,
