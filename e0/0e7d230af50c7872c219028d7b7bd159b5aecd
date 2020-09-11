@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Artem Serov <artem.serov@linaro.org>
+Code-Review+2: Orion Hodson <oth@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: Vladimir Marko <vmarko@google.com>
+Submitted-at: Fri, 11 Sep 2020 18:31:07 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1424796
+Project: platform/art
+Branch: refs/heads/master
