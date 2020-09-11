@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feab579f_98e7bf36",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2060,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 0,
+      "message": "Where do you ensure that now?",
+      "range": {
+        "startLine": 2059,
+        "startChar": 0,
+        "endLine": 2060,
+        "endChar": 22
+      },
+      "revId": "56e92ec5895de3f6b08c6b831dd6787adb287634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b758cf_37e27f40",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3623,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 0,
+      "message": "Was that obsolete?",
+      "range": {
+        "startLine": 3622,
+        "startChar": 0,
+        "endLine": 3623,
+        "endChar": 75
+      },
+      "revId": "56e92ec5895de3f6b08c6b831dd6787adb287634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

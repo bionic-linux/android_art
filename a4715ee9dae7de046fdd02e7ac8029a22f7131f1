@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e71face6_ed6a3224",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 1,
+      "message": "Should this be Location::RegisterLocation(expected)?",
+      "range": {
+        "startLine": 2017,
+        "startChar": 29,
+        "endLine": 2017,
+        "endChar": 32
+      },
+      "revId": "a4715ee9dae7de046fdd02e7ac8029a22f7131f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b43e9eca_6d36d14a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 1,
+      "message": "Is that an optimization? Should you move it to its own CL so that this CL doesn\u0027t have functional changes?",
+      "range": {
+        "startLine": 2029,
+        "startChar": 0,
+        "endLine": 2035,
+        "endChar": 32
+      },
+      "revId": "a4715ee9dae7de046fdd02e7ac8029a22f7131f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118b3733_dd6bad84",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3677,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 1,
+      "message": "contains?",
+      "range": {
+        "startLine": 3677,
+        "startChar": 21,
+        "endLine": 3677,
+        "endChar": 33
+      },
+      "revId": "a4715ee9dae7de046fdd02e7ac8029a22f7131f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c741b4d3_2d1182a4",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3679,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-11T10:26:52Z",
+      "side": 1,
+      "message": "For better readability, I suggest putting parens here.",
+      "range": {
+        "startLine": 3679,
+        "startChar": 9,
+        "endLine": 3679,
+        "endChar": 41
+      },
+      "revId": "a4715ee9dae7de046fdd02e7ac8029a22f7131f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
