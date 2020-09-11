@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f985b76d_d214e8b9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1974,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 0,
+      "message": "There is no reason to remove this comment. It applies even for static fields where the \"holding object\" is the Class object.",
+      "range": {
+        "startLine": 1974,
+        "startChar": 2,
+        "endLine": 1974,
+        "endChar": 56
+      },
+      "revId": "a41ea2708d143b5982f1969864513b62706d11d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b782a9_039f59eb",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 0,
+      "message": "This was an important comment. If `expected` is different from `out`, we have to unpoison `expected` just in case it\u0027s used by another instruction later.",
+      "range": {
+        "startLine": 2054,
+        "startChar": 6,
+        "endLine": 2055,
+        "endChar": 63
+      },
+      "revId": "a41ea2708d143b5982f1969864513b62706d11d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133f8f0b_5da0e27c",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2076,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 0,
+      "message": "Keep the comment.",
+      "range": {
+        "startLine": 2075,
+        "startChar": 4,
+        "endLine": 2076,
+        "endChar": 51
+      },
+      "revId": "a41ea2708d143b5982f1969864513b62706d11d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

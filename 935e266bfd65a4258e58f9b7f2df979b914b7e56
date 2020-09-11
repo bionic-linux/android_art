@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23604b54_f3a51646",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 1,
+      "message": "These are always the last 2 arguments, so we could get them from the `invoke-\u003eGetLocations()`.",
+      "range": {
+        "startLine": 1968,
+        "startChar": 19,
+        "endLine": 1969,
+        "endChar": 38
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c18df6_34af396f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2056,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 1,
+      "message": "We should not see Uint8 here.",
+      "range": {
+        "startLine": 2056,
+        "startChar": 6,
+        "endLine": 2056,
+        "endChar": 33
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8f6e28_c0dc5bcc",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T13:14:19Z",
+      "side": 1,
+      "message": "We should explicitly place output in EAX. CMPXCHG clobbers EAX on failure and the register allocator is unaware of that, so it could try to reuse the clobbered `expected_value` for another instruction afterwards.\n\nWith output in EAX we can also avoid unpoisoning `expected` in GenCAS(), see my comment there about your removal of an important code comment. And we shall not clobber the `varhandle_object` which shall benefit code that uses the same VarHandle repeatedly.",
+      "range": {
+        "startLine": 3608,
+        "startChar": 30,
+        "endLine": 3608,
+        "endChar": 48
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
