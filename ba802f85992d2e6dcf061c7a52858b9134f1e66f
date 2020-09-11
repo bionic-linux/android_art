@@ -70,6 +70,30 @@
       "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd13cf2f_37cf9f3a",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T15:07:02Z",
+      "side": 1,
+      "message": "If the tests fail, that means the RepeatAw() should be fixed to use only those registers that have a tertiary name. That requires some refactoring.\n\nAdd a FIXME comment for now.",
+      "parentUuid": "478d917e_c1e8a37d",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
