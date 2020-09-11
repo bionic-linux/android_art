@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cca5c128_0ccc9a43",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2060,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-11T12:07:11Z",
+      "side": 0,
+      "message": "I missed that, sorry. I added it.",
+      "parentUuid": "feab579f_98e7bf36",
+      "range": {
+        "startLine": 2059,
+        "startChar": 0,
+        "endLine": 2060,
+        "endChar": 22
+      },
+      "revId": "56e92ec5895de3f6b08c6b831dd6787adb287634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45b758cf_37e27f40",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "56e92ec5895de3f6b08c6b831dd6787adb287634",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a93b78d_68381feb",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3623,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-11T12:07:11Z",
+      "side": 0,
+      "message": "Yes. After readjusting the locations for VarHandle.compareAndSet, I was able to place the expected value in EAX so that moving it wasn\u0027t necessary anymore. This could have been done the first time, but I didn\u0027t think of that allocating scenario.",
+      "parentUuid": "45b758cf_37e27f40",
+      "range": {
+        "startLine": 3622,
+        "startChar": 0,
+        "endLine": 3623,
+        "endChar": 75
+      },
+      "revId": "56e92ec5895de3f6b08c6b831dd6787adb287634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
