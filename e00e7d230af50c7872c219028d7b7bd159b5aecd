@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e8179b_1d98689c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3689,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-09-11T15:11:01Z",
+      "side": 1,
+      "message": "nit: it is checked above that it is W().",
+      "range": {
+        "startLine": 3689,
+        "startChar": 25,
+        "endLine": 3689,
+        "endChar": 28
+      },
+      "revId": "e00e7d230af50c7872c219028d7b7bd159b5aecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
