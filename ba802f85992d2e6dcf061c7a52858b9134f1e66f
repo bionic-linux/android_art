@@ -46,6 +46,30 @@
       "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478d917e_c1e8a37d",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-11T14:57:32Z",
+      "side": 1,
+      "message": "Even if we don\u0027t use them in register allocator, clang expects this convention: to use ah as 8bit register for EBP, etc. Without them the test fails",
+      "parentUuid": "68b6cf72_24e1881e",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
