@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f309694_dcf16a52",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T14:52:30Z",
+      "side": 1,
+      "message": "Remove. The H registers are the higher bits from AX, BX, CX, DX instead of the low 8 bits from BP, SP, SI, DI. Our compiler cannot use those registers.",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "ba802f85992d2e6dcf061c7a52858b9134f1e66f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
