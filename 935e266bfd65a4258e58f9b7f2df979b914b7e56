@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f939a05_23b35db8",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-11T13:48:05Z",
+      "side": 1,
+      "message": "I agree that these should be the last 2 arguments but what if the method is called wrong? In VarHandle.compareAndSet we make sure in locations builder that this does not happen, but for UnsafeCAS I am not sure if this is ensured.",
+      "parentUuid": "23604b54_f3a51646",
+      "range": {
+        "startLine": 1968,
+        "startChar": 19,
+        "endLine": 1969,
+        "endChar": 38
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5c18df6_34af396f",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2020-09-11T13:14:19Z",
       "side": 1,
       "message": "We should explicitly place output in EAX. CMPXCHG clobbers EAX on failure and the register allocator is unaware of that, so it could try to reuse the clobbered `expected_value` for another instruction afterwards.\n\nWith output in EAX we can also avoid unpoisoning `expected` in GenCAS(), see my comment there about your removal of an important code comment. And we shall not clobber the `varhandle_object` which shall benefit code that uses the same VarHandle repeatedly.",
+      "range": {
+        "startLine": 3608,
+        "startChar": 30,
+        "endLine": 3608,
+        "endChar": 48
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aedaf20_c39167c5",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-11T13:48:05Z",
+      "side": 1,
+      "message": "If we place output in EAX then we can\u0027t use the out register for the field offset, as we currently do because both the offset and expected value are needed at the same time. We will need another register and we don\u0027t have one, all 6 are used. We can\u0027t place the offset in one of the two temps because both are modified by MarkGCCard and GenerateReferenceLoadWithBakerReadBarrier.\n\nMaybe it would be better to go back to the solution were the expected value was put on the stack and moved in EAX. Then I think we are able to put out in EAX",
+      "parentUuid": "9a8f6e28_c0dc5bcc",
       "range": {
         "startLine": 3608,
         "startChar": 30,
