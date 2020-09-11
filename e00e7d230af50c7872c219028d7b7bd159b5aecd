@@ -22,6 +22,30 @@
       "revId": "e00e7d230af50c7872c219028d7b7bd159b5aecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a14a28_94fe21cf",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3689,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-11T15:16:54Z",
+      "side": 1,
+      "message": "The .W() is necessary to get a Register from CPURegister.",
+      "parentUuid": "27e8179b_1d98689c",
+      "range": {
+        "startLine": 3689,
+        "startChar": 25,
+        "endLine": 3689,
+        "endChar": 28
+      },
+      "revId": "e00e7d230af50c7872c219028d7b7bd159b5aecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
