@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f627c43_9840a34f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-11T13:54:15Z",
+      "side": 1,
+      "message": "There is very little common code here between the reference and primitive cases, so this could be split into two methods.",
+      "range": {
+        "startLine": 1965,
+        "startChar": 12,
+        "endLine": 1965,
+        "endChar": 19
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23604b54_f3a51646",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -42,6 +65,29 @@
         "startChar": 19,
         "endLine": 1969,
         "endChar": 38
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384afe25_b200dd6a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-11T13:54:15Z",
+      "side": 1,
+      "message": "We\u0027ll fail later on anyway if this is the case, perhaps better to check !temp.Equals(temp2) which might be silently undetected.",
+      "range": {
+        "startLine": 1983,
+        "startChar": 0,
+        "endLine": 1984,
+        "endChar": 44
       },
       "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
