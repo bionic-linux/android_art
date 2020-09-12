@@ -16,6 +16,40 @@
       "revId": "d406de3be8b8fb85df9a613c20bf9b9e920170ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fd8985c_35012440",
+        "filename": "compiler/debug/dwarf/dwarf_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-12T01:24:54Z",
+      "side": 1,
+      "message": "This is the line that fails to be found (along with the next 4 as well).",
+      "revId": "d406de3be8b8fb85df9a613c20bf9b9e920170ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2eda889_641eef15",
+        "filename": "compiler/debug/dwarf/dwarf_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-12T01:24:54Z",
+      "side": 1,
+      "message": "This should be creating an entry for file.c, but perhaps LLVM is being clever and not decoding this (or the encoding routine has something that the new toolchain is exposing as incorrect).",
+      "revId": "d406de3be8b8fb85df9a613c20bf9b9e920170ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
