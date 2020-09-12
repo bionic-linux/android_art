@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c754bbf_5d51c02a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1965,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-12T16:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f627c43_9840a34f",
+      "range": {
+        "startLine": 1965,
+        "startChar": 12,
+        "endLine": 1965,
+        "endChar": 19
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23604b54_f3a51646",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "2a43acb8_afcff86f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-12T16:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384afe25_b200dd6a",
+      "range": {
+        "startLine": 1983,
+        "startChar": 0,
+        "endLine": 1984,
+        "endChar": 44
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5c18df6_34af396f",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
@@ -139,6 +187,30 @@
       "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110eabd9_ab50f4cc",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2056,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-12T16:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c18df6_34af396f",
+      "range": {
+        "startLine": 2056,
+        "startChar": 6,
+        "endLine": 2056,
+        "endChar": 33
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +282,30 @@
       "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e3efc7_482e93e6",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-12T16:16:38Z",
+      "side": 1,
+      "message": "I didn\u0027t know EBP is an option. I fixed the allocation.",
+      "parentUuid": "b2b2dafa_b9c21e0e",
+      "range": {
+        "startLine": 3608,
+        "startChar": 30,
+        "endLine": 3608,
+        "endChar": 48
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
