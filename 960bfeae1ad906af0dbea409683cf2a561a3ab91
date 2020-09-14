@@ -16,6 +16,75 @@
       "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e63851f6_6fceee34",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1997,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-14T12:58:27Z",
+      "side": 1,
+      "message": "cmpxchg requires the expected value to be in EAX so the new value must be elsewhere.",
+      "range": {
+        "startLine": 1997,
+        "startChar": 9,
+        "endLine": 1997,
+        "endChar": 82
+      },
+      "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7301d782_71105ce9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-14T12:58:27Z",
+      "side": 1,
+      "message": "These look slightly odd because a temporary was specified as EAX for purpose, but is not passed through as an argument. Suggest commenting that EAX is a both an input and an output of cmpxchg and noting that we reserved EAX as a temporary so we know it is available.\n\nDCHECK_EQ(out, EAX);",
+      "range": {
+        "startLine": 2000,
+        "startChar": 22,
+        "endLine": 2000,
+        "endChar": 25
+      },
+      "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43fdb39e_3de74bdc",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3625,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-14T12:58:27Z",
+      "side": 1,
+      "message": "For cmpxchg8b, this should be RegisterPairLcation(EAX, EDX).",
+      "range": {
+        "startLine": 3625,
+        "startChar": 2,
+        "endLine": 3625,
+        "endChar": 51
+      },
+      "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
