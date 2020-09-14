@@ -157,6 +157,30 @@
       "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35acdcee_a215826f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3625,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-14T14:13:09Z",
+      "side": 1,
+      "message": "Thanks braino on my part, 64-bit is on the common CAS path, but that\u0027s not available to VarHandles.",
+      "parentUuid": "0bbf3414_bd1b73eb",
+      "range": {
+        "startLine": 3625,
+        "startChar": 2,
+        "endLine": 3625,
+        "endChar": 51
+      },
+      "revId": "960bfeae1ad906af0dbea409683cf2a561a3ab91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
