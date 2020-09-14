@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "d53c1ed2_b2b3cb61",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2056,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-09-14T08:13:51Z",
+      "side": 1,
+      "message": "In this specific case these values come directly from Java primitive types. \u0027byte\u0027 maps to kInt8, there is no corresponding 8-bit unsigned type:\n\nhttps://cs.android.com/android/platform/superproject/+/master:art/libdexfile/dex/primitive.h;l\u003d39;bpv\u003d1;bpt\u003d1?q\u003dPrimitive::Type\n\nkUint8 is introduced by the compiler during some analysis, e.g. InstructionSimplifierVisitor::VisitAnd().",
+      "parentUuid": "546f82dc_d1d6f797",
+      "range": {
+        "startLine": 2056,
+        "startChar": 6,
+        "endLine": 2056,
+        "endChar": 33
+      },
+      "revId": "935e266bfd65a4258e58f9b7f2df979b914b7e56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a8f6e28_c0dc5bcc",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 2
