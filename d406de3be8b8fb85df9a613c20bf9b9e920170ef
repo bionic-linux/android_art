@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "0a7beed0_d5760ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-09-14T17:24:57Z",
+      "side": 1,
+      "message": "I have been looking at this as well.\n\nI would also consider the possibility that this is a regression in the new LLVM version.\n\nIn fairness, the test is a bit odd.... the file definition at the end of the sequence is redundant (just for puropses of testing), but moving it at the very start still keeps the failure.\n\nI have sent you copy of the tested so file.  Running in the llvm-dwarfdump -debug-line generates:\nfile_names[  3]:\n           name: \"file2.c\"\n      dir_index: 1\n       mod_time: 0x000003e8\n         length: 0x000007d0\n\nAddress            Line   Column File   ISA Discriminator Flags\n------------------ ------ ------ ------ --- ------------- -------------\n0x0000000001000000      1      0      4   0             0  is_stmt\n0x0000000001000100      3      4      2   5             0  basic_block prologue_end epilogue_begin end_sequence\n\nThat is the output refers to file (4) which has not been defined in the stdout, and no error is printed.\n\n\nHaving said that.  The opcode is tested for completness and is not used in ART.  Also LLVM tool regression is not blocker for ART.  Feel free to comment out the offending check (ideally with links to LLVM + buganizer bugs)",
+      "revId": "d406de3be8b8fb85df9a613c20bf9b9e920170ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fd8985c_35012440",
         "filename": "compiler/debug/dwarf/dwarf_test.cc",
         "patchSetId": 1
