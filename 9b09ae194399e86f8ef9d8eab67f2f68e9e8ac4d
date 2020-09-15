@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca5a5d25_c10fe09f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-15T09:46:02Z",
+      "side": 1,
+      "message": "http://b/155835175 has more info about why I think that the new output is more correct. I can dig more later this week about how/why LLVM changed this (and if it really should display it in a separate table possibly), but the reality is that all the info is still present and correct.",
+      "revId": "9b09ae194399e86f8ef9d8eab67f2f68e9e8ac4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
