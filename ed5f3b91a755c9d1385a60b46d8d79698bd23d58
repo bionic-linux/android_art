@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ee3c2f8_62b910ed",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-16T12:53:53Z",
+      "side": 1,
+      "message": "Why would it not be defined?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0ca2f5_5eaf231a",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-16T12:53:53Z",
+      "side": 1,
+      "message": "Move includes to top of the file.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 24
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f7aa18c_34bd8d07",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-16T12:53:53Z",
+      "side": 1,
+      "message": "this doesn\u0027t look like preserving the old behavior. Can we make this change mot have any functional changes?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 26
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
