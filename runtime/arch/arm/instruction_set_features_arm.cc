@@ -29,10 +29,7 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 
-#if defined(__arm__)
-extern "C" bool artCheckForArmSdivInstruction();
-extern "C" bool artCheckForArmv8AInstructions();
-#endif
+#include <cpu_features_macros.h>
 
 namespace art {
 
@@ -216,56 +213,24 @@ ArmFeaturesUniquePtr ArmInstructionSetFeatures::FromHwcap() {
                                                             has_armv8a));
 }
 
-// A signal handler called by a fault for an illegal instruction.  We record the fact in r0
-// and then increment the PC in the signal context to return to the next instruction.  We know the
-// instruction is 4 bytes long.
-static void bad_instr_handle(int signo ATTRIBUTE_UNUSED,
-                            siginfo_t* si ATTRIBUTE_UNUSED,
-                            void* data) {
-#if defined(__arm__)
-  struct ucontext *uc = (struct ucontext *)data;
-  struct sigcontext *sc = &uc->uc_mcontext;
-  sc->arm_r0 = 0;     // Set R0 to #0 to signal error.
-  sc->arm_pc += 4;    // Skip offending instruction.
-#else
-  UNUSED(data);
-#endif
-}
+#ifdef CPU_FEATURES_ARCH_ARM
+#include <cpuinfo_arm.h>
 
 ArmFeaturesUniquePtr ArmInstructionSetFeatures::FromAssembly() {
-  // See if have a sdiv instruction.  Register a signal handler and try to execute an sdiv
-  // instruction.  If we get a SIGILL then it's not supported.
-  struct sigaction sa, osa;
-  sa.sa_flags = SA_ONSTACK | SA_RESTART | SA_SIGINFO;
-  sa.sa_sigaction = bad_instr_handle;
-  sigemptyset(&sa.sa_mask);
-  sigaction(SIGILL, &sa, &osa);
-
-  bool has_div = false;
-  bool has_armv8a = false;
-#if defined(__arm__)
-  if (artCheckForArmSdivInstruction()) {
-    has_div = true;
-  }
-  if (artCheckForArmv8AInstructions()) {
-    has_armv8a = true;
-  }
-#endif
-
-  // Restore the signal handler.
-  sigaction(SIGILL, &osa, nullptr);
-
-  // Use compile time features to "detect" LPAE support.
-  // TODO: write an assembly LPAE support test.
-#if defined (__ARM_ARCH_8A__) || defined(__ARM_FEATURE_LPAE)
-  const bool has_atomic_ldrd_strd = true;
-#else
-  const bool has_atomic_ldrd_strd = false;
-#endif
-  return ArmFeaturesUniquePtr(new ArmInstructionSetFeatures(has_div,
-                                                            has_atomic_ldrd_strd,
-                                                            has_armv8a));
+  cpu_features::ArmFeatures = cpu_features::GetArmInfo().features;
+  return ArmFeaturesUniquePtr(new ArmInstructionSetFeatures(features.idiva,
+                                                            features.lpae,
+                                                            true));  // FIXME __ARM_ARCH_8A__
 }
+
+#else
+
+ArmFeaturesUniquePtr ArmInstructionSetFeatures::FromAssembly() {
+  UNIMPLEMENTED(WARNING);
+  return FromCppDefines();
+}
+
+#endif
 
 bool ArmInstructionSetFeatures::Equals(const InstructionSetFeatures* other) const {
   if (InstructionSet::kArm != other->GetInstructionSet()) {

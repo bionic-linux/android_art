@@ -25,6 +25,8 @@
 
 #include "arch/x86_64/instruction_set_features_x86_64.h"
 
+#include <cpu_features_macros.h>
+
 namespace art {
 
 using android::base::StringPrintf;
@@ -233,10 +235,21 @@ X86FeaturesUniquePtr X86InstructionSetFeatures::FromHwcap(bool x86_64) {
   return FromCppDefines(x86_64);
 }
 
+#ifdef CPU_FEATURES_ARCH_X86
+#include <cpuinfo_x86.h>
+
+X86FeaturesUniquePtr X86InstructionSetFeatures::FromAssembly(bool x86_64) {
+  cpu_features::X86Features features = cpu_features::GetX86Info().features;
+  return Create(x86_64, features.ssse3, features.sse4_1, features.sse4_2, features.avx,
+                features.avx2, features.popcnt);
+}
+#else
 X86FeaturesUniquePtr X86InstructionSetFeatures::FromAssembly(bool x86_64) {
   UNIMPLEMENTED(WARNING);
   return FromCppDefines(x86_64);
 }
+
+#endif
 
 bool X86InstructionSetFeatures::Equals(const InstructionSetFeatures* other) const {
   if (GetInstructionSet() != other->GetInstructionSet()) {
