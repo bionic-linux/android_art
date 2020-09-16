@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c65115dc_abba9165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-16T08:17:20Z",
+      "side": 1,
+      "message": "In order to test this, we should use the checker tool to check if the generated assembly for a double volatile field is one `movd` instruction, and not two `movl` but I don\u0027t know the right place to add this. Should I create a new test?",
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
