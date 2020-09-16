@@ -129,6 +129,30 @@
       "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7985ad1f_26d0ab0c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-16T08:48:48Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m just confusing you. I think I looked at int64. What I said the first time stays.\n\nYes, the line 5822 will execute for a volatile constant, which as far as I see from the LocationsBuilder, it is placed in a XmmRegister so I don\u0027t see any problem",
+      "parentUuid": "568b5cb6_3416dba6",
+      "range": {
+        "startLine": 5822,
+        "startChar": 40,
+        "endLine": 5822,
+        "endChar": 45
+      },
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
