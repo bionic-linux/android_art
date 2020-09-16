@@ -153,6 +153,30 @@
       "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcc4e86_5eb5b4b2",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-16T08:59:07Z",
+      "side": 1,
+      "message": "Right, so we agree there is no bug? And we could just put a DCHECK line 5816 that the load is not volatile.",
+      "parentUuid": "7985ad1f_26d0ab0c",
+      "range": {
+        "startLine": 5822,
+        "startChar": 40,
+        "endLine": 5822,
+        "endChar": 45
+      },
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
