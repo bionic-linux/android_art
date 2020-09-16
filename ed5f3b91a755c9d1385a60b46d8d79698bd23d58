@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "1ede93ea_c97856d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-16T15:26:11Z",
+      "side": 1,
+      "message": "CC-ing Guillaume, who is the maintainer of upstream cpu_features (https://github.com/google/cpu_features).",
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ee3c2f8_62b910ed",
         "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
         "patchSetId": 1
