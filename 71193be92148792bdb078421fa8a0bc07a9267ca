@@ -81,6 +81,30 @@
       "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568b5cb6_3416dba6",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-16T08:44:04Z",
+      "side": 1,
+      "message": "Actually on a second look, it seems that for a non-constant non-volatile field the value is placed in a register pair. I\u0027ll add this case",
+      "parentUuid": "12d9e6ef_fd74ba01",
+      "range": {
+        "startLine": 5822,
+        "startChar": 40,
+        "endLine": 5822,
+        "endChar": 45
+      },
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
