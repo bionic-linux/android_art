@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a02bfe90_deceac03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-16T15:21:54Z",
+      "side": 1,
+      "message": "Could you also add\n\n  Bug: 128901000\n\nhere?",
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e2d959_3d553b47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-16T15:21:54Z",
+      "side": 1,
+      "message": "From a quick offline discussion with Daniel: if cpu_features does not fit exactly into the `InstructionSetFeatures::FromRuntimeDetection` / `InstructionSetFeatures::FromCpuInfo` / `InstructionSetFeatures::FromHwcap` / `InstructionSetFeatures::FromAssembly` interfaces, then it might be fine to introduce a new `InstructionSetFeatures::FromCpuFeatures` API (and later revisit the other APIs and possibly retire them).",
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ee3c2f8_62b910ed",
         "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
         "patchSetId": 1
