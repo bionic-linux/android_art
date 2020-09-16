@@ -177,6 +177,30 @@
       "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12833a2e_51f16fd5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1725700
+      },
+      "writtenOn": "2020-09-16T09:40:45Z",
+      "side": 1,
+      "message": "You are right, I didn\u0027t know that when you place a constant in a register in the locations builder it won\u0027t be considered a constant anymore. I removed the condition and placed a DCHECK to avoid any other confusions.\n\nNo bug, sorry for the unnecessary trouble",
+      "parentUuid": "ffcc4e86_5eb5b4b2",
+      "range": {
+        "startLine": 5822,
+        "startChar": 40,
+        "endLine": 5822,
+        "endChar": 45
+      },
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
