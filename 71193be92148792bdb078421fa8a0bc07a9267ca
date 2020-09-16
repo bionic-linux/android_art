@@ -105,6 +105,30 @@
       "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c87c19_d4c77411",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-16T08:44:46Z",
+      "side": 1,
+      "message": "The check line 5815 will fail if is_volatile is true but the value is a constant. So the line 5822 might execute with value being a constant.\n\nBut it could be that this is never the case, and what you only need is a DCHECK(!is_volatile()) line 5816?",
+      "parentUuid": "12d9e6ef_fd74ba01",
+      "range": {
+        "startLine": 5822,
+        "startChar": 40,
+        "endLine": 5822,
+        "endChar": 45
+      },
+      "revId": "71193be92148792bdb078421fa8a0bc07a9267ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
