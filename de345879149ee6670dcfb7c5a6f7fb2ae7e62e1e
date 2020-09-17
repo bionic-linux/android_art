@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b543d206_835b7520",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1467076
+      },
+      "writtenOn": "2020-09-17T07:33:46Z",
+      "side": 1,
+      "message": "Isn\u0027t it ´Daniel´?\nSame below",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1aba166_88e1d0bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1467076
+      },
+      "writtenOn": "2020-09-17T07:33:46Z",
+      "side": 1,
+      "message": "Thx a lot for working on this. I\u0027ve added a few comments.\nPlease let me know if tests uncover bugs in the `cpu_features` library.",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7964b639_8932f85a",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1467076
+      },
+      "writtenOn": "2020-09-17T07:33:46Z",
+      "side": 1,
+      "message": "dup?",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
