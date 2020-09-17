@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "09fa403b_f4ead5c9",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-17T15:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7964b639_8932f85a",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af8b75e0_7a2bfd4b",
         "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
         "patchSetId": 2
@@ -73,6 +91,24 @@
       "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc709aa_2376db6a",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-17T15:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8b75e0_7a2bfd4b",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "23ecd312_3bf59b93",
+        "filename": "runtime/arch/instruction_set_features_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-17T15:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f0696e_d5d8c3bf",
+      "range": {
+        "startLine": 184,
+        "startChar": 58,
+        "endLine": 184,
+        "endChar": 72
+      },
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af61bfda_e4f55ebc",
         "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
         "patchSetId": 2
@@ -136,6 +196,24 @@
       "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a32d1d_f3e58c11",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-17T15:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af61bfda_e4f55ebc",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
