@@ -56,6 +56,86 @@
       "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8b75e0_7a2bfd4b",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-17T14:59:00Z",
+      "side": 1,
+      "message": "Nit: Remove blank line after #ifdef.",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7baa5292_434b5f91",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-17T14:59:00Z",
+      "side": 1,
+      "message": "Remove? (Or is this a sign that the CL is WIP?)",
+      "range": {
+        "startLine": 287,
+        "startChar": 69,
+        "endLine": 287,
+        "endChar": 93
+      },
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f0696e_d5d8c3bf",
+        "filename": "runtime/arch/instruction_set_features_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-17T14:59:00Z",
+      "side": 1,
+      "message": "the cpu_features library",
+      "range": {
+        "startLine": 184,
+        "startChar": 58,
+        "endLine": 184,
+        "endChar": 72
+      },
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af61bfda_e4f55ebc",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-17T14:59:00Z",
+      "side": 1,
+      "message": "Nit: Remove blank line after #ifdef.",
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
