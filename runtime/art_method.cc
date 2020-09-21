@@ -866,6 +866,12 @@ const char* ArtMethod::GetRuntimeMethodName() {
   }
 }
 
+void ArtMethod::SetCodeItem(const dex::CodeItem* code_item) {
+  DCHECK(HasCodeItem());
+  uintptr_t data = reinterpret_cast<uintptr_t>(code_item) | (GetDexFile()->IsCompactDexFile() ? 1 : 0);
+  SetDataPtrSize(reinterpret_cast<void*>(data), kRuntimePointerSize);
+}
+
 // AssertSharedHeld doesn't work in GetAccessFlags, so use a NO_THREAD_SAFETY_ANALYSIS helper.
 // TODO: Figure out why ASSERT_SHARED_CAPABILITY doesn't work.
 template <ReadBarrierOption kReadBarrierOption>
