@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83cfc684_7a99edec",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "UBFX (same below)",
+      "range": {
+        "startLine": 333,
+        "startChar": 4,
+        "endLine": 334,
+        "endChar": 36
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963dc8fb_6b0d0af6",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "Having the ADD here for `load_ins` and a lot later for `!load_ins` makes the code messy. Making the code more readable would come at the cost of an additional temporary but we have enough registers we can use.\n\nNote that the assembly could be simplified with a simple change in the compact CodeItem encoding. When a field does not fit into 4 bits, we could record 0 in `fields_` and store the full value in the pre-header. That would avoid some ADDs below and we would not need the extra temporary to make this code more readable. (And at the same time we should change the `insns_count` encoding to little-endian rather than 2 little-endian 16-bit values in a big-endian order.)",
+      "range": {
+        "startLine": 343,
+        "startChar": 4,
+        "endLine": 343,
+        "endChar": 35
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf8fe73_361e3e9b",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "This could be UBFX+SUB(shifted register). If you do not like shifted register instructions, then\n\n   sub x14, \\code_item, #4\n   tst w13, #COMPACT_CODE_ITEM_INSNS_FLAGS\n   csel x14, x14, \\code_item, ne\n\nOr replace TST+BEQ with TBZ.",
+      "range": {
+        "startLine": 348,
+        "startChar": 4,
+        "endLine": 352,
+        "endChar": 2
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4008dfb_fdedab72",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "TBZ",
+      "range": {
+        "startLine": 353,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 11
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3140fe46_629e5611",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "LDRH, pre-index.",
+      "range": {
+        "startLine": 355,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 19
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b84d42c_2f8eb3a9",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "TBZ",
+      "range": {
+        "startLine": 359,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 11
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44362266_aebfc907",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "LDRH, pre-index.",
+      "range": {
+        "startLine": 361,
+        "startChar": 4,
+        "endLine": 362,
+        "endChar": 19
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20ee873_bd7000c6",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "TBZ",
+      "range": {
+        "startLine": 369,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 11
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b949b99_12cc18c2",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "LDRH, pre-index.",
+      "range": {
+        "startLine": 371,
+        "startChar": 4,
+        "endLine": 372,
+        "endChar": 19
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa294f9e_5d8cbb1d",
+        "filename": "tools/cpp-define-generator/code_item.def",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T14:03:17Z",
+      "side": 1,
+      "message": "Only one flag. Same below.",
+      "range": {
+        "startLine": 42,
+        "startChar": 39,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "a9d100ab217be1e037b88fae6077e5843fbff8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
