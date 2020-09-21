@@ -46,6 +46,30 @@
       "revId": "8d8380a2fafef53836127a79bc772f0d1ff41df0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7fcc5a0_6a885f44",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3603,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-21T09:07:03Z",
+      "side": 1,
+      "message": "I don\u0027t expect x86 to become important (though x86-64 has a better chance), so feel free to leave it as is.",
+      "parentUuid": "a60872a5_dcaeea84",
+      "range": {
+        "startLine": 3602,
+        "startChar": 2,
+        "endLine": 3603,
+        "endChar": 54
+      },
+      "revId": "8d8380a2fafef53836127a79bc772f0d1ff41df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
