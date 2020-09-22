@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "088b332a_757aeaef",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-22T17:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e9cc3c_56ef95a5",
+      "range": {
+        "startLine": 254,
+        "startChar": 16,
+        "endLine": 255,
+        "endChar": 46
+      },
+      "revId": "18aeb3d876ecfba5ed5680715bba9d719d538124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b96e9def_3e755882",
         "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2020-09-18T08:44:43Z",
       "side": 1,
       "message": "Don\u0027t you need an else to define the function?",
+      "revId": "18aeb3d876ecfba5ed5680715bba9d719d538124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e55c2a_caebc93e",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-22T17:27:32Z",
+      "side": 1,
+      "message": "Apparently not: the function call is hidden behind statically unreachable switch case (switch by static constexpr InstructionSet kRuntimeISA). I didn\u0027t provide a fallback here because tha\u0027s what we discussed with Roland, but as it is technically an incorrect C++ program, I\u0027ll add one",
+      "parentUuid": "b96e9def_3e755882",
       "revId": "18aeb3d876ecfba5ed5680715bba9d719d538124",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
