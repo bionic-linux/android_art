@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "0e59a79c_d1213f3a",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-22T17:38:25Z",
+      "side": 1,
+      "message": "I think you need to do something like this here:\n\n  X86FeaturesUniquePtr X86InstructionSetFeatures::FromCpuFeatures(bool x86_64) {\n  #ifdef CPU_FEATURES_ARCH_X86\n    cpu_features::X86Features features \u003d cpu_features::GetX86Info().features;\n    return Create(x86_64,\n                  features.ssse3,\n                  features.sse4_1,\n                  features.sse4_2,\n                  features.avx,\n                  features.avx2,\n                  features.popcnt);\n  #else\n    UNUSED(x86_64);\n    LOG(FATAL) \u003c\u003c \"Cannot use art::X86InstructionSetFeatures::FromCpuFeatures on non-x86 architecture;\n    UNREACHABLE();\n  #endif\n  }",
+      "parentUuid": "14e55c2a_caebc93e",
+      "revId": "18aeb3d876ecfba5ed5680715bba9d719d538124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8895d5fa_42f64844",
         "filename": "runtime/arch/x86/instruction_set_features_x86.h",
         "patchSetId": 3
