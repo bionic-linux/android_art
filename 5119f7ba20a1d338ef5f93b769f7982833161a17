@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ea604eb_0faadd12",
+        "filename": "test/727-checker-unresolved-class/src-ex/getters/GetPackagePrivateSubclassOfUnresolvedClass2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-23T11:58:23Z",
+      "side": 1,
+      "message": "Mention when you can make it $inline$ ?",
+      "revId": "5119f7ba20a1d338ef5f93b769f7982833161a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f8e0b4_1b5afff3",
+        "filename": "test/727-checker-unresolved-class/src-ex/resolved/PackagePrivateSubclassOfUnresolvedClass2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-23T11:58:23Z",
+      "side": 1,
+      "message": "Why do we need this? Given we replace the classes, don\u0027t we end up discarding the oat file because of mismatch in class loader context?",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5119f7ba20a1d338ef5f93b769f7982833161a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
