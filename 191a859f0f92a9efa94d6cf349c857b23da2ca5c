@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c150181d_0ba8c77e",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-09-23T10:56:32Z",
+      "side": 1,
+      "message": "nit: on all your comments, don\u0027t forget the ending \u0027.\u0027.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "191a859f0f92a9efa94d6cf349c857b23da2ca5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
