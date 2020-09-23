@@ -359,7 +359,7 @@ cat >TEST_MAPPING <<EOF
     },
     // ART gtests.
     {
-      "name": "ArtGtestsTarget"
+      "name": "ArtGtestsTargetInstallApex"
     }
   ],
   "postsubmit": [
