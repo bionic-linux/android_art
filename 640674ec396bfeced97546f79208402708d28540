@@ -22,6 +22,30 @@
       "revId": "640674ec396bfeced97546f79208402708d28540",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce611981_b24df07b",
+        "filename": "test/etc/default-build",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-23T16:04:26Z",
+      "side": 1,
+      "message": "One of the .j files defines a class in the package resolved (and therefore directory resolved/) and \"mv\" or even \"mv -f\" refuses to move jasmin_classes/resolved over existing classes/resolved.",
+      "parentUuid": "3ed0dd58_131eeede",
+      "range": {
+        "startLine": 423,
+        "startChar": 4,
+        "endLine": 423,
+        "endChar": 10
+      },
+      "revId": "640674ec396bfeced97546f79208402708d28540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
