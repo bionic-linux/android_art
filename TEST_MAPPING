@@ -9,7 +9,7 @@
     },
     // ART gtests.
     {
-      "name": "ArtGtestsTarget"
+      "name": "ArtGtestsTargetInstallApex"
     },
     // ART run-tests.
     {
