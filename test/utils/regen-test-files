@@ -421,7 +421,7 @@ cat >>TEST_MAPPING <<EOF
     },
     // ART gtests.
     {
-      "name": "ArtGtestsTarget"
+      "name": "ArtGtestsTargetChroot"
     },
     // ART run-tests.
 EOF
