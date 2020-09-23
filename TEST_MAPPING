@@ -124,7 +124,7 @@
       "name": "ArtServiceTests"
     },
     {
-      "name": "ArtGtestsTarget"
+      "name": "ArtGtestsTargetChroot"
     },
     {
       "name": "art-run-test-001-HelloWorld"
