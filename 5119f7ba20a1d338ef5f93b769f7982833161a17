@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13348405_025b7c0b",
+        "filename": "test/727-checker-unresolved-class/src-ex/getters/GetPackagePrivateSubclassOfUnresolvedClass2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-23T14:10:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea604eb_0faadd12",
+      "revId": "5119f7ba20a1d338ef5f93b769f7982833161a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3f8e0b4_1b5afff3",
         "filename": "test/727-checker-unresolved-class/src-ex/resolved/PackagePrivateSubclassOfUnresolvedClass2.java",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "5119f7ba20a1d338ef5f93b769f7982833161a17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db17e89_c2eabacd",
+        "filename": "test/727-checker-unresolved-class/src-ex/resolved/PackagePrivateSubclassOfUnresolvedClass2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-09-23T14:10:58Z",
+      "side": 1,
+      "message": "Class replacement from src2/ and src-ex2/ happens before dex2oat and has nothing to do with class loader context.\n\nThis test uses the correct class loader context (see the local \"run\" script), compiled oat files are actually used.\n\nI prefer all these class-specific \"main\" methods to be \"$noinline$\" even if it makes little difference to the test.",
+      "parentUuid": "c3f8e0b4_1b5afff3",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "5119f7ba20a1d338ef5f93b769f7982833161a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
