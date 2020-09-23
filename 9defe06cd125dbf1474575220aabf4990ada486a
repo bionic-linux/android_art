@@ -63,6 +63,24 @@
       "revId": "9defe06cd125dbf1474575220aabf4990ada486a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9570eb6f_c4861aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-23T14:01:41Z",
+      "side": 1,
+      "message": "This seems to be due to a lost race with the merging of https://android-review.googlesource.com/c/platform/external/cpu_features/+/1426698.",
+      "parentUuid": "0b729539_e64ca139",
+      "revId": "9defe06cd125dbf1474575220aabf4990ada486a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
