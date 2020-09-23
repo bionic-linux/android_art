@@ -22,6 +22,30 @@
       "revId": "191a859f0f92a9efa94d6cf349c857b23da2ca5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a352709_a4f3e520",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-09-23T11:36:31Z",
+      "side": 1,
+      "message": "Ugh, I thought I fixed them all. Done",
+      "parentUuid": "c150181d_0ba8c77e",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "191a859f0f92a9efa94d6cf349c857b23da2ca5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
