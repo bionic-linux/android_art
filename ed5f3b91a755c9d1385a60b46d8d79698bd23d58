@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "87841ee5_0c498b03",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "Addressed by Daniel in a later patchset.",
+      "parentUuid": "7ee3c2f8_62b910ed",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0ca2f5_5eaf231a",
         "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
         "patchSetId": 1
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "8d5c3edf_26362d86",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0ca2f5_5eaf231a",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 24
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f7aa18c_34bd8d07",
         "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
         "patchSetId": 1
@@ -137,6 +185,30 @@
       "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e6e997d_0104a016",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "Addressed by Daniel in a later patchset.",
+      "parentUuid": "1f7aa18c_34bd8d07",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 26
+      },
+      "revId": "ed5f3b91a755c9d1385a60b46d8d79698bd23d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

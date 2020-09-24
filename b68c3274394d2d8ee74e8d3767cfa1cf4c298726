@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f89f96cc_627fb1cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "I\u0027d also add this line here:\n\n  Test: Run `InstructionSetFeaturesTest` on Pixel 3 with this command:\n          atest --all-abi ArtGtestsTargetInstallApex -- \\\n                --test-arg com.android.tradefed.testtype.GTest:native-test-flag:\"--gtest_filter\u003d*InstructionSetFeaturesTest*\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 82
+      },
+      "revId": "b68c3274394d2d8ee74e8d3767cfa1cf4c298726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd06da6_44f6d347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "I think this is almost ready to go (one last comment on the commit message). I tested the change on a Pixel 3 (blueline) with both the armeabi-v7a (32-bit) and arm64-v8a (64-bit) ABIs and it was fine.",
+      "revId": "b68c3274394d2d8ee74e8d3767cfa1cf4c298726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

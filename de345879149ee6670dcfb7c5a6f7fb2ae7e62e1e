@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72177f43_c630b276",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-24T13:39:43Z",
+      "side": 1,
+      "message": "I guess both forms are correct from a transliteration point of view. :)",
+      "parentUuid": "b543d206_835b7520",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "de345879149ee6670dcfb7c5a6f7fb2ae7e62e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1aba166_88e1d0bd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
