@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dda6e8d_d0b6ceb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-25T14:27:07Z",
+      "side": 1,
+      "message": "PS2 is a rebase across conflicts; PTAL.",
+      "revId": "75442a2143171d821f2423ff692d4adde71164ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
