@@ -56,6 +56,24 @@
       "revId": "b68c3274394d2d8ee74e8d3767cfa1cf4c298726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb8a28b2_32fe375e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-25T15:23:53Z",
+      "side": 1,
+      "message": "(Unticking the \"Resolved\" checkbox, that I had inadvertently left ticked…)",
+      "parentUuid": "0284d2fe_43fbcef6",
+      "revId": "b68c3274394d2d8ee74e8d3767cfa1cf4c298726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
