@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67749c7c_6658bb36",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-25T11:36:01Z",
+      "side": 1,
+      "message": "I thought I could spare that. There\u0027s very little code in this library, and it doesn\u0027t use any ART internal headers.",
+      "parentUuid": "2fbb824e_7a7a409c",
+      "range": {
+        "startLine": 448,
+        "startChar": 8,
+        "endLine": 448,
+        "endChar": 36
+      },
+      "revId": "5d7aad5c9b79ece62a645875e357780353f7694d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6ccced3_267786af",
         "filename": "libdexfile/TEST_MAPPING",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5d7aad5c9b79ece62a645875e357780353f7694d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12732a1c_497cbee1",
+        "filename": "libdexfile/TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-25T11:36:01Z",
+      "side": 1,
+      "message": "Done. (Well, it will be correct after https://r.android.com/1437632.)",
+      "parentUuid": "e6ccced3_267786af",
+      "range": {
+        "startLine": 16,
+        "startChar": 15,
+        "endLine": 16,
+        "endChar": 53
+      },
+      "revId": "5d7aad5c9b79ece62a645875e357780353f7694d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
