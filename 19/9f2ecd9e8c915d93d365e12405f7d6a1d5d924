@@ -1,0 +1,12 @@
+Verified+1: Martin Stjernholm <mast@google.com>
+Code-Review+2: Roland Levillain <rpl@google.com>
+Code-Review+1: David Srbecky <dsrbecky@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Martin Stjernholm <mast@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Build-Cop-Override+1: Mikhail Naganov <mnaganov@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 28 Sep 2020 20:11:18 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1441272
+Project: platform/art
+Branch: refs/heads/master
