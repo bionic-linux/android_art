@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec61a116_9041fa76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-10-05T15:22:49Z",
+      "side": 1,
+      "message": "Could you also explicitly pass `--print-cfg` to `checker.py` invocations in the original `art/test/run-test` script? I know this is the default behavior, but this could change and I\u0027d like it to be explicit in that call site.",
+      "revId": "3a78e4cb233497f2f521548a1eff41f6e9d17088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f91713b_d1d41302",
         "filename": "tools/checker/file_format/c1visualizer/struct.py",
         "patchSetId": 2
