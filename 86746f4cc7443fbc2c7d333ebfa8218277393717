@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b93fad4_9380ac5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-06T22:04:55Z",
+      "side": 1,
+      "message": "LGTM, with a mild concern that the static assert may fail someplace we care about. It\u0027s probably OK to submit as is, and fix quickly if anything breaks. The obvious fix is to remove the assertion, or weaken it to is_lock_free(), especially if it breaks someplace where we don\u0027t care about performance.",
+      "revId": "86746f4cc7443fbc2c7d333ebfa8218277393717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
