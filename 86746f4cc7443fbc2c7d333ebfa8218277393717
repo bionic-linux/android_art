@@ -34,6 +34,24 @@
       "parentUuid": "9b93fad4_9380ac5b",
       "revId": "86746f4cc7443fbc2c7d333ebfa8218277393717",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171f1d9e_4f432f67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-07T22:18:59Z",
+      "side": 1,
+      "message": "Works for me. It shouldn\u0027t break anything major, and it would be nice not to have to weaken that.",
+      "parentUuid": "c06bf6d9_cedb0fb9",
+      "revId": "86746f4cc7443fbc2c7d333ebfa8218277393717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
