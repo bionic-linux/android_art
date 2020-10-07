@@ -1,0 +1,8 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Roland Levillain <rpl@google.com>
+Bypass-Presubmit+1: Roland Levillain <rpl@google.com>
+Submitted-by: Roland Levillain <rpl@google.com>
+Submitted-at: Wed, 07 Oct 2020 17:45:51 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1453039
+Project: platform/art
+Branch: refs/heads/master
