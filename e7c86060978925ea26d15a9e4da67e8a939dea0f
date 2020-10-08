@@ -39,6 +39,30 @@
       },
       "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf728df3_68ad51df",
+        "filename": "libartbase/base/metrics.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2020-10-08T19:01:57Z",
+      "side": 1,
+      "message": "I added a sentence to make it clear that this is stricter than necessary. You\u0027re correct, I\u0027d rather these all be relaxed loads, but I didn\u0027t think it was worth complicating the code for given that GetBuckets shouldn\u0027t be called in performance sensitive paths.\n\nWould doing seq_cst loads here slow down relaxed loads on other threads?\n\nIt\u0027d be nice if std::atomic could take an extra template parameter for a default memory order.",
+      "parentUuid": "fba90473_3c936dfc",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
