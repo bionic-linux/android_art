@@ -63,6 +63,30 @@
       },
       "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ac9c69_4e96ae74",
+        "filename": "libartbase/base/metrics.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-08T19:31:08Z",
+      "side": 1,
+      "message": "Indeed. Though the ideal here, at least in many cases, would be to do non-atomic loads?\n\nOn all Android platforms you could get away with the appropriate memcpy. But I like this code  better.",
+      "parentUuid": "bf728df3_68ad51df",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
