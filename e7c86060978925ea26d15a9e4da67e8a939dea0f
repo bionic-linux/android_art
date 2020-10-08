@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ddf769_ae987c18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2020-10-08T17:10:54Z",
+      "side": 1,
+      "message": "ptal, I had to rebase due to changes to the parent CL.",
+      "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
