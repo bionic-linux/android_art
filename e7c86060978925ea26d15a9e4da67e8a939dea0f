@@ -87,6 +87,30 @@
       },
       "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02431648_4517f783",
+        "filename": "libartbase/base/metrics.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2020-10-08T20:22:38Z",
+      "side": 1,
+      "message": "Yeah, non-atomic loads would be better. I agree though, let\u0027s keep the code cleaner.",
+      "parentUuid": "56ac9c69_4e96ae74",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
