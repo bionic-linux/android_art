@@ -16,6 +16,29 @@
       "message": "ptal, I had to rebase due to changes to the parent CL.",
       "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba90473_3c936dfc",
+        "filename": "libartbase/base/metrics.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-08T18:30:49Z",
+      "side": 1,
+      "message": "Rereading this, it sounds like this makes it sound a bit too much like this is a useful property, which I think it\u0027s not. I think it\u0027s an implementation accident that slows down a non-critical operation, which doesn\u0027t matter. A spectacularly clever compiler could probably optimize it away. Actually, on x86 it will probably have no effect on the generated code anyway.",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "e7c86060978925ea26d15a9e4da67e8a939dea0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
