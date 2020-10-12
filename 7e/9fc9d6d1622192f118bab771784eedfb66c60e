@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Ming-Shin Lu <lumark@google.com>
+Bypass-Presubmit+1: Ming-Shin Lu <lumark@google.com>
+Build-Cop-Override+1: Ming-Shin Lu <lumark@google.com>
+Submitted-by: Ming-Shin Lu <lumark@google.com>
+Submitted-at: Mon, 12 Oct 2020 07:15:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/1456975
+Project: platform/art
+Branch: refs/heads/master
