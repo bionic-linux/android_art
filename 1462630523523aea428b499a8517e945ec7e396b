@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005662792",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/117391?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "caddfb9e_d454af77",
+          "description": "Change to \"runtime/interpreter/interpreter_goto_table_impl.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/interpreter/interpreter_goto_table_impl.cc",
+              "range": {
+                "startLine": 29,
+                "startChar": 3,
+                "endLine": 29,
+                "endChar": 11
+              },
+              "replacement": "@return"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c4825626_2baa1e10",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-21T20:03:58Z",
+      "side": 1,
+      "message": "Common typo found: \"@returns\" -- should it be \"@return\"?\ngo/javastyle, go/jsstyle and go/tsstyle prefer @return, while go/cppstyle prefers plain English in comments\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 11
+      },
+      "revId": "1462630523523aea428b499a8517e945ec7e396b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
