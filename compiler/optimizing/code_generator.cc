@@ -907,6 +907,10 @@ static uint32_t GetBootImageOffsetImpl(const void* object, ImageHeader::ImageSec
   return dchecked_integral_cast<uint32_t>(offset);
 }
 
+uint32_t CodeGenerator::GetBootImageOffset(ObjPtr<mirror::Object> object) {
+  return GetBootImageOffsetImpl(object.Ptr(), ImageHeader::kSectionObjects);
+}
+
 // NO_THREAD_SAFETY_ANALYSIS: Avoid taking the mutator lock, boot image classes are non-moveable.
 uint32_t CodeGenerator::GetBootImageOffset(HLoadClass* load_class) NO_THREAD_SAFETY_ANALYSIS {
   DCHECK_EQ(load_class->GetLoadKind(), HLoadClass::LoadKind::kBootImageRelRo);
@@ -927,6 +931,16 @@ uint32_t CodeGenerator::GetBootImageOffset(HInvoke* invoke) {
   ArtMethod* method = invoke->GetResolvedMethod();
   DCHECK(method != nullptr);
   return GetBootImageOffsetImpl(method, ImageHeader::kSectionArtMethods);
+}
+
+// NO_THREAD_SAFETY_ANALYSIS: Avoid taking the mutator lock, boot image classes are non-moveable.
+uint32_t CodeGenerator::GetBootImageOffsetOfIntrinsicDeclaringClass(HInvoke* invoke)
+    NO_THREAD_SAFETY_ANALYSIS {
+  DCHECK_NE(invoke->GetIntrinsic(), Intrinsics::kNone);
+  ArtMethod* method = invoke->GetResolvedMethod();
+  DCHECK(method != nullptr);
+  ObjPtr<mirror::Class> declaring_class = method->GetDeclaringClass<kWithoutReadBarrier>();
+  return GetBootImageOffsetImpl(declaring_class.Ptr(), ImageHeader::kSectionObjects);
 }
 
 void CodeGenerator::BlockIfInRegister(Location location, bool is_out) const {
