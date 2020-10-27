@@ -70,6 +70,29 @@
       },
       "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6298a352_5f8705dc",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 7
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-10-27T15:57:25Z",
+      "side": 1,
+      "message": "Actually, to only filter the standard error with `sed`, it seems you could use this:\n\n  $cmdline \"$@\" 3\u003e\u00261 1\u003e\u00262 2\u003e\u00263 3\u003e\u0026- | sed sed -e \u0027s/No timezone override.*icudt6[6-7]l.dat//\u0027\n\n(Found in https://stackoverflow.com/questions/3618078/pipe-only-stderr-through-a-filter.)",
+      "range": {
+        "startLine": 1406,
+        "startChar": 10,
+        "endLine": 1406,
+        "endChar": 87
+      },
+      "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
