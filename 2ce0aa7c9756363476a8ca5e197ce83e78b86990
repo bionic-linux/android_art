@@ -93,6 +93,30 @@
       },
       "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de50b35_47256d93",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 7
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T16:02:49Z",
+      "side": 1,
+      "message": "Maybe 2 drafts? See PS1 as one of several ways of doing this.",
+      "parentUuid": "6298a352_5f8705dc",
+      "range": {
+        "startLine": 1406,
+        "startChar": 10,
+        "endLine": 1406,
+        "endChar": 87
+      },
+      "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
