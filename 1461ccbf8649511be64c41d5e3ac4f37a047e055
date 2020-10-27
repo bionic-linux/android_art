@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a73bfe_fe8f0553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-10-27T16:21:28Z",
+      "side": 1,
+      "message": "Approved.\n\nWe should probably fix ICU as a longer-term fix.",
+      "revId": "1461ccbf8649511be64c41d5e3ac4f37a047e055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
