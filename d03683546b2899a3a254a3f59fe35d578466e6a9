@@ -22,6 +22,30 @@
       },
       "revId": "d03683546b2899a3a254a3f59fe35d578466e6a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba04a84_63a19463",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 2
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T12:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f9e1fd_c0564e5a",
+      "range": {
+        "startLine": 1404,
+        "startChar": 78,
+        "endLine": 1404,
+        "endChar": 83
+      },
+      "revId": "d03683546b2899a3a254a3f59fe35d578466e6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
