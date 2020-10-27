@@ -16,6 +16,29 @@
       "message": "This isn\u0027t particularly robust, but seems to pass locally.",
       "revId": "44accdbd4086f2e234f9595af639c12cfb7fd15d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6567fd17_7c23e224",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 6
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-10-27T15:13:00Z",
+      "side": 1,
+      "message": "happen?",
+      "range": {
+        "startLine": 1404,
+        "startChar": 69,
+        "endLine": 1404,
+        "endChar": 74
+      },
+      "revId": "44accdbd4086f2e234f9595af639c12cfb7fd15d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
