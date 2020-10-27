@@ -67,6 +67,29 @@
       "message": "Test failures from TH covered by:\n\nb/171780974 | P1 | comment | ACCEPTED | oth | run-test failures: No implementation found for int TestMissing.nativeMethodVoid",
       "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2257b70_63b75323",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 4
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-10-27T13:56:26Z",
+      "side": 1,
+      "message": "This is ICU version number and it will change. May consider regex, e.g. \"[[:digit:]]\\+\".",
+      "range": {
+        "startLine": 1405,
+        "startChar": 59,
+        "endLine": 1405,
+        "endChar": 61
+      },
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
