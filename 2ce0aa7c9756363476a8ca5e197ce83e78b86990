@@ -117,6 +117,30 @@
       },
       "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fe56a3_46a8f671",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 7
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-10-27T16:05:12Z",
+      "side": 1,
+      "message": "This seems to be even better/simpler:\n\n  $cmdline \"$@\" 2\u003e \u003e(sed -e \u0027s/No timezone override.*icudt6[6-7]l.dat//\u0027 \u003e\u00262)\n\n(From https://stackoverflow.com/a/52575087.)",
+      "parentUuid": "6298a352_5f8705dc",
+      "range": {
+        "startLine": 1406,
+        "startChar": 10,
+        "endLine": 1406,
+        "endChar": 87
+      },
+      "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
