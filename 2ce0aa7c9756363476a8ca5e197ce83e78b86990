@@ -22,6 +22,30 @@
       },
       "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64be234_01baa5d0",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 7
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T15:49:48Z",
+      "side": 1,
+      "message": "Sorry, I am task thrashing and that is just poor...",
+      "parentUuid": "602cff79_727dd31c",
+      "range": {
+        "startLine": 1406,
+        "startChar": 83,
+        "endLine": 1406,
+        "endChar": 87
+      },
+      "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
