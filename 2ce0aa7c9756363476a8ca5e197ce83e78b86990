@@ -141,6 +141,30 @@
       },
       "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e58e469_8bee7d6a",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 7
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T16:05:24Z",
+      "side": 1,
+      "message": "The issue is sed introduces buffering which changes the behaviour. sed -u may help, but am not on this route any more.",
+      "parentUuid": "6de50b35_47256d93",
+      "range": {
+        "startLine": 1406,
+        "startChar": 10,
+        "endLine": 1406,
+        "endChar": 87
+      },
+      "revId": "2ce0aa7c9756363476a8ca5e197ce83e78b86990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
