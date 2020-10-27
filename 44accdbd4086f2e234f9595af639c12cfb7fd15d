@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d25a7c7_44da08e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-27T15:24:16Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 66,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "44accdbd4086f2e234f9595af639c12cfb7fd15d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "396ff61b_6bb30799",
@@ -36,6 +59,29 @@
         "startChar": 69,
         "endLine": 1404,
         "endChar": 74
+      },
+      "revId": "44accdbd4086f2e234f9595af639c12cfb7fd15d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6a7b1d_ee9c57ca",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 6
+      },
+      "lineNbr": 1406,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-27T15:24:16Z",
+      "side": 1,
+      "message": "Did you lose the \"$@\"?",
+      "range": {
+        "startLine": 1406,
+        "startChar": 18,
+        "endLine": 1406,
+        "endChar": 19
       },
       "revId": "44accdbd4086f2e234f9595af639c12cfb7fd15d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
