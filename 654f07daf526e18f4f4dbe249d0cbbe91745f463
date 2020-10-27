@@ -50,6 +50,23 @@
       "message": "Thanks Ulya\n\nThere is another ticket for the remaining failures after this CL:\n\nb/171780974 | P1 | comment | ACCEPTED | oth | run-test failures: No implementation found for int TestMissing.nativeMethodVoid",
       "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3322d51e_c7360de1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T13:43:37Z",
+      "side": 1,
+      "message": "Test failures from TH covered by:\n\nb/171780974 | P1 | comment | ACCEPTED | oth | run-test failures: No implementation found for int TestMissing.nativeMethodVoid",
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
