@@ -16,6 +16,23 @@
       "message": "Approved.\n\nWe should probably fix ICU as a longer-term fix.",
       "revId": "1461ccbf8649511be64c41d5e3ac4f37a047e055",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52ba487_1edf055d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T16:29:49Z",
+      "side": 1,
+      "message": "Thanks Alex. rpl@ also had a patch (https://r.android.com/1153441) that was considering dropping stderr which would also solve this. There\u0027s a handful of tests of logging to System.err we could fix:\n\n064-field-access/src/OOMEOnNullAccess.java\n1002-notify-startup/src-art/Main.java\n692-vdex-inmem-loader/src/Main.java\n693-vdex-inmem-loader-evict/src/Main.java\n708-jit-cache-churn/src/JitCacheChurnTest.java\n712-varhandle-invocations/src/VarHandleBadCoordinateTests.java\n807-method-handle-and-mr/src/Main.java\n\nand fprintf(stderr:\n\n023-many-interfaces/iface-gen.c\n303-verification-stress/classes-gen.c",
+      "revId": "1461ccbf8649511be64c41d5e3ac4f37a047e055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
