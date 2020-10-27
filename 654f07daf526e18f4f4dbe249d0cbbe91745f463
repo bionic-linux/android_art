@@ -121,6 +121,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac9ba66a_d70b6302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T15:09:56Z",
+      "side": 1,
+      "message": "Yes, filtering just stderr does seem like a good approach.",
+      "parentUuid": "d04db54c_387c0773",
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51487807_9c7c99bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T15:09:56Z",
+      "side": 1,
+      "message": "TBD. Not sure if we can force ICU initialization earlier on host and avoid this entirely. Definitely options here.",
+      "parentUuid": "78d19c0b_f5ac94ea",
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d4acf0_f6736412",
@@ -144,6 +180,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542ab7d8_2ee926de",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 4
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T15:09:56Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a7d4acf0_f6736412",
+      "range": {
+        "startLine": 1404,
+        "startChar": 12,
+        "endLine": 1404,
+        "endChar": 85
+      },
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2257b70_63b75323",
@@ -157,6 +217,30 @@
       "writtenOn": "2020-10-27T13:56:26Z",
       "side": 1,
       "message": "This is ICU version number and it will change. May consider regex, e.g. \"[[:digit:]]\\+\".",
+      "range": {
+        "startLine": 1405,
+        "startChar": 59,
+        "endLine": 1405,
+        "endChar": 61
+      },
+      "revId": "654f07daf526e18f4f4dbe249d0cbbe91745f463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d319f9e2_4edb59a1",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 4
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-27T15:09:56Z",
+      "side": 1,
+      "message": "Thanks, extended the range. I don\u0027t propose we live with this fix for any length of time.",
+      "parentUuid": "e2257b70_63b75323",
       "range": {
         "startLine": 1405,
         "startChar": 59,
