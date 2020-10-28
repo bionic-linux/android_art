@@ -354,10 +354,26 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
   return info;
 }
 
+MemberOffset IntrinsicVisitor::GetReferenceDisableIntrinsicOffset() {
+  ScopedObjectAccess soa(Thread::Current());
+  // The "disableIntrinsic" is the first static field.
+  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(0);
+  DCHECK_STREQ(field->GetName(), "disableIntrinsic");
+  return field->GetOffset();
+}
+
+MemberOffset IntrinsicVisitor::GetReferenceSlowPathEnabledOffset() {
+  ScopedObjectAccess soa(Thread::Current());
+  // The "slowPathEnabled" is the second static field.
+  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(1);
+  DCHECK_STREQ(field->GetName(), "slowPathEnabled");
+  return field->GetOffset();
+}
+
 void IntrinsicVisitor::AssertNonMovableStringClass() {
   if (kIsDebugBuild) {
     ScopedObjectAccess soa(Thread::Current());
-    ObjPtr<mirror::Class> string_class = GetClassRoot<art::mirror::String>();
+    ObjPtr<mirror::Class> string_class = GetClassRoot<mirror::String>();
     CHECK(!art::Runtime::Current()->GetHeap()->IsMovableObject(string_class));
   }
 }
