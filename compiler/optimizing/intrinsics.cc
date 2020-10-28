@@ -244,7 +244,7 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
     }
   }
 
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  ArenaAllocator* allocator = codegen->GetGraph()->GetAllocator();
   LocationSummary* locations = new (allocator) LocationSummary(invoke, call_kind, kIntrinsified);
   if (call_kind == LocationSummary::kCallOnMainOnly) {
     locations->SetInAt(0, Location::RegisterOrConstant(invoke->InputAt(0)));
@@ -354,10 +354,48 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
   return info;
 }
 
+MemberOffset IntrinsicVisitor::GetReferenceDisableIntrinsicOffset() {
+  ScopedObjectAccess soa(Thread::Current());
+  // The "disableIntrinsic" is the first static field.
+  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(0);
+  DCHECK_STREQ(field->GetName(), "disableIntrinsic");
+  return field->GetOffset();
+}
+
+MemberOffset IntrinsicVisitor::GetReferenceSlowPathEnabledOffset() {
+  ScopedObjectAccess soa(Thread::Current());
+  // The "slowPathEnabled" is the second static field.
+  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(1);
+  DCHECK_STREQ(field->GetName(), "slowPathEnabled");
+  return field->GetOffset();
+}
+
+void IntrinsicVisitor::CreateReferenceGetReferentLocations(HInvoke* invoke, CodeGenerator* codegen) {
+  const CompilerOptions& compiler_options = codegen->GetCompilerOptions();
+  // Piggyback on the method load kind to determine whether we can use PC-relative addressing
+  // for AOT. This should cover both the testing config (non-PIC boot image) and codegens that
+  // reject PC-relative load kinds and fall back to the runtime call.
+  if (compiler_options.IsAotCompiler() &&
+      !invoke->AsInvokeStaticOrDirect()->HasPcRelativeMethodLoadKind()) {
+    return;
+  }
+  if (!compiler_options.IsBootImage() &&
+      Runtime::Current()->GetHeap()->GetBootImageSpaces().empty()) {
+    DCHECK(compiler_options.IsJitCompiler());
+    return;  // Running without boot image, cannot use required boot image objects.
+  }
+
+  ArenaAllocator* allocator = codegen->GetGraph()->GetAllocator();
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresRegister());
+  locations->SetOut(Location::RequiresRegister());
+}
+
 void IntrinsicVisitor::AssertNonMovableStringClass() {
   if (kIsDebugBuild) {
     ScopedObjectAccess soa(Thread::Current());
-    ObjPtr<mirror::Class> string_class = GetClassRoot<art::mirror::String>();
+    ObjPtr<mirror::Class> string_class = GetClassRoot<mirror::String>();
     CHECK(!art::Runtime::Current()->GetHeap()->IsMovableObject(string_class));
   }
 }
