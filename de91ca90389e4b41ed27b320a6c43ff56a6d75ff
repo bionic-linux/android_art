@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc7b0a0_1d98f7b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-29T19:37:20Z",
+      "side": 1,
+      "message": "Late comment, which doesn\u0027t affect this CL anyway.",
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072256ed_65b0c098",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-10-29T19:37:20Z",
+      "side": 1,
+      "message": "My current reading is that this CL is an improvement, but we currently have a bug around allocation fencing. Filed b/171993478. I\u0027m not yet sure whether that issues is serious. At a minimum, I think the fact that we have a final field here is now irrelevant.",
+      "range": {
+        "startLine": 2968,
+        "startChar": 6,
+        "endLine": 2968,
+        "endChar": 76
+      },
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
