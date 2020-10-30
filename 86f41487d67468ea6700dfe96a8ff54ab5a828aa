@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa5d0cd_e24b2d54",
+        "filename": "test/dexdump/run-all-tests",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-30T16:03:27Z",
+      "side": 1,
+      "message": "Could you not just add ${ALL_DEX_FILES_JAR} to the list iterated over here and then make the logic for generating the name of the expected output file to work with both dex and jar. It would avoid duplicating the bulk of the test running code.",
+      "revId": "86f41487d67468ea6700dfe96a8ff54ab5a828aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
