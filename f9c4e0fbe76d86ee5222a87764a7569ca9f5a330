@@ -52,6 +52,24 @@
       "parentUuid": "979d651b_ff0541c8",
       "revId": "f9c4e0fbe76d86ee5222a87764a7569ca9f5a330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d211a3f1_316c1134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-30T16:40:04Z",
+      "side": 1,
+      "message": "Generally, I would prefer the change was split as I favour a few small separate changes over combining them into one.",
+      "parentUuid": "71cb8153_377668dd",
+      "revId": "f9c4e0fbe76d86ee5222a87764a7569ca9f5a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
