@@ -46,6 +46,8 @@ SUFFIX_COMMAND_MAP[txt]="${DEXDUMP} -adfh"
 SUFFIX_COMMAND_MAP[xml]="${DEXDUMP} -e -l xml"
 SUFFIX_COMMAND_MAP[lst]="${DEXLIST}"
 
+ALL_DEX_FILES_JAR=all-dex-files.jar
+
 # Parse command-line options
 UPDATE="no"
 USAGE="no"
@@ -83,6 +85,29 @@ if [ "${UPDATE}" = "yes" ]; then
       fi
     done
   done
+
+  # Create a .jar file containing all dex files, renamed as expected by the runtime.
+  count=0
+  for i in *.dex; do
+    if [ ${count} = 0 ] ; then
+      dex_file=classes.dex
+      flags="-cf"
+    else
+      dex_file=classes${count}.dex
+      flags="-uf"
+    fi
+    cp $i ${tmpdir}/${dex_file}
+    jar ${flags} ${ALL_DEX_FILES_JAR} -C ${tmpdir} ${dex_file}
+    ((count += 1))
+    rm ${tmpdir}/${dex_file}
+  done
+
+  prefix=$(basename ${ALL_DEX_FILES_JAR} .jar)
+  for suffix in ${!SUFFIX_COMMAND_MAP[@]}; do
+    new_output=${prefix}.${suffix}
+    ${SUFFIX_COMMAND_MAP[${suffix}]} ${ALL_DEX_FILES_JAR} > ${new_output}
+  done
+
   exit 0
 fi
 
@@ -98,12 +123,28 @@ for dex in *.dex; do
     ${cmd} > ${actual_output}
     cmp ${expected_output} ${actual_output}
     if [ "$?" = "0" ]; then
-        ((passed += 1))
+      ((passed += 1))
     else
-        ((failed += 1))
-        echo failed: ${cmd}
+      ((failed += 1))
+      echo failed: ${cmd}
     fi
   done
+done
+
+echo ${ALL_DEX_FILES_JAR}
+prefix=$(basename ${ALL_DEX_FILES_JAR} .jar)
+for suffix in ${!SUFFIX_COMMAND_MAP[@]}; do
+  expected_output=${prefix}.${suffix}
+  actual_output=${tmpdir}/${prefix}.${suffix}
+  cmd="${SUFFIX_COMMAND_MAP[${suffix}]} ${ALL_DEX_FILES_JAR}"
+  ${cmd} > ${actual_output}
+  cmp ${expected_output} ${actual_output}
+  if [ "$?" = "0" ]; then
+    ((passed += 1))
+  else
+    ((failed += 1))
+    echo failed: ${cmd}
+  fi
 done
 
 # Report results.
@@ -113,8 +154,8 @@ echo "failed: ${failed} test(s)"
 echo
 
 # Clean up, cd back to original dir.
-rm -rf ${tmpdir}
-cd ${oldwd}
+#rm -rf ${tmpdir}
+#cd ${oldwd}
 
 # Return status.
 if [ "${failed}" != "0" ]; then
