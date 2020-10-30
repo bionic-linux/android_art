@@ -34,6 +34,24 @@
       "parentUuid": "d4e181e3_6342e405",
       "revId": "f9c4e0fbe76d86ee5222a87764a7569ca9f5a330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71cb8153_377668dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-30T16:21:50Z",
+      "side": 1,
+      "message": "Let\u0027s drop it, it\u0027s not API output and should not be there. We can split this CL if the more minimalist approach works better for you.",
+      "parentUuid": "979d651b_ff0541c8",
+      "revId": "f9c4e0fbe76d86ee5222a87764a7569ca9f5a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
