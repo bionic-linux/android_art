@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e181e3_6342e405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-10-30T15:33:49Z",
+      "side": 1,
+      "message": "Needs some additional changes to dexdump: should not emit method handle / call site info for xml dump mode. Coming up.",
+      "revId": "f9c4e0fbe76d86ee5222a87764a7569ca9f5a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
