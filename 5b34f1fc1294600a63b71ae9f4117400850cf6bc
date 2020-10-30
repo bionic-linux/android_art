@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4920703c_9777ffde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-30T11:58:51Z",
+      "side": 1,
+      "message": "Do we have tests for this intrinsic?",
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5f3084_3393ca8c",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-30T11:58:51Z",
+      "side": 1,
+      "message": "This is now duplicated in a few places, I think it is better to separate it in a helper function and have a single comment there.",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b42dfdb_8fe30264",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-30T11:58:51Z",
+      "side": 1,
+      "message": "This is common between all four implementations, maybe it can be moved into a helper/macro.",
+      "range": {
+        "startLine": 3024,
+        "startChar": 0,
+        "endLine": 3029,
+        "endChar": 0
+      },
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
