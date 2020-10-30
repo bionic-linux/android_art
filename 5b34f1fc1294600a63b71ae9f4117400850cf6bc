@@ -128,6 +128,30 @@
       },
       "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1fda1c_5610384a",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-30T14:31:39Z",
+      "side": 1,
+      "message": "I didn\u0027t mean to refactor the instruction, only the alignment check, which seems to be universal. In any case, it\u0027s not a blocker for this CL.",
+      "parentUuid": "fbf3570c_ce9dbffb",
+      "range": {
+        "startLine": 3024,
+        "startChar": 0,
+        "endLine": 3029,
+        "endChar": 0
+      },
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
