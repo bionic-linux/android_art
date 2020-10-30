@@ -39,6 +39,30 @@
       },
       "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c55c613_5b8340fc",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-30T09:30:25Z",
+      "side": 1,
+      "message": "This CL just updates the comment to reflect the reality after the barriers were removed from allocation entrypoints in https://android-review.googlesource.com/398869 , see b/36656456 for more details.\n\n(If the field wasn\u0027t final, the fence could be moved before the store.)",
+      "parentUuid": "072256ed_65b0c098",
+      "range": {
+        "startLine": 2968,
+        "startChar": 6,
+        "endLine": 2968,
+        "endChar": 76
+      },
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
