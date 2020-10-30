@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d483d1e5_23271b0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-30T14:14:37Z",
+      "side": 1,
+      "message": "It is directly used by 036-finalizer. (And probably used under the hood for every run test. I\u0027ve seen the intrinsic code being emitted by JIT for 157-void-class on x86 - it ran without boot image for unknown reason but that helped me fix a bug, see diff PS2 PS3.)",
+      "parentUuid": "4920703c_9777ffde",
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e5f3084_3393ca8c",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e397f43d_c2921e06",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-30T14:14:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e5f3084_3393ca8c",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b42dfdb_8fe30264",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-30T11:58:51Z",
       "side": 1,
       "message": "This is common between all four implementations, maybe it can be moved into a helper/macro.",
+      "range": {
+        "startLine": 3024,
+        "startChar": 0,
+        "endLine": 3029,
+        "endChar": 0
+      },
+      "revId": "5b34f1fc1294600a63b71ae9f4117400850cf6bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf3570c_ce9dbffb",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-10-30T14:14:37Z",
+      "side": 1,
+      "message": "I think the decision to check the fields together belongs to the architecture-specific code.\n\n(And the Ldrh/cmpw instruction is architecture-specific.)",
+      "parentUuid": "6b42dfdb_8fe30264",
       "range": {
         "startLine": 3024,
         "startChar": 0,
