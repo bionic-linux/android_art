@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b9ef8e_32e1ce00",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-02T14:27:09Z",
+      "side": 1,
+      "message": "New line.",
+      "range": {
+        "startLine": 382,
+        "startChar": 59,
+        "endLine": 382,
+        "endChar": 101
+      },
+      "revId": "7a8234632f50520d748c5bb05082e342829276a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8a0f4a_c8380b3b",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3015,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-02T14:27:09Z",
+      "side": 1,
+      "message": "CompareAndBranchIfZero ?",
+      "range": {
+        "startLine": 3014,
+        "startChar": 0,
+        "endLine": 3015,
+        "endChar": 41
+      },
+      "revId": "7a8234632f50520d748c5bb05082e342829276a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c55cc8_f8a6be33",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3031,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-02T14:27:09Z",
+      "side": 1,
+      "message": "CompareAndBranchIfNonZero ?",
+      "range": {
+        "startLine": 3030,
+        "startChar": 0,
+        "endLine": 3031,
+        "endChar": 41
+      },
+      "revId": "7a8234632f50520d748c5bb05082e342829276a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
