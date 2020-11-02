@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.VarHandle;
 import java.lang.reflect.Field;
 import sun.misc.Unsafe;
 
@@ -26,6 +28,7 @@ public class Main {
         testUnsafeGet();
         testUnsafeCas();
         testUnsafeCasRegression();
+        testVarHandleCas();
     }
 
     public static void testFieldReads() {
@@ -276,6 +279,44 @@ public class Main {
             if (x != 42) {
               throw new Error();
             }
+        }
+    }
+
+    public static void testVarHandleCas() throws Exception {
+        // Initialize local variables for comparison.
+        Object f0000 = manyFields.testField0000;
+        Object f1024 = manyFields.testField1024;
+        Object f4444 = manyFields.testField4444;
+        Object f4999 = manyFields.testField4999;
+        // Initialize VarHandle objects.
+        VarHandle f0000vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField0000", Object.class);
+        VarHandle f0001vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField0001", Object.class);
+        VarHandle f1024vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField1024", Object.class);
+        VarHandle f4444vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField4444", Object.class);
+        VarHandle f4998vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField4998", Object.class);
+        VarHandle f4999vh =
+            MethodHandles.lookup().findVarHandle(ManyFields.class, "testField4999", Object.class);
+
+        // Continually check VarHandle.compareAndSet() while allocating
+        // over 64MiB memory (with heap size limited to 16MiB), ensuring we run GC and
+        // stress the read barrier implementation if concurrent collector is enabled.
+        for (int i = 0; i != 64 * 1024; ++i) {
+            allocateAtLeast1KiB();
+            ManyFields mf = manyFields;  // Load the volatile `manyFields` once on each iteration.
+            // Test VarHandle.compareAndSet().
+            assertEqual(false, f0000vh.compareAndSet(mf, f1024, f4444));
+            assertEqual(false, f0001vh.compareAndSet(mf, f1024, f4444));
+            assertEqual(true, f1024vh.compareAndSet(mf, f1024, f4444));
+            assertEqual(true, f1024vh.compareAndSet(mf, f4444, f1024));
+            assertEqual(false, f1024vh.compareAndSet(mf, f4444, f1024));
+            assertEqual(false, f4444vh.compareAndSet(mf, f1024, f4444));
+            assertEqual(false, f4998vh.compareAndSet(mf, f1024, f4444));
+            assertEqual(false, f4999vh.compareAndSet(mf, f1024, f4444));
         }
     }
 

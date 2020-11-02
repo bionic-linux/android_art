@@ -6698,6 +6698,18 @@ void CodeGeneratorARM64::MaybeGenerateMarkingRegisterCheck(int code, Location te
   }
 }
 
+SlowPathCodeARM64* CodeGeneratorARM64::AddReadBarrierSlowPath(HInstruction* instruction,
+                                                              Location out,
+                                                              Location ref,
+                                                              Location obj,
+                                                              uint32_t offset,
+                                                              Location index) {
+  SlowPathCodeARM64* slow_path = new (GetScopedAllocator())
+      ReadBarrierForHeapReferenceSlowPathARM64(instruction, out, ref, obj, offset, index);
+  AddSlowPath(slow_path);
+  return slow_path;
+}
+
 void CodeGeneratorARM64::GenerateReadBarrierSlow(HInstruction* instruction,
                                                  Location out,
                                                  Location ref,
@@ -6717,9 +6729,7 @@ void CodeGeneratorARM64::GenerateReadBarrierSlow(HInstruction* instruction,
   // not used by the artReadBarrierSlow entry point.
   //
   // TODO: Unpoison `ref` when it is used by artReadBarrierSlow.
-  SlowPathCodeARM64* slow_path = new (GetScopedAllocator())
-      ReadBarrierForHeapReferenceSlowPathARM64(instruction, out, ref, obj, offset, index);
-  AddSlowPath(slow_path);
+  SlowPathCodeARM64* slow_path = AddReadBarrierSlowPath(instruction, out, ref, obj, offset, index);
 
   __ B(slow_path->GetEntryLabel());
   __ Bind(slow_path->GetExitLabel());
