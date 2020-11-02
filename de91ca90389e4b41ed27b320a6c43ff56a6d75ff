@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "979455be_8b2be9b4",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-02T12:05:14Z",
+      "side": 1,
+      "message": "Why not making this a helper method (used by the other codegens)?",
+      "range": {
+        "startLine": 2950,
+        "startChar": 0,
+        "endLine": 2952,
+        "endChar": 79
+      },
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "072256ed_65b0c098",
