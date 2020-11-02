@@ -854,6 +854,14 @@ class CodeGeneratorARM64 : public CodeGenerator {
   virtual void MaybeGenerateMarkingRegisterCheck(int code,
                                                  Location temp_loc = Location::NoLocation());
 
+  // Create slow path for a read barrier for a heap reference within `instruction`.
+  SlowPathCodeARM64* AddReadBarrierSlowPath(HInstruction* instruction,
+                                            Location out,
+                                            Location ref,
+                                            Location obj,
+                                            uint32_t offset,
+                                            Location index);
+
   // Generate a read barrier for a heap reference within `instruction`
   // using a slow path.
   //
