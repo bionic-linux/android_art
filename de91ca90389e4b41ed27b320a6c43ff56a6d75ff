@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "321ea77c_9e79e924",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-02T14:38:29Z",
+      "side": 1,
+      "message": "To share this across codegens, we would have to make LoadIntrinsicDeclaringClass() virtual or use a template helper. I\u0027ll keep it as is for now but I\u0027ll be inclined to refactor this if we implement more intrinsics that need the allocation, such as Long.valueOf().",
+      "parentUuid": "979455be_8b2be9b4",
+      "range": {
+        "startLine": 2950,
+        "startChar": 0,
+        "endLine": 2952,
+        "endChar": 79
+      },
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "072256ed_65b0c098",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 4
