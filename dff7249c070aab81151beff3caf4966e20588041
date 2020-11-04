@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926747",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "14a47af3_5dbc4555",
+        "filename": "tools/amm/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Android.​mk files are being deprecated, please use blueprint files (go/soong) to define the modules",
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "36411306_9bbec50a",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "da1f90bf_e5f3ed22",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f7ed3087_7382ec53",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2e21c69b_7b856a47",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3963299f_e6af820e",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "009dd73a_cc66bac1",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "45dc67e0_595ccc05",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "99c4d1b1_766dcdf9",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 78,
+        "startChar": 11,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ca5949c9_22620e07",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dcd1a764_c6bef114",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005926750",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/600699?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "abf873d8_f3d0d6be",
+        "filename": "tools/amm/src/amm-debug/com/android/amm/debug/jdwp/Command.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-04T10:36:14Z",
+      "side": 1,
+      "message": "Wrong casing for \"cmdset\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
