@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005960179",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1489296?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "8158dbef_869c33c2",
+          "description": "Change to \"compiler/optimizing/intrinsics_arm64.cc\"",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/intrinsics_arm64.cc",
+              "range": {
+                "startLine": 1178,
+                "startChar": 19,
+                "endLine": 1178,
+                "endChar": 26
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9d630526_5ab73cab",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-05T17:51:34Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1178,
+        "startChar": 19,
+        "endLine": 1178,
+        "endChar": 26
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005960179",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1489296?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "d1021f8e_95f4a191",
+          "description": "Change to \"compiler/optimizing/intrinsics_arm64.cc\"",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/intrinsics_arm64.cc",
+              "range": {
+                "startLine": 4335,
+                "startChar": 29,
+                "endLine": 4335,
+                "endChar": 35
+              },
+              "replacement": "success"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6123efb6_67f982b8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-05T17:51:34Z",
+      "side": 1,
+      "message": "Common typo found: \"sucess\" -- should it be \"success\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 4335,
+        "startChar": 29,
+        "endLine": 4335,
+        "endChar": 35
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
