@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "343eea45_6ec749e5",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T16:58:42Z",
+      "side": 1,
+      "message": "It overwrites the previous result completely. But the CCMP also explicitly specifies what flags to use if the condition was false. This particular instruction says\n\n  if (!Z) {  // The last argument is `ne`.\n    \u003cN,Z,C,V\u003e \u003d flags from comparing `old_value` and `expected2` \n  } else {\n    \u003cN,Z,C,V\u003e \u003d \u003cfalse, true ,false, false\u003e;  // The 3rd argument is only `ZFlag`\n  }\n\nWe care only about the Z flag and if the first comparison yielded `true`, we preserve it.",
+      "parentUuid": "5a18f4d1_d3e4003b",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 3
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa2dc04_577025ab",
@@ -77,6 +101,30 @@
       "writtenOn": "2020-11-06T16:35:35Z",
       "side": 1,
       "message": "This comment seems to be disconnected from any further processing of the store_result or Z flag in this function. Documentation for GenCas()?",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 70
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5e8002_245cdff2",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T16:58:42Z",
+      "side": 1,
+      "message": "There is a related comment on line 1152. Both refer to expectations of the main path code after returning from the slow path.",
+      "parentUuid": "9aa2dc04_577025ab",
       "range": {
         "startLine": 1186,
         "startChar": 0,
