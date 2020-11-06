@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1142b9b_31049c8a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "Updated the comment, including s/tmp_ptr/ptr/.",
+      "parentUuid": "e1b068cb_2e742c07",
+      "range": {
+        "startLine": 974,
+        "startChar": 35,
+        "endLine": 974,
+        "endChar": 46
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51214643_a687c4a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-06T09:27:26Z",
       "side": 1,
       "message": "If",
+      "range": {
+        "startLine": 1031,
+        "startChar": 5,
+        "endLine": 1031,
+        "endChar": 7
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfec79a_f8e865fb",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "Done; also s/X flag/Z flag/.",
+      "parentUuid": "51214643_a687c4a3",
       "range": {
         "startLine": 1031,
         "startChar": 5,
@@ -61,6 +109,30 @@
       "side": 1,
       "message": "\u003e Common typo found: \"the the\" -- should it be \"the\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.\n\nPlease fix.",
       "parentUuid": "9d630526_5ab73cab",
+      "range": {
+        "startLine": 1178,
+        "startChar": 19,
+        "endLine": 1178,
+        "endChar": 26
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40904edd_0cbb837e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0f52e9_abbff199",
       "range": {
         "startLine": 1178,
         "startChar": 19,
@@ -96,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e181294_bad2729a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "I\u0027m reusing the name from the x86 implementation.\n\nThe slow path can do all sorts of conversions, including boxing/unboxing, so it may or may not throw.",
+      "parentUuid": "06263635_ce68d331",
+      "range": {
+        "startLine": 3817,
+        "startChar": 12,
+        "endLine": 3817,
+        "endChar": 41
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51614f5a_832cf49b",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 1
@@ -107,6 +203,30 @@
       "writtenOn": "2020-11-06T09:27:26Z",
       "side": 1,
       "message": "missing \u0027.\u0027.",
+      "range": {
+        "startLine": 3835,
+        "startChar": 75,
+        "endLine": 3835,
+        "endChar": 79
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c653be33_2dfccccf",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3835,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "Done; also in intrinsics_x86.cc .",
+      "parentUuid": "51614f5a_832cf49b",
       "range": {
         "startLine": 3835,
         "startChar": 75,
@@ -131,6 +251,30 @@
       "side": 1,
       "message": "\u003e Common typo found: \"sucess\" -- should it be \"success\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.\n\nPlease fix.",
       "parentUuid": "6123efb6_67f982b8",
+      "range": {
+        "startLine": 4335,
+        "startChar": 29,
+        "endLine": 4335,
+        "endChar": 35
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5231bfda_8f497cd7",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4335,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-06T12:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3b2881_04505ca7",
       "range": {
         "startLine": 4335,
         "startChar": 29,
