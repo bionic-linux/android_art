@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fddb559b_b7927f26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-06T16:35:35Z",
+      "side": 1,
+      "message": "A thousand fold improvement, nice! :-)",
+      "range": {
+        "startLine": 20,
+        "startChar": 43,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5d8084_e128434b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-06T16:35:35Z",
+      "side": 1,
+      "message": "lgtm so far. To review this properly I need to do some homework.",
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a18f4d1_d3e4003b",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-06T16:35:35Z",
+      "side": 1,
+      "message": "Naive question: does the second comparison affect the result of the first?",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 3
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa2dc04_577025ab",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-06T16:35:35Z",
+      "side": 1,
+      "message": "This comment seems to be disconnected from any further processing of the store_result or Z flag in this function. Documentation for GenCas()?",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 70
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
