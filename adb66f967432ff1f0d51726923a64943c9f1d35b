@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d90a76_fd76f79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319385
+      },
+      "writtenOn": "2020-11-07T03:20:02Z",
+      "side": 1,
+      "message": "I know it is not the place to ask stuffs, but public issue tracker often get ignored so I decided to ask here, sorry.\n\nWe have an ART crash when doing heavy stuffs on relative older devices (kernel version \u003c 3.18) due to null pointer dereference in mspace_malloc, which points me here: https://cs.android.com/android/platform/superproject/+/android-11.0.0_r1:art/runtime/jit/jit_memory_region.cc;l\u003d471\n\nIt seems like exev_mspace is null, but we are running out of ideas why this could happen. Can you provide some ideas? Thx!\n\n\nbacktrace:\n      #00 pc 001994b4  /apex/com.android.art/lib/libart.so (mspace_malloc+16) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #01 pc 0026dc69  /apex/com.android.art/lib/libart.so (art::jit::JitMemoryRegion::AllocateCode(unsigned int)+20) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #02 pc 00267e37  /apex/com.android.art/lib/libart.so (art::jit::JitCodeCache::Reserve(art::Thread*, art::jit::JitMemoryRegion*, unsigned int, unsigned int, unsigned int, art::ArtMethod*, art::ArrayRef*, art::ArrayRef*)+414) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #03 pc 0013f523  /apex/com.android.art/lib/libart-compiler.so (art::OptimizingCompiler::JitCompile(art::Thread*, art::jit::JitCodeCache*, art::jit::JitMemoryRegion*, art::ArtMethod*, bool, bool, art::jit::JitLogger*)+2350) (BuildId: 33e782f31cd514bd0dd22333d0569c1f)\n      #04 pc 00098b41  /apex/com.android.art/lib/libart-compiler.so (art::jit::JitCompiler::CompileMethod(art::Thread*, art::jit::JitMemoryRegion*, art::ArtMethod*, bool, bool)+172) (BuildId: 33e782f31cd514bd0dd22333d0569c1f)\n      #05 pc 00259e7d  /apex/com.android.art/lib/libart.so (art::jit::Jit::CompileMethod(art::ArtMethod*, art::Thread*, bool, bool, bool)+700) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #06 pc 002610c7  /apex/com.android.art/lib/libart.so (art::jit::JitCompileTask::Run(art::Thread*)+554) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #07 pc 004652cb  /apex/com.android.art/lib/libart.so (art::ThreadPoolWorker::Run()+54) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #08 pc 00464f33  /apex/com.android.art/lib/libart.so (art::ThreadPoolWorker::Callback(void*)+114) (BuildId: 92a348d5b70d523d285ad77b0f608f1b)\n      #09 pc 000aabdb  /apex/com.android.runtime/lib/bionic/libc.so (__pthread_start(void*)+40) (BuildId: c4244399845e7a4cef2553ec9c7d4cdd)\n      #10 pc 00063abd  /apex/com.android.runtime/lib/bionic/libc.so (__start_thread+30) (BuildId: c4244399845e7a4cef2553ec9c7d4cdd)",
+      "revId": "adb66f967432ff1f0d51726923a64943c9f1d35b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
