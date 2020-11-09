@@ -125,7 +125,7 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
                                         variant);
 
   // Currently there are no cpu variants which support SVE.
-  bool has_sve = false;
+  bool has_sve = true;
 
   if (!needs_a53_835769_fix) {
     // Check to see if this is an expected variant.
