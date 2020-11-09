@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f5e897_3e6d40c3",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-09T21:46:43Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "343eea45_6ec749e5",
+      "range": {
+        "startLine": 1029,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 3
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9aa2dc04_577025ab",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "There is a related comment on line 1152. Both refer to expectations of the main path code after returning from the slow path.",
       "parentUuid": "9aa2dc04_577025ab",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 70
+      },
+      "revId": "1fa2536dc9313f671b9236a7e8dd92dd56451c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e003af42_ff8242a5",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-11-09T21:46:43Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "fb5e8002_245cdff2",
       "range": {
         "startLine": 1186,
         "startChar": 0,
