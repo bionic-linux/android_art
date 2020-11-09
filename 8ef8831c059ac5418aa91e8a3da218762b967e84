@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006018454",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1489296?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "53b33030_7cd9ebe6",
+        "filename": "test/712-varhandle-invocations/src/VarHandleFpCasTests.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-09T17:33:05Z",
+      "side": 1,
+      "message": "Wrong casing for \"vh\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006018454",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1489296?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d4ea5572_cc63e908",
+        "filename": "test/712-varhandle-invocations/src/VarHandleFpCasTests.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-09T17:33:05Z",
+      "side": 1,
+      "message": "Wrong casing for \"vh\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
