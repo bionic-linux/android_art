@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d8cdad3_6ab7b194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-09T17:39:00Z",
+      "side": 1,
+      "message": "The bitwise compare for float/double CAS is a bit surprising but that\u0027s what the runtime implementation does. And the RI has the same behavior.",
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
