@@ -553,6 +553,10 @@ CodeSimulatorArm64::CodeSimulatorArm64()
   SimStack::Allocated stack = stack_builder.Allocate();
 
   simulator_ = new CustomSimulator(decoder_, stdout, std::move(stack));
+
+  // TODO: support SVE vector length instruction set features and use it here.
+  simulator_->SetVectorLengthInBits(kArm64DefaultSVEVectorLength);
+
   if (VLOG_IS_ON(simulator)) {
     simulator_->SetColouredTrace(true);
     simulator_->SetTraceParameters(LOG_DISASM | LOG_WRITE);
