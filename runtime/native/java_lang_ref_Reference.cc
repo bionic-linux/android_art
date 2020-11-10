@@ -36,6 +36,37 @@ static jobject Reference_getReferent(JNIEnv* env, jobject javaThis) {
   return soa.AddLocalReference<jobject>(referent);
 }
 
+static jboolean Reference_refersTo0(JNIEnv* env, jobject javaThis, jobject o) {
+  ScopedFastNativeObjectAccess soa(env);
+  const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
+  const ObjPtr<mirror::Object> other = soa.Decode<mirror::Reference>(o);
+  constexpr ReadBarrierOption rbo =
+      kUseBakerReadBarrier ? kWithoutReadBarrier : kWithReadBarrier;
+  const ObjPtr<mirror::Object> referent = ref->template GetReferent<rbo>();
+  if (kUseBakerReadBarrier) {
+    gc::Heap *heap = Runtime::Current()->GetHeap();
+    if (heap->IsGcConcurrentAndMoving()) {
+      if (referent == other) {
+        return true;
+      }
+      if (referent.IsNull() || other.IsNull()) {
+        return false;
+      }
+      // Explicitly handle the case in which referent is a from-space pointer.
+      // We avoid using a read-barrier when possible, since that could easily mark
+      // an object we no longer need.
+      // ??? "works", but has memory-ordering issue. forwarding ptr may not be
+      // visible here???
+      return heap->ConcurrentCopyingCollector()->GetForwardingPointer(referent.Ptr())
+          == other.Ptr();
+    }
+  } else {
+    return false;
+  }
+      // Runtime::Current()->GetHeap()->GetReferenceProcessor()->GetReferent(soa.Self(), ref);
+  return (jboolean)(referent == other);
+}
+
 static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
   ScopedFastNativeObjectAccess soa(env);
   const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
@@ -45,6 +76,7 @@ static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
 static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(Reference, getReferent, "()Ljava/lang/Object;"),
   FAST_NATIVE_METHOD(Reference, clearReferent, "()V"),
+  FAST_NATIVE_METHOD(Reference, refersTo0, "(Ljava/lang/Object;)Z"),
 };
 
 void register_java_lang_ref_Reference(JNIEnv* env) {
