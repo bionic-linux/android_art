@@ -22,6 +22,30 @@
       },
       "revId": "2bd4b6a42a6fb906a39952a567f98144a5e24fa2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8252160_a47b206b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-11-10T16:30:56Z",
+      "side": 1,
+      "message": "Good catch! (I think I\u0027ve revealed my Emacsness here…)",
+      "parentUuid": "4ca7823b_e9c97509",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "2bd4b6a42a6fb906a39952a567f98144a5e24fa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
