@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce66d3af_07ecc2d6",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-10T09:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346ddb9b_e81e7dcf",
+      "range": {
+        "startLine": 857,
+        "startChar": 2,
+        "endLine": 857,
+        "endChar": 83
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddeb8914_68ec0881",
@@ -71,6 +95,30 @@
       "writtenOn": "2020-11-10T00:56:31Z",
       "side": 1,
       "message": "I was confused by the fact that failure here is not related to the failure label. Just changing this to \"failed\" would help.\n\nIt would be nice to have a high level summary of what this does at the beginning, including at least a high level mention of strong and the failure label.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 67,
+        "endLine": 1077,
+        "endChar": 95
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5971de48_485a6dcd",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-10T09:38:37Z",
+      "side": 1,
+      "message": "Renamed the `failure` label to `cmp_failure`, rewrote the comment to s/failure/failed/ and accommodate weak CAS.",
+      "parentUuid": "ddeb8914_68ec0881",
       "range": {
         "startLine": 1077,
         "startChar": 67,
