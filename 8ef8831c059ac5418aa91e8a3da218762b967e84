@@ -33,6 +33,52 @@
       "message": "Thanks for the extra tests here. This would probably benefit from someone with more ARM64, but it\u0027s quite educational reading this CL. ",
       "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346ddb9b_e81e7dcf",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-10T00:56:31Z",
+      "side": 1,
+      "message": "Should probably refer to the next function for argument definitions.",
+      "range": {
+        "startLine": 857,
+        "startChar": 2,
+        "endLine": 857,
+        "endChar": 83
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddeb8914_68ec0881",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-10T00:56:31Z",
+      "side": 1,
+      "message": "I was confused by the fact that failure here is not related to the failure label. Just changing this to \"failed\" would help.\n\nIt would be nice to have a high level summary of what this does at the beginning, including at least a high level mention of strong and the failure label.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 67,
+        "endLine": 1077,
+        "endChar": 95
+      },
+      "revId": "8ef8831c059ac5418aa91e8a3da218762b967e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
