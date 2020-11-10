@@ -136,6 +136,10 @@ class ConcurrentCopying : public GarbageCollector {
   bool IsMarking() const {
     return is_marking_;
   }
+  // If from_ref has a forwarding pointer, return the forwarding pointer. Otherwise return null.
+  // Assumes from_ref is nonnull.
+  ALWAYS_INLINE mirror::Object* GetForwardingPointer(mirror::Object* from_ref)
+      REQUIRES_SHARED(Locks::mutator_lock_);
   // We may want to use read barrier entrypoints before is_marking_ is true since concurrent graying
   // creates a small window where we might dispatch on these entrypoints.
   bool IsUsingReadBarrierEntrypoints() const {
@@ -152,6 +156,7 @@ class ConcurrentCopying : public GarbageCollector {
   }
   void RevokeThreadLocalMarkStack(Thread* thread) REQUIRES(!mark_stack_lock_);
 
+  // If marked, return the to-space object, otherwise null.
   mirror::Object* IsMarked(mirror::Object* from_ref) override
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -161,6 +166,9 @@ class ConcurrentCopying : public GarbageCollector {
   void PushOntoMarkStack(Thread* const self, mirror::Object* obj)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
+  // Returns a to-space copy of the from-space object from_ref, and atomically installs a
+  // forwarding pointer. Ensures that the forwarding reference is visible to other threads before
+  // the returned to-space pointer becomes visible to them.
   mirror::Object* Copy(Thread* const self,
                        mirror::Object* from_ref,
                        mirror::Object* holder,

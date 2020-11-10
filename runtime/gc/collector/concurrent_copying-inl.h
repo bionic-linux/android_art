@@ -196,6 +196,18 @@ inline mirror::Object* ConcurrentCopying::Mark(Thread* const self,
   }
 }
 
+inline mirror::Object* ConcurrentCopying::GetForwardingPointer(mirror::Object* from_ref) {
+  DCHECK(heap_->collector_type_ == kCollectorTypeCC);
+  DCHECK(region_space_ != nullptr) << "GetForwardingPointer() called when CC isn't running?";
+  if (region_space_->HasAddress(from_ref)) {
+    space::RegionSpace::RegionType rtype = region_space_->GetRegionTypeUnsafe(from_ref);
+    if (rtype == space::RegionSpace::RegionType::kRegionTypeFromSpace) {
+      return GetFwdPtr(from_ref);
+    }
+  }
+  return nullptr;
+}
+
 inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* from_ref) {
   mirror::Object* ret;
   Thread* const self = Thread::Current();
