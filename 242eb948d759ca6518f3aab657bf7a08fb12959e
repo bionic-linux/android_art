@@ -190,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8faef5_5f3a8e2f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-10T15:20:01Z",
+      "side": 1,
+      "message": "With no further comments here, I\u0027m closing this as resolved before submitting. If you want to see this renamed, reopen and I\u0027ll do it in a separate CL.",
+      "parentUuid": "6e181294_bad2729a",
+      "range": {
+        "startLine": 3817,
+        "startChar": 12,
+        "endLine": 3817,
+        "endChar": 41
+      },
+      "revId": "242eb948d759ca6518f3aab657bf7a08fb12959e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51614f5a_832cf49b",
