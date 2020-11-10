@@ -36,6 +36,15 @@ static jobject Reference_getReferent(JNIEnv* env, jobject javaThis) {
   return soa.AddLocalReference<jobject>(referent);
 }
 
+static jboolean Reference_refersTo0(JNIEnv* env, jobject javaThis, jobject o) {
+  ScopedFastNativeObjectAccess soa(env);
+  const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
+  const ObjPtr<mirror::Object> other = soa.Decode<mirror::Reference>(o);
+  const ObjPtr<mirror::Object> referent =
+      Runtime::Current()->GetHeap()->GetReferenceProcessor()->GetReferent(soa.Self(), ref);
+  return (jboolean)(referent == other);
+}
+
 static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
   ScopedFastNativeObjectAccess soa(env);
   const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
@@ -45,6 +54,7 @@ static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
 static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(Reference, getReferent, "()Ljava/lang/Object;"),
   FAST_NATIVE_METHOD(Reference, clearReferent, "()V"),
+  FAST_NATIVE_METHOD(Reference, refersTo0, "(Ljava/lang/Object;)Z"),
 };
 
 void register_java_lang_ref_Reference(JNIEnv* env) {
