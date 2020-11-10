@@ -110,6 +110,30 @@
       },
       "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfeeecf3_4ce1378b",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-10T19:02:25Z",
+      "side": 1,
+      "message": "Thanks. I was reading this as \"since it\u0027s final we need to generate a barrier after it: instead of \"delay the barrier we need to generate anyway\". I\u0027ll upload a wording change.",
+      "parentUuid": "5c55c613_5b8340fc",
+      "range": {
+        "startLine": 2968,
+        "startChar": 6,
+        "endLine": 2968,
+        "endChar": 76
+      },
+      "revId": "de91ca90389e4b41ed27b320a6c43ff56a6d75ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
