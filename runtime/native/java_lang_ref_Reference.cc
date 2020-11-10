@@ -36,6 +36,21 @@ static jobject Reference_getReferent(JNIEnv* env, jobject javaThis) {
   return soa.AddLocalReference<jobject>(referent);
 }
 
+static jboolean Reference_refersTo0(JNIEnv* env, jobject javaThis, jobject o) {
+  ScopedFastNativeObjectAccess soa(env);
+  const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
+  const ObjPtr<mirror::Object> other = soa.Decode<mirror::Reference>(o);
+  const ObjPtr<mirror::Object> referent = ref->template GetReferent<kWithReadBarrier>();
+  return (jboolean)(referent == other);
+  // It's very tempting to try to avoid copying the referent to to-space in the read barrier.
+  // As it stands, if we call x.refersTo(y), where x's referent is dead, and hence not y,
+  // we end up preserving x's referent for no useful reason. Unfortunately, it's hard to avoid
+  // this, since Copy()'s memory ordering guarantee is too weak to ensure that when x's referent
+  // is y, and thus has been marked, we can actually see the forwarding pointer. We could still
+  // see a from-space address and a null forwarding pointer. We deem adding the fence to Copy()
+  // after the forwarding address CAS is too expensive.
+}
+
 static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
   ScopedFastNativeObjectAccess soa(env);
   const ObjPtr<mirror::Reference> ref = soa.Decode<mirror::Reference>(javaThis);
@@ -45,6 +60,7 @@ static void Reference_clearReferent(JNIEnv* env, jobject javaThis) {
 static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(Reference, getReferent, "()Ljava/lang/Object;"),
   FAST_NATIVE_METHOD(Reference, clearReferent, "()V"),
+  FAST_NATIVE_METHOD(Reference, refersTo0, "(Ljava/lang/Object;)Z"),
 };
 
 void register_java_lang_ref_Reference(JNIEnv* env) {

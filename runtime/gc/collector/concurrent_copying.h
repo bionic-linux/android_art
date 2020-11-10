@@ -152,6 +152,9 @@ class ConcurrentCopying : public GarbageCollector {
   }
   void RevokeThreadLocalMarkStack(Thread* thread) REQUIRES(!mark_stack_lock_);
 
+  // If marked, return the to-space object, otherwise null.
+  // Due to memory ordering issues, this may return null in race situations, even if
+  // a pointer to the forwarded object is visible to the calling thread.
   mirror::Object* IsMarked(mirror::Object* from_ref) override
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -161,6 +164,9 @@ class ConcurrentCopying : public GarbageCollector {
   void PushOntoMarkStack(Thread* const self, mirror::Object* obj)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
+  // Returns a to-space copy of the from-space object from_ref, and atomically installs a
+  // forwarding pointer. Does not ensure that the forwarding reference is visible to other
+  // threads before the returned to-space pointer becomes visible to them.
   mirror::Object* Copy(Thread* const self,
                        mirror::Object* from_ref,
                        mirror::Object* holder,
