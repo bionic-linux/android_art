@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36070fa0_4bef3c03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-12T18:09:56Z",
+      "side": 1,
+      "message": "PS2 was uploaded only for the record. It passes tests, but I think it is a memory ordering issue that\u0027s not easy to fix.",
+      "revId": "c727c47fa7a12e094054a42ad1307e8f21b77a8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
