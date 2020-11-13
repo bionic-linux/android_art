@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68c02e5a_61ce9056",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-13T09:40:08Z",
+      "side": 1,
+      "message": "This looks like something we should fix. (Or do a thorough review all uses to check for potential bugs.)",
+      "range": {
+        "startLine": 156,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 72
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6978f29_129b128e",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
@@ -139,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea1cbece_7967f8fb",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-13T09:40:08Z",
+      "side": 1,
+      "message": "I agree with Lokesh and we should use the code he proposed, though I would use IsMarked() to retrieve the `referent.forwarding_pointer`.\n\nIf there is a memory visibility issue with that approach, we should fix that issue in IsMarked()/Copy().",
+      "parentUuid": "6e1511f6_aba41736",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
@@ -150,6 +197,30 @@
       "writtenOn": "2020-11-13T02:28:45Z",
       "side": 1,
       "message": "static_cast?",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fbc2d4_f27431df",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-13T09:40:08Z",
+      "side": 1,
+      "message": "(...) ? JNI_TRUE : JNI_FALSE",
+      "parentUuid": "6aabbd60_eeedc2b5",
       "range": {
         "startLine": 44,
         "startChar": 9,
