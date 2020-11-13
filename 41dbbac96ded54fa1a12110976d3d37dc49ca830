@@ -16,6 +16,29 @@
       "message": "PS3 actually looks plausible to me. Note that I added comments to a couple of existing functions, which I believe correctly describe the operation of those functions as currently implemented. It would be good for Lokesh, Mathieu, and Roland to see whether they\u0027re consistent with the assumptions made by callers; I\u0027m not sure.\n\nAlso if somebody has an idea on how to avoid copying potentially dead referents (as discussed in the commit message and comments) without increasing Copy() cost, that would be very welcome. Note that PS2 was my best, but I now believe incorrect, attempt to do that. But I don\u0027t think that\u0027s necessary to solve the main problem here; we can get by with the read barrier.",
       "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6978f29_129b128e",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-11-13T01:18:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is correct. Getting a referent is like reading a GC root. Once we disable weak references in CC, I don\u0027t think we expect new read-barrier invocations after that. We disable weak references *while* switching to shared mode for mark-stack. Eventually we switch to GC-exclusive mode. Once we are in this mode, calling refersTo would miss the entire object graph initiating out of the referent. Please refer to comment in ConcurrentCopying::CopyingPhase() (line 1579).",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
