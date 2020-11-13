@@ -282,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afb7c73b_d73b84f7",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-13T23:24:43Z",
+      "side": 1,
+      "message": "In both cases, the CAS is looking for something that\u0027s not a forwarding pointer, and they try to update the same location to a forwarding pointer, right? By C++ semantics, there is a total order of all accesses to obj.fwd_ptr. And each CAS must read a value and write the next value in the sequence of writes. Thus one of the CAS writes must go first, the next CAS is required to see that write, and will fail. But that all depends on the fact that CAS is an atomic RMW.\n\nIf there\u0027s a load instead of a CAS in thread B, there is no such argument. The load can appear anywhere in the sequence of accesses to fwd_ptr. Accesses to global are not included in the total order for fwd_pointer; they have their own total access order (normally called coherence order).",
+      "parentUuid": "96a4b167_d4a384df",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
