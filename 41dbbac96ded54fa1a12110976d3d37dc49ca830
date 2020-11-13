@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfa69c1a_230ffcf0",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-11-13T20:31:59Z",
+      "side": 1,
+      "message": "What stops the following from happening:\n\nLet\u0027s say there is an object obj.\n\n   Thread A                                 Thread B  \n   --------                                 --------\n1. copy obj to objA                         copy obj to objB\n2. relaxed CAS fwd_ptr to objA : success    \n3. PushOntoMarkStack(...)                   relaxed CAS fwd_ptr to objB : success\n4. return objA                              return objB\n5. mutate objA                              mutate objB\n\nAs you said, if the CAS at (2) by thread A could be arbitrarily delayed, the CAS from thread B could succeed, right? But since thread A assumes its CAS succeeded, and same for thread B, they will mutate different copies of obj. Please explain how is this avoided in the current implementation.\n\nI thought that since the return of to-space reference (objA or objB in this example) is happening inside the if condition checking the success of the CAS oepration, due to dependency there is no way that the to-space reference could be used for anything unless CAS becomes visible.",
+      "parentUuid": "a4146479_f75b8c69",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
