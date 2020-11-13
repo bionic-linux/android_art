@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96a4b167_d4a384df",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-11-13T22:28:34Z",
+      "side": 1,
+      "message": "I think I can understand. But not fully 😊\n\nConsider the following scenario:\n\nreference global \u003d null;\n    thread A                       thread B\n    ---------                      --------\n1. copy obj to objA                copy obj to objB\n2. CAS obj.fwd_ptr to objA\n3. global \u003d objA                      \n   2 and 3 get reordered           if (global !\u003d null) {CAS obj.fwd_ptr to objB}                     \n\nWhat is stopping CAS of thread B from succeeding? If it will fail because of something, then why wouldn\u0027t the same happen with a load of fwd_ptr. Why would a load of same fwd_ptr not return objA (if I replace the CAS in thread B with a normal load)?",
+      "parentUuid": "eda2a683_e62657df",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
