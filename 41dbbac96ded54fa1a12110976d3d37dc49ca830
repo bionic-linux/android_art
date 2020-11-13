@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e1511f6_aba41736",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-11-13T03:49:37Z",
+      "side": 1,
+      "message": "I didn\u0027t get how is it possible that after a thread installs the forwarding pointer of o and then shares the to-space address of o with another thread, and the other thread may still not find the forwarding pointer there in the from-space copy of o?\nIf it were possible, then wouldn\u0027t that also allow another thread to succeed in installing its own forwarding pointer of o?\n\nPlease correct me if I\u0027m wrong, but doesn\u0027t an atomic CAS operation (even with relaxed memory ordering) guarantees that if the expected value is there, then the desired value is installed (written to at least the first level cache of a coherent memory system) before anyone else reads it? In other words, before the thread performing CAS can do anything else, isn\u0027t it guaranteed that when the CAS operation completes, the memory location is already updated?\n\nShouldn\u0027t we change the comparison to the following:\nreferent \u003d ref-\u003eGetReferent\u003ckWithoutReadBarrier\u003e();\nreturn (referent \u003d\u003d other || referent.forwarding_pointer \u003d\u003d other);\n\nThe fact that thread A gave us a to-space address of o, should guarantee that the forwarding pointer is already installed. Otherwse, thread A couldn\u0027t have gotten hold of the to-space address.",
+      "parentUuid": "4d104026_fe63f0f6",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
