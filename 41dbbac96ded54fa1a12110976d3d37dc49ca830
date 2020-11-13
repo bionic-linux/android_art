@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d104026_fe63f0f6",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-13T02:58:37Z",
+      "side": 1,
+      "message": "Unfortunately, there\u0027s a (semi-theoretical) memory ordering issue with that. See the comment below. (PS2 tried something like that.) If another thread marked o, and then handed the to-space reference to us, I don\u0027t think there\u0027s a guarantee that we\u0027ll see the forwarding pointer in the from-space copy of o. The forwarding pointer CAS and the return from Copy() are not ordered. We could add a fence there, and a fake dependency on o here, and make that work. But the fence in Copy() seems problematic. Unless its absence is already a bug.",
+      "parentUuid": "c4bd1283_20b49442",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
