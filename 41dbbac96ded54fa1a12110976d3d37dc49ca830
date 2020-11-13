@@ -39,6 +39,30 @@
       },
       "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef441a50_e821ef94",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-13T02:22:47Z",
+      "side": 1,
+      "message": "Good point. Since we don\u0027t actually access the referent in that case, I\u0027m not sure whether it fundamentally breaks things. But at a minimum, it does seem way too ugly, and there are probably all sorts of issues around the edges.\n\nSo we\u0027re kind of between a rock and a hard place, in that we don\u0027t really want to mark the referent, but we can\u0027t reliably tell whether it has been marked, except by attempting to mark it.\n\nOne fundamental question is whether the current memory ordering is sufficient as it stands. Is the fact that IsMarked() can effectively spuriously return null a problem? Maybe not. Most of the time an error in that direction seems safe?\n\nI\u0027ll think about how to do this better.",
+      "parentUuid": "a6978f29_129b128e",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
