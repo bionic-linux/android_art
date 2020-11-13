@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eda2a683_e62657df",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-13T21:42:45Z",
+      "side": 1,
+      "message": "That scenario can\u0027t happen. Based on the C++ spec, there is essentially a total order for all accesses to the same location, in this case to obj-\u003efwd_ptr, and the read access associated with a CAS must see the last write (in that order) before the CAS write. So one of the CASs has to fail. What\u0027s not ordered is the store to the CAS and the possible publication of the result. Or the CAS and any other memory accesses to different locations.\n\nAt the ARM level, exclusive memory operations provide the same guarantee. (Or in v8.1+, there\u0027s a direct implementation that I believe we currently don\u0027t use.)\n\nControl dependencies have a very limited effect on ordering in ARM, and currently none in C++ (due to possible compiler elimination of dependencies). Basically a store that is control-dependent on a load cannot be reordered before the load. Control-dependent loads can be reordered with each other due to branch prediction. I don\u0027t find anything in the documentation that introduces a control dependency from any kind of store, including a store-exclusive. So I don\u0027t think the store-exclusive in the CAS is ordered with respect to a potential subsequent publishing store of e.g. objA. See B2.3.3 in the ARMv8 spec. Data and address dependencies can order loads as well on ARM (again not in C++), but not control dependencies.",
+      "parentUuid": "bfa69c1a_230ffcf0",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
