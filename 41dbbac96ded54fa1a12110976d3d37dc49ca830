@@ -306,6 +306,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04a25ca1_da8ea6c1",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-11-13T23:52:12Z",
+      "side": 1,
+      "message": "My concern with the scenario in my previous comment was that thread B took decision of CAS based on thread A\u0027s assumption that A\u0027s CAS has succeeded. Now isn\u0027t it possible that \n\nthread A does exclusive load of fwd_ptr\nthread A stores objA to global\nthread B does exclusive load of fwd_ptr\nthread B does exclusive store of fwd_ptr\nthread A attempts exclusive store of fwd_ptr, which fails.\n\nSo in this case only one of the CAS has succeeded, as you said. But not the right one!\n\n\nAnyways, what if you we were to do the following in refersTo():\n\nif the referent is marked (in to-space or in unevac space but marked) then nothing to worry.\nelse, if referent has a forwarding pointer, then also nothing worry. It must be to the right one!\nelse, if referent has no forwarding pointer, we attempt a CAS with the loaded value (non-forwarded lock-word). If the CAS fails, then we\u0027ll get the to-space ref and hence comparison will be straight-forward. Otherwise, referent can\u0027t be equal to other.\nBasically, with this, we create a TSO, without impacting Copy() performance. WDYT?\n\nOne thing we must ensure is that if GC is running during refersTo(), then it shouldn\u0027t declare marking finished. Because in the reclaim phase, we will get rid of the whole from-space.",
+      "parentUuid": "afb7c73b_d73b84f7",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
