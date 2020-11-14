@@ -330,6 +330,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a32e1f9_28873783",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-14T01:43:32Z",
+      "side": 1,
+      "message": "I don\u0027t think the first idea actually works, though I played with it as well. Especially if we CAS the same value back, which I think we must, there is still a danger that the CAS in refersTo will end up getting ordered before the one in Copy(), even if we saw the Copy result. At least that\u0027s true by C++ semantics. by ARM semantics, this starts to get pretty hairy.\n\nFor the last point, do we need to do more than just make sure that we don\u0027t suspend?\n\nI\u0027ll upload another PS, based on PS2, that modifies Copy() as I suggested. It uses a custom routine instead of IsMarked, since IsMarked does a bunch of unnecessary stuff, I think, and this all seems performance-critical. But the idea should be the same. At least that way we can discuss a concrete proposal.",
+      "parentUuid": "04a25ca1_da8ea6c1",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 88
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aabbd60_eeedc2b5",
         "filename": "runtime/native/java_lang_ref_Reference.cc",
         "patchSetId": 3
@@ -389,6 +413,30 @@
       "side": 1,
       "message": "Agreed. Will fix when the rest of this settles down.",
       "parentUuid": "a0fbc2d4_f27431df",
+      "range": {
+        "startLine": 44,
+        "startChar": 9,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "41dbbac96ded54fa1a12110976d3d37dc49ca830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "459ccd44_0dca56db",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-14T01:43:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a288c5eb_96dad750",
       "range": {
         "startLine": 44,
         "startChar": 9,
