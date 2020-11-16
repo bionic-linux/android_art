@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c45b211_9843701b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-16T17:36:57Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "74e3e2ee38ff0714de36277755a4a78b5f9a995a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e12098c_a8a670aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-16T17:36:57Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 12,
+        "startChar": 20,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "74e3e2ee38ff0714de36277755a4a78b5f9a995a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa12b9c_ed0b8c38",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-16T17:36:57Z",
+      "side": 1,
+      "message": "Do we need to check this earlier? Could the comparison in line 48 succeed?",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "74e3e2ee38ff0714de36277755a4a78b5f9a995a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c1906f_dcfff9e7",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-16T17:36:57Z",
+      "side": 1,
+      "message": "Do we need the check that the referent is in the from-space? Could we instead load the lock-word an check if the top 2 bits are set indicating that it contains a forwarding pointer?\n\nIn other words, could we do a GetFwdPtrUnchecked(), the same as GetFwdPtr() but without the `DCHECK(region_space_-\u003eIsInFromSpace(from_ref));`?",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 68,
+        "endChar": 67
+      },
+      "revId": "74e3e2ee38ff0714de36277755a4a78b5f9a995a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
