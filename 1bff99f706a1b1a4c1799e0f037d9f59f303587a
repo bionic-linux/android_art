@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b34f041_3023e1dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-11-17T17:15:01Z",
+      "side": 1,
+      "message": "LGTM post factum. Two minor comments.",
+      "revId": "1bff99f706a1b1a4c1799e0f037d9f59f303587a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d171fd4_d7763f77",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4192,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-11-17T17:15:01Z",
+      "side": 1,
+      "message": "Nit: Could you extract this to a named const?",
+      "range": {
+        "startLine": 4192,
+        "startChar": 50,
+        "endLine": 4192,
+        "endChar": 81
+      },
+      "revId": "1bff99f706a1b1a4c1799e0f037d9f59f303587a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a99a75_9db507e2",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4276,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-11-17T17:15:01Z",
+      "side": 1,
+      "message": "Nit: I\u0027ve found the allocation and use of temp registers here a bit difficult to follow.\n\nE.g.: CreateVarHandleCompareAndSetOrExchangeLocations calls CreateVarHandleFieldLocations, both of them add temp registers; could that temp for the declaring class case be reused?\n\nAlso \"GetTemp(0u)\" follows \"The temporary allocated for loading `offset`\" comment, but that temp register index in the location builder is not always 0.",
+      "range": {
+        "startLine": 4276,
+        "startChar": 31,
+        "endLine": 4276,
+        "endChar": 38
+      },
+      "revId": "1bff99f706a1b1a4c1799e0f037d9f59f303587a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
