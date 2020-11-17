@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f7f9d3_a96af081",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-17T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7b175a_dc42a920",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "fcaaf48bc324110e7035987cbc31c4b59ece2c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0010b58d_fa6cd49f",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-17T09:47:25Z",
       "side": 1,
       "message": "To properly implement this for non-CC GC, I would add\n\n  if (!kUseReadBarrier) {\n    return JNI_FALSE;\n  }\n\nhere and change the condition on line 40 to `if (kUseReadBarrier \u0026\u0026 !kUseBakerReadBarrier)`.",
+      "revId": "fcaaf48bc324110e7035987cbc31c4b59ece2c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71f3567_92a99d23",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-17T22:57:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0010b58d_fa6cd49f",
       "revId": "fcaaf48bc324110e7035987cbc31c4b59ece2c6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
