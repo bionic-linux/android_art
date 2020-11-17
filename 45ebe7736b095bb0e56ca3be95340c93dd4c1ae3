@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2f2ed2_76f6061f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-17T01:54:53Z",
+      "side": 1,
+      "message": "I started a go/lem run to measure what this costs. Currently it looks to me like there\u0027s maybe a barely measurable cost due to the added fence. I\u0027d probably be inclined to submit anyway. The fix is probably still better than the current questionable code + blocking in ThreadLocal. But I\u0027m open to other opinions.\n\nNote that the go/lem run only incurs the cost here, with no benefit, since it doesn\u0027t include the libcore change.\n\nThe fact that the cost currently looks higher on x86 is very fishy, since it should basically make no difference there.",
+      "revId": "45ebe7736b095bb0e56ca3be95340c93dd4c1ae3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
