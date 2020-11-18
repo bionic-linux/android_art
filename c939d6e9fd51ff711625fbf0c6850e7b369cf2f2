@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e8c7ed_5badbe8b",
+        "filename": "runtime/native/java_lang_ref_Reference.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-18T09:46:31Z",
+      "side": 1,
+      "message": "I think this style for the ternary operator line breaks is a bit unusual but we have some other uses in ART.",
+      "range": {
+        "startLine": 66,
+        "startChar": 93,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "c939d6e9fd51ff711625fbf0c6850e7b369cf2f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
