@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9b7e11_5446c620",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4192,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-18T12:34:35Z",
+      "side": 1,
+      "message": "Done for arm in https://android-review.googlesource.com/1501998 . I\u0027ll do this for arm64 later.",
+      "parentUuid": "6d171fd4_d7763f77",
+      "range": {
+        "startLine": 4192,
+        "startChar": 50,
+        "endLine": 4192,
+        "endChar": 81
+      },
+      "revId": "1bff99f706a1b1a4c1799e0f037d9f59f303587a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75a99a75_9db507e2",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-17T17:15:01Z",
       "side": 1,
       "message": "Nit: I\u0027ve found the allocation and use of temp registers here a bit difficult to follow.\n\nE.g.: CreateVarHandleCompareAndSetOrExchangeLocations calls CreateVarHandleFieldLocations, both of them add temp registers; could that temp for the declaring class case be reused?\n\nAlso \"GetTemp(0u)\" follows \"The temporary allocated for loading `offset`\" comment, but that temp register index in the location builder is not always 0.",
+      "range": {
+        "startLine": 4276,
+        "startChar": 31,
+        "endLine": 4276,
+        "endChar": 38
+      },
+      "revId": "1bff99f706a1b1a4c1799e0f037d9f59f303587a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31695263_eae0b1a7",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 4276,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-18T12:34:35Z",
+      "side": 1,
+      "message": "This has been cleaned up in https://android-review.googlesource.com/1497439 where CreateVarHandleFieldLocations() and GenerateVarHandleTarget() deal with the object and offset registers for all the VarHandle intrinsics. (Except maybe CreateVarHandleCompareAndSetOrExchangeLocations() for non-Baker read barriers, see https://android-review.googlesource.com/1498844 .)\n\nI started working on arm32 VarHandle intrinsics and I\u0027m reusing these temps there. I\u0027ll have a look later to check if arm64 can benefit from similar temp reuse.",
+      "parentUuid": "75a99a75_9db507e2",
       "range": {
         "startLine": 4276,
         "startChar": 31,
