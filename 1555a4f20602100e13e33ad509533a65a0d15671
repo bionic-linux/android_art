@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "121837ba_702af0f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-19T18:54:32Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1555a4f20602100e13e33ad509533a65a0d15671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eebc3b1_837fa1c5",
@@ -18,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "655f3b1a_8b0adaec",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-19T18:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eebc3b1_837fa1c5",
+      "revId": "1555a4f20602100e13e33ad509533a65a0d15671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "144ab2d5_4094b7b3",
@@ -31,6 +66,30 @@
       "writtenOn": "2020-11-19T13:25:27Z",
       "side": 1,
       "message": "Our code base starts method names with a capital.",
+      "range": {
+        "startLine": 690,
+        "startChar": 26,
+        "endLine": 690,
+        "endChar": 45
+      },
+      "revId": "1555a4f20602100e13e33ad509533a65a0d15671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d9d16e_9635cbaa",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-19T18:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "144ab2d5_4094b7b3",
       "range": {
         "startLine": 690,
         "startChar": 26,
