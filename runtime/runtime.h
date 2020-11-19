@@ -680,10 +680,20 @@ class Runtime {
     return disabled_compat_changes_;
   }
 
-  bool isChangeEnabled(uint64_t change_id) const {
-    // TODO(145743810): add an up call to java to log to statsd
-    return disabled_compat_changes_.count(change_id) == 0;
-  }
+  enum class ChangeState {
+    kUnknown,
+    kEnabled,
+    kDisabled,
+    kLogged
+  };
+
+  static std::string_view changeStateToString(ChangeState s);
+
+  bool isChangeEnabled(uint64_t change_id);
+
+  void logChange(uint64_t change_id);
+
+  void reportChange(uint64_t change_id, ChangeState state);
 
   uint32_t GetZygoteMaxFailedBoots() const {
     return zygote_max_failed_boots_;
@@ -1174,6 +1184,9 @@ class Runtime {
 
   // A set of disabled compat changes for the running app, all other changes are enabled.
   std::set<uint64_t> disabled_compat_changes_;
+
+  // A set of repoted compat changes for the running app.
+  std::set<uint64_t> reported_compat_changes_;
 
   // Implicit checks flags.
   bool implicit_null_checks_;       // NullPointer checks are implicit.

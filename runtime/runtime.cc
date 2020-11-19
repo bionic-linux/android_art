@@ -194,6 +194,12 @@ static constexpr double kNormalMaxLoadFactor = 0.7;
 // barrier config.
 static constexpr double kExtraDefaultHeapGrowthMultiplier = kUseReadBarrier ? 1.0 : 0.0;
 
+// Compat change states as strings.
+static constexpr char kUnknownChangeState[] = "UNKOWN";
+static constexpr char kEnabledChangeState[] = "ENABLED";
+static constexpr char kDisabledChangeState[] = "DISABLED";
+static constexpr char kLoggedState[] = "LOGGED";
+
 Runtime* Runtime::instance_ = nullptr;
 
 struct TraceConfig {
@@ -2647,6 +2653,41 @@ void Runtime::AddCurrentRuntimeFeaturesAsDex2OatArguments(std::vector<std::strin
     argv->push_back(feature_string);
   }
 }
+
+std::string_view Runtime::changeStateToString(ChangeState state) {
+  switch (state) {
+    case ChangeState::kUnknown:
+      return kUnknownChangeState;
+    case ChangeState::kEnabled:
+      return kEnabledChangeState;
+    case ChangeState::kDisabled:
+      return kDisabledChangeState;
+    case ChangeState::kLogged:
+      return kLoggedState;
+  }
+}
+
+bool Runtime::isChangeEnabled(uint64_t change_id) {
+  const auto enabled = disabled_compat_changes_.count(change_id) == 0;
+  reportChange(change_id, enabled ? ChangeState::kEnabled : ChangeState::kDisabled);
+  return enabled;
+}
+
+void Runtime::logChange(uint64_t change_id) {
+  reportChange(change_id, ChangeState::kLogged);
+}
+
+void Runtime::reportChange(uint64_t change_id, ChangeState state) {
+  bool already_reported = reported_compat_changes_.count(change_id) != 0;
+  if (already_reported) {
+    return;
+  }
+  LOG(DEBUG) << "Compat change id reported: " << change_id << "; UID " << getuid()
+            << "; state: " << changeStateToString(state);
+  // TODO(145743810): add an up call to java to log to statsd
+  reported_compat_changes_.emplace(change_id);
+}
+
 
 void Runtime::CreateJitCodeCache(bool rwx_memory_allowed) {
   if (kIsDebugBuild && GetInstrumentation()->IsForcedInterpretOnly()) {
