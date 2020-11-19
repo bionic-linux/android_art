@@ -56,6 +56,30 @@
       },
       "revId": "9b0249828ec7ed5f32170b09c621b326b12ba35e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e229e884_04f88062",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2824,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-19T10:05:32Z",
+      "side": 1,
+      "message": "The arm_krait-eng configuration we\u0027re using for testing uses this path. With ART Module, this shall be a matter of minimal system requirements. If LPAE is not mandatory, we cannot rely on LDRD/STRD being atomic.\n\nFixed.",
+      "parentUuid": "5ae496f2_436e6f1a",
+      "range": {
+        "startLine": 2824,
+        "startChar": 8,
+        "endLine": 2824,
+        "endChar": 85
+      },
+      "revId": "9b0249828ec7ed5f32170b09c621b326b12ba35e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
