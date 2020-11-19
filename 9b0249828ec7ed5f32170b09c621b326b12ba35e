@@ -16,6 +16,46 @@
       "message": "lgtm, but good for someone else to comment.\n",
       "revId": "9b0249828ec7ed5f32170b09c621b326b12ba35e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98970e46_babd81eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-19T05:36:27Z",
+      "side": 1,
+      "message": "I have a bit more to go through tomorrow, if you don\u0027t submit it, but it looks fine to me so far. I wanted to reply now in case you want to address the comment below. Artem or Xueliang may want to chime in, possibly for a later CL.",
+      "revId": "9b0249828ec7ed5f32170b09c621b326b12ba35e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae496f2_436e6f1a",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2824,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-11-19T05:36:27Z",
+      "side": 1,
+      "message": "Not a new issue, but:\nDoes this path actually get used? I think we concluded in a prior discussion that ldrexd is no more atomic that ldrd. To get added atomicity, you have to store it back with an exclusive store. But I don\u0027t think this is actually exercised on semi-modern hardware?",
+      "range": {
+        "startLine": 2824,
+        "startChar": 8,
+        "endLine": 2824,
+        "endChar": 85
+      },
+      "revId": "9b0249828ec7ed5f32170b09c621b326b12ba35e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
