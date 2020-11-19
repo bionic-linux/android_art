@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006263508",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505591?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "9a3fc73f_08dafec8",
+          "description": "Change to \"runtime/runtime.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/runtime.cc",
+              "range": {
+                "startLine": 198,
+                "startChar": 47,
+                "endLine": 198,
+                "endChar": 53
+              },
+              "replacement": "UNKNOWN"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9926e1cc_21621d40",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T12:47:15Z",
+      "side": 1,
+      "message": "Common typo found: \"UNKOWN\" -- should it be \"UNKNOWN\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 198,
+        "startChar": 47,
+        "endLine": 198,
+        "endChar": 53
+      },
+      "revId": "9b26e59560ba3fd0011e6755da20fc27967dfeb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
