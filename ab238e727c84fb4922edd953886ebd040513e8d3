@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a289f17e_409cc7c0",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-20T11:30:50Z",
+      "side": 1,
+      "message": "Please add a high-level comment.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "ab238e727c84fb4922edd953886ebd040513e8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7205b5e5_db28e76b",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-20T11:30:50Z",
+      "side": 1,
+      "message": "Could you add comments on what those states are?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "ab238e727c84fb4922edd953886ebd040513e8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f9e78f_d58dc3fe",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-20T11:30:50Z",
+      "side": 1,
+      "message": "const\u0026 ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "ab238e727c84fb4922edd953886ebd040513e8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df992165_6458b82a",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-20T11:30:50Z",
+      "side": 1,
+      "message": "Can you add comments on what those do?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "ab238e727c84fb4922edd953886ebd040513e8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a98c7fd_3154a0e9",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-20T11:30:50Z",
+      "side": 1,
+      "message": "Please add a comment.",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 36
+      },
+      "revId": "ab238e727c84fb4922edd953886ebd040513e8d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
