@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8684c3b4_a73fa78f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-23T16:18:30Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e71de82_f6ad9a1c",
@@ -41,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2320cb_f80aec0b",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-23T16:18:30Z",
+      "side": 1,
+      "message": "I hope it\u0027s clearer now; the side effect is caused by the fact that we need to log only once, to avoid spamming.",
+      "parentUuid": "7e71de82_f6ad9a1c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae96e44_a05cae1f",
@@ -54,6 +95,30 @@
       "writtenOn": "2020-11-23T13:48:45Z",
       "side": 1,
       "message": "Indentation of comments is off.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39b2d56_596ff682",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-23T16:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae96e44_a05cae1f",
       "range": {
         "startLine": 47,
         "startChar": 0,
