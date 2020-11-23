@@ -16,6 +16,52 @@
       "message": "Thanks!",
       "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e71de82_f6ad9a1c",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T13:48:45Z",
+      "side": 1,
+      "message": "Could you also point to the side effects of these methods? Their names sound like they should be const.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 37
+      },
+      "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae96e44_a05cae1f",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T13:48:45Z",
+      "side": 1,
+      "message": "Indentation of comments is off.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 42
+      },
+      "revId": "339456e1f82ee8be9ad0c22267176bc95ed8a9fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
