@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4159d010_5c0ee7da",
+        "filename": "runtime/compat_framework.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T16:35:57Z",
+      "side": 1,
+      "message": "how about: \"and we add the information we logged in reported_compat_changes_. This ensure we only log once per change id for the app\u0027s lifetime\" ?\n\nSame below.",
+      "range": {
+        "startLine": 48,
+        "startChar": 38,
+        "endLine": 48,
+        "endChar": 85
+      },
+      "revId": "037b5d27754aec26560e4cdef8956230170e83f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
