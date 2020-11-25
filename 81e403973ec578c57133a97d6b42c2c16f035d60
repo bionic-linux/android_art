@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "235a3d66_3a580173",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-11-25T16:14:33Z",
+      "side": 1,
+      "message": "FYI: I think the long term intention is to remove this and replace all usage with the compat change. That will take a bunch of extra effort though, so this CL looks good for now.",
+      "range": {
+        "startLine": 502,
+        "startChar": 10,
+        "endLine": 502,
+        "endChar": 23
+      },
+      "revId": "81e403973ec578c57133a97d6b42c2c16f035d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
