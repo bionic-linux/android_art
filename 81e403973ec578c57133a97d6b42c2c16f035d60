@@ -22,6 +22,29 @@
       },
       "revId": "81e403973ec578c57133a97d6b42c2c16f035d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fad889_c1e12116",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-11-25T16:15:31Z",
+      "side": 1,
+      "message": "This should have changed a bit since https://r.android.com/1505591 . You\u0027ll probably get a merge conflict as soon as you update to head",
+      "range": {
+        "startLine": 505,
+        "startChar": 23,
+        "endLine": 505,
+        "endChar": 47
+      },
+      "revId": "81e403973ec578c57133a97d6b42c2c16f035d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
