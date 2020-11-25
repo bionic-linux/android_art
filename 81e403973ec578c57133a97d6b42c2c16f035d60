@@ -45,6 +45,30 @@
       },
       "revId": "81e403973ec578c57133a97d6b42c2c16f035d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "480dc875_fdcbe1dc",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2020-11-25T17:12:29Z",
+      "side": 1,
+      "message": "Thanks for the heads up!",
+      "parentUuid": "35fad889_c1e12116",
+      "range": {
+        "startLine": 505,
+        "startChar": 23,
+        "endLine": 505,
+        "endChar": 47
+      },
+      "revId": "81e403973ec578c57133a97d6b42c2c16f035d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
