@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "341dd9b6_c701b1fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-11-26T10:03:27Z",
+      "side": 1,
+      "message": "You should also add ngeoffray@ when it\u0027s ready to go",
+      "revId": "f7fcb98ab4740db9d9d8ed7652b89928a2e56f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
