@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f292f8_f1151fe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-11-26T16:56:12Z",
+      "side": 1,
+      "message": "Giving Code-Review+1, as I\u0027d like someone else to take a look too.",
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
