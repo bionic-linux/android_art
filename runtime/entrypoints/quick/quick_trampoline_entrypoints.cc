@@ -2402,10 +2402,13 @@ extern "C" TwoWordReturn artInvokeInterfaceTrampoline(ArtMethod* interface_metho
   ArtMethod* method = nullptr;
   ImTable* imt = cls->GetImt(kRuntimePointerSize);
 
+  bool entered  = false;
+  uint32_t dex_method_idx = -1;
   if (UNLIKELY(interface_method == nullptr) || interface_method->IsRuntimeMethod()) {
+    entered = true;
     // The interface method is unresolved, so resolve it in the dex file of the caller.
     // Fetch the dex_method_idx of the target interface method from the caller.
-    uint32_t dex_method_idx;
+//    uint32_t dex_method_idx;
     uint32_t dex_pc = QuickArgumentVisitor::GetCallingDexPc(sp);
     const Instruction& instr = caller_method->DexInstructions().InstructionAt(dex_pc);
     Instruction::Code instr_code = instr.Opcode();
@@ -2444,8 +2447,7 @@ extern "C" TwoWordReturn artInvokeInterfaceTrampoline(ArtMethod* interface_metho
   // The compiler and interpreter make sure the conflict trampoline is never
   // called on a method that resolves to j.l.Object.
   CHECK(!interface_method->GetDeclaringClass()->IsObjectClass());
-  CHECK(interface_method->GetDeclaringClass()->IsInterface());
-
+  CHECK(interface_method->GetDeclaringClass()->IsInterface()) << interface_method->PrettyMethod() << " " << interface_method->GetDeclaringClass()->IsInterface() << " " << caller_method->PrettyMethod() << " outer_method= " << QuickArgumentVisitor::GetOuterMethod(sp)->PrettyMethod() << " DEX PC IS " << QuickArgumentVisitor::GetCallingDexPc(sp) << " caller dex file " << caller_method->GetDexFile()->GetLocation() << " outer dex file is " << QuickArgumentVisitor::GetOuterMethod(sp)->GetDexFile()->GetLocation() << " entered " << entered << " method index= " << dex_method_idx;
   DCHECK(!interface_method->IsRuntimeMethod());
   // Look whether we have a match in the ImtConflictTable.
   uint32_t imt_index = interface_method->GetImtIndex();
