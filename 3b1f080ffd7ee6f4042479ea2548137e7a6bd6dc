@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bad3483_50a0887d",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-26T13:17:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32279ba2_121171b7",
+      "range": {
+        "startLine": 716,
+        "startChar": 46,
+        "endLine": 721,
+        "endChar": 57
+      },
+      "revId": "3b1f080ffd7ee6f4042479ea2548137e7a6bd6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15598809_45708184",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-26T10:58:08Z",
       "side": 1,
       "message": "For easier readability you could just don one !return_success check.",
+      "range": {
+        "startLine": 4212,
+        "startChar": 0,
+        "endLine": 4217,
+        "endChar": 3
+      },
+      "revId": "3b1f080ffd7ee6f4042479ea2548137e7a6bd6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea31629e_c90bb110",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4217,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-11-26T13:17:40Z",
+      "side": 1,
+      "message": "Readability is full of trade-offs, more lines are sometimes detrimental. I prefer fewer lines here.",
+      "parentUuid": "15598809_45708184",
       "range": {
         "startLine": 4212,
         "startChar": 0,
