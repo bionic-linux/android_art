@@ -2444,7 +2444,7 @@ extern "C" TwoWordReturn artInvokeInterfaceTrampoline(ArtMethod* interface_metho
   // The compiler and interpreter make sure the conflict trampoline is never
   // called on a method that resolves to j.l.Object.
   CHECK(!interface_method->GetDeclaringClass()->IsObjectClass());
-  CHECK(interface_method->GetDeclaringClass()->IsInterface());
+  CHECK(interface_method->GetDeclaringClass()->IsInterface()) << interface_method->PrettyMethod() << " " << interface_method->GetDeclaringClass()->IsInterface() << " " << caller_method->PrettyMethod();
 
   DCHECK(!interface_method->IsRuntimeMethod());
   // Look whether we have a match in the ImtConflictTable.
