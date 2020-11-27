@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de3ae98_f4f861ba",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-27T00:07:51Z",
+      "side": 1,
+      "message": "I am working on generating part of the file at build time.\nhttps://android-review.googlesource.com/q/topic:%22generate_system_stub%22+(status:open%20OR%20status:merged)\n\nSeems like we need some cover logic from here once the change lands.",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 147
+      },
+      "revId": "d6363c113ceeb913a1d170d9bea708632f5fe8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
