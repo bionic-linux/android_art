@@ -82,6 +82,7 @@ static art::ConditionVariable& GetStateCV() {
   return state_cv;
 }
 
+static void* sival = nullptr;
 static State g_state = State::kUninitialized;
 
 // Pipe to signal from the signal handler into a worker thread that handles the
@@ -169,6 +170,13 @@ class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
   constexpr static perfetto::BufferExhaustedPolicy kBufferExhaustedPolicy =
     perfetto::BufferExhaustedPolicy::kStall;
   void OnSetup(const SetupArgs& args) override {
+    uint64_t requested_tracing_session_id = reinterpret_cast<uint64_t>(sival);
+    uint64_t normalized_cfg_tracing_session_id =
+      args.config->tracing_session_id() & static_cast<uintptr_t>(-1);
+    if (requested_tracing_session_id != normalized_cfg_tracing_session_id) {
+      return;
+    }
+
     // This is on the heap as it triggers -Wframe-larger-than.
     std::unique_ptr<perfetto::protos::pbzero::JavaHprofConfig::Decoder> cfg(
         new perfetto::protos::pbzero::JavaHprofConfig::Decoder(
@@ -882,7 +890,8 @@ extern "C" bool ArtPlugin_Initialize() {
 
   struct sigaction act = {};
   act.sa_flags = SA_SIGINFO | SA_RESTART;
-  act.sa_sigaction = [](int, siginfo_t*, void*) {
+  act.sa_sigaction = [](int, siginfo_t* si, void*) {
+    sival = si->si_value.sival_ptr;
     if (write(g_signal_pipe_fds[1], kByte, sizeof(kByte)) == -1) {
       PLOG(ERROR) << "Failed to trigger heap dump";
     }
