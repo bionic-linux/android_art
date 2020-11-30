@@ -22,6 +22,30 @@
       },
       "revId": "6e4075f133160b4ba0728552141cbbbb40203f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3fe1ed_616e56fb",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-11-30T12:37:46Z",
+      "side": 1,
+      "message": "I prefer to do that later when it\u0027s needed. There are no prebuilts for it yet.",
+      "parentUuid": "45538c7f_1a6cd3fb",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 51
+      },
+      "revId": "6e4075f133160b4ba0728552141cbbbb40203f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
