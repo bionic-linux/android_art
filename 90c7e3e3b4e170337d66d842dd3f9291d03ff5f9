@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9603ff_ee027ec0",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1386032
+      },
+      "writtenOn": "2020-11-30T21:14:16Z",
+      "side": 1,
+      "message": "Can we just cast everything to uint32_t (meaning interpretation of sival_int, and the filtering on the line above), and remove subsequent casts and checks like this?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 43
+      },
+      "revId": "90c7e3e3b4e170337d66d842dd3f9291d03ff5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
