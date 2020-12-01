@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f78582_d3543379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "Thanks Roland, addressed in https://r.android.com/1513852.",
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752840f9_8237a146",
@@ -31,6 +48,30 @@
       "writtenOn": "2020-12-01T17:19:56Z",
       "side": 1,
       "message": "Nit: Promote this to a (global) constant (`FETCH_ARTIFACT_PATH`)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 73
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9030cc_4afd229e",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "I considered that, but in this case I don\u0027t see much point - it only spreads it out. If the path needs changing then there\u0027ll be an obvious error.",
+      "parentUuid": "752840f9_8237a146",
       "range": {
         "startLine": 96,
         "startChar": 2,
@@ -64,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a46e37f6_e7262813",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f8ecc9_b04546e5",
+      "range": {
+        "startLine": 105,
+        "startChar": 31,
+        "endLine": 105,
+        "endChar": 36
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f2d1734_42e23dfa",
@@ -77,6 +142,30 @@
       "writtenOn": "2020-12-01T17:19:56Z",
       "side": 1,
       "message": "I\u0027m not sure I under stand this part of the comment; did you initially intend to stage some changes in Git\u0027s index here too?",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee6e152_82494fd1",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "It refers to that \"git rm\" stages the removals. Rephrased in the follow-up CL.",
+      "parentUuid": "2f2d1734_42e23dfa",
       "range": {
         "startLine": 119,
         "startChar": 37,
@@ -110,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5eab55_7cb47e10",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "Yes, but it seems just like a more roundabout way to do it, requiring more man page reading etc.",
+      "parentUuid": "e8e74ee6_6d305c0d",
+      "range": {
+        "startLine": 123,
+        "startChar": 13,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da4db30_7c64ec94",
@@ -133,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd4bbb0_21298f66",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "Yes, in this case I agree - may help a bit to avoid a stale path if the script is moved.",
+      "parentUuid": "3da4db30_7c64ec94",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "565a9a33_af441e34",
@@ -146,6 +283,30 @@
       "writtenOn": "2020-12-01T17:19:56Z",
       "side": 1,
       "message": "Nit: Android",
+      "range": {
+        "startLine": 229,
+        "startChar": 57,
+        "endLine": 229,
+        "endChar": 64
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5914995a_ca1fafb0",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-01T20:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "565a9a33_af441e34",
       "range": {
         "startLine": 229,
         "startChar": 57,
