@@ -16,6 +16,52 @@
       "message": "Giving Code-Review+1, as I\u0027d like someone else to take a look too.",
       "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3c684b_375b7937",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3439,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-12-01T14:39:11Z",
+      "side": 1,
+      "message": "Could you add back the comment from L710? (Or mention that the generated CAS is seq_cst?)",
+      "range": {
+        "startLine": 3439,
+        "startChar": 2,
+        "endLine": 3439,
+        "endChar": 22
+      },
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0681a99e_b15e68aa",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4041,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-12-01T14:39:11Z",
+      "side": 1,
+      "message": "This is a little boggling to the reader. It might help to mention that kArmCalleeSaveRefSpills is a bitmap of registers and/or static_assert that POPCOUNT is \u003e\u003d 2.",
+      "range": {
+        "startLine": 4041,
+        "startChar": 4,
+        "endLine": 4041,
+        "endChar": 96
+      },
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
