@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74853295_8d105cf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "Late review; mostly nits.",
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752840f9_8237a146",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "Nit: Promote this to a (global) constant (`FETCH_ARTIFACT_PATH`)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 73
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f8ecc9_b04546e5",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "exists",
+      "range": {
+        "startLine": 105,
+        "startChar": 31,
+        "endLine": 105,
+        "endChar": 36
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f2d1734_42e23dfa",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure I under stand this part of the comment; did you initially intend to stage some changes in Git\u0027s index here too?",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 61
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e74ee6_6d305c0d",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "You could use `git clean -qfx` here.",
+      "range": {
+        "startLine": 123,
+        "startChar": 13,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da4db30_7c64ec94",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "Nit: Maybe put this in a constant?",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565a9a33_af441e34",
+        "filename": "build/update-art-module-prebuilts.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-12-01T17:19:56Z",
+      "side": 1,
+      "message": "Nit: Android",
+      "range": {
+        "startLine": 229,
+        "startChar": 57,
+        "endLine": 229,
+        "endChar": 64
+      },
+      "revId": "df105da771446bf686de567b36d9d982dc641ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
