@@ -93,6 +93,30 @@
       },
       "revId": "3b1f080ffd7ee6f4042479ea2548137e7a6bd6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f258a70b_7221032d",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4217,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-12-01T15:04:33Z",
+      "side": 1,
+      "message": "Closing as resolved. Reopen if you want me to rewrite in a follow-up.",
+      "parentUuid": "ea31629e_c90bb110",
+      "range": {
+        "startLine": 4212,
+        "startChar": 0,
+        "endLine": 4217,
+        "endChar": 3
+      },
+      "revId": "3b1f080ffd7ee6f4042479ea2548137e7a6bd6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

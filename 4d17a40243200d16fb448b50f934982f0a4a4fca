@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "217a73fe_ebaa3c40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-12-01T15:04:33Z",
+      "side": 1,
+      "message": "I\u0027m going to submit this now as is and address comments on the next CL.",
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3c684b_375b7937",
@@ -54,6 +71,30 @@
       "writtenOn": "2020-12-01T14:39:11Z",
       "side": 1,
       "message": "This is a little boggling to the reader. It might help to mention that kArmCalleeSaveRefSpills is a bitmap of registers and/or static_assert that POPCOUNT is \u003e\u003d 2.",
+      "range": {
+        "startLine": 4041,
+        "startChar": 4,
+        "endLine": 4041,
+        "endChar": 96
+      },
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97921433_0d850f27",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4041,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-12-01T15:04:33Z",
+      "side": 1,
+      "message": "One just needs to look up kArmCalleeSaveRefSpills. And the CTZ is a strong hint that this is a mask.",
+      "parentUuid": "0681a99e_b15e68aa",
       "range": {
         "startLine": 4041,
         "startChar": 4,
