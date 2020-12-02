@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2afe76_a5f6932b",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3439,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-12-02T15:30:43Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/1513859 .",
+      "parentUuid": "ac3c684b_375b7937",
+      "range": {
+        "startLine": 3439,
+        "startChar": 2,
+        "endLine": 3439,
+        "endChar": 22
+      },
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0681a99e_b15e68aa",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "One just needs to look up kArmCalleeSaveRefSpills. And the CTZ is a strong hint that this is a mask.",
       "parentUuid": "0681a99e_b15e68aa",
+      "range": {
+        "startLine": 4041,
+        "startChar": 4,
+        "endLine": 4041,
+        "endChar": 96
+      },
+      "revId": "4d17a40243200d16fb448b50f934982f0a4a4fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7836307_e3bdc5b8",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4041,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-12-02T15:30:43Z",
+      "side": 1,
+      "message": "Added POPCOUNT assertion in https://android-review.googlesource.com/1513859 .",
+      "parentUuid": "97921433_0d850f27",
       "range": {
         "startLine": 4041,
         "startChar": 4,
