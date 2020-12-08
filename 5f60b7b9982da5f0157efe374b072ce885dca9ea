@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2de417_e26dcf95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-12-08T17:32:50Z",
+      "side": 1,
+      "message": "Had to fix run-test-jar to not copy the dex files.",
+      "revId": "5f60b7b9982da5f0157efe374b072ce885dca9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
