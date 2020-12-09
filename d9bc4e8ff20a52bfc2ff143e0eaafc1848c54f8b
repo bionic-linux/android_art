@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf973d0_1483a27c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-12-09T21:56:24Z",
+      "side": 1,
+      "message": "Propagating +2 after style fix.",
+      "revId": "d9bc4e8ff20a52bfc2ff143e0eaafc1848c54f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
