@@ -726,6 +726,12 @@ void RegionSpace::LogFragmentationAllocFailure(std::ostream& os,
                                                size_t /* failed_alloc_bytes */) {
   size_t max_contiguous_allocation = 0;
   MutexLock mu(Thread::Current(), region_lock_);
+
+  // Calculate how many regions are available for allocations as we have to ensure
+  // that enough regions are available for evacuation.
+  CHECK_LE(num_non_free_regions_ * 2, num_regions_);
+  size_t regions_free_for_alloc = (num_regions_ - (num_non_free_regions_ * 2)) / 2;
+
   if (current_region_->End() - current_region_->Top() > 0) {
     max_contiguous_allocation = current_region_->End() - current_region_->Top();
   }
@@ -756,9 +762,13 @@ void RegionSpace::LogFragmentationAllocFailure(std::ostream& os,
     }
     max_contiguous_allocation = std::max(max_contiguous_allocation,
                                          max_contiguous_free_regions * kRegionSize);
+    max_contiguous_allocation = std::min(max_contiguous_allocation,
+                                         regions_free_for_alloc * kRegionSize);
   }
   os << "; failed due to fragmentation (largest possible contiguous allocation "
-     <<  max_contiguous_allocation << " bytes)";
+     <<  max_contiguous_allocation << " bytes). Number of "
+     << PrettySize(kRegionSize)
+     << " sized free regions are: " << regions_free_for_alloc;
   // Caller's job to print failed_alloc_bytes.
 }
 
