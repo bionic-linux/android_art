@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38986d6d_43367778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-14T20:13:32Z",
+      "side": 1,
+      "message": "A couple of nits.",
+      "revId": "9475783c2faf5eb1889fc5b4d7088ae7255eef0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0f3015_329f55a0",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-14T20:13:32Z",
+      "side": 1,
+      "message": "Isn\u0027t this now just a performance optimization where we really don\u0027t care? Delete?",
+      "range": {
+        "startLine": 738,
+        "startChar": 2,
+        "endLine": 738,
+        "endChar": 49
+      },
+      "revId": "9475783c2faf5eb1889fc5b4d7088ae7255eef0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ee0371_6335d271",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-14T20:13:32Z",
+      "side": 1,
+      "message": "evacuation",
+      "range": {
+        "startLine": 739,
+        "startChar": 42,
+        "endLine": 739,
+        "endChar": 52
+      },
+      "revId": "9475783c2faf5eb1889fc5b4d7088ae7255eef0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
