@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7326d930_f3ac26a7",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-12-14T22:12:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0f3015_329f55a0",
+      "range": {
+        "startLine": 738,
+        "startChar": 2,
+        "endLine": 738,
+        "endChar": 49
+      },
+      "revId": "9475783c2faf5eb1889fc5b4d7088ae7255eef0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ee0371_6335d271",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-14T20:13:32Z",
       "side": 1,
       "message": "evacuation",
+      "range": {
+        "startLine": 739,
+        "startChar": 42,
+        "endLine": 739,
+        "endChar": 52
+      },
+      "revId": "9475783c2faf5eb1889fc5b4d7088ae7255eef0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d777f28e_a51111f3",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-12-14T22:12:01Z",
+      "side": 1,
+      "message": "Removed the comment as the condition referred-to is no longer there.",
+      "parentUuid": "63ee0371_6335d271",
       "range": {
         "startLine": 739,
         "startChar": 42,
