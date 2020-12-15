@@ -16,6 +16,23 @@
       "message": "The treehugger failure above is causing the assertion that I added in this CL to fail:\n\n+dalvikvm32 F 12-14 22:44:36 63714 64873 region_space.cc:732] Check failed: num_non_free_regions_ * 2 \u003c\u003d num_regions_ (num_non_free_regions_ * 2\u003d2052, num_regions_\u003d2048) \n\n\nWe should never allocate more than 1/2 of num_regions_. The allocation logic seems to making a mistake somewhere. I\u0027ll have a look and fix that first and then try to re-run the treehugger again on this CL.",
       "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ccf6d6_2c518cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-15T01:52:15Z",
+      "side": 1,
+      "message": "I still have hope that if you figure this out, we might be able to resurrect aosp/1212363. There seems to be a long-standing bug somewhere around here.",
+      "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
