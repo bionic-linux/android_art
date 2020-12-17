@@ -33,6 +33,24 @@
       "message": "I still have hope that if you figure this out, we might be able to resurrect aosp/1212363. There seems to be a long-standing bug somewhere around here.",
       "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a20f92a9_fb5b5ab3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-12-17T19:44:41Z",
+      "side": 1,
+      "message": "The reason of the mismatch in the calculation of num_non_free_regions_ is skipped bytes during object copy. In some cases it\u0027s a significant portion. At the end of the GC cycle we assume the skipped blocks/objects as part of the used heap.\n\nThis could also explain the OOME that we are observing in ThreadStress test. Maybe some changes have made it more frequent to get into forwarding pointer races leading to more skipped blocks.",
+      "parentUuid": "f3ccf6d6_2c518cd8",
+      "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
