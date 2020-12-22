@@ -68,6 +68,24 @@
       "message": "Just to summarize the state here: LGTM, but I think this is waiting for an accounting patch so the new CHECK actually succeeds.",
       "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44b7267_f91d3c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2020-12-22T23:29:59Z",
+      "side": 1,
+      "message": "As I said in the previous comment to this CL, the mismatch arises due to high skipped blocks size in ThreadStress during object copies. I will have to remove the CHECK as there isn\u0027t any way to avoid the CHECK failure in the above situation.",
+      "parentUuid": "d5a70ef1_0e800b4c",
+      "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
