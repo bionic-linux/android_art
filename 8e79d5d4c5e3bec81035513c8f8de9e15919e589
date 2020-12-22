@@ -51,6 +51,23 @@
       "parentUuid": "f3ccf6d6_2c518cd8",
       "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a70ef1_0e800b4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-22T23:00:31Z",
+      "side": 1,
+      "message": "Just to summarize the state here: LGTM, but I think this is waiting for an accounting patch so the new CHECK actually succeeds.",
+      "revId": "8e79d5d4c5e3bec81035513c8f8de9e15919e589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
