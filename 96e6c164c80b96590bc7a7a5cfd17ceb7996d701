@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ac55d5_42ddaaf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-23T01:09:18Z",
+      "side": 1,
+      "message": "LGTM, except for one more nit.",
+      "revId": "96e6c164c80b96590bc7a7a5cfd17ceb7996d701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b425a9b3_3c024f00",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-23T01:09:18Z",
+      "side": 1,
+      "message": "num_regions_ / 2 - num_non_free_regions_\n\nseems simpler",
+      "range": {
+        "startLine": 758,
+        "startChar": 34,
+        "endLine": 758,
+        "endChar": 82
+      },
+      "revId": "96e6c164c80b96590bc7a7a5cfd17ceb7996d701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
