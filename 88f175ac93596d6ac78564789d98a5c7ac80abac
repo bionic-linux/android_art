@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99504ed5_94b35e87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-23T23:56:14Z",
+      "side": 1,
+      "message": "I\u0027m OK with this as a temporary measure. I need to find some time to also investigate why this is happening.",
+      "revId": "88f175ac93596d6ac78564789d98a5c7ac80abac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4496c26_3fc2a97f",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2020-12-23T23:56:14Z",
+      "side": 1,
+      "message": "I\u0027d have made this a for loop on iters, but not worth another iteration.",
+      "range": {
+        "startLine": 1063,
+        "startChar": 6,
+        "endLine": 1063,
+        "endChar": 10
+      },
+      "revId": "88f175ac93596d6ac78564789d98a5c7ac80abac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
