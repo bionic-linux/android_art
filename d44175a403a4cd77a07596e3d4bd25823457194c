@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa38203b_c65e1d7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd03c45_71cc68f2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf7290e_a34c4f6b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "I think it would be useful to put together a script with all the necessary steps to set up an FVP device and run ART tests on it. Then you could put the script invocation in every SVE commit. That script should also mention where to increase timeouts in ART tests.\n\nI know this is more work, so let\u0027s discuss this idea with others before implementing.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee52ce98_c3a218ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Could you elaborate here a bit; do mean an actual automatic script or rather some instructions how to do the things?\n\nSome obstacles for the automatic approach:\n - it might be a good idea to use 2 trees: a more stable *full* AOSP tree to build an image for the FVP and probably a minimal tree to test ART changes.\n - Getting the FVP involves some manual steps to visit Arm website, etc.\n - Building kernel and image for the FVP instructions might need be kept up-to-date. Also currently a workaround is needed to build the kernel with SVE support.",
+      "parentUuid": "9cf7290e_a34c4f6b",
       "range": {
         "startLine": 19,
         "startChar": 6,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb2853e_59be19d6",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 6890,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Thanks for spotting this! Actually the code should be different now as intermediate address sharing (TDB) and constant index are not supported for SVE; also SVE memory instructions have different addressing modes.",
+      "parentUuid": "4887eb1d_cb843b17",
+      "range": {
+        "startLine": 6878,
+        "startChar": 0,
+        "endLine": 6890,
+        "endChar": 47
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f72930_d224a290",
@@ -117,6 +189,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "Should this be moved to https://r.android.com/c/1492887 and set to false in this CL?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8cb971_89205ae5",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8f72930_d224a290",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08585831_c89a0a36",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09644565_4b27b744",
+      "range": {
+        "startLine": 503,
+        "startChar": 18,
+        "endLine": 503,
+        "endChar": 53
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a44fcdc_40900590",
@@ -163,6 +283,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "There is common code between NEON/SVE/ARM64 variants of CanEncodeConstantAsImmediate and EncodableConstantOrRegister. I assume they will diverge in the future, otherwise it might be better to pass a  boolean \"is SVE\" parameter to avoid code duplication.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4669a4a_e3eebc92",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_neon.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Answered in the _sve.cc.",
+      "parentUuid": "3a44fcdc_40900590",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -213,6 +357,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b36931d6_6f6da718",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f9a8bd_038a0b7b",
+      "range": {
+        "startLine": 620,
+        "startChar": 20,
+        "endLine": 620,
+        "endChar": 26
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5967e92_da0409cb",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Actually this comment is outdated and is updated now: StrictNanPropagation only relates to commutative instructions as VIXL might emit some code which doesn\u0027t respect nan propagation precisely; for FDIV StrictNanPropagation is always guaranteed.",
+      "parentUuid": "3f512d06_0d0eb376",
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75789d22_c3cf98a5",
@@ -226,6 +412,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "Why are the two Z-regs allocated in such different ways? Pardon my ART ignorance if that is common knowledge. :)",
+      "range": {
+        "startLine": 1086,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 66
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7656dd46_2d9a677f",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "const vixl::aarch64::CPURegList vixl_reserved_core_registers(vixl::aarch64::ip0,\n                                                             vixl::aarch64::ip1);\nconst vixl::aarch64::CPURegList vixl_reserved_fp_registers(vixl::aarch64::d31);\n\nThose register are removed from ART register allocator; by default they are given to VIXL macroassembler to be used as scratch registers. But sometimes we know that for some part of the generated code (inside some scope) VIXL won\u0027t need a scratch register, thus we can temporary take it back from VIXL. As those registers are not involved in ART register allocator, this is always beneficial over asking for a temp register (this increases the register pressure).",
+      "parentUuid": "75789d22_c3cf98a5",
       "range": {
         "startLine": 1086,
         "startChar": 0,
@@ -259,6 +469,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa548b73_6496a420",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca424351_fbeebe50",
+      "range": {
+        "startLine": 1090,
+        "startChar": 0,
+        "endLine": 1093,
+        "endChar": 45
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91abb35f_ec8f7993",
@@ -272,6 +506,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "I\u0027m not familiar with register allocator implementation in ART, but this looks suspicious: if we cannot book a predicate register, why would we book a core register instead?",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1272,
+        "endChar": 50
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31dcadcb_d1fe4201",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Semantically, the out location of this instruction and predicate inputs locations of users should be a fixed predicate register (similar to Location::RegisterLocation(int reg)). But the register allocator (RA) doesn\u0027t support SIMD regs (e.g. predicate), so LoopPReg() was used explicitly without exposing it to the RA.\n\nTo make the RA happy Location::NoLocation() was used for all the vector instructions inputs; but for the PredSetOperations (e.g. VecPredWhile) Location::NoLocation() can\u0027t be used without changes to RA - \"ssa_liveness_analysis.cc:130] Check failed: input-\u003eIsEmittedAtUseSite()\" would fire.\n\nUsing a core register as a hack was the easiest way to tackle the problem.",
+      "parentUuid": "91abb35f_ec8f7993",
       "range": {
         "startLine": 1269,
         "startChar": 0,
@@ -305,6 +563,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77543c0_3b6417a0",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "This is actually needed; a register is needed for the boolean result of materializing the condition.",
+      "parentUuid": "ca009164_276eed0d",
+      "range": {
+        "startLine": 1303,
+        "startChar": 0,
+        "endLine": 1303,
+        "endChar": 50
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c76ef859_7364e4e3",
@@ -318,6 +600,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "This looks like it could use a helper function (if there are checks like this in the future).",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 60
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "209bc1ab_459e6f52",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c76ef859_7364e4e3",
       "range": {
         "startLine": 334,
         "startChar": 0,
@@ -351,6 +657,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffcf798_3eb1c8f9",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "It was some old artifact probably; fixed!",
+      "parentUuid": "a58a091e_dc0a31f9",
+      "range": {
+        "startLine": 1238,
+        "startChar": 25,
+        "endLine": 1238,
+        "endChar": 27
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f114f8b0_b069edbe",
@@ -364,6 +694,30 @@
       "writtenOn": "2020-12-24T15:20:33Z",
       "side": 1,
       "message": "Remove one space.",
+      "range": {
+        "startLine": 83,
+        "startChar": 33,
+        "endLine": 83,
+        "endChar": 35
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab2155c_8fb295d7",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-12-25T16:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f114f8b0_b069edbe",
       "range": {
         "startLine": 83,
         "startChar": 33,
