@@ -494,18 +494,22 @@ bool InvokeMethodImpl(const ScopedObjectAccessAlreadyRunnable& soa,
 
   // Wrap any exception with "Ljava/lang/reflect/InvocationTargetException;" and return early.
   if (soa.Self()->IsExceptionPending()) {
-    // If we get another exception when we are trying to wrap, then just use that instead.
-    ScopedLocalRef<jthrowable> th(soa.Env(), soa.Env()->ExceptionOccurred());
-    soa.Self()->ClearException();
-    jobject exception_instance =
-        soa.Env()->NewObject(WellKnownClasses::java_lang_reflect_InvocationTargetException,
-                             WellKnownClasses::java_lang_reflect_InvocationTargetException_init,
-                             th.get());
-    if (exception_instance == nullptr) {
-      soa.Self()->AssertPendingException();
-      return false;
+    // We won't be able to invoke the constructor of the exception if transaction is aborted,
+    // else wrap new exception could violate the value constraint in transaction
+    if (!Runtime::Current()->IsTransactionAborted()) {
+      // If we get another exception when we are trying to wrap, then just use that instead.
+      ScopedLocalRef<jthrowable> th(soa.Env(), soa.Env()->ExceptionOccurred());
+      soa.Self()->ClearException();
+      jobject exception_instance =
+          soa.Env()->NewObject(WellKnownClasses::java_lang_reflect_InvocationTargetException,
+                               WellKnownClasses::java_lang_reflect_InvocationTargetException_init,
+                               th.get());
+      if (exception_instance == nullptr) {
+        soa.Self()->AssertPendingException();
+        return false;
+      }
+      soa.Env()->Throw(reinterpret_cast<jthrowable>(exception_instance));
     }
-    soa.Env()->Throw(reinterpret_cast<jthrowable>(exception_instance));
     return false;
   }
 
