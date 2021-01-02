@@ -32,6 +32,7 @@
 #include "dex/dex_file_structs.h"
 #include "dex/modifiers.h"
 #include "dex/primitive.h"
+#include "entrypoints/runtime_asm_entrypoints.h"
 #include "interpreter/mterp/nterp.h"
 #include "gc_root.h"
 #include "obj_ptr.h"
@@ -282,13 +283,9 @@ class ArtMethod final {
     return (GetAccessFlags() & kAccDefault) != 0;
   }
 
-  bool IsObsolete() const {
-    return (GetAccessFlags() & kAccObsoleteMethod) != 0;
-  }
+  bool IsObsolete() const;
 
-  void SetIsObsolete() REQUIRES_SHARED(Locks::mutator_lock_) {
-    AddAccessFlags(kAccObsoleteMethod);
-  }
+  void SetIsObsolete() REQUIRES_SHARED(Locks::mutator_lock_);
 
   bool IsNative() const {
     return (GetAccessFlags() & kAccNative) != 0;
@@ -892,6 +889,9 @@ class ArtMethod final {
 
   // Used by GetName and GetNameView to share common code.
   const char* GetRuntimeMethodName() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Cached value for the obsolete stub, to facilitate inlining ArtMethod::IsObsolete.
+  static const void* obsolete_stub_;
 
   DISALLOW_COPY_AND_ASSIGN(ArtMethod);  // Need to use CopyFrom to deal with 32 vs 64 bits.
 };

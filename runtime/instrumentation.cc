@@ -229,6 +229,9 @@ static bool IsProxyInit(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_)
 
 static void UpdateEntryPoints(ArtMethod* method, const void* quick_code)
     REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (method->IsObsolete()) {
+    return;
+  }
   if (kIsDebugBuild) {
     if (NeedsClinitCheckBeforeCall(method) &&
         !method->GetDeclaringClass()->IsVisiblyInitialized()) {
@@ -423,7 +426,7 @@ void Instrumentation::InitializeMethodsCode(ArtMethod* method, const void* aot_c
 }
 
 void Instrumentation::InstallStubsForMethod(ArtMethod* method) {
-  if (!method->IsInvokable() || method->IsProxyMethod()) {
+  if (!method->IsInvokable() || method->IsProxyMethod() || method->IsObsolete()) {
     // Do not change stubs for these methods.
     return;
   }

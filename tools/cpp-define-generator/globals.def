@@ -44,10 +44,6 @@ ASM_DEFINE(ACCESS_FLAGS_CLASS_IS_FINALIZABLE_BIT,
            art::MostSignificantBit(art::kAccClassIsFinalizable))
 ASM_DEFINE(ACCESS_FLAGS_CLASS_IS_INTERFACE,
            art::kAccInterface)
-ASM_DEFINE(ACC_OBSOLETE_METHOD,
-           art::kAccObsoleteMethod)
-ASM_DEFINE(ACC_OBSOLETE_METHOD_SHIFT,
-           art::WhichPowerOf2(art::kAccObsoleteMethod))
 ASM_DEFINE(CARD_TABLE_CARD_SHIFT,
            art::gc::accounting::CardTable::kCardShift)
 ASM_DEFINE(COMPRESSED_REFERENCE_SIZE,

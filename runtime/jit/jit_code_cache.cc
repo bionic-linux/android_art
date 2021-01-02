@@ -1737,14 +1737,11 @@ void JitCodeCache::DoneCompiling(ArtMethod* method,
 void JitCodeCache::InvalidateAllCompiledCode() {
   art::MutexLock mu(Thread::Current(), *Locks::jit_lock_);
   VLOG(jit) << "Invalidating all compiled code";
-  ClassLinker* linker = Runtime::Current()->GetClassLinker();
   for (auto it : method_code_map_) {
     ArtMethod* meth = it.second;
     // We were compiled, so we must be warm.
     ClearMethodCounter(meth, /*was_warm=*/true);
-    if (meth->IsObsolete()) {
-      linker->SetEntryPointsForObsoleteMethod(meth);
-    } else {
+    if (!meth->IsObsolete()) {
       Runtime::Current()->GetInstrumentation()->InitializeMethodsCode(meth, /*aot_code=*/ nullptr);
     }
   }

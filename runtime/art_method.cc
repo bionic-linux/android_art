@@ -63,9 +63,21 @@ extern "C" void art_quick_invoke_stub(ArtMethod*, uint32_t*, uint32_t, Thread*, 
 extern "C" void art_quick_invoke_static_stub(ArtMethod*, uint32_t*, uint32_t, Thread*, JValue*,
                                              const char*);
 
+const void* ArtMethod::obsolete_stub_ = GetInvokeObsoleteMethodStub();
+
 // Enforce that we have the right index for runtime methods.
 static_assert(ArtMethod::kRuntimeMethodDexMethodIndex == dex::kDexNoIndex,
               "Wrong runtime-method dex method index");
+
+void ArtMethod::SetIsObsolete() REQUIRES_SHARED(Locks::mutator_lock_) {
+  // We cannot mess with the entrypoints of native methods because they are used to determine how
+  // large the method's quick stack frame is. Without this information we cannot walk the stacks.
+  if (IsNative()) {
+    AddAccessFlags(kAccObsoleteNativeMethod);
+  } else {
+    SetEntryPointFromQuickCompiledCode(GetInvokeObsoleteMethodStub());
+  }
+}
 
 ArtMethod* ArtMethod::GetCanonicalMethod(PointerSize pointer_size) {
   if (LIKELY(!IsCopied())) {

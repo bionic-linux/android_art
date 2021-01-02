@@ -403,6 +403,14 @@ void ArtMethod::VisitRoots(RootVisitorType& visitor, PointerSize pointer_size) {
   }
 }
 
+inline bool ArtMethod::IsObsolete() const {
+  if (IsNative()) {
+    return (GetAccessFlags() & kAccObsoleteNativeMethod) != 0;
+  }
+  PointerSize pointer_size = Runtime::Current()->GetClassLinker()->GetImagePointerSize();
+  return GetEntryPointFromQuickCompiledCodePtrSize(pointer_size) == obsolete_stub_;
+}
+
 template <typename Visitor>
 inline void ArtMethod::UpdateEntrypoints(const Visitor& visitor, PointerSize pointer_size) {
   if (IsNative()) {

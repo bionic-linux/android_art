@@ -318,7 +318,6 @@ class ObsoleteMethodStackVisitor : public art::StackVisitor {
         DCHECK_EQ(new_obsolete_method->GetDeclaringClass(), old_method->GetDeclaringClass());
         new_obsolete_method->SetIsObsolete();
         new_obsolete_method->SetDontCompile();
-        cl->SetEntryPointsForObsoleteMethod(new_obsolete_method);
         obsolete_maps_->RecordObsolete(old_method, new_obsolete_method);
       }
       DCHECK(new_obsolete_method != nullptr);
@@ -2724,7 +2723,6 @@ void Redefiner::ClassRedefinition::UpdateClassStructurally(const RedefinitionDat
   // Instead we need to update everything else.
   // Just replace the class and be done with it.
   art::Locks::mutator_lock_->AssertExclusiveHeld(driver_->self_);
-  art::ClassLinker* cl = driver_->runtime_->GetClassLinker();
   art::ScopedAssertNoThreadSuspension sants(__FUNCTION__);
   art::ObjPtr<art::mirror::ObjectArray<art::mirror::Class>> new_classes(holder.GetNewClasses());
   art::ObjPtr<art::mirror::ObjectArray<art::mirror::Class>> old_classes(holder.GetOldClasses());
@@ -2779,7 +2777,6 @@ void Redefiner::ClassRedefinition::UpdateClassStructurally(const RedefinitionDat
         new_method->SetEntryPointFromJni(m.GetEntryPointFromJni());
       }
       m.SetIsObsolete();
-      cl->SetEntryPointsForObsoleteMethod(&m);
       if (m.IsInvokable()) {
         m.SetDontCompile();
       }
