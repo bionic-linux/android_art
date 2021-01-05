@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a2f6af_54095741",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-05T13:44:42Z",
+      "side": 1,
+      "message": "Always true. Remove the `if`. You may add `DCHECK(j_raw_data !\u003d nullptr)` instead but I do not think it\u0027s necessary.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "cc8b6814a274a516f11dea9dab81777561cc1c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90374ca0_06d9dab7",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-05T13:44:42Z",
+      "side": 1,
+      "message": "This is too early. You have use-after-free below. You should use std::unique_ptr\u003cjchar[]\u003e to hold the temporary storage:\n\n  jchar stack_buffer[DEFAULT_BUFFER_SIZE];\n  std::unique_ptr\u003cjchar[]\u003e allocated_buffer;\n  jchar* v;\n  if (byte_count \u003c\u003d DEFAULT_BUFFER_SIZE) {\n    v \u003d stack_buffer;\n  } else {\n    allocated_buffer.reset(new jchar[byte_count]);\n    v \u003d allocated_buffer.get();\n  }\n\nHaving `allocated_storage` defined before `v` shall ensure that the storage shall be freed after `v` ceases to exist.",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 17
+      },
+      "revId": "cc8b6814a274a516f11dea9dab81777561cc1c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
