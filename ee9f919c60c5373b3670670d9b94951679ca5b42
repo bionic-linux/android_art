@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38ff2ce0_cca57549",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-05T17:50:56Z",
+      "side": 1,
+      "message": "Based on your description of the problem, I think we should avoid the wrapping only if we\u0027re actually aborting a transaction. There is no reason to prevent the wrapping for other cases in unstarted runtime as this could lead to subtle changes in semantics. (Catching the unwrapped exception could yield a class that is initialized with different values.)",
+      "range": {
+        "startLine": 499,
+        "startChar": 8,
+        "endLine": 499,
+        "endChar": 39
+      },
+      "revId": "ee9f919c60c5373b3670670d9b94951679ca5b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
