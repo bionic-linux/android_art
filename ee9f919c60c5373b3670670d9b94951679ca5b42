@@ -22,6 +22,30 @@
       },
       "revId": "ee9f919c60c5373b3670670d9b94951679ca5b42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ee1c01_779a0d2e",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2021-01-06T01:14:10Z",
+      "side": 1,
+      "message": "Yes, you are right. I just referenced the implementation of Thread::ThrowNewWrappedException(), and not considering other cases in unstared runtime.",
+      "parentUuid": "38ff2ce0_cca57549",
+      "range": {
+        "startLine": 499,
+        "startChar": 8,
+        "endLine": 499,
+        "endChar": 39
+      },
+      "revId": "ee9f919c60c5373b3670670d9b94951679ca5b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
