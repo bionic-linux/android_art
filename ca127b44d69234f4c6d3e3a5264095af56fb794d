@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5b7027_b6676cfa",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-06T11:30:43Z",
+      "side": 1,
+      "message": "These constants should be `kReplacementChar`, `kDefaultBufferSize` and `kTableUtf8Needed`. (The style in ART differs from the libcore/ style.)",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9dcb34_bbdecc3f",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-06T11:30:43Z",
+      "side": 1,
+      "message": "The `j_raw_data` variable is unnecessary. We could just use `d`.\n\nAlso, the ART style is\n\n  jbyte* d \u003d ...\n\n(space after `*`)",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 24
+      },
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6413c463_403c0428",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-06T11:30:43Z",
+      "side": 1,
+      "message": "Add blank line? There was one in the old Java code.",
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
