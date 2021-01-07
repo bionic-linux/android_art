@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa3b43e_3ab74d84",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-07T15:23:45Z",
+      "side": 1,
+      "message": "Invoking the constructor may be the place where it previously crashed but that\u0027s just a consequence, not the cause of the problem. The comment should instead say something like \"To abort a transaction we use a fake exception that should never be caught by the bytecode and therefore it makes no sense to wrap it.\"",
+      "range": {
+        "startLine": 497,
+        "startChar": 27,
+        "endLine": 497,
+        "endChar": 49
+      },
+      "revId": "7d9da7e53d5abaa75ea8d817558063167dc93292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b5a7c8_c16ee98c",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-07T15:23:45Z",
+      "side": 1,
+      "message": "Should we DCHECK() that the exception is the TransactionAbortError?\n\n  if (Runtime::Current()-\u003eIsTransactionAborted()) {\n    DCHECK(soa.Self()-\u003eGetException()-\u003eGetClass()-\u003eDescriptorEquals(\n               \"Ldalvik/system/TransactionAbortError;\")\n        \u003c\u003c soa.Self()-\u003eGetException()-\u003eGetClass()-\u003ePrettyDescriptor();\n  } else {",
+      "range": {
+        "startLine": 499,
+        "startChar": 4,
+        "endLine": 499,
+        "endChar": 54
+      },
+      "revId": "7d9da7e53d5abaa75ea8d817558063167dc93292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
