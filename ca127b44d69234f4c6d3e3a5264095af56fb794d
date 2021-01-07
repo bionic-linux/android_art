@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a46607a_c9757021",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1371486
+      },
+      "writtenOn": "2021-01-07T09:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5b7027_b6676cfa",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad9dcb34_bbdecc3f",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db3c618_38168cd6",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1371486
+      },
+      "writtenOn": "2021-01-07T09:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad9dcb34_bbdecc3f",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 24
+      },
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6413c463_403c0428",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-01-06T11:30:43Z",
       "side": 1,
       "message": "Add blank line? There was one in the old Java code.",
+      "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd2e82d6_c67dc8bf",
+        "filename": "runtime/native/java_lang_StringFactory.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1371486
+      },
+      "writtenOn": "2021-01-07T09:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6413c463_403c0428",
       "revId": "ca127b44d69234f4c6d3e3a5264095af56fb794d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
