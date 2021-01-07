@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9be471_5c812377",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2021-01-07T16:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa3b43e_3ab74d84",
+      "range": {
+        "startLine": 497,
+        "startChar": 27,
+        "endLine": 497,
+        "endChar": 49
+      },
+      "revId": "7d9da7e53d5abaa75ea8d817558063167dc93292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2b5a7c8_c16ee98c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-07T15:23:45Z",
       "side": 1,
       "message": "Should we DCHECK() that the exception is the TransactionAbortError?\n\n  if (Runtime::Current()-\u003eIsTransactionAborted()) {\n    DCHECK(soa.Self()-\u003eGetException()-\u003eGetClass()-\u003eDescriptorEquals(\n               \"Ldalvik/system/TransactionAbortError;\")\n        \u003c\u003c soa.Self()-\u003eGetException()-\u003eGetClass()-\u003ePrettyDescriptor();\n  } else {",
+      "range": {
+        "startLine": 499,
+        "startChar": 4,
+        "endLine": 499,
+        "endChar": 54
+      },
+      "revId": "7d9da7e53d5abaa75ea8d817558063167dc93292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7861a2c1_a02c87af",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2021-01-07T16:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2b5a7c8_c16ee98c",
       "range": {
         "startLine": 499,
         "startChar": 4,
