@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9be11290_7032ed0f",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-08T10:35:39Z",
+      "side": 1,
+      "message": "Add another \u0027)\u0027. I do make errors when writing code in gerrit comments.\n\n(And please test it with the repro code from bug 176505353 to make sure this version still works for your use case.)",
+      "range": {
+        "startLine": 501,
+        "startChar": 57,
+        "endLine": 501,
+        "endChar": 58
+      },
+      "revId": "247a4fa0be9f63866ebe4362495667495e0aa8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
