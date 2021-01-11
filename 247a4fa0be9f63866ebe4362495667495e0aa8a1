@@ -22,6 +22,30 @@
       },
       "revId": "247a4fa0be9f63866ebe4362495667495e0aa8a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c976950_6dd74039",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1092759
+      },
+      "writtenOn": "2021-01-11T03:40:14Z",
+      "side": 1,
+      "message": "Yes, from testing this version still works for the issue.\nThanks a lot.",
+      "parentUuid": "9be11290_7032ed0f",
+      "range": {
+        "startLine": 501,
+        "startChar": 57,
+        "endLine": 501,
+        "endChar": 58
+      },
+      "revId": "247a4fa0be9f63866ebe4362495667495e0aa8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
