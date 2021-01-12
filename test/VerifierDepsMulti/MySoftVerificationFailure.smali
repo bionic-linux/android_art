@@ -17,8 +17,8 @@
 
 .method public final foo()V
   .registers 1
-  sget-object v0, LMySoftVerificationFailure;->error:LUnknownType;
+  sget-object v0, LMySoftVerificationFailure;->error:Ljava/lang/Object;
   throw v0
 .end method
 
-.field public static error:LUnknownType;
+.field public static error:Ljava/lang/Object;
