@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "50bbcb30_975fe832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-12T11:18:49Z",
+      "side": 1,
+      "message": "I don\u0027t think the script can be fully automated, as it requires downloading the model (creating an account on the ARM website and signing the license agreement). What I had in mind is a semi-automated script that will outline those steps (downloading the model) in comments, and then have the necessary build instructions (syncing to the last known to work manifest for the kernel might also be included in a comment). It is ok to have this working only in AOSP. Such a loose script would be still better than the imprecise \"run ART tests on the FVP model\".\n\nI don\u0027t want it to be a lot of extra work, I\u0027m only suggesting it because I think it will reduce the amount of work in the long run.",
+      "parentUuid": "ee52ce98_c3a218ce",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "d44175a403a4cd77a07596e3d4bd25823457194c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e048d3be_f4a79603",

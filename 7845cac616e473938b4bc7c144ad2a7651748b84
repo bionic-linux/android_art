@@ -16,6 +16,23 @@
       "message": "Polite ping! :)",
       "revId": "7845cac616e473938b4bc7c144ad2a7651748b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefb4918_4677b968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-12T11:18:49Z",
+      "side": 1,
+      "message": "LGTM except for the testing script discussion.",
+      "revId": "7845cac616e473938b4bc7c144ad2a7651748b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
