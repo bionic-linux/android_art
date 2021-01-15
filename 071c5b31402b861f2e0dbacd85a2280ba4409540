@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d6b38f_abefeb78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-01-15T09:20:50Z",
+      "side": 1,
+      "message": "Bypassing presubmit to quickly get target runs to pass.",
+      "revId": "071c5b31402b861f2e0dbacd85a2280ba4409540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
