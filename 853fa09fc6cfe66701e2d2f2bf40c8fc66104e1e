@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc205eed_ca631a77",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-15T17:15:41Z",
+      "side": 0,
+      "message": "For the record, this really should have been `IsPureUnknown`.\n\n(But let\u0027s not do the unnecessary work or reordering this CL with the next one and cleaning them up to my liking when the final code shall be the same anyway.)",
+      "range": {
+        "startLine": 1779,
+        "startChar": 19,
+        "endLine": 1779,
+        "endChar": 28
+      },
+      "revId": "853fa09fc6cfe66701e2d2f2bf40c8fc66104e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
