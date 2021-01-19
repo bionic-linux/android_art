@@ -16,6 +16,23 @@
       "message": "This is a rather annoying problem :/ \nWe don\u0027t always create \u0026 throw exceptions: we do it only if we cannot find a method in the class verifier but not if the issues is in the method verifier (https://cs.android.com/android/platform/superproject/+/master:art/runtime/verifier/class_verifier.cc;drc\u003d4bb09001683e00a9d0d34f685f2ec60004c0c1ef;l\u003d262).\n\nIn practical terms, this is only exposed when trying to (re)verify a superclass from the boot image which was not verified. In doing so, we may deny access to some member which can trigger the exception creation. Unfortunately there\u0027s no easy way to write a gtest for it because our core image is 100% verifiable and only including the framework we can get into this issue.",
       "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19246c6_e0bb913c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-01-19T17:08:21Z",
+      "side": 1,
+      "message": "Vladimir, could you ptal?",
+      "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
