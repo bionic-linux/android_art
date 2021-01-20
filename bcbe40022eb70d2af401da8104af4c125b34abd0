@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f8af6a_c9f5b64b",
+        "filename": "runtime/scoped_disable_public_sdk_checker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-01-20T21:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f9df4f_bc5f1972",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fea2b453_20ada71f",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "768d629a_8295d37f",
+        "filename": "runtime/scoped_disable_public_sdk_checker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-01-20T21:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea2b453_20ada71f",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ffdcd3a_47ac2a08",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-01-20T14:00:52Z",
       "side": 1,
       "message": "Add blank line.",
+      "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6235273_634df6fc",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3193,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-01-20T21:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffdcd3a_47ac2a08",
       "revId": "bcbe40022eb70d2af401da8104af4c125b34abd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
