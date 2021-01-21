@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bb41c5_dbf77bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-01-21T00:31:13Z",
+      "side": 1,
+      "message": "Self +2 after minor style fixes. Previously +2ed by vmarko.",
+      "revId": "41e54febd60f39daaa4a3a2241ade68d1f24c976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
