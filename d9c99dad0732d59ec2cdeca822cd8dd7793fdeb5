@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d13a42_0edd9c6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-01-25T00:14:42Z",
+      "side": 1,
+      "message": "Failures seem unrelated.\n\nAs far as I can tell, BootImageProfileTest failed with a tool failure:\n\nhttps://fusion2.corp.google.com/invocations/fbfbf590-c0c7-433e-aedb-1a8b81da337b/targets/x86_64%20BootImageProfileTest/details\n\nAction exited with: com.android.tradefed.device.NetworkNotAvailableException: Failed to connect to wifi network VirtWifi on 127.0.0.1:40087 after reboot at com.android.tradefed.device.NativeDevice.reconnectToWifiNetwork(NativeDevice.java:3006) at com.android.tradefed.device.NativeDevice.postBootWifiSetup(NativeDevice.java:2980) at com.android.tradefed.device.NativeDevice.reboot(NativeDevice.java:3103) at com.android.tradefed.device.NativeDevice.reboot(NativeDevice.java:3084) at com.android.tradefed.targetprep.DeviceCleaner.clean(DeviceCleaner.java:103) at com.android.tradefed.targetprep.DeviceCleaner.tearDown(DeviceCleaner.java:89) at com.android.tradefed.testtype.suite.ModuleDefinition.runTearDown(ModuleDefinition.java:953) at",
+      "revId": "d9c99dad0732d59ec2cdeca822cd8dd7793fdeb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
