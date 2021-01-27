@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2678ce2_087b69d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-27T18:02:30Z",
+      "side": 1,
+      "message": "The code LGTM, but I must say that I don\u0027t have a deep understanding of these verifier changes. I know the high-level idea, but I don\u0027t know ART code well enough to think of some places/scenarios where things might go wrong.",
+      "revId": "9da1abecc16ce42def99dcda6aeaf0924b8454db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
