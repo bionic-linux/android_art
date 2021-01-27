@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d9637c_43cd1096",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-27T09:30:43Z",
+      "side": 1,
+      "message": "I guess you\u0027re missing the line\n\n    // Handle any unaligned cards at the end.\n    card_cur \u003d reinterpret_cast\u003cuint8_t*\u003e(word_end);\n\nbefore the last loop which can reset `card_cur` before `card_begin`. (This is easy to miss and I found it only by stepping in gdb.)",
+      "parentUuid": "926c01b6_c7bfe77b",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acbaf270_df362e93",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-27T01:19:12Z",
       "side": 1,
       "message": "Every outermost for/while loop in this function checks for this condition, so I don\u0027t get how can we end up scanning cards that don\u0027t belong to the range, without this condition in there?\n\nCan you please explain with an example?",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81917eb6_1fd9f7ad",
+        "filename": "runtime/gc/accounting/card_table-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-27T09:30:43Z",
+      "side": 1,
+      "message": "TH failure on the referenced CL:\n\n    space_bitmap-inl.h:80] Check failed: heap_begin_ \u003c\u003d visit_begin [...]\n\nThe failing test loads the app image three times for some reason. When running in gdb, the third was always loaded at 0x40007000 and it contains only one card. On x86-64, that means card_begin\u003d0x10001c, card_end\u003d0x10001d, aligned_end\u003d0x100018 and the old line 113\n\n  card_cur \u003d reinterpret_cast\u003cuint8_t*\u003e(word_end);\n\nwould reset `card_cur` before `card_begin`. One of the cards between `aligned_end` and `card_begin` satisfied the minimum age check, leading to the crash.",
+      "parentUuid": "acbaf270_df362e93",
       "range": {
         "startLine": 80,
         "startChar": 6,
