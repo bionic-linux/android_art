@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926c01b6_c7bfe77b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-01-27T01:19:12Z",
+      "side": 1,
+      "message": "This statement is confusing to me. I get that for small app images we may end up seeing an aligned end which is smaller than start, but that case seems to be handled well in the current code: all the corresponding cards will get scanned in the first loop itself. And all the subsequent loops will not execute as their termination conditions are false (aligned end being smaller than start).\n\nMaybe I\u0027m missing something. Please elaborate.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbaf270_df362e93",
+        "filename": "runtime/gc/accounting/card_table-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-01-27T01:19:12Z",
+      "side": 1,
+      "message": "Every outermost for/while loop in this function checks for this condition, so I don\u0027t get how can we end up scanning cards that don\u0027t belong to the range, without this condition in there?\n\nCan you please explain with an example?",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
