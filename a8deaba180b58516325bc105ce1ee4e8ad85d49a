@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90899489_734cd2a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-01-27T23:02:55Z",
+      "side": 1,
+      "message": "Thanks a lot for clarifying. I indeed missed that line 😊",
+      "parentUuid": "a6d9637c_43cd1096",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acbaf270_df362e93",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "TH failure on the referenced CL:\n\n    space_bitmap-inl.h:80] Check failed: heap_begin_ \u003c\u003d visit_begin [...]\n\nThe failing test loads the app image three times for some reason. When running in gdb, the third was always loaded at 0x40007000 and it contains only one card. On x86-64, that means card_begin\u003d0x10001c, card_end\u003d0x10001d, aligned_end\u003d0x100018 and the old line 113\n\n  card_cur \u003d reinterpret_cast\u003cuint8_t*\u003e(word_end);\n\nwould reset `card_cur` before `card_begin`. One of the cards between `aligned_end` and `card_begin` satisfied the minimum age check, leading to the crash.",
       "parentUuid": "acbaf270_df362e93",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "a8deaba180b58516325bc105ce1ee4e8ad85d49a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ec62c2_9353b69f",
+        "filename": "runtime/gc/accounting/card_table-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-01-27T23:02:55Z",
+      "side": 1,
+      "message": "Thanks for the explanation.",
+      "parentUuid": "81917eb6_1fd9f7ad",
       "range": {
         "startLine": 80,
         "startChar": 6,
