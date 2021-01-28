@@ -16,6 +16,29 @@
       "message": "The code LGTM, but I must say that I don\u0027t have a deep understanding of these verifier changes. I know the high-level idea, but I don\u0027t know ART code well enough to think of some places/scenarios where things might go wrong.",
       "revId": "9da1abecc16ce42def99dcda6aeaf0924b8454db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397d1de3_fd260405",
+        "filename": "test/VerifierDepsMulti/MySoftVerificationFailure.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-01-28T10:38:32Z",
+      "side": 1,
+      "message": "Why are you changing this to a resolved type? (Losing test coverage.)",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "9da1abecc16ce42def99dcda6aeaf0924b8454db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
