@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb76a37_bc182002",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8499,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-01-28T18:33:08Z",
+      "side": 1,
+      "message": "Can you add a comment somewhere hereabouts that clarifies why references are first, ie \"We are putting references first to have a better chanc? of exploiting a fast-path for reference visiting. Search for `reference_instance_offsets_` to find the details.\"",
+      "range": {
+        "startLine": 8499,
+        "startChar": 0,
+        "endLine": 8499,
+        "endChar": 59
+      },
+      "revId": "8e3207a58305a3b57e2ac9a88c3a7b0258dc7414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa42f6e1_4ffaae8a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8537,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-01-28T18:33:08Z",
+      "side": 1,
+      "message": "nit: {field_type_order, field_index}",
+      "range": {
+        "startLine": 8537,
+        "startChar": 63,
+        "endLine": 8537,
+        "endChar": 65
+      },
+      "revId": "8e3207a58305a3b57e2ac9a88c3a7b0258dc7414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c0467a_7fdbe479",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8541,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-01-28T18:33:08Z",
+      "side": 1,
+      "message": "here again",
+      "range": {
+        "startLine": 8541,
+        "startChar": 65,
+        "endLine": 8541,
+        "endChar": 67
+      },
+      "revId": "8e3207a58305a3b57e2ac9a88c3a7b0258dc7414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
