@@ -81,6 +81,30 @@
       },
       "revId": "9da1abecc16ce42def99dcda6aeaf0924b8454db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c773db2c_7c96a796",
+        "filename": "test/VerifierDepsMulti/MySoftVerificationFailure.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-01T10:18:15Z",
+      "side": 1,
+      "message": "Actually, now I remember why I needed this change, and added a comment: having an unresolved type now doesn\u0027t make the verifier report a soft failure but a type check failure. So I\u0027m changing it to have j.l.Object to athrow, which the verifier still reports as soft failure today.",
+      "parentUuid": "e99fe6be_d78d5c00",
+      "range": {
+        "startLine": 24,
+        "startChar": 27,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "9da1abecc16ce42def99dcda6aeaf0924b8454db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
