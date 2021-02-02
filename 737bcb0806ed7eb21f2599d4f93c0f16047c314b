@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf4a80a_f8c9f574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2021-02-02T23:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8684c61f_23b2571b",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "737bcb0806ed7eb21f2599d4f93c0f16047c314b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fab5c31_1bf46403",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1da2b39_793a77b0",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2021-02-02T23:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fab5c31_1bf46403",
+      "range": {
+        "startLine": 950,
+        "startChar": 87,
+        "endLine": 950,
+        "endChar": 88
+      },
+      "revId": "737bcb0806ed7eb21f2599d4f93c0f16047c314b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7e5ad56_8325be44",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-02T10:43:58Z",
       "side": 1,
       "message": "I\u0027d have a template instead of a parameter, and also change SaveRestoreLiveRegistersHelper to a template, and have trivial helpers with descriptive names like SaveLiveRegistersHelper/RestoreLiveRegistersHelper that would only call the right templated method. Not necessary, just a suggestion.",
+      "range": {
+        "startLine": 167,
+        "startChar": 46,
+        "endLine": 167,
+        "endChar": 58
+      },
+      "revId": "737bcb0806ed7eb21f2599d4f93c0f16047c314b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ee89cb_0f2ee057",
+        "filename": "compiler/utils/arm64/assembler_arm64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2021-02-02T23:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e5ad56_8325be44",
       "range": {
         "startLine": 167,
         "startChar": 46,
