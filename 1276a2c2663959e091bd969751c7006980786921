@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba75429b_59c5299e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-02T11:11:40Z",
+      "side": 1,
+      "message": "PTAL, I think this is ready to land (and innocuous as-is). Once this change is merged, I\u0027d like to test it with cl/354088148, which enables continuous testing with S base device images and shall start exercising the new `mainline-presubmit` test group added by this CL (https://android-review.googlesource.com/c/platform/art/+/1566299). Thanks!",
+      "revId": "1276a2c2663959e091bd969751c7006980786921",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
