@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d293cf_3d4d1b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2021-02-02T19:11:53Z",
+      "side": 1,
+      "message": "\u003e Patch Set 12:\n\u003e \n\u003e Artem, you mentioned that this CL should be submitted together with the two follow-op CLs (as one topic). However, they are not in a topic now. Gerrit shows them as stacked because they are related, and if you click k-th CL in the stack then you see CLs up to (k-1)-th as \"submitted together\". But they don\u0027t have a topic and can all be submitted individually one after another. Do you have any concerns if I submit them one by one?\n\nThe idea of having everything submitted in one go was related to the fact that only CL #3 makes all the tests fully pass with CHECKER (with CHECKER off individual CLs pass the tests) for the SVE case. Non-sve case pass all the tests as well of course. But as SVE is turned off by default, nothing will be actually broken if the CLs are merged separately.",
+      "revId": "c70e3521d28a5cbd12c88602d35209112cd292e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
