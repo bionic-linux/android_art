@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007831299",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1492886?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "34ac85ec_6fe4c000",
+        "filename": "test/README.simulator.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-02T23:36:20Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 73,
+        "startChar": 39,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "b863466cc6ff970060c0c3dd4e1a4ea4ed43166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007831299",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1492886?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b35781cc_bc13ff28",
+        "filename": "test/README.simulator.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-02T23:36:20Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 82,
+        "startChar": 57,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "b863466cc6ff970060c0c3dd4e1a4ea4ed43166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
