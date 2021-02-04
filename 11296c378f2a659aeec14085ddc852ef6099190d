@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "517e8321_7c7fb7d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-04T06:20:53Z",
+      "side": 1,
+      "message": "Artem, please rebase this patch (Gerrit shows a merge conflict).",
+      "revId": "11296c378f2a659aeec14085ddc852ef6099190d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
