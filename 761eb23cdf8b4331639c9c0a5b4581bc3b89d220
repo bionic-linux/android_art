@@ -34,6 +34,24 @@
       "parentUuid": "f3abfd62_182c1818",
       "revId": "761eb23cdf8b4331639c9c0a5b4581bc3b89d220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fbf08be_598ba4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-04T21:13:41Z",
+      "side": 1,
+      "message": "Sure, works for me.\n\nTo be clear: that CL needs to land first. We can\u0027t approve this as-is.",
+      "parentUuid": "f0b23c23_c96a5418",
+      "revId": "761eb23cdf8b4331639c9c0a5b4581bc3b89d220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
