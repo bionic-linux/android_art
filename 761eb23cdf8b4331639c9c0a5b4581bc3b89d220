@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3abfd62_182c1818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-04T20:32:04Z",
+      "side": 1,
+      "message": "Can\u0027t use enum as a return type in a stable interface: go/android-ndk-api-guidelines#fixed-size-types",
+      "revId": "761eb23cdf8b4331639c9c0a5b4581bc3b89d220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
