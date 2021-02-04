@@ -52,6 +52,24 @@
       "parentUuid": "f0b23c23_c96a5418",
       "revId": "761eb23cdf8b4331639c9c0a5b4581bc3b89d220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff6d3b0_8fb3d804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-04T21:28:21Z",
+      "side": 1,
+      "message": "Thanks, CL is here: https://r.android.com/1575105.",
+      "parentUuid": "6fbf08be_598ba4f1",
+      "revId": "761eb23cdf8b4331639c9c0a5b4581bc3b89d220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
