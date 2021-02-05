@@ -33,6 +33,24 @@
       "message": "I\u0027m guessing Martin is busy: if you want to land don\u0027t let my earlier comment hold you up. As you say, this is a literal translation and as that it\u0027s fine.",
       "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf831aa_dc9cd689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-05T16:28:13Z",
+      "side": 1,
+      "message": "No worries, this is not urgent (and I\u0027d rather not submit on a Friday afternoon). :-)\n\nI can build new changes on top of this CL.",
+      "parentUuid": "50d27434_ebdcff26",
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
