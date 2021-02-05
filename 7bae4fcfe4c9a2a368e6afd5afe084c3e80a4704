@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591d6390_a2f3b1df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-05T12:27:54Z",
+      "side": 1,
+      "message": "nit: literal",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "7bae4fcfe4c9a2a368e6afd5afe084c3e80a4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdfe8de0_371f4cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-05T12:27:54Z",
+      "side": 1,
+      "message": "Excellent. \u003c3 :-)",
+      "range": {
+        "startLine": 15,
+        "startChar": 46,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "7bae4fcfe4c9a2a368e6afd5afe084c3e80a4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1f5903_928eb9a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-05T12:27:54Z",
+      "side": 1,
+      "message": "nit: seconds",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "7bae4fcfe4c9a2a368e6afd5afe084c3e80a4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6593ecfa_6ad2c63c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-05T12:27:54Z",
+      "side": 1,
+      "message": "LGTM, but probably best to wait for +2 from Martin with his cape of readability here.",
+      "revId": "7bae4fcfe4c9a2a368e6afd5afe084c3e80a4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
