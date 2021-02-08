@@ -51,6 +51,69 @@
       "parentUuid": "50d27434_ebdcff26",
       "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "828eb438_9ad6f13b",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-08T13:02:37Z",
+      "side": 1,
+      "message": "num_tests \u003d len(run_tests)\n\nhere instead of the incrementing above?",
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034f568e_c941730c",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-08T13:02:37Z",
+      "side": 1,
+      "message": "Not necessary when concatenating strings. A few more occasions below too.",
+      "range": {
+        "startLine": 412,
+        "startChar": 92,
+        "endLine": 412,
+        "endChar": 93
+      },
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b07316_9795c7a3",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-08T13:02:37Z",
+      "side": 1,
+      "message": "Why not use an f string here? One more place below too.",
+      "range": {
+        "startLine": 462,
+        "startChar": 12,
+        "endLine": 462,
+        "endChar": 15
+      },
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
