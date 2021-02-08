@@ -16,6 +16,23 @@
       "message": "We don\u0027t really have solid review guidelines for APEX, but this is fine by NDK guidelines with the following exceptions:\n\n* Naming doesn\u0027t match NDK\n* Docs are missing\n* No CTS tests",
       "revId": "92c2c6b55e180fe41c2e89ec2b5d76e0106ade88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae34c83_f3b6a9c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-08T22:04:49Z",
+      "side": 1,
+      "message": "Me changing the review guidelines docs kicked up more discussion. Docs are required for APEX.",
+      "revId": "92c2c6b55e180fe41c2e89ec2b5d76e0106ade88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
