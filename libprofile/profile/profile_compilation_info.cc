@@ -1504,30 +1504,9 @@ int ProfileCompilationInfo::InflateBuffer(const uint8_t* in_buffer,
   return ret;
 }
 
-bool ProfileCompilationInfo::MergeWith(const ProfileCompilationInfo& other,
-                                       bool merge_classes) {
-  if (!SameVersion(other)) {
-    LOG(WARNING) << "Cannot merge different profile versions";
-    return false;
-  }
-
-  // First verify that all checksums match. This will avoid adding garbage to
-  // the current profile info.
-  // Note that the number of elements should be very small, so this should not
-  // be a performance issue.
-  for (const DexFileData* other_dex_data : other.info_) {
-    // verify_checksum is false because we want to differentiate between a missing dex data and
-    // a mismatched checksum.
-    const DexFileData* dex_data = FindDexData(other_dex_data->profile_key,
-                                              /* checksum= */ 0u,
-                                              /* verify_checksum= */ false);
-    if ((dex_data != nullptr) && (dex_data->checksum != other_dex_data->checksum)) {
-      LOG(WARNING) << "Checksum mismatch for dex " << other_dex_data->profile_key;
-      return false;
-    }
-  }
-  // All checksums match. Import the data.
-
+bool ProfileCompilationInfo::UnsafeMergeWith(const ProfileCompilationInfo& other,
+                                             bool merge_classes,
+                                             uint16_t default_flags) {
   // The other profile might have a different indexing of dex files.
   // That is because each dex files gets a 'dex_profile_index' on a first come first served basis.
   // That means that the order in with the methods are added to the profile matters for the
@@ -1587,10 +1566,40 @@ bool ProfileCompilationInfo::MergeWith(const ProfileCompilationInfo& other,
     }
 
     // Merge the method bitmaps.
-    dex_data->MergeBitmap(*other_dex_data);
+    if (LIKELY(SameVersion(other))) {
+      dex_data->MergeBitmap(*other_dex_data);
+    } else {
+      dex_data->MergeMethods(*other_dex_data, default_flags);
+    }
   }
 
   return true;
+}
+
+bool ProfileCompilationInfo::MergeWith(const ProfileCompilationInfo& other,
+                                       bool merge_classes) {
+  if (!SameVersion(other)) {
+    LOG(WARNING) << "Cannot merge different profile versions";
+    return false;
+  }
+
+  // First verify that all checksums match. This will avoid adding garbage to
+  // the current profile info.
+  // Note that the number of elements should be very small, so this should not
+  // be a performance issue.
+  for (const DexFileData* other_dex_data : other.info_) {
+    // verify_checksum is false because we want to differentiate between a missing dex data and
+    // a mismatched checksum.
+    const DexFileData* dex_data = FindDexData(other_dex_data->profile_key,
+                                              /* checksum= */ 0u,
+                                              /* verify_checksum= */ false);
+    if ((dex_data != nullptr) && (dex_data->checksum != other_dex_data->checksum)) {
+      LOG(WARNING) << "Checksum mismatch for dex " << other_dex_data->profile_key;
+      return false;
+    }
+  }
+  // All checksums match. Import the data.
+  return UnsafeMergeWith(other, merge_classes);
 }
 
 ProfileCompilationInfo::MethodHotness ProfileCompilationInfo::GetMethodHotness(
@@ -1729,6 +1738,21 @@ std::string ProfileCompilationInfo::DumpInfo(const std::vector<const DexFile*>& 
       }
       startup = false;
     }
+    if (IsForBootImage()) {
+      for (MethodHotness::Flag flag : MethodHotness::kOnlyBootFlags) {
+        os << "\n\t" << "Boot Flag[" << flag << "]: ";
+        for (uint32_t method_idx = 0; method_idx < dex_data->num_method_ids; ++method_idx) {
+          MethodHotness hotness_info(dex_data->GetHotnessInfo(method_idx));
+          if (hotness_info.HasFlagSet(flag)) {
+            if (dex_file != nullptr) {
+              os << "\n\t\t" << dex_file->PrettyMethod(method_idx, true);
+            } else {
+              os << method_idx << ", ";
+            }
+          }
+        }
+      }
+    }
     os << "\n\tclasses: ";
     for (const auto class_it : dex_data->class_set) {
       if (dex_file != nullptr) {
@@ -1739,6 +1763,44 @@ std::string ProfileCompilationInfo::DumpInfo(const std::vector<const DexFile*>& 
     }
   }
   return os.str();
+}
+
+std::ostream& operator<<(std::ostream& os,
+                         const ProfileCompilationInfo::MethodHotness::Flag& hotness) {
+  switch (hotness) {
+    case ProfileCompilationInfo::MethodHotness::kFlagHot:
+      return os << "kFlagHot";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartup:
+      return os << "kFlagStartup";
+    case ProfileCompilationInfo::MethodHotness::kFlagPostStartup:
+      return os << "kFlagPostStartup";
+    case ProfileCompilationInfo::MethodHotness::kFlag32bit:
+      return os << "kFlag32bit";
+    case ProfileCompilationInfo::MethodHotness::kFlag64bit:
+      return os << "kFlag64bit";
+    case ProfileCompilationInfo::MethodHotness::kFlagSensitiveThread:
+      return os << "kFlagSensitiveThread";
+    case ProfileCompilationInfo::MethodHotness::kFlagAmStartup:
+      return os << "kFlagAmStartup";
+    case ProfileCompilationInfo::MethodHotness::kFlagAmPostStartup:
+      return os << "kFlagAmPostStartup";
+    case ProfileCompilationInfo::MethodHotness::kFlagBoot:
+      return os << "kFlagBoot";
+    case ProfileCompilationInfo::MethodHotness::kFlagPostBoot:
+      return os << "kFlagPostBoot";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinZero:
+      return os << "kFlagStartupBinZero";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinOne:
+      return os << "kFlagStartupBinOne";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinTwo:
+      return os << "kFlagStartupBinTwo";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinThree:
+      return os << "kFlagStartupBinThree";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinFour:
+      return os << "kFlagStartupBinFour";
+    case ProfileCompilationInfo::MethodHotness::kFlagStartupBinFive:
+      return os << "kFlagStartupBinFive";
+  }
 }
 
 bool ProfileCompilationInfo::GetClassesAndMethods(
@@ -2029,6 +2091,26 @@ bool ProfileCompilationInfo::DexFileData::AddMethod(MethodHotness::Flag flags, s
     DCHECK(result != nullptr);
   }
   return true;
+}
+
+void ProfileCompilationInfo::DexFileData::MergeMethods(const DexFileData& other, uint16_t default_flags) {
+  for (size_t i : Range(other.num_method_ids)) {
+    for (MethodHotness::Flag flag : MethodHotness::kOnlyNormalFlags) {
+      if (flag == MethodHotness::kFlagHot) {
+        // hot is implicit
+        continue;
+      }
+      size_t my_idx = MethodFlagBitmapIndex(flag, i);
+      size_t other_idx = other.MethodFlagBitmapIndex(flag, i);
+      method_bitmap.StoreBit(my_idx, other.method_bitmap.LoadBit(other_idx));
+    }
+    if (is_for_boot_image && !other.is_for_boot_image && other.GetHotnessInfo(i).GetFlags() != 0u) {
+      for (MethodHotness::Flag flag : MethodHotness::kOnlyBootFlags) {
+        size_t my_idx = MethodFlagBitmapIndex(flag, i);
+        method_bitmap.StoreBit(my_idx, (default_flags & static_cast<uint16_t>(flag)) != 0);
+      }
+    }
+  }
 }
 
 void ProfileCompilationInfo::DexFileData::SetMethodHotness(size_t index,
