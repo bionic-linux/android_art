@@ -20,6 +20,8 @@
 #include "android-base/strings.h"
 #include "art_method-inl.h"
 #include "base/globals.h"
+#include "base/stl_util.h"
+#include "base/transform_iterator.h"
 #include "base/unix_file/fd_file.h"
 #include "base/utils.h"
 #include "common_runtime_test.h"
@@ -116,14 +118,16 @@ class ProfileAssistantTest : public CommonRuntimeTest {
     ASSERT_TRUE(profile.GetFile()->ResetOffset());
   }
 
-  void SetupBasicProfile(const DexFile* dex,
-                         const std::vector<uint32_t>& hot_methods,
-                         const std::vector<uint32_t>& startup_methods,
-                         const std::vector<uint32_t>& post_startup_methods,
-                         const ScratchFile& profile,
-                         ProfileCompilationInfo* info) {
-    for (uint32_t idx : hot_methods) {
-      AddMethod(info, dex, idx, Hotness::kFlagHot);
+  template <typename MethodsAndIcs1>
+  void SetupBasicProfileWithIcs(const DexFile* dex,
+                                const MethodsAndIcs1& hot_methods,
+                                const std::vector<uint32_t>& startup_methods,
+                                const std::vector<uint32_t>& post_startup_methods,
+                                const ScratchFile& profile,
+                                ProfileCompilationInfo* info) {
+    const static std::vector<ProfileInlineCache> kEmptyList {};
+    for (const auto& [idx, ic] : hot_methods) {
+      AddMethod(info, dex, idx, ic, Hotness::kFlagHot);
     }
     for (uint32_t idx : startup_methods) {
       AddMethod(info, dex, idx, Hotness::kFlagStartup);
@@ -131,9 +135,27 @@ class ProfileAssistantTest : public CommonRuntimeTest {
     for (uint32_t idx : post_startup_methods) {
       AddMethod(info, dex, idx, Hotness::kFlagPostStartup);
     }
-    ASSERT_TRUE(info->Save(GetFd(profile)));
+    ASSERT_TRUE(info->Save(GetFd(profile))) << strerror(errno);
     ASSERT_EQ(0, profile.GetFile()->Flush());
     ASSERT_TRUE(profile.GetFile()->ResetOffset());
+  }
+  void SetupBasicProfile(const DexFile* dex,
+                         const std::vector<uint32_t>& hot_methods,
+                         const std::vector<uint32_t>& startup_methods,
+                         const std::vector<uint32_t>& post_startup_methods,
+                         const ScratchFile& profile,
+                         ProfileCompilationInfo* info) {
+    const static std::vector<ProfileInlineCache> kEmptyList {};
+    auto no_ic = [](uint32_t i) {
+      return std::pair<uint32_t, std::reference_wrapper<const std::vector<ProfileInlineCache>>>(
+          i, kEmptyList);
+    };
+    SetupBasicProfileWithIcs(dex,
+                             MakeTransformRange(hot_methods, no_ic),
+                             startup_methods,
+                             post_startup_methods,
+                             profile,
+                             info);
   }
 
   // The dex1_substitute can be used to replace the default dex1 file.
@@ -1563,6 +1585,203 @@ TEST_F(ProfileAssistantTest, DumpOnly) {
     ASSERT_NE(pos, std::string::npos) << output;
     EXPECT_LT(pos, classes_offset) << output;
   }
+}
+
+TEST_F(ProfileAssistantTest, RelayoutProfile) {
+  ScratchFile profile;
+
+  const uint32_t kNumberOfMethods = 64;
+  std::vector<uint32_t> hot_methods;
+  std::vector<uint32_t> startup_methods;
+  std::vector<uint32_t> post_startup_methods;
+  for (size_t i = 0; i < kNumberOfMethods; ++i) {
+    if (i % 2 == 0) {
+      hot_methods.push_back(i);
+    }
+    if (i % 3 == 1) {
+      startup_methods.push_back(i);
+    }
+    if (i % 4 == 2) {
+      post_startup_methods.push_back(i);
+    }
+  }
+  EXPECT_GT(hot_methods.size(), 0u);
+  EXPECT_GT(startup_methods.size(), 0u);
+  EXPECT_GT(post_startup_methods.size(), 0u);
+  ProfileCompilationInfo info1;
+  SetupBasicProfile(dex1,
+                    hot_methods,
+                    startup_methods,
+                    post_startup_methods,
+                    profile,
+                    &info1);
+  std::string orig_output;
+  DumpOnly(profile.GetFilename(), &orig_output);
+
+  ScratchFile now_boot;
+  // Non-boot to boot
+  std::string error;
+  std::string profman_cmd = GetProfmanCmd();
+  std::vector<std::string> argv_str { profman_cmd,
+                                      "--create-profile-from-profile=" + profile.GetFilename(),
+                                      "--reference-profile-file=" + now_boot.GetFilename(),
+                                      "--generate-boot-android-profile" };
+  ASSERT_EQ(ExecAndReturnCode(argv_str, &error), 0) << error;
+
+  std::string new_output;
+  DumpOnly(now_boot.GetFilename(), &new_output);
+  auto split_orig = SplitString(orig_output, '\n');
+  auto split_new = SplitString(new_output, '\n');
+  auto is_boot_flag = [](const std::string_view& s) { return s.find("\tBoot Flag[") == 0; };
+  auto is_profile_version = [](const std::string_view& s) { return s.find("ProfileInfo [") == 0; };
+  for (auto [orig, redone] : ZipLeft(split_orig, Filter(split_new, [&](const auto& s) {
+                                       return !is_boot_flag(s);
+                                     }))) {
+    if (is_profile_version(orig) && is_profile_version(redone)) {
+      EXPECT_EQ(orig, "ProfileInfo [010]");
+      EXPECT_EQ(redone, "ProfileInfo [012]");
+    } else {
+      // Check the bits that should be identical.
+      EXPECT_EQ(orig, redone) << orig_output << " vs " << new_output;
+    }
+  }
+
+  std::vector<std::string_view> expected {
+    "\tBoot Flag[kFlag32bit]: ",
+    "\tBoot Flag[kFlag64bit]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagSensitiveThread]: ",
+    "\tBoot Flag[kFlagAmStartup]: ",
+    "\tBoot Flag[kFlagAmPostStartup]: ",
+    "\tBoot Flag[kFlagBoot]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagPostBoot]: ",
+    "\tBoot Flag[kFlagStartupBinZero]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagStartupBinOne]: ",
+    "\tBoot Flag[kFlagStartupBinTwo]: ",
+    "\tBoot Flag[kFlagStartupBinThree]: ",
+    "\tBoot Flag[kFlagStartupBinFour]: ",
+    "\tBoot Flag[kFlagStartupBinFive]: ",
+  };
+  for (auto [got, exp] : ZipLeft(Filter(split_new, is_boot_flag), MakeIterationRange(expected))) {
+    EXPECT_EQ(got, exp);
+  }
+
+  // boot to non-boot
+  ScratchFile now_non_boot;
+  std::vector<std::string> rev_argv_str { profman_cmd,
+                                          "--create-profile-from-profile=" + now_boot.GetFilename(),
+                                          "--reference-profile-file=" +
+                                              now_non_boot.GetFilename() };
+  ASSERT_EQ(ExecAndReturnCode(rev_argv_str, &error), 0) << error;
+  std::vector<std::string> cmp_argv_str { kIsTargetBuild ? "/system/bin/cmp" : "/usr/bin/cmp",
+                                          "-s",
+                                          profile.GetFilename(),
+                                          now_non_boot.GetFilename() };
+                                          std::string final_out;
+  ASSERT_EQ(ExecAndReturnCode(cmp_argv_str, &error), 0) << error << "\n" << final_out;
+}
+
+TEST_F(ProfileAssistantTest, RelayoutProfileInlineCaches) {
+  ScratchFile profile;
+
+  const uint32_t kNumberOfMethods = 64;
+  std::vector<std::pair<uint32_t, std::reference_wrapper<std::vector<ProfileInlineCache>>>>
+      hot_methods;
+  std::vector<uint32_t> startup_methods;
+  std::vector<uint32_t> post_startup_methods;
+  std::vector<ProfileInlineCache> ic_hot {
+    ProfileInlineCache(
+        /*pc=*/0,
+        /*missing_types=*/false,
+        /*profile_classes=*/
+        { TypeReference(dex1, dex::TypeIndex(1)), TypeReference(dex1, dex::TypeIndex(2)) },
+        /*megamorphic=*/false),
+    ProfileInlineCache(
+        /*pc=*/1, /*missing_types=*/true, /*profile_classes=*/ {}, /*megamorphic=*/false),
+    ProfileInlineCache(
+        /*pc=*/2, /*missing_types=*/false, /*profile_classes=*/ {}, /*megamorphic=*/true)
+  };
+  for (size_t i = 0; i < kNumberOfMethods; ++i) {
+    if (i % 2 == 0) {
+      hot_methods.push_back({ i, ic_hot });
+    }
+    if (i % 3 == 1) {
+      startup_methods.push_back(i);
+    }
+    if (i % 4 == 2) {
+      post_startup_methods.push_back(i);
+    }
+  }
+  EXPECT_GT(hot_methods.size(), 0u);
+  EXPECT_GT(startup_methods.size(), 0u);
+  EXPECT_GT(post_startup_methods.size(), 0u);
+  ProfileCompilationInfo info1;
+  SetupBasicProfileWithIcs(
+      dex1, hot_methods, startup_methods, post_startup_methods, profile, &info1);
+  std::string orig_output;
+  DumpOnly(profile.GetFilename(), &orig_output);
+
+  LOG(INFO) << "orig: " << orig_output;
+  ScratchFile now_boot;
+  std::string profman_cmd = GetProfmanCmd();
+  std::vector<std::string> argv_str { profman_cmd,
+                                      "--create-profile-from-profile=" + profile.GetFilename(),
+                                      "--reference-profile-file=" + now_boot.GetFilename(),
+                                      "--generate-boot-android-profile" };
+  std::string error;
+  ASSERT_EQ(ExecAndReturnCode(argv_str, &error), 0) << error;
+
+  std::string new_output;
+  DumpOnly(now_boot.GetFilename(), &new_output);
+  LOG(INFO) << "new: " << new_output;
+
+  auto split_orig = SplitString(orig_output, '\n');
+  auto split_new = SplitString(new_output, '\n');
+  auto is_boot_flag = [](const std::string_view& s) { return s.find("\tBoot Flag[") == 0; };
+  auto is_profile_version = [](const std::string_view& s) { return s.find("ProfileInfo [") == 0; };
+  for (auto [orig, redone] : ZipLeft(split_orig, Filter(split_new, [&](const auto& s) {
+                                       return !is_boot_flag(s);
+                                     }))) {
+    if (is_profile_version(orig) && is_profile_version(redone)) {
+      EXPECT_EQ(orig, "ProfileInfo [010]");
+      EXPECT_EQ(redone, "ProfileInfo [012]");
+    } else {
+      // Check the bits that should be identical.
+      EXPECT_EQ(orig, redone) << orig_output << " vs " << new_output;
+    }
+  }
+
+  std::vector<std::string_view> expected {
+    "\tBoot Flag[kFlag32bit]: ",
+    "\tBoot Flag[kFlag64bit]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagSensitiveThread]: ",
+    "\tBoot Flag[kFlagAmStartup]: ",
+    "\tBoot Flag[kFlagAmPostStartup]: ",
+    "\tBoot Flag[kFlagBoot]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagPostBoot]: ",
+    "\tBoot Flag[kFlagStartupBinZero]: 0, 1, 2, 4, 6, 7, 8, 10, 12, 13, 14, 16, 18, 19, 20, 22, 24, 25, 26, 28, 30, 31, 32, 34, 36, 37, 38, 40, 42, 43, 44, 46, 48, 49, 50, 52, 54, 55, 56, 58, 60, 61, 62, ",
+    "\tBoot Flag[kFlagStartupBinOne]: ",
+    "\tBoot Flag[kFlagStartupBinTwo]: ",
+    "\tBoot Flag[kFlagStartupBinThree]: ",
+    "\tBoot Flag[kFlagStartupBinFour]: ",
+    "\tBoot Flag[kFlagStartupBinFive]: ",
+  };
+  for (auto [got, exp] : ZipLeft(Filter(split_new, is_boot_flag), MakeIterationRange(expected))) {
+    EXPECT_EQ(got, exp);
+  }
+
+  // boot to non-boot
+  ScratchFile now_non_boot;
+  std::vector<std::string> rev_argv_str { profman_cmd,
+                                          "--create-profile-from-profile=" + now_boot.GetFilename(),
+                                          "--reference-profile-file=" +
+                                              now_non_boot.GetFilename() };
+  ASSERT_EQ(ExecAndReturnCode(rev_argv_str, &error), 0) << error;
+  std::vector<std::string> cmp_argv_str { kIsTargetBuild ? "/system/bin/cmp" : "/usr/bin/cmp",
+                                          "-s",
+                                          profile.GetFilename(),
+                                          now_non_boot.GetFilename() };
+                                          std::string final_out;
+  ASSERT_EQ(ExecAndReturnCode(cmp_argv_str, &error), 0) << error << "\n" << final_out;
 }
 
 TEST_F(ProfileAssistantTest, MergeProfilesWithFilter) {
