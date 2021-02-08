@@ -142,8 +142,10 @@ NO_RETURN static void Usage(const char *fmt, ...) {
   UsageError("");
   UsageError("  --create-profile-from=<filename>: creates a profile from a list of classes,");
   UsageError("      methods and inline caches.");
+  UsageError("  --create-profile-from-profile=<filename>: creates a profile from another profile");
+  UsageError("      file. Used if you want to change the version from (eg) 010 to 012.");
   UsageError("  --generate-boot-android-profile: Generate a 012 version profile based on input");
-  UsageError("      profile. Requires --create-profile-from");
+  UsageError("      profile. Requires --create-profile-from or --create-profile-from-profile");
   UsageError("");
   UsageError("  --dex-location=<string>: location string to use with corresponding");
   UsageError("      apk-fd to find dex files");
@@ -328,6 +330,9 @@ class ProfMan final {
         dump_classes_and_methods_ = true;
       } else if (StartsWith(option, "--create-profile-from=")) {
         create_profile_from_file_ = std::string(option.substr(strlen("--create-profile-from=")));
+      } else if (StartsWith(option, "--create-profile-from-profile=")) {
+        create_profile_from_profile_file_ =
+            std::string(option.substr(strlen("--create-profile-from-profile=")));
       } else if (StartsWith(option, "--dump-output-to-fd=")) {
         ParseUintOption(raw_option, "--dump-output-to-fd=", &dump_output_to_fd_);
       } else if (option == "--generate-boot-profile") {
@@ -1597,6 +1602,44 @@ class ProfMan final {
     return 0;
   }
 
+  int RelayoutProfile() const {
+    if (reference_profile_file_.empty() && !FdIsValid(reference_profile_file_fd_)) {
+      Usage("Reference profile must be specified with --reference-profile-file or "
+            "--reference-profile-file-fd");
+    }
+    // Open the profile output file if needed.
+    int fd = OpenReferenceProfile();
+    if (!FdIsValid(fd)) {
+      PLOG(ERROR) << "Failed to open output.";
+      return -1;
+    }
+    int in_fd = open(create_profile_from_profile_file_.c_str(), O_RDONLY);
+    if (!FdIsValid(in_fd)) {
+      PLOG(ERROR) << "Failed to open " << create_profile_from_profile_file_;
+      return -1;
+    }
+
+    ProfileCompilationInfo info_in;
+    info_in.Load(in_fd);
+    // Output might have a different type
+    ProfileCompilationInfo info_out(/*for_boot_image=*/ShouldCreateBootAndroidProfile());
+    // Do the copy even if we change the type of profile.
+    info_out.UnsafeMergeWith(info_in,
+                             /*merge_classes=*/true,
+                             /*default_flags=*/
+                                 ProfileCompilationInfo::MethodHotness::kFlagBoot |
+                                 ProfileCompilationInfo::MethodHotness::kFlag64bit |
+                                 ProfileCompilationInfo::MethodHotness::kFlagStartupBinZero);
+    CHECK(info_out.Save(fd));
+    if (close(fd) < 0) {
+      PLOG(WARNING) << "Failed to close output descriptor";
+    }
+    if (close(in_fd) < 0) {
+      PLOG(WARNING) << "Failed to close input descriptor";
+    }
+    return 0;
+  }
+
   bool ShouldCreateBootImageProfile() const {
     return generate_boot_image_profile_;
   }
@@ -1637,6 +1680,9 @@ class ProfMan final {
 
   bool ShouldCreateProfile() {
     return !create_profile_from_file_.empty();
+  }
+  bool ShouldRelayoutProfile() {
+    return !create_profile_from_profile_file_.empty();
   }
 
   int GenerateTestProfile() {
@@ -1779,6 +1825,7 @@ class ProfMan final {
   BootImageOptions boot_image_options_;
   std::string test_profile_;
   std::string create_profile_from_file_;
+  std::string create_profile_from_profile_file_;
   uint16_t test_profile_num_dex_;
   uint16_t test_profile_method_percerntage_;
   uint16_t test_profile_class_percentage_;
@@ -1818,6 +1865,9 @@ static int profman(int argc, char** argv) {
   }
   if (profman.ShouldCreateProfile()) {
     return profman.CreateProfile();
+  }
+  if (profman.ShouldRelayoutProfile()) {
+    return profman.RelayoutProfile();
   }
 
   if (profman.ShouldCreateBootImageProfile()) {
