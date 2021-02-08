@@ -236,9 +236,24 @@ class ProfileCompilationInfo {
       // The granularity of the bins is unspecified (i.e. the runtime is free to change the
       // values it uses - this may be 100ms, 200ms etc...).
       kFlagStartupBin = 1 << 10,
+
+      kFlagStartupBinZero = 1 << 10,
+      kFlagStartupBinOne = 1 << 11,
+      kFlagStartupBinTwo = 1 << 12,
+      kFlagStartupBinThree = 1 << 13,
+      kFlagStartupBinFour = 1 << 14,
+      kFlagStartupBinFive = 1 << 15,
+
       kFlagStartupMaxBin = 1 << 15,
       // Marker flag used to simplify iterations.
       kFlagLastBoot = 1 << 15,
+    };
+    static constexpr std::array kOnlyNormalFlags { kFlagHot, kFlagStartup, kFlagPostStartup };
+    static constexpr std::array kOnlyBootFlags {
+      kFlag32bit,         kFlag64bit,         kFlagSensitiveThread, kFlagAmStartup,
+      kFlagAmPostStartup, kFlagBoot,          kFlagPostBoot,        kFlagStartupBinZero,
+      kFlagStartupBinOne, kFlagStartupBinTwo, kFlagStartupBinThree, kFlagStartupBinFour,
+      kFlagStartupBinFive
     };
 
     bool IsHot() const {
@@ -432,6 +447,11 @@ class ProfileCompilationInfo {
 
   // Merge profile information from the given file descriptor.
   bool MergeWith(const std::string& filename);
+
+  // Merge profile information from the given file descriptor, ignore version differences.
+  bool UnsafeMergeWith(const ProfileCompilationInfo& info,
+                       bool merge_classes,
+                       uint16_t default_flags = 0u);
 
   // Save the profile data to the given file descriptor.
   bool Save(int fd);
@@ -652,11 +672,13 @@ class ProfileCompilationInfo {
     bool AddMethod(MethodHotness::Flag flags, size_t index);
 
     void MergeBitmap(const DexFileData& other) {
-      DCHECK_EQ(bitmap_storage.size(), other.bitmap_storage.size());
+      DCHECK_GE(bitmap_storage.size(), other.bitmap_storage.size());
       for (size_t i = 0; i < bitmap_storage.size(); ++i) {
         bitmap_storage[i] |= other.bitmap_storage[i];
       }
     }
+
+    void MergeMethods(const DexFileData& other, uint16_t default_flags = 0x0);
 
     void SetMethodHotness(size_t index, MethodHotness::Flag flags);
     MethodHotness GetHotnessInfo(uint32_t dex_method_index) const;
@@ -979,6 +1001,8 @@ class ProfileCompilationInfo {
   // The version of the profile.
   uint8_t version_[kProfileVersionSize];
 };
+
+std::ostream& operator<<(std::ostream& os, const ProfileCompilationInfo::MethodHotness::Flag& hotness);
 
 /**
  * Flatten profile data that list all methods and type references together
