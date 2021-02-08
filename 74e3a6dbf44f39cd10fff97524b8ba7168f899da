@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4746c0cf_ec0e6d1b",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-08T16:21:28Z",
+      "side": 1,
+      "message": "I decided to replace `num_tests` with `len(run_tests)` everywhere in PS3.",
+      "parentUuid": "828eb438_9ad6f13b",
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "034f568e_c941730c",
@@ -93,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01951522_c9ecc4ba",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-08T16:21:28Z",
+      "side": 1,
+      "message": "Thanks for the tip; fixed in PS3.",
+      "parentUuid": "034f568e_c941730c",
+      "range": {
+        "startLine": 412,
+        "startChar": 92,
+        "endLine": 412,
+        "endChar": 93
+      },
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22b07316_9795c7a3",
@@ -106,6 +148,30 @@
       "writtenOn": "2021-02-08T13:02:37Z",
       "side": 1,
       "message": "Why not use an f string here? One more place below too.",
+      "range": {
+        "startLine": 462,
+        "startChar": 12,
+        "endLine": 462,
+        "endChar": 15
+      },
+      "revId": "74e3a6dbf44f39cd10fff97524b8ba7168f899da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4562b6ab_7e7cea45",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-08T16:21:28Z",
+      "side": 1,
+      "message": "Right; I did not realize you could use an array subscript (or even a more complex expression) between `{` and `}` in an f-string; done in PS3.",
+      "parentUuid": "22b07316_9795c7a3",
       "range": {
         "startLine": 462,
         "startChar": 12,
