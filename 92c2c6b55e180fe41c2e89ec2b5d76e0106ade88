@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f321b786_4b0da88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-08T21:18:33Z",
+      "side": 1,
+      "message": "We don\u0027t really have solid review guidelines for APEX, but this is fine by NDK guidelines with the following exceptions:\n\n* Naming doesn\u0027t match NDK\n* Docs are missing\n* No CTS tests",
+      "revId": "92c2c6b55e180fe41c2e89ec2b5d76e0106ade88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
