@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91c8002_8cffbb45",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-09T02:22:59Z",
+      "side": 1,
+      "message": "nit: it\u0027s probably fine to rely that SplitString won\u0027t be re-evaluated, but it would be clearer if you just use a local var.",
+      "range": {
+        "startLine": 237,
+        "startChar": 28,
+        "endLine": 237,
+        "endChar": 39
+      },
+      "revId": "e805113b411238f621956c7d093e6e58e66b0faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1e5018_c50bc77c",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-09T02:22:59Z",
+      "side": 1,
+      "message": "out_result.",
+      "range": {
+        "startLine": 253,
+        "startChar": 58,
+        "endLine": 253,
+        "endChar": 64
+      },
+      "revId": "e805113b411238f621956c7d093e6e58e66b0faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
