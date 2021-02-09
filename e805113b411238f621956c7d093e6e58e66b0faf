@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd22c83_78cb6b09",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-02-09T17:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91c8002_8cffbb45",
+      "range": {
+        "startLine": 237,
+        "startChar": 28,
+        "endLine": 237,
+        "endChar": 39
+      },
+      "revId": "e805113b411238f621956c7d093e6e58e66b0faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da1e5018_c50bc77c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-09T02:22:59Z",
       "side": 1,
       "message": "out_result.",
+      "range": {
+        "startLine": 253,
+        "startChar": 58,
+        "endLine": 253,
+        "endChar": 64
+      },
+      "revId": "e805113b411238f621956c7d093e6e58e66b0faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e68e9bbc_bf878df5",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-02-09T17:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1e5018_c50bc77c",
       "range": {
         "startLine": 253,
         "startChar": 58,
