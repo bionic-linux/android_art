@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "715ac058_642f3e1a",
+        "filename": "libartbase/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-02-09T22:50:35Z",
+      "side": 1,
+      "message": "nah I wanted to make it explicit that 0-length segments work too.",
+      "parentUuid": "7b81ac24_6071f885",
+      "range": {
+        "startLine": 374,
+        "startChar": 7,
+        "endLine": 374,
+        "endChar": 31
+      },
+      "revId": "e805113b411238f621956c7d093e6e58e66b0faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91c8002_8cffbb45",
