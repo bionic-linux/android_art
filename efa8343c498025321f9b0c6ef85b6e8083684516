@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad4e36d_b77fddd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T00:47:11Z",
+      "side": 1,
+      "message": "Where do you need to do this?\n\nNot totally oppose to the change but it adds a level of complexity I\u0027m hopping to avoid.",
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c184860_9a2e3f5f",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2096,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T00:47:11Z",
+      "side": 1,
+      "message": "this merges method bitmaps but from different versions. rename to MergeBitmaps",
+      "range": {
+        "startLine": 2096,
+        "startChar": 42,
+        "endLine": 2096,
+        "endChar": 54
+      },
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6fa0fa_e2981495",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T00:47:11Z",
+      "side": 1,
+      "message": "document",
+      "range": {
+        "startLine": 454,
+        "startChar": 32,
+        "endLine": 454,
+        "endChar": 45
+      },
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23de91b6_bc1b1aa9",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T00:47:11Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 1005,
+        "startChar": 100,
+        "endLine": 1005,
+        "endChar": 103
+      },
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc92139_0208219a",
+        "filename": "profman/profile_assistant_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T00:47:11Z",
+      "side": 1,
+      "message": "needs some clean up",
+      "range": {
+        "startLine": 1729,
+        "startChar": 0,
+        "endLine": 1730,
+        "endChar": 39
+      },
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
