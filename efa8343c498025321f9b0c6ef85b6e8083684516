@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6458eb7d_75242ce9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-02-11T01:27:16Z",
+      "side": 1,
+      "message": "If its mostly for one time use, I\u0027d prefer we don\u0027t do it. I think it\u0027s not worth the extra complexity in the aggregation logic. It\u0027s already complicated enough, and reasoning about different version merge adds more to the complexity.\n\nI.e. if it can be done without affecting the main aggregation logic, in some pure stand-alone methods, maybe it would be cleaner, but not sure if its worth the effort.",
+      "parentUuid": "5d3ba083_0d3a2404",
+      "revId": "efa8343c498025321f9b0c6ef85b6e8083684516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c184860_9a2e3f5f",
         "filename": "libprofile/profile/profile_compilation_info.cc",
         "patchSetId": 5
