@@ -70,6 +70,30 @@
       },
       "revId": "7934d5df066074a616e81849af044b40986baa91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f6c76d5_d8a18ba7",
+        "filename": "build/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-12T14:49:58Z",
+      "side": 1,
+      "message": "Fair point, done.",
+      "parentUuid": "56d74b5f_bddc2d3e",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "7934d5df066074a616e81849af044b40986baa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
