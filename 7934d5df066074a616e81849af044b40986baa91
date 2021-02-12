@@ -22,6 +22,30 @@
       },
       "revId": "7934d5df066074a616e81849af044b40986baa91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2266e878_63ee3571",
+        "filename": "build/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-12T14:25:45Z",
+      "side": 1,
+      "message": "You\u0027re quick - I uploaded just to play around a bit with this. What I got now looks sort-of ok in gitiles, but I\u0027m on the fence if it\u0027s good enough. WDYT?",
+      "parentUuid": "40a3e27f_3ee52def",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "7934d5df066074a616e81849af044b40986baa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
