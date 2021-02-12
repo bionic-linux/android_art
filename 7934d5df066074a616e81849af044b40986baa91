@@ -46,6 +46,30 @@
       },
       "revId": "7934d5df066074a616e81849af044b40986baa91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d74b5f_bddc2d3e",
+        "filename": "build/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-12T14:42:16Z",
+      "side": 1,
+      "message": "Not so readable without a renderer. Suggest prefixing with \"NB: \" and using plain quoting.",
+      "parentUuid": "2266e878_63ee3571",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "7934d5df066074a616e81849af044b40986baa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
