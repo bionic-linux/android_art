@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a3e27f_3ee52def",
+        "filename": "build/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-12T14:13:05Z",
+      "side": 1,
+      "message": "DBC: italics insides quotes probably doesn\u0027t work (doesn\u0027t in local md preview).",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "7934d5df066074a616e81849af044b40986baa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
