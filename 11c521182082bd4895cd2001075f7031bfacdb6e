@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05bd6c20_8c7268ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-02-13T21:43:20Z",
+      "side": 1,
+      "message": "I moved the CL at http://ag/13391213 to here since we can build this using prebuilts now.",
+      "revId": "11c521182082bd4895cd2001075f7031bfacdb6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
