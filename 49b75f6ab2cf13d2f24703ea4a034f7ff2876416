@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e53b3475_9641854d",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-02-16T16:24:21Z",
+      "side": 1,
+      "message": "I should have been clearer. The intent here was to initially implement this in a way that effectively disables my CL for jit zygote, but allows it (with a future CL) to be reenabled after JIT compilation is done. My impression was that the future CL is not completely trivial, at least for me, but only because I need to understand the logic here better.\n\nIs there significant benefit to being able to turn this on and off? My optimization tends to be less effective shortly after boot anyway, since that\u0027s when we issue a bunch of odd zygote commands that require fallback to the old path. (For some, that\u0027s probably inherent. For others that could be addressed in the future.)",
+      "parentUuid": "4ca5726b_575b98cb",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 33
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47f9abd9_dea740dd",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-16T11:12:55Z",
       "side": 1,
       "message": "Though there\u0027s a point at which the zygote doesn\u0027t need to JIT anymore - is it worth caring for that case?",
+      "range": {
+        "startLine": 432,
+        "startChar": 2,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca46dbf_43195722",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-02-16T16:24:21Z",
+      "side": 1,
+      "message": "My assumption was that happened relatively soon after boot, and that\u0027s what I was hoping to leverage. I was not planning to switch back and forth.",
+      "parentUuid": "47f9abd9_dea740dd",
       "range": {
         "startLine": 432,
         "startChar": 2,
