@@ -39,6 +39,30 @@
       },
       "revId": "11c521182082bd4895cd2001075f7031bfacdb6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38b4a4d_f79c442a",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-02-16T18:03:12Z",
+      "side": 1,
+      "message": "I removed it and it seems to build just fine, so this shouldn\u0027t be a problem.",
+      "parentUuid": "bb9c0073_95ee97b7",
+      "range": {
+        "startLine": 879,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 20
+      },
+      "revId": "11c521182082bd4895cd2001075f7031bfacdb6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
