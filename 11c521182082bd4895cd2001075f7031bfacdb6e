@@ -16,6 +16,29 @@
       "message": "I moved the CL at http://ag/13391213 to here since we can build this using prebuilts now.",
       "revId": "11c521182082bd4895cd2001075f7031bfacdb6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9c0073_95ee97b7",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-16T11:00:22Z",
+      "side": 1,
+      "message": "We should not include libcutils in our apex (unfortunately, there\u0027s no hard check that this doesn\u0027t happen except our on shell script checking apex contents)",
+      "range": {
+        "startLine": 879,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 20
+      },
+      "revId": "11c521182082bd4895cd2001075f7031bfacdb6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
