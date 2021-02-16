@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5609b877_ddd466ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-02-16T05:44:42Z",
+      "side": 1,
+      "message": "An initial pass at preventing the Zygote native loop code from breaking jit zygote.",
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
