@@ -16,6 +16,52 @@
       "message": "An initial pass at preventing the Zygote native loop code from breaking jit zygote.",
       "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca5726b_575b98cb",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-16T11:12:55Z",
+      "side": 1,
+      "message": "Zygote always uses JIT compilation. Do we want to disable JIT compilation for our case? Or could we find a mode where only when the JIT queue is not empty, we respawn the JIT thread?",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 33
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47f9abd9_dea740dd",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-16T11:12:55Z",
+      "side": 1,
+      "message": "Though there\u0027s a point at which the zygote doesn\u0027t need to JIT anymore - is it worth caring for that case?",
+      "range": {
+        "startLine": 432,
+        "startChar": 2,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
