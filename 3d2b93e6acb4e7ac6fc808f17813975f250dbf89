@@ -22,6 +22,30 @@
       },
       "revId": "3d2b93e6acb4e7ac6fc808f17813975f250dbf89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6a69eb_b5afa374",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-17T12:19:00Z",
+      "side": 1,
+      "message": "Ignore the previous comment, we\u0027ve probably mounted all the APEXes before running odrefresh and odsign.\n\nWhat\u0027s not great is that libstatssocket depends statically on libcutils and that is not a great place to be (http://b/179856132).",
+      "parentUuid": "02c44837_b89abff0",
+      "range": {
+        "startLine": 373,
+        "startChar": 17,
+        "endLine": 373,
+        "endChar": 31
+      },
+      "revId": "3d2b93e6acb4e7ac6fc808f17813975f250dbf89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
