@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c44837_b89abff0",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-02-17T11:57:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is going to work as a dependency, but we don\u0027t yet have continuous tests that\u0027d flag this as a problem.\n\nSpecifically, when on-device signing runs, tit is early in the boot and we may not have the statsd apex mounted (statsd depends on the runtime for Java). I\u0027m not definite either way here, but am flagging it here. On-device signing uses dexoptanalyzer which depends on libart which now depends on libstatssocket. If the statsd apex isn\u0027t available, on device signing fails hard.",
+      "range": {
+        "startLine": 373,
+        "startChar": 17,
+        "endLine": 373,
+        "endChar": 31
+      },
+      "revId": "3d2b93e6acb4e7ac6fc808f17813975f250dbf89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
