@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55dae35_7186d856",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-02-18T16:25:21Z",
+      "side": 1,
+      "message": "Good. I\u0027ll stick with the current approach for now, and then make sure that we reenable the optimization with JITZygote once it\u0027s done JIT compiling anything that affects other processes.",
+      "parentUuid": "f9df90f9_bcd4f5af",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 33
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47f9abd9_dea740dd",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "\u003e My assumption was that happened relatively soon after boot\n\nAre you asking in the context of JIT zygote? This does take time and will finish ~2 minutes after boot.",
       "parentUuid": "aca46dbf_43195722",
+      "range": {
+        "startLine": 432,
+        "startChar": 2,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf09f3e7_f656ff2e",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-02-18T16:25:21Z",
+      "side": 1,
+      "message": "Yes. I think that\u0027s still well worthwhile, at least in the sense that it should avoid the any long term degradation.",
+      "parentUuid": "99cfbb6c_45b237b0",
       "range": {
         "startLine": 432,
         "startChar": 2,
