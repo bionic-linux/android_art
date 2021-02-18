@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9df90f9_bcd4f5af",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-18T14:00:48Z",
+      "side": 1,
+      "message": "Discussed offline - as long as if we start executing Java code again in the zygote, and that makes the JIT do its work still, then the approach lgtm. Special casing JIT zygote to not have the optimization also lgtm.",
+      "parentUuid": "e53b3475_9641854d",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 33
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47f9abd9_dea740dd",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "My assumption was that happened relatively soon after boot, and that\u0027s what I was hoping to leverage. I was not planning to switch back and forth.",
       "parentUuid": "47f9abd9_dea740dd",
+      "range": {
+        "startLine": 432,
+        "startChar": 2,
+        "endLine": 432,
+        "endChar": 52
+      },
+      "revId": "49b75f6ab2cf13d2f24703ea4a034f7ff2876416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99cfbb6c_45b237b0",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-18T14:00:48Z",
+      "side": 1,
+      "message": "\u003e My assumption was that happened relatively soon after boot\n\nAre you asking in the context of JIT zygote? This does take time and will finish ~2 minutes after boot.",
+      "parentUuid": "aca46dbf_43195722",
       "range": {
         "startLine": 432,
         "startChar": 2,
