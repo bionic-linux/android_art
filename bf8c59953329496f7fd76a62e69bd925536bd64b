@@ -16,6 +16,23 @@
       "message": "orginal patch:\nhttps://android-review.googlesource.com/c/platform/art/+/1261612",
       "revId": "bf8c59953329496f7fd76a62e69bd925536bd64b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f3e9cf_c64bac84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-03-01T21:28:51Z",
+      "side": 1,
+      "message": "Have we done comparisons to see if this impacts application memory usage?",
+      "revId": "bf8c59953329496f7fd76a62e69bd925536bd64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
