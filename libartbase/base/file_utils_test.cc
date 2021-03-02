@@ -19,6 +19,7 @@
 #include <libgen.h>
 #include <stdlib.h>
 
+#include <filesystem>
 #include <optional>
 
 #include "base/stl_util.h"
@@ -261,6 +262,20 @@ TEST_F(FileUtilsTest, GetApexDataDalvikCacheFilename) {
   const std::string vdex_filename =
       GetApexDataDalvikCacheFilename(non_apex_jar, InstructionSet::kArm, "vdex");
   CHECK_EQ(vdex_filename, ReplaceFileExtension(art_filename, "vdex"));
+}
+
+TEST_F(FileUtilsTest, LocationIsOnSystemExtFramework) {
+  bool success = std::filesystem::create_directory(GetAndroidRoot() + "/framework");
+  ASSERT_TRUE(success);
+  std::string system_ext_location_path = android_system_ext_ + "/framework/foo.jar";
+  ASSERT_TRUE(LocationIsOnSystemExtFramework(system_ext_location_path.c_str()));
+
+  success = std::filesystem::create_directory(GetAndroidRoot() + "/system_ext");
+  ASSERT_TRUE(success);
+  success = std::filesystem::create_directory(GetAndroidRoot() + "/system_ext/framework");
+  ASSERT_TRUE(success);
+  system_ext_location_path = GetAndroidRoot() + "/system_ext/framework/foo.jar";
+  ASSERT_TRUE(LocationIsOnSystemExtFramework(system_ext_location_path.c_str()));
 }
 
 }  // namespace art
