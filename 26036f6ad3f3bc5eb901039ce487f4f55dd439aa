@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be500c15_2dca0374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-02T14:18:36Z",
+      "side": 1,
+      "message": "lgtm when the build failures fixed. We should probably have LocationIs* tests too, you could add the one case for this CL, or file a bug on rpl@ or I to fix.",
+      "revId": "26036f6ad3f3bc5eb901039ce487f4f55dd439aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35dde5a_f2c9ec74",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-02T14:18:36Z",
+      "side": 1,
+      "message": "As we have the two cases, it\u0027d be good to have add a test to file_utils_test.cc, although we don\u0027t have any other LocationIs tests there already.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 47
+      },
+      "revId": "26036f6ad3f3bc5eb901039ce487f4f55dd439aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
