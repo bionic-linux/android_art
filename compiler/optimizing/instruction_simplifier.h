@@ -37,14 +37,14 @@ class CodeGenerator;
  */
 class InstructionSimplifier : public HOptimization {
  public:
-  InstructionSimplifier(HGraph* graph,
-                        CodeGenerator* codegen,
+  InstructionSimplifier(HGraph*                  graph,
+                        CodeGenerator*           codegen,
                         OptimizingCompilerStats* stats = nullptr,
-                        const char* name = kInstructionSimplifierPassName,
-                        bool use_all_optimizations = false)
-      : HOptimization(graph, name, stats),
-        codegen_(codegen),
-        use_all_optimizations_(use_all_optimizations) {}
+                        const char*              name = kInstructionSimplifierPassName,
+                        bool                     use_all_optimizations = false) :
+      HOptimization(graph, name, stats),
+      codegen_(codegen),
+      use_all_optimizations_(use_all_optimizations) {}
 
   static constexpr const char* kInstructionSimplifierPassName = "instruction_simplifier";
 

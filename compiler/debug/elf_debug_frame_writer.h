@@ -90,7 +90,7 @@ static void WriteCIE(InstructionSet isa, /*inout*/ std::vector<uint8_t>* buffer)
     }
     case InstructionSet::kX86: {
       // FIXME: Add fp registers once libunwind adds support for them. Bug: 20491296
-      constexpr bool generate_opcodes_for_x86_fp = false;
+      constexpr bool                  generate_opcodes_for_x86_fp = false;
       dwarf::DebugFrameOpCodeWriter<> opcodes;
       opcodes.DefCFA(Reg::X86Core(4), 4);   // R4(ESP).
       opcodes.Offset(Reg::X86Core(8), -4);  // R8(EIP).
@@ -116,7 +116,7 @@ static void WriteCIE(InstructionSet isa, /*inout*/ std::vector<uint8_t>* buffer)
     }
     case InstructionSet::kX86_64: {
       dwarf::DebugFrameOpCodeWriter<> opcodes;
-      opcodes.DefCFA(Reg::X86_64Core(4), 8);  // R4(RSP).
+      opcodes.DefCFA(Reg::X86_64Core(4), 8);    // R4(RSP).
       opcodes.Offset(Reg::X86_64Core(16), -8);  // R16(RIP).
       // core registers.
       for (int reg = 0; reg < 16; reg++) {
@@ -140,15 +140,14 @@ static void WriteCIE(InstructionSet isa, /*inout*/ std::vector<uint8_t>* buffer)
       WriteCIE(is64bit, return_reg, opcodes, buffer);
       return;
     }
-    case InstructionSet::kNone:
-      break;
+    case InstructionSet::kNone: break;
   }
   LOG(FATAL) << "Cannot write CIE frame for ISA " << isa;
   UNREACHABLE();
 }
 
-template<typename ElfTypes>
-void WriteCFISection(ElfBuilder<ElfTypes>* builder,
+template <typename ElfTypes>
+void WriteCFISection(ElfBuilder<ElfTypes>*                  builder,
                      const ArrayRef<const MethodDebugInfo>& method_infos) {
   typedef typename ElfTypes::Addr Elf_Addr;
 
@@ -166,14 +165,13 @@ void WriteCFISection(ElfBuilder<ElfTypes>* builder,
   if (sorted_method_infos.empty()) {
     return;
   }
-  std::stable_sort(
-      sorted_method_infos.begin(),
-      sorted_method_infos.end(),
-      [](const MethodDebugInfo* lhs, const MethodDebugInfo* rhs) {
-        ArrayRef<const uint8_t> l = lhs->cfi;
-        ArrayRef<const uint8_t> r = rhs->cfi;
-        return std::lexicographical_compare(l.begin(), l.end(), r.begin(), r.end());
-      });
+  std::stable_sort(sorted_method_infos.begin(),
+                   sorted_method_infos.end(),
+                   [](const MethodDebugInfo* lhs, const MethodDebugInfo* rhs) {
+                     ArrayRef<const uint8_t> l = lhs->cfi;
+                     ArrayRef<const uint8_t> r = rhs->cfi;
+                     return std::lexicographical_compare(l.begin(), l.end(), r.begin(), r.end());
+                   });
 
   std::vector<uint32_t> binary_search_table;
   if (kWriteDebugFrameHdr) {
@@ -184,7 +182,7 @@ void WriteCFISection(ElfBuilder<ElfTypes>* builder,
   auto* cfi_section = builder->GetDebugFrame();
   {
     cfi_section->Start();
-    const bool is64bit = Is64BitInstructionSet(builder->GetIsa());
+    const bool           is64bit = Is64BitInstructionSet(builder->GetIsa());
     std::vector<uint8_t> buffer;  // Small temporary buffer.
     WriteCIE(builder->GetIsa(), &buffer);
     cfi_section->WriteFully(buffer.data(), buffer.size());
@@ -192,7 +190,8 @@ void WriteCFISection(ElfBuilder<ElfTypes>* builder,
     for (const MethodDebugInfo* mi : sorted_method_infos) {
       DCHECK(!mi->deduped);
       DCHECK(!mi->cfi.empty());
-      const Elf_Addr code_address = mi->code_address +
+      const Elf_Addr code_address =
+          mi->code_address +
           (mi->is_code_address_text_relative ? builder->GetText()->GetAddress() : 0);
       if (kWriteDebugFrameHdr) {
         binary_search_table.push_back(dchecked_integral_cast<uint32_t>(code_address));
@@ -215,12 +214,12 @@ void WriteCFISection(ElfBuilder<ElfTypes>* builder,
 
     // Custom Android section. It is very similar to the official .eh_frame_hdr format.
     std::vector<uint8_t> header_buffer;
-    dwarf::Writer<> header(&header_buffer);
-    header.PushUint8(1);  // Version.
+    dwarf::Writer<>      header(&header_buffer);
+    header.PushUint8(1);                       // Version.
     header.PushUint8(dwarf::DW_EH_PE_omit);    // Encoding of .eh_frame pointer - none.
     header.PushUint8(dwarf::DW_EH_PE_udata4);  // Encoding of binary search table size.
     header.PushUint8(dwarf::DW_EH_PE_udata4);  // Encoding of binary search table data.
-    header.PushUint32(dchecked_integral_cast<uint32_t>(binary_search_table.size()/2));
+    header.PushUint32(dchecked_integral_cast<uint32_t>(binary_search_table.size() / 2));
 
     auto* header_section = builder->GetDebugFrameHdr();
     header_section->Start();
@@ -234,4 +233,3 @@ void WriteCFISection(ElfBuilder<ElfTypes>* builder,
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_FRAME_WRITER_H_
-

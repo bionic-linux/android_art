@@ -106,37 +106,29 @@ TEST(SideEffectsTest, DependencesAndNoDependences) {
   // Apply test to each individual data type.
   for (DataType::Type type : kTestTypes) {
     // Same data type and access type: proper write/read dep.
-    testWriteAndReadDependence(
-        SideEffects::FieldWriteOfType(type, false),
-        SideEffects::FieldReadOfType(type, false));
-    testWriteAndReadDependence(
-        SideEffects::ArrayWriteOfType(type),
-        SideEffects::ArrayReadOfType(type));
+    testWriteAndReadDependence(SideEffects::FieldWriteOfType(type, false),
+                               SideEffects::FieldReadOfType(type, false));
+    testWriteAndReadDependence(SideEffects::ArrayWriteOfType(type),
+                               SideEffects::ArrayReadOfType(type));
     // Same data type but different access type: no write/read dep.
-    testNoWriteAndReadDependence(
-        SideEffects::FieldWriteOfType(type, false),
-        SideEffects::ArrayReadOfType(type));
-    testNoWriteAndReadDependence(
-        SideEffects::ArrayWriteOfType(type),
-        SideEffects::FieldReadOfType(type, false));
+    testNoWriteAndReadDependence(SideEffects::FieldWriteOfType(type, false),
+                                 SideEffects::ArrayReadOfType(type));
+    testNoWriteAndReadDependence(SideEffects::ArrayWriteOfType(type),
+                                 SideEffects::FieldReadOfType(type, false));
   }
 }
 
 TEST(SideEffectsTest, NoDependences) {
   // Different data type, same access type: no write/read dep.
-  testNoWriteAndReadDependence(
-      SideEffects::FieldWriteOfType(DataType::Type::kInt32, false),
-      SideEffects::FieldReadOfType(DataType::Type::kFloat64, false));
-  testNoWriteAndReadDependence(
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
+  testNoWriteAndReadDependence(SideEffects::FieldWriteOfType(DataType::Type::kInt32, false),
+                               SideEffects::FieldReadOfType(DataType::Type::kFloat64, false));
+  testNoWriteAndReadDependence(SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                               SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
   // Everything different: no write/read dep.
-  testNoWriteAndReadDependence(
-      SideEffects::FieldWriteOfType(DataType::Type::kInt32, false),
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
-  testNoWriteAndReadDependence(
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      SideEffects::FieldReadOfType(DataType::Type::kFloat64, false));
+  testNoWriteAndReadDependence(SideEffects::FieldWriteOfType(DataType::Type::kInt32, false),
+                               SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
+  testNoWriteAndReadDependence(SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                               SideEffects::FieldReadOfType(DataType::Type::kFloat64, false));
 }
 
 TEST(SideEffectsTest, VolatileDependences) {
@@ -165,16 +157,14 @@ TEST(SideEffectsTest, SameWidthTypesNoAlias) {
   testNoWriteAndReadDependence(
       SideEffects::FieldWriteOfType(DataType::Type::kInt32, /* is_volatile= */ false),
       SideEffects::FieldReadOfType(DataType::Type::kFloat32, /* is_volatile= */ false));
-  testNoWriteAndReadDependence(
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat32));
+  testNoWriteAndReadDependence(SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                               SideEffects::ArrayReadOfType(DataType::Type::kFloat32));
   // Type L/D.
   testNoWriteAndReadDependence(
       SideEffects::FieldWriteOfType(DataType::Type::kInt64, /* is_volatile= */ false),
       SideEffects::FieldReadOfType(DataType::Type::kFloat64, /* is_volatile= */ false));
-  testNoWriteAndReadDependence(
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt64),
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
+  testNoWriteAndReadDependence(SideEffects::ArrayWriteOfType(DataType::Type::kInt64),
+                               SideEffects::ArrayReadOfType(DataType::Type::kFloat64));
 }
 
 TEST(SideEffectsTest, AllWritesAndReads) {
@@ -211,48 +201,28 @@ TEST(SideEffectsTest, GC) {
 }
 
 TEST(SideEffectsTest, BitStrings) {
-  EXPECT_STREQ(
-      "|||||||",
-      SideEffects::None().ToString().c_str());
-  EXPECT_STREQ(
-      "|GC|DFJISCBZL|DFJISCBZL|GC|DFJISCBZL|DFJISCBZL|",
-      SideEffects::All().ToString().c_str());
-  EXPECT_STREQ(
-      "|||||DFJISCBZL|DFJISCBZL|",
-      SideEffects::AllWrites().ToString().c_str());
-  EXPECT_STREQ(
-      "||DFJISCBZL|DFJISCBZL||||",
-      SideEffects::AllReads().ToString().c_str());
-  EXPECT_STREQ(
-      "||||||L|",
-      SideEffects::FieldWriteOfType(DataType::Type::kReference, false).ToString().c_str());
-  EXPECT_STREQ(
-      "||DFJISCBZL|DFJISCBZL||DFJISCBZL|DFJISCBZL|",
-      SideEffects::FieldWriteOfType(DataType::Type::kReference, true).ToString().c_str());
-  EXPECT_STREQ(
-      "|||||Z||",
-      SideEffects::ArrayWriteOfType(DataType::Type::kBool).ToString().c_str());
-  EXPECT_STREQ(
-      "|||||C||",
-      SideEffects::ArrayWriteOfType(DataType::Type::kUint16).ToString().c_str());
-  EXPECT_STREQ(
-      "|||||S||",
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt16).ToString().c_str());
-  EXPECT_STREQ(
-      "|||B||||",
-      SideEffects::FieldReadOfType(DataType::Type::kInt8, false).ToString().c_str());
-  EXPECT_STREQ(
-      "||D|||||",
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat64).ToString().c_str());
-  EXPECT_STREQ(
-      "||J|||||",
-      SideEffects::ArrayReadOfType(DataType::Type::kInt64).ToString().c_str());
-  EXPECT_STREQ(
-      "||F|||||",
-      SideEffects::ArrayReadOfType(DataType::Type::kFloat32).ToString().c_str());
-  EXPECT_STREQ(
-      "||I|||||",
-      SideEffects::ArrayReadOfType(DataType::Type::kInt32).ToString().c_str());
+  EXPECT_STREQ("|||||||", SideEffects::None().ToString().c_str());
+  EXPECT_STREQ("|GC|DFJISCBZL|DFJISCBZL|GC|DFJISCBZL|DFJISCBZL|",
+               SideEffects::All().ToString().c_str());
+  EXPECT_STREQ("|||||DFJISCBZL|DFJISCBZL|", SideEffects::AllWrites().ToString().c_str());
+  EXPECT_STREQ("||DFJISCBZL|DFJISCBZL||||", SideEffects::AllReads().ToString().c_str());
+  EXPECT_STREQ("||||||L|",
+               SideEffects::FieldWriteOfType(DataType::Type::kReference, false).ToString().c_str());
+  EXPECT_STREQ("||DFJISCBZL|DFJISCBZL||DFJISCBZL|DFJISCBZL|",
+               SideEffects::FieldWriteOfType(DataType::Type::kReference, true).ToString().c_str());
+  EXPECT_STREQ("|||||Z||", SideEffects::ArrayWriteOfType(DataType::Type::kBool).ToString().c_str());
+  EXPECT_STREQ("|||||C||",
+               SideEffects::ArrayWriteOfType(DataType::Type::kUint16).ToString().c_str());
+  EXPECT_STREQ("|||||S||",
+               SideEffects::ArrayWriteOfType(DataType::Type::kInt16).ToString().c_str());
+  EXPECT_STREQ("|||B||||",
+               SideEffects::FieldReadOfType(DataType::Type::kInt8, false).ToString().c_str());
+  EXPECT_STREQ("||D|||||",
+               SideEffects::ArrayReadOfType(DataType::Type::kFloat64).ToString().c_str());
+  EXPECT_STREQ("||J|||||", SideEffects::ArrayReadOfType(DataType::Type::kInt64).ToString().c_str());
+  EXPECT_STREQ("||F|||||",
+               SideEffects::ArrayReadOfType(DataType::Type::kFloat32).ToString().c_str());
+  EXPECT_STREQ("||I|||||", SideEffects::ArrayReadOfType(DataType::Type::kInt32).ToString().c_str());
   SideEffects s = SideEffects::None();
   s = s.Union(SideEffects::FieldWriteOfType(DataType::Type::kUint16, /* is_volatile= */ false));
   s = s.Union(SideEffects::FieldWriteOfType(DataType::Type::kInt64, /* is_volatile= */ false));

@@ -17,9 +17,9 @@
 #ifndef ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_H_
 #define ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_H_
 
-#include <vector>
-
 #include <android-base/logging.h>
+
+#include <vector>
 
 #include "arch/instruction_set.h"
 #include "base/arena_allocator.h"
@@ -38,20 +38,16 @@ class InstructionSetFeatures;
 class MemoryRegion;
 class JNIMacroLabel;
 
-enum class JNIMacroUnaryCondition {
-  kZero,
-  kNotZero
-};
+enum class JNIMacroUnaryCondition { kZero, kNotZero };
 
 class ArgumentLocation {
  public:
-  ArgumentLocation(ManagedRegister reg, size_t size)
-      : reg_(reg), frame_offset_(0u), size_(size) {
+  ArgumentLocation(ManagedRegister reg, size_t size) : reg_(reg), frame_offset_(0u), size_(size) {
     DCHECK(reg.IsRegister());
   }
 
-  ArgumentLocation(FrameOffset frame_offset, size_t size)
-      : reg_(ManagedRegister::NoRegister()), frame_offset_(frame_offset), size_(size) {}
+  ArgumentLocation(FrameOffset frame_offset, size_t size) :
+      reg_(ManagedRegister::NoRegister()), frame_offset_(frame_offset), size_(size) {}
 
   bool IsRegister() const {
     return reg_.IsRegister();
@@ -73,16 +69,16 @@ class ArgumentLocation {
 
  private:
   ManagedRegister reg_;
-  FrameOffset frame_offset_;
-  size_t size_;
+  FrameOffset     frame_offset_;
+  size_t          size_;
 };
 
 template <PointerSize kPointerSize>
 class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
  public:
   static std::unique_ptr<JNIMacroAssembler<kPointerSize>> Create(
-      ArenaAllocator* allocator,
-      InstructionSet instruction_set,
+      ArenaAllocator*               allocator,
+      InstructionSet                instruction_set,
       const InstructionSetFeatures* instruction_set_features = nullptr);
 
   // Finalize the code; emit slow paths, fixup branches, add literal pool, etc.
@@ -95,8 +91,8 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   virtual void FinalizeInstructions(const MemoryRegion& region) = 0;
 
   // Emit code that will create an activation on the stack
-  virtual void BuildFrame(size_t frame_size,
-                          ManagedRegister method_reg,
+  virtual void BuildFrame(size_t                          frame_size,
+                          ManagedRegister                 method_reg,
                           ArrayRef<const ManagedRegister> callee_save_regs) = 0;
 
   // Emit code that will remove an activation from the stack
@@ -104,9 +100,9 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   // Argument `may_suspend` must be `true` if the compiled method may be
   // suspended during its execution (otherwise `false`, if it is impossible
   // to suspend during its execution).
-  virtual void RemoveFrame(size_t frame_size,
+  virtual void RemoveFrame(size_t                          frame_size,
                            ArrayRef<const ManagedRegister> callee_save_regs,
-                           bool may_suspend) = 0;
+                           bool                            may_suspend) = 0;
 
   virtual void IncreaseFrameSize(size_t adjust) = 0;
   virtual void DecreaseFrameSize(size_t adjust) = 0;
@@ -119,27 +115,25 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   virtual void StoreImmediateToFrame(FrameOffset dest, uint32_t imm) = 0;
 
   virtual void StoreStackOffsetToThread(ThreadOffset<kPointerSize> thr_offs,
-                                        FrameOffset fr_offs) = 0;
+                                        FrameOffset                fr_offs) = 0;
 
   virtual void StoreStackPointerToThread(ThreadOffset<kPointerSize> thr_offs) = 0;
 
-  virtual void StoreSpanning(FrameOffset dest,
-                             ManagedRegister src,
-                             FrameOffset in_off) = 0;
+  virtual void StoreSpanning(FrameOffset dest, ManagedRegister src, FrameOffset in_off) = 0;
 
   // Load routines
   virtual void Load(ManagedRegister dest, FrameOffset src, size_t size) = 0;
 
-  virtual void LoadFromThread(ManagedRegister dest,
+  virtual void LoadFromThread(ManagedRegister            dest,
                               ThreadOffset<kPointerSize> src,
-                              size_t size) = 0;
+                              size_t                     size) = 0;
 
   virtual void LoadRef(ManagedRegister dest, FrameOffset src) = 0;
   // If unpoison_reference is true and kPoisonReference is true, then we negate the read reference.
   virtual void LoadRef(ManagedRegister dest,
                        ManagedRegister base,
-                       MemberOffset offs,
-                       bool unpoison_reference) = 0;
+                       MemberOffset    offs,
+                       bool            unpoison_reference) = 0;
 
   virtual void LoadRawPtr(ManagedRegister dest, ManagedRegister base, Offset offs) = 0;
 
@@ -153,48 +147,48 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   virtual void CopyRawPtrFromThread(FrameOffset fr_offs, ThreadOffset<kPointerSize> thr_offs) = 0;
 
   virtual void CopyRawPtrToThread(ThreadOffset<kPointerSize> thr_offs,
-                                  FrameOffset fr_offs,
-                                  ManagedRegister scratch) = 0;
+                                  FrameOffset                fr_offs,
+                                  ManagedRegister            scratch) = 0;
 
   virtual void CopyRef(FrameOffset dest, FrameOffset src) = 0;
-  virtual void CopyRef(FrameOffset dest,
+  virtual void CopyRef(FrameOffset     dest,
                        ManagedRegister base,
-                       MemberOffset offs,
-                       bool unpoison_reference) = 0;
+                       MemberOffset    offs,
+                       bool            unpoison_reference) = 0;
 
   virtual void Copy(FrameOffset dest, FrameOffset src, size_t size) = 0;
 
-  virtual void Copy(FrameOffset dest,
+  virtual void Copy(FrameOffset     dest,
                     ManagedRegister src_base,
-                    Offset src_offset,
+                    Offset          src_offset,
                     ManagedRegister scratch,
-                    size_t size) = 0;
+                    size_t          size) = 0;
 
   virtual void Copy(ManagedRegister dest_base,
-                    Offset dest_offset,
-                    FrameOffset src,
+                    Offset          dest_offset,
+                    FrameOffset     src,
                     ManagedRegister scratch,
-                    size_t size) = 0;
+                    size_t          size) = 0;
 
-  virtual void Copy(FrameOffset dest,
-                    FrameOffset src_base,
-                    Offset src_offset,
+  virtual void Copy(FrameOffset     dest,
+                    FrameOffset     src_base,
+                    Offset          src_offset,
                     ManagedRegister scratch,
-                    size_t size) = 0;
+                    size_t          size) = 0;
 
   virtual void Copy(ManagedRegister dest,
-                    Offset dest_offset,
+                    Offset          dest_offset,
                     ManagedRegister src,
-                    Offset src_offset,
+                    Offset          src_offset,
                     ManagedRegister scratch,
-                    size_t size) = 0;
+                    size_t          size) = 0;
 
-  virtual void Copy(FrameOffset dest,
-                    Offset dest_offset,
-                    FrameOffset src,
-                    Offset src_offset,
+  virtual void Copy(FrameOffset     dest,
+                    Offset          dest_offset,
+                    FrameOffset     src,
+                    Offset          src_offset,
                     ManagedRegister scratch,
-                    size_t size) = 0;
+                    size_t          size) = 0;
 
   virtual void MemoryBarrier(ManagedRegister scratch) = 0;
 
@@ -213,15 +207,15 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   // stale reference that can be used to avoid loading the spilled value to
   // see if the value is null.
   virtual void CreateJObject(ManagedRegister out_reg,
-                             FrameOffset spilled_reference_offset,
+                             FrameOffset     spilled_reference_offset,
                              ManagedRegister in_reg,
-                             bool null_allowed) = 0;
+                             bool            null_allowed) = 0;
 
   // Set up `out_off` to hold a `jobject` (`StackReference<Object>*` to a spilled value),
   // or to be null if the value is null and `null_allowed`.
   virtual void CreateJObject(FrameOffset out_off,
                              FrameOffset spilled_reference_offset,
-                             bool null_allowed) = 0;
+                             bool        null_allowed) = 0;
 
   // Heap::VerifyObject on src. In some cases (such as a reference to this) we
   // know that src may not be null.
@@ -243,7 +237,7 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   // Create a new label that can be used with Jump/Bind calls.
   virtual std::unique_ptr<JNIMacroLabel> CreateLabel() = 0;
   // Emit an unconditional jump to the label.
-  virtual void Jump(JNIMacroLabel* label) = 0;
+  virtual void                           Jump(JNIMacroLabel* label) = 0;
   // Emit a conditional jump to the label by applying a unary condition test to the GC marking flag.
   virtual void TestGcMarking(JNIMacroLabel* label, JNIMacroUnaryCondition cond) = 0;
   // Code at this offset will serve as the target for the Jump call.
@@ -281,6 +275,7 @@ class JNIMacroLabel {
   virtual ~JNIMacroLabel() = 0;
 
   const InstructionSet isa_;
+
  protected:
   explicit JNIMacroLabel(InstructionSet isa) : isa_(isa) {}
 };
@@ -330,8 +325,7 @@ class JNIMacroLabelCommon : public JNIMacroLabel {
     return &label_;
   }
 
-  JNIMacroLabelCommon() : JNIMacroLabel(kIsa) {
-  }
+  JNIMacroLabelCommon() : JNIMacroLabel(kIsa) {}
 
   ~JNIMacroLabelCommon() override {}
 

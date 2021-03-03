@@ -18,6 +18,7 @@
 #define ART_COMPILER_UTILS_DEDUPE_SET_H_
 
 #include <stdint.h>
+
 #include <memory>
 #include <string>
 
@@ -52,7 +53,7 @@ class DedupeSet {
   class Shard;
 
   std::unique_ptr<Shard> shards_[kShard];
-  uint64_t hash_time_;
+  uint64_t               hash_time_;
 
   DISALLOW_COPY_AND_ASSIGN(DedupeSet);
 };

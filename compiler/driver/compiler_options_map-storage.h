@@ -34,9 +34,9 @@
 #error "Expected COMPILER_OPTIONS_MAP_KEY_TYPE"
 #endif
 
-#define COMPILER_OPTIONS_KEY(Type, Name, ...) \
+#define COMPILER_OPTIONS_KEY(Type, Name, ...)                    \
   template <typename Base, template <typename TV> class KeyType> \
-  const KeyType<Type> CompilerOptionsMap<Base, KeyType>::Name {__VA_ARGS__};
+  const KeyType<Type> CompilerOptionsMap<Base, KeyType>::Name{__VA_ARGS__};
 #include <driver/compiler_options_map.def>
 
 template struct CompilerOptionsMap<COMPILER_OPTIONS_MAP_TYPE, COMPILER_OPTIONS_MAP_KEY_TYPE>;

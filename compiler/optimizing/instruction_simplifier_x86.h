@@ -26,9 +26,8 @@ namespace x86 {
 
 class InstructionSimplifierX86 : public HOptimization {
  public:
-  InstructionSimplifierX86(HGraph* graph, CodeGenerator* codegen, OptimizingCompilerStats* stats)
-      : HOptimization(graph, kInstructionSimplifierX86PassName, stats),
-        codegen_(codegen) {}
+  InstructionSimplifierX86(HGraph* graph, CodeGenerator* codegen, OptimizingCompilerStats* stats) :
+      HOptimization(graph, kInstructionSimplifierX86PassName, stats), codegen_(codegen) {}
 
   static constexpr const char* kInstructionSimplifierX86PassName = "instruction_simplifier_x86";
 

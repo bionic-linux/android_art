@@ -17,9 +17,8 @@
 #include "nodes.h"
 
 #include "base/arena_allocator.h"
-#include "optimizing_unit_test.h"
-
 #include "gtest/gtest.h"
+#include "optimizing_unit_test.h"
 
 namespace art {
 
@@ -142,12 +141,12 @@ TEST_F(NodeTest, ClearDominanceThenLoopInformation) {
  * and environment lists.
  */
 TEST_F(NodeTest, RemoveInstruction) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
   entry->AddInstruction(new (GetAllocator()) HGoto());
 
@@ -163,8 +162,8 @@ TEST_F(NodeTest, RemoveInstruction) {
   first_block->AddSuccessor(exit_block);
   exit_block->AddInstruction(new (GetAllocator()) HExit());
 
-  HEnvironment* environment = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, null_check);
+  HEnvironment* environment =
+      new (GetAllocator()) HEnvironment(GetAllocator(), 1, graph->GetArtMethod(), 0, null_check);
   null_check->SetRawEnvironment(environment);
   environment->SetRawEnvAt(0, parameter);
   parameter->AddEnvUseAt(null_check->GetEnvironment(), 0);
@@ -182,14 +181,14 @@ TEST_F(NodeTest, RemoveInstruction) {
  * Test that inserting an instruction in the graph updates user lists.
  */
 TEST_F(NodeTest, InsertInstruction) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter1 = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter2 = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter1);
   entry->AddInstruction(parameter2);
   entry->AddInstruction(new (GetAllocator()) HExit());
@@ -207,12 +206,12 @@ TEST_F(NodeTest, InsertInstruction) {
  * Test that adding an instruction in the graph updates user lists.
  */
 TEST_F(NodeTest, AddInstruction) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   ASSERT_FALSE(parameter->HasUses());
@@ -225,12 +224,12 @@ TEST_F(NodeTest, AddInstruction) {
 }
 
 TEST_F(NodeTest, ParentEnvironment) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter1 = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   HInstruction* with_environment = new (GetAllocator()) HNullCheck(parameter1, 0);
   entry->AddInstruction(parameter1);
   entry->AddInstruction(with_environment);
@@ -239,9 +238,9 @@ TEST_F(NodeTest, ParentEnvironment) {
   ASSERT_TRUE(parameter1->HasUses());
   ASSERT_TRUE(parameter1->GetUses().HasExactlyOneElement());
 
-  HEnvironment* environment = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, with_environment);
-  HInstruction* const array[] = { parameter1 };
+  HEnvironment* environment = new (GetAllocator())
+      HEnvironment(GetAllocator(), 1, graph->GetArtMethod(), 0, with_environment);
+  HInstruction* const array[] = {parameter1};
 
   environment->CopyFrom(ArrayRef<HInstruction* const>(array));
   with_environment->SetRawEnvironment(environment);
@@ -249,14 +248,14 @@ TEST_F(NodeTest, ParentEnvironment) {
   ASSERT_TRUE(parameter1->HasEnvironmentUses());
   ASSERT_TRUE(parameter1->GetEnvUses().HasExactlyOneElement());
 
-  HEnvironment* parent1 = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
+  HEnvironment* parent1 =
+      new (GetAllocator()) HEnvironment(GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
   parent1->CopyFrom(ArrayRef<HInstruction* const>(array));
 
   ASSERT_EQ(parameter1->GetEnvUses().SizeSlow(), 2u);
 
-  HEnvironment* parent2 = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
+  HEnvironment* parent2 =
+      new (GetAllocator()) HEnvironment(GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
   parent2->CopyFrom(ArrayRef<HInstruction* const>(array));
   parent1->SetAndCopyParentChain(GetAllocator(), parent2);
 

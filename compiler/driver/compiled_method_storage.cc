@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#include <algorithm>
-#include <ostream>
-
 #include "compiled_method_storage.h"
 
 #include <android-base/logging.h>
+
+#include <algorithm>
+#include <ostream>
 
 #include "base/data_hash.h"
 #include "base/utils.h"
@@ -38,7 +38,7 @@ const LengthPrefixedArray<T>* CopyArray(SwapSpace* swap_space, const ArrayRef<co
   DCHECK(!array.empty());
   SwapAllocator<uint8_t> allocator(swap_space);
   void* storage = allocator.allocate(LengthPrefixedArray<T>::ComputeSize(array.size()));
-  LengthPrefixedArray<T>* array_copy = new(storage) LengthPrefixedArray<T>(array.size());
+  LengthPrefixedArray<T>* array_copy = new (storage) LengthPrefixedArray<T>(array.size());
   std::copy(array.begin(), array.end(), array_copy->begin());
   return array_copy;
 }
@@ -46,7 +46,7 @@ const LengthPrefixedArray<T>* CopyArray(SwapSpace* swap_space, const ArrayRef<co
 template <typename T>
 void ReleaseArray(SwapSpace* swap_space, const LengthPrefixedArray<T>* array) {
   SwapAllocator<uint8_t> allocator(swap_space);
-  size_t size = LengthPrefixedArray<T>::ComputeSize(array->size());
+  size_t                 size = LengthPrefixedArray<T>::ComputeSize(array->size());
   array->~LengthPrefixedArray<T>();
   allocator.deallocate(const_cast<uint8_t*>(reinterpret_cast<const uint8_t*>(array)), size);
 }
@@ -55,8 +55,7 @@ void ReleaseArray(SwapSpace* swap_space, const LengthPrefixedArray<T>* array) {
 
 template <typename T, typename DedupeSetType>
 inline const LengthPrefixedArray<T>* CompiledMethodStorage::AllocateOrDeduplicateArray(
-    const ArrayRef<const T>& data,
-    DedupeSetType* dedupe_set) {
+    const ArrayRef<const T>& data, DedupeSetType* dedupe_set) {
   if (data.empty()) {
     return nullptr;
   } else if (!DedupeEnabled()) {
@@ -88,9 +87,7 @@ class CompiledMethodStorage::DedupeHashFunc {
 template <typename T>
 class CompiledMethodStorage::LengthPrefixedArrayAlloc {
  public:
-  explicit LengthPrefixedArrayAlloc(SwapSpace* swap_space)
-      : swap_space_(swap_space) {
-  }
+  explicit LengthPrefixedArrayAlloc(SwapSpace* swap_space) : swap_space_(swap_space) {}
 
   const LengthPrefixedArray<T>* Copy(const ArrayRef<const T>& array) {
     return CopyArray(swap_space_, array);
@@ -106,8 +103,8 @@ class CompiledMethodStorage::LengthPrefixedArrayAlloc {
 
 class CompiledMethodStorage::ThunkMapKey {
  public:
-  ThunkMapKey(linker::LinkerPatch::Type type, uint32_t custom_value1, uint32_t custom_value2)
-      : type_(type), custom_value1_(custom_value1), custom_value2_(custom_value2) {}
+  ThunkMapKey(linker::LinkerPatch::Type type, uint32_t custom_value1, uint32_t custom_value2) :
+      type_(type), custom_value1_(custom_value1), custom_value2_(custom_value2) {}
 
   bool operator<(const ThunkMapKey& other) const {
     if (custom_value1_ != other.custom_value1_) {
@@ -121,15 +118,15 @@ class CompiledMethodStorage::ThunkMapKey {
 
  private:
   linker::LinkerPatch::Type type_;
-  uint32_t custom_value1_;
-  uint32_t custom_value2_;
+  uint32_t                  custom_value1_;
+  uint32_t                  custom_value2_;
 };
 
 class CompiledMethodStorage::ThunkMapValue {
  public:
   ThunkMapValue(std::vector<uint8_t, SwapAllocator<uint8_t>>&& code,
-                const std::string& debug_name)
-      : code_(std::move(code)), debug_name_(debug_name) {}
+                const std::string&                             debug_name) :
+      code_(std::move(code)), debug_name_(debug_name) {}
 
   ArrayRef<const uint8_t> GetCode() const {
     return ArrayRef<const uint8_t>(code_);
@@ -141,21 +138,19 @@ class CompiledMethodStorage::ThunkMapValue {
 
  private:
   std::vector<uint8_t, SwapAllocator<uint8_t>> code_;
-  std::string debug_name_;
+  std::string                                  debug_name_;
 };
 
-CompiledMethodStorage::CompiledMethodStorage(int swap_fd)
-    : swap_space_(swap_fd == -1 ? nullptr : new SwapSpace(swap_fd, 10 * MB)),
-      dedupe_enabled_(true),
-      dedupe_code_("dedupe code", LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
-      dedupe_vmap_table_("dedupe vmap table",
-                         LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
-      dedupe_cfi_info_("dedupe cfi info", LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
-      dedupe_linker_patches_("dedupe cfi info",
-                             LengthPrefixedArrayAlloc<linker::LinkerPatch>(swap_space_.get())),
-      thunk_map_lock_("thunk_map_lock"),
-      thunk_map_(std::less<ThunkMapKey>(), SwapAllocator<ThunkMapValueType>(swap_space_.get())) {
-}
+CompiledMethodStorage::CompiledMethodStorage(int swap_fd) :
+    swap_space_(swap_fd == -1 ? nullptr : new SwapSpace(swap_fd, 10 * MB)),
+    dedupe_enabled_(true),
+    dedupe_code_("dedupe code", LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
+    dedupe_vmap_table_("dedupe vmap table", LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
+    dedupe_cfi_info_("dedupe cfi info", LengthPrefixedArrayAlloc<uint8_t>(swap_space_.get())),
+    dedupe_linker_patches_("dedupe cfi info",
+                           LengthPrefixedArrayAlloc<linker::LinkerPatch>(swap_space_.get())),
+    thunk_map_lock_("thunk_map_lock"),
+    thunk_map_(std::less<ThunkMapKey>(), SwapAllocator<ThunkMapValueType>(swap_space_.get())) {}
 
 CompiledMethodStorage::~CompiledMethodStorage() {
   // All done by member destructors.
@@ -226,18 +221,16 @@ CompiledMethodStorage::ThunkMapKey CompiledMethodStorage::GetThunkMapKey(
     case linker::LinkerPatch::Type::kCallRelative:
       // No custom values.
       break;
-    default:
-      LOG(FATAL) << "Unexpected patch type: " << linker_patch.GetType();
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected patch type: " << linker_patch.GetType(); UNREACHABLE();
   }
   return ThunkMapKey(linker_patch.GetType(), custom_value1, custom_value2);
 }
 
 ArrayRef<const uint8_t> CompiledMethodStorage::GetThunkCode(const linker::LinkerPatch& linker_patch,
-                                                            /*out*/ std::string* debug_name) {
+                                                            /*out*/ std::string*       debug_name) {
   ThunkMapKey key = GetThunkMapKey(linker_patch);
-  MutexLock lock(Thread::Current(), thunk_map_lock_);
-  auto it = thunk_map_.find(key);
+  MutexLock   lock(Thread::Current(), thunk_map_lock_);
+  auto        it = thunk_map_.find(key);
   if (it != thunk_map_.end()) {
     const ThunkMapValue& value = it->second;
     if (debug_name != nullptr) {
@@ -253,14 +246,14 @@ ArrayRef<const uint8_t> CompiledMethodStorage::GetThunkCode(const linker::Linker
 }
 
 void CompiledMethodStorage::SetThunkCode(const linker::LinkerPatch& linker_patch,
-                                         ArrayRef<const uint8_t> code,
-                                         const std::string& debug_name) {
+                                         ArrayRef<const uint8_t>    code,
+                                         const std::string&         debug_name) {
   DCHECK(!code.empty());
-  ThunkMapKey key = GetThunkMapKey(linker_patch);
+  ThunkMapKey                                  key = GetThunkMapKey(linker_patch);
   std::vector<uint8_t, SwapAllocator<uint8_t>> code_copy(
       code.begin(), code.end(), SwapAllocator<uint8_t>(swap_space_.get()));
   ThunkMapValue value(std::move(code_copy), debug_name);
-  MutexLock lock(Thread::Current(), thunk_map_lock_);
+  MutexLock     lock(Thread::Current(), thunk_map_lock_);
   // Note: Multiple threads can try and compile the same thunk, so this may not create a new entry.
   thunk_map_.emplace(key, std::move(value));
 }

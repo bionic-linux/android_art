@@ -256,9 +256,9 @@ bool ParallelMoveResolverWithSwap::IsScratchLocation(Location loc) {
   return false;
 }
 
-int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
-                                                          int register_count,
-                                                          int if_scratch,
+int ParallelMoveResolverWithSwap::AllocateScratchRegister(int   blocked,
+                                                          int   register_count,
+                                                          int   if_scratch,
                                                           bool* spilled) {
   DCHECK_NE(blocked, if_scratch);
   int scratch = -1;
@@ -279,19 +279,15 @@ int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
   return scratch;
 }
 
-
 ParallelMoveResolverWithSwap::ScratchRegisterScope::ScratchRegisterScope(
-    ParallelMoveResolverWithSwap* resolver, int blocked, int if_scratch, int number_of_registers)
-    : resolver_(resolver),
-      reg_(kNoRegister),
-      spilled_(false) {
+    ParallelMoveResolverWithSwap* resolver, int blocked, int if_scratch, int number_of_registers) :
+    resolver_(resolver), reg_(kNoRegister), spilled_(false) {
   reg_ = resolver_->AllocateScratchRegister(blocked, number_of_registers, if_scratch, &spilled_);
 
   if (spilled_) {
     resolver->SpillScratch(reg_);
   }
 }
-
 
 ParallelMoveResolverWithSwap::ScratchRegisterScope::~ScratchRegisterScope() {
   if (spilled_) {
@@ -325,7 +321,7 @@ void ParallelMoveResolverNoSwap::EmitNativeCode(HParallelMove* parallel_move) {
   // from changing the constant sources to stack locations.
   for (size_t i = 0; i < moves_.size(); ++i) {
     MoveOperands* move = moves_[i];
-    Location destination = move->GetDestination();
+    Location      destination = move->GetDestination();
     if (!move->IsEliminated() && !destination.IsStackSlot() && !destination.IsDoubleStackSlot()) {
       Location source = move->GetSource();
       EmitMove(i);
@@ -455,7 +451,7 @@ void ParallelMoveResolverNoSwap::PerformMove(size_t index) {
     // (scratch -> A)     # Add to pending_moves_, blocked by (A -> B).
     Location::Kind kind = source.GetKind();
     DCHECK_NE(kind, Location::kConstant);
-    Location scratch = AllocateScratchLocationFor(kind);
+    Location       scratch = AllocateScratchLocationFor(kind);
     // We only care about the move size.
     DataType::Type type = move->Is64BitMove() ? DataType::Type::kInt64 : DataType::Type::kInt32;
     // Perform (C -> scratch)
@@ -520,8 +516,8 @@ void ParallelMoveResolverNoSwap::UpdateMoveSource(Location from, Location to) {
   }
 }
 
-void ParallelMoveResolverNoSwap::AddPendingMove(Location source,
-                                                Location destination,
+void ParallelMoveResolverNoSwap::AddPendingMove(Location       source,
+                                                Location       destination,
                                                 DataType::Type type) {
   pending_moves_.push_back(new (allocator_) MoveOperands(source, destination, type, nullptr));
 }

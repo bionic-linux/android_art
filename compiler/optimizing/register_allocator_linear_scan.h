@@ -18,8 +18,8 @@
 #define ART_COMPILER_OPTIMIZING_REGISTER_ALLOCATOR_LINEAR_SCAN_H_
 
 #include "arch/instruction_set.h"
-#include "base/scoped_arena_containers.h"
 #include "base/macros.h"
+#include "base/scoped_arena_containers.h"
 #include "register_allocator.h"
 
 namespace art {
@@ -39,8 +39,8 @@ class SsaLivenessAnalysis;
  */
 class RegisterAllocatorLinearScan : public RegisterAllocator {
  public:
-  RegisterAllocatorLinearScan(ScopedArenaAllocator* allocator,
-                              CodeGenerator* codegen,
+  RegisterAllocatorLinearScan(ScopedArenaAllocator*      allocator,
+                              CodeGenerator*             codegen,
                               const SsaLivenessAnalysis& analysis);
   ~RegisterAllocatorLinearScan() override;
 
@@ -56,11 +56,8 @@ class RegisterAllocatorLinearScan : public RegisterAllocator {
   }
 
   size_t GetNumberOfSpillSlots() const {
-    return int_spill_slots_.size()
-        + long_spill_slots_.size()
-        + float_spill_slots_.size()
-        + double_spill_slots_.size()
-        + catch_phi_spill_slots_;
+    return int_spill_slots_.size() + long_spill_slots_.size() + float_spill_slots_.size() +
+           double_spill_slots_.size() + catch_phi_spill_slots_;
   }
 
  private:
@@ -94,14 +91,14 @@ class RegisterAllocatorLinearScan : public RegisterAllocator {
   bool ValidateInternal(bool log_fatal_on_failure) const;
   void DumpInterval(std::ostream& stream, LiveInterval* interval) const;
   void DumpAllIntervals(std::ostream& stream) const;
-  int FindAvailableRegisterPair(size_t* next_use, size_t starting_at) const;
-  int FindAvailableRegister(size_t* next_use, LiveInterval* current) const;
+  int  FindAvailableRegisterPair(size_t* next_use, size_t starting_at) const;
+  int  FindAvailableRegister(size_t* next_use, LiveInterval* current) const;
   bool IsCallerSaveRegister(int reg) const;
 
   // Try splitting an active non-pair or unaligned pair interval at the given `position`.
   // Returns whether it was successful at finding such an interval.
-  bool TrySplitNonPairOrUnalignedPairIntervalAt(size_t position,
-                                                size_t first_register_use,
+  bool TrySplitNonPairOrUnalignedPairIntervalAt(size_t  position,
+                                                size_t  first_register_use,
                                                 size_t* next_use);
 
   // List of intervals for core registers that must be processed, ordered by start

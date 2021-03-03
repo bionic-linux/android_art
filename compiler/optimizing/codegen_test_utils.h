@@ -49,16 +49,17 @@ typedef CodeGenerator* (*CreateCodegenFn)(HGraph*, const CompilerOptions&);
 
 class CodegenTargetConfig {
  public:
-  CodegenTargetConfig(InstructionSet isa, CreateCodegenFn create_codegen)
-      : isa_(isa), create_codegen_(create_codegen) {
+  CodegenTargetConfig(InstructionSet isa, CreateCodegenFn create_codegen) :
+      isa_(isa), create_codegen_(create_codegen) {}
+  InstructionSet GetInstructionSet() const {
+    return isa_;
   }
-  InstructionSet GetInstructionSet() const { return isa_; }
   CodeGenerator* CreateCodeGenerator(HGraph* graph, const CompilerOptions& compiler_options) {
     return create_codegen_(graph, compiler_options);
   }
 
  private:
-  InstructionSet isa_;
+  InstructionSet  isa_;
   CreateCodegenFn create_codegen_;
 };
 
@@ -85,8 +86,8 @@ class CodegenTargetConfig {
 // to just overwrite the code generator.
 class TestCodeGeneratorARMVIXL : public arm::CodeGeneratorARMVIXL {
  public:
-  TestCodeGeneratorARMVIXL(HGraph* graph, const CompilerOptions& compiler_options)
-      : arm::CodeGeneratorARMVIXL(graph, compiler_options) {
+  TestCodeGeneratorARMVIXL(HGraph* graph, const CompilerOptions& compiler_options) :
+      arm::CodeGeneratorARMVIXL(graph, compiler_options) {
     AddAllocatedRegister(Location::RegisterLocation(arm::R6));
     AddAllocatedRegister(Location::RegisterLocation(arm::R7));
   }
@@ -98,7 +99,7 @@ class TestCodeGeneratorARMVIXL : public arm::CodeGeneratorARMVIXL {
     blocked_core_registers_[arm::R7] = false;
   }
 
-  void MaybeGenerateMarkingRegisterCheck(int code ATTRIBUTE_UNUSED,
+  void MaybeGenerateMarkingRegisterCheck(int code          ATTRIBUTE_UNUSED,
                                          Location temp_loc ATTRIBUTE_UNUSED) override {
     // When turned on, the marking register checks in
     // CodeGeneratorARMVIXL::MaybeGenerateMarkingRegisterCheck expects the
@@ -127,10 +128,10 @@ class TestCodeGeneratorARMVIXL : public arm::CodeGeneratorARMVIXL {
 //   function.
 class TestCodeGeneratorARM64 : public arm64::CodeGeneratorARM64 {
  public:
-  TestCodeGeneratorARM64(HGraph* graph, const CompilerOptions& compiler_options)
-      : arm64::CodeGeneratorARM64(graph, compiler_options) {}
+  TestCodeGeneratorARM64(HGraph* graph, const CompilerOptions& compiler_options) :
+      arm64::CodeGeneratorARM64(graph, compiler_options) {}
 
-  void MaybeGenerateMarkingRegisterCheck(int codem ATTRIBUTE_UNUSED,
+  void MaybeGenerateMarkingRegisterCheck(int codem         ATTRIBUTE_UNUSED,
                                          Location temp_loc ATTRIBUTE_UNUSED) override {
     // When turned on, the marking register checks in
     // CodeGeneratorARM64::MaybeGenerateMarkingRegisterCheck expect the
@@ -145,8 +146,8 @@ class TestCodeGeneratorARM64 : public arm64::CodeGeneratorARM64 {
 #ifdef ART_ENABLE_CODEGEN_x86
 class TestCodeGeneratorX86 : public x86::CodeGeneratorX86 {
  public:
-  TestCodeGeneratorX86(HGraph* graph, const CompilerOptions& compiler_options)
-      : x86::CodeGeneratorX86(graph, compiler_options) {
+  TestCodeGeneratorX86(HGraph* graph, const CompilerOptions& compiler_options) :
+      x86::CodeGeneratorX86(graph, compiler_options) {
     // Save edi, we need it for getting enough registers for long multiplication.
     AddAllocatedRegister(Location::RegisterLocation(x86::EDI));
   }
@@ -164,7 +165,7 @@ class TestCodeGeneratorX86 : public x86::CodeGeneratorX86 {
 
 class InternalCodeAllocator : public CodeAllocator {
  public:
-  InternalCodeAllocator() : size_(0) { }
+  InternalCodeAllocator() : size_(0) {}
 
   uint8_t* Allocate(size_t size) override {
     size_ = size;
@@ -172,13 +173,15 @@ class InternalCodeAllocator : public CodeAllocator {
     return memory_.get();
   }
 
-  size_t GetSize() const { return size_; }
+  size_t GetSize() const {
+    return size_;
+  }
   ArrayRef<const uint8_t> GetMemory() const override {
     return ArrayRef<const uint8_t>(memory_.get(), size_);
   }
 
  private:
-  size_t size_;
+  size_t                     size_;
   std::unique_ptr<uint8_t[]> memory_;
 
   DISALLOW_COPY_AND_ASSIGN(InternalCodeAllocator);
@@ -186,8 +189,8 @@ class InternalCodeAllocator : public CodeAllocator {
 
 static bool CanExecuteOnHardware(InstructionSet target_isa) {
   return (target_isa == kRuntimeISA)
-      // Handle the special case of ARM, with two instructions sets (ARM32 and Thumb-2).
-      || (kRuntimeISA == InstructionSet::kArm && target_isa == InstructionSet::kThumb2);
+         // Handle the special case of ARM, with two instructions sets (ARM32 and Thumb-2).
+         || (kRuntimeISA == InstructionSet::kArm && target_isa == InstructionSet::kThumb2);
 }
 
 static bool CanExecute(InstructionSet target_isa) {
@@ -219,7 +222,7 @@ inline int64_t SimulatorExecute<int64_t>(CodeSimulator* simulator, int64_t (*f)(
 template <typename Expected>
 static void VerifyGeneratedCode(InstructionSet target_isa,
                                 Expected (*f)(),
-                                bool has_result,
+                                bool     has_result,
                                 Expected expected) {
   ASSERT_TRUE(CanExecute(target_isa)) << "Target isa is not executable.";
 
@@ -243,17 +246,21 @@ static void VerifyGeneratedCode(InstructionSet target_isa,
 
 template <typename Expected>
 static void Run(const InternalCodeAllocator& allocator,
-                const CodeGenerator& codegen,
-                bool has_result,
-                Expected expected) {
+                const CodeGenerator&         codegen,
+                bool                         has_result,
+                Expected                     expected) {
   InstructionSet target_isa = codegen.GetInstructionSet();
 
   struct CodeHolder : CommonCompilerTestImpl {
    protected:
-    ClassLinker* GetClassLinker() override { return nullptr; }
-    Runtime* GetRuntime() override { return nullptr; }
+    ClassLinker* GetClassLinker() override {
+      return nullptr;
+    }
+    Runtime* GetRuntime() override {
+      return nullptr;
+    }
   };
-  CodeHolder code_holder;
+  CodeHolder  code_holder;
   const void* code_ptr =
       code_holder.MakeExecutable(allocator.GetMemory(), ArrayRef<const uint8_t>(), target_isa);
 
@@ -278,14 +285,14 @@ static void ValidateGraph(HGraph* graph) {
 }
 
 template <typename Expected>
-static void RunCodeNoCheck(CodeGenerator* codegen,
-                           HGraph* graph,
+static void RunCodeNoCheck(CodeGenerator*                      codegen,
+                           HGraph*                             graph,
                            const std::function<void(HGraph*)>& hook_before_codegen,
-                           bool has_result,
-                           Expected expected) {
+                           bool                                has_result,
+                           Expected                            expected) {
   {
     ScopedArenaAllocator local_allocator(graph->GetArenaStack());
-    SsaLivenessAnalysis liveness(graph, codegen, &local_allocator);
+    SsaLivenessAnalysis  liveness(graph, codegen, &local_allocator);
     PrepareForRegisterAllocation(graph, codegen->GetCompilerOptions()).Run();
     liveness.Analyze();
     std::unique_ptr<RegisterAllocator> register_allocator =
@@ -299,29 +306,30 @@ static void RunCodeNoCheck(CodeGenerator* codegen,
 }
 
 template <typename Expected>
-static void RunCode(CodeGenerator* codegen,
-                    HGraph* graph,
+static void RunCode(CodeGenerator*               codegen,
+                    HGraph*                      graph,
                     std::function<void(HGraph*)> hook_before_codegen,
-                    bool has_result,
-                    Expected expected) {
+                    bool                         has_result,
+                    Expected                     expected) {
   ValidateGraph(graph);
   RunCodeNoCheck(codegen, graph, hook_before_codegen, has_result, expected);
 }
 
 template <typename Expected>
-static void RunCode(CodegenTargetConfig target_config,
-                    const CompilerOptions& compiler_options,
-                    HGraph* graph,
+static void RunCode(CodegenTargetConfig          target_config,
+                    const CompilerOptions&       compiler_options,
+                    HGraph*                      graph,
                     std::function<void(HGraph*)> hook_before_codegen,
-                    bool has_result,
-                    Expected expected) {
-  std::unique_ptr<CodeGenerator> codegen(target_config.CreateCodeGenerator(graph,
-                                                                           compiler_options));
+                    bool                         has_result,
+                    Expected                     expected) {
+  std::unique_ptr<CodeGenerator> codegen(
+      target_config.CreateCodeGenerator(graph, compiler_options));
   RunCode(codegen.get(), graph, hook_before_codegen, has_result, expected);
 }
 
 #ifdef ART_ENABLE_CODEGEN_arm
-inline CodeGenerator* create_codegen_arm_vixl32(HGraph* graph, const CompilerOptions& compiler_options) {
+inline CodeGenerator* create_codegen_arm_vixl32(HGraph*                graph,
+                                                const CompilerOptions& compiler_options) {
   return new (graph->GetAllocator()) TestCodeGeneratorARMVIXL(graph, compiler_options);
 }
 #endif
@@ -339,7 +347,8 @@ inline CodeGenerator* create_codegen_x86(HGraph* graph, const CompilerOptions& c
 #endif
 
 #ifdef ART_ENABLE_CODEGEN_x86_64
-inline CodeGenerator* create_codegen_x86_64(HGraph* graph, const CompilerOptions& compiler_options) {
+inline CodeGenerator* create_codegen_x86_64(HGraph*                graph,
+                                            const CompilerOptions& compiler_options) {
   return new (graph->GetAllocator()) x86_64::CodeGeneratorX86_64(graph, compiler_options);
 }
 #endif

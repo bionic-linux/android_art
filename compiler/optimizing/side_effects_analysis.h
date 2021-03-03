@@ -25,13 +25,14 @@ namespace art {
 
 class SideEffectsAnalysis : public HOptimization {
  public:
-  explicit SideEffectsAnalysis(HGraph* graph, const char* pass_name = kSideEffectsAnalysisPassName)
-      : HOptimization(graph, pass_name),
-        graph_(graph),
-        block_effects_(graph->GetBlocks().size(),
-                       graph->GetAllocator()->Adapter(kArenaAllocSideEffectsAnalysis)),
-        loop_effects_(graph->GetBlocks().size(),
-                      graph->GetAllocator()->Adapter(kArenaAllocSideEffectsAnalysis)) {}
+  explicit SideEffectsAnalysis(HGraph*     graph,
+                               const char* pass_name = kSideEffectsAnalysisPassName) :
+      HOptimization(graph, pass_name),
+      graph_(graph),
+      block_effects_(graph->GetBlocks().size(),
+                     graph->GetAllocator()->Adapter(kArenaAllocSideEffectsAnalysis)),
+      loop_effects_(graph->GetBlocks().size(),
+                    graph->GetAllocator()->Adapter(kArenaAllocSideEffectsAnalysis)) {}
 
   SideEffects GetLoopEffects(HBasicBlock* block) const;
   SideEffects GetBlockEffects(HBasicBlock* block) const;
@@ -39,7 +40,9 @@ class SideEffectsAnalysis : public HOptimization {
   // Compute side effects of individual blocks and loops.
   bool Run();
 
-  bool HasRun() const { return has_run_; }
+  bool HasRun() const {
+    return has_run_;
+  }
 
   static constexpr const char* kSideEffectsAnalysisPassName = "side_effects";
 

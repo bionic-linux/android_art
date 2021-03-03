@@ -36,8 +36,9 @@ class IntrinsicLocationsBuilderX86_64 final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST
@@ -49,7 +50,7 @@ class IntrinsicLocationsBuilderX86_64 final : public IntrinsicVisitor {
   bool TryDispatch(HInvoke* invoke);
 
  private:
-  ArenaAllocator* const allocator_;
+  ArenaAllocator* const      allocator_;
   CodeGeneratorX86_64* const codegen_;
 
   DISALLOW_COPY_AND_ASSIGN(IntrinsicLocationsBuilderX86_64);
@@ -61,8 +62,9 @@ class IntrinsicCodeGeneratorX86_64 final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST

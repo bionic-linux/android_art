@@ -156,15 +156,15 @@ class HScheduler;
  */
 class SchedulingNode : public DeletableArenaObject<kArenaAllocScheduler> {
  public:
-  SchedulingNode(HInstruction* instr, ScopedArenaAllocator* allocator, bool is_scheduling_barrier)
-      : latency_(0),
-        internal_latency_(0),
-        critical_path_(0),
-        instruction_(instr),
-        is_scheduling_barrier_(is_scheduling_barrier),
-        data_predecessors_(allocator->Adapter(kArenaAllocScheduler)),
-        other_predecessors_(allocator->Adapter(kArenaAllocScheduler)),
-        num_unscheduled_successors_(0) {
+  SchedulingNode(HInstruction* instr, ScopedArenaAllocator* allocator, bool is_scheduling_barrier) :
+      latency_(0),
+      internal_latency_(0),
+      critical_path_(0),
+      instruction_(instr),
+      is_scheduling_barrier_(is_scheduling_barrier),
+      data_predecessors_(allocator->Adapter(kArenaAllocScheduler)),
+      other_predecessors_(allocator->Adapter(kArenaAllocScheduler)),
+      num_unscheduled_successors_(0) {
     data_predecessors_.reserve(kPreallocatedPredecessors);
   }
 
@@ -208,13 +208,27 @@ class SchedulingNode : public DeletableArenaObject<kArenaAllocScheduler> {
     return num_unscheduled_successors_ != 0;
   }
 
-  HInstruction* GetInstruction() const { return instruction_; }
-  uint32_t GetLatency() const { return latency_; }
-  void SetLatency(uint32_t latency) { latency_ = latency; }
-  uint32_t GetInternalLatency() const { return internal_latency_; }
-  void SetInternalLatency(uint32_t internal_latency) { internal_latency_ = internal_latency; }
-  uint32_t GetCriticalPath() const { return critical_path_; }
-  bool IsSchedulingBarrier() const { return is_scheduling_barrier_; }
+  HInstruction* GetInstruction() const {
+    return instruction_;
+  }
+  uint32_t GetLatency() const {
+    return latency_;
+  }
+  void SetLatency(uint32_t latency) {
+    latency_ = latency;
+  }
+  uint32_t GetInternalLatency() const {
+    return internal_latency_;
+  }
+  void SetInternalLatency(uint32_t internal_latency) {
+    internal_latency_ = internal_latency;
+  }
+  uint32_t GetCriticalPath() const {
+    return critical_path_;
+  }
+  bool IsSchedulingBarrier() const {
+    return is_scheduling_barrier_;
+  }
 
   bool HasDataDependency(const SchedulingNode* node) const {
     return ContainsElement(data_predecessors_, node);
@@ -270,8 +284,8 @@ class SchedulingNode : public DeletableArenaObject<kArenaAllocScheduler> {
  */
 class SideEffectDependencyAnalysis {
  public:
-  explicit SideEffectDependencyAnalysis(const HeapLocationCollector* heap_location_collector)
-      : memory_dependency_analysis_(heap_location_collector) {}
+  explicit SideEffectDependencyAnalysis(const HeapLocationCollector* heap_location_collector) :
+      memory_dependency_analysis_(heap_location_collector) {}
 
   bool HasSideEffectDependency(HInstruction* instr1, HInstruction* instr2) const {
     if (memory_dependency_analysis_.HasMemoryDependency(instr1, instr2)) {
@@ -298,14 +312,14 @@ class SideEffectDependencyAnalysis {
    */
   class MemoryDependencyAnalysis {
    public:
-    explicit MemoryDependencyAnalysis(const HeapLocationCollector* heap_location_collector)
-        : heap_location_collector_(heap_location_collector) {}
+    explicit MemoryDependencyAnalysis(const HeapLocationCollector* heap_location_collector) :
+        heap_location_collector_(heap_location_collector) {}
 
     bool HasMemoryDependency(HInstruction* instr1, HInstruction* instr2) const;
 
    private:
-    bool ArrayAccessMayAlias(HInstruction* instr1, HInstruction* instr2) const;
-    bool FieldAccessMayAlias(const HInstruction* instr1, const HInstruction* instr2) const;
+    bool   ArrayAccessMayAlias(HInstruction* instr1, HInstruction* instr2) const;
+    bool   FieldAccessMayAlias(const HInstruction* instr1, const HInstruction* instr2) const;
     size_t ArrayAccessHeapLocation(HInstruction* instruction) const;
     size_t FieldAccessHeapLocation(const HInstruction* instruction) const;
 
@@ -320,12 +334,12 @@ class SideEffectDependencyAnalysis {
  */
 class SchedulingGraph : public ValueObject {
  public:
-  SchedulingGraph(ScopedArenaAllocator* allocator,
-                  const HeapLocationCollector* heap_location_collector)
-      : allocator_(allocator),
-        contains_scheduling_barrier_(false),
-        nodes_map_(allocator_->Adapter(kArenaAllocScheduler)),
-        side_effect_dependency_analysis_(heap_location_collector) {}
+  SchedulingGraph(ScopedArenaAllocator*        allocator,
+                  const HeapLocationCollector* heap_location_collector) :
+      allocator_(allocator),
+      contains_scheduling_barrier_(false),
+      nodes_map_(allocator_->Adapter(kArenaAllocScheduler)),
+      side_effect_dependency_analysis_(heap_location_collector) {}
 
   SchedulingNode* AddNode(HInstruction* instr, bool is_scheduling_barrier = false) {
     std::unique_ptr<SchedulingNode> node(
@@ -352,16 +366,16 @@ class SchedulingGraph : public ValueObject {
 
   // Dump the scheduling graph, in dot file format, appending it to the file
   // `scheduling_graphs.dot`.
-  void DumpAsDotGraph(const std::string& description,
+  void DumpAsDotGraph(const std::string&                        description,
                       const ScopedArenaVector<SchedulingNode*>& initial_candidates);
 
  protected:
   void AddDependency(SchedulingNode* node, SchedulingNode* dependency, bool is_data_dependency);
   void AddDataDependency(SchedulingNode* node, SchedulingNode* dependency) {
-    AddDependency(node, dependency, /*is_data_dependency*/true);
+    AddDependency(node, dependency, /*is_data_dependency*/ true);
   }
   void AddOtherDependency(SchedulingNode* node, SchedulingNode* dependency) {
-    AddDependency(node, dependency, /*is_data_dependency*/false);
+    AddDependency(node, dependency, /*is_data_dependency*/ false);
   }
 
   // Analyze whether the scheduling node has cross-iteration dependencies which mean it uses
@@ -387,7 +401,7 @@ class SchedulingGraph : public ValueObject {
   void AddDependencies(SchedulingNode* node, bool is_scheduling_barrier = false);
 
   ScopedArenaAllocator* const allocator_;
-  bool contains_scheduling_barrier_;
+  bool                        contains_scheduling_barrier_;
   ScopedArenaHashMap<const HInstruction*, std::unique_ptr<SchedulingNode>> nodes_map_;
   SideEffectDependencyAnalysis side_effect_dependency_analysis_;
 };
@@ -401,15 +415,14 @@ class SchedulingLatencyVisitor : public HGraphDelegateVisitor {
   // This class and its sub-classes will never be used to drive a visit of an
   // `HGraph` but only to visit `HInstructions` one at a time, so we do not need
   // to pass a valid graph to `HGraphDelegateVisitor()`.
-  SchedulingLatencyVisitor()
-      : HGraphDelegateVisitor(nullptr),
-        last_visited_latency_(0),
-        last_visited_internal_latency_(0) {}
+  SchedulingLatencyVisitor() :
+      HGraphDelegateVisitor(nullptr), last_visited_latency_(0), last_visited_internal_latency_(0) {}
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Error visiting " << instruction->DebugName() << ". "
-        "Architecture-specific scheduling latency visitors must handle all instructions"
-        " (potentially by overriding the generic `VisitInstruction()`.";
+    LOG(FATAL) << "Error visiting " << instruction->DebugName()
+               << ". "
+                  "Architecture-specific scheduling latency visitors must handle all instructions"
+                  " (potentially by overriding the generic `VisitInstruction()`.";
     UNREACHABLE();
   }
 
@@ -423,8 +436,12 @@ class SchedulingLatencyVisitor : public HGraphDelegateVisitor {
     Visit(node->GetInstruction());
   }
 
-  uint32_t GetLastVisitedLatency() const { return last_visited_latency_; }
-  uint32_t GetLastVisitedInternalLatency() const { return last_visited_internal_latency_; }
+  uint32_t GetLastVisitedLatency() const {
+    return last_visited_latency_;
+  }
+  uint32_t GetLastVisitedInternalLatency() const {
+    return last_visited_internal_latency_;
+  }
 
  protected:
   // The latency of the most recent visited SchedulingNode.
@@ -437,10 +454,11 @@ class SchedulingLatencyVisitor : public HGraphDelegateVisitor {
 
 class SchedulingNodeSelector : public ArenaObject<kArenaAllocScheduler> {
  public:
-  virtual void Reset() {}
+  virtual void            Reset() {}
   virtual SchedulingNode* PopHighestPriorityNode(ScopedArenaVector<SchedulingNode*>* nodes,
-                                                 const SchedulingGraph& graph) = 0;
+                                                 const SchedulingGraph&              graph) = 0;
   virtual ~SchedulingNodeSelector() {}
+
  protected:
   static void DeleteNodeAtIndex(ScopedArenaVector<SchedulingNode*>* nodes, size_t index) {
     (*nodes)[index] = nodes->back();
@@ -454,15 +472,15 @@ class SchedulingNodeSelector : public ArenaObject<kArenaAllocScheduler> {
 class RandomSchedulingNodeSelector : public SchedulingNodeSelector {
  public:
   RandomSchedulingNodeSelector() : seed_(0) {
-    seed_  = static_cast<uint32_t>(NanoTime());
+    seed_ = static_cast<uint32_t>(NanoTime());
     srand(seed_);
   }
 
   SchedulingNode* PopHighestPriorityNode(ScopedArenaVector<SchedulingNode*>* nodes,
-                                         const SchedulingGraph& graph) override {
+                                         const SchedulingGraph&              graph) override {
     UNUSED(graph);
     DCHECK(!nodes->empty());
-    size_t select = rand_r(&seed_) % nodes->size();
+    size_t          select = rand_r(&seed_) % nodes->size();
     SchedulingNode* select_node = (*nodes)[select];
     DeleteNodeAtIndex(nodes, select);
     return select_node;
@@ -479,16 +497,18 @@ class CriticalPathSchedulingNodeSelector : public SchedulingNodeSelector {
  public:
   CriticalPathSchedulingNodeSelector() : prev_select_(nullptr) {}
 
-  void Reset() override { prev_select_ = nullptr; }
+  void Reset() override {
+    prev_select_ = nullptr;
+  }
   SchedulingNode* PopHighestPriorityNode(ScopedArenaVector<SchedulingNode*>* nodes,
-                                         const SchedulingGraph& graph) override;
+                                         const SchedulingGraph&              graph) override;
 
  protected:
   SchedulingNode* GetHigherPrioritySchedulingNode(SchedulingNode* candidate,
                                                   SchedulingNode* check) const;
 
   SchedulingNode* SelectMaterializedCondition(ScopedArenaVector<SchedulingNode*>* nodes,
-                                              const SchedulingGraph& graph) const;
+                                              const SchedulingGraph&              graph) const;
 
  private:
   const SchedulingNode* prev_select_;
@@ -496,23 +516,25 @@ class CriticalPathSchedulingNodeSelector : public SchedulingNodeSelector {
 
 class HScheduler {
  public:
-  HScheduler(SchedulingLatencyVisitor* latency_visitor, SchedulingNodeSelector* selector)
-      : latency_visitor_(latency_visitor),
-        selector_(selector),
-        only_optimize_loop_blocks_(true),
-        cursor_(nullptr) {}
+  HScheduler(SchedulingLatencyVisitor* latency_visitor, SchedulingNodeSelector* selector) :
+      latency_visitor_(latency_visitor),
+      selector_(selector),
+      only_optimize_loop_blocks_(true),
+      cursor_(nullptr) {}
   virtual ~HScheduler() {}
 
   void Schedule(HGraph* graph);
 
-  void SetOnlyOptimizeLoopBlocks(bool loop_only) { only_optimize_loop_blocks_ = loop_only; }
+  void SetOnlyOptimizeLoopBlocks(bool loop_only) {
+    only_optimize_loop_blocks_ = loop_only;
+  }
 
   // Instructions can not be rescheduled across a scheduling barrier.
   virtual bool IsSchedulingBarrier(const HInstruction* instruction) const;
 
  protected:
   void Schedule(HBasicBlock* block, const HeapLocationCollector* heap_location_collector);
-  void Schedule(SchedulingNode* scheduling_node,
+  void Schedule(SchedulingNode*                               scheduling_node,
                 /*inout*/ ScopedArenaVector<SchedulingNode*>* candidates);
   void Schedule(HInstruction* instruction);
 
@@ -526,7 +548,7 @@ class HScheduler {
   // scheduler_arm64.h for example) if it is safe to schedule it; in this case one *must* also
   // look at/update HScheduler${ARCH}::IsSchedulingBarrier for this instruction.
   virtual bool IsSchedulable(const HInstruction* instruction) const;
-  bool IsSchedulable(const HBasicBlock* block) const;
+  bool         IsSchedulable(const HBasicBlock* block) const;
 
   void CalculateLatency(SchedulingNode* node) {
     latency_visitor_->CalculateLatency(node);
@@ -535,8 +557,8 @@ class HScheduler {
   }
 
   SchedulingLatencyVisitor* const latency_visitor_;
-  SchedulingNodeSelector* const selector_;
-  bool only_optimize_loop_blocks_;
+  SchedulingNodeSelector* const   selector_;
+  bool                            only_optimize_loop_blocks_;
 
   // A pointer indicating where the next instruction to be scheduled will be inserted.
   HInstruction* cursor_;
@@ -547,13 +569,11 @@ class HScheduler {
 
 class HInstructionScheduling : public HOptimization {
  public:
-  HInstructionScheduling(HGraph* graph,
+  HInstructionScheduling(HGraph*        graph,
                          InstructionSet instruction_set,
                          CodeGenerator* cg = nullptr,
-                         const char* name = kInstructionSchedulingPassName)
-      : HOptimization(graph, name),
-        codegen_(cg),
-        instruction_set_(instruction_set) {}
+                         const char*    name = kInstructionSchedulingPassName) :
+      HOptimization(graph, name), codegen_(cg), instruction_set_(instruction_set) {}
 
   bool Run() override {
     return Run(/*only_optimize_loop_blocks*/ true, /*schedule_randomly*/ false);

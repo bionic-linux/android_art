@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-#include "atomic_dex_ref_map-inl.h"
-
 #include <memory>
 
+#include "atomic_dex_ref_map-inl.h"
 #include "common_runtime_test.h"
 #include "dex/dex_file-inl.h"
 #include "dex/method_reference.h"
@@ -28,7 +27,7 @@ namespace art {
 class AtomicDexRefMapTest : public CommonRuntimeTest {};
 
 TEST_F(AtomicDexRefMapTest, RunTests) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess             soa(Thread::Current());
   std::unique_ptr<const DexFile> dex(OpenTestDexFile("Interfaces"));
   ASSERT_TRUE(dex != nullptr);
   using Map = AtomicDexRefMap<MethodReference, int>;
@@ -63,10 +62,10 @@ TEST_F(AtomicDexRefMapTest, RunTests) {
   EXPECT_EQ(value, kInsertValue2);
   // Error case: Incorrect expected value for CAS.
   EXPECT_TRUE(map.Insert(MethodReference(dex.get(), 1), 0, kInsertValue + 1) ==
-      Map::kInsertResultCASFailure);
+              Map::kInsertResultCASFailure);
   // Correctly overwrite the value and verify.
   EXPECT_TRUE(map.Insert(MethodReference(dex.get(), 1), kInsertValue, kInsertValue + 1) ==
-      Map::kInsertResultSuccess);
+              Map::kInsertResultSuccess);
   EXPECT_TRUE(map.Get(MethodReference(dex.get(), 1), &value));
   EXPECT_EQ(value, kInsertValue + 1);
 }

@@ -86,7 +86,7 @@ void PrepareForRegisterAllocation::VisitBoundsCheck(HBoundsCheck* check) {
     ArtMethod* char_at_method = jni::DecodeArtMethod(WellKnownClasses::java_lang_String_charAt);
     if (GetGraph()->GetArtMethod() != char_at_method) {
       ArenaAllocator* allocator = GetGraph()->GetAllocator();
-      HEnvironment* environment = new (allocator) HEnvironment(allocator,
+      HEnvironment*   environment = new (allocator) HEnvironment(allocator,
                                                                /* number_of_vregs= */ 0u,
                                                                char_at_method,
                                                                /* dex_pc= */ dex::kDexNoIndex,
@@ -153,7 +153,7 @@ void PrepareForRegisterAllocation::VisitClinitCheck(HClinitCheck* check) {
   }
 
   HLoadClass* load_class = check->GetLoadClass();
-  bool can_merge_with_load_class = CanMoveClinitCheck(load_class, check);
+  bool        can_merge_with_load_class = CanMoveClinitCheck(load_class, check);
 
   check->ReplaceWith(load_class);
 
@@ -174,7 +174,7 @@ void PrepareForRegisterAllocation::VisitClinitCheck(HClinitCheck* check) {
   }
 }
 
-bool PrepareForRegisterAllocation::CanEmitConditionAt(HCondition* condition,
+bool PrepareForRegisterAllocation::CanEmitConditionAt(HCondition*   condition,
                                                       HInstruction* user) const {
   if (condition->GetNext() != user) {
     return false;
@@ -223,8 +223,7 @@ void PrepareForRegisterAllocation::VisitConstructorFence(HConstructorFence* cons
       // TODO: GetAssociatedAllocation should not care about multiple inputs
       // if we are in prepare_for_register_allocation pass only.
       constructor_fence->GetBlock()->RemoveInstruction(constructor_fence);
-      MaybeRecordStat(stats_,
-                      MethodCompilationStat::kConstructorFenceRemovedPFRA);
+      MaybeRecordStat(stats_, MethodCompilationStat::kConstructorFenceRemovedPFRA);
       return;
     }
 

@@ -23,12 +23,11 @@
 #include "driver/compiler_options.h"
 #include "gtest/gtest.h"
 #include "optimizing/code_generator.h"
+#include "optimizing/optimizing_cfi_test_expected.inc"
 #include "optimizing/optimizing_unit_test.h"
 #include "read_barrier_config.h"
 #include "utils/arm/assembler_arm_vixl.h"
 #include "utils/assembler.h"
-
-#include "optimizing/optimizing_cfi_test_expected.inc"
 
 namespace vixl32 = vixl::aarch32;
 
@@ -42,10 +41,7 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
   // Enable this flag to generate the expected outputs.
   static constexpr bool kGenerateExpected = false;
 
-  OptimizingCFITest()
-      : graph_(nullptr),
-        code_gen_(),
-        blocks_(GetAllocator()->Adapter()) {}
+  OptimizingCFITest() : graph_(nullptr), code_gen_(), blocks_(GetAllocator()->Adapter()) {}
 
   void SetUpFrame(InstructionSet isa) {
     OverrideInstructionSetFeatures(isa, "default");
@@ -60,8 +56,8 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
     code_gen_->GetAssembler()->cfi().SetEnabled(true);
     code_gen_->InitializeCodeGenerationData();
     const int frame_size = 64;
-    int core_reg = 0;
-    int fp_reg = 0;
+    int       core_reg = 0;
+    int       fp_reg = 0;
     for (int i = 0; i < 2; i++) {  // Two registers of each kind.
       for (; core_reg < 32; core_reg++) {
         if (code_gen_->IsCoreCalleeSaveRegister(core_reg)) {
@@ -91,13 +87,13 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
     code_gen_->Finalize(&code_allocator_);
   }
 
-  void Check(InstructionSet isa,
-             const char* isa_str,
+  void Check(InstructionSet              isa,
+             const char*                 isa_str,
              const std::vector<uint8_t>& expected_asm,
              const std::vector<uint8_t>& expected_cfi) {
     // Get the outputs.
     ArrayRef<const uint8_t> actual_asm = code_allocator_.GetMemory();
-    Assembler* opt_asm = code_gen_->GetAssembler();
+    Assembler*              opt_asm = code_gen_->GetAssembler();
     ArrayRef<const uint8_t> actual_cfi(*(opt_asm->cfi().data()));
 
     if (kGenerateExpected) {
@@ -108,8 +104,8 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
     }
   }
 
-  void TestImpl(InstructionSet isa, const char*
-                isa_str,
+  void TestImpl(InstructionSet              isa,
+                const char*                 isa_str,
                 const std::vector<uint8_t>& expected_asm,
                 const std::vector<uint8_t>& expected_cfi) {
     SetUpFrame(isa);
@@ -131,7 +127,9 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
       return memory_.data();
     }
 
-    ArrayRef<const uint8_t> GetMemory() const override { return ArrayRef<const uint8_t>(memory_); }
+    ArrayRef<const uint8_t> GetMemory() const override {
+      return ArrayRef<const uint8_t>(memory_);
+    }
 
    private:
     std::vector<uint8_t> memory_;
@@ -139,21 +137,19 @@ class OptimizingCFITest : public CFITest, public OptimizingUnitTestHelper {
     DISALLOW_COPY_AND_ASSIGN(InternalCodeAllocator);
   };
 
-  HGraph* graph_;
+  HGraph*                        graph_;
   std::unique_ptr<CodeGenerator> code_gen_;
-  ArenaVector<HBasicBlock*> blocks_;
-  InternalCodeAllocator code_allocator_;
+  ArenaVector<HBasicBlock*>      blocks_;
+  InternalCodeAllocator          code_allocator_;
 };
 
-#define TEST_ISA(isa)                                                 \
-  TEST_F(OptimizingCFITest, isa) {                                    \
-    std::vector<uint8_t> expected_asm(                                \
-        expected_asm_##isa,                                           \
-        expected_asm_##isa + arraysize(expected_asm_##isa));          \
-    std::vector<uint8_t> expected_cfi(                                \
-        expected_cfi_##isa,                                           \
-        expected_cfi_##isa + arraysize(expected_cfi_##isa));          \
-    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);  \
+#define TEST_ISA(isa)                                                                      \
+  TEST_F(OptimizingCFITest, isa) {                                                         \
+    std::vector<uint8_t> expected_asm(expected_asm_##isa,                                  \
+                                      expected_asm_##isa + arraysize(expected_asm_##isa)); \
+    std::vector<uint8_t> expected_cfi(expected_cfi_##isa,                                  \
+                                      expected_cfi_##isa + arraysize(expected_cfi_##isa)); \
+    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);                       \
   }
 
 #ifdef ART_ENABLE_CODEGEN_arm
@@ -190,10 +186,10 @@ TEST_F(OptimizingCFITest, kThumb2Adjust) {
       expected_cfi_kThumb2_adjust,
       expected_cfi_kThumb2_adjust + arraysize(expected_cfi_kThumb2_adjust));
   SetUpFrame(InstructionSet::kThumb2);
-#define __ down_cast<arm::ArmVIXLAssembler*>(GetCodeGenerator() \
-    ->GetAssembler())->GetVIXLAssembler()->
+#define __ \
+  down_cast<arm::ArmVIXLAssembler*>(GetCodeGenerator()->GetAssembler())->GetVIXLAssembler()->
   vixl32::Label target;
-  __ CompareAndBranchIfZero(r0, &target);
+  __            CompareAndBranchIfZero(r0, &target);
   // Push the target out of range of CBZ.
   for (size_t i = 0; i != 65; ++i) {
     __ Ldr(r0, vixl32::MemOperand(r0));

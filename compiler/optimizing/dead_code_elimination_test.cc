@@ -18,23 +18,22 @@
 
 #include "driver/compiler_options.h"
 #include "graph_checker.h"
+#include "gtest/gtest.h"
 #include "optimizing_unit_test.h"
 #include "pretty_printer.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
 class DeadCodeEliminationTest : public OptimizingUnitTest {
  protected:
   void TestCode(const std::vector<uint16_t>& data,
-                const std::string& expected_before,
-                const std::string& expected_after);
+                const std::string&           expected_before,
+                const std::string&           expected_after);
 };
 
 void DeadCodeEliminationTest::TestCode(const std::vector<uint16_t>& data,
-                                       const std::string& expected_before,
-                                       const std::string& expected_after) {
+                                       const std::string&           expected_before,
+                                       const std::string&           expected_after) {
   HGraph* graph = CreateCFG(data);
   ASSERT_NE(graph, nullptr);
 
@@ -68,13 +67,15 @@ void DeadCodeEliminationTest::TestCode(const std::vector<uint16_t>& data,
  *     return-void              7.      return
  */
 TEST_F(DeadCodeEliminationTest, AdditionAndConditionalJump) {
-  const std::vector<uint16_t> data = THREE_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 1 << 8 | 1 << 12,
-    Instruction::CONST_4 | 0 << 8 | 0 << 12,
-    Instruction::IF_GEZ | 1 << 8, 3,
-    Instruction::MOVE | 0 << 8 | 1 << 12,
-    Instruction::ADD_INT | 2 << 8, 0 | 1 << 8,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data =
+      THREE_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 1 << 8 | 1 << 12,
+                                Instruction::CONST_4 | 0 << 8 | 0 << 12,
+                                Instruction::IF_GEZ | 1 << 8,
+                                3,
+                                Instruction::MOVE | 0 << 8 | 1 << 12,
+                                Instruction::ADD_INT | 2 << 8,
+                                0 | 1 << 8,
+                                Instruction::RETURN_VOID);
 
   std::string expected_before =
       "BasicBlock 0, succ: 1\n"
@@ -97,11 +98,9 @@ TEST_F(DeadCodeEliminationTest, AdditionAndConditionalJump) {
       "  0: Goto 3\n";
 
   // Expected difference after dead code elimination.
-  diff_t expected_diff = {
-    { "  3: IntConstant [9, 8, 5]\n",  "  3: IntConstant [8, 5]\n" },
-    { "  8: Phi(4, 3) [9]\n",          "  8: Phi(4, 3)\n" },
-    { "  9: Add(8, 3)\n",              removed }
-  };
+  diff_t      expected_diff = {{"  3: IntConstant [9, 8, 5]\n", "  3: IntConstant [8, 5]\n"},
+                          {"  8: Phi(4, 3) [9]\n", "  8: Phi(4, 3)\n"},
+                          {"  9: Add(8, 3)\n", removed}};
   std::string expected_after = Patch(expected_before, expected_diff);
 
   TestCode(data, expected_before, expected_after);
@@ -130,17 +129,21 @@ TEST_F(DeadCodeEliminationTest, AdditionAndConditionalJump) {
  *     return                   13.     return-void
  */
 TEST_F(DeadCodeEliminationTest, AdditionsAndInconditionalJumps) {
-  const std::vector<uint16_t> data = THREE_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 << 8 | 0 << 12,
-    Instruction::CONST_4 | 1 << 8 | 1 << 12,
-    Instruction::ADD_INT | 2 << 8, 0 | 1 << 8,
-    Instruction::GOTO | 4 << 8,
-    Instruction::ADD_INT_LIT16 | 1 << 8 | 0 << 12, 3,
-    Instruction::GOTO | 4 << 8,
-    Instruction::ADD_INT_LIT16 | 0 << 8 | 2 << 12, 2,
-    static_cast<uint16_t>(Instruction::GOTO | 0xFFFFFFFB << 8),
-    Instruction::ADD_INT_LIT16 | 2 << 8 | 1 << 12, 4,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data =
+      THREE_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 << 8 | 0 << 12,
+                                Instruction::CONST_4 | 1 << 8 | 1 << 12,
+                                Instruction::ADD_INT | 2 << 8,
+                                0 | 1 << 8,
+                                Instruction::GOTO | 4 << 8,
+                                Instruction::ADD_INT_LIT16 | 1 << 8 | 0 << 12,
+                                3,
+                                Instruction::GOTO | 4 << 8,
+                                Instruction::ADD_INT_LIT16 | 0 << 8 | 2 << 12,
+                                2,
+                                static_cast<uint16_t>(Instruction::GOTO | 0xFFFFFFFB << 8),
+                                Instruction::ADD_INT_LIT16 | 2 << 8 | 1 << 12,
+                                4,
+                                Instruction::RETURN_VOID);
 
   std::string expected_before =
       "BasicBlock 0, succ: 1\n"

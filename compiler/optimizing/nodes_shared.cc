@@ -17,19 +17,18 @@
 // Note: this include order may seem strange and is against the regular style. However it is the
 //       required order as nodes_shared does not have the right dependency chain and compilation
 //       will fail (as AsType on HInstruction will be defined before the full Instruction).
-#include "nodes.h"
-
 #include "nodes_shared.h"
 
 #include "instruction_simplifier_shared.h"
+#include "nodes.h"
 
 namespace art {
 
 using helpers::CanFitInShifterOperand;
 
-void HDataProcWithShifterOp::GetOpInfoFromInstruction(HInstruction* instruction,
-                                                      /*out*/OpKind* op_kind,
-                                                      /*out*/int* shift_amount) {
+void HDataProcWithShifterOp::GetOpInfoFromInstruction(HInstruction*   instruction,
+                                                      /*out*/ OpKind* op_kind,
+                                                      /*out*/ int*    shift_amount) {
   DCHECK(CanFitInShifterOperand(instruction));
   if (instruction->IsShl()) {
     *op_kind = kLSL;
@@ -44,9 +43,9 @@ void HDataProcWithShifterOp::GetOpInfoFromInstruction(HInstruction* instruction,
     DCHECK(instruction->IsTypeConversion());
     DataType::Type result_type = instruction->AsTypeConversion()->GetResultType();
     DataType::Type input_type = instruction->AsTypeConversion()->GetInputType();
-    int result_size = DataType::Size(result_type);
-    int input_size = DataType::Size(input_type);
-    int min_size = std::min(result_size, input_size);
+    int            result_size = DataType::Size(result_type);
+    int            input_size = DataType::Size(input_type);
+    int            min_size = std::min(result_size, input_size);
     if (result_type == DataType::Type::kInt32 && input_type == DataType::Type::kInt64) {
       // There is actually nothing to do. On ARM the high register from the
       // pair will be ignored. On ARM64 the register will be used as a W
@@ -65,8 +64,7 @@ void HDataProcWithShifterOp::GetOpInfoFromInstruction(HInstruction* instruction,
         case 1: *op_kind = kSXTB; break;
         case 2: *op_kind = kSXTH; break;
         case 4: *op_kind = kSXTW; break;
-        default:
-          LOG(FATAL) << "Unexpected min size " << min_size;
+        default: LOG(FATAL) << "Unexpected min size " << min_size;
       }
     }
   }
@@ -74,18 +72,16 @@ void HDataProcWithShifterOp::GetOpInfoFromInstruction(HInstruction* instruction,
 
 std::ostream& operator<<(std::ostream& os, const HDataProcWithShifterOp::OpKind op) {
   switch (op) {
-    case HDataProcWithShifterOp::kLSL:  return os << "LSL";
-    case HDataProcWithShifterOp::kLSR:  return os << "LSR";
-    case HDataProcWithShifterOp::kASR:  return os << "ASR";
+    case HDataProcWithShifterOp::kLSL: return os << "LSL";
+    case HDataProcWithShifterOp::kLSR: return os << "LSR";
+    case HDataProcWithShifterOp::kASR: return os << "ASR";
     case HDataProcWithShifterOp::kUXTB: return os << "UXTB";
     case HDataProcWithShifterOp::kUXTH: return os << "UXTH";
     case HDataProcWithShifterOp::kUXTW: return os << "UXTW";
     case HDataProcWithShifterOp::kSXTB: return os << "SXTB";
     case HDataProcWithShifterOp::kSXTH: return os << "SXTH";
     case HDataProcWithShifterOp::kSXTW: return os << "SXTW";
-    default:
-      LOG(FATAL) << "Invalid OpKind " << static_cast<int>(op);
-      UNREACHABLE();
+    default: LOG(FATAL) << "Invalid OpKind " << static_cast<int>(op); UNREACHABLE();
   }
 }
 

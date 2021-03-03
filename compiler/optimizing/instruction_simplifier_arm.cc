@@ -33,8 +33,8 @@ namespace arm {
 
 class InstructionSimplifierArmVisitor : public HGraphVisitor {
  public:
-  InstructionSimplifierArmVisitor(HGraph* graph, OptimizingCompilerStats* stats)
-      : HGraphVisitor(graph), stats_(stats) {}
+  InstructionSimplifierArmVisitor(HGraph* graph, OptimizingCompilerStats* stats) :
+      HGraphVisitor(graph), stats_(stats) {}
 
  private:
   void RecordSimplification() {
@@ -83,7 +83,7 @@ class InstructionSimplifierArmVisitor : public HGraphVisitor {
 
 bool InstructionSimplifierArmVisitor::TryMergeIntoShifterOperand(HInstruction* use,
                                                                  HInstruction* bitfield_op,
-                                                                 bool do_merge) {
+                                                                 bool          do_merge) {
   DCHECK(HasShifterOperand(use, InstructionSet::kArm));
   DCHECK(use->IsBinaryOperation());
   DCHECK(CanFitInShifterOperand(bitfield_op));
@@ -105,7 +105,7 @@ bool InstructionSimplifierArmVisitor::TryMergeIntoShifterOperand(HInstruction* u
     return false;
   }
 
-  bool is_commutative = use->AsBinaryOperation()->IsCommutative();
+  bool          is_commutative = use->AsBinaryOperation()->IsCommutative();
   HInstruction* other_input;
   if (bitfield_op == right) {
     other_input = left;
@@ -118,31 +118,25 @@ bool InstructionSimplifierArmVisitor::TryMergeIntoShifterOperand(HInstruction* u
   }
 
   HDataProcWithShifterOp::OpKind op_kind;
-  int shift_amount = 0;
+  int                            shift_amount = 0;
 
   HDataProcWithShifterOp::GetOpInfoFromInstruction(bitfield_op, &op_kind, &shift_amount);
-  shift_amount &= use->GetType() == DataType::Type::kInt32
-      ? kMaxIntShiftDistance
-      : kMaxLongShiftDistance;
+  shift_amount &=
+      use->GetType() == DataType::Type::kInt32 ? kMaxIntShiftDistance : kMaxLongShiftDistance;
 
   if (HDataProcWithShifterOp::IsExtensionOp(op_kind)) {
     if (!use->IsAdd() && (!use->IsSub() || use->GetType() != DataType::Type::kInt64)) {
       return false;
     }
-  // Shift by 1 is a special case that results in the same number and type of instructions
-  // as this simplification, but potentially shorter code.
+    // Shift by 1 is a special case that results in the same number and type of instructions
+    // as this simplification, but potentially shorter code.
   } else if (type == DataType::Type::kInt64 && shift_amount == 1) {
     return false;
   }
 
   if (do_merge) {
-    HDataProcWithShifterOp* alu_with_op =
-        new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(use,
-                                                                other_input,
-                                                                bitfield_op->InputAt(0),
-                                                                op_kind,
-                                                                shift_amount,
-                                                                use->GetDexPc());
+    HDataProcWithShifterOp* alu_with_op = new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(
+        use, other_input, bitfield_op->InputAt(0), op_kind, shift_amount, use->GetDexPc());
     use->GetBlock()->ReplaceAndRemoveInstructionWith(use, alu_with_op);
     if (bitfield_op->GetUses().empty()) {
       bitfield_op->GetBlock()->RemoveInstruction(bitfield_op);
@@ -193,7 +187,7 @@ void InstructionSimplifierArmVisitor::VisitAnd(HAnd* instruction) {
 }
 
 void InstructionSimplifierArmVisitor::VisitArrayGet(HArrayGet* instruction) {
-  size_t data_offset = CodeGenerator::GetArrayDataOffset(instruction);
+  size_t         data_offset = CodeGenerator::GetArrayDataOffset(instruction);
   DataType::Type type = instruction->GetType();
 
   // TODO: Implement reading (length + compression) for String compression feature from
@@ -209,39 +203,33 @@ void InstructionSimplifierArmVisitor::VisitArrayGet(HArrayGet* instruction) {
     return;
   }
 
-  if (type == DataType::Type::kInt64
-      || type == DataType::Type::kFloat32
-      || type == DataType::Type::kFloat64) {
+  if (type == DataType::Type::kInt64 || type == DataType::Type::kFloat32 ||
+      type == DataType::Type::kFloat64) {
     // T32 doesn't support ShiftedRegOffset mem address mode for these types
     // to enable optimization.
     return;
   }
 
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }
 
 void InstructionSimplifierArmVisitor::VisitArraySet(HArraySet* instruction) {
-  size_t access_size = DataType::Size(instruction->GetComponentType());
-  size_t data_offset = mirror::Array::DataOffset(access_size).Uint32Value();
+  size_t         access_size = DataType::Size(instruction->GetComponentType());
+  size_t         data_offset = mirror::Array::DataOffset(access_size).Uint32Value();
   DataType::Type type = instruction->GetComponentType();
 
-  if (type == DataType::Type::kInt64
-      || type == DataType::Type::kFloat32
-      || type == DataType::Type::kFloat64) {
+  if (type == DataType::Type::kInt64 || type == DataType::Type::kFloat32 ||
+      type == DataType::Type::kFloat64) {
     // T32 doesn't support ShiftedRegOffset mem address mode for these types
     // to enable optimization.
     return;
   }
 
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }

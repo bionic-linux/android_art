@@ -17,9 +17,9 @@
 #ifndef ART_COMPILER_UTILS_ASSEMBLER_H_
 #define ART_COMPILER_UTILS_ASSEMBLER_H_
 
-#include <vector>
-
 #include <android-base/logging.h>
+
+#include <vector>
 
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
@@ -52,13 +52,21 @@ class AssemblerFixup {
 
  private:
   AssemblerFixup* previous_;
-  int position_;
+  int             position_;
 
-  AssemblerFixup* previous() const { return previous_; }
-  void set_previous(AssemblerFixup* previous_in) { previous_ = previous_in; }
+  AssemblerFixup* previous() const {
+    return previous_;
+  }
+  void set_previous(AssemblerFixup* previous_in) {
+    previous_ = previous_in;
+  }
 
-  int position() const { return position_; }
-  void set_position(int position_in) { position_ = position_in; }
+  int position() const {
+    return position_;
+  }
+  void set_position(int position_in) {
+    position_ = position_in;
+  }
 
   friend class AssemblerBuffer;
 };
@@ -69,18 +77,22 @@ class SlowPath : public DeletableArenaObject<kArenaAllocAssembler> {
   SlowPath() : next_(nullptr) {}
   virtual ~SlowPath() {}
 
-  Label* Continuation() { return &continuation_; }
-  Label* Entry() { return &entry_; }
+  Label* Continuation() {
+    return &continuation_;
+  }
+  Label* Entry() {
+    return &entry_;
+  }
   // Generate code for slow path
-  virtual void Emit(Assembler *sp_asm) = 0;
+  virtual void Emit(Assembler* sp_asm) = 0;
 
  protected:
   // Entry branched to by fast path
-  Label entry_;
+  Label     entry_;
   // Optional continuation that is branched to at the end of the slow path
-  Label continuation_;
+  Label     continuation_;
   // Next in linked list of slow paths
-  SlowPath *next_;
+  SlowPath* next_;
 
  private:
   friend class AssemblerBuffer;
@@ -97,18 +109,21 @@ class AssemblerBuffer {
   }
 
   // Basic support for emitting, loading, and storing.
-  template<typename T> void Emit(T value) {
+  template <typename T>
+  void Emit(T value) {
     CHECK(HasEnsuredCapacity());
     *reinterpret_cast<T*>(cursor_) = value;
     cursor_ += sizeof(T);
   }
 
-  template<typename T> T Load(size_t position) {
+  template <typename T>
+  T Load(size_t position) {
     CHECK_LE(position, Size() - static_cast<int>(sizeof(T)));
     return *reinterpret_cast<T*>(contents_ + position);
   }
 
-  template<typename T> void Store(size_t position, T value) {
+  template <typename T>
+  void Store(size_t position, T value) {
     CHECK_LE(position, Size() - static_cast<int>(sizeof(T)));
     *reinterpret_cast<T*>(contents_ + position) = value;
   }
@@ -139,7 +154,7 @@ class AssemblerBuffer {
       slow_path_ = slowpath;
     } else {
       SlowPath* cur = slow_path_;
-      for ( ; cur->next_ != nullptr ; cur = cur->next_) {}
+      for (; cur->next_ != nullptr; cur = cur->next_) {}
       cur->next_ = slowpath;
     }
   }
@@ -148,7 +163,7 @@ class AssemblerBuffer {
     SlowPath* cur = slow_path_;
     SlowPath* next = nullptr;
     slow_path_ = nullptr;
-    for ( ; cur != nullptr ; cur = next) {
+    for (; cur != nullptr; cur = next) {
       cur->Emit(sp_asm);
       next = cur->next_;
       delete cur;
@@ -161,7 +176,9 @@ class AssemblerBuffer {
     return cursor_ - contents_;
   }
 
-  uint8_t* contents() const { return contents_; }
+  uint8_t* contents() const {
+    return contents_;
+  }
 
   // Copy the assembled instructions into the specified memory block
   // and apply all fixups.
@@ -208,13 +225,17 @@ class AssemblerBuffer {
 
    private:
     AssemblerBuffer* buffer_;
-    int gap_;
+    int              gap_;
 
-    int ComputeGap() { return buffer_->Capacity() - buffer_->Size(); }
+    int ComputeGap() {
+      return buffer_->Capacity() - buffer_->Size();
+    }
   };
 
   bool has_ensured_capacity_;
-  bool HasEnsuredCapacity() const { return has_ensured_capacity_; }
+  bool HasEnsuredCapacity() const {
+    return has_ensured_capacity_;
+  }
 
 #else
 
@@ -230,12 +251,16 @@ class AssemblerBuffer {
   // When building the C++ tests, assertion code is enabled. To allow
   // asserting that the user of the assembler buffer has ensured the
   // capacity needed for emitting, we add a placeholder method in non-debug mode.
-  bool HasEnsuredCapacity() const { return true; }
+  bool HasEnsuredCapacity() const {
+    return true;
+  }
 
 #endif
 
   // Returns the position in the instruction stream.
-  int GetPosition() { return  cursor_ - contents_; }
+  int GetPosition() {
+    return cursor_ - contents_;
+  }
 
   size_t Capacity() const {
     CHECK_GE(limit_, contents_);
@@ -253,10 +278,10 @@ class AssemblerBuffer {
   static const int kMinimumGap = 32;
 
   ArenaAllocator* const allocator_;
-  uint8_t* contents_;
-  uint8_t* cursor_;
-  uint8_t* limit_;
-  AssemblerFixup* fixup_;
+  uint8_t*              contents_;
+  uint8_t*              cursor_;
+  uint8_t*              limit_;
+  AssemblerFixup*       fixup_;
 #ifndef NDEBUG
   bool fixups_processed_;
 #endif
@@ -264,8 +289,12 @@ class AssemblerBuffer {
   // Head of linked list of slow paths
   SlowPath* slow_path_;
 
-  uint8_t* cursor() const { return cursor_; }
-  uint8_t* limit() const { return limit_; }
+  uint8_t* cursor() const {
+    return cursor_;
+  }
+  uint8_t* limit() const {
+    return limit_;
+  }
 
   // Process the fixup chain starting at the given fixup. The offset is
   // non-zero for fixups in the body if the preamble is non-empty.
@@ -282,8 +311,7 @@ class AssemblerBuffer {
 
 // The purpose of this class is to ensure that we do not have to explicitly
 // call the AdvancePC method (which is good for convenience and correctness).
-class DebugFrameOpCodeWriterForAssembler final
-    : public dwarf::DebugFrameOpCodeWriter<> {
+class DebugFrameOpCodeWriterForAssembler final : public dwarf::DebugFrameOpCodeWriter<> {
  public:
   struct DelayedAdvancePC {
     uint32_t stream_pos;
@@ -293,12 +321,11 @@ class DebugFrameOpCodeWriterForAssembler final
   // This method is called the by the opcode writers.
   void ImplicitlyAdvancePC() final;
 
-  explicit DebugFrameOpCodeWriterForAssembler(Assembler* buffer)
-      : dwarf::DebugFrameOpCodeWriter<>(/* enabled= */ false),
-        assembler_(buffer),
-        delay_emitting_advance_pc_(false),
-        delayed_advance_pcs_() {
-  }
+  explicit DebugFrameOpCodeWriterForAssembler(Assembler* buffer) :
+      dwarf::DebugFrameOpCodeWriter<>(/* enabled= */ false),
+      assembler_(buffer),
+      delay_emitting_advance_pc_(false),
+      delayed_advance_pcs_() {}
 
   ~DebugFrameOpCodeWriterForAssembler() {
     DCHECK(delayed_advance_pcs_.empty());
@@ -349,19 +376,25 @@ class DebugFrameOpCodeWriterForAssembler final
   }
 
  private:
-  Assembler* assembler_;
-  bool delay_emitting_advance_pc_;
+  Assembler*                    assembler_;
+  bool                          delay_emitting_advance_pc_;
   std::vector<DelayedAdvancePC> delayed_advance_pcs_;
 };
 
 class Assembler : public DeletableArenaObject<kArenaAllocAssembler> {
  public:
   // Finalize the code; emit slow paths, fixup branches, add literal pool, etc.
-  virtual void FinalizeCode() { buffer_.EmitSlowPaths(this); }
+  virtual void FinalizeCode() {
+    buffer_.EmitSlowPaths(this);
+  }
 
   // Size of generated code
-  virtual size_t CodeSize() const { return buffer_.Size(); }
-  virtual const uint8_t* CodeBufferBaseAddress() const { return buffer_.contents(); }
+  virtual size_t CodeSize() const {
+    return buffer_.Size();
+  }
+  virtual const uint8_t* CodeBufferBaseAddress() const {
+    return buffer_.contents();
+  }
   // CodePosition() is a non-const method similar to CodeSize(), which is used to
   // record positions within the code buffer for the purpose of signal handling
   // (stack overflow checks and implicit null checks may trigger signals and the
@@ -372,7 +405,9 @@ class Assembler : public DeletableArenaObject<kArenaAllocAssembler> {
   // signals from instructions in delay slots is a bit problematic and should be
   // avoided.
   // TODO: Re-evaluate whether we still need this now that MIPS support has been removed.
-  virtual size_t CodePosition() { return CodeSize(); }
+  virtual size_t CodePosition() {
+    return CodeSize();
+  }
 
   // Copy instructions out of assembly buffer into the given region of memory
   virtual void FinalizeInstructions(const MemoryRegion& region) {
@@ -391,7 +426,9 @@ class Assembler : public DeletableArenaObject<kArenaAllocAssembler> {
    * @brief Buffer of DWARF's Call Frame Information opcodes.
    * @details It is used by debuggers and other tools to unwind the call stack.
    */
-  DebugFrameOpCodeWriterForAssembler& cfi() { return cfi_; }
+  DebugFrameOpCodeWriterForAssembler& cfi() {
+    return cfi_;
+  }
 
   ArenaAllocator* GetAllocator() {
     return buffer_.GetAllocator();

@@ -25,8 +25,8 @@ namespace arm64 {
 
 class InstructionSimplifierArm64 : public HOptimization {
  public:
-  InstructionSimplifierArm64(HGraph* graph, OptimizingCompilerStats* stats)
-      : HOptimization(graph, kInstructionSimplifierArm64PassName, stats) {}
+  InstructionSimplifierArm64(HGraph* graph, OptimizingCompilerStats* stats) :
+      HOptimization(graph, kInstructionSimplifierArm64PassName, stats) {}
 
   static constexpr const char* kInstructionSimplifierArm64PassName = "instruction_simplifier_arm64";
 

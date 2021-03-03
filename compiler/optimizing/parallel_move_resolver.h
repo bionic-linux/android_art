@@ -31,8 +31,8 @@ class MoveOperands;
 // have their own subclass that implements corresponding virtual functions.
 class ParallelMoveResolver : public ValueObject {
  public:
-  explicit ParallelMoveResolver(ArenaAllocator* allocator)
-      : moves_(allocator->Adapter(kArenaAllocParallelMoveResolver)) {
+  explicit ParallelMoveResolver(ArenaAllocator* allocator) :
+      moves_(allocator->Adapter(kArenaAllocParallelMoveResolver)) {
     moves_.reserve(32);
   }
   virtual ~ParallelMoveResolver() {}
@@ -53,8 +53,8 @@ class ParallelMoveResolver : public ValueObject {
 // This helper class uses swap to resolve dependencies and may emit swap.
 class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
  public:
-  explicit ParallelMoveResolverWithSwap(ArenaAllocator* allocator)
-      : ParallelMoveResolver(allocator) {}
+  explicit ParallelMoveResolverWithSwap(ArenaAllocator* allocator) :
+      ParallelMoveResolver(allocator) {}
   virtual ~ParallelMoveResolverWithSwap() {}
 
   // Resolve a set of parallel moves, emitting assembler instructions.
@@ -64,18 +64,22 @@ class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
   class ScratchRegisterScope : public ValueObject {
    public:
     ScratchRegisterScope(ParallelMoveResolverWithSwap* resolver,
-                         int blocked,
-                         int if_scratch,
-                         int number_of_registers);
+                         int                           blocked,
+                         int                           if_scratch,
+                         int                           number_of_registers);
     ~ScratchRegisterScope();
 
-    int GetRegister() const { return reg_; }
-    bool IsSpilled() const { return spilled_; }
+    int GetRegister() const {
+      return reg_;
+    }
+    bool IsSpilled() const {
+      return spilled_;
+    }
 
    private:
     ParallelMoveResolverWithSwap* resolver_;
-    int reg_;
-    bool spilled_;
+    int                           reg_;
+    bool                          spilled_;
   };
 
   // Return true if the location can be scratched.
@@ -122,11 +126,11 @@ class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
 // of dependency cycles and does not care about the register layout.
 class ParallelMoveResolverNoSwap : public ParallelMoveResolver {
  public:
-  explicit ParallelMoveResolverNoSwap(ArenaAllocator* allocator)
-      : ParallelMoveResolver(allocator),
-        scratches_(allocator->Adapter(kArenaAllocParallelMoveResolver)),
-        pending_moves_(allocator->Adapter(kArenaAllocParallelMoveResolver)),
-        allocator_(allocator) {
+  explicit ParallelMoveResolverNoSwap(ArenaAllocator* allocator) :
+      ParallelMoveResolver(allocator),
+      scratches_(allocator->Adapter(kArenaAllocParallelMoveResolver)),
+      pending_moves_(allocator->Adapter(kArenaAllocParallelMoveResolver)),
+      allocator_(allocator) {
     scratches_.reserve(32);
     pending_moves_.reserve(8);
   }

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
+#include <math.h>
+
 #include <memory>
 #include <type_traits>
-
-#include <math.h>
 
 #include "art_method-inl.h"
 #include "base/bit_utils.h"
@@ -72,16 +72,16 @@ extern "C" JNIEXPORT jint JNICALL Java_MyClassNatives_sbar_1Critical(jint count)
 namespace art {
 
 enum class JniKind {
-  kNormal,      // Regular kind of un-annotated natives.
-  kFast,        // Native method annotated with @FastNative.
-  kCritical,    // Native method annotated with @CriticalNative.
-  kCount        // How many different types of JNIs we can have.
+  kNormal,    // Regular kind of un-annotated natives.
+  kFast,      // Native method annotated with @FastNative.
+  kCritical,  // Native method annotated with @CriticalNative.
+  kCount      // How many different types of JNIs we can have.
 };
 
 // Used to initialize array sizes that want to have different state per current jni.
 static constexpr size_t kJniKindCount = static_cast<size_t>(JniKind::kCount);
 // Do not use directly, use the helpers instead.
-uint32_t gCurrentJni = static_cast<uint32_t>(JniKind::kNormal);
+uint32_t                gCurrentJni = static_cast<uint32_t>(JniKind::kNormal);
 
 // Is the current native method under test @CriticalNative?
 static bool IsCurrentJniCritical() {
@@ -115,9 +115,7 @@ static std::string CurrentJniStringSuffix() {
     case static_cast<uint32_t>(JniKind::kCritical): {
       return "_Critical";
     }
-    default:
-      LOG(FATAL) << "Invalid current JNI value: " << gCurrentJni;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Invalid current JNI value: " << gCurrentJni; UNREACHABLE();
   }
 }
 
@@ -126,18 +124,18 @@ static std::string CurrentJniStringSuffix() {
 // However to avoid duplicating every single test method we have a templated handler
 // that inserts fake parameters (0,1) to make it compatible with a regular JNI handler.
 static JNIEnv* const kCriticalFakeJniEnv = reinterpret_cast<JNIEnv*>(0xDEADFEAD);
-static jclass const kCriticalFakeJniClass = reinterpret_cast<jclass>(0xBEAFBEEF);
+static jclass const  kCriticalFakeJniClass = reinterpret_cast<jclass>(0xBEAFBEEF);
 
 // Type trait. Returns true if "T" is the same type as one of the types in Args...
 //
 // Logically equal to OR(std::same_type<T, U> for all U in Args).
-template <typename T, typename ... Args>
+template <typename T, typename... Args>
 struct is_any_of;
 
-template <typename T, typename U, typename ... Args>
-struct is_any_of<T, U, Args ...> {
+template <typename T, typename U, typename... Args>
+struct is_any_of<T, U, Args...> {
   using value_type = bool;
-  static constexpr const bool value = std::is_same<T, U>::value || is_any_of<T, Args ...>::value;
+  static constexpr const bool value = std::is_same<T, U>::value || is_any_of<T, Args...>::value;
 };
 
 template <typename T, typename U>
@@ -151,9 +149,17 @@ template <typename T>
 struct jni_type_traits {
   // True if type T ends up holding an object reference. False otherwise.
   // (Non-JNI types will also be false).
-  static constexpr const bool is_ref =
-      is_any_of<T, jclass, jobject, jstring, jobjectArray, jintArray,
-                jcharArray, jfloatArray, jshortArray, jdoubleArray, jlongArray>::value;
+  static constexpr const bool is_ref = is_any_of<T,
+                                                 jclass,
+                                                 jobject,
+                                                 jstring,
+                                                 jobjectArray,
+                                                 jintArray,
+                                                 jcharArray,
+                                                 jfloatArray,
+                                                 jshortArray,
+                                                 jdoubleArray,
+                                                 jlongArray>::value;
 };
 
 // Base case: No parameters = 0 refs.
@@ -163,23 +169,21 @@ size_t count_nonnull_refs_helper() {
 
 // SFINAE for ref types. 1 if non-null, 0 otherwise.
 template <typename T>
-size_t count_nonnull_refs_single_helper(T arg,
-                                        typename std::enable_if<jni_type_traits<T>::is_ref>::type*
-                                            = nullptr) {
+size_t count_nonnull_refs_single_helper(
+    T arg, typename std::enable_if<jni_type_traits<T>::is_ref>::type* = nullptr) {
   return ((arg == NULL) ? 0 : 1);
 }
 
 // SFINAE for non-ref-types. Always 0.
 template <typename T>
-size_t count_nonnull_refs_single_helper(T arg ATTRIBUTE_UNUSED,
-                                        typename std::enable_if<!jni_type_traits<T>::is_ref>::type*
-                                            = nullptr) {
+size_t count_nonnull_refs_single_helper(
+    T arg ATTRIBUTE_UNUSED, typename std::enable_if<!jni_type_traits<T>::is_ref>::type* = nullptr) {
   return 0;
 }
 
 // Recursive case.
-template <typename T, typename ... Args>
-size_t count_nonnull_refs_helper(T arg, Args ... args) {
+template <typename T, typename... Args>
+size_t count_nonnull_refs_helper(T arg, Args... args) {
   return count_nonnull_refs_single_helper(arg) + count_nonnull_refs_helper(args...);
 }
 
@@ -189,20 +193,20 @@ size_t count_nonnull_refs_helper(T arg, Args ... args) {
 // For example given (jobject, jint, jclass) we can get (2) if both #0/#2 are non-null,
 // (1) if either #0/#2 are null but not both, and (0) if all parameters are null.
 // Primitive parameters (including JNIEnv*, if present) are ignored.
-template <typename ... Args>
-size_t count_nonnull_refs(Args ... args) {
+template <typename... Args>
+size_t count_nonnull_refs(Args... args) {
   return count_nonnull_refs_helper(args...);
 }
 
 template <typename T, T* fn>
 struct remove_extra_parameters_helper;
 
-template <typename R, typename Arg1, typename Arg2, typename ... Args, R (*fn)(Arg1, Arg2, Args...)>
+template <typename R, typename Arg1, typename Arg2, typename... Args, R (*fn)(Arg1, Arg2, Args...)>
 struct remove_extra_parameters_helper<R(Arg1, Arg2, Args...), fn> {
   // Note: Do not use Args&& here to maintain C-style parameter types.
   static R apply(Args... args) {
     JNIEnv* env = kCriticalFakeJniEnv;
-    jclass kls = kCriticalFakeJniClass;
+    jclass  kls = kCriticalFakeJniClass;
     return fn(env, kls, args...);
   }
 };
@@ -230,16 +234,15 @@ class JniCompilerTest : public CommonCompilerTest {
   }
 
  private:
-  void CompileForTest(jobject class_loader,
-                      bool direct,
+  void CompileForTest(jobject     class_loader,
+                      bool        direct,
                       const char* method_name,
                       const char* method_sig) {
-    ScopedObjectAccess soa(Thread::Current());
-    StackHandleScope<2> hs(soa.Self());
-    Handle<mirror::ClassLoader> loader(
-        hs.NewHandle(soa.Decode<mirror::ClassLoader>(class_loader)));
+    ScopedObjectAccess          soa(Thread::Current());
+    StackHandleScope<2>         hs(soa.Self());
+    Handle<mirror::ClassLoader> loader(hs.NewHandle(soa.Decode<mirror::ClassLoader>(class_loader)));
     // Compile the native method before starting the runtime
-    Handle<mirror::Class> c =
+    Handle<mirror::Class>       c =
         hs.NewHandle(class_linker_->FindClass(soa.Self(), "LMyClassNatives;", loader));
     const auto pointer_size = class_linker_->GetImagePointerSize();
     ArtMethod* method = c->FindClassMethod(method_name, method_sig, pointer_size);
@@ -249,8 +252,8 @@ class JniCompilerTest : public CommonCompilerTest {
       // Class initialization could replace the entrypoint, so force
       // the initialization before we set up the entrypoint below.
       class_linker_->EnsureInitialized(
-          soa.Self(), c, /*can_init_fields=*/ true, /*can_init_parents=*/ true);
-      class_linker_->MakeInitializedClassesVisiblyInitialized(soa.Self(), /*wait=*/ true);
+          soa.Self(), c, /*can_init_fields=*/true, /*can_init_parents=*/true);
+      class_linker_->MakeInitializedClassesVisiblyInitialized(soa.Self(), /*wait=*/true);
     }
     if (check_generic_jni_) {
       method->SetEntryPointFromQuickCompiledCode(class_linker_->GetRuntimeQuickGenericJniStub());
@@ -265,8 +268,8 @@ class JniCompilerTest : public CommonCompilerTest {
   }
 
  protected:
-  void CompileForTestWithCurrentJni(jobject class_loader,
-                                    bool direct,
+  void CompileForTestWithCurrentJni(jobject     class_loader,
+                                    bool        direct,
                                     const char* method_name_orig,
                                     const char* method_sig) {
     // Append the JNI kind to the method name, so that we automatically get the
@@ -277,10 +280,10 @@ class JniCompilerTest : public CommonCompilerTest {
     CompileForTest(class_loader, direct, method_name, method_sig);
   }
 
-  void SetUpForTest(bool direct,
+  void SetUpForTest(bool        direct,
                     const char* method_name_orig,
                     const char* method_sig,
-                    void* native_fnptr) {
+                    void*       native_fnptr) {
     // Append the JNI kind to the method name, so that we automatically get the
     // fast or critical versions of the same method.
     std::string method_name_str = std::string(method_name_orig) + CurrentJniStringSuffix();
@@ -315,12 +318,12 @@ class JniCompilerTest : public CommonCompilerTest {
     // sets the JNI entrypoint rather than leaving it as null (this test pretends to be an
     // AOT compiler and therefore the ClassLinker skips entrypoint initialization). Even
     // if the ClassLinker initialized it with a stub, we would not want to test that here.
-    class_linker_->MakeInitializedClassesVisiblyInitialized(Thread::Current(), /*wait=*/ true);
+    class_linker_->MakeInitializedClassesVisiblyInitialized(Thread::Current(), /*wait=*/true);
 
     if (native_fnptr != nullptr) {
-      JNINativeMethod methods[] = { { method_name, method_sig, native_fnptr } };
+      JNINativeMethod methods[] = {{method_name, method_sig, native_fnptr}};
       ASSERT_EQ(JNI_OK, env_->RegisterNatives(jklass_, methods, 1))
-              << method_name << " " << method_sig;
+          << method_name << " " << method_sig;
     } else {
       env_->UnregisterNatives(jklass_);
     }
@@ -332,7 +335,7 @@ class JniCompilerTest : public CommonCompilerTest {
 
  public:
   // Available as statics so our JNI handlers can access these.
-  static jclass jklass_;
+  static jclass  jklass_;
   static jobject jobj_;
   static jobject class_loader_;
 
@@ -384,7 +387,7 @@ class JniCompilerTest : public CommonCompilerTest {
   void FastNativeImpl();
   void CriticalNativeImpl();
 
-  JNIEnv* env_;
+  JNIEnv*   env_;
   jmethodID jmethod_;
 
  private:
@@ -411,38 +414,35 @@ class JniCompilerTest : public CommonCompilerTest {
     }
   };
 
-  static uint32_t JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self);
-  static void JniMethodEndSynchronizedOverride(uint32_t saved_local_ref_cookie,
-                                               jobject locked,
-                                               Thread* self);
+  static uint32_t        JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self);
+  static void            JniMethodEndSynchronizedOverride(uint32_t saved_local_ref_cookie,
+                                                          jobject  locked,
+                                                          Thread*  self);
   static mirror::Object* JniMethodEndWithReferenceSynchronizedOverride(
-      jobject result,
-      uint32_t saved_local_ref_cookie,
-      jobject locked,
-      Thread* self);
+      jobject result, uint32_t saved_local_ref_cookie, jobject locked, Thread* self);
 
   using StartSynchronizedType = uint32_t (*)(jobject, Thread*);
   using EndSynchronizedType = void (*)(uint32_t, jobject, Thread*);
   using EndWithReferenceSynchronizedType = mirror::Object* (*)(jobject, uint32_t, jobject, Thread*);
 
-  static StartSynchronizedType jni_method_start_synchronized_original_;
-  static EndSynchronizedType jni_method_end_synchronized_original_;
+  static StartSynchronizedType            jni_method_start_synchronized_original_;
+  static EndSynchronizedType              jni_method_end_synchronized_original_;
   static EndWithReferenceSynchronizedType jni_method_end_with_reference_synchronized_original_;
-  static uint32_t saved_local_ref_cookie_;
-  static jobject locked_object_;
+  static uint32_t                         saved_local_ref_cookie_;
+  static jobject                          locked_object_;
 
   bool check_generic_jni_;
 };
 
-jclass JniCompilerTest::jklass_;
-jobject JniCompilerTest::jobj_;
-jobject JniCompilerTest::class_loader_;
+jclass                                 JniCompilerTest::jklass_;
+jobject                                JniCompilerTest::jobj_;
+jobject                                JniCompilerTest::class_loader_;
 JniCompilerTest::StartSynchronizedType JniCompilerTest::jni_method_start_synchronized_original_;
-JniCompilerTest::EndSynchronizedType JniCompilerTest::jni_method_end_synchronized_original_;
+JniCompilerTest::EndSynchronizedType   JniCompilerTest::jni_method_end_synchronized_original_;
 JniCompilerTest::EndWithReferenceSynchronizedType
-    JniCompilerTest::jni_method_end_with_reference_synchronized_original_;
+         JniCompilerTest::jni_method_end_with_reference_synchronized_original_;
 uint32_t JniCompilerTest::saved_local_ref_cookie_;
-jobject JniCompilerTest::locked_object_;
+jobject  JniCompilerTest::locked_object_;
 
 uint32_t JniCompilerTest::JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self) {
   locked_object_ = to_lock;
@@ -452,82 +452,77 @@ uint32_t JniCompilerTest::JniMethodStartSynchronizedOverride(jobject to_lock, Th
 }
 
 void JniCompilerTest::JniMethodEndSynchronizedOverride(uint32_t saved_local_ref_cookie,
-                                                       jobject locked,
-                                                       Thread* self) {
+                                                       jobject  locked,
+                                                       Thread*  self) {
   EXPECT_EQ(saved_local_ref_cookie_, saved_local_ref_cookie);
   EXPECT_EQ(locked_object_, locked);
   jni_method_end_synchronized_original_(saved_local_ref_cookie, locked, self);
 }
 
 mirror::Object* JniCompilerTest::JniMethodEndWithReferenceSynchronizedOverride(
-    jobject result,
-    uint32_t saved_local_ref_cookie,
-    jobject locked,
-    Thread* self) {
+    jobject result, uint32_t saved_local_ref_cookie, jobject locked, Thread* self) {
   EXPECT_EQ(saved_local_ref_cookie_, saved_local_ref_cookie);
   EXPECT_EQ(locked_object_, locked);
-  return jni_method_end_with_reference_synchronized_original_(result,
-                                                              saved_local_ref_cookie,
-                                                              locked,
-                                                              self);
+  return jni_method_end_with_reference_synchronized_original_(
+      result, saved_local_ref_cookie, locked, self);
 }
 
 // Test the normal compiler and normal generic JNI only.
 // The following features are unsupported in @FastNative:
 // 1) synchronized keyword
-# define JNI_TEST_NORMAL_ONLY(TestName)          \
-  TEST_F(JniCompilerTest, TestName ## NormalCompiler) { \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("Normal JNI with compiler");    \
+#define JNI_TEST_NORMAL_ONLY(TestName)                     \
+  TEST_F(JniCompilerTest, TestName##NormalCompiler) {      \
+    ScopedCheckHandleScope top_handle_scope_check;         \
+    SCOPED_TRACE("Normal JNI with compiler");              \
     gCurrentJni = static_cast<uint32_t>(JniKind::kNormal); \
-    TestName ## Impl();                          \
-  }                                              \
-  TEST_F(JniCompilerTest, TestName ## NormalGeneric) { \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("Normal JNI with generic");     \
+    TestName##Impl();                                      \
+  }                                                        \
+  TEST_F(JniCompilerTest, TestName##NormalGeneric) {       \
+    ScopedCheckHandleScope top_handle_scope_check;         \
+    SCOPED_TRACE("Normal JNI with generic");               \
     gCurrentJni = static_cast<uint32_t>(JniKind::kNormal); \
-    SetCheckGenericJni(true);                    \
-    TestName ## Impl();                          \
+    SetCheckGenericJni(true);                              \
+    TestName##Impl();                                      \
   }
 
 // Test (normal, @FastNative) x (compiler, generic).
-#define JNI_TEST(TestName) \
-  JNI_TEST_NORMAL_ONLY(TestName)                 \
-  TEST_F(JniCompilerTest, TestName ## FastCompiler) {    \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("@FastNative JNI with compiler");  \
+#define JNI_TEST(TestName)                               \
+  JNI_TEST_NORMAL_ONLY(TestName)                         \
+  TEST_F(JniCompilerTest, TestName##FastCompiler) {      \
+    ScopedCheckHandleScope top_handle_scope_check;       \
+    SCOPED_TRACE("@FastNative JNI with compiler");       \
     gCurrentJni = static_cast<uint32_t>(JniKind::kFast); \
-    TestName ## Impl();                          \
-  }                                              \
-                                                 \
-  TEST_F(JniCompilerTest, TestName ## FastGeneric) { \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("@FastNative JNI with generic");  \
+    TestName##Impl();                                    \
+  }                                                      \
+                                                         \
+  TEST_F(JniCompilerTest, TestName##FastGeneric) {       \
+    ScopedCheckHandleScope top_handle_scope_check;       \
+    SCOPED_TRACE("@FastNative JNI with generic");        \
     gCurrentJni = static_cast<uint32_t>(JniKind::kFast); \
-    SetCheckGenericJni(true);                    \
-    TestName ## Impl();                          \
+    SetCheckGenericJni(true);                            \
+    TestName##Impl();                                    \
   }
 
 // Test (@CriticalNative) x (compiler, generic) only.
-#define JNI_TEST_CRITICAL_ONLY(TestName) \
-  TEST_F(JniCompilerTest, TestName ## CriticalCompiler) { \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("@CriticalNative JNI with compiler");  \
+#define JNI_TEST_CRITICAL_ONLY(TestName)                     \
+  TEST_F(JniCompilerTest, TestName##CriticalCompiler) {      \
+    ScopedCheckHandleScope top_handle_scope_check;           \
+    SCOPED_TRACE("@CriticalNative JNI with compiler");       \
     gCurrentJni = static_cast<uint32_t>(JniKind::kCritical); \
-    TestName ## Impl();                          \
-  }                                              \
-  TEST_F(JniCompilerTest, TestName ## CriticalGeneric) { \
-    ScopedCheckHandleScope top_handle_scope_check;  \
-    SCOPED_TRACE("@CriticalNative JNI with generic");  \
+    TestName##Impl();                                        \
+  }                                                          \
+  TEST_F(JniCompilerTest, TestName##CriticalGeneric) {       \
+    ScopedCheckHandleScope top_handle_scope_check;           \
+    SCOPED_TRACE("@CriticalNative JNI with generic");        \
     gCurrentJni = static_cast<uint32_t>(JniKind::kCritical); \
-    SetCheckGenericJni(true);                    \
-    TestName ## Impl();                          \
+    SetCheckGenericJni(true);                                \
+    TestName##Impl();                                        \
   }
 
 // Test everything: (normal, @FastNative, @CriticalNative) x (compiler, generic).
-#define JNI_TEST_CRITICAL(TestName)              \
-  JNI_TEST(TestName)                             \
-  JNI_TEST_CRITICAL_ONLY(TestName)               \
+#define JNI_TEST_CRITICAL(TestName) \
+  JNI_TEST(TestName)                \
+  JNI_TEST_CRITICAL_ONLY(TestName)
 
 static void expectValidThreadState() {
   // Normal JNI always transitions to "Native". Other JNIs stay in the "Runnable" state.
@@ -566,7 +561,7 @@ static void expectValidJniEnvAndObject(JNIEnv* env, jobject thisObj) {
 //
 // Hard-fails if this somehow gets invoked for @CriticalNative since objects are unsupported.
 #define EXPECT_JNI_ENV_AND_OBJECT_FOR_CURRENT_JNI(env, thisObj) \
-    expectValidJniEnvAndObject(env, thisObj)
+  expectValidJniEnvAndObject(env, thisObj)
 
 static void expectValidJniEnvAndClass(JNIEnv* env, jclass kls) {
   if (!IsCurrentJniCritical()) {
@@ -607,8 +602,7 @@ bool ScopedDisableCheckNumStackReferences::sCheckNumStackReferences = true;
 // Check that the handle scope at the start of this block is the same
 // as the handle scope at the end of the block.
 struct ScopedCheckHandleScope {
-  ScopedCheckHandleScope() : handle_scope_(Thread::Current()->GetTopHandleScope()) {
-  }
+  ScopedCheckHandleScope() : handle_scope_(Thread::Current()->GetTopHandleScope()) {}
 
   ~ScopedCheckHandleScope() {
     EXPECT_EQ(handle_scope_, Thread::Current()->GetTopHandleScope())
@@ -622,9 +616,8 @@ struct ScopedCheckHandleScope {
 class CountReferencesVisitor : public RootVisitor {
  public:
   void VisitRoots(mirror::Object*** roots ATTRIBUTE_UNUSED,
-                  size_t count,
-                  const RootInfo& info) override
-      REQUIRES_SHARED(Locks::mutator_lock_) {
+                  size_t                  count,
+                  const RootInfo&         info) override REQUIRES_SHARED(Locks::mutator_lock_) {
     if (info.GetType() == art::RootType::kRootJavaFrame) {
       const JavaFrameRootInfo& jrfi = static_cast<const JavaFrameRootInfo&>(info);
       if (jrfi.GetVReg() == JavaFrameRootInfo::kNativeReferenceArgument) {
@@ -635,9 +628,8 @@ class CountReferencesVisitor : public RootVisitor {
   }
 
   void VisitRoots(mirror::CompressedReference<mirror::Object>** roots ATTRIBUTE_UNUSED,
-                  size_t count ATTRIBUTE_UNUSED,
-                  const RootInfo& info) override
-      REQUIRES_SHARED(Locks::mutator_lock_) {
+                  size_t count                                        ATTRIBUTE_UNUSED,
+                  const RootInfo& info) override REQUIRES_SHARED(Locks::mutator_lock_) {
     CHECK_NE(info.GetType(), art::RootType::kRootJavaFrame);
   }
 
@@ -674,9 +666,9 @@ template <typename T, T* fn>
 struct make_jni_test_decorator;
 
 // Decorator for "static" JNI callbacks.
-template <typename R, typename ... Args, R (*fn)(JNIEnv*, jclass, Args...)>
+template <typename R, typename... Args, R (*fn)(JNIEnv*, jclass, Args...)>
 struct make_jni_test_decorator<R(JNIEnv*, jclass kls, Args...), fn> {
-  static R apply(JNIEnv* env, jclass kls, Args ... args) {
+  static R apply(JNIEnv* env, jclass kls, Args... args) {
     EXPECT_THREAD_STATE_FOR_CURRENT_JNI();
     EXPECT_MUTATOR_LOCK_FOR_CURRENT_JNI();
     EXPECT_JNI_ENV_AND_CLASS_FOR_CURRENT_JNI(env, kls);
@@ -689,9 +681,9 @@ struct make_jni_test_decorator<R(JNIEnv*, jclass kls, Args...), fn> {
 };
 
 // Decorator for instance JNI callbacks.
-template <typename R, typename ... Args, R (*fn)(JNIEnv*, jobject, Args...)>
+template <typename R, typename... Args, R (*fn)(JNIEnv*, jobject, Args...)>
 struct make_jni_test_decorator<R(JNIEnv*, jobject, Args...), fn> {
-  static R apply(JNIEnv* env, jobject thisObj, Args ... args) {
+  static R apply(JNIEnv* env, jobject thisObj, Args... args) {
     EXPECT_THREAD_STATE_FOR_CURRENT_JNI();
     EXPECT_MUTATOR_LOCK_FOR_CURRENT_JNI();
     EXPECT_JNI_ENV_AND_OBJECT_FOR_CURRENT_JNI(env, thisObj);
@@ -714,21 +706,26 @@ struct make_jni_test_decorator<R(JNIEnv*, jobject, Args...), fn> {
 // or a critical native depending on which kind of jni is currently under test.
 // -- This also has the benefit of genering a compile time error if the 'func' doesn't properly
 //    have JNIEnv and jclass parameters first.
-#define CURRENT_JNI_WRAPPER(func)                                                         \
-    (IsCurrentJniCritical()                                                               \
-         ? reinterpret_cast<void*>(&JNI_CRITICAL_WRAPPER(MAKE_JNI_TEST_DECORATOR(func)))  \
-         : reinterpret_cast<void*>(&MAKE_JNI_TEST_DECORATOR(func)))
+#define CURRENT_JNI_WRAPPER(func)                                                      \
+  (IsCurrentJniCritical() ?                                                            \
+       reinterpret_cast<void*>(&JNI_CRITICAL_WRAPPER(MAKE_JNI_TEST_DECORATOR(func))) : \
+       reinterpret_cast<void*>(&MAKE_JNI_TEST_DECORATOR(func)))
 
 // Do the opposite of the above. Do *not* wrap the function, instead just cast it to a void*.
 // Only for "TEST_JNI_NORMAL_ONLY" configs, and it inserts a test assert to ensure this is the case.
-#define NORMAL_JNI_ONLY_NOWRAP(func) \
-    ({ ASSERT_TRUE(IsCurrentJniNormal()); reinterpret_cast<void*>(&(func)); })
+#define NORMAL_JNI_ONLY_NOWRAP(func)   \
+  ({                                   \
+    ASSERT_TRUE(IsCurrentJniNormal()); \
+    reinterpret_cast<void*>(&(func));  \
+  })
 // Same as above, but with nullptr. When we want to test the stub functionality.
-#define NORMAL_OR_FAST_JNI_ONLY_NULLPTR \
-    ({ ASSERT_TRUE(IsCurrentJniNormal() || IsCurrentJniFast()); nullptr; })
+#define NORMAL_OR_FAST_JNI_ONLY_NULLPTR                      \
+  ({                                                         \
+    ASSERT_TRUE(IsCurrentJniNormal() || IsCurrentJniFast()); \
+    nullptr;                                                 \
+  })
 
-
-int gJava_MyClassNatives_foo_calls[kJniKindCount] = {};
+int  gJava_MyClassNatives_foo_calls[kJniKindCount] = {};
 void Java_MyClassNatives_foo(JNIEnv*, jobject) {
   gJava_MyClassNatives_foo_calls[gCurrentJni]++;
 }
@@ -752,8 +749,8 @@ void JniCompilerTest::CompileAndRunIntMethodThroughStubImpl() {
   // calling through stub will link with &Java_MyClassNatives_bar{,_1Fast}
 
   std::string reason;
-  ASSERT_TRUE(Runtime::Current()->GetJavaVM()->
-                  LoadNativeLibrary(env_, "", class_loader_, nullptr, &reason))
+  ASSERT_TRUE(
+      Runtime::Current()->GetJavaVM()->LoadNativeLibrary(env_, "", class_loader_, nullptr, &reason))
       << reason;
 
   jint result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 24);
@@ -768,8 +765,8 @@ void JniCompilerTest::CompileAndRunStaticIntMethodThroughStubImpl() {
   // calling through stub will link with &Java_MyClassNatives_sbar{,_1Fast,_1Critical}
 
   std::string reason;
-  ASSERT_TRUE(Runtime::Current()->GetJavaVM()->
-                  LoadNativeLibrary(env_, "", class_loader_, nullptr, &reason))
+  ASSERT_TRUE(
+      Runtime::Current()->GetJavaVM()->LoadNativeLibrary(env_, "", class_loader_, nullptr, &reason))
       << reason;
 
   jint result = env_->CallStaticIntMethod(jklass_, jmethod_, 42);
@@ -778,15 +775,14 @@ void JniCompilerTest::CompileAndRunStaticIntMethodThroughStubImpl() {
 
 JNI_TEST_CRITICAL(CompileAndRunStaticIntMethodThroughStub)
 
-int gJava_MyClassNatives_fooI_calls[kJniKindCount] = {};
+int  gJava_MyClassNatives_fooI_calls[kJniKindCount] = {};
 jint Java_MyClassNatives_fooI(JNIEnv*, jobject, jint x) {
   gJava_MyClassNatives_fooI_calls[gCurrentJni]++;
   return x;
 }
 
 void JniCompilerTest::CompileAndRunIntMethodImpl() {
-  SetUpForTest(false, "fooI", "(I)I",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooI));
+  SetUpForTest(false, "fooI", "(I)I", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooI));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooI_calls[gCurrentJni]);
   jint result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 42);
@@ -801,22 +797,20 @@ void JniCompilerTest::CompileAndRunIntMethodImpl() {
 
 JNI_TEST(CompileAndRunIntMethod)
 
-int gJava_MyClassNatives_fooII_calls[kJniKindCount] = {};
+int  gJava_MyClassNatives_fooII_calls[kJniKindCount] = {};
 jint Java_MyClassNatives_fooII(JNIEnv*, jobject, jint x, jint y) {
   gJava_MyClassNatives_fooII_calls[gCurrentJni]++;
   return x - y;  // non-commutative operator
 }
 
 void JniCompilerTest::CompileAndRunIntIntMethodImpl() {
-  SetUpForTest(false, "fooII", "(II)I",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooII));
+  SetUpForTest(false, "fooII", "(II)I", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooII));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooII_calls[gCurrentJni]);
   jint result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 99, 10);
   EXPECT_EQ(99 - 10, result);
   EXPECT_EQ(1, gJava_MyClassNatives_fooII_calls[gCurrentJni]);
-  result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 0xCAFEBABE,
-                                         0xCAFED00D);
+  result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 0xCAFEBABE, 0xCAFED00D);
   EXPECT_EQ(static_cast<jint>(0xCAFEBABE - 0xCAFED00D), result);
   EXPECT_EQ(2, gJava_MyClassNatives_fooII_calls[gCurrentJni]);
 
@@ -825,15 +819,14 @@ void JniCompilerTest::CompileAndRunIntIntMethodImpl() {
 
 JNI_TEST(CompileAndRunIntIntMethod)
 
-int gJava_MyClassNatives_fooJJ_calls[kJniKindCount] = {};
+int   gJava_MyClassNatives_fooJJ_calls[kJniKindCount] = {};
 jlong Java_MyClassNatives_fooJJ(JNIEnv*, jobject, jlong x, jlong y) {
   gJava_MyClassNatives_fooJJ_calls[gCurrentJni]++;
   return x - y;  // non-commutative operator
 }
 
 void JniCompilerTest::CompileAndRunLongLongMethodImpl() {
-  SetUpForTest(false, "fooJJ", "(JJ)J",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooJJ));
+  SetUpForTest(false, "fooJJ", "(JJ)J", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooJJ));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooJJ_calls[gCurrentJni]);
   jlong a = INT64_C(0x1234567890ABCDEF);
@@ -850,19 +843,17 @@ void JniCompilerTest::CompileAndRunLongLongMethodImpl() {
 
 JNI_TEST(CompileAndRunLongLongMethod)
 
-int gJava_MyClassNatives_fooDD_calls[kJniKindCount] = {};
+int     gJava_MyClassNatives_fooDD_calls[kJniKindCount] = {};
 jdouble Java_MyClassNatives_fooDD(JNIEnv*, jobject, jdouble x, jdouble y) {
   gJava_MyClassNatives_fooDD_calls[gCurrentJni]++;
   return x - y;  // non-commutative operator
 }
 
 void JniCompilerTest::CompileAndRunDoubleDoubleMethodImpl() {
-  SetUpForTest(false, "fooDD", "(DD)D",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooDD));
+  SetUpForTest(false, "fooDD", "(DD)D", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooDD));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooDD_calls[gCurrentJni]);
-  jdouble result = env_->CallNonvirtualDoubleMethod(jobj_, jklass_, jmethod_,
-                                                    99.0, 10.0);
+  jdouble result = env_->CallNonvirtualDoubleMethod(jobj_, jklass_, jmethod_, 99.0, 10.0);
   EXPECT_DOUBLE_EQ(99.0 - 10.0, result);
   EXPECT_EQ(1, gJava_MyClassNatives_fooDD_calls[gCurrentJni]);
   jdouble a = 3.14159265358979323846;
@@ -874,14 +865,16 @@ void JniCompilerTest::CompileAndRunDoubleDoubleMethodImpl() {
   gJava_MyClassNatives_fooDD_calls[gCurrentJni] = 0;
 }
 
-int gJava_MyClassNatives_fooJJ_synchronized_calls[kJniKindCount] = {};
+int   gJava_MyClassNatives_fooJJ_synchronized_calls[kJniKindCount] = {};
 jlong Java_MyClassNatives_fooJJ_synchronized(JNIEnv*, jobject, jlong x, jlong y) {
   gJava_MyClassNatives_fooJJ_synchronized_calls[gCurrentJni]++;
   return x | y;
 }
 
 void JniCompilerTest::CompileAndRun_fooJJ_synchronizedImpl() {
-  SetUpForTest(false, "fooJJ_synchronized", "(JJ)J",
+  SetUpForTest(false,
+               "fooJJ_synchronized",
+               "(JJ)J",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooJJ_synchronized));
   ScopedSynchronizedEntryPointOverrides ssepo;
 
@@ -897,22 +890,19 @@ void JniCompilerTest::CompileAndRun_fooJJ_synchronizedImpl() {
 
 JNI_TEST_NORMAL_ONLY(CompileAndRun_fooJJ_synchronized)
 
-int gJava_MyClassNatives_fooIOO_calls[kJniKindCount] = {};
-jobject Java_MyClassNatives_fooIOO(JNIEnv*, jobject thisObj, jint x, jobject y,
-                            jobject z) {
+int     gJava_MyClassNatives_fooIOO_calls[kJniKindCount] = {};
+jobject Java_MyClassNatives_fooIOO(JNIEnv*, jobject thisObj, jint x, jobject y, jobject z) {
   gJava_MyClassNatives_fooIOO_calls[gCurrentJni]++;
   switch (x) {
-    case 1:
-      return y;
-    case 2:
-      return z;
-    default:
-      return thisObj;
+    case 1: return y;
+    case 2: return z;
+    default: return thisObj;
   }
 }
 
 void JniCompilerTest::CompileAndRunIntObjectObjectMethodImpl() {
-  SetUpForTest(false, "fooIOO",
+  SetUpForTest(false,
+               "fooIOO",
                "(ILjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooIOO));
 
@@ -946,18 +936,17 @@ void JniCompilerTest::CompileAndRunIntObjectObjectMethodImpl() {
 
 JNI_TEST(CompileAndRunIntObjectObjectMethod)
 
-int gJava_MyClassNatives_fooSII_calls[kJniKindCount] = {};
-jint Java_MyClassNatives_fooSII(JNIEnv* env ATTRIBUTE_UNUSED,
+int  gJava_MyClassNatives_fooSII_calls[kJniKindCount] = {};
+jint Java_MyClassNatives_fooSII(JNIEnv* env  ATTRIBUTE_UNUSED,
                                 jclass klass ATTRIBUTE_UNUSED,
-                                jint x,
-                                jint y) {
+                                jint         x,
+                                jint         y) {
   gJava_MyClassNatives_fooSII_calls[gCurrentJni]++;
   return x + y;
 }
 
 void JniCompilerTest::CompileAndRunStaticIntIntMethodImpl() {
-  SetUpForTest(true, "fooSII", "(II)I",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSII));
+  SetUpForTest(true, "fooSII", "(II)I", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSII));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooSII_calls[gCurrentJni]);
   jint result = env_->CallStaticIntMethod(jklass_, jmethod_, 20, 30);
@@ -969,18 +958,17 @@ void JniCompilerTest::CompileAndRunStaticIntIntMethodImpl() {
 
 JNI_TEST_CRITICAL(CompileAndRunStaticIntIntMethod)
 
-int gJava_MyClassNatives_fooSDD_calls[kJniKindCount] = {};
-jdouble Java_MyClassNatives_fooSDD(JNIEnv* env ATTRIBUTE_UNUSED,
+int     gJava_MyClassNatives_fooSDD_calls[kJniKindCount] = {};
+jdouble Java_MyClassNatives_fooSDD(JNIEnv* env  ATTRIBUTE_UNUSED,
                                    jclass klass ATTRIBUTE_UNUSED,
-                                   jdouble x,
-                                   jdouble y) {
+                                   jdouble      x,
+                                   jdouble      y) {
   gJava_MyClassNatives_fooSDD_calls[gCurrentJni]++;
   return x - y;  // non-commutative operator
 }
 
 void JniCompilerTest::CompileAndRunStaticDoubleDoubleMethodImpl() {
-  SetUpForTest(true, "fooSDD", "(DD)D",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSDD));
+  SetUpForTest(true, "fooSDD", "(DD)D", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSDD));
 
   EXPECT_EQ(0, gJava_MyClassNatives_fooSDD_calls[gCurrentJni]);
   jdouble result = env_->CallStaticDoubleMethod(jklass_, jmethod_, 99.0, 10.0);
@@ -1069,8 +1057,7 @@ void JniCompilerTest::RunStaticReturnTrueImpl() {
 JNI_TEST_CRITICAL(RunStaticReturnTrue)
 
 void JniCompilerTest::RunStaticReturnFalseImpl() {
-  SetUpForTest(true, "returnFalse", "()Z",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_returnFalse));
+  SetUpForTest(true, "returnFalse", "()Z", CURRENT_JNI_WRAPPER(Java_MyClassNatives_returnFalse));
 
   jboolean result = env_->CallStaticBooleanMethod(jklass_, jmethod_);
   EXPECT_FALSE(result);
@@ -1087,7 +1074,7 @@ void JniCompilerTest::RunGenericStaticReturnIntImpl() {
 
 JNI_TEST_CRITICAL(RunGenericStaticReturnInt)
 
-int gJava_MyClassNatives_returnDouble_calls[kJniKindCount] = {};
+int     gJava_MyClassNatives_returnDouble_calls[kJniKindCount] = {};
 jdouble Java_MyClassNatives_returnDouble(JNIEnv*, jclass) {
   gJava_MyClassNatives_returnDouble_calls[gCurrentJni]++;
   return 4.0;
@@ -1118,21 +1105,19 @@ void JniCompilerTest::RunGenericStaticReturnLongImpl() {
 
 JNI_TEST_CRITICAL(RunGenericStaticReturnLong)
 
-int gJava_MyClassNatives_fooSIOO_calls[kJniKindCount] = {};
+int     gJava_MyClassNatives_fooSIOO_calls[kJniKindCount] = {};
 jobject Java_MyClassNatives_fooSIOO(JNIEnv*, jclass klass, jint x, jobject y, jobject z) {
   gJava_MyClassNatives_fooSIOO_calls[gCurrentJni]++;
   switch (x) {
-    case 1:
-      return y;
-    case 2:
-      return z;
-    default:
-      return klass;
+    case 1: return y;
+    case 2: return z;
+    default: return klass;
   }
 }
 
 void JniCompilerTest::CompileAndRunStaticIntObjectObjectMethodImpl() {
-  SetUpForTest(true, "fooSIOO",
+  SetUpForTest(true,
+               "fooSIOO",
                "(ILjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSIOO));
 
@@ -1166,21 +1151,19 @@ void JniCompilerTest::CompileAndRunStaticIntObjectObjectMethodImpl() {
 
 JNI_TEST(CompileAndRunStaticIntObjectObjectMethod)
 
-int gJava_MyClassNatives_fooSSIOO_calls[kJniKindCount] = {};
+int     gJava_MyClassNatives_fooSSIOO_calls[kJniKindCount] = {};
 jobject Java_MyClassNatives_fooSSIOO(JNIEnv*, jclass klass, jint x, jobject y, jobject z) {
   gJava_MyClassNatives_fooSSIOO_calls[gCurrentJni]++;
   switch (x) {
-    case 1:
-      return y;
-    case 2:
-      return z;
-    default:
-      return klass;
+    case 1: return y;
+    case 2: return z;
+    default: return klass;
   }
 }
 
 void JniCompilerTest::CompileAndRunStaticSynchronizedIntObjectObjectMethodImpl() {
-  SetUpForTest(true, "fooSSIOO",
+  SetUpForTest(true,
+               "fooSSIOO",
                "(ILjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooSSIOO));
   ScopedSynchronizedEntryPointOverrides ssepo;
@@ -1247,8 +1230,8 @@ void JniCompilerTest::ExceptionHandlingImpl() {
 
   // Get class for exception we expect to be thrown
   ScopedLocalRef<jclass> jlre(env_, env_->FindClass("java/lang/RuntimeException"));
-  SetUpForTest(false, "throwException", "()V",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_throwException));
+  SetUpForTest(
+      false, "throwException", "()V", CURRENT_JNI_WRAPPER(Java_MyClassNatives_throwException));
   // Call Java_MyClassNatives_throwException (JNI method that throws exception)
   env_->CallNonvirtualVoidMethod(jobj_, jklass_, jmethod_);
   EXPECT_EQ(1, gJava_MyClassNatives_foo_calls[gCurrentJni]);
@@ -1273,7 +1256,7 @@ jint Java_MyClassNatives_nativeUpCall(JNIEnv* env, jobject thisObj, jint i) {
     ScopedObjectAccess soa(env);
 
     // Build stack trace
-    jobject internal = Thread::Current()->CreateInternalStackTrace(soa);
+    jobject      internal = Thread::Current()->CreateInternalStackTrace(soa);
     jobjectArray ste_array = Thread::InternalStackTraceToStackTraceElementArray(soa, internal);
     ObjPtr<mirror::ObjectArray<mirror::StackTraceElement>> trace_array =
         soa.Decode<mirror::ObjectArray<mirror::StackTraceElement>>(ste_array);
@@ -1294,9 +1277,8 @@ jint Java_MyClassNatives_nativeUpCall(JNIEnv* env, jobject thisObj, jint i) {
   } else {
     jclass jklass = env->FindClass("MyClassNatives");
     EXPECT_TRUE(jklass != nullptr);
-    jmethodID jmethod = env->GetMethodID(jklass,
-                                         ("fooI" + CurrentJniStringSuffix()).c_str(),
-                                         "(I)I");
+    jmethodID jmethod =
+        env->GetMethodID(jklass, ("fooI" + CurrentJniStringSuffix()).c_str(), "(I)I");
     EXPECT_TRUE(jmethod != nullptr);
 
     // Recurse with i - 1
@@ -1308,15 +1290,14 @@ jint Java_MyClassNatives_nativeUpCall(JNIEnv* env, jobject thisObj, jint i) {
 }
 
 void JniCompilerTest::NativeStackTraceElementImpl() {
-  SetUpForTest(false, "fooI", "(I)I",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_nativeUpCall));
+  SetUpForTest(false, "fooI", "(I)I", CURRENT_JNI_WRAPPER(Java_MyClassNatives_nativeUpCall));
 
   // Usual # local references on stack check fails because nativeUpCall calls itself recursively,
   // each time the # of local references will therefore go up.
   ScopedDisableCheckNumStackReferences disable_num_stack_check;
   jint result = env_->CallNonvirtualIntMethod(jobj_, jklass_, jmethod_, 10);
 
-  EXPECT_EQ(10+9+8+7+6+5+4+3+2+1, result);
+  EXPECT_EQ(10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1, result);
 }
 
 JNI_TEST(NativeStackTraceElement)
@@ -1326,7 +1307,9 @@ jobject Java_MyClassNatives_fooO(JNIEnv* env, jobject, jobject x) {
 }
 
 void JniCompilerTest::ReturnGlobalRefImpl() {
-  SetUpForTest(false, "fooO", "(Ljava/lang/Object;)Ljava/lang/Object;",
+  SetUpForTest(false,
+               "fooO",
+               "(Ljava/lang/Object;)Ljava/lang/Object;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_fooO));
   jobject result = env_->CallNonvirtualObjectMethod(jobj_, jklass_, jmethod_, jobj_);
   EXPECT_EQ(JNILocalRefType, env_->GetObjectRefType(result));
@@ -1341,7 +1324,7 @@ jint local_ref_test(JNIEnv* env, jobject thisObj, jint x) {
   for (int i = 0; i < 10; i++) {
     soa.AddLocalReference<jobject>(soa.Decode<mirror::Object>(thisObj));
   }
-  return x+1;
+  return x + 1;
 }
 
 void JniCompilerTest::LocalReferenceTableClearingTestImpl() {
@@ -1355,7 +1338,8 @@ void JniCompilerTest::LocalReferenceTableClearingTestImpl() {
 
 JNI_TEST(LocalReferenceTableClearingTest)
 
-void my_arraycopy(JNIEnv* env, jclass klass, jobject src, jint src_pos, jobject dst, jint dst_pos, jint length) {
+void my_arraycopy(
+    JNIEnv* env, jclass klass, jobject src, jint src_pos, jobject dst, jint dst_pos, jint length) {
   EXPECT_TRUE(env->IsSameObject(JniCompilerTest::jklass_, klass));
   EXPECT_TRUE(env->IsSameObject(JniCompilerTest::jklass_, dst));
   EXPECT_TRUE(env->IsSameObject(JniCompilerTest::jobj_, src));
@@ -1365,14 +1349,17 @@ void my_arraycopy(JNIEnv* env, jclass klass, jobject src, jint src_pos, jobject 
 }
 
 void JniCompilerTest::JavaLangSystemArrayCopyImpl() {
-  SetUpForTest(true, "arraycopy", "(Ljava/lang/Object;ILjava/lang/Object;II)V",
+  SetUpForTest(true,
+               "arraycopy",
+               "(Ljava/lang/Object;ILjava/lang/Object;II)V",
                CURRENT_JNI_WRAPPER(my_arraycopy));
   env_->CallStaticVoidMethod(jklass_, jmethod_, jobj_, 1234, jklass_, 5678, 9876);
 }
 
 JNI_TEST(JavaLangSystemArrayCopy)
 
-jboolean my_casi(JNIEnv* env, jobject unsafe, jobject obj, jlong offset, jint expected, jint newval) {
+jboolean my_casi(
+    JNIEnv* env, jobject unsafe, jobject obj, jlong offset, jint expected, jint newval) {
   EXPECT_TRUE(env->IsSameObject(JniCompilerTest::jobj_, unsafe));
   EXPECT_TRUE(env->IsSameObject(JniCompilerTest::jobj_, obj));
   EXPECT_EQ(INT64_C(0x12345678ABCDEF88), offset);
@@ -1382,10 +1369,10 @@ jboolean my_casi(JNIEnv* env, jobject unsafe, jobject obj, jlong offset, jint ex
 }
 
 void JniCompilerTest::CompareAndSwapIntImpl() {
-  SetUpForTest(false, "compareAndSwapInt", "(Ljava/lang/Object;JII)Z",
-               CURRENT_JNI_WRAPPER(my_casi));
-  jboolean result = env_->CallBooleanMethod(jobj_, jmethod_, jobj_, INT64_C(0x12345678ABCDEF88),
-                                            0xCAFEF00D, 0xEBADF00D);
+  SetUpForTest(
+      false, "compareAndSwapInt", "(Ljava/lang/Object;JII)Z", CURRENT_JNI_WRAPPER(my_casi));
+  jboolean result = env_->CallBooleanMethod(
+      jobj_, jmethod_, jobj_, INT64_C(0x12345678ABCDEF88), 0xCAFEF00D, 0xEBADF00D);
   EXPECT_EQ(result, JNI_TRUE);
 }
 
@@ -1401,34 +1388,38 @@ jint my_gettext(JNIEnv* env, jclass klass, jlong val1, jobject obj1, jlong val2,
 }
 
 void JniCompilerTest::GetTextImpl() {
-  SetUpForTest(true, "getText", "(JLjava/lang/Object;JLjava/lang/Object;)I",
+  SetUpForTest(true,
+               "getText",
+               "(JLjava/lang/Object;JLjava/lang/Object;)I",
                CURRENT_JNI_WRAPPER(my_gettext));
-  jint result = env_->CallStaticIntMethod(jklass_, jmethod_, 0x12345678ABCDEF88LL, jobj_,
-                                          INT64_C(0x7FEDCBA987654321), jobj_);
+  jint result = env_->CallStaticIntMethod(
+      jklass_, jmethod_, 0x12345678ABCDEF88LL, jobj_, INT64_C(0x7FEDCBA987654321), jobj_);
   EXPECT_EQ(result, 42);
 }
 
 JNI_TEST(GetText)
 
-int gJava_MyClassNatives_GetSinkProperties_calls[kJniKindCount] = {};
+int    gJava_MyClassNatives_GetSinkProperties_calls[kJniKindCount] = {};
 jarray Java_MyClassNatives_GetSinkProperties(JNIEnv*, jobject thisObj, jstring s) {
   EXPECT_EQ(s, nullptr);
   gJava_MyClassNatives_GetSinkProperties_calls[gCurrentJni]++;
 
-  Thread* self = Thread::Current();
+  Thread*            self = Thread::Current();
   ScopedObjectAccess soa(self);
   EXPECT_TRUE(self->HoldsLock(soa.Decode<mirror::Object>(thisObj)));
   return nullptr;
 }
 
 void JniCompilerTest::GetSinkPropertiesNativeImpl() {
-  SetUpForTest(false, "getSinkPropertiesNative", "(Ljava/lang/String;)[Ljava/lang/Object;",
+  SetUpForTest(false,
+               "getSinkPropertiesNative",
+               "(Ljava/lang/String;)[Ljava/lang/Object;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_GetSinkProperties));
   ScopedSynchronizedEntryPointOverrides ssepo;
 
   EXPECT_EQ(0, gJava_MyClassNatives_GetSinkProperties_calls[gCurrentJni]);
-  jarray result = down_cast<jarray>(
-      env_->CallNonvirtualObjectMethod(jobj_, jklass_, jmethod_, nullptr));
+  jarray result =
+      down_cast<jarray>(env_->CallNonvirtualObjectMethod(jobj_, jklass_, jmethod_, nullptr));
   EXPECT_EQ(nullptr, result);
   EXPECT_EQ(1, gJava_MyClassNatives_GetSinkProperties_calls[gCurrentJni]);
 
@@ -1450,80 +1441,82 @@ jobject Java_MyClassNatives_staticMethodThatShouldReturnClass(JNIEnv* env, jclas
 }
 
 void JniCompilerTest::UpcallReturnTypeChecking_InstanceImpl() {
-  SetUpForTest(false, "instanceMethodThatShouldReturnClass", "()Ljava/lang/Class;",
+  SetUpForTest(false,
+               "instanceMethodThatShouldReturnClass",
+               "()Ljava/lang/Class;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_instanceMethodThatShouldReturnClass));
 
   CheckJniAbortCatcher check_jni_abort_catcher;
   // This native method is bad, and tries to return a jstring as a jclass.
   env_->CallObjectMethod(jobj_, jmethod_);
   check_jni_abort_catcher.Check(std::string() + "attempt to return an instance " +
-                                    "of java.lang.String from java.lang.Class " +
-                                    "MyClassNatives.instanceMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "()");
+                                "of java.lang.String from java.lang.Class " +
+                                "MyClassNatives.instanceMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "()");
 
   // Here, we just call the method incorrectly; we should catch that too.
   env_->CallObjectMethod(jobj_, jmethod_);
   check_jni_abort_catcher.Check(std::string() + "attempt to return an instance " +
-                                    "of java.lang.String from java.lang.Class " +
-                                    "MyClassNatives.instanceMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "()");
+                                "of java.lang.String from java.lang.Class " +
+                                "MyClassNatives.instanceMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "()");
   env_->CallStaticObjectMethod(jklass_, jmethod_);
-  check_jni_abort_catcher.Check(std::string() + "calling non-static method " +
-                                    "java.lang.Class " +
-                                    "MyClassNatives.instanceMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "() with CallStaticObjectMethodV");
+  check_jni_abort_catcher.Check(std::string() + "calling non-static method " + "java.lang.Class " +
+                                "MyClassNatives.instanceMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "() with CallStaticObjectMethodV");
 }
 
 JNI_TEST(UpcallReturnTypeChecking_Instance)
 
 void JniCompilerTest::UpcallReturnTypeChecking_StaticImpl() {
-  SetUpForTest(true, "staticMethodThatShouldReturnClass", "()Ljava/lang/Class;",
+  SetUpForTest(true,
+               "staticMethodThatShouldReturnClass",
+               "()Ljava/lang/Class;",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_staticMethodThatShouldReturnClass));
 
   CheckJniAbortCatcher check_jni_abort_catcher;
   // This native method is bad, and tries to return a jstring as a jclass.
   env_->CallStaticObjectMethod(jklass_, jmethod_);
   check_jni_abort_catcher.Check(std::string() + "attempt to return an instance " +
-                                    "of java.lang.String from java.lang.Class " +
-                                    "MyClassNatives.staticMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "()");
+                                "of java.lang.String from java.lang.Class " +
+                                "MyClassNatives.staticMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "()");
 
   // Here, we just call the method incorrectly; we should catch that too.
   env_->CallStaticObjectMethod(jklass_, jmethod_);
   check_jni_abort_catcher.Check(std::string() + "attempt to return an instance " +
-                                    "of java.lang.String from java.lang.Class " +
-                                    "MyClassNatives.staticMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "()");
+                                "of java.lang.String from java.lang.Class " +
+                                "MyClassNatives.staticMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "()");
   env_->CallObjectMethod(jobj_, jmethod_);
-  check_jni_abort_catcher.Check(std::string() + "calling static method " +
-                                    "java.lang.Class " +
-                                    "MyClassNatives.staticMethodThatShouldReturnClass" +
-                                    CurrentJniStringSuffix() + "() with CallObjectMethodV");
+  check_jni_abort_catcher.Check(std::string() + "calling static method " + "java.lang.Class " +
+                                "MyClassNatives.staticMethodThatShouldReturnClass" +
+                                CurrentJniStringSuffix() + "() with CallObjectMethodV");
 }
 
 JNI_TEST(UpcallReturnTypeChecking_Static)
 
 // This should take jclass, but we're imitating a bug pattern.
-void Java_MyClassNatives_instanceMethodThatShouldTakeClass(JNIEnv*, jobject, jclass) {
-}
+void Java_MyClassNatives_instanceMethodThatShouldTakeClass(JNIEnv*, jobject, jclass) {}
 
 // This should take jclass, but we're imitating a bug pattern.
-void Java_MyClassNatives_staticMethodThatShouldTakeClass(JNIEnv*, jclass, jclass) {
-}
+void Java_MyClassNatives_staticMethodThatShouldTakeClass(JNIEnv*, jclass, jclass) {}
 
 void JniCompilerTest::UpcallArgumentTypeChecking_InstanceImpl() {
   // This will lead to error messages in the log.
   ScopedLogSeverity sls(LogSeverity::FATAL);
 
-  SetUpForTest(false, "instanceMethodThatShouldTakeClass", "(ILjava/lang/Class;)V",
+  SetUpForTest(false,
+               "instanceMethodThatShouldTakeClass",
+               "(ILjava/lang/Class;)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_instanceMethodThatShouldTakeClass));
 
   CheckJniAbortCatcher check_jni_abort_catcher;
   // We deliberately pass a bad second argument here.
   env_->CallVoidMethod(jobj_, jmethod_, 123, env_->NewStringUTF("not a class!"));
   check_jni_abort_catcher.Check(std::string() + "bad arguments passed to void " +
-                                    "MyClassNatives.instanceMethodThatShouldTakeClass" +
-                                    CurrentJniStringSuffix() + "(int, java.lang.Class)");
+                                "MyClassNatives.instanceMethodThatShouldTakeClass" +
+                                CurrentJniStringSuffix() + "(int, java.lang.Class)");
 }
 
 JNI_TEST(UpcallArgumentTypeChecking_Instance)
@@ -1532,15 +1525,17 @@ void JniCompilerTest::UpcallArgumentTypeChecking_StaticImpl() {
   // This will lead to error messages in the log.
   ScopedLogSeverity sls(LogSeverity::FATAL);
 
-  SetUpForTest(true, "staticMethodThatShouldTakeClass", "(ILjava/lang/Class;)V",
+  SetUpForTest(true,
+               "staticMethodThatShouldTakeClass",
+               "(ILjava/lang/Class;)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_staticMethodThatShouldTakeClass));
 
   CheckJniAbortCatcher check_jni_abort_catcher;
   // We deliberately pass a bad second argument here.
   env_->CallStaticVoidMethod(jklass_, jmethod_, 123, env_->NewStringUTF("not a class!"));
   check_jni_abort_catcher.Check(std::string() + "bad arguments passed to void " +
-                                    "MyClassNatives.staticMethodThatShouldTakeClass" +
-                                    CurrentJniStringSuffix() + "(int, java.lang.Class)");
+                                "MyClassNatives.staticMethodThatShouldTakeClass" +
+                                CurrentJniStringSuffix() + "(int, java.lang.Class)");
 }
 
 JNI_TEST(UpcallArgumentTypeChecking_Static)
@@ -1550,11 +1545,9 @@ jfloat Java_MyClassNatives_checkFloats(JNIEnv*, jobject, jfloat f1, jfloat f2) {
 }
 
 void JniCompilerTest::CompileAndRunFloatFloatMethodImpl() {
-  SetUpForTest(false, "checkFloats", "(FF)F",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_checkFloats));
+  SetUpForTest(false, "checkFloats", "(FF)F", CURRENT_JNI_WRAPPER(Java_MyClassNatives_checkFloats));
 
-  jfloat result = env_->CallNonvirtualFloatMethod(jobj_, jklass_, jmethod_,
-                                                    99.0F, 10.0F);
+  jfloat result = env_->CallNonvirtualFloatMethod(jobj_, jklass_, jmethod_, 99.0F, 10.0F);
   EXPECT_FLOAT_EQ(99.0F - 10.0F, result);
   jfloat a = 3.14159F;
   jfloat b = 0.69314F;
@@ -1564,16 +1557,18 @@ void JniCompilerTest::CompileAndRunFloatFloatMethodImpl() {
 
 JNI_TEST(CompileAndRunFloatFloatMethod)
 
-void Java_MyClassNatives_checkParameterAlign(JNIEnv* env ATTRIBUTE_UNUSED,
+void Java_MyClassNatives_checkParameterAlign(JNIEnv* env     ATTRIBUTE_UNUSED,
                                              jobject thisObj ATTRIBUTE_UNUSED,
-                                             jint i1,
-                                             jlong l1) {
+                                             jint            i1,
+                                             jlong           l1) {
   EXPECT_EQ(i1, 1234);
   EXPECT_EQ(l1, INT64_C(0x12345678ABCDEF0));
 }
 
 void JniCompilerTest::CheckParameterAlignImpl() {
-  SetUpForTest(false, "checkParameterAlign", "(IJ)V",
+  SetUpForTest(false,
+               "checkParameterAlign",
+               "(IJ)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_checkParameterAlign));
 
   env_->CallNonvirtualVoidMethod(jobj_, jklass_, jmethod_, 1234, INT64_C(0x12345678ABCDEF0));
@@ -1581,93 +1576,325 @@ void JniCompilerTest::CheckParameterAlignImpl() {
 
 JNI_TEST(CheckParameterAlign)
 
-void Java_MyClassNatives_maxParamNumber(JNIEnv* env, jobject,
-    jobject o0, jobject o1, jobject o2, jobject o3, jobject o4, jobject o5, jobject o6, jobject o7,
-    jobject o8, jobject o9, jobject o10, jobject o11, jobject o12, jobject o13, jobject o14, jobject o15,
-    jobject o16, jobject o17, jobject o18, jobject o19, jobject o20, jobject o21, jobject o22, jobject o23,
-    jobject o24, jobject o25, jobject o26, jobject o27, jobject o28, jobject o29, jobject o30, jobject o31,
-    jobject o32, jobject o33, jobject o34, jobject o35, jobject o36, jobject o37, jobject o38, jobject o39,
-    jobject o40, jobject o41, jobject o42, jobject o43, jobject o44, jobject o45, jobject o46, jobject o47,
-    jobject o48, jobject o49, jobject o50, jobject o51, jobject o52, jobject o53, jobject o54, jobject o55,
-    jobject o56, jobject o57, jobject o58, jobject o59, jobject o60, jobject o61, jobject o62, jobject o63,
-    jobject o64, jobject o65, jobject o66, jobject o67, jobject o68, jobject o69, jobject o70, jobject o71,
-    jobject o72, jobject o73, jobject o74, jobject o75, jobject o76, jobject o77, jobject o78, jobject o79,
-    jobject o80, jobject o81, jobject o82, jobject o83, jobject o84, jobject o85, jobject o86, jobject o87,
-    jobject o88, jobject o89, jobject o90, jobject o91, jobject o92, jobject o93, jobject o94, jobject o95,
-    jobject o96, jobject o97, jobject o98, jobject o99, jobject o100, jobject o101, jobject o102, jobject o103,
-    jobject o104, jobject o105, jobject o106, jobject o107, jobject o108, jobject o109, jobject o110, jobject o111,
-    jobject o112, jobject o113, jobject o114, jobject o115, jobject o116, jobject o117, jobject o118, jobject o119,
-    jobject o120, jobject o121, jobject o122, jobject o123, jobject o124, jobject o125, jobject o126, jobject o127,
-    jobject o128, jobject o129, jobject o130, jobject o131, jobject o132, jobject o133, jobject o134, jobject o135,
-    jobject o136, jobject o137, jobject o138, jobject o139, jobject o140, jobject o141, jobject o142, jobject o143,
-    jobject o144, jobject o145, jobject o146, jobject o147, jobject o148, jobject o149, jobject o150, jobject o151,
-    jobject o152, jobject o153, jobject o154, jobject o155, jobject o156, jobject o157, jobject o158, jobject o159,
-    jobject o160, jobject o161, jobject o162, jobject o163, jobject o164, jobject o165, jobject o166, jobject o167,
-    jobject o168, jobject o169, jobject o170, jobject o171, jobject o172, jobject o173, jobject o174, jobject o175,
-    jobject o176, jobject o177, jobject o178, jobject o179, jobject o180, jobject o181, jobject o182, jobject o183,
-    jobject o184, jobject o185, jobject o186, jobject o187, jobject o188, jobject o189, jobject o190, jobject o191,
-    jobject o192, jobject o193, jobject o194, jobject o195, jobject o196, jobject o197, jobject o198, jobject o199,
-    jobject o200, jobject o201, jobject o202, jobject o203, jobject o204, jobject o205, jobject o206, jobject o207,
-    jobject o208, jobject o209, jobject o210, jobject o211, jobject o212, jobject o213, jobject o214, jobject o215,
-    jobject o216, jobject o217, jobject o218, jobject o219, jobject o220, jobject o221, jobject o222, jobject o223,
-    jobject o224, jobject o225, jobject o226, jobject o227, jobject o228, jobject o229, jobject o230, jobject o231,
-    jobject o232, jobject o233, jobject o234, jobject o235, jobject o236, jobject o237, jobject o238, jobject o239,
-    jobject o240, jobject o241, jobject o242, jobject o243, jobject o244, jobject o245, jobject o246, jobject o247,
-    jobject o248, jobject o249, jobject o250, jobject o251, jobject o252, jobject o253) {
+void Java_MyClassNatives_maxParamNumber(JNIEnv* env,
+                                        jobject,
+                                        jobject o0,
+                                        jobject o1,
+                                        jobject o2,
+                                        jobject o3,
+                                        jobject o4,
+                                        jobject o5,
+                                        jobject o6,
+                                        jobject o7,
+                                        jobject o8,
+                                        jobject o9,
+                                        jobject o10,
+                                        jobject o11,
+                                        jobject o12,
+                                        jobject o13,
+                                        jobject o14,
+                                        jobject o15,
+                                        jobject o16,
+                                        jobject o17,
+                                        jobject o18,
+                                        jobject o19,
+                                        jobject o20,
+                                        jobject o21,
+                                        jobject o22,
+                                        jobject o23,
+                                        jobject o24,
+                                        jobject o25,
+                                        jobject o26,
+                                        jobject o27,
+                                        jobject o28,
+                                        jobject o29,
+                                        jobject o30,
+                                        jobject o31,
+                                        jobject o32,
+                                        jobject o33,
+                                        jobject o34,
+                                        jobject o35,
+                                        jobject o36,
+                                        jobject o37,
+                                        jobject o38,
+                                        jobject o39,
+                                        jobject o40,
+                                        jobject o41,
+                                        jobject o42,
+                                        jobject o43,
+                                        jobject o44,
+                                        jobject o45,
+                                        jobject o46,
+                                        jobject o47,
+                                        jobject o48,
+                                        jobject o49,
+                                        jobject o50,
+                                        jobject o51,
+                                        jobject o52,
+                                        jobject o53,
+                                        jobject o54,
+                                        jobject o55,
+                                        jobject o56,
+                                        jobject o57,
+                                        jobject o58,
+                                        jobject o59,
+                                        jobject o60,
+                                        jobject o61,
+                                        jobject o62,
+                                        jobject o63,
+                                        jobject o64,
+                                        jobject o65,
+                                        jobject o66,
+                                        jobject o67,
+                                        jobject o68,
+                                        jobject o69,
+                                        jobject o70,
+                                        jobject o71,
+                                        jobject o72,
+                                        jobject o73,
+                                        jobject o74,
+                                        jobject o75,
+                                        jobject o76,
+                                        jobject o77,
+                                        jobject o78,
+                                        jobject o79,
+                                        jobject o80,
+                                        jobject o81,
+                                        jobject o82,
+                                        jobject o83,
+                                        jobject o84,
+                                        jobject o85,
+                                        jobject o86,
+                                        jobject o87,
+                                        jobject o88,
+                                        jobject o89,
+                                        jobject o90,
+                                        jobject o91,
+                                        jobject o92,
+                                        jobject o93,
+                                        jobject o94,
+                                        jobject o95,
+                                        jobject o96,
+                                        jobject o97,
+                                        jobject o98,
+                                        jobject o99,
+                                        jobject o100,
+                                        jobject o101,
+                                        jobject o102,
+                                        jobject o103,
+                                        jobject o104,
+                                        jobject o105,
+                                        jobject o106,
+                                        jobject o107,
+                                        jobject o108,
+                                        jobject o109,
+                                        jobject o110,
+                                        jobject o111,
+                                        jobject o112,
+                                        jobject o113,
+                                        jobject o114,
+                                        jobject o115,
+                                        jobject o116,
+                                        jobject o117,
+                                        jobject o118,
+                                        jobject o119,
+                                        jobject o120,
+                                        jobject o121,
+                                        jobject o122,
+                                        jobject o123,
+                                        jobject o124,
+                                        jobject o125,
+                                        jobject o126,
+                                        jobject o127,
+                                        jobject o128,
+                                        jobject o129,
+                                        jobject o130,
+                                        jobject o131,
+                                        jobject o132,
+                                        jobject o133,
+                                        jobject o134,
+                                        jobject o135,
+                                        jobject o136,
+                                        jobject o137,
+                                        jobject o138,
+                                        jobject o139,
+                                        jobject o140,
+                                        jobject o141,
+                                        jobject o142,
+                                        jobject o143,
+                                        jobject o144,
+                                        jobject o145,
+                                        jobject o146,
+                                        jobject o147,
+                                        jobject o148,
+                                        jobject o149,
+                                        jobject o150,
+                                        jobject o151,
+                                        jobject o152,
+                                        jobject o153,
+                                        jobject o154,
+                                        jobject o155,
+                                        jobject o156,
+                                        jobject o157,
+                                        jobject o158,
+                                        jobject o159,
+                                        jobject o160,
+                                        jobject o161,
+                                        jobject o162,
+                                        jobject o163,
+                                        jobject o164,
+                                        jobject o165,
+                                        jobject o166,
+                                        jobject o167,
+                                        jobject o168,
+                                        jobject o169,
+                                        jobject o170,
+                                        jobject o171,
+                                        jobject o172,
+                                        jobject o173,
+                                        jobject o174,
+                                        jobject o175,
+                                        jobject o176,
+                                        jobject o177,
+                                        jobject o178,
+                                        jobject o179,
+                                        jobject o180,
+                                        jobject o181,
+                                        jobject o182,
+                                        jobject o183,
+                                        jobject o184,
+                                        jobject o185,
+                                        jobject o186,
+                                        jobject o187,
+                                        jobject o188,
+                                        jobject o189,
+                                        jobject o190,
+                                        jobject o191,
+                                        jobject o192,
+                                        jobject o193,
+                                        jobject o194,
+                                        jobject o195,
+                                        jobject o196,
+                                        jobject o197,
+                                        jobject o198,
+                                        jobject o199,
+                                        jobject o200,
+                                        jobject o201,
+                                        jobject o202,
+                                        jobject o203,
+                                        jobject o204,
+                                        jobject o205,
+                                        jobject o206,
+                                        jobject o207,
+                                        jobject o208,
+                                        jobject o209,
+                                        jobject o210,
+                                        jobject o211,
+                                        jobject o212,
+                                        jobject o213,
+                                        jobject o214,
+                                        jobject o215,
+                                        jobject o216,
+                                        jobject o217,
+                                        jobject o218,
+                                        jobject o219,
+                                        jobject o220,
+                                        jobject o221,
+                                        jobject o222,
+                                        jobject o223,
+                                        jobject o224,
+                                        jobject o225,
+                                        jobject o226,
+                                        jobject o227,
+                                        jobject o228,
+                                        jobject o229,
+                                        jobject o230,
+                                        jobject o231,
+                                        jobject o232,
+                                        jobject o233,
+                                        jobject o234,
+                                        jobject o235,
+                                        jobject o236,
+                                        jobject o237,
+                                        jobject o238,
+                                        jobject o239,
+                                        jobject o240,
+                                        jobject o241,
+                                        jobject o242,
+                                        jobject o243,
+                                        jobject o244,
+                                        jobject o245,
+                                        jobject o246,
+                                        jobject o247,
+                                        jobject o248,
+                                        jobject o249,
+                                        jobject o250,
+                                        jobject o251,
+                                        jobject o252,
+                                        jobject o253) {
   // two tests possible
   if (o0 == nullptr) {
     // 1) everything is null
-    EXPECT_TRUE(o0 == nullptr && o1 == nullptr && o2 == nullptr && o3 == nullptr && o4 == nullptr
-        && o5 == nullptr && o6 == nullptr && o7 == nullptr && o8 == nullptr && o9 == nullptr
-        && o10 == nullptr && o11 == nullptr && o12 == nullptr && o13 == nullptr && o14 == nullptr
-        && o15 == nullptr && o16 == nullptr && o17 == nullptr && o18 == nullptr && o19 == nullptr
-        && o20 == nullptr && o21 == nullptr && o22 == nullptr && o23 == nullptr && o24 == nullptr
-        && o25 == nullptr && o26 == nullptr && o27 == nullptr && o28 == nullptr && o29 == nullptr
-        && o30 == nullptr && o31 == nullptr && o32 == nullptr && o33 == nullptr && o34 == nullptr
-        && o35 == nullptr && o36 == nullptr && o37 == nullptr && o38 == nullptr && o39 == nullptr
-        && o40 == nullptr && o41 == nullptr && o42 == nullptr && o43 == nullptr && o44 == nullptr
-        && o45 == nullptr && o46 == nullptr && o47 == nullptr && o48 == nullptr && o49 == nullptr
-        && o50 == nullptr && o51 == nullptr && o52 == nullptr && o53 == nullptr && o54 == nullptr
-        && o55 == nullptr && o56 == nullptr && o57 == nullptr && o58 == nullptr && o59 == nullptr
-        && o60 == nullptr && o61 == nullptr && o62 == nullptr && o63 == nullptr && o64 == nullptr
-        && o65 == nullptr && o66 == nullptr && o67 == nullptr && o68 == nullptr && o69 == nullptr
-        && o70 == nullptr && o71 == nullptr && o72 == nullptr && o73 == nullptr && o74 == nullptr
-        && o75 == nullptr && o76 == nullptr && o77 == nullptr && o78 == nullptr && o79 == nullptr
-        && o80 == nullptr && o81 == nullptr && o82 == nullptr && o83 == nullptr && o84 == nullptr
-        && o85 == nullptr && o86 == nullptr && o87 == nullptr && o88 == nullptr && o89 == nullptr
-        && o90 == nullptr && o91 == nullptr && o92 == nullptr && o93 == nullptr && o94 == nullptr
-        && o95 == nullptr && o96 == nullptr && o97 == nullptr && o98 == nullptr && o99 == nullptr
-        && o100 == nullptr && o101 == nullptr && o102 == nullptr && o103 == nullptr && o104 == nullptr
-        && o105 == nullptr && o106 == nullptr && o107 == nullptr && o108 == nullptr && o109 == nullptr
-        && o110 == nullptr && o111 == nullptr && o112 == nullptr && o113 == nullptr && o114 == nullptr
-        && o115 == nullptr && o116 == nullptr && o117 == nullptr && o118 == nullptr && o119 == nullptr
-        && o120 == nullptr && o121 == nullptr && o122 == nullptr && o123 == nullptr && o124 == nullptr
-        && o125 == nullptr && o126 == nullptr && o127 == nullptr && o128 == nullptr && o129 == nullptr
-        && o130 == nullptr && o131 == nullptr && o132 == nullptr && o133 == nullptr && o134 == nullptr
-        && o135 == nullptr && o136 == nullptr && o137 == nullptr && o138 == nullptr && o139 == nullptr
-        && o140 == nullptr && o141 == nullptr && o142 == nullptr && o143 == nullptr && o144 == nullptr
-        && o145 == nullptr && o146 == nullptr && o147 == nullptr && o148 == nullptr && o149 == nullptr
-        && o150 == nullptr && o151 == nullptr && o152 == nullptr && o153 == nullptr && o154 == nullptr
-        && o155 == nullptr && o156 == nullptr && o157 == nullptr && o158 == nullptr && o159 == nullptr
-        && o160 == nullptr && o161 == nullptr && o162 == nullptr && o163 == nullptr && o164 == nullptr
-        && o165 == nullptr && o166 == nullptr && o167 == nullptr && o168 == nullptr && o169 == nullptr
-        && o170 == nullptr && o171 == nullptr && o172 == nullptr && o173 == nullptr && o174 == nullptr
-        && o175 == nullptr && o176 == nullptr && o177 == nullptr && o178 == nullptr && o179 == nullptr
-        && o180 == nullptr && o181 == nullptr && o182 == nullptr && o183 == nullptr && o184 == nullptr
-        && o185 == nullptr && o186 == nullptr && o187 == nullptr && o188 == nullptr && o189 == nullptr
-        && o190 == nullptr && o191 == nullptr && o192 == nullptr && o193 == nullptr && o194 == nullptr
-        && o195 == nullptr && o196 == nullptr && o197 == nullptr && o198 == nullptr && o199 == nullptr
-        && o200 == nullptr && o201 == nullptr && o202 == nullptr && o203 == nullptr && o204 == nullptr
-        && o205 == nullptr && o206 == nullptr && o207 == nullptr && o208 == nullptr && o209 == nullptr
-        && o210 == nullptr && o211 == nullptr && o212 == nullptr && o213 == nullptr && o214 == nullptr
-        && o215 == nullptr && o216 == nullptr && o217 == nullptr && o218 == nullptr && o219 == nullptr
-        && o220 == nullptr && o221 == nullptr && o222 == nullptr && o223 == nullptr && o224 == nullptr
-        && o225 == nullptr && o226 == nullptr && o227 == nullptr && o228 == nullptr && o229 == nullptr
-        && o230 == nullptr && o231 == nullptr && o232 == nullptr && o233 == nullptr && o234 == nullptr
-        && o235 == nullptr && o236 == nullptr && o237 == nullptr && o238 == nullptr && o239 == nullptr
-        && o240 == nullptr && o241 == nullptr && o242 == nullptr && o243 == nullptr && o244 == nullptr
-        && o245 == nullptr && o246 == nullptr && o247 == nullptr && o248 == nullptr && o249 == nullptr
-        && o250 == nullptr && o251 == nullptr && o252 == nullptr && o253 == nullptr);
+    EXPECT_TRUE(
+        o0 == nullptr && o1 == nullptr && o2 == nullptr && o3 == nullptr && o4 == nullptr &&
+        o5 == nullptr && o6 == nullptr && o7 == nullptr && o8 == nullptr && o9 == nullptr &&
+        o10 == nullptr && o11 == nullptr && o12 == nullptr && o13 == nullptr && o14 == nullptr &&
+        o15 == nullptr && o16 == nullptr && o17 == nullptr && o18 == nullptr && o19 == nullptr &&
+        o20 == nullptr && o21 == nullptr && o22 == nullptr && o23 == nullptr && o24 == nullptr &&
+        o25 == nullptr && o26 == nullptr && o27 == nullptr && o28 == nullptr && o29 == nullptr &&
+        o30 == nullptr && o31 == nullptr && o32 == nullptr && o33 == nullptr && o34 == nullptr &&
+        o35 == nullptr && o36 == nullptr && o37 == nullptr && o38 == nullptr && o39 == nullptr &&
+        o40 == nullptr && o41 == nullptr && o42 == nullptr && o43 == nullptr && o44 == nullptr &&
+        o45 == nullptr && o46 == nullptr && o47 == nullptr && o48 == nullptr && o49 == nullptr &&
+        o50 == nullptr && o51 == nullptr && o52 == nullptr && o53 == nullptr && o54 == nullptr &&
+        o55 == nullptr && o56 == nullptr && o57 == nullptr && o58 == nullptr && o59 == nullptr &&
+        o60 == nullptr && o61 == nullptr && o62 == nullptr && o63 == nullptr && o64 == nullptr &&
+        o65 == nullptr && o66 == nullptr && o67 == nullptr && o68 == nullptr && o69 == nullptr &&
+        o70 == nullptr && o71 == nullptr && o72 == nullptr && o73 == nullptr && o74 == nullptr &&
+        o75 == nullptr && o76 == nullptr && o77 == nullptr && o78 == nullptr && o79 == nullptr &&
+        o80 == nullptr && o81 == nullptr && o82 == nullptr && o83 == nullptr && o84 == nullptr &&
+        o85 == nullptr && o86 == nullptr && o87 == nullptr && o88 == nullptr && o89 == nullptr &&
+        o90 == nullptr && o91 == nullptr && o92 == nullptr && o93 == nullptr && o94 == nullptr &&
+        o95 == nullptr && o96 == nullptr && o97 == nullptr && o98 == nullptr && o99 == nullptr &&
+        o100 == nullptr && o101 == nullptr && o102 == nullptr && o103 == nullptr &&
+        o104 == nullptr && o105 == nullptr && o106 == nullptr && o107 == nullptr &&
+        o108 == nullptr && o109 == nullptr && o110 == nullptr && o111 == nullptr &&
+        o112 == nullptr && o113 == nullptr && o114 == nullptr && o115 == nullptr &&
+        o116 == nullptr && o117 == nullptr && o118 == nullptr && o119 == nullptr &&
+        o120 == nullptr && o121 == nullptr && o122 == nullptr && o123 == nullptr &&
+        o124 == nullptr && o125 == nullptr && o126 == nullptr && o127 == nullptr &&
+        o128 == nullptr && o129 == nullptr && o130 == nullptr && o131 == nullptr &&
+        o132 == nullptr && o133 == nullptr && o134 == nullptr && o135 == nullptr &&
+        o136 == nullptr && o137 == nullptr && o138 == nullptr && o139 == nullptr &&
+        o140 == nullptr && o141 == nullptr && o142 == nullptr && o143 == nullptr &&
+        o144 == nullptr && o145 == nullptr && o146 == nullptr && o147 == nullptr &&
+        o148 == nullptr && o149 == nullptr && o150 == nullptr && o151 == nullptr &&
+        o152 == nullptr && o153 == nullptr && o154 == nullptr && o155 == nullptr &&
+        o156 == nullptr && o157 == nullptr && o158 == nullptr && o159 == nullptr &&
+        o160 == nullptr && o161 == nullptr && o162 == nullptr && o163 == nullptr &&
+        o164 == nullptr && o165 == nullptr && o166 == nullptr && o167 == nullptr &&
+        o168 == nullptr && o169 == nullptr && o170 == nullptr && o171 == nullptr &&
+        o172 == nullptr && o173 == nullptr && o174 == nullptr && o175 == nullptr &&
+        o176 == nullptr && o177 == nullptr && o178 == nullptr && o179 == nullptr &&
+        o180 == nullptr && o181 == nullptr && o182 == nullptr && o183 == nullptr &&
+        o184 == nullptr && o185 == nullptr && o186 == nullptr && o187 == nullptr &&
+        o188 == nullptr && o189 == nullptr && o190 == nullptr && o191 == nullptr &&
+        o192 == nullptr && o193 == nullptr && o194 == nullptr && o195 == nullptr &&
+        o196 == nullptr && o197 == nullptr && o198 == nullptr && o199 == nullptr &&
+        o200 == nullptr && o201 == nullptr && o202 == nullptr && o203 == nullptr &&
+        o204 == nullptr && o205 == nullptr && o206 == nullptr && o207 == nullptr &&
+        o208 == nullptr && o209 == nullptr && o210 == nullptr && o211 == nullptr &&
+        o212 == nullptr && o213 == nullptr && o214 == nullptr && o215 == nullptr &&
+        o216 == nullptr && o217 == nullptr && o218 == nullptr && o219 == nullptr &&
+        o220 == nullptr && o221 == nullptr && o222 == nullptr && o223 == nullptr &&
+        o224 == nullptr && o225 == nullptr && o226 == nullptr && o227 == nullptr &&
+        o228 == nullptr && o229 == nullptr && o230 == nullptr && o231 == nullptr &&
+        o232 == nullptr && o233 == nullptr && o234 == nullptr && o235 == nullptr &&
+        o236 == nullptr && o237 == nullptr && o238 == nullptr && o239 == nullptr &&
+        o240 == nullptr && o241 == nullptr && o242 == nullptr && o243 == nullptr &&
+        o244 == nullptr && o245 == nullptr && o246 == nullptr && o247 == nullptr &&
+        o248 == nullptr && o249 == nullptr && o250 == nullptr && o251 == nullptr &&
+        o252 == nullptr && o253 == nullptr);
   } else {
     EXPECT_EQ(0, env->GetArrayLength(reinterpret_cast<jarray>(o0)));
     EXPECT_EQ(1, env->GetArrayLength(reinterpret_cast<jarray>(o1)));
@@ -1980,8 +2207,8 @@ const char* longSig =
     "Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V";
 
 void JniCompilerTest::MaxParamNumberImpl() {
-  SetUpForTest(false, "maxParamNumber", longSig,
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_maxParamNumber));
+  SetUpForTest(
+      false, "maxParamNumber", longSig, CURRENT_JNI_WRAPPER(Java_MyClassNatives_maxParamNumber));
 
   jvalue args[254];
 
@@ -2049,10 +2276,27 @@ void JniCompilerTest::StaticWithoutImplementationImpl() {
 
 JNI_TEST_CRITICAL(StaticWithoutImplementation)
 
-void Java_MyClassNatives_stackArgsIntsFirst(JNIEnv*, jclass, jint i1, jint i2, jint i3,
-                                            jint i4, jint i5, jint i6, jint i7, jint i8, jint i9,
-                                            jint i10, jfloat f1, jfloat f2, jfloat f3, jfloat f4,
-                                            jfloat f5, jfloat f6, jfloat f7, jfloat f8, jfloat f9,
+void Java_MyClassNatives_stackArgsIntsFirst(JNIEnv*,
+                                            jclass,
+                                            jint   i1,
+                                            jint   i2,
+                                            jint   i3,
+                                            jint   i4,
+                                            jint   i5,
+                                            jint   i6,
+                                            jint   i7,
+                                            jint   i8,
+                                            jint   i9,
+                                            jint   i10,
+                                            jfloat f1,
+                                            jfloat f2,
+                                            jfloat f3,
+                                            jfloat f4,
+                                            jfloat f5,
+                                            jfloat f6,
+                                            jfloat f7,
+                                            jfloat f8,
+                                            jfloat f9,
                                             jfloat f10) {
   EXPECT_EQ(i1, 1);
   EXPECT_EQ(i2, 2);
@@ -2088,7 +2332,9 @@ void Java_MyClassNatives_stackArgsIntsFirst(JNIEnv*, jclass, jint i1, jint i2, j
 }
 
 void JniCompilerTest::StackArgsIntsFirstImpl() {
-  SetUpForTest(true, "stackArgsIntsFirst", "(IIIIIIIIIIFFFFFFFFFF)V",
+  SetUpForTest(true,
+               "stackArgsIntsFirst",
+               "(IIIIIIIIIIFFFFFFFFFF)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_stackArgsIntsFirst));
 
   jint i1 = 1;
@@ -2113,17 +2359,54 @@ void JniCompilerTest::StackArgsIntsFirstImpl() {
   jfloat f9 = bit_cast<jfloat, jint>(19);
   jfloat f10 = bit_cast<jfloat, jint>(20);
 
-  env_->CallStaticVoidMethod(jklass_, jmethod_, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, f1, f2,
-                             f3, f4, f5, f6, f7, f8, f9, f10);
+  env_->CallStaticVoidMethod(jklass_,
+                             jmethod_,
+                             i1,
+                             i2,
+                             i3,
+                             i4,
+                             i5,
+                             i6,
+                             i7,
+                             i8,
+                             i9,
+                             i10,
+                             f1,
+                             f2,
+                             f3,
+                             f4,
+                             f5,
+                             f6,
+                             f7,
+                             f8,
+                             f9,
+                             f10);
 }
 
 JNI_TEST_CRITICAL(StackArgsIntsFirst)
 
-void Java_MyClassNatives_stackArgsFloatsFirst(JNIEnv*, jclass, jfloat f1, jfloat f2,
-                                              jfloat f3, jfloat f4, jfloat f5, jfloat f6, jfloat f7,
-                                              jfloat f8, jfloat f9, jfloat f10, jint i1, jint i2,
-                                              jint i3, jint i4, jint i5, jint i6, jint i7, jint i8,
-                                              jint i9, jint i10) {
+void Java_MyClassNatives_stackArgsFloatsFirst(JNIEnv*,
+                                              jclass,
+                                              jfloat f1,
+                                              jfloat f2,
+                                              jfloat f3,
+                                              jfloat f4,
+                                              jfloat f5,
+                                              jfloat f6,
+                                              jfloat f7,
+                                              jfloat f8,
+                                              jfloat f9,
+                                              jfloat f10,
+                                              jint   i1,
+                                              jint   i2,
+                                              jint   i3,
+                                              jint   i4,
+                                              jint   i5,
+                                              jint   i6,
+                                              jint   i7,
+                                              jint   i8,
+                                              jint   i9,
+                                              jint   i10) {
   EXPECT_EQ(i1, 1);
   EXPECT_EQ(i2, 2);
   EXPECT_EQ(i3, 3);
@@ -2158,7 +2441,9 @@ void Java_MyClassNatives_stackArgsFloatsFirst(JNIEnv*, jclass, jfloat f1, jfloat
 }
 
 void JniCompilerTest::StackArgsFloatsFirstImpl() {
-  SetUpForTest(true, "stackArgsFloatsFirst", "(FFFFFFFFFFIIIIIIIIII)V",
+  SetUpForTest(true,
+               "stackArgsFloatsFirst",
+               "(FFFFFFFFFFIIIIIIIIII)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_stackArgsFloatsFirst));
 
   jint i1 = 1;
@@ -2183,16 +2468,54 @@ void JniCompilerTest::StackArgsFloatsFirstImpl() {
   jfloat f9 = bit_cast<jfloat, jint>(19);
   jfloat f10 = bit_cast<jfloat, jint>(20);
 
-  env_->CallStaticVoidMethod(jklass_, jmethod_, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, i1, i2, i3,
-                             i4, i5, i6, i7, i8, i9, i10);
+  env_->CallStaticVoidMethod(jklass_,
+                             jmethod_,
+                             f1,
+                             f2,
+                             f3,
+                             f4,
+                             f5,
+                             f6,
+                             f7,
+                             f8,
+                             f9,
+                             f10,
+                             i1,
+                             i2,
+                             i3,
+                             i4,
+                             i5,
+                             i6,
+                             i7,
+                             i8,
+                             i9,
+                             i10);
 }
 
 JNI_TEST_CRITICAL(StackArgsFloatsFirst)
 
-void Java_MyClassNatives_stackArgsMixed(JNIEnv*, jclass, jint i1, jfloat f1, jint i2,
-                                        jfloat f2, jint i3, jfloat f3, jint i4, jfloat f4, jint i5,
-                                        jfloat f5, jint i6, jfloat f6, jint i7, jfloat f7, jint i8,
-                                        jfloat f8, jint i9, jfloat f9, jint i10, jfloat f10) {
+void Java_MyClassNatives_stackArgsMixed(JNIEnv*,
+                                        jclass,
+                                        jint   i1,
+                                        jfloat f1,
+                                        jint   i2,
+                                        jfloat f2,
+                                        jint   i3,
+                                        jfloat f3,
+                                        jint   i4,
+                                        jfloat f4,
+                                        jint   i5,
+                                        jfloat f5,
+                                        jint   i6,
+                                        jfloat f6,
+                                        jint   i7,
+                                        jfloat f7,
+                                        jint   i8,
+                                        jfloat f8,
+                                        jint   i9,
+                                        jfloat f9,
+                                        jint   i10,
+                                        jfloat f10) {
   EXPECT_EQ(i1, 1);
   EXPECT_EQ(i2, 2);
   EXPECT_EQ(i3, 3);
@@ -2227,7 +2550,9 @@ void Java_MyClassNatives_stackArgsMixed(JNIEnv*, jclass, jint i1, jfloat f1, jin
 }
 
 void JniCompilerTest::StackArgsMixedImpl() {
-  SetUpForTest(true, "stackArgsMixed", "(IFIFIFIFIFIFIFIFIFIF)V",
+  SetUpForTest(true,
+               "stackArgsMixed",
+               "(IFIFIFIFIFIFIFIFIFIF)V",
                CURRENT_JNI_WRAPPER(Java_MyClassNatives_stackArgsMixed));
 
   jint i1 = 1;
@@ -2252,8 +2577,28 @@ void JniCompilerTest::StackArgsMixedImpl() {
   jfloat f9 = bit_cast<jfloat, jint>(19);
   jfloat f10 = bit_cast<jfloat, jint>(20);
 
-  env_->CallStaticVoidMethod(jklass_, jmethod_, i1, f1, i2, f2, i3, f3, i4, f4, i5, f5, i6, f6, i7,
-                             f7, i8, f8, i9, f9, i10, f10);
+  env_->CallStaticVoidMethod(jklass_,
+                             jmethod_,
+                             i1,
+                             f1,
+                             i2,
+                             f2,
+                             i3,
+                             f3,
+                             i4,
+                             f4,
+                             i5,
+                             f5,
+                             i6,
+                             f6,
+                             i7,
+                             f7,
+                             i8,
+                             f8,
+                             i9,
+                             f9,
+                             i10,
+                             f10);
 }
 
 JNI_TEST_CRITICAL(StackArgsMixed)
@@ -2287,10 +2632,8 @@ void Java_MyClassNatives_fastNative(JNIEnv*, jclass) {
 }
 
 void JniCompilerTest::FastNativeImpl() {
-  SetUpForTest(/* direct= */ true,
-               "fastNative",
-               "()V",
-               CURRENT_JNI_WRAPPER(Java_MyClassNatives_fastNative));
+  SetUpForTest(
+      /* direct= */ true, "fastNative", "()V", CURRENT_JNI_WRAPPER(Java_MyClassNatives_fastNative));
 
   ArtMethod* method = jni::DecodeArtMethod(jmethod_);
   ASSERT_TRUE(method != nullptr);
@@ -2302,7 +2645,7 @@ void JniCompilerTest::FastNativeImpl() {
 // TODO: just rename the java functions  to the standard convention and remove duplicated tests
 JNI_TEST_NORMAL_ONLY(FastNative)
 
-int gJava_myClassNatives_criticalNative_calls[kJniKindCount] = {};
+int  gJava_myClassNatives_criticalNative_calls[kJniKindCount] = {};
 // Methods annotated with @CriticalNative are considered "critical native"
 // -- Check that the annotation lookup succeeds.
 void Java_MyClassNatives_criticalNative() {
