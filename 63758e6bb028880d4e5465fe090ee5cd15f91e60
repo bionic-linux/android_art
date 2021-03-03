@@ -69,6 +69,24 @@
       "parentUuid": "349290a9_17fdea8e",
       "revId": "63758e6bb028880d4e5465fe090ee5cd15f91e60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d318e4f3_466ae2b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-03T23:41:55Z",
+      "side": 1,
+      "message": "I think it\u0027d be better to run it. For example, maybe TreeHugger already has a task that enforces .clang-format styles that we didn\u0027t know about (unlikely, but it\u0027s still better to find out here rather than after all the bots break).",
+      "parentUuid": "ed67de8d_015ca15b",
+      "revId": "63758e6bb028880d4e5465fe090ee5cd15f91e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
