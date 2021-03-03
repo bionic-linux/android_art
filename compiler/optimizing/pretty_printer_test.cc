@@ -20,10 +20,9 @@
 #include "builder.h"
 #include "dex/dex_file.h"
 #include "dex/dex_instruction.h"
+#include "gtest/gtest.h"
 #include "nodes.h"
 #include "optimizing_unit_test.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -40,8 +39,7 @@ void PrettyPrinterTest::TestCode(const std::vector<uint16_t>& data, const char* 
 }
 
 TEST_F(PrettyPrinterTest, ReturnVoid) {
-  const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(
-      Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(Instruction::RETURN_VOID);
 
   const char* expected =
       "BasicBlock 0, succ: 1\n"
@@ -68,9 +66,7 @@ TEST_F(PrettyPrinterTest, CFG1) {
       "  4: Exit\n";
 
   const std::vector<uint16_t> data =
-    ZERO_REGISTER_CODE_ITEM(
-      Instruction::GOTO | 0x100,
-      Instruction::RETURN_VOID);
+      ZERO_REGISTER_CODE_ITEM(Instruction::GOTO | 0x100, Instruction::RETURN_VOID);
 
   TestCode(data, expected);
 }
@@ -90,9 +86,7 @@ TEST_F(PrettyPrinterTest, CFG2) {
       "  5: Exit\n";
 
   const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO | 0x100,
-    Instruction::GOTO | 0x100,
-    Instruction::RETURN_VOID);
+      Instruction::GOTO | 0x100, Instruction::GOTO | 0x100, Instruction::RETURN_VOID);
 
   TestCode(data, expected);
 }
@@ -112,23 +106,17 @@ TEST_F(PrettyPrinterTest, CFG3) {
       "  5: Exit\n";
 
   const std::vector<uint16_t> data1 = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO | 0x200,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO | 0xFF00);
+      Instruction::GOTO | 0x200, Instruction::RETURN_VOID, Instruction::GOTO | 0xFF00);
 
   TestCode(data1, expected);
 
   const std::vector<uint16_t> data2 = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO_16, 3,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO_16, 0xFFFF);
+      Instruction::GOTO_16, 3, Instruction::RETURN_VOID, Instruction::GOTO_16, 0xFFFF);
 
   TestCode(data2, expected);
 
   const std::vector<uint16_t> data3 = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO_32, 4, 0,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO_32, 0xFFFF, 0xFFFF);
+      Instruction::GOTO_32, 4, 0, Instruction::RETURN_VOID, Instruction::GOTO_32, 0xFFFF, 0xFFFF);
 
   TestCode(data3, expected);
 }
@@ -144,14 +132,12 @@ TEST_F(PrettyPrinterTest, CFG4) {
       "BasicBlock 3, pred: 0, succ: 1\n"
       "  0: Goto 1\n";
 
-  const std::vector<uint16_t> data1 = ZERO_REGISTER_CODE_ITEM(
-    Instruction::NOP,
-    Instruction::GOTO | 0xFF00);
+  const std::vector<uint16_t> data1 =
+      ZERO_REGISTER_CODE_ITEM(Instruction::NOP, Instruction::GOTO | 0xFF00);
 
   TestCode(data1, expected);
 
-  const std::vector<uint16_t> data2 = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO_32, 0, 0);
+  const std::vector<uint16_t> data2 = ZERO_REGISTER_CODE_ITEM(Instruction::GOTO_32, 0, 0);
 
   TestCode(data2, expected);
 }
@@ -167,9 +153,7 @@ TEST_F(PrettyPrinterTest, CFG5) {
       "  3: Exit\n";
 
   const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(
-    Instruction::RETURN_VOID,
-    Instruction::GOTO | 0x100,
-    Instruction::GOTO | 0xFE00);
+      Instruction::RETURN_VOID, Instruction::GOTO | 0x100, Instruction::GOTO | 0xFE00);
 
   TestCode(data, expected);
 }
@@ -192,11 +176,11 @@ TEST_F(PrettyPrinterTest, CFG6) {
       "BasicBlock 5, pred: 1, succ: 3\n"
       "  0: Goto 3\n";
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::GOTO | 0x100,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::GOTO | 0x100,
+                                                            Instruction::RETURN_VOID);
 
   TestCode(data, expected);
 }
@@ -220,11 +204,11 @@ TEST_F(PrettyPrinterTest, CFG7) {
       "BasicBlock 6, pred: 1, succ: 2\n"
       "  1: Goto 2\n";
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::GOTO | 0x100,
-    Instruction::GOTO | 0xFF00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::GOTO | 0x100,
+                                                            Instruction::GOTO | 0xFF00);
 
   TestCode(data, expected);
 }
@@ -240,9 +224,8 @@ TEST_F(PrettyPrinterTest, IntConstant) {
       "BasicBlock 2, pred: 1\n"
       "  4: Exit\n";
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data =
+      ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0, Instruction::RETURN_VOID);
 
   TestCode(data, expected);
 }

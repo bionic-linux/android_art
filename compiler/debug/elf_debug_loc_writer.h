@@ -66,8 +66,8 @@ static Reg GetDwarfFpReg(InstructionSet isa, int machine_reg) {
 }
 
 struct VariableLocation {
-  uint32_t low_pc;  // Relative to compilation unit.
-  uint32_t high_pc;  // Relative to compilation unit.
+  uint32_t low_pc;             // Relative to compilation unit.
+  uint32_t high_pc;            // Relative to compilation unit.
   DexRegisterLocation reg_lo;  // May be None if the location is unknown.
   DexRegisterLocation reg_hi;  // Most significant bits of 64-bit value.
 };
@@ -106,8 +106,8 @@ static std::vector<VariableLocation> GetVariableLocations(
     const uint32_t pc_offset = stack_map.GetNativePcOffset(isa);
     DCHECK_LE(pc_offset, method_info->code_size);
     DCHECK_LE(compilation_unit_code_address, method_info->code_address);
-    const uint32_t low_pc = dchecked_integral_cast<uint32_t>(
-        method_info->code_address + pc_offset - compilation_unit_code_address);
+    const uint32_t low_pc = dchecked_integral_cast<uint32_t>(method_info->code_address + pc_offset -
+                                                             compilation_unit_code_address);
     stack_maps.emplace(low_pc, s);
   }
 
@@ -118,9 +118,10 @@ static std::vector<VariableLocation> GetVariableLocations(
     const StackMap stack_map = code_info.GetStackMapAt(stack_map_index);
     auto next_it = it;
     next_it++;
-    const uint32_t high_pc = next_it != stack_maps.end()
-      ? next_it->first
-      : method_info->code_address + method_info->code_size - compilation_unit_code_address;
+    const uint32_t high_pc =
+        next_it != stack_maps.end()
+            ? next_it->first
+            : method_info->code_address + method_info->code_size - compilation_unit_code_address;
     DCHECK_LE(low_pc, high_pc);
     if (low_pc == high_pc) {
       continue;  // Ignore if the address range is empty.
@@ -147,10 +148,8 @@ static std::vector<VariableLocation> GetVariableLocations(
     }
 
     // Add location entry for this address range.
-    if (!variable_locations.empty() &&
-        variable_locations.back().reg_lo == reg_lo &&
-        variable_locations.back().reg_hi == reg_hi &&
-        variable_locations.back().high_pc == low_pc) {
+    if (!variable_locations.empty() && variable_locations.back().reg_lo == reg_lo &&
+        variable_locations.back().reg_hi == reg_hi && variable_locations.back().high_pc == low_pc) {
       // Merge with the previous entry (extend its range).
       variable_locations.back().high_pc = high_pc;
     } else {
@@ -180,15 +179,15 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
     return;
   }
 
-  std::vector<VariableLocation> variable_locations = GetVariableLocations(
-      method_info,
-      dex_register_maps,
-      vreg,
-      is64bitValue,
-      compilation_unit_code_address,
-      dex_pc_low,
-      dex_pc_high,
-      isa);
+  std::vector<VariableLocation> variable_locations =
+      GetVariableLocations(method_info,
+                           dex_register_maps,
+                           vreg,
+                           is64bitValue,
+                           compilation_unit_code_address,
+                           dex_pc_low,
+                           dex_pc_high,
+                           isa);
 
   // Write .debug_loc entries.
   dwarf::Writer<> debug_loc(debug_loc_buffer);
@@ -209,20 +208,18 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
       if (kind == Kind::kInStack) {
         // The stack offset is relative to SP. Make it relative to CFA.
         expr.WriteOpFbreg(value - method_info->frame_size_in_bytes);
-        if (piece == 0 && reg_hi.GetKind() == Kind::kInStack &&
-            reg_hi.GetValue() == value + 4) {
+        if (piece == 0 && reg_hi.GetKind() == Kind::kInStack && reg_hi.GetValue() == value + 4) {
           break;  // the high word is correctly implied by the low word.
         }
       } else if (kind == Kind::kInRegister) {
         expr.WriteOpReg(GetDwarfCoreReg(isa, value).num());
-        if (piece == 0 && reg_hi.GetKind() == Kind::kInRegisterHigh &&
-            reg_hi.GetValue() == value) {
+        if (piece == 0 && reg_hi.GetKind() == Kind::kInRegisterHigh && reg_hi.GetValue() == value) {
           break;  // the high word is correctly implied by the low word.
         }
       } else if (kind == Kind::kInFpuRegister) {
-        if ((isa == InstructionSet::kArm || isa == InstructionSet::kThumb2) &&
-            piece == 0 && reg_hi.GetKind() == Kind::kInFpuRegister &&
-            reg_hi.GetValue() == value + 1 && value % 2 == 0) {
+        if ((isa == InstructionSet::kArm || isa == InstructionSet::kThumb2) && piece == 0 &&
+            reg_hi.GetKind() == Kind::kInFpuRegister && reg_hi.GetValue() == value + 1 &&
+            value % 2 == 0) {
           // Translate S register pair to D register (e.g. S4+S5 to D2).
           expr.WriteOpReg(Reg::ArmDp(value / 2).num());
           break;
@@ -285,7 +282,7 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
   for (size_t i = 0; i < variable_locations.size(); i++) {
     uint32_t low_pc = variable_locations[i].low_pc;
     uint32_t high_pc = variable_locations[i].high_pc;
-    while (i + 1 < variable_locations.size() && variable_locations[i+1].low_pc == high_pc) {
+    while (i + 1 < variable_locations.size() && variable_locations[i + 1].low_pc == high_pc) {
       // Merge address range with the next entry.
       high_pc = variable_locations[++i].high_pc;
     }
@@ -328,4 +325,3 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_LOC_WRITER_H_
-

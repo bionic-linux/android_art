@@ -57,11 +57,10 @@ static bool BootImageAOTCanEmbedMethod(ArtMethod* method, const CompilerOptions&
   return compiler_options.IsImageClass(dex_file.StringByTypeIdx(klass->GetDexTypeIndex()));
 }
 
-HInvokeStaticOrDirect::DispatchInfo HSharpening::SharpenLoadMethod(
-    ArtMethod* callee,
-    bool has_method_id,
-    bool for_interface_call,
-    CodeGenerator* codegen) {
+HInvokeStaticOrDirect::DispatchInfo HSharpening::SharpenLoadMethod(ArtMethod* callee,
+                                                                   bool has_method_id,
+                                                                   bool for_interface_call,
+                                                                   CodeGenerator* codegen) {
   if (kIsDebugBuild) {
     ScopedObjectAccess soa(Thread::Current());  // Required for GetDeclaringClass below.
     DCHECK(callee != nullptr);
@@ -86,8 +85,7 @@ HInvokeStaticOrDirect::DispatchInfo HSharpening::SharpenLoadMethod(
   // We don't optimize for debuggable as it would prevent us from obsoleting the method in some
   // situations.
   const CompilerOptions& compiler_options = codegen->GetCompilerOptions();
-  if (callee == codegen->GetGraph()->GetArtMethod() &&
-      !codegen->GetGraph()->IsDebuggable() &&
+  if (callee == codegen->GetGraph()->GetArtMethod() && !codegen->GetGraph()->IsDebuggable() &&
       // The runtime expects the canonical interface method being passed as
       // hidden argument when doing an invokeinterface. Because default methods
       // can be called through invokevirtual, we may get a copied method if we
@@ -116,8 +114,7 @@ HInvokeStaticOrDirect::DispatchInfo HSharpening::SharpenLoadMethod(
   } else if (compiler_options.IsJitCompiler()) {
     ScopedObjectAccess soa(Thread::Current());
     if (Runtime::Current()->GetJit()->CanEncodeMethod(
-            callee,
-            compiler_options.IsJitCompilerForSharedCode())) {
+            callee, compiler_options.IsJitCompilerForSharedCode())) {
       method_load_kind = MethodLoadKind::kJitDirectAddress;
       method_load_data = reinterpret_cast<uintptr_t>(callee);
       code_ptr_location = CodePtrLocation::kCallArtMethod;
@@ -153,8 +150,7 @@ HInvokeStaticOrDirect::DispatchInfo HSharpening::SharpenLoadMethod(
   }
 
   HInvokeStaticOrDirect::DispatchInfo desired_dispatch_info = {
-      method_load_kind, code_ptr_location, method_load_data
-  };
+      method_load_kind, code_ptr_location, method_load_data};
   return codegen->GetSupportedInvokeStaticOrDirectDispatch(desired_dispatch_info, callee);
 }
 
@@ -210,9 +206,8 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(
       bool same_package =
           (referrer_package_length == klass_package_length) &&
           memcmp(referrer_descriptor, klass_descriptor, referrer_package_length) == 0;
-      desired_load_kind = same_package
-          ? HLoadClass::LoadKind::kBssEntryPackage
-          : HLoadClass::LoadKind::kBssEntryPublic;
+      desired_load_kind = same_package ? HLoadClass::LoadKind::kBssEntryPackage
+                                       : HLoadClass::LoadKind::kBssEntryPublic;
     }
   } else {
     Runtime* runtime = Runtime::Current();
@@ -235,16 +230,15 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(
         desired_load_kind = HLoadClass::LoadKind::kBssEntry;
       }
     } else {
-      is_in_boot_image = (klass != nullptr) &&
-          runtime->GetHeap()->ObjectIsInBootImageSpace(klass.Get());
+      is_in_boot_image =
+          (klass != nullptr) && runtime->GetHeap()->ObjectIsInBootImageSpace(klass.Get());
       if (compiler_options.IsJitCompiler()) {
         DCHECK(!compiler_options.GetCompilePic());
         if (is_in_boot_image) {
           desired_load_kind = HLoadClass::LoadKind::kJitBootImageAddress;
         } else if (klass != nullptr) {
-          if (runtime->GetJit()->CanEncodeClass(
-                  klass.Get(),
-                  compiler_options.IsJitCompilerForSharedCode())) {
+          if (runtime->GetJit()->CanEncodeClass(klass.Get(),
+                                                compiler_options.IsJitCompilerForSharedCode())) {
             desired_load_kind = HLoadClass::LoadKind::kJitTableAddress;
           } else {
             // Shared JIT code cannot encode a literal that the GC can move.
@@ -314,13 +308,11 @@ static inline bool CanUseTypeCheckBitstring(ObjPtr<mirror::Class> klass, CodeGen
   MutexLock subtype_check_lock(Thread::Current(), *Locks::subtype_check_lock_);
   if ((false) &&  // FIXME: Inliner does not respect CompilerDriver::ShouldCompileMethod()
                   // and we're hitting an unassigned bitstring in dex2oat_image_test. b/26687569
-      kIsDebugBuild &&
-      compiler_options.IsBootImage() &&
-      compiler_options.IsForceDeterminism()) {
+      kIsDebugBuild && compiler_options.IsBootImage() && compiler_options.IsForceDeterminism()) {
     SubtypeCheckInfo::State old_state = SubtypeCheck<ObjPtr<mirror::Class>>::GetState(klass);
     CHECK(old_state == SubtypeCheckInfo::kAssigned || old_state == SubtypeCheckInfo::kOverflowed)
-        << klass->PrettyDescriptor() << "/" << old_state
-        << " in " << codegen->GetGraph()->PrettyMethod();
+        << klass->PrettyDescriptor() << "/" << old_state << " in "
+        << codegen->GetGraph()->PrettyMethod();
   }
   SubtypeCheckInfo::State state = SubtypeCheck<ObjPtr<mirror::Class>>::EnsureAssigned(klass);
   return state == SubtypeCheckInfo::kAssigned;
@@ -343,8 +335,7 @@ TypeCheckKind HSharpening::ComputeTypeCheckKind(ObjPtr<mirror::Class> klass,
     }
   } else if (klass->IsFinal()) {  // TODO: Consider using bitstring for final classes.
     return TypeCheckKind::kExactCheck;
-  } else if (kBitstringSubtypeCheckEnabled &&
-             !needs_access_check &&
+  } else if (kBitstringSubtypeCheckEnabled && !needs_access_check &&
              CanUseTypeCheckBitstring(klass, codegen)) {
     // TODO: We should not need the `!needs_access_check` check but getting rid of that
     // requires rewriting some optimizations in instruction simplifier.
@@ -356,11 +347,10 @@ TypeCheckKind HSharpening::ComputeTypeCheckKind(ObjPtr<mirror::Class> klass,
   }
 }
 
-void HSharpening::ProcessLoadString(
-    HLoadString* load_string,
-    CodeGenerator* codegen,
-    const DexCompilationUnit& dex_compilation_unit,
-    VariableSizedHandleScope* handles) {
+void HSharpening::ProcessLoadString(HLoadString* load_string,
+                                    CodeGenerator* codegen,
+                                    const DexCompilationUnit& dex_compilation_unit,
+                                    VariableSizedHandleScope* handles) {
   DCHECK_EQ(load_string->GetLoadKind(), HLoadString::LoadKind::kRuntimeCall);
 
   const DexFile& dex_file = load_string->GetDexFile();
@@ -372,9 +362,10 @@ void HSharpening::ProcessLoadString(
     ClassLinker* class_linker = runtime->GetClassLinker();
     ScopedObjectAccess soa(Thread::Current());
     StackHandleScope<1> hs(soa.Self());
-    Handle<mirror::DexCache> dex_cache = IsSameDexFile(dex_file, *dex_compilation_unit.GetDexFile())
-        ? dex_compilation_unit.GetDexCache()
-        : hs.NewHandle(class_linker->FindDexCache(soa.Self(), dex_file));
+    Handle<mirror::DexCache> dex_cache =
+        IsSameDexFile(dex_file, *dex_compilation_unit.GetDexFile())
+            ? dex_compilation_unit.GetDexCache()
+            : hs.NewHandle(class_linker->FindDexCache(soa.Self(), dex_file));
     ObjPtr<mirror::String> string = nullptr;
 
     const CompilerOptions& compiler_options = codegen->GetCompilerOptions();
@@ -418,8 +409,7 @@ void HSharpening::ProcessLoadString(
         if (heap->ObjectIsInBootImageSpace(string)) {
           desired_load_kind = HLoadString::LoadKind::kJitBootImageAddress;
         } else if (runtime->GetJit()->CanEncodeString(
-                  string,
-                  compiler_options.IsJitCompilerForSharedCode())) {
+                       string, compiler_options.IsJitCompilerForSharedCode())) {
           desired_load_kind = HLoadString::LoadKind::kJitTableAddress;
         } else {
           // Shared JIT code cannot encode a literal that the GC can move.

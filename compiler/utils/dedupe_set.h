@@ -18,6 +18,7 @@
 #define ART_COMPILER_UTILS_DEDUPE_SET_H_
 
 #include <stdint.h>
+
 #include <memory>
 #include <string>
 

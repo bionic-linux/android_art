@@ -30,8 +30,7 @@ class LICM : public HOptimization {
        const SideEffectsAnalysis& side_effects,
        OptimizingCompilerStats* stats,
        const char* name = kLoopInvariantCodeMotionPassName)
-      : HOptimization(graph, name, stats),
-        side_effects_(side_effects) {}
+      : HOptimization(graph, name, stats), side_effects_(side_effects) {}
 
   bool Run() override;
 

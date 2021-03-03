@@ -34,8 +34,12 @@ static constexpr size_t kDefaultNumberOfSpillSlots = 4;
 // For simplicity, we implement register pairs as (reg, reg + 1).
 // Note that this is a requirement for double registers on ARM, since we
 // allocate SRegister.
-static int GetHighForLowRegister(int reg) { return reg + 1; }
-static bool IsLowRegister(int reg) { return (reg & 1) == 0; }
+static int GetHighForLowRegister(int reg) {
+  return reg + 1;
+}
+static bool IsLowRegister(int reg) {
+  return (reg & 1) == 0;
+}
 static bool IsLowOfUnalignedPairInterval(LiveInterval* low) {
   return GetHighForLowRegister(low->GetRegister()) != low->GetHighInterval()->GetRegister();
 }
@@ -43,28 +47,28 @@ static bool IsLowOfUnalignedPairInterval(LiveInterval* low) {
 RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* allocator,
                                                          CodeGenerator* codegen,
                                                          const SsaLivenessAnalysis& liveness)
-      : RegisterAllocator(allocator, codegen, liveness),
-        unhandled_core_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        unhandled_fp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        unhandled_(nullptr),
-        handled_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        active_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        inactive_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        physical_core_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        physical_fp_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        temp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        int_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        long_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        float_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        double_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        catch_phi_spill_slots_(0),
-        safepoints_(allocator->Adapter(kArenaAllocRegisterAllocator)),
-        processing_core_registers_(false),
-        number_of_registers_(-1),
-        registers_array_(nullptr),
-        blocked_core_registers_(codegen->GetBlockedCoreRegisters()),
-        blocked_fp_registers_(codegen->GetBlockedFloatingPointRegisters()),
-        reserved_out_slots_(0) {
+    : RegisterAllocator(allocator, codegen, liveness),
+      unhandled_core_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      unhandled_fp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      unhandled_(nullptr),
+      handled_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      active_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      inactive_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      physical_core_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      physical_fp_register_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      temp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      int_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      long_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      float_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      double_spill_slots_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      catch_phi_spill_slots_(0),
+      safepoints_(allocator->Adapter(kArenaAllocRegisterAllocator)),
+      processing_core_registers_(false),
+      number_of_registers_(-1),
+      registers_array_(nullptr),
+      blocked_core_registers_(codegen->GetBlockedCoreRegisters()),
+      blocked_fp_registers_(codegen->GetBlockedFloatingPointRegisters()),
+      reserved_out_slots_(0) {
   temp_intervals_.reserve(4);
   int_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
   long_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
@@ -84,9 +88,10 @@ RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* a
 RegisterAllocatorLinearScan::~RegisterAllocatorLinearScan() {}
 
 static bool ShouldProcess(bool processing_core_registers, LiveInterval* interval) {
-  if (interval == nullptr) return false;
-  bool is_core_register = (interval->GetType() != DataType::Type::kFloat64)
-      && (interval->GetType() != DataType::Type::kFloat32);
+  if (interval == nullptr)
+    return false;
+  bool is_core_register = (interval->GetType() != DataType::Type::kFloat64) &&
+                          (interval->GetType() != DataType::Type::kFloat32);
   return processing_core_registers == is_core_register;
 }
 
@@ -117,8 +122,7 @@ void RegisterAllocatorLinearScan::AllocateRegisters() {
         DCHECK_LE(current_liveness, instruction->GetLifetimePosition());
         current_liveness = instruction->GetLifetimePosition();
       }
-      for (HInstructionIterator inst_it(block->GetInstructions());
-           !inst_it.Done();
+      for (HInstructionIterator inst_it(block->GetInstructions()); !inst_it.Done();
            inst_it.Advance()) {
         HInstruction* instruction = inst_it.Current();
         DCHECK_LE(current_liveness, instruction->GetLifetimePosition()) << instruction->DebugName();
@@ -131,12 +135,9 @@ void RegisterAllocatorLinearScan::AllocateRegisters() {
 void RegisterAllocatorLinearScan::BlockRegister(Location location, size_t start, size_t end) {
   int reg = location.reg();
   DCHECK(location.IsRegister() || location.IsFpuRegister());
-  LiveInterval* interval = location.IsRegister()
-      ? physical_core_register_intervals_[reg]
-      : physical_fp_register_intervals_[reg];
-  DataType::Type type = location.IsRegister()
-      ? DataType::Type::kInt32
-      : DataType::Type::kFloat32;
+  LiveInterval* interval = location.IsRegister() ? physical_core_register_intervals_[reg]
+                                                 : physical_fp_register_intervals_[reg];
+  DataType::Type type = location.IsRegister() ? DataType::Type::kInt32 : DataType::Type::kFloat32;
   if (interval == nullptr) {
     interval = LiveInterval::MakeFixedInterval(allocator_, reg, type);
     if (location.IsRegister()) {
@@ -185,8 +186,8 @@ void RegisterAllocatorLinearScan::AllocateRegistersInternal() {
   }
 
   number_of_registers_ = codegen_->GetNumberOfCoreRegisters();
-  registers_array_ = allocator_->AllocArray<size_t>(number_of_registers_,
-                                                    kArenaAllocRegisterAllocator);
+  registers_array_ =
+      allocator_->AllocArray<size_t>(number_of_registers_, kArenaAllocRegisterAllocator);
   processing_core_registers_ = true;
   unhandled_ = &unhandled_core_intervals_;
   for (LiveInterval* fixed : physical_core_register_intervals_) {
@@ -205,8 +206,8 @@ void RegisterAllocatorLinearScan::AllocateRegistersInternal() {
   handled_.clear();
 
   number_of_registers_ = codegen_->GetNumberOfFloatingPointRegisters();
-  registers_array_ = allocator_->AllocArray<size_t>(number_of_registers_,
-                                                    kArenaAllocRegisterAllocator);
+  registers_array_ =
+      allocator_->AllocArray<size_t>(number_of_registers_, kArenaAllocRegisterAllocator);
   processing_core_registers_ = false;
   unhandled_ = &unhandled_fp_intervals_;
   for (LiveInterval* fixed : physical_fp_register_intervals_) {
@@ -225,7 +226,8 @@ void RegisterAllocatorLinearScan::ProcessInstruction(HInstruction* instruction) 
   LocationSummary* locations = instruction->GetLocations();
   size_t position = instruction->GetLifetimePosition();
 
-  if (locations == nullptr) return;
+  if (locations == nullptr)
+    return;
 
   // Create synthesized intervals for temporaries.
   for (size_t i = 0; i < locations->GetTempCount(); ++i) {
@@ -262,14 +264,13 @@ void RegisterAllocatorLinearScan::ProcessInstruction(HInstruction* instruction) 
         }
 
         default:
-          LOG(FATAL) << "Unexpected policy for temporary location "
-                     << temp.GetPolicy();
+          LOG(FATAL) << "Unexpected policy for temporary location " << temp.GetPolicy();
       }
     }
   }
 
-  bool core_register = (instruction->GetType() != DataType::Type::kFloat64)
-      && (instruction->GetType() != DataType::Type::kFloat32);
+  bool core_register = (instruction->GetType() != DataType::Type::kFloat64) &&
+                       (instruction->GetType() != DataType::Type::kFloat32);
 
   if (locations->NeedsSafepoint()) {
     if (codegen_->IsLeafMethod()) {
@@ -298,11 +299,11 @@ void RegisterAllocatorLinearScan::ProcessInstruction(HInstruction* instruction) 
   }
 
   LiveInterval* current = instruction->GetLiveInterval();
-  if (current == nullptr) return;
+  if (current == nullptr)
+    return;
 
-  ScopedArenaVector<LiveInterval*>& unhandled = core_register
-      ? unhandled_core_intervals_
-      : unhandled_fp_intervals_;
+  ScopedArenaVector<LiveInterval*>& unhandled =
+      core_register ? unhandled_core_intervals_ : unhandled_fp_intervals_;
 
   DCHECK(unhandled.empty() || current->StartsBeforeOrAt(unhandled.back()));
 
@@ -400,12 +401,17 @@ void RegisterAllocatorLinearScan::ProcessInstruction(HInstruction* instruction) 
 class AllRangesIterator : public ValueObject {
  public:
   explicit AllRangesIterator(LiveInterval* interval)
-      : current_interval_(interval),
-        current_range_(interval->GetFirstRange()) {}
+      : current_interval_(interval), current_range_(interval->GetFirstRange()) {}
 
-  bool Done() const { return current_interval_ == nullptr; }
-  LiveRange* CurrentRange() const { return current_range_; }
-  LiveInterval* CurrentInterval() const { return current_interval_; }
+  bool Done() const {
+    return current_interval_ == nullptr;
+  }
+  LiveRange* CurrentRange() const {
+    return current_range_;
+  }
+  LiveInterval* CurrentInterval() const {
+    return current_interval_;
+  }
 
   void Advance() {
     current_range_ = current_range_->GetNext();
@@ -437,9 +443,9 @@ bool RegisterAllocatorLinearScan::ValidateInternal(bool log_fatal_on_failure) co
     }
   }
 
-  const ScopedArenaVector<LiveInterval*>* physical_register_intervals = processing_core_registers_
-      ? &physical_core_register_intervals_
-      : &physical_fp_register_intervals_;
+  const ScopedArenaVector<LiveInterval*>* physical_register_intervals =
+      processing_core_registers_ ? &physical_core_register_intervals_
+                                 : &physical_fp_register_intervals_;
   for (LiveInterval* fixed : *physical_register_intervals) {
     if (fixed != nullptr) {
       intervals.push_back(fixed);
@@ -485,8 +491,7 @@ void RegisterAllocatorLinearScan::DumpAllIntervals(std::ostream& stream) const {
     DumpInterval(stream, active_interval);
   }
   stream << "unhandled: " << std::endl;
-  auto unhandled = (unhandled_ != nullptr) ?
-      unhandled_ : &unhandled_core_intervals_;
+  auto unhandled = (unhandled_ != nullptr) ? unhandled_ : &unhandled_core_intervals_;
   for (LiveInterval* unhandled_interval : *unhandled) {
     DumpInterval(stream, unhandled_interval);
   }
@@ -510,8 +515,7 @@ void RegisterAllocatorLinearScan::LinearScan() {
     // Make sure a low interval is always with a high.
     DCHECK(!current->IsLowInterval() || unhandled_->back()->IsHighInterval());
     // Make sure a high interval is always with a low.
-    DCHECK(current->IsLowInterval() ||
-           unhandled_->empty() ||
+    DCHECK(current->IsLowInterval() || unhandled_->empty() ||
            !unhandled_->back()->IsHighInterval());
 
     size_t position = current->GetStart();
@@ -523,10 +527,8 @@ void RegisterAllocatorLinearScan::LinearScan() {
     // (2) Remove currently active intervals that are dead at this position.
     //     Move active intervals that have a lifetime hole at this position
     //     to inactive.
-    auto active_kept_end = std::remove_if(
-        active_.begin(),
-        active_.end(),
-        [this, position](LiveInterval* interval) {
+    auto active_kept_end =
+        std::remove_if(active_.begin(), active_.end(), [this, position](LiveInterval* interval) {
           if (interval->IsDeadAt(position)) {
             handled_.push_back(interval);
             return true;
@@ -543,9 +545,7 @@ void RegisterAllocatorLinearScan::LinearScan() {
     //     Move inactive intervals that cover this position to active.
     auto inactive_to_handle_end = inactive_.begin() + inactive_intervals_to_handle;
     auto inactive_kept_end = std::remove_if(
-        inactive_.begin(),
-        inactive_to_handle_end,
-        [this, position](LiveInterval* interval) {
+        inactive_.begin(), inactive_to_handle_end, [this, position](LiveInterval* interval) {
           DCHECK(interval->GetStart() < position || interval->IsFixed());
           if (interval->IsDeadAt(position)) {
             handled_.push_back(interval);
@@ -578,8 +578,8 @@ void RegisterAllocatorLinearScan::LinearScan() {
     //     intervals.
     if (success) {
       codegen_->AddAllocatedRegister(processing_core_registers_
-          ? Location::RegisterLocation(current->GetRegister())
-          : Location::FpuRegisterLocation(current->GetRegister()));
+                                         ? Location::RegisterLocation(current->GetRegister())
+                                         : Location::FpuRegisterLocation(current->GetRegister()));
       active_.push_back(current);
       if (current->HasHighInterval() && !current->GetHighInterval()->HasRegister()) {
         current->GetHighInterval()->SetRegister(GetHighForLowRegister(current->GetRegister()));
@@ -738,25 +738,26 @@ bool RegisterAllocatorLinearScan::TryAllocateFreeReg(LiveInterval* current) {
 }
 
 bool RegisterAllocatorLinearScan::IsBlocked(int reg) const {
-  return processing_core_registers_
-      ? blocked_core_registers_[reg]
-      : blocked_fp_registers_[reg];
+  return processing_core_registers_ ? blocked_core_registers_[reg] : blocked_fp_registers_[reg];
 }
 
-int RegisterAllocatorLinearScan::FindAvailableRegisterPair(size_t* next_use, size_t starting_at) const {
+int RegisterAllocatorLinearScan::FindAvailableRegisterPair(size_t* next_use,
+                                                           size_t starting_at) const {
   int reg = kNoRegister;
   // Pick the register pair that is used the last.
   for (size_t i = 0; i < number_of_registers_; ++i) {
-    if (IsBlocked(i)) continue;
-    if (!IsLowRegister(i)) continue;
+    if (IsBlocked(i))
+      continue;
+    if (!IsLowRegister(i))
+      continue;
     int high_register = GetHighForLowRegister(i);
-    if (IsBlocked(high_register)) continue;
+    if (IsBlocked(high_register))
+      continue;
     int existing_high_register = GetHighForLowRegister(reg);
-    if ((reg == kNoRegister) || (next_use[i] >= next_use[reg]
-                        && next_use[high_register] >= next_use[existing_high_register])) {
+    if ((reg == kNoRegister) || (next_use[i] >= next_use[reg] &&
+                                 next_use[high_register] >= next_use[existing_high_register])) {
       reg = i;
-      if (next_use[i] == kMaxLifetimePosition
-          && next_use[high_register] == kMaxLifetimePosition) {
+      if (next_use[i] == kMaxLifetimePosition && next_use[high_register] == kMaxLifetimePosition) {
         break;
       }
     } else if (next_use[reg] <= starting_at || next_use[existing_high_register] <= starting_at) {
@@ -769,12 +770,12 @@ int RegisterAllocatorLinearScan::FindAvailableRegisterPair(size_t* next_use, siz
 }
 
 bool RegisterAllocatorLinearScan::IsCallerSaveRegister(int reg) const {
-  return processing_core_registers_
-      ? !codegen_->IsCoreCalleeSaveRegister(reg)
-      : !codegen_->IsFloatingPointCalleeSaveRegister(reg);
+  return processing_core_registers_ ? !codegen_->IsCoreCalleeSaveRegister(reg)
+                                    : !codegen_->IsFloatingPointCalleeSaveRegister(reg);
 }
 
-int RegisterAllocatorLinearScan::FindAvailableRegister(size_t* next_use, LiveInterval* current) const {
+int RegisterAllocatorLinearScan::FindAvailableRegister(size_t* next_use,
+                                                       LiveInterval* current) const {
   // We special case intervals that do not span a safepoint to try to find a caller-save
   // register if one is available. We iterate from 0 to the number of registers,
   // so if there are caller-save registers available at the end, we continue the iteration.
@@ -837,22 +838,23 @@ static ArenaVector<LiveInterval*>::iterator RemoveIntervalAndPotentialOtherHalf(
   }
 }
 
-bool RegisterAllocatorLinearScan::TrySplitNonPairOrUnalignedPairIntervalAt(size_t position,
-                                                                           size_t first_register_use,
-                                                                           size_t* next_use) {
+bool RegisterAllocatorLinearScan::TrySplitNonPairOrUnalignedPairIntervalAt(
+    size_t position, size_t first_register_use, size_t* next_use) {
   for (auto it = active_.begin(), end = active_.end(); it != end; ++it) {
     LiveInterval* active = *it;
     DCHECK(active->HasRegister());
-    if (active->IsFixed()) continue;
-    if (active->IsHighInterval()) continue;
-    if (first_register_use > next_use[active->GetRegister()]) continue;
+    if (active->IsFixed())
+      continue;
+    if (active->IsHighInterval())
+      continue;
+    if (first_register_use > next_use[active->GetRegister()])
+      continue;
 
     // Split the first interval found that is either:
     // 1) A non-pair interval.
     // 2) A pair interval whose high is not low + 1.
     // 3) A pair interval whose low is not even.
-    if (!active->IsLowInterval() ||
-        IsLowOfUnalignedPairInterval(active) ||
+    if (!active->IsLowInterval() || IsLowOfUnalignedPairInterval(active) ||
         !IsLowRegister(active->GetRegister())) {
       LiveInterval* split = Split(active, position);
       if (split != active) {
@@ -943,8 +945,8 @@ bool RegisterAllocatorLinearScan::AllocateBlockedReg(LiveInterval* current) {
   } else if (current->IsLowInterval()) {
     reg = FindAvailableRegisterPair(next_use, first_register_use);
     // We should spill if both registers are not available.
-    should_spill = (first_register_use >= next_use[reg])
-      || (first_register_use >= next_use[GetHighForLowRegister(reg)]);
+    should_spill = (first_register_use >= next_use[reg]) ||
+                   (first_register_use >= next_use[GetHighForLowRegister(reg)]);
   } else {
     DCHECK(!current->IsHighInterval());
     reg = FindAvailableRegister(next_use, current);
@@ -962,10 +964,9 @@ bool RegisterAllocatorLinearScan::AllocateBlockedReg(LiveInterval* current) {
         // This situation has the potential to infinite loop, so we make it a non-debug CHECK.
         HInstruction* at = liveness_.GetInstructionFromPosition(first_register_use / 2);
         CHECK(false) << "There is not enough registers available for "
-          << current->GetParent()->GetDefinedBy()->DebugName() << " "
-          << current->GetParent()->GetDefinedBy()->GetId()
-          << " at " << first_register_use - 1 << " "
-          << (at == nullptr ? "" : at->DebugName());
+                     << current->GetParent()->GetDefinedBy()->DebugName() << " "
+                     << current->GetParent()->GetDefinedBy()->GetId() << " at "
+                     << first_register_use - 1 << " " << (at == nullptr ? "" : at->DebugName());
       }
 
       // If we're allocating a register for `current` because the instruction at
@@ -973,9 +974,8 @@ bool RegisterAllocatorLinearScan::AllocateBlockedReg(LiveInterval* current) {
       // non-pair intervals or unaligned pair intervals blocking the allocation.
       // We split the first interval found, and put ourselves first in the
       // `unhandled_` list.
-      bool success = TrySplitNonPairOrUnalignedPairIntervalAt(current->GetStart(),
-                                                              first_register_use,
-                                                              next_use);
+      bool success = TrySplitNonPairOrUnalignedPairIntervalAt(
+          current->GetStart(), first_register_use, next_use);
       DCHECK(success);
       LiveInterval* existing = unhandled_->back();
       DCHECK(existing->IsHighInterval());
@@ -1010,7 +1010,7 @@ bool RegisterAllocatorLinearScan::AllocateBlockedReg(LiveInterval* current) {
     }
 
     // NOTE: Retrieve end() on each iteration because we're removing elements in the loop body.
-    for (auto it = inactive_.begin(); it != inactive_.end(); ) {
+    for (auto it = inactive_.begin(); it != inactive_.end();) {
       LiveInterval* inactive = *it;
       bool erased = false;
       if (inactive->GetRegister() == reg) {
@@ -1068,9 +1068,9 @@ void RegisterAllocatorLinearScan::AddSorted(ScopedArenaVector<LiveInterval*>* ar
   // Insert the high interval before the low, to ensure the low is processed before.
   auto insert_pos = array->begin() + insert_at;
   if (interval->HasHighInterval()) {
-    array->insert(insert_pos, { interval->GetHighInterval(), interval });
+    array->insert(insert_pos, {interval->GetHighInterval(), interval});
   } else if (interval->HasLowInterval()) {
-    array->insert(insert_pos, { interval, interval->GetLowInterval() });
+    array->insert(insert_pos, {interval, interval->GetLowInterval()});
   } else {
     array->insert(insert_pos, interval);
   }
@@ -1173,8 +1173,7 @@ void RegisterAllocatorLinearScan::AllocateSpillSlotForCatchPhi(HPhi* phi) {
   LiveInterval* interval = phi->GetLiveInterval();
 
   HInstruction* previous_phi = phi->GetPrevious();
-  DCHECK(previous_phi == nullptr ||
-         previous_phi->AsPhi()->GetRegNumber() <= phi->GetRegNumber())
+  DCHECK(previous_phi == nullptr || previous_phi->AsPhi()->GetRegNumber() <= phi->GetRegNumber())
       << "Phis expected to be sorted by vreg number, so that equivalent phis are adjacent.";
 
   if (phi->IsVRegEquivalentOf(previous_phi)) {

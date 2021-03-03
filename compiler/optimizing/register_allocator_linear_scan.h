@@ -18,8 +18,8 @@
 #define ART_COMPILER_OPTIMIZING_REGISTER_ALLOCATOR_LINEAR_SCAN_H_
 
 #include "arch/instruction_set.h"
-#include "base/scoped_arena_containers.h"
 #include "base/macros.h"
+#include "base/scoped_arena_containers.h"
 #include "register_allocator.h"
 
 namespace art {
@@ -56,11 +56,8 @@ class RegisterAllocatorLinearScan : public RegisterAllocator {
   }
 
   size_t GetNumberOfSpillSlots() const {
-    return int_spill_slots_.size()
-        + long_spill_slots_.size()
-        + float_spill_slots_.size()
-        + double_spill_slots_.size()
-        + catch_phi_spill_slots_;
+    return int_spill_slots_.size() + long_spill_slots_.size() + float_spill_slots_.size() +
+           double_spill_slots_.size() + catch_phi_spill_slots_;
   }
 
  private:

@@ -69,8 +69,12 @@ class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
                          int number_of_registers);
     ~ScratchRegisterScope();
 
-    int GetRegister() const { return reg_; }
-    bool IsSpilled() const { return spilled_; }
+    int GetRegister() const {
+      return reg_;
+    }
+    bool IsSpilled() const {
+      return spilled_;
+    }
 
    private:
     ParallelMoveResolverWithSwap* resolver_;

@@ -43,9 +43,8 @@ static uint32_t BaseAlignment() {
 
 // Hidden offset for arrays/strings guaranteed by the Android runtime.
 static uint32_t HiddenOffset(DataType::Type type, bool is_string_char_at) {
-  return is_string_char_at
-      ? mirror::String::ValueOffset().Uint32Value()
-      : mirror::Array::DataOffset(DataType::Size(type)).Uint32Value();
+  return is_string_char_at ? mirror::String::ValueOffset().Uint32Value()
+                           : mirror::Array::DataOffset(DataType::Size(type)).Uint32Value();
 }
 
 // Remove the instruction from the graph. A bit more elaborate than the usual
@@ -53,15 +52,14 @@ static uint32_t HiddenOffset(DataType::Type type, bool is_string_char_at) {
 static void RemoveFromCycle(HInstruction* instruction) {
   instruction->RemoveAsUserOfAllInputs();
   instruction->RemoveEnvironmentUsers();
-  instruction->GetBlock()->RemoveInstructionOrPhi(instruction, /*ensure_safety=*/ false);
+  instruction->GetBlock()->RemoveInstructionOrPhi(instruction, /*ensure_safety=*/false);
   RemoveEnvironmentUses(instruction);
   ResetEnvironmentInputRecords(instruction);
 }
 
 // Detect a goto block and sets succ to the single successor.
 static bool IsGotoBlock(HBasicBlock* block, /*out*/ HBasicBlock** succ) {
-  if (block->GetPredecessors().size() == 1 &&
-      block->GetSuccessors().size() == 1 &&
+  if (block->GetPredecessors().size() == 1 && block->GetSuccessors().size() == 1 &&
       block->IsSingleGoto()) {
     *succ = block->GetSingleSuccessor();
     return true;
@@ -134,16 +132,14 @@ static bool IsSignExtensionAndGet(HInstruction* instruction,
     switch (instruction->GetType()) {
       case DataType::Type::kInt32:
       case DataType::Type::kInt64:
-        if (type == from && (from == DataType::Type::kInt8 ||
-                             from == DataType::Type::kInt16 ||
+        if (type == from && (from == DataType::Type::kInt8 || from == DataType::Type::kInt16 ||
                              from == DataType::Type::kInt32)) {
           *operand = conv;
           return true;
         }
         return false;
       case DataType::Type::kInt16:
-        return type == DataType::Type::kUint16 &&
-               from == DataType::Type::kUint16 &&
+        return type == DataType::Type::kUint16 && from == DataType::Type::kUint16 &&
                IsZeroExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand);
       default:
         return false;
@@ -205,8 +201,7 @@ static bool IsZeroExtensionAndGet(HInstruction* instruction,
         }
         return false;
       case DataType::Type::kUint16:
-        return type == DataType::Type::kInt16 &&
-               from == DataType::Type::kInt16 &&
+        return type == DataType::Type::kInt16 && from == DataType::Type::kInt16 &&
                IsSignExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand);
       default:
         return false;
@@ -280,8 +275,7 @@ static bool IsAddConst(HInstruction* instruction,
     if (instruction->IsAdd()) {
       return IsAddConst(instruction->InputAt(0), a, b, c, depth - 1) &&
              IsAddConst(instruction->InputAt(1), a, b, c, depth - 1);
-    } else if (instruction->IsSub() &&
-               IsInt64AndGet(instruction->InputAt(1), &value)) {
+    } else if (instruction->IsSub() && IsInt64AndGet(instruction->InputAt(1), &value)) {
       *c -= value;
       return IsAddConst(instruction->InputAt(0), a, b, c, depth - 1);
     }
@@ -351,9 +345,7 @@ static bool HasReductionFormat(HInstruction* reduction, HInstruction* phi) {
 
 // Translates vector operation to reduction kind.
 static HVecReduce::ReductionKind GetReductionKind(HVecOperation* reduction) {
-  if (reduction->IsVecAdd()  ||
-      reduction->IsVecSub() ||
-      reduction->IsVecSADAccumulate() ||
+  if (reduction->IsVecAdd() || reduction->IsVecSub() || reduction->IsVecSADAccumulate() ||
       reduction->IsVecDotProd()) {
     return HVecReduce::kSum;
   }
@@ -378,9 +370,7 @@ static HInstruction* Insert(HBasicBlock* block, HInstruction* instruction) {
 // and no other instructions use them.
 static bool CheckInductionSetFullyRemoved(ScopedArenaSet<HInstruction*>* iset) {
   for (HInstruction* instr : *iset) {
-    if (instr->GetBlock() != nullptr ||
-        !instr->GetUses().empty() ||
-        !instr->GetEnvUses().empty() ||
+    if (instr->GetBlock() != nullptr || !instr->GetUses().empty() || !instr->GetEnvUses().empty() ||
         HasEnvironmentUsedByOthers(instr)) {
       return false;
     }
@@ -418,7 +408,7 @@ static void TryToEvaluateIfCondition(HIf* instruction, HGraph* graph) {
       ++it;
       if (true_succ->Dominates(user_block)) {
         user->ReplaceInput(graph->GetIntConstant(1), index);
-     } else if (false_succ->Dominates(user_block)) {
+      } else if (false_succ->Dominates(user_block)) {
         user->ReplaceInput(graph->GetIntConstant(0), index);
       }
     }
@@ -442,12 +432,10 @@ static DataType::Type GetNarrowerType(HInstruction* a, HInstruction* b) {
   if (DataType::Size(b->GetType()) < DataType::Size(type)) {
     type = b->GetType();
   }
-  if (a->IsTypeConversion() &&
-      DataType::Size(a->InputAt(0)->GetType()) < DataType::Size(type)) {
+  if (a->IsTypeConversion() && DataType::Size(a->InputAt(0)->GetType()) < DataType::Size(type)) {
     type = a->InputAt(0)->GetType();
   }
-  if (b->IsTypeConversion() &&
-      DataType::Size(b->InputAt(0)->GetType()) < DataType::Size(type)) {
+  if (b->IsTypeConversion() && DataType::Size(b->InputAt(0)->GetType()) < DataType::Size(type)) {
     type = b->InputAt(0)->GetType();
   }
   return type;
@@ -487,8 +475,7 @@ HLoopOptimization::HLoopOptimization(HGraph* graph,
       vector_header_(nullptr),
       vector_body_(nullptr),
       vector_index_(nullptr),
-      arch_loop_helper_(ArchNoOptsLoopHelper::Create(codegen, global_allocator_)) {
-}
+      arch_loop_helper_(ArchNoOptsLoopHelper::Create(codegen, global_allocator_)) {}
 
 bool HLoopOptimization::Run() {
   // Skip if there is no loop or the graph has try-catch/irreducible loops.
@@ -611,7 +598,7 @@ void HLoopOptimization::RemoveLoop(LoopNode* node) {
 
 bool HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
   bool changed = false;
-  for ( ; node != nullptr; node = node->next) {
+  for (; node != nullptr; node = node->next) {
     // Visit inner loops first. Recompute induction information for this
     // loop if the induction of any inner loop has changed.
     if (TraverseLoopsInnerToOuter(node->inner)) {
@@ -674,8 +661,7 @@ void HLoopOptimization::SimplifyBlocks(LoopNode* node) {
     RemoveDeadInstructions(block->GetPhis());
     RemoveDeadInstructions(block->GetInstructions());
     // Remove trivial control flow blocks from the loop-body.
-    if (block->GetPredecessors().size() == 1 &&
-        block->GetSuccessors().size() == 1 &&
+    if (block->GetPredecessors().size() == 1 && block->GetSuccessors().size() == 1 &&
         block->GetSingleSuccessor()->GetPredecessors().size() == 1) {
       simplified_ = true;
       block->MergeWith(block->GetSingleSuccessor());
@@ -685,11 +671,9 @@ void HLoopOptimization::SimplifyBlocks(LoopNode* node) {
       HBasicBlock* succ1 = block->GetSuccessors()[1];
       HBasicBlock* meet0 = nullptr;
       HBasicBlock* meet1 = nullptr;
-      if (succ0 != succ1 &&
-          IsGotoBlock(succ0, &meet0) &&
-          IsGotoBlock(succ1, &meet1) &&
-          meet0 == meet1 &&  // meets again
-          meet0 != block &&  // no self-loop
+      if (succ0 != succ1 && IsGotoBlock(succ0, &meet0) && IsGotoBlock(succ1, &meet1) &&
+          meet0 == meet1 &&              // meets again
+          meet0 != block &&              // no self-loop
           meet0->GetPhis().IsEmpty()) {  // not used for merging
         simplified_ = true;
         succ0->DisconnectAndDelete();
@@ -726,9 +710,8 @@ bool HLoopOptimization::TryOptimizeInnerLoopFinite(LoopNode* node) {
   if (header->GetSuccessors().size() != 2) {
     return false;
   }
-  HBasicBlock* exit = (header->GetSuccessors()[0] == body)
-      ? header->GetSuccessors()[1]
-      : header->GetSuccessors()[0];
+  HBasicBlock* exit = (header->GetSuccessors()[0] == body) ? header->GetSuccessors()[1]
+                                                           : header->GetSuccessors()[0];
   // Ensure exit can only be reached by exiting loop.
   if (exit->GetPredecessors().size() != 1) {
     return false;
@@ -766,8 +749,7 @@ bool HLoopOptimization::TryOptimizeInnerLoopFinite(LoopNode* node) {
       // in 'GenerateNewLoop' which caused the SuspendCheck environment to be invalid.
       // TODO: b/138601207, investigate other possible cases with wrong environment values and
       // possibly switch back vectorization on for debuggable graphs.
-      !graph_->IsDebuggable() &&
-      TrySetSimpleLoopHeader(header, &main_phi) &&
+      !graph_->IsDebuggable() && TrySetSimpleLoopHeader(header, &main_phi) &&
       ShouldVectorize(node, body, trip_count) &&
       TryAssignLastValue(node->loop_info, main_phi, preheader, /*collect_loop_uses*/ true)) {
     Vectorize(node, body, exit, trip_count);
@@ -781,8 +763,6 @@ bool HLoopOptimization::TryOptimizeInnerLoopFinite(LoopNode* node) {
 bool HLoopOptimization::OptimizeInnerLoop(LoopNode* node) {
   return TryOptimizeInnerLoopFinite(node) || TryPeelingAndUnrolling(node);
 }
-
-
 
 //
 // Scalar loop peeling and unrolling: generic part methods.
@@ -924,8 +904,7 @@ bool HLoopOptimization::ShouldVectorize(LoopNode* node, HBasicBlock* block, int6
   vector_refs_->clear();
   vector_static_peeling_factor_ = 0;
   vector_dynamic_peeling_candidate_ = nullptr;
-  vector_runtime_test_a_ =
-  vector_runtime_test_b_ = nullptr;
+  vector_runtime_test_a_ = vector_runtime_test_b_ = nullptr;
 
   // Phis in the loop-body prevent vectorization.
   if (!block->GetPhis().IsEmpty()) {
@@ -947,8 +926,8 @@ bool HLoopOptimization::ShouldVectorize(LoopNode* node, HBasicBlock* block, int6
   // (3) variable to record how many references share same alignment.
   // (4) variable to record suitable candidate for dynamic loop peeling.
   size_t desired_alignment = GetVectorSizeInBytes();
-  ScopedArenaVector<uint32_t> peeling_votes(desired_alignment, 0u,
-      loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  ScopedArenaVector<uint32_t> peeling_votes(
+      desired_alignment, 0u, loop_allocator_->Adapter(kArenaAllocLoopOptimization));
 
   uint32_t max_num_same_alignment = 0;
   const ArrayReference* peeling_candidate = nullptr;
@@ -963,7 +942,7 @@ bool HLoopOptimization::ShouldVectorize(LoopNode* node, HBasicBlock* block, int6
   for (auto i = vector_refs_->begin(); i != vector_refs_->end(); ++i) {
     uint32_t num_same_alignment = 0;
     // Scan over all next references.
-    for (auto j = i; ++j != vector_refs_->end(); ) {
+    for (auto j = i; ++j != vector_refs_->end();) {
       if (i->type == j->type && (i->lhs || j->lhs)) {
         // Found same-typed a[i+x] vs. b[i+y], where at least one is a write.
         HInstruction* a = i->base;
@@ -1007,9 +986,8 @@ bool HLoopOptimization::ShouldVectorize(LoopNode* node, HBasicBlock* block, int6
       // initial offset to compute the static loop peeling vote (this always
       // works, since elements have natural alignment).
       uint32_t offset = alignment.Offset() & (desired_alignment - 1u);
-      uint32_t vote = (offset == 0)
-          ? 0
-          : ((desired_alignment - offset) >> DataType::SizeShift(i->type));
+      uint32_t vote =
+          (offset == 0) ? 0 : ((desired_alignment - offset) >> DataType::SizeShift(i->type));
       DCHECK_LT(vote, 16u);
       ++peeling_votes[vote];
     } else if (BaseAlignment() >= desired_alignment &&
@@ -1053,7 +1031,8 @@ void HLoopOptimization::Vectorize(LoopNode* node,
 
   // A cleanup loop is needed, at least, for any unknown trip count or
   // for a known trip count with remainder iterations after vectorization.
-  bool needs_cleanup = !IsInPredicatedVectorizationMode() &&
+  bool needs_cleanup =
+      !IsInPredicatedVectorizationMode() &&
       (trip_count == 0 || ((trip_count - vector_static_peeling_factor_) % chunk) != 0);
 
   // Adjust vector bookkeeping.
@@ -1088,16 +1067,22 @@ void HLoopOptimization::Vectorize(LoopNode* node,
     uint32_t hidden_offset = HiddenOffset(vector_dynamic_peeling_candidate_->type,
                                           vector_dynamic_peeling_candidate_->is_string_char_at);
     HInstruction* adjusted_offset = graph_->GetConstant(induc_type, hidden_offset >> shift);
-    HInstruction* offset = Insert(preheader, new (global_allocator_) HAdd(
-        induc_type, vector_dynamic_peeling_candidate_->offset, adjusted_offset));
-    HInstruction* rem = Insert(preheader, new (global_allocator_) HAnd(
-        induc_type, offset, graph_->GetConstant(induc_type, align - 1u)));
-    HInstruction* sub = Insert(preheader, new (global_allocator_) HSub(
-        induc_type, graph_->GetConstant(induc_type, align), rem));
-    HInstruction* cond = Insert(preheader, new (global_allocator_) HEqual(
-        rem, graph_->GetConstant(induc_type, 0)));
-    ptc = Insert(preheader, new (global_allocator_) HSelect(
-        cond, graph_->GetConstant(induc_type, 0), sub, kNoDexPc));
+    HInstruction* offset =
+        Insert(preheader,
+               new (global_allocator_)
+                   HAdd(induc_type, vector_dynamic_peeling_candidate_->offset, adjusted_offset));
+    HInstruction* rem =
+        Insert(preheader,
+               new (global_allocator_)
+                   HAnd(induc_type, offset, graph_->GetConstant(induc_type, align - 1u)));
+    HInstruction* sub = Insert(preheader,
+                               new (global_allocator_)
+                                   HSub(induc_type, graph_->GetConstant(induc_type, align), rem));
+    HInstruction* cond =
+        Insert(preheader, new (global_allocator_) HEqual(rem, graph_->GetConstant(induc_type, 0)));
+    ptc = Insert(preheader,
+                 new (global_allocator_)
+                     HSelect(cond, graph_->GetConstant(induc_type, 0), sub, kNoDexPc));
     needs_cleanup = true;  // don't know the exact amount
   }
 
@@ -1120,9 +1105,8 @@ void HLoopOptimization::Vectorize(LoopNode* node,
       diff = Insert(preheader, new (global_allocator_) HSub(induc_type, stc, ptc));
     }
     HInstruction* rem = Insert(
-        preheader, new (global_allocator_) HAnd(induc_type,
-                                                diff,
-                                                graph_->GetConstant(induc_type, chunk - 1)));
+        preheader,
+        new (global_allocator_) HAnd(induc_type, diff, graph_->GetConstant(induc_type, chunk - 1)));
     vtc = Insert(preheader, new (global_allocator_) HSub(induc_type, stc, rem));
   }
   vector_index_ = graph_->GetConstant(induc_type, 0);
@@ -1130,12 +1114,12 @@ void HLoopOptimization::Vectorize(LoopNode* node,
   // Generate runtime disambiguation test:
   // vtc = a != b ? vtc : 0;
   if (vector_runtime_test_a_ != nullptr) {
-    HInstruction* rt = Insert(
-        preheader,
-        new (global_allocator_) HNotEqual(vector_runtime_test_a_, vector_runtime_test_b_));
+    HInstruction* rt =
+        Insert(preheader,
+               new (global_allocator_) HNotEqual(vector_runtime_test_a_, vector_runtime_test_b_));
     vtc = Insert(preheader,
                  new (global_allocator_)
-                 HSelect(rt, vtc, graph_->GetConstant(induc_type, 0), kNoDexPc));
+                     HSelect(rt, vtc, graph_->GetConstant(induc_type, 0), kNoDexPc));
     needs_cleanup = true;
   }
 
@@ -1223,27 +1207,23 @@ void HLoopOptimization::GenerateNewLoop(LoopNode* node,
   DCHECK(unroll == 1 || vector_mode_ == kVector);
   DataType::Type induc_type = lo->GetType();
   // Prepare new loop.
-  vector_preheader_ = new_preheader,
-  vector_header_ = vector_preheader_->GetSingleSuccessor();
+  vector_preheader_ = new_preheader, vector_header_ = vector_preheader_->GetSingleSuccessor();
   vector_body_ = vector_header_->GetSuccessors()[1];
-  HPhi* phi = new (global_allocator_) HPhi(global_allocator_,
-                                           kNoRegNumber,
-                                           0,
-                                           HPhi::ToPhiType(induc_type));
+  HPhi* phi =
+      new (global_allocator_) HPhi(global_allocator_, kNoRegNumber, 0, HPhi::ToPhiType(induc_type));
   // Generate header and prepare body.
   // for (i = lo; i < hi; i += step)
   //    <loop-body>
   HInstruction* cond = nullptr;
   HInstruction* set_pred = nullptr;
   if (IsInPredicatedVectorizationMode()) {
-    HVecPredWhile* pred_while =
-        new (global_allocator_) HVecPredWhile(global_allocator_,
-                                              phi,
-                                              hi,
-                                              HVecPredWhile::CondKind::kLO,
-                                              DataType::Type::kInt32,
-                                              vector_length_,
-                                              0u);
+    HVecPredWhile* pred_while = new (global_allocator_) HVecPredWhile(global_allocator_,
+                                                                      phi,
+                                                                      hi,
+                                                                      HVecPredWhile::CondKind::kLO,
+                                                                      DataType::Type::kInt32,
+                                                                      vector_length_,
+                                                                      0u);
 
     cond = new (global_allocator_) HVecPredCondition(global_allocator_,
                                                      pred_while,
@@ -1329,8 +1309,7 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
     if (DataType::Size(type) <= 2) {
       restrictions |= kNoHiBits;
     }
-    if (TrySetVectorType(type, &restrictions) &&
-        node->loop_info->IsDefinedOutOfTheLoop(base) &&
+    if (TrySetVectorType(type, &restrictions) && node->loop_info->IsDefinedOutOfTheLoop(base) &&
         induction_range_.IsUnitStride(instruction, index, graph_, &offset) &&
         VectorizeUse(node, value, generate_code, type, restrictions)) {
       if (generate_code) {
@@ -1369,8 +1348,7 @@ bool HLoopOptimization::VectorizeDef(LoopNode* node,
   }
   // Otherwise accept only expressions with no effects outside the immediate loop-body.
   // Note that actual uses are inspected during right-hand-side tree traversal.
-  return !IsUsedOutsideLoop(node->loop_info, instruction)
-         && !instruction->DoesAnyWrite();
+  return !IsUsedOutsideLoop(node->loop_info, instruction) && !instruction->DoesAnyWrite();
 }
 
 bool HLoopOptimization::VectorizeUse(LoopNode* node,
@@ -1450,11 +1428,9 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
       // (1a) narrowing into vector type, "wider" operations cannot bring in higher order bits, or
       // (1b) widening from at least vector type, and
       // (2) vectorizable operand.
-      if ((size_to < size_from &&
-           size_to == size_vec &&
+      if ((size_to < size_from && size_to == size_vec &&
            VectorizeUse(node, opa, generate_code, type, restrictions | kNoHiBits)) ||
-          (size_to >= size_from &&
-           size_from >= size_vec &&
+          (size_to >= size_from && size_from >= size_vec &&
            VectorizeUse(node, opa, generate_code, type, restrictions))) {
         if (generate_code) {
           if (vector_mode_ == kVector) {
@@ -1488,9 +1464,9 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
       }
       return true;
     }
-  } else if (instruction->IsAdd() || instruction->IsSub() ||
-             instruction->IsMul() || instruction->IsDiv() ||
-             instruction->IsAnd() || instruction->IsOr()  || instruction->IsXor()) {
+  } else if (instruction->IsAdd() || instruction->IsSub() || instruction->IsMul() ||
+             instruction->IsDiv() || instruction->IsAnd() || instruction->IsOr() ||
+             instruction->IsXor()) {
     // Deal with vector restrictions.
     if ((instruction->IsMul() && HasVectorRestrictions(restrictions, kNoMul)) ||
         (instruction->IsDiv() && HasVectorRestrictions(restrictions, kNoDiv))) {
@@ -1615,20 +1591,12 @@ bool HLoopOptimization::TrySetVectorType(DataType::Type type, uint64_t* restrict
           case DataType::Type::kBool:
           case DataType::Type::kUint8:
           case DataType::Type::kInt8:
-            *restrictions |= kNoDiv |
-                             kNoSignedHAdd |
-                             kNoUnsignedHAdd |
-                             kNoUnroundedHAdd |
-                             kNoSAD;
+            *restrictions |= kNoDiv | kNoSignedHAdd | kNoUnsignedHAdd | kNoUnroundedHAdd | kNoSAD;
             return TrySetVectorLength(type, vector_length);
           case DataType::Type::kUint16:
           case DataType::Type::kInt16:
-            *restrictions |= kNoDiv |
-                             kNoSignedHAdd |
-                             kNoUnsignedHAdd |
-                             kNoUnroundedHAdd |
-                             kNoSAD |
-                             kNoDotProd;
+            *restrictions |=
+                kNoDiv | kNoSignedHAdd | kNoUnsignedHAdd | kNoUnroundedHAdd | kNoSAD | kNoDotProd;
             return TrySetVectorLength(type, vector_length);
           case DataType::Type::kInt32:
             *restrictions |= kNoDiv | kNoSAD;
@@ -1684,29 +1652,15 @@ bool HLoopOptimization::TrySetVectorType(DataType::Type type, uint64_t* restrict
           case DataType::Type::kBool:
           case DataType::Type::kUint8:
           case DataType::Type::kInt8:
-            *restrictions |= kNoMul |
-                             kNoDiv |
-                             kNoShift |
-                             kNoAbs |
-                             kNoSignedHAdd |
-                             kNoUnroundedHAdd |
-                             kNoSAD |
-                             kNoDotProd;
+            *restrictions |= kNoMul | kNoDiv | kNoShift | kNoAbs | kNoSignedHAdd |
+                             kNoUnroundedHAdd | kNoSAD | kNoDotProd;
             return TrySetVectorLength(type, 16);
           case DataType::Type::kUint16:
-            *restrictions |= kNoDiv |
-                             kNoAbs |
-                             kNoSignedHAdd |
-                             kNoUnroundedHAdd |
-                             kNoSAD |
-                             kNoDotProd;
+            *restrictions |=
+                kNoDiv | kNoAbs | kNoSignedHAdd | kNoUnroundedHAdd | kNoSAD | kNoDotProd;
             return TrySetVectorLength(type, 8);
           case DataType::Type::kInt16:
-            *restrictions |= kNoDiv |
-                             kNoAbs |
-                             kNoSignedHAdd |
-                             kNoUnroundedHAdd |
-                             kNoSAD;
+            *restrictions |= kNoDiv | kNoAbs | kNoSignedHAdd | kNoUnroundedHAdd | kNoSAD;
             return TrySetVectorLength(type, 8);
           case DataType::Type::kInt32:
             *restrictions |= kNoDiv | kNoSAD;
@@ -1759,8 +1713,8 @@ void HLoopOptimization::GenerateVecInv(HInstruction* org, DataType::Type type) {
       // Generates ReplicateScalar( (optional_type_conv) org ).
       HInstruction* input = org;
       DataType::Type input_type = input->GetType();
-      if (type != input_type && (type == DataType::Type::kInt64 ||
-                                 input_type == DataType::Type::kInt64)) {
+      if (type != input_type &&
+          (type == DataType::Type::kInt64 || input_type == DataType::Type::kInt64)) {
         input = Insert(vector_preheader_,
                        new (global_allocator_) HTypeConversion(type, input, kNoDexPc));
       }
@@ -1768,11 +1722,8 @@ void HLoopOptimization::GenerateVecInv(HInstruction* org, DataType::Type type) {
           HVecReplicateScalar(global_allocator_, input, type, vector_length_, kNoDexPc);
       vector_permanent_map_->Put(org, Insert(vector_preheader_, vector));
       if (IsInPredicatedVectorizationMode()) {
-        HVecPredSetAll* set_pred = new (global_allocator_) HVecPredSetAll(global_allocator_,
-                                                                          graph_->GetIntConstant(1),
-                                                                          type,
-                                                                          vector_length_,
-                                                                          0u);
+        HVecPredSetAll* set_pred = new (global_allocator_)
+            HVecPredSetAll(global_allocator_, graph_->GetIntConstant(1), type, vector_length_, 0u);
         vector_preheader_->InsertInstructionBefore(set_pred, vector);
         vector->AsVecOperation()->SetMergingGoverningPredicate(set_pred);
       }
@@ -1809,7 +1760,7 @@ void HLoopOptimization::GenerateVecMem(HInstruction* org,
     if (opb != nullptr) {
       vector = new (global_allocator_) HVecStore(
           global_allocator_, base, opa, opb, type, org->GetSideEffects(), vector_length_, dex_pc);
-    } else  {
+    } else {
       is_string_char_at = org->AsArrayGet()->IsStringCharAt();
       vector = new (global_allocator_) HVecLoad(global_allocator_,
                                                 base,
@@ -1837,9 +1788,9 @@ void HLoopOptimization::GenerateVecMem(HInstruction* org,
     DCHECK(vector_mode_ == kSequential);
     if (opb != nullptr) {
       DataType::Type component_type = org->AsArraySet()->GetComponentType();
-      vector = new (global_allocator_) HArraySet(
-          org->InputAt(0), opa, opb, component_type, org->GetSideEffects(), dex_pc);
-    } else  {
+      vector = new (global_allocator_)
+          HArraySet(org->InputAt(0), opa, opb, component_type, org->GetSideEffects(), dex_pc);
+    } else {
       bool is_string_char_at = org->AsArrayGet()->IsStringCharAt();
       vector = new (global_allocator_) HArrayGet(
           org->InputAt(0), opa, org->GetType(), org->GetSideEffects(), dex_pc, is_string_char_at);
@@ -1853,8 +1804,8 @@ void HLoopOptimization::GenerateVecReductionPhi(HPhi* phi) {
   DCHECK(reductions_->Get(phi->InputAt(1)) == phi);
   HInstruction* vector = nullptr;
   if (vector_mode_ == kSequential) {
-    HPhi* new_phi = new (global_allocator_) HPhi(
-        global_allocator_, kNoRegNumber, 0, phi->GetType());
+    HPhi* new_phi =
+        new (global_allocator_) HPhi(global_allocator_, kNoRegNumber, 0, phi->GetType());
     vector_header_->AddPhi(new_phi);
     vector = new_phi;
   } else {
@@ -1863,8 +1814,8 @@ void HLoopOptimization::GenerateVecReductionPhi(HPhi* phi) {
     if (it != vector_permanent_map_->end()) {
       vector = it->second;
     } else {
-      HPhi* new_phi = new (global_allocator_) HPhi(
-          global_allocator_, kNoRegNumber, 0, HVecOperation::kSIMDType);
+      HPhi* new_phi = new (global_allocator_)
+          HPhi(global_allocator_, kNoRegNumber, 0, HVecOperation::kSIMDType);
       vector_header_->AddPhi(new_phi);
       vector = new_phi;
     }
@@ -1890,26 +1841,16 @@ void HLoopOptimization::GenerateVecReductionPhiInputs(HPhi* phi, HInstruction* r
     DataType::Type type = red_vector->GetPackedType();
     if (kind == HVecReduce::ReductionKind::kSum) {
       new_init = Insert(vector_preheader_,
-                        new (global_allocator_) HVecSetScalars(global_allocator_,
-                                                               &new_init,
-                                                               type,
-                                                               vector_length,
-                                                               1,
-                                                               kNoDexPc));
+                        new (global_allocator_) HVecSetScalars(
+                            global_allocator_, &new_init, type, vector_length, 1, kNoDexPc));
     } else {
       new_init = Insert(vector_preheader_,
-                        new (global_allocator_) HVecReplicateScalar(global_allocator_,
-                                                                    new_init,
-                                                                    type,
-                                                                    vector_length,
-                                                                    kNoDexPc));
+                        new (global_allocator_) HVecReplicateScalar(
+                            global_allocator_, new_init, type, vector_length, kNoDexPc));
     }
     if (IsInPredicatedVectorizationMode()) {
-      HVecPredSetAll* set_pred = new (global_allocator_) HVecPredSetAll(global_allocator_,
-                                                                        graph_->GetIntConstant(1),
-                                                                        type,
-                                                                        vector_length,
-                                                                        0u);
+      HVecPredSetAll* set_pred = new (global_allocator_)
+          HVecPredSetAll(global_allocator_, graph_->GetIntConstant(1), type, vector_length, 0u);
       vector_preheader_->InsertInstructionBefore(set_pred, new_init);
       new_init->AsVecOperation()->SetMergingGoverningPredicate(set_pred);
     }
@@ -1938,19 +1879,16 @@ HInstruction* HLoopOptimization::ReduceAndExtractIfNeeded(HInstruction* instruct
       //    x = REDUCE( [x_1, .., x_n] )
       //    y = x_1
       // along the exit of the defining loop.
-      HInstruction* reduce = new (global_allocator_) HVecReduce(
-          global_allocator_, instruction, type, vector_length, kind, kNoDexPc);
+      HInstruction* reduce = new (global_allocator_)
+          HVecReduce(global_allocator_, instruction, type, vector_length, kind, kNoDexPc);
       exit->InsertInstructionBefore(reduce, exit->GetFirstInstruction());
-      instruction = new (global_allocator_) HVecExtractScalar(
-          global_allocator_, reduce, type, vector_length, 0, kNoDexPc);
+      instruction = new (global_allocator_)
+          HVecExtractScalar(global_allocator_, reduce, type, vector_length, 0, kNoDexPc);
       exit->InsertInstructionAfter(instruction, reduce);
 
       if (IsInPredicatedVectorizationMode()) {
-        HVecPredSetAll* set_pred = new (global_allocator_) HVecPredSetAll(global_allocator_,
-                                                                          graph_->GetIntConstant(1),
-                                                                          type,
-                                                                          vector_length,
-                                                                          0u);
+        HVecPredSetAll* set_pred = new (global_allocator_)
+            HVecPredSetAll(global_allocator_, graph_->GetIntConstant(1), type, vector_length, 0u);
         exit->InsertInstructionBefore(set_pred, reduce);
         reduce->AsVecOperation()->SetMergingGoverningPredicate(set_pred);
         instruction->AsVecOperation()->SetMergingGoverningPredicate(set_pred);
@@ -1960,13 +1898,13 @@ HInstruction* HLoopOptimization::ReduceAndExtractIfNeeded(HInstruction* instruct
   return instruction;
 }
 
-#define GENERATE_VEC(x, y) \
-  if (vector_mode_ == kVector) { \
-    vector = (x); \
-  } else { \
+#define GENERATE_VEC(x, y)               \
+  if (vector_mode_ == kVector) {         \
+    vector = (x);                        \
+  } else {                               \
     DCHECK(vector_mode_ == kSequential); \
-    vector = (y); \
-  } \
+    vector = (y);                        \
+  }                                      \
   break;
 
 void HLoopOptimization::GenerateVecOp(HInstruction* org,
@@ -1979,69 +1917,69 @@ void HLoopOptimization::GenerateVecOp(HInstruction* org,
   switch (org->GetKind()) {
     case HInstruction::kNeg:
       DCHECK(opb == nullptr);
-      GENERATE_VEC(
-        new (global_allocator_) HVecNeg(global_allocator_, opa, type, vector_length_, dex_pc),
-        new (global_allocator_) HNeg(org_type, opa, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecNeg(global_allocator_, opa, type, vector_length_, dex_pc),
+                   new (global_allocator_) HNeg(org_type, opa, dex_pc));
     case HInstruction::kNot:
       DCHECK(opb == nullptr);
-      GENERATE_VEC(
-        new (global_allocator_) HVecNot(global_allocator_, opa, type, vector_length_, dex_pc),
-        new (global_allocator_) HNot(org_type, opa, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecNot(global_allocator_, opa, type, vector_length_, dex_pc),
+                   new (global_allocator_) HNot(org_type, opa, dex_pc));
     case HInstruction::kBooleanNot:
       DCHECK(opb == nullptr);
-      GENERATE_VEC(
-        new (global_allocator_) HVecNot(global_allocator_, opa, type, vector_length_, dex_pc),
-        new (global_allocator_) HBooleanNot(opa, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecNot(global_allocator_, opa, type, vector_length_, dex_pc),
+                   new (global_allocator_) HBooleanNot(opa, dex_pc));
     case HInstruction::kTypeConversion:
       DCHECK(opb == nullptr);
-      GENERATE_VEC(
-        new (global_allocator_) HVecCnv(global_allocator_, opa, type, vector_length_, dex_pc),
-        new (global_allocator_) HTypeConversion(org_type, opa, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecCnv(global_allocator_, opa, type, vector_length_, dex_pc),
+                   new (global_allocator_) HTypeConversion(org_type, opa, dex_pc));
     case HInstruction::kAdd:
-      GENERATE_VEC(
-        new (global_allocator_) HVecAdd(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HAdd(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecAdd(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HAdd(org_type, opa, opb, dex_pc));
     case HInstruction::kSub:
-      GENERATE_VEC(
-        new (global_allocator_) HVecSub(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HSub(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecSub(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HSub(org_type, opa, opb, dex_pc));
     case HInstruction::kMul:
-      GENERATE_VEC(
-        new (global_allocator_) HVecMul(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HMul(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecMul(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HMul(org_type, opa, opb, dex_pc));
     case HInstruction::kDiv:
-      GENERATE_VEC(
-        new (global_allocator_) HVecDiv(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HDiv(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecDiv(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HDiv(org_type, opa, opb, dex_pc));
     case HInstruction::kAnd:
-      GENERATE_VEC(
-        new (global_allocator_) HVecAnd(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HAnd(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecAnd(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HAnd(org_type, opa, opb, dex_pc));
     case HInstruction::kOr:
-      GENERATE_VEC(
-        new (global_allocator_) HVecOr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HOr(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecOr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HOr(org_type, opa, opb, dex_pc));
     case HInstruction::kXor:
-      GENERATE_VEC(
-        new (global_allocator_) HVecXor(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HXor(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecXor(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HXor(org_type, opa, opb, dex_pc));
     case HInstruction::kShl:
-      GENERATE_VEC(
-        new (global_allocator_) HVecShl(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HShl(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecShl(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HShl(org_type, opa, opb, dex_pc));
     case HInstruction::kShr:
-      GENERATE_VEC(
-        new (global_allocator_) HVecShr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HShr(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecShr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HShr(org_type, opa, opb, dex_pc));
     case HInstruction::kUShr:
-      GENERATE_VEC(
-        new (global_allocator_) HVecUShr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
-        new (global_allocator_) HUShr(org_type, opa, opb, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecUShr(global_allocator_, opa, opb, type, vector_length_, dex_pc),
+                   new (global_allocator_) HUShr(org_type, opa, opb, dex_pc));
     case HInstruction::kAbs:
       DCHECK(opb == nullptr);
-      GENERATE_VEC(
-        new (global_allocator_) HVecAbs(global_allocator_, opa, type, vector_length_, dex_pc),
-        new (global_allocator_) HAbs(org_type, opa, dex_pc));
+      GENERATE_VEC(new (global_allocator_)
+                       HVecAbs(global_allocator_, opa, type, vector_length_, dex_pc),
+                   new (global_allocator_) HAbs(org_type, opa, dex_pc));
     default:
       break;
   }  // switch
@@ -2071,13 +2009,11 @@ bool HLoopOptimization::VectorizeHalvingAddIdiom(LoopNode* node,
   // Test for top level arithmetic shift right x >> 1 or logical shift right x >>> 1
   // (note whether the sign bit in wider precision is shifted in has no effect
   // on the narrow precision computed by the idiom).
-  if ((instruction->IsShr() ||
-       instruction->IsUShr()) &&
-      IsInt64Value(instruction->InputAt(1), 1)) {
+  if ((instruction->IsShr() || instruction->IsUShr()) && IsInt64Value(instruction->InputAt(1), 1)) {
     // Test for (a + b + c) >> 1 for optional constant c.
     HInstruction* a = nullptr;
     HInstruction* b = nullptr;
-    int64_t       c = 0;
+    int64_t c = 0;
     if (IsAddConst2(graph_, instruction->InputAt(0), /*out*/ &a, /*out*/ &b, /*out*/ &c)) {
       // Accept c == 1 (rounded) or c == 0 (not rounded).
       bool is_rounded = false;
@@ -2110,14 +2046,15 @@ bool HLoopOptimization::VectorizeHalvingAddIdiom(LoopNode* node,
           VectorizeUse(node, s, generate_code, type, restrictions)) {
         if (generate_code) {
           if (vector_mode_ == kVector) {
-            vector_map_->Put(instruction, new (global_allocator_) HVecHalvingAdd(
-                global_allocator_,
-                vector_map_->Get(r),
-                vector_map_->Get(s),
-                HVecOperation::ToProperType(type, is_unsigned),
-                vector_length_,
-                is_rounded,
-                kNoDexPc));
+            vector_map_->Put(instruction,
+                             new (global_allocator_)
+                                 HVecHalvingAdd(global_allocator_,
+                                                vector_map_->Get(r),
+                                                vector_map_->Get(s),
+                                                HVecOperation::ToProperType(type, is_unsigned),
+                                                vector_length_,
+                                                is_rounded,
+                                                kNoDexPc));
             MaybeRecordStat(stats_, MethodCompilationStat::kLoopVectorizedIdiom);
           } else {
             GenerateVecOp(instruction, vector_map_->Get(r), vector_map_->Get(s), type);
@@ -2151,8 +2088,7 @@ bool HLoopOptimization::VectorizeSADIdiom(LoopNode* node,
   HInstruction* abs = instruction->InputAt(1);
   HInstruction* a = nullptr;
   HInstruction* b = nullptr;
-  if (abs->IsAbs() &&
-      abs->GetType() == reduction_type &&
+  if (abs->IsAbs() && abs->GetType() == reduction_type &&
       IsSubConst2(graph_, abs->InputAt(0), /*out*/ &a, /*out*/ &b)) {
     DCHECK(a != nullptr && b != nullptr);
   } else {
@@ -2170,8 +2106,7 @@ bool HLoopOptimization::VectorizeSADIdiom(LoopNode* node,
     return false;
   }
   // Try same/narrower type and deal with vector restrictions.
-  if (!TrySetVectorType(sub_type, &restrictions) ||
-      HasVectorRestrictions(restrictions, kNoSAD) ||
+  if (!TrySetVectorType(sub_type, &restrictions) || HasVectorRestrictions(restrictions, kNoSAD) ||
       (reduction_type != sub_type && HasVectorRestrictions(restrictions, kNoWideSAD))) {
     return false;
   }
@@ -2186,14 +2121,15 @@ bool HLoopOptimization::VectorizeSADIdiom(LoopNode* node,
       VectorizeUse(node, s, generate_code, sub_type, restrictions)) {
     if (generate_code) {
       if (vector_mode_ == kVector) {
-        vector_map_->Put(instruction, new (global_allocator_) HVecSADAccumulate(
-            global_allocator_,
-            vector_map_->Get(acc),
-            vector_map_->Get(r),
-            vector_map_->Get(s),
-            HVecOperation::ToProperType(reduction_type, is_unsigned),
-            GetOtherVL(reduction_type, sub_type, vector_length_),
-            kNoDexPc));
+        vector_map_->Put(instruction,
+                         new (global_allocator_) HVecSADAccumulate(
+                             global_allocator_,
+                             vector_map_->Get(acc),
+                             vector_map_->Get(r),
+                             vector_map_->Get(s),
+                             HVecOperation::ToProperType(reduction_type, is_unsigned),
+                             GetOtherVL(reduction_type, sub_type, vector_length_),
+                             kNoDexPc));
         MaybeRecordStat(stats_, MethodCompilationStat::kLoopVectorizedIdiom);
       } else {
         // "GenerateVecOp()" must not be called more than once for each original loop body
@@ -2260,15 +2196,16 @@ bool HLoopOptimization::VectorizeDotProdIdiom(LoopNode* node,
       VectorizeUse(node, s, generate_code, op_type, restrictions)) {
     if (generate_code) {
       if (vector_mode_ == kVector) {
-        vector_map_->Put(instruction, new (global_allocator_) HVecDotProd(
-            global_allocator_,
-            vector_map_->Get(acc),
-            vector_map_->Get(r),
-            vector_map_->Get(s),
-            reduction_type,
-            is_unsigned,
-            GetOtherVL(reduction_type, op_type, vector_length_),
-            kNoDexPc));
+        vector_map_->Put(instruction,
+                         new (global_allocator_)
+                             HVecDotProd(global_allocator_,
+                                         vector_map_->Get(acc),
+                                         vector_map_->Get(r),
+                                         vector_map_->Get(s),
+                                         reduction_type,
+                                         is_unsigned,
+                                         GetOtherVL(reduction_type, op_type, vector_length_),
+                                         kNoDexPc));
         MaybeRecordStat(stats_, MethodCompilationStat::kLoopVectorizedIdiom);
       } else {
         // "GenerateVecOp()" must not be called more than once for each original loop body
@@ -2402,8 +2339,7 @@ bool HLoopOptimization::TrySetPhiReduction(HPhi* phi) {
       uint32_t use_count = 0;
       bool single_use_inside_loop =
           // Reduction update only used by phi.
-          reduction->GetUses().HasExactlyOneElement() &&
-          !reduction->HasEnvironmentUses() &&
+          reduction->GetUses().HasExactlyOneElement() && !reduction->HasEnvironmentUses() &&
           // Reduction update is only use of phi inside the loop.
           IsOnlyUsedAfterLoop(loop_info, phi, /*collect_loop_uses*/ true, &use_count) &&
           iset_->size() == 1;
@@ -2448,10 +2384,9 @@ bool HLoopOptimization::TrySetSimpleLoopHeader(HBasicBlock* block, /*out*/ HPhi*
     HInstruction* s = block->GetFirstInstruction();
     if (s != nullptr && s->IsSuspendCheck()) {
       HInstruction* c = s->GetNext();
-      if (c != nullptr &&
-          c->IsCondition() &&
+      if (c != nullptr && c->IsCondition() &&
           c->GetUses().HasExactlyOneElement() &&  // only used for termination
-          !c->HasEnvironmentUses()) {  // unlikely, but not impossible
+          !c->HasEnvironmentUses()) {             // unlikely, but not impossible
         HInstruction* i = c->GetNext();
         if (i != nullptr && i->IsIf() && i->InputAt(0) == c) {
           iset_->insert(c);
@@ -2478,8 +2413,7 @@ bool HLoopOptimization::IsEmptyBody(HBasicBlock* block) {
   return true;
 }
 
-bool HLoopOptimization::IsUsedOutsideLoop(HLoopInformation* loop_info,
-                                          HInstruction* instruction) {
+bool HLoopOptimization::IsUsedOutsideLoop(HLoopInformation* loop_info, HInstruction* instruction) {
   // Deal with regular uses.
   for (const HUseListNode<HInstruction*>& use : instruction->GetUses()) {
     if (use.GetUser()->GetBlock()->GetLoopInformation() != loop_info) {
@@ -2524,7 +2458,7 @@ bool HLoopOptimization::TryReplaceWithLastValue(HLoopInformation* loop_info,
     for (auto it = uses.begin(), end = uses.end(); it != end;) {
       HInstruction* user = it->GetUser();
       size_t index = it->GetIndex();
-      ++it;  // increment before replacing
+      ++it;                                     // increment before replacing
       if (iset_->find(user) == iset_->end()) {  // not excluded?
         if (kIsDebugBuild) {
           // We have checked earlier in 'IsOnlyUsedAfterLoop' that the use is after the loop.
@@ -2540,7 +2474,7 @@ bool HLoopOptimization::TryReplaceWithLastValue(HLoopInformation* loop_info,
     for (auto it = env_uses.begin(), end = env_uses.end(); it != end;) {
       HEnvironment* user = it->GetUser();
       size_t index = it->GetIndex();
-      ++it;  // increment before replacing
+      ++it;                                                  // increment before replacing
       if (iset_->find(user->GetHolder()) == iset_->end()) {  // not excluded?
         // Only update environment uses after the loop.
         HLoopInformation* other_loop_info = user->GetHolder()->GetBlock()->GetLoopInformation();
@@ -2565,8 +2499,8 @@ bool HLoopOptimization::TryAssignLastValue(HLoopInformation* loop_info,
   // proper last value assignment.
   uint32_t use_count = 0;
   return IsOnlyUsedAfterLoop(loop_info, instruction, collect_loop_uses, &use_count) &&
-      (use_count == 0 ||
-       (!IsEarlyExit(loop_info) && TryReplaceWithLastValue(loop_info, instruction, block)));
+         (use_count == 0 ||
+          (!IsEarlyExit(loop_info) && TryReplaceWithLastValue(loop_info, instruction, block)));
 }
 
 void HLoopOptimization::RemoveDeadInstructions(const HInstructionList& list) {

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
+#include "loop_optimization.h"
+
 #include "code_generator.h"
 #include "driver/compiler_options.h"
-#include "loop_optimization.h"
 #include "optimizing_unit_test.h"
 
 namespace art {
@@ -33,13 +34,13 @@ class LoopOptimizationTest : public OptimizingUnitTest {
 
     graph_ = CreateGraph();
     BuildGraph();
-    iva_  = new (GetAllocator()) HInductionVarAnalysis(graph_);
+    iva_ = new (GetAllocator()) HInductionVarAnalysis(graph_);
     compiler_options_ = CommonCompilerTest::CreateCompilerOptions(kRuntimeISA, "default");
     DCHECK(compiler_options_ != nullptr);
     codegen_ = CodeGenerator::Create(graph_, *compiler_options_);
     DCHECK(codegen_.get() != nullptr);
-    loop_opt_ = new (GetAllocator()) HLoopOptimization(
-        graph_, *codegen_.get(), iva_, /* stats= */ nullptr);
+    loop_opt_ =
+        new (GetAllocator()) HLoopOptimization(graph_, *codegen_.get(), iva_, /* stats= */ nullptr);
   }
 
   void TearDown() override {
@@ -63,10 +64,8 @@ class LoopOptimizationTest : public OptimizingUnitTest {
     graph_->AddBlock(exit_block_);
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
-    parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                      dex::TypeIndex(0),
-                                                      0,
-                                                      DataType::Type::kInt32);
+    parameter_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
     entry_block_->AddInstruction(parameter_);
     return_block_->AddInstruction(new (GetAllocator()) HReturnVoid());
     exit_block_->AddInstruction(new (GetAllocator()) HExit());
@@ -108,7 +107,7 @@ class LoopOptimizationTest : public OptimizingUnitTest {
   // Helper method
   std::string LoopStructureRecurse(HLoopOptimization::LoopNode* node) {
     std::string s;
-    for ( ; node != nullptr; node = node->next) {
+    for (; node != nullptr; node = node->next) {
       s.append("[");
       s.append(LoopStructureRecurse(node->inner));
       s.append("]");
@@ -182,17 +181,18 @@ TEST_F(LoopOptimizationTest, LoopSequenceOfNests) {
     }
   }
   PerformAnalysis();
-  EXPECT_EQ("[]"
-            "[[]]"
-            "[[[]]]"
-            "[[[[]]]]"
-            "[[[[[]]]]]"
-            "[[[[[[]]]]]]"
-            "[[[[[[[]]]]]]]"
-            "[[[[[[[[]]]]]]]]"
-            "[[[[[[[[[]]]]]]]]]"
-            "[[[[[[[[[[]]]]]]]]]]",
-            LoopStructure());
+  EXPECT_EQ(
+      "[]"
+      "[[]]"
+      "[[[]]]"
+      "[[[[]]]]"
+      "[[[[[]]]]]"
+      "[[[[[[]]]]]]"
+      "[[[[[[[]]]]]]]"
+      "[[[[[[[[]]]]]]]]"
+      "[[[[[[[[[]]]]]]]]]"
+      "[[[[[[[[[[]]]]]]]]]]",
+      LoopStructure());
 }
 
 TEST_F(LoopOptimizationTest, LoopNestWithSequence) {
@@ -264,8 +264,8 @@ TEST_F(LoopOptimizationTest, SimplifyLoopReoderPredecessors) {
 TEST_F(LoopOptimizationTest, SimplifyLoopSinglePreheader) {
   HBasicBlock* header = AddLoop(entry_block_, return_block_);
 
-  header->InsertInstructionBefore(
-      new (GetAllocator()) HSuspendCheck(), header->GetLastInstruction());
+  header->InsertInstructionBefore(new (GetAllocator()) HSuspendCheck(),
+                                  header->GetLastInstruction());
 
   // Insert an if construct before the loop so it will have two preheaders.
   HBasicBlock* if_block = new (GetAllocator()) HBasicBlock(graph_);

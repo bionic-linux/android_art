@@ -15,7 +15,6 @@
  */
 
 #include "code_generator_x86.h"
-
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
 
@@ -42,16 +41,17 @@ void LocationsBuilderX86::VisitVecReplicateScalar(HVecReplicateScalar* instructi
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
-      locations->SetOut(is_zero ? Location::RequiresFpuRegister()
-                                : Location::SameAsFirstInput());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant())
+                                 : Location::RequiresFpuRegister());
+      locations->SetOut(is_zero ? Location::RequiresFpuRegister() : Location::SameAsFirstInput());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -378,7 +378,7 @@ void InstructionCodeGeneratorX86::VisitVecNot(HVecNot* instruction) {
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
       __ pxor(dst, dst);
       __ pcmpeqb(tmp, tmp);  // all ones
-      __ psubb(dst, tmp);  // 16 x one
+      __ psubb(dst, tmp);    // 16 x one
       __ pxor(dst, src);
       break;
     }
@@ -482,7 +482,7 @@ void InstructionCodeGeneratorX86::VisitVecAdd(HVecAdd* instruction) {
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vpaddd(dst, other_src, src) : __ paddd(dst, src);
+      cpu_has_avx ? __ vpaddd(dst, other_src, src) : __ paddd(dst, src);
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
@@ -589,7 +589,7 @@ void InstructionCodeGeneratorX86::VisitVecSub(HVecSub* instruction) {
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vpsubd(dst, other_src, src) : __ psubd(dst, src);
+      cpu_has_avx ? __ vpsubd(dst, other_src, src) : __ psubd(dst, src);
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
@@ -702,7 +702,7 @@ void InstructionCodeGeneratorX86::VisitVecDiv(HVecDiv* instruction) {
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vdivpd(dst, other_src, src) : __ divpd(dst, src);
+      cpu_has_avx ? __ vdivpd(dst, other_src, src) : __ divpd(dst, src);
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1094,14 +1094,16 @@ void LocationsBuilderX86::VisitVecSetScalars(HVecSetScalars* instruction) {
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant())
+                                 : Location::RequiresFpuRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
@@ -1270,15 +1272,21 @@ static Address VecAddress(LocationSummary* locations, size_t size, bool is_strin
   Location index = locations->InAt(1);
   ScaleFactor scale = TIMES_1;
   switch (size) {
-    case 2: scale = TIMES_2; break;
-    case 4: scale = TIMES_4; break;
-    case 8: scale = TIMES_8; break;
-    default: break;
+    case 2:
+      scale = TIMES_2;
+      break;
+    case 4:
+      scale = TIMES_4;
+      break;
+    case 8:
+      scale = TIMES_8;
+      break;
+    default:
+      break;
   }
   // Incorporate the string or array offset in the address computation.
-  uint32_t offset = is_string_char_at
-      ? mirror::String::ValueOffset().Uint32Value()
-      : mirror::Array::DataOffset(size).Uint32Value();
+  uint32_t offset = is_string_char_at ? mirror::String::ValueOffset().Uint32Value()
+                                      : mirror::Array::DataOffset(size).Uint32Value();
   return CodeGeneratorX86::ArrayAddress(base.AsRegister<Register>(), index, scale, offset);
 }
 
@@ -1317,7 +1325,7 @@ void InstructionCodeGeneratorX86::VisitVecLoad(HVecLoad* instruction) {
         __ jmp(&done);
         // Load 4 direct uncompressed chars.
         __ Bind(&not_compressed);
-        is_aligned16 ?  __ movdqa(reg, address) :  __ movdqu(reg, address);
+        is_aligned16 ? __ movdqa(reg, address) : __ movdqu(reg, address);
         __ Bind(&done);
         return;
       }

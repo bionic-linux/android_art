@@ -24,13 +24,15 @@
 namespace art {
 
 class ClassLinker;
-template <class MirrorType> class ObjPtr;
+template <class MirrorType>
+class ObjPtr;
 class MemberOffset;
 class Thread;
 
 namespace mirror {
 class Object;
-template <class T> class ObjectArray;
+template <class T>
+class ObjectArray;
 }  // namespace mirror
 
 class IntrinsicObjects {
@@ -56,14 +58,15 @@ class IntrinsicObjects {
   }
 
   // Functions for retrieving data for Integer.valueOf().
-  static ObjPtr<mirror::ObjectArray<mirror::Object>> LookupIntegerCache(
-      Thread* self, ClassLinker* class_linker) REQUIRES_SHARED(Locks::mutator_lock_);
+  static ObjPtr<mirror::ObjectArray<mirror::Object>> LookupIntegerCache(Thread* self,
+                                                                        ClassLinker* class_linker)
+      REQUIRES_SHARED(Locks::mutator_lock_);
   static ObjPtr<mirror::ObjectArray<mirror::Object>> GetIntegerValueOfCache(
       ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects)
       REQUIRES_SHARED(Locks::mutator_lock_);
   static ObjPtr<mirror::Object> GetIntegerValueOfObject(
-      ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects,
-      uint32_t index) REQUIRES_SHARED(Locks::mutator_lock_);
+      ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects, uint32_t index)
+      REQUIRES_SHARED(Locks::mutator_lock_);
   static MemberOffset GetIntegerValueOfArrayDataOffset(
       ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects)
       REQUIRES_SHARED(Locks::mutator_lock_);

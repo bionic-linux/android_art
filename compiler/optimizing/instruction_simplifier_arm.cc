@@ -121,28 +121,22 @@ bool InstructionSimplifierArmVisitor::TryMergeIntoShifterOperand(HInstruction* u
   int shift_amount = 0;
 
   HDataProcWithShifterOp::GetOpInfoFromInstruction(bitfield_op, &op_kind, &shift_amount);
-  shift_amount &= use->GetType() == DataType::Type::kInt32
-      ? kMaxIntShiftDistance
-      : kMaxLongShiftDistance;
+  shift_amount &=
+      use->GetType() == DataType::Type::kInt32 ? kMaxIntShiftDistance : kMaxLongShiftDistance;
 
   if (HDataProcWithShifterOp::IsExtensionOp(op_kind)) {
     if (!use->IsAdd() && (!use->IsSub() || use->GetType() != DataType::Type::kInt64)) {
       return false;
     }
-  // Shift by 1 is a special case that results in the same number and type of instructions
-  // as this simplification, but potentially shorter code.
+    // Shift by 1 is a special case that results in the same number and type of instructions
+    // as this simplification, but potentially shorter code.
   } else if (type == DataType::Type::kInt64 && shift_amount == 1) {
     return false;
   }
 
   if (do_merge) {
-    HDataProcWithShifterOp* alu_with_op =
-        new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(use,
-                                                                other_input,
-                                                                bitfield_op->InputAt(0),
-                                                                op_kind,
-                                                                shift_amount,
-                                                                use->GetDexPc());
+    HDataProcWithShifterOp* alu_with_op = new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(
+        use, other_input, bitfield_op->InputAt(0), op_kind, shift_amount, use->GetDexPc());
     use->GetBlock()->ReplaceAndRemoveInstructionWith(use, alu_with_op);
     if (bitfield_op->GetUses().empty()) {
       bitfield_op->GetBlock()->RemoveInstruction(bitfield_op);
@@ -209,18 +203,15 @@ void InstructionSimplifierArmVisitor::VisitArrayGet(HArrayGet* instruction) {
     return;
   }
 
-  if (type == DataType::Type::kInt64
-      || type == DataType::Type::kFloat32
-      || type == DataType::Type::kFloat64) {
+  if (type == DataType::Type::kInt64 || type == DataType::Type::kFloat32 ||
+      type == DataType::Type::kFloat64) {
     // T32 doesn't support ShiftedRegOffset mem address mode for these types
     // to enable optimization.
     return;
   }
 
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }
@@ -230,18 +221,15 @@ void InstructionSimplifierArmVisitor::VisitArraySet(HArraySet* instruction) {
   size_t data_offset = mirror::Array::DataOffset(access_size).Uint32Value();
   DataType::Type type = instruction->GetComponentType();
 
-  if (type == DataType::Type::kInt64
-      || type == DataType::Type::kFloat32
-      || type == DataType::Type::kFloat64) {
+  if (type == DataType::Type::kInt64 || type == DataType::Type::kFloat32 ||
+      type == DataType::Type::kFloat64) {
     // T32 doesn't support ShiftedRegOffset mem address mode for these types
     // to enable optimization.
     return;
   }
 
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }

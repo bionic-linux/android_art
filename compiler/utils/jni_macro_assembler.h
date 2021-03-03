@@ -17,9 +17,9 @@
 #ifndef ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_H_
 #define ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_H_
 
-#include <vector>
-
 #include <android-base/logging.h>
+
+#include <vector>
 
 #include "arch/instruction_set.h"
 #include "base/arena_allocator.h"
@@ -38,15 +38,11 @@ class InstructionSetFeatures;
 class MemoryRegion;
 class JNIMacroLabel;
 
-enum class JNIMacroUnaryCondition {
-  kZero,
-  kNotZero
-};
+enum class JNIMacroUnaryCondition { kZero, kNotZero };
 
 class ArgumentLocation {
  public:
-  ArgumentLocation(ManagedRegister reg, size_t size)
-      : reg_(reg), frame_offset_(0u), size_(size) {
+  ArgumentLocation(ManagedRegister reg, size_t size) : reg_(reg), frame_offset_(0u), size_(size) {
     DCHECK(reg.IsRegister());
   }
 
@@ -123,9 +119,7 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
 
   virtual void StoreStackPointerToThread(ThreadOffset<kPointerSize> thr_offs) = 0;
 
-  virtual void StoreSpanning(FrameOffset dest,
-                             ManagedRegister src,
-                             FrameOffset in_off) = 0;
+  virtual void StoreSpanning(FrameOffset dest, ManagedRegister src, FrameOffset in_off) = 0;
 
   // Load routines
   virtual void Load(ManagedRegister dest, FrameOffset src, size_t size) = 0;
@@ -281,6 +275,7 @@ class JNIMacroLabel {
   virtual ~JNIMacroLabel() = 0;
 
   const InstructionSet isa_;
+
  protected:
   explicit JNIMacroLabel(InstructionSet isa) : isa_(isa) {}
 };
@@ -330,8 +325,7 @@ class JNIMacroLabelCommon : public JNIMacroLabel {
     return &label_;
   }
 
-  JNIMacroLabelCommon() : JNIMacroLabel(kIsa) {
-  }
+  JNIMacroLabelCommon() : JNIMacroLabel(kIsa) {}
 
   ~JNIMacroLabelCommon() override {}
 

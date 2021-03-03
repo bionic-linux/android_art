@@ -17,10 +17,10 @@
 #ifndef ART_COMPILER_LINKER_LINKER_PATCH_H_
 #define ART_COMPILER_LINKER_LINKER_PATCH_H_
 
-#include <iosfwd>
+#include <android-base/logging.h>
 #include <stdint.h>
 
-#include <android-base/logging.h>
+#include <iosfwd>
 
 #include "base/bit_utils.h"
 #include "dex/method_reference.h"
@@ -43,7 +43,7 @@ class LinkerPatch {
   //
   // Note: Actual patching is instruction_set-dependent.
   enum class Type : uint8_t {
-    kIntrinsicReference,      // Boot image reference for an intrinsic, see IntrinsicObjects.
+    kIntrinsicReference,  // Boot image reference for an intrinsic, see IntrinsicObjects.
     kDataBimgRelRo,
     kMethodRelative,
     kMethodBssEntry,
@@ -175,8 +175,7 @@ class LinkerPatch {
     return patch;
   }
 
-  static LinkerPatch CallEntrypointPatch(size_t literal_offset,
-                                         uint32_t entrypoint_offset) {
+  static LinkerPatch CallEntrypointPatch(size_t literal_offset, uint32_t entrypoint_offset) {
     LinkerPatch patch(literal_offset,
                       Type::kCallEntrypoint,
                       /* target_dex_file= */ nullptr);
@@ -217,52 +216,39 @@ class LinkerPatch {
   }
 
   MethodReference TargetMethod() const {
-    DCHECK(patch_type_ == Type::kMethodRelative ||
-           patch_type_ == Type::kMethodBssEntry ||
-           patch_type_ == Type::kJniEntrypointRelative ||
-           patch_type_ == Type::kCallRelative);
+    DCHECK(patch_type_ == Type::kMethodRelative || patch_type_ == Type::kMethodBssEntry ||
+           patch_type_ == Type::kJniEntrypointRelative || patch_type_ == Type::kCallRelative);
     return MethodReference(target_dex_file_, method_idx_);
   }
 
   const DexFile* TargetTypeDexFile() const {
-    DCHECK(patch_type_ == Type::kTypeRelative ||
-           patch_type_ == Type::kTypeBssEntry ||
-           patch_type_ == Type::kPublicTypeBssEntry ||
-           patch_type_ == Type::kPackageTypeBssEntry);
+    DCHECK(patch_type_ == Type::kTypeRelative || patch_type_ == Type::kTypeBssEntry ||
+           patch_type_ == Type::kPublicTypeBssEntry || patch_type_ == Type::kPackageTypeBssEntry);
     return target_dex_file_;
   }
 
   dex::TypeIndex TargetTypeIndex() const {
-    DCHECK(patch_type_ == Type::kTypeRelative ||
-           patch_type_ == Type::kTypeBssEntry ||
-           patch_type_ == Type::kPublicTypeBssEntry ||
-           patch_type_ == Type::kPackageTypeBssEntry);
+    DCHECK(patch_type_ == Type::kTypeRelative || patch_type_ == Type::kTypeBssEntry ||
+           patch_type_ == Type::kPublicTypeBssEntry || patch_type_ == Type::kPackageTypeBssEntry);
     return dex::TypeIndex(type_idx_);
   }
 
   const DexFile* TargetStringDexFile() const {
-    DCHECK(patch_type_ == Type::kStringRelative ||
-           patch_type_ == Type::kStringBssEntry);
+    DCHECK(patch_type_ == Type::kStringRelative || patch_type_ == Type::kStringBssEntry);
     return target_dex_file_;
   }
 
   dex::StringIndex TargetStringIndex() const {
-    DCHECK(patch_type_ == Type::kStringRelative ||
-           patch_type_ == Type::kStringBssEntry);
+    DCHECK(patch_type_ == Type::kStringRelative || patch_type_ == Type::kStringBssEntry);
     return dex::StringIndex(string_idx_);
   }
 
   uint32_t PcInsnOffset() const {
-    DCHECK(patch_type_ == Type::kIntrinsicReference ||
-           patch_type_ == Type::kDataBimgRelRo ||
-           patch_type_ == Type::kMethodRelative ||
-           patch_type_ == Type::kMethodBssEntry ||
-           patch_type_ == Type::kJniEntrypointRelative ||
-           patch_type_ == Type::kTypeRelative ||
-           patch_type_ == Type::kTypeBssEntry ||
-           patch_type_ == Type::kPublicTypeBssEntry ||
-           patch_type_ == Type::kPackageTypeBssEntry ||
-           patch_type_ == Type::kStringRelative ||
+    DCHECK(patch_type_ == Type::kIntrinsicReference || patch_type_ == Type::kDataBimgRelRo ||
+           patch_type_ == Type::kMethodRelative || patch_type_ == Type::kMethodBssEntry ||
+           patch_type_ == Type::kJniEntrypointRelative || patch_type_ == Type::kTypeRelative ||
+           patch_type_ == Type::kTypeBssEntry || patch_type_ == Type::kPublicTypeBssEntry ||
+           patch_type_ == Type::kPackageTypeBssEntry || patch_type_ == Type::kStringRelative ||
            patch_type_ == Type::kStringBssEntry);
     return pc_insn_offset_;
   }
@@ -316,7 +302,7 @@ class LinkerPatch {
   union {
     // Note: To avoid uninitialized padding on 64-bit systems, we use `size_t` for `cmp2_`.
     // This allows a hashing function to treat an array of linker patches as raw memory.
-    size_t cmp2_;             // Used for relational operators.
+    size_t cmp2_;  // Used for relational operators.
     // Literal offset of the insn loading PC (same as literal_offset if it's the same insn,
     // may be different if the PC-relative addressing needs multiple insns).
     uint32_t pc_insn_offset_;
@@ -331,19 +317,18 @@ class LinkerPatch {
 std::ostream& operator<<(std::ostream& os, LinkerPatch::Type type);
 
 inline bool operator==(const LinkerPatch& lhs, const LinkerPatch& rhs) {
-  return lhs.literal_offset_ == rhs.literal_offset_ &&
-      lhs.patch_type_ == rhs.patch_type_ &&
-      lhs.target_dex_file_ == rhs.target_dex_file_ &&
-      lhs.cmp1_ == rhs.cmp1_ &&
-      lhs.cmp2_ == rhs.cmp2_;
+  return lhs.literal_offset_ == rhs.literal_offset_ && lhs.patch_type_ == rhs.patch_type_ &&
+         lhs.target_dex_file_ == rhs.target_dex_file_ && lhs.cmp1_ == rhs.cmp1_ &&
+         lhs.cmp2_ == rhs.cmp2_;
 }
 
 inline bool operator<(const LinkerPatch& lhs, const LinkerPatch& rhs) {
   return (lhs.literal_offset_ != rhs.literal_offset_) ? lhs.literal_offset_ < rhs.literal_offset_
-      : (lhs.patch_type_ != rhs.patch_type_) ? lhs.patch_type_ < rhs.patch_type_
-      : (lhs.target_dex_file_ != rhs.target_dex_file_) ? lhs.target_dex_file_ < rhs.target_dex_file_
-      : (lhs.cmp1_ != rhs.cmp1_) ? lhs.cmp1_ < rhs.cmp1_
-      : lhs.cmp2_ < rhs.cmp2_;
+         : (lhs.patch_type_ != rhs.patch_type_)       ? lhs.patch_type_ < rhs.patch_type_
+         : (lhs.target_dex_file_ != rhs.target_dex_file_)
+             ? lhs.target_dex_file_ < rhs.target_dex_file_
+         : (lhs.cmp1_ != rhs.cmp1_) ? lhs.cmp1_ < rhs.cmp1_
+                                    : lhs.cmp2_ < rhs.cmp2_;
 }
 
 }  // namespace linker

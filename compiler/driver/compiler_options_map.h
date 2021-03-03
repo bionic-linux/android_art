@@ -37,7 +37,7 @@ struct CompilerOptionsMap : VariantMap<Base, KeyType> {
   using Key = KeyType<TValue>;
 
   // List of key declarations, shorthand for 'static const Key<T> Name'
-#define COMPILER_OPTIONS_KEY(Type, Name, ...) static const Key<Type> (Name);
+#define COMPILER_OPTIONS_KEY(Type, Name, ...) static const Key<Type>(Name);
 #include "compiler_options_map.def"
 };
 

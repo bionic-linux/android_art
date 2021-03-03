@@ -18,6 +18,7 @@
 #define ART_COMPILER_DEX_VERIFICATION_RESULTS_H_
 
 #include <stdint.h>
+
 #include <set>
 
 #include "base/dchecked_vector.h"
@@ -45,11 +46,9 @@ class VerificationResults {
   ~VerificationResults();
 
   void ProcessVerifiedMethod(verifier::MethodVerifier* method_verifier)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!verified_methods_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!verified_methods_lock_);
 
-  void CreateVerifiedMethodFor(MethodReference ref)
-      REQUIRES(!verified_methods_lock_);
+  void CreateVerifiedMethodFor(MethodReference ref) REQUIRES(!verified_methods_lock_);
 
   const VerifiedMethod* GetVerifiedMethod(MethodReference ref) const
       REQUIRES(!verified_methods_lock_);

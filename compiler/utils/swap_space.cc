@@ -41,8 +41,8 @@ static void DumpFreeMap(const FreeBySizeSet& free_by_size) {
       last_size = entry.size;
       LOG(INFO) << "Size " << last_size;
     }
-    LOG(INFO) << "  0x" << std::hex << entry.free_by_start_entry->Start()
-        << " size=" << std::dec << entry.free_by_start_entry->size;
+    LOG(INFO) << "  0x" << std::hex << entry.free_by_start_entry->Start() << " size=" << std::dec
+              << entry.free_by_start_entry->size;
   }
 }
 
@@ -73,8 +73,8 @@ SwapSpace::~SwapSpace() {
   // this point, so there should be only full size chunks in free_by_start_.
   for (const SpaceChunk& chunk : free_by_start_) {
     if (munmap(chunk.ptr, chunk.size) != 0) {
-      PLOG(ERROR) << "Failed to unmap swap space chunk at "
-          << static_cast<const void*>(chunk.ptr) << " size=" << chunk.size;
+      PLOG(ERROR) << "Failed to unmap swap space chunk at " << static_cast<const void*>(chunk.ptr)
+                  << " size=" << chunk.size;
     }
   }
   // All arenas are backed by the same file. Just close the descriptor.
@@ -112,8 +112,8 @@ void* SwapSpace::Alloc(size_t size) {
   // Check the free list for something that fits.
   // TODO: Smarter implementation. Global biggest chunk, ...
   auto it = free_by_start_.empty()
-      ? free_by_size_.end()
-      : free_by_size_.lower_bound(FreeBySizeEntry { size, free_by_start_.begin() });
+                ? free_by_size_.end()
+                : free_by_size_.lower_bound(FreeBySizeEntry{size, free_by_start_.begin()});
   if (it != free_by_size_.end()) {
     SpaceChunk old_chunk = *it->free_by_start_entry;
     if (old_chunk.size == size) {
@@ -137,7 +137,7 @@ void* SwapSpace::Alloc(size_t size) {
     SpaceChunk new_chunk = NewFileChunk(size);
     if (new_chunk.size != size) {
       // Insert the remainder.
-      SpaceChunk remainder = { new_chunk.ptr + size, new_chunk.size - size };
+      SpaceChunk remainder = {new_chunk.ptr + size, new_chunk.size - size};
       InsertChunk(remainder);
     }
     return new_chunk.ptr;
@@ -181,7 +181,7 @@ void SwapSpace::Free(void* ptr, size_t size) {
     free_before = CollectFree(free_by_start_, free_by_size_);
   }
 
-  SpaceChunk chunk = { reinterpret_cast<uint8_t*>(ptr), size };
+  SpaceChunk chunk = {reinterpret_cast<uint8_t*>(ptr), size};
   auto it = free_by_start_.lower_bound(chunk);
   if (it != free_by_start_.begin()) {
     auto prev = it;
@@ -191,7 +191,7 @@ void SwapSpace::Free(void* ptr, size_t size) {
       // Merge *prev with this chunk.
       chunk.size += prev->size;
       chunk.ptr -= prev->size;
-      auto erase_pos = free_by_size_.find(FreeBySizeEntry { prev->size, prev });
+      auto erase_pos = free_by_size_.find(FreeBySizeEntry{prev->size, prev});
       DCHECK(erase_pos != free_by_size_.end());
       RemoveChunk(erase_pos);
       // "prev" is invalidated but "it" remains valid.
@@ -202,7 +202,7 @@ void SwapSpace::Free(void* ptr, size_t size) {
     if (chunk.End() == it->Start()) {
       // Merge *it with this chunk.
       chunk.size += it->size;
-      auto erase_pos = free_by_size_.find(FreeBySizeEntry { it->size, it });
+      auto erase_pos = free_by_size_.find(FreeBySizeEntry{it->size, it});
       DCHECK(erase_pos != free_by_size_.end());
       RemoveChunk(erase_pos);
       // "it" is invalidated but we don't need it anymore.
@@ -215,7 +215,8 @@ void SwapSpace::Free(void* ptr, size_t size) {
 
     if (free_after != free_before + size) {
       DumpFreeMap(free_by_size_);
-      CHECK_EQ(free_after, free_before + size) << "Should be " << size << " difference from " << free_before;
+      CHECK_EQ(free_after, free_before + size)
+          << "Should be " << size << " difference from " << free_before;
     }
   }
 }

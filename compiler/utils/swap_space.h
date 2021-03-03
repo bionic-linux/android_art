@@ -17,14 +17,14 @@
 #ifndef ART_COMPILER_UTILS_SWAP_SPACE_H_
 #define ART_COMPILER_UTILS_SWAP_SPACE_H_
 
+#include <android-base/logging.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #include <cstdlib>
 #include <list>
 #include <set>
 #include <vector>
-
-#include <android-base/logging.h>
 
 #include "base/macros.h"
 #include "base/mutex.h"
@@ -71,7 +71,7 @@ class SwapSpace {
   // Map size to an iterator to free_by_start_'s entry.
   struct FreeBySizeEntry {
     FreeBySizeEntry(size_t sz, FreeByStartSet::const_iterator entry)
-        : size(sz), free_by_start_entry(entry) { }
+        : size(sz), free_by_start_entry(entry) {}
 
     // We need mutable members as we keep these objects in a std::set<> (providing only const
     // access) but we modify these members while carefully preserving the std::set<> ordering.
@@ -108,7 +108,8 @@ class SwapSpace {
   DISALLOW_COPY_AND_ASSIGN(SwapSpace);
 };
 
-template <typename T> class SwapAllocator;
+template <typename T>
+class SwapAllocator;
 
 template <>
 class SwapAllocator<void> {
@@ -125,8 +126,7 @@ class SwapAllocator<void> {
   explicit SwapAllocator(SwapSpace* swap_space) : swap_space_(swap_space) {}
 
   template <typename U>
-  SwapAllocator(const SwapAllocator<U>& other)
-      : swap_space_(other.swap_space_) {}
+  SwapAllocator(const SwapAllocator<U>& other) : swap_space_(other.swap_space_) {}
 
   SwapAllocator(const SwapAllocator& other) = default;
   SwapAllocator& operator=(const SwapAllocator& other) = default;
@@ -161,8 +161,7 @@ class SwapAllocator {
   explicit SwapAllocator(SwapSpace* swap_space) : swap_space_(swap_space) {}
 
   template <typename U>
-  SwapAllocator(const SwapAllocator<U>& other)
-      : swap_space_(other.swap_space_) {}
+  SwapAllocator(const SwapAllocator<U>& other) : swap_space_(other.swap_space_) {}
 
   SwapAllocator(const SwapAllocator& other) = default;
   SwapAllocator& operator=(const SwapAllocator& other) = default;
@@ -172,8 +171,12 @@ class SwapAllocator {
     return static_cast<size_type>(-1) / sizeof(T);
   }
 
-  pointer address(reference x) const { return &x; }
-  const_pointer address(const_reference x) const { return &x; }
+  pointer address(reference x) const {
+    return &x;
+  }
+  const_pointer address(const_reference x) const {
+    return &x;
+  }
 
   pointer allocate(size_type n, SwapAllocator<void>::pointer hint ATTRIBUTE_UNUSED = nullptr) {
     DCHECK_LE(n, max_size());

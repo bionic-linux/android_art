@@ -70,17 +70,17 @@ class CompilerOptions final {
   static constexpr size_t kUnsetInlineMaxCodeUnits = -1;
 
   enum class CompilerType : uint8_t {
-    kAotCompiler,             // AOT compiler.
-    kJitCompiler,             // Normal JIT compiler.
-    kSharedCodeJitCompiler,   // Zygote JIT producing code in the shared region area, putting
-                              // restrictions on, for example, how literals are being generated.
+    kAotCompiler,            // AOT compiler.
+    kJitCompiler,            // Normal JIT compiler.
+    kSharedCodeJitCompiler,  // Zygote JIT producing code in the shared region area, putting
+                             // restrictions on, for example, how literals are being generated.
   };
 
   enum class ImageType : uint8_t {
-    kNone,                    // JIT or AOT app compilation producing only an oat file but no image.
-    kBootImage,               // Creating boot image.
-    kBootImageExtension,      // Creating boot image extension.
-    kAppImage,                // Creating app image.
+    kNone,                // JIT or AOT app compilation producing only an oat file but no image.
+    kBootImage,           // Creating boot image.
+    kBootImageExtension,  // Creating boot image extension.
+    kAppImage,            // Creating app image.
   };
 
   CompilerOptions();
@@ -284,7 +284,6 @@ class CompilerOptions final {
   const InstructionSetFeatures* GetInstructionSetFeatures() const {
     return instruction_set_features_.get();
   }
-
 
   const std::vector<const DexFile*>& GetNoInlineFromDexFile() const {
     return no_inline_from_;

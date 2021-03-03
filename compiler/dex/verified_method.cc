@@ -16,10 +16,10 @@
 
 #include "verified_method.h"
 
+#include <android-base/logging.h>
+
 #include <algorithm>
 #include <memory>
-
-#include <android-base/logging.h>
 
 #include "dex/code_item_accessors-inl.h"
 #include "dex/dex_file.h"
@@ -33,9 +33,7 @@
 namespace art {
 
 VerifiedMethod::VerifiedMethod(uint32_t encountered_error_types, bool has_runtime_throw)
-    : encountered_error_types_(encountered_error_types),
-      has_runtime_throw_(has_runtime_throw) {
-}
+    : encountered_error_types_(encountered_error_types), has_runtime_throw_(has_runtime_throw) {}
 
 const VerifiedMethod* VerifiedMethod::Create(verifier::MethodVerifier* method_verifier) {
   DCHECK(Runtime::Current()->IsAotCompiler());

@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-#include "code_generator_arm64.h"
-
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "base/bit_utils_iterator.h"
+#include "code_generator_arm64.h"
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
 
@@ -36,8 +35,8 @@ using helpers::QRegisterFrom;
 using helpers::StackOperandFrom;
 using helpers::SveStackOperandFrom;
 using helpers::VRegisterFrom;
-using helpers::ZRegisterFrom;
 using helpers::XRegisterFrom;
+using helpers::ZRegisterFrom;
 
 #define __ GetVIXLAssembler()->
 
@@ -65,8 +64,7 @@ static bool SVECanEncodeConstantAsImmediate(HConstant* constant, HInstruction* i
 //    encoded into the instruction.
 //  - register location otherwise.
 inline Location SVEEncodableConstantOrRegister(HInstruction* constant, HInstruction* instr) {
-  if (constant->IsConstant()
-      && SVECanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
+  if (constant->IsConstant() && SVECanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
     return Location::ConstantLocation(constant->AsConstant());
   }
 
@@ -219,9 +217,9 @@ static void CreateVecUnOpLocations(ArenaAllocator* allocator, HVecUnaryOperation
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
       locations->SetInAt(0, Location::RequiresFpuRegister());
-      locations->SetOut(Location::RequiresFpuRegister(),
-                        instruction->IsVecNot() ? Location::kOutputOverlap
-                                                : Location::kNoOutputOverlap);
+      locations->SetOut(
+          Location::RequiresFpuRegister(),
+          instruction->IsVecNot() ? Location::kOutputOverlap : Location::kNoOutputOverlap);
       break;
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
@@ -878,14 +876,16 @@ void LocationsBuilderARM64Sve::VisitVecSetScalars(HVecSetScalars* instruction) {
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
     case DataType::Type::kInt64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant())
+                                 : Location::RequiresFpuRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
@@ -1108,23 +1108,27 @@ void InstructionCodeGeneratorARM64Sve::VisitVecLoad(HVecLoad* instruction) {
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt16:  // (short) s.charAt(.) can yield HVecLoad/Int16/StringCharAt.
     case DataType::Type::kUint16:
-      __ Ld1h(reg.VnH(), p_reg,
+      __ Ld1h(reg.VnH(),
+              p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      __ Ld1b(reg.VnB(), p_reg,
+      __ Ld1b(reg.VnB(),
+              p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      __ Ld1w(reg.VnS(), p_reg,
+      __ Ld1w(reg.VnS(),
+              p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      __ Ld1d(reg.VnD(), p_reg,
+      __ Ld1d(reg.VnD(),
+              p_reg,
               VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     default:
@@ -1151,23 +1155,27 @@ void InstructionCodeGeneratorARM64Sve::VisitVecStore(HVecStore* instruction) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
-      __ St1b(reg.VnB(), p_reg,
-          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      __ St1b(reg.VnB(),
+              p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
-      __ St1h(reg.VnH(), p_reg,
-          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      __ St1h(reg.VnH(),
+              p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      __ St1w(reg.VnS(), p_reg,
-          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      __ St1w(reg.VnS(),
+              p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      __ St1d(reg.VnD(), p_reg,
-          VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      __ St1d(reg.VnD(),
+              p_reg,
+              VecSVEAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1288,23 +1296,20 @@ Location InstructionCodeGeneratorARM64Sve::AllocateSIMDScratchLocation(
   return LocationFrom(scope->AcquireZ());
 }
 
-void InstructionCodeGeneratorARM64Sve::FreeSIMDScratchLocation(Location loc,
-    vixl::aarch64::UseScratchRegisterScope* scope) {
+void InstructionCodeGeneratorARM64Sve::FreeSIMDScratchLocation(
+    Location loc, vixl::aarch64::UseScratchRegisterScope* scope) {
   scope->Release(ZRegisterFrom(loc));
 }
 
-void InstructionCodeGeneratorARM64Sve::LoadSIMDRegFromStack(Location destination,
-                                                            Location source) {
+void InstructionCodeGeneratorARM64Sve::LoadSIMDRegFromStack(Location destination, Location source) {
   __ Ldr(ZRegisterFrom(destination), SveStackOperandFrom(source));
 }
 
-void InstructionCodeGeneratorARM64Sve::MoveSIMDRegToSIMDReg(Location destination,
-                                                            Location source) {
+void InstructionCodeGeneratorARM64Sve::MoveSIMDRegToSIMDReg(Location destination, Location source) {
   __ Mov(ZRegisterFrom(destination), ZRegisterFrom(source));
 }
 
-void InstructionCodeGeneratorARM64Sve::MoveToSIMDStackSlot(Location destination,
-                                                           Location source) {
+void InstructionCodeGeneratorARM64Sve::MoveToSIMDStackSlot(Location destination, Location source) {
   DCHECK(destination.IsSIMDStackSlot());
 
   if (source.IsFpuRegister()) {
@@ -1318,8 +1323,7 @@ void InstructionCodeGeneratorARM64Sve::MoveToSIMDStackSlot(Location destination,
       DCHECK_EQ(codegen_->GetSIMDRegisterWidth() % kArm64WordSize, 0u);
       // Emit a number of LDR/STR (XRegister, 64-bit) to cover the whole SIMD register size
       // when copying a stack slot.
-      for (size_t offset = 0, e = codegen_->GetSIMDRegisterWidth();
-           offset < e;
+      for (size_t offset = 0, e = codegen_->GetSIMDRegisterWidth(); offset < e;
            offset += kArm64WordSize) {
         __ Ldr(temp, MemOperand(sp, source.GetStackIndex() + offset));
         __ Str(temp, MemOperand(sp, destination.GetStackIndex() + offset));

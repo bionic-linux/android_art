@@ -24,9 +24,9 @@ namespace art {
 namespace arm {
 
 using helpers::DRegisterFrom;
-using helpers::Int64ConstantFrom;
 using helpers::InputDRegisterAt;
 using helpers::InputRegisterAt;
+using helpers::Int64ConstantFrom;
 using helpers::OutputDRegister;
 using helpers::OutputRegister;
 using helpers::RegisterFrom;
@@ -109,9 +109,9 @@ static void CreateVecUnOpLocations(ArenaAllocator* allocator, HVecUnaryOperation
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
       locations->SetInAt(0, Location::RequiresFpuRegister());
-      locations->SetOut(Location::RequiresFpuRegister(),
-                        instruction->IsVecNot() ? Location::kOutputOverlap
-                                                : Location::kNoOutputOverlap);
+      locations->SetOut(
+          Location::RequiresFpuRegister(),
+          instruction->IsVecNot() ? Location::kOutputOverlap : Location::kNoOutputOverlap);
       break;
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
@@ -341,27 +341,23 @@ void InstructionCodeGeneratorARMVIXL::VisitVecHalvingAdd(HVecHalvingAdd* instruc
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Vrhadd(DataTypeValue::U8, dst, lhs, rhs)
-          : __ Vhadd(DataTypeValue::U8, dst, lhs, rhs);
+      instruction->IsRounded() ? __ Vrhadd(DataTypeValue::U8, dst, lhs, rhs)
+                               : __ Vhadd(DataTypeValue::U8, dst, lhs, rhs);
       break;
     case DataType::Type::kInt8:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Vrhadd(DataTypeValue::S8, dst, lhs, rhs)
-          : __ Vhadd(DataTypeValue::S8, dst, lhs, rhs);
+      instruction->IsRounded() ? __ Vrhadd(DataTypeValue::S8, dst, lhs, rhs)
+                               : __ Vhadd(DataTypeValue::S8, dst, lhs, rhs);
       break;
     case DataType::Type::kUint16:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Vrhadd(DataTypeValue::U16, dst, lhs, rhs)
-          : __ Vhadd(DataTypeValue::U16, dst, lhs, rhs);
+      instruction->IsRounded() ? __ Vrhadd(DataTypeValue::U16, dst, lhs, rhs)
+                               : __ Vhadd(DataTypeValue::U16, dst, lhs, rhs);
       break;
     case DataType::Type::kInt16:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Vrhadd(DataTypeValue::S16, dst, lhs, rhs)
-          : __ Vhadd(DataTypeValue::S16, dst, lhs, rhs);
+      instruction->IsRounded() ? __ Vrhadd(DataTypeValue::S16, dst, lhs, rhs)
+                               : __ Vhadd(DataTypeValue::S16, dst, lhs, rhs);
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -749,8 +745,9 @@ void LocationsBuilderARMVIXL::VisitVecSetScalars(HVecSetScalars* instruction) {
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
@@ -810,7 +807,8 @@ void LocationsBuilderARMVIXL::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate*
   CreateVecAccumLocations(GetGraph()->GetAllocator(), instruction);
 }
 
-void InstructionCodeGeneratorARMVIXL::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instruction) {
+void InstructionCodeGeneratorARMVIXL::VisitVecMultiplyAccumulate(
+    HVecMultiplyAccumulate* instruction) {
   LOG(FATAL) << "No SIMD for " << instruction->GetId();
 }
 
@@ -897,10 +895,9 @@ static void CreateVecMemLocations(ArenaAllocator* allocator,
 // Helper to set up locations for vector memory operations. Returns the memory operand and,
 // if used, sets the output parameter scratch to a temporary register used in this operand,
 // so that the client can release it right after the memory operand use.
-MemOperand InstructionCodeGeneratorARMVIXL::VecAddress(
-        HVecMemoryOperation* instruction,
-        UseScratchRegisterScope* temps_scope,
-        /*out*/ vixl32::Register* scratch) {
+MemOperand InstructionCodeGeneratorARMVIXL::VecAddress(HVecMemoryOperation* instruction,
+                                                       UseScratchRegisterScope* temps_scope,
+                                                       /*out*/ vixl32::Register* scratch) {
   LocationSummary* locations = instruction->GetLocations();
   vixl32::Register base = InputRegisterAt(instruction, 0);
 
@@ -924,9 +921,9 @@ MemOperand InstructionCodeGeneratorARMVIXL::VecAddress(
 }
 
 AlignedMemOperand InstructionCodeGeneratorARMVIXL::VecAddressUnaligned(
-        HVecMemoryOperation* instruction,
-        UseScratchRegisterScope* temps_scope,
-        /*out*/ vixl32::Register* scratch) {
+    HVecMemoryOperation* instruction,
+    UseScratchRegisterScope* temps_scope,
+    /*out*/ vixl32::Register* scratch) {
   LocationSummary* locations = instruction->GetLocations();
   vixl32::Register base = InputRegisterAt(instruction, 0);
 
@@ -969,8 +966,8 @@ void InstructionCodeGeneratorARMVIXL::VisitVecLoad(HVecLoad* instruction) {
         __ Vldr(reg, VecAddress(instruction, &temps, &scratch));
       } else {
         __ Vld1(Untyped8,
-            NeonRegisterList(reg, kMultipleLanes),
-            VecAddressUnaligned(instruction, &temps, &scratch));
+                NeonRegisterList(reg, kMultipleLanes),
+                VecAddressUnaligned(instruction, &temps, &scratch));
       }
       break;
     case DataType::Type::kUint16:
@@ -980,8 +977,8 @@ void InstructionCodeGeneratorARMVIXL::VisitVecLoad(HVecLoad* instruction) {
         __ Vldr(reg, VecAddress(instruction, &temps, &scratch));
       } else {
         __ Vld1(Untyped16,
-            NeonRegisterList(reg, kMultipleLanes),
-            VecAddressUnaligned(instruction, &temps, &scratch));
+                NeonRegisterList(reg, kMultipleLanes),
+                VecAddressUnaligned(instruction, &temps, &scratch));
       }
       break;
     case DataType::Type::kInt32:
@@ -990,8 +987,8 @@ void InstructionCodeGeneratorARMVIXL::VisitVecLoad(HVecLoad* instruction) {
         __ Vldr(reg, VecAddress(instruction, &temps, &scratch));
       } else {
         __ Vld1(Untyped32,
-            NeonRegisterList(reg, kMultipleLanes),
-            VecAddressUnaligned(instruction, &temps, &scratch));
+                NeonRegisterList(reg, kMultipleLanes),
+                VecAddressUnaligned(instruction, &temps, &scratch));
       }
       break;
     default:

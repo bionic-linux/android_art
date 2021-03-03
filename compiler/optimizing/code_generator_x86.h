@@ -34,16 +34,16 @@ static constexpr size_t kX86WordSize = static_cast<size_t>(kX86PointerSize);
 
 class CodeGeneratorX86;
 
-static constexpr Register kParameterCoreRegisters[] = { ECX, EDX, EBX };
-static constexpr RegisterPair kParameterCorePairRegisters[] = { ECX_EDX, EDX_EBX };
+static constexpr Register kParameterCoreRegisters[] = {ECX, EDX, EBX};
+static constexpr RegisterPair kParameterCorePairRegisters[] = {ECX_EDX, EDX_EBX};
 static constexpr size_t kParameterCoreRegistersLength = arraysize(kParameterCoreRegisters);
-static constexpr XmmRegister kParameterFpuRegisters[] = { XMM0, XMM1, XMM2, XMM3 };
+static constexpr XmmRegister kParameterFpuRegisters[] = {XMM0, XMM1, XMM2, XMM3};
 static constexpr size_t kParameterFpuRegistersLength = arraysize(kParameterFpuRegisters);
 
-static constexpr Register kRuntimeParameterCoreRegisters[] = { EAX, ECX, EDX, EBX };
+static constexpr Register kRuntimeParameterCoreRegisters[] = {EAX, ECX, EDX, EBX};
 static constexpr size_t kRuntimeParameterCoreRegistersLength =
     arraysize(kRuntimeParameterCoreRegisters);
-static constexpr XmmRegister kRuntimeParameterFpuRegisters[] = { XMM0, XMM1, XMM2, XMM3 };
+static constexpr XmmRegister kRuntimeParameterFpuRegisters[] = {XMM0, XMM1, XMM2, XMM3};
 static constexpr size_t kRuntimeParameterFpuRegistersLength =
     arraysize(kRuntimeParameterFpuRegisters);
 
@@ -62,12 +62,12 @@ class InvokeRuntimeCallingConvention : public CallingConvention<Register, XmmReg
 
 class InvokeDexCallingConvention : public CallingConvention<Register, XmmRegister> {
  public:
-  InvokeDexCallingConvention() : CallingConvention(
-      kParameterCoreRegisters,
-      kParameterCoreRegistersLength,
-      kParameterFpuRegisters,
-      kParameterFpuRegistersLength,
-      kX86PointerSize) {}
+  InvokeDexCallingConvention()
+      : CallingConvention(kParameterCoreRegisters,
+                          kParameterCoreRegistersLength,
+                          kParameterFpuRegisters,
+                          kParameterFpuRegistersLength,
+                          kX86PointerSize) {}
 
   RegisterPair GetRegisterPairAt(size_t argument_index) {
     DCHECK_LT(argument_index + 1, GetNumberOfRegisters());
@@ -104,7 +104,9 @@ class CriticalNativeCallingConventionVisitorX86 : public InvokeDexCallingConvent
   Location GetReturnLocation(DataType::Type type) const override;
   Location GetMethodLocation() const override;
 
-  size_t GetStackOffset() const { return stack_offset_; }
+  size_t GetStackOffset() const {
+    return stack_offset_;
+  }
 
  private:
   // Register allocator does not support adjusting frame size, so we cannot provide final locations
@@ -127,18 +129,14 @@ class FieldAccessCallingConventionX86 : public FieldAccessCallingConvention {
     return Location::RegisterLocation(EAX);
   }
   Location GetReturnLocation(DataType::Type type) const override {
-    return DataType::Is64BitType(type)
-        ? Location::RegisterPairLocation(EAX, EDX)
-        : Location::RegisterLocation(EAX);
+    return DataType::Is64BitType(type) ? Location::RegisterPairLocation(EAX, EDX)
+                                       : Location::RegisterLocation(EAX);
   }
   Location GetSetValueLocation(DataType::Type type, bool is_instance) const override {
     return DataType::Is64BitType(type)
-        ? (is_instance
-            ? Location::RegisterPairLocation(EDX, EBX)
-            : Location::RegisterPairLocation(ECX, EDX))
-        : (is_instance
-            ? Location::RegisterLocation(EDX)
-            : Location::RegisterLocation(ECX));
+               ? (is_instance ? Location::RegisterPairLocation(EDX, EBX)
+                              : Location::RegisterPairLocation(ECX, EDX))
+               : (is_instance ? Location::RegisterLocation(EDX) : Location::RegisterLocation(ECX));
   }
   Location GetFpuLocation(DataType::Type type ATTRIBUTE_UNUSED) const override {
     return Location::FpuRegisterLocation(XMM0);
@@ -177,8 +175,7 @@ class LocationsBuilderX86 : public HGraphVisitor {
   LocationsBuilderX86(HGraph* graph, CodeGeneratorX86* codegen)
       : HGraphVisitor(graph), codegen_(codegen) {}
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86(DECLARE_VISIT_INSTRUCTION)
@@ -187,8 +184,8 @@ class LocationsBuilderX86 : public HGraphVisitor {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
  private:
@@ -211,8 +208,7 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
  public:
   InstructionCodeGeneratorX86(HGraph* graph, CodeGeneratorX86* codegen);
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86(DECLARE_VISIT_INSTRUCTION)
@@ -221,11 +217,13 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
-  X86Assembler* GetAssembler() const { return assembler_; }
+  X86Assembler* GetAssembler() const {
+    return assembler_;
+  }
 
   // The compare/jump sequence will generate about (1.5 * num_entries) instructions. A jump
   // table version generates 7 instructions and num_entries literals. Compare/jump sequence will
@@ -314,21 +312,21 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
 
   // Push value to FPU stack. `is_fp` specifies whether the value is floating point or not.
   // `is_wide` specifies whether it is long/double or not.
-  void PushOntoFPStack(Location source, uint32_t temp_offset,
-                       uint32_t stack_adjustment, bool is_fp, bool is_wide);
+  void PushOntoFPStack(
+      Location source, uint32_t temp_offset, uint32_t stack_adjustment, bool is_fp, bool is_wide);
 
-  template<class LabelType>
+  template <class LabelType>
   void GenerateTestAndBranch(HInstruction* instruction,
                              size_t condition_input_index,
                              LabelType* true_target,
                              LabelType* false_target);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateCompareTestAndBranch(HCondition* condition,
                                     LabelType* true_target,
                                     LabelType* false_target);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateFPJumps(HCondition* cond, LabelType* true_label, LabelType* false_label);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateLongComparesAndJumps(HCondition* cond,
                                     LabelType* true_label,
                                     LabelType* false_label);
@@ -390,9 +388,8 @@ class CodeGeneratorX86 : public CodeGenerator {
   }
 
   size_t GetSlowPathFPWidth() const override {
-    return GetGraph()->HasSIMD()
-        ? GetSIMDRegisterWidth()
-        : 2 * kX86WordSize;  //  8 bytes == 2 words for each spill
+    return GetGraph()->HasSIMD() ? GetSIMDRegisterWidth()
+                                 : 2 * kX86WordSize;  //  8 bytes == 2 words for each spill
   }
 
   size_t GetCalleePreservedFPWidth() const override {
@@ -469,16 +466,17 @@ class CodeGeneratorX86 : public CodeGenerator {
   // Check if the desired_dispatch_info is supported. If it is, return it,
   // otherwise return a fall-back info that should be used instead.
   HInvokeStaticOrDirect::DispatchInfo GetSupportedInvokeStaticOrDirectDispatch(
-      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info,
-      ArtMethod* method) override;
+      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info, ArtMethod* method) override;
 
   void LoadMethod(MethodLoadKind load_kind, Location temp, HInvoke* invoke);
   // Generate a call to a static or direct method.
-  void GenerateStaticOrDirectCall(
-      HInvokeStaticOrDirect* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
+  void GenerateStaticOrDirectCall(HInvokeStaticOrDirect* invoke,
+                                  Location temp,
+                                  SlowPathCode* slow_path = nullptr) override;
   // Generate a call to a virtual method.
-  void GenerateVirtualCall(
-      HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
+  void GenerateVirtualCall(HInvokeVirtual* invoke,
+                           Location temp,
+                           SlowPathCode* slow_path = nullptr) override;
 
   void RecordBootImageIntrinsicPatch(HX86ComputeBaseMethodAddress* method_address,
                                      uint32_t intrinsic_data);
@@ -516,11 +514,8 @@ class CodeGeneratorX86 : public CodeGenerator {
   void EmitJitRootPatches(uint8_t* code, const uint8_t* roots_data) override;
 
   // Emit a write barrier.
-  void MarkGCCard(Register temp,
-                  Register card,
-                  Register object,
-                  Register value,
-                  bool value_can_be_null);
+  void MarkGCCard(
+      Register temp, Register card, Register object, Register value, bool value_can_be_null);
 
   void GenerateMemoryBarrier(MemBarrierKind kind);
 
@@ -536,9 +531,13 @@ class CodeGeneratorX86 : public CodeGenerator {
     return type == DataType::Type::kInt64;
   }
 
-  bool ShouldSplitLongMoves() const override { return true; }
+  bool ShouldSplitLongMoves() const override {
+    return true;
+  }
 
-  Label* GetFrameEntryLabel() { return &frame_entry_label_; }
+  Label* GetFrameEntryLabel() {
+    return &frame_entry_label_;
+  }
 
   void AddMethodAddressOffset(HX86ComputeBaseMethodAddress* method_base, int32_t offset) {
     method_address_offset_.Put(method_base->GetId(), offset);
@@ -690,8 +689,7 @@ class CodeGeneratorX86 : public CodeGenerator {
     X86PcRelativePatchInfo(HX86ComputeBaseMethodAddress* address,
                            const DexFile* target_dex_file,
                            uint32_t target_index)
-        : PatchInfo(target_dex_file, target_index),
-          method_address(address) {}
+        : PatchInfo(target_dex_file, target_index), method_address(address) {}
     HX86ComputeBaseMethodAddress* method_address;
   };
 

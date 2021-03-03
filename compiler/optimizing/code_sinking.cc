@@ -105,16 +105,12 @@ static bool IsInterestingInstruction(HInstruction* instruction) {
   // runs before this optimization, and should have removed interesting ones.
   // In theory, we could handle loads of local allocations, but this is currently
   // hard to test, as LSE removes them.
-  if (instruction->IsStaticFieldGet() ||
-      instruction->IsInstanceFieldGet() ||
-      instruction->IsPredicatedInstanceFieldGet() ||
-      instruction->IsArrayGet()) {
+  if (instruction->IsStaticFieldGet() || instruction->IsInstanceFieldGet() ||
+      instruction->IsPredicatedInstanceFieldGet() || instruction->IsArrayGet()) {
     return false;
   }
 
-  if (instruction->IsInstanceFieldSet() ||
-      instruction->IsArraySet() ||
-      instruction->CanBeMoved()) {
+  if (instruction->IsInstanceFieldSet() || instruction->IsArraySet() || instruction->CanBeMoved()) {
     return true;
   }
   return false;
@@ -159,16 +155,15 @@ static bool ShouldFilterUse(HInstruction* instruction,
                             const ArenaBitVector& post_dominated) {
   if (instruction->IsNewInstance()) {
     return (user->IsInstanceFieldSet() || user->IsConstructorFence()) &&
-        (user->InputAt(0) == instruction) &&
-        !post_dominated.IsBitSet(user->GetBlock()->GetBlockId());
+           (user->InputAt(0) == instruction) &&
+           !post_dominated.IsBitSet(user->GetBlock()->GetBlockId());
   } else if (instruction->IsNewArray()) {
     return (user->IsArraySet() || user->IsConstructorFence()) &&
-        (user->InputAt(0) == instruction) &&
-        !post_dominated.IsBitSet(user->GetBlock()->GetBlockId());
+           (user->InputAt(0) == instruction) &&
+           !post_dominated.IsBitSet(user->GetBlock()->GetBlockId());
   }
   return false;
 }
-
 
 // Find the ideal position for moving `instruction`. If `filter` is true,
 // we filter out store instructions to that instruction, which are processed
@@ -189,9 +184,8 @@ static HInstruction* FindIdealPosition(HInstruction* instruction,
       if (user->IsPhi()) {
         // Special case phis by taking the incoming block for regular ones,
         // or the dominator for catch phis.
-        block = user->AsPhi()->IsCatchPhi()
-            ? block->GetDominator()
-            : block->GetPredecessors()[use.GetIndex()];
+        block = user->AsPhi()->IsCatchPhi() ? block->GetDominator()
+                                            : block->GetPredecessors()[use.GetIndex()];
       }
       finder.Update(block);
     }
@@ -253,14 +247,14 @@ static HInstruction* FindIdealPosition(HInstruction* instruction,
   return insert_pos;
 }
 
-
 void CodeSinking::SinkCodeToUncommonBranch(HBasicBlock* end_block) {
   // Local allocator to discard data structures created below at the end of this optimization.
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
   size_t number_of_instructions = graph_->GetCurrentInstructionId();
   ScopedArenaVector<HInstruction*> worklist(allocator.Adapter(kArenaAllocMisc));
-  ArenaBitVector processed_instructions(&allocator, number_of_instructions, /* expandable= */ false);
+  ArenaBitVector processed_instructions(
+      &allocator, number_of_instructions, /* expandable= */ false);
   processed_instructions.ClearAllBits();
   ArenaBitVector post_dominated(&allocator, graph_->GetBlocks().size(), /* expandable= */ false);
   post_dominated.ClearAllBits();
@@ -333,8 +327,7 @@ void CodeSinking::SinkCodeToUncommonBranch(HBasicBlock* end_block) {
         // TODO(ngeoffray): The domination check is an approximation. We should
         // instead check if the dominated blocks post dominate the user's block,
         // but we do not have post dominance information here.
-        if (processed_instructions.IsBitSet(user->GetId()) ||
-            !IsInterestingInstruction(user) ||
+        if (processed_instructions.IsBitSet(user->GetId()) || !IsInterestingInstruction(user) ||
             !user->GetBlock()->Dominates(common_dominator)) {
           can_move = false;
           break;
@@ -349,9 +342,7 @@ void CodeSinking::SinkCodeToUncommonBranch(HBasicBlock* end_block) {
         HEnvironment* environment = use.GetUser();
         HInstruction* user = environment->GetHolder();
         if (!post_dominated.IsBitSet(user->GetBlock()->GetBlockId())) {
-          if (graph_->IsDebuggable() ||
-              user->IsDeoptimize() ||
-              user->CanThrowIntoCatchBlock() ||
+          if (graph_->IsDebuggable() || user->IsDeoptimize() || user->CanThrowIntoCatchBlock() ||
               (user->IsSuspendCheck() && graph_->IsCompilingOsr())) {
             can_move = false;
             break;
@@ -403,9 +394,8 @@ void CodeSinking::SinkCodeToUncommonBranch(HBasicBlock* end_block) {
   // Step (3): Try to move sinking candidates.
   for (HInstruction* instruction : move_in_order) {
     HInstruction* position = nullptr;
-    if (instruction->IsArraySet()
-            || instruction->IsInstanceFieldSet()
-            || instruction->IsConstructorFence()) {
+    if (instruction->IsArraySet() || instruction->IsInstanceFieldSet() ||
+        instruction->IsConstructorFence()) {
       if (!instructions_that_can_move.IsBitSet(instruction->InputAt(0)->GetId())) {
         // A store can trivially move, but it can safely do so only if the heap
         // location it stores to can also move.

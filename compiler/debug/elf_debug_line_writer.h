@@ -34,13 +34,12 @@ namespace debug {
 
 typedef std::vector<DexFile::PositionInfo> PositionInfos;
 
-template<typename ElfTypes>
+template <typename ElfTypes>
 class ElfDebugLineWriter {
   using Elf_Addr = typename ElfTypes::Addr;
 
  public:
-  explicit ElfDebugLineWriter(ElfBuilder<ElfTypes>* builder) : builder_(builder) {
-  }
+  explicit ElfDebugLineWriter(ElfBuilder<ElfTypes>* builder) : builder_(builder) {}
 
   void Start() {
     builder_->GetDebugLine()->Start();
@@ -51,9 +50,8 @@ class ElfDebugLineWriter {
   size_t WriteCompilationUnit(ElfCompilationUnit& compilation_unit) {
     const InstructionSet isa = builder_->GetIsa();
     const bool is64bit = Is64BitInstructionSet(isa);
-    const Elf_Addr base_address = compilation_unit.is_code_address_text_relative
-        ? builder_->GetText()->GetAddress()
-        : 0;
+    const Elf_Addr base_address =
+        compilation_unit.is_code_address_text_relative ? builder_->GetText()->GetAddress() : 0;
 
     compilation_unit.debug_line_offset = builder_->GetDebugLine()->GetPosition();
 
@@ -67,7 +65,7 @@ class ElfDebugLineWriter {
       case InstructionSet::kArm:  // arm actually means thumb2.
       case InstructionSet::kThumb2:
         code_factor_bits_ = 1;  // 16-bit instuctions
-        dwarf_isa = 1;  // DW_ISA_ARM_thumb.
+        dwarf_isa = 1;          // DW_ISA_ARM_thumb.
         break;
       case InstructionSet::kArm64:
         code_factor_bits_ = 2;  // 32-bit instructions
@@ -150,8 +148,7 @@ class ElfDebugLineWriter {
       const DexFile* dex = mi->dex_file;
       DCHECK(dex != nullptr);
       CodeItemDebugInfoAccessor accessor(*dex, mi->code_item, mi->dex_method_index);
-      if (!accessor.DecodeDebugPositionInfo(
-          [&](const DexFile::PositionInfo& entry) {
+      if (!accessor.DecodeDebugPositionInfo([&](const DexFile::PositionInfo& entry) {
             dex2line_map.push_back(entry);
             return false;
           })) {
@@ -179,9 +176,9 @@ class ElfDebugLineWriter {
         std::string full_path(file_name);
 
         // Guess directory from package name.
-        int directory_index = 0;  // 0 - current directory of the compilation.
-        if (file_name_slash == std::string::npos &&  // Just filename.
-            class_name.front() == 'L' &&  // Type descriptor for a class.
+        int directory_index = 0;                      // 0 - current directory of the compilation.
+        if (file_name_slash == std::string::npos &&   // Just filename.
+            class_name.front() == 'L' &&              // Type descriptor for a class.
             class_name_slash != std::string::npos) {  // Has package name.
           std::string package_name = class_name.substr(1, class_name_slash - 1);
           auto it = directories_map.find(package_name);
@@ -200,11 +197,11 @@ class ElfDebugLineWriter {
         if (it2 == files_map.end()) {
           file_index = 1 + files.size();
           files_map.emplace(full_path, file_index);
-          files.push_back(dwarf::FileEntry {
-            file_name,
-            directory_index,
-            0,  // Modification time - NA.
-            0,  // File size - NA.
+          files.push_back(dwarf::FileEntry{
+              file_name,
+              directory_index,
+              0,  // Modification time - NA.
+              0,  // File size - NA.
           });
         } else {
           file_index = it2->second;
@@ -223,13 +220,13 @@ class ElfDebugLineWriter {
           uint32_t pc = pc2dex.from_;
           int dex_pc = pc2dex.to_;
           // Find mapping with address with is greater than our dex pc; then go back one step.
-          auto dex2line = std::upper_bound(
-              dex2line_map.begin(),
-              dex2line_map.end(),
-              dex_pc,
-              [](uint32_t address, const DexFile::PositionInfo& entry) {
-                  return address < entry.address_;
-              });
+          auto dex2line =
+              std::upper_bound(dex2line_map.begin(),
+                               dex2line_map.end(),
+                               dex_pc,
+                               [](uint32_t address, const DexFile::PositionInfo& entry) {
+                                 return address < entry.address_;
+                               });
           // Look for first valid mapping after the prologue.
           if (dex2line != dex2line_map.begin() && pc >= prologue_end) {
             int line = (--dex2line)->line_;
@@ -278,4 +275,3 @@ class ElfDebugLineWriter {
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_LINE_WRITER_H_
-

@@ -14,6 +14,7 @@
  */
 
 #include "instruction_simplifier_x86_shared.h"
+
 #include "nodes_x86.h"
 
 namespace art {
@@ -41,10 +42,8 @@ bool TryCombineAndNot(HAnd* instruction) {
     // and thus can be safely removed.
     if (not_ins->HasOnlyOneNonEnvironmentUse()) {
       ArenaAllocator* arena = instruction->GetBlock()->GetGraph()->GetAllocator();
-      HX86AndNot* and_not = new (arena) HX86AndNot(type,
-                                                   not_ins->GetInput(),
-                                                   other_ins,
-                                                   instruction->GetDexPc());
+      HX86AndNot* and_not =
+          new (arena) HX86AndNot(type, not_ins->GetInput(), other_ins, instruction->GetDexPc());
       instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, and_not);
       DCHECK(!not_ins->HasUses());
       not_ins->GetBlock()->RemoveInstruction(not_ins);
@@ -77,8 +76,8 @@ bool TryGenerateResetLeastSetBit(HAnd* instruction) {
   }
   if (candidate != nullptr && candidate->HasOnlyOneNonEnvironmentUse()) {
     ArenaAllocator* arena = instruction->GetBlock()->GetGraph()->GetAllocator();
-    HX86MaskOrResetLeastSetBit* lsb = new (arena) HX86MaskOrResetLeastSetBit(
-        type, HInstruction::kAnd, other, instruction->GetDexPc());
+    HX86MaskOrResetLeastSetBit* lsb = new (arena)
+        HX86MaskOrResetLeastSetBit(type, HInstruction::kAnd, other, instruction->GetDexPc());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, lsb);
     DCHECK(!candidate->HasUses());
     candidate->GetBlock()->RemoveInstruction(candidate);
@@ -110,8 +109,8 @@ bool TryGenerateMaskUptoLeastSetBit(HXor* instruction) {
   }
   if (candidate != nullptr && candidate->HasOnlyOneNonEnvironmentUse()) {
     ArenaAllocator* arena = instruction->GetBlock()->GetGraph()->GetAllocator();
-    HX86MaskOrResetLeastSetBit* lsb = new (arena) HX86MaskOrResetLeastSetBit(
-        type, HInstruction::kXor, other, instruction->GetDexPc());
+    HX86MaskOrResetLeastSetBit* lsb = new (arena)
+        HX86MaskOrResetLeastSetBit(type, HInstruction::kXor, other, instruction->GetDexPc());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, lsb);
     DCHECK(!candidate->HasUses());
     candidate->GetBlock()->RemoveInstruction(candidate);

@@ -44,19 +44,18 @@
 
 namespace art {
 
-#define NUM_INSTRUCTIONS(...)  \
-  (sizeof((uint16_t[]) {__VA_ARGS__}) /sizeof(uint16_t))
+#define NUM_INSTRUCTIONS(...) (sizeof((uint16_t[]){__VA_ARGS__}) / sizeof(uint16_t))
 
-#define N_REGISTERS_CODE_ITEM(NUM_REGS, ...)                            \
-    { NUM_REGS, 0, 0, 0, 0, 0, NUM_INSTRUCTIONS(__VA_ARGS__), 0, __VA_ARGS__ }
+#define N_REGISTERS_CODE_ITEM(NUM_REGS, ...) \
+  { NUM_REGS, 0, 0, 0, 0, 0, NUM_INSTRUCTIONS(__VA_ARGS__), 0, __VA_ARGS__ }
 
-#define ZERO_REGISTER_CODE_ITEM(...)   N_REGISTERS_CODE_ITEM(0, __VA_ARGS__)
-#define ONE_REGISTER_CODE_ITEM(...)    N_REGISTERS_CODE_ITEM(1, __VA_ARGS__)
-#define TWO_REGISTERS_CODE_ITEM(...)   N_REGISTERS_CODE_ITEM(2, __VA_ARGS__)
+#define ZERO_REGISTER_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(0, __VA_ARGS__)
+#define ONE_REGISTER_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(1, __VA_ARGS__)
+#define TWO_REGISTERS_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(2, __VA_ARGS__)
 #define THREE_REGISTERS_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(3, __VA_ARGS__)
-#define FOUR_REGISTERS_CODE_ITEM(...)  N_REGISTERS_CODE_ITEM(4, __VA_ARGS__)
-#define FIVE_REGISTERS_CODE_ITEM(...)  N_REGISTERS_CODE_ITEM(5, __VA_ARGS__)
-#define SIX_REGISTERS_CODE_ITEM(...)   N_REGISTERS_CODE_ITEM(6, __VA_ARGS__)
+#define FOUR_REGISTERS_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(4, __VA_ARGS__)
+#define FIVE_REGISTERS_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(5, __VA_ARGS__)
+#define SIX_REGISTERS_CODE_ITEM(...) N_REGISTERS_CODE_ITEM(6, __VA_ARGS__)
 
 inline LiveInterval* BuildInterval(const size_t ranges[][2],
                                    size_t number_of_ranges,
@@ -94,11 +93,17 @@ inline void RemoveSuspendChecks(HGraph* graph) {
 class ArenaPoolAndAllocator {
  public:
   ArenaPoolAndAllocator()
-      : pool_(), allocator_(&pool_), arena_stack_(&pool_), scoped_allocator_(&arena_stack_) { }
+      : pool_(), allocator_(&pool_), arena_stack_(&pool_), scoped_allocator_(&arena_stack_) {}
 
-  ArenaAllocator* GetAllocator() { return &allocator_; }
-  ArenaStack* GetArenaStack() { return &arena_stack_; }
-  ScopedArenaAllocator* GetScopedAllocator() { return &scoped_allocator_; }
+  ArenaAllocator* GetAllocator() {
+    return &allocator_;
+  }
+  ArenaStack* GetArenaStack() {
+    return &arena_stack_;
+  }
+  ScopedArenaAllocator* GetScopedAllocator() {
+    return &scoped_allocator_;
+  }
 
  private:
   MallocArenaPool pool_;
@@ -116,11 +121,17 @@ class OptimizingUnitTestHelper {
         graph_(nullptr),
         entry_block_(nullptr),
         return_block_(nullptr),
-        exit_block_(nullptr) { }
+        exit_block_(nullptr) {}
 
-  ArenaAllocator* GetAllocator() { return pool_and_allocator_->GetAllocator(); }
-  ArenaStack* GetArenaStack() { return pool_and_allocator_->GetArenaStack(); }
-  ScopedArenaAllocator* GetScopedAllocator() { return pool_and_allocator_->GetScopedAllocator(); }
+  ArenaAllocator* GetAllocator() {
+    return pool_and_allocator_->GetAllocator();
+  }
+  ArenaStack* GetArenaStack() {
+    return pool_and_allocator_->GetArenaStack();
+  }
+  ScopedArenaAllocator* GetScopedAllocator() {
+    return pool_and_allocator_->GetScopedAllocator();
+  }
 
   void ResetPoolAndAllocator() {
     pool_and_allocator_.reset(new ArenaPoolAndAllocator());
@@ -135,21 +146,19 @@ class OptimizingUnitTestHelper {
 
     // Create the dex file based on the fake data. Call the constructor so that we can use virtual
     // functions. Don't use the arena for the StandardDexFile otherwise the dex location leaks.
-    dex_files_.emplace_back(new StandardDexFile(
-        dex_data,
-        sizeof(StandardDexFile::Header),
-        "no_location",
-        /*location_checksum*/ 0,
-        /*oat_dex_file*/ nullptr,
-        /*container*/ nullptr));
+    dex_files_.emplace_back(new StandardDexFile(dex_data,
+                                                sizeof(StandardDexFile::Header),
+                                                "no_location",
+                                                /*location_checksum*/ 0,
+                                                /*oat_dex_file*/ nullptr,
+                                                /*container*/ nullptr));
 
-    graph_ = new (allocator) HGraph(
-        allocator,
-        pool_and_allocator_->GetArenaStack(),
-        handles,
-        *dex_files_.back(),
-        /*method_idx*/-1,
-        kRuntimeISA);
+    graph_ = new (allocator) HGraph(allocator,
+                                    pool_and_allocator_->GetArenaStack(),
+                                    handles,
+                                    *dex_files_.back(),
+                                    /*method_idx*/ -1,
+                                    kRuntimeISA);
     return graph_;
   }
 
@@ -236,12 +245,11 @@ class OptimizingUnitTestHelper {
 
   HEnvironment* ManuallyBuildEnvFor(HInstruction* instruction,
                                     ArenaVector<HInstruction*>* current_locals) {
-    HEnvironment* environment = new (GetAllocator()) HEnvironment(
-        (GetAllocator()),
-        current_locals->size(),
-        graph_->GetArtMethod(),
-        instruction->GetDexPc(),
-        instruction);
+    HEnvironment* environment = new (GetAllocator()) HEnvironment((GetAllocator()),
+                                                                  current_locals->size(),
+                                                                  graph_->GetArtMethod(),
+                                                                  instruction->GetDexPc(),
+                                                                  instruction);
 
     environment->CopyFrom(ArrayRef<HInstruction* const>(*current_locals));
     instruction->SetRawEnvironment(environment);
@@ -252,22 +260,25 @@ class OptimizingUnitTestHelper {
     // Make sure the given preds and block predecessors have the same blocks.
     BitVector bv(preds.size(), false, Allocator::GetMallocAllocator());
     auto preds_and_idx = ZipCount(MakeIterationRange(target->GetPredecessors()));
-    bool correct_preds = preds.size() == target->GetPredecessors().size() &&
-                         std::all_of(preds.begin(), preds.end(), [&](HBasicBlock* pred) {
-                           return std::any_of(preds_and_idx.begin(),
-                                              preds_and_idx.end(),
-                                              // Make sure every target predecessor is used only
-                                              // once.
-                                              [&](std::pair<HBasicBlock*, uint32_t> cur) {
-                                                if (cur.first == pred && !bv.IsBitSet(cur.second)) {
-                                                  bv.SetBit(cur.second);
-                                                  return true;
-                                                } else {
-                                                  return false;
-                                                }
-                                              });
-                         }) &&
-                         bv.NumSetBits() == preds.size();
+    bool correct_preds =
+        preds.size() == target->GetPredecessors().size() &&
+        std::all_of(preds.begin(),
+                    preds.end(),
+                    [&](HBasicBlock* pred) {
+                      return std::any_of(preds_and_idx.begin(),
+                                         preds_and_idx.end(),
+                                         // Make sure every target predecessor is used only
+                                         // once.
+                                         [&](std::pair<HBasicBlock*, uint32_t> cur) {
+                                           if (cur.first == pred && !bv.IsBitSet(cur.second)) {
+                                             bv.SetBit(cur.second);
+                                             return true;
+                                           } else {
+                                             return false;
+                                           }
+                                         });
+                    }) &&
+        bv.NumSetBits() == preds.size();
     auto dump_list = [](auto it) {
       std::ostringstream oss;
       oss << "[";
@@ -339,12 +350,12 @@ inline bool IsRemoved(HInstruction* instruction) {
 class AdjacencyListGraph {
  public:
   using Edge = std::pair<const std::string_view, const std::string_view>;
-  AdjacencyListGraph(
-      HGraph* graph,
-      ArenaAllocator* alloc,
-      const std::string_view entry_name,
-      const std::string_view exit_name,
-      const std::vector<Edge>& adj) : graph_(graph) {
+  AdjacencyListGraph(HGraph* graph,
+                     ArenaAllocator* alloc,
+                     const std::string_view entry_name,
+                     const std::string_view exit_name,
+                     const std::vector<Edge>& adj)
+      : graph_(graph) {
     auto create_block = [&]() {
       HBasicBlock* blk = new (alloc) HBasicBlock(graph_);
       graph_->AddBlock(blk);

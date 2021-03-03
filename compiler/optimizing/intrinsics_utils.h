@@ -45,7 +45,7 @@ template <typename TDexCallingConvention,
           typename TAssembler = Assembler>
 class IntrinsicSlowPath : public TSlowPathCode {
  public:
-  explicit IntrinsicSlowPath(HInvoke* invoke) : TSlowPathCode(invoke), invoke_(invoke) { }
+  explicit IntrinsicSlowPath(HInvoke* invoke) : TSlowPathCode(invoke), invoke_(invoke) {}
 
   Location MoveArguments(CodeGenerator* codegen) {
     TDexCallingConvention calling_convention_visitor;
@@ -91,7 +91,9 @@ class IntrinsicSlowPath : public TSlowPathCode {
     assembler->Jump(this->GetExitLabel());
   }
 
-  const char* GetDescription() const override { return "IntrinsicSlowPath"; }
+  const char* GetDescription() const override {
+    return "IntrinsicSlowPath";
+  }
 
  private:
   // The instruction where this slow path is happening.
@@ -100,7 +102,7 @@ class IntrinsicSlowPath : public TSlowPathCode {
   DISALLOW_COPY_AND_ASSIGN(IntrinsicSlowPath);
 };
 
-static inline size_t GetExpectedVarHandleCoordinatesCount(HInvoke *invoke) {
+static inline size_t GetExpectedVarHandleCoordinatesCount(HInvoke* invoke) {
   mirror::VarHandle::AccessModeTemplate access_mode_template =
       mirror::VarHandle::GetAccessModeTemplateByIntrinsic(invoke->GetIntrinsic());
   size_t var_type_count = mirror::VarHandle::GetNumberOfVarTypeParameters(access_mode_template);

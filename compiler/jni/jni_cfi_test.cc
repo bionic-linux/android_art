@@ -23,12 +23,11 @@
 #include "base/malloc_arena_pool.h"
 #include "cfi_test.h"
 #include "gtest/gtest.h"
+#include "jni/jni_cfi_test_expected.inc"
 #include "jni/quick/calling_convention.h"
 #include "read_barrier_config.h"
 #include "utils/assembler.h"
 #include "utils/jni_macro_assembler.h"
-
-#include "jni/jni_cfi_test_expected.inc"
 
 namespace art {
 
@@ -69,7 +68,7 @@ class JNICFITest : public CFITest {
         JniCallingConvention::Create(&allocator,
                                      is_static,
                                      is_synchronized,
-                                     /*is_critical_native*/false,
+                                     /*is_critical_native*/ false,
                                      shorty,
                                      isa));
     std::unique_ptr<ManagedRuntimeCallingConvention> mr_conv(
@@ -114,13 +113,13 @@ class JNICFITest : public CFITest {
   }
 };
 
-#define TEST_ISA(isa)                                                 \
-  TEST_F(JNICFITest, isa) {                                           \
-    std::vector<uint8_t> expected_asm(expected_asm_##isa,             \
-        expected_asm_##isa + arraysize(expected_asm_##isa));          \
-    std::vector<uint8_t> expected_cfi(expected_cfi_##isa,             \
-        expected_cfi_##isa + arraysize(expected_cfi_##isa));          \
-    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);  \
+#define TEST_ISA(isa)                                                                      \
+  TEST_F(JNICFITest, isa) {                                                                \
+    std::vector<uint8_t> expected_asm(expected_asm_##isa,                                  \
+                                      expected_asm_##isa + arraysize(expected_asm_##isa)); \
+    std::vector<uint8_t> expected_cfi(expected_cfi_##isa,                                  \
+                                      expected_cfi_##isa + arraysize(expected_cfi_##isa)); \
+    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);                       \
   }
 
 #ifdef ART_ENABLE_CODEGEN_arm

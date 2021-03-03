@@ -304,9 +304,8 @@ void SchedulingLatencyVisitorARM::HandleGenerateTest(HCondition* condition) {
   const DataType::Type type = condition->GetLeft()->GetType();
 
   if (type == DataType::Type::kInt64) {
-    condition->InputAt(1)->IsConstant()
-        ? HandleGenerateLongTestConstant(condition)
-        : HandleGenerateLongTest(condition);
+    condition->InputAt(1)->IsConstant() ? HandleGenerateLongTestConstant(condition)
+                                        : HandleGenerateLongTest(condition);
   } else if (DataType::IsFloatingPointType(type)) {
     // GenerateVcmp + Vmrs
     last_visited_internal_latency_ += 2 * kArmFloatingPointOpLatency;
@@ -335,7 +334,7 @@ bool SchedulingLatencyVisitorARM::CanGenerateTest(HCondition* condition) {
           return false;
         }
       } else if (!codegen_->GetAssembler()->ShifterOperandCanHold(
-                      SBC, High32Bits(value), vixl32::FlagsUpdate::SetFlags)) {
+                     SBC, High32Bits(value), vixl32::FlagsUpdate::SetFlags)) {
         return false;
       }
     }
@@ -408,8 +407,7 @@ void SchedulingLatencyVisitorARM::HandleGenerateConditionLong(HCondition* cond) 
     }
   }
 
-  if ((condition == kCondEQ || condition == kCondNE) &&
-      !CanGenerateTest(cond)) {
+  if ((condition == kCondEQ || condition == kCondNE) && !CanGenerateTest(cond)) {
     HandleGenerateEqualLong(cond);
     return;
   }
@@ -422,7 +420,7 @@ void SchedulingLatencyVisitorARM::HandleGenerateConditionLong(HCondition* cond) 
   HandleGenerateLongComparesAndJumps();
 
   last_visited_internal_latency_ += kArmIntegerOpLatency;
-  last_visited_latency_ = kArmBranchLatency;;
+  last_visited_latency_ = kArmBranchLatency;
 }
 
 void SchedulingLatencyVisitorARM::HandleGenerateConditionIntegralOrNonPrimitive(HCondition* cond) {
@@ -495,8 +493,7 @@ void SchedulingLatencyVisitorARM::HandleCondition(HCondition* cond) {
 
   const IfCondition condition = cond->GetCondition();
 
-  if (type == DataType::Type::kBool &&
-      cond->GetRight()->GetType() == DataType::Type::kBool &&
+  if (type == DataType::Type::kBool && cond->GetRight()->GetType() == DataType::Type::kBool &&
       (condition == kCondEQ || condition == kCondNE)) {
     if (condition == kCondEQ) {
       last_visited_internal_latency_ = kArmIntegerOpLatency;
@@ -918,8 +915,7 @@ void SchedulingLatencyVisitorARM::VisitRem(HRem* instruction) {
 
 void SchedulingLatencyVisitorARM::HandleFieldGetLatencies(HInstruction* instruction,
                                                           const FieldInfo& field_info) {
-  DCHECK(instruction->IsInstanceFieldGet() ||
-         instruction->IsStaticFieldGet() ||
+  DCHECK(instruction->IsInstanceFieldGet() || instruction->IsStaticFieldGet() ||
          instruction->IsPredicatedInstanceFieldGet());
   DCHECK(codegen_ != nullptr);
   bool is_volatile = field_info.IsVolatile();
@@ -1026,8 +1022,8 @@ void SchedulingLatencyVisitorARM::HandleFieldSetLatencies(HInstruction* instruct
 
     case DataType::Type::kFloat64:
       if (is_volatile && !atomic_ldrd_strd) {
-        last_visited_internal_latency_ = kArmIntegerOpLatency +
-            kArmIntegerOpLatency + kArmMemoryLoadLatency + kArmMemoryStoreLatency;
+        last_visited_internal_latency_ = kArmIntegerOpLatency + kArmIntegerOpLatency +
+                                         kArmMemoryLoadLatency + kArmMemoryStoreLatency;
         last_visited_latency_ = kArmIntegerOpLatency;
       } else {
         last_visited_latency_ = kArmMemoryStoreLatency;

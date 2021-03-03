@@ -23,15 +23,13 @@
 #include <map>
 #include <regex>
 
-#include "gtest/gtest.h"
-
-#include "jni/quick/calling_convention.h"
-#include "utils/arm/jni_macro_assembler_arm_vixl.h"
-#include "utils/assembler_test_base.h"
-
 #include "base/hex_dump.h"
 #include "base/malloc_arena_pool.h"
 #include "common_runtime_test.h"
+#include "gtest/gtest.h"
+#include "jni/quick/calling_convention.h"
+#include "utils/arm/jni_macro_assembler_arm_vixl.h"
+#include "utils/assembler_test_base.h"
 
 namespace art {
 namespace arm {
@@ -41,10 +39,12 @@ namespace arm {
 
 class ArmVIXLAssemblerTest : public AssemblerTestBase {
  public:
-  ArmVIXLAssemblerTest() : pool(), allocator(&pool), assembler(&allocator) { }
+  ArmVIXLAssemblerTest() : pool(), allocator(&pool), assembler(&allocator) {}
 
  protected:
-  InstructionSet GetIsa() override { return InstructionSet::kThumb2; }
+  InstructionSet GetIsa() override {
+    return InstructionSet::kThumb2;
+  }
 
   void DumpAndCheck(std::vector<uint8_t>& code, const char* testname, const std::string& expected) {
 #ifndef ART_TARGET_ANDROID
@@ -58,11 +58,11 @@ class ArmVIXLAssemblerTest : public AssemblerTestBase {
     std::regex annotation_re(" <\\.text\\+\\w+>");
     disassembly = std::regex_replace(disassembly, annotation_re, "");
 
-    std::string expected2 = "\n" +
-        obj_file + ": file format elf32-littlearm\n\n\n"
-        "Disassembly of section .text:\n\n"
-        "00000000 <.text>:\n" +
-        expected;
+    std::string expected2 = "\n" + obj_file +
+                            ": file format elf32-littlearm\n\n\n"
+                            "Disassembly of section .text:\n\n"
+                            "00000000 <.text>:\n" +
+                            expected;
     EXPECT_EQ(expected2, disassembly);
     if (expected2 != disassembly) {
       std::string out = "  \"" + Replace(disassembly, "\n", "\\n\"\n  \"") + "\"";
@@ -102,16 +102,10 @@ TEST_F(ArmVIXLAssemblerTest, VixlJniHelpers) {
   const bool is_critical_native = false;
   const char* shorty = "IIFII";
 
-  std::unique_ptr<JniCallingConvention> jni_conv(
-      JniCallingConvention::Create(&allocator,
-                                   is_static,
-                                   is_synchronized,
-                                   is_critical_native,
-                                   shorty,
-                                   InstructionSet::kThumb2));
-  std::unique_ptr<ManagedRuntimeCallingConvention> mr_conv(
-      ManagedRuntimeCallingConvention::Create(
-          &allocator, is_static, is_synchronized, shorty, InstructionSet::kThumb2));
+  std::unique_ptr<JniCallingConvention> jni_conv(JniCallingConvention::Create(
+      &allocator, is_static, is_synchronized, is_critical_native, shorty, InstructionSet::kThumb2));
+  std::unique_ptr<ManagedRuntimeCallingConvention> mr_conv(ManagedRuntimeCallingConvention::Create(
+      &allocator, is_static, is_synchronized, shorty, InstructionSet::kThumb2));
   const int frame_size(jni_conv->FrameSize());
   ArrayRef<const ManagedRegister> callee_save_regs = jni_conv->CalleeSaveRegisters();
 

@@ -15,6 +15,7 @@
  */
 
 #include "pc_relative_fixups_x86.h"
+
 #include "code_generator_x86.h"
 #include "intrinsics_x86.h"
 
@@ -27,9 +28,7 @@ namespace x86 {
 class PCRelativeHandlerVisitor : public HGraphVisitor {
  public:
   PCRelativeHandlerVisitor(HGraph* graph, CodeGenerator* codegen)
-      : HGraphVisitor(graph),
-        codegen_(down_cast<CodeGeneratorX86*>(codegen)),
-        base_(nullptr) {}
+      : HGraphVisitor(graph), codegen_(down_cast<CodeGeneratorX86*>(codegen)), base_(nullptr) {}
 
   void MoveBaseIfNeeded() {
     if (base_ != nullptr) {
@@ -131,11 +130,8 @@ class PCRelativeHandlerVisitor : public HGraphVisitor {
       HX86ComputeBaseMethodAddress* method_address = GetPCRelativeBasePointer(neg);
       HGraph* graph = GetGraph();
       HBasicBlock* block = neg->GetBlock();
-      HX86FPNeg* x86_fp_neg = new (graph->GetAllocator()) HX86FPNeg(
-          neg->GetType(),
-          neg->InputAt(0),
-          method_address,
-          neg->GetDexPc());
+      HX86FPNeg* x86_fp_neg = new (graph->GetAllocator())
+          HX86FPNeg(neg->GetType(), neg->InputAt(0), method_address, neg->GetDexPc());
       block->ReplaceAndRemoveInstructionWith(neg, x86_fp_neg);
     }
   }
@@ -150,12 +146,12 @@ class PCRelativeHandlerVisitor : public HGraphVisitor {
     HX86ComputeBaseMethodAddress* method_address = GetPCRelativeBasePointer(switch_insn);
     HGraph* graph = GetGraph();
     HBasicBlock* block = switch_insn->GetBlock();
-    HX86PackedSwitch* x86_switch = new (graph->GetAllocator()) HX86PackedSwitch(
-        switch_insn->GetStartValue(),
-        switch_insn->GetNumEntries(),
-        switch_insn->InputAt(0),
-        method_address,
-        switch_insn->GetDexPc());
+    HX86PackedSwitch* x86_switch =
+        new (graph->GetAllocator()) HX86PackedSwitch(switch_insn->GetStartValue(),
+                                                     switch_insn->GetNumEntries(),
+                                                     switch_insn->InputAt(0),
+                                                     method_address,
+                                                     switch_insn->GetDexPc());
     block->ReplaceAndRemoveInstructionWith(switch_insn, x86_switch);
   }
 

@@ -44,19 +44,27 @@ class HEdge : public ArenaObject<kArenaAllocSuperblockCloner> {
   }
   HEdge() : from_(kInvalidBlockId), to_(kInvalidBlockId) {}
 
-  uint32_t GetFrom() const { return from_; }
-  uint32_t GetTo() const { return to_; }
+  uint32_t GetFrom() const {
+    return from_;
+  }
+  uint32_t GetTo() const {
+    return to_;
+  }
 
   bool operator==(const HEdge& other) const {
     return this->from_ == other.from_ && this->to_ == other.to_;
   }
 
-  bool operator!=(const HEdge& other) const { return !operator==(other); }
+  bool operator!=(const HEdge& other) const {
+    return !operator==(other);
+  }
   void Dump(std::ostream& stream) const;
 
   // Returns whether an edge represents a valid edge in CF graph: whether the from_ block
   // has to_ block as a successor.
-  bool IsValid() const { return from_ != kInvalidBlockId && to_ != kInvalidBlockId; }
+  bool IsValid() const {
+    return from_ != kInvalidBlockId && to_ != kInvalidBlockId;
+  }
 
  private:
   // Predecessor block id.
@@ -327,8 +335,9 @@ class SuperblockCloner : public ValueObject {
   void ResolvePhi(HPhi* phi);
 
   // Update induction range after when fixing SSA.
-  void UpdateInductionRangeInfoOf(
-      HInstruction* user, HInstruction* old_instruction, HInstruction* replacement);
+  void UpdateInductionRangeInfoOf(HInstruction* user,
+                                  HInstruction* old_instruction,
+                                  HInstruction* replacement);
 
   //
   // Debug and logging methods.
@@ -384,9 +393,10 @@ class LoopClonerHelper : public ValueObject {
   LoopClonerHelper(HLoopInformation* info,
                    SuperblockCloner::HBasicBlockMap* bb_map,
                    SuperblockCloner::HInstructionMap* hir_map,
-                   InductionVarRange* induction_range) :
-      loop_info_(info),
-      cloner_(info->GetHeader()->GetGraph(), &info->GetBlocks(), bb_map, hir_map, induction_range) {
+                   InductionVarRange* induction_range)
+      : loop_info_(info),
+        cloner_(
+            info->GetHeader()->GetGraph(), &info->GetBlocks(), bb_map, hir_map, induction_range) {
     // For now do transformations only for natural loops.
     DCHECK(!info->IsIrreducible());
   }
@@ -395,7 +405,9 @@ class LoopClonerHelper : public ValueObject {
   static bool IsLoopClonable(HLoopInformation* loop_info);
 
   // Returns whether the loop can be peeled/unrolled.
-  bool IsLoopClonable() const { return cloner_.IsSubgraphClonable(); }
+  bool IsLoopClonable() const {
+    return cloner_.IsSubgraphClonable();
+  }
 
   // Perform loop peeling.
   //
@@ -482,7 +494,9 @@ class LoopClonerHelper : public ValueObject {
     return DoLoopTransformationImpl(TransformationKind::kVersioning);
   }
 
-  HLoopInformation* GetRegionToBeAdjusted() const { return cloner_.GetRegionToBeAdjusted(); }
+  HLoopInformation* GetRegionToBeAdjusted() const {
+    return cloner_.GetRegionToBeAdjusted();
+  }
 
  protected:
   enum class TransformationKind {
@@ -508,14 +522,28 @@ class LoopClonerHelper : public ValueObject {
 class LoopClonerSimpleHelper : public ValueObject {
  public:
   LoopClonerSimpleHelper(HLoopInformation* info, InductionVarRange* induction_range);
-  bool IsLoopClonable() const { return helper_.IsLoopClonable(); }
-  HBasicBlock* DoPeeling() { return helper_.DoPeeling(); }
-  HBasicBlock* DoUnrolling() { return helper_.DoUnrolling(); }
-  HBasicBlock* DoVersioning() { return helper_.DoVersioning(); }
-  HLoopInformation* GetRegionToBeAdjusted() const { return helper_.GetRegionToBeAdjusted(); }
+  bool IsLoopClonable() const {
+    return helper_.IsLoopClonable();
+  }
+  HBasicBlock* DoPeeling() {
+    return helper_.DoPeeling();
+  }
+  HBasicBlock* DoUnrolling() {
+    return helper_.DoUnrolling();
+  }
+  HBasicBlock* DoVersioning() {
+    return helper_.DoVersioning();
+  }
+  HLoopInformation* GetRegionToBeAdjusted() const {
+    return helper_.GetRegionToBeAdjusted();
+  }
 
-  const SuperblockCloner::HBasicBlockMap* GetBasicBlockMap() const { return &bb_map_; }
-  const SuperblockCloner::HInstructionMap* GetInstructionMap() const { return &hir_map_; }
+  const SuperblockCloner::HBasicBlockMap* GetBasicBlockMap() const {
+    return &bb_map_;
+  }
+  const SuperblockCloner::HInstructionMap* GetInstructionMap() const {
+    return &hir_map_;
+  }
 
  private:
   SuperblockCloner::HBasicBlockMap bb_map_;
@@ -551,7 +579,7 @@ namespace std {
 
 template <>
 struct hash<art::HEdge> {
-  size_t operator()(art::HEdge const& x) const noexcept  {
+  size_t operator()(art::HEdge const& x) const noexcept {
     // Use Cantor pairing function as the hash function.
     size_t a = x.GetFrom();
     size_t b = x.GetTo();

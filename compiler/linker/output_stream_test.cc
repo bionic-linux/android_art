@@ -42,7 +42,7 @@ class OutputStreamTest : public CommonRuntimeTest {
     CheckOffset(3);
     EXPECT_EQ(2, output_stream_->Seek(2, kSeekSet));
     CheckOffset(2);
-    uint8_t buf[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    uint8_t buf[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     EXPECT_TRUE(output_stream_->WriteFully(buf, 2));
     CheckOffset(4);
     EXPECT_EQ(6, output_stream_->Seek(2, kSeekEnd));
@@ -54,9 +54,7 @@ class OutputStreamTest : public CommonRuntimeTest {
   }
 
   void CheckTestOutput(const std::vector<uint8_t>& actual) {
-    uint8_t expected[] = {
-        0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6
-    };
+    uint8_t expected[] = {0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6};
     EXPECT_EQ(sizeof(expected), actual.size());
     EXPECT_EQ(0, memcmp(expected, &actual[0], actual.size()));
   }
@@ -102,9 +100,7 @@ TEST_F(OutputStreamTest, Vector) {
 
 TEST_F(OutputStreamTest, BufferedFlush) {
   struct CheckingOutputStream : OutputStream {
-    CheckingOutputStream()
-        : OutputStream("fake-location"),
-          flush_called(false) { }
+    CheckingOutputStream() : OutputStream("fake-location"), flush_called(false) {}
     ~CheckingOutputStream() override {}
 
     bool WriteFully(const void* buffer ATTRIBUTE_UNUSED,

@@ -16,11 +16,11 @@
 
 #include "superblock_cloner.h"
 
-#include "common_dominator.h"
-#include "induction_var_range.h"
-#include "graph_checker.h"
-
 #include <sstream>
+
+#include "common_dominator.h"
+#include "graph_checker.h"
+#include "induction_var_range.h"
 
 namespace art {
 
@@ -196,8 +196,7 @@ void SuperblockCloner::RemapOrigInternalOrIncomingEdge(HBasicBlock* orig_block,
   DCHECK(!first_phi_met || copy_succ->GetPredecessors().size() == phi_input_count);
 }
 
-void SuperblockCloner::AddCopyInternalEdge(HBasicBlock* orig_block,
-                                           HBasicBlock* orig_succ) {
+void SuperblockCloner::AddCopyInternalEdge(HBasicBlock* orig_block, HBasicBlock* orig_succ) {
   DCHECK(IsInOrigBBSet(orig_succ));
   HBasicBlock* copy_block = GetBlockCopy(orig_block);
   HBasicBlock* copy_succ = GetBlockCopy(orig_succ);
@@ -212,8 +211,7 @@ void SuperblockCloner::AddCopyInternalEdge(HBasicBlock* orig_block,
   }
 }
 
-void SuperblockCloner::RemapCopyInternalEdge(HBasicBlock* orig_block,
-                                             HBasicBlock* orig_succ) {
+void SuperblockCloner::RemapCopyInternalEdge(HBasicBlock* orig_block, HBasicBlock* orig_succ) {
   DCHECK(IsInOrigBBSet(orig_succ));
   HBasicBlock* copy_block = GetBlockCopy(orig_block);
   copy_block->AddSuccessor(orig_succ);
@@ -228,9 +226,7 @@ void SuperblockCloner::RemapCopyInternalEdge(HBasicBlock* orig_block,
 }
 
 bool SuperblockCloner::IsRemapInfoForVersioning() const {
-  return remap_incoming_->empty() &&
-         remap_orig_internal_->empty() &&
-         remap_copy_internal_->empty();
+  return remap_incoming_->empty() && remap_orig_internal_->empty() && remap_copy_internal_->empty();
 }
 
 void SuperblockCloner::CopyIncomingEdgesForVersioning() {
@@ -278,9 +274,8 @@ void SuperblockCloner::FindBackEdgesLocal(HBasicBlock* entry_block, ArenaBitVect
   // Nodes that we're currently visiting, indexed by block id.
   ArenaBitVector visiting(arena_, graph_->GetBlocks().size(), false, kArenaAllocGraphBuilder);
   // Number of successors visited from a given node, indexed by block id.
-  ArenaVector<size_t> successors_visited(graph_->GetBlocks().size(),
-                                         0u,
-                                         arena_->Adapter(kArenaAllocGraphBuilder));
+  ArenaVector<size_t> successors_visited(
+      graph_->GetBlocks().size(), 0u, arena_->Adapter(kArenaAllocGraphBuilder));
   // Stack of nodes that we're currently visiting (same as marked in "visiting" above).
   ArenaVector<HBasicBlock*> worklist(arena_->Adapter(kArenaAllocGraphBuilder));
   constexpr size_t kDefaultWorklistSize = 8;
@@ -354,8 +349,7 @@ void SuperblockCloner::RecalculateBackEdgesInfo(ArenaBitVector* outer_loop_bb_se
     HBasicBlock* block = GetBlockById(idx);
     HLoopInformation* info = block->GetLoopInformation();
     // Reset LoopInformation for regular blocks and old headers which are no longer loop headers.
-    if (info != nullptr &&
-        (info->GetHeader() != block || info->NumberOfBackEdges() == 0)) {
+    if (info != nullptr && (info->GetHeader() != block || info->NumberOfBackEdges() == 0)) {
       block->SetLoopInformation(nullptr);
     }
   }
@@ -597,8 +591,9 @@ bool SuperblockCloner::CollectLiveOutsAndCheckClonable(HInstructionMap* live_out
   return true;
 }
 
-void SuperblockCloner::UpdateInductionRangeInfoOf(
-      HInstruction* user, HInstruction* old_instruction, HInstruction* replacement) {
+void SuperblockCloner::UpdateInductionRangeInfoOf(HInstruction* user,
+                                                  HInstruction* old_instruction,
+                                                  HInstruction* replacement) {
   if (induction_range_ != nullptr) {
     induction_range_->Replace(user, old_instruction, replacement);
   }
@@ -694,7 +689,7 @@ void DumpBB(HGraph* graph) {
     }
     oss << " -> ";
     for (HBasicBlock* succ : bb->GetSuccessors()) {
-      oss << succ->GetBlockId()  << " ";
+      oss << succ->GetBlockId() << " ";
     }
 
     if (bb->GetDominator()) {
@@ -702,7 +697,7 @@ void DumpBB(HGraph* graph) {
     }
 
     if (bb->GetLoopInformation()) {
-      oss <<  "\tloop: " << bb->GetLoopInformation()->GetHeader()->GetBlockId();
+      oss << "\tloop: " << bb->GetLoopInformation()->GetHeader()->GetBlockId();
     }
 
     LOG(INFO) << oss.str();
@@ -746,24 +741,21 @@ void SuperblockCloner::CheckInstructionInputsRemapping(HInstruction* orig_instr)
 
 bool SuperblockCloner::CheckRemappingInfoIsValid() {
   for (HEdge edge : *remap_orig_internal_) {
-    if (!IsEdgeValid(edge, graph_) ||
-        !IsInOrigBBSet(edge.GetFrom()) ||
+    if (!IsEdgeValid(edge, graph_) || !IsInOrigBBSet(edge.GetFrom()) ||
         !IsInOrigBBSet(edge.GetTo())) {
       return false;
     }
   }
 
   for (auto edge : *remap_copy_internal_) {
-    if (!IsEdgeValid(edge, graph_) ||
-        !IsInOrigBBSet(edge.GetFrom()) ||
+    if (!IsEdgeValid(edge, graph_) || !IsInOrigBBSet(edge.GetFrom()) ||
         !IsInOrigBBSet(edge.GetTo())) {
       return false;
     }
   }
 
   for (auto edge : *remap_incoming_) {
-    if (!IsEdgeValid(edge, graph_) ||
-        IsInOrigBBSet(edge.GetFrom()) ||
+    if (!IsEdgeValid(edge, graph_) || IsInOrigBBSet(edge.GetFrom()) ||
         !IsInOrigBBSet(edge.GetTo())) {
       return false;
     }
@@ -829,19 +821,19 @@ SuperblockCloner::SuperblockCloner(HGraph* graph,
                                    HBasicBlockMap* bb_map,
                                    HInstructionMap* hir_map,
                                    InductionVarRange* induction_range)
-  : graph_(graph),
-    arena_(graph->GetAllocator()),
-    orig_bb_set_(arena_, orig_bb_set->GetSizeOf(), true, kArenaAllocSuperblockCloner),
-    remap_orig_internal_(nullptr),
-    remap_copy_internal_(nullptr),
-    remap_incoming_(nullptr),
-    bb_map_(bb_map),
-    hir_map_(hir_map),
-    induction_range_(induction_range),
-    outer_loop_(nullptr),
-    outer_loop_bb_set_(arena_, orig_bb_set->GetSizeOf(), true, kArenaAllocSuperblockCloner),
-    live_outs_(std::less<HInstruction*>(),
-        graph->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)) {
+    : graph_(graph),
+      arena_(graph->GetAllocator()),
+      orig_bb_set_(arena_, orig_bb_set->GetSizeOf(), true, kArenaAllocSuperblockCloner),
+      remap_orig_internal_(nullptr),
+      remap_copy_internal_(nullptr),
+      remap_incoming_(nullptr),
+      bb_map_(bb_map),
+      hir_map_(hir_map),
+      induction_range_(induction_range),
+      outer_loop_(nullptr),
+      outer_loop_bb_set_(arena_, orig_bb_set->GetSizeOf(), true, kArenaAllocSuperblockCloner),
+      live_outs_(std::less<HInstruction*>(),
+                 graph->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)) {
   orig_bb_set_.Copy(orig_bb_set);
 }
 
@@ -860,8 +852,8 @@ bool SuperblockCloner::IsSubgraphClonable() const {
     return false;
   }
 
-  HInstructionMap live_outs(
-      std::less<HInstruction*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HInstructionMap live_outs(std::less<HInstruction*>(),
+                            graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
   if (!CollectLiveOutsAndCheckClonable(&live_outs)) {
     return false;
@@ -909,7 +901,6 @@ bool SuperblockCloner::IsFastCase() const {
   HEdgeSet remap_copy_internal(graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
   HEdgeSet remap_incoming(graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
-
   // Check whether remapping info corresponds to loop unrolling.
   CollectRemappingInfoForPeelUnroll(/* to_unroll*/ true,
                                     common_loop_info,
@@ -942,8 +933,7 @@ bool SuperblockCloner::IsFastCase() const {
 void SuperblockCloner::Run() {
   DCHECK(bb_map_ != nullptr);
   DCHECK(hir_map_ != nullptr);
-  DCHECK(remap_orig_internal_ != nullptr &&
-         remap_copy_internal_ != nullptr &&
+  DCHECK(remap_orig_internal_ != nullptr && remap_copy_internal_ != nullptr &&
          remap_incoming_ != nullptr);
   DCHECK(IsSubgraphClonable());
   DCHECK(IsFastCase());
@@ -1157,7 +1147,7 @@ HBasicBlock* LoopClonerHelper::DoLoopTransformationImpl(TransformationKind trans
         oss << "peeling";
         break;
       case TransformationKind::kUnrolling:
-        oss<< "unrolling";
+        oss << "unrolling";
         break;
       case TransformationKind::kVersioning:
         oss << "versioning";
@@ -1197,11 +1187,11 @@ HBasicBlock* LoopClonerHelper::DoLoopTransformationImpl(TransformationKind trans
 
 LoopClonerSimpleHelper::LoopClonerSimpleHelper(HLoopInformation* info,
                                                InductionVarRange* induction_range)
-  : bb_map_(std::less<HBasicBlock*>(),
-            info->GetHeader()->GetGraph()->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)),
-    hir_map_(std::less<HInstruction*>(),
-             info->GetHeader()->GetGraph()->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)),
-    helper_(info, &bb_map_, &hir_map_, induction_range) {}
+    : bb_map_(std::less<HBasicBlock*>(),
+              info->GetHeader()->GetGraph()->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)),
+      hir_map_(std::less<HInstruction*>(),
+               info->GetHeader()->GetGraph()->GetAllocator()->Adapter(kArenaAllocSuperblockCloner)),
+      helper_(info, &bb_map_, &hir_map_, induction_range) {}
 
 }  // namespace art
 
