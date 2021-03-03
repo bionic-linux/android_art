@@ -30,23 +30,19 @@ static bool IsLoop(HLoopInformation* info) {
 }
 
 static bool IsInnerLoop(HLoopInformation* outer, HLoopInformation* inner) {
-  return (inner != outer)
-      && (inner != nullptr)
-      && (outer != nullptr)
-      && inner->IsIn(*outer);
+  return (inner != outer) && (inner != nullptr) && (outer != nullptr) && inner->IsIn(*outer);
 }
 
 // Helper method to update work list for linear order.
 static void AddToListForLinearization(ScopedArenaVector<HBasicBlock*>* worklist,
-                                      HBasicBlock* block) {
+                                      HBasicBlock*                     block) {
   HLoopInformation* block_loop = block->GetLoopInformation();
   auto insert_pos = worklist->rbegin();  // insert_pos.base() will be the actual position.
   for (auto end = worklist->rend(); insert_pos != end; ++insert_pos) {
-    HBasicBlock* current = *insert_pos;
+    HBasicBlock*      current      = *insert_pos;
     HLoopInformation* current_loop = current->GetLoopInformation();
-    if (InSameLoop(block_loop, current_loop)
-        || !IsLoop(current_loop)
-        || IsInnerLoop(current_loop, block_loop)) {
+    if (InSameLoop(block_loop, current_loop) || !IsLoop(current_loop) ||
+        IsInnerLoop(current_loop, block_loop)) {
       // The block can be processed immediately.
       break;
     }
@@ -60,9 +56,9 @@ static bool IsLinearOrderWellFormed(const HGraph* graph, ArrayRef<HBasicBlock*> 
     if (header == nullptr || !header->IsLoopHeader()) {
       continue;
     }
-    HLoopInformation* loop = header->GetLoopInformation();
-    size_t num_blocks = loop->GetBlocks().NumSetBits();
-    size_t found_blocks = 0u;
+    HLoopInformation* loop         = header->GetLoopInformation();
+    size_t            num_blocks   = loop->GetBlocks().NumSetBits();
+    size_t            found_blocks = 0u;
     for (HBasicBlock* block : linear_order) {
       if (loop->Contains(*block)) {
         found_blocks++;
@@ -94,7 +90,7 @@ void LinearizeGraphInternal(const HGraph* graph, ArrayRef<HBasicBlock*> linear_o
   //      current reverse post order in the graph, but it would require making
   //      order queries to a GrowableArray, which is not the best data structure
   //      for it.
-  ScopedArenaAllocator allocator(graph->GetArenaStack());
+  ScopedArenaAllocator        allocator(graph->GetArenaStack());
   ScopedArenaVector<uint32_t> forward_predecessors(graph->GetBlocks().size(),
                                                    allocator.Adapter(kArenaAllocLinearOrder));
   for (HBasicBlock* block : graph->GetReversePostOrder()) {
@@ -117,7 +113,7 @@ void LinearizeGraphInternal(const HGraph* graph, ArrayRef<HBasicBlock*> linear_o
     linear_order[num_added] = current;
     ++num_added;
     for (HBasicBlock* successor : current->GetSuccessors()) {
-      int block_id = successor->GetBlockId();
+      int    block_id                         = successor->GetBlockId();
       size_t number_of_remaining_predecessors = forward_predecessors[block_id];
       if (number_of_remaining_predecessors == 1) {
         AddToListForLinearization(&worklist, successor);

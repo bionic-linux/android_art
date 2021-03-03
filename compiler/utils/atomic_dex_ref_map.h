@@ -39,9 +39,7 @@ class AtomicDexRefMap {
     kInsertResultCASFailure,
     kInsertResultSuccess,
   };
-  InsertResult Insert(const DexFileReferenceType& ref,
-                      const Value& expected,
-                      const Value& desired);
+  InsertResult Insert(const DexFileReferenceType& ref, const Value& expected, const Value& desired);
 
   // Retreive an item, returns false if the dex file is not added.
   bool Get(const DexFileReferenceType& ref, Value* out) const;
@@ -69,11 +67,11 @@ class AtomicDexRefMap {
 
  private:
   // Verified methods. The method array is fixed to avoid needing a lock to extend it.
-  using ElementArray = dchecked_vector<Atomic<Value>>;
+  using ElementArray  = dchecked_vector<Atomic<Value>>;
   using DexFileArrays = SafeMap<const DexFile*, ElementArray>;
 
   const ElementArray* GetArray(const DexFile* dex_file) const;
-  ElementArray* GetArray(const DexFile* dex_file);
+  ElementArray*       GetArray(const DexFile* dex_file);
 
   static size_t NumberOfDexIndices(const DexFile* dex_file);
 

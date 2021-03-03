@@ -131,7 +131,7 @@ class CFREVisitor : public HGraphVisitor {
   void HandleInvoke(HInstruction* invoke) {
     // An object is considered "published" if it escapes into an invoke as any of the parameters.
     if (HasInterestingPublishTargetAsInput(invoke)) {
-        MergeCandidateFences();
+      MergeCandidateFences();
     }
   }
 
@@ -146,7 +146,7 @@ class CFREVisitor : public HGraphVisitor {
   // - Invoke: this is handled by HandleInvoke.
   void VisitAlias(HInstruction* aliasing_inst) {
     // An object is considered "published" if it becomes aliased by other instructions.
-    if (HasInterestingPublishTargetAsInput(aliasing_inst))  {
+    if (HasInterestingPublishTargetAsInput(aliasing_inst)) {
       // Note that constructing a "NullCheck" for new-instance, new-array,
       // or a 'this' (receiver) reference is impossible.
       //

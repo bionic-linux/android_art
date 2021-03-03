@@ -24,7 +24,7 @@ namespace art {
 class SrcMapElem {
  public:
   uint32_t from_;
-  int32_t to_;
+  int32_t  to_;
 };
 
 inline bool operator<(const SrcMapElem& lhs, const SrcMapElem& rhs) {

@@ -17,7 +17,6 @@
 #include "jit_compiler.h"
 
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
 #include "art_method-inl.h"
@@ -49,16 +48,16 @@ void JitCompiler::ParseCompilerOptions() {
   {
     std::string error_msg;
     if (!compiler_options_->ParseCompilerOptions(runtime->GetCompilerOptions(),
-                                                /*ignore_unrecognized=*/ true,
-                                                &error_msg)) {
+                                                 /*ignore_unrecognized=*/true,
+                                                 &error_msg)) {
       LOG(FATAL) << error_msg;
       UNREACHABLE();
     }
   }
   // Set to appropriate JIT compiler type.
-  compiler_options_->compiler_type_ = runtime->IsZygote()
-      ? CompilerOptions::CompilerType::kSharedCodeJitCompiler
-      : CompilerOptions::CompilerType::kJitCompiler;
+  compiler_options_->compiler_type_ = runtime->IsZygote() ?
+                                          CompilerOptions::CompilerType::kSharedCodeJitCompiler :
+                                          CompilerOptions::CompilerType::kJitCompiler;
   // JIT is never PIC, no matter what the runtime compiler options specify.
   compiler_options_->SetNonPic();
 
@@ -81,8 +80,8 @@ void JitCompiler::ParseCompilerOptions() {
     if (StartsWith(option, "--instruction-set-variant=")) {
       const char* str = option.c_str() + strlen("--instruction-set-variant=");
       VLOG(compiler) << "JIT instruction set variant " << str;
-      instruction_set_features = InstructionSetFeatures::FromVariant(
-          instruction_set, str, &error_msg);
+      instruction_set_features =
+          InstructionSetFeatures::FromVariant(instruction_set, str, &error_msg);
       if (instruction_set_features == nullptr) {
         LOG(WARNING) << "Error parsing " << option << " message=" << error_msg;
       }
@@ -90,14 +89,13 @@ void JitCompiler::ParseCompilerOptions() {
       const char* str = option.c_str() + strlen("--instruction-set-features=");
       VLOG(compiler) << "JIT instruction set features " << str;
       if (instruction_set_features == nullptr) {
-        instruction_set_features = InstructionSetFeatures::FromVariant(
-            instruction_set, "default", &error_msg);
+        instruction_set_features =
+            InstructionSetFeatures::FromVariant(instruction_set, "default", &error_msg);
         if (instruction_set_features == nullptr) {
           LOG(WARNING) << "Error parsing " << option << " message=" << error_msg;
         }
       }
-      instruction_set_features =
-          instruction_set_features->AddFeaturesFromString(str, &error_msg);
+      instruction_set_features = instruction_set_features->AddFeaturesFromString(str, &error_msg);
       if (instruction_set_features == nullptr) {
         LOG(WARNING) << "Error parsing " << option << " message=" << error_msg;
       }
@@ -128,15 +126,14 @@ extern "C" JitCompilerInterface* jit_load() {
 void JitCompiler::TypesLoaded(mirror::Class** types, size_t count) {
   const CompilerOptions& compiler_options = GetCompilerOptions();
   if (compiler_options.GetGenerateDebugInfo()) {
-    InstructionSet isa = compiler_options.GetInstructionSet();
-    const InstructionSetFeatures* features = compiler_options.GetInstructionSetFeatures();
+    InstructionSet                 isa      = compiler_options.GetInstructionSet();
+    const InstructionSetFeatures*  features = compiler_options.GetInstructionSetFeatures();
     const ArrayRef<mirror::Class*> types_array(types, count);
-    std::vector<uint8_t> elf_file =
-        debug::WriteDebugElfFileForClasses(isa, features, types_array);
+    std::vector<uint8_t> elf_file = debug::WriteDebugElfFileForClasses(isa, features, types_array);
 
     // NB: Don't allow packing since it would remove non-backtrace data.
     MutexLock mu(Thread::Current(), *Locks::jit_lock_);
-    AddNativeDebugInfoForJit(/*code_ptr=*/ nullptr, elf_file, /*allow_packing=*/ false);
+    AddNativeDebugInfoForJit(/*code_ptr=*/nullptr, elf_file, /*allow_packing=*/false);
   }
 }
 
@@ -145,17 +142,16 @@ bool JitCompiler::GenerateDebugInfo() {
 }
 
 std::vector<uint8_t> JitCompiler::PackElfFileForJIT(ArrayRef<const JITCodeEntry*> elf_files,
-                                                    ArrayRef<const void*> removed_symbols,
-                                                    bool compress,
-                                                    /*out*/ size_t* num_symbols) {
+                                                    ArrayRef<const void*>         removed_symbols,
+                                                    bool                          compress,
+                                                    /*out*/ size_t*               num_symbols) {
   return debug::PackElfFileForJIT(elf_files, removed_symbols, compress, num_symbols);
 }
 
 JitCompiler::JitCompiler() {
   compiler_options_.reset(new CompilerOptions());
   ParseCompilerOptions();
-  compiler_.reset(
-      Compiler::Create(*compiler_options_, /*storage=*/ nullptr, Compiler::kOptimizing));
+  compiler_.reset(Compiler::Create(*compiler_options_, /*storage=*/nullptr, Compiler::kOptimizing));
 }
 
 JitCompiler::~JitCompiler() {
@@ -164,11 +160,12 @@ JitCompiler::~JitCompiler() {
   }
 }
 
-bool JitCompiler::CompileMethod(
-    Thread* self, JitMemoryRegion* region, ArtMethod* method, CompilationKind compilation_kind) {
-  SCOPED_TRACE << "JIT compiling "
-               << method->PrettyMethod()
-               << " (kind=" << compilation_kind << ")";
+bool JitCompiler::CompileMethod(Thread*          self,
+                                JitMemoryRegion* region,
+                                ArtMethod*       method,
+                                CompilationKind  compilation_kind) {
+  SCOPED_TRACE << "JIT compiling " << method->PrettyMethod() << " (kind=" << compilation_kind
+               << ")";
 
   DCHECK(!method->IsProxyMethod());
   DCHECK(method->GetDeclaringClass()->IsResolved());
@@ -181,14 +178,13 @@ bool JitCompiler::CompileMethod(
   // Do the compilation.
   bool success = false;
   {
-    TimingLogger::ScopedTiming t2(compilation_kind == CompilationKind::kOsr
-                                      ? "Compiling OSR"
-                                      : compilation_kind == CompilationKind::kOptimized
-                                          ? "Compiling optimized"
-                                          : "Compiling baseline",
-                                  &logger);
+    TimingLogger::ScopedTiming t2(
+        compilation_kind == CompilationKind::kOsr       ? "Compiling OSR" :
+        compilation_kind == CompilationKind::kOptimized ? "Compiling optimized" :
+                                                          "Compiling baseline",
+        &logger);
     JitCodeCache* const code_cache = runtime->GetJit()->GetCodeCache();
-    metrics::AutoTimer timer{runtime->GetMetrics()->JitMethodCompileTime()};
+    metrics::AutoTimer  timer{runtime->GetMetrics()->JitMethodCompileTime()};
     success = compiler_->JitCompile(
         self, code_cache, region, method, compilation_kind, jit_logger_.get());
     uint64_t duration_us = timer.Stop();

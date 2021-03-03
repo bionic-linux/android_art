@@ -34,10 +34,9 @@ void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long, int64_t* mag
 // that it has been previously visited by the InstructionCodeGenerator.
 bool IsBooleanValueOrMaterializedCondition(HInstruction* cond_input);
 
-template <typename T> T AbsOrMin(T value) {
-  return (value == std::numeric_limits<T>::min())
-      ? value
-      : std::abs(value);
+template <typename T>
+T AbsOrMin(T value) {
+  return (value == std::numeric_limits<T>::min()) ? value : std::abs(value);
 }
 
 // Check whether the i-th operand of instr is non-negative.

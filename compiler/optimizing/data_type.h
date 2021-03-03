@@ -17,9 +17,9 @@
 #ifndef ART_COMPILER_OPTIMIZING_DATA_TYPE_H_
 #define ART_COMPILER_OPTIMIZING_DATA_TYPE_H_
 
-#include <iosfwd>
-
 #include <android-base/logging.h>
+
+#include <iosfwd>
 
 #include "base/bit_utils.h"
 
@@ -137,7 +137,7 @@ class DataType {
 
   static bool IsUnsignedType(Type type) {
     return type == Type::kBool || type == Type::kUint8 || type == Type::kUint16 ||
-        type == Type::kUint32 || type == Type::kUint64;
+           type == Type::kUint32 || type == Type::kUint64;
   }
 
   // Return the general kind of `type`, fusing integer-like types as Type::kInt.
@@ -215,9 +215,8 @@ class DataType {
   static bool IsTypeConversionImplicit(int64_t value, Type result_type);
 
   static bool IsZeroExtension(Type input_type, Type result_type) {
-    return IsIntOrLongType(result_type) &&
-        IsUnsignedType(input_type) &&
-        Size(result_type) > Size(input_type);
+    return IsIntOrLongType(result_type) && IsUnsignedType(input_type) &&
+           Size(result_type) > Size(input_type);
   }
 
   static Type ToSigned(Type type) {
@@ -269,8 +268,7 @@ inline bool DataType::IsTypeConversionImplicit(Type input_type, Type result_type
   // are implicit if the result value range covers the input value range, i.e.
   // widening conversions that do not need to trim the sign bits.
   return result_type == input_type ||
-         (result_type != Type::kInt64 &&
-          IsIntegralType(input_type) &&
+         (result_type != Type::kInt64 && IsIntegralType(input_type) &&
           IsIntegralType(result_type) &&
           MinValueOfIntegralType(input_type) >= MinValueOfIntegralType(result_type) &&
           MaxValueOfIntegralType(input_type) <= MaxValueOfIntegralType(result_type));

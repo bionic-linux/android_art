@@ -25,17 +25,16 @@
 
 namespace art {
 
-AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator)
-    : allocator_(allocator) {
+AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator) : allocator_(allocator) {
   static const size_t kInitialBufferCapacity = 4 * KB;
-  contents_ = allocator_->AllocArray<uint8_t>(kInitialBufferCapacity, kArenaAllocAssembler);
-  cursor_ = contents_;
-  limit_ = ComputeLimit(contents_, kInitialBufferCapacity);
-  fixup_ = nullptr;
+  contents_  = allocator_->AllocArray<uint8_t>(kInitialBufferCapacity, kArenaAllocAssembler);
+  cursor_    = contents_;
+  limit_     = ComputeLimit(contents_, kInitialBufferCapacity);
+  fixup_     = nullptr;
   slow_path_ = nullptr;
 #ifndef NDEBUG
   has_ensured_capacity_ = false;
-  fixups_processed_ = false;
+  fixups_processed_     = false;
 #endif
 
   // Verify internal state.
@@ -43,13 +42,11 @@ AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator)
   CHECK_EQ(Size(), 0U);
 }
 
-
 AssemblerBuffer::~AssemblerBuffer() {
   if (allocator_->IsRunningOnMemoryTool()) {
     allocator_->MakeInaccessible(contents_, Capacity());
   }
 }
-
 
 void AssemblerBuffer::ProcessFixups(const MemoryRegion& region) {
   AssemblerFixup* fixup = fixup_;
@@ -58,7 +55,6 @@ void AssemblerBuffer::ProcessFixups(const MemoryRegion& region) {
     fixup = fixup->previous();
   }
 }
-
 
 void AssemblerBuffer::FinalizeInstructions(const MemoryRegion& instructions) {
   // Copy the instructions from the buffer.
@@ -71,13 +67,12 @@ void AssemblerBuffer::FinalizeInstructions(const MemoryRegion& instructions) {
 #endif
 }
 
-
 void AssemblerBuffer::ExtendCapacity(size_t min_capacity) {
-  size_t old_size = Size();
+  size_t old_size     = Size();
   size_t old_capacity = Capacity();
   DCHECK_GT(min_capacity, old_capacity);
   size_t new_capacity = std::min(old_capacity * 2, old_capacity + 1 * MB);
-  new_capacity = std::max(new_capacity, min_capacity);
+  new_capacity        = std::max(new_capacity, min_capacity);
 
   // Allocate the new data area and copy contents of the old one to it.
   contents_ = reinterpret_cast<uint8_t*>(
@@ -85,7 +80,7 @@ void AssemblerBuffer::ExtendCapacity(size_t min_capacity) {
 
   // Update the cursor and recompute the limit.
   cursor_ = contents_ + old_size;
-  limit_ = ComputeLimit(contents_, new_capacity);
+  limit_  = ComputeLimit(contents_, new_capacity);
 
   // Verify internal state.
   CHECK_EQ(Capacity(), new_capacity);
@@ -96,7 +91,7 @@ void DebugFrameOpCodeWriterForAssembler::ImplicitlyAdvancePC() {
   uint32_t pc = dchecked_integral_cast<uint32_t>(assembler_->CodeSize());
   if (delay_emitting_advance_pc_) {
     uint32_t stream_pos = dchecked_integral_cast<uint32_t>(opcodes_.size());
-    delayed_advance_pcs_.push_back(DelayedAdvancePC {stream_pos, pc});
+    delayed_advance_pcs_.push_back(DelayedAdvancePC{stream_pos, pc});
   } else {
     AdvancePC(pc);
   }

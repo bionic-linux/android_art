@@ -17,12 +17,12 @@
 #ifndef ART_COMPILER_OPTIMIZING_OPTIMIZING_COMPILER_STATS_H_
 #define ART_COMPILER_OPTIMIZING_OPTIMIZING_COMPILER_STATS_H_
 
+#include <android-base/logging.h>
+
 #include <atomic>
 #include <iomanip>
 #include <string>
 #include <type_traits>
-
-#include <android-base/logging.h>
 
 #include "base/atomic.h"
 #include "base/globals.h"
@@ -140,15 +140,13 @@ class OptimizingCompilerStats {
   }
 
   void Log() const {
-    uint32_t compiled_intrinsics = GetStat(MethodCompilationStat::kCompiledIntrinsic);
+    uint32_t compiled_intrinsics   = GetStat(MethodCompilationStat::kCompiledIntrinsic);
     uint32_t compiled_native_stubs = GetStat(MethodCompilationStat::kCompiledNativeStub);
-    uint32_t bytecode_attempts =
-        GetStat(MethodCompilationStat::kAttemptBytecodeCompilation);
+    uint32_t bytecode_attempts     = GetStat(MethodCompilationStat::kAttemptBytecodeCompilation);
     if (compiled_intrinsics == 0u && compiled_native_stubs == 0u && bytecode_attempts == 0u) {
       LOG(INFO) << "Did not compile any method.";
     } else {
-      uint32_t compiled_bytecode_methods =
-          GetStat(MethodCompilationStat::kCompiledBytecode);
+      uint32_t compiled_bytecode_methods = GetStat(MethodCompilationStat::kCompiledBytecode);
       // Successful intrinsic compilation preempts other compilation attempts but failed intrinsic
       // compilation shall still count towards bytecode or native stub compilation attempts.
       uint32_t num_compilation_attempts =
@@ -156,14 +154,14 @@ class OptimizingCompilerStats {
       uint32_t num_successful_compilations =
           compiled_intrinsics + compiled_native_stubs + compiled_bytecode_methods;
       float compiled_percent = num_successful_compilations * 100.0f / num_compilation_attempts;
-      LOG(INFO) << "Attempted compilation of "
-          << num_compilation_attempts << " methods: " << std::fixed << std::setprecision(2)
-          << compiled_percent << "% (" << num_successful_compilations << ") compiled.";
+      LOG(INFO) << "Attempted compilation of " << num_compilation_attempts
+                << " methods: " << std::fixed << std::setprecision(2) << compiled_percent << "% ("
+                << num_successful_compilations << ") compiled.";
 
       for (size_t i = 0; i < arraysize(compile_stats_); ++i) {
         if (compile_stats_[i] != 0) {
           LOG(INFO) << "OptStat#" << static_cast<MethodCompilationStat>(i) << ": "
-              << compile_stats_[i];
+                    << compile_stats_[i];
         }
       }
     }
@@ -191,8 +189,8 @@ class OptimizingCompilerStats {
 };
 
 inline void MaybeRecordStat(OptimizingCompilerStats* compiler_stats,
-                            MethodCompilationStat stat,
-                            uint32_t count = 1) {
+                            MethodCompilationStat    stat,
+                            uint32_t                 count = 1) {
   if (compiler_stats != nullptr) {
     compiler_stats->RecordStat(stat, count);
   }

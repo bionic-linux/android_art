@@ -33,30 +33,30 @@ class OptimizingCompilerStats;
 
 class HGraphBuilder : public ValueObject {
  public:
-  HGraphBuilder(HGraph* graph,
+  HGraphBuilder(HGraph*                          graph,
                 const CodeItemDebugInfoAccessor& accessor,
-                const DexCompilationUnit* dex_compilation_unit,
-                const DexCompilationUnit* outer_compilation_unit,
-                CodeGenerator* code_generator,
-                OptimizingCompilerStats* compiler_stats,
-                ArrayRef<const uint8_t> interpreter_metadata);
+                const DexCompilationUnit*        dex_compilation_unit,
+                const DexCompilationUnit*        outer_compilation_unit,
+                CodeGenerator*                   code_generator,
+                OptimizingCompilerStats*         compiler_stats,
+                ArrayRef<const uint8_t>          interpreter_metadata);
 
   // Only for unit testing.
-  HGraphBuilder(HGraph* graph,
-                const DexCompilationUnit* dex_compilation_unit,
+  HGraphBuilder(HGraph*                          graph,
+                const DexCompilationUnit*        dex_compilation_unit,
                 const CodeItemDebugInfoAccessor& accessor,
-                DataType::Type return_type = DataType::Type::kInt32);
+                DataType::Type                   return_type = DataType::Type::kInt32);
 
   GraphAnalysisResult BuildGraph();
-  void BuildIntrinsicGraph(ArtMethod* method);
+  void                BuildIntrinsicGraph(ArtMethod* method);
 
   static constexpr const char* kBuilderPassName = "builder";
 
  private:
   bool SkipCompilation(size_t number_of_branches);
 
-  HGraph* const graph_;
-  const DexFile* const dex_file_;
+  HGraph* const                   graph_;
+  const DexFile* const            dex_file_;
   const CodeItemDebugInfoAccessor code_item_accessor_;  // null for intrinsic graph.
 
   // The compilation unit of the current method being compiled. Note that
@@ -69,8 +69,8 @@ class HGraphBuilder : public ValueObject {
   CodeGenerator* const code_generator_;
 
   OptimizingCompilerStats* const compilation_stats_;
-  const ArrayRef<const uint8_t> interpreter_metadata_;
-  const DataType::Type return_type_;
+  const ArrayRef<const uint8_t>  interpreter_metadata_;
+  const DataType::Type           return_type_;
 
   DISALLOW_COPY_AND_ASSIGN(HGraphBuilder);
 };

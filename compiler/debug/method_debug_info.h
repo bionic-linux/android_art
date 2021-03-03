@@ -27,21 +27,21 @@ namespace art {
 namespace debug {
 
 struct MethodDebugInfo {
-  std::string custom_name;
-  const DexFile* dex_file;  // Native methods (trampolines) do not reference dex file.
-  size_t class_def_index;
-  uint32_t dex_method_index;
-  uint32_t access_flags;
+  std::string          custom_name;
+  const DexFile*       dex_file;  // Native methods (trampolines) do not reference dex file.
+  size_t               class_def_index;
+  uint32_t             dex_method_index;
+  uint32_t             access_flags;
   const dex::CodeItem* code_item;
-  InstructionSet isa;
-  bool deduped;
-  bool is_native_debuggable;
-  bool is_optimized;
-  bool is_code_address_text_relative;  // Is the address offset from start of .text section?
+  InstructionSet       isa;
+  bool                 deduped;
+  bool                 is_native_debuggable;
+  bool                 is_optimized;
+  bool     is_code_address_text_relative;  // Is the address offset from start of .text section?
   uint64_t code_address;
   uint32_t code_size;
   uint32_t frame_size_in_bytes;
-  const uint8_t* code_info;
+  const uint8_t*          code_info;
   ArrayRef<const uint8_t> cfi;
 };
 

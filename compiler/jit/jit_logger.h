@@ -88,48 +88,48 @@ namespace jit {
 //
 class JitLogger {
  public:
-    JitLogger() : code_index_(0), marker_address_(nullptr) {}
+  JitLogger() : code_index_(0), marker_address_(nullptr) {}
 
-    void OpenLog() {
-      OpenPerfMapLog();
-      OpenJitDumpLog();
-    }
+  void OpenLog() {
+    OpenPerfMapLog();
+    OpenJitDumpLog();
+  }
 
-    void WriteLog(const void* ptr, size_t code_size, ArtMethod* method)
-        REQUIRES_SHARED(Locks::mutator_lock_) {
-      WritePerfMapLog(ptr, code_size, method);
-      WriteJitDumpLog(ptr, code_size, method);
-    }
+  void WriteLog(const void* ptr, size_t code_size, ArtMethod* method)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    WritePerfMapLog(ptr, code_size, method);
+    WriteJitDumpLog(ptr, code_size, method);
+  }
 
-    void CloseLog() {
-      ClosePerfMapLog();
-      CloseJitDumpLog();
-    }
+  void CloseLog() {
+    ClosePerfMapLog();
+    CloseJitDumpLog();
+  }
 
  private:
-    // For perf-map profiling
-    void OpenPerfMapLog();
-    void WritePerfMapLog(const void* ptr, size_t code_size, ArtMethod* method)
-        REQUIRES_SHARED(Locks::mutator_lock_);
-    void ClosePerfMapLog();
+  // For perf-map profiling
+  void OpenPerfMapLog();
+  void WritePerfMapLog(const void* ptr, size_t code_size, ArtMethod* method)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  void ClosePerfMapLog();
 
-    // For perf-inject profiling
-    void OpenJitDumpLog();
-    void WriteJitDumpLog(const void* ptr, size_t code_size, ArtMethod* method)
-        REQUIRES_SHARED(Locks::mutator_lock_);
-    void CloseJitDumpLog();
+  // For perf-inject profiling
+  void OpenJitDumpLog();
+  void WriteJitDumpLog(const void* ptr, size_t code_size, ArtMethod* method)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  void CloseJitDumpLog();
 
-    void OpenMarkerFile();
-    void CloseMarkerFile();
-    void WriteJitDumpHeader();
-    void WriteJitDumpDebugInfo();
+  void OpenMarkerFile();
+  void CloseMarkerFile();
+  void WriteJitDumpHeader();
+  void WriteJitDumpDebugInfo();
 
-    std::unique_ptr<File> perf_file_;
-    std::unique_ptr<File> jit_dump_file_;
-    uint64_t code_index_;
-    void* marker_address_;
+  std::unique_ptr<File> perf_file_;
+  std::unique_ptr<File> jit_dump_file_;
+  uint64_t              code_index_;
+  void*                 marker_address_;
 
-    DISALLOW_COPY_AND_ASSIGN(JitLogger);
+  DISALLOW_COPY_AND_ASSIGN(JitLogger);
 };
 
 }  // namespace jit

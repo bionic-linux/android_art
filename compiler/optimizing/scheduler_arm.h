@@ -29,25 +29,25 @@ typedef CodeGeneratorARMVIXL CodeGeneratorARMType;
 // We currently assume that all ARM CPUs share the same instruction latency list.
 // The following latencies were tuned based on performance experiments and
 // automatic tuning using differential evolution approach on various benchmarks.
-static constexpr uint32_t kArmIntegerOpLatency = 2;
-static constexpr uint32_t kArmFloatingPointOpLatency = 11;
-static constexpr uint32_t kArmDataProcWithShifterOpLatency = 4;
-static constexpr uint32_t kArmMulIntegerLatency = 6;
-static constexpr uint32_t kArmMulFloatingPointLatency = 11;
-static constexpr uint32_t kArmDivIntegerLatency = 10;
-static constexpr uint32_t kArmDivFloatLatency = 20;
-static constexpr uint32_t kArmDivDoubleLatency = 25;
+static constexpr uint32_t kArmIntegerOpLatency                          = 2;
+static constexpr uint32_t kArmFloatingPointOpLatency                    = 11;
+static constexpr uint32_t kArmDataProcWithShifterOpLatency              = 4;
+static constexpr uint32_t kArmMulIntegerLatency                         = 6;
+static constexpr uint32_t kArmMulFloatingPointLatency                   = 11;
+static constexpr uint32_t kArmDivIntegerLatency                         = 10;
+static constexpr uint32_t kArmDivFloatLatency                           = 20;
+static constexpr uint32_t kArmDivDoubleLatency                          = 25;
 static constexpr uint32_t kArmTypeConversionFloatingPointIntegerLatency = 11;
-static constexpr uint32_t kArmMemoryLoadLatency = 9;
-static constexpr uint32_t kArmMemoryStoreLatency = 9;
-static constexpr uint32_t kArmMemoryBarrierLatency = 6;
-static constexpr uint32_t kArmBranchLatency = 4;
-static constexpr uint32_t kArmCallLatency = 5;
-static constexpr uint32_t kArmCallInternalLatency = 29;
-static constexpr uint32_t kArmLoadStringInternalLatency = 10;
-static constexpr uint32_t kArmNopLatency = 2;
-static constexpr uint32_t kArmLoadWithBakerReadBarrierLatency = 18;
-static constexpr uint32_t kArmRuntimeTypeCheckLatency = 46;
+static constexpr uint32_t kArmMemoryLoadLatency                         = 9;
+static constexpr uint32_t kArmMemoryStoreLatency                        = 9;
+static constexpr uint32_t kArmMemoryBarrierLatency                      = 6;
+static constexpr uint32_t kArmBranchLatency                             = 4;
+static constexpr uint32_t kArmCallLatency                               = 5;
+static constexpr uint32_t kArmCallInternalLatency                       = 29;
+static constexpr uint32_t kArmLoadStringInternalLatency                 = 10;
+static constexpr uint32_t kArmNopLatency                                = 2;
+static constexpr uint32_t kArmLoadWithBakerReadBarrierLatency           = 18;
+static constexpr uint32_t kArmRuntimeTypeCheckLatency                   = 46;
 
 class SchedulingLatencyVisitorARM : public SchedulingLatencyVisitor {
  public:
@@ -100,8 +100,7 @@ class SchedulingLatencyVisitorARM : public SchedulingLatencyVisitor {
   M(IntermediateAddressIndex, unused)            \
   M(DataProcWithShifterOp, unused)
 
-#define DECLARE_VISIT_INSTRUCTION(type, unused)  \
-  void Visit##type(H##type* instruction) override;
+#define DECLARE_VISIT_INSTRUCTION(type, unused) void Visit##type(H##type* instruction) override;
 
   FOR_EACH_SCHEDULED_ARM_INSTRUCTION(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_SCHEDULED_SHARED_INSTRUCTION(DECLARE_VISIT_INSTRUCTION)
@@ -138,19 +137,17 @@ class SchedulingLatencyVisitorARM : public SchedulingLatencyVisitor {
 
 class HSchedulerARM : public HScheduler {
  public:
-  HSchedulerARM(SchedulingNodeSelector* selector,
-                SchedulingLatencyVisitorARM* arm_latency_visitor)
+  HSchedulerARM(SchedulingNodeSelector* selector, SchedulingLatencyVisitorARM* arm_latency_visitor)
       : HScheduler(arm_latency_visitor, selector) {}
   ~HSchedulerARM() override {}
 
   bool IsSchedulable(const HInstruction* instruction) const override {
-#define CASE_INSTRUCTION_KIND(type, unused) case \
-  HInstruction::InstructionKind::k##type:
+#define CASE_INSTRUCTION_KIND(type, unused) case HInstruction::InstructionKind::k##type:
     switch (instruction->GetKind()) {
       FOR_EACH_SCHEDULED_SHARED_INSTRUCTION(CASE_INSTRUCTION_KIND)
-        return true;
+      return true;
       FOR_EACH_CONCRETE_INSTRUCTION_ARM(CASE_INSTRUCTION_KIND)
-        return true;
+      return true;
       default:
         return HScheduler::IsSchedulable(instruction);
     }

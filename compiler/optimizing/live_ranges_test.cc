@@ -35,7 +35,7 @@ class LiveRangesTest : public OptimizingUnitTest {
 };
 
 HGraph* LiveRangesTest::BuildGraph(const std::vector<uint16_t>& data) {
-  HGraph* graph = CreateCFG(data);
+  HGraph* graph     = CreateCFG(data);
   compiler_options_ = CommonCompilerTest::CreateCompilerOptions(kRuntimeISA, "default");
   // Suspend checks implementation may change in the future, and this test relies
   // on how instructions are ordered.
@@ -58,18 +58,17 @@ TEST_F(LiveRangesTest, CFG1) {
    *           |
    *       12: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0, Instruction::RETURN);
 
   HGraph* graph = BuildGraph(data);
 
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   LiveInterval* interval = liveness.GetInstructionFromSsaIndex(0)->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(2u, range->GetStart());
   // Last use is the return instruction.
   ASSERT_EQ(8u, range->GetEnd());
@@ -101,19 +100,19 @@ TEST_F(LiveRangesTest, CFG2) {
    *         |
    *       26: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::GOTO | 0x100,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::GOTO | 0x100,
+                                                            Instruction::RETURN | 0 << 8);
 
-  HGraph* graph = BuildGraph(data);
+  HGraph*                        graph   = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   LiveInterval* interval = liveness.GetInstructionFromSsaIndex(0)->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(2u, range->GetStart());
   // Last use is the return instruction.
   ASSERT_EQ(22u, range->GetEnd());
@@ -148,20 +147,20 @@ TEST_F(LiveRangesTest, CFG3) {
    *         |
    *       28: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::CONST_4 | 4 << 12 | 0,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::CONST_4 | 4 << 12 | 0,
+                                                            Instruction::RETURN | 0 << 8);
 
-  HGraph* graph = BuildGraph(data);
+  HGraph*                        graph   = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   // Test for the 4 constant.
   LiveInterval* interval = liveness.GetInstructionFromSsaIndex(1)->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(4u, range->GetStart());
   // Last use is the phi at the return block so instruction is live until
   // the end of the then block.
@@ -185,7 +184,7 @@ TEST_F(LiveRangesTest, CFG3) {
 
   // Test for the phi.
   interval = liveness.GetInstructionFromSsaIndex(2)->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   ASSERT_EQ(22u, liveness.GetInstructionFromSsaIndex(2)->GetLifetimePosition());
   ASSERT_EQ(22u, range->GetStart());
   ASSERT_EQ(24u, range->GetEnd());
@@ -220,23 +219,24 @@ TEST_F(LiveRangesTest, Loop1) {
    *       30: exit
    */
 
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 4,
-    Instruction::CONST_4 | 4 << 12 | 0,
-    Instruction::GOTO | 0xFD00,
-    Instruction::CONST_4 | 5 << 12 | 1 << 8,
-    Instruction::RETURN | 1 << 8);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::IF_EQ,
+                              4,
+                              Instruction::CONST_4 | 4 << 12 | 0,
+                              Instruction::GOTO | 0xFD00,
+                              Instruction::CONST_4 | 5 << 12 | 1 << 8,
+                              Instruction::RETURN | 1 << 8);
 
   HGraph* graph = BuildGraph(data);
   RemoveSuspendChecks(graph);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   // Test for the 0 constant.
   LiveInterval* interval = graph->GetIntConstant(0)->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(2u, range->GetStart());
   // Last use is the loop phi so instruction is live until
   // the end of the pre loop header.
@@ -245,7 +245,7 @@ TEST_F(LiveRangesTest, Loop1) {
 
   // Test for the 4 constant.
   interval = graph->GetIntConstant(4)->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   // The instruction is live until the end of the loop.
   ASSERT_EQ(6u, range->GetStart());
   ASSERT_EQ(24u, range->GetEnd());
@@ -253,7 +253,7 @@ TEST_F(LiveRangesTest, Loop1) {
 
   // Test for the 5 constant.
   interval = graph->GetIntConstant(5)->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   // The instruction is live until the return instruction after the loop.
   ASSERT_EQ(4u, range->GetStart());
   ASSERT_EQ(26u, range->GetEnd());
@@ -261,7 +261,7 @@ TEST_F(LiveRangesTest, Loop1) {
 
   // Test for the phi.
   interval = liveness.GetInstructionFromSsaIndex(3)->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   // Instruction is input of non-materialized Equal and hence live until If.
   ASSERT_EQ(14u, range->GetStart());
   ASSERT_EQ(19u, range->GetEnd());
@@ -297,22 +297,24 @@ TEST_F(LiveRangesTest, Loop2) {
    * We want to make sure the phi at 10 has a lifetime hole after the add at 20.
    */
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 6,
-    Instruction::ADD_INT, 0, 0,
-    Instruction::GOTO | 0xFB00,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            6,
+                                                            Instruction::ADD_INT,
+                                                            0,
+                                                            0,
+                                                            Instruction::GOTO | 0xFB00,
+                                                            Instruction::RETURN | 0 << 8);
 
-  HGraph* graph = BuildGraph(data);
+  HGraph*                        graph   = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   // Test for the 0 constant.
   HIntConstant* constant = liveness.GetInstructionFromSsaIndex(0)->AsIntConstant();
   LiveInterval* interval = constant->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(2u, range->GetStart());
   // Last use is the loop phi so instruction is live until
   // the end of the pre loop header.
@@ -321,8 +323,8 @@ TEST_F(LiveRangesTest, Loop2) {
 
   // Test for the loop phi.
   HPhi* phi = liveness.GetInstructionFromSsaIndex(1)->AsPhi();
-  interval = phi->GetLiveInterval();
-  range = interval->GetFirstRange();
+  interval  = phi->GetLiveInterval();
+  range     = interval->GetFirstRange();
   ASSERT_EQ(10u, range->GetStart());
   ASSERT_EQ(19u, range->GetEnd());
   range = range->GetNext();
@@ -332,8 +334,8 @@ TEST_F(LiveRangesTest, Loop2) {
 
   // Test for the add instruction.
   HAdd* add = liveness.GetInstructionFromSsaIndex(2)->AsAdd();
-  interval = add->GetLiveInterval();
-  range = interval->GetFirstRange();
+  interval  = add->GetLiveInterval();
+  range     = interval->GetFirstRange();
   ASSERT_EQ(18u, range->GetStart());
   ASSERT_EQ(22u, range->GetEnd());
   ASSERT_TRUE(range->GetNext() == nullptr);
@@ -369,23 +371,26 @@ TEST_F(LiveRangesTest, CFG4) {
    *
    * We want to make sure the constant0 has a lifetime hole after the 16: add.
    */
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::CONST_4 | 4 << 12 | 1 << 8,
-    Instruction::IF_EQ, 5,
-    Instruction::ADD_INT, 1 << 8,
-    Instruction::GOTO | 0x300,
-    Instruction::ADD_INT, 1 << 8,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::CONST_4 | 4 << 12 | 1 << 8,
+                              Instruction::IF_EQ,
+                              5,
+                              Instruction::ADD_INT,
+                              1 << 8,
+                              Instruction::GOTO | 0x300,
+                              Instruction::ADD_INT,
+                              1 << 8,
+                              Instruction::RETURN);
 
-  HGraph* graph = BuildGraph(data);
+  HGraph*                        graph   = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
-  SsaLivenessAnalysis liveness(graph, codegen.get(), GetScopedAllocator());
+  SsaLivenessAnalysis            liveness(graph, codegen.get(), GetScopedAllocator());
   liveness.Analyze();
 
   // Test for the 0 constant.
   LiveInterval* interval = liveness.GetInstructionFromSsaIndex(0)->GetLiveInterval();
-  LiveRange* range = interval->GetFirstRange();
+  LiveRange*    range    = interval->GetFirstRange();
   ASSERT_EQ(2u, range->GetStart());
   ASSERT_EQ(17u, range->GetEnd());
   range = range->GetNext();
@@ -396,7 +401,7 @@ TEST_F(LiveRangesTest, CFG4) {
 
   // Test for the 4 constant.
   interval = liveness.GetInstructionFromSsaIndex(1)->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   ASSERT_EQ(4u, range->GetStart());
   ASSERT_EQ(17u, range->GetEnd());
   range = range->GetNext();
@@ -406,16 +411,16 @@ TEST_F(LiveRangesTest, CFG4) {
 
   // Test for the first add.
   HAdd* add = liveness.GetInstructionFromSsaIndex(2)->AsAdd();
-  interval = add->GetLiveInterval();
-  range = interval->GetFirstRange();
+  interval  = add->GetLiveInterval();
+  range     = interval->GetFirstRange();
   ASSERT_EQ(16u, range->GetStart());
   ASSERT_EQ(20u, range->GetEnd());
   ASSERT_TRUE(range->GetNext() == nullptr);
 
   // Test for the second add.
-  add = liveness.GetInstructionFromSsaIndex(3)->AsAdd();
+  add      = liveness.GetInstructionFromSsaIndex(3)->AsAdd();
   interval = add->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   ASSERT_EQ(22u, range->GetStart());
   ASSERT_EQ(26u, range->GetEnd());
   ASSERT_TRUE(range->GetNext() == nullptr);
@@ -423,7 +428,7 @@ TEST_F(LiveRangesTest, CFG4) {
   HPhi* phi = liveness.GetInstructionFromSsaIndex(4)->AsPhi();
   ASSERT_TRUE(phi->GetUses().HasExactlyOneElement());
   interval = phi->GetLiveInterval();
-  range = interval->GetFirstRange();
+  range    = interval->GetFirstRange();
   ASSERT_EQ(26u, range->GetStart());
   ASSERT_EQ(28u, range->GetEnd());
   ASSERT_TRUE(range->GetNext() == nullptr);

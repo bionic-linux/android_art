@@ -64,31 +64,31 @@ class RegisterAllocationResolver : ValueObject {
   void ConnectSplitSiblings(LiveInterval* interval, HBasicBlock* from, HBasicBlock* to) const;
 
   // Helper methods for inserting parallel moves in the graph.
-  void InsertParallelMoveAtExitOf(HBasicBlock* block,
+  void InsertParallelMoveAtExitOf(HBasicBlock*  block,
                                   HInstruction* instruction,
-                                  Location source,
-                                  Location destination) const;
-  void InsertParallelMoveAtEntryOf(HBasicBlock* block,
+                                  Location      source,
+                                  Location      destination) const;
+  void InsertParallelMoveAtEntryOf(HBasicBlock*  block,
                                    HInstruction* instruction,
-                                   Location source,
-                                   Location destination) const;
+                                   Location      source,
+                                   Location      destination) const;
   void InsertMoveAfter(HInstruction* instruction, Location source, Location destination) const;
   void AddInputMoveFor(HInstruction* input,
                        HInstruction* user,
-                       Location source,
-                       Location destination) const;
-  void InsertParallelMoveAt(size_t position,
+                       Location      source,
+                       Location      destination) const;
+  void InsertParallelMoveAt(size_t        position,
                             HInstruction* instruction,
-                            Location source,
-                            Location destination) const;
+                            Location      source,
+                            Location      destination) const;
   void AddMove(HParallelMove* move,
-               Location source,
-               Location destination,
-               HInstruction* instruction,
+               Location       source,
+               Location       destination,
+               HInstruction*  instruction,
                DataType::Type type) const;
 
-  ArenaAllocator* const allocator_;
-  CodeGenerator* const codegen_;
+  ArenaAllocator* const      allocator_;
+  CodeGenerator* const       codegen_;
   const SsaLivenessAnalysis& liveness_;
 
   DISALLOW_COPY_AND_ASSIGN(RegisterAllocationResolver);

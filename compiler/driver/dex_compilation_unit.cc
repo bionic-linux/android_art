@@ -28,15 +28,15 @@
 namespace art {
 
 DexCompilationUnit::DexCompilationUnit(Handle<mirror::ClassLoader> class_loader,
-                                       ClassLinker* class_linker,
-                                       const DexFile& dex_file,
-                                       const dex::CodeItem* code_item,
-                                       uint16_t class_def_idx,
-                                       uint32_t method_idx,
-                                       uint32_t access_flags,
-                                       const VerifiedMethod* verified_method,
-                                       Handle<mirror::DexCache> dex_cache,
-                                       Handle<mirror::Class> compiling_class)
+                                       ClassLinker*                class_linker,
+                                       const DexFile&              dex_file,
+                                       const dex::CodeItem*        code_item,
+                                       uint16_t                    class_def_idx,
+                                       uint32_t                    method_idx,
+                                       uint32_t                    access_flags,
+                                       const VerifiedMethod*       verified_method,
+                                       Handle<mirror::DexCache>    dex_cache,
+                                       Handle<mirror::Class>       compiling_class)
     : class_loader_(class_loader),
       class_linker_(class_linker),
       dex_file_(&dex_file),
@@ -65,7 +65,7 @@ bool DexCompilationUnit::RequiresConstructorBarrier() const {
   // We require a constructor barrier if there are final instance fields.
   if (GetCompilingClass().GetReference() != nullptr && !GetCompilingClass().IsNull()) {
     // Decoding class data can be slow, so iterate over fields of the compiling class if resolved.
-    ScopedObjectAccess soa(Thread::Current());
+    ScopedObjectAccess    soa(Thread::Current());
     ObjPtr<mirror::Class> compiling_class = GetCompilingClass().Get();
     for (size_t i = 0, size = compiling_class->NumInstanceFields(); i != size; ++i) {
       ArtField* field = compiling_class->GetInstanceField(i);

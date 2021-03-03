@@ -36,15 +36,15 @@ class VerifiedMethod;
 class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
  public:
   DexCompilationUnit(Handle<mirror::ClassLoader> class_loader,
-                     ClassLinker* class_linker,
-                     const DexFile& dex_file,
-                     const dex::CodeItem* code_item,
-                     uint16_t class_def_idx,
-                     uint32_t method_idx,
-                     uint32_t access_flags,
-                     const VerifiedMethod* verified_method,
-                     Handle<mirror::DexCache> dex_cache,
-                     Handle<mirror::Class> compiling_class = Handle<mirror::Class>());
+                     ClassLinker*                class_linker,
+                     const DexFile&              dex_file,
+                     const dex::CodeItem*        code_item,
+                     uint16_t                    class_def_idx,
+                     uint32_t                    method_idx,
+                     uint32_t                    access_flags,
+                     const VerifiedMethod*       verified_method,
+                     Handle<mirror::DexCache>    dex_cache,
+                     Handle<mirror::Class>       compiling_class = Handle<mirror::Class>());
 
   Handle<mirror::ClassLoader> GetClassLoader() const {
     return class_loader_;
@@ -165,10 +165,10 @@ class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
   const DexFile* const dex_file_;
 
   const dex::CodeItem* const code_item_;
-  const uint16_t class_def_idx_;
-  const uint32_t dex_method_idx_;
-  const uint32_t access_flags_;
-  const VerifiedMethod* verified_method_;
+  const uint16_t             class_def_idx_;
+  const uint32_t             dex_method_idx_;
+  const uint32_t             access_flags_;
+  const VerifiedMethod*      verified_method_;
 
   const Handle<mirror::DexCache> dex_cache_;
 

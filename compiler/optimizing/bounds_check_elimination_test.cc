@@ -18,14 +18,13 @@
 
 #include "base/arena_allocator.h"
 #include "builder.h"
+#include "gtest/gtest.h"
 #include "gvn.h"
 #include "induction_var_analysis.h"
 #include "instruction_simplifier.h"
 #include "nodes.h"
 #include "optimizing_unit_test.h"
 #include "side_effects_analysis.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -34,11 +33,11 @@ namespace art {
  */
 class BoundsCheckEliminationTest : public OptimizingUnitTest {
  public:
-  BoundsCheckEliminationTest()  : graph_(CreateGraph()) {
+  BoundsCheckEliminationTest() : graph_(CreateGraph()) {
     graph_->SetHasBoundsChecks(true);
   }
 
-  ~BoundsCheckEliminationTest() { }
+  ~BoundsCheckEliminationTest() {}
 
   void RunBCE() {
     graph_->BuildDominatorTree();
@@ -59,7 +58,6 @@ class BoundsCheckEliminationTest : public OptimizingUnitTest {
   HGraph* graph_;
 };
 
-
 // if (i < 0) { array[i] = 1; // Can't eliminate. }
 // else if (i >= array.length) { array[i] = 1; // Can't eliminate. }
 // else { array[i] = 1; // Can eliminate. }
@@ -69,8 +67,8 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
   graph_->SetEntryBlock(entry);
   HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
       graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
+  HInstruction* parameter2 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
   entry->AddInstruction(parameter1);
   entry->AddInstruction(parameter2);
 
@@ -79,20 +77,19 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
 
   HBasicBlock* block1 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block1);
-  HInstruction* cmp = new (GetAllocator()) HGreaterThanOrEqual(parameter2, constant_0);
-  HIf* if_inst = new (GetAllocator()) HIf(cmp);
+  HInstruction* cmp     = new (GetAllocator()) HGreaterThanOrEqual(parameter2, constant_0);
+  HIf*          if_inst = new (GetAllocator()) HIf(cmp);
   block1->AddInstruction(cmp);
   block1->AddInstruction(if_inst);
   entry->AddSuccessor(block1);
 
   HBasicBlock* block2 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block2);
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
-  HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check2 = new (GetAllocator())
-      HBoundsCheck(parameter2, array_length, 0);
-  HArraySet* array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check2, constant_1, DataType::Type::kInt32, 0);
+  HNullCheck*   null_check    = new (GetAllocator()) HNullCheck(parameter1, 0);
+  HArrayLength* array_length  = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check2 = new (GetAllocator()) HBoundsCheck(parameter2, array_length, 0);
+  HArraySet*    array_set     = new (GetAllocator())
+      HArraySet(null_check, bounds_check2, constant_1, DataType::Type::kInt32, 0);
   block2->AddInstruction(null_check);
   block2->AddInstruction(array_length);
   block2->AddInstruction(bounds_check2);
@@ -100,10 +97,10 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
 
   HBasicBlock* block3 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block3);
-  null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
+  null_check   = new (GetAllocator()) HNullCheck(parameter1, 0);
   array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  cmp = new (GetAllocator()) HLessThan(parameter2, array_length);
-  if_inst = new (GetAllocator()) HIf(cmp);
+  cmp          = new (GetAllocator()) HLessThan(parameter2, array_length);
+  if_inst      = new (GetAllocator()) HIf(cmp);
   block3->AddInstruction(null_check);
   block3->AddInstruction(array_length);
   block3->AddInstruction(cmp);
@@ -111,12 +108,11 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
 
   HBasicBlock* block4 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block4);
-  null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check4 = new (GetAllocator())
-      HBoundsCheck(parameter2, array_length, 0);
-  array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check4, constant_1, DataType::Type::kInt32, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter1, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check4 = new (GetAllocator()) HBoundsCheck(parameter2, array_length, 0);
+  array_set                   = new (GetAllocator())
+      HArraySet(null_check, bounds_check4, constant_1, DataType::Type::kInt32, 0);
   block4->AddInstruction(null_check);
   block4->AddInstruction(array_length);
   block4->AddInstruction(bounds_check4);
@@ -124,12 +120,11 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
 
   HBasicBlock* block5 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block5);
-  null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check5 = new (GetAllocator())
-      HBoundsCheck(parameter2, array_length, 0);
-  array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check5, constant_1, DataType::Type::kInt32, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter1, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check5 = new (GetAllocator()) HBoundsCheck(parameter2, array_length, 0);
+  array_set                   = new (GetAllocator())
+      HArraySet(null_check, bounds_check5, constant_1, DataType::Type::kInt32, 0);
   block5->AddInstruction(null_check);
   block5->AddInstruction(array_length);
   block5->AddInstruction(bounds_check5);
@@ -166,19 +161,19 @@ TEST_F(BoundsCheckEliminationTest, OverflowArrayBoundsElimination) {
   graph_->SetEntryBlock(entry);
   HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
       graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
+  HInstruction* parameter2 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
   entry->AddInstruction(parameter1);
   entry->AddInstruction(parameter2);
 
-  HInstruction* constant_1 = graph_->GetIntConstant(1);
-  HInstruction* constant_0 = graph_->GetIntConstant(0);
+  HInstruction* constant_1       = graph_->GetIntConstant(1);
+  HInstruction* constant_0       = graph_->GetIntConstant(0);
   HInstruction* constant_max_int = graph_->GetIntConstant(INT_MAX);
 
   HBasicBlock* block1 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block1);
-  HInstruction* cmp = new (GetAllocator()) HLessThanOrEqual(parameter2, constant_0);
-  HIf* if_inst = new (GetAllocator()) HIf(cmp);
+  HInstruction* cmp     = new (GetAllocator()) HLessThanOrEqual(parameter2, constant_0);
+  HIf*          if_inst = new (GetAllocator()) HIf(cmp);
   block1->AddInstruction(cmp);
   block1->AddInstruction(if_inst);
   entry->AddSuccessor(block1);
@@ -187,10 +182,10 @@ TEST_F(BoundsCheckEliminationTest, OverflowArrayBoundsElimination) {
   graph_->AddBlock(block2);
   HInstruction* add =
       new (GetAllocator()) HAdd(DataType::Type::kInt32, parameter2, constant_max_int);
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
+  HNullCheck*   null_check   = new (GetAllocator()) HNullCheck(parameter1, 0);
   HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HInstruction* cmp2 = new (GetAllocator()) HGreaterThanOrEqual(add, array_length);
-  if_inst = new (GetAllocator()) HIf(cmp2);
+  HInstruction* cmp2         = new (GetAllocator()) HGreaterThanOrEqual(add, array_length);
+  if_inst                    = new (GetAllocator()) HIf(cmp2);
   block2->AddInstruction(add);
   block2->AddInstruction(null_check);
   block2->AddInstruction(array_length);
@@ -199,10 +194,9 @@ TEST_F(BoundsCheckEliminationTest, OverflowArrayBoundsElimination) {
 
   HBasicBlock* block3 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block3);
-  HBoundsCheck* bounds_check = new (GetAllocator())
-      HBoundsCheck(add, array_length, 0);
-  HArraySet* array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check, constant_1, DataType::Type::kInt32, 0);
+  HBoundsCheck* bounds_check = new (GetAllocator()) HBoundsCheck(add, array_length, 0);
+  HArraySet*    array_set    = new (GetAllocator())
+      HArraySet(null_check, bounds_check, constant_1, DataType::Type::kInt32, 0);
   block3->AddInstruction(bounds_check);
   block3->AddInstruction(array_set);
 
@@ -231,21 +225,21 @@ TEST_F(BoundsCheckEliminationTest, UnderflowArrayBoundsElimination) {
   graph_->SetEntryBlock(entry);
   HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
       graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
+  HInstruction* parameter2 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
   entry->AddInstruction(parameter1);
   entry->AddInstruction(parameter2);
 
-  HInstruction* constant_1 = graph_->GetIntConstant(1);
-  HInstruction* constant_0 = graph_->GetIntConstant(0);
+  HInstruction* constant_1       = graph_->GetIntConstant(1);
+  HInstruction* constant_0       = graph_->GetIntConstant(0);
   HInstruction* constant_max_int = graph_->GetIntConstant(INT_MAX);
 
   HBasicBlock* block1 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block1);
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(parameter1, 0);
+  HNullCheck*   null_check   = new (GetAllocator()) HNullCheck(parameter1, 0);
   HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HInstruction* cmp = new (GetAllocator()) HGreaterThanOrEqual(parameter2, array_length);
-  HIf* if_inst = new (GetAllocator()) HIf(cmp);
+  HInstruction* cmp          = new (GetAllocator()) HGreaterThanOrEqual(parameter2, array_length);
+  HIf*          if_inst      = new (GetAllocator()) HIf(cmp);
   block1->AddInstruction(null_check);
   block1->AddInstruction(array_length);
   block1->AddInstruction(cmp);
@@ -258,7 +252,7 @@ TEST_F(BoundsCheckEliminationTest, UnderflowArrayBoundsElimination) {
       new (GetAllocator()) HSub(DataType::Type::kInt32, parameter2, constant_max_int);
   HInstruction* sub2 = new (GetAllocator()) HSub(DataType::Type::kInt32, sub1, constant_max_int);
   HInstruction* cmp2 = new (GetAllocator()) HLessThanOrEqual(sub2, constant_0);
-  if_inst = new (GetAllocator()) HIf(cmp2);
+  if_inst            = new (GetAllocator()) HIf(cmp2);
   block2->AddInstruction(sub1);
   block2->AddInstruction(sub2);
   block2->AddInstruction(cmp2);
@@ -266,10 +260,9 @@ TEST_F(BoundsCheckEliminationTest, UnderflowArrayBoundsElimination) {
 
   HBasicBlock* block3 = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block3);
-  HBoundsCheck* bounds_check = new (GetAllocator())
-      HBoundsCheck(sub2, array_length, 0);
-  HArraySet* array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check, constant_1, DataType::Type::kInt32, 0);
+  HBoundsCheck* bounds_check = new (GetAllocator()) HBoundsCheck(sub2, array_length, 0);
+  HArraySet*    array_set    = new (GetAllocator())
+      HArraySet(null_check, bounds_check, constant_1, DataType::Type::kInt32, 0);
   block3->AddInstruction(bounds_check);
   block3->AddInstruction(array_set);
 
@@ -294,8 +287,8 @@ TEST_F(BoundsCheckEliminationTest, ConstantArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HInstruction* constant_5 = graph_->GetIntConstant(5);
@@ -307,34 +300,31 @@ TEST_F(BoundsCheckEliminationTest, ConstantArrayBoundsElimination) {
   graph_->AddBlock(block);
   entry->AddSuccessor(block);
 
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check6 = new (GetAllocator())
-      HBoundsCheck(constant_6, array_length, 0);
-  HInstruction* array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check6, constant_1, DataType::Type::kInt32, 0);
+  HNullCheck*   null_check    = new (GetAllocator()) HNullCheck(parameter, 0);
+  HArrayLength* array_length  = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check6 = new (GetAllocator()) HBoundsCheck(constant_6, array_length, 0);
+  HInstruction* array_set     = new (GetAllocator())
+      HArraySet(null_check, bounds_check6, constant_1, DataType::Type::kInt32, 0);
   block->AddInstruction(null_check);
   block->AddInstruction(array_length);
   block->AddInstruction(bounds_check6);
   block->AddInstruction(array_set);
 
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check5 = new (GetAllocator())
-      HBoundsCheck(constant_5, array_length, 0);
-  array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check5, constant_1, DataType::Type::kInt32, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check5 = new (GetAllocator()) HBoundsCheck(constant_5, array_length, 0);
+  array_set                   = new (GetAllocator())
+      HArraySet(null_check, bounds_check5, constant_1, DataType::Type::kInt32, 0);
   block->AddInstruction(null_check);
   block->AddInstruction(array_length);
   block->AddInstruction(bounds_check5);
   block->AddInstruction(array_set);
 
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HBoundsCheck* bounds_check4 = new (GetAllocator())
-      HBoundsCheck(constant_4, array_length, 0);
-  array_set = new (GetAllocator()) HArraySet(
-    null_check, bounds_check4, constant_1, DataType::Type::kInt32, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
+  HBoundsCheck* bounds_check4 = new (GetAllocator()) HBoundsCheck(constant_4, array_length, 0);
+  array_set                   = new (GetAllocator())
+      HArraySet(null_check, bounds_check4, constant_1, DataType::Type::kInt32, 0);
   block->AddInstruction(null_check);
   block->AddInstruction(array_length);
   block->AddInstruction(bounds_check4);
@@ -355,21 +345,21 @@ TEST_F(BoundsCheckEliminationTest, ConstantArrayBoundsElimination) {
 }
 
 // for (int i=initial; i<array.length; i+=increment) { array[i] = 10; }
-static HInstruction* BuildSSAGraph1(HGraph* graph,
+static HInstruction* BuildSSAGraph1(HGraph*         graph,
                                     ArenaAllocator* allocator,
-                                    int initial,
-                                    int increment,
-                                    IfCondition cond = kCondGE) {
+                                    int             initial,
+                                    int             increment,
+                                    IfCondition     cond = kCondGE) {
   HBasicBlock* entry = new (allocator) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (allocator) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (allocator)
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
-  HInstruction* constant_initial = graph->GetIntConstant(initial);
+  HInstruction* constant_initial   = graph->GetIntConstant(initial);
   HInstruction* constant_increment = graph->GetIntConstant(increment);
-  HInstruction* constant_10 = graph->GetIntConstant(10);
+  HInstruction* constant_10        = graph->GetIntConstant(10);
 
   HBasicBlock* block = new (allocator) HBasicBlock(graph);
   graph->AddBlock(block);
@@ -377,8 +367,8 @@ static HInstruction* BuildSSAGraph1(HGraph* graph,
   block->AddInstruction(new (allocator) HGoto());
 
   HBasicBlock* loop_header = new (allocator) HBasicBlock(graph);
-  HBasicBlock* loop_body = new (allocator) HBasicBlock(graph);
-  HBasicBlock* exit = new (allocator) HBasicBlock(graph);
+  HBasicBlock* loop_body   = new (allocator) HBasicBlock(graph);
+  HBasicBlock* exit        = new (allocator) HBasicBlock(graph);
 
   graph->AddBlock(loop_header);
   graph->AddBlock(loop_body);
@@ -388,10 +378,10 @@ static HInstruction* BuildSSAGraph1(HGraph* graph,
   loop_header->AddSuccessor(loop_body);  // false successor
   loop_body->AddSuccessor(loop_header);
 
-  HPhi* phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
-  HInstruction* null_check = new (allocator) HNullCheck(parameter, 0);
+  HPhi*         phi          = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
+  HInstruction* null_check   = new (allocator) HNullCheck(parameter, 0);
   HInstruction* array_length = new (allocator) HArrayLength(null_check, 0);
-  HInstruction* cmp = nullptr;
+  HInstruction* cmp          = nullptr;
   if (cond == kCondGE) {
     cmp = new (allocator) HGreaterThanOrEqual(phi, array_length);
   } else {
@@ -406,11 +396,11 @@ static HInstruction* BuildSSAGraph1(HGraph* graph,
   loop_header->AddInstruction(if_inst);
   phi->AddInput(constant_initial);
 
-  null_check = new (allocator) HNullCheck(parameter, 0);
-  array_length = new (allocator) HArrayLength(null_check, 0);
+  null_check                 = new (allocator) HNullCheck(parameter, 0);
+  array_length               = new (allocator) HArrayLength(null_check, 0);
   HInstruction* bounds_check = new (allocator) HBoundsCheck(phi, array_length, 0);
-  HInstruction* array_set = new (allocator) HArraySet(
-      null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
+  HInstruction* array_set =
+      new (allocator) HArraySet(null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
 
   HInstruction* add = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_increment);
   loop_body->AddInstruction(null_check);
@@ -470,35 +460,35 @@ TEST_F(BoundsCheckEliminationTest, LoopArrayBoundsElimination1f) {
 }
 
 // for (int i=array.length; i>0; i+=increment) { array[i-1] = 10; }
-static HInstruction* BuildSSAGraph2(HGraph *graph,
+static HInstruction* BuildSSAGraph2(HGraph*         graph,
                                     ArenaAllocator* allocator,
-                                    int initial,
-                                    int increment = -1,
-                                    IfCondition cond = kCondLE) {
+                                    int             initial,
+                                    int             increment = -1,
+                                    IfCondition     cond      = kCondLE) {
   HBasicBlock* entry = new (allocator) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (allocator) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (allocator)
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
-  HInstruction* constant_initial = graph->GetIntConstant(initial);
+  HInstruction* constant_initial   = graph->GetIntConstant(initial);
   HInstruction* constant_increment = graph->GetIntConstant(increment);
-  HInstruction* constant_minus_1 = graph->GetIntConstant(-1);
-  HInstruction* constant_10 = graph->GetIntConstant(10);
+  HInstruction* constant_minus_1   = graph->GetIntConstant(-1);
+  HInstruction* constant_10        = graph->GetIntConstant(10);
 
   HBasicBlock* block = new (allocator) HBasicBlock(graph);
   graph->AddBlock(block);
   entry->AddSuccessor(block);
-  HInstruction* null_check = new (allocator) HNullCheck(parameter, 0);
+  HInstruction* null_check   = new (allocator) HNullCheck(parameter, 0);
   HInstruction* array_length = new (allocator) HArrayLength(null_check, 0);
   block->AddInstruction(null_check);
   block->AddInstruction(array_length);
   block->AddInstruction(new (allocator) HGoto());
 
   HBasicBlock* loop_header = new (allocator) HBasicBlock(graph);
-  HBasicBlock* loop_body = new (allocator) HBasicBlock(graph);
-  HBasicBlock* exit = new (allocator) HBasicBlock(graph);
+  HBasicBlock* loop_body   = new (allocator) HBasicBlock(graph);
+  HBasicBlock* exit        = new (allocator) HBasicBlock(graph);
 
   graph->AddBlock(loop_header);
   graph->AddBlock(loop_body);
@@ -508,7 +498,7 @@ static HInstruction* BuildSSAGraph2(HGraph *graph,
   loop_header->AddSuccessor(loop_body);  // false successor
   loop_body->AddSuccessor(loop_header);
 
-  HPhi* phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
+  HPhi*         phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
   HInstruction* cmp = nullptr;
   if (cond == kCondLE) {
     cmp = new (allocator) HLessThanOrEqual(phi, constant_initial);
@@ -522,12 +512,12 @@ static HInstruction* BuildSSAGraph2(HGraph *graph,
   loop_header->AddInstruction(if_inst);
   phi->AddInput(array_length);
 
-  HInstruction* add = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_minus_1);
-  null_check = new (allocator) HNullCheck(parameter, 0);
-  array_length = new (allocator) HArrayLength(null_check, 0);
+  HInstruction* add          = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_minus_1);
+  null_check                 = new (allocator) HNullCheck(parameter, 0);
+  array_length               = new (allocator) HArrayLength(null_check, 0);
   HInstruction* bounds_check = new (allocator) HBoundsCheck(add, array_length, 0);
-  HInstruction* array_set = new (allocator) HArraySet(
-      null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
+  HInstruction* array_set =
+      new (allocator) HArraySet(null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
   HInstruction* add_phi = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_increment);
   loop_body->AddInstruction(add);
   loop_body->AddInstruction(null_check);
@@ -580,17 +570,14 @@ TEST_F(BoundsCheckEliminationTest, LoopArrayBoundsElimination2e) {
 
 // int[] array = new int[10];
 // for (int i=0; i<10; i+=increment) { array[i] = 10; }
-static HInstruction* BuildSSAGraph3(HGraph* graph,
-                                    ArenaAllocator* allocator,
-                                    int initial,
-                                    int increment,
-                                    IfCondition cond) {
+static HInstruction* BuildSSAGraph3(
+    HGraph* graph, ArenaAllocator* allocator, int initial, int increment, IfCondition cond) {
   HBasicBlock* entry = new (allocator) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
 
-  HInstruction* constant_10 = graph->GetIntConstant(10);
-  HInstruction* constant_initial = graph->GetIntConstant(initial);
+  HInstruction* constant_10        = graph->GetIntConstant(10);
+  HInstruction* constant_initial   = graph->GetIntConstant(initial);
   HInstruction* constant_increment = graph->GetIntConstant(increment);
 
   HBasicBlock* block = new (allocator) HBasicBlock(graph);
@@ -606,8 +593,8 @@ static HInstruction* BuildSSAGraph3(HGraph* graph,
   block->AddInstruction(new (allocator) HGoto());
 
   HBasicBlock* loop_header = new (allocator) HBasicBlock(graph);
-  HBasicBlock* loop_body = new (allocator) HBasicBlock(graph);
-  HBasicBlock* exit = new (allocator) HBasicBlock(graph);
+  HBasicBlock* loop_body   = new (allocator) HBasicBlock(graph);
+  HBasicBlock* exit        = new (allocator) HBasicBlock(graph);
 
   graph->AddBlock(loop_header);
   graph->AddBlock(loop_body);
@@ -617,7 +604,7 @@ static HInstruction* BuildSSAGraph3(HGraph* graph,
   loop_header->AddSuccessor(loop_body);  // false successor
   loop_body->AddSuccessor(loop_header);
 
-  HPhi* phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
+  HPhi*         phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
   HInstruction* cmp = nullptr;
   if (cond == kCondGE) {
     cmp = new (allocator) HGreaterThanOrEqual(phi, constant_10);
@@ -631,11 +618,11 @@ static HInstruction* BuildSSAGraph3(HGraph* graph,
   loop_header->AddInstruction(if_inst);
   phi->AddInput(constant_initial);
 
-  HNullCheck* null_check = new (allocator) HNullCheck(new_array, 0);
+  HNullCheck*   null_check   = new (allocator) HNullCheck(new_array, 0);
   HArrayLength* array_length = new (allocator) HArrayLength(null_check, 0);
   HInstruction* bounds_check = new (allocator) HBoundsCheck(phi, array_length, 0);
-  HInstruction* array_set = new (allocator) HArraySet(
-      null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
+  HInstruction* array_set =
+      new (allocator) HArraySet(null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
   HInstruction* add = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_increment);
   loop_body->AddInstruction(null_check);
   loop_body->AddInstruction(array_length);
@@ -683,20 +670,20 @@ TEST_F(BoundsCheckEliminationTest, LoopArrayBoundsElimination3d) {
 }
 
 // for (int i=initial; i<array.length; i++) { array[array.length-i-1] = 10; }
-static HInstruction* BuildSSAGraph4(HGraph* graph,
+static HInstruction* BuildSSAGraph4(HGraph*         graph,
                                     ArenaAllocator* allocator,
-                                    int initial,
-                                    IfCondition cond = kCondGE) {
+                                    int             initial,
+                                    IfCondition     cond = kCondGE) {
   HBasicBlock* entry = new (allocator) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (allocator) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (allocator)
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HInstruction* constant_initial = graph->GetIntConstant(initial);
-  HInstruction* constant_1 = graph->GetIntConstant(1);
-  HInstruction* constant_10 = graph->GetIntConstant(10);
+  HInstruction* constant_1       = graph->GetIntConstant(1);
+  HInstruction* constant_10      = graph->GetIntConstant(10);
   HInstruction* constant_minus_1 = graph->GetIntConstant(-1);
 
   HBasicBlock* block = new (allocator) HBasicBlock(graph);
@@ -705,8 +692,8 @@ static HInstruction* BuildSSAGraph4(HGraph* graph,
   block->AddInstruction(new (allocator) HGoto());
 
   HBasicBlock* loop_header = new (allocator) HBasicBlock(graph);
-  HBasicBlock* loop_body = new (allocator) HBasicBlock(graph);
-  HBasicBlock* exit = new (allocator) HBasicBlock(graph);
+  HBasicBlock* loop_body   = new (allocator) HBasicBlock(graph);
+  HBasicBlock* exit        = new (allocator) HBasicBlock(graph);
 
   graph->AddBlock(loop_header);
   graph->AddBlock(loop_body);
@@ -716,10 +703,10 @@ static HInstruction* BuildSSAGraph4(HGraph* graph,
   loop_header->AddSuccessor(loop_body);  // false successor
   loop_body->AddSuccessor(loop_header);
 
-  HPhi* phi = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
-  HInstruction* null_check = new (allocator) HNullCheck(parameter, 0);
+  HPhi*         phi          = new (allocator) HPhi(allocator, 0, 0, DataType::Type::kInt32);
+  HInstruction* null_check   = new (allocator) HNullCheck(parameter, 0);
   HInstruction* array_length = new (allocator) HArrayLength(null_check, 0);
-  HInstruction* cmp = nullptr;
+  HInstruction* cmp          = nullptr;
   if (cond == kCondGE) {
     cmp = new (allocator) HGreaterThanOrEqual(phi, array_length);
   } else if (cond == kCondGT) {
@@ -733,14 +720,13 @@ static HInstruction* BuildSSAGraph4(HGraph* graph,
   loop_header->AddInstruction(if_inst);
   phi->AddInput(constant_initial);
 
-  null_check = new (allocator) HNullCheck(parameter, 0);
-  array_length = new (allocator) HArrayLength(null_check, 0);
-  HInstruction* sub = new (allocator) HSub(DataType::Type::kInt32, array_length, phi);
-  HInstruction* add_minus_1 = new (allocator)
-      HAdd(DataType::Type::kInt32, sub, constant_minus_1);
+  null_check                 = new (allocator) HNullCheck(parameter, 0);
+  array_length               = new (allocator) HArrayLength(null_check, 0);
+  HInstruction* sub          = new (allocator) HSub(DataType::Type::kInt32, array_length, phi);
+  HInstruction* add_minus_1  = new (allocator) HAdd(DataType::Type::kInt32, sub, constant_minus_1);
   HInstruction* bounds_check = new (allocator) HBoundsCheck(add_minus_1, array_length, 0);
-  HInstruction* array_set = new (allocator) HArraySet(
-      null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
+  HInstruction* array_set =
+      new (allocator) HArraySet(null_check, bounds_check, constant_10, DataType::Type::kInt32, 0);
   HInstruction* add = new (allocator) HAdd(DataType::Type::kInt32, phi, constant_1);
   loop_body->AddInstruction(null_check);
   loop_body->AddInstruction(array_length);
@@ -793,13 +779,13 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
-  HInstruction* constant_0 = graph_->GetIntConstant(0);
+  HInstruction* constant_0       = graph_->GetIntConstant(0);
   HInstruction* constant_minus_1 = graph_->GetIntConstant(-1);
-  HInstruction* constant_1 = graph_->GetIntConstant(1);
+  HInstruction* constant_1       = graph_->GetIntConstant(1);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(block);
@@ -812,12 +798,12 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
 
   HBasicBlock* outer_header = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(outer_header);
-  HPhi* phi_i = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(parameter, 0);
+  HPhi*         phi_i = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
+  HNullCheck*   null_check   = new (GetAllocator()) HNullCheck(parameter, 0);
   HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
   HAdd* add = new (GetAllocator()) HAdd(DataType::Type::kInt32, array_length, constant_minus_1);
-  HInstruction* cmp = new (GetAllocator()) HGreaterThanOrEqual(phi_i, add);
-  HIf* if_inst = new (GetAllocator()) HIf(cmp);
+  HInstruction* cmp     = new (GetAllocator()) HGreaterThanOrEqual(phi_i, add);
+  HIf*          if_inst = new (GetAllocator()) HIf(cmp);
   outer_header->AddPhi(phi_i);
   outer_header->AddInstruction(null_check);
   outer_header->AddInstruction(array_length);
@@ -828,13 +814,13 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
 
   HBasicBlock* inner_header = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(inner_header);
-  HPhi* phi_j = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
+  HPhi* phi_j  = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
+  null_check   = new (GetAllocator()) HNullCheck(parameter, 0);
   array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HSub* sub = new (GetAllocator()) HSub(DataType::Type::kInt32, array_length, phi_i);
-  add = new (GetAllocator()) HAdd(DataType::Type::kInt32, sub, constant_minus_1);
-  cmp = new (GetAllocator()) HGreaterThanOrEqual(phi_j, add);
-  if_inst = new (GetAllocator()) HIf(cmp);
+  HSub* sub    = new (GetAllocator()) HSub(DataType::Type::kInt32, array_length, phi_i);
+  add          = new (GetAllocator()) HAdd(DataType::Type::kInt32, sub, constant_minus_1);
+  cmp          = new (GetAllocator()) HGreaterThanOrEqual(phi_j, add);
+  if_inst      = new (GetAllocator()) HIf(cmp);
   inner_header->AddPhi(phi_j);
   inner_header->AddInstruction(null_check);
   inner_header->AddInstruction(array_length);
@@ -846,22 +832,22 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
 
   HBasicBlock* inner_body_compare = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(inner_body_compare);
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
   HBoundsCheck* bounds_check1 = new (GetAllocator()) HBoundsCheck(phi_j, array_length, 0);
-  HArrayGet* array_get_j = new (GetAllocator())
-      HArrayGet(null_check, bounds_check1, DataType::Type::kInt32, 0);
+  HArrayGet*    array_get_j =
+      new (GetAllocator()) HArrayGet(null_check, bounds_check1, DataType::Type::kInt32, 0);
   inner_body_compare->AddInstruction(null_check);
   inner_body_compare->AddInstruction(array_length);
   inner_body_compare->AddInstruction(bounds_check1);
   inner_body_compare->AddInstruction(array_get_j);
   HInstruction* j_plus_1 = new (GetAllocator()) HAdd(DataType::Type::kInt32, phi_j, constant_1);
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
+  null_check             = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length           = new (GetAllocator()) HArrayLength(null_check, 0);
   HBoundsCheck* bounds_check2 = new (GetAllocator()) HBoundsCheck(j_plus_1, array_length, 0);
-  HArrayGet* array_get_j_plus_1 = new (GetAllocator())
-      HArrayGet(null_check, bounds_check2, DataType::Type::kInt32, 0);
-  cmp = new (GetAllocator()) HGreaterThanOrEqual(array_get_j, array_get_j_plus_1);
+  HArrayGet*    array_get_j_plus_1 =
+      new (GetAllocator()) HArrayGet(null_check, bounds_check2, DataType::Type::kInt32, 0);
+  cmp     = new (GetAllocator()) HGreaterThanOrEqual(array_get_j, array_get_j_plus_1);
   if_inst = new (GetAllocator()) HIf(cmp);
   inner_body_compare->AddInstruction(j_plus_1);
   inner_body_compare->AddInstruction(null_check);
@@ -875,40 +861,40 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
   graph_->AddBlock(inner_body_swap);
   j_plus_1 = new (GetAllocator()) HAdd(DataType::Type::kInt32, phi_j, constant_1);
   // temp = array[j+1]
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
   HInstruction* bounds_check3 = new (GetAllocator()) HBoundsCheck(j_plus_1, array_length, 0);
-  array_get_j_plus_1 = new (GetAllocator())
-      HArrayGet(null_check, bounds_check3, DataType::Type::kInt32, 0);
+  array_get_j_plus_1 =
+      new (GetAllocator()) HArrayGet(null_check, bounds_check3, DataType::Type::kInt32, 0);
   inner_body_swap->AddInstruction(j_plus_1);
   inner_body_swap->AddInstruction(null_check);
   inner_body_swap->AddInstruction(array_length);
   inner_body_swap->AddInstruction(bounds_check3);
   inner_body_swap->AddInstruction(array_get_j_plus_1);
   // array[j+1] = array[j]
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
   HInstruction* bounds_check4 = new (GetAllocator()) HBoundsCheck(phi_j, array_length, 0);
-  array_get_j = new (GetAllocator())
-      HArrayGet(null_check, bounds_check4, DataType::Type::kInt32, 0);
+  array_get_j =
+      new (GetAllocator()) HArrayGet(null_check, bounds_check4, DataType::Type::kInt32, 0);
   inner_body_swap->AddInstruction(null_check);
   inner_body_swap->AddInstruction(array_length);
   inner_body_swap->AddInstruction(bounds_check4);
   inner_body_swap->AddInstruction(array_get_j);
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HInstruction* bounds_check5 = new (GetAllocator()) HBoundsCheck(j_plus_1, array_length, 0);
-  HArraySet* array_set_j_plus_1 = new (GetAllocator())
+  null_check                       = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                     = new (GetAllocator()) HArrayLength(null_check, 0);
+  HInstruction* bounds_check5      = new (GetAllocator()) HBoundsCheck(j_plus_1, array_length, 0);
+  HArraySet*    array_set_j_plus_1 = new (GetAllocator())
       HArraySet(null_check, bounds_check5, array_get_j, DataType::Type::kInt32, 0);
   inner_body_swap->AddInstruction(null_check);
   inner_body_swap->AddInstruction(array_length);
   inner_body_swap->AddInstruction(bounds_check5);
   inner_body_swap->AddInstruction(array_set_j_plus_1);
   // array[j] = temp
-  null_check = new (GetAllocator()) HNullCheck(parameter, 0);
-  array_length = new (GetAllocator()) HArrayLength(null_check, 0);
+  null_check                  = new (GetAllocator()) HNullCheck(parameter, 0);
+  array_length                = new (GetAllocator()) HArrayLength(null_check, 0);
   HInstruction* bounds_check6 = new (GetAllocator()) HBoundsCheck(phi_j, array_length, 0);
-  HArraySet* array_set_j = new (GetAllocator())
+  HArraySet*    array_set_j   = new (GetAllocator())
       HArraySet(null_check, bounds_check6, array_get_j_plus_1, DataType::Type::kInt32, 0);
   inner_body_swap->AddInstruction(null_check);
   inner_body_swap->AddInstruction(array_length);
@@ -968,10 +954,10 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
   entry->AddInstruction(param_i);
 
-  HInstruction* constant_0 = graph_->GetIntConstant(0);
-  HInstruction* constant_1 = graph_->GetIntConstant(1);
-  HInstruction* constant_10 = graph_->GetIntConstant(10);
-  HInstruction* constant_200 = graph_->GetIntConstant(200);
+  HInstruction* constant_0        = graph_->GetIntConstant(0);
+  HInstruction* constant_1        = graph_->GetIntConstant(1);
+  HInstruction* constant_10       = graph_->GetIntConstant(10);
+  HInstruction* constant_200      = graph_->GetIntConstant(200);
   HInstruction* constant_minus_10 = graph_->GetIntConstant(-10);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph_);
@@ -987,8 +973,8 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
   block->AddInstruction(new (GetAllocator()) HGoto());
 
   HBasicBlock* loop_header = new (GetAllocator()) HBasicBlock(graph_);
-  HBasicBlock* loop_body = new (GetAllocator()) HBasicBlock(graph_);
-  HBasicBlock* exit = new (GetAllocator()) HBasicBlock(graph_);
+  HBasicBlock* loop_body   = new (GetAllocator()) HBasicBlock(graph_);
+  HBasicBlock* exit        = new (GetAllocator()) HBasicBlock(graph_);
 
   graph_->AddBlock(loop_header);
   graph_->AddBlock(loop_body);
@@ -998,8 +984,8 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
   loop_header->AddSuccessor(loop_body);  // false successor
   loop_body->AddSuccessor(loop_header);
 
-  HPhi* phi = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
-  HInstruction* cmp = new (GetAllocator()) HGreaterThanOrEqual(phi, constant_200);
+  HPhi*         phi     = new (GetAllocator()) HPhi(GetAllocator(), 0, 0, DataType::Type::kInt32);
+  HInstruction* cmp     = new (GetAllocator()) HGreaterThanOrEqual(phi, constant_200);
   HInstruction* if_inst = new (GetAllocator()) HIf(cmp);
   loop_header->AddPhi(phi);
   loop_header->AddInstruction(cmp);
@@ -1009,53 +995,53 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
   //////////////////////////////////////////////////////////////////////////////////
   // LOOP BODY:
   // array[i % 10] = 10;
-  HRem* i_mod_10 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_10, 0);
+  HRem*         i_mod_10 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_10, 0);
   HBoundsCheck* bounds_check_i_mod_10 = new (GetAllocator()) HBoundsCheck(i_mod_10, constant_10, 0);
-  HInstruction* array_set = new (GetAllocator()) HArraySet(
-      new_array, bounds_check_i_mod_10, constant_10, DataType::Type::kInt32, 0);
+  HInstruction* array_set             = new (GetAllocator())
+      HArraySet(new_array, bounds_check_i_mod_10, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(i_mod_10);
   loop_body->AddInstruction(bounds_check_i_mod_10);
   loop_body->AddInstruction(array_set);
 
   // array[i % 1] = 10;
-  HRem* i_mod_1 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_1, 0);
+  HRem*         i_mod_1 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_1, 0);
   HBoundsCheck* bounds_check_i_mod_1 = new (GetAllocator()) HBoundsCheck(i_mod_1, constant_10, 0);
-  array_set = new (GetAllocator()) HArraySet(
-      new_array, bounds_check_i_mod_1, constant_10, DataType::Type::kInt32, 0);
+  array_set                          = new (GetAllocator())
+      HArraySet(new_array, bounds_check_i_mod_1, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(i_mod_1);
   loop_body->AddInstruction(bounds_check_i_mod_1);
   loop_body->AddInstruction(array_set);
 
   // array[i % 200] = 10;
-  HRem* i_mod_200 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_1, 0);
-  HBoundsCheck* bounds_check_i_mod_200 = new (GetAllocator()) HBoundsCheck(
-      i_mod_200, constant_10, 0);
-  array_set = new (GetAllocator()) HArraySet(
-      new_array, bounds_check_i_mod_200, constant_10, DataType::Type::kInt32, 0);
+  HRem*         i_mod_200 = new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_1, 0);
+  HBoundsCheck* bounds_check_i_mod_200 =
+      new (GetAllocator()) HBoundsCheck(i_mod_200, constant_10, 0);
+  array_set = new (GetAllocator())
+      HArraySet(new_array, bounds_check_i_mod_200, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(i_mod_200);
   loop_body->AddInstruction(bounds_check_i_mod_200);
   loop_body->AddInstruction(array_set);
 
   // array[i % -10] = 10;
-  HRem* i_mod_minus_10 = new (GetAllocator()) HRem(
-      DataType::Type::kInt32, phi, constant_minus_10, 0);
-  HBoundsCheck* bounds_check_i_mod_minus_10 = new (GetAllocator()) HBoundsCheck(
-      i_mod_minus_10, constant_10, 0);
-  array_set = new (GetAllocator()) HArraySet(
-      new_array, bounds_check_i_mod_minus_10, constant_10, DataType::Type::kInt32, 0);
+  HRem* i_mod_minus_10 =
+      new (GetAllocator()) HRem(DataType::Type::kInt32, phi, constant_minus_10, 0);
+  HBoundsCheck* bounds_check_i_mod_minus_10 =
+      new (GetAllocator()) HBoundsCheck(i_mod_minus_10, constant_10, 0);
+  array_set = new (GetAllocator())
+      HArraySet(new_array, bounds_check_i_mod_minus_10, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(i_mod_minus_10);
   loop_body->AddInstruction(bounds_check_i_mod_minus_10);
   loop_body->AddInstruction(array_set);
 
   // array[i%array.length] = 10;
-  HNullCheck* null_check = new (GetAllocator()) HNullCheck(new_array, 0);
+  HNullCheck*   null_check   = new (GetAllocator()) HNullCheck(new_array, 0);
   HArrayLength* array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HRem* i_mod_array_length = new (GetAllocator()) HRem(
-      DataType::Type::kInt32, phi, array_length, 0);
-  HBoundsCheck* bounds_check_i_mod_array_len = new (GetAllocator()) HBoundsCheck(
-      i_mod_array_length, array_length, 0);
-  array_set = new (GetAllocator()) HArraySet(
-      null_check, bounds_check_i_mod_array_len, constant_10, DataType::Type::kInt32, 0);
+  HRem*         i_mod_array_length =
+      new (GetAllocator()) HRem(DataType::Type::kInt32, phi, array_length, 0);
+  HBoundsCheck* bounds_check_i_mod_array_len =
+      new (GetAllocator()) HBoundsCheck(i_mod_array_length, array_length, 0);
+  array_set = new (GetAllocator())
+      HArraySet(null_check, bounds_check_i_mod_array_len, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(null_check);
   loop_body->AddInstruction(array_length);
   loop_body->AddInstruction(i_mod_array_length);
@@ -1064,21 +1050,21 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
 
   // array[param_i % 10] = 10;
   HRem* param_i_mod_10 = new (GetAllocator()) HRem(DataType::Type::kInt32, param_i, constant_10, 0);
-  HBoundsCheck* bounds_check_param_i_mod_10 = new (GetAllocator()) HBoundsCheck(
-      param_i_mod_10, constant_10, 0);
-  array_set = new (GetAllocator()) HArraySet(
-      new_array, bounds_check_param_i_mod_10, constant_10, DataType::Type::kInt32, 0);
+  HBoundsCheck* bounds_check_param_i_mod_10 =
+      new (GetAllocator()) HBoundsCheck(param_i_mod_10, constant_10, 0);
+  array_set = new (GetAllocator())
+      HArraySet(new_array, bounds_check_param_i_mod_10, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(param_i_mod_10);
   loop_body->AddInstruction(bounds_check_param_i_mod_10);
   loop_body->AddInstruction(array_set);
 
   // array[param_i%array.length] = 10;
-  null_check = new (GetAllocator()) HNullCheck(new_array, 0);
+  null_check   = new (GetAllocator()) HNullCheck(new_array, 0);
   array_length = new (GetAllocator()) HArrayLength(null_check, 0);
-  HRem* param_i_mod_array_length = new (GetAllocator()) HRem(
-      DataType::Type::kInt32, param_i, array_length, 0);
-  HBoundsCheck* bounds_check_param_i_mod_array_len = new (GetAllocator()) HBoundsCheck(
-      param_i_mod_array_length, array_length, 0);
+  HRem* param_i_mod_array_length =
+      new (GetAllocator()) HRem(DataType::Type::kInt32, param_i, array_length, 0);
+  HBoundsCheck* bounds_check_param_i_mod_array_len =
+      new (GetAllocator()) HBoundsCheck(param_i_mod_array_length, array_length, 0);
   array_set = new (GetAllocator()) HArraySet(
       null_check, bounds_check_param_i_mod_array_len, constant_10, DataType::Type::kInt32, 0);
   loop_body->AddInstruction(null_check);
