@@ -23,12 +23,11 @@
 #include "base/malloc_arena_pool.h"
 #include "cfi_test.h"
 #include "gtest/gtest.h"
+#include "jni/jni_cfi_test_expected.inc"
 #include "jni/quick/calling_convention.h"
 #include "read_barrier_config.h"
 #include "utils/assembler.h"
 #include "utils/jni_macro_assembler.h"
-
-#include "jni/jni_cfi_test_expected.inc"
 
 namespace art {
 
@@ -40,8 +39,8 @@ class JNICFITest : public CFITest {
   // Enable this flag to generate the expected outputs.
   static constexpr bool kGenerateExpected = false;
 
-  void TestImpl(InstructionSet isa,
-                const char* isa_str,
+  void TestImpl(InstructionSet              isa,
+                const char*                 isa_str,
                 const std::vector<uint8_t>& expected_asm,
                 const std::vector<uint8_t>& expected_cfi) {
     if (Is64BitInstructionSet(isa)) {
@@ -53,29 +52,29 @@ class JNICFITest : public CFITest {
 
  private:
   template <PointerSize kPointerSize>
-  void TestImplSized(InstructionSet isa,
-                     const char* isa_str,
+  void TestImplSized(InstructionSet              isa,
+                     const char*                 isa_str,
                      const std::vector<uint8_t>& expected_asm,
                      const std::vector<uint8_t>& expected_cfi) {
     // Description of simple method.
-    const bool is_static = true;
-    const bool is_synchronized = false;
+    const bool  is_static = true;
+    const bool  is_synchronized = false;
     const char* shorty = "IIFII";
 
     MallocArenaPool pool;
-    ArenaAllocator allocator(&pool);
+    ArenaAllocator  allocator(&pool);
 
     std::unique_ptr<JniCallingConvention> jni_conv(
         JniCallingConvention::Create(&allocator,
                                      is_static,
                                      is_synchronized,
-                                     /*is_critical_native*/false,
+                                     /*is_critical_native*/ false,
                                      shorty,
                                      isa));
     std::unique_ptr<ManagedRuntimeCallingConvention> mr_conv(
         ManagedRuntimeCallingConvention::Create(
             &allocator, is_static, is_synchronized, shorty, isa));
-    const int frame_size(jni_conv->FrameSize());
+    const int                       frame_size(jni_conv->FrameSize());
     ArrayRef<const ManagedRegister> callee_save_regs = jni_conv->CalleeSaveRegisters();
 
     // Assemble the method.
@@ -96,7 +95,7 @@ class JNICFITest : public CFITest {
     jni_asm->RemoveFrame(frame_size, callee_save_regs, /* may_suspend= */ true);
     jni_asm->FinalizeCode();
     std::vector<uint8_t> actual_asm(jni_asm->CodeSize());
-    MemoryRegion code(&actual_asm[0], actual_asm.size());
+    MemoryRegion         code(&actual_asm[0], actual_asm.size());
     jni_asm->FinalizeInstructions(code);
     ASSERT_EQ(jni_asm->cfi().GetCurrentCFAOffset(), frame_size);
     const std::vector<uint8_t>& actual_cfi = *(jni_asm->cfi().data());
@@ -114,13 +113,13 @@ class JNICFITest : public CFITest {
   }
 };
 
-#define TEST_ISA(isa)                                                 \
-  TEST_F(JNICFITest, isa) {                                           \
-    std::vector<uint8_t> expected_asm(expected_asm_##isa,             \
-        expected_asm_##isa + arraysize(expected_asm_##isa));          \
-    std::vector<uint8_t> expected_cfi(expected_cfi_##isa,             \
-        expected_cfi_##isa + arraysize(expected_cfi_##isa));          \
-    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);  \
+#define TEST_ISA(isa)                                                                      \
+  TEST_F(JNICFITest, isa) {                                                                \
+    std::vector<uint8_t> expected_asm(expected_asm_##isa,                                  \
+                                      expected_asm_##isa + arraysize(expected_asm_##isa)); \
+    std::vector<uint8_t> expected_cfi(expected_cfi_##isa,                                  \
+                                      expected_cfi_##isa + arraysize(expected_cfi_##isa)); \
+    TestImpl(InstructionSet::isa, #isa, expected_asm, expected_cfi);                       \
   }
 
 #ifdef ART_ENABLE_CODEGEN_arm

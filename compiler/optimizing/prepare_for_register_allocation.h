@@ -31,11 +31,10 @@ class OptimizingCompilerStats;
  */
 class PrepareForRegisterAllocation : public HGraphDelegateVisitor {
  public:
-  PrepareForRegisterAllocation(HGraph* graph,
-                               const CompilerOptions& compiler_options,
-                               OptimizingCompilerStats* stats = nullptr)
-      : HGraphDelegateVisitor(graph, stats),
-        compiler_options_(compiler_options) {}
+  PrepareForRegisterAllocation(HGraph*                  graph,
+                               const CompilerOptions&   compiler_options,
+                               OptimizingCompilerStats* stats = nullptr) :
+      HGraphDelegateVisitor(graph, stats), compiler_options_(compiler_options) {}
 
   void Run();
 

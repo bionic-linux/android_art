@@ -48,9 +48,9 @@ class ManagedRegister : public ValueObject {
 
   ManagedRegister& operator=(const ManagedRegister& other) = default;
 
-  constexpr arm::ArmManagedRegister AsArm() const;
-  constexpr arm64::Arm64ManagedRegister AsArm64() const;
-  constexpr x86::X86ManagedRegister AsX86() const;
+  constexpr arm::ArmManagedRegister       AsArm() const;
+  constexpr arm64::Arm64ManagedRegister   AsArm64() const;
+  constexpr x86::X86ManagedRegister       AsX86() const;
   constexpr x86_64::X86_64ManagedRegister AsX86_64() const;
 
   // It is valid to invoke Equals on and with a NoRegister.
@@ -70,13 +70,15 @@ class ManagedRegister : public ValueObject {
     return ManagedRegister();
   }
 
-  constexpr int RegId() const { return id_; }
-  explicit constexpr ManagedRegister(int reg_id) : id_(reg_id) { }
+  constexpr int RegId() const {
+    return id_;
+  }
+  explicit constexpr ManagedRegister(int reg_id) : id_(reg_id) {}
 
  protected:
   static const int kNoRegister = -1;
 
-  constexpr ManagedRegister() : id_(kNoRegister) { }
+  constexpr ManagedRegister() : id_(kNoRegister) {}
 
   int id_;
 };

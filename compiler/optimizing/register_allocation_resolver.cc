@@ -23,25 +23,20 @@
 
 namespace art {
 
-RegisterAllocationResolver::RegisterAllocationResolver(CodeGenerator* codegen,
-                                                       const SsaLivenessAnalysis& liveness)
-      : allocator_(codegen->GetGraph()->GetAllocator()),
-        codegen_(codegen),
-        liveness_(liveness) {}
+RegisterAllocationResolver::RegisterAllocationResolver(CodeGenerator*             codegen,
+                                                       const SsaLivenessAnalysis& liveness) :
+    allocator_(codegen->GetGraph()->GetAllocator()), codegen_(codegen), liveness_(liveness) {}
 
 void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoints,
-                                         size_t reserved_out_slots,
-                                         size_t int_spill_slots,
-                                         size_t long_spill_slots,
-                                         size_t float_spill_slots,
-                                         size_t double_spill_slots,
-                                         size_t catch_phi_spill_slots,
+                                         size_t                        reserved_out_slots,
+                                         size_t                        int_spill_slots,
+                                         size_t                        long_spill_slots,
+                                         size_t                        float_spill_slots,
+                                         size_t                        double_spill_slots,
+                                         size_t                        catch_phi_spill_slots,
                                          ArrayRef<LiveInterval* const> temp_intervals) {
-  size_t spill_slots = int_spill_slots
-                     + long_spill_slots
-                     + float_spill_slots
-                     + double_spill_slots
-                     + catch_phi_spill_slots;
+  size_t spill_slots = int_spill_slots + long_spill_slots + float_spill_slots + double_spill_slots +
+                       catch_phi_spill_slots;
 
   // Update safepoints and calculate the size of the spills.
   UpdateSafepointLiveRegisters();
@@ -56,10 +51,10 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
   // Resolve outputs, including stack locations.
   // TODO: Use pointers of Location inside LiveInterval to avoid doing another iteration.
   for (size_t i = 0, e = liveness_.GetNumberOfSsaValues(); i < e; ++i) {
-    HInstruction* instruction = liveness_.GetInstructionFromSsaIndex(i);
-    LiveInterval* current = instruction->GetLiveInterval();
+    HInstruction*    instruction = liveness_.GetInstructionFromSsaIndex(i);
+    LiveInterval*    current = instruction->GetLiveInterval();
     LocationSummary* locations = instruction->GetLocations();
-    Location location = locations->Out();
+    Location         location = locations->Out();
     if (instruction->IsParameterValue()) {
       // Now that we know the frame size, adjust the parameter's location.
       if (location.IsStackSlot()) {
@@ -78,10 +73,8 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
       DCHECK(!current->HasSpillSlot() || (current->GetSpillSlot() == 0));
     } else if (instruction->IsPhi() && instruction->AsPhi()->IsCatchPhi()) {
       DCHECK(current->HasSpillSlot());
-      size_t slot = current->GetSpillSlot()
-                    + spill_slots
-                    + reserved_out_slots
-                    - catch_phi_spill_slots;
+      size_t slot =
+          current->GetSpillSlot() + spill_slots + reserved_out_slots - catch_phi_spill_slots;
       current->SetSpillSlot(slot * kVRegSize);
     } else if (current->HasSpillSlot()) {
       // Adjust the stack slot, now that we know the number of them for each type.
@@ -100,16 +93,10 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
       // [art method            ].
       size_t slot = current->GetSpillSlot();
       switch (current->GetType()) {
-        case DataType::Type::kFloat64:
-          slot += long_spill_slots;
-          FALLTHROUGH_INTENDED;
+        case DataType::Type::kFloat64: slot += long_spill_slots; FALLTHROUGH_INTENDED;
         case DataType::Type::kUint64:
-        case DataType::Type::kInt64:
-          slot += float_spill_slots;
-          FALLTHROUGH_INTENDED;
-        case DataType::Type::kFloat32:
-          slot += int_spill_slots;
-          FALLTHROUGH_INTENDED;
+        case DataType::Type::kInt64: slot += float_spill_slots; FALLTHROUGH_INTENDED;
+        case DataType::Type::kFloat32: slot += int_spill_slots; FALLTHROUGH_INTENDED;
         case DataType::Type::kReference:
         case DataType::Type::kUint32:
         case DataType::Type::kInt32:
@@ -117,9 +104,7 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
         case DataType::Type::kUint8:
         case DataType::Type::kInt8:
         case DataType::Type::kBool:
-        case DataType::Type::kInt16:
-          slot += reserved_out_slots;
-          break;
+        case DataType::Type::kInt16: slot += reserved_out_slots; break;
         case DataType::Type::kVoid:
           LOG(FATAL) << "Unexpected type for interval " << current->GetType();
       }
@@ -189,8 +174,8 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
           HBasicBlock* predecessor = block->GetPredecessors()[i];
           DCHECK_EQ(predecessor->GetNormalSuccessors().size(), 1u);
           HInstruction* input = phi->InputAt(i);
-          Location source = input->GetLiveInterval()->GetLocationAt(
-              predecessor->GetLifetimeEnd() - 1);
+          Location      source =
+              input->GetLiveInterval()->GetLocationAt(predecessor->GetLifetimeEnd() - 1);
           Location destination = phi->GetLiveInterval()->ToLocation();
           InsertParallelMoveAtExitOf(predecessor, phi, source, destination);
         }
@@ -204,8 +189,8 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
       // High intervals can be skipped, they are already handled by the low interval.
       continue;
     }
-    HInstruction* at = liveness_.GetTempUser(temp);
-    size_t temp_index = liveness_.GetTempIndex(temp);
+    HInstruction*    at = liveness_.GetTempUser(temp);
+    size_t           temp_index = liveness_.GetTempIndex(temp);
     LocationSummary* locations = at->GetLocations();
     switch (temp->GetType()) {
       case DataType::Type::kInt32:
@@ -222,9 +207,7 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
         }
         break;
 
-      default:
-        LOG(FATAL) << "Unexpected type for temporary location "
-                   << temp->GetType();
+      default: LOG(FATAL) << "Unexpected type for temporary location " << temp->GetType();
     }
   }
 }
@@ -232,8 +215,7 @@ void RegisterAllocationResolver::Resolve(ArrayRef<HInstruction* const> safepoint
 void RegisterAllocationResolver::UpdateSafepointLiveRegisters() {
   for (size_t i = 0, e = liveness_.GetNumberOfSsaValues(); i < e; ++i) {
     HInstruction* instruction = liveness_.GetInstructionFromSsaIndex(i);
-    for (LiveInterval* current = instruction->GetLiveInterval();
-         current != nullptr;
+    for (LiveInterval* current = instruction->GetLiveInterval(); current != nullptr;
          current = current->GetNextSibling()) {
       if (!current->HasRegister()) {
         continue;
@@ -256,7 +238,7 @@ void RegisterAllocationResolver::UpdateSafepointLiveRegisters() {
             locations->AddLiveRegister(source.ToHigh());
             break;
           }
-          case Location::kStackSlot:  // Fall-through
+          case Location::kStackSlot:        // Fall-through
           case Location::kDoubleStackSlot:  // Fall-through
           case Location::kConstant: {
             // Nothing to do.
@@ -297,23 +279,22 @@ size_t RegisterAllocationResolver::CalculateMaximumSafepointSpillSize(
 
 void RegisterAllocationResolver::ConnectSiblings(LiveInterval* interval) {
   LiveInterval* current = interval;
-  if (current->HasSpillSlot()
-      && current->HasRegister()
+  if (current->HasSpillSlot() &&
+      current->HasRegister()
       // Currently, we spill unconditionnally the current method in the code generators.
       && !interval->GetDefinedBy()->IsCurrentMethod()) {
     // We spill eagerly, so move must be at definition.
     Location loc;
-    size_t num_of_slots = interval->NumberOfSpillSlotsNeeded();
+    size_t   num_of_slots = interval->NumberOfSpillSlotsNeeded();
     loc = Location::StackSlotByNumOfSlots(num_of_slots, interval->GetParent()->GetSpillSlot());
 
-    CHECK(!loc.IsSIMDStackSlot() ||
-          (codegen_->GetSIMDRegisterWidth() / kVRegSize == num_of_slots)) <<
-          "Unexpected number of spill slots";
+    CHECK(!loc.IsSIMDStackSlot() || (codegen_->GetSIMDRegisterWidth() / kVRegSize == num_of_slots))
+        << "Unexpected number of spill slots";
     InsertMoveAfter(interval->GetDefinedBy(), interval->ToLocation(), loc);
   }
-  UsePositionList::const_iterator use_it = current->GetUses().begin();
-  const UsePositionList::const_iterator use_end = current->GetUses().end();
-  EnvUsePositionList::const_iterator env_use_it = current->GetEnvironmentUses().begin();
+  UsePositionList::const_iterator          use_it = current->GetUses().begin();
+  const UsePositionList::const_iterator    use_end = current->GetUses().end();
+  EnvUsePositionList::const_iterator       env_use_it = current->GetEnvironmentUses().begin();
   const EnvUsePositionList::const_iterator env_use_end = current->GetEnvironmentUses().end();
 
   // Walk over all siblings, updating locations of use positions, and
@@ -330,24 +311,22 @@ void RegisterAllocationResolver::ConnectSiblings(LiveInterval* interval) {
       // FindMatchingUseRange() expects a half-open interval, so pass `range->GetEnd() + 1u`.
       size_t range_begin = range->GetStart();
       size_t range_end = range->GetEnd() + 1u;
-      auto matching_use_range =
-          FindMatchingUseRange(use_it, use_end, range_begin, range_end);
-      DCHECK(std::all_of(use_it,
-                         matching_use_range.begin(),
-                         [](const UsePosition& pos) { return pos.IsSynthesized(); }));
+      auto   matching_use_range = FindMatchingUseRange(use_it, use_end, range_begin, range_end);
+      DCHECK(std::all_of(use_it, matching_use_range.begin(), [](const UsePosition& pos) {
+        return pos.IsSynthesized();
+      }));
       for (const UsePosition& use : matching_use_range) {
         DCHECK(current->CoversSlow(use.GetPosition()) || (use.GetPosition() == range->GetEnd()));
         if (!use.IsSynthesized()) {
           LocationSummary* locations = use.GetUser()->GetLocations();
-          Location expected_location = locations->InAt(use.GetInputIndex());
+          Location         expected_location = locations->InAt(use.GetInputIndex());
           // The expected (actual) location may be invalid in case the input is unused. Currently
           // this only happens for intrinsics.
           if (expected_location.IsValid()) {
             if (expected_location.IsUnallocated()) {
               locations->SetInAt(use.GetInputIndex(), source);
             } else if (!expected_location.IsConstant()) {
-              AddInputMoveFor(
-                  interval->GetDefinedBy(), use.GetUser(), source, expected_location);
+              AddInputMoveFor(interval->GetDefinedBy(), use.GetUser(), source, expected_location);
             }
           } else {
             DCHECK(use.GetUser()->IsInvoke());
@@ -361,8 +340,8 @@ void RegisterAllocationResolver::ConnectSiblings(LiveInterval* interval) {
       auto matching_env_use_range =
           FindMatchingUseRange(env_use_it, env_use_end, range_begin, range_end);
       for (const EnvUsePosition& env_use : matching_env_use_range) {
-        DCHECK(current->CoversSlow(env_use.GetPosition())
-               || (env_use.GetPosition() == range->GetEnd()));
+        DCHECK(current->CoversSlow(env_use.GetPosition()) ||
+               (env_use.GetPosition() == range->GetEnd()));
         HEnvironment* environment = env_use.GetEnvironment();
         environment->SetLocationAt(env_use.GetInputIndex(), source);
       }
@@ -374,9 +353,8 @@ void RegisterAllocationResolver::ConnectSiblings(LiveInterval* interval) {
     // If the next interval starts just after this one, and has a register,
     // insert a move.
     LiveInterval* next_sibling = current->GetNextSibling();
-    if (next_sibling != nullptr
-        && next_sibling->HasRegister()
-        && current->GetEnd() == next_sibling->GetStart()) {
+    if (next_sibling != nullptr && next_sibling->HasRegister() &&
+        current->GetEnd() == next_sibling->GetStart()) {
       Location destination = next_sibling->ToLocation();
       InsertParallelMoveAt(current->GetEnd(), interval->GetDefinedBy(), source, destination);
     }
@@ -388,10 +366,9 @@ void RegisterAllocationResolver::ConnectSiblings(LiveInterval* interval) {
 
       if (current->GetType() == DataType::Type::kReference) {
         DCHECK(interval->GetDefinedBy()->IsActualObject())
-            << interval->GetDefinedBy()->DebugName()
-            << '(' << interval->GetDefinedBy()->GetId() << ')'
-            << "@" << safepoint_position->GetInstruction()->DebugName()
-            << '(' << safepoint_position->GetInstruction()->GetId() << ')';
+            << interval->GetDefinedBy()->DebugName() << '(' << interval->GetDefinedBy()->GetId()
+            << ')' << "@" << safepoint_position->GetInstruction()->DebugName() << '('
+            << safepoint_position->GetInstruction()->GetId() << ')';
         LocationSummary* locations = safepoint_position->GetLocations();
         if (current->GetParent()->HasSpillSlot()) {
           locations->SetStackBit(current->GetParent()->GetSpillSlot() / kVRegSize);
@@ -415,16 +392,16 @@ static bool IsMaterializableEntryBlockInstructionOfGraphWithIrreducibleLoop(
 }
 
 void RegisterAllocationResolver::ConnectSplitSiblings(LiveInterval* interval,
-                                                      HBasicBlock* from,
-                                                      HBasicBlock* to) const {
+                                                      HBasicBlock*  from,
+                                                      HBasicBlock*  to) const {
   if (interval->GetNextSibling() == nullptr) {
     // Nothing to connect. The whole range was allocated to the same location.
     return;
   }
 
   // Find the intervals that cover `from` and `to`.
-  size_t destination_position = to->GetLifetimeStart();
-  size_t source_position = from->GetLifetimeEnd() - 1;
+  size_t        destination_position = to->GetLifetimeStart();
+  size_t        source_position = from->GetLifetimeEnd() - 1;
   LiveInterval* destination = interval->GetSiblingAt(destination_position);
   LiveInterval* source = interval->GetSiblingAt(source_position);
 
@@ -444,8 +421,8 @@ void RegisterAllocationResolver::ConnectSplitSiblings(LiveInterval* interval,
     // Because the instruction is a constant or the ArtMethod, we don't need to
     // do anything: it will be materialized in the irreducible loop.
     DCHECK(IsMaterializableEntryBlockInstructionOfGraphWithIrreducibleLoop(defined_by))
-        << defined_by->DebugName() << ":" << defined_by->GetId()
-        << " " << from->GetBlockId() << " -> " << to->GetBlockId();
+        << defined_by->DebugName() << ":" << defined_by->GetId() << " " << from->GetBlockId()
+        << " -> " << to->GetBlockId();
     return;
   }
 
@@ -469,8 +446,8 @@ void RegisterAllocationResolver::ConnectSplitSiblings(LiveInterval* interval,
       size_t num_of_slots = parent->NumberOfSpillSlotsNeeded();
       location_source = Location::StackSlotByNumOfSlots(num_of_slots, parent->GetSpillSlot());
       CHECK(!location_source.IsSIMDStackSlot() ||
-            (codegen_->GetSIMDRegisterWidth() == num_of_slots * kVRegSize)) <<
-            "Unexpected number of spill slots";
+            (codegen_->GetSIMDRegisterWidth() == num_of_slots * kVRegSize))
+          << "Unexpected number of spill slots";
     }
   } else {
     DCHECK(source != nullptr);
@@ -482,36 +459,26 @@ void RegisterAllocationResolver::ConnectSplitSiblings(LiveInterval* interval,
   // If `from` has only one successor, we can put the moves at the exit of it. Otherwise
   // we need to put the moves at the entry of `to`.
   if (from->GetNormalSuccessors().size() == 1) {
-    InsertParallelMoveAtExitOf(from,
-                               defined_by,
-                               location_source,
-                               destination->ToLocation());
+    InsertParallelMoveAtExitOf(from, defined_by, location_source, destination->ToLocation());
   } else {
     DCHECK_EQ(to->GetPredecessors().size(), 1u);
-    InsertParallelMoveAtEntryOf(to,
-                                defined_by,
-                                location_source,
-                                destination->ToLocation());
+    InsertParallelMoveAtEntryOf(to, defined_by, location_source, destination->ToLocation());
   }
 }
 
 static bool IsValidDestination(Location destination) {
-  return destination.IsRegister()
-      || destination.IsRegisterPair()
-      || destination.IsFpuRegister()
-      || destination.IsFpuRegisterPair()
-      || destination.IsStackSlot()
-      || destination.IsDoubleStackSlot()
-      || destination.IsSIMDStackSlot();
+  return destination.IsRegister() || destination.IsRegisterPair() || destination.IsFpuRegister() ||
+         destination.IsFpuRegisterPair() || destination.IsStackSlot() ||
+         destination.IsDoubleStackSlot() || destination.IsSIMDStackSlot();
 }
 
 void RegisterAllocationResolver::AddMove(HParallelMove* move,
-                                         Location source,
-                                         Location destination,
-                                         HInstruction* instruction,
+                                         Location       source,
+                                         Location       destination,
+                                         HInstruction*  instruction,
                                          DataType::Type type) const {
-  if (type == DataType::Type::kInt64
-      && codegen_->ShouldSplitLongMoves()
+  if (type == DataType::Type::kInt64 &&
+      codegen_->ShouldSplitLongMoves()
       // The parallel move resolver knows how to deal with long constants.
       && !source.IsConstant()) {
     move->AddMove(source.ToLow(), destination.ToLow(), DataType::Type::kInt32, instruction);
@@ -523,17 +490,17 @@ void RegisterAllocationResolver::AddMove(HParallelMove* move,
 
 void RegisterAllocationResolver::AddInputMoveFor(HInstruction* input,
                                                  HInstruction* user,
-                                                 Location source,
-                                                 Location destination) const {
-  if (source.Equals(destination)) return;
+                                                 Location      source,
+                                                 Location      destination) const {
+  if (source.Equals(destination))
+    return;
 
   DCHECK(!user->IsPhi());
 
-  HInstruction* previous = user->GetPrevious();
+  HInstruction*  previous = user->GetPrevious();
   HParallelMove* move = nullptr;
-  if (previous == nullptr
-      || !previous->IsParallelMove()
-      || previous->GetLifetimePosition() < user->GetLifetimePosition()) {
+  if (previous == nullptr || !previous->IsParallelMove() ||
+      previous->GetLifetimePosition() < user->GetLifetimePosition()) {
     move = new (allocator_) HParallelMove(allocator_);
     move->SetLifetimePosition(user->GetLifetimePosition());
     user->GetBlock()->InsertInstructionBefore(move, user);
@@ -552,14 +519,15 @@ static bool IsInstructionEnd(size_t position) {
   return (position & 1) == 1;
 }
 
-void RegisterAllocationResolver::InsertParallelMoveAt(size_t position,
+void RegisterAllocationResolver::InsertParallelMoveAt(size_t        position,
                                                       HInstruction* instruction,
-                                                      Location source,
-                                                      Location destination) const {
+                                                      Location      source,
+                                                      Location      destination) const {
   DCHECK(IsValidDestination(destination)) << destination;
-  if (source.Equals(destination)) return;
+  if (source.Equals(destination))
+    return;
 
-  HInstruction* at = liveness_.GetInstructionFromPosition(position / 2);
+  HInstruction*  at = liveness_.GetInstructionFromPosition(position / 2);
   HParallelMove* move;
   if (at == nullptr) {
     if (IsInstructionStart(position)) {
@@ -604,15 +572,13 @@ void RegisterAllocationResolver::InsertParallelMoveAt(size_t position,
   } else {
     // Move must happen before the instruction.
     HInstruction* previous = at->GetPrevious();
-    if (previous == nullptr
-        || !previous->IsParallelMove()
-        || previous->GetLifetimePosition() != position) {
+    if (previous == nullptr || !previous->IsParallelMove() ||
+        previous->GetLifetimePosition() != position) {
       // If the previous is a parallel move, then its position must be lower
       // than the given `position`: it was added just after the non-parallel
       // move instruction that precedes `instruction`.
-      DCHECK(previous == nullptr
-             || !previous->IsParallelMove()
-             || previous->GetLifetimePosition() < position);
+      DCHECK(previous == nullptr || !previous->IsParallelMove() ||
+             previous->GetLifetimePosition() < position);
       move = new (allocator_) HParallelMove(allocator_);
       move->SetLifetimePosition(position);
       at->GetBlock()->InsertInstructionBefore(move, at);
@@ -624,12 +590,13 @@ void RegisterAllocationResolver::InsertParallelMoveAt(size_t position,
   AddMove(move, source, destination, instruction, instruction->GetType());
 }
 
-void RegisterAllocationResolver::InsertParallelMoveAtExitOf(HBasicBlock* block,
+void RegisterAllocationResolver::InsertParallelMoveAtExitOf(HBasicBlock*  block,
                                                             HInstruction* instruction,
-                                                            Location source,
-                                                            Location destination) const {
+                                                            Location      source,
+                                                            Location      destination) const {
   DCHECK(IsValidDestination(destination)) << destination;
-  if (source.Equals(destination)) return;
+  if (source.Equals(destination))
+    return;
 
   DCHECK_EQ(block->GetNormalSuccessors().size(), 1u);
   HInstruction* last = block->GetLastInstruction();
@@ -638,13 +605,13 @@ void RegisterAllocationResolver::InsertParallelMoveAtExitOf(HBasicBlock* block,
   // with phis because we do not allow critical edges. It can also not connect
   // a split interval between two blocks: the move has to happen in the successor.
   DCHECK(!last->IsIf() && !last->IsPackedSwitch());
-  HInstruction* previous = last->GetPrevious();
+  HInstruction*  previous = last->GetPrevious();
   HParallelMove* move;
   // This is a parallel move for connecting blocks. We need to differentiate
   // it with moves for connecting siblings in a same block, and output moves.
-  size_t position = last->GetLifetimePosition();
-  if (previous == nullptr || !previous->IsParallelMove()
-      || previous->AsParallelMove()->GetLifetimePosition() != position) {
+  size_t         position = last->GetLifetimePosition();
+  if (previous == nullptr || !previous->IsParallelMove() ||
+      previous->AsParallelMove()->GetLifetimePosition() != position) {
     move = new (allocator_) HParallelMove(allocator_);
     move->SetLifetimePosition(position);
     block->InsertInstructionBefore(move, last);
@@ -654,16 +621,17 @@ void RegisterAllocationResolver::InsertParallelMoveAtExitOf(HBasicBlock* block,
   AddMove(move, source, destination, instruction, instruction->GetType());
 }
 
-void RegisterAllocationResolver::InsertParallelMoveAtEntryOf(HBasicBlock* block,
+void RegisterAllocationResolver::InsertParallelMoveAtEntryOf(HBasicBlock*  block,
                                                              HInstruction* instruction,
-                                                             Location source,
-                                                             Location destination) const {
+                                                             Location      source,
+                                                             Location      destination) const {
   DCHECK(IsValidDestination(destination)) << destination;
-  if (source.Equals(destination)) return;
+  if (source.Equals(destination))
+    return;
 
-  HInstruction* first = block->GetFirstInstruction();
+  HInstruction*  first = block->GetFirstInstruction();
   HParallelMove* move = first->AsParallelMove();
-  size_t position = block->GetLifetimeStart();
+  size_t         position = block->GetLifetimeStart();
   // This is a parallel move for connecting blocks. We need to differentiate
   // it with moves for connecting siblings in a same block, and input moves.
   if (move == nullptr || move->GetLifetimePosition() != position) {
@@ -675,17 +643,18 @@ void RegisterAllocationResolver::InsertParallelMoveAtEntryOf(HBasicBlock* block,
 }
 
 void RegisterAllocationResolver::InsertMoveAfter(HInstruction* instruction,
-                                                 Location source,
-                                                 Location destination) const {
+                                                 Location      source,
+                                                 Location      destination) const {
   DCHECK(IsValidDestination(destination)) << destination;
-  if (source.Equals(destination)) return;
+  if (source.Equals(destination))
+    return;
 
   if (instruction->IsPhi()) {
     InsertParallelMoveAtEntryOf(instruction->GetBlock(), instruction, source, destination);
     return;
   }
 
-  size_t position = instruction->GetLifetimePosition() + 1;
+  size_t         position = instruction->GetLifetimePosition() + 1;
   HParallelMove* move = instruction->GetNext()->AsParallelMove();
   // This is a parallel move for moving the output of an instruction. We need
   // to differentiate with input moves, moves for connecting siblings in a

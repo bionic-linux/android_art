@@ -36,13 +36,12 @@ namespace art {
 
 std::ostream& operator<<(std::ostream& os, const Intrinsics& intrinsic) {
   switch (intrinsic) {
-    case Intrinsics::kNone:
-      os << "None";
-      break;
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-    case Intrinsics::k ## Name: \
-      os << # Name; \
-      break;
+    case Intrinsics::kNone: os << "None"; break;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  case Intrinsics::k##Name:                                                \
+    os << #Name;                                                           \
+    break;
 #include "intrinsics_list.h"
       INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef STATIC_INTRINSICS_LIST
@@ -61,10 +60,10 @@ static const char kValueFieldName[] = "value";
 
 static ObjPtr<mirror::ObjectArray<mirror::Object>> GetBootImageLiveObjects()
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  gc::Heap* heap = Runtime::Current()->GetHeap();
+  gc::Heap*                                  heap = Runtime::Current()->GetHeap();
   const std::vector<gc::space::ImageSpace*>& boot_image_spaces = heap->GetBootImageSpaces();
   DCHECK(!boot_image_spaces.empty());
-  const ImageHeader& main_header = boot_image_spaces[0]->GetImageHeader();
+  const ImageHeader&                          main_header = boot_image_spaces[0]->GetImageHeader();
   ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects =
       ObjPtr<mirror::ObjectArray<mirror::Object>>::DownCast(
           main_header.GetImageRoot<kWithoutReadBarrier>(ImageHeader::kBootImageLiveObjects));
@@ -73,10 +72,10 @@ static ObjPtr<mirror::ObjectArray<mirror::Object>> GetBootImageLiveObjects()
   return boot_image_live_objects;
 }
 
-static ObjPtr<mirror::Class> LookupInitializedClass(Thread* self,
+static ObjPtr<mirror::Class> LookupInitializedClass(Thread*      self,
                                                     ClassLinker* class_linker,
-                                                    const char* descriptor)
-        REQUIRES_SHARED(Locks::mutator_lock_) {
+                                                    const char*  descriptor)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   ObjPtr<mirror::Class> klass =
       class_linker->LookupClass(self, descriptor, /* class_loader= */ nullptr);
   DCHECK(klass != nullptr);
@@ -98,8 +97,8 @@ static int32_t GetIntegerCacheField(ObjPtr<mirror::Class> cache_class, const cha
   return field->GetInt(cache_class);
 }
 
-static bool CheckIntegerCache(Thread* self,
-                              ClassLinker* class_linker,
+static bool CheckIntegerCache(Thread*                                     self,
+                              ClassLinker*                                class_linker,
                               ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects,
                               ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_cache)
     REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -162,13 +161,13 @@ static bool CanReferenceBootImageObjects(HInvoke* invoke, const CompilerOptions&
   return true;
 }
 
-void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
+void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke*       invoke,
                                                       CodeGenerator* codegen,
-                                                      Location return_location,
-                                                      Location first_argument_location) {
+                                                      Location       return_location,
+                                                      Location       first_argument_location) {
   // The intrinsic will call if it needs to allocate a j.l.Integer.
   LocationSummary::CallKind call_kind = LocationSummary::kCallOnMainOnly;
-  const CompilerOptions& compiler_options = codegen->GetCompilerOptions();
+  const CompilerOptions&    compiler_options = codegen->GetCompilerOptions();
   if (!CanReferenceBootImageObjects(invoke, compiler_options)) {
     return;
   }
@@ -177,11 +176,11 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
         !compiler_options.IsImageClass(kIntegerDescriptor)) {
       return;
     }
-    ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-    Thread* self = Thread::Current();
-    ScopedObjectAccess soa(self);
-    ObjPtr<mirror::Class> cache_class = class_linker->LookupClass(
-        self, kIntegerCacheDescriptor, /* class_loader= */ nullptr);
+    ClassLinker*          class_linker = Runtime::Current()->GetClassLinker();
+    Thread*               self = Thread::Current();
+    ScopedObjectAccess    soa(self);
+    ObjPtr<mirror::Class> cache_class =
+        class_linker->LookupClass(self, kIntegerCacheDescriptor, /* class_loader= */ nullptr);
     DCHECK(cache_class != nullptr);
     if (UNLIKELY(!cache_class->IsInitialized())) {
       LOG(WARNING) << "Image class " << cache_class->PrettyDescriptor() << " is uninitialized.";
@@ -217,9 +216,9 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
       }
     }
   } else {
-    Runtime* runtime = Runtime::Current();
-    Thread* self = Thread::Current();
-    ScopedObjectAccess soa(self);
+    Runtime*                                    runtime = Runtime::Current();
+    Thread*                                     self = Thread::Current();
+    ScopedObjectAccess                          soa(self);
     ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects = GetBootImageLiveObjects();
     ObjPtr<mirror::ObjectArray<mirror::Object>> cache =
         IntrinsicObjects::GetIntegerValueOfCache(boot_image_live_objects);
@@ -234,7 +233,7 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
       DCHECK(compiler_options.IsAotCompiler());
       DCHECK(CheckIntegerCache(self, runtime->GetClassLinker(), boot_image_live_objects, cache));
       if (invoke->InputAt(0)->IsIntConstant()) {
-        int32_t value = invoke->InputAt(0)->AsIntConstant()->GetValue();
+        int32_t                value = invoke->InputAt(0)->AsIntConstant()->GetValue();
         // Retrieve the `value` from the lowest cached Integer.
         ObjPtr<mirror::Object> low_integer =
             IntrinsicObjects::GetIntegerValueOfObject(boot_image_live_objects, 0u);
@@ -253,7 +252,7 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
     }
   }
 
-  ArenaAllocator* allocator = codegen->GetGraph()->GetAllocator();
+  ArenaAllocator*  allocator = codegen->GetGraph()->GetAllocator();
   LocationSummary* locations = new (allocator) LocationSummary(invoke, call_kind, kIntrinsified);
   if (call_kind == LocationSummary::kCallOnMainOnly) {
     locations->SetInAt(0, Location::RegisterOrConstant(invoke->InputAt(0)));
@@ -272,11 +271,8 @@ static int32_t GetIntegerCacheLowFromIntegerCache(Thread* self, ClassLinker* cla
   return GetIntegerCacheField(cache_class, kLowFieldName);
 }
 
-inline IntrinsicVisitor::IntegerValueOfInfo::IntegerValueOfInfo()
-    : value_offset(0),
-      low(0),
-      length(0u),
-      value_boot_image_reference(kInvalidReference) {}
+inline IntrinsicVisitor::IntegerValueOfInfo::IntegerValueOfInfo() :
+    value_offset(0), low(0), length(0u), value_boot_image_reference(kInvalidReference) {}
 
 IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo(
     HInvoke* invoke, const CompilerOptions& compiler_options) {
@@ -290,8 +286,8 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
   // we need to provide data that shall not lead to a crash even if the fields were
   // modified through reflection since ComputeIntegerValueOfLocations() when JITting.
 
-  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  Thread* self = Thread::Current();
+  ClassLinker*       class_linker = Runtime::Current()->GetClassLinker();
+  Thread*            self = Thread::Current();
   ScopedObjectAccess soa(self);
 
   IntegerValueOfInfo info;
@@ -308,7 +304,7 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
     info.length = dchecked_integral_cast<uint32_t>(high - info.low + 1);
 
     if (invoke->InputAt(0)->IsIntConstant()) {
-      int32_t input_value = invoke->InputAt(0)->AsIntConstant()->GetValue();
+      int32_t  input_value = invoke->InputAt(0)->AsIntConstant()->GetValue();
       uint32_t index = static_cast<uint32_t>(input_value) - static_cast<uint32_t>(info.low);
       if (index < static_cast<uint32_t>(info.length)) {
         info.value_boot_image_reference = IntrinsicObjects::EncodePatch(
@@ -323,7 +319,7 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
     }
   } else {
     ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects = GetBootImageLiveObjects();
-    ObjPtr<mirror::Object> low_integer =
+    ObjPtr<mirror::Object>                      low_integer =
         IntrinsicObjects::GetIntegerValueOfObject(boot_image_live_objects, 0u);
     ObjPtr<mirror::Class> integer_class = low_integer->GetClass<kVerifyNone, kWithoutReadBarrier>();
     ArtField* value_field = integer_class->FindDeclaredInstanceField(kValueFieldName, "I");
@@ -343,7 +339,7 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
         IntrinsicObjects::GetIntegerValueOfCache(boot_image_live_objects)->GetLength());
 
     if (invoke->InputAt(0)->IsIntConstant()) {
-      int32_t input_value = invoke->InputAt(0)->AsIntConstant()->GetValue();
+      int32_t  input_value = invoke->InputAt(0)->AsIntConstant()->GetValue();
       uint32_t index = static_cast<uint32_t>(input_value) - static_cast<uint32_t>(info.low);
       if (index < static_cast<uint32_t>(info.length)) {
         ObjPtr<mirror::Object> integer =
@@ -366,7 +362,7 @@ IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo
 MemberOffset IntrinsicVisitor::GetReferenceDisableIntrinsicOffset() {
   ScopedObjectAccess soa(Thread::Current());
   // The "disableIntrinsic" is the first static field.
-  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(0);
+  ArtField*          field = GetClassRoot<mirror::Reference>()->GetStaticField(0);
   DCHECK_STREQ(field->GetName(), "disableIntrinsic");
   return field->GetOffset();
 }
@@ -374,18 +370,18 @@ MemberOffset IntrinsicVisitor::GetReferenceDisableIntrinsicOffset() {
 MemberOffset IntrinsicVisitor::GetReferenceSlowPathEnabledOffset() {
   ScopedObjectAccess soa(Thread::Current());
   // The "slowPathEnabled" is the second static field.
-  ArtField* field = GetClassRoot<mirror::Reference>()->GetStaticField(1);
+  ArtField*          field = GetClassRoot<mirror::Reference>()->GetStaticField(1);
   DCHECK_STREQ(field->GetName(), "slowPathEnabled");
   return field->GetOffset();
 }
 
-void IntrinsicVisitor::CreateReferenceGetReferentLocations(HInvoke* invoke,
+void IntrinsicVisitor::CreateReferenceGetReferentLocations(HInvoke*       invoke,
                                                            CodeGenerator* codegen) {
   if (!CanReferenceBootImageObjects(invoke, codegen->GetCompilerOptions())) {
     return;
   }
 
-  ArenaAllocator* allocator = codegen->GetGraph()->GetAllocator();
+  ArenaAllocator*  allocator = codegen->GetGraph()->GetAllocator();
   LocationSummary* locations =
       new (allocator) LocationSummary(invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
@@ -398,7 +394,7 @@ void IntrinsicVisitor::CreateReferenceRefersToLocations(HInvoke* invoke) {
     return;
   }
 
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  ArenaAllocator*  allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
   LocationSummary* locations =
       new (allocator) LocationSummary(invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
@@ -408,7 +404,7 @@ void IntrinsicVisitor::CreateReferenceRefersToLocations(HInvoke* invoke) {
 
 void IntrinsicVisitor::AssertNonMovableStringClass() {
   if (kIsDebugBuild) {
-    ScopedObjectAccess soa(Thread::Current());
+    ScopedObjectAccess    soa(Thread::Current());
     ObjPtr<mirror::Class> string_class = GetClassRoot<mirror::String>();
     CHECK(!art::Runtime::Current()->GetHeap()->IsMovableObject(string_class));
   }

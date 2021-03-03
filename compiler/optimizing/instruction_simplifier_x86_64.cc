@@ -14,8 +14,9 @@
  */
 
 #include "instruction_simplifier_x86_64.h"
-#include "instruction_simplifier_x86_shared.h"
+
 #include "code_generator_x86_64.h"
+#include "instruction_simplifier_x86_shared.h"
 
 namespace art {
 
@@ -23,12 +24,10 @@ namespace x86_64 {
 
 class InstructionSimplifierX86_64Visitor : public HGraphVisitor {
  public:
-  InstructionSimplifierX86_64Visitor(HGraph* graph,
-                                     CodeGenerator* codegen,
-                                     OptimizingCompilerStats* stats)
-      : HGraphVisitor(graph),
-        codegen_(down_cast<CodeGeneratorX86_64*>(codegen)),
-        stats_(stats) {}
+  InstructionSimplifierX86_64Visitor(HGraph*                  graph,
+                                     CodeGenerator*           codegen,
+                                     OptimizingCompilerStats* stats) :
+      HGraphVisitor(graph), codegen_(down_cast<CodeGeneratorX86_64*>(codegen)), stats_(stats) {}
 
   void RecordSimplification() {
     MaybeRecordStat(stats_, MethodCompilationStat::kInstructionSimplificationsArch);
@@ -51,7 +50,7 @@ class InstructionSimplifierX86_64Visitor : public HGraphVisitor {
   void VisitXor(HXor* instruction) override;
 
  private:
-  CodeGeneratorX86_64* codegen_;
+  CodeGeneratorX86_64*     codegen_;
   OptimizingCompilerStats* stats_;
 };
 
@@ -62,7 +61,6 @@ void InstructionSimplifierX86_64Visitor::VisitAnd(HAnd* instruction) {
     RecordSimplification();
   }
 }
-
 
 void InstructionSimplifierX86_64Visitor::VisitXor(HXor* instruction) {
   if (TryGenerateMaskUptoLeastSetBit(instruction)) {

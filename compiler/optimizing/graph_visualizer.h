@@ -43,7 +43,7 @@ struct GeneratedCodeInterval {
 };
 
 struct SlowPathCodeInfo {
-  const SlowPathCode* slow_path;
+  const SlowPathCode*   slow_path;
   GeneratedCodeInterval code_interval;
 };
 
@@ -56,10 +56,10 @@ struct SlowPathCodeInfo {
 //   - slow paths
 class DisassemblyInformation {
  public:
-  explicit DisassemblyInformation(ArenaAllocator* allocator)
-      : frame_entry_interval_({0, 0}),
-        instruction_intervals_(std::less<const HInstruction*>(), allocator->Adapter()),
-        slow_path_intervals_(allocator->Adapter()) {}
+  explicit DisassemblyInformation(ArenaAllocator* allocator) :
+      frame_entry_interval_({0, 0}),
+      instruction_intervals_(std::less<const HInstruction*>(), allocator->Adapter()),
+      slow_path_intervals_(allocator->Adapter()) {}
 
   void SetFrameEntryInterval(size_t start, size_t end) {
     frame_entry_interval_ = {start, end};
@@ -89,21 +89,25 @@ class DisassemblyInformation {
     return &instruction_intervals_;
   }
 
-  const ArenaVector<SlowPathCodeInfo>& GetSlowPathIntervals() const { return slow_path_intervals_; }
+  const ArenaVector<SlowPathCodeInfo>& GetSlowPathIntervals() const {
+    return slow_path_intervals_;
+  }
 
-  ArenaVector<SlowPathCodeInfo>* GetSlowPathIntervals() { return &slow_path_intervals_; }
+  ArenaVector<SlowPathCodeInfo>* GetSlowPathIntervals() {
+    return &slow_path_intervals_;
+  }
 
  private:
-  GeneratedCodeInterval frame_entry_interval_;
+  GeneratedCodeInterval                                    frame_entry_interval_;
   ArenaSafeMap<const HInstruction*, GeneratedCodeInterval> instruction_intervals_;
-  ArenaVector<SlowPathCodeInfo> slow_path_intervals_;
+  ArenaVector<SlowPathCodeInfo>                            slow_path_intervals_;
 };
 
 class HGraphVisualizer : public ValueObject {
  public:
-  HGraphVisualizer(std::ostream* output,
-                   HGraph* graph,
-                   const CodeGenerator* codegen,
+  HGraphVisualizer(std::ostream*                                           output,
+                   HGraph*                                                 graph,
+                   const CodeGenerator*                                    codegen,
                    std::optional<std::reference_wrapper<const BlockNamer>> namer = std::nullopt);
 
   void PrintHeader(const char* method_name) const;
@@ -121,8 +125,8 @@ class HGraphVisualizer : public ValueObject {
  private:
   class OptionalDefaultNamer final : public BlockNamer {
    public:
-    explicit OptionalDefaultNamer(std::optional<std::reference_wrapper<const BlockNamer>> inner)
-        : namer_(inner) {}
+    explicit OptionalDefaultNamer(std::optional<std::reference_wrapper<const BlockNamer>> inner) :
+        namer_(inner) {}
 
     std::ostream& PrintName(std::ostream& os, HBasicBlock* blk) const override;
 
@@ -130,8 +134,8 @@ class HGraphVisualizer : public ValueObject {
     std::optional<std::reference_wrapper<const BlockNamer>> namer_;
   };
 
-  std::ostream* const output_;
-  HGraph* const graph_;
+  std::ostream* const  output_;
+  HGraph* const        graph_;
   const CodeGenerator* codegen_;
   OptionalDefaultNamer namer_;
 

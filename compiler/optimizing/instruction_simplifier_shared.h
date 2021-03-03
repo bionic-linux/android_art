@@ -26,15 +26,15 @@ namespace helpers {
 inline bool CanFitInShifterOperand(HInstruction* instruction) {
   if (instruction->IsTypeConversion()) {
     HTypeConversion* conversion = instruction->AsTypeConversion();
-    DataType::Type result_type = conversion->GetResultType();
-    DataType::Type input_type = conversion->GetInputType();
+    DataType::Type   result_type = conversion->GetResultType();
+    DataType::Type   input_type = conversion->GetInputType();
     // We don't expect to see the same type as input and result.
     return DataType::IsIntegralType(result_type) && DataType::IsIntegralType(input_type) &&
-        (result_type != input_type);
+           (result_type != input_type);
   } else {
     return (instruction->IsShl() && instruction->AsShl()->InputAt(1)->IsIntConstant()) ||
-        (instruction->IsShr() && instruction->AsShr()->InputAt(1)->IsIntConstant()) ||
-        (instruction->IsUShr() && instruction->AsUShr()->InputAt(1)->IsIntConstant());
+           (instruction->IsShr() && instruction->AsShr()->InputAt(1)->IsIntConstant()) ||
+           (instruction->IsUShr() && instruction->AsUShr()->InputAt(1)->IsIntConstant());
   }
 }
 
@@ -42,8 +42,8 @@ inline bool HasShifterOperand(HInstruction* instr, InstructionSet isa) {
   // On ARM64 `neg` instructions are an alias of `sub` using the zero register
   // as the first register input.
   bool res = instr->IsAdd() || instr->IsAnd() ||
-      (isa == InstructionSet::kArm64 && instr->IsNeg()) ||
-      instr->IsOr() || instr->IsSub() || instr->IsXor();
+             (isa == InstructionSet::kArm64 && instr->IsNeg()) || instr->IsOr() || instr->IsSub() ||
+             instr->IsXor();
   return res;
 }
 
@@ -51,9 +51,9 @@ inline bool HasShifterOperand(HInstruction* instr, InstructionSet isa) {
 //   t1 = Shl
 //   t2 = Sub(t1, *)
 //   t3 = Sub(*, t2)
-inline bool IsSubRightSubLeftShl(HSub *sub) {
+inline bool IsSubRightSubLeftShl(HSub* sub) {
   HInstruction* right = sub->GetRight();
-  return right->IsSub() && right->AsSub()->GetLeft()->IsShl();;
+  return right->IsSub() && right->AsSub()->GetLeft()->IsShl();
 }
 
 }  // namespace helpers
@@ -66,7 +66,7 @@ bool TryMergeNegatedInput(HBinaryOperation* op);
 bool TryExtractArrayAccessAddress(HInstruction* access,
                                   HInstruction* array,
                                   HInstruction* index,
-                                  size_t data_offset);
+                                  size_t        data_offset);
 
 bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* index);
 

@@ -22,23 +22,21 @@
 
 #include <cstdio>
 
-#include "gtest/gtest.h"
-
 #include "base/os.h"
 #include "base/unix_file/fd_file.h"
 #include "common_runtime_test.h"
+#include "gtest/gtest.h"
 
 namespace art {
 
-class SwapSpaceTest : public CommonRuntimeTest {
-};
+class SwapSpaceTest : public CommonRuntimeTest {};
 
 static void SwapTest(bool use_file) {
   ScratchFile scratch;
-  int fd = scratch.GetFd();
+  int         fd = scratch.GetFd();
   unlink(scratch.GetFilename().c_str());
 
-  SwapSpace pool(fd, 1 * MB);
+  SwapSpace           pool(fd, 1 * MB);
   SwapAllocator<void> alloc(use_file ? &pool : nullptr);
 
   SwapVector<int32_t> v(alloc);

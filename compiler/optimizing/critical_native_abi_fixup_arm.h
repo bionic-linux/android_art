@@ -25,11 +25,10 @@ namespace arm {
 
 class CriticalNativeAbiFixupArm : public HOptimization {
  public:
-  CriticalNativeAbiFixupArm(HGraph* graph, OptimizingCompilerStats* stats)
-      : HOptimization(graph, kCriticalNativeAbiFixupArmPassName, stats) {}
+  CriticalNativeAbiFixupArm(HGraph* graph, OptimizingCompilerStats* stats) :
+      HOptimization(graph, kCriticalNativeAbiFixupArmPassName, stats) {}
 
-  static constexpr const char* kCriticalNativeAbiFixupArmPassName =
-      "critical_native_abi_fixup_arm";
+  static constexpr const char* kCriticalNativeAbiFixupArmPassName = "critical_native_abi_fixup_arm";
 
   bool Run() override;
 };

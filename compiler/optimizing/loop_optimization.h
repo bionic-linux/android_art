@@ -37,11 +37,11 @@ class ArchNoOptsLoopHelper;
  */
 class HLoopOptimization : public HOptimization {
  public:
-  HLoopOptimization(HGraph* graph,
-                    const CodeGenerator& codegen,    // Needs info about the target.
-                    HInductionVarAnalysis* induction_analysis,
+  HLoopOptimization(HGraph*                  graph,
+                    const CodeGenerator&     codegen,  // Needs info about the target.
+                    HInductionVarAnalysis*   induction_analysis,
                     OptimizingCompilerStats* stats,
-                    const char* name = kLoopOptimizationPassName);
+                    const char*              name = kLoopOptimizationPassName);
 
   bool Run() override;
 
@@ -52,71 +52,63 @@ class HLoopOptimization : public HOptimization {
    * A single loop inside the loop hierarchy representation.
    */
   struct LoopNode : public ArenaObject<kArenaAllocLoopOptimization> {
-    explicit LoopNode(HLoopInformation* lp_info)
-        : loop_info(lp_info),
-          outer(nullptr),
-          inner(nullptr),
-          previous(nullptr),
-          next(nullptr) {}
+    explicit LoopNode(HLoopInformation* lp_info) :
+        loop_info(lp_info), outer(nullptr), inner(nullptr), previous(nullptr), next(nullptr) {}
     HLoopInformation* loop_info;
-    LoopNode* outer;
-    LoopNode* inner;
-    LoopNode* previous;
-    LoopNode* next;
+    LoopNode*         outer;
+    LoopNode*         inner;
+    LoopNode*         previous;
+    LoopNode*         next;
   };
 
   /*
    * Vectorization restrictions (bit mask).
    */
   enum VectorRestrictions {
-    kNone            = 0,        // no restrictions
-    kNoMul           = 1 << 0,   // no multiplication
-    kNoDiv           = 1 << 1,   // no division
-    kNoShift         = 1 << 2,   // no shift
-    kNoShr           = 1 << 3,   // no arithmetic shift right
-    kNoHiBits        = 1 << 4,   // "wider" operations cannot bring in higher order bits
-    kNoSignedHAdd    = 1 << 5,   // no signed halving add
-    kNoUnsignedHAdd  = 1 << 6,   // no unsigned halving add
-    kNoUnroundedHAdd = 1 << 7,   // no unrounded halving add
-    kNoAbs           = 1 << 8,   // no absolute value
-    kNoStringCharAt  = 1 << 9,   // no StringCharAt
-    kNoReduction     = 1 << 10,  // no reduction
-    kNoSAD           = 1 << 11,  // no sum of absolute differences (SAD)
-    kNoWideSAD       = 1 << 12,  // no sum of absolute differences (SAD) with operand widening
-    kNoDotProd       = 1 << 13,  // no dot product
+    kNone = 0,                  // no restrictions
+    kNoMul = 1 << 0,            // no multiplication
+    kNoDiv = 1 << 1,            // no division
+    kNoShift = 1 << 2,          // no shift
+    kNoShr = 1 << 3,            // no arithmetic shift right
+    kNoHiBits = 1 << 4,         // "wider" operations cannot bring in higher order bits
+    kNoSignedHAdd = 1 << 5,     // no signed halving add
+    kNoUnsignedHAdd = 1 << 6,   // no unsigned halving add
+    kNoUnroundedHAdd = 1 << 7,  // no unrounded halving add
+    kNoAbs = 1 << 8,            // no absolute value
+    kNoStringCharAt = 1 << 9,   // no StringCharAt
+    kNoReduction = 1 << 10,     // no reduction
+    kNoSAD = 1 << 11,           // no sum of absolute differences (SAD)
+    kNoWideSAD = 1 << 12,       // no sum of absolute differences (SAD) with operand widening
+    kNoDotProd = 1 << 13,       // no dot product
   };
 
   /*
    * Vectorization mode during synthesis
    * (sequential peeling/cleanup loop or vector loop).
    */
-  enum VectorMode {
-    kSequential,
-    kVector
-  };
+  enum VectorMode { kSequential, kVector };
 
   /*
    * Representation of a unit-stride array reference.
    */
   struct ArrayReference {
-    ArrayReference(HInstruction* b, HInstruction* o, DataType::Type t, bool l, bool c = false)
-        : base(b), offset(o), type(t), lhs(l), is_string_char_at(c) { }
+    ArrayReference(HInstruction* b, HInstruction* o, DataType::Type t, bool l, bool c = false) :
+        base(b), offset(o), type(t), lhs(l), is_string_char_at(c) {}
     bool operator<(const ArrayReference& other) const {
-      return
-          (base < other.base) ||
-          (base == other.base &&
-           (offset < other.offset || (offset == other.offset &&
-                                      (type < other.type ||
-                                       (type == other.type &&
-                                        (lhs < other.lhs ||
-                                         (lhs == other.lhs &&
-                                          is_string_char_at < other.is_string_char_at)))))));
+      return (base < other.base) ||
+             (base == other.base &&
+              (offset < other.offset ||
+               (offset == other.offset &&
+                (type < other.type ||
+                 (type == other.type &&
+                  (lhs < other.lhs ||
+                   (lhs == other.lhs && is_string_char_at < other.is_string_char_at)))))));
     }
-    HInstruction* base;      // base address
-    HInstruction* offset;    // offset + i
-    DataType::Type type;     // component type
-    bool lhs;                // def/use
-    bool is_string_char_at;  // compressed string read
+    HInstruction*  base;               // base address
+    HInstruction*  offset;             // offset + i
+    DataType::Type type;               // component type
+    bool           lhs;                // def/use
+    bool           is_string_char_at;  // compressed string read
   };
 
   //
@@ -149,13 +141,13 @@ class HLoopOptimization : public HOptimization {
   // opportunities. Returns whether transformation happened. 'generate_code' determines whether the
   // optimization should be actually applied.
   bool TryUnrollingForBranchPenaltyReduction(LoopAnalysisInfo* analysis_info,
-                                             bool generate_code = true);
+                                             bool              generate_code = true);
 
   // Tries to apply loop peeling for loop invariant exits elimination. Returns whether
   // transformation happened. 'generate_code' determines whether the optimization should be
   // actually applied.
   bool TryPeelingForLoopInvariantExitsElimination(LoopAnalysisInfo* analysis_info,
-                                                  bool generate_code = true);
+                                                  bool              generate_code = true);
 
   // Tries to perform whole loop unrolling for a small loop with a small trip count to eliminate
   // the loop check overhead and to have more opportunities for inter-iteration optimizations.
@@ -170,24 +162,24 @@ class HLoopOptimization : public HOptimization {
   // Vectorization analysis and synthesis.
   //
 
-  bool ShouldVectorize(LoopNode* node, HBasicBlock* block, int64_t trip_count);
-  void Vectorize(LoopNode* node, HBasicBlock* block, HBasicBlock* exit, int64_t trip_count);
-  void GenerateNewLoop(LoopNode* node,
-                       HBasicBlock* block,
-                       HBasicBlock* new_preheader,
-                       HInstruction* lo,
-                       HInstruction* hi,
-                       HInstruction* step,
-                       uint32_t unroll);
-  bool VectorizeDef(LoopNode* node, HInstruction* instruction, bool generate_code);
-  bool VectorizeUse(LoopNode* node,
-                    HInstruction* instruction,
-                    bool generate_code,
-                    DataType::Type type,
-                    uint64_t restrictions);
+  bool     ShouldVectorize(LoopNode* node, HBasicBlock* block, int64_t trip_count);
+  void     Vectorize(LoopNode* node, HBasicBlock* block, HBasicBlock* exit, int64_t trip_count);
+  void     GenerateNewLoop(LoopNode*     node,
+                           HBasicBlock*  block,
+                           HBasicBlock*  new_preheader,
+                           HInstruction* lo,
+                           HInstruction* hi,
+                           HInstruction* step,
+                           uint32_t      unroll);
+  bool     VectorizeDef(LoopNode* node, HInstruction* instruction, bool generate_code);
+  bool     VectorizeUse(LoopNode*      node,
+                        HInstruction*  instruction,
+                        bool           generate_code,
+                        DataType::Type type,
+                        uint64_t       restrictions);
   uint32_t GetVectorSizeInBytes();
-  bool TrySetVectorType(DataType::Type type, /*out*/ uint64_t* restrictions);
-  bool TrySetVectorLengthImpl(uint32_t length);
+  bool     TrySetVectorType(DataType::Type type, /*out*/ uint64_t* restrictions);
+  bool     TrySetVectorLengthImpl(uint32_t length);
 
   bool TrySetVectorLength(DataType::Type type, uint32_t length) {
     bool res = TrySetVectorLengthImpl(length);
@@ -196,52 +188,49 @@ class HLoopOptimization : public HOptimization {
     return res;
   }
 
-  void GenerateVecInv(HInstruction* org, DataType::Type type);
-  void GenerateVecSub(HInstruction* org, HInstruction* offset);
-  void GenerateVecMem(HInstruction* org,
-                      HInstruction* opa,
-                      HInstruction* opb,
-                      HInstruction* offset,
-                      DataType::Type type);
-  void GenerateVecReductionPhi(HPhi* phi);
-  void GenerateVecReductionPhiInputs(HPhi* phi, HInstruction* reduction);
+  void          GenerateVecInv(HInstruction* org, DataType::Type type);
+  void          GenerateVecSub(HInstruction* org, HInstruction* offset);
+  void          GenerateVecMem(HInstruction*  org,
+                               HInstruction*  opa,
+                               HInstruction*  opb,
+                               HInstruction*  offset,
+                               DataType::Type type);
+  void          GenerateVecReductionPhi(HPhi* phi);
+  void          GenerateVecReductionPhiInputs(HPhi* phi, HInstruction* reduction);
   HInstruction* ReduceAndExtractIfNeeded(HInstruction* instruction);
-  void GenerateVecOp(HInstruction* org,
-                     HInstruction* opa,
-                     HInstruction* opb,
-                     DataType::Type type);
+  void GenerateVecOp(HInstruction* org, HInstruction* opa, HInstruction* opb, DataType::Type type);
 
   // Vectorization idioms.
-  bool VectorizeSaturationIdiom(LoopNode* node,
-                                HInstruction* instruction,
-                                bool generate_code,
+  bool VectorizeSaturationIdiom(LoopNode*      node,
+                                HInstruction*  instruction,
+                                bool           generate_code,
                                 DataType::Type type,
-                                uint64_t restrictions);
-  bool VectorizeHalvingAddIdiom(LoopNode* node,
-                                HInstruction* instruction,
-                                bool generate_code,
+                                uint64_t       restrictions);
+  bool VectorizeHalvingAddIdiom(LoopNode*      node,
+                                HInstruction*  instruction,
+                                bool           generate_code,
                                 DataType::Type type,
-                                uint64_t restrictions);
-  bool VectorizeSADIdiom(LoopNode* node,
-                         HInstruction* instruction,
-                         bool generate_code,
+                                uint64_t       restrictions);
+  bool VectorizeSADIdiom(LoopNode*      node,
+                         HInstruction*  instruction,
+                         bool           generate_code,
                          DataType::Type type,
-                         uint64_t restrictions);
-  bool VectorizeDotProdIdiom(LoopNode* node,
-                             HInstruction* instruction,
-                             bool generate_code,
+                         uint64_t       restrictions);
+  bool VectorizeDotProdIdiom(LoopNode*      node,
+                             HInstruction*  instruction,
+                             bool           generate_code,
                              DataType::Type type,
-                             uint64_t restrictions);
+                             uint64_t       restrictions);
 
   // Vectorization heuristics.
-  Alignment ComputeAlignment(HInstruction* offset,
+  Alignment ComputeAlignment(HInstruction*  offset,
                              DataType::Type type,
-                             bool is_string_char_at,
-                             uint32_t peeling = 0);
-  void SetAlignmentStrategy(const ScopedArenaVector<uint32_t>& peeling_votes,
-                            const ArrayReference* peeling_candidate);
-  uint32_t MaxNumberPeeled();
-  bool IsVectorizationProfitable(int64_t trip_count);
+                             bool           is_string_char_at,
+                             uint32_t       peeling = 0);
+  void      SetAlignmentStrategy(const ScopedArenaVector<uint32_t>& peeling_votes,
+                                 const ArrayReference*              peeling_candidate);
+  uint32_t  MaxNumberPeeled();
+  bool      IsVectorizationProfitable(int64_t trip_count);
 
   //
   // Helpers.
@@ -256,22 +245,23 @@ class HLoopOptimization : public HOptimization {
 
   bool IsEmptyBody(HBasicBlock* block);
   bool IsOnlyUsedAfterLoop(HLoopInformation* loop_info,
-                           HInstruction* instruction,
-                           bool collect_loop_uses,
+                           HInstruction*     instruction,
+                           bool              collect_loop_uses,
                            /*out*/ uint32_t* use_count);
-  bool IsUsedOutsideLoop(HLoopInformation* loop_info,
-                         HInstruction* instruction);
+  bool IsUsedOutsideLoop(HLoopInformation* loop_info, HInstruction* instruction);
   bool TryReplaceWithLastValue(HLoopInformation* loop_info,
-                               HInstruction* instruction,
-                               HBasicBlock* block);
+                               HInstruction*     instruction,
+                               HBasicBlock*      block);
   bool TryAssignLastValue(HLoopInformation* loop_info,
-                          HInstruction* instruction,
-                          HBasicBlock* block,
-                          bool collect_loop_uses);
+                          HInstruction*     instruction,
+                          HBasicBlock*      block,
+                          bool              collect_loop_uses);
   void RemoveDeadInstructions(const HInstructionList& list);
   bool CanRemoveCycle();  // Whether the current 'iset_' is removable.
 
-  bool IsInPredicatedVectorizationMode() const { return predicated_vectorization_mode_; }
+  bool IsInPredicatedVectorizationMode() const {
+    return predicated_vectorization_mode_;
+  }
 
   // Compiler options (to query ISA features).
   const CompilerOptions* compiler_options_;
@@ -319,7 +309,7 @@ class HLoopOptimization : public HOptimization {
   ScopedArenaSet<ArrayReference>* vector_refs_;
 
   // Static or dynamic loop peeling for alignment.
-  uint32_t vector_static_peeling_factor_;
+  uint32_t              vector_static_peeling_factor_;
   const ArrayReference* vector_dynamic_peeling_candidate_;
 
   // Dynamic data dependence test of the form a != b.
@@ -337,11 +327,11 @@ class HLoopOptimization : public HOptimization {
   ScopedArenaSafeMap<HInstruction*, HInstruction*>* vector_permanent_map_;
 
   // Temporary vectorization bookkeeping.
-  VectorMode vector_mode_;  // synthesis mode
-  HBasicBlock* vector_preheader_;  // preheader of the new loop
-  HBasicBlock* vector_header_;  // header of the new loop
-  HBasicBlock* vector_body_;  // body of the new loop
-  HInstruction* vector_index_;  // normalized index of the new loop
+  VectorMode    vector_mode_;       // synthesis mode
+  HBasicBlock*  vector_preheader_;  // preheader of the new loop
+  HBasicBlock*  vector_header_;     // header of the new loop
+  HBasicBlock*  vector_body_;       // body of the new loop
+  HInstruction* vector_index_;      // normalized index of the new loop
 
   // Helper for target-specific behaviour for loop optimizations.
   ArchNoOptsLoopHelper* arch_loop_helper_;

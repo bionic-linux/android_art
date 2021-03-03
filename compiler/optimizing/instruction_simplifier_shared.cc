@@ -22,9 +22,9 @@ namespace art {
 
 namespace {
 
-bool TrySimpleMultiplyAccumulatePatterns(HMul* mul,
+bool TrySimpleMultiplyAccumulatePatterns(HMul*             mul,
                                          HBinaryOperation* input_binop,
-                                         HInstruction* input_other) {
+                                         HInstruction*     input_other) {
   DCHECK(DataType::IsIntOrLongType(mul->GetType()));
   DCHECK(input_binop->IsAdd() || input_binop->IsSub());
   DCHECK_NE(input_binop, input_other);
@@ -75,9 +75,9 @@ bool TrySimpleMultiplyAccumulatePatterns(HMul* mul,
     return false;
   }
 
-  ArenaAllocator* allocator = mul->GetBlock()->GetGraph()->GetAllocator();
-  HMultiplyAccumulate* mulacc = new (allocator) HMultiplyAccumulate(
-      mul->GetType(), op_kind, input_a, input_a, input_b, mul->GetDexPc());
+  ArenaAllocator*      allocator = mul->GetBlock()->GetGraph()->GetAllocator();
+  HMultiplyAccumulate* mulacc = new (allocator)
+      HMultiplyAccumulate(mul->GetType(), op_kind, input_a, input_a, input_b, mul->GetDexPc());
 
   mul->GetBlock()->ReplaceAndRemoveInstructionWith(mul, mulacc);
   input_binop->GetBlock()->RemoveInstruction(input_binop);
@@ -101,8 +101,7 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
         return false;
       }
       break;
-    default:
-      return false;
+    default: return false;
   }
 
   ArenaAllocator* allocator = mul->GetBlock()->GetGraph()->GetAllocator();
@@ -121,10 +120,10 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
       // then increase the amount of work. In the future we could try to evaluate
       // whether all uses are on different control-flow paths (using dominance and
       // reverse-dominance information) and only perform the merge when they are.
-      HInstruction* accumulator = nullptr;
+      HInstruction*     accumulator = nullptr;
       HBinaryOperation* binop = use->AsBinaryOperation();
-      HInstruction* binop_left = binop->GetLeft();
-      HInstruction* binop_right = binop->GetRight();
+      HInstruction*     binop_left = binop->GetLeft();
+      HInstruction*     binop_right = binop->GetRight();
       // Be careful after GVN. This should not happen since the `HMul` has only
       // one use.
       DCHECK_NE(binop_left, binop_right);
@@ -136,12 +135,8 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
       }
 
       if (accumulator != nullptr) {
-        HMultiplyAccumulate* mulacc =
-            new (allocator) HMultiplyAccumulate(type,
-                                                binop->GetKind(),
-                                                accumulator,
-                                                mul->GetLeft(),
-                                                mul->GetRight());
+        HMultiplyAccumulate* mulacc = new (allocator) HMultiplyAccumulate(
+            type, binop->GetKind(), accumulator, mul->GetLeft(), mul->GetRight());
 
         binop->GetBlock()->ReplaceAndRemoveInstructionWith(binop, mulacc);
         DCHECK(!mul->HasUses());
@@ -185,7 +180,6 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
   return false;
 }
 
-
 bool TryMergeNegatedInput(HBinaryOperation* op) {
   DCHECK(op->IsAnd() || op->IsOr() || op->IsXor()) << op->DebugName();
   HInstruction* left = op->GetLeft();
@@ -228,11 +222,10 @@ bool TryMergeNegatedInput(HBinaryOperation* op) {
   return false;
 }
 
-
 bool TryExtractArrayAccessAddress(HInstruction* access,
                                   HInstruction* array,
                                   HInstruction* index,
-                                  size_t data_offset) {
+                                  size_t        data_offset) {
   if (index->IsConstant() ||
       (index->IsBoundsCheck() && index->AsBoundsCheck()->GetIndex()->IsConstant())) {
     // When the index is a constant all the addressing can be fitted in the
@@ -244,9 +237,7 @@ bool TryExtractArrayAccessAddress(HInstruction* access,
     // The access may require a runtime call or the original array pointer.
     return false;
   }
-  if (kEmitCompilerReadBarrier &&
-      !kUseBakerReadBarrier &&
-      access->IsArrayGet() &&
+  if (kEmitCompilerReadBarrier && !kUseBakerReadBarrier && access->IsArrayGet() &&
       access->GetType() == DataType::Type::kReference) {
     // For object arrays, the non-Baker read barrier instrumentation requires
     // the original array pointer.
@@ -254,10 +245,10 @@ bool TryExtractArrayAccessAddress(HInstruction* access,
   }
 
   // Proceed to extract the base address computation.
-  HGraph* graph = access->GetBlock()->GetGraph();
+  HGraph*         graph = access->GetBlock()->GetGraph();
   ArenaAllocator* allocator = graph->GetAllocator();
 
-  HIntConstant* offset = graph->GetIntConstant(data_offset);
+  HIntConstant*         offset = graph->GetIntConstant(data_offset);
   HIntermediateAddress* address = new (allocator) HIntermediateAddress(array, offset, kNoDexPc);
   // TODO: Is it ok to not have this on the intermediate address?
   // address->SetReferenceTypeInfo(array->GetReferenceTypeInfo());
@@ -288,12 +279,11 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
     return false;
   }
 
-  HGraph* graph = access->GetBlock()->GetGraph();
+  HGraph*         graph = access->GetBlock()->GetGraph();
   ArenaAllocator* allocator = graph->GetAllocator();
-  DataType::Type packed_type = access->GetPackedType();
-  uint32_t data_offset = mirror::Array::DataOffset(
-      DataType::Size(packed_type)).Uint32Value();
-  size_t component_shift = DataType::SizeShift(packed_type);
+  DataType::Type  packed_type = access->GetPackedType();
+  uint32_t data_offset = mirror::Array::DataOffset(DataType::Size(packed_type)).Uint32Value();
+  size_t   component_shift = DataType::SizeShift(packed_type);
 
   bool is_extracting_beneficial = false;
   // It is beneficial to extract index intermediate address only if there are at least 2 users.
@@ -301,9 +291,9 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
     HInstruction* user = use.GetUser();
     if (user->IsVecMemoryOperation() && user != access) {
       HVecMemoryOperation* another_access = user->AsVecMemoryOperation();
-      DataType::Type another_packed_type = another_access->GetPackedType();
-      uint32_t another_data_offset = mirror::Array::DataOffset(
-          DataType::Size(another_packed_type)).Uint32Value();
+      DataType::Type       another_packed_type = another_access->GetPackedType();
+      uint32_t             another_data_offset =
+          mirror::Array::DataOffset(DataType::Size(another_packed_type)).Uint32Value();
       size_t another_component_shift = DataType::SizeShift(another_packed_type);
       if (another_data_offset == data_offset && another_component_shift == component_shift) {
         is_extracting_beneficial = true;
@@ -312,7 +302,7 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
     } else if (user->IsIntermediateAddressIndex()) {
       HIntermediateAddressIndex* another_access = user->AsIntermediateAddressIndex();
       uint32_t another_data_offset = another_access->GetOffset()->AsIntConstant()->GetValue();
-      size_t another_component_shift = another_access->GetShift()->AsIntConstant()->GetValue();
+      size_t   another_component_shift = another_access->GetShift()->AsIntConstant()->GetValue();
       if (another_data_offset == data_offset && another_component_shift == component_shift) {
         is_extracting_beneficial = true;
         break;
@@ -325,8 +315,8 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
   }
 
   // Proceed to extract the index + data_offset address computation.
-  HIntConstant* offset = graph->GetIntConstant(data_offset);
-  HIntConstant* shift = graph->GetIntConstant(component_shift);
+  HIntConstant*              offset = graph->GetIntConstant(data_offset);
+  HIntConstant*              shift = graph->GetIntConstant(component_shift);
   HIntermediateAddressIndex* address =
       new (allocator) HIntermediateAddressIndex(index, offset, shift, kNoDexPc);
 
@@ -338,10 +328,10 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
 
 bool TryReplaceSubSubWithSubAdd(HSub* last_sub) {
   DCHECK(last_sub->GetRight()->IsSub());
-  HBasicBlock* basic_block = last_sub->GetBlock();
+  HBasicBlock*    basic_block = last_sub->GetBlock();
   ArenaAllocator* allocator = basic_block->GetGraph()->GetAllocator();
-  HInstruction* last_sub_right = last_sub->GetRight();
-  HInstruction* last_sub_left = last_sub->GetLeft();
+  HInstruction*   last_sub_right = last_sub->GetRight();
+  HInstruction*   last_sub_left = last_sub->GetLeft();
   if (last_sub_right->GetUses().HasExactlyOneElement()) {
     // Reorder operands of last_sub_right: Sub(a, b) -> Sub(b, a).
     HInstruction* a = last_sub_right->InputAt(0);

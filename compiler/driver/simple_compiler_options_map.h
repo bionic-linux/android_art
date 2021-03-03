@@ -22,22 +22,22 @@
 
 #include <memory>
 
-#include "compiler_options_map-inl.h"
 #include "base/variant_map.h"
+#include "compiler_options_map-inl.h"
 
 namespace art {
 
 template <typename TValue>
 struct SimpleParseArgumentMapKey : VariantMapKey<TValue> {
   SimpleParseArgumentMapKey() {}
-  explicit SimpleParseArgumentMapKey(TValue default_value)
-      : VariantMapKey<TValue>(std::move(default_value)) {}
+  explicit SimpleParseArgumentMapKey(TValue default_value) :
+      VariantMapKey<TValue>(std::move(default_value)) {}
   // Don't ODR-use constexpr default values, which means that Struct::Fields
   // that are declared 'static constexpr T Name = Value' don't need to have a matching definition.
 };
 
-struct SimpleParseArgumentMap : CompilerOptionsMap<SimpleParseArgumentMap,
-                                                   SimpleParseArgumentMapKey> {
+struct SimpleParseArgumentMap
+    : CompilerOptionsMap<SimpleParseArgumentMap, SimpleParseArgumentMapKey> {
   // This 'using' line is necessary to inherit the variadic constructor.
   using CompilerOptionsMap<SimpleParseArgumentMap, SimpleParseArgumentMapKey>::CompilerOptionsMap;
 };
@@ -49,8 +49,7 @@ struct SimpleParseArgumentMap : CompilerOptionsMap<SimpleParseArgumentMap,
 using Parser = CmdlineParser<SimpleParseArgumentMap, SimpleParseArgumentMapKey>;
 
 static inline Parser CreateSimpleParser(bool ignore_unrecognized) {
-  std::unique_ptr<Parser::Builder> parser_builder =
-      std::make_unique<Parser::Builder>();
+  std::unique_ptr<Parser::Builder> parser_builder = std::make_unique<Parser::Builder>();
 
   AddCompilerOptionsArgumentParserOptions<SimpleParseArgumentMap>(*parser_builder);
 

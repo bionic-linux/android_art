@@ -42,10 +42,9 @@ class LoadStoreAnalysisTest : public OptimizingUnitTest {
  public:
   LoadStoreAnalysisTest() : graph_(CreateGraph()) {}
 
-  AdjacencyListGraph SetupFromAdjacencyList(
-      const std::string_view entry_name,
-      const std::string_view exit_name,
-      const std::vector<AdjacencyListGraph::Edge>& adj) {
+  AdjacencyListGraph SetupFromAdjacencyList(const std::string_view                       entry_name,
+                                            const std::string_view                       exit_name,
+                                            const std::vector<AdjacencyListGraph::Edge>& adj) {
     return AdjacencyListGraph(graph_, GetAllocator(), entry_name, exit_name, adj);
   }
 
@@ -56,7 +55,7 @@ class LoadStoreAnalysisTest : public OptimizingUnitTest {
   bool IsValidSubgraph(const ExecutionSubgraph& esg) {
     return ExecutionSubgraphTestHelper::CalculateValidity(graph_, &esg);
   }
-  void CheckReachability(const AdjacencyListGraph& adj,
+  void CheckReachability(const AdjacencyListGraph&                    adj,
                          const std::vector<AdjacencyListGraph::Edge>& reach);
 
   HGraph* graph_;
@@ -77,10 +76,10 @@ TEST_F(LoadStoreAnalysisTest, ArrayHeapLocations) {
   // array_get2    ArrayGet [array, c2]
   // array_set1    ArraySet [array, c1, c3]
   // array_set2    ArraySet [array, index, c3]
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
   HInstruction* c1 = graph_->GetIntConstant(1);
   HInstruction* c2 = graph_->GetIntConstant(2);
   HInstruction* c3 = graph_->GetIntConstant(3);
@@ -99,7 +98,7 @@ TEST_F(LoadStoreAnalysisTest, ArrayHeapLocations) {
 
   // Test HeapLocationCollector initialization.
   // Should be no heap locations, no operations on the heap.
-  ScopedArenaAllocator allocator(graph_->GetArenaStack());
+  ScopedArenaAllocator  allocator(graph_->GetArenaStack());
   HeapLocationCollector heap_location_collector(graph_, &allocator, LoadStoreAnalysisType::kFull);
   ASSERT_EQ(heap_location_collector.GetNumberOfHeapLocations(), 0U);
   ASSERT_FALSE(heap_location_collector.HasHeapStores());
@@ -113,15 +112,13 @@ TEST_F(LoadStoreAnalysisTest, ArrayHeapLocations) {
   // Test queries on HeapLocationCollector's ref info and index records.
   ReferenceInfo* ref = heap_location_collector.FindReferenceInfoOf(array);
   DataType::Type type = DataType::Type::kInt32;
-  size_t field = HeapLocation::kInvalidFieldOffset;
-  size_t vec = HeapLocation::kScalar;
-  size_t class_def = HeapLocation::kDeclaringClassDefIndexForArrays;
-  size_t loc1 = heap_location_collector.FindHeapLocationIndex(
-      ref, type, field, c1, vec, class_def);
-  size_t loc2 = heap_location_collector.FindHeapLocationIndex(
-      ref, type, field, c2, vec, class_def);
-  size_t loc3 = heap_location_collector.FindHeapLocationIndex(
-      ref, type, field, index, vec, class_def);
+  size_t         field = HeapLocation::kInvalidFieldOffset;
+  size_t         vec = HeapLocation::kScalar;
+  size_t         class_def = HeapLocation::kDeclaringClassDefIndexForArrays;
+  size_t loc1 = heap_location_collector.FindHeapLocationIndex(ref, type, field, c1, vec, class_def);
+  size_t loc2 = heap_location_collector.FindHeapLocationIndex(ref, type, field, c2, vec, class_def);
+  size_t loc3 =
+      heap_location_collector.FindHeapLocationIndex(ref, type, field, index, vec, class_def);
   // must find this reference info for array in HeapLocationCollector.
   ASSERT_TRUE(ref != nullptr);
   // must find these heap locations;
@@ -157,10 +154,8 @@ TEST_F(LoadStoreAnalysisTest, FieldHeapLocations) {
   // get_field20         InstanceFieldGet [object, 20]
 
   HInstruction* c1 = graph_->GetIntConstant(1);
-  HInstruction* object = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                              dex::TypeIndex(0),
-                                                              0,
-                                                              DataType::Type::kReference);
+  HInstruction* object = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   HInstanceFieldSet* set_field10 = new (GetAllocator()) HInstanceFieldSet(object,
                                                                           c1,
                                                                           nullptr,
@@ -196,7 +191,7 @@ TEST_F(LoadStoreAnalysisTest, FieldHeapLocations) {
 
   // Test HeapLocationCollector initialization.
   // Should be no heap locations, no operations on the heap.
-  ScopedArenaAllocator allocator(graph_->GetArenaStack());
+  ScopedArenaAllocator  allocator(graph_->GetArenaStack());
   HeapLocationCollector heap_location_collector(graph_, &allocator, LoadStoreAnalysisType::kFull);
   ASSERT_EQ(heap_location_collector.GetNumberOfHeapLocations(), 0U);
   ASSERT_FALSE(heap_location_collector.HasHeapStores());
@@ -230,10 +225,10 @@ TEST_F(LoadStoreAnalysisTest, ArrayIndexAliasingTest) {
   graph_->SetEntryBlock(entry);
   graph_->BuildDominatorTree();
 
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
   HInstruction* c0 = graph_->GetIntConstant(0);
   HInstruction* c1 = graph_->GetIntConstant(1);
   HInstruction* c_neg1 = graph_->GetIntConstant(-1);
@@ -277,7 +272,7 @@ TEST_F(LoadStoreAnalysisTest, ArrayIndexAliasingTest) {
   entry->AddInstruction(arr_set8);  // array[i-(-1)] = c0
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
   lsa.Run();
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
 
@@ -323,107 +318,92 @@ TEST_F(LoadStoreAnalysisTest, ArrayAliasingTest) {
   graph_->SetEntryBlock(entry);
   graph_->BuildDominatorTree();
 
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
   HInstruction* c0 = graph_->GetIntConstant(0);
   HInstruction* c1 = graph_->GetIntConstant(1);
   HInstruction* c6 = graph_->GetIntConstant(6);
   HInstruction* c8 = graph_->GetIntConstant(8);
 
-  HInstruction* arr_set_0 = new (GetAllocator()) HArraySet(array,
-                                                           c0,
-                                                           c0,
-                                                           DataType::Type::kInt32,
-                                                           0);
-  HInstruction* arr_set_1 = new (GetAllocator()) HArraySet(array,
-                                                           c1,
-                                                           c0,
-                                                           DataType::Type::kInt32,
-                                                           0);
-  HInstruction* arr_set_i = new (GetAllocator()) HArraySet(array,
-                                                           index,
-                                                           c0,
-                                                           DataType::Type::kInt32,
-                                                           0);
+  HInstruction* arr_set_0 =
+      new (GetAllocator()) HArraySet(array, c0, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_1 =
+      new (GetAllocator()) HArraySet(array, c1, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_i =
+      new (GetAllocator()) HArraySet(array, index, c0, DataType::Type::kInt32, 0);
 
-  HVecOperation* v1 = new (GetAllocator()) HVecReplicateScalar(GetAllocator(),
-                                                               c1,
-                                                               DataType::Type::kInt32,
-                                                               4,
-                                                               kNoDexPc);
-  HVecOperation* v2 = new (GetAllocator()) HVecReplicateScalar(GetAllocator(),
-                                                               c1,
-                                                               DataType::Type::kInt32,
-                                                               2,
-                                                               kNoDexPc);
+  HVecOperation* v1 = new (GetAllocator())
+      HVecReplicateScalar(GetAllocator(), c1, DataType::Type::kInt32, 4, kNoDexPc);
+  HVecOperation* v2 = new (GetAllocator())
+      HVecReplicateScalar(GetAllocator(), c1, DataType::Type::kInt32, 2, kNoDexPc);
   HInstruction* i_add6 = new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c6);
   HInstruction* i_add8 = new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c8);
 
-  HInstruction* vstore_0 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      c0,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_1 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      c1,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_8 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      c8,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_i = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      index,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_i_add6 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      i_add6,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_i_add8 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      i_add8,
-      v1,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HInstruction* vstore_i_add6_vlen2 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      array,
-      i_add6,
-      v2,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      2,
-      kNoDexPc);
+  HInstruction* vstore_0 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     c0,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_1 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     c1,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_8 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     c8,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_i =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     index,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_i_add6 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     i_add6,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_i_add8 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     i_add8,
+                                     v1,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HInstruction* vstore_i_add6_vlen2 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     array,
+                                     i_add6,
+                                     v2,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     2,
+                                     kNoDexPc);
 
   entry->AddInstruction(array);
   entry->AddInstruction(index);
@@ -444,7 +424,7 @@ TEST_F(LoadStoreAnalysisTest, ArrayAliasingTest) {
   entry->AddInstruction(vstore_i_add6_vlen2);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
   lsa.Run();
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
 
@@ -534,10 +514,10 @@ TEST_F(LoadStoreAnalysisTest, ArrayIndexCalculationOverflowTest) {
   graph_->SetEntryBlock(entry);
   graph_->BuildDominatorTree();
 
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
 
   HInstruction* c0 = graph_->GetIntConstant(0);
   HInstruction* c_0x80000000 = graph_->GetIntConstant(0x80000000);
@@ -547,41 +527,41 @@ TEST_F(LoadStoreAnalysisTest, ArrayIndexCalculationOverflowTest) {
   HInstruction* c_0x80000001 = graph_->GetIntConstant(0x80000001);
 
   // `index+0x80000000` and `index-0x80000000` array indices MAY alias.
-  HInstruction* add_0x80000000 = new (GetAllocator()) HAdd(
-      DataType::Type::kInt32, index, c_0x80000000);
-  HInstruction* sub_0x80000000 = new (GetAllocator()) HSub(
-      DataType::Type::kInt32, index, c_0x80000000);
-  HInstruction* arr_set_1 = new (GetAllocator()) HArraySet(
-      array, add_0x80000000, c0, DataType::Type::kInt32, 0);
-  HInstruction* arr_set_2 = new (GetAllocator()) HArraySet(
-      array, sub_0x80000000, c0, DataType::Type::kInt32, 0);
+  HInstruction* add_0x80000000 =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c_0x80000000);
+  HInstruction* sub_0x80000000 =
+      new (GetAllocator()) HSub(DataType::Type::kInt32, index, c_0x80000000);
+  HInstruction* arr_set_1 =
+      new (GetAllocator()) HArraySet(array, add_0x80000000, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_2 =
+      new (GetAllocator()) HArraySet(array, sub_0x80000000, c0, DataType::Type::kInt32, 0);
 
   // `index+0x10` and `index-0xFFFFFFF0` array indices MAY alias.
   HInstruction* add_0x10 = new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c_0x10);
-  HInstruction* sub_0xFFFFFFF0 = new (GetAllocator()) HSub(
-      DataType::Type::kInt32, index, c_0xFFFFFFF0);
-  HInstruction* arr_set_3 = new (GetAllocator()) HArraySet(
-      array, add_0x10, c0, DataType::Type::kInt32, 0);
-  HInstruction* arr_set_4 = new (GetAllocator()) HArraySet(
-      array, sub_0xFFFFFFF0, c0, DataType::Type::kInt32, 0);
+  HInstruction* sub_0xFFFFFFF0 =
+      new (GetAllocator()) HSub(DataType::Type::kInt32, index, c_0xFFFFFFF0);
+  HInstruction* arr_set_3 =
+      new (GetAllocator()) HArraySet(array, add_0x10, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_4 =
+      new (GetAllocator()) HArraySet(array, sub_0xFFFFFFF0, c0, DataType::Type::kInt32, 0);
 
   // `index+0x7FFFFFFF` and `index-0x80000001` array indices MAY alias.
-  HInstruction* add_0x7FFFFFFF = new (GetAllocator()) HAdd(
-      DataType::Type::kInt32, index, c_0x7FFFFFFF);
-  HInstruction* sub_0x80000001 = new (GetAllocator()) HSub(
-      DataType::Type::kInt32, index, c_0x80000001);
-  HInstruction* arr_set_5 = new (GetAllocator()) HArraySet(
-      array, add_0x7FFFFFFF, c0, DataType::Type::kInt32, 0);
-  HInstruction* arr_set_6 = new (GetAllocator()) HArraySet(
-      array, sub_0x80000001, c0, DataType::Type::kInt32, 0);
+  HInstruction* add_0x7FFFFFFF =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c_0x7FFFFFFF);
+  HInstruction* sub_0x80000001 =
+      new (GetAllocator()) HSub(DataType::Type::kInt32, index, c_0x80000001);
+  HInstruction* arr_set_5 =
+      new (GetAllocator()) HArraySet(array, add_0x7FFFFFFF, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_6 =
+      new (GetAllocator()) HArraySet(array, sub_0x80000001, c0, DataType::Type::kInt32, 0);
 
   // `index+0` and `index-0` array indices MAY alias.
   HInstruction* add_0 = new (GetAllocator()) HAdd(DataType::Type::kInt32, index, c0);
   HInstruction* sub_0 = new (GetAllocator()) HSub(DataType::Type::kInt32, index, c0);
-  HInstruction* arr_set_7 = new (GetAllocator()) HArraySet(
-      array, add_0, c0, DataType::Type::kInt32, 0);
-  HInstruction* arr_set_8 = new (GetAllocator()) HArraySet(
-      array, sub_0, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_7 =
+      new (GetAllocator()) HArraySet(array, add_0, c0, DataType::Type::kInt32, 0);
+  HInstruction* arr_set_8 =
+      new (GetAllocator()) HArraySet(array, sub_0, c0, DataType::Type::kInt32, 0);
 
   entry->AddInstruction(array);
   entry->AddInstruction(index);
@@ -603,7 +583,7 @@ TEST_F(LoadStoreAnalysisTest, ArrayIndexCalculationOverflowTest) {
   entry->AddInstruction(arr_set_8);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kBasic);
   lsa.Run();
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
 
@@ -657,32 +637,21 @@ TEST_F(LoadStoreAnalysisTest, TestHuntOriginalRef) {
   // ParameterValue --> BoundType --> NullCheck --> ArrayGet
   // ParameterValue --> BoundType --> NullCheck --> IntermediateAddress --> ArrayGet
   HInstruction* c1 = graph_->GetIntConstant(1);
-  HInstruction* array = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                             dex::TypeIndex(0),
-                                                             0,
-                                                             DataType::Type::kReference);
-  HInstruction* array_get1 = new (GetAllocator()) HArrayGet(array,
-                                                            c1,
-                                                            DataType::Type::kInt32,
-                                                            0);
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* array_get1 = new (GetAllocator()) HArrayGet(array, c1, DataType::Type::kInt32, 0);
 
   HInstruction* bound_type = new (GetAllocator()) HBoundType(array);
-  HInstruction* array_get2 = new (GetAllocator()) HArrayGet(bound_type,
-                                                            c1,
-                                                            DataType::Type::kInt32,
-                                                            0);
+  HInstruction* array_get2 =
+      new (GetAllocator()) HArrayGet(bound_type, c1, DataType::Type::kInt32, 0);
 
   HInstruction* null_check = new (GetAllocator()) HNullCheck(bound_type, 0);
-  HInstruction* array_get3 = new (GetAllocator()) HArrayGet(null_check,
-                                                            c1,
-                                                            DataType::Type::kInt32,
-                                                            0);
+  HInstruction* array_get3 =
+      new (GetAllocator()) HArrayGet(null_check, c1, DataType::Type::kInt32, 0);
 
   HInstruction* inter_addr = new (GetAllocator()) HIntermediateAddress(null_check, c1, 0);
-  HInstruction* array_get4 = new (GetAllocator()) HArrayGet(inter_addr,
-                                                            c1,
-                                                            DataType::Type::kInt32,
-                                                            0);
+  HInstruction* array_get4 =
+      new (GetAllocator()) HArrayGet(inter_addr, c1, DataType::Type::kInt32, 0);
   entry->AddInstruction(array);
   entry->AddInstruction(array_get1);
   entry->AddInstruction(bound_type);
@@ -692,7 +661,7 @@ TEST_F(LoadStoreAnalysisTest, TestHuntOriginalRef) {
   entry->AddInstruction(inter_addr);
   entry->AddInstruction(array_get4);
 
-  ScopedArenaAllocator allocator(graph_->GetArenaStack());
+  ScopedArenaAllocator  allocator(graph_->GetArenaStack());
   HeapLocationCollector heap_location_collector(graph_, &allocator, LoadStoreAnalysisType::kFull);
   heap_location_collector.VisitBasicBlock(entry);
 
@@ -711,7 +680,7 @@ TEST_F(LoadStoreAnalysisTest, TestHuntOriginalRef) {
   ASSERT_EQ(loc1, loc4);
 }
 
-void LoadStoreAnalysisTest::CheckReachability(const AdjacencyListGraph& adj,
+void LoadStoreAnalysisTest::CheckReachability(const AdjacencyListGraph&                    adj,
                                               const std::vector<AdjacencyListGraph::Edge>& reach) {
   uint32_t cnt = 0;
   for (HBasicBlock* blk : graph_->GetBlocks()) {
@@ -721,11 +690,10 @@ void LoadStoreAnalysisTest::CheckReachability(const AdjacencyListGraph& adj,
           continue;
         }
         if (adj.HasBlock(other)) {
-          bool contains_edge =
-              std::find(reach.begin(),
-                        reach.end(),
-                        AdjacencyListGraph::Edge { adj.GetName(blk), adj.GetName(other) }) !=
-              reach.end();
+          bool contains_edge = std::find(reach.begin(),
+                                         reach.end(),
+                                         AdjacencyListGraph::Edge{
+                                             adj.GetName(blk), adj.GetName(other)}) != reach.end();
           if (graph_->PathBetween(blk, other)) {
             cnt++;
             EXPECT_TRUE(contains_edge) << "Unexpected edge found between " << adj.GetName(blk)
@@ -756,14 +724,14 @@ TEST_F(LoadStoreAnalysisTest, ReachabilityTest1) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
   CheckReachability(blks,
                     {
-                        { "entry", "left" },
-                        { "entry", "right" },
-                        { "entry", "exit" },
-                        { "right", "exit" },
-                        { "left", "exit" },
+                        {"entry", "left"},
+                        {"entry", "right"},
+                        {"entry", "exit"},
+                        {"right", "exit"},
+                        {"left", "exit"},
                     });
 }
 
@@ -771,37 +739,37 @@ TEST_F(LoadStoreAnalysisTest, ReachabilityTest2) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "loop-header" }, { "loop-header", "loop" }, { "loop", "loop-header" } }));
+      {{"entry", "loop-header"}, {"loop-header", "loop"}, {"loop", "loop-header"}}));
   CheckReachability(blks,
                     {
-                        { "entry", "loop-header" },
-                        { "entry", "loop" },
-                        { "loop-header", "loop-header" },
-                        { "loop-header", "loop" },
-                        { "loop", "loop-header" },
-                        { "loop", "loop" },
+                        {"entry", "loop-header"},
+                        {"entry", "loop"},
+                        {"loop-header", "loop-header"},
+                        {"loop-header", "loop"},
+                        {"loop", "loop-header"},
+                        {"loop", "loop"},
                     });
 }
 
 TEST_F(LoadStoreAnalysisTest, ReachabilityTest3) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "loop-header" },
-                                                   { "loop-header", "loop" },
-                                                   { "loop", "loop-header" },
-                                                   { "entry", "right" },
-                                                   { "right", "exit" } }));
+                                                 {{"entry", "loop-header"},
+                                                  {"loop-header", "loop"},
+                                                  {"loop", "loop-header"},
+                                                  {"entry", "right"},
+                                                  {"right", "exit"}}));
   CheckReachability(blks,
                     {
-                        { "entry", "loop-header" },
-                        { "entry", "loop" },
-                        { "entry", "right" },
-                        { "entry", "exit" },
-                        { "loop-header", "loop-header" },
-                        { "loop-header", "loop" },
-                        { "loop", "loop-header" },
-                        { "loop", "loop" },
-                        { "right", "exit" },
+                        {"entry", "loop-header"},
+                        {"entry", "loop"},
+                        {"entry", "right"},
+                        {"entry", "exit"},
+                        {"loop-header", "loop-header"},
+                        {"loop-header", "loop"},
+                        {"loop", "loop-header"},
+                        {"loop", "loop"},
+                        {"right", "exit"},
                     });
 }
 
@@ -842,11 +810,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -876,11 +844,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -913,12 +881,12 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape) {
   exit->AddInstruction(read_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_TRUE(esg->IsValid());
   ASSERT_TRUE(IsValidSubgraph(esg));
@@ -949,11 +917,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape2) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -983,11 +951,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape2) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1020,12 +988,12 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape2) {
   exit->AddInstruction(read_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_TRUE(esg->IsValid());
   ASSERT_TRUE(IsValidSubgraph(esg));
@@ -1057,11 +1025,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape3) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -1104,11 +1072,11 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape3) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1141,12 +1109,12 @@ TEST_F(LoadStoreAnalysisTest, PartialEscape3) {
   exit->AddInstruction(read_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_TRUE(esg->IsValid());
   ASSERT_TRUE(IsValidSubgraph(esg));
@@ -1181,10 +1149,10 @@ TEST_F(LoadStoreAnalysisTest, TotalEscapeAdjacentNoPredicated) {
       "entry",
       "exit",
       {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -1259,8 +1227,8 @@ TEST_F(LoadStoreAnalysisTest, TotalEscapeAdjacentNoPredicated) {
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   EXPECT_FALSE(esg->IsValid()) << esg->GetExcludedCohorts();
   EXPECT_FALSE(IsValidSubgraph(esg));
@@ -1291,11 +1259,11 @@ TEST_F(LoadStoreAnalysisTest, TotalEscapeAdjacent) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -1325,11 +1293,11 @@ TEST_F(LoadStoreAnalysisTest, TotalEscapeAdjacent) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1369,8 +1337,8 @@ TEST_F(LoadStoreAnalysisTest, TotalEscapeAdjacent) {
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   EXPECT_TRUE(esg->IsValid()) << esg->GetExcludedCohorts();
   EXPECT_TRUE(IsValidSubgraph(esg));
@@ -1400,11 +1368,11 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* left = blks.Get("left");
-  HBasicBlock* right = blks.Get("right");
-  HBasicBlock* exit = blks.Get("exit");
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       left = blks.Get("left");
+  HBasicBlock*       right = blks.Get("right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -1434,11 +1402,11 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1450,11 +1418,11 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* write_right = new (GetAllocator()) HInstanceFieldSet(new_inst,
                                                                      c0,
@@ -1484,12 +1452,12 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape) {
   exit->AddInstruction(read_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_FALSE(esg->IsValid());
   ASSERT_FALSE(IsValidSubgraph(esg));
@@ -1509,9 +1477,9 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape) {
 // // EXIT
 // return obj;
 TEST_F(LoadStoreAnalysisTest, TotalEscape2) {
-  AdjacencyListGraph blks(SetupFromAdjacencyList("entry", "exit", { { "entry", "exit" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* exit = blks.Get("exit");
+  AdjacencyListGraph blks(SetupFromAdjacencyList("entry", "exit", {{"entry", "exit"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* c0 = graph_->GetIntConstant(0);
   HInstruction* cls = new (GetAllocator()) HLoadClass(graph_->GetCurrentMethod(),
@@ -1549,12 +1517,12 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape2) {
   exit->AddInstruction(return_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_FALSE(esg->IsValid());
   ASSERT_FALSE(IsValidSubgraph(esg));
@@ -1589,21 +1557,21 @@ TEST_F(LoadStoreAnalysisTest, TotalEscape2) {
 TEST_F(LoadStoreAnalysisTest, DoubleDiamondEscape) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "high_left" },
-                                                   { "entry", "high_right" },
-                                                   { "low_left", "exit" },
-                                                   { "low_right", "exit" },
-                                                   { "high_right", "mid" },
-                                                   { "high_left", "mid" },
-                                                   { "mid", "low_left" },
-                                                   { "mid", "low_right" } }));
-  HBasicBlock* entry = blks.Get("entry");
-  HBasicBlock* high_left = blks.Get("high_left");
-  HBasicBlock* high_right = blks.Get("high_right");
-  HBasicBlock* mid = blks.Get("mid");
-  HBasicBlock* low_left = blks.Get("low_left");
-  HBasicBlock* low_right = blks.Get("low_right");
-  HBasicBlock* exit = blks.Get("exit");
+                                                 {{"entry", "high_left"},
+                                                  {"entry", "high_right"},
+                                                  {"low_left", "exit"},
+                                                  {"low_right", "exit"},
+                                                  {"high_right", "mid"},
+                                                  {"high_left", "mid"},
+                                                  {"mid", "low_left"},
+                                                  {"mid", "low_right"}}));
+  HBasicBlock*       entry = blks.Get("entry");
+  HBasicBlock*       high_left = blks.Get("high_left");
+  HBasicBlock*       high_right = blks.Get("high_right");
+  HBasicBlock*       mid = blks.Get("mid");
+  HBasicBlock*       low_left = blks.Get("low_left");
+  HBasicBlock*       low_right = blks.Get("low_right");
+  HBasicBlock*       exit = blks.Get("exit");
 
   HInstruction* bool_value1 = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kBool);
@@ -1637,11 +1605,11 @@ TEST_F(LoadStoreAnalysisTest, DoubleDiamondEscape) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_left = new (GetAllocator()) HGoto();
   call_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1693,11 +1661,11 @@ TEST_F(LoadStoreAnalysisTest, DoubleDiamondEscape) {
                             1,
                             DataType::Type::kVoid,
                             0,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             nullptr,
                             {},
                             InvokeType::kStatic,
-                            { nullptr, 0 },
+                            {nullptr, 0},
                             HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
   HInstruction* goto_low_left = new (GetAllocator()) HGoto();
   call_low_left->AsInvoke()->SetRawInputAt(0, new_inst);
@@ -1730,12 +1698,12 @@ TEST_F(LoadStoreAnalysisTest, DoubleDiamondEscape) {
   exit->AddInstruction(read_final);
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
 
   ASSERT_FALSE(esg->IsValid());
   ASSERT_FALSE(IsValidSubgraph(esg));
@@ -1901,12 +1869,12 @@ TEST_F(LoadStoreAnalysisTest, PartialPhiPropagation1) {
   graph_->BuildDominatorTree();
 
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
+  LoadStoreAnalysis    lsa(graph_, nullptr, &allocator, LoadStoreAnalysisType::kFull);
   lsa.Run();
 
   const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  ReferenceInfo* info = heap_location_collector.FindReferenceInfoOf(new_inst);
-  const ExecutionSubgraph* esg = info->GetNoEscapeSubgraph();
+  ReferenceInfo*               info = heap_location_collector.FindReferenceInfoOf(new_inst);
+  const ExecutionSubgraph*     esg = info->GetNoEscapeSubgraph();
   std::unordered_set<const HBasicBlock*> contents(esg->ReachableBlocks().begin(),
                                                   esg->ReachableBlocks().end());
 

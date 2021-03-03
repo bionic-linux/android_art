@@ -49,8 +49,9 @@ namespace arm {
 #define ___ assembler.GetVIXLAssembler()->
 #endif
 
-static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
-    ArenaAllocator* allocator, EntryPointCallingConvention abi, ThreadOffset32 offset) {
+static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
+                                                                    EntryPointCallingConvention abi,
+                                                                    ThreadOffset32 offset) {
   using vixl::aarch32::MemOperand;
   using vixl::aarch32::pc;
   using vixl::aarch32::r0;
@@ -62,7 +63,7 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
       break;
     case kJniAbi: {  // Load via Thread* held in JNIEnv* in first argument (R0).
       vixl::aarch32::UseScratchRegisterScope temps(assembler.GetVIXLAssembler());
-      const vixl::aarch32::Register temp_reg = temps.Acquire();
+      const vixl::aarch32::Register          temp_reg = temps.Acquire();
 
       // VIXL will use the destination as a scratch register if
       // the offset is not encodable as an immediate operand.
@@ -74,11 +75,11 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
       ___ Ldr(pc, MemOperand(tr, offset.Int32Value()));
   }
 
-  __ FinalizeCode();
-  size_t cs = __ CodeSize();
+  __     FinalizeCode();
+  size_t cs = __                        CodeSize();
   std::unique_ptr<std::vector<uint8_t>> entry_stub(new std::vector<uint8_t>(cs));
-  MemoryRegion code(entry_stub->data(), entry_stub->size());
-  __ FinalizeInstructions(code);
+  MemoryRegion                          code(entry_stub->data(), entry_stub->size());
+  __                                    FinalizeInstructions(code);
 
   return std::move(entry_stub);
 }
@@ -90,37 +91,41 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
 
 #ifdef ART_ENABLE_CODEGEN_arm64
 namespace arm64 {
-static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
-    ArenaAllocator* allocator, EntryPointCallingConvention abi, ThreadOffset64 offset) {
+static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
+                                                                    EntryPointCallingConvention abi,
+                                                                    ThreadOffset64 offset) {
   Arm64Assembler assembler(allocator);
 
   switch (abi) {
     case kInterpreterAbi:  // Thread* is first argument (X0) in interpreter ABI.
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(X0), Offset(offset.Int32Value()),
-          Arm64ManagedRegister::FromXRegister(IP1));
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(X0),
+                Offset(offset.Int32Value()),
+                Arm64ManagedRegister::FromXRegister(IP1));
 
       break;
     case kJniAbi:  // Load via Thread* held in JNIEnv* in first argument (X0).
       __ LoadRawPtr(Arm64ManagedRegister::FromXRegister(IP1),
-                      Arm64ManagedRegister::FromXRegister(X0),
-                      Offset(JNIEnvExt::SelfOffset(8).Int32Value()));
+                    Arm64ManagedRegister::FromXRegister(X0),
+                    Offset(JNIEnvExt::SelfOffset(8).Int32Value()));
 
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(IP1), Offset(offset.Int32Value()),
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(IP1),
+                Offset(offset.Int32Value()),
                 Arm64ManagedRegister::FromXRegister(IP0));
 
       break;
     case kQuickAbi:  // X18 holds Thread*.
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(TR), Offset(offset.Int32Value()),
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(TR),
+                Offset(offset.Int32Value()),
                 Arm64ManagedRegister::FromXRegister(IP0));
 
       break;
   }
 
-  __ FinalizeCode();
-  size_t cs = __ CodeSize();
+  __     FinalizeCode();
+  size_t cs = __                        CodeSize();
   std::unique_ptr<std::vector<uint8_t>> entry_stub(new std::vector<uint8_t>(cs));
-  MemoryRegion code(entry_stub->data(), entry_stub->size());
-  __ FinalizeInstructions(code);
+  MemoryRegion                          code(entry_stub->data(), entry_stub->size());
+  __                                    FinalizeInstructions(code);
 
   return std::move(entry_stub);
 }
@@ -130,18 +135,18 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
 #ifdef ART_ENABLE_CODEGEN_x86
 namespace x86 {
 static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
-                                                                    ThreadOffset32 offset) {
+                                                                    ThreadOffset32  offset) {
   X86Assembler assembler(allocator);
 
   // All x86 trampolines call via the Thread* held in fs.
   __ fs()->jmp(Address::Absolute(offset));
   __ int3();
 
-  __ FinalizeCode();
-  size_t cs = __ CodeSize();
+  __     FinalizeCode();
+  size_t cs = __                        CodeSize();
   std::unique_ptr<std::vector<uint8_t>> entry_stub(new std::vector<uint8_t>(cs));
-  MemoryRegion code(entry_stub->data(), entry_stub->size());
-  __ FinalizeInstructions(code);
+  MemoryRegion                          code(entry_stub->data(), entry_stub->size());
+  __                                    FinalizeInstructions(code);
 
   return std::move(entry_stub);
 }
@@ -151,37 +156,35 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocat
 #ifdef ART_ENABLE_CODEGEN_x86_64
 namespace x86_64 {
 static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
-                                                                    ThreadOffset64 offset) {
+                                                                    ThreadOffset64  offset) {
   x86_64::X86_64Assembler assembler(allocator);
 
   // All x86 trampolines call via the Thread* held in gs.
   __ gs()->jmp(x86_64::Address::Absolute(offset, true));
   __ int3();
 
-  __ FinalizeCode();
-  size_t cs = __ CodeSize();
+  __     FinalizeCode();
+  size_t cs = __                        CodeSize();
   std::unique_ptr<std::vector<uint8_t>> entry_stub(new std::vector<uint8_t>(cs));
-  MemoryRegion code(entry_stub->data(), entry_stub->size());
-  __ FinalizeInstructions(code);
+  MemoryRegion                          code(entry_stub->data(), entry_stub->size());
+  __                                    FinalizeInstructions(code);
 
   return std::move(entry_stub);
 }
 }  // namespace x86_64
 #endif  // ART_ENABLE_CODEGEN_x86_64
 
-std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline64(InstructionSet isa,
+std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline64(InstructionSet              isa,
                                                                EntryPointCallingConvention abi,
-                                                               ThreadOffset64 offset) {
+                                                               ThreadOffset64              offset) {
   MallocArenaPool pool;
-  ArenaAllocator allocator(&pool);
+  ArenaAllocator  allocator(&pool);
   switch (isa) {
 #ifdef ART_ENABLE_CODEGEN_arm64
-    case InstructionSet::kArm64:
-      return arm64::CreateTrampoline(&allocator, abi, offset);
+    case InstructionSet::kArm64: return arm64::CreateTrampoline(&allocator, abi, offset);
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86_64
-    case InstructionSet::kX86_64:
-      return x86_64::CreateTrampoline(&allocator, offset);
+    case InstructionSet::kX86_64: return x86_64::CreateTrampoline(&allocator, offset);
 #endif
     default:
       UNUSED(abi);
@@ -191,25 +194,20 @@ std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline64(InstructionSet is
   }
 }
 
-std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline32(InstructionSet isa,
+std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline32(InstructionSet              isa,
                                                                EntryPointCallingConvention abi,
-                                                               ThreadOffset32 offset) {
+                                                               ThreadOffset32              offset) {
   MallocArenaPool pool;
-  ArenaAllocator allocator(&pool);
+  ArenaAllocator  allocator(&pool);
   switch (isa) {
 #ifdef ART_ENABLE_CODEGEN_arm
     case InstructionSet::kArm:
-    case InstructionSet::kThumb2:
-      return arm::CreateTrampoline(&allocator, abi, offset);
+    case InstructionSet::kThumb2: return arm::CreateTrampoline(&allocator, abi, offset);
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86
-    case InstructionSet::kX86:
-      UNUSED(abi);
-      return x86::CreateTrampoline(&allocator, offset);
+    case InstructionSet::kX86: UNUSED(abi); return x86::CreateTrampoline(&allocator, offset);
 #endif
-    default:
-      LOG(FATAL) << "Unexpected InstructionSet: " << isa;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected InstructionSet: " << isa; UNREACHABLE();
   }
 }
 

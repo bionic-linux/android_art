@@ -27,14 +27,12 @@ namespace art {
 class GVNTest : public OptimizingUnitTest {};
 
 TEST_F(GVNTest, LocalFieldElimination) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(graph->GetDexFile(),
-                                                                 dex::TypeIndex(0),
-                                                                 0,
-                                                                 DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
@@ -108,14 +106,12 @@ TEST_F(GVNTest, LocalFieldElimination) {
 }
 
 TEST_F(GVNTest, GlobalFieldElimination) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(graph->GetDexFile(),
-                                                                 dex::TypeIndex(0),
-                                                                 0,
-                                                                 DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
@@ -187,15 +183,13 @@ TEST_F(GVNTest, GlobalFieldElimination) {
 }
 
 TEST_F(GVNTest, LoopFieldElimination) {
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
 
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(graph->GetDexFile(),
-                                                                 dex::TypeIndex(0),
-                                                                 0,
-                                                                 DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
@@ -308,7 +302,7 @@ TEST_F(GVNTest, LoopFieldElimination) {
 TEST_F(GVNTest, LoopSideEffects) {
   static const SideEffects kCanTriggerGC = SideEffects::CanTriggerGC();
 
-  HGraph* graph = CreateGraph();
+  HGraph*      graph = CreateGraph();
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
@@ -336,10 +330,8 @@ TEST_F(GVNTest, LoopSideEffects) {
   inner_loop_body->AddSuccessor(inner_loop_header);
   inner_loop_exit->AddSuccessor(outer_loop_header);
 
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(graph->GetDexFile(),
-                                                                 dex::TypeIndex(0),
-                                                                 0,
-                                                                 DataType::Type::kBool);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kBool);
   entry->AddInstruction(parameter);
   entry->AddInstruction(new (GetAllocator()) HGoto());
   outer_loop_header->AddInstruction(new (GetAllocator()) HSuspendCheck());
@@ -353,8 +345,8 @@ TEST_F(GVNTest, LoopSideEffects) {
 
   graph->BuildDominatorTree();
 
-  ASSERT_TRUE(inner_loop_header->GetLoopInformation()->IsIn(
-      *outer_loop_header->GetLoopInformation()));
+  ASSERT_TRUE(
+      inner_loop_header->GetLoopInformation()->IsIn(*outer_loop_header->GetLoopInformation()));
 
   // Check that the only side effect of loops is to potentially trigger GC.
   {
@@ -383,18 +375,18 @@ TEST_F(GVNTest, LoopSideEffects) {
 
   // Check that the side effects of the outer loop does not affect the inner loop.
   {
-    outer_loop_body->InsertInstructionBefore(
-        new (GetAllocator()) HInstanceFieldSet(parameter,
-                                               parameter,
-                                               nullptr,
-                                               DataType::Type::kReference,
-                                               MemberOffset(42),
-                                               false,
-                                               kUnknownFieldIndex,
-                                               kUnknownClassDefIndex,
-                                               graph->GetDexFile(),
-                                               0),
-        outer_loop_body->GetLastInstruction());
+    outer_loop_body->InsertInstructionBefore(new (GetAllocator())
+                                                 HInstanceFieldSet(parameter,
+                                                                   parameter,
+                                                                   nullptr,
+                                                                   DataType::Type::kReference,
+                                                                   MemberOffset(42),
+                                                                   false,
+                                                                   kUnknownFieldIndex,
+                                                                   kUnknownClassDefIndex,
+                                                                   graph->GetDexFile(),
+                                                                   0),
+                                             outer_loop_body->GetLastInstruction());
 
     SideEffectsAnalysis side_effects(graph);
     side_effects.Run();
@@ -409,18 +401,18 @@ TEST_F(GVNTest, LoopSideEffects) {
   // Check that the side effects of the inner loop affects the outer loop.
   {
     outer_loop_body->RemoveInstruction(outer_loop_body->GetFirstInstruction());
-    inner_loop_body->InsertInstructionBefore(
-        new (GetAllocator()) HInstanceFieldSet(parameter,
-                                               parameter,
-                                               nullptr,
-                                               DataType::Type::kReference,
-                                               MemberOffset(42),
-                                               false,
-                                               kUnknownFieldIndex,
-                                               kUnknownClassDefIndex,
-                                               graph->GetDexFile(),
-                                               0),
-        inner_loop_body->GetLastInstruction());
+    inner_loop_body->InsertInstructionBefore(new (GetAllocator())
+                                                 HInstanceFieldSet(parameter,
+                                                                   parameter,
+                                                                   nullptr,
+                                                                   DataType::Type::kReference,
+                                                                   MemberOffset(42),
+                                                                   false,
+                                                                   kUnknownFieldIndex,
+                                                                   kUnknownClassDefIndex,
+                                                                   graph->GetDexFile(),
+                                                                   0),
+                                             inner_loop_body->GetLastInstruction());
 
     SideEffectsAnalysis side_effects(graph);
     side_effects.Run();

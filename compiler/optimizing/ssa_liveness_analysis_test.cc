@@ -43,25 +43,25 @@ class SsaLivenessAnalysisTest : public OptimizingUnitTest {
 
  protected:
   HBasicBlock* CreateSuccessor(HBasicBlock* block) {
-    HGraph* graph = block->GetGraph();
+    HGraph*      graph = block->GetGraph();
     HBasicBlock* successor = new (GetAllocator()) HBasicBlock(graph);
     graph->AddBlock(successor);
     block->AddSuccessor(successor);
     return successor;
   }
 
-  HGraph* graph_;
+  HGraph*                          graph_;
   std::unique_ptr<CompilerOptions> compiler_options_;
-  std::unique_ptr<CodeGenerator> codegen_;
-  HBasicBlock* entry_;
+  std::unique_ptr<CodeGenerator>   codegen_;
+  HBasicBlock*                     entry_;
 };
 
 TEST_F(SsaLivenessAnalysisTest, TestReturnArg) {
-  HInstruction* arg = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* arg = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
   entry_->AddInstruction(arg);
 
-  HBasicBlock* block = CreateSuccessor(entry_);
+  HBasicBlock*  block = CreateSuccessor(entry_);
   HInstruction* ret = new (GetAllocator()) HReturn(arg);
   block->AddInstruction(ret);
   block->AddInstruction(new (GetAllocator()) HExit());
@@ -77,22 +77,22 @@ TEST_F(SsaLivenessAnalysisTest, TestReturnArg) {
 }
 
 TEST_F(SsaLivenessAnalysisTest, TestAput) {
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
-  HInstruction* value = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
-  HInstruction* extra_arg1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
-  HInstruction* extra_arg2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
-  HInstruction* const args[] = { array, index, value, extra_arg1, extra_arg2 };
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* value = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
+  HInstruction* extra_arg1 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
+  HInstruction* extra_arg2 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
+  HInstruction* const args[] = {array, index, value, extra_arg1, extra_arg2};
   for (HInstruction* insn : args) {
     entry_->AddInstruction(insn);
   }
 
-  HBasicBlock* block = CreateSuccessor(entry_);
+  HBasicBlock*  block = CreateSuccessor(entry_);
   HInstruction* null_check = new (GetAllocator()) HNullCheck(array, 0);
   block->AddInstruction(null_check);
   HEnvironment* null_check_env = new (GetAllocator()) HEnvironment(GetAllocator(),
@@ -125,11 +125,11 @@ TEST_F(SsaLivenessAnalysisTest, TestAput) {
   EXPECT_EQ(18u, bounds_check->GetLifetimePosition());
   static const char* const expected[] = {
       "ranges: { [2,21) }, uses: { 15 17 21 }, { 15 19 } is_fixed: 0, is_split: 0 is_low: 0 "
-          "is_high: 0",
+      "is_high: 0",
       "ranges: { [4,21) }, uses: { 19 21 }, { } is_fixed: 0, is_split: 0 is_low: 0 "
-          "is_high: 0",
+      "is_high: 0",
       "ranges: { [6,21) }, uses: { 21 }, { } is_fixed: 0, is_split: 0 is_low: 0 "
-          "is_high: 0",
+      "is_high: 0",
       // Environment uses do not keep the non-reference argument alive.
       "ranges: { [8,10) }, uses: { }, { } is_fixed: 0, is_split: 0 is_low: 0 is_high: 0",
       // Environment uses keep the reference argument alive.
@@ -146,22 +146,22 @@ TEST_F(SsaLivenessAnalysisTest, TestAput) {
 }
 
 TEST_F(SsaLivenessAnalysisTest, TestDeoptimize) {
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
-  HInstruction* value = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
-  HInstruction* extra_arg1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
-  HInstruction* extra_arg2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
-  HInstruction* const args[] = { array, index, value, extra_arg1, extra_arg2 };
+  HInstruction* array = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* index = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+  HInstruction* value = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
+  HInstruction* extra_arg1 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
+  HInstruction* extra_arg2 = new (GetAllocator())
+      HParameterValue(graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
+  HInstruction* const args[] = {array, index, value, extra_arg1, extra_arg2};
   for (HInstruction* insn : args) {
     entry_->AddInstruction(insn);
   }
 
-  HBasicBlock* block = CreateSuccessor(entry_);
+  HBasicBlock*  block = CreateSuccessor(entry_);
   HInstruction* null_check = new (GetAllocator()) HNullCheck(array, 0);
   block->AddInstruction(null_check);
   HEnvironment* null_check_env = new (GetAllocator()) HEnvironment(GetAllocator(),
@@ -176,8 +176,8 @@ TEST_F(SsaLivenessAnalysisTest, TestDeoptimize) {
   // Use HAboveOrEqual+HDeoptimize as the bounds check.
   HInstruction* ae = new (GetAllocator()) HAboveOrEqual(index, length);
   block->AddInstruction(ae);
-  HInstruction* deoptimize = new(GetAllocator()) HDeoptimize(
-      GetAllocator(), ae, DeoptimizationKind::kBlockBCE, /* dex_pc= */ 0u);
+  HInstruction* deoptimize = new (GetAllocator())
+      HDeoptimize(GetAllocator(), ae, DeoptimizationKind::kBlockBCE, /* dex_pc= */ 0u);
   block->AddInstruction(deoptimize);
   HEnvironment* deoptimize_env = new (GetAllocator()) HEnvironment(GetAllocator(),
                                                                    /* number_of_vregs= */ 5,
@@ -198,9 +198,9 @@ TEST_F(SsaLivenessAnalysisTest, TestDeoptimize) {
   EXPECT_EQ(20u, deoptimize->GetLifetimePosition());
   static const char* const expected[] = {
       "ranges: { [2,23) }, uses: { 15 17 23 }, { 15 21 } is_fixed: 0, is_split: 0 is_low: 0 "
-          "is_high: 0",
+      "is_high: 0",
       "ranges: { [4,23) }, uses: { 19 23 }, { 21 } is_fixed: 0, is_split: 0 is_low: 0 "
-          "is_high: 0",
+      "is_high: 0",
       "ranges: { [6,23) }, uses: { 23 }, { 21 } is_fixed: 0, is_split: 0 is_low: 0 is_high: 0",
       // Environment use in HDeoptimize keeps even the non-reference argument alive.
       "ranges: { [8,21) }, uses: { }, { 21 } is_fixed: 0, is_split: 0 is_low: 0 is_high: 0",

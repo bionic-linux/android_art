@@ -17,9 +17,9 @@
 #include "ssa_phi_elimination.h"
 
 #include "base/arena_bit_vector.h"
+#include "base/bit_vector-inl.h"
 #include "base/scoped_arena_allocator.h"
 #include "base/scoped_arena_containers.h"
-#include "base/bit_vector-inl.h"
 
 namespace art {
 
@@ -33,7 +33,7 @@ void SsaDeadPhiElimination::MarkDeadPhis() {
   // Use local allocator for allocating memory used by this optimization.
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
-  static constexpr size_t kDefaultWorklistSize = 8;
+  static constexpr size_t  kDefaultWorklistSize = 8;
   ScopedArenaVector<HPhi*> worklist(allocator.Adapter(kArenaAllocSsaPhiElimination));
   worklist.reserve(kDefaultWorklistSize);
 
@@ -95,7 +95,7 @@ void SsaDeadPhiElimination::EliminateDeadPhis() {
   for (HBasicBlock* block : graph_->GetPostOrder()) {
     HInstruction* current = block->GetFirstPhi();
     HInstruction* next = nullptr;
-    HPhi* phi;
+    HPhi*         phi;
     while (current != nullptr) {
       phi = current->AsPhi();
       next = current->GetNext();
@@ -116,7 +116,7 @@ void SsaDeadPhiElimination::EliminateDeadPhis() {
           user->SetRawEnvAt(use.GetIndex(), nullptr);
         }
         // Delete it from the instruction list.
-        block->RemovePhi(phi, /*ensure_safety=*/ false);
+        block->RemovePhi(phi, /*ensure_safety=*/false);
       }
       current = next;
     }
@@ -127,7 +127,7 @@ bool SsaRedundantPhiElimination::Run() {
   // Use local allocator for allocating memory used by this optimization.
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
-  static constexpr size_t kDefaultWorklistSize = 8;
+  static constexpr size_t  kDefaultWorklistSize = 8;
   ScopedArenaVector<HPhi*> worklist(allocator.Adapter(kArenaAllocSsaPhiElimination));
   worklist.reserve(kDefaultWorklistSize);
 

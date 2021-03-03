@@ -32,10 +32,10 @@ class LoadStoreElimination : public HOptimization {
   // Controls whether to enable VLOG(compiler) logs explaining the transforms taking place.
   static constexpr bool kVerboseLoggingMode = false;
 
-  LoadStoreElimination(HGraph* graph,
+  LoadStoreElimination(HGraph*                  graph,
                        OptimizingCompilerStats* stats,
-                       const char* name = kLoadStoreEliminationPassName)
-      : HOptimization(graph, name, stats) {}
+                       const char*              name = kLoadStoreEliminationPassName) :
+      HOptimization(graph, name, stats) {}
 
   bool Run() override {
     return Run(kEnablePartialLSE);
