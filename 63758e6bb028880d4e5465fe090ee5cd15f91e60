@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90b7a49_963c2606",
+        "filename": ".clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-03T23:20:45Z",
+      "side": 1,
+      "message": "You have AllowShortFunctionsOnASingleLine in here twice. I\u0027d remove this one so that empty functions can still be on a single line.",
+      "revId": "63758e6bb028880d4e5465fe090ee5cd15f91e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349290a9_17fdea8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-03T23:20:45Z",
+      "side": 1,
+      "message": "Here\u0027s a diff of what applying this change to metrics_common.cc looks like, after applying my suggested change to this CL: https://paste.googleplex.com/6447996695740416\n\nIt looks pretty close to the format I was already using, and I\u0027m willing to live with the changes it suggests.\n\nWhy is Bypass-Presubmit on?",
+      "revId": "63758e6bb028880d4e5465fe090ee5cd15f91e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
