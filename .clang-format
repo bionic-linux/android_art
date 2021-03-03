@@ -1,0 +1,19 @@
+---
+BasedOnStyle: Google
+---
+
+Language: Cpp
+
+AllowAllArgumentsOnNextLine: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: false
+BinPackArguments: false
+BinPackParameters: false
+ColumnLimit: 100
+CommentPragmas: NOLINT:.*
+DerivePointerAlignment: false
+PointerAlignment: Left
+TabWidth: 2
+UseTab: Never
