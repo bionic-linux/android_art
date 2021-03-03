@@ -18,8 +18,8 @@
 #define ART_COMPILER_DEBUG_ELF_SYMTAB_WRITER_H_
 
 #include <map>
-#include <unordered_set>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "base/utils.h"
 #include "debug/debug_info.h"
@@ -51,7 +51,7 @@ constexpr const char* kDexFileSymbolName = "$dexfile";
 static void GetDedupedName(const std::vector<const MethodDebugInfo*>& methods, std::string* out) {
   DCHECK(!methods.empty());
   const MethodDebugInfo* first = methods.front();
-  auto is_same_class = [&first](const MethodDebugInfo* mi) {
+  auto                   is_same_class = [&first](const MethodDebugInfo* mi) {
     DCHECK(mi->dex_file != nullptr);
     return mi->dex_file == first->dex_file && mi->class_def_index == first->class_def_index;
   };
@@ -81,12 +81,12 @@ static void GetDedupedName(const std::vector<const MethodDebugInfo*>& methods, s
 
 template <typename ElfTypes>
 static void WriteDebugSymbols(ElfBuilder<ElfTypes>* builder,
-                              bool mini_debug_info,
-                              const DebugInfo& debug_info) {
-  uint64_t mapping_symbol_address = std::numeric_limits<uint64_t>::max();
+                              bool                  mini_debug_info,
+                              const DebugInfo&      debug_info) {
+  uint64_t    mapping_symbol_address = std::numeric_limits<uint64_t>::max();
   const auto* text = builder->GetText();
-  auto* strtab = builder->GetStrTab();
-  auto* symtab = builder->GetSymTab();
+  auto*       strtab = builder->GetStrTab();
+  auto*       symtab = builder->GetSymTab();
 
   if (debug_info.Empty()) {
     return;
@@ -151,7 +151,7 @@ static void WriteDebugSymbols(ElfBuilder<ElfTypes>* builder,
   if (!debug_info.dex_files.empty() && builder->GetDex()->Exists()) {
     auto dex = builder->GetDex();
     for (auto it : debug_info.dex_files) {
-      uint64_t dex_address = dex->GetAddress() + it.first /* offset within the section */;
+      uint64_t       dex_address = dex->GetAddress() + it.first /* offset within the section */;
       const DexFile* dex_file = it.second;
       typename ElfTypes::Word dex_name = strtab->Write(kDexFileSymbolName);
       symtab->Add(dex_name, dex, dex_address, dex_file->Size(), STB_GLOBAL, STT_FUNC);
@@ -167,4 +167,3 @@ static void WriteDebugSymbols(ElfBuilder<ElfTypes>* builder,
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_SYMTAB_WRITER_H_
-

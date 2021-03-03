@@ -34,9 +34,9 @@ static bool CanIntegerRangesOverlap(int64_t l1, int64_t h1, int64_t l2, int64_t 
 }
 
 static bool CanBinaryOpAndIndexAlias(const HBinaryOperation* idx1,
-                                     const size_t vector_length1,
-                                     const HInstruction* idx2,
-                                     const size_t vector_length2) {
+                                     const size_t            vector_length1,
+                                     const HInstruction*     idx2,
+                                     const size_t            vector_length2) {
   if (!IsAddOrSub(idx1)) {
     // We currently only support Add and Sub operations.
     return true;
@@ -51,9 +51,8 @@ static bool CanBinaryOpAndIndexAlias(const HBinaryOperation* idx1,
 
   // Since 'i' are the same in [i+CONST] and [i],
   // further compare [CONST] and [0].
-  int64_t l1 = idx1->IsAdd() ?
-               idx1->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx1->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l1 = idx1->IsAdd() ? idx1->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx1->GetConstantRight()->AsIntConstant()->GetValue();
   int64_t l2 = 0;
   int64_t h1 = l1 + (vector_length1 - 1);
   int64_t h2 = l2 + (vector_length2 - 1);
@@ -61,9 +60,9 @@ static bool CanBinaryOpAndIndexAlias(const HBinaryOperation* idx1,
 }
 
 static bool CanBinaryOpsAlias(const HBinaryOperation* idx1,
-                              const size_t vector_length1,
+                              const size_t            vector_length1,
                               const HBinaryOperation* idx2,
-                              const size_t vector_length2) {
+                              const size_t            vector_length2) {
   if (!IsAddOrSub(idx1) || !IsAddOrSub(idx2)) {
     // We currently only support Add and Sub operations.
     return true;
@@ -73,19 +72,16 @@ static bool CanBinaryOpsAlias(const HBinaryOperation* idx1,
     // Cannot analyze [i+CONST1] and [j+CONST2].
     return true;
   }
-  if (!idx1->GetConstantRight()->IsIntConstant() ||
-      !idx2->GetConstantRight()->IsIntConstant()) {
+  if (!idx1->GetConstantRight()->IsIntConstant() || !idx2->GetConstantRight()->IsIntConstant()) {
     return true;
   }
 
   // Since 'i' are the same in [i+CONST1] and [i+CONST2],
   // further compare [CONST1] and [CONST2].
-  int64_t l1 = idx1->IsAdd() ?
-               idx1->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx1->GetConstantRight()->AsIntConstant()->GetValue();
-  int64_t l2 = idx2->IsAdd() ?
-               idx2->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx2->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l1 = idx1->IsAdd() ? idx1->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx1->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l2 = idx2->IsAdd() ? idx2->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx2->GetConstantRight()->AsIntConstant()->GetValue();
   int64_t h1 = l1 + (vector_length1 - 1);
   int64_t h2 = l2 + (vector_length2 - 1);
   return CanIntegerRangesOverlap(l1, h1, l2, h2);
@@ -98,7 +94,7 @@ void ReferenceInfo::PrunePartialEscapeWrites() {
     // All paths escape.
     return;
   }
-  HGraph* graph = reference_->GetBlock()->GetGraph();
+  HGraph*        graph = reference_->GetBlock()->GetGraph();
   ArenaBitVector additional_exclusions(
       allocator_, graph->GetBlocks().size(), false, kArenaAllocLSA);
   for (const HUseListNode<HInstruction*>& use : reference_->GetUses()) {
@@ -132,7 +128,7 @@ bool HeapLocationCollector::InstructionEligibleForLSERemoval(HInstruction* inst)
     return !inst->AsNewInstance()->NeedsChecks();
   } else if (inst->IsNewArray()) {
     HInstruction* array_length = inst->AsNewArray()->GetLength();
-    bool known_array_length =
+    bool          known_array_length =
         array_length->IsIntConstant() && array_length->AsIntConstant()->GetValue() >= 0;
     return known_array_length &&
            std::all_of(inst->GetUses().cbegin(),
@@ -153,7 +149,7 @@ void ReferenceInfo::CollectPartialEscapes(HGraph* graph) {
   ArenaBitVector seen_instructions(&saa, graph->GetCurrentInstructionId(), false, kArenaAllocLSA);
   // Get regular escapes.
   ScopedArenaVector<HInstruction*> additional_escape_vectors(saa.Adapter(kArenaAllocLSA));
-  LambdaEscapeVisitor scan_instructions([&](HInstruction* escape) -> bool {
+  LambdaEscapeVisitor              scan_instructions([&](HInstruction* escape) -> bool {
     HandleEscape(escape);
     // LSE can't track heap-locations through Phi and Select instructions so we
     // need to assume all escapes from these are escapes for the base reference.
@@ -162,7 +158,7 @@ void ReferenceInfo::CollectPartialEscapes(HGraph* graph) {
       additional_escape_vectors.push_back(escape);
     }
     return true;
-  });
+               });
   additional_escape_vectors.push_back(reference_);
   while (!additional_escape_vectors.empty()) {
     HInstruction* ref = additional_escape_vectors.back();
@@ -208,9 +204,9 @@ void HeapLocationCollector::DumpReferenceStats(OptimizingCompilerStats* stats) {
 }
 
 bool HeapLocationCollector::CanArrayElementsAlias(const HInstruction* idx1,
-                                                  const size_t vector_length1,
+                                                  const size_t        vector_length1,
                                                   const HInstruction* idx2,
-                                                  const size_t vector_length2) const {
+                                                  const size_t        vector_length2) const {
   DCHECK(idx1 != nullptr);
   DCHECK(idx2 != nullptr);
   DCHECK_GE(vector_length1, HeapLocation::kScalar);
@@ -233,34 +229,24 @@ bool HeapLocationCollector::CanArrayElementsAlias(const HInstruction* idx1,
   }
 
   // [i+CONST] and [i].
-  if (idx1->IsBinaryOperation() &&
-      idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
+  if (idx1->IsBinaryOperation() && idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
       idx1->AsBinaryOperation()->GetLeastConstantLeft() == idx2) {
-    return CanBinaryOpAndIndexAlias(idx1->AsBinaryOperation(),
-                                    vector_length1,
-                                    idx2,
-                                    vector_length2);
+    return CanBinaryOpAndIndexAlias(
+        idx1->AsBinaryOperation(), vector_length1, idx2, vector_length2);
   }
 
   // [i] and [i+CONST].
-  if (idx2->IsBinaryOperation() &&
-      idx2->AsBinaryOperation()->GetConstantRight() != nullptr &&
+  if (idx2->IsBinaryOperation() && idx2->AsBinaryOperation()->GetConstantRight() != nullptr &&
       idx2->AsBinaryOperation()->GetLeastConstantLeft() == idx1) {
-    return CanBinaryOpAndIndexAlias(idx2->AsBinaryOperation(),
-                                    vector_length2,
-                                    idx1,
-                                    vector_length1);
+    return CanBinaryOpAndIndexAlias(
+        idx2->AsBinaryOperation(), vector_length2, idx1, vector_length1);
   }
 
   // [i+CONST1] and [i+CONST2].
-  if (idx1->IsBinaryOperation() &&
-      idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
-      idx2->IsBinaryOperation() &&
-      idx2->AsBinaryOperation()->GetConstantRight() != nullptr) {
-    return CanBinaryOpsAlias(idx1->AsBinaryOperation(),
-                             vector_length1,
-                             idx2->AsBinaryOperation(),
-                             vector_length2);
+  if (idx1->IsBinaryOperation() && idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
+      idx2->IsBinaryOperation() && idx2->AsBinaryOperation()->GetConstantRight() != nullptr) {
+    return CanBinaryOpsAlias(
+        idx1->AsBinaryOperation(), vector_length1, idx2->AsBinaryOperation(), vector_length2);
   }
 
   // By default, MAY alias.

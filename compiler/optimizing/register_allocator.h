@@ -18,8 +18,8 @@
 #define ART_COMPILER_OPTIMIZING_REGISTER_ALLOCATOR_H_
 
 #include "arch/instruction_set.h"
-#include "base/array_ref.h"
 #include "base/arena_object.h"
+#include "base/array_ref.h"
 #include "base/macros.h"
 
 namespace art {
@@ -38,15 +38,12 @@ class SsaLivenessAnalysis;
  */
 class RegisterAllocator : public DeletableArenaObject<kArenaAllocRegisterAllocator> {
  public:
-  enum Strategy {
-    kRegisterAllocatorLinearScan,
-    kRegisterAllocatorGraphColor
-  };
+  enum Strategy { kRegisterAllocatorLinearScan, kRegisterAllocatorGraphColor };
 
   static constexpr Strategy kRegisterAllocatorDefault = kRegisterAllocatorLinearScan;
 
-  static std::unique_ptr<RegisterAllocator> Create(ScopedArenaAllocator* allocator,
-                                                   CodeGenerator* codegen,
+  static std::unique_ptr<RegisterAllocator> Create(ScopedArenaAllocator*      allocator,
+                                                   CodeGenerator*             codegen,
                                                    const SsaLivenessAnalysis& analysis,
                                                    Strategy strategy = kRegisterAllocatorDefault);
 
@@ -62,17 +59,17 @@ class RegisterAllocator : public DeletableArenaObject<kArenaAllocRegisterAllocat
 
   // Verifies that live intervals do not conflict. Used by unit testing.
   static bool ValidateIntervals(ArrayRef<LiveInterval* const> intervals,
-                                size_t number_of_spill_slots,
-                                size_t number_of_out_slots,
-                                const CodeGenerator& codegen,
-                                bool processing_core_registers,
-                                bool log_fatal_on_failure);
+                                size_t                        number_of_spill_slots,
+                                size_t                        number_of_out_slots,
+                                const CodeGenerator&          codegen,
+                                bool                          processing_core_registers,
+                                bool                          log_fatal_on_failure);
 
   static constexpr const char* kRegisterAllocatorPassName = "register";
 
  protected:
-  RegisterAllocator(ScopedArenaAllocator* allocator,
-                    CodeGenerator* codegen,
+  RegisterAllocator(ScopedArenaAllocator*      allocator,
+                    CodeGenerator*             codegen,
                     const SsaLivenessAnalysis& analysis);
 
   // Split `interval` at the position `position`. The new interval starts at `position`.
@@ -85,8 +82,8 @@ class RegisterAllocator : public DeletableArenaObject<kArenaAllocRegisterAllocat
   LiveInterval* SplitBetween(LiveInterval* interval, size_t from, size_t to);
 
   ScopedArenaAllocator* const allocator_;
-  CodeGenerator* const codegen_;
-  const SsaLivenessAnalysis& liveness_;
+  CodeGenerator* const        codegen_;
+  const SsaLivenessAnalysis&  liveness_;
 };
 
 }  // namespace art

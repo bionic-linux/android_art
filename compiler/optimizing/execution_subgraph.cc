@@ -28,19 +28,19 @@
 
 namespace art {
 
-ExecutionSubgraph::ExecutionSubgraph(HGraph* graph,
-                                     bool analysis_possible,
-                                     ScopedArenaAllocator* allocator)
-    : graph_(graph),
-      allocator_(allocator),
-      allowed_successors_(analysis_possible ? graph_->GetBlocks().size() : 0,
-                          ~(std::bitset<kMaxFilterableSuccessors> {}),
-                          allocator_->Adapter(kArenaAllocLSA)),
-      unreachable_blocks_(
-          allocator_, analysis_possible ? graph_->GetBlocks().size() : 0, false, kArenaAllocLSA),
-      valid_(analysis_possible),
-      needs_prune_(false),
-      finalized_(false) {
+ExecutionSubgraph::ExecutionSubgraph(HGraph*               graph,
+                                     bool                  analysis_possible,
+                                     ScopedArenaAllocator* allocator) :
+    graph_(graph),
+    allocator_(allocator),
+    allowed_successors_(analysis_possible ? graph_->GetBlocks().size() : 0,
+                        ~(std::bitset<kMaxFilterableSuccessors>{}),
+                        allocator_->Adapter(kArenaAllocLSA)),
+    unreachable_blocks_(
+        allocator_, analysis_possible ? graph_->GetBlocks().size() : 0, false, kArenaAllocLSA),
+    valid_(analysis_possible),
+    needs_prune_(false),
+    finalized_(false) {
   if (valid_) {
     DCHECK(std::all_of(graph->GetBlocks().begin(), graph->GetBlocks().end(), [](HBasicBlock* it) {
       return it == nullptr || it->GetSuccessors().size() <= kMaxFilterableSuccessors;
@@ -63,7 +63,7 @@ void ExecutionSubgraph::RemoveBlock(const HBasicBlock* to_remove) {
   }
   unreachable_blocks_.SetBit(id);
   for (HBasicBlock* pred : to_remove->GetPredecessors()) {
-    std::bitset<kMaxFilterableSuccessors> allowed_successors {};
+    std::bitset<kMaxFilterableSuccessors> allowed_successors{};
     // ZipCount iterates over both the successors and the index of them at the same time.
     for (auto [succ, i] : ZipCount(MakeIterationRange(pred->GetSuccessors()))) {
       if (succ != to_remove) {
@@ -84,7 +84,7 @@ void ExecutionSubgraph::Prune() {
   // the exit node.
   {
     // Allocator for temporary values.
-    ScopedArenaAllocator temporaries(graph_->GetArenaStack());
+    ScopedArenaAllocator                                     temporaries(graph_->GetArenaStack());
     ScopedArenaVector<std::bitset<kMaxFilterableSuccessors>> results(
         graph_->GetBlocks().size(), temporaries.Adapter(kArenaAllocLSA));
     unreachable_blocks_.ClearAllBits();
@@ -99,9 +99,9 @@ void ExecutionSubgraph::Prune() {
     bool start_reaches_end = false;
     // This is basically a DFS of the graph with some edges skipped.
     {
-      const size_t num_blocks = graph_->GetBlocks().size();
-      constexpr ssize_t kUnvisitedSuccIdx = -1;
-      ArenaBitVector visiting(&temporaries, num_blocks, false, kArenaAllocLSA);
+      const size_t               num_blocks = graph_->GetBlocks().size();
+      constexpr ssize_t          kUnvisitedSuccIdx = -1;
+      ArenaBitVector             visiting(&temporaries, num_blocks, false, kArenaAllocLSA);
       // How many of the successors of each block we have already examined. This
       // has three states.
       // (1) kUnvisitedSuccIdx: we have not examined any edges,
@@ -122,7 +122,7 @@ void ExecutionSubgraph::Prune() {
       const HBasicBlock* cur_block = graph_->GetEntryBlock();
       // Used to note a recur where we will start iterating on 'blk' and save
       // where we are. We must 'continue' immediately after this.
-      auto push_block = [&](const HBasicBlock* blk) {
+      auto               push_block = [&](const HBasicBlock* blk) {
         DCHECK(std::find(current_path.cbegin(), current_path.cend(), cur_block->GetBlockId()) ==
                current_path.end());
         if (kIsDebugBuild) {
@@ -160,7 +160,7 @@ void ExecutionSubgraph::Prune() {
           results[id].set(last_succ_seen[id]);
         }
       };
-      ssize_t num_entry_succ = graph_->GetEntryBlock()->GetSuccessors().size();
+      ssize_t        num_entry_succ = graph_->GetEntryBlock()->GetSuccessors().size();
       // As long as the entry-block has not explored all successors we still have
       // work to do.
       const uint32_t entry_block_id = graph_->GetEntryBlock()->GetBlockId();
@@ -189,7 +189,7 @@ void ExecutionSubgraph::Prune() {
           continue;
         }
         // NB This is a pointer. Modifications modify the last_succ_seen.
-        ssize_t* cur_succ = &last_succ_seen[id];
+        ssize_t*                              cur_succ = &last_succ_seen[id];
         std::bitset<kMaxFilterableSuccessors> succ_bitmap = GetAllowedSuccessors(cur_block);
         // Get next successor allowed.
         while (++(*cur_succ) < static_cast<ssize_t>(kMaxFilterableSuccessors) &&
@@ -226,9 +226,7 @@ void ExecutionSubgraph::Prune() {
     }
     // Mark blocks we didn't see in the ReachesEnd flood-fill
     for (const HBasicBlock* blk : graph_->GetBlocks()) {
-      if (blk != nullptr &&
-          results[blk->GetBlockId()].none() &&
-          blk != graph_->GetExitBlock() &&
+      if (blk != nullptr && results[blk->GetBlockId()].none() && blk != graph_->GetExitBlock() &&
           blk != graph_->GetEntryBlock()) {
         // We never visited this block, must be unreachable.
         unreachable_blocks_.SetBit(blk->GetBlockId());
@@ -274,9 +272,9 @@ void ExecutionSubgraph::RecalculateExcludedCohort() {
   // Split cohorts with union-find
   while (unreachable.IsAnyBitSet()) {
     res.emplace_back(allocator_, graph_);
-    ExcludedCohort& cohort = res.back();
+    ExcludedCohort&                      cohort = res.back();
     // We don't allocate except for the queue beyond here so create another arena to save memory.
-    ScopedArenaAllocator alloc(graph_->GetArenaStack());
+    ScopedArenaAllocator                 alloc(graph_->GetArenaStack());
     ScopedArenaQueue<const HBasicBlock*> worklist(alloc.Adapter(kArenaAllocLSA));
     // Select an arbitrary node
     const HBasicBlock* first = graph_->GetBlocks()[unreachable.GetHighestBitSet()];

@@ -17,14 +17,14 @@
 #ifndef ART_COMPILER_UTILS_SWAP_SPACE_H_
 #define ART_COMPILER_UTILS_SWAP_SPACE_H_
 
+#include <android-base/logging.h>
 #include <stddef.h>
 #include <stdint.h>
+
 #include <cstdlib>
 #include <list>
 #include <set>
 #include <vector>
-
-#include <android-base/logging.h>
 
 #include "base/macros.h"
 #include "base/mutex.h"
@@ -37,7 +37,7 @@ class SwapSpace {
   SwapSpace(int fd, size_t initial_size);
   ~SwapSpace();
   void* Alloc(size_t size) REQUIRES(!lock_);
-  void Free(void* ptr, size_t size) REQUIRES(!lock_);
+  void  Free(void* ptr, size_t size) REQUIRES(!lock_);
 
   size_t GetSize() {
     return size_;
@@ -49,7 +49,7 @@ class SwapSpace {
     // We need mutable members as we keep these objects in a std::set<> (providing only const
     // access) but we modify these members while carefully preserving the std::set<> ordering.
     mutable uint8_t* ptr;
-    mutable size_t size;
+    mutable size_t   size;
 
     uintptr_t Start() const {
       return reinterpret_cast<uintptr_t>(ptr);
@@ -70,12 +70,12 @@ class SwapSpace {
 
   // Map size to an iterator to free_by_start_'s entry.
   struct FreeBySizeEntry {
-    FreeBySizeEntry(size_t sz, FreeByStartSet::const_iterator entry)
-        : size(sz), free_by_start_entry(entry) { }
+    FreeBySizeEntry(size_t sz, FreeByStartSet::const_iterator entry) :
+        size(sz), free_by_start_entry(entry) {}
 
     // We need mutable members as we keep these objects in a std::set<> (providing only const
     // access) but we modify these members while carefully preserving the std::set<> ordering.
-    mutable size_t size;
+    mutable size_t                         size;
     mutable FreeByStartSet::const_iterator free_by_start_entry;
   };
   struct FreeBySizeComparator {
@@ -94,7 +94,7 @@ class SwapSpace {
   void RemoveChunk(FreeBySizeSet::const_iterator free_by_size_pos) REQUIRES(lock_);
   void InsertChunk(const SpaceChunk& chunk) REQUIRES(lock_);
 
-  int fd_;
+  int    fd_;
   size_t size_;
 
   // NOTE: Boost.Bimap would be useful for the two following members.
@@ -102,19 +102,20 @@ class SwapSpace {
   // Map start of a free chunk to its size.
   FreeByStartSet free_by_start_ GUARDED_BY(lock_);
   // Free chunks ordered by size.
-  FreeBySizeSet free_by_size_ GUARDED_BY(lock_);
+  FreeBySizeSet free_by_size_   GUARDED_BY(lock_);
 
   mutable Mutex lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
   DISALLOW_COPY_AND_ASSIGN(SwapSpace);
 };
 
-template <typename T> class SwapAllocator;
+template <typename T>
+class SwapAllocator;
 
 template <>
 class SwapAllocator<void> {
  public:
-  typedef void value_type;
-  typedef void* pointer;
+  typedef void        value_type;
+  typedef void*       pointer;
   typedef const void* const_pointer;
 
   template <typename U>
@@ -125,8 +126,7 @@ class SwapAllocator<void> {
   explicit SwapAllocator(SwapSpace* swap_space) : swap_space_(swap_space) {}
 
   template <typename U>
-  SwapAllocator(const SwapAllocator<U>& other)
-      : swap_space_(other.swap_space_) {}
+  SwapAllocator(const SwapAllocator<U>& other) : swap_space_(other.swap_space_) {}
 
   SwapAllocator(const SwapAllocator& other) = default;
   SwapAllocator& operator=(const SwapAllocator& other) = default;
@@ -145,12 +145,12 @@ class SwapAllocator<void> {
 template <typename T>
 class SwapAllocator {
  public:
-  typedef T value_type;
-  typedef T* pointer;
-  typedef T& reference;
-  typedef const T* const_pointer;
-  typedef const T& const_reference;
-  typedef size_t size_type;
+  typedef T         value_type;
+  typedef T*        pointer;
+  typedef T&        reference;
+  typedef const T*  const_pointer;
+  typedef const T&  const_reference;
+  typedef size_t    size_type;
   typedef ptrdiff_t difference_type;
 
   template <typename U>
@@ -161,8 +161,7 @@ class SwapAllocator {
   explicit SwapAllocator(SwapSpace* swap_space) : swap_space_(swap_space) {}
 
   template <typename U>
-  SwapAllocator(const SwapAllocator<U>& other)
-      : swap_space_(other.swap_space_) {}
+  SwapAllocator(const SwapAllocator<U>& other) : swap_space_(other.swap_space_) {}
 
   SwapAllocator(const SwapAllocator& other) = default;
   SwapAllocator& operator=(const SwapAllocator& other) = default;
@@ -172,8 +171,12 @@ class SwapAllocator {
     return static_cast<size_type>(-1) / sizeof(T);
   }
 
-  pointer address(reference x) const { return &x; }
-  const_pointer address(const_reference x) const { return &x; }
+  pointer address(reference x) const {
+    return &x;
+  }
+  const_pointer address(const_reference x) const {
+    return &x;
+  }
 
   pointer allocate(size_type n, SwapAllocator<void>::pointer hint ATTRIBUTE_UNUSED = nullptr) {
     DCHECK_LE(n, max_size());

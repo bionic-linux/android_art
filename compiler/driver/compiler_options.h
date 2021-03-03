@@ -60,27 +60,27 @@ enum class ProfileMethodsCheck : uint8_t {
 class CompilerOptions final {
  public:
   // Guide heuristics to determine whether to compile method if profile data not available.
-  static const size_t kDefaultHugeMethodThreshold = 10000;
-  static const size_t kDefaultLargeMethodThreshold = 600;
-  static const size_t kDefaultNumDexMethodsThreshold = 900;
+  static const size_t     kDefaultHugeMethodThreshold = 10000;
+  static const size_t     kDefaultLargeMethodThreshold = 600;
+  static const size_t     kDefaultNumDexMethodsThreshold = 900;
   static constexpr double kDefaultTopKProfileThreshold = 90.0;
-  static const bool kDefaultGenerateDebugInfo = false;
-  static const bool kDefaultGenerateMiniDebugInfo = false;
-  static const size_t kDefaultInlineMaxCodeUnits = 32;
+  static const bool       kDefaultGenerateDebugInfo = false;
+  static const bool       kDefaultGenerateMiniDebugInfo = false;
+  static const size_t     kDefaultInlineMaxCodeUnits = 32;
   static constexpr size_t kUnsetInlineMaxCodeUnits = -1;
 
   enum class CompilerType : uint8_t {
-    kAotCompiler,             // AOT compiler.
-    kJitCompiler,             // Normal JIT compiler.
-    kSharedCodeJitCompiler,   // Zygote JIT producing code in the shared region area, putting
-                              // restrictions on, for example, how literals are being generated.
+    kAotCompiler,            // AOT compiler.
+    kJitCompiler,            // Normal JIT compiler.
+    kSharedCodeJitCompiler,  // Zygote JIT producing code in the shared region area, putting
+                             // restrictions on, for example, how literals are being generated.
   };
 
   enum class ImageType : uint8_t {
-    kNone,                    // JIT or AOT app compilation producing only an oat file but no image.
-    kBootImage,               // Creating boot image.
-    kBootImageExtension,      // Creating boot image extension.
-    kAppImage,                // Creating app image.
+    kNone,                // JIT or AOT app compilation producing only an oat file but no image.
+    kBootImage,           // Creating boot image.
+    kBootImageExtension,  // Creating boot image extension.
+    kAppImage,            // Creating app image.
   };
 
   CompilerOptions();
@@ -285,7 +285,6 @@ class CompilerOptions final {
     return instruction_set_features_.get();
   }
 
-
   const std::vector<const DexFile*>& GetNoInlineFromDexFile() const {
     return no_inline_from_;
   }
@@ -306,13 +305,13 @@ class CompilerOptions final {
 
   // Checks if the specified method has been verified without failures. Returns
   // false if the method is not in the verification results (GetVerificationResults).
-  bool IsMethodVerifiedWithoutFailures(uint32_t method_idx,
-                                       uint16_t class_def_idx,
+  bool IsMethodVerifiedWithoutFailures(uint32_t       method_idx,
+                                       uint16_t       class_def_idx,
                                        const DexFile& dex_file) const;
 
   bool ParseCompilerOptions(const std::vector<std::string>& options,
-                            bool ignore_unrecognized,
-                            std::string* error_msg);
+                            bool                            ignore_unrecognized,
+                            std::string*                    error_msg);
 
   void SetNonPic() {
     compile_pic_ = false;
@@ -391,12 +390,12 @@ class CompilerOptions final {
   bool ParseRegisterAllocationStrategy(const std::string& option, std::string* error_msg);
 
   CompilerFilter::Filter compiler_filter_;
-  size_t huge_method_threshold_;
-  size_t large_method_threshold_;
-  size_t num_dex_methods_threshold_;
-  size_t inline_max_code_units_;
+  size_t                 huge_method_threshold_;
+  size_t                 large_method_threshold_;
+  size_t                 num_dex_methods_threshold_;
+  size_t                 inline_max_code_units_;
 
-  InstructionSet instruction_set_;
+  InstructionSet                                instruction_set_;
   std::unique_ptr<const InstructionSetFeatures> instruction_set_features_;
 
   // Dex files from which we should not inline code. Does not own the dex files.
@@ -415,20 +414,20 @@ class CompilerOptions final {
   const VerificationResults* verification_results_;
 
   CompilerType compiler_type_;
-  ImageType image_type_;
-  bool compile_art_test_;
-  bool baseline_;
-  bool debuggable_;
-  bool generate_debug_info_;
-  bool generate_mini_debug_info_;
-  bool generate_build_id_;
-  bool implicit_null_checks_;
-  bool implicit_so_checks_;
-  bool implicit_suspend_checks_;
-  bool compile_pic_;
-  bool dump_timings_;
-  bool dump_pass_timings_;
-  bool dump_stats_;
+  ImageType    image_type_;
+  bool         compile_art_test_;
+  bool         baseline_;
+  bool         debuggable_;
+  bool         generate_debug_info_;
+  bool         generate_mini_debug_info_;
+  bool         generate_build_id_;
+  bool         implicit_null_checks_;
+  bool         implicit_so_checks_;
+  bool         implicit_suspend_checks_;
+  bool         compile_pic_;
+  bool         dump_timings_;
+  bool         dump_pass_timings_;
+  bool         dump_stats_;
 
   // When using a profile file only the top K% of the profiled samples will be compiled.
   double top_k_profile_threshold_;
@@ -449,7 +448,7 @@ class CompilerOptions final {
   std::unique_ptr<std::ostream> init_failure_output_;
 
   std::string dump_cfg_file_name_;
-  bool dump_cfg_append_;
+  bool        dump_cfg_append_;
 
   // Whether the compiler should trade performance for determinism to guarantee exactly reproducible
   // outcomes.

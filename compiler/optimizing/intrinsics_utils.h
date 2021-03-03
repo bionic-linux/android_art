@@ -45,7 +45,7 @@ template <typename TDexCallingConvention,
           typename TAssembler = Assembler>
 class IntrinsicSlowPath : public TSlowPathCode {
  public:
-  explicit IntrinsicSlowPath(HInvoke* invoke) : TSlowPathCode(invoke), invoke_(invoke) { }
+  explicit IntrinsicSlowPath(HInvoke* invoke) : TSlowPathCode(invoke), invoke_(invoke) {}
 
   Location MoveArguments(CodeGenerator* codegen) {
     TDexCallingConvention calling_convention_visitor;
@@ -91,7 +91,9 @@ class IntrinsicSlowPath : public TSlowPathCode {
     assembler->Jump(this->GetExitLabel());
   }
 
-  const char* GetDescription() const override { return "IntrinsicSlowPath"; }
+  const char* GetDescription() const override {
+    return "IntrinsicSlowPath";
+  }
 
  private:
   // The instruction where this slow path is happening.
@@ -100,7 +102,7 @@ class IntrinsicSlowPath : public TSlowPathCode {
   DISALLOW_COPY_AND_ASSIGN(IntrinsicSlowPath);
 };
 
-static inline size_t GetExpectedVarHandleCoordinatesCount(HInvoke *invoke) {
+static inline size_t GetExpectedVarHandleCoordinatesCount(HInvoke* invoke) {
   mirror::VarHandle::AccessModeTemplate access_mode_template =
       mirror::VarHandle::GetAccessModeTemplateByIntrinsic(invoke->GetIntrinsic());
   size_t var_type_count = mirror::VarHandle::GetNumberOfVarTypeParameters(access_mode_template);
@@ -112,7 +114,7 @@ static inline size_t GetExpectedVarHandleCoordinatesCount(HInvoke *invoke) {
 static inline DataType::Type GetDataTypeFromShorty(HInvoke* invoke, uint32_t index) {
   DCHECK(invoke->IsInvokePolymorphic());
   const DexFile& dex_file = invoke->GetBlock()->GetGraph()->GetDexFile();
-  const char* shorty = dex_file.GetShorty(invoke->AsInvokePolymorphic()->GetProtoIndex());
+  const char*    shorty = dex_file.GetShorty(invoke->AsInvokePolymorphic()->GetProtoIndex());
   DCHECK_LT(index, strlen(shorty));
 
   return DataType::FromShorty(shorty[index]);
@@ -128,10 +130,8 @@ static inline bool IsVarHandleGetAndBitwiseOp(HInvoke* invoke) {
     case Intrinsics::kVarHandleGetAndBitwiseXorRelease:
     case Intrinsics::kVarHandleGetAndBitwiseAnd:
     case Intrinsics::kVarHandleGetAndBitwiseAndAcquire:
-    case Intrinsics::kVarHandleGetAndBitwiseAndRelease:
-      return true;
-    default:
-      return false;
+    case Intrinsics::kVarHandleGetAndBitwiseAndRelease: return true;
+    default: return false;
   }
 }
 
@@ -139,10 +139,8 @@ static inline bool IsVarHandleGetAndAdd(HInvoke* invoke) {
   switch (invoke->GetIntrinsic()) {
     case Intrinsics::kVarHandleGetAndAdd:
     case Intrinsics::kVarHandleGetAndAddAcquire:
-    case Intrinsics::kVarHandleGetAndAddRelease:
-      return true;
-    default:
-      return false;
+    case Intrinsics::kVarHandleGetAndAddRelease: return true;
+    default: return false;
   }
 }
 

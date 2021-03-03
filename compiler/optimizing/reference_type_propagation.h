@@ -30,11 +30,11 @@ namespace art {
  */
 class ReferenceTypePropagation : public HOptimization {
  public:
-  ReferenceTypePropagation(HGraph* graph,
+  ReferenceTypePropagation(HGraph*                     graph,
                            Handle<mirror::ClassLoader> class_loader,
-                           Handle<mirror::DexCache> hint_dex_cache,
-                           bool is_first_run,
-                           const char* name = kReferenceTypePropagationPassName);
+                           Handle<mirror::DexCache>    hint_dex_cache,
+                           bool                        is_first_run,
+                           const char*                 name = kReferenceTypePropagationPassName);
 
   // Visit a single instruction.
   // Used when a pass, such as Inliner or LSE, adds a single instruction.
@@ -68,7 +68,7 @@ class ReferenceTypePropagation : public HOptimization {
 
   static ReferenceTypeInfo MergeTypes(const ReferenceTypeInfo& a,
                                       const ReferenceTypeInfo& b,
-                                      HandleCache* handle_cache)
+                                      HandleCache*             handle_cache)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   void ValidateTypes();
@@ -83,7 +83,7 @@ class ReferenceTypePropagation : public HOptimization {
   // Whether this reference type propagation is the first run we are doing.
   const bool is_first_run_;
 
-  template<typename T>
+  template <typename T>
   friend class ReferenceTypePropagationTestBase;
 
   DISALLOW_COPY_AND_ASSIGN(ReferenceTypePropagation);

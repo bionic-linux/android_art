@@ -17,12 +17,6 @@
 #ifndef ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_TEST_H_
 #define ART_COMPILER_UTILS_JNI_MACRO_ASSEMBLER_TEST_H_
 
-#include "jni_macro_assembler.h"
-
-#include "assembler_test_base.h"
-#include "base/malloc_arena_pool.h"
-#include "common_runtime_test.h"  // For ScratchFile
-
 #include <sys/stat.h>
 
 #include <cstdio>
@@ -30,9 +24,14 @@
 #include <fstream>
 #include <iterator>
 
+#include "assembler_test_base.h"
+#include "base/malloc_arena_pool.h"
+#include "common_runtime_test.h"  // For ScratchFile
+#include "jni_macro_assembler.h"
+
 namespace art {
 
-template<typename Ass>
+template <typename Ass>
 class JNIMacroAssemblerTest : public AssemblerTestBase {
  public:
   Ass* GetAssembler() {
@@ -76,22 +75,21 @@ class JNIMacroAssemblerTest : public AssemblerTestBase {
 
  private:
   // Override this to pad the code with NOPs to a certain size if needed.
-  virtual void Pad(std::vector<uint8_t>& data ATTRIBUTE_UNUSED) {
-  }
+  virtual void Pad(std::vector<uint8_t>& data ATTRIBUTE_UNUSED) {}
 
   void DriverWrapper(const std::string& assembly_text, const std::string& test_name) {
     assembler_->FinalizeCode();
-    size_t cs = assembler_->CodeSize();
+    size_t                                cs = assembler_->CodeSize();
     std::unique_ptr<std::vector<uint8_t>> data(new std::vector<uint8_t>(cs));
-    MemoryRegion code(&(*data)[0], data->size());
+    MemoryRegion                          code(&(*data)[0], data->size());
     assembler_->FinalizeInstructions(code);
     Pad(*data);
     Driver(*data, assembly_text, test_name);
   }
 
-  MallocArenaPool pool_;
+  MallocArenaPool                 pool_;
   std::unique_ptr<ArenaAllocator> allocator_;
-  std::unique_ptr<Ass> assembler_;
+  std::unique_ptr<Ass>            assembler_;
 
   DISALLOW_COPY_AND_ASSIGN(JNIMacroAssemblerTest);
 };

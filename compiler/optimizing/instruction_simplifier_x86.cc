@@ -14,8 +14,9 @@
  */
 
 #include "instruction_simplifier_x86.h"
-#include "instruction_simplifier_x86_shared.h"
+
 #include "code_generator_x86.h"
+#include "instruction_simplifier_x86_shared.h"
 
 namespace art {
 
@@ -23,12 +24,10 @@ namespace x86 {
 
 class InstructionSimplifierX86Visitor : public HGraphVisitor {
  public:
-  InstructionSimplifierX86Visitor(HGraph* graph,
-                                  CodeGenerator* codegen,
-                                  OptimizingCompilerStats* stats)
-      : HGraphVisitor(graph),
-        codegen_(down_cast<CodeGeneratorX86*>(codegen)),
-        stats_(stats) {}
+  InstructionSimplifierX86Visitor(HGraph*                  graph,
+                                  CodeGenerator*           codegen,
+                                  OptimizingCompilerStats* stats) :
+      HGraphVisitor(graph), codegen_(down_cast<CodeGeneratorX86*>(codegen)), stats_(stats) {}
 
   void RecordSimplification() {
     MaybeRecordStat(stats_, MethodCompilationStat::kInstructionSimplificationsArch);
@@ -47,14 +46,13 @@ class InstructionSimplifierX86Visitor : public HGraphVisitor {
     }
   }
 
-  void VisitAnd(HAnd * instruction) override;
+  void VisitAnd(HAnd* instruction) override;
   void VisitXor(HXor* instruction) override;
 
  private:
-  CodeGeneratorX86* codegen_;
+  CodeGeneratorX86*        codegen_;
   OptimizingCompilerStats* stats_;
 };
-
 
 void InstructionSimplifierX86Visitor::VisitAnd(HAnd* instruction) {
   if (TryCombineAndNot(instruction)) {
@@ -85,4 +83,3 @@ bool InstructionSimplifierX86::Run() {
 
 }  // namespace x86
 }  // namespace art
-

@@ -42,7 +42,7 @@ class OutputStreamTest : public CommonRuntimeTest {
     CheckOffset(3);
     EXPECT_EQ(2, output_stream_->Seek(2, kSeekSet));
     CheckOffset(2);
-    uint8_t buf[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    uint8_t buf[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     EXPECT_TRUE(output_stream_->WriteFully(buf, 2));
     CheckOffset(4);
     EXPECT_EQ(6, output_stream_->Seek(2, kSeekEnd));
@@ -54,9 +54,7 @@ class OutputStreamTest : public CommonRuntimeTest {
   }
 
   void CheckTestOutput(const std::vector<uint8_t>& actual) {
-    uint8_t expected[] = {
-        0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6
-    };
+    uint8_t expected[] = {0, 0, 1, 2, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 5, 6};
     EXPECT_EQ(sizeof(expected), actual.size());
     EXPECT_EQ(0, memcmp(expected, &actual[0], actual.size()));
   }
@@ -65,14 +63,14 @@ class OutputStreamTest : public CommonRuntimeTest {
 };
 
 TEST_F(OutputStreamTest, File) {
-  ScratchFile tmp;
+  ScratchFile      tmp;
   FileOutputStream output_stream(tmp.GetFile());
   SetOutputStream(output_stream);
   GenerateTestOutput();
   std::unique_ptr<File> in(OS::OpenFileForReading(tmp.GetFilename().c_str()));
   EXPECT_TRUE(in.get() != nullptr);
   std::vector<uint8_t> actual(in->GetLength());
-  bool readSuccess = in->ReadFully(&actual[0], actual.size());
+  bool                 readSuccess = in->ReadFully(&actual[0], actual.size());
   EXPECT_TRUE(readSuccess);
   CheckTestOutput(actual);
 }
@@ -87,14 +85,14 @@ TEST_F(OutputStreamTest, Buffered) {
   std::unique_ptr<File> in(OS::OpenFileForReading(tmp.GetFilename().c_str()));
   EXPECT_TRUE(in.get() != nullptr);
   std::vector<uint8_t> actual(in->GetLength());
-  bool readSuccess = in->ReadFully(&actual[0], actual.size());
+  bool                 readSuccess = in->ReadFully(&actual[0], actual.size());
   EXPECT_TRUE(readSuccess);
   CheckTestOutput(actual);
 }
 
 TEST_F(OutputStreamTest, Vector) {
   std::vector<uint8_t> output;
-  VectorOutputStream output_stream("test vector output", &output);
+  VectorOutputStream   output_stream("test vector output", &output);
   SetOutputStream(output_stream);
   GenerateTestOutput();
   CheckTestOutput(output);
@@ -102,13 +100,11 @@ TEST_F(OutputStreamTest, Vector) {
 
 TEST_F(OutputStreamTest, BufferedFlush) {
   struct CheckingOutputStream : OutputStream {
-    CheckingOutputStream()
-        : OutputStream("fake-location"),
-          flush_called(false) { }
+    CheckingOutputStream() : OutputStream("fake-location"), flush_called(false) {}
     ~CheckingOutputStream() override {}
 
     bool WriteFully(const void* buffer ATTRIBUTE_UNUSED,
-                    size_t byte_count ATTRIBUTE_UNUSED) override {
+                    size_t byte_count  ATTRIBUTE_UNUSED) override {
       LOG(FATAL) << "UNREACHABLE";
       UNREACHABLE();
     }
@@ -127,8 +123,8 @@ TEST_F(OutputStreamTest, BufferedFlush) {
   };
 
   std::unique_ptr<CheckingOutputStream> cos = std::make_unique<CheckingOutputStream>();
-  CheckingOutputStream* checking_output_stream = cos.get();
-  BufferedOutputStream buffered(std::move(cos));
+  CheckingOutputStream*                 checking_output_stream = cos.get();
+  BufferedOutputStream                  buffered(std::move(cos));
   ASSERT_FALSE(checking_output_stream->flush_called);
   bool flush_result = buffered.Flush();
   ASSERT_TRUE(flush_result);

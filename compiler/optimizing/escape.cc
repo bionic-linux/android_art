@@ -41,8 +41,7 @@ void VisitEscapes(HInstruction* reference, EscapeVisitor& escape_visitor) {
       if (!escape_visitor(user)) {
         return;
       }
-    } else if (user->IsPhi() ||
-               user->IsSelect() ||
+    } else if (user->IsPhi() || user->IsSelect() ||
                (user->IsInvoke() && user->GetSideEffects().DoesAnyWrite()) ||
                (user->IsInstanceFieldSet() && (reference == user->InputAt(1))) ||
                (user->IsUnresolvedInstanceFieldSet() && (reference == user->InputAt(1))) ||
@@ -81,11 +80,11 @@ void VisitEscapes(HInstruction* reference, EscapeVisitor& escape_visitor) {
   }
 }
 
-void CalculateEscape(HInstruction* reference,
+void CalculateEscape(HInstruction*  reference,
                      NoEscapeCheck& no_escape,
-                     /*out*/ bool* is_singleton,
-                     /*out*/ bool* is_singleton_and_not_returned,
-                     /*out*/ bool* is_singleton_and_not_deopt_visible) {
+                     /*out*/ bool*  is_singleton,
+                     /*out*/ bool*  is_singleton_and_not_returned,
+                     /*out*/ bool*  is_singleton_and_not_deopt_visible) {
   // For references not allocated in the method, don't assume anything.
   if (!reference->IsNewInstance() && !reference->IsNewArray()) {
     *is_singleton = false;

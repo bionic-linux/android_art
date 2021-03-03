@@ -18,6 +18,7 @@
 #define ART_COMPILER_TRAMPOLINES_TRAMPOLINE_COMPILER_H_
 
 #include <stdint.h>
+
 #include <memory>
 #include <vector>
 
@@ -36,10 +37,10 @@ enum EntryPointCallingConvention {
 };
 
 // Create code that will invoke the function held in thread local storage.
-std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline32(InstructionSet isa,
+std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline32(InstructionSet              isa,
                                                                EntryPointCallingConvention abi,
                                                                ThreadOffset32 entry_point_offset);
-std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline64(InstructionSet isa,
+std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline64(InstructionSet              isa,
                                                                EntryPointCallingConvention abi,
                                                                ThreadOffset64 entry_point_offset);
 

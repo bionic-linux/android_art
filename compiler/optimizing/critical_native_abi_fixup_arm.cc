@@ -32,9 +32,9 @@ static void FixUpArguments(HInvokeStaticOrDirect* invoke) {
   DCHECK_EQ(invoke->GetCodePtrLocation(), CodePtrLocation::kCallCriticalNative);
   size_t reg = 0u;
   for (size_t i = 0, num_args = invoke->GetNumberOfArguments(); i != num_args; ++i) {
-    HInstruction* input = invoke->InputAt(i);
+    HInstruction*  input = invoke->InputAt(i);
     DataType::Type input_type = input->GetType();
-    size_t next_reg = reg + 1u;
+    size_t         next_reg = reg + 1u;
     if (DataType::Is64BitType(input_type)) {
       reg = RoundUp(reg, 2u);
       next_reg = reg + 2u;
@@ -43,10 +43,10 @@ static void FixUpArguments(HInvokeStaticOrDirect* invoke) {
       break;  // Remaining arguments are passed on stack.
     }
     if (DataType::IsFloatingPointType(input_type)) {
-      bool is_double = (input_type == DataType::Type::kFloat64);
+      bool           is_double = (input_type == DataType::Type::kFloat64);
       DataType::Type converted_type = is_double ? DataType::Type::kInt64 : DataType::Type::kInt32;
-      jmethodID known_method = is_double ? WellKnownClasses::java_lang_Double_doubleToRawLongBits
-                                         : WellKnownClasses::java_lang_Float_floatToRawIntBits;
+      jmethodID  known_method = is_double ? WellKnownClasses::java_lang_Double_doubleToRawLongBits
+                                          : WellKnownClasses::java_lang_Float_floatToRawIntBits;
       ArtMethod* resolved_method = jni::DecodeArtMethod(known_method);
       DCHECK(resolved_method != nullptr);
       MethodReference target_method(nullptr, 0);
@@ -56,24 +56,22 @@ static void FixUpArguments(HInvokeStaticOrDirect* invoke) {
             MethodReference(resolved_method->GetDexFile(), resolved_method->GetDexMethodIndex());
       }
       // Use arbitrary dispatch info that does not require the method argument.
-      HInvokeStaticOrDirect::DispatchInfo dispatch_info = {
-          MethodLoadKind::kBssEntry,
-          CodePtrLocation::kCallArtMethod,
-          /*method_load_data=*/ 0u
-      };
-      HBasicBlock* block = invoke->GetBlock();
-      ArenaAllocator* allocator = block->GetGraph()->GetAllocator();
-      HInvokeStaticOrDirect* new_input = new (allocator) HInvokeStaticOrDirect(
-          allocator,
-          /*number_of_arguments=*/ 1u,
-          converted_type,
-          invoke->GetDexPc(),
-          /*method_reference=*/ MethodReference(nullptr, dex::kDexNoIndex),
-          resolved_method,
-          dispatch_info,
-          kStatic,
-          target_method,
-          HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
+      HInvokeStaticOrDirect::DispatchInfo dispatch_info = {MethodLoadKind::kBssEntry,
+                                                           CodePtrLocation::kCallArtMethod,
+                                                           /*method_load_data=*/0u};
+      HBasicBlock*                        block = invoke->GetBlock();
+      ArenaAllocator*                     allocator = block->GetGraph()->GetAllocator();
+      HInvokeStaticOrDirect*              new_input = new (allocator)
+          HInvokeStaticOrDirect(allocator,
+                                /*number_of_arguments=*/1u,
+                                converted_type,
+                                invoke->GetDexPc(),
+                                /*method_reference=*/MethodReference(nullptr, dex::kDexNoIndex),
+                                resolved_method,
+                                dispatch_info,
+                                kStatic,
+                                target_method,
+                                HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
       // The intrinsic has no side effects and does not need environment or dex cache on ARM.
       new_input->SetSideEffects(SideEffects::None());
       IntrinsicOptimizations opt(new_input);

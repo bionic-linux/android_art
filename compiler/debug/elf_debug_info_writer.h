@@ -47,23 +47,20 @@ static std::vector<const char*> GetParamNames(const MethodDebugInfo* mi) {
   DCHECK(mi->dex_file != nullptr);
   CodeItemDebugInfoAccessor accessor(*mi->dex_file, mi->code_item, mi->dex_method_index);
   if (accessor.HasCodeItem()) {
-    accessor.VisitParameterNames([&](const dex::StringIndex& id) {
-      names.push_back(mi->dex_file->StringDataByIdx(id));
-    });
+    accessor.VisitParameterNames(
+        [&](const dex::StringIndex& id) { names.push_back(mi->dex_file->StringDataByIdx(id)); });
   }
   return names;
 }
 
 // Helper class to write .debug_info and its supporting sections.
-template<typename ElfTypes>
+template <typename ElfTypes>
 class ElfDebugInfoWriter {
   using Elf_Addr = typename ElfTypes::Addr;
 
  public:
-  explicit ElfDebugInfoWriter(ElfBuilder<ElfTypes>* builder)
-      : builder_(builder),
-        debug_abbrev_(&debug_abbrev_buffer_) {
-  }
+  explicit ElfDebugInfoWriter(ElfBuilder<ElfTypes>* builder) :
+      builder_(builder), debug_abbrev_(&debug_abbrev_buffer_) {}
 
   void Start() {
     builder_->GetDebugInfo()->Start();
@@ -81,36 +78,35 @@ class ElfDebugInfoWriter {
   }
 
  private:
-  ElfBuilder<ElfTypes>* builder_;
-  std::vector<uint8_t> debug_abbrev_buffer_;
+  ElfBuilder<ElfTypes>*      builder_;
+  std::vector<uint8_t>       debug_abbrev_buffer_;
   dwarf::DebugAbbrevWriter<> debug_abbrev_;
-  std::vector<uint8_t> debug_loc_;
-  std::vector<uint8_t> debug_ranges_;
+  std::vector<uint8_t>       debug_loc_;
+  std::vector<uint8_t>       debug_ranges_;
 
   std::unordered_set<const char*> defined_dex_classes_;  // For CHECKs only.
 
-  template<typename ElfTypes2>
+  template <typename ElfTypes2>
   friend class ElfCompilationUnitWriter;
 };
 
 // Helper class to write one compilation unit.
 // It holds helper methods and temporary state.
-template<typename ElfTypes>
+template <typename ElfTypes>
 class ElfCompilationUnitWriter {
   using Elf_Addr = typename ElfTypes::Addr;
 
  public:
-  explicit ElfCompilationUnitWriter(ElfDebugInfoWriter<ElfTypes>* owner)
-    : owner_(owner),
-      info_(Is64BitInstructionSet(owner_->builder_->GetIsa()), &owner->debug_abbrev_) {
-  }
+  explicit ElfCompilationUnitWriter(ElfDebugInfoWriter<ElfTypes>* owner) :
+      owner_(owner),
+      info_(Is64BitInstructionSet(owner_->builder_->GetIsa()), &owner->debug_abbrev_) {}
 
   void Write(const ElfCompilationUnit& compilation_unit) {
     CHECK(!compilation_unit.methods.empty());
     const Elf_Addr base_address = compilation_unit.is_code_address_text_relative
-        ? owner_->builder_->GetText()->GetAddress()
-        : 0;
-    const bool is64bit = Is64BitInstructionSet(owner_->builder_->GetIsa());
+                                      ? owner_->builder_->GetText()->GetAddress()
+                                      : 0;
+    const bool     is64bit = Is64BitInstructionSet(owner_->builder_->GetIsa());
     using namespace dwarf;  // NOLINT. For easy access to DWARF constants.
 
     info_.StartTag(DW_TAG_compile_unit);
@@ -146,13 +142,13 @@ class ElfCompilationUnitWriter {
     const char* last_dex_class_desc = nullptr;
     for (auto mi : compilation_unit.methods) {
       DCHECK(mi->dex_file != nullptr);
-      const DexFile* dex = mi->dex_file;
+      const DexFile*            dex = mi->dex_file;
       CodeItemDebugInfoAccessor accessor(*dex, mi->code_item, mi->dex_method_index);
-      const dex::MethodId& dex_method = dex->GetMethodId(mi->dex_method_index);
-      const dex::ProtoId& dex_proto = dex->GetMethodPrototype(dex_method);
-      const dex::TypeList* dex_params = dex->GetProtoParameters(dex_proto);
-      const char* dex_class_desc = dex->GetMethodDeclaringClassDescriptor(dex_method);
-      const bool is_static = (mi->access_flags & kAccStatic) != 0;
+      const dex::MethodId&      dex_method = dex->GetMethodId(mi->dex_method_index);
+      const dex::ProtoId&       dex_proto = dex->GetMethodPrototype(dex_method);
+      const dex::TypeList*      dex_params = dex->GetProtoParameters(dex_proto);
+      const char*               dex_class_desc = dex->GetMethodDeclaringClassDescriptor(dex_method);
+      const bool                is_static = (mi->access_flags & kAccStatic) != 0;
 
       // Enclose the method in correct class definition.
       if (last_dex_class_desc != dex_class_desc) {
@@ -181,7 +177,7 @@ class ElfCompilationUnitWriter {
       info_.WriteAddr(DW_AT_low_pc, base_address + mi->code_address);
       info_.WriteUdata(DW_AT_high_pc, mi->code_size);
       std::vector<uint8_t> expr_buffer;
-      Expression expr(&expr_buffer);
+      Expression           expr(&expr_buffer);
       expr.WriteOpCallFrameCfa();
       info_.WriteExprLoc(DW_AT_frame_base, expr);
       WriteLazyType(dex->GetReturnTypeDescriptor(dex_proto));
@@ -189,7 +185,7 @@ class ElfCompilationUnitWriter {
       // Decode dex register locations for all stack maps.
       // It might be expensive, so do it just once and reuse the result.
       std::unique_ptr<const CodeInfo> code_info;
-      std::vector<DexRegisterMap> dex_reg_maps;
+      std::vector<DexRegisterMap>     dex_reg_maps;
       if (accessor.HasCodeItem() && mi->code_info != nullptr) {
         code_info.reset(new CodeInfo(mi->code_info));
         for (StackMap stack_map : code_info->GetStackMaps()) {
@@ -201,7 +197,7 @@ class ElfCompilationUnitWriter {
       // guarantee order or uniqueness so it is safer to iterate over them manually.
       // DecodeDebugLocalInfo might not also be available if there is no debug info.
       std::vector<const char*> param_names = GetParamNames(mi);
-      uint32_t arg_reg = 0;
+      uint32_t                 arg_reg = 0;
       if (!is_static) {
         info_.StartTag(DW_TAG_formal_parameter);
         WriteName("this");
@@ -210,7 +206,7 @@ class ElfCompilationUnitWriter {
         if (accessor.HasCodeItem()) {
           // Write the stack location of the parameter.
           const uint32_t vreg = accessor.RegistersSize() - accessor.InsSize() + arg_reg;
-          const bool is64bitValue = false;
+          const bool     is64bitValue = false;
           WriteRegLocation(mi, dex_reg_maps, vreg, is64bitValue, compilation_unit.code_address);
         }
         arg_reg++;
@@ -242,11 +238,10 @@ class ElfCompilationUnitWriter {
 
       // Write local variables.
       std::vector<DexFile::LocalInfo> local_infos;
-      if (accessor.DecodeDebugLocalInfo(is_static,
-                                        mi->dex_method_index,
-                                        [&](const DexFile::LocalInfo& entry) {
-                                          local_infos.push_back(entry);
-                                        })) {
+      if (accessor.DecodeDebugLocalInfo(
+              is_static, mi->dex_method_index, [&](const DexFile::LocalInfo& entry) {
+                local_infos.push_back(entry);
+              })) {
         for (const DexFile::LocalInfo& var : local_infos) {
           if (var.reg_ < accessor.RegistersSize() - accessor.InsSize()) {
             info_.StartTag(DW_TAG_variable);
@@ -305,9 +300,9 @@ class ElfCompilationUnitWriter {
         }
       } else if (type->IsArrayClass()) {
         ObjPtr<mirror::Class> element_type = type->GetComponentType();
-        uint32_t component_size = type->GetComponentSize();
-        uint32_t data_offset = mirror::Array::DataOffset(component_size).Uint32Value();
-        uint32_t length_offset = mirror::Array::LengthOffset().Uint32Value();
+        uint32_t              component_size = type->GetComponentSize();
+        uint32_t              data_offset = mirror::Array::DataOffset(component_size).Uint32Value();
+        uint32_t              length_offset = mirror::Array::LengthOffset().Uint32Value();
 
         CloseNamespacesAboveDepth(0);  // Declare in root namespace.
         info_.StartTag(DW_TAG_array_type);
@@ -329,7 +324,7 @@ class ElfCompilationUnitWriter {
       } else {
         std::string descriptor_string;
         const char* desc = type->GetDescriptor(&descriptor_string);
-        size_t class_offset = StartClassTag(desc);
+        size_t      class_offset = StartClassTag(desc);
         class_declarations.emplace(type, class_offset);
 
         if (!type->IsVariableSize()) {
@@ -404,8 +399,7 @@ class ElfCompilationUnitWriter {
           WriteName("value");
           // We don't support fields with C like array types so we just say its type is java char.
           WriteLazyType("C");  // char.
-          info_.WriteUdata(DW_AT_data_member_location,
-                           mirror::String::ValueOffset().Uint32Value());
+          info_.WriteUdata(DW_AT_data_member_location, mirror::String::ValueOffset().Uint32Value());
           info_.WriteSdata(DW_AT_accessibility, DW_ACCESS_private);
           info_.EndTag();  // DW_TAG_member.
         }
@@ -416,9 +410,9 @@ class ElfCompilationUnitWriter {
 
     // Write base class declarations.
     for (const auto& base_class_reference : base_class_references) {
-      size_t reference_offset = base_class_reference.first;
+      size_t         reference_offset = base_class_reference.first;
       mirror::Class* base_class = base_class_reference.second;
-      const auto it = class_declarations.find(base_class);
+      const auto     it = class_declarations.find(base_class);
       if (it != class_declarations.end()) {
         info_.UpdateUint32(reference_offset, it->second);
       } else {
@@ -426,7 +420,7 @@ class ElfCompilationUnitWriter {
         // since we want to avoid the DW_TAG_reference_tag wrapping.
         std::string tmp_storage;
         const char* base_class_desc = base_class->GetDescriptor(&tmp_storage);
-        size_t base_class_declaration_offset = StartClassTag(base_class_desc);
+        size_t      base_class_declaration_offset = StartClassTag(base_class_desc);
         info_.WriteFlagPresent(DW_AT_declaration);
         WriteLinkageName(base_class);
         EndClassTag();
@@ -450,13 +444,13 @@ class ElfCompilationUnitWriter {
   // Write table into .debug_loc which describes location of dex register.
   // The dex register might be valid only at some points and it might
   // move between machine registers and stack.
-  void WriteRegLocation(const MethodDebugInfo* method_info,
+  void WriteRegLocation(const MethodDebugInfo*             method_info,
                         const std::vector<DexRegisterMap>& dex_register_maps,
-                        uint16_t vreg,
-                        bool is64bitValue,
-                        uint64_t compilation_unit_code_address,
-                        uint32_t dex_pc_low = 0,
-                        uint32_t dex_pc_high = 0xFFFFFFFF) {
+                        uint16_t                           vreg,
+                        bool                               is64bitValue,
+                        uint64_t                           compilation_unit_code_address,
+                        uint32_t                           dex_pc_low = 0,
+                        uint32_t                           dex_pc_high = 0xFFFFFFFF) {
     WriteDebugLocEntry(method_info,
                        dex_register_maps,
                        vreg,
@@ -549,55 +543,51 @@ class ElfCompilationUnitWriter {
       DCHECK_EQ(desc.size(), 1u);
 
       const char* name;
-      uint32_t encoding;
-      uint32_t byte_size;
+      uint32_t    encoding;
+      uint32_t    byte_size;
       switch (desc[0]) {
-      case 'B':
-        name = "byte";
-        encoding = DW_ATE_signed;
-        byte_size = 1;
-        break;
-      case 'C':
-        name = "char";
-        encoding = DW_ATE_UTF;
-        byte_size = 2;
-        break;
-      case 'D':
-        name = "double";
-        encoding = DW_ATE_float;
-        byte_size = 8;
-        break;
-      case 'F':
-        name = "float";
-        encoding = DW_ATE_float;
-        byte_size = 4;
-        break;
-      case 'I':
-        name = "int";
-        encoding = DW_ATE_signed;
-        byte_size = 4;
-        break;
-      case 'J':
-        name = "long";
-        encoding = DW_ATE_signed;
-        byte_size = 8;
-        break;
-      case 'S':
-        name = "short";
-        encoding = DW_ATE_signed;
-        byte_size = 2;
-        break;
-      case 'Z':
-        name = "boolean";
-        encoding = DW_ATE_boolean;
-        byte_size = 1;
-        break;
-      case 'V':
-        LOG(FATAL) << "Void type should not be encoded";
-        UNREACHABLE();
-      default:
-        LOG(FATAL) << "Unknown dex type descriptor: \"" << desc << "\"";
-        UNREACHABLE();
+        case 'B':
+          name = "byte";
+          encoding = DW_ATE_signed;
+          byte_size = 1;
+          break;
+        case 'C':
+          name = "char";
+          encoding = DW_ATE_UTF;
+          byte_size = 2;
+          break;
+        case 'D':
+          name = "double";
+          encoding = DW_ATE_float;
+          byte_size = 8;
+          break;
+        case 'F':
+          name = "float";
+          encoding = DW_ATE_float;
+          byte_size = 4;
+          break;
+        case 'I':
+          name = "int";
+          encoding = DW_ATE_signed;
+          byte_size = 4;
+          break;
+        case 'J':
+          name = "long";
+          encoding = DW_ATE_signed;
+          byte_size = 8;
+          break;
+        case 'S':
+          name = "short";
+          encoding = DW_ATE_signed;
+          byte_size = 2;
+          break;
+        case 'Z':
+          name = "boolean";
+          encoding = DW_ATE_boolean;
+          byte_size = 1;
+          break;
+        case 'V': LOG(FATAL) << "Void type should not be encoded"; UNREACHABLE();
+        default: LOG(FATAL) << "Unknown dex type descriptor: \"" << desc << "\""; UNREACHABLE();
       }
       CloseNamespacesAboveDepth(0);  // Declare in root namespace.
       offset = info_.StartTag(DW_TAG_base_type);
@@ -615,7 +605,7 @@ class ElfCompilationUnitWriter {
   // Returns offset of the class tag in the compilation unit.
   size_t StartClassTag(const char* desc) {
     std::string name = SetNamespaceForClass(desc);
-    size_t offset = info_.StartTag(dwarf::DW_TAG_class_type);
+    size_t      offset = info_.StartTag(dwarf::DW_TAG_class_type);
     WriteName(name.c_str());
     return offset;
   }
@@ -659,20 +649,19 @@ class ElfCompilationUnitWriter {
   }
 
   // For access to the ELF sections.
-  ElfDebugInfoWriter<ElfTypes>* owner_;
+  ElfDebugInfoWriter<ElfTypes>*      owner_;
   // Temporary buffer to create and store the entries.
-  dwarf::DebugInfoEntryWriter<> info_;
+  dwarf::DebugInfoEntryWriter<>      info_;
   // Cache of already translated type descriptors.
-  std::map<std::string, size_t> type_cache_;  // type_desc -> definition_offset.
+  std::map<std::string, size_t>      type_cache_;  // type_desc -> definition_offset.
   // 32-bit references which need to be resolved to a type later.
   // Given type may be used multiple times.  Therefore we need a multimap.
   std::multimap<std::string, size_t> lazy_types_;  // type_desc -> patch_offset.
   // The current set of open namespace tags which are active and not closed yet.
-  std::vector<std::string> current_namespace_;
+  std::vector<std::string>           current_namespace_;
 };
 
 }  // namespace debug
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_INFO_WRITER_H_
-

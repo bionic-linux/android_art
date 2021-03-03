@@ -18,13 +18,13 @@
 #define ART_COMPILER_UTILS_ASSEMBLER_TEST_BASE_H_
 
 #include <sys/stat.h>
+
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <iterator>
 
 #include "android-base/strings.h"
-
 #include "base/os.h"
 #include "base/utils.h"
 #include "common_runtime_test.h"  // For ScratchDir.
@@ -48,7 +48,7 @@ class AssemblerTestBase : public testing::Test {
     // Fake a runtime test for ScratchDir.
     CommonArtTest::SetUpAndroidRootEnvVars();
     CommonRuntimeTest::SetUpAndroidDataDir(android_data_);
-    scratch_dir_.emplace(/*keep_files=*/ kKeepDisassembledFiles);
+    scratch_dir_.emplace(/*keep_files=*/kKeepDisassembledFiles);
   }
 
   void TearDown() override {
@@ -58,7 +58,7 @@ class AssemblerTestBase : public testing::Test {
 
   // This is intended to be run as a test.
   bool CheckTools() {
-    for (auto cmd : { GetAssemblerCommand()[0], GetDisassemblerCommand()[0] }) {
+    for (auto cmd : {GetAssemblerCommand()[0], GetDisassemblerCommand()[0]}) {
       if (!OS::FileExists(cmd.c_str())) {
         LOG(ERROR) << "Could not find " << cmd;
         return false;
@@ -71,8 +71,8 @@ class AssemblerTestBase : public testing::Test {
   // disassembler, disassemble both and check whether they have the same mnemonics (in which case
   // we just warn).
   void Driver(const std::vector<uint8_t>& art_code,
-              const std::string& assembly_text,
-              const std::string& test_name) {
+              const std::string&          assembly_text,
+              const std::string&          test_name) {
     ASSERT_NE(assembly_text.length(), 0U) << "Empty assembly";
     InstructionSet isa = GetIsa();
     auto test_path = [&](const char* ext) { return scratch_dir_->GetPath() + test_name + ext; };
@@ -117,9 +117,11 @@ class AssemblerTestBase : public testing::Test {
 
     // ART produced different (but valid) code than the reference assembler, report it.
     if (art_code.size() > ref_code.size()) {
-      EXPECT_TRUE(false) << "ART code is larger then the reference code, but the disassembly"
-          "of machine code is equal: this means that ART is generating sub-optimal encoding! "
-          "ART code size=" << art_code.size() << ", reference code size=" << ref_code.size();
+      EXPECT_TRUE(false)
+          << "ART code is larger then the reference code, but the disassembly"
+             "of machine code is equal: this means that ART is generating sub-optimal encoding! "
+             "ART code size="
+          << art_code.size() << ", reference code size=" << ref_code.size();
     } else if (art_code.size() < ref_code.size()) {
       EXPECT_TRUE(false) << "ART code is smaller than the reference code. Too good to be true?";
     } else {
@@ -141,9 +143,7 @@ class AssemblerTestBase : public testing::Test {
         return {FindTool("clang"), "--compile", "-target", "i386-linux-gnu"};
       case InstructionSet::kX86_64:
         return {FindTool("clang"), "--compile", "-target", "x86_64-linux-gnu"};
-      default:
-        LOG(FATAL) << "Unknown instruction set: " << isa;
-        UNREACHABLE();
+      default: LOG(FATAL) << "Unknown instruction set: " << isa; UNREACHABLE();
     }
   }
 
@@ -151,8 +151,7 @@ class AssemblerTestBase : public testing::Test {
     switch (GetIsa()) {
       case InstructionSet::kThumb2:
         return {FindTool("llvm-objdump"), "--disassemble", "--triple", "thumbv7a-linux-gnueabi"};
-      default:
-        return {FindTool("llvm-objdump"), "--disassemble", "--no-show-raw-insn"};
+      default: return {FindTool("llvm-objdump"), "--disassemble", "--no-show-raw-insn"};
     }
   }
 
@@ -160,7 +159,9 @@ class AssemblerTestBase : public testing::Test {
     std::vector<std::string> args = GetAssemblerCommand();
     args.insert(args.end(), {"-o", obj_file, asm_file});
     std::string output;
-    bool ok = CommonArtTestImpl::ForkAndExec(args, [](){ return true; }, &output).StandardSuccess();
+    bool        ok = CommonArtTestImpl::ForkAndExec(
+                  args, []() { return true; }, &output)
+                  .StandardSuccess();
     if (!ok) {
       LOG(ERROR) << "Assembler error:\n" << output;
     }
@@ -170,7 +171,9 @@ class AssemblerTestBase : public testing::Test {
   bool Disassemble(const std::string& obj_file, std::string* output) {
     std::vector<std::string> args = GetDisassemblerCommand();
     args.insert(args.end(), {obj_file});
-    bool ok = CommonArtTestImpl::ForkAndExec(args, [](){ return true; }, output).StandardSuccess();
+    bool ok = CommonArtTestImpl::ForkAndExec(
+                  args, []() { return true; }, output)
+                  .StandardSuccess();
     if (!ok) {
       LOG(ERROR) << "Disassembler error:\n" << *output;
     }
@@ -182,7 +185,7 @@ class AssemblerTestBase : public testing::Test {
     std::unique_ptr<File> file(OS::OpenFileForReading(filename.c_str()));
     CHECK(file.get() != nullptr);
     std::vector<uint8_t> data(file->GetLength());
-    bool success = file->ReadFully(&data[0], data.size());
+    bool                 success = file->ReadFully(&data[0], data.size());
     CHECK(success) << filename;
     return data;
   }
@@ -196,23 +199,23 @@ class AssemblerTestBase : public testing::Test {
   }
 
   // Helper method which reads the content of .text section from ELF file.
-  template<bool IsElf64>
+  template <bool IsElf64>
   void ReadElf(const std::string& filename, /*out*/ std::vector<uint8_t>* code) {
     using ElfTypes = typename std::conditional<IsElf64, ElfTypes64, ElfTypes32>::type;
-    std::vector<uint8_t> data = ReadFile(filename);
-    ElfDebugReader<ElfTypes> reader((ArrayRef<const uint8_t>(data)));
+    std::vector<uint8_t>           data = ReadFile(filename);
+    ElfDebugReader<ElfTypes>       reader((ArrayRef<const uint8_t>(data)));
     const typename ElfTypes::Shdr* text = reader.GetSection(".text");
     CHECK(text != nullptr);
     *code = std::vector<uint8_t>(&data[text->sh_offset], &data[text->sh_offset + text->sh_size]);
   }
 
   // Helper method to create an ELF file containing only the given code in the .text section.
-  template<bool IsElf64>
+  template <bool IsElf64>
   void WriteElf(const std::string& filename, InstructionSet isa, const std::vector<uint8_t>& code) {
     using ElfTypes = typename std::conditional<IsElf64, ElfTypes64, ElfTypes32>::type;
     std::unique_ptr<File> file(OS::CreateEmptyFile(filename.c_str()));
     CHECK(file.get() != nullptr);
-    FileOutputStream out(file.get());
+    FileOutputStream                      out(file.get());
     std::unique_ptr<ElfBuilder<ElfTypes>> builder(new ElfBuilder<ElfTypes>(isa, &out));
     builder->Start(/* write_program_headers= */ false);
     builder->GetText()->Start();
@@ -237,7 +240,7 @@ class AssemblerTestBase : public testing::Test {
 
   std::string Replace(const std::string& str, const std::string& from, const std::string& to) {
     std::string output;
-    size_t pos = 0;
+    size_t      pos = 0;
     for (auto match = str.find(from); match != str.npos; match = str.find(from, pos)) {
       output += str.substr(pos, match - pos);
       output += to;
@@ -248,7 +251,7 @@ class AssemblerTestBase : public testing::Test {
   }
 
   std::optional<ScratchDir> scratch_dir_;
-  std::string android_data_;
+  std::string               android_data_;
   DISALLOW_COPY_AND_ASSIGN(AssemblerTestBase);
 };
 

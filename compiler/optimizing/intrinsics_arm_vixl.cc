@@ -16,6 +16,7 @@
 
 #include "intrinsics_arm_vixl.h"
 
+#include "aarch32/constants-aarch32.h"
 #include "arch/arm/callee_save_frame_arm.h"
 #include "arch/arm/instruction_set_features_arm.h"
 #include "art_method.h"
@@ -32,8 +33,6 @@
 #include "scoped_thread_state_change-inl.h"
 #include "thread-current-inl.h"
 
-#include "aarch32/constants-aarch32.h"
-
 namespace art {
 namespace arm {
 
@@ -41,6 +40,7 @@ namespace arm {
 
 using helpers::DRegisterFrom;
 using helpers::HighRegisterFrom;
+using helpers::HighSRegisterFrom;
 using helpers::InputDRegisterAt;
 using helpers::InputRegisterAt;
 using helpers::InputSRegisterAt;
@@ -48,7 +48,6 @@ using helpers::Int32ConstantFrom;
 using helpers::LocationFrom;
 using helpers::LowRegisterFrom;
 using helpers::LowSRegisterFrom;
-using helpers::HighSRegisterFrom;
 using helpers::OutputDRegister;
 using helpers::OutputRegister;
 using helpers::RegisterFrom;
@@ -56,8 +55,8 @@ using helpers::SRegisterFrom;
 
 using namespace vixl::aarch32;  // NOLINT(build/namespaces)
 
-using vixl::ExactAssemblyScope;
 using vixl::CodeBufferCheckScope;
+using vixl::ExactAssemblyScope;
 
 ArmVIXLAssembler* IntrinsicCodeGeneratorARMVIXL::GetAssembler() {
   return codegen_->GetAssembler();
@@ -72,22 +71,22 @@ using IntrinsicSlowPathARMVIXL = IntrinsicSlowPath<InvokeDexCallingConventionVis
                                                    ArmVIXLAssembler>;
 
 // Compute base address for the System.arraycopy intrinsic in `base`.
-static void GenSystemArrayCopyBaseAddress(ArmVIXLAssembler* assembler,
-                                          DataType::Type type,
+static void GenSystemArrayCopyBaseAddress(ArmVIXLAssembler*       assembler,
+                                          DataType::Type          type,
                                           const vixl32::Register& array,
-                                          const Location& pos,
+                                          const Location&         pos,
                                           const vixl32::Register& base) {
   // This routine is only used by the SystemArrayCopy intrinsic at the
   // moment. We can allow DataType::Type::kReference as `type` to implement
   // the SystemArrayCopyChar intrinsic.
   DCHECK_EQ(type, DataType::Type::kReference);
-  const int32_t element_size = DataType::Size(type);
+  const int32_t  element_size = DataType::Size(type);
   const uint32_t element_size_shift = DataType::SizeShift(type);
   const uint32_t data_offset = mirror::Array::DataOffset(element_size).Uint32Value();
 
   if (pos.IsConstant()) {
     int32_t constant = Int32ConstantFrom(pos);
-    __ Add(base, array, element_size * constant + data_offset);
+    __      Add(base, array, element_size * constant + data_offset);
   } else {
     __ Add(base, array, Operand(RegisterFrom(pos), vixl32::LSL, element_size_shift));
     __ Add(base, base, data_offset);
@@ -95,21 +94,21 @@ static void GenSystemArrayCopyBaseAddress(ArmVIXLAssembler* assembler,
 }
 
 // Compute end address for the System.arraycopy intrinsic in `end`.
-static void GenSystemArrayCopyEndAddress(ArmVIXLAssembler* assembler,
-                                         DataType::Type type,
-                                         const Location& copy_length,
+static void GenSystemArrayCopyEndAddress(ArmVIXLAssembler*       assembler,
+                                         DataType::Type          type,
+                                         const Location&         copy_length,
                                          const vixl32::Register& base,
                                          const vixl32::Register& end) {
   // This routine is only used by the SystemArrayCopy intrinsic at the
   // moment. We can allow DataType::Type::kReference as `type` to implement
   // the SystemArrayCopyChar intrinsic.
   DCHECK_EQ(type, DataType::Type::kReference);
-  const int32_t element_size = DataType::Size(type);
+  const int32_t  element_size = DataType::Size(type);
   const uint32_t element_size_shift = DataType::SizeShift(type);
 
   if (copy_length.IsConstant()) {
     int32_t constant = Int32ConstantFrom(copy_length);
-    __ Add(end, base, element_size * constant);
+    __      Add(end, base, element_size * constant);
   } else {
     __ Add(end, base, Operand(RegisterFrom(copy_length), vixl32::LSL, element_size_shift));
   }
@@ -118,16 +117,16 @@ static void GenSystemArrayCopyEndAddress(ArmVIXLAssembler* assembler,
 // Slow path implementing the SystemArrayCopy intrinsic copy loop with read barriers.
 class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
  public:
-  explicit ReadBarrierSystemArrayCopySlowPathARMVIXL(HInstruction* instruction)
-      : SlowPathCodeARMVIXL(instruction) {
+  explicit ReadBarrierSystemArrayCopySlowPathARMVIXL(HInstruction* instruction) :
+      SlowPathCodeARMVIXL(instruction) {
     DCHECK(kEmitCompilerReadBarrier);
     DCHECK(kUseBakerReadBarrier);
   }
 
   void EmitNativeCode(CodeGenerator* codegen) override {
     CodeGeneratorARMVIXL* arm_codegen = down_cast<CodeGeneratorARMVIXL*>(codegen);
-    ArmVIXLAssembler* assembler = arm_codegen->GetAssembler();
-    LocationSummary* locations = instruction_->GetLocations();
+    ArmVIXLAssembler*     assembler = arm_codegen->GetAssembler();
+    LocationSummary*      locations = instruction_->GetLocations();
     DCHECK(locations->CanCall());
     DCHECK(instruction_->IsInvokeStaticOrDirect())
         << "Unexpected instruction in read barrier arraycopy slow path: "
@@ -136,10 +135,10 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
     DCHECK_EQ(instruction_->AsInvoke()->GetIntrinsic(), Intrinsics::kSystemArrayCopy);
 
     DataType::Type type = DataType::Type::kReference;
-    const int32_t element_size = DataType::Size(type);
+    const int32_t  element_size = DataType::Size(type);
 
     vixl32::Register dest = InputRegisterAt(instruction_, 2);
-    Location dest_pos = locations->InAt(3);
+    Location         dest_pos = locations->InAt(3);
     vixl32::Register src_curr_addr = RegisterFrom(locations->GetTemp(0));
     vixl32::Register dst_curr_addr = RegisterFrom(locations->GetTemp(1));
     vixl32::Register src_stop_addr = RegisterFrom(locations->GetTemp(2));
@@ -150,8 +149,8 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
     GenSystemArrayCopyBaseAddress(assembler, type, dest, dest_pos, dst_curr_addr);
 
     vixl32::Label loop;
-    __ Bind(&loop);
-    __ Ldr(tmp, MemOperand(src_curr_addr, element_size, PostIndex));
+    __            Bind(&loop);
+    __            Ldr(tmp, MemOperand(src_curr_addr, element_size, PostIndex));
     assembler->MaybeUnpoisonHeapReference(tmp);
     // TODO: Inline the mark bit check before calling the runtime?
     // tmp = ReadBarrier::Mark(tmp);
@@ -192,11 +191,11 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
   DISALLOW_COPY_AND_ASSIGN(ReadBarrierSystemArrayCopySlowPathARMVIXL);
 };
 
-IntrinsicLocationsBuilderARMVIXL::IntrinsicLocationsBuilderARMVIXL(CodeGeneratorARMVIXL* codegen)
-    : allocator_(codegen->GetGraph()->GetAllocator()),
-      codegen_(codegen),
-      assembler_(codegen->GetAssembler()),
-      features_(codegen->GetInstructionSetFeatures()) {}
+IntrinsicLocationsBuilderARMVIXL::IntrinsicLocationsBuilderARMVIXL(CodeGeneratorARMVIXL* codegen) :
+    allocator_(codegen->GetGraph()->GetAllocator()),
+    codegen_(codegen),
+    assembler_(codegen->GetAssembler()),
+    features_(codegen->GetInstructionSetFeatures()) {}
 
 bool IntrinsicLocationsBuilderARMVIXL::TryDispatch(HInvoke* invoke) {
   Dispatch(invoke);
@@ -299,25 +298,25 @@ static void CreateFPToFPLocations(ArenaAllocator* allocator, HInvoke* invoke) {
   locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
 }
 
-static void GenNumberOfLeadingZeros(HInvoke* invoke,
-                                    DataType::Type type,
+static void GenNumberOfLeadingZeros(HInvoke*              invoke,
+                                    DataType::Type        type,
                                     CodeGeneratorARMVIXL* codegen) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  Location in = locations->InAt(0);
-  vixl32::Register out = RegisterFrom(locations->Out());
+  LocationSummary*  locations = invoke->GetLocations();
+  Location          in = locations->InAt(0);
+  vixl32::Register  out = RegisterFrom(locations->Out());
 
   DCHECK((type == DataType::Type::kInt32) || (type == DataType::Type::kInt64));
 
   if (type == DataType::Type::kInt64) {
     vixl32::Register in_reg_lo = LowRegisterFrom(in);
     vixl32::Register in_reg_hi = HighRegisterFrom(in);
-    vixl32::Label end;
-    vixl32::Label* final_label = codegen->GetFinalLabel(invoke, &end);
-    __ Clz(out, in_reg_hi);
-    __ CompareAndBranchIfNonZero(in_reg_hi, final_label, /* is_far_target= */ false);
-    __ Clz(out, in_reg_lo);
-    __ Add(out, out, 32);
+    vixl32::Label    end;
+    vixl32::Label*   final_label = codegen->GetFinalLabel(invoke, &end);
+    __               Clz(out, in_reg_hi);
+    __               CompareAndBranchIfNonZero(in_reg_hi, final_label, /* is_far_target= */ false);
+    __               Clz(out, in_reg_lo);
+    __               Add(out, out, 32);
     if (end.IsReferenced()) {
       __ Bind(&end);
     }
@@ -342,33 +341,33 @@ void IntrinsicCodeGeneratorARMVIXL::VisitLongNumberOfLeadingZeros(HInvoke* invok
   GenNumberOfLeadingZeros(invoke, DataType::Type::kInt64, codegen_);
 }
 
-static void GenNumberOfTrailingZeros(HInvoke* invoke,
-                                     DataType::Type type,
+static void GenNumberOfTrailingZeros(HInvoke*              invoke,
+                                     DataType::Type        type,
                                      CodeGeneratorARMVIXL* codegen) {
   DCHECK((type == DataType::Type::kInt32) || (type == DataType::Type::kInt64));
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  vixl32::Register out = RegisterFrom(locations->Out());
+  LocationSummary*  locations = invoke->GetLocations();
+  vixl32::Register  out = RegisterFrom(locations->Out());
 
   if (type == DataType::Type::kInt64) {
     vixl32::Register in_reg_lo = LowRegisterFrom(locations->InAt(0));
     vixl32::Register in_reg_hi = HighRegisterFrom(locations->InAt(0));
-    vixl32::Label end;
-    vixl32::Label* final_label = codegen->GetFinalLabel(invoke, &end);
-    __ Rbit(out, in_reg_lo);
-    __ Clz(out, out);
-    __ CompareAndBranchIfNonZero(in_reg_lo, final_label, /* is_far_target= */ false);
-    __ Rbit(out, in_reg_hi);
-    __ Clz(out, out);
-    __ Add(out, out, 32);
+    vixl32::Label    end;
+    vixl32::Label*   final_label = codegen->GetFinalLabel(invoke, &end);
+    __               Rbit(out, in_reg_lo);
+    __               Clz(out, out);
+    __               CompareAndBranchIfNonZero(in_reg_lo, final_label, /* is_far_target= */ false);
+    __               Rbit(out, in_reg_hi);
+    __               Clz(out, out);
+    __               Add(out, out, 32);
     if (end.IsReferenced()) {
       __ Bind(&end);
     }
   } else {
     vixl32::Register in = RegisterFrom(locations->InAt(0));
-    __ Rbit(out, in);
-    __ Clz(out, out);
+    __               Rbit(out, in);
+    __               Clz(out, out);
   }
 }
 
@@ -394,7 +393,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitMathSqrt(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitMathSqrt(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  __ Vsqrt(OutputDRegister(invoke), InputDRegisterAt(invoke, 0));
+  __                Vsqrt(OutputDRegister(invoke), InputDRegisterAt(invoke, 0));
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitMathRint(HInvoke* invoke) {
@@ -406,7 +405,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitMathRint(HInvoke* invoke) {
 void IntrinsicCodeGeneratorARMVIXL::VisitMathRint(HInvoke* invoke) {
   DCHECK(codegen_->GetInstructionSetFeatures().HasARMv8AInstructions());
   ArmVIXLAssembler* assembler = GetAssembler();
-  __ Vrintn(F64, OutputDRegister(invoke), InputDRegisterAt(invoke, 0));
+  __                Vrintn(F64, OutputDRegister(invoke), InputDRegisterAt(invoke, 0));
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitMathRoundFloat(HInvoke* invoke) {
@@ -424,11 +423,11 @@ void IntrinsicCodeGeneratorARMVIXL::VisitMathRoundFloat(HInvoke* invoke) {
 
   ArmVIXLAssembler* assembler = GetAssembler();
   vixl32::SRegister in_reg = InputSRegisterAt(invoke, 0);
-  vixl32::Register out_reg = OutputRegister(invoke);
+  vixl32::Register  out_reg = OutputRegister(invoke);
   vixl32::SRegister temp1 = LowSRegisterFrom(invoke->GetLocations()->GetTemp(0));
   vixl32::SRegister temp2 = HighSRegisterFrom(invoke->GetLocations()->GetTemp(0));
-  vixl32::Label done;
-  vixl32::Label* final_label = codegen_->GetFinalLabel(invoke, &done);
+  vixl32::Label     done;
+  vixl32::Label*    final_label = codegen_->GetFinalLabel(invoke, &done);
 
   // Round to nearest integer, ties away from zero.
   __ Vcvta(S32, F32, temp1, in_reg);
@@ -451,8 +450,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitMathRoundFloat(HInvoke* invoke) {
     ExactAssemblyScope it_scope(assembler->GetVIXLAssembler(),
                                 2 * kMaxInstructionSizeInBytes,
                                 CodeBufferCheckScope::kMaximumSize);
-    __ it(eq);
-    __ add(eq, out_reg, out_reg, 1);
+    __                 it(eq);
+    __                 add(eq, out_reg, out_reg, 1);
   }
 
   if (done.IsReferenced()) {
@@ -487,11 +486,11 @@ void IntrinsicLocationsBuilderARMVIXL::VisitMemoryPeekLongNative(HInvoke* invoke
 void IntrinsicCodeGeneratorARMVIXL::VisitMemoryPeekLongNative(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
   // Ignore upper 4B of long address.
-  vixl32::Register addr = LowRegisterFrom(invoke->GetLocations()->InAt(0));
+  vixl32::Register  addr = LowRegisterFrom(invoke->GetLocations()->InAt(0));
   // Worst case: Control register bit SCTLR.A = 0. Then unaligned accesses throw a processor
   // exception. So we can't use ldrd as addr may be unaligned.
-  vixl32::Register lo = LowRegisterFrom(invoke->GetLocations()->Out());
-  vixl32::Register hi = HighRegisterFrom(invoke->GetLocations()->Out());
+  vixl32::Register  lo = LowRegisterFrom(invoke->GetLocations()->Out());
+  vixl32::Register  hi = HighRegisterFrom(invoke->GetLocations()->Out());
   if (addr.Is(lo)) {
     __ Ldr(hi, MemOperand(addr, 4));
     __ Ldr(lo, MemOperand(addr));
@@ -543,11 +542,11 @@ void IntrinsicLocationsBuilderARMVIXL::VisitMemoryPokeLongNative(HInvoke* invoke
 void IntrinsicCodeGeneratorARMVIXL::VisitMemoryPokeLongNative(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
   // Ignore upper 4B of long address.
-  vixl32::Register addr = LowRegisterFrom(invoke->GetLocations()->InAt(0));
+  vixl32::Register  addr = LowRegisterFrom(invoke->GetLocations()->InAt(0));
   // Worst case: Control register bit SCTLR.A = 0. Then unaligned accesses throw a processor
   // exception. So we can't use ldrd as addr may be unaligned.
-  __ Str(LowRegisterFrom(invoke->GetLocations()->InAt(1)), MemOperand(addr));
-  __ Str(HighRegisterFrom(invoke->GetLocations()->InAt(1)), MemOperand(addr, 4));
+  __                Str(LowRegisterFrom(invoke->GetLocations()->InAt(1)), MemOperand(addr));
+  __                Str(HighRegisterFrom(invoke->GetLocations()->InAt(1)), MemOperand(addr, 4));
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitMemoryPokeShortNative(HInvoke* invoke) {
@@ -567,18 +566,16 @@ void IntrinsicLocationsBuilderARMVIXL::VisitThreadCurrentThread(HInvoke* invoke)
 
 void IntrinsicCodeGeneratorARMVIXL::VisitThreadCurrentThread(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  __ Ldr(OutputRegister(invoke),
+  __                Ldr(OutputRegister(invoke),
          MemOperand(tr, Thread::PeerOffset<kArmPointerSize>().Int32Value()));
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
   // The inputs plus one temp.
-  LocationSummary* locations =
-      new (allocator_) LocationSummary(invoke,
-                                       invoke->InputAt(1)->CanBeNull()
-                                           ? LocationSummary::kCallOnSlowPath
-                                           : LocationSummary::kNoCall,
-                                       kIntrinsified);
+  LocationSummary* locations = new (allocator_) LocationSummary(
+      invoke,
+      invoke->InputAt(1)->CanBeNull() ? LocationSummary::kCallOnSlowPath : LocationSummary::kNoCall,
+      kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RequiresRegister());
   locations->AddTemp(Location::RequiresRegister());
@@ -598,13 +595,13 @@ void IntrinsicLocationsBuilderARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
 // IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo, the limit will be exceeded, resulting in a
 // build failure. That is the reason why NO_INLINE attribute is used.
 static void NO_INLINE GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
-                                                  HInvoke* invoke,
-                                                  vixl32::Label* end,
-                                                  vixl32::Label* different_compression);
+                                                  HInvoke*          invoke,
+                                                  vixl32::Label*    end,
+                                                  vixl32::Label*    different_compression);
 
 void IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
   const vixl32::Register str = InputRegisterAt(invoke, 0);
   const vixl32::Register arg = InputRegisterAt(invoke, 1);
@@ -613,7 +610,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
   const vixl32::Register temp0 = RegisterFrom(locations->GetTemp(0));
   const vixl32::Register temp1 = RegisterFrom(locations->GetTemp(1));
   const vixl32::Register temp2 = RegisterFrom(locations->GetTemp(2));
-  vixl32::Register temp3;
+  vixl32::Register       temp3;
   if (mirror::kUseStringCompression) {
     temp3 = RegisterFrom(locations->GetTemp(3));
   }
@@ -629,7 +626,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
 
   // Take slow path and throw if input can be and is null.
   SlowPathCodeARMVIXL* slow_path = nullptr;
-  const bool can_slow_path = invoke->InputAt(1)->CanBeNull();
+  const bool           can_slow_path = invoke->InputAt(1)->CanBeNull();
   if (can_slow_path) {
     slow_path = new (codegen_->GetScopedAllocator()) IntrinsicSlowPathARMVIXL(invoke);
     codegen_->AddSlowPath(slow_path);
@@ -687,7 +684,6 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
     __ add(ne, temp0, temp0, temp0);
   }
 
-
   GenerateStringCompareToLoop(assembler, invoke, &end, &different_compression);
 
   __ Bind(&end);
@@ -698,9 +694,9 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringCompareTo(HInvoke* invoke) {
 }
 
 static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
-                                        HInvoke* invoke,
-                                        vixl32::Label* end,
-                                        vixl32::Label* different_compression) {
+                                        HInvoke*          invoke,
+                                        vixl32::Label*    end,
+                                        vixl32::Label*    different_compression) {
   LocationSummary* locations = invoke->GetLocations();
 
   const vixl32::Register str = InputRegisterAt(invoke, 0);
@@ -710,7 +706,7 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
   const vixl32::Register temp0 = RegisterFrom(locations->GetTemp(0));
   const vixl32::Register temp1 = RegisterFrom(locations->GetTemp(1));
   const vixl32::Register temp2 = RegisterFrom(locations->GetTemp(2));
-  vixl32::Register temp3;
+  vixl32::Register       temp3;
   if (mirror::kUseStringCompression) {
     temp3 = RegisterFrom(locations->GetTemp(3));
   }
@@ -720,7 +716,7 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
 
   const int32_t value_offset = mirror::String::ValueOffset().Int32Value();
   // Store offset of string value in preparation for comparison loop.
-  __ Mov(temp1, value_offset);
+  __            Mov(temp1, value_offset);
 
   // Assertions that must hold in order to compare multiple characters at a time.
   CHECK_ALIGNED(value_offset, 8);
@@ -732,15 +728,15 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
 
-  vixl32::Label find_char_diff_2nd_cmp;
+  vixl32::Label    find_char_diff_2nd_cmp;
   // Unrolled loop comparing 4x16-bit chars per iteration (ok because of string data alignment).
-  __ Bind(&loop);
+  __               Bind(&loop);
   vixl32::Register temp_reg = temps.Acquire();
-  __ Ldr(temp_reg, MemOperand(str, temp1));
-  __ Ldr(temp2, MemOperand(arg, temp1));
-  __ Cmp(temp_reg, temp2);
-  __ B(ne, &find_char_diff, /* is_far_target= */ false);
-  __ Add(temp1, temp1, char_size * 2);
+  __               Ldr(temp_reg, MemOperand(str, temp1));
+  __               Ldr(temp2, MemOperand(arg, temp1));
+  __               Cmp(temp_reg, temp2);
+  __               B(ne, &find_char_diff, /* is_far_target= */ false);
+  __               Add(temp1, temp1, char_size * 2);
 
   __ Ldr(temp_reg, MemOperand(str, temp1));
   __ Ldr(temp2, MemOperand(arg, temp1));
@@ -754,7 +750,7 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
 
   __ Bind(&find_char_diff_2nd_cmp);
   if (mirror::kUseStringCompression) {
-    __ Subs(temp0, temp0, 4);  // 4 bytes previously compared.
+    __ Subs(temp0, temp0, 4);                   // 4 bytes previously compared.
     __ B(ls, end, /* is_far_target= */ false);  // Was the second comparison fully beyond the end?
   } else {
     // Without string compression, we can start treating temp0 as signed
@@ -790,12 +786,12 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
     // For compressed strings we need to clear 0x7 from temp1, for uncompressed we need to clear
     // 0xf. We also need to prepare the character extraction mask `uncompressed ? 0xffffu : 0xffu`.
     // The compression flag is now in the highest bit of temp3, so let's play some tricks.
-    __ Orr(temp3, temp3, 0xffu << 23);                  // uncompressed ? 0xff800000u : 0x7ff80000u
+    __ Orr(temp3, temp3, 0xffu << 23);  // uncompressed ? 0xff800000u : 0x7ff80000u
     __ Bic(temp1, temp1, Operand(temp3, vixl32::LSR, 31 - 3));  // &= ~(uncompressed ? 0xfu : 0x7u)
-    __ Asr(temp3, temp3, 7u);                           // uncompressed ? 0xffff0000u : 0xff0000u.
-    __ Lsr(temp2, temp2, temp1);                        // Extract second character.
-    __ Lsr(temp3, temp3, 16u);                          // uncompressed ? 0xffffu : 0xffu
-    __ Lsr(out, temp_reg, temp1);                       // Extract first character.
+    __ Asr(temp3, temp3, 7u);      // uncompressed ? 0xffff0000u : 0xff0000u.
+    __ Lsr(temp2, temp2, temp1);   // Extract second character.
+    __ Lsr(temp3, temp3, 16u);     // uncompressed ? 0xffffu : 0xffu
+    __ Lsr(out, temp_reg, temp1);  // Extract first character.
     __ And(temp2, temp2, temp3);
     __ And(out, out, temp3);
   } else {
@@ -822,20 +818,20 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
     // need to treat as unsigned. Start by freeing the bit with an ADD and continue
     // further down by a LSRS+SBC which will flip the meaning of the flag but allow
     // `subs temp0, #2; bhi different_compression_loop` to serve as the loop condition.
-    __ Add(temp0, temp0, temp0);              // Unlike LSL, this ADD is always 16-bit.
+    __ Add(temp0, temp0, temp0);  // Unlike LSL, this ADD is always 16-bit.
     // `temp1` will hold the compressed data pointer, `temp2` the uncompressed data pointer.
     __ Mov(temp1, str);
     __ Mov(temp2, arg);
-    __ Lsrs(temp3, temp3, 1u);                // Continue the move of the compression flag.
+    __ Lsrs(temp3, temp3, 1u);  // Continue the move of the compression flag.
     {
       ExactAssemblyScope aas(assembler->GetVIXLAssembler(),
                              3 * kMaxInstructionSizeInBytes,
                              CodeBufferCheckScope::kMaximumSize);
-      __ itt(cs);                             // Interleave with selection of temp1 and temp2.
-      __ mov(cs, temp1, arg);                 // Preserves flags.
-      __ mov(cs, temp2, str);                 // Preserves flags.
+      __                 itt(cs);              // Interleave with selection of temp1 and temp2.
+      __                 mov(cs, temp1, arg);  // Preserves flags.
+      __                 mov(cs, temp2, str);  // Preserves flags.
     }
-    __ Sbc(temp0, temp0, 0);                  // Complete the move of the compression flag.
+    __ Sbc(temp0, temp0, 0);  // Complete the move of the compression flag.
 
     // Adjust temp1 and temp2 from string pointers to data pointers.
     __ Add(temp1, temp1, value_offset);
@@ -868,8 +864,8 @@ static void GenerateStringCompareToLoop(ArmVIXLAssembler* assembler,
     ExactAssemblyScope aas(assembler->GetVIXLAssembler(),
                            2 * kMaxInstructionSizeInBytes,
                            CodeBufferCheckScope::kMaximumSize);
-    __ it(cc);
-    __ rsb(cc, out, out, 0);
+    __                 it(cc);
+    __                 rsb(cc, out, out, 0);
   }
 }
 
@@ -882,7 +878,7 @@ constexpr size_t kShortConstStringEqualsCutoffInBytes = 16;
 
 static const char* GetConstString(HInstruction* candidate, uint32_t* utf16_length) {
   if (candidate->IsLoadString()) {
-    HLoadString* load_string = candidate->AsLoadString();
+    HLoadString*   load_string = candidate->AsLoadString();
     const DexFile& dex_file = load_string->GetDexFile();
     return dex_file.StringDataAndUtf16LengthByIdx(load_string->GetStringIndex(), utf16_length);
   }
@@ -902,15 +898,13 @@ void IntrinsicLocationsBuilderARMVIXL::VisitStringEquals(HInvoke* invoke) {
 
   // For the generic implementation and for long const strings we need an extra temporary.
   // We do not need it for short const strings, up to 4 bytes, see code generation below.
-  uint32_t const_string_length = 0u;
+  uint32_t    const_string_length = 0u;
   const char* const_string = GetConstString(invoke->InputAt(0), &const_string_length);
   if (const_string == nullptr) {
     const_string = GetConstString(invoke->InputAt(1), &const_string_length);
   }
-  bool is_compressed =
-      mirror::kUseStringCompression &&
-      const_string != nullptr &&
-      mirror::String::DexFileStringAllASCII(const_string, const_string_length);
+  bool is_compressed = mirror::kUseStringCompression && const_string != nullptr &&
+                       mirror::String::DexFileStringAllASCII(const_string, const_string_length);
   if (const_string == nullptr || const_string_length > (is_compressed ? 4u : 2u)) {
     locations->AddTemp(Location::RequiresRegister());
   }
@@ -923,7 +917,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitStringEquals(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
   vixl32::Register str = InputRegisterAt(invoke, 0);
   vixl32::Register arg = InputRegisterAt(invoke, 1);
@@ -931,10 +925,10 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
 
   vixl32::Register temp = RegisterFrom(locations->GetTemp(0));
 
-  vixl32::Label loop;
-  vixl32::Label end;
-  vixl32::Label return_true;
-  vixl32::Label return_false;
+  vixl32::Label  loop;
+  vixl32::Label  end;
+  vixl32::Label  return_true;
+  vixl32::Label  return_false;
   vixl32::Label* final_label = codegen_->GetFinalLabel(invoke, &end);
 
   // Get offsets of count, value, and class fields within a string object.
@@ -976,7 +970,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
 
   // Check if one of the inputs is a const string. Do not special-case both strings
   // being const, such cases should be handled by constant folding if needed.
-  uint32_t const_string_length = 0u;
+  uint32_t    const_string_length = 0u;
   const char* const_string = GetConstString(invoke->InputAt(0), &const_string_length);
   if (const_string == nullptr) {
     const_string = GetConstString(invoke->InputAt(1), &const_string_length);
@@ -984,10 +978,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
       std::swap(str, arg);  // Make sure the const string is in `str`.
     }
   }
-  bool is_compressed =
-      mirror::kUseStringCompression &&
-      const_string != nullptr &&
-      mirror::String::DexFileStringAllASCII(const_string, const_string_length);
+  bool is_compressed = mirror::kUseStringCompression && const_string != nullptr &&
+                       mirror::String::DexFileStringAllASCII(const_string, const_string_length);
 
   if (const_string != nullptr) {
     // Load `count` field of the argument string and check if it matches the const string.
@@ -1016,18 +1008,18 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
     // Load and compare the contents. Though we know the contents of the short const string
     // at compile time, materializing constants may be more code than loading from memory.
     int32_t offset = value_offset;
-    size_t remaining_bytes =
+    size_t  remaining_bytes =
         RoundUp(is_compressed ? const_string_length : const_string_length * 2u, 4u);
     while (remaining_bytes > sizeof(uint32_t)) {
-      vixl32::Register temp1 = RegisterFrom(locations->GetTemp(1));
+      vixl32::Register        temp1 = RegisterFrom(locations->GetTemp(1));
       UseScratchRegisterScope scratch_scope(assembler->GetVIXLAssembler());
-      vixl32::Register temp2 = scratch_scope.Acquire();
-      __ Ldrd(temp, temp1, MemOperand(str, offset));
-      __ Ldrd(temp2, out, MemOperand(arg, offset));
-      __ Cmp(temp, temp2);
-      __ B(ne, &return_false, /* is_far_target= */ false);
-      __ Cmp(temp1, out);
-      __ B(ne, &return_false, /* is_far_target= */ false);
+      vixl32::Register        temp2 = scratch_scope.Acquire();
+      __                      Ldrd(temp, temp1, MemOperand(str, offset));
+      __                      Ldrd(temp2, out, MemOperand(arg, offset));
+      __                      Cmp(temp, temp2);
+      __                      B(ne, &return_false, /* is_far_target= */ false);
+      __                      Cmp(temp1, out);
+      __                      B(ne, &return_false, /* is_far_target= */ false);
       offset += 2u * sizeof(uint32_t);
       remaining_bytes -= 2u * sizeof(uint32_t);
     }
@@ -1046,17 +1038,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
     if (mirror::kUseStringCompression) {
       // For string compression, calculate the number of bytes to compare (not chars).
       // This could in theory exceed INT32_MAX, so treat temp as unsigned.
-      __ Lsrs(temp, temp, 1u);                        // Extract length and check compression flag.
+      __                 Lsrs(temp, temp, 1u);  // Extract length and check compression flag.
       ExactAssemblyScope aas(assembler->GetVIXLAssembler(),
                              2 * kMaxInstructionSizeInBytes,
                              CodeBufferCheckScope::kMaximumSize);
-      __ it(cs);                                      // If uncompressed,
-      __ add(cs, temp, temp, temp);                   //   double the byte count.
+      __                 it(cs);                     // If uncompressed,
+      __                 add(cs, temp, temp, temp);  //   double the byte count.
     }
 
-    vixl32::Register temp1 = RegisterFrom(locations->GetTemp(1));
+    vixl32::Register        temp1 = RegisterFrom(locations->GetTemp(1));
     UseScratchRegisterScope scratch_scope(assembler->GetVIXLAssembler());
-    vixl32::Register temp2 = scratch_scope.Acquire();
+    vixl32::Register        temp2 = scratch_scope.Acquire();
 
     // Store offset of string value in preparation for comparison loop.
     __ Mov(temp1, value_offset);
@@ -1088,10 +1080,10 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringEquals(HInvoke* invoke) {
   }
 }
 
-static void GenerateVisitStringIndexOf(HInvoke* invoke,
-                                       ArmVIXLAssembler* assembler,
+static void GenerateVisitStringIndexOf(HInvoke*              invoke,
+                                       ArmVIXLAssembler*     assembler,
                                        CodeGeneratorARMVIXL* codegen,
-                                       bool start_at_zero) {
+                                       bool                  start_at_zero) {
   LocationSummary* locations = invoke->GetLocations();
 
   // Note that the null check must have been done earlier.
@@ -1100,7 +1092,7 @@ static void GenerateVisitStringIndexOf(HInvoke* invoke,
   // Check for code points > 0xFFFF. Either a slow-path check when we don't know statically,
   // or directly dispatch for a large constant, or omit slow-path for a small constant or a char.
   SlowPathCodeARMVIXL* slow_path = nullptr;
-  HInstruction* code_point = invoke->InputAt(1);
+  HInstruction*        code_point = invoke->InputAt(1);
   if (code_point->IsIntConstant()) {
     if (static_cast<uint32_t>(Int32ConstantFrom(code_point)) >
         std::numeric_limits<uint16_t>::max()) {
@@ -1115,7 +1107,7 @@ static void GenerateVisitStringIndexOf(HInvoke* invoke,
   } else if (code_point->GetType() != DataType::Type::kUint16) {
     vixl32::Register char_reg = InputRegisterAt(invoke, 1);
     // 0xffff is not modified immediate but 0x10000 is, so use `>= 0x10000` instead of `> 0xffff`.
-    __ Cmp(char_reg, static_cast<uint32_t>(std::numeric_limits<uint16_t>::max()) + 1);
+    __               Cmp(char_reg, static_cast<uint32_t>(std::numeric_limits<uint16_t>::max()) + 1);
     slow_path = new (codegen->GetScopedAllocator()) IntrinsicSlowPathARMVIXL(invoke);
     codegen->AddSlowPath(slow_path);
     __ B(hs, slow_path->GetEntryLabel());
@@ -1137,8 +1129,8 @@ static void GenerateVisitStringIndexOf(HInvoke* invoke,
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitStringIndexOf(HInvoke* invoke) {
-  LocationSummary* locations = new (allocator_) LocationSummary(
-      invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
+  LocationSummary* locations = new (allocator_)
+      LocationSummary(invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
   // We have a hand-crafted assembly stub that follows the runtime calling convention. So it's
   // best to align the inputs accordingly.
   InvokeRuntimeCallingConventionARMVIXL calling_convention;
@@ -1155,8 +1147,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringIndexOf(HInvoke* invoke) {
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitStringIndexOfAfter(HInvoke* invoke) {
-  LocationSummary* locations = new (allocator_) LocationSummary(
-      invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
+  LocationSummary* locations = new (allocator_)
+      LocationSummary(invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
   // We have a hand-crafted assembly stub that follows the runtime calling convention. So it's
   // best to align the inputs accordingly.
   InvokeRuntimeCallingConventionARMVIXL calling_convention;
@@ -1171,8 +1163,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringIndexOfAfter(HInvoke* invoke) {
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitStringNewStringFromBytes(HInvoke* invoke) {
-  LocationSummary* locations = new (allocator_) LocationSummary(
-      invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
+  LocationSummary* locations = new (allocator_)
+      LocationSummary(invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
   InvokeRuntimeCallingConventionARMVIXL calling_convention;
   locations->SetInAt(0, LocationFrom(calling_convention.GetRegisterAt(0)));
   locations->SetInAt(1, LocationFrom(calling_convention.GetRegisterAt(1)));
@@ -1182,9 +1174,9 @@ void IntrinsicLocationsBuilderARMVIXL::VisitStringNewStringFromBytes(HInvoke* in
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitStringNewStringFromBytes(HInvoke* invoke) {
-  ArmVIXLAssembler* assembler = GetAssembler();
-  vixl32::Register byte_array = InputRegisterAt(invoke, 0);
-  __ Cmp(byte_array, 0);
+  ArmVIXLAssembler*    assembler = GetAssembler();
+  vixl32::Register     byte_array = InputRegisterAt(invoke, 0);
+  __                   Cmp(byte_array, 0);
   SlowPathCodeARMVIXL* slow_path =
       new (codegen_->GetScopedAllocator()) IntrinsicSlowPathARMVIXL(invoke);
   codegen_->AddSlowPath(slow_path);
@@ -1217,17 +1209,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringNewStringFromChars(HInvoke* invok
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitStringNewStringFromString(HInvoke* invoke) {
-  LocationSummary* locations = new (allocator_) LocationSummary(
-      invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
+  LocationSummary* locations = new (allocator_)
+      LocationSummary(invoke, LocationSummary::kCallOnMainAndSlowPath, kIntrinsified);
   InvokeRuntimeCallingConventionARMVIXL calling_convention;
   locations->SetInAt(0, LocationFrom(calling_convention.GetRegisterAt(0)));
   locations->SetOut(LocationFrom(r0));
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitStringNewStringFromString(HInvoke* invoke) {
-  ArmVIXLAssembler* assembler = GetAssembler();
-  vixl32::Register string_to_copy = InputRegisterAt(invoke, 0);
-  __ Cmp(string_to_copy, 0);
+  ArmVIXLAssembler*    assembler = GetAssembler();
+  vixl32::Register     string_to_copy = InputRegisterAt(invoke, 0);
+  __                   Cmp(string_to_copy, 0);
   SlowPathCodeARMVIXL* slow_path =
       new (codegen_->GetScopedAllocator()) IntrinsicSlowPathARMVIXL(invoke);
   codegen_->AddSlowPath(slow_path);
@@ -1274,13 +1266,13 @@ void IntrinsicLocationsBuilderARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   }
 }
 
-static void CheckPosition(ArmVIXLAssembler* assembler,
-                          Location pos,
-                          vixl32::Register input,
-                          Location length,
+static void CheckPosition(ArmVIXLAssembler*    assembler,
+                          Location             pos,
+                          vixl32::Register     input,
+                          Location             length,
                           SlowPathCodeARMVIXL* slow_path,
-                          vixl32::Register temp,
-                          bool length_is_input_length = false) {
+                          vixl32::Register     temp,
+                          bool                 length_is_input_length = false) {
   // Where is the length in the Array?
   const uint32_t length_offset = mirror::Array::LengthOffset().Uint32Value();
 
@@ -1314,12 +1306,12 @@ static void CheckPosition(ArmVIXLAssembler* assembler,
   } else if (length_is_input_length) {
     // The only way the copy can succeed is if pos is zero.
     vixl32::Register pos_reg = RegisterFrom(pos);
-    __ CompareAndBranchIfNonZero(pos_reg, slow_path->GetEntryLabel());
+    __               CompareAndBranchIfNonZero(pos_reg, slow_path->GetEntryLabel());
   } else {
     // Check that pos >= 0.
     vixl32::Register pos_reg = RegisterFrom(pos);
-    __ Cmp(pos_reg, 0);
-    __ B(lt, slow_path->GetEntryLabel());
+    __               Cmp(pos_reg, 0);
+    __               B(lt, slow_path->GetEntryLabel());
 
     // Check that pos <= length(input).
     __ Ldr(temp, MemOperand(input, length_offset));
@@ -1342,7 +1334,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   DCHECK(!kEmitCompilerReadBarrier || kUseBakerReadBarrier);
 
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
   uint32_t class_offset = mirror::Object::ClassOffset().Int32Value();
   uint32_t super_offset = mirror::Class::SuperClassOffset().Int32Value();
@@ -1351,22 +1343,22 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   uint32_t monitor_offset = mirror::Object::MonitorOffset().Int32Value();
 
   vixl32::Register src = InputRegisterAt(invoke, 0);
-  Location src_pos = locations->InAt(1);
+  Location         src_pos = locations->InAt(1);
   vixl32::Register dest = InputRegisterAt(invoke, 2);
-  Location dest_pos = locations->InAt(3);
-  Location length = locations->InAt(4);
-  Location temp1_loc = locations->GetTemp(0);
+  Location         dest_pos = locations->InAt(3);
+  Location         length = locations->InAt(4);
+  Location         temp1_loc = locations->GetTemp(0);
   vixl32::Register temp1 = RegisterFrom(temp1_loc);
-  Location temp2_loc = locations->GetTemp(1);
+  Location         temp2_loc = locations->GetTemp(1);
   vixl32::Register temp2 = RegisterFrom(temp2_loc);
-  Location temp3_loc = locations->GetTemp(2);
+  Location         temp3_loc = locations->GetTemp(2);
   vixl32::Register temp3 = RegisterFrom(temp3_loc);
 
   SlowPathCodeARMVIXL* intrinsic_slow_path =
       new (codegen_->GetScopedAllocator()) IntrinsicSlowPathARMVIXL(invoke);
   codegen_->AddSlowPath(intrinsic_slow_path);
 
-  vixl32::Label conditions_on_positions_validated;
+  vixl32::Label                conditions_on_positions_validated;
   SystemArrayCopyOptimizations optimizations(invoke);
 
   // If source and destination are the same, we go to slow path if we need to do
@@ -1384,8 +1376,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
       }
 
       // Checked when building locations.
-      DCHECK(!optimizations.GetDestinationIsSource()
-             || (src_pos_constant >= Int32ConstantFrom(dest_pos)));
+      DCHECK(!optimizations.GetDestinationIsSource() ||
+             (src_pos_constant >= Int32ConstantFrom(dest_pos)));
     } else {
       if (!optimizations.GetDestinationIsSource()) {
         __ Cmp(src, dest);
@@ -1401,7 +1393,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
     }
     if (dest_pos.IsConstant()) {
       int32_t dest_pos_constant = Int32ConstantFrom(dest_pos);
-      __ Cmp(RegisterFrom(src_pos), dest_pos_constant);
+      __      Cmp(RegisterFrom(src_pos), dest_pos_constant);
     } else {
       __ Cmp(RegisterFrom(src_pos), RegisterFrom(dest_pos));
     }
@@ -1422,8 +1414,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
 
   // If the length is negative, bail out.
   // We have already checked in the LocationsBuilder for the constant case.
-  if (!length.IsConstant() &&
-      !optimizations.GetCountIsSourceLength() &&
+  if (!length.IsConstant() && !optimizations.GetCountIsSourceLength() &&
       !optimizations.GetCountIsDestinationLength()) {
     __ Cmp(RegisterFrom(length), 0);
     __ B(lt, intrinsic_slow_path->GetEntryLabel());
@@ -1505,7 +1496,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
 
       if (optimizations.GetDestinationIsTypedObjectArray()) {
         vixl32::Label do_copy;
-        __ B(eq, &do_copy, /* is_far_target= */ false);
+        __            B(eq, &do_copy, /* is_far_target= */ false);
         // /* HeapReference<Class> */ temp1 = temp1->component_type_
         codegen_->GenerateFieldLoadWithBakerReadBarrier(
             invoke, temp1_loc, temp1, component_offset, temp2_loc, /* needs_null_check= */ false);
@@ -1524,9 +1515,9 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
       // Non read barrier code.
 
       // /* HeapReference<Class> */ temp1 = dest->klass_
-      __ Ldr(temp1, MemOperand(dest, class_offset));
+      __   Ldr(temp1, MemOperand(dest, class_offset));
       // /* HeapReference<Class> */ temp2 = src->klass_
-      __ Ldr(temp2, MemOperand(src, class_offset));
+      __   Ldr(temp2, MemOperand(src, class_offset));
       bool did_unpoison = false;
       if (!optimizations.GetDestinationIsNonPrimitiveArray() ||
           !optimizations.GetSourceIsNonPrimitiveArray()) {
@@ -1565,7 +1556,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
 
       if (optimizations.GetDestinationIsTypedObjectArray()) {
         vixl32::Label do_copy;
-        __ B(eq, &do_copy, /* is_far_target= */ false);
+        __            B(eq, &do_copy, /* is_far_target= */ false);
         if (!did_unpoison) {
           assembler->MaybeUnpoisonHeapReference(temp1);
         }
@@ -1612,9 +1603,9 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   if (length.IsConstant() && Int32ConstantFrom(length) == 0) {
     // Null constant length: not need to emit the loop code at all.
   } else {
-    vixl32::Label done;
+    vixl32::Label        done;
     const DataType::Type type = DataType::Type::kReference;
-    const int32_t element_size = DataType::Size(type);
+    const int32_t        element_size = DataType::Size(type);
 
     if (length.IsRegister()) {
       // Don't enter the copy loop if the length is null.
@@ -1687,12 +1678,12 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
       // Iterate over the arrays and do a raw copy of the objects. We don't need to
       // poison/unpoison.
       vixl32::Label loop;
-      __ Bind(&loop);
+      __            Bind(&loop);
       {
         UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-        const vixl32::Register temp_reg = temps.Acquire();
-        __ Ldr(temp_reg, MemOperand(temp1, element_size, PostIndex));
-        __ Str(temp_reg, MemOperand(temp2, element_size, PostIndex));
+        const vixl32::Register  temp_reg = temps.Acquire();
+        __                      Ldr(temp_reg, MemOperand(temp1, element_size, PostIndex));
+        __                      Str(temp_reg, MemOperand(temp2, element_size, PostIndex));
       }
       __ Cmp(temp1, temp3);
       __ B(ne, &loop, /* is_far_target= */ false);
@@ -1709,12 +1700,12 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
       // Iterate over the arrays and do a raw copy of the objects. We don't need to
       // poison/unpoison.
       vixl32::Label loop;
-      __ Bind(&loop);
+      __            Bind(&loop);
       {
         UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-        const vixl32::Register temp_reg = temps.Acquire();
-        __ Ldr(temp_reg, MemOperand(temp1, element_size, PostIndex));
-        __ Str(temp_reg, MemOperand(temp2, element_size, PostIndex));
+        const vixl32::Register  temp_reg = temps.Acquire();
+        __                      Ldr(temp_reg, MemOperand(temp1, element_size, PostIndex));
+        __                      Str(temp_reg, MemOperand(temp2, element_size, PostIndex));
       }
       __ Cmp(temp1, temp3);
       __ B(ne, &loop, /* is_far_target= */ false);
@@ -1782,10 +1773,10 @@ static void CreateFPFPToFPCallLocations(ArenaAllocator* allocator, HInvoke* invo
   locations->AddTemp(LocationFrom(calling_convention.GetRegisterAt(3)));
 }
 
-static void GenFPToFPCall(HInvoke* invoke,
-                          ArmVIXLAssembler* assembler,
+static void GenFPToFPCall(HInvoke*              invoke,
+                          ArmVIXLAssembler*     assembler,
                           CodeGeneratorARMVIXL* codegen,
-                          QuickEntrypointEnum entry) {
+                          QuickEntrypointEnum   entry) {
   LocationSummary* const locations = invoke->GetLocations();
 
   DCHECK_EQ(invoke->GetNumberOfArguments(), 1U);
@@ -1801,10 +1792,10 @@ static void GenFPToFPCall(HInvoke* invoke,
           RegisterFrom(locations->GetTemp(1)));
 }
 
-static void GenFPFPToFPCall(HInvoke* invoke,
-                            ArmVIXLAssembler* assembler,
+static void GenFPFPToFPCall(HInvoke*              invoke,
+                            ArmVIXLAssembler*     assembler,
                             CodeGeneratorARMVIXL* codegen,
-                            QuickEntrypointEnum entry) {
+                            QuickEntrypointEnum   entry) {
   LocationSummary* const locations = invoke->GetLocations();
 
   DCHECK_EQ(invoke->GetNumberOfArguments(), 2U);
@@ -1973,7 +1964,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitIntegerReverse(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitIntegerReverse(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  __ Rbit(OutputRegister(invoke), InputRegisterAt(invoke, 0));
+  __                Rbit(OutputRegister(invoke), InputRegisterAt(invoke, 0));
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitLongReverse(HInvoke* invoke) {
@@ -1982,10 +1973,10 @@ void IntrinsicLocationsBuilderARMVIXL::VisitLongReverse(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitLongReverse(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
-  vixl32::Register in_reg_lo  = LowRegisterFrom(locations->InAt(0));
-  vixl32::Register in_reg_hi  = HighRegisterFrom(locations->InAt(0));
+  vixl32::Register in_reg_lo = LowRegisterFrom(locations->InAt(0));
+  vixl32::Register in_reg_hi = HighRegisterFrom(locations->InAt(0));
   vixl32::Register out_reg_lo = LowRegisterFrom(locations->Out());
   vixl32::Register out_reg_hi = HighRegisterFrom(locations->Out());
 
@@ -2000,19 +1991,13 @@ static void GenerateReverseBytesInPlaceForEachWord(ArmVIXLAssembler* assembler, 
 }
 
 static void GenerateReverseBytes(ArmVIXLAssembler* assembler,
-                                 DataType::Type type,
-                                 Location in,
-                                 Location out) {
+                                 DataType::Type    type,
+                                 Location          in,
+                                 Location          out) {
   switch (type) {
-    case DataType::Type::kUint16:
-      __ Rev16(RegisterFrom(out), RegisterFrom(in));
-      break;
-    case DataType::Type::kInt16:
-      __ Revsh(RegisterFrom(out), RegisterFrom(in));
-      break;
-    case DataType::Type::kInt32:
-      __ Rev(RegisterFrom(out), RegisterFrom(in));
-      break;
+    case DataType::Type::kUint16: __ Rev16(RegisterFrom(out), RegisterFrom(in)); break;
+    case DataType::Type::kInt16: __ Revsh(RegisterFrom(out), RegisterFrom(in)); break;
+    case DataType::Type::kInt32: __ Rev(RegisterFrom(out), RegisterFrom(in)); break;
     case DataType::Type::kInt64:
       DCHECK(!LowRegisterFrom(out).Is(LowRegisterFrom(in)));
       __ Rev(LowRegisterFrom(out), HighRegisterFrom(in));
@@ -2026,9 +2011,7 @@ static void GenerateReverseBytes(ArmVIXLAssembler* assembler,
       GenerateReverseBytesInPlaceForEachWord(assembler, in);  // Note: Clobbers `in`.
       __ Vmov(DRegisterFrom(out), HighRegisterFrom(in), LowRegisterFrom(in));  // Swap high/low.
       break;
-    default:
-      LOG(FATAL) << "Unexpected type for reverse-bytes: " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type for reverse-bytes: " << type; UNREACHABLE();
   }
 }
 
@@ -2038,7 +2021,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitIntegerReverseBytes(HInvoke* invoke)
 
 void IntrinsicCodeGeneratorARMVIXL::VisitIntegerReverseBytes(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
   GenerateReverseBytes(assembler, DataType::Type::kInt32, locations->InAt(0), locations->Out());
 }
 
@@ -2048,7 +2031,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitLongReverseBytes(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitLongReverseBytes(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
   GenerateReverseBytes(assembler, DataType::Type::kInt64, locations->InAt(0), locations->Out());
 }
 
@@ -2058,7 +2041,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitShortReverseBytes(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitShortReverseBytes(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
   GenerateReverseBytes(assembler, DataType::Type::kInt16, locations->InAt(0), locations->Out());
 }
 
@@ -2067,11 +2050,11 @@ static void GenBitCount(HInvoke* instr, DataType::Type type, ArmVIXLAssembler* a
   DCHECK_EQ(instr->GetType(), DataType::Type::kInt32);
   DCHECK_EQ(DataType::Kind(instr->InputAt(0)->GetType()), type);
 
-  bool is_long = type == DataType::Type::kInt64;
-  LocationSummary* locations = instr->GetLocations();
-  Location in = locations->InAt(0);
-  vixl32::Register src_0 = is_long ? LowRegisterFrom(in) : RegisterFrom(in);
-  vixl32::Register src_1 = is_long ? HighRegisterFrom(in) : src_0;
+  bool              is_long = type == DataType::Type::kInt64;
+  LocationSummary*  locations = instr->GetLocations();
+  Location          in = locations->InAt(0);
+  vixl32::Register  src_0 = is_long ? LowRegisterFrom(in) : RegisterFrom(in);
+  vixl32::Register  src_1 = is_long ? HighRegisterFrom(in) : src_0;
   vixl32::SRegister tmp_s = LowSRegisterFrom(locations->GetTemp(0));
   vixl32::DRegister tmp_d = DRegisterFrom(locations->GetTemp(0));
   vixl32::Register  out_r = OutputRegister(instr);
@@ -2085,7 +2068,7 @@ static void GenBitCount(HInvoke* instr, DataType::Type type, ArmVIXLAssembler* a
   __ Vpaddl(U8, tmp_d, tmp_d);      // Temp DReg |--c|--c|--c|--c|
   __ Vpaddl(U16, tmp_d, tmp_d);     // Temp DReg |------c|------c|
   if (is_long) {
-    __ Vpaddl(U32, tmp_d, tmp_d);   // Temp DReg |--------------c|
+    __ Vpaddl(U32, tmp_d, tmp_d);  // Temp DReg |--------------c|
   }
   __ Vmov(out_r, tmp_s);
 }
@@ -2107,19 +2090,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitLongBitCount(HInvoke* invoke) {
   GenBitCount(invoke, DataType::Type::kInt64, GetAssembler());
 }
 
-static void GenHighestOneBit(HInvoke* invoke,
-                             DataType::Type type,
-                             CodeGeneratorARMVIXL* codegen) {
+static void GenHighestOneBit(HInvoke* invoke, DataType::Type type, CodeGeneratorARMVIXL* codegen) {
   DCHECK(DataType::IsIntOrLongType(type));
 
-  ArmVIXLAssembler* assembler = codegen->GetAssembler();
+  ArmVIXLAssembler*       assembler = codegen->GetAssembler();
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  const vixl32::Register temp = temps.Acquire();
+  const vixl32::Register  temp = temps.Acquire();
 
   if (type == DataType::Type::kInt64) {
     LocationSummary* locations = invoke->GetLocations();
-    Location in = locations->InAt(0);
-    Location out = locations->Out();
+    Location         in = locations->InAt(0);
+    Location         out = locations->Out();
 
     vixl32::Register in_reg_lo = LowRegisterFrom(in);
     vixl32::Register in_reg_hi = HighRegisterFrom(in);
@@ -2143,10 +2124,10 @@ static void GenHighestOneBit(HInvoke* invoke,
       mov_src = Operand(temp);
     }
     ExactAssemblyScope it_scope(codegen->GetVIXLAssembler(),
-                                  2 * vixl32::k16BitT32InstructionSizeInBytes,
-                                  CodeBufferCheckScope::kExactSize);
-    __ it(ne);
-    __ mov(ne, out_reg_lo, mov_src);
+                                2 * vixl32::k16BitT32InstructionSizeInBytes,
+                                CodeBufferCheckScope::kExactSize);
+    __                 it(ne);
+    __                 mov(ne, out_reg_lo, mov_src);
   } else {
     vixl32::Register out = OutputRegister(invoke);
     vixl32::Register in = InputRegisterAt(invoke, 0);
@@ -2173,19 +2154,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitLongHighestOneBit(HInvoke* invoke) {
   GenHighestOneBit(invoke, DataType::Type::kInt64, codegen_);
 }
 
-static void GenLowestOneBit(HInvoke* invoke,
-                            DataType::Type type,
-                            CodeGeneratorARMVIXL* codegen) {
+static void GenLowestOneBit(HInvoke* invoke, DataType::Type type, CodeGeneratorARMVIXL* codegen) {
   DCHECK(DataType::IsIntOrLongType(type));
 
-  ArmVIXLAssembler* assembler = codegen->GetAssembler();
+  ArmVIXLAssembler*       assembler = codegen->GetAssembler();
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  const vixl32::Register temp = temps.Acquire();
+  const vixl32::Register  temp = temps.Acquire();
 
   if (type == DataType::Type::kInt64) {
     LocationSummary* locations = invoke->GetLocations();
-    Location in = locations->InAt(0);
-    Location out = locations->Out();
+    Location         in = locations->InAt(0);
+    Location         out = locations->Out();
 
     vixl32::Register in_reg_lo = LowRegisterFrom(in);
     vixl32::Register in_reg_hi = HighRegisterFrom(in);
@@ -2209,10 +2188,10 @@ static void GenLowestOneBit(HInvoke* invoke,
       mov_src = Operand(temp);
     }
     ExactAssemblyScope it_scope(codegen->GetVIXLAssembler(),
-                                  2 * vixl32::k16BitT32InstructionSizeInBytes,
-                                  CodeBufferCheckScope::kExactSize);
-    __ it(ne);
-    __ mov(ne, out_reg_hi, mov_src);
+                                2 * vixl32::k16BitT32InstructionSizeInBytes,
+                                CodeBufferCheckScope::kExactSize);
+    __                 it(ne);
+    __                 mov(ne, out_reg_hi, mov_src);
   } else {
     vixl32::Register out = OutputRegister(invoke);
     vixl32::Register in = InputRegisterAt(invoke, 0);
@@ -2255,7 +2234,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitStringGetCharsNoCheck(HInvoke* invok
 
 void IntrinsicCodeGeneratorARMVIXL::VisitStringGetCharsNoCheck(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
   // Check assumption that sizeof(Char) is 2 (used in scaling below).
   const size_t char_size = DataType::Size(DataType::Type::kUint16);
@@ -2279,11 +2258,11 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringGetCharsNoCheck(HInvoke* invoke) 
   vixl32::Register src_ptr = RegisterFrom(locations->GetTemp(1));
   vixl32::Register dst_ptr = RegisterFrom(locations->GetTemp(2));
 
-  vixl32::Label done, compressed_string_loop;
+  vixl32::Label  done, compressed_string_loop;
   vixl32::Label* final_label = codegen_->GetFinalLabel(invoke, &done);
   // dst to be copied.
-  __ Add(dst_ptr, dstObj, data_offset);
-  __ Add(dst_ptr, dst_ptr, Operand(dstBegin, vixl32::LSL, 1));
+  __             Add(dst_ptr, dstObj, data_offset);
+  __             Add(dst_ptr, dst_ptr, Operand(dstBegin, vixl32::LSL, 1));
 
   __ Subs(num_chr, srcEnd, srcBegin);
   // Early out for valid zero-length retrievals.
@@ -2293,8 +2272,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitStringGetCharsNoCheck(HInvoke* invoke) 
   __ Add(src_ptr, srcObj, value_offset);
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp;
-  vixl32::Label compressed_string_preloop;
+  vixl32::Register        temp;
+  vixl32::Label           compressed_string_preloop;
   if (mirror::kUseStringCompression) {
     // Location of count in string.
     const uint32_t count_offset = mirror::String::CountOffset().Uint32Value();
@@ -2371,10 +2350,10 @@ void IntrinsicLocationsBuilderARMVIXL::VisitFloatIsInfinite(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitFloatIsInfinite(HInvoke* invoke) {
   ArmVIXLAssembler* const assembler = GetAssembler();
-  const vixl32::Register out = OutputRegister(invoke);
+  const vixl32::Register  out = OutputRegister(invoke);
   // Shifting left by 1 bit makes the value encodable as an immediate operand;
   // we don't care about the sign bit anyway.
-  constexpr uint32_t infinity = kPositiveInfinityFloat << 1U;
+  constexpr uint32_t      infinity = kPositiveInfinityFloat << 1U;
 
   __ Vmov(out, InputSRegisterAt(invoke, 0));
   // We don't care about the sign bit, so shift left.
@@ -2389,18 +2368,18 @@ void IntrinsicLocationsBuilderARMVIXL::VisitDoubleIsInfinite(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorARMVIXL::VisitDoubleIsInfinite(HInvoke* invoke) {
   ArmVIXLAssembler* const assembler = GetAssembler();
-  const vixl32::Register out = OutputRegister(invoke);
+  const vixl32::Register  out = OutputRegister(invoke);
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  const vixl32::Register temp = temps.Acquire();
+  const vixl32::Register  temp = temps.Acquire();
   // The highest 32 bits of double precision positive infinity separated into
   // two constants encodable as immediate operands.
-  constexpr uint32_t infinity_high  = 0x7f000000U;
-  constexpr uint32_t infinity_high2 = 0x00f00000U;
+  constexpr uint32_t      infinity_high = 0x7f000000U;
+  constexpr uint32_t      infinity_high2 = 0x00f00000U;
 
-  static_assert((infinity_high | infinity_high2) ==
-                    static_cast<uint32_t>(kPositiveInfinityDouble >> 32U),
-                "The constants do not add up to the high 32 bits of double "
-                "precision positive infinity.");
+  static_assert(
+      (infinity_high | infinity_high2) == static_cast<uint32_t>(kPositiveInfinityDouble >> 32U),
+      "The constants do not add up to the high 32 bits of double "
+      "precision positive infinity.");
   __ Vmov(temp, out, InputDRegisterAt(invoke, 0));
   __ Eor(out, out, infinity_high);
   __ Eor(out, out, infinity_high2);
@@ -2436,22 +2415,19 @@ void IntrinsicCodeGeneratorARMVIXL::VisitMathFloor(HInvoke* invoke) {
 void IntrinsicLocationsBuilderARMVIXL::VisitIntegerValueOf(HInvoke* invoke) {
   InvokeRuntimeCallingConventionARMVIXL calling_convention;
   IntrinsicVisitor::ComputeIntegerValueOfLocations(
-      invoke,
-      codegen_,
-      LocationFrom(r0),
-      LocationFrom(calling_convention.GetRegisterAt(0)));
+      invoke, codegen_, LocationFrom(r0), LocationFrom(calling_convention.GetRegisterAt(0)));
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitIntegerValueOf(HInvoke* invoke) {
   IntrinsicVisitor::IntegerValueOfInfo info =
       IntrinsicVisitor::ComputeIntegerValueOfInfo(invoke, codegen_->GetCompilerOptions());
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*        locations = invoke->GetLocations();
   ArmVIXLAssembler* const assembler = GetAssembler();
 
-  vixl32::Register out = RegisterFrom(locations->Out());
+  vixl32::Register        out = RegisterFrom(locations->Out());
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp = temps.Acquire();
-  auto allocate_instance = [&]() {
+  vixl32::Register        temp = temps.Acquire();
+  auto                    allocate_instance = [&]() {
     DCHECK(out.Is(InvokeRuntimeCallingConventionARMVIXL().GetRegisterAt(0)));
     codegen_->LoadIntrinsicDeclaringClass(out, invoke);
     codegen_->InvokeRuntime(kQuickAllocObjectInitialized, invoke, invoke->GetDexPc());
@@ -2478,10 +2454,10 @@ void IntrinsicCodeGeneratorARMVIXL::VisitIntegerValueOf(HInvoke* invoke) {
     DCHECK(locations->CanCall());
     vixl32::Register in = RegisterFrom(locations->InAt(0));
     // Check bounds of our cache.
-    __ Add(out, in, -info.low);
-    __ Cmp(out, info.length);
-    vixl32::Label allocate, done;
-    __ B(hs, &allocate, /* is_far_target= */ false);
+    __               Add(out, in, -info.low);
+    __               Cmp(out, info.length);
+    vixl32::Label    allocate, done;
+    __               B(hs, &allocate, /* is_far_target= */ false);
     // If the value is within the bounds, load the j.l.Integer directly from the array.
     codegen_->LoadBootImageAddress(temp, info.array_data_boot_image_reference);
     codegen_->LoadFromShiftedRegOffset(DataType::Type::kReference, locations->Out(), temp, out);
@@ -2503,7 +2479,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitReferenceGetReferent(HInvoke* invoke
 
 void IntrinsicCodeGeneratorARMVIXL::VisitReferenceGetReferent(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
   Location obj = locations->InAt(0);
   Location out = locations->Out();
@@ -2514,17 +2490,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitReferenceGetReferent(HInvoke* invoke) {
   if (kEmitCompilerReadBarrier) {
     // Check self->GetWeakRefAccessEnabled().
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register temp = temps.Acquire();
-    __ Ldr(temp,
+    vixl32::Register        temp = temps.Acquire();
+    __                      Ldr(temp,
            MemOperand(tr, Thread::WeakRefAccessEnabledOffset<kArmPointerSize>().Uint32Value()));
-    __ Cmp(temp, 0);
-    __ B(eq, slow_path->GetEntryLabel());
+    __                      Cmp(temp, 0);
+    __                      B(eq, slow_path->GetEntryLabel());
   }
 
   {
     // Load the java.lang.ref.Reference class.
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register temp = temps.Acquire();
+    vixl32::Register        temp = temps.Acquire();
     codegen_->LoadIntrinsicDeclaringClass(temp, invoke);
 
     // Check static fields java.lang.ref.Reference.{disableIntrinsic,slowPathEnabled} together.
@@ -2544,8 +2520,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitReferenceGetReferent(HInvoke* invoke) {
                                                     out,
                                                     RegisterFrom(obj),
                                                     referent_offset,
-                                                    /*maybe_temp=*/ Location::NoLocation(),
-                                                    /*needs_null_check=*/ true);
+                                                    /*maybe_temp=*/Location::NoLocation(),
+                                                    /*needs_null_check=*/true);
     codegen_->GenerateMemoryBarrier(MemBarrierKind::kLoadAny);  // `referent` is volatile.
   } else {
     {
@@ -2564,8 +2540,8 @@ void IntrinsicLocationsBuilderARMVIXL::VisitReferenceRefersTo(HInvoke* invoke) {
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitReferenceRefersTo(HInvoke* invoke) {
-  LocationSummary* locations = invoke->GetLocations();
-  ArmVIXLAssembler* assembler = GetAssembler();
+  LocationSummary*        locations = invoke->GetLocations();
+  ArmVIXLAssembler*       assembler = GetAssembler();
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
 
   vixl32::Register obj = RegisterFrom(locations->InAt(0));
@@ -2581,7 +2557,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitReferenceRefersTo(HInvoke* invoke) {
     // Loading scratch register always uses 32-bit encoding.
     vixl::ExactAssemblyScope eas(assembler->GetVIXLAssembler(),
                                  vixl32::k32BitT32InstructionSizeInBytes);
-    __ ldr(tmp, MemOperand(obj, referent_offset));
+    __                       ldr(tmp, MemOperand(obj, referent_offset));
     codegen_->MaybeRecordImplicitNullCheck(invoke);
   }
   assembler->MaybeUnpoisonHeapReference(tmp);
@@ -2591,8 +2567,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitReferenceRefersTo(HInvoke* invoke) {
     DCHECK(kUseBakerReadBarrier);
 
     vixl32::Label calculate_result;
-    __ Subs(out, tmp, other);
-    __ B(eq, &calculate_result);  // `out` is 0 if taken.
+    __            Subs(out, tmp, other);
+    __            B(eq, &calculate_result);  // `out` is 0 if taken.
 
     // Check if the loaded reference is null.
     __ Cmp(tmp, 0);
@@ -2606,7 +2582,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitReferenceRefersTo(HInvoke* invoke) {
     static_assert(LockWord::kStateForwardingAddress == 3u);
     __ Ldr(tmp, MemOperand(tmp, monitor_offset));
     __ Cmp(tmp, Operand(0xc0000000));
-    __ B(lo, &calculate_result);   // `out` is not 0 if taken.
+    __ B(lo, &calculate_result);  // `out` is not 0 if taken.
 
     // Extract the forwarding address and subtract from `other`.
     __ Sub(out, other, Operand(tmp, LSL, LockWord::kForwardingAddressShift));
@@ -2629,17 +2605,17 @@ void IntrinsicLocationsBuilderARMVIXL::VisitThreadInterrupted(HInvoke* invoke) {
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitThreadInterrupted(HInvoke* invoke) {
-  ArmVIXLAssembler* assembler = GetAssembler();
-  vixl32::Register out = RegisterFrom(invoke->GetLocations()->Out());
-  int32_t offset = Thread::InterruptedOffset<kArmPointerSize>().Int32Value();
-  __ Ldr(out, MemOperand(tr, offset));
+  ArmVIXLAssembler*       assembler = GetAssembler();
+  vixl32::Register        out = RegisterFrom(invoke->GetLocations()->Out());
+  int32_t                 offset = Thread::InterruptedOffset<kArmPointerSize>().Int32Value();
+  __                      Ldr(out, MemOperand(tr, offset));
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp = temps.Acquire();
-  vixl32::Label done;
-  vixl32::Label* const final_label = codegen_->GetFinalLabel(invoke, &done);
-  __ CompareAndBranchIfZero(out, final_label, /* is_far_target= */ false);
-  __ Dmb(vixl32::ISH);
-  __ Mov(temp, 0);
+  vixl32::Register        temp = temps.Acquire();
+  vixl32::Label           done;
+  vixl32::Label* const    final_label = codegen_->GetFinalLabel(invoke, &done);
+  __                      CompareAndBranchIfZero(out, final_label, /* is_far_target= */ false);
+  __                      Dmb(vixl32::ISH);
+  __                      Mov(temp, 0);
   assembler->StoreToOffset(kStoreWord, temp, tr, offset);
   __ Dmb(vixl32::ISH);
   if (done.IsReferenced()) {
@@ -2653,7 +2629,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitReachabilityFence(HInvoke* invoke) {
   locations->SetInAt(0, Location::Any());
 }
 
-void IntrinsicCodeGeneratorARMVIXL::VisitReachabilityFence(HInvoke* invoke ATTRIBUTE_UNUSED) { }
+void IntrinsicCodeGeneratorARMVIXL::VisitReachabilityFence(HInvoke* invoke ATTRIBUTE_UNUSED) {}
 
 void IntrinsicLocationsBuilderARMVIXL::VisitIntegerDivideUnsigned(HInvoke* invoke) {
   CreateIntIntToIntSlowPathCallLocations(allocator_, invoke);
@@ -2661,10 +2637,10 @@ void IntrinsicLocationsBuilderARMVIXL::VisitIntegerDivideUnsigned(HInvoke* invok
 
 void IntrinsicCodeGeneratorARMVIXL::VisitIntegerDivideUnsigned(HInvoke* invoke) {
   ArmVIXLAssembler* assembler = GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  vixl32::Register dividend = RegisterFrom(locations->InAt(0));
-  vixl32::Register divisor = RegisterFrom(locations->InAt(1));
-  vixl32::Register out = RegisterFrom(locations->Out());
+  LocationSummary*  locations = invoke->GetLocations();
+  vixl32::Register  dividend = RegisterFrom(locations->InAt(0));
+  vixl32::Register  divisor = RegisterFrom(locations->InAt(1));
+  vixl32::Register  out = RegisterFrom(locations->Out());
 
   // Check if divisor is zero, bail to managed implementation to handle.
   SlowPathCodeARMVIXL* slow_path =
@@ -2681,48 +2657,38 @@ static inline bool Use64BitExclusiveLoadStore(bool atomic, CodeGeneratorARMVIXL*
   return atomic && !codegen->GetInstructionSetFeatures().HasAtomicLdrdAndStrd();
 }
 
-static void GenerateIntrinsicGet(HInvoke* invoke,
+static void GenerateIntrinsicGet(HInvoke*              invoke,
                                  CodeGeneratorARMVIXL* codegen,
-                                 DataType::Type type,
-                                 std::memory_order order,
-                                 bool atomic,
-                                 vixl32::Register base,
-                                 vixl32::Register offset,
-                                 Location out,
-                                 Location maybe_temp,
-                                 Location maybe_temp2,
-                                 Location maybe_temp3) {
+                                 DataType::Type        type,
+                                 std::memory_order     order,
+                                 bool                  atomic,
+                                 vixl32::Register      base,
+                                 vixl32::Register      offset,
+                                 Location              out,
+                                 Location              maybe_temp,
+                                 Location              maybe_temp2,
+                                 Location              maybe_temp3) {
   bool seq_cst_barrier = (order == std::memory_order_seq_cst);
   bool acquire_barrier = seq_cst_barrier || (order == std::memory_order_acquire);
   DCHECK(acquire_barrier || order == std::memory_order_relaxed);
   DCHECK(atomic || order == std::memory_order_relaxed);
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  MemOperand address(base, offset);
+  MemOperand        address(base, offset);
   switch (type) {
-    case DataType::Type::kBool:
-      __ Ldrb(RegisterFrom(out), address);
-      break;
-    case DataType::Type::kInt8:
-      __ Ldrsb(RegisterFrom(out), address);
-      break;
-    case DataType::Type::kUint16:
-      __ Ldrh(RegisterFrom(out), address);
-      break;
-    case DataType::Type::kInt16:
-      __ Ldrsh(RegisterFrom(out), address);
-      break;
-    case DataType::Type::kInt32:
-      __ Ldr(RegisterFrom(out), address);
-      break;
+    case DataType::Type::kBool: __ Ldrb(RegisterFrom(out), address); break;
+    case DataType::Type::kInt8: __ Ldrsb(RegisterFrom(out), address); break;
+    case DataType::Type::kUint16: __ Ldrh(RegisterFrom(out), address); break;
+    case DataType::Type::kInt16: __ Ldrsh(RegisterFrom(out), address); break;
+    case DataType::Type::kInt32: __ Ldr(RegisterFrom(out), address); break;
     case DataType::Type::kInt64:
       if (Use64BitExclusiveLoadStore(atomic, codegen)) {
-        vixl32::Register strexd_tmp = RegisterFrom(maybe_temp);
+        vixl32::Register        strexd_tmp = RegisterFrom(maybe_temp);
         UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-        const vixl32::Register temp_reg = temps.Acquire();
-        __ Add(temp_reg, base, offset);
-        vixl32::Label loop;
-        __ Bind(&loop);
+        const vixl32::Register  temp_reg = temps.Acquire();
+        __                      Add(temp_reg, base, offset);
+        vixl32::Label           loop;
+        __                      Bind(&loop);
         __ Ldrexd(LowRegisterFrom(out), HighRegisterFrom(out), MemOperand(temp_reg));
         __ Strexd(strexd_tmp, LowRegisterFrom(out), HighRegisterFrom(out), MemOperand(temp_reg));
         __ Cmp(strexd_tmp, 0);
@@ -2735,7 +2701,7 @@ static void GenerateIntrinsicGet(HInvoke* invoke,
       if (kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
         // Piggy-back on the field load path using introspection for the Baker read barrier.
         vixl32::Register temp = RegisterFrom(maybe_temp);
-        __ Add(temp, base, offset);
+        __               Add(temp, base, offset);
         codegen->GenerateFieldLoadWithBakerReadBarrier(
             invoke, out, base, MemOperand(temp), /* needs_null_check= */ false);
       } else {
@@ -2744,64 +2710,60 @@ static void GenerateIntrinsicGet(HInvoke* invoke,
       break;
     case DataType::Type::kFloat32: {
       UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-      const vixl32::Register temp_reg = temps.Acquire();
-      __ Add(temp_reg, base, offset);
-      __ Vldr(SRegisterFrom(out), MemOperand(temp_reg));
+      const vixl32::Register  temp_reg = temps.Acquire();
+      __                      Add(temp_reg, base, offset);
+      __                      Vldr(SRegisterFrom(out), MemOperand(temp_reg));
       break;
     }
     case DataType::Type::kFloat64: {
       UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-      const vixl32::Register temp_reg = temps.Acquire();
-      __ Add(temp_reg, base, offset);
+      const vixl32::Register  temp_reg = temps.Acquire();
+      __                      Add(temp_reg, base, offset);
       if (Use64BitExclusiveLoadStore(atomic, codegen)) {
         vixl32::Register lo = RegisterFrom(maybe_temp);
         vixl32::Register hi = RegisterFrom(maybe_temp2);
         vixl32::Register strexd_tmp = RegisterFrom(maybe_temp3);
-        vixl32::Label loop;
-        __ Bind(&loop);
-        __ Ldrexd(lo, hi, MemOperand(temp_reg));
-        __ Strexd(strexd_tmp, lo, hi, MemOperand(temp_reg));
-        __ Cmp(strexd_tmp, 0);
-        __ B(ne, &loop);
-        __ Vmov(DRegisterFrom(out), lo, hi);
+        vixl32::Label    loop;
+        __               Bind(&loop);
+        __               Ldrexd(lo, hi, MemOperand(temp_reg));
+        __               Strexd(strexd_tmp, lo, hi, MemOperand(temp_reg));
+        __               Cmp(strexd_tmp, 0);
+        __               B(ne, &loop);
+        __               Vmov(DRegisterFrom(out), lo, hi);
       } else {
         __ Vldr(DRegisterFrom(out), MemOperand(temp_reg));
       }
       break;
     }
-    default:
-      LOG(FATAL) << "Unexpected type " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type " << type; UNREACHABLE();
   }
   if (acquire_barrier) {
-    codegen->GenerateMemoryBarrier(
-        seq_cst_barrier ? MemBarrierKind::kAnyAny : MemBarrierKind::kLoadAny);
+    codegen->GenerateMemoryBarrier(seq_cst_barrier ? MemBarrierKind::kAnyAny
+                                                   : MemBarrierKind::kLoadAny);
   }
   if (type == DataType::Type::kReference && !(kEmitCompilerReadBarrier && kUseBakerReadBarrier)) {
     Location base_loc = LocationFrom(base);
     Location index_loc = LocationFrom(offset);
-    codegen->MaybeGenerateReadBarrierSlow(invoke, out, out, base_loc, /* offset=*/ 0u, index_loc);
+    codegen->MaybeGenerateReadBarrierSlow(invoke, out, out, base_loc, /* offset=*/0u, index_loc);
   }
 }
 
-static void CreateUnsafeGetLocations(HInvoke* invoke,
+static void CreateUnsafeGetLocations(HInvoke*              invoke,
                                      CodeGeneratorARMVIXL* codegen,
-                                     DataType::Type type,
-                                     bool atomic) {
-  bool can_call = kEmitCompilerReadBarrier &&
-      (invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObject ||
-       invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObjectVolatile);
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
-  LocationSummary* locations =
-      new (allocator) LocationSummary(invoke,
-                                      can_call
-                                          ? LocationSummary::kCallOnSlowPath
-                                          : LocationSummary::kNoCall,
-                                      kIntrinsified);
+                                     DataType::Type        type,
+                                     bool                  atomic) {
+  bool can_call =
+      kEmitCompilerReadBarrier && (invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObject ||
+                                   invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObjectVolatile);
+  ArenaAllocator*  allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  LocationSummary* locations = new (allocator)
+      LocationSummary(invoke,
+                      can_call ? LocationSummary::kCallOnSlowPath : LocationSummary::kNoCall,
+                      kIntrinsified);
   if (can_call && kUseBakerReadBarrier) {
     locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
   }
-  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(0, Location::NoLocation());  // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
   locations->SetOut(Location::RequiresRegister(),
@@ -2815,16 +2777,16 @@ static void CreateUnsafeGetLocations(HInvoke* invoke,
   }
 }
 
-static void GenUnsafeGet(HInvoke* invoke,
+static void GenUnsafeGet(HInvoke*              invoke,
                          CodeGeneratorARMVIXL* codegen,
-                         DataType::Type type,
-                         std::memory_order order,
-                         bool atomic) {
+                         DataType::Type        type,
+                         std::memory_order     order,
+                         bool                  atomic) {
   LocationSummary* locations = invoke->GetLocations();
-  vixl32::Register base = InputRegisterAt(invoke, 1);     // Object pointer.
+  vixl32::Register base = InputRegisterAt(invoke, 1);             // Object pointer.
   vixl32::Register offset = LowRegisterFrom(locations->InAt(2));  // Long offset, lo part only.
-  Location out = locations->Out();
-  Location maybe_temp = Location::NoLocation();
+  Location         out = locations->Out();
+  Location         maybe_temp = Location::NoLocation();
   if ((kEmitCompilerReadBarrier && kUseBakerReadBarrier && type == DataType::Type::kReference) ||
       (type == DataType::Type::kInt64 && Use64BitExclusiveLoadStore(atomic, codegen))) {
     maybe_temp = locations->GetTemp(0);
@@ -2838,74 +2800,74 @@ static void GenUnsafeGet(HInvoke* invoke,
                        offset,
                        out,
                        maybe_temp,
-                       /*maybe_temp2=*/ Location::NoLocation(),
-                       /*maybe_temp3=*/ Location::NoLocation());
+                       /*maybe_temp2=*/Location::NoLocation(),
+                       /*maybe_temp3=*/Location::NoLocation());
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGet(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGet(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kInt32, std::memory_order_relaxed, /*atomic=*/ false);
+      invoke, codegen_, DataType::Type::kInt32, std::memory_order_relaxed, /*atomic=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetVolatile(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ true);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGetVolatile(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kInt32, std::memory_order_seq_cst, /*atomic=*/ true);
+      invoke, codegen_, DataType::Type::kInt32, std::memory_order_seq_cst, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetLong(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/ false);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGetLong(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kInt64, std::memory_order_relaxed, /*atomic=*/ false);
+      invoke, codegen_, DataType::Type::kInt64, std::memory_order_relaxed, /*atomic=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetLongVolatile(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/ true);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGetLongVolatile(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kInt64, std::memory_order_seq_cst, /*atomic=*/ true);
+      invoke, codegen_, DataType::Type::kInt64, std::memory_order_seq_cst, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetObject(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/ false);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGetObject(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kReference, std::memory_order_relaxed, /*atomic=*/ false);
+      invoke, codegen_, DataType::Type::kReference, std::memory_order_relaxed, /*atomic=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetObjectVolatile(HInvoke* invoke) {
-  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/ true);
+  CreateUnsafeGetLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGetObjectVolatile(HInvoke* invoke) {
   GenUnsafeGet(
-      invoke, codegen_, DataType::Type::kReference, std::memory_order_seq_cst, /*atomic=*/ true);
+      invoke, codegen_, DataType::Type::kReference, std::memory_order_seq_cst, /*atomic=*/true);
 }
 
 static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
-                                 DataType::Type type,
-                                 std::memory_order order,
-                                 bool atomic,
-                                 vixl32::Register base,
-                                 vixl32::Register offset,
-                                 Location value,
-                                 Location maybe_temp,
-                                 Location maybe_temp2,
-                                 Location maybe_temp3) {
+                                 DataType::Type        type,
+                                 std::memory_order     order,
+                                 bool                  atomic,
+                                 vixl32::Register      base,
+                                 vixl32::Register      offset,
+                                 Location              value,
+                                 Location              maybe_temp,
+                                 Location              maybe_temp2,
+                                 Location              maybe_temp3) {
   bool seq_cst_barrier = (order == std::memory_order_seq_cst);
   bool release_barrier = seq_cst_barrier || (order == std::memory_order_release);
   DCHECK(release_barrier || order == std::memory_order_relaxed);
@@ -2918,79 +2880,69 @@ static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
   if (kPoisonHeapReferences && type == DataType::Type::kReference) {
     vixl32::Register temp = temps.Acquire();
-    __ Mov(temp, RegisterFrom(value));
+    __               Mov(temp, RegisterFrom(value));
     assembler->PoisonHeapReference(temp);
     value = LocationFrom(temp);
   }
   MemOperand address = offset.IsValid() ? MemOperand(base, offset) : MemOperand(base);
   if (offset.IsValid() && (DataType::Is64BitType(type) || type == DataType::Type::kFloat32)) {
     const vixl32::Register temp_reg = temps.Acquire();
-    __ Add(temp_reg, base, offset);
+    __                     Add(temp_reg, base, offset);
     address = MemOperand(temp_reg);
   }
   switch (type) {
     case DataType::Type::kBool:
-    case DataType::Type::kInt8:
-      __ Strb(RegisterFrom(value), address);
-      break;
+    case DataType::Type::kInt8: __ Strb(RegisterFrom(value), address); break;
     case DataType::Type::kUint16:
-    case DataType::Type::kInt16:
-      __ Strh(RegisterFrom(value), address);
-      break;
+    case DataType::Type::kInt16: __ Strh(RegisterFrom(value), address); break;
     case DataType::Type::kReference:
-    case DataType::Type::kInt32:
-      __ Str(RegisterFrom(value), address);
-      break;
+    case DataType::Type::kInt32: __ Str(RegisterFrom(value), address); break;
     case DataType::Type::kInt64:
       if (Use64BitExclusiveLoadStore(atomic, codegen)) {
         vixl32::Register lo_tmp = RegisterFrom(maybe_temp);
         vixl32::Register hi_tmp = RegisterFrom(maybe_temp2);
-        vixl32::Label loop;
-        __ Bind(&loop);
-        __ Ldrexd(lo_tmp, hi_tmp, address);  // Ignore the retrieved value.
-        __ Strexd(lo_tmp, LowRegisterFrom(value), HighRegisterFrom(value), address);
-        __ Cmp(lo_tmp, 0);
-        __ B(ne, &loop);
+        vixl32::Label    loop;
+        __               Bind(&loop);
+        __               Ldrexd(lo_tmp, hi_tmp, address);  // Ignore the retrieved value.
+        __               Strexd(lo_tmp, LowRegisterFrom(value), HighRegisterFrom(value), address);
+        __               Cmp(lo_tmp, 0);
+        __               B(ne, &loop);
       } else {
         __ Strd(LowRegisterFrom(value), HighRegisterFrom(value), address);
       }
       break;
-    case DataType::Type::kFloat32:
-      __ Vstr(SRegisterFrom(value), address);
-      break;
+    case DataType::Type::kFloat32: __ Vstr(SRegisterFrom(value), address); break;
     case DataType::Type::kFloat64:
       if (Use64BitExclusiveLoadStore(atomic, codegen)) {
         vixl32::Register lo_tmp = RegisterFrom(maybe_temp);
         vixl32::Register hi_tmp = RegisterFrom(maybe_temp2);
         vixl32::Register strexd_tmp = RegisterFrom(maybe_temp3);
-        vixl32::Label loop;
-        __ Bind(&loop);
-        __ Ldrexd(lo_tmp, hi_tmp, address);  // Ignore the retrieved value.
-        __ Vmov(lo_tmp, hi_tmp, DRegisterFrom(value));
-        __ Strexd(strexd_tmp, lo_tmp, hi_tmp, address);
-        __ Cmp(strexd_tmp, 0);
-        __ B(ne, &loop);
+        vixl32::Label    loop;
+        __               Bind(&loop);
+        __               Ldrexd(lo_tmp, hi_tmp, address);  // Ignore the retrieved value.
+        __               Vmov(lo_tmp, hi_tmp, DRegisterFrom(value));
+        __               Strexd(strexd_tmp, lo_tmp, hi_tmp, address);
+        __               Cmp(strexd_tmp, 0);
+        __               B(ne, &loop);
       } else {
         __ Vstr(DRegisterFrom(value), address);
       }
       break;
-    default:
-      LOG(FATAL) << "Unexpected type " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type " << type; UNREACHABLE();
   }
   if (seq_cst_barrier) {
     codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyAny);
   }
 }
 
-static void CreateUnsafePutLocations(HInvoke* invoke,
+static void CreateUnsafePutLocations(HInvoke*              invoke,
                                      CodeGeneratorARMVIXL* codegen,
-                                     DataType::Type type,
-                                     bool atomic) {
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+                                     DataType::Type        type,
+                                     bool                  atomic) {
+  ArenaAllocator*  allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
   LocationSummary* locations =
       new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
-  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(0, Location::NoLocation());  // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
   locations->SetInAt(3, Location::RequiresRegister());
@@ -3007,19 +2959,19 @@ static void CreateUnsafePutLocations(HInvoke* invoke,
   }
 }
 
-static void GenUnsafePut(HInvoke* invoke,
-                         DataType::Type type,
-                         std::memory_order order,
-                         bool atomic,
+static void GenUnsafePut(HInvoke*              invoke,
+                         DataType::Type        type,
+                         std::memory_order     order,
+                         bool                  atomic,
                          CodeGeneratorARMVIXL* codegen) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
 
   LocationSummary* locations = invoke->GetLocations();
   vixl32::Register base = RegisterFrom(locations->InAt(1));       // Object pointer.
   vixl32::Register offset = LowRegisterFrom(locations->InAt(2));  // Long offset, lo part only.
-  Location value = locations->InAt(3);
-  Location maybe_temp = Location::NoLocation();
-  Location maybe_temp2 = Location::NoLocation();
+  Location         value = locations->InAt(3);
+  Location         maybe_temp = Location::NoLocation();
+  Location         maybe_temp2 = Location::NoLocation();
   if (type == DataType::Type::kInt64 && Use64BitExclusiveLoadStore(atomic, codegen)) {
     maybe_temp = locations->GetTemp(0);
     maybe_temp2 = locations->GetTemp(1);
@@ -3034,169 +2986,156 @@ static void GenUnsafePut(HInvoke* invoke,
                        value,
                        maybe_temp,
                        maybe_temp2,
-                       /*maybe_temp3=*/ Location::NoLocation());
+                       /*maybe_temp3=*/Location::NoLocation());
 
   if (type == DataType::Type::kReference) {
-    vixl32::Register temp = RegisterFrom(locations->GetTemp(0));
+    vixl32::Register        temp = RegisterFrom(locations->GetTemp(0));
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register card = temps.Acquire();
-    bool value_can_be_null = true;  // TODO: Worth finding out this information?
+    vixl32::Register        card = temps.Acquire();
+    bool                    value_can_be_null = true;  // TODO: Worth finding out this information?
     codegen->MarkGCCard(temp, card, base, RegisterFrom(value), value_can_be_null);
   }
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePut(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt32,
                std::memory_order_relaxed,
-               /*atomic=*/ false,
+               /*atomic=*/false,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutOrdered(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutOrdered(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt32,
                std::memory_order_release,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutVolatile(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutVolatile(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt32,
                std::memory_order_seq_cst,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutObject(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/ false);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutObject(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kReference,
                std::memory_order_relaxed,
-               /*atomic=*/ false,
+               /*atomic=*/false,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutObjectOrdered(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutObjectOrdered(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kReference,
                std::memory_order_release,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutObjectVolatile(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kReference, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutObjectVolatile(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kReference,
                std::memory_order_seq_cst,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutLong(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/ false);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutLong(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt64,
                std::memory_order_relaxed,
-               /*atomic=*/ false,
+               /*atomic=*/false,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutLongOrdered(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutLongOrdered(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt64,
                std::memory_order_release,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutLongVolatile(HInvoke* invoke) {
-  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/ true);
+  CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt64, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutLongVolatile(HInvoke* invoke) {
   GenUnsafePut(invoke,
                DataType::Type::kInt64,
                std::memory_order_seq_cst,
-               /*atomic=*/ true,
+               /*atomic=*/true,
                codegen_);
 }
 
 static void EmitLoadExclusive(CodeGeneratorARMVIXL* codegen,
-                              DataType::Type type,
-                              vixl32::Register ptr,
-                              Location old_value) {
+                              DataType::Type        type,
+                              vixl32::Register      ptr,
+                              Location              old_value) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
   switch (type) {
     case DataType::Type::kBool:
-    case DataType::Type::kInt8:
-      __ Ldrexb(RegisterFrom(old_value), MemOperand(ptr));
-      break;
+    case DataType::Type::kInt8: __ Ldrexb(RegisterFrom(old_value), MemOperand(ptr)); break;
     case DataType::Type::kUint16:
-    case DataType::Type::kInt16:
-      __ Ldrexh(RegisterFrom(old_value), MemOperand(ptr));
-      break;
+    case DataType::Type::kInt16: __ Ldrexh(RegisterFrom(old_value), MemOperand(ptr)); break;
     case DataType::Type::kInt32:
-    case DataType::Type::kReference:
-      __ Ldrex(RegisterFrom(old_value), MemOperand(ptr));
-      break;
+    case DataType::Type::kReference: __ Ldrex(RegisterFrom(old_value), MemOperand(ptr)); break;
     case DataType::Type::kInt64:
       __ Ldrexd(LowRegisterFrom(old_value), HighRegisterFrom(old_value), MemOperand(ptr));
       break;
-    default:
-      LOG(FATAL) << "Unexpected type: " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type: " << type; UNREACHABLE();
   }
   switch (type) {
-    case DataType::Type::kInt8:
-      __ Sxtb(RegisterFrom(old_value), RegisterFrom(old_value));
-      break;
-    case DataType::Type::kInt16:
-      __ Sxth(RegisterFrom(old_value), RegisterFrom(old_value));
-      break;
+    case DataType::Type::kInt8: __ Sxtb(RegisterFrom(old_value), RegisterFrom(old_value)); break;
+    case DataType::Type::kInt16: __ Sxth(RegisterFrom(old_value), RegisterFrom(old_value)); break;
     case DataType::Type::kReference:
       assembler->MaybeUnpoisonHeapReference(RegisterFrom(old_value));
       break;
-    default:
-      break;
+    default: break;
   }
 }
 
 static void EmitStoreExclusive(CodeGeneratorARMVIXL* codegen,
-                               DataType::Type type,
-                               vixl32::Register ptr,
-                               vixl32::Register store_result,
-                               Location new_value) {
+                               DataType::Type        type,
+                               vixl32::Register      ptr,
+                               vixl32::Register      store_result,
+                               Location              new_value) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
   if (type == DataType::Type::kReference) {
     assembler->MaybePoisonHeapReference(RegisterFrom(new_value));
@@ -3218,9 +3157,7 @@ static void EmitStoreExclusive(CodeGeneratorARMVIXL* codegen,
       __ Strexd(
           store_result, LowRegisterFrom(new_value), HighRegisterFrom(new_value), MemOperand(ptr));
       break;
-    default:
-      LOG(FATAL) << "Unexpected type: " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type: " << type; UNREACHABLE();
   }
   if (type == DataType::Type::kReference) {
     assembler->MaybeUnpoisonHeapReference(RegisterFrom(new_value));
@@ -3228,16 +3165,16 @@ static void EmitStoreExclusive(CodeGeneratorARMVIXL* codegen,
 }
 
 static void GenerateCompareAndSet(CodeGeneratorARMVIXL* codegen,
-                                  DataType::Type type,
-                                  bool strong,
-                                  vixl32::Label* cmp_failure,
-                                  bool cmp_failure_is_far_target,
-                                  vixl32::Register ptr,
-                                  Location expected,
-                                  Location new_value,
-                                  Location old_value,
-                                  vixl32::Register store_result,
-                                  vixl32::Register success) {
+                                  DataType::Type        type,
+                                  bool                  strong,
+                                  vixl32::Label*        cmp_failure,
+                                  bool                  cmp_failure_is_far_target,
+                                  vixl32::Register      ptr,
+                                  Location              expected,
+                                  Location              new_value,
+                                  Location              old_value,
+                                  vixl32::Register      store_result,
+                                  vixl32::Register      success) {
   // For kReference, the `expected` shall be a register pair when called from a read barrier
   // slow path, specifying both the original `expected` as well as the unmarked old value from
   // the main path attempt to emit CAS when it matched `expected` after marking.
@@ -3282,24 +3219,24 @@ static void GenerateCompareAndSet(CodeGeneratorARMVIXL* codegen,
     __ Mov(success, 0);  // Indicate failure if the comparison fails.
   }
   if (type == DataType::Type::kInt64) {
-    __ Cmp(LowRegisterFrom(old_value), LowRegisterFrom(expected));
+    __                 Cmp(LowRegisterFrom(old_value), LowRegisterFrom(expected));
     ExactAssemblyScope aas(assembler->GetVIXLAssembler(), 2 * k16BitT32InstructionSizeInBytes);
-    __ it(eq);
-    __ cmp(eq, HighRegisterFrom(old_value), HighRegisterFrom(expected));
+    __                 it(eq);
+    __                 cmp(eq, HighRegisterFrom(old_value), HighRegisterFrom(expected));
   } else if (expected.IsRegisterPair()) {
     DCHECK_EQ(type, DataType::Type::kReference);
     // Check if the loaded value matches any of the two registers in `expected`.
-    __ Cmp(RegisterFrom(old_value), LowRegisterFrom(expected));
+    __                 Cmp(RegisterFrom(old_value), LowRegisterFrom(expected));
     ExactAssemblyScope aas(assembler->GetVIXLAssembler(), 2 * k16BitT32InstructionSizeInBytes);
-    __ it(ne);
-    __ cmp(ne, RegisterFrom(old_value), HighRegisterFrom(expected));
+    __                 it(ne);
+    __                 cmp(ne, RegisterFrom(old_value), HighRegisterFrom(expected));
   } else {
     __ Cmp(RegisterFrom(old_value), RegisterFrom(expected));
   }
   if (init_failure_for_cmp && !init_failure_for_cmp_early) {
     __ Mov(LeaveFlags, success, 0);  // Indicate failure if the comparison fails.
   }
-  __ B(ne, cmp_failure, /*is_far_target=*/ cmp_failure_is_far_target);
+  __ B(ne, cmp_failure, /*is_far_target=*/cmp_failure_is_far_target);
   EmitStoreExclusive(codegen, type, ptr, store_result, new_value);
   if (strong) {
     // Instruction scheduling: Loading a constant between STREX* and using its result
@@ -3309,7 +3246,7 @@ static void GenerateCompareAndSet(CodeGeneratorARMVIXL* codegen,
       __ Mov(success, 1);  // Indicate success if the store succeeds.
     }
     __ Cmp(store_result, 0);
-    __ B(ne, &loop_head, /*is_far_target=*/ false);
+    __ B(ne, &loop_head, /*is_far_target=*/false);
   } else {
     // Weak CAS (VarHandle.CompareAndExchange variants) always indicates success.
     DCHECK(success.IsValid());
@@ -3320,29 +3257,29 @@ static void GenerateCompareAndSet(CodeGeneratorARMVIXL* codegen,
 
 class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
  public:
-  explicit ReadBarrierCasSlowPathARMVIXL(HInvoke* invoke,
-                                         bool strong,
-                                         vixl32::Register base,
-                                         vixl32::Register offset,
-                                         vixl32::Register expected,
-                                         vixl32::Register new_value,
-                                         vixl32::Register old_value,
-                                         vixl32::Register old_value_temp,
-                                         vixl32::Register store_result,
-                                         vixl32::Register success,
-                                         CodeGeneratorARMVIXL* arm_codegen)
-      : SlowPathCodeARMVIXL(invoke),
-        strong_(strong),
-        base_(base),
-        offset_(offset),
-        expected_(expected),
-        new_value_(new_value),
-        old_value_(old_value),
-        old_value_temp_(old_value_temp),
-        store_result_(store_result),
-        success_(success),
-        mark_old_value_slow_path_(nullptr),
-        update_old_value_slow_path_(nullptr) {
+  explicit ReadBarrierCasSlowPathARMVIXL(HInvoke*              invoke,
+                                         bool                  strong,
+                                         vixl32::Register      base,
+                                         vixl32::Register      offset,
+                                         vixl32::Register      expected,
+                                         vixl32::Register      new_value,
+                                         vixl32::Register      old_value,
+                                         vixl32::Register      old_value_temp,
+                                         vixl32::Register      store_result,
+                                         vixl32::Register      success,
+                                         CodeGeneratorARMVIXL* arm_codegen) :
+      SlowPathCodeARMVIXL(invoke),
+      strong_(strong),
+      base_(base),
+      offset_(offset),
+      expected_(expected),
+      new_value_(new_value),
+      old_value_(old_value),
+      old_value_temp_(old_value_temp),
+      store_result_(store_result),
+      success_(success),
+      mark_old_value_slow_path_(nullptr),
+      update_old_value_slow_path_(nullptr) {
     if (!kUseBakerReadBarrier) {
       // We need to add the slow path now, it is too late when emitting slow path code.
       mark_old_value_slow_path_ = arm_codegen->AddReadBarrierSlowPath(
@@ -3350,26 +3287,28 @@ class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
           Location::RegisterLocation(old_value_temp.GetCode()),
           Location::RegisterLocation(old_value.GetCode()),
           Location::RegisterLocation(base.GetCode()),
-          /*offset=*/ 0u,
-          /*index=*/ Location::RegisterLocation(offset.GetCode()));
+          /*offset=*/0u,
+          /*index=*/Location::RegisterLocation(offset.GetCode()));
       if (!success.IsValid()) {
         update_old_value_slow_path_ = arm_codegen->AddReadBarrierSlowPath(
             invoke,
             Location::RegisterLocation(old_value.GetCode()),
             Location::RegisterLocation(old_value_temp.GetCode()),
             Location::RegisterLocation(base.GetCode()),
-            /*offset=*/ 0u,
-            /*index=*/ Location::RegisterLocation(offset.GetCode()));
+            /*offset=*/0u,
+            /*index=*/Location::RegisterLocation(offset.GetCode()));
       }
     }
   }
 
-  const char* GetDescription() const override { return "ReadBarrierCasSlowPathARMVIXL"; }
+  const char* GetDescription() const override {
+    return "ReadBarrierCasSlowPathARMVIXL";
+  }
 
   void EmitNativeCode(CodeGenerator* codegen) override {
     CodeGeneratorARMVIXL* arm_codegen = down_cast<CodeGeneratorARMVIXL*>(codegen);
-    ArmVIXLAssembler* assembler = arm_codegen->GetAssembler();
-    __ Bind(GetEntryLabel());
+    ArmVIXLAssembler*     assembler = arm_codegen->GetAssembler();
+    __                    Bind(GetEntryLabel());
 
     // Mark the `old_value_` from the main path and compare with `expected_`.
     if (kUseBakerReadBarrier) {
@@ -3386,8 +3325,8 @@ class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
     } else {
       // In case of failure, update the `old_value_` with the marked reference.
       ExactAssemblyScope aas(assembler->GetVIXLAssembler(), 2 * k16BitT32InstructionSizeInBytes);
-      __ it(ne);
-      __ mov(ne, old_value_, old_value_temp_);
+      __                 it(ne);
+      __                 mov(ne, old_value_, old_value_temp_);
     }
     __ B(ne, GetExitLabel());
 
@@ -3398,7 +3337,7 @@ class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
     // representing the to-space and from-space references for the same object.
 
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register tmp_ptr = temps.Acquire();
+    vixl32::Register        tmp_ptr = temps.Acquire();
 
     // Recalculate the `tmp_ptr` clobbered above.
     __ Add(tmp_ptr, base_, offset_);
@@ -3407,12 +3346,12 @@ class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
     GenerateCompareAndSet(arm_codegen,
                           DataType::Type::kReference,
                           strong_,
-                          /*cmp_failure=*/ success_.IsValid() ? GetExitLabel() : &mark_old_value,
-                          /*cmp_failure_is_far_target=*/ success_.IsValid(),
+                          /*cmp_failure=*/success_.IsValid() ? GetExitLabel() : &mark_old_value,
+                          /*cmp_failure_is_far_target=*/success_.IsValid(),
                           tmp_ptr,
-                          /*expected=*/ LocationFrom(expected_, old_value_),
-                          /*new_value=*/ LocationFrom(new_value_),
-                          /*old_value=*/ LocationFrom(old_value_temp_),
+                          /*expected=*/LocationFrom(expected_, old_value_),
+                          /*new_value=*/LocationFrom(new_value_),
+                          /*old_value=*/LocationFrom(old_value_temp_),
                           store_result_,
                           success_);
     if (!success_.IsValid()) {
@@ -3441,32 +3380,30 @@ class ReadBarrierCasSlowPathARMVIXL : public SlowPathCodeARMVIXL {
   }
 
  private:
-  bool strong_;
-  vixl32::Register base_;
-  vixl32::Register offset_;
-  vixl32::Register expected_;
-  vixl32::Register new_value_;
-  vixl32::Register old_value_;
-  vixl32::Register old_value_temp_;
-  vixl32::Register store_result_;
-  vixl32::Register success_;
+  bool                 strong_;
+  vixl32::Register     base_;
+  vixl32::Register     offset_;
+  vixl32::Register     expected_;
+  vixl32::Register     new_value_;
+  vixl32::Register     old_value_;
+  vixl32::Register     old_value_temp_;
+  vixl32::Register     store_result_;
+  vixl32::Register     success_;
   SlowPathCodeARMVIXL* mark_old_value_slow_path_;
   SlowPathCodeARMVIXL* update_old_value_slow_path_;
 };
 
 static void CreateUnsafeCASLocations(ArenaAllocator* allocator, HInvoke* invoke) {
-  bool can_call = kEmitCompilerReadBarrier &&
-      (invoke->GetIntrinsic() == Intrinsics::kUnsafeCASObject);
-  LocationSummary* locations =
-      new (allocator) LocationSummary(invoke,
-                                      can_call
-                                          ? LocationSummary::kCallOnSlowPath
-                                          : LocationSummary::kNoCall,
-                                      kIntrinsified);
+  bool can_call =
+      kEmitCompilerReadBarrier && (invoke->GetIntrinsic() == Intrinsics::kUnsafeCASObject);
+  LocationSummary* locations = new (allocator)
+      LocationSummary(invoke,
+                      can_call ? LocationSummary::kCallOnSlowPath : LocationSummary::kNoCall,
+                      kIntrinsified);
   if (can_call && kUseBakerReadBarrier) {
     locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
   }
-  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(0, Location::NoLocation());  // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
   locations->SetInAt(3, Location::RequiresRegister());
@@ -3483,18 +3420,18 @@ static void GenUnsafeCas(HInvoke* invoke, DataType::Type type, CodeGeneratorARMV
   DCHECK_NE(type, DataType::Type::kInt64);
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
 
-  vixl32::Register out = OutputRegister(invoke);                      // Boolean result.
-  vixl32::Register base = InputRegisterAt(invoke, 1);                 // Object pointer.
-  vixl32::Register offset = LowRegisterFrom(locations->InAt(2));      // Offset (discard high 4B).
-  vixl32::Register expected = InputRegisterAt(invoke, 3);             // Expected.
-  vixl32::Register new_value = InputRegisterAt(invoke, 4);            // New value.
+  vixl32::Register out = OutputRegister(invoke);                  // Boolean result.
+  vixl32::Register base = InputRegisterAt(invoke, 1);             // Object pointer.
+  vixl32::Register offset = LowRegisterFrom(locations->InAt(2));  // Offset (discard high 4B).
+  vixl32::Register expected = InputRegisterAt(invoke, 3);         // Expected.
+  vixl32::Register new_value = InputRegisterAt(invoke, 4);        // New value.
 
-  vixl32::Register tmp = RegisterFrom(locations->GetTemp(0));         // Temporary.
+  vixl32::Register tmp = RegisterFrom(locations->GetTemp(0));  // Temporary.
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register tmp_ptr = temps.Acquire();
+  vixl32::Register        tmp_ptr = temps.Acquire();
 
   if (type == DataType::Type::kReference) {
     // Mark card for object assuming new value is stored. Worst case we will mark an unchanged
@@ -3503,7 +3440,7 @@ static void GenUnsafeCas(HInvoke* invoke, DataType::Type type, CodeGeneratorARMV
     codegen->MarkGCCard(tmp_ptr, tmp, base, new_value, value_can_be_null);
   }
 
-  vixl32::Label exit_loop_label;
+  vixl32::Label  exit_loop_label;
   vixl32::Label* exit_loop = &exit_loop_label;
   vixl32::Label* cmp_failure = &exit_loop_label;
 
@@ -3511,18 +3448,17 @@ static void GenUnsafeCas(HInvoke* invoke, DataType::Type type, CodeGeneratorARMV
     // If marking, check if the stored reference is a from-space reference to the same
     // object as the to-space reference `expected`. If so, perform a custom CAS loop.
     ReadBarrierCasSlowPathARMVIXL* slow_path =
-        new (codegen->GetScopedAllocator()) ReadBarrierCasSlowPathARMVIXL(
-            invoke,
-            /*strong=*/ true,
-            base,
-            offset,
-            expected,
-            new_value,
-            /*old_value=*/ tmp,
-            /*old_value_temp=*/ out,
-            /*store_result=*/ tmp,
-            /*success=*/ out,
-            codegen);
+        new (codegen->GetScopedAllocator()) ReadBarrierCasSlowPathARMVIXL(invoke,
+                                                                          /*strong=*/true,
+                                                                          base,
+                                                                          offset,
+                                                                          expected,
+                                                                          new_value,
+                                                                          /*old_value=*/tmp,
+                                                                          /*old_value_temp=*/out,
+                                                                          /*store_result=*/tmp,
+                                                                          /*success=*/out,
+                                                                          codegen);
     codegen->AddSlowPath(slow_path);
     exit_loop = slow_path->GetExitLabel();
     cmp_failure = slow_path->GetEntryLabel();
@@ -3533,20 +3469,20 @@ static void GenUnsafeCas(HInvoke* invoke, DataType::Type type, CodeGeneratorARMV
   __ Add(tmp_ptr, base, offset);
   GenerateCompareAndSet(codegen,
                         type,
-                        /*strong=*/ true,
+                        /*strong=*/true,
                         cmp_failure,
-                        /*cmp_failure_is_far_target=*/ cmp_failure != &exit_loop_label,
+                        /*cmp_failure_is_far_target=*/cmp_failure != &exit_loop_label,
                         tmp_ptr,
-                        /*expected=*/ LocationFrom(expected),  // TODO: Int64
-                        /*new_value=*/ LocationFrom(new_value),  // TODO: Int64
-                        /*old_value=*/ LocationFrom(tmp),  // TODO: Int64
-                        /*store_result=*/ tmp,
-                        /*success=*/ out);
+                        /*expected=*/LocationFrom(expected),    // TODO: Int64
+                        /*new_value=*/LocationFrom(new_value),  // TODO: Int64
+                        /*old_value=*/LocationFrom(tmp),        // TODO: Int64
+                        /*store_result=*/tmp,
+                        /*success=*/out);
   __ Bind(exit_loop);
   codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyAny);
 
   if (type == DataType::Type::kReference) {
-    codegen->MaybeGenerateMarkingRegisterCheck(/*code=*/ 128, /*temp_loc=*/ LocationFrom(tmp_ptr));
+    codegen->MaybeGenerateMarkingRegisterCheck(/*code=*/128, /*temp_loc=*/LocationFrom(tmp_ptr));
   }
 }
 
@@ -3569,24 +3505,17 @@ void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeCASObject(HInvoke* invoke) {
   GenUnsafeCas(invoke, DataType::Type::kReference, codegen_);
 }
 
-enum class GetAndUpdateOp {
-  kSet,
-  kAdd,
-  kAddWithByteSwap,
-  kAnd,
-  kOr,
-  kXor
-};
+enum class GetAndUpdateOp { kSet, kAdd, kAddWithByteSwap, kAnd, kOr, kXor };
 
 static void GenerateGetAndUpdate(CodeGeneratorARMVIXL* codegen,
-                                 GetAndUpdateOp get_and_update_op,
-                                 DataType::Type load_store_type,
-                                 vixl32::Register ptr,
-                                 Location arg,
-                                 Location old_value,
-                                 vixl32::Register store_result,
-                                 Location maybe_temp,
-                                 Location maybe_vreg_temp) {
+                                 GetAndUpdateOp        get_and_update_op,
+                                 DataType::Type        load_store_type,
+                                 vixl32::Register      ptr,
+                                 Location              arg,
+                                 Location              old_value,
+                                 vixl32::Register      store_result,
+                                 Location              maybe_temp,
+                                 Location              maybe_vreg_temp) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
 
   Location loaded_value;
@@ -3628,22 +3557,21 @@ static void GenerateGetAndUpdate(CodeGeneratorARMVIXL* codegen,
   }
 
   vixl32::Label loop_label;
-  __ Bind(&loop_label);
+  __            Bind(&loop_label);
   EmitLoadExclusive(codegen, load_store_type, ptr, loaded_value);
   switch (get_and_update_op) {
-    case GetAndUpdateOp::kSet:
-      break;
+    case GetAndUpdateOp::kSet: break;
     case GetAndUpdateOp::kAddWithByteSwap:
       if (arg.IsFpuRegisterPair()) {
         GenerateReverseBytes(assembler, DataType::Type::kFloat64, loaded_value, old_value);
         vixl32::DRegister sum = DRegisterFrom(maybe_vreg_temp);
-        __ Vadd(sum, DRegisterFrom(old_value), DRegisterFrom(arg));
+        __                Vadd(sum, DRegisterFrom(old_value), DRegisterFrom(arg));
         __ Vmov(HighRegisterFrom(new_value), LowRegisterFrom(new_value), sum);  // Swap low/high.
       } else if (arg.IsFpuRegister()) {
         GenerateReverseBytes(assembler, DataType::Type::kFloat32, loaded_value, old_value);
         vixl32::SRegister sum = LowSRegisterFrom(maybe_vreg_temp);  // The temporary is a pair.
-        __ Vadd(sum, SRegisterFrom(old_value), SRegisterFrom(arg));
-        __ Vmov(RegisterFrom(new_value), sum);
+        __                Vadd(sum, SRegisterFrom(old_value), SRegisterFrom(arg));
+        __                Vmov(RegisterFrom(new_value), sum);
       } else if (load_store_type == DataType::Type::kInt64) {
         GenerateReverseBytes(assembler, DataType::Type::kInt64, loaded_value, old_value);
         // Swap low/high registers for the addition results.
@@ -3670,9 +3598,9 @@ static void GenerateGetAndUpdate(CodeGeneratorARMVIXL* codegen,
       } else if (arg.IsFpuRegister()) {
         vixl32::SRegister old_value_vreg = SRegisterFrom(old_value);
         vixl32::SRegister sum = LowSRegisterFrom(maybe_vreg_temp);  // The temporary is a pair.
-        __ Vmov(old_value_vreg, RegisterFrom(loaded_value));
-        __ Vadd(sum, old_value_vreg, SRegisterFrom(arg));
-        __ Vmov(RegisterFrom(new_value), sum);
+        __                Vmov(old_value_vreg, RegisterFrom(loaded_value));
+        __                Vadd(sum, old_value_vreg, SRegisterFrom(arg));
+        __                Vmov(RegisterFrom(new_value), sum);
       } else if (load_store_type == DataType::Type::kInt64) {
         __ Adds(LowRegisterFrom(new_value), LowRegisterFrom(loaded_value), LowRegisterFrom(arg));
         __ Adc(HighRegisterFrom(new_value), HighRegisterFrom(loaded_value), HighRegisterFrom(arg));
@@ -3712,14 +3640,13 @@ static void GenerateGetAndUpdate(CodeGeneratorARMVIXL* codegen,
 
 class VarHandleSlowPathARMVIXL : public IntrinsicSlowPathARMVIXL {
  public:
-  VarHandleSlowPathARMVIXL(HInvoke* invoke, std::memory_order order)
-      : IntrinsicSlowPathARMVIXL(invoke),
-        order_(order),
-        atomic_(false),
-        return_success_(false),
-        strong_(false),
-        get_and_update_op_(GetAndUpdateOp::kAdd) {
-  }
+  VarHandleSlowPathARMVIXL(HInvoke* invoke, std::memory_order order) :
+      IntrinsicSlowPathARMVIXL(invoke),
+      order_(order),
+      atomic_(false),
+      return_success_(false),
+      strong_(false),
+      get_and_update_op_(GetAndUpdateOp::kAdd) {}
 
   vixl32::Label* GetByteArrayViewCheckLabel() {
     return &byte_array_view_check_label_;
@@ -3768,24 +3695,24 @@ class VarHandleSlowPathARMVIXL : public IntrinsicSlowPathARMVIXL {
 
   void EmitByteArrayViewCode(CodeGenerator* codegen_in);
 
-  vixl32::Label byte_array_view_check_label_;
-  vixl32::Label native_byte_order_label_;
+  vixl32::Label     byte_array_view_check_label_;
+  vixl32::Label     native_byte_order_label_;
   // Shared parameter for all VarHandle intrinsics.
   std::memory_order order_;
   // Extra argument for GenerateVarHandleGet() and GenerateVarHandleSet().
-  bool atomic_;
+  bool              atomic_;
   // Extra arguments for GenerateVarHandleCompareAndSetOrExchange().
-  bool return_success_;
-  bool strong_;
+  bool              return_success_;
+  bool              strong_;
   // Extra argument for GenerateVarHandleGetAndUpdate().
-  GetAndUpdateOp get_and_update_op_;
+  GetAndUpdateOp    get_and_update_op_;
 };
 
 // Generate subtype check without read barriers.
 static void GenerateSubTypeObjectCheckNoReadBarrier(CodeGeneratorARMVIXL* codegen,
-                                                    SlowPathCodeARMVIXL* slow_path,
-                                                    vixl32::Register object,
-                                                    vixl32::Register type,
+                                                    SlowPathCodeARMVIXL*  slow_path,
+                                                    vixl32::Register      object,
+                                                    vixl32::Register      type,
                                                     bool object_can_be_null = true) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
 
@@ -3794,19 +3721,19 @@ static void GenerateSubTypeObjectCheckNoReadBarrier(CodeGeneratorARMVIXL* codege
 
   vixl32::Label success;
   if (object_can_be_null) {
-    __ CompareAndBranchIfZero(object, &success, /*is_far_target=*/ false);
+    __ CompareAndBranchIfZero(object, &success, /*is_far_target=*/false);
   }
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp = temps.Acquire();
+  vixl32::Register        temp = temps.Acquire();
 
   __ Ldr(temp, MemOperand(object, class_offset.Int32Value()));
   assembler->MaybeUnpoisonHeapReference(temp);
   vixl32::Label loop;
-  __ Bind(&loop);
-  __ Cmp(type, temp);
-  __ B(eq, &success, /*is_far_target=*/ false);
-  __ Ldr(temp, MemOperand(temp, super_class_offset.Int32Value()));
+  __            Bind(&loop);
+  __            Cmp(type, temp);
+  __            B(eq, &success, /*is_far_target=*/false);
+  __            Ldr(temp, MemOperand(temp, super_class_offset.Int32Value()));
   assembler->MaybeUnpoisonHeapReference(temp);
   __ Cmp(temp, 0);
   __ B(eq, slow_path->GetEntryLabel());
@@ -3817,23 +3744,23 @@ static void GenerateSubTypeObjectCheckNoReadBarrier(CodeGeneratorARMVIXL* codege
 // Check access mode and the primitive type from VarHandle.varType.
 // Check reference arguments against the VarHandle.varType; for references this is a subclass
 // check without read barrier, so it can have false negatives which we handle in the slow path.
-static void GenerateVarHandleAccessModeAndVarTypeChecks(HInvoke* invoke,
+static void GenerateVarHandleAccessModeAndVarTypeChecks(HInvoke*              invoke,
                                                         CodeGeneratorARMVIXL* codegen,
-                                                        SlowPathCodeARMVIXL* slow_path,
-                                                        DataType::Type type) {
+                                                        SlowPathCodeARMVIXL*  slow_path,
+                                                        DataType::Type        type) {
   mirror::VarHandle::AccessMode access_mode =
       mirror::VarHandle::GetAccessModeByIntrinsic(invoke->GetIntrinsic());
   Primitive::Type primitive_type = DataTypeToPrimitive(type);
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  vixl32::Register varhandle = InputRegisterAt(invoke, 0);
+  vixl32::Register  varhandle = InputRegisterAt(invoke, 0);
 
   const MemberOffset var_type_offset = mirror::VarHandle::VarTypeOffset();
   const MemberOffset access_mode_bit_mask_offset = mirror::VarHandle::AccessModesBitMaskOffset();
   const MemberOffset primitive_type_offset = mirror::Class::PrimitiveTypeOffset();
 
   // Use the temporary register reserved for offset. It is not used yet at this point.
-  size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
+  size_t           expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
   vixl32::Register var_type_no_rb =
       RegisterFrom(invoke->GetLocations()->GetTemp(expected_coordinates_count == 0u ? 1u : 0u));
 
@@ -3842,7 +3769,7 @@ static void GenerateVarHandleAccessModeAndVarTypeChecks(HInvoke* invoke,
   // primitive field through the reference. Use LDRD to load the fields together.
   {
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register temp2 = temps.Acquire();
+    vixl32::Register        temp2 = temps.Acquire();
     DCHECK_EQ(var_type_offset.Int32Value() + 4, access_mode_bit_mask_offset.Int32Value());
     __ Ldrd(var_type_no_rb, temp2, MemOperand(varhandle, var_type_offset.Int32Value()));
     assembler->MaybeUnpoisonHeapReference(var_type_no_rb);
@@ -3870,16 +3797,16 @@ static void GenerateVarHandleAccessModeAndVarTypeChecks(HInvoke* invoke,
   }
 }
 
-static void GenerateVarHandleStaticFieldCheck(HInvoke* invoke,
+static void GenerateVarHandleStaticFieldCheck(HInvoke*              invoke,
                                               CodeGeneratorARMVIXL* codegen,
-                                              SlowPathCodeARMVIXL* slow_path) {
+                                              SlowPathCodeARMVIXL*  slow_path) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  vixl32::Register varhandle = InputRegisterAt(invoke, 0);
+  vixl32::Register  varhandle = InputRegisterAt(invoke, 0);
 
   const MemberOffset coordinate_type0_offset = mirror::VarHandle::CoordinateType0Offset();
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp = temps.Acquire();
+  vixl32::Register        temp = temps.Acquire();
 
   // Check that the VarHandle references a static field by checking that coordinateType0 == null.
   // Do not emit read barrier (or unpoison the reference) for comparing to null.
@@ -3888,12 +3815,12 @@ static void GenerateVarHandleStaticFieldCheck(HInvoke* invoke,
   __ B(ne, slow_path->GetEntryLabel());
 }
 
-static void GenerateVarHandleInstanceFieldChecks(HInvoke* invoke,
+static void GenerateVarHandleInstanceFieldChecks(HInvoke*              invoke,
                                                  CodeGeneratorARMVIXL* codegen,
-                                                 SlowPathCodeARMVIXL* slow_path) {
+                                                 SlowPathCodeARMVIXL*  slow_path) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  vixl32::Register varhandle = InputRegisterAt(invoke, 0);
-  vixl32::Register object = InputRegisterAt(invoke, 1);
+  vixl32::Register  varhandle = InputRegisterAt(invoke, 0);
+  vixl32::Register  object = InputRegisterAt(invoke, 1);
 
   const MemberOffset coordinate_type0_offset = mirror::VarHandle::CoordinateType0Offset();
   const MemberOffset coordinate_type1_offset = mirror::VarHandle::CoordinateType1Offset();
@@ -3911,7 +3838,7 @@ static void GenerateVarHandleInstanceFieldChecks(HInvoke* invoke,
   // type compatibility check with the source object's type, which will fail for null.
   {
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register temp2 = temps.Acquire();
+    vixl32::Register        temp2 = temps.Acquire();
     DCHECK_EQ(coordinate_type0_offset.Int32Value() + 4, coordinate_type1_offset.Int32Value());
     __ Ldrd(temp, temp2, MemOperand(varhandle, coordinate_type0_offset.Int32Value()));
     assembler->MaybeUnpoisonHeapReference(temp);
@@ -3923,11 +3850,11 @@ static void GenerateVarHandleInstanceFieldChecks(HInvoke* invoke,
   // Check that the object has the correct type.
   // We deliberately avoid the read barrier, letting the slow path handle the false negatives.
   GenerateSubTypeObjectCheckNoReadBarrier(
-      codegen, slow_path, object, temp, /*object_can_be_null=*/ false);
+      codegen, slow_path, object, temp, /*object_can_be_null=*/false);
 }
 
 static DataType::Type GetVarHandleExpectedValueType(HInvoke* invoke,
-                                                    size_t expected_coordinates_count) {
+                                                    size_t   expected_coordinates_count) {
   DCHECK_EQ(expected_coordinates_count, GetExpectedVarHandleCoordinatesCount(invoke));
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   DCHECK_GE(number_of_arguments, /* VarHandle object */ 1u + expected_coordinates_count);
@@ -3938,15 +3865,15 @@ static DataType::Type GetVarHandleExpectedValueType(HInvoke* invoke,
   }
 }
 
-static void GenerateVarHandleArrayChecks(HInvoke* invoke,
-                                         CodeGeneratorARMVIXL* codegen,
+static void GenerateVarHandleArrayChecks(HInvoke*                  invoke,
+                                         CodeGeneratorARMVIXL*     codegen,
                                          VarHandleSlowPathARMVIXL* slow_path) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  vixl32::Register varhandle = InputRegisterAt(invoke, 0);
-  vixl32::Register object = InputRegisterAt(invoke, 1);
-  vixl32::Register index = InputRegisterAt(invoke, 2);
-  DataType::Type value_type =
-      GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/ 2u);
+  vixl32::Register  varhandle = InputRegisterAt(invoke, 0);
+  vixl32::Register  object = InputRegisterAt(invoke, 1);
+  vixl32::Register  index = InputRegisterAt(invoke, 2);
+  DataType::Type    value_type =
+      GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/2u);
   Primitive::Type primitive_type = DataTypeToPrimitive(value_type);
 
   const MemberOffset coordinate_type0_offset = mirror::VarHandle::CoordinateType0Offset();
@@ -3964,7 +3891,7 @@ static void GenerateVarHandleArrayChecks(HInvoke* invoke,
   vixl32::Register temp = RegisterFrom(invoke->GetLocations()->GetTemp(0u));
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register temp2 = temps.Acquire();
+  vixl32::Register        temp2 = temps.Acquire();
 
   // Check that the VarHandle references an array, byte array view or ByteBuffer by checking
   // that coordinateType1 != null. If that's true, coordinateType1 shall be int.class and
@@ -4004,9 +3931,8 @@ static void GenerateVarHandleArrayChecks(HInvoke* invoke,
   // we shall check for a byte array view in the slow path.
   // The check requires the ByteArrayViewVarHandle.class to be in the boot image,
   // so we cannot emit that if we're JITting without boot image.
-  bool boot_image_available =
-      codegen->GetCompilerOptions().IsBootImage() ||
-      !Runtime::Current()->GetHeap()->GetBootImageSpaces().empty();
+  bool boot_image_available = codegen->GetCompilerOptions().IsBootImage() ||
+                              !Runtime::Current()->GetHeap()->GetBootImageSpaces().empty();
   DCHECK(boot_image_available || codegen->GetCompilerOptions().IsJitCompiler());
   size_t can_be_view =
       ((value_type != DataType::Type::kReference) && (DataType::Size(value_type) != 1u)) &&
@@ -4023,8 +3949,8 @@ static void GenerateVarHandleArrayChecks(HInvoke* invoke,
   __ B(hs, slow_path->GetEntryLabel());
 }
 
-static void GenerateVarHandleCoordinateChecks(HInvoke* invoke,
-                                              CodeGeneratorARMVIXL* codegen,
+static void GenerateVarHandleCoordinateChecks(HInvoke*                  invoke,
+                                              CodeGeneratorARMVIXL*     codegen,
                                               VarHandleSlowPathARMVIXL* slow_path) {
   size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
   if (expected_coordinates_count == 0u) {
@@ -4037,10 +3963,10 @@ static void GenerateVarHandleCoordinateChecks(HInvoke* invoke,
   }
 }
 
-static VarHandleSlowPathARMVIXL* GenerateVarHandleChecks(HInvoke* invoke,
+static VarHandleSlowPathARMVIXL* GenerateVarHandleChecks(HInvoke*              invoke,
                                                          CodeGeneratorARMVIXL* codegen,
-                                                         std::memory_order order,
-                                                         DataType::Type type) {
+                                                         std::memory_order     order,
+                                                         DataType::Type        type) {
   VarHandleSlowPathARMVIXL* slow_path =
       new (codegen->GetScopedAllocator()) VarHandleSlowPathARMVIXL(invoke, order);
   codegen->AddSlowPath(slow_path);
@@ -4057,25 +3983,24 @@ struct VarHandleTarget {
 };
 
 static VarHandleTarget GetVarHandleTarget(HInvoke* invoke) {
-  size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
+  size_t           expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
   LocationSummary* locations = invoke->GetLocations();
 
   VarHandleTarget target;
   // The temporary allocated for loading the offset.
   target.offset = RegisterFrom(locations->GetTemp(0u));
   // The reference to the object that holds the value to operate on.
-  target.object = (expected_coordinates_count == 0u)
-      ? RegisterFrom(locations->GetTemp(1u))
-      : InputRegisterAt(invoke, 1);
+  target.object = (expected_coordinates_count == 0u) ? RegisterFrom(locations->GetTemp(1u))
+                                                     : InputRegisterAt(invoke, 1);
   return target;
 }
 
-static void GenerateVarHandleTarget(HInvoke* invoke,
+static void GenerateVarHandleTarget(HInvoke*               invoke,
                                     const VarHandleTarget& target,
-                                    CodeGeneratorARMVIXL* codegen) {
+                                    CodeGeneratorARMVIXL*  codegen) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  vixl32::Register varhandle = InputRegisterAt(invoke, 0);
-  size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
+  vixl32::Register  varhandle = InputRegisterAt(invoke, 0);
+  size_t            expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
 
   if (expected_coordinates_count <= 1u) {
     // For static fields, we need to fill the `target.object` with the declaring class,
@@ -4100,8 +4025,8 @@ static void GenerateVarHandleTarget(HInvoke* invoke,
   } else {
     DCHECK_EQ(expected_coordinates_count, 2u);
     DataType::Type value_type =
-        GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/ 2u);
-    uint32_t size_shift = DataType::SizeShift(value_type);
+        GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/2u);
+    uint32_t     size_shift = DataType::SizeShift(value_type);
     MemberOffset data_offset = mirror::Array::DataOffset(DataType::Size(value_type));
 
     vixl32::Register index = InputRegisterAt(invoke, 2);
@@ -4136,8 +4061,8 @@ static bool HasVarHandleIntrinsicImplementation(HInvoke* invoke) {
     }
   }
 
-  uint32_t number_of_arguments = invoke->GetNumberOfArguments();
-  DataType::Type return_type = invoke->GetType();
+  uint32_t                              number_of_arguments = invoke->GetNumberOfArguments();
+  DataType::Type                        return_type = invoke->GetType();
   mirror::VarHandle::AccessModeTemplate access_mode_template =
       mirror::VarHandle::GetAccessModeTemplateByIntrinsic(invoke->GetIntrinsic());
   switch (access_mode_template) {
@@ -4156,8 +4081,8 @@ static bool HasVarHandleIntrinsicImplementation(HInvoke* invoke) {
       if (return_type != DataType::Type::kBool) {
         return false;
       }
-      uint32_t expected_value_index = number_of_arguments - 2;
-      uint32_t new_value_index = number_of_arguments - 1;
+      uint32_t       expected_value_index = number_of_arguments - 2;
+      uint32_t       new_value_index = number_of_arguments - 1;
       DataType::Type expected_value_type = GetDataTypeFromShorty(invoke, expected_value_index);
       DataType::Type new_value_type = GetDataTypeFromShorty(invoke, new_value_index);
       if (expected_value_type != new_value_type) {
@@ -4166,8 +4091,8 @@ static bool HasVarHandleIntrinsicImplementation(HInvoke* invoke) {
       break;
     }
     case mirror::VarHandle::AccessModeTemplate::kCompareAndExchange: {
-      uint32_t expected_value_index = number_of_arguments - 2;
-      uint32_t new_value_index = number_of_arguments - 1;
+      uint32_t       expected_value_index = number_of_arguments - 2;
+      uint32_t       new_value_index = number_of_arguments - 1;
       DataType::Type expected_value_type = GetDataTypeFromShorty(invoke, expected_value_index);
       DataType::Type new_value_type = GetDataTypeFromShorty(invoke, new_value_index);
       if (expected_value_type != new_value_type || return_type != expected_value_type) {
@@ -4200,10 +4125,10 @@ static bool HasVarHandleIntrinsicImplementation(HInvoke* invoke) {
 }
 
 static LocationSummary* CreateVarHandleCommonLocations(HInvoke* invoke) {
-  size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
+  size_t         expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
   DataType::Type return_type = invoke->GetType();
 
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  ArenaAllocator*  allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
   LocationSummary* locations =
       new (allocator) LocationSummary(invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
@@ -4248,9 +4173,9 @@ static LocationSummary* CreateVarHandleCommonLocations(HInvoke* invoke) {
   return locations;
 }
 
-static void CreateVarHandleGetLocations(HInvoke* invoke,
+static void CreateVarHandleGetLocations(HInvoke*              invoke,
                                         CodeGeneratorARMVIXL* codegen,
-                                        bool atomic) {
+                                        bool                  atomic) {
   if (!HasVarHandleIntrinsicImplementation(invoke)) {
     return;
   }
@@ -4277,19 +4202,19 @@ static void CreateVarHandleGetLocations(HInvoke* invoke,
   }
 }
 
-static void GenerateVarHandleGet(HInvoke* invoke,
+static void GenerateVarHandleGet(HInvoke*              invoke,
                                  CodeGeneratorARMVIXL* codegen,
-                                 std::memory_order order,
-                                 bool atomic,
-                                 bool byte_swap = false) {
+                                 std::memory_order     order,
+                                 bool                  atomic,
+                                 bool                  byte_swap = false) {
   DataType::Type type = invoke->GetType();
   DCHECK_NE(type, DataType::Type::kVoid);
 
-  LocationSummary* locations = invoke->GetLocations();
+  LocationSummary*  locations = invoke->GetLocations();
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  Location out = locations->Out();
+  Location          out = locations->Out();
 
-  VarHandleTarget target = GetVarHandleTarget(invoke);
+  VarHandleTarget           target = GetVarHandleTarget(invoke);
   VarHandleSlowPathARMVIXL* slow_path = nullptr;
   if (!byte_swap) {
     slow_path = GenerateVarHandleChecks(invoke, codegen, order, type);
@@ -4316,8 +4241,8 @@ static void GenerateVarHandleGet(HInvoke* invoke,
   }
 
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  Location loaded_value = out;
-  DataType::Type load_type = type;
+  Location                loaded_value = out;
+  DataType::Type          load_type = type;
   if (byte_swap) {
     if (type == DataType::Type::kFloat64) {
       if (Use64BitExclusiveLoadStore(atomic, codegen)) {
@@ -4365,62 +4290,61 @@ static void GenerateVarHandleGet(HInvoke* invoke,
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleGet(HInvoke* invoke) {
-  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/ false);
+  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleGet(HInvoke* invoke) {
-  GenerateVarHandleGet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/ false);
+  GenerateVarHandleGet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleGetOpaque(HInvoke* invoke) {
-  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleGetOpaque(HInvoke* invoke) {
-  GenerateVarHandleGet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/ true);
+  GenerateVarHandleGet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleGetAcquire(HInvoke* invoke) {
-  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleGetAcquire(HInvoke* invoke) {
-  GenerateVarHandleGet(invoke, codegen_, std::memory_order_acquire, /*atomic=*/ true);
+  GenerateVarHandleGet(invoke, codegen_, std::memory_order_acquire, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleGetVolatile(HInvoke* invoke) {
-  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleGetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleGetVolatile(HInvoke* invoke) {
-  GenerateVarHandleGet(invoke, codegen_, std::memory_order_seq_cst, /*atomic=*/ true);
+  GenerateVarHandleGet(invoke, codegen_, std::memory_order_seq_cst, /*atomic=*/true);
 }
 
-static void CreateVarHandleSetLocations(HInvoke* invoke,
+static void CreateVarHandleSetLocations(HInvoke*              invoke,
                                         CodeGeneratorARMVIXL* codegen,
-                                        bool atomic) {
+                                        bool                  atomic) {
   if (!HasVarHandleIntrinsicImplementation(invoke)) {
     return;
   }
 
   LocationSummary* locations = CreateVarHandleCommonLocations(invoke);
 
-  uint32_t number_of_arguments = invoke->GetNumberOfArguments();
+  uint32_t       number_of_arguments = invoke->GetNumberOfArguments();
   DataType::Type value_type = GetDataTypeFromShorty(invoke, number_of_arguments - 1u);
   if (DataType::Is64BitType(value_type)) {
     size_t expected_coordinates_count = GetExpectedVarHandleCoordinatesCount(invoke);
     DCHECK_EQ(locations->GetTempCount(), (expected_coordinates_count == 0) ? 2u : 1u);
     HInstruction* arg = invoke->InputAt(number_of_arguments - 1u);
-    bool has_reverse_bytes_slow_path =
+    bool          has_reverse_bytes_slow_path =
         (expected_coordinates_count == 2u) &&
         !(arg->IsConstant() && arg->AsConstant()->IsZeroBitPattern());
     if (Use64BitExclusiveLoadStore(atomic, codegen)) {
       // We need 4 temporaries in the byte array view slow path. Otherwise, we need
       // 2 or 3 temporaries for GenerateIntrinsicSet() depending on the value type.
       // We can reuse the offset temporary and declaring class (if present).
-      size_t temps_needed = has_reverse_bytes_slow_path
-          ? 4u
-          : ((value_type == DataType::Type::kFloat64) ? 3u : 2u);
+      size_t temps_needed =
+          has_reverse_bytes_slow_path ? 4u : ((value_type == DataType::Type::kFloat64) ? 3u : 2u);
       locations->AddRegisterTemps(temps_needed - locations->GetTempCount());
     } else if (has_reverse_bytes_slow_path) {
       // We need 2 temps for the value with reversed bytes in the byte array view slow path.
@@ -4431,19 +4355,19 @@ static void CreateVarHandleSetLocations(HInvoke* invoke,
   }
 }
 
-static void GenerateVarHandleSet(HInvoke* invoke,
+static void GenerateVarHandleSet(HInvoke*              invoke,
                                  CodeGeneratorARMVIXL* codegen,
-                                 std::memory_order order,
-                                 bool atomic,
-                                 bool byte_swap = false) {
-  uint32_t value_index = invoke->GetNumberOfArguments() - 1;
+                                 std::memory_order     order,
+                                 bool                  atomic,
+                                 bool                  byte_swap = false) {
+  uint32_t       value_index = invoke->GetNumberOfArguments() - 1;
   DataType::Type value_type = GetDataTypeFromShorty(invoke, value_index);
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  Location value = locations->InAt(value_index);
+  LocationSummary*  locations = invoke->GetLocations();
+  Location          value = locations->InAt(value_index);
 
-  VarHandleTarget target = GetVarHandleTarget(invoke);
+  VarHandleTarget           target = GetVarHandleTarget(invoke);
   VarHandleSlowPathARMVIXL* slow_path = nullptr;
   if (!byte_swap) {
     slow_path = GenerateVarHandleChecks(invoke, codegen, order, value_type);
@@ -4470,7 +4394,7 @@ static void GenerateVarHandleSet(HInvoke* invoke,
     if (DataType::Is64BitType(value_type) || value_type == DataType::Type::kFloat32) {
       // Calculate the address in scratch register, so that we can use the offset temporary.
       vixl32::Register base = temps.Acquire();
-      __ Add(base, target.object, target.offset);
+      __               Add(base, target.object, target.offset);
       target.object = base;
       target.offset = vixl32::Register();
     }
@@ -4519,7 +4443,7 @@ static void GenerateVarHandleSet(HInvoke* invoke,
     vixl32::Register temp = target.offset;
     vixl32::Register card = temps.Acquire();
     vixl32::Register value_reg = RegisterFrom(value);
-    codegen->MarkGCCard(temp, card, target.object, value_reg, /*value_can_be_null=*/ true);
+    codegen->MarkGCCard(temp, card, target.object, value_reg, /*value_can_be_null=*/true);
   }
 
   if (!byte_swap) {
@@ -4528,36 +4452,36 @@ static void GenerateVarHandleSet(HInvoke* invoke,
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleSet(HInvoke* invoke) {
-  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/ false);
+  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleSet(HInvoke* invoke) {
-  GenerateVarHandleSet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/ false);
+  GenerateVarHandleSet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleSetOpaque(HInvoke* invoke) {
-  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleSetOpaque(HInvoke* invoke) {
-  GenerateVarHandleSet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/ true);
+  GenerateVarHandleSet(invoke, codegen_, std::memory_order_relaxed, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleSetRelease(HInvoke* invoke) {
-  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleSetRelease(HInvoke* invoke) {
-  GenerateVarHandleSet(invoke, codegen_, std::memory_order_release, /*atomic=*/ true);
+  GenerateVarHandleSet(invoke, codegen_, std::memory_order_release, /*atomic=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleSetVolatile(HInvoke* invoke) {
-  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/ true);
+  CreateVarHandleSetLocations(invoke, codegen_, /*atomic=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleSetVolatile(HInvoke* invoke) {
   // ARM store-release instructions are implicitly sequentially consistent.
-  GenerateVarHandleSet(invoke, codegen_, std::memory_order_seq_cst, /*atomic=*/ true);
+  GenerateVarHandleSet(invoke, codegen_, std::memory_order_seq_cst, /*atomic=*/true);
 }
 
 static void CreateVarHandleCompareAndSetOrExchangeLocations(HInvoke* invoke, bool return_success) {
@@ -4565,7 +4489,7 @@ static void CreateVarHandleCompareAndSetOrExchangeLocations(HInvoke* invoke, boo
     return;
   }
 
-  uint32_t number_of_arguments = invoke->GetNumberOfArguments();
+  uint32_t       number_of_arguments = invoke->GetNumberOfArguments();
   DataType::Type value_type = GetDataTypeFromShorty(invoke, number_of_arguments - 1u);
   if ((kEmitCompilerReadBarrier && !kUseBakerReadBarrier) &&
       value_type == DataType::Type::kReference) {
@@ -4603,9 +4527,8 @@ static void CreateVarHandleCompareAndSetOrExchangeLocations(HInvoke* invoke, boo
     // We can reuse the declaring class (if present) and offset temporary.
     DCHECK_EQ(locations->GetTempCount(),
               (GetExpectedVarHandleCoordinatesCount(invoke) == 0) ? 2u : 1u);
-    size_t temps_needed = (value_type == DataType::Type::kFloat64)
-        ? (return_success ? 5u : 7u)
-        : (return_success ? 3u : 4u);
+    size_t temps_needed = (value_type == DataType::Type::kFloat64) ? (return_success ? 5u : 7u)
+                                                                   : (return_success ? 3u : 4u);
     locations->AddRegisterTemps(temps_needed - locations->GetTempCount());
   } else if (GetExpectedVarHandleCoordinatesCount(invoke) == 2u) {
     // Add temps for the byte-reversed `expected` and `new_value` in the byte array view slow path.
@@ -4623,26 +4546,26 @@ static void CreateVarHandleCompareAndSetOrExchangeLocations(HInvoke* invoke, boo
   }
 }
 
-static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
+static void GenerateVarHandleCompareAndSetOrExchange(HInvoke*              invoke,
                                                      CodeGeneratorARMVIXL* codegen,
-                                                     std::memory_order order,
-                                                     bool return_success,
-                                                     bool strong,
-                                                     bool byte_swap = false) {
+                                                     std::memory_order     order,
+                                                     bool                  return_success,
+                                                     bool                  strong,
+                                                     bool                  byte_swap = false) {
   DCHECK(return_success || strong);
 
-  uint32_t expected_index = invoke->GetNumberOfArguments() - 2;
-  uint32_t new_value_index = invoke->GetNumberOfArguments() - 1;
+  uint32_t       expected_index = invoke->GetNumberOfArguments() - 2;
+  uint32_t       new_value_index = invoke->GetNumberOfArguments() - 1;
   DataType::Type value_type = GetDataTypeFromShorty(invoke, new_value_index);
   DCHECK_EQ(value_type, GetDataTypeFromShorty(invoke, expected_index));
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  Location expected = locations->InAt(expected_index);
-  Location new_value = locations->InAt(new_value_index);
-  Location out = locations->Out();
+  LocationSummary*  locations = invoke->GetLocations();
+  Location          expected = locations->InAt(expected_index);
+  Location          new_value = locations->InAt(new_value_index);
+  Location          out = locations->Out();
 
-  VarHandleTarget target = GetVarHandleTarget(invoke);
+  VarHandleTarget           target = GetVarHandleTarget(invoke);
   VarHandleSlowPathARMVIXL* slow_path = nullptr;
   if (!byte_swap) {
     slow_path = GenerateVarHandleChecks(invoke, codegen, order, value_type);
@@ -4657,24 +4580,24 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
   DCHECK(release_barrier || acquire_barrier || order == std::memory_order_relaxed);
 
   if (release_barrier) {
-    codegen->GenerateMemoryBarrier(
-        seq_cst_barrier ? MemBarrierKind::kAnyAny : MemBarrierKind::kAnyStore);
+    codegen->GenerateMemoryBarrier(seq_cst_barrier ? MemBarrierKind::kAnyAny
+                                                   : MemBarrierKind::kAnyStore);
   }
 
   // Calculate the pointer to the value.
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register tmp_ptr = temps.Acquire();
-  __ Add(tmp_ptr, target.object, target.offset);
+  vixl32::Register        tmp_ptr = temps.Acquire();
+  __                      Add(tmp_ptr, target.object, target.offset);
 
   // Move floating point values to temporaries and prepare output registers.
   // Note that float/double CAS uses bitwise comparison, rather than the operator==.
   // Reuse the declaring class (if present) and offset temporary for non-reference types,
   // the address has already been constructed in the scratch register. We are more careful
   // for references due to read and write barrier, see below.
-  Location old_value;
+  Location         old_value;
   vixl32::Register store_result;
   vixl32::Register success = return_success ? RegisterFrom(out) : vixl32::Register();
-  DataType::Type cas_type = value_type;
+  DataType::Type   cas_type = value_type;
   if (value_type == DataType::Type::kFloat64) {
     vixl32::DRegister expected_vreg = DRegisterFrom(expected);
     vixl32::DRegister new_value_vreg = DRegisterFrom(new_value);
@@ -4683,9 +4606,9 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
     new_value =
         LocationFrom(RegisterFrom(locations->GetTemp(2)), RegisterFrom(locations->GetTemp(3)));
     store_result = RegisterFrom(locations->GetTemp(4));
-    old_value = return_success
-        ? LocationFrom(success, store_result)
-        : LocationFrom(RegisterFrom(locations->GetTemp(5)), RegisterFrom(locations->GetTemp(6)));
+    old_value = return_success ? LocationFrom(success, store_result)
+                               : LocationFrom(RegisterFrom(locations->GetTemp(5)),
+                                              RegisterFrom(locations->GetTemp(6)));
     if (byte_swap) {
       __ Vmov(HighRegisterFrom(expected), LowRegisterFrom(expected), expected_vreg);
       __ Vmov(HighRegisterFrom(new_value), LowRegisterFrom(new_value), new_value_vreg);
@@ -4712,10 +4635,11 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
     cas_type = DataType::Type::kInt32;
   } else if (value_type == DataType::Type::kInt64) {
     store_result = RegisterFrom(locations->GetTemp(0));
-    old_value = return_success
-        ? LocationFrom(success, store_result)
+    old_value =
+        return_success ? LocationFrom(success, store_result)
         // If swapping bytes, swap the high/low regs and reverse the bytes in each after the load.
-        : byte_swap ? LocationFrom(HighRegisterFrom(out), LowRegisterFrom(out)) : out;
+        : byte_swap ? LocationFrom(HighRegisterFrom(out), LowRegisterFrom(out))
+                    : out;
     if (byte_swap) {
       // Due to lack of registers, reverse bytes in `expected` and `new_value` and undo that later.
       GenerateReverseBytesInPlaceForEachWord(assembler, expected);
@@ -4742,27 +4666,26 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
     }
   }
 
-  vixl32::Label exit_loop_label;
+  vixl32::Label  exit_loop_label;
   vixl32::Label* exit_loop = &exit_loop_label;
   vixl32::Label* cmp_failure = &exit_loop_label;
 
   if (kEmitCompilerReadBarrier && value_type == DataType::Type::kReference) {
     // The `old_value_temp` is used first for the marked `old_value` and then for the unmarked
     // reloaded old value for subsequent CAS in the slow path.
-    vixl32::Register old_value_temp = store_result;
+    vixl32::Register               old_value_temp = store_result;
     ReadBarrierCasSlowPathARMVIXL* rb_slow_path =
-        new (codegen->GetScopedAllocator()) ReadBarrierCasSlowPathARMVIXL(
-            invoke,
-            strong,
-            target.object,
-            target.offset,
-            RegisterFrom(expected),
-            RegisterFrom(new_value),
-            RegisterFrom(old_value),
-            old_value_temp,
-            store_result,
-            success,
-            codegen);
+        new (codegen->GetScopedAllocator()) ReadBarrierCasSlowPathARMVIXL(invoke,
+                                                                          strong,
+                                                                          target.object,
+                                                                          target.offset,
+                                                                          RegisterFrom(expected),
+                                                                          RegisterFrom(new_value),
+                                                                          RegisterFrom(old_value),
+                                                                          old_value_temp,
+                                                                          store_result,
+                                                                          success,
+                                                                          codegen);
     codegen->AddSlowPath(rb_slow_path);
     exit_loop = rb_slow_path->GetExitLabel();
     cmp_failure = rb_slow_path->GetEntryLabel();
@@ -4772,7 +4695,7 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
                         cas_type,
                         strong,
                         cmp_failure,
-                        /*cmp_failure_is_far_target=*/ cmp_failure != &exit_loop_label,
+                        /*cmp_failure_is_far_target=*/cmp_failure != &exit_loop_label,
                         tmp_ptr,
                         expected,
                         new_value,
@@ -4782,8 +4705,8 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
   __ Bind(exit_loop);
 
   if (acquire_barrier) {
-    codegen->GenerateMemoryBarrier(
-        seq_cst_barrier ? MemBarrierKind::kAnyAny : MemBarrierKind::kLoadAny);
+    codegen->GenerateMemoryBarrier(seq_cst_barrier ? MemBarrierKind::kAnyAny
+                                                   : MemBarrierKind::kLoadAny);
   }
 
   if (!return_success) {
@@ -4809,7 +4732,7 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
     vixl32::Register temp = target.offset;
     vixl32::Register card = tmp_ptr;
     // Mark card for object assuming new value is stored.
-    bool new_value_can_be_null = true;  // TODO: Worth finding out this information?
+    bool             new_value_can_be_null = true;  // TODO: Worth finding out this information?
     codegen->MarkGCCard(temp, card, target.object, RegisterFrom(new_value), new_value_can_be_null);
   }
 
@@ -4819,78 +4742,78 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleCompareAndExchange(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ false);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleCompareAndExchange(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/ false, /*strong=*/ true);
+      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/false, /*strong=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleCompareAndExchangeAcquire(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ false);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleCompareAndExchangeAcquire(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_acquire, /*return_success=*/ false, /*strong=*/ true);
+      invoke, codegen_, std::memory_order_acquire, /*return_success=*/false, /*strong=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleCompareAndExchangeRelease(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ false);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/false);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleCompareAndExchangeRelease(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_release, /*return_success=*/ false, /*strong=*/ true);
+      invoke, codegen_, std::memory_order_release, /*return_success=*/false, /*strong=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleCompareAndSet(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ true);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleCompareAndSet(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/ true, /*strong=*/ true);
+      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/true, /*strong=*/true);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleWeakCompareAndSet(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ true);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleWeakCompareAndSet(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/ true, /*strong=*/ false);
+      invoke, codegen_, std::memory_order_seq_cst, /*return_success=*/true, /*strong=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleWeakCompareAndSetAcquire(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ true);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleWeakCompareAndSetAcquire(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_acquire, /*return_success=*/ true, /*strong=*/ false);
+      invoke, codegen_, std::memory_order_acquire, /*return_success=*/true, /*strong=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleWeakCompareAndSetPlain(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ true);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleWeakCompareAndSetPlain(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_relaxed, /*return_success=*/ true, /*strong=*/ false);
+      invoke, codegen_, std::memory_order_relaxed, /*return_success=*/true, /*strong=*/false);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitVarHandleWeakCompareAndSetRelease(HInvoke* invoke) {
-  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/ true);
+  CreateVarHandleCompareAndSetOrExchangeLocations(invoke, /*return_success=*/true);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleWeakCompareAndSetRelease(HInvoke* invoke) {
   GenerateVarHandleCompareAndSetOrExchange(
-      invoke, codegen_, std::memory_order_release, /*return_success=*/ true, /*strong=*/ false);
+      invoke, codegen_, std::memory_order_release, /*return_success=*/true, /*strong=*/false);
 }
 
-static void CreateVarHandleGetAndUpdateLocations(HInvoke* invoke,
+static void CreateVarHandleGetAndUpdateLocations(HInvoke*       invoke,
                                                  GetAndUpdateOp get_and_update_op) {
   if (!HasVarHandleIntrinsicImplementation(invoke)) {
     return;
@@ -4948,20 +4871,20 @@ static void CreateVarHandleGetAndUpdateLocations(HInvoke* invoke,
   }
 }
 
-static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
+static void GenerateVarHandleGetAndUpdate(HInvoke*              invoke,
                                           CodeGeneratorARMVIXL* codegen,
-                                          GetAndUpdateOp get_and_update_op,
-                                          std::memory_order order,
-                                          bool byte_swap = false) {
-  uint32_t arg_index = invoke->GetNumberOfArguments() - 1;
+                                          GetAndUpdateOp        get_and_update_op,
+                                          std::memory_order     order,
+                                          bool                  byte_swap = false) {
+  uint32_t       arg_index = invoke->GetNumberOfArguments() - 1;
   DataType::Type value_type = GetDataTypeFromShorty(invoke, arg_index);
 
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  Location arg = locations->InAt(arg_index);
-  Location out = locations->Out();
+  LocationSummary*  locations = invoke->GetLocations();
+  Location          arg = locations->InAt(arg_index);
+  Location          out = locations->Out();
 
-  VarHandleTarget target = GetVarHandleTarget(invoke);
+  VarHandleTarget           target = GetVarHandleTarget(invoke);
   VarHandleSlowPathARMVIXL* slow_path = nullptr;
   if (!byte_swap) {
     slow_path = GenerateVarHandleChecks(invoke, codegen, order, value_type);
@@ -4976,22 +4899,24 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
   DCHECK(release_barrier || acquire_barrier || order == std::memory_order_relaxed);
 
   if (release_barrier) {
-    codegen->GenerateMemoryBarrier(
-        seq_cst_barrier ? MemBarrierKind::kAnyAny : MemBarrierKind::kAnyStore);
+    codegen->GenerateMemoryBarrier(seq_cst_barrier ? MemBarrierKind::kAnyAny
+                                                   : MemBarrierKind::kAnyStore);
   }
 
   // Use the scratch register for the pointer to the target location.
   UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  vixl32::Register tmp_ptr = temps.Acquire();
-  __ Add(tmp_ptr, target.object, target.offset);
+  vixl32::Register        tmp_ptr = temps.Acquire();
+  __                      Add(tmp_ptr, target.object, target.offset);
 
   // Use the offset temporary for the exclusive store result.
   vixl32::Register store_result = target.offset;
 
   // The load/store type is never floating point.
-  DataType::Type load_store_type = DataType::IsFloatingPointType(value_type)
-      ? ((value_type == DataType::Type::kFloat32) ? DataType::Type::kInt32 : DataType::Type::kInt64)
-      : value_type;
+  DataType::Type load_store_type =
+      DataType::IsFloatingPointType(value_type)
+          ? ((value_type == DataType::Type::kFloat32) ? DataType::Type::kInt32
+                                                      : DataType::Type::kInt64)
+          : value_type;
 
   // Prepare register for old value and temporaries if any.
   Location old_value = out;
@@ -5043,9 +4968,10 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
       GenerateReverseBytes(assembler, value_type, original_arg, arg);
     }
   } else {
-    maybe_temp = DataType::Is64BitType(value_type)
-        ? LocationFrom(RegisterFrom(locations->GetTemp(1)), RegisterFrom(locations->GetTemp(2)))
-        : locations->GetTemp(1);
+    maybe_temp =
+        DataType::Is64BitType(value_type)
+            ? LocationFrom(RegisterFrom(locations->GetTemp(1)), RegisterFrom(locations->GetTemp(2)))
+            : locations->GetTemp(1);
     DCHECK(!maybe_temp.Contains(LocationFrom(store_result)));
     if (DataType::IsFloatingPointType(value_type)) {
       maybe_vreg_temp = locations->GetTemp(locations->GetTempCount() - 1u);
@@ -5082,8 +5008,8 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
                        maybe_vreg_temp);
 
   if (acquire_barrier) {
-    codegen->GenerateMemoryBarrier(
-        seq_cst_barrier ? MemBarrierKind::kAnyAny : MemBarrierKind::kLoadAny);
+    codegen->GenerateMemoryBarrier(seq_cst_barrier ? MemBarrierKind::kAnyAny
+                                                   : MemBarrierKind::kLoadAny);
   }
 
   if (byte_swap && get_and_update_op != GetAndUpdateOp::kAddWithByteSwap) {
@@ -5114,8 +5040,8 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
           Location::RegisterLocation(RegisterFrom(out).GetCode()),
           Location::RegisterLocation(RegisterFrom(old_value).GetCode()),
           Location::RegisterLocation(target.object.GetCode()),
-          /*offset=*/ 0u,
-          /*index=*/ Location::RegisterLocation(target.offset.GetCode()));
+          /*offset=*/0u,
+          /*index=*/Location::RegisterLocation(target.offset.GetCode()));
     }
   }
 
@@ -5124,7 +5050,7 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
     vixl32::Register temp = target.offset;
     vixl32::Register card = tmp_ptr;
     // Mark card for object assuming new value is stored.
-    bool new_value_can_be_null = true;  // TODO: Worth finding out this information?
+    bool             new_value_can_be_null = true;  // TODO: Worth finding out this information?
     codegen->MarkGCCard(temp, card, target.object, RegisterFrom(arg), new_value_can_be_null);
   }
 
@@ -5255,16 +5181,16 @@ void IntrinsicCodeGeneratorARMVIXL::VisitVarHandleGetAndBitwiseXorRelease(HInvok
 
 void VarHandleSlowPathARMVIXL::EmitByteArrayViewCode(CodeGenerator* codegen_in) {
   DCHECK(GetByteArrayViewCheckLabel()->IsReferenced());
-  CodeGeneratorARMVIXL* codegen = down_cast<CodeGeneratorARMVIXL*>(codegen_in);
-  ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  HInvoke* invoke = GetInvoke();
+  CodeGeneratorARMVIXL*                 codegen = down_cast<CodeGeneratorARMVIXL*>(codegen_in);
+  ArmVIXLAssembler*                     assembler = codegen->GetAssembler();
+  HInvoke*                              invoke = GetInvoke();
   mirror::VarHandle::AccessModeTemplate access_mode_template = GetAccessModeTemplate();
-  DataType::Type value_type =
-      GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/ 2u);
+  DataType::Type                        value_type =
+      GetVarHandleExpectedValueType(invoke, /*expected_coordinates_count=*/2u);
   DCHECK_NE(value_type, DataType::Type::kReference);
   size_t size = DataType::Size(value_type);
   DCHECK_GT(size, 1u);
-  vixl32::Operand size_operand(dchecked_integral_cast<int32_t>(size));
+  vixl32::Operand  size_operand(dchecked_integral_cast<int32_t>(size));
   vixl32::Register varhandle = InputRegisterAt(invoke, 0);
   vixl32::Register object = InputRegisterAt(invoke, 1);
   vixl32::Register index = InputRegisterAt(invoke, 2);
@@ -5282,7 +5208,7 @@ void VarHandleSlowPathARMVIXL::EmitByteArrayViewCode(CodeGenerator* codegen_in) 
     vixl32::Register temp = RegisterFrom(invoke->GetLocations()->GetTemp(0u));
 
     UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-    vixl32::Register temp2 = temps.Acquire();
+    vixl32::Register        temp2 = temps.Acquire();
 
     // The main path checked that the coordinateType0 is an array class that matches
     // the class of the actual coordinate argument but it does not match the value type.
@@ -5303,7 +5229,7 @@ void VarHandleSlowPathARMVIXL::EmitByteArrayViewCode(CodeGenerator* codegen_in) 
       // Use ExactAssemblyScope here because we are using IT.
       ExactAssemblyScope it_scope(assembler->GetVIXLAssembler(),
                                   2 * k16BitT32InstructionSizeInBytes);
-      __ it(hs);
+      __                 it(hs);
       if (temp.IsLow()) {
         __ cmp(hs, temp, size_operand);
       } else {
@@ -5337,26 +5263,27 @@ void VarHandleSlowPathARMVIXL::EmitByteArrayViewCode(CodeGenerator* codegen_in) 
 
   switch (access_mode_template) {
     case mirror::VarHandle::AccessModeTemplate::kGet:
-      GenerateVarHandleGet(invoke, codegen, order_, atomic_, /*byte_swap=*/ true);
+      GenerateVarHandleGet(invoke, codegen, order_, atomic_, /*byte_swap=*/true);
       break;
     case mirror::VarHandle::AccessModeTemplate::kSet:
-      GenerateVarHandleSet(invoke, codegen, order_, atomic_, /*byte_swap=*/ true);
+      GenerateVarHandleSet(invoke, codegen, order_, atomic_, /*byte_swap=*/true);
       break;
     case mirror::VarHandle::AccessModeTemplate::kCompareAndSet:
     case mirror::VarHandle::AccessModeTemplate::kCompareAndExchange:
       GenerateVarHandleCompareAndSetOrExchange(
-          invoke, codegen, order_, return_success_, strong_, /*byte_swap=*/ true);
+          invoke, codegen, order_, return_success_, strong_, /*byte_swap=*/true);
       break;
     case mirror::VarHandle::AccessModeTemplate::kGetAndUpdate:
       GenerateVarHandleGetAndUpdate(
-          invoke, codegen, get_and_update_op_, order_, /*byte_swap=*/ true);
+          invoke, codegen, get_and_update_op_, order_, /*byte_swap=*/true);
       break;
   }
   __ B(GetExitLabel());
 }
 
-UNIMPLEMENTED_INTRINSIC(ARMVIXL, MathRoundDouble)   // Could be done by changing rounding mode, maybe?
-UNIMPLEMENTED_INTRINSIC(ARMVIXL, UnsafeCASLong)     // High register pressure.
+UNIMPLEMENTED_INTRINSIC(ARMVIXL,
+                        MathRoundDouble)         // Could be done by changing rounding mode, maybe?
+UNIMPLEMENTED_INTRINSIC(ARMVIXL, UnsafeCASLong)  // High register pressure.
 UNIMPLEMENTED_INTRINSIC(ARMVIXL, SystemArrayCopyChar)
 UNIMPLEMENTED_INTRINSIC(ARMVIXL, LongDivideUnsigned)
 UNIMPLEMENTED_INTRINSIC(ARMVIXL, CRC32Update)

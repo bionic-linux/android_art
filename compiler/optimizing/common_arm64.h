@@ -133,30 +133,29 @@ inline vixl::aarch64::VRegister InputFPRegisterAt(HInstruction* instr, int input
 
 inline vixl::aarch64::CPURegister CPURegisterFrom(Location location, DataType::Type type) {
   return DataType::IsFloatingPointType(type)
-      ? vixl::aarch64::CPURegister(FPRegisterFrom(location, type))
-      : vixl::aarch64::CPURegister(RegisterFrom(location, type));
+             ? vixl::aarch64::CPURegister(FPRegisterFrom(location, type))
+             : vixl::aarch64::CPURegister(RegisterFrom(location, type));
 }
 
 inline vixl::aarch64::CPURegister OutputCPURegister(HInstruction* instr) {
   return DataType::IsFloatingPointType(instr->GetType())
-      ? static_cast<vixl::aarch64::CPURegister>(OutputFPRegister(instr))
-      : static_cast<vixl::aarch64::CPURegister>(OutputRegister(instr));
+             ? static_cast<vixl::aarch64::CPURegister>(OutputFPRegister(instr))
+             : static_cast<vixl::aarch64::CPURegister>(OutputRegister(instr));
 }
 
 inline vixl::aarch64::CPURegister InputCPURegisterAt(HInstruction* instr, int index) {
   return DataType::IsFloatingPointType(instr->InputAt(index)->GetType())
-      ? static_cast<vixl::aarch64::CPURegister>(InputFPRegisterAt(instr, index))
-      : static_cast<vixl::aarch64::CPURegister>(InputRegisterAt(instr, index));
+             ? static_cast<vixl::aarch64::CPURegister>(InputFPRegisterAt(instr, index))
+             : static_cast<vixl::aarch64::CPURegister>(InputRegisterAt(instr, index));
 }
 
-inline vixl::aarch64::CPURegister InputCPURegisterOrZeroRegAt(HInstruction* instr,
-                                                                     int index) {
-  HInstruction* input = instr->InputAt(index);
+inline vixl::aarch64::CPURegister InputCPURegisterOrZeroRegAt(HInstruction* instr, int index) {
+  HInstruction*  input = instr->InputAt(index);
   DataType::Type input_type = input->GetType();
   if (input->IsConstant() && input->AsConstant()->IsZeroBitPattern()) {
     return (DataType::Size(input_type) >= vixl::aarch64::kXRegSizeInBytes)
-        ? vixl::aarch64::Register(vixl::aarch64::xzr)
-        : vixl::aarch64::Register(vixl::aarch64::wzr);
+               ? vixl::aarch64::Register(vixl::aarch64::xzr)
+               : vixl::aarch64::Register(vixl::aarch64::wzr);
   }
   return InputCPURegisterAt(instr, index);
 }
@@ -187,23 +186,22 @@ inline vixl::aarch64::SVEMemOperand SveStackOperandFrom(Location location) {
 }
 
 inline vixl::aarch64::MemOperand HeapOperand(const vixl::aarch64::Register& base,
-                                                    size_t offset = 0) {
+                                             size_t                         offset = 0) {
   // A heap reference must be 32bit, so fit in a W register.
   DCHECK(base.IsW());
   return vixl::aarch64::MemOperand(base.X(), offset);
 }
 
 inline vixl::aarch64::MemOperand HeapOperand(const vixl::aarch64::Register& base,
-                                                    const vixl::aarch64::Register& regoffset,
-                                                    vixl::aarch64::Shift shift = vixl::aarch64::LSL,
-                                                    unsigned shift_amount = 0) {
+                                             const vixl::aarch64::Register& regoffset,
+                                             vixl::aarch64::Shift shift = vixl::aarch64::LSL,
+                                             unsigned             shift_amount = 0) {
   // A heap reference must be 32bit, so fit in a W register.
   DCHECK(base.IsW());
   return vixl::aarch64::MemOperand(base.X(), regoffset, shift, shift_amount);
 }
 
-inline vixl::aarch64::MemOperand HeapOperand(const vixl::aarch64::Register& base,
-                                                    Offset offset) {
+inline vixl::aarch64::MemOperand HeapOperand(const vixl::aarch64::Register& base, Offset offset) {
   return HeapOperand(base, offset.SizeValue());
 }
 
@@ -223,20 +221,17 @@ inline Location LocationFrom(const vixl::aarch64::ZRegister& zreg) {
   return Location::FpuRegisterLocation(zreg.GetCode());
 }
 
-inline vixl::aarch64::Operand OperandFromMemOperand(
-    const vixl::aarch64::MemOperand& mem_op) {
+inline vixl::aarch64::Operand OperandFromMemOperand(const vixl::aarch64::MemOperand& mem_op) {
   if (mem_op.IsImmediateOffset()) {
     return vixl::aarch64::Operand(mem_op.GetOffset());
   } else {
     DCHECK(mem_op.IsRegisterOffset());
     if (mem_op.GetExtend() != vixl::aarch64::NO_EXTEND) {
-      return vixl::aarch64::Operand(mem_op.GetRegisterOffset(),
-                                    mem_op.GetExtend(),
-                                    mem_op.GetShiftAmount());
+      return vixl::aarch64::Operand(
+          mem_op.GetRegisterOffset(), mem_op.GetExtend(), mem_op.GetShiftAmount());
     } else if (mem_op.GetShift() != vixl::aarch64::NO_SHIFT) {
-      return vixl::aarch64::Operand(mem_op.GetRegisterOffset(),
-                                    mem_op.GetShift(),
-                                    mem_op.GetShiftAmount());
+      return vixl::aarch64::Operand(
+          mem_op.GetRegisterOffset(), mem_op.GetShift(), mem_op.GetShiftAmount());
     } else {
       LOG(FATAL) << "Should not reach here";
       UNREACHABLE();
@@ -247,8 +242,8 @@ inline vixl::aarch64::Operand OperandFromMemOperand(
 inline bool AddSubCanEncodeAsImmediate(int64_t value) {
   // If `value` does not fit but `-value` does, VIXL will automatically use
   // the 'opposite' instruction.
-  return vixl::aarch64::Assembler::IsImmAddSub(value)
-      || vixl::aarch64::Assembler::IsImmAddSub(-value);
+  return vixl::aarch64::Assembler::IsImmAddSub(value) ||
+         vixl::aarch64::Assembler::IsImmAddSub(-value);
 }
 
 inline bool Arm64CanEncodeConstantAsImmediate(HConstant* constant, HInstruction* instr) {
@@ -298,22 +293,16 @@ inline bool Arm64CanEncodeConstantAsImmediate(HConstant* constant, HInstruction*
     // Uses mov -immediate.
     return vixl::aarch64::Assembler::IsImmMovn(value, vixl::aarch64::kXRegSize);
   } else {
-    DCHECK(instr->IsAdd() ||
-           instr->IsIntermediateAddress() ||
-           instr->IsBoundsCheck() ||
-           instr->IsCompare() ||
-           instr->IsCondition() ||
-           instr->IsSub())
+    DCHECK(instr->IsAdd() || instr->IsIntermediateAddress() || instr->IsBoundsCheck() ||
+           instr->IsCompare() || instr->IsCondition() || instr->IsSub())
         << instr->DebugName();
     // Uses aliases of ADD/SUB instructions.
     return AddSubCanEncodeAsImmediate(value);
   }
 }
 
-inline Location ARM64EncodableConstantOrRegister(HInstruction* constant,
-                                                 HInstruction* instr) {
-  if (constant->IsConstant()
-      && Arm64CanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
+inline Location ARM64EncodableConstantOrRegister(HInstruction* constant, HInstruction* instr) {
+  if (constant->IsConstant() && Arm64CanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
     return Location::ConstantLocation(constant->AsConstant());
   }
 
@@ -325,13 +314,13 @@ inline Location ARM64EncodableConstantOrRegister(HInstruction* constant,
 // only SP/WSP and ZXR/WZR codes are different between art and vixl.
 // Note: This function is only used for debug checks.
 inline bool ArtVixlRegCodeCoherentForRegSet(uint32_t art_core_registers,
-                                            size_t num_core,
+                                            size_t   num_core,
                                             uint32_t art_fpu_registers,
-                                            size_t num_fpu) {
+                                            size_t   num_fpu) {
   // The register masks won't work if the number of register is larger than 32.
   DCHECK_GE(sizeof(art_core_registers) * 8, num_core);
   DCHECK_GE(sizeof(art_fpu_registers) * 8, num_fpu);
-  for (size_t art_reg_code = 0;  art_reg_code < num_core; ++art_reg_code) {
+  for (size_t art_reg_code = 0; art_reg_code < num_core; ++art_reg_code) {
     if (RegisterSet::Contains(art_core_registers, art_reg_code)) {
       if (art_reg_code != static_cast<size_t>(VIXLRegCodeFromART(art_reg_code))) {
         return false;

@@ -58,21 +58,21 @@ class Matcher {
 
   // Match an individual instruction.
 
-  template <Instruction::Code opcode> bool Opcode();
+  template <Instruction::Code opcode>
+  bool Opcode();
   bool Const0();
   bool IPutOnThis();
 
  private:
-  explicit Matcher(const CodeItemDataAccessor* code_item)
-      : code_item_(code_item),
-        instruction_(code_item->begin()) {}
+  explicit Matcher(const CodeItemDataAccessor* code_item) :
+      code_item_(code_item), instruction_(code_item->begin()) {}
 
   static bool DoMatch(const CodeItemDataAccessor* code_item, MatchFn* const* pattern, size_t size);
 
   const CodeItemDataAccessor* const code_item_;
-  DexInstructionIterator instruction_;
-  size_t pos_ = 0u;
-  size_t mark_ = 0u;
+  DexInstructionIterator            instruction_;
+  size_t                            pos_ = 0u;
+  size_t                            mark_ = 0u;
 };
 
 template <size_t size>
@@ -116,14 +116,14 @@ bool Matcher::Opcode() {
 // Match const 0.
 bool Matcher::Const0() {
   return IsInstructionDirectConst(instruction_->Opcode()) &&
-      (instruction_->Opcode() == Instruction::CONST_WIDE ? instruction_->VRegB_51l() == 0
-                                                         : instruction_->VRegB() == 0);
+         (instruction_->Opcode() == Instruction::CONST_WIDE ? instruction_->VRegB_51l() == 0
+                                                            : instruction_->VRegB() == 0);
 }
 
 bool Matcher::IPutOnThis() {
   DCHECK_NE(code_item_->InsSize(), 0u);
   return IsInstructionIPut(instruction_->Opcode()) &&
-      instruction_->VRegB_22c() == code_item_->RegistersSize() - code_item_->InsSize();
+         instruction_->VRegB_22c() == code_item_->RegistersSize() - code_item_->InsSize();
 }
 
 bool Matcher::DoMatch(const CodeItemDataAccessor* code_item, MatchFn* const* pattern, size_t size) {
@@ -143,10 +143,9 @@ ArtMethod* GetTargetConstructor(ArtMethod* method, const Instruction* invoke_dir
   DCHECK_EQ(invoke_direct->Opcode(), Instruction::INVOKE_DIRECT);
   if (kIsDebugBuild) {
     CodeItemDataAccessor accessor(method->DexInstructionData());
-    DCHECK_EQ(invoke_direct->VRegC_35c(),
-              accessor.RegistersSize() - accessor.InsSize());
+    DCHECK_EQ(invoke_direct->VRegC_35c(), accessor.RegistersSize() - accessor.InsSize());
   }
-  uint32_t method_index = invoke_direct->VRegB_35c();
+  uint32_t   method_index = invoke_direct->VRegB_35c();
   ArtMethod* target_method = Runtime::Current()->GetClassLinker()->LookupResolvedMethod(
       method_index, method->GetDexCache(), method->GetClassLoader());
   if (kIsDebugBuild && target_method != nullptr) {
@@ -161,8 +160,8 @@ ArtMethod* GetTargetConstructor(ArtMethod* method, const Instruction* invoke_dir
 // Return the forwarded arguments and check that all remaining arguments are zero.
 // If the check fails, return static_cast<size_t>(-1).
 size_t CountForwardedConstructorArguments(const CodeItemDataAccessor* code_item,
-                                          const Instruction* invoke_direct,
-                                          uint16_t zero_vreg_mask) {
+                                          const Instruction*          invoke_direct,
+                                          uint16_t                    zero_vreg_mask) {
   DCHECK_EQ(invoke_direct->Opcode(), Instruction::INVOKE_DIRECT);
   size_t number_of_args = invoke_direct->VRegA_35c();
   DCHECK_NE(number_of_args, 0u);
@@ -171,9 +170,8 @@ size_t CountForwardedConstructorArguments(const CodeItemDataAccessor* code_item,
   uint16_t this_vreg = args[0];
   DCHECK_EQ(this_vreg, code_item->RegistersSize() - code_item->InsSize());  // Checked by verifier.
   size_t forwarded = 1u;
-  while (forwarded < number_of_args &&
-      args[forwarded] == this_vreg + forwarded &&
-      (zero_vreg_mask & (1u << args[forwarded])) == 0) {
+  while (forwarded < number_of_args && args[forwarded] == this_vreg + forwarded &&
+         (zero_vreg_mask & (1u << args[forwarded])) == 0) {
     ++forwarded;
   }
   for (size_t i = forwarded; i != number_of_args; ++i) {
@@ -201,20 +199,20 @@ uint16_t GetZeroVRegMask(const Instruction* const0) {
 static constexpr size_t kMaxConstructorIPuts = 3u;
 
 struct ConstructorIPutData {
-  ConstructorIPutData() : field_index(DexFile::kDexNoIndex16), arg(0u) { }
+  ConstructorIPutData() : field_index(DexFile::kDexNoIndex16), arg(0u) {}
 
   uint16_t field_index;
   uint16_t arg;
 };
 
-bool RecordConstructorIPut(ArtMethod* method,
+bool RecordConstructorIPut(ArtMethod*         method,
                            const Instruction* new_iput,
-                           uint16_t this_vreg,
-                           uint16_t zero_vreg_mask,
+                           uint16_t           this_vreg,
+                           uint16_t           zero_vreg_mask,
                            /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts])
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(IsInstructionIPut(new_iput->Opcode()));
-  uint32_t field_index = new_iput->VRegC_22c();
+  uint32_t     field_index = new_iput->VRegC_22c();
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
   ArtField* field = class_linker->LookupResolvedField(field_index, method, /* is_static= */ false);
   if (UNLIKELY(field == nullptr)) {
@@ -252,14 +250,12 @@ bool RecordConstructorIPut(ArtMethod* method,
 }
 
 bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
-                          ArtMethod* method,
+                          ArtMethod*                  method,
                           /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts])
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // On entry we should not have any IPUTs yet.
-  DCHECK_EQ(0, std::count_if(
-      iputs,
-      iputs + arraysize(iputs),
-      [](const ConstructorIPutData& iput_data) {
+  DCHECK_EQ(
+      0, std::count_if(iputs, iputs + arraysize(iputs), [](const ConstructorIPutData& iput_data) {
         return iput_data.field_index != DexFile::kDexNoIndex16;
       }));
 
@@ -294,8 +290,7 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
   DCHECK(method->IsConstructor());
   DCHECK(code_item != nullptr);
   if (!method->GetDeclaringClass()->IsVerified() ||
-      code_item->InsnsSizeInCodeUnits() > kMaxCodeUnits ||
-      code_item->RegistersSize() > kMaxVRegs ||
+      code_item->InsnsSizeInCodeUnits() > kMaxCodeUnits || code_item->RegistersSize() > kMaxVRegs ||
       !Matcher::Match(code_item, kConstructorPattern)) {
     return false;
   }
@@ -319,7 +314,8 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
           instruction.VRegA_35c() <= code_item->InsSize()) {
         return false;
       }
-      size_t forwarded = CountForwardedConstructorArguments(code_item, &instruction, zero_vreg_mask);
+      size_t forwarded =
+          CountForwardedConstructorArguments(code_item, &instruction, zero_vreg_mask);
       if (forwarded == static_cast<size_t>(-1)) {
         return false;
       }
@@ -335,9 +331,7 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
         }
         // Prune IPUTs with zero input.
         auto kept_end = std::remove_if(
-            iputs,
-            iputs + arraysize(iputs),
-            [forwarded](const ConstructorIPutData& iput_data) {
+            iputs, iputs + arraysize(iputs), [forwarded](const ConstructorIPutData& iput_data) {
               return iput_data.arg >= forwarded;
             });
         std::fill(kept_end, iputs + arraysize(iputs), ConstructorIPutData());
@@ -367,9 +361,8 @@ bool DoAnalyseConstructor(const CodeItemDataAccessor* code_item,
 }  // anonymous namespace
 
 bool AnalyseConstructor(const CodeItemDataAccessor* code_item,
-                        ArtMethod* method,
-                        InlineMethod* result)
-    REQUIRES_SHARED(Locks::mutator_lock_) {
+                        ArtMethod*                  method,
+                        InlineMethod*               result) REQUIRES_SHARED(Locks::mutator_lock_) {
   ConstructorIPutData iputs[kMaxConstructorIPuts];
   if (!DoAnalyseConstructor(code_item, method, iputs)) {
     return false;
@@ -380,10 +373,10 @@ bool AnalyseConstructor(const CodeItemDataAccessor* code_item,
   DCHECK(iputs[1].field_index != DexFile::kDexNoIndex16 ||
          iputs[2].field_index == DexFile::kDexNoIndex16);
 
-#define STORE_IPUT(n)                                                         \
-  do {                                                                        \
-    result->d.constructor_data.iput##n##_field_index = iputs[n].field_index;  \
-    result->d.constructor_data.iput##n##_arg = iputs[n].arg;                  \
+#define STORE_IPUT(n)                                                        \
+  do {                                                                       \
+    result->d.constructor_data.iput##n##_field_index = iputs[n].field_index; \
+    result->d.constructor_data.iput##n##_arg = iputs[n].arg;                 \
   } while (false)
 
   STORE_IPUT(0);
@@ -415,19 +408,26 @@ static_assert(InlineMethodAnalyser::IsInstructionIPut(Instruction::IPUT_BYTE), "
 static_assert(InlineMethodAnalyser::IsInstructionIPut(Instruction::IPUT_CHAR), "iput_char type");
 static_assert(InlineMethodAnalyser::IsInstructionIPut(Instruction::IPUT_SHORT), "iput_short type");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT), "iget/iput variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT),
+              "iget/iput variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_WIDE) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_WIDE), "iget/iput_wide variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_WIDE),
+              "iget/iput_wide variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_OBJECT) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_OBJECT), "iget/iput_object variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_OBJECT),
+              "iget/iput_object variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_BOOLEAN) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_BOOLEAN), "iget/iput_boolean variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_BOOLEAN),
+              "iget/iput_boolean variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_BYTE) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_BYTE), "iget/iput_byte variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_BYTE),
+              "iget/iput_byte variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_CHAR) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_CHAR), "iget/iput_char variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_CHAR),
+              "iget/iput_char variant");
 static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_SHORT) ==
-    InlineMethodAnalyser::IPutVariant(Instruction::IPUT_SHORT), "iget/iput_short variant");
+                  InlineMethodAnalyser::IPutVariant(Instruction::IPUT_SHORT),
+              "iget/iput_short variant");
 
 bool InlineMethodAnalyser::AnalyseMethodCode(ArtMethod* method, InlineMethod* result) {
   CodeItemDataAccessor code_item(method->DexInstructionData());
@@ -443,10 +443,10 @@ bool InlineMethodAnalyser::AnalyseMethodCode(ArtMethod* method, InlineMethod* re
 }
 
 bool InlineMethodAnalyser::AnalyseMethodCode(const CodeItemDataAccessor* code_item,
-                                             const MethodReference& method_ref,
-                                             bool is_static,
-                                             ArtMethod* method,
-                                             InlineMethod* result) {
+                                             const MethodReference&      method_ref,
+                                             bool                        is_static,
+                                             ArtMethod*                  method,
+                                             InlineMethod*               result) {
   // We currently support only plain return or 2-instruction methods.
 
   DCHECK_NE(code_item->InsnsSizeInCodeUnits(), 0u);
@@ -461,8 +461,7 @@ bool InlineMethodAnalyser::AnalyseMethodCode(const CodeItemDataAccessor* code_it
       return true;
     case Instruction::RETURN:
     case Instruction::RETURN_OBJECT:
-    case Instruction::RETURN_WIDE:
-      return AnalyseReturnMethod(code_item, result);
+    case Instruction::RETURN_WIDE: return AnalyseReturnMethod(code_item, result);
     case Instruction::CONST:
     case Instruction::CONST_4:
     case Instruction::CONST_16:
@@ -488,10 +487,10 @@ bool InlineMethodAnalyser::AnalyseMethodCode(const CodeItemDataAccessor* code_it
     case Instruction::IGET_CHAR:
     case Instruction::IGET_SHORT:
     case Instruction::IGET_WIDE:
-    // TODO: Add handling for JIT.
-    // case Instruction::IGET_QUICK:
-    // case Instruction::IGET_WIDE_QUICK:
-    // case Instruction::IGET_OBJECT_QUICK:
+      // TODO: Add handling for JIT.
+      // case Instruction::IGET_QUICK:
+      // case Instruction::IGET_WIDE_QUICK:
+      // case Instruction::IGET_OBJECT_QUICK:
       return AnalyseIGetMethod(code_item, method_ref, is_static, method, result);
     case Instruction::IPUT:
     case Instruction::IPUT_OBJECT:
@@ -501,33 +500,32 @@ bool InlineMethodAnalyser::AnalyseMethodCode(const CodeItemDataAccessor* code_it
     case Instruction::IPUT_SHORT:
     case Instruction::IPUT_WIDE:
       // TODO: Add handling for JIT.
-    // case Instruction::IPUT_QUICK:
-    // case Instruction::IPUT_WIDE_QUICK:
-    // case Instruction::IPUT_OBJECT_QUICK:
+      // case Instruction::IPUT_QUICK:
+      // case Instruction::IPUT_WIDE_QUICK:
+      // case Instruction::IPUT_OBJECT_QUICK:
       return AnalyseIPutMethod(code_item, method_ref, is_static, method, result);
-    default:
-      return false;
+    default: return false;
   }
 }
 
 bool InlineMethodAnalyser::IsSyntheticAccessor(MethodReference ref) {
   const dex::MethodId& method_id = ref.dex_file->GetMethodId(ref.index);
-  const char* method_name = ref.dex_file->GetMethodName(method_id);
+  const char*          method_name = ref.dex_file->GetMethodName(method_id);
   // javac names synthetic accessors "access$nnn",
   // jack names them "-getN", "-putN", "-wrapN".
   return strncmp(method_name, "access$", strlen("access$")) == 0 ||
-      strncmp(method_name, "-", strlen("-")) == 0;
+         strncmp(method_name, "-", strlen("-")) == 0;
 }
 
 bool InlineMethodAnalyser::AnalyseReturnMethod(const CodeItemDataAccessor* code_item,
-                                               InlineMethod* result) {
+                                               InlineMethod*               result) {
   DexInstructionIterator return_instruction = code_item->begin();
-  Instruction::Code return_opcode = return_instruction->Opcode();
-  uint32_t reg = return_instruction->VRegA_11x();
-  uint32_t arg_start = code_item->RegistersSize() - code_item->InsSize();
+  Instruction::Code      return_opcode = return_instruction->Opcode();
+  uint32_t               reg = return_instruction->VRegA_11x();
+  uint32_t               arg_start = code_item->RegistersSize() - code_item->InsSize();
   DCHECK_GE(reg, arg_start);
   DCHECK_LT((return_opcode == Instruction::RETURN_WIDE) ? reg + 1 : reg,
-      code_item->RegistersSize());
+            code_item->RegistersSize());
 
   if (result != nullptr) {
     result->opcode = kInlineOpReturnArg;
@@ -542,12 +540,11 @@ bool InlineMethodAnalyser::AnalyseReturnMethod(const CodeItemDataAccessor* code_
 }
 
 bool InlineMethodAnalyser::AnalyseConstMethod(const CodeItemDataAccessor* code_item,
-                                              InlineMethod* result) {
+                                              InlineMethod*               result) {
   DexInstructionIterator instruction = code_item->begin();
-  const Instruction* return_instruction = instruction->Next();
-  Instruction::Code return_opcode = return_instruction->Opcode();
-  if (return_opcode != Instruction::RETURN &&
-      return_opcode != Instruction::RETURN_OBJECT) {
+  const Instruction*     return_instruction = instruction->Next();
+  Instruction::Code      return_opcode = return_instruction->Opcode();
+  if (return_opcode != Instruction::RETURN && return_opcode != Instruction::RETURN_OBJECT) {
     return false;
   }
 
@@ -573,20 +570,20 @@ bool InlineMethodAnalyser::AnalyseConstMethod(const CodeItemDataAccessor* code_i
 }
 
 bool InlineMethodAnalyser::AnalyseIGetMethod(const CodeItemDataAccessor* code_item,
-                                             const MethodReference& method_ref,
-                                             bool is_static,
-                                             ArtMethod* method,
-                                             InlineMethod* result) {
+                                             const MethodReference&      method_ref,
+                                             bool                        is_static,
+                                             ArtMethod*                  method,
+                                             InlineMethod*               result) {
   DexInstructionIterator instruction = code_item->begin();
-  Instruction::Code opcode = instruction->Opcode();
+  Instruction::Code      opcode = instruction->Opcode();
   DCHECK(IsInstructionIGet(opcode));
 
   const Instruction* return_instruction = instruction->Next();
-  Instruction::Code return_opcode = return_instruction->Opcode();
+  Instruction::Code  return_opcode = return_instruction->Opcode();
   if (!(return_opcode == Instruction::RETURN_WIDE && opcode == Instruction::IGET_WIDE) &&
       !(return_opcode == Instruction::RETURN_OBJECT && opcode == Instruction::IGET_OBJECT) &&
       !(return_opcode == Instruction::RETURN && opcode != Instruction::IGET_WIDE &&
-          opcode != Instruction::IGET_OBJECT)) {
+        opcode != Instruction::IGET_OBJECT)) {
     return false;
   }
 
@@ -637,21 +634,20 @@ bool InlineMethodAnalyser::AnalyseIGetMethod(const CodeItemDataAccessor* code_it
 }
 
 bool InlineMethodAnalyser::AnalyseIPutMethod(const CodeItemDataAccessor* code_item,
-                                             const MethodReference& method_ref,
-                                             bool is_static,
-                                             ArtMethod* method,
-                                             InlineMethod* result) {
+                                             const MethodReference&      method_ref,
+                                             bool                        is_static,
+                                             ArtMethod*                  method,
+                                             InlineMethod*               result) {
   DexInstructionIterator instruction = code_item->begin();
-  Instruction::Code opcode = instruction->Opcode();
+  Instruction::Code      opcode = instruction->Opcode();
   DCHECK(IsInstructionIPut(opcode));
 
   const Instruction* return_instruction = instruction->Next();
-  Instruction::Code return_opcode = return_instruction->Opcode();
-  uint32_t arg_start = code_item->RegistersSize() - code_item->InsSize();
-  uint16_t return_arg_plus1 = 0u;
+  Instruction::Code  return_opcode = return_instruction->Opcode();
+  uint32_t           arg_start = code_item->RegistersSize() - code_item->InsSize();
+  uint16_t           return_arg_plus1 = 0u;
   if (return_opcode != Instruction::RETURN_VOID) {
-    if (return_opcode != Instruction::RETURN &&
-        return_opcode != Instruction::RETURN_OBJECT &&
+    if (return_opcode != Instruction::RETURN && return_opcode != Instruction::RETURN_OBJECT &&
         return_opcode != Instruction::RETURN_WIDE) {
       return false;
     }
@@ -704,15 +700,15 @@ bool InlineMethodAnalyser::AnalyseIPutMethod(const CodeItemDataAccessor* code_it
   return true;
 }
 
-bool InlineMethodAnalyser::ComputeSpecialAccessorInfo(ArtMethod* method,
-                                                      uint32_t field_idx,
-                                                      bool is_put,
+bool InlineMethodAnalyser::ComputeSpecialAccessorInfo(ArtMethod*          method,
+                                                      uint32_t            field_idx,
+                                                      bool                is_put,
                                                       InlineIGetIPutData* result) {
   if (method == nullptr) {
     return false;
   }
   ObjPtr<mirror::DexCache> dex_cache = method->GetDexCache();
-  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+  ClassLinker*             class_linker = Runtime::Current()->GetClassLinker();
   ArtField* field = class_linker->LookupResolvedField(field_idx, method, /* is_static= */ false);
   if (field == nullptr || field->IsStatic()) {
     return false;
@@ -727,7 +723,7 @@ bool InlineMethodAnalyser::ComputeSpecialAccessorInfo(ArtMethod* method,
   // Historical note: We made sure not to interleave function calls with bit field writes to
   // placate Valgrind. Bug: 27552451.
   uint32_t field_offset = field->GetOffset().Uint32Value();
-  bool is_volatile = field->IsVolatile();
+  bool     is_volatile = field->IsVolatile();
   result->field_idx = field_idx;
   result->field_offset = field_offset;
   result->is_volatile = is_volatile ? 1u : 0u;

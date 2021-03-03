@@ -31,10 +31,10 @@ class CodeGenerator;
 // A control-flow graph visitor performing various checks.
 class GraphChecker : public HGraphDelegateVisitor {
  public:
-  explicit GraphChecker(HGraph* graph,
+  explicit GraphChecker(HGraph*        graph,
                         CodeGenerator* codegen = nullptr,
-                        const char* dump_prefix = "art::GraphChecker: ")
-    : HGraphDelegateVisitor(graph),
+                        const char*    dump_prefix = "art::GraphChecker: ") :
+      HGraphDelegateVisitor(graph),
       errors_(graph->GetAllocator()->Adapter(kArenaAllocGraphChecker)),
       dump_prefix_(dump_prefix),
       allocator_(graph->GetArenaStack()),
@@ -77,10 +77,10 @@ class GraphChecker : public HGraphDelegateVisitor {
   void VisitVecOperation(HVecOperation* instruction) override;
 
   void CheckTypeCheckBitstringInput(HTypeCheckInstruction* check,
-                                    size_t input_pos,
-                                    bool check_value,
-                                    uint32_t expected_value,
-                                    const char* name);
+                                    size_t                 input_pos,
+                                    bool                   check_value,
+                                    uint32_t               expected_value,
+                                    const char*            name);
   void HandleTypeCheckInstruction(HTypeCheckInstruction* instruction);
   void HandleLoop(HBasicBlock* loop_header);
   void HandleBooleanInput(HInstruction* instruction, size_t input_index);
@@ -118,19 +118,19 @@ class GraphChecker : public HGraphDelegateVisitor {
   }
 
   // The block currently visited.
-  HBasicBlock* current_block_ = nullptr;
+  HBasicBlock*             current_block_ = nullptr;
   // Errors encountered while checking the graph.
   ArenaVector<std::string> errors_;
 
  private:
   // String displayed before dumped errors.
-  const char* const dump_prefix_;
+  const char* const    dump_prefix_;
   ScopedArenaAllocator allocator_;
-  ArenaBitVector seen_ids_;
+  ArenaBitVector       seen_ids_;
   // Whether to perform the reference type info check for instructions which use or produce
   // object references, e.g. HNewInstance, HLoadClass.
   // The default value is true.
-  bool check_reference_type_info_ = true;
+  bool                 check_reference_type_info_ = true;
 
   // Used to access target information.
   CodeGenerator* codegen_;

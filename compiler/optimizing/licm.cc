@@ -40,8 +40,7 @@ static bool InputsAreDefinedBeforeLoop(HInstruction* instruction) {
     }
   }
 
-  for (HEnvironment* environment = instruction->GetEnvironment();
-       environment != nullptr;
+  for (HEnvironment* environment = instruction->GetEnvironment(); environment != nullptr;
        environment = environment->GetParent()) {
     for (size_t i = 0, e = environment->Size(); i < e; ++i) {
       HInstruction* input = environment->GetInstructionAt(i);
@@ -85,10 +84,8 @@ bool LICM::Run() {
   // Only used during debug.
   ArenaBitVector* visited = nullptr;
   if (kIsDebugBuild) {
-    visited = new (graph_->GetAllocator()) ArenaBitVector(graph_->GetAllocator(),
-                                                          graph_->GetBlocks().size(),
-                                                          false,
-                                                          kArenaAllocLICM);
+    visited = new (graph_->GetAllocator())
+        ArenaBitVector(graph_->GetAllocator(), graph_->GetBlocks().size(), false, kArenaAllocLICM);
   }
 
   // Post order visit to visit inner loops before outer loops.
@@ -99,8 +96,8 @@ bool LICM::Run() {
     }
 
     HLoopInformation* loop_info = block->GetLoopInformation();
-    SideEffects loop_effects = side_effects_.GetLoopEffects(block);
-    HBasicBlock* pre_header = loop_info->GetPreHeader();
+    SideEffects       loop_effects = side_effects_.GetLoopEffects(block);
+    HBasicBlock*      pre_header = loop_info->GetPreHeader();
 
     for (HBlocksInLoopIterator it_loop(*loop_info); !it_loop.Done(); it_loop.Advance()) {
       HBasicBlock* inner = it_loop.Current();
@@ -126,11 +123,10 @@ bool LICM::Run() {
       // instruction that is not hoisted stops this optimization. Non-throwing instructions,
       // on the other hand, can still be hoisted.
       bool found_first_non_hoisted_visible_instruction_in_loop = !inner->IsLoopHeader();
-      for (HInstructionIterator inst_it(inner->GetInstructions());
-           !inst_it.Done();
+      for (HInstructionIterator inst_it(inner->GetInstructions()); !inst_it.Done();
            inst_it.Advance()) {
         HInstruction* instruction = inst_it.Current();
-        bool can_move = false;
+        bool          can_move = false;
         if (instruction->CanBeMoved() && InputsAreDefinedBeforeLoop(instruction)) {
           if (instruction->CanThrow()) {
             if (!found_first_non_hoisted_visible_instruction_in_loop) {

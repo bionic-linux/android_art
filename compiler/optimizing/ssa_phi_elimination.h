@@ -28,8 +28,8 @@ namespace art {
  */
 class SsaDeadPhiElimination : public HOptimization {
  public:
-  explicit SsaDeadPhiElimination(HGraph* graph)
-      : HOptimization(graph, kSsaDeadPhiEliminationPassName) {}
+  explicit SsaDeadPhiElimination(HGraph* graph) :
+      HOptimization(graph, kSsaDeadPhiEliminationPassName) {}
 
   bool Run() override;
 
@@ -50,8 +50,8 @@ class SsaDeadPhiElimination : public HOptimization {
  */
 class SsaRedundantPhiElimination : public HOptimization {
  public:
-  explicit SsaRedundantPhiElimination(HGraph* graph)
-      : HOptimization(graph, kSsaRedundantPhiEliminationPassName) {}
+  explicit SsaRedundantPhiElimination(HGraph* graph) :
+      HOptimization(graph, kSsaRedundantPhiEliminationPassName) {}
 
   bool Run() override;
 

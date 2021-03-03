@@ -36,14 +36,14 @@ static constexpr bool kTestInstructionClonerExhaustively = false;
 
 class InstructionSimplifierVisitor : public HGraphDelegateVisitor {
  public:
-  InstructionSimplifierVisitor(HGraph* graph,
-                               CodeGenerator* codegen,
+  InstructionSimplifierVisitor(HGraph*                  graph,
+                               CodeGenerator*           codegen,
                                OptimizingCompilerStats* stats,
-                               bool be_loop_friendly)
-      : HGraphDelegateVisitor(graph),
-        codegen_(codegen),
-        stats_(stats),
-        be_loop_friendly_(be_loop_friendly) {}
+                               bool                     be_loop_friendly) :
+      HGraphDelegateVisitor(graph),
+      codegen_(codegen),
+      stats_(stats),
+      be_loop_friendly_(be_loop_friendly) {}
 
   bool Run();
 
@@ -124,22 +124,22 @@ class InstructionSimplifierVisitor : public HGraphDelegateVisitor {
   void SimplifyReturnThis(HInvoke* invoke);
   void SimplifyAllocationIntrinsic(HInvoke* invoke);
 
-  CodeGenerator* codegen_;
+  CodeGenerator*           codegen_;
   OptimizingCompilerStats* stats_;
-  bool simplification_occurred_ = false;
-  int simplifications_at_current_position_ = 0;
+  bool                     simplification_occurred_ = false;
+  int                      simplifications_at_current_position_ = 0;
   // Prohibit optimizations which can affect HInductionVarAnalysis/HLoopOptimization
   // and prevent loop optimizations:
   //   true - avoid such optimizations.
   //   false - allow such optimizations.
   // Checked by the following optimizations:
   //   - TryToReuseDiv: simplification of Div+Rem into Div+Mul+Sub.
-  bool be_loop_friendly_;
+  bool                     be_loop_friendly_;
   // We ensure we do not loop infinitely. The value should not be too high, since that
   // would allow looping around the same basic block too many times. The value should
   // not be too low either, however, since we want to allow revisiting a basic block
   // with many statements and simplifications at least once.
-  static constexpr int kMaxSamePositionSimplifications = 50;
+  static constexpr int     kMaxSamePositionSimplifications = 50;
 };
 
 bool InstructionSimplifier::Run() {
@@ -190,8 +190,7 @@ bool InstructionSimplifierVisitor::TryMoveNegOnInputsAfterBinop(HBinaryOperation
   DCHECK(binop->GetLeft()->IsNeg() && binop->GetRight()->IsNeg());
   HNeg* left_neg = binop->GetLeft()->AsNeg();
   HNeg* right_neg = binop->GetRight()->AsNeg();
-  if (!left_neg->HasOnlyOneNonEnvironmentUse() ||
-      !right_neg->HasOnlyOneNonEnvironmentUse()) {
+  if (!left_neg->HasOnlyOneNonEnvironmentUse() || !right_neg->HasOnlyOneNonEnvironmentUse()) {
     return false;
   }
   // Replace code looking like
@@ -221,15 +220,13 @@ bool InstructionSimplifierVisitor::TryMoveNegOnInputsAfterBinop(HBinaryOperation
 bool InstructionSimplifierVisitor::TryDeMorganNegationFactoring(HBinaryOperation* op) {
   DCHECK(op->IsAnd() || op->IsOr()) << op->DebugName();
   DataType::Type type = op->GetType();
-  HInstruction* left = op->GetLeft();
-  HInstruction* right = op->GetRight();
+  HInstruction*  left = op->GetLeft();
+  HInstruction*  right = op->GetRight();
 
   // We can apply De Morgan's laws if both inputs are Not's and are only used
   // by `op`.
-  if (((left->IsNot() && right->IsNot()) ||
-       (left->IsBooleanNot() && right->IsBooleanNot())) &&
-      left->HasOnlyOneNonEnvironmentUse() &&
-      right->HasOnlyOneNonEnvironmentUse()) {
+  if (((left->IsNot() && right->IsNot()) || (left->IsBooleanNot() && right->IsBooleanNot())) &&
+      left->HasOnlyOneNonEnvironmentUse() && right->HasOnlyOneNonEnvironmentUse()) {
     // Replace code looking like
     //    NOT nota, a
     //    NOT notb, b
@@ -239,7 +236,7 @@ bool InstructionSimplifierVisitor::TryDeMorganNegationFactoring(HBinaryOperation
     //    NOT dest, or
     HInstruction* src_left = left->InputAt(0);
     HInstruction* src_right = right->InputAt(0);
-    uint32_t dex_pc = op->GetDexPc();
+    uint32_t      dex_pc = op->GetDexPc();
 
     // Remove the negations on the inputs.
     left->ReplaceWith(src_left);
@@ -276,16 +273,13 @@ bool InstructionSimplifierVisitor::TryCombineVecMultiplyAccumulate(HVecMul* mul)
   InstructionSet isa = codegen_->GetInstructionSet();
   switch (isa) {
     case InstructionSet::kArm64:
-      if (!(type == DataType::Type::kUint8 ||
-            type == DataType::Type::kInt8 ||
-            type == DataType::Type::kUint16 ||
-            type == DataType::Type::kInt16 ||
+      if (!(type == DataType::Type::kUint8 || type == DataType::Type::kInt8 ||
+            type == DataType::Type::kUint16 || type == DataType::Type::kInt16 ||
             type == DataType::Type::kInt32)) {
         return false;
       }
       break;
-    default:
-      return false;
+    default: return false;
   }
 
   ArenaAllocator* allocator = mul->GetBlock()->GetGraph()->GetAllocator();
@@ -308,10 +302,10 @@ bool InstructionSimplifierVisitor::TryCombineVecMultiplyAccumulate(HVecMul* mul)
   // then increase the amount of work. In the future we could try to evaluate
   // whether all uses are on different control-flow paths (using dominance and
   // reverse-dominance information) and only perform the merge when they are.
-  HInstruction* accumulator = nullptr;
+  HInstruction*        accumulator = nullptr;
   HVecBinaryOperation* vec_binop = binop->AsVecBinaryOperation();
-  HInstruction* binop_left = vec_binop->GetLeft();
-  HInstruction* binop_right = vec_binop->GetRight();
+  HInstruction*        binop_left = vec_binop->GetLeft();
+  HInstruction*        binop_right = vec_binop->GetRight();
   // This is always true since the `HVecMul` has only one use (which is checked above).
   DCHECK_NE(binop_left, binop_right);
   if (binop_right == mul) {
@@ -326,8 +320,7 @@ bool InstructionSimplifierVisitor::TryCombineVecMultiplyAccumulate(HVecMul* mul)
   }
 
   DCHECK(accumulator != nullptr);
-  HInstruction::InstructionKind kind =
-      binop->IsVecAdd() ? HInstruction::kAdd : HInstruction::kSub;
+  HInstruction::InstructionKind kind = binop->IsVecAdd() ? HInstruction::kAdd : HInstruction::kSub;
 
   bool predicated_simd = vec_binop->IsPredicated();
   if (predicated_simd && !HVecOperation::HaveSamePredicate(vec_binop, mul)) {
@@ -343,8 +336,6 @@ bool InstructionSimplifierVisitor::TryCombineVecMultiplyAccumulate(HVecMul* mul)
                                              vec_binop->GetPackedType(),
                                              vec_binop->GetVectorLength(),
                                              vec_binop->GetDexPc());
-
-
 
   vec_binop->GetBlock()->ReplaceAndRemoveInstructionWith(vec_binop, mulacc);
   if (predicated_simd) {
@@ -362,9 +353,8 @@ void InstructionSimplifierVisitor::VisitShift(HBinaryOperation* instruction) {
   HInstruction* shift_amount = instruction->GetRight();
   HInstruction* value = instruction->GetLeft();
 
-  int64_t implicit_mask = (value->GetType() == DataType::Type::kInt64)
-      ? kMaxLongShiftDistance
-      : kMaxIntShiftDistance;
+  int64_t implicit_mask =
+      (value->GetType() == DataType::Type::kInt64) ? kMaxLongShiftDistance : kMaxIntShiftDistance;
 
   if (shift_amount->IsConstant()) {
     int64_t cst = Int64FromConstant(shift_amount->AsConstant());
@@ -402,14 +392,11 @@ void InstructionSimplifierVisitor::VisitShift(HBinaryOperation* instruction) {
   //    SHL dst, value, adjusted_shift
   // with
   //    SHL dst, value, shift
-  if (shift_amount->IsAnd() ||
-      shift_amount->IsOr() ||
-      shift_amount->IsXor() ||
-      shift_amount->IsAdd() ||
-      shift_amount->IsSub()) {
-    int64_t required_result = shift_amount->IsAnd() ? implicit_mask : 0;
+  if (shift_amount->IsAnd() || shift_amount->IsOr() || shift_amount->IsXor() ||
+      shift_amount->IsAdd() || shift_amount->IsSub()) {
+    int64_t           required_result = shift_amount->IsAnd() ? implicit_mask : 0;
     HBinaryOperation* bin_op = shift_amount->AsBinaryOperation();
-    HConstant* mask = bin_op->GetConstantRight();
+    HConstant*        mask = bin_op->GetConstantRight();
     if (mask != nullptr && (Int64FromConstant(mask) & implicit_mask) == required_result) {
       instruction->ReplaceInput(bin_op->GetLeastConstantLeft(), 1);
       RecordSimplification();
@@ -428,14 +415,13 @@ void InstructionSimplifierVisitor::VisitShift(HBinaryOperation* instruction) {
 }
 
 static bool IsSubRegBitsMinusOther(HSub* sub, size_t reg_bits, HInstruction* other) {
-  return (sub->GetRight() == other &&
-          sub->GetLeft()->IsConstant() &&
+  return (sub->GetRight() == other && sub->GetLeft()->IsConstant() &&
           (Int64FromConstant(sub->GetLeft()->AsConstant()) & (reg_bits - 1)) == 0);
 }
 
 bool InstructionSimplifierVisitor::ReplaceRotateWithRor(HBinaryOperation* op,
-                                                        HUShr* ushr,
-                                                        HShl* shl) {
+                                                        HUShr*            ushr,
+                                                        HShl*             shl) {
   DCHECK(op->IsAdd() || op->IsXor() || op->IsOr()) << op->DebugName();
   HRor* ror =
       new (GetGraph()->GetAllocator()) HRor(ushr->GetType(), ushr->GetLeft(), ushr->GetRight());
@@ -464,10 +450,9 @@ bool InstructionSimplifierVisitor::TryReplaceWithRotate(HBinaryOperation* op) {
   // If we have an UShr and a Shl (in either order).
   if ((left->IsUShr() && right->IsShl()) || (left->IsShl() && right->IsUShr())) {
     HUShr* ushr = left->IsUShr() ? left->AsUShr() : right->AsUShr();
-    HShl* shl = left->IsShl() ? left->AsShl() : right->AsShl();
+    HShl*  shl = left->IsShl() ? left->AsShl() : right->AsShl();
     DCHECK(DataType::IsIntOrLongType(ushr->GetType()));
-    if (ushr->GetType() == shl->GetType() &&
-        ushr->GetLeft() == shl->GetLeft()) {
+    if (ushr->GetType() == shl->GetType() && ushr->GetLeft() == shl->GetLeft()) {
       if (ushr->GetRight()->IsConstant() && shl->GetRight()->IsConstant()) {
         // Shift distances are both constant, try replacing with Ror if they
         // add up to the register size.
@@ -495,8 +480,8 @@ bool InstructionSimplifierVisitor::TryReplaceWithRotate(HBinaryOperation* op) {
 // with
 //    Ror  dst, x,   #rdist
 bool InstructionSimplifierVisitor::TryReplaceWithRotateConstantPattern(HBinaryOperation* op,
-                                                                       HUShr* ushr,
-                                                                       HShl* shl) {
+                                                                       HUShr*            ushr,
+                                                                       HShl*             shl) {
   DCHECK(op->IsAdd() || op->IsXor() || op->IsOr());
   size_t reg_bits = DataType::Size(ushr->GetType()) * kBitsPerByte;
   size_t rdist = Int64FromConstant(ushr->GetRight()->AsConstant());
@@ -525,11 +510,11 @@ bool InstructionSimplifierVisitor::TryReplaceWithRotateConstantPattern(HBinaryOp
 // with
 //    Ror  dst, x,   d
 bool InstructionSimplifierVisitor::TryReplaceWithRotateRegisterNegPattern(HBinaryOperation* op,
-                                                                          HUShr* ushr,
-                                                                          HShl* shl) {
+                                                                          HUShr*            ushr,
+                                                                          HShl*             shl) {
   DCHECK(op->IsAdd() || op->IsXor() || op->IsOr());
   DCHECK(ushr->GetRight()->IsNeg() || shl->GetRight()->IsNeg());
-  bool neg_is_left = shl->GetRight()->IsNeg();
+  bool  neg_is_left = shl->GetRight()->IsNeg();
   HNeg* neg = neg_is_left ? shl->GetRight()->AsNeg() : ushr->GetRight()->AsNeg();
   // And the shift distance being negated is the distance being shifted the other way.
   if (neg->InputAt(0) == (neg_is_left ? ushr->GetRight() : shl->GetRight())) {
@@ -555,11 +540,11 @@ bool InstructionSimplifierVisitor::TryReplaceWithRotateRegisterNegPattern(HBinar
 //    Neg  neg, d
 //    Ror  dst, x,     neg
 bool InstructionSimplifierVisitor::TryReplaceWithRotateRegisterSubPattern(HBinaryOperation* op,
-                                                                          HUShr* ushr,
-                                                                          HShl* shl) {
+                                                                          HUShr*            ushr,
+                                                                          HShl*             shl) {
   DCHECK(op->IsAdd() || op->IsXor() || op->IsOr());
   DCHECK(ushr->GetRight()->IsSub() || shl->GetRight()->IsSub());
-  size_t reg_bits = DataType::Size(ushr->GetType()) * kBitsPerByte;
+  size_t        reg_bits = DataType::Size(ushr->GetType()) * kBitsPerByte;
   HInstruction* shl_shift = shl->GetRight();
   HInstruction* ushr_shift = ushr->GetRight();
   if ((shl_shift->IsSub() && IsSubRegBitsMinusOther(shl_shift->AsSub(), reg_bits, ushr_shift)) ||
@@ -598,10 +583,10 @@ bool InstructionSimplifierVisitor::CanEnsureNotNullAt(HInstruction* input, HInst
 // Returns whether doing a type test between the class of `object` against `klass` has
 // a statically known outcome. The result of the test is stored in `outcome`.
 static bool TypeCheckHasKnownOutcome(ReferenceTypeInfo class_rti,
-                                     HInstruction* object,
-                                     /*out*/bool* outcome) {
+                                     HInstruction*     object,
+                                     /*out*/ bool*     outcome) {
   DCHECK(!object->IsNullConstant()) << "Null constants should be special cased";
-  ReferenceTypeInfo obj_rti = object->GetReferenceTypeInfo();
+  ReferenceTypeInfo  obj_rti = object->GetReferenceTypeInfo();
   ScopedObjectAccess soa(Thread::Current());
   if (!obj_rti.IsValid()) {
     // We run the simplifier before the reference type propagation so type info might not be
@@ -621,9 +606,8 @@ static bool TypeCheckHasKnownOutcome(ReferenceTypeInfo class_rti,
     // The test failed at compile time so will also fail at runtime.
     *outcome = false;
     return true;
-  } else if (!class_rti.IsInterface()
-             && !obj_rti.IsInterface()
-             && !obj_rti.IsSupertypeOf(class_rti)) {
+  } else if (!class_rti.IsInterface() && !obj_rti.IsInterface() &&
+             !obj_rti.IsSupertypeOf(class_rti)) {
     // Different type hierarchy. The test will fail.
     *outcome = false;
     return true;
@@ -724,46 +708,34 @@ void InstructionSimplifierVisitor::VisitInstanceOf(HInstanceOf* instruction) {
 }
 
 void InstructionSimplifierVisitor::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  if ((instruction->GetValue()->GetType() == DataType::Type::kReference)
-      && CanEnsureNotNullAt(instruction->GetValue(), instruction)) {
+  if ((instruction->GetValue()->GetType() == DataType::Type::kReference) &&
+      CanEnsureNotNullAt(instruction->GetValue(), instruction)) {
     instruction->ClearValueCanBeNull();
   }
 }
 
 void InstructionSimplifierVisitor::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  if ((instruction->GetValue()->GetType() == DataType::Type::kReference)
-      && CanEnsureNotNullAt(instruction->GetValue(), instruction)) {
+  if ((instruction->GetValue()->GetType() == DataType::Type::kReference) &&
+      CanEnsureNotNullAt(instruction->GetValue(), instruction)) {
     instruction->ClearValueCanBeNull();
   }
 }
 
 static HCondition* GetOppositeConditionSwapOps(ArenaAllocator* allocator, HInstruction* cond) {
-  HInstruction *lhs = cond->InputAt(0);
-  HInstruction *rhs = cond->InputAt(1);
+  HInstruction* lhs = cond->InputAt(0);
+  HInstruction* rhs = cond->InputAt(1);
   switch (cond->GetKind()) {
-    case HInstruction::kEqual:
-      return new (allocator) HEqual(rhs, lhs);
-    case HInstruction::kNotEqual:
-      return new (allocator) HNotEqual(rhs, lhs);
-    case HInstruction::kLessThan:
-      return new (allocator) HGreaterThan(rhs, lhs);
-    case HInstruction::kLessThanOrEqual:
-      return new (allocator) HGreaterThanOrEqual(rhs, lhs);
-    case HInstruction::kGreaterThan:
-      return new (allocator) HLessThan(rhs, lhs);
-    case HInstruction::kGreaterThanOrEqual:
-      return new (allocator) HLessThanOrEqual(rhs, lhs);
-    case HInstruction::kBelow:
-      return new (allocator) HAbove(rhs, lhs);
-    case HInstruction::kBelowOrEqual:
-      return new (allocator) HAboveOrEqual(rhs, lhs);
-    case HInstruction::kAbove:
-      return new (allocator) HBelow(rhs, lhs);
-    case HInstruction::kAboveOrEqual:
-      return new (allocator) HBelowOrEqual(rhs, lhs);
-    default:
-      LOG(FATAL) << "Unknown ConditionType " << cond->GetKind();
-      UNREACHABLE();
+    case HInstruction::kEqual: return new (allocator) HEqual(rhs, lhs);
+    case HInstruction::kNotEqual: return new (allocator) HNotEqual(rhs, lhs);
+    case HInstruction::kLessThan: return new (allocator) HGreaterThan(rhs, lhs);
+    case HInstruction::kLessThanOrEqual: return new (allocator) HGreaterThanOrEqual(rhs, lhs);
+    case HInstruction::kGreaterThan: return new (allocator) HLessThan(rhs, lhs);
+    case HInstruction::kGreaterThanOrEqual: return new (allocator) HLessThanOrEqual(rhs, lhs);
+    case HInstruction::kBelow: return new (allocator) HAbove(rhs, lhs);
+    case HInstruction::kBelowOrEqual: return new (allocator) HAboveOrEqual(rhs, lhs);
+    case HInstruction::kAbove: return new (allocator) HBelow(rhs, lhs);
+    case HInstruction::kAboveOrEqual: return new (allocator) HBelowOrEqual(rhs, lhs);
+    default: LOG(FATAL) << "Unknown ConditionType " << cond->GetKind(); UNREACHABLE();
   }
 }
 
@@ -863,8 +835,8 @@ void InstructionSimplifierVisitor::VisitBooleanNot(HBooleanNot* bool_not) {
 
 // Constructs a new ABS(x) node in the HIR.
 static HInstruction* NewIntegralAbs(ArenaAllocator* allocator,
-                                    HInstruction* x,
-                                    HInstruction* cursor) {
+                                    HInstruction*   x,
+                                    HInstruction*   cursor) {
   DataType::Type type = DataType::Kind(x->GetType());
   DCHECK(type == DataType::Type::kInt32 || type == DataType::Type::kInt64);
   HAbs* abs = new (allocator) HAbs(type, x, cursor->GetDexPc());
@@ -874,10 +846,10 @@ static HInstruction* NewIntegralAbs(ArenaAllocator* allocator,
 
 // Constructs a new MIN/MAX(x, y) node in the HIR.
 static HInstruction* NewIntegralMinMax(ArenaAllocator* allocator,
-                                       HInstruction* x,
-                                       HInstruction* y,
-                                       HInstruction* cursor,
-                                       bool is_min) {
+                                       HInstruction*   x,
+                                       HInstruction*   y,
+                                       HInstruction*   cursor,
+                                       bool            is_min) {
   DataType::Type type = DataType::Kind(x->GetType());
   DCHECK(type == DataType::Type::kInt32 || type == DataType::Type::kInt64);
   HBinaryOperation* minmax = nullptr;
@@ -901,28 +873,27 @@ static bool AreLowerPrecisionArgs(DataType::Type to_type, HInstruction* a, HInst
   }
   DataType::Type type1 = a->GetType();
   DataType::Type type2 = b->GetType();
-  return (type1 == DataType::Type::kUint8  && type2 == DataType::Type::kUint8) ||
-         (type1 == DataType::Type::kInt8   && type2 == DataType::Type::kInt8) ||
-         (type1 == DataType::Type::kInt16  && type2 == DataType::Type::kInt16) ||
+  return (type1 == DataType::Type::kUint8 && type2 == DataType::Type::kUint8) ||
+         (type1 == DataType::Type::kInt8 && type2 == DataType::Type::kInt8) ||
+         (type1 == DataType::Type::kInt16 && type2 == DataType::Type::kInt16) ||
          (type1 == DataType::Type::kUint16 && type2 == DataType::Type::kUint16) ||
-         (type1 == DataType::Type::kInt32  && type2 == DataType::Type::kInt32 &&
+         (type1 == DataType::Type::kInt32 && type2 == DataType::Type::kInt32 &&
           to_type == DataType::Type::kInt64);
 }
 
 // Returns an acceptable substitution for "a" on the select
 // construct "a <cmp> b ? c : .."  during MIN/MAX recognition.
-static HInstruction* AllowInMinMax(IfCondition cmp,
+static HInstruction* AllowInMinMax(IfCondition   cmp,
                                    HInstruction* a,
                                    HInstruction* b,
                                    HInstruction* c) {
   int64_t value = 0;
-  if (IsInt64AndGet(b, /*out*/ &value) &&
-      (((cmp == kCondLT || cmp == kCondLE) && c->IsMax()) ||
-       ((cmp == kCondGT || cmp == kCondGE) && c->IsMin()))) {
+  if (IsInt64AndGet(b, /*out*/ &value) && (((cmp == kCondLT || cmp == kCondLE) && c->IsMax()) ||
+                                           ((cmp == kCondGT || cmp == kCondGE) && c->IsMin()))) {
     HConstant* other = c->AsBinaryOperation()->GetConstantRight();
     if (other != nullptr && a == c->AsBinaryOperation()->GetLeastConstantLeft()) {
       int64_t other_value = Int64FromConstant(other);
-      bool is_max = (cmp == kCondLT || cmp == kCondLE);
+      bool    is_max = (cmp == kCondLT || cmp == kCondLE);
       // Allow the max for a <  100 ? max(a, -100) : ..
       //    or the min for a > -100 ? min(a,  100) : ..
       if (is_max ? (value >= other_value) : (value <= other_value)) {
@@ -951,13 +922,13 @@ void InstructionSimplifierVisitor::VisitPredicatedInstanceFieldGet(
   DCHECK_EQ(default_val->InputCount(), target->InputCount());
   // In the same block both phis only one non-null we can remove the phi from default_val.
   HInstruction* single_value = nullptr;
-  auto inputs = target->GetInputs();
+  auto          inputs = target->GetInputs();
   for (auto [input, idx] : ZipCount(MakeIterationRange(inputs))) {
     if (input->CanBeNull()) {
       if (single_value == nullptr) {
         single_value = default_val->InputAt(idx);
       } else if (single_value != default_val->InputAt(idx) &&
-                !single_value->Equals(default_val->InputAt(idx))) {
+                 !single_value->Equals(default_val->InputAt(idx))) {
         // Multiple values, can't combine.
         return;
       }
@@ -1006,9 +977,9 @@ void InstructionSimplifierVisitor::VisitSelect(HSelect* select) {
       replace_with = GetGraph()->InsertOppositeCondition(condition, select);
     }
   } else if (condition->IsCondition()) {
-    IfCondition cmp = condition->AsCondition()->GetCondition();
-    HInstruction* a = condition->InputAt(0);
-    HInstruction* b = condition->InputAt(1);
+    IfCondition    cmp = condition->AsCondition()->GetCondition();
+    HInstruction*  a = condition->InputAt(0);
+    HInstruction*  b = condition->InputAt(1);
     DataType::Type t_type = true_value->GetType();
     DataType::Type f_type = false_value->GetType();
     // Here we have a <cmp> b ? true_value : false_value.
@@ -1025,15 +996,14 @@ void InstructionSimplifierVisitor::VisitSelect(HSelect* select) {
       }
       // Try to replace typical integral MIN/MAX/ABS constructs.
       if ((cmp == kCondLT || cmp == kCondLE || cmp == kCondGT || cmp == kCondGE) &&
-          ((a == true_value && b == false_value) ||
-           (b == true_value && a == false_value))) {
+          ((a == true_value && b == false_value) || (b == true_value && a == false_value))) {
         // Found a < b ? a : b (MIN) or a < b ? b : a (MAX)
         //    or a > b ? a : b (MAX) or a > b ? b : a (MIN).
         bool is_min = (cmp == kCondLT || cmp == kCondLE) == (a == true_value);
         replace_with = NewIntegralMinMax(GetGraph()->GetAllocator(), a, b, select, is_min);
       } else if (((cmp == kCondLT || cmp == kCondLE) && true_value->IsNeg()) ||
                  ((cmp == kCondGT || cmp == kCondGE) && false_value->IsNeg())) {
-        bool negLeft = (cmp == kCondLT || cmp == kCondLE);
+        bool          negLeft = (cmp == kCondLT || cmp == kCondLE);
         HInstruction* the_negated = negLeft ? true_value->InputAt(0) : false_value->InputAt(0);
         HInstruction* not_negated = negLeft ? false_value : true_value;
         if (a == the_negated && a == not_negated && IsInt64Value(b, 0)) {
@@ -1114,8 +1084,8 @@ void InstructionSimplifierVisitor::VisitArraySet(HArraySet* instruction) {
   }
 
   ScopedObjectAccess soa(Thread::Current());
-  ReferenceTypeInfo array_rti = instruction->GetArray()->GetReferenceTypeInfo();
-  ReferenceTypeInfo value_rti = value->GetReferenceTypeInfo();
+  ReferenceTypeInfo  array_rti = instruction->GetArray()->GetReferenceTypeInfo();
+  ReferenceTypeInfo  value_rti = value->GetReferenceTypeInfo();
   if (!array_rti.IsValid()) {
     return;
   }
@@ -1144,8 +1114,8 @@ static bool IsTypeConversionLossless(DataType::Type input_type, DataType::Type r
   // For integral to FP conversions this holds because the FP mantissa is large enough.
   // Note: The size check excludes Uint8 as the result type.
   return DataType::Size(result_type) > DataType::Size(input_type) &&
-      result_type != DataType::Type::kUint16 &&
-      !(result_type == DataType::Type::kInt64 && input_type == DataType::Type::kFloat32);
+         result_type != DataType::Type::kUint16 &&
+         !(result_type == DataType::Type::kInt64 && input_type == DataType::Type::kFloat32);
 }
 
 static inline bool TryReplaceFieldOrArrayGetType(HInstruction* maybe_get, DataType::Type new_type) {
@@ -1174,10 +1144,8 @@ static bool IsTypeConversionForStoringIntoNoWiderFieldOnly(HTypeConversion* type
   }
   DataType::Type input_type = type_conversion->GetInputType();
   DataType::Type result_type = type_conversion->GetResultType();
-  if (!DataType::IsIntegralType(input_type) ||
-      !DataType::IsIntegralType(result_type) ||
-      input_type == DataType::Type::kInt64 ||
-      result_type == DataType::Type::kInt64) {
+  if (!DataType::IsIntegralType(input_type) || !DataType::IsIntegralType(result_type) ||
+      input_type == DataType::Type::kInt64 || result_type == DataType::Type::kInt64) {
     // Type conversion is needed if non-integer types are involved, or 64-bit
     // types are involved, which may use different number of registers.
     return false;
@@ -1203,8 +1171,7 @@ static bool IsTypeConversionForStoringIntoNoWiderFieldOnly(HTypeConversion* type
       DCHECK_EQ(instruction->AsStaticFieldSet()->GetValue(), type_conversion);
       continue;
     }
-    if (instruction->IsArraySet() &&
-        instruction->AsArraySet()->GetComponentType() == result_type &&
+    if (instruction->IsArraySet() && instruction->AsArraySet()->GetComponentType() == result_type &&
         // not index use.
         instruction->AsArraySet()->GetIndex() != type_conversion) {
       DCHECK_EQ(instruction->AsArraySet()->GetValue(), type_conversion);
@@ -1219,7 +1186,7 @@ static bool IsTypeConversionForStoringIntoNoWiderFieldOnly(HTypeConversion* type
 }
 
 void InstructionSimplifierVisitor::VisitTypeConversion(HTypeConversion* instruction) {
-  HInstruction* input = instruction->GetInput();
+  HInstruction*  input = instruction->GetInput();
   DataType::Type input_type = input->GetType();
   DataType::Type result_type = instruction->GetResultType();
   if (instruction->IsImplicitConversion()) {
@@ -1231,8 +1198,8 @@ void InstructionSimplifierVisitor::VisitTypeConversion(HTypeConversion* instruct
 
   if (input->IsTypeConversion()) {
     HTypeConversion* input_conversion = input->AsTypeConversion();
-    HInstruction* original_input = input_conversion->GetInput();
-    DataType::Type original_type = original_input->GetType();
+    HInstruction*    original_input = input_conversion->GetInput();
+    DataType::Type   original_type = original_input->GetType();
 
     // When the first conversion is lossless, a direct conversion from the original type
     // to the final type yields the same result, even for a lossy second conversion, for
@@ -1243,8 +1210,7 @@ void InstructionSimplifierVisitor::VisitTypeConversion(HTypeConversion* instruct
     // doesn't need, i.e. the final type is no wider than the intermediate. If so, direct
     // conversion yields the same result, for example long->int->short or int->char->short.
     bool integral_conversions_with_non_widening_second =
-        DataType::IsIntegralType(input_type) &&
-        DataType::IsIntegralType(original_type) &&
+        DataType::IsIntegralType(input_type) && DataType::IsIntegralType(original_type) &&
         DataType::IsIntegralType(result_type) &&
         DataType::Size(result_type) <= DataType::Size(input_type);
 
@@ -1270,7 +1236,7 @@ void InstructionSimplifierVisitor::VisitTypeConversion(HTypeConversion* instruct
     }
   } else if (input->IsAnd() && DataType::IsIntegralType(result_type)) {
     DCHECK(DataType::IsIntegralType(input_type));
-    HAnd* input_and = input->AsAnd();
+    HAnd*      input_and = input->AsAnd();
     HConstant* constant = input_and->GetConstantRight();
     if (constant != nullptr) {
       int64_t value = Int64FromConstant(constant);
@@ -1326,9 +1292,9 @@ void InstructionSimplifierVisitor::VisitAbs(HAbs* instruction) {
 }
 
 void InstructionSimplifierVisitor::VisitAdd(HAdd* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
+  HConstant*    input_cst = instruction->GetConstantRight();
   HInstruction* input_other = instruction->GetLeastConstantLeft();
-  bool integral_type = DataType::IsIntegralType(instruction->GetType());
+  bool          integral_type = DataType::IsIntegralType(instruction->GetType());
   if ((input_cst != nullptr) && input_cst->IsArithmeticZero()) {
     // Replace code looking like
     //    ADD dst, src, 0
@@ -1347,8 +1313,8 @@ void InstructionSimplifierVisitor::VisitAdd(HAdd* instruction) {
 
   HInstruction* left = instruction->GetLeft();
   HInstruction* right = instruction->GetRight();
-  bool left_is_neg = left->IsNeg();
-  bool right_is_neg = right->IsNeg();
+  bool          left_is_neg = left->IsNeg();
+  bool          right_is_neg = right->IsNeg();
 
   if (left_is_neg && right_is_neg) {
     if (TryMoveNegOnInputsAfterBinop(instruction)) {
@@ -1368,8 +1334,8 @@ void InstructionSimplifierVisitor::VisitAdd(HAdd* instruction) {
     // particular, we do not want the live range of `b` to be extended if we are
     // not sure the initial 'NEG' instruction can be removed.
     HInstruction* other = left_is_neg ? right : left;
-    HSub* sub =
-        new(GetGraph()->GetAllocator()) HSub(instruction->GetType(), other, neg->GetInput());
+    HSub*         sub =
+        new (GetGraph()->GetAllocator()) HSub(instruction->GetType(), other, neg->GetInput());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, sub);
     RecordSimplification();
     neg->GetBlock()->RemoveInstruction(neg);
@@ -1384,8 +1350,7 @@ void InstructionSimplifierVisitor::VisitAdd(HAdd* instruction) {
   // so no need to return.
   TryHandleAssociativeAndCommutativeOperation(instruction);
 
-  if ((left->IsSub() || right->IsSub()) &&
-      TrySubtractionChainSimplification(instruction)) {
+  if ((left->IsSub() || right->IsSub()) && TrySubtractionChainSimplification(instruction)) {
     return;
   }
 
@@ -1413,7 +1378,7 @@ void InstructionSimplifierVisitor::VisitAdd(HAdd* instruction) {
 
 void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
   DCHECK(DataType::IsIntegralType(instruction->GetType()));
-  HConstant* input_cst = instruction->GetConstantRight();
+  HConstant*    input_cst = instruction->GetConstantRight();
   HInstruction* input_other = instruction->GetLeastConstantLeft();
 
   if (input_cst != nullptr) {
@@ -1431,10 +1396,8 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
       RecordSimplification();
       return;
     }
-    if (input_other->IsTypeConversion() &&
-        input_other->GetType() == DataType::Type::kInt64 &&
-        DataType::IsIntegralType(input_other->InputAt(0)->GetType()) &&
-        IsInt<32>(value) &&
+    if (input_other->IsTypeConversion() && input_other->GetType() == DataType::Type::kInt64 &&
+        DataType::IsIntegralType(input_other->InputAt(0)->GetType()) && IsInt<32>(value) &&
         input_other->HasOnlyOneNonEnvironmentUse()) {
       // The AND can be reordered before the TypeConversion. Replace
       //   LongConstant cst, <32-bit-constant-sign-extended-to-64-bits>
@@ -1450,7 +1413,7 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
       // Implicit conversion Int64->Int64 would have been removed previously.
       DCHECK_NE(new_and_input->GetType(), DataType::Type::kInt64);
       HConstant* new_const = GetGraph()->GetConstant(DataType::Type::kInt32, value);
-      HAnd* new_and =
+      HAnd*      new_and =
           new (GetGraph()->GetAllocator()) HAnd(DataType::Type::kInt32, new_and_input, new_const);
       instruction->GetBlock()->InsertInstructionBefore(new_and, instruction);
       HTypeConversion* new_conversion =
@@ -1475,8 +1438,8 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
         instruction->GetBlock()->RemoveInstruction(instruction);
         RecordSimplification();
         return;
-      }  else if ((num_tail_bits_set == reg_bits - shift) && IsPowerOfTwo(value + 1) &&
-          input_other->HasOnlyOneNonEnvironmentUse()) {
+      } else if ((num_tail_bits_set == reg_bits - shift) && IsPowerOfTwo(value + 1) &&
+                 input_other->HasOnlyOneNonEnvironmentUse()) {
         DCHECK(input_other->IsShr());  // For UShr, we would have taken the branch above.
         // Replace SHR+AND with USHR, for example "(x >> 24) & 0xff" -> "x >>> 24".
         HUShr* ushr = new (GetGraph()->GetAllocator()) HUShr(instruction->GetType(),
@@ -1495,8 +1458,7 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
       // of the Get+TypeConversion and change the Get's type to `new_type` instead.
       DataType::Type new_type = (value == 0xff) ? DataType::Type::kUint8 : DataType::Type::kUint16;
       DataType::Type find_type = (value == 0xff) ? DataType::Type::kInt8 : DataType::Type::kInt16;
-      if (input_other->GetType() == find_type &&
-          input_other->HasOnlyOneNonEnvironmentUse() &&
+      if (input_other->GetType() == find_type && input_other->HasOnlyOneNonEnvironmentUse() &&
           TryReplaceFieldOrArrayGetType(input_other, new_type)) {
         instruction->ReplaceWith(input_other);
         instruction->GetBlock()->RemoveInstruction(instruction);
@@ -1504,8 +1466,8 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
         instruction->ReplaceWith(input_other);
         instruction->GetBlock()->RemoveInstruction(instruction);
       } else {
-        HTypeConversion* type_conversion = new (GetGraph()->GetAllocator()) HTypeConversion(
-            new_type, input_other, instruction->GetDexPc());
+        HTypeConversion* type_conversion = new (GetGraph()->GetAllocator())
+            HTypeConversion(new_type, input_other, instruction->GetDexPc());
         instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, type_conversion);
       }
       RecordSimplification();
@@ -1574,9 +1536,8 @@ void InstructionSimplifierVisitor::VisitAboveOrEqual(HAboveOrEqual* condition) {
 static bool RecognizeAndSimplifyClassCheck(HCondition* condition) {
   HInstruction* input_one = condition->InputAt(0);
   HInstruction* input_two = condition->InputAt(1);
-  HLoadClass* load_class = input_one->IsLoadClass()
-      ? input_one->AsLoadClass()
-      : input_two->AsLoadClass();
+  HLoadClass*   load_class =
+      input_one->IsLoadClass() ? input_one->AsLoadClass() : input_two->AsLoadClass();
   if (load_class == nullptr) {
     return false;
   }
@@ -1587,14 +1548,13 @@ static bool RecognizeAndSimplifyClassCheck(HCondition* condition) {
     return false;
   }
 
-  HInstanceFieldGet* field_get = (load_class == input_one)
-      ? input_two->AsInstanceFieldGet()
-      : input_one->AsInstanceFieldGet();
+  HInstanceFieldGet* field_get =
+      (load_class == input_one) ? input_two->AsInstanceFieldGet() : input_one->AsInstanceFieldGet();
   if (field_get == nullptr) {
     return false;
   }
 
-  HInstruction* receiver = field_get->InputAt(0);
+  HInstruction*     receiver = field_get->InputAt(0);
   ReferenceTypeInfo receiver_type = receiver->GetReferenceTypeInfo();
   if (!receiver_type.IsExact()) {
     return false;
@@ -1602,7 +1562,7 @@ static bool RecognizeAndSimplifyClassCheck(HCondition* condition) {
 
   {
     ScopedObjectAccess soa(Thread::Current());
-    ArtField* field = GetClassRoot<mirror::Object>()->GetInstanceField(0);
+    ArtField*          field = GetClassRoot<mirror::Object>()->GetInstanceField(0);
     DCHECK_EQ(std::string(field->GetName()), "shadow$_klass_");
     if (field_get->GetFieldInfo().GetField() != field) {
       return false;
@@ -1631,7 +1591,7 @@ void InstructionSimplifierVisitor::VisitCondition(HCondition* condition) {
   // on the right hand side.
   if (condition->GetLeft()->IsConstant() && !condition->GetRight()->IsConstant()) {
     HBasicBlock* block = condition->GetBlock();
-    HCondition* replacement =
+    HCondition*  replacement =
         GetOppositeConditionSwapOps(block->GetGraph()->GetAllocator(), condition);
     // If it is a fp we must set the opposite bias.
     if (replacement != nullptr) {
@@ -1707,8 +1667,8 @@ static constexpr bool CanDivideByReciprocalMultiplyDouble(int64_t divisor) {
 }
 
 void InstructionSimplifierVisitor::VisitDiv(HDiv* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
-  HInstruction* input_other = instruction->GetLeastConstantLeft();
+  HConstant*     input_cst = instruction->GetConstantRight();
+  HInstruction*  input_other = instruction->GetLeastConstantLeft();
   DataType::Type type = instruction->GetType();
 
   if ((input_cst != nullptr) && input_cst->IsOne()) {
@@ -1761,12 +1721,11 @@ void InstructionSimplifierVisitor::VisitDiv(HDiv* instruction) {
   }
 }
 
-
 // Search HDiv having the specified dividend and divisor which is in the specified basic block.
 // Return nullptr if nothing has been found.
 static HInstruction* FindDivWithInputsInBasicBlock(HInstruction* dividend,
                                                    HInstruction* divisor,
-                                                   HBasicBlock* basic_block) {
+                                                   HBasicBlock*  basic_block) {
   for (const HUseListNode<HInstruction*>& use : dividend->GetUses()) {
     HInstruction* user = use.GetUser();
     if (user->GetBlock() == basic_block && user->IsDiv() && user->InputAt(1) == divisor) {
@@ -1790,7 +1749,7 @@ void InstructionSimplifierVisitor::TryToReuseDiv(HRem* rem) {
     return;
   }
 
-  HBasicBlock* basic_block = rem->GetBlock();
+  HBasicBlock*  basic_block = rem->GetBlock();
   HInstruction* dividend = rem->GetLeft();
   HInstruction* divisor = rem->GetRight();
 
@@ -1813,7 +1772,7 @@ void InstructionSimplifierVisitor::TryToReuseDiv(HRem* rem) {
   }
 
   ArenaAllocator* allocator = GetGraph()->GetAllocator();
-  HInstruction* mul = new (allocator) HMul(type, quotient, divisor);
+  HInstruction*   mul = new (allocator) HMul(type, quotient, divisor);
   basic_block->InsertInstructionBefore(mul, rem);
   HInstruction* sub = new (allocator) HSub(type, dividend, mul);
   basic_block->InsertInstructionBefore(sub, rem);
@@ -1827,10 +1786,10 @@ void InstructionSimplifierVisitor::VisitRem(HRem* rem) {
 }
 
 void InstructionSimplifierVisitor::VisitMul(HMul* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
-  HInstruction* input_other = instruction->GetLeastConstantLeft();
-  DataType::Type type = instruction->GetType();
-  HBasicBlock* block = instruction->GetBlock();
+  HConstant*      input_cst = instruction->GetConstantRight();
+  HInstruction*   input_other = instruction->GetLeastConstantLeft();
+  DataType::Type  type = instruction->GetType();
+  HBasicBlock*    block = instruction->GetBlock();
   ArenaAllocator* allocator = GetGraph()->GetAllocator();
 
   if (input_cst == nullptr) {
@@ -1893,7 +1852,7 @@ void InstructionSimplifierVisitor::VisitMul(HMul* instruction) {
       // with
       //    SHL dst, src, log2(pow_of_2)
       HIntConstant* shift = GetGraph()->GetIntConstant(WhichPowerOf2(factor));
-      HShl* shl = new (allocator) HShl(type, input_other, shift);
+      HShl*         shl = new (allocator) HShl(type, input_other, shift);
       block->ReplaceAndRemoveInstructionWith(instruction, shl);
       RecordSimplification();
       return;
@@ -1903,9 +1862,8 @@ void InstructionSimplifierVisitor::VisitMul(HMul* instruction) {
       // into
       //    SHL tmp, src, n
       //    ADD dst, src, tmp
-      HShl* shl = new (allocator) HShl(type,
-                                       input_other,
-                                       GetGraph()->GetIntConstant(WhichPowerOf2(factor - 1)));
+      HShl* shl = new (allocator)
+          HShl(type, input_other, GetGraph()->GetIntConstant(WhichPowerOf2(factor - 1)));
       HAdd* add = new (allocator) HAdd(type, input_other, shl);
 
       block->InsertInstructionBefore(shl, instruction);
@@ -1918,9 +1876,8 @@ void InstructionSimplifierVisitor::VisitMul(HMul* instruction) {
       // into
       //    SHL tmp, src, n
       //    SUB dst, tmp, src
-      HShl* shl = new (allocator) HShl(type,
-                                       input_other,
-                                       GetGraph()->GetIntConstant(WhichPowerOf2(factor + 1)));
+      HShl* shl = new (allocator)
+          HShl(type, input_other, GetGraph()->GetIntConstant(WhichPowerOf2(factor + 1)));
       HSub* sub = new (allocator) HSub(type, shl, input_other);
 
       block->InsertInstructionBefore(shl, instruction);
@@ -1970,8 +1927,8 @@ void InstructionSimplifierVisitor::VisitNeg(HNeg* instruction) {
     // removed.
     // We do not perform optimization for fp because we could lose the sign of zero.
     HSub* sub = input->AsSub();
-    HSub* new_sub = new (GetGraph()->GetAllocator()) HSub(
-        instruction->GetType(), sub->GetRight(), sub->GetLeft());
+    HSub* new_sub = new (GetGraph()->GetAllocator())
+        HSub(instruction->GetType(), sub->GetRight(), sub->GetLeft());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, new_sub);
     if (!sub->HasUses()) {
       sub->GetBlock()->RemoveInstruction(sub);
@@ -2002,7 +1959,7 @@ void InstructionSimplifierVisitor::VisitNot(HNot* instruction) {
 }
 
 void InstructionSimplifierVisitor::VisitOr(HOr* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
+  HConstant*    input_cst = instruction->GetConstantRight();
   HInstruction* input_other = instruction->GetLeastConstantLeft();
 
   if ((input_cst != nullptr) && input_cst->IsZeroBitPattern()) {
@@ -2030,7 +1987,8 @@ void InstructionSimplifierVisitor::VisitOr(HOr* instruction) {
     return;
   }
 
-  if (TryDeMorganNegationFactoring(instruction)) return;
+  if (TryDeMorganNegationFactoring(instruction))
+    return;
 
   if (TryReplaceWithRotate(instruction)) {
     return;
@@ -2050,7 +2008,7 @@ void InstructionSimplifierVisitor::VisitShr(HShr* instruction) {
 }
 
 void InstructionSimplifierVisitor::VisitSub(HSub* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
+  HConstant*    input_cst = instruction->GetConstantRight();
   HInstruction* input_other = instruction->GetLeastConstantLeft();
 
   DataType::Type type = instruction->GetType();
@@ -2072,7 +2030,7 @@ void InstructionSimplifierVisitor::VisitSub(HSub* instruction) {
     return;
   }
 
-  HBasicBlock* block = instruction->GetBlock();
+  HBasicBlock*    block = instruction->GetBlock();
   ArenaAllocator* allocator = GetGraph()->GetAllocator();
 
   HInstruction* left = instruction->GetLeft();
@@ -2105,7 +2063,7 @@ void InstructionSimplifierVisitor::VisitSub(HSub* instruction) {
     //    SUB dst, a, tmp
     // with
     //    ADD dst, a, b
-    HAdd* add = new(GetGraph()->GetAllocator()) HAdd(type, left, right->AsNeg()->GetInput());
+    HAdd* add = new (GetGraph()->GetAllocator()) HAdd(type, left, right->AsNeg()->GetInput());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, add);
     RecordSimplification();
     right->GetBlock()->RemoveInstruction(right);
@@ -2121,7 +2079,7 @@ void InstructionSimplifierVisitor::VisitSub(HSub* instruction) {
     //    NEG dst, tmp
     // The second version is not intrinsically better, but enables more
     // transformations.
-    HAdd* add = new(GetGraph()->GetAllocator()) HAdd(type, left->AsNeg()->GetInput(), right);
+    HAdd* add = new (GetGraph()->GetAllocator()) HAdd(type, left->AsNeg()->GetInput(), right);
     instruction->GetBlock()->InsertInstructionBefore(add, instruction);
     HNeg* neg = new (GetGraph()->GetAllocator()) HNeg(instruction->GetType(), add);
     instruction->GetBlock()->InsertInstructionBefore(neg, instruction);
@@ -2165,7 +2123,7 @@ void InstructionSimplifierVisitor::VisitUShr(HUShr* instruction) {
 }
 
 void InstructionSimplifierVisitor::VisitXor(HXor* instruction) {
-  HConstant* input_cst = instruction->GetConstantRight();
+  HConstant*    input_cst = instruction->GetConstantRight();
   HInstruction* input_other = instruction->GetLeastConstantLeft();
 
   if ((input_cst != nullptr) && input_cst->IsZeroBitPattern()) {
@@ -2179,8 +2137,8 @@ void InstructionSimplifierVisitor::VisitXor(HXor* instruction) {
     return;
   }
 
-  if ((input_cst != nullptr) && input_cst->IsOne()
-      && input_other->GetType() == DataType::Type::kBool) {
+  if ((input_cst != nullptr) && input_cst->IsOne() &&
+      input_other->GetType() == DataType::Type::kBool) {
     // Replace code looking like
     //    XOR dst, src, 1
     // with
@@ -2204,10 +2162,8 @@ void InstructionSimplifierVisitor::VisitXor(HXor* instruction) {
 
   HInstruction* left = instruction->GetLeft();
   HInstruction* right = instruction->GetRight();
-  if (((left->IsNot() && right->IsNot()) ||
-       (left->IsBooleanNot() && right->IsBooleanNot())) &&
-      left->HasOnlyOneNonEnvironmentUse() &&
-      right->HasOnlyOneNonEnvironmentUse()) {
+  if (((left->IsNot() && right->IsNot()) || (left->IsBooleanNot() && right->IsBooleanNot())) &&
+      left->HasOnlyOneNonEnvironmentUse() && right->HasOnlyOneNonEnvironmentUse()) {
     // Replace code looking like
     //    NOT nota, a
     //    NOT notb, b
@@ -2248,7 +2204,7 @@ void InstructionSimplifierVisitor::SimplifyStringEquals(HInvoke* instruction) {
       optimizations.SetArgumentNotNull();
     }
     ScopedObjectAccess soa(Thread::Current());
-    ReferenceTypeInfo argument_rti = argument->GetReferenceTypeInfo();
+    ReferenceTypeInfo  argument_rti = argument->GetReferenceTypeInfo();
     if (argument_rti.IsValid() && argument_rti.IsStringClass()) {
       optimizations.SetArgumentIsString();
     }
@@ -2268,9 +2224,9 @@ static bool IsArrayLengthOf(HInstruction* potential_length, HInstruction* potent
 }
 
 void InstructionSimplifierVisitor::SimplifySystemArrayCopy(HInvoke* instruction) {
-  HInstruction* source = instruction->InputAt(0);
-  HInstruction* destination = instruction->InputAt(2);
-  HInstruction* count = instruction->InputAt(4);
+  HInstruction*                source = instruction->InputAt(0);
+  HInstruction*                destination = instruction->InputAt(2);
+  HInstruction*                count = instruction->InputAt(4);
   SystemArrayCopyOptimizations optimizations(instruction);
   if (CanEnsureNotNullAt(source, instruction)) {
     optimizations.SetSourceIsNotNull();
@@ -2292,9 +2248,9 @@ void InstructionSimplifierVisitor::SimplifySystemArrayCopy(HInvoke* instruction)
 
   {
     ScopedObjectAccess soa(Thread::Current());
-    DataType::Type source_component_type = DataType::Type::kVoid;
-    DataType::Type destination_component_type = DataType::Type::kVoid;
-    ReferenceTypeInfo destination_rti = destination->GetReferenceTypeInfo();
+    DataType::Type     source_component_type = DataType::Type::kVoid;
+    DataType::Type     destination_component_type = DataType::Type::kVoid;
+    ReferenceTypeInfo  destination_rti = destination->GetReferenceTypeInfo();
     if (destination_rti.IsValid()) {
       if (destination_rti.IsObjectArray()) {
         if (destination_rti.IsExact()) {
@@ -2326,11 +2282,11 @@ void InstructionSimplifierVisitor::SimplifySystemArrayCopy(HInvoke* instruction)
     // For primitive arrays, use their optimized ArtMethod implementations.
     if ((source_component_type != DataType::Type::kVoid) &&
         (source_component_type == destination_component_type)) {
-      ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-      PointerSize image_size = class_linker->GetImagePointerSize();
+      ClassLinker*           class_linker = Runtime::Current()->GetClassLinker();
+      PointerSize            image_size = class_linker->GetImagePointerSize();
       HInvokeStaticOrDirect* invoke = instruction->AsInvokeStaticOrDirect();
-      ObjPtr<mirror::Class> system = invoke->GetResolvedMethod()->GetDeclaringClass();
-      ArtMethod* method = nullptr;
+      ObjPtr<mirror::Class>  system = invoke->GetResolvedMethod()->GetDeclaringClass();
+      ArtMethod*             method = nullptr;
       switch (source_component_type) {
         case DataType::Type::kBool:
           method = system->FindClassMethod("arraycopy", "([ZI[ZII)V", image_size);
@@ -2356,8 +2312,7 @@ void InstructionSimplifierVisitor::SimplifySystemArrayCopy(HInvoke* instruction)
         case DataType::Type::kFloat64:
           method = system->FindClassMethod("arraycopy", "([DI[DII)V", image_size);
           break;
-        default:
-          LOG(FATAL) << "Unreachable";
+        default: LOG(FATAL) << "Unreachable";
       }
       DCHECK(method != nullptr);
       DCHECK(method->IsStatic());
@@ -2367,35 +2322,30 @@ void InstructionSimplifierVisitor::SimplifySystemArrayCopy(HInvoke* instruction)
       // the invoke, as we would need to look it up in the current dex file, and it
       // is unlikely that it exists. The most usual situation for such typed
       // arraycopy methods is a direct pointer to the boot image.
-      invoke->SetDispatchInfo(HSharpening::SharpenLoadMethod(
-          method,
-          /* has_method_id= */ true,
-          /* for_interface_call= */ false,
-          codegen_));
+      invoke->SetDispatchInfo(HSharpening::SharpenLoadMethod(method,
+                                                             /* has_method_id= */ true,
+                                                             /* for_interface_call= */ false,
+                                                             codegen_));
     }
   }
 }
 
 void InstructionSimplifierVisitor::SimplifyFP2Int(HInvoke* invoke) {
   DCHECK(invoke->IsInvokeStaticOrDirect());
-  uint32_t dex_pc = invoke->GetDexPc();
-  HInstruction* x = invoke->InputAt(0);
+  uint32_t       dex_pc = invoke->GetDexPc();
+  HInstruction*  x = invoke->InputAt(0);
   DataType::Type type = x->GetType();
   // Set proper bit pattern for NaN and replace intrinsic with raw version.
-  HInstruction* nan;
+  HInstruction*  nan;
   if (type == DataType::Type::kFloat64) {
     nan = GetGraph()->GetLongConstant(0x7ff8000000000000L);
-    invoke->SetIntrinsic(Intrinsics::kDoubleDoubleToRawLongBits,
-                         kNeedsEnvironment,
-                         kNoSideEffects,
-                         kNoThrow);
+    invoke->SetIntrinsic(
+        Intrinsics::kDoubleDoubleToRawLongBits, kNeedsEnvironment, kNoSideEffects, kNoThrow);
   } else {
     DCHECK_EQ(type, DataType::Type::kFloat32);
     nan = GetGraph()->GetIntConstant(0x7fc00000);
-    invoke->SetIntrinsic(Intrinsics::kFloatFloatToRawIntBits,
-                         kNeedsEnvironment,
-                         kNoSideEffects,
-                         kNoThrow);
+    invoke->SetIntrinsic(
+        Intrinsics::kFloatFloatToRawIntBits, kNeedsEnvironment, kNoSideEffects, kNoThrow);
   }
   // Test IsNaN(x), which is the same as x != x.
   HCondition* condition = new (GetGraph()->GetAllocator()) HNotEqual(x, x, dex_pc);
@@ -2408,16 +2358,16 @@ void InstructionSimplifierVisitor::SimplifyFP2Int(HInvoke* invoke) {
 }
 
 void InstructionSimplifierVisitor::SimplifyStringCharAt(HInvoke* invoke) {
-  HInstruction* str = invoke->InputAt(0);
-  HInstruction* index = invoke->InputAt(1);
-  uint32_t dex_pc = invoke->GetDexPc();
+  HInstruction*   str = invoke->InputAt(0);
+  HInstruction*   index = invoke->InputAt(1);
+  uint32_t        dex_pc = invoke->GetDexPc();
   ArenaAllocator* allocator = GetGraph()->GetAllocator();
   // We treat String as an array to allow DCE and BCE to seamlessly work on strings,
   // so create the HArrayLength, HBoundsCheck and HArrayGet.
-  HArrayLength* length = new (allocator) HArrayLength(str, dex_pc, /* is_string_length= */ true);
+  HArrayLength*   length = new (allocator) HArrayLength(str, dex_pc, /* is_string_length= */ true);
   invoke->GetBlock()->InsertInstructionBefore(length, invoke);
-  HBoundsCheck* bounds_check = new (allocator) HBoundsCheck(
-      index, length, dex_pc, /* is_string_char_at= */ true);
+  HBoundsCheck* bounds_check =
+      new (allocator) HBoundsCheck(index, length, dex_pc, /* is_string_char_at= */ true);
   invoke->GetBlock()->InsertInstructionBefore(bounds_check, invoke);
   HArrayGet* array_get = new (allocator) HArrayGet(str,
                                                    bounds_check,
@@ -2432,7 +2382,7 @@ void InstructionSimplifierVisitor::SimplifyStringCharAt(HInvoke* invoke) {
 
 void InstructionSimplifierVisitor::SimplifyStringLength(HInvoke* invoke) {
   HInstruction* str = invoke->InputAt(0);
-  uint32_t dex_pc = invoke->GetDexPc();
+  uint32_t      dex_pc = invoke->GetDexPc();
   // We treat String as an array to allow DCE and BCE to seamlessly work on strings,
   // so create the HArrayLength.
   HArrayLength* length =
@@ -2444,10 +2394,10 @@ void InstructionSimplifierVisitor::SimplifyStringIndexOf(HInvoke* invoke) {
   DCHECK(invoke->GetIntrinsic() == Intrinsics::kStringIndexOf ||
          invoke->GetIntrinsic() == Intrinsics::kStringIndexOfAfter);
   if (invoke->InputAt(0)->IsLoadString()) {
-    HLoadString* load_string = invoke->InputAt(0)->AsLoadString();
+    HLoadString*   load_string = invoke->InputAt(0)->AsLoadString();
     const DexFile& dex_file = load_string->GetDexFile();
-    uint32_t utf16_length;
-    const char* data =
+    uint32_t       utf16_length;
+    const char*    data =
         dex_file.StringDataAndUtf16LengthByIdx(load_string->GetStringIndex(), &utf16_length);
     if (utf16_length == 0) {
       invoke->ReplaceWith(GetGraph()->GetIntConstant(-1));
@@ -2461,15 +2411,13 @@ void InstructionSimplifierVisitor::SimplifyStringIndexOf(HInvoke* invoke) {
       uint32_t c = GetUtf16FromUtf8(&data);
       DCHECK_EQ(GetTrailingUtf16Char(c), 0u);
       DCHECK_EQ(GetLeadingUtf16Char(c), c);
-      uint32_t dex_pc = invoke->GetDexPc();
+      uint32_t        dex_pc = invoke->GetDexPc();
       ArenaAllocator* allocator = GetGraph()->GetAllocator();
-      HEqual* equal =
+      HEqual*         equal =
           new (allocator) HEqual(invoke->InputAt(1), GetGraph()->GetIntConstant(c), dex_pc);
       invoke->GetBlock()->InsertInstructionBefore(equal, invoke);
-      HSelect* result = new (allocator) HSelect(equal,
-                                                GetGraph()->GetIntConstant(0),
-                                                GetGraph()->GetIntConstant(-1),
-                                                dex_pc);
+      HSelect* result = new (allocator)
+          HSelect(equal, GetGraph()->GetIntConstant(0), GetGraph()->GetIntConstant(-1), dex_pc);
       invoke->GetBlock()->ReplaceAndRemoveInstructionWith(invoke, result);
       RecordSimplification();
       return;
@@ -2506,16 +2454,13 @@ static bool NoEscapeForStringBufferReference(HInstruction* reference, HInstructi
   } else if (user->IsInvokeVirtual()) {
     switch (user->AsInvokeVirtual()->GetIntrinsic()) {
       case Intrinsics::kStringBufferLength:
-      case Intrinsics::kStringBufferToString:
-        DCHECK_EQ(user->InputAt(0), reference);
-        return true;
+      case Intrinsics::kStringBufferToString: DCHECK_EQ(user->InputAt(0), reference); return true;
       case Intrinsics::kStringBufferAppend:
         // Returns "this", so only okay if no further uses.
         DCHECK_EQ(user->InputAt(0), reference);
         DCHECK_NE(user->InputAt(1), reference);
         return !user->HasUses();
-      default:
-        break;
+      default: break;
     }
   }
   return false;
@@ -2527,7 +2472,7 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
     return false;
   }
 
-  HBasicBlock* block = invoke->GetBlock();
+  HBasicBlock*  block = invoke->GetBlock();
   HInstruction* sb = invoke->InputAt(0);
 
   // We support only a new StringBuilder, otherwise we cannot ensure that
@@ -2551,11 +2496,11 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
   // Collect args and check for unexpected uses.
   // We expect one call to a constructor with no arguments, one constructor fence (unless
   // eliminated), some number of append calls and one call to StringBuilder.toString().
-  bool seen_constructor = false;
-  bool seen_constructor_fence = false;
-  bool seen_to_string = false;
-  uint32_t format = 0u;
-  uint32_t num_args = 0u;
+  bool          seen_constructor = false;
+  bool          seen_constructor_fence = false;
+  bool          seen_to_string = false;
+  uint32_t      format = 0u;
+  uint32_t      num_args = 0u;
   HInstruction* args[StringBuilderAppend::kMaxArgs];  // Added in reverse order.
   for (HBackwardInstructionIterator iter(block->GetInstructions()); !iter.Done(); iter.Advance()) {
     HInstruction* user = iter.Current();
@@ -2595,9 +2540,7 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
         case Intrinsics::kStringBuilderAppendChar:
           arg = StringBuilderAppend::Argument::kChar;
           break;
-        case Intrinsics::kStringBuilderAppendInt:
-          arg = StringBuilderAppend::Argument::kInt;
-          break;
+        case Intrinsics::kStringBuilderAppendInt: arg = StringBuilderAppend::Argument::kInt; break;
         case Intrinsics::kStringBuilderAppendLong:
           arg = StringBuilderAppend::Argument::kLong;
           break;
@@ -2606,7 +2549,7 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
           if (!rti.IsValid()) {
             return false;
           }
-          ScopedObjectAccess soa(Thread::Current());
+          ScopedObjectAccess    soa(Thread::Current());
           Handle<mirror::Class> input_type = rti.GetTypeHandle();
           DCHECK(input_type != nullptr);
           if (input_type.Get() == GetClassRoot<mirror::String>()) {
@@ -2674,8 +2617,8 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
   }
 
   // Create replacement instruction.
-  HIntConstant* fmt = block->GetGraph()->GetIntConstant(static_cast<int32_t>(format));
-  ArenaAllocator* allocator = block->GetGraph()->GetAllocator();
+  HIntConstant*         fmt = block->GetGraph()->GetIntConstant(static_cast<int32_t>(format));
+  ArenaAllocator*       allocator = block->GetGraph()->GetAllocator();
   HStringBuilderAppend* append =
       new (allocator) HStringBuilderAppend(fmt, num_args, allocator, invoke->GetDexPc());
   append->SetReferenceTypeInfo(invoke->GetReferenceTypeInfo());
@@ -2691,7 +2634,7 @@ static bool TryReplaceStringBuilderAppend(HInvoke* invoke) {
     for (size_t i = 0, size = env->Size(); i != size; ++i) {
       if (env->GetInstructionAt(i) == sb) {
         env->RemoveAsUserOfInput(i);
-        env->SetRawEnvAt(i, /*instruction=*/ nullptr);
+        env->SetRawEnvAt(i, /*instruction=*/nullptr);
       }
     }
   }
@@ -2715,7 +2658,7 @@ void InstructionSimplifierVisitor::SimplifyAllocationIntrinsic(HInvoke* invoke) 
     // Instruction has no uses. If unsynchronized, we can remove right away, safely ignoring
     // the potential OOM of course. Otherwise, we must ensure the receiver object of this
     // call does not escape since only thread-local synchronization may be removed.
-    bool is_synchronized = invoke->GetIntrinsic() == Intrinsics::kStringBufferToString;
+    bool          is_synchronized = invoke->GetIntrinsic() == Intrinsics::kStringBufferToString;
     HInstruction* receiver = invoke->InputAt(0);
     if (!is_synchronized || DoesNotEscape(receiver, NoEscapeForStringBufferReference)) {
       invoke->GetBlock()->RemoveInstruction(invoke);
@@ -2729,16 +2672,10 @@ void InstructionSimplifierVisitor::SimplifyAllocationIntrinsic(HInvoke* invoke) 
 
 void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
   switch (instruction->GetIntrinsic()) {
-    case Intrinsics::kStringEquals:
-      SimplifyStringEquals(instruction);
-      break;
-    case Intrinsics::kSystemArrayCopy:
-      SimplifySystemArrayCopy(instruction);
-      break;
+    case Intrinsics::kStringEquals: SimplifyStringEquals(instruction); break;
+    case Intrinsics::kSystemArrayCopy: SimplifySystemArrayCopy(instruction); break;
     case Intrinsics::kFloatFloatToIntBits:
-    case Intrinsics::kDoubleDoubleToLongBits:
-      SimplifyFP2Int(instruction);
-      break;
+    case Intrinsics::kDoubleDoubleToLongBits: SimplifyFP2Int(instruction); break;
     case Intrinsics::kStringCharAt:
       // Instruction builder creates intermediate representation directly
       // but the inliner can sharpen CharSequence.charAt() to String.charAt().
@@ -2750,9 +2687,7 @@ void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
       SimplifyStringLength(instruction);
       break;
     case Intrinsics::kStringIndexOf:
-    case Intrinsics::kStringIndexOfAfter:
-      SimplifyStringIndexOf(instruction);
-      break;
+    case Intrinsics::kStringIndexOfAfter: SimplifyStringIndexOf(instruction); break;
     case Intrinsics::kStringStringIndexOf:
     case Intrinsics::kStringStringIndexOfAfter:
       SimplifyNPEOnArgN(instruction, 1);  // 0th has own NullCheck
@@ -2767,13 +2702,9 @@ void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
     case Intrinsics::kStringBuilderAppendInt:
     case Intrinsics::kStringBuilderAppendLong:
     case Intrinsics::kStringBuilderAppendFloat:
-    case Intrinsics::kStringBuilderAppendDouble:
-      SimplifyReturnThis(instruction);
-      break;
+    case Intrinsics::kStringBuilderAppendDouble: SimplifyReturnThis(instruction); break;
     case Intrinsics::kStringBufferToString:
-    case Intrinsics::kStringBuilderToString:
-      SimplifyAllocationIntrinsic(instruction);
-      break;
+    case Intrinsics::kStringBuilderToString: SimplifyAllocationIntrinsic(instruction); break;
     case Intrinsics::kIntegerRotateRight:
     case Intrinsics::kLongRotateRight:
     case Intrinsics::kIntegerRotateLeft:
@@ -2808,8 +2739,7 @@ void InstructionSimplifierVisitor::VisitInvoke(HInvoke* instruction) {
       // These are replaced by intermediate representation in the instruction builder.
       LOG(FATAL) << "Unexpected " << static_cast<Intrinsics>(instruction->GetIntrinsic());
       UNREACHABLE();
-    default:
-      break;
+    default: break;
   }
 }
 
@@ -2842,10 +2772,10 @@ bool InstructionSimplifierVisitor::TryHandleAssociativeAndCommutativeOperation(
     return false;
   }
 
-  HInstruction* left = instruction->GetLeft();
-  HInstruction* right = instruction->GetRight();
+  HInstruction*     left = instruction->GetLeft();
+  HInstruction*     right = instruction->GetRight();
   // Variable names as described above.
-  HConstant* const2;
+  HConstant*        const2;
   HBinaryOperation* y;
 
   if (instruction->GetKind() == left->GetKind() && right->IsConstant()) {
@@ -2923,14 +2853,13 @@ bool InstructionSimplifierVisitor::TrySubtractionChainSimplification(
   HInstruction* left = instruction->GetLeft();
   HInstruction* right = instruction->GetRight();
   // Variable names as described above.
-  HConstant* const2 = right->IsConstant() ? right->AsConstant() : left->AsConstant();
+  HConstant*    const2 = right->IsConstant() ? right->AsConstant() : left->AsConstant();
   if (const2 == nullptr) {
     return false;
   }
 
-  HBinaryOperation* y = (AsAddOrSub(left) != nullptr)
-      ? left->AsBinaryOperation()
-      : AsAddOrSub(right);
+  HBinaryOperation* y =
+      (AsAddOrSub(left) != nullptr) ? left->AsBinaryOperation() : AsAddOrSub(right);
   // If y has more than one use, we do not perform the optimization because
   // it might increase code size (e.g. if the new constant is no longer
   // encodable as an immediate operand in the target ISA).
@@ -2950,18 +2879,18 @@ bool InstructionSimplifierVisitor::TrySubtractionChainSimplification(
     return false;
   }
 
-  bool is_const2_negated = (const2 == right) && instruction->IsSub();
+  bool    is_const2_negated = (const2 == right) && instruction->IsSub();
   int64_t const2_val = GetValue(const2, is_const2_negated);
-  bool is_y_negated = (y == right) && instruction->IsSub();
+  bool    is_y_negated = (y == right) && instruction->IsSub();
   right = y->GetRight();
-  bool is_const1_negated = is_y_negated ^ ((const1 == right) && y->IsSub());
-  int64_t const1_val = GetValue(const1, is_const1_negated);
-  bool is_x_negated = is_y_negated ^ ((x == right) && y->IsSub());
-  int64_t const3_val = ComputeAddition(type, const1_val, const2_val);
-  HBasicBlock* block = instruction->GetBlock();
-  HConstant* const3 = block->GetGraph()->GetConstant(type, const3_val);
+  bool            is_const1_negated = is_y_negated ^ ((const1 == right) && y->IsSub());
+  int64_t         const1_val = GetValue(const1, is_const1_negated);
+  bool            is_x_negated = is_y_negated ^ ((x == right) && y->IsSub());
+  int64_t         const3_val = ComputeAddition(type, const1_val, const2_val);
+  HBasicBlock*    block = instruction->GetBlock();
+  HConstant*      const3 = block->GetGraph()->GetConstant(type, const3_val);
   ArenaAllocator* allocator = instruction->GetAllocator();
-  HInstruction* z;
+  HInstruction*   z;
 
   if (is_x_negated) {
     z = new (allocator) HSub(type, const3, x, instruction->GetDexPc());

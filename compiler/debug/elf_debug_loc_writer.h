@@ -34,16 +34,11 @@ using Reg = dwarf::Reg;
 static Reg GetDwarfCoreReg(InstructionSet isa, int machine_reg) {
   switch (isa) {
     case InstructionSet::kArm:
-    case InstructionSet::kThumb2:
-      return Reg::ArmCore(machine_reg);
-    case InstructionSet::kArm64:
-      return Reg::Arm64Core(machine_reg);
-    case InstructionSet::kX86:
-      return Reg::X86Core(machine_reg);
-    case InstructionSet::kX86_64:
-      return Reg::X86_64Core(machine_reg);
-    case InstructionSet::kNone:
-      LOG(FATAL) << "No instruction set";
+    case InstructionSet::kThumb2: return Reg::ArmCore(machine_reg);
+    case InstructionSet::kArm64: return Reg::Arm64Core(machine_reg);
+    case InstructionSet::kX86: return Reg::X86Core(machine_reg);
+    case InstructionSet::kX86_64: return Reg::X86_64Core(machine_reg);
+    case InstructionSet::kNone: LOG(FATAL) << "No instruction set";
   }
   UNREACHABLE();
 }
@@ -51,25 +46,20 @@ static Reg GetDwarfCoreReg(InstructionSet isa, int machine_reg) {
 static Reg GetDwarfFpReg(InstructionSet isa, int machine_reg) {
   switch (isa) {
     case InstructionSet::kArm:
-    case InstructionSet::kThumb2:
-      return Reg::ArmFp(machine_reg);
-    case InstructionSet::kArm64:
-      return Reg::Arm64Fp(machine_reg);
-    case InstructionSet::kX86:
-      return Reg::X86Fp(machine_reg);
-    case InstructionSet::kX86_64:
-      return Reg::X86_64Fp(machine_reg);
-    case InstructionSet::kNone:
-      LOG(FATAL) << "No instruction set";
+    case InstructionSet::kThumb2: return Reg::ArmFp(machine_reg);
+    case InstructionSet::kArm64: return Reg::Arm64Fp(machine_reg);
+    case InstructionSet::kX86: return Reg::X86Fp(machine_reg);
+    case InstructionSet::kX86_64: return Reg::X86_64Fp(machine_reg);
+    case InstructionSet::kNone: LOG(FATAL) << "No instruction set";
   }
   UNREACHABLE();
 }
 
 struct VariableLocation {
-  uint32_t low_pc;  // Relative to compilation unit.
-  uint32_t high_pc;  // Relative to compilation unit.
-  DexRegisterLocation reg_lo;  // May be None if the location is unknown.
-  DexRegisterLocation reg_hi;  // Most significant bits of 64-bit value.
+  uint32_t            low_pc;   // Relative to compilation unit.
+  uint32_t            high_pc;  // Relative to compilation unit.
+  DexRegisterLocation reg_lo;   // May be None if the location is unknown.
+  DexRegisterLocation reg_hi;   // Most significant bits of 64-bit value.
 };
 
 // Get the location of given dex register (e.g. stack or machine register).
@@ -78,19 +68,19 @@ struct VariableLocation {
 // PCs corresponding to stackmap with dex register map are accurate,
 // all other PCs are best-effort only.
 static std::vector<VariableLocation> GetVariableLocations(
-    const MethodDebugInfo* method_info,
+    const MethodDebugInfo*             method_info,
     const std::vector<DexRegisterMap>& dex_register_maps,
-    uint16_t vreg,
-    bool is64bitValue,
-    uint64_t compilation_unit_code_address,
-    uint32_t dex_pc_low,
-    uint32_t dex_pc_high,
-    InstructionSet isa) {
+    uint16_t                           vreg,
+    bool                               is64bitValue,
+    uint64_t                           compilation_unit_code_address,
+    uint32_t                           dex_pc_low,
+    uint32_t                           dex_pc_high,
+    InstructionSet                     isa) {
   std::vector<VariableLocation> variable_locations;
 
   // Get stack maps sorted by pc (they might not be sorted internally).
   // TODO(dsrbecky) Remove this once stackmaps get sorted by pc.
-  const CodeInfo code_info(method_info->code_info);
+  const CodeInfo               code_info(method_info->code_info);
   std::map<uint32_t, uint32_t> stack_maps;  // low_pc -> stack_map_index.
   for (uint32_t s = 0; s < code_info.GetNumberOfStackMaps(); s++) {
     StackMap stack_map = code_info.GetStackMapAt(s);
@@ -106,8 +96,8 @@ static std::vector<VariableLocation> GetVariableLocations(
     const uint32_t pc_offset = stack_map.GetNativePcOffset(isa);
     DCHECK_LE(pc_offset, method_info->code_size);
     DCHECK_LE(compilation_unit_code_address, method_info->code_address);
-    const uint32_t low_pc = dchecked_integral_cast<uint32_t>(
-        method_info->code_address + pc_offset - compilation_unit_code_address);
+    const uint32_t low_pc = dchecked_integral_cast<uint32_t>(method_info->code_address + pc_offset -
+                                                             compilation_unit_code_address);
     stack_maps.emplace(low_pc, s);
   }
 
@@ -116,11 +106,12 @@ static std::vector<VariableLocation> GetVariableLocations(
     const uint32_t low_pc = it->first;
     const uint32_t stack_map_index = it->second;
     const StackMap stack_map = code_info.GetStackMapAt(stack_map_index);
-    auto next_it = it;
+    auto           next_it = it;
     next_it++;
-    const uint32_t high_pc = next_it != stack_maps.end()
-      ? next_it->first
-      : method_info->code_address + method_info->code_size - compilation_unit_code_address;
+    const uint32_t high_pc =
+        next_it != stack_maps.end()
+            ? next_it->first
+            : method_info->code_address + method_info->code_size - compilation_unit_code_address;
     DCHECK_LE(low_pc, high_pc);
     if (low_pc == high_pc) {
       continue;  // Ignore if the address range is empty.
@@ -147,10 +138,8 @@ static std::vector<VariableLocation> GetVariableLocations(
     }
 
     // Add location entry for this address range.
-    if (!variable_locations.empty() &&
-        variable_locations.back().reg_lo == reg_lo &&
-        variable_locations.back().reg_hi == reg_hi &&
-        variable_locations.back().high_pc == low_pc) {
+    if (!variable_locations.empty() && variable_locations.back().reg_lo == reg_lo &&
+        variable_locations.back().reg_hi == reg_hi && variable_locations.back().high_pc == low_pc) {
       // Merge with the previous entry (extend its range).
       variable_locations.back().high_pc = high_pc;
     } else {
@@ -164,65 +153,63 @@ static std::vector<VariableLocation> GetVariableLocations(
 // Write table into .debug_loc which describes location of dex register.
 // The dex register might be valid only at some points and it might
 // move between machine registers and stack.
-static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
+static void WriteDebugLocEntry(const MethodDebugInfo*             method_info,
                                const std::vector<DexRegisterMap>& dex_register_maps,
-                               uint16_t vreg,
-                               bool is64bitValue,
-                               uint64_t compilation_unit_code_address,
-                               uint32_t dex_pc_low,
-                               uint32_t dex_pc_high,
-                               InstructionSet isa,
-                               dwarf::DebugInfoEntryWriter<>* debug_info,
-                               std::vector<uint8_t>* debug_loc_buffer,
-                               std::vector<uint8_t>* debug_ranges_buffer) {
+                               uint16_t                           vreg,
+                               bool                               is64bitValue,
+                               uint64_t                           compilation_unit_code_address,
+                               uint32_t                           dex_pc_low,
+                               uint32_t                           dex_pc_high,
+                               InstructionSet                     isa,
+                               dwarf::DebugInfoEntryWriter<>*     debug_info,
+                               std::vector<uint8_t>*              debug_loc_buffer,
+                               std::vector<uint8_t>*              debug_ranges_buffer) {
   using Kind = DexRegisterLocation::Kind;
   if (method_info->code_info == nullptr || dex_register_maps.empty()) {
     return;
   }
 
-  std::vector<VariableLocation> variable_locations = GetVariableLocations(
-      method_info,
-      dex_register_maps,
-      vreg,
-      is64bitValue,
-      compilation_unit_code_address,
-      dex_pc_low,
-      dex_pc_high,
-      isa);
+  std::vector<VariableLocation> variable_locations =
+      GetVariableLocations(method_info,
+                           dex_register_maps,
+                           vreg,
+                           is64bitValue,
+                           compilation_unit_code_address,
+                           dex_pc_low,
+                           dex_pc_high,
+                           isa);
 
   // Write .debug_loc entries.
-  dwarf::Writer<> debug_loc(debug_loc_buffer);
-  const size_t debug_loc_offset = debug_loc.size();
-  const bool is64bit = Is64BitInstructionSet(isa);
+  dwarf::Writer<>      debug_loc(debug_loc_buffer);
+  const size_t         debug_loc_offset = debug_loc.size();
+  const bool           is64bit = Is64BitInstructionSet(isa);
   std::vector<uint8_t> expr_buffer;
   for (const VariableLocation& variable_location : variable_locations) {
     // Translate dex register location to DWARF expression.
     // Note that 64-bit value might be split to two distinct locations.
     // (for example, two 32-bit machine registers, or even stack and register)
-    dwarf::Expression expr(&expr_buffer);
+    dwarf::Expression   expr(&expr_buffer);
     DexRegisterLocation reg_lo = variable_location.reg_lo;
     DexRegisterLocation reg_hi = variable_location.reg_hi;
     for (int piece = 0; piece < (is64bitValue ? 2 : 1); piece++) {
       DexRegisterLocation reg_loc = (piece == 0 ? reg_lo : reg_hi);
-      const Kind kind = reg_loc.GetKind();
-      const int32_t value = reg_loc.GetValue();
+      const Kind          kind = reg_loc.GetKind();
+      const int32_t       value = reg_loc.GetValue();
       if (kind == Kind::kInStack) {
         // The stack offset is relative to SP. Make it relative to CFA.
         expr.WriteOpFbreg(value - method_info->frame_size_in_bytes);
-        if (piece == 0 && reg_hi.GetKind() == Kind::kInStack &&
-            reg_hi.GetValue() == value + 4) {
+        if (piece == 0 && reg_hi.GetKind() == Kind::kInStack && reg_hi.GetValue() == value + 4) {
           break;  // the high word is correctly implied by the low word.
         }
       } else if (kind == Kind::kInRegister) {
         expr.WriteOpReg(GetDwarfCoreReg(isa, value).num());
-        if (piece == 0 && reg_hi.GetKind() == Kind::kInRegisterHigh &&
-            reg_hi.GetValue() == value) {
+        if (piece == 0 && reg_hi.GetKind() == Kind::kInRegisterHigh && reg_hi.GetValue() == value) {
           break;  // the high word is correctly implied by the low word.
         }
       } else if (kind == Kind::kInFpuRegister) {
-        if ((isa == InstructionSet::kArm || isa == InstructionSet::kThumb2) &&
-            piece == 0 && reg_hi.GetKind() == Kind::kInFpuRegister &&
-            reg_hi.GetValue() == value + 1 && value % 2 == 0) {
+        if ((isa == InstructionSet::kArm || isa == InstructionSet::kThumb2) && piece == 0 &&
+            reg_hi.GetKind() == Kind::kInFpuRegister && reg_hi.GetValue() == value + 1 &&
+            value % 2 == 0) {
           // Translate S register pair to D register (e.g. S4+S5 to D2).
           expr.WriteOpReg(Reg::ArmDp(value / 2).num());
           break;
@@ -281,11 +268,11 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
   // Write .debug_ranges entries.
   // This includes ranges where the variable is in scope but the location is not known.
   dwarf::Writer<> debug_ranges(debug_ranges_buffer);
-  size_t debug_ranges_offset = debug_ranges.size();
+  size_t          debug_ranges_offset = debug_ranges.size();
   for (size_t i = 0; i < variable_locations.size(); i++) {
     uint32_t low_pc = variable_locations[i].low_pc;
     uint32_t high_pc = variable_locations[i].high_pc;
-    while (i + 1 < variable_locations.size() && variable_locations[i+1].low_pc == high_pc) {
+    while (i + 1 < variable_locations.size() && variable_locations[i + 1].low_pc == high_pc) {
       // Merge address range with the next entry.
       high_pc = variable_locations[++i].high_pc;
     }
@@ -328,4 +315,3 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_LOC_WRITER_H_
-

@@ -25,12 +25,12 @@ class HBasicBlock;
 struct BlockNamer {
  public:
   struct NameWrapper {
-    HBasicBlock* blk_;
+    HBasicBlock*      blk_;
     const BlockNamer& namer_;
   };
   virtual ~BlockNamer() {}
   virtual std::ostream& PrintName(std::ostream& os, HBasicBlock* blk) const;
-  NameWrapper GetName(HBasicBlock* blk) const {
+  NameWrapper           GetName(HBasicBlock* blk) const {
     return NameWrapper{blk, *this};
   }
 };

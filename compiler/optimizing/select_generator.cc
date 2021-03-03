@@ -23,11 +23,10 @@ namespace art {
 
 static constexpr size_t kMaxInstructionsInBranch = 1u;
 
-HSelectGenerator::HSelectGenerator(HGraph* graph,
+HSelectGenerator::HSelectGenerator(HGraph*                  graph,
                                    OptimizingCompilerStats* stats,
-                                   const char* name)
-    : HOptimization(graph, name, stats) {
-}
+                                   const char*              name) :
+    HOptimization(graph, name, stats) {}
 
 // Returns true if `block` has only one predecessor, ends with a Goto
 // or a Return and contains at most `kMaxInstructionsInBranch` other
@@ -43,11 +42,9 @@ static bool IsSimpleBlock(HBasicBlock* block) {
     HInstruction* instruction = it.Current();
     if (instruction->IsControlFlow()) {
       return instruction->IsGoto() || instruction->IsReturn();
-    } else if (instruction->CanBeMoved() &&
-               !instruction->HasSideEffects() &&
+    } else if (instruction->CanBeMoved() && !instruction->HasSideEffects() &&
                !instruction->CanThrow()) {
-      if (instruction->IsSelect() &&
-          instruction->AsSelect()->GetCondition()->GetBlock() == block) {
+      if (instruction->IsSelect() && instruction->AsSelect()->GetCondition()->GetBlock() == block) {
         // Count one HCondition and HSelect in the same block as a single instruction.
         // This enables finding nested selects.
         continue;
@@ -91,25 +88,25 @@ static HPhi* GetSingleChangedPhi(HBasicBlock* block, size_t index1, size_t index
 }
 
 bool HSelectGenerator::Run() {
-  bool didSelect = false;
+  bool                                        didSelect = false;
   // Select cache with local allocator.
-  ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  ScopedArenaSafeMap<HInstruction*, HSelect*> cache(
-      std::less<HInstruction*>(), allocator.Adapter(kArenaAllocSelectGenerator));
+  ScopedArenaAllocator                        allocator(graph_->GetArenaStack());
+  ScopedArenaSafeMap<HInstruction*, HSelect*> cache(std::less<HInstruction*>(),
+                                                    allocator.Adapter(kArenaAllocSelectGenerator));
 
   // Iterate in post order in the unlikely case that removing one occurrence of
   // the selection pattern empties a branch block of another occurrence.
   for (HBasicBlock* block : graph_->GetPostOrder()) {
-    if (!block->EndsWithIf()) continue;
+    if (!block->EndsWithIf())
+      continue;
 
     // Find elements of the diamond pattern.
-    HIf* if_instruction = block->GetLastInstruction()->AsIf();
+    HIf*         if_instruction = block->GetLastInstruction()->AsIf();
     HBasicBlock* true_block = if_instruction->IfTrueSuccessor();
     HBasicBlock* false_block = if_instruction->IfFalseSuccessor();
     DCHECK_NE(true_block, false_block);
 
-    if (!IsSimpleBlock(true_block) ||
-        !IsSimpleBlock(false_block) ||
+    if (!IsSimpleBlock(true_block) || !IsSimpleBlock(false_block) ||
         !BlocksMergeTogether(true_block, false_block)) {
       continue;
     }
@@ -136,7 +133,7 @@ bool HSelectGenerator::Run() {
     size_t predecessor_index_false = merge_block->GetPredecessorIndexOf(false_block);
     DCHECK_NE(predecessor_index_true, predecessor_index_false);
 
-    bool both_successors_return = true_block->IsSingleReturn() && false_block->IsSingleReturn();
+    bool  both_successors_return = true_block->IsSingleReturn() && false_block->IsSingleReturn();
     HPhi* phi = GetSingleChangedPhi(merge_block, predecessor_index_true, predecessor_index_false);
 
     HInstruction* true_value = nullptr;
@@ -154,10 +151,8 @@ bool HSelectGenerator::Run() {
 
     // Create the Select instruction and insert it in front of the If.
     HInstruction* condition = if_instruction->InputAt(0);
-    HSelect* select = new (graph_->GetAllocator()) HSelect(condition,
-                                                           true_value,
-                                                           false_value,
-                                                           if_instruction->GetDexPc());
+    HSelect*      select = new (graph_->GetAllocator())
+        HSelect(condition, true_value, false_value, if_instruction->GetDexPc());
     if (both_successors_return) {
       if (true_value->GetType() == DataType::Type::kReference) {
         DCHECK(false_value->GetType() == DataType::Type::kReference);
@@ -203,10 +198,9 @@ bool HSelectGenerator::Run() {
       HSelect* cached = it->second;
       DCHECK_EQ(cached->GetCondition(), select->GetCondition());
       if (cached->GetTrueValue() == select->GetTrueValue() &&
-          cached->GetFalseValue() == select->GetFalseValue() &&
-          select->StrictlyDominates(cached)) {
-       cached->ReplaceWith(select);
-       cached->GetBlock()->RemoveInstruction(cached);
+          cached->GetFalseValue() == select->GetFalseValue() && select->StrictlyDominates(cached)) {
+        cached->ReplaceWith(select);
+        cached->GetBlock()->RemoveInstruction(cached);
       }
       it->second = select;  // always cache latest
     }

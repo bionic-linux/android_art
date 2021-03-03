@@ -27,20 +27,20 @@ TEST(CompiledMethodStorage, Deduplicate) {
 
   ASSERT_TRUE(storage.DedupeEnabled());  // The default.
 
-  const uint8_t raw_code1[] = { 1u, 2u, 3u };
-  const uint8_t raw_code2[] = { 4u, 3u, 2u, 1u };
+  const uint8_t           raw_code1[] = {1u, 2u, 3u};
+  const uint8_t           raw_code2[] = {4u, 3u, 2u, 1u};
   ArrayRef<const uint8_t> code[] = {
       ArrayRef<const uint8_t>(raw_code1),
       ArrayRef<const uint8_t>(raw_code2),
   };
-  const uint8_t raw_vmap_table1[] = { 2, 4, 6 };
-  const uint8_t raw_vmap_table2[] = { 7, 5, 3, 1 };
+  const uint8_t           raw_vmap_table1[] = {2, 4, 6};
+  const uint8_t           raw_vmap_table2[] = {7, 5, 3, 1};
   ArrayRef<const uint8_t> vmap_table[] = {
       ArrayRef<const uint8_t>(raw_vmap_table1),
       ArrayRef<const uint8_t>(raw_vmap_table2),
   };
-  const uint8_t raw_cfi_info1[] = { 1, 3, 5 };
-  const uint8_t raw_cfi_info2[] = { 8, 6, 4, 2 };
+  const uint8_t           raw_cfi_info1[] = {1, 3, 5};
+  const uint8_t           raw_cfi_info2[] = {8, 6, 4, 2};
   ArrayRef<const uint8_t> cfi_info[] = {
       ArrayRef<const uint8_t>(raw_cfi_info1),
       ArrayRef<const uint8_t>(raw_cfi_info2),
@@ -64,8 +64,8 @@ TEST(CompiledMethodStorage, Deduplicate) {
     for (auto&& v : vmap_table) {
       for (auto&& f : cfi_info) {
         for (auto&& p : patches) {
-          compiled_methods.push_back(CompiledMethod::SwapAllocCompiledMethod(
-              &storage, InstructionSet::kNone, c, v, f, p));
+          compiled_methods.push_back(
+              CompiledMethod::SwapAllocCompiledMethod(&storage, InstructionSet::kNone, c, v, f, p));
         }
       }
     }
@@ -79,10 +79,10 @@ TEST(CompiledMethodStorage, Deduplicate) {
     for (size_t j = 0; j != compiled_methods.size(); ++j) {
       CompiledMethod* lhs = compiled_methods[i];
       CompiledMethod* rhs = compiled_methods[j];
-      bool same_code = ((i ^ j) & code_bit) == 0u;
-      bool same_vmap_table = ((i ^ j) & vmap_table_bit) == 0u;
-      bool same_cfi_info = ((i ^ j) & cfi_info_bit) == 0u;
-      bool same_patches = ((i ^ j) & patches_bit) == 0u;
+      bool            same_code = ((i ^ j) & code_bit) == 0u;
+      bool            same_vmap_table = ((i ^ j) & vmap_table_bit) == 0u;
+      bool            same_cfi_info = ((i ^ j) & cfi_info_bit) == 0u;
+      bool            same_patches = ((i ^ j) & patches_bit) == 0u;
       ASSERT_EQ(same_code, lhs->GetQuickCode().data() == rhs->GetQuickCode().data())
           << i << " " << j;
       ASSERT_EQ(same_vmap_table, lhs->GetVmapTable().data() == rhs->GetVmapTable().data())
