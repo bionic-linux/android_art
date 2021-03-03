@@ -31,6 +31,7 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
     host_supported: true,
     srcs: [
         "native_loader.cpp",
@@ -105,6 +106,7 @@ cc_library_headers {
         "com.android.art.debug",
         "com.android.media",
     ],
+    min_sdk_version: "S",
     visibility: [
         "//art:__subpackages__",
         // TODO(b/133140750): Clean this up.

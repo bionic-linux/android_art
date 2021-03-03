@@ -65,6 +65,7 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
 }
 
 cc_defaults {
@@ -90,6 +91,7 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
 }
 
 cc_defaults {
@@ -111,4 +113,5 @@ cc_library_headers {
         "com.android.art.debug",
         "com.android.art",
     ],
+    min_sdk_version: "S",
 }
