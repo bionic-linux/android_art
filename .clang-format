@@ -1,0 +1,27 @@
+---
+BasedOnStyle: Google
+---
+
+Language: Cpp
+
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveDeclarations: AcrossComments
+AlignConsecutiveMacros: Consecutive
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AttributeMacros: ['__', 'NO_RETURN']
+BinPackArguments: false
+BinPackParameters: false
+BreakConstructorInitializers: AfterColon
+BreakBeforeTernaryOperators: false
+ColumnLimit: 100
+CommentPragmas: NOLINT:.*
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+Cpp11BracedListStyle: true
+DerivePointerAlignment: false
+FixNamespaceComments: true
+PointerAlignment: Left
+TabWidth: 2
