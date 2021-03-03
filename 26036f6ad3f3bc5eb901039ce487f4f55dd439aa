@@ -39,6 +39,30 @@
       },
       "revId": "26036f6ad3f3bc5eb901039ce487f4f55dd439aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d291d4af_f2f140f0",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-03T14:11:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c35dde5a_f2c9ec74",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 47
+      },
+      "revId": "26036f6ad3f3bc5eb901039ce487f4f55dd439aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
