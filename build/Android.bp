@@ -230,6 +230,8 @@ art_global_defaults {
         // will still get the "real" errors.
         "-extra-arg=-Wno-unreachable-code",
     ],
+
+    min_sdk_version: "S",
 }
 
 cc_defaults {
