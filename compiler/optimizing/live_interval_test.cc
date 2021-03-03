@@ -15,10 +15,9 @@
  */
 
 #include "base/arena_allocator.h"
+#include "gtest/gtest.h"
 #include "optimizing_unit_test.h"
 #include "ssa_liveness_analysis.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -169,9 +168,7 @@ static bool RangesEquals(LiveInterval* interval,
   LiveRange* current = interval->GetFirstRange();
 
   size_t i = 0;
-  for (;
-       i < number_of_expected_ranges && current != nullptr;
-       ++i, current = current->GetNext()) {
+  for (; i < number_of_expected_ranges && current != nullptr; ++i, current = current->GetNext()) {
     if (expected[i][0] != current->GetStart()) {
       return false;
     }

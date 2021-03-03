@@ -56,24 +56,22 @@ static void FixUpArguments(HInvokeStaticOrDirect* invoke) {
             MethodReference(resolved_method->GetDexFile(), resolved_method->GetDexMethodIndex());
       }
       // Use arbitrary dispatch info that does not require the method argument.
-      HInvokeStaticOrDirect::DispatchInfo dispatch_info = {
-          MethodLoadKind::kBssEntry,
-          CodePtrLocation::kCallArtMethod,
-          /*method_load_data=*/ 0u
-      };
+      HInvokeStaticOrDirect::DispatchInfo dispatch_info = {MethodLoadKind::kBssEntry,
+                                                           CodePtrLocation::kCallArtMethod,
+                                                           /*method_load_data=*/0u};
       HBasicBlock* block = invoke->GetBlock();
       ArenaAllocator* allocator = block->GetGraph()->GetAllocator();
-      HInvokeStaticOrDirect* new_input = new (allocator) HInvokeStaticOrDirect(
-          allocator,
-          /*number_of_arguments=*/ 1u,
-          converted_type,
-          invoke->GetDexPc(),
-          /*method_reference=*/ MethodReference(nullptr, dex::kDexNoIndex),
-          resolved_method,
-          dispatch_info,
-          kStatic,
-          target_method,
-          HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
+      HInvokeStaticOrDirect* new_input = new (allocator)
+          HInvokeStaticOrDirect(allocator,
+                                /*number_of_arguments=*/1u,
+                                converted_type,
+                                invoke->GetDexPc(),
+                                /*method_reference=*/MethodReference(nullptr, dex::kDexNoIndex),
+                                resolved_method,
+                                dispatch_info,
+                                kStatic,
+                                target_method,
+                                HInvokeStaticOrDirect::ClinitCheckRequirement::kNone);
       // The intrinsic has no side effects and does not need environment or dex cache on ARM.
       new_input->SetSideEffects(SideEffects::None());
       IntrinsicOptimizations opt(new_input);

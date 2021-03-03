@@ -67,12 +67,13 @@ TEST_F(LinearizeTest, CFG1) {
   //               + /   \  +
   //           Block4   Block8
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 5,
-    Instruction::IF_EQ, 0xFFFE,
-    Instruction::GOTO | 0xFE00,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            5,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFE,
+                                                            Instruction::GOTO | 0xFE00,
+                                                            Instruction::RETURN_VOID);
 
   const uint32_t blocks[] = {0, 1, 2, 7, 3, 4, 8, 5, 6};
   TestCode(data, blocks);
@@ -92,12 +93,13 @@ TEST_F(LinearizeTest, CFG2) {
   //               + /   \  +
   //           Block5   Block8
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::RETURN_VOID,
-    Instruction::IF_EQ, 0xFFFD,
-    Instruction::GOTO | 0xFE00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::RETURN_VOID,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFD,
+                                                            Instruction::GOTO | 0xFE00);
 
   const uint32_t blocks[] = {0, 1, 2, 7, 4, 5, 8, 3, 6};
   TestCode(data, blocks);
@@ -118,13 +120,14 @@ TEST_F(LinearizeTest, CFG3) {
   //           Block6  + Block9
   //             |     +
   //           Block4 ++
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 4,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO | 0x0100,
-    Instruction::IF_EQ, 0xFFFC,
-    Instruction::GOTO | 0xFD00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            4,
+                                                            Instruction::RETURN_VOID,
+                                                            Instruction::GOTO | 0x0100,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFC,
+                                                            Instruction::GOTO | 0xFD00);
 
   const uint32_t blocks[] = {0, 1, 2, 8, 5, 6, 4, 9, 3, 7};
   TestCode(data, blocks);
@@ -148,13 +151,15 @@ TEST_F(LinearizeTest, CFG4) {
   //                  + /    \   +
   //                Block5  Block11
   */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 7,
-    Instruction::IF_EQ, 0xFFFE,
-    Instruction::IF_EQ, 0xFFFE,
-    Instruction::GOTO | 0xFE00,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            7,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFE,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFE,
+                                                            Instruction::GOTO | 0xFE00,
+                                                            Instruction::RETURN_VOID);
 
   const uint32_t blocks[] = {0, 1, 2, 8, 3, 10, 4, 5, 11, 9, 6, 7};
   TestCode(data, blocks);
@@ -178,13 +183,15 @@ TEST_F(LinearizeTest, CFG5) {
   //                   +/    \   +
   //                Block6  Block11
   */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::RETURN_VOID,
-    Instruction::IF_EQ, 0xFFFD,
-    Instruction::IF_EQ, 0xFFFE,
-    Instruction::GOTO | 0xFE00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::RETURN_VOID,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFD,
+                                                            Instruction::IF_EQ,
+                                                            0xFFFE,
+                                                            Instruction::GOTO | 0xFE00);
 
   const uint32_t blocks[] = {0, 1, 2, 8, 4, 10, 5, 6, 11, 9, 3, 7};
   TestCode(data, blocks);
@@ -204,13 +211,14 @@ TEST_F(LinearizeTest, CFG6) {
   //       Block5 <- Block9 Block6  +
   //         |
   //       Block7
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::GOTO | 0x0100,
-    Instruction::IF_EQ, 0x0004,
-    Instruction::IF_EQ, 0x0003,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO | 0xFA00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::GOTO | 0x0100,
+                                                            Instruction::IF_EQ,
+                                                            0x0004,
+                                                            Instruction::IF_EQ,
+                                                            0x0003,
+                                                            Instruction::RETURN_VOID,
+                                                            Instruction::GOTO | 0xFA00);
 
   const uint32_t blocks[] = {0, 1, 2, 3, 4, 6, 9, 8, 5, 7};
   TestCode(data, blocks);
@@ -232,13 +240,14 @@ TEST_F(LinearizeTest, CFG7) {
   //     |
   //   Block7
   //
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::GOTO | 0x0100,
-    Instruction::IF_EQ, 0x0005,
-    Instruction::IF_EQ, 0x0003,
-    Instruction::RETURN_VOID,
-    Instruction::GOTO | 0xFA00);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::GOTO | 0x0100,
+                                                            Instruction::IF_EQ,
+                                                            0x0005,
+                                                            Instruction::IF_EQ,
+                                                            0x0003,
+                                                            Instruction::RETURN_VOID,
+                                                            Instruction::GOTO | 0xFA00);
 
   const uint32_t blocks[] = {0, 1, 2, 3, 4, 9, 8, 6, 5, 7};
   TestCode(data, blocks);

@@ -279,19 +279,15 @@ int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
   return scratch;
 }
 
-
 ParallelMoveResolverWithSwap::ScratchRegisterScope::ScratchRegisterScope(
     ParallelMoveResolverWithSwap* resolver, int blocked, int if_scratch, int number_of_registers)
-    : resolver_(resolver),
-      reg_(kNoRegister),
-      spilled_(false) {
+    : resolver_(resolver), reg_(kNoRegister), spilled_(false) {
   reg_ = resolver_->AllocateScratchRegister(blocked, number_of_registers, if_scratch, &spilled_);
 
   if (spilled_) {
     resolver->SpillScratch(reg_);
   }
 }
-
 
 ParallelMoveResolverWithSwap::ScratchRegisterScope::~ScratchRegisterScope() {
   if (spilled_) {
@@ -378,9 +374,7 @@ Location ParallelMoveResolverNoSwap::GetScratchLocation(Location::Kind kind) {
 
 void ParallelMoveResolverNoSwap::AddScratchLocation(Location loc) {
   if (kIsDebugBuild) {
-    for (Location scratch : scratches_) {
-      CHECK(!loc.Equals(scratch));
-    }
+    for (Location scratch : scratches_) { CHECK(!loc.Equals(scratch)); }
   }
   scratches_.push_back(loc);
 }

@@ -81,8 +81,8 @@ bool HGraphBuilder::SkipCompilation(size_t number_of_branches) {
   const uint32_t code_units = code_item_accessor_.InsnsSizeInCodeUnits();
   if (compiler_options.IsHugeMethod(code_units)) {
     VLOG(compiler) << "Skip compilation of huge method "
-                   << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex())
-                   << ": " << code_units << " code units";
+                   << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex()) << ": "
+                   << code_units << " code units";
     MaybeRecordStat(compilation_stats_, MethodCompilationStat::kNotCompiledHugeMethod);
     return true;
   }
@@ -90,8 +90,8 @@ bool HGraphBuilder::SkipCompilation(size_t number_of_branches) {
   // If it's large and contains no branches, it's likely to be machine generated initialization.
   if (compiler_options.IsLargeMethod(code_units) && (number_of_branches == 0)) {
     VLOG(compiler) << "Skip compilation of large method with no branch "
-                   << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex())
-                   << ": " << code_units << " code units";
+                   << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex()) << ": "
+                   << code_units << " code units";
     MaybeRecordStat(compilation_stats_, MethodCompilationStat::kNotCompiledLargeMethodNoBranches);
     return true;
   }
@@ -176,10 +176,8 @@ void HGraphBuilder::BuildIntrinsicGraph(ArtMethod* method) {
 
   // Use ScopedArenaAllocator for all local allocations.
   ScopedArenaAllocator local_allocator(graph_->GetArenaStack());
-  HBasicBlockBuilder block_builder(graph_,
-                                   dex_file_,
-                                   CodeItemDebugInfoAccessor(),
-                                   &local_allocator);
+  HBasicBlockBuilder block_builder(
+      graph_, dex_file_, CodeItemDebugInfoAccessor(), &local_allocator);
   SsaBuilder ssa_builder(graph_,
                          dex_compilation_unit_->GetClassLoader(),
                          dex_compilation_unit_->GetDexCache(),

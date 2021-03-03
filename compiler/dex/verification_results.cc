@@ -39,9 +39,7 @@ VerificationResults::~VerificationResults() {
   WriterMutexLock mu(Thread::Current(), verified_methods_lock_);
   STLDeleteValues(&verified_methods_);
   atomic_verified_methods_.Visit([](const DexFileReference& ref ATTRIBUTE_UNUSED,
-                                    const VerifiedMethod* method) {
-    delete method;
-  });
+                                    const VerifiedMethod* method) { delete method; });
 }
 
 void VerificationResults::ProcessVerifiedMethod(verifier::MethodVerifier* method_verifier) {
@@ -107,7 +105,7 @@ void VerificationResults::CreateVerifiedMethodFor(MethodReference ref) {
   if (atomic_verified_methods_.Insert(ref,
                                       /*expected*/ nullptr,
                                       verified_method.get()) ==
-          AtomicMap::InsertResult::kInsertResultSuccess) {
+      AtomicMap::InsertResult::kInsertResultSuccess) {
     verified_method.release();  // NOLINT b/117926937
   }
 }
@@ -132,7 +130,7 @@ bool VerificationResults::IsCandidateForCompilation(MethodReference&,
   }
   // Don't compile class initializers unless kEverything.
   if ((compiler_options_->GetCompilerFilter() != CompilerFilter::kEverything) &&
-     ((access_flags & kAccConstructor) != 0) && ((access_flags & kAccStatic) != 0)) {
+      ((access_flags & kAccConstructor) != 0) && ((access_flags & kAccStatic) != 0)) {
     return false;
   }
   return true;
@@ -144,11 +142,11 @@ void VerificationResults::AddDexFile(const DexFile* dex_file) {
   // There can be some verified methods that are already registered for the dex_file since we set
   // up well known classes earlier. Remove these and put them in the array so that we don't
   // accidentally miss seeing them.
-  for (auto it = verified_methods_.begin(); it != verified_methods_.end(); ) {
+  for (auto it = verified_methods_.begin(); it != verified_methods_.end();) {
     MethodReference ref = it->first;
     if (ref.dex_file == dex_file) {
       CHECK(atomic_verified_methods_.Insert(ref, nullptr, it->second) ==
-          AtomicMap::kInsertResultSuccess);
+            AtomicMap::kInsertResultSuccess);
       it = verified_methods_.erase(it);
     } else {
       ++it;

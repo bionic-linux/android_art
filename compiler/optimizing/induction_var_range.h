@@ -193,11 +193,7 @@ class InductionVarRange {
   /*
    * Enum used in IsConstant() request.
    */
-  enum ConstantRequest {
-    kExact,
-    kAtMost,
-    kAtLeast
-  };
+  enum ConstantRequest { kExact, kAtMost, kAtLeast };
 
   /**
    * Checks if header logic of a loop terminates. If trip count is known (constant) sets
@@ -302,25 +298,25 @@ class InductionVarRange {
                                    HInductionVarAnalysis::InductionInfo* trip,
                                    HGraph* graph,
                                    HBasicBlock* block,
-                                   /*out*/HInstruction** result) const;
+                                   /*out*/ HInstruction** result) const;
 
   bool GenerateLastValueGeometric(HInductionVarAnalysis::InductionInfo* info,
                                   HInductionVarAnalysis::InductionInfo* trip,
                                   HGraph* graph,
                                   HBasicBlock* block,
-                                  /*out*/HInstruction** result) const;
+                                  /*out*/ HInstruction** result) const;
 
   bool GenerateLastValueWrapAround(HInductionVarAnalysis::InductionInfo* info,
                                    HInductionVarAnalysis::InductionInfo* trip,
                                    HGraph* graph,
                                    HBasicBlock* block,
-                                   /*out*/HInstruction** result) const;
+                                   /*out*/ HInstruction** result) const;
 
   bool GenerateLastValuePeriodic(HInductionVarAnalysis::InductionInfo* info,
                                  HInductionVarAnalysis::InductionInfo* trip,
                                  HGraph* graph,
                                  HBasicBlock* block,
-                                 /*out*/HInstruction** result,
+                                 /*out*/ HInstruction** result,
                                  /*out*/ bool* needs_taken_test) const;
 
   bool GenerateCode(HInductionVarAnalysis::InductionInfo* info,

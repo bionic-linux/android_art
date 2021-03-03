@@ -35,8 +35,7 @@ static const char* kTypeNames[] = {
 };
 
 const char* DataType::PrettyDescriptor(Type type) {
-  static_assert(arraysize(kTypeNames) == static_cast<size_t>(Type::kLast) + 1,
-                "Missing element");
+  static_assert(arraysize(kTypeNames) == static_cast<size_t>(Type::kLast) + 1, "Missing element");
   uint32_t uint_type = static_cast<uint32_t>(type);
   CHECK_LE(uint_type, static_cast<uint32_t>(Type::kLast));
   return kTypeNames[uint_type];

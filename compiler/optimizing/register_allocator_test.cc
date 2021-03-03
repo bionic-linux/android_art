@@ -79,13 +79,13 @@ class RegisterAllocatorTest : public OptimizingUnitTest {
 };
 
 // This macro should include all register allocation strategies that should be tested.
-#define TEST_ALL_STRATEGIES(test_name)\
-TEST_F(RegisterAllocatorTest, test_name##_LinearScan) {\
-  test_name(Strategy::kRegisterAllocatorLinearScan);\
-}\
-TEST_F(RegisterAllocatorTest, test_name##_GraphColor) {\
-  test_name(Strategy::kRegisterAllocatorGraphColor);\
-}
+#define TEST_ALL_STRATEGIES(test_name)                    \
+  TEST_F(RegisterAllocatorTest, test_name##_LinearScan) { \
+    test_name(Strategy::kRegisterAllocatorLinearScan);    \
+  }                                                       \
+  TEST_F(RegisterAllocatorTest, test_name##_GraphColor) { \
+    test_name(Strategy::kRegisterAllocatorGraphColor);    \
+  }
 
 bool RegisterAllocatorTest::Check(const std::vector<uint16_t>& data, Strategy strategy) {
   HGraph* graph = CreateCFG(data);
@@ -189,9 +189,8 @@ void RegisterAllocatorTest::CFG1(Strategy strategy) {
    *        |
    *       exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0, Instruction::RETURN);
 
   ASSERT_TRUE(Check(data, strategy));
 }
@@ -226,13 +225,14 @@ void RegisterAllocatorTest::Loop1(Strategy strategy) {
    *       exit
    */
 
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 4,
-    Instruction::CONST_4 | 4 << 12 | 0,
-    Instruction::GOTO | 0xFD00,
-    Instruction::CONST_4 | 5 << 12 | 1 << 8,
-    Instruction::RETURN | 1 << 8);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::IF_EQ,
+                              4,
+                              Instruction::CONST_4 | 4 << 12 | 0,
+                              Instruction::GOTO | 0xFD00,
+                              Instruction::CONST_4 | 5 << 12 | 1 << 8,
+                              Instruction::RETURN | 1 << 8);
 
   ASSERT_TRUE(Check(data, strategy));
 }
@@ -272,18 +272,21 @@ void RegisterAllocatorTest::Loop2(Strategy strategy) {
    *       exit
    */
 
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::CONST_4 | 8 << 12 | 1 << 8,
-    Instruction::IF_EQ | 1 << 8, 7,
-    Instruction::CONST_4 | 4 << 12 | 0 << 8,
-    Instruction::CONST_4 | 5 << 12 | 1 << 8,
-    Instruction::ADD_INT, 1 << 8 | 0,
-    Instruction::GOTO | 0xFA00,
-    Instruction::CONST_4 | 6 << 12 | 1 << 8,
-    Instruction::CONST_4 | 7 << 12 | 1 << 8,
-    Instruction::ADD_INT, 1 << 8 | 0,
-    Instruction::RETURN | 1 << 8);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::CONST_4 | 8 << 12 | 1 << 8,
+                              Instruction::IF_EQ | 1 << 8,
+                              7,
+                              Instruction::CONST_4 | 4 << 12 | 0 << 8,
+                              Instruction::CONST_4 | 5 << 12 | 1 << 8,
+                              Instruction::ADD_INT,
+                              1 << 8 | 0,
+                              Instruction::GOTO | 0xFA00,
+                              Instruction::CONST_4 | 6 << 12 | 1 << 8,
+                              Instruction::CONST_4 | 7 << 12 | 1 << 8,
+                              Instruction::ADD_INT,
+                              1 << 8 | 0,
+                              Instruction::RETURN | 1 << 8);
 
   ASSERT_TRUE(Check(data, strategy));
 }
@@ -318,14 +321,16 @@ void RegisterAllocatorTest::Loop3(Strategy strategy) {
    *       exit
    */
 
-  const std::vector<uint16_t> data = THREE_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::ADD_INT_LIT8 | 1 << 8, 1 << 8,
-    Instruction::CONST_4 | 5 << 12 | 2 << 8,
-    Instruction::IF_NE | 1 << 8 | 2 << 12, 3,
-    Instruction::RETURN | 0 << 8,
-    Instruction::MOVE | 1 << 12 | 0 << 8,
-    Instruction::GOTO | 0xF900);
+  const std::vector<uint16_t> data =
+      THREE_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                Instruction::ADD_INT_LIT8 | 1 << 8,
+                                1 << 8,
+                                Instruction::CONST_4 | 5 << 12 | 2 << 8,
+                                Instruction::IF_NE | 1 << 8 | 2 << 12,
+                                3,
+                                Instruction::RETURN | 0 << 8,
+                                Instruction::MOVE | 1 << 12 | 0 << 8,
+                                Instruction::GOTO | 0xF900);
 
   HGraph* graph = CreateCFG(data);
   x86::CodeGeneratorX86 codegen(graph, *compiler_options_);
@@ -353,12 +358,14 @@ void RegisterAllocatorTest::Loop3(Strategy strategy) {
 TEST_ALL_STRATEGIES(Loop3);
 
 TEST_F(RegisterAllocatorTest, FirstRegisterUse) {
-  const std::vector<uint16_t> data = THREE_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::XOR_INT_LIT8 | 1 << 8, 1 << 8,
-    Instruction::XOR_INT_LIT8 | 0 << 8, 1 << 8,
-    Instruction::XOR_INT_LIT8 | 1 << 8, 1 << 8 | 1,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data = THREE_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                               Instruction::XOR_INT_LIT8 | 1 << 8,
+                                                               1 << 8,
+                                                               Instruction::XOR_INT_LIT8 | 0 << 8,
+                                                               1 << 8,
+                                                               Instruction::XOR_INT_LIT8 | 1 << 8,
+                                                               1 << 8 | 1,
+                                                               Instruction::RETURN_VOID);
 
   HGraph* graph = CreateCFG(data);
   x86::CodeGeneratorX86 codegen(graph, *compiler_options_);
@@ -402,13 +409,14 @@ void RegisterAllocatorTest::DeadPhi(Strategy strategy) {
    *  } while (true);
    */
 
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::CONST_4 | 1 << 8 | 0,
-    Instruction::IF_NE | 1 << 8 | 1 << 12, 3,
-    Instruction::CONST_4 | 2 << 12 | 0 << 8,
-    Instruction::GOTO | 0xFD00,
-    Instruction::RETURN_VOID);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::CONST_4 | 1 << 8 | 0,
+                              Instruction::IF_NE | 1 << 8 | 1 << 12,
+                              3,
+                              Instruction::CONST_4 | 2 << 12 | 0 << 8,
+                              Instruction::GOTO | 0xFD00,
+                              Instruction::RETURN_VOID);
 
   HGraph* graph = CreateCFG(data);
   SsaDeadPhiElimination(graph).Run();
@@ -430,9 +438,8 @@ TEST_ALL_STRATEGIES(DeadPhi);
  * This test only applies to the linear scan allocator.
  */
 TEST_F(RegisterAllocatorTest, FreeUntil) {
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0, Instruction::RETURN);
 
   HGraph* graph = CreateCFG(data);
   SsaDeadPhiElimination(graph).Run();
@@ -492,8 +499,8 @@ HGraph* RegisterAllocatorTest::BuildIfElseWithPhi(HPhi** phi,
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
@@ -557,7 +564,7 @@ HGraph* RegisterAllocatorTest::BuildIfElseWithPhi(HPhi** phi,
 }
 
 void RegisterAllocatorTest::PhiHint(Strategy strategy) {
-  HPhi *phi;
+  HPhi* phi;
   HInstruction *input1, *input2;
 
   {
@@ -642,8 +649,8 @@ HGraph* RegisterAllocatorTest::BuildFieldReturn(HInstruction** field, HInstructi
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
   entry->AddInstruction(parameter);
 
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
@@ -718,8 +725,8 @@ HGraph* RegisterAllocatorTest::BuildTwoSubs(HInstruction** first_sub, HInstructi
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* parameter = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
   entry->AddInstruction(parameter);
 
   HInstruction* constant1 = graph->GetIntConstant(1);
@@ -790,10 +797,10 @@ HGraph* RegisterAllocatorTest::BuildDiv(HInstruction** div) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* first = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
-  HInstruction* second = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* first = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* second = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
   entry->AddInstruction(first);
   entry->AddInstruction(second);
 
@@ -801,8 +808,8 @@ HGraph* RegisterAllocatorTest::BuildDiv(HInstruction** div) {
   graph->AddBlock(block);
   entry->AddSuccessor(block);
 
-  *div = new (GetAllocator()) HDiv(
-      DataType::Type::kInt32, first, second, 0);  // don't care about dex_pc.
+  *div = new (GetAllocator())
+      HDiv(DataType::Type::kInt32, first, second, 0);  // don't care about dex_pc.
   block->AddInstruction(*div);
 
   block->AddInstruction(new (GetAllocator()) HExit());
@@ -812,7 +819,7 @@ HGraph* RegisterAllocatorTest::BuildDiv(HInstruction** div) {
 }
 
 void RegisterAllocatorTest::ExpectedExactInRegisterAndSameOutputHint(Strategy strategy) {
-  HInstruction *div;
+  HInstruction* div;
   HGraph* graph = BuildDiv(&div);
   x86::CodeGeneratorX86 codegen(graph, *compiler_options_);
   SsaLivenessAnalysis liveness(graph, &codegen, GetScopedAllocator());
@@ -843,14 +850,14 @@ TEST_F(RegisterAllocatorTest, SpillInactive) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
-  HInstruction* one = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
-  HInstruction* two = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
-  HInstruction* three = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
-  HInstruction* four = new (GetAllocator()) HParameterValue(
-      graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* one = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* two = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* three = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
+  HInstruction* four = new (GetAllocator())
+      HParameterValue(graph->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
   entry->AddInstruction(one);
   entry->AddInstruction(two);
   entry->AddInstruction(three);
@@ -915,9 +922,7 @@ TEST_F(RegisterAllocatorTest, SpillInactive) {
   x86::CodeGeneratorX86 codegen(graph, *compiler_options_);
   SsaLivenessAnalysis liveness(graph, &codegen, GetScopedAllocator());
   // Populate the instructions in the liveness object, to please the register allocator.
-  for (size_t i = 0; i < 32; ++i) {
-    liveness.instructions_from_lifetime_position_.push_back(user);
-  }
+  for (size_t i = 0; i < 32; ++i) { liveness.instructions_from_lifetime_position_.push_back(user); }
 
   RegisterAllocatorLinearScan register_allocator(GetScopedAllocator(), &codegen, liveness);
   register_allocator.unhandled_core_intervals_.push_back(fourth);

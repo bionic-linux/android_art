@@ -47,23 +47,20 @@ static std::vector<const char*> GetParamNames(const MethodDebugInfo* mi) {
   DCHECK(mi->dex_file != nullptr);
   CodeItemDebugInfoAccessor accessor(*mi->dex_file, mi->code_item, mi->dex_method_index);
   if (accessor.HasCodeItem()) {
-    accessor.VisitParameterNames([&](const dex::StringIndex& id) {
-      names.push_back(mi->dex_file->StringDataByIdx(id));
-    });
+    accessor.VisitParameterNames(
+        [&](const dex::StringIndex& id) { names.push_back(mi->dex_file->StringDataByIdx(id)); });
   }
   return names;
 }
 
 // Helper class to write .debug_info and its supporting sections.
-template<typename ElfTypes>
+template <typename ElfTypes>
 class ElfDebugInfoWriter {
   using Elf_Addr = typename ElfTypes::Addr;
 
  public:
   explicit ElfDebugInfoWriter(ElfBuilder<ElfTypes>* builder)
-      : builder_(builder),
-        debug_abbrev_(&debug_abbrev_buffer_) {
-  }
+      : builder_(builder), debug_abbrev_(&debug_abbrev_buffer_) {}
 
   void Start() {
     builder_->GetDebugInfo()->Start();
@@ -89,27 +86,26 @@ class ElfDebugInfoWriter {
 
   std::unordered_set<const char*> defined_dex_classes_;  // For CHECKs only.
 
-  template<typename ElfTypes2>
+  template <typename ElfTypes2>
   friend class ElfCompilationUnitWriter;
 };
 
 // Helper class to write one compilation unit.
 // It holds helper methods and temporary state.
-template<typename ElfTypes>
+template <typename ElfTypes>
 class ElfCompilationUnitWriter {
   using Elf_Addr = typename ElfTypes::Addr;
 
  public:
   explicit ElfCompilationUnitWriter(ElfDebugInfoWriter<ElfTypes>* owner)
-    : owner_(owner),
-      info_(Is64BitInstructionSet(owner_->builder_->GetIsa()), &owner->debug_abbrev_) {
-  }
+      : owner_(owner),
+        info_(Is64BitInstructionSet(owner_->builder_->GetIsa()), &owner->debug_abbrev_) {}
 
   void Write(const ElfCompilationUnit& compilation_unit) {
     CHECK(!compilation_unit.methods.empty());
     const Elf_Addr base_address = compilation_unit.is_code_address_text_relative
-        ? owner_->builder_->GetText()->GetAddress()
-        : 0;
+                                      ? owner_->builder_->GetText()->GetAddress()
+                                      : 0;
     const bool is64bit = Is64BitInstructionSet(owner_->builder_->GetIsa());
     using namespace dwarf;  // NOLINT. For easy access to DWARF constants.
 
@@ -242,11 +238,10 @@ class ElfCompilationUnitWriter {
 
       // Write local variables.
       std::vector<DexFile::LocalInfo> local_infos;
-      if (accessor.DecodeDebugLocalInfo(is_static,
-                                        mi->dex_method_index,
-                                        [&](const DexFile::LocalInfo& entry) {
-                                          local_infos.push_back(entry);
-                                        })) {
+      if (accessor.DecodeDebugLocalInfo(
+              is_static, mi->dex_method_index, [&](const DexFile::LocalInfo& entry) {
+                local_infos.push_back(entry);
+              })) {
         for (const DexFile::LocalInfo& var : local_infos) {
           if (var.reg_ < accessor.RegistersSize() - accessor.InsSize()) {
             info_.StartTag(DW_TAG_variable);
@@ -404,8 +399,7 @@ class ElfCompilationUnitWriter {
           WriteName("value");
           // We don't support fields with C like array types so we just say its type is java char.
           WriteLazyType("C");  // char.
-          info_.WriteUdata(DW_AT_data_member_location,
-                           mirror::String::ValueOffset().Uint32Value());
+          info_.WriteUdata(DW_AT_data_member_location, mirror::String::ValueOffset().Uint32Value());
           info_.WriteSdata(DW_AT_accessibility, DW_ACCESS_private);
           info_.EndTag();  // DW_TAG_member.
         }
@@ -552,52 +546,52 @@ class ElfCompilationUnitWriter {
       uint32_t encoding;
       uint32_t byte_size;
       switch (desc[0]) {
-      case 'B':
-        name = "byte";
-        encoding = DW_ATE_signed;
-        byte_size = 1;
-        break;
-      case 'C':
-        name = "char";
-        encoding = DW_ATE_UTF;
-        byte_size = 2;
-        break;
-      case 'D':
-        name = "double";
-        encoding = DW_ATE_float;
-        byte_size = 8;
-        break;
-      case 'F':
-        name = "float";
-        encoding = DW_ATE_float;
-        byte_size = 4;
-        break;
-      case 'I':
-        name = "int";
-        encoding = DW_ATE_signed;
-        byte_size = 4;
-        break;
-      case 'J':
-        name = "long";
-        encoding = DW_ATE_signed;
-        byte_size = 8;
-        break;
-      case 'S':
-        name = "short";
-        encoding = DW_ATE_signed;
-        byte_size = 2;
-        break;
-      case 'Z':
-        name = "boolean";
-        encoding = DW_ATE_boolean;
-        byte_size = 1;
-        break;
-      case 'V':
-        LOG(FATAL) << "Void type should not be encoded";
-        UNREACHABLE();
-      default:
-        LOG(FATAL) << "Unknown dex type descriptor: \"" << desc << "\"";
-        UNREACHABLE();
+        case 'B':
+          name = "byte";
+          encoding = DW_ATE_signed;
+          byte_size = 1;
+          break;
+        case 'C':
+          name = "char";
+          encoding = DW_ATE_UTF;
+          byte_size = 2;
+          break;
+        case 'D':
+          name = "double";
+          encoding = DW_ATE_float;
+          byte_size = 8;
+          break;
+        case 'F':
+          name = "float";
+          encoding = DW_ATE_float;
+          byte_size = 4;
+          break;
+        case 'I':
+          name = "int";
+          encoding = DW_ATE_signed;
+          byte_size = 4;
+          break;
+        case 'J':
+          name = "long";
+          encoding = DW_ATE_signed;
+          byte_size = 8;
+          break;
+        case 'S':
+          name = "short";
+          encoding = DW_ATE_signed;
+          byte_size = 2;
+          break;
+        case 'Z':
+          name = "boolean";
+          encoding = DW_ATE_boolean;
+          byte_size = 1;
+          break;
+        case 'V':
+          LOG(FATAL) << "Void type should not be encoded";
+          UNREACHABLE();
+        default:
+          LOG(FATAL) << "Unknown dex type descriptor: \"" << desc << "\"";
+          UNREACHABLE();
       }
       CloseNamespacesAboveDepth(0);  // Declare in root namespace.
       offset = info_.StartTag(DW_TAG_base_type);
@@ -675,4 +669,3 @@ class ElfCompilationUnitWriter {
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_DEBUG_INFO_WRITER_H_
-

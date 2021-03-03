@@ -43,9 +43,9 @@
 #include "dex/bytecode_utils.h"
 #include "dex/code_item_accessors-inl.h"
 #include "dex/verified_method.h"
+#include "gc/space/image_space.h"
 #include "graph_visualizer.h"
 #include "image.h"
-#include "gc/space/image_space.h"
 #include "intern_table.h"
 #include "intrinsics.h"
 #include "mirror/array-inl.h"
@@ -66,8 +66,8 @@ namespace art {
 
 // Return whether a location is consistent with a type.
 static bool CheckType(DataType::Type type, Location location) {
-  if (location.IsFpuRegister()
-      || (location.IsUnallocated() && (location.GetPolicy() == Location::kRequiresFpuRegister))) {
+  if (location.IsFpuRegister() ||
+      (location.IsUnallocated() && (location.GetPolicy() == Location::kRequiresFpuRegister))) {
     return (type == DataType::Type::kFloat32) || (type == DataType::Type::kFloat64);
   } else if (location.IsRegister() ||
              (location.IsUnallocated() && (location.GetPolicy() == Location::kRequiresRegister))) {
@@ -77,9 +77,8 @@ static bool CheckType(DataType::Type type, Location location) {
   } else if (location.IsFpuRegisterPair()) {
     return type == DataType::Type::kFloat64;
   } else if (location.IsStackSlot()) {
-    return (DataType::IsIntegralType(type) && type != DataType::Type::kInt64)
-           || (type == DataType::Type::kFloat32)
-           || (type == DataType::Type::kReference);
+    return (DataType::IsIntegralType(type) && type != DataType::Type::kInt64) ||
+           (type == DataType::Type::kFloat32) || (type == DataType::Type::kReference);
   } else if (location.IsDoubleStackSlot()) {
     return (type == DataType::Type::kInt64) || (type == DataType::Type::kFloat64);
   } else if (location.IsConstant()) {
@@ -92,8 +91,7 @@ static bool CheckType(DataType::Type type, Location location) {
     } else if (location.GetConstant()->IsFloatConstant()) {
       return type == DataType::Type::kFloat32;
     } else {
-      return location.GetConstant()->IsDoubleConstant()
-          && (type == DataType::Type::kFloat64);
+      return location.GetConstant()->IsDoubleConstant() && (type == DataType::Type::kFloat64);
     }
   } else {
     return location.IsInvalid() || (location.GetPolicy() == Location::kAny);
@@ -107,21 +105,19 @@ static bool CheckTypeConsistency(HInstruction* instruction) {
     return true;
   }
 
-  if (locations->Out().IsUnallocated()
-      && (locations->Out().GetPolicy() == Location::kSameAsFirstInput)) {
+  if (locations->Out().IsUnallocated() &&
+      (locations->Out().GetPolicy() == Location::kSameAsFirstInput)) {
     DCHECK(CheckType(instruction->GetType(), locations->InAt(0)))
-        << instruction->GetType()
-        << " " << locations->InAt(0);
+        << instruction->GetType() << " " << locations->InAt(0);
   } else {
     DCHECK(CheckType(instruction->GetType(), locations->Out()))
-        << instruction->GetType()
-        << " " << locations->Out();
+        << instruction->GetType() << " " << locations->Out();
   }
 
   HConstInputsRef inputs = instruction->GetInputs();
   for (size_t i = 0; i < inputs.size(); ++i) {
     DCHECK(CheckType(inputs[i]->GetType(), locations->InAt(i)))
-      << inputs[i]->GetType() << " " << locations->InAt(i);
+        << inputs[i]->GetType() << " " << locations->InAt(i);
   }
 
   HEnvironment* environment = instruction->GetEnvironment();
@@ -129,10 +125,9 @@ static bool CheckTypeConsistency(HInstruction* instruction) {
     if (environment->GetInstructionAt(i) != nullptr) {
       DataType::Type type = environment->GetInstructionAt(i)->GetType();
       DCHECK(CheckType(type, environment->GetLocationAt(i)))
-        << type << " " << environment->GetLocationAt(i);
+          << type << " " << environment->GetLocationAt(i);
     } else {
-      DCHECK(environment->GetLocationAt(i).IsInvalid())
-        << environment->GetLocationAt(i);
+      DCHECK(environment->GetLocationAt(i).IsInvalid()) << environment->GetLocationAt(i);
     }
   }
   return true;
@@ -160,7 +155,9 @@ class CodeGenerator::CodeGenerationData : public DeletableArenaObject<kArenaAllo
     return ArrayRef<const std::unique_ptr<SlowPathCode>>(slow_paths_);
   }
 
-  StackMapStream* GetStackMapStream() { return &stack_map_stream_; }
+  StackMapStream* GetStackMapStream() {
+    return &stack_map_stream_;
+  }
 
   void ReserveJitStringRoot(StringReference string_reference, Handle<mirror::String> string) {
     jit_string_roots_.Overwrite(string_reference,
@@ -191,7 +188,7 @@ class CodeGenerator::CodeGenerationData : public DeletableArenaObject<kArenaAllo
     return GetNumberOfJitStringRoots() + GetNumberOfJitClassRoots();
   }
 
-  void EmitJitRoots(/*out*/std::vector<Handle<mirror::Object>>* roots)
+  void EmitJitRoots(/*out*/ std::vector<Handle<mirror::Object>>* roots)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
@@ -224,7 +221,7 @@ class CodeGenerator::CodeGenerationData : public DeletableArenaObject<kArenaAllo
 };
 
 void CodeGenerator::CodeGenerationData::EmitJitRoots(
-    /*out*/std::vector<Handle<mirror::Object>>* roots) {
+    /*out*/ std::vector<Handle<mirror::Object>>* roots) {
   DCHECK(roots->empty());
   roots->reserve(GetNumberOfJitRoots());
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
@@ -293,16 +290,15 @@ void CodeGenerator::EmitJitRootPatches(uint8_t* code ATTRIBUTE_UNUSED,
 }
 
 uint32_t CodeGenerator::GetArrayLengthOffset(HArrayLength* array_length) {
-  return array_length->IsStringLength()
-      ? mirror::String::CountOffset().Uint32Value()
-      : mirror::Array::LengthOffset().Uint32Value();
+  return array_length->IsStringLength() ? mirror::String::CountOffset().Uint32Value()
+                                        : mirror::Array::LengthOffset().Uint32Value();
 }
 
 uint32_t CodeGenerator::GetArrayDataOffset(HArrayGet* array_get) {
   DCHECK(array_get->GetType() == DataType::Type::kUint16 || !array_get->IsStringCharAt());
   return array_get->IsStringCharAt()
-      ? mirror::String::ValueOffset().Uint32Value()
-      : mirror::Array::DataOffset(DataType::Size(array_get->GetType())).Uint32Value();
+             ? mirror::String::ValueOffset().Uint32Value()
+             : mirror::Array::DataOffset(DataType::Size(array_get->GetType())).Uint32Value();
 }
 
 bool CodeGenerator::GoesToNextBlock(HBasicBlock* current, HBasicBlock* next) const {
@@ -321,9 +317,7 @@ HBasicBlock* CodeGenerator::GetNextBlockToEmit() const {
 }
 
 HBasicBlock* CodeGenerator::FirstNonEmptyBlock(HBasicBlock* block) const {
-  while (block->IsSingleJump()) {
-    block = block->GetSuccessors()[0];
-  }
+  while (block->IsSingleJump()) { block = block->GetSuccessors()[0]; }
   return block;
 }
 
@@ -349,7 +343,6 @@ class DisassemblyScope {
   HInstruction* instruction_;
   size_t start_offset_;
 };
-
 
 void CodeGenerator::GenerateSlowPaths() {
   DCHECK(code_generation_data_ != nullptr);
@@ -404,7 +397,8 @@ void CodeGenerator::Compile(CodeAllocator* allocator) {
     // Don't generate code for an empty block. Its predecessors will branch to its successor
     // directly. Also, the label of that block will not be emitted, so this helps catch
     // errors where we reference that label.
-    if (block->IsSingleJump()) continue;
+    if (block->IsSingleJump())
+      continue;
     Bind(block);
     // This ensures that we have correct native line mapping for all native instructions.
     // It is necessary to make stepping over a statement work. Otherwise, any initial
@@ -474,27 +468,24 @@ void CodeGenerator::InitializeCodeGeneration(size_t number_of_spill_slots,
   first_register_slot_in_slow_path_ = RoundUp(
       (number_of_out_slots + number_of_spill_slots) * kVRegSize, GetPreferredSlotsAlignment());
 
-  if (number_of_spill_slots == 0
-      && !HasAllocatedCalleeSaveRegisters()
-      && IsLeafMethod()
-      && !RequiresCurrentMethod()) {
+  if (number_of_spill_slots == 0 && !HasAllocatedCalleeSaveRegisters() && IsLeafMethod() &&
+      !RequiresCurrentMethod()) {
     DCHECK_EQ(maximum_safepoint_spill_size, 0u);
     SetFrameSize(CallPushesPC() ? GetWordSize() : 0);
   } else {
-    SetFrameSize(RoundUp(
-        first_register_slot_in_slow_path_
-        + maximum_safepoint_spill_size
-        + (GetGraph()->HasShouldDeoptimizeFlag() ? kShouldDeoptimizeFlagSize : 0)
-        + FrameEntrySpillSize(),
-        kStackAlignment));
+    SetFrameSize(
+        RoundUp(first_register_slot_in_slow_path_ + maximum_safepoint_spill_size +
+                    (GetGraph()->HasShouldDeoptimizeFlag() ? kShouldDeoptimizeFlagSize : 0) +
+                    FrameEntrySpillSize(),
+                kStackAlignment));
   }
 }
 
-void CodeGenerator::CreateCommonInvokeLocationSummary(
-    HInvoke* invoke, InvokeDexCallingConventionVisitor* visitor) {
+void CodeGenerator::CreateCommonInvokeLocationSummary(HInvoke* invoke,
+                                                      InvokeDexCallingConventionVisitor* visitor) {
   ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
-  LocationSummary* locations = new (allocator) LocationSummary(invoke,
-                                                               LocationSummary::kCallOnMainOnly);
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kCallOnMainOnly);
 
   for (size_t i = 0; i < invoke->GetNumberOfArguments(); i++) {
     HInstruction* input = invoke->InputAt(i);
@@ -528,8 +519,8 @@ void CodeGenerator::CreateCommonInvokeLocationSummary(
 
 void CodeGenerator::PrepareCriticalNativeArgumentMoves(
     HInvokeStaticOrDirect* invoke,
-    /*inout*/InvokeDexCallingConventionVisitor* visitor,
-    /*out*/HParallelMove* parallel_move) {
+    /*inout*/ InvokeDexCallingConventionVisitor* visitor,
+    /*out*/ HParallelMove* parallel_move) {
   LocationSummary* locations = invoke->GetLocations();
   for (size_t i = 0, num = invoke->GetNumberOfArguments(); i != num; ++i) {
     Location in_location = locations->InAt(i);
@@ -538,7 +529,7 @@ void CodeGenerator::PrepareCriticalNativeArgumentMoves(
     Location out_location = visitor->GetNextLocation(type);
     if (out_location.IsStackSlot() || out_location.IsDoubleStackSlot()) {
       // Stack arguments will need to be moved after adjusting the SP.
-      parallel_move->AddMove(in_location, out_location, type, /*instruction=*/ nullptr);
+      parallel_move->AddMove(in_location, out_location, type, /*instruction=*/nullptr);
     } else {
       // Register arguments should have been assigned their final locations for register allocation.
       DCHECK(out_location.Equals(in_location)) << in_location << " -> " << out_location;
@@ -547,7 +538,7 @@ void CodeGenerator::PrepareCriticalNativeArgumentMoves(
 }
 
 void CodeGenerator::FinishCriticalNativeFrameSetup(size_t out_frame_size,
-                                                   /*inout*/HParallelMove* parallel_move) {
+                                                   /*inout*/ HParallelMove* parallel_move) {
   DCHECK_NE(out_frame_size, 0u);
   IncreaseFrame(out_frame_size);
   // Adjust the source stack offsets by `out_frame_size`, i.e. the additional
@@ -556,9 +547,9 @@ void CodeGenerator::FinishCriticalNativeFrameSetup(size_t out_frame_size,
     MoveOperands* operands = parallel_move->MoveOperandsAt(i);
     Location source = operands->GetSource();
     if (operands->GetSource().IsStackSlot()) {
-      operands->SetSource(Location::StackSlot(source.GetStackIndex() +  out_frame_size));
+      operands->SetSource(Location::StackSlot(source.GetStackIndex() + out_frame_size));
     } else if (operands->GetSource().IsDoubleStackSlot()) {
-      operands->SetSource(Location::DoubleStackSlot(source.GetStackIndex() +  out_frame_size));
+      operands->SetSource(Location::DoubleStackSlot(source.GetStackIndex() + out_frame_size));
     }
   }
   // Emit the moves.
@@ -572,8 +563,9 @@ const char* CodeGenerator::GetCriticalNativeShorty(HInvokeStaticOrDirect* invoke
   return invoke->GetResolvedMethod()->GetShorty(shorty_len);
 }
 
-void CodeGenerator::GenerateInvokeStaticOrDirectRuntimeCall(
-    HInvokeStaticOrDirect* invoke, Location temp, SlowPathCode* slow_path) {
+void CodeGenerator::GenerateInvokeStaticOrDirectRuntimeCall(HInvokeStaticOrDirect* invoke,
+                                                            Location temp,
+                                                            SlowPathCode* slow_path) {
   MethodReference method_reference(invoke->GetMethodReference());
   MoveConstant(temp, method_reference.index);
 
@@ -684,8 +676,8 @@ void CodeGenerator::CreateStringBuilderAppendLocations(HStringBuilderAppend* ins
         stack_offset += sizeof(uint32_t);
         break;
       default:
-        LOG(FATAL) << "Unexpected arg format: 0x" << std::hex
-            << (f & StringBuilderAppend::kArgMask) << " full format: 0x" << format;
+        LOG(FATAL) << "Unexpected arg format: 0x" << std::hex << (f & StringBuilderAppend::kArgMask)
+                   << " full format: 0x" << format;
         UNREACHABLE();
     }
     f >>= StringBuilderAppend::kBitsPerArg;
@@ -703,10 +695,10 @@ void CodeGenerator::CreateUnresolvedFieldLocationSummary(
     HInstruction* field_access,
     DataType::Type field_type,
     const FieldAccessCallingConvention& calling_convention) {
-  bool is_instance = field_access->IsUnresolvedInstanceFieldGet()
-      || field_access->IsUnresolvedInstanceFieldSet();
-  bool is_get = field_access->IsUnresolvedInstanceFieldGet()
-      || field_access->IsUnresolvedStaticFieldGet();
+  bool is_instance =
+      field_access->IsUnresolvedInstanceFieldGet() || field_access->IsUnresolvedInstanceFieldSet();
+  bool is_get =
+      field_access->IsUnresolvedInstanceFieldGet() || field_access->IsUnresolvedStaticFieldGet();
 
   ArenaAllocator* allocator = field_access->GetBlock()->GetGraph()->GetAllocator();
   LocationSummary* locations =
@@ -735,8 +727,8 @@ void CodeGenerator::CreateUnresolvedFieldLocationSummary(
       locations->SetOut(calling_convention.GetReturnLocation(field_type));
     }
   } else {
-     size_t set_index = is_instance ? 1 : 0;
-     if (DataType::IsFloatingPointType(field_type)) {
+    size_t set_index = is_instance ? 1 : 0;
+    if (DataType::IsFloatingPointType(field_type)) {
       // The set value comes from a float location while the calling convention
       // expects it in a regular register location. Allocate a temp for it and
       // make the transfer at codegen.
@@ -744,7 +736,7 @@ void CodeGenerator::CreateUnresolvedFieldLocationSummary(
       locations->SetInAt(set_index, calling_convention.GetFpuLocation(field_type));
     } else {
       locations->SetInAt(set_index,
-          calling_convention.GetSetValueLocation(field_type, is_instance));
+                         calling_convention.GetSetValueLocation(field_type, is_instance));
     }
   }
 }
@@ -759,60 +751,53 @@ void CodeGenerator::GenerateUnresolvedFieldAccess(
 
   MoveConstant(locations->GetTemp(0), field_index);
 
-  bool is_instance = field_access->IsUnresolvedInstanceFieldGet()
-      || field_access->IsUnresolvedInstanceFieldSet();
-  bool is_get = field_access->IsUnresolvedInstanceFieldGet()
-      || field_access->IsUnresolvedStaticFieldGet();
+  bool is_instance =
+      field_access->IsUnresolvedInstanceFieldGet() || field_access->IsUnresolvedInstanceFieldSet();
+  bool is_get =
+      field_access->IsUnresolvedInstanceFieldGet() || field_access->IsUnresolvedStaticFieldGet();
 
   if (!is_get && DataType::IsFloatingPointType(field_type)) {
     // Copy the float value to be set into the calling convention register.
     // Note that using directly the temp location is problematic as we don't
     // support temp register pairs. To avoid boilerplate conversion code, use
     // the location from the calling convention.
-    MoveLocation(calling_convention.GetSetValueLocation(field_type, is_instance),
-                 locations->InAt(is_instance ? 1 : 0),
-                 (DataType::Is64BitType(field_type) ? DataType::Type::kInt64
-                                                    : DataType::Type::kInt32));
+    MoveLocation(
+        calling_convention.GetSetValueLocation(field_type, is_instance),
+        locations->InAt(is_instance ? 1 : 0),
+        (DataType::Is64BitType(field_type) ? DataType::Type::kInt64 : DataType::Type::kInt32));
   }
 
   QuickEntrypointEnum entrypoint = kQuickSet8Static;  // Initialize to anything to avoid warnings.
   switch (field_type) {
     case DataType::Type::kBool:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGetBooleanInstance : kQuickSet8Instance)
-          : (is_get ? kQuickGetBooleanStatic : kQuickSet8Static);
+      entrypoint = is_instance ? (is_get ? kQuickGetBooleanInstance : kQuickSet8Instance)
+                               : (is_get ? kQuickGetBooleanStatic : kQuickSet8Static);
       break;
     case DataType::Type::kInt8:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGetByteInstance : kQuickSet8Instance)
-          : (is_get ? kQuickGetByteStatic : kQuickSet8Static);
+      entrypoint = is_instance ? (is_get ? kQuickGetByteInstance : kQuickSet8Instance)
+                               : (is_get ? kQuickGetByteStatic : kQuickSet8Static);
       break;
     case DataType::Type::kInt16:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGetShortInstance : kQuickSet16Instance)
-          : (is_get ? kQuickGetShortStatic : kQuickSet16Static);
+      entrypoint = is_instance ? (is_get ? kQuickGetShortInstance : kQuickSet16Instance)
+                               : (is_get ? kQuickGetShortStatic : kQuickSet16Static);
       break;
     case DataType::Type::kUint16:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGetCharInstance : kQuickSet16Instance)
-          : (is_get ? kQuickGetCharStatic : kQuickSet16Static);
+      entrypoint = is_instance ? (is_get ? kQuickGetCharInstance : kQuickSet16Instance)
+                               : (is_get ? kQuickGetCharStatic : kQuickSet16Static);
       break;
     case DataType::Type::kInt32:
     case DataType::Type::kFloat32:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGet32Instance : kQuickSet32Instance)
-          : (is_get ? kQuickGet32Static : kQuickSet32Static);
+      entrypoint = is_instance ? (is_get ? kQuickGet32Instance : kQuickSet32Instance)
+                               : (is_get ? kQuickGet32Static : kQuickSet32Static);
       break;
     case DataType::Type::kReference:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGetObjInstance : kQuickSetObjInstance)
-          : (is_get ? kQuickGetObjStatic : kQuickSetObjStatic);
+      entrypoint = is_instance ? (is_get ? kQuickGetObjInstance : kQuickSetObjInstance)
+                               : (is_get ? kQuickGetObjStatic : kQuickSetObjStatic);
       break;
     case DataType::Type::kInt64:
     case DataType::Type::kFloat64:
-      entrypoint = is_instance
-          ? (is_get ? kQuickGet64Instance : kQuickSet64Instance)
-          : (is_get ? kQuickGet64Static : kQuickSet64Static);
+      entrypoint = is_instance ? (is_get ? kQuickGet64Instance : kQuickSet64Instance)
+                               : (is_get ? kQuickGet64Static : kQuickSet64Static);
       break;
     default:
       LOG(FATAL) << "Invalid type " << field_type;
@@ -829,8 +814,8 @@ void CodeGenerator::CreateLoadClassRuntimeCallLocationSummary(HLoadClass* cls,
                                                               Location runtime_return_location) {
   DCHECK_EQ(cls->GetLoadKind(), HLoadClass::LoadKind::kRuntimeCall);
   DCHECK_EQ(cls->InputCount(), 1u);
-  LocationSummary* locations = new (cls->GetBlock()->GetGraph()->GetAllocator()) LocationSummary(
-      cls, LocationSummary::kCallOnMainOnly);
+  LocationSummary* locations = new (cls->GetBlock()->GetGraph()->GetAllocator())
+      LocationSummary(cls, LocationSummary::kCallOnMainOnly);
   locations->SetInAt(0, Location::NoLocation());
   locations->AddTemp(runtime_type_index_location);
   locations->SetOut(runtime_return_location);
@@ -855,9 +840,8 @@ void CodeGenerator::CreateLoadMethodHandleRuntimeCallLocationSummary(
     Location runtime_proto_index_location,
     Location runtime_return_location) {
   DCHECK_EQ(method_handle->InputCount(), 1u);
-  LocationSummary* locations =
-      new (method_handle->GetBlock()->GetGraph()->GetAllocator()) LocationSummary(
-          method_handle, LocationSummary::kCallOnMainOnly);
+  LocationSummary* locations = new (method_handle->GetBlock()->GetGraph()->GetAllocator())
+      LocationSummary(method_handle, LocationSummary::kCallOnMainOnly);
   locations->SetInAt(0, Location::NoLocation());
   locations->AddTemp(runtime_proto_index_location);
   locations->SetOut(runtime_return_location);
@@ -875,9 +859,8 @@ void CodeGenerator::CreateLoadMethodTypeRuntimeCallLocationSummary(
     Location runtime_proto_index_location,
     Location runtime_return_location) {
   DCHECK_EQ(method_type->InputCount(), 1u);
-  LocationSummary* locations =
-      new (method_type->GetBlock()->GetGraph()->GetAllocator()) LocationSummary(
-          method_type, LocationSummary::kCallOnMainOnly);
+  LocationSummary* locations = new (method_type->GetBlock()->GetGraph()->GetAllocator())
+      LocationSummary(method_type, LocationSummary::kCallOnMainOnly);
   locations->SetInAt(0, Location::NoLocation());
   locations->AddTemp(runtime_proto_index_location);
   locations->SetOut(runtime_return_location);
@@ -983,8 +966,7 @@ void CodeGenerator::AllocateLocations(HInstruction* instruction) {
     if (locations != nullptr) {
       if (locations->CanCall()) {
         MarkNotLeaf();
-      } else if (locations->Intrinsified() &&
-                 instruction->IsInvokeStaticOrDirect() &&
+      } else if (locations->Intrinsified() && instruction->IsInvokeStaticOrDirect() &&
                  !instruction->AsInvokeStaticOrDirect()->HasCurrentMethodInput()) {
         // A static method call that has been fully intrinsified, and cannot call on the slow
         // path or refer to the current method directly, no longer needs current method.
@@ -1122,8 +1104,8 @@ static void CheckLoopEntriesCanBeUsedForOsr(const HGraph& graph,
   }
   ArenaVector<size_t> covered(
       loop_headers.size(), 0, graph.GetAllocator()->Adapter(kArenaAllocMisc));
-  for (const DexInstructionPcPair& pair : CodeItemInstructionAccessor(graph.GetDexFile(),
-                                                                      &code_item)) {
+  for (const DexInstructionPcPair& pair :
+       CodeItemInstructionAccessor(graph.GetDexFile(), &code_item)) {
     const uint32_t dex_pc = pair.DexPc();
     const Instruction& instruction = pair.Inst();
     if (instruction.IsBranch()) {
@@ -1173,11 +1155,8 @@ ScopedArenaVector<uint8_t> CodeGenerator::BuildStackMaps(const dex::CodeItem* co
 //    throw to this block.
 static bool NeedsVregInfo(HInstruction* instruction, bool osr) {
   HGraph* graph = instruction->GetBlock()->GetGraph();
-  return instruction->IsDeoptimize() ||
-         graph->IsDebuggable() ||
-         graph->HasMonitorOperations() ||
-         osr ||
-         instruction->CanThrowIntoCatchBlock();
+  return instruction->IsDeoptimize() || graph->IsDebuggable() || graph->HasMonitorOperations() ||
+         osr || instruction->CanThrowIntoCatchBlock();
 }
 
 void CodeGenerator::RecordPcInfo(HInstruction* instruction,
@@ -1255,21 +1234,13 @@ void CodeGenerator::RecordPcInfo(HInstruction* instruction,
   }
 
   HLoopInformation* info = instruction->GetBlock()->GetLoopInformation();
-  bool osr =
-      instruction->IsSuspendCheck() &&
-      (info != nullptr) &&
-      graph_->IsCompilingOsr() &&
-      (inlining_depth == 0);
-  StackMap::Kind kind = native_debug_info
-      ? StackMap::Kind::Debug
-      : (osr ? StackMap::Kind::OSR : StackMap::Kind::Default);
+  bool osr = instruction->IsSuspendCheck() && (info != nullptr) && graph_->IsCompilingOsr() &&
+             (inlining_depth == 0);
+  StackMap::Kind kind = native_debug_info ? StackMap::Kind::Debug
+                                          : (osr ? StackMap::Kind::OSR : StackMap::Kind::Default);
   bool needs_vreg_info = NeedsVregInfo(instruction, osr);
-  stack_map_stream->BeginStackMapEntry(outer_dex_pc,
-                                       native_pc,
-                                       register_mask,
-                                       locations->GetStackMask(),
-                                       kind,
-                                       needs_vreg_info);
+  stack_map_stream->BeginStackMapEntry(
+      outer_dex_pc, native_pc, register_mask, locations->GetStackMask(), kind, needs_vreg_info);
 
   EmitEnvironment(environment, slow_path, needs_vreg_info);
   stack_map_stream->EndStackMapEntry();
@@ -1284,9 +1255,7 @@ void CodeGenerator::RecordPcInfo(HInstruction* instruction,
         if (in_environment != nullptr) {
           DCHECK(in_environment->IsPhi() || in_environment->IsConstant());
           Location location = environment->GetLocationAt(i);
-          DCHECK(location.IsStackSlot() ||
-                 location.IsDoubleStackSlot() ||
-                 location.IsConstant() ||
+          DCHECK(location.IsStackSlot() || location.IsDoubleStackSlot() || location.IsConstant() ||
                  location.IsInvalid());
           if (location.IsStackSlot() || location.IsDoubleStackSlot()) {
             DCHECK_LT(location.GetStackIndex(), static_cast<int32_t>(GetFrameSize()));
@@ -1353,15 +1322,15 @@ void CodeGenerator::RecordCatchBlockInfo() {
         Location location = current_phi->GetLocations()->Out();
         switch (location.GetKind()) {
           case Location::kStackSlot: {
-            stack_map_stream->AddDexRegisterEntry(
-                DexRegisterLocation::Kind::kInStack, location.GetStackIndex());
+            stack_map_stream->AddDexRegisterEntry(DexRegisterLocation::Kind::kInStack,
+                                                  location.GetStackIndex());
             break;
           }
           case Location::kDoubleStackSlot: {
-            stack_map_stream->AddDexRegisterEntry(
-                DexRegisterLocation::Kind::kInStack, location.GetStackIndex());
-            stack_map_stream->AddDexRegisterEntry(
-                DexRegisterLocation::Kind::kInStack, location.GetHighStackIndex(kVRegSize));
+            stack_map_stream->AddDexRegisterEntry(DexRegisterLocation::Kind::kInStack,
+                                                  location.GetStackIndex());
+            stack_map_stream->AddDexRegisterEntry(DexRegisterLocation::Kind::kInStack,
+                                                  location.GetHighStackIndex(kVRegSize));
             ++vreg;
             DCHECK_LT(vreg, num_vregs);
             break;
@@ -1431,14 +1400,14 @@ void CodeGenerator::EmitVRegInfo(HEnvironment* environment, SlowPathCode* slow_p
 
       case Location::kDoubleStackSlot: {
         stack_map_stream->AddDexRegisterEntry(Kind::kInStack, location.GetStackIndex());
-        stack_map_stream->AddDexRegisterEntry(
-            Kind::kInStack, location.GetHighStackIndex(kVRegSize));
+        stack_map_stream->AddDexRegisterEntry(Kind::kInStack,
+                                              location.GetHighStackIndex(kVRegSize));
         ++i;
         DCHECK_LT(i, environment_size);
         break;
       }
 
-      case Location::kRegister : {
+      case Location::kRegister: {
         int id = location.reg();
         if (slow_path != nullptr && slow_path->IsCoreRegisterSaved(id)) {
           uint32_t offset = slow_path->GetStackOffsetOfCoreRegister(id);
@@ -1459,7 +1428,7 @@ void CodeGenerator::EmitVRegInfo(HEnvironment* environment, SlowPathCode* slow_p
         break;
       }
 
-      case Location::kFpuRegister : {
+      case Location::kFpuRegister: {
         int id = location.reg();
         if (slow_path != nullptr && slow_path->IsFpuRegisterSaved(id)) {
           uint32_t offset = slow_path->GetStackOffsetOfFpuRegister(id);
@@ -1480,7 +1449,7 @@ void CodeGenerator::EmitVRegInfo(HEnvironment* environment, SlowPathCode* slow_p
         break;
       }
 
-      case Location::kFpuRegisterPair : {
+      case Location::kFpuRegisterPair: {
         int low = location.low();
         int high = location.high();
         if (slow_path != nullptr && slow_path->IsFpuRegisterSaved(low)) {
@@ -1501,7 +1470,7 @@ void CodeGenerator::EmitVRegInfo(HEnvironment* environment, SlowPathCode* slow_p
         break;
       }
 
-      case Location::kRegisterPair : {
+      case Location::kRegisterPair: {
         int low = location.low();
         int high = location.high();
         if (slow_path != nullptr && slow_path->IsCoreRegisterSaved(low)) {
@@ -1535,7 +1504,8 @@ void CodeGenerator::EmitVRegInfo(HEnvironment* environment, SlowPathCode* slow_p
 void CodeGenerator::EmitEnvironment(HEnvironment* environment,
                                     SlowPathCode* slow_path,
                                     bool needs_vreg_info) {
-  if (environment == nullptr) return;
+  if (environment == nullptr)
+    return;
 
   StackMapStream* stack_map_stream = GetStackMapStream();
   bool emit_inline_info = environment->GetParent() != nullptr;
@@ -1664,16 +1634,11 @@ void CodeGenerator::ValidateInvokeRuntime(QuickEntrypointEnum entrypoint,
              // When (non-Baker) read barriers are enabled, some instructions
              // use a slow path to emit a read barrier, which does not trigger
              // GC.
-             (kEmitCompilerReadBarrier &&
-              !kUseBakerReadBarrier &&
-              (instruction->IsInstanceFieldGet() ||
-               instruction->IsPredicatedInstanceFieldGet() ||
-               instruction->IsStaticFieldGet() ||
-               instruction->IsArrayGet() ||
-               instruction->IsLoadClass() ||
-               instruction->IsLoadString() ||
-               instruction->IsInstanceOf() ||
-               instruction->IsCheckCast() ||
+             (kEmitCompilerReadBarrier && !kUseBakerReadBarrier &&
+              (instruction->IsInstanceFieldGet() || instruction->IsPredicatedInstanceFieldGet() ||
+               instruction->IsStaticFieldGet() || instruction->IsArrayGet() ||
+               instruction->IsLoadClass() || instruction->IsLoadString() ||
+               instruction->IsInstanceOf() || instruction->IsCheckCast() ||
                (instruction->IsInvokeVirtual() && instruction->GetLocations()->Intrinsified()))))
           << "instruction->DebugName()=" << instruction->DebugName()
           << " instruction->GetSideEffects().ToString()="
@@ -1687,10 +1652,8 @@ void CodeGenerator::ValidateInvokeRuntime(QuickEntrypointEnum entrypoint,
   }
 
   // Check the coherency of leaf information.
-  DCHECK(instruction->IsSuspendCheck()
-         || ((slow_path != nullptr) && slow_path->IsFatal())
-         || instruction->GetLocations()->CanCall()
-         || !IsLeafMethod())
+  DCHECK(instruction->IsSuspendCheck() || ((slow_path != nullptr) && slow_path->IsFatal()) ||
+         instruction->GetLocations()->CanCall() || !IsLeafMethod())
       << instruction->DebugName() << ((slow_path != nullptr) ? slow_path->GetDescription() : "");
 }
 
@@ -1703,15 +1666,10 @@ void CodeGenerator::ValidateInvokeRuntimeWithoutRecordingPcInfo(HInstruction* in
   // instructions is expected to invoke the runtime without recording
   // PC-related information.
   DCHECK(kUseBakerReadBarrier);
-  DCHECK(instruction->IsInstanceFieldGet() ||
-         instruction->IsPredicatedInstanceFieldGet() ||
-         instruction->IsStaticFieldGet() ||
-         instruction->IsArrayGet() ||
-         instruction->IsArraySet() ||
-         instruction->IsLoadClass() ||
-         instruction->IsLoadString() ||
-         instruction->IsInstanceOf() ||
-         instruction->IsCheckCast() ||
+  DCHECK(instruction->IsInstanceFieldGet() || instruction->IsPredicatedInstanceFieldGet() ||
+         instruction->IsStaticFieldGet() || instruction->IsArrayGet() ||
+         instruction->IsArraySet() || instruction->IsLoadClass() || instruction->IsLoadString() ||
+         instruction->IsInstanceOf() || instruction->IsCheckCast() ||
          (instruction->IsInvoke() && instruction->GetLocations()->Intrinsified()))
       << "instruction->DebugName()=" << instruction->DebugName()
       << " slow_path->GetDescription()=" << slow_path->GetDescription();
@@ -1797,9 +1755,8 @@ void CodeGenerator::CreateSystemArrayCopyLocationSummary(HInvoke* invoke) {
   }
 
   ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
-  LocationSummary* locations = new (allocator) LocationSummary(invoke,
-                                                               LocationSummary::kCallOnSlowPath,
-                                                               kIntrinsified);
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kCallOnSlowPath, kIntrinsified);
   // arraycopy(Object src, int src_pos, Object dest, int dest_pos, int length).
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RegisterOrConstant(invoke->InputAt(1)));
@@ -1814,17 +1771,21 @@ void CodeGenerator::CreateSystemArrayCopyLocationSummary(HInvoke* invoke) {
 
 void CodeGenerator::EmitJitRoots(uint8_t* code,
                                  const uint8_t* roots_data,
-                                 /*out*/std::vector<Handle<mirror::Object>>* roots) {
+                                 /*out*/ std::vector<Handle<mirror::Object>>* roots) {
   code_generation_data_->EmitJitRoots(roots);
   EmitJitRootPatches(code, roots_data);
 }
 
 QuickEntrypointEnum CodeGenerator::GetArrayAllocationEntrypoint(HNewArray* new_array) {
   switch (new_array->GetComponentSizeShift()) {
-    case 0: return kQuickAllocArrayResolved8;
-    case 1: return kQuickAllocArrayResolved16;
-    case 2: return kQuickAllocArrayResolved32;
-    case 3: return kQuickAllocArrayResolved64;
+    case 0:
+      return kQuickAllocArrayResolved8;
+    case 1:
+      return kQuickAllocArrayResolved16;
+    case 2:
+      return kQuickAllocArrayResolved32;
+    case 3:
+      return kQuickAllocArrayResolved64;
   }
   LOG(FATAL) << "Unreachable";
   UNREACHABLE();

@@ -117,7 +117,7 @@ void StackMapStream::BeginStackMapEntry(uint32_t dex_pc,
   lazy_stack_masks_.push_back(stack_mask);
   current_inline_infos_.clear();
   current_dex_registers_.clear();
-  expected_num_dex_registers_ = needs_vreg_info  ? num_dex_registers_ : 0u;
+  expected_num_dex_registers_ = needs_vreg_info ? num_dex_registers_ : 0u;
 
   if (kVerifyStackMaps) {
     size_t stack_map_index = stack_maps_.size();
@@ -125,8 +125,8 @@ void StackMapStream::BeginStackMapEntry(uint32_t dex_pc,
     // Parameters and local variables will be captured(stored) by the lambda "[=]".
     dchecks_.emplace_back([=](const CodeInfo& code_info) {
       if (kind == StackMap::Kind::Default || kind == StackMap::Kind::OSR) {
-        StackMap stack_map = code_info.GetStackMapForNativePcOffset(native_pc_offset,
-                                                                    instruction_set_);
+        StackMap stack_map =
+            code_info.GetStackMapForNativePcOffset(native_pc_offset, instruction_set_);
         CHECK_EQ(stack_map.Row(), stack_map_index);
       } else if (kind == StackMap::Kind::Catch) {
         StackMap stack_map = code_info.GetCatchStackMapForDexPc(dex_pc);
@@ -264,14 +264,12 @@ void StackMapStream::CreateDexRegisterMap() {
 
   // Set the mask and map for the current StackMap (which includes inlined registers).
   if (temp_dex_register_mask_.GetNumberOfBits() != 0) {
-    current_stack_map_[StackMap::kDexRegisterMaskIndex] =
-        dex_register_masks_.Dedup(temp_dex_register_mask_.GetRawStorage(),
-                                  temp_dex_register_mask_.GetNumberOfBits());
+    current_stack_map_[StackMap::kDexRegisterMaskIndex] = dex_register_masks_.Dedup(
+        temp_dex_register_mask_.GetRawStorage(), temp_dex_register_mask_.GetNumberOfBits());
   }
   if (!current_dex_registers_.empty()) {
     current_stack_map_[StackMap::kDexRegisterMapIndex] =
-        dex_register_maps_.Dedup(temp_dex_register_map_.data(),
-                                 temp_dex_register_map_.size());
+        dex_register_maps_.Dedup(temp_dex_register_map_.data(), temp_dex_register_map_.size());
   }
 
   if (kVerifyStackMaps) {
@@ -312,12 +310,12 @@ ScopedArenaVector<uint8_t> StackMapStream::Encode() {
   ScopedArenaVector<uint8_t> buffer(allocator_->Adapter(kArenaAllocStackMapStream));
   BitMemoryWriter<ScopedArenaVector<uint8_t>> out(&buffer);
   out.WriteInterleavedVarints(std::array<uint32_t, CodeInfo::kNumHeaders>{
-    flags,
-    packed_frame_size_,
-    core_spill_mask_,
-    fp_spill_mask_,
-    num_dex_registers_,
-    bit_table_flags,
+      flags,
+      packed_frame_size_,
+      core_spill_mask_,
+      fp_spill_mask_,
+      num_dex_registers_,
+      bit_table_flags,
   });
   ForEachBitTable([&out](size_t, auto bit_table) {
     if (bit_table->size() != 0) {  // Skip empty bit-tables.
@@ -333,9 +331,7 @@ ScopedArenaVector<uint8_t> StackMapStream::Encode() {
 
   // Verify all written data (usually only in debug builds).
   if (kVerifyStackMaps) {
-    for (const auto& dcheck : dchecks_) {
-      dcheck(code_info);
-    }
+    for (const auto& dcheck : dchecks_) { dcheck(code_info); }
   }
 
   return buffer;

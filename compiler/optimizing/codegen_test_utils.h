@@ -50,9 +50,10 @@ typedef CodeGenerator* (*CreateCodegenFn)(HGraph*, const CompilerOptions&);
 class CodegenTargetConfig {
  public:
   CodegenTargetConfig(InstructionSet isa, CreateCodegenFn create_codegen)
-      : isa_(isa), create_codegen_(create_codegen) {
+      : isa_(isa), create_codegen_(create_codegen) {}
+  InstructionSet GetInstructionSet() const {
+    return isa_;
   }
-  InstructionSet GetInstructionSet() const { return isa_; }
   CodeGenerator* CreateCodeGenerator(HGraph* graph, const CompilerOptions& compiler_options) {
     return create_codegen_(graph, compiler_options);
   }
@@ -164,7 +165,7 @@ class TestCodeGeneratorX86 : public x86::CodeGeneratorX86 {
 
 class InternalCodeAllocator : public CodeAllocator {
  public:
-  InternalCodeAllocator() : size_(0) { }
+  InternalCodeAllocator() : size_(0) {}
 
   uint8_t* Allocate(size_t size) override {
     size_ = size;
@@ -172,7 +173,9 @@ class InternalCodeAllocator : public CodeAllocator {
     return memory_.get();
   }
 
-  size_t GetSize() const { return size_; }
+  size_t GetSize() const {
+    return size_;
+  }
   ArrayRef<const uint8_t> GetMemory() const override {
     return ArrayRef<const uint8_t>(memory_.get(), size_);
   }
@@ -186,8 +189,8 @@ class InternalCodeAllocator : public CodeAllocator {
 
 static bool CanExecuteOnHardware(InstructionSet target_isa) {
   return (target_isa == kRuntimeISA)
-      // Handle the special case of ARM, with two instructions sets (ARM32 and Thumb-2).
-      || (kRuntimeISA == InstructionSet::kArm && target_isa == InstructionSet::kThumb2);
+         // Handle the special case of ARM, with two instructions sets (ARM32 and Thumb-2).
+         || (kRuntimeISA == InstructionSet::kArm && target_isa == InstructionSet::kThumb2);
 }
 
 static bool CanExecute(InstructionSet target_isa) {
@@ -250,8 +253,12 @@ static void Run(const InternalCodeAllocator& allocator,
 
   struct CodeHolder : CommonCompilerTestImpl {
    protected:
-    ClassLinker* GetClassLinker() override { return nullptr; }
-    Runtime* GetRuntime() override { return nullptr; }
+    ClassLinker* GetClassLinker() override {
+      return nullptr;
+    }
+    Runtime* GetRuntime() override {
+      return nullptr;
+    }
   };
   CodeHolder code_holder;
   const void* code_ptr =
@@ -270,9 +277,7 @@ static void ValidateGraph(HGraph* graph) {
   GraphChecker graph_checker(graph);
   graph_checker.Run();
   if (!graph_checker.IsValid()) {
-    for (const std::string& error : graph_checker.GetErrors()) {
-      std::cout << error << std::endl;
-    }
+    for (const std::string& error : graph_checker.GetErrors()) { std::cout << error << std::endl; }
   }
   ASSERT_TRUE(graph_checker.IsValid());
 }
@@ -315,13 +320,14 @@ static void RunCode(CodegenTargetConfig target_config,
                     std::function<void(HGraph*)> hook_before_codegen,
                     bool has_result,
                     Expected expected) {
-  std::unique_ptr<CodeGenerator> codegen(target_config.CreateCodeGenerator(graph,
-                                                                           compiler_options));
+  std::unique_ptr<CodeGenerator> codegen(
+      target_config.CreateCodeGenerator(graph, compiler_options));
   RunCode(codegen.get(), graph, hook_before_codegen, has_result, expected);
 }
 
 #ifdef ART_ENABLE_CODEGEN_arm
-inline CodeGenerator* create_codegen_arm_vixl32(HGraph* graph, const CompilerOptions& compiler_options) {
+inline CodeGenerator* create_codegen_arm_vixl32(HGraph* graph,
+                                                const CompilerOptions& compiler_options) {
   return new (graph->GetAllocator()) TestCodeGeneratorARMVIXL(graph, compiler_options);
 }
 #endif
@@ -339,7 +345,8 @@ inline CodeGenerator* create_codegen_x86(HGraph* graph, const CompilerOptions& c
 #endif
 
 #ifdef ART_ENABLE_CODEGEN_x86_64
-inline CodeGenerator* create_codegen_x86_64(HGraph* graph, const CompilerOptions& compiler_options) {
+inline CodeGenerator* create_codegen_x86_64(HGraph* graph,
+                                            const CompilerOptions& compiler_options) {
   return new (graph->GetAllocator()) x86_64::CodeGeneratorX86_64(graph, compiler_options);
 }
 #endif

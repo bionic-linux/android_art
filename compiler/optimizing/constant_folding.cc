@@ -22,8 +22,7 @@ namespace art {
 // as constants.
 class HConstantFoldingVisitor : public HGraphDelegateVisitor {
  public:
-  explicit HConstantFoldingVisitor(HGraph* graph)
-      : HGraphDelegateVisitor(graph) {}
+  explicit HConstantFoldingVisitor(HGraph* graph) : HGraphDelegateVisitor(graph) {}
 
  private:
   void VisitBasicBlock(HBasicBlock* block) override;
@@ -67,7 +66,6 @@ class InstructionWithAbsorbingInputSimplifier : public HGraphVisitor {
   void VisitXor(HXor* instruction) override;
 };
 
-
 bool HConstantFolding::Run() {
   HConstantFoldingVisitor visitor(graph_);
   // Process basic blocks in reverse post-order in the dominator tree,
@@ -77,7 +75,6 @@ bool HConstantFolding::Run() {
   visitor.VisitReversePostOrder();
   return true;
 }
-
 
 void HConstantFoldingVisitor::VisitBasicBlock(HBasicBlock* block) {
   // Traverse this block's instructions (phis don't need to be
@@ -129,7 +126,6 @@ void HConstantFoldingVisitor::VisitDivZeroCheck(HDivZeroCheck* inst) {
     inst->GetBlock()->RemoveInstruction(inst);
   }
 }
-
 
 void InstructionWithAbsorbingInputSimplifier::VisitShift(HBinaryOperation* instruction) {
   DCHECK(instruction->IsShl() || instruction->IsShr() || instruction->IsUShr());
@@ -261,8 +257,8 @@ void InstructionWithAbsorbingInputSimplifier::VisitCompare(HCompare* instruction
       //    CONSTANT +1 (gt bias)
       // or
       //    CONSTANT -1 (lt bias)
-      instruction->ReplaceWith(GetGraph()->GetConstant(DataType::Type::kInt32,
-                                                       (instruction->IsGtBias() ? 1 : -1)));
+      instruction->ReplaceWith(
+          GetGraph()->GetConstant(DataType::Type::kInt32, (instruction->IsGtBias() ? 1 : -1)));
       instruction->GetBlock()->RemoveInstruction(instruction);
     }
   }
@@ -271,8 +267,7 @@ void InstructionWithAbsorbingInputSimplifier::VisitCompare(HCompare* instruction
 void InstructionWithAbsorbingInputSimplifier::VisitMul(HMul* instruction) {
   HConstant* input_cst = instruction->GetConstantRight();
   DataType::Type type = instruction->GetType();
-  if (DataType::IsIntOrLongType(type) &&
-      (input_cst != nullptr) && input_cst->IsArithmeticZero()) {
+  if (DataType::IsIntOrLongType(type) && (input_cst != nullptr) && input_cst->IsArithmeticZero()) {
     // Replace code looking like
     //    MUL dst, src, 0
     // with
@@ -322,8 +317,7 @@ void InstructionWithAbsorbingInputSimplifier::VisitRem(HRem* instruction) {
   }
 
   HConstant* cst_right = instruction->GetRight()->AsConstant();
-  if (((cst_right != nullptr) &&
-       (cst_right->IsOne() || cst_right->IsMinusOne())) ||
+  if (((cst_right != nullptr) && (cst_right->IsOne() || cst_right->IsMinusOne())) ||
       (instruction->GetLeft() == instruction->GetRight())) {
     // Replace code looking like
     //    REM dst, src, 1

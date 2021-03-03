@@ -28,8 +28,7 @@ namespace x86_64 {
 class InstructionSimplifierX86_64 : public HOptimization {
  public:
   InstructionSimplifierX86_64(HGraph* graph, CodeGenerator* codegen, OptimizingCompilerStats* stats)
-      : HOptimization(graph, kInstructionSimplifierX86_64PassName, stats),
-        codegen_(codegen) {}
+      : HOptimization(graph, kInstructionSimplifierX86_64PassName, stats), codegen_(codegen) {}
 
   static constexpr const char* kInstructionSimplifierX86_64PassName =
       "instruction_simplifier_x86_64";
@@ -44,5 +43,3 @@ class InstructionSimplifierX86_64 : public HOptimization {
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_INSTRUCTION_SIMPLIFIER_X86_64_H_
-
-

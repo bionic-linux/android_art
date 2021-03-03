@@ -42,17 +42,17 @@ static ::std::vector<CodegenTargetConfig> GetTargetConfigs() {
   ::std::vector<CodegenTargetConfig> v;
   ::std::vector<CodegenTargetConfig> test_config_candidates = {
 #ifdef ART_ENABLE_CODEGEN_arm
-    // TODO: Should't this be `kThumb2` instead of `kArm` here?
-    CodegenTargetConfig(InstructionSet::kArm, create_codegen_arm_vixl32),
+      // TODO: Should't this be `kThumb2` instead of `kArm` here?
+      CodegenTargetConfig(InstructionSet::kArm, create_codegen_arm_vixl32),
 #endif
 #ifdef ART_ENABLE_CODEGEN_arm64
-    CodegenTargetConfig(InstructionSet::kArm64, create_codegen_arm64),
+      CodegenTargetConfig(InstructionSet::kArm64, create_codegen_arm64),
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86
-    CodegenTargetConfig(InstructionSet::kX86, create_codegen_x86),
+      CodegenTargetConfig(InstructionSet::kX86, create_codegen_x86),
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86_64
-    CodegenTargetConfig(InstructionSet::kX86_64, create_codegen_x86_64),
+      CodegenTargetConfig(InstructionSet::kX86_64, create_codegen_x86_64),
 #endif
   };
 
@@ -67,7 +67,7 @@ static ::std::vector<CodegenTargetConfig> GetTargetConfigs() {
 
 class SchedulerTest : public OptimizingUnitTest {
  public:
-  SchedulerTest() : graph_(CreateGraph()) { }
+  SchedulerTest() : graph_(CreateGraph()) {}
 
   // Build scheduling graph, and run target specific scheduling on it.
   void TestBuildDependencyGraphAndSchedule(HScheduler* scheduler) {
@@ -92,10 +92,8 @@ class SchedulerTest : public OptimizingUnitTest {
     // array_get2    ArrayGet [array, add1]
     // array_set2    ArraySet [array, add1, add2]
 
-    HInstruction* array = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                           dex::TypeIndex(0),
-                                                           0,
-                                                           DataType::Type::kReference);
+    HInstruction* array = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
     HInstruction* c1 = graph_->GetIntConstant(1);
     HInstruction* c2 = graph_->GetIntConstant(10);
     HInstruction* add1 = new (GetAllocator()) HAdd(DataType::Type::kInt32, c1, c2);
@@ -116,24 +114,12 @@ class SchedulerTest : public OptimizingUnitTest {
 
     entry->AddInstruction(array);
 
-    HInstruction* block_instructions[] = {add1,
-                                          add2,
-                                          mul,
-                                          div_check,
-                                          div,
-                                          array_get1,
-                                          array_set1,
-                                          array_get2,
-                                          array_set2};
-    for (HInstruction* instr : block_instructions) {
-      block1->AddInstruction(instr);
-    }
+    HInstruction* block_instructions[] = {
+        add1, add2, mul, div_check, div, array_get1, array_set1, array_get2, array_set2};
+    for (HInstruction* instr : block_instructions) { block1->AddInstruction(instr); }
 
-    HEnvironment* environment = new (GetAllocator()) HEnvironment(GetAllocator(),
-                                                                  2,
-                                                                  graph_->GetArtMethod(),
-                                                                  0,
-                                                                  div_check);
+    HEnvironment* environment =
+        new (GetAllocator()) HEnvironment(GetAllocator(), 2, graph_->GetArtMethod(), 0, div_check);
     div_check->SetRawEnvironment(environment);
     environment->SetRawEnvAt(0, add2);
     add2->AddEnvUseAt(div_check->GetEnvironment(), 0);
@@ -190,11 +176,13 @@ class SchedulerTest : public OptimizingUnitTest {
 
       std::unique_ptr<CompilerOptions> compiler_options =
           CommonCompilerTest::CreateCompilerOptions(target_config.GetInstructionSet(), "default");
-      RunCode(target_config,
-              *compiler_options,
-              graph,
-              [](HGraph* graph_arg) { RemoveSuspendChecks(graph_arg); },
-              has_result, expected);
+      RunCode(
+          target_config,
+          *compiler_options,
+          graph,
+          [](HGraph* graph_arg) { RemoveSuspendChecks(graph_arg); },
+          has_result,
+          expected);
     }
   }
 
@@ -204,22 +192,14 @@ class SchedulerTest : public OptimizingUnitTest {
     graph_->SetEntryBlock(entry);
     graph_->BuildDominatorTree();
 
-    HInstruction* arr = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                             dex::TypeIndex(0),
-                                                             0,
-                                                             DataType::Type::kReference);
-    HInstruction* i = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                           dex::TypeIndex(1),
-                                                           1,
-                                                           DataType::Type::kInt32);
-    HInstruction* j = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                           dex::TypeIndex(1),
-                                                           1,
-                                                           DataType::Type::kInt32);
-    HInstruction* object = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                                dex::TypeIndex(0),
-                                                                0,
-                                                                DataType::Type::kReference);
+    HInstruction* arr = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
+    HInstruction* i = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+    HInstruction* j = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
+    HInstruction* object = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
     HInstruction* c0 = graph_->GetIntConstant(0);
     HInstruction* c1 = graph_->GetIntConstant(1);
     HInstruction* add0 = new (GetAllocator()) HAdd(DataType::Type::kInt32, i, c0);
@@ -269,9 +249,7 @@ class SchedulerTest : public OptimizingUnitTest {
                                           arr_set_j,
                                           set_field10};
 
-    for (HInstruction* instr : block_instructions) {
-      entry->AddInstruction(instr);
-    }
+    for (HInstruction* instr : block_instructions) { entry->AddInstruction(instr); }
 
     HeapLocationCollector heap_location_collector(
         graph_, GetScopedAllocator(), LoadStoreAnalysisType::kBasic);
@@ -354,7 +332,7 @@ class SchedulerTest : public OptimizingUnitTest {
   class TestSchedulingGraph : public SchedulingGraph {
    public:
     explicit TestSchedulingGraph(ScopedArenaAllocator* allocator,
-                                 const HeapLocationCollector *heap_location_collector = nullptr)
+                                 const HeapLocationCollector* heap_location_collector = nullptr)
         : SchedulingGraph(allocator, heap_location_collector) {}
 
     bool HasImmediateDataDependency(const HInstruction* instruction,
@@ -436,29 +414,36 @@ TEST_F(SchedulerTest, RandomScheduling) {
   //  return result;
   //
   const std::vector<uint16_t> data = SIX_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 << 12 | 2 << 8,          // const/4 v2, #int 0
-    Instruction::CONST_HIGH16 | 0 << 8, 0x4120,       // const/high16 v0, #float 10.0 // #41200000
-    Instruction::CONST_4 | 1 << 12 | 1 << 8,          // const/4 v1, #int 1
-    Instruction::CONST_16 | 5 << 8, 0x000a,           // const/16 v5, #int 10
-    Instruction::IF_GE | 5 << 12 | 1 << 8, 0x0014,    // if-ge v1, v5, 001a // +0014
-    Instruction::CONST_HIGH16 | 5 << 8, 0x3f80,       // const/high16 v5, #float 1.0 // #3f800000
-    Instruction::ADD_FLOAT_2ADDR | 5 << 12 | 0 << 8,  // add-float/2addr v0, v5
-    Instruction::SHR_INT | 3 << 8, 1 << 8 | 2 ,       // shr-int v3, v2, v1
-    Instruction::MUL_INT | 4 << 8, 1 << 8 | 2,        // mul-int v4, v2, v1
-    Instruction::ADD_INT | 5 << 8, 3 << 8 | 2,        // add-int v5, v2, v3
-    Instruction::SUB_INT | 2 << 8, 4 << 8 | 5,        // sub-int v2, v5, v4
-    Instruction::INT_TO_FLOAT | 1 << 12 | 5 << 8,     // int-to-float v5, v1
-    Instruction::DIV_FLOAT_2ADDR | 5 << 12 | 0 << 8,  // div-float/2addr v0, v5
-    Instruction::FLOAT_TO_INT | 0 << 12 | 5 << 8,     // float-to-int v5, v0
-    Instruction::ADD_INT_2ADDR | 5 << 12 | 2 << 8,    // add-int/2addr v2, v5
-    Instruction::ADD_INT_LIT8 | 1 << 8, 1 << 8 | 1,   // add-int/lit8 v1, v1, #int 1 // #01
-    Instruction::GOTO | 0xeb << 8,                    // goto 0004 // -0015
-    Instruction::RETURN | 2 << 8);                    // return v2
+      Instruction::CONST_4 | 0 << 12 | 2 << 8,  // const/4 v2, #int 0
+      Instruction::CONST_HIGH16 | 0 << 8,
+      0x4120,                                   // const/high16 v0, #float 10.0 // #41200000
+      Instruction::CONST_4 | 1 << 12 | 1 << 8,  // const/4 v1, #int 1
+      Instruction::CONST_16 | 5 << 8,
+      0x000a,  // const/16 v5, #int 10
+      Instruction::IF_GE | 5 << 12 | 1 << 8,
+      0x0014,  // if-ge v1, v5, 001a // +0014
+      Instruction::CONST_HIGH16 | 5 << 8,
+      0x3f80,                                           // const/high16 v5, #float 1.0 // #3f800000
+      Instruction::ADD_FLOAT_2ADDR | 5 << 12 | 0 << 8,  // add-float/2addr v0, v5
+      Instruction::SHR_INT | 3 << 8,
+      1 << 8 | 2,  // shr-int v3, v2, v1
+      Instruction::MUL_INT | 4 << 8,
+      1 << 8 | 2,  // mul-int v4, v2, v1
+      Instruction::ADD_INT | 5 << 8,
+      3 << 8 | 2,  // add-int v5, v2, v3
+      Instruction::SUB_INT | 2 << 8,
+      4 << 8 | 5,                                       // sub-int v2, v5, v4
+      Instruction::INT_TO_FLOAT | 1 << 12 | 5 << 8,     // int-to-float v5, v1
+      Instruction::DIV_FLOAT_2ADDR | 5 << 12 | 0 << 8,  // div-float/2addr v0, v5
+      Instruction::FLOAT_TO_INT | 0 << 12 | 5 << 8,     // float-to-int v5, v0
+      Instruction::ADD_INT_2ADDR | 5 << 12 | 2 << 8,    // add-int/2addr v2, v5
+      Instruction::ADD_INT_LIT8 | 1 << 8,
+      1 << 8 | 1,                     // add-int/lit8 v1, v1, #int 1 // #01
+      Instruction::GOTO | 0xeb << 8,  // goto 0004 // -0015
+      Instruction::RETURN | 2 << 8);  // return v2
 
   constexpr int kNumberOfRuns = 10;
-  for (int i = 0; i < kNumberOfRuns; ++i) {
-    CompileWithRandomSchedulerAndRun(data, true, 138774);
-  }
+  for (int i = 0; i < kNumberOfRuns; ++i) { CompileWithRandomSchedulerAndRun(data, true, 138774); }
 }
 
 }  // namespace art

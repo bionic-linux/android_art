@@ -17,10 +17,9 @@
 #ifndef ART_COMPILER_UTILS_ATOMIC_DEX_REF_MAP_INL_H_
 #define ART_COMPILER_UTILS_ATOMIC_DEX_REF_MAP_INL_H_
 
-#include "atomic_dex_ref_map.h"
-
 #include <type_traits>
 
+#include "atomic_dex_ref_map.h"
 #include "dex/class_reference.h"
 #include "dex/dex_file-inl.h"
 #include "dex/method_reference.h"
@@ -33,8 +32,8 @@ inline size_t AtomicDexRefMap<DexFileReferenceType, Value>::NumberOfDexIndices(
     const DexFile* dex_file) {
   // TODO: Use specialization for this? Not sure if worth it.
   static_assert(std::is_same<DexFileReferenceType, MethodReference>::value ||
-                std::is_same<DexFileReferenceType, ClassReference>::value ||
-                std::is_same<DexFileReferenceType, TypeReference>::value,
+                    std::is_same<DexFileReferenceType, ClassReference>::value ||
+                    std::is_same<DexFileReferenceType, TypeReference>::value,
                 "invalid index type");
   if (std::is_same<DexFileReferenceType, MethodReference>::value) {
     return dex_file->NumMethodIds();
@@ -50,17 +49,17 @@ inline size_t AtomicDexRefMap<DexFileReferenceType, Value>::NumberOfDexIndices(
 
 template <typename DexFileReferenceType, typename Value>
 inline typename AtomicDexRefMap<DexFileReferenceType, Value>::InsertResult
-    AtomicDexRefMap<DexFileReferenceType, Value>::Insert(const DexFileReferenceType& ref,
-                                                         const Value& expected,
-                                                         const Value& desired) {
+AtomicDexRefMap<DexFileReferenceType, Value>::Insert(const DexFileReferenceType& ref,
+                                                     const Value& expected,
+                                                     const Value& desired) {
   ElementArray* const array = GetArray(ref.dex_file);
   if (array == nullptr) {
     return kInsertResultInvalidDexFile;
   }
   DCHECK_LT(ref.index, array->size());
   return (*array)[ref.index].CompareAndSetStrongSequentiallyConsistent(expected, desired)
-      ? kInsertResultSuccess
-      : kInsertResultCASFailure;
+             ? kInsertResultSuccess
+             : kInsertResultCASFailure;
 }
 
 template <typename DexFileReferenceType, typename Value>
@@ -102,19 +101,20 @@ inline void AtomicDexRefMap<DexFileReferenceType, Value>::AddDexFiles(
 
 template <typename DexFileReferenceType, typename Value>
 inline typename AtomicDexRefMap<DexFileReferenceType, Value>::ElementArray*
-    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) {
+AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) {
   auto it = arrays_.find(dex_file);
   return (it != arrays_.end()) ? &it->second : nullptr;
 }
 
 template <typename DexFileReferenceType, typename Value>
 inline const typename AtomicDexRefMap<DexFileReferenceType, Value>::ElementArray*
-    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) const {
+AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) const {
   auto it = arrays_.find(dex_file);
   return (it != arrays_.end()) ? &it->second : nullptr;
 }
 
-template <typename DexFileReferenceType, typename Value> template <typename Visitor>
+template <typename DexFileReferenceType, typename Value>
+template <typename Visitor>
 inline void AtomicDexRefMap<DexFileReferenceType, Value>::Visit(const Visitor& visitor) {
   for (auto& pair : arrays_) {
     const DexFile* dex_file = pair.first;
@@ -128,9 +128,7 @@ inline void AtomicDexRefMap<DexFileReferenceType, Value>::Visit(const Visitor& v
 template <typename DexFileReferenceType, typename Value>
 inline void AtomicDexRefMap<DexFileReferenceType, Value>::ClearEntries() {
   for (auto& it : arrays_) {
-    for (auto& element : it.second) {
-      element.store(nullptr, std::memory_order_relaxed);
-    }
+    for (auto& element : it.second) { element.store(nullptr, std::memory_order_relaxed); }
   }
 }
 
@@ -139,9 +137,7 @@ inline std::vector<const DexFile*> AtomicDexRefMap<DexFileReferenceType, Value>:
     const {
   std::vector<const DexFile*> result;
   result.reserve(arrays_.size());
-  for (auto& it : arrays_) {
-    result.push_back(it.first);
-  }
+  for (auto& it : arrays_) { result.push_back(it.first); }
   return result;
 }
 

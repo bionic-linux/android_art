@@ -29,10 +29,9 @@ namespace x86 {
 class PcRelativeFixups : public HOptimization {
  public:
   PcRelativeFixups(HGraph* graph, CodeGenerator* codegen, OptimizingCompilerStats* stats)
-      : HOptimization(graph, kPcRelativeFixupsX86PassName, stats),
-        codegen_(codegen) {}
+      : HOptimization(graph, kPcRelativeFixupsX86PassName, stats), codegen_(codegen) {}
 
-  static constexpr const char* kPcRelativeFixupsX86PassName  = "pc_relative_fixups_x86";
+  static constexpr const char* kPcRelativeFixupsX86PassName = "pc_relative_fixups_x86";
 
   bool Run() override;
 

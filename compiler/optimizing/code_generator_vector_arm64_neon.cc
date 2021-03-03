@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-#include "code_generator_arm64.h"
-
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "base/bit_utils_iterator.h"
+#include "code_generator_arm64.h"
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
 
@@ -61,10 +60,8 @@ inline bool NEONCanEncodeConstantAsImmediate(HConstant* constant, HInstruction* 
 //  - constant location - if 'constant' is an actual constant and its value can be
 //    encoded into the instruction.
 //  - register location otherwise.
-inline Location NEONEncodableConstantOrRegister(HInstruction* constant,
-                                                HInstruction* instr) {
-  if (constant->IsConstant()
-      && NEONCanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
+inline Location NEONEncodableConstantOrRegister(HInstruction* constant, HInstruction* instr) {
+  if (constant->IsConstant() && NEONCanEncodeConstantAsImmediate(constant->AsConstant(), instr)) {
     return Location::ConstantLocation(constant->AsConstant());
   }
 
@@ -223,9 +220,9 @@ static void CreateVecUnOpLocations(ArenaAllocator* allocator, HVecUnaryOperation
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
       locations->SetInAt(0, Location::RequiresFpuRegister());
-      locations->SetOut(Location::RequiresFpuRegister(),
-                        instruction->IsVecNot() ? Location::kOutputOverlap
-                                                : Location::kNoOutputOverlap);
+      locations->SetOut(
+          Location::RequiresFpuRegister(),
+          instruction->IsVecNot() ? Location::kOutputOverlap : Location::kNoOutputOverlap);
       break;
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
@@ -519,27 +516,23 @@ void InstructionCodeGeneratorARM64Neon::VisitVecHalvingAdd(HVecHalvingAdd* instr
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Urhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
-          : __ Uhadd(dst.V16B(), lhs.V16B(), rhs.V16B());
+      instruction->IsRounded() ? __ Urhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
+                               : __ Uhadd(dst.V16B(), lhs.V16B(), rhs.V16B());
       break;
     case DataType::Type::kInt8:
       DCHECK_EQ(16u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Srhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
-          : __ Shadd(dst.V16B(), lhs.V16B(), rhs.V16B());
+      instruction->IsRounded() ? __ Srhadd(dst.V16B(), lhs.V16B(), rhs.V16B())
+                               : __ Shadd(dst.V16B(), lhs.V16B(), rhs.V16B());
       break;
     case DataType::Type::kUint16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Urhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
-          : __ Uhadd(dst.V8H(), lhs.V8H(), rhs.V8H());
+      instruction->IsRounded() ? __ Urhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
+                               : __ Uhadd(dst.V8H(), lhs.V8H(), rhs.V8H());
       break;
     case DataType::Type::kInt16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
-      instruction->IsRounded()
-          ? __ Srhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
-          : __ Shadd(dst.V8H(), lhs.V8H(), rhs.V8H());
+      instruction->IsRounded() ? __ Srhadd(dst.V8H(), lhs.V8H(), rhs.V8H())
+                               : __ Shadd(dst.V8H(), lhs.V8H(), rhs.V8H());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1008,14 +1001,16 @@ void LocationsBuilderARM64Neon::VisitVecSetScalars(HVecSetScalars* instruction) 
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
     case DataType::Type::kInt64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant())
+                                 : Location::RequiresFpuRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
@@ -1093,7 +1088,8 @@ void LocationsBuilderARM64Neon::VisitVecMultiplyAccumulate(HVecMultiplyAccumulat
 // Some early revisions of the Cortex-A53 have an erratum (835769) whereby it is possible for a
 // 64-bit scalar multiply-accumulate instruction in AArch64 state to generate an incorrect result.
 // However vector MultiplyAccumulate instruction is not affected.
-void InstructionCodeGeneratorARM64Neon::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instruction) {
+void InstructionCodeGeneratorARM64Neon::VisitVecMultiplyAccumulate(
+    HVecMultiplyAccumulate* instruction) {
   LocationSummary* locations = instruction->GetLocations();
   VRegister acc = VRegisterFrom(locations->InAt(0));
   VRegister left = VRegisterFrom(locations->InAt(1));
@@ -1504,8 +1500,7 @@ void InstructionCodeGeneratorARM64Neon::VisitVecStore(HVecStore* instruction) {
     case DataType::Type::kFloat64:
       DCHECK_LE(2u, instruction->GetVectorLength());
       DCHECK_LE(instruction->GetVectorLength(), 16u);
-      __ Str(reg,
-             VecNEONAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
+      __ Str(reg, VecNEONAddress(instruction, &temps, size, /*is_string_char_at*/ false, &scratch));
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1520,8 +1515,7 @@ void LocationsBuilderARM64Neon::VisitVecPredSetAll(HVecPredSetAll* instruction) 
   locations->SetOut(Location::NoLocation());
 }
 
-void InstructionCodeGeneratorARM64Neon::VisitVecPredSetAll(HVecPredSetAll*) {
-}
+void InstructionCodeGeneratorARM64Neon::VisitVecPredSetAll(HVecPredSetAll*) {}
 
 void LocationsBuilderARM64Neon::VisitVecPredWhile(HVecPredWhile* instruction) {
   LOG(FATAL) << "No SIMD for " << instruction->GetId();
@@ -1549,8 +1543,8 @@ Location InstructionCodeGeneratorARM64Neon::AllocateSIMDScratchLocation(
   return LocationFrom(scope->AcquireVRegisterOfSize(kQRegSize));
 }
 
-void InstructionCodeGeneratorARM64Neon::FreeSIMDScratchLocation(Location loc,
-    vixl::aarch64::UseScratchRegisterScope* scope) {
+void InstructionCodeGeneratorARM64Neon::FreeSIMDScratchLocation(
+    Location loc, vixl::aarch64::UseScratchRegisterScope* scope) {
   DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
   scope->Release(QRegisterFrom(loc));
 }
@@ -1567,8 +1561,7 @@ void InstructionCodeGeneratorARM64Neon::MoveSIMDRegToSIMDReg(Location destinatio
   __ Mov(QRegisterFrom(destination), QRegisterFrom(source));
 }
 
-void InstructionCodeGeneratorARM64Neon::MoveToSIMDStackSlot(Location destination,
-                                                            Location source) {
+void InstructionCodeGeneratorARM64Neon::MoveToSIMDStackSlot(Location destination, Location source) {
   DCHECK(destination.IsSIMDStackSlot());
   DCHECK_EQ(codegen_->GetSIMDRegisterWidth(), kQRegSizeInBytes);
 

@@ -30,10 +30,7 @@ static bool IsLoop(HLoopInformation* info) {
 }
 
 static bool IsInnerLoop(HLoopInformation* outer, HLoopInformation* inner) {
-  return (inner != outer)
-      && (inner != nullptr)
-      && (outer != nullptr)
-      && inner->IsIn(*outer);
+  return (inner != outer) && (inner != nullptr) && (outer != nullptr) && inner->IsIn(*outer);
 }
 
 // Helper method to update work list for linear order.
@@ -44,9 +41,8 @@ static void AddToListForLinearization(ScopedArenaVector<HBasicBlock*>* worklist,
   for (auto end = worklist->rend(); insert_pos != end; ++insert_pos) {
     HBasicBlock* current = *insert_pos;
     HLoopInformation* current_loop = current->GetLoopInformation();
-    if (InSameLoop(block_loop, current_loop)
-        || !IsLoop(current_loop)
-        || IsInnerLoop(current_loop, block_loop)) {
+    if (InSameLoop(block_loop, current_loop) || !IsLoop(current_loop) ||
+        IsInnerLoop(current_loop, block_loop)) {
       // The block can be processed immediately.
       break;
     }

@@ -18,13 +18,13 @@
 #define ART_COMPILER_UTILS_ASSEMBLER_TEST_BASE_H_
 
 #include <sys/stat.h>
+
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <iterator>
 
 #include "android-base/strings.h"
-
 #include "base/os.h"
 #include "base/utils.h"
 #include "common_runtime_test.h"  // For ScratchDir.
@@ -48,7 +48,7 @@ class AssemblerTestBase : public testing::Test {
     // Fake a runtime test for ScratchDir.
     CommonArtTest::SetUpAndroidRootEnvVars();
     CommonRuntimeTest::SetUpAndroidDataDir(android_data_);
-    scratch_dir_.emplace(/*keep_files=*/ kKeepDisassembledFiles);
+    scratch_dir_.emplace(/*keep_files=*/kKeepDisassembledFiles);
   }
 
   void TearDown() override {
@@ -58,7 +58,7 @@ class AssemblerTestBase : public testing::Test {
 
   // This is intended to be run as a test.
   bool CheckTools() {
-    for (auto cmd : { GetAssemblerCommand()[0], GetDisassemblerCommand()[0] }) {
+    for (auto cmd : {GetAssemblerCommand()[0], GetDisassemblerCommand()[0]}) {
       if (!OS::FileExists(cmd.c_str())) {
         LOG(ERROR) << "Could not find " << cmd;
         return false;
@@ -117,9 +117,11 @@ class AssemblerTestBase : public testing::Test {
 
     // ART produced different (but valid) code than the reference assembler, report it.
     if (art_code.size() > ref_code.size()) {
-      EXPECT_TRUE(false) << "ART code is larger then the reference code, but the disassembly"
-          "of machine code is equal: this means that ART is generating sub-optimal encoding! "
-          "ART code size=" << art_code.size() << ", reference code size=" << ref_code.size();
+      EXPECT_TRUE(false)
+          << "ART code is larger then the reference code, but the disassembly"
+             "of machine code is equal: this means that ART is generating sub-optimal encoding! "
+             "ART code size="
+          << art_code.size() << ", reference code size=" << ref_code.size();
     } else if (art_code.size() < ref_code.size()) {
       EXPECT_TRUE(false) << "ART code is smaller than the reference code. Too good to be true?";
     } else {
@@ -160,7 +162,9 @@ class AssemblerTestBase : public testing::Test {
     std::vector<std::string> args = GetAssemblerCommand();
     args.insert(args.end(), {"-o", obj_file, asm_file});
     std::string output;
-    bool ok = CommonArtTestImpl::ForkAndExec(args, [](){ return true; }, &output).StandardSuccess();
+    bool ok = CommonArtTestImpl::ForkAndExec(
+                  args, []() { return true; }, &output)
+                  .StandardSuccess();
     if (!ok) {
       LOG(ERROR) << "Assembler error:\n" << output;
     }
@@ -170,7 +174,9 @@ class AssemblerTestBase : public testing::Test {
   bool Disassemble(const std::string& obj_file, std::string* output) {
     std::vector<std::string> args = GetDisassemblerCommand();
     args.insert(args.end(), {obj_file});
-    bool ok = CommonArtTestImpl::ForkAndExec(args, [](){ return true; }, output).StandardSuccess();
+    bool ok = CommonArtTestImpl::ForkAndExec(
+                  args, []() { return true; }, output)
+                  .StandardSuccess();
     if (!ok) {
       LOG(ERROR) << "Disassembler error:\n" << *output;
     }
@@ -196,7 +202,7 @@ class AssemblerTestBase : public testing::Test {
   }
 
   // Helper method which reads the content of .text section from ELF file.
-  template<bool IsElf64>
+  template <bool IsElf64>
   void ReadElf(const std::string& filename, /*out*/ std::vector<uint8_t>* code) {
     using ElfTypes = typename std::conditional<IsElf64, ElfTypes64, ElfTypes32>::type;
     std::vector<uint8_t> data = ReadFile(filename);
@@ -207,7 +213,7 @@ class AssemblerTestBase : public testing::Test {
   }
 
   // Helper method to create an ELF file containing only the given code in the .text section.
-  template<bool IsElf64>
+  template <bool IsElf64>
   void WriteElf(const std::string& filename, InstructionSet isa, const std::vector<uint8_t>& code) {
     using ElfTypes = typename std::conditional<IsElf64, ElfTypes64, ElfTypes32>::type;
     std::unique_ptr<File> file(OS::CreateEmptyFile(filename.c_str()));

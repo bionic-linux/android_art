@@ -44,8 +44,8 @@ void JitLogger::OpenPerfMapLog() {
   std::string perf_filename = std::string(kLogPrefix) + "/perf-" + pid_str + ".map";
   perf_file_.reset(OS::CreateEmptyFileWriteOnly(perf_filename.c_str()));
   if (perf_file_ == nullptr) {
-    LOG(ERROR) << "Could not create perf file at " << perf_filename <<
-      " Are you on a user build? Perf only works on userdebug/eng builds";
+    LOG(ERROR) << "Could not create perf file at " << perf_filename
+               << " Are you on a user build? Perf only works on userdebug/eng builds";
   }
 }
 
@@ -54,12 +54,7 @@ void JitLogger::WritePerfMapLog(const void* ptr, size_t code_size, ArtMethod* me
     std::string method_name = method->PrettyMethod();
 
     std::ostringstream stream;
-    stream << std::hex
-           << reinterpret_cast<uintptr_t>(ptr)
-           << " "
-           << code_size
-           << " "
-           << method_name
+    stream << std::hex << reinterpret_cast<uintptr_t>(ptr) << " " << code_size << " " << method_name
            << std::endl;
     std::string str = stream.str();
     bool res = perf_file_->WriteFully(str.c_str(), str.size());
@@ -252,8 +247,8 @@ void JitLogger::OpenJitDumpLog() {
 
   jit_dump_file_.reset(OS::CreateEmptyFile(jitdump_filename.c_str()));
   if (jit_dump_file_ == nullptr) {
-    LOG(ERROR) << "Could not create jit dump file at " << jitdump_filename <<
-      " Are you on a user build? Perf only works on userdebug/eng builds";
+    LOG(ERROR) << "Could not create jit dump file at " << jitdump_filename
+               << " Are you on a user build? Perf only works on userdebug/eng builds";
     return;
   }
 
@@ -274,7 +269,7 @@ void JitLogger::WriteJitDumpLog(const void* ptr, size_t code_size, ArtMethod* me
     std::memset(&jit_code, 0, sizeof(jit_code));
     jit_code.event_ = PerfJitCodeLoad::kLoad;
     jit_code.size_ = sizeof(jit_code) + method_name.size() + 1 + code_size;
-    jit_code.time_stamp_ = art::NanoTime();    // CLOCK_MONOTONIC clock is required.
+    jit_code.time_stamp_ = art::NanoTime();  // CLOCK_MONOTONIC clock is required.
     jit_code.process_id_ = static_cast<uint32_t>(getpid());
     jit_code.thread_id_ = static_cast<uint32_t>(art::GetTid());
     jit_code.vma_ = 0x0;

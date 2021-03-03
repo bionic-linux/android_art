@@ -125,16 +125,13 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
 
   // Removes all instructions in the set affected by the given side effects.
   void Kill(SideEffects side_effects) {
-    DeleteAllImpureWhich([side_effects](Node* node) {
-      return node->GetSideEffects().MayDependOn(side_effects);
-    });
+    DeleteAllImpureWhich(
+        [side_effects](Node* node) { return node->GetSideEffects().MayDependOn(side_effects); });
   }
 
   void Clear() {
     num_entries_ = 0;
-    for (size_t i = 0; i < num_buckets_; ++i) {
-      buckets_[i] = nullptr;
-    }
+    for (size_t i = 0; i < num_buckets_; ++i) { buckets_[i] = nullptr; }
     buckets_owned_.SetInitialBits(num_buckets_);
   }
 
@@ -147,14 +144,17 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
     } else {
       // Pure instructions do not need to be tested because only impure
       // instructions can be killed.
-      DeleteAllImpureWhich([predecessor](Node* node) {
-        return !predecessor->Contains(node->GetInstruction());
-      });
+      DeleteAllImpureWhich(
+          [predecessor](Node* node) { return !predecessor->Contains(node->GetInstruction()); });
     }
   }
 
-  bool IsEmpty() const { return num_entries_ == 0; }
-  size_t GetNumberOfEntries() const { return num_entries_; }
+  bool IsEmpty() const {
+    return num_entries_ == 0;
+  }
+  size_t GetNumberOfEntries() const {
+    return num_entries_;
+  }
 
  private:
   // Copies all entries from `other` to `this`.
@@ -188,10 +188,18 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
     Node(HInstruction* instruction, size_t hash_code, Node* next)
         : instruction_(instruction), hash_code_(hash_code), next_(next) {}
 
-    size_t GetHashCode() const { return hash_code_; }
-    HInstruction* GetInstruction() const { return instruction_; }
-    Node* GetNext() const { return next_; }
-    void SetNext(Node* node) { next_ = node; }
+    size_t GetHashCode() const {
+      return hash_code_;
+    }
+    HInstruction* GetInstruction() const {
+      return instruction_;
+    }
+    Node* GetNext() const {
+      return next_;
+    }
+    void SetNext(Node* node) {
+      next_ = node;
+    }
 
     Node* Dup(ScopedArenaAllocator* allocator, Node* new_next = nullptr) {
       return new (allocator) Node(instruction_, hash_code_, new_next);
@@ -247,7 +255,7 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
 
   // Iterates over buckets with impure instructions (even indices) and deletes
   // the ones on which 'cond' returns true.
-  template<typename Functor>
+  template <typename Functor>
   void DeleteAllImpureWhich(Functor cond) {
     for (size_t i = 0; i < num_buckets_; i += 2) {
       Node* node = buckets_[i];
@@ -315,8 +323,7 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
     // need to delete them when entering the loop.
     // ClinitCheck is treated as a pure instruction since it's only executed
     // once.
-    bool pure = !instruction->GetSideEffects().HasDependencies() ||
-                instruction->IsClinitCheck();
+    bool pure = !instruction->GetSideEffects().HasDependencies() || instruction->IsClinitCheck();
     if (!pure || instruction->GetBlock()->GetGraph()->HasIrreducibleLoops()) {
       return (hash_code << 1) | 0;
     } else {
@@ -353,8 +360,7 @@ class ValueSet : public ArenaObject<kArenaAllocGvn> {
  */
 class GlobalValueNumberer : public ValueObject {
  public:
-  GlobalValueNumberer(HGraph* graph,
-                      const SideEffectsAnalysis& side_effects)
+  GlobalValueNumberer(HGraph* graph, const SideEffectsAnalysis& side_effects)
       : graph_(graph),
         allocator_(graph->GetArenaStack()),
         side_effects_(side_effects),
@@ -415,9 +421,7 @@ bool GlobalValueNumberer::Run() {
 
   // Use the reverse post order to ensure the non back-edge predecessors of a block are
   // visited before the block itself.
-  for (HBasicBlock* block : graph_->GetReversePostOrder()) {
-    VisitBasicBlock(block);
-  }
+  for (HBasicBlock* block : graph_->GetReversePostOrder()) { VisitBasicBlock(block); }
   return true;
 }
 

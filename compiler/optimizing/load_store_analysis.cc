@@ -51,9 +51,8 @@ static bool CanBinaryOpAndIndexAlias(const HBinaryOperation* idx1,
 
   // Since 'i' are the same in [i+CONST] and [i],
   // further compare [CONST] and [0].
-  int64_t l1 = idx1->IsAdd() ?
-               idx1->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx1->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l1 = idx1->IsAdd() ? idx1->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx1->GetConstantRight()->AsIntConstant()->GetValue();
   int64_t l2 = 0;
   int64_t h1 = l1 + (vector_length1 - 1);
   int64_t h2 = l2 + (vector_length2 - 1);
@@ -73,19 +72,16 @@ static bool CanBinaryOpsAlias(const HBinaryOperation* idx1,
     // Cannot analyze [i+CONST1] and [j+CONST2].
     return true;
   }
-  if (!idx1->GetConstantRight()->IsIntConstant() ||
-      !idx2->GetConstantRight()->IsIntConstant()) {
+  if (!idx1->GetConstantRight()->IsIntConstant() || !idx2->GetConstantRight()->IsIntConstant()) {
     return true;
   }
 
   // Since 'i' are the same in [i+CONST1] and [i+CONST2],
   // further compare [CONST1] and [CONST2].
-  int64_t l1 = idx1->IsAdd() ?
-               idx1->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx1->GetConstantRight()->AsIntConstant()->GetValue();
-  int64_t l2 = idx2->IsAdd() ?
-               idx2->GetConstantRight()->AsIntConstant()->GetValue() :
-               -idx2->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l1 = idx1->IsAdd() ? idx1->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx1->GetConstantRight()->AsIntConstant()->GetValue();
+  int64_t l2 = idx2->IsAdd() ? idx2->GetConstantRight()->AsIntConstant()->GetValue()
+                             : -idx2->GetConstantRight()->AsIntConstant()->GetValue();
   int64_t h1 = l1 + (vector_length1 - 1);
   int64_t h2 = l2 + (vector_length2 - 1);
   return CanIntegerRangesOverlap(l1, h1, l2, h2);
@@ -233,34 +229,24 @@ bool HeapLocationCollector::CanArrayElementsAlias(const HInstruction* idx1,
   }
 
   // [i+CONST] and [i].
-  if (idx1->IsBinaryOperation() &&
-      idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
+  if (idx1->IsBinaryOperation() && idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
       idx1->AsBinaryOperation()->GetLeastConstantLeft() == idx2) {
-    return CanBinaryOpAndIndexAlias(idx1->AsBinaryOperation(),
-                                    vector_length1,
-                                    idx2,
-                                    vector_length2);
+    return CanBinaryOpAndIndexAlias(
+        idx1->AsBinaryOperation(), vector_length1, idx2, vector_length2);
   }
 
   // [i] and [i+CONST].
-  if (idx2->IsBinaryOperation() &&
-      idx2->AsBinaryOperation()->GetConstantRight() != nullptr &&
+  if (idx2->IsBinaryOperation() && idx2->AsBinaryOperation()->GetConstantRight() != nullptr &&
       idx2->AsBinaryOperation()->GetLeastConstantLeft() == idx1) {
-    return CanBinaryOpAndIndexAlias(idx2->AsBinaryOperation(),
-                                    vector_length2,
-                                    idx1,
-                                    vector_length1);
+    return CanBinaryOpAndIndexAlias(
+        idx2->AsBinaryOperation(), vector_length2, idx1, vector_length1);
   }
 
   // [i+CONST1] and [i+CONST2].
-  if (idx1->IsBinaryOperation() &&
-      idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
-      idx2->IsBinaryOperation() &&
-      idx2->AsBinaryOperation()->GetConstantRight() != nullptr) {
-    return CanBinaryOpsAlias(idx1->AsBinaryOperation(),
-                             vector_length1,
-                             idx2->AsBinaryOperation(),
-                             vector_length2);
+  if (idx1->IsBinaryOperation() && idx1->AsBinaryOperation()->GetConstantRight() != nullptr &&
+      idx2->IsBinaryOperation() && idx2->AsBinaryOperation()->GetConstantRight() != nullptr) {
+    return CanBinaryOpsAlias(
+        idx1->AsBinaryOperation(), vector_length1, idx2->AsBinaryOperation(), vector_length2);
   }
 
   // By default, MAY alias.

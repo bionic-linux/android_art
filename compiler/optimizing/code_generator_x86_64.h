@@ -33,25 +33,24 @@ static constexpr size_t kX86_64WordSize = static_cast<size_t>(kX86_64PointerSize
 // Some x86_64 instructions require a register to be available as temp.
 static constexpr Register TMP = R11;
 
-static constexpr Register kParameterCoreRegisters[] = { RSI, RDX, RCX, R8, R9 };
-static constexpr FloatRegister kParameterFloatRegisters[] =
-    { XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6, XMM7 };
+static constexpr Register kParameterCoreRegisters[] = {RSI, RDX, RCX, R8, R9};
+static constexpr FloatRegister kParameterFloatRegisters[] = {
+    XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6, XMM7};
 
 static constexpr size_t kParameterCoreRegistersLength = arraysize(kParameterCoreRegisters);
 static constexpr size_t kParameterFloatRegistersLength = arraysize(kParameterFloatRegisters);
 
-static constexpr Register kRuntimeParameterCoreRegisters[] = { RDI, RSI, RDX, RCX };
+static constexpr Register kRuntimeParameterCoreRegisters[] = {RDI, RSI, RDX, RCX};
 static constexpr size_t kRuntimeParameterCoreRegistersLength =
     arraysize(kRuntimeParameterCoreRegisters);
-static constexpr FloatRegister kRuntimeParameterFpuRegisters[] = { XMM0, XMM1 };
+static constexpr FloatRegister kRuntimeParameterFpuRegisters[] = {XMM0, XMM1};
 static constexpr size_t kRuntimeParameterFpuRegistersLength =
     arraysize(kRuntimeParameterFpuRegisters);
 
 // These XMM registers are non-volatile in ART ABI, but volatile in native ABI.
 // If the ART ABI changes, this list must be updated.  It is used to ensure that
 // these are not clobbered by any direct call to native code (such as math intrinsics).
-static constexpr FloatRegister non_volatile_xmm_regs[] = { XMM12, XMM13, XMM14, XMM15 };
-
+static constexpr FloatRegister non_volatile_xmm_regs[] = {XMM12, XMM13, XMM14, XMM15};
 
 class InvokeRuntimeCallingConvention : public CallingConvention<Register, FloatRegister> {
  public:
@@ -68,12 +67,12 @@ class InvokeRuntimeCallingConvention : public CallingConvention<Register, FloatR
 
 class InvokeDexCallingConvention : public CallingConvention<Register, FloatRegister> {
  public:
-  InvokeDexCallingConvention() : CallingConvention(
-      kParameterCoreRegisters,
-      kParameterCoreRegistersLength,
-      kParameterFloatRegisters,
-      kParameterFloatRegistersLength,
-      kX86_64PointerSize) {}
+  InvokeDexCallingConvention()
+      : CallingConvention(kParameterCoreRegisters,
+                          kParameterCoreRegistersLength,
+                          kParameterFloatRegisters,
+                          kParameterFloatRegistersLength,
+                          kX86_64PointerSize) {}
 
  private:
   DISALLOW_COPY_AND_ASSIGN(InvokeDexCallingConvention);
@@ -90,7 +89,9 @@ class CriticalNativeCallingConventionVisitorX86_64 : public InvokeDexCallingConv
   Location GetReturnLocation(DataType::Type type) const override;
   Location GetMethodLocation() const override;
 
-  size_t GetStackOffset() const { return stack_offset_; }
+  size_t GetStackOffset() const {
+    return stack_offset_;
+  }
 
  private:
   // Register allocator does not support adjusting frame size, so we cannot provide final locations
@@ -117,11 +118,9 @@ class FieldAccessCallingConventionX86_64 : public FieldAccessCallingConvention {
   Location GetReturnLocation(DataType::Type type ATTRIBUTE_UNUSED) const override {
     return Location::RegisterLocation(RAX);
   }
-  Location GetSetValueLocation(DataType::Type type ATTRIBUTE_UNUSED, bool is_instance)
-      const override {
-    return is_instance
-        ? Location::RegisterLocation(RDX)
-        : Location::RegisterLocation(RSI);
+  Location GetSetValueLocation(DataType::Type type ATTRIBUTE_UNUSED,
+                               bool is_instance) const override {
+    return is_instance ? Location::RegisterLocation(RDX) : Location::RegisterLocation(RSI);
   }
   Location GetFpuLocation(DataType::Type type ATTRIBUTE_UNUSED) const override {
     return Location::FpuRegisterLocation(XMM0);
@@ -130,7 +129,6 @@ class FieldAccessCallingConventionX86_64 : public FieldAccessCallingConvention {
  private:
   DISALLOW_COPY_AND_ASSIGN(FieldAccessCallingConventionX86_64);
 };
-
 
 class InvokeDexCallingConventionVisitorX86_64 : public InvokeDexCallingConventionVisitor {
  public:
@@ -181,8 +179,7 @@ class LocationsBuilderX86_64 : public HGraphVisitor {
   LocationsBuilderX86_64(HGraph* graph, CodeGeneratorX86_64* codegen)
       : HGraphVisitor(graph), codegen_(codegen) {}
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86_64(DECLARE_VISIT_INSTRUCTION)
@@ -191,8 +188,8 @@ class LocationsBuilderX86_64 : public HGraphVisitor {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
  private:
@@ -215,8 +212,7 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
  public:
   InstructionCodeGeneratorX86_64(HGraph* graph, CodeGeneratorX86_64* codegen);
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86_64(DECLARE_VISIT_INSTRUCTION)
@@ -225,11 +221,13 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
-  X86_64Assembler* GetAssembler() const { return assembler_; }
+  X86_64Assembler* GetAssembler() const {
+    return assembler_;
+  }
 
  private:
   // Generate code for the given suspend check. If not null, `successor`
@@ -297,19 +295,21 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
                                Label* fixup_label,
                                ReadBarrierOption read_barrier_option);
 
-  void PushOntoFPStack(Location source, uint32_t temp_offset,
-                       uint32_t stack_adjustment, bool is_float);
+  void PushOntoFPStack(Location source,
+                       uint32_t temp_offset,
+                       uint32_t stack_adjustment,
+                       bool is_float);
   void GenerateCompareTest(HCondition* condition);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateTestAndBranch(HInstruction* instruction,
                              size_t condition_input_index,
                              LabelType* true_target,
                              LabelType* false_target);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateCompareTestAndBranch(HCondition* condition,
                                     LabelType* true_target,
                                     LabelType* false_target);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateFPJumps(HCondition* cond, LabelType* true_label, LabelType* false_label);
 
   void HandleGoto(HInstruction* got, HBasicBlock* successor);
@@ -329,8 +329,8 @@ class JumpTableRIPFixup;
 class CodeGeneratorX86_64 : public CodeGenerator {
  public:
   CodeGeneratorX86_64(HGraph* graph,
-                  const CompilerOptions& compiler_options,
-                  OptimizingCompilerStats* stats = nullptr);
+                      const CompilerOptions& compiler_options,
+                      OptimizingCompilerStats* stats = nullptr);
   virtual ~CodeGeneratorX86_64() {}
 
   void GenerateFrameEntry() override;
@@ -365,8 +365,8 @@ class CodeGeneratorX86_64 : public CodeGenerator {
 
   size_t GetSlowPathFPWidth() const override {
     return GetGraph()->HasSIMD()
-        ? GetSIMDRegisterWidth()
-        : 1 * kX86_64WordSize;  //  8 bytes == 1 x86_64 words for each spill
+               ? GetSIMDRegisterWidth()
+               : 1 * kX86_64WordSize;  //  8 bytes == 1 x86_64 words for each spill
   }
 
   size_t GetCalleePreservedFPWidth() const override {
@@ -449,14 +449,15 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // Check if the desired_dispatch_info is supported. If it is, return it,
   // otherwise return a fall-back info that should be used instead.
   HInvokeStaticOrDirect::DispatchInfo GetSupportedInvokeStaticOrDirectDispatch(
-      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info,
-      ArtMethod* method) override;
+      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info, ArtMethod* method) override;
 
   void LoadMethod(MethodLoadKind load_kind, Location temp, HInvoke* invoke);
-  void GenerateStaticOrDirectCall(
-      HInvokeStaticOrDirect* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
-  void GenerateVirtualCall(
-      HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
+  void GenerateStaticOrDirectCall(HInvokeStaticOrDirect* invoke,
+                                  Location temp,
+                                  SlowPathCode* slow_path = nullptr) override;
+  void GenerateVirtualCall(HInvokeVirtual* invoke,
+                           Location temp,
+                           SlowPathCode* slow_path = nullptr) override;
 
   void RecordBootImageIntrinsicPatch(uint32_t intrinsic_data);
   void RecordBootImageRelRoPatch(uint32_t boot_image_offset);
@@ -635,7 +636,6 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   void GenerateImplicitNullCheck(HNullCheck* instruction) override;
   void GenerateExplicitNullCheck(HNullCheck* instruction) override;
   void MaybeGenerateInlineCacheCheck(HInstruction* instruction, CpuRegister cls);
-
 
   void MaybeIncrementHotness(bool is_frame_entry);
 

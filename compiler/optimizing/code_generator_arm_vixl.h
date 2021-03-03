@@ -50,29 +50,24 @@ static constexpr int kMaxMacroInstructionSizeInBytes =
     15 * vixl::aarch32::kMaxInstructionSizeInBytes;
 
 static const vixl::aarch32::Register kParameterCoreRegistersVIXL[] = {
-    vixl::aarch32::r1,
-    vixl::aarch32::r2,
-    vixl::aarch32::r3
-};
+    vixl::aarch32::r1, vixl::aarch32::r2, vixl::aarch32::r3};
 static const size_t kParameterCoreRegistersLengthVIXL = arraysize(kParameterCoreRegistersVIXL);
-static const vixl::aarch32::SRegister kParameterFpuRegistersVIXL[] = {
-    vixl::aarch32::s0,
-    vixl::aarch32::s1,
-    vixl::aarch32::s2,
-    vixl::aarch32::s3,
-    vixl::aarch32::s4,
-    vixl::aarch32::s5,
-    vixl::aarch32::s6,
-    vixl::aarch32::s7,
-    vixl::aarch32::s8,
-    vixl::aarch32::s9,
-    vixl::aarch32::s10,
-    vixl::aarch32::s11,
-    vixl::aarch32::s12,
-    vixl::aarch32::s13,
-    vixl::aarch32::s14,
-    vixl::aarch32::s15
-};
+static const vixl::aarch32::SRegister kParameterFpuRegistersVIXL[] = {vixl::aarch32::s0,
+                                                                      vixl::aarch32::s1,
+                                                                      vixl::aarch32::s2,
+                                                                      vixl::aarch32::s3,
+                                                                      vixl::aarch32::s4,
+                                                                      vixl::aarch32::s5,
+                                                                      vixl::aarch32::s6,
+                                                                      vixl::aarch32::s7,
+                                                                      vixl::aarch32::s8,
+                                                                      vixl::aarch32::s9,
+                                                                      vixl::aarch32::s10,
+                                                                      vixl::aarch32::s11,
+                                                                      vixl::aarch32::s12,
+                                                                      vixl::aarch32::s13,
+                                                                      vixl::aarch32::s14,
+                                                                      vixl::aarch32::s15};
 static const size_t kParameterFpuRegistersLengthVIXL = arraysize(kParameterFpuRegistersVIXL);
 
 static const vixl::aarch32::Register kMethodRegister = vixl::aarch32::r0;
@@ -80,35 +75,23 @@ static const vixl::aarch32::Register kMethodRegister = vixl::aarch32::r0;
 // Callee saves core registers r5, r6, r7, r8 (except when emitting Baker
 // read barriers, where it is used as Marking Register), r10, r11, and lr.
 static const vixl::aarch32::RegisterList kCoreCalleeSaves = vixl::aarch32::RegisterList::Union(
-    vixl::aarch32::RegisterList(vixl::aarch32::r5,
-                                vixl::aarch32::r6,
-                                vixl::aarch32::r7),
+    vixl::aarch32::RegisterList(vixl::aarch32::r5, vixl::aarch32::r6, vixl::aarch32::r7),
     // Do not consider r8 as a callee-save register with Baker read barriers.
     ((kEmitCompilerReadBarrier && kUseBakerReadBarrier)
          ? vixl::aarch32::RegisterList()
          : vixl::aarch32::RegisterList(vixl::aarch32::r8)),
-    vixl::aarch32::RegisterList(vixl::aarch32::r10,
-                                vixl::aarch32::r11,
-                                vixl::aarch32::lr));
+    vixl::aarch32::RegisterList(vixl::aarch32::r10, vixl::aarch32::r11, vixl::aarch32::lr));
 
 // Callee saves FP registers s16 to s31 inclusive.
 static const vixl::aarch32::SRegisterList kFpuCalleeSaves =
     vixl::aarch32::SRegisterList(vixl::aarch32::s16, 16);
 
 static const vixl::aarch32::Register kRuntimeParameterCoreRegistersVIXL[] = {
-    vixl::aarch32::r0,
-    vixl::aarch32::r1,
-    vixl::aarch32::r2,
-    vixl::aarch32::r3
-};
+    vixl::aarch32::r0, vixl::aarch32::r1, vixl::aarch32::r2, vixl::aarch32::r3};
 static const size_t kRuntimeParameterCoreRegistersLengthVIXL =
     arraysize(kRuntimeParameterCoreRegistersVIXL);
 static const vixl::aarch32::SRegister kRuntimeParameterFpuRegistersVIXL[] = {
-    vixl::aarch32::s0,
-    vixl::aarch32::s1,
-    vixl::aarch32::s2,
-    vixl::aarch32::s3
-};
+    vixl::aarch32::s0, vixl::aarch32::s1, vixl::aarch32::s2, vixl::aarch32::s3};
 static const size_t kRuntimeParameterFpuRegistersLengthVIXL =
     arraysize(kRuntimeParameterFpuRegistersVIXL);
 
@@ -126,12 +109,14 @@ class JumpTableARMVIXL : public DeletableArenaObject<kArenaAllocSwitchTable> {
         bb_addresses_(switch_instr->GetAllocator()->Adapter(kArenaAllocCodeGenerator)) {
     uint32_t num_entries = switch_instr_->GetNumEntries();
     for (uint32_t i = 0; i < num_entries; i++) {
-      VIXLInt32Literal *lit = new VIXLInt32Literal(0, vixl32::RawLiteral::kManuallyPlaced);
+      VIXLInt32Literal* lit = new VIXLInt32Literal(0, vixl32::RawLiteral::kManuallyPlaced);
       bb_addresses_.emplace_back(lit);
     }
   }
 
-  vixl::aarch32::Label* GetTableStartLabel() { return &table_start_; }
+  vixl::aarch32::Label* GetTableStartLabel() {
+    return &table_start_;
+  }
 
   void EmitTable(CodeGeneratorARMVIXL* codegen);
   void FixTable(CodeGeneratorARMVIXL* codegen);
@@ -199,7 +184,9 @@ class CriticalNativeCallingConventionVisitorARMVIXL : public InvokeDexCallingCon
   Location GetReturnLocation(DataType::Type type) const override;
   Location GetMethodLocation() const override;
 
-  size_t GetStackOffset() const { return stack_offset_; }
+  size_t GetStackOffset() const {
+    return stack_offset_;
+  }
 
  private:
   // Register allocator does not support adjusting frame size, so we cannot provide final locations
@@ -223,21 +210,17 @@ class FieldAccessCallingConventionARMVIXL : public FieldAccessCallingConvention 
     return helpers::LocationFrom(vixl::aarch32::r0);
   }
   Location GetReturnLocation(DataType::Type type) const override {
-    return DataType::Is64BitType(type)
-        ? helpers::LocationFrom(vixl::aarch32::r0, vixl::aarch32::r1)
-        : helpers::LocationFrom(vixl::aarch32::r0);
+    return DataType::Is64BitType(type) ? helpers::LocationFrom(vixl::aarch32::r0, vixl::aarch32::r1)
+                                       : helpers::LocationFrom(vixl::aarch32::r0);
   }
   Location GetSetValueLocation(DataType::Type type, bool is_instance) const override {
-    return DataType::Is64BitType(type)
-        ? helpers::LocationFrom(vixl::aarch32::r2, vixl::aarch32::r3)
-        : (is_instance
-            ? helpers::LocationFrom(vixl::aarch32::r2)
-            : helpers::LocationFrom(vixl::aarch32::r1));
+    return DataType::Is64BitType(type) ? helpers::LocationFrom(vixl::aarch32::r2, vixl::aarch32::r3)
+                                       : (is_instance ? helpers::LocationFrom(vixl::aarch32::r2)
+                                                      : helpers::LocationFrom(vixl::aarch32::r1));
   }
   Location GetFpuLocation(DataType::Type type) const override {
-    return DataType::Is64BitType(type)
-        ? helpers::LocationFrom(vixl::aarch32::s0, vixl::aarch32::s1)
-        : helpers::LocationFrom(vixl::aarch32::s0);
+    return DataType::Is64BitType(type) ? helpers::LocationFrom(vixl::aarch32::s0, vixl::aarch32::s1)
+                                       : helpers::LocationFrom(vixl::aarch32::s0);
   }
 
  private:
@@ -249,8 +232,12 @@ class SlowPathCodeARMVIXL : public SlowPathCode {
   explicit SlowPathCodeARMVIXL(HInstruction* instruction)
       : SlowPathCode(instruction), entry_label_(), exit_label_() {}
 
-  vixl::aarch32::Label* GetEntryLabel() { return &entry_label_; }
-  vixl::aarch32::Label* GetExitLabel() { return &exit_label_; }
+  vixl::aarch32::Label* GetEntryLabel() {
+    return &entry_label_;
+  }
+  vixl::aarch32::Label* GetExitLabel() {
+    return &exit_label_;
+  }
 
   void SaveLiveRegisters(CodeGenerator* codegen, LocationSummary* locations) override;
   void RestoreLiveRegisters(CodeGenerator* codegen, LocationSummary* locations) override;
@@ -288,8 +275,7 @@ class LocationsBuilderARMVIXL : public HGraphVisitor {
   LocationsBuilderARMVIXL(HGraph* graph, CodeGeneratorARMVIXL* codegen)
       : HGraphVisitor(graph), codegen_(codegen) {}
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_ARM(DECLARE_VISIT_INSTRUCTION)
@@ -298,8 +284,8 @@ class LocationsBuilderARMVIXL : public HGraphVisitor {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
  private:
@@ -326,8 +312,7 @@ class InstructionCodeGeneratorARMVIXL : public InstructionCodeGenerator {
  public:
   InstructionCodeGeneratorARMVIXL(HGraph* graph, CodeGeneratorARMVIXL* codegen);
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_ARM(DECLARE_VISIT_INSTRUCTION)
@@ -336,12 +321,16 @@ class InstructionCodeGeneratorARMVIXL : public InstructionCodeGenerator {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
-  ArmVIXLAssembler* GetAssembler() const { return assembler_; }
-  ArmVIXLMacroAssembler* GetVIXLAssembler() { return GetAssembler()->GetVIXLAssembler(); }
+  ArmVIXLAssembler* GetAssembler() const {
+    return assembler_;
+  }
+  ArmVIXLMacroAssembler* GetVIXLAssembler() {
+    return GetAssembler()->GetVIXLAssembler();
+  }
 
   void GenerateAndConst(vixl::aarch32::Register out, vixl::aarch32::Register first, uint32_t value);
 
@@ -432,11 +421,10 @@ class InstructionCodeGeneratorARMVIXL : public InstructionCodeGenerator {
   void GenerateDivRemConstantIntegral(HBinaryOperation* instruction);
   void HandleGoto(HInstruction* got, HBasicBlock* successor);
 
-  vixl::aarch32::MemOperand VecAddress(
-      HVecMemoryOperation* instruction,
-      // This function may acquire a scratch register.
-      vixl::aarch32::UseScratchRegisterScope* temps_scope,
-      /*out*/ vixl32::Register* scratch);
+  vixl::aarch32::MemOperand VecAddress(HVecMemoryOperation* instruction,
+                                       // This function may acquire a scratch register.
+                                       vixl::aarch32::UseScratchRegisterScope* temps_scope,
+                                       /*out*/ vixl32::Register* scratch);
   vixl::aarch32::AlignedMemOperand VecAddressUnaligned(
       HVecMemoryOperation* instruction,
       // This function may acquire a scratch register.
@@ -483,15 +471,25 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
     return vixl::aarch32::kDRegSizeInBytes;
   }
 
-  HGraphVisitor* GetLocationBuilder() override { return &location_builder_; }
+  HGraphVisitor* GetLocationBuilder() override {
+    return &location_builder_;
+  }
 
-  HGraphVisitor* GetInstructionVisitor() override { return &instruction_visitor_; }
+  HGraphVisitor* GetInstructionVisitor() override {
+    return &instruction_visitor_;
+  }
 
-  ArmVIXLAssembler* GetAssembler() override { return &assembler_; }
+  ArmVIXLAssembler* GetAssembler() override {
+    return &assembler_;
+  }
 
-  const ArmVIXLAssembler& GetAssembler() const override { return assembler_; }
+  const ArmVIXLAssembler& GetAssembler() const override {
+    return assembler_;
+  }
 
-  ArmVIXLMacroAssembler* GetVIXLAssembler() { return GetAssembler()->GetVIXLAssembler(); }
+  ArmVIXLMacroAssembler* GetVIXLAssembler() {
+    return GetAssembler()->GetVIXLAssembler();
+  }
 
   uintptr_t GetAddressOf(HBasicBlock* block) override {
     vixl::aarch32::Label* block_entry_label = GetLabelOf(block);
@@ -505,8 +503,12 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   void DumpCoreRegister(std::ostream& stream, int reg) const override;
   void DumpFloatingPointRegister(std::ostream& stream, int reg) const override;
 
-  ParallelMoveResolver* GetMoveResolver() override { return &move_resolver_; }
-  InstructionSet GetInstructionSet() const override { return InstructionSet::kThumb2; }
+  ParallelMoveResolver* GetMoveResolver() override {
+    return &move_resolver_;
+  }
+  InstructionSet GetInstructionSet() const override {
+    return InstructionSet::kThumb2;
+  }
 
   const ArmInstructionSetFeatures& GetInstructionSetFeatures() const;
 
@@ -564,7 +566,9 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
 
   void ComputeSpillMask() override;
 
-  vixl::aarch32::Label* GetFrameEntryLabel() { return &frame_entry_label_; }
+  vixl::aarch32::Label* GetFrameEntryLabel() {
+    return &frame_entry_label_;
+  }
 
   // Check if the desired_string_load_kind is supported. If it is, return it,
   // otherwise return a fall-back kind that should be used instead.
@@ -579,14 +583,15 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   // Check if the desired_dispatch_info is supported. If it is, return it,
   // otherwise return a fall-back info that should be used instead.
   HInvokeStaticOrDirect::DispatchInfo GetSupportedInvokeStaticOrDirectDispatch(
-      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info,
-      ArtMethod* method) override;
+      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info, ArtMethod* method) override;
 
   void LoadMethod(MethodLoadKind load_kind, Location temp, HInvoke* invoke);
-  void GenerateStaticOrDirectCall(
-      HInvokeStaticOrDirect* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
-  void GenerateVirtualCall(
-      HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
+  void GenerateStaticOrDirectCall(HInvokeStaticOrDirect* invoke,
+                                  Location temp,
+                                  SlowPathCode* slow_path = nullptr) override;
+  void GenerateVirtualCall(HInvokeVirtual* invoke,
+                           Location temp,
+                           SlowPathCode* slow_path = nullptr) override;
 
   void MoveFromReturnRegister(Location trg, DataType::Type type) override;
 
@@ -600,7 +605,7 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   // split this sequence apart, so we keep separate labels for each of them.
   struct PcRelativePatchInfo {
     PcRelativePatchInfo(const DexFile* dex_file, uint32_t off_or_idx)
-        : target_dex_file(dex_file), offset_or_index(off_or_idx) { }
+        : target_dex_file(dex_file), offset_or_index(off_or_idx) {}
     PcRelativePatchInfo(PcRelativePatchInfo&& other) = default;
 
     // Target dex file or null for .data.bmig.rel.ro patches.
@@ -820,8 +825,8 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   };
 
   enum class BakerReadBarrierWidth : uint8_t {
-    kWide,          // 32-bit LDR (and 32-bit NEG if heap poisoning is enabled).
-    kNarrow,        // 16-bit LDR (and 16-bit NEG if heap poisoning is enabled).
+    kWide,    // 32-bit LDR (and 32-bit NEG if heap poisoning is enabled).
+    kNarrow,  // 16-bit LDR (and 16-bit NEG if heap poisoning is enabled).
     kLast = kNarrow
   };
 
@@ -831,8 +836,7 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
       MinimumBitsToStore(static_cast<size_t>(BakerReadBarrierKind::kLast));
   static constexpr size_t kBakerReadBarrierBitsForRegister =
       MinimumBitsToStore(kBakerReadBarrierInvalidEncodedReg);
-  using BakerReadBarrierKindField =
-      BitField<BakerReadBarrierKind, 0, kBitsForBakerReadBarrierKind>;
+  using BakerReadBarrierKindField = BitField<BakerReadBarrierKind, 0, kBitsForBakerReadBarrierKind>;
   using BakerReadBarrierFirstRegField =
       BitField<uint32_t, kBitsForBakerReadBarrierKind, kBakerReadBarrierBitsForRegister>;
   using BakerReadBarrierSecondRegField =
@@ -896,15 +900,13 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
                                     /*out*/ std::string* debug_name);
 
   using Uint32ToLiteralMap = ArenaSafeMap<uint32_t, VIXLUInt32Literal*>;
-  using StringToLiteralMap = ArenaSafeMap<StringReference,
-                                          VIXLUInt32Literal*,
-                                          StringReferenceValueComparator>;
-  using TypeToLiteralMap = ArenaSafeMap<TypeReference,
-                                        VIXLUInt32Literal*,
-                                        TypeReferenceValueComparator>;
+  using StringToLiteralMap =
+      ArenaSafeMap<StringReference, VIXLUInt32Literal*, StringReferenceValueComparator>;
+  using TypeToLiteralMap =
+      ArenaSafeMap<TypeReference, VIXLUInt32Literal*, TypeReferenceValueComparator>;
 
   struct BakerReadBarrierPatchInfo {
-    explicit BakerReadBarrierPatchInfo(uint32_t data) : label(), custom_data(data) { }
+    explicit BakerReadBarrierPatchInfo(uint32_t data) : label(), custom_data(data) {}
 
     vixl::aarch32::Label label;
     uint32_t custom_data;
@@ -965,8 +967,7 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   // Wrap the label to work around vixl::aarch32::Label being non-copyable
   // and non-moveable and as such unusable in ArenaSafeMap<>.
   struct LabelWrapper {
-    LabelWrapper(const LabelWrapper& src)
-        : label() {
+    LabelWrapper(const LabelWrapper& src) : label() {
       DCHECK(!src.label.IsReferenced() && !src.label.IsBound());
     }
     LabelWrapper() = default;

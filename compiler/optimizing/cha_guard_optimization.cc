@@ -34,9 +34,8 @@ class CHAGuardVisitor : HGraphVisitor {
  public:
   explicit CHAGuardVisitor(HGraph* graph)
       : HGraphVisitor(graph),
-        block_has_cha_guard_(GetGraph()->GetBlocks().size(),
-                             0,
-                             graph->GetAllocator()->Adapter(kArenaAllocCHA)),
+        block_has_cha_guard_(
+            GetGraph()->GetBlocks().size(), 0, graph->GetAllocator()->Adapter(kArenaAllocCHA)),
         instruction_iterator_(nullptr) {
     number_of_guards_to_visit_ = GetGraph()->GetNumberOfCHAGuards();
     DCHECK_NE(number_of_guards_to_visit_, 0u);
@@ -102,8 +101,7 @@ void CHAGuardVisitor::RemoveGuard(HShouldDeoptimizeFlag* flag) {
   block->RemoveInstruction(flag);
 }
 
-bool CHAGuardVisitor::OptimizeForParameter(HShouldDeoptimizeFlag* flag,
-                                           HInstruction* receiver) {
+bool CHAGuardVisitor::OptimizeForParameter(HShouldDeoptimizeFlag* flag, HInstruction* receiver) {
   // If some compiled code is invalidated by CHA due to class loading, the
   // compiled code will not be entered anymore. So the very fact that the
   // compiled code is invoked guarantees that a parameter receiver conforms
@@ -171,8 +169,7 @@ bool CHAGuardVisitor::OptimizeWithDominatingGuard(HShouldDeoptimizeFlag* flag,
   return false;
 }
 
-bool CHAGuardVisitor::HoistGuard(HShouldDeoptimizeFlag* flag,
-                                 HInstruction* receiver) {
+bool CHAGuardVisitor::HoistGuard(HShouldDeoptimizeFlag* flag, HInstruction* receiver) {
   // If receiver is loop invariant, we can hoist the guard out of the
   // loop since passing a guard before entering the loop guarantees that
   // receiver conforms to all the CHA devirtualization assumptions.
@@ -180,8 +177,7 @@ bool CHAGuardVisitor::HoistGuard(HShouldDeoptimizeFlag* flag,
   // benefit and it might help remove other guards in the inner loop.
   HBasicBlock* block = flag->GetBlock();
   HLoopInformation* loop_info = block->GetLoopInformation();
-  if (loop_info != nullptr &&
-      !loop_info->IsIrreducible() &&
+  if (loop_info != nullptr && !loop_info->IsIrreducible() &&
       loop_info->IsDefinedOutOfTheLoop(receiver)) {
     HInstruction* compare = flag->GetNext();
     DCHECK(compare->IsNotEqual());
@@ -205,8 +201,8 @@ bool CHAGuardVisitor::HoistGuard(HShouldDeoptimizeFlag* flag,
     HDeoptimize* deoptimize = new (GetGraph()->GetAllocator()) HDeoptimize(
         GetGraph()->GetAllocator(), compare, DeoptimizationKind::kCHA, suspend->GetDexPc());
     pre_header->InsertInstructionBefore(deoptimize, pre_header->GetLastInstruction());
-    deoptimize->CopyEnvironmentFromWithLoopPhiAdjustment(
-        suspend->GetEnvironment(), loop_info->GetHeader());
+    deoptimize->CopyEnvironmentFromWithLoopPhiAdjustment(suspend->GetEnvironment(),
+                                                         loop_info->GetHeader());
     block_has_cha_guard_[pre_header->GetBlockId()] = 1;
     GetGraph()->IncrementNumberOfCHAGuards();
     return true;
@@ -246,9 +242,7 @@ bool CHAGuardOptimization::Run() {
     return false;
   }
   CHAGuardVisitor visitor(graph_);
-  for (HBasicBlock* block : graph_->GetReversePostOrder()) {
-    visitor.VisitBasicBlock(block);
-  }
+  for (HBasicBlock* block : graph_->GetReversePostOrder()) { visitor.VisitBasicBlock(block); }
   return true;
 }
 

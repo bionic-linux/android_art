@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#include "graph_checker.h"
-#include "nodes.h"
-#include "optimizing_unit_test.h"
 #include "superblock_cloner.h"
 
+#include "graph_checker.h"
 #include "gtest/gtest.h"
+#include "nodes.h"
+#include "optimizing_unit_test.h"
 
 namespace art {
 
@@ -34,10 +34,8 @@ class SuperblockClonerTest : public OptimizingUnitTest {
  protected:
   void InitGraphAndParameters() {
     InitGraph();
-    AddParameter(new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                      dex::TypeIndex(0),
-                                                      0,
-                                                      DataType::Type::kInt32));
+    AddParameter(new (GetAllocator()) HParameterValue(
+        graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32));
   }
 
   void CreateBasicLoopControlFlow(HBasicBlock* position,
@@ -84,9 +82,9 @@ class SuperblockClonerTest : public OptimizingUnitTest {
     HInstruction* bounds_check = new (GetAllocator()) HBoundsCheck(phi, array_length, dex_pc);
     HInstruction* array_get =
         new (GetAllocator()) HArrayGet(null_check, bounds_check, DataType::Type::kInt32, dex_pc);
-    HInstruction* add =  new (GetAllocator()) HAdd(DataType::Type::kInt32, array_get, const_1);
-    HInstruction* array_set = new (GetAllocator()) HArraySet(
-        null_check, bounds_check, add, DataType::Type::kInt32, dex_pc);
+    HInstruction* add = new (GetAllocator()) HAdd(DataType::Type::kInt32, array_get, const_1);
+    HInstruction* array_set = new (GetAllocator())
+        HArraySet(null_check, bounds_check, add, DataType::Type::kInt32, dex_pc);
     HInstruction* induction_inc = new (GetAllocator()) HAdd(DataType::Type::kInt32, phi, const_1);
 
     loop_body->AddInstruction(null_check);
@@ -155,8 +153,7 @@ TEST_F(SuperblockClonerTest, CloneBasicBlocks) {
   graph_->BuildDominatorTree();
   ASSERT_TRUE(CheckGraph());
 
-  ArenaBitVector orig_bb_set(
-      arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
+  ArenaBitVector orig_bb_set(arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
   HBasicBlockMap bb_map(std::less<HBasicBlock*>(), arena->Adapter(kArenaAllocSuperblockCloner));
   HInstructionMap hir_map(std::less<HInstruction*>(), arena->Adapter(kArenaAllocSuperblockCloner));
 
@@ -236,8 +233,7 @@ TEST_F(SuperblockClonerTest, AdjustControlFlowInfo) {
   graph_->BuildDominatorTree();
   ASSERT_TRUE(CheckGraph());
 
-  ArenaBitVector orig_bb_set(
-      arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
+  ArenaBitVector orig_bb_set(arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
 
   HLoopInformation* loop_info = header->GetLoopInformation();
   orig_bb_set.Union(&loop_info->GetBlocks());
@@ -274,8 +270,7 @@ TEST_F(SuperblockClonerTest, IsGraphConnected) {
   CreateBasicLoopDataFlow(header, loop_body);
   HBasicBlock* unreachable_block = AddNewBlock();
 
-  HBasicBlockSet bb_set(
-      arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
+  HBasicBlockSet bb_set(arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
   bb_set.SetBit(header->GetBlockId());
   bb_set.SetBit(loop_body->GetBlockId());
   bb_set.SetBit(unreachable_block->GetBlockId());
@@ -298,10 +293,10 @@ TEST_F(SuperblockClonerTest, LoopPeeling) {
   graph_->BuildDominatorTree();
   EXPECT_TRUE(CheckGraph());
 
-  HBasicBlockMap bb_map(
-      std::less<HBasicBlock*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
-  HInstructionMap hir_map(
-      std::less<HInstruction*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HBasicBlockMap bb_map(std::less<HBasicBlock*>(),
+                        graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HInstructionMap hir_map(std::less<HInstruction*>(),
+                          graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
   HLoopInformation* loop_info = header->GetLoopInformation();
   LoopClonerHelper helper(loop_info, &bb_map, &hir_map, /* induction_range= */ nullptr);
@@ -335,10 +330,10 @@ TEST_F(SuperblockClonerTest, LoopUnrolling) {
   graph_->BuildDominatorTree();
   EXPECT_TRUE(CheckGraph());
 
-  HBasicBlockMap bb_map(
-      std::less<HBasicBlock*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
-  HInstructionMap hir_map(
-      std::less<HInstruction*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HBasicBlockMap bb_map(std::less<HBasicBlock*>(),
+                        graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HInstructionMap hir_map(std::less<HInstruction*>(),
+                          graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
   HLoopInformation* loop_info = header->GetLoopInformation();
   LoopClonerHelper helper(loop_info, &bb_map, &hir_map, /* induction_range= */ nullptr);
@@ -372,10 +367,10 @@ TEST_F(SuperblockClonerTest, LoopVersioning) {
   graph_->BuildDominatorTree();
   EXPECT_TRUE(CheckGraph());
 
-  HBasicBlockMap bb_map(
-      std::less<HBasicBlock*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
-  HInstructionMap hir_map(
-      std::less<HInstruction*>(), graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HBasicBlockMap bb_map(std::less<HBasicBlock*>(),
+                        graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
+  HInstructionMap hir_map(std::less<HInstruction*>(),
+                          graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
   HLoopInformation* loop_info = header->GetLoopInformation();
   HBasicBlock* original_preheader = loop_info->GetPreHeader();
@@ -432,9 +427,8 @@ TEST_F(SuperblockClonerTest, LoopPeelingMultipleBackEdges) {
   HInstructionIterator it(header->GetPhis());
   DCHECK(!it.Done());
   HPhi* loop_phi = it.Current()->AsPhi();
-  HInstruction* temp_add = new (GetAllocator()) HAdd(DataType::Type::kInt32,
-                                                     loop_phi,
-                                                     graph_->GetIntConstant(2));
+  HInstruction* temp_add =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, loop_phi, graph_->GetIntConstant(2));
   temp1->AddInstruction(temp_add);
   temp1->AddInstruction(new (GetAllocator()) HGoto());
   loop_phi->AddInput(temp_add);
@@ -632,19 +626,15 @@ TEST_F(SuperblockClonerTest, FastCaseCheck) {
 
   HLoopInformation* loop_info = header->GetLoopInformation();
 
-  ArenaBitVector orig_bb_set(
-      arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
+  ArenaBitVector orig_bb_set(arena, graph_->GetBlocks().size(), false, kArenaAllocSuperblockCloner);
   orig_bb_set.Union(&loop_info->GetBlocks());
 
   HEdgeSet remap_orig_internal(graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
   HEdgeSet remap_copy_internal(graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
   HEdgeSet remap_incoming(graph_->GetAllocator()->Adapter(kArenaAllocSuperblockCloner));
 
-  CollectRemappingInfoForPeelUnroll(true,
-                                    loop_info,
-                                    &remap_orig_internal,
-                                    &remap_copy_internal,
-                                    &remap_incoming);
+  CollectRemappingInfoForPeelUnroll(
+      true, loop_info, &remap_orig_internal, &remap_copy_internal, &remap_incoming);
 
   // Insert some extra nodes and edges.
   HBasicBlock* preheader = loop_info->GetPreHeader();

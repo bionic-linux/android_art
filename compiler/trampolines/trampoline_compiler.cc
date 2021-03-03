@@ -49,8 +49,9 @@ namespace arm {
 #define ___ assembler.GetVIXLAssembler()->
 #endif
 
-static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
-    ArenaAllocator* allocator, EntryPointCallingConvention abi, ThreadOffset32 offset) {
+static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
+                                                                    EntryPointCallingConvention abi,
+                                                                    ThreadOffset32 offset) {
   using vixl::aarch32::MemOperand;
   using vixl::aarch32::pc;
   using vixl::aarch32::r0;
@@ -90,27 +91,31 @@ static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
 
 #ifdef ART_ENABLE_CODEGEN_arm64
 namespace arm64 {
-static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(
-    ArenaAllocator* allocator, EntryPointCallingConvention abi, ThreadOffset64 offset) {
+static std::unique_ptr<const std::vector<uint8_t>> CreateTrampoline(ArenaAllocator* allocator,
+                                                                    EntryPointCallingConvention abi,
+                                                                    ThreadOffset64 offset) {
   Arm64Assembler assembler(allocator);
 
   switch (abi) {
     case kInterpreterAbi:  // Thread* is first argument (X0) in interpreter ABI.
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(X0), Offset(offset.Int32Value()),
-          Arm64ManagedRegister::FromXRegister(IP1));
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(X0),
+                Offset(offset.Int32Value()),
+                Arm64ManagedRegister::FromXRegister(IP1));
 
       break;
     case kJniAbi:  // Load via Thread* held in JNIEnv* in first argument (X0).
       __ LoadRawPtr(Arm64ManagedRegister::FromXRegister(IP1),
-                      Arm64ManagedRegister::FromXRegister(X0),
-                      Offset(JNIEnvExt::SelfOffset(8).Int32Value()));
+                    Arm64ManagedRegister::FromXRegister(X0),
+                    Offset(JNIEnvExt::SelfOffset(8).Int32Value()));
 
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(IP1), Offset(offset.Int32Value()),
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(IP1),
+                Offset(offset.Int32Value()),
                 Arm64ManagedRegister::FromXRegister(IP0));
 
       break;
     case kQuickAbi:  // X18 holds Thread*.
-      __ JumpTo(Arm64ManagedRegister::FromXRegister(TR), Offset(offset.Int32Value()),
+      __ JumpTo(Arm64ManagedRegister::FromXRegister(TR),
+                Offset(offset.Int32Value()),
                 Arm64ManagedRegister::FromXRegister(IP0));
 
       break;

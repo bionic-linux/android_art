@@ -42,9 +42,7 @@ class InstructionSimplifierArm64Visitor : public HGraphVisitor {
   }
 
   bool TryMergeIntoUsersShifterOperand(HInstruction* instruction);
-  bool TryMergeIntoShifterOperand(HInstruction* use,
-                                  HInstruction* bitfield_op,
-                                  bool do_merge);
+  bool TryMergeIntoShifterOperand(HInstruction* use, HInstruction* bitfield_op, bool do_merge);
   bool CanMergeIntoShifterOperand(HInstruction* use, HInstruction* bitfield_op) {
     return TryMergeIntoShifterOperand(use, bitfield_op, /* do_merge= */ false);
   }
@@ -140,13 +138,8 @@ bool InstructionSimplifierArm64Visitor::TryMergeIntoShifterOperand(HInstruction*
   }
 
   if (do_merge) {
-    HDataProcWithShifterOp* alu_with_op =
-        new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(use,
-                                                                other_input,
-                                                                bitfield_op->InputAt(0),
-                                                                op_kind,
-                                                                shift_amount,
-                                                                use->GetDexPc());
+    HDataProcWithShifterOp* alu_with_op = new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(
+        use, other_input, bitfield_op->InputAt(0), op_kind, shift_amount, use->GetDexPc());
     use->GetBlock()->ReplaceAndRemoveInstructionWith(use, alu_with_op);
     if (bitfield_op->GetUses().empty()) {
       bitfield_op->GetBlock()->RemoveInstruction(bitfield_op);
@@ -198,10 +191,8 @@ void InstructionSimplifierArm64Visitor::VisitAnd(HAnd* instruction) {
 
 void InstructionSimplifierArm64Visitor::VisitArrayGet(HArrayGet* instruction) {
   size_t data_offset = CodeGenerator::GetArrayDataOffset(instruction);
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }
@@ -209,10 +200,8 @@ void InstructionSimplifierArm64Visitor::VisitArrayGet(HArrayGet* instruction) {
 void InstructionSimplifierArm64Visitor::VisitArraySet(HArraySet* instruction) {
   size_t access_size = DataType::Size(instruction->GetComponentType());
   size_t data_offset = mirror::Array::DataOffset(access_size).Uint32Value();
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }

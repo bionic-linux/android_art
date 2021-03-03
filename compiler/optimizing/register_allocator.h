@@ -18,8 +18,8 @@
 #define ART_COMPILER_OPTIMIZING_REGISTER_ALLOCATOR_H_
 
 #include "arch/instruction_set.h"
-#include "base/array_ref.h"
 #include "base/arena_object.h"
+#include "base/array_ref.h"
 #include "base/macros.h"
 
 namespace art {
@@ -38,10 +38,7 @@ class SsaLivenessAnalysis;
  */
 class RegisterAllocator : public DeletableArenaObject<kArenaAllocRegisterAllocator> {
  public:
-  enum Strategy {
-    kRegisterAllocatorLinearScan,
-    kRegisterAllocatorGraphColor
-  };
+  enum Strategy { kRegisterAllocatorLinearScan, kRegisterAllocatorGraphColor };
 
   static constexpr Strategy kRegisterAllocatorDefault = kRegisterAllocatorLinearScan;
 

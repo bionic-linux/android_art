@@ -76,8 +76,8 @@ bool TrySimpleMultiplyAccumulatePatterns(HMul* mul,
   }
 
   ArenaAllocator* allocator = mul->GetBlock()->GetGraph()->GetAllocator();
-  HMultiplyAccumulate* mulacc = new (allocator) HMultiplyAccumulate(
-      mul->GetType(), op_kind, input_a, input_a, input_b, mul->GetDexPc());
+  HMultiplyAccumulate* mulacc = new (allocator)
+      HMultiplyAccumulate(mul->GetType(), op_kind, input_a, input_a, input_b, mul->GetDexPc());
 
   mul->GetBlock()->ReplaceAndRemoveInstructionWith(mul, mulacc);
   input_binop->GetBlock()->RemoveInstruction(input_binop);
@@ -136,12 +136,8 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
       }
 
       if (accumulator != nullptr) {
-        HMultiplyAccumulate* mulacc =
-            new (allocator) HMultiplyAccumulate(type,
-                                                binop->GetKind(),
-                                                accumulator,
-                                                mul->GetLeft(),
-                                                mul->GetRight());
+        HMultiplyAccumulate* mulacc = new (allocator) HMultiplyAccumulate(
+            type, binop->GetKind(), accumulator, mul->GetLeft(), mul->GetRight());
 
         binop->GetBlock()->ReplaceAndRemoveInstructionWith(binop, mulacc);
         DCHECK(!mul->HasUses());
@@ -185,7 +181,6 @@ bool TryCombineMultiplyAccumulate(HMul* mul, InstructionSet isa) {
   return false;
 }
 
-
 bool TryMergeNegatedInput(HBinaryOperation* op) {
   DCHECK(op->IsAnd() || op->IsOr() || op->IsXor()) << op->DebugName();
   HInstruction* left = op->GetLeft();
@@ -228,7 +223,6 @@ bool TryMergeNegatedInput(HBinaryOperation* op) {
   return false;
 }
 
-
 bool TryExtractArrayAccessAddress(HInstruction* access,
                                   HInstruction* array,
                                   HInstruction* index,
@@ -244,9 +238,7 @@ bool TryExtractArrayAccessAddress(HInstruction* access,
     // The access may require a runtime call or the original array pointer.
     return false;
   }
-  if (kEmitCompilerReadBarrier &&
-      !kUseBakerReadBarrier &&
-      access->IsArrayGet() &&
+  if (kEmitCompilerReadBarrier && !kUseBakerReadBarrier && access->IsArrayGet() &&
       access->GetType() == DataType::Type::kReference) {
     // For object arrays, the non-Baker read barrier instrumentation requires
     // the original array pointer.
@@ -291,8 +283,7 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
   HGraph* graph = access->GetBlock()->GetGraph();
   ArenaAllocator* allocator = graph->GetAllocator();
   DataType::Type packed_type = access->GetPackedType();
-  uint32_t data_offset = mirror::Array::DataOffset(
-      DataType::Size(packed_type)).Uint32Value();
+  uint32_t data_offset = mirror::Array::DataOffset(DataType::Size(packed_type)).Uint32Value();
   size_t component_shift = DataType::SizeShift(packed_type);
 
   bool is_extracting_beneficial = false;
@@ -302,8 +293,8 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
     if (user->IsVecMemoryOperation() && user != access) {
       HVecMemoryOperation* another_access = user->AsVecMemoryOperation();
       DataType::Type another_packed_type = another_access->GetPackedType();
-      uint32_t another_data_offset = mirror::Array::DataOffset(
-          DataType::Size(another_packed_type)).Uint32Value();
+      uint32_t another_data_offset =
+          mirror::Array::DataOffset(DataType::Size(another_packed_type)).Uint32Value();
       size_t another_component_shift = DataType::SizeShift(another_packed_type);
       if (another_data_offset == data_offset && another_component_shift == component_shift) {
         is_extracting_beneficial = true;

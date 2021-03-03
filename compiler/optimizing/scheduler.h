@@ -208,13 +208,27 @@ class SchedulingNode : public DeletableArenaObject<kArenaAllocScheduler> {
     return num_unscheduled_successors_ != 0;
   }
 
-  HInstruction* GetInstruction() const { return instruction_; }
-  uint32_t GetLatency() const { return latency_; }
-  void SetLatency(uint32_t latency) { latency_ = latency; }
-  uint32_t GetInternalLatency() const { return internal_latency_; }
-  void SetInternalLatency(uint32_t internal_latency) { internal_latency_ = internal_latency; }
-  uint32_t GetCriticalPath() const { return critical_path_; }
-  bool IsSchedulingBarrier() const { return is_scheduling_barrier_; }
+  HInstruction* GetInstruction() const {
+    return instruction_;
+  }
+  uint32_t GetLatency() const {
+    return latency_;
+  }
+  void SetLatency(uint32_t latency) {
+    latency_ = latency;
+  }
+  uint32_t GetInternalLatency() const {
+    return internal_latency_;
+  }
+  void SetInternalLatency(uint32_t internal_latency) {
+    internal_latency_ = internal_latency;
+  }
+  uint32_t GetCriticalPath() const {
+    return critical_path_;
+  }
+  bool IsSchedulingBarrier() const {
+    return is_scheduling_barrier_;
+  }
 
   bool HasDataDependency(const SchedulingNode* node) const {
     return ContainsElement(data_predecessors_, node);
@@ -358,10 +372,10 @@ class SchedulingGraph : public ValueObject {
  protected:
   void AddDependency(SchedulingNode* node, SchedulingNode* dependency, bool is_data_dependency);
   void AddDataDependency(SchedulingNode* node, SchedulingNode* dependency) {
-    AddDependency(node, dependency, /*is_data_dependency*/true);
+    AddDependency(node, dependency, /*is_data_dependency*/ true);
   }
   void AddOtherDependency(SchedulingNode* node, SchedulingNode* dependency) {
-    AddDependency(node, dependency, /*is_data_dependency*/false);
+    AddDependency(node, dependency, /*is_data_dependency*/ false);
   }
 
   // Analyze whether the scheduling node has cross-iteration dependencies which mean it uses
@@ -407,9 +421,10 @@ class SchedulingLatencyVisitor : public HGraphDelegateVisitor {
         last_visited_internal_latency_(0) {}
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Error visiting " << instruction->DebugName() << ". "
-        "Architecture-specific scheduling latency visitors must handle all instructions"
-        " (potentially by overriding the generic `VisitInstruction()`.";
+    LOG(FATAL) << "Error visiting " << instruction->DebugName()
+               << ". "
+                  "Architecture-specific scheduling latency visitors must handle all instructions"
+                  " (potentially by overriding the generic `VisitInstruction()`.";
     UNREACHABLE();
   }
 
@@ -423,8 +438,12 @@ class SchedulingLatencyVisitor : public HGraphDelegateVisitor {
     Visit(node->GetInstruction());
   }
 
-  uint32_t GetLastVisitedLatency() const { return last_visited_latency_; }
-  uint32_t GetLastVisitedInternalLatency() const { return last_visited_internal_latency_; }
+  uint32_t GetLastVisitedLatency() const {
+    return last_visited_latency_;
+  }
+  uint32_t GetLastVisitedInternalLatency() const {
+    return last_visited_internal_latency_;
+  }
 
  protected:
   // The latency of the most recent visited SchedulingNode.
@@ -441,6 +460,7 @@ class SchedulingNodeSelector : public ArenaObject<kArenaAllocScheduler> {
   virtual SchedulingNode* PopHighestPriorityNode(ScopedArenaVector<SchedulingNode*>* nodes,
                                                  const SchedulingGraph& graph) = 0;
   virtual ~SchedulingNodeSelector() {}
+
  protected:
   static void DeleteNodeAtIndex(ScopedArenaVector<SchedulingNode*>* nodes, size_t index) {
     (*nodes)[index] = nodes->back();
@@ -454,7 +474,7 @@ class SchedulingNodeSelector : public ArenaObject<kArenaAllocScheduler> {
 class RandomSchedulingNodeSelector : public SchedulingNodeSelector {
  public:
   RandomSchedulingNodeSelector() : seed_(0) {
-    seed_  = static_cast<uint32_t>(NanoTime());
+    seed_ = static_cast<uint32_t>(NanoTime());
     srand(seed_);
   }
 
@@ -479,7 +499,9 @@ class CriticalPathSchedulingNodeSelector : public SchedulingNodeSelector {
  public:
   CriticalPathSchedulingNodeSelector() : prev_select_(nullptr) {}
 
-  void Reset() override { prev_select_ = nullptr; }
+  void Reset() override {
+    prev_select_ = nullptr;
+  }
   SchedulingNode* PopHighestPriorityNode(ScopedArenaVector<SchedulingNode*>* nodes,
                                          const SchedulingGraph& graph) override;
 
@@ -505,7 +527,9 @@ class HScheduler {
 
   void Schedule(HGraph* graph);
 
-  void SetOnlyOptimizeLoopBlocks(bool loop_only) { only_optimize_loop_blocks_ = loop_only; }
+  void SetOnlyOptimizeLoopBlocks(bool loop_only) {
+    only_optimize_loop_blocks_ = loop_only;
+  }
 
   // Instructions can not be rescheduled across a scheduling barrier.
   virtual bool IsSchedulingBarrier(const HInstruction* instruction) const;
@@ -551,9 +575,7 @@ class HInstructionScheduling : public HOptimization {
                          InstructionSet instruction_set,
                          CodeGenerator* cg = nullptr,
                          const char* name = kInstructionSchedulingPassName)
-      : HOptimization(graph, name),
-        codegen_(cg),
-        instruction_set_(instruction_set) {}
+      : HOptimization(graph, name), codegen_(cg), instruction_set_(instruction_set) {}
 
   bool Run() override {
     return Run(/*only_optimize_loop_blocks*/ true, /*schedule_randomly*/ false);

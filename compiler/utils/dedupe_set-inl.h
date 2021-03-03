@@ -17,19 +17,17 @@
 #ifndef ART_COMPILER_UTILS_DEDUPE_SET_INL_H_
 #define ART_COMPILER_UTILS_DEDUPE_SET_INL_H_
 
-#include "dedupe_set.h"
-
 #include <inttypes.h>
 
 #include <algorithm>
 #include <unordered_map>
 
 #include "android-base/stringprintf.h"
-
 #include "base/hash_set.h"
 #include "base/mutex.h"
 #include "base/stl_util.h"
 #include "base/time_utils.h"
+#include "dedupe_set.h"
 
 namespace art {
 
@@ -55,11 +53,7 @@ template <typename InKey,
 class DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::Shard {
  public:
   Shard(const Alloc& alloc, const std::string& lock_name)
-      : alloc_(alloc),
-        lock_name_(lock_name),
-        lock_(lock_name_.c_str()),
-        keys_() {
-  }
+      : alloc_(alloc), lock_name_(lock_name), lock_(lock_name_.c_str()), keys_() {}
 
   ~Shard() {
     for (const HashedKey<StoreKey>& key : keys_) {
@@ -77,7 +71,7 @@ class DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::Shard {
       return it->Key();
     }
     const StoreKey* store_key = alloc_.Copy(in_key);
-    keys_.insert(HashedKey<StoreKey> { hash, store_key });
+    keys_.insert(HashedKey<StoreKey>{hash, store_key});
     return store_key;
   }
 
@@ -113,8 +107,8 @@ class DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::Shard {
   template <typename T>
   class HashedKey {
    public:
-    HashedKey() : hash_(0u), key_(nullptr) { }
-    HashedKey(size_t hash, const T* key) : hash_(hash), key_(key) { }
+    HashedKey() : hash_(0u), key_(nullptr) {}
+    HashedKey(size_t hash, const T* key) : hash_(hash), key_(key) {}
 
     size_t Hash() const {
       return hash_;
@@ -156,8 +150,8 @@ class DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::Shard {
   };
 
   struct ShardPred {
-    typename std::enable_if<!std::is_same<StoreKey, InKey>::value, bool>::type
-    operator()(const HashedKey<StoreKey>& lhs, const HashedKey<StoreKey>& rhs) const {
+    typename std::enable_if<!std::is_same<StoreKey, InKey>::value, bool>::type operator()(
+        const HashedKey<StoreKey>& lhs, const HashedKey<StoreKey>& rhs) const {
       DCHECK(lhs.Key() != nullptr);
       DCHECK(rhs.Key() != nullptr);
       // Rehashing: stored keys are already deduplicated, so we can simply compare key pointers.
@@ -168,9 +162,8 @@ class DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::Shard {
     bool operator()(const HashedKey<LeftT>& lhs, const HashedKey<RightT>& rhs) const {
       DCHECK(lhs.Key() != nullptr);
       DCHECK(rhs.Key() != nullptr);
-      return lhs.Hash() == rhs.Hash() &&
-          lhs.Key()->size() == rhs.Key()->size() &&
-          std::equal(lhs.Key()->begin(), lhs.Key()->end(), rhs.Key()->begin());
+      return lhs.Hash() == rhs.Hash() && lhs.Key()->size() == rhs.Key()->size() &&
+             std::equal(lhs.Key()->begin(), lhs.Key()->end(), rhs.Key()->begin());
     }
   };
 
@@ -237,18 +230,16 @@ template <typename InKey,
 std::string DedupeSet<InKey, StoreKey, Alloc, HashType, HashFunc, kShard>::DumpStats(
     Thread* self) const {
   Stats stats;
-  for (HashType shard = 0; shard < kShard; ++shard) {
-    shards_[shard]->UpdateStats(self, &stats);
-  }
-  return android::base::StringPrintf("%zu collisions, %zu max hash collisions, "
-                                     "%zu/%zu probe distance, %" PRIu64 " ns hash time",
-                                     stats.collision_sum,
-                                     stats.collision_max,
-                                     stats.total_probe_distance,
-                                     stats.total_size,
-                                     hash_time_);
+  for (HashType shard = 0; shard < kShard; ++shard) { shards_[shard]->UpdateStats(self, &stats); }
+  return android::base::StringPrintf(
+      "%zu collisions, %zu max hash collisions, "
+      "%zu/%zu probe distance, %" PRIu64 " ns hash time",
+      stats.collision_sum,
+      stats.collision_max,
+      stats.total_probe_distance,
+      stats.total_size,
+      hash_time_);
 }
-
 
 }  // namespace art
 

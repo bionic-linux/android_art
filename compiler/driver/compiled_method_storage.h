@@ -79,10 +79,8 @@ class CompiledMethodStorage {
   class ThunkMapKey;
   class ThunkMapValue;
   using ThunkMapValueType = std::pair<const ThunkMapKey, ThunkMapValue>;
-  using ThunkMap = std::map<ThunkMapKey,
-                            ThunkMapValue,
-                            std::less<ThunkMapKey>,
-                            SwapAllocator<ThunkMapValueType>>;
+  using ThunkMap = std::
+      map<ThunkMapKey, ThunkMapValue, std::less<ThunkMapKey>, SwapAllocator<ThunkMapValueType>>;
   static_assert(std::is_same<ThunkMapValueType, ThunkMap::value_type>::value, "Value type check.");
 
   static ThunkMapKey GetThunkMapKey(const linker::LinkerPatch& linker_patch);

@@ -26,4 +26,3 @@ bool AreLeastSetBitInputs(HInstruction* to_test, HInstruction* other);
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_INSTRUCTION_SIMPLIFIER_X86_SHARED_H_
-

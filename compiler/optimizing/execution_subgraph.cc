@@ -34,7 +34,7 @@ ExecutionSubgraph::ExecutionSubgraph(HGraph* graph,
     : graph_(graph),
       allocator_(allocator),
       allowed_successors_(analysis_possible ? graph_->GetBlocks().size() : 0,
-                          ~(std::bitset<kMaxFilterableSuccessors> {}),
+                          ~(std::bitset<kMaxFilterableSuccessors>{}),
                           allocator_->Adapter(kArenaAllocLSA)),
       unreachable_blocks_(
           allocator_, analysis_possible ? graph_->GetBlocks().size() : 0, false, kArenaAllocLSA),
@@ -63,7 +63,7 @@ void ExecutionSubgraph::RemoveBlock(const HBasicBlock* to_remove) {
   }
   unreachable_blocks_.SetBit(id);
   for (HBasicBlock* pred : to_remove->GetPredecessors()) {
-    std::bitset<kMaxFilterableSuccessors> allowed_successors {};
+    std::bitset<kMaxFilterableSuccessors> allowed_successors{};
     // ZipCount iterates over both the successors and the index of them at the same time.
     for (auto [succ, i] : ZipCount(MakeIterationRange(pred->GetSuccessors()))) {
       if (succ != to_remove) {
@@ -226,9 +226,7 @@ void ExecutionSubgraph::Prune() {
     }
     // Mark blocks we didn't see in the ReachesEnd flood-fill
     for (const HBasicBlock* blk : graph_->GetBlocks()) {
-      if (blk != nullptr &&
-          results[blk->GetBlockId()].none() &&
-          blk != graph_->GetExitBlock() &&
+      if (blk != nullptr && results[blk->GetBlockId()].none() && blk != graph_->GetExitBlock() &&
           blk != graph_->GetEntryBlock()) {
         // We never visited this block, must be unreachable.
         unreachable_blocks_.SetBit(blk->GetBlockId());
@@ -292,12 +290,8 @@ void ExecutionSubgraph::RecalculateExcludedCohort() {
       unreachable.ClearBit(cur->GetBlockId());
       cohort.blocks_.SetBit(cur->GetBlockId());
       // don't bother filtering here, it's done next go-around
-      for (const HBasicBlock* pred : cur->GetPredecessors()) {
-        worklist.push(pred);
-      }
-      for (const HBasicBlock* succ : cur->GetSuccessors()) {
-        worklist.push(succ);
-      }
+      for (const HBasicBlock* pred : cur->GetPredecessors()) { worklist.push(pred); }
+      for (const HBasicBlock* succ : cur->GetSuccessors()) { worklist.push(succ); }
     } while (!worklist.empty());
   }
   // Figure out entry & exit nodes.

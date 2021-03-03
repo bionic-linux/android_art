@@ -60,8 +60,7 @@ class SsaBuilder : public ValueObject {
         ambiguous_agets_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
         ambiguous_asets_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
         uninitialized_strings_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
-        uninitialized_string_phis_(local_allocator->Adapter(kArenaAllocGraphBuilder)) {
-  }
+        uninitialized_string_phis_(local_allocator->Adapter(kArenaAllocGraphBuilder)) {}
 
   GraphAnalysisResult BuildSsa();
 

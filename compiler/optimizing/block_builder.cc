@@ -223,8 +223,7 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
 
 // Returns the TryItem stored for `block` or nullptr if there is no info for it.
 static const dex::TryItem* GetTryItem(
-    HBasicBlock* block,
-    const ScopedArenaSafeMap<uint32_t, const dex::TryItem*>& try_block_info) {
+    HBasicBlock* block, const ScopedArenaSafeMap<uint32_t, const dex::TryItem*>& try_block_info) {
   auto iterator = try_block_info.find(block->GetBlockId());
   return (iterator == try_block_info.end()) ? nullptr : iterator->second;
 }
@@ -237,9 +236,8 @@ static void LinkToCatchBlocks(HTryBoundary* try_boundary,
                               const CodeItemDataAccessor& accessor,
                               const dex::TryItem* try_item,
                               const ScopedArenaSafeMap<uint32_t, HBasicBlock*>& catch_blocks) {
-  for (CatchHandlerIterator it(accessor.GetCatchHandlerData(try_item->handler_off_));
-      it.HasNext();
-      it.Next()) {
+  for (CatchHandlerIterator it(accessor.GetCatchHandlerData(try_item->handler_off_)); it.HasNext();
+       it.Next()) {
     try_boundary->AddExceptionHandler(catch_blocks.Get(it.GetHandlerAddress()));
   }
 }
@@ -362,8 +360,8 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
       if (GetTryItem(predecessor, try_block_info) != try_item) {
         // Found a predecessor not covered by the same TryItem. Insert entering
         // boundary block.
-        HTryBoundary* try_entry = new (allocator_) HTryBoundary(
-            HTryBoundary::BoundaryKind::kEntry, try_block->GetDexPc());
+        HTryBoundary* try_entry = new (allocator_)
+            HTryBoundary(HTryBoundary::BoundaryKind::kEntry, try_block->GetDexPc());
         try_block->CreateImmediateDominator()->AddInstruction(try_entry);
         LinkToCatchBlocks(try_entry, code_item_accessor_, try_item, catch_blocks);
         break;

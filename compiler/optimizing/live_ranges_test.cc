@@ -58,9 +58,8 @@ TEST_F(LiveRangesTest, CFG1) {
    *           |
    *       12: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0, Instruction::RETURN);
 
   HGraph* graph = BuildGraph(data);
 
@@ -101,11 +100,11 @@ TEST_F(LiveRangesTest, CFG2) {
    *         |
    *       26: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::GOTO | 0x100,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::GOTO | 0x100,
+                                                            Instruction::RETURN | 0 << 8);
 
   HGraph* graph = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
@@ -148,11 +147,11 @@ TEST_F(LiveRangesTest, CFG3) {
    *         |
    *       28: exit
    */
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 3,
-    Instruction::CONST_4 | 4 << 12 | 0,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            3,
+                                                            Instruction::CONST_4 | 4 << 12 | 0,
+                                                            Instruction::RETURN | 0 << 8);
 
   HGraph* graph = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
@@ -220,13 +219,14 @@ TEST_F(LiveRangesTest, Loop1) {
    *       30: exit
    */
 
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 4,
-    Instruction::CONST_4 | 4 << 12 | 0,
-    Instruction::GOTO | 0xFD00,
-    Instruction::CONST_4 | 5 << 12 | 1 << 8,
-    Instruction::RETURN | 1 << 8);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::IF_EQ,
+                              4,
+                              Instruction::CONST_4 | 4 << 12 | 0,
+                              Instruction::GOTO | 0xFD00,
+                              Instruction::CONST_4 | 5 << 12 | 1 << 8,
+                              Instruction::RETURN | 1 << 8);
 
   HGraph* graph = BuildGraph(data);
   RemoveSuspendChecks(graph);
@@ -297,12 +297,14 @@ TEST_F(LiveRangesTest, Loop2) {
    * We want to make sure the phi at 10 has a lifetime hole after the add at 20.
    */
 
-  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 6,
-    Instruction::ADD_INT, 0, 0,
-    Instruction::GOTO | 0xFB00,
-    Instruction::RETURN | 0 << 8);
+  const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                                                            Instruction::IF_EQ,
+                                                            6,
+                                                            Instruction::ADD_INT,
+                                                            0,
+                                                            0,
+                                                            Instruction::GOTO | 0xFB00,
+                                                            Instruction::RETURN | 0 << 8);
 
   HGraph* graph = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);
@@ -369,14 +371,17 @@ TEST_F(LiveRangesTest, CFG4) {
    *
    * We want to make sure the constant0 has a lifetime hole after the 16: add.
    */
-  const std::vector<uint16_t> data = TWO_REGISTERS_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::CONST_4 | 4 << 12 | 1 << 8,
-    Instruction::IF_EQ, 5,
-    Instruction::ADD_INT, 1 << 8,
-    Instruction::GOTO | 0x300,
-    Instruction::ADD_INT, 1 << 8,
-    Instruction::RETURN);
+  const std::vector<uint16_t> data =
+      TWO_REGISTERS_CODE_ITEM(Instruction::CONST_4 | 0 | 0,
+                              Instruction::CONST_4 | 4 << 12 | 1 << 8,
+                              Instruction::IF_EQ,
+                              5,
+                              Instruction::ADD_INT,
+                              1 << 8,
+                              Instruction::GOTO | 0x300,
+                              Instruction::ADD_INT,
+                              1 << 8,
+                              Instruction::RETURN);
 
   HGraph* graph = BuildGraph(data);
   std::unique_ptr<CodeGenerator> codegen = CodeGenerator::Create(graph, *compiler_options_);

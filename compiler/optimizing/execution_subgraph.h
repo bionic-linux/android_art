@@ -117,8 +117,8 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
  public:
   using BitVecBlockRange =
       IterationRange<TransformIterator<BitVector::IndexIterator, BlockIdToBlockTransformer>>;
-  using FilteredBitVecBlockRange = IterationRange<
-      FilterIterator<ArenaVector<HBasicBlock*>::const_iterator, BlockIdFilterThunk>>;
+  using FilteredBitVecBlockRange =
+      IterationRange<FilterIterator<ArenaVector<HBasicBlock*>::const_iterator, BlockIdFilterThunk>>;
 
   // A set of connected blocks which are connected and removed from the
   // ExecutionSubgraph. See above comment for explanation.

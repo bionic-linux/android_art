@@ -44,8 +44,7 @@ ObjPtr<mirror::ObjectArray<mirror::Object>> IntrinsicObjects::LookupIntegerCache
   return integer_cache;
 }
 
-static bool HasIntrinsicObjects(
-    ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects)
+static bool HasIntrinsicObjects(ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(boot_image_live_objects != nullptr);
   uint32_t length = static_cast<uint32_t>(boot_image_live_objects->GetLength());
@@ -69,8 +68,7 @@ ObjPtr<mirror::ObjectArray<mirror::Object>> IntrinsicObjects::GetIntegerValueOfC
 }
 
 ObjPtr<mirror::Object> IntrinsicObjects::GetIntegerValueOfObject(
-    ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects,
-    uint32_t index) {
+    ObjPtr<mirror::ObjectArray<mirror::Object>> boot_image_live_objects, uint32_t index) {
   DCHECK(HasIntrinsicObjects(boot_image_live_objects));
   DCHECK_LT(index,
             static_cast<uint32_t>(GetIntegerValueOfCache(boot_image_live_objects)->GetLength()));
@@ -89,9 +87,10 @@ MemberOffset IntrinsicObjects::GetIntegerValueOfArrayDataOffset(
   DCHECK(HasIntrinsicObjects(boot_image_live_objects));
   MemberOffset result =
       mirror::ObjectArray<mirror::Object>::OffsetOfElement(kIntrinsicObjectsOffset + 1u);
-  DCHECK_EQ(GetIntegerValueOfObject(boot_image_live_objects, 0u),
-            (boot_image_live_objects
-                 ->GetFieldObject<mirror::Object, kVerifyNone, kWithoutReadBarrier>(result)));
+  DCHECK_EQ(
+      GetIntegerValueOfObject(boot_image_live_objects, 0u),
+      (boot_image_live_objects->GetFieldObject<mirror::Object, kVerifyNone, kWithoutReadBarrier>(
+          result)));
   return result;
 }
 

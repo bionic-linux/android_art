@@ -19,9 +19,9 @@
 #include <iostream>
 #include <sstream>
 
+#include "base/bit_vector-inl.h"
 #include "base/scoped_arena_allocator.h"
 #include "base/scoped_arena_containers.h"
-#include "base/bit_vector-inl.h"
 #include "code_generator.h"
 #include "register_allocator_graph_color.h"
 #include "register_allocator_linear_scan.h"
@@ -32,9 +32,7 @@ namespace art {
 RegisterAllocator::RegisterAllocator(ScopedArenaAllocator* allocator,
                                      CodeGenerator* codegen,
                                      const SsaLivenessAnalysis& liveness)
-    : allocator_(allocator),
-      codegen_(codegen),
-      liveness_(liveness) {}
+    : allocator_(allocator), codegen_(codegen), liveness_(liveness) {}
 
 std::unique_ptr<RegisterAllocator> RegisterAllocator::Create(ScopedArenaAllocator* allocator,
                                                              CodeGenerator* codegen,
@@ -71,12 +69,17 @@ RegisterAllocator::~RegisterAllocator() {
 class AllRangesIterator : public ValueObject {
  public:
   explicit AllRangesIterator(LiveInterval* interval)
-      : current_interval_(interval),
-        current_range_(interval->GetFirstRange()) {}
+      : current_interval_(interval), current_range_(interval->GetFirstRange()) {}
 
-  bool Done() const { return current_interval_ == nullptr; }
-  LiveRange* CurrentRange() const { return current_range_; }
-  LiveInterval* CurrentInterval() const { return current_interval_; }
+  bool Done() const {
+    return current_interval_ == nullptr;
+  }
+  LiveRange* CurrentRange() const {
+    return current_range_;
+  }
+  LiveInterval* CurrentInterval() const {
+    return current_interval_;
+  }
 
   void Advance() {
     current_range_ = current_range_->GetNext();
@@ -102,8 +105,8 @@ bool RegisterAllocator::ValidateIntervals(ArrayRef<LiveInterval* const> interval
                                           bool processing_core_registers,
                                           bool log_fatal_on_failure) {
   size_t number_of_registers = processing_core_registers
-      ? codegen.GetNumberOfCoreRegisters()
-      : codegen.GetNumberOfFloatingPointRegisters();
+                                   ? codegen.GetNumberOfCoreRegisters()
+                                   : codegen.GetNumberOfFloatingPointRegisters();
   ScopedArenaAllocator allocator(codegen.GetGraph()->GetArenaStack());
   ScopedArenaVector<ArenaBitVector*> liveness_of_values(
       allocator.Adapter(kArenaAllocRegisterAllocatorValidate));
@@ -129,12 +132,13 @@ bool RegisterAllocator::ValidateIntervals(ArrayRef<LiveInterval* const> interval
       LiveInterval* current = it.CurrentInterval();
       HInstruction* defined_by = current->GetParent()->GetDefinedBy();
       if (current->GetParent()->HasSpillSlot()
-           // Parameters and current method have their own stack slot.
-           && !(defined_by != nullptr && (defined_by->IsParameterValue()
-                                          || defined_by->IsCurrentMethod()))) {
-        BitVector* liveness_of_spill_slot = liveness_of_values[number_of_registers
-            + current->GetParent()->GetSpillSlot() / kVRegSize
-            - number_of_out_slots];
+          // Parameters and current method have their own stack slot.
+          && !(defined_by != nullptr &&
+               (defined_by->IsParameterValue() || defined_by->IsCurrentMethod()))) {
+        BitVector* liveness_of_spill_slot =
+            liveness_of_values[number_of_registers +
+                               current->GetParent()->GetSpillSlot() / kVRegSize -
+                               number_of_out_slots];
         for (size_t j = it.CurrentRange()->GetStart(); j < it.CurrentRange()->GetEnd(); ++j) {
           if (liveness_of_spill_slot->IsBitSet(j)) {
             if (log_fatal_on_failure) {
@@ -175,9 +179,8 @@ bool RegisterAllocator::ValidateIntervals(ArrayRef<LiveInterval* const> interval
                 codegen.DumpFloatingPointRegister(message, current->GetRegister());
               }
               for (LiveInterval* interval : intervals) {
-                if (interval->HasRegister()
-                    && interval->GetRegister() == current->GetRegister()
-                    && interval->CoversSlow(j)) {
+                if (interval->HasRegister() && interval->GetRegister() == current->GetRegister() &&
+                    interval->CoversSlow(j)) {
                   message << std::endl;
                   if (interval->GetDefinedBy() != nullptr) {
                     message << interval->GetDefinedBy()->GetKind() << " ";

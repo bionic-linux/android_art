@@ -70,15 +70,17 @@ static constexpr bool kUseAOTInlineCaches = true;
 
 // We check for line numbers to make sure the DepthString implementation
 // aligns the output nicely.
-#define LOG_INTERNAL(msg) \
-  static_assert(__LINE__ > 10, "Unhandled line number"); \
+#define LOG_INTERNAL(msg)                                   \
+  static_assert(__LINE__ > 10, "Unhandled line number");    \
   static_assert(__LINE__ < 10000, "Unhandled line number"); \
   VLOG(compiler) << DepthString(__LINE__) << msg
 
 #define LOG_TRY() LOG_INTERNAL("Try inlinining call: ")
 #define LOG_NOTE() LOG_INTERNAL("Note: ")
 #define LOG_SUCCESS() LOG_INTERNAL("Success: ")
-#define LOG_FAIL(stats_ptr, stat) MaybeRecordStat(stats_ptr, stat); LOG_INTERNAL("Fail: ")
+#define LOG_FAIL(stats_ptr, stat)   \
+  MaybeRecordStat(stats_ptr, stat); \
+  LOG_INTERNAL("Fail: ")
 #define LOG_FAIL_NO_STAT() LOG_INTERNAL("Fail: ")
 
 std::string HInliner::DepthString(int line) const {
@@ -97,17 +99,14 @@ std::string HInliner::DepthString(int line) const {
     // Safeguard if this file reaches more than 10000 lines.
     DCHECK_LT(line, 10000);
   }
-  for (size_t i = 0; i < count; ++i) {
-    value += "  ";
-  }
+  for (size_t i = 0; i < count; ++i) { value += "  "; }
   return value;
 }
 
 static size_t CountNumberOfInstructions(HGraph* graph) {
   size_t number_of_instructions = 0;
   for (HBasicBlock* block : graph->GetReversePostOrderSkipEntryBlock()) {
-    for (HInstructionIterator instr_it(block->GetInstructions());
-         !instr_it.Done();
+    for (HInstructionIterator instr_it(block->GetInstructions()); !instr_it.Done();
          instr_it.Advance()) {
       ++number_of_instructions;
     }
@@ -120,9 +119,8 @@ void HInliner::UpdateInliningBudget() {
     // Always try to inline small methods.
     inlining_budget_ = kMaximumNumberOfInstructionsForSmallMethod;
   } else {
-    inlining_budget_ = std::max(
-        kMaximumNumberOfInstructionsForSmallMethod,
-        kMaximumNumberOfTotalInstructions - total_number_of_instructions_);
+    inlining_budget_ = std::max(kMaximumNumberOfInstructionsForSmallMethod,
+                                kMaximumNumberOfTotalInstructions - total_number_of_instructions_);
   }
 }
 
@@ -199,8 +197,7 @@ bool HInliner::Run() {
   return didInline;
 }
 
-static bool IsMethodOrDeclaringClassFinal(ArtMethod* method)
-    REQUIRES_SHARED(Locks::mutator_lock_) {
+static bool IsMethodOrDeclaringClassFinal(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_) {
   return method->IsFinal() || method->GetDeclaringClass()->IsFinal();
 }
 
@@ -246,12 +243,12 @@ static ArtMethod* FindVirtualOrInterfaceTarget(HInvoke* invoke)
   ClassLinker* cl = Runtime::Current()->GetClassLinker();
   PointerSize pointer_size = cl->GetImagePointerSize();
   if (invoke->IsInvokeInterface()) {
-    resolved_method = info.GetTypeHandle()->FindVirtualMethodForInterface(
-        resolved_method, pointer_size);
+    resolved_method =
+        info.GetTypeHandle()->FindVirtualMethodForInterface(resolved_method, pointer_size);
   } else {
     DCHECK(invoke->IsInvokeVirtual());
-    resolved_method = info.GetTypeHandle()->FindVirtualMethodForVirtual(
-        resolved_method, pointer_size);
+    resolved_method =
+        info.GetTypeHandle()->FindVirtualMethodForVirtual(resolved_method, pointer_size);
   }
 
   if (resolved_method == nullptr) {
@@ -322,7 +319,7 @@ static dex::TypeIndex FindClassIndexIn(ObjPtr<mirror::Class> cls,
 
 HInliner::InlineCacheType HInliner::GetInlineCacheType(
     const Handle<mirror::ObjectArray<mirror::Class>>& classes)
-  REQUIRES_SHARED(Locks::mutator_lock_) {
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   uint8_t number_of_types = 0;
   for (; number_of_types < InlineCache::kIndividualCacheSize; ++number_of_types) {
     if (classes->Get(number_of_types) == nullptr) {
@@ -394,9 +391,8 @@ static bool IsMethodUnverified(const CompilerOptions& compiler_options, ArtMetho
       return true;
     }
     uint16_t class_def_idx = method->GetDeclaringClass()->GetDexClassDefIndex();
-    if (!compiler_options.IsMethodVerifiedWithoutFailures(method->GetDexMethodIndex(),
-                                                          class_def_idx,
-                                                          *method->GetDexFile())) {
+    if (!compiler_options.IsMethodVerifiedWithoutFailures(
+            method->GetDexMethodIndex(), class_def_idx, *method->GetDexFile())) {
       // Method has soft or hard failures, don't analyze.
       return true;
     }
@@ -413,8 +409,7 @@ static bool AlwaysThrows(const CompilerOptions& compiler_options, ArtMethod* met
   }
   // Skip native methods, methods with try blocks, and methods that are too large.
   CodeItemDataAccessor accessor(method->DexInstructionData());
-  if (!accessor.HasCodeItem() ||
-      accessor.TriesSize() != 0 ||
+  if (!accessor.HasCodeItem() || accessor.TriesSize() != 0 ||
       accessor.InsnsSizeInCodeUnits() > kMaximumNumberOfTotalInstructions) {
     return false;
   }
@@ -523,13 +518,12 @@ bool HInliner::TryInline(HInvoke* invoke_instruction) {
 }
 
 static Handle<mirror::ObjectArray<mirror::Class>> AllocateInlineCacheHolder(
-    const DexCompilationUnit& compilation_unit,
-    StackHandleScope<1>* hs)
+    const DexCompilationUnit& compilation_unit, StackHandleScope<1>* hs)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   Thread* self = Thread::Current();
   ClassLinker* class_linker = compilation_unit.GetClassLinker();
-  Handle<mirror::ObjectArray<mirror::Class>> inline_cache = hs->NewHandle(
-      mirror::ObjectArray<mirror::Class>::Alloc(
+  Handle<mirror::ObjectArray<mirror::Class>> inline_cache =
+      hs->NewHandle(mirror::ObjectArray<mirror::Class>::Alloc(
           self,
           GetClassRoot<mirror::ObjectArray<mirror::Class>>(class_linker),
           InlineCache::kIndividualCacheSize));
@@ -586,17 +580,15 @@ bool HInliner::TryInlineFromInlineCache(HInvoke* invoke_instruction)
 
   switch (inline_cache_type) {
     case kInlineCacheNoData: {
-      LOG_FAIL_NO_STAT()
-          << "No inline cache information for call to "
-          << invoke_instruction->GetMethodReference().PrettyMethod();
+      LOG_FAIL_NO_STAT() << "No inline cache information for call to "
+                         << invoke_instruction->GetMethodReference().PrettyMethod();
       return false;
     }
 
     case kInlineCacheUninitialized: {
-      LOG_FAIL_NO_STAT()
-          << "Interface or virtual call to "
-          << invoke_instruction->GetMethodReference().PrettyMethod()
-          << " is not hit and not inlined";
+      LOG_FAIL_NO_STAT() << "Interface or virtual call to "
+                         << invoke_instruction->GetMethodReference().PrettyMethod()
+                         << " is not hit and not inlined";
       return false;
     }
 
@@ -615,19 +607,17 @@ bool HInliner::TryInlineFromInlineCache(HInvoke* invoke_instruction)
     }
 
     case kInlineCacheMegamorphic: {
-      LOG_FAIL_NO_STAT()
-          << "Interface or virtual call to "
-          << invoke_instruction->GetMethodReference().PrettyMethod()
-          << " is megamorphic and not inlined";
+      LOG_FAIL_NO_STAT() << "Interface or virtual call to "
+                         << invoke_instruction->GetMethodReference().PrettyMethod()
+                         << " is megamorphic and not inlined";
       MaybeRecordStat(stats_, MethodCompilationStat::kMegamorphicCall);
       return false;
     }
 
     case kInlineCacheMissingTypes: {
-      LOG_FAIL_NO_STAT()
-          << "Interface or virtual call to "
-          << invoke_instruction->GetMethodReference().PrettyMethod()
-          << " is missing types and not inlined";
+      LOG_FAIL_NO_STAT() << "Interface or virtual call to "
+                         << invoke_instruction->GetMethodReference().PrettyMethod()
+                         << " is missing types and not inlined";
       return false;
     }
   }
@@ -637,7 +627,7 @@ bool HInliner::TryInlineFromInlineCache(HInvoke* invoke_instruction)
 HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
     HInvoke* invoke_instruction,
     StackHandleScope<1>* hs,
-    /*out*/Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)
+    /*out*/ Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(codegen_->GetCompilerOptions().IsJitCompiler());
 
@@ -657,8 +647,7 @@ HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
     return kInlineCacheNoData;
   } else {
     Runtime::Current()->GetJit()->GetCodeCache()->CopyInlineCacheInto(
-        *profiling_info->GetInlineCache(invoke_instruction->GetDexPc()),
-        *inline_cache);
+        *profiling_info->GetInlineCache(invoke_instruction->GetDexPc()), *inline_cache);
     return GetInlineCacheType(*inline_cache);
   }
 }
@@ -666,7 +655,7 @@ HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
 HInliner::InlineCacheType HInliner::GetInlineCacheAOT(
     HInvoke* invoke_instruction,
     StackHandleScope<1>* hs,
-    /*out*/Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)
+    /*out*/ Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   const ProfileCompilationInfo* pci = codegen_->GetCompilerOptions().GetProfileCompilationInfo();
   if (pci == nullptr) {
@@ -674,8 +663,8 @@ HInliner::InlineCacheType HInliner::GetInlineCacheAOT(
   }
 
   std::unique_ptr<ProfileCompilationInfo::OfflineProfileMethodInfo> offline_profile =
-      pci->GetHotMethodInfo(MethodReference(
-          caller_compilation_unit_.GetDexFile(), caller_compilation_unit_.GetDexMethodIndex()));
+      pci->GetHotMethodInfo(MethodReference(caller_compilation_unit_.GetDexFile(),
+                                            caller_compilation_unit_.GetDexMethodIndex()));
   if (offline_profile == nullptr) {
     return kInlineCacheNoData;  // no profile information for this invocation.
   }
@@ -685,16 +674,15 @@ HInliner::InlineCacheType HInliner::GetInlineCacheAOT(
     // We can't extract any data if we failed to allocate;
     return kInlineCacheNoData;
   } else {
-    return ExtractClassesFromOfflineProfile(invoke_instruction,
-                                            *(offline_profile.get()),
-                                            *inline_cache);
+    return ExtractClassesFromOfflineProfile(
+        invoke_instruction, *(offline_profile.get()), *inline_cache);
   }
 }
 
 HInliner::InlineCacheType HInliner::ExtractClassesFromOfflineProfile(
     const HInvoke* invoke_instruction,
     const ProfileCompilationInfo::OfflineProfileMethodInfo& offline_profile,
-    /*out*/Handle<mirror::ObjectArray<mirror::Class>> inline_cache)
+    /*out*/ Handle<mirror::ObjectArray<mirror::Class>> inline_cache)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   const auto it = offline_profile.inline_caches->find(invoke_instruction->GetDexPc());
   if (it == offline_profile.inline_caches->end()) {
@@ -717,7 +705,7 @@ HInliner::InlineCacheType HInliner::ExtractClassesFromOfflineProfile(
   // its dex cache. This will avoid repeating the lookup when walking over
   // the inline cache types.
   std::vector<ObjPtr<mirror::DexCache>> dex_profile_index_to_dex_cache(
-        offline_profile.dex_references.size());
+      offline_profile.dex_references.size());
   for (size_t i = 0; i < offline_profile.dex_references.size(); i++) {
     bool found = false;
     for (const DexFile* dex_file : codegen_->GetCompilerOptions().GetDexFilesForOatFile()) {
@@ -743,21 +731,18 @@ HInliner::InlineCacheType HInliner::ExtractClassesFromOfflineProfile(
 
     if (!dex_cache->GetDexFile()->IsTypeIndexValid(class_ref.type_index)) {
       VLOG(compiler) << "Profile data corrupt: type index " << class_ref.type_index
-            << "is invalid in location" << dex_cache->GetDexFile()->GetLocation();
+                     << "is invalid in location" << dex_cache->GetDexFile()->GetLocation();
       return kInlineCacheNoData;
     }
     ObjPtr<mirror::Class> clazz = caller_compilation_unit_.GetClassLinker()->LookupResolvedType(
-          class_ref.type_index,
-          dex_cache,
-          caller_compilation_unit_.GetClassLoader().Get());
+        class_ref.type_index, dex_cache, caller_compilation_unit_.GetClassLoader().Get());
     if (clazz != nullptr) {
       inline_cache->Set(ic_index++, clazz);
     } else {
       VLOG(compiler) << "Could not resolve class from inline cache in AOT mode "
-          << invoke_instruction->GetMethodReference().PrettyMethod()
-          << " : "
-          << caller_compilation_unit_
-              .GetDexFile()->StringByTypeIdx(class_ref.type_index);
+                     << invoke_instruction->GetMethodReference().PrettyMethod() << " : "
+                     << caller_compilation_unit_.GetDexFile()->StringByTypeIdx(
+                            class_ref.type_index);
       return kInlineCacheMissingTypes;
     }
   }
@@ -769,16 +754,16 @@ HInstanceFieldGet* HInliner::BuildGetReceiverClass(ClassLinker* class_linker,
                                                    uint32_t dex_pc) const {
   ArtField* field = GetClassRoot<mirror::Object>(class_linker)->GetInstanceField(0);
   DCHECK_EQ(std::string(field->GetName()), "shadow$_klass_");
-  HInstanceFieldGet* result = new (graph_->GetAllocator()) HInstanceFieldGet(
-      receiver,
-      field,
-      DataType::Type::kReference,
-      field->GetOffset(),
-      field->IsVolatile(),
-      field->GetDexFieldIndex(),
-      field->GetDeclaringClass()->GetDexClassDefIndex(),
-      *field->GetDexFile(),
-      dex_pc);
+  HInstanceFieldGet* result = new (graph_->GetAllocator())
+      HInstanceFieldGet(receiver,
+                        field,
+                        DataType::Type::kReference,
+                        field->GetOffset(),
+                        field->IsVolatile(),
+                        field->GetDexFieldIndex(),
+                        field->GetDeclaringClass()->GetDexClassDefIndex(),
+                        *field->GetDexFile(),
+                        dex_pc);
   // The class of a field is effectively final, and does not have any memory dependencies.
   result->SetSideEffects(SideEffects::None());
   return result;
@@ -815,8 +800,8 @@ bool HInliner::TryInlineMonomorphicCall(HInvoke* invoke_instruction,
   DCHECK(invoke_instruction->IsInvokeVirtual() || invoke_instruction->IsInvokeInterface())
       << invoke_instruction->DebugName();
 
-  dex::TypeIndex class_index = FindClassIndexIn(
-      GetMonomorphicType(classes), caller_compilation_unit_);
+  dex::TypeIndex class_index =
+      FindClassIndexIn(GetMonomorphicType(classes), caller_compilation_unit_);
   if (!class_index.IsValid()) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedDexCache)
         << "Call to " << ArtMethod::PrettyMethod(invoke_instruction->GetResolvedMethod())
@@ -829,8 +814,8 @@ bool HInliner::TryInlineMonomorphicCall(HInvoke* invoke_instruction,
   PointerSize pointer_size = class_linker->GetImagePointerSize();
   Handle<mirror::Class> monomorphic_type =
       graph_->GetHandleCache()->NewHandle(GetMonomorphicType(classes));
-  ArtMethod* resolved_method = ResolveMethodFromInlineCache(
-      monomorphic_type, invoke_instruction, pointer_size);
+  ArtMethod* resolved_method =
+      ResolveMethodFromInlineCache(monomorphic_type, invoke_instruction, pointer_size);
 
   if (resolved_method == nullptr) {
     // Bogus AOT profile, bail.
@@ -875,12 +860,12 @@ void HInliner::AddCHAGuard(HInstruction* invoke_instruction,
                            uint32_t dex_pc,
                            HInstruction* cursor,
                            HBasicBlock* bb_cursor) {
-  HShouldDeoptimizeFlag* deopt_flag = new (graph_->GetAllocator())
-      HShouldDeoptimizeFlag(graph_->GetAllocator(), dex_pc);
-  HInstruction* compare = new (graph_->GetAllocator()) HNotEqual(
-      deopt_flag, graph_->GetIntConstant(0, dex_pc));
-  HInstruction* deopt = new (graph_->GetAllocator()) HDeoptimize(
-      graph_->GetAllocator(), compare, DeoptimizationKind::kCHA, dex_pc);
+  HShouldDeoptimizeFlag* deopt_flag =
+      new (graph_->GetAllocator()) HShouldDeoptimizeFlag(graph_->GetAllocator(), dex_pc);
+  HInstruction* compare =
+      new (graph_->GetAllocator()) HNotEqual(deopt_flag, graph_->GetIntConstant(0, dex_pc));
+  HInstruction* deopt = new (graph_->GetAllocator())
+      HDeoptimize(graph_->GetAllocator(), compare, DeoptimizationKind::kCHA, dex_pc);
 
   if (cursor != nullptr) {
     bb_cursor->InsertInstructionAfter(deopt_flag, cursor);
@@ -905,8 +890,8 @@ HInstruction* HInliner::AddTypeGuard(HInstruction* receiver,
                                      HInstruction* invoke_instruction,
                                      bool with_deoptimization) {
   ClassLinker* class_linker = caller_compilation_unit_.GetClassLinker();
-  HInstanceFieldGet* receiver_class = BuildGetReceiverClass(
-      class_linker, receiver, invoke_instruction->GetDexPc());
+  HInstanceFieldGet* receiver_class =
+      BuildGetReceiverClass(class_linker, receiver, invoke_instruction->GetDexPc());
   if (cursor != nullptr) {
     bb_cursor->InsertInstructionAfter(receiver_class, cursor);
   } else {
@@ -935,8 +920,8 @@ HInstruction* HInliner::AddTypeGuard(HInstruction* receiver,
                                                                    is_referrer,
                                                                    invoke_instruction->GetDexPc(),
                                                                    /* needs_access_check= */ false);
-  HLoadClass::LoadKind kind = HSharpening::ComputeLoadClassKind(
-      load_class, codegen_, caller_compilation_unit_);
+  HLoadClass::LoadKind kind =
+      HSharpening::ComputeLoadClassKind(load_class, codegen_, caller_compilation_unit_);
   DCHECK(kind != HLoadClass::LoadKind::kInvalid)
       << "We should always be able to reference a class for inline caches";
   // Load kind must be set before inserting the instruction into the graph.
@@ -953,14 +938,13 @@ HInstruction* HInliner::AddTypeGuard(HInstruction* receiver,
   HNotEqual* compare = new (graph_->GetAllocator()) HNotEqual(load_class, receiver_class);
   bb_cursor->InsertInstructionAfter(compare, load_class);
   if (with_deoptimization) {
-    HDeoptimize* deoptimize = new (graph_->GetAllocator()) HDeoptimize(
-        graph_->GetAllocator(),
-        compare,
-        receiver,
-        Runtime::Current()->IsAotCompiler()
-            ? DeoptimizationKind::kAotInlineCache
-            : DeoptimizationKind::kJitInlineCache,
-        invoke_instruction->GetDexPc());
+    HDeoptimize* deoptimize = new (graph_->GetAllocator())
+        HDeoptimize(graph_->GetAllocator(),
+                    compare,
+                    receiver,
+                    Runtime::Current()->IsAotCompiler() ? DeoptimizationKind::kAotInlineCache
+                                                        : DeoptimizationKind::kJitInlineCache,
+                    invoke_instruction->GetDexPc());
     bb_cursor->InsertInstructionAfter(deoptimize, compare);
     deoptimize->CopyEnvironmentFrom(invoke_instruction->GetEnvironment());
     DCHECK_EQ(invoke_instruction->InputAt(0), receiver);
@@ -1017,23 +1001,17 @@ bool HInliner::TryInlinePolymorphicCall(HInvoke* invoke_instruction,
       one_target_inlined = true;
 
       LOG_SUCCESS() << "Polymorphic call to "
-                    << invoke_instruction->GetMethodReference().PrettyMethod()
-                    << " has inlined " << ArtMethod::PrettyMethod(method);
+                    << invoke_instruction->GetMethodReference().PrettyMethod() << " has inlined "
+                    << ArtMethod::PrettyMethod(method);
 
       // If we have inlined all targets before, and this receiver is the last seen,
       // we deoptimize instead of keeping the original invoke instruction.
-      bool deoptimize = !UseOnlyPolymorphicInliningWithNoDeopt() &&
-          all_targets_inlined &&
-          (i != InlineCache::kIndividualCacheSize - 1) &&
-          (classes->Get(i + 1) == nullptr);
+      bool deoptimize = !UseOnlyPolymorphicInliningWithNoDeopt() && all_targets_inlined &&
+                        (i != InlineCache::kIndividualCacheSize - 1) &&
+                        (classes->Get(i + 1) == nullptr);
 
-      HInstruction* compare = AddTypeGuard(receiver,
-                                           cursor,
-                                           bb_cursor,
-                                           class_index,
-                                           handle,
-                                           invoke_instruction,
-                                           deoptimize);
+      HInstruction* compare = AddTypeGuard(
+          receiver, cursor, bb_cursor, class_index, handle, invoke_instruction, deoptimize);
       if (deoptimize) {
         if (return_replacement != nullptr) {
           invoke_instruction->ReplaceWith(return_replacement);
@@ -1049,10 +1027,9 @@ bool HInliner::TryInlinePolymorphicCall(HInvoke* invoke_instruction,
   }
 
   if (!one_target_inlined) {
-    LOG_FAIL_NO_STAT()
-        << "Call to " << invoke_instruction->GetMethodReference().PrettyMethod()
-        << " from inline cache is not inlined because none"
-        << " of its targets could be inlined";
+    LOG_FAIL_NO_STAT() << "Call to " << invoke_instruction->GetMethodReference().PrettyMethod()
+                       << " from inline cache is not inlined because none"
+                       << " of its targets could be inlined";
     return false;
   }
 
@@ -1090,8 +1067,8 @@ void HInliner::CreateDiamondPatternForPolymorphicInline(HInstruction* compare,
   // If the methods we are inlining return a value, we create a phi in the merge block
   // that will have the `invoke_instruction and the `return_replacement` as inputs.
   if (return_replacement != nullptr) {
-    HPhi* phi = new (allocator) HPhi(
-        allocator, kNoRegNumber, 0, HPhi::ToPhiType(invoke_instruction->GetType()), dex_pc);
+    HPhi* phi = new (allocator)
+        HPhi(allocator, kNoRegNumber, 0, HPhi::ToPhiType(invoke_instruction->GetType()), dex_pc);
     merge->AddPhi(phi);
     invoke_instruction->ReplaceWith(phi);
     phi->AddInput(return_replacement);
@@ -1131,7 +1108,6 @@ void HInliner::CreateDiamondPatternForPolymorphicInline(HInstruction* compare,
   graph_->reverse_post_order_[++index] = otherwise;
   graph_->reverse_post_order_[++index] = merge;
 
-
   graph_->UpdateLoopAndTryInformationOfNewBlock(
       then, original_invoke_block, /* replace_if_back_edge= */ false);
   graph_->UpdateLoopAndTryInformationOfNewBlock(
@@ -1144,8 +1120,7 @@ void HInliner::CreateDiamondPatternForPolymorphicInline(HInstruction* compare,
 }
 
 bool HInliner::TryInlinePolymorphicCallToSameTarget(
-    HInvoke* invoke_instruction,
-    Handle<mirror::ObjectArray<mirror::Class>> classes) {
+    HInvoke* invoke_instruction, Handle<mirror::ObjectArray<mirror::Class>> classes) {
   // This optimization only works under JIT for now.
   if (!codegen_->GetCompilerOptions().IsJitCompiler()) {
     return false;
@@ -1156,8 +1131,8 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
 
   ArtMethod* actual_method = nullptr;
   size_t method_index = invoke_instruction->IsInvokeVirtual()
-      ? invoke_instruction->AsInvokeVirtual()->GetVTableIndex()
-      : invoke_instruction->AsInvokeInterface()->GetImtIndex();
+                            ? invoke_instruction->AsInvokeVirtual()->GetVTableIndex()
+                            : invoke_instruction->AsInvokeInterface()->GetImtIndex();
 
   // Check whether we are actually calling the same method among
   // the different types seen.
@@ -1167,8 +1142,7 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
     }
     ArtMethod* new_method = nullptr;
     if (invoke_instruction->IsInvokeInterface()) {
-      new_method = classes->Get(i)->GetImt(pointer_size)->Get(
-          method_index, pointer_size);
+      new_method = classes->Get(i)->GetImt(pointer_size)->Get(method_index, pointer_size);
       if (new_method->IsRuntimeMethod()) {
         // Bail out as soon as we see a conflict trampoline in one of the target's
         // interface table.
@@ -1200,27 +1174,26 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
   }
 
   // We successfully inlined, now add a guard.
-  HInstanceFieldGet* receiver_class = BuildGetReceiverClass(
-      class_linker, receiver, invoke_instruction->GetDexPc());
+  HInstanceFieldGet* receiver_class =
+      BuildGetReceiverClass(class_linker, receiver, invoke_instruction->GetDexPc());
 
-  DataType::Type type = Is64BitInstructionSet(graph_->GetInstructionSet())
-      ? DataType::Type::kInt64
-      : DataType::Type::kInt32;
-  HClassTableGet* class_table_get = new (graph_->GetAllocator()) HClassTableGet(
-      receiver_class,
-      type,
-      invoke_instruction->IsInvokeVirtual() ? HClassTableGet::TableKind::kVTable
-                                            : HClassTableGet::TableKind::kIMTable,
-      method_index,
-      invoke_instruction->GetDexPc());
+  DataType::Type type = Is64BitInstructionSet(graph_->GetInstructionSet()) ? DataType::Type::kInt64
+                                                                           : DataType::Type::kInt32;
+  HClassTableGet* class_table_get = new (graph_->GetAllocator())
+      HClassTableGet(receiver_class,
+                     type,
+                     invoke_instruction->IsInvokeVirtual() ? HClassTableGet::TableKind::kVTable
+                                                           : HClassTableGet::TableKind::kIMTable,
+                     method_index,
+                     invoke_instruction->GetDexPc());
 
   HConstant* constant;
   if (type == DataType::Type::kInt64) {
-    constant = graph_->GetLongConstant(
-        reinterpret_cast<intptr_t>(actual_method), invoke_instruction->GetDexPc());
+    constant = graph_->GetLongConstant(reinterpret_cast<intptr_t>(actual_method),
+                                       invoke_instruction->GetDexPc());
   } else {
-    constant = graph_->GetIntConstant(
-        reinterpret_cast<intptr_t>(actual_method), invoke_instruction->GetDexPc());
+    constant = graph_->GetIntConstant(reinterpret_cast<intptr_t>(actual_method),
+                                      invoke_instruction->GetDexPc());
   }
 
   HNotEqual* compare = new (graph_->GetAllocator()) HNotEqual(class_table_get, constant);
@@ -1235,12 +1208,12 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
   if (outermost_graph_->IsCompilingOsr()) {
     CreateDiamondPatternForPolymorphicInline(compare, return_replacement, invoke_instruction);
   } else {
-    HDeoptimize* deoptimize = new (graph_->GetAllocator()) HDeoptimize(
-        graph_->GetAllocator(),
-        compare,
-        receiver,
-        DeoptimizationKind::kJitSameTarget,
-        invoke_instruction->GetDexPc());
+    HDeoptimize* deoptimize =
+        new (graph_->GetAllocator()) HDeoptimize(graph_->GetAllocator(),
+                                                 compare,
+                                                 receiver,
+                                                 DeoptimizationKind::kJitSameTarget,
+                                                 invoke_instruction->GetDexPc());
     bb_cursor->InsertInstructionAfter(deoptimize, compare);
     deoptimize->CopyEnvironmentFrom(invoke_instruction->GetEnvironment());
     if (return_replacement != nullptr) {
@@ -1327,10 +1300,10 @@ bool HInliner::TryInlineAndReplace(HInvoke* invoke_instruction,
         return false;
       }
 
-      uint32_t dex_method_index = FindMethodIndexIn(
-          method,
-          *invoke_instruction->GetMethodReference().dex_file,
-          invoke_instruction->GetMethodReference().index);
+      uint32_t dex_method_index =
+          FindMethodIndexIn(method,
+                            *invoke_instruction->GetMethodReference().dex_file,
+                            invoke_instruction->GetMethodReference().index);
       if (dex_method_index == dex::kDexNoIndex) {
         return false;
       }
@@ -1381,7 +1354,8 @@ bool HInliner::TryInlineAndReplace(HInvoke* invoke_instruction,
     ReferenceTypePropagation(graph_,
                              outer_compilation_unit_.GetClassLoader(),
                              outer_compilation_unit_.GetDexCache(),
-                             /* is_first_run= */ false).Run();
+                             /* is_first_run= */ false)
+        .Run();
   }
   return true;
 }
@@ -1413,8 +1387,8 @@ static inline bool MayInline(const CompilerOptions& compiler_options,
 // Returns whether inlining is allowed based on ART semantics.
 bool HInliner::IsInliningAllowed(ArtMethod* method, const CodeItemDataAccessor& accessor) const {
   if (!accessor.HasCodeItem()) {
-    LOG_FAIL_NO_STAT()
-        << "Method " << method->PrettyMethod() << " is not inlined because it is native";
+    LOG_FAIL_NO_STAT() << "Method " << method->PrettyMethod()
+                       << " is not inlined because it is native";
     return false;
   }
 
@@ -1427,8 +1401,7 @@ bool HInliner::IsInliningAllowed(ArtMethod* method, const CodeItemDataAccessor& 
 
   if (IsMethodUnverified(codegen_->GetCompilerOptions(), method)) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedNotVerified)
-        << "Method " << method->PrettyMethod()
-        << " couldn't be verified, so it cannot be inlined";
+        << "Method " << method->PrettyMethod() << " couldn't be verified, so it cannot be inlined";
     return false;
   }
 
@@ -1475,8 +1448,7 @@ bool HInliner::IsInliningBudgetAvailable(ArtMethod* method,
                                          const CodeItemDataAccessor& accessor) const {
   if (CountRecursiveCallsOf(method) > kMaximumNumberOfRecursiveCalls) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedRecursiveBudget)
-        << "Method "
-        << method->PrettyMethod()
+        << "Method " << method->PrettyMethod()
         << " is not inlined because it has reached its recursive call budget.";
     return false;
   }
@@ -1485,10 +1457,8 @@ bool HInliner::IsInliningBudgetAvailable(ArtMethod* method,
   if (accessor.InsnsSizeInCodeUnits() > inline_max_code_units) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedCodeItem)
         << "Method " << method->PrettyMethod()
-        << " is not inlined because its code item is too big: "
-        << accessor.InsnsSizeInCodeUnits()
-        << " > "
-        << inline_max_code_units;
+        << " is not inlined because its code item is too big: " << accessor.InsnsSizeInCodeUnits()
+        << " > " << inline_max_code_units;
     return false;
   }
 
@@ -1505,8 +1475,7 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
                  *method->GetDexFile(),
                  *outer_compilation_unit_.GetDexFile())) {
     if (TryPatternSubstitution(invoke_instruction, method, return_replacement)) {
-      LOG_SUCCESS() << "Successfully replaced pattern of invoke "
-                    << method->PrettyMethod();
+      LOG_SUCCESS() << "Successfully replaced pattern of invoke " << method->PrettyMethod();
       MaybeRecordStat(stats_, MethodCompilationStat::kReplacedInvokeWithSimplePattern);
       return true;
     }
@@ -1532,8 +1501,7 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
     return false;
   }
 
-  if (!TryBuildAndInlineHelper(
-          invoke_instruction, method, receiver_type, return_replacement)) {
+  if (!TryBuildAndInlineHelper(invoke_instruction, method, receiver_type, return_replacement)) {
     return false;
   }
 
@@ -1572,8 +1540,8 @@ bool HInliner::TryPatternSubstitution(HInvoke* invoke_instruction,
       *return_replacement = nullptr;
       break;
     case kInlineOpReturnArg:
-      *return_replacement = GetInvokeInputForArgVRegIndex(invoke_instruction,
-                                                          inline_method.d.return_data.arg);
+      *return_replacement =
+          GetInvokeInputForArgVRegIndex(invoke_instruction, inline_method.d.return_data.arg);
       break;
     case kInlineOpNonWideConst:
       if (method->GetShorty()[0] == 'L') {
@@ -1619,24 +1587,25 @@ bool HInliner::TryPatternSubstitution(HInvoke* invoke_instruction,
       const InlineConstructorData& data = inline_method.d.constructor_data;
       // Get the indexes to arrays for easier processing.
       uint16_t iput_field_indexes[] = {
-          data.iput0_field_index, data.iput1_field_index, data.iput2_field_index
-      };
-      uint16_t iput_args[] = { data.iput0_arg, data.iput1_arg, data.iput2_arg };
+          data.iput0_field_index, data.iput1_field_index, data.iput2_field_index};
+      uint16_t iput_args[] = {data.iput0_arg, data.iput1_arg, data.iput2_arg};
       static_assert(arraysize(iput_args) == arraysize(iput_field_indexes), "Size mismatch");
       // Count valid field indexes.
       size_t number_of_iputs = 0u;
       while (number_of_iputs != arraysize(iput_field_indexes) &&
-          iput_field_indexes[number_of_iputs] != DexFile::kDexNoIndex16) {
+             iput_field_indexes[number_of_iputs] != DexFile::kDexNoIndex16) {
         // Check that there are no duplicate valid field indexes.
-        DCHECK_EQ(0, std::count(iput_field_indexes + number_of_iputs + 1,
-                                iput_field_indexes + arraysize(iput_field_indexes),
-                                iput_field_indexes[number_of_iputs]));
+        DCHECK_EQ(0,
+                  std::count(iput_field_indexes + number_of_iputs + 1,
+                             iput_field_indexes + arraysize(iput_field_indexes),
+                             iput_field_indexes[number_of_iputs]));
         ++number_of_iputs;
       }
       // Check that there are no valid field indexes in the rest of the array.
-      DCHECK_EQ(0, std::count_if(iput_field_indexes + number_of_iputs,
-                                 iput_field_indexes + arraysize(iput_field_indexes),
-                                 [](uint16_t index) { return index != DexFile::kDexNoIndex16; }));
+      DCHECK_EQ(0,
+                std::count_if(iput_field_indexes + number_of_iputs,
+                              iput_field_indexes + arraysize(iput_field_indexes),
+                              [](uint16_t index) { return index != DexFile::kDexNoIndex16; }));
 
       // Create HInstanceFieldSet for each IPUT that stores non-zero data.
       HInstruction* obj = GetInvokeInputForArgVRegIndex(invoke_instruction,
@@ -1684,18 +1653,18 @@ HInstanceFieldGet* HInliner::CreateInstanceFieldGet(uint32_t field_index,
   ArtField* resolved_field =
       class_linker->LookupResolvedField(field_index, referrer, /* is_static= */ false);
   DCHECK(resolved_field != nullptr);
-  HInstanceFieldGet* iget = new (graph_->GetAllocator()) HInstanceFieldGet(
-      obj,
-      resolved_field,
-      DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
-      resolved_field->GetOffset(),
-      resolved_field->IsVolatile(),
-      field_index,
-      resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
-      *referrer->GetDexFile(),
-      // Read barrier generates a runtime call in slow path and we need a valid
-      // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
-      /* dex_pc= */ 0);
+  HInstanceFieldGet* iget = new (graph_->GetAllocator())
+      HInstanceFieldGet(obj,
+                        resolved_field,
+                        DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
+                        resolved_field->GetOffset(),
+                        resolved_field->IsVolatile(),
+                        field_index,
+                        resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
+                        *referrer->GetDexFile(),
+                        // Read barrier generates a runtime call in slow path and we need a valid
+                        // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
+                        /* dex_pc= */ 0);
   if (iget->GetType() == DataType::Type::kReference) {
     // Use the same dex_cache that we used for field lookup as the hint_dex_cache.
     Handle<mirror::DexCache> dex_cache =
@@ -1724,19 +1693,19 @@ HInstanceFieldSet* HInliner::CreateInstanceFieldSet(uint32_t field_index,
     DCHECK(referrer->IsConstructor());
     *is_final = resolved_field->IsFinal();
   }
-  HInstanceFieldSet* iput = new (graph_->GetAllocator()) HInstanceFieldSet(
-      obj,
-      value,
-      resolved_field,
-      DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
-      resolved_field->GetOffset(),
-      resolved_field->IsVolatile(),
-      field_index,
-      resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
-      *referrer->GetDexFile(),
-      // Read barrier generates a runtime call in slow path and we need a valid
-      // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
-      /* dex_pc= */ 0);
+  HInstanceFieldSet* iput = new (graph_->GetAllocator())
+      HInstanceFieldSet(obj,
+                        value,
+                        resolved_field,
+                        DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
+                        resolved_field->GetOffset(),
+                        resolved_field->IsVolatile(),
+                        field_index,
+                        resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
+                        *referrer->GetDexFile(),
+                        // Read barrier generates a runtime call in slow path and we need a valid
+                        // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
+                        /* dex_pc= */ 0);
   return iput;
 }
 
@@ -1761,7 +1730,7 @@ static bool CanEncodeInlinedMethodInStackMap(const DexFile& caller_dex_file, Art
   return false;
 }
 
-  // Substitutes parameters in the callee graph with their values from the caller.
+// Substitutes parameters in the callee graph with their values from the caller.
 void HInliner::SubstituteArguments(HGraph* callee_graph,
                                    HInvoke* invoke_instruction,
                                    ReferenceTypeInfo receiver_type,
@@ -1806,7 +1775,8 @@ void HInliner::SubstituteArguments(HGraph* callee_graph,
     ReferenceTypePropagation(callee_graph,
                              outer_compilation_unit_.GetClassLoader(),
                              dex_compilation_unit.GetDexCache(),
-                             /* is_first_run= */ false).Run();
+                             /* is_first_run= */ false)
+        .Run();
   }
 }
 
@@ -1892,8 +1862,7 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
       }
     }
 
-    for (HInstructionIterator instr_it(block->GetInstructions());
-         !instr_it.Done();
+    for (HInstructionIterator instr_it(block->GetInstructions()); !instr_it.Done();
          instr_it.Advance()) {
       if (++number_of_instructions >= inlining_budget_) {
         LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedInstructionBudget)
@@ -1923,10 +1892,8 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
         return false;
       }
 
-      if (current->IsUnresolvedStaticFieldGet() ||
-          current->IsUnresolvedInstanceFieldGet() ||
-          current->IsUnresolvedStaticFieldSet() ||
-          current->IsUnresolvedInstanceFieldSet()) {
+      if (current->IsUnresolvedStaticFieldGet() || current->IsUnresolvedInstanceFieldGet() ||
+          current->IsUnresolvedStaticFieldSet() || current->IsUnresolvedInstanceFieldSet()) {
         // Entrypoint for unresolved fields does not handle inlined frames.
         LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedUnresolvedEntrypoint)
             << "Method " << callee_dex_file.PrettyMethod(method_index)
@@ -1951,9 +1918,8 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
   uint32_t method_index = resolved_method->GetDexMethodIndex();
   CodeItemDebugInfoAccessor code_item_accessor(resolved_method->DexInstructionDebugInfo());
   ClassLinker* class_linker = caller_compilation_unit_.GetClassLinker();
-  Handle<mirror::DexCache> dex_cache = NewHandleIfDifferent(resolved_method->GetDexCache(),
-                                                            caller_compilation_unit_.GetDexCache(),
-                                                            graph_);
+  Handle<mirror::DexCache> dex_cache = NewHandleIfDifferent(
+      resolved_method->GetDexCache(), caller_compilation_unit_.GetDexCache(), graph_);
   Handle<mirror::ClassLoader> class_loader =
       NewHandleIfDifferent(resolved_method->GetDeclaringClass()->GetClassLoader(),
                            caller_compilation_unit_.GetClassLoader(),
@@ -1985,22 +1951,22 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
   // MethodContainsRSensitiveAccess is currently slow, but HasDeadReferenceSafeAnnotation()
   // is currently rarely true.
   bool callee_dead_reference_safe =
-      annotations::HasDeadReferenceSafeAnnotation(callee_dex_file, callee_class)
-      && !annotations::MethodContainsRSensitiveAccess(callee_dex_file, callee_class, method_index);
+      annotations::HasDeadReferenceSafeAnnotation(callee_dex_file, callee_class) &&
+      !annotations::MethodContainsRSensitiveAccess(callee_dex_file, callee_class, method_index);
 
   const int32_t caller_instruction_counter = graph_->GetCurrentInstructionId();
-  HGraph* callee_graph = new (graph_->GetAllocator()) HGraph(
-      graph_->GetAllocator(),
-      graph_->GetArenaStack(),
-      graph_->GetHandleCache()->GetHandles(),
-      callee_dex_file,
-      method_index,
-      codegen_->GetCompilerOptions().GetInstructionSet(),
-      invoke_type,
-      callee_dead_reference_safe,
-      graph_->IsDebuggable(),
-      graph_->GetCompilationKind(),
-      /* start_instruction_id= */ caller_instruction_counter);
+  HGraph* callee_graph =
+      new (graph_->GetAllocator()) HGraph(graph_->GetAllocator(),
+                                          graph_->GetArenaStack(),
+                                          graph_->GetHandleCache()->GetHandles(),
+                                          callee_dex_file,
+                                          method_index,
+                                          codegen_->GetCompilerOptions().GetInstructionSet(),
+                                          invoke_type,
+                                          callee_dead_reference_safe,
+                                          graph_->IsDebuggable(),
+                                          graph_->GetCompilationKind(),
+                                          /* start_instruction_id= */ caller_instruction_counter);
   callee_graph->SetArtMethod(resolved_method);
 
   // When they are needed, allocate `inline_stats_` on the Arena instead
@@ -2079,9 +2045,9 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
   InstructionSimplifier simplify(callee_graph, codegen_, inline_stats_);
 
   HOptimization* optimizations[] = {
-    &simplify,
-    &fold,
-    &dce,
+      &simplify,
+      &fold,
+      &dce,
   };
 
   for (size_t i = 0; i < arraysize(optimizations); ++i) {
@@ -2093,8 +2059,8 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
   // or too large environment).
   if (total_number_of_dex_registers_ >= kMaximumNumberOfCumulatedDexRegisters) {
     LOG_NOTE() << "Calls in " << callee_graph->GetArtMethod()->PrettyMethod()
-             << " will not be inlined because the outer method has reached"
-             << " its environment budget limit.";
+               << " will not be inlined because the outer method has reached"
+               << " its environment budget limit.";
     return;
   }
 
@@ -2102,8 +2068,8 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
   size_t number_of_instructions = CountNumberOfInstructions(callee_graph);
   if (number_of_instructions > inlining_budget_) {
     LOG_NOTE() << "Calls in " << callee_graph->GetArtMethod()->PrettyMethod()
-             << " will not be inlined because the outer method has reached"
-             << " its instruction budget limit. " << number_of_instructions;
+               << " will not be inlined because the outer method has reached"
+               << " its instruction budget limit. " << number_of_instructions;
     return;
   }
 
@@ -2143,7 +2109,7 @@ static bool IsReferenceTypeRefinement(ObjPtr<mirror::Class> declared_class,
   bool admissible = ReferenceTypePropagation::IsAdmissible(declared_class);
   return IsReferenceTypeRefinement(
       admissible ? declared_class : GetClassRoot<mirror::Class>(),
-      /*declared_is_exact=*/ admissible && declared_class->CannotBeAssignedFromOtherTypes(),
+      /*declared_is_exact=*/admissible && declared_class->CannotBeAssignedFromOtherTypes(),
       declared_can_be_null,
       actual_obj);
 }
@@ -2153,7 +2119,7 @@ bool HInliner::ArgumentTypesMoreSpecific(HInvoke* invoke_instruction, ArtMethod*
   // is more specific than the class which declares the method.
   if (!resolved_method->IsStatic()) {
     if (IsReferenceTypeRefinement(resolved_method->GetDeclaringClass(),
-                                  /*declared_can_be_null=*/ false,
+                                  /*declared_can_be_null=*/false,
                                   invoke_instruction->InputAt(0u))) {
       return true;
     }
@@ -2172,7 +2138,7 @@ bool HInliner::ArgumentTypesMoreSpecific(HInvoke* invoke_instruction, ArtMethod*
     if (input->GetType() == DataType::Type::kReference) {
       ObjPtr<mirror::Class> param_cls = resolved_method->LookupResolvedClassFromTypeIndex(
           param_list->GetTypeItem(param_idx).type_idx_);
-      if (IsReferenceTypeRefinement(param_cls, /*declared_can_be_null=*/ true, input)) {
+      if (IsReferenceTypeRefinement(param_cls, /*declared_can_be_null=*/true, input)) {
         return true;
       }
     }
@@ -2190,13 +2156,13 @@ bool HInliner::ReturnTypeMoreSpecific(HInvoke* invoke_instruction,
       ReferenceTypeInfo invoke_rti = invoke_instruction->GetReferenceTypeInfo();
       if (IsReferenceTypeRefinement(invoke_rti.GetTypeHandle().Get(),
                                     invoke_rti.IsExact(),
-                                    /*declared_can_be_null=*/ true,
+                                    /*declared_can_be_null=*/true,
                                     return_replacement)) {
         return true;
       } else if (return_replacement->IsInstanceFieldGet()) {
         HInstanceFieldGet* field_get = return_replacement->AsInstanceFieldGet();
         if (field_get->GetFieldInfo().GetField() ==
-                GetClassRoot<mirror::Object>()->GetInstanceField(0)) {
+            GetClassRoot<mirror::Object>()->GetInstanceField(0)) {
           return true;
         }
       }
@@ -2220,9 +2186,10 @@ void HInliner::FixUpReturnReferenceType(ArtMethod* resolved_method,
         // some functionality from the reference type propagation.
         DCHECK(return_replacement->IsPhi());
         ObjPtr<mirror::Class> cls = resolved_method->LookupResolvedReturnType();
-        ReferenceTypeInfo rti = ReferenceTypePropagation::IsAdmissible(cls)
-            ? ReferenceTypeInfo::Create(graph_->GetHandleCache()->NewHandle(cls))
-            : graph_->GetInexactObjectRti();
+        ReferenceTypeInfo rti =
+            ReferenceTypePropagation::IsAdmissible(cls)
+                ? ReferenceTypeInfo::Create(graph_->GetHandleCache()->NewHandle(cls))
+                : graph_->GetInexactObjectRti();
         return_replacement->SetReferenceTypeInfo(rti);
       }
     }
