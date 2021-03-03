@@ -175,6 +175,7 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
 
     shared_libs: [
         "libbase",
@@ -200,6 +201,7 @@ art_cc_library {
     apex_available: [
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
     shared_libs: [
         "libbase",
         "libziparchive",
@@ -294,4 +296,5 @@ cc_library_headers {
         "com.android.art",
         "com.android.art.debug",
     ],
+    min_sdk_version: "S",
 }
