@@ -16,6 +16,24 @@
       "message": "Looks promising! The DO NOT SUBMITs look pretty good here too (ignore-revs, thumbs up).\n\nI\u0027ve been using something similar locally, but not been ready to push this far: mine has occasional issues with cpplint and a few places where clang-format won\u0027t match the ART C++ style.\n\nIt\u0027d be good to have a bug and some group discussion on this particularly wrt to timing and WIP.",
       "revId": "3b9b42500e9329624f6916735b71d5728a5cfcc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59ddcf8_a92dfc7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-03-04T18:21:06Z",
+      "side": 1,
+      "message": "There are still a couple of cases I\u0027m not happy about, but I\u0027m willing to live with them in exchange for automatic formatting.\n\nI\u0027ll create a bug and I\u0027m more than happy to have a conversation, but in the past these have usually fizzled out fairly quickly without any action.  I figured if we landed a non-enforcing format file it\u0027d give people something concrete to discuss instead of painting a non-existent bike shed.\n\nSteps after \"non-enforcing\" would definitely need team consensus and planning :-)",
+      "parentUuid": "2987156e_d6094db2",
+      "revId": "3b9b42500e9329624f6916735b71d5728a5cfcc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
