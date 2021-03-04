@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2a18b6_60d533d1",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-04T19:20:59Z",
+      "side": 1,
+      "message": "This seems wrong.\n\nTrying to align declarations?",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "b0c2685a8a180b0233071453ef5c2db38feba286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
