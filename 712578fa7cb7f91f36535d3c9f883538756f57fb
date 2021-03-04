@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "855f2023_d4dce7a9",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T18:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54331de8_19e23c62",
+      "revId": "712578fa7cb7f91f36535d3c9f883538756f57fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1871063_fa9a2ece",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-04T18:15:36Z",
       "side": 1,
       "message": "art_defaults is inherited here - should be dropped.\n\nSame below and in several other files.",
+      "revId": "712578fa7cb7f91f36535d3c9f883538756f57fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e668c923_7ca2e4f6",
+        "filename": "disassembler/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T18:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1871063_fa9a2ece",
       "revId": "712578fa7cb7f91f36535d3c9f883538756f57fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
