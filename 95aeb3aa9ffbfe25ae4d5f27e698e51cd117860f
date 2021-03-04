@@ -39,6 +39,30 @@
       },
       "revId": "95aeb3aa9ffbfe25ae4d5f27e698e51cd117860f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7918d2f1_283c4ac2",
+        "filename": "test/178-app-image-native-method/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-04T15:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ff136a3_eeaadba2",
+      "range": {
+        "startLine": 379,
+        "startChar": 29,
+        "endLine": 379,
+        "endChar": 36
+      },
+      "revId": "95aeb3aa9ffbfe25ae4d5f27e698e51cd117860f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
