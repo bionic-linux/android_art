@@ -22,6 +22,30 @@
       },
       "revId": "b0c2685a8a180b0233071453ef5c2db38feba286",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d973e1d_d6226815",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-03-04T21:42:49Z",
+      "side": 1,
+      "message": "Agreed.  I\u0027ll try and find a fix for this.",
+      "parentUuid": "0f2a18b6_60d533d1",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "b0c2685a8a180b0233071453ef5c2db38feba286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
