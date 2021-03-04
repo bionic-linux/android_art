@@ -58,6 +58,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa2e23e_23fff5d8",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T22:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "338322cd_4044d790",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1622846_6196a415",
@@ -75,6 +93,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fd740d_0049f361",
+        "filename": "libelffile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T22:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1622846_6196a415",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025d1c86_51bd252c",
@@ -88,6 +124,24 @@
       "writtenOn": "2021-03-04T19:27:13Z",
       "side": 1,
       "message": "Will be inherited from art_debug_defaults.",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e46281b_dfabde93",
+        "filename": "libelffile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T22:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025d1c86_51bd252c",
       "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
