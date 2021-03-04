@@ -16,6 +16,80 @@
       "message": "Thanks, PTAL.",
       "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd831167_62b6a25e",
+        "filename": "libartservice/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-04T19:27:13Z",
+      "side": 1,
+      "message": "The implications of these changes aren\u0027t clear to me. +paulduffin to review.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338322cd_4044d790",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-04T19:27:13Z",
+      "side": 1,
+      "message": "Please move this into art_debug_defaults, to make it consistent with art_defaults.",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1622846_6196a415",
+        "filename": "libelffile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-04T19:27:13Z",
+      "side": 1,
+      "message": "Inherited from art_defaults.",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025d1c86_51bd252c",
+        "filename": "libelffile/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-04T19:27:13Z",
+      "side": 1,
+      "message": "Will be inherited from art_debug_defaults.",
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
