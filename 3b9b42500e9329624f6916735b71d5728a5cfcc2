@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2987156e_d6094db2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-04T09:21:09Z",
+      "side": 1,
+      "message": "Looks promising! The DO NOT SUBMITs look pretty good here too (ignore-revs, thumbs up).\n\nI\u0027ve been using something similar locally, but not been ready to push this far: mine has occasional issues with cpplint and a few places where clang-format won\u0027t match the ART C++ style.\n\nIt\u0027d be good to have a bug and some group discussion on this particularly wrt to timing and WIP.",
+      "revId": "3b9b42500e9329624f6916735b71d5728a5cfcc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
