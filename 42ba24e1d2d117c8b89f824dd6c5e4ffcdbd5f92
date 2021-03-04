@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f179296_92b4d286",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T15:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a5d814_c80c5157",
+      "revId": "42ba24e1d2d117c8b89f824dd6c5e4ffcdbd5f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ba5fb8b_232d7b99",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-04T09:08:06Z",
       "side": 1,
       "message": "Can min_sdk_version go into art_defaults? The libs that shouldn\u0027t have it ought to be the minority, if any.\n\n(I also wonder if binaries and cc_library_headers can use art_defaults too, but that\u0027s a separate cleanup.)",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "42ba24e1d2d117c8b89f824dd6c5e4ffcdbd5f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a2487b_e23d0481",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-04T15:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba5fb8b_232d7b99",
       "range": {
         "startLine": 28,
         "startChar": 15,
