@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "153f3913_f6e8627b",
+        "filename": "libartservice/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-05T10:00:35Z",
+      "side": 1,
+      "message": "I would rather that you use sdk_version: \"core_platform\" but if the issues I mentioned in the previous message block you from uploading this then the approach you\u0027ve taken here is an ok workaround as long as it gets cleaned up later.\n\nATM it doesn\u0027t look as though this is blocking you as there are appear to be other failures.",
+      "parentUuid": "d6e54328_b55c570e",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "338322cd_4044d790",
         "filename": "libdexfile/Android.bp",
         "patchSetId": 4
