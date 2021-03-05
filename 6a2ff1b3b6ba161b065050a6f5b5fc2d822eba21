@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6e54328_b55c570e",
+        "filename": "libartservice/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-05T00:07:33Z",
+      "side": 1,
+      "message": "Ok, I think the build is broken in two ways:\n1. We are no longer enforcing the use of the stable core platform API in AOSP - https://r.android.com/1619410 should fix that. That is assuming modules which used stable API haven\u0027t accidentally used legacy APIs but given that legacy API IS enforced downstream that shouldn\u0027t be likely.\n2. The CheckStableSdkVersion() method does not check to see whether the module can use legacy before it treats core_platform as legacy. https://r.android.com/1619411 should fix that.",
+      "parentUuid": "66c0bc94_6f9032d7",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "6a2ff1b3b6ba161b065050a6f5b5fc2d822eba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "338322cd_4044d790",
         "filename": "libdexfile/Android.bp",
         "patchSetId": 4
