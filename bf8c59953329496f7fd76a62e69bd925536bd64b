@@ -33,6 +33,24 @@
       "message": "Have we done comparisons to see if this impacts application memory usage?",
       "revId": "bf8c59953329496f7fd76a62e69bd925536bd64b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a666f679_505f34ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1782250
+      },
+      "writtenOn": "2021-03-06T16:15:24Z",
+      "side": 1,
+      "message": "Yes, after changing the exact stack size, build and replace only the art apex, we saw memory decrement for most of the apps/system_server.\nThere have been indeed some scenarios not using the default-sized(1MB) stack,\nwhich may be 64K（e.g. https://android.googlesource.com/platform/art/+/refs/heads/master/runtime/runtime.cc#1058)",
+      "parentUuid": "32f3e9cf_c64bac84",
+      "revId": "bf8c59953329496f7fd76a62e69bd925536bd64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
