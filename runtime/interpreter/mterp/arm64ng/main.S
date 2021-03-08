@@ -689,6 +689,26 @@ END \name
    ldp x0, x1, [sp], #16
 .endm
 
+.macro GET_SHORTY_SLOW_PATH dest, is_interface
+   // Save all registers that can hold arguments in the fast path.
+   sub sp, sp, #32
+   stp x0, x1, [sp]
+   str w2, [sp, #16]
+   str s0, [sp, #20]
+   .if \is_interface
+   ldr x0, [sp, #32]
+   FETCH w1, 1
+   bl NterpGetShortyFromMethodId
+   .else
+   bl NterpGetShorty
+   .endif
+   mov \dest, x0
+   ldp x0, x1, [sp]
+   ldr w2, [sp, #16]
+   ldr s0, [sp, #20]
+   add sp, sp, #32
+.endm
+
 // Input:  x0 contains the ArtMethod
 // Output: x8 contains the code item
 .macro GET_CODE_ITEM
@@ -849,6 +869,57 @@ END \name
    .endif
 
 .Lcall_compiled_code_\suffix:
+   .if \is_polymorphic
+   // No fast path for polymorphic calls.
+   .elseif \is_custom
+   // No fast path for custom calls.
+   .elseif \is_string_init
+   // No fast path for string.init.
+   .else
+     // Fast path when we have zero or one argument (modulo 'this'). If there
+     // is one argument, we can put it in both floating point and core register.
+     FETCH_B w2, 0, 1
+     asr w2, w2, #4 // number of arguments
+     .if \is_static
+     cmp w2, #1
+     b.lt .Lfast_path_\suffix
+     b.ne .Lget_shorty_\suffix
+     FETCH w2, 2
+     and w2, w2, #0xf  // dex register of first argument
+     GET_VREG w1, w2
+     fmov s0, w1
+     .else
+     cmp w2, #2
+     b.lt .Lfast_path_\suffix
+     b.ne .Lget_shorty_\suffix
+     FETCH w2, 2
+     ubfx x2, x2, #4, #4  // dex register of second argument
+     GET_VREG w2, w2
+     fmov s0, w2
+     .endif
+.Lfast_path_\suffix:
+     // Check if the next instruction is move-result or move-result-wide.
+     // If it is, we fetch the shorty and jump to the regular invocation.
+     ldrh w27, [xPC, 6]
+     and ip, x27, #0xfe
+     cmp ip, #0x0a
+     b.eq .Lget_shorty_and_invoke_\suffix
+     .if \is_interface
+     // Setup hidden argument.
+     mov ip2, x26
+     .endif
+     ldr lr, [x0, #ART_METHOD_QUICK_CODE_OFFSET_64]
+     blr lr
+     mov xINST, x27
+     ADVANCE 3
+     GET_INST_OPCODE ip
+     GOTO_OPCODE ip
+.Lget_shorty_and_invoke_\suffix:
+     GET_SHORTY_SLOW_PATH xINST, \is_interface
+     b .Lgpr_setup_finished_\suffix
+   .endif
+
+.Lget_shorty_\suffix:
    GET_SHORTY xINST, \is_interface, \is_polymorphic, \is_custom
    // From this point:
    // - xINST contains shorty (in callee-save to switch over return value after call).
@@ -902,16 +973,7 @@ END \name
       ldr lr, [x0, #ART_METHOD_QUICK_CODE_OFFSET_64]
       blr lr
    .endif
-   ldrb wip, [xINST]
-   cmp ip, #68       // Test if result type char == 'D'.
-   b.eq .Lreturn_double_\suffix
-   cmp ip, #70
-   b.ne .Ldone_return_\suffix
-.Lreturn_float_\suffix:
-   fmov w0, s0
-   b .Ldone_return_\suffix
-.Lreturn_double_\suffix:
-   fmov x0, d0
+   SETUP_RETURN_VALUE xINST
 .Ldone_return_\suffix:
    /* resume execution of caller */
    .if \is_string_init
@@ -1069,6 +1131,19 @@ END \name
     b 1b
 .endm
 
+.macro SETUP_RETURN_VALUE shorty
+   ldrb wip, [\shorty]
+   cmp ip, #68       // Test if result type char == 'D'.
+   b.eq 1f
+   cmp ip, #70       // Test if result type char == 'F'.
+   b.ne 2f
+   fmov w0, s0
+   b 2f
+1:
+   fmov x0, d0
+2:
+.endm
+
 .macro COMMON_INVOKE_RANGE is_static=0, is_interface=0, suffix="", is_string_init=0, is_polymorphic=0, is_custom=0
    .if \is_polymorphic
    // We always go to compiled code for polymorphic calls.
@@ -1088,6 +1163,55 @@ END \name
    .endif
 
 .Lcall_compiled_code_range_\suffix:
+   .if \is_polymorphic
+   // No fast path for polymorphic calls.
+   .elseif \is_custom
+   // No fast path for custom calls.
+   .elseif \is_string_init
+   // No fast path for string.init.
+   .else
+     // Fast path when we have zero or one argument (modulo 'this'). If there
+     // is one argument, we can put it in both floating point and core register.
+     FETCH_B w2, 0, 1 // number of arguments
+     .if \is_static
+     cmp w2, #1
+     b.lt .Lfast_path_range_\suffix
+     b.ne .Lget_shorty_range_\suffix
+     FETCH w3, 2  // dex register of first argument
+     GET_VREG w1, w3
+     fmov s0, w1
+     .else
+     cmp w2, #2
+     b.lt .Lfast_path_range_\suffix
+     b.ne .Lget_shorty_range_\suffix
+     FETCH w3, 2  // dex register of first argument
+     add w3, w3, #1  // Add 1 for next argument
+     GET_VREG w2, w3
+     fmov s0, w2
+     .endif
+.Lfast_path_range_\suffix:
+     // Check if the next instruction is move-result or move-result-wide.
+     // If it is, we fetch the shorty and jump to the regular invocation.
+     ldrh w27, [xPC, 6]
+     and ip, x27, #0xfe
+     cmp ip, #0x0a
+     b.eq .Lget_shorty_and_invoke_range_\suffix
+     .if \is_interface
+     // Setup hidden argument.
+     mov ip2, x26
+     .endif
+     ldr lr, [x0, #ART_METHOD_QUICK_CODE_OFFSET_64]
+     blr lr
+     mov xINST, x27
+     ADVANCE 3
+     GET_INST_OPCODE ip
+     GOTO_OPCODE ip
+.Lget_shorty_and_invoke_range_\suffix:
+     GET_SHORTY_SLOW_PATH xINST, \is_interface
+     b .Lgpr_setup_finished_range_\suffix
+   .endif
+
+.Lget_shorty_range_\suffix:
    GET_SHORTY xINST, \is_interface, \is_polymorphic, \is_custom
    // From this point:
    // - xINST contains shorty (in callee-save to switch over return value after call).
@@ -1152,16 +1276,7 @@ END \name
       ldr lr, [x0, #ART_METHOD_QUICK_CODE_OFFSET_64]
       blr lr
    .endif
-   ldrb wip, [xINST]
-   cmp ip, #68       // Test if result type char == 'D'.
-   b.eq .Lreturn_double_range_\suffix
-   cmp ip, #70
-   b.ne .Ldone_return_range_\suffix
-.Lreturn_float_range_\suffix:
-   fmov w0, s0
-   b .Ldone_return_range_\suffix
-.Lreturn_double_range_\suffix:
-   fmov x0, d0
+   SETUP_RETURN_VALUE xINST
 .Ldone_return_range_\suffix:
    /* resume execution of caller */
    .if \is_string_init
@@ -1171,7 +1286,7 @@ END \name
    .endif
 
    .if \is_polymorphic
-    FETCH_ADVANCE_INST 4
+   FETCH_ADVANCE_INST 4
    .else
    FETCH_ADVANCE_INST 3
    .endif
