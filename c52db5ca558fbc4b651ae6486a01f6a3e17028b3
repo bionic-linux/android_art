@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7cc328_61671993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-08T15:44:02Z",
+      "side": 1,
+      "message": "There was one more place where the statsd APEX needs to be taken into account, to work in Golem.",
+      "revId": "c52db5ca558fbc4b651ae6486a01f6a3e17028b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
