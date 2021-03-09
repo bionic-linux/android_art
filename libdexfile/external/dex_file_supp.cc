@@ -29,14 +29,10 @@ namespace art_api {
 namespace dex {
 
 #define FOR_ALL_DLFUNCS(MACRO) \
-  MACRO(DexString, ExtDexFileMakeString) \
-  MACRO(DexString, ExtDexFileGetString) \
-  MACRO(DexString, ExtDexFileFreeString) \
   MACRO(DexFile, ExtDexFileOpenFromMemory) \
-  MACRO(DexFile, ExtDexFileOpenFromFd) \
   MACRO(DexFile, ExtDexFileGetMethodInfoForOffset) \
   MACRO(DexFile, ExtDexFileGetAllMethodInfos) \
-  MACRO(DexFile, ExtDexFileFree)
+  MACRO(DexFile, ExtDexFileClose)
 
 #ifdef STATIC_LIB
 #define DEFINE_DLFUNC_PTR(CLASS, DLFUNC) decltype(DLFUNC)* CLASS::g_##DLFUNC = DLFUNC;
@@ -103,16 +99,7 @@ void LoadLibdexfileExternal() {
 #endif
 }
 
-DexFile::~DexFile() { g_ExtDexFileFree(ext_dex_file_); }
-
-MethodInfo DexFile::AbsorbMethodInfo(const ExtDexFileMethodInfo& ext_method_info) {
-  return {ext_method_info.offset, ext_method_info.len, DexString(ext_method_info.name)};
-}
-
-void DexFile::AddMethodInfoCallback(const ExtDexFileMethodInfo* ext_method_info, void* ctx) {
-  auto vect = static_cast<MethodInfoVector*>(ctx);
-  vect->emplace_back(AbsorbMethodInfo(*ext_method_info));
-}
+DexFile::~DexFile() { g_ExtDexFileClose(ext_dex_file_); }
 
 }  // namespace dex
 }  // namespace art_api
