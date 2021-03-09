@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7264b1_1973e11d",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-09T21:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04912705_c0917bd1",
+      "range": {
+        "startLine": 298,
+        "startChar": 17,
+        "endLine": 298,
+        "endChar": 44
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4e310ae_7843002b",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-03-09T13:33:49Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 313,
+        "startChar": 15,
+        "endLine": 313,
+        "endChar": 65
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a810fc19_ea7d81dd",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-09T21:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e310ae_7843002b",
       "range": {
         "startLine": 313,
         "startChar": 15,
@@ -110,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc32d6f_634f5036",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-09T21:12:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fe0a50c_62e1f132",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 384,
+        "endChar": 87
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bebfa1c_df5028b0",
@@ -123,6 +195,24 @@
       "writtenOn": "2021-03-09T13:33:49Z",
       "side": 1,
       "message": "Won\u0027t that disable recompilation in the following boots? How do we detect / decide when to retry?",
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65203096_6e3f769e",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-09T21:12:23Z",
+      "side": 1,
+      "message": "Not yet. The logic in CheckArtifactsAreUpToDate() keeps checking until it finds all the artifacts are there. It looks for reasons to return kCompilationRequired early rather than exiting early with kOkay (with 1 exception).\n\nThe reason we are logging the compilation attempt here is in preparation for adding back-off logic to limit how often we retry compilation. We can go all the way if you want, but it\u0027s a small separable part.",
+      "parentUuid": "5bebfa1c_df5028b0",
       "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
