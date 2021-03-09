@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89e4717_0f48a2b0",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-09T21:37:10Z",
+      "side": 1,
+      "message": "device is overloaded :) is it partition?",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "62ba83987d49167488f60f4a18ed8f21aee4ae9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
