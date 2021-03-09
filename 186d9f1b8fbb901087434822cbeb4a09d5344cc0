@@ -16,6 +16,29 @@
       "message": "There\u0027s a question here on whether the version check should be more flexible and/or what versioning is for the art module. Nicolas mentioned want to push a trivial runtime or security update that wouldn\u0027t require compilation. As discussed, it seems very unlikely we\u0027ll be shipping updates that don\u0027t require recompilation and as-such this CL doesn\u0027t support this.\n\nCurrently, this CL is comparing the APEX version number. This could be broken down into components, e.g. \u003cmajor\u003e.\u003cmiddle\u003e.\u003cminor\u003e where a minor version bump says \"no compile\", ie just a security fix or runtime change that has no impact on existing AOT artifacts.\n\nAlternatively, we could include the version numbers for the .art, .oat, .vdex files in the version check and only a bump in these would trigger recompilation.\n\nThe latter makes testing hard, but it\u0027s just the folks working on this that have to deal with this.",
       "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe0a50c_62e1f132",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-03-09T09:51:43Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 384,
+        "endChar": 87
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
