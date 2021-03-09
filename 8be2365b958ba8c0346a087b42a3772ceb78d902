@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fa5aaf_c52663fe",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "stp x0, x1, [sp, #-32]!",
+      "range": {
+        "startLine": 694,
+        "startChar": 3,
+        "endLine": 695,
+        "endChar": 19
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef09ce2_18874a6a",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "Move after the `w2` and `s0` loads and merge with the ADD: ldp x0, x1, [sp], #32",
+      "range": {
+        "startLine": 706,
+        "startChar": 3,
+        "endLine": 706,
+        "endChar": 19
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d596f74_11e72f0b",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "Can we just do \"cmp w2, #(is_static ? 1 : 2)\"? That would simplify the code with fewer instructions in if-blocks.\n\nWe could also reduce the number of instructions by skipping the ASR above:\n\n  FETCH_B w2, 0, 1\n  cmp w2, #((is_static ? 2 : 3) \u003c\u003c 4)\n  b.ge .Lget_shorty_\\suffix\n  .if is_static\n  tbz w2, #4, .Lfast_path_\\suffix\n  .else\n  tbnz w2, #4, .Lfast_path_\\suffix\n  .endif",
+      "range": {
+        "startLine": 884,
+        "startChar": 14,
+        "endLine": 884,
+        "endChar": 15
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0316fdc_f7b60689",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "FETCH w27, 3",
+      "range": {
+        "startLine": 903,
+        "startChar": 5,
+        "endLine": 903,
+        "endChar": 23
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6df021c6_c1bcc901",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "TODO: Use some other register for shorty and prefetch the instruction directly to wINST.",
+      "range": {
+        "startLine": 913,
+        "startChar": 5,
+        "endLine": 913,
+        "endChar": 19
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffa3098_10bd11b6",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "I would prefer the macro to be defined before its first use.",
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a867032_e456d1f3",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "FETCH w27, 3",
+      "range": {
+        "startLine": 1195,
+        "startChar": 5,
+        "endLine": 1195,
+        "endChar": 23
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a7c024_bf865448",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "FETCH r3, 3",
+      "range": {
+        "startLine": 970,
+        "startChar": 5,
+        "endLine": 970,
+        "endChar": 22
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd417cd_550635d1",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "vpush+push",
+      "range": {
+        "startLine": 1179,
+        "startChar": 3,
+        "endLine": 1183,
+        "endChar": 21
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a6d404_acd80a39",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "pop+vpop",
+      "range": {
+        "startLine": 1192,
+        "startChar": 3,
+        "endLine": 1196,
+        "endChar": 18
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c29ae5d_1a75c177",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "FETCH r3, 3",
+      "range": {
+        "startLine": 1249,
+        "startChar": 5,
+        "endLine": 1249,
+        "endChar": 22
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e2e267_fd68833a",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "Is there no plain \"FETCH\" macro in x86-64 nterp?",
+      "range": {
+        "startLine": 1142,
+        "startChar": 5,
+        "endLine": 1142,
+        "endChar": 24
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e251d08_40d4238f",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-09T16:03:42Z",
+      "side": 1,
+      "message": "andl",
+      "range": {
+        "startLine": 1143,
+        "startChar": 5,
+        "endLine": 1143,
+        "endChar": 8
+      },
+      "revId": "8be2365b958ba8c0346a087b42a3772ceb78d902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
