@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7686f19d_9c4020b3",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-09T13:33:49Z",
+      "side": 1,
+      "message": "What does device mean in this context? Could you add comments for each of the attributes.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04912705_c0917bd1",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-09T13:33:49Z",
+      "side": 1,
+      "message": "For simpler code, should we introduce using directives for these auto-generated types?",
+      "range": {
+        "startLine": 298,
+        "startChar": 17,
+        "endLine": 298,
+        "endChar": 44
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e310ae_7843002b",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-09T13:33:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 313,
+        "startChar": 15,
+        "endLine": 313,
+        "endChar": 65
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fe0a50c_62e1f132",
         "filename": "odrefresh/odrefresh.cc",
         "patchSetId": 3
@@ -37,6 +106,23 @@
         "endLine": 384,
         "endChar": 87
       },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bebfa1c_df5028b0",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-09T13:33:49Z",
+      "side": 1,
+      "message": "Won\u0027t that disable recompilation in the following boots? How do we detect / decide when to retry?",
       "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
