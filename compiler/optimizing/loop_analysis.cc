@@ -24,12 +24,10 @@ namespace art {
 
 void LoopAnalysis::CalculateLoopBasicProperties(HLoopInformation* loop_info,
                                                 LoopAnalysisInfo* analysis_results,
-                                                int64_t trip_count) {
+                                                int64_t           trip_count) {
   analysis_results->trip_count_ = trip_count;
 
-  for (HBlocksInLoopIterator block_it(*loop_info);
-       !block_it.Done();
-       block_it.Advance()) {
+  for (HBlocksInLoopIterator block_it(*loop_info); !block_it.Done(); block_it.Advance()) {
     HBasicBlock* block = block_it.Current();
 
     // Check whether one of the successor is loop exit.
@@ -55,7 +53,7 @@ void LoopAnalysis::CalculateLoopBasicProperties(HLoopInformation* loop_info,
         analysis_results->has_long_type_instructions_ = true;
       }
       if (MakesScalarPeelingUnrollingNonBeneficial(instruction)) {
-        analysis_results->has_instructions_preventing_scalar_peeling_ = true;
+        analysis_results->has_instructions_preventing_scalar_peeling_   = true;
         analysis_results->has_instructions_preventing_scalar_unrolling_ = true;
       }
       analysis_results->instr_num_++;
@@ -64,7 +62,7 @@ void LoopAnalysis::CalculateLoopBasicProperties(HLoopInformation* loop_info,
   }
 }
 
-int64_t LoopAnalysis::GetLoopTripCount(HLoopInformation* loop_info,
+int64_t LoopAnalysis::GetLoopTripCount(HLoopInformation*        loop_info,
                                        const InductionVarRange* induction_range) {
   int64_t trip_count;
   if (!induction_range->HasKnownTripCount(loop_info, &trip_count)) {
@@ -91,9 +89,8 @@ class ArchDefaultLoopHelper : public ArchNoOptsLoopHelper {
 
   bool IsLoopNonBeneficialForScalarOpts(LoopAnalysisInfo* analysis_info) const override {
     return analysis_info->HasLongTypeInstructions() ||
-           IsLoopTooBig(analysis_info,
-                        kScalarHeuristicMaxBodySizeInstr,
-                        kScalarHeuristicMaxBodySizeBlocks);
+           IsLoopTooBig(
+               analysis_info, kScalarHeuristicMaxBodySizeInstr, kScalarHeuristicMaxBodySizeBlocks);
   }
 
   uint32_t GetScalarUnrollingFactor(const LoopAnalysisInfo* analysis_info) const override {
@@ -110,7 +107,9 @@ class ArchDefaultLoopHelper : public ArchNoOptsLoopHelper {
     return desired_unrolling_factor;
   }
 
-  bool IsLoopPeelingEnabled() const override { return true; }
+  bool IsLoopPeelingEnabled() const override {
+    return true;
+  }
 
   bool IsFullUnrollingBeneficial(LoopAnalysisInfo* analysis_info) const override {
     int64_t trip_count = analysis_info->GetTripCount();
@@ -122,10 +121,10 @@ class ArchDefaultLoopHelper : public ArchNoOptsLoopHelper {
 
  protected:
   bool IsLoopTooBig(LoopAnalysisInfo* loop_analysis_info,
-                    size_t instr_threshold,
-                    size_t bb_threshold) const {
+                    size_t            instr_threshold,
+                    size_t            bb_threshold) const {
     size_t instr_num = loop_analysis_info->GetNumberOfInstructions();
-    size_t bb_num = loop_analysis_info->GetNumberOfBasicBlocks();
+    size_t bb_num    = loop_analysis_info->GetNumberOfBasicBlocks();
     return (instr_num >= instr_threshold || bb_num >= bb_threshold);
   }
 };
@@ -154,9 +153,9 @@ class Arm64LoopHelper : public ArchDefaultLoopHelper {
   }
 
   uint32_t GetSIMDUnrollingFactor(HBasicBlock* block,
-                                  int64_t trip_count,
-                                  uint32_t max_peel,
-                                  uint32_t vector_length) const override {
+                                  int64_t      trip_count,
+                                  uint32_t     max_peel,
+                                  uint32_t     vector_length) const override {
     // Don't unroll with insufficient iterations.
     // TODO: Unroll loops with unknown trip count.
     DCHECK_NE(vector_length, 0u);
@@ -176,10 +175,9 @@ class Arm64LoopHelper : public ArchDefaultLoopHelper {
     //  - At least one iteration of the transformed loop should be executed.
     //  - The loop body shouldn't be "too big" (heuristic).
 
-    uint32_t uf1 = kArm64SimdHeuristicMaxBodySizeInstr / instruction_count;
-    uint32_t uf2 = (trip_count - max_peel) / vector_length;
-    uint32_t unroll_factor =
-        TruncToPowerOfTwo(std::min({uf1, uf2, kArm64SimdMaxUnrollFactor}));
+    uint32_t uf1           = kArm64SimdHeuristicMaxBodySizeInstr / instruction_count;
+    uint32_t uf2           = (trip_count - max_peel) / vector_length;
+    uint32_t unroll_factor = TruncToPowerOfTwo(std::min({uf1, uf2, kArm64SimdMaxUnrollFactor}));
     DCHECK_GE(unroll_factor, 1u);
     return unroll_factor;
   }
@@ -193,109 +191,59 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
   // We checked top java apps, benchmarks and used the most generated instruction count.
   uint32_t GetMachineInstructionCount(HInstruction* inst) const {
     switch (inst->GetKind()) {
-      case HInstruction::InstructionKind::kAbs:
-        return 3;
-      case HInstruction::InstructionKind::kAdd:
-        return 1;
-      case HInstruction::InstructionKind::kAnd:
-        return 1;
-      case HInstruction::InstructionKind::kArrayLength:
-        return 1;
-      case HInstruction::InstructionKind::kArrayGet:
-        return 1;
-      case HInstruction::InstructionKind::kArraySet:
-        return 1;
-      case HInstruction::InstructionKind::kBoundsCheck:
-        return 2;
-      case HInstruction::InstructionKind::kCheckCast:
-        return 9;
-      case HInstruction::InstructionKind::kDiv:
-        return 8;
-      case HInstruction::InstructionKind::kDivZeroCheck:
-        return 2;
-      case HInstruction::InstructionKind::kEqual:
-        return 3;
-      case HInstruction::InstructionKind::kGreaterThan:
-        return 3;
-      case HInstruction::InstructionKind::kGreaterThanOrEqual:
-        return 3;
-      case HInstruction::InstructionKind::kIf:
-        return 2;
+      case HInstruction::InstructionKind::kAbs: return 3;
+      case HInstruction::InstructionKind::kAdd: return 1;
+      case HInstruction::InstructionKind::kAnd: return 1;
+      case HInstruction::InstructionKind::kArrayLength: return 1;
+      case HInstruction::InstructionKind::kArrayGet: return 1;
+      case HInstruction::InstructionKind::kArraySet: return 1;
+      case HInstruction::InstructionKind::kBoundsCheck: return 2;
+      case HInstruction::InstructionKind::kCheckCast: return 9;
+      case HInstruction::InstructionKind::kDiv: return 8;
+      case HInstruction::InstructionKind::kDivZeroCheck: return 2;
+      case HInstruction::InstructionKind::kEqual: return 3;
+      case HInstruction::InstructionKind::kGreaterThan: return 3;
+      case HInstruction::InstructionKind::kGreaterThanOrEqual: return 3;
+      case HInstruction::InstructionKind::kIf: return 2;
       case HInstruction::InstructionKind::kPredicatedInstanceFieldGet:
         // test + cond-jump + IFieldGet
         return 4;
-      case HInstruction::InstructionKind::kInstanceFieldGet:
-        return 2;
-      case HInstruction::InstructionKind::kInstanceFieldSet:
-        return 1;
-      case HInstruction::InstructionKind::kLessThan:
-        return 3;
-      case HInstruction::InstructionKind::kLessThanOrEqual:
-        return 3;
-      case HInstruction::InstructionKind::kMax:
-        return 2;
-      case HInstruction::InstructionKind::kMin:
-        return 2;
-      case HInstruction::InstructionKind::kMul:
-        return 1;
-      case HInstruction::InstructionKind::kNotEqual:
-        return 3;
-      case HInstruction::InstructionKind::kOr:
-        return 1;
-      case HInstruction::InstructionKind::kRem:
-        return 11;
-      case HInstruction::InstructionKind::kSelect:
-        return 2;
-      case HInstruction::InstructionKind::kShl:
-        return 1;
-      case HInstruction::InstructionKind::kShr:
-        return 1;
-      case HInstruction::InstructionKind::kSub:
-        return 1;
-      case HInstruction::InstructionKind::kTypeConversion:
-        return 1;
-      case HInstruction::InstructionKind::kUShr:
-        return 1;
-      case HInstruction::InstructionKind::kVecReplicateScalar:
-        return 2;
-      case HInstruction::InstructionKind::kVecExtractScalar:
-       return 1;
-      case HInstruction::InstructionKind::kVecReduce:
-        return 4;
-      case HInstruction::InstructionKind::kVecNeg:
-        return 2;
-      case HInstruction::InstructionKind::kVecAbs:
-        return 4;
-      case HInstruction::InstructionKind::kVecNot:
-        return 3;
-      case HInstruction::InstructionKind::kVecAdd:
-        return 1;
-      case HInstruction::InstructionKind::kVecSub:
-        return 1;
-      case HInstruction::InstructionKind::kVecMul:
-        return 1;
-      case HInstruction::InstructionKind::kVecDiv:
-        return 1;
-      case HInstruction::InstructionKind::kVecMax:
-        return 1;
-      case HInstruction::InstructionKind::kVecMin:
-        return 1;
-      case HInstruction::InstructionKind::kVecOr:
-        return 1;
-      case HInstruction::InstructionKind::kVecXor:
-        return 1;
-      case HInstruction::InstructionKind::kVecShl:
-        return 1;
-      case HInstruction::InstructionKind::kVecShr:
-        return 1;
-      case HInstruction::InstructionKind::kVecLoad:
-        return 1;
-      case HInstruction::InstructionKind::kVecStore:
-        return 1;
-      case HInstruction::InstructionKind::kXor:
-        return 1;
-      default:
-        return 1;
+      case HInstruction::InstructionKind::kInstanceFieldGet: return 2;
+      case HInstruction::InstructionKind::kInstanceFieldSet: return 1;
+      case HInstruction::InstructionKind::kLessThan: return 3;
+      case HInstruction::InstructionKind::kLessThanOrEqual: return 3;
+      case HInstruction::InstructionKind::kMax: return 2;
+      case HInstruction::InstructionKind::kMin: return 2;
+      case HInstruction::InstructionKind::kMul: return 1;
+      case HInstruction::InstructionKind::kNotEqual: return 3;
+      case HInstruction::InstructionKind::kOr: return 1;
+      case HInstruction::InstructionKind::kRem: return 11;
+      case HInstruction::InstructionKind::kSelect: return 2;
+      case HInstruction::InstructionKind::kShl: return 1;
+      case HInstruction::InstructionKind::kShr: return 1;
+      case HInstruction::InstructionKind::kSub: return 1;
+      case HInstruction::InstructionKind::kTypeConversion: return 1;
+      case HInstruction::InstructionKind::kUShr: return 1;
+      case HInstruction::InstructionKind::kVecReplicateScalar: return 2;
+      case HInstruction::InstructionKind::kVecExtractScalar: return 1;
+      case HInstruction::InstructionKind::kVecReduce: return 4;
+      case HInstruction::InstructionKind::kVecNeg: return 2;
+      case HInstruction::InstructionKind::kVecAbs: return 4;
+      case HInstruction::InstructionKind::kVecNot: return 3;
+      case HInstruction::InstructionKind::kVecAdd: return 1;
+      case HInstruction::InstructionKind::kVecSub: return 1;
+      case HInstruction::InstructionKind::kVecMul: return 1;
+      case HInstruction::InstructionKind::kVecDiv: return 1;
+      case HInstruction::InstructionKind::kVecMax: return 1;
+      case HInstruction::InstructionKind::kVecMin: return 1;
+      case HInstruction::InstructionKind::kVecOr: return 1;
+      case HInstruction::InstructionKind::kVecXor: return 1;
+      case HInstruction::InstructionKind::kVecShl: return 1;
+      case HInstruction::InstructionKind::kVecShr: return 1;
+      case HInstruction::InstructionKind::kVecLoad: return 1;
+      case HInstruction::InstructionKind::kVecStore: return 1;
+      case HInstruction::InstructionKind::kXor: return 1;
+      default: return 1;
     }
   }
 
@@ -319,9 +267,9 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
   explicit X86_64LoopHelper(const CodeGenerator& codegen) : ArchDefaultLoopHelper(codegen) {}
 
   uint32_t GetSIMDUnrollingFactor(HBasicBlock* block,
-                                  int64_t trip_count,
-                                  uint32_t max_peel,
-                                  uint32_t vector_length) const override {
+                                  int64_t      trip_count,
+                                  uint32_t     max_peel,
+                                  uint32_t     vector_length) const override {
     DCHECK_NE(vector_length, 0u);
     HLoopInformation* loop_info = block->GetLoopInformation();
     DCHECK(loop_info);
@@ -350,7 +298,7 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
       // Find a beneficial unroll factor with the following restrictions:
       //  - At least one iteration of the transformed loop should be executed.
       //  - The loop body shouldn't be "too big" (heuristic).
-      uint32_t uf2 = (trip_count - max_peel) / vector_length;
+      uint32_t uf2  = (trip_count - max_peel) / vector_length;
       unroll_factor = TruncToPowerOfTwo(std::min(uf2, unroll_cnt));
       DCHECK_GE(unroll_factor, 1u);
     }
@@ -360,7 +308,7 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
 };
 
 uint32_t X86_64LoopHelper::GetUnrollingFactor(HLoopInformation* loop_info,
-                                              HBasicBlock* header) const {
+                                              HBasicBlock*      header) const {
   uint32_t num_inst = 0, num_inst_header = 0, num_inst_loop_body = 0;
   for (HBlocksInLoopIterator it(*loop_info); !it.Done(); it.Advance()) {
     HBasicBlock* block = it.Current();
@@ -390,7 +338,7 @@ uint32_t X86_64LoopHelper::GetUnrollingFactor(HLoopInformation* loop_info,
 
   // Calculate actual unroll factor.
   uint32_t unrolling_factor = kX86_64MaxUnrollFactor;
-  uint32_t unrolling_inst = kX86_64UnrolledMaxBodySizeInstr;
+  uint32_t unrolling_inst   = kX86_64UnrolledMaxBodySizeInstr;
   // "-3" for one Goto instruction.
   uint32_t desired_size = unrolling_inst - num_inst_header - 3;
   if (desired_size < (2 * num_inst_loop_body)) {
@@ -408,7 +356,7 @@ uint32_t X86_64LoopHelper::GetUnrollingFactor(HLoopInformation* loop_info,
 }
 
 ArchNoOptsLoopHelper* ArchNoOptsLoopHelper::Create(const CodeGenerator& codegen,
-                                                   ArenaAllocator* allocator) {
+                                                   ArenaAllocator*      allocator) {
   InstructionSet isa = codegen.GetInstructionSet();
   switch (isa) {
     case InstructionSet::kArm64: {

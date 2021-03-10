@@ -27,12 +27,12 @@ static constexpr bool kCfreLogFenceInputCount = false;
 // TODO: refactor this code by reusing escape analysis.
 class CFREVisitor : public HGraphVisitor {
  public:
-  CFREVisitor(HGraph* graph, OptimizingCompilerStats* stats)
-      : HGraphVisitor(graph),
-        scoped_allocator_(graph->GetArenaStack()),
-        candidate_fences_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
-        candidate_fence_targets_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
-        stats_(stats) {}
+  CFREVisitor(HGraph* graph, OptimizingCompilerStats* stats) :
+      HGraphVisitor(graph),
+      scoped_allocator_(graph->GetArenaStack()),
+      candidate_fences_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
+      candidate_fence_targets_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
+      stats_(stats) {}
 
   void VisitBasicBlock(HBasicBlock* block) override {
     // Visit all instructions in block.
@@ -131,7 +131,7 @@ class CFREVisitor : public HGraphVisitor {
   void HandleInvoke(HInstruction* invoke) {
     // An object is considered "published" if it escapes into an invoke as any of the parameters.
     if (HasInterestingPublishTargetAsInput(invoke)) {
-        MergeCandidateFences();
+      MergeCandidateFences();
     }
   }
 
@@ -146,7 +146,7 @@ class CFREVisitor : public HGraphVisitor {
   // - Invoke: this is handled by HandleInvoke.
   void VisitAlias(HInstruction* aliasing_inst) {
     // An object is considered "published" if it becomes aliased by other instructions.
-    if (HasInterestingPublishTargetAsInput(aliasing_inst))  {
+    if (HasInterestingPublishTargetAsInput(aliasing_inst)) {
       // Note that constructing a "NullCheck" for new-instance, new-array,
       // or a 'this' (receiver) reference is impossible.
       //

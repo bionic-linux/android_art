@@ -28,14 +28,12 @@ class SelectGeneratorTest : public OptimizingUnitTest {
  protected:
   void InitGraphAndParameters() {
     InitGraph();
-    AddParameter(new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                      dex::TypeIndex(0),
-                                                      0,
-                                                      DataType::Type::kInt32));
+    AddParameter(new (GetAllocator()) HParameterValue(
+        graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32));
   }
 
   void ConstructBasicGraphForSelect(HInstruction* instr) {
-    HBasicBlock* if_block = AddNewBlock();
+    HBasicBlock* if_block   = AddNewBlock();
     HBasicBlock* then_block = AddNewBlock();
     HBasicBlock* else_block = AddNewBlock();
 
@@ -46,12 +44,10 @@ class SelectGeneratorTest : public OptimizingUnitTest {
     then_block->AddSuccessor(return_block_);
     else_block->AddSuccessor(return_block_);
 
-    HParameterValue* bool_param = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                                       dex::TypeIndex(0),
-                                                                       1,
-                                                                       DataType::Type::kBool);
+    HParameterValue* bool_param = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 1, DataType::Type::kBool);
     entry_block_->AddInstruction(bool_param);
-    HIntConstant* const1 =  graph_->GetIntConstant(1);
+    HIntConstant* const1 = graph_->GetIntConstant(1);
 
     if_block->AddInstruction(new (GetAllocator()) HIf(bool_param));
 
@@ -92,9 +88,8 @@ TEST_F(SelectGeneratorTest, testZeroCheck) {
 // Test that SelectGenerator succeeds with HAdd.
 TEST_F(SelectGeneratorTest, testAdd) {
   InitGraphAndParameters();
-  HAdd* instr = new (GetAllocator()) HAdd(DataType::Type::kInt32,
-                                          parameters_[0],
-                                          parameters_[0], 0);
+  HAdd* instr =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, parameters_[0], parameters_[0], 0);
   ConstructBasicGraphForSelect(instr);
   EXPECT_TRUE(CheckGraphAndTrySelectGenerator());
 }

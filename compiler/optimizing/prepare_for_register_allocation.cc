@@ -85,8 +85,8 @@ void PrepareForRegisterAllocation::VisitBoundsCheck(HBoundsCheck* check) {
     // to appear as being thrown from there. Skip if we're compiling String.charAt() itself.
     ArtMethod* char_at_method = jni::DecodeArtMethod(WellKnownClasses::java_lang_String_charAt);
     if (GetGraph()->GetArtMethod() != char_at_method) {
-      ArenaAllocator* allocator = GetGraph()->GetAllocator();
-      HEnvironment* environment = new (allocator) HEnvironment(allocator,
+      ArenaAllocator* allocator   = GetGraph()->GetAllocator();
+      HEnvironment*   environment = new (allocator) HEnvironment(allocator,
                                                                /* number_of_vregs= */ 0u,
                                                                char_at_method,
                                                                /* dex_pc= */ dex::kDexNoIndex,
@@ -152,8 +152,8 @@ void PrepareForRegisterAllocation::VisitClinitCheck(HClinitCheck* check) {
     }
   }
 
-  HLoadClass* load_class = check->GetLoadClass();
-  bool can_merge_with_load_class = CanMoveClinitCheck(load_class, check);
+  HLoadClass* load_class                = check->GetLoadClass();
+  bool        can_merge_with_load_class = CanMoveClinitCheck(load_class, check);
 
   check->ReplaceWith(load_class);
 
@@ -174,7 +174,7 @@ void PrepareForRegisterAllocation::VisitClinitCheck(HClinitCheck* check) {
   }
 }
 
-bool PrepareForRegisterAllocation::CanEmitConditionAt(HCondition* condition,
+bool PrepareForRegisterAllocation::CanEmitConditionAt(HCondition*   condition,
                                                       HInstruction* user) const {
   if (condition->GetNext() != user) {
     return false;
@@ -223,8 +223,7 @@ void PrepareForRegisterAllocation::VisitConstructorFence(HConstructorFence* cons
       // TODO: GetAssociatedAllocation should not care about multiple inputs
       // if we are in prepare_for_register_allocation pass only.
       constructor_fence->GetBlock()->RemoveInstruction(constructor_fence);
-      MaybeRecordStat(stats_,
-                      MethodCompilationStat::kConstructorFenceRemovedPFRA);
+      MaybeRecordStat(stats_, MethodCompilationStat::kConstructorFenceRemovedPFRA);
       return;
     }
 
@@ -274,7 +273,7 @@ bool PrepareForRegisterAllocation::CanMoveClinitCheck(HInstruction* input,
 
   // Now do a thorough environment check that this is really coming from the same instruction in
   // the same inlined graph. Unfortunately, we have to go through the whole environment chain.
-  HEnvironment* user_environment = user->GetEnvironment();
+  HEnvironment* user_environment  = user->GetEnvironment();
   HEnvironment* input_environment = input->GetEnvironment();
   while (user_environment != nullptr || input_environment != nullptr) {
     if (user_environment == nullptr || input_environment == nullptr) {
@@ -286,7 +285,7 @@ bool PrepareForRegisterAllocation::CanMoveClinitCheck(HInstruction* input,
         user_environment->GetMethod() != input_environment->GetMethod()) {
       return false;
     }
-    user_environment = user_environment->GetParent();
+    user_environment  = user_environment->GetParent();
     input_environment = input_environment->GetParent();
   }
 

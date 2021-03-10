@@ -19,7 +19,6 @@
 
 #include "base/mutex.h"
 #include "compilation_kind.h"
-
 #include "jit/jit.h"
 
 namespace art {
@@ -40,8 +39,7 @@ class JitCompiler : public JitCompilerInterface {
   virtual ~JitCompiler();
 
   // Compilation entrypoint. Returns whether the compilation succeeded.
-  bool CompileMethod(
-      Thread* self, JitMemoryRegion* region, ArtMethod* method, CompilationKind kind)
+  bool CompileMethod(Thread* self, JitMemoryRegion* region, ArtMethod* method, CompilationKind kind)
       REQUIRES_SHARED(Locks::mutator_lock_) override;
 
   const CompilerOptions& GetCompilerOptions() const {
@@ -55,14 +53,14 @@ class JitCompiler : public JitCompilerInterface {
   void TypesLoaded(mirror::Class**, size_t count) REQUIRES_SHARED(Locks::mutator_lock_) override;
 
   std::vector<uint8_t> PackElfFileForJIT(ArrayRef<const JITCodeEntry*> elf_files,
-                                         ArrayRef<const void*> removed_symbols,
-                                         bool compress,
-                                         /*out*/ size_t* num_symbols) override;
+                                         ArrayRef<const void*>         removed_symbols,
+                                         bool                          compress,
+                                         /*out*/ size_t*               num_symbols) override;
 
  private:
   std::unique_ptr<CompilerOptions> compiler_options_;
-  std::unique_ptr<Compiler> compiler_;
-  std::unique_ptr<JitLogger> jit_logger_;
+  std::unique_ptr<Compiler>        compiler_;
+  std::unique_ptr<JitLogger>       jit_logger_;
 
   JitCompiler();
 

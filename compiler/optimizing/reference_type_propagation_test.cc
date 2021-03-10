@@ -36,25 +36,22 @@ constexpr bool kUseTrueRandomness = false;
  * Fixture class for unit testing the ReferenceTypePropagation phase. Used to verify the
  * functionality of methods and situations that are hard to set up with checker tests.
  */
-template<typename SuperTest>
+template <typename SuperTest>
 class ReferenceTypePropagationTestBase : public SuperTest, public OptimizingUnitTestHelper {
  public:
-  ReferenceTypePropagationTestBase() : graph_(nullptr), propagation_(nullptr) { }
+  ReferenceTypePropagationTestBase() : graph_(nullptr), propagation_(nullptr) {}
 
-  ~ReferenceTypePropagationTestBase() { }
+  ~ReferenceTypePropagationTestBase() {}
 
   void SetupPropagation(VariableSizedHandleScope* handles) {
-    graph_ = CreateGraph(handles);
-    propagation_ = new (GetAllocator()) ReferenceTypePropagation(graph_,
-                                                                 Handle<mirror::ClassLoader>(),
-                                                                 Handle<mirror::DexCache>(),
-                                                                 true,
-                                                                 "test_prop");
+    graph_       = CreateGraph(handles);
+    propagation_ = new (GetAllocator()) ReferenceTypePropagation(
+        graph_, Handle<mirror::ClassLoader>(), Handle<mirror::DexCache>(), true, "test_prop");
   }
 
   // Relay method to merge type in reference type propagation.
-  ReferenceTypeInfo MergeTypes(const ReferenceTypeInfo& a,
-                               const ReferenceTypeInfo& b) REQUIRES_SHARED(Locks::mutator_lock_) {
+  ReferenceTypeInfo MergeTypes(const ReferenceTypeInfo& a, const ReferenceTypeInfo& b)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
     return propagation_->MergeTypes(a, b, graph_->GetHandleCache());
   }
 
@@ -93,16 +90,11 @@ enum class ShuffleOrder {
 
 std::ostream& operator<<(std::ostream& os, ShuffleOrder so) {
   switch (so) {
-    case ShuffleOrder::kAlmostTopological:
-      return os << "AlmostTopological";
-    case ShuffleOrder::kReverseTopological:
-      return os << "ReverseTopological";
-    case ShuffleOrder::kTopological:
-      return os << "Topological";
-    case ShuffleOrder::kTrueRandom:
-      return os << "TrueRandom";
-    case ShuffleOrder::kRandomSetSeed:
-      return os << "RandomSetSeed";
+    case ShuffleOrder::kAlmostTopological: return os << "AlmostTopological";
+    case ShuffleOrder::kReverseTopological: return os << "ReverseTopological";
+    case ShuffleOrder::kTopological: return os << "Topological";
+    case ShuffleOrder::kTrueRandom: return os << "TrueRandom";
+    case ShuffleOrder::kRandomSetSeed: return os << "RandomSetSeed";
   }
 }
 
@@ -132,16 +124,11 @@ enum class InitialNullState {
 
 std::ostream& operator<<(std::ostream& os, InitialNullState ni) {
   switch (ni) {
-    case InitialNullState::kAllNull:
-      return os << "AllNull";
-    case InitialNullState::kAllNonNull:
-      return os << "AllNonNull";
-    case InitialNullState::kHalfNull:
-      return os << "HalfNull";
-    case InitialNullState::kTrueRandom:
-      return os << "TrueRandom";
-    case InitialNullState::kRandomSetSeed:
-      return os << "RandomSetSeed";
+    case InitialNullState::kAllNull: return os << "AllNull";
+    case InitialNullState::kAllNonNull: return os << "AllNonNull";
+    case InitialNullState::kHalfNull: return os << "HalfNull";
+    case InitialNullState::kTrueRandom: return os << "TrueRandom";
+    case InitialNullState::kRandomSetSeed: return os << "RandomSetSeed";
   }
 }
 
@@ -152,11 +139,11 @@ struct LoopOptions {
     std::tie(shuffle_, null_insertion_, null_phi_arg_, initial_null_state_) = in;
   }
 
-  ShuffleOrder shuffle_;
+  ShuffleOrder     shuffle_;
   // Where in the list of phis we put the null. -1 if don't insert
-  ssize_t null_insertion_;
+  ssize_t          null_insertion_;
   // Where in the phi arg-list we put the null.
-  size_t null_phi_arg_;
+  size_t           null_phi_arg_;
   // What to set the initial null-state of all the phis to.
   InitialNullState initial_null_state_;
 };
@@ -173,7 +160,7 @@ class LoopReferenceTypePropagationTestGroup
 //
 
 TEST_F(ReferenceTypePropagationTest, ProperSetup) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess       soa(Thread::Current());
   VariableSizedHandleScope handles(soa.Self());
   SetupPropagation(&handles);
 
@@ -182,7 +169,7 @@ TEST_F(ReferenceTypePropagationTest, ProperSetup) {
 }
 
 TEST_F(ReferenceTypePropagationTest, MergeInvalidTypes) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess       soa(Thread::Current());
   VariableSizedHandleScope handles(soa.Self());
   SetupPropagation(&handles);
 
@@ -214,7 +201,7 @@ TEST_F(ReferenceTypePropagationTest, MergeInvalidTypes) {
 }
 
 TEST_F(ReferenceTypePropagationTest, MergeValidTypes) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess       soa(Thread::Current());
   VariableSizedHandleScope handles(soa.Self());
   SetupPropagation(&handles);
 
@@ -262,12 +249,12 @@ TEST_F(ReferenceTypePropagationTest, MergeValidTypes) {
 // everything worked by making sure every phi has valid type information.
 template <typename Func>
 void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess       soa(Thread::Current());
   VariableSizedHandleScope handles(soa.Self());
   SetupPropagation(&handles);
   // Make a well-connected graph with a lot of edges.
-  constexpr size_t kNumBlocks = 100;
-  constexpr size_t kTestMaxSuccessors = 3;
+  constexpr size_t         kNumBlocks         = 100;
+  constexpr size_t         kTestMaxSuccessors = 3;
   std::vector<std::string> mid_blocks;
   for (auto i : Range(kNumBlocks)) {
     std::ostringstream oss;
@@ -288,7 +275,7 @@ void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
 
   AdjacencyListGraph alg(graph_, GetAllocator(), "start", "exit", edges);
   std::unordered_map<HBasicBlock*, HInstruction*> single_value;
-  HInstruction* maybe_null_val = new (GetAllocator())
+  HInstruction*                                   maybe_null_val = new (GetAllocator())
       HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kReference);
   ASSERT_TRUE(maybe_null_val->CanBeNull());
   // Setup the entry-block with the type to be propagated.
@@ -308,7 +295,7 @@ void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
                                         false,
                                         QuickEntrypointEnum::kQuickAllocObjectInitialized);
   single_value[alg.Get(mid_blocks.front())] = new_inst;
-  HBasicBlock* start = alg.Get("start");
+  HBasicBlock* start                        = alg.Get("start");
   start->AddInstruction(maybe_null_val);
   start->AddInstruction(cls);
   start->AddInstruction(new_inst);
@@ -317,7 +304,7 @@ void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
   single_value[start] = new_inst;
 
   // Setup all the other blocks with a single PHI
-  auto range = MakeIterationRange(mid_blocks);
+  auto range       = MakeIterationRange(mid_blocks);
   auto succ_blocks = MakeTransformRange(range, [&](const auto& sv) { return alg.Get(sv); });
   for (HBasicBlock* blk : succ_blocks) {
     HPhi* phi_inst = new (GetAllocator()) HPhi(
@@ -335,7 +322,7 @@ void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
     CHECK(single_value[blk]->IsPhi()) << blk->GetBlockId();
     blk->AddPhi(single_value[blk]->AsPhi());
   }
-  auto vals = MakeTransformRange(succ_blocks, [&](HBasicBlock* blk) {
+  auto                       vals = MakeTransformRange(succ_blocks, [&](HBasicBlock* blk) {
     DCHECK(single_value[blk]->IsPhi());
     return single_value[blk];
   });
@@ -364,12 +351,12 @@ void LoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
 // making sure every phi has valid type information.
 template <typename Func>
 void NonLoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
-  ScopedObjectAccess soa(Thread::Current());
+  ScopedObjectAccess       soa(Thread::Current());
   VariableSizedHandleScope handles(soa.Self());
   SetupPropagation(&handles);
   // Make a well-connected graph with a lot of edges.
-  constexpr size_t kNumBlocks = 5000;
-  constexpr size_t kTestMaxSuccessors = 2;
+  constexpr size_t         kNumBlocks         = 5000;
+  constexpr size_t         kTestMaxSuccessors = 2;
   std::vector<std::string> mid_blocks;
   for (auto i : Range(kNumBlocks)) {
     std::ostringstream oss;
@@ -386,7 +373,7 @@ void NonLoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
   AdjacencyListGraph alg(graph_, GetAllocator(), mid_blocks.front(), mid_blocks.back(), edges);
   std::unordered_map<HBasicBlock*, HInstruction*> single_value;
   // Setup the entry-block with the type to be propagated.
-  HInstruction* cls =
+  HInstruction*                                   cls =
       new (GetAllocator()) HLoadClass(graph_->GetCurrentMethod(),
                                       dex::TypeIndex(10),
                                       graph_->GetDexFile(),
@@ -402,7 +389,7 @@ void NonLoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
                                         false,
                                         QuickEntrypointEnum::kQuickAllocObjectInitialized);
   single_value[alg.Get(mid_blocks.front())] = new_inst;
-  HBasicBlock* start = alg.Get(mid_blocks.front());
+  HBasicBlock* start                        = alg.Get(mid_blocks.front());
   start->AddInstruction(cls);
   start->AddInstruction(new_inst);
   new_inst->SetReferenceTypeInfo(ObjectType(true));
@@ -440,7 +427,7 @@ void NonLoopReferenceTypePropagationTestGroup::RunVisitListTest(Func mutator) {
 
 template <typename Param>
 void ParamReferenceTypePropagationTest<Param>::MutateList(std::vector<HInstruction*>& lst,
-                                                          ShuffleOrder type) {
+                                                          ShuffleOrder                type) {
   DCHECK(std::none_of(lst.begin(), lst.end(), [](auto* i) { return i == nullptr; }));
   std::default_random_engine g(type != ShuffleOrder::kTrueRandom ? 42 : std::rand());
   switch (type) {
@@ -465,7 +452,7 @@ void ParamReferenceTypePropagationTest<Param>::MutateList(std::vector<HInstructi
 }
 
 TEST_P(LoopReferenceTypePropagationTestGroup, RunVisitTest) {
-  LoopOptions lo(GetParam());
+  LoopOptions                lo(GetParam());
   std::default_random_engine g(
       lo.initial_null_state_ != InitialNullState::kTrueRandom ? 42 : std::rand());
   std::uniform_int_distribution<bool> uid(false, true);
@@ -473,16 +460,11 @@ TEST_P(LoopReferenceTypePropagationTestGroup, RunVisitTest) {
     auto pred_null = false;
     auto next_null = [&]() {
       switch (lo.initial_null_state_) {
-        case InitialNullState::kAllNonNull:
-          return false;
-        case InitialNullState::kAllNull:
-          return true;
-        case InitialNullState::kHalfNull:
-          pred_null = !pred_null;
-          return pred_null;
+        case InitialNullState::kAllNonNull: return false;
+        case InitialNullState::kAllNull: return true;
+        case InitialNullState::kHalfNull: pred_null = !pred_null; return pred_null;
         case InitialNullState::kRandomSetSeed:
-        case InitialNullState::kTrueRandom:
-          return uid(g);
+        case InitialNullState::kTrueRandom: return uid(g);
       }
     };
     HPhi* nulled_phi = lo.null_insertion_ >= 0 ? lst[lo.null_insertion_]->AsPhi() : nullptr;

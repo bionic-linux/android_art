@@ -25,35 +25,28 @@ namespace art {
  */
 class NodesVectorTest : public OptimizingUnitTest {
  public:
-  NodesVectorTest()
-      : graph_(CreateGraph()) {
+  NodesVectorTest() : graph_(CreateGraph()) {
     BuildGraph();
   }
 
-  ~NodesVectorTest() { }
+  ~NodesVectorTest() {}
 
   void BuildGraph() {
     graph_->SetNumberOfVRegs(1);
     entry_block_ = new (GetAllocator()) HBasicBlock(graph_);
-    exit_block_ = new (GetAllocator()) HBasicBlock(graph_);
+    exit_block_  = new (GetAllocator()) HBasicBlock(graph_);
     graph_->AddBlock(entry_block_);
     graph_->AddBlock(exit_block_);
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
-    int8_parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                           dex::TypeIndex(1),
-                                                           0,
-                                                           DataType::Type::kInt8);
+    int8_parameter_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(1), 0, DataType::Type::kInt8);
     entry_block_->AddInstruction(int8_parameter_);
-    int16_parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                            dex::TypeIndex(2),
-                                                            0,
-                                                            DataType::Type::kInt16);
+    int16_parameter_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(2), 0, DataType::Type::kInt16);
     entry_block_->AddInstruction(int16_parameter_);
-    int32_parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                            dex::TypeIndex(0),
-                                                            0,
-                                                            DataType::Type::kInt32);
+    int32_parameter_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
     entry_block_->AddInstruction(int32_parameter_);
   }
 
@@ -138,15 +131,15 @@ TEST_F(NodesVectorTest, VectorOperationProperties) {
       HVecReplicateScalar(GetAllocator(), int32_parameter_, DataType::Type::kInt32, 2, kNoDexPc);
   HVecOperation* v3 = new (GetAllocator())
       HVecReplicateScalar(GetAllocator(), int32_parameter_, DataType::Type::kInt16, 4, kNoDexPc);
-  HVecOperation* v4 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      int32_parameter_,
-      int32_parameter_,
-      v0,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
+  HVecOperation* v4 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     int32_parameter_,
+                                     int32_parameter_,
+                                     v0,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
 
   EXPECT_TRUE(v0->Equals(v0));
   EXPECT_TRUE(v1->Equals(v1));
@@ -215,7 +208,7 @@ TEST_F(NodesVectorTest, VectorAlignmentAndStringCharAtMatterOnLoad) {
                                                int32_parameter_,
                                                DataType::Type::kInt32,
                                                SideEffects::ArrayReadOfType(DataType::Type::kInt32),
-                                                4,
+                                               4,
                                                /*is_string_char_at*/ true,
                                                kNoDexPc);
 
@@ -248,24 +241,24 @@ TEST_F(NodesVectorTest, VectorAlignmentAndStringCharAtMatterOnLoad) {
 TEST_F(NodesVectorTest, VectorAlignmentMattersOnStore) {
   HVecOperation* p0 = new (GetAllocator())
       HVecReplicateScalar(GetAllocator(), int32_parameter_, DataType::Type::kInt32, 4, kNoDexPc);
-  HVecStore* v0 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      int32_parameter_,
-      int32_parameter_,
-      p0,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
-  HVecStore* v1 = new (GetAllocator()) HVecStore(
-      GetAllocator(),
-      int32_parameter_,
-      int32_parameter_,
-      p0,
-      DataType::Type::kInt32,
-      SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
-      4,
-      kNoDexPc);
+  HVecStore* v0 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     int32_parameter_,
+                                     int32_parameter_,
+                                     p0,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
+  HVecStore* v1 =
+      new (GetAllocator()) HVecStore(GetAllocator(),
+                                     int32_parameter_,
+                                     int32_parameter_,
+                                     p0,
+                                     DataType::Type::kInt32,
+                                     SideEffects::ArrayWriteOfType(DataType::Type::kInt32),
+                                     4,
+                                     kNoDexPc);
 
   EXPECT_FALSE(v0->CanBeMoved());
   EXPECT_FALSE(v1->CanBeMoved());
@@ -324,7 +317,7 @@ TEST_F(NodesVectorTest, VectorAttributesMatterOnHalvingAdd) {
   HVecHalvingAdd* v11 = new (GetAllocator()) HVecHalvingAdd(
       GetAllocator(), p2, p2, DataType::Type::kInt8, 16, /*is_rounded*/ false, kNoDexPc);
 
-  HVecHalvingAdd* hadd_insns[] = { v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11 };
+  HVecHalvingAdd* hadd_insns[] = {v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11};
 
   EXPECT_FALSE(u0->CanBeMoved());
   EXPECT_FALSE(u1->CanBeMoved());
@@ -389,12 +382,12 @@ TEST_F(NodesVectorTest, VectorKindMattersOnReduce) {
   HVecOperation* v0 = new (GetAllocator())
       HVecReplicateScalar(GetAllocator(), int32_parameter_, DataType::Type::kInt32, 4, kNoDexPc);
 
-  HVecReduce* v1 = new (GetAllocator()) HVecReduce(
-      GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kSum, kNoDexPc);
-  HVecReduce* v2 = new (GetAllocator()) HVecReduce(
-      GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kMin, kNoDexPc);
-  HVecReduce* v3 = new (GetAllocator()) HVecReduce(
-      GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kMax, kNoDexPc);
+  HVecReduce* v1 = new (GetAllocator())
+      HVecReduce(GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kSum, kNoDexPc);
+  HVecReduce* v2 = new (GetAllocator())
+      HVecReduce(GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kMin, kNoDexPc);
+  HVecReduce* v3 = new (GetAllocator())
+      HVecReduce(GetAllocator(), v0, DataType::Type::kInt32, 4, HVecReduce::kMax, kNoDexPc);
 
   EXPECT_FALSE(v0->CanBeMoved());
   EXPECT_TRUE(v1->CanBeMoved());

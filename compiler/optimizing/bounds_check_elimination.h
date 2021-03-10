@@ -26,13 +26,13 @@ class HInductionVarAnalysis;
 
 class BoundsCheckElimination : public HOptimization {
  public:
-  BoundsCheckElimination(HGraph* graph,
+  BoundsCheckElimination(HGraph*                    graph,
                          const SideEffectsAnalysis& side_effects,
-                         HInductionVarAnalysis* induction_analysis,
-                         const char* name = kBoundsCheckEliminationPassName)
-      : HOptimization(graph, name),
-        side_effects_(side_effects),
-        induction_analysis_(induction_analysis) {}
+                         HInductionVarAnalysis*     induction_analysis,
+                         const char*                name = kBoundsCheckEliminationPassName) :
+      HOptimization(graph, name),
+      side_effects_(side_effects),
+      induction_analysis_(induction_analysis) {}
 
   bool Run() override;
 
@@ -40,7 +40,7 @@ class BoundsCheckElimination : public HOptimization {
 
  private:
   const SideEffectsAnalysis& side_effects_;
-  HInductionVarAnalysis* induction_analysis_;
+  HInductionVarAnalysis*     induction_analysis_;
 
   DISALLOW_COPY_AND_ASSIGN(BoundsCheckElimination);
 };

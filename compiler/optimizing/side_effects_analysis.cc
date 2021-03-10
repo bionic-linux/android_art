@@ -43,7 +43,7 @@ bool SideEffectsAnalysis::Run() {
     for (HInstructionIterator inst_it(block->GetInstructions()); !inst_it.Done();
          inst_it.Advance()) {
       HInstruction* instruction = inst_it.Current();
-      effects = effects.Union(instruction->GetSideEffects());
+      effects                   = effects.Union(instruction->GetSideEffects());
       // If all side effects are represented, scanning further will not add any
       // more information to side-effects of this block.
       if (effects.DoesAll()) {
@@ -82,7 +82,7 @@ SideEffects SideEffectsAnalysis::GetBlockEffects(HBasicBlock* block) const {
 }
 
 void SideEffectsAnalysis::UpdateLoopEffects(HLoopInformation* info, SideEffects effects) {
-  uint32_t id = info->GetHeader()->GetBlockId();
+  uint32_t id       = info->GetHeader()->GetBlockId();
   loop_effects_[id] = loop_effects_[id].Union(effects);
 }
 

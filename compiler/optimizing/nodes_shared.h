@@ -26,31 +26,36 @@ namespace art {
 
 class HMultiplyAccumulate final : public HExpression<3> {
  public:
-  HMultiplyAccumulate(DataType::Type type,
+  HMultiplyAccumulate(DataType::Type  type,
                       InstructionKind op,
-                      HInstruction* accumulator,
-                      HInstruction* mul_left,
-                      HInstruction* mul_right,
-                      uint32_t dex_pc = kNoDexPc)
-      : HExpression(kMultiplyAccumulate, type, SideEffects::None(), dex_pc),
-        op_kind_(op) {
+                      HInstruction*   accumulator,
+                      HInstruction*   mul_left,
+                      HInstruction*   mul_right,
+                      uint32_t        dex_pc = kNoDexPc) :
+      HExpression(kMultiplyAccumulate, type, SideEffects::None(), dex_pc), op_kind_(op) {
     SetRawInputAt(kInputAccumulatorIndex, accumulator);
     SetRawInputAt(kInputMulLeftIndex, mul_left);
     SetRawInputAt(kInputMulRightIndex, mul_right);
   }
 
-  bool IsClonable() const override { return true; }
+  bool IsClonable() const override {
+    return true;
+  }
 
   static constexpr int kInputAccumulatorIndex = 0;
-  static constexpr int kInputMulLeftIndex = 1;
-  static constexpr int kInputMulRightIndex = 2;
+  static constexpr int kInputMulLeftIndex     = 1;
+  static constexpr int kInputMulRightIndex    = 2;
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
   bool InstructionDataEquals(const HInstruction* other) const override {
     return op_kind_ == other->AsMultiplyAccumulate()->op_kind_;
   }
 
-  InstructionKind GetOpKind() const { return op_kind_; }
+  InstructionKind GetOpKind() const {
+    return op_kind_;
+  }
 
   DECLARE_INSTRUCTION(MultiplyAccumulate);
 
@@ -64,17 +69,12 @@ class HMultiplyAccumulate final : public HExpression<3> {
 
 class HBitwiseNegatedRight final : public HBinaryOperation {
  public:
-  HBitwiseNegatedRight(DataType::Type result_type,
+  HBitwiseNegatedRight(DataType::Type  result_type,
                        InstructionKind op,
-                       HInstruction* left,
-                       HInstruction* right,
-                       uint32_t dex_pc = kNoDexPc)
-    : HBinaryOperation(kBitwiseNegatedRight,
-                       result_type,
-                       left,
-                       right,
-                       SideEffects::None(),
-                       dex_pc),
+                       HInstruction*   left,
+                       HInstruction*   right,
+                       uint32_t        dex_pc = kNoDexPc) :
+      HBinaryOperation(kBitwiseNegatedRight, result_type, left, right, SideEffects::None(), dex_pc),
       op_kind_(op) {
     DCHECK(op == HInstruction::kAnd || op == HInstruction::kOr || op == HInstruction::kXor) << op;
   }
@@ -82,28 +82,23 @@ class HBitwiseNegatedRight final : public HBinaryOperation {
   template <typename T, typename U>
   auto Compute(T x, U y) const -> decltype(x & ~y) {
     static_assert(std::is_same<decltype(x & ~y), decltype(x | ~y)>::value &&
-                  std::is_same<decltype(x & ~y), decltype(x ^ ~y)>::value,
+                      std::is_same<decltype(x & ~y), decltype(x ^ ~y)>::value,
                   "Inconsistent negated bitwise types");
     switch (op_kind_) {
-      case HInstruction::kAnd:
-        return x & ~y;
-      case HInstruction::kOr:
-        return x | ~y;
-      case HInstruction::kXor:
-        return x ^ ~y;
-      default:
-        LOG(FATAL) << "Unreachable";
-        UNREACHABLE();
+      case HInstruction::kAnd: return x & ~y;
+      case HInstruction::kOr: return x | ~y;
+      case HInstruction::kXor: return x ^ ~y;
+      default: LOG(FATAL) << "Unreachable"; UNREACHABLE();
     }
   }
 
   HConstant* Evaluate(HIntConstant* x, HIntConstant* y) const override {
-    return GetBlock()->GetGraph()->GetIntConstant(
-        Compute(x->GetValue(), y->GetValue()), GetDexPc());
+    return GetBlock()->GetGraph()->GetIntConstant(Compute(x->GetValue(), y->GetValue()),
+                                                  GetDexPc());
   }
   HConstant* Evaluate(HLongConstant* x, HLongConstant* y) const override {
-    return GetBlock()->GetGraph()->GetLongConstant(
-        Compute(x->GetValue(), y->GetValue()), GetDexPc());
+    return GetBlock()->GetGraph()->GetLongConstant(Compute(x->GetValue(), y->GetValue()),
+                                                   GetDexPc());
   }
   HConstant* Evaluate(HFloatConstant* x ATTRIBUTE_UNUSED,
                       HFloatConstant* y ATTRIBUTE_UNUSED) const override {
@@ -116,7 +111,9 @@ class HBitwiseNegatedRight final : public HBinaryOperation {
     UNREACHABLE();
   }
 
-  InstructionKind GetOpKind() const { return op_kind_; }
+  InstructionKind GetOpKind() const {
+    return op_kind_;
+  }
 
   DECLARE_INSTRUCTION(BitwiseNegatedRight);
 
@@ -147,27 +144,38 @@ class HBitwiseNegatedRight final : public HBinaryOperation {
 // effects (in comparison of HIntermediateAddress).
 class HIntermediateAddressIndex final : public HExpression<3> {
  public:
-  HIntermediateAddressIndex(
-      HInstruction* index, HInstruction* offset, HInstruction* shift, uint32_t dex_pc)
-      : HExpression(kIntermediateAddressIndex,
-                    DataType::Type::kInt32,
-                    SideEffects::None(),
-                    dex_pc) {
+  HIntermediateAddressIndex(HInstruction* index,
+                            HInstruction* offset,
+                            HInstruction* shift,
+                            uint32_t      dex_pc) :
+      HExpression(kIntermediateAddressIndex, DataType::Type::kInt32, SideEffects::None(), dex_pc) {
     SetRawInputAt(0, index);
     SetRawInputAt(1, offset);
     SetRawInputAt(2, shift);
   }
 
-  bool IsClonable() const override { return true; }
-  bool CanBeMoved() const override { return true; }
+  bool IsClonable() const override {
+    return true;
+  }
+  bool CanBeMoved() const override {
+    return true;
+  }
   bool InstructionDataEquals(const HInstruction* other ATTRIBUTE_UNUSED) const override {
     return true;
   }
-  bool IsActualObject() const override { return false; }
+  bool IsActualObject() const override {
+    return false;
+  }
 
-  HInstruction* GetIndex() const { return InputAt(0); }
-  HInstruction* GetOffset() const { return InputAt(1); }
-  HInstruction* GetShift() const { return InputAt(2); }
+  HInstruction* GetIndex() const {
+    return InputAt(0);
+  }
+  HInstruction* GetOffset() const {
+    return InputAt(1);
+  }
+  HInstruction* GetShift() const {
+    return InputAt(2);
+  }
 
   DECLARE_INSTRUCTION(IntermediateAddressIndex);
 
@@ -189,36 +197,39 @@ class HDataProcWithShifterOp final : public HExpression<2> {
     kSXTW,  // Signed extend word.
 
     // Aliases.
-    kFirstShiftOp = kLSL,
-    kLastShiftOp = kASR,
+    kFirstShiftOp     = kLSL,
+    kLastShiftOp      = kASR,
     kFirstExtensionOp = kUXTB,
-    kLastExtensionOp = kSXTW
+    kLastExtensionOp  = kSXTW
   };
   HDataProcWithShifterOp(HInstruction* instr,
                          HInstruction* left,
                          HInstruction* right,
-                         OpKind op,
+                         OpKind        op,
                          // The shift argument is unused if the operation
                          // is an extension.
-                         int shift = 0,
-                         uint32_t dex_pc = kNoDexPc)
-      : HExpression(kDataProcWithShifterOp, instr->GetType(), SideEffects::None(), dex_pc),
-        instr_kind_(instr->GetKind()), op_kind_(op),
-        shift_amount_(shift & (instr->GetType() == DataType::Type::kInt32
-            ? kMaxIntShiftDistance
-            : kMaxLongShiftDistance)) {
+                         int           shift  = 0,
+                         uint32_t      dex_pc = kNoDexPc) :
+      HExpression(kDataProcWithShifterOp, instr->GetType(), SideEffects::None(), dex_pc),
+      instr_kind_(instr->GetKind()),
+      op_kind_(op),
+      shift_amount_(shift & (instr->GetType() == DataType::Type::kInt32 ? kMaxIntShiftDistance :
+                                                                          kMaxLongShiftDistance)) {
     DCHECK(!instr->HasSideEffects());
     SetRawInputAt(0, left);
     SetRawInputAt(1, right);
   }
 
-  bool IsClonable() const override { return true; }
-  bool CanBeMoved() const override { return true; }
+  bool IsClonable() const override {
+    return true;
+  }
+  bool CanBeMoved() const override {
+    return true;
+  }
   bool InstructionDataEquals(const HInstruction* other_instr) const override {
     const HDataProcWithShifterOp* other = other_instr->AsDataProcWithShifterOp();
-    return instr_kind_ == other->instr_kind_ &&
-        op_kind_ == other->op_kind_ &&
-        shift_amount_ == other->shift_amount_;
+    return instr_kind_ == other->instr_kind_ && op_kind_ == other->op_kind_ &&
+           shift_amount_ == other->shift_amount_;
   }
 
   static bool IsShiftOp(OpKind op_kind) {
@@ -230,13 +241,19 @@ class HDataProcWithShifterOp final : public HExpression<2> {
   }
 
   // Find the operation kind and shift amount from a bitfield move instruction.
-  static void GetOpInfoFromInstruction(HInstruction* bitfield_op,
-                                       /*out*/OpKind* op_kind,
-                                       /*out*/int* shift_amount);
+  static void GetOpInfoFromInstruction(HInstruction*   bitfield_op,
+                                       /*out*/ OpKind* op_kind,
+                                       /*out*/ int*    shift_amount);
 
-  InstructionKind GetInstrKind() const { return instr_kind_; }
-  OpKind GetOpKind() const { return op_kind_; }
-  int GetShiftAmount() const { return shift_amount_; }
+  InstructionKind GetInstrKind() const {
+    return instr_kind_;
+  }
+  OpKind GetOpKind() const {
+    return op_kind_;
+  }
+  int GetShiftAmount() const {
+    return shift_amount_;
+  }
 
   DECLARE_INSTRUCTION(DataProcWithShifterOp);
 
@@ -245,8 +262,8 @@ class HDataProcWithShifterOp final : public HExpression<2> {
 
  private:
   InstructionKind instr_kind_;
-  OpKind op_kind_;
-  int shift_amount_;
+  OpKind          op_kind_;
+  int             shift_amount_;
 
   friend std::ostream& operator<<(std::ostream& os, OpKind op);
 };

@@ -6,7 +6,7 @@ Language: Cpp
 
 AlignConsecutiveAssignments: Consecutive
 AlignConsecutiveDeclarations: AcrossComments
-AlignConsecutiveMacros: Consecutive
+AlignConsecutiveMacros: AcrossComments
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty

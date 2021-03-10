@@ -34,15 +34,14 @@ class CommonDominator {
   }
 
   // Create a finder starting with a given block.
-  explicit CommonDominator(HBasicBlock* block)
-      : dominator_(block), chain_length_(ChainLength(block)) {
-  }
+  explicit CommonDominator(HBasicBlock* block) :
+      dominator_(block), chain_length_(ChainLength(block)) {}
 
   // Update the common dominator with another block.
   void Update(HBasicBlock* block) {
     DCHECK(block != nullptr);
     if (dominator_ == nullptr) {
-      dominator_ = block;
+      dominator_    = block;
       chain_length_ = ChainLength(block);
       return;
     }
@@ -51,14 +50,14 @@ class CommonDominator {
     if (block == block2) {
       return;
     }
-    size_t chain_length = ChainLength(block);
+    size_t chain_length  = ChainLength(block);
     size_t chain_length2 = chain_length_;
     // Equalize the chain lengths
-    for ( ; chain_length > chain_length2; --chain_length) {
+    for (; chain_length > chain_length2; --chain_length) {
       block = block->GetDominator();
       DCHECK(block != nullptr);
     }
-    for ( ; chain_length2 > chain_length; --chain_length2) {
+    for (; chain_length2 > chain_length; --chain_length2) {
       block2 = block2->GetDominator();
       DCHECK(block2 != nullptr);
     }
@@ -70,7 +69,7 @@ class CommonDominator {
       block2 = block2->GetDominator();
       DCHECK(block2 != nullptr);
     }
-    dominator_ = block;
+    dominator_    = block;
     chain_length_ = chain_length;
   }
 
@@ -89,7 +88,7 @@ class CommonDominator {
   }
 
   HBasicBlock* dominator_;
-  size_t chain_length_;
+  size_t       chain_length_;
 };
 
 }  // namespace art

@@ -40,12 +40,12 @@ static const char* kLogPrefix = "/tmp";
 // |...                  |
 // +---------------------+
 void JitLogger::OpenPerfMapLog() {
-  std::string pid_str = std::to_string(getpid());
+  std::string pid_str       = std::to_string(getpid());
   std::string perf_filename = std::string(kLogPrefix) + "/perf-" + pid_str + ".map";
   perf_file_.reset(OS::CreateEmptyFileWriteOnly(perf_filename.c_str()));
   if (perf_file_ == nullptr) {
-    LOG(ERROR) << "Could not create perf file at " << perf_filename <<
-      " Are you on a user build? Perf only works on userdebug/eng builds";
+    LOG(ERROR) << "Could not create perf file at " << perf_filename
+               << " Are you on a user build? Perf only works on userdebug/eng builds";
   }
 }
 
@@ -54,15 +54,10 @@ void JitLogger::WritePerfMapLog(const void* ptr, size_t code_size, ArtMethod* me
     std::string method_name = method->PrettyMethod();
 
     std::ostringstream stream;
-    stream << std::hex
-           << reinterpret_cast<uintptr_t>(ptr)
-           << " "
-           << code_size
-           << " "
-           << method_name
+    stream << std::hex << reinterpret_cast<uintptr_t>(ptr) << " " << code_size << " " << method_name
            << std::endl;
     std::string str = stream.str();
-    bool res = perf_file_->WriteFully(str.c_str(), str.size());
+    bool        res = perf_file_->WriteFully(str.c_str(), str.size());
     if (!res) {
       LOG(WARNING) << "Failed to write jitted method info in log: write failure.";
     }
@@ -118,7 +113,7 @@ struct PerfJitHeader {
   uint64_t time_stamp_;       // Timestamp when the header is generated
   uint64_t flags_;            // Currently the flags are only used for choosing clock for timestamp,
                               // we set it to 0 to tell perf that we use CLOCK_MONOTONIC clock.
-  static const uint32_t kMagic = 0x4A695444;  // "JiTD"
+  static const uint32_t kMagic   = 0x4A695444;  // "JiTD"
   static const uint32_t kVersion = 1;
 };
 
@@ -173,19 +168,19 @@ struct PerfJitCodeLoad : PerfJitBase {
 // This structure is for source line/column mapping.
 // Currently this feature is not implemented in ART JIT yet.
 struct PerfJitDebugEntry {
-  uint64_t address_;      // Code address which maps to the line/column in source.
-  uint32_t line_number_;  // Source line number starting at 1.
-  uint32_t column_;       // Column discriminator, default 0.
-  const char name_[0];    // Followed by null-terminated name or \0xff\0 if same as previous.
+  uint64_t   address_;      // Code address which maps to the line/column in source.
+  uint32_t   line_number_;  // Source line number starting at 1.
+  uint32_t   column_;       // Column discriminator, default 0.
+  const char name_[0];      // Followed by null-terminated name or \0xff\0 if same as previous.
 };
 
 // Logs debug line information (kDebugInfo).
 // This structure is for source line/column mapping.
 // Currently this feature is not implemented in ART JIT yet.
 struct PerfJitCodeDebugInfo : PerfJitBase {
-  uint64_t address_;              // Starting code address which the debug info describes.
-  uint64_t entry_count_;          // How many instances of PerfJitDebugEntry.
-  PerfJitDebugEntry entries_[0];  // Followed by entry_count_ instances of PerfJitDebugEntry.
+  uint64_t          address_;      // Starting code address which the debug info describes.
+  uint64_t          entry_count_;  // How many instances of PerfJitDebugEntry.
+  PerfJitDebugEntry entries_[0];   // Followed by entry_count_ instances of PerfJitDebugEntry.
 };
 
 static uint32_t GetElfMach() {
@@ -232,13 +227,13 @@ void JitLogger::WriteJitDumpHeader() {
   PerfJitHeader header;
 
   std::memset(&header, 0, sizeof(header));
-  header.magic_ = PerfJitHeader::kMagic;
-  header.version_ = PerfJitHeader::kVersion;
-  header.size_ = sizeof(header);
+  header.magic_           = PerfJitHeader::kMagic;
+  header.version_         = PerfJitHeader::kVersion;
+  header.size_            = sizeof(header);
   header.elf_mach_target_ = GetElfMach();
-  header.process_id_ = static_cast<uint32_t>(getpid());
-  header.time_stamp_ = art::NanoTime();  // CLOCK_MONOTONIC clock is required.
-  header.flags_ = 0;
+  header.process_id_      = static_cast<uint32_t>(getpid());
+  header.time_stamp_      = art::NanoTime();  // CLOCK_MONOTONIC clock is required.
+  header.flags_           = 0;
 
   bool res = jit_dump_file_->WriteFully(reinterpret_cast<const char*>(&header), sizeof(header));
   if (!res) {
@@ -247,13 +242,13 @@ void JitLogger::WriteJitDumpHeader() {
 }
 
 void JitLogger::OpenJitDumpLog() {
-  std::string pid_str = std::to_string(getpid());
+  std::string pid_str          = std::to_string(getpid());
   std::string jitdump_filename = std::string(kLogPrefix) + "/jit-" + pid_str + ".dump";
 
   jit_dump_file_.reset(OS::CreateEmptyFile(jitdump_filename.c_str()));
   if (jit_dump_file_ == nullptr) {
-    LOG(ERROR) << "Could not create jit dump file at " << jitdump_filename <<
-      " Are you on a user build? Perf only works on userdebug/eng builds";
+    LOG(ERROR) << "Could not create jit dump file at " << jitdump_filename
+               << " Are you on a user build? Perf only works on userdebug/eng builds";
     return;
   }
 
@@ -272,15 +267,15 @@ void JitLogger::WriteJitDumpLog(const void* ptr, size_t code_size, ArtMethod* me
 
     PerfJitCodeLoad jit_code;
     std::memset(&jit_code, 0, sizeof(jit_code));
-    jit_code.event_ = PerfJitCodeLoad::kLoad;
-    jit_code.size_ = sizeof(jit_code) + method_name.size() + 1 + code_size;
-    jit_code.time_stamp_ = art::NanoTime();    // CLOCK_MONOTONIC clock is required.
-    jit_code.process_id_ = static_cast<uint32_t>(getpid());
-    jit_code.thread_id_ = static_cast<uint32_t>(art::GetTid());
-    jit_code.vma_ = 0x0;
+    jit_code.event_        = PerfJitCodeLoad::kLoad;
+    jit_code.size_         = sizeof(jit_code) + method_name.size() + 1 + code_size;
+    jit_code.time_stamp_   = art::NanoTime();  // CLOCK_MONOTONIC clock is required.
+    jit_code.process_id_   = static_cast<uint32_t>(getpid());
+    jit_code.thread_id_    = static_cast<uint32_t>(art::GetTid());
+    jit_code.vma_          = 0x0;
     jit_code.code_address_ = reinterpret_cast<uint64_t>(ptr);
-    jit_code.code_size_ = code_size;
-    jit_code.code_id_ = code_index_++;
+    jit_code.code_size_    = code_size;
+    jit_code.code_id_      = code_index_++;
 
     // Write one complete jitted method info, including:
     // - PerfJitCodeLoad structure

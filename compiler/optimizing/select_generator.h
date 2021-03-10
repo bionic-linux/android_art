@@ -63,9 +63,9 @@ namespace art {
 
 class HSelectGenerator : public HOptimization {
  public:
-  HSelectGenerator(HGraph* graph,
+  HSelectGenerator(HGraph*                  graph,
                    OptimizingCompilerStats* stats,
-                   const char* name = kSelectGeneratorPassName);
+                   const char*              name = kSelectGeneratorPassName);
 
   bool Run() override;
 

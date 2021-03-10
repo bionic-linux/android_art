@@ -33,34 +33,33 @@ static constexpr size_t kX86_64WordSize = static_cast<size_t>(kX86_64PointerSize
 // Some x86_64 instructions require a register to be available as temp.
 static constexpr Register TMP = R11;
 
-static constexpr Register kParameterCoreRegisters[] = { RSI, RDX, RCX, R8, R9 };
-static constexpr FloatRegister kParameterFloatRegisters[] =
-    { XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6, XMM7 };
+static constexpr Register      kParameterCoreRegisters[]  = {RSI, RDX, RCX, R8, R9};
+static constexpr FloatRegister kParameterFloatRegisters[] = {
+    XMM0, XMM1, XMM2, XMM3, XMM4, XMM5, XMM6, XMM7};
 
-static constexpr size_t kParameterCoreRegistersLength = arraysize(kParameterCoreRegisters);
+static constexpr size_t kParameterCoreRegistersLength  = arraysize(kParameterCoreRegisters);
 static constexpr size_t kParameterFloatRegistersLength = arraysize(kParameterFloatRegisters);
 
-static constexpr Register kRuntimeParameterCoreRegisters[] = { RDI, RSI, RDX, RCX };
-static constexpr size_t kRuntimeParameterCoreRegistersLength =
+static constexpr Register kRuntimeParameterCoreRegisters[] = {RDI, RSI, RDX, RCX};
+static constexpr size_t   kRuntimeParameterCoreRegistersLength =
     arraysize(kRuntimeParameterCoreRegisters);
-static constexpr FloatRegister kRuntimeParameterFpuRegisters[] = { XMM0, XMM1 };
-static constexpr size_t kRuntimeParameterFpuRegistersLength =
+static constexpr FloatRegister kRuntimeParameterFpuRegisters[] = {XMM0, XMM1};
+static constexpr size_t        kRuntimeParameterFpuRegistersLength =
     arraysize(kRuntimeParameterFpuRegisters);
 
 // These XMM registers are non-volatile in ART ABI, but volatile in native ABI.
 // If the ART ABI changes, this list must be updated.  It is used to ensure that
 // these are not clobbered by any direct call to native code (such as math intrinsics).
-static constexpr FloatRegister non_volatile_xmm_regs[] = { XMM12, XMM13, XMM14, XMM15 };
-
+static constexpr FloatRegister non_volatile_xmm_regs[] = {XMM12, XMM13, XMM14, XMM15};
 
 class InvokeRuntimeCallingConvention : public CallingConvention<Register, FloatRegister> {
  public:
-  InvokeRuntimeCallingConvention()
-      : CallingConvention(kRuntimeParameterCoreRegisters,
-                          kRuntimeParameterCoreRegistersLength,
-                          kRuntimeParameterFpuRegisters,
-                          kRuntimeParameterFpuRegistersLength,
-                          kX86_64PointerSize) {}
+  InvokeRuntimeCallingConvention() :
+      CallingConvention(kRuntimeParameterCoreRegisters,
+                        kRuntimeParameterCoreRegistersLength,
+                        kRuntimeParameterFpuRegisters,
+                        kRuntimeParameterFpuRegistersLength,
+                        kX86_64PointerSize) {}
 
  private:
   DISALLOW_COPY_AND_ASSIGN(InvokeRuntimeCallingConvention);
@@ -68,12 +67,12 @@ class InvokeRuntimeCallingConvention : public CallingConvention<Register, FloatR
 
 class InvokeDexCallingConvention : public CallingConvention<Register, FloatRegister> {
  public:
-  InvokeDexCallingConvention() : CallingConvention(
-      kParameterCoreRegisters,
-      kParameterCoreRegistersLength,
-      kParameterFloatRegisters,
-      kParameterFloatRegistersLength,
-      kX86_64PointerSize) {}
+  InvokeDexCallingConvention() :
+      CallingConvention(kParameterCoreRegisters,
+                        kParameterCoreRegistersLength,
+                        kParameterFloatRegisters,
+                        kParameterFloatRegistersLength,
+                        kX86_64PointerSize) {}
 
  private:
   DISALLOW_COPY_AND_ASSIGN(InvokeDexCallingConvention);
@@ -81,8 +80,8 @@ class InvokeDexCallingConvention : public CallingConvention<Register, FloatRegis
 
 class CriticalNativeCallingConventionVisitorX86_64 : public InvokeDexCallingConventionVisitor {
  public:
-  explicit CriticalNativeCallingConventionVisitorX86_64(bool for_register_allocation)
-      : for_register_allocation_(for_register_allocation) {}
+  explicit CriticalNativeCallingConventionVisitorX86_64(bool for_register_allocation) :
+      for_register_allocation_(for_register_allocation) {}
 
   virtual ~CriticalNativeCallingConventionVisitorX86_64() {}
 
@@ -90,16 +89,18 @@ class CriticalNativeCallingConventionVisitorX86_64 : public InvokeDexCallingConv
   Location GetReturnLocation(DataType::Type type) const override;
   Location GetMethodLocation() const override;
 
-  size_t GetStackOffset() const { return stack_offset_; }
+  size_t GetStackOffset() const {
+    return stack_offset_;
+  }
 
  private:
   // Register allocator does not support adjusting frame size, so we cannot provide final locations
   // of stack arguments for register allocation. We ask the register allocator for any location and
   // move these arguments to the right place after adjusting the SP when generating the call.
   const bool for_register_allocation_;
-  size_t gpr_index_ = 0u;
-  size_t fpr_index_ = 0u;
-  size_t stack_offset_ = 0u;
+  size_t     gpr_index_    = 0u;
+  size_t     fpr_index_    = 0u;
+  size_t     stack_offset_ = 0u;
 
   DISALLOW_COPY_AND_ASSIGN(CriticalNativeCallingConventionVisitorX86_64);
 };
@@ -117,11 +118,9 @@ class FieldAccessCallingConventionX86_64 : public FieldAccessCallingConvention {
   Location GetReturnLocation(DataType::Type type ATTRIBUTE_UNUSED) const override {
     return Location::RegisterLocation(RAX);
   }
-  Location GetSetValueLocation(DataType::Type type ATTRIBUTE_UNUSED, bool is_instance)
-      const override {
-    return is_instance
-        ? Location::RegisterLocation(RDX)
-        : Location::RegisterLocation(RSI);
+  Location GetSetValueLocation(DataType::Type type ATTRIBUTE_UNUSED,
+                               bool                is_instance) const override {
+    return is_instance ? Location::RegisterLocation(RDX) : Location::RegisterLocation(RSI);
   }
   Location GetFpuLocation(DataType::Type type ATTRIBUTE_UNUSED) const override {
     return Location::FpuRegisterLocation(XMM0);
@@ -130,7 +129,6 @@ class FieldAccessCallingConventionX86_64 : public FieldAccessCallingConvention {
  private:
   DISALLOW_COPY_AND_ASSIGN(FieldAccessCallingConventionX86_64);
 };
-
 
 class InvokeDexCallingConventionVisitorX86_64 : public InvokeDexCallingConventionVisitor {
  public:
@@ -151,8 +149,8 @@ class CodeGeneratorX86_64;
 
 class ParallelMoveResolverX86_64 : public ParallelMoveResolverWithSwap {
  public:
-  ParallelMoveResolverX86_64(ArenaAllocator* allocator, CodeGeneratorX86_64* codegen)
-      : ParallelMoveResolverWithSwap(allocator), codegen_(codegen) {}
+  ParallelMoveResolverX86_64(ArenaAllocator* allocator, CodeGeneratorX86_64* codegen) :
+      ParallelMoveResolverWithSwap(allocator), codegen_(codegen) {}
 
   void EmitMove(size_t index) override;
   void EmitSwap(size_t index) override;
@@ -178,11 +176,10 @@ class ParallelMoveResolverX86_64 : public ParallelMoveResolverWithSwap {
 
 class LocationsBuilderX86_64 : public HGraphVisitor {
  public:
-  LocationsBuilderX86_64(HGraph* graph, CodeGeneratorX86_64* codegen)
-      : HGraphVisitor(graph), codegen_(codegen) {}
+  LocationsBuilderX86_64(HGraph* graph, CodeGeneratorX86_64* codegen) :
+      HGraphVisitor(graph), codegen_(codegen) {}
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86_64(DECLARE_VISIT_INSTRUCTION)
@@ -191,8 +188,8 @@ class LocationsBuilderX86_64 : public HGraphVisitor {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
  private:
@@ -205,7 +202,7 @@ class LocationsBuilderX86_64 : public HGraphVisitor {
   bool CpuHasAvxFeatureFlag();
   bool CpuHasAvx2FeatureFlag();
 
-  CodeGeneratorX86_64* const codegen_;
+  CodeGeneratorX86_64* const              codegen_;
   InvokeDexCallingConventionVisitorX86_64 parameter_visitor_;
 
   DISALLOW_COPY_AND_ASSIGN(LocationsBuilderX86_64);
@@ -215,8 +212,7 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
  public:
   InstructionCodeGeneratorX86_64(HGraph* graph, CodeGeneratorX86_64* codegen);
 
-#define DECLARE_VISIT_INSTRUCTION(name, super)     \
-  void Visit##name(H##name* instr) override;
+#define DECLARE_VISIT_INSTRUCTION(name, super) void Visit##name(H##name* instr) override;
 
   FOR_EACH_CONCRETE_INSTRUCTION_COMMON(DECLARE_VISIT_INSTRUCTION)
   FOR_EACH_CONCRETE_INSTRUCTION_X86_64(DECLARE_VISIT_INSTRUCTION)
@@ -225,11 +221,13 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
 #undef DECLARE_VISIT_INSTRUCTION
 
   void VisitInstruction(HInstruction* instruction) override {
-    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName()
-               << " (id " << instruction->GetId() << ")";
+    LOG(FATAL) << "Unreachable instruction " << instruction->DebugName() << " (id "
+               << instruction->GetId() << ")";
   }
 
-  X86_64Assembler* GetAssembler() const { return assembler_; }
+  X86_64Assembler* GetAssembler() const {
+    return assembler_;
+  }
 
  private:
   // Generate code for the given suspend check. If not null, `successor`
@@ -248,9 +246,9 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* operation);
 
-  void HandleFieldSet(HInstruction* instruction,
+  void HandleFieldSet(HInstruction*    instruction,
                       const FieldInfo& field_info,
-                      bool value_can_be_null);
+                      bool             value_can_be_null);
   void HandleFieldGet(HInstruction* instruction, const FieldInfo& field_info);
 
   void GenerateMinMaxInt(LocationSummary* locations, bool is_min, DataType::Type type);
@@ -266,10 +264,10 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
   // Location `maybe_temp` is used when generating a read barrier and
   // shall be a register in that case; it may be an invalid location
   // otherwise.
-  void GenerateReferenceLoadOneRegister(HInstruction* instruction,
-                                        Location out,
-                                        uint32_t offset,
-                                        Location maybe_temp,
+  void GenerateReferenceLoadOneRegister(HInstruction*     instruction,
+                                        Location          out,
+                                        uint32_t          offset,
+                                        Location          maybe_temp,
                                         ReadBarrierOption read_barrier_option);
   // Generate a heap reference load using two different registers
   // `out` and `obj`:
@@ -281,35 +279,37 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
   // Location `maybe_temp` is used when generating a Baker's (fast
   // path) read barrier and shall be a register in that case; it may
   // be an invalid location otherwise.
-  void GenerateReferenceLoadTwoRegisters(HInstruction* instruction,
-                                         Location out,
-                                         Location obj,
-                                         uint32_t offset,
+  void GenerateReferenceLoadTwoRegisters(HInstruction*     instruction,
+                                         Location          out,
+                                         Location          obj,
+                                         uint32_t          offset,
                                          ReadBarrierOption read_barrier_option);
   // Generate a GC root reference load:
   //
   //   root <- *address
   //
   // while honoring read barriers based on read_barrier_option.
-  void GenerateGcRootFieldLoad(HInstruction* instruction,
-                               Location root,
-                               const Address& address,
-                               Label* fixup_label,
+  void GenerateGcRootFieldLoad(HInstruction*     instruction,
+                               Location          root,
+                               const Address&    address,
+                               Label*            fixup_label,
                                ReadBarrierOption read_barrier_option);
 
-  void PushOntoFPStack(Location source, uint32_t temp_offset,
-                       uint32_t stack_adjustment, bool is_float);
+  void PushOntoFPStack(Location source,
+                       uint32_t temp_offset,
+                       uint32_t stack_adjustment,
+                       bool     is_float);
   void GenerateCompareTest(HCondition* condition);
-  template<class LabelType>
+  template <class LabelType>
   void GenerateTestAndBranch(HInstruction* instruction,
-                             size_t condition_input_index,
-                             LabelType* true_target,
-                             LabelType* false_target);
-  template<class LabelType>
+                             size_t        condition_input_index,
+                             LabelType*    true_target,
+                             LabelType*    false_target);
+  template <class LabelType>
   void GenerateCompareTestAndBranch(HCondition* condition,
-                                    LabelType* true_target,
-                                    LabelType* false_target);
-  template<class LabelType>
+                                    LabelType*  true_target,
+                                    LabelType*  false_target);
+  template <class LabelType>
   void GenerateFPJumps(HCondition* cond, LabelType* true_label, LabelType* false_label);
 
   void HandleGoto(HInstruction* got, HBasicBlock* successor);
@@ -317,7 +317,7 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
   bool CpuHasAvxFeatureFlag();
   bool CpuHasAvx2FeatureFlag();
 
-  X86_64Assembler* const assembler_;
+  X86_64Assembler* const     assembler_;
   CodeGeneratorX86_64* const codegen_;
 
   DISALLOW_COPY_AND_ASSIGN(InstructionCodeGeneratorX86_64);
@@ -328,9 +328,9 @@ class JumpTableRIPFixup;
 
 class CodeGeneratorX86_64 : public CodeGenerator {
  public:
-  CodeGeneratorX86_64(HGraph* graph,
-                  const CompilerOptions& compiler_options,
-                  OptimizingCompilerStats* stats = nullptr);
+  CodeGeneratorX86_64(HGraph*                  graph,
+                      const CompilerOptions&   compiler_options,
+                      OptimizingCompilerStats* stats = nullptr);
   virtual ~CodeGeneratorX86_64() {}
 
   void GenerateFrameEntry() override;
@@ -347,13 +347,13 @@ class CodeGeneratorX86_64 : public CodeGenerator {
 
   // Generate code to invoke a runtime entry point.
   void InvokeRuntime(QuickEntrypointEnum entrypoint,
-                     HInstruction* instruction,
-                     uint32_t dex_pc,
-                     SlowPathCode* slow_path = nullptr) override;
+                     HInstruction*       instruction,
+                     uint32_t            dex_pc,
+                     SlowPathCode*       slow_path = nullptr) override;
 
   // Generate code to invoke a runtime entry point, but do not record
   // PC-related information in a stack map.
-  void InvokeRuntimeWithoutRecordingPcInfo(int32_t entry_point_offset,
+  void InvokeRuntimeWithoutRecordingPcInfo(int32_t       entry_point_offset,
                                            HInstruction* instruction,
                                            SlowPathCode* slow_path);
 
@@ -364,9 +364,9 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   }
 
   size_t GetSlowPathFPWidth() const override {
-    return GetGraph()->HasSIMD()
-        ? GetSIMDRegisterWidth()
-        : 1 * kX86_64WordSize;  //  8 bytes == 1 x86_64 words for each spill
+    return GetGraph()->HasSIMD() ?
+               GetSIMDRegisterWidth() :
+               1 * kX86_64WordSize;  //  8 bytes == 1 x86_64 words for each spill
   }
 
   size_t GetCalleePreservedFPWidth() const override {
@@ -417,7 +417,7 @@ class CodeGeneratorX86_64 : public CodeGenerator {
                   CpuRegister card,
                   CpuRegister object,
                   CpuRegister value,
-                  bool value_can_be_null);
+                  bool        value_can_be_null);
 
   void GenerateMemoryBarrier(MemBarrierKind kind);
 
@@ -449,29 +449,30 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // Check if the desired_dispatch_info is supported. If it is, return it,
   // otherwise return a fall-back info that should be used instead.
   HInvokeStaticOrDirect::DispatchInfo GetSupportedInvokeStaticOrDirectDispatch(
-      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info,
-      ArtMethod* method) override;
+      const HInvokeStaticOrDirect::DispatchInfo& desired_dispatch_info, ArtMethod* method) override;
 
   void LoadMethod(MethodLoadKind load_kind, Location temp, HInvoke* invoke);
-  void GenerateStaticOrDirectCall(
-      HInvokeStaticOrDirect* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
-  void GenerateVirtualCall(
-      HInvokeVirtual* invoke, Location temp, SlowPathCode* slow_path = nullptr) override;
+  void GenerateStaticOrDirectCall(HInvokeStaticOrDirect* invoke,
+                                  Location               temp,
+                                  SlowPathCode*          slow_path = nullptr) override;
+  void GenerateVirtualCall(HInvokeVirtual* invoke,
+                           Location        temp,
+                           SlowPathCode*   slow_path = nullptr) override;
 
-  void RecordBootImageIntrinsicPatch(uint32_t intrinsic_data);
-  void RecordBootImageRelRoPatch(uint32_t boot_image_offset);
-  void RecordBootImageMethodPatch(HInvoke* invoke);
-  void RecordMethodBssEntryPatch(HInvoke* invoke);
-  void RecordBootImageTypePatch(HLoadClass* load_class);
+  void   RecordBootImageIntrinsicPatch(uint32_t intrinsic_data);
+  void   RecordBootImageRelRoPatch(uint32_t boot_image_offset);
+  void   RecordBootImageMethodPatch(HInvoke* invoke);
+  void   RecordMethodBssEntryPatch(HInvoke* invoke);
+  void   RecordBootImageTypePatch(HLoadClass* load_class);
   Label* NewTypeBssEntryPatch(HLoadClass* load_class);
-  void RecordBootImageStringPatch(HLoadString* load_string);
+  void   RecordBootImageStringPatch(HLoadString* load_string);
   Label* NewStringBssEntryPatch(HLoadString* load_string);
-  void RecordBootImageJniEntrypointPatch(HInvokeStaticOrDirect* invoke);
-  Label* NewJitRootStringPatch(const DexFile& dex_file,
-                               dex::StringIndex string_index,
+  void   RecordBootImageJniEntrypointPatch(HInvokeStaticOrDirect* invoke);
+  Label* NewJitRootStringPatch(const DexFile&         dex_file,
+                               dex::StringIndex       string_index,
                                Handle<mirror::String> handle);
-  Label* NewJitRootClassPatch(const DexFile& dex_file,
-                              dex::TypeIndex type_index,
+  Label* NewJitRootClassPatch(const DexFile&        dex_file,
+                              dex::TypeIndex        type_index,
                               Handle<mirror::Class> handle);
 
   void LoadBootImageAddress(CpuRegister reg, uint32_t boot_image_reference);
@@ -479,28 +480,28 @@ class CodeGeneratorX86_64 : public CodeGenerator {
 
   void EmitLinkerPatches(ArenaVector<linker::LinkerPatch>* linker_patches) override;
 
-  void PatchJitRootUse(uint8_t* code,
-                       const uint8_t* roots_data,
+  void PatchJitRootUse(uint8_t*                code,
+                       const uint8_t*          roots_data,
                        const PatchInfo<Label>& info,
-                       uint64_t index_in_table) const;
+                       uint64_t                index_in_table) const;
 
   void EmitJitRootPatches(uint8_t* code, const uint8_t* roots_data) override;
 
   // Fast path implementation of ReadBarrier::Barrier for a heap
   // reference field load when Baker's read barriers are used.
   void GenerateFieldLoadWithBakerReadBarrier(HInstruction* instruction,
-                                             Location ref,
-                                             CpuRegister obj,
-                                             uint32_t offset,
-                                             bool needs_null_check);
+                                             Location      ref,
+                                             CpuRegister   obj,
+                                             uint32_t      offset,
+                                             bool          needs_null_check);
   // Fast path implementation of ReadBarrier::Barrier for a heap
   // reference array load when Baker's read barriers are used.
   void GenerateArrayLoadWithBakerReadBarrier(HInstruction* instruction,
-                                             Location ref,
-                                             CpuRegister obj,
-                                             uint32_t data_offset,
-                                             Location index,
-                                             bool needs_null_check);
+                                             Location      ref,
+                                             CpuRegister   obj,
+                                             uint32_t      data_offset,
+                                             Location      index,
+                                             bool          needs_null_check);
   // Factored implementation, used by GenerateFieldLoadWithBakerReadBarrier,
   // GenerateArrayLoadWithBakerReadBarrier and some intrinsics.
   //
@@ -512,14 +513,14 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // atomically updated in the holder (`obj`).  This operation
   // requires two temporary registers, which must be provided as
   // non-null pointers (`temp1` and `temp2`).
-  void GenerateReferenceLoadWithBakerReadBarrier(HInstruction* instruction,
-                                                 Location ref,
-                                                 CpuRegister obj,
+  void GenerateReferenceLoadWithBakerReadBarrier(HInstruction*  instruction,
+                                                 Location       ref,
+                                                 CpuRegister    obj,
                                                  const Address& src,
-                                                 bool needs_null_check,
-                                                 bool always_update_field = false,
-                                                 CpuRegister* temp1 = nullptr,
-                                                 CpuRegister* temp2 = nullptr);
+                                                 bool           needs_null_check,
+                                                 bool           always_update_field = false,
+                                                 CpuRegister*   temp1               = nullptr,
+                                                 CpuRegister*   temp2               = nullptr);
 
   // Generate a read barrier for a heap reference within `instruction`
   // using a slow path.
@@ -540,21 +541,21 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // Location::NoLocation()), the offset value passed to
   // artReadBarrierSlow is adjusted to take `index` into account.
   void GenerateReadBarrierSlow(HInstruction* instruction,
-                               Location out,
-                               Location ref,
-                               Location obj,
-                               uint32_t offset,
-                               Location index = Location::NoLocation());
+                               Location      out,
+                               Location      ref,
+                               Location      obj,
+                               uint32_t      offset,
+                               Location      index = Location::NoLocation());
 
   // If read barriers are enabled, generate a read barrier for a heap
   // reference using a slow path. If heap poisoning is enabled, also
   // unpoison the reference in `out`.
   void MaybeGenerateReadBarrierSlow(HInstruction* instruction,
-                                    Location out,
-                                    Location ref,
-                                    Location obj,
-                                    uint32_t offset,
-                                    Location index = Location::NoLocation());
+                                    Location      out,
+                                    Location      ref,
+                                    Location      obj,
+                                    uint32_t      offset,
+                                    Location      index = Location::NoLocation());
 
   // Generate a read barrier for a GC root within `instruction` using
   // a slow path.
@@ -599,9 +600,9 @@ class CodeGeneratorX86_64 : public CodeGenerator {
 
   // Construct address for array access.
   static Address ArrayAddress(CpuRegister obj,
-                              Location index,
+                              Location    index,
                               ScaleFactor scale,
-                              uint32_t data_offset);
+                              uint32_t    data_offset);
 
   Address LiteralCaseTable(HPackedSwitch* switch_instr);
 
@@ -613,8 +614,8 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   // Assign a 64 bit constant to an address.
   void MoveInt64ToAddress(const Address& addr_low,
                           const Address& addr_high,
-                          int64_t v,
-                          HInstruction* instruction);
+                          int64_t        v,
+                          HInstruction*  instruction);
 
   // Ensure that prior stores complete to memory before subsequent loads.
   // The locked add implementation will avoid serializing device memory, but will
@@ -636,7 +637,6 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   void GenerateExplicitNullCheck(HNullCheck* instruction) override;
   void MaybeGenerateInlineCacheCheck(HInstruction* instruction, CpuRegister cls);
 
-
   void MaybeIncrementHotness(bool is_frame_entry);
 
   static void BlockNonVolatileXmmRegisters(LocationSummary* locations);
@@ -648,15 +648,15 @@ class CodeGeneratorX86_64 : public CodeGenerator {
  private:
   template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
   static void EmitPcRelativeLinkerPatches(const ArenaDeque<PatchInfo<Label>>& infos,
-                                          ArenaVector<linker::LinkerPatch>* linker_patches);
+                                          ArenaVector<linker::LinkerPatch>*   linker_patches);
 
   // Labels for each block that will be compiled.
-  Label* block_labels_;  // Indexed by block id.
-  Label frame_entry_label_;
-  LocationsBuilderX86_64 location_builder_;
+  Label*                         block_labels_;  // Indexed by block id.
+  Label                          frame_entry_label_;
+  LocationsBuilderX86_64         location_builder_;
   InstructionCodeGeneratorX86_64 instruction_visitor_;
-  ParallelMoveResolverX86_64 move_resolver_;
-  X86_64Assembler assembler_;
+  ParallelMoveResolverX86_64     move_resolver_;
+  X86_64Assembler                assembler_;
 
   // Offset to the start of the constant area in the assembled code.
   // Used for fixups to the constant area.

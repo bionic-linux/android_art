@@ -30,7 +30,7 @@ static void MarkReachableBlocks(HGraph* graph, ArenaBitVector* visited) {
   ScopedArenaAllocator allocator(graph->GetArenaStack());
 
   ScopedArenaVector<HBasicBlock*> worklist(allocator.Adapter(kArenaAllocDCE));
-  constexpr size_t kDefaultWorlistSize = 8;
+  constexpr size_t                kDefaultWorlistSize = 8;
   worklist.reserve(kDefaultWorlistSize);
   visited->SetBit(graph->GetEntryBlock()->GetBlockId());
   worklist.push_back(graph->GetEntryBlock());
@@ -42,10 +42,10 @@ static void MarkReachableBlocks(HGraph* graph, ArenaBitVector* visited) {
     DCHECK(visited->IsBitSet(block_id));
 
     ArrayRef<HBasicBlock* const> live_successors(block->GetSuccessors());
-    HInstruction* last_instruction = block->GetLastInstruction();
+    HInstruction*                last_instruction = block->GetLastInstruction();
     if (last_instruction->IsIf()) {
-      HIf* if_instruction = last_instruction->AsIf();
-      HInstruction* condition = if_instruction->InputAt(0);
+      HIf*          if_instruction = last_instruction->AsIf();
+      HInstruction* condition      = if_instruction->InputAt(0);
       if (condition->IsIntConstant()) {
         if (condition->AsIntConstant()->IsTrue()) {
           live_successors = live_successors.SubArray(0u, 1u);
@@ -58,10 +58,10 @@ static void MarkReachableBlocks(HGraph* graph, ArenaBitVector* visited) {
       }
     } else if (last_instruction->IsPackedSwitch()) {
       HPackedSwitch* switch_instruction = last_instruction->AsPackedSwitch();
-      HInstruction* switch_input = switch_instruction->InputAt(0);
+      HInstruction*  switch_input       = switch_instruction->InputAt(0);
       if (switch_input->IsIntConstant()) {
-        int32_t switch_value = switch_input->AsIntConstant()->GetValue();
-        int32_t start_value = switch_instruction->GetStartValue();
+        int32_t  switch_value = switch_input->AsIntConstant()->GetValue();
+        int32_t  start_value  = switch_instruction->GetStartValue();
         // Note: Though the spec forbids packed-switch values to wrap around, we leave
         // that task to the verifier and use unsigned arithmetic with it's "modulo 2^32"
         // semantics to check if the value is in range, wrapped or not.
@@ -101,8 +101,7 @@ void HDeadCodeElimination::MaybeRecordSimplifyIf() {
 }
 
 static bool HasInput(HCondition* instruction, HInstruction* input) {
-  return (instruction->InputAt(0) == input) ||
-         (instruction->InputAt(1) == input);
+  return (instruction->InputAt(0) == input) || (instruction->InputAt(1) == input);
 }
 
 static bool HasEquality(IfCondition condition) {
@@ -111,14 +110,12 @@ static bool HasEquality(IfCondition condition) {
     case kCondLE:
     case kCondGE:
     case kCondBE:
-    case kCondAE:
-      return true;
+    case kCondAE: return true;
     case kCondNE:
     case kCondLT:
     case kCondGT:
     case kCondB:
-    case kCondA:
-      return false;
+    case kCondA: return false;
   }
 }
 
@@ -151,7 +148,7 @@ static bool RemoveNonNullControlDependences(HBasicBlock* block, HBasicBlock* thr
   if (!block->EndsWithIf()) {
     return false;
   }
-  HIf* ifs = block->GetLastInstruction()->AsIf();
+  HIf*          ifs = block->GetLastInstruction()->AsIf();
   // Find either:
   //   if obj == null
   //     throws
@@ -162,8 +159,8 @@ static bool RemoveNonNullControlDependences(HBasicBlock* block, HBasicBlock* thr
   //     not_throws
   //   else
   //     throws
-  HInstruction* cond = ifs->InputAt(0);
-  HBasicBlock* not_throws = nullptr;
+  HInstruction* cond       = ifs->InputAt(0);
+  HBasicBlock*  not_throws = nullptr;
   if (throws == ifs->IfTrueSuccessor() && cond->IsEqual()) {
     not_throws = ifs->IfFalseSuccessor();
   } else if (throws == ifs->IfFalseSuccessor() && cond->IsNotEqual()) {
@@ -179,19 +176,17 @@ static bool RemoveNonNullControlDependences(HBasicBlock* block, HBasicBlock* thr
     return false;
   }
   // Scan all uses of obj and find null check under control dependence.
-  HBoundType* bound = nullptr;
-  const HUseList<HInstruction*>& uses = obj->GetUses();
+  HBoundType*                    bound = nullptr;
+  const HUseList<HInstruction*>& uses  = obj->GetUses();
   for (auto it = uses.begin(), end = uses.end(); it != end;) {
     HInstruction* user = it->GetUser();
     ++it;  // increment before possibly replacing
     if (user->IsNullCheck()) {
       HBasicBlock* user_block = user->GetBlock();
-      if (user_block != block &&
-          user_block != throws &&
-          block->Dominates(user_block)) {
+      if (user_block != block && user_block != throws && block->Dominates(user_block)) {
         if (bound == nullptr) {
           ReferenceTypeInfo ti = obj->GetReferenceTypeInfo();
-          bound = new (obj->GetBlock()->GetGraph()->GetAllocator()) HBoundType(obj);
+          bound                = new (obj->GetBlock()->GetGraph()->GetAllocator()) HBoundType(obj);
           bound->SetUpperBound(ti, /*can_be_null*/ false);
           bound->SetReferenceTypeInfo(ti);
           bound->SetCanBeNull(false);
@@ -241,24 +236,18 @@ bool HDeadCodeElimination::SimplifyAlwaysThrows() {
   // Order does not matter, just pick one.
   for (HBasicBlock* block : graph_->GetReversePostOrder()) {
     HInstruction* first = block->GetFirstInstruction();
-    HInstruction* last = block->GetLastInstruction();
+    HInstruction* last  = block->GetLastInstruction();
     // Ensure only one throwing instruction appears before goto.
-    if (first->AlwaysThrows() &&
-        first->GetNext() == last &&
-        last->IsGoto() &&
-        block->GetPhis().IsEmpty() &&
-        block->GetPredecessors().size() == 1u) {
+    if (first->AlwaysThrows() && first->GetNext() == last && last->IsGoto() &&
+        block->GetPhis().IsEmpty() && block->GetPredecessors().size() == 1u) {
       DCHECK_EQ(block->GetSuccessors().size(), 1u);
       HBasicBlock* pred = block->GetSinglePredecessor();
       HBasicBlock* succ = block->GetSingleSuccessor();
       // Ensure no computations are merged through throwing block.
       // This does not prevent the optimization per se, but would
       // require an elaborate clean up of the SSA graph.
-      if (succ != exit &&
-          !block->Dominates(pred) &&
-          pred->Dominates(succ) &&
-          succ->GetPredecessors().size() > 1u &&
-          succ->GetPhis().IsEmpty()) {
+      if (succ != exit && !block->Dominates(pred) && pred->Dominates(succ) &&
+          succ->GetPredecessors().size() > 1u && succ->GetPhis().IsEmpty()) {
         block->ReplaceSuccessor(succ, exit);
         rerun_dominance_and_loop_analysis = true;
         MaybeRecordStat(stats_, MethodCompilationStat::kSimplifyThrowingInvoke);
@@ -319,35 +308,30 @@ bool HDeadCodeElimination::SimplifyAlwaysThrows() {
 //
 // Note that we rely on the dead code elimination to get rid of B3.
 bool HDeadCodeElimination::SimplifyIfs() {
-  bool simplified_one_or_more_ifs = false;
+  bool simplified_one_or_more_ifs        = false;
   bool rerun_dominance_and_loop_analysis = false;
 
   for (HBasicBlock* block : graph_->GetReversePostOrder()) {
-    HInstruction* last = block->GetLastInstruction();
+    HInstruction* last  = block->GetLastInstruction();
     HInstruction* first = block->GetFirstInstruction();
-    if (!block->IsCatchBlock() &&
-        last->IsIf() &&
-        block->HasSinglePhi() &&
+    if (!block->IsCatchBlock() && last->IsIf() && block->HasSinglePhi() &&
         block->GetFirstPhi()->HasOnlyOneNonEnvironmentUse()) {
       bool has_only_phi_and_if = (last == first) && (last->InputAt(0) == block->GetFirstPhi());
       bool has_only_phi_condition_and_if =
-          !has_only_phi_and_if &&
-          first->IsCondition() &&
-          HasInput(first->AsCondition(), block->GetFirstPhi()) &&
-          (first->GetNext() == last) &&
-          (last->InputAt(0) == first) &&
-          first->HasOnlyOneNonEnvironmentUse();
+          !has_only_phi_and_if && first->IsCondition() &&
+          HasInput(first->AsCondition(), block->GetFirstPhi()) && (first->GetNext() == last) &&
+          (last->InputAt(0) == first) && first->HasOnlyOneNonEnvironmentUse();
 
       if (has_only_phi_and_if || has_only_phi_condition_and_if) {
         DCHECK(!block->IsLoopHeader());
-        HPhi* phi = block->GetFirstPhi()->AsPhi();
-        bool phi_input_is_left = (first->InputAt(0) == phi);
+        HPhi* phi               = block->GetFirstPhi()->AsPhi();
+        bool  phi_input_is_left = (first->InputAt(0) == phi);
 
         // Walk over all inputs of the phis and update the control flow of
         // predecessors feeding constants to the phi.
         // Note that phi->InputCount() may change inside the loop.
         for (size_t i = 0; i < phi->InputCount();) {
-          HInstruction* input = phi->InputAt(i);
+          HInstruction* input          = phi->InputAt(i);
           HInstruction* value_to_check = nullptr;
           if (has_only_phi_and_if) {
             if (input->IsIntConstant()) {
@@ -366,7 +350,7 @@ bool HDeadCodeElimination::SimplifyIfs() {
             ++i;
           } else {
             HBasicBlock* predecessor_to_update = block->GetPredecessors()[i];
-            HBasicBlock* successor_to_update = nullptr;
+            HBasicBlock* successor_to_update   = nullptr;
             if (value_to_check->AsIntConstant()->IsTrue()) {
               successor_to_update = last->AsIf()->IfTrueSuccessor();
             } else {
@@ -427,7 +411,7 @@ bool HDeadCodeElimination::SimplifyIfs() {
 void HDeadCodeElimination::ConnectSuccessiveBlocks() {
   // Order does not matter. Skip the entry block by starting at index 1 in reverse post order.
   for (size_t i = 1u, size = graph_->GetReversePostOrder().size(); i != size; ++i) {
-    HBasicBlock* block  = graph_->GetReversePostOrder()[i];
+    HBasicBlock* block = graph_->GetReversePostOrder()[i];
     DCHECK(!block->IsEntryBlock());
     while (block->GetLastInstruction()->IsGoto()) {
       HBasicBlock* successor = block->GetSingleSuccessor();
@@ -453,7 +437,7 @@ bool HDeadCodeElimination::RemoveDeadBlocks() {
   live_blocks.ClearAllBits();
 
   MarkReachableBlocks(graph_, &live_blocks);
-  bool removed_one_or_more_blocks = false;
+  bool removed_one_or_more_blocks        = false;
   bool rerun_dominance_and_loop_analysis = false;
 
   // Remove all dead blocks. Iterate in post order because removal needs the

@@ -24,25 +24,24 @@
 
 namespace art {
 
-HBasicBlockBuilder::HBasicBlockBuilder(HGraph* graph,
-                                       const DexFile* const dex_file,
+HBasicBlockBuilder::HBasicBlockBuilder(HGraph*                          graph,
+                                       const DexFile* const             dex_file,
                                        const CodeItemDebugInfoAccessor& accessor,
-                                       ScopedArenaAllocator* local_allocator)
-    : allocator_(graph->GetAllocator()),
-      graph_(graph),
-      dex_file_(dex_file),
-      code_item_accessor_(accessor),
-      local_allocator_(local_allocator),
-      branch_targets_(code_item_accessor_.HasCodeItem()
-                          ? code_item_accessor_.InsnsSizeInCodeUnits()
-                          : /* fake dex_pc=0 for intrinsic graph */ 1u,
-                      nullptr,
-                      local_allocator->Adapter(kArenaAllocGraphBuilder)),
-      throwing_blocks_(kDefaultNumberOfThrowingBlocks,
-                       local_allocator->Adapter(kArenaAllocGraphBuilder)),
-      number_of_branches_(0u),
-      quicken_index_for_dex_pc_(std::less<uint32_t>(),
-                                local_allocator->Adapter(kArenaAllocGraphBuilder)) {}
+                                       ScopedArenaAllocator*            local_allocator) :
+    allocator_(graph->GetAllocator()),
+    graph_(graph),
+    dex_file_(dex_file),
+    code_item_accessor_(accessor),
+    local_allocator_(local_allocator),
+    branch_targets_(code_item_accessor_.HasCodeItem() ? code_item_accessor_.InsnsSizeInCodeUnits() :
+                                                        /* fake dex_pc=0 for intrinsic graph */ 1u,
+                    nullptr,
+                    local_allocator->Adapter(kArenaAllocGraphBuilder)),
+    throwing_blocks_(kDefaultNumberOfThrowingBlocks,
+                     local_allocator->Adapter(kArenaAllocGraphBuilder)),
+    number_of_branches_(0u),
+    quicken_index_for_dex_pc_(std::less<uint32_t>(),
+                              local_allocator->Adapter(kArenaAllocGraphBuilder)) {}
 
 HBasicBlock* HBasicBlockBuilder::MaybeCreateBlockAt(uint32_t dex_pc) {
   return MaybeCreateBlockAt(dex_pc, dex_pc);
@@ -52,7 +51,7 @@ HBasicBlock* HBasicBlockBuilder::MaybeCreateBlockAt(uint32_t semantic_dex_pc,
                                                     uint32_t store_dex_pc) {
   HBasicBlock* block = branch_targets_[store_dex_pc];
   if (block == nullptr) {
-    block = new (allocator_) HBasicBlock(graph_, semantic_dex_pc);
+    block                         = new (allocator_) HBasicBlock(graph_, semantic_dex_pc);
     branch_targets_[store_dex_pc] = block;
   }
   DCHECK_EQ(block->GetDexPc(), semantic_dex_pc);
@@ -70,7 +69,7 @@ bool HBasicBlockBuilder::CreateBranchTargets() {
     // enter/exit the try blocks are a result of branches/switches.
     for (const dex::TryItem& try_item : code_item_accessor_.TryItems()) {
       uint32_t dex_pc_start = try_item.start_addr_;
-      uint32_t dex_pc_end = dex_pc_start + try_item.insn_count_;
+      uint32_t dex_pc_end   = dex_pc_start + try_item.insn_count_;
       MaybeCreateBlockAt(dex_pc_start);
       if (dex_pc_end < code_item_accessor_.InsnsSizeInCodeUnits()) {
         // TODO: Do not create block if the last instruction cannot fall through.
@@ -86,8 +85,8 @@ bool HBasicBlockBuilder::CreateBranchTargets() {
     }
 
     // Create branch targets for exception handlers.
-    const uint8_t* handlers_ptr = code_item_accessor_.GetCatchHandlerData();
-    uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
+    const uint8_t* handlers_ptr  = code_item_accessor_.GetCatchHandlerData();
+    uint32_t       handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
     for (uint32_t idx = 0; idx < handlers_size; ++idx) {
       CatchHandlerIterator iterator(handlers_ptr);
       for (; iterator.HasNext(); iterator.Next()) {
@@ -100,7 +99,7 @@ bool HBasicBlockBuilder::CreateBranchTargets() {
   // Iterate over all instructions and find branching instructions. Create blocks for
   // the locations these instructions branch to.
   for (const DexInstructionPcPair& pair : code_item_accessor_) {
-    const uint32_t dex_pc = pair.DexPc();
+    const uint32_t     dex_pc      = pair.DexPc();
     const Instruction& instruction = pair.Inst();
 
     if (instruction.IsBranch()) {
@@ -147,12 +146,12 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
   HBasicBlock* block = graph_->GetEntryBlock();
   graph_->AddBlock(block);
 
-  size_t quicken_index = 0;
-  bool is_throwing_block = false;
+  size_t quicken_index     = 0;
+  bool   is_throwing_block = false;
   // Calculate the qucikening index here instead of CreateBranchTargets since it's easier to
   // calculate in dex_pc order.
   for (const DexInstructionPcPair& pair : code_item_accessor_) {
-    const uint32_t dex_pc = pair.DexPc();
+    const uint32_t     dex_pc      = pair.DexPc();
     const Instruction& instruction = pair.Inst();
 
     // Check if this dex_pc address starts a new basic block.
@@ -165,7 +164,7 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
         // It must have been a block falling through into the next one.
         block->AddSuccessor(next_block);
       }
-      block = next_block;
+      block             = next_block;
       is_throwing_block = false;
       graph_->AddBlock(block);
     }
@@ -197,8 +196,8 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
         block->AddSuccessor(GetBlockAt(target_dex_pc));
 
         if (table.ShouldBuildDecisionTree() && !s_it.IsLast()) {
-          uint32_t next_case_dex_pc = s_it.GetDexPcForCurrentIndex();
-          HBasicBlock* next_case_block = GetBlockAt(next_case_dex_pc);
+          uint32_t     next_case_dex_pc = s_it.GetDexPcForCurrentIndex();
+          HBasicBlock* next_case_block  = GetBlockAt(next_case_dex_pc);
           block->AddSuccessor(next_case_block);
           block = next_case_block;
           graph_->AddBlock(block);
@@ -223,8 +222,7 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
 
 // Returns the TryItem stored for `block` or nullptr if there is no info for it.
 static const dex::TryItem* GetTryItem(
-    HBasicBlock* block,
-    const ScopedArenaSafeMap<uint32_t, const dex::TryItem*>& try_block_info) {
+    HBasicBlock* block, const ScopedArenaSafeMap<uint32_t, const dex::TryItem*>& try_block_info) {
   auto iterator = try_block_info.find(block->GetBlockId());
   return (iterator == try_block_info.end()) ? nullptr : iterator->second;
 }
@@ -233,13 +231,12 @@ static const dex::TryItem* GetTryItem(
 // catch blocks and makes them successors of `try_boundary`. The order of
 // successors matches the order in which runtime exception delivery searches
 // for a handler.
-static void LinkToCatchBlocks(HTryBoundary* try_boundary,
-                              const CodeItemDataAccessor& accessor,
-                              const dex::TryItem* try_item,
+static void LinkToCatchBlocks(HTryBoundary*                                     try_boundary,
+                              const CodeItemDataAccessor&                       accessor,
+                              const dex::TryItem*                               try_item,
                               const ScopedArenaSafeMap<uint32_t, HBasicBlock*>& catch_blocks) {
-  for (CatchHandlerIterator it(accessor.GetCatchHandlerData(try_item->handler_off_));
-      it.HasNext();
-      it.Next()) {
+  for (CatchHandlerIterator it(accessor.GetCatchHandlerData(try_item->handler_off_)); it.HasNext();
+       it.Next()) {
     try_boundary->AddExceptionHandler(catch_blocks.Get(it.GetHandlerAddress()));
   }
 }
@@ -309,13 +306,13 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
 
   // Iterate over catch blocks, create artifical landing pads if necessary to
   // simplify the CFG, and set metadata.
-  const uint8_t* handlers_ptr = code_item_accessor_.GetCatchHandlerData();
-  uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
+  const uint8_t* handlers_ptr  = code_item_accessor_.GetCatchHandlerData();
+  uint32_t       handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
   for (uint32_t idx = 0; idx < handlers_size; ++idx) {
     CatchHandlerIterator iterator(handlers_ptr);
     for (; iterator.HasNext(); iterator.Next()) {
-      uint32_t address = iterator.GetHandlerAddress();
-      auto existing = catch_blocks.find(address);
+      uint32_t address  = iterator.GetHandlerAddress();
+      auto     existing = catch_blocks.find(address);
       if (existing != catch_blocks.end()) {
         // Catch block already processed.
         TryCatchInformation* info = existing->second->GetTryCatchInformation();
@@ -355,15 +352,15 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
   // We do not split each edge separately, but rather create one boundary block
   // that all predecessors are relinked to. This preserves loop headers (b/23895756).
   for (const auto& entry : try_block_info) {
-    uint32_t block_id = entry.first;
-    const dex::TryItem* try_item = entry.second;
-    HBasicBlock* try_block = graph_->GetBlocks()[block_id];
+    uint32_t            block_id  = entry.first;
+    const dex::TryItem* try_item  = entry.second;
+    HBasicBlock*        try_block = graph_->GetBlocks()[block_id];
     for (HBasicBlock* predecessor : try_block->GetPredecessors()) {
       if (GetTryItem(predecessor, try_block_info) != try_item) {
         // Found a predecessor not covered by the same TryItem. Insert entering
         // boundary block.
-        HTryBoundary* try_entry = new (allocator_) HTryBoundary(
-            HTryBoundary::BoundaryKind::kEntry, try_block->GetDexPc());
+        HTryBoundary* try_entry = new (allocator_)
+            HTryBoundary(HTryBoundary::BoundaryKind::kEntry, try_block->GetDexPc());
         try_block->CreateImmediateDominator()->AddInstruction(try_entry);
         LinkToCatchBlocks(try_entry, code_item_accessor_, try_item, catch_blocks);
         break;
@@ -374,9 +371,9 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
   // Do a second pass over the try blocks and insert exit TryBoundaries where
   // the successor is not in the same TryItem.
   for (const auto& entry : try_block_info) {
-    uint32_t block_id = entry.first;
-    const dex::TryItem* try_item = entry.second;
-    HBasicBlock* try_block = graph_->GetBlocks()[block_id];
+    uint32_t            block_id  = entry.first;
+    const dex::TryItem* try_item  = entry.second;
+    HBasicBlock*        try_block = graph_->GetBlocks()[block_id];
     // NOTE: Do not use iterators because SplitEdge would invalidate them.
     for (size_t i = 0, e = try_block->GetSuccessors().size(); i < e; ++i) {
       HBasicBlock* successor = try_block->GetSuccessors()[i];
@@ -402,7 +399,7 @@ void HBasicBlockBuilder::InsertSynthesizedLoopsForOsr() {
   ArenaSet<uint32_t> targets(allocator_->Adapter(kArenaAllocGraphBuilder));
   // Collect basic blocks that are targets of a negative branch.
   for (const DexInstructionPcPair& pair : code_item_accessor_) {
-    const uint32_t dex_pc = pair.DexPc();
+    const uint32_t     dex_pc      = pair.DexPc();
     const Instruction& instruction = pair.Inst();
     if (instruction.IsBranch()) {
       uint32_t target_dex_pc = dex_pc + instruction.GetTargetOffset();
@@ -426,7 +423,7 @@ void HBasicBlockBuilder::InsertSynthesizedLoopsForOsr() {
 
   // Insert synthesized loops before the collected blocks.
   for (uint32_t block_id : targets) {
-    HBasicBlock* block = graph_->GetBlocks()[block_id];
+    HBasicBlock* block      = graph_->GetBlocks()[block_id];
     HBasicBlock* loop_block = new (allocator_) HBasicBlock(graph_, block->GetDexPc());
     graph_->AddBlock(loop_block);
     while (!block->GetPredecessors().empty()) {
@@ -468,7 +465,7 @@ void HBasicBlockBuilder::BuildIntrinsic() {
 
   // Create blocks.
   HBasicBlock* entry_block = new (allocator_) HBasicBlock(graph_, kNoDexPc);
-  HBasicBlock* exit_block = new (allocator_) HBasicBlock(graph_, kNoDexPc);
+  HBasicBlock* exit_block  = new (allocator_) HBasicBlock(graph_, kNoDexPc);
   HBasicBlock* body = MaybeCreateBlockAt(/* semantic_dex_pc= */ kNoDexPc, /* store_dex_pc= */ 0u);
 
   // Add blocks to the graph.

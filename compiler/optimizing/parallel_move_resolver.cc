@@ -168,7 +168,7 @@ MoveOperands* ParallelMoveResolverWithSwap::PerformMove(size_t index) {
         // If `other_move` was swapped, we iterate again to find a new
         // potential cycle.
         required_swap = nullptr;
-        i = -1;
+        i             = -1;
       } else if (required_swap != nullptr) {
         // A move is required to swap. We walk back the cycle to find the
         // move by just returning from this `PerformMove`.
@@ -217,7 +217,7 @@ MoveOperands* ParallelMoveResolverWithSwap::PerformMove(size_t index) {
     // Any unperformed (including pending) move with a source of either
     // this move's source or destination needs to have their source
     // changed to reflect the state of affairs after the swap.
-    Location source = move->GetSource();
+    Location source           = move->GetSource();
     Location swap_destination = move->GetDestination();
     move->Eliminate();
     for (MoveOperands* other_move : moves_) {
@@ -256,9 +256,9 @@ bool ParallelMoveResolverWithSwap::IsScratchLocation(Location loc) {
   return false;
 }
 
-int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
-                                                          int register_count,
-                                                          int if_scratch,
+int ParallelMoveResolverWithSwap::AllocateScratchRegister(int   blocked,
+                                                          int   register_count,
+                                                          int   if_scratch,
                                                           bool* spilled) {
   DCHECK_NE(blocked, if_scratch);
   int scratch = -1;
@@ -271,7 +271,7 @@ int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
 
   if (scratch == -1) {
     *spilled = true;
-    scratch = if_scratch;
+    scratch  = if_scratch;
   } else {
     *spilled = false;
   }
@@ -279,19 +279,15 @@ int ParallelMoveResolverWithSwap::AllocateScratchRegister(int blocked,
   return scratch;
 }
 
-
 ParallelMoveResolverWithSwap::ScratchRegisterScope::ScratchRegisterScope(
-    ParallelMoveResolverWithSwap* resolver, int blocked, int if_scratch, int number_of_registers)
-    : resolver_(resolver),
-      reg_(kNoRegister),
-      spilled_(false) {
+    ParallelMoveResolverWithSwap* resolver, int blocked, int if_scratch, int number_of_registers) :
+    resolver_(resolver), reg_(kNoRegister), spilled_(false) {
   reg_ = resolver_->AllocateScratchRegister(blocked, number_of_registers, if_scratch, &spilled_);
 
   if (spilled_) {
     resolver->SpillScratch(reg_);
   }
 }
-
 
 ParallelMoveResolverWithSwap::ScratchRegisterScope::~ScratchRegisterScope() {
   if (spilled_) {
@@ -324,8 +320,8 @@ void ParallelMoveResolverNoSwap::EmitNativeCode(HParallelMove* parallel_move) {
   // to reduce the number of literal loads. Stack destinations are skipped since we won't be benefit
   // from changing the constant sources to stack locations.
   for (size_t i = 0; i < moves_.size(); ++i) {
-    MoveOperands* move = moves_[i];
-    Location destination = move->GetDestination();
+    MoveOperands* move        = moves_[i];
+    Location      destination = move->GetDestination();
     if (!move->IsEliminated() && !destination.IsStackSlot() && !destination.IsDoubleStackSlot()) {
       Location source = move->GetSource();
       EmitMove(i);
@@ -455,7 +451,7 @@ void ParallelMoveResolverNoSwap::PerformMove(size_t index) {
     // (scratch -> A)     # Add to pending_moves_, blocked by (A -> B).
     Location::Kind kind = source.GetKind();
     DCHECK_NE(kind, Location::kConstant);
-    Location scratch = AllocateScratchLocationFor(kind);
+    Location       scratch = AllocateScratchLocationFor(kind);
     // We only care about the move size.
     DataType::Type type = move->Is64BitMove() ? DataType::Type::kInt64 : DataType::Type::kInt32;
     // Perform (C -> scratch)
@@ -477,7 +473,7 @@ void ParallelMoveResolverNoSwap::PerformMove(size_t index) {
   // as early as possible.
   MoveOperands* pending_move;
   while ((pending_move = GetUnblockedPendingMove(source)) != nullptr) {
-    Location pending_source = pending_move->GetSource();
+    Location pending_source      = pending_move->GetSource();
     Location pending_destination = pending_move->GetDestination();
     // We do not depend on the pending move index. So just delete the move instead
     // of eliminating it to make the pending list cleaner.
@@ -520,8 +516,8 @@ void ParallelMoveResolverNoSwap::UpdateMoveSource(Location from, Location to) {
   }
 }
 
-void ParallelMoveResolverNoSwap::AddPendingMove(Location source,
-                                                Location destination,
+void ParallelMoveResolverNoSwap::AddPendingMove(Location       source,
+                                                Location       destination,
                                                 DataType::Type type) {
   pending_moves_.push_back(new (allocator_) MoveOperands(source, destination, type, nullptr));
 }

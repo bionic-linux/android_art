@@ -50,9 +50,9 @@ class Location : public ValueObject {
   };
 
   enum Kind {
-    kInvalid = 0,
-    kConstant = 1,
-    kStackSlot = 2,  // 32bit stack slot.
+    kInvalid         = 0,
+    kConstant        = 1,
+    kStackSlot       = 2,  // 32bit stack slot.
     kDoubleStackSlot = 3,  // 64bit stack slot.
 
     kRegister = 4,  // Core register.
@@ -247,7 +247,7 @@ class Location : public ValueObject {
 
   static Location StackSlot(intptr_t stack_index) {
     uintptr_t payload = EncodeStackIndex(stack_index);
-    Location loc(kStackSlot, payload);
+    Location  loc(kStackSlot, payload);
     // Ensure that sign is preserved.
     DCHECK_EQ(loc.GetStackIndex(), stack_index);
     return loc;
@@ -259,7 +259,7 @@ class Location : public ValueObject {
 
   static Location DoubleStackSlot(intptr_t stack_index) {
     uintptr_t payload = EncodeStackIndex(stack_index);
-    Location loc(kDoubleStackSlot, payload);
+    Location  loc(kDoubleStackSlot, payload);
     // Ensure that sign is preserved.
     DCHECK_EQ(loc.GetStackIndex(), stack_index);
     return loc;
@@ -271,7 +271,7 @@ class Location : public ValueObject {
 
   static Location SIMDStackSlot(intptr_t stack_index) {
     uintptr_t payload = EncodeStackIndex(stack_index);
-    Location loc(kSIMDStackSlot, payload);
+    Location  loc(kSIMDStackSlot, payload);
     // Ensure that sign is preserved.
     DCHECK_EQ(loc.GetStackIndex(), stack_index);
     return loc;
@@ -284,10 +284,8 @@ class Location : public ValueObject {
   static Location StackSlotByNumOfSlots(size_t num_of_slots, int spill_slot) {
     DCHECK_NE(num_of_slots, 0u);
     switch (num_of_slots) {
-      case 1u:
-        return Location::StackSlot(spill_slot);
-      case 2u:
-        return Location::DoubleStackSlot(spill_slot);
+      case 1u: return Location::StackSlot(spill_slot);
+      case 2u: return Location::DoubleStackSlot(spill_slot);
       default:
         // Assume all other stack slot sizes correspond to SIMD slot size.
         return Location::SIMDStackSlot(spill_slot);
@@ -350,8 +348,7 @@ class Location : public ValueObject {
       case kRegisterPair: return "RP";
       case kFpuRegisterPair: return "FP";
       case kDoNotUse5:  // fall-through
-      case kDoNotUse9:
-        LOG(FATAL) << "Should not use this location kind";
+      case kDoNotUse9: LOG(FATAL) << "Should not use this location kind";
     }
     UNREACHABLE();
   }
@@ -412,28 +409,27 @@ class Location : public ValueObject {
 
  private:
   // Number of bits required to encode Kind value.
-  static constexpr uint32_t kBitsForKind = 4;
-  static constexpr uint32_t kBitsForPayload = kBitsPerIntPtrT - kBitsForKind;
+  static constexpr uint32_t  kBitsForKind          = 4;
+  static constexpr uint32_t  kBitsForPayload       = kBitsPerIntPtrT - kBitsForKind;
   static constexpr uintptr_t kLocationConstantMask = 0x3;
 
   explicit Location(uintptr_t value) : value_(value) {}
 
-  Location(Kind kind, uintptr_t payload)
-      : value_(KindField::Encode(kind) | PayloadField::Encode(payload)) {}
+  Location(Kind kind, uintptr_t payload) :
+      value_(KindField::Encode(kind) | PayloadField::Encode(payload)) {}
 
   uintptr_t GetPayload() const {
     return PayloadField::Decode(value_);
   }
 
-  typedef BitField<Kind, 0, kBitsForKind> KindField;
+  typedef BitField<Kind, 0, kBitsForKind>                    KindField;
   typedef BitField<uintptr_t, kBitsForKind, kBitsForPayload> PayloadField;
 
   // Layout for kUnallocated locations payload.
   typedef BitField<Policy, 0, 3> PolicyField;
 
   // Layout for stack slots.
-  static const intptr_t kStackIndexBias =
-      static_cast<intptr_t>(1) << (kBitsForPayload - 1);
+  static const intptr_t kStackIndexBias = static_cast<intptr_t>(1) << (kBitsForPayload - 1);
 
   // Location either contains kind and payload fields or a tagged handle for
   // a constant locations. Values of enumeration Kind are selected in such a
@@ -445,8 +441,12 @@ std::ostream& operator<<(std::ostream& os, Location::Policy rhs);
 
 class RegisterSet : public ValueObject {
  public:
-  static RegisterSet Empty() { return RegisterSet(); }
-  static RegisterSet AllFpu() { return RegisterSet(0, -1); }
+  static RegisterSet Empty() {
+    return RegisterSet();
+  }
+  static RegisterSet AllFpu() {
+    return RegisterSet(0, -1);
+  }
 
   void Add(Location loc) {
     if (loc.IsRegister()) {
@@ -481,17 +481,14 @@ class RegisterSet : public ValueObject {
   bool OverlapsRegisters(Location out) {
     DCHECK(out.IsRegisterKind());
     switch (out.GetKind()) {
-      case Location::Kind::kRegister:
-        return ContainsCoreRegister(out.reg());
-      case Location::Kind::kFpuRegister:
-        return ContainsFloatingPointRegister(out.reg());
+      case Location::Kind::kRegister: return ContainsCoreRegister(out.reg());
+      case Location::Kind::kFpuRegister: return ContainsFloatingPointRegister(out.reg());
       case Location::Kind::kRegisterPair:
         return ContainsCoreRegister(out.low()) || ContainsCoreRegister(out.high());
       case Location::Kind::kFpuRegisterPair:
         return ContainsFloatingPointRegister(out.low()) ||
                ContainsFloatingPointRegister(out.high());
-      default:
-        return false;
+      default: return false;
     }
   }
 
@@ -527,16 +524,11 @@ static constexpr bool kIntrinsified = true;
  */
 class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
  public:
-  enum CallKind {
-    kNoCall,
-    kCallOnMainAndSlowPath,
-    kCallOnSlowPath,
-    kCallOnMainOnly
-  };
+  enum CallKind { kNoCall, kCallOnMainAndSlowPath, kCallOnSlowPath, kCallOnMainOnly };
 
   explicit LocationSummary(HInstruction* instruction,
-                           CallKind call_kind = kNoCall,
-                           bool intrinsified = false);
+                           CallKind      call_kind    = kNoCall,
+                           bool          intrinsified = false);
 
   void SetInAt(uint32_t at, Location location) {
     inputs_[at] = location;
@@ -557,7 +549,7 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   void SetOut(Location location, Location::OutputOverlap overlaps = Location::kOutputOverlap) {
     DCHECK(output_.IsInvalid());
     output_overlaps_ = overlaps;
-    output_ = location;
+    output_          = location;
   }
 
   void UpdateOut(Location location) {
@@ -592,9 +584,13 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
     return temps_.size();
   }
 
-  bool HasTemps() const { return !temps_.empty(); }
+  bool HasTemps() const {
+    return !temps_.empty();
+  }
 
-  Location Out() const { return output_; }
+  Location Out() const {
+    return output_;
+  }
 
   bool CanCall() const {
     return call_kind_ != kNoCall;
@@ -623,7 +619,7 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   void SetCustomSlowPathCallerSaves(const RegisterSet& caller_saves) {
     DCHECK(OnlyCallsOnSlowPath());
     has_custom_slow_path_calling_convention_ = true;
-    custom_slow_path_caller_saves_ = caller_saves;
+    custom_slow_path_caller_saves_           = caller_saves;
   }
 
   bool HasCustomSlowPathCallingConvention() const {
@@ -672,18 +668,14 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   }
 
   bool OutputUsesSameAs(uint32_t input_index) const {
-    return (input_index == 0)
-        && output_.IsUnallocated()
-        && (output_.GetPolicy() == Location::kSameAsFirstInput);
+    return (input_index == 0) && output_.IsUnallocated() &&
+           (output_.GetPolicy() == Location::kSameAsFirstInput);
   }
 
   bool IsFixedInput(uint32_t input_index) const {
     Location input = inputs_[input_index];
-    return input.IsRegister()
-        || input.IsFpuRegister()
-        || input.IsPair()
-        || input.IsStackSlot()
-        || input.IsDoubleStackSlot();
+    return input.IsRegister() || input.IsFpuRegister() || input.IsPair() || input.IsStackSlot() ||
+           input.IsDoubleStackSlot();
   }
 
   bool OutputCanOverlapWithInputs() const {
@@ -695,22 +687,22 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   }
 
  private:
-  LocationSummary(HInstruction* instruction,
-                  CallKind call_kind,
-                  bool intrinsified,
+  LocationSummary(HInstruction*   instruction,
+                  CallKind        call_kind,
+                  bool            intrinsified,
                   ArenaAllocator* allocator);
 
-  ArenaVector<Location> inputs_;
-  ArenaVector<Location> temps_;
-  const CallKind call_kind_;
+  ArenaVector<Location>   inputs_;
+  ArenaVector<Location>   temps_;
+  const CallKind          call_kind_;
   // Whether these are locations for an intrinsified call.
-  const bool intrinsified_;
+  const bool              intrinsified_;
   // Whether the slow path has default or custom calling convention.
-  bool has_custom_slow_path_calling_convention_;
+  bool                    has_custom_slow_path_calling_convention_;
   // Whether the output overlaps with any of the inputs. If it overlaps, then it cannot
   // share the same register as the inputs.
   Location::OutputOverlap output_overlaps_;
-  Location output_;
+  Location                output_;
 
   // Mask of objects that live in the stack.
   BitVector* stack_mask_;

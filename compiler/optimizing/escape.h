@@ -33,7 +33,7 @@ class EscapeVisitor {
  public:
   virtual ~EscapeVisitor() {}
   virtual bool Visit(HInstruction* escape) = 0;
-  bool operator()(HInstruction* user) {
+  bool         operator()(HInstruction* user) {
     return Visit(user);
   }
 };
@@ -61,7 +61,7 @@ class NoEscapeCheck {
  public:
   virtual ~NoEscapeCheck() {}
   virtual bool NoEscape(HInstruction* reference, HInstruction* user) = 0;
-  bool operator()(HInstruction* ref, HInstruction* user) {
+  bool         operator()(HInstruction* ref, HInstruction* user) {
     return NoEscape(ref, user);
   }
 };
@@ -104,11 +104,11 @@ class LambdaNoEscapeCheck final : public NoEscapeCheck {
  * value false means the client cannot provide a definite answer and built-in escape
  * analysis is applied to the user instead.
  */
-void CalculateEscape(HInstruction* reference,
+void CalculateEscape(HInstruction*  reference,
                      NoEscapeCheck& no_escape,
-                     /*out*/ bool* is_singleton,
-                     /*out*/ bool* is_singleton_and_not_returned,
-                     /*out*/ bool* is_singleton_and_not_deopt_visible);
+                     /*out*/ bool*  is_singleton,
+                     /*out*/ bool*  is_singleton_and_not_returned,
+                     /*out*/ bool*  is_singleton_and_not_deopt_visible);
 
 inline void CalculateEscape(HInstruction* reference,
                             bool (*no_escape_fn)(HInstruction*, HInstruction*),

@@ -1,4 +1,4 @@
-  /*
+/*
  * Copyright (C) 2014 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,20 +26,20 @@ namespace art {
 // Verify that Location is trivially copyable.
 static_assert(std::is_trivially_copyable<Location>::value, "Location should be trivially copyable");
 
-LocationSummary::LocationSummary(HInstruction* instruction,
-                                 CallKind call_kind,
-                                 bool intrinsified,
-                                 ArenaAllocator* allocator)
-    : inputs_(instruction->InputCount(), allocator->Adapter(kArenaAllocLocationSummary)),
-      temps_(allocator->Adapter(kArenaAllocLocationSummary)),
-      call_kind_(call_kind),
-      intrinsified_(intrinsified),
-      has_custom_slow_path_calling_convention_(false),
-      output_overlaps_(Location::kOutputOverlap),
-      stack_mask_(nullptr),
-      register_mask_(0),
-      live_registers_(RegisterSet::Empty()),
-      custom_slow_path_caller_saves_(RegisterSet::Empty()) {
+LocationSummary::LocationSummary(HInstruction*   instruction,
+                                 CallKind        call_kind,
+                                 bool            intrinsified,
+                                 ArenaAllocator* allocator) :
+    inputs_(instruction->InputCount(), allocator->Adapter(kArenaAllocLocationSummary)),
+    temps_(allocator->Adapter(kArenaAllocLocationSummary)),
+    call_kind_(call_kind),
+    intrinsified_(intrinsified),
+    has_custom_slow_path_calling_convention_(false),
+    output_overlaps_(Location::kOutputOverlap),
+    stack_mask_(nullptr),
+    register_mask_(0),
+    live_registers_(RegisterSet::Empty()),
+    custom_slow_path_caller_saves_(RegisterSet::Empty()) {
   instruction->SetLocations(this);
 
   if (NeedsSafepoint()) {
@@ -47,18 +47,14 @@ LocationSummary::LocationSummary(HInstruction* instruction,
   }
 }
 
-LocationSummary::LocationSummary(HInstruction* instruction,
-                                 CallKind call_kind,
-                                 bool intrinsified)
-    : LocationSummary(instruction,
-                      call_kind,
-                      intrinsified,
-                      instruction->GetBlock()->GetGraph()->GetAllocator()) {}
+LocationSummary::LocationSummary(HInstruction* instruction, CallKind call_kind, bool intrinsified) :
+    LocationSummary(
+        instruction, call_kind, intrinsified, instruction->GetBlock()->GetGraph()->GetAllocator()) {
+}
 
 Location Location::RegisterOrConstant(HInstruction* instruction) {
-  return instruction->IsConstant()
-      ? Location::ConstantLocation(instruction->AsConstant())
-      : Location::RequiresRegister();
+  return instruction->IsConstant() ? Location::ConstantLocation(instruction->AsConstant()) :
+                                     Location::RequiresRegister();
 }
 
 Location Location::RegisterOrInt32Constant(HInstruction* instruction) {
@@ -84,15 +80,13 @@ Location Location::FpuRegisterOrInt32Constant(HInstruction* instruction) {
 }
 
 Location Location::ByteRegisterOrConstant(int reg, HInstruction* instruction) {
-  return instruction->IsConstant()
-      ? Location::ConstantLocation(instruction->AsConstant())
-      : Location::RegisterLocation(reg);
+  return instruction->IsConstant() ? Location::ConstantLocation(instruction->AsConstant()) :
+                                     Location::RegisterLocation(reg);
 }
 
 Location Location::FpuRegisterOrConstant(HInstruction* instruction) {
-  return instruction->IsConstant()
-      ? Location::ConstantLocation(instruction->AsConstant())
-      : Location::RequiresFpuRegister();
+  return instruction->IsConstant() ? Location::ConstantLocation(instruction->AsConstant()) :
+                                     Location::RequiresFpuRegister();
 }
 
 std::ostream& operator<<(std::ostream& os, const Location& location) {

@@ -34,11 +34,13 @@ static constexpr int kNoRegister = -1;
 
 class BlockInfo : public ArenaObject<kArenaAllocSsaLiveness> {
  public:
-  BlockInfo(ScopedArenaAllocator* allocator, const HBasicBlock& block, size_t number_of_ssa_values)
-      : block_(block),
-        live_in_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness),
-        live_out_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness),
-        kill_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness) {
+  BlockInfo(ScopedArenaAllocator* allocator,
+            const HBasicBlock&    block,
+            size_t                number_of_ssa_values) :
+      block_(block),
+      live_in_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness),
+      live_out_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness),
+      kill_(allocator, number_of_ssa_values, false, kArenaAllocSsaLiveness) {
     UNUSED(block_);
     live_in_.ClearAllBits();
     live_out_.ClearAllBits();
@@ -47,9 +49,9 @@ class BlockInfo : public ArenaObject<kArenaAllocSsaLiveness> {
 
  private:
   const HBasicBlock& block_;
-  ArenaBitVector live_in_;
-  ArenaBitVector live_out_;
-  ArenaBitVector kill_;
+  ArenaBitVector     live_in_;
+  ArenaBitVector     live_out_;
+  ArenaBitVector     kill_;
 
   friend class SsaLivenessAnalysis;
 
@@ -67,13 +69,19 @@ class LiveRange final : public ArenaObject<kArenaAllocSsaLiveness> {
     DCHECK(next_ == nullptr || next_->GetStart() > GetEnd());
   }
 
-  size_t GetStart() const { return start_; }
-  size_t GetEnd() const { return end_; }
-  LiveRange* GetNext() const { return next_; }
+  size_t GetStart() const {
+    return start_;
+  }
+  size_t GetEnd() const {
+    return end_;
+  }
+  LiveRange* GetNext() const {
+    return next_;
+  }
 
   bool IntersectsWith(const LiveRange& other) const {
-    return (start_ >= other.start_ && start_ < other.end_)
-        || (other.start_ >= start_ && other.start_ < end_);
+    return (start_ >= other.start_ && start_ < other.end_) ||
+           (other.start_ >= start_ && other.start_ < end_);
   }
 
   bool IsBefore(const LiveRange& other) const {
@@ -85,8 +93,8 @@ class LiveRange final : public ArenaObject<kArenaAllocSsaLiveness> {
   }
 
   LiveRange* Dup(ScopedArenaAllocator* allocator) const {
-    return new (allocator) LiveRange(
-        start_, end_, next_ == nullptr ? nullptr : next_->Dup(allocator));
+    return new (allocator)
+        LiveRange(start_, end_, next_ == nullptr ? nullptr : next_->Dup(allocator));
   }
 
   LiveRange* GetLastRange() {
@@ -94,8 +102,8 @@ class LiveRange final : public ArenaObject<kArenaAllocSsaLiveness> {
   }
 
  private:
-  size_t start_;
-  size_t end_;
+  size_t     start_;
+  size_t     end_;
   LiveRange* next_;
 
   friend class LiveInterval;
@@ -109,25 +117,29 @@ class LiveRange final : public ArenaObject<kArenaAllocSsaLiveness> {
 class UsePosition : public ArenaObject<kArenaAllocSsaLiveness>,
                     public IntrusiveForwardListNode<UsePosition> {
  public:
-  UsePosition(HInstruction* user, size_t input_index, size_t position)
-      : user_(user),
-        input_index_(input_index),
-        position_(position) {
+  UsePosition(HInstruction* user, size_t input_index, size_t position) :
+      user_(user), input_index_(input_index), position_(position) {}
+
+  explicit UsePosition(size_t position) :
+      user_(nullptr),
+      input_index_(kNoInput),
+      position_(dchecked_integral_cast<uint32_t>(position)) {}
+
+  size_t GetPosition() const {
+    return position_;
   }
 
-  explicit UsePosition(size_t position)
-      : user_(nullptr),
-        input_index_(kNoInput),
-        position_(dchecked_integral_cast<uint32_t>(position)) {
+  HInstruction* GetUser() const {
+    return user_;
   }
 
-  size_t GetPosition() const { return position_; }
+  bool IsSynthesized() const {
+    return user_ == nullptr;
+  }
 
-  HInstruction* GetUser() const { return user_; }
-
-  bool IsSynthesized() const { return user_ == nullptr; }
-
-  size_t GetInputIndex() const { return input_index_; }
+  size_t GetInputIndex() const {
+    return input_index_;
+  }
 
   void Dump(std::ostream& stream) const {
     stream << position_;
@@ -142,7 +154,8 @@ class UsePosition : public ArenaObject<kArenaAllocSsaLiveness>,
   }
 
   bool RequiresRegister() const {
-    if (IsSynthesized()) return false;
+    if (IsSynthesized())
+      return false;
     Location location = GetUser()->GetLocations()->InAt(GetInputIndex());
     return location.IsUnallocated() && location.RequiresRegisterKind();
   }
@@ -151,8 +164,8 @@ class UsePosition : public ArenaObject<kArenaAllocSsaLiveness>,
   static constexpr uint32_t kNoInput = static_cast<uint32_t>(-1);
 
   HInstruction* const user_;
-  const size_t input_index_;
-  const size_t position_;
+  const size_t        input_index_;
+  const size_t        position_;
 
   DISALLOW_COPY_AND_ASSIGN(UsePosition);
 };
@@ -164,19 +177,21 @@ using UsePositionList = IntrusiveForwardList<UsePosition>;
 class EnvUsePosition : public ArenaObject<kArenaAllocSsaLiveness>,
                        public IntrusiveForwardListNode<EnvUsePosition> {
  public:
-  EnvUsePosition(HEnvironment* environment,
-                 size_t input_index,
-                 size_t position)
-      : environment_(environment),
-        input_index_(input_index),
-        position_(position) {
+  EnvUsePosition(HEnvironment* environment, size_t input_index, size_t position) :
+      environment_(environment), input_index_(input_index), position_(position) {
     DCHECK(environment != nullptr);
   }
 
-  size_t GetPosition() const { return position_; }
+  size_t GetPosition() const {
+    return position_;
+  }
 
-  HEnvironment* GetEnvironment() const { return environment_; }
-  size_t GetInputIndex() const { return input_index_; }
+  HEnvironment* GetEnvironment() const {
+    return environment_;
+  }
+  size_t GetInputIndex() const {
+    return input_index_;
+  }
 
   void Dump(std::ostream& stream) const {
     stream << position_;
@@ -188,8 +203,8 @@ class EnvUsePosition : public ArenaObject<kArenaAllocSsaLiveness>,
 
  private:
   HEnvironment* const environment_;
-  const size_t input_index_;
-  const size_t position_;
+  const size_t        input_index_;
+  const size_t        position_;
 
   DISALLOW_COPY_AND_ASSIGN(EnvUsePosition);
 };
@@ -205,30 +220,26 @@ inline Iterator FindUseAtOrAfterPosition(Iterator first, Iterator last, size_t p
       first, last, [position](const value_type& use) { return use.GetPosition() >= position; });
   // Check that the processed range is sorted. Do not check the rest of the range to avoid
   // increasing the complexity of callers from O(n) to O(n^2).
-  DCHECK(std::is_sorted(
-      first,
-      ret,
-      [](const value_type& lhs, const value_type& rhs) {
-          return lhs.GetPosition() < rhs.GetPosition();
-      }));
+  DCHECK(std::is_sorted(first, ret, [](const value_type& lhs, const value_type& rhs) {
+    return lhs.GetPosition() < rhs.GetPosition();
+  }));
   return ret;
 }
 
 template <typename Iterator>
 inline IterationRange<Iterator> FindMatchingUseRange(Iterator first,
                                                      Iterator last,
-                                                     size_t position_begin,
-                                                     size_t position_end) {
+                                                     size_t   position_begin,
+                                                     size_t   position_end) {
   Iterator begin = FindUseAtOrAfterPosition(first, last, position_begin);
-  Iterator end = FindUseAtOrAfterPosition(begin, last, position_end);
+  Iterator end   = FindUseAtOrAfterPosition(begin, last, position_end);
   return MakeIterationRange(begin, end);
 }
 
 class SafepointPosition : public ArenaObject<kArenaAllocSsaLiveness> {
  public:
-  explicit SafepointPosition(HInstruction* instruction)
-      : instruction_(instruction),
-        next_(nullptr) {}
+  explicit SafepointPosition(HInstruction* instruction) :
+      instruction_(instruction), next_(nullptr) {}
 
   static size_t ComputePosition(HInstruction* instruction) {
     // We special case instructions emitted at use site, as their
@@ -265,7 +276,7 @@ class SafepointPosition : public ArenaObject<kArenaAllocSsaLiveness> {
 
  private:
   HInstruction* const instruction_;
-  SafepointPosition* next_;
+  SafepointPosition*  next_;
 
   DISALLOW_COPY_AND_ASSIGN(SafepointPosition);
 };
@@ -277,14 +288,14 @@ class SafepointPosition : public ArenaObject<kArenaAllocSsaLiveness> {
 class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
  public:
   static LiveInterval* MakeInterval(ScopedArenaAllocator* allocator,
-                                    DataType::Type type,
-                                    HInstruction* instruction = nullptr) {
+                                    DataType::Type        type,
+                                    HInstruction*         instruction = nullptr) {
     return new (allocator) LiveInterval(allocator, type, instruction);
   }
 
   static LiveInterval* MakeFixedInterval(ScopedArenaAllocator* allocator,
-                                         int reg,
-                                         DataType::Type type) {
+                                         int                   reg,
+                                         DataType::Type        type) {
     return new (allocator) LiveInterval(allocator, type, nullptr, true, reg, false);
   }
 
@@ -292,17 +303,23 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     return new (allocator) LiveInterval(allocator, type, nullptr, false, kNoRegister, true);
   }
 
-  bool IsFixed() const { return is_fixed_; }
-  bool IsTemp() const { return is_temp_; }
+  bool IsFixed() const {
+    return is_fixed_;
+  }
+  bool IsTemp() const {
+    return is_temp_;
+  }
   // This interval is the result of a split.
-  bool IsSplit() const { return parent_ != this; }
+  bool IsSplit() const {
+    return parent_ != this;
+  }
 
   void AddTempUse(HInstruction* instruction, size_t temp_index) {
     DCHECK(IsTemp());
     DCHECK(GetUses().empty()) << "A temporary can only have one user";
     DCHECK(GetEnvironmentUses().empty()) << "A temporary cannot have environment user";
-    size_t position = instruction->GetLifetimePosition();
-    UsePosition* new_use = new (allocator_) UsePosition(instruction, temp_index, position);
+    size_t       position = instruction->GetLifetimePosition();
+    UsePosition* new_use  = new (allocator_) UsePosition(instruction, temp_index, position);
     uses_.push_front(*new_use);
     AddRange(position, position + 1);
   }
@@ -312,10 +329,10 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   // is specified, the use will be recorded at `actual_user`'s lifetime position.
   void AddUse(HInstruction* instruction,
               HEnvironment* environment,
-              size_t input_index,
+              size_t        input_index,
               HInstruction* actual_user = nullptr) {
-    bool is_environment = (environment != nullptr);
-    LocationSummary* locations = instruction->GetLocations();
+    bool             is_environment = (environment != nullptr);
+    LocationSummary* locations      = instruction->GetLocations();
     if (actual_user == nullptr) {
       actual_user = instruction;
     }
@@ -339,8 +356,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       AddBackEdgeUses(*instruction->GetBlock());
     }
 
-    if ((!uses_.empty()) &&
-        (uses_.front().GetUser() == actual_user) &&
+    if ((!uses_.empty()) && (uses_.front().GetUser() == actual_user) &&
         (uses_.front().GetPosition() < position)) {
       // The user uses the instruction multiple times, and one use dies before the other.
       // We update the use list so that the latter is first.
@@ -425,12 +441,12 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     DCHECK(first_range_ != nullptr);
     DCHECK_LE(start, first_range_->GetStart());
     // Find the range that covers the positions after the loop.
-    LiveRange* after_loop = first_range_;
+    LiveRange* after_loop   = first_range_;
     LiveRange* last_in_loop = nullptr;
     while (after_loop != nullptr && after_loop->GetEnd() < end) {
       DCHECK_LE(start, after_loop->GetStart());
       last_in_loop = after_loop;
-      after_loop = after_loop->GetNext();
+      after_loop   = after_loop->GetNext();
     }
     if (after_loop == nullptr) {
       // Uses are only in the loop.
@@ -444,18 +460,22 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       // The use after the loop is after a lifetime hole.
       DCHECK(last_in_loop != nullptr);
       first_range_ = range_search_start_ = last_in_loop;
-      first_range_->start_ = start;
-      first_range_->end_ = end;
+      first_range_->start_               = start;
+      first_range_->end_                 = end;
     }
   }
 
-  bool HasSpillSlot() const { return spill_slot_ != kNoSpillSlot; }
+  bool HasSpillSlot() const {
+    return spill_slot_ != kNoSpillSlot;
+  }
   void SetSpillSlot(int slot) {
     DCHECK(!is_fixed_);
     DCHECK(!is_temp_);
     spill_slot_ = slot;
   }
-  int GetSpillSlot() const { return spill_slot_; }
+  int GetSpillSlot() const {
+    return spill_slot_;
+  }
 
   void SetFrom(size_t from) {
     if (first_range_ != nullptr) {
@@ -469,19 +489,35 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     }
   }
 
-  LiveInterval* GetParent() const { return parent_; }
+  LiveInterval* GetParent() const {
+    return parent_;
+  }
 
   // Returns whether this interval is the parent interval, that is, the interval
   // that starts where the HInstruction is defined.
-  bool IsParent() const { return parent_ == this; }
+  bool IsParent() const {
+    return parent_ == this;
+  }
 
-  LiveRange* GetFirstRange() const { return first_range_; }
-  LiveRange* GetLastRange() const { return last_range_; }
+  LiveRange* GetFirstRange() const {
+    return first_range_;
+  }
+  LiveRange* GetLastRange() const {
+    return last_range_;
+  }
 
-  int GetRegister() const { return register_; }
-  void SetRegister(int reg) { register_ = reg; }
-  void ClearRegister() { register_ = kNoRegister; }
-  bool HasRegister() const { return register_ != kNoRegister; }
+  int GetRegister() const {
+    return register_;
+  }
+  void SetRegister(int reg) {
+    register_ = reg;
+  }
+  void ClearRegister() {
+    register_ = kNoRegister;
+  }
+  bool HasRegister() const {
+    return register_ != kNoRegister;
+  }
 
   bool IsDeadAt(size_t position) const {
     return GetEnd() <= position;
@@ -497,7 +533,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   // that, CoversSlow should be used instead.
   bool Covers(size_t position) {
     LiveRange* candidate = FindRangeAtOrAfter(position, range_search_start_);
-    range_search_start_ = candidate;
+    range_search_start_  = candidate;
     return (candidate != nullptr && candidate->GetStart() <= position);
   }
 
@@ -514,7 +550,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     // cache to improve performance.
     DCHECK(GetStart() <= current->GetStart() || IsFixed());
     LiveRange* other_range = current->first_range_;
-    LiveRange* my_range = FindRangeAtOrAfter(other_range->GetStart(), range_search_start_);
+    LiveRange* my_range    = FindRangeAtOrAfter(other_range->GetStart(), range_search_start_);
     if (my_range == nullptr) {
       return kNoLifetime;
     }
@@ -627,19 +663,19 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   }
 
   bool HasWillCallSafepoint() const {
-    for (SafepointPosition* safepoint = first_safepoint_;
-         safepoint != nullptr;
-         safepoint = safepoint->GetNext()) {
-      if (safepoint->GetLocations()->WillCall()) return true;
+    for (SafepointPosition* safepoint = first_safepoint_; safepoint != nullptr;
+         safepoint                    = safepoint->GetNext()) {
+      if (safepoint->GetLocations()->WillCall())
+        return true;
     }
     return false;
   }
 
   SafepointPosition* FindSafepointJustBefore(size_t position) const {
-    for (SafepointPosition* safepoint = first_safepoint_, *previous = nullptr;
-         safepoint != nullptr;
+    for (SafepointPosition *safepoint = first_safepoint_, *previous = nullptr; safepoint != nullptr;
          previous = safepoint, safepoint = safepoint->GetNext()) {
-      if (safepoint->GetPosition() >= position) return previous;
+      if (safepoint->GetPosition() >= position)
+        return previous;
     }
     return last_safepoint_;
   }
@@ -661,14 +697,14 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       return nullptr;
     }
 
-    LiveInterval* new_interval = new (allocator_) LiveInterval(allocator_, type_);
+    LiveInterval*      new_interval       = new (allocator_) LiveInterval(allocator_, type_);
     SafepointPosition* new_last_safepoint = FindSafepointJustBefore(position);
     if (new_last_safepoint == nullptr) {
       new_interval->first_safepoint_ = first_safepoint_;
-      new_interval->last_safepoint_ = last_safepoint_;
+      new_interval->last_safepoint_  = last_safepoint_;
       first_safepoint_ = last_safepoint_ = nullptr;
     } else if (last_safepoint_ != new_last_safepoint) {
-      new_interval->last_safepoint_ = last_safepoint_;
+      new_interval->last_safepoint_  = last_safepoint_;
       new_interval->first_safepoint_ = new_last_safepoint->GetNext();
       DCHECK(new_interval->first_safepoint_ != nullptr);
       last_safepoint_ = new_last_safepoint;
@@ -676,10 +712,10 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     }
 
     new_interval->next_sibling_ = next_sibling_;
-    next_sibling_ = new_interval;
-    new_interval->parent_ = parent_;
+    next_sibling_               = new_interval;
+    new_interval->parent_       = parent_;
 
-    LiveRange* current = first_range_;
+    LiveRange* current  = first_range_;
     LiveRange* previous = nullptr;
     // Iterate over the ranges, and either find a range that covers this position, or
     // two ranges in between this position (that is, the position is in a lifetime hole).
@@ -687,16 +723,16 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       if (position >= current->GetEnd()) {
         // Move to next range.
         previous = current;
-        current = current->next_;
+        current  = current->next_;
       } else if (position <= current->GetStart()) {
         // If the previous range did not cover this position, we know position is in
         // a lifetime hole. We can just break the first_range_ and last_range_ links
         // and return the new interval.
         DCHECK(previous != nullptr);
         DCHECK(current != first_range_);
-        new_interval->last_range_ = last_range_;
-        last_range_ = previous;
-        previous->next_ = nullptr;
+        new_interval->last_range_  = last_range_;
+        last_range_                = previous;
+        previous->next_            = nullptr;
         new_interval->first_range_ = current;
         if (range_search_start_ != nullptr && range_search_start_->GetEnd() >= current->GetEnd()) {
           // Search start point is inside `new_interval`. Change it to null
@@ -711,14 +747,14 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
         // range and make it the first range of the new interval.
         DCHECK(position < current->GetEnd() && position > current->GetStart());
         new_interval->last_range_ = last_range_;
-        last_range_ = new (allocator_) LiveRange(current->start_, position, nullptr);
+        last_range_               = new (allocator_) LiveRange(current->start_, position, nullptr);
         if (previous != nullptr) {
           previous->next_ = last_range_;
         } else {
           first_range_ = last_range_;
         }
         new_interval->first_range_ = current;
-        current->start_ = position;
+        current->start_            = position;
         if (range_search_start_ != nullptr && range_search_start_->GetEnd() >= current->GetEnd()) {
           // Search start point is inside `new_interval`. Change it to `last_range`
           // in the original interval. This is conservative but always correct.
@@ -769,7 +805,9 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   // the register currently assigned to this interval.
   void DumpWithContext(std::ostream& stream, const CodeGenerator& codegen) const;
 
-  LiveInterval* GetNextSibling() const { return next_sibling_; }
+  LiveInterval* GetNextSibling() const {
+    return next_sibling_;
+  }
   LiveInterval* GetLastSibling() {
     LiveInterval* result = this;
     while (result->next_sibling_ != nullptr) {
@@ -851,18 +889,18 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     DCHECK(IsParent());
     DCHECK(!HasHighInterval());
     DCHECK(!HasLowInterval());
-    high_or_low_interval_ = new (allocator_) LiveInterval(
-        allocator_, type_, defined_by_, false, kNoRegister, is_temp, true);
+    high_or_low_interval_ = new (allocator_)
+        LiveInterval(allocator_, type_, defined_by_, false, kNoRegister, is_temp, true);
     high_or_low_interval_->high_or_low_interval_ = this;
     if (first_range_ != nullptr) {
       high_or_low_interval_->first_range_ = first_range_->Dup(allocator_);
-      high_or_low_interval_->last_range_ = high_or_low_interval_->first_range_->GetLastRange();
+      high_or_low_interval_->last_range_  = high_or_low_interval_->first_range_->GetLastRange();
       high_or_low_interval_->range_search_start_ = high_or_low_interval_->first_range_;
     }
     auto pos = high_or_low_interval_->uses_.before_begin();
     for (const UsePosition& use : uses_) {
       UsePosition* new_use = use.Clone(allocator_);
-      pos = high_or_low_interval_->uses_.insert_after(pos, *new_use);
+      pos                  = high_or_low_interval_->uses_.insert_after(pos, *new_use);
     }
 
     auto env_pos = high_or_low_interval_->env_uses_.before_begin();
@@ -887,9 +925,8 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
         }
 
         // Check if both intervals have the same register of the same kind.
-        if (interval != nullptr
-            && interval->SameRegisterKind(*this)
-            && interval->GetRegister() == GetRegister()) {
+        if (interval != nullptr && interval->SameRegisterKind(*this) &&
+            interval->GetRegister() == GetRegister()) {
           return true;
         }
       }
@@ -917,9 +954,8 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
           interval = interval->GetNextSibling();
         }
 
-        if (interval != nullptr
-            && interval->SameRegisterKind(*this)
-            && interval->GetRegister() == GetRegister()) {
+        if (interval != nullptr && interval->SameRegisterKind(*this) &&
+            interval->GetRegister() == GetRegister()) {
           // We found the input that has the same register. Check if it is live after
           // `defined_by`_.
           return !interval->CoversSlow(defined_by_->GetLifetimePosition() + 1);
@@ -954,22 +990,20 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   bool DefinitionRequiresRegister() const {
     DCHECK(IsParent());
     LocationSummary* locations = defined_by_->GetLocations();
-    Location location = locations->Out();
+    Location         location  = locations->Out();
     // This interval is the first interval of the instruction. If the output
     // of the instruction requires a register, we return the position of that instruction
     // as the first register use.
     if (location.IsUnallocated()) {
-      if ((location.GetPolicy() == Location::kRequiresRegister)
-           || (location.GetPolicy() == Location::kSameAsFirstInput
-               && (locations->InAt(0).IsRegister()
-                   || locations->InAt(0).IsRegisterPair()
-                   || locations->InAt(0).GetPolicy() == Location::kRequiresRegister))) {
+      if ((location.GetPolicy() == Location::kRequiresRegister) ||
+          (location.GetPolicy() == Location::kSameAsFirstInput &&
+           (locations->InAt(0).IsRegister() || locations->InAt(0).IsRegisterPair() ||
+            locations->InAt(0).GetPolicy() == Location::kRequiresRegister))) {
         return true;
-      } else if ((location.GetPolicy() == Location::kRequiresFpuRegister)
-                 || (location.GetPolicy() == Location::kSameAsFirstInput
-                     && (locations->InAt(0).IsFpuRegister()
-                         || locations->InAt(0).IsFpuRegisterPair()
-                         || locations->InAt(0).GetPolicy() == Location::kRequiresFpuRegister))) {
+      } else if ((location.GetPolicy() == Location::kRequiresFpuRegister) ||
+                 (location.GetPolicy() == Location::kSameAsFirstInput &&
+                  (locations->InAt(0).IsFpuRegister() || locations->InAt(0).IsFpuRegisterPair() ||
+                   locations->InAt(0).GetPolicy() == Location::kRequiresFpuRegister))) {
         return true;
       }
     } else if (location.IsRegister() || location.IsRegisterPair()) {
@@ -980,30 +1014,30 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
 
  private:
   LiveInterval(ScopedArenaAllocator* allocator,
-               DataType::Type type,
-               HInstruction* defined_by = nullptr,
-               bool is_fixed = false,
-               int reg = kNoRegister,
-               bool is_temp = false,
-               bool is_high_interval = false)
-      : allocator_(allocator),
-        first_range_(nullptr),
-        last_range_(nullptr),
-        range_search_start_(nullptr),
-        first_safepoint_(nullptr),
-        last_safepoint_(nullptr),
-        uses_(),
-        env_uses_(),
-        type_(type),
-        next_sibling_(nullptr),
-        parent_(this),
-        register_(reg),
-        spill_slot_(kNoSpillSlot),
-        is_fixed_(is_fixed),
-        is_temp_(is_temp),
-        is_high_interval_(is_high_interval),
-        high_or_low_interval_(nullptr),
-        defined_by_(defined_by) {}
+               DataType::Type        type,
+               HInstruction*         defined_by       = nullptr,
+               bool                  is_fixed         = false,
+               int                   reg              = kNoRegister,
+               bool                  is_temp          = false,
+               bool                  is_high_interval = false) :
+      allocator_(allocator),
+      first_range_(nullptr),
+      last_range_(nullptr),
+      range_search_start_(nullptr),
+      first_safepoint_(nullptr),
+      last_safepoint_(nullptr),
+      uses_(),
+      env_uses_(),
+      type_(type),
+      next_sibling_(nullptr),
+      parent_(this),
+      register_(reg),
+      spill_slot_(kNoSpillSlot),
+      is_fixed_(is_fixed),
+      is_temp_(is_temp),
+      is_high_interval_(is_high_interval),
+      high_or_low_interval_(nullptr),
+      defined_by_(defined_by) {}
 
   // Searches for a LiveRange that either covers the given position or is the
   // first next LiveRange. Returns null if no such LiveRange exists. Ranges
@@ -1022,8 +1056,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     }
 
     LiveRange* range;
-    for (range = search_start;
-         range != nullptr && range->GetEnd() <= position;
+    for (range = search_start; range != nullptr && range->GetEnd() <= position;
          range = range->GetNext()) {
       continue;
     }
@@ -1040,7 +1073,8 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
       if ((use_position == position) && use.IsSynthesized()) {
         return true;
       }
-      if (use_position > position) break;
+      if (use_position > position)
+        break;
     }
     return false;
   }
@@ -1059,11 +1093,9 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
     // uses at the head of the `uses_` list. Because below
     // we iterate from inner-most to outer-most, which is in increasing liveness order,
     // we need to add subsequent entries after the last inserted entry.
-    const UsePositionList::iterator old_begin = uses_.begin();
-    UsePositionList::iterator insert_pos = uses_.before_begin();
-    for (HLoopInformationOutwardIterator it(block_at_use);
-         !it.Done();
-         it.Advance()) {
+    const UsePositionList::iterator old_begin  = uses_.begin();
+    UsePositionList::iterator       insert_pos = uses_.before_begin();
+    for (HLoopInformationOutwardIterator it(block_at_use); !it.Done(); it.Advance()) {
       HLoopInformation* current = it.Current();
       if (GetDefinedBy()->GetLifetimePosition() >= current->GetHeader()->GetLifetimeStart()) {
         // This interval is defined in the loop. We can stop going outward.
@@ -1082,13 +1114,13 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
         break;
       }
 
-      DCHECK(insert_pos != uses_.before_begin()
-             ? back_edge_use_position > insert_pos->GetPosition()
-             : current == block_at_use.GetLoopInformation())
+      DCHECK(insert_pos != uses_.before_begin() ?
+                 back_edge_use_position > insert_pos->GetPosition() :
+                 current == block_at_use.GetLoopInformation())
           << std::distance(uses_.before_begin(), insert_pos);
 
       UsePosition* new_use = new (allocator_) UsePosition(back_edge_use_position);
-      insert_pos = uses_.insert_after(insert_pos, *new_use);
+      insert_pos           = uses_.insert_after(insert_pos, *new_use);
     }
   }
 
@@ -1108,7 +1140,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   SafepointPosition* last_safepoint_;
 
   // Uses of this interval. Only the parent interval keeps these lists.
-  UsePositionList uses_;
+  UsePositionList    uses_;
   EnvUsePositionList env_uses_;
 
   // The instruction type this interval corresponds to.
@@ -1142,7 +1174,7 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
   // The instruction represented by this interval.
   HInstruction* const defined_by_;
 
-  static constexpr int kNoRegister = -1;
+  static constexpr int kNoRegister  = -1;
   static constexpr int kNoSpillSlot = -1;
 
   ART_FRIEND_TEST(RegisterAllocatorTest, SpillInactive);
@@ -1172,17 +1204,14 @@ class LiveInterval : public ArenaObject<kArenaAllocSsaLiveness> {
  */
 class SsaLivenessAnalysis : public ValueObject {
  public:
-  SsaLivenessAnalysis(HGraph* graph, CodeGenerator* codegen, ScopedArenaAllocator* allocator)
-      : graph_(graph),
-        codegen_(codegen),
-        allocator_(allocator),
-        block_infos_(graph->GetBlocks().size(),
-                     nullptr,
-                     allocator_->Adapter(kArenaAllocSsaLiveness)),
-        instructions_from_ssa_index_(allocator_->Adapter(kArenaAllocSsaLiveness)),
-        instructions_from_lifetime_position_(allocator_->Adapter(kArenaAllocSsaLiveness)),
-        number_of_ssa_values_(0) {
-  }
+  SsaLivenessAnalysis(HGraph* graph, CodeGenerator* codegen, ScopedArenaAllocator* allocator) :
+      graph_(graph),
+      codegen_(codegen),
+      allocator_(allocator),
+      block_infos_(graph->GetBlocks().size(), nullptr, allocator_->Adapter(kArenaAllocSsaLiveness)),
+      instructions_from_ssa_index_(allocator_->Adapter(kArenaAllocSsaLiveness)),
+      instructions_from_lifetime_position_(allocator_->Adapter(kArenaAllocSsaLiveness)),
+      number_of_ssa_values_(0) {}
 
   void Analyze();
 
@@ -1268,10 +1297,10 @@ class SsaLivenessAnalysis : public ValueObject {
 
   static void ProcessEnvironment(HInstruction* instruction,
                                  HInstruction* actual_user,
-                                 BitVector* live_in);
+                                 BitVector*    live_in);
   static void RecursivelyProcessInputs(HInstruction* instruction,
                                        HInstruction* actual_user,
-                                       BitVector* live_in);
+                                       BitVector*    live_in);
 
   // Returns whether `instruction` in an HEnvironment held by `env_holder`
   // should be kept live by the HEnvironment.
@@ -1279,16 +1308,21 @@ class SsaLivenessAnalysis : public ValueObject {
     DCHECK(instruction != nullptr);
     // A value that's not live in compiled code may still be needed in interpreter,
     // due to code motion, etc.
-    if (env_holder->IsDeoptimize()) return true;
+    if (env_holder->IsDeoptimize())
+      return true;
     // A value live at a throwing instruction in a try block may be copied by
     // the exception handler to its location at the top of the catch block.
-    if (env_holder->CanThrowIntoCatchBlock()) return true;
+    if (env_holder->CanThrowIntoCatchBlock())
+      return true;
     HGraph* graph = instruction->GetBlock()->GetGraph();
-    if (graph->IsDebuggable()) return true;
+    if (graph->IsDebuggable())
+      return true;
     // When compiling in OSR mode, all loops in the compiled method may be entered
     // from the interpreter via SuspendCheck; thus we need to preserve the environment.
-    if (env_holder->IsSuspendCheck() && graph->IsCompilingOsr()) return true;
-    if (graph -> IsDeadReferenceSafe()) return false;
+    if (env_holder->IsSuspendCheck() && graph->IsCompilingOsr())
+      return true;
+    if (graph->IsDeadReferenceSafe())
+      return false;
     return instruction->GetType() == DataType::Type::kReference;
   }
 
@@ -1309,7 +1343,7 @@ class SsaLivenessAnalysis : public ValueObject {
     }
   }
 
-  HGraph* const graph_;
+  HGraph* const        graph_;
   CodeGenerator* const codegen_;
 
   // Use a local ScopedArenaAllocator for allocating memory.
@@ -1323,7 +1357,7 @@ class SsaLivenessAnalysis : public ValueObject {
 
   // Temporary array used when inserting moves in the graph.
   ScopedArenaVector<HInstruction*> instructions_from_lifetime_position_;
-  size_t number_of_ssa_values_;
+  size_t                           number_of_ssa_values_;
 
   ART_FRIEND_TEST(RegisterAllocatorTest, SpillInactive);
   ART_FRIEND_TEST(RegisterAllocatorTest, FreeUntil);

@@ -41,8 +41,7 @@ void VisitEscapes(HInstruction* reference, EscapeVisitor& escape_visitor) {
       if (!escape_visitor(user)) {
         return;
       }
-    } else if (user->IsPhi() ||
-               user->IsSelect() ||
+    } else if (user->IsPhi() || user->IsSelect() ||
                (user->IsInvoke() && user->GetSideEffects().DoesAnyWrite()) ||
                (user->IsInstanceFieldSet() && (reference == user->InputAt(1))) ||
                (user->IsUnresolvedInstanceFieldSet() && (reference == user->InputAt(1))) ||
@@ -81,21 +80,21 @@ void VisitEscapes(HInstruction* reference, EscapeVisitor& escape_visitor) {
   }
 }
 
-void CalculateEscape(HInstruction* reference,
+void CalculateEscape(HInstruction*  reference,
                      NoEscapeCheck& no_escape,
-                     /*out*/ bool* is_singleton,
-                     /*out*/ bool* is_singleton_and_not_returned,
-                     /*out*/ bool* is_singleton_and_not_deopt_visible) {
+                     /*out*/ bool*  is_singleton,
+                     /*out*/ bool*  is_singleton_and_not_returned,
+                     /*out*/ bool*  is_singleton_and_not_deopt_visible) {
   // For references not allocated in the method, don't assume anything.
   if (!reference->IsNewInstance() && !reference->IsNewArray()) {
-    *is_singleton = false;
-    *is_singleton_and_not_returned = false;
+    *is_singleton                       = false;
+    *is_singleton_and_not_returned      = false;
     *is_singleton_and_not_deopt_visible = false;
     return;
   }
   // Assume the best until proven otherwise.
-  *is_singleton = true;
-  *is_singleton_and_not_returned = true;
+  *is_singleton                       = true;
+  *is_singleton_and_not_returned      = true;
   *is_singleton_and_not_deopt_visible = true;
 
   if (reference->IsNewInstance() && reference->AsNewInstance()->IsFinalizable()) {
@@ -119,8 +118,8 @@ void CalculateEscape(HInstruction* reference,
     } else {
       // Real escape. All knowledge about what happens to the value lost. We can
       // stop here.
-      *is_singleton = false;
-      *is_singleton_and_not_returned = false;
+      *is_singleton                       = false;
+      *is_singleton_and_not_returned      = false;
       *is_singleton_and_not_deopt_visible = false;
       return false;
     }
@@ -129,8 +128,8 @@ void CalculateEscape(HInstruction* reference,
 }
 
 bool DoesNotEscape(HInstruction* reference, NoEscapeCheck& no_escape) {
-  bool is_singleton = false;
-  bool is_singleton_and_not_returned = false;
+  bool is_singleton                       = false;
+  bool is_singleton_and_not_returned      = false;
   bool is_singleton_and_not_deopt_visible = false;  // not relevant for escape
   CalculateEscape(reference,
                   no_escape,

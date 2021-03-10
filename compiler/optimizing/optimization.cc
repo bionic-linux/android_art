@@ -24,8 +24,8 @@
 #include "instruction_simplifier_arm64.h"
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86
-#include "pc_relative_fixups_x86.h"
 #include "instruction_simplifier_x86.h"
+#include "pc_relative_fixups_x86.h"
 #endif
 #if defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
 #include "x86_memory_gen.h"
@@ -64,33 +64,26 @@ const char* OptimizationPassName(OptimizationPass pass) {
   switch (pass) {
     case OptimizationPass::kSideEffectsAnalysis:
       return SideEffectsAnalysis::kSideEffectsAnalysisPassName;
-    case OptimizationPass::kInductionVarAnalysis:
-      return HInductionVarAnalysis::kInductionPassName;
+    case OptimizationPass::kInductionVarAnalysis: return HInductionVarAnalysis::kInductionPassName;
     case OptimizationPass::kGlobalValueNumbering:
       return GVNOptimization::kGlobalValueNumberingPassName;
-    case OptimizationPass::kInvariantCodeMotion:
-      return LICM::kLoopInvariantCodeMotionPassName;
-    case OptimizationPass::kLoopOptimization:
-      return HLoopOptimization::kLoopOptimizationPassName;
+    case OptimizationPass::kInvariantCodeMotion: return LICM::kLoopInvariantCodeMotionPassName;
+    case OptimizationPass::kLoopOptimization: return HLoopOptimization::kLoopOptimizationPassName;
     case OptimizationPass::kBoundsCheckElimination:
       return BoundsCheckElimination::kBoundsCheckEliminationPassName;
     case OptimizationPass::kLoadStoreElimination:
       return LoadStoreElimination::kLoadStoreEliminationPassName;
-    case OptimizationPass::kConstantFolding:
-      return HConstantFolding::kConstantFoldingPassName;
+    case OptimizationPass::kConstantFolding: return HConstantFolding::kConstantFoldingPassName;
     case OptimizationPass::kDeadCodeElimination:
       return HDeadCodeElimination::kDeadCodeEliminationPassName;
-    case OptimizationPass::kInliner:
-      return HInliner::kInlinerPassName;
-    case OptimizationPass::kSelectGenerator:
-      return HSelectGenerator::kSelectGeneratorPassName;
+    case OptimizationPass::kInliner: return HInliner::kInlinerPassName;
+    case OptimizationPass::kSelectGenerator: return HSelectGenerator::kSelectGeneratorPassName;
     case OptimizationPass::kAggressiveInstructionSimplifier:
     case OptimizationPass::kInstructionSimplifier:
       return InstructionSimplifier::kInstructionSimplifierPassName;
     case OptimizationPass::kCHAGuardOptimization:
       return CHAGuardOptimization::kCHAGuardOptimizationPassName;
-    case OptimizationPass::kCodeSinking:
-      return CodeSinking::kCodeSinkingPassName;
+    case OptimizationPass::kCodeSinking: return CodeSinking::kCodeSinkingPassName;
     case OptimizationPass::kConstructorFenceRedundancyElimination:
       return ConstructorFenceRedundancyElimination::kCFREPassName;
     case OptimizationPass::kScheduling:
@@ -125,7 +118,9 @@ const char* OptimizationPassName(OptimizationPass pass) {
   }
 }
 
-#define X(x) if (pass_name == OptimizationPassName((x))) return (x)
+#define X(x)                                  \
+  if (pass_name == OptimizationPassName((x))) \
+  return (x)
 
 OptimizationPass OptimizationPassByName(const std::string& pass_name) {
   X(OptimizationPass::kBoundsCheckElimination);
@@ -161,30 +156,27 @@ OptimizationPass OptimizationPassByName(const std::string& pass_name) {
 
 #undef X
 
-ArenaVector<HOptimization*> ConstructOptimizations(
-    const OptimizationDef definitions[],
-    size_t length,
-    ArenaAllocator* allocator,
-    HGraph* graph,
-    OptimizingCompilerStats* stats,
-    CodeGenerator* codegen,
-    const DexCompilationUnit& dex_compilation_unit) {
+ArenaVector<HOptimization*> ConstructOptimizations(const OptimizationDef     definitions[],
+                                                   size_t                    length,
+                                                   ArenaAllocator*           allocator,
+                                                   HGraph*                   graph,
+                                                   OptimizingCompilerStats*  stats,
+                                                   CodeGenerator*            codegen,
+                                                   const DexCompilationUnit& dex_compilation_unit) {
   ArenaVector<HOptimization*> optimizations(allocator->Adapter());
 
   // Some optimizations require SideEffectsAnalysis or HInductionVarAnalysis
   // instances. This method uses the nearest instance preceeding it in the pass
   // name list or fails fatally if no such analysis can be found.
-  SideEffectsAnalysis* most_recent_side_effects = nullptr;
-  HInductionVarAnalysis* most_recent_induction = nullptr;
+  SideEffectsAnalysis*   most_recent_side_effects = nullptr;
+  HInductionVarAnalysis* most_recent_induction    = nullptr;
 
   // Loop over the requested optimizations.
   for (size_t i = 0; i < length; i++) {
-    OptimizationPass pass = definitions[i].pass;
-    const char* alt_name = definitions[i].pass_name;
-    const char* pass_name = alt_name != nullptr
-        ? alt_name
-        : OptimizationPassName(pass);
-    HOptimization* opt = nullptr;
+    OptimizationPass pass      = definitions[i].pass;
+    const char*      alt_name  = definitions[i].pass_name;
+    const char*      pass_name = alt_name != nullptr ? alt_name : OptimizationPassName(pass);
+    HOptimization*   opt       = nullptr;
 
     switch (pass) {
       //
@@ -209,8 +201,8 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         break;
       case OptimizationPass::kLoopOptimization:
         CHECK(most_recent_induction != nullptr);
-        opt = new (allocator) HLoopOptimization(
-            graph, *codegen, most_recent_induction, stats, pass_name);
+        opt = new (allocator)
+            HLoopOptimization(graph, *codegen, most_recent_induction, stats, pass_name);
         break;
       case OptimizationPass::kBoundsCheckElimination:
         CHECK(most_recent_side_effects != nullptr && most_recent_induction != nullptr);
@@ -229,11 +221,11 @@ ArenaVector<HOptimization*> ConstructOptimizations(
       case OptimizationPass::kInliner: {
         CodeItemDataAccessor accessor(*dex_compilation_unit.GetDexFile(),
                                       dex_compilation_unit.GetCodeItem());
-        opt = new (allocator) HInliner(graph,                   // outer_graph
-                                       graph,                   // outermost_graph
+        opt = new (allocator) HInliner(graph,  // outer_graph
+                                       graph,  // outermost_graph
                                        codegen,
-                                       dex_compilation_unit,    // outer_compilation_unit
-                                       dex_compilation_unit,    // outermost_compilation_unit
+                                       dex_compilation_unit,  // outer_compilation_unit
+                                       dex_compilation_unit,  // outermost_compilation_unit
                                        stats,
                                        accessor.RegistersSize(),
                                        /* total_number_of_instructions= */ 0,
@@ -271,9 +263,9 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         opt = new (allocator) HInstructionScheduling(
             graph, codegen->GetCompilerOptions().GetInstructionSet(), codegen, pass_name);
         break;
-      //
-      // Arch-specific passes.
-      //
+        //
+        // Arch-specific passes.
+        //
 #ifdef ART_ENABLE_CODEGEN_arm
       case OptimizationPass::kInstructionSimplifierArm:
         DCHECK(alt_name == nullptr) << "arch-specific pass does not support alternative name";
@@ -300,8 +292,8 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         opt = new (allocator) x86::X86MemoryOperandGeneration(graph, codegen, stats);
         break;
       case OptimizationPass::kInstructionSimplifierX86:
-       opt = new (allocator) x86::InstructionSimplifierX86(graph, codegen, stats);
-       break;
+        opt = new (allocator) x86::InstructionSimplifierX86(graph, codegen, stats);
+        break;
 #endif
 #ifdef ART_ENABLE_CODEGEN_x86_64
       case OptimizationPass::kInstructionSimplifierX86_64:

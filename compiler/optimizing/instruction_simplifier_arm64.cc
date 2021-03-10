@@ -33,8 +33,8 @@ using helpers::ShifterOperandSupportsExtension;
 
 class InstructionSimplifierArm64Visitor : public HGraphVisitor {
  public:
-  InstructionSimplifierArm64Visitor(HGraph* graph, OptimizingCompilerStats* stats)
-      : HGraphVisitor(graph), stats_(stats) {}
+  InstructionSimplifierArm64Visitor(HGraph* graph, OptimizingCompilerStats* stats) :
+      HGraphVisitor(graph), stats_(stats) {}
 
  private:
   void RecordSimplification() {
@@ -42,9 +42,7 @@ class InstructionSimplifierArm64Visitor : public HGraphVisitor {
   }
 
   bool TryMergeIntoUsersShifterOperand(HInstruction* instruction);
-  bool TryMergeIntoShifterOperand(HInstruction* use,
-                                  HInstruction* bitfield_op,
-                                  bool do_merge);
+  bool TryMergeIntoShifterOperand(HInstruction* use, HInstruction* bitfield_op, bool do_merge);
   bool CanMergeIntoShifterOperand(HInstruction* use, HInstruction* bitfield_op) {
     return TryMergeIntoShifterOperand(use, bitfield_op, /* do_merge= */ false);
   }
@@ -89,7 +87,7 @@ class InstructionSimplifierArm64Visitor : public HGraphVisitor {
 
 bool InstructionSimplifierArm64Visitor::TryMergeIntoShifterOperand(HInstruction* use,
                                                                    HInstruction* bitfield_op,
-                                                                   bool do_merge) {
+                                                                   bool          do_merge) {
   DCHECK(HasShifterOperand(use, InstructionSet::kArm64));
   DCHECK(use->IsBinaryOperation() || use->IsNeg());
   DCHECK(CanFitInShifterOperand(bitfield_op));
@@ -103,12 +101,12 @@ bool InstructionSimplifierArm64Visitor::TryMergeIntoShifterOperand(HInstruction*
   HInstruction* left;
   HInstruction* right;
   if (use->IsBinaryOperation()) {
-    left = use->InputAt(0);
+    left  = use->InputAt(0);
     right = use->InputAt(1);
   } else {
     DCHECK(use->IsNeg());
     right = use->AsNeg()->InputAt(0);
-    left = GetGraph()->GetConstant(right->GetType(), 0);
+    left  = GetGraph()->GetConstant(right->GetType(), 0);
   }
   DCHECK(left == bitfield_op || right == bitfield_op);
 
@@ -132,7 +130,7 @@ bool InstructionSimplifierArm64Visitor::TryMergeIntoShifterOperand(HInstruction*
   }
 
   HDataProcWithShifterOp::OpKind op_kind;
-  int shift_amount = 0;
+  int                            shift_amount = 0;
   HDataProcWithShifterOp::GetOpInfoFromInstruction(bitfield_op, &op_kind, &shift_amount);
 
   if (HDataProcWithShifterOp::IsExtensionOp(op_kind) && !ShifterOperandSupportsExtension(use)) {
@@ -140,13 +138,8 @@ bool InstructionSimplifierArm64Visitor::TryMergeIntoShifterOperand(HInstruction*
   }
 
   if (do_merge) {
-    HDataProcWithShifterOp* alu_with_op =
-        new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(use,
-                                                                other_input,
-                                                                bitfield_op->InputAt(0),
-                                                                op_kind,
-                                                                shift_amount,
-                                                                use->GetDexPc());
+    HDataProcWithShifterOp* alu_with_op = new (GetGraph()->GetAllocator()) HDataProcWithShifterOp(
+        use, other_input, bitfield_op->InputAt(0), op_kind, shift_amount, use->GetDexPc());
     use->GetBlock()->ReplaceAndRemoveInstructionWith(use, alu_with_op);
     if (bitfield_op->GetUses().empty()) {
       bitfield_op->GetBlock()->RemoveInstruction(bitfield_op);
@@ -198,10 +191,8 @@ void InstructionSimplifierArm64Visitor::VisitAnd(HAnd* instruction) {
 
 void InstructionSimplifierArm64Visitor::VisitArrayGet(HArrayGet* instruction) {
   size_t data_offset = CodeGenerator::GetArrayDataOffset(instruction);
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }
@@ -209,10 +200,8 @@ void InstructionSimplifierArm64Visitor::VisitArrayGet(HArrayGet* instruction) {
 void InstructionSimplifierArm64Visitor::VisitArraySet(HArraySet* instruction) {
   size_t access_size = DataType::Size(instruction->GetComponentType());
   size_t data_offset = mirror::Array::DataOffset(access_size).Uint32Value();
-  if (TryExtractArrayAccessAddress(instruction,
-                                   instruction->GetArray(),
-                                   instruction->GetIndex(),
-                                   data_offset)) {
+  if (TryExtractArrayAccessAddress(
+          instruction, instruction->GetArray(), instruction->GetIndex(), data_offset)) {
     RecordSimplification();
   }
 }
@@ -252,7 +241,7 @@ void InstructionSimplifierArm64Visitor::VisitSub(HSub* instruction) {
 
 void InstructionSimplifierArm64Visitor::VisitTypeConversion(HTypeConversion* instruction) {
   DataType::Type result_type = instruction->GetResultType();
-  DataType::Type input_type = instruction->GetInputType();
+  DataType::Type input_type  = instruction->GetInputType();
 
   if (input_type == result_type) {
     // We let the arch-independent code handle this.

@@ -33,8 +33,9 @@ class IntrinsicLocationsBuilderARMVIXL final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST
@@ -46,9 +47,9 @@ class IntrinsicLocationsBuilderARMVIXL final : public IntrinsicVisitor {
   bool TryDispatch(HInvoke* invoke);
 
  private:
-  ArenaAllocator* const allocator_;
-  CodeGeneratorARMVIXL* const codegen_;
-  ArmVIXLAssembler* const assembler_;
+  ArenaAllocator* const            allocator_;
+  CodeGeneratorARMVIXL* const      codegen_;
+  ArmVIXLAssembler* const          assembler_;
   const ArmInstructionSetFeatures& features_;
 
   DISALLOW_COPY_AND_ASSIGN(IntrinsicLocationsBuilderARMVIXL);
@@ -60,15 +61,16 @@ class IntrinsicCodeGeneratorARMVIXL final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST
 #undef OPTIMIZING_INTRINSICS
 
  private:
-  ArenaAllocator* GetAllocator();
+  ArenaAllocator*   GetAllocator();
   ArmVIXLAssembler* GetAssembler();
 
   CodeGeneratorARMVIXL* const codegen_;

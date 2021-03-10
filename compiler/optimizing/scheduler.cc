@@ -36,7 +36,7 @@ namespace art {
 
 void SchedulingGraph::AddDependency(SchedulingNode* node,
                                     SchedulingNode* dependency,
-                                    bool is_data_dependency) {
+                                    bool            is_data_dependency) {
   if (node == nullptr || dependency == nullptr) {
     // A `nullptr` node indicates an instruction out of scheduling range (eg. in
     // an other block), so we do not need to add a dependency edge to the graph.
@@ -106,32 +106,25 @@ static bool IsArrayAccess(const HInstruction* instruction) {
 }
 
 static bool IsInstanceFieldAccess(const HInstruction* instruction) {
-  return instruction->IsInstanceFieldGet() ||
-         instruction->IsInstanceFieldSet() ||
+  return instruction->IsInstanceFieldGet() || instruction->IsInstanceFieldSet() ||
          instruction->IsPredicatedInstanceFieldGet() ||
-         instruction->IsUnresolvedInstanceFieldGet() ||
-         instruction->IsUnresolvedInstanceFieldSet();
+         instruction->IsUnresolvedInstanceFieldGet() || instruction->IsUnresolvedInstanceFieldSet();
 }
 
 static bool IsStaticFieldAccess(const HInstruction* instruction) {
-  return instruction->IsStaticFieldGet() ||
-         instruction->IsStaticFieldSet() ||
-         instruction->IsUnresolvedStaticFieldGet() ||
-         instruction->IsUnresolvedStaticFieldSet();
+  return instruction->IsStaticFieldGet() || instruction->IsStaticFieldSet() ||
+         instruction->IsUnresolvedStaticFieldGet() || instruction->IsUnresolvedStaticFieldSet();
 }
 
 static bool IsResolvedFieldAccess(const HInstruction* instruction) {
-  return instruction->IsInstanceFieldGet() ||
-         instruction->IsInstanceFieldSet() ||
-         instruction->IsPredicatedInstanceFieldGet() ||
-         instruction->IsStaticFieldGet() ||
+  return instruction->IsInstanceFieldGet() || instruction->IsInstanceFieldSet() ||
+         instruction->IsPredicatedInstanceFieldGet() || instruction->IsStaticFieldGet() ||
          instruction->IsStaticFieldSet();
 }
 
 static bool IsUnresolvedFieldAccess(const HInstruction* instruction) {
   return instruction->IsUnresolvedInstanceFieldGet() ||
-         instruction->IsUnresolvedInstanceFieldSet() ||
-         instruction->IsUnresolvedStaticFieldGet() ||
+         instruction->IsUnresolvedInstanceFieldSet() || instruction->IsUnresolvedStaticFieldGet() ||
          instruction->IsUnresolvedStaticFieldSet();
 }
 
@@ -149,8 +142,8 @@ size_t SideEffectDependencyAnalysis::MemoryDependencyAnalysis::FieldAccessHeapLo
   DCHECK(GetFieldInfo(instr) != nullptr);
   DCHECK(heap_location_collector_ != nullptr);
 
-  size_t heap_loc = heap_location_collector_->GetFieldHeapLocation(instr->InputAt(0),
-                                                                   GetFieldInfo(instr));
+  size_t heap_loc =
+      heap_location_collector_->GetFieldHeapLocation(instr->InputAt(0), GetFieldInfo(instr));
   // This field access should be analyzed and added to HeapLocationCollector before.
   DCHECK(heap_loc != HeapLocationCollector::kHeapLocationNotFound);
 
@@ -305,7 +298,7 @@ void SchedulingGraph::AddCrossIterationDependencies(SchedulingNode* node) {
 }
 
 void SchedulingGraph::AddDependencies(SchedulingNode* instruction_node,
-                                      bool is_scheduling_barrier) {
+                                      bool            is_scheduling_barrier) {
   HInstruction* instruction = instruction_node->GetInstruction();
 
   // Define-use dependencies.
@@ -321,8 +314,7 @@ void SchedulingGraph::AddDependencies(SchedulingNode* instruction_node,
     for (HInstruction* other = instruction->GetNext(); other != nullptr; other = other->GetNext()) {
       SchedulingNode* other_node = GetNode(other);
       CHECK(other_node != nullptr)
-          << other->DebugName()
-          << " is in block " << other->GetBlock()->GetBlockId()
+          << other->DebugName() << " is in block " << other->GetBlock()->GetBlockId()
           << ", and expected in block " << instruction->GetBlock()->GetBlockId();
       bool other_is_barrier = other_node->IsSchedulingBarrier();
       if (is_scheduling_barrier || other_is_barrier) {
@@ -365,8 +357,8 @@ void SchedulingGraph::AddDependencies(SchedulingNode* instruction_node,
         //
         // As a "other" dependency is not set up if a data dependency exists, we need to check that
         // one of them must exist.
-        DCHECK(other_node->HasOtherDependency(instruction_node)
-               || other_node->HasDataDependency(instruction_node));
+        DCHECK(other_node->HasOtherDependency(instruction_node) ||
+               other_node->HasDataDependency(instruction_node));
         break;
       }
       if (side_effect_dependency_analysis_.HasSideEffectDependency(other, instruction)) {
@@ -411,9 +403,9 @@ static const std::string InstructionTypeId(const HInstruction* instruction) {
 static void DumpAsDotNode(std::ostream& output, const SchedulingNode* node) {
   const HInstruction* instruction = node->GetInstruction();
   // Use the instruction typed id as the node identifier.
-  std::string instruction_id = InstructionTypeId(instruction);
-  output << instruction_id << "[shape=record, label=\""
-      << instruction_id << ' ' << instruction->DebugName() << " [";
+  std::string         instruction_id = InstructionTypeId(instruction);
+  output << instruction_id << "[shape=record, label=\"" << instruction_id << ' '
+         << instruction->DebugName() << " [";
   // List the instruction's inputs in its description. When visualizing the
   // graph this helps differentiating data inputs from other dependencies.
   const char* seperator = "";
@@ -434,16 +426,16 @@ static void DumpAsDotNode(std::ostream& output, const SchedulingNode* node) {
   for (const SchedulingNode* predecessor : node->GetDataPredecessors()) {
     const HInstruction* predecessor_instruction = predecessor->GetInstruction();
     output << InstructionTypeId(predecessor_instruction) << ":s -> " << instruction_id << ":n "
-        << "[label=\"" << predecessor->GetLatency() << "\",dir=back]\n";
+           << "[label=\"" << predecessor->GetLatency() << "\",dir=back]\n";
   }
   for (const SchedulingNode* predecessor : node->GetOtherPredecessors()) {
     const HInstruction* predecessor_instruction = predecessor->GetInstruction();
     output << InstructionTypeId(predecessor_instruction) << ":s -> " << instruction_id << ":n "
-        << "[dir=back,color=blue]\n";
+           << "[dir=back,color=blue]\n";
   }
 }
 
-void SchedulingGraph::DumpAsDotGraph(const std::string& description,
+void SchedulingGraph::DumpAsDotGraph(const std::string&                        description,
                                      const ScopedArenaVector<SchedulingNode*>& initial_candidates) {
   // TODO(xueliang): ideally we should move scheduling information into HInstruction, after that
   // we should move this dotty graph dump feature to visualizer, and have a compiler option for it.
@@ -460,7 +452,7 @@ void SchedulingGraph::DumpAsDotGraph(const std::string& description,
   for (SchedulingNode* node : initial_candidates) {
     const HInstruction* instruction = node->GetInstruction();
     output << InstructionTypeId(instruction) << ":s -> end_of_scheduling:n "
-      << "[label=\"" << node->GetLatency() << "\",dir=back]\n";
+           << "[label=\"" << node->GetLatency() << "\",dir=back]\n";
   }
   // End of the dot graph.
   output << "}\n";
@@ -484,7 +476,7 @@ SchedulingNode* CriticalPathSchedulingNodeSelector::SelectMaterializedCondition(
   }
 
   const HInstruction* instruction = prev_select_->GetInstruction();
-  const HCondition* condition = nullptr;
+  const HCondition*   condition   = nullptr;
   DCHECK(instruction != nullptr);
 
   if (instruction->IsIf()) {
@@ -495,8 +487,7 @@ SchedulingNode* CriticalPathSchedulingNodeSelector::SelectMaterializedCondition(
 
   SchedulingNode* condition_node = (condition != nullptr) ? graph.GetNode(condition) : nullptr;
 
-  if ((condition_node != nullptr) &&
-      condition->HasOnlyOneNonEnvironmentUse() &&
+  if ((condition_node != nullptr) && condition->HasOnlyOneNonEnvironmentUse() &&
       ContainsElement(*nodes, condition_node)) {
     DCHECK(!condition_node->HasUnscheduledSuccessors());
     // Remove the condition from the list of candidates and schedule it.
@@ -517,12 +508,12 @@ SchedulingNode* CriticalPathSchedulingNodeSelector::PopHighestPriorityNode(
 
   if (select_node == nullptr) {
     // Get highest priority node based on critical path information.
-    select_node = (*nodes)[0];
+    select_node   = (*nodes)[0];
     size_t select = 0;
     for (size_t i = 1, e = nodes->size(); i < e; i++) {
-      SchedulingNode* check = (*nodes)[i];
+      SchedulingNode* check     = (*nodes)[i];
       SchedulingNode* candidate = (*nodes)[select];
-      select_node = GetHigherPrioritySchedulingNode(candidate, check);
+      select_node               = GetHigherPrioritySchedulingNode(candidate, check);
       if (select_node == check) {
         select = i;
       }
@@ -537,7 +528,7 @@ SchedulingNode* CriticalPathSchedulingNodeSelector::PopHighestPriorityNode(
 SchedulingNode* CriticalPathSchedulingNodeSelector::GetHigherPrioritySchedulingNode(
     SchedulingNode* candidate, SchedulingNode* check) const {
   uint32_t candidate_path = candidate->GetCriticalPath();
-  uint32_t check_path = check->GetCriticalPath();
+  uint32_t check_path     = check->GetCriticalPath();
   // First look at the critical_path.
   if (check_path != candidate_path) {
     return check_path < candidate_path ? check : candidate;
@@ -551,7 +542,7 @@ void HScheduler::Schedule(HGraph* graph) {
   // We run lsa here instead of in a separate pass to better control whether we
   // should run the analysis or not.
   const HeapLocationCollector* heap_location_collector = nullptr;
-  ScopedArenaAllocator allocator(graph->GetArenaStack());
+  ScopedArenaAllocator         allocator(graph->GetArenaStack());
   LoadStoreAnalysis lsa(graph, /*stats=*/nullptr, &allocator, LoadStoreAnalysisType::kBasic);
   if (!only_optimize_loop_blocks_ || graph->HasLoops()) {
     lsa.Run();
@@ -565,9 +556,9 @@ void HScheduler::Schedule(HGraph* graph) {
   }
 }
 
-void HScheduler::Schedule(HBasicBlock* block,
+void HScheduler::Schedule(HBasicBlock*                 block,
                           const HeapLocationCollector* heap_location_collector) {
-  ScopedArenaAllocator allocator(block->GetGraph()->GetArenaStack());
+  ScopedArenaAllocator               allocator(block->GetGraph()->GetArenaStack());
   ScopedArenaVector<SchedulingNode*> scheduling_nodes(allocator.Adapter(kArenaAllocScheduler));
 
   // Build the scheduling graph.
@@ -575,8 +566,7 @@ void HScheduler::Schedule(HBasicBlock* block,
   for (HBackwardInstructionIterator it(block->GetInstructions()); !it.Done(); it.Advance()) {
     HInstruction* instruction = it.Current();
     CHECK_EQ(instruction->GetBlock(), block)
-        << instruction->DebugName()
-        << " is in block " << instruction->GetBlock()->GetBlockId()
+        << instruction->DebugName() << " is in block " << instruction->GetBlock()->GetBlockId()
         << ", and expected in block " << block->GetBlockId();
     SchedulingNode* node = scheduling_graph.AddNode(instruction, IsSchedulingBarrier(instruction));
     CalculateLatency(node);
@@ -616,22 +606,22 @@ void HScheduler::Schedule(HBasicBlock* block,
 
   if (kDumpDotSchedulingGraphs) {
     // Dump the graph in `dot` format.
-    HGraph* graph = block->GetGraph();
+    HGraph*           graph = block->GetGraph();
     std::stringstream description;
-    description << graph->GetDexFile().PrettyMethod(graph->GetMethodIdx())
-        << " B" << block->GetBlockId();
+    description << graph->GetDexFile().PrettyMethod(graph->GetMethodIdx()) << " B"
+                << block->GetBlockId();
     scheduling_graph.DumpAsDotGraph(description.str(), initial_candidates);
   }
 }
 
-void HScheduler::Schedule(SchedulingNode* scheduling_node,
+void HScheduler::Schedule(SchedulingNode*                               scheduling_node,
                           /*inout*/ ScopedArenaVector<SchedulingNode*>* candidates) {
   // Check whether any of the node's predecessors will be valid candidates after
   // this node is scheduled.
   uint32_t path_to_node = scheduling_node->GetCriticalPath();
   for (SchedulingNode* predecessor : scheduling_node->GetDataPredecessors()) {
-    predecessor->MaybeUpdateCriticalPath(
-        path_to_node + predecessor->GetInternalLatency() + predecessor->GetLatency());
+    predecessor->MaybeUpdateCriticalPath(path_to_node + predecessor->GetInternalLatency() +
+                                         predecessor->GetLatency());
     predecessor->DecrementNumberOfUnscheduledSuccessors();
     if (!predecessor->HasUnscheduledSuccessors()) {
       candidates->push_back(predecessor);
@@ -671,8 +661,7 @@ void HScheduler::Schedule(HInstruction* instruction) {
 bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
   // We want to avoid exhaustively listing all instructions, so we first check
   // for instruction categories that we know are safe.
-  if (instruction->IsControlFlow() ||
-      instruction->IsConstant()) {
+  if (instruction->IsControlFlow() || instruction->IsConstant()) {
     return true;
   }
   // Currently all unary and binary operations are safe to schedule, so avoid
@@ -681,29 +670,19 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
   // HUnaryOperation (or HBinaryOperation), check in debug mode that we have
   // the exhaustive lists here.
   if (instruction->IsUnaryOperation()) {
-    DCHECK(instruction->IsAbs() ||
-           instruction->IsBooleanNot() ||
-           instruction->IsNot() ||
-           instruction->IsNeg()) << "unexpected instruction " << instruction->DebugName();
+    DCHECK(instruction->IsAbs() || instruction->IsBooleanNot() || instruction->IsNot() ||
+           instruction->IsNeg())
+        << "unexpected instruction " << instruction->DebugName();
     return true;
   }
   if (instruction->IsBinaryOperation()) {
-    DCHECK(instruction->IsAdd() ||
-           instruction->IsAnd() ||
-           instruction->IsCompare() ||
-           instruction->IsCondition() ||
-           instruction->IsDiv() ||
-           instruction->IsMin() ||
-           instruction->IsMax() ||
-           instruction->IsMul() ||
-           instruction->IsOr() ||
-           instruction->IsRem() ||
-           instruction->IsRor() ||
-           instruction->IsShl() ||
-           instruction->IsShr() ||
-           instruction->IsSub() ||
-           instruction->IsUShr() ||
-           instruction->IsXor()) << "unexpected instruction " << instruction->DebugName();
+    DCHECK(instruction->IsAdd() || instruction->IsAnd() || instruction->IsCompare() ||
+           instruction->IsCondition() || instruction->IsDiv() || instruction->IsMin() ||
+           instruction->IsMax() || instruction->IsMul() || instruction->IsOr() ||
+           instruction->IsRem() || instruction->IsRor() || instruction->IsShl() ||
+           instruction->IsShr() || instruction->IsSub() || instruction->IsUShr() ||
+           instruction->IsXor())
+        << "unexpected instruction " << instruction->DebugName();
     return true;
   }
   // The scheduler should not see any of these.
@@ -721,38 +700,23 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
   //    HTryBoundary
   // TODO: Some of the instructions above may be safe to schedule (maybe as
   // scheduling barriers).
-  return instruction->IsArrayGet() ||
-         instruction->IsArraySet() ||
-         instruction->IsArrayLength() ||
-         instruction->IsBoundType() ||
-         instruction->IsBoundsCheck() ||
-         instruction->IsCheckCast() ||
-         instruction->IsClassTableGet() ||
-         instruction->IsCurrentMethod() ||
+  return instruction->IsArrayGet() || instruction->IsArraySet() || instruction->IsArrayLength() ||
+         instruction->IsBoundType() || instruction->IsBoundsCheck() || instruction->IsCheckCast() ||
+         instruction->IsClassTableGet() || instruction->IsCurrentMethod() ||
          instruction->IsDivZeroCheck() ||
          (instruction->IsInstanceFieldGet() && !instruction->AsInstanceFieldGet()->IsVolatile()) ||
          (instruction->IsPredicatedInstanceFieldGet() &&
           !instruction->AsPredicatedInstanceFieldGet()->IsVolatile()) ||
          (instruction->IsInstanceFieldSet() && !instruction->AsInstanceFieldSet()->IsVolatile()) ||
-         instruction->IsInstanceOf() ||
-         instruction->IsInvokeInterface() ||
-         instruction->IsInvokeStaticOrDirect() ||
-         instruction->IsInvokeUnresolved() ||
-         instruction->IsInvokeVirtual() ||
-         instruction->IsLoadString() ||
-         instruction->IsNewArray() ||
-         instruction->IsNewInstance() ||
-         instruction->IsNullCheck() ||
-         instruction->IsPackedSwitch() ||
-         instruction->IsParameterValue() ||
-         instruction->IsPhi() ||
-         instruction->IsReturn() ||
-         instruction->IsReturnVoid() ||
-         instruction->IsSelect() ||
+         instruction->IsInstanceOf() || instruction->IsInvokeInterface() ||
+         instruction->IsInvokeStaticOrDirect() || instruction->IsInvokeUnresolved() ||
+         instruction->IsInvokeVirtual() || instruction->IsLoadString() ||
+         instruction->IsNewArray() || instruction->IsNewInstance() || instruction->IsNullCheck() ||
+         instruction->IsPackedSwitch() || instruction->IsParameterValue() || instruction->IsPhi() ||
+         instruction->IsReturn() || instruction->IsReturnVoid() || instruction->IsSelect() ||
          (instruction->IsStaticFieldGet() && !instruction->AsStaticFieldGet()->IsVolatile()) ||
          (instruction->IsStaticFieldSet() && !instruction->AsStaticFieldSet()->IsVolatile()) ||
-         instruction->IsSuspendCheck() ||
-         instruction->IsTypeConversion();
+         instruction->IsSuspendCheck() || instruction->IsTypeConversion();
 }
 
 bool HScheduler::IsSchedulable(const HBasicBlock* block) const {
@@ -784,22 +748,21 @@ bool HScheduler::IsSchedulable(const HBasicBlock* block) const {
 
 bool HScheduler::IsSchedulingBarrier(const HInstruction* instr) const {
   return instr->IsControlFlow() ||
-      // Don't break calling convention.
-      instr->IsParameterValue() ||
-      // Code generation of goto relies on SuspendCheck's position.
-      instr->IsSuspendCheck();
+         // Don't break calling convention.
+         instr->IsParameterValue() ||
+         // Code generation of goto relies on SuspendCheck's position.
+         instr->IsSuspendCheck();
 }
 
-bool HInstructionScheduling::Run(bool only_optimize_loop_blocks,
-                                 bool schedule_randomly) {
+bool HInstructionScheduling::Run(bool only_optimize_loop_blocks, bool schedule_randomly) {
 #if defined(ART_ENABLE_CODEGEN_arm64) || defined(ART_ENABLE_CODEGEN_arm)
   // Phase-local allocator that allocates scheduler internal data structures like
   // scheduling nodes, internel nodes map, dependencies, etc.
   CriticalPathSchedulingNodeSelector critical_path_selector;
-  RandomSchedulingNodeSelector random_selector;
-  SchedulingNodeSelector* selector = schedule_randomly
-      ? static_cast<SchedulingNodeSelector*>(&random_selector)
-      : static_cast<SchedulingNodeSelector*>(&critical_path_selector);
+  RandomSchedulingNodeSelector       random_selector;
+  SchedulingNodeSelector*            selector =
+      schedule_randomly ? static_cast<SchedulingNodeSelector*>(&random_selector) :
+                                     static_cast<SchedulingNodeSelector*>(&critical_path_selector);
 #else
   // Avoid compilation error when compiling for unsupported instruction set.
   UNUSED(only_optimize_loop_blocks);
@@ -820,14 +783,13 @@ bool HInstructionScheduling::Run(bool only_optimize_loop_blocks,
     case InstructionSet::kThumb2:
     case InstructionSet::kArm: {
       arm::SchedulingLatencyVisitorARM arm_latency_visitor(codegen_);
-      arm::HSchedulerARM scheduler(selector, &arm_latency_visitor);
+      arm::HSchedulerARM               scheduler(selector, &arm_latency_visitor);
       scheduler.SetOnlyOptimizeLoopBlocks(only_optimize_loop_blocks);
       scheduler.Schedule(graph_);
       break;
     }
 #endif
-    default:
-      break;
+    default: break;
   }
   return true;
 }

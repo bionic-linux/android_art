@@ -20,7 +20,6 @@
 #include <string_view>
 
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
 #include "base/runtime_debug.h"
@@ -38,53 +37,52 @@
 
 namespace art {
 
-CompilerOptions::CompilerOptions()
-    : compiler_filter_(CompilerFilter::kDefaultCompilerFilter),
-      huge_method_threshold_(kDefaultHugeMethodThreshold),
-      large_method_threshold_(kDefaultLargeMethodThreshold),
-      num_dex_methods_threshold_(kDefaultNumDexMethodsThreshold),
-      inline_max_code_units_(kUnsetInlineMaxCodeUnits),
-      instruction_set_(kRuntimeISA == InstructionSet::kArm ? InstructionSet::kThumb2 : kRuntimeISA),
-      instruction_set_features_(nullptr),
-      no_inline_from_(),
-      dex_files_for_oat_file_(),
-      image_classes_(),
-      verification_results_(nullptr),
-      compiler_type_(CompilerType::kAotCompiler),
-      image_type_(ImageType::kNone),
-      compile_art_test_(false),
-      baseline_(false),
-      debuggable_(false),
-      generate_debug_info_(kDefaultGenerateDebugInfo),
-      generate_mini_debug_info_(kDefaultGenerateMiniDebugInfo),
-      generate_build_id_(false),
-      implicit_null_checks_(true),
-      implicit_so_checks_(true),
-      implicit_suspend_checks_(false),
-      compile_pic_(false),
-      dump_timings_(false),
-      dump_pass_timings_(false),
-      dump_stats_(false),
-      top_k_profile_threshold_(kDefaultTopKProfileThreshold),
-      profile_compilation_info_(nullptr),
-      verbose_methods_(),
-      abort_on_hard_verifier_failure_(false),
-      abort_on_soft_verifier_failure_(false),
-      init_failure_output_(nullptr),
-      dump_cfg_file_name_(""),
-      dump_cfg_append_(false),
-      force_determinism_(false),
-      check_linkage_conditions_(false),
-      crash_on_linkage_violation_(false),
-      deduplicate_code_(true),
-      count_hotness_in_compiled_code_(false),
-      resolve_startup_const_strings_(false),
-      initialize_app_image_classes_(false),
-      check_profiled_methods_(ProfileMethodsCheck::kNone),
-      max_image_block_size_(std::numeric_limits<uint32_t>::max()),
-      register_allocation_strategy_(RegisterAllocator::kRegisterAllocatorDefault),
-      passes_to_run_(nullptr) {
-}
+CompilerOptions::CompilerOptions() :
+    compiler_filter_(CompilerFilter::kDefaultCompilerFilter),
+    huge_method_threshold_(kDefaultHugeMethodThreshold),
+    large_method_threshold_(kDefaultLargeMethodThreshold),
+    num_dex_methods_threshold_(kDefaultNumDexMethodsThreshold),
+    inline_max_code_units_(kUnsetInlineMaxCodeUnits),
+    instruction_set_(kRuntimeISA == InstructionSet::kArm ? InstructionSet::kThumb2 : kRuntimeISA),
+    instruction_set_features_(nullptr),
+    no_inline_from_(),
+    dex_files_for_oat_file_(),
+    image_classes_(),
+    verification_results_(nullptr),
+    compiler_type_(CompilerType::kAotCompiler),
+    image_type_(ImageType::kNone),
+    compile_art_test_(false),
+    baseline_(false),
+    debuggable_(false),
+    generate_debug_info_(kDefaultGenerateDebugInfo),
+    generate_mini_debug_info_(kDefaultGenerateMiniDebugInfo),
+    generate_build_id_(false),
+    implicit_null_checks_(true),
+    implicit_so_checks_(true),
+    implicit_suspend_checks_(false),
+    compile_pic_(false),
+    dump_timings_(false),
+    dump_pass_timings_(false),
+    dump_stats_(false),
+    top_k_profile_threshold_(kDefaultTopKProfileThreshold),
+    profile_compilation_info_(nullptr),
+    verbose_methods_(),
+    abort_on_hard_verifier_failure_(false),
+    abort_on_soft_verifier_failure_(false),
+    init_failure_output_(nullptr),
+    dump_cfg_file_name_(""),
+    dump_cfg_append_(false),
+    force_determinism_(false),
+    check_linkage_conditions_(false),
+    crash_on_linkage_violation_(false),
+    deduplicate_code_(true),
+    count_hotness_in_compiled_code_(false),
+    resolve_startup_const_strings_(false),
+    initialize_app_image_classes_(false),
+    check_profiled_methods_(ProfileMethodsCheck::kNone),
+    max_image_block_size_(std::numeric_limits<uint32_t>::max()),
+    register_allocation_strategy_(RegisterAllocator::kRegisterAllocatorDefault),
+    passes_to_run_(nullptr) {}
 
 CompilerOptions::~CompilerOptions() {
   // Everything done by member destructors.
@@ -93,8 +91,8 @@ CompilerOptions::~CompilerOptions() {
 
 namespace {
 
-bool kEmitRuntimeReadBarrierChecks = kIsDebugBuild &&
-    RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
+bool kEmitRuntimeReadBarrierChecks =
+    kIsDebugBuild && RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
 
 }  // namespace
 
@@ -118,7 +116,7 @@ bool CompilerOptions::ParseDumpInitFailures(const std::string& option, std::stri
 }
 
 bool CompilerOptions::ParseRegisterAllocationStrategy(const std::string& option,
-                                                      std::string* error_msg) {
+                                                      std::string*       error_msg) {
   if (option == "linear-scan") {
     register_allocation_strategy_ = RegisterAllocator::Strategy::kRegisterAllocatorLinearScan;
   } else if (option == "graph-color") {
@@ -131,9 +129,9 @@ bool CompilerOptions::ParseRegisterAllocationStrategy(const std::string& option,
 }
 
 bool CompilerOptions::ParseCompilerOptions(const std::vector<std::string>& options,
-                                           bool ignore_unrecognized,
-                                           std::string* error_msg) {
-  auto parser = CreateSimpleParser(ignore_unrecognized);
+                                           bool                            ignore_unrecognized,
+                                           std::string*                    error_msg) {
+  auto          parser       = CreateSimpleParser(ignore_unrecognized);
   CmdlineResult parse_result = parser.Parse(options);
   if (!parse_result.IsSuccess()) {
     *error_msg = parse_result.GetMessage();
@@ -157,13 +155,13 @@ const VerificationResults* CompilerOptions::GetVerificationResults() const {
 }
 
 const VerifiedMethod* CompilerOptions::GetVerifiedMethod(const DexFile* dex_file,
-                                                         uint32_t method_idx) const {
+                                                         uint32_t       method_idx) const {
   MethodReference ref(dex_file, method_idx);
   return verification_results_->GetVerifiedMethod(ref);
 }
 
-bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t method_idx,
-                                                      uint16_t class_def_idx,
+bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t       method_idx,
+                                                      uint16_t       class_def_idx,
                                                       const DexFile& dex_file) const {
   const VerifiedMethod* verified_method = GetVerifiedMethod(&dex_file, method_idx);
   if (verified_method != nullptr) {
@@ -176,11 +174,11 @@ bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t method_idx,
 
   // TODO: When compiling the boot image it should be safe to assume that everything is verified,
   // even if methods are not found in the verification cache.
-  const char* descriptor = dex_file.GetClassDescriptor(dex_file.GetClassDef(class_def_idx));
-  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  Thread* self = Thread::Current();
+  const char*        descriptor = dex_file.GetClassDescriptor(dex_file.GetClassDef(class_def_idx));
+  ClassLinker*       class_linker = Runtime::Current()->GetClassLinker();
+  Thread*            self         = Thread::Current();
   ScopedObjectAccess soa(self);
-  bool is_system_class = class_linker->FindSystemClass(self, descriptor) != nullptr;
+  bool               is_system_class = class_linker->FindSystemClass(self, descriptor) != nullptr;
   if (!is_system_class) {
     self->ClearException();
   }

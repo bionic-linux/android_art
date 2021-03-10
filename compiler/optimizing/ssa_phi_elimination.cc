@@ -17,9 +17,9 @@
 #include "ssa_phi_elimination.h"
 
 #include "base/arena_bit_vector.h"
+#include "base/bit_vector-inl.h"
 #include "base/scoped_arena_allocator.h"
 #include "base/scoped_arena_containers.h"
-#include "base/bit_vector-inl.h"
 
 namespace art {
 
@@ -33,7 +33,7 @@ void SsaDeadPhiElimination::MarkDeadPhis() {
   // Use local allocator for allocating memory used by this optimization.
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
-  static constexpr size_t kDefaultWorklistSize = 8;
+  static constexpr size_t  kDefaultWorklistSize = 8;
   ScopedArenaVector<HPhi*> worklist(allocator.Adapter(kArenaAllocSsaPhiElimination));
   worklist.reserve(kDefaultWorklistSize);
 
@@ -94,10 +94,10 @@ void SsaDeadPhiElimination::EliminateDeadPhis() {
   // no users left (dead phis might use dead phis).
   for (HBasicBlock* block : graph_->GetPostOrder()) {
     HInstruction* current = block->GetFirstPhi();
-    HInstruction* next = nullptr;
-    HPhi* phi;
+    HInstruction* next    = nullptr;
+    HPhi*         phi;
     while (current != nullptr) {
-      phi = current->AsPhi();
+      phi  = current->AsPhi();
       next = current->GetNext();
       if (phi->IsDead()) {
         // Make sure the phi is only used by other dead phis.
@@ -116,7 +116,7 @@ void SsaDeadPhiElimination::EliminateDeadPhis() {
           user->SetRawEnvAt(use.GetIndex(), nullptr);
         }
         // Delete it from the instruction list.
-        block->RemovePhi(phi, /*ensure_safety=*/ false);
+        block->RemovePhi(phi, /*ensure_safety=*/false);
       }
       current = next;
     }
@@ -127,7 +127,7 @@ bool SsaRedundantPhiElimination::Run() {
   // Use local allocator for allocating memory used by this optimization.
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
-  static constexpr size_t kDefaultWorklistSize = 8;
+  static constexpr size_t  kDefaultWorklistSize = 8;
   ScopedArenaVector<HPhi*> worklist(allocator.Adapter(kArenaAllocSsaPhiElimination));
   worklist.reserve(kDefaultWorklistSize);
 
@@ -167,7 +167,7 @@ bool SsaRedundantPhiElimination::Run() {
 
     cycle_worklist.push_back(phi);
     visited_phis_in_cycle.SetBit(phi->GetId());
-    bool catch_phi_in_cycle = phi->IsCatchPhi();
+    bool catch_phi_in_cycle            = phi->IsCatchPhi();
     bool irreducible_loop_phi_in_cycle = phi->IsIrreducibleLoopHeaderPhi();
 
     // First do a simple loop over inputs and check if they are all the same.

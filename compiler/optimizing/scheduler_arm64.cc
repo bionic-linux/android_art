@@ -24,9 +24,9 @@ namespace art {
 namespace arm64 {
 
 void SchedulingLatencyVisitorARM64::VisitBinaryOperation(HBinaryOperation* instr) {
-  last_visited_latency_ = DataType::IsFloatingPointType(instr->GetResultType())
-      ? kArm64FloatingPointOpLatency
-      : kArm64IntegerOpLatency;
+  last_visited_latency_ = DataType::IsFloatingPointType(instr->GetResultType()) ?
+                              kArm64FloatingPointOpLatency :
+                              kArm64IntegerOpLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitBitwiseNegatedRight(
@@ -82,29 +82,25 @@ void SchedulingLatencyVisitorARM64::VisitBoundsCheck(HBoundsCheck* ATTRIBUTE_UNU
 void SchedulingLatencyVisitorARM64::VisitDiv(HDiv* instr) {
   DataType::Type type = instr->GetResultType();
   switch (type) {
-    case DataType::Type::kFloat32:
-      last_visited_latency_ = kArm64DivFloatLatency;
-      break;
-    case DataType::Type::kFloat64:
-      last_visited_latency_ = kArm64DivDoubleLatency;
-      break;
+    case DataType::Type::kFloat32: last_visited_latency_ = kArm64DivFloatLatency; break;
+    case DataType::Type::kFloat64: last_visited_latency_ = kArm64DivDoubleLatency; break;
     default:
       // Follow the code path used by code generation.
       if (instr->GetRight()->IsConstant()) {
         int64_t imm = Int64FromConstant(instr->GetRight()->AsConstant());
         if (imm == 0) {
           last_visited_internal_latency_ = 0;
-          last_visited_latency_ = 0;
+          last_visited_latency_          = 0;
         } else if (imm == 1 || imm == -1) {
           last_visited_internal_latency_ = 0;
-          last_visited_latency_ = kArm64IntegerOpLatency;
+          last_visited_latency_          = kArm64IntegerOpLatency;
         } else if (IsPowerOfTwo(AbsOrMin(imm))) {
           last_visited_internal_latency_ = 4 * kArm64IntegerOpLatency;
-          last_visited_latency_ = kArm64IntegerOpLatency;
+          last_visited_latency_          = kArm64IntegerOpLatency;
         } else {
           DCHECK(imm <= -2 || imm >= 2);
           last_visited_internal_latency_ = 4 * kArm64IntegerOpLatency;
-          last_visited_latency_ = kArm64MulIntegerLatency;
+          last_visited_latency_          = kArm64MulIntegerLatency;
         }
       } else {
         last_visited_latency_ = kArm64DivIntegerLatency;
@@ -119,28 +115,28 @@ void SchedulingLatencyVisitorARM64::VisitInstanceFieldGet(HInstanceFieldGet* ATT
 
 void SchedulingLatencyVisitorARM64::VisitInstanceOf(HInstanceOf* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArm64CallInternalLatency;
-  last_visited_latency_ = kArm64IntegerOpLatency;
+  last_visited_latency_          = kArm64IntegerOpLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitInvoke(HInvoke* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArm64CallInternalLatency;
-  last_visited_latency_ = kArm64CallLatency;
+  last_visited_latency_          = kArm64CallLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitLoadString(HLoadString* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArm64LoadStringInternalLatency;
-  last_visited_latency_ = kArm64MemoryLoadLatency;
+  last_visited_latency_          = kArm64MemoryLoadLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitMul(HMul* instr) {
-  last_visited_latency_ = DataType::IsFloatingPointType(instr->GetResultType())
-      ? kArm64MulFloatingPointLatency
-      : kArm64MulIntegerLatency;
+  last_visited_latency_ = DataType::IsFloatingPointType(instr->GetResultType()) ?
+                              kArm64MulFloatingPointLatency :
+                              kArm64MulIntegerLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitNewArray(HNewArray* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArm64IntegerOpLatency + kArm64CallInternalLatency;
-  last_visited_latency_ = kArm64CallLatency;
+  last_visited_latency_          = kArm64CallLatency;
 }
 
 void SchedulingLatencyVisitorARM64::VisitNewInstance(HNewInstance* instruction) {
@@ -155,28 +151,28 @@ void SchedulingLatencyVisitorARM64::VisitNewInstance(HNewInstance* instruction) 
 void SchedulingLatencyVisitorARM64::VisitRem(HRem* instruction) {
   if (DataType::IsFloatingPointType(instruction->GetResultType())) {
     last_visited_internal_latency_ = kArm64CallInternalLatency;
-    last_visited_latency_ = kArm64CallLatency;
+    last_visited_latency_          = kArm64CallLatency;
   } else {
     // Follow the code path used by code generation.
     if (instruction->GetRight()->IsConstant()) {
       int64_t imm = Int64FromConstant(instruction->GetRight()->AsConstant());
       if (imm == 0) {
         last_visited_internal_latency_ = 0;
-        last_visited_latency_ = 0;
+        last_visited_latency_          = 0;
       } else if (imm == 1 || imm == -1) {
         last_visited_internal_latency_ = 0;
-        last_visited_latency_ = kArm64IntegerOpLatency;
+        last_visited_latency_          = kArm64IntegerOpLatency;
       } else if (IsPowerOfTwo(AbsOrMin(imm))) {
         last_visited_internal_latency_ = 4 * kArm64IntegerOpLatency;
-        last_visited_latency_ = kArm64IntegerOpLatency;
+        last_visited_latency_          = kArm64IntegerOpLatency;
       } else {
         DCHECK(imm <= -2 || imm >= 2);
         last_visited_internal_latency_ = 4 * kArm64IntegerOpLatency;
-        last_visited_latency_ = kArm64MulIntegerLatency;
+        last_visited_latency_          = kArm64MulIntegerLatency;
       }
     } else {
       last_visited_internal_latency_ = kArm64DivIntegerLatency;
-      last_visited_latency_ = kArm64MulIntegerLatency;
+      last_visited_latency_          = kArm64MulIntegerLatency;
     }
   }
 }
@@ -202,7 +198,7 @@ void SchedulingLatencyVisitorARM64::VisitTypeConversion(HTypeConversion* instr) 
   }
 }
 
-void SchedulingLatencyVisitorARM64::HandleSimpleArithmeticSIMD(HVecOperation *instr) {
+void SchedulingLatencyVisitorARM64::HandleSimpleArithmeticSIMD(HVecOperation* instr) {
   if (DataType::IsFloatingPointType(instr->GetPackedType())) {
     last_visited_latency_ = kArm64SIMDFloatingPointOpLatency;
   } else {
@@ -316,9 +312,8 @@ void SchedulingLatencyVisitorARM64::VisitVecMultiplyAccumulate(
   last_visited_latency_ = kArm64SIMDMulIntegerLatency;
 }
 
-void SchedulingLatencyVisitorARM64::HandleVecAddress(
-    HVecMemoryOperation* instruction,
-    size_t size ATTRIBUTE_UNUSED) {
+void SchedulingLatencyVisitorARM64::HandleVecAddress(HVecMemoryOperation* instruction,
+                                                     size_t size          ATTRIBUTE_UNUSED) {
   HInstruction* index = instruction->InputAt(1);
   if (!index->IsConstant()) {
     last_visited_internal_latency_ += kArm64DataProcWithShifterOpLatency;
@@ -327,11 +322,10 @@ void SchedulingLatencyVisitorARM64::HandleVecAddress(
 
 void SchedulingLatencyVisitorARM64::VisitVecLoad(HVecLoad* instr) {
   last_visited_internal_latency_ = 0;
-  size_t size = DataType::Size(instr->GetPackedType());
+  size_t size                    = DataType::Size(instr->GetPackedType());
 
-  if (instr->GetPackedType() == DataType::Type::kUint16
-      && mirror::kUseStringCompression
-      && instr->IsStringCharAt()) {
+  if (instr->GetPackedType() == DataType::Type::kUint16 && mirror::kUseStringCompression &&
+      instr->IsStringCharAt()) {
     // Set latencies for the uncompressed case.
     last_visited_internal_latency_ += kArm64MemoryLoadLatency + kArm64BranchLatency;
     HandleVecAddress(instr, size);
@@ -344,7 +338,7 @@ void SchedulingLatencyVisitorARM64::VisitVecLoad(HVecLoad* instr) {
 
 void SchedulingLatencyVisitorARM64::VisitVecStore(HVecStore* instr) {
   last_visited_internal_latency_ = 0;
-  size_t size = DataType::Size(instr->GetPackedType());
+  size_t size                    = DataType::Size(instr->GetPackedType());
   HandleVecAddress(instr, size);
   last_visited_latency_ = kArm64SIMDMemoryStoreLatency;
 }

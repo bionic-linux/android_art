@@ -31,12 +31,8 @@ class DexCompilationUnit;
  */
 class HOptimization : public ArenaObject<kArenaAllocOptimization> {
  public:
-  HOptimization(HGraph* graph,
-                const char* pass_name,
-                OptimizingCompilerStats* stats = nullptr)
-      : graph_(graph),
-        stats_(stats),
-        pass_name_(pass_name) {}
+  HOptimization(HGraph* graph, const char* pass_name, OptimizingCompilerStats* stats = nullptr) :
+      graph_(graph), stats_(stats), pass_name_(pass_name) {}
 
   virtual ~HOptimization() {}
 
@@ -44,14 +40,16 @@ class HOptimization : public ArenaObject<kArenaAllocOptimization> {
   // <optimization_name> or <optimization_name>$<pass_name> for common <optimization_name> prefix.
   // Example: 'instruction_simplifier', 'instruction_simplifier$after_bce',
   // 'instruction_simplifier$before_codegen'.
-  const char* GetPassName() const { return pass_name_; }
+  const char* GetPassName() const {
+    return pass_name_;
+  }
 
   // Perform the pass or analysis. Returns false if no optimizations occurred or no useful
   // information was computed (this is best effort, returning true is always ok).
   virtual bool Run() = 0;
 
  protected:
-  HGraph* const graph_;
+  HGraph* const                  graph_;
   // Used to record stats about the optimization.
   OptimizingCompilerStats* const stats_;
 
@@ -114,16 +112,16 @@ OptimizationPass OptimizationPassByName(const std::string& pass_name);
 // an optional alternative name (nullptr denotes default), and
 // an optional pass dependence (kNone denotes no dependence).
 struct OptimizationDef {
-  OptimizationDef(OptimizationPass p, const char* pn, OptimizationPass d)
-      : pass(p), pass_name(pn), depends_on(d) {}
+  OptimizationDef(OptimizationPass p, const char* pn, OptimizationPass d) :
+      pass(p), pass_name(pn), depends_on(d) {}
   OptimizationPass pass;
-  const char* pass_name;
+  const char*      pass_name;
   OptimizationPass depends_on;
 };
 
 // Helper method for optimization definition array entries.
 inline OptimizationDef OptDef(OptimizationPass pass,
-                              const char* pass_name = nullptr,
+                              const char*      pass_name  = nullptr,
                               OptimizationPass depends_on = OptimizationPass::kNone) {
   return OptimizationDef(pass, pass_name, depends_on);
 }
@@ -136,14 +134,13 @@ inline OptimizationDef OptDef(OptimizationPass pass,
 //      OptPass(Inliner),
 //      OptPass(kConstantFolding, "constant_folding$after_inlining")
 //    }
-ArenaVector<HOptimization*> ConstructOptimizations(
-    const OptimizationDef definitions[],
-    size_t length,
-    ArenaAllocator* allocator,
-    HGraph* graph,
-    OptimizingCompilerStats* stats,
-    CodeGenerator* codegen,
-    const DexCompilationUnit& dex_compilation_unit);
+ArenaVector<HOptimization*> ConstructOptimizations(const OptimizationDef     definitions[],
+                                                   size_t                    length,
+                                                   ArenaAllocator*           allocator,
+                                                   HGraph*                   graph,
+                                                   OptimizingCompilerStats*  stats,
+                                                   CodeGenerator*            codegen,
+                                                   const DexCompilationUnit& dex_compilation_unit);
 
 }  // namespace art
 

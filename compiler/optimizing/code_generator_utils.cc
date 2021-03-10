@@ -22,8 +22,7 @@
 
 namespace art {
 
-void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long,
-                                     int64_t* magic, int* shift) {
+void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long, int64_t* magic, int* shift) {
   // It does not make sense to calculate magic and shift for zero divisor.
   DCHECK_NE(divisor, 0);
 
@@ -51,18 +50,18 @@ void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long,
    * (resp. 64 - p) as the shift number S.
    */
 
-  int64_t p = is_long ? 63 : 31;
+  int64_t        p   = is_long ? 63 : 31;
   const uint64_t exp = is_long ? (UINT64_C(1) << 63) : (UINT32_C(1) << 31);
 
   // Initialize the computations.
   uint64_t abs_d = (divisor >= 0) ? divisor : -divisor;
-  uint64_t sign_bit = is_long ? static_cast<uint64_t>(divisor) >> 63 :
-                                static_cast<uint32_t>(divisor) >> 31;
-  uint64_t tmp = exp + sign_bit;
-  uint64_t abs_nc = tmp - 1 - (tmp % abs_d);
-  uint64_t quotient1 = exp / abs_nc;
+  uint64_t sign_bit =
+      is_long ? static_cast<uint64_t>(divisor) >> 63 : static_cast<uint32_t>(divisor) >> 31;
+  uint64_t tmp        = exp + sign_bit;
+  uint64_t abs_nc     = tmp - 1 - (tmp % abs_d);
+  uint64_t quotient1  = exp / abs_nc;
   uint64_t remainder1 = exp % abs_nc;
-  uint64_t quotient2 = exp / abs_d;
+  uint64_t quotient2  = exp / abs_d;
   uint64_t remainder2 = exp % abs_d;
 
   /*
@@ -72,13 +71,13 @@ void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long,
   uint64_t delta;
   do {
     p++;
-    quotient1 = 2 * quotient1;
+    quotient1  = 2 * quotient1;
     remainder1 = 2 * remainder1;
     if (remainder1 >= abs_nc) {
       quotient1++;
       remainder1 = remainder1 - abs_nc;
     }
-    quotient2 = 2 * quotient2;
+    quotient2  = 2 * quotient2;
     remainder2 = 2 * remainder2;
     if (remainder2 >= abs_d) {
       quotient2++;
@@ -107,14 +106,13 @@ bool IsBooleanValueOrMaterializedCondition(HInstruction* cond_input) {
 // If you want to use the class methods you need to become a friend of the class.
 class UnsignedUseAnalyzer {
  private:
-  explicit UnsignedUseAnalyzer(ArenaAllocator* allocator)
-      : seen_values_(allocator->Adapter(kArenaAllocCodeGenerator)) {
-  }
+  explicit UnsignedUseAnalyzer(ArenaAllocator* allocator) :
+      seen_values_(allocator->Adapter(kArenaAllocCodeGenerator)) {}
 
   bool IsNonNegativeUse(HInstruction* target_user, HInstruction* value);
   bool IsComparedValueNonNegativeInBlock(HInstruction* value,
-                                         HCondition* cond,
-                                         HBasicBlock* target_block);
+                                         HCondition*   cond,
+                                         HBasicBlock*  target_block);
 
   ArenaSet<HInstruction*> seen_values_;
 
@@ -124,23 +122,22 @@ class UnsignedUseAnalyzer {
 // Check that the value compared with a non-negavite value is
 // non-negative in the specified basic block.
 bool UnsignedUseAnalyzer::IsComparedValueNonNegativeInBlock(HInstruction* value,
-                                                            HCondition* cond,
-                                                            HBasicBlock* target_block) {
+                                                            HCondition*   cond,
+                                                            HBasicBlock*  target_block) {
   DCHECK(cond->HasInput(value));
 
   // To simplify analysis, we require:
   // 1. The condition basic block and target_block to be different.
   // 2. The condition basic block to end with HIf.
   // 3. HIf to use the condition.
-  if (cond->GetBlock() == target_block ||
-      !cond->GetBlock()->EndsWithIf() ||
+  if (cond->GetBlock() == target_block || !cond->GetBlock()->EndsWithIf() ||
       cond->GetBlock()->GetLastInstruction()->InputAt(0) != cond) {
     return false;
   }
 
   // We need to find a successor basic block of HIf for the case when instr is non-negative.
   // If the successor dominates target_block, instructions in target_block see a non-negative value.
-  HIf* if_instr = cond->GetBlock()->GetLastInstruction()->AsIf();
+  HIf*         if_instr  = cond->GetBlock()->GetLastInstruction()->AsIf();
   HBasicBlock* successor = nullptr;
   switch (cond->GetCondition()) {
     case kCondGT:
@@ -189,8 +186,7 @@ bool UnsignedUseAnalyzer::IsComparedValueNonNegativeInBlock(HInstruction* value,
       break;
     }
 
-    default:
-      return false;
+    default: return false;
   }
   DCHECK_NE(successor, nullptr);
 

@@ -18,6 +18,7 @@
 #define ART_COMPILER_DEX_VERIFICATION_RESULTS_H_
 
 #include <stdint.h>
+
 #include <set>
 
 #include "base/dchecked_vector.h"
@@ -45,11 +46,9 @@ class VerificationResults {
   ~VerificationResults();
 
   void ProcessVerifiedMethod(verifier::MethodVerifier* method_verifier)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!verified_methods_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!verified_methods_lock_);
 
-  void CreateVerifiedMethodFor(MethodReference ref)
-      REQUIRES(!verified_methods_lock_);
+  void CreateVerifiedMethodFor(MethodReference ref) REQUIRES(!verified_methods_lock_);
 
   const VerifiedMethod* GetVerifiedMethod(MethodReference ref) const
       REQUIRES(!verified_methods_lock_);
@@ -64,11 +63,11 @@ class VerificationResults {
 
  private:
   // Verified methods. The method array is fixed to avoid needing a lock to extend it.
-  using AtomicMap = AtomicDexRefMap<MethodReference, const VerifiedMethod*>;
+  using AtomicMap         = AtomicDexRefMap<MethodReference, const VerifiedMethod*>;
   using VerifiedMethodMap = SafeMap<MethodReference, const VerifiedMethod*>;
 
   VerifiedMethodMap verified_methods_ GUARDED_BY(verified_methods_lock_);
-  const CompilerOptions* const compiler_options_;
+  const CompilerOptions* const        compiler_options_;
 
   // Dex2oat can add dex files to atomic_verified_methods_ to avoid locking when calling
   // GetVerifiedMethod.
@@ -80,7 +79,7 @@ class VerificationResults {
   // Rejected classes.
   // TODO: External locking during CompilerDriver::PreCompile(), no locking during compilation.
   mutable ReaderWriterMutex rejected_classes_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
-  std::set<ClassReference> rejected_classes_ GUARDED_BY(rejected_classes_lock_);
+  std::set<ClassReference> rejected_classes_       GUARDED_BY(rejected_classes_lock_);
 
   friend class verifier::VerifierDepsTest;
 };

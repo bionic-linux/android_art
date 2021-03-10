@@ -47,10 +47,10 @@ namespace art {
  */
 class ConstructorFenceRedundancyElimination : public HOptimization {
  public:
-  ConstructorFenceRedundancyElimination(HGraph* graph,
+  ConstructorFenceRedundancyElimination(HGraph*                  graph,
                                         OptimizingCompilerStats* stats,
-                                        const char* name = kCFREPassName)
-      : HOptimization(graph, name, stats) {}
+                                        const char*              name = kCFREPassName) :
+      HOptimization(graph, name, stats) {}
 
   bool Run() override;
 

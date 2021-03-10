@@ -44,11 +44,10 @@
 
 namespace art {
 
-#define NUM_INSTRUCTIONS(...)  \
-  (sizeof((uint16_t[]) {__VA_ARGS__}) /sizeof(uint16_t))
+#define NUM_INSTRUCTIONS(...) (sizeof((uint16_t[]){__VA_ARGS__}) / sizeof(uint16_t))
 
-#define N_REGISTERS_CODE_ITEM(NUM_REGS, ...)                            \
-    { NUM_REGS, 0, 0, 0, 0, 0, NUM_INSTRUCTIONS(__VA_ARGS__), 0, __VA_ARGS__ }
+#define N_REGISTERS_CODE_ITEM(NUM_REGS, ...) \
+  { NUM_REGS, 0, 0, 0, 0, 0, NUM_INSTRUCTIONS(__VA_ARGS__), 0, __VA_ARGS__ }
 
 #define ZERO_REGISTER_CODE_ITEM(...)   N_REGISTERS_CODE_ITEM(0, __VA_ARGS__)
 #define ONE_REGISTER_CODE_ITEM(...)    N_REGISTERS_CODE_ITEM(1, __VA_ARGS__)
@@ -58,11 +57,11 @@ namespace art {
 #define FIVE_REGISTERS_CODE_ITEM(...)  N_REGISTERS_CODE_ITEM(5, __VA_ARGS__)
 #define SIX_REGISTERS_CODE_ITEM(...)   N_REGISTERS_CODE_ITEM(6, __VA_ARGS__)
 
-inline LiveInterval* BuildInterval(const size_t ranges[][2],
-                                   size_t number_of_ranges,
+inline LiveInterval* BuildInterval(const size_t          ranges[][2],
+                                   size_t                number_of_ranges,
                                    ScopedArenaAllocator* allocator,
-                                   int reg = -1,
-                                   HInstruction* defined_by = nullptr) {
+                                   int                   reg        = -1,
+                                   HInstruction*         defined_by = nullptr) {
   LiveInterval* interval =
       LiveInterval::MakeInterval(allocator, DataType::Type::kInt32, defined_by);
   if (defined_by != nullptr) {
@@ -93,17 +92,23 @@ inline void RemoveSuspendChecks(HGraph* graph) {
 
 class ArenaPoolAndAllocator {
  public:
-  ArenaPoolAndAllocator()
-      : pool_(), allocator_(&pool_), arena_stack_(&pool_), scoped_allocator_(&arena_stack_) { }
+  ArenaPoolAndAllocator() :
+      pool_(), allocator_(&pool_), arena_stack_(&pool_), scoped_allocator_(&arena_stack_) {}
 
-  ArenaAllocator* GetAllocator() { return &allocator_; }
-  ArenaStack* GetArenaStack() { return &arena_stack_; }
-  ScopedArenaAllocator* GetScopedAllocator() { return &scoped_allocator_; }
+  ArenaAllocator* GetAllocator() {
+    return &allocator_;
+  }
+  ArenaStack* GetArenaStack() {
+    return &arena_stack_;
+  }
+  ScopedArenaAllocator* GetScopedAllocator() {
+    return &scoped_allocator_;
+  }
 
  private:
-  MallocArenaPool pool_;
-  ArenaAllocator allocator_;
-  ArenaStack arena_stack_;
+  MallocArenaPool      pool_;
+  ArenaAllocator       allocator_;
+  ArenaStack           arena_stack_;
   ScopedArenaAllocator scoped_allocator_;
 };
 
@@ -111,16 +116,22 @@ class ArenaPoolAndAllocator {
 // multiple inheritance errors from having two gtest as a parent twice.
 class OptimizingUnitTestHelper {
  public:
-  OptimizingUnitTestHelper()
-      : pool_and_allocator_(new ArenaPoolAndAllocator()),
-        graph_(nullptr),
-        entry_block_(nullptr),
-        return_block_(nullptr),
-        exit_block_(nullptr) { }
+  OptimizingUnitTestHelper() :
+      pool_and_allocator_(new ArenaPoolAndAllocator()),
+      graph_(nullptr),
+      entry_block_(nullptr),
+      return_block_(nullptr),
+      exit_block_(nullptr) {}
 
-  ArenaAllocator* GetAllocator() { return pool_and_allocator_->GetAllocator(); }
-  ArenaStack* GetArenaStack() { return pool_and_allocator_->GetArenaStack(); }
-  ScopedArenaAllocator* GetScopedAllocator() { return pool_and_allocator_->GetScopedAllocator(); }
+  ArenaAllocator* GetAllocator() {
+    return pool_and_allocator_->GetAllocator();
+  }
+  ArenaStack* GetArenaStack() {
+    return pool_and_allocator_->GetArenaStack();
+  }
+  ScopedArenaAllocator* GetScopedAllocator() {
+    return pool_and_allocator_->GetScopedAllocator();
+  }
 
   void ResetPoolAndAllocator() {
     pool_and_allocator_.reset(new ArenaPoolAndAllocator());
@@ -131,37 +142,35 @@ class OptimizingUnitTestHelper {
 
     // Reserve a big array of 0s so the dex file constructor can offsets from the header.
     static constexpr size_t kDexDataSize = 4 * KB;
-    const uint8_t* dex_data = reinterpret_cast<uint8_t*>(allocator->Alloc(kDexDataSize));
+    const uint8_t*          dex_data = reinterpret_cast<uint8_t*>(allocator->Alloc(kDexDataSize));
 
     // Create the dex file based on the fake data. Call the constructor so that we can use virtual
     // functions. Don't use the arena for the StandardDexFile otherwise the dex location leaks.
-    dex_files_.emplace_back(new StandardDexFile(
-        dex_data,
-        sizeof(StandardDexFile::Header),
-        "no_location",
-        /*location_checksum*/ 0,
-        /*oat_dex_file*/ nullptr,
-        /*container*/ nullptr));
+    dex_files_.emplace_back(new StandardDexFile(dex_data,
+                                                sizeof(StandardDexFile::Header),
+                                                "no_location",
+                                                /*location_checksum*/ 0,
+                                                /*oat_dex_file*/ nullptr,
+                                                /*container*/ nullptr));
 
-    graph_ = new (allocator) HGraph(
-        allocator,
-        pool_and_allocator_->GetArenaStack(),
-        handles,
-        *dex_files_.back(),
-        /*method_idx*/-1,
-        kRuntimeISA);
+    graph_ = new (allocator) HGraph(allocator,
+                                    pool_and_allocator_->GetArenaStack(),
+                                    handles,
+                                    *dex_files_.back(),
+                                    /*method_idx*/ -1,
+                                    kRuntimeISA);
     return graph_;
   }
 
   // Create a control-flow graph from Dex instructions.
   HGraph* CreateCFG(const std::vector<uint16_t>& data,
-                    DataType::Type return_type = DataType::Type::kInt32,
-                    VariableSizedHandleScope* handles = nullptr) {
+                    DataType::Type               return_type = DataType::Type::kInt32,
+                    VariableSizedHandleScope*    handles     = nullptr) {
     HGraph* graph = CreateGraph(handles);
 
     // The code item data might not aligned to 4 bytes, copy it to ensure that.
     const size_t code_item_size = data.size() * sizeof(data.front());
-    void* aligned_data = GetAllocator()->Alloc(code_item_size);
+    void*        aligned_data   = GetAllocator()->Alloc(code_item_size);
     memcpy(aligned_data, &data[0], code_item_size);
     CHECK_ALIGNED(aligned_data, StandardDexFile::CodeItem::kAlignment);
     const dex::CodeItem* code_item = reinterpret_cast<const dex::CodeItem*>(aligned_data);
@@ -179,17 +188,17 @@ class OptimizingUnitTestHelper {
               /* verified_method= */ nullptr,
               /* dex_cache= */ Handle<mirror::DexCache>());  // Invalid handle.
       CodeItemDebugInfoAccessor accessor(graph->GetDexFile(), code_item, /*dex_method_idx*/ 0u);
-      HGraphBuilder builder(graph, dex_compilation_unit, accessor, return_type);
-      bool graph_built = (builder.BuildGraph() == kAnalysisSuccess);
+      HGraphBuilder             builder(graph, dex_compilation_unit, accessor, return_type);
+      bool                      graph_built = (builder.BuildGraph() == kAnalysisSuccess);
       return graph_built ? graph : nullptr;
     }
   }
 
   void InitGraph(VariableSizedHandleScope* handles = nullptr) {
     CreateGraph(handles);
-    entry_block_ = AddNewBlock();
+    entry_block_  = AddNewBlock();
     return_block_ = AddNewBlock();
-    exit_block_ = AddNewBlock();
+    exit_block_   = AddNewBlock();
 
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
@@ -234,14 +243,13 @@ class OptimizingUnitTestHelper {
     return CheckGraphSkipRefTypeInfoChecks(graph_, oss);
   }
 
-  HEnvironment* ManuallyBuildEnvFor(HInstruction* instruction,
+  HEnvironment* ManuallyBuildEnvFor(HInstruction*               instruction,
                                     ArenaVector<HInstruction*>* current_locals) {
-    HEnvironment* environment = new (GetAllocator()) HEnvironment(
-        (GetAllocator()),
-        current_locals->size(),
-        graph_->GetArtMethod(),
-        instruction->GetDexPc(),
-        instruction);
+    HEnvironment* environment = new (GetAllocator()) HEnvironment((GetAllocator()),
+                                                                  current_locals->size(),
+                                                                  graph_->GetArtMethod(),
+                                                                  instruction->GetDexPc(),
+                                                                  instruction);
 
     environment->CopyFrom(ArrayRef<HInstruction* const>(*current_locals));
     instruction->SetRawEnvironment(environment);
@@ -251,23 +259,26 @@ class OptimizingUnitTestHelper {
   void EnsurePredecessorOrder(HBasicBlock* target, std::initializer_list<HBasicBlock*> preds) {
     // Make sure the given preds and block predecessors have the same blocks.
     BitVector bv(preds.size(), false, Allocator::GetMallocAllocator());
-    auto preds_and_idx = ZipCount(MakeIterationRange(target->GetPredecessors()));
-    bool correct_preds = preds.size() == target->GetPredecessors().size() &&
-                         std::all_of(preds.begin(), preds.end(), [&](HBasicBlock* pred) {
-                           return std::any_of(preds_and_idx.begin(),
-                                              preds_and_idx.end(),
-                                              // Make sure every target predecessor is used only
-                                              // once.
-                                              [&](std::pair<HBasicBlock*, uint32_t> cur) {
-                                                if (cur.first == pred && !bv.IsBitSet(cur.second)) {
-                                                  bv.SetBit(cur.second);
-                                                  return true;
-                                                } else {
-                                                  return false;
-                                                }
-                                              });
-                         }) &&
-                         bv.NumSetBits() == preds.size();
+    auto      preds_and_idx = ZipCount(MakeIterationRange(target->GetPredecessors()));
+    bool      correct_preds =
+        preds.size() == target->GetPredecessors().size() &&
+        std::all_of(preds.begin(),
+                    preds.end(),
+                    [&](HBasicBlock* pred) {
+                      return std::any_of(preds_and_idx.begin(),
+                                         preds_and_idx.end(),
+                                         // Make sure every target predecessor is used only
+                                         // once.
+                                         [&](std::pair<HBasicBlock*, uint32_t> cur) {
+                                           if (cur.first == pred && !bv.IsBitSet(cur.second)) {
+                                             bv.SetBit(cur.second);
+                                             return true;
+                                           } else {
+                                             return false;
+                                           }
+                                         });
+                    }) &&
+        bv.NumSetBits() == preds.size();
     auto dump_list = [](auto it) {
       std::ostringstream oss;
       oss << "[";
@@ -300,9 +311,9 @@ class OptimizingUnitTestHelper {
   }
 
   std::vector<std::unique_ptr<const StandardDexFile>> dex_files_;
-  std::unique_ptr<ArenaPoolAndAllocator> pool_and_allocator_;
+  std::unique_ptr<ArenaPoolAndAllocator>              pool_and_allocator_;
 
-  HGraph* graph_;
+  HGraph*      graph_;
   HBasicBlock* entry_block_;
   HBasicBlock* return_block_;
   HBasicBlock* exit_block_;
@@ -339,25 +350,25 @@ inline bool IsRemoved(HInstruction* instruction) {
 class AdjacencyListGraph {
  public:
   using Edge = std::pair<const std::string_view, const std::string_view>;
-  AdjacencyListGraph(
-      HGraph* graph,
-      ArenaAllocator* alloc,
-      const std::string_view entry_name,
-      const std::string_view exit_name,
-      const std::vector<Edge>& adj) : graph_(graph) {
+  AdjacencyListGraph(HGraph*                  graph,
+                     ArenaAllocator*          alloc,
+                     const std::string_view   entry_name,
+                     const std::string_view   exit_name,
+                     const std::vector<Edge>& adj) :
+      graph_(graph) {
     auto create_block = [&]() {
       HBasicBlock* blk = new (alloc) HBasicBlock(graph_);
       graph_->AddBlock(blk);
       return blk;
     };
     HBasicBlock* entry = create_block();
-    HBasicBlock* exit = create_block();
+    HBasicBlock* exit  = create_block();
     graph_->SetEntryBlock(entry);
     graph_->SetExitBlock(exit);
     name_to_block_.Put(entry_name, entry);
     name_to_block_.Put(exit_name, exit);
     for (const auto& [src, dest] : adj) {
-      HBasicBlock* src_blk = name_to_block_.GetOrCreate(src, create_block);
+      HBasicBlock* src_blk  = name_to_block_.GetOrCreate(src, create_block);
       HBasicBlock* dest_blk = name_to_block_.GetOrCreate(dest, create_block);
       src_blk->AddSuccessor(dest_blk);
     }
@@ -381,7 +392,7 @@ class AdjacencyListGraph {
     return name_to_block_.Get(sv);
   }
 
-  AdjacencyListGraph(AdjacencyListGraph&&) = default;
+  AdjacencyListGraph(AdjacencyListGraph&&)      = default;
   AdjacencyListGraph(const AdjacencyListGraph&) = default;
   AdjacencyListGraph& operator=(AdjacencyListGraph&&) = default;
   AdjacencyListGraph& operator=(const AdjacencyListGraph&) = default;
@@ -405,8 +416,8 @@ class AdjacencyListGraph {
   }
 
  private:
-  HGraph* graph_;
-  SafeMap<const std::string_view, HBasicBlock*> name_to_block_;
+  HGraph*                                             graph_;
+  SafeMap<const std::string_view, HBasicBlock*>       name_to_block_;
   SafeMap<const HBasicBlock*, const std::string_view> block_to_name_;
 };
 

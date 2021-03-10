@@ -53,9 +53,7 @@ constexpr Primitive::Type DataTypeToPrimitive(DataType::Type type) {
     case DataType::Type::kFloat32: return Primitive::kPrimFloat;
     case DataType::Type::kFloat64: return Primitive::kPrimDouble;
     case DataType::Type::kVoid: return Primitive::kPrimVoid;
-    default:
-      LOG(FATAL) << "Unexpected type " << type;
-      UNREACHABLE();
+    default: LOG(FATAL) << "Unexpected type " << type; UNREACHABLE();
   }
 }
 

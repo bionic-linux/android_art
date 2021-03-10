@@ -18,14 +18,13 @@
 #define ART_COMPILER_OPTIMIZING_PRETTY_PRINTER_H_
 
 #include "android-base/stringprintf.h"
-
 #include "nodes.h"
 
 namespace art {
 
 class HPrettyPrinter : public HGraphVisitor {
  public:
-  explicit HPrettyPrinter(HGraph* graph) : HGraphVisitor(graph) { }
+  explicit HPrettyPrinter(HGraph* graph) : HGraphVisitor(graph) {}
 
   void PrintPreInstruction(HInstruction* instruction) {
     PrintString("  ");
@@ -76,7 +75,7 @@ class HPrettyPrinter : public HGraphVisitor {
     const ArenaVector<HBasicBlock*>& predecessors = block->GetPredecessors();
     if (!predecessors.empty()) {
       PrintString(", pred: ");
-      for (size_t i = 0; i < predecessors.size() -1; i++) {
+      for (size_t i = 0; i < predecessors.size() - 1; i++) {
         PrintInt(predecessors[i]->GetBlockId());
         PrintString(", ");
       }
@@ -95,8 +94,8 @@ class HPrettyPrinter : public HGraphVisitor {
     HGraphVisitor::VisitBasicBlock(block);
   }
 
-  virtual void PrintNewLine() = 0;
-  virtual void PrintInt(int value) = 0;
+  virtual void PrintNewLine()                 = 0;
+  virtual void PrintInt(int value)            = 0;
   virtual void PrintString(const char* value) = 0;
 
  private:
@@ -105,8 +104,8 @@ class HPrettyPrinter : public HGraphVisitor {
 
 class StringPrettyPrinter : public HPrettyPrinter {
  public:
-  explicit StringPrettyPrinter(HGraph* graph)
-      : HPrettyPrinter(graph), str_(""), current_block_(nullptr) { }
+  explicit StringPrettyPrinter(HGraph* graph) :
+      HPrettyPrinter(graph), str_(""), current_block_(nullptr) {}
 
   void PrintInt(int value) override {
     str_ += android::base::StringPrintf("%d", value);
@@ -120,9 +119,13 @@ class StringPrettyPrinter : public HPrettyPrinter {
     str_ += '\n';
   }
 
-  void Clear() { str_.clear(); }
+  void Clear() {
+    str_.clear();
+  }
 
-  std::string str() const { return str_; }
+  std::string str() const {
+    return str_;
+  }
 
   void VisitBasicBlock(HBasicBlock* block) override {
     current_block_ = block;
@@ -138,7 +141,7 @@ class StringPrettyPrinter : public HPrettyPrinter {
   }
 
  private:
-  std::string str_;
+  std::string  str_;
   HBasicBlock* current_block_;
 
   DISALLOW_COPY_AND_ASSIGN(StringPrettyPrinter);

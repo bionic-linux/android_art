@@ -39,7 +39,7 @@ namespace art {
 // Helper for transforming blocks to block_ids.
 class BlockToBlockIdTransformer {
  public:
-  BlockToBlockIdTransformer(BlockToBlockIdTransformer&&) = default;
+  BlockToBlockIdTransformer(BlockToBlockIdTransformer&&)      = default;
   BlockToBlockIdTransformer(const BlockToBlockIdTransformer&) = default;
   BlockToBlockIdTransformer() {}
 
@@ -51,7 +51,7 @@ class BlockToBlockIdTransformer {
 // Helper for transforming block ids to blocks.
 class BlockIdToBlockTransformer {
  public:
-  BlockIdToBlockTransformer(BlockIdToBlockTransformer&&) = default;
+  BlockIdToBlockTransformer(BlockIdToBlockTransformer&&)      = default;
   BlockIdToBlockTransformer(const BlockIdToBlockTransformer&) = default;
   explicit BlockIdToBlockTransformer(const HGraph* graph) : graph_(graph) {}
 
@@ -78,7 +78,7 @@ class BlockIdFilterThunk {
  public:
   explicit BlockIdFilterThunk(const BitVector& i) : inner_(i) {}
   BlockIdFilterThunk(BlockIdFilterThunk&& other) noexcept = default;
-  BlockIdFilterThunk(const BlockIdFilterThunk&) = default;
+  BlockIdFilterThunk(const BlockIdFilterThunk&)           = default;
 
   bool operator()(const HBasicBlock* b) const {
     return inner_.IsBitSet(b->GetBlockId());
@@ -117,20 +117,20 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
  public:
   using BitVecBlockRange =
       IterationRange<TransformIterator<BitVector::IndexIterator, BlockIdToBlockTransformer>>;
-  using FilteredBitVecBlockRange = IterationRange<
-      FilterIterator<ArenaVector<HBasicBlock*>::const_iterator, BlockIdFilterThunk>>;
+  using FilteredBitVecBlockRange =
+      IterationRange<FilterIterator<ArenaVector<HBasicBlock*>::const_iterator, BlockIdFilterThunk>>;
 
   // A set of connected blocks which are connected and removed from the
   // ExecutionSubgraph. See above comment for explanation.
   class ExcludedCohort : public ArenaObject<kArenaAllocLSA> {
    public:
-    ExcludedCohort(ExcludedCohort&&) = default;
+    ExcludedCohort(ExcludedCohort&&)      = default;
     ExcludedCohort(const ExcludedCohort&) = delete;
-    explicit ExcludedCohort(ScopedArenaAllocator* allocator, HGraph* graph)
-        : graph_(graph),
-          entry_blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA),
-          exit_blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA),
-          blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA) {}
+    explicit ExcludedCohort(ScopedArenaAllocator* allocator, HGraph* graph) :
+        graph_(graph),
+        entry_blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA),
+        exit_blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA),
+        blocks_(allocator, graph_->GetBlocks().size(), false, kArenaAllocLSA) {}
 
     ~ExcludedCohort() = default;
 
@@ -198,14 +198,14 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
 
    private:
     BitVecBlockRange BlockIterRange(const ArenaBitVector& bv) const {
-      auto indexes = bv.Indexes();
-      BitVecBlockRange res = MakeTransformRange(indexes, BlockIdToBlockTransformer(graph_));
+      auto             indexes = bv.Indexes();
+      BitVecBlockRange res     = MakeTransformRange(indexes, BlockIdToBlockTransformer(graph_));
       return res;
     }
 
     ExcludedCohort() = delete;
 
-    HGraph* graph_;
+    HGraph*        graph_;
     ArenaBitVector entry_blocks_;
     ArenaBitVector exit_blocks_;
     ArenaBitVector blocks_;
@@ -311,7 +311,7 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
     return allowed_successors_[blk->GetBlockId()];
   }
 
-  void LimitBlockSuccessors(const HBasicBlock* block,
+  void LimitBlockSuccessors(const HBasicBlock*                    block,
                             std::bitset<kMaxFilterableSuccessors> allowed) {
     needs_prune_ = true;
     allowed_successors_[block->GetBlockId()] &= allowed;
@@ -330,8 +330,8 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
 
   void RecalculateExcludedCohort();
 
-  HGraph* graph_;
-  ScopedArenaAllocator* allocator_;
+  HGraph*                                                  graph_;
+  ScopedArenaAllocator*                                    allocator_;
   // The map from block_id -> allowed-successors.
   // This is the canonical representation of this subgraph. If a bit in the
   // bitset is not set then the corresponding outgoing edge of that block is not
@@ -339,18 +339,18 @@ class ExecutionSubgraph : public ArenaObject<kArenaAllocLSA> {
   ScopedArenaVector<std::bitset<kMaxFilterableSuccessors>> allowed_successors_;
   // Helper that holds which blocks we are able to reach. Only valid if
   // 'needs_prune_ == false'.
-  ArenaBitVector unreachable_blocks_;
+  ArenaBitVector                                           unreachable_blocks_;
   // A list of the excluded-cohorts of this subgraph. This is only valid when
   // 'needs_prune_ == false'
-  std::optional<ScopedArenaVector<ExcludedCohort>> excluded_list_;
+  std::optional<ScopedArenaVector<ExcludedCohort>>         excluded_list_;
   // Bool to hold if there is at least one known path from the start block to
   // the end in this graph. Used to short-circuit computation.
-  bool valid_;
+  bool                                                     valid_;
   // True if the subgraph is consistent and can be queried. Modifying the
   // subgraph clears this and requires a prune to restore.
-  bool needs_prune_;
+  bool                                                     needs_prune_;
   // True if no more modification of the subgraph is permitted.
-  bool finalized_;
+  bool                                                     finalized_;
 
   friend class ExecutionSubgraphTest;
   friend class LoadStoreAnalysisTest;

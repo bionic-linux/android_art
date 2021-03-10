@@ -16,11 +16,10 @@
 
 #include "base/arena_allocator.h"
 #include "builder.h"
+#include "gtest/gtest.h"
 #include "nodes.h"
 #include "optimizing_unit_test.h"
 #include "pretty_printer.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -74,16 +73,15 @@ HBasicBlock* GraphTest::CreateExitBlock(HGraph* graph) {
   return block;
 }
 
-
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the false block to be the return block.
 TEST_F(GraphTest, IfSuccessorSimpleJoinBlock1) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
-  HBasicBlock* if_true = CreateGotoBlock(graph);
+  HGraph*      graph        = CreateGraph();
+  HBasicBlock* entry_block  = CreateEntryBlock(graph);
+  HBasicBlock* if_block     = CreateIfBlock(graph);
+  HBasicBlock* if_true      = CreateGotoBlock(graph);
   HBasicBlock* return_block = CreateReturnBlock(graph);
-  HBasicBlock* exit_block = CreateExitBlock(graph);
+  HBasicBlock* exit_block   = CreateExitBlock(graph);
 
   entry_block->AddSuccessor(if_block);
   if_block->AddSuccessor(if_true);
@@ -110,12 +108,12 @@ TEST_F(GraphTest, IfSuccessorSimpleJoinBlock1) {
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the true block to be the return block.
 TEST_F(GraphTest, IfSuccessorSimpleJoinBlock2) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
-  HBasicBlock* if_false = CreateGotoBlock(graph);
+  HGraph*      graph        = CreateGraph();
+  HBasicBlock* entry_block  = CreateEntryBlock(graph);
+  HBasicBlock* if_block     = CreateIfBlock(graph);
+  HBasicBlock* if_false     = CreateGotoBlock(graph);
   HBasicBlock* return_block = CreateReturnBlock(graph);
-  HBasicBlock* exit_block = CreateExitBlock(graph);
+  HBasicBlock* exit_block   = CreateExitBlock(graph);
 
   entry_block->AddSuccessor(if_block);
   if_block->AddSuccessor(return_block);
@@ -142,11 +140,11 @@ TEST_F(GraphTest, IfSuccessorSimpleJoinBlock2) {
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the true block to be the loop header.
 TEST_F(GraphTest, IfSuccessorMultipleBackEdges1) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
+  HGraph*      graph        = CreateGraph();
+  HBasicBlock* entry_block  = CreateEntryBlock(graph);
+  HBasicBlock* if_block     = CreateIfBlock(graph);
   HBasicBlock* return_block = CreateReturnBlock(graph);
-  HBasicBlock* exit_block = CreateExitBlock(graph);
+  HBasicBlock* exit_block   = CreateExitBlock(graph);
 
   entry_block->AddSuccessor(if_block);
   if_block->AddSuccessor(if_block);
@@ -174,11 +172,11 @@ TEST_F(GraphTest, IfSuccessorMultipleBackEdges1) {
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the false block to be the loop header.
 TEST_F(GraphTest, IfSuccessorMultipleBackEdges2) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
+  HGraph*      graph        = CreateGraph();
+  HBasicBlock* entry_block  = CreateEntryBlock(graph);
+  HBasicBlock* if_block     = CreateIfBlock(graph);
   HBasicBlock* return_block = CreateReturnBlock(graph);
-  HBasicBlock* exit_block = CreateExitBlock(graph);
+  HBasicBlock* exit_block   = CreateExitBlock(graph);
 
   entry_block->AddSuccessor(if_block);
   if_block->AddSuccessor(return_block);
@@ -206,12 +204,12 @@ TEST_F(GraphTest, IfSuccessorMultipleBackEdges2) {
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the true block to be a loop header with multiple pre headers.
 TEST_F(GraphTest, IfSuccessorMultiplePreHeaders1) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
+  HGraph*      graph          = CreateGraph();
+  HBasicBlock* entry_block    = CreateEntryBlock(graph);
   HBasicBlock* first_if_block = CreateIfBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
-  HBasicBlock* loop_block = CreateGotoBlock(graph);
-  HBasicBlock* return_block = CreateReturnBlock(graph);
+  HBasicBlock* if_block       = CreateIfBlock(graph);
+  HBasicBlock* loop_block     = CreateGotoBlock(graph);
+  HBasicBlock* return_block   = CreateReturnBlock(graph);
 
   entry_block->AddSuccessor(first_if_block);
   first_if_block->AddSuccessor(if_block);
@@ -219,7 +217,6 @@ TEST_F(GraphTest, IfSuccessorMultiplePreHeaders1) {
   loop_block->AddSuccessor(loop_block);
   if_block->AddSuccessor(loop_block);
   if_block->AddSuccessor(return_block);
-
 
   ASSERT_EQ(if_block->GetLastInstruction()->AsIf()->IfTrueSuccessor(), loop_block);
   ASSERT_EQ(if_block->GetLastInstruction()->AsIf()->IfFalseSuccessor(), return_block);
@@ -242,12 +239,12 @@ TEST_F(GraphTest, IfSuccessorMultiplePreHeaders1) {
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the false block to be a loop header with multiple pre headers.
 TEST_F(GraphTest, IfSuccessorMultiplePreHeaders2) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry_block = CreateEntryBlock(graph);
+  HGraph*      graph          = CreateGraph();
+  HBasicBlock* entry_block    = CreateEntryBlock(graph);
   HBasicBlock* first_if_block = CreateIfBlock(graph);
-  HBasicBlock* if_block = CreateIfBlock(graph);
-  HBasicBlock* loop_block = CreateGotoBlock(graph);
-  HBasicBlock* return_block = CreateReturnBlock(graph);
+  HBasicBlock* if_block       = CreateIfBlock(graph);
+  HBasicBlock* loop_block     = CreateGotoBlock(graph);
+  HBasicBlock* return_block   = CreateReturnBlock(graph);
 
   entry_block->AddSuccessor(first_if_block);
   first_if_block->AddSuccessor(if_block);
@@ -275,9 +272,9 @@ TEST_F(GraphTest, IfSuccessorMultiplePreHeaders2) {
 }
 
 TEST_F(GraphTest, InsertInstructionBefore) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* block = CreateGotoBlock(graph);
-  HInstruction* got = block->GetLastInstruction();
+  HGraph*       graph = CreateGraph();
+  HBasicBlock*  block = CreateGotoBlock(graph);
+  HInstruction* got   = block->GetLastInstruction();
   ASSERT_TRUE(got->IsControlFlow());
 
   // Test at the beginning of the block.

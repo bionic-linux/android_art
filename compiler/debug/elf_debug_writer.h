@@ -37,35 +37,29 @@ namespace debug {
 struct MethodDebugInfo;
 
 template <typename ElfTypes>
-void WriteDebugInfo(
-    ElfBuilder<ElfTypes>* builder,
-    const DebugInfo& debug_info);
+void WriteDebugInfo(ElfBuilder<ElfTypes>* builder, const DebugInfo& debug_info);
 
-std::vector<uint8_t> MakeMiniDebugInfo(
-    InstructionSet isa,
-    const InstructionSetFeatures* features,
-    uint64_t text_section_address,
-    size_t text_section_size,
-    uint64_t dex_section_address,
-    size_t dex_section_size,
-    const DebugInfo& debug_info);
+std::vector<uint8_t> MakeMiniDebugInfo(InstructionSet                isa,
+                                       const InstructionSetFeatures* features,
+                                       uint64_t                      text_section_address,
+                                       size_t                        text_section_size,
+                                       uint64_t                      dex_section_address,
+                                       size_t                        dex_section_size,
+                                       const DebugInfo&              debug_info);
 
-std::vector<uint8_t> MakeElfFileForJIT(
-    InstructionSet isa,
-    const InstructionSetFeatures* features,
-    bool mini_debug_info,
-    const MethodDebugInfo& method_info);
+std::vector<uint8_t> MakeElfFileForJIT(InstructionSet                isa,
+                                       const InstructionSetFeatures* features,
+                                       bool                          mini_debug_info,
+                                       const MethodDebugInfo&        method_info);
 
-std::vector<uint8_t> PackElfFileForJIT(
-    ArrayRef<const JITCodeEntry*> jit_entries,
-    ArrayRef<const void*> removed_symbols,
-    bool compress,
-    /*out*/ size_t* num_symbols);
+std::vector<uint8_t> PackElfFileForJIT(ArrayRef<const JITCodeEntry*> jit_entries,
+                                       ArrayRef<const void*>         removed_symbols,
+                                       bool                          compress,
+                                       /*out*/ size_t*               num_symbols);
 
-std::vector<uint8_t> WriteDebugElfFileForClasses(
-    InstructionSet isa,
-    const InstructionSetFeatures* features,
-    const ArrayRef<mirror::Class*>& types)
+std::vector<uint8_t> WriteDebugElfFileForClasses(InstructionSet                  isa,
+                                                 const InstructionSetFeatures*   features,
+                                                 const ArrayRef<mirror::Class*>& types)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 }  // namespace debug
