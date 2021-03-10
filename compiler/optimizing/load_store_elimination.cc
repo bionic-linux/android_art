@@ -1249,6 +1249,9 @@ class LSEVisitor final : private HGraphDelegateVisitor {
     ValueRecord old_value_record;
     HInstruction* stored_value;
   };
+  // Small pre-allocated initial buffer avoids initializing a large one until it's really needed.
+  static constexpr size_t kStoreRecordsInitialBufferSize = 16;
+  std::pair<HInstruction*, StoreRecord> store_records_buffer_[kStoreRecordsInitialBufferSize];
   ScopedArenaHashMap<HInstruction*, StoreRecord> store_records_;
 
   // Replacements for Phi placeholders.
@@ -1439,7 +1442,9 @@ LSEVisitor::LSEVisitor(HGraph* graph,
                                                   /*expandable=*/false,
                                                   kArenaAllocLSE),
       loads_requiring_loop_phi_(allocator_.Adapter(kArenaAllocLSE)),
-      store_records_(allocator_.Adapter(kArenaAllocLSE)),
+      store_records_(store_records_buffer_,
+                     kStoreRecordsInitialBufferSize,
+                     allocator_.Adapter(kArenaAllocLSE)),
       phi_placeholder_replacements_(num_phi_placeholders_,
                                     Value::Invalid(),
                                     allocator_.Adapter(kArenaAllocLSE)),
