@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6365127f_ac16db39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-10T08:23:40Z",
+      "side": 1,
+      "message": "This CL isn\u0027t going to work for A/B updates. In the simplest case, the same ART apex is installed on A and then B. After A/B update the device and inode will be different even though the APEX is the same. It\u0027s unclear to me how stable device number is on Android Linux (ie dynamic devices).\n\nWe also have the complication that an A/B update is likely to update DEX files on /system so the decision to recompile needs to consider this.\n\nBased on this, we should look at using richer information in the cache metadata to make the decision to recompile. This list could be:\n\n1) ART APEX version code and version name.\n\n2) ART file version numbers (.art, .oat, .vdex).\n\n3) List of all files used as compilation inputs and relevant metadata:\n\n       ∀ File inputs, i, Fi \u003d (location, size, hash, device number, inode)\n\nSame concerns on device number here. Hashing could be parallelized if not purely I/O limited.\n\nThoughts?\n\nThanks\n",
+      "revId": "62ba83987d49167488f60f4a18ed8f21aee4ae9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89e4717_0f48a2b0",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-09T21:37:10Z",
       "side": 1,
       "message": "device is overloaded :) is it partition?",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "62ba83987d49167488f60f4a18ed8f21aee4ae9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "383c4664_b62cf1ee",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-10T08:23:40Z",
+      "side": 1,
+      "message": "This will be dropped in the next PS per above.",
+      "parentUuid": "b89e4717_0f48a2b0",
       "range": {
         "startLine": 37,
         "startChar": 30,
