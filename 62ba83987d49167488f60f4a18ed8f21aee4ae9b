@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf9b3ce1_adeb0910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-10T09:25:49Z",
+      "side": 1,
+      "message": "If we had any guarantees over the stability of the device number (or partition) and inode then a hash check check could be avoided.\n\nA weaker alternative that shouldn\u0027t be considered, even in desperation, would be CRC32 since most of the inputs JAR (zip) files have a CRC32 in the file. The practical chances of updating just one JAR and keeping the size and CRC32 seem remote even though CRC32 is a awful measure.",
+      "parentUuid": "afe8f4e1_cf0c9696",
+      "revId": "62ba83987d49167488f60f4a18ed8f21aee4ae9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89e4717_0f48a2b0",
