@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b1003d_c2e545ad",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T00:01:40Z",
+      "side": 0,
+      "message": "Iirc this cache was here to keep parity with the API prior to libdexfile_external. I\u0027ve no opinion about it either way and don\u0027t know how much effect it has, can only suspect someone anticipated a pattern with repeated requests for the same limited number of methods. What\u0027s your thought on the cost/benefit here?\n\nIn any case, it\u0027d be preferable to separate this performance tuning from the API changes.",
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cc9cb0_6246931c",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T00:01:40Z",
+      "side": 0,
+      "message": "This and the other error below may be useful for debugging. If it\u0027s not passed back to the caller then log it here instead?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 90
+      },
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbf50ee_1a16f482",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T00:01:40Z",
+      "side": 0,
+      "message": "It\u0027s nice to get rid of this, but are there any trade-offs in dropping the container thing passed into loader.Open?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 24
+      },
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
