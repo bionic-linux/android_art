@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe8f4e1_cf0c9696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-03-10T08:38:05Z",
+      "side": 1,
+      "message": "Yeah the A/B case sounds difficult to manage correctly. Are you saying the version code + name is not enough to decide (eg just option 1)?\n\nFrom what I\u0027ve seen on most devices, hashing appears to be I/O limited, and giving the long discussion on the Pixel 3 thread, I don\u0027t think this would be considered acceptable in general.",
+      "parentUuid": "6365127f_ac16db39",
+      "revId": "62ba83987d49167488f60f4a18ed8f21aee4ae9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89e4717_0f48a2b0",
