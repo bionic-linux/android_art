@@ -24,6 +24,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36aa47a_f4c29065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "Thanks for the review.  Couple quick replies.",
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fba3a2c_dfefe883",
@@ -72,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e633353_49938050",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "I still seem to use unsigned heavily in ART.\nI suppose the question is which convention we follow? ART or Google?",
+      "parentUuid": "6aa61eb7_77811f68",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4804661_f5fa3655",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
@@ -83,6 +124,24 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 1,
       "message": "Clean up this too?",
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5771fe57_720ed0c3",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "For now it ensures I don\u0027t have to clean up users (i.e. create a topic)",
+      "parentUuid": "d4804661_f5fa3655",
       "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -146,6 +205,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5a9c6c8_7bfbedd6",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "Ditto.  I wanted to keep this API to keep this CL as stand-alone.",
+      "parentUuid": "073d962b_5a97bc57",
+      "range": {
+        "startLine": 158,
+        "startChar": 56,
+        "endLine": 158,
+        "endChar": 75
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3ab1bcb_8c962cb1",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
@@ -157,6 +240,30 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 1,
       "message": "The idea with DexString was to delay/avoid this string copy. This change means an extra string copy per method name in the call sites at https://cs.android.com/android/platform/superproject/+/master:system/unwinding/libunwindstack/DexFile.cpp;l\u003d85;drc\u003db218a544dc29696103c38876b19de230c64b9fdd and https://cs.android.com/android/platform/superproject/+/master:system/extras/simpleperf/read_dex_file.cpp;l\u003d42;drc\u003dmaster. Is the reduced code complexity worth the performance cost?",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f220bd_53da464e",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "Yeah, I wondered about the right way to pass the strings.  I tried various approaches, and concluded that the callback from the GetAllMethods is the way. I think you stumbled on the right answer almost by accident then :-)\n\nThere are no extra copies to current status quo. It is creating std::string here, but it allows to change the users to std::move, so same number of copies.\n\nFurthermore, one copy seems unavoidable. The temporary string in ART is used as builder, so likely overly big.  At least one copy (this one) is needed to create minimally sized string.\n\nFurthermore, having the API this way, does not lock us to ART side managing the memory.  The user can choose how to store the string (potentially more compactly then std::string).",
+      "parentUuid": "e3ab1bcb_8c962cb1",
       "range": {
         "startLine": 186,
         "startChar": 14,
@@ -180,6 +287,30 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 1,
       "message": "Why \"close\"? Imo \"free\" is better since it\u0027s not an fd or similar system resource.",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 33
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138044c9_7908ef2e",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 1,
+      "message": "Just a nit.  I wanted the pair to match. open/close.  new/free.  create/destroy. \n Any pair will do.",
+      "parentUuid": "b964011e_af9e6641",
       "range": {
         "startLine": 198,
         "startChar": 28,

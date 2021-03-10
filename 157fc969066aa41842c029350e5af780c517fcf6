@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca8bbd4d_3660f562",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 0,
+      "message": "It is likely that I have added that cache, and I still it is worthwhile.\n\nHowever, I believe it should be on the client side so that the user can choose the tradeoff and tweak the implementation and string storage.\n\nSo I don\u0027t want to remove it, just move it.",
+      "parentUuid": "e0b1003d_c2e545ad",
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5cc9cb0_6246931c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 0,
       "message": "This and the other error below may be useful for debugging. If it\u0027s not passed back to the caller then log it here instead?",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 90
+      },
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9198b97b_0c02890a",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-10T15:49:05Z",
+      "side": 0,
+      "message": "Log where? Just adb log?\nAm not sure if spamming agb log is ok...  it probably is.\nShould I add a flag to quiet it though?",
+      "parentUuid": "f5cc9cb0_6246931c",
       "range": {
         "startLine": 209,
         "startChar": 0,
