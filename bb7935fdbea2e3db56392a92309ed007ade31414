@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daed249e_7bee2ef0",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-11T11:19:14Z",
+      "side": 1,
+      "message": "I strongly disagree with the TotW article and I would replace it with \"you SHOULD understand the difference between signed and unsigned types and use them carefully, otherwise you SHOULD NOT use C/C++ for production code.\" The only decent suggestion there is to \"try not to mix signedness\".",
+      "parentUuid": "2e633353_49938050",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4804661_f5fa3655",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
