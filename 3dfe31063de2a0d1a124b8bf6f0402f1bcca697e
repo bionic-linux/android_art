@@ -16,6 +16,23 @@
       "message": "Hi, this maybe worth taking a look at.\n\nWe\u0027ve talked about the possibility of consulting version numbers, but this CL isn\u0027t attempting to do this.  We could add an option to dexoptanalyzer to version check binaries since doa depends on libart already: tbd how localized such version checks can be, ie loading just enough of each file to do the version check. Probably good for a follow up if we want to go this route.",
       "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c1a0ee_eabcc1af",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T17:51:49Z",
+      "side": 1,
+      "message": "Nit: blank line",
+      "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
