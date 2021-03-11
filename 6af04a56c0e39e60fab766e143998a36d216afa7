@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ba20f9_235957cc",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T16:51:25Z",
+      "side": 1,
+      "message": "JFYI, the code populates with only the compilable elements for the DEX2OATBOOTCLASSPATH.",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "6af04a56c0e39e60fab766e143998a36d216afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69116f46_194d8887",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T16:51:25Z",
+      "side": 1,
+      "message": "Same for SYSTEMSERVERCLASSPATH.",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 45
+      },
+      "revId": "6af04a56c0e39e60fab766e143998a36d216afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36196586_cb51b0ba",
+        "filename": "odrefresh/schema/current.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T16:51:25Z",
+      "side": 1,
+      "message": "xsdc\u0027s build needs a flag not to generate java and API info here. It\u0027s not useful as we\u0027re not using Java.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 24
+      },
+      "revId": "6af04a56c0e39e60fab766e143998a36d216afa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

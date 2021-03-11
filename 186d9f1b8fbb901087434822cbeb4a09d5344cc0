@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ab06c9_8f562da9",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T16:51:25Z",
+      "side": 1,
+      "message": "Gone.",
+      "parentUuid": "7686f19d_9c4020b3",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "186d9f1b8fbb901087434822cbeb4a09d5344cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04912705_c0917bd1",
