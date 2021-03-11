@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f48d2ef_41f5ded4",
+        "filename": ".clang-format",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T08:43:19Z",
+      "side": 1,
+      "message": "These are clearly not Google style and not the documented / defacto ART style.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "e2c98534cb912a1b9caa73646f6c5700ab038f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e5f8b8_4f454bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-11T08:43:19Z",
+      "side": 1,
+      "message": "I appreciate the effort here and use clang-format all the time, but can we drop the things that are definitely not ART / Google format styles here before landing?\n\n",
+      "revId": "e2c98534cb912a1b9caa73646f6c5700ab038f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
