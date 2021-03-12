@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c25aa73_cdac670f",
+        "filename": ".clang-format",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T09:36:24Z",
+      "side": 1,
+      "message": "I noticed that tweaking these settings reduce the churn in art/compiler/ sources:\n\n  AllowShortCaseLabelsOnASingleLine: false\n  BreakConstructorInitializers: BeforeColon\n\nBefore this tweak for art/compiler/ sources:\n\n  288 files changed, 17580 insertions(+), 20264 deletions(-)\n\nAfter this tweak for art/compiler/ sources:\n\n  277 files changed, 15367 insertions(+), 15969 deletions(-)\n\nApologies for the late comment here: it\u0027s a Friday so I took a little time to kick the tires this morning.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "27b4a5dcef999008242d19ebba0b7b08e59e46bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "373ce105_2a6252ee",
@@ -32,6 +55,23 @@
       "side": 1,
       "message": "Agreed.  I\u0027d like this to be as uncontroversial as possible :-)",
       "parentUuid": "373ce105_2a6252ee",
+      "revId": "27b4a5dcef999008242d19ebba0b7b08e59e46bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19f6c21_408ae7c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T09:36:24Z",
+      "side": 1,
+      "message": "No need to take an RTT on my +2 here before landing this, but I have one more suggested tweak for the .clang-format file. This is then better than my local clang-format and I\u0027d be super happy to use this instead. Thanks!",
       "revId": "27b4a5dcef999008242d19ebba0b7b08e59e46bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
