@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "89bcaf89_948bfa50",
+        "filename": ".clang-format",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-03-12T20:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d40d8642_6c537b89",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "e2c98534cb912a1b9caa73646f6c5700ab038f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "53e5f8b8_4f454bfc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
