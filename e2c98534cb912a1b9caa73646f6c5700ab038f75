@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40d8642_6c537b89",
+        "filename": ".clang-format",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-12T20:17:48Z",
+      "side": 1,
+      "message": "It looks like these two entries came back in the most recent patch.",
+      "parentUuid": "4b050310_5516f482",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 44
+      },
+      "revId": "e2c98534cb912a1b9caa73646f6c5700ab038f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "53e5f8b8_4f454bfc",
