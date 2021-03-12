@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8ffabd09_767b6fe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3600ef1_2b74a38a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d36aa47a_f4c29065",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 1,
       "message": "This overhead can be avoided by instead providing alternative functions to the ones that pass this struct, if it needs to be extended.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732cebea_3c5645de",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "Yes, we can add v2 definitions of the methods, but this would allow us to be less intrusive.\n\nIn particular, I think it would be nice to add filename and linenumber fields at some point.",
+      "parentUuid": "7fba3a2c_dfefe883",
       "range": {
         "startLine": 33,
         "startChar": 2,
@@ -135,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "605a7349_0984062a",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "I will go with Vladimir\u0027s decisive option.\nSign does not break the API regardless.",
+      "parentUuid": "daed249e_7bee2ef0",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4804661_f5fa3655",
@@ -183,6 +255,24 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 1,
       "message": "The implementation below is rather large; I think it\u0027s better off in dex_file_supp.cc.",
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2071eaac_834a7576",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6f638c_3c715025",
       "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -247,6 +337,48 @@
         "endLine": 158,
         "endChar": 75
       },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944286b0_8b58d23f",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5a9c6c8_7bfbedd6",
+      "range": {
+        "startLine": 158,
+        "startChar": 56,
+        "endLine": 158,
+        "endChar": 75
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2002f41a_e6c57925",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7343ea49_c72fc148",
       "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

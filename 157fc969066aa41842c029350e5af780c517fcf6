@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74dba60a_beb9fd08",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 0,
+      "message": "I suppose I can keep it for now.\n\nI already have CL ready which does the caching at libunwind side.",
+      "parentUuid": "ca8bbd4d_3660f562",
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5cc9cb0_6246931c",
@@ -83,6 +101,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b40b29b_167c367b",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 0,
+      "message": "I added error codes.",
+      "parentUuid": "9198b97b_0c02890a",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 90
+      },
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dbf50ee_1a16f482",
@@ -96,6 +138,30 @@
       "writtenOn": "2021-03-10T00:01:40Z",
       "side": 0,
       "message": "It\u0027s nice to get rid of this, but are there any trade-offs in dropping the container thing passed into loader.Open?",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 248,
+        "endChar": 24
+      },
+      "revId": "157fc969066aa41842c029350e5af780c517fcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086adee1_56ccda19",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-12T11:55:27Z",
+      "side": 0,
+      "message": "I think the container was there only to free the map, which we can do ourselves.",
+      "parentUuid": "5dbf50ee_1a16f482",
       "range": {
         "startLine": 248,
         "startChar": 4,
