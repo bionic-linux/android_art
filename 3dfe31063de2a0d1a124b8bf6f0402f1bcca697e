@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30498a64_8fc16768",
+        "filename": "odrefresh/CacheInfo.xsd",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T12:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c35a08_8b42966d",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63c1a0ee_eabcc1af",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8191b798_1bedd8e1",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T12:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c1a0ee_eabcc1af",
+      "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "182f2adf_3c0ea05d",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-03-12T09:25:57Z",
       "side": 1,
       "message": "Mention that this also implicilty checks that DEX2OAT_BOOTCLASSPATH and SYSTEMSERVERCLASSPATH have changed (by doing size checks on the number of components).",
+      "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55cc1c8_bad8e59f",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-03-12T12:21:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "182f2adf_3c0ea05d",
       "revId": "3dfe31063de2a0d1a124b8bf6f0402f1bcca697e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
