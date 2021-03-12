@@ -20,7 +20,6 @@
 #include <string_view>
 
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
 #include "base/runtime_debug.h"
@@ -83,8 +82,7 @@ CompilerOptions::CompilerOptions()
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
       register_allocation_strategy_(RegisterAllocator::kRegisterAllocatorDefault),
-      passes_to_run_(nullptr) {
-}
+      passes_to_run_(nullptr) {}
 
 CompilerOptions::~CompilerOptions() {
   // Everything done by member destructors.
@@ -93,8 +91,8 @@ CompilerOptions::~CompilerOptions() {
 
 namespace {
 
-bool kEmitRuntimeReadBarrierChecks = kIsDebugBuild &&
-    RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
+bool kEmitRuntimeReadBarrierChecks =
+    kIsDebugBuild && RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
 
 }  // namespace
 
@@ -118,7 +116,7 @@ bool CompilerOptions::ParseDumpInitFailures(const std::string& option, std::stri
 }
 
 bool CompilerOptions::ParseRegisterAllocationStrategy(const std::string& option,
-                                                      std::string* error_msg) {
+                                                      std::string*       error_msg) {
   if (option == "linear-scan") {
     register_allocation_strategy_ = RegisterAllocator::Strategy::kRegisterAllocatorLinearScan;
   } else if (option == "graph-color") {
@@ -131,9 +129,9 @@ bool CompilerOptions::ParseRegisterAllocationStrategy(const std::string& option,
 }
 
 bool CompilerOptions::ParseCompilerOptions(const std::vector<std::string>& options,
-                                           bool ignore_unrecognized,
-                                           std::string* error_msg) {
-  auto parser = CreateSimpleParser(ignore_unrecognized);
+                                           bool                            ignore_unrecognized,
+                                           std::string*                    error_msg) {
+  auto          parser       = CreateSimpleParser(ignore_unrecognized);
   CmdlineResult parse_result = parser.Parse(options);
   if (!parse_result.IsSuccess()) {
     *error_msg = parse_result.GetMessage();
@@ -157,13 +155,13 @@ const VerificationResults* CompilerOptions::GetVerificationResults() const {
 }
 
 const VerifiedMethod* CompilerOptions::GetVerifiedMethod(const DexFile* dex_file,
-                                                         uint32_t method_idx) const {
+                                                         uint32_t       method_idx) const {
   MethodReference ref(dex_file, method_idx);
   return verification_results_->GetVerifiedMethod(ref);
 }
 
-bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t method_idx,
-                                                      uint16_t class_def_idx,
+bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t       method_idx,
+                                                      uint16_t       class_def_idx,
                                                       const DexFile& dex_file) const {
   const VerifiedMethod* verified_method = GetVerifiedMethod(&dex_file, method_idx);
   if (verified_method != nullptr) {
@@ -176,11 +174,11 @@ bool CompilerOptions::IsMethodVerifiedWithoutFailures(uint32_t method_idx,
 
   // TODO: When compiling the boot image it should be safe to assume that everything is verified,
   // even if methods are not found in the verification cache.
-  const char* descriptor = dex_file.GetClassDescriptor(dex_file.GetClassDef(class_def_idx));
-  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  Thread* self = Thread::Current();
+  const char*        descriptor = dex_file.GetClassDescriptor(dex_file.GetClassDef(class_def_idx));
+  ClassLinker*       class_linker = Runtime::Current()->GetClassLinker();
+  Thread*            self         = Thread::Current();
   ScopedObjectAccess soa(self);
-  bool is_system_class = class_linker->FindSystemClass(self, descriptor) != nullptr;
+  bool               is_system_class = class_linker->FindSystemClass(self, descriptor) != nullptr;
   if (!is_system_class) {
     self->ClearException();
   }

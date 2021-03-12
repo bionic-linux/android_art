@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include <gtest/gtest.h>
-
 #include "src_map_elem.h"
+
+#include <gtest/gtest.h>
 
 #include "base/macros.h"
 
@@ -25,13 +25,13 @@ namespace debug {
 
 TEST(SrcMapElem, Operators) {
   SrcMapElem elems[] = {
-      { 1u, -1 },
-      { 1u, 0 },
-      { 1u, 1 },
-      { 2u, -1 },
-      { 2u, 0 },    // Index 4.
-      { 2u, 1 },
-      { 2u, 0u },   // Index 6: Arbitrarily add identical SrcMapElem with index 4.
+      {1u, -1},
+      {1u, 0},
+      {1u, 1},
+      {2u, -1},
+      {2u, 0},  // Index 4.
+      {2u, 1},
+      {2u, 0u},  // Index 6: Arbitrarily add identical SrcMapElem with index 4.
   };
 
   for (size_t i = 0; i != arraysize(elems); ++i) {

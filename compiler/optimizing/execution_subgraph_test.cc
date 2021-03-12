@@ -43,8 +43,8 @@ using BlockSet = std::unordered_set<const HBasicBlock*>;
 
 // Helper that checks validity directly.
 bool ExecutionSubgraphTestHelper::CalculateValidity(HGraph* graph, const ExecutionSubgraph* esg) {
-  bool reached_end = false;
-  std::queue<const HBasicBlock*> worklist;
+  bool                                   reached_end = false;
+  std::queue<const HBasicBlock*>         worklist;
   std::unordered_set<const HBasicBlock*> visited;
   worklist.push(graph->GetEntryBlock());
   while (!worklist.empty()) {
@@ -80,8 +80,8 @@ class ExecutionSubgraphTest : public OptimizingUnitTest {
  public:
   ExecutionSubgraphTest() : graph_(CreateGraph()) {}
 
-  AdjacencyListGraph SetupFromAdjacencyList(const std::string_view entry_name,
-                                            const std::string_view exit_name,
+  AdjacencyListGraph SetupFromAdjacencyList(const std::string_view                       entry_name,
+                                            const std::string_view                       exit_name,
                                             const std::vector<AdjacencyListGraph::Edge>& adj) {
     return AdjacencyListGraph(graph_, GetAllocator(), entry_name, exit_name, adj);
   }
@@ -140,7 +140,7 @@ TEST_F(ExecutionSubgraphTest, Basic) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("left"));
@@ -216,18 +216,18 @@ TEST_F(ExecutionSubgraphTest, Basic) {
 TEST_F(ExecutionSubgraphTest, Propagation) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "l1" },
-                                                   { "l1", "l1l" },
-                                                   { "l1", "l1r" },
-                                                   { "l1l", "l2" },
-                                                   { "l1r", "l2" },
-                                                   { "l2", "l2l" },
-                                                   { "l2", "l2r" },
-                                                   { "l2l", "l3" },
-                                                   { "l2r", "l3" },
-                                                   { "l3", "exit" },
-                                                   { "entry", "right" },
-                                                   { "right", "exit" } }));
+                                                 {{"entry", "l1"},
+                                                  {"l1", "l1l"},
+                                                  {"l1", "l1r"},
+                                                  {"l1l", "l2"},
+                                                  {"l1r", "l2"},
+                                                  {"l2", "l2l"},
+                                                  {"l2", "l2r"},
+                                                  {"l2l", "l3"},
+                                                  {"l2r", "l3"},
+                                                  {"l3", "exit"},
+                                                  {"entry", "right"},
+                                                  {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("l2"));
@@ -284,13 +284,13 @@ TEST_F(ExecutionSubgraphTest, Propagation) {
 TEST_F(ExecutionSubgraphTest, PropagationLoop) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "l1" },
-                                                   { "l1", "l2" },
-                                                   { "l1", "l1loop" },
-                                                   { "l1loop", "l1" },
-                                                   { "l2", "exit" },
-                                                   { "entry", "right" },
-                                                   { "right", "exit" } }));
+                                                 {{"entry", "l1"},
+                                                  {"l1", "l2"},
+                                                  {"l1", "l1loop"},
+                                                  {"l1loop", "l1"},
+                                                  {"l2", "exit"},
+                                                  {"entry", "right"},
+                                                  {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("l2"));
@@ -340,13 +340,13 @@ TEST_F(ExecutionSubgraphTest, PropagationLoop) {
 TEST_F(ExecutionSubgraphTest, PropagationLoop2) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "l1" },
-                                                   { "l1", "l2" },
-                                                   { "l1", "l1loop" },
-                                                   { "l1loop", "l1" },
-                                                   { "l2", "exit" },
-                                                   { "entry", "right" },
-                                                   { "right", "exit" } }));
+                                                 {{"entry", "l1"},
+                                                  {"l1", "l2"},
+                                                  {"l1", "l1loop"},
+                                                  {"l1loop", "l1"},
+                                                  {"l2", "exit"},
+                                                  {"entry", "right"},
+                                                  {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("l1"));
@@ -395,13 +395,13 @@ TEST_F(ExecutionSubgraphTest, PropagationLoop2) {
 TEST_F(ExecutionSubgraphTest, PropagationLoop3) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "l1" },
-                                                   { "l1", "l2" },
-                                                   { "l1", "l1loop" },
-                                                   { "l1loop", "l1" },
-                                                   { "l2", "exit" },
-                                                   { "entry", "right" },
-                                                   { "right", "exit" } }));
+                                                 {{"entry", "l1"},
+                                                  {"l1", "l2"},
+                                                  {"l1", "l1loop"},
+                                                  {"l1loop", "l1"},
+                                                  {"l2", "exit"},
+                                                  {"entry", "right"},
+                                                  {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("l1loop"));
@@ -573,7 +573,7 @@ TEST_F(ExecutionSubgraphTest, Invalid) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(
       "entry",
       "exit",
-      { { "entry", "left" }, { "entry", "right" }, { "left", "exit" }, { "right", "exit" } }));
+      {{"entry", "left"}, {"entry", "right"}, {"left", "exit"}, {"right", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("left"));
@@ -591,12 +591,12 @@ TEST_F(ExecutionSubgraphTest, Invalid) {
 TEST_F(ExecutionSubgraphTest, Exclusions) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "a" },
-                                                   { "entry", "b" },
-                                                   { "entry", "c" },
-                                                   { "a", "exit" },
-                                                   { "b", "exit" },
-                                                   { "c", "exit" } }));
+                                                 {{"entry", "a"},
+                                                  {"entry", "b"},
+                                                  {"entry", "c"},
+                                                  {"a", "exit"},
+                                                  {"b", "exit"},
+                                                  {"c", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("a"));
@@ -619,8 +619,8 @@ TEST_F(ExecutionSubgraphTest, Exclusions) {
 
   ArrayRef<const ExecutionSubgraph::ExcludedCohort> exclusions(esg.GetExcludedCohorts());
   ASSERT_EQ(exclusions.size(), 2u);
-  std::unordered_set<const HBasicBlock*> exclude_a({ blks.Get("a") });
-  std::unordered_set<const HBasicBlock*> exclude_c({ blks.Get("c") });
+  std::unordered_set<const HBasicBlock*> exclude_a({blks.Get("a")});
+  std::unordered_set<const HBasicBlock*> exclude_c({blks.Get("c")});
   ASSERT_TRUE(std::find_if(exclusions.cbegin(),
                            exclusions.cend(),
                            [&](const ExecutionSubgraph::ExcludedCohort& it) {
@@ -690,18 +690,18 @@ TEST_F(ExecutionSubgraphTest, Exclusions) {
 TEST_F(ExecutionSubgraphTest, ExclusionExtended) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "a" },
-                                                   { "entry", "b" },
-                                                   { "entry", "c_begin_1" },
-                                                   { "entry", "c_begin_2" },
-                                                   { "c_begin_1", "c_mid" },
-                                                   { "c_begin_2", "c_mid" },
-                                                   { "c_mid", "c_end_1" },
-                                                   { "c_mid", "c_end_2" },
-                                                   { "a", "exit" },
-                                                   { "b", "exit" },
-                                                   { "c_end_1", "exit" },
-                                                   { "c_end_2", "exit" } }));
+                                                 {{"entry", "a"},
+                                                  {"entry", "b"},
+                                                  {"entry", "c_begin_1"},
+                                                  {"entry", "c_begin_2"},
+                                                  {"c_begin_1", "c_mid"},
+                                                  {"c_begin_2", "c_mid"},
+                                                  {"c_mid", "c_end_1"},
+                                                  {"c_mid", "c_end_2"},
+                                                  {"a", "exit"},
+                                                  {"b", "exit"},
+                                                  {"c_end_1", "exit"},
+                                                  {"c_end_2", "exit"}}));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
   esg.RemoveBlock(blks.Get("a"));
@@ -728,12 +728,12 @@ TEST_F(ExecutionSubgraphTest, ExclusionExtended) {
 
   ArrayRef<const ExecutionSubgraph::ExcludedCohort> exclusions(esg.GetExcludedCohorts());
   ASSERT_EQ(exclusions.size(), 2u);
-  BlockSet exclude_a({ blks.Get("a") });
-  BlockSet exclude_c({ blks.Get("c_begin_1"),
-                       blks.Get("c_begin_2"),
-                       blks.Get("c_mid"),
-                       blks.Get("c_end_1"),
-                       blks.Get("c_end_2") });
+  BlockSet exclude_a({blks.Get("a")});
+  BlockSet exclude_c({blks.Get("c_begin_1"),
+                      blks.Get("c_begin_2"),
+                      blks.Get("c_mid"),
+                      blks.Get("c_end_1"),
+                      blks.Get("c_end_2")});
   ASSERT_TRUE(std::find_if(exclusions.cbegin(),
                            exclusions.cend(),
                            [&](const ExecutionSubgraph::ExcludedCohort& it) {
@@ -743,8 +743,8 @@ TEST_F(ExecutionSubgraphTest, ExclusionExtended) {
       std::find_if(
           exclusions.cbegin(), exclusions.cend(), [&](const ExecutionSubgraph::ExcludedCohort& it) {
             return it.Blocks() == exclude_c &&
-                   BlockSet({ blks.Get("c_begin_1"), blks.Get("c_begin_2") }) == it.EntryBlocks() &&
-                   BlockSet({ blks.Get("c_end_1"), blks.Get("c_end_2") }) == it.ExitBlocks();
+                   BlockSet({blks.Get("c_begin_1"), blks.Get("c_begin_2")}) == it.EntryBlocks() &&
+                   BlockSet({blks.Get("c_end_1"), blks.Get("c_end_2")}) == it.ExitBlocks();
           }) != exclusions.cend());
 }
 
@@ -778,13 +778,13 @@ TEST_F(ExecutionSubgraphTest, ExclusionExtended) {
 TEST_F(ExecutionSubgraphTest, InAndOutEscape) {
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",
                                                  "exit",
-                                                 { { "entry", "esc_top" },
-                                                   { "entry", "right" },
-                                                   { "esc_top", "middle" },
-                                                   { "right", "middle" },
-                                                   { "middle", "exit" },
-                                                   { "middle", "esc_bottom" },
-                                                   { "esc_bottom", "exit" } }));
+                                                 {{"entry", "esc_top"},
+                                                  {"entry", "right"},
+                                                  {"esc_top", "middle"},
+                                                  {"right", "middle"},
+                                                  {"middle", "exit"},
+                                                  {"middle", "esc_bottom"},
+                                                  {"esc_bottom", "exit"}}));
 
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
@@ -889,7 +889,7 @@ TEST_F(ExecutionSubgraphTest, BigNodesNoPath) {
 // Test with max number of successors
 TEST_F(ExecutionSubgraphTest, CanAnalyseBig) {
   // Make an absurdly huge and well connected graph. This should be pretty worst-case scenario.
-  constexpr size_t kNumBlocks = ExecutionSubgraph::kMaxFilterableSuccessors + 1000;
+  constexpr size_t         kNumBlocks = ExecutionSubgraph::kMaxFilterableSuccessors + 1000;
   std::vector<std::string> mid_blocks;
   for (auto i : Range(kNumBlocks)) {
     std::ostringstream oss;
@@ -920,8 +920,8 @@ TEST_F(ExecutionSubgraphTest, CanAnalyseBig) {
 // Test with many successors
 TEST_F(ExecutionSubgraphTest, CanAnalyseBig2) {
   // Make an absurdly huge and well connected graph. This should be pretty worst-case scenario.
-  constexpr size_t kNumBlocks = ExecutionSubgraph::kMaxFilterableSuccessors + 1000;
-  constexpr size_t kTestMaxSuccessors = ExecutionSubgraph::kMaxFilterableSuccessors - 1;
+  constexpr size_t         kNumBlocks         = ExecutionSubgraph::kMaxFilterableSuccessors + 1000;
+  constexpr size_t         kTestMaxSuccessors = ExecutionSubgraph::kMaxFilterableSuccessors - 1;
   std::vector<std::string> mid_blocks;
   for (auto i : Range(kNumBlocks)) {
     std::ostringstream oss;
@@ -938,8 +938,8 @@ TEST_F(ExecutionSubgraphTest, CanAnalyseBig2) {
   AdjacencyListGraph blks(SetupFromAdjacencyList(mid_blocks.front(), mid_blocks.back(), edges));
   ASSERT_TRUE(ExecutionSubgraph::CanAnalyse(graph_));
   ExecutionSubgraph esg(graph_, /*analysis_possible=*/true, GetScopedAllocator());
-  constexpr size_t kToRemoveIdx = kNumBlocks / 2;
-  HBasicBlock* remove_implicit = blks.Get(mid_blocks[kToRemoveIdx]);
+  constexpr size_t  kToRemoveIdx    = kNumBlocks / 2;
+  HBasicBlock*      remove_implicit = blks.Get(mid_blocks[kToRemoveIdx]);
   for (HBasicBlock* pred : remove_implicit->GetPredecessors()) {
     esg.RemoveBlock(pred);
   }

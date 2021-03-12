@@ -27,10 +27,10 @@ namespace art {
 
 class HBasicBlockBuilder : public ValueObject {
  public:
-  HBasicBlockBuilder(HGraph* graph,
-                     const DexFile* const dex_file,
+  HBasicBlockBuilder(HGraph*                          graph,
+                     const DexFile* const             dex_file,
                      const CodeItemDebugInfoAccessor& accessor,
-                     ScopedArenaAllocator* local_allocator);
+                     ScopedArenaAllocator*            local_allocator);
 
   // Creates basic blocks in `graph_` at branch target dex_pc positions of the
   // `code_item_`. Blocks are connected but left unpopulated with instructions.
@@ -41,8 +41,12 @@ class HBasicBlockBuilder : public ValueObject {
   // Creates basic blocks in `graph_` for compiling an intrinsic.
   void BuildIntrinsic();
 
-  size_t GetNumberOfBranches() const { return number_of_branches_; }
-  HBasicBlock* GetBlockAt(uint32_t dex_pc) const { return branch_targets_[dex_pc]; }
+  size_t GetNumberOfBranches() const {
+    return number_of_branches_;
+  }
+  HBasicBlock* GetBlockAt(uint32_t dex_pc) const {
+    return branch_targets_[dex_pc];
+  }
 
   size_t GetQuickenIndex(uint32_t dex_pc) const;
 
@@ -72,15 +76,15 @@ class HBasicBlockBuilder : public ValueObject {
   bool MightHaveLiveNormalPredecessors(HBasicBlock* catch_block);
 
   ArenaAllocator* const allocator_;
-  HGraph* const graph_;
+  HGraph* const         graph_;
 
   const DexFile* const dex_file_;
   CodeItemDataAccessor code_item_accessor_;  // null code item for intrinsic graph.
 
-  ScopedArenaAllocator* const local_allocator_;
+  ScopedArenaAllocator* const     local_allocator_;
   ScopedArenaVector<HBasicBlock*> branch_targets_;
   ScopedArenaVector<HBasicBlock*> throwing_blocks_;
-  size_t number_of_branches_;
+  size_t                          number_of_branches_;
 
   // A table to quickly find the quicken index for the first instruction of a basic block.
   ScopedArenaSafeMap<uint32_t, uint32_t> quicken_index_for_dex_pc_;

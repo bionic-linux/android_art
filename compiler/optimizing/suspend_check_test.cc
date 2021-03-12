@@ -16,11 +16,10 @@
 
 #include "builder.h"
 #include "dex/dex_instruction.h"
+#include "gtest/gtest.h"
 #include "nodes.h"
 #include "optimizing_unit_test.h"
 #include "pretty_printer.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -34,7 +33,7 @@ class SuspendCheckTest : public OptimizingUnitTest {
 };
 
 void SuspendCheckTest::TestCode(const std::vector<uint16_t>& data) {
-  HGraph* graph = CreateCFG(data);
+  HGraph*      graph       = CreateCFG(data);
   HBasicBlock* first_block = graph->GetEntryBlock()->GetSingleSuccessor();
   HBasicBlock* loop_header = first_block->GetSingleSuccessor();
   ASSERT_TRUE(loop_header->IsLoopHeader());
@@ -43,52 +42,42 @@ void SuspendCheckTest::TestCode(const std::vector<uint16_t>& data) {
 }
 
 TEST_F(SuspendCheckTest, CFG1) {
-  const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(
-    Instruction::NOP,
-    Instruction::GOTO | 0xFF00);
+  const std::vector<uint16_t> data =
+      ZERO_REGISTER_CODE_ITEM(Instruction::NOP, Instruction::GOTO | 0xFF00);
 
   TestCode(data);
 }
 
 TEST_F(SuspendCheckTest, CFG2) {
-  const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(
-    Instruction::GOTO_32, 0, 0);
+  const std::vector<uint16_t> data = ZERO_REGISTER_CODE_ITEM(Instruction::GOTO_32, 0, 0);
 
   TestCode(data);
 }
 
 TEST_F(SuspendCheckTest, CFG3) {
   const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQ, 0xFFFF,
-    Instruction::RETURN_VOID);
+      Instruction::CONST_4 | 0 | 0, Instruction::IF_EQ, 0xFFFF, Instruction::RETURN_VOID);
 
   TestCode(data);
 }
 
 TEST_F(SuspendCheckTest, CFG4) {
   const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_NE, 0xFFFF,
-    Instruction::RETURN_VOID);
+      Instruction::CONST_4 | 0 | 0, Instruction::IF_NE, 0xFFFF, Instruction::RETURN_VOID);
 
   TestCode(data);
 }
 
 TEST_F(SuspendCheckTest, CFG5) {
   const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_EQZ, 0xFFFF,
-    Instruction::RETURN_VOID);
+      Instruction::CONST_4 | 0 | 0, Instruction::IF_EQZ, 0xFFFF, Instruction::RETURN_VOID);
 
   TestCode(data);
 }
 
 TEST_F(SuspendCheckTest, CFG6) {
   const std::vector<uint16_t> data = ONE_REGISTER_CODE_ITEM(
-    Instruction::CONST_4 | 0 | 0,
-    Instruction::IF_NEZ, 0xFFFF,
-    Instruction::RETURN_VOID);
+      Instruction::CONST_4 | 0 | 0, Instruction::IF_NEZ, 0xFFFF, Instruction::RETURN_VOID);
 
   TestCode(data);
 }

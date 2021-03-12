@@ -53,7 +53,7 @@ class VerifiedMethod {
 
  private:
   const uint32_t encountered_error_types_;
-  const bool has_runtime_throw_;
+  const bool     has_runtime_throw_;
 };
 
 }  // namespace art

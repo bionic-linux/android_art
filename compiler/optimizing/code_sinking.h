@@ -28,9 +28,9 @@ namespace art {
  */
 class CodeSinking : public HOptimization {
  public:
-  CodeSinking(HGraph* graph,
+  CodeSinking(HGraph*                  graph,
               OptimizingCompilerStats* stats,
-              const char* name = kCodeSinkingPassName)
+              const char*              name = kCodeSinkingPassName)
       : HOptimization(graph, name, stats) {}
 
   bool Run() override;

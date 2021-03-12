@@ -51,7 +51,7 @@ struct InlineIGetIPutData {
   uint16_t op_variant : 3;
   uint16_t method_is_static : 1;
   uint16_t object_arg : 4;
-  uint16_t src_arg : 4;  // iput only
+  uint16_t src_arg : 4;           // iput only
   uint16_t return_arg_plus1 : 4;  // iput only, method argument to return + 1, 0 = return void.
   uint16_t field_idx;
   uint32_t is_volatile : 1;
@@ -85,9 +85,9 @@ static_assert(sizeof(InlineConstructorData) == sizeof(uint64_t),
 struct InlineMethod {
   InlineMethodOpcode opcode;
   union {
-    uint64_t data;
-    InlineIGetIPutData ifield_data;
-    InlineReturnArgData return_data;
+    uint64_t              data;
+    InlineIGetIPutData    ifield_data;
+    InlineReturnArgData   return_data;
     InlineConstructorData constructor_data;
   } d;
 };
@@ -124,31 +124,28 @@ class InlineMethodAnalyser {
 
  private:
   static bool AnalyseMethodCode(const CodeItemDataAccessor* code_item,
-                                const MethodReference& method_ref,
-                                bool is_static,
-                                ArtMethod* method,
-                                InlineMethod* result)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+                                const MethodReference&      method_ref,
+                                bool                        is_static,
+                                ArtMethod*                  method,
+                                InlineMethod* result) REQUIRES_SHARED(Locks::mutator_lock_);
   static bool AnalyseReturnMethod(const CodeItemDataAccessor* code_item, InlineMethod* result);
   static bool AnalyseConstMethod(const CodeItemDataAccessor* code_item, InlineMethod* result);
   static bool AnalyseIGetMethod(const CodeItemDataAccessor* code_item,
-                                const MethodReference& method_ref,
-                                bool is_static,
-                                ArtMethod* method,
-                                InlineMethod* result)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+                                const MethodReference&      method_ref,
+                                bool                        is_static,
+                                ArtMethod*                  method,
+                                InlineMethod* result) REQUIRES_SHARED(Locks::mutator_lock_);
   static bool AnalyseIPutMethod(const CodeItemDataAccessor* code_item,
-                                const MethodReference& method_ref,
-                                bool is_static,
-                                ArtMethod* method,
-                                InlineMethod* result)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+                                const MethodReference&      method_ref,
+                                bool                        is_static,
+                                ArtMethod*                  method,
+                                InlineMethod* result) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Can we fast path instance field access in a verified accessor?
   // If yes, computes field's offset and volatility and whether the method is static or not.
-  static bool ComputeSpecialAccessorInfo(ArtMethod* method,
-                                         uint32_t field_idx,
-                                         bool is_put,
+  static bool ComputeSpecialAccessorInfo(ArtMethod*          method,
+                                         uint32_t            field_idx,
+                                         bool                is_put,
                                          InlineIGetIPutData* result)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };

@@ -41,8 +41,8 @@ using MacroAsm32UniquePtr = std::unique_ptr<JNIMacroAssembler<PointerSize::k32>>
 
 template <>
 MacroAsm32UniquePtr JNIMacroAssembler<PointerSize::k32>::Create(
-    ArenaAllocator* allocator,
-    InstructionSet instruction_set,
+    ArenaAllocator*               allocator,
+    InstructionSet                instruction_set,
     const InstructionSetFeatures* instruction_set_features) {
   // TODO: Remove the parameter from API (not needed after Mips target was removed).
   UNUSED(instruction_set_features);
@@ -67,8 +67,8 @@ using MacroAsm64UniquePtr = std::unique_ptr<JNIMacroAssembler<PointerSize::k64>>
 
 template <>
 MacroAsm64UniquePtr JNIMacroAssembler<PointerSize::k64>::Create(
-    ArenaAllocator* allocator,
-    InstructionSet instruction_set,
+    ArenaAllocator*               allocator,
+    InstructionSet                instruction_set,
     const InstructionSetFeatures* instruction_set_features) {
   // TODO: Remove the parameter from API (not needed after Mips64 target was removed).
   UNUSED(instruction_set_features);

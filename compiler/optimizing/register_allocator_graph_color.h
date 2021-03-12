@@ -86,10 +86,10 @@ enum class CoalesceKind;
  */
 class RegisterAllocatorGraphColor : public RegisterAllocator {
  public:
-  RegisterAllocatorGraphColor(ScopedArenaAllocator* allocator,
-                              CodeGenerator* codegen,
+  RegisterAllocatorGraphColor(ScopedArenaAllocator*      allocator,
+                              CodeGenerator*             codegen,
                               const SsaLivenessAnalysis& analysis,
-                              bool iterative_move_coalescing = true);
+                              bool                       iterative_move_coalescing = true);
   ~RegisterAllocatorGraphColor() override;
 
   void AllocateRegisters() override;

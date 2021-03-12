@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include <gtest/gtest.h>
-
 #include "linker_patch.h"
+
+#include <gtest/gtest.h>
 
 namespace art {
 namespace linker {
@@ -24,7 +24,7 @@ namespace linker {
 TEST(LinkerPatch, LinkerPatchOperators) {
   const DexFile* dex_file1 = reinterpret_cast<const DexFile*>(1);
   const DexFile* dex_file2 = reinterpret_cast<const DexFile*>(2);
-  LinkerPatch patches[] = {
+  LinkerPatch    patches[] = {
       LinkerPatch::IntrinsicReferencePatch(16u, 3000u, 1000u),
       LinkerPatch::IntrinsicReferencePatch(16u, 3001u, 1000u),
       LinkerPatch::IntrinsicReferencePatch(16u, 3000u, 1001u),

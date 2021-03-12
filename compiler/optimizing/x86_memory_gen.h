@@ -27,14 +27,12 @@ namespace x86 {
 
 class X86MemoryOperandGeneration : public HOptimization {
  public:
-  X86MemoryOperandGeneration(HGraph* graph,
-                             CodeGenerator* codegen,
-                             OptimizingCompilerStats* stats);
+  X86MemoryOperandGeneration(HGraph* graph, CodeGenerator* codegen, OptimizingCompilerStats* stats);
 
   bool Run() override;
 
   static constexpr const char* kX86MemoryOperandGenerationPassName =
-          "x86_memory_operand_generation";
+      "x86_memory_operand_generation";
 
  private:
   bool do_implicit_null_checks_;

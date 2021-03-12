@@ -64,18 +64,22 @@ class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
   class ScratchRegisterScope : public ValueObject {
    public:
     ScratchRegisterScope(ParallelMoveResolverWithSwap* resolver,
-                         int blocked,
-                         int if_scratch,
-                         int number_of_registers);
+                         int                           blocked,
+                         int                           if_scratch,
+                         int                           number_of_registers);
     ~ScratchRegisterScope();
 
-    int GetRegister() const { return reg_; }
-    bool IsSpilled() const { return spilled_; }
+    int GetRegister() const {
+      return reg_;
+    }
+    bool IsSpilled() const {
+      return spilled_;
+    }
 
    private:
     ParallelMoveResolverWithSwap* resolver_;
-    int reg_;
-    bool spilled_;
+    int                           reg_;
+    bool                          spilled_;
   };
 
   // Return true if the location can be scratched.
@@ -91,7 +95,7 @@ class ParallelMoveResolverWithSwap : public ParallelMoveResolver {
   // Execute a move by emitting a swap of two operands.
   virtual void EmitSwap(size_t index) = 0;
 
-  virtual void SpillScratch(int reg) = 0;
+  virtual void SpillScratch(int reg)   = 0;
   virtual void RestoreScratch(int reg) = 0;
 
   static constexpr int kNoRegister = -1;

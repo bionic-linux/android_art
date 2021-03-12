@@ -15,7 +15,6 @@
  */
 
 #include "code_generator_x86.h"
-
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
 
@@ -27,8 +26,8 @@ namespace x86 {
 
 void LocationsBuilderX86::VisitVecReplicateScalar(HVecReplicateScalar* instruction) {
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instruction);
-  HInstruction* input = instruction->InputAt(0);
-  bool is_zero = IsZeroBitPattern(input);
+  HInstruction*    input     = instruction->InputAt(0);
+  bool             is_zero   = IsZeroBitPattern(input);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt64:
       // Long needs extra temporary to load from the register pair.
@@ -42,16 +41,17 @@ void LocationsBuilderX86::VisitVecReplicateScalar(HVecReplicateScalar* instructi
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
-      locations->SetOut(is_zero ? Location::RequiresFpuRegister()
-                                : Location::SameAsFirstInput());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant()) :
+                                   Location::RequiresFpuRegister());
+      locations->SetOut(is_zero ? Location::RequiresFpuRegister() : Location::SameAsFirstInput());
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -61,7 +61,7 @@ void LocationsBuilderX86::VisitVecReplicateScalar(HVecReplicateScalar* instructi
 
 void InstructionCodeGeneratorX86::VisitVecReplicateScalar(HVecReplicateScalar* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
 
   bool cpu_has_avx = CpuHasAvxFeatureFlag();
   // Shorthand for any type of zero.
@@ -95,10 +95,10 @@ void InstructionCodeGeneratorX86::VisitVecReplicateScalar(HVecReplicateScalar* i
     case DataType::Type::kInt64: {
       DCHECK_EQ(2u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ movd(dst, locations->InAt(0).AsRegisterPairLow<Register>());
-      __ movd(tmp, locations->InAt(0).AsRegisterPairHigh<Register>());
-      __ punpckldq(dst, tmp);
-      __ punpcklqdq(dst, dst);
+      __          movd(dst, locations->InAt(0).AsRegisterPairLow<Register>());
+      __          movd(tmp, locations->InAt(0).AsRegisterPairHigh<Register>());
+      __          punpckldq(dst, tmp);
+      __          punpcklqdq(dst, dst);
       break;
     }
     case DataType::Type::kFloat32:
@@ -146,7 +146,7 @@ void LocationsBuilderX86::VisitVecExtractScalar(HVecExtractScalar* instruction) 
 
 void InstructionCodeGeneratorX86::VisitVecExtractScalar(HVecExtractScalar* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:
@@ -163,9 +163,9 @@ void InstructionCodeGeneratorX86::VisitVecExtractScalar(HVecExtractScalar* instr
     case DataType::Type::kInt64: {
       DCHECK_EQ(2u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ movd(locations->Out().AsRegisterPairLow<Register>(), src);
-      __ pshufd(tmp, src, Immediate(1));
-      __ movd(locations->Out().AsRegisterPairHigh<Register>(), tmp);
+      __          movd(locations->Out().AsRegisterPairLow<Register>(), src);
+      __          pshufd(tmp, src, Immediate(1));
+      __          movd(locations->Out().AsRegisterPairHigh<Register>(), tmp);
       break;
     }
     case DataType::Type::kFloat32:
@@ -214,8 +214,8 @@ void LocationsBuilderX86::VisitVecReduce(HVecReduce* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecReduce(HVecReduce* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
@@ -260,10 +260,10 @@ void LocationsBuilderX86::VisitVecCnv(HVecCnv* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecCnv(HVecCnv* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
-  DataType::Type from = instruction->GetInputType();
-  DataType::Type to = instruction->GetResultType();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
+  DataType::Type   from      = instruction->GetInputType();
+  DataType::Type   to        = instruction->GetResultType();
   if (from == DataType::Type::kInt32 && to == DataType::Type::kFloat32) {
     DCHECK_EQ(4u, instruction->GetVectorLength());
     __ cvtdq2ps(dst, src);
@@ -278,8 +278,8 @@ void LocationsBuilderX86::VisitVecNeg(HVecNeg* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecNeg(HVecNeg* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
     case DataType::Type::kInt8:
@@ -329,17 +329,17 @@ void LocationsBuilderX86::VisitVecAbs(HVecAbs* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecAbs(HVecAbs* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32: {
       DCHECK_EQ(4u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ movaps(dst, src);
-      __ pxor(tmp, tmp);
-      __ pcmpgtd(tmp, dst);
-      __ pxor(dst, tmp);
-      __ psubd(dst, tmp);
+      __          movaps(dst, src);
+      __          pxor(tmp, tmp);
+      __          pcmpgtd(tmp, dst);
+      __          pxor(dst, tmp);
+      __          psubd(dst, tmp);
       break;
     }
     case DataType::Type::kFloat32:
@@ -370,16 +370,16 @@ void LocationsBuilderX86::VisitVecNot(HVecNot* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecNot(HVecNot* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      src       = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool: {  // special case boolean-not
       DCHECK_EQ(16u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ pxor(dst, dst);
-      __ pcmpeqb(tmp, tmp);  // all ones
-      __ psubb(dst, tmp);  // 16 x one
-      __ pxor(dst, src);
+      __          pxor(dst, dst);
+      __          pcmpeqb(tmp, tmp);  // all ones
+      __          psubb(dst, tmp);    // 16 x one
+      __          pxor(dst, src);
       break;
     }
     case DataType::Type::kUint8:
@@ -463,11 +463,11 @@ void LocationsBuilderX86::VisitVecAdd(HVecAdd* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecAdd(HVecAdd* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
@@ -482,7 +482,7 @@ void InstructionCodeGeneratorX86::VisitVecAdd(HVecAdd* instruction) {
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vpaddd(dst, other_src, src) : __ paddd(dst, src);
+      cpu_has_avx ? __ vpaddd(dst, other_src, src) : __ paddd(dst, src);
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
@@ -570,11 +570,11 @@ void LocationsBuilderX86::VisitVecSub(HVecSub* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecSub(HVecSub* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint8:
@@ -589,7 +589,7 @@ void InstructionCodeGeneratorX86::VisitVecSub(HVecSub* instruction) {
       break;
     case DataType::Type::kInt32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vpsubd(dst, other_src, src) : __ psubd(dst, src);
+      cpu_has_avx ? __ vpsubd(dst, other_src, src) : __ psubd(dst, src);
       break;
     case DataType::Type::kInt64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
@@ -650,11 +650,11 @@ void LocationsBuilderX86::VisitVecMul(HVecMul* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecMul(HVecMul* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint16:
@@ -689,11 +689,11 @@ void LocationsBuilderX86::VisitVecDiv(HVecDiv* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecDiv(HVecDiv* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kFloat32:
@@ -702,7 +702,7 @@ void InstructionCodeGeneratorX86::VisitVecDiv(HVecDiv* instruction) {
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      cpu_has_avx ?  __ vdivpd(dst, other_src, src) : __ divpd(dst, src);
+      cpu_has_avx ? __ vdivpd(dst, other_src, src) : __ divpd(dst, src);
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -817,11 +817,11 @@ void LocationsBuilderX86::VisitVecAnd(HVecAnd* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecAnd(HVecAnd* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
@@ -858,11 +858,11 @@ void LocationsBuilderX86::VisitVecAndNot(HVecAndNot* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecAndNot(HVecAndNot* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
@@ -899,11 +899,11 @@ void LocationsBuilderX86::VisitVecOr(HVecOr* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecOr(HVecOr* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
@@ -940,11 +940,11 @@ void LocationsBuilderX86::VisitVecXor(HVecXor* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecXor(HVecXor* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister other_src = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister src = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      other_src   = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      src         = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      dst         = locations->Out().AsFpuRegister<XmmRegister>();
   DCHECK(cpu_has_avx || other_src == dst);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
@@ -997,8 +997,8 @@ void LocationsBuilderX86::VisitVecShl(HVecShl* instruction) {
 void InstructionCodeGeneratorX86::VisitVecShl(HVecShl* instruction) {
   LocationSummary* locations = instruction->GetLocations();
   DCHECK(locations->InAt(0).Equals(locations->Out()));
-  int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  int32_t     value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  XmmRegister dst   = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
@@ -1026,8 +1026,8 @@ void LocationsBuilderX86::VisitVecShr(HVecShr* instruction) {
 void InstructionCodeGeneratorX86::VisitVecShr(HVecShr* instruction) {
   LocationSummary* locations = instruction->GetLocations();
   DCHECK(locations->InAt(0).Equals(locations->Out()));
-  int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  int32_t     value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  XmmRegister dst   = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
@@ -1051,8 +1051,8 @@ void LocationsBuilderX86::VisitVecUShr(HVecUShr* instruction) {
 void InstructionCodeGeneratorX86::VisitVecUShr(HVecUShr* instruction) {
   LocationSummary* locations = instruction->GetLocations();
   DCHECK(locations->InAt(0).Equals(locations->Out()));
-  int32_t value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  int32_t     value = locations->InAt(1).GetConstant()->AsIntConstant()->GetValue();
+  XmmRegister dst   = locations->Out().AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
@@ -1078,8 +1078,8 @@ void LocationsBuilderX86::VisitVecSetScalars(HVecSetScalars* instruction) {
 
   DCHECK_EQ(1u, instruction->InputCount());  // only one input currently implemented
 
-  HInstruction* input = instruction->InputAt(0);
-  bool is_zero = IsZeroBitPattern(input);
+  HInstruction* input   = instruction->InputAt(0);
+  bool          is_zero = IsZeroBitPattern(input);
 
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt64:
@@ -1094,14 +1094,16 @@ void LocationsBuilderX86::VisitVecSetScalars(HVecSetScalars* instruction) {
     case DataType::Type::kUint16:
     case DataType::Type::kInt16:
     case DataType::Type::kInt32:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresRegister());
+      locations->SetInAt(
+          0,
+          is_zero ? Location::ConstantLocation(input->AsConstant()) : Location::RequiresRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     case DataType::Type::kFloat32:
     case DataType::Type::kFloat64:
-      locations->SetInAt(0, is_zero ? Location::ConstantLocation(input->AsConstant())
-                                    : Location::RequiresFpuRegister());
+      locations->SetInAt(0,
+                         is_zero ? Location::ConstantLocation(input->AsConstant()) :
+                                   Location::RequiresFpuRegister());
       locations->SetOut(Location::RequiresFpuRegister());
       break;
     default:
@@ -1112,7 +1114,7 @@ void LocationsBuilderX86::VisitVecSetScalars(HVecSetScalars* instruction) {
 
 void InstructionCodeGeneratorX86::VisitVecSetScalars(HVecSetScalars* instruction) {
   LocationSummary* locations = instruction->GetLocations();
-  XmmRegister dst = locations->Out().AsFpuRegister<XmmRegister>();
+  XmmRegister      dst       = locations->Out().AsFpuRegister<XmmRegister>();
 
   DCHECK_EQ(1u, instruction->InputCount());  // only one input currently implemented
 
@@ -1141,10 +1143,10 @@ void InstructionCodeGeneratorX86::VisitVecSetScalars(HVecSetScalars* instruction
     case DataType::Type::kInt64: {
       DCHECK_EQ(2u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ xorps(tmp, tmp);
-      __ movd(dst, locations->InAt(0).AsRegisterPairLow<Register>());
-      __ movd(tmp, locations->InAt(0).AsRegisterPairHigh<Register>());
-      __ punpckldq(dst, tmp);
+      __          xorps(tmp, tmp);
+      __          movd(dst, locations->InAt(0).AsRegisterPairLow<Register>());
+      __          movd(tmp, locations->InAt(0).AsRegisterPairHigh<Register>());
+      __          punpckldq(dst, tmp);
       break;
     }
     case DataType::Type::kFloat32:
@@ -1210,11 +1212,11 @@ void LocationsBuilderX86::VisitVecDotProd(HVecDotProd* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecDotProd(HVecDotProd* instruction) {
-  bool cpu_has_avx = CpuHasAvxFeatureFlag();
-  LocationSummary* locations = instruction->GetLocations();
-  XmmRegister acc = locations->InAt(0).AsFpuRegister<XmmRegister>();
-  XmmRegister left = locations->InAt(1).AsFpuRegister<XmmRegister>();
-  XmmRegister right = locations->InAt(2).AsFpuRegister<XmmRegister>();
+  bool             cpu_has_avx = CpuHasAvxFeatureFlag();
+  LocationSummary* locations   = instruction->GetLocations();
+  XmmRegister      acc         = locations->InAt(0).AsFpuRegister<XmmRegister>();
+  XmmRegister      left        = locations->InAt(1).AsFpuRegister<XmmRegister>();
+  XmmRegister      right       = locations->InAt(2).AsFpuRegister<XmmRegister>();
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt32: {
       DCHECK_EQ(4u, instruction->GetVectorLength());
@@ -1236,9 +1238,9 @@ void InstructionCodeGeneratorX86::VisitVecDotProd(HVecDotProd* instruction) {
 }
 
 // Helper to set up locations for vector memory operations.
-static void CreateVecMemLocations(ArenaAllocator* allocator,
+static void CreateVecMemLocations(ArenaAllocator*      allocator,
                                   HVecMemoryOperation* instruction,
-                                  bool is_load) {
+                                  bool                 is_load) {
   LocationSummary* locations = new (allocator) LocationSummary(instruction);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
@@ -1266,19 +1268,25 @@ static void CreateVecMemLocations(ArenaAllocator* allocator,
 
 // Helper to construct address for vector memory operations.
 static Address VecAddress(LocationSummary* locations, size_t size, bool is_string_char_at) {
-  Location base = locations->InAt(0);
-  Location index = locations->InAt(1);
+  Location    base  = locations->InAt(0);
+  Location    index = locations->InAt(1);
   ScaleFactor scale = TIMES_1;
   switch (size) {
-    case 2: scale = TIMES_2; break;
-    case 4: scale = TIMES_4; break;
-    case 8: scale = TIMES_8; break;
-    default: break;
+    case 2:
+      scale = TIMES_2;
+      break;
+    case 4:
+      scale = TIMES_4;
+      break;
+    case 8:
+      scale = TIMES_8;
+      break;
+    default:
+      break;
   }
   // Incorporate the string or array offset in the address computation.
-  uint32_t offset = is_string_char_at
-      ? mirror::String::ValueOffset().Uint32Value()
-      : mirror::Array::DataOffset(size).Uint32Value();
+  uint32_t offset = is_string_char_at ? mirror::String::ValueOffset().Uint32Value() :
+                                        mirror::Array::DataOffset(size).Uint32Value();
   return CodeGeneratorX86::ArrayAddress(base.AsRegister<Register>(), index, scale, offset);
 }
 
@@ -1291,18 +1299,18 @@ void LocationsBuilderX86::VisitVecLoad(HVecLoad* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecLoad(HVecLoad* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  size_t size = DataType::Size(instruction->GetPackedType());
-  Address address = VecAddress(locations, size, instruction->IsStringCharAt());
-  XmmRegister reg = locations->Out().AsFpuRegister<XmmRegister>();
-  bool is_aligned16 = instruction->GetAlignment().IsAlignedAt(16);
+  LocationSummary* locations    = instruction->GetLocations();
+  size_t           size         = DataType::Size(instruction->GetPackedType());
+  Address          address      = VecAddress(locations, size, instruction->IsStringCharAt());
+  XmmRegister      reg          = locations->Out().AsFpuRegister<XmmRegister>();
+  bool             is_aligned16 = instruction->GetAlignment().IsAlignedAt(16);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kInt16:  // (short) s.charAt(.) can yield HVecLoad/Int16/StringCharAt.
     case DataType::Type::kUint16:
       DCHECK_EQ(8u, instruction->GetVectorLength());
       // Special handling of compressed/uncompressed string load.
       if (mirror::kUseStringCompression && instruction->IsStringCharAt()) {
-        NearLabel done, not_compressed;
+        NearLabel   done, not_compressed;
         XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
         // Test compression bit.
         static_assert(static_cast<uint32_t>(mirror::StringCompressionFlag::kCompressed) == 0u,
@@ -1317,7 +1325,7 @@ void InstructionCodeGeneratorX86::VisitVecLoad(HVecLoad* instruction) {
         __ jmp(&done);
         // Load 4 direct uncompressed chars.
         __ Bind(&not_compressed);
-        is_aligned16 ?  __ movdqa(reg, address) :  __ movdqu(reg, address);
+        is_aligned16 ? __ movdqa(reg, address) : __ movdqu(reg, address);
         __ Bind(&done);
         return;
       }
@@ -1350,11 +1358,11 @@ void LocationsBuilderX86::VisitVecStore(HVecStore* instruction) {
 }
 
 void InstructionCodeGeneratorX86::VisitVecStore(HVecStore* instruction) {
-  LocationSummary* locations = instruction->GetLocations();
-  size_t size = DataType::Size(instruction->GetPackedType());
-  Address address = VecAddress(locations, size, /*is_string_char_at*/ false);
-  XmmRegister reg = locations->InAt(2).AsFpuRegister<XmmRegister>();
-  bool is_aligned16 = instruction->GetAlignment().IsAlignedAt(16);
+  LocationSummary* locations    = instruction->GetLocations();
+  size_t           size         = DataType::Size(instruction->GetPackedType());
+  Address          address      = VecAddress(locations, size, /*is_string_char_at*/ false);
+  XmmRegister      reg          = locations->InAt(2).AsFpuRegister<XmmRegister>();
+  bool             is_aligned16 = instruction->GetAlignment().IsAlignedAt(16);
   switch (instruction->GetPackedType()) {
     case DataType::Type::kBool:
     case DataType::Type::kUint8:

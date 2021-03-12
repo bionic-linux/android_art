@@ -48,10 +48,10 @@ namespace art {
  */
 class SsaBuilder : public ValueObject {
  public:
-  SsaBuilder(HGraph* graph,
+  SsaBuilder(HGraph*                     graph,
              Handle<mirror::ClassLoader> class_loader,
-             Handle<mirror::DexCache> dex_cache,
-             ScopedArenaAllocator* local_allocator)
+             Handle<mirror::DexCache>    dex_cache,
+             ScopedArenaAllocator*       local_allocator)
       : graph_(graph),
         class_loader_(class_loader),
         dex_cache_(dex_cache),
@@ -60,8 +60,7 @@ class SsaBuilder : public ValueObject {
         ambiguous_agets_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
         ambiguous_asets_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
         uninitialized_strings_(local_allocator->Adapter(kArenaAllocGraphBuilder)),
-        uninitialized_string_phis_(local_allocator->Adapter(kArenaAllocGraphBuilder)) {
-  }
+        uninitialized_string_phis_(local_allocator->Adapter(kArenaAllocGraphBuilder)) {}
 
   GraphAnalysisResult BuildSsa();
 
@@ -114,27 +113,27 @@ class SsaBuilder : public ValueObject {
   bool UpdatePrimitiveType(HPhi* phi, ScopedArenaVector<HPhi*>* worklist);
   void ProcessPrimitiveTypePropagationWorklist(ScopedArenaVector<HPhi*>* worklist);
 
-  HFloatConstant* GetFloatEquivalent(HIntConstant* constant);
+  HFloatConstant*  GetFloatEquivalent(HIntConstant* constant);
   HDoubleConstant* GetDoubleEquivalent(HLongConstant* constant);
-  HPhi* GetFloatDoubleOrReferenceEquivalentOfPhi(HPhi* phi, DataType::Type type);
-  HArrayGet* GetFloatOrDoubleEquivalentOfArrayGet(HArrayGet* aget);
+  HPhi*            GetFloatDoubleOrReferenceEquivalentOfPhi(HPhi* phi, DataType::Type type);
+  HArrayGet*       GetFloatOrDoubleEquivalentOfArrayGet(HArrayGet* aget);
 
   void RemoveRedundantUninitializedStrings();
   bool ReplaceUninitializedStringPhis();
   bool HasAliasInEnvironments(HInstruction* instruction);
 
-  HGraph* const graph_;
+  HGraph* const               graph_;
   Handle<mirror::ClassLoader> class_loader_;
-  Handle<mirror::DexCache> dex_cache_;
+  Handle<mirror::DexCache>    dex_cache_;
 
   // True if types of ambiguous ArrayGets have been resolved.
   bool agets_fixed_;
 
-  ScopedArenaAllocator* const local_allocator_;
-  ScopedArenaVector<HArrayGet*> ambiguous_agets_;
-  ScopedArenaVector<HArraySet*> ambiguous_asets_;
+  ScopedArenaAllocator* const      local_allocator_;
+  ScopedArenaVector<HArrayGet*>    ambiguous_agets_;
+  ScopedArenaVector<HArraySet*>    ambiguous_asets_;
   ScopedArenaVector<HNewInstance*> uninitialized_strings_;
-  ScopedArenaVector<HInvoke*> uninitialized_string_phis_;
+  ScopedArenaVector<HInvoke*>      uninitialized_string_phis_;
 
   DISALLOW_COPY_AND_ASSIGN(SsaBuilder);
 };

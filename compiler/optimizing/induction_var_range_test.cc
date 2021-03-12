@@ -38,7 +38,7 @@ class InductionVarRangeTest : public OptimizingUnitTest {
     BuildGraph();
   }
 
-  ~InductionVarRangeTest() { }
+  ~InductionVarRangeTest() {}
 
   void ExpectEqual(Value v1, Value v2) {
     EXPECT_EQ(v1.instruction, v2.instruction);
@@ -60,21 +60,17 @@ class InductionVarRangeTest : public OptimizingUnitTest {
   void BuildGraph() {
     graph_->SetNumberOfVRegs(1);
     entry_block_ = new (GetAllocator()) HBasicBlock(graph_);
-    exit_block_ = new (GetAllocator()) HBasicBlock(graph_);
+    exit_block_  = new (GetAllocator()) HBasicBlock(graph_);
     graph_->AddBlock(entry_block_);
     graph_->AddBlock(exit_block_);
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
     // Two parameters.
-    x_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                              dex::TypeIndex(0),
-                                              0,
-                                              DataType::Type::kInt32);
+    x_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
     entry_block_->AddInstruction(x_);
-    y_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                              dex::TypeIndex(0),
-                                              0,
-                                              DataType::Type::kInt32);
+    y_ = new (GetAllocator())
+        HParameterValue(graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
     entry_block_->AddInstruction(y_);
     // Set arbitrary range analysis hint while testing private methods.
     SetHint(x_);
@@ -130,20 +126,38 @@ class InductionVarRangeTest : public OptimizingUnitTest {
   }
 
   /** Constructs an invariant. */
-  HInductionVarAnalysis::InductionInfo* CreateInvariant(char opc,
+  HInductionVarAnalysis::InductionInfo* CreateInvariant(char                                  opc,
                                                         HInductionVarAnalysis::InductionInfo* a,
                                                         HInductionVarAnalysis::InductionInfo* b) {
     HInductionVarAnalysis::InductionOp op;
     switch (opc) {
-      case '+': op = HInductionVarAnalysis::kAdd; break;
-      case '-': op = HInductionVarAnalysis::kSub; break;
-      case 'n': op = HInductionVarAnalysis::kNeg; break;
-      case '*': op = HInductionVarAnalysis::kMul; break;
-      case '/': op = HInductionVarAnalysis::kDiv; break;
-      case '%': op = HInductionVarAnalysis::kRem; break;
-      case '^': op = HInductionVarAnalysis::kXor; break;
-      case '<': op = HInductionVarAnalysis::kLT;  break;
-      default:  op = HInductionVarAnalysis::kNop; break;
+      case '+':
+        op = HInductionVarAnalysis::kAdd;
+        break;
+      case '-':
+        op = HInductionVarAnalysis::kSub;
+        break;
+      case 'n':
+        op = HInductionVarAnalysis::kNeg;
+        break;
+      case '*':
+        op = HInductionVarAnalysis::kMul;
+        break;
+      case '/':
+        op = HInductionVarAnalysis::kDiv;
+        break;
+      case '%':
+        op = HInductionVarAnalysis::kRem;
+        break;
+      case '^':
+        op = HInductionVarAnalysis::kXor;
+        break;
+      case '<':
+        op = HInductionVarAnalysis::kLT;
+        break;
+      default:
+        op = HInductionVarAnalysis::kNop;
+        break;
     }
     return iva_->CreateInvariantOp(op, a, b);
   }
@@ -197,13 +211,13 @@ class InductionVarRangeTest : public OptimizingUnitTest {
 
   /** Constructs a geometric a * f^i + b induction. */
   HInductionVarAnalysis::InductionInfo* CreateGeometric(int32_t a, int32_t b, int32_t f, char op) {
-    return iva_->CreateInduction(HInductionVarAnalysis::kGeometric,
-                                 op == '*' ? HInductionVarAnalysis::kMul
-                                           : HInductionVarAnalysis::kDiv,
-                                 CreateConst(a),
-                                 CreateConst(b),
-                                 graph_->GetIntConstant(f),
-                                 DataType::Type::kInt32);
+    return iva_->CreateInduction(
+        HInductionVarAnalysis::kGeometric,
+        op == '*' ? HInductionVarAnalysis::kMul : HInductionVarAnalysis::kDiv,
+        CreateConst(a),
+        CreateConst(b),
+        graph_->GetIntConstant(f),
+        DataType::Type::kInt32);
   }
 
   /** Constructs a range [lo, hi] using a periodic induction. */
@@ -218,8 +232,7 @@ class InductionVarRangeTest : public OptimizingUnitTest {
 
   /** Constructs a wrap-around induction consisting of a constant, followed by info. */
   HInductionVarAnalysis::InductionInfo* CreateWrapAround(
-      int32_t initial,
-      HInductionVarAnalysis::InductionInfo* info) {
+      int32_t initial, HInductionVarAnalysis::InductionInfo* info) {
     return iva_->CreateInduction(HInductionVarAnalysis::kWrapAround,
                                  HInductionVarAnalysis::kNop,
                                  CreateConst(initial),
@@ -262,13 +275,13 @@ class InductionVarRangeTest : public OptimizingUnitTest {
 
   Value GetMul(HInductionVarAnalysis::InductionInfo* info1,
                HInductionVarAnalysis::InductionInfo* info2,
-               bool is_min) {
+               bool                                  is_min) {
     return range_.GetMul(info1, info2, nullptr, /* in_body= */ true, is_min);
   }
 
   Value GetDiv(HInductionVarAnalysis::InductionInfo* info1,
                HInductionVarAnalysis::InductionInfo* info2,
-               bool is_min) {
+               bool                                  is_min) {
     return range_.GetDiv(info1, info2, nullptr, /* in_body= */ true, is_min);
   }
 
@@ -294,22 +307,34 @@ class InductionVarRangeTest : public OptimizingUnitTest {
     return range_.IsConstant(info, InductionVarRange::kAtLeast, value);
   }
 
-  Value AddValue(Value v1, Value v2) { return range_.AddValue(v1, v2); }
-  Value SubValue(Value v1, Value v2) { return range_.SubValue(v1, v2); }
-  Value MulValue(Value v1, Value v2) { return range_.MulValue(v1, v2); }
-  Value DivValue(Value v1, Value v2) { return range_.DivValue(v1, v2); }
-  Value MinValue(Value v1, Value v2) { return range_.MergeVal(v1, v2, true); }
-  Value MaxValue(Value v1, Value v2) { return range_.MergeVal(v1, v2, false); }
+  Value AddValue(Value v1, Value v2) {
+    return range_.AddValue(v1, v2);
+  }
+  Value SubValue(Value v1, Value v2) {
+    return range_.SubValue(v1, v2);
+  }
+  Value MulValue(Value v1, Value v2) {
+    return range_.MulValue(v1, v2);
+  }
+  Value DivValue(Value v1, Value v2) {
+    return range_.DivValue(v1, v2);
+  }
+  Value MinValue(Value v1, Value v2) {
+    return range_.MergeVal(v1, v2, true);
+  }
+  Value MaxValue(Value v1, Value v2) {
+    return range_.MergeVal(v1, v2, false);
+  }
 
   // General building fields.
-  HGraph* graph_;
-  HBasicBlock* entry_block_;
-  HBasicBlock* exit_block_;
-  HBasicBlock* loop_preheader_;
-  HBasicBlock* loop_header_;
-  HBasicBlock* loop_body_;
+  HGraph*                graph_;
+  HBasicBlock*           entry_block_;
+  HBasicBlock*           exit_block_;
+  HBasicBlock*           loop_preheader_;
+  HBasicBlock*           loop_header_;
+  HBasicBlock*           loop_body_;
   HInductionVarAnalysis* iva_;
-  InductionVarRange range_;
+  InductionVarRange      range_;
 
   // Instructions.
   HInstruction* condition_;
@@ -430,10 +455,8 @@ TEST_F(InductionVarRangeTest, GetMinMaxMul) {
 }
 
 TEST_F(InductionVarRangeTest, GetMinMaxDiv) {
-  ExpectEqual(Value(3),
-              GetMin(CreateInvariant('/', CreateRange(12, 20), CreateConst(4)), nullptr));
-  ExpectEqual(Value(5),
-              GetMax(CreateInvariant('/', CreateRange(12, 20), CreateConst(4)), nullptr));
+  ExpectEqual(Value(3), GetMin(CreateInvariant('/', CreateRange(12, 20), CreateConst(4)), nullptr));
+  ExpectEqual(Value(5), GetMax(CreateInvariant('/', CreateRange(12, 20), CreateConst(4)), nullptr));
 }
 
 TEST_F(InductionVarRangeTest, GetMinMaxConstant) {
@@ -469,14 +492,10 @@ TEST_F(InductionVarRangeTest, GetMinMaxPolynomial) {
   ExpectEqual(Value(45), GetMax(CreatePolynomial(3, 5, 7), CreateTripCount(5, true, true)));
   ExpectEqual(Value(7), GetMin(CreatePolynomial(3, 5, 7), CreateTripCount(10, true, true)));
   ExpectEqual(Value(160), GetMax(CreatePolynomial(3, 5, 7), CreateTripCount(10, true, true)));
-  ExpectEqual(Value(-7), GetMin(CreatePolynomial(11, 13, -7),
-                               CreateTripCount(5, true, true)));
-  ExpectEqual(Value(111), GetMax(CreatePolynomial(11, 13, -7),
-                                 CreateTripCount(5, true, true)));
-  ExpectEqual(Value(-7), GetMin(CreatePolynomial(11, 13, -7),
-                               CreateTripCount(10, true, true)));
-  ExpectEqual(Value(506), GetMax(CreatePolynomial(11, 13, -7),
-                                 CreateTripCount(10, true, true)));
+  ExpectEqual(Value(-7), GetMin(CreatePolynomial(11, 13, -7), CreateTripCount(5, true, true)));
+  ExpectEqual(Value(111), GetMax(CreatePolynomial(11, 13, -7), CreateTripCount(5, true, true)));
+  ExpectEqual(Value(-7), GetMin(CreatePolynomial(11, 13, -7), CreateTripCount(10, true, true)));
+  ExpectEqual(Value(506), GetMax(CreatePolynomial(11, 13, -7), CreateTripCount(10, true, true)));
   ExpectEqual(Value(), GetMin(CreatePolynomial(-3, 5, 7), CreateTripCount(10, true, true)));
   ExpectEqual(Value(), GetMax(CreatePolynomial(-3, 5, 7), CreateTripCount(10, true, true)));
   ExpectEqual(Value(), GetMin(CreatePolynomial(3, -5, 7), CreateTripCount(10, true, true)));
@@ -725,14 +744,14 @@ TEST_F(InductionVarRangeTest, ArrayLengthAndHints) {
 }
 
 TEST_F(InductionVarRangeTest, AddOrSubAndConstant) {
-  HInstruction* add = new (GetAllocator())
-      HAdd(DataType::Type::kInt32, x_, graph_->GetIntConstant(-1));
-  HInstruction* alt = new (GetAllocator())
-      HAdd(DataType::Type::kInt32, graph_->GetIntConstant(-1), x_);
-  HInstruction* sub = new (GetAllocator())
-      HSub(DataType::Type::kInt32, x_, graph_->GetIntConstant(1));
-  HInstruction* rev = new (GetAllocator())
-      HSub(DataType::Type::kInt32, graph_->GetIntConstant(1), x_);
+  HInstruction* add =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, x_, graph_->GetIntConstant(-1));
+  HInstruction* alt =
+      new (GetAllocator()) HAdd(DataType::Type::kInt32, graph_->GetIntConstant(-1), x_);
+  HInstruction* sub =
+      new (GetAllocator()) HSub(DataType::Type::kInt32, x_, graph_->GetIntConstant(1));
+  HInstruction* rev =
+      new (GetAllocator()) HSub(DataType::Type::kInt32, graph_->GetIntConstant(1), x_);
   entry_block_->AddInstruction(add);
   entry_block_->AddInstruction(alt);
   entry_block_->AddInstruction(sub);
@@ -756,10 +775,10 @@ TEST_F(InductionVarRangeTest, ConstantTripCountUp) {
   PerformInductionVarAnalysis();
 
   Value v1, v2;
-  bool needs_finite_test = true;
-  bool needs_taken_test = true;
+  bool  needs_finite_test = true;
+  bool  needs_taken_test  = true;
 
-  HInstruction* phi = condition_->InputAt(0);
+  HInstruction* phi  = condition_->InputAt(0);
   HInstruction* exit = exit_block_->GetLastInstruction();
 
   // In context of header: known.
@@ -797,8 +816,8 @@ TEST_F(InductionVarRangeTest, ConstantTripCountUp) {
   HInstruction* offset = nullptr;
   EXPECT_TRUE(range_.IsUnitStride(phi, phi, graph_, &offset));
   ExpectInt(0, offset);
-  HInstruction* tce = range_.GenerateTripCount(
-      loop_header_->GetLoopInformation(), graph_, loop_preheader_);
+  HInstruction* tce =
+      range_.GenerateTripCount(loop_header_->GetLoopInformation(), graph_, loop_preheader_);
   ASSERT_TRUE(tce != nullptr);
   ExpectInt(1000, tce);
 }
@@ -808,10 +827,10 @@ TEST_F(InductionVarRangeTest, ConstantTripCountDown) {
   PerformInductionVarAnalysis();
 
   Value v1, v2;
-  bool needs_finite_test = true;
-  bool needs_taken_test = true;
+  bool  needs_finite_test = true;
+  bool  needs_taken_test  = true;
 
-  HInstruction* phi = condition_->InputAt(0);
+  HInstruction* phi  = condition_->InputAt(0);
   HInstruction* exit = exit_block_->GetLastInstruction();
 
   // In context of header: known.
@@ -852,8 +871,8 @@ TEST_F(InductionVarRangeTest, ConstantTripCountDown) {
   EXPECT_EQ(1000, tc);
   HInstruction* offset = nullptr;
   EXPECT_FALSE(range_.IsUnitStride(phi, phi, graph_, &offset));
-  HInstruction* tce = range_.GenerateTripCount(
-      loop_header_->GetLoopInformation(), graph_, loop_preheader_);
+  HInstruction* tce =
+      range_.GenerateTripCount(loop_header_->GetLoopInformation(), graph_, loop_preheader_);
   ASSERT_TRUE(tce != nullptr);
   ASSERT_TRUE(tce->IsNeg());
   last = tce->InputAt(0);
@@ -867,8 +886,8 @@ TEST_F(InductionVarRangeTest, SymbolicTripCountUp) {
   PerformInductionVarAnalysis();
 
   Value v1, v2;
-  bool needs_finite_test = true;
-  bool needs_taken_test = true;
+  bool  needs_finite_test = true;
+  bool  needs_taken_test  = true;
 
   HInstruction* phi = condition_->InputAt(0);
 
@@ -935,8 +954,8 @@ TEST_F(InductionVarRangeTest, SymbolicTripCountUp) {
   HInstruction* offset = nullptr;
   EXPECT_TRUE(range_.IsUnitStride(phi, phi, graph_, &offset));
   ExpectInt(0, offset);
-  HInstruction* tce = range_.GenerateTripCount(
-      loop_header_->GetLoopInformation(), graph_, loop_preheader_);
+  HInstruction* tce =
+      range_.GenerateTripCount(loop_header_->GetLoopInformation(), graph_, loop_preheader_);
   ASSERT_TRUE(tce != nullptr);
   EXPECT_TRUE(tce->IsSelect());  // guarded by taken-test
   ExpectInt(0, tce->InputAt(0));
@@ -949,8 +968,8 @@ TEST_F(InductionVarRangeTest, SymbolicTripCountDown) {
   PerformInductionVarAnalysis();
 
   Value v1, v2;
-  bool needs_finite_test = true;
-  bool needs_taken_test = true;
+  bool  needs_finite_test = true;
+  bool  needs_taken_test  = true;
 
   HInstruction* phi = condition_->InputAt(0);
 
@@ -1020,8 +1039,8 @@ TEST_F(InductionVarRangeTest, SymbolicTripCountDown) {
   EXPECT_EQ(0, tc);  // unknown
   HInstruction* offset = nullptr;
   EXPECT_FALSE(range_.IsUnitStride(phi, phi, graph_, &offset));
-  HInstruction* tce = range_.GenerateTripCount(
-      loop_header_->GetLoopInformation(), graph_, loop_preheader_);
+  HInstruction* tce =
+      range_.GenerateTripCount(loop_header_->GetLoopInformation(), graph_, loop_preheader_);
   ASSERT_TRUE(tce != nullptr);
   EXPECT_TRUE(tce->IsSelect());  // guarded by taken-test
   ExpectInt(0, tce->InputAt(0));
