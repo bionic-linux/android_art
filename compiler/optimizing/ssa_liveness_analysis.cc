@@ -113,10 +113,9 @@ void SsaLivenessAnalysis::RecursivelyProcessInputs(HInstruction* current,
     bool has_out_location = input->GetLocations()->Out().IsValid();
 
     if (has_in_location) {
-      DCHECK(has_out_location)
-          << "Instruction " << current->DebugName() << current->GetId()
-          << " expects an input value at index " << i << " but "
-          << input->DebugName() << input->GetId() << " does not produce one.";
+      DCHECK(has_out_location) << "Instruction " << current->DebugName() << current->GetId()
+                               << " expects an input value at index " << i << " but "
+                               << input->DebugName() << input->GetId() << " does not produce one.";
       DCHECK(input->HasSsaIndex());
       // `input` generates a result used by `current`. Add use and update
       // the live-in set.
@@ -140,8 +139,7 @@ void SsaLivenessAnalysis::RecursivelyProcessInputs(HInstruction* current,
 void SsaLivenessAnalysis::ProcessEnvironment(HInstruction* current,
                                              HInstruction* actual_user,
                                              BitVector* live_in) {
-  for (HEnvironment* environment = current->GetEnvironment();
-       environment != nullptr;
+  for (HEnvironment* environment = current->GetEnvironment(); environment != nullptr;
        environment = environment->GetParent()) {
     // Handle environment uses. See statements (b) and (c) of the
     // SsaLivenessAnalysis.
@@ -156,10 +154,7 @@ void SsaLivenessAnalysis::ProcessEnvironment(HInstruction* current,
       if (should_be_live) {
         CHECK(instruction->HasSsaIndex()) << instruction->DebugName();
         live_in->SetBit(instruction->GetSsaIndex());
-        instruction->GetLiveInterval()->AddUse(current,
-                                               environment,
-                                               i,
-                                               actual_user);
+        instruction->GetLiveInterval()->AddUse(current, environment, i, actual_user);
       }
     }
   }
@@ -248,8 +243,8 @@ void SsaLivenessAnalysis::ComputeLiveRanges() {
         kill->SetBit(current->GetSsaIndex());
         live_in->ClearBit(current->GetSsaIndex());
         LiveInterval* interval = current->GetLiveInterval();
-        DCHECK((interval->GetFirstRange() == nullptr)
-               || (interval->GetStart() == current->GetLifetimePosition()));
+        DCHECK((interval->GetFirstRange() == nullptr) ||
+               (interval->GetStart() == current->GetLifetimePosition()));
         interval->SetFrom(current->GetLifetimePosition());
       }
     }
@@ -300,7 +295,6 @@ bool SsaLivenessAnalysis::UpdateLiveOut(const HBasicBlock& block) {
   return changed;
 }
 
-
 bool SsaLivenessAnalysis::UpdateLiveIn(const HBasicBlock& block) {
   BitVector* live_out = GetLiveOutSet(block);
   BitVector* kill = GetKillSet(block);
@@ -311,8 +305,7 @@ bool SsaLivenessAnalysis::UpdateLiveIn(const HBasicBlock& block) {
   return live_in->UnionIfNotIn(live_out, kill);
 }
 
-void LiveInterval::DumpWithContext(std::ostream& stream,
-                                   const CodeGenerator& codegen) const {
+void LiveInterval::DumpWithContext(std::ostream& stream, const CodeGenerator& codegen) const {
   Dump(stream);
   if (IsFixed()) {
     stream << ", register:" << GetRegister() << "(";
@@ -339,7 +332,8 @@ static int RegisterOrLowRegister(Location location) {
 int LiveInterval::FindFirstRegisterHint(size_t* free_until,
                                         const SsaLivenessAnalysis& liveness) const {
   DCHECK(!IsHighInterval());
-  if (IsTemp()) return kNoRegister;
+  if (IsTemp())
+    return kNoRegister;
 
   if (GetParent() == this && defined_by_ != nullptr) {
     // This is the first interval for the instruction. Try to find
@@ -363,8 +357,8 @@ int LiveInterval::FindFirstRegisterHint(size_t* free_until,
       // We know positions above GetStart() do not have a location yet.
       if (position < GetStart()) {
         LiveInterval* existing = GetParent()->GetSiblingAt(position);
-        if (existing != nullptr
-            && existing->HasRegister()
+        if (existing != nullptr &&
+            existing->HasRegister()
             // It's worth using that register if it is available until
             // the next use.
             && (free_until[existing->GetRegister()] >= next_register_use)) {

@@ -18,6 +18,7 @@
 #define ART_COMPILER_TRAMPOLINES_TRAMPOLINE_COMPILER_H_
 
 #include <stdint.h>
+
 #include <memory>
 #include <vector>
 

@@ -41,8 +41,12 @@ class HBasicBlockBuilder : public ValueObject {
   // Creates basic blocks in `graph_` for compiling an intrinsic.
   void BuildIntrinsic();
 
-  size_t GetNumberOfBranches() const { return number_of_branches_; }
-  HBasicBlock* GetBlockAt(uint32_t dex_pc) const { return branch_targets_[dex_pc]; }
+  size_t GetNumberOfBranches() const {
+    return number_of_branches_;
+  }
+  HBasicBlock* GetBlockAt(uint32_t dex_pc) const {
+    return branch_targets_[dex_pc];
+  }
 
   size_t GetQuickenIndex(uint32_t dex_pc) const;
 

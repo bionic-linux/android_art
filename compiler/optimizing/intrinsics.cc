@@ -39,10 +39,11 @@ std::ostream& operator<<(std::ostream& os, const Intrinsics& intrinsic) {
     case Intrinsics::kNone:
       os << "None";
       break;
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-    case Intrinsics::k ## Name: \
-      os << # Name; \
-      break;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  case Intrinsics::k##Name:                                                \
+    os << #Name;                                                           \
+    break;
 #include "intrinsics_list.h"
       INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef STATIC_INTRINSICS_LIST
@@ -76,7 +77,7 @@ static ObjPtr<mirror::ObjectArray<mirror::Object>> GetBootImageLiveObjects()
 static ObjPtr<mirror::Class> LookupInitializedClass(Thread* self,
                                                     ClassLinker* class_linker,
                                                     const char* descriptor)
-        REQUIRES_SHARED(Locks::mutator_lock_) {
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   ObjPtr<mirror::Class> klass =
       class_linker->LookupClass(self, descriptor, /* class_loader= */ nullptr);
   DCHECK(klass != nullptr);
@@ -180,8 +181,8 @@ void IntrinsicVisitor::ComputeIntegerValueOfLocations(HInvoke* invoke,
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
     Thread* self = Thread::Current();
     ScopedObjectAccess soa(self);
-    ObjPtr<mirror::Class> cache_class = class_linker->LookupClass(
-        self, kIntegerCacheDescriptor, /* class_loader= */ nullptr);
+    ObjPtr<mirror::Class> cache_class =
+        class_linker->LookupClass(self, kIntegerCacheDescriptor, /* class_loader= */ nullptr);
     DCHECK(cache_class != nullptr);
     if (UNLIKELY(!cache_class->IsInitialized())) {
       LOG(WARNING) << "Image class " << cache_class->PrettyDescriptor() << " is uninitialized.";
@@ -273,10 +274,7 @@ static int32_t GetIntegerCacheLowFromIntegerCache(Thread* self, ClassLinker* cla
 }
 
 inline IntrinsicVisitor::IntegerValueOfInfo::IntegerValueOfInfo()
-    : value_offset(0),
-      low(0),
-      length(0u),
-      value_boot_image_reference(kInvalidReference) {}
+    : value_offset(0), low(0), length(0u), value_boot_image_reference(kInvalidReference) {}
 
 IntrinsicVisitor::IntegerValueOfInfo IntrinsicVisitor::ComputeIntegerValueOfInfo(
     HInvoke* invoke, const CompilerOptions& compiler_options) {

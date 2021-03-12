@@ -44,11 +44,21 @@ class LoopAnalysisInfo : public ValueObject {
         has_long_type_instructions_(false),
         loop_info_(loop_info) {}
 
-  int64_t GetTripCount() const { return trip_count_; }
-  size_t GetNumberOfBasicBlocks() const { return bb_num_; }
-  size_t GetNumberOfInstructions() const { return instr_num_; }
-  size_t GetNumberOfExits() const { return exits_num_; }
-  size_t GetNumberOfInvariantExits() const { return invariant_exits_num_; }
+  int64_t GetTripCount() const {
+    return trip_count_;
+  }
+  size_t GetNumberOfBasicBlocks() const {
+    return bb_num_;
+  }
+  size_t GetNumberOfInstructions() const {
+    return instr_num_;
+  }
+  size_t GetNumberOfExits() const {
+    return exits_num_;
+  }
+  size_t GetNumberOfInvariantExits() const {
+    return invariant_exits_num_;
+  }
 
   bool HasInstructionsPreventingScalarPeeling() const {
     return has_instructions_preventing_scalar_peeling_;
@@ -66,7 +76,9 @@ class LoopAnalysisInfo : public ValueObject {
     return has_long_type_instructions_;
   }
 
-  HLoopInformation* GetLoopInfo() const { return loop_info_; }
+  HLoopInformation* GetLoopInfo() const {
+    return loop_info_;
+  }
 
  private:
   // Trip count of the loop if known, kUnknownTripCount otherwise.
@@ -114,14 +126,13 @@ class LoopAnalysis : public ValueObject {
   // loop performance will probably prevail. So peeling/unrolling optimization will not bring
   // any noticeable performance improvement. It will increase the code size.
   static bool MakesScalarPeelingUnrollingNonBeneficial(HInstruction* instruction) {
-    return (instruction->IsNewArray() ||
-        instruction->IsNewInstance() ||
-        instruction->IsUnresolvedInstanceFieldGet() ||
-        instruction->IsUnresolvedInstanceFieldSet() ||
-        instruction->IsUnresolvedStaticFieldGet() ||
-        instruction->IsUnresolvedStaticFieldSet() ||
-        // TODO: Support loops with intrinsified invokes.
-        instruction->IsInvoke());
+    return (instruction->IsNewArray() || instruction->IsNewInstance() ||
+            instruction->IsUnresolvedInstanceFieldGet() ||
+            instruction->IsUnresolvedInstanceFieldSet() ||
+            instruction->IsUnresolvedStaticFieldGet() ||
+            instruction->IsUnresolvedStaticFieldSet() ||
+            // TODO: Support loops with intrinsified invokes.
+            instruction->IsInvoke());
   }
 };
 
@@ -147,7 +158,9 @@ class ArchNoOptsLoopHelper : public ArenaObject<kArenaAllocOptimization> {
   //
   // Returns 'true' by default, should be overridden by particular target loop helper.
   virtual bool IsLoopNonBeneficialForScalarOpts(
-      LoopAnalysisInfo* loop_analysis_info ATTRIBUTE_UNUSED) const { return true; }
+      LoopAnalysisInfo* loop_analysis_info ATTRIBUTE_UNUSED) const {
+    return true;
+  }
 
   // Returns optimal scalar unrolling factor for the loop.
   //
@@ -160,7 +173,9 @@ class ArchNoOptsLoopHelper : public ArenaObject<kArenaAllocOptimization> {
   // Returns whether scalar loop peeling is enabled,
   //
   // Returns 'false' by default, should be overridden by particular target loop helper.
-  virtual bool IsLoopPeelingEnabled() const { return false; }
+  virtual bool IsLoopPeelingEnabled() const {
+    return false;
+  }
 
   // Returns whether it is beneficial to fully unroll the loop.
   //

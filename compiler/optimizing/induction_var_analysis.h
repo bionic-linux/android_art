@@ -48,14 +48,7 @@ class HInductionVarAnalysis : public HOptimization {
     bool done;
   };
 
-  enum InductionClass {
-    kInvariant,
-    kLinear,
-    kPolynomial,
-    kGeometric,
-    kWrapAround,
-    kPeriodic
-  };
+  enum InductionClass { kInvariant, kLinear, kPolynomial, kGeometric, kWrapAround, kPeriodic };
 
   enum InductionOp {
     // Operations.
@@ -104,12 +97,7 @@ class HInductionVarAnalysis : public HOptimization {
                   InductionInfo* b,
                   HInstruction* f,
                   DataType::Type t)
-        : induction_class(ic),
-          operation(op),
-          op_a(a),
-          op_b(b),
-          fetch(f),
-          type(t) {}
+        : induction_class(ic), operation(op), op_a(a), op_b(b), fetch(f), type(t) {}
     InductionClass induction_class;
     InductionOp operation;
     InductionInfo* op_a;

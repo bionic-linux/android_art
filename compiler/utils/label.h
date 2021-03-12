@@ -40,12 +40,13 @@ class NearLabel;
 
 class ExternalLabel {
  public:
-  ExternalLabel(const char* name_in, uintptr_t address_in)
-      : name_(name_in), address_(address_in) {
+  ExternalLabel(const char* name_in, uintptr_t address_in) : name_(name_in), address_(address_in) {
     DCHECK(name_in != nullptr);
   }
 
-  const char* name() const { return name_; }
+  const char* name() const {
+    return name_;
+  }
   uintptr_t address() const {
     return address_;
   }
@@ -59,8 +60,7 @@ class Label {
  public:
   Label() : position_(0) {}
 
-  Label(Label&& src)
-      : position_(src.position_) {
+  Label(Label&& src) : position_(src.position_) {
     // We must unlink/unbind the src label when moving; if not, calling the destructor on
     // the src label would fail.
     src.position_ = 0;
@@ -83,9 +83,15 @@ class Label {
     return position_ - sizeof(void*);
   }
 
-  bool IsBound() const { return position_ < 0; }
-  bool IsUnused() const { return position_ == 0; }
-  bool IsLinked() const { return position_ > 0; }
+  bool IsBound() const {
+    return position_ < 0;
+  }
+  bool IsUnused() const {
+    return position_ == 0;
+  }
+  bool IsLinked() const {
+    return position_ > 0;
+  }
 
  private:
   int position_;

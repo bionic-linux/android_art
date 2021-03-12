@@ -20,7 +20,6 @@
 #include <string_view>
 
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set.h"
 #include "arch/instruction_set_features.h"
 #include "base/runtime_debug.h"
@@ -83,8 +82,7 @@ CompilerOptions::CompilerOptions()
       check_profiled_methods_(ProfileMethodsCheck::kNone),
       max_image_block_size_(std::numeric_limits<uint32_t>::max()),
       register_allocation_strategy_(RegisterAllocator::kRegisterAllocatorDefault),
-      passes_to_run_(nullptr) {
-}
+      passes_to_run_(nullptr) {}
 
 CompilerOptions::~CompilerOptions() {
   // Everything done by member destructors.
@@ -93,8 +91,8 @@ CompilerOptions::~CompilerOptions() {
 
 namespace {
 
-bool kEmitRuntimeReadBarrierChecks = kIsDebugBuild &&
-    RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
+bool kEmitRuntimeReadBarrierChecks =
+    kIsDebugBuild && RegisterRuntimeDebugFlag(&kEmitRuntimeReadBarrierChecks);
 
 }  // namespace
 

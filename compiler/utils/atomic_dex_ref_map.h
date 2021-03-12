@@ -39,9 +39,7 @@ class AtomicDexRefMap {
     kInsertResultCASFailure,
     kInsertResultSuccess,
   };
-  InsertResult Insert(const DexFileReferenceType& ref,
-                      const Value& expected,
-                      const Value& desired);
+  InsertResult Insert(const DexFileReferenceType& ref, const Value& expected, const Value& desired);
 
   // Retreive an item, returns false if the dex file is not added.
   bool Get(const DexFileReferenceType& ref, Value* out) const;

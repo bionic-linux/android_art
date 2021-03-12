@@ -25,8 +25,7 @@
 
 namespace art {
 
-AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator)
-    : allocator_(allocator) {
+AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator) : allocator_(allocator) {
   static const size_t kInitialBufferCapacity = 4 * KB;
   contents_ = allocator_->AllocArray<uint8_t>(kInitialBufferCapacity, kArenaAllocAssembler);
   cursor_ = contents_;
@@ -43,13 +42,11 @@ AssemblerBuffer::AssemblerBuffer(ArenaAllocator* allocator)
   CHECK_EQ(Size(), 0U);
 }
 
-
 AssemblerBuffer::~AssemblerBuffer() {
   if (allocator_->IsRunningOnMemoryTool()) {
     allocator_->MakeInaccessible(contents_, Capacity());
   }
 }
-
 
 void AssemblerBuffer::ProcessFixups(const MemoryRegion& region) {
   AssemblerFixup* fixup = fixup_;
@@ -58,7 +55,6 @@ void AssemblerBuffer::ProcessFixups(const MemoryRegion& region) {
     fixup = fixup->previous();
   }
 }
-
 
 void AssemblerBuffer::FinalizeInstructions(const MemoryRegion& instructions) {
   // Copy the instructions from the buffer.
@@ -70,7 +66,6 @@ void AssemblerBuffer::FinalizeInstructions(const MemoryRegion& instructions) {
   fixups_processed_ = true;
 #endif
 }
-
 
 void AssemblerBuffer::ExtendCapacity(size_t min_capacity) {
   size_t old_size = Size();
@@ -96,7 +91,7 @@ void DebugFrameOpCodeWriterForAssembler::ImplicitlyAdvancePC() {
   uint32_t pc = dchecked_integral_cast<uint32_t>(assembler_->CodeSize());
   if (delay_emitting_advance_pc_) {
     uint32_t stream_pos = dchecked_integral_cast<uint32_t>(opcodes_.size());
-    delayed_advance_pcs_.push_back(DelayedAdvancePC {stream_pos, pc});
+    delayed_advance_pcs_.push_back(DelayedAdvancePC{stream_pos, pc});
   } else {
     AdvancePC(pc);
   }

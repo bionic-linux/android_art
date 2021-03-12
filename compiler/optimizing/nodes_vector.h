@@ -42,9 +42,13 @@ class Alignment {
     return ((offset_ | base_) & (base - 1u)) == 0;
   }
 
-  size_t Base() const { return base_; }
+  size_t Base() const {
+    return base_;
+  }
 
-  size_t Offset() const { return offset_; }
+  size_t Offset() const {
+    return offset_;
+  }
 
   std::string ToString() const {
     return "ALIGN(" + std::to_string(base_) + "," + std::to_string(offset_) + ")";
@@ -98,13 +102,15 @@ class HVecOperation : public HVariableInputSizeInstruction {
   //
   // See HVecPredSetOperation.
   enum class PredicationKind {
-    kNotPredicated,        // Instruction doesn't take any predicate as an input.
-    kZeroingForm,          // Inactive elements are reset to zero.
-    kMergingForm,          // Inactive elements keep their value.
+    kNotPredicated,  // Instruction doesn't take any predicate as an input.
+    kZeroingForm,    // Inactive elements are reset to zero.
+    kMergingForm,    // Inactive elements keep their value.
     kLast = kMergingForm,
   };
 
-  PredicationKind GetPredicationKind() const { return GetPackedField<PredicationKindField>(); }
+  PredicationKind GetPredicationKind() const {
+    return GetPackedField<PredicationKindField>();
+  }
 
   // Returns whether the vector operation must be predicated in predicated SIMD mode
   // (see CodeGenerator::SupportsPredicatedSIMD). The method reflects semantics of
@@ -181,7 +187,9 @@ class HVecOperation : public HVariableInputSizeInstruction {
   // Note: For newly introduced vector instructions HScheduler${ARCH}::IsSchedulingBarrier must be
   // altered to return true if the instruction might reside outside the SIMD loop body since SIMD
   // registers are not kept alive across vector loop boundaries (yet).
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
   // Tests if all data of a vector node (vector length and packed type) is equal.
   // Each concrete implementation that adds more fields should test equality of
@@ -233,10 +241,8 @@ class HVecOperation : public HVariableInputSizeInstruction {
     } else if (instruction->IsPhi()) {
       // Vectorizer only uses Phis in reductions, so checking for a 2-way phi
       // with a direct vector operand as second argument suffices.
-      return
-          instruction->GetType() == kSIMDType &&
-          instruction->InputCount() == 2 &&
-          instruction->InputAt(1)->IsVecOperation();
+      return instruction->GetType() == kSIMDType && instruction->InputCount() == 2 &&
+             instruction->InputAt(1)->IsVecOperation();
     }
     return false;
   }
@@ -281,7 +287,9 @@ class HVecUnaryOperation : public HVecOperation {
     SetRawInputAt(0, input);
   }
 
-  HInstruction* GetInput() const { return InputAt(0); }
+  HInstruction* GetInput() const {
+    return InputAt(0);
+  }
 
   DECLARE_ABSTRACT_INSTRUCTION(VecUnaryOperation);
 
@@ -310,8 +318,12 @@ class HVecBinaryOperation : public HVecOperation {
     SetRawInputAt(1, right);
   }
 
-  HInstruction* GetLeft() const { return InputAt(0); }
-  HInstruction* GetRight() const { return InputAt(1); }
+  HInstruction* GetLeft() const {
+    return InputAt(0);
+  }
+  HInstruction* GetRight() const {
+    return InputAt(1);
+  }
 
   DECLARE_ABSTRACT_INSTRUCTION(VecBinaryOperation);
 
@@ -330,23 +342,26 @@ class HVecMemoryOperation : public HVecOperation {
                       size_t number_of_inputs,
                       size_t vector_length,
                       uint32_t dex_pc)
-      : HVecOperation(kind,
-                      allocator,
-                      packed_type,
-                      side_effects,
-                      number_of_inputs,
-                      vector_length,
-                      dex_pc),
+      : HVecOperation(
+            kind, allocator, packed_type, side_effects, number_of_inputs, vector_length, dex_pc),
         alignment_(DataType::Size(packed_type), 0) {
     DCHECK_GE(number_of_inputs, 2u);
   }
 
-  void SetAlignment(Alignment alignment) { alignment_ = alignment; }
+  void SetAlignment(Alignment alignment) {
+    alignment_ = alignment;
+  }
 
-  Alignment GetAlignment() const { return alignment_; }
+  Alignment GetAlignment() const {
+    return alignment_;
+  }
 
-  HInstruction* GetArray() const { return InputAt(0); }
-  HInstruction* GetIndex() const { return InputAt(1); }
+  HInstruction* GetArray() const {
+    return InputAt(0);
+  }
+  HInstruction* GetIndex() const {
+    return InputAt(1);
+  }
 
   bool InstructionDataEquals(const HInstruction* other) const override {
     DCHECK(other->IsVecMemoryOperation());
@@ -397,7 +412,9 @@ class HVecReplicateScalar final : public HVecUnaryOperation {
 
   // A replicate needs to stay in place, since SIMD registers are not
   // kept alive across vector loop boundaries (yet).
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
   DECLARE_INSTRUCTION(VecReplicateScalar);
 
@@ -429,7 +446,9 @@ class HVecExtractScalar final : public HVecUnaryOperation {
 
   // An extract needs to stay in place, since SIMD registers are not
   // kept alive across vector loop boundaries (yet).
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
   DECLARE_INSTRUCTION(VecExtractScalar);
 
@@ -442,11 +461,7 @@ class HVecExtractScalar final : public HVecUnaryOperation {
 // and the "-" denotes "don't care" (implementation dependent).
 class HVecReduce final : public HVecUnaryOperation {
  public:
-  enum ReductionKind {
-    kSum = 1,
-    kMin = 2,
-    kMax = 3
-  };
+  enum ReductionKind { kSum = 1, kMin = 2, kMax = 3 };
 
   HVecReduce(ArenaAllocator* allocator,
              HInstruction* input,
@@ -459,9 +474,13 @@ class HVecReduce final : public HVecUnaryOperation {
     DCHECK(HasConsistentPackedTypes(input, packed_type));
   }
 
-  ReductionKind GetReductionKind() const { return reduction_kind_; }
+  ReductionKind GetReductionKind() const {
+    return reduction_kind_;
+  }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   bool InstructionDataEquals(const HInstruction* other) const override {
     DCHECK(other->IsVecReduce());
@@ -492,10 +511,16 @@ class HVecCnv final : public HVecUnaryOperation {
     DCHECK_NE(GetInputType(), GetResultType());  // actual convert
   }
 
-  DataType::Type GetInputType() const { return InputAt(0)->AsVecOperation()->GetPackedType(); }
-  DataType::Type GetResultType() const { return GetPackedType(); }
+  DataType::Type GetInputType() const {
+    return InputAt(0)->AsVecOperation()->GetPackedType();
+  }
+  DataType::Type GetResultType() const {
+    return GetPackedType();
+  }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecCnv);
 
@@ -516,7 +541,9 @@ class HVecNeg final : public HVecUnaryOperation {
     DCHECK(HasConsistentPackedTypes(input, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecNeg);
 
@@ -538,7 +565,9 @@ class HVecAbs final : public HVecUnaryOperation {
     DCHECK(HasConsistentPackedTypes(input, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecAbs);
 
@@ -560,7 +589,9 @@ class HVecNot final : public HVecUnaryOperation {
     DCHECK(input->IsVecOperation());
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecNot);
 
@@ -587,7 +618,9 @@ class HVecAdd final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecAdd);
 
@@ -607,12 +640,14 @@ class HVecSaturationAdd final : public HVecBinaryOperation {
                     size_t vector_length,
                     uint32_t dex_pc)
       : HVecBinaryOperation(
-          kVecSaturationAdd, allocator, left, right, packed_type, vector_length, dex_pc) {
+            kVecSaturationAdd, allocator, left, right, packed_type, vector_length, dex_pc) {
     DCHECK(HasConsistentPackedTypes(left, packed_type));
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecSaturationAdd);
 
@@ -640,9 +675,13 @@ class HVecHalvingAdd final : public HVecBinaryOperation {
     SetPackedFlag<kFieldHAddIsRounded>(is_rounded);
   }
 
-  bool IsRounded() const { return GetPackedFlag<kFieldHAddIsRounded>(); }
+  bool IsRounded() const {
+    return GetPackedFlag<kFieldHAddIsRounded>();
+  }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   bool InstructionDataEquals(const HInstruction* other) const override {
     DCHECK(other->IsVecHalvingAdd());
@@ -677,7 +716,9 @@ class HVecSub final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecSub);
 
@@ -697,12 +738,14 @@ class HVecSaturationSub final : public HVecBinaryOperation {
                     size_t vector_length,
                     uint32_t dex_pc)
       : HVecBinaryOperation(
-          kVecSaturationSub, allocator, left, right, packed_type, vector_length, dex_pc) {
+            kVecSaturationSub, allocator, left, right, packed_type, vector_length, dex_pc) {
     DCHECK(HasConsistentPackedTypes(left, packed_type));
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecSaturationSub);
 
@@ -725,7 +768,9 @@ class HVecMul final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecMul);
 
@@ -748,7 +793,9 @@ class HVecDiv final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecDiv);
 
@@ -772,7 +819,9 @@ class HVecMin final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecMin);
 
@@ -796,7 +845,9 @@ class HVecMax final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(right, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecMax);
 
@@ -818,7 +869,9 @@ class HVecAnd final : public HVecBinaryOperation {
     DCHECK(left->IsVecOperation() && right->IsVecOperation());
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecAnd);
 
@@ -836,12 +889,14 @@ class HVecAndNot final : public HVecBinaryOperation {
              DataType::Type packed_type,
              size_t vector_length,
              uint32_t dex_pc)
-         : HVecBinaryOperation(
-               kVecAndNot, allocator, left, right, packed_type, vector_length, dex_pc) {
+      : HVecBinaryOperation(
+            kVecAndNot, allocator, left, right, packed_type, vector_length, dex_pc) {
     DCHECK(left->IsVecOperation() && right->IsVecOperation());
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecAndNot);
 
@@ -863,7 +918,9 @@ class HVecOr final : public HVecBinaryOperation {
     DCHECK(left->IsVecOperation() && right->IsVecOperation());
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecOr);
 
@@ -885,7 +942,9 @@ class HVecXor final : public HVecBinaryOperation {
     DCHECK(left->IsVecOperation() && right->IsVecOperation());
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecXor);
 
@@ -907,7 +966,9 @@ class HVecShl final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(left, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecShl);
 
@@ -929,7 +990,9 @@ class HVecShr final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(left, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecShr);
 
@@ -951,7 +1014,9 @@ class HVecUShr final : public HVecBinaryOperation {
     DCHECK(HasConsistentPackedTypes(left, packed_type));
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecUShr);
 
@@ -989,7 +1054,9 @@ class HVecSetScalars final : public HVecOperation {
 
   // Setting scalars needs to stay in place, since SIMD registers are not
   // kept alive across vector loop boundaries (yet).
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
   DECLARE_INSTRUCTION(VecSetScalars);
 
@@ -1032,7 +1099,9 @@ class HVecMultiplyAccumulate final : public HVecOperation {
     SetRawInputAt(2, mul_right);
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   bool InstructionDataEquals(const HInstruction* other) const override {
     DCHECK(other->IsVecMultiplyAccumulate());
@@ -1040,7 +1109,9 @@ class HVecMultiplyAccumulate final : public HVecOperation {
     return HVecOperation::InstructionDataEquals(o) && GetOpKind() == o->GetOpKind();
   }
 
-  InstructionKind GetOpKind() const { return op_kind_; }
+  InstructionKind GetOpKind() const {
+    return op_kind_;
+  }
 
   DECLARE_INSTRUCTION(VecMultiplyAccumulate);
 
@@ -1113,13 +1184,13 @@ class HVecDotProd final : public HVecOperation {
               bool is_zero_extending,
               size_t vector_length,
               uint32_t dex_pc)
-    : HVecOperation(kVecDotProd,
-                    allocator,
-                    packed_type,
-                    SideEffects::None(),
-                    /* number_of_inputs= */ 3,
-                    vector_length,
-                    dex_pc) {
+      : HVecOperation(kVecDotProd,
+                      allocator,
+                      packed_type,
+                      SideEffects::None(),
+                      /* number_of_inputs= */ 3,
+                      vector_length,
+                      dex_pc) {
     DCHECK(HasConsistentPackedTypes(accumulator, packed_type));
     DCHECK(DataType::IsIntegralType(packed_type));
     DCHECK(left->IsVecOperation());
@@ -1132,9 +1203,13 @@ class HVecDotProd final : public HVecOperation {
     SetPackedFlag<kFieldHDotProdIsZeroExtending>(is_zero_extending);
   }
 
-  bool IsZeroExtending() const { return GetPackedFlag<kFieldHDotProdIsZeroExtending>(); }
+  bool IsZeroExtending() const {
+    return GetPackedFlag<kFieldHDotProdIsZeroExtending>();
+  }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_INSTRUCTION(VecDotProd);
 
@@ -1173,9 +1248,13 @@ class HVecLoad final : public HVecMemoryOperation {
     SetPackedFlag<kFieldIsStringCharAt>(is_string_char_at);
   }
 
-  bool IsStringCharAt() const { return GetPackedFlag<kFieldIsStringCharAt>(); }
+  bool IsStringCharAt() const {
+    return GetPackedFlag<kFieldIsStringCharAt>();
+  }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   bool InstructionDataEquals(const HInstruction* other) const override {
     DCHECK(other->IsVecLoad());
@@ -1221,9 +1300,13 @@ class HVecStore final : public HVecMemoryOperation {
   }
 
   // A store needs to stay in place.
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
-  HInstruction* GetValue() const { return InputAt(2); }
+  HInstruction* GetValue() const {
+    return InputAt(2);
+  }
 
   DECLARE_INSTRUCTION(VecStore);
 
@@ -1266,18 +1349,15 @@ class HVecPredSetOperation : public HVecOperation {
                        size_t number_of_inputs,
                        size_t vector_length,
                        uint32_t dex_pc)
-      : HVecOperation(kind,
-                      allocator,
-                      packed_type,
-                      side_effects,
-                      number_of_inputs,
-                      vector_length,
-                      dex_pc) {
+      : HVecOperation(
+            kind, allocator, packed_type, side_effects, number_of_inputs, vector_length, dex_pc) {
     // Overrides the kSIMDType set by the VecOperation constructor.
     SetPackedField<TypeField>(kSIMDPredType);
   }
 
-  bool CanBeMoved() const override { return true; }
+  bool CanBeMoved() const override {
+    return true;
+  }
 
   DECLARE_ABSTRACT_INSTRUCTION(VecPredSetOperation);
 
@@ -1294,26 +1374,32 @@ class HVecPredSetAll final : public HVecPredSetOperation {
                  HInstruction* input,
                  DataType::Type packed_type,
                  size_t vector_length,
-                 uint32_t dex_pc) :
-      HVecPredSetOperation(kVecPredSetAll,
-                           allocator,
-                           packed_type,
-                           SideEffects::None(),
-                           /* number_of_inputs= */ 1,
-                           vector_length,
-                           dex_pc) {
+                 uint32_t dex_pc)
+      : HVecPredSetOperation(kVecPredSetAll,
+                             allocator,
+                             packed_type,
+                             SideEffects::None(),
+                             /* number_of_inputs= */ 1,
+                             vector_length,
+                             dex_pc) {
     DCHECK(input->IsIntConstant());
     SetRawInputAt(0, input);
     MarkEmittedAtUseSite();
   }
 
   // Having governing predicate doesn't make sense for set all TRUE/FALSE instruction.
-  bool MustBePredicatedInPredicatedSIMDMode() override { return false; }
+  bool MustBePredicatedInPredicatedSIMDMode() override {
+    return false;
+  }
 
-  bool IsSetTrue() const { return InputAt(0)->AsIntConstant()->IsTrue(); }
+  bool IsSetTrue() const {
+    return InputAt(0)->AsIntConstant()->IsTrue();
+  }
 
   // Vector predicates are not kept alive across vector loop boundaries.
-  bool CanBeMoved() const override { return false; }
+  bool CanBeMoved() const override {
+    return false;
+  }
 
   DECLARE_INSTRUCTION(VecPredSetAll);
 
@@ -1338,10 +1424,10 @@ class HVecPredSetAll final : public HVecPredSetOperation {
 class HVecPredWhile final : public HVecPredSetOperation {
  public:
   enum class CondKind {
-    kLE,   // signed less than or equal.
-    kLO,   // unsigned lower.
-    kLS,   // unsigned lower or same.
-    kLT,   // signed less.
+    kLE,  // signed less than or equal.
+    kLO,  // unsigned lower.
+    kLS,  // unsigned lower or same.
+    kLT,  // signed less.
     kLast = kLT,
   };
 
@@ -1351,14 +1437,14 @@ class HVecPredWhile final : public HVecPredSetOperation {
                 CondKind cond,
                 DataType::Type packed_type,
                 size_t vector_length,
-                uint32_t dex_pc) :
-      HVecPredSetOperation(kVecPredWhile,
-                           allocator,
-                           packed_type,
-                           SideEffects::None(),
-                           /* number_of_inputs= */ 2,
-                           vector_length,
-                           dex_pc) {
+                uint32_t dex_pc)
+      : HVecPredSetOperation(kVecPredWhile,
+                             allocator,
+                             packed_type,
+                             SideEffects::None(),
+                             /* number_of_inputs= */ 2,
+                             vector_length,
+                             dex_pc) {
     DCHECK(!left->IsVecOperation());
     DCHECK(!left->IsVecPredSetOperation());
     DCHECK(!right->IsVecOperation());
@@ -1371,7 +1457,9 @@ class HVecPredWhile final : public HVecPredSetOperation {
   }
 
   // This is a special loop control instruction which must not be predicated.
-  bool MustBePredicatedInPredicatedSIMDMode() override { return false; }
+  bool MustBePredicatedInPredicatedSIMDMode() override {
+    return false;
+  }
 
   CondKind GetCondKind() const {
     return GetPackedField<CondKindField>();
@@ -1382,8 +1470,7 @@ class HVecPredWhile final : public HVecPredSetOperation {
  protected:
   // Additional packed bits.
   static constexpr size_t kCondKind = HVecOperation::kNumberOfVectorOpPackedBits;
-  static constexpr size_t kCondKindSize =
-      MinimumBitsToStore(static_cast<size_t>(CondKind::kLast));
+  static constexpr size_t kCondKindSize = MinimumBitsToStore(static_cast<size_t>(CondKind::kLast));
   static constexpr size_t kNumberOfVecPredConditionPackedBits = kCondKind + kCondKindSize;
   static_assert(kNumberOfVecPredConditionPackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
@@ -1441,7 +1528,9 @@ class HVecPredCondition final : public HVecOperation {
   // This instruction is currently used only as a special loop control instruction
   // which must not be predicated.
   // TODO: Remove the constraint.
-  bool MustBePredicatedInPredicatedSIMDMode() override { return false; }
+  bool MustBePredicatedInPredicatedSIMDMode() override {
+    return false;
+  }
 
   PCondKind GetPCondKind() const {
     return GetPackedField<CondKindField>();

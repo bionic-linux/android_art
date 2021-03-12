@@ -101,8 +101,7 @@ void HDeadCodeElimination::MaybeRecordSimplifyIf() {
 }
 
 static bool HasInput(HCondition* instruction, HInstruction* input) {
-  return (instruction->InputAt(0) == input) ||
-         (instruction->InputAt(1) == input);
+  return (instruction->InputAt(0) == input) || (instruction->InputAt(1) == input);
 }
 
 static bool HasEquality(IfCondition condition) {
@@ -186,9 +185,7 @@ static bool RemoveNonNullControlDependences(HBasicBlock* block, HBasicBlock* thr
     ++it;  // increment before possibly replacing
     if (user->IsNullCheck()) {
       HBasicBlock* user_block = user->GetBlock();
-      if (user_block != block &&
-          user_block != throws &&
-          block->Dominates(user_block)) {
+      if (user_block != block && user_block != throws && block->Dominates(user_block)) {
         if (bound == nullptr) {
           ReferenceTypeInfo ti = obj->GetReferenceTypeInfo();
           bound = new (obj->GetBlock()->GetGraph()->GetAllocator()) HBoundType(obj);
@@ -243,22 +240,16 @@ bool HDeadCodeElimination::SimplifyAlwaysThrows() {
     HInstruction* first = block->GetFirstInstruction();
     HInstruction* last = block->GetLastInstruction();
     // Ensure only one throwing instruction appears before goto.
-    if (first->AlwaysThrows() &&
-        first->GetNext() == last &&
-        last->IsGoto() &&
-        block->GetPhis().IsEmpty() &&
-        block->GetPredecessors().size() == 1u) {
+    if (first->AlwaysThrows() && first->GetNext() == last && last->IsGoto() &&
+        block->GetPhis().IsEmpty() && block->GetPredecessors().size() == 1u) {
       DCHECK_EQ(block->GetSuccessors().size(), 1u);
       HBasicBlock* pred = block->GetSinglePredecessor();
       HBasicBlock* succ = block->GetSingleSuccessor();
       // Ensure no computations are merged through throwing block.
       // This does not prevent the optimization per se, but would
       // require an elaborate clean up of the SSA graph.
-      if (succ != exit &&
-          !block->Dominates(pred) &&
-          pred->Dominates(succ) &&
-          succ->GetPredecessors().size() > 1u &&
-          succ->GetPhis().IsEmpty()) {
+      if (succ != exit && !block->Dominates(pred) && pred->Dominates(succ) &&
+          succ->GetPredecessors().size() > 1u && succ->GetPhis().IsEmpty()) {
         block->ReplaceSuccessor(succ, exit);
         rerun_dominance_and_loop_analysis = true;
         MaybeRecordStat(stats_, MethodCompilationStat::kSimplifyThrowingInvoke);
@@ -325,18 +316,13 @@ bool HDeadCodeElimination::SimplifyIfs() {
   for (HBasicBlock* block : graph_->GetReversePostOrder()) {
     HInstruction* last = block->GetLastInstruction();
     HInstruction* first = block->GetFirstInstruction();
-    if (!block->IsCatchBlock() &&
-        last->IsIf() &&
-        block->HasSinglePhi() &&
+    if (!block->IsCatchBlock() && last->IsIf() && block->HasSinglePhi() &&
         block->GetFirstPhi()->HasOnlyOneNonEnvironmentUse()) {
       bool has_only_phi_and_if = (last == first) && (last->InputAt(0) == block->GetFirstPhi());
       bool has_only_phi_condition_and_if =
-          !has_only_phi_and_if &&
-          first->IsCondition() &&
-          HasInput(first->AsCondition(), block->GetFirstPhi()) &&
-          (first->GetNext() == last) &&
-          (last->InputAt(0) == first) &&
-          first->HasOnlyOneNonEnvironmentUse();
+          !has_only_phi_and_if && first->IsCondition() &&
+          HasInput(first->AsCondition(), block->GetFirstPhi()) && (first->GetNext() == last) &&
+          (last->InputAt(0) == first) && first->HasOnlyOneNonEnvironmentUse();
 
       if (has_only_phi_and_if || has_only_phi_condition_and_if) {
         DCHECK(!block->IsLoopHeader());
@@ -427,7 +413,7 @@ bool HDeadCodeElimination::SimplifyIfs() {
 void HDeadCodeElimination::ConnectSuccessiveBlocks() {
   // Order does not matter. Skip the entry block by starting at index 1 in reverse post order.
   for (size_t i = 1u, size = graph_->GetReversePostOrder().size(); i != size; ++i) {
-    HBasicBlock* block  = graph_->GetReversePostOrder()[i];
+    HBasicBlock* block = graph_->GetReversePostOrder()[i];
     DCHECK(!block->IsEntryBlock());
     while (block->GetLastInstruction()->IsGoto()) {
       HBasicBlock* successor = block->GetSingleSuccessor();

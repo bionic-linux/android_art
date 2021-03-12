@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include <gtest/gtest.h>
-
 #include "linker_patch.h"
+
+#include <gtest/gtest.h>
 
 namespace art {
 namespace linker {

@@ -16,10 +16,9 @@
 
 #include <gtest/gtest.h>
 
-#include "data_type-inl.h"
-
 #include "base/array_ref.h"
 #include "base/macros.h"
+#include "data_type-inl.h"
 #include "dex/primitive.h"
 
 namespace art {
@@ -76,13 +75,13 @@ TEST(DataType, IsTypeConversionImplicit) {
 
   static const bool kImplicitIntegralConversions[][arraysize(kIntegralTypes)] = {
       //             Bool   Uint8   Int8 Uint16  Int16  Int32  Int64
-      { /*   Bool    N/A */  true,  true,  true,  true,  true, false },
-      { /*  Uint8    N/A */  true, false,  true,  true,  true, false },
-      { /*   Int8    N/A */ false,  true, false,  true,  true, false },
-      { /* Uint16    N/A */ false, false,  true, false,  true, false },
-      { /*  Int16    N/A */ false, false, false,  true,  true, false },
-      { /*  Int32    N/A */ false, false, false, false,  true, false },
-      { /*  Int64    N/A */ false, false, false, false, false,  true },
+      {/*   Bool    N/A */ true, true, true, true, true, false},
+      {/*  Uint8    N/A */ true, false, true, true, true, false},
+      {/*   Int8    N/A */ false, true, false, true, true, false},
+      {/* Uint16    N/A */ false, false, true, false, true, false},
+      {/*  Int16    N/A */ false, false, false, true, true, false},
+      {/*  Int32    N/A */ false, false, false, false, true, false},
+      {/*  Int64    N/A */ false, false, false, false, false, true},
   };
   static_assert(arraysize(kIntegralTypes) == arraysize(kImplicitIntegralConversions), "size check");
 

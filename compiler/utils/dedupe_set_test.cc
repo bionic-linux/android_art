@@ -58,10 +58,11 @@ TEST(DedupeSetTest, Test) {
             std::vector<uint8_t>,
             DedupeSetTestAlloc,
             size_t,
-            DedupeSetTestHashFunc> deduplicator("test", alloc);
+            DedupeSetTestHashFunc>
+      deduplicator("test", alloc);
   const std::vector<uint8_t>* array1;
   {
-    uint8_t raw_test1[] = { 10u, 20u, 30u, 45u };
+    uint8_t raw_test1[] = {10u, 20u, 30u, 45u};
     ArrayRef<const uint8_t> test1(raw_test1);
     array1 = deduplicator.Add(self, test1);
     ASSERT_NE(array1, nullptr);
@@ -70,7 +71,7 @@ TEST(DedupeSetTest, Test) {
 
   const std::vector<uint8_t>* array2;
   {
-    uint8_t raw_test2[] = { 10u, 20u, 30u, 45u };
+    uint8_t raw_test2[] = {10u, 20u, 30u, 45u};
     ArrayRef<const uint8_t> test2(raw_test2);
     array2 = deduplicator.Add(self, test2);
     ASSERT_EQ(array2, array1);
@@ -79,7 +80,7 @@ TEST(DedupeSetTest, Test) {
 
   const std::vector<uint8_t>* array3;
   {
-    uint8_t raw_test3[] = { 10u, 22u, 30u, 47u };
+    uint8_t raw_test3[] = {10u, 22u, 30u, 47u};
     ArrayRef<const uint8_t> test3(raw_test3);
     array3 = deduplicator.Add(self, test3);
     ASSERT_NE(array3, nullptr);

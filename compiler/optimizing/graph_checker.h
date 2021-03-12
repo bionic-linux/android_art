@@ -34,12 +34,12 @@ class GraphChecker : public HGraphDelegateVisitor {
   explicit GraphChecker(HGraph* graph,
                         CodeGenerator* codegen = nullptr,
                         const char* dump_prefix = "art::GraphChecker: ")
-    : HGraphDelegateVisitor(graph),
-      errors_(graph->GetAllocator()->Adapter(kArenaAllocGraphChecker)),
-      dump_prefix_(dump_prefix),
-      allocator_(graph->GetArenaStack()),
-      seen_ids_(&allocator_, graph->GetCurrentInstructionId(), false, kArenaAllocGraphChecker),
-      codegen_(codegen) {
+      : HGraphDelegateVisitor(graph),
+        errors_(graph->GetAllocator()->Adapter(kArenaAllocGraphChecker)),
+        dump_prefix_(dump_prefix),
+        allocator_(graph->GetArenaStack()),
+        seen_ids_(&allocator_, graph->GetCurrentInstructionId(), false, kArenaAllocGraphChecker),
+        codegen_(codegen) {
     seen_ids_.ClearAllBits();
   }
 

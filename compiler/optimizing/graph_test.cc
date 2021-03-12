@@ -16,11 +16,10 @@
 
 #include "base/arena_allocator.h"
 #include "builder.h"
+#include "gtest/gtest.h"
 #include "nodes.h"
 #include "optimizing_unit_test.h"
 #include "pretty_printer.h"
-
-#include "gtest/gtest.h"
 
 namespace art {
 
@@ -73,7 +72,6 @@ HBasicBlock* GraphTest::CreateExitBlock(HGraph* graph) {
   block->AddInstruction(exit_instr);
   return block;
 }
-
 
 // Test that the successors of an if block stay consistent after a SimplifyCFG.
 // This test sets the false block to be the return block.
@@ -219,7 +217,6 @@ TEST_F(GraphTest, IfSuccessorMultiplePreHeaders1) {
   loop_block->AddSuccessor(loop_block);
   if_block->AddSuccessor(loop_block);
   if_block->AddSuccessor(return_block);
-
 
   ASSERT_EQ(if_block->GetLastInstruction()->AsIf()->IfTrueSuccessor(), loop_block);
   ASSERT_EQ(if_block->GetLastInstruction()->AsIf()->IfFalseSuccessor(), return_block);

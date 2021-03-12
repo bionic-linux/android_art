@@ -33,8 +33,9 @@ class IntrinsicLocationsBuilderARMVIXL final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST
@@ -60,8 +61,9 @@ class IntrinsicCodeGeneratorARMVIXL final : public IntrinsicVisitor {
 
   // Define visitor methods.
 
-#define OPTIMIZING_INTRINSICS(Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
-  void Visit ## Name(HInvoke* invoke) override;
+#define OPTIMIZING_INTRINSICS(                                             \
+    Name, IsStatic, NeedsEnvironmentOrCache, SideEffects, Exceptions, ...) \
+  void Visit##Name(HInvoke* invoke) override;
 #include "intrinsics_list.h"
   INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 #undef INTRINSICS_LIST

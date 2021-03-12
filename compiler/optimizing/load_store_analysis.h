@@ -178,11 +178,21 @@ class HeapLocation : public ArenaObject<kArenaAllocLSA> {
            (offset != kInvalidFieldOffset && index == nullptr));
   }
 
-  ReferenceInfo* GetReferenceInfo() const { return ref_info_; }
-  DataType::Type GetType() const { return type_; }
-  size_t GetOffset() const { return offset_; }
-  HInstruction* GetIndex() const { return index_; }
-  size_t GetVectorLength() const { return vector_length_; }
+  ReferenceInfo* GetReferenceInfo() const {
+    return ref_info_;
+  }
+  DataType::Type GetType() const {
+    return type_;
+  }
+  size_t GetOffset() const {
+    return offset_;
+  }
+  HInstruction* GetIndex() const {
+    return index_;
+  }
+  size_t GetVectorLength() const {
+    return vector_length_;
+  }
 
   // Returns the definition of declaring class' dex index.
   // It's kDeclaringClassDefIndexForArrays for an array element.
@@ -323,8 +333,7 @@ class HeapLocationCollector : public HGraphVisitor {
     size_t vector_length = HeapLocation::kScalar;
     if (instruction->IsArraySet()) {
       type = instruction->AsArraySet()->GetComponentType();
-    } else if (instruction->IsVecStore() ||
-               instruction->IsVecLoad()) {
+    } else if (instruction->IsVecStore() || instruction->IsVecLoad()) {
       HVecOperation* vec_op = instruction->AsVecOperation();
       type = vec_op->GetPackedType();
       vector_length = vec_op->GetVectorLength();
@@ -370,10 +379,8 @@ class HeapLocationCollector : public HGraphVisitor {
     DataType::Type lookup_type = DataType::ToSigned(type);
     for (size_t i = 0; i < heap_locations_.size(); i++) {
       HeapLocation* loc = heap_locations_[i];
-      if (loc->GetReferenceInfo() == ref_info &&
-          loc->GetType() == lookup_type &&
-          loc->GetOffset() == offset &&
-          loc->GetIndex() == index &&
+      if (loc->GetReferenceInfo() == ref_info && loc->GetType() == lookup_type &&
+          loc->GetOffset() == offset && loc->GetIndex() == index &&
           loc->GetVectorLength() == vector_length &&
           loc->GetDeclaringClassDefIndex() == declaring_class_def_index) {
         return i;
@@ -438,7 +445,7 @@ class HeapLocationCollector : public HGraphVisitor {
     } else if (ref_info2->IsSingleton()) {
       return false;
     } else if (!MayAliasWithPreexistenceChecking(ref_info1, ref_info2) ||
-        !MayAliasWithPreexistenceChecking(ref_info2, ref_info1)) {
+               !MayAliasWithPreexistenceChecking(ref_info2, ref_info1)) {
       return false;
     }
     return true;
@@ -539,12 +546,8 @@ class HeapLocationCollector : public HGraphVisitor {
     DataType::Type type = field_info.GetFieldType();
     const uint16_t declaring_class_def_index = field_info.GetDeclaringClassDefIndex();
     const size_t offset = field_info.GetFieldOffset().SizeValue();
-    MaybeCreateHeapLocation(ref,
-                            type,
-                            offset,
-                            nullptr,
-                            HeapLocation::kScalar,
-                            declaring_class_def_index);
+    MaybeCreateHeapLocation(
+        ref, type, offset, nullptr, HeapLocation::kScalar, declaring_class_def_index);
   }
 
   void VisitArrayAccess(HInstruction* array,
@@ -635,13 +638,13 @@ class HeapLocationCollector : public HGraphVisitor {
   }
 
   ScopedArenaAllocator* allocator_;
-  ScopedArenaVector<ReferenceInfo*> ref_info_array_;   // All references used for heap accesses.
-  ScopedArenaVector<HeapLocation*> heap_locations_;    // All heap locations.
-  ArenaBitVector aliasing_matrix_;    // aliasing info between each pair of locations.
-  bool has_heap_stores_;    // If there is no heap stores, LSE acts as GVN with better
-                            // alias analysis and won't be as effective.
-  bool has_volatile_;       // If there are volatile field accesses.
-  bool has_monitor_operations_;    // If there are monitor operations.
+  ScopedArenaVector<ReferenceInfo*> ref_info_array_;  // All references used for heap accesses.
+  ScopedArenaVector<HeapLocation*> heap_locations_;   // All heap locations.
+  ArenaBitVector aliasing_matrix_;  // aliasing info between each pair of locations.
+  bool has_heap_stores_;            // If there is no heap stores, LSE acts as GVN with better
+                                    // alias analysis and won't be as effective.
+  bool has_volatile_;               // If there are volatile field accesses.
+  bool has_monitor_operations_;     // If there are monitor operations.
   LoadStoreAnalysisType lse_type_;
 
   DISALLOW_COPY_AND_ASSIGN(HeapLocationCollector);

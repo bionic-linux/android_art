@@ -18,8 +18,8 @@
 #define ART_COMPILER_DEBUG_ELF_SYMTAB_WRITER_H_
 
 #include <map>
-#include <unordered_set>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "base/utils.h"
 #include "debug/debug_info.h"
@@ -167,4 +167,3 @@ static void WriteDebugSymbols(ElfBuilder<ElfTypes>* builder,
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_SYMTAB_WRITER_H_
-

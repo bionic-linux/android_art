@@ -41,8 +41,7 @@ void VisitEscapes(HInstruction* reference, EscapeVisitor& escape_visitor) {
       if (!escape_visitor(user)) {
         return;
       }
-    } else if (user->IsPhi() ||
-               user->IsSelect() ||
+    } else if (user->IsPhi() || user->IsSelect() ||
                (user->IsInvoke() && user->GetSideEffects().DoesAnyWrite()) ||
                (user->IsInstanceFieldSet() && (reference == user->InputAt(1))) ||
                (user->IsUnresolvedInstanceFieldSet() && (reference == user->InputAt(1))) ||

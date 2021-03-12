@@ -27,9 +27,7 @@ void LoopAnalysis::CalculateLoopBasicProperties(HLoopInformation* loop_info,
                                                 int64_t trip_count) {
   analysis_results->trip_count_ = trip_count;
 
-  for (HBlocksInLoopIterator block_it(*loop_info);
-       !block_it.Done();
-       block_it.Advance()) {
+  for (HBlocksInLoopIterator block_it(*loop_info); !block_it.Done(); block_it.Advance()) {
     HBasicBlock* block = block_it.Current();
 
     // Check whether one of the successor is loop exit.
@@ -91,9 +89,8 @@ class ArchDefaultLoopHelper : public ArchNoOptsLoopHelper {
 
   bool IsLoopNonBeneficialForScalarOpts(LoopAnalysisInfo* analysis_info) const override {
     return analysis_info->HasLongTypeInstructions() ||
-           IsLoopTooBig(analysis_info,
-                        kScalarHeuristicMaxBodySizeInstr,
-                        kScalarHeuristicMaxBodySizeBlocks);
+           IsLoopTooBig(
+               analysis_info, kScalarHeuristicMaxBodySizeInstr, kScalarHeuristicMaxBodySizeBlocks);
   }
 
   uint32_t GetScalarUnrollingFactor(const LoopAnalysisInfo* analysis_info) const override {
@@ -110,7 +107,9 @@ class ArchDefaultLoopHelper : public ArchNoOptsLoopHelper {
     return desired_unrolling_factor;
   }
 
-  bool IsLoopPeelingEnabled() const override { return true; }
+  bool IsLoopPeelingEnabled() const override {
+    return true;
+  }
 
   bool IsFullUnrollingBeneficial(LoopAnalysisInfo* analysis_info) const override {
     int64_t trip_count = analysis_info->GetTripCount();
@@ -178,8 +177,7 @@ class Arm64LoopHelper : public ArchDefaultLoopHelper {
 
     uint32_t uf1 = kArm64SimdHeuristicMaxBodySizeInstr / instruction_count;
     uint32_t uf2 = (trip_count - max_peel) / vector_length;
-    uint32_t unroll_factor =
-        TruncToPowerOfTwo(std::min({uf1, uf2, kArm64SimdMaxUnrollFactor}));
+    uint32_t unroll_factor = TruncToPowerOfTwo(std::min({uf1, uf2, kArm64SimdMaxUnrollFactor}));
     DCHECK_GE(unroll_factor, 1u);
     return unroll_factor;
   }
@@ -259,7 +257,7 @@ class X86_64LoopHelper : public ArchDefaultLoopHelper {
       case HInstruction::InstructionKind::kVecReplicateScalar:
         return 2;
       case HInstruction::InstructionKind::kVecExtractScalar:
-       return 1;
+        return 1;
       case HInstruction::InstructionKind::kVecReduce:
         return 4;
       case HInstruction::InstructionKind::kVecNeg:

@@ -70,13 +70,15 @@ class ManagedRegister : public ValueObject {
     return ManagedRegister();
   }
 
-  constexpr int RegId() const { return id_; }
-  explicit constexpr ManagedRegister(int reg_id) : id_(reg_id) { }
+  constexpr int RegId() const {
+    return id_;
+  }
+  explicit constexpr ManagedRegister(int reg_id) : id_(reg_id) {}
 
  protected:
   static const int kNoRegister = -1;
 
-  constexpr ManagedRegister() : id_(kNoRegister) { }
+  constexpr ManagedRegister() : id_(kNoRegister) {}
 
   int id_;
 };

@@ -223,8 +223,7 @@ void PrepareForRegisterAllocation::VisitConstructorFence(HConstructorFence* cons
       // TODO: GetAssociatedAllocation should not care about multiple inputs
       // if we are in prepare_for_register_allocation pass only.
       constructor_fence->GetBlock()->RemoveInstruction(constructor_fence);
-      MaybeRecordStat(stats_,
-                      MethodCompilationStat::kConstructorFenceRemovedPFRA);
+      MaybeRecordStat(stats_, MethodCompilationStat::kConstructorFenceRemovedPFRA);
       return;
     }
 

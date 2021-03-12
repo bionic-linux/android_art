@@ -39,7 +39,9 @@ class SideEffectsAnalysis : public HOptimization {
   // Compute side effects of individual blocks and loops.
   bool Run();
 
-  bool HasRun() const { return has_run_; }
+  bool HasRun() const {
+    return has_run_;
+  }
 
   static constexpr const char* kSideEffectsAnalysisPassName = "side_effects";
 

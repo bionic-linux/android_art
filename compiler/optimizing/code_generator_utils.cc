@@ -22,8 +22,7 @@
 
 namespace art {
 
-void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long,
-                                     int64_t* magic, int* shift) {
+void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long, int64_t* magic, int* shift) {
   // It does not make sense to calculate magic and shift for zero divisor.
   DCHECK_NE(divisor, 0);
 
@@ -56,8 +55,8 @@ void CalculateMagicAndShiftForDivRem(int64_t divisor, bool is_long,
 
   // Initialize the computations.
   uint64_t abs_d = (divisor >= 0) ? divisor : -divisor;
-  uint64_t sign_bit = is_long ? static_cast<uint64_t>(divisor) >> 63 :
-                                static_cast<uint32_t>(divisor) >> 31;
+  uint64_t sign_bit =
+      is_long ? static_cast<uint64_t>(divisor) >> 63 : static_cast<uint32_t>(divisor) >> 31;
   uint64_t tmp = exp + sign_bit;
   uint64_t abs_nc = tmp - 1 - (tmp % abs_d);
   uint64_t quotient1 = exp / abs_nc;
@@ -108,8 +107,7 @@ bool IsBooleanValueOrMaterializedCondition(HInstruction* cond_input) {
 class UnsignedUseAnalyzer {
  private:
   explicit UnsignedUseAnalyzer(ArenaAllocator* allocator)
-      : seen_values_(allocator->Adapter(kArenaAllocCodeGenerator)) {
-  }
+      : seen_values_(allocator->Adapter(kArenaAllocCodeGenerator)) {}
 
   bool IsNonNegativeUse(HInstruction* target_user, HInstruction* value);
   bool IsComparedValueNonNegativeInBlock(HInstruction* value,
@@ -132,8 +130,7 @@ bool UnsignedUseAnalyzer::IsComparedValueNonNegativeInBlock(HInstruction* value,
   // 1. The condition basic block and target_block to be different.
   // 2. The condition basic block to end with HIf.
   // 3. HIf to use the condition.
-  if (cond->GetBlock() == target_block ||
-      !cond->GetBlock()->EndsWithIf() ||
+  if (cond->GetBlock() == target_block || !cond->GetBlock()->EndsWithIf() ||
       cond->GetBlock()->GetLastInstruction()->InputAt(0) != cond) {
     return false;
   }

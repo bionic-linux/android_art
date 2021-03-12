@@ -36,25 +36,22 @@ constexpr bool kUseTrueRandomness = false;
  * Fixture class for unit testing the ReferenceTypePropagation phase. Used to verify the
  * functionality of methods and situations that are hard to set up with checker tests.
  */
-template<typename SuperTest>
+template <typename SuperTest>
 class ReferenceTypePropagationTestBase : public SuperTest, public OptimizingUnitTestHelper {
  public:
-  ReferenceTypePropagationTestBase() : graph_(nullptr), propagation_(nullptr) { }
+  ReferenceTypePropagationTestBase() : graph_(nullptr), propagation_(nullptr) {}
 
-  ~ReferenceTypePropagationTestBase() { }
+  ~ReferenceTypePropagationTestBase() {}
 
   void SetupPropagation(VariableSizedHandleScope* handles) {
     graph_ = CreateGraph(handles);
-    propagation_ = new (GetAllocator()) ReferenceTypePropagation(graph_,
-                                                                 Handle<mirror::ClassLoader>(),
-                                                                 Handle<mirror::DexCache>(),
-                                                                 true,
-                                                                 "test_prop");
+    propagation_ = new (GetAllocator()) ReferenceTypePropagation(
+        graph_, Handle<mirror::ClassLoader>(), Handle<mirror::DexCache>(), true, "test_prop");
   }
 
   // Relay method to merge type in reference type propagation.
-  ReferenceTypeInfo MergeTypes(const ReferenceTypeInfo& a,
-                               const ReferenceTypeInfo& b) REQUIRES_SHARED(Locks::mutator_lock_) {
+  ReferenceTypeInfo MergeTypes(const ReferenceTypeInfo& a, const ReferenceTypeInfo& b)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
     return propagation_->MergeTypes(a, b, graph_->GetHandleCache());
   }
 

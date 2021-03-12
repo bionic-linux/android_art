@@ -52,7 +52,7 @@ class Location : public ValueObject {
   enum Kind {
     kInvalid = 0,
     kConstant = 1,
-    kStackSlot = 2,  // 32bit stack slot.
+    kStackSlot = 2,        // 32bit stack slot.
     kDoubleStackSlot = 3,  // 64bit stack slot.
 
     kRegister = 4,  // Core register.
@@ -339,16 +339,26 @@ class Location : public ValueObject {
 
   const char* DebugString() const {
     switch (GetKind()) {
-      case kInvalid: return "I";
-      case kRegister: return "R";
-      case kStackSlot: return "S";
-      case kDoubleStackSlot: return "DS";
-      case kSIMDStackSlot: return "SIMD";
-      case kUnallocated: return "U";
-      case kConstant: return "C";
-      case kFpuRegister: return "F";
-      case kRegisterPair: return "RP";
-      case kFpuRegisterPair: return "FP";
+      case kInvalid:
+        return "I";
+      case kRegister:
+        return "R";
+      case kStackSlot:
+        return "S";
+      case kDoubleStackSlot:
+        return "DS";
+      case kSIMDStackSlot:
+        return "SIMD";
+      case kUnallocated:
+        return "U";
+      case kConstant:
+        return "C";
+      case kFpuRegister:
+        return "F";
+      case kRegisterPair:
+        return "RP";
+      case kFpuRegisterPair:
+        return "FP";
       case kDoNotUse5:  // fall-through
       case kDoNotUse9:
         LOG(FATAL) << "Should not use this location kind";
@@ -432,8 +442,7 @@ class Location : public ValueObject {
   typedef BitField<Policy, 0, 3> PolicyField;
 
   // Layout for stack slots.
-  static const intptr_t kStackIndexBias =
-      static_cast<intptr_t>(1) << (kBitsForPayload - 1);
+  static const intptr_t kStackIndexBias = static_cast<intptr_t>(1) << (kBitsForPayload - 1);
 
   // Location either contains kind and payload fields or a tagged handle for
   // a constant locations. Values of enumeration Kind are selected in such a
@@ -445,8 +454,12 @@ std::ostream& operator<<(std::ostream& os, Location::Policy rhs);
 
 class RegisterSet : public ValueObject {
  public:
-  static RegisterSet Empty() { return RegisterSet(); }
-  static RegisterSet AllFpu() { return RegisterSet(0, -1); }
+  static RegisterSet Empty() {
+    return RegisterSet();
+  }
+  static RegisterSet AllFpu() {
+    return RegisterSet(0, -1);
+  }
 
   void Add(Location loc) {
     if (loc.IsRegister()) {
@@ -527,12 +540,7 @@ static constexpr bool kIntrinsified = true;
  */
 class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
  public:
-  enum CallKind {
-    kNoCall,
-    kCallOnMainAndSlowPath,
-    kCallOnSlowPath,
-    kCallOnMainOnly
-  };
+  enum CallKind { kNoCall, kCallOnMainAndSlowPath, kCallOnSlowPath, kCallOnMainOnly };
 
   explicit LocationSummary(HInstruction* instruction,
                            CallKind call_kind = kNoCall,
@@ -592,9 +600,13 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
     return temps_.size();
   }
 
-  bool HasTemps() const { return !temps_.empty(); }
+  bool HasTemps() const {
+    return !temps_.empty();
+  }
 
-  Location Out() const { return output_; }
+  Location Out() const {
+    return output_;
+  }
 
   bool CanCall() const {
     return call_kind_ != kNoCall;
@@ -672,18 +684,14 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   }
 
   bool OutputUsesSameAs(uint32_t input_index) const {
-    return (input_index == 0)
-        && output_.IsUnallocated()
-        && (output_.GetPolicy() == Location::kSameAsFirstInput);
+    return (input_index == 0) && output_.IsUnallocated() &&
+           (output_.GetPolicy() == Location::kSameAsFirstInput);
   }
 
   bool IsFixedInput(uint32_t input_index) const {
     Location input = inputs_[input_index];
-    return input.IsRegister()
-        || input.IsFpuRegister()
-        || input.IsPair()
-        || input.IsStackSlot()
-        || input.IsDoubleStackSlot();
+    return input.IsRegister() || input.IsFpuRegister() || input.IsPair() || input.IsStackSlot() ||
+           input.IsDoubleStackSlot();
   }
 
   bool OutputCanOverlapWithInputs() const {

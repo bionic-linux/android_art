@@ -36,4 +36,3 @@ struct ElfCompilationUnit {
 }  // namespace art
 
 #endif  // ART_COMPILER_DEBUG_ELF_COMPILATION_UNIT_H_
-

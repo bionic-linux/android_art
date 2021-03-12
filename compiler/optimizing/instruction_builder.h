@@ -94,13 +94,13 @@ class HInstructionBuilder : public ValueObject {
 
   void InitializeParameters();
 
-  template<typename T>
+  template <typename T>
   void Unop_12x(const Instruction& instruction, DataType::Type type, uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_23x(const Instruction& instruction, DataType::Type type, uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_23x_shift(const Instruction& instruction, DataType::Type type, uint32_t dex_pc);
 
   void Binop_23x_cmp(const Instruction& instruction,
@@ -108,20 +108,22 @@ class HInstructionBuilder : public ValueObject {
                      ComparisonBias bias,
                      uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_12x(const Instruction& instruction, DataType::Type type, uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_12x_shift(const Instruction& instruction, DataType::Type type, uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_22b(const Instruction& instruction, bool reverse, uint32_t dex_pc);
 
-  template<typename T>
+  template <typename T>
   void Binop_22s(const Instruction& instruction, bool reverse, uint32_t dex_pc);
 
-  template<typename T> void If_21t(const Instruction& instruction, uint32_t dex_pc);
-  template<typename T> void If_22t(const Instruction& instruction, uint32_t dex_pc);
+  template <typename T>
+  void If_21t(const Instruction& instruction, uint32_t dex_pc);
+  template <typename T>
+  void If_22t(const Instruction& instruction, uint32_t dex_pc);
 
   void Conversion_12x(const Instruction& instruction,
                       DataType::Type input_type,
@@ -226,8 +228,7 @@ class HInstructionBuilder : public ValueObject {
                              const DexFile& dex_file,
                              Handle<mirror::Class> klass,
                              uint32_t dex_pc,
-                             bool needs_access_check)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+                             bool needs_access_check) REQUIRES_SHARED(Locks::mutator_lock_);
 
   Handle<mirror::Class> ResolveClass(ScopedObjectAccess& soa, dex::TypeIndex type_index)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -262,9 +263,7 @@ class HInstructionBuilder : public ValueObject {
                     const char* shorty,
                     bool is_unresolved);
 
-  bool HandleStringInit(HInvoke* invoke,
-                        const InstructionOperands& operands,
-                        const char* shorty);
+  bool HandleStringInit(HInvoke* invoke, const InstructionOperands& operands, const char* shorty);
   void HandleStringInitResult(HInvokeStaticOrDirect* invoke);
 
   HClinitCheck* ProcessClinitCheckForInvoke(
@@ -288,8 +287,7 @@ class HInstructionBuilder : public ValueObject {
   void BuildConstructorFenceForAllocation(HInstruction* allocation);
 
   // Return whether the compiler can assume `cls` is initialized.
-  bool IsInitialized(ObjPtr<mirror::Class> cls) const
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool IsInitialized(ObjPtr<mirror::Class> cls) const REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Try to resolve a field using the class linker. Return null if it could not
   // be found.

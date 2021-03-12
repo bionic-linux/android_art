@@ -38,7 +38,7 @@ class ArchNoOptsLoopHelper;
 class HLoopOptimization : public HOptimization {
  public:
   HLoopOptimization(HGraph* graph,
-                    const CodeGenerator& codegen,    // Needs info about the target.
+                    const CodeGenerator& codegen,  // Needs info about the target.
                     HInductionVarAnalysis* induction_analysis,
                     OptimizingCompilerStats* stats,
                     const char* name = kLoopOptimizationPassName);
@@ -53,11 +53,7 @@ class HLoopOptimization : public HOptimization {
    */
   struct LoopNode : public ArenaObject<kArenaAllocLoopOptimization> {
     explicit LoopNode(HLoopInformation* lp_info)
-        : loop_info(lp_info),
-          outer(nullptr),
-          inner(nullptr),
-          previous(nullptr),
-          next(nullptr) {}
+        : loop_info(lp_info), outer(nullptr), inner(nullptr), previous(nullptr), next(nullptr) {}
     HLoopInformation* loop_info;
     LoopNode* outer;
     LoopNode* inner;
@@ -69,48 +65,44 @@ class HLoopOptimization : public HOptimization {
    * Vectorization restrictions (bit mask).
    */
   enum VectorRestrictions {
-    kNone            = 0,        // no restrictions
-    kNoMul           = 1 << 0,   // no multiplication
-    kNoDiv           = 1 << 1,   // no division
-    kNoShift         = 1 << 2,   // no shift
-    kNoShr           = 1 << 3,   // no arithmetic shift right
-    kNoHiBits        = 1 << 4,   // "wider" operations cannot bring in higher order bits
-    kNoSignedHAdd    = 1 << 5,   // no signed halving add
-    kNoUnsignedHAdd  = 1 << 6,   // no unsigned halving add
-    kNoUnroundedHAdd = 1 << 7,   // no unrounded halving add
-    kNoAbs           = 1 << 8,   // no absolute value
-    kNoStringCharAt  = 1 << 9,   // no StringCharAt
-    kNoReduction     = 1 << 10,  // no reduction
-    kNoSAD           = 1 << 11,  // no sum of absolute differences (SAD)
-    kNoWideSAD       = 1 << 12,  // no sum of absolute differences (SAD) with operand widening
-    kNoDotProd       = 1 << 13,  // no dot product
+    kNone = 0,                  // no restrictions
+    kNoMul = 1 << 0,            // no multiplication
+    kNoDiv = 1 << 1,            // no division
+    kNoShift = 1 << 2,          // no shift
+    kNoShr = 1 << 3,            // no arithmetic shift right
+    kNoHiBits = 1 << 4,         // "wider" operations cannot bring in higher order bits
+    kNoSignedHAdd = 1 << 5,     // no signed halving add
+    kNoUnsignedHAdd = 1 << 6,   // no unsigned halving add
+    kNoUnroundedHAdd = 1 << 7,  // no unrounded halving add
+    kNoAbs = 1 << 8,            // no absolute value
+    kNoStringCharAt = 1 << 9,   // no StringCharAt
+    kNoReduction = 1 << 10,     // no reduction
+    kNoSAD = 1 << 11,           // no sum of absolute differences (SAD)
+    kNoWideSAD = 1 << 12,       // no sum of absolute differences (SAD) with operand widening
+    kNoDotProd = 1 << 13,       // no dot product
   };
 
   /*
    * Vectorization mode during synthesis
    * (sequential peeling/cleanup loop or vector loop).
    */
-  enum VectorMode {
-    kSequential,
-    kVector
-  };
+  enum VectorMode { kSequential, kVector };
 
   /*
    * Representation of a unit-stride array reference.
    */
   struct ArrayReference {
     ArrayReference(HInstruction* b, HInstruction* o, DataType::Type t, bool l, bool c = false)
-        : base(b), offset(o), type(t), lhs(l), is_string_char_at(c) { }
+        : base(b), offset(o), type(t), lhs(l), is_string_char_at(c) {}
     bool operator<(const ArrayReference& other) const {
-      return
-          (base < other.base) ||
-          (base == other.base &&
-           (offset < other.offset || (offset == other.offset &&
-                                      (type < other.type ||
-                                       (type == other.type &&
-                                        (lhs < other.lhs ||
-                                         (lhs == other.lhs &&
-                                          is_string_char_at < other.is_string_char_at)))))));
+      return (base < other.base) ||
+             (base == other.base &&
+              (offset < other.offset ||
+               (offset == other.offset &&
+                (type < other.type ||
+                 (type == other.type &&
+                  (lhs < other.lhs ||
+                   (lhs == other.lhs && is_string_char_at < other.is_string_char_at)))))));
     }
     HInstruction* base;      // base address
     HInstruction* offset;    // offset + i
@@ -206,10 +198,7 @@ class HLoopOptimization : public HOptimization {
   void GenerateVecReductionPhi(HPhi* phi);
   void GenerateVecReductionPhiInputs(HPhi* phi, HInstruction* reduction);
   HInstruction* ReduceAndExtractIfNeeded(HInstruction* instruction);
-  void GenerateVecOp(HInstruction* org,
-                     HInstruction* opa,
-                     HInstruction* opb,
-                     DataType::Type type);
+  void GenerateVecOp(HInstruction* org, HInstruction* opa, HInstruction* opb, DataType::Type type);
 
   // Vectorization idioms.
   bool VectorizeSaturationIdiom(LoopNode* node,
@@ -259,8 +248,7 @@ class HLoopOptimization : public HOptimization {
                            HInstruction* instruction,
                            bool collect_loop_uses,
                            /*out*/ uint32_t* use_count);
-  bool IsUsedOutsideLoop(HLoopInformation* loop_info,
-                         HInstruction* instruction);
+  bool IsUsedOutsideLoop(HLoopInformation* loop_info, HInstruction* instruction);
   bool TryReplaceWithLastValue(HLoopInformation* loop_info,
                                HInstruction* instruction,
                                HBasicBlock* block);
@@ -271,7 +259,9 @@ class HLoopOptimization : public HOptimization {
   void RemoveDeadInstructions(const HInstructionList& list);
   bool CanRemoveCycle();  // Whether the current 'iset_' is removable.
 
-  bool IsInPredicatedVectorizationMode() const { return predicated_vectorization_mode_; }
+  bool IsInPredicatedVectorizationMode() const {
+    return predicated_vectorization_mode_;
+  }
 
   // Compiler options (to query ISA features).
   const CompilerOptions* compiler_options_;
@@ -337,11 +327,11 @@ class HLoopOptimization : public HOptimization {
   ScopedArenaSafeMap<HInstruction*, HInstruction*>* vector_permanent_map_;
 
   // Temporary vectorization bookkeeping.
-  VectorMode vector_mode_;  // synthesis mode
+  VectorMode vector_mode_;         // synthesis mode
   HBasicBlock* vector_preheader_;  // preheader of the new loop
-  HBasicBlock* vector_header_;  // header of the new loop
-  HBasicBlock* vector_body_;  // body of the new loop
-  HInstruction* vector_index_;  // normalized index of the new loop
+  HBasicBlock* vector_header_;     // header of the new loop
+  HBasicBlock* vector_body_;       // body of the new loop
+  HInstruction* vector_index_;     // normalized index of the new loop
 
   // Helper for target-specific behaviour for loop optimizations.
   ArchNoOptsLoopHelper* arch_loop_helper_;

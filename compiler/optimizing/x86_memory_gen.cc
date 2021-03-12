@@ -15,6 +15,7 @@
  */
 
 #include "x86_memory_gen.h"
+
 #include "code_generator.h"
 #include "driver/compiler_options.h"
 
@@ -27,8 +28,7 @@ namespace x86 {
 class MemoryOperandVisitor : public HGraphVisitor {
  public:
   MemoryOperandVisitor(HGraph* graph, bool do_implicit_null_checks)
-      : HGraphVisitor(graph),
-        do_implicit_null_checks_(do_implicit_null_checks) {}
+      : HGraphVisitor(graph), do_implicit_null_checks_(do_implicit_null_checks) {}
 
  private:
   void VisitBoundsCheck(HBoundsCheck* check) override {
@@ -73,8 +73,7 @@ X86MemoryOperandGeneration::X86MemoryOperandGeneration(HGraph* graph,
                                                        CodeGenerator* codegen,
                                                        OptimizingCompilerStats* stats)
     : HOptimization(graph, kX86MemoryOperandGenerationPassName, stats),
-      do_implicit_null_checks_(codegen->GetCompilerOptions().GetImplicitNullChecks()) {
-}
+      do_implicit_null_checks_(codegen->GetCompilerOptions().GetImplicitNullChecks()) {}
 
 bool X86MemoryOperandGeneration::Run() {
   MemoryOperandVisitor visitor(graph_, do_implicit_null_checks_);

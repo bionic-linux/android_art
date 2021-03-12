@@ -89,9 +89,13 @@ class DisassemblyInformation {
     return &instruction_intervals_;
   }
 
-  const ArenaVector<SlowPathCodeInfo>& GetSlowPathIntervals() const { return slow_path_intervals_; }
+  const ArenaVector<SlowPathCodeInfo>& GetSlowPathIntervals() const {
+    return slow_path_intervals_;
+  }
 
-  ArenaVector<SlowPathCodeInfo>* GetSlowPathIntervals() { return &slow_path_intervals_; }
+  ArenaVector<SlowPathCodeInfo>* GetSlowPathIntervals() {
+    return &slow_path_intervals_;
+  }
 
  private:
   GeneratedCodeInterval frame_entry_interval_;

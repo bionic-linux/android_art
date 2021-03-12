@@ -55,8 +55,7 @@ class StackMapStream : public DeletableArenaObject<kArenaAllocStackMapStream> {
         dex_register_timestamp_(allocator->Adapter(kArenaAllocStackMapStream)),
         expected_num_dex_registers_(0u),
         temp_dex_register_mask_(allocator, 32, true, kArenaAllocStackMapStream),
-        temp_dex_register_map_(allocator->Adapter(kArenaAllocStackMapStream)) {
-  }
+        temp_dex_register_map_(allocator->Adapter(kArenaAllocStackMapStream)) {}
 
   void BeginMethod(size_t frame_size_in_bytes,
                    size_t core_spill_mask,
@@ -100,7 +99,7 @@ class StackMapStream : public DeletableArenaObject<kArenaAllocStackMapStream> {
   void CreateDexRegisterMap();
 
   // Invokes the callback with pointer of each BitTableBuilder field.
-  template<typename Callback>
+  template <typename Callback>
   void ForEachBitTable(Callback callback) {
     size_t index = 0;
     callback(index++, &stack_maps_);
