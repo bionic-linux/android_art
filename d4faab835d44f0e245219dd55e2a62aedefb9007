@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2038ae92_1b7481b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-15T23:15:40Z",
+      "side": 1,
+      "message": "This is simpler than what I suggested. Nice!",
+      "revId": "d4faab835d44f0e245219dd55e2a62aedefb9007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7fa6cf5_6e61863a",
+        "filename": "runtime/metrics/statsd.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-15T23:15:40Z",
+      "side": 1,
+      "message": "nit: /*dex_metadata_type\u003d*/0",
+      "range": {
+        "startLine": 130,
+        "startChar": 10,
+        "endLine": 130,
+        "endChar": 11
+      },
+      "revId": "d4faab835d44f0e245219dd55e2a62aedefb9007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
