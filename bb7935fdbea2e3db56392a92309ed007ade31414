@@ -478,6 +478,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a460e50_2c1f818a",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-15T16:40:47Z",
+      "side": 1,
+      "message": "Before this CL there were 2 copies: One at ART side to create the DexString, and one in simpleperf / libunwind stack, because they both need to store the string their own way.\n\nAfter this CL there are sill 2 copies: One in the support file, and one in simpleperf / libunwindstack.\n\nThe difference is that after the CL the 2 copies can be reduced to 1.  (but adding std::move in libunwindstack, and by using the custom allocator sooner in simplerperf)\n\n\nSo this definitely does not make things worse, but the main point is that (pointer+size) is just simpler API.",
+      "parentUuid": "71beda44_539aa2ad",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b964011e_af9e6641",

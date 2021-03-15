@@ -155,6 +155,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a87cd3_7b85387e",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-15T16:40:47Z",
+      "side": 1,
+      "message": "This is just cleanup.  Calling swap instead of doing field scuffle manually.  I am certain is complies to that same code.",
+      "parentUuid": "abd6f6ec_b12336aa",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69621506_1aec2758",
@@ -168,6 +186,24 @@
       "writtenOn": "2021-03-15T15:32:21Z",
       "side": 1,
       "message": "Same here, but since map_ doesn\u0027t have a default member initializer below, doesn\u0027t this mean an undefined value ends up in dex_file.map_?",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f78bab_b2d2afa1",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-15T16:40:47Z",
+      "side": 1,
+      "message": "unique_ptr is nullptr-initialized, right?",
+      "parentUuid": "69621506_1aec2758",
       "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
