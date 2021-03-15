@@ -526,6 +526,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a879700a_94a17030",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-15T17:26:19Z",
+      "side": 1,
+      "message": "Oh, I see.  I think I looked wrong before.  But if it is elided, it means the API is keeping around a string that is bigger than it needs to be (because it was used to build it), and there is extra alloc/free to just hold the pointer/size pair (which is more expensive in scudo).\n\nIt still seems easier to just pass (pointer+size) as C method arguments to the consumer, and let them to the storage in whatever way they want.",
+      "parentUuid": "26147dec_c2c1607e",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b964011e_af9e6641",
