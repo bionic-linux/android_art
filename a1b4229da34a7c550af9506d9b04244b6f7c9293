@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afa4081_31dd10f7",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "This still loses useful error info. Why not log the errors? The only reason I can think not to is if the caller opportunistically annotate stacks and open files that can be bogus, but assuming the dex files should be valid then any errors reading them are legitimate and should be visible.\n\n(Or, as I argue below, if DexString is retained we can of course continue to pass the errors to the caller.)",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd1c89f_a037097b",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Unnecessary on successful return.",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61dab27_a150e56f",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "If this fails due to not enough data it should be an error - we can\u0027t extend the memory range here.",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd417a61_b42eaba8",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "This should still have an error message.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13e7a63_20802427",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a02384b_b673bf99",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "I think it\u0027s better to refer to the complete docs elsewhere than duplicating incomplete ones here. But whatever.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 84
+      },
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0011308e_93d84062",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "With much of the implementation moved to dex_file_supp.cc I think many of the headers added here can be removed again.",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd6f6ec_b12336aa",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Why the extra effort to initialise ext_dex_file_ to nullptr in this object and read it out again in the swap?",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69621506_1aec2758",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Same here, but since map_ doesn\u0027t have a default member initializer below, doesn\u0027t this mean an undefined value ends up in dex_file.map_?",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

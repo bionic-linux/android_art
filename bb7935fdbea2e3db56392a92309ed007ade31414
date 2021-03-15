@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "853b001c_a807434f",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Personally I\u0027m convinced by arguments - signed arithmetic has better behaviour as soon as any subtraction is done, even if negative results never _should_ occur.\n\nAs this is an external API, conventions in the ART sources aren\u0027t very significant, and I think it\u0027s good to avoid these unsigneds in an API we won\u0027t realistically be able to change (for this reason). I can agree on \"do not mix\" though, and at least short term it would mean mixing at least in libunwindstack. It\u0027s a pity to further entrench antipatterns in new APIs, but the situation isn\u0027t clear enough that I oppose this strongly.",
+      "parentUuid": "daed249e_7bee2ef0",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4804661_f5fa3655",
@@ -432,6 +456,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71beda44_539aa2ad",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "\u003e There are no extra copies to current status quo.\n\nYes there are:\n\n- At the call site in libunwindstack there\u0027s currently another copy, however it can be subsumed by this one with an std::move.\n\n- In simpleperf the MethodInfos are collected and passed upwards a couple of function levels, then the names are handed off as string_views to be copied by their own string allocator (https://cs.android.com/android/platform/superproject/+/master:system/extras/simpleperf/dso.cpp;l\u003d212;drc\u003dmaster). The only way to avoid an extra copy there is to either scrap that allocator and instead std::move this string into its place, or bypass the C++ API altogether.\n\nDexString is conceptually pretty simple - with string_views etc the caller has the choice to delay the free as much or little as they want. In a way it\u0027s a textbook example of the good and bad of C++: Good because C++ allows this and makes it safe, bad because of the annoying amount of boilerplate necessary to pull it off. I\u0027d much prefer if all the crap in the DexString class was hidden away in some header I don\u0027t have to see, well tested and maintained by someone else, so I can just instantiate some template to get an std::string lookalike with my own free function.\n\nBut now that I\u0027ve gone through the pain of implementing and testing it here I don\u0027t see that the benefit of deleting it outweighs the extra runtime cost and the various other drawbacks this leads to, like the less expressive errors.",
+      "parentUuid": "c8f220bd_53da464e",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b964011e_af9e6641",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
@@ -467,6 +515,30 @@
       "side": 1,
       "message": "Just a nit.  I wanted the pair to match. open/close.  new/free.  create/destroy. \n Any pair will do.",
       "parentUuid": "b964011e_af9e6641",
+      "range": {
+        "startLine": 198,
+        "startChar": 28,
+        "endLine": 198,
+        "endChar": 33
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834180b1_fcabb273",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T15:32:21Z",
+      "side": 1,
+      "message": "Fair point. I\u0027d prefer to drop the \"Open\" word in the function above instead, but this is fine.",
+      "parentUuid": "138044c9_7908ef2e",
       "range": {
         "startLine": 198,
         "startChar": 28,
