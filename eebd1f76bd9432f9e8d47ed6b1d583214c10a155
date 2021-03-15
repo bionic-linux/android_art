@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b3c8b492_9a663bb9",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T22:45:55Z",
+      "side": 1,
+      "message": "That\u0027s a good question. It\u0027s because libunwindstack is included in the APEX, so it\u0027s WAI afterall. That also means this ought to use art_defaults as well, I think. For another time.",
+      "parentUuid": "70b776ca_6f392b71",
+      "revId": "eebd1f76bd9432f9e8d47ed6b1d583214c10a155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7332b154_52099418",
         "filename": "runtime/Android.bp",
         "patchSetId": 8
