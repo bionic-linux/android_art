@@ -552,6 +552,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7018d0b9_7afdbe93",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T19:05:13Z",
+      "side": 1,
+      "message": "\u003e keeping around a string that is bigger than it needs to be\n\nMaybe, it depends on how the caller intends to use the string:\n- If it\u0027s short lived the extra space isn\u0027t an issue and we save a copy.\n- If it\u0027s long lived and they want to use their own allocator then DexString and its string_view operator helps bridging the gap from GetMethodInfo to the allocator(*).\n- If it\u0027s long lived and they don\u0027t use an allocator then they can just do std::string() on it (like in libunwindstack).\n\n*) The code in simpleperf is a good example of this - without DexString there\u0027d be no option but to refactor ReadSymbolsFromDexFile(InMemory) quite a bit to make use of the allocator directly in a callback from GetAllMethodInfos. It\u0027d of course also require a variant of that method that lets the caller pass a callback in the C++ API, and that in turn means dealing with a C++ callable across the C API boundary. I did consider it, but it means either a runtime cost with an extra call indirection or a quirky C++ API. Wrapping the string to allow a delayed free seems overall simpler than that.\n\n\u003e there is extra alloc/free to just hold the pointer/size pair (which is more expensive in scudo)\n\nThere\u0027s that. It\u0027s a small fixed-size block which I\u0027d expect a modern allocator to handle reasonably efficiently. It\u0027s clearly better than a full string copy, and I believe better than a callback wrapper too. A bare C callback would shave that off, but then the code maintainability on the caller side suffers a lot.",
+      "parentUuid": "a879700a_94a17030",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b964011e_af9e6641",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
