@@ -173,6 +173,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ae98c4_16e606b4",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T17:15:32Z",
+      "side": 1,
+      "message": "Ok, I didn\u0027t think it was safe to assume that optimisation always happens.",
+      "parentUuid": "44a87cd3_7b85387e",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69621506_1aec2758",
@@ -204,6 +222,24 @@
       "side": 1,
       "message": "unique_ptr is nullptr-initialized, right?",
       "parentUuid": "69621506_1aec2758",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49cbc57d_5b741bc7",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T17:15:32Z",
+      "side": 1,
+      "message": "Right, missed the unique_ptr.",
+      "parentUuid": "a2f78bab_b2d2afa1",
       "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -504,6 +504,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26147dec_c2c1607e",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T17:15:32Z",
+      "side": 1,
+      "message": "\u003e One at ART side to create the DexString\n\nThat would be unintentional. Where would it be in e.g. the following code path? https://cs.android.com/android/platform/superproject/+/master:art/libdexfile/external/dex_file_ext.cc;l\u003d354;drc\u003de778fa6ead79e9cb26810d484c5a594e9612de9b The intention is that the returned string from PrettyMethod is copy elided there.",
+      "parentUuid": "4a460e50_2c1f818a",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b964011e_af9e6641",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
