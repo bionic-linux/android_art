@@ -33,6 +33,24 @@
       "message": "LGTM but there is a conflict.",
       "revId": "80fea5fee988f4dfacf252f49f157ccce5040dcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59f4a46_adbcb1f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-15T12:16:39Z",
+      "side": 1,
+      "message": "Thanks Paul - yeah, that\u0027s the allowed_deps.txt file. I\u0027ll land this CL without the updatable bit, and will deal with the conflict in follow-up CLs.",
+      "parentUuid": "6ff77b0e_47080634",
+      "revId": "80fea5fee988f4dfacf252f49f157ccce5040dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
