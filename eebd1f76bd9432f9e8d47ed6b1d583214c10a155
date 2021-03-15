@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd1d8d4_9fe30014",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T13:23:55Z",
+      "side": 1,
+      "message": "This library doesn\u0027t go into the APEX. Why does it need this?",
+      "revId": "eebd1f76bd9432f9e8d47ed6b1d583214c10a155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7332b154_52099418",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-15T13:23:55Z",
+      "side": 1,
+      "message": "Yet another library that doesn\u0027t use art_defaults. We should probably fix that instead, but I\u0027ve asked on https://r.android.com/1595481 why and will follow up.",
+      "revId": "eebd1f76bd9432f9e8d47ed6b1d583214c10a155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
