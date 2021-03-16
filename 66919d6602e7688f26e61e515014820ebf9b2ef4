@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2199baa0_0398f814",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-16T20:31:47Z",
+      "side": 1,
+      "message": "This CL seems to be blocked waiting on the previous CL to get merged into internal master. Here\u0027s the status of that CL: https://android-build.googleplex.com/builds/treetop/android-review/1634699?revision\u003d6",
+      "revId": "66919d6602e7688f26e61e515014820ebf9b2ef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
