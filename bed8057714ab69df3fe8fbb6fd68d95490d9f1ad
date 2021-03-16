@@ -16,6 +16,29 @@
       "message": "Thanks",
       "revId": "bed8057714ab69df3fe8fbb6fd68d95490d9f1ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c85671_660e058f",
+        "filename": "libelffile/elf/elf_debug_reader.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T14:16:01Z",
+      "side": 1,
+      "message": "bool",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "bed8057714ab69df3fe8fbb6fd68d95490d9f1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

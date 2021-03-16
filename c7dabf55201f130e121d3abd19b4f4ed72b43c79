@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcca8fd2_b08c5e44",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T14:16:01Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of `it` for element references but I\u0027ve seen it used elsewhere, so it\u0027s OK to keep the PS9 version.",
+      "parentUuid": "4563ee18_73fe28ba",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de9c422e_a8b3b6dc",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Fair point. Done.",
       "parentUuid": "de9c422e_a8b3b6dc",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c86efd_7905a9e9",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T14:16:01Z",
+      "side": 1,
+      "message": "Half-done in PS9. Drop the `.data()` here.",
+      "parentUuid": "2d501c73_e843f5b5",
       "range": {
         "startLine": 87,
         "startChar": 40,
@@ -284,6 +332,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "25967bba_3141b9dd",
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b852837_1b71ae68",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T14:16:01Z",
+      "side": 1,
+      "message": "Not done in PS9. (Note that \"gedit\" in particular does not show the last `\\n`, so the correct version looks in \"gedit\" as if there was no `\\n` after the closing `}`.)",
+      "parentUuid": "4cfe13b6_821af6b3",
       "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
