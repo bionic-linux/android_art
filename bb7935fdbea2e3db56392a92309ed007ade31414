@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eece856c_9d013d0c",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T09:23:06Z",
+      "side": 1,
+      "message": "[Sorry I forgot to respond to this right away.]\n\nIf you have a good idea those are the fields you want to add, you could reserve them now and just zero initialise. It\u0027s not that much more space than the size_t, and avoids the extra complexity handling it in future caller code.\n\nThe next extension after that would require v2 variants, but if that\u0027s sufficiently unlikely it may very well be worth it.",
+      "parentUuid": "732cebea_3c5645de",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aa61eb7_77811f68",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 2
@@ -588,6 +612,30 @@
       "side": 1,
       "message": "Yes, it all depends, and you can always just create final std::string() copy, or whatever you need.\n\nBut I don\u0027t think there is need to reinvent std::string if just simple (pointer + size) will do.\n\nAlloc/frees are definitely not cheap, and most of my work recently was eliminating them in libunwind, because they are performance bottleneck.  (TLDL; secure is more important then fast in scudo)\n\nMost of all I would prefer simpler api.  The fact that is faster for the intended use case in libunwind is a bonus, but not goal.",
       "parentUuid": "7018d0b9_7afdbe93",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393b284d_ec9c3422",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T09:23:06Z",
+      "side": 1,
+      "message": "\u003e Alloc/frees are definitely not cheap,\n\nWe can still agree that it\u0027s cheaper for a small fixed sized struct than a string copy?\n\nI\u0027m not sure what you count as \"simple\" - simple to use or just minimise the number of C API functions? What do you intend to do in simpleperf after this?",
+      "parentUuid": "4658f933_0ebcb0f5",
       "range": {
         "startLine": 186,
         "startChar": 14,
