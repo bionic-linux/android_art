@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4bc51ed_83207795",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T15:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c86efd_7905a9e9",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0275bdd2_db83ad3c",
@@ -350,6 +374,24 @@
       "side": 1,
       "message": "Not done in PS9. (Note that \"gedit\" in particular does not show the last `\\n`, so the correct version looks in \"gedit\" as if there was no `\\n` after the closing `}`.)",
       "parentUuid": "4cfe13b6_821af6b3",
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35c9d69d_38fc45ea",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T15:36:40Z",
+      "side": 1,
+      "message": "Actually, it seems that there is final new-line, and gerrit shows is as it is here.\nBut we have it in all files, and linter complains if file does not end with new line.",
+      "parentUuid": "3b852837_1b71ae68",
       "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

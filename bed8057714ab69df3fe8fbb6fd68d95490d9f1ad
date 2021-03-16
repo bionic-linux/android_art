@@ -39,6 +39,30 @@
       },
       "revId": "bed8057714ab69df3fe8fbb6fd68d95490d9f1ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e213bbf8_e6330a82",
+        "filename": "libelffile/elf/elf_debug_reader.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T15:36:40Z",
+      "side": 1,
+      "message": "Ops, thanks.  It is sad how relaxed the compiler is about bools.",
+      "parentUuid": "92c85671_660e058f",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "bed8057714ab69df3fe8fbb6fd68d95490d9f1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
