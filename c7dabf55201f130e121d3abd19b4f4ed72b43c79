@@ -16,6 +16,138 @@
       "message": "PTAL",
       "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63442ae4_32f1688e",
+        "filename": "libelffile/elf/elf_debug_reader.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "Add explanatory comments. I didn\u0027t get this until I read the code in art::Main().",
+      "range": {
+        "startLine": 94,
+        "startChar": 26,
+        "endLine": 94,
+        "endChar": 72
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160468b3_2c28c99b",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "Odd name, what does it stand for? (I usually use \"entry\".)",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9c422e_a8b3b6dc",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "You\u0027re abusing the fact that the `string_view` was constructed from `const char*`. In general, `std::string_view::data()` does not return null-terminated C string. Consider adding a `Write()` overload that takes a `string_view`, or maybe fully replace the `Write(const char*)` with `Write(std::string_view)`.",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0275bdd2_db83ad3c",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "2x `const auto\u0026`",
+      "range": {
+        "startLine": 114,
+        "startChar": 56,
+        "endLine": 114,
+        "endChar": 72
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eefa5e0_c3c60447",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "const auto\u0026",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25967bba_3141b9dd",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-16T11:19:48Z",
+      "side": 1,
+      "message": "Remove blank line.",
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
