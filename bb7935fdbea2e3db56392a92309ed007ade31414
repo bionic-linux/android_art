@@ -290,6 +290,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1cc106_592af697",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T15:27:50Z",
+      "side": 1,
+      "message": "I suggest a cleanup topic after this CL to remove it.",
+      "parentUuid": "5771fe57_720ed0c3",
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa6f638c_3c715025",
@@ -636,6 +654,30 @@
       "side": 1,
       "message": "\u003e Alloc/frees are definitely not cheap,\n\nWe can still agree that it\u0027s cheaper for a small fixed sized struct than a string copy?\n\nI\u0027m not sure what you count as \"simple\" - simple to use or just minimise the number of C API functions? What do you intend to do in simpleperf after this?",
       "parentUuid": "4658f933_0ebcb0f5",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ff7df2f_1990ef93",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T15:27:50Z",
+      "side": 1,
+      "message": "Chatted offline, and the conclusion is that the cost of the fixed size allocation in libunwindstack outweighs the benefits of DexString elsewhere (avoids string copying in simpleperf, enables better error messages, gives more flexibility to clients).\n\nWe should loop in yabinc@ to make him aware of the potential perfomance regression in simpleperf though.",
+      "parentUuid": "393b284d_ec9c3422",
       "range": {
         "startLine": 186,
         "startChar": 14,
