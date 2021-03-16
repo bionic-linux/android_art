@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3382655_e2d78905",
+        "filename": "libelffile/elf/elf_debug_reader.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63442ae4_32f1688e",
+      "range": {
+        "startLine": 94,
+        "startChar": 26,
+        "endLine": 94,
+        "endChar": 72
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160468b3_2c28c99b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-16T11:19:48Z",
       "side": 1,
       "message": "Odd name, what does it stand for? (I usually use \"entry\".)",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4563ee18_73fe28ba",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "It stands for key-value-pair,\nbut I usually use it(erator).",
+      "parentUuid": "160468b3_2c28c99b",
       "range": {
         "startLine": 84,
         "startChar": 15,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d501c73_e843f5b5",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "Fair point. Done.",
+      "parentUuid": "de9c422e_a8b3b6dc",
+      "range": {
+        "startLine": 87,
+        "startChar": 40,
+        "endLine": 87,
+        "endChar": 51
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0275bdd2_db83ad3c",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-16T11:19:48Z",
       "side": 1,
       "message": "2x `const auto\u0026`",
+      "range": {
+        "startLine": 114,
+        "startChar": 56,
+        "endLine": 114,
+        "endChar": 72
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd38903d_2e0fc143",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0275bdd2_db83ad3c",
       "range": {
         "startLine": 114,
         "startChar": 56,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14448645_8710d864",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eefa5e0_c3c60447",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 13
+      },
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25967bba_3141b9dd",
@@ -146,6 +266,24 @@
       "writtenOn": "2021-03-16T11:19:48Z",
       "side": 1,
       "message": "Remove blank line.",
+      "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfe13b6_821af6b3",
+        "filename": "tools/create_minidebuginfo/create_minidebuginfo.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-16T13:38:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25967bba_3141b9dd",
       "revId": "c7dabf55201f130e121d3abd19b4f4ed72b43c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
