@@ -690,6 +690,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64c0316a_4a820023",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2021-03-16T23:42:49Z",
+      "side": 1,
+      "message": "Simpleperf uses a Free-At-Once allocator for symbol names (https://cs.android.com/android/platform/superproject/+/master:system/extras/simpleperf/utils.h;l\u003d55). So it can\u0027t use std::move to avoid an extra string allocation/free after this change.\nTo avoid the cost, I\u0027d like to have a callback passing directly to g_ExtDexFileGetAllMethodInfos(). So we can use the allocator in simpleperf. An extra benefit is simpleperf can avoid creating intermediate vector\u003cMethodInfo\u003e, and create vector\u003cSymbol\u003e directly.",
+      "parentUuid": "5ff7df2f_1990ef93",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b964011e_af9e6641",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 2
