@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e603eaed_3ee753bc",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 0,
+      "message": "I made this to expect error as well for consistency.\n\nNote that libunwindstack and perfetto know the dex file pointer and size, they should get it right the first time.  Passing too little data is generally indeed unexpected.",
+      "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19aac92c_29189342",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Note that the field is allocated on stack (and pointed to in the callback), so it is essentially free.\n\nI would like to keep it a trivial extension point (same as bumping the bool arg to flags).",
+      "parentUuid": "eece856c_9d013d0c",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aa61eb7_77811f68",
@@ -702,6 +726,30 @@
       "side": 1,
       "message": "Simpleperf uses a Free-At-Once allocator for symbol names (https://cs.android.com/android/platform/superproject/+/master:system/extras/simpleperf/utils.h;l\u003d55). So it can\u0027t use std::move to avoid an extra string allocation/free after this change.\nTo avoid the cost, I\u0027d like to have a callback passing directly to g_ExtDexFileGetAllMethodInfos(). So we can use the allocator in simpleperf. An extra benefit is simpleperf can avoid creating intermediate vector\u003cMethodInfo\u003e, and create vector\u003cSymbol\u003e directly.",
       "parentUuid": "5ff7df2f_1990ef93",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 25
+      },
+      "revId": "bb7935fdbea2e3db56392a92309ed007ade31414",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccb58ca_60a621e0",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Thanks Martin.",
+      "parentUuid": "64c0316a_4a820023",
       "range": {
         "startLine": 186,
         "startChar": 14,

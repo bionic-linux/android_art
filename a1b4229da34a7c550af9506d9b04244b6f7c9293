@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba2331c_0b94626e",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2afa4081_31dd10f7",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bd1c89f_a037097b",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed4c448_c7411e89",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd1c89f_a037097b",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e61dab27_a150e56f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-15T15:32:21Z",
       "side": 1,
       "message": "If this fails due to not enough data it should be an error - we can\u0027t extend the memory range here.",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a531320e_1e9db5df",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61dab27_a150e56f",
       "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bd1300_243aa69b",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd417a61_b42eaba8",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f13e7a63_20802427",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-03-15T15:32:21Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1c8f8e_3b8151f5",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13e7a63_20802427",
       "range": {
         "startLine": 101,
         "startChar": 2,
@@ -134,6 +236,24 @@
       "writtenOn": "2021-03-15T15:32:21Z",
       "side": 1,
       "message": "With much of the implementation moved to dex_file_supp.cc I think many of the headers added here can be removed again.",
+      "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a8a8ca_c256b14a",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-17T12:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0011308e_93d84062",
       "revId": "a1b4229da34a7c550af9506d9b04244b6f7c9293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
