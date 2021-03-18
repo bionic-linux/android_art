@@ -1530,3 +1530,19 @@ genrule {
     srcs: ["Dex2oatVdexPublicSdkDex/*.smali"],
     out: ["art-gtest-jars-Dex2oatVdexPublicSdkDex.dex"],
 }
+
+android_test {
+    name: "UserfaultfdGcTests",
+    srcs: ["java/**/*.java"],
+    jni_libs: ["libuserfaultfdtest"],
+    sdk_version: "current",
+    static_libs: ["android-support-test"],
+    test_suites: ["cts"],
+}
+
+cc_test_library {
+    name: "libuserfaultfdtest",
+    srcs: ["native/art_uffdGc_UserfaultfdTest.cc"],
+    sdk_version: "current",
+    stl: "c++_static",
+}
