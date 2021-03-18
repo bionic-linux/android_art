@@ -33,6 +33,24 @@
       "message": "You can actually drop it.",
       "revId": "397ca00338629b828731a08851dba5033d6b61cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d150283_b8ba22ca",
+        "filename": "sigchainlib/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T21:41:22Z",
+      "side": 1,
+      "message": "I found I can\u0027t:\n\n  ld.lld: error: undefined symbol: EnsureFrontOfChain\n  \u003e\u003e\u003e referenced by sigchain_test.cc:233 (art/sigchainlib/sigchain_test.cc:233)\n  \u003e\u003e\u003e               out/soong/.intermediates/art/sigchainlib/art_sigchain_tests/linux_glibc_x86_64/obj/art/sigchainlib/sigchain_test.o:(SigchainTest_EnsureFrontOfChain_Test::TestBody())\n  /.../\n\nThat makes sense - transitive shared library deps aren\u0027t passed to ld. I think the reason you could drop it was because some whole_static_libs were left in play.",
+      "parentUuid": "75b3884b_d974e9d3",
+      "revId": "397ca00338629b828731a08851dba5033d6b61cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
