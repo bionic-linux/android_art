@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96445e4c_d1bbeeef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-18T21:16:37Z",
+      "side": 1,
+      "message": "Martin, Paul, PTAL. This CL doesn\u0027t put the updatable bit. I\u0027ll follow-up with one that does.",
+      "revId": "ee9efc2a79ff3acd3ec68a17f4602f175641db70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
