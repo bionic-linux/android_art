@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86bbee02_1cb04df5",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T17:39:06Z",
+      "side": 1,
+      "message": "If the intention is to drop the support for clients that doesn\u0027t know the size beforehand, then we don\u0027t need to set the new size into *size, and it doesn\u0027t even need to be a pointer. And these sentences can be deleted.",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "57499ee9f9290fb67ba0b844cbd4e480bec7b43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

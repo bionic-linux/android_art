@@ -52,6 +52,24 @@
       "parentUuid": "80d53b95_663e2132",
       "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb8e5a1a_60038102",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T17:39:06Z",
+      "side": 0,
+      "message": "It\u0027s in the other CL in this topic. A max_size is passed in there, but it isn\u0027t used for this. I thought it was because it can be too large, and backing_memory.resize is costly for oversized blocks.",
+      "parentUuid": "b816bb33_ba8d6f32",
+      "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
