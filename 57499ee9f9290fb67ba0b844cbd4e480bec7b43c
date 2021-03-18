@@ -22,6 +22,30 @@
       },
       "revId": "57499ee9f9290fb67ba0b844cbd4e480bec7b43c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17de8bf8_8031dff4",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-18T17:59:29Z",
+      "side": 1,
+      "message": "It is not the intention.  We should definitely fail to open dex files which are too small.  And as long as we fail, it seems reasonable to return distinct code so that client might retry.\n\nHowever, truncated dex file is an error nonetheless.  The dex file was not opened.  It is ok for the client to retry with bigger size.\n\nI just wanted to fix the inconsistency, where one open method treats truncated dex files as error and other other method threads it as suspenseful failure.",
+      "parentUuid": "86bbee02_1cb04df5",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "57499ee9f9290fb67ba0b844cbd4e480bec7b43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
