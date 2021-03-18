@@ -16,6 +16,24 @@
       "message": "I made this to expect error as well for consistency.\n\nNote that libunwindstack and perfetto know the dex file pointer and size, they should get it right the first time.  Passing too little data is generally indeed unexpected.",
       "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d53b95_663e2132",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T16:19:43Z",
+      "side": 0,
+      "message": "This was intended to allow a client to use OpenFromMemory without any prior knowledge of how long the dex file may be (nor of the size of the dex header). The situation is different in OpenFromFd since it always has a size beforehand.\n\n\u003e Note that libunwindstack and perfetto know the dex file pointer and size, they should get it right the first time.\n\nApparently not, there\u0027s still the call site in libunwindstack that extends the memory area. But you\u0027ve chosen to look at the changing size instead of the \"\" error there. That works too, just slightly more cumbersome with the need to store the pre-call size. It\u0027s not hard to retain the old behaviour here, but if you think this is better then the doc for OpenFromMemory needs to be updated:\n\n  // Interprets a chunk of memory as a dex file. As long as *size is too small,\n  // returns nullptr, sets *size to a new size to try again with, and sets\n  // *error_msg to \"\". That might happen repeatedly.",
+      "parentUuid": "e603eaed_3ee753bc",
+      "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
