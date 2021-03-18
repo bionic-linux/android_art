@@ -16,6 +16,29 @@
       "message": "Martin, are you ok with the CL in the current state?",
       "revId": "b80292bed42c667741e539616649670ba6a4351e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec7f4b3_479fb394",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T16:50:30Z",
+      "side": 1,
+      "message": "Since these enums are unscoped and global the constants should have more specific names.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "b80292bed42c667741e539616649670ba6a4351e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
