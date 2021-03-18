@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de697ab_df5b973b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-18T07:51:03Z",
+      "side": 1,
+      "message": "Roland, please take a look, mainly the build and manifest files.",
+      "revId": "4573204c8b8e694e4c7c2ea29e4972fcdb945261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
