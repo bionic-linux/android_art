@@ -34,6 +34,24 @@
       "parentUuid": "e603eaed_3ee753bc",
       "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b816bb33_ba8d6f32",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-18T17:04:43Z",
+      "side": 0,
+      "message": "I wanted to make the api consistent.\n\nlibunwindstack knows the size... it just does not pass it down for some reason.  I will fix that.",
+      "parentUuid": "80d53b95_663e2132",
+      "revId": "5e435b2c209d87030f607c4cdfba913dec3eb3e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
