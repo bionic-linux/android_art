@@ -39,6 +39,30 @@
       },
       "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b4d027_4ca8db3e",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-03-19T18:36:34Z",
+      "side": 1,
+      "message": "Yea, I actually didn\u0027t know we can do this. If so, it will be news to me, but frankly quite convenient. See go/ts-test-dev#write-your-tests for what CTS expects. It will be in a different repo.",
+      "parentUuid": "ed24a88f_8e548db4",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1543,
+        "endChar": 6
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
