@@ -16,6 +16,29 @@
       "message": "Getting the following error in trehugger builds:\n\nerror: art/test/Android.bp:1531:1: module \"UserfaultfdGcTests\" variant \"android_common\": depends on //prebuilts/misc/common/android-support-test:android-support-test which is not visible to this module\nYou may need to add \"//art/test\" to its visibility\n\nSuggestions",
       "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed24a88f_8e548db4",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-19T18:31:09Z",
+      "side": 1,
+      "message": "CTS tests should be in the cts/ project I think?",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1543,
+        "endChar": 6
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
