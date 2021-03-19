@@ -63,6 +63,30 @@
       },
       "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65dd903c_acf84eeb",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2021-03-19T19:02:45Z",
+      "side": 1,
+      "message": "None of the other users of android-support-test seems to be cts tests. I\u0027m not sure why you need it at all. Why not just copy the test setup from a cts test and put it there. Nothing in this test touches platform or ART code so I don\u0027t think you\u0027ll need to change anything.\n\nMaybe copy https://cs.android.com/android/platform/superproject/+/master:cts/tests/tests/libthermalndk/ since that seems to similarly be a test that just calls into jni code to check things.",
+      "parentUuid": "c0b4d027_4ca8db3e",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1543,
+        "endChar": 6
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
