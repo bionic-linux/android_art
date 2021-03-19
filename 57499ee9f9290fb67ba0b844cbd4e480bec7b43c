@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cee875c_c0b47f4b",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-19T12:43:32Z",
+      "side": 1,
+      "message": "Since this was coming in late in the review I\u0027ll +2 if you prefer to follow up on it later.",
+      "parentUuid": "3f577be1_32ecc47d",
+      "revId": "57499ee9f9290fb67ba0b844cbd4e480bec7b43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86bbee02_1cb04df5",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 5
