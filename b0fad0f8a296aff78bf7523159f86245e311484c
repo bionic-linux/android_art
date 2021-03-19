@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf0bf59_86b32395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2021-03-19T19:36:58Z",
+      "side": 1,
+      "message": "Somewhere you need to make sure this test only runs on API 31 devices, as 5.4 first shipped in Android R and could be used for upgrades, and would not have your patches and could not pass the test. \n\nRequirements cannot be applied retroactively for upgrading devices.",
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed24a88f_8e548db4",
