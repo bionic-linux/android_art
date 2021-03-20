@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf6eff8_8a2ecdf4",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-20T20:29:47Z",
+      "side": 1,
+      "message": "Thanks, I will do it in follow up if that is ok.",
+      "parentUuid": "6cee875c_c0b47f4b",
+      "revId": "57499ee9f9290fb67ba0b844cbd4e480bec7b43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86bbee02_1cb04df5",
