@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b362af_c122b2c3",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-22T17:39:14Z",
+      "side": 1,
+      "message": "Should you drop this check? EnsureDirectoryExists already does it.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "9e208e509ae617e9f60dc03c09b9aa27d67e1e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
