@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91da9eb_77d283ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "I\u0027ve moved the test to cts/. So will be abandoning this CL and add all of you to that CL. I have addressed all the comments so far in there. PTAL",
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed24a88f_8e548db4",
@@ -106,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc54a09_6dcbe0f9",
+        "filename": "test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65dd903c_acf84eeb",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1543,
+        "endChar": 6
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ea6b197_3d345be9",
@@ -119,6 +160,42 @@
       "writtenOn": "2021-03-22T09:56:42Z",
       "side": 1,
       "message": "I would move this test\u0027s files into its own subdirectory, or even into a subdirectory of project `cts`, from reading other comments.",
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82dccb65_9abd02a2",
+        "filename": "test/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea6b197_3d345be9",
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22c7b1e_8f54a8af",
+        "filename": "test/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea6b197_3d345be9",
       "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -146,6 +223,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65895085_f516044e",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9ff166_1c2d976d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa59526_c36e49e5",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9ff166_1c2d976d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66f38ca2_a5bf5ce7",
@@ -159,6 +284,54 @@
       "writtenOn": "2021-03-22T09:56:42Z",
       "side": 1,
       "message": "It\u0027d be nice to document each test (and its purpose), even shortly.",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa28510_f36bf25d",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f38ca2_a5bf5ce7",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecc18d1_b441a29c",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-03-22T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f38ca2_a5bf5ce7",
       "range": {
         "startLine": 45,
         "startChar": 14,
