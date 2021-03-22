@@ -104,6 +104,69 @@
       },
       "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea6b197_3d345be9",
+        "filename": "test/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-03-22T09:56:42Z",
+      "side": 1,
+      "message": "I would move this test\u0027s files into its own subdirectory, or even into a subdirectory of project `cts`, from reading other comments.",
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9ff166_1c2d976d",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-03-22T09:56:42Z",
+      "side": 1,
+      "message": "I\u0027d move these private methods after all the public methods below (see go/java-practices/class-structure#general).",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f38ca2_a5bf5ce7",
+        "filename": "test/java/art/uffdGc/UserfaultfdTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-03-22T09:56:42Z",
+      "side": 1,
+      "message": "It\u0027d be nice to document each test (and its purpose), even shortly.",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "b0fad0f8a296aff78bf7523159f86245e311484c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
