@@ -16,6 +16,23 @@
       "message": "+enh for the NDK-API-review",
       "revId": "730eaf71214ebae1654e0ee53ea9f9cb0c589fc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4147d60f_468ed127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T16:11:30Z",
+      "side": 1,
+      "message": "Not sure I\u0027ve mentioned it before, but there\u0027s a python tool art/tools/pylibdexfile.py that uses the libdexfile_external API directly, and will break with this.",
+      "revId": "730eaf71214ebae1654e0ee53ea9f9cb0c589fc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
