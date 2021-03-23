@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284a2321_a6a04c3d",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-03-23T22:00:09Z",
+      "side": 1,
+      "message": "add a note that this is happens for boot image profiles with inline caches.",
+      "range": {
+        "startLine": 764,
+        "startChar": 3,
+        "endLine": 766,
+        "endChar": 38
+      },
+      "revId": "6c59030514715f39eb92d0781c247a9ca4a55fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
