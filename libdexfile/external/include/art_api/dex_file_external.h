@@ -18,67 +18,75 @@
 #define ART_LIBDEXFILE_EXTERNAL_INCLUDE_ART_API_DEX_FILE_EXTERNAL_H_
 
 // Dex file external API
-
-#include <sys/types.h>
 #include <stdint.h>
+#include <sys/cdefs.h>
+#include <sys/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__BEGIN_DECLS
 
 // This is the stable C ABI that backs art_api::dex below. Structs and functions
 // may only be added here. C++ users should use dex_file_support.h instead.
+
+struct ExtDexFile;
+typedef struct ExtDexFile ExtDexFile;
 
 struct ExtDexFileMethodInfo {
   size_t sizeof_struct;  // Size of this structure (to allow future extensions).
   uint32_t addr;  // Start of dex byte-code relative to the start of the dex file.
   uint32_t size;  // Size of the dex byte-code in bytes.
+  const char* class_descriptor;  // Mangled class name.
   const char* name;
   size_t name_size;
 };
+typedef struct ExtDexFileMethodInfo ExtDexFileMethodInfo;
 
-enum ExtDexFileError {
-  kExtDexFileOk = 0,
-  kExtDexFileError = 1,  // Unspecified error.
-  kExtDexFileNotEnoughData = 2,
-  kExtDexFileInvalidHeader = 3,
+enum ExtDexFileError : uint32_t {
+  kExtDexFileError_ok = 0,
+  kExtDexFileError_error = 1,  // Unspecified error.
+  kExtDexFileError_notEnoughData = 2,
+  kExtDexFileError_invalidHeader = 3,
 };
+typedef enum ExtDexFileError ExtDexFileError;
 
-enum ExtDexFileMethodFlags {
-  kExtDexFileWithSignature = 1,
+enum ExtDexFileMethodFlags : uint32_t {
+  kExtDexFileFlags_none = 0,
+  kExtDexFileFlags_nameOnly = 1 << 0,            // E.g. Main
+  kExtDexFileFlags_nameWithClass = 1 << 1,       // E.g. MyClass.Main
+  kExtDexFileFlags_nameWithParameters = 1 << 2,  // E.g. MyClass.Main(String[])
 };
-
-struct ExtDexFile;
-
-// Try to open a dex file in the given memory range.
-// If the memory range is too small, larger suggest size is written to the argument.
-int ExtDexFileOpenFromMemory(const void* addr,
-                             /*inout*/ size_t* size,
-                             const char* location,
-                             /*out*/ struct ExtDexFile** ext_dex_file);
+typedef enum ExtDexFileMethodFlags ExtDexFileMethodFlags;
 
 // Callback used to return information about a dex method.
 typedef void ExtDexFileMethodInfoCallback(void* user_data,
-                                          struct ExtDexFileMethodInfo* method_info);
+                                          ExtDexFileMethodInfo* method_info);
+
+// Try to open a dex file in the given memory range.
+// If the memory range is too small, larger suggest size is written to the argument.
+ExtDexFileError ExtDexFile_create(const void* addr,
+                                  /*inout*/ size_t* size,
+                                  const char* location,
+                                  /*out*/ ExtDexFile** ext_dex_file);
 
 // Find a single dex method based on the given dex offset.
-int ExtDexFileGetMethodInfoForOffset(struct ExtDexFile* ext_dex_file,
-                                     uint32_t dex_offset,
-                                     uint32_t flags,
-                                     ExtDexFileMethodInfoCallback* method_info_cb,
-                                     void* user_data);
+// Not thread-safe.
+void ExtDexFile_getMethodInfoForOffset(ExtDexFile* self,
+                                       uint32_t dex_offset,
+                                       ExtDexFileMethodFlags flags,
+                                       ExtDexFileMethodInfoCallback* method_info_cb,
+                                       void* user_data);
 
 // Return all dex methods in the dex file.
-void ExtDexFileGetAllMethodInfos(struct ExtDexFile* ext_dex_file,
-                                 uint32_t flags,
-                                 ExtDexFileMethodInfoCallback* method_info_cb,
-                                 void* user_data);
+// Not thread-safe.
+void ExtDexFile_getAllMethodInfos(ExtDexFile* self,
+                                  ExtDexFileMethodFlags flags,
+                                  ExtDexFileMethodInfoCallback* method_info_cb,
+                                  void* user_data);
 
 // Release all associated memory.
-void ExtDexFileClose(struct ExtDexFile* ext_dex_file);
+void ExtDexFile_destroy(ExtDexFile* self);
 
-#ifdef __cplusplus
-}  // extern "C"
-#endif
+const char* ExtDexFileError_toString(ExtDexFileError self);
+
+__END_DECLS
 
 #endif  // ART_LIBDEXFILE_EXTERNAL_INCLUDE_ART_API_DEX_FILE_EXTERNAL_H_
