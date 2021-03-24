@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae54d165_f9c191f7",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-24T16:39:32Z",
+      "side": 1,
+      "message": "Nit: I would drop \"Offset\", as it is index not offset.",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 37
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
