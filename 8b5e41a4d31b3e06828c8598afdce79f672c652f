@@ -3,6 +3,86 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71d4de4f_1e389905",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3805,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-24T17:30:34Z",
+      "side": 1,
+      "message": "Write sections before the \"VDEX flush contents\".",
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9a5a78_d67f56a9",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3816,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-24T17:30:34Z",
+      "side": 1,
+      "message": "I\u0027d prefer one new-expression with ternary operators used for args.",
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9457158e_3649d2ce",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-24T17:30:34Z",
+      "side": 1,
+      "message": "vdex_header",
+      "range": {
+        "startLine": 226,
+        "startChar": 27,
+        "endLine": 226,
+        "endChar": 38
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf2bafd_05756d06",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-24T17:30:34Z",
+      "side": 1,
+      "message": "You\u0027re ignoring the offset and assuming no padding. I\u0027m wondering whether the maximum of `offset+size` would be a better value than adding section sizes.",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae54d165_f9c191f7",
         "filename": "runtime/vdex_file.h",
         "patchSetId": 2
@@ -19,6 +99,29 @@
         "startChar": 31,
         "endLine": 175,
         "endChar": 37
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683067ff_b83e0d80",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-24T17:30:34Z",
+      "side": 1,
+      "message": "Remove this function. The GetVerifierDepsData() is a better API for all uses.",
+      "range": {
+        "startLine": 253,
+        "startChar": 17,
+        "endLine": 253,
+        "endChar": 45
       },
       "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
