@@ -103,29 +103,31 @@ class DexFile {
   // method whose instruction range includes that offset then calls the provided
   // callback with ExtDexFileMethodInfo* (which is live only during the callback).
   template<typename T /* lambda taking (ExtDexFileMethodInfo*) */>
-  void GetMethodInfoForOffset(int64_t dex_offset, T& callback, uint32_t flags = 0) {
+  void GetMethodInfoForOffset(int64_t dex_offset,
+                              T& callback,
+                              ExtDexFileFlags flags = ExtDexFileFlags_NameWithClass) {
     auto cb = [](void* ctx, ExtDexFileMethodInfo* info) { (*reinterpret_cast<T*>(ctx))(info); };
-    g_ExtDexFileGetMethodInfoForOffset(ext_dex_file_, dex_offset, flags, cb, &callback);
+    g_ExtDexFile_GetMethodInfoForOffset(ext_dex_file_, dex_offset, flags, cb, &callback);
   }
 
   // Given an offset relative to the start of the dex file header, if there is a
   // method whose instruction range includes that offset then returns info about
   // it, otherwise returns a struct with offset == 0. MethodInfo.name receives
-  // the full function signature if with_signature is set, otherwise it gets the
+  // the full function signature if with_params is set, otherwise it gets the
   // class and method name only.
-  MethodInfo GetMethodInfoForOffset(int64_t dex_offset, bool with_signature);
+  MethodInfo GetMethodInfoForOffset(int64_t dex_offset, bool with_params);
 
   // Call the provided callback for all dex methods.
   template<typename T /* lambda taking (ExtDexFileMethodInfo*) */>
-  void GetAllMethodInfos(T& callback, uint32_t flags = 0) {
+  void GetAllMethodInfos(T& callback, ExtDexFileFlags flags = ExtDexFileFlags_NameWithClass) {
     auto cb = [](void* ctx, ExtDexFileMethodInfo* info) { (*reinterpret_cast<T*>(ctx))(info); };
-    g_ExtDexFileGetAllMethodInfos(ext_dex_file_, flags, cb, &callback);
+    g_ExtDexFile_GetAllMethodInfos(ext_dex_file_, flags, cb, &callback);
   }
 
   // Returns info structs about all methods in the dex file. MethodInfo.name
-  // receives the full function signature if with_signature is set, otherwise it
+  // receives the full function signature if with_params is set, otherwise it
   // gets the class and method name only.
-  std::vector<MethodInfo> GetAllMethodInfos(bool with_signature);
+  std::vector<MethodInfo> GetAllMethodInfos(bool with_params);
 
  private:
   static inline MethodInfo AbsorbMethodInfo(const ExtDexFileMethodInfo* info) {
@@ -142,10 +144,11 @@ class DexFile {
   std::unique_ptr<android::base::MappedFile> map_;  // Owned map (if we allocated one).
 
   // These are initialized by TryLoadLibdexfileExternal.
-  static decltype(ExtDexFileOpenFromMemory)* g_ExtDexFileOpenFromMemory;
-  static decltype(ExtDexFileGetMethodInfoForOffset)* g_ExtDexFileGetMethodInfoForOffset;
-  static decltype(ExtDexFileGetAllMethodInfos)* g_ExtDexFileGetAllMethodInfos;
-  static decltype(ExtDexFileClose)* g_ExtDexFileClose;
+  static decltype(ExtDexFile_Create)* g_ExtDexFile_Create;
+  static decltype(ExtDexFile_GetMethodInfoForOffset)* g_ExtDexFile_GetMethodInfoForOffset;
+  static decltype(ExtDexFile_GetAllMethodInfos)* g_ExtDexFile_GetAllMethodInfos;
+  static decltype(ExtDexFile_Destroy)* g_ExtDexFile_Destroy;
+  static decltype(ExtDexFileError_ToString)* g_ExtDexFileError_ToString;
 
   DISALLOW_COPY_AND_ASSIGN(DexFile);
 };

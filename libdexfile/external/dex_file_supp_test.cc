@@ -124,7 +124,31 @@ TEST(DexFileTest, from_fd_non_zero_offset) {
   EXPECT_TRUE(error_msg.empty());
 }
 
-TEST(DexFileTest, get_method_info_for_offset_without_signature) {
+TEST(DexFileTest, get_method_info_callback) {
+  std::unique_ptr<DexFile> dex_file = GetTestDexData();
+  ASSERT_NE(dex_file, nullptr);
+
+  auto run_test = [&dex_file](ExtDexFileFlags flags, const char* expected_name) {
+    size_t num_callbacks = 0;
+    auto check = [&num_callbacks, expected_name](ExtDexFileMethodInfo* info) {
+      EXPECT_EQ(info->addr, int32_t{0x118});
+      EXPECT_EQ(info->size, int32_t{2});
+      EXPECT_STREQ(info->class_descriptor, "LMain;");
+      EXPECT_STREQ(info->name, expected_name);
+      EXPECT_EQ(info->name_size, strlen(info->name));
+      num_callbacks++;
+    };
+    dex_file->GetMethodInfoForOffset(0x118, check, flags);
+    EXPECT_EQ(num_callbacks, 1u);
+  };
+
+  run_test(ExtDexFileFlags_None, "");
+  run_test(ExtDexFileFlags_NameOnly, "main");
+  run_test(ExtDexFileFlags_NameWithClass, "Main.main");
+  run_test(ExtDexFileFlags_NameWithParameters, "void Main.main(java.lang.String[])");
+}
+
+TEST(DexFileTest, get_method_info) {
   std::unique_ptr<DexFile> dex_file = GetTestDexData();
   ASSERT_NE(dex_file, nullptr);
 
@@ -137,12 +161,6 @@ TEST(DexFileTest, get_method_info_for_offset_without_signature) {
   EXPECT_EQ(info.offset, int32_t{0x118});
   EXPECT_EQ(info.len, int32_t{2});
   EXPECT_STREQ(info.name.data(), "Main.main");
-
-  // Retrieve a cached result.
-  info = dex_file->GetMethodInfoForOffset(0x104, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "Main.<init>");
 }
 
 TEST(DexFileTest, get_method_info_for_offset_with_signature) {
@@ -158,18 +176,6 @@ TEST(DexFileTest, get_method_info_for_offset_with_signature) {
   EXPECT_EQ(info.offset, int32_t{0x118});
   EXPECT_EQ(info.len, int32_t{2});
   EXPECT_STREQ(info.name.data(), "void Main.main(java.lang.String[])");
-
-  // Retrieve a cached result.
-  info = dex_file->GetMethodInfoForOffset(0x104, true);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "void Main.<init>()");
-
-  // with_signature doesn't affect the cache.
-  info = dex_file->GetMethodInfoForOffset(0x104, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "Main.<init>");
 }
 
 TEST(DexFileTest, get_method_info_for_offset_boundaries) {
@@ -237,6 +243,17 @@ TEST(DexFileTest, pointer_construct) {
 
   MethodInfo info = new_dex.GetMethodInfoForOffset(0x100, false);
   EXPECT_EQ(info.offset, int32_t{0x100});
+}
+
+TEST(DexFileTest, error_msg) {
+  constexpr size_t kNumErrors = 4;
+  for (size_t i = 0; i < kNumErrors; i++) {
+    const char* err = ExtDexFileError_ToString(static_cast<ExtDexFileError>(i));
+    ASSERT_NE(err, nullptr);
+    ASSERT_FALSE(std::string_view(err).empty());
+  }
+  const char* err = ExtDexFileError_ToString(static_cast<ExtDexFileError>(kNumErrors));
+  ASSERT_EQ(err, nullptr);
 }
 
 }  // namespace dex
