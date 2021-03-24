@@ -33,20 +33,26 @@ struct ExtDexFileMethodInfo {
   size_t sizeof_struct;  // Size of this structure (to allow future extensions).
   uint32_t addr;  // Start of dex byte-code relative to the start of the dex file.
   uint32_t size;  // Size of the dex byte-code in bytes.
+  const char* class_descriptor;  // Mangled class name.
   const char* name;
   size_t name_size;
 };
 
-enum ExtDexFileError {
+enum ExtDexFileError : uint32_t {
   kExtDexFileOk = 0,
   kExtDexFileError = 1,  // Unspecified error.
   kExtDexFileNotEnoughData = 2,
   kExtDexFileInvalidHeader = 3,
 };
 
-enum ExtDexFileMethodFlags {
-  kExtDexFileWithSignature = 1,
+enum ExtDexFileMethodFlags : uint32_t {
+  kExtDexFileNone = 0,
+  kExtDexFileNameOnly = 1 << 0,            // E.g. Main
+  kExtDexFileNameWithClass = 1 << 1,       // E.g. MyClass.Main()
+  kExtDexFileNameWithParameters = 1 << 2,  // E.g. MyClass.Main(String[])
 };
+
+const char* ExtDexFileError_toString(enum ExtDexFileError error);
 
 struct ExtDexFile;
 
@@ -62,15 +68,17 @@ typedef void ExtDexFileMethodInfoCallback(void* user_data,
                                           struct ExtDexFileMethodInfo* method_info);
 
 // Find a single dex method based on the given dex offset.
-int ExtDexFileGetMethodInfoForOffset(struct ExtDexFile* ext_dex_file,
-                                     uint32_t dex_offset,
-                                     uint32_t flags,
-                                     ExtDexFileMethodInfoCallback* method_info_cb,
-                                     void* user_data);
+// This method is not thread-safe.
+void ExtDexFileGetMethodInfoForOffset(struct ExtDexFile* ext_dex_file,
+                                      uint32_t dex_offset,
+                                      enum ExtDexFileMethodFlags flags,
+                                      ExtDexFileMethodInfoCallback* method_info_cb,
+                                      void* user_data);
 
 // Return all dex methods in the dex file.
+// This method is not thread-safe.
 void ExtDexFileGetAllMethodInfos(struct ExtDexFile* ext_dex_file,
-                                 uint32_t flags,
+                                 enum ExtDexFileMethodFlags flags,
                                  ExtDexFileMethodInfoCallback* method_info_cb,
                                  void* user_data);
 

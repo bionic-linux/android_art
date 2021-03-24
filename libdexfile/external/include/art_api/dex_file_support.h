@@ -103,7 +103,9 @@ class DexFile {
   // method whose instruction range includes that offset then calls the provided
   // callback with ExtDexFileMethodInfo* (which is live only during the callback).
   template<typename T /* lambda taking (ExtDexFileMethodInfo*) */>
-  void GetMethodInfoForOffset(int64_t dex_offset, T& callback, uint32_t flags = 0) {
+  void GetMethodInfoForOffset(int64_t dex_offset,
+                              T& callback,
+                              ExtDexFileMethodFlags flags = kExtDexFileNameWithClass) {
     auto cb = [](void* ctx, ExtDexFileMethodInfo* info) { (*reinterpret_cast<T*>(ctx))(info); };
     g_ExtDexFileGetMethodInfoForOffset(ext_dex_file_, dex_offset, flags, cb, &callback);
   }
@@ -117,7 +119,7 @@ class DexFile {
 
   // Call the provided callback for all dex methods.
   template<typename T /* lambda taking (ExtDexFileMethodInfo*) */>
-  void GetAllMethodInfos(T& callback, uint32_t flags = 0) {
+  void GetAllMethodInfos(T& callback, ExtDexFileMethodFlags flags = kExtDexFileNameWithClass) {
     auto cb = [](void* ctx, ExtDexFileMethodInfo* info) { (*reinterpret_cast<T*>(ctx))(info); };
     g_ExtDexFileGetAllMethodInfos(ext_dex_file_, flags, cb, &callback);
   }
