@@ -1,9 +1,10 @@
 LIBDEXFILE_EXTERNAL_1 {
   global:
-    ExtDexFileClose;
-    ExtDexFileGetAllMethodInfos;
-    ExtDexFileGetMethodInfoForOffset;
-    ExtDexFileOpenFromMemory;
+    ExtDexFile_Create;
+    ExtDexFile_Destroy;
+    ExtDexFile_FindMethodAtOffset;
+    ExtDexFile_ForEachMethod;
+    ExtDexFileError_ToString;
   local:
     *;
 };
