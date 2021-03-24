@@ -201,8 +201,7 @@ art_cc_library {
         "com.android.art.debug",
     ],
     stubs: {
-        // TODO(b/143978909): Rename and move this file to this directory.
-        symbol_file: "external/libdexfile_external.map.txt",
+        symbol_file: "libdexfile.map.txt",
         versions: ["1"],
     },
 }
@@ -251,8 +250,7 @@ art_cc_library {
         "com.android.art",
     ],
     stubs: {
-        // TODO(b/143978909): Rename and move this file to this directory.
-        symbol_file: "external/libdexfile_external.map.txt",
+        symbol_file: "libdexfile.map.txt",
         versions: ["1"],
     },
 }

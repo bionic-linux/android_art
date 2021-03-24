@@ -49,194 +49,91 @@ static constexpr uint32_t kDexData[] = {
     0x00000002, 0x00000173, 0x00002000, 0x00000001, 0x0000017e, 0x00001000, 0x00000001, 0x0000018c,
 };
 
-TEST(DexFileTest, from_memory_header_too_small) {
-  size_t size = sizeof(art::DexFile::Header) - 1;
-  std::string error_msg;
-  EXPECT_EQ(DexFile::OpenFromMemory(kDexData, &size, "", &error_msg), nullptr);
-  EXPECT_EQ(size, sizeof(art::DexFile::Header));
-  EXPECT_FALSE(error_msg.empty());
+TEST(DexFileTest, create) {
+  size_t size = sizeof(kDexData);
+  std::unique_ptr<DexFile> dex_file;
+  EXPECT_TRUE(DexFile::Create(kDexData, size, &size, "", &dex_file));
+  EXPECT_EQ(size, sizeof(kDexData));
+  EXPECT_NE(dex_file, nullptr);
 }
 
-TEST(DexFileTest, from_memory_file_too_small) {
+TEST(DexFileTest, create_header_too_small) {
+  size_t size = sizeof(art::DexFile::Header) - 1;
+  std::unique_ptr<DexFile> dex_file;
+  EXPECT_FALSE(DexFile::Create(kDexData, size, &size, "", &dex_file));
+  EXPECT_EQ(size, sizeof(art::DexFile::Header));
+  EXPECT_EQ(dex_file, nullptr);
+}
+
+TEST(DexFileTest, create_file_too_small) {
   size_t size = sizeof(art::DexFile::Header);
-  std::string error_msg;
-  EXPECT_EQ(DexFile::OpenFromMemory(kDexData, &size, "", &error_msg), nullptr);
+  std::unique_ptr<DexFile> dex_file;
+  EXPECT_FALSE(DexFile::Create(kDexData, size, &size, "", &dex_file));
   EXPECT_EQ(size, sizeof(kDexData));
-  EXPECT_FALSE(error_msg.empty());
+  EXPECT_EQ(dex_file, nullptr);
 }
 
 static std::unique_ptr<DexFile> GetTestDexData() {
   size_t size = sizeof(kDexData);
-  std::string error_msg;
-  std::unique_ptr<DexFile> dex_file = DexFile::OpenFromMemory(kDexData, &size, "", &error_msg);
-  EXPECT_TRUE(error_msg.empty());
+  std::unique_ptr<DexFile> dex_file;
+  EXPECT_TRUE(DexFile::Create(kDexData, size, &size, "", &dex_file));
+  EXPECT_EQ(size, sizeof(kDexData));
+  EXPECT_NE(dex_file, nullptr);
   return dex_file;
 }
 
-TEST(DexFileTest, from_memory) {
-  EXPECT_NE(GetTestDexData(), nullptr);
-}
-
-TEST(DexFileTest, from_fd_header_too_small) {
-  TemporaryFile tf;
-  ASSERT_NE(tf.fd, -1);
-  ASSERT_EQ(sizeof(art::DexFile::Header) - 1,
-            static_cast<size_t>(
-                TEMP_FAILURE_RETRY(write(tf.fd, kDexData, sizeof(art::DexFile::Header) - 1))));
-
-  std::string error_msg;
-  EXPECT_EQ(DexFile::OpenFromFd(tf.fd, 0, tf.path, &error_msg), nullptr);
-  EXPECT_FALSE(error_msg.empty());
-}
-
-TEST(DexFileTest, from_fd_file_too_small) {
-  TemporaryFile tf;
-  ASSERT_NE(tf.fd, -1);
-  ASSERT_EQ(sizeof(art::DexFile::Header),
-            static_cast<size_t>(
-                TEMP_FAILURE_RETRY(write(tf.fd, kDexData, sizeof(art::DexFile::Header)))));
-
-  std::string error_msg;
-  EXPECT_EQ(DexFile::OpenFromFd(tf.fd, 0, tf.path, &error_msg), nullptr);
-  EXPECT_FALSE(error_msg.empty());
-}
-
-TEST(DexFileTest, from_fd) {
-  TemporaryFile tf;
-  ASSERT_NE(tf.fd, -1);
-  ASSERT_EQ(sizeof(kDexData),
-            static_cast<size_t>(TEMP_FAILURE_RETRY(write(tf.fd, kDexData, sizeof(kDexData)))));
-
-  std::string error_msg;
-  EXPECT_NE(DexFile::OpenFromFd(tf.fd, 0, tf.path, &error_msg), nullptr);
-  EXPECT_TRUE(error_msg.empty());
-}
-
-TEST(DexFileTest, from_fd_non_zero_offset) {
-  TemporaryFile tf;
-  ASSERT_NE(tf.fd, -1);
-  ASSERT_EQ(0x100, lseek(tf.fd, 0x100, SEEK_SET));
-  ASSERT_EQ(sizeof(kDexData),
-            static_cast<size_t>(TEMP_FAILURE_RETRY(write(tf.fd, kDexData, sizeof(kDexData)))));
-
-  std::string error_msg;
-  EXPECT_NE(DexFile::OpenFromFd(tf.fd, 0x100, tf.path, &error_msg), nullptr);
-  EXPECT_TRUE(error_msg.empty());
-}
-
-TEST(DexFileTest, get_method_info_for_offset_without_signature) {
+TEST(DexFileTest, findMethodAtOffset) {
   std::unique_ptr<DexFile> dex_file = GetTestDexData();
   ASSERT_NE(dex_file, nullptr);
 
-  MethodInfo info = dex_file->GetMethodInfoForOffset(0x102, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "Main.<init>");
+  bool found_init = false;
+  auto check_init = [&](const DexFile::Method& method) {
+    size_t size;
+    size_t offset = method.GetCodeOffset(&size);
+    EXPECT_EQ(offset, 0x100u);
+    EXPECT_EQ(size, 8u);
+    EXPECT_STREQ(method.GetName(), "<init>");
+    EXPECT_STREQ(method.GetQualifiedName(), "Main.<init>");
+    EXPECT_STREQ(method.GetQualifiedName(true), "void Main.<init>()");
+    found_init = true;
+  };
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x102, check_init), 1u);
+  EXPECT_TRUE(found_init);
 
-  info = dex_file->GetMethodInfoForOffset(0x118, false);
-  EXPECT_EQ(info.offset, int32_t{0x118});
-  EXPECT_EQ(info.len, int32_t{2});
-  EXPECT_STREQ(info.name.data(), "Main.main");
-
-  // Retrieve a cached result.
-  info = dex_file->GetMethodInfoForOffset(0x104, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "Main.<init>");
-}
-
-TEST(DexFileTest, get_method_info_for_offset_with_signature) {
-  std::unique_ptr<DexFile> dex_file = GetTestDexData();
-  ASSERT_NE(dex_file, nullptr);
-
-  MethodInfo info = dex_file->GetMethodInfoForOffset(0x102, true);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "void Main.<init>()");
-
-  info = dex_file->GetMethodInfoForOffset(0x118, true);
-  EXPECT_EQ(info.offset, int32_t{0x118});
-  EXPECT_EQ(info.len, int32_t{2});
-  EXPECT_STREQ(info.name.data(), "void Main.main(java.lang.String[])");
-
-  // Retrieve a cached result.
-  info = dex_file->GetMethodInfoForOffset(0x104, true);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "void Main.<init>()");
-
-  // with_signature doesn't affect the cache.
-  info = dex_file->GetMethodInfoForOffset(0x104, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  EXPECT_EQ(info.len, int32_t{8});
-  EXPECT_STREQ(info.name.data(), "Main.<init>");
+  bool found_main = false;
+  auto check_main = [&](const DexFile::Method& method) {
+    size_t size;
+    size_t offset = method.GetCodeOffset(&size);
+    EXPECT_EQ(offset, 0x118u);
+    EXPECT_EQ(size, 2u);
+    EXPECT_STREQ(method.GetName(), "main");
+    EXPECT_STREQ(method.GetQualifiedName(), "Main.main");
+    EXPECT_STREQ(method.GetQualifiedName(true), "void Main.main(java.lang.String[])");
+    found_main = true;
+  };
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x118, check_main), 1u);
+  EXPECT_TRUE(found_main);
 }
 
 TEST(DexFileTest, get_method_info_for_offset_boundaries) {
   std::unique_ptr<DexFile> dex_file = GetTestDexData();
   ASSERT_NE(dex_file, nullptr);
 
-  MethodInfo info = dex_file->GetMethodInfoForOffset(0x100000, false);
-  EXPECT_EQ(info.offset, int32_t{0});
-
-  info = dex_file->GetMethodInfoForOffset(0x99, false);
-  EXPECT_EQ(info.offset, int32_t{0});
-  info = dex_file->GetMethodInfoForOffset(0x100, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  info = dex_file->GetMethodInfoForOffset(0x107, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-  info = dex_file->GetMethodInfoForOffset(0x108, false);
-  EXPECT_EQ(info.offset, int32_t{0});
-
-  // Make sure that once the whole dex file has been cached, no problems occur.
-  info = dex_file->GetMethodInfoForOffset(0x98, false);
-  EXPECT_EQ(info.offset, int32_t{0});
-
-  // Choose a value that is in the cached map, but not in a valid method.
-  info = dex_file->GetMethodInfoForOffset(0x110, false);
-  EXPECT_EQ(info.offset, int32_t{0});
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x99, [](auto){}), 0);
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x100, [](auto){}), 1);
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x107, [](auto){}), 1);
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x108, [](auto){}), 0);
+  EXPECT_EQ(dex_file->FindMethodAtOffset(0x100000, [](auto){}), 0);
 }
 
 TEST(DexFileTest, get_all_method_infos_without_signature) {
   std::unique_ptr<DexFile> dex_file = GetTestDexData();
   ASSERT_NE(dex_file, nullptr);
 
-  std::vector<MethodInfo> infos;
-  infos.emplace_back(MethodInfo{0x100, 8, std::string("Main.<init>")});
-  infos.emplace_back(MethodInfo{0x118, 2, std::string("Main.main")});
-  ASSERT_EQ(dex_file->GetAllMethodInfos(false), infos);
-}
-
-TEST(DexFileTest, get_all_method_infos_with_signature) {
-  std::unique_ptr<DexFile> dex_file = GetTestDexData();
-  ASSERT_NE(dex_file, nullptr);
-
-  std::vector<MethodInfo> infos;
-  infos.emplace_back(MethodInfo{0x100, 8, std::string("void Main.<init>()")});
-  infos.emplace_back(MethodInfo{0x118, 2, std::string("void Main.main(java.lang.String[])")});
-  ASSERT_EQ(dex_file->GetAllMethodInfos(true), infos);
-}
-
-TEST(DexFileTest, move_construct) {
-  std::unique_ptr<DexFile> dex_file = GetTestDexData();
-  ASSERT_NE(dex_file, nullptr);
-
-  auto df1 = DexFile(std::move(*dex_file));
-  auto df2 = DexFile(std::move(df1));
-
-  MethodInfo info = df2.GetMethodInfoForOffset(0x100, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
-}
-
-TEST(DexFileTest, pointer_construct) {
-  std::unique_ptr<DexFile> dex_file = GetTestDexData();
-  ASSERT_NE(dex_file, nullptr);
-
-  auto new_dex = DexFile(dex_file);
-  ASSERT_TRUE(dex_file.get() == nullptr);
-
-  MethodInfo info = new_dex.GetMethodInfoForOffset(0x100, false);
-  EXPECT_EQ(info.offset, int32_t{0x100});
+  std::vector<std::string> names;
+  auto add = [&](const DexFile::Method& method) { names.push_back(method.GetQualifiedName()); };
+  EXPECT_EQ(dex_file->ForEachMethod(add), 2u);
+  EXPECT_EQ(names, std::vector<std::string>({"Main.<init>", "Main.main"}));
 }
 
 }  // namespace dex
