@@ -34,10 +34,11 @@ namespace art_api {
 namespace dex {
 
 #define FOR_ALL_DLFUNCS(MACRO) \
-  MACRO(DexFile, ExtDexFileOpenFromMemory) \
-  MACRO(DexFile, ExtDexFileGetMethodInfoForOffset) \
-  MACRO(DexFile, ExtDexFileGetAllMethodInfos) \
-  MACRO(DexFile, ExtDexFileClose)
+  MACRO(DexFile, ADexFile_Create) \
+  MACRO(DexFile, ADexFile_FindMethodAtOffset) \
+  MACRO(DexFile, ADexFile_ForEachMethod) \
+  MACRO(DexFile, ADexFile_Destroy) \
+  MACRO(DexFile, ADexFile_Error_ToString)
 
 #ifdef STATIC_LIB
 #define DEFINE_DLFUNC_PTR(CLASS, DLFUNC) decltype(DLFUNC)* CLASS::g_##DLFUNC = DLFUNC;
@@ -104,33 +105,25 @@ void LoadLibdexfileExternal() {
 #endif
 }
 
-DexFile::~DexFile() { g_ExtDexFileClose(ext_dex_file_); }
+DexFile::~DexFile() { g_ADexFile_Destroy(ext_dex_file_); }
 
 std::unique_ptr<DexFile> DexFile::OpenFromMemory(const void* addr,
                                                  size_t* size,
                                                  const std::string& location,
                                                  /*out*/ std::string* error_msg) {
-  if (UNLIKELY(g_ExtDexFileOpenFromMemory == nullptr)) {
+  if (UNLIKELY(g_ADexFile_Create == nullptr)) {
     // Load libdexfile_external.so in this factory function, so instance
     // methods don't need to check this.
     LoadLibdexfileExternal();
   }
-  ExtDexFile* ext_dex_file;
-  int res = g_ExtDexFileOpenFromMemory(addr, size, location.c_str(), &ext_dex_file);
-  switch (static_cast<ExtDexFileError>(res)) {
-    case kExtDexFileOk:
-      return std::unique_ptr<DexFile>(new DexFile(ext_dex_file));
-    case kExtDexFileInvalidHeader:
-      *error_msg = std::string("Invalid DexFile header ") + location;
-      return nullptr;
-    case kExtDexFileNotEnoughData:
-      *error_msg = std::string("Not enough data");
-      return nullptr;
-    case kExtDexFileError:
-      break;
+  ADexFile* ext_dex_file;
+  ADexFile_Error res = g_ADexFile_Create(addr, size, location.c_str(), &ext_dex_file);
+  if (res != ADEXFILE_ERROR_OK) {
+    *error_msg =
+        std::string("Failed to read DEX from ") + location + ": " + g_ADexFile_Error_ToString(res);
+    return nullptr;
   }
-  *error_msg = std::string("Failed to open DexFile ") + location;
-  return nullptr;
+  return std::unique_ptr<DexFile>(new DexFile(ext_dex_file));
 }
 
 std::unique_ptr<DexFile> DexFile::OpenFromFd(int fd,
@@ -177,18 +170,20 @@ std::unique_ptr<DexFile> DexFile::OpenFromFd(int fd,
   return dex;
 }
 
-MethodInfo DexFile::GetMethodInfoForOffset(int64_t dex_offset, bool with_signature) {
+MethodInfo DexFile::GetMethodInfoForOffset(int64_t dex_offset, bool with_params) {
   MethodInfo res{};
-  auto set_method = [&res](ExtDexFileMethodInfo* info) { res = AbsorbMethodInfo(info); };
-  uint32_t flags = with_signature ? kExtDexFileWithSignature : 0;
+  auto set_method = [&res](ADexFile_MethodInfo* info) { res = AbsorbMethodInfo(info); };
+  ADexFile_Flags flags =
+      with_params ? ADEXFILE_FLAGS_NAMEWITHPARAMETERS : ADEXFILE_FLAGS_NAMEWITHCLASS;
   GetMethodInfoForOffset(dex_offset, set_method, flags);
   return res;
 }
 
-std::vector<MethodInfo> DexFile::GetAllMethodInfos(bool with_signature) {
+std::vector<MethodInfo> DexFile::GetAllMethodInfos(bool with_params) {
   std::vector<MethodInfo> res;
-  auto add_method = [&res](ExtDexFileMethodInfo* info) { res.push_back(AbsorbMethodInfo(info)); };
-  uint32_t flags = with_signature ? kExtDexFileWithSignature : 0;
+  auto add_method = [&res](ADexFile_MethodInfo* info) { res.push_back(AbsorbMethodInfo(info)); };
+  ADexFile_Flags flags =
+      with_params ? ADEXFILE_FLAGS_NAMEWITHPARAMETERS : ADEXFILE_FLAGS_NAMEWITHCLASS;
   GetAllMethodInfos(add_method, flags);
   return res;
 }

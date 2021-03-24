@@ -18,67 +18,108 @@
 #define ART_LIBDEXFILE_EXTERNAL_INCLUDE_ART_API_DEX_FILE_EXTERNAL_H_
 
 // Dex file external API
-
-#include <sys/types.h>
 #include <stdint.h>
+#include <sys/cdefs.h>
+#include <sys/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+__BEGIN_DECLS
 
 // This is the stable C ABI that backs art_api::dex below. Structs and functions
 // may only be added here. C++ users should use dex_file_support.h instead.
 
-struct ExtDexFileMethodInfo {
+struct ADexFile;
+typedef struct ADexFile ADexFile;
+
+struct ADexFile_MethodInfo {
   size_t sizeof_struct;  // Size of this structure (to allow future extensions).
   uint32_t addr;  // Start of dex byte-code relative to the start of the dex file.
   uint32_t size;  // Size of the dex byte-code in bytes.
-  const char* name;
+  const char* _Nonnull class_descriptor;  // Mangled class name.
+  const char* _Nonnull name;
   size_t name_size;
 };
+typedef struct ADexFile_MethodInfo ADexFile_MethodInfo;
 
-enum ExtDexFileError {
-  kExtDexFileOk = 0,
-  kExtDexFileError = 1,  // Unspecified error.
-  kExtDexFileNotEnoughData = 2,
-  kExtDexFileInvalidHeader = 3,
+enum ADexFile_Error : uint32_t {
+  ADEXFILE_ERROR_OK = 0,
+  ADEXFILE_ERROR_ERROR = 1,  // Unspecified error.
+  ADEXFILE_ERROR_NOTENOUGHDATA = 2,
+  ADEXFILE_ERROR_INVALIDHEADER = 3,
 };
+typedef enum ADexFile_Error ADexFile_Error;
 
-enum ExtDexFileMethodFlags {
-  kExtDexFileWithSignature = 1,
+enum ADexFile_Flags : uint32_t {
+  ADEXFILE_FLAGS_NONE = 0,
+  ADEXFILE_FLAGS_NAMEONLY = 1 << 0,            // E.g. Main
+  ADEXFILE_FLAGS_NAMEWITHCLASS = 1 << 1,       // E.g. MyClass.Main
+  ADEXFILE_FLAGS_NAMEWITHPARAMETERS = 1 << 2,  // E.g. void MyClass.Main(String[])
 };
-
-struct ExtDexFile;
-
-// Try to open a dex file in the given memory range.
-// If the memory range is too small, larger suggest size is written to the argument.
-int ExtDexFileOpenFromMemory(const void* addr,
-                             /*inout*/ size_t* size,
-                             const char* location,
-                             /*out*/ struct ExtDexFile** ext_dex_file);
+typedef enum ADexFile_Flags ADexFile_Flags;
 
 // Callback used to return information about a dex method.
-typedef void ExtDexFileMethodInfoCallback(void* user_data,
-                                          struct ExtDexFileMethodInfo* method_info);
+typedef void ADexFile_MethodInfoCallback(void* _Nullable user_data,
+                                         ADexFile_MethodInfo* _Nonnull method_info);
 
-// Find a single dex method based on the given dex offset.
-int ExtDexFileGetMethodInfoForOffset(struct ExtDexFile* ext_dex_file,
-                                     uint32_t dex_offset,
-                                     uint32_t flags,
-                                     ExtDexFileMethodInfoCallback* method_info_cb,
-                                     void* user_data);
+// Interprets a chunk of memory as a dex file.
+//
+// @param address Pointer to the start of dex file data.
+//                The caller must retain the memory.
+// @param size Size of the memory range. If the size is too small, the method returns
+//             ADEXFILE_ERROR_NOTENOUGHDATA and sets size to a new size to try again with.
+// @param location A string that describes the dex file. Preferably its path.
+//                 It is mostly used just for log messages and may be "".
+// @param dex_file The created dex file object, or nullptr on error.
+//                 It must be later freed with ADexFile_Destroy.
+//
+// @return ADEXFILE_ERROR_OK if successful.
+// @return ADEXFILE_ERROR_NOTENOUGHDATA if the provided dex file is too short (truncated).
+// @return ADEXFILE_ERROR_INVALIDHEADER if the memory does not seem to represent DEX file.
+// @return ADEXFILE_ERROR_ERROR if any other non-specific error occurs.
+//
+// Thread-safe (creates new object).
+ADexFile_Error ADexFile_Create(const void* _Nonnull address,
+                               /*inout*/ size_t* _Nonnull size,
+                               const char* _Nonnull location,
+                               /*out*/ ADexFile* _Nullable * _Nonnull dex_file);
 
-// Return all dex methods in the dex file.
-void ExtDexFileGetAllMethodInfos(struct ExtDexFile* ext_dex_file,
-                                 uint32_t flags,
-                                 ExtDexFileMethodInfoCallback* method_info_cb,
-                                 void* user_data);
+// Find method at given offset and call callback with information about the method.
+//
+// @param dex_offset Offset relative to the start of the dex file header.
+// @param flags Specifies which information should be obtained.
+// @param callback The callback to call. Returned pointers are valid only in the callback.
+// @param user_data Extra user-specified argument for the callback.
+//
+// @return Number of methods found (0 or 1).
+//
+// Not thread-safe for calls on the same ADexFile instance.
+size_t ADexFile_FindMethodAtOffset(ADexFile* _Nonnull self,
+                                   uint32_t dex_offset,
+                                   ADexFile_Flags flags,
+                                   ADexFile_MethodInfoCallback* _Nullable callback,
+                                   void* _Nullable user_data);
 
-// Release all associated memory.
-void ExtDexFileClose(struct ExtDexFile* ext_dex_file);
+// Call callback for all methods in the DEX file.
+//
+// @param flags Specifies which information should be obtained.
+// @param callback The callback to call. Returned pointers are valid only in the callback.
+// @param user_data Extra user-specified argument for the callback.
+//
+// @return Number of methods found.
+//
+// Not thread-safe for calls on the same ADexFile instance.
+size_t ADexFile_ForEachMethod(ADexFile* _Nonnull self,
+                              ADexFile_Flags flags,
+                              ADexFile_MethodInfoCallback* _Nullable method_info_cb,
+                              void* _Nullable user_data);
 
-#ifdef __cplusplus
-}  // extern "C"
-#endif
+// Free the given object.
+//
+// Thread-safe, can be called only once for given instance.
+void ADexFile_Destroy(ADexFile* _Nullable self);
+
+// @return Compile-time literal or nullptr on error.
+const char* _Nullable ADexFile_Error_ToString(ADexFile_Error self);
+
+__END_DECLS
 
 #endif  // ART_LIBDEXFILE_EXTERNAL_INCLUDE_ART_API_DEX_FILE_EXTERNAL_H_
