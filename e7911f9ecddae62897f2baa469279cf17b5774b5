@@ -16,6 +16,24 @@
       "message": "i assume this is your first \"release\", so it\u0027s okay to add in the middle?",
       "revId": "e7911f9ecddae62897f2baa469279cf17b5774b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da33ac10_3788f668",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-24T23:34:30Z",
+      "side": 1,
+      "message": "Yes, we can still change anything.",
+      "parentUuid": "8c50e009_62492fc1",
+      "revId": "e7911f9ecddae62897f2baa469279cf17b5774b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
