@@ -16,6 +16,24 @@
       "message": "As long as we are changing things a bit, are there any other NDK-API guidelines that we could follow better?",
       "revId": "443fc8962db219177c34cd047d2071b5ee775468",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94946582_ebc91125",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-24T21:25:22Z",
+      "side": 0,
+      "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead is the written-down list.",
+      "parentUuid": "4fadb2d1_7e204d6b",
+      "revId": "443fc8962db219177c34cd047d2071b5ee775468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
