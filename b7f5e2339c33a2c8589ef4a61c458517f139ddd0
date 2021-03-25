@@ -93,6 +93,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd000d8f_8a2e40e3",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-25T19:31:13Z",
+      "side": 1,
+      "message": "Do you mean moving to libunwind?  That would make the API unreasonably complex.\n\nNote that the size is reasonably small: O(num_classes) rather then O(num_methods).\n\nI don\u0027t think envision skip (linear scan over all methods) to be desirable.\nI mean, in that case GetAllMethods is likely what the user wants.",
+      "parentUuid": "39a5428c_77c465f0",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7e3e15_073bc83f",
@@ -106,6 +130,30 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "The callback didn\u0027t use to be called in this case, but that changes here. Why? Doesn\u0027t it have implications on callers?",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac21125f_bae2a50b",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-25T19:31:13Z",
+      "side": 1,
+      "message": "It gets a zero sized method, which seems reasonable. We should check with Yabin.",
+      "parentUuid": "8b7e3e15_073bc83f",
       "range": {
         "startLine": 261,
         "startChar": 12,
@@ -238,6 +286,30 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "Again I argue that it\u0027s better if this is zero by default. Can\u0027t you just make this style the default when no flag is sent? Even though it\u0027s a bit field the three flags are mutually exclusive after all.",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 90
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9495aa3_41e092bd",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-25T19:31:13Z",
+      "side": 1,
+      "message": "I think that one of the long strings should be the default when no flags are specified.\n\nDefining set of flags such that 0 returns name, but the other options are also possible seems clumsy.\n\nSo the above comes out as the only option.\n\nThe only other alternative that I can think of is to remove the default altogether, but that needs topic CL.  \n\nWe could also keep it with this default to preserve behavior, and do topic CL follow up (which we likely need anyway, to rename the methods here as well).",
+      "parentUuid": "5df89cf7_d12efdcb",
       "range": {
         "startLine": 108,
         "startChar": 60,
