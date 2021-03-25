@@ -22,6 +22,30 @@
       },
       "revId": "341ce6a55de1601d2996c020b464b5365b2b243b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cab7321_d32f3641",
+        "filename": "runtime/metrics/statsd.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-03-25T22:07:05Z",
+      "side": 1,
+      "message": "The reason is that we might have some metrics that are never exported to statsd and we don\u0027t have a statsd mapping for them. For example, a lot of development only or debug metrics would fall in this category.",
+      "parentUuid": "bec522d2_406b4c3e",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "341ce6a55de1601d2996c020b464b5365b2b243b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
