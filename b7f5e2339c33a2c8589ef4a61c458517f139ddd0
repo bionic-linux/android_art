@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a137362_61f8a108",
+        "filename": "libdexfile/dex/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "/*out*/",
+      "range": {
+        "startLine": 762,
+        "startChar": 67,
+        "endLine": 762,
+        "endChar": 68
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85ef30c_b4e23b48",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "What about passing this as a pointer to this function, and let the caller allocate it on their stack?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df0c2fc_f16d0434",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "This logic needs a unit test.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a5428c_77c465f0",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "What about moving this cache to the caller side? Or maybe rather, make it controllable from there (use or skip)?",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7e3e15_073bc83f",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "The callback didn\u0027t use to be called in this case, but that changes here. Why? Doesn\u0027t it have implications on callers?",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d002ce1f_09b70c45",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Also a new API that needs a unit test (not testing the exact contents of each string, because that would be brittle, but that it returns a non-empty string for each valid error code and nullptr for an invalid one).",
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3622d68f_f6c63810",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these be full sentence-like error messages to be shown to the user? I don\u0027t see any guidance on it, but it seems more useful than just the identifiers on string form (more or less).",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 65
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a1f411_8471b9a0",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Please keep the location in the message, e.g:\n\n  std::string(\"Failed to read DEX from \") + location + \": \" + \\\n    g_ExtDexFileError_toString(res)",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 49
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7a7e61_6a628815",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "ExtDexFileMethodFlags",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d5019c_1641e383",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df89cf7_d12efdcb",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Again I argue that it\u0027s better if this is zero by default. Can\u0027t you just make this style the default when no flag is sent? Even though it\u0027s a bit field the three flags are mutually exclusive after all.",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 90
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed4aa9a3_ab4f3065",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "with_params, for consistency.",
+      "range": {
+        "startLine": 118,
+        "startChar": 61,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a430847f_94588a7c",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 131,
+        "startChar": 49,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb53a41_fef0ab38",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T18:39:31Z",
+      "side": 1,
+      "message": "ExtDexFileError_toString missing.",
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
