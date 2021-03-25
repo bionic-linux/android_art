@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52581b5b_cf5d9961",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T15:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "647d85bc_ad974582",
+      "revId": "1a8b4a7bcb4600046961c392b9f3de540019a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3aae4d4_061bfaf7",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-03-25T15:19:02Z",
       "side": 1,
       "message": "While there should be some non-empty section found below, we should start with `sizeof(VdexFileHeader) + header.GetNumberOfSections() * sizeof(VdexSectionHeader)` anyway.",
+      "range": {
+        "startLine": 150,
+        "startChar": 20,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "1a8b4a7bcb4600046961c392b9f3de540019a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db4374b9_077895b6",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T15:30:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3aae4d4_061bfaf7",
       "range": {
         "startLine": 150,
         "startChar": 20,
