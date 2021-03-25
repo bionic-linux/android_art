@@ -16,6 +16,46 @@
       "message": "Thank you both, PTAL.",
       "revId": "1a8b4a7bcb4600046961c392b9f3de540019a9e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647d85bc_ad974582",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-25T15:19:02Z",
+      "side": 1,
+      "message": "Inconsistent blank line. There is none before the previous `ptr +\u003d ...`.",
+      "revId": "1a8b4a7bcb4600046961c392b9f3de540019a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3aae4d4_061bfaf7",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-25T15:19:02Z",
+      "side": 1,
+      "message": "While there should be some non-empty section found below, we should start with `sizeof(VdexFileHeader) + header.GetNumberOfSections() * sizeof(VdexSectionHeader)` anyway.",
+      "range": {
+        "startLine": 150,
+        "startChar": 20,
+        "endLine": 150,
+        "endChar": 22
+      },
+      "revId": "1a8b4a7bcb4600046961c392b9f3de540019a9e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
