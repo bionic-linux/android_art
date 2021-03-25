@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1789a817_84ecd688",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3805,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71d4de4f_1e389905",
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f9a5a78_d67f56a9",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca502f2_b4803c0f",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3816,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f9a5a78_d67f56a9",
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9457158e_3649d2ce",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-03-24T17:30:34Z",
       "side": 1,
       "message": "vdex_header",
+      "range": {
+        "startLine": 226,
+        "startChar": 27,
+        "endLine": 226,
+        "endChar": 38
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c025d724_0aab7621",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9457158e_3649d2ce",
       "range": {
         "startLine": 226,
         "startChar": 27,
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc3ef05_a30e5231",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf2bafd_05756d06",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae54d165_f9c191f7",
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "118a84a8_f46349e7",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae54d165_f9c191f7",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 37
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683067ff_b83e0d80",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-03-24T17:30:34Z",
       "side": 1,
       "message": "Remove this function. The GetVerifierDepsData() is a better API for all uses.",
+      "range": {
+        "startLine": 253,
+        "startChar": 17,
+        "endLine": 253,
+        "endChar": 45
+      },
+      "revId": "8b5e41a4d31b3e06828c8598afdce79f672c652f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b6382f4_be51dfe7",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-25T14:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "683067ff_b83e0d80",
       "range": {
         "startLine": 253,
         "startChar": 17,
