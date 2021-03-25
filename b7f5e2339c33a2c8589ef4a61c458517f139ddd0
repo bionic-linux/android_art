@@ -70,6 +70,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "60dd87fc_dd4f0185",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2021-03-25T21:14:44Z",
+      "side": 1,
+      "message": "Can we get class descriptor in AppendPrettyMethod()? There is another GetMethodDeclaringClassDescriptor() there. Ignore this comment if the function is trivial.",
+      "range": {
+        "startLine": 106,
+        "startChar": 37,
+        "endLine": 106,
+        "endChar": 70
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "39a5428c_77c465f0",
@@ -154,6 +177,30 @@
       "side": 1,
       "message": "It gets a zero sized method, which seems reasonable. We should check with Yabin.",
       "parentUuid": "8b7e3e15_073bc83f",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be052ecf_b54d2786",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2021-03-25T21:14:44Z",
+      "side": 1,
+      "message": "Why we need a zero sized method? And the addr is also a fake zero.",
+      "parentUuid": "ac21125f_bae2a50b",
       "range": {
         "startLine": 261,
         "startChar": 12,
