@@ -16,6 +16,24 @@
       "message": "Do you know what triggered the failure?",
       "revId": "13310ff1dc24647b9602bc184963a9b160d5bb68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec2e65d_bedaa6c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-03-25T10:07:24Z",
+      "side": 1,
+      "message": "See ReflexiveStatsLog \u003cclinit\u003e trying to load and use android.util.StatsEvent in https://android-review.googlesource.com/1519627 and the extra null check introduced in https://android-review.googlesource.com/1578643 .\n\nI find the initialization pattern with OptionalMethod quite dangerous and we should really use a `NoPreloadHolder` on Android for anything like this. We really do not want this initialized at compile time. Luckily, we do not create a boot image extension for conscrypt at this time (other than for TestExtension).\n\nAnd I should point out that we\u0027re using profiles with `/*type_frequency\u003d*/ 4u` for compiling in TestExtension, so adding or removing classes changes which classes we\u0027re trying to initialize in this test.",
+      "parentUuid": "7899c0e6_0be39175",
+      "revId": "13310ff1dc24647b9602bc184963a9b160d5bb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
