@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec522d2_406b4c3e",
+        "filename": "runtime/metrics/statsd.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-03-25T22:05:05Z",
+      "side": 1,
+      "message": "silly question: if every return is !\u003d std::nullopt, why the optional?",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "341ce6a55de1601d2996c020b464b5365b2b243b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
