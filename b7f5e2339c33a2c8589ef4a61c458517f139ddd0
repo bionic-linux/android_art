@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "477a8b7c_08d1a435",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:03:56Z",
+      "side": 1,
+      "message": "I see, clear() doesn\u0027t free.",
+      "parentUuid": "3de8b4ed_4cd7caa1",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df0c2fc_f16d0434",
@@ -236,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b018055c_5312750a",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:03:56Z",
+      "side": 1,
+      "message": "Yes actually moving it isn\u0027t feasible, that\u0027s why I mentioned controllable, i.e. an on/off flag in practice. But it was just a thought.",
+      "parentUuid": "dd000d8f_8a2e40e3",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7e3e15_073bc83f",
@@ -321,6 +369,30 @@
       "side": 1,
       "message": "I was thinking for completeness, to let the client decide.\nI don\u0027t have a strong preference.",
       "parentUuid": "be052ecf_b54d2786",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54fea39_281610f6",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:03:56Z",
+      "side": 1,
+      "message": "I don\u0027t know when this would occur, but if simpleperf depends on it then it\u0027s clear we should have a test for it.\n\n(Btw, speaking of tests, the unit tests here have gaps in that they don\u0027t pass in various tricky dex file snippets and checks how this API handles them. E.g. https://cs.android.com/android/platform/superproject/+/master:system/unwinding/libunwindstack/tests/DexFileTest.cpp and https://cs.android.com/android/platform/superproject/+/master:system/unwinding/libunwindstack/tests/DexFilesTest.cpp should be copied or maybe moved here so that we have that coverage. That\u0027s what b/145347927 is about.)",
+      "parentUuid": "48642573_5a4ab56b",
       "range": {
         "startLine": 261,
         "startChar": 12,
@@ -591,6 +663,30 @@
       "side": 1,
       "message": "I think that one of the long strings should be the default when no flags are specified.\n\nDefining set of flags such that 0 returns name, but the other options are also possible seems clumsy.\n\nSo the above comes out as the only option.\n\nThe only other alternative that I can think of is to remove the default altogether, but that needs topic CL.  \n\nWe could also keep it with this default to preserve behavior, and do topic CL follow up (which we likely need anyway, to rename the methods here as well).",
       "parentUuid": "5df89cf7_d12efdcb",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 90
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83701e79_b76bb45b",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:03:56Z",
+      "side": 1,
+      "message": "Fair enough, then I think the best option is to not provide a default at all.\n\nYes, a topic that clears away the old functions with the bool arguments below could do this too.",
+      "parentUuid": "b9495aa3_41e092bd",
       "range": {
         "startLine": 108,
         "startChar": 60,
