@@ -243,6 +243,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "48515077_734cccff",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T15:44:31Z",
+      "side": 1,
+      "message": "So the question is whether the naming guidelines should apply to the full (\"mangled\") identifier or the \"pure\" identifier in some sense. Since the go/cstyle doesn\u0027t recognise such mangling and go/android-ndk-api-guidelines doesn\u0027t say anything about prefixing the \"pure\" identifiers I think the former is the more natural interpretation. Another aspect is that the \"k\" is hard to see in the middle and hence loses its purpose a bit.\n\nI don\u0027t care overly much either way, except that it\u0027d be great if go/android-ndk-api-guidelines could mention this so we don\u0027t need to discuss it.",
+      "parentUuid": "11961bba_c958e7cf",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "45f2b54a_ef042410",
