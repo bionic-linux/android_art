@@ -195,6 +195,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "767d4b33_8b8b9946",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T15:28:04Z",
+      "side": 1,
+      "message": "I reason that ExtDexFileError_Ok is the identifier, so the k prefix should be in front of all of it, i.e. kExtDexFileError_Ok. But I haven\u0027t checked other APIs (MACRO_NAME looks like, well, a macro, which these aren\u0027t, so I\u0027d be inclined to view it as a historical artefact rather than good guidance.)",
+      "parentUuid": "13d4e794_9285370e",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "45f2b54a_ef042410",
