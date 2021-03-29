@@ -34,6 +34,24 @@
       "parentUuid": "531ca12e_cf93638f",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a73075_fb6799d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T20:57:13Z",
+      "side": 1,
+      "message": "Sorry, let me rephrase the original question.\nWe can still change this API before it is set to stone.\nDo you have any suggested changes we should make? \n\nI have tried to follow the guideline where it specifies conventions,\nand used preference/gut where it does not dictate any.\n\nFor example:\n * The guideline does not specify capitalization, so I tried to match C++.\n * The guideline does not specify how to name enum values, code in practice seems to use all caps, but the is against google style. I am still unsure what the best approach is.... CLASS_VALUE \u003d 1, kClass_Value \u003d 1, Class_kValue \u003d 1 ... ?",
+      "parentUuid": "02e527be_b9a9498c",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
