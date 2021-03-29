@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c516f565_a9bc35b9",
+        "filename": "libdexfile/dex/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "(moved to own CL)",
+      "parentUuid": "0a137362_61f8a108",
+      "range": {
+        "startLine": 762,
+        "startChar": 67,
+        "endLine": 762,
+        "endChar": 68
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a85ef30c_b4e23b48",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "What about passing this as a pointer to this function, and let the caller allocate it on their stack?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de8b4ed_4cd7caa1",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "It must be in the instance, as avoiding alloc/free in the caller is the main point.",
+      "parentUuid": "a85ef30c_b4e23b48",
       "range": {
         "startLine": 91,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85feb1e_71907258",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df0c2fc_f16d0434",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60dd87fc_dd4f0185",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-25T21:14:44Z",
       "side": 1,
       "message": "Can we get class descriptor in AppendPrettyMethod()? There is another GetMethodDeclaringClassDescriptor() there. Ignore this comment if the function is trivial.",
+      "range": {
+        "startLine": 106,
+        "startChar": 37,
+        "endLine": 106,
+        "endChar": 70
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8188236_363a7e24",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "It is trivial.",
+      "parentUuid": "60dd87fc_dd4f0185",
       "range": {
         "startLine": 106,
         "startChar": 37,
@@ -211,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48642573_5a4ab56b",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "I was thinking for completeness, to let the client decide.\nI don\u0027t have a strong preference.",
+      "parentUuid": "be052ecf_b54d2786",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d002ce1f_09b70c45",
@@ -228,6 +348,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90ff5c7_46586931",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d002ce1f_09b70c45",
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3622d68f_f6c63810",
@@ -241,6 +379,30 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "Shouldn\u0027t these be full sentence-like error messages to be shown to the user? I don\u0027t see any guidance on it, but it seems more useful than just the identifiers on string form (more or less).",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 65
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d89b515_c2b088a1",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3622d68f_f6c63810",
       "range": {
         "startLine": 273,
         "startChar": 0,
@@ -274,6 +436,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c07dea0_e02af7e4",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58a1f411_8471b9a0",
+      "range": {
+        "startLine": 122,
+        "startChar": 17,
+        "endLine": 122,
+        "endChar": 49
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d7a7e61_6a628815",
@@ -297,6 +483,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4440388b_999fb759",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7a7e61_6a628815",
+      "range": {
+        "startLine": 175,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71d5019c_1641e383",
@@ -310,6 +520,30 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 6
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb44e921_e6c72942",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71d5019c_1641e383",
       "range": {
         "startLine": 183,
         "startChar": 2,
@@ -390,6 +624,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a23894c_62f4fea0",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4aa9a3_ab4f3065",
+      "range": {
+        "startLine": 118,
+        "startChar": 61,
+        "endLine": 118,
+        "endChar": 75
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a430847f_94588a7c",
@@ -413,6 +671,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe70df77_0b97e841",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a430847f_94588a7c",
+      "range": {
+        "startLine": 131,
+        "startChar": 49,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb53a41_fef0ab38",
@@ -426,6 +708,24 @@
       "writtenOn": "2021-03-25T18:39:31Z",
       "side": 1,
       "message": "ExtDexFileError_toString missing.",
+      "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9febf4_a9b08132",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T11:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb53a41_fef0ab38",
       "revId": "b7f5e2339c33a2c8589ef4a61c458517f139ddd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
