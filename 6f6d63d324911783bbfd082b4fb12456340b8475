@@ -33,6 +33,24 @@
       "message": "capitalization in the source looks wrong? (the map file looks right though, but the mismatch should prevent you from actually using any of these?)",
       "revId": "6f6d63d324911783bbfd082b4fb12456340b8475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e02088a_122399a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-29T18:26:59Z",
+      "side": 1,
+      "message": "Done, thanks.  Capitalization was one of the things we were debating.\nThe NDK guideline does not specify it.  We are leaning towards uppercase to match the C++ conventions (the intended consumer).",
+      "parentUuid": "a2be5ff5_db26b92a",
+      "revId": "6f6d63d324911783bbfd082b4fb12456340b8475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
