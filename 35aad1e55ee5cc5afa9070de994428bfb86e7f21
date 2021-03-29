@@ -16,6 +16,24 @@
       "message": "+danalbert (who goes to the secret cylon meetings) for whether or not mainline is being held to the NDK naming conventions or not...",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e527be_b9a9498c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-29T20:42:52Z",
+      "side": 1,
+      "message": "Without a good reason not to, mainline guidelines are the same as NDK APIs.",
+      "parentUuid": "531ca12e_cf93638f",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
