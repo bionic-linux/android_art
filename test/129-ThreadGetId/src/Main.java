@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Main implements Runnable {
     static final int numberOfThreads = 5;
-    static final int totalOperations = 1000;
+    static final int totalOperations = 900;
 
     public static void main(String[] args) throws Exception {
         final Thread[] threads = new Thread[numberOfThreads];
