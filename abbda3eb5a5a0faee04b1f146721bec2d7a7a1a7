@@ -146,6 +146,52 @@
       },
       "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fa64c4_4bbfa0d1",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:58:46Z",
+      "side": 1,
+      "message": "http://go/cstyle#Enumerator_Names says these should be prefixed with \"k\", and I can\u0027t find anything overriding it in go/android-ndk-api-guidelines, so afaics these should be kept.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f2b54a_ef042410",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:58:46Z",
+      "side": 1,
+      "message": "Assuming you\u0027re confident we don\u0027t want to add object-level flags at some point.",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
