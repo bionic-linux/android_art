@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "531ca12e_cf93638f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-29T18:30:11Z",
+      "side": 1,
+      "message": "+danalbert (who goes to the secret cylon meetings) for whether or not mainline is being held to the NDK naming conventions or not...",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
