@@ -52,6 +52,205 @@
       "parentUuid": "02e527be_b9a9498c",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9ecf55_1d4b3741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "Waiting for clarification on a number of under-specified guidelines but here\u0027s a first pass.",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881ded11_7053955d",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure we need the C API to be tested directly as well. That\u0027s the interface to the system and the C++ wrapper could have different behavior than the underlying API. (waiting for confirmation https://critique-ng.corp.google.com/cl/365914513)",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd8fccfa_c96fd641",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "FYI you can use `#pragma once` if you prefer",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbf2744_b3e6c496",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead#naming (applies to everything here)",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a6d6025_7324d56c",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead (AExtDexFile_MethodInfoCallback)\n\nI don\u0027t understand why this is a callback instead of just an out param. If there\u0027s no reason for that make it an out param, if there is I suspect it\u0027ll become clear when the docs are expanded.",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16af9a63_d32364d5",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "suggested",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8ec150_87bcc904",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead#compatibilty-cts_2 (bad anchor name, it\u0027s the section about documentation)\n\nApplies to all the other functions as well.",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b234245_89fa7c86",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "Does this function not have any failure cases?",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3bd6fa_a11b2b94",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "Should this be const? Same question for the next function.",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 55
+      },
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee43ee37_8392050b",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "Const?",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0481245e_4e9e2778",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "go/android-ndk-api-guidelines#nullable (applies to the other functions as well)",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

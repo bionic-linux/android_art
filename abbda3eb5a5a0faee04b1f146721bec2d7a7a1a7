@@ -267,6 +267,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "78abd76a_6a2b3e64",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-30T22:51:42Z",
+      "side": 1,
+      "message": "Have opened that discussion with the other council members. AFAICT all of our APIs are ALL_CAPS and we\u0027ll encode that existing practice.",
+      "parentUuid": "48515077_734cccff",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "45f2b54a_ef042410",
