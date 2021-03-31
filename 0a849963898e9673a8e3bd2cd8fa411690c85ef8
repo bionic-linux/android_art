@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4027e516_4053f4b6",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "If you\u0027re interested in actually using doxygen (you\u0027re using @param, but maybe that\u0027s just convention), need `///` or `/**`.\n\nCompletely optional for non-NDK, just FYI. I don\u0027t know if there\u0027s a way of actually generating API docs for non-NDK APIs anyway.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 2
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c3a3591_77717831",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Only until `_destroy` is called, I\u0027m guessing? Or is there caching going on that requires this permanently? If that\u0027s the case I think you want the _acquire/_release naming rather than _create/_destroy.",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ec1229_674b48bb",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Thanks, this is why we ask for docs. This was not remotely clear to me before 😊",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 73
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7c7fd4_dd44e8af",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Do these cases actually exist? The purpose of documenting the error cases is so that callers know what to guard against. Same as how man pages always list the possible errno results and the circumstances that cause them.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4cd86e_d0e33d7f",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Sorry for missing this before, but `ADexFile_create` (lower case for the function name).\n\n(one of these days we\u0027d love to have a linter that catches all this stuff since it saves everyone the headaches, but so far no one has had the time to write that)",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4e52bb_466d99e7",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Does this apply to `name` or to `class_descriptor`? Maybe this is obvious to folks more familiar with Java. I\u0027m guessing the latter?",
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48ae8fc_e2f44071",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "Arguments passed to the callback?\n\nIf so, think it\u0027s worth elaborating with \"any data that needs to outlive the execution of the callback must be copied by the user\"? This is clear to me since I already have that context, but not sure how this reads to fresh eyes.",
+      "range": {
+        "startLine": 89,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

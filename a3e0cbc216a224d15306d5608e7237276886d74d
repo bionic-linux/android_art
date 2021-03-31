@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb432054_405a6699",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "You\u0027re still sensitive to alignment and padding changes, and callers can mistakenly use this struct in an array which will be broken. For APIs that are immortal the stability of those APIs across releases is extremely important.\n\nIs accessing any of this really a hot path? I have no context for how this API is used; all I have is what\u0027s in the review.\n\nThis does not fit the exception that\u0027s allowed by the API guidelines. If other classes of exceptions need to be added then we\u0027ll need to start that discussion with the rest of the API council.\n\nOr maybe you don\u0027t even want a system API here? Couldn\u0027t this just be a library separate from the OS? If you do that you don\u0027t even have to care about C or any other type of compatibility beyond what you *choose* to guarantee to your users.",
+      "parentUuid": "3fec5098_cc4450b9",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6

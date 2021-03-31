@@ -194,6 +194,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12859579_873bf6e9",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:26:51Z",
+      "side": 1,
+      "message": "A for Android. Namespacing for C. Sent a change to the style guide to be more explicit.",
+      "parentUuid": "951873b5_a8448e0e",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a6d6025_7324d56c",
