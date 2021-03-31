@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "73fdec18_502bc60e",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T22:29:13Z",
+      "side": 1,
+      "message": "\u003e I guess it is reasonable to test both *if* the C++ wrapper is complex and alters behavior.\n\nEnsuring that is what the test is for.",
+      "parentUuid": "4b7909f1_4c9b3106",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd8fccfa_c96fd641",
