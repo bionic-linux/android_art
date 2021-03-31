@@ -122,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4f0ef1_19e97c99",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "I assume it is ok as is?  It seems to follow the guideline.\n\nOtherwise could you be more specific what is the desired change?",
+      "parentUuid": "3fbf2744_b3e6c496",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a6d6025_7324d56c",
@@ -135,6 +153,24 @@
       "writtenOn": "2021-03-30T22:51:42Z",
       "side": 1,
       "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead (AExtDexFile_MethodInfoCallback)\n\nI don\u0027t understand why this is a callback instead of just an out param. If there\u0027s no reason for that make it an out param, if there is I suspect it\u0027ll become clear when the docs are expanded.",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9423b2d0_751923a0",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "Needs to be callback to deal with passing back string pointers.\nEspecially for the case where we call the callback for all methods.",
+      "parentUuid": "2a6d6025_7324d56c",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -162,6 +198,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b9efbd_752deacf",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16af9a63_d32364d5",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8ec150_87bcc904",
@@ -175,6 +235,24 @@
       "writtenOn": "2021-03-30T22:51:42Z",
       "side": 1,
       "message": "https://g3doc.corp.google.com/company/teams/android-api-council/ndk_guidelines.md?cl\u003dhead#compatibilty-cts_2 (bad anchor name, it\u0027s the section about documentation)\n\nApplies to all the other functions as well.",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9981fc7a_7551d847",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "What is the ask here?  Copy-paste content of the ExtDexFileError enum in comment?",
+      "parentUuid": "0c8ec150_87bcc904",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -219,6 +297,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10c1b76_966cc58b",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "No, the object can be modified (internal cache).",
+      "parentUuid": "df3bd6fa_a11b2b94",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 55
+      },
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9fec34_df8dc3bc",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "If the method is not found, the callback is not called.",
+      "parentUuid": "1b234245_89fa7c86",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee43ee37_8392050b",
@@ -236,6 +356,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a486716e_b102d550",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "\u0027const\u0027 qualifier on function type \u0027ExtDexFile_MethodInfoCallback\u0027 (aka \u0027void (void *, ExtDexFileMethodInfo *)\u0027) has no effect",
+      "parentUuid": "ee43ee37_8392050b",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0481245e_4e9e2778",
@@ -249,6 +387,24 @@
       "writtenOn": "2021-03-30T22:51:42Z",
       "side": 1,
       "message": "go/android-ndk-api-guidelines#nullable (applies to the other functions as well)",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7e2ce8_2f5e708b",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T00:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0481245e_4e9e2778",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
