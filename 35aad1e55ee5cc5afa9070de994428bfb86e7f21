@@ -142,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54574905_3aa6296e",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T00:54:15Z",
+      "side": 1,
+      "message": "AExtDexFile according to the guide. I don\u0027t think it\u0027s any different for mainline.",
+      "parentUuid": "aa4f0ef1_19e97c99",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a6d6025_7324d56c",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 5
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "Needs to be callback to deal with passing back string pointers.\nEspecially for the case where we call the callback for all methods.",
       "parentUuid": "2a6d6025_7324d56c",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e43f7f6_a5e81bd1",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T00:54:15Z",
+      "side": 1,
+      "message": "Given the lack of any usable collections in C point 2 makes sense.\n\nI don\u0027t understand point 1 though. What\u0027s the problem with returning a string pointer? (In other words, why not have ExtDexFile_GetMethodInfoForOffset return the struct and only require the callback for ExtDexFile_GetAllMethodInfos?)",
+      "parentUuid": "9423b2d0_751923a0",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -253,6 +289,24 @@
       "side": 1,
       "message": "What is the ask here?  Copy-paste content of the ExtDexFileError enum in comment?",
       "parentUuid": "0c8ec150_87bcc904",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5063b7_1c845126",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-31T00:54:15Z",
+      "side": 1,
+      "message": "Every function needs to document what error cases the function can return, under what circumstances. Parameters need to be documented.\n\nExample: https://cs.android.com/android/platform/superproject/+/master:packages/modules/NeuralNetworks/runtime/include/NeuralNetworks.h;l\u003d237-291;drc\u003da7e069f5523a0295d62ae19d38eb06bc9ce70126\n\n(you don\u0027t *have* to use doxygen for mainline, but the same sort of information needs to be there)\n\nIn this particular case, I\u0027m guessing (and I shouldn\u0027t be guessing) this will return ExtDexFileError_Error if location points somewhere other than the first byte of a dex file. The docs need to say that.\n\nIf the size is too small, does that return the same error?\n\nNeed to mention that the caller needs to call ExtDexFile_Destroy when done.\n\nDoes the ExtDexFile become invalid if the memory at location is freed?",
+      "parentUuid": "9981fc7a_7551d847",
       "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
