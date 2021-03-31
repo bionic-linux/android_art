@@ -145,6 +145,24 @@
       "message": "Needs *some* documentation. In this case not much to say other than \"returns nullptr for unrecognized errors\", but say that.",
       "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9867f1e_6f6788db",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T19:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c907f97_9c3ac144",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
