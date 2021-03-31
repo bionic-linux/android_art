@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fbf6cd_88215cda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-03-31T18:00:51Z",
+      "side": 1,
+      "message": "The presubmit test failed because the path to the APEXes used in the ART chroot:\n\n  com.android.tradefed.targetprep.TargetSetupError: No apex files found in /tmp/tradefed-invocation-workfolder5224894402919522702/tests-zip_16637596336784016650/target/testcases/art_chroot/system/apex [gce-device-0 cutf:vsoc_x86_64 MASTER]\n  \tat com.android.tradefed.targetprep.ArtChrootPreparer.setUp(ArtChrootPreparer.java:84)\n  \tat com.android.tradefed.testtype.suite.ModuleDefinition.runPreparerSetup(ModuleDefinition.java:850)\n  \tat com.android.tradefed.testtype.suite.ModuleDefinition.runTargetPreparation(ModuleDefinition.java:1160)\n  \tat com.android.tradefed.testtype.suite.ModuleDefinition.runPreparation(ModuleDefinition.java:813)\n  \tat com.android.tradefed.testtype.suite.ModuleDefinition.run(ModuleDefinition.java:420)\n  \tat com.android.tradefed.testtype.suite.ITestSuite.runSingleModule(ITestSuite.java:844)\n  \tat com.android.tradefed.testtype.suite.ITestSuite.run(ITestSuite.java:732)\n  \tat com.android.tradefed.invoker.InvocationExecution.runTest(InvocationExecution.java:749)\n  \tat com.android.tradefed.invoker.InvocationExecution.runTests(InvocationExecution.java:602)\n  \tat com.android.tradefed.invoker.TestInvocation.prepareAndRun(TestInvocation.java:470)\n  \tat com.android.tradefed.invoker.TestInvocation.performInvocation(TestInvocation.java:246)\n  \tat com.android.tradefed.invoker.TestInvocation.invoke(TestInvocation.java:1023)\n  \tat com.android.tradefed.command.CommandScheduler$InvocationThread.run(CommandScheduler.java:612)\n\nHowever, I did check the contents of the `general-tests.zip` file produced for this presubmit (in https://android-build.googleplex.com/builds/build-details/P20904862/targets/test_suites_x86_64) and it looks like it does contain the required files:\n\n  $ unzip -l general-tests.zip | grep art_chroot\n          0  2008-01-01 00:00   target/testcases/art_chroot/\n       1325  2008-01-01 00:00   target/testcases/art_chroot/art_chroot.config\n          0  2008-01-01 00:00   target/testcases/art_chroot/system/\n          0  2008-01-01 00:00   target/testcases/art_chroot/system/apex/\n  138929922  2008-01-01 00:00   target/testcases/art_chroot/system/apex/com.android.art.testing.apex\n    6646934  2008-01-01 00:00   target/testcases/art_chroot/system/apex/com.android.conscrypt.apex\n   38611010  2008-01-01 00:00   target/testcases/art_chroot/system/apex/com.android.i18n.apex\n    9266568  2008-01-01 00:00   target/testcases/art_chroot/system/apex/com.android.runtime.apex\n          0  2008-01-01 00:00   target/testcases/art_chroot/x86_64/\n         74  2008-01-01 00:00   target/testcases/art_chroot/x86_64/art_chroot.txt\n\nNot sure why they were not found…",
+      "revId": "fb353823316533c8f78a975bd4aac00165c5f124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
