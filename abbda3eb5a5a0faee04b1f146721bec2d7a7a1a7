@@ -339,6 +339,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da7e7ac_d0c011e5",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T18:41:27Z",
+      "side": 1,
+      "message": "Is it worth adding something like \"We are aware the APP_CAPS has been deprecated in Google for new code, but we are still following it here because... (ALL_CAPS is the C way?)\"",
+      "parentUuid": "317d9a1e_673177cb",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "abbda3eb5a5a0faee04b1f146721bec2d7a7a1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "45f2b54a_ef042410",

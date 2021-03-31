@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fec5098_cc4450b9",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T18:41:27Z",
+      "side": 1,
+      "message": "As it is returned by pointer (rather then by value) means we can freely extend the struct.\n\nNote that adding fields at the end is backwards compatible.\n\nI am reluctant to add explicit accessors per field.  But due to complexity and a lot of extra code on hot-path for the consumers.\n\nWe follow the opaque rule for ExtDexFile as it makes sense there.",
+      "parentUuid": "4a3f6d40_f59d8aee",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f86c37_05b2f51b",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3666bdf0_5fec51a1",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T18:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23f86c37_05b2f51b",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4badcc_36364594",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-31T00:54:15Z",
       "side": 1,
       "message": "Similarly, ForEachMethod?",
+      "range": {
+        "startLine": 81,
+        "startChar": 9,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c31ab0_95d71d72",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T18:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4badcc_36364594",
       "range": {
         "startLine": 81,
         "startChar": 9,
