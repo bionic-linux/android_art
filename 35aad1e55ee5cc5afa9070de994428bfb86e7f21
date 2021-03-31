@@ -88,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7909f1_4c9b3106",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T20:01:07Z",
+      "side": 1,
+      "message": "Ack (we have separate bug to add more tests), let\u0027s do that separately, since for \"rename\" CL, this is already getting pretty complex.\n\nI guess it is reasonable to test both *if* the C++ wrapper is complex and alters behavior.  But at long as it is just 1:1 syntax sugar, isn\u0027t the requirement to copy-paste the tests twice unreasonable?\n\nI suppose I can just also just delete the C++ wrapper to avoid the extra hassle, right?",
+      "parentUuid": "881ded11_7053955d",
+      "revId": "35aad1e55ee5cc5afa9070de994428bfb86e7f21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bd8fccfa_c96fd641",
