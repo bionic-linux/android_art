@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dcb8e29_f75a2ac9",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T23:23:50Z",
+      "side": 1,
+      "message": "I suppose caller could make copy to an array, which would be valid to an extend (if they also deep copy strings).\n\nIt is hot enough for us to have passionate debates about single string alloc cost.\n\nRight, one thing that you should know is that this is internal API from libunwindstack/simpleperf to ART.  That is it.  It is not intended to be used by applications, other NDK code, etc...  \n\nIt just that libunwindstack wants to read dex files and ART already has the code (and the module will be up to date if we ever release new dex file version, or ART tweaks it internally).  We want to make the boundary between those two \"proper\", but it is not really for other people to use.",
+      "parentUuid": "fb432054_405a6699",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f86c37_05b2f51b",

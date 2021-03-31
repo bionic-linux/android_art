@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5d541241_ea76e7c1",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T23:23:50Z",
+      "side": 1,
+      "message": "Until _destroy is called.  It just just C++ new\u0026delete pair.",
+      "parentUuid": "4c3a3591_77717831",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "46ec1229_674b48bb",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 9
@@ -93,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1cee322_fe8cf8c5",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T23:23:50Z",
+      "side": 1,
+      "message": "Yes, the internal ART dex open call can still fail.\nI have not checked the code, but I assume there are still ways to break the loading.\nBut the open call does not propage out error code, just error message.\nIn any case, unlike the other codes it would not be actionable.\n\"The dex file is corrupted, that is all we know, maybe check logcat\".",
+      "parentUuid": "fa7c7fd4_dd44e8af",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4cd86e_d0e33d7f",
@@ -118,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7705d8be_101683b8",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T23:23:50Z",
+      "side": 1,
+      "message": "Right, could we spell that out in the guideline as well?\n\nIt seems obvious to me that java `class Foo { void bar(); }` should mange to AFoo_bar,\nand likewise that C++ class `class Foo { void Bar(); }` should lower to AFoo_Bar.\nI am thinking of the C api as auto-generated mangling, where the names are 1:1 mapped and reversible.\n\n\"Change case during mangle\" is valid, but definitely not implied and obvious step.",
+      "parentUuid": "9c4cd86e_d0e33d7f",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c4e52bb_466d99e7",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 9
@@ -129,6 +201,24 @@
       "writtenOn": "2021-03-31T22:26:51Z",
       "side": 1,
       "message": "Does this apply to `name` or to `class_descriptor`? Maybe this is obvious to folks more familiar with Java. I\u0027m guessing the latter?",
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2daf07a5_5efeba2c",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-03-31T23:23:50Z",
+      "side": 1,
+      "message": "It applies to name, but that is not the point.\nThe point of flags is to have forward compatible request.\n\nFor example, we could add \"FILENAME_AND_LINE_NUMBER\" flag (very expensive operation), which would then set further (tail) fields of the struct.",
+      "parentUuid": "9c4e52bb_466d99e7",
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
