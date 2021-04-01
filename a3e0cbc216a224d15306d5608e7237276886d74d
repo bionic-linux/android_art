@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8531259_c54bef04",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-01T00:59:38Z",
+      "side": 1,
+      "message": "I think we are reading the guideline ambiguously again :-)  My reading is \"don\u0027t expose unnecessary implementation details which might change\" - the C version of encapsulation.  The guideline does explicitly allow structs as naive POD types, and I use it as such.  My reading is that I should use opaque for ADexFile, which is non-trivial, and I agree opaque is appropriate there.  \n\nSpecifically, can you think of compatibility issue with POD type (of pointer-sized fields only)?\n\nI am not sure how to grep for NDK API, but when I look for files with __BEGIN_DECLS, I see that structs are in fairly wide spread use.\n\nAlso, as I get the impression you thought the callback was unnecessarily complaicted before, would the idea here be C-method calling implementation calling callback which in turn would be calling several accessors on the opaque object provided in the callback?\n\nEither way, I suppose this is a debate for different CL, as such change would be pretty big, and require changes to libunwind and simpleperf, and performance testing.",
+      "parentUuid": "96a66c31_7e455498",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
