@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "111b8d93_17e2389a",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-01T00:11:47Z",
+      "side": 1,
+      "message": "\u003e Until _destroy is called.\n\nAdd that to the docs 😊",
+      "parentUuid": "5d541241_ea76e7c1",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "46ec1229_674b48bb",
@@ -141,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9438e280_9a51fa36",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-01T00:11:47Z",
+      "side": 1,
+      "message": "SG, thanks for confirming.",
+      "parentUuid": "f1cee322_fe8cf8c5",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 71
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4cd86e_d0e33d7f",
@@ -190,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ead4857_fb4e0e51",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-01T00:11:47Z",
+      "side": 1,
+      "message": "Agreed that it\u0027s unclear. tbh I\u0027m a little unsure myself. Sent a change to clarify. If I\u0027m wrong the reviewers will say so 😊",
+      "parentUuid": "7705d8be_101683b8",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c4e52bb_466d99e7",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 9
@@ -219,6 +291,24 @@
       "side": 1,
       "message": "It applies to name, but that is not the point.\nThe point of flags is to have forward compatible request.\n\nFor example, we could add \"FILENAME_AND_LINE_NUMBER\" flag (very expensive operation), which would then set further (tail) fields of the struct.",
       "parentUuid": "9c4e52bb_466d99e7",
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef82b990_a1095297",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-01T00:11:47Z",
+      "side": 1,
+      "message": "Sure, I get that, but the caller needs to know what data this parameter will effect. This needs to be documented.",
+      "parentUuid": "2daf07a5_5efeba2c",
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
