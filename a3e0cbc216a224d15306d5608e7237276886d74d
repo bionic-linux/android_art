@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96a66c31_7e455498",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-01T00:29:47Z",
+      "side": 1,
+      "message": "\u003e It is not intended to be used by applications, other NDK code, etc...\n\nThis always comes up but the reason these go through NDK API review is because they all can potentially become NDK APIs. This case in particular seems like it *should* be an NDK API. People use libunwindstack in their apps for crash handling. They need to build libunwindstack against the NDK to do that.\n\nI\u0027ll ask for a second opinion but this does not conform to the API rules.",
+      "parentUuid": "1cf303b6_15eea235",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
