@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a57cc0_ad3f6351",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T19:25:55Z",
+      "side": 1,
+      "message": "offset",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98927a3e_8d2d947f",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T19:25:55Z",
+      "side": 1,
+      "message": "ERROR_UNKNOWN reads less awkwardly \u0026 is more self-documenting.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4027e516_4053f4b6",
@@ -90,6 +136,29 @@
         "startChar": 18,
         "endLine": 66,
         "endChar": 52
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e29a729_3108ea94",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T19:25:55Z",
+      "side": 1,
+      "message": "size of what memory range? Is this referring to the address parameter? If it\u0027s too small, how am I supposed to just have more of it if the address parameter is the dex file data, which is presumably just whatever the size of the file or similar is?",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 40
       },
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -262,6 +331,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6459539_7821c706",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T19:25:55Z",
+      "side": 1,
+      "message": "nit, prefix the variable name with \u0027out\u0027 as well, so outDexFile or similar. It plays nicer with IDE auto-completion which will show the variable names but not the comment /*out*/ comment.",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c4e52bb_466d99e7",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 9
@@ -331,6 +423,29 @@
         "startChar": 41,
         "endLine": 89,
         "endChar": 49
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5dc1e85_153f8e9b",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-02T19:25:55Z",
+      "side": 1,
+      "message": "these should be marked with their expected scope. Eg, \u0027# apex\u0027 if that\u0027s all this is initially intended for, or \u0027#platform\u0027 if this is purely internal for now.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
       },
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
