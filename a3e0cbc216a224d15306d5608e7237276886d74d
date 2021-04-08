@@ -144,6 +144,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16edd1bd_76598026",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "I have not such versioning before (v1 v2 sub-structs), but that sounds fairly reasonable...\n\nAlthough it still requires adjusting clients.\n\nI would like to punt that work to followup CLs.",
+      "parentUuid": "89a0a583_512904a8",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23f86c37_05b2f51b",

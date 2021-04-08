@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b633137_f469bbc6",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Ditto (punting changing of this struct to follow up CL)",
+      "parentUuid": "05a57cc0_ad3f6351",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98927a3e_8d2d947f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-02T19:25:55Z",
       "side": 1,
       "message": "ERROR_UNKNOWN reads less awkwardly \u0026 is more self-documenting.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ba4557_ab180b5a",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98927a3e_8d2d947f",
       "range": {
         "startLine": 45,
         "startChar": 2,
@@ -141,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b35095_ab92d165",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111b8d93_17e2389a",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e29a729_3108ea94",
@@ -154,6 +226,30 @@
       "writtenOn": "2021-04-02T19:25:55Z",
       "side": 1,
       "message": "size of what memory range? Is this referring to the address parameter? If it\u0027s too small, how am I supposed to just have more of it if the address parameter is the dex file data, which is presumably just whatever the size of the file or similar is?",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62772f71_b24f5017",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Right, but the dex files are never just stand alone.\nLet\u0027s say you have 1GB file and tiny dex file in it.\nThe dex file header knows how large the dex is, but you need to same work it through the API.\n\nYou don\u0027t want to read whole 1G file.  Likewise, you don\u0027t want to SIGSEV if the range is too small.\n\nSo it is usefu.  Still, I am tempted to make it callers problem to know the right size for sure...",
+      "parentUuid": "3e29a729_3108ea94",
       "range": {
         "startLine": 67,
         "startChar": 15,
@@ -329,6 +425,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7deff96_6667533b",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ead4857_fb4e0e51",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6459539_7821c706",
@@ -342,6 +462,30 @@
       "writtenOn": "2021-04-02T19:25:55Z",
       "side": 1,
       "message": "nit, prefix the variable name with \u0027out\u0027 as well, so outDexFile or similar. It plays nicer with IDE auto-completion which will show the variable names but not the comment /*out*/ comment.",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "840697ee_02fa5c49",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6459539_7821c706",
       "range": {
         "startLine": 83,
         "startChar": 31,
@@ -405,6 +549,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00351e01_de24b7e2",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef82b990_a1095297",
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48ae8fc_e2f44071",
@@ -428,6 +590,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7873ece_13355dd7",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d48ae8fc_e2f44071",
+      "range": {
+        "startLine": 89,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5dc1e85_153f8e9b",
@@ -441,6 +627,30 @@
       "writtenOn": "2021-04-02T19:25:55Z",
       "side": 1,
       "message": "these should be marked with their expected scope. Eg, \u0027# apex\u0027 if that\u0027s all this is initially intended for, or \u0027#platform\u0027 if this is purely internal for now.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41f5826_0cbb3ec7",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-08T18:59:27Z",
+      "side": 1,
+      "message": "Can you please elaborate?  I don\u0027t know the difference between those two.",
+      "parentUuid": "f5dc1e85_153f8e9b",
       "range": {
         "startLine": 3,
         "startChar": 0,
