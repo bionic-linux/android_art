@@ -1183,10 +1183,9 @@ class OatDumper {
         vios->Stream() << StringPrintf("%p ", method_header);
       }
       vios->Stream() << StringPrintf("(offset=0x%08x)\n", method_header_offset);
-      if (method_header_offset > oat_file_.Size() ||
-          sizeof(OatQuickMethodHeader) > oat_file_.Size() - method_header_offset) {
+      if (method_header_offset > oat_file_.Size()) {
         vios->Stream() << StringPrintf(
-            "WARNING: oat quick method header at offset 0x%08x is past end of file 0x%08zx.\n",
+            "WARNING: oat quick method header offset 0x%08x is past end of file 0x%08zx.\n",
             method_header_offset, oat_file_.Size());
         // If we can't read the OatQuickMethodHeader, the rest of the data is dangerous to read.
         vios->Stream() << std::flush;
@@ -1198,8 +1197,8 @@ class OatDumper {
       if (options_.absolute_addresses_) {
         vios->Stream() << StringPrintf("%p ", oat_method.GetVmapTable());
       }
-      uint32_t vmap_table_offset =
-          (method_header == nullptr) ? 0 : method_header->GetCodeInfoOffset();
+      uint32_t vmap_table_offset = method_header ==
+          nullptr ? 0 : method_header->GetVmapTableOffset();
       vios->Stream() << StringPrintf("(offset=0x%08x)\n", vmap_table_offset);
 
       size_t vmap_table_offset_limit =
@@ -1208,9 +1207,11 @@ class OatDumper {
               : method_header->GetCode() - oat_file_.Begin();
       if (vmap_table_offset >= vmap_table_offset_limit) {
         vios->Stream() << StringPrintf("WARNING: "
-                                       "vmap table offset 0x%08x is past end of file 0x%08zx. ",
+                                       "vmap table offset 0x%08x is past end of file 0x%08zx. "
+                                       "vmap table offset was loaded from offset 0x%08x.\n",
                                        vmap_table_offset,
-                                       vmap_table_offset_limit);
+                                       vmap_table_offset_limit,
+                                       oat_method.GetVmapTableOffsetOffset());
         success = false;
       } else if (options_.dump_vmap_) {
         DumpVmapData(vios, oat_method, code_item_accessor);
@@ -1238,7 +1239,14 @@ class OatDumper {
     }
     {
       vios->Stream() << "CODE: ";
-      {
+      uint32_t code_size_offset = oat_method.GetQuickCodeSizeOffset();
+      if (code_size_offset > oat_file_.Size()) {
+        ScopedIndentation indent2(vios);
+        vios->Stream() << StringPrintf("WARNING: "
+                                       "code size offset 0x%08x is past end of file 0x%08zx.",
+                                       code_size_offset, oat_file_.Size());
+        success = false;
+      } else {
         const void* code = oat_method.GetQuickCode();
         uint32_t aligned_code_begin = AlignCodeOffset(code_offset);
         uint64_t aligned_code_end = aligned_code_begin + code_size;
@@ -1249,8 +1257,9 @@ class OatDumper {
         if (options_.absolute_addresses_) {
           vios->Stream() << StringPrintf("%p ", code);
         }
-        vios->Stream() << StringPrintf("(code_offset=0x%08x size=%u)%s\n",
+        vios->Stream() << StringPrintf("(code_offset=0x%08x size_offset=0x%08x size=%u)%s\n",
                                        code_offset,
+                                       code_size_offset,
                                        code_size,
                                        code != nullptr ? "..." : "");
 
@@ -1264,13 +1273,12 @@ class OatDumper {
           vios->Stream() << StringPrintf(
               "WARNING: "
               "end of code at 0x%08" PRIx64 " is past end of file 0x%08zx. "
-              "code size is 0x%08x.\n",
-              aligned_code_end,
-              oat_file_.Size(),
-              code_size);
+              "code size is 0x%08x loaded from offset 0x%08x.\n",
+              aligned_code_end, oat_file_.Size(),
+              code_size, code_size_offset);
           success = false;
           if (options_.disassemble_code_) {
-            if (aligned_code_begin + kPrologueBytes <= oat_file_.Size()) {
+            if (code_size_offset + kPrologueBytes <= oat_file_.Size()) {
               DumpCode(vios, oat_method, code_item_accessor, true, kPrologueBytes);
             }
           }
@@ -1278,13 +1286,12 @@ class OatDumper {
           vios->Stream() << StringPrintf(
               "WARNING: "
               "code size %d is bigger than max expected threshold of %d. "
-              "code size is 0x%08x.\n",
-              code_size,
-              kMaxCodeSize,
-              code_size);
+              "code size is 0x%08x loaded from offset 0x%08x.\n",
+              code_size, kMaxCodeSize,
+              code_size, code_size_offset);
           success = false;
           if (options_.disassemble_code_) {
-            if (aligned_code_begin + kPrologueBytes <= oat_file_.Size()) {
+            if (code_size_offset + kPrologueBytes <= oat_file_.Size()) {
               DumpCode(vios, oat_method, code_item_accessor, true, kPrologueBytes);
             }
           }
