@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce771aff_06045a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-09T11:38:13Z",
+      "side": 1,
+      "message": "To be fair, I am not certain the CL makes any difference, but it certainly does not hurt, and it might provide an accumulated data point over the weekend (given the noise overall).",
+      "revId": "1efecb5551fcab4df3d4353c62e3b5af235a4449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
