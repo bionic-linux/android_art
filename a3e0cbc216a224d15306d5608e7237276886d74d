@@ -290,6 +290,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f451a70_b997265e",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-12T21:52:43Z",
+      "side": 1,
+      "message": "I mean, technically we are fine.  The API is needed, but it has been part of the ART module since R, so keeping it as-is if fine functionality wise.\n\nI was just trying to eagerly proactive and try to clean it up, as this is the last change we get without worrying about backwards compatibility. (because ART will be updatable since S)",
+      "parentUuid": "b55ef674_67bec3d3",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
