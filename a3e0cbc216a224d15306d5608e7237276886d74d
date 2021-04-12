@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6435394c_2dc85fb5",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-12T20:15:28Z",
+      "side": 1,
+      "message": "Sure, but I worry that this \"simple method rename\" CL will keep snowballing forever until it is too late and we are stuck with what we have now...",
+      "parentUuid": "5e333fda_03fefedf",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
