@@ -308,6 +308,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c22ebafd_e5506f20",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-12T23:29:01Z",
+      "side": 1,
+      "message": "\u003e it has been part of the ART module since R\n\n\u003e because ART will be updatable since S\n\nUgh. The distinction between these two things was not clear to me (thanks enh for the explanation). Since it\u0027s still changeable I thought that meant that it wasn\u0027t previously a *public* API. Making the API public is when all of this should have happened. The code that shipped in R probably should not have been approved.\n\nI think my point here still stands though. This should be fixed before it can\u0027t be.",
+      "parentUuid": "5f451a70_b997265e",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
