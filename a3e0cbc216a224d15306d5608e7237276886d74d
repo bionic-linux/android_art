@@ -272,6 +272,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55ef674_67bec3d3",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-12T21:47:18Z",
+      "side": 1,
+      "message": "\"Revert making this API a part of the ART module\" then? I\u0027m not familiar with the mainline terminology so maybe that\u0027s not right either. Whatever deadline is freezing this API. If that can\u0027t be met it shouldn\u0027t be shipped in that release.\n\nMaybe I\u0027m missing some context here. *Something* is changing that is going to freeze this API. It needs to conform to the API requirements before that deadline. If that deadline can\u0027t be met then it can\u0027t be included in the API surface that is freezing the API for this release.",
+      "parentUuid": "49783c2c_944b97bf",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
