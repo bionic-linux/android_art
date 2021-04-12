@@ -659,6 +659,30 @@
       },
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a56dda36_508c3f16",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-12T20:11:55Z",
+      "side": 1,
+      "message": "apex adds the symbol to the mainline stubs. platform is not included in any stubs but still produces a versioned symbol if the version script is actually used as a version script for the implementation library.\n\nIf the latter category isn\u0027t used here (which is the most common case), everything needs to be marked apex.",
+      "parentUuid": "a41f5826_0cbb3ec7",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
