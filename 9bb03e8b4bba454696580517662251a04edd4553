@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84867757_4e6f7b57",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-12T18:42:27Z",
+      "side": 1,
+      "message": "To avoid another NDK-API review of https://r.android.com/1671711, I took out my change of this to LIBDEXFILE_1. Can you please do that here? The file should also change to libdexfile.map.txt, and preferably move up to the libdexfile directory. Thanks.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "9bb03e8b4bba454696580517662251a04edd4553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
