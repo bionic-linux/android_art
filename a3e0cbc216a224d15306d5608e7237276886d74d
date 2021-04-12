@@ -326,6 +326,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f76d60ba_73ba2b9d",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-12T23:40:28Z",
+      "side": 1,
+      "message": "Yeah, more of this debate could have been done before, but I wasn\u0027t part of that.  I am just trying to polish it now while we can.\n\nAnyway, I will try to do more work on it this week, but let\u0027s try avoid growing this into super huge CL.",
+      "parentUuid": "c22ebafd_e5506f20",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
