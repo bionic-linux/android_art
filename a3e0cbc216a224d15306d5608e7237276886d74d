@@ -200,6 +200,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3884671d_4e7245c2",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-12T20:26:50Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to worry about snowballing. No new requests are happening here, just the ones that have been open since my initial round of review.\n\nIf you don\u0027t have time to fix it now you don\u0027t have time for follow ups either. If you\u0027re worried about the API being finished in time for S, worth considering moving it to T?",
+      "parentUuid": "6435394c_2dc85fb5",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
