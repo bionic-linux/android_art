@@ -22,6 +22,30 @@
       },
       "revId": "6bf64944aadd1c9ffb8e9ce007b5a080a2f58c8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12385f96_c6e975e9",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-04-12T12:47:54Z",
+      "side": 1,
+      "message": "No, I haven\u0027t tried that. We\u0027re not adding the new expectations with the gcstress ones. The new code is in the not gcstress code.\n\nIt doesn\u0027t look like vogar checks expectations for --dry-run, will check and report back.",
+      "parentUuid": "d9a19118_3395cadb",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 86
+      },
+      "revId": "6bf64944aadd1c9ffb8e9ce007b5a080a2f58c8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
