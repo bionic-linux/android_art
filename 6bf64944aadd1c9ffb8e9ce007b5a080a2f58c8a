@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a19118_3395cadb",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-12T12:03:31Z",
+      "side": 1,
+      "message": "Have you tried running the script with gcstress + debug? I think vogar may complain about duplicates when the same test is listed on both lists.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 86
+      },
+      "revId": "6bf64944aadd1c9ffb8e9ce007b5a080a2f58c8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
