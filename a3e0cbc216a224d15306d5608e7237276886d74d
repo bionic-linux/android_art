@@ -218,6 +218,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72fe2e38_751c092e",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-12T20:34:02Z",
+      "side": 1,
+      "message": "I thought that whatever we ship in S, we need to keep supporting...\nIf we can keep changing the API past S, I am happy to postpone it.",
+      "parentUuid": "3884671d_4e7245c2",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
