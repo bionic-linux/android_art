@@ -344,6 +344,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7e931c6_5bb56125",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-04-13T00:54:44Z",
+      "side": 1,
+      "message": "Sorry can you elaborate on this. Where does this library live? Is it part of the system image or part of ART\u0027s module? And who is consumer of this API?\n\nIf this crosses an updatability boundary then you\u0027re not currently fine. You have unstable private APIs on your update boundaries, which I believe isn\u0027t allowed by mainline.",
+      "parentUuid": "f76d60ba_73ba2b9d",
+      "revId": "a3e0cbc216a224d15306d5608e7237276886d74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23f86c37_05b2f51b",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 6
