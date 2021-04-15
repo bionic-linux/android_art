@@ -731,6 +731,30 @@
       },
       "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7723fb1_0509e5b4",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-15T18:53:01Z",
+      "side": 1,
+      "message": "I am still not sure what the appropriate scope is.\nI assume apex is the default then?\n\nFor the record, this API is used via dlopen/dlsym from libunwindstack and simpleperf.",
+      "parentUuid": "a56dda36_508c3f16",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "0a849963898e9673a8e3bd2cd8fa411690c85ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
