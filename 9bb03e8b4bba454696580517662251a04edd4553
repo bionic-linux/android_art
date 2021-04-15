@@ -22,6 +22,30 @@
       },
       "revId": "9bb03e8b4bba454696580517662251a04edd4553",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d0563c_8cf20211",
+        "filename": "libdexfile/external/libdexfile_external.map.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-15T17:17:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84867757_4e6f7b57",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "9bb03e8b4bba454696580517662251a04edd4553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

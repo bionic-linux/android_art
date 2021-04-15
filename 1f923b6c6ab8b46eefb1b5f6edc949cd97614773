@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fbc3f5_e5090d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-15T17:17:01Z",
+      "side": 1,
+      "message": "Any option on the name and location of the headers (both of the C API and the C++ wrapper)?",
+      "revId": "1f923b6c6ab8b46eefb1b5f6edc949cd97614773",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
