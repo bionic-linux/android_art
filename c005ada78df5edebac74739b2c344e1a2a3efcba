@@ -92,6 +92,30 @@
       },
       "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff9171c_baace1e4",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T21:32:00Z",
+      "side": 0,
+      "message": "We know de-facto by now that this doesn\u0027t cause any spurious aborts - this is the kind of thing that can be disruptive to introduce but useful when already present. I\u0027ve mentioned several benefits with this - what would be the win with dropping it? I don\u0027t see any objective argument.\n\nAnd to emphasize, getting a good message that includes the dlerror() is really valuable to debug library loading issues. I\u0027m strongly opposed to regressing on that.",
+      "parentUuid": "18ba9dd6_b14ba2db",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
