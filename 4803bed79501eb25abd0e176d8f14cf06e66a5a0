@@ -67,6 +67,24 @@
       "message": "(follow up fine here since we can change docs any time)\n\nHow are these (and the three below) encoded? Are they UTF-8? ASCII?\n\nI\u0027m also a little confused by \"must be copied immediately\". Is that actually \"will become invalid when the ADexFile_Method is destroyed\"?",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07fc86f_7794f668",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T20:29:27Z",
+      "side": 1,
+      "message": "They use the encoding defined in the DEX spec, which is \"almost UTF8\".  Should I just say \"see DEX spec?\"?  \n\nRight, for the qualified name, the implementation is that there is \"temporary string\" on the ADexFile instance which gets reused (because we had long debates about alloc/free costs in the team, and this approach needs no alloc/free).\n\nThe other two are actually pointers into the Dex file, so could be kept, but I didn\u0027t want to promise that will be always the case in the API.\n\nThe effect now is that, qualified name is valid until next qualified name getter, and the other two are always valid.\n\nWhat I wanted to say in the doc though is that we promise the bare minimum. If you call\nforEachMethod(...{\n f \u003d getFooName()\n // f is valid here\n b \u003d getBarName()\n // f is no longer valid here\n})\n// both f and b are no longer valid after the callback.\n\n// Returned data must be copied immediately by the user\n// (before another API call on the ADexFile_Method and before the end of callback).",
+      "parentUuid": "b5a1d753_bdaf54e8",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
