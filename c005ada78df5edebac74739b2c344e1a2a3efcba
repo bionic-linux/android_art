@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9a6a08_8fae7420",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 0,
+      "message": "Why is this dropped?",
+      "range": {
+        "startLine": 57,
+        "startChar": 57,
+        "endLine": 57,
+        "endChar": 59
+      },
+      "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7382505d_b0455dbd",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 0,
+      "message": "The point with this was to ensure either all or none are set. I still think that\u0027s a good invariant.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89035060_e1a410c3",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 0,
+      "message": "Can we please keep this fatal error? It provides a useful invariant for callers, and in case they really do want to only opportunistically load the library they can call TryLoadLibdexfileExternal first. And more importantly, it provides a lot better error message than ADexFile_Error_toString(ADEXFILE_ERROR_MISSING_LIBRARY).",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

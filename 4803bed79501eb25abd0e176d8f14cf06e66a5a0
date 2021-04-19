@@ -52,6 +52,161 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf133f2_3866645b",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Typo: \"open\"",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 32
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90b8a47_974639b4",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "\"Dex file is invalid\" is more precise.",
+      "range": {
+        "startLine": 300,
+        "startChar": 45,
+        "endLine": 300,
+        "endChar": 66
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b89415_c7d56c2b",
+        "filename": "libdexfile/external/dex_file_ext_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Also used in dex_file_supp_test.cc, so can we have it in a common header?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9608b9_96f97bf8",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Just call GetTestDexData?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbaea48_abe84826",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Please test the methods in the Error struct in at least one of these tests.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dd3633_29a2032d",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "This tests DEX internals rather than the C++ API, so it looks better suited to be at a lower level, i.e. in dex_file_ext_test.cc.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f901158_02ed5467",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Assuming there is no other way to get an ADexFile_Method instance, I think this is more precise (here and below):\n\n\"Returned data is only valid during the callback call that provided the `self` instance.\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 56
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b5a1d753_bdaf54e8",
@@ -83,6 +238,235 @@
       "side": 1,
       "message": "They use the encoding defined in the DEX spec, which is \"almost UTF8\".  Should I just say \"see DEX spec?\"?  \n\nRight, for the qualified name, the implementation is that there is \"temporary string\" on the ADexFile instance which gets reused (because we had long debates about alloc/free costs in the team, and this approach needs no alloc/free).\n\nThe other two are actually pointers into the Dex file, so could be kept, but I didn\u0027t want to promise that will be always the case in the API.\n\nThe effect now is that, qualified name is valid until next qualified name getter, and the other two are always valid.\n\nWhat I wanted to say in the doc though is that we promise the bare minimum. If you call\nforEachMethod(...{\n f \u003d getFooName()\n // f is valid here\n b \u003d getBarName()\n // f is no longer valid here\n})\n// both f and b are no longer valid after the callback.\n\n// Returned data must be copied immediately by the user\n// (before another API call on the ADexFile_Method and before the end of callback).",
       "parentUuid": "b5a1d753_bdaf54e8",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17be2e4_cc753842",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Should it say \"only\" here?",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d503a3_a0f8ae1d",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Should have a longer name since it leaks into client code.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117b60e4_93be09ad",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "These were static members in the private section of DexFile to avoid external visibility. Why change that?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b614fb3_1d74eba0",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "This should be TryLoadLibdexfile now.",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5566d0eb_adcd3574",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Make the class final since you\u0027re making the destructor non-virtual.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9848ef_8d048684",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "\"class\" here since this has an owned pointer. http://go/cstyle#Structs_vs._Classes",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c69250_c14cccf4",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "We could store the location and let this return an std::string message that includes it, given that we still have the location in Create. The benefit (and the reason location was an argument in the first place) is that callers are less likely to log or propagate errors that leaves out that often very useful info.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff54f65_1bb2178d",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Avoid implicit conversion operators: http://go/cstyle#Implicit_Conversions\n\n\"bool ok()\" is what\u0027s used for a similar purpose in Result\u003c\u003e objects: https://cs.android.com/android/platform/superproject/+/master:system/libbase/include/android-base/expected.h;l\u003d334;drc\u003dmaster (Although it ought to be \"Ok\" here to comply with method naming conventions.)",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c284f0_4e654e71",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "const",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1a4f39_682d44ab",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "So now we\u0027re paying the cost of quite a lot of access function calls in the callback here. Is that of no concern? From the other discussion I thought John opened for versioned structs as an option.\n\n+Yabin, note this is primarily affecting simpleperf that used to use GetAllMethodInfos.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e51464_92cd3646",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T20:31:20Z",
+      "side": 1,
+      "message": "Please make private. There\u0027s also no reason to keep the initialisation when you\u0027re removing the move constructor.",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
