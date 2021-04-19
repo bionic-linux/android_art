@@ -266,6 +266,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17b3b4f_dcaf9f3a",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-19T21:20:23Z",
+      "side": 1,
+      "message": "Yeah, \"See the DEX spec for encoding information.\" would be enough of a hint to the caller (and probably a link)",
+      "parentUuid": "a07fc86f_7794f668",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f17be2e4_cc753842",
