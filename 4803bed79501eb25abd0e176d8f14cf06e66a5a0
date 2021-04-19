@@ -33,6 +33,40 @@
       "message": "PTAL",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea508bc_cc1d58d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-19T19:46:13Z",
+      "side": 1,
+      "message": "Thanks for all the hard work here (and sorry that we didn\u0027t catch the issues on an earlier CL). This looks much better now.\n\nAlso appreciate the stress testing of our API guidelines doc. They got a lot of new clarifying content thanks to this discussion 😊 The next one should be a lot easier for everyone thanks to that.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a1d753_bdaf54e8",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-19T19:46:13Z",
+      "side": 1,
+      "message": "(follow up fine here since we can change docs any time)\n\nHow are these (and the three below) encoded? Are they UTF-8? ASCII?\n\nI\u0027m also a little confused by \"must be copied immediately\". Is that actually \"will become invalid when the ADexFile_Method is destroyed\"?",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
