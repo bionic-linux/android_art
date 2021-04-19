@@ -68,6 +68,30 @@
       },
       "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ba9dd6_b14ba2db",
+        "filename": "libdexfile/external/dex_file_supp.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T21:09:41Z",
+      "side": 0,
+      "message": "Hmmm... I am not sure I want to FATAL crash the process by default.\nI would rather return error, and let the caller FATAL crash if desired.",
+      "parentUuid": "89035060_e1a410c3",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 44
+      },
+      "revId": "c005ada78df5edebac74739b2c344e1a2a3efcba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

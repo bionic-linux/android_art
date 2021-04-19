@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cd6037_1665fdd0",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T21:09:41Z",
+      "side": 1,
+      "message": "The user could try to call findMethodAtOffset from forEachMethod callback.\nIt is crazy, but it possible.",
+      "parentUuid": "1f901158_02ed5467",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 56
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b5a1d753_bdaf54e8",
@@ -313,6 +337,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd14d01f_c9de7eea",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T21:09:41Z",
+      "side": 1,
+      "message": "I don\u0027t see harm it letting the users call the C methods directly.\n\nI also wanted to keep the C++ really as minimal as possible.",
+      "parentUuid": "117b60e4_93be09ad",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b614fb3_1d74eba0",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 14
@@ -399,6 +447,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15fa13b5_ec30fc89",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T21:09:41Z",
+      "side": 1,
+      "message": "By definition the caller of the Create method has the location argument.\nSo the caller can compose the error message as they see fit.\nBut again, I want to keep the C++ API 1:1 to the C API",
+      "parentUuid": "12c69250_c14cccf4",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ff54f65_1bb2178d",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 14
@@ -450,6 +516,24 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "So now we\u0027re paying the cost of quite a lot of access function calls in the callback here. Is that of no concern? From the other discussion I thought John opened for versioned structs as an option.\n\n+Yabin, note this is primarily affecting simpleperf that used to use GetAllMethodInfos.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bbf98be_d2ad07bd",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-19T21:09:41Z",
+      "side": 1,
+      "message": "It is a concern, but not as big one as the string alloc/free debate.\n\nIt is intentional concession to the NDK guidelines.",
+      "parentUuid": "7f1a4f39_682d44ab",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
