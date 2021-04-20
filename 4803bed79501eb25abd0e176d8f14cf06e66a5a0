@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e0c8ea_32603dc9",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf133f2_3866645b",
+      "range": {
+        "startLine": 193,
+        "startChar": 27,
+        "endLine": 193,
+        "endChar": 32
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c90b8a47_974639b4",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "\"Dex file is invalid\" is more precise.",
+      "range": {
+        "startLine": 300,
+        "startChar": 45,
+        "endLine": 300,
+        "endChar": 66
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ff1fc5_f01ee329",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90b8a47_974639b4",
       "range": {
         "startLine": 300,
         "startChar": 45,
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a453ff_3ae91c80",
+        "filename": "libdexfile/external/dex_file_ext_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b89415_c7d56c2b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b9608b9_96f97bf8",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "Just call GetTestDexData?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc83ff77_f2b747e7",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "I wanted to keep the success test self-contained.  There is already plenty of \"copy-paste\" in this file.",
+      "parentUuid": "3b9608b9_96f97bf8",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -161,6 +257,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0867a6b_f98dc36e",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbaea48_abe84826",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38dd3633_29a2032d",
@@ -174,6 +288,30 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "This tests DEX internals rather than the C++ API, so it looks better suited to be at a lower level, i.e. in dex_file_ext_test.cc.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f98decb_f100901f",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "It is at the lower level too.  I would like to keep the copy here as well.",
+      "parentUuid": "38dd3633_29a2032d",
       "range": {
         "startLine": 119,
         "startChar": 0,
@@ -221,6 +359,30 @@
       "side": 1,
       "message": "The user could try to call findMethodAtOffset from forEachMethod callback.\nIt is crazy, but it possible.",
       "parentUuid": "1f901158_02ed5467",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 56
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968b995b_277722e8",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cd6037_1665fdd0",
       "range": {
         "startLine": 118,
         "startChar": 3,
@@ -307,6 +469,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7009a2d6_de54984d",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17be2e4_cc753842",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2d503a3_a0f8ae1d",
@@ -320,6 +506,30 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "Should have a longer name since it leaks into client code.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70abd8a5_5d43c204",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2d503a3_a0f8ae1d",
       "range": {
         "startLine": 32,
         "startChar": 8,
@@ -377,6 +587,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb8b875_2cbd8a06",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "I am still tempted to intentionally expose the C API as the globals",
+      "parentUuid": "cd14d01f_c9de7eea",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b614fb3_1d74eba0",
@@ -390,6 +624,30 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "This should be TryLoadLibdexfile now.",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30b3169d_e8b29b4a",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b614fb3_1d74eba0",
       "range": {
         "startLine": 51,
         "startChar": 5,
@@ -446,6 +704,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddd5d8e_3c1979ff",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done.\n\nYou keep quoting google style docs... but to my knowledge those don\u0027t really apply to Android.\n\nGiven choice, we can still opt to follow them, but sometimes the Android style is contradictory to Google style in the first place.",
+      "parentUuid": "be9848ef_8d048684",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8bcdbf9_69787203",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done (made it virtual)",
+      "parentUuid": "5566d0eb_adcd3574",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c69250_c14cccf4",
@@ -481,6 +787,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6596cfcd_e165e93f",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15fa13b5_ec30fc89",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff54f65_1bb2178d",
@@ -504,6 +828,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd153ed2_36cd6467",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff54f65_1bb2178d",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15c284f0_4e654e71",
@@ -517,6 +865,24 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "const",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc2d8d5_26de915f",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c284f0_4e654e71",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -556,6 +922,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9498ab44_de5a0ae1",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1bbf98be_d2ad07bd",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e51464_92cd3646",
@@ -569,6 +953,24 @@
       "writtenOn": "2021-04-19T20:31:20Z",
       "side": 1,
       "message": "Please make private. There\u0027s also no reason to keep the initialisation when you\u0027re removing the move constructor.",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "866efdc7_696846e8",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T12:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e51464_92cd3646",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
