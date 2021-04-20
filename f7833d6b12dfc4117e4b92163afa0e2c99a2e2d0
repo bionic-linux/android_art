@@ -157,6 +157,30 @@
       },
       "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86ab680_016837d5",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T18:02:40Z",
+      "side": 1,
+      "message": "I see, I interpreted it more like a teaser of sorts - something the caller can exploit but shouldn\u0027t. But it\u0027s actually a warning.",
+      "parentUuid": "93030bcb_e9c25bb9",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
