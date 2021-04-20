@@ -470,6 +470,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d306b69_0e0a4311",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T18:15:19Z",
+      "side": 1,
+      "message": "Done.  Could I get NDK+1 bump please?",
+      "parentUuid": "b17b3b4f_dcaf9f3a",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f17be2e4_cc753842",
