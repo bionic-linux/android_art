@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad07161_89d6f395",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T17:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60aec283_897779fc",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b87ea977_246a36be",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1e5bb7e_c829d17e",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T17:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87ea977_246a36be",
+      "range": {
+        "startLine": 119,
+        "startChar": 21,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05271a75_73293991",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-20T17:22:30Z",
       "side": 1,
       "message": "If it isn\u0027t something that can be counted on then I suggest simply not describe it at all.\n\n(All three comments here apply to the copies below as well, of course.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93030bcb_e9c25bb9",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T17:37:24Z",
+      "side": 1,
+      "message": "I want to explicitly call it out.\nIt highlights that the code might work now, but is not guaranteed to work in the future.\nOtherwise people might assume that if it works now, it is ok.",
+      "parentUuid": "05271a75_73293991",
       "range": {
         "startLine": 120,
         "startChar": 3,

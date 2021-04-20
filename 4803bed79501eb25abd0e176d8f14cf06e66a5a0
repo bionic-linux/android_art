@@ -824,6 +824,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "487dedc7_bc52c44b",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T17:37:24Z",
+      "side": 1,
+      "message": "Yes.  I agree with all of above.  I was just highlighting that the guide is non-binding for us.  Still good idea to know it of course.",
+      "parentUuid": "89856b4b_23d910eb",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c69250_c14cccf4",
@@ -1044,6 +1068,24 @@
       "side": 1,
       "message": "Ok. Personally I don\u0027t have much of a sense of the regression we\u0027re talking about here.",
       "parentUuid": "9498ab44_de5a0ae1",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac2368b_087d9981",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-20T17:37:24Z",
+      "side": 1,
+      "message": "I am hoping that the extra function calls can get lost in the \"pretty printing cost\".",
+      "parentUuid": "45416663_761b5203",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
