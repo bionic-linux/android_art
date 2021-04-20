@@ -322,6 +322,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e743ab7_fe7f0ce9",
+        "filename": "libdexfile/external/dex_file_supp_test.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "Right, so it is. Then I don\u0027t see the point duplicating it here, but very well, it\u0027s not worth blocking on.",
+      "parentUuid": "6f98decb_f100901f",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 1
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f901158_02ed5467",
@@ -611,6 +635,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc441b8e_ece10a91",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "I think it\u0027s better to hide, with the reasoning that if it isn\u0027t needed then there\u0027s no reason to expose. Maybe a future version can dispense with the dynamic loading, or perhaps use some linker trick to avoid the variables.\n\nBut I suppose it\u0027s a bit of a judgement call, so I\u0027m not blocking on it.",
+      "parentUuid": "3fb8b875_2cbd8a06",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b614fb3_1d74eba0",
@@ -752,6 +800,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89856b4b_23d910eb",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "I like referring to style guides to avoid arbitrary choices and cut down on discussion. (I apply it to myself too - if there\u0027s something I personally don\u0027t quite like, but cannot find support for in a style guide, I generally refrain from commenting on it, unless I think it\u0027s objectively questionable in some way.)\n\nAs for what applies here, there\u0027s go/art-style-guide that I\u0027ve gathered should apply to all ART code, and it falls back to the Google style guide. In other parts of Android I don\u0027t know if there\u0027s any official guidance, but it\u0027s still Google after all so I think go/cstyle has influence.\n\nThen of course any style guide is just a guide - if some other convention is clear from context then that should usually take precedence (as many style guides point out themselves).",
+      "parentUuid": "8ddd5d8e_3c1979ff",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 6
+      },
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c69250_c14cccf4",
@@ -887,6 +959,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc24f950_ecd9767b",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "I thought it\u0027d be fine to keep direct access to the field even when it\u0027s const, but ok.",
+      "parentUuid": "2dc2d8d5_26de915f",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f1a4f39_682d44ab",
@@ -936,6 +1026,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "1bbf98be_d2ad07bd",
+      "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45416663_761b5203",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "Ok. Personally I don\u0027t have much of a sense of the regression we\u0027re talking about here.",
+      "parentUuid": "9498ab44_de5a0ae1",
       "revId": "4803bed79501eb25abd0e176d8f14cf06e66a5a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

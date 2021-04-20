@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c1a804_73985c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "I only have some nigglies on the docs now, fine with a follow-up if you want to avoid another patch set.",
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60aec283_897779fc",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "Typo: \"short\"",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87ea977_246a36be",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "Does it work if it\u0027s called again on the same method? And if it does, is it a useful property? Iow, can we simplify by removing this clause?",
+      "range": {
+        "startLine": 119,
+        "startChar": 21,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05271a75_73293991",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T17:22:30Z",
+      "side": 1,
+      "message": "If it isn\u0027t something that can be counted on then I suggest simply not describe it at all.\n\n(All three comments here apply to the copies below as well, of course.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 71
+      },
+      "revId": "f7833d6b12dfc4117e4b92163afa0e2c99a2e2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
