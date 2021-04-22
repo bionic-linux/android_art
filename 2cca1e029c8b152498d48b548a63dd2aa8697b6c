@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03daf2c2_337186b5",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-22T09:40:10Z",
+      "side": 0,
+      "message": "Awesome. It can finally be for host again!",
+      "revId": "2cca1e029c8b152498d48b548a63dd2aa8697b6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
