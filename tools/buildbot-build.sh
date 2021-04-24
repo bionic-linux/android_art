@@ -122,9 +122,6 @@ if [[ $build_target == "yes" ]]; then
   make_command+=" ${specific_targets}"
 fi
 
-echo "Do installclean"
-build/soong/soong_ui.bash --make-mode installclean
-
 echo "Executing $make_command"
 # Disable path restrictions to enable luci builds using vpython.
 eval "$make_command"
