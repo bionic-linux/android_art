@@ -114,9 +114,6 @@ for LIB in ${mode_specific_libraries} ; do
   make_command+=" $LIB${mode_suffix}"
 done
 
-echo "Do installclean"
-build/soong/soong_ui.bash --make-mode installclean
-
 echo "Executing $make_command"
 # Disable path restrictions to enable luci builds using vpython.
 eval "$make_command"
