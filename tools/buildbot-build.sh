@@ -126,11 +126,6 @@ if [[ $build_target == "yes" ]]; then
   make_command+=" ${specific_targets}"
 fi
 
-if [[ $installclean == "yes" ]]; then
-  echo "Perform installclean"
-  ANDROID_QUIET_BUILD=true build/soong/soong_ui.bash --make-mode $extra_args installclean
-fi
-
 echo "Executing $make_command"
 # Disable path restrictions to enable luci builds using vpython.
 eval "$make_command"
