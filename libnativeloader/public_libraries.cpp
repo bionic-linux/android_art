@@ -28,7 +28,6 @@
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android-base/properties.h>
 #include <android-base/result.h>
 #include <android-base/strings.h>
 #include <log/log.h>
@@ -65,11 +64,6 @@ std::string root_dir() {
   return android_root_env != nullptr ? android_root_env : "/system";
 }
 
-bool debuggable() {
-  static bool debuggable = android::base::GetBoolProperty("ro.debuggable", false);
-  return debuggable;
-}
-
 std::string vndk_version_str(bool use_product_vndk) {
   if (use_product_vndk) {
     static std::string product_vndk_version = get_vndk_version(true);
@@ -78,16 +72,6 @@ std::string vndk_version_str(bool use_product_vndk) {
     static std::string vendor_vndk_version = get_vndk_version(false);
     return vendor_vndk_version;
   }
-}
-
-// For debuggable platform builds use ANDROID_ADDITIONAL_PUBLIC_LIBRARIES environment
-// variable to add libraries to the list. This is intended for platform tests only.
-std::string additional_public_libraries() {
-  if (debuggable()) {
-    const char* val = getenv("ANDROID_ADDITIONAL_PUBLIC_LIBRARIES");
-    return val ? val : "";
-  }
-  return "";
 }
 
 // insert vndk version in every {} placeholder
@@ -173,12 +157,6 @@ static std::string InitDefaultPublicLibraries(bool for_preload) {
     LOG_ALWAYS_FATAL("Error reading public native library list from \"%s\": %s",
                      config_file.c_str(), sonames.error().message().c_str());
     return "";
-  }
-
-  std::string additional_libs = additional_public_libraries();
-  if (!additional_libs.empty()) {
-    auto vec = base::Split(additional_libs, ":");
-    std::copy(vec.begin(), vec.end(), std::back_inserter(*sonames));
   }
 
   // If this is for preloading libs, don't remove the libs from APEXes.
@@ -471,14 +449,6 @@ Result<std::map<std::string, std::string>> ParseApexLibrariesConfig(const std::s
       continue;
     }
     entries[config_line->apex_namespace] = config_line->library_list;
-  }
-
-  // TODO(b/167578583) remove this `if` block after fixing the bug
-  if (tag == "public") {
-    std::string additional_libs = additional_public_libraries();
-    if (!additional_libs.empty()) {
-      entries["com_android_art"] += ':' + additional_libs;
-    }
   }
   return entries;
 }
