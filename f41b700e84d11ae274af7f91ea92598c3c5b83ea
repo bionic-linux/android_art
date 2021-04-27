@@ -16,6 +16,24 @@
       "message": "Looks like arm, arm64 and armng are missing this change.",
       "revId": "f41b700e84d11ae274af7f91ea92598c3c5b83ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3577035_3455da68",
+        "filename": "runtime/interpreter/mterp/arm64ng/other.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-27T16:42:32Z",
+      "side": 1,
+      "message": "It turns out that some architectures already had op_unused_73 handler defined\n(even predating the template system rewrite - I just dully propagated it)\n\nBut maybe I should add some check that there no unused \"op_*\" functions.",
+      "parentUuid": "36d15e98_4350fe58",
+      "revId": "f41b700e84d11ae274af7f91ea92598c3c5b83ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
