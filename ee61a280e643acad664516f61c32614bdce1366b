@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291f7200_60249abd",
+        "filename": "tools/run-libcore-tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-04-27T20:21:56Z",
+      "side": 1,
+      "message": "Can you add a quick comment here to say why we need this and possibly a pointer to the vpython doc (at least external vpython is very different):\n\nhttps://chromium.googlesource.com/infra/infra/+/master/doc/users/vpython.md\n\nIt looks like LUCI passes this script to a vpython interpreter and then that picks the appropriate python3 version.\n\nIf you want to get the bots green quickly, feel free to land as-is and add a comment later.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "ee61a280e643acad664516f61c32614bdce1366b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
