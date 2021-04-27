@@ -22,6 +22,30 @@
       },
       "revId": "ee61a280e643acad664516f61c32614bdce1366b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9fa511_aa51a319",
+        "filename": "tools/run-libcore-tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-27T20:50:10Z",
+      "side": 1,
+      "message": "I will try to land this as-is, and address it more in followup.\n\nTL;DR; I don\u0027t know the details, I am just aware there is vpython, so I copy-pasted this from our other scripts.",
+      "parentUuid": "291f7200_60249abd",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "ee61a280e643acad664516f61c32614bdce1366b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
