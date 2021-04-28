@@ -724,6 +724,14 @@ class Runtime {
     return is_profileable_from_shell_;
   }
 
+  void SetProfileable(bool value) {
+    is_profileable_ = value;
+  }
+
+  bool IsProfileable() const {
+    return is_profileable_;
+  }
+
   void SetJavaDebuggable(bool value);
 
   // Deoptimize the boot image, called for Java debuggable apps.
@@ -1225,6 +1233,7 @@ class Runtime {
   bool is_java_debuggable_;
 
   bool is_profileable_from_shell_ = false;
+  bool is_profileable_ = false;
 
   // The maximum number of failed boots we allow before pruning the dalvik cache
   // and trying again. This option is only inspected when we're running as a
