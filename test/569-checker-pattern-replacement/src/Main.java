@@ -209,7 +209,7 @@ public class Main {
   /// CHECK:      {{d\d+}}            InvokeVirtual
 
   /// CHECK-START: double Main.getDoubleFromParam(Second) inliner (after)
-  /// CHECK:      {{d\d+}}            InvokeVirtual
+  /// CHECK:      {{d\d+}}            InvokeStaticOrDirect
 
   /// CHECK-START: double Main.getDoubleFromParam(Second) inliner (after)
   /// CHECK-NOT:                      InstanceFieldGet
@@ -222,7 +222,7 @@ public class Main {
   /// CHECK:      {{i\d+}}            InvokeVirtual
 
   /// CHECK-START: int Main.getStaticInt(Second) inliner (after)
-  /// CHECK:      {{i\d+}}            InvokeVirtual
+  /// CHECK:      {{i\d+}}            InvokeStaticOrDirect
 
   /// CHECK-START: int Main.getStaticInt(Second) inliner (after)
   /// CHECK-NOT:                      InstanceFieldGet
@@ -287,7 +287,7 @@ public class Main {
   /// CHECK:                          InvokeVirtual
 
   /// CHECK-START: long Main.setLongThroughParam(Second, long) inliner (after)
-  /// CHECK:                          InvokeVirtual
+  /// CHECK:                          InvokeStaticOrDirect
 
   /// CHECK-START: long Main.setLongThroughParam(Second, long) inliner (after)
   /// CHECK-NOT:                      InstanceFieldSet
@@ -301,7 +301,7 @@ public class Main {
   /// CHECK:                          InvokeVirtual
 
   /// CHECK-START: float Main.setStaticFloat(Second, float) inliner (after)
-  /// CHECK:                          InvokeVirtual
+  /// CHECK:                          InvokeStaticOrDirect
 
   /// CHECK-START: float Main.setStaticFloat(Second, float) inliner (after)
   /// CHECK-NOT:                      InstanceFieldSet
