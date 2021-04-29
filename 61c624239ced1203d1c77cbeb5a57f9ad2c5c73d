@@ -46,6 +46,30 @@
       },
       "revId": "61c624239ced1203d1c77cbeb5a57f9ad2c5c73d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38250927_4f9640dd",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-29T13:50:47Z",
+      "side": 0,
+      "message": "Can you add a DCHECK somehwere that if (is_profileable_from_shell) DCHECK(is_profileable_) ?\n\nAlso, why not moving all the IsProfileableFromShell users in ART to IsProfileable?",
+      "parentUuid": "663d7cb8_772677d7",
+      "range": {
+        "startLine": 1106,
+        "startChar": 31,
+        "endLine": 1106,
+        "endChar": 53
+      },
+      "revId": "61c624239ced1203d1c77cbeb5a57f9ad2c5c73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
