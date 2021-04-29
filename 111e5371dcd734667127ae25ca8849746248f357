@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea94318d_a6bb8b89",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-29T16:17:07Z",
+      "side": 1,
+      "message": "Add the DCHECK I mentioned earlier about PROFILE_FROM_SHELL implies PROFILEABLE ?",
+      "revId": "111e5371dcd734667127ae25ca8849746248f357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
