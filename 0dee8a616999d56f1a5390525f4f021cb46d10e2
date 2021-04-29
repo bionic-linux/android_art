@@ -46,6 +46,30 @@
       },
       "revId": "0dee8a616999d56f1a5390525f4f021cb46d10e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e11cf5_5cc299b8",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-29T12:15:26Z",
+      "side": 1,
+      "message": "Thanks, can you add comments around those two variables and in which context they are used?",
+      "parentUuid": "c38ac32d_aab2c3f6",
+      "range": {
+        "startLine": 1235,
+        "startChar": 0,
+        "endLine": 1235,
+        "endChar": 42
+      },
+      "revId": "0dee8a616999d56f1a5390525f4f021cb46d10e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
