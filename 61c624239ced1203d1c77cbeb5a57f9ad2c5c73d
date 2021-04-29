@@ -118,6 +118,30 @@
       },
       "revId": "61c624239ced1203d1c77cbeb5a57f9ad2c5c73d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a62a057_ed03fd22",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2021-04-29T16:06:39Z",
+      "side": 0,
+      "message": "Actually, to  avoid funkiness while branches are not in sync, let\u0027s make it IsProfileable() || IsProfileableFromShell(). Sorry about that.",
+      "parentUuid": "28d4fe7f_1b4a2e7e",
+      "range": {
+        "startLine": 1106,
+        "startChar": 31,
+        "endLine": 1106,
+        "endChar": 53
+      },
+      "revId": "61c624239ced1203d1c77cbeb5a57f9ad2c5c73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
