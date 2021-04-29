@@ -16,6 +16,24 @@
       "message": "Add the DCHECK I mentioned earlier about PROFILE_FROM_SHELL implies PROFILEABLE ?",
       "revId": "111e5371dcd734667127ae25ca8849746248f357",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2fdceb_955ca808",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2021-04-29T16:19:06Z",
+      "side": 1,
+      "message": "That isn\u0027t true until the branches converge (because PROFILEABLE remains unset), so it will fail on current aosp/master.",
+      "parentUuid": "ea94318d_a6bb8b89",
+      "revId": "111e5371dcd734667127ae25ca8849746248f357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
