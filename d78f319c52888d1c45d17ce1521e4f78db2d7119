@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be03ed58_b9aa3dd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T16:20:40Z",
+      "side": 1,
+      "message": "Out of curiosity, do we have any statistics on how much time the tests take?",
+      "revId": "d78f319c52888d1c45d17ce1521e4f78db2d7119",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
