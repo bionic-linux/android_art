@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7854fc_536ffb82",
+        "filename": "build/apex/manifest-art.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T14:00:29Z",
+      "side": 1,
+      "message": "I tried to add stubs{} to the library in external/oj-libjdwp instead to avoid this, but then it needs a .map.txt file as well, even though there are no exported functions, and that means an NDK-API review vote.\n\nI want to fix Soong so that it\u0027s possible to have stubs{} without a .map.txt file, but that\u0027s for later.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "41ab00ac3520882cd079469892a18099ba661112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
