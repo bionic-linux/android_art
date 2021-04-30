@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5ba207e_f7fe6b34",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T13:55:32Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure. My impression is that ro.debuggable can be set on user builds, but I haven\u0027t found any proper docs on it. Do you know?\n\nAlso, I got this from ANDROID_ADDITIONAL_PUBLIC_LIBRARIES (https://cs.android.com/android/platform/superproject/+/master:art/libnativeloader/public_libraries.cpp;l\u003d86;drc\u003d1263402b99713aab1cd18303c41a3f3b17aa1f0f) which I believe we need to run the tests today, so we shouldn\u0027t regress with this.\n\nOtoh I\u0027m not sure there\u0027s a significant gain with this condition - from a security perspective it should be hard to affect the environment of the zygote. So I\u0027m happy to drop it as well.\n\nIt was introduced by Jiyong in https://r.android.com/588580, but I don\u0027t see any more context there - the impression I get is that it\u0027s intended to avoid exposing a testing only feature in the final product.",
+      "parentUuid": "a5204ff5_75184f24",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12a9bf8b_5b122f5f",
         "filename": "libnativeloader/native_loader.cpp",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-30T09:01:43Z",
       "side": 1,
       "message": "static bool IsDebuggable ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4920df7a_beb45bd7",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T13:55:32Z",
+      "side": 1,
+      "message": "It\u0027s already in an anonymous namespace.",
+      "parentUuid": "12a9bf8b_5b122f5f",
       "range": {
         "startLine": 67,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17833801_a03e6948",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T13:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8378f8cd_7ddd7c47",
+      "range": {
+        "startLine": 101,
+        "startChar": 6,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd9ba8f9_3acd6d87",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-30T09:01:43Z",
       "side": 1,
       "message": "Why does the method start with \"Unlocked\" if the mutex is required?",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61277ac8_7ac52f7d",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T13:55:32Z",
+      "side": 1,
+      "message": "\"Unlocked\" means it does its thing without locking, i.e. the caller has to do it instead. But I suppose it can be read the other way around too.\n\nWhat I really need here is a name that\u0027s different from CreateClassLoaderNamespace, because it\u0027s already taken below. I\u0027m open to any suggestions.",
+      "parentUuid": "cd9ba8f9_3acd6d87",
       "range": {
         "startLine": 157,
         "startChar": 4,
