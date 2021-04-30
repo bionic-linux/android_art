@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f274408c_8b8d48ef",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-04-30T15:47:37Z",
+      "side": 1,
+      "message": "Move this to the end of the name (that\u0027s the convention in frameworks)",
+      "range": {
+        "startLine": 149,
+        "startChar": 31,
+        "endLine": 149,
+        "endChar": 37
+      },
+      "revId": "3694cc7263f6a7b558e4e2bfc62f1c7a1e8c71f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
