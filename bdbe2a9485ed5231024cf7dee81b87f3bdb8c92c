@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19326bac_5b4c4bf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T08:46:22Z",
+      "side": 1,
+      "message": "Vladimir, Roland, friendly ping.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
