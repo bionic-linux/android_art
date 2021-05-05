@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76c735a4_9363878d",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T20:37:28Z",
+      "side": 1,
+      "message": "The latest TH Failures show that the new tests are having issues. I\u0027ll limit this CL to only the test I need to disable.",
+      "parentUuid": "e42b9cbe_be1f14c1",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb71a5f3_baa75b49",
@@ -88,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabe95a7_05b5c4d7",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T20:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9907e4_e36f434d",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76630234_bca98d94",
@@ -111,6 +147,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e5e2f7_c53f6a9c",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T20:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76630234_bca98d94",
+      "range": {
+        "startLine": 1289,
+        "startChar": 30,
+        "endLine": 1289,
+        "endChar": 43
+      },
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5140ecbe_2d298d5d",
@@ -124,6 +184,30 @@
       "writtenOn": "2021-05-05T13:28:54Z",
       "side": 1,
       "message": "Always false. We initialize entries to the resolution trampoline by calling `OatFile::InitializeRelocations()` from `ClassLinker::RegisterDexFileLocked()`.",
+      "range": {
+        "startLine": 307,
+        "startChar": 14,
+        "endLine": 307,
+        "endChar": 33
+      },
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6848d810_135dbee8",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T20:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5140ecbe_2d298d5d",
       "range": {
         "startLine": 307,
         "startChar": 14,
