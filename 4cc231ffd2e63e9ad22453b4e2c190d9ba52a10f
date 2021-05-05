@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78d74c9_7da64b46",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-05T12:06:49Z",
+      "side": 1,
+      "message": "Tests that depend on this also depend on ART internals, so I\u0027m not sure they can be distributed and run by others on user builds, but I suppose internally we may want to add CI tests.\n\nHowever be that as it may, I\u0027m happy to drop the ro.debuggable restriction - we can just use the environment variable itself. In user builds it shouldn\u0027t be possible to mess around with it anyway for the zygote.\n\nI\u0027d like to get this in now, so I\u0027m going to follow up with a separate change that drops ro.debuggable.",
+      "parentUuid": "e2e4291d_c16441b0",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12a9bf8b_5b122f5f",
