@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <memory>
 
+#include "base/quick_exit.h"
 #include "jni.h"
 #include "nativehelper/JniInvocation.h"
 #include "nativehelper/ScopedLocalRef.h"
@@ -218,5 +219,5 @@ int main(int argc, char** argv) {
   // daemons may still awaken (literally); but still have functions registered
   // with `at_quick_exit` (for instance LLVM's code coverage profile dumping
   // routine) be called before exiting.
-  quick_exit(art::dalvikvm(argc, argv));
+  art::QuickExit(art::dalvikvm(argc, argv));
 }

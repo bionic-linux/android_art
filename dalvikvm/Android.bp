@@ -33,6 +33,9 @@ art_cc_binary {
     shared_libs: [
         "libnativehelper",
     ],
+    header_libs: [
+        "art_libartbase_headers", // For base/quick_exit.h
+    ],
     target: {
         android: {
             shared_libs: [
