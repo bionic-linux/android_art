@@ -16,6 +16,120 @@
       "message": "Vladimir, Roland, friendly ping.",
       "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97f3c54_b83c641f",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "Why? You did not touch this test.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb71a5f3_baa75b49",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "You did not touch this test.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76630234_bca98d94",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "`new_invoke-\u003eGetCurrentMethodIndexUnchecked()` or DCHECK that it\u0027s the same as `input.size()`.",
+      "range": {
+        "startLine": 1289,
+        "startChar": 30,
+        "endLine": 1289,
+        "endChar": 43
+      },
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5140ecbe_2d298d5d",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "Always false. We initialize entries to the resolution trampoline by calling `OatFile::InitializeRelocations()` from `ClassLinker::RegisterDexFileLocked()`.",
+      "range": {
+        "startLine": 307,
+        "startChar": 14,
+        "endLine": 307,
+        "endChar": 33
+      },
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6009ad95_aa404189",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "CHECK-NOT: InvokeVirtual (same for the other tests below)",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a008f0_d9a1c0a8",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-05T13:28:54Z",
+      "side": 1,
+      "message": "You did not touch this test.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
