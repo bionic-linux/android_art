@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e04eae_b5cedb5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "Could we also allow a directory under `/data/local/tmp`? I don\u0027t think we\u0027ll be able to write into `/data/nativetest(64)` on `user` builds.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "46088229c8e5d0aa64d665694f7d16cdc8f75156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ff0694_13a0b397",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "46088229c8e5d0aa64d665694f7d16cdc8f75156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4296def_4ae42b4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "It seems `ro.debuggable` is set to `0` on `user` builds (https://source.android.com/setup/develop/new-device#build-variants). Will this be a blocker to run ART run-tests on devices running `user` builds?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "46088229c8e5d0aa64d665694f7d16cdc8f75156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bdf170b_6bcdba7e",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "Nit: Parentheses are superfluous here.",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 45
+      },
+      "revId": "46088229c8e5d0aa64d665694f7d16cdc8f75156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fc4bb3_ca930a59",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 9
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "You can also add a `bug` field (see e.g. line 1384) to this entry.",
+      "range": {
+        "startLine": 1405,
+        "startChar": 25,
+        "endLine": 1405,
+        "endChar": 43
+      },
+      "revId": "46088229c8e5d0aa64d665694f7d16cdc8f75156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

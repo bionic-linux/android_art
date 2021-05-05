@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2e4291d_c16441b0",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-05T11:36:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure how much we rely on `ro.debuggable` in our testing in general.\n\nWhat I know is that ART original testing strategy is currently heavily relying on `userdebug`/`eng` builds and/or being able to run as root. I have worked to reduce/remove the latter in my work on porting tests to TradeFed, but I haven\u0027t done much for the former, as I\u0027ve mostly been using `userdebug` builds. We should start including more `user` builds in our local and remote testing.",
+      "parentUuid": "f36a8480_4877f4ef",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "4cc231ffd2e63e9ad22453b4e2c190d9ba52a10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12a9bf8b_5b122f5f",
         "filename": "libnativeloader/native_loader.cpp",
         "patchSetId": 6
