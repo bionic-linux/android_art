@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e42b9cbe_be1f14c1",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T13:34:02Z",
+      "side": 1,
+      "message": "I only ran regen-test-files and those were included. Not sure if that\u0027s ok, Roland?",
+      "parentUuid": "a97f3c54_b83c641f",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb71a5f3_baa75b49",
         "filename": "TEST_MAPPING",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2021-05-05T13:28:54Z",
       "side": 1,
       "message": "You did not touch this test.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9907e4_e36f434d",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 6
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T13:34:02Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "fb71a5f3_baa75b49",
       "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -115,6 +151,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d228f30f_d6228432",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T13:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6009ad95_aa404189",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a008f0_d9a1c0a8",
@@ -128,6 +182,24 @@
       "writtenOn": "2021-05-05T13:28:54Z",
       "side": 1,
       "message": "You did not touch this test.",
+      "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81cbfd9_b047f027",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-05T13:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a008f0_d9a1c0a8",
       "revId": "bdbe2a9485ed5231024cf7dee81b87f3bdb8c92c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
