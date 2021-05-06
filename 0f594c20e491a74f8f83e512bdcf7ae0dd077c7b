@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6ac834_4a8efd8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T13:55:59Z",
+      "side": 1,
+      "message": "This should fix the problems with test_for when SOONG_CONFIG_art_module_source_build\u003dfalse.",
+      "revId": "0f594c20e491a74f8f83e512bdcf7ae0dd077c7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

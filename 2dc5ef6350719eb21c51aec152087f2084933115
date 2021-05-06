@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31db28ff_1667c596",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T13:55:59Z",
+      "side": 1,
+      "message": "My plan is to move this into art_test_internal_library_defaults, since only internal libraries should need it, and then they also need the special namespace handling etc. However, doing that had knock-on effects like b/187288515 so I\u0027m descoping it from here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "2dc5ef6350719eb21c51aec152087f2084933115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
