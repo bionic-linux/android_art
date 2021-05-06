@@ -147,12 +147,13 @@ cc_test {
     shared_libs: ["libnativebridge_lazy"],
 }
 
-// Build the test for the C API.
+// Build the test for the C header.
 cc_test {
     name: "libnativebridge-api-tests",
     defaults: [
         "art_defaults",
         "art_test_defaults",
+        "art_module_source_build_defaults",
     ],
     // TODO(mast): Split up art_gtest_defaults so that it can be used for the
     // following without pulling in lots of libs.
@@ -173,5 +174,5 @@ cc_test {
         "jni_headers",
         "libnativebridge-headers",
     ],
-    gtest:false,
+    gtest: false,
 }
