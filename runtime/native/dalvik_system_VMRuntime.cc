@@ -369,8 +369,16 @@ static void VMRuntime_preloadDexCaches(JNIEnv* env ATTRIBUTE_UNUSED, jobject) {
  */
 static void VMRuntime_registerAppInfo(JNIEnv* env,
                                       jclass clazz ATTRIBUTE_UNUSED,
-                                      jstring profile_file,
-                                      jobjectArray code_paths) {
+                                      jstring package_name ATTRIBUTE_UNUSED,
+                                      jstring cur_profile_file,
+                                      jstring ref_profile_file ATTRIBUTE_UNUSED,
+                                      jobjectArray code_paths,
+                                      jboolean is_primary_apk ATTRIBUTE_UNUSED,
+                                      jboolean enable_art_profile) {
+  if (!enable_art_profile) {
+    return;
+  }
+
   std::vector<std::string> code_paths_vec;
   int code_paths_length = env->GetArrayLength(code_paths);
   for (int i = 0; i < code_paths_length; i++) {
@@ -380,9 +388,9 @@ static void VMRuntime_registerAppInfo(JNIEnv* env,
     env->ReleaseStringUTFChars(code_path, raw_code_path);
   }
 
-  const char* raw_profile_file = env->GetStringUTFChars(profile_file, nullptr);
-  std::string profile_file_str(raw_profile_file);
-  env->ReleaseStringUTFChars(profile_file, raw_profile_file);
+  const char* raw_cur_profile_file = env->GetStringUTFChars(cur_profile_file, nullptr);
+  std::string profile_file_str(raw_cur_profile_file);
+  env->ReleaseStringUTFChars(cur_profile_file, raw_cur_profile_file);
 
   Runtime::Current()->RegisterAppInfo(code_paths_vec, profile_file_str);
 }
@@ -526,7 +534,8 @@ static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(VMRuntime, is64Bit, "()Z"),
   FAST_NATIVE_METHOD(VMRuntime, isCheckJniEnabled, "()Z"),
   NATIVE_METHOD(VMRuntime, preloadDexCaches, "()V"),
-  NATIVE_METHOD(VMRuntime, registerAppInfo, "(Ljava/lang/String;[Ljava/lang/String;)V"),
+  NATIVE_METHOD(VMRuntime, registerAppInfo,
+      "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;ZZ)V"),
   NATIVE_METHOD(VMRuntime, isBootClassPathOnDisk, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(VMRuntime, getCurrentInstructionSet, "()Ljava/lang/String;"),
   NATIVE_METHOD(VMRuntime, setSystemDaemonThreadPriority, "()V"),
