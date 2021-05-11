@@ -27,8 +27,11 @@ public class Main {
       file = createTempFile();
       // String codePath = getDexBaseLocation();
       String codePath = System.getenv("DEX_LOCATION") + "/595-profile-saving.jar";
-      VMRuntime.registerAppInfo(file.getPath(),
-                                new String[] {codePath});
+      VMRuntime.registerAppInfo("test.app",
+                                file.getPath(),
+                                file.getPath(),
+                                new String[] {codePath},
+                                /*code_path_type=*/ 1);
 
       // Test that the profile saves an app method with a profiling info.
       Method appMethod = Main.class.getDeclaredMethod("testAddMethodToProfile",
@@ -96,15 +99,25 @@ public class Main {
       try {
         Class<? extends Object> c = Class.forName("dalvik.system.VMRuntime");
         registerAppInfoMethod = c.getDeclaredMethod("registerAppInfo",
-            String.class, String[].class);
+            String.class, String.class, String[].class, Integer.class);
       } catch (Exception e) {
         throw new RuntimeException(e);
       }
     }
 
-    public static void registerAppInfo(String profile, String[] codePaths)
-        throws Exception {
-      registerAppInfoMethod.invoke(null, profile, codePaths);
+    public static void registerAppInfo(
+        String packageName,
+        String curProfile,
+        String refProfile,
+        String[] codePaths,
+        int codePathsType) throws Exception {
+      registerAppInfoMethod.invoke(
+          null,
+          packageName,
+          curProfile,
+          refProfile,
+          codePaths,
+          codePathsType);
     }
   }
 }
