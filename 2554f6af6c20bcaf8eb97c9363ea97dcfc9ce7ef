@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ac29fd_7ee69221",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-12T08:41:11Z",
+      "side": 1,
+      "message": "Can we make this only owned by the ART code? Ie the framework doesn\u0027t need to pass the information, ART should already know it.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 3
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
