@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3df5748_61eca8f4",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-12T15:56:19Z",
+      "side": 1,
+      "message": "I think that\u0027s OK, maybe add a comment in how you anticipate using it?",
+      "parentUuid": "e8f63ab1_367b80bc",
+      "range": {
+        "startLine": 376,
+        "startChar": 38,
+        "endLine": 376,
+        "endChar": 79
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ac29fd_7ee69221",
         "filename": "runtime/native/dalvik_system_VMRuntime.cc",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "We could, but it depends on b/181748174 where we\u0027ll be able to enable sys prop/config reading in ART.\n\nI think we can proactively hide this flag though. don\u0027t see big issues.",
       "parentUuid": "09ac29fd_7ee69221",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 3
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b6d6915_d984eb8c",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-12T15:56:19Z",
+      "side": 1,
+      "message": "Don\u0027t we pass the information already in Androidruntime.cpp ?",
+      "parentUuid": "542470bb_dbf8c040",
       "range": {
         "startLine": 377,
         "startChar": 0,
