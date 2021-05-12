@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8f63ab1_367b80bc",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-12T15:27:38Z",
+      "side": 1,
+      "message": "What\u0027s your thoughts on this one?\nWe could technically make it an integer to cover: PRIMARY / SPLIT / SECONDARY. Could be more future-proof but we\u0027ll require adding more constants in VmRuntime.",
+      "range": {
+        "startLine": 376,
+        "startChar": 38,
+        "endLine": 376,
+        "endChar": 79
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ac29fd_7ee69221",
         "filename": "runtime/native/dalvik_system_VMRuntime.cc",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2021-05-12T08:41:11Z",
       "side": 1,
       "message": "Can we make this only owned by the ART code? Ie the framework doesn\u0027t need to pass the information, ART should already know it.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 3
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542470bb_dbf8c040",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-12T15:27:38Z",
+      "side": 1,
+      "message": "We could, but it depends on b/181748174 where we\u0027ll be able to enable sys prop/config reading in ART.\n\nI think we can proactively hide this flag though. don\u0027t see big issues.",
+      "parentUuid": "09ac29fd_7ee69221",
       "range": {
         "startLine": 377,
         "startChar": 0,
