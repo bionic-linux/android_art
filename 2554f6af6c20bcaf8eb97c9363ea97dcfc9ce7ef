@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bb7dd9_70d4df03",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-13T04:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3df5748_61eca8f4",
+      "range": {
+        "startLine": 376,
+        "startChar": 38,
+        "endLine": 376,
+        "endChar": 79
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09ac29fd_7ee69221",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Don\u0027t we pass the information already in Androidruntime.cpp ?",
       "parentUuid": "542470bb_dbf8c040",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 3
+      },
+      "revId": "2554f6af6c20bcaf8eb97c9363ea97dcfc9ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf486fe2_b186b42f",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-13T04:59:03Z",
+      "side": 1,
+      "message": "good point. done.",
+      "parentUuid": "3b6d6915_d984eb8c",
       "range": {
         "startLine": 377,
         "startChar": 0,
