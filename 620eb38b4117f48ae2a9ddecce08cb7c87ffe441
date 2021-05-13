@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34322224_e29a1015",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-13T13:34:07Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t recall envars or would have done this a good while back.",
+      "revId": "620eb38b4117f48ae2a9ddecce08cb7c87ffe441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae106de3_e0e49a18",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-13T13:34:07Z",
+      "side": 1,
+      "message": ":",
+      "range": {
+        "startLine": 1415,
+        "startChar": 41,
+        "endLine": 1415,
+        "endChar": 42
+      },
+      "revId": "620eb38b4117f48ae2a9ddecce08cb7c87ffe441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
