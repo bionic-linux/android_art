@@ -230,11 +230,11 @@ static jstring VMRuntime_vmVersion(JNIEnv* env, jobject) {
   return env->NewStringUTF(Runtime::GetVersion());
 }
 
-static jstring VMRuntime_vmLibrary(JNIEnv* env, jobject) {
+static jstring VMRuntime_getVmLibrary(JNIEnv* env, jobject) {
   return env->NewStringUTF(kIsDebugBuild ? "libartd.so" : "libart.so");
 }
 
-static jstring VMRuntime_vmInstructionSet(JNIEnv* env, jobject) {
+static jstring VMRuntime_getVmInstructionSet(JNIEnv* env, jobject) {
   InstructionSet isa = Runtime::Current()->GetInstructionSet();
   const char* isa_string = GetInstructionSetString(isa);
   return env->NewStringUTF(isa_string);
@@ -340,7 +340,7 @@ static void VMRuntime_requestHeapTrim(JNIEnv* env, jobject) {
   Runtime::Current()->GetHeap()->RequestTrim(ThreadForEnv(env));
 }
 
-static void VMRuntime_requestConcurrentGC(JNIEnv* env, jobject) {
+static void VMRuntime_requestConcurrentGc(JNIEnv* env, jobject) {
   gc::Heap *heap = Runtime::Current()->GetHeap();
   heap->RequestConcurrentGC(ThreadForEnv(env),
                             gc::kGcCauseBackground,
@@ -513,7 +513,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, notifyNativeAllocationsInternal, "()V"),
   NATIVE_METHOD(VMRuntime, notifyStartupCompleted, "()V"),
   NATIVE_METHOD(VMRuntime, registerSensitiveThread, "()V"),
-  NATIVE_METHOD(VMRuntime, requestConcurrentGC, "()V"),
+  NATIVE_METHOD(VMRuntime, requestConcurrentGc, "()V"),
   NATIVE_METHOD(VMRuntime, requestHeapTrim, "()V"),
   NATIVE_METHOD(VMRuntime, runHeapTasks, "()V"),
   NATIVE_METHOD(VMRuntime, updateProcessState, "(I)V"),
@@ -521,8 +521,8 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, stopHeapTaskProcessor, "()V"),
   NATIVE_METHOD(VMRuntime, trimHeap, "()V"),
   NATIVE_METHOD(VMRuntime, vmVersion, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, vmLibrary, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, vmInstructionSet, "()Ljava/lang/String;"),
+  NATIVE_METHOD(VMRuntime, getVmLibrary, "()Ljava/lang/String;"),
+  NATIVE_METHOD(VMRuntime, getVmInstructionSet, "()Ljava/lang/String;"),
   FAST_NATIVE_METHOD(VMRuntime, is64Bit, "()Z"),
   FAST_NATIVE_METHOD(VMRuntime, isCheckJniEnabled, "()Z"),
   NATIVE_METHOD(VMRuntime, preloadDexCaches, "()V"),
