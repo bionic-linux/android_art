@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3140f54f_5b3d20e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-13T13:11:00Z",
+      "side": 1,
+      "message": "Vladimir, Roland PTAL 1..2.",
+      "revId": "c8c846114efa322d36ffe4cfcf702589dc211387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
