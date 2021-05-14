@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c85a39d_9cac30aa",
+        "filename": "test/595-profile-saving/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-14T15:38:28Z",
+      "side": 1,
+      "message": "I think this will break if this file is not under a src-art directory.",
+      "revId": "05a2510cc1057bfa832e22427172f350d1f00127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
