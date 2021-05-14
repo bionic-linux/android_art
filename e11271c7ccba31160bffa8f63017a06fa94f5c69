@@ -22,6 +22,30 @@
       },
       "revId": "e11271c7ccba31160bffa8f63017a06fa94f5c69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa4dcb2_12fe0c37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T18:01:56Z",
+      "side": 1,
+      "message": "If we don\u0027t then we\u0027d need to add the locations of the ART APEX OAT files to the system linker config. Maybe it isn\u0027t a huge problem to restrict ourselves to /apex/com.android.art/javalib forever, but I think this is better.",
+      "parentUuid": "79bbc577_0ab893fb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "e11271c7ccba31160bffa8f63017a06fa94f5c69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
