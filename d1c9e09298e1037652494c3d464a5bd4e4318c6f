@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67558a00_f3264446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T16:25:51Z",
+      "side": 1,
+      "message": "This fixes an app compat regression (b/188078687) from https://r.android.com/1674519, so I\u0027d like to get it in soon. PTAL.",
+      "revId": "d1c9e09298e1037652494c3d464a5bd4e4318c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
