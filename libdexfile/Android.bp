@@ -357,6 +357,9 @@ art_cc_library {
     name: "libdexfile_support",
     visibility: ["//visibility:public"],
     host_supported: true,
+    shared: {
+        enabled: false,
+    },
     srcs: [
         "external/dex_file_supp.cc",
     ],
@@ -393,6 +396,9 @@ art_cc_test {
         "libartbase",
         "libbase",
         "libdexfile",
+        "liblog",
+    ],
+    static_libs: [
         "libdexfile_support",
     ],
 }
