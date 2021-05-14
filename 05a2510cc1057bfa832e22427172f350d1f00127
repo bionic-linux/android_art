@@ -16,6 +16,24 @@
       "message": "I think this will break if this file is not under a src-art directory.",
       "revId": "05a2510cc1057bfa832e22427172f350d1f00127",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "670bac19_af8dce8e",
+        "filename": "test/595-profile-saving/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-14T16:06:15Z",
+      "side": 1,
+      "message": "so that was the magic 😊\nReverted. We can migrate the test in a separate CL.",
+      "parentUuid": "8c85a39d_9cac30aa",
+      "revId": "05a2510cc1057bfa832e22427172f350d1f00127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
