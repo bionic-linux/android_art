@@ -16,6 +16,29 @@
       "message": "This is an alternative proposal to https://android-review.googlesource.com/c/platform/art/+/1698385.",
       "revId": "a8ab691e48bb9894d593027dc5e78926fd002ffc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8261c71b_275dbe94",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3138,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-17T19:02:34Z",
+      "side": 1,
+      "message": "Could this be moved to the QuickExit implementation?",
+      "range": {
+        "startLine": 3138,
+        "startChar": 0,
+        "endLine": 3138,
+        "endChar": 89
+      },
+      "revId": "a8ab691e48bb9894d593027dc5e78926fd002ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
