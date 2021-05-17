@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391c25f9_1cf259e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-05-17T18:57:10Z",
+      "side": 1,
+      "message": "This is an alternative proposal to https://android-review.googlesource.com/c/platform/art/+/1698385.",
+      "revId": "a8ab691e48bb9894d593027dc5e78926fd002ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
