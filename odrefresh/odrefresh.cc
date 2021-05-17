@@ -1019,8 +1019,12 @@ class OnDeviceRefresh final {
     }
 
     // Add boot extensions to compile.
+    std::vector<std::unique_ptr<File>> readonly_files_raii;
     for (const std::string& component : boot_extension_compilable_jars_) {
       args.emplace_back("--dex-file=" + component);
+      std::unique_ptr<File> file(OS::OpenFileForReading(component.c_str()));
+      args.emplace_back(android::base::StringPrintf("--dex-fd=%d", file->Fd()));
+      readonly_files_raii.push_back(std::move(file));
     }
 
     args.emplace_back("--runtime-arg");
