@@ -4129,6 +4129,9 @@ void Heap::InitPerfettoJavaHeapProf() {
   AHeapInfo_setEnabledCallback(info, &EnableHeapSamplerCallback, &heap_sampler_);
   // Set the Disable Callback.
   AHeapInfo_setDisabledCallback(info, &DisableHeapSamplerCallback, &heap_sampler_);
+  // Do not enable this heap when `all_heaps` is given, because we do not
+  // track GC, so it has nonstandard semantics.
+  AHeapInfo_setExplicit(info, true);
   heap_id = AHeapProfile_registerHeap(info);
   // Do not enable the Java Heap Profiler in this case, wait for Perfetto to enable it through
   // the callback function.
