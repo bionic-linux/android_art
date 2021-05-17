@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0654741d_8f95d1f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-17T11:00:32Z",
+      "side": 1,
+      "message": "Thanks. I wondered why I didn\u0027t see this anywhere in presubmit on https://r.android.com/1689793, but I think the only place where ART_TARGET_ANDROID isn\u0027t set is in art/tools/golem/build-target.sh: https://cs.android.com/android/platform/superproject/+/master:art/tools/golem/build-target.sh;l\u003d294;drc\u003dfbdda07e7bbf7d835356d98a3ca294e5d2a160e7 Maybe we could add that to presubmit on aosp-master-art?",
+      "revId": "0bf5b6729be507f1e78fc61f17554393dd978e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
