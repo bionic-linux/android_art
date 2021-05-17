@@ -232,8 +232,8 @@ class DexMember {
 
 class ClassPath final {
  public:
-  ClassPath(const std::vector<std::string>& dex_paths, bool open_writable) {
-    OpenDexFiles(dex_paths, open_writable);
+  ClassPath(const std::vector<std::string>& dex_paths, bool open_writable, bool ignore_empty) {
+    OpenDexFiles(dex_paths, open_writable, ignore_empty);
   }
 
   template<typename Fn>
@@ -271,7 +271,7 @@ class ClassPath final {
   }
 
  private:
-  void OpenDexFiles(const std::vector<std::string>& dex_paths, bool open_writable) {
+  void OpenDexFiles(const std::vector<std::string>& dex_paths, bool open_writable, bool ignore_empty) {
     ArtDexFileLoader dex_loader;
     std::string error_msg;
 
@@ -306,7 +306,10 @@ class ClassPath final {
                                        /* verify_checksum= */ true,
                                        &error_msg,
                                        &dex_files_);
-        CHECK(success) << "Open failed for '" << filename << "' " << error_msg;
+        // If requested ignore a jar with no classes.dex files.
+        if (!success && ignore_empty && error_msg != "Entry not found") {
+          CHECK(success) << "Open failed for '" << filename << "' " << error_msg;
+        }
       }
     }
   }
@@ -962,7 +965,7 @@ class HiddenApi final {
       const std::string& input_path = boot_dex_paths_[i];
       const std::string& output_path = output_dex_paths_[i];
 
-      ClassPath boot_classpath({ input_path }, /* open_writable= */ false);
+      ClassPath boot_classpath({ input_path }, /* open_writable= */ false, /* ignore_empty= */ false);
       std::vector<const DexFile*> input_dex_files = boot_classpath.GetDexFiles();
       CHECK_EQ(input_dex_files.size(), 1u);
       const DexFile& input_dex = *input_dex_files[0];
@@ -1049,7 +1052,7 @@ class HiddenApi final {
     std::set<std::string> unresolved;
 
     // Open all dex files.
-    ClassPath boot_classpath(boot_dex_paths_, /* open_writable= */ false);
+    ClassPath boot_classpath(boot_dex_paths_, /* open_writable= */ false, /* ignore_empty= */ false);
     Hierarchy boot_hierarchy(boot_classpath);
 
     // Mark all boot dex members private.
@@ -1058,7 +1061,7 @@ class HiddenApi final {
     });
 
     // Open all base dex files.
-    ClassPath base_classpath(base_dex_paths_, /* open_writable= */ false);
+    ClassPath base_classpath(base_dex_paths_, /* open_writable= */ false, /* ignore_empty= */ false);
 
     // Mark all base dex members as coming from the base.
     base_classpath.ForEachDexMember([&](const DexMember& boot_member) {
@@ -1067,8 +1070,12 @@ class HiddenApi final {
 
     // Resolve each SDK dex member against the framework and mark it white.
     for (const auto& cp_entry : stub_classpaths_) {
+      // Ignore any empty stub jars as it just means that they provide no APIs
+      // for the current kind, e.g. framework-sdkextensions does not provide
+      // any public APIs.
       ClassPath stub_classpath(android::base::Split(cp_entry.first, ":"),
-                               /* open_writable= */ false);
+                               /* open_writable= */ false,
+                               /* ignore_empty= */ true);
       Hierarchy stub_hierarchy(stub_classpath);
       const ApiStubs::Kind stub_api = cp_entry.second;
 
