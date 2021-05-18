@@ -46,6 +46,30 @@
       },
       "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09247ca9_49f0e549",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-18T08:59:41Z",
+      "side": 1,
+      "message": "I think --boot-dex containing stub dex jars would be fine by me.\n\nIf you prefer not inverting, dex2oat uses --public-sdk for the same kind of concept, would that work here?",
+      "parentUuid": "2846f086_0b21161e",
+      "range": {
+        "startLine": 89,
+        "startChar": 20,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
