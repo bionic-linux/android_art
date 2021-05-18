@@ -22,6 +22,30 @@
       },
       "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2846f086_0b21161e",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T08:53:24Z",
+      "side": 1,
+      "message": "\u003e why base?\n\nNo particular reason.\n\nWhile updating Soong to use this change I realized that I do not need to provide the implementation boot dex here I can just supply the dex for the stubs provided by the dependency. Which is what Soong does.\n\nSo, inverting the logic would result in confusion because the --boot-dex would not actually be boot dex jars anymore they would be stub dex jars.\n\nHow about --dependency-api-dex or --dependency-stub-dex instead of --base-dex?",
+      "parentUuid": "3576bb7e_c0c727d7",
+      "range": {
+        "startLine": 89,
+        "startChar": 20,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
