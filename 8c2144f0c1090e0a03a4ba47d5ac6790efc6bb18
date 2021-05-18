@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3576bb7e_c0c727d7",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-18T08:39:40Z",
+      "side": 1,
+      "message": "nit-picking on the name: why base? Should it be dependency dex? Or should we invert the command line and have:\n--boot-dex: boot classpath dex\n--annotate-dex: boot classpath dex files to annotate?",
+      "range": {
+        "startLine": 89,
+        "startChar": 20,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
