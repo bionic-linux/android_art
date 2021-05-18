@@ -87,6 +87,24 @@
       "parentUuid": "6065e8c1_ead6de3a",
       "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2934c69_47d13ed7",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T11:32:02Z",
+      "side": 1,
+      "message": "I missed this one, did the similar one below.\n\nAll done now.",
+      "parentUuid": "83b4def4_f29c05a4",
+      "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
