@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965b8c44_509efecf",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-18T08:41:24Z",
+      "side": 1,
+      "message": "nit: line too ling",
+      "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0132d2_03fcfce2",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-18T08:41:24Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
