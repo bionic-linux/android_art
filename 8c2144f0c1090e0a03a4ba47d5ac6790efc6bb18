@@ -70,6 +70,30 @@
       },
       "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d322c1_b495cd4b",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T09:14:49Z",
+      "side": 1,
+      "message": "I\u0027d rather not invert as that is a bigger change than I want to make.\n\nThe --public-sdk doesn\u0027t make must sense as the dex stubs are not public, they could be system, or core_platform or test, whichever is the widest API surface provided by the fragment on which it depends.",
+      "parentUuid": "09247ca9_49f0e549",
+      "range": {
+        "startLine": 89,
+        "startChar": 20,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "8c2144f0c1090e0a03a4ba47d5ac6790efc6bb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
