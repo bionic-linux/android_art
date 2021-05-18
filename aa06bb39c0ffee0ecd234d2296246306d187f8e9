@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fd82aa_961f3eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T09:03:45Z",
+      "side": 1,
+      "message": "PTAL. I rebased this one before the modularization change as this one is ready to be submitted.",
+      "revId": "aa06bb39c0ffee0ecd234d2296246306d187f8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

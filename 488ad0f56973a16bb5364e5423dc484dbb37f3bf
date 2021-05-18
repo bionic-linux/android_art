@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6530a6_a43cae70",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T09:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "965b8c44_509efecf",
+      "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0132d2_03fcfce2",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-18T08:41:24Z",
       "side": 1,
       "message": "ditto",
+      "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6065e8c1_ead6de3a",
+        "filename": "tools/hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T09:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0132d2_03fcfce2",
       "revId": "488ad0f56973a16bb5364e5423dc484dbb37f3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
