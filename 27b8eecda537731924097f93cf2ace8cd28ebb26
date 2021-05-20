@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e06d253_28053c14",
+        "filename": "libartbase/base/flags.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-20T10:40:25Z",
+      "side": 1,
+      "message": "why do we make this change?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 55
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a9cdb0_a3eb4867",
         "filename": "libartbase/base/flags.cc",
         "patchSetId": 2
@@ -36,6 +59,52 @@
         "startChar": 11,
         "endLine": 123,
         "endChar": 26
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49fef7b0_21344c83",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-20T10:40:25Z",
+      "side": 1,
+      "message": "worth pointing out the order here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305ee7ad_ce0bf75b",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-20T10:40:25Z",
+      "side": 1,
+      "message": "Any way we could catch this at runtime?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 63
       },
       "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -93,6 +162,29 @@
         "startChar": 7,
         "endLine": 189,
         "endChar": 66
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c5ddf8_67d7cf5e",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-05-20T10:40:25Z",
+      "side": 1,
+      "message": "should this be a \u0027.\u0027 ?",
+      "range": {
+        "startLine": 199,
+        "startChar": 24,
+        "endLine": 199,
+        "endChar": 25
       },
       "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
