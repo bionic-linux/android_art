@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c9101b5_245b9b26",
+        "filename": "libartbase/base/flags.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "I think some shells and bash scripts might require extra handling or escaping of \u0027.\u0027s. And I though this might help and keep consistency with the rest of the args.\n\nI don\u0027t have a strong preference and can drop it.",
+      "parentUuid": "1e06d253_28053c14",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 55
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a9cdb0_a3eb4867",
         "filename": "libartbase/base/flags.cc",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-20T00:55:27Z",
       "side": 1,
       "message": "Would it be worth printing something like \"[undefined]\" or \"\u0027\u0027\" instead of kUndefinedValue here? That might be clearer than an empty string, and is also less likely to conflict with an valid value in the case of string flags.\n\nFeel free to keep it the same though if you like the current state better.",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edb65b6_ad1fcdc0",
+        "filename": "libartbase/base/flags.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "Actually, empty string is not a valid value, and it\u0027s how you can also unset a property. It\u0027s one of the tests that android::base is doing, and I think it\u0027s good to be consistent there.",
+      "parentUuid": "98a9cdb0_a3eb4867",
       "range": {
         "startLine": 123,
         "startChar": 11,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-20T10:40:25Z",
       "side": 1,
       "message": "worth pointing out the order here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0127c9af_e0cf11dd",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49fef7b0_21344c83",
       "range": {
         "startLine": 28,
         "startChar": 34,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "672679c9_66754bd2",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "I didn\u0027t find a good option. \n\nI see a couple of options:\n1) We could CHECK the name of the function passed via the reason (a bit harsh and ugly but we\u0027ll definitely be a signal for the dev)\n2) We could use some mutex but that\u0027s quite a bit of hassle.\n3) We could use a count to make sure we only call it 2-3 times (app or system server) but that\u0027s brittle because of all the post fork logic.\n\nI\u0027d be ok with 1) even if it\u0027s not ideal",
+      "parentUuid": "305ee7ad_ce0bf75b",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 63
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb029cd_5b9a743d",
         "filename": "libartbase/base/flags.h",
         "patchSetId": 2
@@ -123,6 +219,24 @@
       "writtenOn": "2021-05-20T00:55:27Z",
       "side": 1,
       "message": "This comment doesn\u0027t seem to describe this function anymore.",
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352ccd3b_57687afc",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcb029cd_5b9a743d",
       "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -140,6 +254,24 @@
       "writtenOn": "2021-05-20T00:55:27Z",
       "side": 1,
       "message": "Can this function be const?",
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab5dd65c_a3a6f925",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a8f3444_b97c540b",
       "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -167,6 +299,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "850d9693_06bcb6e0",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7691d8_6b727ec4",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 66
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c5ddf8_67d7cf5e",
@@ -180,6 +336,30 @@
       "writtenOn": "2021-05-20T10:40:25Z",
       "side": 1,
       "message": "should this be a \u0027.\u0027 ?",
+      "range": {
+        "startLine": 199,
+        "startChar": 24,
+        "endLine": 199,
+        "endChar": 25
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c97e75_6787584e",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-20T22:20:53Z",
+      "side": 1,
+      "message": "See the other comment on the .cc file.",
+      "parentUuid": "10c5ddf8_67d7cf5e",
       "range": {
         "startLine": 199,
         "startChar": 24,
