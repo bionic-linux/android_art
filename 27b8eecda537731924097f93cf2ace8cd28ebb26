@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8835ddd4_8fb0efe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T00:55:27Z",
+      "side": 1,
+      "message": "Nice! Mostly just some comments on comments and other minor suggestions.",
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a9cdb0_a3eb4867",
+        "filename": "libartbase/base/flags.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T00:55:27Z",
+      "side": 1,
+      "message": "Would it be worth printing something like \"[undefined]\" or \"\u0027\u0027\" instead of kUndefinedValue here? That might be clearer than an empty string, and is also less likely to conflict with an valid value in the case of string flags.\n\nFeel free to keep it the same though if you like the current state better.",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb029cd_5b9a743d",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T00:55:27Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t seem to describe this function anymore.",
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8f3444_b97c540b",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T00:55:27Z",
+      "side": 1,
+      "message": "Can this function be const?",
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7691d8_6b727ec4",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T00:55:27Z",
+      "side": 1,
+      "message": "This should probably \"my-feature-test.flag\" to match the examples below. Also the type and default value should match.",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 66
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
