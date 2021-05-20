@@ -1005,6 +1005,9 @@ class Runtime {
     return apex_versions_;
   }
 
+  // Trigger a flag reload from system properties or device congfigs.
+  static void ReloadAllFlags(const std::string& reason_for_dbg);
+
  private:
   static void InitPlatformSignalHandlers();
 
