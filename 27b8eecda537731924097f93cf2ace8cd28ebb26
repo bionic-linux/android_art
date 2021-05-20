@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc61cd8a_4ccf22fd",
+        "filename": "libartbase/base/flags.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T23:32:11Z",
+      "side": 1,
+      "message": "I did this in the original version of this CL as well, and that was mostly to keep consistency with the other command line arguments.",
+      "parentUuid": "1c9101b5_245b9b26",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 55
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a9cdb0_a3eb4867",
         "filename": "libartbase/base/flags.cc",
         "patchSetId": 2

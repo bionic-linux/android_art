@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52347f91_0a9bd58f",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-05-20T23:32:11Z",
+      "side": 1,
+      "message": "This should probably be int as well, since down below you set the property to 2.",
+      "range": {
+        "startLine": 195,
+        "startChar": 12,
+        "endLine": 195,
+        "endChar": 16
+      },
+      "revId": "f5231fa154e6ab3deac06f43a5b737687857c420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
