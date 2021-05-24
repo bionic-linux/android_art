@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbabe5ca_3f176870",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-24T15:21:34Z",
+      "side": 1,
+      "message": "There could be two trivial inline header methods that spell out uses:\n\nReloadAllFlagsForRuntimeInit() and ReloadAllFlagsForZygoteNativePostForkChild().\n\nNot sure that\u0027s really an improvement. I could live with 1 too. DCHECK coming?",
+      "parentUuid": "672679c9_66754bd2",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 63
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcb029cd_5b9a743d",
         "filename": "libartbase/base/flags.h",
         "patchSetId": 2

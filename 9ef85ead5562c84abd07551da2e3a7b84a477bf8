@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3187171_910f85ec",
+        "filename": "cmdline/cmdline_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-24T15:21:34Z",
+      "side": 1,
+      "message": "nit: 1|0 seems more consistent.",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 60
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b1f020_d80e7f7e",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-24T15:21:34Z",
+      "side": 1,
+      "message": "a lambda or lambdas?\n\n[I find this code a bit full-on with the language features variants for pointers to optionals. but hopefully it is write-once.]",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ef1432_00125247",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-24T15:21:34Z",
+      "side": 1,
+      "message": "The mix of int and false looks off.\n/*default_value\u003d*/ 42 ?",
+      "range": {
+        "startLine": 195,
+        "startChar": 59,
+        "endLine": 195,
+        "endChar": 64
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fe33b1b_0c4d862b",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-05-24T15:21:34Z",
+      "side": 1,
+      "message": "clang-tidy friendly: \"default_value\u003d\"",
+      "range": {
+        "startLine": 217,
+        "startChar": 56,
+        "endLine": 217,
+        "endChar": 63
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
