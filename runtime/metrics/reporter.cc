@@ -46,6 +46,9 @@ void MetricsReporter::SetReportingPeriod(unsigned int period_seconds) {
                                   "reporting thread is started.";
 
   config_.periodic_report_seconds = period_seconds;
+
+  // Since we've explicitly set the reporting period, disable backoff.
+  config_.enable_periodic_reporting_backoff = false;
 }
 
 bool MetricsReporter::MaybeStartBackgroundThread(SessionData session_data) {
@@ -160,6 +163,9 @@ void MetricsReporter::BackgroundThreadRun() {
 void MetricsReporter::MaybeResetTimeout() {
   if (config_.periodic_report_seconds.has_value()) {
     messages_.SetTimeout(SecondsToMs(config_.periodic_report_seconds.value()));
+    if (config_.enable_periodic_reporting_backoff) {
+      config_.enable_periodic_reporting_backoff *= 2;
+    }
   }
 }
 
@@ -180,12 +186,25 @@ void MetricsReporter::ReportMetrics() {
 
 ReportingConfig ReportingConfig::FromRuntimeArguments(const RuntimeArgumentMap& args) {
   using M = RuntimeArgumentMap;
+
+  // For periodic reporting, we currently have two modes. If we have a period set explicitly, we use
+  // that without any backoff. Otherwise, we choose a starting period randomly between 30 and 60
+  // seconds (to prevent all apps from reporting on the same schedule), and then double the period
+  // on each report.
+  std::optional<unsigned int> reporting_period = args.GetOptional(M::MetricsReportingPeriod);
+  bool enable_periodic_reporting_backoff = !reporting_period.has_value();
+
+  if (enable_periodic_reporting_backoff && !reporting_period.has_value()) {
+    reporting_period = GetRandomNumber(30, 60);
+  }
+
   return {
       .dump_to_logcat = args.Exists(M::WriteMetricsToLog),
       .dump_to_statsd = args.GetOrDefault(M::WriteMetricsToStatsd),
       .dump_to_file = args.GetOptional(M::WriteMetricsToFile),
       .report_metrics_on_shutdown = !args.Exists(M::DisableFinalMetricsReport),
-      .periodic_report_seconds = args.GetOptional(M::MetricsReportingPeriod),
+      .periodic_report_seconds = reporting_period,
+      .enable_periodic_reporting_backoff = enable_periodic_reporting_backoff,
   };
 }
 

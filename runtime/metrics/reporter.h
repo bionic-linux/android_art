@@ -46,6 +46,8 @@ struct ReportingConfig {
 
   // If set, metrics will be reported every time this many seconds elapses.
   std::optional<unsigned int> periodic_report_seconds;
+
+  bool enable_periodic_reporting_backoff{true};
 };
 
 // MetricsReporter handles periodically reporting ART metrics.
