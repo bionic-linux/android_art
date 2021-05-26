@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011177396",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1713288?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "59543798_81201468",
+          "description": "Change to \"libartbase/base/flags.h\"",
+          "replacements": [
+            {
+              "path": "libartbase/base/flags.h",
+              "range": {
+                "startLine": 89,
+                "startChar": 56,
+                "endLine": 89,
+                "endChar": 65
+              },
+              "replacement": "definition"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c2823b86_01a3b4bb",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-05-26T00:24:55Z",
+      "side": 1,
+      "message": "Common typo found: \"defintion\" -- should it be \"definition\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 89,
+        "startChar": 56,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "f43e39579c68f429d70246ba1f2fc3d17e4b27db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
