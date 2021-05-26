@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "804556b8_ebed46eb",
+        "filename": "cmdline/cmdline_types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-26T00:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3187171_910f85ec",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 60
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12b1f020_d80e7f7e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-24T15:21:34Z",
       "side": 1,
       "message": "a lambda or lambdas?\n\n[I find this code a bit full-on with the language features variants for pointers to optionals. but hopefully it is write-once.]",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eac9495_c22cfa07",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-26T00:24:56Z",
+      "side": 1,
+      "message": "Heh, yea, lots of features in 7 lines of code. It should be write once only",
+      "parentUuid": "12b1f020_d80e7f7e",
       "range": {
         "startLine": 65,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdc02453_0b818093",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-26T00:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ef1432_00125247",
+      "range": {
+        "startLine": 195,
+        "startChar": 59,
+        "endLine": 195,
+        "endChar": 64
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fe33b1b_0c4d862b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-24T15:21:34Z",
       "side": 1,
       "message": "clang-tidy friendly: \"default_value\u003d\"",
+      "range": {
+        "startLine": 217,
+        "startChar": 56,
+        "endLine": 217,
+        "endChar": 63
+      },
+      "revId": "9ef85ead5562c84abd07551da2e3a7b84a477bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b0253d_c046ab4f",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-05-26T00:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe33b1b_0c4d862b",
       "range": {
         "startLine": 217,
         "startChar": 56,
