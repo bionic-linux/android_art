@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08750515_b7128a9e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2870,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-27T16:32:42Z",
+      "side": 1,
+      "message": "testl (References are 32-bit.)",
+      "range": {
+        "startLine": 2870,
+        "startChar": 7,
+        "endLine": 2870,
+        "endChar": 12
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ab3cc1_830ce742",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2976,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-27T16:32:42Z",
+      "side": 1,
+      "message": "testl",
+      "range": {
+        "startLine": 2976,
+        "startChar": 5,
+        "endLine": 2976,
+        "endChar": 10
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b510bda3_d268afde",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3158,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-27T16:32:42Z",
+      "side": 1,
+      "message": "`kEmitCompilerReadBarrier` is shorter.",
+      "range": {
+        "startLine": 3158,
+        "startChar": 44,
+        "endLine": 3158,
+        "endChar": 90
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e34a24_2e848d98",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3163,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-27T16:32:42Z",
+      "side": 1,
+      "message": "We could refactor the codegen to share the switch for HandleFieldGet, VisitArrayGet and this intrinsic.",
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0158db2d_34c39dfd",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3210,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-05-27T16:32:42Z",
+      "side": 1,
+      "message": "You may as well add Get{Opaque,Acquire,Volatile}. They should be identical on x86-64 due to the x86 memory model. (The only difference is that `GenerateVarHandleAccessModeAndVarTypeChecks()` shall check a different access mode bit.)",
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
