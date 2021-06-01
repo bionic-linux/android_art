@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9722c82d_ca0c1586",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2870,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-01T16:21:56Z",
+      "side": 1,
+      "message": "Done. I thought so, but I reckoned that register-register operations can as well be 64-bit.",
+      "parentUuid": "08750515_b7128a9e",
+      "range": {
+        "startLine": 2870,
+        "startChar": 7,
+        "endLine": 2870,
+        "endChar": 12
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ab3cc1_830ce742",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-27T16:32:42Z",
       "side": 1,
       "message": "testl",
+      "range": {
+        "startLine": 2976,
+        "startChar": 5,
+        "endLine": 2976,
+        "endChar": 10
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9f4e1c_88d842af",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2976,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-01T16:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ab3cc1_830ce742",
       "range": {
         "startLine": 2976,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9198e42b_746e7d9b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3158,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-01T16:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b510bda3_d268afde",
+      "range": {
+        "startLine": 3158,
+        "startChar": 44,
+        "endLine": 3158,
+        "endChar": 90
+      },
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e34a24_2e848d98",
@@ -87,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcdc25a_0c6e6cde",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3163,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-01T16:21:56Z",
+      "side": 1,
+      "message": "Done in a follow-up CL aosp/1723295.",
+      "parentUuid": "59e34a24_2e848d98",
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0158db2d_34c39dfd",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-05-27T16:32:42Z",
       "side": 1,
       "message": "You may as well add Get{Opaque,Acquire,Volatile}. They should be identical on x86-64 due to the x86 memory model. (The only difference is that `GenerateVarHandleAccessModeAndVarTypeChecks()` shall check a different access mode bit.)",
+      "revId": "1f760f590daff0df165be4e050a21793af2e4988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "918a4d46_84c4d4db",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3210,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-01T16:21:56Z",
+      "side": 1,
+      "message": "Done.\n\nDon\u0027t we need a memory barrier for volatile? Like in HandleFieldGet: https://source.corp.google.com/aosp-master/art/compiler/optimizing/code_generator_x86_64.cc;l\u003d4956-4958",
+      "parentUuid": "0158db2d_34c39dfd",
       "revId": "1f760f590daff0df165be4e050a21793af2e4988",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
