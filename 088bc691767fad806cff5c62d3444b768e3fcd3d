@@ -22,6 +22,30 @@
       },
       "revId": "088bc691767fad806cff5c62d3444b768e3fcd3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b29d4b7b_dd05b001",
+        "filename": "tools/libcore_gcstress_debug_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-02T08:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a019c03c_4479cb33",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "088bc691767fad806cff5c62d3444b768e3fcd3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
