@@ -82,9 +82,7 @@ static int GetDefaultThreadPriority() {
 }
 
 ProfileSaver::ProfileSaver(const ProfileSaverOptions& options,
-                           const std::string& output_filename,
-                           jit::JitCodeCache* jit_code_cache,
-                           const std::vector<std::string>& code_paths)
+                           jit::JitCodeCache* jit_code_cache)
     : jit_code_cache_(jit_code_cache),
       shutting_down_(false),
       last_time_ns_saver_woke_up_(0),
@@ -102,7 +100,6 @@ ProfileSaver::ProfileSaver(const ProfileSaverOptions& options,
       total_number_of_wake_ups_(0),
       options_(options) {
   DCHECK(options_.IsEnabled());
-  AddTrackedLocations(output_filename, code_paths);
 }
 
 ProfileSaver::~ProfileSaver() {
@@ -219,40 +216,45 @@ void ProfileSaver::Run() {
   }
 }
 
-// TODO(b/185979271): include reference profiles in the test.
-// The current profiles are cleared after bg-dexopt so this test will currently
-// return True after every bg-dexopt call.
+// Checks if the profile file is empty.
+// Return true is the size of the profile is 0 or if there were errors when
+// trying to open the profile.
+static bool IsProfileEmpty(const std::string& location) {
+  if (location.empty()) {
+    return true;
+  }
+
+  struct stat stat_buffer;
+  if (stat(location.c_str(), &stat_buffer) != 0) {
+    if (VLOG_IS_ON(profiler)) {
+      PLOG(WARNING) << "Failed to stat profile location for IsFirstUse: " << location;
+    }
+    return true;
+  }
+
+  VLOG(profiler) << "Profile " << location << " size=" << stat_buffer.st_size;
+  return stat_buffer.st_size == 0;
+}
+
 bool ProfileSaver::IsFirstSave() {
-  // Resolve any new registered locations.
-  ResolveTrackedLocations();
   Thread* self = Thread::Current();
-  SafeMap<std::string, std::set<std::string>> tracked_locations;
+  SafeMap<std::string, std::string> tracked_locations;
   {
     // Make a copy so that we don't hold the lock while doing I/O.
     MutexLock mu(self, *Locks::profiler_lock_);
-    tracked_locations = tracked_dex_base_locations_;
+    tracked_locations = tracked_profiles_;
   }
 
   for (const auto& it : tracked_locations) {
     if (ShuttingDown(self)) {
       return false;
     }
-    const std::set<std::string>& locations = it.second;
+    const std::string& cur_profile = it.first;
+    const std::string& ref_profile = it.second;
 
     // Check if any profile is non empty. If so, then this is not the first save.
-    for (const auto& location : locations) {
-      struct stat stat_buffer;
-      if (stat(location.c_str(), &stat_buffer) != 0) {
-        if (VLOG_IS_ON(profiler)) {
-          PLOG(WARNING) << "Failed to stat profile location for IsFirstUse: " << location;
-        }
-        continue;
-      }
-      if (stat_buffer.st_size > 0) {
-        return false;
-      } else {
-        VLOG(profiler) << "Profile location is empty: " << location;
-      }
+    if (!IsProfileEmpty(cur_profile) || !IsProfileEmpty(ref_profile)) {
+      return false;
     }
   }
 
@@ -990,9 +992,10 @@ static bool ShouldProfileLocation(const std::string& location, bool profile_aot_
 }
 
 void  ProfileSaver::Start(const ProfileSaverOptions& options,
-                         const std::string& output_filename,
-                         jit::JitCodeCache* jit_code_cache,
-                         const std::vector<std::string>& code_paths) {
+                          const std::string& output_filename,
+                          jit::JitCodeCache* jit_code_cache,
+                          const std::vector<std::string>& code_paths,
+                          const std::string& ref_profile_filename) {
   Runtime* const runtime = Runtime::Current();
   DCHECK(options.IsEnabled());
   DCHECK(runtime->GetJit() != nullptr);
@@ -1045,17 +1048,16 @@ void  ProfileSaver::Start(const ProfileSaverOptions& options,
     // apps which share the same runtime).
     DCHECK_EQ(instance_->jit_code_cache_, jit_code_cache);
     // Add the code_paths to the tracked locations.
-    instance_->AddTrackedLocations(output_filename, code_paths_to_profile);
+    instance_->AddTrackedLocations(output_filename, code_paths_to_profile, ref_profile_filename);
     return;
   }
 
   VLOG(profiler) << "Starting profile saver using output file: " << output_filename
-      << ". Tracking: " << android::base::Join(code_paths_to_profile, ':');
+      << ". Tracking: " << android::base::Join(code_paths_to_profile, ':')
+      << ". With reference profile: " << ref_profile_filename;
 
-  instance_ = new ProfileSaver(options,
-                               output_filename,
-                               jit_code_cache,
-                               code_paths_to_profile);
+  instance_ = new ProfileSaver(options, jit_code_cache);
+  instance_->AddTrackedLocations(output_filename, code_paths, ref_profile_filename);
 
   // Create a new thread which does the saving.
   CHECK_PTHREAD_CALL(
@@ -1159,7 +1161,14 @@ static void AddTrackedLocationsToMap(const std::string& output_filename,
 }
 
 void ProfileSaver::AddTrackedLocations(const std::string& output_filename,
-                                       const std::vector<std::string>& code_paths) {
+                                       const std::vector<std::string>& code_paths,
+                                       const std::string& ref_profile_filename) {
+  // Register the output profile and its reference profile.
+  auto it = tracked_profiles_.find(output_filename);
+  if (it == tracked_profiles_.end()) {
+    tracked_profiles_.Put(output_filename, ref_profile_filename);
+  }
+
   // Add the code paths to the list of tracked location.
   AddTrackedLocationsToMap(output_filename, code_paths, &tracked_dex_base_locations_);
   // The code paths may contain symlinks which could fool the profiler.

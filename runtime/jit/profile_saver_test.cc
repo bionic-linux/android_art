@@ -44,9 +44,8 @@ class ProfileSaverTest : public CommonRuntimeTest {
     const std::string fake_file = "fake_file";
     profile_saver_ = new ProfileSaver(
         runtime->GetJITOptions()->GetProfileSaverOptions(),
-        fake_file,
-        runtime->GetJitCodeCache(),
-        code_paths);
+        runtime->GetJitCodeCache());
+    profile_saver_->AddTrackedLocations(fake_file, code_paths);
   }
 
   ~ProfileSaverTest() {
