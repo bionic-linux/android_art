@@ -254,6 +254,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c206d72_e9a64b3b",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-02T16:00:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbabe5ca_3f176870",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 63
+      },
+      "revId": "27b8eecda537731924097f93cf2ace8cd28ebb26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcb029cd_5b9a743d",
