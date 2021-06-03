@@ -714,6 +714,11 @@
         "variant": "gcstress & target & debug"
     },
     {
+        "tests": ["2040-huge-native-alloc"],
+        "variant": "gcstress",
+        "description": [ "Checks exact GC timing; can't work with gcstress" ]
+    },
+    {
         "tests": ["905-object-free"],
         "description": [ "Flake on gcstress" ],
         "bug": "b/62562923",
