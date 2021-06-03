@@ -16,6 +16,23 @@
       "message": "fixed a typo in the last PS.",
       "revId": "7f51b54ae77b4b878b2f1c6165ae7cadf7d1e019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1b39c5_1f3638e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-03T19:24:02Z",
+      "side": 1,
+      "message": "Self +2 after a lint-typo update.",
+      "revId": "7f51b54ae77b4b878b2f1c6165ae7cadf7d1e019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
