@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b2be85a_e1d9f58d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-04T01:24:22Z",
+      "side": 1,
+      "message": "The first version was not quite ready, sry about that.\n\nThe logic needed a bit more work and additional support in installd and AndroidRuntime.cpp:\n- the ref profile needs read permission on the group\n- the property needs to be passed to ART from AndroidRuntime.cpp.\n\nptal",
+      "revId": "51bf4a5c45daed6782b6b996d562cbffe1357a51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
