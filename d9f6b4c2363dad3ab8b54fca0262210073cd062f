@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8005d11_e17d833d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-07T18:43:44Z",
+      "side": 1,
+      "message": "Found the root cause for the test failure. It was a typo when registering the paths.",
+      "revId": "d9f6b4c2363dad3ab8b54fca0262210073cd062f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
