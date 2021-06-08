@@ -319,7 +319,7 @@ static void ZygoteHooks_nativePostForkChild(JNIEnv* env,
   }
 
   if ((runtime_flags & ONLY_USE_SYSTEM_OAT_FILES) != 0 || is_system_server) {
-    runtime->GetOatFileManager().SetOnlyUseSystemOatFiles();
+    runtime->GetOatFileManager().SetOnlyUseTrustedOatFiles();
     runtime_flags &= ~ONLY_USE_SYSTEM_OAT_FILES;
   }
 

@@ -75,7 +75,7 @@ const OatFile* OatFileManager::RegisterOatFile(std::unique_ptr<const OatFile> oa
 
   WriterMutexLock mu(Thread::Current(), *Locks::oat_file_manager_lock_);
   CHECK(!only_use_system_oat_files_ ||
-        LocationIsOnSystem(oat_file->GetLocation().c_str()) ||
+        LocationIsTrusted(oat_file->GetLocation()) ||
         !oat_file->IsExecutable())
       << "Registering a non /system oat file: " << oat_file->GetLocation();
   DCHECK(oat_file != nullptr);
@@ -803,7 +803,7 @@ void OatFileManager::WaitForBackgroundVerificationTasks() {
   }
 }
 
-void OatFileManager::SetOnlyUseSystemOatFiles() {
+void OatFileManager::SetOnlyUseTrustedOatFiles() {
   ReaderMutexLock mu(Thread::Current(), *Locks::oat_file_manager_lock_);
   // Make sure all files that were loaded up to this point are on /system.
   // Skip the image files as they can encode locations that don't exist (eg not
@@ -813,7 +813,7 @@ void OatFileManager::SetOnlyUseSystemOatFiles() {
 
   for (const std::unique_ptr<const OatFile>& oat_file : oat_files_) {
     if (boot_set.find(oat_file.get()) == boot_set.end()) {
-      if (!LocationIsOnSystem(oat_file->GetLocation().c_str())) {
+      if (!LocationIsTrusted(oat_file->GetLocation())) {
         // When the file is not on system, we check whether the oat file has any
         // AOT or DEX code. It is a fatal error if it has.
         if (CompilerFilter::IsAotCompilationEnabled(oat_file->GetCompilerFilter()) ||
