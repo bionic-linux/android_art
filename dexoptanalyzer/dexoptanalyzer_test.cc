@@ -16,11 +16,15 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "arch/instruction_set.h"
 #include "base/compiler_filter.h"
 #include "dexopt_test.h"
+#include "dexoptanalyzer.h"
 
 namespace art {
+namespace dexoptanalyzer {
 
 class DexoptAnalyzerTest : public DexoptTest {
  protected:
@@ -35,7 +39,7 @@ class DexoptAnalyzerTest : public DexoptTest {
 
   int Analyze(const std::string& dex_file,
               CompilerFilter::Filter compiler_filter,
-              bool assume_profile_changed,
+              ProfileAnalysisResult profile_analysis_result,
               const char* class_loader_context) {
     std::string dexoptanalyzer_cmd = GetDexoptAnalyzerCmd();
     std::vector<std::string> argv_str;
@@ -43,9 +47,9 @@ class DexoptAnalyzerTest : public DexoptTest {
     argv_str.push_back("--dex-file=" + dex_file);
     argv_str.push_back("--isa=" + std::string(GetInstructionSetString(kRuntimeISA)));
     argv_str.push_back("--compiler-filter=" + CompilerFilter::NameOfFilter(compiler_filter));
-    if (assume_profile_changed) {
-      argv_str.push_back("--assume-profile-changed");
-    }
+    argv_str.push_back("--profile-analysis-result=" +
+        std::to_string(static_cast<int>(profile_analysis_result)));
+
     argv_str.push_back("--runtime-arg");
     argv_str.push_back(GetClassPathOption("-Xbootclasspath:", GetLibCoreDexFileNames()));
     argv_str.push_back("--runtime-arg");
@@ -76,7 +80,7 @@ class DexoptAnalyzerTest : public DexoptTest {
   // as the output of OatFileAssistant::GetDexOptNeeded.
   void Verify(const std::string& dex_file,
               CompilerFilter::Filter compiler_filter,
-              bool assume_profile_changed = false,
+              ProfileAnalysisResult profile_analysis_result = ProfileAnalysisResult::kDontOptimizeSmallDelta,
               bool downgrade = false,
               const char* class_loader_context = "PCL[]") {
     std::unique_ptr<ClassLoaderContext> context = class_loader_context == nullptr
@@ -88,12 +92,13 @@ class DexoptAnalyzerTest : public DexoptTest {
     }
 
     int dexoptanalyzerResult = Analyze(
-        dex_file, compiler_filter, assume_profile_changed, class_loader_context);
+        dex_file, compiler_filter, profile_analysis_result, class_loader_context);
     dexoptanalyzerResult = DexoptanalyzerToOatFileAssistant(dexoptanalyzerResult);
     OatFileAssistant oat_file_assistant(dex_file.c_str(),
                                         kRuntimeISA,
                                         context.get(),
                                         /*load_executable=*/ false);
+    bool assume_profile_changed = profile_analysis_result == ProfileAnalysisResult::kOptimize;
     int assistantResult = oat_file_assistant.GetDexOptNeeded(
         compiler_filter, assume_profile_changed, downgrade);
     EXPECT_EQ(assistantResult, dexoptanalyzerResult);
@@ -111,7 +116,7 @@ TEST_F(DexoptAnalyzerTest, DexNoOat) {
   Verify(dex_location, CompilerFilter::kExtract);
   Verify(dex_location, CompilerFilter::kVerify);
   Verify(dex_location, CompilerFilter::kSpeedProfile);
-  Verify(dex_location, CompilerFilter::kSpeed, false, false, nullptr);
+  Verify(dex_location, CompilerFilter::kSpeed, ProfileAnalysisResult::kDontOptimizeSmallDelta, false, nullptr);
 }
 
 // Case: We have a DEX file and up-to-date OAT file for it.
@@ -124,7 +129,7 @@ TEST_F(DexoptAnalyzerTest, OatUpToDate) {
   Verify(dex_location, CompilerFilter::kVerify);
   Verify(dex_location, CompilerFilter::kExtract);
   Verify(dex_location, CompilerFilter::kEverything);
-  Verify(dex_location, CompilerFilter::kSpeed, false, false, nullptr);
+  Verify(dex_location, CompilerFilter::kSpeed, ProfileAnalysisResult::kDontOptimizeSmallDelta, false, nullptr);
 }
 
 // Case: We have a DEX file and speed-profile OAT file for it.
@@ -133,10 +138,38 @@ TEST_F(DexoptAnalyzerTest, ProfileOatUpToDate) {
   Copy(GetDexSrc1(), dex_location);
   GenerateOatForTest(dex_location.c_str(), CompilerFilter::kSpeedProfile);
 
-  Verify(dex_location, CompilerFilter::kSpeedProfile, false);
-  Verify(dex_location, CompilerFilter::kVerify, false);
-  Verify(dex_location, CompilerFilter::kSpeedProfile, true);
-  Verify(dex_location, CompilerFilter::kVerify, true);
+  Verify(dex_location, CompilerFilter::kSpeedProfile, ProfileAnalysisResult::kDontOptimizeSmallDelta);
+  Verify(dex_location, CompilerFilter::kVerify, ProfileAnalysisResult::kDontOptimizeSmallDelta);
+  Verify(dex_location, CompilerFilter::kSpeedProfile, ProfileAnalysisResult::kOptimize);
+  Verify(dex_location, CompilerFilter::kVerify, ProfileAnalysisResult::kOptimize);
+}
+
+// Case: We have a DEX file, verify odex file for it, and we ask if it's up to date
+// when the profiles are empty or full.
+TEST_F(DexoptAnalyzerTest, VerifyAndEmptyProfiles) {
+  std::string dex_location = GetScratchDir() + "/VerifyAndEmptyProfiles.jar";
+  std::string odex_location = GetOdexDir() + "/VerifyAndEmptyProfiles.odex";
+  Copy(GetDexSrc1(), dex_location);
+
+  GenerateOdexForTest(dex_location.c_str(), odex_location.c_str(), CompilerFilter::kVerify);
+
+  using PAR = ProfileAnalysisResult;
+  // If we want to speed-profile something that was verified, do it even if
+  // the profile analysis returns kDontOptimizeSmallDelta (it means that we do have profile data,
+  // so a transition verify -> speed-profile is still worth).
+  ASSERT_EQ(
+      static_cast<int>(ReturnCode::kDex2OatForFilterOdex),
+      Analyze(dex_location, CompilerFilter::kSpeedProfile, PAR::kDontOptimizeSmallDelta, "PCL[]"));
+  // If we want to speed-profile something that was verified but the profiles are empty,
+  // don't do it - there will be no gain.
+  ASSERT_EQ(
+      static_cast<int>(ReturnCode::kNoDexOptNeeded),
+      Analyze(dex_location, CompilerFilter::kSpeedProfile, PAR::kDontOptimizeEmptyProfiles, "PCL[]"));
+  // Standard case where we need to re-compile a speed-profile because of sufficient new
+  // information in the profile.
+  ASSERT_EQ(
+      static_cast<int>(ReturnCode::kDex2OatForFilterOdex),
+      Analyze(dex_location, CompilerFilter::kSpeedProfile, PAR::kOptimize, "PCL[]"));
 }
 
 TEST_F(DexoptAnalyzerTest, Downgrade) {
@@ -144,9 +177,9 @@ TEST_F(DexoptAnalyzerTest, Downgrade) {
   Copy(GetDexSrc1(), dex_location);
   GenerateOatForTest(dex_location.c_str(), CompilerFilter::kVerify);
 
-  Verify(dex_location, CompilerFilter::kSpeedProfile, false, true);
-  Verify(dex_location, CompilerFilter::kVerify, false, true);
-  Verify(dex_location, CompilerFilter::kExtract, false, true);
+  Verify(dex_location, CompilerFilter::kSpeedProfile, ProfileAnalysisResult::kDontOptimizeSmallDelta, true);
+  Verify(dex_location, CompilerFilter::kVerify, ProfileAnalysisResult::kDontOptimizeSmallDelta, true);
+  Verify(dex_location, CompilerFilter::kExtract, ProfileAnalysisResult::kDontOptimizeSmallDelta, true);
 }
 
 // Case: We have a MultiDEX file and up-to-date OAT file for it.
@@ -155,7 +188,7 @@ TEST_F(DexoptAnalyzerTest, MultiDexOatUpToDate) {
   Copy(GetMultiDexSrc1(), dex_location);
   GenerateOatForTest(dex_location.c_str(), CompilerFilter::kSpeed);
 
-  Verify(dex_location, CompilerFilter::kSpeed, false);
+  Verify(dex_location, CompilerFilter::kSpeed, ProfileAnalysisResult::kDontOptimizeSmallDelta);
 }
 
 // Case: We have a MultiDEX file where the secondary dex file is out of date.
@@ -170,7 +203,7 @@ TEST_F(DexoptAnalyzerTest, MultiDexSecondaryOutOfDate) {
   // is out of date.
   Copy(GetMultiDexSrc2(), dex_location);
 
-  Verify(dex_location, CompilerFilter::kSpeed, false);
+  Verify(dex_location, CompilerFilter::kSpeed, ProfileAnalysisResult::kDontOptimizeSmallDelta);
 }
 
 
@@ -303,6 +336,9 @@ TEST_F(DexoptAnalyzerTest, ClassLoaderContext) {
   // Generate the odex to get the class loader context also open the dex files.
   GenerateOdexForTest(dex_location1, odex_location1, CompilerFilter::kSpeed, /* compilation_reason= */ nullptr, /* extra_args= */ { class_loader_context_option });
 
-  Verify(dex_location1, CompilerFilter::kSpeed, false, false, class_loader_context.c_str());
+  Verify(dex_location1, CompilerFilter::kSpeed, ProfileAnalysisResult::kDontOptimizeSmallDelta,
+      false, class_loader_context.c_str());
 }
+
+}  // namespace dexoptanalyzer
 }  // namespace art
