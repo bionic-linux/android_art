@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee474644_beb167a6",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba37ab1_1f3de31a",
+      "range": {
+        "startLine": 321,
+        "startChar": 32,
+        "endLine": 321,
+        "endChar": 38
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2737d53_b54cbcb3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T13:39:29Z",
       "side": 1,
       "message": "drop",
+      "range": {
+        "startLine": 111,
+        "startChar": 43,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f007b9_21078a37",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2737d53_b54cbcb3",
       "range": {
         "startLine": 111,
         "startChar": 43,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75986ac_3c14420d",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef252844_cafefda8",
+      "range": {
+        "startLine": 817,
+        "startChar": 32,
+        "endLine": 817,
+        "endChar": 41
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7a29b4_f4442c1b",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f182358b_1b4bafc4",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7a29b4_f4442c1b",
+      "range": {
+        "startLine": 1929,
+        "startChar": 9,
+        "endLine": 1929,
+        "endChar": 30
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47d556b7_30fec46a",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-08T13:39:29Z",
       "side": 1,
       "message": "the?",
+      "range": {
+        "startLine": 157,
+        "startChar": 74,
+        "endLine": 157,
+        "endChar": 75
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b8c948_2c92fc05",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d556b7_30fec46a",
       "range": {
         "startLine": 157,
         "startChar": 74,
@@ -152,6 +272,54 @@
       "writtenOn": "2021-06-08T13:39:29Z",
       "side": 1,
       "message": "Wouldn\u0027t this test pass with the old behavior? I don\u0027t see where we make sure eg services.art is always loaded?",
+      "range": {
+        "startLine": 162,
+        "startChar": 55,
+        "endLine": 162,
+        "endChar": 57
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9204d0be_c83b0daa",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe2edf02_52ee7fd4",
+      "range": {
+        "startLine": 162,
+        "startChar": 58,
+        "endLine": 162,
+        "endChar": 62
+      },
+      "revId": "a4b3aaae2b3964a964cb550e61e6d748bcb36f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c096397b_60a91499",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-08T16:32:41Z",
+      "side": 1,
+      "message": "Comment added above where we iterate over the system_server classpath and check artifacts are loaded. Look for classpathElements.",
+      "parentUuid": "bca3eb63_14df091a",
       "range": {
         "startLine": 162,
         "startChar": 55,
