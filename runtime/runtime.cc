@@ -1926,9 +1926,10 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
 
   VLOG(startup) << "Runtime::Init exiting";
 
-  // Set OnlyUseSystemOatFiles only after boot classpath has been set up.
+  // Set OnlyUseTrustedOatFiles only after the boot classpath has been set up.
+  // NB the legacy command-line option is `OnlyUseSystemOatFiles` as this initially there
   if (runtime_options.Exists(Opt::OnlyUseSystemOatFiles)) {
-    oat_file_manager_->SetOnlyUseSystemOatFiles();
+    oat_file_manager_->SetOnlyUseTrustedOatFiles();
   }
 
   return true;
