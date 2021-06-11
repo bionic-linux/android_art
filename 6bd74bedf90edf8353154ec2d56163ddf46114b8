@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53634bf_f0bf0791",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-06-11T15:06:58Z",
+      "side": 1,
+      "message": "8-bit displacements have range [-128, +128), so you\u0027re not testing the case where `disp0` is 32-bit and `disp0 + disp` is non-zero 8-bit. Add something like `+140, -140`, or maybe replace `256, -256` with that.",
+      "range": {
+        "startLine": 1332,
+        "startChar": 53,
+        "endLine": 1332,
+        "endChar": 74
+      },
+      "revId": "6bd74bedf90edf8353154ec2d56163ddf46114b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
