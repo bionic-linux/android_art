@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63ea651_c387f674",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2823,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-11T09:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642078bd_fff520f2",
+      "range": {
+        "startLine": 2823,
+        "startChar": 2,
+        "endLine": 2823,
+        "endChar": 6
+      },
+      "revId": "a6f1ee5d44aa5a027ac8276b26afae1f2186d838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce05d6b4_d75b651b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-11T08:36:52Z",
       "side": 1,
       "message": "Pull out of the `if` to share with the other path.",
+      "range": {
+        "startLine": 2832,
+        "startChar": 4,
+        "endLine": 2832,
+        "endChar": 39
+      },
+      "revId": "a6f1ee5d44aa5a027ac8276b26afae1f2186d838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea34bc57_18122ec2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2832,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-11T09:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce05d6b4_d75b651b",
       "range": {
         "startLine": 2832,
         "startChar": 4,
