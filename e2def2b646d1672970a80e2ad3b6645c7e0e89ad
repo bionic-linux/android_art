@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6408e0_58e774e6",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-11T09:42:49Z",
+      "side": 1,
+      "message": "Add ScopedAssertNoThreadSuspension here too?",
+      "revId": "e2def2b646d1672970a80e2ad3b6645c7e0e89ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
