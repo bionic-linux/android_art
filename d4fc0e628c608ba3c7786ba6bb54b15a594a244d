@@ -22,6 +22,30 @@
       },
       "revId": "d4fc0e628c608ba3c7786ba6bb54b15a594a244d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3087f611_6fbef096",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-06-14T14:27:09Z",
+      "side": 1,
+      "message": "Oh right, I though Compressed APEXes were enabled unconditionally for all products; thanks for the heads-up! Yeah, I\u0027ll use the Soong variable `PRODUCT_COMPRESSED_APEX` as condition here.",
+      "parentUuid": "6388b7de_f0032b83",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 188,
+        "endChar": 8
+      },
+      "revId": "d4fc0e628c608ba3c7786ba6bb54b15a594a244d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
