@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7350d301_21f5c741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-06-14T10:05:45Z",
+      "side": 1,
+      "message": "Do we need this for anything on x86-64? Or are you adding it for feature parity with the x86 assembler?",
+      "revId": "962d1044804fbb9b54dd247aed4ccb8c97ca3c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
