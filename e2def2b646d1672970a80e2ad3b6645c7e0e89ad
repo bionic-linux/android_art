@@ -34,6 +34,24 @@
       "parentUuid": "4f6408e0_58e774e6",
       "revId": "e2def2b646d1672970a80e2ad3b6645c7e0e89ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63155a4_e926c868",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-14T09:10:21Z",
+      "side": 1,
+      "message": "Curious: because if the DCHECK Fails we can suspend?",
+      "parentUuid": "b9586f56_41ab8dd2",
+      "revId": "e2def2b646d1672970a80e2ad3b6645c7e0e89ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
