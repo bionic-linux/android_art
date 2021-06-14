@@ -16,6 +16,24 @@
       "message": "Do we need this for anything on x86-64? Or are you adding it for feature parity with the x86 assembler?",
       "revId": "962d1044804fbb9b54dd247aed4ccb8c97ca3c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35f645d_0a64971d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-14T10:32:02Z",
+      "side": 1,
+      "message": "For VarHandles.set(), it will be used in HandleField set in the same way as for x86. I have the code for set() alreaady but need to clean up a few things before uploading.",
+      "parentUuid": "7350d301_21f5c741",
+      "revId": "962d1044804fbb9b54dd247aed4ccb8c97ca3c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
