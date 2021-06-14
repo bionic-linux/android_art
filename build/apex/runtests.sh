@@ -180,7 +180,12 @@ for apex_module in ${apex_modules[@]}; do
       apex_path="$ANDROID_PRODUCT_OUT/system/apex/${apex_module}"
       art_apex_test_args="$art_apex_test_args --flattened"
     else
-      apex_path="$ANDROID_PRODUCT_OUT/system/apex/${apex_module}.apex"
+      if [[ $apex_module = *.testing ]]; then
+        # Note: The Testing ART APEX is not a Compressed APEX.
+        apex_path="$ANDROID_PRODUCT_OUT/system/apex/${apex_module}.apex"
+      else
+        apex_path="$ANDROID_PRODUCT_OUT/system/apex/${apex_module}.capex"
+      fi
     fi
     if $have_deapexer_p; then
       art_apex_test_args="$art_apex_test_args --deapexer $ANDROID_HOST_OUT/bin/deapexer"
