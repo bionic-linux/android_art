@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6388b7de_f0032b83",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-14T14:21:43Z",
+      "side": 1,
+      "message": "This depends on PRODUCT_COMPRESSED_APEX, and I\u0027m not sure it\u0027s enabled for all builds. E.g. for the module builds where we create prebuilts for dropping it isn\u0027t, afaik. What do you think about querying Soong for PRODUCT_COMPRESSED_APEX instead?",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 188,
+        "endChar": 8
+      },
+      "revId": "d4fc0e628c608ba3c7786ba6bb54b15a594a244d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
