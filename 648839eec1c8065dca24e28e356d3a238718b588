@@ -16,6 +16,24 @@
       "message": "Appears to fail in 536-checker-needs-access-check.",
       "revId": "648839eec1c8065dca24e28e356d3a238718b588",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa61ab51_04c5f878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-16T21:52:25Z",
+      "side": 1,
+      "message": "Yes, that\u0027s expected. The fix for it is here:\nhttps://android-review.googlesource.com/c/platform/art/+/1737796",
+      "parentUuid": "0f684c64_951880d0",
+      "revId": "648839eec1c8065dca24e28e356d3a238718b588",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
