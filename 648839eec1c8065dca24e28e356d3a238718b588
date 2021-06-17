@@ -34,6 +34,29 @@
       "parentUuid": "0f684c64_951880d0",
       "revId": "648839eec1c8065dca24e28e356d3a238718b588",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4498b48_08a40503",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3542,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-17T11:51:15Z",
+      "side": 1,
+      "message": "Add a comment before along the lines of the one in image_writer.cc:\n\n// The nterp trampoline doesn\u0027t do initialization checks, so install the\n// resolution stub if needed.",
+      "range": {
+        "startLine": 3542,
+        "startChar": 0,
+        "endLine": 3542,
+        "endChar": 47
+      },
+      "revId": "648839eec1c8065dca24e28e356d3a238718b588",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
