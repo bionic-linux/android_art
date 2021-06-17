@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71f1210c_159cf9ec",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T09:31:00Z",
+      "side": 1,
+      "message": "How does this work in a build with OVERRIDE_TARGET_FLATTEN_APEX\u003dfalse OVERRIDE_PRODUCT_COMPRESSED_APEX\u003dfalse?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 36,
+        "endLine": 1037,
+        "endChar": 41
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0348341b_bcdcc58b",
         "filename": "build/apex/runtests.sh",
         "patchSetId": 3
@@ -48,6 +71,30 @@
       "writtenOn": "2021-06-17T08:58:16Z",
       "side": 1,
       "message": "consistent formatting for the continuation characters?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81785b65_4e8e87e8",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T09:31:00Z",
+      "side": 1,
+      "message": "I suggest this instead, to cut down on the Soong invocations: https://cs.android.com/android/platform/superproject/+/master:art/build/build-art-module.sh;l\u003d94-98;drc\u003de82d69a7b459b6bbd25fe880ab818e389e4c20a6",
+      "parentUuid": "0348341b_bcdcc58b",
       "range": {
         "startLine": 44,
         "startChar": 0,
