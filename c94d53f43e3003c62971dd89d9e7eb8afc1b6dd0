@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a9d2b3_9c8b5d12",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T22:23:54Z",
+      "side": 1,
+      "message": "Yeah, get rid of it SGTM.",
+      "parentUuid": "04198195_5b34190a",
+      "range": {
+        "startLine": 1037,
+        "startChar": 36,
+        "endLine": 1037,
+        "endChar": 41
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0348341b_bcdcc58b",
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "I fixed the style issue, but kept the original logic, as I think it\u0027s better w.r.t. error handling.",
       "parentUuid": "81785b65_4e8e87e8",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05328b5_8e815ee1",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T22:23:54Z",
+      "side": 1,
+      "message": "I don\u0027t see any difference in error handling - both abort if Soong fails. The example I pointed at does it through the -e argument (which I think is overall better practice in scripts), but you can add corresponding \"|| setup_die\" into it as well.",
+      "parentUuid": "9e976f0c_a286607f",
       "range": {
         "startLine": 44,
         "startChar": 0,
