@@ -46,6 +46,30 @@
       },
       "revId": "922fc6422c750ab95150d2e2d9d3177ec808ca4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d5d16c_3605bd23",
+        "filename": "test/536-checker-needs-access-check/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-17T14:35:43Z",
+      "side": 1,
+      "message": "Yes, I was thinking there should be a comment for the first pass and second pass, but it\u0027s okay as-is really.",
+      "parentUuid": "c59a426b_ec1f070b",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 63
+      },
+      "revId": "922fc6422c750ab95150d2e2d9d3177ec808ca4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
