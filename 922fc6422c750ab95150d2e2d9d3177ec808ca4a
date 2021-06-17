@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba75c8a7_a55ae800",
+        "filename": "test/536-checker-needs-access-check/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-06-17T11:45:18Z",
+      "side": 1,
+      "message": "where did the classes get initialized in these lines?",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 63
+      },
+      "revId": "922fc6422c750ab95150d2e2d9d3177ec808ca4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
