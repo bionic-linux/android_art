@@ -22,6 +22,30 @@
       },
       "revId": "922fc6422c750ab95150d2e2d9d3177ec808ca4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59a426b_ec1f070b",
+        "filename": "test/536-checker-needs-access-check/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-17T12:48:26Z",
+      "side": 1,
+      "message": "The calls within InaccessibleClassProxy.testGetReferrersClass and InaccessibleClassProxy.testGetReferrersClassViaAnotherClass lines 52 and 53 will initialize all classes of the test.",
+      "parentUuid": "ba75c8a7_a55ae800",
+      "range": {
+        "startLine": 55,
+        "startChar": 34,
+        "endLine": 55,
+        "endChar": 63
+      },
+      "revId": "922fc6422c750ab95150d2e2d9d3177ec808ca4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
