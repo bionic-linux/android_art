@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04198195_5b34190a",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-06-17T18:04:14Z",
+      "side": 1,
+      "message": "I don\u0027t think this works, but neither does the host or flattened APEX cases (see comments in above lines). I think this is fine because we don\u0027t really use this code path in practice.\n\nI just made this change for consistency, but we should really either fix this logic (in a separate CL) or get rid of it.",
+      "parentUuid": "71f1210c_159cf9ec",
+      "range": {
+        "startLine": 1037,
+        "startChar": 36,
+        "endLine": 1037,
+        "endChar": 41
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0348341b_bcdcc58b",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "I suggest this instead, to cut down on the Soong invocations: https://cs.android.com/android/platform/superproject/+/master:art/build/build-art-module.sh;l\u003d94-98;drc\u003de82d69a7b459b6bbd25fe880ab818e389e4c20a6",
       "parentUuid": "0348341b_bcdcc58b",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e976f0c_a286607f",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-06-17T18:04:14Z",
+      "side": 1,
+      "message": "I fixed the style issue, but kept the original logic, as I think it\u0027s better w.r.t. error handling.",
+      "parentUuid": "81785b65_4e8e87e8",
       "range": {
         "startLine": 44,
         "startChar": 0,
