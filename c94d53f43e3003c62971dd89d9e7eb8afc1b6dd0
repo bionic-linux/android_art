@@ -223,6 +223,30 @@
       },
       "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03631ceb_d3d54752",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T10:52:37Z",
+      "side": 1,
+      "message": "Aha, well, if you think that\u0027s useful - imo it\u0027s quite unlikely to have an error that affects one query but not the other.",
+      "parentUuid": "6309a0a3_98c24cdd",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "c94d53f43e3003c62971dd89d9e7eb8afc1b6dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
