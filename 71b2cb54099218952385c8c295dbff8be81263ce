@@ -16,6 +16,24 @@
       "message": "We used to initialize the old field assume_profile_changed_ in the constructor.  But we don\u0027t initialize the new field profile_analysis_result_ in the constructor.  From my quick reading of the code, if looks like if the option `--profile-analysis-result\u003d` is not used in invoking the tool, then profile_analysis_result_ will be used uninitialized.\n\nI don\u0027t know if we\u0027re able to assure that command line option is always used, so this isn\u0027t really a concern.  But naively, it seems like we might want to initialize profile_analysis_result_ in the constructor, to assure consistent behavior if that command line option is not used.",
       "revId": "71b2cb54099218952385c8c295dbff8be81263ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c48fc26_890f48eb",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-21T17:43:50Z",
+      "side": 0,
+      "message": "Thanks Greg. That was an oversight. Semantically we always pass the flag when needed, but we should not rely on that.",
+      "parentUuid": "cab021cc_758293ad",
+      "revId": "71b2cb54099218952385c8c295dbff8be81263ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
