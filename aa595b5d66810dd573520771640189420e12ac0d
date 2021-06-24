@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81accfc_0224a3c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2021-06-24T18:06:29Z",
+      "side": 1,
+      "message": "CFI_RESTORE_STATE_AND_DEF_CFA used in other files are also relevant? as in https://cs.android.com/search?q\u003dCFI_RESTORE_STATE_AND_DEF_CFA\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "revId": "aa595b5d66810dd573520771640189420e12ac0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
