@@ -2274,7 +2274,10 @@ ALWAYS_INLINE void ProfileCompilationInfo::DexFileData::ForMethodBitmapHotnessFl
       // We store the hotness by recording the method in the method list.
       continue;
     }
-    fn(enum_cast<MethodHotness::Flag>(flag));
+    bool cont = fn(enum_cast<MethodHotness::Flag>(flag));
+    if (!cont) {
+      break;
+    }
   }
 }
 
@@ -2286,6 +2289,7 @@ void ProfileCompilationInfo::DexFileData::SetMethodHotness(size_t index,
       method_bitmap.StoreBit(MethodFlagBitmapIndex(
           static_cast<MethodHotness::Flag>(flag), index), /*value=*/ true);
     }
+    return true;
   });
 }
 
@@ -2294,9 +2298,10 @@ ProfileCompilationInfo::MethodHotness ProfileCompilationInfo::DexFileData::GetHo
   MethodHotness ret;
   ForMethodBitmapHotnessFlags([&](MethodHotness::Flag flag) {
     if (method_bitmap.LoadBit(MethodFlagBitmapIndex(
-          static_cast<MethodHotness::Flag>(flag), dex_method_index))) {
+            static_cast<MethodHotness::Flag>(flag), dex_method_index))) {
       ret.AddFlag(static_cast<MethodHotness::Flag>(flag));
     }
+    return true;
   });
   auto it = method_map.find(dex_method_index);
   if (it != method_map.end()) {
@@ -2350,6 +2355,7 @@ uint16_t ProfileCompilationInfo::DexFileData::GetUsedBitmapFlags() const {
     if (method_bitmap.HasSomeBitSet(index * num_method_ids, num_method_ids)) {
       used_flags |= flag;
     }
+    return true;
   });
   return dchecked_integral_cast<uint16_t>(used_flags);
 }
@@ -2460,6 +2466,31 @@ bool ProfileCompilationInfo::IsForBootImage() const {
 
 const uint8_t* ProfileCompilationInfo::GetVersion() const {
   return version_;
+}
+
+bool ProfileCompilationInfo::DexFileData::IsStartupMethod(uint32_t method_index) const {
+  DCHECK_LT(method_index, num_method_ids);
+  return method_bitmap.LoadBit(
+      MethodFlagBitmapIndex(MethodHotness::Flag::kFlagStartup, method_index));
+}
+
+bool ProfileCompilationInfo::DexFileData::IsHotMethod(uint32_t method_index) const {
+  DCHECK_LT(method_index, num_method_ids);
+  return method_map.find(method_index) != method_map.end();
+}
+
+bool ProfileCompilationInfo::DexFileData::IsMethodInProfile(uint32_t method_index) const {
+  DCHECK_LT(method_index, num_method_ids);
+  bool has_flag = false;
+  ForMethodBitmapHotnessFlags([&](MethodHotness::Flag flag) {
+    if (method_bitmap.LoadBit(MethodFlagBitmapIndex(
+            static_cast<MethodHotness::Flag>(flag), method_index))) {
+      has_flag = true;
+      return false;
+    }
+    return true;
+  });
+  return has_flag || IsHotMethod(method_index);
 }
 
 bool ProfileCompilationInfo::DexFileData::ContainsClass(dex::TypeIndex type_index) const {
@@ -2620,6 +2651,7 @@ void ProfileCompilationInfo::DexFileData::WriteMethods(SafeBuffer& buffer) const
       saved_bitmap.StoreBits(saved_bitmap_index * num_method_ids, src, num_method_ids);
       ++saved_bitmap_index;
     }
+    return true;
   });
   DCHECK_EQ(saved_bitmap_index * num_method_ids, saved_bitmap_bit_size);
   buffer.Advance(saved_bitmap_byte_size);
@@ -2723,6 +2755,7 @@ ProfileCompilationInfo::ProfileLoadStatus ProfileCompilationInfo::DexFileData::R
       method_bitmap.OrBits(index * num_method_ids, src, num_method_ids);
       ++saved_bitmap_index;
     }
+    return true;
   });
   buffer.Advance(saved_bitmap_byte_size);
 

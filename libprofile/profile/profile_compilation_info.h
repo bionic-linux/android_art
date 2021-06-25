@@ -300,6 +300,15 @@ class ProfileCompilationInfo {
     return std::numeric_limits<ProfileIndexType>::max();
   }
 
+  // Find a tracked dex file. Returns `MaxProfileIndex()` on failure, whether due to no records
+  // for the dex location or profile key, or checksum/num_type_ids/num_method_ids mismatch.
+  ProfileIndexType FindDexFile(
+      const DexFile& dex_file,
+      const ProfileSampleAnnotation& annotation = ProfileSampleAnnotation::kNone) const {
+    const DexFileData* data = FindDexDataUsingAnnotations(&dex_file, annotation);
+    return (data != nullptr) ? data->profile_index : MaxProfileIndex();
+  }
+
   // Find or add a tracked dex file. Returns `MaxProfileIndex()` on failure, whether due to
   // checksum/num_type_ids/num_method_ids mismatch or reaching the maximum number of dex files.
   ProfileIndexType FindOrAddDexFile(
@@ -485,6 +494,27 @@ class ProfileCompilationInfo {
   // Return the number of resolved classes that were profiled.
   uint32_t GetNumberOfResolvedClasses() const;
 
+  // Returns whether the referenced method is a startup method.
+  bool IsStartupMethod(ProfileIndexType profile_index, uint32_t method_index) const {
+    DCHECK_LT(profile_index, info_.size());
+    const DexFileData* const data = info_[profile_index].get();
+    return data->IsStartupMethod(method_index);
+  }
+
+  // Returns whether the referenced method is hot.
+  bool IsHotMethod(ProfileIndexType profile_index, uint32_t method_index) const {
+    DCHECK_LT(profile_index, info_.size());
+    const DexFileData* const data = info_[profile_index].get();
+    return data->IsHotMethod(method_index);
+  }
+
+  // Returns whether the referenced method is in the profile (with any hotness flag).
+  bool IsMethodInProfile(ProfileIndexType profile_index, uint32_t method_index) const {
+    DCHECK_LT(profile_index, info_.size());
+    const DexFileData* const data = info_[profile_index].get();
+    return data->IsMethodInProfile(method_index);
+  }
+
   // Returns the profile method info for a given method reference.
   //
   // Note that if the profile was built with annotations, the same dex file may be
@@ -497,6 +527,16 @@ class ProfileCompilationInfo {
   MethodHotness GetMethodHotness(
       const MethodReference& method_ref,
       const ProfileSampleAnnotation& annotation = ProfileSampleAnnotation::kNone) const;
+
+  // Return true if the class's type is present in the profiling info.
+  bool ContainsClass(ProfileIndexType profile_index, dex::TypeIndex type_index) const {
+    DCHECK_LT(profile_index, info_.size());
+    const DexFileData* const data = info_[profile_index].get();
+    DCHECK(type_index.IsValid());
+    DCHECK(type_index.index_ <= data->num_type_ids ||
+           type_index.index_ - data->num_type_ids < extra_descriptors_.size());
+    return data->class_set.find(type_index) != data->class_set.end();
+  }
 
   // Return true if the class's type is present in the profiling info.
   //
@@ -781,6 +821,10 @@ class ProfileCompilationInfo {
 
     void SetMethodHotness(size_t index, MethodHotness::Flag flags);
     MethodHotness GetHotnessInfo(uint32_t dex_method_index) const;
+
+    bool IsStartupMethod(uint32_t method_index) const;
+    bool IsHotMethod(uint32_t method_index) const;
+    bool IsMethodInProfile(uint32_t method_index) const;
 
     bool ContainsClass(dex::TypeIndex type_index) const;
 
