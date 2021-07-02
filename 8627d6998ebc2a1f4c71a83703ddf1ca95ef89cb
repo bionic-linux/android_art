@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f88ecd_81602769",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "Nit: I\u0027d avoid complex expressions in the `if` condition and rewrite as:\n\n bool method_enabled \u003d only_startup_strings\n     ? profile_compilation_info-\u003eIsStartupMethod(profile_index, method_index)\n     : profile_compilation_info-\u003eIsMethodInProfile(profile_index, method_index);\n if (!method_enabled) {\n   continue;\n }",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 0
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719ad8b9_3e25684a",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "Is size_t the best type for bits? Maybe use uint32_t to make sure it has fixed size on all platforms.",
+      "range": {
+        "startLine": 1050,
+        "startChar": 2,
+        "endLine": 1050,
+        "endChar": 8
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c7ee89_b205ded5",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "Can you add a comment when this might happen and why it is unlikely?",
+      "range": {
+        "startLine": 1163,
+        "startChar": 8,
+        "endLine": 1163,
+        "endChar": 53
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2b8ff9_eb7d2f51",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "Nit: this should be bitwise or (and below).",
+      "range": {
+        "startLine": 1224,
+        "startChar": 76,
+        "endLine": 1224,
+        "endChar": 77
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c6114e_360c4969",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "Factor out into a helper (to dedupe IsStartupMethod, IsPostStartupMethod, IsHotMethod, IsMethodInProfile and ContainsClass)?",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 0
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bba3aaf_eb561554",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-02T11:59:24Z",
+      "side": 1,
+      "message": "from?",
+      "range": {
+        "startLine": 938,
+        "startChar": 13,
+        "endLine": 938,
+        "endChar": 16
+      },
+      "revId": "8627d6998ebc2a1f4c71a83703ddf1ca95ef89cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
