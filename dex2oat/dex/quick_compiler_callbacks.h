@@ -59,8 +59,6 @@ class QuickCompilerCallbacks final : public CompilerCallbacks {
     DCHECK(!does_class_unloading || compiler_driver_ != nullptr);
   }
 
-  void UpdateClassState(ClassReference ref, ClassStatus state) override;
-
   bool CanUseOatStatusForVerification(mirror::Class* klass) override
       REQUIRES_SHARED(Locks::mutator_lock_);
 

@@ -47,13 +47,6 @@ ClassStatus QuickCompilerCallbacks::GetPreviousClassState(ClassReference ref) {
   return compiler_driver_->GetClassStatus(ref);
 }
 
-void QuickCompilerCallbacks::UpdateClassState(ClassReference ref, ClassStatus status) {
-  // Driver is null when bootstrapping the runtime.
-  if (compiler_driver_ != nullptr) {
-    compiler_driver_->RecordClassStatus(ref, status);
-  }
-}
-
 bool QuickCompilerCallbacks::CanUseOatStatusForVerification(mirror::Class* klass) {
   // No dex files: conservatively false.
   if (dex_files_ == nullptr) {

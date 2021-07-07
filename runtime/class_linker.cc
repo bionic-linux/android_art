@@ -4731,12 +4731,6 @@ verifier::FailureKind ClassLinker::VerifyClass(Thread* self,
       EnsureSkipAccessChecksMethods(klass, image_pointer_size_);
     }
   }
-  // Done verifying. Notify the compiler about the verification status, in case the class
-  // was verified implicitly (eg super class of a compiled class).
-  if (Runtime::Current()->IsAotCompiler()) {
-    Runtime::Current()->GetCompilerCallbacks()->UpdateClassState(
-        ClassReference(&klass->GetDexFile(), klass->GetDexClassDefIndex()), klass->GetStatus());
-  }
   return verifier_failure;
 }
 
