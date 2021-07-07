@@ -632,8 +632,8 @@ TEST_F(VerifierDepsTest, MultiDexVerification) {
   ASSERT_EQ(NumberOfCompiledDexFiles(), 2u);
 
   ASSERT_TRUE(HasUnverifiedClass("LMySoftVerificationFailure;", *dex_files_[1]));
-  ASSERT_TRUE(HasUnverifiedClass("LMySub1SoftVerificationFailure;", *dex_files_[0]));
-  ASSERT_TRUE(HasUnverifiedClass("LMySub2SoftVerificationFailure;", *dex_files_[0]));
+  ASSERT_TRUE(HasVerifiedClass("LMySub1SoftVerificationFailure;", *dex_files_[0]));
+  ASSERT_TRUE(HasVerifiedClass("LMySub2SoftVerificationFailure;", *dex_files_[0]));
 
   std::vector<uint8_t> buffer;
   verifier_deps_->Encode(dex_files_, &buffer);
