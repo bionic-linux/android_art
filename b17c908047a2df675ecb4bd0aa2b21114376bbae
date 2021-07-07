@@ -22,6 +22,30 @@
       },
       "revId": "b17c908047a2df675ecb4bd0aa2b21114376bbae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3cac1a_a1ec9e38",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-07T13:39:28Z",
+      "side": 0,
+      "message": "I have removed the `std::unique_ptr\u003c\u003e` indirection. Unlike the `std::unique_ptr\u003c\u003e`, std::forward_list\u003c\u003e propagates constness from the container to the value, so I do the same and provide 2 overloads here.\n\nAs long as transactions are part of the Runtime, modifying a transaction means modifying the Runtime state, so this is fixing a constness discrepancy.",
+      "parentUuid": "36868d44_1cd8bd26",
+      "range": {
+        "startLine": 553,
+        "startChar": 55,
+        "endLine": 553,
+        "endChar": 60
+      },
+      "revId": "b17c908047a2df675ecb4bd0aa2b21114376bbae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
