@@ -32,6 +32,7 @@ namespace odrefresh {
 // OdrCompilationLogEntry represents the result of a compilation attempt by odrefresh.
 struct OdrCompilationLogEntry {
   int64_t apex_version;
+  int64_t last_update_millis;
   int32_t trigger;
   time_t when;
   int32_t exit_code;
@@ -60,6 +61,7 @@ class OdrCompilationLog {
 
   // Applies policy to compilation log to determine whether to recompile.
   bool ShouldAttemptCompile(int64_t apex_version,
+                            int64_t last_update_millis,
                             OdrMetrics::Trigger trigger,
                             time_t now = 0) const;
 
@@ -69,9 +71,13 @@ class OdrCompilationLog {
   // Returns the entry at position `index` or nullptr if `index` is out of bounds.
   const OdrCompilationLogEntry* Peek(size_t index) const;
 
-  void Log(int64_t apex_version, OdrMetrics::Trigger trigger, ExitCode compilation_result);
+  void Log(int64_t apex_version,
+           int64_t last_update_millis,
+           OdrMetrics::Trigger trigger,
+           ExitCode compilation_result);
 
   void Log(int64_t apex_version,
+           int64_t last_update_millis,
            OdrMetrics::Trigger trigger,
            time_t when,
            ExitCode compilation_result);
