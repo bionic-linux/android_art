@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94c6531_e577f9da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-07T10:52:37Z",
+      "side": 1,
+      "message": "LGTM, a few minor comments.",
+      "revId": "4682b2f01fa6bbe4157389014077bf710d57af63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038c1e17_91f708ee",
+        "filename": "runtime/transaction.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-07T10:52:37Z",
+      "side": 1,
+      "message": "Maybe you can avoid code duplication here and on lines 417-425 (same code for `ArrayPair`) with a template helper.",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 3
+      },
+      "revId": "4682b2f01fa6bbe4157389014077bf710d57af63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
