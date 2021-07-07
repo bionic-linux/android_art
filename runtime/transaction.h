@@ -307,7 +307,7 @@ class Transaction final {
   const std::string& GetAbortMessage() const;
 
   std::map<mirror::Object*, ObjectLog> object_logs_;
-  std::map<mirror::Array*, ArrayLog> array_logs_ ;
+  std::map<mirror::Array*, ArrayLog> array_logs_;
   std::list<InternStringLog> intern_string_logs_;
   std::list<ResolveStringLog> resolve_string_logs_;
   std::list<ResolveMethodTypeLog> resolve_method_type_logs_;
