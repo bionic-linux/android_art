@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012868408",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1757391?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a3121930_77fd09ef",
+        "filename": "test/825-unbalanced-lock/jasmin/Unbalanced.j",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-07T08:37:07Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "792428ff6c7f8c289a08e14c9f6696514fe4523a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
