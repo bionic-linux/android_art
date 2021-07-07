@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "703752cf_25ba488c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-07T08:50:57Z",
+      "side": 1,
+      "message": "This is mostly done, but needs the compilation log tests extending to check last_update_millis behaviour.\n\nFeel free to drop from the topic if you want to land the rest first.",
+      "revId": "e50c63a7894882df87fc5e98ac631cf17357224b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
