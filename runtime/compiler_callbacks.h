@@ -67,9 +67,6 @@ class CompilerCallbacks {
     return mode_ == CallbackMode::kCompileBootImage;
   }
 
-  virtual void UpdateClassState(ClassReference ref ATTRIBUTE_UNUSED,
-                                ClassStatus state ATTRIBUTE_UNUSED) {}
-
   virtual bool CanUseOatStatusForVerification(mirror::Class* klass ATTRIBUTE_UNUSED)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     return false;
