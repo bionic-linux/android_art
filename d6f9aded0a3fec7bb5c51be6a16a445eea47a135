@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0be86c_b936bd95",
+        "filename": "odrefresh/odr_compilation_log.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-08T12:07:01Z",
+      "side": 1,
+      "message": "There\u0027s adb install, but also adb sync - which could just replace the one in /system, and that should trigger a change in last_update_millis?",
+      "parentUuid": "bf5c37dd_e5fce170",
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8cf146_d755b12a",
