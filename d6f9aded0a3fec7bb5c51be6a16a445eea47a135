@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d202ca_d8110f8a",
+        "filename": "odrefresh/odr_compilation_log.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-08T14:04:23Z",
+      "side": 1,
+      "message": "Just double checked: `adb install` can drive this path today so either I\u0027m mis-remembering or am simply wrong about `adb install` rejecting same version apex installs.\n\nGood news is that the process worked as expected for ART module with this CL. We should update the odsign_e2e_tests to cover this too, particularly checking the maps for system_server and zygote.",
+      "parentUuid": "8bdde527_a5460f16",
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8cf146_d755b12a",
