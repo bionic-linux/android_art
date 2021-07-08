@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5c37dd_e5fce170",
+        "filename": "odrefresh/odr_compilation_log.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-08T11:44:25Z",
+      "side": 1,
+      "message": "Samegrade is the same file (potentially on the disk already).\n\nLast I checked we can\u0027t adb install at the same version, but presumably this will change to open up testing this path.",
+      "parentUuid": "633fcc7f_b7adbaae",
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8cf146_d755b12a",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-08T08:20:47Z",
       "side": 1,
       "message": "Update comment? (same line 77 and 82?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 69
+      },
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e010bf_7cbdde63",
+        "filename": "odrefresh/odr_metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-08T11:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8cf146_d755b12a",
       "range": {
         "startLine": 92,
         "startChar": 0,
