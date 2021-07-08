@@ -16,6 +16,46 @@
       "message": "Removing from the topic in order to merge other changes in it.",
       "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633fcc7f_b7adbaae",
+        "filename": "odrefresh/odr_compilation_log.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-08T08:20:47Z",
+      "side": 1,
+      "message": "Does samegrade define as \"same file but different mtime\"? If no, worth saying that this path also applies to dev workflow of adb installing a new apex with the same version.",
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8cf146_d755b12a",
+        "filename": "odrefresh/odr_metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-08T08:20:47Z",
+      "side": 1,
+      "message": "Update comment? (same line 77 and 82?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 69
+      },
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
