@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdde527_a5460f16",
+        "filename": "odrefresh/odr_compilation_log.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-08T12:35:33Z",
+      "side": 1,
+      "message": "Yes, though odrefresh doesn\u0027t handle manual install of the factory (/system) APEX version. If we are using the factory apex (/system) then we just blow away the art apex data directory and use the system artifacts.",
+      "parentUuid": "1b0be86c_b936bd95",
+      "revId": "d6f9aded0a3fec7bb5c51be6a16a445eea47a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8cf146_d755b12a",
