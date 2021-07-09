@@ -246,7 +246,7 @@ void DexWriter::WriteStringIds(Stream* stream, bool reserve_only) {
 void DexWriter::WriteStringData(Stream* stream, dex_ir::StringData* string_data) {
   ProcessOffset(stream, string_data);
   stream->AlignTo(SectionAlignment(DexFile::kDexTypeStringDataItem));
-  stream->WriteUleb128(CountModifiedUtf8Chars(string_data->Data()));
+  stream->WriteUleb128(CountUtf16CharsInModifiedUtf8(string_data->Data()));
   stream->Write(string_data->Data(), strlen(string_data->Data()));
   // Skip null terminator (already zeroed out, no need to write).
   stream->Skip(1);

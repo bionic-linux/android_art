@@ -84,7 +84,7 @@ struct ScopedVAArgs {
 
 constexpr char kBadUtf8ReplacementChar = '?';
 
-// This is a modified version of `CountModifiedUtf8Chars()` from utf.cc,
+// This is a modified version of `CountUtf16CharsInModifiedUtf8()` from utf.cc,
 // with extra checks and different output options.
 //
 // The `good` functor can process valid characters.

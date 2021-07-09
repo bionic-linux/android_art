@@ -98,8 +98,8 @@ std::string GetJniShortName(const std::string& class_descriptor, const std::stri
 // See http://java.sun.com/j2se/1.5.0/docs/guide/jni/spec/design.html#wp615 for the full rules.
 std::string MangleForJni(const std::string& s) {
   std::string result;
-  size_t char_count = CountModifiedUtf8Chars(s.c_str());
-  const char* cp = &s[0];
+  size_t char_count = CountUtf16CharsInModifiedUtf8(s.data(), s.size());
+  const char* cp = s.data();
   for (size_t i = 0; i < char_count; ++i) {
     uint32_t ch = GetUtf16FromUtf8(&cp);
     if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {

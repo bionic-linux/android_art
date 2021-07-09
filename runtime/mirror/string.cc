@@ -223,7 +223,7 @@ ObjPtr<String> String::AllocFromUtf16(Thread* self,
 ObjPtr<String> String::AllocFromModifiedUtf8(Thread* self, const char* utf) {
   DCHECK(utf != nullptr);
   size_t byte_count = strlen(utf);
-  size_t char_count = CountModifiedUtf8Chars(utf, byte_count);
+  size_t char_count = CountUtf16CharsInModifiedUtf8(utf, byte_count);
   return AllocFromModifiedUtf8(self, char_count, utf, byte_count);
 }
 

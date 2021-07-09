@@ -37,8 +37,8 @@ namespace art {
 /*
  * Returns the number of UTF-16 characters in the given modified UTF-8 string.
  */
-size_t CountModifiedUtf8Chars(const char* utf8);
-size_t CountModifiedUtf8Chars(const char* utf8, size_t byte_count);
+size_t CountUtf16CharsInModifiedUtf8(const char* utf8);
+size_t CountUtf16CharsInModifiedUtf8(const char* utf8, size_t byte_count);
 
 /*
  * Returns the number of modified UTF-8 bytes needed to represent the given
@@ -137,8 +137,21 @@ inline uint32_t UpdateModifiedUtf8Hash(uint32_t hash, std::string_view chars) {
 }
 
 /*
+ * Retrieve the next UTF-16 character from a Modified UTF-8 string.
+ *
+ * Advances "*utf8_data_in" to the start of the next character.
+ *
+ * WARNING: If a string is corrupted by dropping a '\0' in the middle of a
+ * multi-byte sequence, you can end up overrunning the buffer with reads. For
+ * performance reasons, this function assumes that the string being parsed is
+ * known to be valid (e.g., by already being verified). Most strings we process
+ * here are coming out of dex files or other internal translations.
+ */
+uint16_t GetUtf16FromModifiedUtf8(const char** utf8_data_in);
+
+/*
  * Retrieve the next UTF-16 character or surrogate pair from a UTF-8 string.
- * single byte, 2-byte and 3-byte UTF-8 sequences result in a single UTF-16
+ * Single byte, 2-byte and 3-byte UTF-8 sequences result in a single UTF-16
  * character (possibly one half of a surrogate) whereas 4-byte UTF-8 sequences
  * result in a surrogate pair. Use GetLeadingUtf16Char and GetTrailingUtf16Char
  * to process the return value of this function.

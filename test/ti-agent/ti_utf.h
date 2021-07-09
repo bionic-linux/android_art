@@ -25,7 +25,7 @@
 namespace art {
 namespace ti {
 
-inline size_t CountModifiedUtf8Chars(const char* utf8, size_t byte_count) {
+inline size_t CountUtf16CharsInModifiedUtf8(const char* utf8, size_t byte_count) {
   DCHECK_LE(byte_count, strlen(utf8));
   size_t len = 0;
   const char* end = utf8 + byte_count;

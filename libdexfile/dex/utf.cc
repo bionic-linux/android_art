@@ -28,8 +28,8 @@ namespace art {
 using android::base::StringAppendF;
 
 // This is used only from debugger and test code.
-size_t CountModifiedUtf8Chars(const char* utf8) {
-  return CountModifiedUtf8Chars(utf8, strlen(utf8));
+size_t CountUtf16CharsInModifiedUtf8(const char* utf8) {
+  return CountUtf16CharsInModifiedUtf8(utf8, strlen(utf8));
 }
 
 /*
@@ -47,7 +47,7 @@ size_t CountModifiedUtf8Chars(const char* utf8) {
  * standard UTF-8).
  * The four byte encoding converts to two utf16 characters.
  */
-size_t CountModifiedUtf8Chars(const char* utf8, size_t byte_count) {
+size_t CountUtf16CharsInModifiedUtf8(const char* utf8, size_t byte_count) {
   DCHECK_LE(byte_count, strlen(utf8));
   size_t len = 0;
   const char* end = utf8 + byte_count;
@@ -291,7 +291,7 @@ std::string PrintableString(const char* utf8) {
   std::string result;
   result += '"';
   const char* p = utf8;
-  size_t char_count = CountModifiedUtf8Chars(p);
+  size_t char_count = CountUtf16CharsInModifiedUtf8(p);
   for (size_t i = 0; i < char_count; ++i) {
     uint32_t ch = GetUtf16FromUtf8(&p);
     if (ch == '\\') {

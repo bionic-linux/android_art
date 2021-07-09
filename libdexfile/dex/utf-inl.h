@@ -19,6 +19,8 @@
 
 #include "utf.h"
 
+#include "base/logging.h"
+
 namespace art {
 
 inline uint16_t GetTrailingUtf16Char(uint32_t maybe_pair) {
@@ -27,6 +29,31 @@ inline uint16_t GetTrailingUtf16Char(uint32_t maybe_pair) {
 
 inline uint16_t GetLeadingUtf16Char(uint32_t maybe_pair) {
   return static_cast<uint16_t>(maybe_pair & 0x0000FFFF);
+}
+
+inline uint16_t GetUtf16FromModifiedUtf8(const char** utf8_data_in) {
+  const uint8_t one = *(*utf8_data_in)++;
+  if ((one & 0x80u) == 0u) {
+    // one-byte encoding
+    return one;
+  }
+
+  DCHECK_NE((one & 0x40u), 0u);  // Not a continuation character.
+
+  const uint8_t two = *(*utf8_data_in)++;
+  DCHECK_EQ(two & 0xc0u, 0x80u);  // Continuation character.
+  if ((one & 0x20u) == 0u) {
+    // two-byte encoding
+    return ((one & 0x1fu) << 6) | (two & 0x3fu);
+  }
+
+  // Modified UTF-8 does not support 4-byte sequences.
+  DCHECK_EQ((one & 0x10u), 0u);
+
+  const uint8_t three = *(*utf8_data_in)++;
+  DCHECK_EQ(three & 0xc0u, 0x80u);  // Continuation character.
+  // The `static_cast<>` removes the high bits from `one << 12`.
+  return static_cast<uint16_t>((one << 12) | ((two & 0x3fu) << 6) | (three & 0x3fu));
 }
 
 inline uint32_t GetUtf16FromUtf8(const char** utf8_data_in) {

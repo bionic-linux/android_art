@@ -590,7 +590,7 @@ class Header : public Item {
 class StringData : public Item {
  public:
   explicit StringData(const char* data) : data_(strdup(data)) {
-    size_ = UnsignedLeb128Size(CountModifiedUtf8Chars(data)) + strlen(data);
+    size_ = UnsignedLeb128Size(CountUtf16CharsInModifiedUtf8(data)) + strlen(data);
   }
 
   const char* Data() const { return data_.get(); }

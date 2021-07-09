@@ -320,7 +320,7 @@ void CompactDexWriter::WriteStringData(Stream* stream, dex_ir::StringData* strin
                                   SectionAlignment(DexFile::kDexTypeStringDataItem),
                                   data_item_dedupe_);
   ProcessOffset(stream, string_data);
-  stream->WriteUleb128(CountModifiedUtf8Chars(string_data->Data()));
+  stream->WriteUleb128(CountUtf16CharsInModifiedUtf8(string_data->Data()));
   stream->Write(string_data->Data(), strlen(string_data->Data()));
   // Skip null terminator (already zeroed out, no need to write).
   stream->Skip(1);

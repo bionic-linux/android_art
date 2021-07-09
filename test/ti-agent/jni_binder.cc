@@ -32,8 +32,8 @@ namespace art {
 
 static std::string MangleForJni(const std::string& s) {
   std::string result;
-  size_t char_count = ti::CountModifiedUtf8Chars(s.c_str(), s.length());
-  const char* cp = &s[0];
+  size_t char_count = ti::CountUtf16CharsInModifiedUtf8(s.data(), s.length());
+  const char* cp = s.data();
   for (size_t i = 0; i < char_count; ++i) {
     uint32_t ch = ti::GetUtf16FromUtf8(&cp);
     if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <= '9')) {

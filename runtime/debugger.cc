@@ -866,7 +866,7 @@ class StringTable {
     for (const auto& entry : table_) {
       DCHECK_EQ(cur_index++, entry.index);
 
-      size_t s_len = CountModifiedUtf8Chars(entry.data);
+      size_t s_len = CountUtf16CharsInModifiedUtf8(entry.data);
       std::unique_ptr<uint16_t[]> s_utf16(new uint16_t[s_len]);
       ConvertModifiedUtf8ToUtf16(s_utf16.get(), entry.data);
       AppendUtf16BE(bytes, s_utf16.get(), s_len);

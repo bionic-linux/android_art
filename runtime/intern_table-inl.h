@@ -30,7 +30,7 @@ namespace art {
 
 ALWAYS_INLINE
 inline uint32_t InternTable::Utf8String::Hash(uint32_t utf16_length, const char* utf8_data) {
-  DCHECK_EQ(utf16_length, CountModifiedUtf8Chars(utf8_data));
+  DCHECK_EQ(utf16_length, CountUtf16CharsInModifiedUtf8(utf8_data));
   if (LIKELY(utf8_data[utf16_length] == 0)) {
     int32_t hash = ComputeUtf16Hash(utf8_data, utf16_length);
     DCHECK_EQ(hash, ComputeUtf16HashFromModifiedUtf8(utf8_data, utf16_length));
