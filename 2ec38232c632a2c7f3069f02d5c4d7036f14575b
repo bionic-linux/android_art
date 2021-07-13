@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c57176c_ef8f653e",
+        "filename": "runtime/verifier/class_verifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 0,
+      "message": "These superclass checks were useless, given the checks already done in `ClassLinker::LinkSuperClass()`, right?",
+      "revId": "2ec38232c632a2c7f3069f02d5c4d7036f14575b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c813456_0daeba1d",
+        "filename": "runtime/verifier/class_verifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 0,
+      "message": "And we should never try to verify a class without a class def index (primitives, arrays, proxies), right?",
+      "range": {
+        "startLine": 186,
+        "startChar": 13,
+        "endLine": 186,
+        "endChar": 33
+      },
+      "revId": "2ec38232c632a2c7f3069f02d5c4d7036f14575b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

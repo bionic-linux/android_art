@@ -16,6 +16,98 @@
       "message": "Vladimir, friendly TH ping.",
       "revId": "ba1386f6f678b45924705410971e400af0a9d508",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20731a89_179dc33d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4754,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 1,
+      "message": "dex_cache-\u003eGetDexFile()\n\nThough maybe we should stop passing the DexFile to functions that already take the associated DexCache.",
+      "range": {
+        "startLine": 4754,
+        "startChar": 46,
+        "endLine": 4754,
+        "endChar": 66
+      },
+      "revId": "ba1386f6f678b45924705410971e400af0a9d508",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63976bc7_4de08b70",
+        "filename": "runtime/verifier/class_verifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 1,
+      "message": "Break between sentences? (I guess the change in line breaks is the result of conflict resolution during rebase after the previous CL was submitted.)",
+      "range": {
+        "startLine": 155,
+        "startChar": 52,
+        "endLine": 155,
+        "endChar": 53
+      },
+      "revId": "ba1386f6f678b45924705410971e400af0a9d508",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca2446c_57139bbb",
+        "filename": "runtime/verifier/method_verifier_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 1,
+      "message": "dex_cache-\u003eGetDexFile()",
+      "range": {
+        "startLine": 54,
+        "startChar": 53,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "ba1386f6f678b45924705410971e400af0a9d508",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378abdcb_9390c0ee",
+        "filename": "tools/art_verifier/art_verifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-13T15:10:18Z",
+      "side": 1,
+      "message": "h_dex_cache-\u003eGetDexFile()",
+      "range": {
+        "startLine": 253,
+        "startChar": 49,
+        "endLine": 253,
+        "endChar": 71
+      },
+      "revId": "ba1386f6f678b45924705410971e400af0a9d508",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
