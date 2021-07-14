@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b641e4ff_e064c1fa",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4680,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-14T14:46:18Z",
+      "side": 0,
+      "message": "You\u0027re removing superclass checks. Is the verifier checking the superclass and returning a soft failure, thus making this old check unnecessary?",
+      "range": {
+        "startLine": 4678,
+        "startChar": 10,
+        "endLine": 4680,
+        "endChar": 53
+      },
+      "revId": "6cd7ab38ec76943d1b9cdc2191f1260188511b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
