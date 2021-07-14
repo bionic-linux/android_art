@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f9772b_e6a41e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-14T14:48:28Z",
+      "side": 1,
+      "message": "Finally a patch from Vladimir that I can fully understand in less than 5 minutes!:D",
+      "revId": "0c724f0ba7235fe6945f0264c2de56f4afd96f85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
