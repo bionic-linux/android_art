@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581cae52_e6c5d2a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-14T12:37:10Z",
+      "side": 1,
+      "message": "David, Vladimir, friendly TH ping.",
+      "revId": "f6b5e79d44d0e7c6067c1756fd5ba1812e025e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
