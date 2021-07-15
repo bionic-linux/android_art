@@ -22,6 +22,30 @@
       },
       "revId": "6cd7ab38ec76943d1b9cdc2191f1260188511b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6548899a_356cccb9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4680,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-15T12:53:37Z",
+      "side": 0,
+      "message": "Actually, I may have been to optimistic here removing this code. This check is there to ensure the class will still be verified at runtime if the super isn\u0027t. This is important for app/boot images, to make sure the class is not marked verified without its super being verified.",
+      "parentUuid": "b641e4ff_e064c1fa",
+      "range": {
+        "startLine": 4678,
+        "startChar": 10,
+        "endLine": 4680,
+        "endChar": 53
+      },
+      "revId": "6cd7ab38ec76943d1b9cdc2191f1260188511b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

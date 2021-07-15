@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b88332_42f60c88",
+        "filename": "dex2oat/verifier_deps_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-15T12:53:37Z",
+      "side": 1,
+      "message": "Related to your comment on the superclass checks. I\u0027ve removed this change now that I check the super class again.",
+      "parentUuid": "703f081b_fd7d2ec1",
+      "revId": "f6b5e79d44d0e7c6067c1756fd5ba1812e025e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6482170_53acc1c4",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0ab14d_393e1d92",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-15T12:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6482170_53acc1c4",
+      "range": {
+        "startLine": 236,
+        "startChar": 6,
+        "endLine": 236,
+        "endChar": 55
+      },
+      "revId": "f6b5e79d44d0e7c6067c1756fd5ba1812e025e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd4ed5d_ed158934",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-07-14T14:46:18Z",
       "side": 1,
       "message": "Change in behavior: AOT no longer calling `UpdateClassState()` for verification failures. Is this deliberate?",
+      "range": {
+        "startLine": 4662,
+        "startChar": 4,
+        "endLine": 4662,
+        "endChar": 28
+      },
+      "revId": "f6b5e79d44d0e7c6067c1756fd5ba1812e025e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77e2d58_61fe773c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4662,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-15T12:53:37Z",
+      "side": 1,
+      "message": "Yeah, as it\u0027s an optimization (see comments line 4677-4680), and the code looked nicer to me this way, I deliberately avoided updating the class state of hard fail methods. For classes that are part of the dex file, the compiler driver also registers the class state.",
+      "parentUuid": "bfd4ed5d_ed158934",
       "range": {
         "startLine": 4662,
         "startChar": 4,
