@@ -4481,15 +4481,17 @@ class Heap::TriggerPostForkCCGcTask : public HeapTask {
 void Heap::PostForkChildAction(Thread* self) {
   // Temporarily increase target_footprint_ and concurrent_start_bytes_ to
   // max values to avoid GC during app launch.
-  if (collector_type_ == kCollectorTypeCC && !IsLowMemoryMode()) {
+  if (collector_type_ == kCollectorTypeCC) {
     // Set target_footprint_ to the largest allowed value.
     SetIdealFootprint(growth_limit_);
     // Set concurrent_start_bytes_ to half of the heap size.
     size_t target_footprint = target_footprint_.load(std::memory_order_relaxed);
     concurrent_start_bytes_ = std::max(target_footprint / 2, GetBytesAllocated());
 
+    // For low memory devices defer GC during cold startup for longer duration.
+    size_t defer_time = kPostForkMaxHeapDurationMS * (IsLowMemoryMode() ? 5 : 1);
     GetTaskProcessor()->AddTask(
-        self, new TriggerPostForkCCGcTask(NanoTime() + MsToNs(kPostForkMaxHeapDurationMS)));
+        self, new TriggerPostForkCCGcTask(NanoTime() + MsToNs(defer_time)));
   }
 }
 
