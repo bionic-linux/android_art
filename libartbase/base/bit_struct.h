@@ -177,7 +177,7 @@ struct BitStructField {
                                 std::make_signed_t<StorageType>,
                                 StorageType>::type;
 
-  StorageType storage_;
+  StorageType storage_{};
 };
 
 // Base class for number-like BitStruct fields.
