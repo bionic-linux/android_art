@@ -22,6 +22,30 @@
       },
       "revId": "91d217a0e81ee2520f11f679ba6c074c32510d8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79633cf_99802cba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2021-07-20T16:38:56Z",
+      "side": 1,
+      "message": "oh cool -- the invocation for the tool that reports this used to be pretty massive, but it seems that\u0027s been factored away. done.",
+      "parentUuid": "42991b65_784db1b1",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "91d217a0e81ee2520f11f679ba6c074c32510d8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
