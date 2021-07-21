@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d3dc5167_1c71ba57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-21T16:59:31Z",
+      "side": 1,
+      "message": "I actually ran them, but later thought they are irrelevant. I fixed the CL description (I need to run presubmit anyway).",
+      "parentUuid": "fb8ea675_334fe2fe",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 59
+      },
+      "revId": "a3052f54d2793f643edfca413373e01909bf7784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "994ade32_b6fced79",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 8
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-21T15:57:53Z",
       "side": 1,
       "message": "This is a limitation of `Location` - we have only `kSameAsFirstInput` rather than a generic \"same as input \u003cn\u003e\", so we need to hard-code some register.",
+      "range": {
+        "startLine": 3817,
+        "startChar": 7,
+        "endLine": 3817,
+        "endChar": 88
+      },
+      "revId": "a3052f54d2793f643edfca413373e01909bf7784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c16593_d75a5a34",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3817,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-21T16:59:31Z",
+      "side": 1,
+      "message": "Thanks, I didn\u0027t know about `kSameAsFirstInput`.",
+      "parentUuid": "994ade32_b6fced79",
       "range": {
         "startLine": 3817,
         "startChar": 7,
