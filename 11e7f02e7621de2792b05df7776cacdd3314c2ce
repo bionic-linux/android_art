@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9593cb_ba84cc7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-21T13:41:29Z",
+      "side": 1,
+      "message": "What\u0027s wrong with gerrit? It keeps saying that I removed Nicolas from cc:, so I keep adding him back.",
+      "revId": "11e7f02e7621de2792b05df7776cacdd3314c2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
