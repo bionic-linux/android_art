@@ -16,6 +16,24 @@
       "message": "What\u0027s wrong with gerrit? It keeps saying that I removed Nicolas from cc:, so I keep adding him back.",
       "revId": "11e7f02e7621de2792b05df7776cacdd3314c2ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24dfaa3_b5f36c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-21T13:46:32Z",
+      "side": 1,
+      "message": "Maybe you have two windows with an open \"Reply\" dialog and edit them in parallel? Then you could have added Nicolas in one window, but then set Presubmit-Ready in another one that doesn\u0027t have Nicolas, and Gerrit would think you removed him on purpose.",
+      "parentUuid": "3a9593cb_ba84cc7f",
+      "revId": "11e7f02e7621de2792b05df7776cacdd3314c2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
