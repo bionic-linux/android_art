@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe446e19_2d565ab2",
+        "filename": "libdexfile/dex/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-22T10:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c554c01_795aea30",
+      "range": {
+        "startLine": 73,
+        "startChar": 6,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "28c05e9e7a7b9c619befaadadd36c1ad136bcbe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4846572a_82fde096",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-22T10:01:31Z",
       "side": 1,
       "message": "Missing description for \"Append\".",
+      "revId": "28c05e9e7a7b9c619befaadadd36c1ad136bcbe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87911050_2f472ff6",
+        "filename": "libdexfile/dex/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-07-22T10:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4846572a_82fde096",
       "revId": "28c05e9e7a7b9c619befaadadd36c1ad136bcbe3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
