@@ -3465,4 +3465,19 @@ bool IsGEZero(HInstruction* instruction) {
   return IsInt64AndGet(instruction, &value) && value >= 0;
 }
 
+bool CanEnsureNotNullAt(HInstruction* input, HInstruction* at) {
+  if (!input->CanBeNull()) {
+    return true;
+  }
+
+  for (const HUseListNode<HInstruction*>& use : input->GetUses()) {
+    HInstruction* user = use.GetUser();
+    if (user->IsNullCheck() && user->StrictlyDominates(at)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 }  // namespace art

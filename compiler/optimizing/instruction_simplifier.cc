@@ -22,6 +22,7 @@
 #include "data_type-inl.h"
 #include "escape.h"
 #include "intrinsics.h"
+#include "intrinsics_utils.h"
 #include "mirror/class-inl.h"
 #include "optimizing/nodes.h"
 #include "scoped_thread_state_change-inl.h"
@@ -111,8 +112,6 @@ class InstructionSimplifierVisitor : public HGraphDelegateVisitor {
   void VisitDeoptimize(HDeoptimize* deoptimize) override;
   void VisitVecMul(HVecMul* instruction) override;
   void VisitPredicatedInstanceFieldGet(HPredicatedInstanceFieldGet* instruction) override;
-
-  bool CanEnsureNotNullAt(HInstruction* instr, HInstruction* at) const;
 
   void SimplifySystemArrayCopy(HInvoke* invoke);
   void SimplifyStringEquals(HInvoke* invoke);
@@ -578,21 +577,6 @@ void InstructionSimplifierVisitor::VisitNullCheck(HNullCheck* null_check) {
       stats_->RecordStat(MethodCompilationStat::kRemovedNullCheck);
     }
   }
-}
-
-bool InstructionSimplifierVisitor::CanEnsureNotNullAt(HInstruction* input, HInstruction* at) const {
-  if (!input->CanBeNull()) {
-    return true;
-  }
-
-  for (const HUseListNode<HInstruction*>& use : input->GetUses()) {
-    HInstruction* user = use.GetUser();
-    if (user->IsNullCheck() && user->StrictlyDominates(at)) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 // Returns whether doing a type test between the class of `object` against `klass` has

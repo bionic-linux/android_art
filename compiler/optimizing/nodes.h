@@ -8585,6 +8585,8 @@ void ResetEnvironmentInputRecords(HInstruction* instruction);
 // a single instruction, arithmetic wrap-around cannot occur.
 bool IsGEZero(HInstruction* instruction);
 
+bool CanEnsureNotNullAt(HInstruction* input, HInstruction* at);
+
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_NODES_H_
