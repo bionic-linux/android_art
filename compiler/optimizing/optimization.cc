@@ -87,6 +87,8 @@ const char* OptimizationPassName(OptimizationPass pass) {
     case OptimizationPass::kAggressiveInstructionSimplifier:
     case OptimizationPass::kInstructionSimplifier:
       return InstructionSimplifier::kInstructionSimplifierPassName;
+    case OptimizationPass::kIntrinsicStaticChecks:
+      return IntrinsicStaticChecks::kIntrinsicStaticChecksPassName;
     case OptimizationPass::kCHAGuardOptimization:
       return CHAGuardOptimization::kCHAGuardOptimizationPassName;
     case OptimizationPass::kCodeSinking:
@@ -138,6 +140,7 @@ OptimizationPass OptimizationPassByName(const std::string& pass_name) {
   X(OptimizationPass::kInductionVarAnalysis);
   X(OptimizationPass::kInliner);
   X(OptimizationPass::kInstructionSimplifier);
+  X(OptimizationPass::kIntrinsicStaticChecks);
   X(OptimizationPass::kInvariantCodeMotion);
   X(OptimizationPass::kLoadStoreElimination);
   X(OptimizationPass::kLoopOptimization);
@@ -254,6 +257,9 @@ ArenaVector<HOptimization*> ConstructOptimizations(
                                                     stats,
                                                     pass_name,
                                                     /* use_all_optimizations_ = */ true);
+        break;
+      case OptimizationPass::kIntrinsicStaticChecks:
+        opt = new (allocator) IntrinsicStaticChecks(graph, stats, pass_name);
         break;
       case OptimizationPass::kCHAGuardOptimization:
         opt = new (allocator) CHAGuardOptimization(graph, pass_name);

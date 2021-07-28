@@ -466,6 +466,12 @@ bool OptimizingCompiler::RunBaselineOptimizations(HGraph* graph,
                                                   CodeGenerator* codegen,
                                                   const DexCompilationUnit& dex_compilation_unit,
                                                   PassObserver* pass_observer) const {
+  OptimizationDef optimizations[] = {
+    // The codegen has a few assumptions that only the instruction simplifier can satisfy.
+    OptDef(OptimizationPass::kIntrinsicStaticChecks),
+  };
+  RunOptimizations(graph, codegen, dex_compilation_unit, pass_observer, optimizations);
+
   switch (codegen->GetCompilerOptions().GetInstructionSet()) {
 #if defined(ART_ENABLE_CODEGEN_arm)
     case InstructionSet::kThumb2:
@@ -635,6 +641,7 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
     // Initial optimizations.
     OptDef(OptimizationPass::kConstantFolding),
     OptDef(OptimizationPass::kInstructionSimplifier),
+    OptDef(OptimizationPass::kIntrinsicStaticChecks),
     OptDef(OptimizationPass::kDeadCodeElimination,
            "dead_code_elimination$initial"),
     // Inlining.
@@ -645,6 +652,9 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
            OptimizationPass::kInliner),
     OptDef(OptimizationPass::kInstructionSimplifier,
            "instruction_simplifier$after_inlining",
+           OptimizationPass::kInliner),
+    OptDef(OptimizationPass::kIntrinsicStaticChecks,
+           "intrinsic_static_checks$after_inlining",
            OptimizationPass::kInliner),
     OptDef(OptimizationPass::kDeadCodeElimination,
            "dead_code_elimination$after_inlining",
@@ -659,6 +669,8 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
            "constant_folding$after_gvn"),
     OptDef(OptimizationPass::kInstructionSimplifier,
            "instruction_simplifier$after_gvn"),
+    OptDef(OptimizationPass::kIntrinsicStaticChecks,
+           "intrinsic_static_checks$after_gvn"),
     OptDef(OptimizationPass::kDeadCodeElimination,
            "dead_code_elimination$after_gvn"),
     // High-level optimizations.
@@ -972,6 +984,7 @@ CodeGenerator* OptimizingCompiler::TryCompileIntrinsic(
     // The codegen has a few assumptions that only the instruction simplifier
     // can satisfy.
     OptDef(OptimizationPass::kInstructionSimplifier),
+    OptDef(OptimizationPass::kIntrinsicStaticChecks),
   };
   RunOptimizations(graph,
                    codegen.get(),

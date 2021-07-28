@@ -59,6 +59,21 @@ class InstructionSimplifier : public HOptimization {
   DISALLOW_COPY_AND_ASSIGN(InstructionSimplifier);
 };
 
+class IntrinsicStaticChecks : public HOptimization {
+ public:
+  IntrinsicStaticChecks(HGraph* graph,
+                        OptimizingCompilerStats* stats = nullptr,
+                        const char* name = kIntrinsicStaticChecksPassName)
+      : HOptimization(graph, name, stats) {}
+
+  static constexpr const char* kIntrinsicStaticChecksPassName = "intrinsic_static_checks";
+
+  bool Run() override;
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(IntrinsicStaticChecks);
+};
+
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_INSTRUCTION_SIMPLIFIER_H_
