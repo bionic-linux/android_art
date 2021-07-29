@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fcf003_e5b67f49",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-07-29T08:10:27Z",
+      "side": 1,
+      "message": "I had to re-read the documentation for `set -e`, but lgtm :-)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "de54ddda0d5b2cd3e396eb4e42ef04bb3e667609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
