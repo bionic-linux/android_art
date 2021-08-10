@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014288294",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1792087?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "3659c511_58b8a809",
+          "description": "Change to \"runtime/gc/collector/mark_compact.cc\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/mark_compact.cc",
+              "range": {
+                "startLine": 295,
+                "startChar": 9,
+                "endLine": 295,
+                "endChar": 19
+              },
+              "replacement": "accommodate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "fed6a343_d48887d6",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-10T15:52:54Z",
+      "side": 1,
+      "message": "Common typo found: \"accomodate\" -- should it be \"accommodate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 295,
+        "startChar": 9,
+        "endLine": 295,
+        "endChar": 19
+      },
+      "revId": "3a21621c8e7e137e28e701fd17d3cca6f8cca2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
