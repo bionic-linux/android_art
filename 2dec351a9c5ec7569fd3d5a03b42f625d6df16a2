@@ -34,6 +34,24 @@
       "parentUuid": "3f1e072a_8e5328e0",
       "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7519d403_8f82e761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-11T18:37:43Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027ll manage to debug this in a reasonable time frame without the original CL author and reviewer. It may be that there\u0027s some issue with that class or the tool chain, or a class path issue. Or it may be that Nicolas\u0027 CL actually broke this. But I agree that submitting this CL, and debugging this later with Nicolas\u0027 or Vladimir\u0027s help is the best step forward here.\n\nPlease submit this at a time when a resulting postsubmit failure would be promptly noticed.",
+      "parentUuid": "da659dc0_3773ca60",
+      "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
