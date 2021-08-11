@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014310692",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1792087?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "f40e5c72_6f0384bf",
+          "description": "Change to \"runtime/gc/collector/mark_compact.h\"",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/mark_compact.h",
+              "range": {
+                "startLine": 112,
+                "startChar": 60,
+                "endLine": 112,
+                "endChar": 67
+              },
+              "replacement": "REQUIRES"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c8b771f2_eef009ee",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-11T02:43:21Z",
+      "side": 1,
+      "message": "Common typo found: \"REQURES\" -- should it be \"REQUIRES\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 112,
+        "startChar": 60,
+        "endLine": 112,
+        "endChar": 67
+      },
+      "revId": "bad28d8279be8f9ecad67a5a5f800539308778f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
