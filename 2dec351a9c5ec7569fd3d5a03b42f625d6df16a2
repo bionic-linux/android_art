@@ -88,6 +88,41 @@
       "parentUuid": "6e20264d_d96ba8f2",
       "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b494e9_82e1dd97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-08-11T22:12:04Z",
+      "side": 1,
+      "message": "Hi Nicolas, Hans - we\u0027re seeing CTS failures on master that are fixed by this revert.  Since ",
+      "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2e81b17_c4590a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-08-11T22:12:04Z",
+      "side": 1,
+      "message": "I\u0027d normally agree, but it is causing a solid CTS failure.  Were ART tests added/changed as part of this original CL?",
+      "parentUuid": "31c5bf6b_efd08c33",
+      "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
