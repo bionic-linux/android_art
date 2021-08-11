@@ -30,9 +30,15 @@ public class Main implements Runnable {
     private final static int THREAD_COUNT = 16;
 
     // Use a couple of different forms of synchronizing to test some of these...
-    private final static AtomicInteger counter = new AtomicInteger();
+    private final static AtomicInteger counter = new AtomicInteger(-1);
     private final static Object gate = new Object();
     private volatile static int waitCount = 0;
+
+    static {
+        // Force the AtomicInteger object to be pre-initialized as to avoid any allocation related
+        // to it happening while the threads are filling up the memory
+        counter.incrementAndGet();
+    }
 
     public static void main(String[] args) throws Exception {
         Thread[] threads = new Thread[THREAD_COUNT];
