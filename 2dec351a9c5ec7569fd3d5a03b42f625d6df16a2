@@ -16,6 +16,24 @@
       "message": "I can\u0027t tell whether this is actually a test or code issue. But I believe all the experts here are OOO, and this looks good to me as a minimal fix. I don\u0027t know whether there is danger of it breaking other test expectations elsewhere.\n",
       "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da659dc0_3773ca60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2021-08-11T18:26:59Z",
+      "side": 1,
+      "message": "Hi Hans, we indeed have a test failure. However this is due to the java verifier exception that seems to be happening when we skip \"PotentiallyMarkRuntimeThrow\" for more recent SDKs. I am also not quite sure how exactly the code triggers it though.",
+      "parentUuid": "3f1e072a_8e5328e0",
+      "revId": "2dec351a9c5ec7569fd3d5a03b42f625d6df16a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
