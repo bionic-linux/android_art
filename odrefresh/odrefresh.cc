@@ -1532,10 +1532,14 @@ OnDeviceRefresh::Compile(OdrMetrics& metrics,
   const char* staging_dir = nullptr;
   metrics.SetStage(OdrMetrics::Stage::kPreparation);
 
-  // Create staging area and assign label for generating compilation artifacts.
-  if (PaletteCreateOdrefreshStagingDirectory(&staging_dir) != PALETTE_STATUS_OK) {
-    metrics.SetStatus(OdrMetrics::Status::kStagingFailed);
-    return ExitCode::kCleanupFailed;
+  if (!config_.GetStagingDir().empty()) {
+    staging_dir = config_.GetStagingDir().c_str();
+  } else {
+    // Create staging area and assign label for generating compilation artifacts.
+    if (PaletteCreateOdrefreshStagingDirectory(&staging_dir) != PALETTE_STATUS_OK) {
+      metrics.SetStatus(OdrMetrics::Status::kStagingFailed);
+      return ExitCode::kCleanupFailed;
+    }
   }
 
   // Emit cache info before compiling. This can be used to throttle compilation attempts later.
