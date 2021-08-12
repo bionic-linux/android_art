@@ -157,21 +157,22 @@ cc_library_static {
 
 art_cc_defaults {
     name: "art_odrefresh_tests_defaults",
-    generated_sources: ["art-odrefresh-operator-srcs"],
+    defaults: ["odrefresh-defaults"],
     header_libs: ["odrefresh_headers"],
     srcs: [
         "odr_artifacts_test.cc",
-        "odr_compilation_log.cc",
         "odr_compilation_log_test.cc",
-        "odr_fs_utils.cc",
         "odr_fs_utils_test.cc",
-        "odr_metrics.cc",
         "odr_metrics_test.cc",
-        "odr_metrics_record.cc",
         "odr_metrics_record_test.cc",
         "odrefresh_test.cc",
     ],
     shared_libs: ["libbase"],
+    target: {
+        android: {
+            compile_multilib: "both",
+        },
+    },
 }
 
 // Version of ART gtest `art_odrefresh_tests` bundled with the ART APEX on target.

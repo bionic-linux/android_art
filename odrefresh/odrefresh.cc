@@ -455,9 +455,10 @@ std::string GetBootImage() {
 }  // namespace
 
 OnDeviceRefresh::OnDeviceRefresh(const OdrConfig& config)
-    : config_{config},
-      cache_info_filename_{Concatenate({kOdrefreshArtifactDirectory, "/", kCacheInfoFile})},
-      start_time_{time(nullptr)} {
+    : OnDeviceRefresh(config, Concatenate({kOdrefreshArtifactDirectory, "/", kCacheInfoFile})) {}
+
+OnDeviceRefresh::OnDeviceRefresh(const OdrConfig& config, const std::string& cache_info_filename)
+    : config_{config}, cache_info_filename_{cache_info_filename}, start_time_{time(nullptr)} {
   for (const std::string& jar : android::base::Split(config_.GetDex2oatBootClasspath(), ":")) {
     // Boot class path extensions are those not in the ART APEX. Updatable APEXes should not
     // have DEX files in the DEX2OATBOOTCLASSPATH. At the time of writing i18n is a non-updatable
@@ -1532,10 +1533,14 @@ OnDeviceRefresh::Compile(OdrMetrics& metrics,
   const char* staging_dir = nullptr;
   metrics.SetStage(OdrMetrics::Stage::kPreparation);
 
-  // Create staging area and assign label for generating compilation artifacts.
-  if (PaletteCreateOdrefreshStagingDirectory(&staging_dir) != PALETTE_STATUS_OK) {
-    metrics.SetStatus(OdrMetrics::Status::kStagingFailed);
-    return ExitCode::kCleanupFailed;
+  if (!config_.GetStagingDir().empty()) {
+    staging_dir = config_.GetStagingDir().c_str();
+  } else {
+    // Create staging area and assign label for generating compilation artifacts.
+    if (PaletteCreateOdrefreshStagingDirectory(&staging_dir) != PALETTE_STATUS_OK) {
+      metrics.SetStatus(OdrMetrics::Status::kStagingFailed);
+      return ExitCode::kCleanupFailed;
+    }
   }
 
   // Emit cache info before compiling. This can be used to throttle compilation attempts later.
