@@ -156,21 +156,34 @@ cc_library_static {
 
 art_cc_defaults {
     name: "art_odrefresh_tests_defaults",
-    generated_sources: ["art-odrefresh-operator-srcs"],
+    defaults: ["odrefresh-defaults"],
+    //host_supported: false,
+    generated_sources: [
+        // "apex-info-list-tinyxml",
+        // "art-apex-cache-info",
+        // "art-odrefresh-operator-srcs"
+    ],
     header_libs: ["odrefresh_headers"],
     srcs: [
         "odr_artifacts_test.cc",
-        "odr_compilation_log.cc",
+        //"odr_compilation_log.cc",
         "odr_compilation_log_test.cc",
-        "odr_fs_utils.cc",
+        //"odr_fs_utils.cc",
         "odr_fs_utils_test.cc",
-        "odr_metrics.cc",
+        //"odr_metrics.cc",
         "odr_metrics_test.cc",
-        "odr_metrics_record.cc",
+        //"odr_metrics_record.cc",
         "odr_metrics_record_test.cc",
+        // "odrefresh.cc",
         "odrefresh_test.cc",
     ],
     shared_libs: ["libbase"],
+    //     static_libs: ["libtinyxml2"],
+    target: {
+        android: {
+            compile_multilib: "both",
+        },
+    },
 }
 
 // Version of ART gtest `art_odrefresh_tests` bundled with the ART APEX on target.
