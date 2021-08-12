@@ -20,6 +20,7 @@
 #include <sysexits.h>
 
 #include <ctime>
+#include <memory>
 #include <optional>
 #include <string>
 #include <vector>
@@ -75,6 +76,9 @@ static_assert(ExitCode::kLastExitCode < 0xff);  // The `exit()` man page discuss
 class OnDeviceRefresh final {
  public:
   explicit OnDeviceRefresh(const OdrConfig& config);
+
+  // Constructor with injections. For testing and internal use only.
+  OnDeviceRefresh(const OdrConfig& config, const std::string& cache_info_filename);
 
   // Returns the exit code, a list of ISAs that boot extensions should be compiled for, and a
   // boolean indicating whether the system server should be compiled.
