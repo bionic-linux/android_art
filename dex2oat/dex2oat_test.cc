@@ -1729,6 +1729,7 @@ TEST_F(Dex2oatTest, DontExtract) {
                                                   /*writable=*/ false,
                                                   /*low_4gb=*/ false,
                                                   /*unquicken=*/ false,
+                                                  VdexUsageHint::kUsageDefault,
                                                   &error_msg));
     ASSERT_TRUE(vdex != nullptr);
     EXPECT_FALSE(vdex->HasDexSection()) << output_;

@@ -142,12 +142,14 @@ class OatFileBase : public OatFile {
   bool LoadVdex(const std::string& vdex_filename,
                 bool writable,
                 bool low_4gb,
+                VdexUsageHint usage_hint,
                 std::string* error_msg);
 
   bool LoadVdex(int vdex_fd,
                 const std::string& vdex_filename,
                 bool writable,
                 bool low_4gb,
+                VdexUsageHint usage_hint,
                 std::string* error_msg);
 
   virtual bool Load(const std::string& elf_filename,
@@ -228,7 +230,10 @@ OatFileBase* OatFileBase::OpenOatFile(int zip_fd,
 
   ret->PreSetup(elf_filename);
 
-  if (!ret->LoadVdex(vdex_filename, writable, low_4gb, error_msg)) {
+  const VdexUsageHint vdex_usage_hint = executable
+      ? VdexUsageHint::kUsageDefault
+      : VdexUsageHint::kUsageMetadataAndChecksums;
+  if (!ret->LoadVdex(vdex_filename, writable, low_4gb, vdex_usage_hint, error_msg)) {
     return nullptr;
   }
 
@@ -269,7 +274,10 @@ OatFileBase* OatFileBase::OpenOatFile(int zip_fd,
 
   ret->PreSetup(oat_location);
 
-  if (!ret->LoadVdex(vdex_fd, vdex_location, writable, low_4gb, error_msg)) {
+  const VdexUsageHint vdex_usage_hint = executable
+      ? VdexUsageHint::kUsageDefault
+      : VdexUsageHint::kUsageMetadataAndChecksums;
+  if (!ret->LoadVdex(vdex_fd, vdex_location, writable, low_4gb, vdex_usage_hint, error_msg)) {
     return nullptr;
   }
 
@@ -300,6 +308,7 @@ bool OatFileBase::ShouldUnquickenVDex() const {
 bool OatFileBase::LoadVdex(const std::string& vdex_filename,
                            bool writable,
                            bool low_4gb,
+                           VdexUsageHint usage_hint,
                            std::string* error_msg) {
   vdex_ = VdexFile::OpenAtAddress(vdex_begin_,
                                   vdex_end_ - vdex_begin_,
@@ -308,6 +317,7 @@ bool OatFileBase::LoadVdex(const std::string& vdex_filename,
                                   writable,
                                   low_4gb,
                                   ShouldUnquickenVDex(),
+                                  usage_hint,
                                   error_msg);
   if (vdex_.get() == nullptr) {
     *error_msg = StringPrintf("Failed to load vdex file '%s' %s",
@@ -322,6 +332,7 @@ bool OatFileBase::LoadVdex(int vdex_fd,
                            const std::string& vdex_filename,
                            bool writable,
                            bool low_4gb,
+                           VdexUsageHint usage_hint,
                            std::string* error_msg) {
   if (vdex_fd != -1) {
     struct stat s;
@@ -339,6 +350,7 @@ bool OatFileBase::LoadVdex(int vdex_fd,
           writable,
           low_4gb,
           ShouldUnquickenVDex(),
+          usage_hint,
           error_msg);
       if (vdex_.get() == nullptr) {
         *error_msg = "Failed opening vdex file.";

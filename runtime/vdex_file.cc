@@ -71,6 +71,7 @@ std::unique_ptr<VdexFile> VdexFile::OpenAtAddress(uint8_t* mmap_addr,
                                                   bool writable,
                                                   bool low_4gb,
                                                   bool unquicken,
+                                                  VdexUsageHint usage_hint,
                                                   std::string* error_msg) {
   ScopedTrace trace(("VdexFile::OpenAtAddress " + vdex_filename).c_str());
   if (!OS::FileExists(vdex_filename.c_str())) {
@@ -105,6 +106,7 @@ std::unique_ptr<VdexFile> VdexFile::OpenAtAddress(uint8_t* mmap_addr,
                        writable,
                        low_4gb,
                        unquicken,
+                       usage_hint,
                        error_msg);
 }
 
@@ -117,6 +119,7 @@ std::unique_ptr<VdexFile> VdexFile::OpenAtAddress(uint8_t* mmap_addr,
                                                   bool writable,
                                                   bool low_4gb,
                                                   bool unquicken,
+                                                  VdexUsageHint usage_hint,
                                                   std::string* error_msg) {
   if (mmap_addr != nullptr && mmap_size < vdex_length) {
     LOG(WARNING) << "Insufficient pre-allocated space to mmap vdex.";
@@ -149,7 +152,7 @@ std::unique_ptr<VdexFile> VdexFile::OpenAtAddress(uint8_t* mmap_addr,
     return nullptr;
   }
 
-  if (!writable) {
+  if (!writable && (usage_hint != VdexUsageHint::kUsageMetadataAndChecksums)) {
     Runtime* runtime = Runtime::Current();
     // The runtime might not be available at this point if we're running
     // dex2oat or oatdump.
