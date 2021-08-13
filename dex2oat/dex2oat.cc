@@ -1224,6 +1224,7 @@ class Dex2Oat final {
                                             /* writable */ false,
                                             /* low_4gb */ false,
                                             DoEagerUnquickeningOfVdex(),
+                                            VdexUsageHint::kUsageDefault,
                                             &error_msg);
         }
 
@@ -1276,6 +1277,7 @@ class Dex2Oat final {
                                             /* writable */ false,
                                             /* low_4gb */ false,
                                             DoEagerUnquickeningOfVdex(),
+                                            VdexUsageHint::kUsageDefault,
                                             &error_msg);
           // If there's any problem with the passed vdex, just warn and proceed
           // without it.

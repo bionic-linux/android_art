@@ -85,6 +85,11 @@ enum VdexSection : uint32_t {
   kNumberOfSections = 4,
 };
 
+enum VdexUsageHint : uint32_t {
+  kUsageDefault,
+  kUsageMetadataAndChecksums,
+};
+
 class VdexFile {
  public:
   using VdexChecksum = uint32_t;
@@ -197,6 +202,7 @@ class VdexFile {
                                                  bool writable,
                                                  bool low_4gb,
                                                  bool unquicken,
+                                                 VdexUsageHint usage_hint,
                                                  std::string* error_msg);
 
   // Returns nullptr if the vdex file cannot be opened or is not valid.
@@ -210,6 +216,7 @@ class VdexFile {
                                                  bool writable,
                                                  bool low_4gb,
                                                  bool unquicken,
+                                                 VdexUsageHint usage_hint,
                                                  std::string* error_msg);
 
   // Returns nullptr if the vdex file cannot be opened or is not valid.
@@ -217,6 +224,7 @@ class VdexFile {
                                         bool writable,
                                         bool low_4gb,
                                         bool unquicken,
+                                        VdexUsageHint usage_hint,
                                         std::string* error_msg) {
     return OpenAtAddress(nullptr,
                          0,
@@ -225,6 +233,7 @@ class VdexFile {
                          writable,
                          low_4gb,
                          unquicken,
+                         usage_hint,
                          error_msg);
   }
 
@@ -235,6 +244,7 @@ class VdexFile {
                                         bool writable,
                                         bool low_4gb,
                                         bool unquicken,
+                                        VdexUsageHint usage_hint,
                                         std::string* error_msg) {
     return OpenAtAddress(nullptr,
                          0,
@@ -245,6 +255,7 @@ class VdexFile {
                          writable,
                          low_4gb,
                          unquicken,
+                         usage_hint,
                          error_msg);
   }
 

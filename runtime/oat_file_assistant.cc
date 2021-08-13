@@ -830,6 +830,12 @@ const OatFile* OatFileAssistant::OatFileInfo::GetFile() {
     executable = false;
     // Check to see if there is a vdex file we can make use of.
     std::unique_ptr<VdexFile> vdex;
+    // If we're not loading for execution, avoid unnecessary load optimizations.
+    // In practice, this avoids madvise'ing vdex vdex when we really just want
+    // to query a few properties.
+    const VdexUsageHint vdex_usage_hint = executable
+        ? VdexUsageHint::kUsageDefault
+        : VdexUsageHint::kUsageMetadataAndChecksums;
     if (use_fd_) {
       if (vdex_fd_ >= 0) {
         struct stat s;
@@ -843,6 +849,7 @@ const OatFile* OatFileAssistant::OatFileInfo::GetFile() {
                                 /*writable=*/ false,
                                 /*low_4gb=*/ false,
                                 /*unquicken=*/ false,
+                                vdex_usage_hint,
                                 &error_msg);
         }
       }
@@ -851,6 +858,7 @@ const OatFile* OatFileAssistant::OatFileInfo::GetFile() {
                             /*writable=*/ false,
                             /*low_4gb=*/ false,
                             /*unquicken=*/ false,
+                            vdex_usage_hint,
                             &error_msg);
     }
     if (vdex == nullptr) {
