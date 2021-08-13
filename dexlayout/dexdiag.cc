@@ -331,6 +331,7 @@ static bool DisplayMappingIfFromVdexFile(ProcMemInfo& proc, const Vma& vma, Prin
                                                 /*writable=*/ false,
                                                 /*low_4gb=*/ false,
                                                 /*unquicken= */ false,
+                                                VdexUsageHint::kUsageDefault,
                                                 &error_msg /*out*/));
   if (vdex == nullptr) {
     std::cerr << "Could not open vdex file "

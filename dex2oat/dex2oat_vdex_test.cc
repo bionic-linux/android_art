@@ -74,6 +74,7 @@ class Dex2oatVdexTest : public Dex2oatEnvironmentTest {
                                                   /*writable=*/ false,
                                                   /*low_4gb=*/ false,
                                                   /*unquicken=*/ false,
+                                                  VdexUsageHint::kUsageDefault,
                                                   &error_msg_));
     // Check the vdex doesn't have dex.
     if (vdex->HasDexSection()) {
