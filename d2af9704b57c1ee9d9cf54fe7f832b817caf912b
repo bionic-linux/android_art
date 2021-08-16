@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fad56c_c03eb240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-16T16:57:17Z",
+      "side": 1,
+      "message": "It\u0027s not yet clear we want to submit this. But we\u0027re still seeing (slightly different) deadlocks with the CL. Unless their frequency decreased appreciably, I would rather not have this in, though deadlocks in either state seem very infrequent.",
+      "revId": "d2af9704b57c1ee9d9cf54fe7f832b817caf912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
