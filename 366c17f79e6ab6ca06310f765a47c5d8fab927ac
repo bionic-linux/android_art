@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5e1ef5_9084425d",
+        "filename": "test/114-ParallelGC/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-08-16T20:10:40Z",
+      "side": 1,
+      "message": "If we\u0027re using the interpreter for the boot class path, the `VarHandle` implementation of `AtomicInteger.incrementAndGet()` needs to resolve a `MethodType` which is then cached for subsequent uses. Make sure the `MethodType` is resolved early, otherwise the `counter.incrementAndGet()` call in `work()` after we have tried to allocate all memory could throw OOME.",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "366c17f79e6ab6ca06310f765a47c5d8fab927ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
