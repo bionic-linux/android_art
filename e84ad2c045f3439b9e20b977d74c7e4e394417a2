@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73b54c3_ecb02853",
+        "filename": "odrefresh/Android.bp",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-16T19:10:40Z",
+      "side": 0,
+      "message": "Does this compile? Seems like it would be missing a lot of symbols.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 32
+      },
+      "revId": "e84ad2c045f3439b9e20b977d74c7e4e394417a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
