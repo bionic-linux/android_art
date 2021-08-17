@@ -22,6 +22,30 @@
       },
       "revId": "e84ad2c045f3439b9e20b977d74c7e4e394417a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f631d630_0af078ac",
+        "filename": "odrefresh/Android.bp",
+        "patchSetId": 14
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-17T15:11:56Z",
+      "side": 0,
+      "message": "It compiles because I added \"odrefresh-defaults\".",
+      "parentUuid": "b73b54c3_ecb02853",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 32
+      },
+      "revId": "e84ad2c045f3439b9e20b977d74c7e4e394417a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
