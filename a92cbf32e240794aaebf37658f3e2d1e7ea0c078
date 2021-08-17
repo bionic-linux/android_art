@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "712733d0_c17515c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-17T16:03:39Z",
+      "side": 1,
+      "message": "Jiakai, not sure if you can access the build logs, but there\u0027s a build failure on git_master-art-host:\n\nlogs/build_error.log on branch git_master-art-host on target art-test at P25367113\nDownload\nView full file\nBuildbot Version: androidbuild_buildbot_20210809.00_RC01\nMachine: prod19-zfmk\nDIST_DIR\u003d/buildbot/dist_dirs/git_master-art-host-linux-art-test/P25367113 TARGET_PRODUCT\u003darmv8 TARGET_BUILD_VARIANT\u003deng ./art/test/testrunner/run_build_test_target.py -j80 art-test\nFAILED: /buildbot/dist_dirs/git_master-art-host-linux-art-test/P25367113/gtest/art_odrefresh_tests64\n/bin/bash -c \"(rm -f /buildbot/dist_dirs/git_master-art-host-linux-art-test/P25367113/gtest/art_odrefresh_tests64 ) \u0026\u0026 (cp out/host/linux-x86/obj/PACKAGING/art-host-gtest_intermediates/art_odrefresh_tests64.xml /buildbot/dist_dirs/git_master-art-host-linux-art-test/P25367113/gtest/art_odrefresh_tests64 )\"\ncp: bad \u0027out/host/linux-x86/obj/PACKAGING/art-host-gtest_intermediates/art_odrefresh_tests64.xml\u0027: No such file or directory",
+      "revId": "a92cbf32e240794aaebf37658f3e2d1e7ea0c078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
