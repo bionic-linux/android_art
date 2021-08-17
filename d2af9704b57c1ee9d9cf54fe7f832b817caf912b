@@ -16,6 +16,23 @@
       "message": "It\u0027s not yet clear we want to submit this. But we\u0027re still seeing (slightly different) deadlocks with the CL. Unless their frequency decreased appreciably, I would rather not have this in, though deadlocks in either state seem very infrequent.",
       "revId": "d2af9704b57c1ee9d9cf54fe7f832b817caf912b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8e0cbf_fdb1f07c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-17T00:48:12Z",
+      "side": 1,
+      "message": "The reporter and the author concluded on the bug that this should be reverted. It doesn\u0027t break anything badly, but it\u0027s a late change with no demonstrable benefit that adds a bit of complexity. It\u0027s safer to just revert. The real fix appears to be significantly more involved, and probably completely different.",
+      "revId": "d2af9704b57c1ee9d9cf54fe7f832b817caf912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
