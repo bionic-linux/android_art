@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29bc689_65bd5d5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-18T10:24:03Z",
+      "side": 1,
+      "message": "This is just the wrong choice, it\u0027s not only an issue for toybox.",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "847213d50c671a72bc25b37f462ddc94c3b8b43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4706ca0c_f16de0f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-18T10:24:03Z",
+      "side": 1,
+      "message": "Thanks for the fix here, let me know when you are ready for review.",
+      "revId": "847213d50c671a72bc25b37f462ddc94c3b8b43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
