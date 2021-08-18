@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7a307625_f2a44196",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T14:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f88f83a1_8637e78d",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "3fb7c01823492049dd8ebdb73c467789885701b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bbe978bf_ece40511",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -66,6 +90,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "70f50538_863216ae",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T14:01:17Z",
+      "side": 1,
+      "message": "Done. Thank you for your suggestion!",
+      "parentUuid": "326081d8_c5892de5",
+      "range": {
+        "startLine": 370,
+        "startChar": 66,
+        "endLine": 370,
+        "endChar": 72
+      },
+      "revId": "3fb7c01823492049dd8ebdb73c467789885701b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c17523f_9e0b8bf8",
         "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-18T13:05:13Z",
       "side": 1,
       "message": "Same optional nit here.",
+      "range": {
+        "startLine": 383,
+        "startChar": 9,
+        "endLine": 383,
+        "endChar": 39
+      },
+      "revId": "3fb7c01823492049dd8ebdb73c467789885701b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea0247e_d0580d71",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T14:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c17523f_9e0b8bf8",
       "range": {
         "startLine": 383,
         "startChar": 9,

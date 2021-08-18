@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "212dde69_c507f717",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T14:01:17Z",
+      "side": 1,
+      "message": "Understood. The fun of context switching :)",
+      "parentUuid": "7e6d2c71_cd9b362f",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "847213d50c671a72bc25b37f462ddc94c3b8b43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4706ca0c_f16de0f7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
