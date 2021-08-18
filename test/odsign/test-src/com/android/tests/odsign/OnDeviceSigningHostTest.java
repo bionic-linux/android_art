@@ -36,8 +36,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -340,10 +343,15 @@ public class OnDeviceSigningHostTest extends BaseHostJUnit4Test {
     }
 
     long getModifiedTimeMs(String filename) throws Exception {
+        // We can't use the "-c '%.3Y'" flag when to get the timestamp because the Toybox's `stat`
+        // implementation truncates to timestamp to seconds, which is not accurate enough, so we
+        // use "-c '%%y'" and parse the time ourselves.
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSSS Z");
         String timeStr = getDevice()
-                .executeShellCommand(String.format("stat -c '%%.3Y' '%s'", filename))
+                .executeShellCommand(String.format("stat -c '%%y' '%s'", filename))
                 .trim();
-        return (long)(Double.parseDouble(timeStr) * 1000);
+        Date date = dateFormat.parse(timeStr);
+        return date.getTime();
     }
 
     void assertArtifactsModifiedAfter(Set<String> artifacts, long timeMs) throws Exception {
