@@ -16,6 +16,24 @@
       "message": "Hey Nicolas, this is just a first-pass prototype solution. I don\u0027t love plumbing around the hints, so if you have other ideas on how to structure this (e.g., we could move the madvise call out of the constructor and only call from the callsites where we know we want the optimization), let me know. Also happy to use a boolean flag if that\u0027s preferable.",
       "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2f9fbd_33445bbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-08-19T01:52:32Z",
+      "side": 1,
+      "message": "If we want to make it a boolean flag, \"executable\" may not be the right term, perhaps something like \"for_execution\" which has the same effect but can be passed seamlessly from the \"executable\" flag. Don\u0027t feel strongly either way.",
+      "parentUuid": "5e2bdfb7_3287c82a",
+      "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
