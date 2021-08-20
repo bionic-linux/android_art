@@ -16,6 +16,23 @@
       "message": "Friendly ping",
       "revId": "786d85b2ad62cef03787a6ffd032116fafbcef53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d7bef1b_2e16e2e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-20T12:59:44Z",
+      "side": 1,
+      "message": "Apologies for the slow review.",
+      "revId": "786d85b2ad62cef03787a6ffd032116fafbcef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
