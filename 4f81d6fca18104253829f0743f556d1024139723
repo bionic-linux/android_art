@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014701823",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1492886?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "49351132_9ef330a3",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-23T21:36:45Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 1
+      },
+      "revId": "4f81d6fca18104253829f0743f556d1024139723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014701823",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1492886?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "07ec1551_f560e035",
+        "filename": "test/README.simulator.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-23T21:36:45Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 73,
+        "startChar": 39,
+        "endLine": 73,
+        "endChar": 49
+      },
+      "revId": "4f81d6fca18104253829f0743f556d1024139723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014701823",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1492886?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "25096b87_9f644811",
+        "filename": "test/README.simulator.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-23T21:36:45Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 82,
+        "startChar": 57,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "4f81d6fca18104253829f0743f556d1024139723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
