@@ -39,6 +39,30 @@
       },
       "revId": "236104e667d8f21d6bbe46e32c765d89088f29c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd9e392_e624f5be",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-08-23T13:10:14Z",
+      "side": 1,
+      "message": "It should be possible to do a (possibly overly-pessimistic) check here for baseline compiler, and do a more precise simplifier pass for the optimizing compiler.\n\nI can do as you suggested before: at CFG construction time find out if we have any varhandle method calls, save it as a boolean flag, and if it\u0027s true then accept the overhead on an extra-pass in baseline compiler.",
+      "parentUuid": "104b6430_95b1f796",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1227,
+        "endChar": 5
+      },
+      "revId": "236104e667d8f21d6bbe46e32c765d89088f29c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
