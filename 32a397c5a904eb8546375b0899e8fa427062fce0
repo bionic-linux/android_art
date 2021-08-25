@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40dc91a0_427f8cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "You\u0027re not actually turning any of this on yet, right? Can we say that here? To what extent and how has this code actually been run while testing?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7472e0dd_8f5a11b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "Not done yet with the main file, but ...",
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedac226_538890d4",
+        "filename": "runtime/gc/accounting/atomic_stack.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "Maybe add\n\n// New elements should be written to [*start_address, *end_address) .",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 39
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891cf561_b3c7a190",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "Easier to read if you reverse the if.",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7f4764_82200da7",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 76,
+        "startChar": 68,
+        "endLine": 76,
+        "endChar": 72
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d43ba8d_6df703cf",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-25T00:15:31Z",
+      "side": 1,
+      "message": "I would generally avoid comments that basically repeat the function name.",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 32
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
