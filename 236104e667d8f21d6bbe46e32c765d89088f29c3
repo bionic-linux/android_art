@@ -111,6 +111,30 @@
       },
       "revId": "236104e667d8f21d6bbe46e32c765d89088f29c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "039d2ecd_4883b456",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-08-27T15:41:42Z",
+      "side": 1,
+      "message": "Next attempt (PS4): do the simple static checks in builder, and more complex checks in simplifier.",
+      "parentUuid": "689b7945_560f6faf",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1227,
+        "endChar": 5
+      },
+      "revId": "236104e667d8f21d6bbe46e32c765d89088f29c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
