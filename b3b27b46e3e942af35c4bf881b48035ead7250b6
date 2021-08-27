@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e611f74_10aba89f",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T16:47:51Z",
+      "side": 1,
+      "message": "Maybe name this DecodeVarHandleIntrinsic? And add a comment that we must annotation the call otherwise the code generator would fail?",
+      "range": {
+        "startLine": 1360,
+        "startChar": 2,
+        "endLine": 1360,
+        "endChar": 28
+      },
+      "revId": "b3b27b46e3e942af35c4bf881b48035ead7250b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
