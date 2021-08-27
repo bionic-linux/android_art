@@ -66,6 +66,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98e0d22c_8bedc7ad",
+        "filename": "runtime/gc/accounting/atomic_stack.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "nit: one per line",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 48
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b020500c_4c3507e6",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "Remove this?",
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae484a92_c6289e6b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "891cf561_b3c7a190",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 4
@@ -112,6 +175,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9c11807_eb207c4b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "odd identations",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 135,
+        "endChar": 31
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0479e83e_9d2a046a",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d43ba8d_6df703cf",
         "filename": "runtime/gc/collector/mark_compact.h",
         "patchSetId": 4
@@ -129,6 +238,23 @@
         "endLine": 152,
         "endChar": 32
       },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d68c2f_d591281e",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:51:23Z",
+      "side": 1,
+      "message": "Is it our first use of BumpPointerSpace? If no, what\u0027s the impact of this of existing users?",
       "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
