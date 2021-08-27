@@ -34,6 +34,24 @@
       "parentUuid": "5e2bdfb7_3287c82a",
       "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22350255_7bbdb530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-27T13:38:41Z",
+      "side": 1,
+      "message": "I agree this isn\u0027t great. I think we should do the madvise at the point we know we\u0027re going to use the vdex file. Can you look into OpenDexFilesFromOat? I think that\u0027s the canonical place for dex code to be loaded for execution.",
+      "parentUuid": "db2f9fbd_33445bbb",
+      "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
