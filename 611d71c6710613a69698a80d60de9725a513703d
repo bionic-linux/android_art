@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d50c139_de4e28eb",
+        "filename": "tools/hiddenapi/find_api_violations.pl",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-31T19:23:48Z",
+      "side": 0,
+      "message": "There are no compatibility concerns dropping these options? It looks like it could get used in other tool scripts.",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "611d71c6710613a69698a80d60de9725a513703d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

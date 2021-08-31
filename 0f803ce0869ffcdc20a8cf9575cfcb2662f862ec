@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3342c47d_15f3b797",
+        "filename": "tools/hiddenapi/find_api_violations.pl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-31T19:23:48Z",
+      "side": 1,
+      "message": "Whoa!",
+      "range": {
+        "startLine": 1,
+        "startChar": 11,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "0f803ce0869ffcdc20a8cf9575cfcb2662f862ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
