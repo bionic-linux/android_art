@@ -175,6 +175,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18974e61_61b212bf",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-31T04:03:54Z",
+      "side": 1,
+      "message": "Probably better to clear thread_running_gc_ here.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 1
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9c11807_eb207c4b",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 4
@@ -191,6 +214,29 @@
         "startChar": 22,
         "endLine": 135,
         "endChar": 31
+      },
+      "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4af1eed_b3653003",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-08-31T04:03:54Z",
+      "side": 1,
+      "message": "It doesn\u0027t look to me like that\u0027s really true. The ...Next fields are mutable. Maybe \"immutable enough\"?",
+      "range": {
+        "startLine": 388,
+        "startChar": 47,
+        "endLine": 388,
+        "endChar": 56
       },
       "revId": "32a397c5a904eb8546375b0899e8fa427062fce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
