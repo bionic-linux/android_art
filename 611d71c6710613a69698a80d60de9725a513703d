@@ -22,6 +22,30 @@
       },
       "revId": "611d71c6710613a69698a80d60de9725a513703d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ad51ef_787a8b75",
+        "filename": "tools/hiddenapi/find_api_violations.pl",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-08-31T21:09:15Z",
+      "side": 0,
+      "message": "So I checked with cs/ before rolling the change here and could find nothing that consumes it or tests it. And externally I can\u0027t find any interesting hits for it. AFAICT, it is currently broken because the scripts consumes messages from hiddenapi_flags.h were updated in the inclusive fix it.\n\nMathew put this script together when working in the compat team, but is OOO for a few weeks. I\u0027d lean towards landing this and fixing any issues arising that will likely end up on art-bugs-triage@ should they flag up.",
+      "parentUuid": "0d50c139_de4e28eb",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "611d71c6710613a69698a80d60de9725a513703d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
