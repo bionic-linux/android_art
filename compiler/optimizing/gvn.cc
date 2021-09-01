@@ -368,8 +368,8 @@ class GlobalValueNumberer : public ValueObject {
 
  private:
   // Per-block GVN. Will also update the ValueSet of the dominated and
-  // successor blocks.
-  void VisitBasicBlock(HBasicBlock* block);
+  // successor blocks. Returns true if at least one GVN replacement happened.
+  bool VisitBasicBlock(HBasicBlock* block);
 
   HGraph* graph_;
   ScopedArenaAllocator allocator_;
@@ -415,13 +415,15 @@ bool GlobalValueNumberer::Run() {
 
   // Use the reverse post order to ensure the non back-edge predecessors of a block are
   // visited before the block itself.
+  bool gvn_occurred = false;
   for (HBasicBlock* block : graph_->GetReversePostOrder()) {
-    VisitBasicBlock(block);
+    gvn_occurred |= VisitBasicBlock(block);
   }
-  return true;
+  return gvn_occurred;
 }
 
-void GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
+bool GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
+  bool gvn_occurred = false;
   ValueSet* set = nullptr;
 
   const ArenaVector<HBasicBlock*>& predecessors = block->GetPredecessors();
@@ -510,6 +512,7 @@ void GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
         // which hasn't been visited yet due to the order we visit instructions.
         // Or current is used by a phi, and we don't do OrderInputs() on a phi anyway.
         current->ReplaceWith(existing);
+        gvn_occurred = true;
         current->GetBlock()->RemoveInstruction(current);
       } else {
         set->Kill(current->GetSideEffects());
@@ -522,6 +525,7 @@ void GlobalValueNumberer::VisitBasicBlock(HBasicBlock* block) {
   }
 
   visited_blocks_.SetBit(block->GetBlockId());
+  return gvn_occurred;
 }
 
 bool GlobalValueNumberer::WillBeReferencedAgain(HBasicBlock* block) const {

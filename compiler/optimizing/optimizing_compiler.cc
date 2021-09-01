@@ -653,14 +653,18 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
     OptDef(OptimizationPass::kSideEffectsAnalysis,
            "side_effects$before_gvn"),
     OptDef(OptimizationPass::kGlobalValueNumbering),
-    // Simplification (TODO: only if GVN occurred).
+    // Simplification (only if GVN occurred).
+    // TODO(solanes): Call SelectGenerator only if GVN occurred?
     OptDef(OptimizationPass::kSelectGenerator),
     OptDef(OptimizationPass::kConstantFolding,
-           "constant_folding$after_gvn"),
+           "constant_folding$after_gvn",
+           OptimizationPass::kGlobalValueNumbering),
     OptDef(OptimizationPass::kInstructionSimplifier,
-           "instruction_simplifier$after_gvn"),
+           "instruction_simplifier$after_gvn",
+           OptimizationPass::kGlobalValueNumbering),
     OptDef(OptimizationPass::kDeadCodeElimination,
-           "dead_code_elimination$after_gvn"),
+           "dead_code_elimination$after_gvn",
+           OptimizationPass::kGlobalValueNumbering),
     // High-level optimizations.
     OptDef(OptimizationPass::kSideEffectsAnalysis,
            "side_effects$before_licm"),
@@ -669,6 +673,7 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
     OptDef(OptimizationPass::kBoundsCheckElimination),
     OptDef(OptimizationPass::kLoopOptimization),
     // Simplification.
+    // TODO(solanes): Only if BoundsCheckElimination occurred?
     OptDef(OptimizationPass::kConstantFolding,
            "constant_folding$after_bce"),
     OptDef(OptimizationPass::kAggressiveInstructionSimplifier,
