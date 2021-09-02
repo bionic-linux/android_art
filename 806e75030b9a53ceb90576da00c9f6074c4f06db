@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e1e7473_8e449693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T15:03:26Z",
+      "side": 1,
+      "message": "Nicolas PTAL at this cleanup",
+      "revId": "806e75030b9a53ceb90576da00c9f6074c4f06db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ba2359_8d564a14",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T15:03:26Z",
+      "side": 1,
+      "message": "I don\u0027t know if the linter is working correctly. It didn\u0027t split this line into two lines. Isn\u0027t this too long? Same with other long lines below",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 114
+      },
+      "revId": "806e75030b9a53ceb90576da00c9f6074c4f06db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

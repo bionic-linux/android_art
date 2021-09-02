@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf4be9f0_f9d2c20f",
+        "filename": "compiler/optimizing/instruction_simplifier_x86_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T15:03:26Z",
+      "side": 0,
+      "message": "These DCHECKs are not needed since we do the same thing inside RemoveInstruction",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 34
+      },
+      "revId": "305679269e36d9d7dfa0c314984bbf7fb157a11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
