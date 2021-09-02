@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db534987_55795d0d",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-02T15:13:54Z",
+      "side": 1,
+      "message": "Drop this TODO?",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 64
+      },
+      "revId": "642d4f40715c174a6c3f99672857785e92e50ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
