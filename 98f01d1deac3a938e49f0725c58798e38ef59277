@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9653f75_43a631e6",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-02T15:27:03Z",
+      "side": 1,
+      "message": "This was changed accidentally after all the reworks. Fixed in aosp/1817998.",
+      "parentUuid": "85c5bd5a_edf56f8c",
+      "range": {
+        "startLine": 583,
+        "startChar": 5,
+        "endLine": 583,
+        "endChar": 23
+      },
+      "revId": "98f01d1deac3a938e49f0725c58798e38ef59277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d0675c5_95fbbe8d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-02T07:10:32Z",
       "side": 1,
       "message": "This is actually wrong as inliner can violate this assumption. We should re-check and `SetDoNotIntrinsify()` if it is null.",
+      "range": {
+        "startLine": 2778,
+        "startChar": 59,
+        "endLine": 2778,
+        "endChar": 87
+      },
+      "revId": "98f01d1deac3a938e49f0725c58798e38ef59277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fae0df_1fdd98d5",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-02T15:27:03Z",
+      "side": 1,
+      "message": "Done in aosp/1817998. Thanks for keeping an eye on this!",
+      "parentUuid": "2d0675c5_95fbbe8d",
       "range": {
         "startLine": 2778,
         "startChar": 59,
