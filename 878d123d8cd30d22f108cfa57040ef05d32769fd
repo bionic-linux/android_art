@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbe5bba_8b71ef49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T14:27:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b04b61_aa3017c4",
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f8f1f7_49933c8a",
@@ -136,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2fc4b0_93be4abd",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T14:27:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e74105b0_b9ddd304",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 47
+      },
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0cee329_680568cf",
@@ -173,6 +215,30 @@
       "side": 1,
       "message": "The name is likely more to differentiate with the previous runs. I don\u0027t think we need to make them depend on BCE.",
       "parentUuid": "f0cee329_680568cf",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 62
+      },
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93e5f1e9_43e29e45",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T14:27:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a040166_2e010268",
       "range": {
         "startLine": 676,
         "startChar": 0,
