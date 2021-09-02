@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16a4b22_477aba94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-02T13:07:00Z",
+      "side": 1,
+      "message": "lgtm, but note that GVN::Run always returns true :)",
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
