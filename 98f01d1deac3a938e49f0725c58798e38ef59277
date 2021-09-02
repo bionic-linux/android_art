@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c5bd5a_edf56f8c",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-09-02T07:06:45Z",
+      "side": 1,
+      "message": "This is now a global symbol. I\u0027d prefer a local symbol (either `static` or in an anonymous namespace) or a member of `InstructionSimplifierVisitor` as before (but it should be `static` as it does not need `this`).",
+      "range": {
+        "startLine": 583,
+        "startChar": 5,
+        "endLine": 583,
+        "endChar": 23
+      },
+      "revId": "98f01d1deac3a938e49f0725c58798e38ef59277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
