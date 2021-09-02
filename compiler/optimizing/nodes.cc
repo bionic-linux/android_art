@@ -1220,31 +1220,31 @@ void HBasicBlock::InsertPhiAfter(HPhi* phi, HPhi* cursor) {
 static void Remove(HInstructionList* instruction_list,
                    HBasicBlock* block,
                    HInstruction* instruction,
-                   bool ensure_safety) {
+                   HBasicBlock::RemovalSafetyKind safety_kind) {
   DCHECK_EQ(block, instruction->GetBlock());
   instruction->SetBlock(nullptr);
   instruction_list->RemoveInstruction(instruction);
-  if (ensure_safety) {
-    DCHECK(instruction->GetUses().empty());
-    DCHECK(instruction->GetEnvUses().empty());
+  if (safety_kind == HBasicBlock::RemovalSafetyKind::kEnsureSafety) {
+    DCHECK(!instruction->HasNonEnvironmentUses());
+    DCHECK(!instruction->HasEnvironmentUses());
     RemoveAsUser(instruction);
   }
 }
 
-void HBasicBlock::RemoveInstruction(HInstruction* instruction, bool ensure_safety) {
+void HBasicBlock::RemoveInstruction(HInstruction* instruction, RemovalSafetyKind safety_kind) {
   DCHECK(!instruction->IsPhi());
-  Remove(&instructions_, this, instruction, ensure_safety);
+  Remove(&instructions_, this, instruction, safety_kind);
 }
 
-void HBasicBlock::RemovePhi(HPhi* phi, bool ensure_safety) {
-  Remove(&phis_, this, phi, ensure_safety);
+void HBasicBlock::RemovePhi(HPhi* phi, RemovalSafetyKind safety_kind) {
+  Remove(&phis_, this, phi, safety_kind);
 }
 
-void HBasicBlock::RemoveInstructionOrPhi(HInstruction* instruction, bool ensure_safety) {
+void HBasicBlock::RemoveInstructionOrPhi(HInstruction* instruction, RemovalSafetyKind safety_kind) {
   if (instruction->IsPhi()) {
-    RemovePhi(instruction->AsPhi(), ensure_safety);
+    RemovePhi(instruction->AsPhi(), safety_kind);
   } else {
-    RemoveInstruction(instruction, ensure_safety);
+    RemoveInstruction(instruction, safety_kind);
   }
 }
 

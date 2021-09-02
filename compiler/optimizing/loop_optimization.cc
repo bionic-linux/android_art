@@ -53,7 +53,8 @@ static uint32_t HiddenOffset(DataType::Type type, bool is_string_char_at) {
 static void RemoveFromCycle(HInstruction* instruction) {
   instruction->RemoveAsUserOfAllInputs();
   instruction->RemoveEnvironmentUsers();
-  instruction->GetBlock()->RemoveInstructionOrPhi(instruction, /*ensure_safety=*/ false);
+  instruction->GetBlock()->RemoveInstructionOrPhi(
+      instruction, HBasicBlock::RemovalSafetyKind::kDontEnsureSafety);
   RemoveEnvironmentUses(instruction);
   ResetEnvironmentInputRecords(instruction);
 }
