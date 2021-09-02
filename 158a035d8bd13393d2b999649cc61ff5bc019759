@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d528bbe4_fd8dfe83",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-02T18:02:14Z",
+      "side": 1,
+      "message": "I thought this was fairly standard, so a lot of run tests would fail without it.",
+      "range": {
+        "startLine": 282,
+        "startChar": 23,
+        "endLine": 283,
+        "endChar": 36
+      },
+      "revId": "158a035d8bd13393d2b999649cc61ff5bc019759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
