@@ -22,6 +22,29 @@
       },
       "revId": "98f01d1deac3a938e49f0725c58798e38ef59277",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0675c5_95fbbe8d",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-09-02T07:10:32Z",
+      "side": 1,
+      "message": "This is actually wrong as inliner can violate this assumption. We should re-check and `SetDoNotIntrinsify()` if it is null.",
+      "range": {
+        "startLine": 2778,
+        "startChar": 59,
+        "endLine": 2778,
+        "endChar": 87
+      },
+      "revId": "98f01d1deac3a938e49f0725c58798e38ef59277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
