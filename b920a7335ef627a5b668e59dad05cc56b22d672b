@@ -52,6 +52,24 @@
       "parentUuid": "db2f9fbd_33445bbb",
       "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a97993_f7bb22be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-09-02T23:37:39Z",
+      "side": 1,
+      "message": "Sounds good, will take a look and ping when I\u0027ve got an update.",
+      "parentUuid": "22350255_7bbdb530",
+      "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
