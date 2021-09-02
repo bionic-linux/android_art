@@ -116,7 +116,7 @@ void SsaDeadPhiElimination::EliminateDeadPhis() {
           user->SetRawEnvAt(use.GetIndex(), nullptr);
         }
         // Delete it from the instruction list.
-        block->RemovePhi(phi, /*ensure_safety=*/ false);
+        block->RemovePhi(phi, HBasicBlock::RemovalSafetyKind::kDontEnsureSafety);
       }
       current = next;
     }
