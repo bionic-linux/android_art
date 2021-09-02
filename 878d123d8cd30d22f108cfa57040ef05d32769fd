@@ -16,6 +16,87 @@
       "message": "lgtm, but note that GVN::Run always returns true :)",
       "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afc4275_89626d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T13:29:39Z",
+      "side": 1,
+      "message": "Huh, that\u0027s true. This line [1] is where GVN happens right? Could we return true iff at least one block made a replacement? I guess GVN is quite common but we could save some phases potentially.\n[1]: https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/gvn.cc;l\u003d512;drc\u003dmaster",
+      "parentUuid": "c16a4b22_477aba94",
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a760dd_f481a46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T13:29:39Z",
+      "side": 1,
+      "message": "Nicolas PTAL",
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f8f1f7_49933c8a",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T13:29:39Z",
+      "side": 1,
+      "message": "SelectGenerator seems to be independent of GVN so I think we can run it without the dependency. Not sure how worth it the phase is without GVN though (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/select_generator.cc;l\u003d195;drc\u003d02ca05a5a6e3f5028c6c2987a81be481d07bc617)",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 47
+      },
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0cee329_680568cf",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-02T13:29:39Z",
+      "side": 1,
+      "message": "This TODO stems by being guided by the name `$after_bce`. We do run kAggressiveInstructionSimplifier unconditionally at the end so maybe could only run it once. Alternatively, these two phases can be dependent on BoundsCheckElimination",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 62
+      },
+      "revId": "878d123d8cd30d22f108cfa57040ef05d32769fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
