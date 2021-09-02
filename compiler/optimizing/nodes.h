@@ -1339,11 +1339,14 @@ class HBasicBlock : public ArenaObject<kArenaAllocBasicBlock> {
   void AddPhi(HPhi* phi);
   void InsertPhiAfter(HPhi* instruction, HPhi* cursor);
   // RemoveInstruction and RemovePhi delete a given instruction from the respective
-  // instruction list. With 'ensure_safety' set to true, it verifies that the
-  // instruction is not in use and removes it from the use lists of its inputs.
-  void RemoveInstruction(HInstruction* instruction, bool ensure_safety = true);
-  void RemovePhi(HPhi* phi, bool ensure_safety = true);
-  void RemoveInstructionOrPhi(HInstruction* instruction, bool ensure_safety = true);
+  // instruction list. RemovalSafetyKind ensures we verify (or not) that the instruction has no
+  // uses, and removes it from the use lists of its inputs.
+  enum class RemovalSafetyKind { kEnsureSafety, kDontEnsureSafety };
+  void RemoveInstruction(HInstruction* instruction,
+                         RemovalSafetyKind safety_kind = RemovalSafetyKind::kEnsureSafety);
+  void RemovePhi(HPhi* phi, RemovalSafetyKind safety_kind = RemovalSafetyKind::kEnsureSafety);
+  void RemoveInstructionOrPhi(HInstruction* instruction,
+                              RemovalSafetyKind safety_kind = RemovalSafetyKind::kEnsureSafety);
 
   bool IsLoopHeader() const {
     return IsInLoop() && (loop_information_->GetHeader() == this);

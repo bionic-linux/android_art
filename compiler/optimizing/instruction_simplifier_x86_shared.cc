@@ -46,7 +46,6 @@ bool TryCombineAndNot(HAnd* instruction) {
                                                    other_ins,
                                                    instruction->GetDexPc());
       instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, and_not);
-      DCHECK(!not_ins->HasUses());
       not_ins->GetBlock()->RemoveInstruction(not_ins);
       return true;
     }
@@ -80,7 +79,6 @@ bool TryGenerateResetLeastSetBit(HAnd* instruction) {
     HX86MaskOrResetLeastSetBit* lsb = new (arena) HX86MaskOrResetLeastSetBit(
         type, HInstruction::kAnd, other, instruction->GetDexPc());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, lsb);
-    DCHECK(!candidate->HasUses());
     candidate->GetBlock()->RemoveInstruction(candidate);
     return true;
   }
@@ -113,7 +111,6 @@ bool TryGenerateMaskUptoLeastSetBit(HXor* instruction) {
     HX86MaskOrResetLeastSetBit* lsb = new (arena) HX86MaskOrResetLeastSetBit(
         type, HInstruction::kXor, other, instruction->GetDexPc());
     instruction->GetBlock()->ReplaceAndRemoveInstructionWith(instruction, lsb);
-    DCHECK(!candidate->HasUses());
     candidate->GetBlock()->RemoveInstruction(candidate);
     return true;
   }
