@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "156bec87_56b3e43e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-03T14:05:13Z",
+      "side": 1,
+      "message": "Ack. Abandoning the CL then",
+      "parentUuid": "3583932f_b82954ae",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "806e75030b9a53ceb90576da00c9f6074c4f06db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6e1e7473_8e449693",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
