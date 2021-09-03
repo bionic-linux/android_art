@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3583932f_b82954ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-03T13:47:00Z",
+      "side": 1,
+      "message": "Ack. I actually have a personal preference that goes against adding new abstractions for simple things like here, where the abstraction is just over a boolean. Note that the /* parameter_name\u003d */, as well as the type are checked by tidy and to me that helps the readability enough.",
+      "parentUuid": "31fd3078_5dfce7eb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "806e75030b9a53ceb90576da00c9f6074c4f06db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6e1e7473_8e449693",
