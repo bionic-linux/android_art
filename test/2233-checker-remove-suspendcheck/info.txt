@@ -1,0 +1,1 @@
+Checks that we can skip a SuspendCheck for some leaf methods.

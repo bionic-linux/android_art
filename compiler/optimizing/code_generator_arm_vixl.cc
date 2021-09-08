@@ -5871,7 +5871,7 @@ void LocationsBuilderARMVIXL::HandleFieldGet(HInstruction* instruction,
   LocationSummary* locations =
       new (GetGraph()->GetAllocator()) LocationSummary(instruction,
                                                        object_field_get_with_read_barrier
-                                                           ? LocationSummary::kCallOnSlowPath
+                                                           ? LocationSummary::kCallOnSlowPathNoSuspendCheck
                                                            : LocationSummary::kNoCall);
   if (object_field_get_with_read_barrier && kUseBakerReadBarrier) {
     locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
