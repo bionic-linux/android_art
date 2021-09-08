@@ -810,10 +810,10 @@ void RegisterAllocatorGraphColor::ProcessInstruction(HInstruction* instruction) 
   if (locations == nullptr) {
     return;
   }
-  if (locations->NeedsSafepoint() && codegen_->IsLeafMethod()) {
+  if (locations->NeedsSafepoint() && codegen_->CanSkipSuspendCheckEntry() &&
+      instruction->IsSuspendCheckEntry()) {
     // We do this here because we do not want the suspend check to artificially
     // create live registers.
-    DCHECK(instruction->IsSuspendCheckEntry());
     DCHECK_EQ(locations->GetTempCount(), 0u);
     instruction->GetBlock()->RemoveInstruction(instruction);
     return;
