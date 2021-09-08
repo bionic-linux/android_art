@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5670aaa6_0b051572",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-08T10:51:12Z",
+      "side": 1,
+      "message": "Should this be renamed to `kCallOnSlowPathOnly`? i.e. adding `Only` at the end like `kCallOnMainOnly`",
+      "range": {
+        "startLine": 533,
+        "startChar": 4,
+        "endLine": 533,
+        "endChar": 19
+      },
+      "revId": "ba2ae3a040029cc58846388faaca8f3d44c61831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
