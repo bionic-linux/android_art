@@ -531,6 +531,8 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
     kNoCall,
     kCallOnMainAndSlowPath,
     kCallOnSlowPath,
+    // Same as kCallOnSlowPath, but it does not require a SuspendCheck.
+    kCallOnSlowPathNoSuspendCheck,
     kCallOnMainOnly
   };
 
@@ -605,11 +607,15 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   }
 
   bool CallsOnSlowPath() const {
-    return call_kind_ == kCallOnSlowPath || call_kind_ == kCallOnMainAndSlowPath;
+    return OnlyCallsOnSlowPath() || CallsOnMainAndSlowPath();
   }
 
   bool OnlyCallsOnSlowPath() const {
-    return call_kind_ == kCallOnSlowPath;
+    return call_kind_ == kCallOnSlowPath || call_kind_ == kCallOnSlowPathNoSuspendCheck;
+  }
+
+  bool CanSkipSuspendCheck() const {
+    return call_kind_ == kNoCall || call_kind_ == kCallOnSlowPathNoSuspendCheck;
   }
 
   bool CallsOnMainAndSlowPath() const {
