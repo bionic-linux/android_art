@@ -403,6 +403,14 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
     requires_current_method_ = true;
   }
 
+  bool CanSkipSuspendCheckEntry() const {
+    return can_skip_suspend_check_entry_;
+  }
+
+  void MarkNotCanSkipSuspendCheckEntry() {
+    can_skip_suspend_check_entry_ = false;
+  }
+
   void SetRequiresCurrentMethod() {
     requires_current_method_ = true;
   }
@@ -854,6 +862,9 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
 
   // Whether the method is a leaf method.
   bool is_leaf_;
+
+  // Whether the method can omit emitting the suspend checks.
+  bool can_skip_suspend_check_entry_;
 
   // Whether an instruction in the graph accesses the current method.
   // TODO: Rename: this actually indicates that some instruction in the method
