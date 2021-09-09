@@ -16,6 +16,138 @@
       "message": "Besides updating test I also added a script that helps with updating test data. Not sure it is the best place to have it (and I also saw some other tests using same CLASS_BYTES and DEX_BYTES tests), so happy to (re)move it from here.",
       "revId": "182085981a4af19caffde0b37ff66234cbe44282",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebaeb0e3_d0b38dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "LGTM with a bunch of minor comments.",
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c32b33_2f6113af",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "Can you unify the use of tabs/spaces in the script? E.g. here is a tab, and on lines 29-34 there are spaces.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bedbf8f_223bdbb0",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "This can be $0.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d78fe5_80fd619d",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "Do you need bash conditions here? [ ... ] also has -gt.",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65828569_2e535a6a",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "`echo -e` understands \u0027\\n\u0027. Also printf is a bit more convenient for formatting.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786fa144_dfe91677",
+        "filename": "test/939-hello-transformation-bcp/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T10:18:51Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
