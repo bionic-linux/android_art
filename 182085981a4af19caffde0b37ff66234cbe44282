@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b853b18_aa1c9f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T09:30:35Z",
+      "side": 1,
+      "message": "Besides updating test I also added a script that helps with updating test data. Not sure it is the best place to have it (and I also saw some other tests using same CLASS_BYTES and DEX_BYTES tests), so happy to (re)move it from here.",
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
