@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7439ff7f_94637825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-09T09:31:19Z",
+      "side": 1,
+      "message": "Nicolas PTAL\nI only did the x64 version, but I am planning on porting to the other archs before submitting. Please nitpick and comment on things that could be better!",
+      "revId": "d00f5e0276e65ff27e395d256eb24448c105dd0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5768315_4e611b3d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5371,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-09T09:31:19Z",
+      "side": 1,
+      "message": "Can be dealt with in a follow-up CL",
+      "range": {
+        "startLine": 5371,
+        "startChar": 0,
+        "endLine": 5371,
+        "endChar": 66
+      },
+      "revId": "d00f5e0276e65ff27e395d256eb24448c105dd0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
