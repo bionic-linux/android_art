@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96160122_825f8563",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T10:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15c32b33_2f6113af",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bedbf8f_223bdbb0",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-09T10:18:51Z",
       "side": 1,
       "message": "This can be $0.",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848a8fdd_ea4a3e25",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T10:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bedbf8f_223bdbb0",
       "range": {
         "startLine": 39,
         "startChar": 7,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cf0599_f9cc984c",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T10:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d78fe5_80fd619d",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 8
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65828569_2e535a6a",
@@ -127,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdad776_ae0eef28",
+        "filename": "test/939-hello-transformation-bcp/convert-to-base64.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T10:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65828569_2e535a6a",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "786fa144_dfe91677",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-09-09T10:18:51Z",
       "side": 1,
       "message": "and",
+      "range": {
+        "startLine": 28,
+        "startChar": 46,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "182085981a4af19caffde0b37ff66234cbe44282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d1caba_328e7084",
+        "filename": "test/939-hello-transformation-bcp/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-09T10:33:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "786fa144_dfe91677",
       "range": {
         "startLine": 28,
         "startChar": 46,
