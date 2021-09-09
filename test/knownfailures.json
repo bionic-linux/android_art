@@ -1429,5 +1429,11 @@
         "variant": "host",
         "bug": "b/176786675",
         "description": ["Out of memory"]
+    },
+    {
+        "tests": ["1002-notify-startup"],
+        "variant": "cdex-fast & redefine-stress & optimizing | cdex-fast & redefine-stress & jit",
+        "bug": "b/37272822",
+        "description": ["Missing support for .dex format 038 in slicer"]
     }
 ]
