@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fcde78_1086d76e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-09T14:35:06Z",
+      "side": 1,
+      "message": "Arch-agnostic solution ready! Running presubmit",
+      "revId": "6bf3742aa53ccb99dfab58b695d1c7e5c17cc960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

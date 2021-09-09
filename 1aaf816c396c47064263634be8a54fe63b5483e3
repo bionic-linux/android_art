@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34886abb_89946efb",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-09T14:35:06Z",
+      "side": 1,
+      "message": "Moved this block up since we might do an early return and not bother with temps.\nPS: there are more cleanup/refactors to be done in this method but they should be done in a follow-up CL",
+      "revId": "1aaf816c396c47064263634be8a54fe63b5483e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
