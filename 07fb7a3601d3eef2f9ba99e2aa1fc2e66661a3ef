@@ -22,6 +22,30 @@
       },
       "revId": "07fb7a3601d3eef2f9ba99e2aa1fc2e66661a3ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "207ec111_dc18c818",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-09-10T12:13:31Z",
+      "side": 1,
+      "message": "Thanks! I should have checked if the same bug is mentioned somewhere in the file",
+      "parentUuid": "be283c61_9bda0131",
+      "range": {
+        "startLine": 1434,
+        "startChar": 0,
+        "endLine": 1434,
+        "endChar": 41
+      },
+      "revId": "07fb7a3601d3eef2f9ba99e2aa1fc2e66661a3ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
