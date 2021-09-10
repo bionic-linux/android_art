@@ -481,6 +481,8 @@ class ReleaseChecker:
 
     # Check internal libraries for ART.
     self._checker.check_prefer64_library('artd-aidl-ndk')
+    self._checker.check_prefer64_library('artd-private-aidl-ndk')
+    self._checker.check_prefer64_library('libdexopt')
     self._checker.check_native_library('libadbconnection')
     self._checker.check_native_library('libart')
     self._checker.check_native_library('libart-compiler')
@@ -706,6 +708,7 @@ class TestingTargetChecker:
     self._checker.check_art_test_executable('art_sigchain_tests')
 
     # Check ART test (internal) libraries.
+    self._checker.check_prefer64_library('libdexoptd')
     self._checker.check_native_library('libartd-gtest')
     self._checker.check_native_library('libartd-simulator-container')
 
