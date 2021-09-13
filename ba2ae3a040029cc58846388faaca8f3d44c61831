@@ -22,6 +22,30 @@
       },
       "revId": "ba2ae3a040029cc58846388faaca8f3d44c61831",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bc38db_cd8ce4fa",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T08:43:42Z",
+      "side": 1,
+      "message": "Yeah, that makes sense.",
+      "parentUuid": "5670aaa6_0b051572",
+      "range": {
+        "startLine": 533,
+        "startChar": 4,
+        "endLine": 533,
+        "endChar": 19
+      },
+      "revId": "ba2ae3a040029cc58846388faaca8f3d44c61831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

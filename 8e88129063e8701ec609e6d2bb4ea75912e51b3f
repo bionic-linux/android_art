@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03057b6e_0b5f116c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T08:43:42Z",
+      "side": 1,
+      "message": "Instead of hand-picking which slow paths need a suspend check, Could we have a strategy to always assume a slow path will do the suspend check for us?\n\nDavid, WDYT?",
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f1462a_5a46b0ee",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T08:43:42Z",
+      "side": 1,
+      "message": "Why moving it here?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 3
+      },
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784aa265_783b798d",
+        "filename": "test/2233-checker-remove-suspendcheck/smali/RemoveSuspendCheck.smali",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T08:43:42Z",
+      "side": 1,
+      "message": "Any reason this is in smali?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
