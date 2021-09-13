@@ -110,6 +110,30 @@
       },
       "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db53948_208c19fa",
+        "filename": "test/2233-checker-remove-suspendcheck/smali/RemoveSuspendCheck.smali",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T10:23:46Z",
+      "side": 1,
+      "message": "I see - yeah, in general, we prefer writing Java code for tests when we can. It makes the maintenance simpler.",
+      "parentUuid": "89429fef_2db65431",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
