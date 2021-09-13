@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94854100_5388341a",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T14:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2fe2a5f_afddf4ab",
+      "range": {
+        "startLine": 410,
+        "startChar": 7,
+        "endLine": 410,
+        "endChar": 38
+      },
+      "revId": "bb837e4ab19dcdf61053a306431692db2463be14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72462e30_55618ed7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-13T14:06:47Z",
       "side": 1,
       "message": "How about NeedsSuspendCheckEntry and then that\u0027s implemented as returning WillCall() ?",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 3
+      },
+      "revId": "bb837e4ab19dcdf61053a306431692db2463be14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6f8922_a07e2880",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T14:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72462e30_55618ed7",
       "range": {
         "startLine": 615,
         "startChar": 0,
