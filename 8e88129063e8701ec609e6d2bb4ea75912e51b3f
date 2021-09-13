@@ -54,6 +54,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75b39ab_676ee831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T14:01:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf07ffdc_b9c21636",
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3509c151_49c1e372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T14:01:19Z",
+      "side": 1,
+      "message": "Ack, updated CL.",
+      "parentUuid": "cf07ffdc_b9c21636",
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90f1462a_5a46b0ee",
@@ -162,6 +198,30 @@
       "side": 1,
       "message": "I see - yeah, in general, we prefer writing Java code for tests when we can. It makes the maintenance simpler.",
       "parentUuid": "89429fef_2db65431",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e5fa75_fcb92ccc",
+        "filename": "test/2233-checker-remove-suspendcheck/smali/RemoveSuspendCheck.smali",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T14:01:19Z",
+      "side": 1,
+      "message": "Ack, changed to java test only",
+      "parentUuid": "3db53948_208c19fa",
       "range": {
         "startLine": 25,
         "startChar": 0,
