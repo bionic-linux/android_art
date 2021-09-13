@@ -605,11 +605,15 @@ class LocationSummary : public ArenaObject<kArenaAllocLocationSummary> {
   }
 
   bool CallsOnSlowPath() const {
-    return call_kind_ == kCallOnSlowPath || call_kind_ == kCallOnMainAndSlowPath;
+    return OnlyCallsOnSlowPath() || CallsOnMainAndSlowPath();
   }
 
   bool OnlyCallsOnSlowPath() const {
     return call_kind_ == kCallOnSlowPath;
+  }
+
+  bool CallCanSkipSuspendCheckEntry() const {
+    return OnlyCallsOnSlowPath();
   }
 
   bool CallsOnMainAndSlowPath() const {
