@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e4b36cc_4c7182b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-13T12:47:40Z",
+      "side": 1,
+      "message": "We may be able to use kCallOnSlowPath without the extra enum. The current uses of kCallOnSlowPath are:\n* Deoptimize\n* FieldGet\n* ArrayGet\n* ArraySet\n* SuspendCheck (i.e. not the entry one)\n* LoadClass\n* ClinitCheck\n* InstanceOf (in some cases)\n\nSource: https://cs.android.com/search?q\u003d%22LocationSummary::kCallOnSlowPath%22%20f:code_generator_x86_64.cc\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "parentUuid": "03057b6e_0b5f116c",
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90f1462a_5a46b0ee",
         "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
         "patchSetId": 12
