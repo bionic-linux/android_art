@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf07ffdc_b9c21636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T12:54:32Z",
+      "side": 1,
+      "message": "Thanks! So I think we can generalize it then and not emit any suspend check for instructions that only call on slow path.",
+      "parentUuid": "4e4b36cc_4c7182b3",
+      "revId": "8e88129063e8701ec609e6d2bb4ea75912e51b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90f1462a_5a46b0ee",
         "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
         "patchSetId": 12
