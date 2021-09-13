@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aaa9e1a_48338a5d",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T17:18:10Z",
+      "side": 1,
+      "message": "we need to generate a suspend check at entry?",
+      "range": {
+        "startLine": 866,
+        "startChar": 13,
+        "endLine": 866,
+        "endChar": 60
+      },
+      "revId": "3315f0378b8946a894f3feb25c773c0451cbbaf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e948e05_c6ddd379",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-13T17:18:10Z",
+      "side": 1,
+      "message": "Can you add a comment that slow path calls go into the runtime, and we expect the runtime to either do a suspend check, or return quickly?",
+      "revId": "3315f0378b8946a894f3feb25c773c0451cbbaf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
