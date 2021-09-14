@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895bb8ef_3666773e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-14T09:28:18Z",
+      "side": 1,
+      "message": "2 final nits 😊",
+      "revId": "43a1e8be9b596a5530cacb2be322c9ff2f76cfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f727df_9398d68e",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-14T09:28:18Z",
+      "side": 1,
+      "message": "nit: this is still the reverse of the flag :-)",
+      "range": {
+        "startLine": 866,
+        "startChar": 3,
+        "endLine": 866,
+        "endChar": 77
+      },
+      "revId": "43a1e8be9b596a5530cacb2be322c9ff2f76cfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f73d84c_63fe1b35",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-14T09:28:18Z",
+      "side": 1,
+      "message": "Nit: as this is more implementation detail, I\u0027d put it in the method instead.",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 68
+      },
+      "revId": "43a1e8be9b596a5530cacb2be322c9ff2f76cfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
