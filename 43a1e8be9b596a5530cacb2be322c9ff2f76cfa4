@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01461a8_d3f9589a",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-14T10:54:23Z",
+      "side": 1,
+      "message": "Oh, you are right. Changed it!",
+      "parentUuid": "a8f727df_9398d68e",
+      "range": {
+        "startLine": 866,
+        "startChar": 3,
+        "endLine": 866,
+        "endChar": 77
+      },
+      "revId": "43a1e8be9b596a5530cacb2be322c9ff2f76cfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f73d84c_63fe1b35",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-14T09:28:18Z",
       "side": 1,
       "message": "Nit: as this is more implementation detail, I\u0027d put it in the method instead.",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 68
+      },
+      "revId": "43a1e8be9b596a5530cacb2be322c9ff2f76cfa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fbc778_fd75a349",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-09-14T10:54:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f73d84c_63fe1b35",
       "range": {
         "startLine": 615,
         "startChar": 0,
