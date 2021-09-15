@@ -489,6 +489,16 @@ std::string GetVdexFilename(const std::string& oat_location) {
   return ReplaceFileExtension(oat_location, "vdex");
 }
 
+std::string GetSystemOdexFilenameForApex(std::string_view location, InstructionSet isa) {
+  if (!LocationIsOnApex(location)) {
+    return {};
+  }
+  std::string dir = GetAndroidRoot() + "/framework/oat/" + GetInstructionSetString(isa);
+  std::string result, unused_error_msg;
+  GetDalvikCacheFilename(std::string{location}.c_str(), dir.c_str(), &result, &unused_error_msg);
+  return ReplaceFileExtension(result, "odex");
+}
+
 static void InsertIsaDirectory(const InstructionSet isa, std::string* filename) {
   // in = /foo/bar/baz
   // out = /foo/bar/<isa>/baz
