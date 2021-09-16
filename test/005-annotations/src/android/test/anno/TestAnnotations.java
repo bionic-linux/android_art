@@ -233,6 +233,7 @@ public class TestAnnotations {
             System.out.println(missingAnno.value());
             System.out.println("Getting value of missing annotaton should have thrown");
         } catch (TypeNotPresentException expected) {
+          expected.printStackTrace();
             System.out.println("Got expected TypeNotPresentException");
         }
 
