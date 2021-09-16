@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec2be6f_81f84213",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-16T09:04:31Z",
+      "side": 1,
+      "message": "I think for readability, I\u0027d prefer to have this at the call site, and then do a DCHECK here.",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 3
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bfdcaf_f30b412f",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-16T09:04:31Z",
+      "side": 1,
+      "message": "This should be renamed now. Add a utility function like OtherNameForSystemJarPreopted or something like this?",
+      "range": {
+        "startLine": 498,
+        "startChar": 7,
+        "endLine": 498,
+        "endChar": 29
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
