@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9e03cc_c5da771e",
+        "filename": "test/913-heaps/expected-stdout.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-17T14:59:04Z",
+      "side": 1,
+      "message": "Do you know what caused this 4 byte difference? Looking at the changes in aosp/1826224 I think it\u0027s the removal of:\n\n  private Thread threadQ;\n  \nStrangely I don\u0027t see this `threadQ` used in the removed code.",
+      "range": {
+        "startLine": 3,
+        "startChar": 82,
+        "endLine": 3,
+        "endChar": 90
+      },
+      "revId": "479e73611ad21bfbf85421c9c0a10a55edd2bd83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
