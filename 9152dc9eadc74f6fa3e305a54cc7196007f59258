@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec715fef_ffef783e",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-17T05:05:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec2be6f_81f84213",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 3
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39bfdcaf_f30b412f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-16T09:04:31Z",
       "side": 1,
       "message": "This should be renamed now. Add a utility function like OtherNameForSystemJarPreopted or something like this?",
+      "range": {
+        "startLine": 498,
+        "startChar": 7,
+        "endLine": 498,
+        "endChar": 29
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d95b4a1_b7a58e71",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-17T05:05:26Z",
+      "side": 1,
+      "message": "The function is used in many other places, so it\u0027s hard to rename it. Instead, I created a function `GetLocationEncodedFilename`, and made `GetDalvikCacheFilename` call it. In this way, I can avoid changing other places, and we\u0027ll remain the flexibility to change the format of the filenames in Dalvik cache without affecting files in /system/framework/oat for APEX JARs. Is this fine to you?",
+      "parentUuid": "39bfdcaf_f30b412f",
       "range": {
         "startLine": 498,
         "startChar": 7,
