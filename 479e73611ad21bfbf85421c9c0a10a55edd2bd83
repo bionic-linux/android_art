@@ -22,6 +22,30 @@
       },
       "revId": "479e73611ad21bfbf85421c9c0a10a55edd2bd83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54ce885_571d5a17",
+        "filename": "test/913-heaps/expected-stdout.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2021-09-19T14:46:06Z",
+      "side": 1,
+      "message": "ThreadQ was present in OpenJDK 8 (and ported to Android). With this upstream sync up to 11, it was removed.",
+      "parentUuid": "ed9e03cc_c5da771e",
+      "range": {
+        "startLine": 3,
+        "startChar": 82,
+        "endLine": 3,
+        "endChar": 90
+      },
+      "revId": "479e73611ad21bfbf85421c9c0a10a55edd2bd83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
