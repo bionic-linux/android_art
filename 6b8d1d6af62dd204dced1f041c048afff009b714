@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "174b6ef6_db10caf1",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-20T13:54:50Z",
+      "side": 1,
+      "message": "nit: add a high-level comment of what the function does.",
+      "revId": "6b8d1d6af62dd204dced1f041c048afff009b714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
