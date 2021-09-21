@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a4cf97_fb20c883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-21T10:59:44Z",
+      "side": 1,
+      "message": "Ah I see, it\u0027s the comment \"point to the same native resolved types array.\" which allows to remove the read barrier.",
+      "parentUuid": "7abe135f_69454dcd",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "0362031cec6885e7439e782e2446736ac04f3686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e250fe02_86ff15e0",
