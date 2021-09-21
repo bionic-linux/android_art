@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b181dce3_e3543513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-21T10:49:20Z",
+      "side": 1,
+      "message": "Isn\u0027t that a data race instead? The read barrier only looks at whether the object has moved.",
+      "parentUuid": "8d845b3c_e0f2a51d",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "0362031cec6885e7439e782e2446736ac04f3686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fe02_86ff15e0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
