@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d845b3c_e0f2a51d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-09-21T10:43:41Z",
+      "side": 1,
+      "message": "As otherwise we might read old (null) value? (e.g. from the DexCache::resolved_methods_ array if it is initialized during GC)",
+      "parentUuid": "437fc568_12da8efd",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "0362031cec6885e7439e782e2446736ac04f3686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e250fe02_86ff15e0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
