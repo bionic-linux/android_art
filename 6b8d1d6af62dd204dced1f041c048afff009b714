@@ -16,6 +16,24 @@
       "message": "nit: add a high-level comment of what the function does.",
       "revId": "6b8d1d6af62dd204dced1f041c048afff009b714",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca0a4f8_22971b24",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-22T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "174b6ef6_db10caf1",
+      "revId": "6b8d1d6af62dd204dced1f041c048afff009b714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

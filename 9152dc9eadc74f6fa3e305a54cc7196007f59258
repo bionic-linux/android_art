@@ -93,6 +93,54 @@
       },
       "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7339c9_c5b75b3b",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-22T02:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d95b4a1_b7a58e71",
+      "range": {
+        "startLine": 498,
+        "startChar": 7,
+        "endLine": 498,
+        "endChar": 29
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bf0b99_73df7755",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-22T02:33:22Z",
+      "side": 1,
+      "message": "Mark as resolved.",
+      "parentUuid": "6d95b4a1_b7a58e71",
+      "range": {
+        "startLine": 498,
+        "startChar": 7,
+        "endLine": 498,
+        "endChar": 29
+      },
+      "revId": "9152dc9eadc74f6fa3e305a54cc7196007f59258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
