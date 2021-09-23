@@ -433,12 +433,6 @@ static bool AlwaysThrows(ArtMethod* method)
 bool HInliner::TryInline(HInvoke* invoke_instruction) {
   MaybeRecordStat(stats_, MethodCompilationStat::kTryInline);
 
-  // Don't bother to move further if the outer method has too many registers.
-  if (total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters) {
-    MaybeRecordStat(stats_, MethodCompilationStat::kNotInlinedEnvironmentBudget);
-    return false;
-  }
-
   // Don't bother to move further if we know the method is unresolved or the invocation is
   // polymorphic (invoke-{polymorphic,custom}).
   if (invoke_instruction->IsInvokeUnresolved()) {
@@ -1885,6 +1879,12 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
                                        ArtMethod* resolved_method,
                                        ReferenceTypeInfo receiver_type,
                                        HInstruction** return_replacement) {
+  // Don't bother to move further if the outer method has too many registers.
+  if (total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters) {
+    MaybeRecordStat(stats_, MethodCompilationStat::kNotInlinedEnvironmentBudget);
+    return false;
+  }
+
   DCHECK(!(resolved_method->IsStatic() && receiver_type.IsValid()));
   const dex::CodeItem* code_item = resolved_method->GetCodeItem();
   const DexFile& callee_dex_file = *resolved_method->GetDexFile();
