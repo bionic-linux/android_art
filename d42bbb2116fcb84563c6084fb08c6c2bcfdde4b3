@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3c2429_49a03d81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-09-24T19:34:20Z",
+      "side": 1,
+      "message": "Jiakai, PTAL.  PS1 is original.  The fix is really in aosp/1836056, since the original check of prefer64 doesn\u0027t work on 32-bit device.",
+      "revId": "d42bbb2116fcb84563c6084fb08c6c2bcfdde4b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
