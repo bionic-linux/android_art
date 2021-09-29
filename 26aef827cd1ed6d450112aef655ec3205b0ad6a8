@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd662b3_0c8bd960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-29T02:05:29Z",
+      "side": 1,
+      "message": "Hi Paul, I will not submit this CL until aosp/1835088 is in. I just want to send this to you for review to reduce the turnover time.",
+      "revId": "26aef827cd1ed6d450112aef655ec3205b0ad6a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
