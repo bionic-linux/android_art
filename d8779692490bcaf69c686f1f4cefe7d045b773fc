@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8c1ece_f9f6e0f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1896531
+      },
+      "writtenOn": "2021-10-01T07:42:01Z",
+      "side": 1,
+      "message": "Hello, in the aosp/1829433, the code for calculating GC freebytes was wrong. This CL is fixed. Please review this CL and merge it into the master branch. Thank you.",
+      "revId": "d8779692490bcaf69c686f1f4cefe7d045b773fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
