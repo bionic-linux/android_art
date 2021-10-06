@@ -369,6 +369,159 @@ void UnstartedRuntime::UnstartedClassGetDeclaredField(
   result->SetL(field);
 }
 
+static constexpr uint64_t kPreventMetaReflectionBlocklistAccess = 142365358;
+
+// Walks the stack, finds the caller of this reflective call and returns
+// a hiddenapi AccessContext formed from its declaring class.
+static hiddenapi::AccessContext GetReflectionCaller(Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  // Walk the stack and find the first frame not from java.lang.Class,
+  // java.lang.invoke or java.lang.reflect. This is very expensive.
+  // Save this till the last.
+  struct FirstExternalCallerVisitor : public StackVisitor {
+    explicit FirstExternalCallerVisitor(Thread* thread)
+        : StackVisitor(thread, nullptr, StackVisitor::StackWalkKind::kIncludeInlinedFrames),
+          caller(nullptr) {
+    }
+
+    bool VisitFrame() override REQUIRES_SHARED(Locks::mutator_lock_) {
+      ArtMethod *m = GetMethod();
+      if (m == nullptr) {
+        // Attached native thread. Assume this is *not* boot class path.
+        caller = nullptr;
+        return false;
+      } else if (m->IsRuntimeMethod()) {
+        // Internal runtime method, continue walking the stack.
+        return true;
+      }
+
+      ObjPtr<mirror::Class> declaring_class = m->GetDeclaringClass();
+      if (declaring_class->IsBootStrapClassLoaded()) {
+        if (declaring_class->IsClassClass()) {
+          return true;
+        }
+        // Check classes in the java.lang.invoke package. At the time of writing, the
+        // classes of interest are MethodHandles and MethodHandles.Lookup, but this
+        // is subject to change so conservatively cover the entire package.
+        // NB Static initializers within java.lang.invoke are permitted and do not
+        // need further stack inspection.
+        ObjPtr<mirror::Class> lookup_class = GetClassRoot<mirror::MethodHandlesLookup>();
+        if ((declaring_class == lookup_class || declaring_class->IsInSamePackage(lookup_class))
+            && !m->IsClassInitializer()) {
+          return true;
+        }
+        // Check for classes in the java.lang.reflect package, except for java.lang.reflect.Proxy.
+        // java.lang.reflect.Proxy does its own hidden api checks (https://r.android.com/915496),
+        // and walking over this frame would cause a null pointer dereference
+        // (e.g. in 691-hiddenapi-proxy).
+        ObjPtr<mirror::Class> proxy_class = GetClassRoot<mirror::Proxy>();
+        CompatFramework& compat_framework = Runtime::Current()->GetCompatFramework();
+        if (declaring_class->IsInSamePackage(proxy_class) && declaring_class != proxy_class) {
+          if (compat_framework.IsChangeEnabled(kPreventMetaReflectionBlocklistAccess)) {
+            return true;
+          }
+        }
+      }
+
+      caller = m;
+      return false;
+    }
+
+    ArtMethod* caller;
+  };
+
+  FirstExternalCallerVisitor visitor(self);
+  visitor.WalkStack();
+
+  // Construct AccessContext from the calling class found on the stack.
+  // If the calling class cannot be determined, e.g. unattached threads,
+  // we conservatively assume the caller is trusted.
+  ObjPtr<mirror::Class> caller = (visitor.caller == nullptr)
+      ? nullptr : visitor.caller->GetDeclaringClass();
+  return caller.IsNull() ? hiddenapi::AccessContext(/* is_trusted= */ true)
+                         : hiddenapi::AccessContext(caller);
+}
+
+// Returns true if a class member should be discoverable with reflection given
+// the criteria. Some reflection calls only return public members
+// (public_only == true), some members should be hidden from non-boot class path
+// callers (hiddenapi_context).
+template<typename T>
+ALWAYS_INLINE static bool IsDiscoverable(bool public_only,
+                                         const hiddenapi::AccessContext& access_context,
+                                         T* member)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (public_only && ((member->GetAccessFlags() & kAccPublic) == 0)) {
+    return false;
+  }
+
+  return !hiddenapi::ShouldDenyAccessToMember(
+      member, access_context, hiddenapi::AccessMethod::kNone);
+}
+
+
+void UnstartedRuntime::UnstartedClassGetDeclaredFields(
+    Thread* self, ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
+  // Special managed code cut-out to allow field lookup in a un-started runtime that'd fail
+  // going the reflective Dex way.
+  ObjPtr<mirror::Class> klass = shadow_frame->GetVRegReference(arg_offset)->AsClass();
+
+  StackHandleScope<1> hs(self);
+  IterationRange<StrideIterator<ArtField>> ifields = klass->GetIFields();
+  IterationRange<StrideIterator<ArtField>> sfields = klass->GetSFields();
+  size_t array_size = klass->NumInstanceFields() + klass->NumStaticFields();
+  hiddenapi::AccessContext hiddenapi_context = GetReflectionCaller(self);
+
+  // Lets go subtract all the non discoverable fields.
+  for (ArtField& field : ifields) {
+    if (!IsDiscoverable(/*public_only=*/ false, hiddenapi_context, &field)) {
+      --array_size;
+    }
+  }
+  for (ArtField& field : sfields) {
+    if (!IsDiscoverable(/*public_only=*/ false, hiddenapi_context, &field)) {
+      --array_size;
+    }
+  }
+
+  size_t array_idx = 0;
+  auto object_array = hs.NewHandle(mirror::ObjectArray<mirror::Field>::Alloc(
+      self, GetClassRoot<mirror::ObjectArray<mirror::Field>>(), array_size));
+  if (object_array == nullptr) {
+    return;
+  }
+
+  for (ArtField& field : ifields) {
+    if (IsDiscoverable(/*public_only=*/ false, hiddenapi_context, &field)) {
+      ObjPtr<mirror::Field> reflect_field =
+          mirror::Field::CreateFromArtField(self, &field, /*force_resolve=*/ true);
+      if (reflect_field == nullptr) {
+        if (kIsDebugBuild) {
+          self->AssertPendingException();
+        }
+        // Maybe null due to OOME or type resolving exception.
+        return;
+      }
+      object_array->SetWithoutChecks<false, false>(array_idx++, reflect_field);
+    }
+  }
+  for (ArtField& field : sfields) {
+    if (IsDiscoverable(/*public_only=*/ false, hiddenapi_context, &field)) {
+      ObjPtr<mirror::Field> reflect_field =
+          mirror::Field::CreateFromArtField(self, &field, /*force_resolve=*/ true);
+      if (reflect_field == nullptr) {
+        if (kIsDebugBuild) {
+          self->AssertPendingException();
+        }
+        return;
+      }
+      object_array->SetWithoutChecks<false, false>(array_idx++, reflect_field);
+    }
+  }
+  DCHECK_EQ(array_idx, array_size);
+  result->SetL(object_array.Get());
+}
+
 // This is required for Enum(Set) code, as that uses reflection to inspect enum classes.
 void UnstartedRuntime::UnstartedClassGetDeclaredMethod(
     Thread* self, ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
