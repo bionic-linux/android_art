@@ -28,14 +28,17 @@
 #include "base/utils.h"
 #include "class_linker.h"
 #include "class_loader.h"
+#include "class_root-inl.h"
 #include "common_throws.h"
 #include "dex/dex_file-inl.h"
 #include "dex/invoke_type.h"
 #include "dex_cache.h"
+#include "field.h"
+#include "hidden_api.h"
 #include "iftable-inl.h"
 #include "imtable.h"
 #include "object-inl.h"
-#include "object_array.h"
+#include "object_array-alloc-inl.h"
 #include "read_barrier-inl.h"
 #include "runtime.h"
 #include "string.h"
@@ -91,6 +94,70 @@ template<VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
 inline ObjPtr<ClassLoader> Class::GetClassLoader() {
   return GetFieldObject<ClassLoader, kVerifyFlags, kReadBarrierOption>(
       OFFSET_OF_OBJECT_MEMBER(Class, class_loader_));
+}
+
+template<bool kTransactionActive, bool kCheckTransaction>
+ObjPtr<mirror::ObjectArray<mirror::Field>> Class::GetDeclaredFields(
+    Thread* self,
+    bool public_only,
+    bool force_resolve) REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (UNLIKELY(IsObsoleteObject())) {
+    ThrowRuntimeException("Obsolete Object!");
+    return nullptr;
+  }
+  StackHandleScope<1> hs(self);
+  IterationRange<StrideIterator<ArtField>> ifields = GetIFields();
+  IterationRange<StrideIterator<ArtField>> sfields = GetSFields();
+  size_t array_size = NumInstanceFields() + NumStaticFields();
+  auto hiddenapi_context = hiddenapi::GetReflectionCallerAccessContext(self);
+  // Lets go subtract all the non discoverable fields.
+  for (ArtField& field : ifields) {
+    if (!IsDiscoverable(public_only, hiddenapi_context, &field)) {
+      --array_size;
+    }
+  }
+  for (ArtField& field : sfields) {
+    if (!IsDiscoverable(public_only, hiddenapi_context, &field)) {
+      --array_size;
+    }
+  }
+  size_t array_idx = 0;
+  auto object_array = hs.NewHandle(mirror::ObjectArray<mirror::Field>::Alloc(
+      self, GetClassRoot<mirror::ObjectArray<mirror::Field>>(), array_size));
+  if (object_array == nullptr) {
+    return nullptr;
+  }
+  for (ArtField& field : ifields) {
+    if (IsDiscoverable(public_only, hiddenapi_context, &field)) {
+      ObjPtr<mirror::Field> reflect_field =
+          mirror::Field::CreateFromArtField(self, &field, force_resolve);
+      if (reflect_field == nullptr) {
+        if (kIsDebugBuild) {
+          self->AssertPendingException();
+        }
+        // Maybe null due to OOME or type resolving exception.
+        return nullptr;
+      }
+      object_array->SetWithoutChecks<kTransactionActive, kCheckTransaction>(
+          array_idx++, reflect_field);
+    }
+  }
+  for (ArtField& field : sfields) {
+    if (IsDiscoverable(public_only, hiddenapi_context, &field)) {
+      ObjPtr<mirror::Field> reflect_field =
+          mirror::Field::CreateFromArtField(self, &field, force_resolve);
+      if (reflect_field == nullptr) {
+        if (kIsDebugBuild) {
+          self->AssertPendingException();
+        }
+        return nullptr;
+      }
+      object_array->SetWithoutChecks<kTransactionActive, kCheckTransaction>(
+          array_idx++, reflect_field);
+    }
+  }
+  DCHECK_EQ(array_idx, array_size);
+  return object_array.Get();
 }
 
 template<VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
@@ -410,6 +477,18 @@ inline void Class::SetObjectSize(uint32_t new_object_size) {
   DCHECK(!IsVariableSize());
   // Not called within a transaction.
   return SetField32<false>(OFFSET_OF_OBJECT_MEMBER(Class, object_size_), new_object_size);
+}
+
+template<typename T>
+inline bool Class::IsDiscoverable(bool public_only,
+                                  const hiddenapi::AccessContext& access_context,
+                                  T* member) {
+  if (public_only && ((member->GetAccessFlags() & kAccPublic) == 0)) {
+    return false;
+  }
+
+  return !hiddenapi::ShouldDenyAccessToMember(
+      member, access_context, hiddenapi::AccessMethod::kNone);
 }
 
 // Determine whether "this" is assignable from "src", where both of these
