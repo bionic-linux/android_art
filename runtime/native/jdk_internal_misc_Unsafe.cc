@@ -51,17 +51,12 @@ static jboolean Unsafe_compareAndSwapInt(JNIEnv* env, jobject, jobject javaObj, 
   return success ? JNI_TRUE : JNI_FALSE;
 }
 
-static jboolean Unsafe_compareAndSetInt(JNIEnv* env, jobject, jobject javaObj, jlong offset,
+static jboolean Unsafe_compareAndSetInt(JNIEnv* env, jobject obj, jobject javaObj, jlong offset,
                                          jint expectedValue, jint newValue) {
-  ScopedFastNativeObjectAccess soa(env);
-  ObjPtr<mirror::Object> obj = soa.Decode<mirror::Object>(javaObj);
-  // JNI must use non transactional mode.
-  bool success = obj->CasField32<false>(MemberOffset(offset),
-                                        expectedValue,
-                                        newValue,
-                                        CASMode::kStrong,
-                                        std::memory_order_seq_cst);
-  return success ? JNI_TRUE : JNI_FALSE;
+  // compareAndSetInt has the same semantics as compareAndSwapInt, except for
+  // being strict (volatile). Since the latter is implemented in a strict mode,
+  // the former can just use that implementation.
+  return Unsafe_compareAndSwapInt(env, obj, javaObj, offset, expectedValue, newValue);
 }
 
 static jboolean Unsafe_compareAndSwapLong(JNIEnv* env, jobject, jobject javaObj, jlong offset,
@@ -73,6 +68,14 @@ static jboolean Unsafe_compareAndSwapLong(JNIEnv* env, jobject, jobject javaObj,
                                                                     expectedValue,
                                                                     newValue);
   return success ? JNI_TRUE : JNI_FALSE;
+}
+
+static jboolean Unsafe_compareAndSetLong(JNIEnv* env, jobject obj, jobject javaObj, jlong offset,
+                                          jlong expectedValue, jlong newValue) {
+  // compareAndSetLong has the same semantics as compareAndSwapLong, except for
+  // being strict (volatile). Since the latter is implemented in a strict mode,
+  // the former can just use that implementation.
+  return Unsafe_compareAndSwapLong(env, obj, javaObj, offset, expectedValue, newValue);
 }
 
 static jboolean Unsafe_compareAndSwapObject(JNIEnv* env, jobject, jobject javaObj, jlong offset,
@@ -90,6 +93,34 @@ static jboolean Unsafe_compareAndSwapObject(JNIEnv* env, jobject, jobject javaOb
         reinterpret_cast<mirror::HeapReference<mirror::Object>*>(
             reinterpret_cast<uint8_t*>(obj.Ptr()) + static_cast<size_t>(offset));
     ReadBarrier::Barrier<mirror::Object, /* kIsVolatile= */ false, kWithReadBarrier,
+        /* kAlwaysUpdateField= */ true>(
+        obj.Ptr(),
+        MemberOffset(offset),
+        field_addr);
+  }
+  bool success = obj->CasFieldObject<false>(MemberOffset(offset),
+                                            expectedValue,
+                                            newValue,
+                                            CASMode::kStrong,
+                                            std::memory_order_seq_cst);
+  return success ? JNI_TRUE : JNI_FALSE;
+}
+
+static jboolean Unsafe_compareAndSetObject(JNIEnv* env, jobject, jobject javaObj, jlong offset,
+                                            jobject javaExpectedValue, jobject javaNewValue) {
+  ScopedFastNativeObjectAccess soa(env);
+  ObjPtr<mirror::Object> obj = soa.Decode<mirror::Object>(javaObj);
+  ObjPtr<mirror::Object> expectedValue = soa.Decode<mirror::Object>(javaExpectedValue);
+  ObjPtr<mirror::Object> newValue = soa.Decode<mirror::Object>(javaNewValue);
+  // JNI must use non transactional mode.
+  if (kUseReadBarrier) {
+    // Need to make sure the reference stored in the field is a to-space one before attempting the
+    // CAS or the CAS could fail incorrectly.
+    // Note that the read barrier load does need to be volatile.
+    mirror::HeapReference<mirror::Object>* field_addr =
+        reinterpret_cast<mirror::HeapReference<mirror::Object>*>(
+            reinterpret_cast<uint8_t*>(obj.Ptr()) + static_cast<size_t>(offset));
+    ReadBarrier::Barrier<mirror::Object, /* kIsVolatile= */ true, kWithReadBarrier,
         /* kAlwaysUpdateField= */ true>(
         obj.Ptr(),
         MemberOffset(offset),
@@ -559,6 +590,8 @@ static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(Unsafe, compareAndSwapLong, "(Ljava/lang/Object;JJJ)Z"),
   FAST_NATIVE_METHOD(Unsafe, compareAndSwapObject, "(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z"),
   FAST_NATIVE_METHOD(Unsafe, compareAndSetInt, "(Ljava/lang/Object;JII)Z"),
+  FAST_NATIVE_METHOD(Unsafe, compareAndSetLong, "(Ljava/lang/Object;JJJ)Z"),
+  FAST_NATIVE_METHOD(Unsafe, compareAndSetObject, "(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z"),
   FAST_NATIVE_METHOD(Unsafe, getIntVolatile, "(Ljava/lang/Object;J)I"),
   FAST_NATIVE_METHOD(Unsafe, putIntVolatile, "(Ljava/lang/Object;JI)V"),
   FAST_NATIVE_METHOD(Unsafe, getLongVolatile, "(Ljava/lang/Object;J)J"),
