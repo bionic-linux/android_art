@@ -16,6 +16,64 @@
       "message": "Looks good to me. Thanks!\nMarking +1 for now to give Lokesh a chance to look as well.\nWe could really use a comment on https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/collector/iteration.h;l\u003d95 to explain what freed_ means. But I can do that in a separate CL.",
       "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658311f7_68744dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-10-07T23:41:17Z",
+      "side": 1,
+      "message": "I totally agree. Fuijang can address this along with my comment.",
+      "parentUuid": "b9238b44_45c5f899",
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25a6148_1fa1715e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-10-07T23:41:17Z",
+      "side": 1,
+      "message": "Sorry for the late response. Please address the two comments.",
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f081f7e_4b207a92",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-10-07T23:41:17Z",
+      "side": 1,
+      "message": "The exact same calculation is also done in GrowForUtilization(). Also, this function is only called here with a non-zero bytes_allocated_before_gc. So please move this change (of updating num_bytes_alive_after_gc_) inside GrowForUtilization().",
+      "range": {
+        "startLine": 2745,
+        "startChar": 2,
+        "endLine": 2747,
+        "endChar": 50
+      },
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
