@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9238b44_45c5f899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-10-07T23:22:58Z",
+      "side": 1,
+      "message": "Looks good to me. Thanks!\nMarking +1 for now to give Lokesh a chance to look as well.\nWe could really use a comment on https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/collector/iteration.h;l\u003d95 to explain what freed_ means. But I can do that in a separate CL.",
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
