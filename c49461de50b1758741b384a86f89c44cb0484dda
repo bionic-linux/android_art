@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c87ef7c_3c74d155",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T12:29:43Z",
+      "side": 1,
+      "message": "Fix indentation. (I would also like to have one parameter per line but that would be inconsistent with the parts of the file you\u0027re not touching at all.)",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "c49461de50b1758741b384a86f89c44cb0484dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547e2605_b9706668",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T12:29:43Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 63,
+        "startChar": 41,
+        "endLine": 63,
+        "endChar": 42
+      },
+      "revId": "c49461de50b1758741b384a86f89c44cb0484dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16e986f_9752977e",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T12:29:43Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 83,
+        "startChar": 33,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "c49461de50b1758741b384a86f89c44cb0484dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dca2e3_9c7ca1e7",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T12:29:43Z",
+      "side": 1,
+      "message": "Please make this always false and add back the original comment. The read barrier does not serve for synchronization. It just ensures that the field contains a to-space reference thanks to `/* kAlwaysUpdateField\u003d */ true`. The memory ordering is enforced by the `CasFieldObject()` below.\n\nThen I guess it would make sense to call this function `Unsafe_compareAndSetObject()` and call it from the `Unsafe_compareAndSwapObject()` with a comment similar to the one in `Unsafe_compareAndSwapInt()`.",
+      "range": {
+        "startLine": 95,
+        "startChar": 41,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "c49461de50b1758741b384a86f89c44cb0484dda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
