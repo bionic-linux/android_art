@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a860af7_aa7e5084",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-08T09:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb5efc9_f19d9f9a",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "850ff10a_ff133af0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-08T08:36:33Z",
       "side": 1,
       "message": "Add \"UnsafeGet\" to the function name?\n\nAnd could we replace the switch with `type \u003d\u003d DataType::kReference`? (That would make the helper function unnecessary.)",
+      "range": {
+        "startLine": 2787,
+        "startChar": 12,
+        "endLine": 2787,
+        "endChar": 31
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16495e8a_67e963b8",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2787,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-08T09:29:20Z",
+      "side": 1,
+      "message": "I updated the function name.\n\nThe type is not provided in the arm64 and x86_64 implementations. I wanted to keep the checks uniform and I wasn\u0027t sure if I can get the correct type from the invoke argument so I went for the safer option.",
+      "parentUuid": "850ff10a_ff133af0",
       "range": {
         "startLine": 2787,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf00b0b_c2a7b63c",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-08T09:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c6b3ac2_afca1692",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dde09a7_a34bf7e8",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fd7053_4313e698",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-08T09:29:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dde09a7_a34bf7e8",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7dbc4da_dfcb3e56",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-10-08T08:36:33Z",
       "side": 1,
       "message": "Is this copy-pasted from `Unsafe_compareAndSwapObject()`? Can you reuse one in the other just like you did for Int and Long?",
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a074eed8_7e144613",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-08T09:29:20Z",
+      "side": 1,
+      "message": "It\u0027s almost the same, but for compare-and-swap volatile is file, while for compare-and-set it\u0027s true. I can add a templated version, or just another function.",
+      "parentUuid": "a7dbc4da_dfcb3e56",
       "revId": "76435bed625767e986c167a95a2a651744994647",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
