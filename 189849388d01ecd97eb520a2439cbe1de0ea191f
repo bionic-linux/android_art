@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e787f526_84c02bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1896531
+      },
+      "writtenOn": "2021-10-08T02:38:50Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "658311f7_68744dde",
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f081f7e_4b207a92",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-10-07T23:41:17Z",
       "side": 1,
       "message": "The exact same calculation is also done in GrowForUtilization(). Also, this function is only called here with a non-zero bytes_allocated_before_gc. So please move this change (of updating num_bytes_alive_after_gc_) inside GrowForUtilization().",
+      "range": {
+        "startLine": 2745,
+        "startChar": 2,
+        "endLine": 2747,
+        "endChar": 50
+      },
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bc4f2b_5859fe50",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1896531
+      },
+      "writtenOn": "2021-10-08T02:38:50Z",
+      "side": 1,
+      "message": "OK.\nIn addition,is it necessary to put this code(of updating num_bytes_alive_after_gc_) at the beginning of the function(GrowForUtilization)? In order to extend the usage scenario of this value(num_bytes_alive_after_gc_).",
+      "parentUuid": "7f081f7e_4b207a92",
       "range": {
         "startLine": 2745,
         "startChar": 2,
