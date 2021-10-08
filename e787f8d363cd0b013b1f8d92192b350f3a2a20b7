@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19bf008_9e059285",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T14:13:11Z",
+      "side": 1,
+      "message": "Indentation.",
+      "range": {
+        "startLine": 82,
+        "startChar": 43,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "e787f8d363cd0b013b1f8d92192b350f3a2a20b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
