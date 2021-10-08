@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb5efc9_f19d9f9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T08:36:33Z",
+      "side": 1,
+      "message": "compare-and-set",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850ff10a_ff133af0",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2787,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T08:36:33Z",
+      "side": 1,
+      "message": "Add \"UnsafeGet\" to the function name?\n\nAnd could we replace the switch with `type \u003d\u003d DataType::kReference`? (That would make the helper function unnecessary.)",
+      "range": {
+        "startLine": 2787,
+        "startChar": 12,
+        "endLine": 2787,
+        "endChar": 31
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6b3ac2_afca1692",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T08:36:33Z",
+      "side": 1,
+      "message": "It would then make sense to do it the other way around. Implement the \"strong\" version precisely and then forward to it in the weaker version with a comment that it could be relaxed.",
+      "range": {
+        "startLine": 57,
+        "startChar": 30,
+        "endLine": 58,
+        "endChar": 49
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dde09a7_a34bf7e8",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T08:36:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7dbc4da_dfcb3e56",
+        "filename": "runtime/native/jdk_internal_misc_Unsafe.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-08T08:36:33Z",
+      "side": 1,
+      "message": "Is this copy-pasted from `Unsafe_compareAndSwapObject()`? Can you reuse one in the other just like you did for Int and Long?",
+      "revId": "76435bed625767e986c167a95a2a651744994647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
