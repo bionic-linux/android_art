@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f5b9b9_84b83803",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T16:06:35Z",
+      "side": 1,
+      "message": "You can pass `\u003c/*kTransactionActive\u003d*/ false, /*kCheckTransaction\u003d*/ false\u003e` with the same reasoning as https://android-review.googlesource.com/c/platform/art/+/1301753/4/runtime/mirror/executable.cc .\n\n(So, this function does not need those template parameters at all.)",
+      "range": {
+        "startLine": 141,
+        "startChar": 37,
+        "endLine": 141,
+        "endChar": 74
+      },
+      "revId": "36c4a0b5bc6d3170f79e3ec20c6410cfb842ca9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "233f393f_42338e6d",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T16:06:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 74
+      },
+      "revId": "36c4a0b5bc6d3170f79e3ec20c6410cfb842ca9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
