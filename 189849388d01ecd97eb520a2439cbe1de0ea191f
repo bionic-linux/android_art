@@ -116,6 +116,30 @@
       },
       "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b78e9b_38bc52e5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2021-10-11T15:53:16Z",
+      "side": 1,
+      "message": "I didn\u0027t fully understand what you mean. But I think you can just move the following line at https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/heap.cc;drc\u003d3dcd844cccf35dc8d66117bd77de16fc68c86e4b;l\u003d3679\n\n\"num_bytes_alive_after_gc_ \u003d bytes_allocated_before_gc - freed_bytes;\"",
+      "parentUuid": "68bc4f2b_5859fe50",
+      "range": {
+        "startLine": 2745,
+        "startChar": 2,
+        "endLine": 2747,
+        "endChar": 50
+      },
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
