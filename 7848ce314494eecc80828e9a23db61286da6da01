@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0f89c44_8f73aa30",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3339,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "Remove. It\u0027s needed on ARM/ARM64 in order to use LDRD/LDP.",
+      "range": {
+        "startLine": 3339,
+        "startChar": 2,
+        "endLine": 3339,
+        "endChar": 92
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500a5b36_1852a9fd",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "__ cmpl(Address(varhandle, coordinate_type1_offset.Int32Value()), Immediate(0));\n\n(And then use `kEqual` instead of `kZero` below.)",
+      "range": {
+        "startLine": 3341,
+        "startChar": 2,
+        "endLine": 3342,
+        "endChar": 23
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8fc76e2_26b300f9",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3345,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "We do not need to load or unpoison this reference. We can compare the poisoned reference below directly with this poisoned reference in memory. (But you\u0027ll need to unpoison later for checking the element type.)",
+      "range": {
+        "startLine": 3344,
+        "startChar": 2,
+        "endLine": 3345,
+        "endChar": 60
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e25f60_4d8c7c92",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3374,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "We do not need to distinguish reference types here, the other path works just fine.",
+      "range": {
+        "startLine": 3372,
+        "startChar": 4,
+        "endLine": 3374,
+        "endChar": 47
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bd426d_3ee5674b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3378,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610be863_8ce68fb3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "kNotEqual",
+      "range": {
+        "startLine": 3379,
+        "startChar": 9,
+        "endLine": 3379,
+        "endChar": 17
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de42b676_78961e67",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3384,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "Compare in memory.",
+      "range": {
+        "startLine": 3383,
+        "startChar": 2,
+        "endLine": 3384,
+        "endChar": 23
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8e8ffd_acc14340",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "We could instead embed the entire address calculation in relevant instructions but that would complicate the code, so let\u0027s keep this as is.",
+      "range": {
+        "startLine": 3475,
+        "startChar": 4,
+        "endLine": 3475,
+        "endChar": 89
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926d6c60_1528091a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T10:03:43Z",
+      "side": 1,
+      "message": "Not needed if you do comparisons with memory locations as suggested.",
+      "range": {
+        "startLine": 3535,
+        "startChar": 4,
+        "endLine": 3536,
+        "endChar": 53
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
