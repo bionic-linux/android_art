@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76272dc_20210de3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3339,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f89c44_8f73aa30",
+      "range": {
+        "startLine": 3339,
+        "startChar": 2,
+        "endLine": 3339,
+        "endChar": 92
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "500a5b36_1852a9fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-11T10:03:43Z",
       "side": 1,
       "message": "__ cmpl(Address(varhandle, coordinate_type1_offset.Int32Value()), Immediate(0));\n\n(And then use `kEqual` instead of `kZero` below.)",
+      "range": {
+        "startLine": 3341,
+        "startChar": 2,
+        "endLine": 3342,
+        "endChar": 23
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa89f97_ba793cd3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500a5b36_1852a9fd",
       "range": {
         "startLine": 3341,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f7b924_50596167",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3345,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8fc76e2_26b300f9",
+      "range": {
+        "startLine": 3344,
+        "startChar": 2,
+        "endLine": 3345,
+        "endChar": 60
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7e25f60_4d8c7c92",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-11T10:03:43Z",
       "side": 1,
       "message": "We do not need to distinguish reference types here, the other path works just fine.",
+      "range": {
+        "startLine": 3372,
+        "startChar": 4,
+        "endLine": 3374,
+        "endChar": 47
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c717e9_5ff49b95",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3374,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e25f60_4d8c7c92",
       "range": {
         "startLine": 3372,
         "startChar": 4,
@@ -110,6 +206,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e9d191_b522eb29",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3378,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done (under 100 characters after other changes so still on one line).",
+      "parentUuid": "d6bd426d_3ee5674b",
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610be863_8ce68fb3",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-10-11T10:03:43Z",
       "side": 1,
       "message": "kNotEqual",
+      "range": {
+        "startLine": 3379,
+        "startChar": 9,
+        "endLine": 3379,
+        "endChar": 17
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc19771_1a159698",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3379,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610be863_8ce68fb3",
       "range": {
         "startLine": 3379,
         "startChar": 9,
@@ -158,6 +296,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "590a568d_85543cbe",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3384,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de42b676_78961e67",
+      "range": {
+        "startLine": 3383,
+        "startChar": 2,
+        "endLine": 3384,
+        "endChar": 23
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8c8e8ffd_acc14340",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 2
@@ -169,6 +331,30 @@
       "writtenOn": "2021-10-11T10:03:43Z",
       "side": 1,
       "message": "We could instead embed the entire address calculation in relevant instructions but that would complicate the code, so let\u0027s keep this as is.",
+      "range": {
+        "startLine": 3475,
+        "startChar": 4,
+        "endLine": 3475,
+        "endChar": 89
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2c1c89_78f73600",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3475,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "I think such optimizations are most effective when performed on the generated sequence of low-level instructions (the peephole optimization). If we ever introduce a low-level assembly-like IR then we can do such optimizations on it, as well as using virtual registers and getting rid of all the `addTemp` and semi-manual register allocation.",
+      "parentUuid": "8c8e8ffd_acc14340",
       "range": {
         "startLine": 3475,
         "startChar": 4,
@@ -192,6 +378,30 @@
       "writtenOn": "2021-10-11T10:03:43Z",
       "side": 1,
       "message": "Not needed if you do comparisons with memory locations as suggested.",
+      "range": {
+        "startLine": 3535,
+        "startChar": 4,
+        "endLine": 3536,
+        "endChar": 53
+      },
+      "revId": "7848ce314494eecc80828e9a23db61286da6da01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66e0c8e_e1af5b80",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3536,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:22:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "926d6c60_1528091a",
       "range": {
         "startLine": 3535,
         "startChar": 4,
