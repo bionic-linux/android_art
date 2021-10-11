@@ -16,6 +16,41 @@
       "message": "vmarko@, PTaL. The changes are basically taken from runtime/native (from java_lang_Class.cc). I would like to have it shared between the two, but I\u0027m not sure where that should go.",
       "revId": "62864a8bc9b07cb00f95f0b271af948a26a0a8fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0e7ec5_2ca8f5de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T09:25:25Z",
+      "side": 1,
+      "message": "The function `GetReflectionCaller()` could be moved to `hidden_api.{h,cc}` and maybe renamed to `GetReflectionCallerAccessContext()`.\n\nThe function `IsDiscoverable()` could be moved either to `hidden_api.{h,cc}` or to `class{,-inl}.h`. I think the latter is a slightly better option. We could make it a static function in `Class`.\n\nThe `GetDeclaredFields()` helper should be moved to `class{.{h,cc}` as a member function.",
+      "parentUuid": "13af8dd6_27674343",
+      "revId": "62864a8bc9b07cb00f95f0b271af948a26a0a8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bad8f1c_d2dcdf90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-11T09:25:25Z",
+      "side": 1,
+      "message": "I don\u0027t think this CL needs to be a part of the large topic.",
+      "revId": "62864a8bc9b07cb00f95f0b271af948a26a0a8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
