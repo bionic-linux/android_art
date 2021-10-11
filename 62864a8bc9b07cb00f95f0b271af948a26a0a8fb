@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13af8dd6_27674343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-10-11T08:35:17Z",
+      "side": 1,
+      "message": "vmarko@, PTaL. The changes are basically taken from runtime/native (from java_lang_Class.cc). I would like to have it shared between the two, but I\u0027m not sure where that should go.",
+      "revId": "62864a8bc9b07cb00f95f0b271af948a26a0a8fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
