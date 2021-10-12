@@ -140,6 +140,30 @@
       },
       "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fde4bd9_09cfddef",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1896531
+      },
+      "writtenOn": "2021-10-12T01:31:23Z",
+      "side": 1,
+      "message": "OK.has been moved.\n\nnum_bytes_alive_after_gc_ \u003d UnsignedDifference(bytes_allocated_before_gc, freed_bytes);",
+      "parentUuid": "d9b78e9b_38bc52e5",
+      "range": {
+        "startLine": 2745,
+        "startChar": 2,
+        "endLine": 2747,
+        "endChar": 50
+      },
+      "revId": "189849388d01ecd97eb520a2439cbe1de0ea191f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
