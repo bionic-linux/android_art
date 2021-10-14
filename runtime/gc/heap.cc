@@ -105,6 +105,13 @@
 #include "thread_list.h"
 #include "verify_object-inl.h"
 #include "well_known_classes.h"
+#ifdef __DUMP_HEAP_BEFORE_OOM__
+#include "hprof/hprof.h"
+#include "android-base/file.h"
+#include <android-base/properties.h>
+using android::base::StringPrintf;
+#endif
+
 
 namespace art {
 
@@ -389,6 +396,9 @@ Heap::Heap(size_t initial_size,
       max_gc_requested_(0u),
       pending_collector_transition_(nullptr),
       pending_heap_trim_(nullptr),
+    #ifdef __DUMP_HEAP_BEFORE_OOM__
+      pending_oom_dump_(nullptr),
+    #endif
       use_homogeneous_space_compaction_for_oom_(use_homogeneous_space_compaction_for_oom),
       use_generational_cc_(use_generational_cc),
       running_collection_is_blocking_(false),
@@ -818,6 +828,9 @@ Heap::Heap(size_t initial_size,
   if (is_running_on_memory_tool_ || gc_stress_mode_) {
     instrumentation->InstrumentQuickAllocEntryPoints();
   }
+  #ifdef __DUMP_HEAP_BEFORE_OOM__
+    debug_art_heap_oom_ = android::base::GetBoolProperty("persist.sys.dalvik.debug.oom", false);
+  #endif
   if (VLOG_IS_ON(heap) || VLOG_IS_ON(startup)) {
     LOG(INFO) << "Heap() exiting";
   }
@@ -2745,6 +2758,20 @@ collector::GcType Heap::CollectGarbageInternal(collector::GcType gc_type,
   old_native_bytes_allocated_.store(GetNativeBytes());
   LogGC(gc_cause, collector);
   FinishGC(self, gc_type);
+  #ifdef __DUMP_HEAP_BEFORE_OOM__
+  if (debug_art_heap_oom_) {
+    // TODO: runtime->IsJavaDebuggable() to support developers
+    const size_t current_heap_size = GetBytesAllocated();
+    const size_t max_memory = GetMaxMemory();
+    constexpr float kOomUtilization = 0.9f;
+    size_t oom_size = static_cast<size_t>(kOomUtilization * static_cast<float>(max_memory));
+    if(current_heap_size >= oom_size) {
+        RequestOomDump(self);
+        LOG(WARNING) << "OomDump heap size:" << PrettySize(current_heap_size) << " oomsize:"
+                     << PrettySize(oom_size);
+    }
+  }
+  #endif
   // Actually enqueue all cleared references. Do this after the GC has officially finished since
   // otherwise we can deadlock.
   clear->Run(self);
@@ -3904,6 +3931,64 @@ void Heap::RequestCollectorTransition(CollectorType desired_collector_type, uint
   }
   task_processor_->AddTask(self, added_task);
 }
+
+#ifdef __DUMP_HEAP_BEFORE_OOM__
+class Heap::OomDumpTask : public HeapTask {
+public:
+    explicit OomDumpTask(uint64_t delta_time) : HeapTask(NanoTime() + delta_time) {}
+
+    void Run(Thread *self) override {
+        std::string cmdline;
+        Runtime *runtime = Runtime::Current();
+        gc::Heap *heap = runtime->GetHeap();
+        if (!runtime->IsZygote()) {
+            if (android::base::ReadFileToString("/proc/self/cmdline", &cmdline)) {
+                time_t now = time(nullptr);
+                tm tmbuf;
+                tm *ptm = localtime_r(&now, &tmbuf);
+                cmdline = std::string(cmdline.c_str());
+                std::string path = runtime->IsSystemServer() ? "/data/anr/" : StringPrintf(
+                        "/data/data/%s/", cmdline.c_str());
+                const std::string file_name = StringPrintf(
+                        "%s%04d-%02d-%02d-%02d-%02d-%02d-pid%u%s",
+                        path.c_str(), ptm->tm_year + 1900, ptm->tm_mon + 1, ptm->tm_mday,
+                        ptm->tm_hour, ptm->tm_min, ptm->tm_sec,
+                        static_cast<uint32_t>(getpid()), ".hprof");
+                LOG(WARNING) << "OomDump:" << file_name.c_str();
+                hprof::DumpHeap(file_name.c_str(), -1, false);
+            } else {
+                LOG(ERROR) << "OomDump read cmdline fail.";
+            }
+        }
+        heap->ClearPendingOomDump(self);
+    }//end for Run
+};
+
+void Heap::ClearPendingOomDump(Thread *self) {
+    MutexLock mu(self, *pending_task_lock_);
+    pending_oom_dump_ = nullptr;
+}
+
+void Heap::RequestOomDump(Thread *self) {
+    static size_t oom_dump_count = kOomDumpTimes;
+    if (!CanAddHeapTask(self)) {
+        return;
+    }
+    OomDumpTask *added_task = nullptr;
+    {
+        MutexLock mu(self, *pending_task_lock_);
+        if (pending_oom_dump_ != nullptr || oom_dump_count <= 0) {
+            // Already have a request in task processor, ignore this request.
+            LOG(WARNING) << "OomDump return. oom_dump_count:" << oom_dump_count;
+            return;
+        }
+        added_task = new OomDumpTask(MsToNs((kOomDumpTimes - oom_dump_count) * 1000));
+        pending_oom_dump_ = added_task;
+        --oom_dump_count;
+    }
+    task_processor_->AddTask(self, added_task);
+}
+#endif
 
 class Heap::HeapTrimTask : public HeapTask {
  public:

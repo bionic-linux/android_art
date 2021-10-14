@@ -17,6 +17,8 @@
 #ifndef ART_RUNTIME_GC_HEAP_H_
 #define ART_RUNTIME_GC_HEAP_H_
 
+#define __DUMP_HEAP_BEFORE_OOM__
+
 #include <iosfwd>
 #include <string>
 #include <unordered_set>
@@ -848,6 +850,11 @@ class Heap {
   bool RequestConcurrentGC(Thread* self, GcCause cause, bool force_full, uint32_t observed_gc_num)
       REQUIRES(!*pending_task_lock_);
 
+  #ifdef __DUMP_HEAP_BEFORE_OOM__
+  // Request an asynchronous oom dump.
+  void RequestOomDump(Thread* self) REQUIRES(!*pending_task_lock_);
+  #endif
+
   // Whether or not we may use a garbage collector, used so that we only create collectors we need.
   bool MayUseCollector(CollectorType type) const;
 
@@ -973,6 +980,9 @@ class Heap {
   class ConcurrentGCTask;
   class CollectorTransitionTask;
   class HeapTrimTask;
+#ifdef __DUMP_HEAP_BEFORE_OOM__
+  class OomDumpTask;
+#endif
   class TriggerPostForkCCGcTask;
   class ReduceTargetFootprintTask;
 
@@ -1215,6 +1225,9 @@ class Heap {
 
   void ClearPendingTrim(Thread* self) REQUIRES(!*pending_task_lock_);
   void ClearPendingCollectorTransition(Thread* self) REQUIRES(!*pending_task_lock_);
+#ifdef __DUMP_HEAP_BEFORE_OOM__
+  void ClearPendingOomDump(Thread* self) REQUIRES(!*pending_task_lock_);
+#endif
 
   // What kind of concurrency behavior is the runtime after? Currently true for concurrent mark
   // sweep GC, false for other GC types.
@@ -1628,6 +1641,11 @@ class Heap {
   // Active tasks which we can modify (change target time, desired collector type, etc..).
   CollectorTransitionTask* pending_collector_transition_ GUARDED_BY(pending_task_lock_);
   HeapTrimTask* pending_heap_trim_ GUARDED_BY(pending_task_lock_);
+#ifdef __DUMP_HEAP_BEFORE_OOM__
+  OomDumpTask * pending_oom_dump_ GUARDED_BY(pending_task_lock_);
+  static constexpr size_t kOomDumpTimes = 2;
+  bool debug_art_heap_oom_ = false;
+#endif
 
   // Whether or not we use homogeneous space compaction to avoid OOM errors.
   bool use_homogeneous_space_compaction_for_oom_;
