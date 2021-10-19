@@ -323,9 +323,25 @@ std::string GetDefaultBootImageLocation(const std::string& android_root,
   //  - the boot image extensions (contains framework libraries) on the system partition, or
   //    in the ART APEX data directory, if an update for the ART module has been been installed.
   if (kIsTargetBuild && !deny_art_apex_data_files) {
+    // If the ART APEX has been updated on a device that does not support userfaultfd, the full
+    // compiled boot image will be in the ART APEX data directory, which consists of both the
+    // primary boot image and extensions.
+    const std::string apex_data_dalvik_cache =
+        GetApexDataDalvikCacheDirectory(InstructionSet::kNone);
+    const std::string full_boot_image =
+        StringPrintf("%s/%s", apex_data_dalvik_cache.c_str(), "boot.art");
+    const std::string full_boot_image_filename =
+        GetSystemImageFilename(full_boot_image.c_str(), kRuntimeISA);
+    if (OS::FileExists(full_boot_image_filename.c_str(), /*check_file_type=*/true)) {
+      return StringPrintf(
+          "%s!%s/%s", full_boot_image.c_str(), android_root.c_str(), kEtcBootImageProf);
+    } else if (errno == EACCES) {
+      // Additional warning for potential SELinux misconfiguration.
+      PLOG(ERROR) << "Full boot image check failed, could not stat: " << full_boot_image_filename;
+    }
     // If the ART APEX has been updated, the compiled boot image extension will be in the ART APEX
-    // data directory (assuming there is space and we trust the artifacts there). Otherwise, for a factory installed ART APEX it is
-    // under $ANDROID_ROOT/framework/.
+    // data directory (assuming there is space and we trust the artifacts there). Otherwise, for a
+    // factory installed ART APEX it is under $ANDROID_ROOT/framework/.
     const std::string first_extension_jar{GetFirstBootClasspathExtensionJar(android_root)};
     const std::string boot_extension_image = GetApexDataBootImage(first_extension_jar);
     const std::string boot_extension_filename =
@@ -444,7 +460,7 @@ bool GetDalvikCacheFilename(const char* location,
   return GetLocationEncodedFilename(location, cache_location, filename, error_msg);
 }
 
-static std::string GetApexDataDalvikCacheDirectory(InstructionSet isa) {
+std::string GetApexDataDalvikCacheDirectory(InstructionSet isa) {
   if (isa != InstructionSet::kNone) {
     return GetDalvikCacheDirectory(GetArtApexData(), GetInstructionSetString(isa));
   }

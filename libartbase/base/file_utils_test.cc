@@ -19,15 +19,21 @@
 #include <libgen.h>
 #include <stdlib.h>
 
+#include <filesystem>
 #include <optional>
 #include <vector>
 
+#include "android-base/stringprintf.h"
+#include "android-base/strings.h"
+#include "arch/instruction_set.h"
+#include "base/globals.h"
 #include "base/stl_util.h"
 #include "common_art_test.h"
 
 namespace art {
 
 static constexpr const char kAndroidWifiApexDefaultPath[] = "/apex/com.android.wifi";
+constexpr int kReplace = 1;
 
 class FileUtilsTest : public CommonArtTest {};
 
@@ -278,6 +284,47 @@ TEST_F(FileUtilsTest, GetSystemOdexFilenameForApex) {
   EXPECT_EQ(
       GetAndroidRoot() + "/framework/oat/arm/apex@com.android.art@javalib@some.jar@classes.odex",
       GetSystemOdexFilenameForApex(apex_jar.c_str(), InstructionSet::kArm));
+}
+
+TEST_F(FileUtilsTest, GetDefaultBootImageLocation) {
+  if (!kIsTargetBuild) {
+    return;
+  }
+
+  ScratchDir temp_dir;
+  std::string temp_dir_path = temp_dir.GetPath();
+  if ('/' == temp_dir_path.back()) {
+    temp_dir_path.pop_back();
+  }
+
+  std::string art_apex_data_path = temp_dir_path + kArtApexDataDefaultPath;
+  ScopedUnsetEnvironmentVariable art_apex_data("ART_APEX_DATA");
+  setenv("ART_APEX_DATA", art_apex_data_path.c_str(), kReplace);
+  std::string art_apex_dalvik_cache_path =
+      art_apex_data_path + "/dalvik-cache/" + GetInstructionSetString(kRuntimeISA);
+  ASSERT_TRUE(std::filesystem::create_directories(art_apex_dalvik_cache_path));
+
+  std::string error_msg;
+
+  {
+    ScratchFile full_boot_image{art_apex_dalvik_cache_path + "/boot.art"};
+    EXPECT_EQ(
+        art_apex_data_path + "/dalvik-cache/boot.art!" + GetAndroidRoot() + "/etc/boot-image.prof",
+        GetDefaultBootImageLocation(&error_msg));
+  }
+
+  {
+    ScratchFile boot_extension_image{art_apex_dalvik_cache_path + "/boot-framework.art"};
+    EXPECT_EQ(std::string {kAndroidArtApexDefaultPath} + "/javalib/boot.art:" + art_apex_data_path +
+                  "/dalvik-cache/boot-framework.art!" + GetAndroidRoot() + "/etc/boot-image.prof",
+              GetDefaultBootImageLocation(&error_msg));
+  }
+
+  {
+    EXPECT_EQ(std::string {kAndroidArtApexDefaultPath} + "/javalib/boot.art:" + GetAndroidRoot() +
+                  "/framework/boot-framework.art!" + GetAndroidRoot() + "/etc/boot-image.prof",
+              GetDefaultBootImageLocation(&error_msg));
+  }
 }
 
 }  // namespace art
