@@ -48,6 +48,7 @@ cc_defaults {
         "base/mem_map.cc",
         // "base/mem_map_fuchsia.cc", put in target when fuchsia supported by soong
         "base/metrics/metrics_common.cc",
+        "base/process.cc",
         "base/os_linux.cc",
         "base/runtime_debug.cc",
         "base/safe_copy.cc",
@@ -73,6 +74,7 @@ cc_defaults {
             shared_libs: [
                 "libz",
                 "liblog",
+                "libprocinfo",
                 // For ashmem.
                 "libartpalette",
                 // For common macros.
@@ -92,6 +94,7 @@ cc_defaults {
                 "libziparchive",
                 "libz",
                 "liblog",
+                "libprocinfo",
                 // For ashmem.
                 "libartpalette",
                 // For common macros.
@@ -131,6 +134,7 @@ cc_defaults {
         "libbase",
         "libartpalette",
         "liblog",
+        "libprocinfo",
         "libz",
         "libziparchive",
     ],
