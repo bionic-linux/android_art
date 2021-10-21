@@ -34,6 +34,24 @@
       "parentUuid": "201c77f2_fdbea838",
       "revId": "c79debeb4f6326c1995e730376b7825a72322f9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f7a5d4_e17bf2b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-21T05:37:50Z",
+      "side": 1,
+      "message": "Yes, we can. According to Paul, we are still using the same profile for both images today. In fact, I see methods from libcore in the framework profile: https://screenshot.googleplex.com/K4nihj6rHYdiSkm",
+      "parentUuid": "fe07d7f7_414aacc8",
+      "revId": "c79debeb4f6326c1995e730376b7825a72322f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
