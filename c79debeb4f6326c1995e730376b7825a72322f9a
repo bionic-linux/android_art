@@ -52,6 +52,24 @@
       "parentUuid": "fe07d7f7_414aacc8",
       "revId": "c79debeb4f6326c1995e730376b7825a72322f9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4df660_9b0bbeb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-10-21T16:23:16Z",
+      "side": 1,
+      "message": "I\u0027m confused, I\u0027m not seeing these entries in frameworks/base/config/boot-image-profile.txt.\n\nLooking at a sc-mainline-prod build of the ART module, the flag passed to dex2oat is:\n-profile-file\u003dout/soong/module_arm64/dex_artjars/boot.prof\n\nI haven\u0027t checked, but is very likely this profile is generated from art/build/boot/boot-image-profile.txt, which is the profile for libcore.",
+      "parentUuid": "81f7a5d4_e17bf2b3",
+      "revId": "c79debeb4f6326c1995e730376b7825a72322f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
