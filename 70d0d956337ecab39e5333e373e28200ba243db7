@@ -16,6 +16,247 @@
       "message": "Friendly ping",
       "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f8d699_a2db241e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Thanks for this test, Jiakai; this looks mostly good to me, but I have a few comments and suggestions.",
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1725b1ea_e49610ab",
+        "filename": "test/dexpreopt/TEST_MAPPING",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Maybe consider adding this test to ART\u0027s (top-level) `TEST_MAPPING` file, both in \"presubmit\" and \"mainline-presubmit\" test groups (maybe in a follow-up CL)?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afec3527_186879e0",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Maybe say something more specific here:\n\n  \"Environment variable `SYSTEMSERVERCLASSPATH` is not defined\"\n\n?",
+      "range": {
+        "startLine": 48,
+        "startChar": 23,
+        "endLine": 48,
+        "endChar": 60
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c41783_c5af714e",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "It seems `getenv` does not set `errno`; I\u0027d use `Errorf` here instead of `ErrnoErrorf`, to avoid mentioning an error code set by a previous system call or C library function.",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec0be24_dca1bb9e",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Likewise, I\u0027d use `Errorf` here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74719c22_0c417758",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "You could create the array of JARs earlier, and use it to pre-allocate the `artifacts` array:\n\n  std::vector\u003cstd::string\u003e jars \u003d android::base::Split(env_value, \":\")\n  std::vector\u003cstd::string\u003e artifacts;\n  artifacts.reserve(jars.size());",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e097c807_0fd15fc8",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Suggestion: replace \".\" with \":\".",
+      "range": {
+        "startLine": 59,
+        "startChar": 48,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47410d4f_f14570db",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Suggestion: Consider adding this helper function to `art/libartbase/base`, as it\u0027s quite generic.",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616bedf8_a0f6c82c",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "Suggestion: \"found\".",
+      "range": {
+        "startLine": 94,
+        "startChar": 72,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58439cc2_cdaab987",
+        "filename": "test/dexpreopt/dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "For the sake of generalization, could you move and rename this file as `test/art-gtests-target-standalone-root-template.xml` and add this:\n\n  // Test configuration template for standalone ART gtests run as root on target (not bundled with\n  // the ART APEX).\n  filegroup {\n      name: \"art-gtests-target-standalone-root-template\",\n      srcs: [\n          \"art-gtests-target-standalone-root-template.xml\",\n      ],\n  }\n\nto `test/Android.bp`?",
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20fc4b1_a593650e",
+        "filename": "test/dexpreopt/dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-10-21T16:29:42Z",
+      "side": 1,
+      "message": "For consistency with other ART gtests run as root, could you replace this with:\n\n  \"Runs {MODULE} (as root).\"\n\n?",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
