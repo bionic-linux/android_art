@@ -390,6 +390,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "897eb36a_7c7e7c2c",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-25T23:30:45Z",
+      "side": 1,
+      "message": "This means we get libprocinfo.so added as a libartbase dependency, so it gets permanently included in the ART APEX. Sure, it\u0027s not big, but every DSO carries an overhead, and it will be duplicated in the app process since it\u0027ll go into the com_android_art linker namespace. I doubt that overhead is motivated by this single test dependency.\n\nAlso, as the build failures show it\u0027s problematic in windows builds, although that can probably be solved with a bit more Android.bp boilerplate.",
+      "parentUuid": "8d94b03a_91b49d32",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "616bedf8_a0f6c82c",
         "filename": "test/dexpreopt/dexpreopt_test.cc",
         "patchSetId": 2
