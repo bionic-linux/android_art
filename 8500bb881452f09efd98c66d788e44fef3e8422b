@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52937a7_b7a92012",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4603,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-26T11:54:34Z",
+      "side": 1,
+      "message": "Add a check that the index is lower(unsigned) than size. (Go to slow-path for `index \u003d -1`.)",
+      "range": {
+        "startLine": 4603,
+        "startChar": 2,
+        "endLine": 4603,
+        "endChar": 23
+      },
+      "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37955ec0_1ca2fdd8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4615,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-26T11:54:34Z",
+      "side": 1,
+      "message": "Copy the comment from arm64?\n\n  // Byte order check. For native byte order return to the main path.",
+      "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
