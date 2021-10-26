@@ -412,6 +412,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11d17c8_6d2b9d15",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-26T14:16:53Z",
+      "side": 1,
+      "message": "Moved the helper function to common-art-test.cc",
+      "parentUuid": "897eb36a_7c7e7c2c",
+      "range": {
+        "startLine": 76,
+        "startChar": 19,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "70d0d956337ecab39e5333e373e28200ba243db7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616bedf8_a0f6c82c",
