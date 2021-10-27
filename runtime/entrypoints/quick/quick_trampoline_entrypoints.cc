@@ -877,9 +877,7 @@ extern "C" uint64_t artQuickProxyInvokeHandler(
     }
   } else if (instr->HasMethodExitListeners()) {
     instr->MethodExitEvent(self,
-                           soa.Decode<mirror::Object>(rcvr_jobj),
                            proxy_method,
-                           0,
                            {},
                            result);
   }
@@ -2626,12 +2624,9 @@ extern "C" int artMethodExitHook(Thread* self,
       // Take a handle to the return value so we won't lose it if we suspend.
       res.Assign(return_value.GetL());
     }
-    uint32_t dex_pc = dex::kDexNoIndex;
     DCHECK(!method->IsRuntimeMethod());
     instr->MethodExitEvent(self,
-                           ObjPtr<mirror::Object>(),
                            method,
-                           dex_pc,
                            /* frame= */ {},
                            return_value);
 
