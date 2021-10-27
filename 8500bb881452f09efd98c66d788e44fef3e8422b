@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d71faf86_d4618730",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4603,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-27T10:36:45Z",
+      "side": 1,
+      "message": "I assume that by \"size\" you mean array length (in the code `size` means element size).\n\nI added JBE after SUB. This uses CF flag set by SUB. The jump happens if either `index` is positive and \u003e\u003d `temp` or if `index` is negative. I was a bit unsure so verified it with this small program:\n\n  ; nasm 1.asm -o1.o -felf64 \u0026\u0026 ld 1.o -o1 \u0026\u0026 ./1 ; echo $?                                                                                                                                                                                                                                                                                                                                                                                                                                 \n  section .text                                                                                                                                                                                                                                  \n  global _start                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \n  _start:                                                                                                                                                                                                                                        \n    mov rax, 10                                                                                                                                                                                                                                \n    mov rbx, -1                                                                                                                                                                                                                                \n    sub rax, rbx                                                                                                                                                                                                                               \n    jbe _bad                                                                                                                                                                                                                                   \n    mov rdi, 0                                                                                                                                                                                                                                 \n    jmp _end                                                                                                                                                                                                                                   \n  _bad:                                                                                                                                                                                                                                          \n    mov rdi, 1                                                                                                                                                                                                                                 \n  _end:                                                                                                                                                                                                                                          \n    mov rax, 60                                                                                                                                                                                                                                \n    syscall\n\n\nI also verified that negative indices are delegated to slow path by manually patching 712-varhandle-invocations. I\u0027ll see if I can add this case to the test in a follow-up CL.",
+      "parentUuid": "a52937a7_b7a92012",
+      "range": {
+        "startLine": 4603,
+        "startChar": 2,
+        "endLine": 4603,
+        "endChar": 23
+      },
+      "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37955ec0_1ca2fdd8",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-26T11:54:34Z",
       "side": 1,
       "message": "Copy the comment from arm64?\n\n  // Byte order check. For native byte order return to the main path.",
+      "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c795929_f89e262d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4615,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-27T10:36:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37955ec0_1ca2fdd8",
       "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
