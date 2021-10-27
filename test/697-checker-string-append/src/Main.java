@@ -23,6 +23,7 @@ public class Main {
         testNoArgs();
         testInline();
         testInlineWithSubstring();
+        testInlineLength();
         testEquals();
         System.out.println("passed");
     }
@@ -268,6 +269,25 @@ public class Main {
         assertEquals("x4", $noinline$testInlineOuterWithSubstring("x", 42));
     }
 
+    /// CHECK-START: int Main.$noinline$testInlineOuterLength(java.lang.String, int) instruction_simplifier$after_inlining (before)
+    /// CHECK:                  NewInstance
+    /// CHECK-NOT:              StringBuilderAppend
+
+    /// CHECK-START: int Main.$noinline$testInlineOuterLength(java.lang.String, int) instruction_simplifier$after_inlining (after)
+    /// CHECK:                  NewInstance
+    /// CHECK:                  StringBuilderAppend
+
+    /// CHECK-START: int Main.$noinline$testInlineOuterLength(java.lang.String, int) dead_code_elimination$after_inlining (after)
+    /// CHECK-NOT:              NewInstance
+    public static int $noinline$testInlineOuterLength(String s, int i) {
+        StringBuilder sb = new StringBuilder();
+        return $inline$testInlineInner(sb, s, i).length();
+    }
+
+    public static void testInlineLength() {
+        assertEquals(3, $noinline$testInlineOuterLength("x", 42));
+    }
+
     /// CHECK-START: java.lang.String Main.$noinline$appendNothing() instruction_simplifier (before)
     /// CHECK-NOT:              StringBuilderAppend
 
@@ -307,8 +327,14 @@ public class Main {
     }
 
     public static void assertEquals(String expected, String actual) {
-        if (!expected.equals(actual)) {
-            throw new AssertionError("Expected: " + expected + ", actual: " + actual);
-        }
+      if (!expected.equals(actual)) {
+        throw new AssertionError("Expected: " + expected + ", actual: " + actual);
+      }
+    }
+
+    public static void assertEquals(int expected, int actual) {
+      if (expected != actual) {
+        throw new AssertionError("Expected: " + expected + ", actual: " + actual);
+      }
     }
 }

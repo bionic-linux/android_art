@@ -2398,7 +2398,7 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
   bool IsRemovable() const {
     return
         !DoesAnyWrite() &&
-        !CanThrow() &&
+        (!CanThrow() || IsNewInstance()) &&
         !IsSuspendCheck() &&
         !IsControlFlow() &&
         !IsNativeDebugInfo() &&
