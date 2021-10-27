@@ -68,8 +68,7 @@ class InstructionHandler {
                                               shadow_frame_,
                                               ctx_->result,
                                               Instrumentation(),
-                                              Accessor().InsSize(),
-                                              inst_->GetDexPc(Insns()));
+                                              Accessor().InsSize());
       Self()->SetException(abort_exception.Get());
       ExitInterpreterLoop();
       return false;
@@ -84,8 +83,7 @@ class InstructionHandler {
                                               shadow_frame_,
                                               ctx_->result,
                                               Instrumentation(),
-                                              Accessor().InsSize(),
-                                              inst_->GetDexPc(Insns()));
+                                              Accessor().InsSize());
       ExitInterpreterLoop();
       return false;
     }
@@ -216,9 +214,7 @@ class InstructionHandler {
                  !SendMethodExitEvents(Self(),
                                        Instrumentation(),
                                        shadow_frame_,
-                                       shadow_frame_.GetThisObject(Accessor().InsSize()),
                                        shadow_frame_.GetMethod(),
-                                       inst_->GetDexPc(Insns()),
                                        result))) {
       DCHECK(Self()->IsExceptionPending());
       // Do not raise exception event if it is caused by other instrumentation event.
@@ -495,9 +491,7 @@ class InstructionHandler {
                  !SendMethodExitEvents(Self(),
                                        Instrumentation(),
                                        shadow_frame_,
-                                       shadow_frame_.GetThisObject(Accessor().InsSize()),
                                        shadow_frame_.GetMethod(),
-                                       inst_->GetDexPc(Insns()),
                                        h_result))) {
       DCHECK(Self()->IsExceptionPending());
       // Do not raise exception event if it is caused by other instrumentation event.

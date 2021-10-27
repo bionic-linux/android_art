@@ -285,8 +285,7 @@ static inline JValue Execute(
             shadow_frame,
             ret,
             instrumentation,
-            accessor.InsSize(),
-            0);
+            accessor.InsSize());
         return ret;
       }
       if (UNLIKELY(self->IsExceptionPending())) {
@@ -302,8 +301,7 @@ static inline JValue Execute(
               shadow_frame,
               ret,
               instrumentation,
-              accessor.InsSize(),
-              0);
+              accessor.InsSize());
         }
         return ret;
       }
