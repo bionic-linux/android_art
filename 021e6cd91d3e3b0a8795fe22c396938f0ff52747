@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "196a4ee6_eeeef65b",
+        "filename": "libartbase/base/common_art_test.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-27T21:25:08Z",
+      "side": 1,
+      "message": "I believe the source is the \"Name:\" field in /proc/\u003cpid\u003e/status (https://cs.android.com/android/platform/superproject/+/master:system/libprocinfo/process.cpp;l\u003d106;drc\u003d3dbe823a2a520e573ae849717230352c7aece6cc) which is the name of the binary without path, even when the first command line argument is an absolute path.",
+      "range": {
+        "startLine": 290,
+        "startChar": 67,
+        "endLine": 291,
+        "endChar": 12
+      },
+      "revId": "021e6cd91d3e3b0a8795fe22c396938f0ff52747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

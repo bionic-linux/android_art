@@ -236,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c877f7f9_3fb9165c",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-27T21:25:08Z",
+      "side": 1,
+      "message": "That this test uses the same code as the runtime itself is good; that means it at least is likely to catch SH problems, which is a good thing even if it may not be the primary purpose.\n\nWhat I was hoping for is that there\u0027s a better way to detect if the image was built with dexpreopting enabled, rather than silently succeeding if no files at all are found. But I don\u0027t have any concrete suggestions.",
+      "parentUuid": "6da3387a_d4a798d9",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a17371_53b69913",
