@@ -82,9 +82,7 @@ struct InstrumentationListener {
       REQUIRES_SHARED(Locks::mutator_lock_) = 0;
 
   virtual void MethodExited(Thread* thread,
-                            Handle<mirror::Object> this_object,
                             ArtMethod* method,
-                            uint32_t dex_pc,
                             OptionalFrame frame,
                             MutableHandle<mirror::Object>& return_value)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -93,9 +91,7 @@ struct InstrumentationListener {
   // value (if appropriate) or use the alternate MethodExited callback instead if they need to
   // go through a suspend point.
   virtual void MethodExited(Thread* thread,
-                            Handle<mirror::Object> this_object,
                             ArtMethod* method,
-                            uint32_t dex_pc,
                             OptionalFrame frame,
                             JValue& return_value)
       REQUIRES_SHARED(Locks::mutator_lock_) = 0;
@@ -413,14 +409,12 @@ class Instrumentation {
   // Inform listeners that a method has been exited.
   template<typename T>
   void MethodExitEvent(Thread* thread,
-                       ObjPtr<mirror::Object> this_object,
                        ArtMethod* method,
-                       uint32_t dex_pc,
                        OptionalFrame frame,
                        T& return_value) const
       REQUIRES_SHARED(Locks::mutator_lock_) {
     if (UNLIKELY(HasMethodExitListeners())) {
-      MethodExitEventImpl(thread, this_object, method, dex_pc, frame, return_value);
+      MethodExitEventImpl(thread, method, frame, return_value);
     }
   }
 
@@ -618,9 +612,7 @@ class Instrumentation {
       REQUIRES_SHARED(Locks::mutator_lock_);
   template <typename T>
   void MethodExitEventImpl(Thread* thread,
-                           ObjPtr<mirror::Object> this_object,
                            ArtMethod* method,
-                           uint32_t dex_pc,
                            OptionalFrame frame,
                            T& return_value) const
       REQUIRES_SHARED(Locks::mutator_lock_);
