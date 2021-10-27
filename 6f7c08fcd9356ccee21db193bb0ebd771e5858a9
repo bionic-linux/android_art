@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf38d61_2cc768cf",
+        "filename": "libartbase/base/common_art_test.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "I know, but this is existing. You saw the diff because my code formatter reordered the includes. However, it still a good thing to do to change this. Done.",
+      "parentUuid": "3f4b50e4_0f6d621f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "778b04e7_09f2551e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T16:06:04Z",
       "side": 1,
       "message": "It\u0027s not obvious how the name of a process is defined, nor how it\u0027s matched here (i.e. a full match rather than substring). This could use some more details.",
+      "range": {
+        "startLine": 290,
+        "startChar": 48,
+        "endLine": 290,
+        "endChar": 68
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd91c97_304e73a1",
+        "filename": "libartbase/base/common_art_test.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "778b04e7_09f2551e",
       "range": {
         "startLine": 290,
         "startChar": 48,
@@ -93,6 +141,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e315993e_e040f168",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a1d8685_203f38d0",
+      "range": {
+        "startLine": 18,
+        "startChar": 76,
+        "endLine": 18,
+        "endChar": 96
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e08443e_131c4949",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e95b2aaf_ecf80bbc",
+      "range": {
+        "startLine": 18,
+        "startChar": 18,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf6a7f4_ca1ca7e2",
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da3387a_d4a798d9",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "Unfortunately, there isn\u0027t a better way to detect it, but relying on OatFileAssistant is probably fine. OatFileAssistant is the class that the runtime uses to find odex files. If OatFileAssistant cannot find the files, then all code will be interpreted or JITed, which leads to a system health problem. Such problem is out of the scope of this test, and should be caught in other ways. The purpose of this particular test is to prevent that: (1) artifacts are generated but rejected by the runtime for some reason; (2) odrefresh unexpectedly runs on the first boot.",
+      "parentUuid": "2bf6a7f4_ca1ca7e2",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a17371_53b69913",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-26T16:06:04Z",
       "side": 1,
       "message": "What does this mean? Is it some sort of convention?",
+      "range": {
+        "startLine": 95,
+        "startChar": 73,
+        "endLine": 95,
+        "endChar": 76
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8347888a_39ce2fa5",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-27T10:18:33Z",
+      "side": 1,
+      "message": "It was a naming convention in google3 for a variable that contains a value or an error, but looks like it\u0027s no longer recommended since last month (go/totw/181#avoiding-the-or-suffix). Thank you for bringing this up. I changed the code.",
+      "parentUuid": "16a17371_53b69913",
       "range": {
         "startLine": 95,
         "startChar": 73,
