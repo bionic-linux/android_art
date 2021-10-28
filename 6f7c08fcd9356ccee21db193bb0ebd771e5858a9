@@ -260,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f546c09e_7cc88c39",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-28T08:52:41Z",
+      "side": 1,
+      "message": "I posted a question in the chat room, but I don\u0027t expect that I can really get a good answer. As I mentioned before, catching SH problems is not the main purpose of this test, so it\u0027s probably fine to just check file existence if we don\u0027t have a better way to detect if dexpreopting is enabled.",
+      "parentUuid": "c877f7f9_3fb9165c",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "6f7c08fcd9356ccee21db193bb0ebd771e5858a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a17371_53b69913",
