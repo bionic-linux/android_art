@@ -22,6 +22,30 @@
       },
       "revId": "c71280df3d49b88fd7db7bd1ba144151361ffdc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b342b5_a2aec958",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4604,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-28T10:46:53Z",
+      "side": 1,
+      "message": "That\u0027s right, I looked at the wrong line in the intel manual. Trimmed the comment.",
+      "parentUuid": "71de1783_d9416d75",
+      "range": {
+        "startLine": 4603,
+        "startChar": 2,
+        "endLine": 4604,
+        "endChar": 63
+      },
+      "revId": "c71280df3d49b88fd7db7bd1ba144151361ffdc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
