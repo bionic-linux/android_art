@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb51ad9_abb9bef5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4603,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-28T08:24:20Z",
+      "side": 1,
+      "message": "I expected JB and JBE just goes to slow path earlier for equality.",
+      "parentUuid": "d71faf86_d4618730",
+      "range": {
+        "startLine": 4603,
+        "startChar": 2,
+        "endLine": 4603,
+        "endChar": 23
+      },
+      "revId": "8500bb881452f09efd98c66d788e44fef3e8422b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37955ec0_1ca2fdd8",

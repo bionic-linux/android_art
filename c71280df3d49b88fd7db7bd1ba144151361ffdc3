@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71de1783_d9416d75",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4604,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-10-28T08:24:20Z",
+      "side": 1,
+      "message": "I think JBE uses both C and Z.\n\n(I find the whole comment unnecessary if we assume that the reader should be somewhat familiar with x86-64 ISA but feel free to remind the reader that SUB sets flags just like CMP would.)",
+      "range": {
+        "startLine": 4603,
+        "startChar": 2,
+        "endLine": 4604,
+        "endChar": 63
+      },
+      "revId": "c71280df3d49b88fd7db7bd1ba144151361ffdc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
