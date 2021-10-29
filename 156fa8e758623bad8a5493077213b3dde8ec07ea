@@ -16,6 +16,23 @@
       "message": "Vladimir PTAL. Reverting due to test failures.\nFYI Roland due to being waterfall sheriff",
       "revId": "156fa8e758623bad8a5493077213b3dde8ec07ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ff1d54_c84096c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-10-29T13:06:25Z",
+      "side": 1,
+      "message": "Bypassing presubmit. Failed test is flaky and unrelated https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI11900009992941087\u0026testResultId\u003dTR30827781754315598",
+      "revId": "156fa8e758623bad8a5493077213b3dde8ec07ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
