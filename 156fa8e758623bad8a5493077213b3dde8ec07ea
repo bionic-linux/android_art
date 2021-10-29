@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "245d237a_c2878978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-10-29T10:58:56Z",
+      "side": 1,
+      "message": "Vladimir PTAL. Reverting due to test failures.\nFYI Roland due to being waterfall sheriff",
+      "revId": "156fa8e758623bad8a5493077213b3dde8ec07ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
