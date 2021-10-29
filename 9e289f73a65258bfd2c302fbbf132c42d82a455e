@@ -16,6 +16,24 @@
       "message": "So what caused all of those to be unused?",
       "revId": "9e289f73a65258bfd2c302fbbf132c42d82a455e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ff63b7_82a358ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-10-29T20:27:36Z",
+      "side": 1,
+      "message": "I am not sure if they were actually ever used. We used to pass dex_pc and this_object to the listeners but none of the listeners used them. I did look at past history but I couldn\u0027t find when they were used. There are three listeners for method entry / exit events:\n\nJVMTI: the support was added in 2017 and we didn\u0027t use these there as well (CL: https://android-review.googlesource.com/c/platform/art/+/384352)\ntrace.cc: They existed much longer goes back to 2013, but I couldn\u0027t find any use.\ntracefast: I think these events are just a nop there. This is just for testing I think. Added here: https://android-review.googlesource.com/c/platform/art/+/691227\n\nSince trace.cc existed longest, I suppose they were added there and other listeners had implemented there too. I am not sure why they were added.",
+      "parentUuid": "6f36e57c_2b7a9db1",
+      "revId": "9e289f73a65258bfd2c302fbbf132c42d82a455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
