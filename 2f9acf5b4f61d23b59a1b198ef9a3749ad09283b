@@ -22,6 +22,30 @@
       },
       "revId": "2f9acf5b4f61d23b59a1b198ef9a3749ad09283b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0417f48d_142ae7de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-11-01T09:29:17Z",
+      "side": 1,
+      "message": "I initially put a straight test error as an explanation in a comment in the script, as my intent for this CL was not to spend time on investigating this issue right now, but just regenerating the list of test files (https://android-review.googlesource.com/c/platform/art/+/1873779), so that I could do some other work (https://android-review.googlesource.com/c/platform/art/+/1876697) – I was planning to do that later.\n \nI amended both this commit message and the comment in the script to provide a better explanation.",
+      "parentUuid": "274f2d59_ff693d0c",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "2f9acf5b4f61d23b59a1b198ef9a3749ad09283b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
