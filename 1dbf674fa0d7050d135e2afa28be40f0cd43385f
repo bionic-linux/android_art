@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57403921_6abc8bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-02T18:41:40Z",
+      "side": 1,
+      "message": "The first of a stack of CLs that break up the refactoring of art_defaults into smaller pieces.",
+      "revId": "1dbf674fa0d7050d135e2afa28be40f0cd43385f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
