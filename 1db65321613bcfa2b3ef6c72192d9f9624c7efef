@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ba3d2b_0452b936",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-11-02T11:39:21Z",
+      "side": 1,
+      "message": "Technically we only require it if `visualizer_enabled_` but I don\u0027t see the harm of requiring it for all cases.",
+      "range": {
+        "startLine": 160,
+        "startChar": 40,
+        "endLine": 160,
+        "endChar": 74
+      },
+      "revId": "1db65321613bcfa2b3ef6c72192d9f9624c7efef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
