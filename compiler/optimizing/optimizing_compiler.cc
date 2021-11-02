@@ -162,13 +162,14 @@ class PassObserver : public ValueObject {
     // Dump graph first, then start timer.
     if (visualizer_enabled_) {
       visualizer_.DumpGraph(pass_name, /* is_after_pass= */ false, graph_in_bad_state_);
+      FlushVisualizer();
     }
     if (timing_logger_enabled_) {
       timing_logger_.StartTiming(pass_name);
     }
   }
 
-  void FlushVisualizer() REQUIRES(!visualizer_dump_mutex_) {
+  void FlushVisualizer() {
     MutexLock mu(Thread::Current(), visualizer_dump_mutex_);
     *visualizer_output_ << visualizer_oss_.str();
     visualizer_output_->flush();
@@ -183,6 +184,7 @@ class PassObserver : public ValueObject {
     }
     if (visualizer_enabled_) {
       visualizer_.DumpGraph(pass_name, /* is_after_pass= */ true, graph_in_bad_state_);
+      FlushVisualizer();
     }
 
     // Validate the HGraph if running in debug mode.
