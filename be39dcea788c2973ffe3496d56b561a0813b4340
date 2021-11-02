@@ -33,6 +33,24 @@
       "message": "This would result in interleaved CFGs for multi-threaded compilation. It should be restricted to `-j1`.",
       "revId": "be39dcea788c2973ffe3496d56b561a0813b4340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6a376d_0a929bdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-11-02T17:16:50Z",
+      "side": 1,
+      "message": "Should we make --dump-cfg force -j1? Seems reasonable since --dump-cfg is a debug flag.\nOtherwise, we can restrict this mode for -j1 \u0026\u0026 --dump-cfg only and leave it as an extra bonus when debugging.\n\nI thought about adding a new flag --dump-cfg-often, which would basically do -j1 and enable this extra logging. I am not sure if it\u0027s worth it though.",
+      "parentUuid": "7d9358b4_2644b8a7",
+      "revId": "be39dcea788c2973ffe3496d56b561a0813b4340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
