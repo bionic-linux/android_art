@@ -3402,7 +3402,7 @@ static void GenerateVarHandleInstanceFieldChecks(HInvoke* invoke,
 
 static void GenerateVarHandleArrayChecks(HInvoke* invoke,
                                          CodeGeneratorX86_64* codegen,
-                                         VarHandleSlowPathX86_64* slow_path) {
+                                         SlowPathCode* slow_path) {
   VarHandleOptimizations optimizations(invoke);
   X86_64Assembler* assembler = codegen->GetAssembler();
   LocationSummary* locations = invoke->GetLocations();
@@ -3657,6 +3657,7 @@ static void GenerateVarHandleGet(HInvoke* invoke,
   LocationSummary* locations = invoke->GetLocations();
   X86_64Assembler* assembler = codegen->GetAssembler();
 
+  SlowPathCode* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
   VarHandleTarget target = GetVarHandleTarget(invoke);
   VarHandleSlowPathX86_64* slow_path = nullptr;
   if (!byte_swap) {
@@ -3747,7 +3748,7 @@ static void GenerateVarHandleSet(HInvoke* invoke,
   uint32_t value_index = invoke->GetNumberOfArguments() - 1;
   DataType::Type value_type = GetDataTypeFromShorty(invoke, value_index);
 
-  VarHandleSlowPathX86_64* slow_path = GenerateVarHandleChecks(invoke, codegen, value_type);
+  SlowPathCode* slow_path = GenerateVarHandleChecks(invoke, codegen, value_type);
   VarHandleTarget target = GetVarHandleTarget(invoke);
   GenerateVarHandleTarget(invoke, target, codegen);
 
@@ -3874,7 +3875,7 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
   uint32_t new_value_index = number_of_arguments - 1;
   DataType::Type type = GetDataTypeFromShorty(invoke, expected_value_index);
 
-  VarHandleSlowPathX86_64* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
+  SlowPathCode* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
   VarHandleTarget target = GetVarHandleTarget(invoke);
   GenerateVarHandleTarget(invoke, target, codegen);
 
@@ -4009,7 +4010,7 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke,
   uint32_t value_index = number_of_arguments - 1;
   DataType::Type type = invoke->GetType();
 
-  VarHandleSlowPathX86_64* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
+  SlowPathCode* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
   VarHandleTarget target = GetVarHandleTarget(invoke);
   GenerateVarHandleTarget(invoke, target, codegen);
 
@@ -4185,7 +4186,7 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke,
   uint32_t value_index = number_of_arguments - 1;
   DataType::Type type = invoke->GetType();
 
-  VarHandleSlowPathX86_64* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
+  SlowPathCode* slow_path = GenerateVarHandleChecks(invoke, codegen, type);
   VarHandleTarget target = GetVarHandleTarget(invoke);
   GenerateVarHandleTarget(invoke, target, codegen);
 
