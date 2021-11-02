@@ -140,9 +140,10 @@ class PassObserver : public ValueObject {
     DCHECK(visualizer_oss_.str().empty());
   }
 
-  void DumpDisassembly() {
+  void DumpDisassembly() REQUIRES(!visualizer_dump_mutex_) {
     if (visualizer_enabled_) {
       visualizer_.DumpGraphWithDisassembly();
+      FlushVisualizer();
     }
   }
 
@@ -157,11 +158,12 @@ class PassObserver : public ValueObject {
   }
 
  private:
-  void StartPass(const char* pass_name) {
+  void StartPass(const char* pass_name) REQUIRES(!visualizer_dump_mutex_) {
     VLOG(compiler) << "Starting pass: " << pass_name;
     // Dump graph first, then start timer.
     if (visualizer_enabled_) {
       visualizer_.DumpGraph(pass_name, /* is_after_pass= */ false, graph_in_bad_state_);
+      FlushVisualizer();
     }
     if (timing_logger_enabled_) {
       timing_logger_.StartTiming(pass_name);
@@ -176,13 +178,14 @@ class PassObserver : public ValueObject {
     visualizer_oss_.clear();
   }
 
-  void EndPass(const char* pass_name, bool pass_change) {
+  void EndPass(const char* pass_name, bool pass_change) REQUIRES(!visualizer_dump_mutex_) {
     // Pause timer first, then dump graph.
     if (timing_logger_enabled_) {
       timing_logger_.EndTiming();
     }
     if (visualizer_enabled_) {
       visualizer_.DumpGraph(pass_name, /* is_after_pass= */ true, graph_in_bad_state_);
+      FlushVisualizer();
     }
 
     // Validate the HGraph if running in debug mode.
