@@ -34,6 +34,24 @@
       "parentUuid": "f63f1362_e6f0b210",
       "revId": "cfe4543bafe40e0b83fd7414977236cc46f05813",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a98d07_88d73db5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-03T18:59:50Z",
+      "side": 1,
+      "message": "I see, thanks. I take it that odsign isn\u0027t applicable to pre-S either. Changed it to use 31 through art_defaults then, for consistency.",
+      "parentUuid": "c70eccbb_2852524b",
+      "revId": "cfe4543bafe40e0b83fd7414977236cc46f05813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
