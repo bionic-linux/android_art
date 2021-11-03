@@ -16,6 +16,24 @@
       "message": "+oth, in odrefresh/Android.bp we have this line (https://cs.android.com/android/platform/superproject/+/master:art/odrefresh/Android.bp;l\u003d81;drc\u003d5514c8ec932bef044119c178b6e9e180b3f81cf8):\n\n    min_sdk_version: \"29\", // As part of mainline modules(APEX), it should support at least 29(Q).\n\nI don\u0027t follow this, why does odrefresh need to run on pre-S devices?",
       "revId": "cfe4543bafe40e0b83fd7414977236cc46f05813",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70eccbb_2852524b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-11-03T17:02:09Z",
+      "side": 1,
+      "message": "That comment isn\u0027t on odrefresh, it\u0027s on the header library exposed to odsign. It is just following the guidance in the comment from another project. Feel free to change if you want to.",
+      "parentUuid": "f63f1362_e6f0b210",
+      "revId": "cfe4543bafe40e0b83fd7414977236cc46f05813",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
