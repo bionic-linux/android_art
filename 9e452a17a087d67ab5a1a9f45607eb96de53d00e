@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4451107_01e2f096",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4758,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of ternary operator with `void` expressions. Please use\n\n  if (invoke-\u003eGetType() \u003d\u003d DataType::Type::kFloat32) {\n    ...\n  } else {\n    DCHECK_EQ(invoke-\u003eGetType(), DataType::Type::kFloat64);\n    ...\n  }",
+      "range": {
+        "startLine": 4758,
+        "startChar": 2,
+        "endLine": 4758,
+        "endChar": 12
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8c97d2_d385d1e1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3281,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "ditto (ternary operator with `void` expressions)",
+      "range": {
+        "startLine": 3281,
+        "startChar": 2,
+        "endLine": 3281,
+        "endChar": 12
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8ad982_59cada1b",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "`/*is_twobyte_form\u003d*/ false`",
+      "range": {
+        "startLine": 790,
+        "startChar": 35,
+        "endLine": 790,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a0559f0_550192db",
         "filename": "compiler/utils/x86/assembler_x86.cc",
         "patchSetId": 2
@@ -31,6 +100,227 @@
       "writtenOn": "2021-11-02T16:26:52Z",
       "side": 1,
       "message": "I wonder if it\u0027s possible to have single function for vfmadd213ss and vfmadd213sd as function bodies look identical",
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125e152a_57ae8a18",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "There is a difference in the `/*W\u003d*/` argument for `EmitVexPrefixByteTwo()`.\n\nKeeping these functions separate is in line with the previous style in this file.",
+      "parentUuid": "9a0559f0_550192db",
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e357f93_5d39c46b",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "`/*is_twobyte_form\u003d*/ false`",
+      "range": {
+        "startLine": 809,
+        "startChar": 35,
+        "endLine": 809,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed828f11_8904b4be",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "Is this an unrelated fix? Can you add an assembler test for this?",
+      "range": {
+        "startLine": 976,
+        "startChar": 74,
+        "endLine": 976,
+        "endChar": 87
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc39bb96_ca33594f",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "Can you add assembler tests for the functions you\u0027re adding, please?",
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8addba3_c04c47e5",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "Use `/*is_twobyte_form\u003d*/ false` to let clang++ check formal parameter name.",
+      "range": {
+        "startLine": 991,
+        "startChar": 35,
+        "endLine": 991,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fae527a_7f239395",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 995,
+        "startChar": 33,
+        "endLine": 995,
+        "endChar": 35
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d68a251_655c767d",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "`/*is_twobyte_form\u003d*/ false`",
+      "range": {
+        "startLine": 1010,
+        "startChar": 35,
+        "endLine": 1010,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123b075b_67c8c3ff",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 33,
+        "endLine": 1014,
+        "endChar": 35
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610d1355_d38c75b0",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "96c0224d_199ff863",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 1
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95f1347_bbe2b158",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-03T10:04:48Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nRemove the entire line, please.",
+      "parentUuid": "ce337257_f70b64a3",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1000,
+        "endChar": 4
+      },
       "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
