@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ad169d_9c97c9ec",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4758,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4451107_01e2f096",
+      "range": {
+        "startLine": 4758,
+        "startChar": 2,
+        "endLine": 4758,
+        "endChar": 12
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b8c97d2_d385d1e1",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0df5b6_56114cc1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3281,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b8c97d2_d385d1e1",
+      "range": {
+        "startLine": 3281,
+        "startChar": 2,
+        "endLine": 3281,
+        "endChar": 12
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e8ad982_59cada1b",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-03T10:04:48Z",
       "side": 1,
       "message": "`/*is_twobyte_form\u003d*/ false`",
+      "range": {
+        "startLine": 790,
+        "startChar": 35,
+        "endLine": 790,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f440e49c_39af44bc",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e8ad982_59cada1b",
       "range": {
         "startLine": 790,
         "startChar": 35,
@@ -145,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d352f06d_bdf67062",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e357f93_5d39c46b",
+      "range": {
+        "startLine": 809,
+        "startChar": 35,
+        "endLine": 809,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed828f11_8904b4be",
@@ -158,6 +254,30 @@
       "writtenOn": "2021-11-03T10:04:48Z",
       "side": 1,
       "message": "Is this an unrelated fix? Can you add an assembler test for this?",
+      "range": {
+        "startLine": 976,
+        "startChar": 74,
+        "endLine": 976,
+        "endChar": 87
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d5281e_8f4efe4c",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "My bad! Sorry about this. This is not required here. It was a typo",
+      "parentUuid": "ed828f11_8904b4be",
       "range": {
         "startLine": 976,
         "startChar": 74,
@@ -185,6 +305,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b6276f_0c84922c",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc39bb96_ca33594f",
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8addba3_c04c47e5",
@@ -198,6 +336,30 @@
       "writtenOn": "2021-11-03T10:04:48Z",
       "side": 1,
       "message": "Use `/*is_twobyte_form\u003d*/ false` to let clang++ check formal parameter name.",
+      "range": {
+        "startLine": 991,
+        "startChar": 35,
+        "endLine": 991,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d517b378_6c1f4ae5",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8addba3_c04c47e5",
       "range": {
         "startLine": 991,
         "startChar": 35,
@@ -231,6 +393,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a050fe_45654572",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fae527a_7f239395",
+      "range": {
+        "startLine": 995,
+        "startChar": 33,
+        "endLine": 995,
+        "endChar": 35
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d68a251_655c767d",
@@ -254,6 +440,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca99ca04_5eff6a5c",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d68a251_655c767d",
+      "range": {
+        "startLine": 1010,
+        "startChar": 35,
+        "endLine": 1010,
+        "endChar": 60
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "123b075b_67c8c3ff",
@@ -267,6 +477,30 @@
       "writtenOn": "2021-11-03T10:04:48Z",
       "side": 1,
       "message": "Fix indentation.",
+      "range": {
+        "startLine": 1014,
+        "startChar": 33,
+        "endLine": 1014,
+        "endChar": 35
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "272df9a3_d11550c8",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "123b075b_67c8c3ff",
       "range": {
         "startLine": 1014,
         "startChar": 33,
@@ -301,6 +535,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d09d07_95651d19",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610d1355_d38c75b0",
+      "range": {
+        "startLine": 990,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 1
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a95f1347_bbe2b158",
@@ -315,6 +573,30 @@
       "side": 1,
       "message": "\u003e Please remove the trailing whitespace.\n\nRemove the entire line, please.",
       "parentUuid": "ce337257_f70b64a3",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1000,
+        "endChar": 4
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c5b781_96887a3e",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-03T14:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a95f1347_bbe2b158",
       "range": {
         "startLine": 1000,
         "startChar": 0,
