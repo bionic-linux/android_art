@@ -16,6 +16,24 @@
       "message": "I suppose this is inherited from art_defaults?",
       "revId": "129be9ee763dc2cd93bd7001fd9aec153bbae0e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8252478f_3fa6808c",
+        "filename": "artd/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-03T15:22:45Z",
+      "side": 0,
+      "message": "Yes.",
+      "parentUuid": "c89f7f6b_72223b61",
+      "revId": "129be9ee763dc2cd93bd7001fd9aec153bbae0e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
