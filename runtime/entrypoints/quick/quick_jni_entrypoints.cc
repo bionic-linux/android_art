@@ -41,10 +41,9 @@ namespace art {
 static_assert(sizeof(IRTSegmentState) == sizeof(uint32_t), "IRTSegmentState size unexpected");
 static_assert(std::is_trivial<IRTSegmentState>::value, "IRTSegmentState not trivial");
 
-extern "C" void artReadBarrierJni(ArtMethod* method) {
+extern void ReadBarrierJni(mirror::CompressedReference<mirror::Class>* declaring_class,
+                           Thread* self ATTRIBUTE_UNUSED) {
   DCHECK(kUseReadBarrier);
-  mirror::CompressedReference<mirror::Object>* declaring_class =
-      method->GetDeclaringClassAddressWithoutBarrier();
   if (kUseBakerReadBarrier) {
     DCHECK(declaring_class->AsMirrorPtr() != nullptr)
         << "The class of a static jni call must not be null";
@@ -54,7 +53,7 @@ extern "C" void artReadBarrierJni(ArtMethod* method) {
     }
   }
   // Call the read barrier and update the handle.
-  mirror::Object* to_ref = ReadBarrier::BarrierForRoot(declaring_class);
+  mirror::Class* to_ref = ReadBarrier::BarrierForRoot(declaring_class);
   declaring_class->Assign(to_ref);
 }
 
