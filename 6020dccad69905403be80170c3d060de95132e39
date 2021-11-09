@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e133fa9f_3866cc0a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:10:47Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57dc19f2_ae47a3de",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 5
@@ -48,6 +65,24 @@
       "writtenOn": "2021-11-09T17:05:56Z",
       "side": 1,
       "message": "Instructions Set Features should be created from compiler options while creating the assembler. If not, if we run a test with --instruction-set-features avx2, codegen gets HASAVX2() as true where as assembler gets HASAVX2() as false because instruction set features will be nullptr without this change",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea34678_d8f90da2",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:10:47Z",
+      "side": 1,
+      "message": "Ack; line too long.",
+      "parentUuid": "57dc19f2_ae47a3de",
       "revId": "6020dccad69905403be80170c3d060de95132e39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
