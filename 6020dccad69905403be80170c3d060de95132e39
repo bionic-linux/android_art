@@ -50,6 +50,104 @@
       "message": "Instructions Set Features should be created from compiler options while creating the assembler. If not, if we run a test with --instruction-set-features avx2, codegen gets HASAVX2() as true where as assembler gets HASAVX2() as false because instruction set features will be nullptr without this change",
       "revId": "6020dccad69905403be80170c3d060de95132e39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f672daa_ba910dfa",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4776,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:08:29Z",
+      "side": 1,
+      "message": "We do not get here if we did not create locations. So just\n\n   DCHECK(codegen_-\u003eGetInstructionSetFeatures().HasAVX2());\n\nSame below and for x86-64.",
+      "range": {
+        "startLine": 4776,
+        "startChar": 2,
+        "endLine": 4776,
+        "endChar": 56
+      },
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315c1a43_0f9fdafd",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3293,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:08:29Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease remove the blank line.",
+      "parentUuid": "aba20d6a_40f73063",
+      "range": {
+        "startLine": 3293,
+        "startChar": 0,
+        "endLine": 3293,
+        "endChar": 1
+      },
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966b7801_9788b583",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:08:29Z",
+      "side": 1,
+      "message": "Line too long. Did you reset to old patch set?",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8ab471_5573ca4f",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:08:29Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84e2224_6d02b13c",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T17:08:29Z",
+      "side": 1,
+      "message": "Remove the blank line.",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
