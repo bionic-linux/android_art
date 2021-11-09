@@ -288,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b244992_8d965fbb",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-09T14:10:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28d5281e_8f4efe4c",
+      "range": {
+        "startLine": 976,
+        "startChar": 74,
+        "endLine": 976,
+        "endChar": 87
+      },
+      "revId": "9e452a17a087d67ab5a1a9f45607eb96de53d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc39bb96_ca33594f",
