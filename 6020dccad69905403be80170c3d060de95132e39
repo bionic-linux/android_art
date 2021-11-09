@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c918717_792abc51",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-09T18:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e133fa9f_3866cc0a",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57dc19f2_ae47a3de",
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Ack; line too long.",
       "parentUuid": "57dc19f2_ae47a3de",
+      "revId": "6020dccad69905403be80170c3d060de95132e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ba6c25_dcfa454a",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-09T18:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea34678_d8f90da2",
       "revId": "6020dccad69905403be80170c3d060de95132e39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
