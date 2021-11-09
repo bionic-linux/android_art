@@ -33,6 +33,24 @@
       "message": "Presubmit checks failed:\n\n    Check failed: CpuHasAVXorAVX2FeatureFlag()\n\nYou need to guard creating locations with a feature flag check (or provide an alternative implementation when those features are not present).",
       "revId": "f3fd98081b6a731df12252723fc004a7bdc8f645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb447fb_f5aa069b",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4764,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-09T17:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e522a959_35aa1f6e",
+      "revId": "f3fd98081b6a731df12252723fc004a7bdc8f645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
