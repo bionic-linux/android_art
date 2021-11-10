@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c1bae4_d919ad47",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T16:30:37Z",
+      "side": 1,
+      "message": "Reduce indentation to 2 spaces.",
+      "range": {
+        "startLine": 4764,
+        "startChar": 4,
+        "endLine": 4765,
+        "endChar": 38
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315de15d_ee1c2094",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4770,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T16:30:37Z",
+      "side": 1,
+      "message": "Add a space. Presubmit check failed:\n\n  art/compiler/optimizing/intrinsics_x86.cc:4770:  Weird number of spaces at line-start.  Are you using a 2-space indent?  [whitespace/indent] [3]",
+      "range": {
+        "startLine": 4770,
+        "startChar": 2,
+        "endLine": 4770,
+        "endChar": 3
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df249527_51baf6b2",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4776,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T16:30:37Z",
+      "side": 1,
+      "message": "Reduce indentation to 2 spaces.",
+      "range": {
+        "startLine": 4775,
+        "startChar": 4,
+        "endLine": 4776,
+        "endChar": 38
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
