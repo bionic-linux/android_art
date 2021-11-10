@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b4fc11_7fb28cf9",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-10T17:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0c1bae4_d919ad47",
+      "range": {
+        "startLine": 4764,
+        "startChar": 4,
+        "endLine": 4765,
+        "endChar": 38
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "315de15d_ee1c2094",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1051e5f_ae831d88",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4770,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-10T17:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315de15d_ee1c2094",
+      "range": {
+        "startLine": 4770,
+        "startChar": 2,
+        "endLine": 4770,
+        "endChar": 3
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df249527_51baf6b2",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-10T16:30:37Z",
       "side": 1,
       "message": "Reduce indentation to 2 spaces.",
+      "range": {
+        "startLine": 4775,
+        "startChar": 4,
+        "endLine": 4776,
+        "endChar": 38
+      },
+      "revId": "dfc99bdbcde741bb0327a317065e18bf27d14a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d97605_08463363",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 4776,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2021-11-10T17:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df249527_51baf6b2",
       "range": {
         "startLine": 4775,
         "startChar": 4,
