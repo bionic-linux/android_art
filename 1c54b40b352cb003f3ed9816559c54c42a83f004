@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26584ad1_966af498",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T09:43:57Z",
+      "side": 1,
+      "message": "Indentation: align arguments.",
+      "range": {
+        "startLine": 1066,
+        "startChar": 6,
+        "endLine": 1066,
+        "endChar": 7
+      },
+      "revId": "1c54b40b352cb003f3ed9816559c54c42a83f004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd46e516_9b0c7c4b",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T09:43:57Z",
+      "side": 1,
+      "message": "Indentation: align arguments.",
+      "range": {
+        "startLine": 1458,
+        "startChar": 6,
+        "endLine": 1458,
+        "endChar": 7
+      },
+      "revId": "1c54b40b352cb003f3ed9816559c54c42a83f004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08eda601_2163059e",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T09:43:57Z",
+      "side": 1,
+      "message": "Bad indentation and missing space after \"),\".\n\nI\u0027d keep all `RepeatFFF()` arguments on one line and break after \"),\".",
+      "range": {
+        "startLine": 1079,
+        "startChar": 6,
+        "endLine": 1079,
+        "endChar": 7
+      },
+      "revId": "1c54b40b352cb003f3ed9816559c54c42a83f004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fb6025_db0fb5ce",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-11-10T09:43:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1085,
+        "startChar": 6,
+        "endLine": 1085,
+        "endChar": 7
+      },
+      "revId": "1c54b40b352cb003f3ed9816559c54c42a83f004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
