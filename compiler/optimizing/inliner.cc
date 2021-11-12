@@ -1702,9 +1702,7 @@ static inline Handle<T> NewHandleIfDifferent(ObjPtr<T> object, Handle<T> hint, H
 }
 
 static bool CanEncodeInlinedMethodInStackMap(const DexFile& outer_dex_file,
-                                             ArtMethod* callee,
-                                             const CodeGenerator* codegen,
-                                             bool* out_needs_bss_check)
+                                             ArtMethod* callee)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (!Runtime::Current()->IsAotCompiler()) {
     // JIT can always encode methods in stack maps.
@@ -1713,22 +1711,6 @@ static bool CanEncodeInlinedMethodInStackMap(const DexFile& outer_dex_file,
 
   const DexFile* dex_file = callee->GetDexFile();
   if (IsSameDexFile(outer_dex_file, *dex_file)) {
-    return true;
-  }
-
-  // Inline across dexfiles if the callee's DexFile is:
-  // 1) in the bootclasspath, or
-  if (callee->GetDeclaringClass()->GetClassLoader() == nullptr) {
-    // There are cases in which the BCP DexFiles are within the OatFile as far as the compiler
-    // options are concerned, but they have their own OatWriter (and therefore not in the same
-    // OatFile). Then, we request the BSS check for all BCP DexFiles.
-    // TODO(solanes): Add .bss support for BCP.
-    *out_needs_bss_check = true;
-    return true;
-  }
-
-  // 2) is a non-BCP dexfile with the OatFile we are compiling.
-  if (codegen->GetCompilerOptions().WithinOatFile(dex_file)) {
     return true;
   }
 
@@ -1847,7 +1829,7 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
       total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters;
   bool needs_bss_check = false;
   const bool can_encode_in_stack_map = CanEncodeInlinedMethodInStackMap(
-      *outer_compilation_unit_.GetDexFile(), resolved_method, codegen_, &needs_bss_check);
+      *outer_compilation_unit_.GetDexFile(), resolved_method);
   size_t number_of_instructions = 0;
   // Skip the entry block, it does not contain instructions that prevent inlining.
   for (HBasicBlock* block : callee_graph->GetReversePostOrderSkipEntryBlock()) {
