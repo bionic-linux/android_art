@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a166be44_a7242fe5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-11-15T08:58:59Z",
+      "side": 1,
+      "message": "I am surprised this wasn\u0027t caught by any tests even with --jit-on-first-use. Possibly most jvmti tests we have are running interpreter-only. I will take a deeper look at tests and add more tests later.\n\ncmpb vs cmpw wasn\u0027t caught because there were 3 bools and all of them would be turned off when instrumentation is off. So it was working as expected though it wasn\u0027t correct. The clean up CL exposed this bug since I merged three bools into one enum.",
+      "revId": "146508c7a90846c7b4dd79bcf49e1b5a454546ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
