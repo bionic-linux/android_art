@@ -34,6 +34,24 @@
       "parentUuid": "5c406f6a_a2c93830",
       "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890f53c9_8e9f684a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-24T19:43:08Z",
+      "side": 1,
+      "message": "Aha, I see. It wasn\u0027t clear to me that the build support covered more tests than those enabled in TEST_MAPPING. Maybe the description could mention that.",
+      "parentUuid": "a874c533_226614bf",
+      "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
