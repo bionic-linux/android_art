@@ -16,6 +16,24 @@
       "message": "I see several more tests being added below than are mentioned here.\n\nAlso, 16 tests are added to TEST_MAPPING, but 18 are getting Android.bp files. Is that intentional?",
       "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a874c533_226614bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-11-24T14:24:47Z",
+      "side": 1,
+      "message": "This CL regenerates ART test files and adds:\n- build support for 18 ART run-tests; and\n- run-time support for 8 tests among these 18 run-tests.\n\nTherefore, the new changes brought by this CL are:\n\n  * 18 new Blueprint files for the 18 ART run-tests (build support);\n  * 16 (2 × 8) new entries in `TEST_MAPPING` (run-time support):\n    * 8 new entries for Mainline presubmits (`mainline-presubmit` test group);\n    * 8 new entries for \"usual\" presubmits (`presubmit` test group).\n\nYou\u0027ll also note that the 8 tests supported both at build- and run-time (mentioned in the commit message) use the `art-run-test-target-template` test configuration template (enabling them in non-test-mapping-based continuous testing), while the 10 other tests use the `art-run-test-target-no-test-suite-tag-template` test configuration template (which disables them in non-test-mapping-based continuous testing).\n\nDoes that make sense?",
+      "parentUuid": "5c406f6a_a2c93830",
+      "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
