@@ -52,6 +52,24 @@
       "parentUuid": "a874c533_226614bf",
       "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42fdf7f2_48c074bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-11-25T12:45:31Z",
+      "side": 1,
+      "message": "That\u0027s a good idea; thanks Martin. I made that clearer in the commit message (PS6 \u0026 PS7).",
+      "parentUuid": "890f53c9_8e9f684a",
+      "revId": "d28fdd43577150c6a3def6cb33e23aae2bc5b08c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
