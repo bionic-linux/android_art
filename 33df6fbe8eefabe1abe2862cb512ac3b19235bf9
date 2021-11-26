@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ada1dc_c027e85f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-11-26T16:39:21Z",
+      "side": 1,
+      "message": "Hans, PTAL.\n\nThanks!",
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1394922e_ff58975f",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-11-26T16:39:21Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if it is good to move these checks to a later point too. I didn\u0027t move them because pre_object_allocated could suspend and we possibly want to check them before we call pre_object_allocated?.  I am not quite sure though. Happy to move them if it is better.",
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
