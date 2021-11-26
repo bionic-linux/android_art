@@ -91,6 +91,7 @@ inline mirror::Object* Heap::AllocObjectWithAllocator(Thread* self,
     // TODO: Consider what happens if the allocator is switched while suspended here.
     pre_object_allocated();
 
+
     // Need to check that we aren't the large object allocator since the large object allocation
     // code path includes this function. If we didn't check we would have an infinite loop.
     if (kCheckLargeObject && UNLIKELY(ShouldAllocLargeObject(klass, byte_count))) {
@@ -160,11 +161,14 @@ inline mirror::Object* Heap::AllocObjectWithAllocator(Thread* self,
           if (!self->IsExceptionPending()) {
             // Since we are restarting, allow thread suspension.
             ScopedAllowThreadSuspension ats;
+            // Get the new class size in case class redefinition changed the class size since alloc
+            // started.
+            int new_byte_count = klass->IsVariableSize()? byte_count : klass->GetObjectSize();
             // AllocObject will pick up the new allocator type, and instrumented as true is the safe
             // default.
             return AllocObjectWithAllocator</*kInstrumented=*/true>(self,
                                                                     klass,
-                                                                    byte_count,
+                                                                    new_byte_count,
                                                                     GetUpdatedAllocator(allocator),
                                                                     pre_fence_visitor);
           }
