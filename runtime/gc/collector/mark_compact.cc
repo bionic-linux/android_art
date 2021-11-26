@@ -21,6 +21,7 @@
 #include "gc/accounting/mod_union_table-inl.h"
 #include "gc/reference_processor.h"
 #include "gc/space/bump_pointer_space.h"
+#include "gc/verification-inl.h"
 #include "mirror/object-refvisitor-inl.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread_list.h"
@@ -624,31 +625,82 @@ class MarkCompact::RefsUpdateVisitor {
   uint8_t* const end_;
 };
 
+bool MarkCompact::IsValidObject(mirror::Object* obj) const {
+  if (!heap_->GetVerification()->IsValidHeapObjectAddress(obj)) {
+    return false;
+  }
+  mirror::Class* klass = obj->GetClass<kVerifyNone, kWithoutReadBarrier>();
+  if (!heap_->GetVerification()->IsValidHeapObjectAddress(klass)) {
+    return false;
+  }
+  return heap_->GetVerification()->IsValidClassUnchecked<kWithFromSpaceBarrier>(
+          obj->GetClass<kVerifyNone, kWithFromSpaceBarrier>());
+}
+
 void MarkCompact::CompactPage(mirror::Object* obj, uint32_t offset, uint8_t* addr) {
   DCHECK(IsAligned<kPageSize>(addr));
-  obj = GetFromSpaceAddr(obj);
   // TODO: assert that offset is within obj and obj is a valid object
-  DCHECK(live_words_bitmap_->Test(offset));
+  DCHECK(current_space_bitmap_->Test(obj)
+         && live_words_bitmap_->Test(obj)
+         && live_words_bitmap_->Test(offset));
   uint8_t* const start_addr = addr;
   // How many distinct live-strides do we have.
   size_t stride_count = 0;
   uint8_t* last_stride;
   uint32_t last_stride_begin = 0;
+  auto verify_class = [&] (mirror::Object* ref) REQUIRES_SHARED(Locks::mutator_lock_) {
+                        if (kIsDebugBuild) {
+                          mirror::Class* klass =
+                                ref->GetClass<kVerifyNone, kWithFromSpaceBarrier>();
+                          CHECK(IsValidObject(ref))
+                               << "ref=" << ref
+                               << " from_space_klass=" << klass
+                               << " pre_compact_klass="
+                               << ref->GetClass<kVerifyNone, kWithoutReadBarrier>()
+                               << " stride_count=" << stride_count
+                               << " last_stride=" << static_cast<void*>(last_stride)
+                               << " offset=" << offset
+                               << " start_addr=" << static_cast<void*>(start_addr)
+                               << " from_space_begin=" << static_cast<void*>(from_space_begin_)
+                               << " pre_compact_begin="
+                               << static_cast<void*>(bump_pointer_space_->Begin())
+                               << " black_allocations_begin="
+                               << static_cast<void*>(black_allocations_begin_)
+                               << heap_->GetVerification()
+                                  ->DumpRAMAroundAddress(
+                                        reinterpret_cast<uintptr_t>(ref), 128);
+                        }
+                      };
+  obj = GetFromSpaceAddr(obj);
   live_words_bitmap_->VisitLiveStrides(offset,
                                        black_allocations_begin_,
                                        kPageSize,
                                        [&] (uint32_t stride_begin,
                                             size_t stride_size,
-                                            bool is_last) {
+                                            bool /*is_last*/) REQUIRES_SHARED(Locks::mutator_lock_) {
                                          const size_t stride_in_bytes = stride_size * kAlignment;
                                          DCHECK_LE(stride_in_bytes, kPageSize);
                                          last_stride_begin = stride_begin;
+                                         DCHECK(IsAligned<kAlignment>(addr));
                                          memcpy(addr,
                                                 from_space_begin_ + stride_begin * kAlignment,
                                                 stride_in_bytes);
-                                         if (is_last) {
-                                            last_stride = addr;
+                                         if (kIsDebugBuild) {
+                                           uint8_t* space_begin = bump_pointer_space_->Begin();
+                                           if (stride_count > 0 || start_addr == space_begin) {
+                                             mirror::Object* o =
+                                                reinterpret_cast<mirror::Object*>(space_begin
+                                                                                  + stride_begin
+                                                                                  * kAlignment);
+                                             CHECK(live_words_bitmap_->Test(o)) << "ref=" << o;
+                                             CHECK(current_space_bitmap_->Test(o))
+                                                 << "ref=" << o
+                                                 << " bitmap: "
+                                                 << current_space_bitmap_->DumpMemAround(o);
+                                             verify_class(reinterpret_cast<mirror::Object*>(addr));
+                                           }
                                          }
+                                         last_stride = addr;
                                          addr += stride_in_bytes;
                                          stride_count++;
                                        });
@@ -692,6 +744,7 @@ void MarkCompact::CompactPage(mirror::Object* obj, uint32_t offset, uint8_t* add
   // checks.
   while (addr < last_stride) {
     mirror::Object* ref = reinterpret_cast<mirror::Object*>(addr);
+    verify_class(ref);
     RefsUpdateVisitor</*kCheckBegin*/false, /*kCheckEnd*/false>
             visitor(this, ref, nullptr, nullptr);
     obj_size = ref->VisitRefsForCompaction(visitor, MemberOffset(0), MemberOffset(-1));
@@ -706,6 +759,7 @@ void MarkCompact::CompactPage(mirror::Object* obj, uint32_t offset, uint8_t* add
   while (addr < end_addr) {
     mirror::Object* ref = reinterpret_cast<mirror::Object*>(addr);
     obj = reinterpret_cast<mirror::Object*>(from_addr);
+    verify_class(ref);
     RefsUpdateVisitor</*kCheckBegin*/false, /*kCheckEnd*/true>
             visitor(this, ref, nullptr, start_addr + kPageSize);
     obj_size = obj->VisitRefsForCompaction(visitor,
