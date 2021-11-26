@@ -149,7 +149,8 @@ class MarkCompact : public GarbageCollector {
     ALWAYS_INLINE void VisitLiveStrides(uintptr_t begin_bit_idx,
                                         uint8_t* end,
                                         const size_t bytes,
-                                        Visitor&& visitor) const;
+                                        Visitor&& visitor) const
+        REQUIRES_SHARED(Locks::mutator_lock_);
     void ClearBitmap() { Bitmap::Clear(); }
     ALWAYS_INLINE uintptr_t Begin() const { return MemRangeBitmap::CoverBegin(); }
     ALWAYS_INLINE bool HasAddress(mirror::Object* obj) const {
@@ -172,6 +173,9 @@ class MarkCompact : public GarbageCollector {
     return reinterpret_cast<mirror::Object*>(from_space_begin_ + offset);
   }
 
+  // Check if the obj is within heap and has a klass which is likely to be valid
+  // mirror::Class.
+  bool IsValidObject(mirror::Object* obj) const REQUIRES_SHARED(Locks::mutator_lock_);
   void InitializePhase();
   void FinishPhase() REQUIRES(!Locks::mutator_lock_, !Locks::heap_bitmap_lock_);
   void MarkingPhase() REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Locks::heap_bitmap_lock_);
