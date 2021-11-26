@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f20da4_9555188a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-26T15:38:53Z",
+      "side": 1,
+      "message": "Good to see that the tests are stable now!",
+      "revId": "6a840862d628e0f00be37019951164580e0ec4d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe94737_4553afc2",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-26T15:38:53Z",
+      "side": 1,
+      "message": "It will be nice if the percentages can be automatically calculated given a numerator and a denominator so that we don\u0027t have to manually update the percentages in the future.\n\nAlso, I found that making the denominators explicit also improves readability because it\u0027s not very clear to me what the denominators are.",
+      "revId": "6a840862d628e0f00be37019951164580e0ec4d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
