@@ -33,6 +33,24 @@
       "message": "It will be nice if the percentages can be automatically calculated given a numerator and a denominator so that we don\u0027t have to manually update the percentages in the future.\n\nAlso, I found that making the denominators explicit also improves readability because it\u0027s not very clear to me what the denominators are.",
       "revId": "6a840862d628e0f00be37019951164580e0ec4d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b54697b_c15540eb",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-26T18:22:51Z",
+      "side": 1,
+      "message": "As I mentioned on an earlier CL, I find these percentages misleading (as long as the denominators aren\u0027t the actual number of tests in the art/ tree). I think we\u0027re better off removing them altogether.",
+      "parentUuid": "efe94737_4553afc2",
+      "revId": "6a840862d628e0f00be37019951164580e0ec4d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
