@@ -51,6 +51,24 @@
       "parentUuid": "7d9358b4_2644b8a7",
       "revId": "be39dcea788c2973ffe3496d56b561a0813b4340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91c57ef_83bf06a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-11-26T14:15:13Z",
+      "side": 1,
+      "message": "Made it so that --dump-cfg would force only one thread on dex2oat.\n\nAlso removed visualizer_dump_mutex_ since we shouldn\u0027t really need it now that we are forcing one thread.",
+      "parentUuid": "1b6a376d_0a929bdf",
+      "revId": "be39dcea788c2973ffe3496d56b561a0813b4340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
