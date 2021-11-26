@@ -54,7 +54,6 @@ inline mirror::Object* Heap::AllocObjectWithAllocator(Thread* self,
       };
 
   if (kIsDebugBuild) {
-    CheckPreconditionsForAllocObject(klass, byte_count);
     // Since allocation can cause a GC which will need to SuspendAll, make sure all allocations are
     // done in the runnable state where suspension is expected.
     CHECK_EQ(self->GetState(), kRunnable);
@@ -90,6 +89,13 @@ inline mirror::Object* Heap::AllocObjectWithAllocator(Thread* self,
     // Do the initial pre-alloc
     // TODO: Consider what happens if the allocator is switched while suspended here.
     pre_object_allocated();
+
+    if (kIsDebugBuild) {
+      // Check for the pre conditions after the call to pre_object_allocated. It is possible that
+      // the byte_count is not valid at the start of the function if the klass was redefined while
+      // the thread was suspended.
+      CheckPreconditionsForAllocObject(klass, byte_count);
+    }
 
     // Need to check that we aren't the large object allocator since the large object allocation
     // code path includes this function. If we didn't check we would have an infinite loop.
