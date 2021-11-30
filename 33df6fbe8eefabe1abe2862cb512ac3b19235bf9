@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3377fec_41fce1c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-11-30T21:30:33Z",
+      "side": 1,
+      "message": "Nit: PreObjectAllocated",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050545b8_cf7acce7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-11-30T21:30:33Z",
+      "side": 1,
+      "message": "I still don\u0027t really understand how this problem occurs. Presumably the class size changes while we\u0027re suspended between the original size computation and the CHECK. Do you understand where that suspend point is and why it needs to be there?",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "87ada1dc_c027e85f",
@@ -31,6 +77,24 @@
       "writtenOn": "2021-11-26T16:39:21Z",
       "side": 1,
       "message": "I wasn\u0027t sure if it is good to move these checks to a later point too. I didn\u0027t move them because pre_object_allocated could suspend and we possibly want to check them before we call pre_object_allocated?.  I am not quite sure though. Happy to move them if it is better.",
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c409494a_135af612",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-11-30T21:30:33Z",
+      "side": 1,
+      "message": "I would leave them here. I\u0027m also not sure it really matters, but they\u0027re logically precondition checks, I think.",
+      "parentUuid": "1394922e_ff58975f",
       "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
