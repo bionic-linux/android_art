@@ -337,10 +337,20 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
         ScopedTrace failed_to_open_dex_files("FailedToOpenDexFilesFromOat");
         error_msgs->push_back("Failed to open dex files from " + odex_location);
       } else {
-        // Opened dex files from an oat file, madvise them to their loaded state.
-         for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
-           OatDexFile::MadviseDexFileAtLoad(*dex_file);
-         }
+        // Opened dex/vdex files from an oat file, madvise them to their loaded state.
+        for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+          OatDexFile::MadviseDexFileAtLoad(*dex_file);
+        }
+        // TODO(b/196052575): Unify the dex and vdex madvise knobs and behavior.
+        VdexFile* vdex_file = oat_file ? oat_file->GetVdexFile() : nullptr;
+        if (vdex_file != nullptr) {
+          const size_t madvise_size_limit = Runtime::Current()->GetMadviseWillNeedSizeVdex();
+          Runtime::MadviseFileForRange(madvise_size_limit,
+                                       vdex_file->Size(),
+                                       vdex_file->Begin(),
+                                       vdex_file->End(),
+                                       vdex_file->GetName());
+        }
       }
 
       if (oat_file != nullptr) {
