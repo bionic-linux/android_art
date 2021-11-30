@@ -22,6 +22,30 @@
       },
       "revId": "9a1f6c20b71e32185c3a4745afb0d225b06eb797",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655cfb73_c536e9cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-11-30T22:55:42Z",
+      "side": 1,
+      "message": "Ugg, yes, good catch! Was using git_master for dev/test and missed a file when patching over. Updated (and sorry for the churn on this one!).",
+      "parentUuid": "4a9e4682_66db0d63",
+      "range": {
+        "startLine": 19,
+        "startChar": 51,
+        "endLine": 20,
+        "endChar": 70
+      },
+      "revId": "9a1f6c20b71e32185c3a4745afb0d225b06eb797",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
