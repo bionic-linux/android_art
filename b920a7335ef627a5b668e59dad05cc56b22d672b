@@ -70,6 +70,24 @@
       "parentUuid": "22350255_7bbdb530",
       "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5776bb9_5a1bade5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-11-30T01:23:02Z",
+      "side": 1,
+      "message": "Sorry for the delay, updated!\n\nI\u0027ll try to wrangle the different dex/vdex madvise paths in a follow-up. I don\u0027t want to regress Go behavior, but it\u0027s been almost 4 years since the dex-specific madvise behavior was added, and is worth revisiting.",
+      "parentUuid": "f6a97993_f7bb22be",
+      "revId": "b920a7335ef627a5b668e59dad05cc56b22d672b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
