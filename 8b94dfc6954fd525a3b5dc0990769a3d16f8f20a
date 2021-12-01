@@ -22,6 +22,30 @@
       },
       "revId": "8b94dfc6954fd525a3b5dc0990769a3d16f8f20a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc33b2f_d6199bbc",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-12-01T18:08:08Z",
+      "side": 1,
+      "message": "Done (moved to the oat_file null check block right below).",
+      "parentUuid": "447b2175_aebe0e2b",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 35
+      },
+      "revId": "8b94dfc6954fd525a3b5dc0990769a3d16f8f20a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
