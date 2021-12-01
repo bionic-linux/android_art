@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef629272_8422a1e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-01T14:34:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3377fec_41fce1c4",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "050545b8_cf7acce7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-30T21:30:33Z",
       "side": 1,
       "message": "I still don\u0027t really understand how this problem occurs. Presumably the class size changes while we\u0027re suspended between the original size computation and the CHECK. Do you understand where that suspend point is and why it needs to be there?",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c29a31_8b307c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-01T14:34:26Z",
+      "side": 1,
+      "message": "AFAIU, the thread suspends for a GC and restarts the allocation with the old size here: https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/heap-inl.h;l\u003d146;\n\nAn alternate fix would be to get the new size when we restart the allocation. I added another comment for this. We already get the updated allocator so maybe we can just add a GetUpdatedSize to obtain the new size and restore the check to its original place. We would still call PreObjectAllocated with the new updated size but it doesn\u0027t harm. Maybe that will make it easier to understand than moving the check.",
+      "parentUuid": "050545b8_cf7acce7",
       "range": {
         "startLine": 15,
         "startChar": 43,
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "I would leave them here. I\u0027m also not sure it really matters, but they\u0027re logically precondition checks, I think.",
       "parentUuid": "1394922e_ff58975f",
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47602cbc_594dcb7c",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-01T14:34:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c409494a_135af612",
       "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

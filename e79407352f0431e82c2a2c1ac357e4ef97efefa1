@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c7bd48_45c65ec2",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-01T14:34:26Z",
+      "side": 1,
+      "message": "Continuing from my earlier comment, AllocateInternalWithGC suspends waiting for a GC and then returns a nullptr when it sees that instrumentation has changed: https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/heap.cc;l\u003d1863;\n\nWhen we restart the allocation here we can pick up the new size and keep the check in it\u0027s original place.",
+      "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
