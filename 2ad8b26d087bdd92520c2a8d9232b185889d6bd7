@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a0e519_992d995b",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-02T08:26:17Z",
+      "side": 1,
+      "message": "FYI, this is always true.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 35
+      },
+      "revId": "2ad8b26d087bdd92520c2a8d9232b185889d6bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
