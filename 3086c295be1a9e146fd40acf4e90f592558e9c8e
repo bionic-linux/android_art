@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9e3695_2e5a0dd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-12-02T14:30:04Z",
+      "side": 1,
+      "message": "Vladimir PTAL",
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2898c2_c4c64f4f",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-12-02T14:30:04Z",
+      "side": 1,
+      "message": "Drive-by.",
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51d1a40_0b0830f1",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-12-02T14:30:04Z",
+      "side": 1,
+      "message": "Drive-by.",
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e94fbef_405038bb",
+        "filename": "test/2238-checker-load-class-multidex/src-multidex/Caller.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-12-02T14:30:04Z",
+      "side": 1,
+      "message": "Without the new implementation, this LoadClass doesn\u0027t exist",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7dc162_afe6f79c",
+        "filename": "test/2238-checker-load-class-multidex/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2021-12-02T14:30:04Z",
+      "side": 1,
+      "message": "Test based on https://cs.android.com/android/platform/superproject/+/master:art/test/827-resolve-method/src/Main.java",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
