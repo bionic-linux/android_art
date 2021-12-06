@@ -22,6 +22,30 @@
       },
       "revId": "3167a2b62ec9389d8016d5d458c478b216337038",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1d6e8d_2a5e34a7",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-12-06T14:33:39Z",
+      "side": 0,
+      "message": "Yes: all tests in the `presubmit` test group run both a pre-submit and post-submit tests (see go/test-mapping#attributes for more details).",
+      "parentUuid": "906fc951_1b6621d5",
+      "range": {
+        "startLine": 671,
+        "startChar": 14,
+        "endLine": 671,
+        "endChar": 24
+      },
+      "revId": "3167a2b62ec9389d8016d5d458c478b216337038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
