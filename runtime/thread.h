@@ -511,6 +511,9 @@ class Thread {
     return tlsPtr_.exception != nullptr;
   }
 
+  // Needs deopt
+  bool IsDeoptRequired() const { return tlsPtr_.deopt_required != nullptr; }
+
   bool IsAsyncExceptionPending() const {
     return tlsPtr_.async_exception != nullptr;
   }
@@ -525,6 +528,7 @@ class Thread {
   void AssertNoPendingExceptionForNewException(const char* msg) const;
 
   void SetException(ObjPtr<mirror::Throwable> new_exception) REQUIRES_SHARED(Locks::mutator_lock_);
+  void SetDeoptRequired(bool flag) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Set an exception that is asynchronously thrown from a different thread. This will be checked
   // periodically and might overwrite the current 'Exception'. This can only be called from a
@@ -827,6 +831,7 @@ class Thread {
   static constexpr ThreadOffset<pointer_size> ExceptionOffset() {
     return ThreadOffsetFromTlsPtr<pointer_size>(OFFSETOF_MEMBER(tls_ptr_sized_values, exception));
   }
+
 
   template<PointerSize pointer_size>
   static constexpr ThreadOffset<pointer_size> PeerOffset() {
@@ -1804,6 +1809,7 @@ class Thread {
   struct PACKED(sizeof(void*)) tls_ptr_sized_values {
       tls_ptr_sized_values() : card_table(nullptr),
                                exception(nullptr),
+                               deopt_required(nullptr),
                                stack_end(nullptr),
                                managed_stack(),
                                suspend_trigger(nullptr),
@@ -1849,6 +1855,8 @@ class Thread {
 
     // The pending exception or null.
     mirror::Throwable* exception;
+
+    uint8_t* deopt_required;
 
     // The end of this thread's stack. This is the lowest safely-addressable address on the stack.
     // We leave extra space so there's room for the code that throws StackOverflowError.

@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-#include "quick_entrypoints.h"
-
-#include "string_builder_append.h"
+#include "instrumentation.h"
 #include "obj_ptr-inl.h"
+#include "quick_entrypoints.h"
+#include "string_builder_append.h"
 
 namespace art {
 
 extern "C" mirror::String* artStringBuilderAppend(uint32_t format,
                                                   const uint32_t* args,
                                                   Thread* self) {
-  return StringBuilderAppend::AppendF(format, args, self).Ptr();
+  auto res = StringBuilderAppend::AppendF(format, args, self).Ptr();
+  if (instrumentation::Instrumentation::PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault)) {
+    return nullptr;
+  }
+  return res;
 }
 
 }  // namespace art

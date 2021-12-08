@@ -208,6 +208,9 @@ class Instrumentation {
     return MemberOffset(OFFSETOF_MEMBER(Instrumentation, instrumentation_stubs_installed_));
   }
 
+  static bool PushDeoptContextIfNeeded(Thread* self, DeoptimizationMethodType deopt_type)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Add a listener to be notified of the masked together sent of instrumentation events. This
   // suspend the runtime to install stubs. You are expected to hold the mutator lock as a proxy
   // for saying you should have suspended all threads (installing stubs while threads are running
@@ -472,12 +475,14 @@ class Instrumentation {
   void ExceptionHandledEvent(Thread* thread, ObjPtr<mirror::Throwable> exception_object) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  JValue GetReturnValue(Thread* self,
-                        ArtMethod* method,
-                        bool* is_ref,
-                        uint64_t* gpr_result,
-                        uint64_t* fpr_result) REQUIRES_SHARED(Locks::mutator_lock_);
-  bool ShouldDeoptimizeMethod(Thread* self, const NthCallerVisitor& visitor)
+  JValue GetReturnValue(ArtMethod* method, bool* is_ref, uint64_t* gpr_result, uint64_t* fpr_result)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  void DeoptimizeIfNeeded(Thread* self, ArtMethod** sp, DeoptimizationMethodType type)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimize(Thread* self, const NthCallerVisitor& visitor)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimize(Thread* self, ArtMethod** sp) REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimizeMethod(Thread* self, ArtMethod* method)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Called when an instrumented method is entered. The intended link register (lr) is saved so

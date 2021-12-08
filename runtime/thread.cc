@@ -4503,6 +4503,14 @@ void Thread::SetException(ObjPtr<mirror::Throwable> new_exception) {
   tlsPtr_.exception = new_exception.Ptr();
 }
 
+void Thread::SetDeoptRequired(bool flag) {
+  if (flag) {
+    tlsPtr_.deopt_required = reinterpret_cast<uint8_t*>(0x100);
+  } else {
+    tlsPtr_.deopt_required = nullptr;
+  }
+}
+
 bool Thread::IsAotCompiler() {
   return Runtime::Current()->IsAotCompiler();
 }
