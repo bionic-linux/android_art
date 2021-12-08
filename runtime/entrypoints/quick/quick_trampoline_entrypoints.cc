@@ -716,13 +716,17 @@ extern "C" uint64_t artQuickToInterpreterBridge(ArtMethod* method, Thread* self,
   // Request a stack deoptimization if needed
   ArtMethod* caller = QuickArgumentVisitor::GetCallingMethod(sp);
   uintptr_t caller_pc = QuickArgumentVisitor::GetCallingPc(sp);
+
+  // Check if caller needs to be deoptimized for instrumentation reasons.
+  instrumentation::Instrumentation* instr = Runtime::Current()->GetInstrumentation();
   // If caller_pc is the instrumentation exit stub, the stub will check to see if deoptimization
   // should be done and it knows the real return pc. NB If the upcall is null we don't need to do
   // anything. This can happen during shutdown or early startup.
-  if (UNLIKELY(
-          caller != nullptr &&
-          caller_pc != reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc()) &&
-          (self->IsForceInterpreter() || Dbg::IsForcedInterpreterNeededForUpcall(self, caller)))) {
+  if (UNLIKELY(caller != nullptr &&
+               caller_pc != reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc()) &&
+               (instr->ShouldDeoptimizeCurrentMethod(self, sp) ||
+                self->IsForceInterpreter() ||
+                Dbg::IsForcedInterpreterNeededForUpcall(self, caller)))) {
     if (!Runtime::Current()->IsAsyncDeoptimizeable(caller_pc)) {
       LOG(WARNING) << "Got a deoptimization request on un-deoptimizable method "
                    << caller->PrettyMethod();
@@ -1075,6 +1079,7 @@ extern "C" const void* artInstrumentationMethodEntryFromCode(ArtMethod* method,
     }
   }
 
+  DCHECK(!method->IsRuntimeMethod());
   instrumentation->PushInstrumentationStackFrame(self,
                                                  is_static ? nullptr : h_object.Get(),
                                                  method,
@@ -2681,7 +2686,7 @@ extern "C" int artMethodExitHook(Thread* self,
   instrumentation::Instrumentation* instr = Runtime::Current()->GetInstrumentation();
   DCHECK(instr->AreExitStubsInstalled());
   bool is_ref;
-  JValue return_value = instr->GetReturnValue(self, method, &is_ref, gpr_result, fpr_result);
+  JValue return_value = instr->GetReturnValue(method, &is_ref, gpr_result, fpr_result);
   bool deoptimize = false;
   {
     StackHandleScope<1> hs(self);
@@ -2696,7 +2701,7 @@ extern "C" int artMethodExitHook(Thread* self,
     // back to an upcall.
     NthCallerVisitor visitor(self, 1, /*include_runtime_and_upcalls=*/false);
     visitor.WalkStack(true);
-    deoptimize = instr->ShouldDeoptimizeMethod(self, visitor);
+    deoptimize = instr->ShouldDeoptimizeCaller(self, visitor);
 
     // If we need a deoptimization MethodExitEvent will be called by the interpreter when it
     // re-executes the return instruction.
