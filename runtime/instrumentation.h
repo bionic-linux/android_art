@@ -336,6 +336,10 @@ class Instrumentation {
     return instrumentation_stubs_installed_;
   }
 
+  bool IsImmediateDeoptRequired() const { return immediate_deopt_required_; }
+
+  void SetImmediateDeoptRequired(bool flag) { immediate_deopt_required_ = flag; }
+
   bool HasMethodEntryListeners() const REQUIRES_SHARED(Locks::mutator_lock_) {
     return have_method_entry_listeners_;
   }
@@ -472,12 +476,16 @@ class Instrumentation {
   void ExceptionHandledEvent(Thread* thread, ObjPtr<mirror::Throwable> exception_object) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  JValue GetReturnValue(Thread* self,
-                        ArtMethod* method,
-                        bool* is_ref,
-                        uint64_t* gpr_result,
-                        uint64_t* fpr_result) REQUIRES_SHARED(Locks::mutator_lock_);
-  bool ShouldDeoptimizeMethod(Thread* self, const NthCallerVisitor& visitor)
+  JValue GetReturnValue(ArtMethod* method, bool* is_ref, uint64_t* gpr_result, uint64_t* fpr_result)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool PushDeoptContextIfNeeded(Thread* self, DeoptimizationMethodType deopt_type)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  void DeoptimizeIfNeeded(Thread* self, ArtMethod** sp, DeoptimizationMethodType type)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimize(Thread* self, const NthCallerVisitor& visitor)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimize(Thread* self, ArtMethod** sp) REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDeoptimizeMethod(Thread* self, ArtMethod* method)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Called when an instrumented method is entered. The intended link register (lr) is saved so
@@ -639,6 +647,11 @@ class Instrumentation {
 
   // Have we hijacked ArtMethod::code_ so that it calls instrumentation/interpreter code?
   bool instrumentation_stubs_installed_;
+
+  // Do we need to force deoptimization immediately. For most cases, it is OK to defer
+  // deoptimization till a suspend / invoke point. Though when we redefine classes we cannot defer
+  // the deoptimization.
+  bool immediate_deopt_required_;
 
   // The required level of instrumentation. This could be one of the following values:
   // kInstrumentNothing: no instrumentation support is needed

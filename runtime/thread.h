@@ -525,6 +525,7 @@ class Thread {
   void AssertNoPendingExceptionForNewException(const char* msg) const;
 
   void SetException(ObjPtr<mirror::Throwable> new_exception) REQUIRES_SHARED(Locks::mutator_lock_);
+  void SetDeoptRequired(bool flag) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Set an exception that is asynchronously thrown from a different thread. This will be checked
   // periodically and might overwrite the current 'Exception'. This can only be called from a
