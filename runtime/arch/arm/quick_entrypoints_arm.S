@@ -50,7 +50,7 @@
     .cfi_adjust_cfa_offset 128
     sub sp, #8                          @ 2 words of space, alignment padding and Method*
     .cfi_adjust_cfa_offset 8
-    RUNTIME_CURRENT1 \rTemp             @ Load Runtime::Current into rTemp.
+    RUNTIME_CURRENT4 \rTemp             @ Load Runtime::Current into rTemp.
     @ Load kSaveEverything Method* into rTemp.
     ldr \rTemp, [\rTemp, #\runtime_method_offset]
     str \rTemp, [sp, #0]                @ Place Method* at bottom of stack.
@@ -134,10 +134,36 @@
     .cfi_adjust_cfa_offset -52
 .endm
 
-.macro RETURN_IF_RESULT_IS_ZERO
-    cbnz   r0, 1f              @ result non-zero branch over
-    bx     lr                  @ return
+.macro RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+    ldr r1, [rSELF, # THREAD_EXCEPTION_OFFSET]  // Get exception field.
+    cbnz r1, 1f
+    DEOPT_IF_REQUIRED r1                       // Check if deopt is required
+    bx lr
 1:
+    DELIVER_PENDING_EXCEPTION
+.endm
+
+.macro DEOPT_IF_REQUIRED temp, setup_frame = none, is_ref = 0
+  RUNTIME_CURRENT3  \temp
+  add \temp, \temp, #RUNTIME_INSTRUMENTATION_OFFSET
+  ldr \temp, [\temp, #INSTRUMENTATION_STUBS_INSTALLED_OFFSET]
+  cbnz \temp, 2f
+.ifnc \setup_frame, none
+  RESTORE_SAVE_EVERYTHING_FRAME
+  REFRESH_MARKING_REGISTER
+.endif
+  bx     lr
+2:
+.ifc \setup_frame, none
+  SETUP_SAVE_EVERYTHING_FRAME \temp
+.endif
+  mov r2, \is_ref                      // pass if result is a reference
+  mov r1, r0                           // pass the result
+  mov r0, rSELF                        // Thread::Current
+  bl artDeoptimizeIfNeeded
+  RESTORE_SAVE_EVERYTHING_FRAME
+  REFRESH_MARKING_REGISTER
+  bx     lr
 .endm
 
 .macro RETURN_IF_RESULT_IS_NON_ZERO
@@ -183,7 +209,10 @@ END \c_name
 .endm
 
 .macro RETURN_IF_RESULT_IS_ZERO_OR_DELIVER
-    RETURN_IF_RESULT_IS_ZERO
+    cbnz   r0, 1f              @ result non-zero branch over
+    DEOPT_IF_REQUIRED r1
+    bx     lr                  @ return
+1:
     DELIVER_PENDING_EXCEPTION
 .endm
 
@@ -517,8 +546,7 @@ ENTRY art_quick_lock_object_no_inline
     bl     artLockObjectFromCode      @ (Object* obj, Thread*)
     RESTORE_SAVE_REFS_ONLY_FRAME
     REFRESH_MARKING_REGISTER
-    RETURN_IF_RESULT_IS_ZERO
-    DELIVER_PENDING_EXCEPTION
+    RETURN_IF_RESULT_IS_ZERO_OR_DELIVER
 END art_quick_lock_object_no_inline
 
     /*
@@ -548,8 +576,7 @@ ENTRY art_quick_unlock_object_no_inline
     bl     artUnlockObjectFromCode    @ (Object* obj, Thread*)
     RESTORE_SAVE_REFS_ONLY_FRAME
     REFRESH_MARKING_REGISTER
-    RETURN_IF_RESULT_IS_ZERO
-    DELIVER_PENDING_EXCEPTION
+    RETURN_IF_RESULT_IS_ZERO_OR_DELIVER
 END art_quick_unlock_object_no_inline
 
     /*
@@ -775,12 +802,9 @@ ENTRY \name
     SETUP_SAVE_EVERYTHING_FRAME r1, \runtime_method_offset    @ save everything in case of GC
     mov    r1, rSELF                  @ pass Thread::Current
     bl     \entrypoint                @ (uint32_t index, Thread*)
-    cbz    r0, 1f                     @ If result is null, deliver the OOME.
-    .cfi_remember_state
-    RESTORE_SAVE_EVERYTHING_FRAME_KEEP_R0
-    REFRESH_MARKING_REGISTER
-    bx     lr
-    .cfi_restore_state
+    cbz    r0, 1f                     @ If result is null, deliver pending exception.
+    str    r0, [sp, #136]             @ store result in the frame
+    DEOPT_IF_REQUIRED r1, /* setup_frame= */ done, /* is_ref= */ 1
 1:
     DELIVER_PENDING_EXCEPTION_FRAME_READY
 END \name
@@ -803,12 +827,12 @@ ONE_ARG_SAVE_EVERYTHING_DOWNCALL art_quick_resolve_string, artResolveStringFromC
     /*
      * Called by managed code to resolve a static field and load a non-wide value.
      */
-ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
+ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
     /*
      * Called by managed code to resolve a static field and load a 64-bit primitive value.
      */
@@ -829,12 +853,12 @@ END art_quick_get64_static
     /*
      * Called by managed code to resolve an instance field and load a non-wide value.
      */
-TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
+TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
     /*
      * Called by managed code to resolve an instance field and load a 64-bit primitive value.
      */
@@ -882,8 +906,7 @@ ENTRY art_quick_set64_instance
     .cfi_adjust_cfa_offset -16
     RESTORE_SAVE_REFS_ONLY_FRAME         @ TODO: we can clearly save an add here
     REFRESH_MARKING_REGISTER
-    RETURN_IF_RESULT_IS_ZERO
-    DELIVER_PENDING_EXCEPTION
+    RETURN_IF_RESULT_IS_ZERO_OR_DELIVER
 END art_quick_set64_instance
 
     .extern artSet64StaticFromCompiledCode
@@ -897,8 +920,7 @@ ENTRY art_quick_set64_static
     .cfi_adjust_cfa_offset -16
     RESTORE_SAVE_REFS_ONLY_FRAME          @ TODO: we can clearly save an add here
     REFRESH_MARKING_REGISTER
-    RETURN_IF_RESULT_IS_ZERO
-    DELIVER_PENDING_EXCEPTION
+    RETURN_IF_RESULT_IS_ZERO_OR_DELIVER
 END art_quick_set64_static
 
 // Generate the allocation entrypoints for each allocator.
