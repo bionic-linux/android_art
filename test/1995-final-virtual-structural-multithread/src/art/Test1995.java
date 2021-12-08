@@ -129,8 +129,16 @@ public class Test1995 {
 
     public void Check() throws Exception {
       for (String s : results) {
+        // The original implementation returns "Hello from <thread_name>" and the new implementation
+        // returns "Hello world, Bonjour..." string. It is possible that we see intermediate null
+        // values in some cases. The Transform class declares strings and initializes them in the
+        // constructor. If we redefine the class just after construction but before we call sayHi
+        // function then the strings will be null since we don't run the constructor again. We would
+        // see "Hello, null, null, null..". If we redefine the class after calling sayHi but before
+        // loading the strings then we could see "null from".
         if (!s.equals("Hello from " + getName()) &&
             !s.equals("Hello, null, null, null from " + getName()) &&
+            !s.equals("null from " + getName()) &&
             !s.equals("Hello World, Bonjour le Monde, Hej Verden, こんにちは世界 from " + getName())) {
           System.out.println("FAIL " + thr_id + ": Unexpected result: " + s);
         }
