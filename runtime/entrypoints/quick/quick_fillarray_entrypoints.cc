@@ -17,6 +17,7 @@
 #include "art_method-inl.h"
 #include "callee_save_frame.h"
 #include "entrypoints/entrypoint_utils.h"
+#include "instrumentation.h"
 #include "mirror/array.h"
 
 namespace art {
@@ -30,6 +31,12 @@ extern "C" int artHandleFillArrayDataFromCode(const Instruction::ArrayDataPayloa
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ScopedQuickEntrypointChecks sqec(self);
   bool success = FillArrayData(array, payload);
+  JValue result;
+  result.SetJ(0);
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, false, result)) {
+    return -1;
+  }
   return success ? 0 : -1;
 }
 

@@ -25,6 +25,8 @@ extern "C" int artLockObjectFromCode(mirror::Object* obj, Thread* self)
     REQUIRES(!Roles::uninterruptible_)
     REQUIRES_SHARED(Locks::mutator_lock_) /* EXCLUSIVE_LOCK_FUNCTION(Monitor::monitor_lock_) */ {
   ScopedQuickEntrypointChecks sqec(self);
+  JValue result;
+  result.SetJ(0);
   if (UNLIKELY(obj == nullptr)) {
     ThrowNullPointerException("Null reference used for synchronization (monitor-enter)");
     return -1;  // Failure.
@@ -41,6 +43,10 @@ extern "C" int artLockObjectFromCode(mirror::Object* obj, Thread* self)
       bool unlocked = object->MonitorExit(self);
       DCHECK(unlocked);
       return -1;  // Failure.
+    } else if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+                   self, DeoptimizationMethodType::kDefault, false, result)) {
+      // Trigger a deopt
+      return -1;
     } else {
       DCHECK(self->HoldsLock(object));
       return 0;  // Success.
@@ -58,7 +64,16 @@ extern "C" int artUnlockObjectFromCode(mirror::Object* obj, Thread* self)
     return -1;  // Failure.
   } else {
     // MonitorExit may throw exception.
-    return obj->MonitorExit(self) ? 0 /* Success */ : -1 /* Failure */;
+    int result = obj->MonitorExit(self) ? 0 /* Success */ : -1 /* Failure */;
+    if (result == -1)
+      return result;
+    JValue res;
+    res.SetJ(0);
+    if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+            self, DeoptimizationMethodType::kDefault, false, res)) {
+      return -1;
+    }
+    return result;
   }
 }
 

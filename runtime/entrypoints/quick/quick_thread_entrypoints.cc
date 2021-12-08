@@ -21,16 +21,28 @@
 
 namespace art {
 
-extern "C" void artTestSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {
+extern "C" void artTestSuspendFromCode(Thread* self, ArtMethod** sp)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   // Called when there is a pending checkpoint or suspend request.
   ScopedQuickEntrypointChecks sqec(self);
   self->CheckSuspend();
+
+  // We could have other dex instructions at the same dex pc as suspend and we need to execute
+  // those instructions. So we should start executing from the current dex pc.
+  Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+      self, sp, DeoptimizationMethodType::kKeepDexPc);
 }
 
-extern "C" void artImplicitSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {
+extern "C" void artImplicitSuspendFromCode(Thread* self, ArtMethod** sp)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
   // Called when there is a pending checkpoint or suspend request.
   ScopedQuickEntrypointChecks sqec(self);
   self->CheckSuspend(/*implicit=*/ true);
+
+  // We could have other dex instructions at the same dex pc as suspend and we need to execute
+  // those instructions. So we should start executing from the current dex pc.
+  Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+      self, sp, DeoptimizationMethodType::kKeepDexPc);
 }
 
 extern "C" void artCompileOptimized(ArtMethod* method, Thread* self)
