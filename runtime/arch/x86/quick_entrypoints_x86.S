@@ -794,12 +794,9 @@ MACRO3(ONE_ARG_SAVE_EVERYTHING_DOWNCALL, c_name, cxx_name, runtime_method_offset
     call CALLVAR(cxx_name)                            // cxx_name(arg1, Thread*)
     addl MACRO_LITERAL(16), %esp                      // pop arguments
     CFI_ADJUST_CFA_OFFSET(-16)
-    testl %eax, %eax                                  // If result is null, deliver the OOME.
+    testl %eax, %eax                                  // If result is null deliver pending exception
     jz 1f
-    CFI_REMEMBER_STATE
-    RESTORE_SAVE_EVERYTHING_FRAME_KEEP_EAX            // restore frame up to return address
-    ret                                               // return
-    CFI_RESTORE_STATE_AND_DEF_CFA esp, FRAME_SIZE_SAVE_EVERYTHING
+    DEOPT_OR_RESTORE_SAVE_EVERYTHING_FRAME_AND_RETURN_EAX ebx,  /* is_ref= */1  // Check for deopt
 1:
     DELIVER_PENDING_EXCEPTION_FRAME_READY
     END_FUNCTION VAR(c_name)
@@ -809,6 +806,9 @@ MACRO2(ONE_ARG_SAVE_EVERYTHING_DOWNCALL_FOR_CLINIT, c_name, cxx_name)
     ONE_ARG_SAVE_EVERYTHING_DOWNCALL \c_name, \cxx_name, RUNTIME_SAVE_EVERYTHING_FOR_CLINIT_METHOD_OFFSET
 END_MACRO
 
+// This macro is used for alloc runtime calls. Alloc entry points have an instrumented version that
+// performs deoptimization checks. Instrumented alloc entry points are installed before redefining a
+// class and hence it is not required check for deoptimization here.
 MACRO0(RETURN_IF_RESULT_IS_NON_ZERO_OR_DELIVER)
     testl %eax, %eax               // eax == 0 ?
     jz  1f                         // if eax == 0 goto 1
@@ -817,10 +817,72 @@ MACRO0(RETURN_IF_RESULT_IS_NON_ZERO_OR_DELIVER)
     DELIVER_PENDING_EXCEPTION
 END_MACRO
 
+MACRO0(RETURN_IF_RESULT_IS_NON_ZERO_OR_DEOPT_OR_DELIVER)
+    testl %eax, %eax                  // eax == 0 ?
+    jz  1f                            // if eax == 0 goto 1
+    DEOPT_OR_RETURN ebx, /*is_ref=*/1 // check if deopt is required
+1:                                    // deliver exception on current thread
+    DELIVER_PENDING_EXCEPTION
+END_MACRO
+
+MACRO0(RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION)
+    cmpl MACRO_LITERAL(0),%fs:THREAD_EXCEPTION_OFFSET // exception field == 0 ?
+    jne 1f                                            // if exception field != 0 goto 1
+    DEOPT_OR_RETURN ebx                               // check if deopt is required
+1:                                                    // deliver exception on current thread
+    DELIVER_PENDING_EXCEPTION
+END_MACRO
+
+MACRO2(DEOPT_OR_RETURN, temp, is_ref = 0)
+  cmpl LITERAL(0), %fs:THREAD_DEOPT_CHECK_REQUIRED_OFFSET
+  jne 2f
+  ret
+2:
+  SETUP_SAVE_EVERYTHING_FRAME \temp
+  subl MACRO_LITERAL(4), %esp       // alignment padding
+  CFI_ADJUST_CFA_OFFSET(4)
+  pushl MACRO_LITERAL(\is_ref)      // is_ref
+  CFI_ADJUST_CFA_OFFSET(4)
+  PUSH_ARG eax                      // result
+  pushl %fs:THREAD_SELF_OFFSET      // Pass Thread::Current
+  CFI_ADJUST_CFA_OFFSET(4)
+  call SYMBOL(artDeoptimizeIfNeeded)
+  addl LITERAL(16), %esp             // pop arguments
+  CFI_REMEMBER_STATE
+  RESTORE_SAVE_EVERYTHING_FRAME
+  ret
+  CFI_RESTORE_STATE_AND_DEF_CFA esp, FRAME_SIZE_SAVE_EVERYTHING
+END_MACRO
+
+MACRO2(DEOPT_OR_RESTORE_SAVE_EVERYTHING_FRAME_AND_RETURN_EAX, temp, is_ref = 0)
+  cmpl LITERAL(0), %fs:THREAD_DEOPT_CHECK_REQUIRED_OFFSET
+  jne 2f
+  CFI_REMEMBER_STATE
+  RESTORE_SAVE_EVERYTHING_FRAME_KEEP_EAX
+  ret
+  CFI_RESTORE_STATE_AND_DEF_CFA esp, FRAME_SIZE_SAVE_EVERYTHING
+2:
+  movl %eax, SAVE_EVERYTHING_FRAME_EAX_OFFSET(%esp) // update eax in the frame
+  subl MACRO_LITERAL(4), %esp                       // alignment padding
+  CFI_ADJUST_CFA_OFFSET(4)
+  pushl MACRO_LITERAL(\is_ref)                      // is_ref
+  CFI_ADJUST_CFA_OFFSET(4)
+  PUSH_ARG eax                                      // result
+  pushl %fs:THREAD_SELF_OFFSET                      // Pass Thread::Current
+  CFI_ADJUST_CFA_OFFSET(4)
+  call SYMBOL(artDeoptimizeIfNeeded)
+  addl LITERAL(16), %esp                            // pop arguments
+  CFI_REMEMBER_STATE
+  RESTORE_SAVE_EVERYTHING_FRAME
+  ret
+  CFI_RESTORE_STATE_AND_DEF_CFA esp, FRAME_SIZE_SAVE_EVERYTHING
+END_MACRO
+
+
 MACRO0(RETURN_IF_EAX_ZERO)
     testl %eax, %eax               // eax == 0 ?
     jnz  1f                        // if eax != 0 goto 1
-    ret                            // return
+    DEOPT_OR_RETURN ebx            // check if deopt is needed
 1:                                 // deliver exception on current thread
     DELIVER_PENDING_EXCEPTION
 END_MACRO
@@ -1501,21 +1563,21 @@ END_FUNCTION art_quick_lushr
 // Note: Functions `art{Get,Set}<Kind>{Static,Instance}FromCompiledCode` are
 // defined with a macro in runtime/entrypoints/quick/quick_field_entrypoints.cc.
 
-ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get64_static, artGet64StaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get64_static, artGet64StaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
 
-TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get64_instance, artGet64InstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
-TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get64_instance, artGet64InstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
 
 TWO_ARG_REF_DOWNCALL art_quick_set8_static, artSet8StaticFromCompiledCode, RETURN_IF_EAX_ZERO
 TWO_ARG_REF_DOWNCALL art_quick_set16_static, artSet16StaticFromCompiledCode, RETURN_IF_EAX_ZERO
@@ -1616,7 +1678,7 @@ DEFINE_FUNCTION art_quick_resolution_trampoline
     movl %eax, %edi               // remember code pointer in EDI
     addl LITERAL(16), %esp        // pop arguments
     CFI_ADJUST_CFA_OFFSET(-16)
-    test %eax, %eax               // if code pointer is null goto deliver pending exception
+    test %eax, %eax               // if code pointer is null goto deliver the OOME.
     jz 1f
     RESTORE_SAVE_REFS_AND_ARGS_FRAME_AND_JUMP
 1:
@@ -1986,7 +2048,7 @@ DEFINE_FUNCTION art_quick_string_builder_append
     addl MACRO_LITERAL(16), %esp              // pop arguments
     CFI_ADJUST_CFA_OFFSET(-16)
     RESTORE_SAVE_REFS_ONLY_FRAME              // restore frame up to return address
-    RETURN_IF_RESULT_IS_NON_ZERO_OR_DELIVER   // return or deliver exception
+    RETURN_IF_RESULT_IS_NON_ZERO_OR_DEOPT_OR_DELIVER   // return or deliver exception
 END_FUNCTION art_quick_string_builder_append
 
 // Create a function `name` calling the ReadBarrier::Mark routine,

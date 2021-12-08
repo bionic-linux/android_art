@@ -22,6 +22,7 @@
 #include "callee_save_frame.h"
 #include "dex/dex_file_types.h"
 #include "entrypoints/entrypoint_utils-inl.h"
+#include "jvalue-inl.h"
 #include "mirror/class-inl.h"
 #include "mirror/object-inl.h"
 #include "mirror/object_array-inl.h"
@@ -30,6 +31,17 @@
 namespace art {
 
 static constexpr bool kUseTlabFastPath = true;
+
+#define CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                   \
+  if (instrumented_bool) {                                                           \
+    JValue jvalue;                                                                   \
+    jvalue.SetL(res);                                                                \
+    if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(          \
+            self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, jvalue)) { \
+      return nullptr;                                                                \
+    }                                                                                \
+  }                                                                                  \
+  return res;
 
 template <bool kInitialized,
           bool kWithChecks,
@@ -61,71 +73,83 @@ static ALWAYS_INLINE inline mirror::Object* artAllocObjectFromCode(
       return obj;
     }
   }
+  mirror::Object* obj;
   if (kInitialized) {
-    return AllocObjectFromCodeInitialized<kInstrumented>(klass, self, allocator_type).Ptr();
+    obj = AllocObjectFromCodeInitialized<kInstrumented>(klass, self, allocator_type).Ptr();
   } else if (!kWithChecks) {
-    return AllocObjectFromCodeResolved<kInstrumented>(klass, self, allocator_type).Ptr();
+    obj = AllocObjectFromCodeResolved<kInstrumented>(klass, self, allocator_type).Ptr();
   } else {
-    return AllocObjectFromCode<kInstrumented>(klass, self, allocator_type).Ptr();
+    obj = AllocObjectFromCode<kInstrumented>(klass, self, allocator_type).Ptr();
   }
+  CHECK_FOR_DEOPTIMIZATION_OR_RETURN(kInstrumented, obj);
 }
 
-#define GENERATE_ENTRYPOINTS_FOR_ALLOCATOR_INST(suffix, suffix2, instrumented_bool, allocator_type) \
-extern "C" mirror::Object* artAllocObjectFromCodeWithChecks##suffix##suffix2( \
-    mirror::Class* klass, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  return artAllocObjectFromCode<false, true, instrumented_bool, allocator_type>(klass, self); \
-} \
-extern "C" mirror::Object* artAllocObjectFromCodeResolved##suffix##suffix2( \
-    mirror::Class* klass, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  return artAllocObjectFromCode<false, false, instrumented_bool, allocator_type>(klass, self); \
-} \
-extern "C" mirror::Object* artAllocObjectFromCodeInitialized##suffix##suffix2( \
-    mirror::Class* klass, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  return artAllocObjectFromCode<true, false, instrumented_bool, allocator_type>(klass, self); \
-} \
-extern "C" mirror::String* artAllocStringObject##suffix##suffix2( \
-    mirror::Class* klass, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  /* The klass arg is so it matches the ABI of the other object alloc callbacks. */ \
-  DCHECK(klass->IsStringClass()) << klass->PrettyClass(); \
-  return mirror::String::AllocEmptyString<instrumented_bool>(self, allocator_type).Ptr(); \
-} \
-extern "C" mirror::Array* artAllocArrayFromCodeResolved##suffix##suffix2( \
-    mirror::Class* klass, int32_t component_count, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  ScopedQuickEntrypointChecks sqec(self); \
-  return AllocArrayFromCodeResolved<instrumented_bool>( \
-      klass, component_count, self, allocator_type).Ptr(); \
-} \
-extern "C" mirror::String* artAllocStringFromBytesFromCode##suffix##suffix2( \
-    mirror::ByteArray* byte_array, int32_t high, int32_t offset, int32_t byte_count, \
-    Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  ScopedQuickEntrypointChecks sqec(self); \
-  StackHandleScope<1> hs(self); \
-  Handle<mirror::ByteArray> handle_array(hs.NewHandle(byte_array)); \
-  return mirror::String::AllocFromByteArray<instrumented_bool>( \
-      self, byte_count, handle_array, offset, high, allocator_type).Ptr(); \
-} \
-extern "C" mirror::String* artAllocStringFromCharsFromCode##suffix##suffix2( \
-    int32_t offset, int32_t char_count, mirror::CharArray* char_array, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  StackHandleScope<1> hs(self); \
-  Handle<mirror::CharArray> handle_array(hs.NewHandle(char_array)); \
-  return mirror::String::AllocFromCharArray<instrumented_bool>( \
-      self, char_count, handle_array, offset, allocator_type).Ptr(); \
-} \
-extern "C" mirror::String* artAllocStringFromStringFromCode##suffix##suffix2( /* NOLINT */ \
-    mirror::String* string, Thread* self) \
-    REQUIRES_SHARED(Locks::mutator_lock_) { \
-  StackHandleScope<1> hs(self); \
-  Handle<mirror::String> handle_string(hs.NewHandle(string)); \
-  return mirror::String::AllocFromString<instrumented_bool>( \
-    self, handle_string->GetLength(), handle_string, 0, allocator_type).Ptr(); \
-}
+#define GENERATE_ENTRYPOINTS_FOR_ALLOCATOR_INST(                                                 \
+    suffix, suffix2, instrumented_bool, allocator_type)                                          \
+  extern "C" mirror::Object* artAllocObjectFromCodeWithChecks##suffix##suffix2(                  \
+      mirror::Class* klass, Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {                \
+    return artAllocObjectFromCode<false, true, instrumented_bool, allocator_type>(klass, self);  \
+  }                                                                                              \
+  extern "C" mirror::Object* artAllocObjectFromCodeResolved##suffix##suffix2(                    \
+      mirror::Class* klass, Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {                \
+    return artAllocObjectFromCode<false, false, instrumented_bool, allocator_type>(klass, self); \
+  }                                                                                              \
+  extern "C" mirror::Object* artAllocObjectFromCodeInitialized##suffix##suffix2(                 \
+      mirror::Class* klass, Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {                \
+    return artAllocObjectFromCode<true, false, instrumented_bool, allocator_type>(klass, self);  \
+  }                                                                                              \
+  extern "C" mirror::String* artAllocStringObject##suffix##suffix2(                              \
+      mirror::Class* klass, Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {                \
+    /* The klass arg is so it matches the ABI of the other object alloc callbacks. */            \
+    DCHECK(klass->IsStringClass()) << klass->PrettyClass();                                      \
+    auto* res = mirror::String::AllocEmptyString<instrumented_bool>(self, allocator_type).Ptr(); \
+    CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                                   \
+  }                                                                                              \
+  extern "C" mirror::Array* artAllocArrayFromCodeResolved##suffix##suffix2(                      \
+      mirror::Class* klass, int32_t component_count, Thread* self)                               \
+      REQUIRES_SHARED(Locks::mutator_lock_) {                                                    \
+    ScopedQuickEntrypointChecks sqec(self);                                                      \
+    auto* res = AllocArrayFromCodeResolved<instrumented_bool>(                                   \
+                    klass, component_count, self, allocator_type)                                \
+                    .Ptr();                                                                      \
+    CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                                   \
+  }                                                                                              \
+  extern "C" mirror::String* artAllocStringFromBytesFromCode##suffix##suffix2(                   \
+      mirror::ByteArray* byte_array,                                                             \
+      int32_t high,                                                                              \
+      int32_t offset,                                                                            \
+      int32_t byte_count,                                                                        \
+      Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {                                      \
+    ScopedQuickEntrypointChecks sqec(self);                                                      \
+    StackHandleScope<1> hs(self);                                                                \
+    Handle<mirror::ByteArray> handle_array(hs.NewHandle(byte_array));                            \
+    auto* res = mirror::String::AllocFromByteArray<instrumented_bool>(                           \
+                    self, byte_count, handle_array, offset, high, allocator_type)                \
+                    .Ptr();                                                                      \
+    CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                                   \
+  }                                                                                              \
+  extern "C" mirror::String* artAllocStringFromCharsFromCode##suffix##suffix2(                   \
+      int32_t offset, int32_t char_count, mirror::CharArray* char_array, Thread* self)           \
+      REQUIRES_SHARED(Locks::mutator_lock_) {                                                    \
+    StackHandleScope<1> hs(self);                                                                \
+    Handle<mirror::CharArray> handle_array(hs.NewHandle(char_array));                            \
+    auto* res = mirror::String::AllocFromCharArray<instrumented_bool>(                           \
+                    self, char_count, handle_array, offset, allocator_type)                      \
+                    .Ptr();                                                                      \
+    CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                                   \
+  }                                                                                              \
+  extern "C" mirror::String*                                                                     \
+      artAllocStringFromStringFromCode##suffix##suffix2(/* NOLINT */                             \
+                                                        mirror::String* string,                  \
+                                                        Thread* self)                            \
+          REQUIRES_SHARED(Locks::mutator_lock_) {                                                \
+    StackHandleScope<1> hs(self);                                                                \
+    Handle<mirror::String> handle_string(hs.NewHandle(string));                                  \
+    auto* res = mirror::String::AllocFromString<instrumented_bool>(                              \
+                    self, handle_string->GetLength(), handle_string, 0, allocator_type)          \
+                    .Ptr();                                                                      \
+    CHECK_FOR_DEOPTIMIZATION_OR_RETURN(instrumented_bool, res)                                   \
+  }
 
 #define GENERATE_ENTRYPOINTS_FOR_ALLOCATOR(suffix, allocator_type) \
     GENERATE_ENTRYPOINTS_FOR_ALLOCATOR_INST(suffix, Instrumented, true, allocator_type) \
