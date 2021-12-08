@@ -43,6 +43,8 @@ extern "C" int artLockObjectFromCode(mirror::Object* obj, Thread* self)
       return -1;  // Failure.
     } else {
       DCHECK(self->HoldsLock(object));
+      Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+          self, DeoptimizationMethodType::kDefault);
       return 0;  // Success.
     }
   }
@@ -58,7 +60,12 @@ extern "C" int artUnlockObjectFromCode(mirror::Object* obj, Thread* self)
     return -1;  // Failure.
   } else {
     // MonitorExit may throw exception.
-    return obj->MonitorExit(self) ? 0 /* Success */ : -1 /* Failure */;
+    int ret_val = obj->MonitorExit(self) ? 0 /* Success */ : -1 /* Failure */;
+    if (ret_val == 0) {
+      Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+        self, DeoptimizationMethodType::kDefault);
+    }
+    return ret_val;
   }
 }
 

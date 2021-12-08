@@ -68,6 +68,9 @@ static ALWAYS_INLINE inline mirror::Object* artAllocObjectFromCode(
   } else {
     return AllocObjectFromCode<kInstrumented>(klass, self, allocator_type).Ptr();
   }
+
+  Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(self,
+                                                               DeoptimizationMethodType::kDefault);
 }
 
 #define GENERATE_ENTRYPOINTS_FOR_ALLOCATOR_INST(suffix, suffix2, instrumented_bool, allocator_type) \
