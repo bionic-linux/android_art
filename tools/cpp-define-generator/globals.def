@@ -28,6 +28,7 @@
 #include "mirror/object_reference.h"
 #include "runtime_globals.h"
 #include "stack.h"
+#include "entrypoints/quick/callee_save_frame.h"
 #endif
 
 ASM_DEFINE(ACCESS_FLAGS_METHOD_IS_NATIVE,
@@ -82,3 +83,27 @@ ASM_DEFINE(STD_MEMORY_ORDER_RELAXED,
            std::memory_order_relaxed)
 ASM_DEFINE(STACK_OVERFLOW_RESERVED_BYTES,
            GetStackOverflowReservedBytes(art::kRuntimeISA))
+ASM_DEFINE(X86_64_NUM_CALLEE_SAVE_EVERYTHING_SPILLS,
+           art::POPCOUNT(
+	     art::x86_64::kX86_64CalleeSaveEverythingSpills |
+	     art::x86_64::kX86_64CalleeSaveRefSpills |
+	     art::x86_64::kX86_64CalleeSaveAlwaysSpills))
+ASM_DEFINE(X86_64_CORE_REGISTER_SIZE, static_cast<uint32_t>(art::kX86_64PointerSize))
+ASM_DEFINE(X86_NUM_CALLEE_SAVE_EVERYTHING_SPILLS,
+           art::POPCOUNT(
+	     art::x86::kX86CalleeSaveEverythingSpills |
+	     art::x86::kX86CalleeSaveRefSpills |
+	     art::x86::kX86CalleeSaveAlwaysSpills))
+ASM_DEFINE(X86_CORE_REGISTER_SIZE, static_cast<uint32_t>(art::kX86PointerSize))
+ASM_DEFINE(ARM_NUM_CALLEE_SAVE_EVERYTHING_SPILLS,
+           art::POPCOUNT(
+	     art::arm::kArmCalleeSaveEverythingSpills |
+	     art::arm::kArmCalleeSaveRefSpills |
+	     art::arm::kArmCalleeSaveAlwaysSpills))
+ASM_DEFINE(ARM_CORE_REGISTER_SIZE, static_cast<uint32_t>(art::kArmPointerSize))
+ASM_DEFINE(ARM64_NUM_CALLEE_SAVE_EVERYTHING_SPILLS,
+           art::POPCOUNT(
+	     art::arm64::kArm64CalleeSaveEverythingSpills |
+	     art::arm64::kArm64CalleeSaveRefSpills |
+	     art::arm64::kArm64CalleeSaveAlwaysSpills))
+ASM_DEFINE(ARM64_CORE_REGISTER_SIZE, static_cast<uint32_t>(art::kArm64PointerSize))
