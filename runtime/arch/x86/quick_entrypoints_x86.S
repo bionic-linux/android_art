@@ -1392,9 +1392,11 @@ END_FUNCTION art_quick_memcpy
 
 DEFINE_FUNCTION art_quick_test_suspend
     SETUP_SAVE_EVERYTHING_FRAME ebx, RUNTIME_SAVE_EVERYTHING_FOR_SUSPEND_CHECK_METHOD_OFFSET  // save everything for GC
+    movl %esp, %ebx                                   // remember esp
     // Outgoing argument set up
-    subl MACRO_LITERAL(12), %esp                      // push padding
-    CFI_ADJUST_CFA_OFFSET(12)
+    subl MACRO_LITERAL(8), %esp                       // push padding
+    CFI_ADJUST_CFA_OFFSET(8)
+    PUSH ebx                                          // pass sp
     pushl %fs:THREAD_SELF_OFFSET                      // pass Thread::Current()
     CFI_ADJUST_CFA_OFFSET(4)
     call SYMBOL(artTestSuspendFromCode)               // (Thread*)
