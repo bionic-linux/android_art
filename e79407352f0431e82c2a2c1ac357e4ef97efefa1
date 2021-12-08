@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2a216f_e2cfd122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-08T19:57:48Z",
+      "side": 1,
+      "message": "Ping on this Cl :) Do you think alternate fix of getting the updated class size is better?: https://android-review.googlesource.com/c/platform/art/+/1903396/2/runtime/gc/heap-inl.h#173",
+      "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08c7bd48_45c65ec2",
