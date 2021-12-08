@@ -16,6 +16,7 @@
 
 #if ASM_DEFINE_INCLUDE_DEPENDENCIES
 #include "runtime.h"
+#include "instrumentation.h"
 #endif
 
 ASM_DEFINE(RUNTIME_SAVE_ALL_CALLEE_SAVES_METHOD_OFFSET,
