@@ -88,7 +88,7 @@
 .endm
 
 // Common ENTRY declaration code for ARM and thumb, an ENTRY should always be paired with an END.
-// Declares the RUNTIME_CURRENT[123] macros that can be used within an ENTRY and will have literals
+// Declares the RUNTIME_CURRENT[1234] macros that can be used within an ENTRY and will have literals
 // generated at END.
 .macro DEF_ENTRY thumb_or_arm, name, alignment
     \thumb_or_arm
@@ -113,6 +113,7 @@
     .set .Lruntime_current1_used, 0
     .set .Lruntime_current2_used, 0
     .set .Lruntime_current3_used, 0
+    .set .Lruntime_current4_used, 0
     // The RUNTIME_CURRENT macros that are bound to the \name argument of DEF_ENTRY to ensure
     // that label names are unique.
     .macro RUNTIME_CURRENT1 rDest
@@ -123,6 +124,9 @@
     .endm
     .macro RUNTIME_CURRENT3 rDest
         RUNTIME_CURRENT \name, 3, \rDest
+    .endm
+    .macro RUNTIME_CURRENT4 rDest
+        RUNTIME_CURRENT \name, 4, \rDest
     .endm
 .endm
 
@@ -154,10 +158,15 @@
          .Lruntime_instance_\name\()_3:
              .word   _ZN3art7Runtime9instance_E(GOT_PREL)-(.Lload_got_\name\()_3+4)
     .endif
+    .if .Lruntime_current4_used
+         .Lruntime_instance_\name\()_4:
+             .word   _ZN3art7Runtime9instance_E(GOT_PREL)-(.Lload_got_\name\()_4+4)
+    .endif
     // Remove the RUNTIME_CURRENTx macros so they get rebound in the next function entry.
     .purgem RUNTIME_CURRENT1
     .purgem RUNTIME_CURRENT2
     .purgem RUNTIME_CURRENT3
+    .purgem RUNTIME_CURRENT4
     .fnend
     .cfi_endproc
     .size \name, .-\name
@@ -354,10 +363,6 @@
     bx lr
 1:
     DELIVER_PENDING_EXCEPTION
-.endm
-
-.macro  RETURN_OR_DELIVER_PENDING_EXCEPTION_R1
-    RETURN_OR_DELIVER_PENDING_EXCEPTION_REG r1
 .endm
 
 .macro  RETURN_OR_DELIVER_PENDING_EXCEPTION
