@@ -16,6 +16,7 @@
 
 #if ASM_DEFINE_INCLUDE_DEPENDENCIES
 #include "runtime.h"
+#include "instrumentation.h"
 #endif
 
 ASM_DEFINE(RUNTIME_SAVE_ALL_CALLEE_SAVES_METHOD_OFFSET,
@@ -30,3 +31,5 @@ ASM_DEFINE(RUNTIME_SAVE_REFS_AND_ARGS_METHOD_OFFSET,
            art::Runtime::GetCalleeSaveMethodOffset(art::CalleeSaveType::kSaveRefsAndArgs))
 ASM_DEFINE(RUNTIME_SAVE_REFS_ONLY_METHOD_OFFSET,
            art::Runtime::GetCalleeSaveMethodOffset(art::CalleeSaveType::kSaveRefsOnly))
+ASM_DEFINE(RUNTIME_INSTRUMENTATION_OFFSET, art::Runtime::GetInstrumentationOffset().Int32Value())
+ASM_DEFINE(INSTRUMENTATION_STUBS_INSTALLED_OFFSET, art::instrumentation::Instrumentation::NeedsEntryExitHooksOffset().Int32Value())
