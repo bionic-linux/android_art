@@ -25,6 +25,13 @@ extern "C" void artTestSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::muta
   // Called when suspend count check value is 0 and thread->suspend_count_ != 0
   ScopedQuickEntrypointChecks sqec(self);
   self->CheckSuspend();
+
+  // We could have other dex instructions at the same dex pc as suspend and we
+  // need to execute those instructions. It is harmless to re-execute suspend
+  // instruction so if a deoptimization is needed just re-execute suspend
+  // instruction.
+  Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+      self, DeoptimizationMethodType::kKeepDexPc);
 }
 
 extern "C" void artCompileOptimized(ArtMethod* method, Thread* self)
