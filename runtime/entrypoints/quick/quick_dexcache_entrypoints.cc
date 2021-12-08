@@ -23,6 +23,7 @@
 #include "dex/dex_file_types.h"
 #include "entrypoints/entrypoint_utils-inl.h"
 #include "gc/heap.h"
+#include "jvalue-inl.h"
 #include "mirror/class-inl.h"
 #include "mirror/class_loader.h"
 #include "mirror/object-inl.h"
@@ -161,6 +162,12 @@ extern "C" mirror::Class* artInitializeStaticStorageFromCode(mirror::Class* klas
   if (UNLIKELY(!success)) {
     return nullptr;
   }
+  JValue value;
+  value.SetL(h_klass.Get());
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
+  }
   return h_klass.Get();
 }
 
@@ -178,6 +185,12 @@ extern "C" mirror::Class* artResolveTypeFromCode(uint32_t type_idx, Thread* self
                                                         /* verify_access= */ false);
   if (LIKELY(result != nullptr) && CanReferenceBss(caller_and_outer.outer_method, caller)) {
     StoreTypeInBss(caller, dex::TypeIndex(type_idx), result);
+  }
+  JValue value;
+  value.SetL(result.Ptr());
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
   }
   return result.Ptr();
 }
@@ -197,6 +210,12 @@ extern "C" mirror::Class* artResolveTypeAndVerifyAccessFromCode(uint32_t type_id
   if (LIKELY(result != nullptr) && CanReferenceBss(caller_and_outer.outer_method, caller)) {
     StoreTypeInBss(caller, dex::TypeIndex(type_idx), result);
   }
+  JValue value;
+  value.SetL(result);
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
+  }
   return result.Ptr();
 }
 
@@ -208,6 +227,12 @@ extern "C" mirror::MethodHandle* artResolveMethodHandleFromCode(uint32_t method_
       GetCalleeSaveMethodCallerAndOuterMethod(self, CalleeSaveType::kSaveEverything);
   ArtMethod* caller = caller_and_outer.caller;
   ObjPtr<mirror::MethodHandle> result = ResolveMethodHandleFromCode(caller, method_handle_idx);
+  JValue value;
+  value.SetL(result);
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
+  }
   return result.Ptr();
 }
 
@@ -218,6 +243,12 @@ extern "C" mirror::MethodType* artResolveMethodTypeFromCode(uint32_t proto_idx, 
                                                                   CalleeSaveType::kSaveEverything);
   ArtMethod* caller = caller_and_outer.caller;
   ObjPtr<mirror::MethodType> result = ResolveMethodTypeFromCode(caller, dex::ProtoIndex(proto_idx));
+  JValue value;
+  value.SetL(result);
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
+  }
   return result.Ptr();
 }
 
@@ -231,6 +262,12 @@ extern "C" mirror::String* artResolveStringFromCode(int32_t string_idx, Thread* 
       Runtime::Current()->GetClassLinker()->ResolveString(dex::StringIndex(string_idx), caller);
   if (LIKELY(result != nullptr) && CanReferenceBss(caller_and_outer.outer_method, caller)) {
     StoreStringInBss(caller, dex::StringIndex(string_idx), result);
+  }
+  JValue value;
+  value.SetL(result);
+  if (Runtime::Current()->GetInstrumentation()->PushDeoptContextIfNeeded(
+          self, DeoptimizationMethodType::kDefault, /* is_ref= */ true, value)) {
+    return nullptr;
   }
   return result.Ptr();
 }

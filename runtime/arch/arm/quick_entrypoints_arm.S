@@ -1278,6 +1278,7 @@ GENERATE_ALLOC_ARRAY_TLAB art_quick_alloc_array_resolved64_tlab, artAllocArrayFr
     .extern artTestSuspendFromCode
 ENTRY art_quick_test_suspend
     SETUP_SAVE_EVERYTHING_FRAME r0, RUNTIME_SAVE_EVERYTHING_FOR_SUSPEND_CHECK_METHOD_OFFSET @ save everything for GC stack crawl
+    mov    r1, sp
     mov    r0, rSELF
     bl     artTestSuspendFromCode               @ (Thread*)
     RESTORE_SAVE_EVERYTHING_FRAME
