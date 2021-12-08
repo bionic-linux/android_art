@@ -499,11 +499,12 @@ class Instrumentation {
   void ExceptionHandledEvent(Thread* thread, ObjPtr<mirror::Throwable> exception_object) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  JValue GetReturnValue(Thread* self,
-                        ArtMethod* method,
+  JValue GetReturnValue(ArtMethod* method,
                         bool* is_ref,
                         uint64_t* gpr_result,
                         uint64_t* fpr_result) REQUIRES_SHARED(Locks::mutator_lock_);
+  void DeoptimizeIfNeeded(Thread* self, DeoptimizationMethodType type)
+      REQUIRES_SHARED(Locks::mutator_lock_);
   bool ShouldDeoptimizeMethod(Thread* self, const NthCallerVisitor& visitor)
       REQUIRES_SHARED(Locks::mutator_lock_);
 

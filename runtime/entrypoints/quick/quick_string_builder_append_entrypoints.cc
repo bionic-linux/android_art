@@ -18,13 +18,17 @@
 
 #include "string_builder_append.h"
 #include "obj_ptr-inl.h"
+#include "runtime.h"
 
 namespace art {
 
 extern "C" mirror::String* artStringBuilderAppend(uint32_t format,
                                                   const uint32_t* args,
                                                   Thread* self) {
-  return StringBuilderAppend::AppendF(format, args, self).Ptr();
+  mirror::String* str = StringBuilderAppend::AppendF(format, args, self).Ptr();
+  Runtime::Current()->GetInstrumentation()->DeoptimizeIfNeeded(
+             self, DeoptimizationMethodType::kDefault);
+  return str;
 }
 
 }  // namespace art
