@@ -1609,6 +1609,7 @@ GENERATE_ALLOC_ARRAY_TLAB art_quick_alloc_array_resolved64_tlab, artAllocArrayFr
 ENTRY art_quick_test_suspend
                                         // Save callee saves for stack crawl.
     SETUP_SAVE_EVERYTHING_FRAME RUNTIME_SAVE_EVERYTHING_FOR_SUSPEND_CHECK_METHOD_OFFSET
+    mov    x1, sp
     mov    x0, xSELF
     bl     artTestSuspendFromCode       // (Thread*)
     RESTORE_SAVE_EVERYTHING_FRAME
