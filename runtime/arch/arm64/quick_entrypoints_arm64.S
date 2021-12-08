@@ -194,25 +194,41 @@
     RESTORE_SAVE_EVERYTHING_FRAME_KEEP_X0
 .endm
 
-.macro RETURN_IF_RESULT_IS_ZERO
-    cbnz x0, 1f                // result non-zero branch over
-    ret                        // return
-1:
+.macro RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+    ldr x1, [xSELF, # THREAD_EXCEPTION_OFFSET]  // Get exception field.
+    cbnz x1, 1f
+    DEOPT_IF_REQUIRED x1                       // Check if deopt is required
+    ret
+1:                                             // deliver exception on current thread
+    DELIVER_PENDING_EXCEPTION
 .endm
 
-.macro RETURN_IF_RESULT_IS_NON_ZERO
-    cbz x0, 1f                 // result zero branch over
-    ret                        // return
-1:
-.endm
-
-// Same as above with x1. This is helpful in stubs that want to avoid clobbering another register.
-.macro RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-    RETURN_OR_DELIVER_PENDING_EXCEPTION_REG x1
+.macro DEOPT_IF_REQUIRED temp, setup_frame = none, is_ref = 0
+  LOAD_RUNTIME_INSTANCE \temp
+  add \temp, \temp, #RUNTIME_INSTRUMENTATION_OFFSET
+  ldr \temp, [\temp, #INSTRUMENTATION_STUBS_INSTALLED_OFFSET]
+  cbnz \temp, 2f
+.ifnc \setup_frame, none
+  RESTORE_SAVE_EVERYTHING_FRAME
+  REFRESH_MARKING_REGISTER
+.endif
+  ret
+2:
+.ifc \setup_frame, none
+  SETUP_SAVE_EVERYTHING_FRAME
+.endif
+  mov x2, \is_ref                      // pass if result is a reference
+  mov x1, x0                           // pass the result
+  mov x0, xSELF                        // Thread::Current
+  bl artDeoptimizeIfNeeded
+  RESTORE_SAVE_EVERYTHING_FRAME
+  REFRESH_MARKING_REGISTER
+  ret
 .endm
 
 .macro RETURN_IF_W0_IS_ZERO_OR_DELIVER
     cbnz w0, 1f                // result non-zero branch over
+    DEOPT_IF_REQUIRED x1
     ret                        // return
 1:
     DELIVER_PENDING_EXCEPTION
@@ -1214,11 +1230,8 @@ ENTRY \name
     mov   x1, xSELF                   // pass Thread::Current
     bl    \entrypoint                 // (int32_t index, Thread* self)
     cbz   w0, 1f                      // If result is null, deliver the OOME.
-    .cfi_remember_state
-    RESTORE_SAVE_EVERYTHING_FRAME_KEEP_X0
-    REFRESH_MARKING_REGISTER
-    ret                        // return
-    CFI_RESTORE_STATE_AND_DEF_CFA sp, FRAME_SIZE_SAVE_EVERYTHING
+    str x0, [sp, #272]                // store result in the frame
+    DEOPT_IF_REQUIRED x1, /* setup_frame= */ done, /* is_ref= */ 1
 1:
     DELIVER_PENDING_EXCEPTION_FRAME_READY
 END \name
@@ -1256,21 +1269,21 @@ ONE_ARG_SAVE_EVERYTHING_DOWNCALL art_quick_resolve_string, artResolveStringFromC
 // Note: Functions `art{Get,Set}<Kind>{Static,Instance}FromCompiledCode` are
 // defined with a macro in runtime/entrypoints/quick/quick_field_entrypoints.cc.
 
-ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get64_static, artGet64StaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
+ONE_ARG_REF_DOWNCALL art_quick_get_boolean_static, artGetBooleanStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_byte_static, artGetByteStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_char_static, artGetCharStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_short_static, artGetShortStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get32_static, artGet32StaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get64_static, artGet64StaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+ONE_ARG_REF_DOWNCALL art_quick_get_obj_static, artGetObjStaticFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
 
-TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get64_instance, artGet64InstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
-TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DELIVER_PENDING_EXCEPTION_X1
+TWO_ARG_REF_DOWNCALL art_quick_get_boolean_instance, artGetBooleanInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_byte_instance, artGetByteInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_char_instance, artGetCharInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_short_instance, artGetShortInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get32_instance, artGet32InstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get64_instance, artGet64InstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
+TWO_ARG_REF_DOWNCALL art_quick_get_obj_instance, artGetObjInstanceFromCompiledCode, RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION
 
 TWO_ARG_REF_DOWNCALL art_quick_set8_static, artSet8StaticFromCompiledCode, RETURN_IF_W0_IS_ZERO_OR_DELIVER
 TWO_ARG_REF_DOWNCALL art_quick_set16_static, artSet16StaticFromCompiledCode, RETURN_IF_W0_IS_ZERO_OR_DELIVER
