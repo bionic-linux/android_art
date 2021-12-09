@@ -56,6 +56,30 @@
       },
       "revId": "568d101ddc2b856429e503da08844716b0fee50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad75de0_f2000841",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-09T09:08:41Z",
+      "side": 1,
+      "message": "ART is somewhat inconsistent. Unlocking entrypoints (`art_{quick,jni}_unlock_object`) use this approach but VarHandle intrinsics have the barrier at the beginning.",
+      "parentUuid": "5cb6d800_e3863040",
+      "range": {
+        "startLine": 1073,
+        "startChar": 2,
+        "endLine": 1073,
+        "endChar": 87
+      },
+      "revId": "568d101ddc2b856429e503da08844716b0fee50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
