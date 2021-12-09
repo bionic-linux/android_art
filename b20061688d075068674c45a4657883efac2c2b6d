@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1034f43_e0efa1b3",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T10:31:31Z",
+      "side": 1,
+      "message": "\u003e  This used to work because runtime methods also checked to see if we need a deoptimization of the caller when returning. This Cl removes that support so when we eventually finish this allocation we will simply continue executing the jited code.\n\nNot sure what you are saying here: your CL does deoptimize, right?\n\nNote that for class redefinition, we have to resume executing the method as it was before.",
+      "parentUuid": "4e8a58fb_6c187f5c",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "284ab81f_a6dfcc22",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 4
@@ -114,6 +132,24 @@
       "side": 1,
       "message": "It\u0027s just later, I thought we can as well deliver exception rather than deoptimizing here. If it\u0027s better to let switch interpreter handle it I can update the code to just deoptimize here.",
       "parentUuid": "9a5e0a2f_939430b9",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75291889_c197567d",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T10:31:31Z",
+      "side": 1,
+      "message": "I think if we can avoid doing this check now and have this method only focus on deoptimization that\u0027s better.\n\nHowever, if for correctness we need to observe the async exception before doing the deoptimization this needs to be commented here.\n\nIs DeoptimizeIfNeeded only called by compiled code, or can it also be called by the switch interpreter?",
+      "parentUuid": "f70f935e_2d13d5e1",
       "revId": "b20061688d075068674c45a4657883efac2c2b6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
