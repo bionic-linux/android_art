@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040d3de1_749dcf98",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-09T12:19:44Z",
+      "side": 1,
+      "message": "I suppose bpfmt added the empty lines below. Please add one here too so that it doesn\u0027t look like this only applies to the first block.",
+      "revId": "1c57324a12faa2be6b53d3a1646ff97ff94f950a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
