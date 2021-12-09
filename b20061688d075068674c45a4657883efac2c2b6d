@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce0d1d3b_0ff19caa",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T10:55:46Z",
+      "side": 1,
+      "message": "For class redefinition, we can only really resume the method being executed (it can resume in JIT or interpreter, it doesn\u0027t really matter).\n\nFor deopt, it\u0027s really just a timing issue: we can anytime decide to delay handling the deopt. For example we could decide to deopt only on suspend points (isn\u0027t that how we do it today?). The tradeoff is that indeed we need to handle runtime methods specially.",
+      "parentUuid": "ebb9be47_c66db9a6",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "284ab81f_a6dfcc22",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 4
@@ -186,6 +204,24 @@
       "side": 1,
       "message": "Thanks! I will update this code.\n\n\u003e Is DeoptimizeIfNeeded only called by compiled code, or can it also be called by the switch interpreter?\nonly by compiled code.",
       "parentUuid": "75291889_c197567d",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bccb5af_ad377241",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T10:55:46Z",
+      "side": 1,
+      "message": "Then I think self-\u003eObserveAsyncException() should always return false at this point. Did you see it return true?",
+      "parentUuid": "1b90671c_e80f1a6b",
       "revId": "b20061688d075068674c45a4657883efac2c2b6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
