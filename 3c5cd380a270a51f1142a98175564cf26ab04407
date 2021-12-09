@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59736b71_797aa451",
+        "filename": "runtime/entrypoints/quick/quick_lock_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T21:35:52Z",
+      "side": 1,
+      "message": "To confirm: you\u0027re working on a new patchset that removes those checks in non-artTestSuspendFromCode entrypoints, right?",
+      "revId": "3c5cd380a270a51f1142a98175564cf26ab04407",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
