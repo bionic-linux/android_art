@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 type moduleType struct {
@@ -159,7 +160,7 @@ func codegen(ctx android.LoadHookContext, c *codegenProperties, t moduleType) {
 			appendCodegenSourceArchProperties(sourceProps, arch)
 			addCodegenArchProperties(host, arch)
 		}
-		sourceProps.Srcs = android.FirstUniqueStrings(sourceProps.Srcs)
+		sourceProps.Srcs = util.FirstUniqueStrings(sourceProps.Srcs)
 		addCodegenSourceArchProperties(host, sourceProps)
 	}
 
