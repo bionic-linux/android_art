@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e013f63_f58551c9",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T15:12:42Z",
+      "side": 1,
+      "message": "Thanks! I removed this from here.",
+      "parentUuid": "ce0d1d3b_0ff19caa",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "284ab81f_a6dfcc22",
@@ -222,6 +240,24 @@
       "side": 1,
       "message": "Then I think self-\u003eObserveAsyncException() should always return false at this point. Did you see it return true?",
       "parentUuid": "1b90671c_e80f1a6b",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4219b41f_b2be6a48",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T15:12:42Z",
+      "side": 1,
+      "message": "Yes, There is one test which checks if jvmti is able to stop a thread in spin loop [1]. jvmti\u0027s StopThread implementation basically instruments the stack so it will deoptimize and sets an async exception. So when we reach here on a suspend point from compiled code the async exception would be set. I updated the code to just deopt here instead of handling them here.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:art/test/1934-jvmti-signal-thread/src/art/Test1934.java;l\u003d270",
+      "parentUuid": "7bccb5af_ad377241",
       "revId": "b20061688d075068674c45a4657883efac2c2b6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
