@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e8a58fb_6c187f5c",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T10:23:03Z",
+      "side": 1,
+      "message": "Right. For jvmti redefinitions, we shouldn\u0027t use the optimized code after the redefinition. I was thinking of cases where alloc is called from the jited code and then we suspend during an alloc because of a GC or something else. Then if jvmti tries to redefine the class, it suspends all the threads instruments the stack so we would deoptimize any existing jited code. This used to work because runtime methods also checked to see if we need a deoptimization of the caller when returning. This Cl removes that support so when we eventually finish this allocation we will simply continue executing the jited code.\n\nI don\u0027t know how we can deopt later. I guess we would deopt if the optimized code invokes another function or if we can suspend the thread again. I am not sure it\u0027s safe to continue using jited code till then.",
+      "parentUuid": "3b7cf5aa_ebfa87eb",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "284ab81f_a6dfcc22",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-09T09:11:15Z",
       "side": 1,
       "message": "How can we hit this? InstallStubsForMethod should only be called on methods defined by classes.",
+      "range": {
+        "startLine": 262,
+        "startChar": 56,
+        "endLine": 262,
+        "endChar": 84
+      },
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b499ac7_ec2170be",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T10:23:03Z",
+      "side": 1,
+      "message": "My mistake. I removed this. I added this while debugging and forgot to remove this.",
+      "parentUuid": "284ab81f_a6dfcc22",
       "range": {
         "startLine": 262,
         "startChar": 56,
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-09T09:11:15Z",
       "side": 1,
       "message": "This should only happen in the switch interpreter right? Does the switch interpreter need this check here? If it does, is that because we prefer delivering the async exception and not the deoptimization exception?",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70f935e_2d13d5e1",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T10:23:03Z",
+      "side": 1,
+      "message": "It\u0027s just later, I thought we can as well deliver exception rather than deoptimizing here. If it\u0027s better to let switch interpreter handle it I can update the code to just deoptimize here.",
+      "parentUuid": "9a5e0a2f_939430b9",
       "revId": "b20061688d075068674c45a4657883efac2c2b6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
