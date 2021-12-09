@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7cf5aa_ebfa87eb",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T09:11:15Z",
+      "side": 1,
+      "message": "The issue here is that we may be suspended and get a deoptimization request (which walks the stack) at this point?\n\nWhat\u0027s wrong with handling the deoptimization request at a later stage?",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284ab81f_a6dfcc22",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T09:11:15Z",
+      "side": 1,
+      "message": "How can we hit this? InstallStubsForMethod should only be called on methods defined by classes.",
+      "range": {
+        "startLine": 262,
+        "startChar": 56,
+        "endLine": 262,
+        "endChar": 84
+      },
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5e0a2f_939430b9",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1437,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-09T09:11:15Z",
+      "side": 1,
+      "message": "This should only happen in the switch interpreter right? Does the switch interpreter need this check here? If it does, is that because we prefer delivering the async exception and not the deoptimization exception?",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
