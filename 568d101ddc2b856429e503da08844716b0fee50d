@@ -16,6 +16,46 @@
       "message": "How did you find the issue?",
       "revId": "568d101ddc2b856429e503da08844716b0fee50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c86e893_298011e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-12-09T01:31:37Z",
+      "side": 1,
+      "message": "Definitely an improvement. There may be other state_and_flags ordering bugs.",
+      "revId": "568d101ddc2b856429e503da08844716b0fee50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb6d800_e3863040",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-12-09T01:31:37Z",
+      "side": 1,
+      "message": "https://www.cl.cam.ac.uk/~pes20/cpp/cpp0xmappings.html has the dmb at the beginning, before the load. This has slightly weaker properties, but should also be fine.",
+      "range": {
+        "startLine": 1073,
+        "startChar": 2,
+        "endLine": 1073,
+        "endChar": 87
+      },
+      "revId": "568d101ddc2b856429e503da08844716b0fee50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
