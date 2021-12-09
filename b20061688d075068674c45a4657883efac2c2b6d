@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ebb9be47_c66db9a6",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-09T10:47:11Z",
+      "side": 1,
+      "message": "\u003e Not sure what you are saying here: your CL does deoptimize, right?\nYes, this CL does deoptimize because we have call DeoptimizeIfNeeded here. If we don\u0027t call DeoptimizeIfNeeded here, then we don\u0027t deoptimize the Jited code right? The next point we would check would be when this function calls invoke or TestSuspend again.\n\n\n\u003e Note that for class redefinition, we have to resume executing the method as it was before.\nSo, you think it\u0027s OK to continue running old jited code here potentially until the end of the current invocation?",
+      "parentUuid": "a1034f43_e0efa1b3",
+      "revId": "b20061688d075068674c45a4657883efac2c2b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "284ab81f_a6dfcc22",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 4
