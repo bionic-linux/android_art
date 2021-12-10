@@ -34,6 +34,24 @@
       "parentUuid": "c465dd06_f75055b6",
       "revId": "3905a0ff5e6f3d378404a13482177b9c115eba2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847be97c_5a5a9f18",
+        "filename": "test/1995-final-virtual-structural-multithread/src/art/Test1995.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-10T14:48:41Z",
+      "side": 1,
+      "message": "Right, so greetingEnglish cannot me null but the new fields we added greetingFrench / Danish etc., I missed that greetingEnglish isn\u0027t a new field. I will take a look again to see what\u0027s happening. Maybe it is related to the other bug I am looking at where we get wrong values on a deoptimization.",
+      "parentUuid": "e3ce4b87_d6cf498f",
+      "revId": "3905a0ff5e6f3d378404a13482177b9c115eba2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
