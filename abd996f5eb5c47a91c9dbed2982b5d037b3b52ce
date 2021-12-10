@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f2e76d_43f6d945",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-10T11:20:56Z",
+      "side": 1,
+      "message": "Just for my info: do we use Revert^2 or Reland? Personally prefer reland and feel revert^2 is a bit confusing. If reland is acceptable I will use Reland in my future relands :)",
+      "revId": "abd996f5eb5c47a91c9dbed2982b5d037b3b52ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e1ecd1_c83ab2cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-10T11:20:56Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "abd996f5eb5c47a91c9dbed2982b5d037b3b52ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
