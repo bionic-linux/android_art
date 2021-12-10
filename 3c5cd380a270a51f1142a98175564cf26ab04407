@@ -34,6 +34,24 @@
       "parentUuid": "59736b71_797aa451",
       "revId": "3c5cd380a270a51f1142a98175564cf26ab04407",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54864bd2_847b1d00",
+        "filename": "runtime/entrypoints/quick/quick_lock_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-10T11:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de390a23_9939529f",
+      "revId": "3c5cd380a270a51f1142a98175564cf26ab04407",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

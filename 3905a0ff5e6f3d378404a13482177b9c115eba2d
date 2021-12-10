@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c465dd06_f75055b6",
+        "filename": "test/1995-final-virtual-structural-multithread/src/art/Test1995.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-10T11:16:23Z",
+      "side": 1,
+      "message": "I don\u0027t know why we haven\u0027t seen this before but seems like it is possible to see this even without my change. I suspect my change more consistently deoptimizes at suspend points so we might be seeing this. TBH, I am not sure. In any case I think seeing this string is possible so just added this and a comment to explain it.",
+      "revId": "3905a0ff5e6f3d378404a13482177b9c115eba2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
