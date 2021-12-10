@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5fec12_2a5c3b17",
+        "filename": "runtime/mirror/var_handle.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-12-10T09:58:47Z",
+      "side": 1,
+      "message": "This is the real change here.",
+      "range": {
+        "startLine": 1959,
+        "startChar": 37,
+        "endLine": 1959,
+        "endChar": 55
+      },
+      "revId": "5a54795915c531b9f1655a17035d1b9d8e912e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
