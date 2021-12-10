@@ -16,6 +16,9 @@
 
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 // These tests cover DoVarHandleInvokeCommon in interpreter_common.cc.
 
@@ -118,10 +121,46 @@ public class VarHandleArrayTests {
             assertThrowsWMTE(() -> vho.compareAndSet(values, ONE, ZERO));
         }
 
+        private void testByteArrayViewVarHandle(boolean direct) {
+            final short VALUE1 = (short) 0xa55a;
+            final short VALUE2 = (short) 0x4321;
+
+            final VarHandle vh =
+                    MethodHandles.byteBufferViewVarHandle(short[].class, ByteOrder.nativeOrder());
+            final ByteBuffer bb = direct ? ByteBuffer.allocateDirect(8) : ByteBuffer.allocate(8);
+            bb.order(ByteOrder.nativeOrder());
+            assertThrowsIOOBE(()-> vh.get(bb, -1));
+            assertThrowsIOOBE(()-> vh.get(bb, Integer.MIN_VALUE));
+            assertThrowsIOOBE(()-> vh.get(bb, Integer.MAX_VALUE - 1));
+            assertThrowsIOOBE(()-> vh.get(bb, 7));
+            assertThrowsIOOBE(()-> vh.get(bb, 8));
+            vh.set(bb, 0, VALUE1);
+            assertEquals(VALUE1, bb.getShort(0));
+            vh.set(bb, 6, VALUE2);
+            assertEquals(VALUE2, bb.getShort(6));
+
+            for (int i = 0; i < bb.limit(); ++i) {
+                bb.put(i, (byte) 0);
+            }
+
+            bb.position(1);
+            final ByteBuffer ubb = bb.slice();  // Unaligned ByteBuffer.
+            ubb.order(ByteOrder.nativeOrder());
+            assertThrowsIOOBE(()-> vh.get(ubb, -1));
+            assertThrowsISE(() -> vh.getAcquire(ubb, 0));
+            vh.get(ubb, 0);
+            vh.set(ubb, 1, VALUE1);
+            assertEquals(VALUE1, ubb.getShort(1));
+            vh.set(ubb, 5, VALUE2);
+            assertEquals(VALUE2, ubb.getShort(5));
+        }
+
         @Override
         protected void doTest() throws Exception {
             testIntegerArrayVarHandle();
             testObjectArrayVarHandle();
+            testByteArrayViewVarHandle(true);
+            testByteArrayViewVarHandle(false);
         }
 
         public static void main(String[] args) {
