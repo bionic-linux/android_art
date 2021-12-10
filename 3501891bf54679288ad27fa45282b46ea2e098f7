@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c74dec_cf363b83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-10T12:46:58Z",
+      "side": 1,
+      "message": "Rebase away from the parent and submit on its own, please.",
+      "revId": "3501891bf54679288ad27fa45282b46ea2e098f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
