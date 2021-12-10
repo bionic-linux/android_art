@@ -118,6 +118,14 @@ public abstract class VarHandleUnitTest {
         assertThrows(ArrayStoreException.class, access);
     }
 
+    public final void assertThrowsISE(AccessorAccess access) {
+        assertThrows(IllegalStateException.class, access);
+    }
+
+    public final void assertThrowsIOOBE(AccessorAccess access) {
+        assertThrows(IndexOutOfBoundsException.class, access);
+    }
+
     public final void assertThrowsCCE(AccessorAccess access) {
         assertThrows(ClassCastException.class, access);
     }
