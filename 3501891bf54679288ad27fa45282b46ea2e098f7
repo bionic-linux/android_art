@@ -34,6 +34,24 @@
       "parentUuid": "21c74dec_cf363b83",
       "revId": "3501891bf54679288ad27fa45282b46ea2e098f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec96c3a4_d6b6e338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-10T13:40:42Z",
+      "side": 1,
+      "message": "I would assume those conflicts are trivial to resolve.",
+      "parentUuid": "057ae713_888f3d5d",
+      "revId": "3501891bf54679288ad27fa45282b46ea2e098f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
