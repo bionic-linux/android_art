@@ -56,6 +56,24 @@
       "message": "Line too long.",
       "revId": "5a54795915c531b9f1655a17035d1b9d8e912e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe9f598_0e87f062",
+        "filename": "test/712-varhandle-invocations/src/VarHandleArrayTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2021-12-10T10:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999a39d8_df47a3a3",
+      "revId": "5a54795915c531b9f1655a17035d1b9d8e912e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
