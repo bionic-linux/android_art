@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7a496b6_0541952e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-12-10T18:08:51Z",
+      "side": 1,
+      "message": "I agree, Let\u0027s continue the discussion at the other comment.",
+      "parentUuid": "a0c29a31_8b307c5f",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "33df6fbe8eefabe1abe2862cb512ac3b19235bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "87ada1dc_c027e85f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1

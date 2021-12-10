@@ -33,6 +33,24 @@
       "message": "Continuing from my earlier comment, AllocateInternalWithGC suspends waiting for a GC and then returns a nullptr when it sees that instrumentation has changed: https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/heap.cc;l\u003d1863;\n\nWhen we restart the allocation here we can pick up the new size and keep the check in it\u0027s original place.",
       "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb313fb_e4354647",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-12-10T18:08:51Z",
+      "side": 1,
+      "message": "Yes. I agree that\u0027s much better.\n\nWhat happens if you add a finalizer? Is that allowed? I guess we just fail to do so in this case, and potentially leak some stuff? That\u0027s probably OK. The alternative is to go all the way back to calling Class::Alloc, or somehow having it retry.",
+      "parentUuid": "08c7bd48_45c65ec2",
+      "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
