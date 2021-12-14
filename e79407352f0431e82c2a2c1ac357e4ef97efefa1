@@ -51,6 +51,24 @@
       "parentUuid": "08c7bd48_45c65ec2",
       "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccb5b36_94f84adc",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2021-12-14T14:13:18Z",
+      "side": 1,
+      "message": "Thanks! For now, I went with the simple fix. PTAL.",
+      "parentUuid": "fcb313fb_e4354647",
+      "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
