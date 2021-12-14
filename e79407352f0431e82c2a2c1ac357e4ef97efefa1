@@ -69,6 +69,24 @@
       "parentUuid": "fcb313fb_e4354647",
       "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fa40be_dcf4ffa0",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2021-12-14T16:52:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ccb5b36_94f84adc",
+      "revId": "e79407352f0431e82c2a2c1ac357e4ef97efefa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
