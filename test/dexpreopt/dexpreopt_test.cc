@@ -24,6 +24,7 @@
 #include <sys/mman.h>
 #include <sys/types.h>
 
+#include <iterator>
 #include <string>
 #include <unordered_set>
 #include <vector>
@@ -47,11 +48,17 @@ android::base::Result<std::vector<std::string>> GetSystemServerArtifacts() {
   if (env_value == nullptr) {
     return Errorf("Environment variable `SYSTEMSERVERCLASSPATH` is not defined");
   }
+  std::vector<std::string> jars = android::base::Split(env_value, ":");
+  env_value = getenv("STANDALONE_SYSTEMSERVER_JARS");
+  if (env_value != nullptr) {
+    std::vector<std::string> standalone_jars = android::base::Split(env_value, ":");
+    std::move(standalone_jars.begin(), standalone_jars.end(), std::back_inserter(jars));
+  }
   if (kRuntimeISA == InstructionSet::kNone) {
     return Errorf("Unable to get system server ISA");
   }
   std::vector<std::string> artifacts;
-  for (const std::string& jar : android::base::Split(env_value, ":")) {
+  for (const std::string& jar : jars) {
     std::string error_msg;
     std::string odex_file;
 
