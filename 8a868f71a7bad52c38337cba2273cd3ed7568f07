@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d48910_2478912f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-15T17:32:48Z",
+      "side": 1,
+      "message": "Typo: Should be just \"STREX\". Already submitted, so nothing to do.",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "8a868f71a7bad52c38337cba2273cd3ed7568f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
