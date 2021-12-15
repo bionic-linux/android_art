@@ -22,6 +22,30 @@
       },
       "revId": "caacea8ceae71bd0800c5c24967e1d9c7012ebd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e767d54d_25b82dfe",
+        "filename": "test/dexpreopt/dexpreopt_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-15T13:20:29Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "7f556816_60f8e650",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "caacea8ceae71bd0800c5c24967e1d9c7012ebd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
