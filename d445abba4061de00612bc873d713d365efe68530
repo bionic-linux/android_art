@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff220d3b_e063616d",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3450,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-15T12:52:26Z",
+      "side": 1,
+      "message": "The arm64 code is structured differently and it does not write the result between load-exclusive and store-exclusive.",
+      "parentUuid": "4a884d35_f682de69",
+      "range": {
+        "startLine": 3450,
+        "startChar": 4,
+        "endLine": 3450,
+        "endChar": 59
+      },
+      "revId": "d445abba4061de00612bc873d713d365efe68530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52e7abac_071c6c24",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-15T11:58:23Z",
       "side": 1,
       "message": "Can we move the MOV from 3505 here after CMP, as it doesn\u0027t affect flags? That would simplify the code a bit:\n\n  if (strong) {\n    __ Cmp(store_result, 0);\n    if (success.IsValid())\n      if (!success.Is(store_result)) {\n        __ Mov(success, 1);\n      } else\n        __ Mov(LeaveFlags, success, 1);\n      }\n    }\n    __ B(ne, \u0026loop_head, /*is_far_target\u003d*/ false);\n  }",
+      "range": {
+        "startLine": 3508,
+        "startChar": 0,
+        "endLine": 3510,
+        "endChar": 5
+      },
+      "revId": "d445abba4061de00612bc873d713d365efe68530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ed74c0_83df43f5",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3510,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-15T12:52:26Z",
+      "side": 1,
+      "message": "It would be even simpler because you\u0027d always need to `LeaveFlags`. But it would most likely be slower on little cores.",
+      "parentUuid": "52e7abac_071c6c24",
       "range": {
         "startLine": 3508,
         "startChar": 0,
