@@ -22,6 +22,30 @@
       },
       "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5d5120_80ddd2fd",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-23T09:29:24Z",
+      "side": 1,
+      "message": "Then we lose the detailed VLOG. I don\u0027t have a strong preference though.",
+      "parentUuid": "84affa98_0e0b096e",
+      "range": {
+        "startLine": 897,
+        "startChar": 6,
+        "endLine": 897,
+        "endChar": 64
+      },
+      "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
