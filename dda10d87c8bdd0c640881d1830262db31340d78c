@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcd1193a_b37b48df",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2021-12-23T09:48:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure the word \"trim\" is a good description now. This is just pruning profile specifications.\n\n(The old code would have removed all image extension locations after the first profile spec, so the word \"trim\" was appropriate.)",
+      "range": {
+        "startLine": 880,
+        "startChar": 7,
+        "endLine": 880,
+        "endChar": 11
+      },
+      "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84affa98_0e0b096e",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 2
