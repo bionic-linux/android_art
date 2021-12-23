@@ -69,6 +69,30 @@
       },
       "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f67d084_123f997a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-23T10:46:34Z",
+      "side": 1,
+      "message": "Oh. I didn\u0027t realize you wanted to print the two versions. OK to keep it as-is then.",
+      "parentUuid": "3e5d5120_80ddd2fd",
+      "range": {
+        "startLine": 897,
+        "startChar": 6,
+        "endLine": 897,
+        "endChar": 64
+      },
+      "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
