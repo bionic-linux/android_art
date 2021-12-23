@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fe300d_4ff8e163",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-23T11:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcd1193a_b37b48df",
+      "range": {
+        "startLine": 880,
+        "startChar": 7,
+        "endLine": 880,
+        "endChar": 11
+      },
+      "revId": "dda10d87c8bdd0c640881d1830262db31340d78c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84affa98_0e0b096e",
