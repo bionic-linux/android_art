@@ -129,13 +129,7 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
   for (; n < argc - 1; ++n) {
     const char* arg = argv[n];
     std::string value;
-    if (ArgumentMatches(arg, "--use-compilation-os=", &value)) {
-      int cid;
-      if (!android::base::ParseInt(value, &cid)) {
-        ArgumentError("Failed to parse CID: %s", value.c_str());
-      }
-      config->SetCompilationOsAddress(cid);
-    } else if (ArgumentMatches(arg, "--dalvik-cache=", &value)) {
+    if (ArgumentMatches(arg, "--dalvik-cache=", &value)) {
       art::OverrideDalvikCacheSubDirectory(value);
       config->SetArtifactDirectory(GetApexDataDalvikCacheDirectory(art::InstructionSet::kNone));
     } else if (ArgumentMatches(arg, "--max-execution-seconds=", &value)) {
@@ -191,8 +185,6 @@ void OptionsHelp() {
   UsageError("--partial-compilation            Only generate artifacts that are out-of-date or");
   UsageError("                                 missing.");
   UsageError("--no-refresh                     Do not refresh existing artifacts.");
-  UsageError("--use-compilation-os=<CID>       Run compilation in the VM with the given CID.");
-  UsageError("                                 (0 = do not use VM, -1 = use composd's VM)");
   UsageError("--dalvik-cache=<DIR>             Write artifacts to .../<DIR> rather than");
   UsageError("                                 .../dalvik-cache");
   UsageError("--max-execution-seconds=<N>      Maximum timeout of all compilation combined");
