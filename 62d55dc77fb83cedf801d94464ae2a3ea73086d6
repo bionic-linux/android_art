@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ead35d0_2cc6d1af",
+        "filename": "odrefresh/odr_dexopt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-06T17:43:53Z",
+      "side": 1,
+      "message": "Ah, I see. MockOdrDexopt implicitly relies on this.",
+      "parentUuid": "12bacc48_25198047",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "62d55dc77fb83cedf801d94464ae2a3ea73086d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e7017a_a356be82",
