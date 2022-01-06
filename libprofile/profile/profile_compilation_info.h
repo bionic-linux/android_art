@@ -452,7 +452,8 @@ class ProfileCompilationInfo {
   bool Load(
       int fd,
       bool merge_classes = true,
-      const ProfileLoadFilterFn& filter_fn = ProfileFilterFnAcceptAll);
+      const ProfileLoadFilterFn& filter_fn = ProfileFilterFnAcceptAll,
+      bool ignore_dex_info_mismatch = false);
 
   // Verify integrity of the profile file with the provided dex files.
   // If there exists a DexData object which maps to a dex_file, then it verifies that:
@@ -990,6 +991,7 @@ class ProfileCompilationInfo {
       ProfileSource& source,
       const FileSectionInfo& section_info,
       const ProfileLoadFilterFn& filter_fn,
+      bool ignore_dex_info_mismatch,
       /*out*/ dchecked_vector<ProfileIndexType>* dex_profile_index_remap,
       /*out*/ std::string* error);
 
@@ -1018,7 +1020,8 @@ class ProfileCompilationInfo {
       int32_t fd,
       std::string* error,
       bool merge_classes = true,
-      const ProfileLoadFilterFn& filter_fn = ProfileFilterFnAcceptAll);
+      const ProfileLoadFilterFn& filter_fn = ProfileFilterFnAcceptAll,
+      bool ignore_dex_info_mismatch = false);
 
   // Find the data for the dex_pc in the inline cache. Adds an empty entry
   // if no previous data exists.

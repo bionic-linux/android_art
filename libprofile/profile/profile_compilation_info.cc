@@ -1280,11 +1280,14 @@ bool ProfileCompilationInfo::AddMethod(const ProfileMethodInfo& pmi,
 
 // TODO(calin): Fix this API. ProfileCompilationInfo::Load should be static and
 // return a unique pointer to a ProfileCompilationInfo upon success.
-bool ProfileCompilationInfo::Load(
-    int fd, bool merge_classes, const ProfileLoadFilterFn& filter_fn) {
+bool ProfileCompilationInfo::Load(int fd,
+                                  bool merge_classes,
+                                  const ProfileLoadFilterFn& filter_fn,
+                                  bool ignore_dex_info_mismatch) {
   std::string error;
 
-  ProfileLoadStatus status = LoadInternal(fd, &error, merge_classes, filter_fn);
+  ProfileLoadStatus status =
+      LoadInternal(fd, &error, merge_classes, filter_fn, ignore_dex_info_mismatch);
 
   if (status == ProfileLoadStatus::kSuccess) {
     return true;
@@ -1490,6 +1493,7 @@ ProfileCompilationInfo::ProfileLoadStatus ProfileCompilationInfo::ReadDexFilesSe
     ProfileSource& source,
     const FileSectionInfo& section_info,
     const ProfileLoadFilterFn& filter_fn,
+    bool ignore_dex_info_mismatch,
     /*out*/ dchecked_vector<ProfileIndexType>* dex_profile_index_remap,
     /*out*/ std::string* error) {
   DCHECK(section_info.GetType() == FileSectionType::kDexFiles);
@@ -1539,6 +1543,11 @@ ProfileCompilationInfo::ProfileLoadStatus ProfileCompilationInfo::ReadDexFilesSe
       if (UNLIKELY(profile_key_map_.size() == MaxProfileIndex()) &&
           profile_key_map_.find(profile_key) == profile_key_map_.end()) {
         *error = "Too many dex files.";
+      } else if (ignore_dex_info_mismatch) {
+        VLOG(compiler) << "Profile: Ignored " << profile_key
+                       << " due to Checksum, NumTypeIds, or NumMethodIds mismatch";
+        dex_profile_index_remap->push_back(MaxProfileIndex());
+        continue;
       } else {
         *error = "Checksum, NumTypeIds, or NumMethodIds mismatch for " + profile_key;
       }
@@ -1681,7 +1690,8 @@ ProfileCompilationInfo::ProfileLoadStatus ProfileCompilationInfo::LoadInternal(
     int32_t fd,
     std::string* error,
     bool merge_classes,
-    const ProfileLoadFilterFn& filter_fn) {
+    const ProfileLoadFilterFn& filter_fn,
+    bool ignore_dex_info_mismatch) {
   ScopedTrace trace(__PRETTY_FUNCTION__);
   DCHECK_GE(fd, 0);
 
@@ -1762,8 +1772,12 @@ ProfileCompilationInfo::ProfileLoadStatus ProfileCompilationInfo::LoadInternal(
     return ProfileLoadStatus::kBadData;
   }
   dchecked_vector<ProfileIndexType> dex_profile_index_remap;
-  status = ReadDexFilesSection(
-      *source, dex_files_section_info, filter_fn, &dex_profile_index_remap, error);
+  status = ReadDexFilesSection(*source,
+                               dex_files_section_info,
+                               filter_fn,
+                               ignore_dex_info_mismatch,
+                               &dex_profile_index_remap,
+                               error);
   if (status != ProfileLoadStatus::kSuccess) {
     DCHECK(!error->empty());
     return status;
