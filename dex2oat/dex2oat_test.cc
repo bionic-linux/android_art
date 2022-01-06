@@ -873,9 +873,9 @@ TEST_F(Dex2oatLayoutTest, TestLayoutAppImage) {
 }
 
 TEST_F(Dex2oatLayoutTest, TestLayoutMultipleProfiles) {
-  std::string dex_location = GetScratchDir() + "/DexNoOat.jar";
-  std::string odex_location = GetOdexDir() + "/DexOdexNoOat.odex";
-  std::string app_image_file = GetOdexDir() + "/DexOdexNoOat.art";
+  std::string dex_location = GetScratchDir() + "/Dex.jar";
+  std::string odex_location = GetOdexDir() + "/Dex.odex";
+  std::string app_image_file = GetOdexDir() + "/Dex.art";
   Copy(GetDexSrc2(), dex_location);
 
   const std::string profile1_location = GetScratchDir() + "/primary.prof";
@@ -909,6 +909,56 @@ TEST_F(Dex2oatLayoutTest, TestLayoutMultipleProfiles) {
   // with each profile.
   ASSERT_GT(image_file_size_multiple_profiles, image_file_size_profile1);
   ASSERT_GT(image_file_size_multiple_profiles, image_file_size_profile2);
+}
+
+TEST_F(Dex2oatLayoutTest, TestLayoutMultipleProfilesChecksumMismatch) {
+  std::string dex_location = GetScratchDir() + "/Dex.jar";
+
+  // Create two profiles whose dex locations are the same but checksums are different.
+  Copy(GetDexSrc1(), dex_location);
+  const std::string profile_old = GetScratchDir() + "/profile_old.prof";
+  GenerateProfile(profile_old, dex_location, /*num_classes=*/1, /*class_offset=*/0);
+
+  Copy(GetDexSrc2(), dex_location);
+  const std::string profile_new = GetScratchDir() + "/profile_new.prof";
+  GenerateProfile(profile_new, dex_location, /*num_classes=*/1, /*class_offset=*/0);
+
+  // Create an empty profile for reference.
+  const std::string profile_empty = GetScratchDir() + "/profile_empty.prof";
+  GenerateProfile(profile_empty, dex_location, /*num_classes=*/0, /*class_offset=*/0);
+
+  std::string odex_location = GetOdexDir() + "/Dex.odex";
+  std::string app_image_file = GetOdexDir() + "/Dex.art";
+
+  // This should produce a normal image because only `profile_new` is used and it has the right
+  // checksum.
+  CompileProfileOdex(dex_location,
+                     odex_location,
+                     app_image_file,
+                     /*use_fd=*/false,
+                     {profile_new, profile_old});
+  auto image_size_right_checksum = GetImageObjectSectionSize(app_image_file);
+
+  // This should produce an empty image because only `profile_old` is used and it has the wrong
+  // checksum. Note that dex2oat does not abort compilation when the profile verification fails
+  // (b/62602192, b/65260586).
+  CompileProfileOdex(dex_location,
+                     odex_location,
+                     app_image_file,
+                     /*use_fd=*/false,
+                     {profile_old, profile_new});
+  auto image_size_wrong_checksum = GetImageObjectSectionSize(app_image_file);
+
+  // Create an empty image using an empty profile for reference.
+  CompileProfileOdex(dex_location,
+                     odex_location,
+                     app_image_file,
+                     /*use_fd=*/false,
+                     {profile_empty});
+  auto image_size_empty = GetImageObjectSectionSize(app_image_file);
+
+  EXPECT_GT(image_size_right_checksum, image_size_empty);
+  EXPECT_EQ(image_size_wrong_checksum, image_size_empty);
 }
 
 TEST_F(Dex2oatLayoutTest, TestVdexLayout) {

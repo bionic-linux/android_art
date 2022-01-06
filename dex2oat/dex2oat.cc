@@ -2357,7 +2357,11 @@ class Dex2Oat final {
                                                     "profile",
                                                     /* check_usage= */ false,
                                                     /* read_only_mode= */ true));
-        if (!profile_compilation_info_->Load(profile_file->Fd())) {
+        if (!profile_compilation_info_->Load(
+                profile_file->Fd(),
+                /*merge_classes=*/ true,
+                /*filter_fn=*/ ProfileCompilationInfo::ProfileFilterFnAcceptAll,
+                /*ignore_dex_info_mismatch=*/ true)) {
           return false;
         }
       }
@@ -2368,7 +2372,11 @@ class Dex2Oat final {
           PLOG(ERROR) << "Cannot open profiles";
           return false;
         }
-        if (!profile_compilation_info_->Load(profile_file->Fd())) {
+        if (!profile_compilation_info_->Load(
+                profile_file->Fd(),
+                /*merge_classes=*/ true,
+                /*filter_fn=*/ ProfileCompilationInfo::ProfileFilterFnAcceptAll,
+                /*ignore_dex_info_mismatch=*/ true)) {
           return false;
         }
       }
