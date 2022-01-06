@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2649d27e_25c1e4d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-06T16:29:09Z",
+      "side": 1,
+      "message": "Thanks, Victor!",
+      "revId": "62d55dc77fb83cedf801d94464ae2a3ea73086d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40bd322f_fbac773f",
+        "filename": "odrefresh/odr_dexopt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-06T16:29:09Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "62d55dc77fb83cedf801d94464ae2a3ea73086d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e7017a_a356be82",
+        "filename": "odrefresh/odrefresh_main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-06T16:29:09Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 92
+      },
+      "revId": "62d55dc77fb83cedf801d94464ae2a3ea73086d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
