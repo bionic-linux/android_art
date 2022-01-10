@@ -22,6 +22,30 @@
       },
       "revId": "99cbc2afe92c70179a126b772bd89cb69606ec73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015fd26a_5f036342",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-01-10T13:21:02Z",
+      "side": 1,
+      "message": "There are some gtests which still want to dump the graph without a code generator. Note that we do have a DCHECK(codegen !\u003d nullptr) in DumpLocation.",
+      "parentUuid": "86362d13_2d533fd2",
+      "range": {
+        "startLine": 2019,
+        "startChar": 2,
+        "endLine": 2019,
+        "endChar": 18
+      },
+      "revId": "99cbc2afe92c70179a126b772bd89cb69606ec73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
