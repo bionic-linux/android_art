@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86362d13_2d533fd2",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-10T10:57:52Z",
+      "side": 1,
+      "message": "Do we want to add a DCHECK for not null pointers in the HGraphVisualizer constructor?",
+      "range": {
+        "startLine": 2019,
+        "startChar": 2,
+        "endLine": 2019,
+        "endChar": 18
+      },
+      "revId": "99cbc2afe92c70179a126b772bd89cb69606ec73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
