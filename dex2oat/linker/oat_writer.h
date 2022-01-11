@@ -307,6 +307,7 @@ class OatWriter {
   size_t InitOatMaps(size_t offset);
   size_t InitIndexBssMappings(size_t offset);
   size_t InitOatDexFiles(size_t offset);
+  size_t InitBcpBssInfo(size_t offset);
   size_t InitOatCode(size_t offset);
   size_t InitOatCodeDexFiles(size_t offset);
   size_t InitDataBimgRelRoLayout(size_t offset);
@@ -317,9 +318,32 @@ class OatWriter {
   size_t WriteMaps(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteIndexBssMappings(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteOatDexFiles(OutputStream* out, size_t file_offset, size_t relative_offset);
+  size_t WriteBcpBssInfo(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteCode(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteCodeDexFiles(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteDataBimgRelRo(OutputStream* out, size_t file_offset, size_t relative_offset);
+  // These helpers extract common code from BCP and non-BCP DexFiles from its corresponding methods.
+  size_t WriteIndexBssMappingsHelper(OutputStream* out,
+                                     size_t file_offset,
+                                     size_t relative_offset,
+                                     const DexFile* dex_file,
+                                     uint32_t method_bss_mapping_offset,
+                                     uint32_t type_bss_mapping_offset,
+                                     uint32_t public_type_bss_mapping_offset,
+                                     uint32_t package_type_bss_mapping_offset,
+                                     uint32_t string_bss_mapping_offset);
+  size_t InitIndexBssMappingsHelper(size_t offset,
+                                    const DexFile* dex_file,
+                                    /*inout*/ size_t& number_of_method_dex_files,
+                                    /*inout*/ size_t& number_of_type_dex_files,
+                                    /*inout*/ size_t& number_of_public_type_dex_files,
+                                    /*inout*/ size_t& number_of_package_type_dex_files,
+                                    /*inout*/ size_t& number_of_string_dex_files,
+                                    /*inout*/ uint32_t& method_bss_mapping_offset,
+                                    /*inout*/ uint32_t& type_bss_mapping_offset,
+                                    /*inout*/ uint32_t& public_type_bss_mapping_offset,
+                                    /*inout*/ uint32_t& package_type_bss_mapping_offset,
+                                    /*inout*/ uint32_t& string_bss_mapping_offset);
 
   bool RecordOatDataOffset(OutputStream* out);
   void InitializeTypeLookupTables(
@@ -422,6 +446,30 @@ class OatWriter {
 
   // The offset of the GC roots in .bss section.
   size_t bss_roots_offset_;
+
+  struct BssMappingInfo {
+    // Offsets set in PrepareLayout.
+    uint32_t method_bss_mapping_offset = 0u;
+    uint32_t type_bss_mapping_offset = 0u;
+    uint32_t public_type_bss_mapping_offset = 0u;
+    uint32_t package_type_bss_mapping_offset = 0u;
+    uint32_t string_bss_mapping_offset = 0u;
+
+    // Offset of the BSSInfo start from beginning of OatHeader. It is used to validate file position
+    // when writing.
+    size_t offset_ = 0u;
+
+    static size_t SizeOf() {
+      return sizeof(method_bss_mapping_offset)
+              + sizeof(type_bss_mapping_offset)
+              + sizeof(public_type_bss_mapping_offset)
+              + sizeof(package_type_bss_mapping_offset)
+              + sizeof(string_bss_mapping_offset);
+    }
+    bool Write(OatWriter* oat_writer, OutputStream* out) const;
+  };
+
+  std::vector<BssMappingInfo> bcp_bss_info_;
 
   // Map for allocating .data.bimg.rel.ro entries. Indexed by the boot image offset of the
   // relocation. The value is the assigned offset within the .data.bimg.rel.ro section.
@@ -534,6 +582,12 @@ class OatWriter {
   uint32_t size_oat_dex_file_public_type_bss_mapping_offset_;
   uint32_t size_oat_dex_file_package_type_bss_mapping_offset_;
   uint32_t size_oat_dex_file_string_bss_mapping_offset_;
+  uint32_t size_bcp_bss_info_size_;
+  uint32_t size_bcp_bss_info_method_bss_mapping_offset_;
+  uint32_t size_bcp_bss_info_type_bss_mapping_offset_;
+  uint32_t size_bcp_bss_info_public_type_bss_mapping_offset_;
+  uint32_t size_bcp_bss_info_package_type_bss_mapping_offset_;
+  uint32_t size_bcp_bss_info_string_bss_mapping_offset_;
   uint32_t size_oat_class_offsets_alignment_;
   uint32_t size_oat_class_offsets_;
   uint32_t size_oat_class_type_;
