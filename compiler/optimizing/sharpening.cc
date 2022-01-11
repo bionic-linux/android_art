@@ -284,6 +284,7 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(
     if (load_kind == HLoadClass::LoadKind::kBssEntry ||
         load_kind == HLoadClass::LoadKind::kBssEntryPublic ||
         load_kind == HLoadClass::LoadKind::kBssEntryPackage) {
+      // TODO(solanes): Expand this for BCP?
       if (!codegen->GetCompilerOptions().WithinOatFile(&load_class->GetDexFile())) {
         return HLoadClass::LoadKind::kInvalid;
       }

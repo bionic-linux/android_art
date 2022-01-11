@@ -374,6 +374,7 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  // TODO(solanes): Expand this to also include BCP dex files?
   bool WithinOatFile(const DexFile* dex_file) const {
     return ContainsElement(GetDexFilesForOatFile(), dex_file);
   }
