@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "12f0efed_4696a0dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-11T15:15:28Z",
+      "side": 1,
+      "message": "Friendly ping",
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bf2898c2_c4c64f4f",
         "filename": "compiler/driver/compiler_options.h",
         "patchSetId": 1
