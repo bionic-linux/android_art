@@ -1629,7 +1629,7 @@ ENTRY art_quick_implicit_suspend
                                         // Save callee saves for stack crawl.
     SETUP_SAVE_EVERYTHING_FRAME RUNTIME_SAVE_EVERYTHING_FOR_SUSPEND_CHECK_METHOD_OFFSET
     mov    x0, xSELF
-    bl     artTestSuspendFromCode       // (Thread*)
+    bl     artImplicitSuspendFromCode   // (Thread*)
     RESTORE_SAVE_EVERYTHING_FRAME
     REFRESH_MARKING_REGISTER
     REFRESH_SUSPEND_CHECK_REGISTER

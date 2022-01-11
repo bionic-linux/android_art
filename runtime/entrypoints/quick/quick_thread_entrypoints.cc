@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <sys/mman.h>
+
 #include "callee_save_frame.h"
 #include "jit/jit.h"
 #include "runtime.h"
@@ -26,6 +28,19 @@ extern "C" void artTestSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::muta
   ScopedQuickEntrypointChecks sqec(self);
   self->CheckSuspend();
 }
+
+#if defined(__aarch64__)
+extern "C" void artImplicitSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {
+  // Called when suspend count check value is 0 and thread->suspend_count_ != 0
+  ScopedQuickEntrypointChecks sqec(self);
+  self->CheckSuspend();
+  stack_t old_ss;
+  int result = sigaltstack(nullptr, &old_ss);
+  CHECK_EQ(result, 0);
+  result = madvise(old_ss.ss_sp, old_ss.ss_size, MADV_DONTNEED);
+  CHECK_EQ(result, 0);
+}
+#endif
 
 extern "C" void artCompileOptimized(ArtMethod* method, Thread* self)
     REQUIRES_SHARED(Locks::mutator_lock_) {
