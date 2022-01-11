@@ -568,6 +568,77 @@ class OatDumper {
     }
 
     if (!options_.dump_header_only_) {
+      // TODO(solanes): Should we do this only for non-boot image and non boot image extension? Do
+      // we know if we are on one here?
+      auto runtime = Runtime::Current();
+      // LOG(INFO) << "oatdump.cc got runtime " << runtime;
+      ClassLinker* linker = nullptr;
+      if (runtime != nullptr) {
+        linker = runtime->GetClassLinker();
+        // LOG(INFO) << "oatfile.cc Got linker " << linker;
+      }
+
+      if (linker != nullptr) {
+        const std::vector<const DexFile*> bcp_dex_files = linker->GetBootClassPath();
+        // LOG(INFO) << "BCP_info.size " << oat_file_.BCP_info.size() << " bcp_dex_files.size "
+        //           << bcp_dex_files.size();
+        // For the multi image case, the OatFile's BCP_info is purposively left empty. In all other
+        // cases, it should be exactly as big as the bcp_dex_files list
+        CHECK(oat_file_.BCP_info.size() == 0 || oat_file_.BCP_info.size() == bcp_dex_files.size());
+        for (size_t i = 0; i < oat_file_.BCP_info.size(); i++) {
+          const DexFile* const dex_file = bcp_dex_files[i];
+          // LOG(INFO) << "Dumping entries for BCP DexFile: " << dex_file->GetLocation();
+          os << "Dumping entries for BCP DexFile: " << dex_file->GetLocation() << "\n";
+          DumpBssEntries(os,
+                         "ArtMethod",
+                         oat_file_.BCP_info[i].method_bss_mapping,
+                         dex_file->NumMethodIds(),
+                         static_cast<size_t>(GetInstructionSetPointerSize(instruction_set_)),
+                         [=](uint32_t index) { return dex_file->PrettyMethod(index); });
+          DumpBssEntries(
+              os,
+              "Class",
+              oat_file_.BCP_info[i].type_bss_mapping,
+              dex_file->NumTypeIds(),
+              sizeof(GcRoot<mirror::Class>),
+              [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+          DumpBssEntries(
+              os,
+              "Public Class",
+              oat_file_.BCP_info[i].public_type_bss_mapping,
+              dex_file->NumTypeIds(),
+              sizeof(GcRoot<mirror::Class>),
+              [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+          DumpBssEntries(
+              os,
+              "Package Class",
+              oat_file_.BCP_info[i].package_type_bss_mapping,
+              dex_file->NumTypeIds(),
+              sizeof(GcRoot<mirror::Class>),
+              [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+          DumpBssEntries(
+              os,
+              "String",
+              oat_file_.BCP_info[i].string_bss_mapping,
+              dex_file->NumStringIds(),
+              sizeof(GcRoot<mirror::Class>),
+              [=](uint32_t index) { return dex_file->StringDataByIdx(dex::StringIndex(index)); });
+        }
+      } else {
+        // We don't have a runtime, just dump the offsets
+        for (size_t i = 0; i < oat_file_.number_of_BCP_dexfiles_; i++) {
+          LOG(INFO) << "We don't have a runtime, just dump the offsets for BCP Dexfile " << i;
+          os << "We don't have a runtime, just dump the offsets for BCP Dexfile " << i << "\n";
+          DumpBssOffsets(os, "ArtMethod", oat_file_.BCP_info[i].method_bss_mapping);
+          DumpBssOffsets(os, "Class", oat_file_.BCP_info[i].type_bss_mapping);
+          DumpBssOffsets(os, "Public Class", oat_file_.BCP_info[i].public_type_bss_mapping);
+          DumpBssOffsets(os, "Package Class", oat_file_.BCP_info[i].package_type_bss_mapping);
+          DumpBssOffsets(os, "String", oat_file_.BCP_info[i].string_bss_mapping);
+        }
+      }
+    }
+
+    if (!options_.dump_header_only_) {
       VariableIndentationOutputStream vios(&os);
       VdexFile::VdexFileHeader vdex_header = oat_file_.GetVdexFile()->GetVdexFileHeader();
       if (vdex_header.IsValid()) {
@@ -1679,6 +1750,24 @@ class OatDumper {
     }
     os << std::dec;
   }
+
+  void DumpBssOffsets(std::ostream& os,
+                      const char* slot_type,
+                      const IndexBssMapping* mapping) {
+    os << ".bss offset for " << slot_type << ": ";
+    if (mapping == nullptr) {
+      os << "empty.\n";
+      return;
+    }
+
+    const uint64_t raw_mapping = reinterpret_cast<uint64_t>(mapping);
+    const uint64_t raw_oat_file_begin = reinterpret_cast<uint64_t>(oat_file_.Begin());
+    DCHECK_GE(raw_mapping, raw_oat_file_begin);
+    DCHECK_LT(raw_mapping, raw_oat_file_begin + UINT32_MAX);
+
+    uint32_t offset = raw_mapping - raw_oat_file_begin;
+    os << offset << "\n";
+    }
 
   const OatFile& oat_file_;
   const std::vector<const OatDexFile*> oat_dex_files_;
@@ -3224,6 +3313,9 @@ struct OatdumpArgs : public CmdlineArgs {
         "      Example: --dump-imt=imt.txt\n"
         "\n"
         "  --dump-imt-stats: output IMT statistics for the given boot image\n"
+        "      Example: --dump-imt-stats"
+        "\n"
+        "  --CHECK THAT WE HAVE THE NEW OATDUMP\n"
         "      Example: --dump-imt-stats"
         "\n";
 

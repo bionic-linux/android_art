@@ -431,6 +431,7 @@ static bool ReadIndexBssMapping(OatFile* oat_file,
                               tag);
     return false;
   }
+  LOG(INFO) << "ReadIndexBssMapping offset: " << index_bss_mapping_offset;
   const bool readable_index_bss_mapping_size =
       index_bss_mapping_offset != 0u &&
       index_bss_mapping_offset <= oat_file->Size() &&
@@ -439,6 +440,7 @@ static bool ReadIndexBssMapping(OatFile* oat_file,
   const IndexBssMapping* index_bss_mapping = readable_index_bss_mapping_size
       ? reinterpret_cast<const IndexBssMapping*>(oat_file->Begin() + index_bss_mapping_offset)
       : nullptr;
+  LOG(INFO) << "ReadIndexBssMapping index_bss_mapping " << index_bss_mapping;
   if (index_bss_mapping_offset != 0u &&
       (UNLIKELY(index_bss_mapping == nullptr) ||
           UNLIKELY(index_bss_mapping->size() == 0u) ||
@@ -457,6 +459,7 @@ static bool ReadIndexBssMapping(OatFile* oat_file,
   }
 
   *mapping = index_bss_mapping;
+  LOG(INFO) << "ReadIndexBssMapping finished successfully";
   return true;
 }
 
@@ -1002,6 +1005,99 @@ bool OatFileBase::Setup(int zip_fd,
       oat_dex_files_.Put(canonical_key, oat_dex_file);
     }
   }
+
+  size_t bcp_info_offset = GetOatHeader().GetBCPInfoOffset();
+  if (bcp_info_offset < GetOatHeader().GetHeaderSize() || bcp_info_offset > Size()) {
+    *error_msg = StringPrintf("In oat file '%s' found invalid bcp info offset: "
+                                  "%zu is not in [%zu, %zu]",
+                              GetLocation().c_str(),
+                              bcp_info_offset,
+                              GetOatHeader().GetHeaderSize(),
+                              Size());
+    return false;
+  }
+  const uint8_t* bcp_info_begin = Begin() + bcp_info_offset;  // Jump to the BCP_info records.
+
+  // LOG(INFO) << "before reading: " << bcp_info_begin - Begin();
+  if (UNLIKELY(!ReadOatDexFileData(*this, &bcp_info_begin, &number_of_BCP_dexfiles_))) {
+    *error_msg = StringPrintf("Failed to read the number of BCP dex files");
+    return false;
+  }
+  // LOG(INFO) << "oat_file.cc number_of_BCP_dexfiles " << number_of_BCP_dexfiles_;
+  // LOG(INFO) << "after reading: " << bcp_info_begin - Begin();
+  // LOG(INFO) << "oatfile.cc bcp_info_offset " << bcp_info_offset;
+  auto runtime = Runtime::Current();
+  // LOG(INFO) << "oatfile.cc got runtime " << runtime;
+  ClassLinker* linker = nullptr;
+  if (runtime != nullptr) {
+    linker = runtime->GetClassLinker();
+    LOG(INFO) << "oatfile.cc Got linker " << linker;
+    if (linker != nullptr) {
+      // LOG(INFO) << "oat_file.cc number_of_BCP_dexfiles from the linker " << linker->GetBootClassPath().size();
+      // for (size_t i = 0, size = linker->GetBootClassPath().size(); i != size; ++i) {
+      //   LOG(INFO) << "oatfile.cc writing " << linker->GetBootClassPath()[i]->GetLocation();
+      // }
+      // At runtime, there might be more DexFiles added to the BCP link that we didn't compile with. We only care about the ones in [0..number_of_BCP_dexfiles_).
+      CHECK_LE(number_of_BCP_dexfiles_, linker->GetBootClassPath().size());
+      // I was expecting CHECK(number_of_BCP_dexfiles_ == 0 || number_of_BCP_dexfiles_ == linker->GetBootClassPath().size());
+    }
+  }
+  BCP_info.resize(number_of_BCP_dexfiles_);
+
+    // BCP_info.resize(number_of_BCP_dexfiles);
+    for (size_t i = 0, size = number_of_BCP_dexfiles_; i != size; ++i) {
+      // size_t new_offset = bcp_info_begin - Begin();
+      // LOG(INFO) << "i: " << i << " new_offset: " << new_offset;
+      const std::string& dex_file_location = linker != nullptr ?
+                                                 linker->GetBootClassPath()[i]->GetLocation() :
+                                                 "No runtime/linker therefore no DexFile location";
+      // LOG(INFO) << dex_file_location;
+      if (!ReadIndexBssMapping(this,
+                               &bcp_info_begin,
+                               i,
+                               dex_file_location,
+                               "method",
+                               &BCP_info[i].method_bss_mapping,
+                               error_msg) ||
+          !ReadIndexBssMapping(this,
+                               &bcp_info_begin,
+                               i,
+                               dex_file_location,
+                               "type",
+                               &BCP_info[i].type_bss_mapping,
+                               error_msg) ||
+          !ReadIndexBssMapping(this,
+                               &bcp_info_begin,
+                               i,
+                               dex_file_location,
+                               "type",
+                               &BCP_info[i].public_type_bss_mapping,
+                               error_msg) ||
+          !ReadIndexBssMapping(this,
+                               &bcp_info_begin,
+                               i,
+                               dex_file_location,
+                               "type",
+                               &BCP_info[i].package_type_bss_mapping,
+                               error_msg) ||
+          !ReadIndexBssMapping(this,
+                               &bcp_info_begin,
+                               i,
+                               dex_file_location,
+                               "string",
+                               &BCP_info[i].string_bss_mapping,
+                               error_msg)) {
+        return false;
+      }
+
+      //         LOG(INFO) << BCP_info[i].method_bss_mapping << " " <<
+      // BCP_info[i].type_bss_mapping << " " <<
+      // BCP_info[i].public_type_bss_mapping << " " <<
+      // BCP_info[i].package_type_bss_mapping << " " <<
+      // BCP_info[i].string_bss_mapping << " ";
+      //   }
+  }
+
   if (!dex_filenames.empty() && dex_filenames_pos != dex_filenames.size()) {
     *error_msg = StringPrintf("Oat file '%s' contains only %zu primary dex locations, expected %zu",
                               GetLocation().c_str(),

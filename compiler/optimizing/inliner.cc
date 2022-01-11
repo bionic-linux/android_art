@@ -1468,6 +1468,15 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
     return false;
   }
 
+  // const DexFile* dex_file = method->GetDexFile();
+  // const DexFile* outer_dex_file = outer_compilation_unit_.GetDexFile();
+  // if (dex_file->GetLocation().find("core-oj") && dex_file != outer_dex_file) {
+  //   LOG(INFO) << "After MayInline. DF: " << dex_file->GetLocation() << ". Outer: " << outer_dex_file->GetLocation() << ". Method: " << method->GetName();
+  //   for (const auto& entry : codegen_->GetCompilerOptions().GetNoInlineFromDexFile()) {
+  //     LOG(INFO) << "No inline from: " << entry->GetLocation();
+  //   }
+  // }
+
   CodeItemDataAccessor accessor(method->DexInstructionData());
 
   if (!IsInliningAllowed(method, accessor)) {
@@ -1721,7 +1730,8 @@ static bool CanEncodeInlinedMethodInStackMap(const DexFile& outer_dex_file,
     // options are concerned, but they have their own OatWriter (and therefore not in the same
     // OatFile). Then, we request the BSS check for all BCP DexFiles.
     // TODO(solanes): Add .bss support for BCP.
-    *out_needs_bss_check = true;
+    const bool is_multi_image = codegen->GetCompilerOptions().IsBootImage() || codegen->GetCompilerOptions().IsBootImageExtension();
+    *out_needs_bss_check = is_multi_image;
     return true;
   }
 
