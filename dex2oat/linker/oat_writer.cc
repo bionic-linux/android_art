@@ -470,6 +470,11 @@ OatWriter::OatWriter(const CompilerOptions& compiler_options,
     size_oat_dex_file_public_type_bss_mapping_offset_(0),
     size_oat_dex_file_package_type_bss_mapping_offset_(0),
     size_oat_dex_file_string_bss_mapping_offset_(0),
+    size_BCP_info_method_bss_mapping_offset_(0),
+    size_BCP_info_type_bss_mapping_offset_(0),
+    size_BCP_info_public_type_bss_mapping_offset_(0),
+    size_BCP_info_package_type_bss_mapping_offset_(0),
+    size_BCP_info_string_bss_mapping_offset_(0),
     size_oat_class_offsets_alignment_(0),
     size_oat_class_offsets_(0),
     size_oat_class_type_(0),
@@ -490,6 +495,13 @@ OatWriter::OatWriter(const CompilerOptions& compiler_options,
   if (info != nullptr && compact_dex_level_ == CompactDexLevel::kCompactDexLevelNone) {
     compact_dex_level_ = kDefaultCompactDexLevel;
   }
+  // ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+  // const std::vector<const DexFile*>& boot_class_path = class_linker->GetBootClassPath();
+  // if (BCP_info.size() != boot_class_path.size()) {
+  //   LOG(FATAL) << "Different sizes";
+  // }
+  // LOG(FATAL) << "Current size" << BCP_info.size();
+  // BCP_info.resize(boot_class_path.size());
 }
 
 static bool ValidateDexFileHeader(const uint8_t* raw_header, const char* location) {
@@ -787,6 +799,10 @@ void OatWriter::PrepareLayout(MultiOatRelativePatcher* relative_patcher) {
     TimingLogger::ScopedTiming split("InitOatDexFiles", timings_);
     oat_header_->SetOatDexFilesOffset(offset);
     offset = InitOatDexFiles(offset);
+  }
+  {
+    TimingLogger::ScopedTiming split("InitBCPInfo", timings_);
+    offset = InitBCPInfo(offset);
   }
   {
     TimingLogger::ScopedTiming split("InitOatCode", timings_);
@@ -2199,6 +2215,7 @@ size_t OatWriter::InitIndexBssMappings(size_t offset) {
   PointerSize pointer_size = GetInstructionSetPointerSize(oat_header_->GetInstructionSet());
   for (size_t i = 0, size = dex_files_->size(); i != size; ++i) {
     const DexFile* dex_file = (*dex_files_)[i];
+    LOG(INFO) << "Loop DexFile: " << dex_file->GetLocation();
     auto method_it = bss_method_entry_references_.find(dex_file);
     if (method_it != bss_method_entry_references_.end()) {
       const BitVector& method_indexes = method_it->second;
@@ -2251,12 +2268,112 @@ size_t OatWriter::InitIndexBssMappings(size_t offset) {
           });
     }
   }
+
+  // TODO(solanes): de-duplicate this?
+  LOG(INFO) << "InitIndexBssMappings";
+  if (!(compiler_options_.IsBootImage() || compiler_options_.IsBootImageExtension())) {
+      // Initialize the BCP_INFO.
+  // BCP_info(Runtime::Current()->GetClassLinker()->GetBootClassPath().size()),
+  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+  const std::vector<const DexFile*>& boot_class_path = class_linker->GetBootClassPath();
+  // if (BCP_info.size() != boot_class_path.size()) {
+  //   LOG(FATAL) << "Different sizes";
+  // }
+  // LOG(FATAL) << "Current size" << BCP_info.size();
+  BCP_info.resize(boot_class_path.size());
+  LOG(INFO) << "Current size " << BCP_info.size();
+  for (size_t i = 0, size = boot_class_path.size(); i != size; ++i) {
+    const DexFile* dex_file = boot_class_path[i];
+    LOG(INFO) << dex_file->GetLocation();
+    if (ContainsElement(*dex_files_, dex_file)) {
+      LOG(INFO) << "Already compiling";
+    } else {
+      LOG(INFO) << "ONLY BCP";
+    }
+  }
+
+
+
+
+    // ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+    // const std::vector<const DexFile*>& boot_class_path = class_linker->GetBootClassPath();
+    for (size_t i = 0, size = boot_class_path.size(); i != size; ++i) {
+      const DexFile* dex_file = boot_class_path[i];
+      // TODO(solanes): This shouldn't happen for not multi image.
+      if (ContainsElement(*dex_files_, dex_file)) {
+        LOG(INFO) << "skipping DexFile: " << dex_file->GetLocation();
+        continue;
+      }
+      LOG(INFO) << "boot_class_path Loop DexFile: " << dex_file->GetLocation();
+      auto method_it = bss_method_entry_references_.find(dex_file);
+      if (method_it != bss_method_entry_references_.end()) {
+        const BitVector& method_indexes = method_it->second;
+        ++number_of_method_dex_files;
+        BCP_info[i].method_bss_mapping_offset_ = offset;
+        offset += CalculateIndexBssMappingSize(
+            dex_file->NumMethodIds(),
+            static_cast<size_t>(pointer_size),
+            method_indexes,
+            [=](uint32_t index) {
+              return bss_method_entries_.Get({dex_file, index});
+            });
+      }
+
+      LOG(INFO) << "Before bss_type_entry_references_";
+      auto type_it = bss_type_entry_references_.find(dex_file);
+      if (type_it != bss_type_entry_references_.end()) {
+        const BitVector& type_indexes = type_it->second;
+        ++number_of_type_dex_files;
+        BCP_info[i].type_bss_mapping_offset_ = offset;
+        offset += CalculateIndexBssMappingSize(dex_file, type_indexes, bss_type_entries_);
+      }
+
+      LOG(INFO) << "Before bss_public_type_entry_references_";
+      auto public_type_it = bss_public_type_entry_references_.find(dex_file);
+      if (public_type_it != bss_public_type_entry_references_.end()) {
+        const BitVector& type_indexes = public_type_it->second;
+        ++number_of_public_type_dex_files;
+        BCP_info[i].public_type_bss_mapping_offset_ = offset;
+        offset += CalculateIndexBssMappingSize(dex_file, type_indexes, bss_public_type_entries_);
+      }
+
+      LOG(INFO) << "Before bss_package_type_entry_references_";
+      auto package_type_it = bss_package_type_entry_references_.find(dex_file);
+      if (package_type_it != bss_package_type_entry_references_.end()) {
+        const BitVector& type_indexes = package_type_it->second;
+        ++number_of_package_type_dex_files;
+        BCP_info[i].package_type_bss_mapping_offset_ = offset;
+        offset += CalculateIndexBssMappingSize(dex_file, type_indexes, bss_package_type_entries_);
+      }
+
+      LOG(INFO) << "Before bss_string_entry_references_";
+      auto string_it = bss_string_entry_references_.find(dex_file);
+      if (string_it != bss_string_entry_references_.end()) {
+        const BitVector& string_indexes = string_it->second;
+        ++number_of_string_dex_files;
+        BCP_info[i].string_bss_mapping_offset_ = offset;
+        offset += CalculateIndexBssMappingSize(
+            dex_file->NumStringIds(),
+            sizeof(GcRoot<mirror::String>),
+            string_indexes,
+            [=](uint32_t index) {
+              return bss_string_entries_.Get({dex_file, dex::StringIndex(index)});
+            });
+      }
+    }
+  }
+
   // Check that all dex files targeted by bss entries are in `*dex_files_`.
+  for (const auto& entry : bss_method_entry_references_) {
+    LOG(INFO) << "bss_method_entry_references_ " << entry.first->GetLocation();
+  }
   CHECK_EQ(number_of_method_dex_files, bss_method_entry_references_.size());
   CHECK_EQ(number_of_type_dex_files, bss_type_entry_references_.size());
   CHECK_EQ(number_of_public_type_dex_files, bss_public_type_entry_references_.size());
   CHECK_EQ(number_of_package_type_dex_files, bss_package_type_entry_references_.size());
   CHECK_EQ(number_of_string_dex_files, bss_string_entry_references_.size());
+  LOG(INFO) << "InitIndexBssMappings END";
+
   return offset;
 }
 
@@ -2265,6 +2382,20 @@ size_t OatWriter::InitOatDexFiles(size_t offset) {
   for (OatDexFile& oat_dex_file : oat_dex_files_) {
     oat_dex_file.offset_ = offset;
     offset += oat_dex_file.SizeOf();
+  }
+  return offset;
+}
+
+size_t OatWriter::InitBCPInfo(size_t offset) {
+  if (compiler_options_.IsBootImage() || compiler_options_.IsBootImageExtension()) {
+    LOG(INFO) << "IS MULTI IMAGE!";
+    return offset;
+  }
+  LOG(INFO) << "NOT MULTI IMAGE!";
+
+  for (BSSInfo& info : BCP_info) {
+    info.offset_ = offset;
+    offset += BSSInfo::SizeOf();
   }
   return offset;
 }
@@ -2499,6 +2630,12 @@ bool OatWriter::WriteRodata(OutputStream* out) {
     return false;
   }
 
+  relative_offset = WriteBSSInfo(out, file_offset, relative_offset);
+  if (relative_offset == 0) {
+    PLOG(ERROR) << "Failed to write BCP information to " << out->GetLocation();
+    return false;
+  }
+
   // Write padding.
   off_t new_offset = out->Seek(size_executable_offset_alignment_, kSeekCurrent);
   relative_offset += size_executable_offset_alignment_;
@@ -2672,6 +2809,11 @@ bool OatWriter::CheckOatSize(OutputStream* out, size_t file_offset, size_t relat
     DO_STAT(size_oat_dex_file_public_type_bss_mapping_offset_);
     DO_STAT(size_oat_dex_file_package_type_bss_mapping_offset_);
     DO_STAT(size_oat_dex_file_string_bss_mapping_offset_);
+    DO_STAT(size_BCP_info_method_bss_mapping_offset_);
+    DO_STAT(size_BCP_info_type_bss_mapping_offset_);
+    DO_STAT(size_BCP_info_public_type_bss_mapping_offset_);
+    DO_STAT(size_BCP_info_package_type_bss_mapping_offset_);
+    DO_STAT(size_BCP_info_string_bss_mapping_offset_);
     DO_STAT(size_oat_class_offsets_alignment_);
     DO_STAT(size_oat_class_offsets_);
     DO_STAT(size_oat_class_type_);
@@ -2686,7 +2828,7 @@ bool OatWriter::CheckOatSize(OutputStream* out, size_t file_offset, size_t relat
     DO_STAT(size_string_bss_mappings_);
     #undef DO_STAT
 
-    VLOG(compiler) << "size_total=" << PrettySize(size_total) << " (" << size_total << "B)";
+    LOG(INFO) << "size_total=" << PrettySize(size_total) << " (" << size_total << "B)";
 
     CHECK_EQ(vdex_size_ + oat_size_, size_total);
     CHECK_EQ(file_offset + size_total - vdex_size_, static_cast<size_t>(oat_end_file_offset));
@@ -2974,6 +3116,115 @@ size_t OatWriter::WriteIndexBssMappings(OutputStream* out,
       DCHECK_EQ(0u, oat_dex_file->string_bss_mapping_offset_);
     }
   }
+
+  LOG(INFO) << "WriteIndexBssMappings";
+  // Early break for multi image
+  if (compiler_options_.IsBootImage() || compiler_options_.IsBootImageExtension()) {
+    return relative_offset;
+  }
+
+  // TODO(solanes): Do this once and save the boot_class_path in the OatFile?
+  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+  const std::vector<const DexFile*>& boot_class_path = class_linker->GetBootClassPath();
+  for (size_t i = 0, size = boot_class_path.size(); i != size; ++i) {
+    const DexFile* dex_file = boot_class_path[i];
+    if (ContainsElement(*dex_files_, dex_file)) {
+       LOG(INFO) << "WriteIndexBssMappings skip " << dex_file->GetLocation();
+       continue;
+    }
+    auto method_it = bss_method_entry_references_.find(dex_file);
+    if (method_it != bss_method_entry_references_.end()) {
+      const BitVector& method_indexes = method_it->second;
+      DCHECK_EQ(relative_offset, BCP_info[i].method_bss_mapping_offset_);
+      DCHECK_OFFSET();
+      size_t method_mappings_size = WriteIndexBssMapping(
+          out,
+          dex_file->NumMethodIds(),
+          static_cast<size_t>(pointer_size),
+          method_indexes,
+          [=](uint32_t index) {
+            return bss_method_entries_.Get({dex_file, index});
+          });
+      if (method_mappings_size == 0u) {
+        return 0u;
+      }
+      size_method_bss_mappings_ += method_mappings_size;
+      relative_offset += method_mappings_size;
+    } else {
+      DCHECK_EQ(0u, BCP_info[i].method_bss_mapping_offset_);
+    }
+
+    auto type_it = bss_type_entry_references_.find(dex_file);
+    if (type_it != bss_type_entry_references_.end()) {
+      const BitVector& type_indexes = type_it->second;
+      DCHECK_EQ(relative_offset, BCP_info[i].type_bss_mapping_offset_);
+      DCHECK_OFFSET();
+      size_t type_mappings_size =
+          WriteIndexBssMapping(out, dex_file, type_indexes, bss_type_entries_);
+      if (type_mappings_size == 0u) {
+        return 0u;
+      }
+      size_type_bss_mappings_ += type_mappings_size;
+      relative_offset += type_mappings_size;
+    } else {
+      DCHECK_EQ(0u, BCP_info[i].type_bss_mapping_offset_);
+    }
+
+    auto public_type_it = bss_public_type_entry_references_.find(dex_file);
+    if (public_type_it != bss_public_type_entry_references_.end()) {
+      const BitVector& type_indexes = public_type_it->second;
+      DCHECK_EQ(relative_offset, BCP_info[i].public_type_bss_mapping_offset_);
+      DCHECK_OFFSET();
+      size_t public_type_mappings_size =
+          WriteIndexBssMapping(out, dex_file, type_indexes, bss_public_type_entries_);
+      if (public_type_mappings_size == 0u) {
+        return 0u;
+      }
+      size_public_type_bss_mappings_ += public_type_mappings_size;
+      relative_offset += public_type_mappings_size;
+    } else {
+      DCHECK_EQ(0u, BCP_info[i].public_type_bss_mapping_offset_);
+    }
+
+    auto package_type_it = bss_package_type_entry_references_.find(dex_file);
+    if (package_type_it != bss_package_type_entry_references_.end()) {
+      const BitVector& type_indexes = package_type_it->second;
+      DCHECK_EQ(relative_offset, BCP_info[i].package_type_bss_mapping_offset_);
+      DCHECK_OFFSET();
+      size_t package_type_mappings_size =
+          WriteIndexBssMapping(out, dex_file, type_indexes, bss_package_type_entries_);
+      if (package_type_mappings_size == 0u) {
+        return 0u;
+      }
+      size_package_type_bss_mappings_ += package_type_mappings_size;
+      relative_offset += package_type_mappings_size;
+    } else {
+      DCHECK_EQ(0u, BCP_info[i].package_type_bss_mapping_offset_);
+    }
+
+    auto string_it = bss_string_entry_references_.find(dex_file);
+    if (string_it != bss_string_entry_references_.end()) {
+      const BitVector& string_indexes = string_it->second;
+      DCHECK_EQ(relative_offset, BCP_info[i].string_bss_mapping_offset_);
+      DCHECK_OFFSET();
+      size_t string_mappings_size = WriteIndexBssMapping(
+          out,
+          dex_file->NumStringIds(),
+          sizeof(GcRoot<mirror::String>),
+          string_indexes,
+          [=](uint32_t index) {
+            return bss_string_entries_.Get({dex_file, dex::StringIndex(index)});
+          });
+      if (string_mappings_size == 0u) {
+        return 0u;
+      }
+      size_string_bss_mappings_ += string_mappings_size;
+      relative_offset += string_mappings_size;
+    } else {
+      DCHECK_EQ(0u, BCP_info[i].string_bss_mapping_offset_);
+    }
+  }
+  LOG(INFO) << "WriteIndexBssMappings END";
   return relative_offset;
 }
 
@@ -2992,6 +3243,39 @@ size_t OatWriter::WriteOatDexFiles(OutputStream* out, size_t file_offset, size_t
     relative_offset += oat_dex_file->SizeOf();
   }
 
+  return relative_offset;
+}
+
+size_t OatWriter::WriteBSSInfo(OutputStream* out, size_t file_offset, size_t relative_offset) {
+  TimingLogger::ScopedTiming split("WriteBSSInfo", timings_);
+  LOG(INFO) << "WriteBSSInfo";
+  if (compiler_options_.IsBootImage() || compiler_options_.IsBootImageExtension()) {
+    return relative_offset;
+  }
+
+  ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+  const std::vector<const DexFile*>& boot_class_path = class_linker->GetBootClassPath();
+  for (size_t i = 0, size = boot_class_path.size(); i != size; ++i) {
+    DCHECK_EQ(relative_offset, BCP_info[i].offset_);
+    DCHECK_OFFSET();
+
+    // Early break. Just increase the offset.
+    if (ContainsElement(*dex_files_, boot_class_path[i])) {
+      LOG(INFO) << "WriteBSSInfo skip " << boot_class_path[i]->GetLocation();
+      relative_offset += BSSInfo::SizeOf();
+      continue;
+    }
+    // Write BCP_info.
+    if (!BCP_info[i].Write(this, out)) {
+      return 0u;
+    }
+    relative_offset += BSSInfo::SizeOf();
+  }
+
+  UNUSED(out);
+  UNUSED(file_offset);
+
+  LOG(INFO) << "WriteBSSInfo END";
   return relative_offset;
 }
 
@@ -3971,6 +4255,46 @@ bool OatWriter::OatDexFile::Write(OatWriter* oat_writer, OutputStream* out) cons
     return false;
   }
   oat_writer->size_oat_dex_file_string_bss_mapping_offset_ += sizeof(string_bss_mapping_offset_);
+
+  return true;
+}
+
+bool OatWriter::BSSInfo::Write(OatWriter* oat_writer, OutputStream* out) const {
+  const size_t file_offset = oat_writer->oat_data_offset_;
+  DCHECK_OFFSET_();
+
+  if (!out->WriteFully(&method_bss_mapping_offset_, sizeof(method_bss_mapping_offset_))) {
+    PLOG(ERROR) << "Failed to write method bss mapping offset to " << out->GetLocation();
+    return false;
+  }
+  oat_writer->size_BCP_info_method_bss_mapping_offset_ += sizeof(method_bss_mapping_offset_);
+
+  if (!out->WriteFully(&type_bss_mapping_offset_, sizeof(type_bss_mapping_offset_))) {
+    PLOG(ERROR) << "Failed to write type bss mapping offset to " << out->GetLocation();
+    return false;
+  }
+  oat_writer->size_BCP_info_type_bss_mapping_offset_ += sizeof(type_bss_mapping_offset_);
+
+  if (!out->WriteFully(&public_type_bss_mapping_offset_, sizeof(public_type_bss_mapping_offset_))) {
+    PLOG(ERROR) << "Failed to write public type bss mapping offset to " << out->GetLocation();
+    return false;
+  }
+  oat_writer->size_BCP_info_public_type_bss_mapping_offset_ +=
+      sizeof(public_type_bss_mapping_offset_);
+
+  if (!out->WriteFully(&package_type_bss_mapping_offset_,
+                       sizeof(package_type_bss_mapping_offset_))) {
+    PLOG(ERROR) << "Failed to write package type bss mapping offset to " << out->GetLocation();
+    return false;
+  }
+  oat_writer->size_BCP_info_package_type_bss_mapping_offset_ +=
+      sizeof(package_type_bss_mapping_offset_);
+
+  if (!out->WriteFully(&string_bss_mapping_offset_, sizeof(string_bss_mapping_offset_))) {
+    PLOG(ERROR) << "Failed to write string bss mapping offset to " << out->GetLocation();
+    return false;
+  }
+  oat_writer->size_BCP_info_string_bss_mapping_offset_ += sizeof(string_bss_mapping_offset_);
 
   return true;
 }
