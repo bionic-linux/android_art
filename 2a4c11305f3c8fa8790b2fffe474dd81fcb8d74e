@@ -140,6 +140,30 @@
       },
       "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea12196a_9b256512",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T17:18:17Z",
+      "side": 1,
+      "message": "No, we do not support such large heaps at the moment. And even if we did, the input is just a small dex file here.",
+      "parentUuid": "342d6f32_fc891f23",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 6
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
