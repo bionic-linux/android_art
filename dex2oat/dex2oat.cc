@@ -1446,6 +1446,10 @@ class Dex2Oat final {
             &opened_dex_files)) {
           return dex2oat::ReturnCode::kOther;
         }
+        // LOG(INFO) << "OatWriter " << i;
+        // for(const auto& entry : opened_dex_files) {
+        //   LOG(INFO) << entry->GetLocation();
+        // }
         dex_files_per_oat_file_.push_back(MakeNonOwningPointerVector(opened_dex_files));
         if (opened_dex_files_map.empty()) {
           DCHECK(opened_dex_files.empty());
