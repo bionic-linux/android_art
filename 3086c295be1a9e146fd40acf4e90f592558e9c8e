@@ -52,6 +52,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63484109_bb9b3bfb",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T16:19:12Z",
+      "side": 1,
+      "message": "This shall go to `artResolveTypeFromCode()` or `artResolveTypeAndVerifyAccessFromCode()` which are using the inlined method as the caller, so it should be fine if the `kBssEntry*` cases are OK.",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 55
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d51d1a40_0b0830f1",
@@ -110,6 +133,52 @@
         "startChar": 0,
         "endLine": 1,
         "endChar": 2
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1202b7_e877f28a",
+        "filename": "test/2238-checker-load-class-multidex/src/pkg1/SubClass.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T16:19:12Z",
+      "side": 1,
+      "message": "If you make this `$noinline$`, you can also `CHECK: InvokeStaticOrDirect` in `Caller.doCall()`.",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be170c5a_66ccee0b",
+        "filename": "test/2238-checker-load-class-multidex/src/pkg1/SubClass.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T16:19:12Z",
+      "side": 1,
+      "message": "Any class (inside or outside `pkg1`) can access `SuperClass.callMethod` by referencing it as `SubClass.callMethod`.",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 84
       },
       "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
