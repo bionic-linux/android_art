@@ -16,6 +16,23 @@
       "message": "TH is now happy. I guess the previous errors aren\u0027t related to my change...",
       "revId": "6fd856d0b2c676be10860d65e8e475f84d1c86e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186ea18c_c48a0bce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-01-11T11:56:03Z",
+      "side": 1,
+      "message": "I suspect this may have broken art/art-host-gtest: https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI26500010007338283\u0026testResultId\u003dTR65227851216579279\u0026tab\u003dartifacts\n(Starts failing in the build after this was merged)",
+      "revId": "6fd856d0b2c676be10860d65e8e475f84d1c86e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
