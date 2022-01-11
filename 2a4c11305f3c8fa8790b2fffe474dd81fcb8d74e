@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd11dbb_e4ff84fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-11T17:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401a5783_2aad5df9",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b716136_32e8df85",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "597161eb_bf00c178",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-11T17:07:29Z",
+      "side": 1,
+      "message": "Thank you for the suggestion!",
+      "parentUuid": "9b716136_32e8df85",
+      "range": {
+        "startLine": 2364,
+        "startChar": 16,
+        "endLine": 2364,
+        "endChar": 50
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f2fb772_85042f87",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-11T15:29:52Z",
       "side": 1,
       "message": "Use `size_t` here and twice below.",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 6
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "342d6f32_fc891f23",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-11T17:07:29Z",
+      "side": 1,
+      "message": "Changed to uint32_t to make it consistent with `ImageSection::Size`. Is it possible that the size exceeds 4GB?",
+      "parentUuid": "5f2fb772_85042f87",
       "range": {
         "startLine": 940,
         "startChar": 2,
