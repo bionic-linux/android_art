@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401a5783_2aad5df9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T15:29:52Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b716136_32e8df85",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T15:29:52Z",
+      "side": 1,
+      "message": "I would prefer filtering rather than telling the `ProfileCompilationInfo` to ignore mismatch.\n\n  std::map\u003cstd::string, uint32_t\u003e old_profile_keys, new_profile_keys;\n  auto filter_fn \u003d [\u0026](const string\u0026 profile_key, uint32_t checksum) {\n    auto it \u003d old_profile_keys.find(profile_key);\n    if (it !\u003d old_profile_keys.end() \u0026\u0026 it-\u003esecond !\u003d checksum) {\n      // Filter out this entry. We have already loaded data for the same\n      // profile key with a different checksum from an earlier profile file.\n      return false;\n    }\n    // Insert the new profile key and checksum.\n    // Note: If the profile contains the same key with different checksums,\n    // this insertion fails but we still return `true` and let the\n    // `ProfileCompilationInfo::Load()` report an error.\n    new_profile_keys.insert(std::make_pair(profile_key, checksum));\n    return true;\n  };\n  for (int fd : profile_file_fds_) {\n    ... Load(..., filter_fn) ...\n    old_profile_keys.merge(new_profile_keys);\n    new_profile_keys.clear();\n  }",
+      "range": {
+        "startLine": 2364,
+        "startChar": 16,
+        "endLine": 2364,
+        "endChar": 50
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2fb772_85042f87",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-11T15:29:52Z",
+      "side": 1,
+      "message": "Use `size_t` here and twice below.",
+      "range": {
+        "startLine": 940,
+        "startChar": 2,
+        "endLine": 940,
+        "endChar": 6
+      },
+      "revId": "2a4c11305f3c8fa8790b2fffe474dd81fcb8d74e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
