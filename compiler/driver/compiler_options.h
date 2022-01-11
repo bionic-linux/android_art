@@ -373,6 +373,7 @@ class CompilerOptions final {
     return initialize_app_image_classes_;
   }
 
+  // TODO(solanes): Expand this to also include BCP dex files?
   bool WithinOatFile(const DexFile* dex_file) const {
     return std::find(GetDexFilesForOatFile().begin(), GetDexFilesForOatFile().end(), dex_file) !=
            GetDexFilesForOatFile().end();

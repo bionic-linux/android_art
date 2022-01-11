@@ -568,6 +568,61 @@ class OatDumper {
     }
 
     if (!options_.dump_header_only_) {
+      // TODO(solanes): Should we do this only for non-boot image and non boot image extension? Do
+      // we know if we are on one here?
+      auto runtime = Runtime::Current();
+      LOG(INFO) << "oatdump.cc got runtime " << runtime;
+      if (runtime != nullptr) {
+        auto linker = runtime->GetClassLinker();
+        LOG(INFO) << "oatdump.cc Got linker " << linker;
+        if (linker != nullptr) {
+          const std::vector<const DexFile*> bcp_dex_files = linker->GetBootClassPath();
+          LOG(INFO) << "BCP_info.size " << oat_file_.BCP_info.size() << " bcp_dex_files.size "
+                    << bcp_dex_files.size();
+          for (size_t i = 0; i < bcp_dex_files.size(); i++) {
+            const DexFile* const dex_file = bcp_dex_files[i];
+            LOG(INFO) << "Dumping entries for BCP DexFile: " << dex_file->GetLocation();
+            os << "Dumping entries for BCP DexFile: " << dex_file->GetLocation() << "\n";
+            DumpBssEntries(os,
+                           "ArtMethod",
+                           oat_file_.BCP_info[i].method_bss_mapping_,
+                           dex_file->NumMethodIds(),
+                           static_cast<size_t>(GetInstructionSetPointerSize(instruction_set_)),
+                           [=](uint32_t index) { return dex_file->PrettyMethod(index); });
+            DumpBssEntries(
+                os,
+                "Class",
+                oat_file_.BCP_info[i].type_bss_mapping_,
+                dex_file->NumTypeIds(),
+                sizeof(GcRoot<mirror::Class>),
+                [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+            DumpBssEntries(
+                os,
+                "Public Class",
+                oat_file_.BCP_info[i].public_type_bss_mapping_,
+                dex_file->NumTypeIds(),
+                sizeof(GcRoot<mirror::Class>),
+                [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+            DumpBssEntries(
+                os,
+                "Package Class",
+                oat_file_.BCP_info[i].package_type_bss_mapping_,
+                dex_file->NumTypeIds(),
+                sizeof(GcRoot<mirror::Class>),
+                [=](uint32_t index) { return dex_file->PrettyType(dex::TypeIndex(index)); });
+            DumpBssEntries(
+                os,
+                "String",
+                oat_file_.BCP_info[i].string_bss_mapping_,
+                dex_file->NumStringIds(),
+                sizeof(GcRoot<mirror::Class>),
+                [=](uint32_t index) { return dex_file->StringDataByIdx(dex::StringIndex(index)); });
+          }
+        }
+      }
+    }
+
+    if (!options_.dump_header_only_) {
       VariableIndentationOutputStream vios(&os);
       VdexFile::VdexFileHeader vdex_header = oat_file_.GetVdexFile()->GetVdexFileHeader();
       if (vdex_header.IsValid()) {
@@ -3224,6 +3279,9 @@ struct OatdumpArgs : public CmdlineArgs {
         "      Example: --dump-imt=imt.txt\n"
         "\n"
         "  --dump-imt-stats: output IMT statistics for the given boot image\n"
+        "      Example: --dump-imt-stats"
+        "\n"
+        "  --CHECK THAT WE HAVE THE NEW OATDUMP\n"
         "      Example: --dump-imt-stats"
         "\n";
 
