@@ -307,6 +307,7 @@ class OatWriter {
   size_t InitOatMaps(size_t offset);
   size_t InitIndexBssMappings(size_t offset);
   size_t InitOatDexFiles(size_t offset);
+  size_t InitBCPInfo(size_t offset);
   size_t InitOatCode(size_t offset);
   size_t InitOatCodeDexFiles(size_t offset);
   size_t InitDataBimgRelRoLayout(size_t offset);
@@ -317,6 +318,7 @@ class OatWriter {
   size_t WriteMaps(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteIndexBssMappings(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteOatDexFiles(OutputStream* out, size_t file_offset, size_t relative_offset);
+  size_t WriteBSSInfo(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteCode(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteCodeDexFiles(OutputStream* out, size_t file_offset, size_t relative_offset);
   size_t WriteDataBimgRelRo(OutputStream* out, size_t file_offset, size_t relative_offset);
@@ -422,6 +424,30 @@ class OatWriter {
 
   // The offset of the GC roots in .bss section.
   size_t bss_roots_offset_;
+
+  struct BSSInfo{
+    // Class and BSS offsets set in PrepareLayout.
+    uint32_t method_bss_mapping_offset_ = 0u;
+    uint32_t type_bss_mapping_offset_ = 0u;
+    uint32_t public_type_bss_mapping_offset_ = 0u;
+    uint32_t package_type_bss_mapping_offset_ = 0u;
+    uint32_t string_bss_mapping_offset_ = 0u;
+
+    // Offset of start of OatDexFile from beginning of OatHeader. It is
+    // used to validate file position when writing.
+    size_t offset_ = 0u;
+
+    static size_t SizeOf() {
+      return sizeof(method_bss_mapping_offset_)
+              + sizeof(type_bss_mapping_offset_)
+              + sizeof(public_type_bss_mapping_offset_)
+              + sizeof(package_type_bss_mapping_offset_)
+              + sizeof(string_bss_mapping_offset_);
+    }
+    bool Write(OatWriter* oat_writer, OutputStream* out) const;
+  };
+
+  std::vector<BSSInfo> BCP_info;
 
   // Map for allocating .data.bimg.rel.ro entries. Indexed by the boot image offset of the
   // relocation. The value is the assigned offset within the .data.bimg.rel.ro section.
@@ -529,11 +555,17 @@ class OatWriter {
   uint32_t size_oat_dex_file_dex_layout_sections_offset_;
   uint32_t size_oat_dex_file_dex_layout_sections_;
   uint32_t size_oat_dex_file_dex_layout_sections_alignment_;
+  // TODO(solanes): Add the new BSS stats?
   uint32_t size_oat_dex_file_method_bss_mapping_offset_;
   uint32_t size_oat_dex_file_type_bss_mapping_offset_;
   uint32_t size_oat_dex_file_public_type_bss_mapping_offset_;
   uint32_t size_oat_dex_file_package_type_bss_mapping_offset_;
   uint32_t size_oat_dex_file_string_bss_mapping_offset_;
+  uint32_t size_BCP_info_method_bss_mapping_offset_;
+  uint32_t size_BCP_info_type_bss_mapping_offset_;
+  uint32_t size_BCP_info_public_type_bss_mapping_offset_;
+  uint32_t size_BCP_info_package_type_bss_mapping_offset_;
+  uint32_t size_BCP_info_string_bss_mapping_offset_;
   uint32_t size_oat_class_offsets_alignment_;
   uint32_t size_oat_class_offsets_;
   uint32_t size_oat_class_type_;
