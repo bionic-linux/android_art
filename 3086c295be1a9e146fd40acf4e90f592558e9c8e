@@ -101,6 +101,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d736da6a_def4ec4d",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-12T13:28:15Z",
+      "side": 1,
+      "message": "I thought we could loosen this condition but it seems I got things wrong.\n\nThinking again about the `if (!IsSameDexFile(load_class-\u003eGetDexFile(), *dex_compilation_unit.GetDexFile()))`, it seems to me that we can get here only for inline caches referencing a class without a `TypeId` in the method\u0027s dex file. And in that case we really cannot use `kRuntimeCall`, so your code looks correct.",
+      "parentUuid": "413085c8_af8929b8",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 55
+      },
+      "revId": "3086c295be1a9e146fd40acf4e90f592558e9c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d51d1a40_0b0830f1",
         "filename": "dex2oat/linker/oat_writer.cc",
         "patchSetId": 1
