@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae3f5bc_beafa8de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-01-17T09:58:25Z",
+      "side": 1,
+      "message": "I don\u0027t find any uses for interpreter_handler_table_. I guess this is just a left over from old code. PTAL.",
+      "revId": "ba00d26edfccf0da22d5c23f8f64b4ed69c43067",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
