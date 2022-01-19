@@ -144,20 +144,6 @@ inline ArtMethod* FindMethodFromCode(uint32_t method_idx,
     REQUIRES_SHARED(Locks::mutator_lock_)
     REQUIRES(!Roles::uninterruptible_);
 
-// Fast path field resolution that can't initialize classes or throw exceptions.
-inline ArtField* FindFieldFast(uint32_t field_idx,
-                               ArtMethod* referrer,
-                               FindFieldType type,
-                               size_t expected_size)
-    REQUIRES_SHARED(Locks::mutator_lock_);
-
-// Fast path method resolution that can't throw exceptions.
-template <InvokeType type, bool access_check>
-inline ArtMethod* FindMethodFast(uint32_t method_idx,
-                                 ObjPtr<mirror::Object> this_object,
-                                 ArtMethod* referrer)
-    REQUIRES_SHARED(Locks::mutator_lock_);
-
 inline ObjPtr<mirror::Class> ResolveVerifyAndClinit(dex::TypeIndex type_idx,
                                                     ArtMethod* referrer,
                                                     Thread* self,
