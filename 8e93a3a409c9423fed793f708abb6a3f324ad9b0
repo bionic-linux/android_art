@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019506966",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1945099?revision\u003d13",
+      "fixSuggestions": [
+        {
+          "fixId": "d7592180_6523dc7b",
+          "description": "Change to \"dex2oat/linker/oat_writer.cc\"",
+          "replacements": [
+            {
+              "path": "dex2oat/linker/oat_writer.cc",
+              "range": {
+                "startLine": 2192,
+                "startChar": 8,
+                "endLine": 2192,
+                "endChar": 17
+              },
+              "replacement": "initialize"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c24bfcee_3b6baf59",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2192,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-20T19:00:04Z",
+      "side": 1,
+      "message": "Common typo found: \"initilize\" -- should it be \"initialize\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2192,
+        "startChar": 8,
+        "endLine": 2192,
+        "endChar": 17
+      },
+      "revId": "8e93a3a409c9423fed793f708abb6a3f324ad9b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
