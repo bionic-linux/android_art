@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc87aaf3_1abe9669",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3938,
+      "author": {
+        "id": 1881965
+      },
+      "writtenOn": "2022-01-20T07:33:39Z",
+      "side": 1,
+      "message": "Because when the memory leak problem occurs, oom dump may be triggered frequently, adding delays to ensure: 1. first execution of oom dump without delay; 2. each subsequence execution of oom dump is delayed one second longer than the previous one.",
+      "parentUuid": "d631bf8b_d624b712",
+      "range": {
+        "startLine": 3938,
+        "startChar": 34,
+        "endLine": 3938,
+        "endChar": 44
+      },
+      "revId": "b658567dec73ba305c9ce549287a77acea4cfd3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce953600_c8b1c4db",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-12-09T23:07:30Z",
       "side": 1,
       "message": "I think this would be easier to read if oom_dump_count counted up to kOomDumpTimes.",
+      "range": {
+        "startLine": 3985,
+        "startChar": 45,
+        "endLine": 3985,
+        "endChar": 75
+      },
+      "revId": "b658567dec73ba305c9ce549287a77acea4cfd3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a7e18d_f62c1321",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3985,
+      "author": {
+        "id": 1881965
+      },
+      "writtenOn": "2022-01-20T07:33:39Z",
+      "side": 1,
+      "message": "Thank you for your suggestion. Code has been updated, could you please review again.",
+      "parentUuid": "ce953600_c8b1c4db",
       "range": {
         "startLine": 3985,
         "startChar": 45,
