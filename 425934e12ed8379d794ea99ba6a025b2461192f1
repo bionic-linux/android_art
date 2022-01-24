@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4a89cc_9d20eb17",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "We could record the `--single-image` argument in `CompilerOptions`.",
+      "range": {
+        "startLine": 1723,
+        "startChar": 32,
+        "endLine": 1724,
+        "endChar": 84
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f0d9c0a_b87fef18",
@@ -36,6 +59,29 @@
         "startChar": 18,
         "endLine": 2264,
         "endChar": 44
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f251c4_5bb587fa",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 3136,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "This must be a fixed size type for cross-compilation.",
+      "range": {
+        "startLine": 3136,
+        "startChar": 8,
+        "endLine": 3136,
+        "endChar": 14
       },
       "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -64,6 +110,52 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f56e2b_741533dd",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "Can you move the definition to the .cc file?",
+      "range": {
+        "startLine": 450,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 23
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f74696_55b4fa76",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "I prefer the operator at the end of the previous line (except \u0027?\u0027/\u0027:\u0027).",
+      "range": {
+        "startLine": 464,
+        "startChar": 13,
+        "endLine": 464,
+        "endChar": 16
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "462059aa_fc0931d5",
@@ -82,6 +174,121 @@
         "startChar": 12,
         "endLine": 505,
         "endChar": 15
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99bbbf29_bf14dcc4",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "\u0026",
+      "range": {
+        "startLine": 546,
+        "startChar": 40,
+        "endLine": 546,
+        "endChar": 41
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971879be_0e3c1487",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "The mapping is `LengthPrefixedArray\u003cIndexBssMappingEntry\u003e`, so we could dump the number of entries and the raw data for each entry (`index_and_mask` and `bss_offset`).\n\nIf we really wanted, we could make assumptions about ordering of the entries and deconstruct even the `index_and_mask`. The size and alignment of the entry (ArtMethod* depends on instruction set but Class and String references are 32-bit) and the difference from the previous `bss_offset` (or from the \"oatbss\" symbol for the first item) tell us how many .bss entries a single `IndexBssMappingEntry` should describe. So we know how many most significant set bits represent the mask and the rest is the actual index. And the position of the mask bits would allow reconstructing the other indexes.",
+      "range": {
+        "startLine": 1736,
+        "startChar": 4,
+        "endLine": 1736,
+        "endChar": 69
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81501b0d_2b05ec4b",
+        "filename": "runtime/oat.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "Please rebase across the conflict.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 82
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537405f5_425dd100",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "If there is no .bss section, the `bcp_info_offset` should be 0 and there should be no data for the mappings.",
+      "range": {
+        "startLine": 1007,
+        "startChar": 3,
+        "endLine": 1007,
+        "endChar": 85
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabf23d6_8df87a87",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-24T18:09:41Z",
+      "side": 1,
+      "message": "This must be a fixed size type.",
+      "range": {
+        "startLine": 1019,
+        "startChar": 2,
+        "endLine": 1019,
+        "endChar": 8
       },
       "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
