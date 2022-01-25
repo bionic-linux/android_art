@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a291f0_f861254e",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "I think we could leave that for a follow-up since we can pass --single-image, --multi-image, or neither and then we resolve automatically based on the boolean I set here. WDYT?",
+      "parentUuid": "6b4a89cc_9d20eb17",
+      "range": {
+        "startLine": 1723,
+        "startChar": 32,
+        "endLine": 1724,
+        "endChar": 84
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f0d9c0a_b87fef18",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-01-24T18:09:41Z",
       "side": 1,
       "message": "This must be a fixed size type for cross-compilation.",
+      "range": {
+        "startLine": 3136,
+        "startChar": 8,
+        "endLine": 3136,
+        "endChar": 14
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d757f528_23b0f6e4",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 3136,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f251c4_5bb587fa",
       "range": {
         "startLine": 3136,
         "startChar": 8,
@@ -133,6 +181,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77515537_6189c88c",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0f56e2b_741533dd",
+      "range": {
+        "startLine": 450,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 23
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6f74696_55b4fa76",
@@ -146,6 +218,30 @@
       "writtenOn": "2022-01-24T18:09:41Z",
       "side": 1,
       "message": "I prefer the operator at the end of the previous line (except \u0027?\u0027/\u0027:\u0027).",
+      "range": {
+        "startLine": 464,
+        "startChar": 13,
+        "endLine": 464,
+        "endChar": 16
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2be2f6a_cec00e16",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Done. FYI I was emulating OatDexFile\u0027s sizeof (https://cs.android.com/android/platform/superproject/+/master:art/dex2oat/linker/oat_writer.cc;l\u003d3888;drc\u003dee7bd3293c93f812f3403325f621ed73ad607ae4)",
+      "parentUuid": "e6f74696_55b4fa76",
       "range": {
         "startLine": 464,
         "startChar": 13,
@@ -202,6 +298,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a374963_da3b53c6",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Changed to ArrayRef (the other instances in this CL were already using that)",
+      "parentUuid": "99bbbf29_bf14dcc4",
+      "range": {
+        "startLine": 546,
+        "startChar": 40,
+        "endLine": 546,
+        "endChar": 41
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "971879be_0e3c1487",
@@ -225,6 +345,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb38ef3_97707a9d",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Changed to go through the array and dump both values (`index_and_mask` and `bss_offset`).\n\nI left a TODO with the assumption suggestion.",
+      "parentUuid": "971879be_0e3c1487",
+      "range": {
+        "startLine": 1736,
+        "startChar": 4,
+        "endLine": 1736,
+        "endChar": 69
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81501b0d_2b05ec4b",
@@ -238,6 +382,30 @@
       "writtenOn": "2022-01-24T18:09:41Z",
       "side": 1,
       "message": "Please rebase across the conflict.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 82
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "722e77fa_238d1d27",
+        "filename": "runtime/oat.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81501b0d_2b05ec4b",
       "range": {
         "startLine": 35,
         "startChar": 2,
@@ -273,6 +441,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1e10050_378d2cd9",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "The offset getters have a consistency check that we are bigger than OatHeader. Doing this suggestion would mean removing those checks. Having the offset and recording a 0 offers better consistency across OatFiles since they will be all the same size. WDYT?",
+      "parentUuid": "537405f5_425dd100",
+      "range": {
+        "startLine": 1007,
+        "startChar": 3,
+        "endLine": 1007,
+        "endChar": 85
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cabf23d6_8df87a87",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 16
@@ -284,6 +476,30 @@
       "writtenOn": "2022-01-24T18:09:41Z",
       "side": 1,
       "message": "This must be a fixed size type.",
+      "range": {
+        "startLine": 1019,
+        "startChar": 2,
+        "endLine": 1019,
+        "endChar": 8
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d9706f7_d6a25667",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-25T12:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabf23d6_8df87a87",
       "range": {
         "startLine": 1019,
         "startChar": 2,
