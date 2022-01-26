@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5bce6191_d38964b3",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-26T16:24:36Z",
+      "side": 1,
+      "message": "I\u0027m OK with leaving this for later. And implementing .bss support for multi-image would make this moot anyway.",
+      "parentUuid": "71a291f0_f861254e",
+      "range": {
+        "startLine": 1723,
+        "startChar": 32,
+        "endLine": 1724,
+        "endChar": 84
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7f0d9c0a_b87fef18",
         "filename": "dex2oat/linker/oat_writer.cc",
         "patchSetId": 16
@@ -148,6 +172,30 @@
       "writtenOn": "2022-01-22T01:22:32Z",
       "side": 1,
       "message": "Should these helpers be inline/always_inline? They are mostly for readability purposes",
+      "range": {
+        "startLine": 325,
+        "startChar": 11,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd71f8e_bc67bcd8",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-26T16:24:36Z",
+      "side": 1,
+      "message": "No, this is not necessary.",
+      "parentUuid": "10b47d23_f669efdc",
       "range": {
         "startLine": 325,
         "startChar": 11,
@@ -453,6 +501,30 @@
       "side": 1,
       "message": "The offset getters have a consistency check that we are bigger than OatHeader. Doing this suggestion would mean removing those checks. Having the offset and recording a 0 offers better consistency across OatFiles since they will be all the same size. WDYT?",
       "parentUuid": "537405f5_425dd100",
+      "range": {
+        "startLine": 1007,
+        "startChar": 3,
+        "endLine": 1007,
+        "endChar": 85
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d7421e3_a6f8015f",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-26T16:24:36Z",
+      "side": 1,
+      "message": "I see no reason to provide an offset that just points to a zero and no relevant data.\n\nThere are only 2 other fields with these checks, `oat_dex_files_offset_` and `executable_offset_`. The `oat_dex_files_offset_` is mandatory, so the checks are correct. The `executable_offset_` should be allowed to remain 0 if there is no code and we should clean it up; the checks are there for historical reasons as we used to unnecessarily compile trampoline code into each oat file.",
+      "parentUuid": "c1e10050_378d2cd9",
       "range": {
         "startLine": 1007,
         "startChar": 3,
