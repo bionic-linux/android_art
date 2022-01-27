@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "283e5a05_db25fb6d",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-01-27T08:30:48Z",
+      "side": 0,
+      "message": "This can be dropped as the same check happens in DoVarHandleInvokeTranslationUnchecked.",
+      "range": {
+        "startLine": 1044,
+        "startChar": 0,
+        "endLine": 1045,
+        "endChar": 71
+      },
+      "revId": "1a82a4bfa6ecadcc2ca6eb9f5d8e5031d6dca0b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
