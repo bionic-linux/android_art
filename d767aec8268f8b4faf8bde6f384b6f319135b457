@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99abb153_6ec1dedb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-01-27T16:19:35Z",
+      "side": 1,
+      "message": "Not done yet, but posting a couple of minor comments.",
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b985264_7681cdbc",
+        "filename": "runtime/gc/accounting/atomic_stack.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-01-27T16:19:35Z",
+      "side": 1,
+      "message": "Isn\u0027t the \u003d\u003d case OK here? Should this be \"\u003e\"?",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4da893_91ec1a92",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-01-27T16:19:35Z",
+      "side": 1,
+      "message": "Should presumably be 2022",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526237a4_c38b3024",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-01-27T16:19:35Z",
+      "side": 1,
+      "message": "We can\u0027t check that statically with an annotation?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
