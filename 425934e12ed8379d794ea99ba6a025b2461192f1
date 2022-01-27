@@ -535,6 +535,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3e5db6_ab61afc7",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-27T11:08:46Z",
+      "side": 1,
+      "message": "Ack, the offset will be 0 when we don\u0027t have data to add e.g. for multi-image or in the case of no mappings.",
+      "parentUuid": "9d7421e3_a6f8015f",
+      "range": {
+        "startLine": 1007,
+        "startChar": 3,
+        "endLine": 1007,
+        "endChar": 85
+      },
+      "revId": "425934e12ed8379d794ea99ba6a025b2461192f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cabf23d6_8df87a87",
