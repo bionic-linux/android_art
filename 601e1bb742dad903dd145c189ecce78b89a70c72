@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5046a7fa_44451b17",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-27T15:19:54Z",
+      "side": 1,
+      "message": "Could be a good follow-up but it seems like it could be premature optimization. If the OatFiles are growing too much because of this CL, it is definitely something to implement but I wouldn\u0027t worry about it for now.",
+      "parentUuid": "a8c001b7_011f4b7c",
+      "revId": "601e1bb742dad903dd145c189ecce78b89a70c72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b794d70a_35d6da74",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f585c015_91e7b117",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 3164,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-27T15:19:54Z",
+      "side": 1,
+      "message": "Done. There was a similar one in oat_file.cc that I updated as well.",
+      "parentUuid": "b794d70a_35d6da74",
+      "range": {
+        "startLine": 3164,
+        "startChar": 27,
+        "endLine": 3164,
+        "endChar": 30
+      },
+      "revId": "601e1bb742dad903dd145c189ecce78b89a70c72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e0cef84_90de601a",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-01-27T14:59:42Z",
       "side": 1,
       "message": "We could still\n\n  DCHECK(bcp_bss_info_offset_ \u003d\u003d 0u || bcp_bss_info_offset_ \u003e sizeof(OatHeader))\n      \u003c\u003c bcp_bss_info_offset_;",
+      "revId": "601e1bb742dad903dd145c189ecce78b89a70c72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df66fad_58762c92",
+        "filename": "runtime/oat.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-01-27T15:19:54Z",
+      "side": 1,
+      "message": "Done, added some extra printing info for good measure.",
+      "parentUuid": "9e0cef84_90de601a",
       "revId": "601e1bb742dad903dd145c189ecce78b89a70c72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
