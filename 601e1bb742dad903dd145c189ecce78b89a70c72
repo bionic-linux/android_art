@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1990062_cd9ad9df",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 2271,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-27T16:23:19Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "5046a7fa_44451b17",
+      "revId": "601e1bb742dad903dd145c189ecce78b89a70c72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b794d70a_35d6da74",
