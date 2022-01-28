@@ -33,6 +33,98 @@
       "message": "Vladimi, friendly TH ping.",
       "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4daeb8_2a2368d3",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-28T10:47:35Z",
+      "side": 1,
+      "message": "Add declaration to `entrypoint_utils.h`?",
+      "range": {
+        "startLine": 490,
+        "startChar": 25,
+        "endLine": 490,
+        "endChar": 46
+      },
+      "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7e8bfb_3d9a53c5",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-28T10:47:35Z",
+      "side": 1,
+      "message": "This would be a good time to check that this is indeed a vtable index:\n\n  DCHECK(resolved_method-\u003eIsCopied() ||\n         !resolved_method-\u003eGetDeclaringClass()-\u003eIsInterface());",
+      "range": {
+        "startLine": 526,
+        "startChar": 26,
+        "endLine": 526,
+        "endChar": 60
+      },
+      "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f436f27a_2fbffcb5",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-28T10:47:35Z",
+      "side": 1,
+      "message": "Every resolved superclass should have a vtable. Replace the condition with\n\n  DCHECK(super_class \u003d\u003d nullptr || super_class-\u003eHasVTable());\n\nbefore the `if`.",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 33
+      },
+      "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efdb51c5_aa01650b",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-28T10:47:35Z",
+      "side": 1,
+      "message": "You added this to `FindFieldFast()` but not `FindMethodFast()`?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
