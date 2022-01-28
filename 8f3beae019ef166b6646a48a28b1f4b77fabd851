@@ -46,6 +46,30 @@
       },
       "revId": "8f3beae019ef166b6646a48a28b1f4b77fabd851",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6525b2_48711b1a",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-01-28T15:36:33Z",
+      "side": 0,
+      "message": "Does not look dead to me. But our coverage of invalid bytecode is poor, so I\u0027m not surprised this is not tested.\n\nThere are only 23 \"invoke-super\" in `test/*/smali/*.smali`. How many actually reference an interface class?\n\nBut I\u0027m OK with leaving this edge case untested for now.",
+      "parentUuid": "f801d75f_10c8c8cd",
+      "range": {
+        "startLine": 577,
+        "startChar": 12,
+        "endLine": 577,
+        "endChar": 67
+      },
+      "revId": "8f3beae019ef166b6646a48a28b1f4b77fabd851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
