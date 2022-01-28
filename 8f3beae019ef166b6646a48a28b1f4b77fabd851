@@ -22,6 +22,30 @@
       },
       "revId": "8f3beae019ef166b6646a48a28b1f4b77fabd851",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f801d75f_10c8c8cd",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-01-28T15:16:19Z",
+      "side": 0,
+      "message": "My reading of the code is that this is dead code - and indeed there is no test hitting it.",
+      "parentUuid": "a75d9d7b_a0346b85",
+      "range": {
+        "startLine": 577,
+        "startChar": 12,
+        "endLine": 577,
+        "endChar": 67
+      },
+      "revId": "8f3beae019ef166b6646a48a28b1f4b77fabd851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
