@@ -16,6 +16,23 @@
       "message": "Vladimir, friendly ping.",
       "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcb2c05_4d1457bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-01-28T09:53:17Z",
+      "side": 1,
+      "message": "Vladimi, friendly TH ping.",
+      "revId": "2e114991de5cf008197a102a3f3eaaa12890a889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
