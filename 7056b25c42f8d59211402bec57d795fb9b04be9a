@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc48ab6_b8b7038d",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-02-01T20:40:08Z",
+      "side": 1,
+      "message": "We know that the OAT file returned here never is VDEX only?",
+      "range": {
+        "startLine": 824,
+        "startChar": 30,
+        "endLine": 824,
+        "endChar": 49
+      },
+      "revId": "7056b25c42f8d59211402bec57d795fb9b04be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51f3cb4_9f2bac95",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-02-01T20:40:08Z",
+      "side": 1,
+      "message": "So this is actually a VDEX name in this case?",
+      "range": {
+        "startLine": 866,
+        "startChar": 42,
+        "endLine": 866,
+        "endChar": 54
+      },
+      "revId": "7056b25c42f8d59211402bec57d795fb9b04be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
