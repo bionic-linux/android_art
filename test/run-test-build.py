@@ -61,7 +61,7 @@ def build_test(args, mode, dstdir):
   env = {
     "PATH": os.environ.get("PATH"),
     "ANDROID_BUILD_TOP": build_top,
-    "ART_TEST_RUN_TEST_BOOTCLASSPATH": join(build_top, args.bootclasspath),
+    "ART_TEST_RUN_TEST_BOOTCLASSPATH": join(build_top, args.classpath),
     "TEST_NAME":   os.path.basename(dstdir),
     "SOONG_ZIP":   join(build_top, "prebuilts/build-tools/linux-x86/bin/soong_zip"),
     "ZIPALIGN":    join(build_top, "prebuilts/build-tools/linux-x86/bin/zipalign"),
@@ -87,7 +87,7 @@ def main():
   parser.add_argument("--out", help="Path of the generated ZIP file with the build data")
   parser.add_argument('--mode', choices=['host', 'jvm', 'target'])
   parser.add_argument("--shard", help="Identifies subset of tests to build (00..99)")
-  parser.add_argument("--bootclasspath", help="JAR files used for javac compilation")
+  parser.add_argument("--classpath", help="JAR files used for javac compilation")
   args = parser.parse_args()
 
   with tempfile.TemporaryDirectory(prefix=os.path.basename(__file__)) as tmp:

@@ -40,7 +40,7 @@ def main():
               srcs: ["*{shard}-*/**/*"],
               defaults: ["art-run-test-data-defaults"],
               cmd: "$(location run-test-build.py) --out $(out) --mode {mode} --shard {shard} " +
-                  "--bootclasspath $(location :art-run-test-bootclasspath)",
+                  "--classpath $(location :art-run-test-bootclasspath)",
           }}
           """.format(name=name, mode=mode, shard=shard)))
       srcs = ("\n"+" "*8).join('":{}",'.format(n) for n in names)

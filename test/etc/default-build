@@ -188,7 +188,7 @@ def make_jasmin(out_directory, jasmin_sources):
 def javac_with_bootclasspath(args):
   flags = JAVAC_ARGS + ["-encoding", "utf8"]
   if BUILD_MODE != "jvm":
-    flags.extend(["-bootclasspath", ART_TEST_RUN_TEST_BOOTCLASSPATH])
+    flags.extend(["-classpath", ART_TEST_RUN_TEST_BOOTCLASSPATH])
   javac(flags + args)
 
 
@@ -255,10 +255,10 @@ if HAS_SRC_DEX2OAT_UNRESOLVED:
   os.makedirs("classes", exist_ok=True)
   os.makedirs("classes-ex")
   javac_with_bootclasspath([
-      "-implicit:none", "-sourcepath", "src-dex2oat-unresolved", "-d", "classes"
+      "-implicit:none", "-classpath", "src-dex2oat-unresolved", "-d", "classes"
   ] + find("src", "*.java"))
   javac_with_bootclasspath(
-      ["-implicit:none", "-sourcepath", "src", "-d", "classes-ex"] +
+      ["-implicit:none", "-classpath", "src", "-d", "classes-ex"] +
       find("src-dex2oat-unresolved", "*.java"))
   if NEED_DEX:
     make_dex("classes-ex")

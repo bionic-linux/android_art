@@ -7,7 +7,7 @@ java_genrule {
     srcs: ["*00-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 00 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -16,7 +16,7 @@ java_genrule {
     srcs: ["*01-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 01 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -25,7 +25,7 @@ java_genrule {
     srcs: ["*02-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 02 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -34,7 +34,7 @@ java_genrule {
     srcs: ["*03-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 03 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -43,7 +43,7 @@ java_genrule {
     srcs: ["*04-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 04 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -52,7 +52,7 @@ java_genrule {
     srcs: ["*05-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 05 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -61,7 +61,7 @@ java_genrule {
     srcs: ["*06-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 06 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -70,7 +70,7 @@ java_genrule {
     srcs: ["*07-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 07 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -79,7 +79,7 @@ java_genrule {
     srcs: ["*08-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 08 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -88,7 +88,7 @@ java_genrule {
     srcs: ["*09-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 09 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -97,7 +97,7 @@ java_genrule {
     srcs: ["*10-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 10 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -106,7 +106,7 @@ java_genrule {
     srcs: ["*11-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 11 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -115,7 +115,7 @@ java_genrule {
     srcs: ["*12-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 12 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -124,7 +124,7 @@ java_genrule {
     srcs: ["*13-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 13 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -133,7 +133,7 @@ java_genrule {
     srcs: ["*14-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 14 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -142,7 +142,7 @@ java_genrule {
     srcs: ["*15-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 15 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -151,7 +151,7 @@ java_genrule {
     srcs: ["*16-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 16 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -160,7 +160,7 @@ java_genrule {
     srcs: ["*17-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 17 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -169,7 +169,7 @@ java_genrule {
     srcs: ["*18-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 18 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -178,7 +178,7 @@ java_genrule {
     srcs: ["*19-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 19 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -187,7 +187,7 @@ java_genrule {
     srcs: ["*20-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 20 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -196,7 +196,7 @@ java_genrule {
     srcs: ["*21-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 21 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -205,7 +205,7 @@ java_genrule {
     srcs: ["*22-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 22 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -214,7 +214,7 @@ java_genrule {
     srcs: ["*23-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 23 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -223,7 +223,7 @@ java_genrule {
     srcs: ["*24-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 24 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -232,7 +232,7 @@ java_genrule {
     srcs: ["*25-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 25 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -241,7 +241,7 @@ java_genrule {
     srcs: ["*26-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 26 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -250,7 +250,7 @@ java_genrule {
     srcs: ["*27-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 27 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -259,7 +259,7 @@ java_genrule {
     srcs: ["*28-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 28 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -268,7 +268,7 @@ java_genrule {
     srcs: ["*29-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 29 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -277,7 +277,7 @@ java_genrule {
     srcs: ["*30-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 30 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -286,7 +286,7 @@ java_genrule {
     srcs: ["*31-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 31 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -295,7 +295,7 @@ java_genrule {
     srcs: ["*32-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 32 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -304,7 +304,7 @@ java_genrule {
     srcs: ["*33-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 33 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -313,7 +313,7 @@ java_genrule {
     srcs: ["*34-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 34 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -322,7 +322,7 @@ java_genrule {
     srcs: ["*35-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 35 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -331,7 +331,7 @@ java_genrule {
     srcs: ["*36-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 36 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -340,7 +340,7 @@ java_genrule {
     srcs: ["*37-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 37 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -349,7 +349,7 @@ java_genrule {
     srcs: ["*38-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 38 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -358,7 +358,7 @@ java_genrule {
     srcs: ["*39-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 39 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -367,7 +367,7 @@ java_genrule {
     srcs: ["*40-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 40 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -376,7 +376,7 @@ java_genrule {
     srcs: ["*41-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 41 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -385,7 +385,7 @@ java_genrule {
     srcs: ["*42-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 42 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -394,7 +394,7 @@ java_genrule {
     srcs: ["*43-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 43 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -403,7 +403,7 @@ java_genrule {
     srcs: ["*44-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 44 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -412,7 +412,7 @@ java_genrule {
     srcs: ["*45-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 45 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -421,7 +421,7 @@ java_genrule {
     srcs: ["*46-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 46 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -430,7 +430,7 @@ java_genrule {
     srcs: ["*47-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 47 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -439,7 +439,7 @@ java_genrule {
     srcs: ["*48-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 48 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -448,7 +448,7 @@ java_genrule {
     srcs: ["*49-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 49 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -457,7 +457,7 @@ java_genrule {
     srcs: ["*50-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 50 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -466,7 +466,7 @@ java_genrule {
     srcs: ["*51-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 51 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -475,7 +475,7 @@ java_genrule {
     srcs: ["*52-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 52 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -484,7 +484,7 @@ java_genrule {
     srcs: ["*53-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 53 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -493,7 +493,7 @@ java_genrule {
     srcs: ["*54-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 54 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -502,7 +502,7 @@ java_genrule {
     srcs: ["*55-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 55 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -511,7 +511,7 @@ java_genrule {
     srcs: ["*56-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 56 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -520,7 +520,7 @@ java_genrule {
     srcs: ["*57-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 57 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -529,7 +529,7 @@ java_genrule {
     srcs: ["*58-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 58 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -538,7 +538,7 @@ java_genrule {
     srcs: ["*59-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 59 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -547,7 +547,7 @@ java_genrule {
     srcs: ["*60-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 60 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -556,7 +556,7 @@ java_genrule {
     srcs: ["*61-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 61 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -565,7 +565,7 @@ java_genrule {
     srcs: ["*62-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 62 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -574,7 +574,7 @@ java_genrule {
     srcs: ["*63-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 63 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -583,7 +583,7 @@ java_genrule {
     srcs: ["*64-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 64 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -592,7 +592,7 @@ java_genrule {
     srcs: ["*65-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 65 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -601,7 +601,7 @@ java_genrule {
     srcs: ["*66-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 66 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -610,7 +610,7 @@ java_genrule {
     srcs: ["*67-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 67 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -619,7 +619,7 @@ java_genrule {
     srcs: ["*68-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 68 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -628,7 +628,7 @@ java_genrule {
     srcs: ["*69-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 69 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -637,7 +637,7 @@ java_genrule {
     srcs: ["*70-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 70 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -646,7 +646,7 @@ java_genrule {
     srcs: ["*71-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 71 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -655,7 +655,7 @@ java_genrule {
     srcs: ["*72-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 72 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -664,7 +664,7 @@ java_genrule {
     srcs: ["*73-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 73 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -673,7 +673,7 @@ java_genrule {
     srcs: ["*74-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 74 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -682,7 +682,7 @@ java_genrule {
     srcs: ["*75-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 75 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -691,7 +691,7 @@ java_genrule {
     srcs: ["*76-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 76 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -700,7 +700,7 @@ java_genrule {
     srcs: ["*77-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 77 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -709,7 +709,7 @@ java_genrule {
     srcs: ["*78-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 78 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -718,7 +718,7 @@ java_genrule {
     srcs: ["*79-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 79 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -727,7 +727,7 @@ java_genrule {
     srcs: ["*80-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 80 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -736,7 +736,7 @@ java_genrule {
     srcs: ["*81-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 81 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -745,7 +745,7 @@ java_genrule {
     srcs: ["*82-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 82 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -754,7 +754,7 @@ java_genrule {
     srcs: ["*83-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 83 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -763,7 +763,7 @@ java_genrule {
     srcs: ["*84-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 84 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -772,7 +772,7 @@ java_genrule {
     srcs: ["*85-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 85 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -781,7 +781,7 @@ java_genrule {
     srcs: ["*86-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 86 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -790,7 +790,7 @@ java_genrule {
     srcs: ["*87-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 87 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -799,7 +799,7 @@ java_genrule {
     srcs: ["*88-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 88 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -808,7 +808,7 @@ java_genrule {
     srcs: ["*89-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 89 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -817,7 +817,7 @@ java_genrule {
     srcs: ["*90-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 90 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -826,7 +826,7 @@ java_genrule {
     srcs: ["*91-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 91 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -835,7 +835,7 @@ java_genrule {
     srcs: ["*92-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 92 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -844,7 +844,7 @@ java_genrule {
     srcs: ["*93-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 93 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -853,7 +853,7 @@ java_genrule {
     srcs: ["*94-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 94 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -862,7 +862,7 @@ java_genrule {
     srcs: ["*95-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 95 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -871,7 +871,7 @@ java_genrule {
     srcs: ["*96-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 96 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -880,7 +880,7 @@ java_genrule {
     srcs: ["*97-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 97 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -889,7 +889,7 @@ java_genrule {
     srcs: ["*98-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 98 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -898,7 +898,7 @@ java_genrule {
     srcs: ["*99-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode host --shard 99 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1017,7 +1017,7 @@ java_genrule {
     srcs: ["*00-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 00 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1026,7 +1026,7 @@ java_genrule {
     srcs: ["*01-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 01 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1035,7 +1035,7 @@ java_genrule {
     srcs: ["*02-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 02 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1044,7 +1044,7 @@ java_genrule {
     srcs: ["*03-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 03 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1053,7 +1053,7 @@ java_genrule {
     srcs: ["*04-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 04 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1062,7 +1062,7 @@ java_genrule {
     srcs: ["*05-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 05 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1071,7 +1071,7 @@ java_genrule {
     srcs: ["*06-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 06 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1080,7 +1080,7 @@ java_genrule {
     srcs: ["*07-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 07 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1089,7 +1089,7 @@ java_genrule {
     srcs: ["*08-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 08 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1098,7 +1098,7 @@ java_genrule {
     srcs: ["*09-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 09 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1107,7 +1107,7 @@ java_genrule {
     srcs: ["*10-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 10 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1116,7 +1116,7 @@ java_genrule {
     srcs: ["*11-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 11 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1125,7 +1125,7 @@ java_genrule {
     srcs: ["*12-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 12 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1134,7 +1134,7 @@ java_genrule {
     srcs: ["*13-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 13 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1143,7 +1143,7 @@ java_genrule {
     srcs: ["*14-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 14 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1152,7 +1152,7 @@ java_genrule {
     srcs: ["*15-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 15 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1161,7 +1161,7 @@ java_genrule {
     srcs: ["*16-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 16 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1170,7 +1170,7 @@ java_genrule {
     srcs: ["*17-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 17 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1179,7 +1179,7 @@ java_genrule {
     srcs: ["*18-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 18 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1188,7 +1188,7 @@ java_genrule {
     srcs: ["*19-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 19 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1197,7 +1197,7 @@ java_genrule {
     srcs: ["*20-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 20 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1206,7 +1206,7 @@ java_genrule {
     srcs: ["*21-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 21 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1215,7 +1215,7 @@ java_genrule {
     srcs: ["*22-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 22 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1224,7 +1224,7 @@ java_genrule {
     srcs: ["*23-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 23 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1233,7 +1233,7 @@ java_genrule {
     srcs: ["*24-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 24 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1242,7 +1242,7 @@ java_genrule {
     srcs: ["*25-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 25 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1251,7 +1251,7 @@ java_genrule {
     srcs: ["*26-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 26 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1260,7 +1260,7 @@ java_genrule {
     srcs: ["*27-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 27 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1269,7 +1269,7 @@ java_genrule {
     srcs: ["*28-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 28 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1278,7 +1278,7 @@ java_genrule {
     srcs: ["*29-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 29 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1287,7 +1287,7 @@ java_genrule {
     srcs: ["*30-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 30 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1296,7 +1296,7 @@ java_genrule {
     srcs: ["*31-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 31 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1305,7 +1305,7 @@ java_genrule {
     srcs: ["*32-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 32 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1314,7 +1314,7 @@ java_genrule {
     srcs: ["*33-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 33 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1323,7 +1323,7 @@ java_genrule {
     srcs: ["*34-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 34 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1332,7 +1332,7 @@ java_genrule {
     srcs: ["*35-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 35 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1341,7 +1341,7 @@ java_genrule {
     srcs: ["*36-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 36 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1350,7 +1350,7 @@ java_genrule {
     srcs: ["*37-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 37 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1359,7 +1359,7 @@ java_genrule {
     srcs: ["*38-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 38 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1368,7 +1368,7 @@ java_genrule {
     srcs: ["*39-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 39 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1377,7 +1377,7 @@ java_genrule {
     srcs: ["*40-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 40 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1386,7 +1386,7 @@ java_genrule {
     srcs: ["*41-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 41 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1395,7 +1395,7 @@ java_genrule {
     srcs: ["*42-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 42 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1404,7 +1404,7 @@ java_genrule {
     srcs: ["*43-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 43 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1413,7 +1413,7 @@ java_genrule {
     srcs: ["*44-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 44 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1422,7 +1422,7 @@ java_genrule {
     srcs: ["*45-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 45 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1431,7 +1431,7 @@ java_genrule {
     srcs: ["*46-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 46 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1440,7 +1440,7 @@ java_genrule {
     srcs: ["*47-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 47 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1449,7 +1449,7 @@ java_genrule {
     srcs: ["*48-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 48 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1458,7 +1458,7 @@ java_genrule {
     srcs: ["*49-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 49 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1467,7 +1467,7 @@ java_genrule {
     srcs: ["*50-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 50 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1476,7 +1476,7 @@ java_genrule {
     srcs: ["*51-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 51 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1485,7 +1485,7 @@ java_genrule {
     srcs: ["*52-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 52 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1494,7 +1494,7 @@ java_genrule {
     srcs: ["*53-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 53 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1503,7 +1503,7 @@ java_genrule {
     srcs: ["*54-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 54 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1512,7 +1512,7 @@ java_genrule {
     srcs: ["*55-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 55 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1521,7 +1521,7 @@ java_genrule {
     srcs: ["*56-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 56 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1530,7 +1530,7 @@ java_genrule {
     srcs: ["*57-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 57 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1539,7 +1539,7 @@ java_genrule {
     srcs: ["*58-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 58 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1548,7 +1548,7 @@ java_genrule {
     srcs: ["*59-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 59 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1557,7 +1557,7 @@ java_genrule {
     srcs: ["*60-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 60 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1566,7 +1566,7 @@ java_genrule {
     srcs: ["*61-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 61 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1575,7 +1575,7 @@ java_genrule {
     srcs: ["*62-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 62 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1584,7 +1584,7 @@ java_genrule {
     srcs: ["*63-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 63 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1593,7 +1593,7 @@ java_genrule {
     srcs: ["*64-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 64 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1602,7 +1602,7 @@ java_genrule {
     srcs: ["*65-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 65 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1611,7 +1611,7 @@ java_genrule {
     srcs: ["*66-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 66 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1620,7 +1620,7 @@ java_genrule {
     srcs: ["*67-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 67 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1629,7 +1629,7 @@ java_genrule {
     srcs: ["*68-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 68 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1638,7 +1638,7 @@ java_genrule {
     srcs: ["*69-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 69 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1647,7 +1647,7 @@ java_genrule {
     srcs: ["*70-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 70 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1656,7 +1656,7 @@ java_genrule {
     srcs: ["*71-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 71 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1665,7 +1665,7 @@ java_genrule {
     srcs: ["*72-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 72 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1674,7 +1674,7 @@ java_genrule {
     srcs: ["*73-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 73 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1683,7 +1683,7 @@ java_genrule {
     srcs: ["*74-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 74 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1692,7 +1692,7 @@ java_genrule {
     srcs: ["*75-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 75 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1701,7 +1701,7 @@ java_genrule {
     srcs: ["*76-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 76 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1710,7 +1710,7 @@ java_genrule {
     srcs: ["*77-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 77 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1719,7 +1719,7 @@ java_genrule {
     srcs: ["*78-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 78 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1728,7 +1728,7 @@ java_genrule {
     srcs: ["*79-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 79 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1737,7 +1737,7 @@ java_genrule {
     srcs: ["*80-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 80 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1746,7 +1746,7 @@ java_genrule {
     srcs: ["*81-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 81 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1755,7 +1755,7 @@ java_genrule {
     srcs: ["*82-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 82 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1764,7 +1764,7 @@ java_genrule {
     srcs: ["*83-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 83 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1773,7 +1773,7 @@ java_genrule {
     srcs: ["*84-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 84 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1782,7 +1782,7 @@ java_genrule {
     srcs: ["*85-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 85 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1791,7 +1791,7 @@ java_genrule {
     srcs: ["*86-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 86 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1800,7 +1800,7 @@ java_genrule {
     srcs: ["*87-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 87 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1809,7 +1809,7 @@ java_genrule {
     srcs: ["*88-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 88 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1818,7 +1818,7 @@ java_genrule {
     srcs: ["*89-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 89 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1827,7 +1827,7 @@ java_genrule {
     srcs: ["*90-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 90 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1836,7 +1836,7 @@ java_genrule {
     srcs: ["*91-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 91 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1845,7 +1845,7 @@ java_genrule {
     srcs: ["*92-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 92 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1854,7 +1854,7 @@ java_genrule {
     srcs: ["*93-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 93 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1863,7 +1863,7 @@ java_genrule {
     srcs: ["*94-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 94 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1872,7 +1872,7 @@ java_genrule {
     srcs: ["*95-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 95 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1881,7 +1881,7 @@ java_genrule {
     srcs: ["*96-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 96 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1890,7 +1890,7 @@ java_genrule {
     srcs: ["*97-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 97 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1899,7 +1899,7 @@ java_genrule {
     srcs: ["*98-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 98 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -1908,7 +1908,7 @@ java_genrule {
     srcs: ["*99-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode target --shard 99 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2027,7 +2027,7 @@ java_genrule {
     srcs: ["*00-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 00 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2036,7 +2036,7 @@ java_genrule {
     srcs: ["*01-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 01 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2045,7 +2045,7 @@ java_genrule {
     srcs: ["*02-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 02 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2054,7 +2054,7 @@ java_genrule {
     srcs: ["*03-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 03 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2063,7 +2063,7 @@ java_genrule {
     srcs: ["*04-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 04 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2072,7 +2072,7 @@ java_genrule {
     srcs: ["*05-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 05 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2081,7 +2081,7 @@ java_genrule {
     srcs: ["*06-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 06 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2090,7 +2090,7 @@ java_genrule {
     srcs: ["*07-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 07 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2099,7 +2099,7 @@ java_genrule {
     srcs: ["*08-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 08 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2108,7 +2108,7 @@ java_genrule {
     srcs: ["*09-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 09 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2117,7 +2117,7 @@ java_genrule {
     srcs: ["*10-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 10 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2126,7 +2126,7 @@ java_genrule {
     srcs: ["*11-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 11 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2135,7 +2135,7 @@ java_genrule {
     srcs: ["*12-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 12 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2144,7 +2144,7 @@ java_genrule {
     srcs: ["*13-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 13 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2153,7 +2153,7 @@ java_genrule {
     srcs: ["*14-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 14 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2162,7 +2162,7 @@ java_genrule {
     srcs: ["*15-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 15 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2171,7 +2171,7 @@ java_genrule {
     srcs: ["*16-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 16 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2180,7 +2180,7 @@ java_genrule {
     srcs: ["*17-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 17 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2189,7 +2189,7 @@ java_genrule {
     srcs: ["*18-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 18 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2198,7 +2198,7 @@ java_genrule {
     srcs: ["*19-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 19 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2207,7 +2207,7 @@ java_genrule {
     srcs: ["*20-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 20 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2216,7 +2216,7 @@ java_genrule {
     srcs: ["*21-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 21 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2225,7 +2225,7 @@ java_genrule {
     srcs: ["*22-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 22 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2234,7 +2234,7 @@ java_genrule {
     srcs: ["*23-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 23 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2243,7 +2243,7 @@ java_genrule {
     srcs: ["*24-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 24 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2252,7 +2252,7 @@ java_genrule {
     srcs: ["*25-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 25 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2261,7 +2261,7 @@ java_genrule {
     srcs: ["*26-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 26 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2270,7 +2270,7 @@ java_genrule {
     srcs: ["*27-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 27 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2279,7 +2279,7 @@ java_genrule {
     srcs: ["*28-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 28 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2288,7 +2288,7 @@ java_genrule {
     srcs: ["*29-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 29 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2297,7 +2297,7 @@ java_genrule {
     srcs: ["*30-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 30 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2306,7 +2306,7 @@ java_genrule {
     srcs: ["*31-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 31 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2315,7 +2315,7 @@ java_genrule {
     srcs: ["*32-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 32 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2324,7 +2324,7 @@ java_genrule {
     srcs: ["*33-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 33 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2333,7 +2333,7 @@ java_genrule {
     srcs: ["*34-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 34 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2342,7 +2342,7 @@ java_genrule {
     srcs: ["*35-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 35 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2351,7 +2351,7 @@ java_genrule {
     srcs: ["*36-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 36 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2360,7 +2360,7 @@ java_genrule {
     srcs: ["*37-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 37 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2369,7 +2369,7 @@ java_genrule {
     srcs: ["*38-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 38 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2378,7 +2378,7 @@ java_genrule {
     srcs: ["*39-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 39 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2387,7 +2387,7 @@ java_genrule {
     srcs: ["*40-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 40 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2396,7 +2396,7 @@ java_genrule {
     srcs: ["*41-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 41 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2405,7 +2405,7 @@ java_genrule {
     srcs: ["*42-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 42 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2414,7 +2414,7 @@ java_genrule {
     srcs: ["*43-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 43 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2423,7 +2423,7 @@ java_genrule {
     srcs: ["*44-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 44 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2432,7 +2432,7 @@ java_genrule {
     srcs: ["*45-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 45 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2441,7 +2441,7 @@ java_genrule {
     srcs: ["*46-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 46 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2450,7 +2450,7 @@ java_genrule {
     srcs: ["*47-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 47 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2459,7 +2459,7 @@ java_genrule {
     srcs: ["*48-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 48 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2468,7 +2468,7 @@ java_genrule {
     srcs: ["*49-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 49 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2477,7 +2477,7 @@ java_genrule {
     srcs: ["*50-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 50 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2486,7 +2486,7 @@ java_genrule {
     srcs: ["*51-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 51 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2495,7 +2495,7 @@ java_genrule {
     srcs: ["*52-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 52 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2504,7 +2504,7 @@ java_genrule {
     srcs: ["*53-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 53 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2513,7 +2513,7 @@ java_genrule {
     srcs: ["*54-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 54 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2522,7 +2522,7 @@ java_genrule {
     srcs: ["*55-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 55 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2531,7 +2531,7 @@ java_genrule {
     srcs: ["*56-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 56 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2540,7 +2540,7 @@ java_genrule {
     srcs: ["*57-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 57 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2549,7 +2549,7 @@ java_genrule {
     srcs: ["*58-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 58 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2558,7 +2558,7 @@ java_genrule {
     srcs: ["*59-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 59 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2567,7 +2567,7 @@ java_genrule {
     srcs: ["*60-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 60 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2576,7 +2576,7 @@ java_genrule {
     srcs: ["*61-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 61 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2585,7 +2585,7 @@ java_genrule {
     srcs: ["*62-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 62 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2594,7 +2594,7 @@ java_genrule {
     srcs: ["*63-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 63 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2603,7 +2603,7 @@ java_genrule {
     srcs: ["*64-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 64 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2612,7 +2612,7 @@ java_genrule {
     srcs: ["*65-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 65 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2621,7 +2621,7 @@ java_genrule {
     srcs: ["*66-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 66 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2630,7 +2630,7 @@ java_genrule {
     srcs: ["*67-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 67 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2639,7 +2639,7 @@ java_genrule {
     srcs: ["*68-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 68 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2648,7 +2648,7 @@ java_genrule {
     srcs: ["*69-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 69 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2657,7 +2657,7 @@ java_genrule {
     srcs: ["*70-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 70 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2666,7 +2666,7 @@ java_genrule {
     srcs: ["*71-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 71 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2675,7 +2675,7 @@ java_genrule {
     srcs: ["*72-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 72 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2684,7 +2684,7 @@ java_genrule {
     srcs: ["*73-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 73 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2693,7 +2693,7 @@ java_genrule {
     srcs: ["*74-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 74 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2702,7 +2702,7 @@ java_genrule {
     srcs: ["*75-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 75 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2711,7 +2711,7 @@ java_genrule {
     srcs: ["*76-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 76 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2720,7 +2720,7 @@ java_genrule {
     srcs: ["*77-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 77 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2729,7 +2729,7 @@ java_genrule {
     srcs: ["*78-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 78 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2738,7 +2738,7 @@ java_genrule {
     srcs: ["*79-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 79 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2747,7 +2747,7 @@ java_genrule {
     srcs: ["*80-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 80 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2756,7 +2756,7 @@ java_genrule {
     srcs: ["*81-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 81 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2765,7 +2765,7 @@ java_genrule {
     srcs: ["*82-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 82 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2774,7 +2774,7 @@ java_genrule {
     srcs: ["*83-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 83 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2783,7 +2783,7 @@ java_genrule {
     srcs: ["*84-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 84 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2792,7 +2792,7 @@ java_genrule {
     srcs: ["*85-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 85 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2801,7 +2801,7 @@ java_genrule {
     srcs: ["*86-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 86 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2810,7 +2810,7 @@ java_genrule {
     srcs: ["*87-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 87 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2819,7 +2819,7 @@ java_genrule {
     srcs: ["*88-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 88 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2828,7 +2828,7 @@ java_genrule {
     srcs: ["*89-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 89 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2837,7 +2837,7 @@ java_genrule {
     srcs: ["*90-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 90 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2846,7 +2846,7 @@ java_genrule {
     srcs: ["*91-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 91 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2855,7 +2855,7 @@ java_genrule {
     srcs: ["*92-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 92 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2864,7 +2864,7 @@ java_genrule {
     srcs: ["*93-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 93 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2873,7 +2873,7 @@ java_genrule {
     srcs: ["*94-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 94 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2882,7 +2882,7 @@ java_genrule {
     srcs: ["*95-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 95 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2891,7 +2891,7 @@ java_genrule {
     srcs: ["*96-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 96 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2900,7 +2900,7 @@ java_genrule {
     srcs: ["*97-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 97 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2909,7 +2909,7 @@ java_genrule {
     srcs: ["*98-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 98 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
@@ -2918,7 +2918,7 @@ java_genrule {
     srcs: ["*99-*/**/*"],
     defaults: ["art-run-test-data-defaults"],
     cmd: "$(location run-test-build.py) --out $(out) --mode jvm --shard 99 " +
-        "--bootclasspath $(location :art-run-test-bootclasspath)",
+        "--classpath $(location :art-run-test-bootclasspath)",
 }
 
 java_genrule {
