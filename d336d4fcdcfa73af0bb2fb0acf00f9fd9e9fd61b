@@ -16,6 +16,24 @@
       "message": "SGTM. Note that you\u0027ll have to regenerate ART MTS as well, by running `art/test/utils/regen-test-files -m` and uploading the changes to project `test/mts` for them to take effect (see e.g. https://android-review.googlesource.com/c/platform/test/mts/+/1938647/).",
       "revId": "d336d4fcdcfa73af0bb2fb0acf00f9fd9e9fd61b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "349a9b54_04e07ea1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-01T18:25:05Z",
+      "side": 1,
+      "message": "Thanks! done here:\nhttps://android-review.googlesource.com/c/platform/test/mts/+/1967345",
+      "parentUuid": "0645b43c_d1f78698",
+      "revId": "d336d4fcdcfa73af0bb2fb0acf00f9fd9e9fd61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
