@@ -838,6 +838,7 @@ static jobjectArray DexFile_getDexFileOutputPaths(JNIEnv* env,
     }
   }
 
+  bool is_vdex_only = false;
   // If we did not find a boot classpath oat file, lookup the oat file for an app.
   if (oat_filename.empty()) {
     OatFileAssistant oat_file_assistant(filename.c_str(),
@@ -851,26 +852,33 @@ static jobjectArray DexFile_getDexFileOutputPaths(JNIEnv* env,
     }
 
     oat_filename = best_oat_file->GetLocation();
-  }
-  vdex_filename = GetVdexFilename(oat_filename);
-
-  ScopedLocalRef<jstring> jvdexFilename(env, env->NewStringUTF(vdex_filename.c_str()));
-  if (jvdexFilename.get() == nullptr) {
-    return nullptr;
+    is_vdex_only = best_oat_file->IsBackedByVdexOnly();
   }
   ScopedLocalRef<jstring> joatFilename(env, env->NewStringUTF(oat_filename.c_str()));
   if (joatFilename.get() == nullptr) {
     return nullptr;
   }
 
-  // Now create output array and copy the set into it.
-  jobjectArray result = env->NewObjectArray(2,
-                                            WellKnownClasses::java_lang_String,
-                                            nullptr);
-  env->SetObjectArrayElement(result, 0, jvdexFilename.get());
-  env->SetObjectArrayElement(result, 1, joatFilename.get());
+  if (is_vdex_only) {
+    jobjectArray result = env->NewObjectArray(1,
+                                              WellKnownClasses::java_lang_String,
+                                              nullptr);
+    env->SetObjectArrayElement(result, 0, joatFilename.get());
+    return result;
+  } else {
+    vdex_filename = GetVdexFilename(oat_filename);
+    ScopedLocalRef<jstring> jvdexFilename(env, env->NewStringUTF(vdex_filename.c_str()));
+    if (jvdexFilename.get() == nullptr) {
+      return nullptr;
+    }
 
-  return result;
+    jobjectArray result = env->NewObjectArray(2,
+                                              WellKnownClasses::java_lang_String,
+                                              nullptr);
+    env->SetObjectArrayElement(result, 0, jvdexFilename.get());
+    env->SetObjectArrayElement(result, 1, joatFilename.get());
+    return result;
+  }
 }
 
 static jlong DexFile_getStaticSizeOfDexFile(JNIEnv* env, jclass, jobject cookie) {
