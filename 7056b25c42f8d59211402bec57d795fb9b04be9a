@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f24ad9bf_1de1fbaf",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-02T12:15:39Z",
+      "side": 1,
+      "message": "Oh right, good catch! Done.",
+      "parentUuid": "0f951fa5_3d406dea",
+      "range": {
+        "startLine": 824,
+        "startChar": 30,
+        "endLine": 824,
+        "endChar": 49
+      },
+      "revId": "7056b25c42f8d59211402bec57d795fb9b04be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b51f3cb4_9f2bac95",
