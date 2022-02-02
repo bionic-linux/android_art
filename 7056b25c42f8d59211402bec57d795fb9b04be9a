@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f951fa5_3d406dea",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-02-02T11:49:03Z",
+      "side": 1,
+      "message": "In the if clause at 843, is_vdex_only is set from IsBackedByVdexOnly, but for the oat_filename that is set on 830 from this OatFile it\u0027s not - it\u0027s instead assumed false from the initialisation on line 841. That\u0027s why I ask.\n\nIow, moving the is_vdex_only declaration up before this loop and copying the assignment on line 855 to 832 would avoid this worry.",
+      "parentUuid": "469b1779_40f50f94",
+      "range": {
+        "startLine": 824,
+        "startChar": 30,
+        "endLine": 824,
+        "endChar": 49
+      },
+      "revId": "7056b25c42f8d59211402bec57d795fb9b04be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b51f3cb4_9f2bac95",
         "filename": "runtime/native/dalvik_system_DexFile.cc",
         "patchSetId": 1
