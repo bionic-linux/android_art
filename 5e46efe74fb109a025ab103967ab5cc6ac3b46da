@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddbc7f18_807ba62d",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-02-02T09:53:11Z",
+      "side": 1,
+      "message": "This immediately slows down `ArtMethod::GetDexCache()`. Did you measure the impact on essentially everything?\n\n(Except the new method linking where I\u0027m deliberately avoiding `ArtMethod::GetDexCache()` and go through the declaring class.)",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 1
+      },
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f627b8e_11966e42",
         "filename": "runtime/art_method.cc",
         "patchSetId": 1
