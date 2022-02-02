@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fad5d8_ab04d6d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-02T09:24:09Z",
+      "side": 1,
+      "message": "Thanks! lgtm.",
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f627b8e_11966e42",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-02T09:24:09Z",
+      "side": 1,
+      "message": "just for my understanding, I suppose there aren\u0027t any free bits elsewhere to encode the stack frame size right?",
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c523991c_ab66af9c",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-02T09:24:09Z",
+      "side": 1,
+      "message": "Maybe a DCHECK here that it is InvokeObsoleteMethodStub?",
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
