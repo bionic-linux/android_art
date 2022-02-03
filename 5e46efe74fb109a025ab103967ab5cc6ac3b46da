@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e59ec4c_132201ee",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-03T17:47:21Z",
+      "side": 1,
+      "message": "It\u0027s still there on golem, and runs for jit / aot configurations. The patch run doesn\u0027t show a difference.",
+      "parentUuid": "403c744d_5574645b",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 1
+      },
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f627b8e_11966e42",
         "filename": "runtime/art_method.cc",
         "patchSetId": 1
