@@ -18,7 +18,7 @@
 
 #include "arch/arm64/asm_support_arm64.h"
 #include "arch/instruction_set.h"
-
+#include "base/memory_region.h"
 #include "code_simulator_container.h"
 
 using namespace vixl::aarch64;  // NOLINT(build/namespaces)
@@ -56,7 +56,9 @@ extern "C" uint64_t artQuickGenericJniEndTrampoline(Thread* self,
                                                     uint64_t result_fp)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
-extern "C" void artQuickGenericJniTrampolineSimulator(void* one, void* two)
+extern "C" uint64_t artQuickGenericJniTrampolineSimulator(uint64_t native_code_ptr,
+                                                          void* simulated_reserved_area,
+                                                          void* out_fp_result)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 extern "C" void artThrowDivZeroFromCode(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -137,6 +139,15 @@ int64_t BasicCodeSimulatorArm64::GetCReturnInt64() const {
 }
 
 #ifdef ART_USE_SIMULATOR
+
+// This is a placeholder function which is never executed; its address is used to intercept
+// native call as part of genericJNI trampoline.
+NO_RETURN static void artArm64SimulatorGenericJNIPlaceholder(
+    uint64_t native_code_ptr ATTRIBUTE_UNUSED,
+    ArtMethod** simulated_reserved_area ATTRIBUTE_UNUSED,
+    Thread* self ATTRIBUTE_UNUSED) {
+  UNREACHABLE();
+}
 
 // This class is used to generate arm64 assembly entrypoints during runtime - to be used
 // for simulator.
@@ -1121,6 +1132,15 @@ class VIXLAsmQuickEntryPointBuilder {
     //     The bottom of the reserved area contains values for arg registers,
     //     hidden arg register and SP for out args for the call.
 
+    __ cbz(x0, &Lexception_in_native);
+
+    // x0 as first argument - code pointer.
+    __ mov(x1, sp);
+    __ mov(x2, xSELF);
+    // Call to a placeholder function, simulator will intercept it and process both the native
+    // call and a call to artQuickGenericJniEndTrampoline.
+    Emit_Call(artArm64SimulatorGenericJNIPlaceholder);
+
     // Pending exceptions possible.
     __ ldr(x2, MemOperand(xSELF, THREAD_EXCEPTION_OFFSET));   // Get exception field.
     __ cbnz(x2, &Lexception_in_native);
@@ -1462,6 +1482,90 @@ class CustomSimulator final: public Simulator {
   int64_t get_fp() const {
     return ReadXRegister(kFp);
   }
+
+  template<typename T>
+  static void* AddressOf(T* arg) {
+    return reinterpret_cast<void*>(arg);
+  }
+
+  // Override Simulator::VisitUnconditionalBranchToRegister to handle any runtime invokes
+  // which can be simulated.
+  void VisitUnconditionalBranchToRegister(const vixl::aarch64::Instruction* instr) override
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (instr->Mask(UnconditionalBranchToRegisterMask) == BLR) {
+      void* target = reinterpret_cast<void*>(ReadXRegister(instr->GetRn()));
+      auto next_instr = instr->GetNextInstruction();
+      if (target == AddressOf(artQuickResolutionTrampoline)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artQuickResolutionTrampoline);
+      } else if (target == AddressOf(artQuickToInterpreterBridge)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artQuickToInterpreterBridge);
+      } else if (target == reinterpret_cast<const void*>(artQuickGenericJniTrampoline)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artQuickGenericJniTrampoline);
+      } else if (target == reinterpret_cast<const void*>(artArm64SimulatorGenericJNIPlaceholder)) {
+        WriteLr(next_instr);
+
+        uint64_t native_code_ptr = static_cast<uint64_t>(ReadXRegister(0));
+        ArtMethod** simulated_reserved_area = reinterpret_cast<ArtMethod**>(ReadXRegister(1));
+        Thread* self = reinterpret_cast<Thread*>(ReadXRegister(2));
+
+        uint64_t fp_result = 0.0;
+        int64_t gpr_result = artQuickGenericJniTrampolineSimulator(
+            native_code_ptr,
+            reinterpret_cast<void*>(simulated_reserved_area),
+            reinterpret_cast<void*>(&fp_result));
+
+        jvalue jval;
+        jval.j = gpr_result;
+        uint64_t result_end = artQuickGenericJniEndTrampoline(self, jval, fp_result);
+
+        WriteXRegister(0, result_end);
+        WriteDRegister(0, bit_cast<double>(result_end));
+      } else if (target == AddressOf(artThrowDivZeroFromCode)) {
+        WriteLr(next_instr);
+        RuntimeCallVoid(artThrowDivZeroFromCode);
+      } else if (target == AddressOf(artDeliverPendingExceptionFromCode)) {
+        WriteLr(next_instr);
+        RuntimeCallVoid(artDeliverPendingExceptionFromCode);
+      } else if (target == AddressOf(artContextCopyForLongJump)) {
+        WriteLr(next_instr);
+        RuntimeCallVoid(artContextCopyForLongJump);
+      } else if (target == AddressOf(artInstrumentationMethodEntryFromCode)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artInstrumentationMethodEntryFromCode);
+      } else if (target == AddressOf(artInstrumentationMethodExitFromCode)) {
+        WriteLr(next_instr);
+
+        Thread* self = reinterpret_cast<Thread*>(ReadXRegister(0));
+        ArtMethod** sp = reinterpret_cast<ArtMethod**>(ReadXRegister(1));
+        uintptr_t* gpr_result = reinterpret_cast<uintptr_t*>(ReadXRegister(2));
+        uintptr_t* fpr_result = reinterpret_cast<uintptr_t*>(ReadXRegister(3));
+
+        TwoWordReturn res = artInstrumentationMethodExitFromCode(self, sp, gpr_result, fpr_result);
+
+        // Method pointer.
+        WriteXRegister(0, res.lo);
+        // Code pointer.
+        WriteXRegister(1, res.hi);
+      } else if (target == AddressOf(artQuickProxyInvokeHandler)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artQuickProxyInvokeHandler);
+      } else if (target == AddressOf(artInvokeObsoleteMethod)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artInvokeObsoleteMethod);
+      } else {
+        // For branching to fixed addresses or labels, nothing has changed.
+        Simulator::VisitUnconditionalBranchToRegister(instr);
+        return;
+      }
+      WritePc(next_instr);  // aarch64 return
+      return;
+    }
+    Simulator::VisitUnconditionalBranchToRegister(instr);
+    return;
+  }
 };
 
 CodeSimulatorArm64* CodeSimulatorArm64::CreateCodeSimulatorArm64() {
@@ -1492,6 +1596,55 @@ size_t CodeSimulatorArm64::GetStackSize() {
   return GetSimulator()->GetStackSize();
 }
 
+void CodeSimulatorArm64::Invoke(ArtMethod* method,
+                                uint32_t* args,
+                                uint32_t args_size_in_bytes,
+                                Thread* self,
+                                JValue* result,
+                                const char* shorty,
+                                bool isStatic)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  // ARM64 simulator only supports 64-bit host machines. Because:
+  //   1) vixl simulator is not tested on 32-bit host machines.
+  //   2) Data structures in ART have different representations for 32/64-bit machines.
+  DCHECK(sizeof(args) == sizeof(int64_t));
+
+  if (VLOG_IS_ON(simulator)) {
+    VLOG(simulator) << "\nVIXL_SIMULATOR simulate: " << method->PrettyMethod();
+  }
+
+  /*  extern "C"
+   *     void art_quick_invoke_static_stub(ArtMethod *method,   x0
+   *                                       uint32_t  *args,     x1
+   *                                       uint32_t argsize,    w2
+   *                                       Thread *self,        x3
+   *                                       JValue *result,      x4
+   *                                       char   *shorty);     x5 */
+  CustomSimulator* simulator = GetSimulator();
+  size_t arg_no = 0;
+  simulator->WriteXRegister(arg_no++, reinterpret_cast<uint64_t>(method));
+  simulator->WriteXRegister(arg_no++, reinterpret_cast<uint64_t>(args));
+  simulator->WriteWRegister(arg_no++, args_size_in_bytes);
+  simulator->WriteXRegister(arg_no++, reinterpret_cast<uint64_t>(self));
+  simulator->WriteXRegister(arg_no++, reinterpret_cast<uint64_t>(result));
+  simulator->WriteXRegister(arg_no++, reinterpret_cast<uint64_t>(shorty));
+
+  // The simulator will stop (and return from RunFrom) when it encounters pc == 0.
+  simulator->WriteLr(0);
+
+  auto ep_manager = Runtime::Current()->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  int64_t quick_code;
+
+  if (isStatic) {
+    quick_code = reinterpret_cast<int64_t>(ep_manager->GetInvokeStaticStub());
+  } else {
+    quick_code = reinterpret_cast<int64_t>(ep_manager->GetInvokeStub());
+  }
+
+  DCHECK_NE(quick_code, 0);
+  RunFrom(quick_code);
+}
+
 SimulatorEntryPointsManagerArm64*
 SimulatorEntryPointsManagerArm64::CreateSimulatorEntryPointsManagerArm64() {
   if (kCanSimulate) {
@@ -1502,15 +1655,63 @@ SimulatorEntryPointsManagerArm64::CreateSimulatorEntryPointsManagerArm64() {
 }
 
 SimulatorEntryPointsManagerArm64::~SimulatorEntryPointsManagerArm64() {
+  DeleteEntryPointBuffer(invoke_stub_);
+  DeleteEntryPointBuffer(invoke_static_stub_);
+  DeleteEntryPointBuffer(long_jump_stub_);
+  DeleteEntryPointBuffer(pending_exception_stub_);
+  DeleteEntryPointBuffer(deoptimize_stub_);
+  DeleteEntryPointBuffer(instrumentation_entry_stub_);
+  DeleteEntryPointBuffer(instrumentation_exit_stub_);
+  DeleteEntryPointBuffer(proxy_invoke_stub_);
+  DeleteEntryPointBuffer(invoke_obsolete_stub_);
+
+  DeleteEntryPointBuffer(entry_points_.pQuickResolutionTrampoline);
+  DeleteEntryPointBuffer(entry_points_.pQuickToInterpreterBridge);
+  DeleteEntryPointBuffer(entry_points_.pQuickGenericJniTrampoline);
+  DeleteEntryPointBuffer(entry_points_.pThrowDivZero);
 }
 
 void SimulatorEntryPointsManagerArm64::InitCustomEntryPoints() {
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_invoke_stub>(&invoke_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_invoke_static_stub>(&invoke_static_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_do_long_jump>(&long_jump_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_deliver_pending_exception>(&pending_exception_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_deoptimize>(&deoptimize_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_instrumentation_exit>(
+          &instrumentation_exit_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_instrumentation_entry>(
+          &instrumentation_entry_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_proxy_invoke_handler>(&proxy_invoke_stub_);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_invoke_obsolete_method_stub>(&invoke_obsolete_stub_);
+
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_resolution_trampoline>(
+          &entry_points_.pQuickResolutionTrampoline);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_to_interpreter_bridge>(
+          &entry_points_.pQuickToInterpreterBridge);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_generic_jni_trampoline>(
+          &entry_points_.pQuickGenericJniTrampoline);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+     &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_throw_div_zero>(&entry_points_.pThrowDivZero);
 }
 
 void SimulatorEntryPointsManagerArm64::UpdateOthersEntryPoints(
     QuickEntryPoints* others_entry_points) const {
-  // No entrypoints to update (yet).
-  USE(others_entry_points);
+  others_entry_points->pQuickResolutionTrampoline = entry_points_.pQuickResolutionTrampoline;
+  others_entry_points->pQuickToInterpreterBridge = entry_points_.pQuickToInterpreterBridge;
+  others_entry_points->pQuickGenericJniTrampoline = entry_points_.pQuickGenericJniTrampoline;
+  others_entry_points->pThrowDivZero = entry_points_.pThrowDivZero;
 }
 
 #endif

@@ -1367,6 +1367,11 @@ ENTRY art_quick_resolution_trampoline
     DELIVER_PENDING_EXCEPTION
 END art_quick_resolution_trampoline
 
+ENTRY art_quick_generic_jni_trampoline_simulator
+    // Simulator is supported only on x86_64 hosts.
+    bkpt                              // Unreachable.
+END art_quick_generic_jni_trampoline_simulator
+
     /*
      * Called to do a generic JNI down-call
      */

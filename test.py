@@ -33,6 +33,7 @@ parser.add_argument('--run-test', '-r', action='store_true', dest='run_test', he
 parser.add_argument('--gtest', '-g', action='store_true', dest='gtest', help='execute gtest tests')
 parser.add_argument('--target', action='store_true', dest='target', help='test on target system')
 parser.add_argument('--host', action='store_true', dest='host', help='test on build host system')
+parser.add_argument('--simulator', action='store_true', dest='simulator', help='test on build host system')
 parser.add_argument('--help-runner', action='store_true', dest='help_runner', help='show help for optional run test arguments')
 options, unknown = parser.parse_known_args()
 

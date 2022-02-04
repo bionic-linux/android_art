@@ -23,6 +23,7 @@
 #include <android-base/logging.h>
 #include <jni.h>
 
+#include "arch/instruction_set.h"
 #include "base/array_ref.h"
 #include "base/bit_utils.h"
 #include "base/casts.h"

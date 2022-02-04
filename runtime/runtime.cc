@@ -180,6 +180,9 @@
 namespace apex = com::android::apex;
 
 #endif
+#ifdef ART_USE_SIMULATOR
+#include "code_simulator_container.h"
+#endif
 
 // Static asserts to check the values of generated assembly-support macros.
 #define ASM_DEFINE(NAME, EXPR) static_assert((NAME) == (EXPR), "Unexpected value of " #NAME);
@@ -1335,6 +1338,74 @@ void Runtime::ReloadAllFlags(const std::string& caller) {
   FlagBase::ReloadAllFlags(caller);
 }
 
+#ifdef ART_USE_SIMULATOR
+extern "C" const void* GetRuntimeQuickResolutionStub() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetEntryPoints()->pQuickResolutionTrampoline);
+}
+
+extern const void* GetRuntimeQuickToInterpreterBridge() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetEntryPoints()->pQuickToInterpreterBridge);
+}
+
+extern const void* GetRuntimeQuickGenericJniStub() {
+  Runtime* runtime = Runtime::Current();
+  if (runtime->SimulatorMode()) {
+    SimulatorEntryPointsManager* manager =
+        runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+    return reinterpret_cast<const void*>(manager->GetEntryPoints()->pQuickGenericJniTrampoline);
+  } else {
+    return reinterpret_cast<const void*>(art_quick_generic_jni_trampoline);
+  }
+}
+
+extern const void* GetRuntimeQuickInstrumentationEntryPoint() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetInstrumentationEntryStub());
+}
+
+extern const void* GetRuntimeQuickInstrumentationExitPc() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetInstrumentationExitStub());
+}
+
+extern "C" const void* GetRuntimeQuickProxyInvokeHandler() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetProxyInvokeStub());
+}
+
+extern const void* GetRuntimeInvokeObsoleteMethodStub() {
+  Runtime* runtime = Runtime::Current();
+  DCHECK(runtime->SimulatorMode());
+
+  SimulatorEntryPointsManager* manager =
+      runtime->GetCodeSimulatorContainer()->GetEntryPointsManager();
+  return reinterpret_cast<const void*>(manager->GetInvokeObsoleteStub());
+}
+
+#endif
+
 bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // (b/30160149): protect subprocesses from modifications to LD_LIBRARY_PATH, etc.
   // Take a snapshot of the environment at the time the runtime was created, for use by Exec, etc.
@@ -1548,6 +1619,13 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // Generational CC collection is currently only compatible with Baker read barriers.
   bool use_generational_cc = kUseBakerReadBarrier && xgc_option.generational_cc;
 
+  // TODO(Simulator): Remove/adjust when hybrid mode is gone.
+#ifdef ART_USE_SIMULATOR
+  if (SimulatorMode()) {
+    instruction_set_ = kRuntimeQuickCodeISA;
+  }
+#endif
+
   heap_ = new gc::Heap(runtime_options.GetOrDefault(Opt::MemoryInitialSize),
                        runtime_options.GetOrDefault(Opt::HeapGrowthLimit),
                        runtime_options.GetOrDefault(Opt::HeapMinFree),
@@ -1720,6 +1798,14 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // Add the JniEnv handler.
   // TODO Refactor this stuff.
   java_vm_->AddEnvironmentHook(JNIEnvExt::GetEnvHandler);
+
+#ifdef ART_USE_SIMULATOR
+  if (SimulatorMode()) {
+    simulator_container_.reset(new CodeSimulatorContainer(kRuntimeQuickCodeISA));
+    simulator_container_->InitEntryPointsManager();
+    simulator_container_->GetEntryPointsManager()->InitCustomEntryPoints();
+  }
+#endif
 
   Thread::Startup();
 
@@ -2886,7 +2972,8 @@ void Runtime::AddCurrentRuntimeFeaturesAsDex2OatArguments(std::vector<std::strin
   // architecture support, dex2oat may be compiled as a different instruction-set than that
   // currently being executed.
   std::string instruction_set("--instruction-set=");
-  instruction_set += GetInstructionSetString(kRuntimeISA);
+  // In simulator mode, the dex2oat instruction set should match the runtime's target ISA.
+  instruction_set += GetInstructionSetString(kRuntimeQuickCodeISA);
   argv->push_back(instruction_set);
 
   if (InstructionSetFeatures::IsRuntimeDetectionSupported()) {

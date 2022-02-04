@@ -54,6 +54,10 @@
 #include "scoped_thread_state_change-inl.h"
 #include "vdex_file.h"
 
+#ifdef ART_USE_SIMULATOR
+#include "code_simulator.h"
+#endif
+
 namespace art {
 
 using android::base::StringPrintf;
@@ -366,11 +370,17 @@ void ArtMethod::Invoke(Thread* self, uint32_t* args, uint32_t args_size, JValue*
             << "Don't call compiled code when -Xint " << PrettyMethod();
       }
 
+#ifdef ART_USE_SIMULATOR
+      DCHECK(Runtime::SimulatorMode());
+      CodeSimulator* simulator = Thread::Current()->GetSimExecutor();
+      simulator->Invoke(this, args, args_size, self, result, shorty, IsStatic());
+#else
       if (!IsStatic()) {
         (*art_quick_invoke_stub)(this, args, args_size, self, result, shorty);
       } else {
         (*art_quick_invoke_static_stub)(this, args, args_size, self, result, shorty);
       }
+#endif
       if (UNLIKELY(self->GetException() == Thread::GetDeoptimizationException())) {
         // Unusual case where we were running generated code and an
         // exception was thrown to force the activations to be removed from the

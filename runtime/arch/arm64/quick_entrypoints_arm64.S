@@ -1706,6 +1706,11 @@ ENTRY art_quick_resolution_trampoline
     DELIVER_PENDING_EXCEPTION
 END art_quick_resolution_trampoline
 
+ENTRY art_quick_generic_jni_trampoline_simulator
+    // Simulator is supported only on x86_64 hosts.
+    brk 0                           // Unreached.
+END art_quick_generic_jni_trampoline_simulator
+
 /*
  * Generic JNI frame layout:
  *

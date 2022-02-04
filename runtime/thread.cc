@@ -122,6 +122,11 @@
 #endif
 #endif  // ART_USE_FUTEXES
 
+#ifdef ART_USE_SIMULATOR
+#include "code_simulator.h"
+#include "code_simulator_container.h"
+#endif
+
 #pragma clang diagnostic push
 #pragma clang diagnostic error "-Wconversion"
 
@@ -172,6 +177,18 @@ void Thread::SetIsGcMarkingAndUpdateEntrypoints(bool is_marking) {
   UpdateReadBarrierEntrypoints(&tlsPtr_.quick_entrypoints, /* is_active= */ is_marking);
 }
 
+#ifdef ART_USE_SIMULATOR
+void Thread::CreateSimExecutor() {
+  tlsPtr_.sim_executor =
+      Runtime::Current()->GetCodeSimulatorContainer()->CreateExecutor();
+}
+
+CodeSimulator* Thread::GetSimExecutor() const {
+  DCHECK(tlsPtr_.sim_executor != nullptr);
+  return tlsPtr_.sim_executor;
+}
+#endif
+
 void Thread::InitTlsEntryPoints() {
   ScopedTrace trace("InitTlsEntryPoints");
   // Insert a placeholder so we can easily tell if we call an unimplemented entry point.
@@ -187,6 +204,14 @@ void Thread::InitTlsEntryPoints() {
     AtomicSetFlag(ThreadFlag::kMonitorJniEntryExit);
   }
   InitEntryPoints(&tlsPtr_.jni_entrypoints, &tlsPtr_.quick_entrypoints, monitor_jni_entry_exit);
+
+#ifdef ART_USE_SIMULATOR
+  if (Runtime::SimulatorMode()) {
+    // Updates threads' TLS entrypoints with simulator container's custom entrypoints.
+    Runtime::Current()->GetCodeSimulatorContainer()->GetEntryPointsManager()->
+        UpdateOthersEntryPoints(&tlsPtr_.quick_entrypoints);
+  }
+#endif
 }
 
 void Thread::ResetQuickAllocEntryPointsForThread() {
@@ -949,6 +974,13 @@ bool Thread::Init(ThreadList* thread_list, JavaVMExt* java_vm, JNIEnvExt* jni_en
     return false;
   }
   InitCpu();
+
+#ifdef ART_USE_SIMULATOR
+  if (Runtime::SimulatorMode()) {
+    CreateSimExecutor();
+  }
+#endif
+
   InitTlsEntryPoints();
   RemoveSuspendTrigger();
   InitCardTable();
@@ -2602,6 +2634,12 @@ Thread::~Thread() {
     CleanupCpu();
   }
 
+#ifdef ART_USE_SIMULATOR
+  if (tlsPtr_.sim_executor != nullptr) {
+    delete tlsPtr_.sim_executor;
+  }
+#endif
+
   delete tlsPtr_.instrumentation_stack;
   SetCachedThreadName(nullptr);  // Deallocate name.
   delete tlsPtr_.deps_or_stack_trace_sample.stack_trace_sample;
@@ -2709,12 +2747,22 @@ class JniTransitionReferenceVisitor : public StackVisitor {
   bool found_;
 };
 
+bool Thread::IsRawObjOnStack(uint8_t* raw_obj) const {
+#ifdef ART_USE_SIMULATOR
+  DCHECK(Runtime::Current()->SimulatorMode());
+  return (static_cast<size_t>(GetSimExecutor()->GetStackBase() - raw_obj) <
+          GetSimExecutor()->GetStackSize());
+#else
+  return (static_cast<size_t>(raw_obj - tlsPtr_.stack_begin) < tlsPtr_.stack_size);
+#endif
+}
+
 bool Thread::IsJniTransitionReference(jobject obj) const {
   DCHECK(obj != nullptr);
   // We need a non-const pointer for stack walk even if we're not modifying the thread state.
   Thread* thread = const_cast<Thread*>(this);
   uint8_t* raw_obj = reinterpret_cast<uint8_t*>(obj);
-  if (static_cast<size_t>(raw_obj - tlsPtr_.stack_begin) < tlsPtr_.stack_size) {
+  if (IsRawObjOnStack(raw_obj)) {
     JniTransitionReferenceVisitor</*kPointsToStack=*/ true> visitor(thread, raw_obj);
     visitor.WalkStack();
     return visitor.Found();

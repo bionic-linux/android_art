@@ -1617,6 +1617,112 @@ DEFINE_FUNCTION art_quick_generic_jni_trampoline
     call art_deliver_pending_exception
 END_FUNCTION art_quick_generic_jni_trampoline
 
+    /*
+     * Simulator's Generic JNI stub - native part.
+     * On entry:
+     *   rdi = native pointer
+     *   rsi = simulated_reserved_area pointer
+     *   rdx = out_fp_result pointer
+     */
+DEFINE_FUNCTION art_quick_generic_jni_trampoline_simulator
+    PUSH_ARG rdi    // native pointer
+    PUSH_ARG rsi    // simulated_reserved_area pointer
+    PUSH_ARG rdx    // out_fp_result pointer
+    PUSH r12        // callee saved
+    PUSH rbp        // callee saved
+
+    movq %rsp, %rbp
+    CFI_DEF_CFA_REGISTER(rbp)
+    //
+    // reserve a lot of space
+    //
+    //      4    local state ref
+    //      4    padding
+    //   4196    4k scratch space, enough for 2x 256 8-byte parameters
+    //     16    handle scope member fields ?
+    // +  112    14x 8-byte stack-2-register space
+    // ------
+    //   4332
+    // 16-byte aligned: 4336
+    // Note: 14x8 = 7*16, so the stack stays aligned for the native call...
+    //       Also means: the padding is somewhere in the middle
+    //
+    //
+    // New test: use 5K and release
+    // 5k = 5120
+    subq LITERAL(5120), %rsp
+
+    // prepare for memcpy call
+    // (native stack ptr, simulator reserved area ptr, length of reserved area)
+    movq %rsp, %rdi           // pass SP to param 0
+    movq 24(%rbp), %rsi       // pass simulated reserves area to param 1
+    movq LITERAL(5120), %rdx  // pass the length of the memory to copy
+
+    call SYMBOL(memcpy)
+
+    // 120 bytes is the constant offset from top of the reserved area
+    // to the pointer to the JNI stack args stack position
+    //
+    // See a diagram near art_quick_generic_jni_trampoline:
+    // 8 FP regs, 6 GP regs, Hidden arg = 120 bytes
+    movq (120)(%rsp), %r12
+    // Get the simulated reserved area ptr
+    // Just using rdi as scratch here
+    movq 24(%rbp), %rdi
+    // def r12: delta btween JNI stack args and the native reserved area.
+    subq %rdi, %r12
+
+    // pop from the register-passing alloca region
+    // what's the right layout?
+    popq %rdi
+    popq %rsi
+    popq %rdx
+    popq %rcx
+    popq %r8
+    popq %r9
+
+    // TODO: skip floating point if unused, some flag.
+    movq 0(%rsp), %xmm0
+    movq 8(%rsp), %xmm1
+    movq 16(%rsp), %xmm2
+    movq 24(%rsp), %xmm3
+    movq 32(%rsp), %xmm4
+    movq 40(%rsp), %xmm5
+    movq 48(%rsp), %xmm6
+    movq 56(%rsp), %xmm7
+
+    // Save call target in scratch register.
+    movq (32)(%rbp), %r11
+
+    // Load hidden arg (rax) for @CriticalNative.
+    movq 64(%rsp), %rax
+    // Increase rsp from the native reserved area pointer,
+    // to point to the JNI stack args location
+    addq %r12, %rsp
+    // Undo the rsp increments caused by popq instructions above
+    leaq (-6*8)(%rsp), %rsp
+
+    // native call
+    call *%r11
+
+    // Tear down the alloca.
+    movq %rbp, %rsp
+    CFI_REMEMBER_STATE
+    CFI_DEF_CFA_REGISTER(rsp)
+
+    // Load out_fp_result pointer
+    movq 16(%rbp), %rsi
+    movq %xmm0, (%rsi)
+
+    POP rbp
+    POP r12
+    POP_ARG rdx
+    POP_ARG rsi
+    POP_ARG rdi
+
+    ret
+END_FUNCTION art_quick_generic_jni_trampoline_simulator
+
 DEFINE_FUNCTION art_deliver_pending_exception
     // This will create a new save-all frame, required by the runtime.
     DELIVER_PENDING_EXCEPTION

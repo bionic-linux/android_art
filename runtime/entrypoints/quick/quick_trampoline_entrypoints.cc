@@ -2250,6 +2250,19 @@ extern uint64_t GenericJniMethodEnd(Thread* self,
                                     uint64_t result_f,
                                     ArtMethod* called);
 
+extern "C" uint64_t art_quick_generic_jni_trampoline_simulator(uint64_t, void*, void*);
+
+// The native part of the Simulator's GenericJNI trampoline. For more info check
+// artQuickGenericJniTrampoline.
+extern "C" uint64_t artQuickGenericJniTrampolineSimulator(uint64_t native_code_ptr,
+                                                          void* simulated_reserved_area,
+                                                          void* out_fp_result)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  return art_quick_generic_jni_trampoline_simulator(native_code_ptr,
+                                                    simulated_reserved_area,
+                                                    out_fp_result);
+}
+
 /*
  * Is called after the native JNI code. Responsible for cleanup (handle scope, saved state) and
  * unlocking.

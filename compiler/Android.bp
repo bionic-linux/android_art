@@ -287,6 +287,12 @@ art_cc_library {
             export_static_lib_headers: [
                 "libvixld",
             ],
+            // TODO(Simulator): check could this be moved to ./runtime.
+            shared: {
+                shared_libs: [
+                    "libartd-simulator",
+                ],
+            },
         },
     },
     shared_libs: [

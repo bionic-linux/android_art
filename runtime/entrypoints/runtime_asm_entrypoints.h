@@ -17,9 +17,9 @@
 #ifndef ART_RUNTIME_ENTRYPOINTS_RUNTIME_ASM_ENTRYPOINTS_H_
 #define ART_RUNTIME_ENTRYPOINTS_RUNTIME_ASM_ENTRYPOINTS_H_
 
-#include "deoptimization_kind.h"
-
+#include "arch/instruction_set.h"
 #include "base/macros.h"
+#include "deoptimization_kind.h"
 #include "jni.h"
 
 namespace art HIDDEN {
@@ -43,23 +43,59 @@ static inline const void* GetQuickImtConflictStub() {
   return reinterpret_cast<const void*>(art_quick_imt_conflict_trampoline);
 }
 
+#ifdef ART_USE_SIMULATOR
+extern const void* GetRuntimeQuickToInterpreterBridge();
+static inline const void* GetQuickToInterpreterBridge() {
+  return GetRuntimeQuickToInterpreterBridge();
+}
+#else
+
 // Return the address of quick stub code for bridging from quick code to the interpreter.
 extern "C" void art_quick_to_interpreter_bridge(ArtMethod*);
 static inline const void* GetQuickToInterpreterBridge() {
   return reinterpret_cast<const void*>(art_quick_to_interpreter_bridge);
 }
+#endif
 
+#ifdef ART_USE_SIMULATOR
+extern const void* GetRuntimeInvokeObsoleteMethodStub();
+static inline const void* GetInvokeObsoleteMethodStub() {
+  return GetRuntimeInvokeObsoleteMethodStub();
+}
+#else
 // Return the address of stub code for attempting to invoke an obsolete method.
 extern "C" void art_invoke_obsolete_method_stub(ArtMethod*);
 static inline const void* GetInvokeObsoleteMethodStub() {
   return reinterpret_cast<const void*>(art_invoke_obsolete_method_stub);
 }
+#endif
 
-// Return the address of quick stub code for handling JNI calls.
 extern "C" void art_quick_generic_jni_trampoline(ArtMethod*);
+
+#ifdef ART_USE_SIMULATOR
+extern const void* GetRuntimeQuickGenericJniStub();
+static inline const void* GetQuickGenericJniStub() {
+  return GetRuntimeQuickGenericJniStub();
+}
+#else
+// Return the address of quick stub code for handling JNI calls.
 static inline const void* GetQuickGenericJniStub() {
   return reinterpret_cast<const void*>(art_quick_generic_jni_trampoline);
 }
+#endif
+
+#ifdef ART_USE_SIMULATOR
+
+extern "C" const void* GetRuntimeQuickProxyInvokeHandler();
+static inline const void* GetQuickProxyInvokeHandler() {
+  return GetRuntimeQuickProxyInvokeHandler();
+}
+
+extern "C" const void* GetRuntimeQuickResolutionStub();
+static inline const void* GetQuickResolutionStub() {
+  return GetRuntimeQuickResolutionStub();
+}
+#else
 
 // Return the address of quick stub code for handling transitions into the proxy invoke handler.
 extern "C" void art_quick_proxy_invoke_handler();
@@ -72,6 +108,7 @@ extern "C" void art_quick_resolution_trampoline(ArtMethod*);
 static inline const void* GetQuickResolutionStub() {
   return reinterpret_cast<const void*>(art_quick_resolution_trampoline);
 }
+#endif
 
 // Entry point for quick code that performs deoptimization.
 extern "C" void art_quick_deoptimize();
@@ -79,20 +116,31 @@ static inline const void* GetQuickDeoptimizationEntryPoint() {
   return reinterpret_cast<const void*>(art_quick_deoptimize);
 }
 
+#ifdef ART_USE_SIMULATOR
+extern const void* GetRuntimeQuickInstrumentationEntryPoint();
+static inline const void* GetQuickInstrumentationEntryPoint() {
+  return GetRuntimeQuickInstrumentationEntryPoint();
+}
+extern const void* GetRuntimeQuickInstrumentationExitPc();
+static inline const void* GetQuickInstrumentationExitPc() {
+  return GetRuntimeQuickInstrumentationExitPc();
+}
+#else
 // Return address of instrumentation entry point used by non-interpreter based tracing.
 extern "C" void art_quick_instrumentation_entry(void*);
 static inline const void* GetQuickInstrumentationEntryPoint() {
   return reinterpret_cast<const void*>(art_quick_instrumentation_entry);
 }
 
-// Stub to deoptimize from compiled code.
-extern "C" void art_quick_deoptimize_from_compiled_code(DeoptimizationKind);
-
 // The return_pc of instrumentation exit stub.
 extern "C" void art_quick_instrumentation_exit();
 static inline const void* GetQuickInstrumentationExitPc() {
   return reinterpret_cast<const void*>(art_quick_instrumentation_exit);
 }
+#endif
+
+// Stub to deoptimize from compiled code.
+extern "C" void art_quick_deoptimize_from_compiled_code(DeoptimizationKind);
 
 extern "C" void* art_quick_string_builder_append(uint32_t format);
 extern "C" void art_quick_compile_optimized(ArtMethod*, Thread*);

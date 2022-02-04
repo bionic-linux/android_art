@@ -133,6 +133,7 @@ ANDROID_FLAGS="${ANDROID_FLAGS} -XX:SlowDebug=true"
 # The same for dex2oatd, both prebuild and runtime-driven.
 ANDROID_FLAGS="${ANDROID_FLAGS} -Xcompiler-option --runtime-arg -Xcompiler-option -XX:SlowDebug=true"
 COMPILER_FLAGS="${COMPILER_FLAGS} --runtime-arg -XX:SlowDebug=true"
+SIMULATOR="n"
 
 # Let the compiler and runtime know that we are running tests.
 COMPILE_FLAGS="${COMPILE_FLAGS} --compile-art-test"
@@ -510,6 +511,12 @@ while true; do
     elif [ "x$1" = "x--random-profile" ]; then
         RANDOM_PROFILE="y"
         shift
+    elif [ "x$1" = "x--simulator" ]; then
+        HOST="y"
+        ANDROID_ROOT="${ANDROID_PRODUCT_OUT}/system"
+        ANDROID_RUNTIME_ROOT="${ANDROID_PRODUCT_OUT}/apex/com.android.runtime.debug"
+        SIMULATOR="y"
+        shift
     elif expr "x$1" : "x--" >/dev/null 2>&1; then
         error_msg "unknown $0 option: $1"
         exit 1
@@ -738,8 +745,8 @@ if [ "$USE_JVM" = "y" ]; then
   exit
 fi
 
-readonly b_path=$(get_apex_bootclasspath ${HOST})
-readonly b_path_locations=$(get_apex_bootclasspath_locations ${HOST})
+readonly b_path=$(get_apex_bootclasspath ${HOST} ${SIMULATOR})
+readonly b_path_locations=$(get_apex_bootclasspath_locations ${HOST} ${SIMULATOR})
 
 # Pass down the bootclasspath
 FLAGS="${FLAGS} -Xbootclasspath:${b_path}"
@@ -863,7 +870,9 @@ if [ ${#VDEX_NAME} -gt $max_filename_size ]; then
     exit 1
 fi
 
-if [ "$HOST" = "y" ]; then
+if  [ "$SIMULATOR" == "y" ]; then
+  ANDROID_ART_BIN_DIR=$ANDROID_HOST_OUT/bin
+elif [ "$HOST" = "y" ]; then
   # On host, run binaries (`dex2oat(d)`, `dalvikvm`, `profman`) from the `bin`
   # directory under the "Android Root" (usually `out/host/linux-x86`).
   #
@@ -879,6 +888,11 @@ else
 fi
 
 profman_cmdline="true"
+if [ "$SIMULATOR" != "n" ]; then
+  # TODO(Simulator): get rid of hard-coded isa.
+  ISA="arm64"
+fi
+
 dex2oat_cmdline="true"
 vdex_cmdline="true"
 dm_cmdline="true"
@@ -1380,11 +1394,16 @@ else
     if [ "$USE_ZIPAPEX" = "y" ] || [ "$USE_EXRACTED_ZIPAPEX" = "y" ]; then
       # Put the zipapex files in front of the ld-library-path
       export LD_LIBRARY_PATH="${ANDROID_DATA}/zipapex/${LIBRARY_DIRECTORY}:${ANDROID_ROOT}/${TEST_DIRECTORY}"
-      export DYLD_LIBRARY_PATH="${ANDROID_DATA}/zipapex/${LIBRARY_DIRECTORY}:${ANDROID_ROOT}/${TEST_DIRECTORY}"
     else
-      export LD_LIBRARY_PATH="${ANDROID_ROOT}/${LIBRARY_DIRECTORY}:${ANDROID_ROOT}/${TEST_DIRECTORY}"
-      export DYLD_LIBRARY_PATH="${ANDROID_ROOT}/${LIBRARY_DIRECTORY}:${ANDROID_ROOT}/${TEST_DIRECTORY}"
+      if  [ "$SIMULATOR" == "y" ]; then
+        # In simulator mode host native libraries should be used.
+        PATH_PREFIX="${ANDROID_HOST_OUT}"
+      else
+        PATH_PREFIX="${ANDROID_ROOT}"
+      fi
+      export LD_LIBRARY_PATH="${PATH_PREFIX}/${LIBRARY_DIRECTORY}:${PATH_PREFIX}/${TEST_DIRECTORY}"
     fi
+    export DYLD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
     export PATH="$PATH:$ANDROID_ART_BIN_DIR"
 
     # Temporarily disable address space layout randomization (ASLR).

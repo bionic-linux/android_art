@@ -85,6 +85,7 @@ dev_mode="no"
 create_runner="no"
 update_mode="no"
 debug_mode="no"
+simulator_mode="no"
 relocate="no"
 runtime="art"
 usage="no"
@@ -124,6 +125,9 @@ while true; do
         target_mode="no"
         DEX_LOCATION=$tmp_dir
         run_args+=(--host)
+        shift
+    elif [ "x$1" = "x--simulator" ]; then
+        simulator_mode="yes"
         shift
     elif [ "x$1" = "x--quiet" ]; then
         quiet="yes"
@@ -629,7 +633,14 @@ if [ "$runtime" = "dalvik" ]; then
         true # defaults to using target BOOTCLASSPATH
     fi
 elif [ "$runtime" = "art" ]; then
-    if [ "$target_mode" = "no" ]; then
+    if [ "$simulator_mode" = "yes" ]; then
+        run_args+=(--simulator)
+        run_args+=(--boot \
+            "${ANDROID_PRODUCT_OUT}/system/apex/com.android.art.testing/javalib/boot.art")
+
+        java_lp="${host_lib_root}/lib${suffix64}:${host_lib_root}/nativetest${suffix64}"
+        run_args+=(--runtime-option "-Djava.library.path=${java_lp}")
+    elif [ "$target_mode" = "no" ]; then
         guess_host_arch_name
         run_args+=(--boot "${ANDROID_HOST_OUT}/apex/art_boot_images/javalib/boot.art")
         run_args+=(--runtime-option "-Djava.library.path=${host_lib_root}/lib${suffix64}:${host_lib_root}/nativetest${suffix64}")
@@ -848,7 +859,11 @@ if [[ "$TEST_NAME" =~ ^[0-9]+-checker- ]] || [ "$dump_cfg" = "true" ]; then
       # TODO(Simulator): support checker runs.
       run_checker="no"
 
-      if [ "$target_mode" = "no" ]; then
+      if [ "$simulator_mode" = "yes" ]; then
+        cfg_output_dir="$tmp_dir"
+        # TODO(Simulator): remove the ISA hard-coding.
+        checker_args="--arch=ARM64"
+      elif [ "$target_mode" = "no" ]; then
         cfg_output_dir="$tmp_dir"
         checker_args="--arch=${host_arch_name^^}"
       else

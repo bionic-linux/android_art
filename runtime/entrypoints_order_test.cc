@@ -135,12 +135,20 @@ class EntrypointsOrderTest : public CommonRuntimeTest {
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, thread_local_mark_stack, async_exception, sizeof(void*));
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, async_exception, top_reflective_handle_scope,
                         sizeof(void*));
+#ifdef ART_USE_SIMULATOR
+    EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, top_reflective_handle_scope, sim_executor, sizeof(void*));
+#endif
     // The first field after tlsPtr_ is forced to a 16 byte alignment so it might have some space.
     auto offset_tlsptr_end = OFFSETOF_MEMBER(Thread, tlsPtr_) +
         sizeof(decltype(reinterpret_cast<Thread*>(16)->tlsPtr_));
+#ifdef ART_USE_SIMULATOR
+    CHECKED(offset_tlsptr_end - OFFSETOF_MEMBER(Thread, tlsPtr_.sim_executor) == sizeof(void*),
+            "simulator last field");
+#else
     CHECKED(offset_tlsptr_end - OFFSETOF_MEMBER(Thread, tlsPtr_.top_reflective_handle_scope) ==
                 sizeof(void*),
             "async_exception last field");
+#endif
   }
 
   void CheckJniEntryPoints() {

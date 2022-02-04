@@ -1542,5 +1542,26 @@
                   "2007-virtual-structural-finalizable"],
         "variant": "jit",
         "description": ["ART Simulator Stage 1 setup, jit only failures"]
+    },
+    {
+        "tests": ["044-proxy",
+                  "046-reflect",
+                  "061-out-of-memory",
+                  "071-dexfile-map-clean",
+                  "080-oom-throw",
+                  "137-cfi",
+                  "151-OpenFileLimit",
+                  "178-app-image-native-method",
+                  "1914-get-local-instance",
+                  "1939-proxy-frames",
+                  "1945-proxy-method-arguments",
+                  "2036-jni-filechannel",
+                  "597-app-images-same-classloader",
+                  "660-clinit",
+                  "674-hiddenapi",
+                  "693-vdex-inmem-loader-evict",
+                  "817-hiddenapi"],
+        "variant": "simulator",
+        "description": ["TODO: Investigate reasons for these failures of the ART simulator Stage1."]
     }
 ]

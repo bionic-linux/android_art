@@ -52,11 +52,13 @@ get_apex_bootclasspath_impl() {
 #
 #  Arguments.
 #   ${1}: host (y|n).
+#   ${2}: simulator (y|n).
 get_apex_bootclasspath() {
   local -r host="${1}"
+  local -r simulator="${2}"
   local bpath_prefix=""
 
-  if [[ "${host}" == "y" ]]; then
+  if [[ "${host}" == "y" || "${simulator}" != "n" ]]; then
     bpath_prefix="${ANDROID_HOST_OUT}"
   fi
 
@@ -67,8 +69,10 @@ get_apex_bootclasspath() {
 #
 #  Arguments.
 #   ${1}: host (y|n).
+#   ${2}: simulator (y|n).
 get_apex_bootclasspath_locations() {
   local -r host="${1}"
+  local -r simulator="${2}"
   local bpath_location_prefix=""
 
   if [[ "${host}" == "y" ]]; then

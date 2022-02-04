@@ -1624,6 +1624,11 @@ DEFINE_FUNCTION art_quick_resolution_trampoline
     DELIVER_PENDING_EXCEPTION
 END_FUNCTION art_quick_resolution_trampoline
 
+DEFINE_FUNCTION art_quick_generic_jni_trampoline_simulator
+    // Simulator is supported only on x86_64 hosts.
+    UNREACHABLE
+END_FUNCTION art_quick_generic_jni_trampoline_simulator
+
 DEFINE_FUNCTION art_quick_generic_jni_trampoline
     SETUP_SAVE_REFS_AND_ARGS_FRAME_WITH_METHOD_IN_EAX
     movl %esp, %ebp               // save SP at callee-save frame
