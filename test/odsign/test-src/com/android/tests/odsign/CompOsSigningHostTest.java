@@ -62,6 +62,8 @@ public class CompOsSigningHostTest extends ActivationTest {
 
     private static final String ORIGINAL_CHECKSUMS_KEY = "compos_test_orig_checksums";
     private static final String PENDING_CHECKSUMS_KEY = "compos_test_pending_checksums";
+    private static final String TIMESTAMP_VM_START_KEY = "compos_test_timestamp_vm_start";
+    private static final String TIMESTAMP_REBOOT_KEY = "compos_test_timestamp_reboot";
 
     @BeforeClassWithInfo
     public static void beforeClassWithDevice(TestInformation testInfo) throws Exception {
@@ -75,6 +77,8 @@ public class CompOsSigningHostTest extends ActivationTest {
 
         OdsignTestUtils testUtils = new OdsignTestUtils(testInfo);
         testUtils.installTestApex();
+
+        testInfo.properties().put(TIMESTAMP_VM_START_KEY, getDeviceCurrentTimestamp(device));
 
         // Once the test APK is installed, a CompilationJob is (asynchronously) scheduled to run
         // when certain criteria are met, e.g. the device is charging and idle. Since we don't
@@ -93,6 +97,7 @@ public class CompOsSigningHostTest extends ActivationTest {
                 checksumDirectoryContentPartial(device,
                     "/data/misc/apexdata/com.android.art/compos-pending/"));
 
+        testInfo.properties().put(TIMESTAMP_REBOOT_KEY, getDeviceCurrentTimestamp(device));
         testUtils.reboot();
     }
 
@@ -117,6 +122,30 @@ public class CompOsSigningHostTest extends ActivationTest {
         assertThat(actualChecksums).isNotEqualTo(originalChecksums);
     }
 
+    @Test
+    public void checkFileCreationTimeAfterVmStartAndBeforeReboot() throws Exception {
+        // No files are created before our VM starts.
+        int numFiles = countFilesCreatedBeforeTime(
+                getDevice(),
+                "/data/misc/apexdata/com.android.art/dalvik-cache/",
+                getTestInformation().properties().get(TIMESTAMP_VM_START_KEY));
+        assertThat(numFiles).isEqualTo(0);
+
+        // (All) Files are created after our VM starts.
+        numFiles = countFilesCreatedAfterTime(
+                getDevice(),
+                "/data/misc/apexdata/com.android.art/dalvik-cache/",
+                getTestInformation().properties().get(TIMESTAMP_VM_START_KEY));
+        assertThat(numFiles).isGreaterThan(0);
+
+        // No files are created after reboot.
+        numFiles = countFilesCreatedAfterTime(
+                getDevice(),
+                "/data/misc/apexdata/com.android.art/dalvik-cache/",
+                getTestInformation().properties().get(TIMESTAMP_REBOOT_KEY));
+        assertThat(numFiles).isEqualTo(0);
+    }
+
     @Ignore("Compilation log in CompOS isn't useful, and doesn't need to be generated")
     public void verifyCompilationLogGenerated() {}
 
@@ -132,11 +161,30 @@ public class CompOsSigningHostTest extends ActivationTest {
                 + "| sort -k2");
     }
 
+    private static String getDeviceCurrentTimestamp(ITestDevice device)
+            throws DeviceNotAvailableException {
+        return assertCommandSucceeds(device, "date +'%s'");
+    }
+
+    private static int countFilesCreatedBeforeTime(ITestDevice device, String directory,
+            String timestamp) throws DeviceNotAvailableException {
+        String output = assertCommandSucceeds(device,
+                "find " + directory + " -type f ! -newerct '@" + timestamp + "' | wc -l");
+        return Integer.parseInt(output);
+    }
+
+    private static int countFilesCreatedAfterTime(ITestDevice device, String directory,
+            String timestamp) throws DeviceNotAvailableException {
+        String output = assertCommandSucceeds(device,
+                "find " + directory + " -type f -newerct '@" + timestamp + "' | wc -l");
+        return Integer.parseInt(output);
+    }
+
     private static String assertCommandSucceeds(ITestDevice device, String command)
             throws DeviceNotAvailableException {
         CommandResult result = device.executeShellV2Command(command);
         assertWithMessage(result.toString()).that(result.getExitCode()).isEqualTo(0);
-        return result.getStdout();
+        return result.getStdout().trim();
     }
 
     private static void waitForJobToBeScheduled(ITestDevice device, int timeout)
