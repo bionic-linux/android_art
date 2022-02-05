@@ -41,6 +41,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -71,6 +72,7 @@ public class CompOsSigningHostTest extends ActivationTest {
 
     private static final String ORIGINAL_CHECKSUMS_KEY = "compos_test_orig_checksums";
     private static final String PENDING_CHECKSUMS_KEY = "compos_test_pending_checksums";
+    private static final String TIMESTAMP_VM_START_KEY = "compos_test_timestamp_vm_start";
 
     @BeforeClassWithInfo
     public static void beforeClassWithDevice(TestInformation testInfo) throws Exception {
@@ -84,6 +86,8 @@ public class CompOsSigningHostTest extends ActivationTest {
 
         OdsignTestUtils testUtils = new OdsignTestUtils(testInfo);
         testUtils.installTestApex();
+
+        testInfo.properties().put(TIMESTAMP_VM_START_KEY, String.valueOf(new Date().getTime()));
 
         // Once the test APK is installed, a CompilationJob is scheduled to run when certain
         // criteria are met, e.g. the device is charging and idle. Since we don't want to wait in
@@ -125,6 +129,24 @@ public class CompOsSigningHostTest extends ActivationTest {
         assertThat(actualChecksums).isNotEqualTo(originalChecksums);
     }
 
+    @Test
+    public void checkFileCreationTime() throws Exception {
+        long then = Long.parseLong(getTestInformation().properties().get(TIMESTAMP_VM_START_KEY));
+        long now = new Date().getTime();
+        String secondsAgo = String.valueOf((now - then) / 1000);
+        String output = assertCommandSucceeds(getDevice(),
+                "find /data/misc/apexdata/com.android.art/dalvik-cache/ -ctime -" + secondsAgo + "s"
+                + "| wc -l");
+        long numberOfNewFiles = Long.parseLong(output);
+        assertThat(numberOfNewFiles).isGreaterThan(0);
+
+        output = assertCommandSucceeds(getDevice(),
+                "find /data/misc/apexdata/com.android.art/dalvik-cache/ +ctime -" + secondsAgo + "s"
+                + "| wc -l");
+        long numberOfOldFiles = Long.parseLong(output);
+        assertThat(numberOfOldFiles).isEqualTo(0);
+    }
+
     @Ignore("Compilation log in CompOS isn't useful, and doesn't need to be generated")
     public void verifyCompilationLogGenerated() {}
 
@@ -144,7 +166,7 @@ public class CompOsSigningHostTest extends ActivationTest {
             throws DeviceNotAvailableException {
         CommandResult result = device.executeShellV2Command(command);
         assertWithMessage(result.toString()).that(result.getExitCode()).isEqualTo(0);
-        return result.getStdout();
+        return result.getStdout().trim();
     }
 
     private static void waitForJobExit(ITestDevice device, int timeout)
