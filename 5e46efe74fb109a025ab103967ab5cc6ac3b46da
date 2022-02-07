@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00240f74_72210e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-07T14:33:33Z",
+      "side": 1,
+      "message": "Vladimir and I chatted and agreed we are going to not land this and use another bit in access flags for the feature this CL was used for (clean memory for boot image ArtMethod).\n\nI did a pmd run with the CL, the method ArtMethod::GetDexFile mentioned in https://android-review.googlesource.com/328772 isn\u0027t in the top hot method anymore:\n\n     1.72%     1.72%  PmdThread 19     libart.so                  [.] art::CodeInfo::DecodeInlineInfoOnly                                                                                           ◆\n     1.45%     1.45%  HeapTaskDaemon   libart.so                  [.] art::gc::collector::ConcurrentCopying::Process\u003ctrue\u003e                                                                          ▒\n     1.39%     1.39%  PmdThread 19     boot.oat                   [.] oatexec+0xffffffff9011ed7c                                                                                                    ▒\n     0.95%     0.95%  PmdThread 19     libart.so                  [.] art::OatQuickMethodHeader::GetFrameInfo                                                                                       ▒\n     0.81%     0.81%  PmdThread 19     libart.so                  [.] art::CodeInfo::GetStackMapForNativePcOffset                                                                                   ▒\n     0.68%     0.68%  HeapTaskDaemon   libart.so                  [.] art::gc::collector::ConcurrentCopying::Copy                                                                                   ▒\n     0.67%     0.67%  main             libz-host.so               [.] inflate_fast                                                                                                                  ▒\n     0.53%     0.53%  PmdThread 19     libart.so                  [.] art::OatQuickMethodHeader::Contains                                                                                           ▒\n     0.52%     0.52%  HeapTaskDaemon   libc-2.33.so               [.] 0x0000000000080113                                                                                                            ▒\n     0.51%     0.51%  PmdThread 19     libart.so                  [.] art::StackVisitor::WalkStack\u003c(art::StackVisitor::CountTransitions)0\u003e                                                          ▒\n     0.51%     0.51%  HeapTaskDaemon   libart.so                  [.] art::gc::space::RegionSpace::PoisonDeadObjectsInUnevacuatedRegion",
+      "parentUuid": "878807a0_15529b41",
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddbc7f18_807ba62d",
