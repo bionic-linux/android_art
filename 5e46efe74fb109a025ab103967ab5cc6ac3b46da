@@ -191,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6738ab20_ef70f39b",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-07T14:39:13Z",
+      "side": 1,
+      "message": "We could special case the stack walking to understand an obsolete native method. Looks like it was decided it wasn\u0027t worth it at the time of obsolete method implementation.",
+      "parentUuid": "7f627b8e_11966e42",
+      "revId": "5e46efe74fb109a025ab103967ab5cc6ac3b46da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c523991c_ab66af9c",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 1
