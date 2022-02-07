@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe5bc61_44d27c93",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-07T11:19:43Z",
+      "side": 1,
+      "message": "IIUC, this test verifies that the artifacts are generated after the VM starts, but it still doesn\u0027t verify that the artifacts are generated before the reboot?",
+      "revId": "6937c264e8d9e8a37354d6fe11b5f3ccebd3faed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3851e019_ab32ad66",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-07T11:19:43Z",
+      "side": 1,
+      "message": "This is not a valid option, and it is interpreted as a file or directory.\n\nI guess you actually mean `-ctime +Xs`.",
+      "range": {
+        "startLine": 144,
+        "startChar": 72,
+        "endLine": 144,
+        "endChar": 78
+      },
+      "revId": "6937c264e8d9e8a37354d6fe11b5f3ccebd3faed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
