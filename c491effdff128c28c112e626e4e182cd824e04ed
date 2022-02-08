@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "036b1b99_a0aa7eaf",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-08T18:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7db147a_a760bd9a",
+      "range": {
+        "startLine": 130,
+        "startChar": 16,
+        "endLine": 130,
+        "endChar": 67
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5a1cdf_2d46cf9c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf6df23_7f4a02f7",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-08T18:39:47Z",
+      "side": 1,
+      "message": "It should be sufficient since it takes way more than multiple seconds to boot the VM and reboot a device.\n\nFWIW, I tried to add nanosecond precision, but I\u0027m not sure why toybox\u0027s find can\u0027t accept the value.",
+      "parentUuid": "4d5a1cdf_2d46cf9c",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2eb314_2011090c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-08T11:00:03Z",
       "side": 1,
       "message": "Quote the directory.",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94ca863_0c052bb3",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-08T18:39:47Z",
+      "side": 1,
+      "message": "Done the undone to avoid complexity of string encoding, etc. I left a comment to highlight.",
+      "parentUuid": "3a2eb314_2011090c",
       "range": {
         "startLine": 172,
         "startChar": 26,
