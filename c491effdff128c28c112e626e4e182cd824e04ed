@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7db147a_a760bd9a",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-08T11:00:03Z",
+      "side": 1,
+      "message": "OdsignTestUtils.ART_APEX_DALVIK_CACHE_DIRNAME",
+      "range": {
+        "startLine": 130,
+        "startChar": 16,
+        "endLine": 130,
+        "endChar": 67
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5a1cdf_2d46cf9c",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-08T11:00:03Z",
+      "side": 1,
+      "message": "The value is precise to seconds. Is the precision sufficient? The `getCurrentTimeMs` method in `OdrefreshHostTest` gives you a better precision. You can move the method to `OdsignTestUtils` and use it.",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2eb314_2011090c",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-08T11:00:03Z",
+      "side": 1,
+      "message": "Quote the directory.",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
