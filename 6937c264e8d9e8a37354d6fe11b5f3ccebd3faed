@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f93a8bd5_6291788f",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-08T01:15:02Z",
+      "side": 1,
+      "message": "Done and re-implemented the find parts.\n\nDetails of the happy journey: I found find support `-newerXY`, then I found the support was accidentally removed by toybox in Dec.  Filed https://github.com/landley/toybox/issues/318, and it was fixed in less than 30 minutes.  Then enh uprev Android\u0027s toybox before I did. :D",
+      "parentUuid": "ad2f45ba_4706b379",
+      "revId": "6937c264e8d9e8a37354d6fe11b5f3ccebd3faed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3851e019_ab32ad66",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-02-07T11:19:43Z",
       "side": 1,
       "message": "This is not a valid option, and it is interpreted as a file or directory.\n\nI guess you actually mean `-ctime +Xs`.",
+      "range": {
+        "startLine": 144,
+        "startChar": 72,
+        "endLine": 144,
+        "endChar": 78
+      },
+      "revId": "6937c264e8d9e8a37354d6fe11b5f3ccebd3faed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b6e434_30e3d07a",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-08T01:15:02Z",
+      "side": 1,
+      "message": "Done. Funny that the test still passed, because `| wc -l` doesn\u0027t care about the error...\n\nFWIW, the fundamental problem is `|` continues even when the previous execution fails. I set to `set -o pipefail` in assertCommandSucceeds, so that it won\u0027t bite us in the future.  But apparently `grep` exits 1 when it doesn\u0027t find anything, and fixing that would over complicate things...",
+      "parentUuid": "3851e019_ab32ad66",
       "range": {
         "startLine": 144,
         "startChar": 72,
