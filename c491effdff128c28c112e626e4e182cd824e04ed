@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50660f67_f4277915",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-08T19:00:30Z",
+      "side": 1,
+      "message": "OK. that\u0027s fine. Indeed, toybox\u0027s implementations differ a lot from GNU\u0027s, which is annoying. I also encountered many issues before.",
+      "parentUuid": "8bf6df23_7f4a02f7",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2eb314_2011090c",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Done the undone to avoid complexity of string encoding, etc. I left a comment to highlight.",
       "parentUuid": "3a2eb314_2011090c",
+      "range": {
+        "startLine": 172,
+        "startChar": 26,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "c491effdff128c28c112e626e4e182cd824e04ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627984f5_d3095245",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-08T19:00:30Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "b94ca863_0c052bb3",
       "range": {
         "startLine": 172,
         "startChar": 26,
