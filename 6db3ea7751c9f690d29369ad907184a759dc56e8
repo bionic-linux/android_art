@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cecf1445_28472f70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T14:10:19Z",
+      "side": 1,
+      "message": "Fine by me to leave as is.",
+      "parentUuid": "51509766_584c5fe4",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 86
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ce97d0f_26ac8484",
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "X86 ISA provides these movs commands based on data types\n(https://c9x.me/x86/html/file_module_x86_id_203.html )\n\nMOVSB (byte, 8-bit)\nMOVSW (word, 16-bit)\nMOVSD (dword, 32-bit)\nMOVSQ (qword, 64 bit) - only available in 64-bit mode",
       "parentUuid": "e8878106_db30dfa7",
+      "range": {
+        "startLine": 985,
+        "startChar": 7,
+        "endLine": 985,
+        "endChar": 16
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "976524ab_652520f5",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T14:10:19Z",
+      "side": 1,
+      "message": "True, but it also provides CMPSB/CMPSW/CMPSD/CMPSQ and we call CMPSD \"cmpsl\" (on line 981), so it seems more consistent to use the same naming scheme.",
+      "parentUuid": "062760e3_5c1e785d",
       "range": {
         "startLine": 985,
         "startChar": 7,
