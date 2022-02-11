@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4371d6f_1b3d1dcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T17:47:18Z",
+      "side": 1,
+      "message": "Marking as resolved (minor issue) and presubmit has passed.",
+      "parentUuid": "3bcf2b5c_9cc1e591",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "8b98141ce606806efabedaac00d6be783a73f520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "095f1545_1839c8e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-11T14:53:11Z",
       "side": 1,
       "message": "Nit: accidental whitespace.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "8b98141ce606806efabedaac00d6be783a73f520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f619229_dab57088",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T17:47:18Z",
+      "side": 1,
+      "message": "Marking as resolved (minor issue) and presubmit has passed.",
+      "parentUuid": "095f1545_1839c8e6",
       "range": {
         "startLine": 1,
         "startChar": 0,
