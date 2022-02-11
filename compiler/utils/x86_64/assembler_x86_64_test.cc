@@ -1226,10 +1226,22 @@ TEST_F(AssemblerX86_64Test, RepneScasw) {
   DriverStr(expected, "repne_scasw");
 }
 
+TEST_F(AssemblerX86_64Test, RepMovsb) {
+  GetAssembler()->rep_movsb();
+  const char* expected = "rep movsb\n";
+  DriverStr(expected, "rep_movsb");
+}
+
 TEST_F(AssemblerX86_64Test, RepMovsw) {
   GetAssembler()->rep_movsw();
   const char* expected = "rep movsw\n";
   DriverStr(expected, "rep_movsw");
+}
+
+TEST_F(AssemblerX86_64Test, RepMovsw) {
+  GetAssembler()->rep_movsd();
+  const char* expected = "rep movsd\n";
+  DriverStr(expected, "rep_movsd");
 }
 
 TEST_F(AssemblerX86_64Test, Movsxd) {
