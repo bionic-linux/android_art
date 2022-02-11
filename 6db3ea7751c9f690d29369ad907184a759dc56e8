@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fdbf72f_e8df3535",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T12:59:44Z",
+      "side": 1,
+      "message": "rep_movs ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "338d8b80_01e2f853",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T12:59:44Z",
+      "side": 1,
+      "message": "Use `m test-art-host-gtest`.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 86
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ce97d0f_26ac8484",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 2
@@ -19,6 +65,75 @@
         "startChar": 2,
         "endLine": 4986,
         "endChar": 21
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8614dc6_2011012a",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4986,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T12:59:44Z",
+      "side": 1,
+      "message": "Did you forget to remove this?",
+      "range": {
+        "startLine": 4986,
+        "startChar": 2,
+        "endLine": 4986,
+        "endChar": 21
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8878106_db30dfa7",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T12:59:44Z",
+      "side": 1,
+      "message": "Why \"movsd\" not \"movsl\" by analogy with other 32-bit variants, like \"cmpsl\"? (Here and in all other places where \"movsd\" is used).",
+      "range": {
+        "startLine": 985,
+        "startChar": 7,
+        "endLine": 985,
+        "endChar": 16
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08e8549_1121ac6e",
+        "filename": "compiler/utils/x86_64/assembler_x86_64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-11T12:59:44Z",
+      "side": 1,
+      "message": "This should be `RepMovsl`.",
+      "range": {
+        "startLine": 1241,
+        "startChar": 28,
+        "endLine": 1241,
+        "endChar": 36
       },
       "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
