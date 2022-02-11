@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce97d0f_26ac8484",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4986,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-02-11T12:58:25Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 4986,
+        "startChar": 2,
+        "endLine": 4986,
+        "endChar": 21
+      },
+      "revId": "6db3ea7751c9f690d29369ad907184a759dc56e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
