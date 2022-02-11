@@ -3243,9 +3243,11 @@ class ImageSpace::BootImageLoader {
 
       auto boot_class_path_fds = boot_class_path_fds_.empty() ? ArrayRef<const int>()
           : boot_class_path_fds_.SubArray(/*pos=*/ chunk.start_index + i, bcp_chunk_size);
+      int vdex_fd = (chunk.start_index + i < boot_class_path_vdex_fds_.size()) ? boot_class_path_vdex_fds_[chunk.start_index+i] : -1;
+      int oat_fd = (chunk.start_index + i < boot_class_path_oat_fds_.size()) ? boot_class_path_oat_fds_[chunk.start_index+i] : -1;
       if (!OpenOatFile(space,
-                       std::move(chunk.vdex_fd),
-                       std::move(chunk.oat_fd),
+                       android::base::unique_fd(dup(vdex_fd)),
+                       android::base::unique_fd(dup(oat_fd)),
                        boot_class_path_.SubArray(/*pos=*/ chunk.start_index + i, bcp_chunk_size),
                        boot_class_path_fds,
                        validate_oat_file,
