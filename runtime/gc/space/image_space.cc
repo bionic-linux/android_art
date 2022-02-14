@@ -1951,12 +1951,6 @@ bool ImageSpace::BootImageLayout::ReadHeader(const std::string& base_location,
       chunk.art_fd.reset(dup(fd));
     }
   }
-  if (bcp_index < boot_class_path_vdex_fds_.size()) {
-    chunk.vdex_fd.reset(boot_class_path_vdex_fds_[bcp_index]);
-  }
-  if (bcp_index < boot_class_path_oat_fds_.size()) {
-    chunk.oat_fd.reset(boot_class_path_oat_fds_[bcp_index]);
-  }
   chunks_.push_back(std::move(chunk));
   next_bcp_index_ = bcp_index + header.GetComponentCount();
   total_component_count_ += header.GetComponentCount();
@@ -3241,12 +3235,34 @@ class ImageSpace::BootImageLoader {
       ImageSpace* space = (*spaces)[spaces->size() - chunk.image_space_count + i].get();
       size_t bcp_chunk_size = (chunk.image_space_count == 1u) ? chunk.component_count : 1u;
 
+      size_t pos = chunk.start_index + i;
       auto boot_class_path_fds = boot_class_path_fds_.empty() ? ArrayRef<const int>()
-          : boot_class_path_fds_.SubArray(/*pos=*/ chunk.start_index + i, bcp_chunk_size);
+          : boot_class_path_fds_.SubArray(/*pos=*/ pos, bcp_chunk_size);
+
+      // Select vdex and oat FD if any exists.
+      android::base::unique_fd vdex_fd;
+      android::base::unique_fd oat_fd;
+      if (chunk.vdex_fd.get() >= 0) {
+        vdex_fd.reset(std::move(chunk.vdex_fd));
+      } else {
+        int arg_vdex_fd = pos < boot_class_path_vdex_fds_.size() ? boot_class_path_vdex_fds_[pos] : -1;
+        if (arg_vdex_fd >= 0) {
+          vdex_fd.reset(DupCloexec(arg_vdex_fd));
+        }
+      }
+      if (chunk.oat_fd.get() >= 0) {
+        oat_fd.reset(std::move(chunk.oat_fd));
+      } else {
+        int arg_oat_fd = pos < boot_class_path_oat_fds_.size() ? boot_class_path_oat_fds_[pos] : -1;
+        if (arg_oat_fd >= 0) {
+          oat_fd.reset(DupCloexec(arg_oat_fd));
+        }
+      }
+
       if (!OpenOatFile(space,
-                       std::move(chunk.vdex_fd),
-                       std::move(chunk.oat_fd),
-                       boot_class_path_.SubArray(/*pos=*/ chunk.start_index + i, bcp_chunk_size),
+                       std::move(vdex_fd),
+                       std::move(oat_fd),
+                       boot_class_path_.SubArray(/*pos=*/ pos, bcp_chunk_size),
                        boot_class_path_fds,
                        validate_oat_file,
                        dependencies,
