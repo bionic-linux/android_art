@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c29af6_5068fde9",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-15T21:56:02Z",
+      "side": 1,
+      "message": "The original implementation reuses (or maybe abuses) \"chunk\" to pass the FD. This approach itself is problematic, and is fixed in the new patchset.\n\nAs of whether art_fd can have the same problem... probably not since each chunk can only have one image file, unlike vdex and oat?",
+      "parentUuid": "dda60725_b972fd17",
+      "range": {
+        "startLine": 1946,
+        "startChar": 2,
+        "endLine": 1953,
+        "endChar": 3
+      },
+      "revId": "3760d0d1da13959fdc24c7778e15e0f9735f9282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21eca54d_6b537018",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-15T18:24:26Z",
       "side": 1,
       "message": "This still looks tricky. `chunk.vdex_fd` is referenced in a for loop, while it can only be used once. That\u0027s exactly the reason that caused b/210909223, and it can still cause similar problems in the future. I\u0027d add a DCHECK to make sure that the for loop has only one iteration (i.e., `locations.size() \u003d\u003d 1`) when `chunk.vdex_fd` is set, so that similar problems can be caught in our debug builds in the future.\n\nSame for oat_fd and art_fd as well.",
+      "range": {
+        "startLine": 3245,
+        "startChar": 6,
+        "endLine": 3247,
+        "endChar": 7
+      },
+      "revId": "3760d0d1da13959fdc24c7778e15e0f9735f9282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e8498c_ec3b0705",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3247,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-15T21:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21eca54d_6b537018",
       "range": {
         "startLine": 3245,
         "startChar": 6,
