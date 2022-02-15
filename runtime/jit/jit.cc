@@ -1761,6 +1761,22 @@ void Jit::EnqueueCompilation(ArtMethod* method, Thread* self) {
     return;
   }
 
+  static constexpr size_t kIndividualSharedMethodHotnessThreshold = 0xff;
+  if (method->IsMemorySharedMethod()) {
+    MutexLock mu(self, lock_);
+    auto it = shared_method_counters_.find(method);
+    if (it == shared_method_counters_.end()) {
+      shared_method_counters_[method] = kIndividualSharedMethodHotnessThreshold;
+      return;
+    } else if (it->second != 0) {
+      DCHECK_LE(it->second, kIndividualSharedMethodHotnessThreshold);
+      shared_method_counters_[method] = it->second - 1;
+      return;
+    } else {
+      shared_method_counters_[method] = kIndividualSharedMethodHotnessThreshold;
+    }
+  }
+
   if (!method->IsNative() && GetCodeCache()->CanAllocateProfilingInfo()) {
     thread_pool_->AddTask(
         self,

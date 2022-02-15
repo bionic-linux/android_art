@@ -3740,6 +3740,10 @@ void ClassLinker::LoadMethod(const DexFile& dex_file,
   if (!return_type_is_fp && all_parameters_are_reference_or_int) {
     dst->SetNterpInvokeFastPathFlag();
   }
+
+  if (Runtime::Current()->IsZygote()) {
+    dst->SetMemorySharedMethod();
+  }
 }
 
 void ClassLinker::AppendToBootClassPath(Thread* self, const DexFile* dex_file) {
