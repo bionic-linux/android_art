@@ -500,6 +500,8 @@ class Jit {
   // recomputing it.
   size_t fd_methods_size_;
 
+  std::map<ArtMethod*, uint16_t> shared_method_counters_;
+
   DISALLOW_COPY_AND_ASSIGN(Jit);
 };
 
