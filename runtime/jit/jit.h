@@ -500,6 +500,10 @@ class Jit {
   // recomputing it.
   size_t fd_methods_size_;
 
+  // Map of hotness counters for methods which we want to share the memory
+  // between the zygote and apps.
+  std::map<ArtMethod*, uint16_t> shared_method_counters_;
+
   DISALLOW_COPY_AND_ASSIGN(Jit);
 };
 
