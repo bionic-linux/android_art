@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "585cdcb8_c96d3165",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-15T18:24:26Z",
+      "side": 1,
+      "message": "Yes, generating oat files in memory is indeed a fallback. An error message is logged here (https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/space/image_space.cc;l\u003d2251;drc\u003dmaster) in this case. It\u0027s safe because the compilation is done on every boot.",
+      "parentUuid": "5aba948e_eaa4b8e3",
+      "range": {
+        "startLine": 3249,
+        "startChar": 10,
+        "endLine": 3250,
+        "endChar": 23
+      },
+      "revId": "c8faf412a7f0640f2c97996cf255ac903850e4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a24141c9_035f9866",
