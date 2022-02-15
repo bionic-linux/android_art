@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64dc47d_144405d9",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-15T10:38:26Z",
+      "side": 1,
+      "message": "Having FDs from multiple sources can actually happen, and it\u0027s a valid case. `chunk.vdex_fd` points to a in-memory file, which is generated when the file passed by flags cannot be used. Therefore, if `chunk.vdex_fd` is set, we should always use it regardless of the args.\n\nHere and below.",
+      "range": {
+        "startLine": 3249,
+        "startChar": 10,
+        "endLine": 3250,
+        "endChar": 23
+      },
+      "revId": "c8faf412a7f0640f2c97996cf255ac903850e4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24141c9_035f9866",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3252,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-15T10:38:26Z",
+      "side": 1,
+      "message": "`chunk.vdex_fd` is not used anywhere else. Keep the old behavior: std::move(chunk.vdex_fd)\n\nHere and below.",
+      "range": {
+        "startLine": 3252,
+        "startChar": 22,
+        "endLine": 3252,
+        "endChar": 46
+      },
+      "revId": "c8faf412a7f0640f2c97996cf255ac903850e4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76a66ba_436cdf07",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3254,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-15T10:38:26Z",
+      "side": 1,
+      "message": "DupCloexec is probably better.\n\nhttps://cs.android.com/android/platform/superproject/+/master:art/libartbase/base/file_utils.h;l\u003d186;drc\u003da32934500e7c747fbd0dfe56fc4720e61b9564e5",
+      "range": {
+        "startLine": 3254,
+        "startChar": 22,
+        "endLine": 3254,
+        "endChar": 25
+      },
+      "revId": "c8faf412a7f0640f2c97996cf255ac903850e4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
