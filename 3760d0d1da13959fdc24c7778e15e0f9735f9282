@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd517c47_31e2b67b",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-16T11:05:02Z",
+      "side": 1,
+      "message": "\u003e As of whether art_fd can have the same problem... probably not since each chunk can only have one image file, unlike vdex and oat?\n\nNo, each chunk can have multiple image files, one for each jar, just like vdex and oat.\n\n```\n$ adb shell ls /apex/com.android.art/javalib/x86_64\nboot-apache-xml.art\nboot-apache-xml.oat\nboot-apache-xml.vdex\nboot-bouncycastle.art\nboot-bouncycastle.oat\nboot-bouncycastle.vdex\nboot-core-libart.art\nboot-core-libart.oat\nboot-core-libart.vdex\nboot-okhttp.art\nboot-okhttp.oat\nboot-okhttp.vdex\nboot.art\nboot.oat\nboot.vdex\n```",
+      "parentUuid": "20c29af6_5068fde9",
+      "range": {
+        "startLine": 1946,
+        "startChar": 2,
+        "endLine": 1953,
+        "endChar": 3
+      },
+      "revId": "3760d0d1da13959fdc24c7778e15e0f9735f9282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21eca54d_6b537018",
         "filename": "runtime/gc/space/image_space.cc",
         "patchSetId": 6

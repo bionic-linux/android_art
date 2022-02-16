@@ -22,6 +22,30 @@
       },
       "revId": "59a7703c74d41a5e87a1c8fbc88133306a571690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570e4efe_d03c96ce",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-16T11:05:02Z",
+      "side": 1,
+      "message": "Please mention this as a comment.",
+      "parentUuid": "16341e31_d76f7efc",
+      "range": {
+        "startLine": 1908,
+        "startChar": 31,
+        "endLine": 1908,
+        "endChar": 41
+      },
+      "revId": "59a7703c74d41a5e87a1c8fbc88133306a571690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
