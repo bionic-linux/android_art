@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e270122a_3bb19e81",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-17T13:35:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd9dc7d_ed773956",
+      "range": {
+        "startLine": 722,
+        "startChar": 2,
+        "endLine": 722,
+        "endChar": 18
+      },
+      "revId": "011b29a0de7be4a0f5c38c8894ef03e28e67c52a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a935960_8ebafb7c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-10T14:19:30Z",
       "side": 1,
       "message": "Ditto, can we pass the caller direclty to this method instead?",
+      "range": {
+        "startLine": 1442,
+        "startChar": 0,
+        "endLine": 1443,
+        "endChar": 26
+      },
+      "revId": "011b29a0de7be4a0f5c38c8894ef03e28e67c52a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d111c1_a81971b0",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-17T13:35:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a935960_8ebafb7c",
       "range": {
         "startLine": 1442,
         "startChar": 0,
