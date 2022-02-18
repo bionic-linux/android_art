@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf78cb4_b25ca2ac",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6608,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-18T18:50:15Z",
+      "side": 1,
+      "message": "why this change?",
+      "range": {
+        "startLine": 6608,
+        "startChar": 26,
+        "endLine": 6608,
+        "endChar": 27
+      },
+      "revId": "567104e497ab630e695fab5a3c796856fa65f4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7acb5e4_13de03d4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7700,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-18T18:50:15Z",
+      "side": 1,
+      "message": "Why this dance around the class linker? (and not using class_linker_ below?)",
+      "range": {
+        "startLine": 7700,
+        "startChar": 0,
+        "endLine": 7700,
+        "endChar": 33
+      },
+      "revId": "567104e497ab630e695fab5a3c796856fa65f4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
