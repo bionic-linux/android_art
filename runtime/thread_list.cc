@@ -101,12 +101,9 @@ void ThreadList::ShutDown() {
     Runtime::Current()->DetachCurrentThread();
   }
   WaitForOtherNonDaemonThreadsToExit();
-  // Disable GC and wait for GC to complete in case there are still daemon threads doing
-  // allocations.
-  gc::Heap* const heap = Runtime::Current()->GetHeap();
-  heap->DisableGCForShutdown();
-  // In case a GC is in progress, wait for it to finish.
-  heap->WaitForGcToComplete(gc::kGcCauseBackground, Thread::Current());
+  // The only caller of this function, ~Runtime, has already disabled GC and
+  // ensured that the last GC is finished.
+
   // TODO: there's an unaddressed race here where a thread may attach during shutdown, see
   //       Thread::Init.
   SuspendAllDaemonThreadsForShutdown();
