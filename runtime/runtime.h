@@ -1069,6 +1069,9 @@ class Runtime {
     return apex_versions_;
   }
 
+  bool GetNoSigChain() const {
+    return no_sig_chain_;
+  }
   // Trigger a flag reload from system properties or device congfigs.
   //
   // Should only be called from runtime init and zygote post fork as
