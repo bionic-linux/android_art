@@ -998,6 +998,24 @@ void Heap::IncrementDisableThreadFlip(Thread* self) {
   }
 }
 
+uint8_t Heap::EnsureObjectUserfaulted(ObjPtr<mirror::Object> obj) {
+  // We don't care about what we return here. The purpose is to ensure that
+  // compiler loads from memory to trigger userfaults, if required.
+  uint8_t sum = 0;
+  if (kUseUserfaultfd) {
+    size_t size = obj->SizeOf();
+    volatile uint8_t* start = reinterpret_cast<volatile uint8_t*>(obj.Ptr());
+    volatile uint8_t* end = AlignUp(start + size, kPageSize);
+    // The first page is already touched by SizeOf().
+    start += kPageSize;
+    while (start < end) {
+      sum += *start;
+      start += kPageSize;
+    }
+  }
+  return sum;
+}
+
 void Heap::DecrementDisableThreadFlip(Thread* self) {
   // Supposed to be called by mutators. Decrement disable_thread_flip_count_ and potentially wake up
   // the GC waiting before doing a thread flip.
@@ -1084,10 +1102,20 @@ void Heap::UpdateProcessState(ProcessState old_process_state, ProcessState new_p
   }
 }
 
-void Heap::CreateThreadPool() {
-  const size_t num_threads = std::max(parallel_gc_threads_, conc_gc_threads_);
+void Heap::CreateThreadPool(size_t num_threads) {
+  if (num_threads == 0) {
+    num_threads = std::max(parallel_gc_threads_, conc_gc_threads_);
+  }
   if (num_threads != 0) {
     thread_pool_.reset(new ThreadPool("Heap thread pool", num_threads));
+  }
+}
+
+void Heap::WaitForWorkersToBeCreated() {
+  DCHECK(!Runtime::Current()->IsShuttingDown(Thread::Current()))
+      << "Cannot create new threads during runtime shutdown";
+  if (thread_pool_ != nullptr) {
+    thread_pool_->WaitForWorkersToBeCreated();
   }
 }
 
@@ -4355,7 +4383,6 @@ void Heap::CheckGcStressMode(Thread* self, ObjPtr<mirror::Object>* obj) {
 
 void Heap::DisableGCForShutdown() {
   Thread* const self = Thread::Current();
-  CHECK(Runtime::Current()->IsShuttingDown(self));
   MutexLock mu(self, *gc_complete_lock_);
   gc_disabled_for_shutdown_ = true;
 }

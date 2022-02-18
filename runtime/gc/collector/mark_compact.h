@@ -50,6 +50,7 @@ namespace collector {
 class MarkCompact : public GarbageCollector {
  public:
   static constexpr size_t kAlignment = kObjectAlignment;
+  static constexpr int kFallbackMode = -2;
 
   explicit MarkCompact(Heap* heap);
 
@@ -252,8 +253,10 @@ class MarkCompact : public GarbageCollector {
   // within obj from where the contents should be copied to the page.
   void CompactPage(mirror::Object* obj, uint32_t offset, uint8_t* addr)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  // Compact the bump-pointer space.
-  void CompactMovingSpace() REQUIRES_SHARED(Locks::mutator_lock_);
+  // Compact the bump-pointer space. pass page that should be used as buffer for
+  // userfaultfd.
+  template <bool kFallback>
+  void CompactMovingSpace(uint8_t* page = nullptr) REQUIRES_SHARED(Locks::mutator_lock_);
   // Update all the objects in the given non-moving space page. holder is the
   // first object in the page, which could have started in some preceding page.
   void UpdateNonMovingPage(mirror::Object* holder, uint8_t* page)
@@ -368,6 +371,21 @@ class MarkCompact : public GarbageCollector {
       REQUIRES(Locks::heap_bitmap_lock_);
 
   void RememberClassAndDexCache(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Perform all kernel operations required for concurrent compaction. Includes
+  // mremap to move pre-compact pages to from-space, followed by userfaultfd
+  // registration on the moving space.
+  void KernelPreparation();
+  // Called by thread-pool workers to read uffd_ and process fault events.
+  void ConcurrentCompaction(uint8_t* page) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Enables fallback mode.
+  void SetFallback() { uffd_ = kFallbackMode; }
+
+  enum PageState : uint8_t {
+    kUncompacted = 0,  // The page has been not compacted yet
+    kCompacting       // Some thread (GC or mutator) is compacting the page
+  };
+
+  std::unique_ptr<MemMap> compaction_buffers_map_;
   // For checkpoints
   Barrier gc_barrier_;
   // Every object inside the immune spaces is assumed to be marked.
@@ -399,6 +417,8 @@ class MarkCompact : public GarbageCollector {
   space::ContinuousSpace* non_moving_space_;
   space::BumpPointerSpace* const bump_pointer_space_;
   Thread* thread_running_gc_;
+  // Array of pages' compaction status.
+  Atomic<PageState>* moving_pages_status_;
   size_t vector_length_;
   size_t live_stack_freeze_size_;
 
@@ -408,12 +428,24 @@ class MarkCompact : public GarbageCollector {
   // we also need the offset within the object from where we need to start
   // copying.
   uint32_t* offset_vector_;
+  // For pages before black allocations, every element of this array stores the
+  // offset within the space from where the objects need to be copied within a
+  // post-compact page.
+  // For pages which has black allocations, every element tells size of the
+  // first chunk containing black objects within the page.
   uint32_t* pre_compact_offset_moving_space_;
+  // For every post-compact page, the element in this array stores the first
+  // object, which fully or partially, get copied to the page.
   ObjReference* first_objs_moving_space_;
+  // First object for every page. It could be greater than the page's start
+  // address or null if the page is empty.
   ObjReference* first_objs_non_moving_space_;
   size_t non_moving_first_objs_count_;
+  // Length of first_objs_moving_space_ and pre_compact_offset_moving_space_
+  // arrays. Also the number of pages which are to be compacted.
   size_t moving_first_objs_count_;
-  // Number of pages consumed by black objects.
+  // Number of pages consumed by black objects, indicating number of pages to be
+  // slid.
   size_t black_page_count_;
 
   uint8_t* from_space_begin_;
@@ -429,7 +461,14 @@ class MarkCompact : public GarbageCollector {
   // is incorporated.
   void* stack_addr_;
   void* stack_end_;
-  // Set to true when compacting starts.
+
+  uint8_t* conc_compaction_termination_page_;
+  // Userfault file descriptor
+  // kFallbackMode value indicates that we are in the fallback mode.
+  int uffd_;
+  // Used to exit from compaction loop at the end of concurrent compaction
+  uint8_t thread_pool_counter_;
+  // Set to true when compacting.
   bool compacting_;
 
   class VerifyRootMarkedVisitor;
@@ -441,6 +480,7 @@ class MarkCompact : public GarbageCollector {
   template <bool kCheckBegin, bool kCheckEnd> class RefsUpdateVisitor;
   class NativeRootsUpdateVisitor;
   class ImmuneSpaceUpdateObjVisitor;
+  class ConcurrentCompactionGcTask;
 
   DISALLOW_IMPLICIT_CONSTRUCTORS(MarkCompact);
 };
