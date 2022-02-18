@@ -1235,7 +1235,7 @@ static void GenerateCompareAndSet(CodeGeneratorARM64* codegen,
   DCHECK_EQ(old_value.IsX(), type == DataType::Type::kInt64);
   DCHECK(store_result.IsW());
   DCHECK_EQ(expected.IsX(), type == DataType::Type::kInt64);
-  DCHECK(!expected2.IsValid() || expected2.IsW());
+  DCHECK_IMPLIES(expected2.IsValid(), expected2.IsW());
 
   Arm64Assembler* assembler = codegen->GetAssembler();
   MacroAssembler* masm = assembler->GetVIXLAssembler();
@@ -1361,7 +1361,7 @@ class ReadBarrierCasSlowPathARM64 : public SlowPathCodeARM64 {
     // representing the to-space and from-space references for the same object.
 
     UseScratchRegisterScope temps(masm);
-    DCHECK(!store_result_.IsValid() || !temps.IsAvailable(store_result_));
+    DCHECK_IMPLIES(store_result_.IsValid(), !temps.IsAvailable(store_result_));
     Register tmp_ptr = temps.AcquireX();
     Register store_result = store_result_.IsValid() ? store_result_ : temps.AcquireW();
 
@@ -1578,7 +1578,7 @@ void IntrinsicCodeGeneratorARM64::VisitJdkUnsafeCompareAndSetLong(HInvoke* invok
 }
 void IntrinsicCodeGeneratorARM64::VisitJdkUnsafeCompareAndSetObject(HInvoke* invoke) {
   // The only supported read barrier implementation is the Baker-style read barriers.
-  DCHECK(!kEmitCompilerReadBarrier || kUseBakerReadBarrier);
+  DCHECK_IMPLIES(kEmitCompilerReadBarrier, kUseBakerReadBarrier);
 
   GenUnsafeCas(invoke, DataType::Type::kReference, codegen_);
 }
@@ -2884,7 +2884,7 @@ void IntrinsicLocationsBuilderARM64::VisitSystemArrayCopy(HInvoke* invoke) {
 void IntrinsicCodeGeneratorARM64::VisitSystemArrayCopy(HInvoke* invoke) {
   // The only read barrier implementation supporting the
   // SystemArrayCopy intrinsic is the Baker-style read barriers.
-  DCHECK(!kEmitCompilerReadBarrier || kUseBakerReadBarrier);
+  DCHECK_IMPLIES(kEmitCompilerReadBarrier, kUseBakerReadBarrier);
 
   MacroAssembler* masm = GetVIXLAssembler();
   LocationSummary* locations = invoke->GetLocations();

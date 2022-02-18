@@ -189,7 +189,7 @@ bool SsaRedundantPhiElimination::Run() {
       // We iterate over the array as long as it grows.
       for (size_t i = 0; i < cycle_worklist.size(); ++i) {
         HPhi* current = cycle_worklist[i];
-        DCHECK(!current->IsLoopHeaderPhi() ||
+        DCHECK_IMPLIES(current->IsLoopHeaderPhi(),
                current->GetBlock()->IsLoopPreHeaderFirstPredecessor());
 
         for (HInstruction* input : current->GetInputs()) {
