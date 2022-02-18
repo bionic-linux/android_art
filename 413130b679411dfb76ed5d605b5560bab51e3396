@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c152693_0da8832f",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4349,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-02-18T23:09:14Z",
+      "side": 1,
+      "message": "I get the following error here:\n`Holding \"mutator lock\" while performing wait on \"GC barrier lock\"`",
+      "revId": "413130b679411dfb76ed5d605b5560bab51e3396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
