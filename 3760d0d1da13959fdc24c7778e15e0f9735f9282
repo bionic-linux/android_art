@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c481efcc_dac42757",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-18T01:54:53Z",
+      "side": 1,
+      "message": "I haven\u0027t been able to test my change for two days due to some weird device problem... So let me post my question to see if you any thoughts first.\n\nThere are two loop of locations.size(), one at L3176, the other L3234 (this PS6).  The same function has a chunk as its parameter.\n\nThe first loop std::move\u0027s chunk.art_fd, so that only the first location will come with a valid art_fd.  The second loop calls OpenOatFile with the i-th oat_fd and vdex_fd.\n\nI\u0027m not sure what is the \"correct\" behavior. Maybe passing `boot_class_path_image_fds_[chunk.start_index + i]` to `Load` in the loop? If not, what should it be?",
+      "parentUuid": "bd517c47_31e2b67b",
+      "range": {
+        "startLine": 1946,
+        "startChar": 2,
+        "endLine": 1953,
+        "endChar": 3
+      },
+      "revId": "3760d0d1da13959fdc24c7778e15e0f9735f9282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21eca54d_6b537018",
         "filename": "runtime/gc/space/image_space.cc",
         "patchSetId": 6
