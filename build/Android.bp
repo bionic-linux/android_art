@@ -216,6 +216,11 @@ art_module_art_global_defaults {
             enabled: false,
         },
         host: {
+            include_dirs: [
+                // userfaultfd header doesn't exist on host glibc
+                "prebuilts/runtime/mainline/runtime/sdk/linux_bionic/include/bionic/libc/kernel/android/uapi/",
+                "prebuilts/runtime/mainline/runtime/sdk/linux_bionic/include/bionic/libc/kernel/uapi/",
+            ],
             cflags: [
                 // Bug: 15446488. We don't omit the frame pointer to work around
                 // clang/libunwind bugs that cause SEGVs in run-test-004-ThreadStress.

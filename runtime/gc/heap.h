@@ -151,7 +151,7 @@ class Heap {
   static constexpr size_t kMinLargeObjectThreshold = 3 * kPageSize;
   static constexpr size_t kDefaultLargeObjectThreshold = kMinLargeObjectThreshold;
   // Whether or not parallel GC is enabled. If not, then we never create the thread pool.
-  static constexpr bool kDefaultEnableParallelGC = false;
+  static constexpr bool kDefaultEnableParallelGC = true;
   static uint8_t* const kPreferredAllocSpaceBegin;
 
   // Whether or not we use the free list large object space. Only use it if USE_ART_LOW_4G_ALLOCATOR
@@ -385,6 +385,9 @@ class Heap {
   void DecrementDisableThreadFlip(Thread* self) REQUIRES(!*thread_flip_lock_);
   void ThreadFlipBegin(Thread* self) REQUIRES(!*thread_flip_lock_);
   void ThreadFlipEnd(Thread* self) REQUIRES(!*thread_flip_lock_);
+
+  // Ensures that the obj doesn't cause userfaultfd in JNI critical calls.
+  uint8_t EnsureObjectUserfaulted(ObjPtr<mirror::Object> obj) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Clear all of the mark bits, doesn't clear bitmaps which have the same live bits as mark bits.
   // Mutator lock is required for GetContinuousSpaces.
@@ -768,8 +771,10 @@ class Heap {
       REQUIRES(!*gc_complete_lock_);
   void ResetGcPerformanceInfo() REQUIRES(!*gc_complete_lock_);
 
-  // Thread pool.
-  void CreateThreadPool();
+  // Thread pool. Create either the given number of threads, or as per the
+  // values of conc_gc_threads_ and parallel_gc_threads_.
+  void CreateThreadPool(size_t num_threads = 0);
+  void WaitForWorkersToBeCreated();
   void DeleteThreadPool();
   ThreadPool* GetThreadPool() {
     return thread_pool_.get();
