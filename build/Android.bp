@@ -150,6 +150,12 @@ art_module_art_global_defaults {
         "-D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS",
     ],
 
+    include_dirs: [
+        // userfaultfd header doesn't exist on host glibc
+        "bionic/libc/kernel/android/uapi/",
+        "bionic/libc/kernel/uapi/",
+    ],
+
     arch: {
         arm: {
             cflags: [
