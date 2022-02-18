@@ -1999,7 +1999,7 @@ bool ClassLinker::AddImageSpace(
           // Set image methods' entry point that point to the nterp trampoline to the
           // nterp entry point. This allows taking the fast path when doing a
           // nterp->nterp call.
-          DCHECK(!NeedsClinitCheckBeforeCall(&method) ||
+          DCHECK_IMPLIES(NeedsClinitCheckBeforeCall(&method),
                  method.GetDeclaringClass()->IsVisiblyInitialized());
           method.SetEntryPointFromQuickCompiledCode(interpreter::GetNterpEntryPoint());
         } else {
@@ -4148,7 +4148,7 @@ ObjPtr<mirror::Class> ClassLinker::CreateArrayClass(Thread* self,
   }
   // Core array classes, i.e. Object[], Class[], String[] and primitive
   // arrays, have special initialization and they should be found above.
-  DCHECK(!component_type->IsObjectClass() ||
+  DCHECK_IMPLIES(component_type->IsObjectClass(),
          // Guard from false positives for errors before setting superclass.
          component_type->IsErroneousUnresolved());
   DCHECK(!component_type->IsStringClass());
@@ -4566,7 +4566,7 @@ verifier::FailureKind ClassLinker::VerifyClass(Thread* self,
   // If the oat file says the class had an error, re-run the verifier. That way we will either:
   // 1) Be successful at runtime, or
   // 2) Get a precise error message.
-  DCHECK(!mirror::Class::IsErroneous(oat_file_class_status) || !preverified);
+  DCHECK_IMPLIES(mirror::Class::IsErroneous(oat_file_class_status), !preverified);
 
   std::string error_msg;
   verifier::FailureKind verifier_failure = verifier::FailureKind::kNoFailure;
@@ -8809,7 +8809,7 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
   self->EndAssertNoThreadSuspension(old_no_suspend_cause);
 
   // We lie to the GC about the java.lang.ref.Reference.referent field, so it doesn't scan it.
-  DCHECK(!class_linker->init_done_ || !klass->DescriptorEquals("Ljava/lang/ref/Reference;"));
+  DCHECK_IMPLIES(class_linker->init_done_, !klass->DescriptorEquals("Ljava/lang/ref/Reference;"));
   if (!is_static &&
       UNLIKELY(!class_linker->init_done_) &&
       klass->DescriptorEquals("Ljava/lang/ref/Reference;")) {
@@ -9111,7 +9111,7 @@ ArtMethod* ClassLinker::FindResolvedMethod(ObjPtr<mirror::Class> klass,
     // In case of jmvti, the dex file gets verified before being registered, so first
     // check if it's registered before checking class tables.
     const DexFile& dex_file = *dex_cache->GetDexFile();
-    DCHECK(!IsDexFileRegistered(Thread::Current(), dex_file) ||
+    DCHECK_IMPLIES(IsDexFileRegistered(Thread::Current(), dex_file),
            FindClassTable(Thread::Current(), dex_cache) == ClassTableForClassLoader(class_loader))
         << "DexFile referrer: " << dex_file.GetLocation()
         << " ClassLoader: " << DescribeLoaders(class_loader, "");

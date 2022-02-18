@@ -280,7 +280,7 @@ struct SubtypeCheckInfo {
     // Either Assigned or Initialized.
     BitString path_to_root = GetPathToRoot();
 
-    DCHECK(!HasNext() || GetNext() != 0u)
+    DCHECK_IMPLIES(HasNext(), GetNext() != 0u)
         << "Expected (Assigned|Initialized) state to have >0 Next value: "
         << GetNext() << " path: " << path_to_root;
 
