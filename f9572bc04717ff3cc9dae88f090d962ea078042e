@@ -16,6 +16,23 @@
       "message": "The code LGTM, but the test failure looks related to this change.",
       "revId": "f9572bc04717ff3cc9dae88f090d962ea078042e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c460268_79ffea55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-02-22T18:12:35Z",
+      "side": 1,
+      "message": "+vmarko if he can have any idea about the TH failure:\n\n```\njava.lang.AssertionError: Did not see framework.jar in \u003d\u003d\u003d Dex files  \u003d\u003d\u003d\njava.lang.AssertionError: Did not see framework.jar in \u003d\u003d\u003d Dex files  \u003d\u003d\u003d\n\u003d\u003d\u003d profile \u003d\u003d\u003d\nProfileInfo [015]\n-empty-\n\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.assertTrue(Assert.java:42)\n\tat com.android.bootimageprofile.BootImageProfileTest.testSystemServerProfile(BootImageProfileTest.java:178)\n\t...\n```",
+      "revId": "f9572bc04717ff3cc9dae88f090d962ea078042e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
