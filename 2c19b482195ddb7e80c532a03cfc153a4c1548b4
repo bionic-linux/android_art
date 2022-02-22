@@ -16,6 +16,23 @@
       "message": "Ulya PTAL",
       "revId": "2c19b482195ddb7e80c532a03cfc153a4c1548b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9c7e7e_378a4949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-22T17:30:08Z",
+      "side": 1,
+      "message": "All good, very nice cleanup!",
+      "revId": "2c19b482195ddb7e80c532a03cfc153a4c1548b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
