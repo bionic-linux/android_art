@@ -51,6 +51,24 @@
       "parentUuid": "6c460268_79ffea55",
       "revId": "f9572bc04717ff3cc9dae88f090d962ea078042e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067c1ac7_bb47b7bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-23T10:43:48Z",
+      "side": 1,
+      "message": "I see the change and now I understand what was going on. unique_fd::reset() actually takes an int rather than a unique_fd\u0026\u0026, and there is an implicit cast from unique_fd to int. So scary :)",
+      "parentUuid": "e92e0b03_3f9d15e9",
+      "revId": "f9572bc04717ff3cc9dae88f090d962ea078042e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
