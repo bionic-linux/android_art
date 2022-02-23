@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7079d388_0a6c8b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "I addressed your comments. PTAL.",
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16523ce1_d3343ca9",
+        "filename": "runtime/arch/arm/asm_support_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "I needed this because now we could either deopt or throw an exception and we build frame in two places. Though only one of them is actually executed at runtime. I could try and see if we can only build the frame once and avoid this. Though currently for deopt we use a save_everything frame and for pending exception we use a callee save frame.",
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

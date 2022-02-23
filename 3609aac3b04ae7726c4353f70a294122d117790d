@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d834543b_9ba38f06",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "Summarizing offline discussion, it is sufficient to check for a deopt on instrumented alloc entry points which will be used when a class is redefined or when there are allocation listeners. So in the normal case we won\u0027t do any additional checks. We need to check for a deopt on instrumented allocs because we need to immediately deopt after a redefinition.",
+      "parentUuid": "5ae72770_192965b2",
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "663478cb_d2ce0a18",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-02-17T13:49:53Z",
       "side": 1,
       "message": "Consider adding a macro / helper for this?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76d4a8d_dcf7bb81",
+        "filename": "runtime/entrypoints/quick/quick_dexcache_entrypoints.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "No longer needed after moving checks to assembly",
+      "parentUuid": "663478cb_d2ce0a18",
       "range": {
         "startLine": 165,
         "startChar": 0,
@@ -99,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52920664_5b027cb1",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bcecd98_97055ea7",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 6
+      },
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7ee338c_b8be41af",
@@ -112,6 +178,30 @@
       "writtenOn": "2022-02-17T13:49:53Z",
       "side": 1,
       "message": "Why can we not do this for suspend checks? (and need to pass the sp explicitly)",
+      "range": {
+        "startLine": 1555,
+        "startChar": 0,
+        "endLine": 1555,
+        "endChar": 63
+      },
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66fa83d6_989cfd46",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "Actually I think we can. Updated this in suspend checks too.",
+      "parentUuid": "e7ee338c_b8be41af",
       "range": {
         "startLine": 1555,
         "startChar": 0,
@@ -145,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07bcd0ac_0342f654",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a73f0b_e317386f",
+      "range": {
+        "startLine": 1613,
+        "startChar": 6,
+        "endLine": 1613,
+        "endChar": 48
+      },
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91b6163a_36352c20",
@@ -158,6 +272,30 @@
       "writtenOn": "2022-02-17T13:49:53Z",
       "side": 1,
       "message": "Is this for optimization purposes? For simplicity, could we just do it at any runtime call?",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 33
+      },
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e67fd9a_080e174d",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-23T18:03:49Z",
+      "side": 1,
+      "message": "Done. Updated it to do it when instrumentation_stubs_installed_ is true. That is less precise but keeps common cases fast without overhead of an additional flag.",
+      "parentUuid": "91b6163a_36352c20",
       "range": {
         "startLine": 663,
         "startChar": 0,
