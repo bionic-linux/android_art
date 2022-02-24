@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd2cc84f_5cccdddf",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-24T17:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09849902_804ed897",
+      "range": {
+        "startLine": 805,
+        "startChar": 59,
+        "endLine": 805,
+        "endChar": 75
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6f68ea_b0b5d60f",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-02-24T09:58:45Z",
       "side": 1,
       "message": "How about `CHECK_FOR_DEOPTIMIZATION_OR_RETURN` ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 13
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20cf908_9d78150b",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-24T17:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6f68ea_b0b5d60f",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64cb49c6_f52af592",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-24T17:46:45Z",
+      "side": 1,
+      "message": "Done. Yes it is caller. I updated the name",
+      "parentUuid": "ca01863e_fd48df19",
+      "range": {
+        "startLine": 727,
+        "startChar": 39,
+        "endLine": 727,
+        "endChar": 46
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c97b7abe_f334d857",
@@ -144,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "479ca80b_05d88fb4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-24T17:46:45Z",
+      "side": 1,
+      "message": "Yes, you are right. I moved the log to ShouldDeoptimizeMethod and changed this to a DCHECK.",
+      "parentUuid": "c97b7abe_f334d857",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 45
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1466bf48_d09e59c8",
@@ -157,6 +253,30 @@
       "writtenOn": "2022-02-24T09:58:45Z",
       "side": 1,
       "message": "nit: one per line",
+      "range": {
+        "startLine": 1581,
+        "startChar": 37,
+        "endLine": 1581,
+        "endChar": 95
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "682f92dd_d9ee6b22",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-24T17:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1466bf48_d09e59c8",
       "range": {
         "startLine": 1581,
         "startChar": 37,
