@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "608ff7b1_8233d59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "Adding in Vladimir as well, as this is quite involved 😊",
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16523ce1_d3343ca9",
@@ -31,6 +48,121 @@
       "writtenOn": "2022-02-23T18:03:49Z",
       "side": 1,
       "message": "I needed this because now we could either deopt or throw an exception and we build frame in two places. Though only one of them is actually executed at runtime. I could try and see if we can only build the frame once and avoid this. Though currently for deopt we use a save_everything frame and for pending exception we use a callee save frame.",
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09849902_804ed897",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "The OOME reference looks stale?",
+      "range": {
+        "startLine": 805,
+        "startChar": 59,
+        "endLine": 805,
+        "endChar": 75
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6f68ea_b0b5d60f",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "How about `CHECK_FOR_DEOPTIMIZATION_OR_RETURN` ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 13
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca01863e_fd48df19",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "The \u0027Current\u0027 in the name is confusing. Is that the caller?",
+      "range": {
+        "startLine": 727,
+        "startChar": 39,
+        "endLine": 727,
+        "endChar": 46
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97b7abe_f334d857",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "Isn\u0027t that already done in ShouldDeoptimizeCurrentMethod ?",
+      "range": {
+        "startLine": 730,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 45
+      },
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1466bf48_d09e59c8",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 1,
+      "message": "nit: one per line",
+      "range": {
+        "startLine": 1581,
+        "startChar": 37,
+        "endLine": 1581,
+        "endChar": 95
+      },
       "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e414bd3_c435b0c3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 0,
+      "message": "Do we not need this anymore?",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 23
+      },
+      "revId": "61c0d22e27b4ea885fa008ac9bfa3ae3d7453d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f099ce1_f62b110a",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:58:45Z",
+      "side": 0,
+      "message": "Why removing this check? If it\u0027s never zero, do you want to add a dcheck?",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 705,
+        "endChar": 26
+      },
+      "revId": "61c0d22e27b4ea885fa008ac9bfa3ae3d7453d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
