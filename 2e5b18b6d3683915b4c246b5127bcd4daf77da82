@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2a7f85_d1cbd9df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-24T09:33:12Z",
+      "side": 1,
+      "message": "Vladimir, David, TH ping.",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
