@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "696f7509_6985d345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-02-24T14:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04c1f7b_6a7712d0",
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59d70875_dede96f0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4335c8_a9d31b8d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-02-24T14:10:35Z",
+      "side": 1,
+      "message": "In general, I\u0027d be wary of flipping `||` because of C++ short-circuiting. I think that we are okay for this particular case though. Done.",
+      "parentUuid": "743faf90_06ea615e",
+      "range": {
+        "startLine": 1231,
+        "startChar": 2,
+        "endLine": 1231,
+        "endChar": 69
+      },
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65caec07_eca27254",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-02-24T13:09:42Z",
       "side": 1,
       "message": "Suggestion: Either keep the same style as lines 3071–3072, or adjust lines 3071–3072 to match the new style.",
+      "range": {
+        "startLine": 3074,
+        "startChar": 8,
+        "endLine": 3074,
+        "endChar": 70
+      },
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1c3c15_55c5e570",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-02-24T14:10:35Z",
+      "side": 1,
+      "message": "Ack, copied the style from lines 3071–3072 since that\u0027s what we usually do with multi-line cases like these.",
+      "parentUuid": "65caec07_eca27254",
       "range": {
         "startLine": 3074,
         "startChar": 8,
