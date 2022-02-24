@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04c1f7b_6a7712d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-02-24T13:09:42Z",
+      "side": 1,
+      "message": "Android CLs are expected to have a \"Test:\" stanza (see go/commit-change#footers-and-machine-parsable-text).",
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59d70875_dede96f0",
@@ -14,6 +31,52 @@
       "writtenOn": "2022-02-22T17:13:38Z",
       "side": 1,
       "message": "Roland PTAL",
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743faf90_06ea615e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-02-24T13:09:42Z",
+      "side": 1,
+      "message": "Maybe also replace this one with:\n\n  DCHECK_IMPLIES(expected2.IsValid(), type \u003d\u003d DataType::Type::kReference);\n\n?",
+      "range": {
+        "startLine": 1231,
+        "startChar": 2,
+        "endLine": 1231,
+        "endChar": 69
+      },
+      "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65caec07_eca27254",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-02-24T13:09:42Z",
+      "side": 1,
+      "message": "Suggestion: Either keep the same style as lines 3071–3072, or adjust lines 3071–3072 to match the new style.",
+      "range": {
+        "startLine": 3074,
+        "startChar": 8,
+        "endLine": 3074,
+        "endChar": 70
+      },
       "revId": "54a56e2c840ceb4bbe2f64a27bf1a4bab662ecc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
