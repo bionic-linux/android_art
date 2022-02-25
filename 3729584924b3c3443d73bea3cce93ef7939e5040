@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3ce905_325ad4bc",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-25T09:36:54Z",
+      "side": 1,
+      "message": "Does this always hold if IsForcedInterpreterNeededForUpcall is true?",
+      "range": {
+        "startLine": 730,
+        "startChar": 31,
+        "endLine": 730,
+        "endChar": 52
+      },
+      "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
