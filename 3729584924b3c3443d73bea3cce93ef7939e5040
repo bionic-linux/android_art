@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e70c717_d6a55211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-28T09:06:07Z",
+      "side": 1,
+      "message": "Sorry, I typed in the reply but forgot to hit send earlier.",
+      "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d3ce905_325ad4bc",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-02-25T09:36:54Z",
       "side": 1,
       "message": "Does this always hold if IsForcedInterpreterNeededForUpcall is true?",
+      "range": {
+        "startLine": 730,
+        "startChar": 31,
+        "endLine": 730,
+        "endChar": 52
+      },
+      "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50d1bf9_f5f10ee5",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-28T09:06:07Z",
+      "side": 1,
+      "message": "We already check for Dbg::IsForcedInterpreterNeededForUpcall(self, caller) in ShouldDeoptimizeMethod too. Ideally I should have dropped that check from here but there is a difference between caller here and the caller in ShouldDeoptimizeMethod. ShouldDeoptimizeMethod just picks up the caller on the stack but here it looks at the inline info and finds the actual method incase we have inlined something. I think getting this inlined function isn\u0027t necessary. In all debuggable cases inlining should be off and this check should be OK. \n\nMaybe I can bring the if condition back and convert into a DCHECK and also drop Dbg::IsForcedInterpreterNeededForUpcall(self, caller) from here in a separate CL? I didn\u0027t want to drop it in this one just in case some unexpected problems come up.",
+      "parentUuid": "1d3ce905_325ad4bc",
       "range": {
         "startLine": 730,
         "startChar": 31,
