@@ -80,6 +80,30 @@
       },
       "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d06e1a8_b5091ffa",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-02-28T09:59:01Z",
+      "side": 1,
+      "message": "Up to you - but these sequence of checks are not making the code easy. Ideally, we\u0027d have just one method: Instrumentation::ShouldDeoptimizeCaller(self, sp).",
+      "parentUuid": "f50d1bf9_f5f10ee5",
+      "range": {
+        "startLine": 730,
+        "startChar": 31,
+        "endLine": 730,
+        "endChar": 52
+      },
+      "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
