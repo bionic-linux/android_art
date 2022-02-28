@@ -104,6 +104,30 @@
       },
       "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe601d7_80a7b9d4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-02-28T10:47:09Z",
+      "side": 1,
+      "message": "I updated the check. ShouldDeoptimizeMethod already does all the necessary checks. This is quite involved CL anyway so I guess it is not worth waiting for a follow up CL for a minor cleanup. I don\u0027t think this should cause any problems.",
+      "parentUuid": "1d06e1a8_b5091ffa",
+      "range": {
+        "startLine": 730,
+        "startChar": 31,
+        "endLine": 730,
+        "endChar": 52
+      },
+      "revId": "3729584924b3c3443d73bea3cce93ef7939e5040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
