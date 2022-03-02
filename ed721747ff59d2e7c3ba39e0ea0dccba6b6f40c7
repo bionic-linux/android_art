@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9348a214_1b22aca4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-02T10:04:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7e6e38d_34d0db77",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 58
+      },
+      "revId": "ed721747ff59d2e7c3ba39e0ea0dccba6b6f40c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8791ee79_a8d53a55",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ea4331_2c39ee94",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-02T10:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8791ee79_a8d53a55",
+      "range": {
+        "startLine": 1594,
+        "startChar": 22,
+        "endLine": 1594,
+        "endChar": 44
+      },
+      "revId": "ed721747ff59d2e7c3ba39e0ea0dccba6b6f40c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b4c7e1_ccfd3ec8",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-02-28T11:26:31Z",
       "side": 1,
       "message": "Nit: add a comment.",
+      "revId": "ed721747ff59d2e7c3ba39e0ea0dccba6b6f40c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e83600b7_f53652b6",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-02T10:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b4c7e1_ccfd3ec8",
       "revId": "ed721747ff59d2e7c3ba39e0ea0dccba6b6f40c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -321,6 +321,24 @@
       "message": "I am not entirely sure why we haven\u0027t seen any problems with this earlier. Maybe because we always do full fragment deopts and ArtMethod::Invoke clears this in DeoptimizeWithDeoptimizeException. If we happen to do a partial fragment we enter QuickToInterpreterBridge which doesn\u0027t clear this exception. That could cause problems when we start executing interpreter code and interpreter tries to handle it as a regular exception.",
       "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a3b79f_d036230c",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 3702,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-02T10:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a025e204_963659bb",
+      "revId": "3609aac3b04ae7726c4353f70a294122d117790d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

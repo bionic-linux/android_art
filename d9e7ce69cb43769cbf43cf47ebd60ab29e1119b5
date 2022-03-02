@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65b611d_4b714da1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-02T10:04:53Z",
+      "side": 1,
+      "message": "Thanks Nicolas! \n\nVladimir, PTAL. Feel free to ping me for more context. I am sorry this CL is a bit involved and large :).",
+      "revId": "d9e7ce69cb43769cbf43cf47ebd60ab29e1119b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
