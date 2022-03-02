@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b931b041_ec0b89df",
+        "filename": "runtime/arch/arm/asm_support_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-02T15:34:51Z",
+      "side": 1,
+      "message": "Let\u0027s clean get rid of the RUNTIME_CURRENT\u003cn\u003e: https://android-review.googlesource.com/2005810 .",
+      "parentUuid": "16523ce1_d3343ca9",
+      "revId": "9db6b71770ec5ae19d1ec3b8d07cbd0a0375af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09849902_804ed897",
