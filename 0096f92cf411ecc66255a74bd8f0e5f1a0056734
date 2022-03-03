@@ -22,6 +22,30 @@
       },
       "revId": "0096f92cf411ecc66255a74bd8f0e5f1a0056734",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe9cfca_a072ce58",
+        "filename": "tools/run-libcore-tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-03-03T21:44:41Z",
+      "side": 1,
+      "message": "Perhaps we should deprecate/remove support for testing outside of a chroot entirely? In the end I gave up on non-chroot testing (despite the convenience) because even after fixing this issue there were too many tests that were failing (e.g. expecting libarttestd.so from com.android.art.testing to be installed).",
+      "parentUuid": "30808d37_ef372c14",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 71
+      },
+      "revId": "0096f92cf411ecc66255a74bd8f0e5f1a0056734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
