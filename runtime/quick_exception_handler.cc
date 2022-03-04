@@ -113,9 +113,16 @@ class CatchBlockStackVisitor final : public StackVisitor {
       exception_handler_->SetClearException(clear_exception);
       if (found_dex_pc != dex::kDexNoIndex) {
         exception_handler_->SetHandlerDexPc(found_dex_pc);
+        std::vector<uint32_t> inline_dex_pcs = GetDexPcList();
+        // TODO(solanes): Change to have only one list and include the other dex_pc?
+        ArrayRef<const uint32_t> ref(inline_dex_pcs);
+
         exception_handler_->SetHandlerQuickFramePc(
-            GetCurrentOatQuickMethodHeader()->ToNativeQuickPc(
-                method, found_dex_pc, /* is_for_catch_handler= */ true));
+            GetCurrentOatQuickMethodHeader()->ToNativeQuickPc(method,
+                                                              found_dex_pc,
+                                                              /* is_for_catch_handler= */ true,
+                                                              /* abort_on_failure= */ true,
+                                                              ref));
         exception_handler_->SetHandlerQuickFrame(GetCurrentQuickFrame());
         exception_handler_->SetHandlerMethodHeader(GetCurrentOatQuickMethodHeader());
         return false;  // End stack walk.
@@ -250,7 +257,9 @@ void QuickExceptionHandler::SetCatchEnvironmentForOptimizedHandler(StackVisitor*
   CodeInfo code_info(handler_method_header_);
 
   // Find stack map of the catch block.
-  StackMap catch_stack_map = code_info.GetCatchStackMapForDexPc(GetHandlerDexPc());
+  std::vector<uint32_t> inline_dex_pcs = stack_visitor->GetDexPcList();
+  ArrayRef<const uint32_t> ref(inline_dex_pcs);
+  StackMap catch_stack_map = code_info.GetCatchStackMapForDexPc(GetHandlerDexPc(), ref);
   DCHECK(catch_stack_map.IsValid());
   DexRegisterMap catch_vreg_map = code_info.GetDexRegisterMapOf(catch_stack_map);
   DCHECK_EQ(catch_vreg_map.size(), number_of_vregs);
@@ -463,6 +472,8 @@ class DeoptimizeStackVisitor final : public StackVisitor {
     const size_t number_of_vregs = accessor.RegistersSize();
     uint32_t register_mask = code_info.GetRegisterMaskOf(stack_map);
     BitMemoryRegion stack_mask = code_info.GetStackMaskOf(stack_map);
+    // TODO(solanes): Check that a
+    DCHECK_IMPLIES(IsInInlinedFrame(), stack_map.GetKind() != StackMap::Kind::Catch);
     DexRegisterMap vreg_map = IsInInlinedFrame()
         ? code_info.GetInlineDexRegisterMapOf(stack_map, GetCurrentInlinedFrame())
         : code_info.GetDexRegisterMapOf(stack_map);
