@@ -58,7 +58,8 @@ uint32_t OatQuickMethodHeader::ToDexPc(ArtMethod** frame,
 uintptr_t OatQuickMethodHeader::ToNativeQuickPc(ArtMethod* method,
                                                 const uint32_t dex_pc,
                                                 bool is_for_catch_handler,
-                                                bool abort_on_failure) const {
+                                                bool abort_on_failure,
+                                                ArrayRef<const uint32_t> inline_dex_pcs) const {
   const void* entry_point = GetEntryPoint();
   DCHECK(!method->IsNative());
   if (IsNterpMethodHeader()) {
@@ -73,9 +74,9 @@ uintptr_t OatQuickMethodHeader::ToNativeQuickPc(ArtMethod* method,
   // All stack maps are stored in the same CodeItem section, safepoint stack
   // maps first, then catch stack maps. We use `is_for_catch_handler` to select
   // the order of iteration.
-  StackMap stack_map =
-      LIKELY(is_for_catch_handler) ? code_info.GetCatchStackMapForDexPc(dex_pc)
-                                   : code_info.GetStackMapForDexPc(dex_pc);
+  StackMap stack_map = LIKELY(is_for_catch_handler) ?
+                           code_info.GetCatchStackMapForDexPc(dex_pc, inline_dex_pcs) :
+                           code_info.GetStackMapForDexPc(dex_pc);
   if (stack_map.IsValid()) {
     return reinterpret_cast<uintptr_t>(entry_point) +
            stack_map.GetNativePcOffset(kRuntimeISA);

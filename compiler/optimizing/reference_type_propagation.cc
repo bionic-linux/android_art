@@ -582,9 +582,13 @@ void ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction*
 
   ScopedObjectAccess soa(Thread::Current());
   ObjPtr<mirror::DexCache> dex_cache = FindDexCacheWithHint(soa.Self(), dex_file, hint_dex_cache_);
-  ObjPtr<mirror::Class> klass = Runtime::Current()->GetClassLinker()->LookupResolvedType(
-      type_idx, dex_cache, class_loader_.Get());
-  SetClassAsTypeInfo(instr, klass, is_exact);
+  // TODO(solanes): Find out why the class loaders are different for catches (See
+  // VisitLoadException).
+  if (LIKELY(dex_cache->GetClassLoader() == class_loader_.Get())) {
+    ObjPtr<mirror::Class> klass = Runtime::Current()->GetClassLinker()->LookupResolvedType(
+        type_idx, dex_cache, class_loader_.Get());
+    SetClassAsTypeInfo(instr, klass, is_exact);
+  }
 }
 
 void ReferenceTypePropagation::RTPVisitor::VisitNewInstance(HNewInstance* instr) {
