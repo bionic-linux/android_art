@@ -25,8 +25,12 @@ public class Main {
     }
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     assertEquals(1.0F, $noinline$longToFloat());
+  }
+
+  private static void $noinline$throwEmptyError() throws Exception {
+    throw new Error();
   }
 
   /// CHECK-START: float Main.$noinline$longToFloat() register (after)
@@ -34,8 +38,9 @@ public class Main {
   /// CHECK-DAG:     <<Convert:f\d+>>  TypeConversion [<<Const1>>]
   /// CHECK-DAG:                       Return [<<Convert>>]
 
-  static float $noinline$longToFloat() {
-    if (doThrow) { throw new Error(); }
+  static float $noinline$longToFloat() throws Exception {
+    // If we inline the throw, LSE won't run and the checks above need LSE to run.
+    if (doThrow) { $noinline$throwEmptyError(); }
     longValue = $inline$returnConst();
     // This call prevents D8 from replacing the result of the sget instruction
     // in line 43 by the result of the call to $inline$returnConst() in line 39.

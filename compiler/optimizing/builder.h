@@ -46,7 +46,7 @@ class HGraphBuilder : public ValueObject {
                 const CodeItemDebugInfoAccessor& accessor,
                 DataType::Type return_type = DataType::Type::kInt32);
 
-  GraphAnalysisResult BuildGraph();
+  GraphAnalysisResult BuildGraph(bool build_for_inline = false);
   void BuildIntrinsicGraph(ArtMethod* method);
 
   static constexpr const char* kBuilderPassName = "builder";

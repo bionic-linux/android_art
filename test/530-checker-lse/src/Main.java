@@ -1826,34 +1826,38 @@ public class Main {
     return array[1];
   }
 
+  private static void $noinline$throwEmptyError() throws Exception {
+    throw new Error();
+  }
+
   /// CHECK-START: int Main.testExitMerge(boolean) load_store_elimination (before)
   /// CHECK-DAG: NewInstance
   /// CHECK-DAG: InstanceFieldSet field_name:TestClass.i
   /// CHECK-DAG: InstanceFieldGet field_name:TestClass.i
   /// CHECK-DAG: Return
   /// CHECK-DAG: InstanceFieldSet field_name:TestClass.i
-  /// CHECK-DAG: Throw
+  /// CHECK-DAG: InvokeStaticOrDirect method_name:Main.$noinline$throwEmptyError
 
   /// CHECK-START: int Main.testExitMerge(boolean) load_store_elimination (after)
   /// CHECK-DAG: Return
-  /// CHECK-DAG: Throw
+  /// CHECK-DAG: InvokeStaticOrDirect method_name:Main.$noinline$throwEmptyError
 
   /// CHECK-START: int Main.testExitMerge(boolean) load_store_elimination (after)
   /// CHECK-NOT: InstanceFieldSet field_name:TestClass.i
   /// CHECK-NOT: InstanceFieldGet field_name:TestClass.i
-
-  /// CHECK-START: int Main.testExitMerge(boolean) load_store_elimination (after)
-  /// CHECK: NewInstance
   /// CHECK-NOT: NewInstance
-  private static int testExitMerge(boolean cond) {
+  private static int testExitMerge(boolean cond) throws Exception {
     TestClass obj = new TestClass();
     if (cond) {
       obj.i = 1;
       return obj.i + 1;
     } else {
       obj.i = 2;
-      throw new Error();  // Note: We have a NewInstance here.
+      $noinline$throwEmptyError();
     }
+    // This is unreachable since we have a return and a throw above, but the compiler still demands
+    // a return statement.
+    return 0;
   }
 
   /// CHECK-START: int Main.testExitMerge2(boolean) load_store_elimination (before)
@@ -3992,7 +3996,7 @@ public class Main {
     }
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     assertDoubleEquals(Math.PI * Math.PI * Math.PI, calcCircleArea(Math.PI));
     assertIntEquals(test1(new TestClass(), new TestClass()), 3);
     assertIntEquals(test2(new TestClass()), 1);

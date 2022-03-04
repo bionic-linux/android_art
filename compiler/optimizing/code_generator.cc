@@ -1341,7 +1341,17 @@ void CodeGenerator::RecordCatchBlockInfo() {
                                          native_pc,
                                          /* register_mask= */ 0,
                                          /* sp_mask= */ nullptr,
-                                         StackMap::Kind::Catch);
+                                         StackMap::Kind::Catch,
+                                         /* needs_vreg_info= */ true,
+                                         block->GetTryCatchInformation()->GetInlineDexPcs());
+
+    ArrayRef<const uint32_t> dex_pcs(block->GetTryCatchInformation()->GetInlineDexPcs());
+
+    // TODO(solanes): Add in reverse order?
+    for (size_t i = 0; i < dex_pcs.size(); ++i) {
+      stack_map_stream->BeginInlineInfoEntryForCatch(dex_pcs[i]);
+      stack_map_stream->EndInlineInfoEntryForCatch();
+    }
 
     HInstruction* current_phi = block->GetFirstPhi();
     for (size_t vreg = 0; vreg < num_vregs; ++vreg) {
