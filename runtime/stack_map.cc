@@ -346,7 +346,7 @@ void InlineInfo::Dump(VariableIndentationOutputStream* vios,
   if (EncodesArtMethod()) {
     ScopedObjectAccess soa(Thread::Current());
     vios->Stream() << ", method=" << GetArtMethod()->PrettyMethod();
-  } else {
+  } else if (HasMethodInfoIndex()) {
     MethodInfo method_info = code_info.GetMethodInfoOf(*this);
     vios->Stream() << std::dec << ", method_index=" << method_info.GetMethodIndex();
     if (method_info.HasDexFileIndex()) {
