@@ -20,9 +20,11 @@
 #include <limits>
 
 #include "arch/instruction_set.h"
+#include "base/array_ref.h"
 #include "base/bit_memory_region.h"
 #include "base/bit_table.h"
 #include "base/bit_utils.h"
+#include "base/globals.h"
 #include "base/memory_region.h"
 #include "dex/dex_file_types.h"
 #include "dex_register_location.h"
@@ -369,9 +371,10 @@ class CodeInfo {
     return DexRegisterMap(0, DexRegisterLocation::None());
   }
 
+  // TODO(solanes): Change the call sites back since we added `&& stack_map.GetKind() != StackMap::Kind::Catch`.
   ALWAYS_INLINE DexRegisterMap GetInlineDexRegisterMapOf(StackMap stack_map,
                                                          InlineInfo inline_info) const {
-    if (stack_map.HasDexRegisterMap()) {
+    if (stack_map.HasDexRegisterMap() && stack_map.GetKind() != StackMap::Kind::Catch) {
       DCHECK(stack_map.HasInlineInfoIndex());
       uint32_t depth = inline_info.Row() - stack_map.GetInlineInfoIndex();
       // The register counts are commutative and include all outer levels.
@@ -409,14 +412,41 @@ class CodeInfo {
     return stack_maps_.GetInvalidRow();
   }
 
-  // Searches the stack map list backwards because catch stack maps are stored at the end.
-  StackMap GetCatchStackMapForDexPc(uint32_t dex_pc) const {
+  StackMap GetCatchStackMapForDexPc(uint32_t dex_pc,
+                                    ArrayRef<const uint32_t> inline_dex_pcs) const {
+    // Searches the stack map list backwards because catch stack maps are stored at the end.
     for (size_t i = GetNumberOfStackMaps(); i > 0; --i) {
       StackMap stack_map = GetStackMapAt(i - 1);
-      if (stack_map.GetDexPc() == dex_pc && stack_map.GetKind() == StackMap::Kind::Catch) {
-        return stack_map;
+      if (stack_map.GetKind() != StackMap::Kind::Catch) {
+        for (size_t j = i - 1; j > 0; --j) {
+          DCHECK(GetStackMapAt(j - 1).GetKind() != StackMap::Kind::Catch);
+        }
+        break;
+      }
+
+      if (stack_map.GetDexPc() == dex_pc &&
+          GetInlineInfosOf(stack_map).size() == inline_dex_pcs.size()) {
+        auto inline_infos = GetInlineInfosOf(stack_map);
+        bool is_valid = true;
+        for (size_t inline_info_index = 0; inline_info_index < inline_infos.size() && is_valid;
+             ++inline_info_index) {
+          is_valid =
+              inline_infos[inline_info_index].GetDexPc() == inline_dex_pcs[inline_info_index];
+        }
+        if (is_valid) {
+          return stack_map;
+        }
       }
     }
+
+    // Try to find the catch block one level up.
+    // TODO(solanes): Elminate tail recursion and do an outer for loop.
+    if (!inline_dex_pcs.empty()) {
+      return GetCatchStackMapForDexPc(
+          dex_pc, inline_dex_pcs.SubArray(/*pos=*/1, inline_dex_pcs.size() - 1));
+    }
+
+    // No more levels to try.
     return stack_maps_.GetInvalidRow();
   }
 

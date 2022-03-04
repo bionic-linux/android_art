@@ -165,10 +165,12 @@ extern "C" size_t artCriticalNativeFrameSize(ArtMethod* method, uintptr_t caller
     CodeInfo code_info = CodeInfo::DecodeInlineInfoOnly(current_code);
     StackMap stack_map = code_info.GetStackMapForNativePcOffset(native_pc_offset);
     DCHECK(stack_map.IsValid());
+    // TODO(solanes): Could we get a `StackMap::Kind::Catch` here?
     BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
+    const bool read_stack_map = stack_map.GetKind() == StackMap::Kind::Catch || inline_infos.empty();
     ArtMethod* caller =
-        inline_infos.empty() ? method : GetResolvedMethod(method, code_info, inline_infos);
-    uint32_t dex_pc = inline_infos.empty() ? stack_map.GetDexPc() : inline_infos.back().GetDexPc();
+        read_stack_map ? method : GetResolvedMethod(method, code_info, inline_infos);
+    uint32_t dex_pc = read_stack_map ? stack_map.GetDexPc() : inline_infos.back().GetDexPc();
 
     // Get the callee shorty.
     const DexFile* dex_file = caller->GetDexFile();

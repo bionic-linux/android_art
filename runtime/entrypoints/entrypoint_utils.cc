@@ -212,9 +212,12 @@ static inline ArtMethod* DoGetCalleeSaveMethodCaller(ArtMethod* outer_method,
         CodeInfo code_info = CodeInfo::DecodeInlineInfoOnly(current_code);
         StackMap stack_map = code_info.GetStackMapForNativePcOffset(native_pc_offset);
         DCHECK(stack_map.IsValid());
-        BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
-        if (!inline_infos.empty()) {
-          caller = GetResolvedMethod(outer_method, code_info, inline_infos);
+        // TODO(solanes): Could we get a `StackMap::Kind::Catch` here?
+        if (stack_map.GetKind() != StackMap::Kind::Catch) {
+          BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
+          if (!inline_infos.empty()) {
+            caller = GetResolvedMethod(outer_method, code_info, inline_infos);
+          }
         }
       }
     }

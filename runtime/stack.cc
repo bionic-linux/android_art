@@ -140,6 +140,25 @@ uint32_t StackVisitor::GetDexPc(bool abort_on_failure) const {
   }
 }
 
+// TODO(solanes): Change to have only one list and include the other dex_pc?
+// returns vector of (mid dex pc #1, ..., mid dex pc #n-1, inner dex pc)
+std::vector<uint32_t> StackVisitor::GetDexPcList() const {
+  if (cur_shadow_frame_ == nullptr && cur_quick_frame_ != nullptr && IsInInlinedFrame()) {
+    auto infos = GetCurrentInlineInfo()->GetInlineInfosOf(*GetCurrentStackMap());
+    DCHECK_NE(infos.size(), 0u);
+    std::vector<uint32_t> result;
+    // Add mid dex Pcs, from the outermost to the innermost. Note that we skip the last one (i.e.
+    // `index > 0`) since we want to change that for the one in the current stack map.
+    for (size_t index = infos.size() - 1; index > 0; --index) {
+      result.push_back(infos[index - 1].GetDexPc());
+    }
+    // Innermost dex_pc.
+    result.push_back(GetCurrentStackMap()->GetDexPc());
+    return result;
+  }
+  return {};
+}
+
 extern "C" mirror::Object* artQuickGetProxyThisObject(ArtMethod** sp)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -278,6 +297,7 @@ bool StackVisitor::GetVRegFromOptimizedCode(ArtMethod* m,
   StackMap stack_map = code_info.GetStackMapForNativePcOffset(native_pc_offset);
   DCHECK(stack_map.IsValid());
 
+  DCHECK_IMPLIES(IsInInlinedFrame(), stack_map.GetKind() != StackMap::Kind::Catch);
   DexRegisterMap dex_register_map = IsInInlinedFrame()
       ? code_info.GetInlineDexRegisterMapOf(stack_map, current_inline_frames_.back())
       : code_info.GetDexRegisterMapOf(stack_map);
@@ -844,7 +864,8 @@ void StackVisitor::WalkStack(bool include_transitions) {
           DCHECK_NE(cur_quick_frame_pc_, 0u);
           CodeInfo* code_info = GetCurrentInlineInfo();
           StackMap* stack_map = GetCurrentStackMap();
-          if (stack_map->IsValid() && stack_map->HasInlineInfo()) {
+          // TODO(solanes): Could we get a `StackMap::Kind::Catch` here?
+          if (stack_map->IsValid() && stack_map->HasInlineInfo() && stack_map->GetKind() != StackMap::Kind::Catch) {
             DCHECK_EQ(current_inline_frames_.size(), 0u);
             for (current_inline_frames_ = code_info->GetInlineInfosOf(*stack_map);
                  !current_inline_frames_.empty();
