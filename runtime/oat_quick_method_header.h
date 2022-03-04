@@ -145,10 +145,12 @@ class PACKED(4) OatQuickMethodHeader {
     return CodeInfo::DecodeFrameInfo(GetOptimizedCodeInfoPtr());
   }
 
-  uintptr_t ToNativeQuickPc(ArtMethod* method,
-                            const uint32_t dex_pc,
-                            bool is_for_catch_handler,
-                            bool abort_on_failure = true) const;
+  uintptr_t ToNativeQuickPc(
+      ArtMethod* method,
+      const uint32_t dex_pc,
+      bool is_for_catch_handler,
+      bool abort_on_failure = true,
+      ArrayRef<const uint32_t> inline_dex_pcs = ArrayRef<const uint32_t>()) const;
 
   uint32_t ToDexPc(ArtMethod** frame,
                    const uintptr_t pc,

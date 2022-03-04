@@ -20,6 +20,7 @@
 #include <limits>
 
 #include "arch/instruction_set.h"
+#include "base/array_ref.h"
 #include "base/bit_memory_region.h"
 #include "base/bit_table.h"
 #include "base/bit_utils.h"
@@ -432,6 +433,38 @@ class CodeInfo {
         return stack_map;
       }
     }
+    return stack_maps_.GetInvalidRow();
+  }
+
+  // Searches the stack map list backwards because catch stack maps are stored at the end.
+  StackMap GetCatchStackMapForDexPc(uint32_t dex_pc,
+                                    ArrayRef<const uint32_t> inline_dex_pcs) const {
+    for (size_t i = GetNumberOfStackMaps(); i > 0; --i) {
+      StackMap stack_map = GetStackMapAt(i - 1);
+      // TODO(solanes): Add early break for non-catch stack maps since we should have all catch and
+      // then all non-catch.
+      if (stack_map.GetDexPc() == dex_pc && stack_map.GetKind() == StackMap::Kind::Catch &&
+          GetInlineInfosOf(stack_map).size() == inline_dex_pcs.size()) {
+        auto inline_infos = GetInlineInfosOf(stack_map);
+        bool is_valid = true;
+        for (size_t inline_info_index = 0; inline_info_index < inline_infos.size() && is_valid;
+             ++inline_info_index) {
+          is_valid =
+              inline_infos[inline_info_index].GetDexPc() == inline_dex_pcs[inline_info_index];
+        }
+        if (is_valid) {
+          return stack_map;
+        }
+      }
+    }
+
+    // Try to find the catch block one level up.
+    if (!inline_dex_pcs.empty()) {
+      return GetCatchStackMapForDexPc(
+          dex_pc, inline_dex_pcs.SubArray(/*pos=*/1, inline_dex_pcs.size() - 1));
+    }
+
+    // No more levels to try.
     return stack_maps_.GetInvalidRow();
   }
 
