@@ -485,9 +485,11 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   // Update the loop and try membership of `block`, which was spawned from `reference`.
   // In case `reference` is a back edge, `replace_if_back_edge` notifies whether `block`
   // should be the new back edge.
+  // TODO(solanes): explain `ignore_new_info`.
   void UpdateLoopAndTryInformationOfNewBlock(HBasicBlock* block,
                                              HBasicBlock* reference,
-                                             bool replace_if_back_edge);
+                                             bool replace_if_back_edge,
+                                             bool ignore_new_info = false);
 
   // Need to add a couple of blocks to test if the loop body is entered and
   // put deoptimization instructions, etc.
@@ -1063,6 +1065,9 @@ class TryCatchInformation : public ArenaObject<kArenaAllocTryCatchInfo> {
     catch_type_index_ = dex::TypeIndex::Invalid();
   }
 
+  void AddInlineDexPc(uint32_t dex_pc) { inlines_dex_pcs_.push_back(dex_pc); }
+  ArrayRef<const uint32_t> GetInlineDexPcs() { return ArrayRef<const uint32_t>(inlines_dex_pcs_); }
+
  private:
   // One of possibly several TryBoundary instructions entering the block's try.
   // Only set for try blocks.
@@ -1071,6 +1076,10 @@ class TryCatchInformation : public ArenaObject<kArenaAllocTryCatchInfo> {
   // Exception type information. Only set for catch blocks.
   const DexFile* catch_dex_file_;
   dex::TypeIndex catch_type_index_;
+
+  // Contains vector of (mid dex pc #1, ..., mid dex pc #n-1, inner dex pc) for inlines. Only set
+  // for catch blocks.
+  std::vector<uint32_t> inlines_dex_pcs_;
 };
 
 static constexpr size_t kNoLifetime = -1;
@@ -1429,6 +1438,7 @@ class HBasicBlock : public ArenaObject<kArenaAllocBasicBlock> {
   bool EndsWithReturn() const;
   bool EndsWithIf() const;
   bool EndsWithTryBoundary() const;
+  bool EndsWithExitTryBoundary() const;
   bool HasSinglePhi() const;
 
  private:

@@ -59,7 +59,6 @@ static bool IsExitTryBoundaryIntoExitBlock(HBasicBlock* block) {
          !boundary->IsEntry();
 }
 
-
 size_t GraphChecker::Run(bool pass_change, size_t last_size) {
   size_t current_size = GetGraph()->GetReversePostOrder().size();
   if (!pass_change) {
@@ -224,9 +223,10 @@ void GraphChecker::VisitBasicBlock(HBasicBlock* block) {
   // predecessors). Exceptional edges are synthesized and hence
   // not accounted for.
   if (block->GetSuccessors().size() > 1) {
-    if (IsExitTryBoundaryIntoExitBlock(block)) {
-      // Allowed critical edge (Throw/Return/ReturnVoid)->TryBoundary->Exit.
-    } else {
+    // Since we allow inline of try catches, we may have the critical edge
+    // (Throw/Return/ReturnVoid)->TryBoundary (of type exit)->AnyBlock.
+    const bool allowed_critical_edge = block->EndsWithExitTryBoundary();
+    if (!allowed_critical_edge) {
       for (HBasicBlock* successor : block->GetNormalSuccessors()) {
         if (successor->GetPredecessors().size() > 1) {
           AddError(StringPrintf("Critical edge between blocks %d and %d.",

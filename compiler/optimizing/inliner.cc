@@ -497,6 +497,13 @@ bool HInliner::TryInline(HInvoke* invoke_instruction) {
 
   DCHECK(!invoke_instruction->IsInvokeStaticOrDirect());
 
+  // No try catch inlining allowed here, or recursively.
+  // TODO(solanes): Setting `try_catch_inlining_allowed_` to false here covers all cases from
+  // `TryInlineFromCHA` and from `TryInlineFromInlineCache` as well (e.g.
+  // `TryInlinePolymorphicCall`). Reassess to see if we can inline inline catch blocks in
+  // `TryInlineFromCHA`, `TryInlineMonomorphicCall` and `TryInlinePolymorphicCallToSameTarget`.
+  try_catch_inlining_allowed_ = false;
+
   if (TryInlineFromCHA(invoke_instruction)) {
     return true;
   }
@@ -559,6 +566,9 @@ bool HInliner::TryInlineFromInlineCache(HInvoke* invoke_instruction)
   if (Runtime::Current()->IsAotCompiler() && !kUseAOTInlineCaches) {
     return false;
   }
+
+  // No try catch inlining allowed here, or recursively.
+  try_catch_inlining_allowed_ = false;
 
   StackHandleScope<InlineCache::kIndividualCacheSize> classes(Thread::Current());
   // The Zygote JIT compiles based on a profile, so we shouldn't use runtime inline caches
@@ -1394,10 +1404,17 @@ bool HInliner::IsInliningSupported(const HInvoke* invoke_instruction,
     return false;
   }
 
+  // TODO(solanes): Re-phrase the LOG_FAILS (and maybe create new sub-categories?)
   if (accessor.TriesSize() != 0) {
-    LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedTryCatchCallee)
-        << "Method " << method->PrettyMethod() << " is not inlined because of try block";
-    return false;
+    if (invoke_instruction->GetBlock()->GetTryCatchInformation() != nullptr) {
+      LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedTryCatchCallee)
+          << "Method " << method->PrettyMethod() << " is not inlined because of try block";
+      return false;
+    }
+    if (!try_catch_inlining_allowed_) {
+      // We have a try catch and some other try catch info SOMEWHERE UP IN THE CHAIN
+      return false;
+    }
   }
 
   if (invoke_instruction->IsInvokeStaticOrDirect() &&
@@ -1500,13 +1517,11 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
   if (!IsInliningSupported(invoke_instruction, method, accessor)) {
     return false;
   }
-
   if (!IsInliningBudgetAvailable(method, accessor)) {
     return false;
   }
 
-  if (!TryBuildAndInlineHelper(
-          invoke_instruction, method, receiver_type, return_replacement)) {
+  if (!TryBuildAndInlineHelper(invoke_instruction, method, receiver_type, return_replacement)) {
     return false;
   }
 
@@ -2050,7 +2065,15 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
 
   SubstituteArguments(callee_graph, invoke_instruction, receiver_type, dex_compilation_unit);
 
-  RunOptimizations(callee_graph, code_item, dex_compilation_unit);
+  const bool try_catch_inlining_allowed_for_recursive_inline =
+      // It was allowed previously
+      try_catch_inlining_allowed_ &&
+      // The current invoke is not in a try or a catch
+      invoke_instruction->GetBlock()->GetTryCatchInformation() == nullptr;
+  RunOptimizations(callee_graph,
+                   code_item,
+                   dex_compilation_unit,
+                   try_catch_inlining_allowed_for_recursive_inline);
 
   size_t number_of_instructions = 0;
   if (!CanInlineBody(callee_graph, invoke_instruction->GetBlock(), &number_of_instructions)) {
@@ -2088,7 +2111,8 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
 
 void HInliner::RunOptimizations(HGraph* callee_graph,
                                 const dex::CodeItem* code_item,
-                                const DexCompilationUnit& dex_compilation_unit) {
+                                const DexCompilationUnit& dex_compilation_unit,
+                                bool try_catch_inlining_allowed_for_recursive_inline) {
   // Note: if the outermost_graph_ is being compiled OSR, we should not run any
   // optimization that could lead to a HDeoptimize. The following optimizations do not.
   HDeadCodeElimination dce(callee_graph, inline_stats_, "dead_code_elimination$inliner");
@@ -2134,7 +2158,8 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
                    total_number_of_dex_registers_ + accessor.RegistersSize(),
                    total_number_of_instructions_ + number_of_instructions,
                    this,
-                   depth_ + 1);
+                   depth_ + 1,
+                   try_catch_inlining_allowed_for_recursive_inline);
   inliner.Run();
 }
 
