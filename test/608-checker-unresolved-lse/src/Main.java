@@ -22,6 +22,14 @@ public class Main {
     instanceFieldTest2();
   }
 
+  // LSE doesn't run if we have a try/catch in the graph. We can use a helper to get around that and
+  // still perform the LSE.
+  private static void $noinline$assertEquals(int expected, int result) {
+    if (expected != result) {
+      throw new Error("Expected: " + expected + ", found: " + result);
+    }
+  }
+
   /// CHECK-START: void Main.instanceFieldTest() load_store_elimination (before)
   /// CHECK:        InstanceFieldSet
   /// CHECK:        UnresolvedInstanceFieldGet
@@ -39,9 +47,7 @@ public class Main {
     SubFoo sf = new SubFoo();
     Foo f = sf;
     f.iField = 42;
-    if (sf.iField != 42) {
-      throw new Error("Expected 42, got " + f.iField);
-    }
+    $noinline$assertEquals(42, sf.iField);
   }
 
   /// CHECK-START: void Main.instanceFieldTest2() load_store_elimination (before)
@@ -67,9 +73,7 @@ public class Main {
     int a = f.iField;
     sf.iField = 43;
     a = f.iField;
-    if (a != 43) {
-      throw new Error("Expected 43, got " + a);
-    }
+    $noinline$assertEquals(43, a);
   }
 
   /// CHECK-START: void Main.staticFieldTest() load_store_elimination (before)
@@ -83,9 +87,7 @@ public class Main {
   public static void staticFieldTest() {
     Foo.sField = 42;
     Foo.sField = 43;
-    if (SubFoo.sField != 43) {
-      throw new Error("Expected 43, got " + SubFoo.sField);
-    }
+    $noinline$assertEquals(43, SubFoo.sField);
   }
 }
 

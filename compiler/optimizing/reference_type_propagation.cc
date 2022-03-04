@@ -93,7 +93,7 @@ class ReferenceTypePropagation::RTPVisitor : public HGraphDelegateVisitor {
   void UpdateArrayGet(HArrayGet* instr) REQUIRES_SHARED(Locks::mutator_lock_);
   void UpdatePhi(HPhi* phi) REQUIRES_SHARED(Locks::mutator_lock_);
   bool UpdateReferenceTypeInfo(HInstruction* instr);
-  void UpdateReferenceTypeInfo(HInstruction* instr,
+  bool UpdateReferenceTypeInfo(HInstruction* instr,
                                dex::TypeIndex type_idx,
                                const DexFile& dex_file,
                                bool is_exact);
@@ -574,7 +574,7 @@ void ReferenceTypePropagation::RTPVisitor::VisitDeoptimize(HDeoptimize* instr) {
   BoundTypeForClassCheck(instr);
 }
 
-void ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction* instr,
+bool ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction* instr,
                                                                    dex::TypeIndex type_idx,
                                                                    const DexFile& dex_file,
                                                                    bool is_exact) {
@@ -582,9 +582,16 @@ void ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction*
 
   ScopedObjectAccess soa(Thread::Current());
   ObjPtr<mirror::DexCache> dex_cache = FindDexCacheWithHint(soa.Self(), dex_file, hint_dex_cache_);
+  // TODO(solanes): Find out why the class loaders are different for catches (See
+  // VisitLoadException).
+  if (UNLIKELY(dex_cache->GetClassLoader() != class_loader_.Get())) {
+    return false;
+  }
+
   ObjPtr<mirror::Class> klass = Runtime::Current()->GetClassLinker()->LookupResolvedType(
       type_idx, dex_cache, class_loader_.Get());
   SetClassAsTypeInfo(instr, klass, is_exact);
+  return true;
 }
 
 void ReferenceTypePropagation::RTPVisitor::VisitNewInstance(HNewInstance* instr) {
@@ -692,15 +699,16 @@ void ReferenceTypePropagation::RTPVisitor::VisitLoadException(HLoadException* in
   DCHECK(instr->GetBlock()->IsCatchBlock());
   TryCatchInformation* catch_info = instr->GetBlock()->GetTryCatchInformation();
 
-  if (catch_info->IsValidTypeIndex()) {
-    UpdateReferenceTypeInfo(instr,
-                            catch_info->GetCatchTypeIndex(),
-                            catch_info->GetCatchDexFile(),
-                            /* is_exact= */ false);
-  } else {
-    instr->SetReferenceTypeInfo(ReferenceTypeInfo::Create(
-        GetHandleCache()->GetThrowableClassHandle(), /* is_exact= */ false));
+  if (catch_info->IsValidTypeIndex() && UpdateReferenceTypeInfo(instr,
+                                                                catch_info->GetCatchTypeIndex(),
+                                                                catch_info->GetCatchDexFile(),
+                                                                /* is_exact= */ false)) {
+    return;
   }
+
+  // We get here if the catch info wasn't valid, or if we couldn't update the type info.
+  instr->SetReferenceTypeInfo(ReferenceTypeInfo::Create(GetHandleCache()->GetThrowableClassHandle(),
+                                                        /* is_exact= */ false));
 }
 
 void ReferenceTypePropagation::RTPVisitor::VisitNullCheck(HNullCheck* instr) {
