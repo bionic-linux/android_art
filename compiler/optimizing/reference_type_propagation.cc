@@ -582,8 +582,10 @@ void ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction*
 
   ScopedObjectAccess soa(Thread::Current());
   ObjPtr<mirror::DexCache> dex_cache = FindDexCacheWithHint(soa.Self(), dex_file, hint_dex_cache_);
+  // In the case of calling from VisitLoadException, the catch_info is not guaranteed to have the
+  // same class loader as class_loader_ so we have to pull it from the dex_cache.
   ObjPtr<mirror::Class> klass = Runtime::Current()->GetClassLinker()->LookupResolvedType(
-      type_idx, dex_cache, class_loader_.Get());
+      type_idx, dex_cache, dex_cache->GetClassLoader());
   SetClassAsTypeInfo(instr, klass, is_exact);
 }
 
