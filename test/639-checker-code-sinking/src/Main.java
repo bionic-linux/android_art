@@ -54,50 +54,42 @@ public class Main {
   /// CHECK: <<New:l\d+>>       NewInstance [<<LoadClass>>]
   /// CHECK:                    ConstructorFence [<<New>>]
   /// CHECK:                    If
-  /// CHECK:                    begin_block
   /// CHECK:                    Throw
 
   /// CHECK-START: void Main.testSimpleUse() code_sinking (after)
   /// CHECK-NOT:                NewInstance
   /// CHECK:                    If
-  /// CHECK:                    begin_block
-  /// CHECK: <<Error:l\d+>>     LoadClass class_name:java.lang.Error
   /// CHECK: <<LoadClass:l\d+>> LoadClass class_name:java.lang.Object
-  /// CHECK-NOT:                begin_block
   /// CHECK: <<New:l\d+>>       NewInstance [<<LoadClass>>]
   /// CHECK:                    ConstructorFence [<<New>>]
-  /// CHECK-NOT:                begin_block
-  /// CHECK:                    NewInstance [<<Error>>]
   /// CHECK:                    Throw
   public static void testSimpleUse() {
     Object o = new Object();
     if (doThrow) {
-      throw new Error(o.toString());
+      throw $noinline$GetError(o.toString());
     }
+  }
+
+  private static Error $noinline$GetError(String s) {
+    return new Error(s);
   }
 
   /// CHECK-START: void Main.testTwoUses() code_sinking (before)
   /// CHECK: <<LoadClass:l\d+>> LoadClass class_name:java.lang.Object
   /// CHECK:                    NewInstance [<<LoadClass>>]
   /// CHECK:                    If
-  /// CHECK:                    begin_block
   /// CHECK:                    Throw
 
   /// CHECK-START: void Main.testTwoUses() code_sinking (after)
   /// CHECK-NOT:                NewInstance
   /// CHECK:                    If
-  /// CHECK:                    begin_block
-  /// CHECK: <<Error:l\d+>>     LoadClass class_name:java.lang.Error
   /// CHECK: <<LoadClass:l\d+>> LoadClass class_name:java.lang.Object
-  /// CHECK-NOT:                begin_block
   /// CHECK:                    NewInstance [<<LoadClass>>]
-  /// CHECK-NOT:                begin_block
-  /// CHECK:                    NewInstance [<<Error>>]
   /// CHECK:                    Throw
   public static void testTwoUses() {
     Object o = new Object();
     if (doThrow) {
-      throw new Error(o.toString() + o.toString());
+      throw $noinline$GetError(o.toString() + o.toString());
     }
   }
 
@@ -109,33 +101,25 @@ public class Main {
   //
   /// CHECK-START: void Main.testFieldStores(boolean) code_sinking (before)
   /// CHECK: <<Int42:i\d+>>       IntConstant 42
-  /// CHECK:                      begin_block
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
   /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
   /// CHECK:                      InstanceFieldSet [<<NewInstance>>,<<Int42>>]
+  /// CHECK:                      If
   /// CHECK:                      Throw
 
   /// CHECK-START: void Main.testFieldStores(boolean) code_sinking (after)
   /// CHECK: <<Int42:i\d+>>       IntConstant 42
   /// CHECK-NOT:                  NewInstance
   /// CHECK:                      If
-  /// CHECK:                      begin_block
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
-  /// CHECK-NOT:                  begin_block
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
-  /// CHECK-NOT:                  begin_block
   /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK-NOT:                  begin_block
   /// CHECK:                      InstanceFieldSet [<<NewInstance>>,<<Int42>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK: <<Throw:l\d+>>       NewInstance [<<Error>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      Throw [<<Throw>>]
+  /// CHECK:                      Throw
   public static void testFieldStores(boolean doThrow) {
     Main m = new Main();
     m.intField = 42;
     if (doThrow) {
-      throw new Error(m.toString());
+      throw $noinline$GetError(m.toString());
     }
   }
 
@@ -146,19 +130,16 @@ public class Main {
   /// CHECK:                       InstanceFieldSet [<<NewInstance1>>,<<NewInstance2>>]
   /// CHECK:                       InstanceFieldSet [<<NewInstance2>>,<<NewInstance1>>]
   /// CHECK:                       If
-  /// CHECK:                       begin_block
   /// CHECK:                       Throw
 
   // TODO(ngeoffray): Handle allocation/store cycles.
   /// CHECK-START: void Main.testFieldStoreCycle() code_sinking (after)
-  /// CHECK: begin_block
   /// CHECK: <<LoadClass:l\d+>>    LoadClass class_name:Main
   /// CHECK: <<NewInstance1:l\d+>> NewInstance [<<LoadClass>>]
   /// CHECK: <<NewInstance2:l\d+>> NewInstance [<<LoadClass>>]
   /// CHECK:                       InstanceFieldSet [<<NewInstance1>>,<<NewInstance2>>]
   /// CHECK:                       InstanceFieldSet [<<NewInstance2>>,<<NewInstance1>>]
   /// CHECK:                       If
-  /// CHECK:                       begin_block
   /// CHECK:                       Throw
   public static void testFieldStoreCycle() {
     Main m1 = new Main();
@@ -166,7 +147,7 @@ public class Main {
     m1.objectField = m2;
     m2.objectField = m1;
     if (doThrow) {
-      throw new Error(m1.toString() + m2.toString());
+      throw $noinline$GetError(m1.toString() + m2.toString());
     }
   }
 
@@ -177,7 +158,6 @@ public class Main {
   /// CHECK: <<NewArray:l\d+>>    NewArray [<<LoadClass>>,<<Int1>>]
   /// CHECK:                      ArraySet [<<NewArray>>,<<Int0>>,<<NewArray>>]
   /// CHECK:                      If
-  /// CHECK:                      begin_block
   /// CHECK:                      Throw
 
   /// CHECK-START: void Main.testArrayStores() code_sinking (after)
@@ -185,21 +165,15 @@ public class Main {
   /// CHECK: <<Int0:i\d+>>        IntConstant 0
   /// CHECK-NOT:                  NewArray
   /// CHECK:                      If
-  /// CHECK:                      begin_block
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:java.lang.Object[]
-  /// CHECK-NOT:                  begin_block
   /// CHECK: <<NewArray:l\d+>>    NewArray [<<LoadClass>>,<<Int1>>]
-  /// CHECK-NOT:                  begin_block
   /// CHECK:                      ArraySet [<<NewArray>>,<<Int0>>,<<NewArray>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      NewInstance [<<Error>>]
   /// CHECK:                      Throw
   public static void testArrayStores() {
     Object[] o = new Object[1];
     o[0] = o;
     if (doThrow) {
-      throw new Error(o.toString());
+      throw $noinline$GetError(o.toString());
     }
   }
 
@@ -210,7 +184,7 @@ public class Main {
     o[0] = m;
     o = null;  // Avoid environment uses for the array allocation.
     if (doThrow) {
-      throw new Error(m.toString());
+      throw $noinline$GetError(m.toString());
     }
   }
 
@@ -222,7 +196,7 @@ public class Main {
     $opt$noinline$foo();
     load = false;
     if (doThrow) {
-      throw new Error(m.toString());
+      throw $noinline$GetError(m.toString());
     }
   }
 
@@ -232,7 +206,6 @@ public class Main {
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:java.lang.Object
   /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
   /// CHECK:                      If
-  /// CHECK:                      begin_block
   /// CHECK:                      Phi [<<Null>>,<<NewInstance>>]
   /// CHECK:                      Throw
 
@@ -240,13 +213,9 @@ public class Main {
   /// CHECK: <<Null:l\d+>>        NullConstant
   /// CHECK-NOT:                  NewInstance
   /// CHECK:                      If
-  /// CHECK:                      begin_block
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:java.lang.Object
   /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK:                      begin_block
   /// CHECK:                      Phi [<<Null>>,<<NewInstance>>]
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
-  /// CHECK:                      NewInstance [<<Error>>]
   /// CHECK:                      Throw
   public static void testPhiInput() {
     Object f = new Object();
@@ -257,7 +226,7 @@ public class Main {
         o = f;
         i = 42;
       }
-      throw new Error(o.toString() + i);
+      throw $noinline$GetError(o.toString() + i);
     }
   }
 
@@ -270,7 +239,6 @@ public class Main {
   /// CHECK: <<NewInstance:l\d+>>  NewInstance [<<LoadClass>>]
   /// CHECK:                       InstanceFieldSet [<<NewInstance>>,<<Int42>>]
   /// CHECK:                       If
-  /// CHECK:                       begin_block
   /// CHECK:                       Throw
 
   /// CHECK-START: void Main.testVolatileStore() code_sinking (after)
@@ -279,13 +247,12 @@ public class Main {
   /// CHECK: <<NewInstance:l\d+>>  NewInstance [<<LoadClass>>]
   /// CHECK:                       InstanceFieldSet [<<NewInstance>>,<<Int42>>]
   /// CHECK:                       If
-  /// CHECK:                       begin_block
   /// CHECK:                       Throw
   public static void testVolatileStore() {
     Main m = new Main();
     m.volatileField = 42;
     if (doThrow) {
-      throw new Error(m.toString());
+      throw $noinline$GetError(m.toString());
     }
   }
 
@@ -293,7 +260,7 @@ public class Main {
     int a = mainField.intField;
     $noinline$changeIntField();
     if (doThrow) {
-      throw new Error("" + a);
+      throw $noinline$GetError("" + a);
     }
   }
 
@@ -305,7 +272,7 @@ public class Main {
     Object o = obj;
     $noinline$changeStaticObjectField();
     if (doThrow) {
-      throw new Error(o.getClass().toString());
+      throw $noinline$GetError(o.getClass().toString());
     }
   }
 
@@ -335,16 +302,10 @@ public class Main {
   /// CHECK: <<Int43:i\d+>>       IntConstant 43
   /// CHECK-NOT:                  NewInstance
   /// CHECK:                      If
-  /// CHECK:                      begin_block
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
-  /// CHECK-NOT:                  begin_block
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
   /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK-NOT:                  begin_block
   /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int42>>]
   /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int43>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      NewInstance [<<Error>>]
   /// CHECK:                      Throw
   /// CHECK-NOT:                  InstanceFieldSet
   public static void testStoreStore(boolean doThrow) {
@@ -352,7 +313,7 @@ public class Main {
     m.intField = 42;
     m.intField2 = 43;
     if (doThrow) {
-      throw new Error(m.$opt$noinline$toString());
+      throw $noinline$GetError(m.$opt$noinline$toString());
     }
   }
 
@@ -364,17 +325,14 @@ public class Main {
   /// CHECK: <<Int1:i\d+>>        IntConstant 1
   /// CHECK: <<Int0:i\d+>>        IntConstant 0
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:java.lang.Object[]
-  /// CHECK-NOT:                  begin_block
   /// CHECK:                      NewArray [<<LoadClass>>,<<Int1>>]
   /// CHECK:                      If
-  /// CHECK:                      begin_block
   /// CHECK:                      Throw
 
   /// CHECK-START: void Main.testSinkingOverInvoke() code_sinking (after)
   /// CHECK: <<Int1:i\d+>>        IntConstant 1
   /// CHECK: <<Int0:i\d+>>        IntConstant 0
   /// CHECK:                      If
-  /// CHECK:                      begin_block
   /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:java.lang.Object[]
   /// CHECK:                      NewArray [<<LoadClass>>,<<Int1>>]
   /// CHECK:                      Throw
@@ -383,7 +341,7 @@ public class Main {
     o[0] = o;
     doStaticNativeCallLiveVreg();
     if (doThrow) {
-      throw new Error(o.toString());
+      throw $noinline$GetError(o.toString());
     }
   }
 
@@ -426,7 +384,7 @@ public class Main {
         return 123;
       }
     } catch (Error e) {
-      throw new Error(o.toString());
+      throw $noinline$GetError(o.toString());
     }
     return 456;
   }
@@ -451,10 +409,10 @@ public class Main {
     Object o = new Object();
     try {
       if (doEarlyReturn) {
-        throw new Error(o.toString());
+        throw $noinline$GetError(o.toString());
       }
     } catch (Error e) {
-      throw new Error();
+      throw $noinline$GetError("");
     }
     return 456;
   }
@@ -486,10 +444,10 @@ public class Main {
           return 123;
         }
       } catch (Error e) {
-        throw new Error(o.toString());
+              throw $noinline$GetError(o.toString());
       }
     } catch (Error e) {
-      throw new Error();
+      throw $noinline$GetError("");
     }
     return 456;
   }
@@ -507,7 +465,7 @@ public class Main {
     try {
       Object o = new Object();
       if (doEarlyReturn) {
-        throw new Error(o.toString());
+              throw $noinline$GetError(o.toString());
       }
     } catch (Error e) {
       return 123;
@@ -530,7 +488,7 @@ public class Main {
     Object o = new Object();
     if (doEarlyReturn) {
       try {
-        throw new Error(o.toString());
+              throw $noinline$GetError(o.toString());
       } catch (Error e) {
         return 123;
       }
@@ -562,7 +520,7 @@ public class Main {
         return 123;
       }
     } catch (Error e) {
-      throw new Error();
+      throw $noinline$GetError("");
     }
 
     try {
@@ -572,7 +530,7 @@ public class Main {
         return 789;
       }
     } catch (Error e) {
-      throw new Error(o.toString());
+            throw $noinline$GetError(o.toString());
     }
 
     return 456;
@@ -601,13 +559,13 @@ public class Main {
           return 123;
         }
       } catch (Error e) {
-        throw new Error(o.toString());
+              throw $noinline$GetError(o.toString());
       }
       if (b) {
         System.out.println(b);
       }
     } catch (Error e) {
-      throw new Error();
+      throw $noinline$GetError("");
     }
     return 456;
   }
@@ -643,7 +601,7 @@ public class Main {
         return 123;
       }
     } catch (Error e) {
-      throw new Error(Integer.toString(obj.x));
+      throw $noinline$GetError(Integer.toString(obj.x));
     }
     return 456;
   }
