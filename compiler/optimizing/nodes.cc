@@ -2280,6 +2280,10 @@ bool HBasicBlock::EndsWithTryBoundary() const {
   return !GetInstructions().IsEmpty() && GetLastInstruction()->IsTryBoundary();
 }
 
+bool HBasicBlock::EndsWithExitTryBoundary() const {
+  return EndsWithTryBoundary() && !GetLastInstruction()->AsTryBoundary()->IsEntry();
+}
+
 bool HBasicBlock::HasSinglePhi() const {
   return !GetPhis().IsEmpty() && GetFirstPhi()->GetNext() == nullptr;
 }
@@ -2660,7 +2664,8 @@ void HGraph::DeleteDeadEmptyBlock(HBasicBlock* block) {
 
 void HGraph::UpdateLoopAndTryInformationOfNewBlock(HBasicBlock* block,
                                                    HBasicBlock* reference,
-                                                   bool replace_if_back_edge) {
+                                                   bool replace_if_back_edge,
+                                                   bool has_more_specific_try_catch_info) {
   if (block->IsLoopHeader()) {
     // Clear the information of which blocks are contained in that loop. Since the
     // information is stored as a bit vector based on block ids, we have to update
@@ -2687,11 +2692,13 @@ void HGraph::UpdateLoopAndTryInformationOfNewBlock(HBasicBlock* block,
     }
   }
 
-  // Copy TryCatchInformation if `reference` is a try block, not if it is a catch block.
-  TryCatchInformation* try_catch_info = reference->IsTryBlock()
-      ? reference->GetTryCatchInformation()
-      : nullptr;
-  block->SetTryCatchInformation(try_catch_info);
+  DCHECK_IMPLIES(has_more_specific_try_catch_info, reference->GetTryCatchInformation() == nullptr);
+  if (!has_more_specific_try_catch_info) {
+    // Copy TryCatchInformation if `reference` is a try block, not if it is a catch block.
+    TryCatchInformation* try_catch_info =
+        reference->IsTryBlock() ? reference->GetTryCatchInformation() : nullptr;
+    block->SetTryCatchInformation(try_catch_info);
+  }
 }
 
 HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
@@ -2801,12 +2808,17 @@ HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
     // and (4) to the blocks that apply.
     for (HBasicBlock* current : GetReversePostOrder()) {
       if (current != exit_block_ && current != entry_block_ && current != first) {
-        DCHECK(current->GetTryCatchInformation() == nullptr);
+        if (current->IsCatchBlock()) {
+          current->GetTryCatchInformation()->AddInlineDexPc(to->GetDexPc());
+        }
         DCHECK(current->GetGraph() == this);
         current->SetGraph(outer_graph);
         outer_graph->AddBlock(current);
         outer_graph->reverse_post_order_[++index_of_at] = current;
-        UpdateLoopAndTryInformationOfNewBlock(current, at,  /* replace_if_back_edge= */ false);
+        UpdateLoopAndTryInformationOfNewBlock(current,
+                                              at,
+                                              /* replace_if_back_edge= */ false,
+                                              current->GetTryCatchInformation() != nullptr);
       }
     }
 
@@ -2828,8 +2840,36 @@ HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
     for (size_t pred = 0; pred < to->GetPredecessors().size(); ++pred) {
       HBasicBlock* predecessor = to->GetPredecessors()[pred];
       HInstruction* last = predecessor->GetLastInstruction();
+
+      const bool saw_goto = last->IsGoto();
+      if (saw_goto) {
+        predecessor = predecessor->GetSinglePredecessor();
+        last = predecessor->GetLastInstruction();
+      }
+
+      // On some graphs we have Return/ReturnVoid/Throw -> TryBoundary -> Exit. In this vein, the
+      // TryBoundary acts as a proxy.
+      // TODO(solanes): Explain in more detail.
+      const bool saw_try_boundary = last->IsTryBoundary();
+      if (saw_try_boundary) {
+        predecessor = predecessor->GetSinglePredecessor();
+        last = predecessor->GetLastInstruction();
+      }
+
+      // The only chain `Goto->to_block` allowed is `Return/ReturnVoid->TryBoundary->Goto->to_block`
+      // is allowed.
+      DCHECK_IMPLIES(saw_goto, saw_try_boundary);
+      DCHECK_IMPLIES(saw_goto, last->IsReturnVoid() || last->IsReturn());
+
       if (last->IsThrow()) {
         DCHECK(!at->IsTryBlock());
+        // The chain `throw->TryBoundary` is allowed but not `throw->TryBoundary->goto` since that
+        // would mean a goto will point to exit after ReplaceSuccessor.
+        DCHECK(!saw_goto);
+        // TODO(solanes): explain better.
+        // We need to recompute the predecessor since we might have had a try_boundary in the
+        // middle.
+        predecessor = to->GetPredecessors()[pred];
         predecessor->ReplaceSuccessor(to, outer_graph->GetExitBlock());
         --pred;
         // We need to re-run dominance information, as the exit block now has

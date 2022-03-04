@@ -724,4 +724,6 @@ TEST(StackMapTest, TestDeduplicateStackMask) {
             stack_map2.GetStackMaskIndex());
 }
 
+// TODO(solanes): Add a test here for the catch stack maps?
+
 }  // namespace art

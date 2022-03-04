@@ -72,7 +72,8 @@ class StackMapStream : public DeletableArenaObject<kArenaAllocStackMapStream> {
                           uint32_t register_mask = 0,
                           BitVector* sp_mask = nullptr,
                           StackMap::Kind kind = StackMap::Kind::Default,
-                          bool needs_vreg_info = true);
+                          bool needs_vreg_info = true,
+                          ArrayRef<const uint32_t> inline_dex_pcs = ArrayRef<const uint32_t>());
   void EndStackMapEntry();
 
   void AddDexRegisterEntry(DexRegisterLocation::Kind kind, int32_t value) {
@@ -85,6 +86,10 @@ class StackMapStream : public DeletableArenaObject<kArenaAllocStackMapStream> {
                             const DexFile* outer_dex_file = nullptr,
                             const CodeGenerator* codegen = nullptr);
   void EndInlineInfoEntry();
+
+  // TODO(solanes): Explain
+  void BeginInlineInfoEntryForCatch(uint32_t dex_pc);
+  void EndInlineInfoEntryForCatch();
 
   size_t GetNumberOfStackMaps() const {
     return stack_maps_.size();
@@ -140,6 +145,7 @@ class StackMapStream : public DeletableArenaObject<kArenaAllocStackMapStream> {
   bool in_method_ = false;
   bool in_stack_map_ = false;
   bool in_inline_info_ = false;
+  bool in_inline_info_for_catch_ = false;
   BitTableBuilder<StackMap>::Entry current_stack_map_;
   ScopedArenaVector<BitTableBuilder<InlineInfo>::Entry> current_inline_infos_;
   ScopedArenaVector<DexRegisterLocation> current_dex_registers_;
