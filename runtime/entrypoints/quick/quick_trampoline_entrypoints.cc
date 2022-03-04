@@ -265,6 +265,7 @@ class QuickArgumentVisitor {
       CodeInfo code_info = CodeInfo::DecodeInlineInfoOnly(current_code);
       StackMap stack_map = code_info.GetStackMapForNativePcOffset(outer_pc_offset);
       DCHECK(stack_map.IsValid());
+      DCHECK(stack_map.GetKind() != StackMap::Kind::Catch);
       BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
       if (!inline_infos.empty()) {
         return inline_infos.back().GetDexPc();
@@ -1191,6 +1192,10 @@ static void DumpB74410240DebugData(ArtMethod** sp) REQUIRES_SHARED(Locks::mutato
   DumpB74410240ClassData(outer_method->GetDeclaringClass());
   LOG(FATAL_WITHOUT_ABORT) << "  instruction: " << DumpInstruction(outer_method, dex_pc);
 
+  if (UNLIKELY(stack_map.GetKind() == StackMap::Kind::Catch)) {
+    LOG(FATAL_WITHOUT_ABORT) << "We have a Catch StackMap but we weren't expecting one";
+    return;
+  }
   ArtMethod* caller = outer_method;
   BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
   for (InlineInfo inline_info : inline_infos) {
@@ -1213,12 +1218,11 @@ static void DumpB74410240DebugData(ArtMethod** sp) REQUIRES_SHARED(Locks::mutato
         CHECK(caller != nullptr);
       }
     }
-    LOG(FATAL_WITHOUT_ABORT) << "InlineInfo #" << inline_info.Row()
-        << ": " << tag << caller->PrettyMethod()
-        << " dex pc: " << dex_pc
-        << " dex file: " << caller->GetDexFile()->GetLocation()
-        << " class table: "
-        << class_linker->ClassTableForClassLoader(caller->GetClassLoader());
+    LOG(FATAL_WITHOUT_ABORT) << "InlineInfo #" << inline_info.Row() << ": " << tag
+                             << caller->PrettyMethod() << " dex pc: " << dex_pc
+                             << " dex file: " << caller->GetDexFile()->GetLocation()
+                             << " class table: "
+                             << class_linker->ClassTableForClassLoader(caller->GetClassLoader());
     DumpB74410240ClassData(caller->GetDeclaringClass());
     LOG(FATAL_WITHOUT_ABORT) << "  instruction: " << DumpInstruction(caller, dex_pc);
   }
