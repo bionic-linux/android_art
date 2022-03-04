@@ -1924,6 +1924,10 @@ public class Main {
     return array[1];
   }
 
+  private static void $noinline$throwEmptyError() throws Exception {
+    throw new Error();
+  }
+
   /// CHECK-START: int Main.testExitMerge(boolean) load_store_elimination (before)
   /// CHECK-DAG: NewInstance
   /// CHECK-DAG: InstanceFieldSet field_name:TestClass.i
