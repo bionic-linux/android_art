@@ -513,6 +513,8 @@ void GraphChecker::VisitInstruction(HInstruction* instruction) {
                           instruction->GetId(),
                           current_block_->GetBlockId()));
   } else if (instruction->CanThrowIntoCatchBlock()) {
+    // TODO(solanes): Modify this since the catch block we DO inline methods with try/catch.
+
     // Find the top-level environment. This corresponds to the environment of
     // the catch block since we do not inline methods with try/catch.
     HEnvironment* environment = instruction->GetEnvironment();

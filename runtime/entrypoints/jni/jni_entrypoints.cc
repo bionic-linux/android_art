@@ -166,6 +166,7 @@ extern "C" size_t artCriticalNativeFrameSize(ArtMethod* method, uintptr_t caller
     StackMap stack_map = code_info.GetStackMapForNativePcOffset(native_pc_offset);
     DCHECK(stack_map.IsValid());
     BitTableRange<InlineInfo> inline_infos = code_info.GetInlineInfosOf(stack_map);
+    DCHECK(stack_map.GetKind() != StackMap::Kind::Catch);
     ArtMethod* caller =
         inline_infos.empty() ? method : GetResolvedMethod(method, code_info, inline_infos);
     uint32_t dex_pc = inline_infos.empty() ? stack_map.GetDexPc() : inline_infos.back().GetDexPc();

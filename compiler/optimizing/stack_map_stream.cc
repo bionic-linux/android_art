@@ -104,7 +104,8 @@ void StackMapStream::BeginStackMapEntry(uint32_t dex_pc,
                                         uint32_t register_mask,
                                         BitVector* stack_mask,
                                         StackMap::Kind kind,
-                                        bool needs_vreg_info) {
+                                        bool needs_vreg_info,
+                                        ArrayRef<const uint32_t> inline_dex_pcs) {
   DCHECK(in_method_) << "Call BeginMethod first";
   DCHECK(!in_stack_map_) << "Mismatched Begin/End calls";
   in_stack_map_ = true;
@@ -149,7 +150,7 @@ void StackMapStream::BeginStackMapEntry(uint32_t dex_pc,
                                                                     instruction_set_);
         CHECK_EQ(stack_map.Row(), stack_map_index);
       } else if (kind == StackMap::Kind::Catch) {
-        StackMap stack_map = code_info.GetCatchStackMapForDexPc(dex_pc);
+        StackMap stack_map = code_info.GetCatchStackMapForDexPc(dex_pc, inline_dex_pcs);
         CHECK_EQ(stack_map.Row(), stack_map_index);
       }
       StackMap stack_map = code_info.GetStackMapAt(stack_map_index);
@@ -295,6 +296,33 @@ void StackMapStream::EndInlineInfoEntry() {
   DCHECK_EQ(expected_num_dex_registers_, current_dex_registers_.size());
 }
 
+void StackMapStream::BeginInlineInfoEntryForCatch(uint32_t dex_pc) {
+  DCHECK(in_stack_map_) << "Call BeginStackMapEntry first";
+  DCHECK(!in_inline_info_for_catch_) << "Mismatched Begin/End calls";
+
+  in_inline_info_for_catch_ = true;
+
+  BitTableBuilder<InlineInfo>::Entry entry;
+  entry[InlineInfo::kIsLast] = InlineInfo::kMore;
+  entry[InlineInfo::kDexPc] = dex_pc;
+  current_inline_infos_.push_back(entry);
+
+  if (kVerifyStackMaps) {
+    size_t stack_map_index = stack_maps_.size();
+    size_t depth = current_inline_infos_.size() - 1;
+    dchecks_.emplace_back([=](const CodeInfo& code_info) {
+      StackMap stack_map = code_info.GetStackMapAt(stack_map_index);
+      InlineInfo inline_info = code_info.GetInlineInfosOf(stack_map)[depth];
+      CHECK_EQ(inline_info.GetDexPc(), dex_pc);
+    });
+  }
+}
+
+void StackMapStream::EndInlineInfoEntryForCatch() {
+  DCHECK(in_inline_info_for_catch_) << "Mismatched Begin/End calls";
+  in_inline_info_for_catch_ = false;
+}
+
 // Create delta-compressed dex register map based on the current list of DexRegisterLocations.
 // All dex registers for a stack map are concatenated - inlined registers are just appended.
 void StackMapStream::CreateDexRegisterMap() {
@@ -350,10 +378,12 @@ void StackMapStream::CreateDexRegisterMap() {
       for (DexRegisterLocation reg : code_info.GetDexRegisterMapOf(stack_map)) {
         CHECK_EQ((*expected_dex_registers)[expected_reg++], reg);
       }
-      for (InlineInfo inline_info : code_info.GetInlineInfosOf(stack_map)) {
-        DexRegisterMap map = code_info.GetInlineDexRegisterMapOf(stack_map, inline_info);
-        for (DexRegisterLocation reg : map) {
-          CHECK_EQ((*expected_dex_registers)[expected_reg++], reg);
+      if (stack_map.GetKind() != StackMap::Kind::Catch) {
+        for (InlineInfo inline_info : code_info.GetInlineInfosOf(stack_map)) {
+          DexRegisterMap map = code_info.GetInlineDexRegisterMapOf(stack_map, inline_info);
+          for (DexRegisterLocation reg : map) {
+            CHECK_EQ((*expected_dex_registers)[expected_reg++], reg);
+          }
         }
       }
       CHECK_EQ(expected_reg, expected_dex_registers->size());
