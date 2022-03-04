@@ -223,7 +223,9 @@ void GraphChecker::VisitBasicBlock(HBasicBlock* block) {
   // block with multiple successors to a block with multiple
   // predecessors). Exceptional edges are synthesized and hence
   // not accounted for.
-  if (block->GetSuccessors().size() > 1) {
+  // TODO(solanes): successors vs normal successors only changes for blocks that end with try
+  // boundaries. Is this change okay?
+  if (block->GetNormalSuccessors().size() > 1) {
     if (IsExitTryBoundaryIntoExitBlock(block)) {
       // Allowed critical edge (Throw/Return/ReturnVoid)->TryBoundary->Exit.
     } else {

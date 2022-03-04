@@ -1,0 +1,3 @@
+Hello from $inline$tryCatch
+Hello from $inline$tryCatch
+Hello from $inline$otherTryCatch

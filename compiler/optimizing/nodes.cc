@@ -2660,7 +2660,8 @@ void HGraph::DeleteDeadEmptyBlock(HBasicBlock* block) {
 
 void HGraph::UpdateLoopAndTryInformationOfNewBlock(HBasicBlock* block,
                                                    HBasicBlock* reference,
-                                                   bool replace_if_back_edge) {
+                                                   bool replace_if_back_edge,
+                                                   bool ignore_new_info) {
   if (block->IsLoopHeader()) {
     // Clear the information of which blocks are contained in that loop. Since the
     // information is stored as a bit vector based on block ids, we have to update
@@ -2687,11 +2688,13 @@ void HGraph::UpdateLoopAndTryInformationOfNewBlock(HBasicBlock* block,
     }
   }
 
-  // Copy TryCatchInformation if `reference` is a try block, not if it is a catch block.
-  TryCatchInformation* try_catch_info = reference->IsTryBlock()
-      ? reference->GetTryCatchInformation()
-      : nullptr;
-  block->SetTryCatchInformation(try_catch_info);
+  DCHECK_IMPLIES(ignore_new_info, reference->GetTryCatchInformation() == nullptr);
+  if (!ignore_new_info) {
+    // Copy TryCatchInformation if `reference` is a try block, not if it is a catch block.
+    TryCatchInformation* try_catch_info =
+        reference->IsTryBlock() ? reference->GetTryCatchInformation() : nullptr;
+    block->SetTryCatchInformation(try_catch_info);
+  }
 }
 
 HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
@@ -2801,12 +2804,17 @@ HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
     // and (4) to the blocks that apply.
     for (HBasicBlock* current : GetReversePostOrder()) {
       if (current != exit_block_ && current != entry_block_ && current != first) {
-        DCHECK(current->GetTryCatchInformation() == nullptr);
+        if (current->IsCatchBlock()) {
+          current->GetTryCatchInformation()->AddInlineDexPc(to->GetDexPc());
+        }
         DCHECK(current->GetGraph() == this);
         current->SetGraph(outer_graph);
         outer_graph->AddBlock(current);
         outer_graph->reverse_post_order_[++index_of_at] = current;
-        UpdateLoopAndTryInformationOfNewBlock(current, at,  /* replace_if_back_edge= */ false);
+        UpdateLoopAndTryInformationOfNewBlock(current,
+                                              at,
+                                              /* replace_if_back_edge= */ false,
+                                              current->GetTryCatchInformation() != nullptr);
       }
     }
 
@@ -2828,18 +2836,32 @@ HInstruction* HGraph::InlineInto(HGraph* outer_graph, HInvoke* invoke) {
     for (size_t pred = 0; pred < to->GetPredecessors().size(); ++pred) {
       HBasicBlock* predecessor = to->GetPredecessors()[pred];
       HInstruction* last = predecessor->GetLastInstruction();
+
+      // On some graphs we have Return/ReturnVoid/Throw -> TryBoundary -> Exit. In this vein, the
+      // TryBoundary acts as a proxy.
+      // TODO(solanes): Explain in more detail.
+      const bool was_try_boundary = last->IsTryBoundary();
+      if (was_try_boundary) {
+        auto preds = predecessor->GetPredecessors();
+        DCHECK_EQ(preds.size(), 1u);
+        predecessor = preds[0];
+        last = predecessor->GetLastInstruction();
+      }
+
       if (last->IsThrow()) {
-        DCHECK(!at->IsTryBlock());
-        predecessor->ReplaceSuccessor(to, outer_graph->GetExitBlock());
-        --pred;
-        // We need to re-run dominance information, as the exit block now has
-        // a new dominator.
-        rerun_dominance = true;
-        if (predecessor->GetLoopInformation() != nullptr) {
-          // The exit block and blocks post dominated by the exit block do not belong
-          // to any loop. Because we do not compute the post dominators, we need to re-run
-          // loop analysis to get the loop information correct.
-          rerun_loop_analysis = true;
+        if (!was_try_boundary) {
+          DCHECK(!at->IsTryBlock());
+          predecessor->ReplaceSuccessor(to, outer_graph->GetExitBlock());
+          --pred;
+          // We need to re-run dominance information, as the exit block now has
+          // a new dominator.
+          rerun_dominance = true;
+          if (predecessor->GetLoopInformation() != nullptr) {
+            // The exit block and blocks post dominated by the exit block do not belong
+            // to any loop. Because we do not compute the post dominators, we need to re-run
+            // loop analysis to get the loop information correct.
+            rerun_loop_analysis = true;
+          }
         }
       } else {
         if (last->IsReturnVoid()) {
