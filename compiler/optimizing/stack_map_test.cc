@@ -766,4 +766,6 @@ TEST(StackMapTest, TestDedupeBitTables) {
   ASSERT_GT(memory.size() * 2, out.size());
 }
 
+// TODO(solanes): Add a test here for the catch stack maps?
+
 }  // namespace art
