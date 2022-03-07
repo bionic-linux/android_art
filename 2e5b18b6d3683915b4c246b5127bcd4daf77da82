@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7ff54b_64a82b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-07T16:49:53Z",
+      "side": 1,
+      "message": "Thanks Mythri.",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c11e75e_6bf95d8f",
@@ -48,6 +65,24 @@
       "writtenOn": "2022-03-07T16:21:58Z",
       "side": 1,
       "message": "minor nit: Not from this CL but maybe we can rename SetHotCounter to ClearHotCounter? Also maybe rename ResetHotCounter to InitializeHotCounter because I think that sets the initial threshold if having both ClearHotCounter and ResetHotCounter are confusing.",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38aed665_6b6f238b",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-07T16:49:53Z",
+      "side": 1,
+      "message": "SetHotCounter is to abstract away what \"hot\" means. Yes, the implementation is \"set it to zero\", which means we could rename it to ClearHotCounter, but before it used to be some non-zero value. With a non-zero value, calling it ClearHotCounter would be confusing.",
+      "parentUuid": "7c11e75e_6bf95d8f",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
