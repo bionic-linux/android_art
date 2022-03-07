@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e300bf8d_7b1040f3",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 25
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-07T11:15:12Z",
+      "side": 1,
+      "message": "After an offline discussion we decided to go with a separate field. Though we have enough bits on state_and_flags JNI transitions has fast path only when all the bits in that field are 0. The deopt check should be only set on debuggable apps when a class is being redefined so it shouldn\u0027t be a performance concern but it is cleaner and simpler to have a separate field. \n\nThe other alternative is to use instrumented entry points (similar to alloc entry points) but that is a bit more work. If we see any performance regression with this additional check then we could move to instrumented entry points.",
+      "parentUuid": "04359095_8e980ada",
+      "revId": "ad3b8bcf7a69da78fd43102d4c984737f4f29b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6134c39a_c0639d63",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-03T15:47:56Z",
       "side": 1,
       "message": "Missing CFI directives. We need .cfi_remember_state and a matching CFI_RESTORE_STATE_AND_DEF_CFA.",
+      "revId": "ad3b8bcf7a69da78fd43102d4c984737f4f29b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d889cf_c1b76956",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 25
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-07T11:15:12Z",
+      "side": 1,
+      "message": "Done. I was under the impression that RESTORE_SAVE_EVERYTHING doesn\u0027t need cfi_remember_state and restore because the macro adjusts cfi information on each pop.",
+      "parentUuid": "6134c39a_c0639d63",
       "revId": "ad3b8bcf7a69da78fd43102d4c984737f4f29b4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
