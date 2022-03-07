@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7bcee73_dfdf8430",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-07T16:46:21Z",
+      "side": 0,
+      "message": "If you move all the remember/restore to the `DEOPT_IF_REQUIRED`, then it\u0027s not needed here.",
+      "parentUuid": "2ff6d1d7_241d2aea",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 23
+      },
+      "revId": "61c0d22e27b4ea885fa008ac9bfa3ae3d7453d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f099ce1_f62b110a",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 20
