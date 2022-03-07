@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445c7270_95ab29ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-03-07T12:02:17Z",
+      "side": 1,
+      "message": "(See also https://r.android.com/2010815)",
+      "revId": "db58e67d1691f01ca66b269e1544581dbf1b2a31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
