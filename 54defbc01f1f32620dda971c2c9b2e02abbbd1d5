@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de99689_59f845c5",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Thanks! Done",
+      "parentUuid": "c6a8a7ab_2ee1334e",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1341d46_6be3ba20",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "We\u0027re returning, so the macro should be renamed to `RETURN_OR_DEOPT` or something similar.\n\nAnd the unreachable BX instruction should be removed from `RETURN_OR_DEOPT_OR_DELIVER_PENDING_EXCEPTION`.",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 11
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90530910_f44bc0d5",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1341d46_6be3ba20",
       "range": {
         "startLine": 155,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584bccd1_1e106450",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ea1cf7_ec6481b1",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70965267_08b62645",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "Dead code.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e1b96c_c8aa896b",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Thanks! Done",
+      "parentUuid": "70965267_08b62645",
       "range": {
         "startLine": 216,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6fd6e2_86dd9c65",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d8c6c31_6a25da18",
+      "range": {
+        "startLine": 807,
+        "startChar": 75,
+        "endLine": 807,
+        "endChar": 84
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f7a8fd1_bf905ded",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "Can we keep using the `*_KEEP_R0` macro if we have a result?",
+      "range": {
+        "startLine": 808,
+        "startChar": 4,
+        "endLine": 808,
+        "endChar": 65
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bd7a99_ada13056",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7a8fd1_bf905ded",
       "range": {
         "startLine": 808,
         "startChar": 4,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba47b1a_75c42e3c",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 26
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Thanks! I missed this one.",
+      "parentUuid": "eef31c5a_9315194d",
+      "range": {
+        "startLine": 873,
+        "startChar": 4,
+        "endLine": 874,
+        "endChar": 28
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c792229_0fbe92ea",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "I think we shall still have a runtime frame first, so we\u0027ll need to get the next frame before checking for a native method.",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cfaeaa_d71ee8a1",
+        "filename": "runtime/entrypoints/quick/quick_thread_entrypoints.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done. You are right. I am not sure why added this. I remember that I just had the following DCHECK and it failed tests. Maybe I misunderstood the failure then.",
+      "parentUuid": "3c792229_0fbe92ea",
       "range": {
         "startLine": 33,
         "startChar": 2,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3976fad_26cfa6ed",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c6cbdcf_746d2a18",
+      "range": {
+        "startLine": 1552,
+        "startChar": 2,
+        "endLine": 1552,
+        "endChar": 24
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49c3f8d7_07ebfd26",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "This can happen when the caller is interpreted by the switch interpreter. (And we can get here through the `artQuickToInterpreterBridge`.)",
+      "range": {
+        "startLine": 1616,
+        "startChar": 7,
+        "endLine": 1617,
+        "endChar": 24
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6118c10_b701048f",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 26
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c3f8d7_07ebfd26",
       "range": {
         "startLine": 1616,
         "startChar": 7,
@@ -271,6 +511,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "643f6f0b_b8a0ec49",
+        "filename": "runtime/thread.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d686e47_e422bc81",
+      "range": {
+        "startLine": 1761,
+        "startChar": 13,
+        "endLine": 1761,
+        "endChar": 36
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1be5355a_60ad632d",
@@ -284,6 +548,30 @@
       "writtenOn": "2022-03-07T16:46:21Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "54defbc01f1f32620dda971c2c9b2e02abbbd1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa430e2_4bbf3b8a",
+        "filename": "tools/cpp-define-generator/runtime.def",
+        "patchSetId": 26
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be5355a_60ad632d",
       "range": {
         "startLine": 19,
         "startChar": 0,

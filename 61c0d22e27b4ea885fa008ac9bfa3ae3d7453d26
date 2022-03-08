@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a5fd44_a5ee37bb",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-08T14:12:53Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "e7bcee73_dfdf8430",
+      "range": {
+        "startLine": 779,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 23
+      },
+      "revId": "61c0d22e27b4ea885fa008ac9bfa3ae3d7453d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f099ce1_f62b110a",
