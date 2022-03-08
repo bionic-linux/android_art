@@ -102,6 +102,24 @@
       "message": "This could be a lot of memory. Did you measure the impact?",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945f8134_c24820ec",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-08T16:01:36Z",
+      "side": 1,
+      "message": "I\u0027m getting between 50 to a 100 entries per process (likely around 50 come from zygote) on my test device. So we\u0027re looking at 500bytes to 1KB per process (compared to multiple 4KB when the counter was on the ArtMethod).",
+      "parentUuid": "e0df44a4_932d919f",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
