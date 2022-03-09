@@ -54,6 +54,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dbe6280_69330496",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3301,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-09T16:56:03Z",
+      "side": 1,
+      "message": "I guess there is no harm in setting this for abstract methods even if it\u0027s useless, right?",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f16ec36_d56796c4",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-09T16:56:03Z",
+      "side": 1,
+      "message": "What about intrinsics? Should we return `true` for them?",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c11e75e_6bf95d8f",
         "filename": "runtime/art_method.h",
         "patchSetId": 3
@@ -89,6 +129,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8e393dc_0baeaaf3",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-09T16:56:03Z",
+      "side": 1,
+      "message": "This looks misplaced here in `Jit::EnqueueCompilation()`. Shouldn\u0027t we do this check somewhere in the caller?",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0df44a4_932d919f",
         "filename": "runtime/jit/jit.h",
         "patchSetId": 3
@@ -118,6 +175,24 @@
       "side": 1,
       "message": "I\u0027m getting between 50 to a 100 entries per process (likely around 50 come from zygote) on my test device. So we\u0027re looking at 500bytes to 1KB per process (compared to multiple 4KB when the counter was on the ArtMethod).",
       "parentUuid": "e0df44a4_932d919f",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddd7c34_b6cd9215",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-09T16:56:03Z",
+      "side": 1,
+      "message": "That sounds OK until you consider that scudo could scatter those allocations in different pages anyway.",
+      "parentUuid": "945f8134_c24820ec",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
