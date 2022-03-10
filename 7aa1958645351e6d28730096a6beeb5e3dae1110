@@ -52,6 +52,24 @@
       "parentUuid": "53da07b9_02543be1",
       "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec14334_265857be",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-10T19:02:21Z",
+      "side": 1,
+      "message": "Yes, that can work.",
+      "parentUuid": "f59345af_d68a5f26",
+      "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
