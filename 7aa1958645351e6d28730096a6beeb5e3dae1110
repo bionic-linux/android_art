@@ -16,6 +16,24 @@
       "message": "Is this still needed? Do we still test on such old Android versions?",
       "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53da07b9_02543be1",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-10T14:46:35Z",
+      "side": 1,
+      "message": "Yeah, we still test on fugu x86 as our x86 physical device.",
+      "parentUuid": "7c9d1733_ad053718",
+      "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
