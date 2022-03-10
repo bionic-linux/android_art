@@ -70,6 +70,24 @@
       "parentUuid": "f59345af_d68a5f26",
       "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc39dc6_91f6b9cd",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-03-10T19:17:18Z",
+      "side": 1,
+      "message": "aosp/2020884",
+      "parentUuid": "cec14334_265857be",
+      "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
