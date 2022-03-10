@@ -34,6 +34,24 @@
       "parentUuid": "7c9d1733_ad053718",
       "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59345af_d68a5f26",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-03-10T18:21:29Z",
+      "side": 1,
+      "message": "So could we make this conditional on fugu perhaps? This is causing me some problems as my adb logcat sessions get terminated.",
+      "parentUuid": "53da07b9_02543be1",
+      "revId": "7aa1958645351e6d28730096a6beeb5e3dae1110",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
