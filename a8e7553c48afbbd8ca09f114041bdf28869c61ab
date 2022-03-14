@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18085ea6_8ffb1deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-14T08:36:17Z",
+      "side": 1,
+      "message": "Vladimir, friendly ping :) I addressed your comments PTAL. Thanks!",
+      "revId": "a8e7553c48afbbd8ca09f114041bdf28869c61ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
