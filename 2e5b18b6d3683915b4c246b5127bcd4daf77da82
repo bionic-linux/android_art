@@ -69,6 +69,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86c2bb4_81a6e9b1",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3301,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-14T08:32:26Z",
+      "side": 1,
+      "message": "That\u0027s right.",
+      "parentUuid": "8dbe6280_69330496",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f16ec36_d56796c4",
@@ -82,6 +100,30 @@
       "writtenOn": "2022-03-09T16:56:03Z",
       "side": 1,
       "message": "What about intrinsics? Should we return `true` for them?",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77adaa98_3d6b2be5",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-14T08:32:26Z",
+      "side": 1,
+      "message": "We could, but that won\u0027t prevent them from being dirty if they run with nterp: nterp will only check the bit.",
+      "parentUuid": "6f16ec36_d56796c4",
       "range": {
         "startLine": 254,
         "startChar": 31,
@@ -140,6 +182,24 @@
       "writtenOn": "2022-03-09T16:56:03Z",
       "side": 1,
       "message": "This looks misplaced here in `Jit::EnqueueCompilation()`. Shouldn\u0027t we do this check somewhere in the caller?",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b035acf6_c8f72e51",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-14T08:32:26Z",
+      "side": 1,
+      "message": "This is to access shared_method_counters_ which is in the JIT class. If I rename the method to MaybeEnqueueCompilation, would that work better?",
+      "parentUuid": "b8e393dc_0baeaaf3",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
