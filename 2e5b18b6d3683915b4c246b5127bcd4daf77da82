@@ -171,6 +171,201 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5a7a675_26f333f2",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "Do we want to use ldr/str because the field is 32-bit? Or do we want to use ldrh/strh as we do for hotness in `ArtMethod`?",
+      "range": {
+        "startLine": 1569,
+        "startChar": 4,
+        "endLine": 1569,
+        "endChar": 7
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d78dd0_0216b541",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "Change to `wip`?",
+      "range": {
+        "startLine": 1577,
+        "startChar": 8,
+        "endLine": 1577,
+        "endChar": 10
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaefc3fa_4b1acf19",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "Change to `ip`?",
+      "range": {
+        "startLine": 1581,
+        "startChar": 8,
+        "endLine": 1581,
+        "endChar": 10
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8bc476_f9376c13",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "ldr/str or ldrh/strh?",
+      "range": {
+        "startLine": 1592,
+        "startChar": 4,
+        "endLine": 1592,
+        "endChar": 7
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21179a9e_5cb600d5",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "arm/arm64go/x86 go to the suspend check.",
+      "range": {
+        "startLine": 841,
+        "startChar": 63,
+        "endLine": 841,
+        "endChar": 65
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b438e3_8d26c0fe",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "I prefer `jz` for flag check.",
+      "range": {
+        "startLine": 1672,
+        "startChar": 4,
+        "endLine": 1672,
+        "endChar": 6
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d50d05_9a7eeaf8",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "We can do everything in `si`, or do everything but the store in `esi`. The weird mix of both here is odd. (The same is present in the old code.)",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab3ca32_82d8446f",
+        "filename": "runtime/interpreter/mterp/x86ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "jz?",
+      "range": {
+        "startLine": 1742,
+        "startChar": 4,
+        "endLine": 1742,
+        "endChar": 6
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06376649_7a78a909",
+        "filename": "runtime/interpreter/mterp/x86ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T10:47:48Z",
+      "side": 1,
+      "message": "Use `cx` or `ecx` consistently.",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8e393dc_0baeaaf3",
         "filename": "runtime/jit/jit.cc",
         "patchSetId": 3
