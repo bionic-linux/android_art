@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ea8c18_7365ba4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-15T19:14:21Z",
+      "side": 1,
+      "message": "Thanks Vladimir! PTAL.",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

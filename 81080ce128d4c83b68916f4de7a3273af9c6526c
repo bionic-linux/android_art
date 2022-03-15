@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a63aae_ef8b914e",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 27
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-15T19:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31531a8c_caa2b0c8",
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43e50950_247db7cc",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f455adc_ef29739e",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 27
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-15T19:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e50950_247db7cc",
+      "range": {
+        "startLine": 161,
+        "startChar": 19,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67169a46_5d96e5a8",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-03-15T14:07:17Z",
       "side": 1,
       "message": "I would try to stick to one line and use something similar to the commit message, for example \"Update deoptimization from runtime methods.\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753df553_85d1c649",
+        "filename": "runtime/oat.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-15T19:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67169a46_5d96e5a8",
       "range": {
         "startLine": 35,
         "startChar": 38,
