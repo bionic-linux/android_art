@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee3518c_1464c6cf",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-15T00:50:29Z",
+      "side": 1,
+      "message": "Should be explicitly compared to nullptr.",
+      "range": {
+        "startLine": 724,
+        "startChar": 11,
+        "endLine": 724,
+        "endChar": 40
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1c49ac_158d9774",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-15T00:50:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like the name matches description and function here. It seems to scan dirty objects. The gray objects presumably also include those on the mark stack.",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bcb438_5b2caa7c",
+        "filename": "runtime/gc/space/bump_pointer_space.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-15T00:50:29Z",
+      "side": 1,
+      "message": "Is it better to explicitly set it to nullptr?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
