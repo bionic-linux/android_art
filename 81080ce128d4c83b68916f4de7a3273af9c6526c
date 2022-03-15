@@ -16,6 +16,69 @@
       "message": "Thanks for the detailed review Vladimir! PTAL. Thanks!",
       "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31531a8c_caa2b0c8",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 27
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T14:07:17Z",
+      "side": 1,
+      "message": "This is quite messy. Can we have two separate macros?\n\n  DEOPT_OR_RETURN\n  DEOPT_OR_RESTORE_SAVE_EVERYTHING_FRAME_AND_RETURN_R0",
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e50950_247db7cc",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 27
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T14:07:17Z",
+      "side": 1,
+      "message": "We should define a constant for this:\n\n  FRAME_SIZE_SAVE_EVERYTHING - PopCount(core_spill_mask) * core_register_size",
+      "range": {
+        "startLine": 161,
+        "startChar": 19,
+        "endLine": 161,
+        "endChar": 22
+      },
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67169a46_5d96e5a8",
+        "filename": "runtime/oat.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-15T14:07:17Z",
+      "side": 1,
+      "message": "I would try to stick to one line and use something similar to the commit message, for example \"Update deoptimization from runtime methods.\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "81080ce128d4c83b68916f4de7a3273af9c6526c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
