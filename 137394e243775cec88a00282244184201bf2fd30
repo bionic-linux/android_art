@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8ff754_f44b99af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1942415
+      },
+      "writtenOn": "2022-03-16T09:51:04Z",
+      "side": 1,
+      "message": "How could we enable CMC with those patches to test it before final release version?",
+      "revId": "137394e243775cec88a00282244184201bf2fd30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
