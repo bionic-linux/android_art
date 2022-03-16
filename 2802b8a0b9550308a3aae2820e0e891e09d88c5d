@@ -16,6 +16,52 @@
       "message": "Thanks Vladimir, PTAL.",
       "revId": "2802b8a0b9550308a3aae2820e0e891e09d88c5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae19ab6f_ee3234f2",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "testl %esi, %esi",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 830,
+        "endChar": 17
+      },
+      "revId": "2802b8a0b9550308a3aae2820e0e891e09d88c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84701e8d_3f94dc41",
+        "filename": "runtime/interpreter/mterp/x86ng/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "testl %ecx, %ecx",
+      "range": {
+        "startLine": 976,
+        "startChar": 3,
+        "endLine": 976,
+        "endChar": 17
+      },
+      "revId": "2802b8a0b9550308a3aae2820e0e891e09d88c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

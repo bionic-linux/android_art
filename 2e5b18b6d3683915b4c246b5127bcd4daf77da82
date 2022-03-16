@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d418a12a_a9903fbe",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "And I assume you don\u0027t want to slow down arm64? (We can check flags 0xc0000000 with the same number of instructions as 0x40000000 on all other platforms.)",
+      "parentUuid": "77adaa98_3d6b2be5",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c11e75e_6bf95d8f",
         "filename": "runtime/art_method.h",
         "patchSetId": 3
@@ -206,6 +230,30 @@
       "side": 1,
       "message": "No preference here, what do you prefer? I take it there shouldn\u0027t be any performance differences? Maybe ldrh better shows the intent and is preferable?",
       "parentUuid": "d5a7a675_26f333f2",
+      "range": {
+        "startLine": 1569,
+        "startChar": 4,
+        "endLine": 1569,
+        "endChar": 7
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07f8a51_82fbd52a",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "Let\u0027s keep ldr/str as that\u0027s the actual size of the field.",
+      "parentUuid": "9818ed5e_f2aa05b1",
       "range": {
         "startLine": 1569,
         "startChar": 4,
@@ -347,6 +395,30 @@
       "side": 1,
       "message": "Same, no preference on my side.",
       "parentUuid": "ad8bc476_f9376c13",
+      "range": {
+        "startLine": 1592,
+        "startChar": 4,
+        "endLine": 1592,
+        "endChar": 7
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58cfa2e_5511f79a",
+        "filename": "runtime/interpreter/mterp/armng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "Let\u0027s keep using the size of the field then.",
+      "parentUuid": "bd64e8b6_250cc15f",
       "range": {
         "startLine": 1592,
         "startChar": 4,
@@ -575,6 +647,24 @@
       "side": 1,
       "message": "This is to access shared_method_counters_ which is in the JIT class. If I rename the method to MaybeEnqueueCompilation, would that work better?",
       "parentUuid": "b8e393dc_0baeaaf3",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0a2137_0449ff71",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-16T15:53:38Z",
+      "side": 1,
+      "message": "Looking at `Jit::AddSamples()` I see that we check `IgnoreSamplesForMethod()` there and then again here. But nterp calls `EnqueueCompilation()` directly. It\u0027s a bit confusing.",
+      "parentUuid": "b035acf6_c8f72e51",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
