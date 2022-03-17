@@ -160,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c95d86c3_185a5e19",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T09:22:25Z",
+      "side": 1,
+      "message": "Indeed :)",
+      "parentUuid": "d418a12a_a9903fbe",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c11e75e_6bf95d8f",
         "filename": "runtime/art_method.h",
         "patchSetId": 3
@@ -452,6 +476,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aea1151_311cbc8d",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T09:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21179a9e_5cb600d5",
+      "range": {
+        "startLine": 841,
+        "startChar": 63,
+        "endLine": 841,
+        "endChar": 65
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9b438e3_8d26c0fe",
@@ -665,6 +713,24 @@
       "side": 1,
       "message": "Looking at `Jit::AddSamples()` I see that we check `IgnoreSamplesForMethod()` there and then again here. But nterp calls `EnqueueCompilation()` directly. It\u0027s a bit confusing.",
       "parentUuid": "b035acf6_c8f72e51",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3003f9_cabb50d5",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T09:22:25Z",
+      "side": 1,
+      "message": "Good point, cleaning this up by moving IgnoreSamplesForMethod and renaming to MaybeEnqueueCompilation.",
+      "parentUuid": "6f0a2137_0449ff71",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a8b56e_0a1483a9",
+        "filename": "runtime/interpreter/mterp/x86_64ng/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T09:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae19ab6f_ee3234f2",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 830,
+        "endChar": 17
+      },
+      "revId": "2802b8a0b9550308a3aae2820e0e891e09d88c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84701e8d_3f94dc41",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-16T15:53:38Z",
       "side": 1,
       "message": "testl %ecx, %ecx",
+      "range": {
+        "startLine": 976,
+        "startChar": 3,
+        "endLine": 976,
+        "endChar": 17
+      },
+      "revId": "2802b8a0b9550308a3aae2820e0e891e09d88c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a74cf2_c8c48657",
+        "filename": "runtime/interpreter/mterp/x86ng/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T09:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84701e8d_3f94dc41",
       "range": {
         "startLine": 976,
         "startChar": 3,
