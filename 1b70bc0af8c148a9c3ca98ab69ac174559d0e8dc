@@ -33,6 +33,327 @@
       "message": "Ping on this one :) ",
       "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f0d2e0_8de51474",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Should we not `DEOPT_OR_RETURN r1, /*is_ref\u003d*/ 1` here? This macro is used for allocation entrypoints. (And `StringBuilderAppend` which can be considered a kind of allocation.)\n\n(If yes, maybe we can also remove the `RETURN_IF_RESULT_IS_NON_ZERO` macro just like the `RETURN_IF_RESULT_IS_ZERO`.)",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75feae9e_4986f5c4",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Note: Suffix `_R1` used to denote the temporary used by the macro. Do we want to keep it or are we deliberately removing it? (I\u0027m OK with either.)",
+      "range": {
+        "startLine": 844,
+        "startChar": 82,
+        "endLine": 844,
+        "endChar": 126
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e1a1d7_753cc4c5",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Do we need the DEOPT check here?",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de7555d_da71ec7d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "And here?",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cb1936_f7368a76",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "We may need to add more DEOPT points, see comments in the arm file. Please review all occurrences of regex `\\bRETURN_`.",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1324d4_27477965",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 763,
+        "startChar": 24,
+        "endLine": 763,
+        "endChar": 44
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc23cd7d_618ea6a8",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Add period at the end of the comment.",
+      "range": {
+        "startLine": 497,
+        "startChar": 52,
+        "endLine": 497,
+        "endChar": 59
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e76bee9_f919cee3",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Update comment (see line 597).",
+      "range": {
+        "startLine": 642,
+        "startChar": 32,
+        "endLine": 642,
+        "endChar": 39
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9488b5e_cc3b4281",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Use \"compiled\". The word \"quick\" may be misinterpreted as code compiled by the \"Quick\" compiler which was removed several years ago. (Entrypoint names still contains \"quick\" for legacy reasons.)",
+      "range": {
+        "startLine": 1608,
+        "startChar": 27,
+        "endLine": 1608,
+        "endChar": 32
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580510dd_b16931d2",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "interpreted",
+      "range": {
+        "startLine": 1611,
+        "startChar": 16,
+        "endLine": 1611,
+        "endChar": 27
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ddb7ca_084ec8df",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "Improve readability:\n\n  if (method_needs_deopt) {\n    return true;\n  }\n  if (!Runtime::Current()-\u003eIsJavaDebuggable()) {\n    return false;\n  }\n\nAnd maybe move the comment into the body of the second `if`.",
+      "range": {
+        "startLine": 1625,
+        "startChar": 2,
+        "endLine": 1627,
+        "endChar": 3
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238e1113_77e59f17",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "This is always false in this code path.",
+      "range": {
+        "startLine": 1639,
+        "startChar": 9,
+        "endLine": 1639,
+        "endChar": 27
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a973704_fa19f3f1",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "We should add \"CORE\" to the name and remove the architecture prefix. If we use `RuntimeCalleeSaveFrame` to define this \"constant\", it shall be defined differently for different architectures. (Similar to the `POINTER_SIZE`.)",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 51
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa04c2e_c2ca592d",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "We can use `art::POPCOUNT(art::RuntimeCalleeSaveFrame::GetCoreSpills(art::CalleeSaveType::kSaveEverything))`.",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b1d73c4_08576411",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T12:48:52Z",
+      "side": 1,
+      "message": "We can use `POINTER_SIZE` instead.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
