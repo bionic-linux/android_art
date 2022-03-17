@@ -39,6 +39,30 @@
       },
       "revId": "aae9e09affc4388f971721c140c2d7865d468f14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec4d28a_44ce6d68",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-17T10:26:31Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve expanded the comment.",
+      "parentUuid": "55c33296_c36b9867",
+      "range": {
+        "startLine": 1818,
+        "startChar": 40,
+        "endLine": 1819,
+        "endChar": 42
+      },
+      "revId": "aae9e09affc4388f971721c140c2d7865d468f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
