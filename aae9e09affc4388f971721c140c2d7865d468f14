@@ -16,6 +16,29 @@
       "message": "Thanks Vladimir, PTAL.",
       "revId": "aae9e09affc4388f971721c140c2d7865d468f14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c33296_c36b9867",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T10:05:45Z",
+      "side": 1,
+      "message": "This is decremented for any \"memory shared\" method and we then report hotness for a method that just happens to see 0, even though most (all) previous updates could have been caused by other methods. Right? Can we at least document that properly?",
+      "range": {
+        "startLine": 1818,
+        "startChar": 40,
+        "endLine": 1819,
+        "endChar": 42
+      },
+      "revId": "aae9e09affc4388f971721c140c2d7865d468f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

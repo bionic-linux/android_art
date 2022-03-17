@@ -182,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf909619_6b899b3d",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T10:05:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c95d86c3_185a5e19",
+      "range": {
+        "startLine": 254,
+        "startChar": 31,
+        "endLine": 254,
+        "endChar": 53
+      },
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c11e75e_6bf95d8f",
@@ -731,6 +755,24 @@
       "side": 1,
       "message": "Good point, cleaning this up by moving IgnoreSamplesForMethod and renaming to MaybeEnqueueCompilation.",
       "parentUuid": "6f0a2137_0449ff71",
+      "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45421536_9faecd90",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-17T10:05:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db3003f9_cabb50d5",
       "revId": "2e5b18b6d3683915b4c246b5127bcd4daf77da82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
