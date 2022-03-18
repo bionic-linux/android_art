@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6695477_af646d08",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Thanks! I missed StringBuilderAppend. I had it in the initial version but got missed somehow. For other alloc related entry points we use instrumented versions that perform the deopt check. I added a comment for that.",
+      "parentUuid": "48f0d2e0_8de51474",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75feae9e_4986f5c4",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "Note: Suffix `_R1` used to denote the temporary used by the macro. Do we want to keep it or are we deliberately removing it? (I\u0027m OK with either.)",
+      "range": {
+        "startLine": 844,
+        "startChar": 82,
+        "endLine": 844,
+        "endChar": 126
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36a095b_62878bca",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "We don\u0027t use the prefix for x86 even though we use ebx. For consistency I dropped R1 here. If it\u0027s better I will bring back R1 and also update x86 to add _EBX.",
+      "parentUuid": "75feae9e_4986f5c4",
       "range": {
         "startLine": 844,
         "startChar": 82,
@@ -92,6 +134,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cf1dad_e41871b6",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "My initial understanding was incorrect. I thought all invokes should be handling deopt checks already. Though I realised now that we do need to check for a deopt here. This can be also used for field accesses. I fixed this by pushing a deoptimization context and set deopt exception for this case. So we won\u0027t need an explicit deopt check here. It is easier that way since we need the shorty to figure out if the result is a reference or not. This also matches other function calls like art_invoke_*",
+      "parentUuid": "26e1a1d7_753cc4c5",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de7555d_da71ec7d",
@@ -105,6 +165,24 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "And here?",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da5564d2_c5824704",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "8de7555d_da71ec7d",
       "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -126,6 +204,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c60e3f6_c74006a9",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Thanks! I took another look. Done.",
+      "parentUuid": "93cb1936_f7368a76",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a1324d4_27477965",
@@ -139,6 +235,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "Remove.",
+      "range": {
+        "startLine": 763,
+        "startChar": 24,
+        "endLine": 763,
+        "endChar": 44
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "101cc350_251e2e1d",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1324d4_27477965",
       "range": {
         "startLine": 763,
         "startChar": 24,
@@ -172,6 +292,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25105d6a_88d15581",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc23cd7d_618ea6a8",
+      "range": {
+        "startLine": 497,
+        "startChar": 52,
+        "endLine": 497,
+        "endChar": 59
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e76bee9_f919cee3",
@@ -185,6 +329,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "Update comment (see line 597).",
+      "range": {
+        "startLine": 642,
+        "startChar": 32,
+        "endLine": 642,
+        "endChar": 39
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c26d892_41ea5ea3",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e76bee9_f919cee3",
       "range": {
         "startLine": 642,
         "startChar": 32,
@@ -218,6 +386,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e5fa67_9a2ebbe3",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9488b5e_cc3b4281",
+      "range": {
+        "startLine": 1608,
+        "startChar": 27,
+        "endLine": 1608,
+        "endChar": 32
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580510dd_b16931d2",
@@ -231,6 +423,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "interpreted",
+      "range": {
+        "startLine": 1611,
+        "startChar": 16,
+        "endLine": 1611,
+        "endChar": 27
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e19e79_d4337018",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580510dd_b16931d2",
       "range": {
         "startLine": 1611,
         "startChar": 16,
@@ -264,6 +480,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de38fc78_70432112",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ddb7ca_084ec8df",
+      "range": {
+        "startLine": 1625,
+        "startChar": 2,
+        "endLine": 1627,
+        "endChar": 3
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "238e1113_77e59f17",
@@ -277,6 +517,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "This is always false in this code path.",
+      "range": {
+        "startLine": 1639,
+        "startChar": 9,
+        "endLine": 1639,
+        "endChar": 27
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e1b5761_e0f43fc2",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238e1113_77e59f17",
       "range": {
         "startLine": 1639,
         "startChar": 9,
@@ -310,6 +574,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b208ea13_4c0e726f",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Thanks! that simplifies it a lot.",
+      "parentUuid": "4a973704_fa19f3f1",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 51
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa04c2e_c2ca592d",
@@ -333,6 +621,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df04dbe9_efb1a68d",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa04c2e_c2ca592d",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 49
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b1d73c4_08576411",
@@ -346,6 +658,30 @@
       "writtenOn": "2022-03-17T12:48:52Z",
       "side": 1,
       "message": "We can use `POINTER_SIZE` instead.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133db07f_3d19b7c9",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 30
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-18T14:42:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b1d73c4_08576411",
       "range": {
         "startLine": 91,
         "startChar": 11,
