@@ -16,6 +16,24 @@
       "message": "How could we enable CMC with those patches to test it before final release version?",
       "revId": "137394e243775cec88a00282244184201bf2fd30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3169115b_6c7d6ba6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-03-18T22:00:13Z",
+      "side": 1,
+      "message": "These patches are under review and are constantly getting modified to address reviews. I\u0027ll recommend waiting until the CLs are merged and then trying to use them.",
+      "parentUuid": "7e8ff754_f44b99af",
+      "revId": "137394e243775cec88a00282244184201bf2fd30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
