@@ -1332,7 +1332,8 @@ TEST_F(Dex2oatTest, LayoutSections) {
       oat_filename,
       CompilerFilter::Filter::kVerify,
       &error_msg,
-      {"--profile-file=" + profile_file.GetFilename()});
+      {"--profile-file=" + profile_file.GetFilename(),
+       "--compact-dex-level=fast"});
   EXPECT_EQ(res, 0);
 
   // Open our generated oat file.
@@ -1351,7 +1352,7 @@ TEST_F(Dex2oatTest, LayoutSections) {
     const DexLayoutSections* const sections = oat_dex->GetDexLayoutSections();
     // Testing of logging the sections.
     ASSERT_TRUE(sections != nullptr);
-    LOG(INFO) << *sections;
+    LOG(ERROR) << *sections;
 
     // Load the sections into temporary variables for convenience.
     const DexLayoutSection& code_section =
