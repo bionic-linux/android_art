@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1d3249_2aa2e1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "I made a complete pass through this, with lots of minor comments. At some level, this isn\u0027t all that important. On the other hand, I think there are opportunities to significantly shrink the code, and that\u0027s useful even for the debugging code.",
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82de8829_d5b15669",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Don\u0027t we use uintptr_t everywhere else?",
+      "range": {
+        "startLine": 127,
+        "startChar": 41,
+        "endLine": 127,
+        "endChar": 49
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0be015_7a2aea94",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Why do we know these are in-bounds?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 71
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b7abc0_b964c74f",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "The formatting here is a bit weird. {..., prev, curr, next, ...} makes more sense to me.",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b133704_118f9781",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Same issue.",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 29
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3daf6ab2_f7edfc85",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Is there a dedup opportunity here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 5
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc6e2dd_3aed9669",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Same issue; move into the expression after LOG, which is executed conditionally.",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea770b9f_42d26130",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "This should be inlined below. That way it will be evaluated only of the check fails.",
+      "range": {
+        "startLine": 695,
+        "startChar": 26,
+        "endLine": 695,
+        "endChar": 49
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9781c583_42db0b4e",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "I would better advertise this as a side effect, either by adding a comment at the top, or by listing it explicitly in the captures clause with an /*out*/ comment, or possibly be passing it an explicit parameter. I don\u0027t think we\u0027ve ever discussed it, but hiding arbitrary side effects behind [\u0026] seems questionable to me. I think last_stride_begin is similar.",
+      "range": {
+        "startLine": 753,
+        "startChar": 41,
+        "endLine": 753,
+        "endChar": 60
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1da3f3_b5b7b279",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Can we dedup this with the earlier one by turning it into an actual function, possibly with a callback parameter?",
+      "range": {
+        "startLine": 842,
+        "startChar": 2,
+        "endLine": 842,
+        "endChar": 87
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1f6b54_856ba70b",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "There seem to be const correctness issues here, which result in extra casts below. I think this should be \"const mirror::Class*\" or maybe \"const mirror::Class* const\".",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c49abad_a833740c",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "klass or klass_addr? Type seems inconsistent with IsValidObject.",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee32c131_5d9c733c",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just call IsValidClass?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ae0045_5390074c",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Again, I\u0027m not sure whether or not we want these consts. We currently seem to be inconsistent about it. Since these were there before, I\u0027m OK with leaving it as inconsistent as it was.",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630d011e_32ab61bb",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Do we still need this and the else clause? This is really only going to happen when addr is zero, right? And we otherwise assume that addr is dereferencable, so shouldn\u0027t the caller prevent this? And if it sneaks through, we just get ugly output.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9f6c92_628cf037",
+        "filename": "runtime/gc/verification.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Presumably fails only in one direction, i.e. can mistakenly report it as valid? Should probably say something like:\nReturns true if the class is a valid mirror::Class or possibly spuriously. Same below.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1ca925_4fe1e34a",
+        "filename": "runtime/gc/verification.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-03-21T22:46:36Z",
+      "side": 1,
+      "message": "Weirdly different from the argument type below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
