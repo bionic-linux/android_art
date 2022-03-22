@@ -16,6 +16,29 @@
       "message": "Vladimir, Santiago, PTAL at 1..3.",
       "revId": "d42686bb99c83181e2731cc96a92ea411715eeb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c92423_92fb6743",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3311,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-22T08:17:21Z",
+      "side": 1,
+      "message": "nit: `DoDexLayoutOptimizations()` and we can remove the comment",
+      "range": {
+        "startLine": 3311,
+        "startChar": 8,
+        "endLine": 3311,
+        "endChar": 67
+      },
+      "revId": "d42686bb99c83181e2731cc96a92ea411715eeb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
