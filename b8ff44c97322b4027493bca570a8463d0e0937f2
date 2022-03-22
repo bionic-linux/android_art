@@ -46,6 +46,30 @@
       },
       "revId": "b8ff44c97322b4027493bca570a8463d0e0937f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21391a6_3cf7ff73",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-22T09:38:47Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "8da2729a_ed7ccac0",
+      "range": {
+        "startLine": 498,
+        "startChar": 4,
+        "endLine": 498,
+        "endChar": 49
+      },
+      "revId": "b8ff44c97322b4027493bca570a8463d0e0937f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
