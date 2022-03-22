@@ -39,6 +39,30 @@
       },
       "revId": "d42686bb99c83181e2731cc96a92ea411715eeb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de48ba03_96fc8336",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3311,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-22T09:15:10Z",
+      "side": 1,
+      "message": "This class doesn\u0027t have access to Dex2Oat::DoDexLayoutOptimizations unfortunately.",
+      "parentUuid": "01c92423_92fb6743",
+      "range": {
+        "startLine": 3311,
+        "startChar": 8,
+        "endLine": 3311,
+        "endChar": 67
+      },
+      "revId": "d42686bb99c83181e2731cc96a92ea411715eeb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
