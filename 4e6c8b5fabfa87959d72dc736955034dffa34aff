@@ -22,6 +22,47 @@
       },
       "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4beb98ae_983a8284",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-03-23T14:57:32Z",
+      "side": 1,
+      "message": "Wrong example. Should be:\n```\nadb shell dex2oat --dex-file\u003d/system/framework/services.jar --oat-file\u003d/data/local/tmp/foo.odex --app-image-file\u003d/data/local/tmp/foo.art\n```",
+      "parentUuid": "a1b38929_14734d74",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11627bd6_96ebc62d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-03-23T14:57:32Z",
+      "side": 1,
+      "message": "The test failure looks related.",
+      "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
