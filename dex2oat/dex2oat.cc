@@ -1525,10 +1525,10 @@ class Dex2Oat final {
     }
     if (runtime_->GetHeap()->GetBootImageSpaces().empty() &&
         (IsBootImageExtension() || IsAppImage())) {
-      LOG(ERROR) << "Cannot create "
-                 << (IsBootImageExtension() ? "boot image extension" : "app image")
-                 << " without a primary boot image.";
-      return dex2oat::ReturnCode::kOther;
+      LOG(WARNING) << "Cannot create "
+                   << (IsBootImageExtension() ? "boot image extension" : "app image")
+                   << " without a primary boot image.";
+      compiler_options_->image_type_ = CompilerOptions::ImageType::kNone;
     }
     ArrayRef<const DexFile* const> bcp_dex_files(runtime_->GetClassLinker()->GetBootClassPath());
     if (IsBootImage() || IsBootImageExtension()) {
