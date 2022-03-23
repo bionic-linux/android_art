@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b38929_14734d74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-03-23T14:51:56Z",
+      "side": 1,
+      "message": "Please test this change. E.g., \n```\nadb shell dex2oat --dex-file\u003d/system/framework/services.jar --boot-image\u003d/nonx/boot.art --oat-file\u003d/data/local/tmp/foo.odex\n```",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
