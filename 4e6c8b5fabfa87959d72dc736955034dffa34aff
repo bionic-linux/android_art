@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c8e0e09_c7cad349",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-23T16:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4beb98ae_983a8284",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11627bd6_96ebc62d",
@@ -61,6 +85,24 @@
       "writtenOn": "2022-03-23T14:57:32Z",
       "side": 1,
       "message": "The test failure looks related.",
+      "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23b264e_d6781a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-23T16:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11627bd6_96ebc62d",
       "revId": "4e6c8b5fabfa87959d72dc736955034dffa34aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

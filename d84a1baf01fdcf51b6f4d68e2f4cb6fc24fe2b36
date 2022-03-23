@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82b2397_e154213c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-23T16:49:44Z",
+      "side": 1,
+      "message": "Thanks Jiakai, PTAL.",
+      "revId": "d84a1baf01fdcf51b6f4d68e2f4cb6fc24fe2b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
