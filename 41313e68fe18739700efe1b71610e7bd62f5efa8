@@ -16,6 +16,23 @@
       "message": "Thanks a lot! PTAL.",
       "revId": "41313e68fe18739700efe1b71610e7bd62f5efa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176e1f21_360dd88b",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 31
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-24T14:54:16Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "41313e68fe18739700efe1b71610e7bd62f5efa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

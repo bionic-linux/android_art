@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "605fb6a8_1e37a708",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-24T14:54:16Z",
+      "side": 1,
+      "message": "Have a look at `Heap::AllocObjectWithAllocator()` where we may retry an allocation with instrumentation enabled. So, we probably need to check here as well. (And this should not materially affect allocation performance because the macro is used only in the slow path.)",
+      "parentUuid": "a6695477_af646d08",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "My initial understanding was incorrect. I thought all invokes should be handling deopt checks already. Though I realised now that we do need to check for a deopt here. This can be also used for field accesses. I fixed this by pushing a deoptimization context and set deopt exception for this case. So we won\u0027t need an explicit deopt check here. It is easier that way since we need the shorty to figure out if the result is a reference or not. This also matches other function calls like art_invoke_*",
       "parentUuid": "26e1a1d7_753cc4c5",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18782b7_7d37fc21",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-24T14:54:16Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "47cf1dad_e41871b6",
       "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
