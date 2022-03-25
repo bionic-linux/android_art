@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad088498_94b1995a",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-25T14:30:33Z",
+      "side": 1,
+      "message": "Can you expand the comment, and explain what the loop below is for?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 99
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3674a3cc_cae2a95c",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-25T14:30:33Z",
+      "side": 1,
+      "message": "add \"which is in the same try as the instruction we want to move\"?",
+      "range": {
+        "startLine": 243,
+        "startChar": 63,
+        "endLine": 243,
+        "endChar": 68
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0265d0b9_0fad1be2",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-25T14:30:33Z",
+      "side": 1,
+      "message": "I\u0027m still having a hard time understanding this. For example on what block are we calling GetSuccessors? What is wrong with checking if the catch block is post dominated?",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
