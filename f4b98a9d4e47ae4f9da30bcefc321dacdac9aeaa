@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3b9291_b1e79be4",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T14:57:07Z",
+      "side": 1,
+      "message": "It will not necessarily be in the same try as the instruction we want to move. It might not even be in a try at all. What we do know is that `target_block` is not a valid choice now so we go to the dominator to see if we can use that one.",
+      "parentUuid": "3674a3cc_cae2a95c",
+      "range": {
+        "startLine": 243,
+        "startChar": 63,
+        "endLine": 243,
+        "endChar": 68
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0265d0b9_0fad1be2",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-03-25T14:30:33Z",
       "side": 1,
       "message": "I\u0027m still having a hard time understanding this. For example on what block are we calling GetSuccessors? What is wrong with checking if the catch block is post dominated?",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aba9f3c_03d8c3a4",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T14:57:07Z",
+      "side": 1,
+      "message": "In order to move an instruction to a block, we check if that block is in the post_dominated ArenaBitVector. To do that, we start from the end and propagate that information. Since we only want to sink to uncommon branches, we do not start from the very end of the graph but from the exit_predecessors (here called `end_block`).\n\nDue to this, we will not set catch blocks as post_dominated (since they flow to the Exit and not through the `end_block`). If we use `GetSuccessors` we will check if the catch blocks are post_dominated and will not move instructions right before the TryBoundary. However, we don\u0027t really care if those catch blocks are post dominated or not since we would be moving instructions outside of that try/catch. Then, we can skip checking the catch blocks by using `GetNormalSuccessors` for blocks that start Tries.\n\nThis is done so we can move instructions right before try blocks.\n\n(I will edit the code comment and upload a patchset when we reach an agreement)",
+      "parentUuid": "0265d0b9_0fad1be2",
       "range": {
         "startLine": 331,
         "startChar": 11,
