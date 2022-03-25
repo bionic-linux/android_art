@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab6f6ae5_3a3064bb",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T16:03:27Z",
+      "side": 1,
+      "message": "I\u0027d say:\n * Same Try\n * No Try\n * A catch, as long as it is not inside an outer try. (This is the same as No Try but due to how the `TryCatchInformation` is implemented we have to take an extra step)\n\nRelated to this and your other comment, I have a code comment to explain this (will be uploaded in the next patchset):\n```\nFor throwing instructions we can move them into:\n  * Blocks that are not part of a try\n    * Catch blocks are suitable as well, as long as they are not part of an outer try.\n  * Blocks that are part of the same try that the instrucion was already in.\n  \nWe cannot move an instruction that can throw into a try that said instruction is not a part of already, as that would mean it will throw into a different catch block. If we detect that `target_block` is not a valid block to move `instruction` to, we traverse up the dominator tree to find if we have a suitable block.\n```",
+      "parentUuid": "634db336_a38edf6a",
+      "range": {
+        "startLine": 243,
+        "startChar": 63,
+        "endLine": 243,
+        "endChar": 68
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0265d0b9_0fad1be2",
         "filename": "compiler/optimizing/code_sinking.cc",
         "patchSetId": 5
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Hmm, ok, so here\u0027s my understanding, is that correct?\n\n\"We do not look at catch blocks because they are never post dominating (a catch block always has the exit block as one of its successor), and therefore would prevent considering this try block as being post dominated by the end_block.\"\n\nWould it make sense to always call GetNormalSuccessors?",
       "parentUuid": "5aba9f3c_03d8c3a4",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053944ac_7f8dad49",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T16:03:27Z",
+      "side": 1,
+      "message": "\u003e catch blocks because they are never post dominating\n\nThey are sometimes not post dominating, and sometimes they are. For example in \n```\n  private static int testSinkRightBeforeTryBlock() {\n    Object o \u003d new Object();\n    if (doEarlyReturn) {\n      try {\n        throw new Error(o.toString());\n      } catch (Error e) {\n        return 123;\n      }\n    }\n    return 456;\n  }\n```\nthe catch block is not post dominating since it has a return that will flow to the exit, but in\n```\n  private static int testSinkToCatchBlock() {\n    Object o \u003d new Object();\n    try {\n      if (doEarlyReturn) {\n        return 123;\n      }\n    } catch (Error e) {\n      throw new Error(o.toString());\n    }\n    return 456;\n  }\n```\nthe catch block *will* be post_dominating, since it will end with a Throw and therefore it will be considered an \"uncommon branch\" and will post dominate.\n\n\u003e Would it make sense to always call GetNormalSuccessors\nI don\u0027t think so because of the other side of the coin: `TryBoundary kind:exit`. Those blocks are inside of the try e.g.\n```\n        // BasicBlock N:\n        //     LoadClass\n        //     ClinitCheck\n        //     NewInstance\n        //     ConstructorFence\n        //     TryBoundary kind:exit ---Try ends here---\n```\nso we want to check the xhandlers too.",
+      "parentUuid": "8c76e0f5_911fb485",
       "range": {
         "startLine": 331,
         "startChar": 11,
