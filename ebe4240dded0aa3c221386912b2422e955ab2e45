@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154cfcd1_c9489868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T08:33:50Z",
+      "side": 1,
+      "message": "Nicolas PTAL",
+      "revId": "ebe4240dded0aa3c221386912b2422e955ab2e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7433f8d4_1b71e396",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T08:33:50Z",
+      "side": 1,
+      "message": "Due to the changes in lines 324-329, we need to be explicit to prohibit the catch blocks inside other tries.",
+      "revId": "ebe4240dded0aa3c221386912b2422e955ab2e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8e1880_8fede27f",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T08:33:50Z",
+      "side": 1,
+      "message": "This is a typo, it should be `it`. I will correct it before submission.",
+      "range": {
+        "startLine": 226,
+        "startChar": 45,
+        "endLine": 226,
+        "endChar": 50
+      },
+      "revId": "ebe4240dded0aa3c221386912b2422e955ab2e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec70ec0_a80cec50",
+        "filename": "test/639-checker-code-sinking/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-25T08:33:50Z",
+      "side": 1,
+      "message": "These one is not related to the changes in the CL but I thought it might be a good idea to have.",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 81
+      },
+      "revId": "ebe4240dded0aa3c221386912b2422e955ab2e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
