@@ -260,6 +260,30 @@
       },
       "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392b4ccb_7e3be0df",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-28T14:56:29Z",
+      "side": 1,
+      "message": "Ah, let me rephrase. This optimization is run for all uncommon branches i.e. exit predecessors that do not end in Return or ReturnVoid. If a catch ends with a return, it will not be considered an uncommon branch and therefore won\u0027t be a starting point. If a catch ends with a Throw, it will be considered a starting point.\n\nA catch with a return will never be post dominating since A) it will not be considered a starting point, and B) there will be no path using PostOrder from other exit predecessors into the returning catch.\n\nOn the other hand, BasicBlock that are try entries look like this:\n```\n// BasicBlock\n//     instr 1\n//     ...\n//     instr N\n//     TryBoundary kind:entry ---Try begins here---\n```\nThose blocks have an xhandler pointing to the catch. In order to say that \"try entries BasicBlocks\" are post dominating we check their successors. One of them it will be the xhandler catch_block. Remember that if this is a return catch_block, it will never be post dominating and we will not move code before the try boundary.\n\nHowever, this catch_block doesn\u0027t matter: when we sink the instruction into that basic block, we do it before the TryBoundary (i.e. outside of the try and outside the catch\u0027s domain). Ignoring catch blocks is needed to sink code right before the start of a try block. I don\u0027t propose we do it for other scenarios.",
+      "parentUuid": "76a868ec_35885a56",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
