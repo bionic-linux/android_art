@@ -284,6 +284,30 @@
       },
       "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781fdce3_be7af52b",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-28T15:29:52Z",
+      "side": 1,
+      "message": "Ack thanks. Adding this and the reason we\u0027re considering all successors for exit boundaries as comments could be useful too.",
+      "parentUuid": "392b4ccb_7e3be0df",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
