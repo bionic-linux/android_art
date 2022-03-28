@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f2a38a1_f680eccd",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-28T14:16:46Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "ab6f6ae5_3a3064bb",
+      "range": {
+        "startLine": 243,
+        "startChar": 63,
+        "endLine": 243,
+        "endChar": 68
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0265d0b9_0fad1be2",
         "filename": "compiler/optimizing/code_sinking.cc",
         "patchSetId": 5
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "\u003e catch blocks because they are never post dominating\n\nThey are sometimes not post dominating, and sometimes they are. For example in \n```\n  private static int testSinkRightBeforeTryBlock() {\n    Object o \u003d new Object();\n    if (doEarlyReturn) {\n      try {\n        throw new Error(o.toString());\n      } catch (Error e) {\n        return 123;\n      }\n    }\n    return 456;\n  }\n```\nthe catch block is not post dominating since it has a return that will flow to the exit, but in\n```\n  private static int testSinkToCatchBlock() {\n    Object o \u003d new Object();\n    try {\n      if (doEarlyReturn) {\n        return 123;\n      }\n    } catch (Error e) {\n      throw new Error(o.toString());\n    }\n    return 456;\n  }\n```\nthe catch block *will* be post_dominating, since it will end with a Throw and therefore it will be considered an \"uncommon branch\" and will post dominate.\n\n\u003e Would it make sense to always call GetNormalSuccessors\nI don\u0027t think so because of the other side of the coin: `TryBoundary kind:exit`. Those blocks are inside of the try e.g.\n```\n        // BasicBlock N:\n        //     LoadClass\n        //     ClinitCheck\n        //     NewInstance\n        //     ConstructorFence\n        //     TryBoundary kind:exit ---Try ends here---\n```\nso we want to check the xhandlers too.",
       "parentUuid": "8c76e0f5_911fb485",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a868ec_35885a56",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-28T14:16:46Z",
+      "side": 1,
+      "message": "Then I\u0027m confused about your earlier comment \"since they flow to the Exit\" (catch blocks). If some of them don\u0027t, why are you discarding them?",
+      "parentUuid": "053944ac_7f8dad49",
       "range": {
         "startLine": 331,
         "startChar": 11,
