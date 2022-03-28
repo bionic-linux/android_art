@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b3cb3c_e6092ef2",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-28T16:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad088498_94b1995a",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 99
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3674a3cc_cae2a95c",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Sounds good.",
       "parentUuid": "ab6f6ae5_3a3064bb",
+      "range": {
+        "startLine": 243,
+        "startChar": 63,
+        "endLine": 243,
+        "endChar": 68
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9545d092_23acf7ff",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-28T16:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f2a38a1_f680eccd",
       "range": {
         "startLine": 243,
         "startChar": 63,
@@ -300,6 +348,30 @@
       "side": 1,
       "message": "Ack thanks. Adding this and the reason we\u0027re considering all successors for exit boundaries as comments could be useful too.",
       "parentUuid": "392b4ccb_7e3be0df",
+      "range": {
+        "startLine": 331,
+        "startChar": 11,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "f4b98a9d4e47ae4f9da30bcefc321dacdac9aeaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee18969_e8b76727",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-03-28T16:26:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781fdce3_be7af52b",
       "range": {
         "startLine": 331,
         "startChar": 11,
