@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85b67e4d_4f3708ca",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-29T13:37:06Z",
+      "side": 1,
+      "message": "cool, then it lgtm.",
+      "parentUuid": "e2bc21a5_4640b3b4",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
