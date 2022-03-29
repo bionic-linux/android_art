@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a405c017_02da6b06",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-29T11:44:08Z",
+      "side": 1,
+      "message": "You are right. I looked at this but I missed that the original runtime entry point is not instrumented yet. We would still return to an uninstrumented entry point from here. I should have moved the check for deoptimization to Heap::AllocObjectWithAllocator instead of the alloc runtime entry points. We could check in Heap::AllocObjectWithAllocator if a deoptimization is required if the instrumentation is enabled. Though I agree checking for a flag in RETURN_IF_RESULT_IS_NON_ZERO macro won\u0027t be much slower too. \n\nOriginally, we didn\u0027t use a per thread flag and loading the data from the instrumentation was slightly more expensive. With the current implementation the overhead might not be too much. I updated the macro.\n\n+Nicolas WDYT about the current approach that just checks the per-thread deopt flag for alloc methods too? Alternate implementation would be to check for a deopt in AllocObjectWithAllocator which I think might not be that different in terms of performance.",
+      "parentUuid": "605fb6a8_1e37a708",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "We don\u0027t use the prefix for x86 even though we use ebx. For consistency I dropped R1 here. If it\u0027s better I will bring back R1 and also update x86 to add _EBX.",
       "parentUuid": "75feae9e_4986f5c4",
+      "range": {
+        "startLine": 844,
+        "startChar": 82,
+        "endLine": 844,
+        "endChar": 126
+      },
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30dda227_1193d7ce",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-29T11:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36a095b_62878bca",
       "range": {
         "startLine": 844,
         "startChar": 82,
