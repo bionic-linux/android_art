@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee93028d_dc025b70",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-29T12:27:28Z",
+      "side": 1,
+      "message": "So you\u0027re saying even if we are in the runtime, and realizing we need to deopt, we still need to have the entrypoint check for deopt as this is what we will be returning to?",
+      "parentUuid": "56a03af1_12e489b3",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
