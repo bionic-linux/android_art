@@ -20,11 +20,11 @@ It can be overwrite by specific run-tests if needed.
 It is used from soong build and not intended to be called directly.
 """
 
+from os import path
 import argparse
 import functools
 import glob
 import os
-from os import path
 import shlex
 import shutil
 import subprocess
@@ -43,9 +43,17 @@ def parse_bool(text):
   return {"true": True, "false": False}[text.lower()]
 
 
+ANDROID_BUILD_TOP = os.environ["ANDROID_BUILD_TOP"]
+SBOX_PATH = os.environ["SBOX_PATH"]
+CWD = os.getcwd()
 TEST_NAME = os.environ["TEST_NAME"]
-ART_TEST_RUN_TEST_BOOTCLASSPATH = os.environ["ART_TEST_RUN_TEST_BOOTCLASSPATH"]
+ART_TEST_RUN_TEST_BOOTCLASSPATH = path.relpath(os.environ["ART_TEST_RUN_TEST_BOOTCLASSPATH"], CWD)
 NEED_DEX = parse_bool(os.environ["NEED_DEX"])
+
+RBE_exec_root = os.environ["RBE_exec_root"]
+RBE_rewrapper = path.join(ANDROID_BUILD_TOP, "prebuilts/remoteexecution-client/live/rewrapper")
+RBE_image = ("docker://gcr.io/androidbuild-re-dockerimage/android-build-remoteexec-image@sha256:"
+             "582efb38f0c229ea39952fff9e132ccbe183e14869b39888010dacf56b360d62,Pool=java16")
 
 # Set default values for directories.
 HAS_SMALI = path.exists("smali")
@@ -144,9 +152,13 @@ def run(executable, args):
     cmd = ["/bin/bash"] + cmd
   if DEV_MODE:
     print("Run:", " ".join(cmd))
-  p = subprocess.run(cmd, check=True)
+  p = subprocess.run(cmd,
+                     encoding=os.sys.stdout.encoding,
+                     stderr=subprocess.STDOUT,
+                     stdout=subprocess.PIPE)
   if p.returncode != 0:
-    raise Exception("Failed command: " + " ".join(cmd))
+    print("$ {}\n{}".format(" ".join(cmd), p.stdout), file=os.sys.stderr)
+    raise Exception("Command failed with exit code {}".format(p.returncode))
 
 
 # Helper functions to execute tools.
@@ -158,13 +170,40 @@ smali = functools.partial(run, os.environ["SMALI"])
 d8 = functools.partial(run, os.environ["D8"])
 hiddenapi = functools.partial(run, os.environ["HIDDENAPI"])
 
-# If wrapper script exists, use it instead of the default javac.
-if os.path.exists("javac_wrapper.sh"):
-  javac = functools.partial(run, "javac_wrapper.sh")
-
 def find(root, name):
   return sorted(glob.glob(path.join(root, "**", name), recursive=True))
 
+if "RBE_server_address" in os.environ:
+  def rbe_wrap(args, inputs=set()):
+    with tempfile.NamedTemporaryFile(mode="w+t", dir=RBE_exec_root) as input_list:
+      for arg in args:
+        inputs.update(filter(path.exists, arg.split(":")))
+      input_list.writelines([path.relpath(i, RBE_exec_root)+"\n" for i in inputs])
+      input_list.flush()
+      return run(RBE_rewrapper, [
+        "--platform=container-image=" + RBE_image,
+        "--input_list_paths=" + input_list.name,
+      ] + args)
+
+  def javac(args):
+    output = path.relpath(path.join(CWD, args[args.index("-d") + 1]), RBE_exec_root)
+    return rbe_wrap([
+      "--output_directories", output,
+      os.path.relpath(os.environ["JAVAC"], CWD),
+    ] + args)
+
+  def d8(args):
+    inputs = set([path.join(SBOX_PATH, "tools/out/framework/d8.jar")])
+    output = path.relpath(path.join(CWD, args[args.index("--output") + 1]), RBE_exec_root)
+    return rbe_wrap([
+      "--output_files" if output.endswith(".jar") else "--output_directories", output,
+      "--toolchain_inputs=prebuilts/jdk/jdk11/linux-x86/bin/java",
+      # + ",../../../../../../../../prebuilts/jdk/jdk11/linux-x86/bin/java",
+      os.path.relpath(os.environ["D8"], CWD)] + args, inputs)
+
+# If wrapper script exists, use it instead of the default javac.
+if os.path.exists("javac_wrapper.sh"):
+  javac = functools.partial(run, "javac_wrapper.sh")
 
 def zip(zip_target, *files):
   zip_args = ["-o", zip_target]
@@ -229,12 +268,14 @@ def make_dexmerge(*dex_files_to_merge):
   # NB: We merge even if there is just single input.
   # It is useful to normalize non-deterministic smali output.
 
-  with tempfile.TemporaryDirectory(dir=".") as tmp_dir:
-    d8(["--min-api", API_LEVEL, "--output", tmp_dir] + dex_files_to_merge)
-    assert not path.exists(path.join(tmp_dir, "classes2.dex"))
-    for input_dex in dex_files_to_merge:
-      os.remove(input_dex)
-    os.rename(path.join(tmp_dir, "classes.dex"), dst_file)
+  tmp_dir = "dexmerge"
+  os.makedirs(tmp_dir)
+  d8(["--min-api", API_LEVEL, "--output", tmp_dir] + dex_files_to_merge)
+  assert not path.exists(path.join(tmp_dir, "classes2.dex"))
+  for input_dex in dex_files_to_merge:
+    os.remove(input_dex)
+  os.rename(path.join(tmp_dir, "classes.dex"), dst_file)
+  os.rmdir(tmp_dir)
 
 
 def make_hiddenapi(*dex_files):
