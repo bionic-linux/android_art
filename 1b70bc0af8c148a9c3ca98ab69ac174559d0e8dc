@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2bc21a5_4640b3b4",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-29T13:33:51Z",
+      "side": 1,
+      "message": "These checks have been added only to the slow paths, after `.Lslow_path\\name:` in allocation macros in this file.",
+      "parentUuid": "a38deb87_2965aa3b",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
