@@ -33,6 +33,24 @@
       "message": "I am not sure why this didn\u0027t fail earlier. I think this changed because I added is_deopt_check_required to tls.",
       "revId": "a104feeb6ffb0752a766517d4b6babdc59360d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fc4c6d_2c1cf5b0",
+        "filename": "compiler/utils/assembler_thumb_test_expected.cc.inc",
+        "patchSetId": 34
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-29T15:22:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd94f2ad_23cb624e",
+      "revId": "a104feeb6ffb0752a766517d4b6babdc59360d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
