@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a03af1_12e489b3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-03-29T12:20:48Z",
+      "side": 1,
+      "message": "Let\u0027s say a Thread (T1) is suspended during an alloc (possibly because of a GC) and another thread (T2) redefines a class. Before redefining a class we will install instrumented alloc entry points and eventually when T1 starts execution it will restart the allocation with instrumentation in AllocObjectWithAllocator and it most likely succeeds. Then before returning from the alloc runtime method to JITed code, we need to check if we need a deoptimization since T2 has redefined a class. \n\nMy earlier implementation where we were checking in instrumented alloc entry points (artAlloc*FromCode)  won\u0027t work because only AllocObjectWithAllocator is restarted with the instrumentation. It will return to the non-instrumented runtime entry points (artAlloc*FromCode) which weren\u0027t checking for a deopt. In the current implementation we check just before returning from the runtime method (art_quick_alloc*).",
+      "parentUuid": "1e3c1ac7_f29f0845",
+      "revId": "1b70bc0af8c148a9c3ca98ab69ac174559d0e8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75feae9e_4986f5c4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 30
