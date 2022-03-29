@@ -16,6 +16,29 @@
       "message": "Thanks Vladimir!",
       "revId": "71d3d668cd46bd82f483b46c1f12f42fce304c35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81d6e3a_7804767c",
+        "filename": "tools/cpp-define-generator/globals.def",
+        "patchSetId": 33
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-29T13:06:11Z",
+      "side": 1,
+      "message": "Use spaces instead of tabs. And add 4-space indentation when the previous line ends with `(`.\n\n(I would break the line just once, not twice.)",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "71d3d668cd46bd82f483b46c1f12f42fce304c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
