@@ -123,5 +123,12 @@ public class Main {
             o = null;
             System.out.println("Got expected toCharArray OOM");
         }
+
+        // We shouldn't hit this. We print o[index] so that we would not eliminate the o[i] set above.
+        if (o != null) {
+            for (int index = 0; index < o.length; ++index) {
+                System.out.println(o[index]);
+            }
+        }
     }
 }

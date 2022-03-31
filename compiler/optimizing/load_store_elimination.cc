@@ -45,6 +45,8 @@
 #include "side_effects_analysis.h"
 #include "stack_map.h"
 
+// TODO(solanes): Update this block of comment with the changes.
+
 /**
  * The general algorithm of load-store elimination (LSE).
  *
@@ -1617,8 +1619,9 @@ void LSEVisitor::MergePredecessorRecords(HBasicBlock* block) {
   ScopedArenaVector<ValueRecord>& heap_values = heap_values_for_[block->GetBlockId()];
   DCHECK(heap_values.empty());
   size_t num_heap_locations = heap_location_collector_.GetNumberOfHeapLocations();
-  if (block->GetPredecessors().empty()) {
-    DCHECK(block->IsEntryBlock());
+  if (block->GetPredecessors().empty() || (block->GetTryCatchInformation() != nullptr &&
+                                           block->GetTryCatchInformation()->IsCatchBlock())) {
+    DCHECK_IMPLIES(block->GetPredecessors().empty(), block->IsEntryBlock());
     heap_values.resize(num_heap_locations,
                        {/*value=*/Value::PureUnknown(), /*stored_by=*/Value::PureUnknown()});
     return;
@@ -3876,9 +3879,8 @@ class LSEVisitorWrapper : public DeletableArenaObject<kArenaAllocLSE> {
 };
 
 bool LoadStoreElimination::Run(bool enable_partial_lse) {
-  if (graph_->IsDebuggable() || graph_->HasTryCatch()) {
+  if (graph_->IsDebuggable()) {
     // Debugger may set heap values or trigger deoptimization of callers.
-    // Try/catch support not implemented yet.
     // Skip this optimization.
     return false;
   }
