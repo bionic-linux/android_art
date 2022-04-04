@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3c44ee_c34bf5e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-04T10:38:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we want these to be marked updatable really..? it\u0027d require adding a bunch of unnecessary things to allowed_deps. I have an idea for how you can workaround the problem you have without updatable, will make a suggestion on your soong cl.",
+      "revId": "488efe12d340fc4c5842686bcc6cde1b5ba87b7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
