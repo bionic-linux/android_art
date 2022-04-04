@@ -24,6 +24,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99bb4567_72070730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:26:43Z",
+      "side": 1,
+      "message": "FYI I misclicked and ran presubmit so it may run again on this patchset.",
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2345c5ad_1cdd61cc",
@@ -37,6 +54,30 @@
       "writtenOn": "2022-04-04T16:16:11Z",
       "side": 1,
       "message": "nit: `TODO(vmarko)`",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b039f7d_5f4ed1cc",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:26:43Z",
+      "side": 1,
+      "message": "Scratch this, I just saw the follow-up CL.",
+      "parentUuid": "2345c5ad_1cdd61cc",
       "range": {
         "startLine": 134,
         "startChar": 5,
