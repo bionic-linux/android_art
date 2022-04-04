@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9021cb9a_209ea077",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "The `mirror` classes reflect Java code and Java does not know any unsigned types, so I\u0027d prefer to keep using `int32_t` there, even though both `utf.h` and `HashSet\u003c\u003e` are using unsigned hash and therefore I want unsigned hash in `InternTable` as well.",
+      "parentUuid": "32a96d57_b4850d49",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "99bb4567_72070730",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -88,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4df6606_993aa80c",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "The question whether to add usernames to TODOs is a bit controversial and not a good practice if people are leaving the project. I would prefer to keep it as is even if I was not immediately addressing it in the next CL.",
+      "parentUuid": "2345c5ad_1cdd61cc",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aebe2dbb_ae58c164",
@@ -101,6 +149,30 @@
       "writtenOn": "2022-04-04T16:16:11Z",
       "side": 1,
       "message": "nit: here and below there are two dots (`..`)",
+      "range": {
+        "startLine": 147,
+        "startChar": 67,
+        "endLine": 147,
+        "endChar": 69
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22e2854_93272e0f",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aebe2dbb_ae58c164",
       "range": {
         "startLine": 147,
         "startChar": 67,
@@ -157,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1a13c8_421bc646",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "I prefer to call the `String::HashCode()`, which may actually calculate the hash code, without holding the lock.\n\nAnd the `*Locked()` versions look ready for replacement in another cleanup because they are really used only for remapping app image interns against existing interns.",
+      "parentUuid": "f50f6cec_59d0775d",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa03ed7_ef53379f",
@@ -170,6 +266,30 @@
       "writtenOn": "2022-04-04T16:16:11Z",
       "side": 1,
       "message": "WDYT about `DCHECK_EQ(hash, static_cast\u003cuint32_t\u003e(s-\u003eGetHashCode()));` at entry?",
+      "range": {
+        "startLine": 201,
+        "startChar": 36,
+        "endLine": 201,
+        "endChar": 42
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "150fb0c8_6a8accb5",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "Done (but a bit cheaper).",
+      "parentUuid": "8aa03ed7_ef53379f",
       "range": {
         "startLine": 201,
         "startChar": 36,
@@ -203,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d936d065_d3cd4274",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "Moved the null check to the other overload. It\u0027s more code but I consider it cleaner.",
+      "parentUuid": "2259843e_5754d965",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 3
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56bb82c1_e1ad6151",
@@ -216,6 +360,30 @@
       "writtenOn": "2022-04-04T16:16:11Z",
       "side": 1,
       "message": "The `size_t operator()(const Utf8String\u0026 key)` operator doesn\u0027t use `NO_THREAD_SAFETY_ANALYSIS` right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 78
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d547aa9a_6f85af4d",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-04T17:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56bb82c1_e1ad6151",
       "range": {
         "startLine": 84,
         "startChar": 0,
