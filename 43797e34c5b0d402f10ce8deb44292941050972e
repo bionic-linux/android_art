@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a96d57_b4850d49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "Why not do everything in one type e.g. uint32_t?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2345c5ad_1cdd61cc",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "nit: `TODO(vmarko)`",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebe2dbb_ae58c164",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "nit: here and below there are two dots (`..`)",
+      "range": {
+        "startLine": 147,
+        "startChar": 67,
+        "endLine": 147,
+        "endChar": 69
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ddd8935_4cdee6a4",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "I like this cleanup! It is more readable for sure.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 89
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50f6cec_59d0775d",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "Suggestion: We can keep this as it was before the change. We are duplicating code between here and the Locked version. Same for Strong.",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa03ed7_ef53379f",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "WDYT about `DCHECK_EQ(hash, static_cast\u003cuint32_t\u003e(s-\u003eGetHashCode()));` at entry?",
+      "range": {
+        "startLine": 201,
+        "startChar": 36,
+        "endLine": 201,
+        "endChar": 42
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2259843e_5754d965",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "Could we even get a null string here? The 2 callers are `InternTable::InternStrong(const char* utf8_data)` (just above) and `CodeGenerator::CodeGenerationData::EmitJitRoots` (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/code_generator.cc;l\u003d241;drc\u003dc7b713eba636b891d4c9710555cf0b6cac65ec6c) which are both non-null right?\n\nSimilar for `InternWeak` at line 290",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 3
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56bb82c1_e1ad6151",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-04T16:16:11Z",
+      "side": 1,
+      "message": "The `size_t operator()(const Utf8String\u0026 key)` operator doesn\u0027t use `NO_THREAD_SAFETY_ANALYSIS` right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 78
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
