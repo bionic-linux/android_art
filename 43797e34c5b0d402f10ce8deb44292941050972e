@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d29c8b_9b46a222",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-05T08:33:27Z",
+      "side": 1,
+      "message": "non-blocking comment:\n\nWhy is it controversial? To me a `TODO(name)` just means that `name` knows about this and can provide more context. It is not a thing that `name` has to do.\n\nIdeally it would be `TODO(name, bug_number)` but a lot of the times we don\u0027t have a relevant bug number.",
+      "parentUuid": "b4df6606_993aa80c",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aebe2dbb_ae58c164",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "Moved the null check to the other overload. It\u0027s more code but I consider it cleaner.",
       "parentUuid": "2259843e_5754d965",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 3
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7175e7bf_b5d50884",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-05T08:33:27Z",
+      "side": 1,
+      "message": "Agreed, I like it!",
+      "parentUuid": "d936d065_d3cd4274",
       "range": {
         "startLine": 276,
         "startChar": 0,
