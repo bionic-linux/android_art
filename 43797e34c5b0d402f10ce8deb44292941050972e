@@ -160,6 +160,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d298618b_3f625738",
+        "filename": "runtime/intern_table-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-05T08:50:46Z",
+      "side": 1,
+      "message": "Several years ago I was told not to put my username in TODO comments and I agreed with the reasoning. But that was all based on the interpretation that the person mentioned in the TODO should be the one to do it. With your interpretation it sounds OK to add usernames but it\u0027s usually just going to be the one you\u0027ll find as the author of that comment with `git blame` anyway.",
+      "parentUuid": "a1d29c8b_9b46a222",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "43797e34c5b0d402f10ce8deb44292941050972e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aebe2dbb_ae58c164",
