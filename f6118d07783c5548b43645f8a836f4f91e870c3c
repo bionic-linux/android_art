@@ -16,6 +16,253 @@
       "message": "Vladimir PTAL",
       "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdaef7b_d348fdc8",
+        "filename": "test/061-out-of-memory/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "What about doing a \"return o;\" instead?",
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "407c488f_06e4b584",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "Use CHECK-DAG. Do not check ordering of these instructions.",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8bac24_8827f1b3",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "I would drop the `NullCheck` test as it\u0027s not related to LSE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e18c44_4753b92c",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "Start a new section for these CHECK-NOT statements.",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155bba28_c7d8253c",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "Make these $noinline$. (If they are inlined, all the throws shall be eliminated and that\u0027s not the code we want to test.)",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3879eb55_e18e24e9",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299c212b_12cb288a",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "Separate section for the CHECK-NOT: InstanceFieldGet statement.",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b80fce3_1aa1a112",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "CHECK-DAG",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64c27c0_418223ca",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "New section.",
+      "range": {
+        "startLine": 145,
+        "startChar": 6,
+        "endLine": 145,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2e010a1_3391ccca",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "CHECK-DAG",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e1ce00_ba46a611",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-06T09:17:37Z",
+      "side": 1,
+      "message": "New section.",
+      "range": {
+        "startLine": 176,
+        "startChar": 6,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
