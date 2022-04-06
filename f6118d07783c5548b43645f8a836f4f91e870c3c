@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b95418_7c396ace",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407c488f_06e4b584",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8bac24_8827f1b3",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-06T09:17:37Z",
       "side": 1,
       "message": "I would drop the `NullCheck` test as it\u0027s not related to LSE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c3e3bd_8869a66a",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8bac24_8827f1b3",
       "range": {
         "startLine": 43,
         "startChar": 6,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08aeae84_a9e88cef",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e18c44_4753b92c",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "155bba28_c7d8253c",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-06T09:17:37Z",
       "side": 1,
       "message": "Make these $noinline$. (If they are inlined, all the throws shall be eliminated and that\u0027s not the code we want to test.)",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1739f1_56964525",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "155bba28_c7d8253c",
       "range": {
         "startLine": 53,
         "startChar": 21,
@@ -150,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fc9981_6290c551",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3879eb55_e18e24e9",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "299c212b_12cb288a",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-04-06T09:17:37Z",
       "side": 1,
       "message": "Separate section for the CHECK-NOT: InstanceFieldGet statement.",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a2059d_b24ccdf9",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "299c212b_12cb288a",
       "range": {
         "startLine": 84,
         "startChar": 6,
@@ -196,6 +340,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b49faa6_4532297a",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b80fce3_1aa1a112",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a64c27c0_418223ca",
@@ -209,6 +377,30 @@
       "writtenOn": "2022-04-06T09:17:37Z",
       "side": 1,
       "message": "New section.",
+      "range": {
+        "startLine": 145,
+        "startChar": 6,
+        "endLine": 145,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12889bb5_e98d4d9c",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64c27c0_418223ca",
       "range": {
         "startLine": 145,
         "startChar": 6,
@@ -242,6 +434,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0ea968_8a11e57c",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2e010a1_3391ccca",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 11
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e1ce00_ba46a611",
@@ -255,6 +471,30 @@
       "writtenOn": "2022-04-06T09:17:37Z",
       "side": 1,
       "message": "New section.",
+      "range": {
+        "startLine": 176,
+        "startChar": 6,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "f6118d07783c5548b43645f8a836f4f91e870c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e7b064_325a7e9b",
+        "filename": "test/530-checker-lse-try-catch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-06T13:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e1ce00_ba46a611",
       "range": {
         "startLine": 176,
         "startChar": 6,
