@@ -232,6 +232,7 @@ class ClassLinker {
   // Define a new a class based on a ClassDef from a DexFile
   ObjPtr<mirror::Class> DefineClass(Thread* self,
                                     const char* descriptor,
+                                    size_t descriptor_length,
                                     size_t hash,
                                     Handle<mirror::ClassLoader> class_loader,
                                     const DexFile& dex_file,
@@ -242,7 +243,7 @@ class ClassLinker {
   // Finds a class by its descriptor, returning null if it isn't wasn't loaded
   // by the given 'class_loader'.
   EXPORT ObjPtr<mirror::Class> LookupClass(Thread* self,
-                                           const char* descriptor,
+                                           std::string_view descriptor,
                                            ObjPtr<mirror::ClassLoader> class_loader)
       REQUIRES(!Locks::classlinker_classes_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -664,7 +665,7 @@ class ClassLinker {
   // Attempts to insert a class into a class table.  Returns null if
   // the class was inserted, otherwise returns an existing class with
   // the same descriptor and ClassLoader.
-  ObjPtr<mirror::Class> InsertClass(const char* descriptor,
+  ObjPtr<mirror::Class> InsertClass(std::string_view descriptor,
                                     ObjPtr<mirror::Class> klass,
                                     size_t hash)
       REQUIRES(!Locks::classlinker_classes_lock_)
@@ -1140,6 +1141,7 @@ class ClassLinker {
   // PathClassLoader are supported).
   bool FindClassInBaseDexClassLoader(Thread* self,
                                      const char* descriptor,
+                                     size_t descriptor_length,
                                      size_t hash,
                                      Handle<mirror::ClassLoader> class_loader,
                                      /*out*/ ObjPtr<mirror::Class>* result)
@@ -1148,6 +1150,7 @@ class ClassLinker {
 
   bool FindClassInSharedLibraries(Thread* self,
                                   const char* descriptor,
+                                  size_t descriptor_length,
                                   size_t hash,
                                   Handle<mirror::ClassLoader> class_loader,
                                   /*out*/ ObjPtr<mirror::Class>* result)
@@ -1156,6 +1159,7 @@ class ClassLinker {
 
   bool FindClassInSharedLibrariesHelper(Thread* self,
                                         const char* descriptor,
+                                        size_t descriptor_length,
                                         size_t hash,
                                         Handle<mirror::ClassLoader> class_loader,
                                         ArtField* field,
@@ -1165,6 +1169,7 @@ class ClassLinker {
 
   bool FindClassInSharedLibrariesAfter(Thread* self,
                                        const char* descriptor,
+                                       size_t descriptor_length,
                                        size_t hash,
                                        Handle<mirror::ClassLoader> class_loader,
                                        /*out*/ ObjPtr<mirror::Class>* result)
@@ -1181,6 +1186,7 @@ class ClassLinker {
   bool FindClassInBaseDexClassLoaderClassPath(
           Thread* self,
           const char* descriptor,
+          size_t descriptor_length,
           size_t hash,
           Handle<mirror::ClassLoader> class_loader,
           /*out*/ ObjPtr<mirror::Class>* result)
@@ -1193,6 +1199,7 @@ class ClassLinker {
   // boot class loader has a known lookup.
   bool FindClassInBootClassLoaderClassPath(Thread* self,
                                            const char* descriptor,
+                                           size_t descriptor_length,
                                            size_t hash,
                                            /*out*/ ObjPtr<mirror::Class>* result)
       REQUIRES_SHARED(Locks::mutator_lock_)
@@ -1235,7 +1242,7 @@ class ClassLinker {
   // Finds a class by its descriptor, returning NULL if it isn't wasn't loaded
   // by the given 'class_loader'. Uses the provided hash for the descriptor.
   ObjPtr<mirror::Class> LookupClass(Thread* self,
-                                    const char* descriptor,
+                                    std::string_view descriptor,
                                     size_t hash,
                                     ObjPtr<mirror::ClassLoader> class_loader)
       REQUIRES(!Locks::classlinker_classes_lock_)
@@ -1346,7 +1353,7 @@ class ClassLinker {
   // retire a class, the version of the class in the table is returned and this may differ from
   // the class passed in.
   ObjPtr<mirror::Class> EnsureResolved(Thread* self,
-                                       const char* descriptor,
+                                       std::string_view descriptor,
                                        ObjPtr<mirror::Class> klass)
       WARN_UNUSED
       REQUIRES_SHARED(Locks::mutator_lock_)
