@@ -26,6 +26,7 @@
 #include "linear_order.h"
 #include "mirror/array-inl.h"
 #include "mirror/string.h"
+#include "scoped_thread_state_change-inl.h"
 
 namespace art {
 
@@ -491,9 +492,13 @@ HLoopOptimization::HLoopOptimization(HGraph* graph,
 }
 
 bool HLoopOptimization::Run() {
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    LOG(INFO) << graph_->GetArtMethod()->PrettyMethod();
+  }
   // Skip if there is no loop or the graph has try-catch/irreducible loops.
   // TODO: make this less of a sledgehammer.
-  if (!graph_->HasLoops() || graph_->HasTryCatch() || graph_->HasIrreducibleLoops()) {
+  if (!graph_->HasLoops() || graph_->HasIrreducibleLoops()) {
     return false;
   }
 
@@ -502,7 +507,7 @@ bool HLoopOptimization::Run() {
   loop_allocator_ = &allocator;
 
   // Perform loop optimizations.
-  bool didLoopOpt = LocalRun();
+  const bool did_loop_opt = LocalRun();
   if (top_loop_ == nullptr) {
     graph_->SetHasLoops(false);  // no more loops
   }
@@ -511,7 +516,7 @@ bool HLoopOptimization::Run() {
   loop_allocator_ = nullptr;
   last_loop_ = top_loop_ = nullptr;
 
-  return didLoopOpt;
+  return did_loop_opt;
 }
 
 //
@@ -519,7 +524,6 @@ bool HLoopOptimization::Run() {
 //
 
 bool HLoopOptimization::LocalRun() {
-  bool didLoopOpt = false;
   // Build the linear order using the phase-local allocator. This step enables building
   // a loop hierarchy that properly reflects the outer-inner and previous-next relation.
   ScopedArenaVector<HBasicBlock*> linear_order(loop_allocator_->Adapter(kArenaAllocLinearOrder));
@@ -532,34 +536,37 @@ bool HLoopOptimization::LocalRun() {
     }
   }
 
+  // TODO(solanes): How can `top_loop_` be null if `graph_->HasLoops()` is true?
+  if (top_loop_ == nullptr) {
+    return false;
+  }
+
   // Traverse the loop hierarchy inner-to-outer and optimize. Traversal can use
   // temporary data structures using the phase-local allocator. All new HIR
   // should use the global allocator.
-  if (top_loop_ != nullptr) {
-    ScopedArenaSet<HInstruction*> iset(loop_allocator_->Adapter(kArenaAllocLoopOptimization));
-    ScopedArenaSafeMap<HInstruction*, HInstruction*> reds(
-        std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
-    ScopedArenaSet<ArrayReference> refs(loop_allocator_->Adapter(kArenaAllocLoopOptimization));
-    ScopedArenaSafeMap<HInstruction*, HInstruction*> map(
-        std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
-    ScopedArenaSafeMap<HInstruction*, HInstruction*> perm(
-        std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
-    // Attach.
-    iset_ = &iset;
-    reductions_ = &reds;
-    vector_refs_ = &refs;
-    vector_map_ = &map;
-    vector_permanent_map_ = &perm;
-    // Traverse.
-    didLoopOpt = TraverseLoopsInnerToOuter(top_loop_);
-    // Detach.
-    iset_ = nullptr;
-    reductions_ = nullptr;
-    vector_refs_ = nullptr;
-    vector_map_ = nullptr;
-    vector_permanent_map_ = nullptr;
-  }
-  return didLoopOpt;
+  ScopedArenaSet<HInstruction*> iset(loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  ScopedArenaSafeMap<HInstruction*, HInstruction*> reds(
+      std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  ScopedArenaSet<ArrayReference> refs(loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  ScopedArenaSafeMap<HInstruction*, HInstruction*> map(
+      std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  ScopedArenaSafeMap<HInstruction*, HInstruction*> perm(
+      std::less<HInstruction*>(), loop_allocator_->Adapter(kArenaAllocLoopOptimization));
+  // Attach.
+  iset_ = &iset;
+  reductions_ = &reds;
+  vector_refs_ = &refs;
+  vector_map_ = &map;
+  vector_permanent_map_ = &perm;
+  // Traverse.
+  const bool did_loop_opt = TraverseLoopsInnerToOuter(top_loop_);
+  // Detach.
+  iset_ = nullptr;
+  reductions_ = nullptr;
+  vector_refs_ = nullptr;
+  vector_map_ = nullptr;
+  vector_permanent_map_ = nullptr;
+  return did_loop_opt;
 }
 
 void HLoopOptimization::AddLoop(HLoopInformation* loop_info) {
@@ -567,12 +574,12 @@ void HLoopOptimization::AddLoop(HLoopInformation* loop_info) {
   LoopNode* node = new (loop_allocator_) LoopNode(loop_info);
   if (last_loop_ == nullptr) {
     // First loop.
-    DCHECK(top_loop_ == nullptr);
+    DCHECK_EQ(top_loop_, nullptr);
     last_loop_ = top_loop_ = node;
   } else if (loop_info->IsIn(*last_loop_->loop_info)) {
     // Inner loop.
     node->outer = last_loop_;
-    DCHECK(last_loop_->inner == nullptr);
+    DCHECK_EQ(last_loop_->inner, nullptr);
     last_loop_ = last_loop_->inner = node;
   } else {
     // Subsequent loop.
@@ -581,7 +588,7 @@ void HLoopOptimization::AddLoop(HLoopInformation* loop_info) {
     }
     node->outer = last_loop_->outer;
     node->previous = last_loop_;
-    DCHECK(last_loop_->next == nullptr);
+    DCHECK_EQ(last_loop_->next, nullptr);
     last_loop_ = last_loop_->next = node;
   }
 }
@@ -618,6 +625,19 @@ bool HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
       induction_range_.ReVisit(node->loop_info);
       changed = true;
     }
+    
+    SetTryCatchKind(node);
+    if (node->try_catch_kind == LoopNode::TryCatchKind::kHasTryCatch) {
+      // The current optimizations assume that the loops do not contain try/catches.
+      // TODO(solanes): Assess if we can modify them to work with try/catches.
+      LOG(INFO) << "loop: " << node << " has try catch";
+      continue;
+    }
+
+    DCHECK(node->try_catch_kind == LoopNode::TryCatchKind::kNoTryCatch)
+        << "kind: " << static_cast<int>(node->try_catch_kind)
+        << ". LoopOptimization requires the loops to not have try catches. Node: " << node;
+
     // Repeat simplifications in the loop-body until no more changes occur.
     // Note that since each simplification consists of eliminating code (without
     // introducing new code), this process is always finite.
@@ -633,6 +653,37 @@ bool HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
     }
   }
   return changed;
+}
+
+void HLoopOptimization::SetTryCatchKind(LoopNode* node) {
+  DCHECK(node != nullptr);
+  DCHECK(node->try_catch_kind == LoopNode::TryCatchKind::kUnknown)
+      << "kind: " << static_cast<int>(node->try_catch_kind)
+      << ". SetTryCatchKind should be called only once per LoopNode.";
+
+  // If a inner loop has a try catch, then the outer loop has one too (as it contains `inner`).
+  // Knowing this, we could skip iterating through all of the outer loop's parents with a simple
+  // check.
+  for (LoopNode* inner = node->inner; inner != nullptr; inner = inner->next) {
+    DCHECK(inner->try_catch_kind != LoopNode::TryCatchKind::kUnknown)
+        << "kind: " << static_cast<int>(inner->try_catch_kind)
+        << ". Should have updated the inner loop before the outer loop.";
+
+    if (inner->try_catch_kind == LoopNode::TryCatchKind::kHasTryCatch) {
+      node->try_catch_kind = LoopNode::TryCatchKind::kHasTryCatch;
+      return;
+    }
+  }
+
+  for (HBlocksInLoopIterator it_loop(*node->loop_info); !it_loop.Done(); it_loop.Advance()) {
+    HBasicBlock* block = it_loop.Current();
+    if (block->GetTryCatchInformation() != nullptr) {
+      node->try_catch_kind = LoopNode::TryCatchKind::kHasTryCatch;
+      return;
+    }
+  }
+
+  node->try_catch_kind = LoopNode::TryCatchKind::kNoTryCatch;
 }
 
 //
@@ -782,8 +833,6 @@ bool HLoopOptimization::OptimizeInnerLoop(LoopNode* node) {
   return TryOptimizeInnerLoopFinite(node) || TryPeelingAndUnrolling(node);
 }
 
-
-
 //
 // Scalar loop peeling and unrolling: generic part methods.
 //
@@ -886,6 +935,7 @@ bool HLoopOptimization::TryFullUnrolling(LoopAnalysisInfo* analysis_info, bool g
 }
 
 bool HLoopOptimization::TryPeelingAndUnrolling(LoopNode* node) {
+  // LOG(INFO) << "TryPeelingAndUnrolling";
   HLoopInformation* loop_info = node->loop_info;
   int64_t trip_count = LoopAnalysis::GetLoopTripCount(loop_info, &induction_range_);
   LoopAnalysisInfo analysis_info(loop_info);
@@ -896,16 +946,25 @@ bool HLoopOptimization::TryPeelingAndUnrolling(LoopNode* node) {
     return false;
   }
 
+  // LOG(INFO) << "TryPeelingAndUnrolling2";
+
+
   if (!TryFullUnrolling(&analysis_info, /*generate_code*/ false) &&
       !TryPeelingForLoopInvariantExitsElimination(&analysis_info, /*generate_code*/ false) &&
       !TryUnrollingForBranchPenaltyReduction(&analysis_info, /*generate_code*/ false)) {
     return false;
   }
 
+  // LOG(INFO) << "TryPeelingAndUnrolling3";
+
+
   // Run 'IsLoopClonable' the last as it might be time-consuming.
   if (!LoopClonerHelper::IsLoopClonable(loop_info)) {
     return false;
   }
+
+  // LOG(INFO) << "TryPeelingAndUnrolling4";
+
 
   return TryFullUnrolling(&analysis_info) ||
          TryPeelingForLoopInvariantExitsElimination(&analysis_info) ||
