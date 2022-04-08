@@ -46,6 +46,30 @@
       },
       "revId": "5d3bd2eebbfb459a385e87877a32880c0739f2a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584cf5ad_abc4c72b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-08T14:12:53Z",
+      "side": 1,
+      "message": "I meant the row in the UI, https://ci.chromium.org/p/art/g/luci/console , the links you posted are for two of the red cells.\n\nI think my CL triggered the test runs but by the time `repo sync` was running for some of the columns, your CL was already submitted; the `repo manifest` (step 4) lists ART revision hash pointing to a few more CLs being included in all the red cells but one.",
+      "parentUuid": "eb152536_11203583",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "5d3bd2eebbfb459a385e87877a32880c0739f2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
