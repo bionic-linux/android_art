@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0be914_76eecb92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-08T11:25:00Z",
+      "side": 1,
+      "message": "The LUCI row I pasted (https://ci.chromium.org/ui/p/art/builders/ci/angler-armv7-debug/2490/overview) contains only one cell. Is the LUCI UI wrong? If so, we should open a bug about that.\n\nFor future reference, the mentioned flake is b/137887811",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "5d3bd2eebbfb459a385e87877a32880c0739f2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
