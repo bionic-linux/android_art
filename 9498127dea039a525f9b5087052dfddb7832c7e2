@@ -16,6 +16,24 @@
       "message": "Please put this next to both added `data:` properties, to ensure they\u0027re kept together. Also, please format them as `TODO(b/228838581): ...`",
       "revId": "9498127dea039a525f9b5087052dfddb7832c7e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e838aad2_50ff3b66",
+        "filename": "test/odsign/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-04-11T18:06:32Z",
+      "side": 1,
+      "message": "Moved the comment. But is there a TODO for us? We don\u0027t own this bug and we are not sure if anyone will commit to fixing it.",
+      "parentUuid": "603fa81f_0170808a",
+      "revId": "9498127dea039a525f9b5087052dfddb7832c7e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
