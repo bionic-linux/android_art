@@ -337,13 +337,13 @@ ObjPtr<mirror::String> InternTable::Table::Find(ObjPtr<mirror::String> s,
                                                 size_t num_searched_frozen_tables) {
   Locks::intern_table_lock_->AssertHeld(Thread::Current());
   auto mid = tables_.begin() + num_searched_frozen_tables;
-  for (auto it = tables_.begin(); it != mid; ++it) {
-    DCHECK(it->set_.FindWithHash(GcRoot<mirror::String>(s), hash) == it->set_.end());
+  for (Table::InternalTable& table : MakeIterationRange(tables_.begin(), mid)) {
+    DCHECK(table.set_.FindWithHash(GcRoot<mirror::String>(s), hash) == table.set_.end());
   }
-  for (auto it = mid, end = tables_.end(); it != end; ++it) {
-    auto set_it = it->set_.FindWithHash(GcRoot<mirror::String>(s), hash);
-    if (set_it != it->set_.end()) {
-      return set_it->Read();
+  for (Table::InternalTable& table : ReverseRange(MakeIterationRange(mid, tables_.end()))) {
+    auto it = table.set_.FindWithHash(GcRoot<mirror::String>(s), hash);
+    if (it != table.set_.end()) {
+      return it->Read();
     }
   }
   return nullptr;
