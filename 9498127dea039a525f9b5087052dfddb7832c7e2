@@ -34,6 +34,24 @@
       "parentUuid": "603fa81f_0170808a",
       "revId": "9498127dea039a525f9b5087052dfddb7832c7e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df70ffcb_12d6410b",
+        "filename": "test/odsign/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-04-11T18:36:26Z",
+      "side": 1,
+      "message": "A \"TODO\" doesn\u0027t imply anything about when or by who it should be fixed (not even when it refers to a person, see go/comments#todo). However if it does get fixed then it\u0027d be nice if the fixer can find this and clean it up as well.\n\n\"TODO(b/xxx)\" is just a more standardised way of referring to the ticket that tools may detect to highlight the connection.",
+      "parentUuid": "e838aad2_50ff3b66",
+      "revId": "9498127dea039a525f9b5087052dfddb7832c7e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
