@@ -210,32 +210,32 @@ class BoundsCheckSlowPathX86_64 : public SlowPathCode {
     Location length_loc = locations->InAt(1);
     InvokeRuntimeCallingConvention calling_convention;
     if (array_length->IsArrayLength() && array_length->IsEmittedAtUseSite()) {
-      // Load the array length into our temporary.
+      // Load the array length into `TMP`.
+      DCHECK(codegen->IsBlockedCoreRegister(TMP));
       HArrayLength* length = array_length->AsArrayLength();
       uint32_t len_offset = CodeGenerator::GetArrayLengthOffset(length);
       Location array_loc = array_length->GetLocations()->InAt(0);
-      Address array_len(array_loc.AsRegister<CpuRegister>(), len_offset);
-      length_loc = Location::RegisterLocation(calling_convention.GetRegisterAt(1));
-      // Check for conflicts with index.
-      if (length_loc.Equals(locations->InAt(0))) {
-        // We know we aren't using parameter 2.
-        length_loc = Location::RegisterLocation(calling_convention.GetRegisterAt(2));
-      }
-      __ movl(length_loc.AsRegister<CpuRegister>(), array_len);
+      __ movl(CpuRegister(TMP), Address(array_loc.AsRegister<CpuRegister>(), len_offset));
       if (mirror::kUseStringCompression && length->IsStringLength()) {
-        __ shrl(length_loc.AsRegister<CpuRegister>(), Immediate(1));
+        __ shrl(CpuRegister(TMP), Immediate(1));
       }
+      // Single moves to CPU registers do not clobber `TMP`.
+      x86_64_codegen->Move(Location::RegisterLocation(calling_convention.GetRegisterAt(0)),
+                           locations->InAt(0));
+      x86_64_codegen->Move(Location::RegisterLocation(calling_convention.GetRegisterAt(1)),
+                           Location::RegisterLocation(TMP));
+    } else {
+      // We're moving two locations to locations that could overlap,
+      // so we need a parallel move resolver.
+      codegen->EmitParallelMoves(
+          locations->InAt(0),
+          Location::RegisterLocation(calling_convention.GetRegisterAt(0)),
+          DataType::Type::kInt32,
+          length_loc,
+          Location::RegisterLocation(calling_convention.GetRegisterAt(1)),
+          DataType::Type::kInt32);
     }
 
-    // We're moving two locations to locations that could overlap, so we need a parallel
-    // move resolver.
-    codegen->EmitParallelMoves(
-        locations->InAt(0),
-        Location::RegisterLocation(calling_convention.GetRegisterAt(0)),
-        DataType::Type::kInt32,
-        length_loc,
-        Location::RegisterLocation(calling_convention.GetRegisterAt(1)),
-        DataType::Type::kInt32);
     QuickEntrypointEnum entrypoint = instruction_->AsBoundsCheck()->IsStringCharAt()
         ? kQuickThrowStringBounds
         : kQuickThrowArrayBounds;
