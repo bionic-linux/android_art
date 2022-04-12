@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3772af7_521e3e13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-04-12T12:34:19Z",
+      "side": 1,
+      "message": "FTR this wasn\u0027t entirely correct - it\u0027s a reference profile so should be passed with --reference-profile-file. I don\u0027t think there\u0027s any difference when it\u0027s only dumping though.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 79
+      },
+      "revId": "53258d07c179d8530adcf8c73848e114830c913c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
