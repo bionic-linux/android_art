@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74806be2_0fb62d7d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-12T22:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee3518c_1464c6cf",
+      "range": {
+        "startLine": 724,
+        "startChar": 11,
+        "endLine": 724,
+        "endChar": 40
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1c49ac_158d9774",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a427e22_eeb0ddcd",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-12T22:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1c49ac_158d9774",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 22
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2bcb438_5b2caa7c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-15T00:50:29Z",
       "side": 1,
       "message": "Is it better to explicitly set it to nullptr?",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "f1f0dceba2963d547b8c9d346bc143ea2c68fcb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de4abfa_611716a3",
+        "filename": "runtime/gc/space/bump_pointer_space.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-12T22:28:36Z",
+      "side": 1,
+      "message": "mark_bitmap_, which is declared in ContinuousMemMapAllocSpace class, is not a pointer to the bitmap. I think, the only thing we can do is use the default constructor, but that must be happening implicitly, right?",
+      "parentUuid": "c2bcb438_5b2caa7c",
       "range": {
         "startLine": 59,
         "startChar": 2,

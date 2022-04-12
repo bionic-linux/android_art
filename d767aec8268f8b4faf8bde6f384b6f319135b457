@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9643904_81bf5d26",
+        "filename": "runtime/gc/accounting/atomic_stack.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-12T22:28:36Z",
+      "side": 1,
+      "message": "It has to be \u0027\u003e\u003d\u0027 because it\u0027s possible that the required slots (num_slots) makes new_index go past growth_limit_. And it can\u0027t be just \u0027\u003e\u0027 either because index equal to growth_limit_ implies stack is full. It\u0027s handled like this in AtomicBumpBack above.",
+      "parentUuid": "9b985264_7681cdbc",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa4da893_91ec1a92",
@@ -101,6 +125,30 @@
       "writtenOn": "2022-01-27T16:19:35Z",
       "side": 1,
       "message": "We can\u0027t check that statically with an annotation?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "d767aec8268f8b4faf8bde6f384b6f319135b457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1708222_ad1081a7",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-12T22:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "526237a4_c38b3024",
       "range": {
         "startLine": 105,
         "startChar": 1,
