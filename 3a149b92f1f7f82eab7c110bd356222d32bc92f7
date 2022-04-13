@@ -255,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6622c322_abbd6b14",
+        "filename": "test/530-checker-loops-try-catch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T15:01:43Z",
+      "side": 1,
+      "message": "I think checker statements are checked in the order in which they appear in the file. So, if we eliminate the `TryBoundary`, we would probably see a failure from the `loop_optimization (after)` statements above without being told that the `TryBoundary` was eliminated. It would be better to move the pre-condition check earlier. We could simply add a `CHECK-DAG: TryBoundary` to the first `loop_optimization (before)` section above and drop this section.",
+      "parentUuid": "6bd23da4_d33c0f49",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e385eac8_7c30147e",
         "filename": "test/530-checker-loops-try-catch/src/Main.java",
         "patchSetId": 5
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "Due to how the IR is generated (and how the checker works) we would end up with a similar thing as a separate check:\n\n```\n/// CHECK-DAG:                  ArrayGet\n/// CHECK-DAG:                  ArrayGet\n/// CHECK-DAG:                  ArraySet\n/// CHECK-NOT:                  ArrayGet\n/// CHECK-NOT:                  ArraySet\n```\n\nIf that looks better to you I can do it but I am not sure how much it improves readability. I have no hard feelings either way.",
       "parentUuid": "e385eac8_7c30147e",
+      "range": {
+        "startLine": 631,
+        "startChar": 2,
+        "endLine": 632,
+        "endChar": 110
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8862c8fb_0264cb53",
+        "filename": "test/530-checker-loops-try-catch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T15:01:43Z",
+      "side": 1,
+      "message": "I meant separate sections for counting each instruction kind.\n\n  /// CHECK-START: ...\n  /// CHECK:     ArrayGet\n  /// CHECK:     ArrayGet\n  /// CHECK-NOT: ArrayGet\n  //\n  /// CHECK-START: ...\n  /// CHECK:     ArraySet\n  /// CHECK-NOT: ArrayGet\n\nI actually do not know how `CHECK-DAG` interacts witch `CHECK-NOT`. Does the sequence\n\n  NullCheck\n  ArrayGet\n\nsatisfy the statements\n\n  CHECK-DAG: ArrayGet\n  CHECK-NOT: NullCheck\n\nor not?",
+      "parentUuid": "586ced87_cb1d6c0b",
       "range": {
         "startLine": 631,
         "startChar": 2,
