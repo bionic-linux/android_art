@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0e1f66_473f3d82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T13:00:25Z",
+      "side": 1,
+      "message": "`GetRegisterAt(2)` is RDX on x86-64 and EDX on x86. Updated the reference to \"EDX/RDX\" because x86 does not have \"RDX\".\n\nIn the test I debugged, it held the dex register `v0` when the AIOOBE was thrown and the code printed `v0` after catching the AIOOBE.\n\nWhen it comes to the history of using the `GetRegisterAt(2)`, it was used in https://android-review.googlesource.com/179275 and it was OK at that time. However, I have missed this slow-path use in https://android-review.googlesource.com/275337 which was submitted a few months later.",
+      "parentUuid": "4b7d1694_5f43588a",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "906fd429_5ca4a52a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b1b782_3c374543",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T13:00:25Z",
+      "side": 1,
+      "message": "Removed. (Those lines 200-201 were copied from x86-64. I missed the comment here and thought that x86 didn\u0027t have this comment at all.)",
+      "parentUuid": "906fd429_5ca4a52a",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c812a0ed_612adb9b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-13T12:24:12Z",
       "side": 1,
       "message": "Did you observe each of the cases on lines 173, 178 and 183 being hit?",
+      "range": {
+        "startLine": 173,
+        "startChar": 6,
+        "endLine": 173,
+        "endChar": 42
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae537469_fe4e12b2",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T13:00:25Z",
+      "side": 1,
+      "message": "No, I did not try to craft tests to hit all these cases. But all the tests here are dependent on very particular register allocation and can be obsoleted by changes in Optimizing or D8, so I don\u0027t think they would provide much value anyway.\n\nThe case with parallel moves is exercised by the `731-bounds-check-slow-path` / `Test216608614` with `run-test --host --optimizing` (that one was failing without the codegen changes here). Other tests surely exercise at least one of the other paths.",
+      "parentUuid": "c812a0ed_612adb9b",
       "range": {
         "startLine": 173,
         "startChar": 6,
@@ -95,6 +167,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c01a4526_8f338049",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6581,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T13:00:25Z",
+      "side": 1,
+      "message": "Yes, but I did not want to complicate the code with yet another code path.",
+      "parentUuid": "bef1e46f_d8ed40f5",
+      "range": {
+        "startLine": 6578,
+        "startChar": 0,
+        "endLine": 6581,
+        "endChar": 3
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9bd1f8e0_b7abadb1",
         "filename": "test/731-bounds-check-slow-path/src/Main.java",
         "patchSetId": 3
@@ -106,6 +202,30 @@
       "writtenOn": "2022-04-13T12:24:12Z",
       "side": 1,
       "message": "Maybe we should have a special annotation to enforce JIT on a particular method. Bounds that work now may change in the future.",
+      "range": {
+        "startLine": 66,
+        "startChar": 52,
+        "endLine": 67,
+        "endChar": 52
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f2be075_62637440",
+        "filename": "test/731-bounds-check-slow-path/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T13:00:25Z",
+      "side": 1,
+      "message": "Our OSR testing is unfortunately rather limited and we do not have a simple simple to trigger OSR compilation. We could use our native `isInOsrCode()` helper but that would prevent the test from running properly with `--interpreter` or RI and it could affect register allocation.\n\nUpdated the comment to reference OSR.",
+      "parentUuid": "9bd1f8e0_b7abadb1",
       "range": {
         "startLine": 66,
         "startChar": 52,
