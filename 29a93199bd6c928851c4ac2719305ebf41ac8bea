@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b7d1694_5f43588a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-13T12:24:12Z",
+      "side": 1,
+      "message": "Why RDX in particular?\n\nI can see that it was using `GetRegisterAt(2)`, and looking at `InstructionCodeGeneratorX86::VisitBoundsCheck` it doesn\u0027t add this to `caller_saves` so it\u0027s unclear why it was used in the first place.\n\nBut why it has to be RDX, I do not see.",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906fd429_5ca4a52a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-13T12:24:12Z",
+      "side": 1,
+      "message": "This looks redundant after moving to lines 200-201.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c812a0ed_612adb9b",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-13T12:24:12Z",
+      "side": 1,
+      "message": "Did you observe each of the cases on lines 173, 178 and 183 being hit?",
+      "range": {
+        "startLine": 173,
+        "startChar": 6,
+        "endLine": 173,
+        "endChar": 42
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef1e46f_d8ed40f5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6581,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-13T12:24:12Z",
+      "side": 1,
+      "message": "Cannot this temporary be used?",
+      "range": {
+        "startLine": 6578,
+        "startChar": 0,
+        "endLine": 6581,
+        "endChar": 3
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd1f8e0_b7abadb1",
+        "filename": "test/731-bounds-check-slow-path/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-13T12:24:12Z",
+      "side": 1,
+      "message": "Maybe we should have a special annotation to enforce JIT on a particular method. Bounds that work now may change in the future.",
+      "range": {
+        "startLine": 66,
+        "startChar": 52,
+        "endLine": 67,
+        "endChar": 52
+      },
+      "revId": "29a93199bd6c928851c4ac2719305ebf41ac8bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
