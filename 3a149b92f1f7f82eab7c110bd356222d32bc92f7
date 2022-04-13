@@ -16,6 +16,144 @@
       "message": "Vladimir PTAL",
       "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c51c5b8_9833192b",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 494,
+        "startChar": 47,
+        "endLine": 494,
+        "endChar": 57
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd15b5c_ee84b4c3",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "I prefer a simple DCHECK(). If this fails, the value of `top_loop_` provides no useful information. Same below.",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 34
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c619e74a_1c4afdea",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "Rename to `Calculate*`, `Compute*`, `Determine*` or something similar. `Set*` should presumably take the value as an argument. (See for example `ArtMethod::CalculateAndSetImtIndex()` and `String::ComputeAndSetHashCode()`.)",
+      "range": {
+        "startLine": 652,
+        "startChar": 24,
+        "endLine": 652,
+        "endChar": 39
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc6faed_a411ce0a",
+        "filename": "test/530-checker-loops-try-catch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "Prefix test methods with `$noinline$`.",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9adb507c_4cfab16f",
+        "filename": "test/530-checker-loops-try-catch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "This looks like a pre-condition check. Maybe it should be moved before the other checks? (Same for other tests below.)",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e385eac8_7c30147e",
+        "filename": "test/530-checker-loops-try-catch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-13T11:06:45Z",
+      "side": 1,
+      "message": "Separate sections for counting `ArrayGet` and `ArraySet`. (And please fix `530-checker-peel-unroll`.)\n\nSame for all tests below.",
+      "range": {
+        "startLine": 631,
+        "startChar": 2,
+        "endLine": 632,
+        "endChar": 110
+      },
+      "revId": "3a149b92f1f7f82eab7c110bd356222d32bc92f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
