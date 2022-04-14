@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b9595a_a4049758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-14T14:05:39Z",
+      "side": 1,
+      "message": "FYI patchset 9 had the presubmit verification and two comments. Those got hidden when I submitted a patchset in another CL in the relationship chain.",
+      "revId": "0eca098c263e3f93d9996dbd6070a53d09d4a6c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
