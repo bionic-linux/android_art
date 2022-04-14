@@ -3636,14 +3636,8 @@ const RegType& MethodVerifier<kVerifierDebug>::ResolveClass(dex::TypeIndex class
     const RegType& referrer = GetDeclaringClass();
     if ((IsSdkVersionSetAndAtLeast(api_level_, SdkVersion::kP) || !referrer.IsUnresolvedTypes()) &&
         !referrer.CanAccess(*result)) {
-      if (IsAotMode()) {
-        Fail(VERIFY_ERROR_ACCESS_CLASS);
-        VLOG(verifier)
-            << "(possibly) illegal class access: '" << referrer << "' -> '" << *result << "'";
-      } else {
-        Fail(VERIFY_ERROR_ACCESS_CLASS)
-            << "(possibly) illegal class access: '" << referrer << "' -> '" << *result << "'";
-      }
+      Fail(VERIFY_ERROR_ACCESS_CLASS) << "(possibly) illegal class access: '"
+                                      << referrer << "' -> '" << *result << "'";
     }
   }
   return *result;
