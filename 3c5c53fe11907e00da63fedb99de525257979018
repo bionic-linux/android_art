@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c765b728_bb0770fc",
+        "filename": "test/530-checker-peel-unroll/src/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-14T10:57:52Z",
+      "side": 1,
+      "message": "I also updated the other tests in this file e.g. `unrollingLoadStoreElimination` even thought I didn\u0027t use them for testing try catches. The file now consistently uses separate CHECK-NOT.",
+      "range": {
+        "startLine": 82,
+        "startChar": 29,
+        "endLine": 82,
+        "endChar": 58
+      },
+      "revId": "3c5c53fe11907e00da63fedb99de525257979018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03953f57_9002e6eb",
+        "filename": "test/530-checker-peel-unroll/src/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-04-14T10:57:52Z",
+      "side": 1,
+      "message": "This one I left on purpose after the `CHECK-DAG`s because it is what we want: \"After the CHECK-DAGs matches, no more instructions.\"",
+      "range": {
+        "startLine": 1181,
+        "startChar": 0,
+        "endLine": 1182,
+        "endChar": 112
+      },
+      "revId": "3c5c53fe11907e00da63fedb99de525257979018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
