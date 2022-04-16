@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2991630b_4230979a",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82de8829_d5b15669",
+      "range": {
+        "startLine": 127,
+        "startChar": 41,
+        "endLine": 127,
+        "endChar": 49
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d0be015_7a2aea94",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "Why do we know these are in-bounds?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 71
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc9a2686_40b7838b",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d0be015_7a2aea94",
       "range": {
         "startLine": 129,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad6407d_229ee5e8",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "I\u0027m assuming you mean to say {prev, curr, next} instead of [prev|curr|next]. Changing it accordingly.",
+      "parentUuid": "a2b7abc0_b964c74f",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b133704_118f9781",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619a4832_1eb74bab",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b133704_118f9781",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 29
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3daf6ab2_f7edfc85",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "Is there a dedup opportunity here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 5
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e541304f_0d9876d4",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Not much. At best we can invoke DumpRAMAroundAddress in a lambda. But that would at best save 2-3 lines of code only.",
+      "parentUuid": "3daf6ab2_f7edfc85",
       "range": {
         "startLine": 189,
         "startChar": 4,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "beb5d2ac_aaa3cb53",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "I didn\u0027t understand what benefit would that offer. If the above condition is true, which is checked only in debug builds, then the whole block will be executed, including the log message.",
+      "parentUuid": "3bc6e2dd_3aed9669",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea770b9f_42d26130",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 11
@@ -169,6 +313,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "This should be inlined below. That way it will be evaluated only of the check fails.",
+      "range": {
+        "startLine": 695,
+        "startChar": 26,
+        "endLine": 695,
+        "endChar": 49
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a032bf33_9c5edb62",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea770b9f_42d26130",
       "range": {
         "startLine": 695,
         "startChar": 26,
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7be02be_af80cd47",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9781c583_42db0b4e",
+      "range": {
+        "startLine": 753,
+        "startChar": 41,
+        "endLine": 753,
+        "endChar": 60
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a1da3f3_b5b7b279",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "Can we dedup this with the earlier one by turning it into an actual function, possibly with a callback parameter?",
+      "range": {
+        "startLine": 842,
+        "startChar": 2,
+        "endLine": 842,
+        "endChar": 87
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49d37fb_13d95827",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1da3f3_b5b7b279",
       "range": {
         "startLine": 842,
         "startChar": 2,
@@ -248,6 +464,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b79c1a_3e14f5a6",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1f6b54_856ba70b",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c49abad_a833740c",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "klass or klass_addr? Type seems inconsistent with IsValidObject.",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92dcfe7b_469b398a",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c49abad_a833740c",
       "range": {
         "startLine": 44,
         "startChar": 44,
@@ -294,6 +558,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d601263d_84bacc76",
+        "filename": "runtime/gc/verification-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee32c131_5d9c733c",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 58
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28ae0045_5390074c",
@@ -307,6 +595,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "Again, I\u0027m not sure whether or not we want these consts. We currently seem to be inconsistent about it. Since these were there before, I\u0027m OK with leaving it as inconsistent as it was.",
+      "range": {
+        "startLine": 32,
+        "startChar": 19,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4077f0e4_78617026",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28ae0045_5390074c",
       "range": {
         "startLine": 32,
         "startChar": 19,
@@ -340,6 +652,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a157b818_9a1d3183",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "630d011e_32ab61bb",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9f6c92_628cf037",
@@ -363,6 +699,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8343b91d_0b9c0eb4",
+        "filename": "runtime/gc/verification.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "Not sure where below are you referring to. The IsValidClass confirms that the class is in the heap.\n\nFixed here.",
+      "parentUuid": "2a9f6c92_628cf037",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 42
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df1ca925_4fe1e34a",
@@ -376,6 +736,30 @@
       "writtenOn": "2022-03-21T22:46:36Z",
       "side": 1,
       "message": "Weirdly different from the argument type below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa9d322_9290e304",
+        "filename": "runtime/gc/verification.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-16T15:03:50Z",
+      "side": 1,
+      "message": "The type is same, but name isn\u0027t. Fixed.",
+      "parentUuid": "df1ca925_4fe1e34a",
       "range": {
         "startLine": 59,
         "startChar": 20,
