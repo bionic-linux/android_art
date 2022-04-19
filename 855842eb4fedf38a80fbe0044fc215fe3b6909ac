@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d036231_21a81429",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "the stack",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 10
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358d0527_cfb353d2",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "Can we explain somewhere exactly what gets put into *page_ ?",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 17
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66eca1e_cd116d44",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "I don\u0027t see how this works. I don\u0027t think a volatile load prevents later nonvolatile loads from getting elided. It does force the volatile load to actually read from memory. What kind of asynchronous modification are you guarding against here? I suspect that uffd_ should just be declared either volatile or atomic. If you really need different kinds of accesses in different places, then I think there should be inline getters and setters with appropriate names.",
+      "range": {
+        "startLine": 505,
+        "startChar": 5,
+        "endLine": 506,
+        "endChar": 37
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec11f830_e0a7912a",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "I would remove this and turn it into a full fence. I think we\u0027re stretching the standards guarantees here quite a bit anyway, I\u0027m not sure in what sense this needs to be just an acquire fence, and if it makes any difference in the generated code (unlikely), acquire could easily be wrong.",
+      "range": {
+        "startLine": 538,
+        "startChar": 31,
+        "endLine": 538,
+        "endChar": 56
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ca3c92_e99fd4b2",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "is it safe to also require !__ANDROID__ or !ANDROID_TARGET_ANDROID to do this?",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 49
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28d21e3a_b61b8197",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "Please add comment \"fake file descriptor for fall back mode\" or change the name to something like kFallbackModeFakeFd.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca268c7_64cfae78",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "Nit: capitalization.",
+      "range": {
+        "startLine": 272,
+        "startChar": 37,
+        "endLine": 272,
+        "endChar": 41
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b80c156_bd758eaa",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "Why volatile?\nSee also my longer uffd_ comment in the next file.",
+      "range": {
+        "startLine": 408,
+        "startChar": 36,
+        "endLine": 408,
+        "endChar": 44
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9b99d1_9998942b",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "Can we rephrase this as:\npre_compact_offset_moving_space_[i] is:\nIf ?? is a page before ??? then ...\nO.w. ...\nI.e. make it analogous to the next comment?",
+      "range": {
+        "startLine": 460,
+        "startChar": 5,
+        "endLine": 464,
+        "endChar": 58
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4274530e_92862ace",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "add comma after \"address\". I initially misassociated the \"or\".",
+      "range": {
+        "startLine": 470,
+        "startChar": 5,
+        "endLine": 470,
+        "endChar": 12
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c81ad6c_b06cf41d",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-19T03:39:23Z",
+      "side": 1,
+      "message": "containing? Not all of them might be full?",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 33
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
