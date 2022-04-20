@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78532a32_639496df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Still not quite done yet.",
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158ff1cf_dcac6c6d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "These are GC or fault handling threads, presumably? kGCThreadCount? kPageFaultThreadCount? \"Concurrent\" seems redundant. Without the \u003d 2, it\u0027s otherwise unclear what this means.\n\nThis presumably doesn\u0027t really need to be constexpr? I think this should depend on core count. Presumably 1 works, and we really don\u0027t want more than that on a watch?",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf7cece_89782387",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be conditional on kObjPtrPoisoning?",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 32
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291cf07c_e594a6fa",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "This feels like clumsy API design, but it can wait until later. MAP_POPULATE might also be minimally useful, but I don\u0027t think we can currently specify it?\n\nThere\u0027s probably nothing to be done here for now.",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d3ee4b_09bac0f4",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we indented preprocessor commands. I personally think we should, but still ...",
+      "range": {
+        "startLine": 454,
+        "startChar": 1,
+        "endLine": 454,
+        "endChar": 3
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7117d4_da2b23fa",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Do you ensure that page fault handlers finish on time, whatever that means? Presumably at least before the next GC?",
+      "range": {
+        "startLine": 1218,
+        "startChar": 15,
+        "endLine": 1219,
+        "endChar": 42
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8134b639_3885c1cd",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Can we say something about why this is not accessed concurrently? \"Accessed only by the GC itself\"?",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 12
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

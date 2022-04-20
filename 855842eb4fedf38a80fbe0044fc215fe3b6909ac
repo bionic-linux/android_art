@@ -70,6 +70,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea249ae_6dc55cd2",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Obsolete.",
+      "parentUuid": "a66eca1e_cd116d44",
+      "range": {
+        "startLine": 505,
+        "startChar": 5,
+        "endLine": 506,
+        "endChar": 37
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec11f830_e0a7912a",
@@ -93,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8699a8f_c4cd5104",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Obsolete.",
+      "parentUuid": "ec11f830_e0a7912a",
+      "range": {
+        "startLine": 538,
+        "startChar": 31,
+        "endLine": 538,
+        "endChar": 56
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9ca3c92_e99fd4b2",
@@ -106,6 +154,30 @@
       "writtenOn": "2022-04-19T03:39:23Z",
       "side": 1,
       "message": "is it safe to also require !__ANDROID__ or !ANDROID_TARGET_ANDROID to do this?",
+      "range": {
+        "startLine": 548,
+        "startChar": 4,
+        "endLine": 548,
+        "endChar": 49
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d53d1ac_790b13b9",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ca3c92_e99fd4b2",
       "range": {
         "startLine": 548,
         "startChar": 4,
@@ -175,6 +247,30 @@
       "writtenOn": "2022-04-19T03:39:23Z",
       "side": 1,
       "message": "Why volatile?\nSee also my longer uffd_ comment in the next file.",
+      "range": {
+        "startLine": 408,
+        "startChar": 36,
+        "endLine": 408,
+        "endChar": 44
+      },
+      "revId": "855842eb4fedf38a80fbe0044fc215fe3b6909ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d116cf9_22458881",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-20T03:31:10Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "1b80c156_bd758eaa",
       "range": {
         "startLine": 408,
         "startChar": 36,
