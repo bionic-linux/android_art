@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb58b27_91132846",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-04-20T14:56:06Z",
+      "side": 1,
+      "message": "Can you add a comment in the code why in reverse?",
+      "revId": "81db82ce99432bdd92baa84588356418c79e2007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
