@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b67572_d36a942e",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-04-20T14:58:47Z",
+      "side": 1,
+      "message": "Why do you only need to look at last_class_set? Can you add a comment?",
+      "range": {
+        "startLine": 1115,
+        "startChar": 28,
+        "endLine": 1115,
+        "endChar": 42
+      },
+      "revId": "7a0478394749f206544fb86841bd6c62dc87f005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
