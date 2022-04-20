@@ -22,6 +22,30 @@
       },
       "revId": "7a0478394749f206544fb86841bd6c62dc87f005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42e0b32_11fcbe14",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-20T16:29:30Z",
+      "side": 1,
+      "message": "Done: https://android-review.googlesource.com/2069121",
+      "parentUuid": "57b67572_d36a942e",
+      "range": {
+        "startLine": 1115,
+        "startChar": 28,
+        "endLine": 1115,
+        "endChar": 42
+      },
+      "revId": "7a0478394749f206544fb86841bd6c62dc87f005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
