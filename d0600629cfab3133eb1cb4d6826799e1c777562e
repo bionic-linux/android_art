@@ -16,6 +16,24 @@
       "message": "Can you add a comment in the code why we do the reverse?",
       "revId": "d0600629cfab3133eb1cb4d6826799e1c777562e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d6ba15_3e1398d2",
+        "filename": "runtime/class_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-04-21T07:47:31Z",
+      "side": 1,
+      "message": "Already submitted: https://android-review.googlesource.com/2069121",
+      "parentUuid": "69ae0846_09b38e0f",
+      "revId": "d0600629cfab3133eb1cb4d6826799e1c777562e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
