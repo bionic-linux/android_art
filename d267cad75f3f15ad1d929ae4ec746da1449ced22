@@ -135,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4170cf0d_f2deeedd",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-22T23:49:53Z",
+      "side": 1,
+      "message": "Delete and insert period.",
+      "range": {
+        "startLine": 1852,
+        "startChar": 48,
+        "endLine": 1852,
+        "endChar": 56
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8134b639_3885c1cd",
         "filename": "runtime/gc/collector/mark_compact.h",
         "patchSetId": 14
