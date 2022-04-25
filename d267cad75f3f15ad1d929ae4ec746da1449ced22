@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e476b0a0_5a89c64d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "Renamed to kPageFaultThreadCount\n\nThis value in a way is only used for zygote-type situations where we have to create the thread-pool in each GC cycle. Otherwise, we rely on the pool that is created during fork, which has (core-count - 1) size.",
+      "parentUuid": "158ff1cf_dcac6c6d",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cf7cece_89782387",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-20T03:31:10Z",
       "side": 1,
       "message": "Shouldn\u0027t this be conditional on kObjPtrPoisoning?",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 32
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5247c526_c301e582",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "We need the buffer in either case. Only the value of some parameters change depending on whether we are using poisoning or not.",
+      "parentUuid": "1cf7cece_89782387",
       "range": {
         "startLine": 166,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6e8c11_759fb26a",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "I didn\u0027t use MAP_POPULATE because we are interested in only the first page in the buffer to be pre-populated as that one is used for termination of concurrent compaction. Other pages can stay unmapped.\n\nAddressed the clumsy part 😊",
+      "parentUuid": "291cf07c_e594a6fa",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2d3ee4b_09bac0f4",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-20T03:31:10Z",
       "side": 1,
       "message": "I don\u0027t think we indented preprocessor commands. I personally think we should, but still ...",
+      "range": {
+        "startLine": 454,
+        "startChar": 1,
+        "endLine": 454,
+        "endChar": 3
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e416442_10803a6c",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d3ee4b_09bac0f4",
       "range": {
         "startLine": 454,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "996f4aa5_d2aaed6b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "Certainly! These faults are handled by worker threads, which are terminated with the help of \u0027conc_compaction_termination_page_\u0027 and \u0027thread_pool_counter_\u0027 in CompactionPhase() after the gc-thread is done going through all the pages of the moving space.",
+      "parentUuid": "df7117d4_da2b23fa",
+      "range": {
+        "startLine": 1218,
+        "startChar": 15,
+        "endLine": 1219,
+        "endChar": 42
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4170cf0d_f2deeedd",
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9768b5_ced36b01",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4170cf0d_f2deeedd",
+      "range": {
+        "startLine": 1852,
+        "startChar": 48,
+        "endLine": 1852,
+        "endChar": 56
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8134b639_3885c1cd",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-04-20T03:31:10Z",
       "side": 1,
       "message": "Can we say something about why this is not accessed concurrently? \"Accessed only by the GC itself\"?",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 12
+      },
+      "revId": "d267cad75f3f15ad1d929ae4ec746da1449ced22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daebe767_4388b6ff",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-04-25T13:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8134b639_3885c1cd",
       "range": {
         "startLine": 518,
         "startChar": 2,
