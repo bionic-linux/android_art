@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bfa8ec_79368364",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "used\n\nComment probably fits on one line.\n\nI also don\u0027t understand the comment. Presumably it should be with the if-condition below. But what needs to be ordered here? What if we don\u0027t do the ioctl? I guess for kFallback, there is no relevant concurrency?",
+      "range": {
+        "startLine": 1192,
+        "startChar": 29,
+        "endLine": 1192,
+        "endChar": 34
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052efaa3_704a8536",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "not been",
+      "range": {
+        "startLine": 425,
+        "startChar": 39,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e979d36_f10a7cd8",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "Can we say something more specific, like \"a write access to the first page signals termination of concurrent compaction\"?",
+      "range": {
+        "startLine": 432,
+        "startChar": 39,
+        "endLine": 433,
+        "endChar": 16
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79b3071_1517975d",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "I think this technically requires assigning one member to the other when usage changes and you repurpose the memory, but I guess we\u0027re violating that rule elsewhere as well.",
+      "range": {
+        "startLine": 487,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 50
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9917398e_e2d21c76",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "pre-compact address? from-space address?\nWhat about objects that straddle the page boundary?",
+      "range": {
+        "startLine": 490,
+        "startChar": 36,
+        "endLine": 491,
+        "endChar": 23
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9228c2f_424cbffd",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "black-allocated to distinguish them from marked objects?",
+      "range": {
+        "startLine": 500,
+        "startChar": 32,
+        "endLine": 500,
+        "endChar": 37
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50cc109_d9b0c6e9",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-04-28T03:05:58Z",
+      "side": 1,
+      "message": "\"True while compacting\"?",
+      "range": {
+        "startLine": 530,
+        "startChar": 17,
+        "endLine": 530,
+        "endChar": 22
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
