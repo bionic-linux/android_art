@@ -129,7 +129,14 @@ void MetricsReporter::BackgroundThreadRun() {
     backends_.emplace_back(new LogBackend(new TextFormatter(), LogSeverity::INFO));
   }
   if (config_.dump_to_file.has_value()) {
-    backends_.emplace_back(new FileBackend(new TextFormatter(), config_.dump_to_file.value()));
+    MetricsFormatter* formatter;
+    if (config_.metrics_format == "json") {
+      formatter = new JsonFormatter();
+    } else {
+      formatter = new TextFormatter();
+    }
+
+    backends_.emplace_back(new FileBackend(formatter, config_.dump_to_file.value()));
   }
   if (config_.dump_to_statsd) {
     auto backend = CreateStatsdBackend();
@@ -291,6 +298,7 @@ ReportingConfig ReportingConfig::FromFlags(bool is_system_server) {
       .dump_to_logcat = gFlags.MetricsWriteToLogcat(),
       .dump_to_file = gFlags.MetricsWriteToFile.GetValueOptional(),
       .dump_to_statsd = gFlags.MetricsWriteToStatsd(),
+      .metrics_format = gFlags.MetricsFormat(),
       .period_spec = period_spec,
       .reporting_num_mods = reporting_num_mods,
       .reporting_mods = reporting_mods,
