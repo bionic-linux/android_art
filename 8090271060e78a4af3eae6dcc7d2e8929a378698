@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "926d3203_9d58ec46",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "I have updated the comment with more details.\n\nIn the absence of ioctl, we would be required to use \u0027acquire\u0027 order (I think) when exchanging moving_pages_status_. This is because worker threads may also attempt to compact the same page. This ordering will ensure that only one thread does the compaction on any given page.\n\nIn the fallback case, which is single-threaded, it isn\u0027t required.",
+      "parentUuid": "c2bfa8ec_79368364",
+      "range": {
+        "startLine": 1192,
+        "startChar": 29,
+        "endLine": 1192,
+        "endChar": 34
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "052efaa3_704a8536",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "888be3d7_61a12643",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "052efaa3_704a8536",
+      "range": {
+        "startLine": 425,
+        "startChar": 39,
+        "endLine": 425,
+        "endChar": 47
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e979d36_f10a7cd8",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-28T03:05:58Z",
       "side": 1,
       "message": "Can we say something more specific, like \"a write access to the first page signals termination of concurrent compaction\"?",
+      "range": {
+        "startLine": 432,
+        "startChar": 39,
+        "endLine": 433,
+        "endChar": 16
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d465d588_88e5e4c5",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e979d36_f10a7cd8",
       "range": {
         "startLine": 432,
         "startChar": 39,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8daa426_b26938bd",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "I didn\u0027t fully understand what you mean. In this case it\u0027s literally the same array. It\u0027s just that prior to black_allocations_begin_ we use \u0027pre_compact_offset_moving_space_\u0027 name, and after that for black-allocated pages we use \u0027black_alloc_pages_first_chunk_size_\u0027.",
+      "parentUuid": "b79b3071_1517975d",
+      "range": {
+        "startLine": 487,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 50
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9917398e_e2d21c76",
         "filename": "runtime/gc/collector/mark_compact.h",
         "patchSetId": 15
@@ -106,6 +202,30 @@
       "writtenOn": "2022-04-28T03:05:58Z",
       "side": 1,
       "message": "pre-compact address? from-space address?\nWhat about objects that straddle the page boundary?",
+      "range": {
+        "startLine": 490,
+        "startChar": 36,
+        "endLine": 491,
+        "endChar": 23
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2e3819_cdaa6e1a",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9917398e_e2d21c76",
       "range": {
         "startLine": 490,
         "startChar": 36,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52783827_a632f9da",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9228c2f_424cbffd",
+      "range": {
+        "startLine": 500,
+        "startChar": 32,
+        "endLine": 500,
+        "endChar": 37
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50cc109_d9b0c6e9",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-04-28T03:05:58Z",
       "side": 1,
       "message": "\"True while compacting\"?",
+      "range": {
+        "startLine": 530,
+        "startChar": 17,
+        "endLine": 530,
+        "endChar": 22
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a50cd03_086d8d4f",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-02T05:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50cc109_d9b0c6e9",
       "range": {
         "startLine": 530,
         "startChar": 17,
