@@ -74,6 +74,8 @@ std::string FindAddr2line() {
   if (env_value != nullptr) {
     return std::string(env_value) + "/" + ART_CLANG_PATH + "/bin/llvm-addr2line";
   }
+#else
+#error ART_CLANG_PATH not defined
 #endif
   return std::string("/usr/bin/addr2line");
 }
