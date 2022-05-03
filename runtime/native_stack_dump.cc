@@ -69,13 +69,13 @@ using android::base::StringPrintf;
 static constexpr bool kUseAddr2line = !kIsTargetBuild;
 
 std::string FindAddr2line() {
-#ifdef ART_CLANG_PATH
+#if !defined(ART_TARGET_ANDROID)
   const char* env_value = getenv("ANDROID_BUILD_TOP");
   if (env_value != nullptr) {
     return std::string(env_value) + "/" + ART_CLANG_PATH + "/bin/llvm-addr2line";
   }
 #endif
-  return std::string("/usr/bin/addr2line");
+  return std::string("llvm-addr2line");
 }
 
 ALWAYS_INLINE
