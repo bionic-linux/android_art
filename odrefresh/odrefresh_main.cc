@@ -19,6 +19,7 @@
 #include <string>
 #include <string_view>
 
+#include "android-base/parsebool.h"
 #include "android-base/properties.h"
 #include "android-base/stringprintf.h"
 #include "android-base/strings.h"
@@ -34,6 +35,10 @@
 
 namespace {
 
+using ::android::base::GetBoolProperty;
+using ::android::base::GetProperty;
+using ::android::base::ParseBool;
+using ::android::base::ParseBoolResult;
 using ::art::odrefresh::CompilationOptions;
 using ::art::odrefresh::ExitCode;
 using ::art::odrefresh::OdrCompilationLog;
@@ -110,6 +115,20 @@ bool ArgumentMatches(std::string_view argument, std::string_view prefix, std::st
   return false;
 }
 
+bool ArgumentMatchesBool(std::string_view argument, std::string_view prefix, bool* value) {
+  std::string str_value;
+  if (ArgumentMatches(argument, prefix, &str_value)) {
+    ParseBoolResult result = ParseBool(str_value);
+    if (result == ParseBoolResult::kError) {
+      ArgumentError(
+          "Unknown argument value for %s: %s", std::string{prefix}.c_str(), str_value.c_str());
+    }
+    *value = result == ParseBoolResult::kTrue;
+    return true;
+  }
+  return false;
+}
+
 bool ArgumentEquals(std::string_view argument, std::string_view expected) {
   return argument == expected;
 }
@@ -129,6 +148,7 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
   for (; n < argc - 1; ++n) {
     const char* arg = argv[n];
     std::string value;
+    bool bool_value;
     if (ArgumentEquals(arg, "--compilation-os-mode")) {
       config->SetCompilationOsMode(true);
     } else if (ArgumentMatches(arg, "--dalvik-cache=", &value)) {
@@ -148,6 +168,8 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
       config->SetRefresh(false);
     } else if (ArgumentEquals(arg, "--minimal")) {
       config->SetMinimal(true);
+    } else if (ArgumentMatchesBool(arg, "--enable-uffd-gc", &bool_value)) {
+      config->SetEnableUffdGc(bool_value);
     } else {
       ArgumentError("Unrecognized argument: '%s'", arg);
     }
@@ -155,7 +177,7 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
 
   if (zygote.empty()) {
     // Use ro.zygote by default, if not overridden by --zygote-arch flag.
-    zygote = android::base::GetProperty("ro.zygote", {});
+    zygote = GetProperty("ro.zygote", {});
   }
   ZygoteKind zygote_kind;
   if (!ParseZygoteKind(zygote.c_str(), &zygote_kind)) {
@@ -164,14 +186,18 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
   config->SetZygoteKind(zygote_kind);
 
   if (config->GetSystemServerCompilerFilter().empty()) {
-    std::string filter =
-        android::base::GetProperty("dalvik.vm.systemservercompilerfilter", "speed");
+    std::string filter = GetProperty("dalvik.vm.systemservercompilerfilter", "speed");
     config->SetSystemServerCompilerFilter(filter);
   }
 
-  if (ShouldDisableRefresh(
-          android::base::GetProperty("ro.build.version.sdk", /*default_value=*/""))) {
+  if (ShouldDisableRefresh(GetProperty("ro.build.version.sdk", /*default_value=*/""))) {
     config->SetRefresh(false);
+  }
+
+  if (!config->HasEnableUffdGc()) {
+    bool value = GetBoolProperty("persist.device_config.runtime_native_boot.enable_uffd_gc",
+                                 /*default_value=*/false);
+    config->SetEnableUffdGc(value);
   }
 
   return n;
@@ -207,6 +233,9 @@ NO_RETURN void UsageHelp(const char* argv0) {
   UsageMsg("                                 Compiler filter that overrides");
   UsageMsg("                                 dalvik.vm.systemservercompilerfilter");
   UsageMsg("--minimal                        Generate a minimal boot image only.");
+  UsageMsg("--enable-uffd-gc=<BOOL>          Whether to enable userfaultfd GC (overrides ");
+  UsageMsg("                                 persist.device_config.runtime_native_boot.");
+  UsageMsg("                                 enable_uffd_gc).");
 
   exit(EX_USAGE);
 }
@@ -268,6 +297,6 @@ int main(int argc, char** argv) {
   } else if (action == "--help") {
     UsageHelp(argv[0]);
   } else {
-    ArgumentError("Unknown argument: ", action);
+    ArgumentError("Unknown argument: %s", action.data());
   }
 }

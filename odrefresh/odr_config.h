@@ -65,6 +65,7 @@ class OdrConfig final {
   std::string standalone_system_server_jars_;
   bool compilation_os_mode_ = false;
   bool minimal_ = false;
+  std::optional<bool> enable_uffd_gc_;
 
   // Staging directory for artifacts. The directory must exist and will be automatically removed
   // after compilation. If empty, use the default directory.
@@ -145,6 +146,8 @@ class OdrConfig final {
   }
   bool GetCompilationOsMode() const { return compilation_os_mode_; }
   bool GetMinimal() const { return minimal_; }
+  bool HasEnableUffdGc() const { return enable_uffd_gc_.has_value(); }
+  bool GetEnableUffdGc() const { return enable_uffd_gc_.value_or(false); }
 
   void SetApexInfoListFile(const std::string& file_path) { apex_info_list_file_ = file_path; }
   void SetArtBinDir(const std::string& art_bin_dir) { art_bin_dir_ = art_bin_dir; }
@@ -195,6 +198,8 @@ class OdrConfig final {
   void SetCompilationOsMode(bool value) { compilation_os_mode_ = value; }
 
   void SetMinimal(bool value) { minimal_ = value; }
+
+  void SetEnableUffdGc(bool value) { enable_uffd_gc_ = value; }
 
  private:
   // Returns a pair for the possible instruction sets for the configured instruction set

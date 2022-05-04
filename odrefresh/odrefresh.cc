@@ -685,13 +685,13 @@ Result<void> OnDeviceRefresh::WriteCacheInfo() const {
     return Errorf("Cannot open {} for writing.", QuotePath(cache_info_filename_));
   }
 
-  art_apex::CacheInfo info(
-      {art_module_info},
-      {art_apex::ModuleInfoList(module_info_list)},
-      {art_apex::Classpath(bcp_components.value())},
-      {art_apex::Classpath(bcp_compilable_components.value())},
-      {art_apex::SystemServerComponents(system_server_components.value())},
-      config_.GetCompilationOsMode() ? std::make_optional(true) : std::nullopt);
+  art_apex::CacheInfo info({art_module_info},
+                           {art_apex::ModuleInfoList(module_info_list)},
+                           {art_apex::Classpath(bcp_components.value())},
+                           {art_apex::Classpath(bcp_compilable_components.value())},
+                           {art_apex::SystemServerComponents(system_server_components.value())},
+                           config_.GetCompilationOsMode() ? std::make_optional(true) : std::nullopt,
+                           config_.GetEnableUffdGc() ? std::make_optional(true) : std::nullopt);
 
   art_apex::write(out, info);
   out.close();
@@ -836,16 +836,48 @@ WARN_UNUSED bool OnDeviceRefresh::SystemServerArtifactsExist(
   return jars_missing_artifacts->empty();
 }
 
+WARN_UNUSED bool OnDeviceRefresh::BootClasspathArtifactsOnSystemUsable(
+    const apex::ApexInfo& art_apex_info) const {
+  if (!art_apex_info.getIsFactory()) {
+    return false;
+  }
+  LOG(INFO) << "Factory ART APEX mounted.";
+
+  // Currently, the system image is built with userfaultfd GC disabled.
+  if (config_.GetEnableUffdGc()) {
+    return false;
+  }
+  LOG(INFO) << "Userfaultfd GC disabled.";
+
+  return true;
+}
+
+WARN_UNUSED bool OnDeviceRefresh::SystemServerArtifactsOnSystemUsable(
+    const std::vector<apex::ApexInfo>& apex_info_list) const {
+  if (std::any_of(apex_info_list.begin(),
+                  apex_info_list.end(),
+                  [](const apex::ApexInfo& apex_info) { return !apex_info.getIsFactory(); })) {
+    return false;
+  }
+  LOG(INFO) << "Factory APEXes mounted.";
+
+  // Currently, the system image is built with userfaultfd GC disabled.
+  if (config_.GetEnableUffdGc()) {
+    return false;
+  }
+  LOG(INFO) << "Userfaultfd GC disabled.";
+
+  return true;
+}
+
 WARN_UNUSED bool OnDeviceRefresh::CheckBootClasspathArtifactsAreUpToDate(
     OdrMetrics& metrics,
     const InstructionSet isa,
     const apex::ApexInfo& art_apex_info,
     const std::optional<art_apex::CacheInfo>& cache_info,
     /*out*/ std::vector<std::string>* checked_artifacts) const {
-  if (art_apex_info.getIsFactory()) {
-    LOG(INFO) << "Factory ART APEX mounted.";
-
-    // ART is not updated, so we can use the artifacts on /system. Check if they exist.
+  if (BootClasspathArtifactsOnSystemUsable(art_apex_info)) {
+    // We can use the artifacts on /system. Check if they exist.
     std::string error_msg;
     if (BootClasspathArtifactsExist(/*on_system=*/true, /*minimal=*/false, isa, &error_msg)) {
       return true;
@@ -896,6 +928,15 @@ WARN_UNUSED bool OnDeviceRefresh::CheckBootClasspathArtifactsAreUpToDate(
   if (cached_art_last_update_millis != art_apex_info.getLastUpdateMillis()) {
     LOG(INFO) << "ART APEX last update time mismatch (" << cached_art_last_update_millis
               << " != " << art_apex_info.getLastUpdateMillis() << ").";
+    metrics.SetTrigger(OdrMetrics::Trigger::kApexVersionMismatch);
+    return false;
+  }
+
+  bool cached_enable_uffd_gc =
+      cache_info->hasEnableUffdGc() ? cache_info->getEnableUffdGc() : false;
+  if (cached_enable_uffd_gc != config_.GetEnableUffdGc()) {
+    LOG(INFO) << "enable_uffd_gc changed (before: " << cached_enable_uffd_gc
+              << ", after: " << config_.GetEnableUffdGc() << ").";
     metrics.SetTrigger(OdrMetrics::Trigger::kApexVersionMismatch);
     return false;
   }
@@ -961,12 +1002,8 @@ bool OnDeviceRefresh::CheckSystemServerArtifactsAreUpToDate(
   std::set<std::string> jars_missing_artifacts_on_system;
   bool artifacts_on_system_up_to_date = false;
 
-  if (std::all_of(apex_info_list.begin(),
-                  apex_info_list.end(),
-                  [](const apex::ApexInfo& apex_info) { return apex_info.getIsFactory(); })) {
-    LOG(INFO) << "Factory APEXes mounted.";
-
-    // APEXes are not updated, so we can use the artifacts on /system. Check if they exist.
+  if (SystemServerArtifactsOnSystemUsable(apex_info_list)) {
+    // We can use the artifacts on /system. Check if they exist.
     std::string error_msg;
     if (SystemServerArtifactsExist(
             /*on_system=*/true, &error_msg, &jars_missing_artifacts_on_system)) {
@@ -1050,6 +1087,15 @@ bool OnDeviceRefresh::CheckSystemServerArtifactsAreUpToDate(
       metrics.SetTrigger(OdrMetrics::Trigger::kApexVersionMismatch);
       return compile_all();
     }
+  }
+
+  bool cached_enable_uffd_gc =
+      cache_info->hasEnableUffdGc() ? cache_info->getEnableUffdGc() : false;
+  if (cached_enable_uffd_gc != config_.GetEnableUffdGc()) {
+    LOG(INFO) << "enable_uffd_gc changed (before: " << cached_enable_uffd_gc
+              << ", after: " << config_.GetEnableUffdGc() << ").";
+    metrics.SetTrigger(OdrMetrics::Trigger::kApexVersionMismatch);
+    return false;
   }
 
   // Check system server components.

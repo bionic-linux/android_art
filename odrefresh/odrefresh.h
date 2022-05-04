@@ -140,6 +140,16 @@ class OnDeviceRefresh final {
       /*out*/ std::set<std::string>* jars_missing_artifacts,
       /*out*/ std::vector<std::string>* checked_artifacts = nullptr) const;
 
+  // Returns true if boot classpath artifacts on /system are usable if they exist. Note that this
+  // function does not check file existence.
+  WARN_UNUSED bool BootClasspathArtifactsOnSystemUsable(
+      const com::android::apex::ApexInfo& art_apex_info) const;
+
+  // Returns true if system_server artifacts on /system are usable if they exist. Note that this
+  // function does not check file existence.
+  WARN_UNUSED bool SystemServerArtifactsOnSystemUsable(
+      const std::vector<com::android::apex::ApexInfo>& apex_info_list) const;
+
   // Checks whether all boot classpath artifacts are up to date. Returns true if all are present,
   // false otherwise.
   // If `checked_artifacts` is present, adds checked artifacts to `checked_artifacts`.
