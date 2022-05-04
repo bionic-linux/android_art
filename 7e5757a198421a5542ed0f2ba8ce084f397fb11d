@@ -16,6 +16,29 @@
       "message": "Add some context?",
       "revId": "7e5757a198421a5542ed0f2ba8ce084f397fb11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bafc81_b581f5e7",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-05-04T12:19:58Z",
+      "side": 1,
+      "message": "This should be between double quotes (for consistency with other `#error` uses).",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "7e5757a198421a5542ed0f2ba8ce084f397fb11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
