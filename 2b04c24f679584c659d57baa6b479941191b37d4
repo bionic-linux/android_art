@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "accd8e71_c7413469",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-04T15:36:43Z",
+      "side": 1,
+      "message": "Merge conflict. Needs to land on tm-dev first (ag/18163774).",
+      "revId": "2b04c24f679584c659d57baa6b479941191b37d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
