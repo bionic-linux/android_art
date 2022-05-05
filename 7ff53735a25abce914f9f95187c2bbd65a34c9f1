@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aeb0969_c1cb80d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-05-05T05:01:14Z",
+      "side": 1,
+      "message": "Passed presubmit modulo one resource failure in the run: \"No capacity available to run this test.\"",
+      "revId": "7ff53735a25abce914f9f95187c2bbd65a34c9f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
