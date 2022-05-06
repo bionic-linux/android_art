@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1c3699_b9f5c7d3",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "I strongly suspect the code here is right, but I still don\u0027t understand the comment. Is \"it\" the status byte or the page contents?\n\nThe memory_order specifies whether accesses to other memory locations are made visible to threads that see the result of the write here or vice-versa. Accesses to a single memory location are always totally ordered. It seems that the atomicity here is only needed to ensure that a single thread does the mapping. Memory_order_relaxed suffices for that. The system call guarantees that the memory copied into the page is visible to the threads that faulted the page.",
+      "range": {
+        "startLine": 1794,
+        "startChar": 6,
+        "endLine": 1796,
+        "endChar": 20
+      },
+      "revId": "42dbf626e9bb4d9b389ed9ef5914b5bc06785ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

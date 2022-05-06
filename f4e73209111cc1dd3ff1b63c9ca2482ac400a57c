@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4439f06e_e8e60ed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "Finished a complete pass through this one.",
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901023ce_2efabc21",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1852,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "So why not just move it into the if-clause above?",
+      "range": {
+        "startLine": 1852,
+        "startChar": 2,
+        "endLine": 1852,
+        "endChar": 68
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e587501_05db40df",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "Why are you returning this? To be extra-safe, you could store it into a volatile. I think even a local variable should do. But I don\u0027t think the compiler is allowed to eliminate dead volatile reads; it must assume they can have side-effects.\nThis is also not really effective, if we compile with any sort of link-time optimization (which we probably currently don\u0027t, but I\u0027m not sure).",
+      "range": {
+        "startLine": 1016,
+        "startChar": 1,
+        "endLine": 1016,
+        "endChar": 13
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d83730_f917040e",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "So why were we doing this before? Or was this introduced by one of the other CLs?",
+      "range": {
+        "startLine": 1150,
+        "startChar": 3,
+        "endLine": 1152,
+        "endChar": 0
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88eda5de_b0e77b71",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "Is there an easy way to turn this into a CHECK or DCHECK?",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

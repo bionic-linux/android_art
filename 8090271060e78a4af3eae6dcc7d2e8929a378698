@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "030b04d2_bd9f795a",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-06T01:40:21Z",
+      "side": 1,
+      "message": "It\u0027s the first object any part of which appears on the ith post-compact page, right? The current phrasing is a bit ambiguous if an object starts on the first byte of the ith post-compact page.",
+      "parentUuid": "aa2e3819_cdaa6e1a",
+      "range": {
+        "startLine": 490,
+        "startChar": 36,
+        "endLine": 491,
+        "endChar": 23
+      },
+      "revId": "8090271060e78a4af3eae6dcc7d2e8929a378698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9228c2f_424cbffd",
         "filename": "runtime/gc/collector/mark_compact.h",
         "patchSetId": 15
