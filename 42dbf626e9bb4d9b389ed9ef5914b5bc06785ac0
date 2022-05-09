@@ -22,6 +22,30 @@
       },
       "revId": "42dbf626e9bb4d9b389ed9ef5914b5bc06785ac0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc4ed69_26c3d832",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-09T19:26:59Z",
+      "side": 1,
+      "message": "\"it\" here means status byte. Updated the comment.\n\nThanks for the description. That\u0027s indeed the reason why I used \u0027relaxed\u0027 memory order. System call is handling the case.",
+      "parentUuid": "ca1c3699_b9f5c7d3",
+      "range": {
+        "startLine": 1794,
+        "startChar": 6,
+        "endLine": 1796,
+        "endChar": 20
+      },
+      "revId": "42dbf626e9bb4d9b389ed9ef5914b5bc06785ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
