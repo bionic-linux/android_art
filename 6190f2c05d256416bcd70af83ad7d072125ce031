@@ -46,6 +46,30 @@
       },
       "revId": "6190f2c05d256416bcd70af83ad7d072125ce031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869f7c47_777a42b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-09T21:22:09Z",
+      "side": 1,
+      "message": "From the PrimitiveArrayCritical POV, the new GC behaves like CC. So it should be sufficient.",
+      "parentUuid": "810cb089_5878f268",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "6190f2c05d256416bcd70af83ad7d072125ce031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
