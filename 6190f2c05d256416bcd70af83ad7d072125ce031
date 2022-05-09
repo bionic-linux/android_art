@@ -22,6 +22,30 @@
       },
       "revId": "6190f2c05d256416bcd70af83ad7d072125ce031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "810cb089_5878f268",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-09T21:14:19Z",
+      "side": 1,
+      "message": "One remaining issue here is that I\u0027m not checking disable_moving_gc_count_, which is used by CMS. But if the new GC also doesn\u0027t use this, this seems fine. Disable_moving_gc_count_ is much harder to deal with, since there\u0027s only a global counter.",
+      "parentUuid": "a6adc6a3_458b68fa",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "6190f2c05d256416bcd70af83ad7d072125ce031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
