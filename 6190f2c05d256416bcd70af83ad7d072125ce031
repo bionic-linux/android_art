@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6adc6a3_458b68fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-09T16:48:59Z",
+      "side": 1,
+      "message": "It\u0027s good that you added the check even when read-barrier isn\u0027t enabled because the new GC does use thread-flip. So that case will also be covered with this. Thanks.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "6190f2c05d256416bcd70af83ad7d072125ce031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
