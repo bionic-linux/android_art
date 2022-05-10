@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce62458_8c2730cd",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-10T16:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066d23fa_e7252b82",
+      "range": {
+        "startLine": 1016,
+        "startChar": 1,
+        "endLine": 1016,
+        "endChar": 13
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0d83730_f917040e",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "I\u0027d probably omit the Wait. My concern is just that I want to notice if we later change the code from elsewhere, so that this assertion no longer holds.",
       "parentUuid": "6bc23098_8a0d916a",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "f4e73209111cc1dd3ff1b63c9ca2482ac400a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5945fb73_142a8796",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-05-10T16:24:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d7987a_f79a1e2f",
       "range": {
         "startLine": 104,
         "startChar": 1,
