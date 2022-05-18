@@ -19,7 +19,14 @@
 //
 public class Main {
 
+  public static void expectEquals(int expected, int value) {
+    if (expected != value) {
+      throw new Error("Expected: " + expected + ", found: " + value);
+    }
+  }
+
   static final int LENGTH = 4 * 1024;
+  static final int LENGTH_SMALL = 128;
   int[][] a = new int[LENGTH][];
 
   public Main() {
@@ -149,6 +156,26 @@ public class Main {
     }
   }
 
+  public void $compile$noinline$loopWithAllocations() {
+    for (int i = 0; i < LENGTH; i++) {
+      a[i] = new int[LENGTH_SMALL];
+      for (int j = 0; j < LENGTH_SMALL; j++) {
+        a[i][j] = j;
+      }
+    }
+  }
+
+  public void testLoopWithAllocations() {
+    $compile$noinline$loopWithAllocations();
+
+    for (int i = 0; i < LENGTH; i++) {
+      for (int j = 0; j < LENGTH_SMALL; j++) {
+        expectEquals(j, a[i][j]);
+      }
+    }
+    System.out.println("LoopWithAllocations passed");
+  }
+
   public static void main(String[] args) throws Exception {
     System.loadLibrary(args[0]);
     Main obj = new Main();
@@ -162,6 +189,8 @@ public class Main {
     testJNI();
 
     testExceptions();
+
+    obj.testLoopWithAllocations();
 
     System.out.println("passed");
   }

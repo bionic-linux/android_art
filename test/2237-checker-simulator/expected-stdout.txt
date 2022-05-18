@@ -7,4 +7,5 @@ No exception thrown as expected
 ArithmeticException caught as expected
 Java_Main_jniNewException REACHED!
 Exception caught: java.lang.RuntimeException: Thrown from JNI thrown
+LoopWithAllocations passed
 passed

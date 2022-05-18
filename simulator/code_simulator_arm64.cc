@@ -1555,6 +1555,12 @@ class CustomSimulator final: public Simulator {
       } else if (target == AddressOf(artInvokeObsoleteMethod)) {
         WriteLr(next_instr);
         RuntimeCallNonVoid(artInvokeObsoleteMethod);
+      } else if (target == AddressOf(artAllocArrayFromCodeResolvedRosAlloc)) {
+        WriteLr(next_instr);
+        RuntimeCallNonVoid(artAllocArrayFromCodeResolvedRosAlloc);
+      } else if (target == AddressOf(artTestSuspendFromCode)) {
+        WriteLr(next_instr);
+        RuntimeCallVoid(artTestSuspendFromCode);
       } else {
         // For branching to fixed addresses or labels, nothing has changed.
         Simulator::VisitUnconditionalBranchToRegister(instr);
@@ -1669,6 +1675,8 @@ SimulatorEntryPointsManagerArm64::~SimulatorEntryPointsManagerArm64() {
   DeleteEntryPointBuffer(entry_points_.pQuickToInterpreterBridge);
   DeleteEntryPointBuffer(entry_points_.pQuickGenericJniTrampoline);
   DeleteEntryPointBuffer(entry_points_.pThrowDivZero);
+  DeleteEntryPointBuffer(entry_points_.pAllocArrayResolved32);
+  DeleteEntryPointBuffer(entry_points_.pTestSuspend);
 }
 
 void SimulatorEntryPointsManagerArm64::InitCustomEntryPoints() {
@@ -1703,7 +1711,13 @@ void SimulatorEntryPointsManagerArm64::InitCustomEntryPoints() {
       &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_generic_jni_trampoline>(
           &entry_points_.pQuickGenericJniTrampoline);
   VIXLAsmQuickEntryPointBuilder::GenerateStub<
-     &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_throw_div_zero>(&entry_points_.pThrowDivZero);
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_throw_div_zero>(&entry_points_.pThrowDivZero);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_alloc_array_resolved>(
+          &entry_points_.pAllocArrayResolved32);
+  VIXLAsmQuickEntryPointBuilder::GenerateStub<
+      &VIXLAsmQuickEntryPointBuilder::Emit_art_quick_test_suspend>(
+          &entry_points_.pTestSuspend);
 }
 
 void SimulatorEntryPointsManagerArm64::UpdateOthersEntryPoints(
@@ -1712,6 +1726,8 @@ void SimulatorEntryPointsManagerArm64::UpdateOthersEntryPoints(
   others_entry_points->pQuickToInterpreterBridge = entry_points_.pQuickToInterpreterBridge;
   others_entry_points->pQuickGenericJniTrampoline = entry_points_.pQuickGenericJniTrampoline;
   others_entry_points->pThrowDivZero = entry_points_.pThrowDivZero;
+  others_entry_points->pAllocArrayResolved32 = entry_points_.pAllocArrayResolved32;
+  others_entry_points->pTestSuspend = entry_points_.pTestSuspend;
 }
 
 #endif
