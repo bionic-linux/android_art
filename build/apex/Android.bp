@@ -430,7 +430,12 @@ apex_test {
     certificate: ":com.android.art.certificate",
     tests: art_gtests,
     binaries: ["signal_dumper"], // Need signal_dumper for run-tests.
-    updatable: false,
+    // Make this APEX updatable to prevent symlink optimizations,
+    // because we want all dependencies to be packaged in this APEX
+    // (instead of symbolic links to their counterparts on the
+    // `system` partition, which may not even exist, as in the case
+    // of `libbacktrace`).
+    updatable: true,
 }
 
 // TODO: Do this better. art_apex_test_host will disable host builds when
