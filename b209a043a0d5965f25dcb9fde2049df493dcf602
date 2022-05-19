@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2921c16_d223caa4",
+        "filename": "profman/profile_assistant.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1942415
+      },
+      "writtenOn": "2022-05-19T03:09:38Z",
+      "side": 1,
+      "message": "Why was this var changed to 20? It seems this change wiil caused fewers apps dex2oat compiling been triggered in bg-dexopt.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 77
+      },
+      "revId": "b209a043a0d5965f25dcb9fde2049df493dcf602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
