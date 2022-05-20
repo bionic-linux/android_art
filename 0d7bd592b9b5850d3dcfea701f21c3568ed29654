@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668f5084_4906b7f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-20T10:12:27Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand the problem. I think it depends on the test situation:\n\n1. Either there\u0027s some version skew between the APEX and the platform image it\u0027s pushed to, i.e. they don\u0027t come from the same build. Then setting `updatable: false` is the right thing to do.\n\n2. Or else the symlink optimisation created a broken symlink to a libbacktrace.so that doesn\u0027t actually exist. Iow it would have worked fine to do symlinks if they were done correctly, so the symlink optimisation is simply broken and should be fixed.\n\nIf it\u0027s #1, then that brings along its own problem as you can see in all the build failures - it adds a whole lot of garbage to allowed-deps.txt, which I think was the reason it didn\u0027t have `updatable` set earlier.\n\n[Insert Anton muttering about `updatable` being an altogether broken setting controlling too much here.] I\u0027ve got more to say about the #1 situation, but let\u0027s first confirm if that is indeed the case.",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "0d7bd592b9b5850d3dcfea701f21c3568ed29654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
