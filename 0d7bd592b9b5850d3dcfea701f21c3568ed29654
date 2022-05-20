@@ -46,6 +46,30 @@
       },
       "revId": "0d7bd592b9b5850d3dcfea701f21c3568ed29654",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f20bc8a_26527ddd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-05-20T15:26:10Z",
+      "side": 1,
+      "message": "I think there are two problems here:\n\n1. The Testing ART APEX should not use the symlink optimization, as I believe this optimization should only be used for APEXes bundled with an Android platform product ;\n2. The symlink optimization should not create dangling symlinks – I\u0027ve filed another bug for this (b/233357459), as I think this should be handled separately.\n\nThis CL is about addressing the first problem only. Ideally, I think all test APEXes should never use the symlink optimization, as they are never meant to be bundled with a product. I was thinking about implementing this change in Soong, but then I thought that other module authors may have a different opinion on this, so I went for a more local solution. However, as this CL\u0027s presubmit failures are showing, using `updatable: true` does not work out-of-the-box, so might not be the best solution here.\n\nThere was also the option to add (yet another) toggle to control this behavior – during my investigation, I discovered that Jooyung implemented exactly this idea (https://android-review.googlesource.com/c/platform/build/soong/+/1708173) to solve a related issue (b/188195485), but finally opted for another approach and abandoned that change.\n\nI have another solution (see https://android-review.googlesource.com/c/platform/art/+/2101705), which is not as \"clean\" – this is probably acceptable, given that we intend to get rid of the Testing ART APEX eventually – and which has the benefit of still being local.",
+      "parentUuid": "0d681f8f_96a816f7",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "0d7bd592b9b5850d3dcfea701f21c3568ed29654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
