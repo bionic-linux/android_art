@@ -22,6 +22,30 @@
       },
       "revId": "0d7bd592b9b5850d3dcfea701f21c3568ed29654",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d681f8f_96a816f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-20T12:02:35Z",
+      "side": 1,
+      "message": "\u003e Then setting `updatable: false` is the right thing to do.\n\nSorry, confusing typo. I meant to say setting `updatable: true` would the the right thing to do.",
+      "parentUuid": "668f5084_4906b7f4",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "0d7bd592b9b5850d3dcfea701f21c3568ed29654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
