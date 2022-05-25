@@ -33,6 +33,24 @@
       "message": "Why this change, given you use ART_CLANG_PATH below?",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628bdb3f_92a77c9c",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-05-25T15:07:37Z",
+      "side": 1,
+      "message": "1) It should run only on host - we don\u0027t have the Android tree and prebuilts on device.\n\n2) ART_CLANG_PATH is only defined on host builds",
+      "parentUuid": "ba2de286_d2427988",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
