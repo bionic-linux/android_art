@@ -69,6 +69,24 @@
       "parentUuid": "628bdb3f_92a77c9c",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daaf9092_e791af60",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-05-25T15:22:27Z",
+      "side": 1,
+      "message": "That wouldn\u0027t compile on target builds. (as the presubmits reminded me)",
+      "parentUuid": "c56b8c12_12a71973",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
