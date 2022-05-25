@@ -87,6 +87,24 @@
       "parentUuid": "c56b8c12_12a71973",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1fab26_929c1976",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-05-25T15:26:07Z",
+      "side": 1,
+      "message": "OK, then I\u0027m not sure why you\u0027re changing it 😊 Looks more consistent to still look at whether ART_CLANG_PATH is defined.",
+      "parentUuid": "daaf9092_e791af60",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
