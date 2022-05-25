@@ -16,6 +16,23 @@
       "message": "Nicolas:  Are you still happy with the CL?  I changed it a bit, but the +2 stuck.\n\nI just always use ART_CLANG_PATH on host.  The compiler will complain if it is not defined.\n\nI default to the non-qualified path on target just as default.  We don\u0027t have binaries or symbols on target, so it will not work. (and I guess it never worked there)",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2de286_d2427988",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-05-25T14:45:48Z",
+      "side": 1,
+      "message": "Why this change, given you use ART_CLANG_PATH below?",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
