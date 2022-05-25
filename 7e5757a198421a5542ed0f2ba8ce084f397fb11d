@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "431f200a_4e58d7b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-05-25T14:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66ec7cc_9cf7952a",
+      "revId": "7e5757a198421a5542ed0f2ba8ce084f397fb11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75bafc81_b581f5e7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-04T12:19:58Z",
       "side": 1,
       "message": "This should be between double quotes (for consistency with other `#error` uses).",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "7e5757a198421a5542ed0f2ba8ce084f397fb11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fff841_0f0c1b88",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-05-25T14:37:23Z",
+      "side": 1,
+      "message": "I removed the #error",
+      "parentUuid": "75bafc81_b581f5e7",
       "range": {
         "startLine": 78,
         "startChar": 7,
