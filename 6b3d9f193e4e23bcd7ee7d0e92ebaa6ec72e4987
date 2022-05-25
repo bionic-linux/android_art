@@ -51,6 +51,24 @@
       "parentUuid": "ba2de286_d2427988",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56b8c12_12a71973",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-05-25T15:14:46Z",
+      "side": 1,
+      "message": "OK - Use kIsTargetAndroid then?",
+      "parentUuid": "628bdb3f_92a77c9c",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
