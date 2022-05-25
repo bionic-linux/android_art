@@ -105,6 +105,24 @@
       "parentUuid": "daaf9092_e791af60",
       "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52beb3a_cab147fe",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-05-25T15:32:35Z",
+      "side": 1,
+      "message": "Those two checks are equivalent, yes.  (although the #error in my first PS should not have been there as it gets triggered on target builds)\n\nIt made more sense to me to be explicit that this is host-vs-target difference rather than ART_CLANG_PATH difference.\n\nIn particular, I wanted to make sure the we fail to compile on host if the build system fails to propagate the ART_CLANG_PATH.  (which was the goal of the original #error , but it turns out I have to do it differently)",
+      "parentUuid": "5b1fab26_929c1976",
+      "revId": "6b3d9f193e4e23bcd7ee7d0e92ebaa6ec72e4987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
