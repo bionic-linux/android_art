@@ -106,6 +106,36 @@ constexpr std::optional<int32_t> EncodeDatumId(DatumId datum_id) {
     case DatumId::kFullGcTracingThroughputAvg:
       return std::make_optional(
           statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_FULL_HEAP_TRACING_THROUGHPUT_AVG_MB_PER_SEC);
+    case DatumId::kWorldStopTimeDuringGcSum:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_WORLD_STOP_TIME_COUNTER_MICROS);
+    case DatumId::kWorldStopTimeDuringGcCount:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_WORLD_STOP_TIME_COUNT);
+    case DatumId::kYoungGcThroughputSum:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_YOUNG_GENERATION_COLLECTION_THROUGHPUT_COUNTER_MB_PER_SEC);
+    case DatumId::kYoungGcThroughputCount:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_YOUNG_GENERATION_COLLECTION_THROUGHPUT_COUNT);
+    case DatumId::kFullGcThroughputSum:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_FULL_HEAP_COLLECTION_THROUGHPUT_COUNTER_MB_PER_SEC);
+    case DatumId::kFullGcThroughputCount:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_FULL_HEAP_COLLECTION_THROUGHPUT_COUNT);
+    case DatumId::kYoungGcTracingThroughputSum:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_YOUNG_GENERATION_TRACING_THROUGHPUT_COUNTER_MB_PER_SEC);
+    case DatumId::kYoungGcTracingThroughputCount:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_YOUNG_GENERATION_TRACING_THROUGHPUT_COUNT);
+    case DatumId::kFullGcTracingThroughputSum:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_FULL_HEAP_TRACING_THROUGHPUT_COUNTER_MB_PER_SEC);
+    case DatumId::kFullGcTracingThroughputCount:
+      return std::make_optional(
+          statsd::ART_DATUM_REPORTED__KIND__ART_DATUM_GC_FULL_HEAP_TRACING_THROUGHPUT_COUNT);
   }
 }
 
