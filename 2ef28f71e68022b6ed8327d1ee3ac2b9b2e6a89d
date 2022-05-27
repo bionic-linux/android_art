@@ -157,6 +157,30 @@
       },
       "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5dc1672_0dc902ae",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T18:33:28Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "025b3058_e199c1f9",
+      "range": {
+        "startLine": 522,
+        "startChar": 66,
+        "endLine": 523,
+        "endChar": 19
+      },
+      "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
