@@ -75,7 +75,11 @@ GarbageCollector::GarbageCollector(Heap* heap, const std::string& name)
       gc_throughput_histogram_(nullptr),
       gc_tracing_throughput_hist_(nullptr),
       gc_throughput_avg_(nullptr),
+      gc_throughput_sum_(nullptr),
+      gc_throughput_count_(nullptr),
       gc_tracing_throughput_avg_(nullptr),
+      gc_tracing_throughput_sum_(nullptr),
+      gc_tracing_throughput_count_(nullptr),
       cumulative_timings_(name),
       pause_histogram_lock_("pause histogram lock", kDefaultMutexLevel, true),
       is_transaction_active_(false),
@@ -198,6 +202,8 @@ void GarbageCollector::Run(GcCause gc_cause, bool clear_soft_references) {
   metrics::ArtMetrics* metrics = runtime->GetMetrics();
   // Report STW pause time in microseconds.
   metrics->WorldStopTimeDuringGCAvg()->Add(total_pause_time / 1'000);
+  metrics->WorldStopTimeDuringGcSum()->Add(total_pause_time / 1'000);
+  metrics->WorldStopTimeDuringGcCount()->AddOne();
   // Report total collection time of all GCs put together.
   metrics->TotalGcCollectionTime()->Add(NsToMs(duration_ns));
   if (are_metrics_initialized_) {
@@ -211,11 +217,15 @@ void GarbageCollector::Run(GcCause gc_cause, bool clear_soft_references) {
     throughput /= MB;
     gc_tracing_throughput_hist_->Add(throughput);
     gc_tracing_throughput_avg_->Add(throughput);
+    gc_tracing_throughput_sum_->Add(throughput);
+    gc_tracing_throughput_count_->Add(1u);
 
     // Report GC throughput in MB/s.
     throughput = current_iteration->GetEstimatedThroughput() / MB;
     gc_throughput_histogram_->Add(throughput);
     gc_throughput_avg_->Add(throughput);
+    gc_throughput_sum_->Add(throughput);
+    gc_throughput_count_->Add(1u);
   }
   is_transaction_active_ = false;
 }

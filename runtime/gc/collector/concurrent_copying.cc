@@ -163,14 +163,22 @@ ConcurrentCopying::ConcurrentCopying(Heap* heap,
     gc_throughput_histogram_ = metrics->YoungGcThroughput();
     gc_tracing_throughput_hist_ = metrics->YoungGcTracingThroughput();
     gc_throughput_avg_ = metrics->YoungGcThroughputAvg();
+    gc_throughput_sum_ = metrics->YoungGcThroughputSum();
+    gc_throughput_count_ = metrics->YoungGcThroughputCount();
     gc_tracing_throughput_avg_ = metrics->YoungGcTracingThroughputAvg();
+    gc_tracing_throughput_sum_ = metrics->YoungGcTracingThroughputSum();
+    gc_tracing_throughput_count_ = metrics->YoungGcTracingThroughputCount();
   } else {
     gc_time_histogram_ = metrics->FullGcCollectionTime();
     metrics_gc_count_ = metrics->FullGcCount();
     gc_throughput_histogram_ = metrics->FullGcThroughput();
     gc_tracing_throughput_hist_ = metrics->FullGcTracingThroughput();
     gc_throughput_avg_ = metrics->FullGcThroughputAvg();
+    gc_throughput_sum_ = metrics->FullGcThroughputSum();
+    gc_throughput_count_ = metrics->FullGcThroughputCount();
     gc_tracing_throughput_avg_ = metrics->FullGcTracingThroughputAvg();
+    gc_tracing_throughput_sum_ = metrics->FullGcTracingThroughputSum();
+    gc_tracing_throughput_count_ = metrics->FullGcTracingThroughputCount();
   }
 }
 
