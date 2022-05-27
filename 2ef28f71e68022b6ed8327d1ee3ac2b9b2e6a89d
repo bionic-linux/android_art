@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "260da046_6a419e1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T17:50:26Z",
+      "side": 1,
+      "message": "Some nits about comments. Otherwise looks fine.",
+      "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67aa5826_94ddd76d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T17:50:26Z",
+      "side": 1,
+      "message": "up-to-date",
+      "range": {
+        "startLine": 675,
+        "startChar": 8,
+        "endLine": 675,
+        "endChar": 16
+      },
+      "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25f48d5_c39f66cd",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T17:50:26Z",
+      "side": 1,
+      "message": "Maybe add a comment here, that it also updates freed_objects_ ?",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 376,
+        "endChar": 84
+      },
+      "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d89529_21fddec5",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T17:50:26Z",
+      "side": 1,
+      "message": "I would be more explicit, along the lines of \"Initialized to total object count, and then decremented for each reachable object during marking\".\n\n\"eventually consistent\" means something different in some circles. And IIUC, this is just wrong if you look at it during marking.",
+      "range": {
+        "startLine": 522,
+        "startChar": 66,
+        "endLine": 523,
+        "endChar": 19
+      },
+      "revId": "2ef28f71e68022b6ed8327d1ee3ac2b9b2e6a89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
