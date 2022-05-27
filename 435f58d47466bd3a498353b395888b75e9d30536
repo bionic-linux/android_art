@@ -159,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e81e79_9912ad91",
+        "filename": "runtime/gc/accounting/space_bitmap.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T00:21:05Z",
+      "side": 1,
+      "message": "I was actually suggesting including the ellipses (dots) literally in the output. But this is fine, too.",
+      "parentUuid": "1ad6407d_229ee5e8",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b133704_118f9781",
@@ -290,6 +314,30 @@
       "side": 1,
       "message": "I didn\u0027t understand what benefit would that offer. If the above condition is true, which is checked only in debug builds, then the whole block will be executed, including the log message.",
       "parentUuid": "3bc6e2dd_3aed9669",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 328,
+        "endChar": 47
+      },
+      "revId": "435f58d47466bd3a498353b395888b75e9d30536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a043ce_08cf22eb",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-05-27T00:21:05Z",
+      "side": 1,
+      "message": "True. I\u0027m not sure what I was thinking.",
+      "parentUuid": "beb5d2ac_aaa3cb53",
       "range": {
         "startLine": 327,
         "startChar": 6,
