@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f387061_3ad1fbb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-27T18:21:36Z",
+      "side": 1,
+      "message": "FYI: I believe the open source licensing error is a false positive.",
+      "revId": "99039035bb1daf8885fd2ca9a004580c2f2b9de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
