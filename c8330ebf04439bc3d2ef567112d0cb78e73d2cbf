@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e01a57_2954721c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T15:51:19Z",
+      "side": 1,
+      "message": "While I doubt it fixes the linter warning here, maybe you can clarify that you\u0027re only changing the formatting of the comment, not actually changing the licensing in any way.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3dea245f_95ff5e6c",
@@ -14,6 +37,75 @@
       "writtenOn": "2022-05-30T08:54:18Z",
       "side": 1,
       "message": "FYI: I believe the open source licensing error is a false positive.",
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d33e7f_5034e7c5",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T15:51:19Z",
+      "side": 1,
+      "message": "There\u0027s no mention of this in http://go/artstyle, but judging from a few random .cc files in art/runtime I think we should have standard headers (unistd.h and string) first, then external Android headers, and then ART headers (i.e. BnArtd.h and tools/tools.h).\n\nThen it seems to be basically a coin toss whether \u003c \u003e or \" \" is used for Android headers. I\u0027d love to see a guideline on that. In any case, at least we can try to be consistent about it - afaik there\u0027s no reason to use \u003c \u003e for the Binder headers and \" \" for base/logging.h etc.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640d8038_da3fba11",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T15:51:19Z",
+      "side": 1,
+      "message": "Nit: Since this is only used once I think it\u0027s better to avoid this indirection, but no big deal.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd1f914_dbdef892",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T15:51:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t include the binder_status_t code and may be just an empty string. Judging from the fallback code here, getDescription looks like a better option: https://cs.android.com/android/platform/superproject/+/master:prebuilts/runtime/mainline/platform/sdk/include/frameworks/native/libs/binder/ndk/include_cpp/android/binder_auto_utils.h;l\u003d270-293;drc\u003d0f3dbbd42dedaf0f5511e7625384182cc0660a25",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 41
+      },
       "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
