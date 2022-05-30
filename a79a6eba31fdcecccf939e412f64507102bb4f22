@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5af4adaf_dbb1b056",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-30T17:54:01Z",
+      "side": 0,
+      "message": "Actually, I don\u0027t think we need it. The log tag is \"artd\" anyway with or without this #define. Removed.",
+      "parentUuid": "738db146_65a9a7f4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "a79a6eba31fdcecccf939e412f64507102bb4f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a899f683_0aecf86d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-30T15:51:19Z",
       "side": 0,
       "message": "Isn\u0027t this a good division to keep (as comments)?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "a79a6eba31fdcecccf939e412f64507102bb4f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "553d6924_338ed65f",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-30T17:54:01Z",
+      "side": 0,
+      "message": "I found this misleading. It says \"Server API\". I thought the methods below were implementing some API contracts defined elsewhere, but they are actually not. I think the \"override\" keyword is good enough to distinguish binder APIs from the rest.",
+      "parentUuid": "a899f683_0aecf86d",
       "range": {
         "startLine": 49,
         "startChar": 0,

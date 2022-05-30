@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "55b824fd_ec3baa46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-30T17:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1e01a57_2954721c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3dea245f_95ff5e6c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-05-30T15:51:19Z",
       "side": 1,
       "message": "There\u0027s no mention of this in http://go/artstyle, but judging from a few random .cc files in art/runtime I think we should have standard headers (unistd.h and string) first, then external Android headers, and then ART headers (i.e. BnArtd.h and tools/tools.h).\n\nThen it seems to be basically a coin toss whether \u003c \u003e or \" \" is used for Android headers. I\u0027d love to see a guideline on that. In any case, at least we can try to be consistent about it - afaik there\u0027s no reason to use \u003c \u003e for the Binder headers and \" \" for base/logging.h etc.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4425b1c4_3be625f5",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-30T17:54:01Z",
+      "side": 1,
+      "message": "Right, there is no mention of the order of includes in go/artstyle. Let\u0027s use the google3 style: go/cstyle#Names_and_Order_of_Includes\n\nThe google3 style does NOT require separating project headers from other headers, and I think we should NOT either. Unless we have an exhaustive list of external dependencies defined as `IncludeCategories` in \"art/.clang-format\", it will not be easy to achieve this because it requires a lot of manual efforts from both the author and the reviewer, every time. Very likely, we will mess up the grouping in the future by mistake. Plus, I don\u0027t see much benefit of this. If the goal is just to have a standard to follow, I\u0027d follow the google3 standard.\n\nI was also wondering about the use of \u003c\u003e and \"\", but I couldn\u0027t figure out the principle, so I kept it as is. Since you brought this up, I\u0027d change it to always using \"\" for Android headers.\n\nAlso fixed more wrong includes.",
+      "parentUuid": "b7d33e7f_5034e7c5",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -100,6 +148,30 @@
       "writtenOn": "2022-05-30T15:51:19Z",
       "side": 1,
       "message": "This doesn\u0027t include the binder_status_t code and may be just an empty string. Judging from the fallback code here, getDescription looks like a better option: https://cs.android.com/android/platform/superproject/+/master:prebuilts/runtime/mainline/platform/sdk/include/frameworks/native/libs/binder/ndk/include_cpp/android/binder_auto_utils.h;l\u003d270-293;drc\u003d0f3dbbd42dedaf0f5511e7625384182cc0660a25",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fb84cfe_891f09f1",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-30T17:54:01Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "abd1f914_dbdef892",
       "range": {
         "startLine": 59,
         "startChar": 24,
