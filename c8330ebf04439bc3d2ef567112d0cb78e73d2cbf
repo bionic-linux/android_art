@@ -138,6 +138,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a40cbe06_6904c471",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T22:06:23Z",
+      "side": 1,
+      "message": "However I see this is touched by later CLs in your chain in internal, so I think it\u0027s fine to leave it as-is here and reformat afterwards instead.",
+      "parentUuid": "9fc3fb12_f65f8fcd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "640d8038_da3fba11",
         "filename": "artd/artd.cc",
         "patchSetId": 5
