@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc3fb12_f65f8fcd",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-30T21:56:17Z",
+      "side": 1,
+      "message": "Although it\u0027d be nice if clang-format could dtrt it\u0027s not a deciding factor (unless someone would go through and reformat all the existing code with it).\n\nStyle rules isn\u0027t just what guides mention explicitly (although that certainly helps settling arguments quicker), it\u0027s also what\u0027s de-facto used in the code base, and I see a strong dominance in art/ code to separate Android \"system\" includes from ART internal ones. Please let\u0027s not introduce a different style here.\n\n\u003e Since you brought this up, I\u0027d change it to always using \"\" for Android headers.\n\nSGTM.\n\n\u003e Also fixed more wrong includes.\n\nGood catch, I missed base/logging.h is an ART header. (I\u0027d say that\u0027s also a reason to separate them - it can after all matter which one is included.)",
+      "parentUuid": "4425b1c4_3be625f5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "640d8038_da3fba11",
