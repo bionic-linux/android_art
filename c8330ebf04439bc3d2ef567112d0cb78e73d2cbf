@@ -210,6 +210,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c572e1b3_10cdec86",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-31T13:04:52Z",
+      "side": 1,
+      "message": "FTR, 10 out of 10 files under art/runtime that I picked at random and that have both ART internal and other Android headers have this division, so I think that makes it a very clear established style.\n\nThe fact that there are a few exceptions doesn\u0027t invalidate that (_lots_ of exceptions would, though). Also, that there are some headers that are unclear is irrelevant in this case, because it\u0027s not those headers that are in this CL.\n\nIf you want to start a discussion to change this de-facto style then feel free, but until then this is just adding to the problem by being yet another approach that is breaking consistency.\n\nPersonally I\u0027d prefer to resolve this with the least amount of churn, which would be to 1) add to go/artstyle that headers should be split this way, 2) make the split unambiguous by declaring e.g. headers in art/, libcore/ and libnativehelper/ as internal, and 3) regard any violations as mistakes that should be fixed when convenient (no rush). That seems like the easiest way to align policy with the ground truth and put a quick end to arguments like these, which is the important part.",
+      "parentUuid": "ae909fba_8a0335a8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "640d8038_da3fba11",
         "filename": "artd/artd.cc",
         "patchSetId": 5
