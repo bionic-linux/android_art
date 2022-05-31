@@ -186,6 +186,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ae909fba_8a0335a8",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-31T11:09:06Z",
+      "side": 1,
+      "message": "Discussed offline. I\u0027ll keep this style for now and we can discuss this in the team meeting and try to establish a standard.",
+      "parentUuid": "6a7d94a4_b222cf20",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "640d8038_da3fba11",
         "filename": "artd/artd.cc",
         "patchSetId": 5
