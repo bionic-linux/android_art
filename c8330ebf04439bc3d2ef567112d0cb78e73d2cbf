@@ -162,6 +162,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6a7d94a4_b222cf20",
+        "filename": "artd/artd.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-05-31T09:53:21Z",
+      "side": 1,
+      "message": "It\u0027s okay to rebase the CL chain in internal. I need to do it anyway because this CL is already diverged from it.\n\nHowever, I\u0027m still not convinced that we should separate ART headers from Android headers. I have three concerns:\n\n1. How do we define \"ART headers\"?\n\nEverything under the \"art/\" folder? Everything that goes into the ART APEX? Or everything that the ART team maintains?\n\nFor example, are headers in \"libnativehelper\" regarded as \"ART headers\"?\n\n2. I don\u0027t see a consistency in the existing code.\n\nIf there were a consistency, I\u0027d be happy to keep it. However, there doesn\u0027t look to be one. Therefore, the best we can do is to have a standard to follow in new code. I would choose the google3 style because it is easy to follow and widely adopted at Google.\n\nThere seems to be some sort of consistency in terms of grouping \"libbase\" includes, but the consistency of placing other includes is poor. Examples:\n\n\"libbacktrace\": https://source.corp.google.com/search?q\u003d%22backtrace%2F%22%20lang:cc%20f:%5Eart\u0026sq\u003dpackage:%5Eandroid-internal$\n\"libnativehelper\": https://source.corp.google.com/search?q\u003d%22nativehelper%2F%22%20lang:cc%20f:%5Eart\u0026sq\u003dpackage:%5Eandroid-internal$\n\"libziparchive\": https://source.corp.google.com/search?q\u003d%22ziparchive%2F%22%20lang:cc%20f:%5Eart\u0026ss\u003dpiper%2FGoogle%2Fandroid-internal\n\nI think the reason why the consistency is poor is that trying to group headers correctly is not something easy to achieve, which also brings up the next concern.\n\n3. It\u0027s hard to group the headers correctly.\n\nIf we really want to achieve this, I do think automation is the key. Unless we have good automation support in \"art/.clang-format\", grouping the headers requires a lot of manual efforts from both the author and the reviewer, every time, and it\u0027s still error-prone. For example, it\u0027s easy to miss that \"base/logging.h\" is actually an \"ART header\". Therefore, such style is not sustainable as it will be broken sooner or later at some point.",
+      "parentUuid": "a40cbe06_6904c471",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "c8330ebf04439bc3d2ef567112d0cb78e73d2cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "640d8038_da3fba11",
         "filename": "artd/artd.cc",
         "patchSetId": 5
