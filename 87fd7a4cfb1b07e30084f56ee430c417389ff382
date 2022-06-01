@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7666474b_66a7700f",
+        "filename": "disassembler/disassembler_arm64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-06-01T09:33:19Z",
+      "side": 1,
+      "message": "Please fix the lint error: `EXPECT_TRUE(false)` to `ADD_FAILURE()`.",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "87fd7a4cfb1b07e30084f56ee430c417389ff382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
