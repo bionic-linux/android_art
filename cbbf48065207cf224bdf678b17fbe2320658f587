@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b317b3_a30baeb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-08T16:30:08Z",
+      "side": 1,
+      "message": "I notice you\u0027re uploading new patch sets. Please let me know when it\u0027s ready for review.",
+      "revId": "cbbf48065207cf224bdf678b17fbe2320658f587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
