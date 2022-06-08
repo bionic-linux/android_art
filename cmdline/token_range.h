@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "android-base/strings.h"
@@ -84,7 +85,7 @@ struct TokenRange {
   TokenRange(std::shared_ptr<TokenList> token_list,
              TokenList::const_iterator it_begin,
              TokenList::const_iterator it_end)
-    : token_list_(token_list),
+    : token_list_(std::move(token_list)),
       begin_(it_begin),
       end_(it_end) {
     assert(it_begin >= token_list->begin());
@@ -99,7 +100,7 @@ struct TokenRange {
 
   // Non-copying constructor. Retains reference to an existing list of tokens, with offset.
   explicit TokenRange(std::shared_ptr<TokenList> token_list)
-    : token_list_(token_list),
+    : token_list_(std::move(token_list)),
       begin_(token_list_->begin()),
       end_(token_list_->end())
   {}
