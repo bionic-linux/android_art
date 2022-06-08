@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43143967_5c9c6f3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1248808
+      },
+      "writtenOn": "2022-06-08T21:20:36Z",
+      "side": 1,
+      "message": "Maybe you should also run actual tests that are reported failing on http://b/233550842 to make this CL helps that issue. For example: \nmts-all -m art_standalone_dex2oat_tests",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
