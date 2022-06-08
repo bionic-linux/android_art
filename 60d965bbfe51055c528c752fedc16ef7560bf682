@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2af1e17_35cc3793",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-06-08T14:15:47Z",
+      "side": 0,
+      "message": "I think this condition was good enough for host.",
+      "revId": "60d965bbfe51055c528c752fedc16ef7560bf682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
