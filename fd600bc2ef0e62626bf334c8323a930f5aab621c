@@ -46,6 +46,30 @@
       },
       "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17eea26e_71c36b56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-09T13:10:31Z",
+      "side": 1,
+      "message": "I think I managed to start a heavy presubmit run with that ATP test: https://android-build.googleplex.com/builds/abtd/run/L15900000955030896",
+      "parentUuid": "b92104fc_d77b2384",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
