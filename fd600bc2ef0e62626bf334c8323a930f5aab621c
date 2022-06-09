@@ -70,6 +70,30 @@
       },
       "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f18a96_04e272b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-09T14:03:37Z",
+      "side": 1,
+      "message": "The heavy presubmit failed:\n\n  PENDING build 00000000000036071580 for target test_suites_arm64 not found\n\nI interpret that as a problem with the chained build setup, which I suspect isn\u0027t supported in presubmit. I think it\u0027s worth submitting anyway to see if it fixes the real ATP test.",
+      "parentUuid": "17eea26e_71c36b56",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
