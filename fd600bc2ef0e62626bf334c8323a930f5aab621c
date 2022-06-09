@@ -94,6 +94,30 @@
       },
       "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9904bdc_f0631674",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-09T14:41:57Z",
+      "side": 1,
+      "message": "\u003e It requires setting up a 64 bit testsuite on a 32 bit device, which isn\u0027t something I can reproduce easily […]\n\nI think you could try and setup a 32-bit Cuttlefish instance and build and run the 64-bit test suite against it to reproduce this issue.\n\n\u003e Btw, I can\u0027t find a way to run or build a command called `mts-all`, and I can\u0027t find any docs about it either.\n\nTo just run the ART MTS test plan, you can do this:\n\n```\nm mts \u0026\u0026 mts-tradefed run commandAndExit mts-art\n```",
+      "parentUuid": "43f18a96_04e272b6",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
