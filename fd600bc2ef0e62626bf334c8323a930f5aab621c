@@ -22,6 +22,30 @@
       },
       "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92104fc_d77b2384",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-09T12:54:35Z",
+      "side": 1,
+      "message": "It requires setting up a 64 bit testsuite on a 32 bit device, which isn\u0027t something I can reproduce easily, so my plan is to submit this and then iterate if it doesn\u0027t fix the problem. But fwiw I added an atest run of that test.\n\nBtw, I can\u0027t find a way to run or build a command called `mts-all`, and I can\u0027t find any docs about it either.",
+      "parentUuid": "43143967_5c9c6f3a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "fd600bc2ef0e62626bf334c8323a930f5aab621c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
