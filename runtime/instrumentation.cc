@@ -399,7 +399,7 @@ void Instrumentation::InitializeMethodsCode(ArtMethod* method, const void* aot_c
   // We check if the class is verified as we need the slow interpreter for lock verification.
   // If the class is not verified, This will be updated in
   // ClassLinker::UpdateClassAfterVerification.
-  if (CanUseNterp(method)) {
+  if (CanUseNterp(method) && !IsDeoptimized(method)) {
     UpdateEntryPoints(method, interpreter::GetNterpEntryPoint());
     return;
   }
@@ -887,11 +887,6 @@ void Instrumentation::ConfigureStubs(const char* key, InstrumentationLevel desir
   }
 
   UpdateStubs();
-}
-
-void Instrumentation::EnableSingleThreadDeopt(const char* key) {
-  // Prepare for single thread deopt by installing instrumentation stubs.
-  ConfigureStubs(key, InstrumentationLevel::kInstrumentWithInstrumentationStubs);
 }
 
 void Instrumentation::UpdateInstrumentationLevel(InstrumentationLevel requested_level) {
