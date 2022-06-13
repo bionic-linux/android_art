@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a0c277_c2c04223",
+        "filename": "test/README.atest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-13T17:29:01Z",
+      "side": 1,
+      "message": "While you\u0027re at it, maybe it\u0027s worth mentioning here that atest isn\u0027t functional on master-art, pointing to b/202254616? It has after all been open for a while and I get the impression it may stay that way for some time yet.",
+      "revId": "e2ee8bbbf25ea35c1200d865224b043603521ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aedbd0bf_b774f46a",
+        "filename": "test/README.atest.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-13T17:29:01Z",
+      "side": 1,
+      "message": "This is mostly a repetition of the text for the testing ART APEX above, which brings more risk of getting stale. I suggest removing this from both sections and add a new one named something like \"Limiting ART gtests execution\" that describes it in general.\n\nAs a point in case, the subtle GTest vs ArtGTest difference I suspect is actually intentional since you\u0027re adding this now. But when the rest of the text is copied it is easy to suspect it was a typo, so it\u0027s better to join them to one description and instead call that out explicitly.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 3
+      },
+      "revId": "e2ee8bbbf25ea35c1200d865224b043603521ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
