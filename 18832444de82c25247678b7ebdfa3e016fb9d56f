@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "288c6ecf_4a47527c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-13T13:30:36Z",
+      "side": 1,
+      "message": "With the original CL in PS1 art_apex_test.py reacted to the added suffixes, which made me doubtful about changing that: http://go/paste/5062600657207296",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "18832444de82c25247678b7ebdfa3e016fb9d56f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
