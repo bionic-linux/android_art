@@ -105,19 +105,15 @@ You can run the tests of a single ART gtest C++ class using the
 atest ArtGtestsTargetInstallApex:JniInternalTest
 ```
 
-This syntax also supports the use of wildcards, e.g.:
-```bash
-atest ArtGtestsTargetInstallApex:*Test*
-```
-
 You can also use Trade Federation options to run a subset of ART gtests, e.g.:
 ```bash
 atest ArtGtestsTargetInstallApex -- \
   --module ArtGtestsTargetInstallApex --test '*JniInternalTest*'
 ```
 
-You can also pass option `--gtest_filter` to the gtest binary to achieve a
-similar effect:
+You can also pass option `--gtest_filter` to the gtest binary via the
+`native-test-flag` option of test runner class `GTest` to achieve a similar
+effect:
 ```bash
 atest ArtGtestsTargetInstallApex -- \
   --test-arg com.android.tradefed.testtype.GTest:native-test-flag:"--gtest_filter=*JniInternalTest*"
@@ -141,6 +137,27 @@ This sequence:
 4. runs the tests within the `chroot` environment; and
 5. cleans up the environment (deactivates the APEXes and removes the `chroot`
    environment).
+
+You can run the tests of a single ART gtest C++ class using the
+`ArtGtestsTargetChroot:`*`<art-gtest-c++-class>`* syntax, e.g.:
+```bash
+atest ArtGtestsTargetChroot:JniInternalTest
+```
+
+You can also use Trade Federation options to run a subset of ART gtests, e.g.:
+```bash
+atest ArtGtestsTargetChroot -- \
+  --module ArtGtestsTargetChroot --test '*JniInternalTest*'
+```
+
+You can also pass option `--gtest_filter` to the gtest binary via the
+`native-test-flag` option of test runner class `ArtGTest` to achieve a similar
+effect:
+```bash
+atest ArtGtestsTargetChroot -- \
+  --test-arg \
+      com.android.tradefed.testtype.ArtGTest:native-test-flag:"--gtest_filter=*JniInternalTest*"
+```
 
 ## Test Mapping
 
