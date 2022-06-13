@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4695618c_3a4da42f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-13T14:29:58Z",
+      "side": 1,
+      "message": "Thanks for updating the doc. That\u0027s useful!",
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab57a7d_2c855321",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-13T14:29:58Z",
+      "side": 1,
+      "message": "Please also mention that:\n\nIf the class is newly added, and you see the \"No test to run\" error when you run tests with this syntax, add \"-c\" to clear the cache.\n\nI spent a lot of time on this error :)",
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0e8c45_7a744d21",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-13T14:29:58Z",
+      "side": 1,
+      "message": "Remove \"*\".",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b7f783_77a5299e",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-13T14:29:58Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 49
+      },
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
