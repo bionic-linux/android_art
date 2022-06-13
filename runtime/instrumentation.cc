@@ -359,7 +359,7 @@ void Instrumentation::InitializeMethodsCode(ArtMethod* method, const void* aot_c
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // Use instrumentation entrypoints if instrumentation is installed.
   if (UNLIKELY(EntryExitStubsInstalled()) && !IsProxyInit(method)) {
-    if (!method->IsNative() && InterpretOnly()) {
+    if (!method->IsNative() && InterpretOnly(method)) {
       UpdateEntryPoints(method, GetQuickToInterpreterBridge());
     } else {
       UpdateEntryPoints(method, GetQuickInstrumentationEntryPoint());
@@ -367,7 +367,7 @@ void Instrumentation::InitializeMethodsCode(ArtMethod* method, const void* aot_c
     return;
   }
 
-  if (UNLIKELY(IsForcedInterpretOnly())) {
+  if (UNLIKELY(IsForcedInterpretOnly() || IsDeoptimized(method))) {
     UpdateEntryPoints(
         method, method->IsNative() ? GetQuickGenericJniStub() : GetQuickToInterpreterBridge());
     return;
