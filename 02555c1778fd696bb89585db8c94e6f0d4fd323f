@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c3e4b7_03a261a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-13T09:03:44Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "02555c1778fd696bb89585db8c94e6f0d4fd323f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbde4da_4e3387ef",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-13T09:03:44Z",
+      "side": 1,
+      "message": "This and the change in MaybeRestoreInstrumentationStack are fixed that went unnoticed because we were using instrumentation stubs. Is it better I move them to different CLs?",
+      "revId": "02555c1778fd696bb89585db8c94e6f0d4fd323f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
