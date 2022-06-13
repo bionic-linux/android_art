@@ -58,6 +58,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ea9828_5e7cd382",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-13T15:08:54Z",
+      "side": 1,
+      "message": "These `*` characters are not literal; they are used to emphasize the surrounded text by rendering it as italics (see the rendered document e.g. here: https://android.googlesource.com/platform/art/+/refs/heads/master/test/README.atest.md).",
+      "parentUuid": "ab0e8c45_7a744d21",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37008ee_78952cdc",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-13T15:08:54Z",
+      "side": 1,
+      "message": "Good idea; done in PS2.",
+      "parentUuid": "dab57a7d_2c855321",
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b7f783_77a5299e",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-06-13T14:29:58Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 49
+      },
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25cc821a_a2472a13",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-13T15:08:54Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "b9b7f783_77a5299e",
       "range": {
         "startLine": 142,
         "startChar": 23,
