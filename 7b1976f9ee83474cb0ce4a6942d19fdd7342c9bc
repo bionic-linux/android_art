@@ -100,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a07d445_0247ec53",
+        "filename": "test/README.atest.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-13T15:14:57Z",
+      "side": 1,
+      "message": "Ah, I see :)",
+      "parentUuid": "a9ea9828_5e7cd382",
+      "range": {
+        "startLine": 103,
+        "startChar": 28,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "7b1976f9ee83474cb0ce4a6942d19fdd7342c9bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b7f783_77a5299e",
