@@ -16,6 +16,24 @@
       "message": "We don\u0027t need any special support to enable single thread deopt.This I think was added because of a race between installing instrumentation and interpreter stubs [1]. If there are no other instrumentation enabled at the point this is called this would be a nop. It would go over the current keys and update them to interpreter and also prevent from using instrumentation stubs later. So unless we had single step / method tracing enabled we would still use JITed code and so the debugger was fast.\n\nWe later fixed the race but when we cleaned it up the implementation slightly changed the semantics to install the stubs always [2]. It is no longer necessary to do anything special here. \n\n[1] https://android-review.googlesource.com/c/platform/art/+/956329\n[2] https://android-review.googlesource.com/c/platform/art/+/1916487",
       "revId": "72d34953e401937306bf9b282f677824949dfa8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855dfee5_075cdb3c",
+        "filename": "openjdkjvmti/deopt_manager.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-14T18:02:50Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "09ff83fe_66ae8cc6",
+      "revId": "72d34953e401937306bf9b282f677824949dfa8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

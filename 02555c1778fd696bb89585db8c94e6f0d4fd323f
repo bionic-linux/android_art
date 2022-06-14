@@ -33,6 +33,24 @@
       "message": "This and the change in MaybeRestoreInstrumentationStack are fixed that went unnoticed because we were using instrumentation stubs. Is it better I move them to different CLs?",
       "revId": "02555c1778fd696bb89585db8c94e6f0d4fd323f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3991802_a622403f",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-14T18:02:50Z",
+      "side": 1,
+      "message": "Let\u0027s keep them in one CL for simplicity.",
+      "parentUuid": "4bbde4da_4e3387ef",
+      "revId": "02555c1778fd696bb89585db8c94e6f0d4fd323f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
