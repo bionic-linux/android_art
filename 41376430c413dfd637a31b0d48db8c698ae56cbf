@@ -317,6 +317,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d18d3e68_c488bb2b",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-15T15:18:17Z",
+      "side": 1,
+      "message": "Alright. I guess the next option is to:\n1. Create an Android.bp file for external/dlmalloc with `cc_library_headers`.\n2. Import it as a `header_libs` of `libart_defaults`.\n3. Replace `#include \"../../xxxxx\"` with `#include \"malloc.h\"`.\n4. Add `--header-filter\u003d(^|/)art/`.\n\nMartin, will this work?",
+      "parentUuid": "d5f2a0ff_20cc8f3e",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
