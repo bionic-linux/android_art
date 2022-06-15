@@ -43,6 +43,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3629512f_dd170acd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T14:26:20Z",
+      "side": 1,
+      "message": "Yes, I have tried all combinations of // NOLINT, // NOLINTENEXTLINE, and // NOLINTBEGIN + // NOLINTEND, but none of them solved the problem.",
+      "parentUuid": "439624f9_63b706c6",
+      "range": {
+        "startLine": 9,
+        "startChar": 203,
+        "endLine": 9,
+        "endChar": 222
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b428dc_eb4abd9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T14:26:20Z",
+      "side": 1,
+      "message": "Stange, I have added this additional information directly in Gerrit (they are not present in my local commit message), so that should have been done automatically - I\u0027ll break it down manually.",
+      "parentUuid": "74c290c3_1a1a32b9",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eee9d472_7ea95108",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -124,6 +166,30 @@
       "writtenOn": "2022-06-15T14:06:14Z",
       "side": 1,
       "message": "According to https://clang.llvm.org/extra/clang-tidy/#suppressing-undesired-diagnostics the proper syntax is `NOLINT(modernize-use-using)`. I suggest using that here too. (I suspect this is actually the same as just `NOLINT`, i.e. it turns off all lint checks.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee07994d_a644ff1a",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T14:26:20Z",
+      "side": 1,
+      "message": "I am aware that would be the proper syntax (and would be my preference, too) - the reason why I went for this approach is that //NOLINT(modernize-use-using) would be recognised by CppLint as one of its suppressions, throwing an error as this is not one of the checks CppLint does (but it\u0027s one of clang-tidy\u0027s).",
+      "parentUuid": "64087f21_799eccd9",
       "range": {
         "startLine": 31,
         "startChar": 37,
