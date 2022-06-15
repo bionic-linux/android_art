@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a05bb45_25cbbddc",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-15T13:11:50Z",
+      "side": 1,
+      "message": "If we leave this, we can\u0027t prevent people from violating this rule in the future. Could you upload a patchset to show how you would exclude external/dlmalloc with --header-filter? It may be interesting for us to play with the path spec.",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
