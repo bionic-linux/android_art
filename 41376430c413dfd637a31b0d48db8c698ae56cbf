@@ -16,6 +16,24 @@
       "message": "If we leave this, we can\u0027t prevent people from violating this rule in the future. Could you upload a patchset to show how you would exclude external/dlmalloc with --header-filter? It may be interesting for us to play with the path spec.",
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de2424c_d4171d77",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T13:55:31Z",
+      "side": 1,
+      "message": "From your comment I understand that you would use the -header-filter flag to _exclude_ some paths from being included in the clang-tidy analysis; I had this idea as well (at first), but it looks like that flag does actually the opposite: by default, clang-tidy should _ignore_ all header files, and you could use -header-files to _include_ the ones that you want to have checked (see https://stackoverflow.com/a/65391968 and https://cs.android.com/android-llvm/toolchain/llvm-project/+/master:clang-tools-extra/test/clang-tidy/readability-identifier-naming.cpp;l\u003d90-92?q\u003dheader-filter)",
+      "parentUuid": "1a05bb45_25cbbddc",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
