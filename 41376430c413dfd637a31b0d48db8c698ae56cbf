@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19582e24_752d99b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T23:11:22Z",
+      "side": 1,
+      "message": "For which compilation unit(s) do you get the errors then?",
+      "parentUuid": "8e2e3a7b_717a59c2",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a05bb45_25cbbddc",
         "filename": "build/Android.bp",
         "patchSetId": 3
@@ -335,6 +353,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e7ef265_cad01c19",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T23:11:22Z",
+      "side": 1,
+      "message": "So the effect of that is that clang gets fed `-Iexternal/dlmalloc` and thus won\u0027t need the ../.. path. Your idea is that that would help avoiding the malloc.h header getting included in the filter somehow? Maybe. I\u0027m not sure since I don\u0027t understand why that happens in the first place, and if it has anything to do with that ../.. path.\n\nSo could be worth a try, I guess, and it\u0027d be a good thing to do anyway. (Somewhat related is to try to clean up this hack https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/allocator/dlmalloc.cc;l\u003d34-42;drc\u003d5a0430d0239481f4efb252d60ec9641703b8d456 so that dlmalloc can become a regular static library instead, but that may be a different cup of tea.)\n\nIn any case, maybe we can get this submitted first with the other comments addressed, and iterate instead? This CL is a bit unwieldy due to the many changed files.",
+      "parentUuid": "d18d3e68_c488bb2b",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
@@ -430,6 +466,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67c16b9f_d7f84ff3",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T23:11:22Z",
+      "side": 1,
+      "message": "Not yet resolved.",
+      "parentUuid": "52f250f7_7dcbd8fe",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc64e102_f8c22a41",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
@@ -459,6 +519,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "cc64e102_f8c22a41",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a516b9bc_40d99022",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T23:11:22Z",
+      "side": 1,
+      "message": "Not yet resolved.",
+      "parentUuid": "f014d4c3_a4987f61",
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
