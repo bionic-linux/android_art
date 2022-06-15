@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e2e3a7b_717a59c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T15:01:54Z",
+      "side": 1,
+      "message": "I hadn\u0027t tried this, because all the error lines specifically mentioned malloc.h as the problematic file - I have tried it now, but I don\u0027t see any improvements.",
+      "parentUuid": "79900731_f84f0069",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a05bb45_25cbbddc",
         "filename": "build/Android.bp",
         "patchSetId": 3
@@ -281,6 +299,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5f2a0ff_20cc8f3e",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T15:01:54Z",
+      "side": 1,
+      "message": "@Jiakai: unfortunately negative lookaheads are not supported, as clang-tidy uses the POSIX regexp syntax (see https://stackoverflow.com/questions/71797349/is-it-possible-to-ignore-a-header-with-clang-tidy)\n\n@Martin: enabling the check for all ART headers and correcting the new issues sounds good (and I will send out a new patchset for this), but it won\u0027t solve the problem with dlmalloc.",
+      "parentUuid": "6cbe02ee_6a022dfe",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
@@ -350,6 +386,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f250f7_7dcbd8fe",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T15:01:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a0c2a6b_2a99512f",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc64e102_f8c22a41",
@@ -363,6 +423,24 @@
       "writtenOn": "2022-06-15T14:50:45Z",
       "side": 1,
       "message": "Please address the AyeAye issue on this line.",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f014d4c3_a4987f61",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T15:01:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc64e102_f8c22a41",
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
