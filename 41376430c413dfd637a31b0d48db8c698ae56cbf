@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fd62ca9_c7e0fc02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T14:31:34Z",
+      "side": 1,
+      "message": "Not even if we disable clang-tidy completely for external/dlmalloc by creating an Android.bp file in there and setting `tidy: false` explicitly?",
+      "parentUuid": "eee9d472_7ea95108",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a05bb45_25cbbddc",
         "filename": "build/Android.bp",
         "patchSetId": 3
