@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5fa635b_ed38b602",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-15T08:56:48Z",
+      "side": 1,
+      "message": "Yes, I missed this one. Though this is not super important after the CL landed. We now install entry exit stubs only when method tracing is enabled. So this should be an issue only when we trace methods when debugger is attached.",
+      "parentUuid": "db003e33_7aac54fd",
+      "range": {
+        "startLine": 362,
+        "startChar": 45,
+        "endLine": 362,
+        "endChar": 51
+      },
+      "revId": "bc55ebae0606b4911cb5fa65b5c4c3d7a2accf3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de3bdc9f_3e8893d9",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-14T18:10:07Z",
       "side": 1,
       "message": "Should this check Runtime::Current()-\u003eGetRuntimeCallbacks()-\u003eIsMethodBeingInspected(method); ?",
+      "revId": "bc55ebae0606b4911cb5fa65b5c4c3d7a2accf3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d15a987_23367c3f",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-15T08:56:48Z",
+      "side": 1,
+      "message": "IsDeoptimized is a super set of IsMethodBeingInspected, so IsDeoptimized is sufficient here. I am planning to remove IsMethodBeingInspected and only use IsDeoptimized to avoid any confusion. We use IsDeoptimized check else where for ex: when updating method\u0027s code or on method exits to see if a method needs to be deoptimized",
+      "parentUuid": "de3bdc9f_3e8893d9",
       "revId": "bc55ebae0606b4911cb5fa65b5c4c3d7a2accf3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
