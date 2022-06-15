@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74c290c3_1a1a32b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:06:14Z",
+      "side": 1,
+      "message": "I think the convention is to break text at column 72 in commit messages (even though Gerrit also does it implicitly).",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439624f9_63b706c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:06:14Z",
+      "side": 1,
+      "message": "Did you try `// NOLINTBEGIN(modernize-use-using)` and `// NOLINTEND` around the #include line?",
+      "range": {
+        "startLine": 9,
+        "startChar": 203,
+        "endLine": 9,
+        "endChar": 222
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee9d472_7ea95108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:06:14Z",
+      "side": 1,
+      "message": "Although this is admittedly a problem, or at least a potential one, I don\u0027t think it has any connection.",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a05bb45_25cbbddc",
         "filename": "build/Android.bp",
         "patchSetId": 3
@@ -32,6 +89,29 @@
       "side": 1,
       "message": "From your comment I understand that you would use the -header-filter flag to _exclude_ some paths from being included in the clang-tidy analysis; I had this idea as well (at first), but it looks like that flag does actually the opposite: by default, clang-tidy should _ignore_ all header files, and you could use -header-files to _include_ the ones that you want to have checked (see https://stackoverflow.com/a/65391968 and https://cs.android.com/android-llvm/toolchain/llvm-project/+/master:clang-tools-extra/test/clang-tidy/readability-identifier-naming.cpp;l\u003d90-92?q\u003dheader-filter)",
       "parentUuid": "1a05bb45_25cbbddc",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64087f21_799eccd9",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:06:14Z",
+      "side": 1,
+      "message": "According to https://clang.llvm.org/extra/clang-tidy/#suppressing-undesired-diagnostics the proper syntax is `NOLINT(modernize-use-using)`. I suggest using that here too. (I suspect this is actually the same as just `NOLINT`, i.e. it turns off all lint checks.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
