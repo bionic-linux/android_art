@@ -173,6 +173,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44ea7623_7bde0126",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-15T14:34:18Z",
+      "side": 1,
+      "message": "I\u0027ve tried this, too - in fact, this surfaces _more_ issues because there are some typedef statements in some ART header files (e.g., `art/libelffile/elf/elf_debug_reader.h`) which are not picked up with the default configuration.",
+      "parentUuid": "4e0e88e6_d674c768",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
