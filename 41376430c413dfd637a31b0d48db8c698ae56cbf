@@ -191,6 +191,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "776b8ac6_7bbc89a5",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-15T14:37:09Z",
+      "side": 1,
+      "message": "Regardless of more issues it surfaces, does the issue with the external header go away?",
+      "parentUuid": "44ea7623_7bde0126",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
