@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e0e88e6_d674c768",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-06-15T14:21:46Z",
+      "side": 1,
+      "message": "Try `-header-filter\u003dart/` to only include ART headers?",
+      "parentUuid": "4de2424c_d4171d77",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
