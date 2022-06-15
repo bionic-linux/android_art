@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79900731_f84f0069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:50:45Z",
+      "side": 1,
+      "message": "Not for clang-tidy warnings that appear from including the header file, no. I think the `tidy: false` applies to the clang invocation for the compilation unit. Can\u0027t imagine there\u0027s magic in place that would somehow pass it along with exported headers so that it gets applied to those headers only. Things aren\u0027t that fancy.\n\nBut, hmm, that means we need to be building the .c file somewhere else. And we do, from https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/allocator/dlmalloc.cc;l\u003d42;drc\u003d5a0430d0239481f4efb252d60ec9641703b8d456. So we may be getting the warnings through several paths. You\u0027ve tried NOLINTBEGIN/NOLINTEND both there and around the header file #include simultaneously?",
+      "parentUuid": "6fd62ca9_c7e0fc02",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a05bb45_25cbbddc",
         "filename": "build/Android.bp",
         "patchSetId": 3
@@ -268,6 +286,47 @@
         "endLine": 31,
         "endChar": 63
       },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0c2a6b_2a99512f",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:50:45Z",
+      "side": 1,
+      "message": "Aha, I see.\n\nIf my suspicion is correct and it actually turns off all checks then I think it\u0027d be better to not give the impression that it disables modernize-use-using only. Maybe something like\n\n`// NOLINT // disable typedef warning`\n\nor just `// NOLINT` if even that isn\u0027t clear enough.\n\nIn any case, since we cannot explain the clang-tidy vs cpplint situation on every line, please do it in the CL description instead.",
+      "parentUuid": "ee07994d_a644ff1a",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc64e102_f8c22a41",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-15T14:50:45Z",
+      "side": 1,
+      "message": "Please address the AyeAye issue on this line.",
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
