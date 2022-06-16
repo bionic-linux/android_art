@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4d2c2e_8d42046a",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-06-16T15:59:36Z",
+      "side": 1,
+      "message": "Please file a bug to consider moving the extra state into http://cs/android/libcore/libart/src/main/java/dalvik/system/ClassExt.java before shipping.",
+      "range": {
+        "startLine": 556,
+        "startChar": 54,
+        "endLine": 556,
+        "endChar": 56
+      },
+      "revId": "c071ff9528f3a08fe20b14053402d3a607b54981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
