@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d214acbf_d958215a",
+        "filename": "compiler/optimizing/codegen_test_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T12:43:42Z",
+      "side": 1,
+      "message": "Yes, that sounds like the best solution, if you can make it pass. (Btw, libnativehelper/ is part of ART so it\u0027d be nice to include that too if it isn\u0027t too much work.)\n\nI suggest postponing this too to a later CL.",
+      "parentUuid": "10e46e01_02b37da8",
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b4d828b_b7a4e37d",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Yes, CppLint will attempt to recognise also // NOLINTNEXTLINE (see https://github.com/google/styleguide/blob/bc0aa941dbed0086b0eaea47eb5619a9980d9563/cpplint/cpplint.py#L596)",
       "parentUuid": "7b4d828b_b7a4e37d",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be48e8f_b871b91e",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T12:43:42Z",
+      "side": 1,
+      "message": "I see, thanks.",
+      "parentUuid": "81796897_f402e4dc",
       "range": {
         "startLine": 46,
         "startChar": 3,
