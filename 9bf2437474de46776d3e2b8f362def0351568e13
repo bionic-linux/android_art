@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e46e01_02b37da8",
+        "filename": "compiler/optimizing/codegen_test_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-16T10:42:03Z",
+      "side": 1,
+      "message": "Correct, I found out about these files only when applying the `-header-filter\u003dart/` flag in build/Android.bp - but I haven\u0027t enabled it because of a collision with the Odrefresh version of the flag:\n\nFAILED: out/soong/.intermediates/art/odrefresh/art_odrefresh_tests/android_x86_64_silvermont_apex31/obj/art/odrefresh/odr_fs_utils.tidy\nCLANG_CMD\u003dclang++ TIDY_FILE\u003dout/soong/.intermediates/art/odrefresh/art_odrefresh_tests/android_x86_64_silvermont_apex31/obj/art/odrefresh/odr_fs_utils.tidy prebuilts/clang/host/linux-x8\n6/clang-r450784e/bin/clang-tidy.sh art/odrefresh/odr_fs_utils.cc -format-style\u003dfile \u0027-header-filter\u003d(art/odrefresh/|system/apex/)\u0027 -extra-arg\u003d-UNDEBUG -extra-arg\u003d-Wno-missing-noreturn -\nextra-arg\u003d-Wno-unreachable-code -header-filter\u003dart/ -quiet -extra-arg-before\u003d-fno-caret-diagnostics -extra-arg-before\u003d-D__clang_analyzer__ -extra-arg-before\u003d-Xclang -extra-arg-before\u003d-a\nnalyzer-config -extra-arg-before\u003d-Xclang -extra-arg-before\u003dc++-temp-dtor-inlining\u003dfalse -checks\u003d-*,android-*,bugprone-*,cert-*,clang-diagnostic-unused-command-line-argument,google-build\n-explicit-make-pair,google-build-namespaces,google-runtime-operator,google-upgrade-*,misc-*,performance-*,portability-*,-bugprone-easily-swappable-parameters,-bugprone-narrowing-convers\nions,-misc-no-recursion,-misc-non-private-member-variables-in-classes,-misc-unused-parameters,-performance-no-int-to-ptr,android-cloexec-open,bugprone-lambda-function-name,bugprone-macr\no-parentheses,bugprone-unused-raii,bugprone-virtual-near-miss,modernize-use-bool-literals,performance-implicit-conversion-in-loop,performance-unnecessary-copy-initialization,performance\n-unnecessary-value-param,android-cloexec-dup,bugprone-argument-comment,bugprone-unused-return-value,misc-unused-using-decls,modernize-use-using,modernize-use-nullptr,performance-faster-\nstring-find,performance-for-range-copy,performance-noexcept-move-constructor,-google-default-arguments,-clang-analyzer-deadcode.DeadStores,-cert-err58-cpp,-cert-dcl50-cpp,-modernize-use\n-auto,-modernize-return-braced-init-list,-modernize-use-default-member-init,-modernize-pass-by-value,-misc-no-recursion,-readability-function-cognitive-complexity,-bugprone-reserved-ide\nntifier*,-cert-dcl51-cpp,-cert-dcl37-c,-readability-qualified-auto,-bugprone-signed-char-misuse,-bugprone-branch-clone,-bugprone-implicit-widening-of-multiplication-result,-bugprone-eas\nily-swappable-parameters,-cert-err33-c -warnings-as-errors\u003dandroid-cloexec-open,bugprone-lambda-function-name,bugprone-macro-parentheses,bugprone-unused-raii,bugprone-virtual-near-miss,\nmodernize-use-bool-literals,performance-implicit-conversion-in-loop,performance-unnecessary-copy-initialization,performance-unnecessary-value-param -- -D__ANDROID_APEX__ -D__ANDROID_APE\nX_MIN_SDK_VERSION__\u003d31  -Werror\u003dimplicit-function-declaration -DANDROID -fmessage-length\u003d0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -Wunreachable-code-loop-increment -no-canonic\nal-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fdebug-default-version\u003d5 -fno-strict-aliasing -Werror\u003ddate-time -Werror\u003dpragma-pack -Werror\u003dpragma-pack-suspicious-in\nclude -Werror\u003dstring-plus-int -Werror\u003dunreachable-code-loop-increment -D__compiler_offsetof\u003d__builtin_offsetof -faddrsig -fcommon -Werror\u003dint-conversion -fexperimental-new-pass-manager \n-Wno-reserved-id-macro -fcolor-diagnostics -Wno-sign-compare -Wno-defaulted-function-deleted -Wno-inconsistent-missing-override -Wno-c99-designator -Wno-gnu-designator -Wno-gnu-folding-\nconstant -Wunguarded-availability -D__ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__ -ffp-contract\u003doff -fdebug-prefix-map\u003d/proc/self/cwd\u003d -ftrivial-auto-var-init\u003dzero -enable-trivial-auto-var-i\nnit-zero-knowing-it-will-be-removed-from-clang -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE\u003d2 -Wstri\nct-aliasing\u003d2 -Werror\u003dreturn-type -Werror\u003dnon-virtual-dtor -Werror\u003daddress -Werror\u003dsequence-point -Werror\u003dformat-security -nostdlibinc -fdebug-info-for-profiling -m64 -march\u003dslm -mssse3\n -msse4 -msse4.1 -msse4.2 -maes -mpopcnt -target x86_64-linux-android31 -DANDROID_STRICT -fPIE -Wsign-promo -Wimplicit-fallthrough -D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS -Wno-gnu-in\nclude-next -fvisibility-inlines-hidden  -Iart/odrefresh/include -Iart/odrefresh -D__LIBLOG_API__\u003d10000 -D__LIBZ_API__\u003d10000 -D__LIBC_API__\u003d10000 -D__LIBM_API__\u003d10000 -D__LIBDL_API__\u003d100\n00 -Iart/dexoptanalyzer -Iart/odrefresh/include -Iexternal/libcxx/include -Iexternal/googletest/googlemock/include -Iexternal/libcxxabi/include -Iart/libartpalette/include -Isystem/libb\nase/include -Iexternal/fmtlib/include -Isystem/logging/liblog/include -Iexternal/zlib -Iart/runtime -Ibionic/libc/platform -Iart/libartbase -Iexternal/tinyxml2 -Iexternal/cpu_features/i\nnclude -Iart/libdexfile -Ilibnativehelper/include_jni -Iart/libdexfile/external/include -Iout/soong/.intermediates/art/tools/cpp-define-generator/cpp-define-generator-asm-support/androi\nd_x86_64_silvermont_apex31/gen -Iart/disassembler -Isystem/testing/gtest_extras/include -Iexternal/googletest/googletest/include -Iart/libprofile -Ilibnativehelper/header_only_include -\nIlibnativehelper/include -Ilibnativehelper/include_platform -Ilibnativehelper/include_platform_header_only -Ibionic/libc/async_safe/include -Ibionic/libc/system_properties/include -Isys\ntem/core/property_service/libpropertyinfoparser/include -Iout/soong/.intermediates/system/apex/apexd/apex-info-list-tinyxml/gen/cpp/include -Iout/soong/.intermediates/art/odrefresh/art-\napex-cache-info/gen/cpp/include -Iout/soong/.intermediates/art/odrefresh/art-odrefresh-operator-srcs/gen/gensrcs -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi/asm-x86 -i\nsystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -DDYNAMIC_ANNOTATIONS_ENABLED\u003d1 -DVIXL_DEBUG -UNDEBUG -O2 -fno-rtti -ggd\nb3 -Wall -Werror -Wextra -Wstrict-aliasing -fstrict-aliasing -Wunreachable-code -Wredundant-decls -Wshadow -Wunused -fvisibility\u003dprotected -Wthread-safety -Wimplicit-fallthrough -Wfloat\n-equal -Wint-to-void-pointer-cast -Wused-but-marked-unused -Wdeprecated -Wunreachable-code-break -Wunreachable-code-return -Wno-invalid-offsetof -Winconsistent-missing-override -D_LIBCP\nP_ENABLE_THREAD_SAFETY_ANNOTATIONS -O3 -DART_DEFAULT_GC_TYPE_IS_CMS -DART_USE_READ_BARRIER\u003d1 -DART_READ_BARRIER_TYPE_IS_BAKER\u003d1 -DART_USE_GENERATIONAL_CC\u003d1 -DART_DEFAULT_COMPACT_DEX_LEV\nEL\u003dfast -DART_STACK_OVERFLOW_GAP_arm\u003d8192 -DART_STACK_OVERFLOW_GAP_arm64\u003d8192 -DART_STACK_OVERFLOW_GAP_x86\u003d8192 -DART_STACK_OVERFLOW_GAP_x86_64\u003d8192 -DUSE_D8_DESUGAR\u003d1 -Wno-used-but-mar\nked-unused -Wno-sign-compare -Wno-deprecated-dynamic-exception-spec -Wno-used-but-marked-unused -Wno-deprecated -Wno-missing-noreturn -Wmissing-noreturn -Wno-frame-larger-than\u003d -DART_EN\nABLE_CODEGEN_arm -DART_ENABLE_CODEGEN_arm64 -DART_ENABLE_CODEGEN_x86 -DART_ENABLE_CODEGEN_x86_64 -DART_TARGET -DART_TARGET_ANDROID -Wframe-larger-than\u003d1736 -DART_FRAME_SIZE_LIMIT\u003d1736 -\nDART_BASE_ADDRESS\u003d0x70000000 \u0027-DART_BASE_ADDRESS_MIN_DELTA\u003d(-0x1000000)\u0027 -DART_BASE_ADDRESS_MAX_DELTA\u003d0x1000000 -Wno-frame-larger-than\u003d -DART_TARGET -DART_TARGET_ANDROID -msse4.2 -mpopc\nnt -std\u003dgnu++17 -fno-rtti -Isystem/core/include -Isystem/logging/liblog/include -Isystem/media/audio/include -Ihardware/libhardware/include -Ihardware/libhardware_legacy/include -Ihardw\nare/ril/include -Iframeworks/native/include -Iframeworks/native/opengl/include -Iframeworks/av/include  -Werror\u003dbool-operation -Werror\u003dimplicit-int-float-conversion -Werror\u003dint-in-bool-\ncontext -Werror\u003dint-to-pointer-cast -Werror\u003dpointer-to-int-cast -Werror\u003dxor-used-as-pow -Wno-void-pointer-to-enum-cast -Wno-void-pointer-to-int-cast -Wno-pointer-to-int-cast -Werror\u003dfor\ntify-source -Werror\u003daddress-of-temporary -Werror\u003dreturn-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-reorder-init-list -Wno-implicit-int-float-conve\nrsion -Wno-sizeof-array-div -Wno-tautological-overlap-compare -Wno-deprecated-copy -Wno-range-loop-construct -Wno-misleading-indentation -Wno-zero-as-null-pointer-constant -Wno-deprecat\ned-anon-enum-enum-conversion -Wno-pessimizing-move -Wno-non-c-typedef-for-linkage -Wno-align-mismatch -Wno-error\u003dunused-but-set-variable -Wno-error\u003dunused-but-set-parameter\nclang-tidy.real: for the --header-filter option: may only occur zero or one times!\n\nDo you think it would be desirable to only have the `-header-filter` flag in the top-level Android.bp, with a regexp including both art and system/apex (which odrefresh is currently looking at?",
+      "parentUuid": "b10e411b_de7e60b3",
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b4d828b_b7a4e37d",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-16T09:50:30Z",
       "side": 1,
       "message": "Does cpplint trigger on this one too?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81796897_f402e4dc",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-16T10:42:03Z",
+      "side": 1,
+      "message": "Yes, CppLint will attempt to recognise also // NOLINTNEXTLINE (see https://github.com/google/styleguide/blob/bc0aa941dbed0086b0eaea47eb5619a9980d9563/cpplint/cpplint.py#L596)",
+      "parentUuid": "7b4d828b_b7a4e37d",
       "range": {
         "startLine": 46,
         "startChar": 3,

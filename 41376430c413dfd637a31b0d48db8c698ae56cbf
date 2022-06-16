@@ -479,6 +479,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00bc648a_418c681d",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-16T10:42:03Z",
+      "side": 1,
+      "message": "Adding a TODO with the bug number sounds good, will do.",
+      "parentUuid": "6cd827f1_7000181a",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
