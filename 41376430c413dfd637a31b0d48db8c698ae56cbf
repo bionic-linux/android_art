@@ -497,6 +497,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26fd09fc_bc7ce3f1",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-16T13:30:29Z",
+      "side": 1,
+      "message": "Opened b/236243696 to track the improvement on dlmalloc\u0027s inclusion (and left a TODO with a reference to it in the new patchset).",
+      "parentUuid": "00bc648a_418c681d",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64087f21_799eccd9",
         "filename": "libdexfile/external/include/art_api/dex_file_external.h",
         "patchSetId": 3
