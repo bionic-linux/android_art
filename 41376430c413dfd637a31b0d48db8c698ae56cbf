@@ -83,6 +83,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5672ff_bbc0c5ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3629512f_dd170acd",
+      "range": {
+        "startLine": 9,
+        "startChar": 203,
+        "endLine": 9,
+        "endChar": 222
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688dbfa9_c1aa3ac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b428dc_eb4abd9b",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eee9d472_7ea95108",
@@ -513,6 +555,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc061fc_e8f2228f",
+        "filename": "build/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fd09fc_bc7ce3f1",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64087f21_799eccd9",
@@ -656,6 +716,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8558015b_619b4d21",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a9e0d62_a2e3edf0",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 63
+      },
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc64e102_f8c22a41",
@@ -723,6 +807,24 @@
       "side": 1,
       "message": "It is resolved in patchset 4 (I had made the change but forgot to upload).",
       "parentUuid": "a516b9bc_40d99022",
+      "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111f26ee_efa01892",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T13:43:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60397b1_23def132",
       "revId": "41376430c413dfd637a31b0d48db8c698ae56cbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
