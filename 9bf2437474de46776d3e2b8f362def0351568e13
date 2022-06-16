@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10e411b_de7e60b3",
+        "filename": "compiler/optimizing/codegen_test_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T09:50:30Z",
+      "side": 1,
+      "message": "These files didn\u0027t use to be included in the clang-tidy check, right? Did you also change the header filter somewhere so that they are from now on?",
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b4d828b_b7a4e37d",
+        "filename": "libdexfile/external/include/art_api/dex_file_external.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-16T09:50:30Z",
+      "side": 1,
+      "message": "Does cpplint trigger on this one too?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "9bf2437474de46776d3e2b8f362def0351568e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
