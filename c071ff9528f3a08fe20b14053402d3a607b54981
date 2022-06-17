@@ -22,6 +22,30 @@
       },
       "revId": "c071ff9528f3a08fe20b14053402d3a607b54981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4827256e_08bebfe7",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-06-17T07:21:40Z",
+      "side": 1,
+      "message": "For this in the end there is no extra state. The 2 extra entries come from the new APIs. I will use `ClassExt` in other, related, work.",
+      "parentUuid": "1d4d2c2e_8d42046a",
+      "range": {
+        "startLine": 556,
+        "startChar": 54,
+        "endLine": 556,
+        "endChar": 56
+      },
+      "revId": "c071ff9528f3a08fe20b14053402d3a607b54981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
