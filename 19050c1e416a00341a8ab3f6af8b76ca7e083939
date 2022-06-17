@@ -57,6 +57,29 @@
       },
       "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5790a572_19622d00",
+        "filename": "libartbase/base/data_hash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-17T16:27:57Z",
+      "side": 1,
+      "message": "Sneaky. Given that it apparently doesn\u0027t carry over to the defined type, I wonder why an attribute in this position is allowed and what it means.",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
