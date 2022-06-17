@@ -80,6 +80,30 @@
       },
       "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acdd837f_8c05314d",
+        "filename": "libartbase/base/data_hash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-17T16:50:04Z",
+      "side": 1,
+      "message": "This was changed in patchset 6, now it is:\n\n`using unaligned_uint32_t __attribute__((__aligned__(1))) \u003d uint32_t;`\n\nwhich, according to https://en.cppreference.com/w/cpp/language/type_alias, should be the correct syntax.",
+      "parentUuid": "5790a572_19622d00",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
