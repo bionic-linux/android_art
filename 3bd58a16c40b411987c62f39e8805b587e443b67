@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857d4ae9_b8930c33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-20T14:38:22Z",
+      "side": 1,
+      "message": "Also, could you add \n\n  Bug: 229618060\n\nhere?",
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36c553d8_e4ba03e1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
