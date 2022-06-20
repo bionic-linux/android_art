@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f934d623_897a36fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-20T12:01:15Z",
+      "side": 1,
+      "message": "Nit: Long line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 75
+      },
+      "revId": "661caaa663fd8be91f824032fb41ff7a4f509dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "093e071d_05ee37af",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-06-15T10:57:13Z",
       "side": 1,
       "message": "Friendly ping.",
+      "revId": "661caaa663fd8be91f824032fb41ff7a4f509dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834ab271_c9625f7c",
+        "filename": "test/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-20T12:01:15Z",
+      "side": 1,
+      "message": "Nit: \"Note\"",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 4
+      },
       "revId": "661caaa663fd8be91f824032fb41ff7a4f509dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
