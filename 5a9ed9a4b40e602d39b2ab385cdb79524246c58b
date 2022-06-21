@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c8fe30_3be98c77",
+        "filename": "test/README.chroot.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-21T18:16:32Z",
+      "side": 1,
+      "message": "I wish there was a target for x86_64. Or really, I wish we could start using the module_\u003carch\u003e targets here. I hope we can fix that at some point.",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "5a9ed9a4b40e602d39b2ab385cdb79524246c58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
