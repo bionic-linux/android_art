@@ -51,6 +51,24 @@
       "message": "Is there a way we can add a dcheck that we aren\u0027t overriding more than two methods?",
       "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c562f197_34930f67",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8041,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-21T14:05:59Z",
+      "side": 1,
+      "message": "Yes, but I\u0027d like to confirm this with Vladimir before. As it is, the code currently still supports more than two overrides.\n\nMy plan is once this is clarified, replace the loop line 8489 (where I added a FIXME) with one extra check (for the second override) and a DCHECK.",
+      "parentUuid": "b8a86918_56ca50a6",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
