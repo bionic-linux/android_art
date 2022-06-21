@@ -104,6 +104,30 @@
       },
       "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32754db6_a80d57bf",
+        "filename": "libartbase/base/data_hash.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-21T17:32:05Z",
+      "side": 1,
+      "message": "Yes I know, but I was curious why C++ allows this variant. I asked in the C++ chat and tested a bit, and the problem is that `__attribute__` is more lenient than the proper `[[ ]]` attribute syntax. If I rewrite this to use the latter I get an \"\u0027__aligned__\u0027 attribute cannot be applied to types\" error instead:\n\n  using unaligned_uint32_t \u003d [[gnu::__aligned__(1)]] uint32_t;\n\nSo another cleanup we ought to do is to replace `__attribute__((...))` with `[[...]]` (also adding `gnu::` prefixes to the gcc-specific attributes we use).",
+      "parentUuid": "acdd837f_8c05314d",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 64
+      },
+      "revId": "19050c1e416a00341a8ab3f6af8b76ca7e083939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
