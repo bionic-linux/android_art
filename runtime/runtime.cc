@@ -3375,9 +3375,14 @@ void Runtime::MadviseFileForRange(size_t madvise_size_limit_bytes,
   // Short-circuit the madvise optimization for background processes. This
   // avoids IO and memory contention with foreground processes, particularly
   // those involving app startup.
-  const Runtime* runtime = Runtime::Current();
-  if (runtime != nullptr && !runtime->InJankPerceptibleProcessState()) {
-    return;
+  // Note: We can only safely short-circuit the madvise on T+, as it requires
+  // the framework to always immediately notify ART of process states.
+  static const int kApiLevel = android_get_device_api_level();
+  if (kApiLevel >= __ANDROID_API_T__) {
+    const Runtime* runtime = Runtime::Current();
+    if (runtime != nullptr && !runtime->InJankPerceptibleProcessState()) {
+      return;
+    }
   }
 
   // Ideal blockTransferSize for madvising files (128KiB)
