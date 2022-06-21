@@ -104,6 +104,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5e726c_e3030b6d",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "943defc0_733382fc",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f1b4d8_f286afb5",
@@ -117,6 +141,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "To match the name suggested for the corresponding enum value in https://android-review.googlesource.com/c/platform/frameworks/proto_logging/+/2109324/2/stats/atoms.proto (`ART_DATUM_GC_WORLD_STOP_COUNT`), I\u0027d rename this as `GcWorldStopCount`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680126a1_32d51528",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35f1b4d8_f286afb5",
       "range": {
         "startLine": 61,
         "startChar": 9,
@@ -150,6 +198,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6059122_162f00c7",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fa77067_e5a6eaa0",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df554b93_3722c0cc",
@@ -163,6 +235,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "To match the name suggested for the corresponding enum value in https://android-review.googlesource.com/c/platform/frameworks/proto_logging/+/2109324/2/stats/atoms.proto (`ART_DATUM_GC_YOUNG_GENERATION_COLLECTION_DURATION_MS`), I\u0027d rename this as `YoungGcDuration`.",
+      "range": {
+        "startLine": 63,
+        "startChar": 9,
+        "endLine": 63,
+        "endChar": 31
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cedf82_489862bd",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df554b93_3722c0cc",
       "range": {
         "startLine": 63,
         "startChar": 9,
@@ -196,6 +292,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9762e8e7_de10b069",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e9dd968_35f66dab",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 28
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d436b9d3_a16f4b0f",
@@ -209,6 +329,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "To match the name suggested for the corresponding enum value in https://android-review.googlesource.com/c/platform/frameworks/proto_logging/+/2109324/2/stats/atoms.proto (`ART_DATUM_GC_FULL_HEAP_COLLECTION_DURATION_MS`), I\u0027d rename this as `FullGcDuration`.",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e24b98c_8bb75dd4",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d436b9d3_a16f4b0f",
       "range": {
         "startLine": 65,
         "startChar": 9,
@@ -242,6 +386,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bb8b5e_93117b33",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bbd85b5_d4ee15ea",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3840a7fe_673bc19c",
@@ -255,6 +423,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "As noted in https://android-review.googlesource.com/c/platform/frameworks/proto_logging/+/2109324/2/stats/atoms.proto, this metric encodes the same data as `YoungGcThroughputCount` (line 63), so it can be dropped.",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a598615_a0714046",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3840a7fe_673bc19c",
       "range": {
         "startLine": 67,
         "startChar": 9,
@@ -288,6 +480,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6be0772_4f259dc6",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a003a60_737576ec",
+      "range": {
+        "startLine": 68,
+        "startChar": 9,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f063c0c_ebf63a80",
@@ -301,6 +517,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "As noted in https://android-review.googlesource.com/c/platform/frameworks/proto_logging/+/2109324/2/stats/atoms.proto, this metric encodes the same data as `FullGcThroughputCount` (line 65), so it can be dropped.",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08c5ee53_7640f900",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f063c0c_ebf63a80",
       "range": {
         "startLine": 69,
         "startChar": 9,
@@ -334,6 +574,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85a3ec5_b8cb1da5",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6a4921a_44bf5ac5",
+      "range": {
+        "startLine": 196,
+        "startChar": 11,
+        "endLine": 196,
+        "endChar": 27
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b91333_390a0568",
@@ -347,6 +611,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "I\u0027d record the shared value in a constant:\n\n  const total_pause_time_us \u003d total_pause_time / 1\u0027000;\n\nand use it in these two lines.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 68
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ed2239_62cd5ed3",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3b91333_390a0568",
       "range": {
         "startLine": 204,
         "startChar": 0,
@@ -380,6 +668,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bcb572_61c09712",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bc96816_4d52f8b9",
+      "range": {
+        "startLine": 168,
+        "startChar": 34,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc286896_583b5967",
@@ -393,6 +705,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "To match the name suggestions in https://android-review.googlesource.com/c/platform/art/+/2109192/2/libartbase/base/metrics/metrics.h, I\u0027d rename this as `gc_duration_`.",
+      "range": {
+        "startLine": 169,
+        "startChar": 34,
+        "endLine": 169,
+        "endChar": 54
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f28cc8d8_9b09c1ad",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc286896_583b5967",
       "range": {
         "startLine": 169,
         "startChar": 34,
@@ -426,6 +762,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63f0f0de_2f5463c0",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68ab2873_02092ed3",
+      "range": {
+        "startLine": 171,
+        "startChar": 34,
+        "endLine": 171,
+        "endChar": 60
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d403f7a_2f1e29b3",
@@ -439,6 +799,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "As noted in https://android-review.googlesource.com/c/platform/art/+/2109192/2/libartbase/base/metrics/metrics.h, this value encodes the same data as `gc_throughput_count_` (line 169), so it can be dropped.",
+      "range": {
+        "startLine": 172,
+        "startChar": 34,
+        "endLine": 172,
+        "endChar": 62
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df90ef7_15f24a9b",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-06-21T17:00:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d403f7a_2f1e29b3",
       "range": {
         "startLine": 172,
         "startChar": 34,
