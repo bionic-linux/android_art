@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2273bf14_e7b498cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-06-22T18:40:49Z",
+      "side": 1,
+      "message": "The framework change is getting cp\u0027ed to tm-dev in ag/19024046, after which I can also CP this (and the preceding) change.",
+      "revId": "995b0e0cf51238649779b7d3b75db97dd7016e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
