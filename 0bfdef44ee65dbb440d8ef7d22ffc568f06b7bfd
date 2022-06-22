@@ -39,6 +39,30 @@
       },
       "revId": "0bfdef44ee65dbb440d8ef7d22ffc568f06b7bfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f990a8_da793a81",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T17:57:01Z",
+      "side": 1,
+      "message": "Thanks for changing this.\n\n(Note: Don\u0027t hesitate to close the reviewers\u0027 comments after you addressed them by using the \"Done\" button – that\u0027s the usual practice throughout Android.)",
+      "parentUuid": "df4b509f_0e6777e9",
+      "range": {
+        "startLine": 229,
+        "startChar": 65,
+        "endLine": 229,
+        "endChar": 68
+      },
+      "revId": "0bfdef44ee65dbb440d8ef7d22ffc568f06b7bfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
