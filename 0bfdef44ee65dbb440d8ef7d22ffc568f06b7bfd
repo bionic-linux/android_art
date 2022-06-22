@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd1daae_44ab7fbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T14:12:33Z",
+      "side": 1,
+      "message": "This looks good to me – just one final nit.",
+      "revId": "0bfdef44ee65dbb440d8ef7d22ffc568f06b7bfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4b509f_0e6777e9",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T14:12:33Z",
+      "side": 1,
+      "message": "If we don\u0027t intend to use `gc_duration_` as a divisor in the ART code base, I\u0027d rather handle this on the server side rather than here.",
+      "range": {
+        "startLine": 229,
+        "startChar": 65,
+        "endLine": 229,
+        "endChar": 68
+      },
+      "revId": "0bfdef44ee65dbb440d8ef7d22ffc568f06b7bfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60efcc8d_48c072f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T14:12:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb0d4f9e_13d75d17",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "857d4ae9_b8930c33",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd977e9_56fc8a7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T14:12:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "857d4ae9_b8930c33",
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36c553d8_e4ba03e1",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-06-20T14:35:33Z",
       "side": 1,
       "message": "I think this `Test:` stanza should also include metrics-specific tests, e.g.:\n\n  Test: atest art_standalone_libartbase_tests (for `MetricsTest`)\n  Test: atest art_standalone_runtime_tests (for `MetricsReporterTest`)\n\nI\u0027d also add:\n\n  Test: ART run-test 2232-write-metrics-to-log\n\nThis run-test is not yet supported by TradeFed/Atest, but you can run it on device by following the chroot-based testing instructions at https://cs.android.com/android/platform/superproject/+/master:art/test/README.chroot.md.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "3bd58a16c40b411987c62f39e8805b587e443b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369db5b3_7ca192aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T14:12:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36c553d8_e4ba03e1",
       "range": {
         "startLine": 14,
         "startChar": 0,
