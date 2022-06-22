@@ -36,6 +36,40 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "092652d5_690cb712",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-22T15:04:50Z",
+      "side": 1,
+      "message": "Thanks Nicolas! I mostly have a few questions for my understanding and a couple of minor suggestions.",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5c9d8a_f7c4c96d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8031,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-22T15:04:50Z",
+      "side": 1,
+      "message": "Maybe change to:\nif (it \u003d\u003d declared_virtual_signatures.end()) {\n  continue;\n}",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a86918_56ca50a6",
@@ -67,6 +101,57 @@
       "side": 1,
       "message": "Yes, but I\u0027d like to confirm this with Vladimir before. As it is, the code currently still supports more than two overrides.\n\nMy plan is once this is clarified, replace the loop line 8489 (where I added a FIXME) with one extra check (for the second override) and a DCHECK.",
       "parentUuid": "b8a86918_56ca50a6",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae30847_ab9e0890",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8046,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-22T15:04:50Z",
+      "side": 1,
+      "message": "IIUC, earlier we used to record this for all methods in the super class but now with your change we only do it if the current method has a declared virtual method with the same signature. Since those are the only ones we are interested in that shouldn\u0027t be a problem right?",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6c18e6_53b4e12b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8054,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-22T15:04:50Z",
+      "side": 1,
+      "message": "I am a bit confused here. This is a virtual method that is overriding a super class method and we want to ensure that method index is same as the super method so we always get the current method instead of super class one?\n\nBut what happens when we are overriding more than one method. We just seem to pick the largest index. Why do we do that?",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b4f740_6ac8f916",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8095,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-22T15:04:50Z",
+      "side": 1,
+      "message": "Maybe add a helper function here like InitializeSuperVtableSignatures?",
       "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
