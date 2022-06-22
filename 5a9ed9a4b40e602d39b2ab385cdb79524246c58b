@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b917d049_145d5c76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T08:17:31Z",
+      "side": 1,
+      "message": "Thanks Martin.",
+      "revId": "5a9ed9a4b40e602d39b2ab385cdb79524246c58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "01c8fe30_3be98c77",
         "filename": "test/README.chroot.md",
         "patchSetId": 3
@@ -14,6 +31,30 @@
       "writtenOn": "2022-06-21T18:16:32Z",
       "side": 1,
       "message": "I wish there was a target for x86_64. Or really, I wish we could start using the module_\u003carch\u003e targets here. I hope we can fix that at some point.",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "5a9ed9a4b40e602d39b2ab385cdb79524246c58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebd35ec_8d7db702",
+        "filename": "test/README.chroot.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-06-22T08:17:31Z",
+      "side": 1,
+      "message": "Agreed – we should be more uniform here.",
+      "parentUuid": "01c8fe30_3be98c77",
       "range": {
         "startLine": 72,
         "startChar": 14,
