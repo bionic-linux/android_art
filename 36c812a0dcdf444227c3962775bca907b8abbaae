@@ -16,6 +16,23 @@
       "message": "Thanks Mythri, PTAL.",
       "revId": "36c812a0dcdf444227c3962775bca907b8abbaae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eff46b6_9396bdcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-27T11:38:54Z",
+      "side": 1,
+      "message": "Thanks Nicolas! Still lgtm.",
+      "revId": "36c812a0dcdf444227c3962775bca907b8abbaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

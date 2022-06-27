@@ -193,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed86d93e_21f9dc53",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8054,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-27T11:38:54Z",
+      "side": 1,
+      "message": "Thanks that helps.",
+      "parentUuid": "5cac84cd_d420e0c4",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01b4f740_6ac8f916",
@@ -224,6 +242,24 @@
       "side": 1,
       "message": "The code needs a few internal types, which make the helper kind of very verbose to access those types. After a few tries, I decided it was simpler to just keep the code inline. Let me know what you think.",
       "parentUuid": "01b4f740_6ac8f916",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27141eaa_6daa916c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8095,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-06-27T11:38:54Z",
+      "side": 1,
+      "message": "Ack. Ya, I was worried about that when I added this comment. I think it\u0027s fine for now.",
+      "parentUuid": "3dc01fa3_0dcdac74",
       "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
