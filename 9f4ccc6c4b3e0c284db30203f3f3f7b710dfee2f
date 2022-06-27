@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b03ccb_0ef5d50a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8031,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-27T10:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5c9d8a_f7c4c96d",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a86918_56ca50a6",
@@ -122,6 +140,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a46a04a_05972001",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8046,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-27T10:31:10Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.",
+      "parentUuid": "1ae30847_ab9e0890",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f6c18e6_53b4e12b",
@@ -141,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cac84cd_d420e0c4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8054,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-27T10:31:10Z",
+      "side": 1,
+      "message": "This is partially explained in the comment lines 8042-8045. I\u0027ve expanded the comment to be clearer, let me know if it helps.",
+      "parentUuid": "7f6c18e6_53b4e12b",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01b4f740_6ac8f916",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -152,6 +206,24 @@
       "writtenOn": "2022-06-22T15:04:50Z",
       "side": 1,
       "message": "Maybe add a helper function here like InitializeSuperVtableSignatures?",
+      "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc01fa3_0dcdac74",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8095,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-27T10:31:10Z",
+      "side": 1,
+      "message": "The code needs a few internal types, which make the helper kind of very verbose to access those types. After a few tries, I decided it was simpler to just keep the code inline. Let me know what you think.",
+      "parentUuid": "01b4f740_6ac8f916",
       "revId": "9f4ccc6c4b3e0c284db30203f3f3f7b710dfee2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

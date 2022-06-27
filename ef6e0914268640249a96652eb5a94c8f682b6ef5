@@ -16,6 +16,24 @@
       "message": "Why isn\u0027t this logic needed anymore? Assuming we are still keeping the code for more than two overrides, wouldn\u0027t we still need this?",
       "revId": "ef6e0914268640249a96652eb5a94c8f682b6ef5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdefcdb3_7aa47196",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8116,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-27T10:31:10Z",
+      "side": 0,
+      "message": "I think this was being extra cautious and expecting more than two methods to be overridden. But if we make sure only the public one can be found, then we don\u0027t need this code anymore.",
+      "parentUuid": "f06e058b_9222cc70",
+      "revId": "ef6e0914268640249a96652eb5a94c8f682b6ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
