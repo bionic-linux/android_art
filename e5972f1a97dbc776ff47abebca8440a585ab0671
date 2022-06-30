@@ -22,6 +22,30 @@
       },
       "revId": "e5972f1a97dbc776ff47abebca8440a585ab0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df527892_ff77f292",
+        "filename": "test/563-checker-fakestring/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-06-30T08:26:07Z",
+      "side": 1,
+      "message": "The rule I follow is if you can express it in Java instead of smali, that\u0027s preferred. smali is harder to read.",
+      "parentUuid": "ba1852d1_216473e1",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "e5972f1a97dbc776ff47abebca8440a585ab0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
