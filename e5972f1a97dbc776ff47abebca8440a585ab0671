@@ -46,6 +46,30 @@
       },
       "revId": "e5972f1a97dbc776ff47abebca8440a585ab0671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3873eb34_51f0d552",
+        "filename": "test/563-checker-fakestring/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-06-30T08:29:46Z",
+      "side": 1,
+      "message": "Ack, I just meant that we have to keep those in sync. I guess that:\nA) If we forget to remove it, it is no big of a deal.\nB) If we forget to add it, the test will fail.\n\nso it is fine by me.",
+      "parentUuid": "df527892_ff77f292",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "e5972f1a97dbc776ff47abebca8440a585ab0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
