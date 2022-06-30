@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50eb02cc_9534790e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7972,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "The definition of this variable should move closer to its use. And given that we proclaim to use it only in a rare case, it should not use the stack-allocated buffer.",
+      "range": {
+        "startLine": 7972,
+        "startChar": 21,
+        "endLine": 7972,
+        "endChar": 44
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d45fc75_85946283",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7995,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "As long as `num_virtual_methods` is not 0, this immediately allocates from the arena allocator. This makes some optimizations around here really useless (`alloca()`, `copied_method_records_initial_buffer_`).\n\nMaybe we should use a part of the stack-allocated buffer for this.",
+      "range": {
+        "startLine": 7995,
+        "startChar": 17,
+        "endLine": 7995,
+        "endChar": 36
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f464a8d_074b314e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "Note: This references a variable declared above but used only below. If we move the definition closer to the use, this comment may need to be updated.",
+      "range": {
+        "startLine": 8001,
+        "startChar": 5,
+        "endLine": 8001,
+        "endChar": 28
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3f09a5_e6db9fd4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8016,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "This essentially reverts https://android-review.googlesource.com/1931010 , so this CL should have referenced bug 181943478. As I introduced back the declared methods hash map in a later CL, I\u0027m OK with delaying the initialization of the super vtable set. But we should have measured the impact this CL on the boot image compilation.",
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db860fb_4a5c9994",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8057,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "Why? What if there is no public method? Does this actually matter?",
+      "range": {
+        "startLine": 8056,
+        "startChar": 7,
+        "endLine": 8057,
+        "endChar": 29
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67681265_63d8d5d6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8059,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "This is disproved by the class `pkg1.C2` in test `182-method-linking`.",
+      "range": {
+        "startLine": 8057,
+        "startChar": 30,
+        "endLine": 8059,
+        "endChar": 36
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffbe8bb_39299d61",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8489,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 1,
+      "message": "Well, we can technically override only one or two methods, but the public one may have already taken more than one vtable index.\n\nWhile the test `182-method-linking` shows overriding only for two packages, there is nothing stopping us from declaring a method with the same name and signature as package-private across 10 packages in the hierarchy and then overriding them with public methods in each package, yielding a method that fills 10 vtable indexes.",
+      "range": {
+        "startLine": 8488,
+        "startChar": 11,
+        "endLine": 8489,
+        "endChar": 69
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

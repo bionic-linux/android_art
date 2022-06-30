@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29b92bb_3fc15f67",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8112,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-06-30T15:26:44Z",
+      "side": 0,
+      "message": "You have removed this code and this is a change in behavior. Together with the `CanAccessMember()` filtering, you have effectively implemented the `FIXME: Delay the exception until we actually try to call the method. b/211854716` below.\n\nI guess it\u0027s time to add a test for this edge case to `182-method-linking`.",
+      "range": {
+        "startLine": 8112,
+        "startChar": 13,
+        "endLine": 8112,
+        "endChar": 42
+      },
+      "revId": "c8e67bdca92f527a2e9b58f417c1f2af2afa6d41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
