@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1852d1_216473e1",
+        "filename": "test/563-checker-fakestring/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-06-30T08:08:33Z",
+      "side": 1,
+      "message": "Is there a way to bring this closer to the .smali? That\u0027s the reason we are adding the new line of code. For example, if the smali code doesn\u0027t use int[] anymore, we wouldn\u0027t use this (or if it starts to use byte[] we will have to add that)",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "e5972f1a97dbc776ff47abebca8440a585ab0671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
