@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6fb1e9_43ab4e24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-04T08:57:07Z",
+      "side": 1,
+      "message": "Thanks Vladimir, for the comments. I\u0027ll revert and adjust based on my new understanding.",
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50eb02cc_9534790e",
@@ -157,6 +174,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11920d37_c7a1daca",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8059,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-04T08:57:07Z",
+      "side": 1,
+      "message": "OK, I\u0027ve revisited this - thanks for the test case, you are right that a public version can have a lower index.",
+      "parentUuid": "a2ae3a6c_f10eb339",
+      "range": {
+        "startLine": 8057,
+        "startChar": 30,
+        "endLine": 8059,
+        "endChar": 36
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ffbe8bb_39299d61",
@@ -194,6 +235,30 @@
       "side": 1,
       "message": "I dont think that\u0027s right - any given public `foo` method will just override its same package-private `foo` and the public one. It\u0027s not going to override the package private versions of other packages.",
       "parentUuid": "5ffbe8bb_39299d61",
+      "range": {
+        "startLine": 8488,
+        "startChar": 11,
+        "endLine": 8489,
+        "endChar": 69
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b138fb7a_a0f50b26",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8489,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-04T08:57:07Z",
+      "side": 1,
+      "message": "And again, you are right. It\u0027s the presence of the public super method in the vtable which can be 1+, that will be overwritten and therefore one can fill mmore than 2 vtable indexes.",
+      "parentUuid": "1324e4aa_d4e80075",
       "range": {
         "startLine": 8488,
         "startChar": 11,
