@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e84a01f_c7258eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "New CL https://android-review.googlesource.com/c/platform/art/+/2145100/3",
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50eb02cc_9534790e",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-06-30T15:26:44Z",
       "side": 1,
       "message": "The definition of this variable should move closer to its use. And given that we proclaim to use it only in a rare case, it should not use the stack-allocated buffer.",
+      "range": {
+        "startLine": 7972,
+        "startChar": 21,
+        "endLine": 7972,
+        "endChar": 44
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9c9805_39cc23ce",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7972,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50eb02cc_9534790e",
       "range": {
         "startLine": 7972,
         "startChar": 21,
@@ -64,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc785528_64ed27b3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7995,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d45fc75_85946283",
+      "range": {
+        "startLine": 7995,
+        "startChar": 17,
+        "endLine": 7995,
+        "endChar": 36
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f464a8d_074b314e",
@@ -77,6 +142,30 @@
       "writtenOn": "2022-06-30T15:26:44Z",
       "side": 1,
       "message": "Note: This references a variable declared above but used only below. If we move the definition closer to the use, this comment may need to be updated.",
+      "range": {
+        "startLine": 8001,
+        "startChar": 5,
+        "endLine": 8001,
+        "endChar": 28
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "173e5350_1e73da05",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f464a8d_074b314e",
       "range": {
         "startLine": 8001,
         "startChar": 5,
@@ -104,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4cfe9b_10b0c168",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8016,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "Did some simpleperf measurements on https://android-review.googlesource.com/c/platform/art/+/2145100/3, and the performance difference looks very much in the noise.",
+      "parentUuid": "0b3f09a5_e6db9fd4",
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1db860fb_4a5c9994",
@@ -117,6 +224,30 @@
       "writtenOn": "2022-06-30T15:26:44Z",
       "side": 1,
       "message": "Why? What if there is no public method? Does this actually matter?",
+      "range": {
+        "startLine": 8056,
+        "startChar": 7,
+        "endLine": 8057,
+        "endChar": 29
+      },
+      "revId": "868e576d4f67026bb7109286f922cb26e0e84145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2795b23e_f0ef1f94",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8057,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-07T14:51:24Z",
+      "side": 1,
+      "message": "Good point, I\u0027ve removed the comment.",
+      "parentUuid": "1db860fb_4a5c9994",
       "range": {
         "startLine": 8056,
         "startChar": 7,
