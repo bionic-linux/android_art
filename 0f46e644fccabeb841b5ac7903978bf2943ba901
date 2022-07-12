@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4529b119_04e164f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T14:15:48Z",
+      "side": 1,
+      "message": "Yes (meaning the build should work if RBE is disabled)",
+      "parentUuid": "8d4f5ccd_ecfbd760",
+      "revId": "0f46e644fccabeb841b5ac7903978bf2943ba901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "710e2a58_94af5534",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-11T17:49:46Z",
       "side": 1,
       "message": "Is this parameter stable? I.e. is it something we might be expected to update from time to time?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 94
+      },
+      "revId": "0f46e644fccabeb841b5ac7903978bf2943ba901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "192d1bb3_1887270d",
+        "filename": "test/art_build_rules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T14:15:48Z",
+      "side": 1,
+      "message": "Kousik: is this ok?\n\nThe parameter is hard-coded in many places in the Android tree, so I imagine it is stable...",
+      "parentUuid": "710e2a58_94af5534",
       "range": {
         "startLine": 70,
         "startChar": 0,
