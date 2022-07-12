@@ -129,6 +129,30 @@
       },
       "revId": "0f46e644fccabeb841b5ac7903978bf2943ba901",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8d92fb_276e1fa9",
+        "filename": "test/art_build_rules.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-07-12T15:33:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f20e5116_054fe70c",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 94
+      },
+      "revId": "0f46e644fccabeb841b5ac7903978bf2943ba901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
