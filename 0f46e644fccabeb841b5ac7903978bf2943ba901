@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcafe2b_951ff72a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-14T13:32:10Z",
+      "side": 1,
+      "message": "Right; I was worried at first that it would be a problem with RBE now being turned on by default almost everywhere (see go/rbe-android-default-announcement), but apparently `aosp/master` is excluded from this policy.",
+      "parentUuid": "4529b119_04e164f1",
+      "revId": "0f46e644fccabeb841b5ac7903978bf2943ba901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "710e2a58_94af5534",
