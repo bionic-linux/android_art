@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00634981_ec90dca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-07-14T13:11:10Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "dee5b2c1d7ff5531c0101ad7cca58a945b885a43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e91f3dc_cc47ca13",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-07-14T12:53:57Z",
       "side": 1,
       "message": "Is this okay to be `m` and not outer method?",
+      "range": {
+        "startLine": 1261,
+        "startChar": 52,
+        "endLine": 1261,
+        "endChar": 54
+      },
+      "revId": "dee5b2c1d7ff5531c0101ad7cca58a945b885a43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86182467_eb501f05",
+        "filename": "openjdkjvmti/events.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-07-14T13:11:10Z",
+      "side": 1,
+      "message": "Here, m is good. We are directly getting the code of method m in line 1257. The outer and inner are only a problem when we are walking the stack and pick up the return address and method from the stack.",
+      "parentUuid": "7e91f3dc_cc47ca13",
       "range": {
         "startLine": 1261,
         "startChar": 52,
@@ -64,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d226efa0_a9867f2e",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-07-14T13:11:10Z",
+      "side": 1,
+      "message": "Yes it is. Stack walk does additional work to get the inline info and get the correct method corresponding to the dex pc. Here we don\u0027t do that. So this is already outer.",
+      "parentUuid": "da1ccb39_096d8f1e",
+      "range": {
+        "startLine": 1652,
+        "startChar": 13,
+        "endLine": 1652,
+        "endChar": 19
+      },
+      "revId": "dee5b2c1d7ff5531c0101ad7cca58a945b885a43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d109cad8_83139ba4",
@@ -77,6 +142,30 @@
       "writtenOn": "2022-07-14T12:53:57Z",
       "side": 1,
       "message": "Do we want to log the inner method or the outer one?",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1786,
+        "endChar": 51
+      },
+      "revId": "dee5b2c1d7ff5531c0101ad7cca58a945b885a43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e809ae_8d7cac6b",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-07-14T13:11:10Z",
+      "side": 1,
+      "message": "Hmm..good question. We do want visitor.caller because that\u0027s the one that required a deopt we are just deopting the outer one because it was inlined. It\u0027s nicer to print outer method as well. Though in debug mode where the instrumentation logs are most useful we don\u0027t have inlining so both are same. For now, I am leaving this as is especially since we hope to remove all this code in near future (once I land the CL to switch to debuggable).",
+      "parentUuid": "d109cad8_83139ba4",
       "range": {
         "startLine": 1786,
         "startChar": 0,
