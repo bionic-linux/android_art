@@ -22,6 +22,30 @@
       },
       "revId": "5dc69f2d615fe4d9e50997c7a4e5e5e762e761c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745f164a_71df4e07",
+        "filename": "tools/run-libcore-tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1373934
+      },
+      "writtenOn": "2022-07-18T13:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b929cac_3c81073e",
+      "range": {
+        "startLine": 435,
+        "startChar": 56,
+        "endLine": 435,
+        "endChar": 57
+      },
+      "revId": "5dc69f2d615fe4d9e50997c7a4e5e5e762e761c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
