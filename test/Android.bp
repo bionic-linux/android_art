@@ -273,7 +273,7 @@ art_cc_defaults {
     ],
 
     test_suites: [
-        "general-tests",
+        "device-tests",
         "mts-art",
     ],
 

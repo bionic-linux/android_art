@@ -175,7 +175,7 @@ cc_test {
     test_config_template: ":art-gtests-target-standalone-cts-template",
     test_suites: [
         "cts",
-        "general-tests",
+        "device-tests",
         "mts-art",
     ],
 }

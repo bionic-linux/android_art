@@ -364,7 +364,6 @@ art_cc_defaults {
     defaults: [
         "art_module_source_build_defaults",
     ],
-    test_suites: ["general-tests"],
     srcs: [
         "external/dex_file_ext_c_test.c",
         "external/dex_file_ext_test.cc",
@@ -399,7 +398,10 @@ art_cc_test {
     ],
 
     test_config_template: ":art-gtests-target-standalone-cts-template",
-    test_suites: ["cts"], // For backed-by API coverage.
+    test_suites: [
+        "cts", // For backed-by API coverage.
+        "device-tests",
+    ],
 }
 
 // Support library with a C++ API for accessing the libdexfile API for external
@@ -448,7 +450,6 @@ art_cc_defaults {
     defaults: [
         "art_module_source_build_defaults",
     ],
-    test_suites: ["general-tests"],
     srcs: [
         "external/dex_file_supp_test.cc",
     ],
@@ -483,6 +484,7 @@ art_cc_test {
         "art_libdexfile_support_tests_defaults",
     ],
     test_suites: [
+        "device-tests",
         "mts-art",
     ],
 }
