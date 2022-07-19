@@ -46,6 +46,52 @@
       },
       "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a16742c_53c1d26b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2022-07-19T17:44:24Z",
+      "side": 1,
+      "message": "I\u0027m worried that such config will only hide the failure in cts suite. If the incompatible issue happens, it will likely surface as the test can pass in our lab setting, but fail when partner runs cts suite.",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45005b48_a4f7c412",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2022-07-19T17:44:24Z",
+      "side": 1,
+      "message": "cts tests should also be in general-tests suite. A mix of cts and device-tests setting could introduce issue like the test is passing in device-tests sutie, but not cts suite, as they are built on different targets.",
+      "range": {
+        "startLine": 402,
+        "startChar": 8,
+        "endLine": 403,
+        "endChar": 23
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
