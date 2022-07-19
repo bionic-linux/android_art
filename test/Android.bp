@@ -273,7 +273,6 @@ art_cc_defaults {
     ],
 
     test_suites: [
-        "general-tests",
         "mts-art",
     ],
 
@@ -327,6 +326,38 @@ art_cc_defaults {
         "com.android.art",
         "com.android.art.debug",
     ],
+}
+
+// Defaults for standalone ART implementation-specific gtests (i.e.
+// which have a requirement on the Oat file version of the runtime
+// they are run against) and thus cannot be packaged in a
+// `general-tests` suite that may be executed against an Android
+// product from a different build or branch, possibly having a
+// different version of ART than the one these tests were built with.
+//
+// In order to reduce the chances of incompatible test settings for
+// these tests, they are package in `device-tests` test suites
+// instead, which creates a closer relationship between these tests
+// and the corresponding ART build artifacts.
+//
+// Test which are also part of CTS should not use these defaults,
+// and instead use
+// `art_standalone_implementation_agnostic_gtest_defaults` (see below).
+art_cc_defaults {
+    name: "art_standalone_implementation_specific_gtest_defaults",
+    defaults: ["art_standalone_gtest_defaults"],
+    test_suites: ["device-tests"],
+}
+
+// Defaults for standalone ART implementation-agnostic gtests, which
+// don't have strong requirements on ART internals and may be executed
+// against an Android product from a different build or branch,
+// possibly having a different version of ART than the one these tests
+// were built with.
+art_cc_defaults {
+    name: "art_standalone_implementation_agnostic_gtest_defaults",
+    defaults: ["art_standalone_gtest_defaults"],
+    test_suites: ["general-tests"],
 }
 
 // Properties common to `libart-gtest-defaults` and `libartd-gtest-defaults`.

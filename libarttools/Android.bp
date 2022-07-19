@@ -72,7 +72,7 @@ art_cc_test {
 art_cc_test {
     name: "art_standalone_libarttools_tests",
     defaults: [
-        "art_standalone_gtest_defaults",
+        "art_standalone_implementation_specific_gtest_defaults",
         "art_libarttools_tests_defaults",
     ],
 }

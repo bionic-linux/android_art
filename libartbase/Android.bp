@@ -381,7 +381,7 @@ art_cc_test {
 art_cc_test {
     name: "art_standalone_libartbase_tests",
     defaults: [
-        "art_standalone_gtest_defaults",
+        "art_standalone_implementation_specific_gtest_defaults",
         "art_libartbase_tests_defaults",
     ],
     data: [":generate-boot-image"],

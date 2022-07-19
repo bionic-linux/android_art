@@ -568,7 +568,7 @@ art_cc_test {
 art_cc_test {
     name: "art_standalone_dex2oat_tests",
     defaults: [
-        "art_standalone_gtest_defaults",
+        "art_standalone_implementation_specific_gtest_defaults",
         "art_dex2oat_tests_defaults",
     ],
     data: [":generate-boot-image"],
@@ -589,7 +589,7 @@ art_cc_test {
 // Counterpart to art_standalone_dex2oat_tests for tests that go into CTS.
 art_cc_test {
     name: "art_standalone_dex2oat_cts_tests",
-    defaults: ["art_standalone_gtest_defaults"],
+    defaults: ["art_standalone_implementation_agnostic_gtest_defaults"],
     srcs: ["dex2oat_cts_test.cc"],
     data: [
         ":art-gtest-jars-Main",

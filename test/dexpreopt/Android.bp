@@ -26,7 +26,7 @@ package {
 art_cc_test {
     name: "art_standalone_dexpreopt_tests",
     defaults: [
-        "art_standalone_gtest_defaults",
+        "art_standalone_implementation_specific_gtest_defaults",
     ],
     host_supported: false,
     srcs: [
