@@ -71,6 +71,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcc6021_af1add1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-19T17:46:37Z",
+      "side": 1,
+      "message": "Thanks, Roland!",
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45005b48_a4f7c412",
