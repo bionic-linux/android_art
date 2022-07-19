@@ -16,6 +16,24 @@
       "message": "It is most likely fine... however my reading of the spec is that `tv_sec` type is unspecified, which means it could be `uint32_t`, which would make this always return `true`.\n\nI guess something like `static_assert(std::is_signed\u003cdecltype(result_ts-\u003etv_sec)\u003e::value)` might tell us for sure.\n\nUp to you if you want to check...",
       "revId": "8870477772d38e6bd5e1b8489472ee23845850df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd13c59a_e27cbd09",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-07-19T17:39:48Z",
+      "side": 1,
+      "message": "I like that change. It seems to be signed on Linux by convention, but not by any official spec.",
+      "parentUuid": "670d716d_3142b5ff",
+      "revId": "8870477772d38e6bd5e1b8489472ee23845850df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
