@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "679e709a_b78fd4f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2022-07-19T17:54:14Z",
+      "side": 1,
+      "message": "In general moving a test module from general-tests to device-tests won\u0027t cause a problem (the reverse could actually break a test if it has device dependency). However, the issue here is the mix of cts and device-tests. These two suites are packaged in different targets. cts and general-tests are both packaged on test_suites target. After moving the test to device-tests suite, what could happen is that the test runs differently from test mapping suite and cts suite, as they use different libraries (cts shared libs are all built on test_suites target, while device-tests shared libs are built on device target).",
+      "parentUuid": "79bcd97c_74b59482",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebcc6021_af1add1b",
