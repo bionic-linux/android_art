@@ -22,6 +22,30 @@
       },
       "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bcd97c_74b59482",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-19T17:40:03Z",
+      "side": 1,
+      "message": "AFAIK, the `test_suite` property is just about packaging a test; it does not says when/where/how it is run.\n\nAIUI, tests in `general-tests` (and `device-tests`) are eligible to run in two ways:\n- automated, via Test Mapping (pre- and post-submit);\n- manually, via Atest.\n\nMoving tests from `general-tests` to `device-tests` does not really change how tests are built or run, but rather which build artifacts of these tests will be used. My understanding is that when a test is built as part of `general-tests`, it will be shared by several product build targets, which makes its easier to have a testing model where tests and products are loosely related (i.e. from different builds or even branches) – I\u0027m not sure how formal the use cases are here. Moving to `device-tests` seems to give a hint that there\u0027s a tighter coupling between tests and products.\n\nAdding Dan and Julien to comment on my interpretation. 🙂",
+      "parentUuid": "fd781dc8_da977922",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
