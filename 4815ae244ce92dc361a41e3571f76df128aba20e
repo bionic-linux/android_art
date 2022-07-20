@@ -52,6 +52,24 @@
       "parentUuid": "523b5268_f0d1f212",
       "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95638a9e_14ec6ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-20T12:44:08Z",
+      "side": 1,
+      "message": "Aha, right. When you use Merged-In it\u0027s best to ensure they actually are just cherry-picks, or at least make the changed lines look the same in both repos afterwards.\n\nSince two commits are required to solve this regardless, I\u0027d create one in internal first that changes the lines to look like in PS2, and then go back to PS2 here and set Merged-In. But feel free to solve it in whatever way you like. It doesn\u0027t matter that much - clang-tidy would already be complaining about the include in internal, and nobody seems to notice that.",
+      "parentUuid": "dbb0a3d4_a2643714",
+      "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
