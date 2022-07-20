@@ -16,6 +16,24 @@
       "message": "Thanks.",
       "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523b5268_f0d1f212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-07-20T09:48:46Z",
+      "side": 1,
+      "message": "No problems - unfortunately we\u0027re having a merge conflict because it looks like the internal repo does not have the `// NOLINT` comment (http://cs/android-internal/art/runtime/gc/allocator/art-dlmalloc.cc;l\u003d42;rcl\u003d6f9f5f6cb0782cc638147331b9423df82f82183a) - I imagine this is because I added the Merged-In tag to the previous CL so changes were not propagated to the internal repo?\n\nDo you know if there\u0027s an easy way to solve the merge conflict here on Gerrit?",
+      "parentUuid": "869aa2d5_16822998",
+      "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
