@@ -34,6 +34,24 @@
       "parentUuid": "869aa2d5_16822998",
       "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb0a3d4_a2643714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2022-07-20T11:14:29Z",
+      "side": 1,
+      "message": "I\u0027m leaning towards removing the `//NOLINT` comment here (to make it mergeable with the internal repo) and re-adding it later - not a fantastic solution but maybe it\u0027s the one that requires the least amount of jumping through hoops - do you agree?",
+      "parentUuid": "523b5268_f0d1f212",
+      "revId": "4815ae244ce92dc361a41e3571f76df128aba20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
