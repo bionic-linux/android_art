@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d44d7b0_bbbb9016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-20T17:10:53Z",
+      "side": 1,
+      "message": "Dan, Guang, Martin, and I had a discussion about Bug 222683917 and this change, and we agreed that it was probably not the best way to address this issue. Marking this CL as Code-Review-1 for now to reflect this.",
+      "revId": "7e7b7a651e2f272971d4bbc67904a1b89cc66b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

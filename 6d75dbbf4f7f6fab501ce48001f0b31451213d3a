@@ -97,6 +97,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "45325a91_af66f40a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-20T17:10:53Z",
+      "side": 1,
+      "message": "I see. Changes in PS2 move back tests that are also part of CTS into `general-tests`.",
+      "parentUuid": "679e709a_b78fd4f8",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "270bc95f_9acf1fc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-20T17:10:53Z",
+      "side": 1,
+      "message": "Ack – see my answer in comment https://android-review.googlesource.com/c/platform/art/+/2158790/comments/fd781dc8_da977922.",
+      "parentUuid": "8a16742c_53c1d26b",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebcc6021_af1add1b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -125,6 +173,30 @@
       "writtenOn": "2022-07-19T17:44:24Z",
       "side": 1,
       "message": "cts tests should also be in general-tests suite. A mix of cts and device-tests setting could introduce issue like the test is passing in device-tests sutie, but not cts suite, as they are built on different targets.",
+      "range": {
+        "startLine": 402,
+        "startChar": 8,
+        "endLine": 403,
+        "endChar": 23
+      },
+      "revId": "6d75dbbf4f7f6fab501ce48001f0b31451213d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7095ea3b_7627c0ee",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-07-20T17:10:53Z",
+      "side": 1,
+      "message": "Ack – see my answer in comment https://android-review.googlesource.com/c/platform/art/+/2158790/comments/fd781dc8_da977922.",
+      "parentUuid": "45005b48_a4f7c412",
       "range": {
         "startLine": 402,
         "startChar": 8,
