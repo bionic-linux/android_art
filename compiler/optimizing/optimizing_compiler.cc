@@ -666,6 +666,9 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
     OptDef(OptimizationPass::kBoundsCheckElimination),
     OptDef(OptimizationPass::kLoopOptimization),
     // Simplification.
+    OptDef(OptimizationPass::kDeadCodeElimination,
+           "dead_code_elimination$after_loop_opt",
+           OptimizationPass::kLoopOptimization),
     OptDef(OptimizationPass::kConstantFolding,
            "constant_folding$after_bce"),
     OptDef(OptimizationPass::kAggressiveInstructionSimplifier,
@@ -681,6 +684,11 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
     // HTypeConversion from a type to the same type.
     OptDef(OptimizationPass::kAggressiveInstructionSimplifier,
            "instruction_simplifier$before_codegen"),
+    // Simplification may result in dead code that should be removed prior to
+    // code generation.
+    OptDef(OptimizationPass::kDeadCodeElimination,
+           "dead_code_elimination$before_codegen",
+           OptimizationPass::kAggressiveInstructionSimplifier),
     // Eliminate constructor fences after code sinking to avoid
     // complicated sinking logic to split a fence with many inputs.
     OptDef(OptimizationPass::kConstructorFenceRedundancyElimination)
