@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa89c29a_01653dcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2022-07-26T17:12:02Z",
+      "side": 1,
+      "message": "`device specific` in this context is more about how the test binary should behave in the setup of mixed build. For the bug this CL tries to solve, the issue is that, test binary from the `general-tests` suite (built on `aosp-android12-tests-dev` branch, not the device build branch (`git_sc-gsi-dev`)), can\u0027t run on the device. In that sense, the test case is `device specific`, as only the test binary built on the device target can run on the device build.\n\nI agree that there is still complication about why we are using test binaries from `aosp-android12-tests-dev` branch, not from the same `git_sc-gsi-dev` branch. That\u0027s more related to the test setup and can be a complicated issue by itself.\n\nTo allow this issue to move forward, during the last week\u0027s meeting, we concluded that such art tests can exist on device build as long as they are not part of CTS (as that might introduce inconsistent behavior when partner runs the test).",
+      "parentUuid": "a39bee61_7d887180",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "7e7b7a651e2f272971d4bbc67904a1b89cc66b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8139f9d2_afaee640",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
