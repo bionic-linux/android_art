@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c528187b_7f046163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T18:03:38Z",
+      "side": 1,
+      "message": "If we have an issue that a generic (i.e. non-device-specific) build of our tests don\u0027t work on some device then that sounds like a real bug we need to fix, because the ART module being tested shouldn\u0027t be device-specific. After all, we distribute generic builds of it through Mainline.\n\nMy understanding is that that isn\u0027t the case though, rather the problem is that there\u0027s version skew between the two branches. Iow, it\u0027s \"implementation specific\", not \"device specific\". Is that wrong?\n\nHowever, if this is a temporary measure to unblock things while a more long-term solution is worked on, then it\u0027s fine to switch some tests to `device-tests`. However in that case we should only do it for the specific tests that break, and have TODO\u0027s referencing a ticket to clean it up again.",
+      "parentUuid": "fa89c29a_01653dcf",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "7e7b7a651e2f272971d4bbc67904a1b89cc66b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8139f9d2_afaee640",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
