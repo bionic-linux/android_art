@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39bee61_7d887180",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T10:01:24Z",
+      "side": 1,
+      "message": "According to the docs in https://source.android.com/compatibility/tests/development/test-mapping#packaging_build_script_rules, this is for device specific tests, but nothing here is device specific.\n\nIf we are to move this to another test suite then I think it needs to be in accordance with documented policy, and currently this isn\u0027t. I\u0027ve asked for clarification in http://b/222683917#comment36.",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "7e7b7a651e2f272971d4bbc67904a1b89cc66b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8139f9d2_afaee640",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T10:01:24Z",
+      "side": 1,
+      "message": "If you passed any of these in your test then please mention which it was. If you didn\u0027t pass any of them then please delete this.",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "7e7b7a651e2f272971d4bbc67904a1b89cc66b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d44d7b0_bbbb9016",
