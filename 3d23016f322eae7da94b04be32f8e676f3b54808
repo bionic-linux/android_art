@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e560b5ea_55cae7a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-07-28T21:36:52Z",
+      "side": 1,
+      "message": "Is that really OK? Or is this a pre-existing bug?",
+      "range": {
+        "startLine": 15,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "3d23016f322eae7da94b04be32f8e676f3b54808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
