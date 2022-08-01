@@ -92,7 +92,8 @@ AllocationManager* gAllocManager;
 // Returns whether we are able to use all jvmti features.
 static bool IsFullJvmtiAvailable() {
   art::Runtime* runtime = art::Runtime::Current();
-  return runtime->GetInstrumentation()->IsForcedInterpretOnly() || runtime->IsJavaDebuggable();
+  return runtime->GetInstrumentation()->IsForcedInterpretOnly() ||
+         runtime->IsJavaDebuggableAtInit();
 }
 
 class JvmtiFunctions {
