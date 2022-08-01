@@ -450,6 +450,14 @@ void Instrumentation::InstallStubsForMethod(ArtMethod* method) {
   UpdateEntryPoints(method, GetOptimizedCodeFor(method));
 }
 
+void Instrumentation::UpdateEntrypointsForDebuggable() {
+  Runtime* runtime = Runtime::Current();
+  // If we are transitioning from non-debuggable to debuggable, we patch
+  // entry points of methods to remove any aot / JITed entry points.
+  InstallStubsClassVisitor visitor(this);
+  runtime->GetClassLinker()->VisitClasses(&visitor);
+}
+
 // Places the instrumentation exit pc as the return PC for every quick frame. This also allows
 // deoptimization of quick frames to interpreter frames. When force_deopt is
 // true the frames have to be deoptimized. If the frame has a deoptimization
@@ -1220,6 +1228,14 @@ void Instrumentation::Undeoptimize(ArtMethod* method) {
 
   // If interpreter stubs are still needed nothing to do.
   if (InterpreterStubsInstalled()) {
+    return;
+  }
+
+  if (method->IsObsolete()) {
+    // Don't update entry points for obsolete methods. The entrypoint should
+    // have been set to InvokeObsoleteMethoStub.
+    DCHECK_EQ(method->GetEntryPointFromQuickCompiledCodePtrSize(kRuntimePointerSize),
+              GetInvokeObsoleteMethodStub());
     return;
   }
 
