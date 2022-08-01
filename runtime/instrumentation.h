@@ -546,9 +546,13 @@ class Instrumentation {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Call back for configure stubs.
-  void InstallStubsForClass(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
+  void InstallStubsForClass(ObjPtr<mirror::Class> klass, bool initialize_method)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
-  void InstallStubsForMethod(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_);
+  void InstallStubsForMethod(ArtMethod* method, bool initialize_method)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  void UpdateEntrypointsForDebuggable() REQUIRES(art::Locks::mutator_lock_);
 
   // Install instrumentation exit stub on every method of the stack of the given thread.
   // This is used by:

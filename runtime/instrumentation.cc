@@ -95,16 +95,17 @@ static constexpr StackVisitor::StackWalkKind kInstrumentationStackWalk =
 
 class InstallStubsClassVisitor : public ClassVisitor {
  public:
-  explicit InstallStubsClassVisitor(Instrumentation* instrumentation)
-      : instrumentation_(instrumentation) {}
+  explicit InstallStubsClassVisitor(Instrumentation* instrumentation, bool initialize_method)
+      : instrumentation_(instrumentation), initialize_method_(initialize_method) {}
 
   bool operator()(ObjPtr<mirror::Class> klass) override REQUIRES(Locks::mutator_lock_) {
-    instrumentation_->InstallStubsForClass(klass.Ptr());
+    instrumentation_->InstallStubsForClass(klass.Ptr(), initialize_method_);
     return true;  // we visit all classes.
   }
 
  private:
   Instrumentation* const instrumentation_;
+  bool initialize_method_;
 };
 
 Instrumentation::Instrumentation()
@@ -170,8 +171,7 @@ bool Instrumentation::ProcessMethodUnwindCallbacks(Thread* self,
   return !new_exception_thrown;
 }
 
-
-void Instrumentation::InstallStubsForClass(ObjPtr<mirror::Class> klass) {
+void Instrumentation::InstallStubsForClass(ObjPtr<mirror::Class> klass, bool initialize_method) {
   if (!klass->IsResolved()) {
     // We need the class to be resolved to install/uninstall stubs. Otherwise its methods
     // could not be initialized or linked with regards to class inheritance.
@@ -179,7 +179,7 @@ void Instrumentation::InstallStubsForClass(ObjPtr<mirror::Class> klass) {
     // We can't execute code in a erroneous class: do nothing.
   } else {
     for (ArtMethod& method : klass->GetMethods(kRuntimePointerSize)) {
-      InstallStubsForMethod(&method);
+      InstallStubsForMethod(&method, initialize_method);
     }
   }
 }
@@ -413,7 +413,7 @@ void Instrumentation::InitializeMethodsCode(ArtMethod* method, const void* aot_c
       method, method->IsNative() ? GetQuickGenericJniStub() : GetQuickToInterpreterBridge());
 }
 
-void Instrumentation::InstallStubsForMethod(ArtMethod* method) {
+void Instrumentation::InstallStubsForMethod(ArtMethod* method, bool initialize_method) {
   if (!method->IsInvokable() || method->IsProxyMethod()) {
     // Do not change stubs for these methods.
     return;
@@ -422,6 +422,13 @@ void Instrumentation::InstallStubsForMethod(ArtMethod* method) {
   // TODO We should remove the need for this since it means we cannot always correctly detect calls
   // to Proxy.<init>
   if (IsProxyInit(method)) {
+    return;
+  }
+
+  if (initialize_method) {
+    // This is used when transitioning from non-debuggable -> debuggable when we
+    // want to re-initialize the code to stop using any aot / jited code.
+    InitializeMethodsCode(method, /* aot_code= */ nullptr);
     return;
   }
 
@@ -448,6 +455,14 @@ void Instrumentation::InstallStubsForMethod(ArtMethod* method) {
     return;
   }
   UpdateEntryPoints(method, GetOptimizedCodeFor(method));
+}
+
+void Instrumentation::UpdateEntrypointsForDebuggable() {
+  Runtime* runtime = Runtime::Current();
+  // If we are transitioning from non-debuggable to debuggable, we patch
+  // entry points of methods to remove any aot / JITed entry points.
+  InstallStubsClassVisitor visitor(this, /*intialize_method= */ true);
+  runtime->GetClassLinker()->VisitClasses(&visitor);
 }
 
 // Places the instrumentation exit pc as the return PC for every quick frame. This also allows
@@ -998,17 +1013,15 @@ void Instrumentation::UpdateStubs() {
   Locks::mutator_lock_->AssertExclusiveHeld(self);
   Locks::thread_list_lock_->AssertNotHeld(self);
   UpdateInstrumentationLevel(requested_level);
+  InstallStubsClassVisitor visitor(this, /* initialize_method= */ false);
+  runtime->GetClassLinker()->VisitClasses(&visitor);
   if (requested_level > InstrumentationLevel::kInstrumentNothing) {
-    InstallStubsClassVisitor visitor(this);
-    runtime->GetClassLinker()->VisitClasses(&visitor);
     instrumentation_stubs_installed_ = true;
     MutexLock mu(self, *Locks::thread_list_lock_);
     for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
       InstrumentThreadStack(thread, /* deopt_all_frames= */ false);
     }
   } else {
-    InstallStubsClassVisitor visitor(this);
-    runtime->GetClassLinker()->VisitClasses(&visitor);
     MaybeRestoreInstrumentationStack();
   }
 }
@@ -1220,6 +1233,14 @@ void Instrumentation::Undeoptimize(ArtMethod* method) {
 
   // If interpreter stubs are still needed nothing to do.
   if (InterpreterStubsInstalled()) {
+    return;
+  }
+
+  if (method->IsObsolete()) {
+    // Don't update entry points for obsolete methods. The entrypoint should
+    // have been set to InvokeObsoleteMethoStub.
+    DCHECK_EQ(method->GetEntryPointFromQuickCompiledCodePtrSize(kRuntimePointerSize),
+              GetInvokeObsoleteMethodStub());
     return;
   }
 
