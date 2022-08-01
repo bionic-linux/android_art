@@ -61,6 +61,8 @@
 
 namespace openjdkjvmti {
 
+static constexpr const char* kInstrumentationKey = "JVMTI_DeoptRequester";
+
 // We could make this much more selective in the future so we only return true when we
 // actually care about the method at this time (ie active frames had locals changed). For now we
 // just assume that if anything has changed any frame's locals we care about all methods. This only
@@ -91,13 +93,8 @@ void DeoptManager::Setup() {
   callbacks->AddMethodInspectionCallback(&inspection_callback_);
 }
 
-void DeoptManager::Shutdown() {
-  art::ScopedThreadStateChange stsc(art::Thread::Current(),
-                                    art::ThreadState::kWaitingForDebuggerToAttach);
-  art::ScopedSuspendAll ssa("remove method Inspection Callback");
-  art::RuntimeCallbacks* callbacks = art::Runtime::Current()->GetRuntimeCallbacks();
-  callbacks->RemoveMethodInspectionCallback(&inspection_callback_);
-}
+
+
 
 void DeoptManager::DumpDeoptInfo(art::Thread* self, std::ostream& stream) {
   art::ScopedObjectAccess soa(self);
@@ -162,12 +159,28 @@ void DeoptManager::FinishSetup() {
                 << "'-Xcompiler-option --debuggable' to dalvikvm in the future.";
       DCHECK(runtime->GetJit() == nullptr) << "Jit should not be running yet!";
       runtime->AddCompilerOption("--debuggable");
-      runtime->SetJavaDebuggable(true);
+      runtime->SetRuntimeDebugState(art::Runtime::RuntimeDebugState::kJavaDebuggableAtInit);
     } else {
       LOG(WARNING) << "Openjdkjvmti plugin was loaded on a non-debuggable Runtime. Plugin was "
-                   << "loaded too late to change runtime state to DEBUGGABLE. Only kArtTiVersion "
-                   << "(0x" << std::hex << kArtTiVersion << ") environments are available. Some "
-                   << "functionality might not work properly.";
+                   << "loaded too late to change runtime state to support all capabilities. Only "
+                   << "kArtTiVersion (0x" << std::hex << kArtTiVersion << ") environments are "
+                   << "available. Some functionality might not work properly.";
+      // Transition the runtime to debuggable, by changing the state of the
+      // runtime to JavaDebuggable and discarding any JITed code that was
+      // generated before changing the runtime state and update all entrypoints
+      // to avoid AOT code.
+      {
+        // Release deoptimization_status_lock_ before calling TransitionToDebuggable.
+        // TransitionToDebuggable uses other locks like task_queue_lock and
+        // deoptimization_status_lock_ is lowest level lock, so given up the lock before
+        // calling TransitionToDebuggable.
+        performing_deoptimization_ = true;
+        deoptimization_status_lock_.Unlock(self);
+        runtime->GetInstrumentation()->TransitionToDebuggable();
+        deoptimization_status_lock_.ExclusiveLock(self);
+        performing_deoptimization_ = false;
+        deoptimization_condition_.Broadcast(self);
+      }
       if (runtime->GetJit() == nullptr &&
           runtime->GetJITOptions()->UseJitCompilation() &&
           !runtime->GetInstrumentation()->IsForcedInterpretOnly()) {
@@ -362,6 +375,25 @@ void DeoptManager::AddDeoptimizeAllMethodsLocked(art::Thread* self) {
   }
 }
 
+void DeoptManager::Shutdown() {
+  art::Thread* self = art::Thread::Current();
+  art::Runtime* runtime = art::Runtime::Current();
+  art::ScopedThreadStateChange sts(self, art::ThreadState::kSuspended);
+  deoptimization_status_lock_.ExclusiveLock(self);
+  ScopedDeoptimizationContext sdc(self, this);
+  art::RuntimeCallbacks* callbacks = runtime->GetRuntimeCallbacks();
+  callbacks->RemoveMethodInspectionCallback(&inspection_callback_);
+  if (!runtime->IsJavaDebuggableAtInit()) {
+    runtime->SetRuntimeDebugState(art::Runtime::RuntimeDebugState::kNonJavaDebuggable);
+  }
+  // TODO(mythria): DeoptManager should use only one key. Merge
+  // kInstrumentationKey and kDeoptManagerInstrumentationKey.
+  if (!runtime->IsShuttingDown(self)) {
+    art::Runtime::Current()->GetInstrumentation()->DisableDeoptimization(kInstrumentationKey);
+    art::Runtime::Current()->GetInstrumentation()->DisableDeoptimization(kDeoptManagerInstrumentationKey);
+  }
+}
+
 void DeoptManager::RemoveDeoptimizeAllMethodsLocked(art::Thread* self) {
   DCHECK_GT(global_deopt_count_, 0u) << "Request to remove non-existent global deoptimization!";
   global_deopt_count_--;
@@ -435,7 +467,6 @@ jvmtiError DeoptManager::RemoveDeoptimizeThreadMethods(art::ScopedObjectAccessUn
   return OK;
 }
 
-static constexpr const char* kInstrumentationKey = "JVMTI_DeoptRequester";
 
 void DeoptManager::RemoveDeoptimizationRequester() {
   art::Thread* self = art::Thread::Current();
