@@ -39,7 +39,6 @@
 #include <jni.h>
 
 #include "jvmti.h"
-
 #include "alloc_manager.h"
 #include "art_jvmti.h"
 #include "base/logging.h"  // For gLogVerbosity.
@@ -92,7 +91,8 @@ AllocationManager* gAllocManager;
 // Returns whether we are able to use all jvmti features.
 static bool IsFullJvmtiAvailable() {
   art::Runtime* runtime = art::Runtime::Current();
-  return runtime->GetInstrumentation()->IsForcedInterpretOnly() || runtime->IsJavaDebuggable();
+  return runtime->GetInstrumentation()->IsForcedInterpretOnly() ||
+         runtime->IsJavaDebuggableAtInit();
 }
 
 class JvmtiFunctions {
@@ -1474,13 +1474,7 @@ extern "C" bool ArtPlugin_Initialize() {
   FieldUtil::Register(gEventHandler);
   BreakpointUtil::Register(gEventHandler);
   Transformer::Register(gEventHandler);
-
-  {
-    // Make sure we can deopt anything we need to.
-    art::ScopedSuspendAll ssa(__FUNCTION__);
-    gDeoptManager->FinishSetup();
-  }
-
+  gDeoptManager->FinishSetup();
   runtime->GetJavaVM()->AddEnvironmentHook(GetEnvHandler);
 
   return true;
