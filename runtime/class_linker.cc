@@ -3277,7 +3277,8 @@ ObjPtr<mirror::Class> ClassLinker::DefineClass(Thread* self,
     // suspending all threads to update entrypoints while we are doing it
     // for this class.
     DCHECK_EQ(self->GetState(), ThreadState::kRunnable);
-    Runtime::Current()->GetInstrumentation()->InstallStubsForClass(h_new_class.Get());
+    Runtime::Current()->GetInstrumentation()->InstallStubsForClass(h_new_class.Get(),
+                                                                   /* initialize_method= */ false);
   }
 
   /*
