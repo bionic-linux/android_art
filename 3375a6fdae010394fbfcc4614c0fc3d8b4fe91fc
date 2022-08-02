@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229de3a3_600774f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-08-02T12:02:08Z",
+      "side": 1,
+      "message": "IIRC last time I tried to merge VIXL simulator, we ended up having post-submit failures on `m checkbuild` (on the full AOSP tree, not the reduced master-art manifest). It would be good to run checkbuild and ensure it passes before this CL is submitted (if it fails, some more build system hacks may be needed). Checkbuild is very long and takes a lot of disk space. Roughly, it attempts to build every build target (the thing you can pass to `m ...`) exposed to Ninja.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "3375a6fdae010394fbfcc4614c0fc3d8b4fe91fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb18022c_e707c831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-08-02T12:02:08Z",
+      "side": 1,
+      "message": "IMO this change generally has too many `ifdef`s, especially wrapping every added C++ method, header include and forward declaration seems unnecessary. Would it be possible to add trivial stubs and zero-size data members that will be compiled away in non-simulator mode, perhaps with the use of templates?",
+      "revId": "3375a6fdae010394fbfcc4614c0fc3d8b4fe91fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bab610c_48eee7b8",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-08-02T12:02:08Z",
+      "side": 1,
+      "message": "You could probably put those ifdefs into the header itself.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "3375a6fdae010394fbfcc4614c0fc3d8b4fe91fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b981d0e_52b53377",
+        "filename": "test/2237-checker-simulator/checker_simulator_jni.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-08-02T12:02:08Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "3375a6fdae010394fbfcc4614c0fc3d8b4fe91fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
