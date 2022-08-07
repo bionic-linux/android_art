@@ -245,13 +245,14 @@ class Transaction final {
         REQUIRES(Locks::intern_table_lock_);
     void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
-    InternStringLog() = default;
+    InternStringLog() = delete;
     InternStringLog(InternStringLog&& log) = default;
+    InternStringLog& operator=(InternStringLog&& log) = default;
 
    private:
     mutable GcRoot<mirror::String> str_;
-    const StringKind string_kind_;
-    const StringOp string_op_;
+    StringKind string_kind_;
+    StringOp string_op_;
 
     DISALLOW_COPY_AND_ASSIGN(InternStringLog);
   };
