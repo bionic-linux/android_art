@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d03272_88ca06a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T04:51:50Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b64f73_f789e1d0",
+        "filename": "openjdkjvmti/deopt_manager.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T04:51:50Z",
+      "side": 1,
+      "message": "I am not entirely sure why we need a deoptimization_status_lock_ here since the runtime is just starting here. I retained this to keep the behaviour the same. Maybe we hold this so we don\u0027t set any breakpoints while we are still attaching the debugger. Though as far as I am aware we don\u0027t let the debugger set any breakpoints until after the setup is complete. I added a TODO so I could investigate later.",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5eb1c90_656ed9f1",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T04:51:50Z",
+      "side": 1,
+      "message": "We actually don\u0027t need to special case this here for transition from non-debuggable -\u003e debuggable as long as we clear JIT code and change the runtime state before we update the entry points. Since we clear JIT code and CanUseAOT code returns false in debuggable runtime this should work as expected. I added this to make it clear that we won\u0027t use any AOT / JITed code and also to avoid any ordering issues.",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a65688_3a6fe779",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T04:51:50Z",
+      "side": 1,
+      "message": "IIUC, zygote_map_ is a shared region and we can\u0027t clear it. So clearing the precompiled bit and updating entry points should be sufficient here.",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e425f6aa_1872802e",
+        "filename": "test/993-breakpoints-non-debuggable/expected-stdout.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T04:51:50Z",
+      "side": 1,
+      "message": "Except for this line rest of the output is same as 993-breakpoints test. Is there an easy way to share this?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
