@@ -358,6 +358,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51826e9_773d5758",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T12:25:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35a65688_3a6fe779",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37311a90_0ed4f223",
@@ -536,6 +554,30 @@
       "side": 1,
       "message": "Not really - I really dislike golden files as ways to test, but this is another effort to fix this test not to use a golden file!",
       "parentUuid": "e425f6aa_1872802e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "727b5f46_2e01c493",
+        "filename": "test/993-breakpoints-non-debuggable/expected-stdout.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-08-08T12:25:39Z",
+      "side": 1,
+      "message": "Thanks! I will leave that for a future CL :)",
+      "parentUuid": "30316057_be83b25e",
       "range": {
         "startLine": 1,
         "startChar": 0,
