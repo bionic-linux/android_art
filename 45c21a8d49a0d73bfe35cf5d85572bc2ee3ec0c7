@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "604d36e4_e9cc1ccf",
+        "filename": "openjdkjvmti/deopt_manager.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "All of that looks obsolete and can be removed,",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 5
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57ff5cc_0a6e79fe",
+        "filename": "openjdkjvmti/ti_extension.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "Use IsFullJvmtiAvailable ?",
+      "range": {
+        "startLine": 402,
+        "startChar": 7,
+        "endLine": 403,
+        "endChar": 43
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80298778_23237cc7",
+        "filename": "openjdkjvmti/ti_extension.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "ditto?",
+      "range": {
+        "startLine": 708,
+        "startChar": 7,
+        "endLine": 709,
+        "endChar": 40
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5eb1c90_656ed9f1",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 9
@@ -48,6 +117,70 @@
       "writtenOn": "2022-08-08T04:51:50Z",
       "side": 1,
       "message": "We actually don\u0027t need to special case this here for transition from non-debuggable -\u003e debuggable as long as we clear JIT code and change the runtime state before we update the entry points. Since we clear JIT code and CanUseAOT code returns false in debuggable runtime this should work as expected. I added this to make it clear that we won\u0027t use any AOT / JITed code and also to avoid any ordering issues.",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04606fc0_05503f65",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer if we could we avoid the special case? Given like you said it looks like it\u0027s handled correctly already?",
+      "parentUuid": "c5eb1c90_656ed9f1",
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de406bb_fa4beced",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "I think this should be IsJavaDebuggable. We\u0027re going to update entrypoints of ArtMethod, and that\u0027s not good if we transitioned to debuggable.",
+      "range": {
+        "startLine": 1078,
+        "startChar": 26,
+        "endLine": 1078,
+        "endChar": 48
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a76275_3940844e",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1325,
+        "startChar": 16,
+        "endLine": 1325,
+        "endChar": 38
+      },
       "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +204,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37311a90_0ed4f223",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "I think this should be IsJavaDebuggable, as we\u0027ll want to get class loading hooks which don\u0027t happen if we load an app image.",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 61
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253841c0_814f846d",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 144,
+        "startChar": 81,
+        "endLine": 144,
+        "endChar": 82
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec97eab_cd7654e7",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to remove this now? Ie, we transitioned to debuggable so we shouldn\u0027t need to use interpreter only.",
+      "range": {
+        "startLine": 435,
+        "startChar": 39,
+        "endLine": 435,
+        "endChar": 95
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e425f6aa_1872802e",
         "filename": "test/993-breakpoints-non-debuggable/expected-stdout.txt",
         "patchSetId": 9
@@ -87,6 +289,29 @@
         "startChar": 0,
         "endLine": 1,
         "endChar": 17
+      },
+      "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9751fc86_2ee51b16",
+        "filename": "test/993-breakpoints-non-debuggable/run",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-08-08T09:11:43Z",
+      "side": 1,
+      "message": "This looks stalled? Looks like you can remove the whole file here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 68
       },
       "revId": "45c21a8d49a0d73bfe35cf5d85572bc2ee3ec0c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
