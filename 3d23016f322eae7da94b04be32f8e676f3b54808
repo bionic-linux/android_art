@@ -39,6 +39,24 @@
       "message": "nit: add a comment on this behavior?",
       "revId": "3d23016f322eae7da94b04be32f8e676f3b54808",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797d76f1_6ee86c9e",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2518,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-08-10T17:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cdb8958_0fab897a",
+      "revId": "3d23016f322eae7da94b04be32f8e676f3b54808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

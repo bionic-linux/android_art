@@ -22,6 +22,30 @@
       },
       "revId": "c93713833cf57be366263eac2e946ed0b51bd657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d9731e_b7e1df9a",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-08-10T17:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb261545_f0e3ba23",
+      "range": {
+        "startLine": 2521,
+        "startChar": 23,
+        "endLine": 2521,
+        "endChar": 32
+      },
+      "revId": "c93713833cf57be366263eac2e946ed0b51bd657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
