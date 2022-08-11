@@ -109,7 +109,7 @@ TEST(OdrCompilationLog, ShouldAttemptCompile) {
       /*apex_version=*/1,
       /*last_update_millis=*/762,
       OdrMetrics::Trigger::kApexVersionMismatch,
-      ExitCode::kCompilationSuccess);
+      ExitCode::kCompilationFailed);
   ASSERT_TRUE(ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kApexVersionMismatch));
   ASSERT_TRUE(ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kDexFilesChanged));
   ASSERT_FALSE(ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kUnknown));
@@ -180,8 +180,8 @@ TEST(OdrCompilationLog, BackOffHappyHistory) {
           OdrMetrics::Trigger::kApexVersionMismatch,
           start_time,
           ExitCode::kCompilationSuccess);
-  ASSERT_FALSE(ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kUnknown, start_time));
-  ASSERT_FALSE(
+  ASSERT_TRUE(ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kUnknown, start_time));
+  ASSERT_TRUE(
       ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kUnknown, start_time + kSecondsPerDay / 4));
   ASSERT_TRUE(
       ocl.ShouldAttemptCompile(OdrMetrics::Trigger::kUnknown, start_time + kSecondsPerDay / 2));
