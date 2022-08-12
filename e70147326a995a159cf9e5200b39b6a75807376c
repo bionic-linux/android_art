@@ -93,6 +93,30 @@
       },
       "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f7ec7e_9ea330d7",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-08-12T21:45:06Z",
+      "side": 1,
+      "message": "OK, but this is starting to get a bit obscure. This CL is presumably somewhat urgent, but I would try restructuring in a follow-up. I suspect that again defining gKernelHasFaultRetry unconditionally may improve matters.",
+      "parentUuid": "299c767c_5d2e477b",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
