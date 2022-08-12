@@ -45,6 +45,30 @@
       },
       "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299c767c_5d2e477b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-08-12T21:26:45Z",
+      "side": 1,
+      "message": "There is a possibility of uffd_ to be kFallbackMode, which is -2 (line 135 above). I could have set uffd_ \u003d -1 at line 135, but didn\u0027t do because the warning at 144 wasn\u0027t applicable in that case.",
+      "parentUuid": "4b53305e_35ec3a46",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
