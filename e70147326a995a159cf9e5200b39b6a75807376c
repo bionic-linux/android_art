@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09996205_d115f56b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-08-12T20:52:48Z",
+      "side": 1,
+      "message": "Nit:\ns/fault-retry feature/the fault-retry feature/\nin several places here.\nAlso s/kernel/the kernel/ here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b53305e_35ec3a46",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-08-12T20:52:48Z",
+      "side": 1,
+      "message": "How about \"} else { DCHECK_EQ(uffd_, -1); ...\" instead?\n\nThat preserves the original checking.",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
