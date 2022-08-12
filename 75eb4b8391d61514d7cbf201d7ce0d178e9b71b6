@@ -46,6 +46,30 @@
       },
       "revId": "75eb4b8391d61514d7cbf201d7ce0d178e9b71b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf205c5_04780127",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-08-12T17:26:10Z",
+      "side": 1,
+      "message": "Actually a reference to the bug would already help a lot.",
+      "parentUuid": "13bb2752_07e17c68",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "75eb4b8391d61514d7cbf201d7ce0d178e9b71b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
