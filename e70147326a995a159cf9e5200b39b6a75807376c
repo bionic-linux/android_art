@@ -117,6 +117,30 @@
       },
       "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb641ee_588e2151",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-08-12T22:11:08Z",
+      "side": 1,
+      "message": "I tried that (in PS1) but the presubmit build complained that the ART_TARGET case was never defined but never used.",
+      "parentUuid": "12f7ec7e_9ea330d7",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 29
+      },
+      "revId": "e70147326a995a159cf9e5200b39b6a75807376c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
