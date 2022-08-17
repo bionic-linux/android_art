@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a950d76c_bd28a53b",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-08-17T15:06:53Z",
+      "side": 0,
+      "message": "This would be deleted, so we know this was in fact unused, right?\n\nThat, no change to program behavior, right?",
+      "revId": "e4be7cf781637ef96576cbc25bd02e80ade45e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

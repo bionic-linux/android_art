@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67686ef_600d97d8",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-08-17T15:06:53Z",
+      "side": 1,
+      "message": "Why did you make it `delete` here rather than just removing as before?",
+      "revId": "5cc833e69697e5567774eb10ab8338f16ce6c12b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91522aaf_f23c2a8f",
+        "filename": "runtime/transaction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-08-17T15:06:53Z",
+      "side": 1,
+      "message": "I don\u0027t understand why it necessary to make the class work with defaults.\n\nSince the code compiled before, aren\u0027t the defaults unused?",
+      "revId": "5cc833e69697e5567774eb10ab8338f16ce6c12b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
