@@ -46,6 +46,30 @@
       },
       "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ba0a1b_74521f8c",
+        "filename": "test/art_build_rules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-08-24T17:54:21Z",
+      "side": 1,
+      "message": "Gotcha ok, that\u0027s interesting. Makes sense then.",
+      "parentUuid": "25f52ea2_052ccb6e",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 92
+      },
+      "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
