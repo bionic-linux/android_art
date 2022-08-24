@@ -22,6 +22,30 @@
       },
       "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f52ea2_052ccb6e",
+        "filename": "test/art_build_rules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-08-24T15:14:18Z",
+      "side": 1,
+      "message": "I was thinking more about what if developers pull the ART project only (I do that).\n\nConsidering the `repo sync` has uncomfortably high probability of corrupting your local checkout, or crashing the whole machine, I avoid running it unless I absolutely have to.",
+      "parentUuid": "625cd07b_098e3412",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 92
+      },
+      "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
