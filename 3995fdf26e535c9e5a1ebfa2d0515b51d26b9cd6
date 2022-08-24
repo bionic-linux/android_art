@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "625cd07b_098e3412",
+        "filename": "test/art_build_rules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-08-24T14:02:39Z",
+      "side": 1,
+      "message": "I\u0027m guessing you don\u0027t need this - we check-in re-client binaries afterall with the codebase.\n(its useful to have incase a developer decides to mix and match android with various re-client versions, but that\u0027s unlikely to happen outside my team)",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 92
+      },
+      "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
