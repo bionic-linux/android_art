@@ -16,6 +16,24 @@
       "message": "This would be deleted, so we know this was in fact unused, right?\n\nThat, no change to program behavior, right?",
       "revId": "e4be7cf781637ef96576cbc25bd02e80ade45e82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661bdea2_7cce7ec4",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-08-26T19:14:42Z",
+      "side": 0,
+      "message": "Yes, if this was actually used, there would be a compilation error.",
+      "parentUuid": "a950d76c_bd28a53b",
+      "revId": "e4be7cf781637ef96576cbc25bd02e80ade45e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

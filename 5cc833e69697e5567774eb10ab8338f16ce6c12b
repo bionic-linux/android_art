@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a7efe9_dd3f175b",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-08-26T19:14:42Z",
+      "side": 1,
+      "message": "Because otherwise they would be implicitly defaulted due to defaulted constructors above. This pattern is also a bit unusual (normally types tend to support both assignments and construction), so I think it\u0027s better to be explicit here about what is supported.",
+      "parentUuid": "c67686ef_600d97d8",
+      "revId": "5cc833e69697e5567774eb10ab8338f16ce6c12b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91522aaf_f23c2a8f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-17T15:06:53Z",
       "side": 1,
       "message": "I don\u0027t understand why it necessary to make the class work with defaults.\n\nSince the code compiled before, aren\u0027t the defaults unused?",
+      "revId": "5cc833e69697e5567774eb10ab8338f16ce6c12b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1d062f_85398bb4",
+        "filename": "runtime/transaction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1307979
+      },
+      "writtenOn": "2022-08-26T19:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91522aaf_f23c2a8f",
       "revId": "5cc833e69697e5567774eb10ab8338f16ce6c12b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
