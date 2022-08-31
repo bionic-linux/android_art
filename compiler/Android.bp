@@ -246,6 +246,7 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
+    version_script: "libart-compiler.map",
 }
 
 cc_defaults {

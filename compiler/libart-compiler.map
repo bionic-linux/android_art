@@ -1,0 +1,70 @@
+
+ART_COMPILER {
+global:
+    global:
+        extern "C++" {
+            "art::CreateTrampoline32(art::InstructionSet, art::EntryPointCallingConvention, art::ThreadOffset<(art::PointerSize)4>)";
+            "art::CreateTrampoline64(art::InstructionSet, art::EntryPointCallingConvention, art::ThreadOffset<(art::PointerSize)8>)";
+            "art::debug::MakeMiniDebugInfo(art::InstructionSet, art::InstructionSetFeatures const*, unsigned long long, unsigned int, unsigned long long, unsigned int, art::debug::DebugInfo const&)";
+
+            "art::linker::operator<<(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, art::linker::LinkerPatch::Type)";
+            "art::operator<<(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, art::Whence const&)";
+            "void art::debug::WriteDebugInfo<art::ElfTypes32>(art::ElfBuilder<art::ElfTypes32>*, art::debug::DebugInfo const&)";
+            "void art::debug::WriteDebugInfo<art::ElfTypes64>(art::ElfBuilder<art::ElfTypes64>*, art::debug::DebugInfo const&)";
+
+            # art::BufferedOutputStream*;
+            "art::BufferedOutputStream::~BufferedOutputStream()";
+            "art::BufferedOutputStream::BufferedOutputStream(std::__1::unique_ptr<art::OutputStream, std::__1::default_delete<art::OutputStream> >)";
+
+            # art::CompiledCode*;
+            "art::CompiledCode::CodeDelta(art::InstructionSet)";
+            "art::CompiledCode::AlignCode(unsigned int, art::InstructionSet)";
+            "art::CompiledCode::CodeDelta() const";
+            "art::CompiledCode::AlignCode(unsigned int) const";
+
+            # art::CompiledMethod*;
+            "art::CompiledMethod::ReleaseSwapAllocatedCompiledMethod(art::CompiledMethodStorage*, art::CompiledMethod*)";
+
+            # art::CompiledMethodStorage*;
+            "art::CompiledMethodStorage::CompiledMethodStorage(int)";
+            "art::CompiledMethodStorage::~CompiledMethodStorage()";
+            "art::CompiledMethodStorage::DumpMemoryUsage(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, bool) const";
+            "art::CompiledMethodStorage::GetThunkCode(art::linker::LinkerPatch const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >*)";
+            "art::CompiledMethodStorage::UniqueVMapTableEntries() const";
+
+            # art::Compiler*;
+            "art::Compiler::Create(art::CompilerOptions const&, art::CompiledMethodStorage*, art::Compiler::Kind)";
+
+            # art::CompilerOptions*;
+            "art::CompilerOptions::~CompilerOptions()";
+            "art::CompilerOptions::CompilerOptions()";
+            "art::CompilerOptions::ParseDumpInitFailures(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >*)";
+            "art::CompilerOptions::ParseRegisterAllocationStrategy(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >*)";
+            "art::CompilerOptions::GetVerificationResults() const";
+            "art::CompilerOptions::IsImageClass(char const*) const";
+            "art::CompilerOptions::IsPreloadedClass(char const*) const";
+            "art::CompilerOptions::ShouldCompileWithClinitCheck(art::ArtMethod*) const";
+
+            # art::CreateTrampoline*;
+
+            # art::FileOutputStream*;
+            "art::FileOutputStream::FileOutputStream(unix_file::FdFile*)";
+
+            # art::IntrinsicObjects*;
+            "art::IntrinsicObjects::LookupIntegerCache(art::Thread*, art::ClassLinker*)";
+            "art::IntrinsicObjects::GetIntegerValueOfObject(art::ObjPtr<art::mirror::ObjectArray<art::mirror::Object> >, unsigned int)";
+            "art::IntrinsicObjects::GetIntegerValueOfArrayDataOffset(art::ObjPtr<art::mirror::ObjectArray<art::mirror::Object> >)";
+
+            # art::VerificationResults*;
+            "art::VerificationResults::~VerificationResults()";
+            "art::VerificationResults::VerificationResults()";
+            "art::VerificationResults::AddUncompilableMethod(art::MethodReference)";
+            "art::VerificationResults::AddRejectedClass(art::ClassReference)";
+            "art::VerificationResults::IsUncompilableMethod(art::MethodReference) const";
+            "art::VerificationResults::IsClassRejected(art::ClassReference) const";
+        };
+
+    local:
+        *;
+};
+
