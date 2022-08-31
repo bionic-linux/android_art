@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0168ada8_102dba44",
+        "filename": "build/art.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-08-31T18:12:45Z",
+      "side": 1,
+      "message": "Please make it `false /* bazelable */` to make it more clear what disables bp2build.",
+      "range": {
+        "startLine": 467,
+        "startChar": 54,
+        "endLine": 467,
+        "endChar": 59
+      },
+      "revId": "4e1108ab97db449ff954066fda2da25016f0b160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
