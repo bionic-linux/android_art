@@ -555,13 +555,14 @@ art_cc_test {
     ],
     shared_libs: [
         "libartbased",
-        "libartd-compiler",
         "libartd-dexlayout",
+        "liblzma",
         "libprofiled",
     ],
     static_libs: [
-        "libartd-dex2oat-gtest",
+        "libartd-compiler",
         "libartd-dex2oat",
+        "libartd-dex2oat-gtest",
         "libvixld",
     ],
 }
@@ -576,11 +577,12 @@ art_cc_test {
     data: [":generate-boot-image"],
     shared_libs: [
         "libartbase",
-        "libart-compiler",
         "libart-dexlayout",
         "libprofile",
+        "liblzma",
     ],
     static_libs: [
+        "libart-compiler",
         "libart-dex2oat-gtest",
         "libart-dex2oat",
         "libvixl",
