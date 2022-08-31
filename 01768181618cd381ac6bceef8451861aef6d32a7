@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1697047d_771f3850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358301
+      },
+      "writtenOn": "2022-08-31T21:08:47Z",
+      "side": 1,
+      "message": "Hi Dmitrii, this is Harry from the Android CrystalBall team. Two of app startup tests found that this change might introduce a ~90ms (~20%) regression into app startup times (https://crystalball-presubmit.corp.google.com/dashboard/I38800010086331390, https://crystalball-presubmit.corp.google.com/dashboard/I96400010086317891). Could you please hold off on submitting this change? Thanks!",
+      "revId": "01768181618cd381ac6bceef8451861aef6d32a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
