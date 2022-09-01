@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb2f105_3ca073ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-09-01T08:58:55Z",
+      "side": 1,
+      "message": "Roland, PTAL. I\u0027d like to get changes like these in to be able to proceed with migration to JDK 17. I\u0027m going to keep the bug open for a proper fix (if one is possible).",
+      "revId": "f7da11565fcb79704f024168f86905b23d6678f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
