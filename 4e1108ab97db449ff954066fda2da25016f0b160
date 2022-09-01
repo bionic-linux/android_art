@@ -22,6 +22,30 @@
       },
       "revId": "4e1108ab97db449ff954066fda2da25016f0b160",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876b6e15_a9db39f9",
+        "filename": "build/art.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-09-01T01:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0168ada8_102dba44",
+      "range": {
+        "startLine": 467,
+        "startChar": 54,
+        "endLine": 467,
+        "endChar": 59
+      },
+      "revId": "4e1108ab97db449ff954066fda2da25016f0b160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
