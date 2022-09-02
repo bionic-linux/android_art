@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001de596_ca71e6fc",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-02T09:34:38Z",
+      "side": 1,
+      "message": "Should this be `modified_location`? If yes, should you drop the `-transformed` on this line?\n\nAlso, looks like we\u0027re missing a test for the comment you put lines 516-517?",
+      "range": {
+        "startLine": 523,
+        "startChar": 37,
+        "endLine": 523,
+        "endChar": 54
+      },
+      "revId": "af990e40676cb16af0c76b72e3ebd6bd7bc64511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
