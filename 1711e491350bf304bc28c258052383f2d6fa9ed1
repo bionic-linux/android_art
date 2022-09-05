@@ -33,6 +33,42 @@
       "message": "Changing vote to Code-Review+1 to avoid premature submission via Autosubmit.",
       "revId": "1711e491350bf304bc28c258052383f2d6fa9ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ecaac4_0a5f27a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-09-05T14:04:58Z",
+      "side": 1,
+      "message": "Sorry, I just assumed it wouldn\u0027t. Now I\u0027ve tried, and that\u0027s indeed the case.",
+      "parentUuid": "c8a16f24_8824e242",
+      "revId": "1711e491350bf304bc28c258052383f2d6fa9ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d3b1520_2f1805e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-09-05T14:04:58Z",
+      "side": 1,
+      "message": "It\u0027s enough to have an unresolved comment to avoid that, isn\u0027t it?",
+      "parentUuid": "94c1c2c2_7c412ec5",
+      "revId": "1711e491350bf304bc28c258052383f2d6fa9ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
