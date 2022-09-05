@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d57a81d_6365e4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-09-05T09:22:27Z",
+      "side": 1,
+      "message": "Roland: PTAL",
+      "revId": "3995fdf26e535c9e5a1ebfa2d0515b51d26b9cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "625cd07b_098e3412",
         "filename": "test/art_build_rules.py",
         "patchSetId": 1
