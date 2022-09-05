@@ -22,6 +22,30 @@
       },
       "revId": "af990e40676cb16af0c76b72e3ebd6bd7bc64511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a77ea1b7_2772911a",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-05T10:42:07Z",
+      "side": 1,
+      "message": "Oops, this should be `modified_location`. I missed it.\n\nActually, I didn\u0027t express myself well in the comment. A dangling multi-dex location appended to bootclasspath only causes problems during oat file validation. It generally doesn\u0027t affect correctness in execution. When doing oat file validation, the runtime assumes that each dex file with a multi-dex location belongs to the jar with a normal location that is positioned before it. For example, if the bootclasspath is:\n\n```\nfoo.jar\nfoo.jar!classes2.dex\nfoo.jar!classes3.dex\nbar.jar\nbar.jar!classes2.dex\n```\n\nthen the runtime will assume that `foo.jar!classes2.dex` and `foo.jar!classes3.dex` belong to `foo.jar`, and `bar.jar!classes2.dex` belongs to `bar.jar`.\n\nAdding a dangling multi-dex location to bootclasspath will break this assumption and cause oat file validation to return false positive in very edge cases.\n\nI added some DCHECKs in runtime.cc.",
+      "parentUuid": "001de596_ca71e6fc",
+      "range": {
+        "startLine": 523,
+        "startChar": 37,
+        "endLine": 523,
+        "endChar": 54
+      },
+      "revId": "af990e40676cb16af0c76b72e3ebd6bd7bc64511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
