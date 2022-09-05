@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9220fe_7def745c",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-05T10:52:29Z",
+      "side": 1,
+      "message": "For better readability, move this outside of the if?",
+      "range": {
+        "startLine": 518,
+        "startChar": 6,
+        "endLine": 518,
+        "endChar": 82
+      },
+      "revId": "53e97fbc5150d26073e356219d80ebd27d6e2eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
