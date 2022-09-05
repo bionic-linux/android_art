@@ -69,6 +69,24 @@
       "parentUuid": "94c1c2c2_7c412ec5",
       "revId": "1711e491350bf304bc28c258052383f2d6fa9ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a59b433b_e5f63e71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-09-05T14:18:16Z",
+      "side": 1,
+      "message": "Yes, but it\u0027s very easy to miss (at least for me!). :-)",
+      "parentUuid": "7d3b1520_2f1805e6",
+      "revId": "1711e491350bf304bc28c258052383f2d6fa9ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
