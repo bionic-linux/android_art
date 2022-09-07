@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc51c30_9d146292",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-09-07T18:19:19Z",
+      "side": 1,
+      "message": "Nit: Indentation is off (compared to e.g. line 448).",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 24
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b2dc68_6be1419a",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-09-07T18:19:19Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 505,
+        "startChar": 21,
+        "endLine": 505,
+        "endChar": 24
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02f8bc3_d378c430",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-09-07T18:19:19Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1736,
+        "startChar": 27,
+        "endLine": 1736,
+        "endChar": 30
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5823d5_145f71ae",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-09-07T18:19:19Z",
+      "side": 1,
+      "message": "Suggestion: `Begin() \u003c\u003d pointer` (so that all inequalities are in the same direction in this condition).",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 29
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
