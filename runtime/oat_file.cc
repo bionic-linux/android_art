@@ -470,9 +470,9 @@ static bool ComputeAndCheckTypeLookupTableData(const DexFile::Header& header,
     return true;
   }
 
-  if (UNLIKELY(!vdex_file->Contains(type_lookup_table_start))) {
+  if (UNLIKELY(!vdex_file->Contains(type_lookup_table_start, sizeof(uint32_t)))) {
     *error_msg =
-        StringPrintf("In vdex file '%s' found invalid type lookup table pointer %p not in [%p, %p]",
+        StringPrintf("In vdex file '%s' found invalid type lookup table start %p not in [%p, %p]",
                      vdex_file->GetName().c_str(),
                      type_lookup_table_start,
                      vdex_file->Begin(),
@@ -497,20 +497,11 @@ static bool ComputeAndCheckTypeLookupTableData(const DexFile::Header& header,
   }
 
   *type_lookup_table_data = type_lookup_table_start + sizeof(uint32_t);
-  if (UNLIKELY(!vdex_file->Contains(*type_lookup_table_data))) {
+  if (UNLIKELY(!vdex_file->Contains(*type_lookup_table_data, found_size))) {
     *error_msg =
-        StringPrintf("In vdex file '%s' found invalid type lookup table pointer %p not in [%p, %p]",
+        StringPrintf("In vdex file '%s' found invalid type lookup table data %p not in [%p, %p]",
                      vdex_file->GetName().c_str(),
                      type_lookup_table_data,
-                     vdex_file->Begin(),
-                     vdex_file->End());
-    return false;
-  }
-  if (UNLIKELY(!vdex_file->Contains(*type_lookup_table_data + expected_table_size - 1))) {
-    *error_msg =
-        StringPrintf("In vdex file '%s' found overflowing type lookup table %p not in [%p, %p]",
-                     vdex_file->GetName().c_str(),
-                     type_lookup_table_data + expected_table_size,
                      vdex_file->Begin(),
                      vdex_file->End());
     return false;
@@ -1735,20 +1726,11 @@ class OatFileBackedByVdex final : public OatFileBase {
            dex_file_start != nullptr;
            dex_file_start = vdex_file->GetNextDexFileData(dex_file_start, ++i)) {
         const DexFile::Header* header = reinterpret_cast<const DexFile::Header*>(dex_file_start);
-        if (UNLIKELY(!vdex_file->Contains(dex_file_start))) {
+        if (UNLIKELY(!vdex_file->Contains(dex_file_start, header->file_size_))) {
           *error_msg =
               StringPrintf("In vdex file '%s' found invalid dex file pointer %p not in [%p, %p]",
                            dex_location.c_str(),
                            dex_file_start,
-                           vdex_file->Begin(),
-                           vdex_file->End());
-          return nullptr;
-        }
-        if (UNLIKELY(!vdex_file->Contains(dex_file_start + header->file_size_ - 1))) {
-          *error_msg =
-              StringPrintf("In vdex file '%s' found overflowing dex file %p not in [%p, %p]",
-                           dex_location.c_str(),
-                           dex_file_start + header->file_size_,
                            vdex_file->Begin(),
                            vdex_file->End());
           return nullptr;
