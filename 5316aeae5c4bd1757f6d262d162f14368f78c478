@@ -22,6 +22,30 @@
       },
       "revId": "5316aeae5c4bd1757f6d262d162f14368f78c478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522765f2_06c4f67d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 37
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-08T20:29:10Z",
+      "side": 1,
+      "message": "We had an earlier discussion of this. See aosp/2198821 . In my view, this is a clang warning bug. Since it\u0027s declared volatile, the assumption should be that there is an external observer that will read the value, so this should be just fine. There should be no warning for a volatile variable that is never read.\nBut that opinion is controversial.\nThe correct workaround for this also seems to be a bit tricky, and controversial.",
+      "parentUuid": "3bfaea8d_68bf0e36",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 34
+      },
+      "revId": "5316aeae5c4bd1757f6d262d162f14368f78c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
