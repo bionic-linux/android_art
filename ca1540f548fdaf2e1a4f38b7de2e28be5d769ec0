@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5c3fb2_05cf7e2e",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-09-08T22:13:23Z",
+      "side": 1,
+      "message": "Do we also need the `jit_load` symbol? (looking at the `readelf -s --wide ./apex/com.google.android.art/lib64/libart-compiler.so` output from earlier builds)\n\n  1032: 000000000022f5e0   324 FUNC    GLOBAL PROTECTED   14 jit_load\n  \nReferenced @ https://source.corp.google.com/android-internal/art/runtime/jit/jit.cc;rcl\u003d0ec5b64d4d408c2734736854f587d52cf07aa2f9;l\u003d254",
+      "revId": "ca1540f548fdaf2e1a4f38b7de2e28be5d769ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
