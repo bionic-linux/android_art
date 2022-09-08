@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "566f5c28_f4e96da6",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc51c30_9d146292",
+      "range": {
+        "startLine": 476,
+        "startChar": 21,
+        "endLine": 476,
+        "endChar": 24
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a00e7a2_63ee04e7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-08T08:19:35Z",
       "side": 1,
       "message": "Do we want to move this check earlier?",
+      "range": {
+        "startLine": 496,
+        "startChar": 2,
+        "endLine": 496,
+        "endChar": 22
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a56b0f3_d7dc8a77",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "See my comment in the initial CL - the found_size !\u003d expected_table_size is a nice correctness check to keep.",
+      "parentUuid": "3a00e7a2_63ee04e7",
       "range": {
         "startLine": 496,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ac608a_63a9695f",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b2dc68_6be1419a",
+      "range": {
+        "startLine": 505,
+        "startChar": 21,
+        "endLine": 505,
+        "endChar": 24
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7543ef93_5b034a53",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-08T08:19:35Z",
       "side": 1,
       "message": "Potential access outside vdex. Precede with `vdex_file-\u003eContains(dex_file_start, sizeof(DexFile::Header))` check.",
+      "range": {
+        "startLine": 1733,
+        "startChar": 58,
+        "endLine": 1733,
+        "endChar": 76
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13cde766_b84130d6",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7543ef93_5b034a53",
       "range": {
         "startLine": 1733,
         "startChar": 58,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb520d3_da83321e",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02f8bc3_d378c430",
+      "range": {
+        "startLine": 1736,
+        "startChar": 27,
+        "endLine": 1736,
+        "endChar": 30
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5823d5_145f71ae",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-07T18:19:19Z",
       "side": 1,
       "message": "Suggestion: `Begin() \u003c\u003d pointer` (so that all inequalities are in the same direction in this condition).",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 29
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d53da8_144fffbd",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-08T12:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5823d5_145f71ae",
       "range": {
         "startLine": 250,
         "startChar": 11,
