@@ -46,6 +46,30 @@
       },
       "revId": "5316aeae5c4bd1757f6d262d162f14368f78c478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6a04be_f6c238ea",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 37
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-08T23:12:16Z",
+      "side": 1,
+      "message": "Cool - I had the same expectation srhines@ shares there, but I think you\u0027re right about the standard. I\u0027m looking at § 10.1.7.1 #6 from the 2017 standard specifically.\n\nIf the comment said \"from other memory into here,\" I probably wouldn\u0027t have felt the need to comment. I wasn\u0027t able to consider volatile had a side effect (and therefore know to look it up), because I disambiguated \u0027memory\u0027 to mean the memory (in the loose sense) that \u0027volatile_sum\u0027 represents.",
+      "parentUuid": "522765f2_06c4f67d",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 34
+      },
+      "revId": "5316aeae5c4bd1757f6d262d162f14368f78c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
