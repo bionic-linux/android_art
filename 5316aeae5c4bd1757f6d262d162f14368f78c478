@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bfaea8d_68bf0e36",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 37
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-08T20:11:52Z",
+      "side": 1,
+      "message": "throwing\n\n    art/runtime/gc/heap.cc:1004:22: warning: variable \u0027volatile_sum\u0027 set but not used [-Wunused-but-set-variable]\n        volatile uint8_t volatile_sum;",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 34
+      },
+      "revId": "5316aeae5c4bd1757f6d262d162f14368f78c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
