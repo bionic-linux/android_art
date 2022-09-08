@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a00e7a2_63ee04e7",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-08T08:19:35Z",
+      "side": 1,
+      "message": "Do we want to move this check earlier?",
+      "range": {
+        "startLine": 496,
+        "startChar": 2,
+        "endLine": 496,
+        "endChar": 22
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3b2dc68_6be1419a",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 2
@@ -42,6 +65,29 @@
         "startChar": 21,
         "endLine": 505,
         "endChar": 24
+      },
+      "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7543ef93_5b034a53",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-08T08:19:35Z",
+      "side": 1,
+      "message": "Potential access outside vdex. Precede with `vdex_file-\u003eContains(dex_file_start, sizeof(DexFile::Header))` check.",
+      "range": {
+        "startLine": 1733,
+        "startChar": 58,
+        "endLine": 1733,
+        "endChar": 76
       },
       "revId": "299868f752adb8ba2812a14c7dbdf6efe49656d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
