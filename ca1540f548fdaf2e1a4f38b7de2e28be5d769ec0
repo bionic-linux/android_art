@@ -34,6 +34,24 @@
       "parentUuid": "5b5c3fb2_05cf7e2e",
       "revId": "ca1540f548fdaf2e1a4f38b7de2e28be5d769ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822efa2e_bf79399e",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-12T19:05:39Z",
+      "side": 1,
+      "message": "Thanks for noticing, that was exactly the issue with perf regression.\nI\u0027ve added a simple test to check jit_load is available",
+      "parentUuid": "5eacc4ea_432fc46e",
+      "revId": "ca1540f548fdaf2e1a4f38b7de2e28be5d769ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
