@@ -111,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4890f541_c814bd7b",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T11:40:48Z",
+      "side": 1,
+      "message": "Note that `libart.so` lists `libelffile` as a static library, so we should also be able to use the code in `libart.so` if we ensure that it exports these symbols.",
+      "parentUuid": "a86f6b2c_44f469e9",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c1539bc0_9f03900d",
