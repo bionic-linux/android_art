@@ -135,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "addb7e97_4997e30c",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-13T13:12:22Z",
+      "side": 1,
+      "message": "`dex2oat` and `oatdump` (non-test) use BufferedOutputStream:\nhttps://cs.android.com/android/platform/superproject/+/master:art/oatdump/oatdump.cc;l\u003d149\nhttps://cs.android.com/android/platform/superproject/+/master:art/dex2oat/linker/elf_writer_quick.cc;l\u003d157",
+      "parentUuid": "4890f541_c814bd7b",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c1539bc0_9f03900d",
