@@ -183,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "129f167c_2ca6b585",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-13T13:51:07Z",
+      "side": 1,
+      "message": "Nevermind, I misunderstood where those functions are originally defined. I\u0027ll fix that",
+      "parentUuid": "addb7e97_4997e30c",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c1539bc0_9f03900d",
