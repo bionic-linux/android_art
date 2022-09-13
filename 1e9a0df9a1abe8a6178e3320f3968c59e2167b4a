@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "952a5b51_e1232a68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "David, should we actually use this section? (I thought we\u0027re now using mini-debug-info for executables. Or is this the section with mini-debug-info?)",
+      "range": {
+        "startLine": 19,
+        "startChar": 112,
+        "endLine": 19,
+        "endChar": 126
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "adcfd847_b612446a",
@@ -14,6 +37,121 @@
       "writtenOn": "2022-09-12T21:22:08Z",
       "side": 1,
       "message": "Current patchset looks good as far as our performance tests are concerned : )",
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497af88e_56333a43",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "If we\u0027re building both ART module and tests, this shall double the compile time for files related to `libart-compiler` as we shall compile them for both static and dynamic library.\n\nCan we use `art_cc_library_static` to compile all the `libart-compiler` files (rename to `libart-compiler-static` if needed) and then statically link that into the dynamic `libart-compiler.so` while applying the `libart-compiler-map`?",
+      "range": {
+        "startLine": 497,
+        "startChar": 8,
+        "endLine": 497,
+        "endChar": 26
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86f6b2c_44f469e9",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "Looking at `git grep -cE BufferedOutputStream`, we should not need this. The `dex2oat` and `oatdump` and compiler gtests should statically link `libelffile` instead.",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1539bc0_9f03900d",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "I was thinking about a refactoring that would move `CompiledCode`, `CompiledMethod` and `CompiledMethodStorage` to `dex2oat` but that\u0027s out of scope of this CL.",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08974512_ad2fe5eb",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "Same as `BufferedOutputStream`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d32904b_130f40ff",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-13T09:21:16Z",
+      "side": 1,
+      "message": "Nit: You reordered these here but not below.",
+      "range": {
+        "startLine": 564,
+        "startChar": 8,
+        "endLine": 565,
+        "endChar": 32
+      },
       "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
