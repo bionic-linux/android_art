@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a6463b3f_6f4b8056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-09-13T11:04:54Z",
+      "side": 1,
+      "message": "Yes, `.gnu_debugdata` is the mini-debug-info.\n\nAnd it is expected it would get bigger here, as the symbols would still be preserved there (but compressed).\n\nI am puzzled by the lack of gains for arm64.",
+      "parentUuid": "952a5b51_e1232a68",
+      "range": {
+        "startLine": 19,
+        "startChar": 112,
+        "endLine": 19,
+        "endChar": 126
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "adcfd847_b612446a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
