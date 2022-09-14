@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c50c28_225f7fcb",
+        "filename": "libnativeloader/library_namespaces.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-14T09:55:52Z",
+      "side": 1,
+      "message": "See my reply in aosp/2211602. It\u0027s very likely that the \"shared namespace\" here refers to the \"system namespace\" specifically.",
+      "range": {
+        "startLine": 245,
+        "startChar": 64,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "7a6d0eab2716041253c3e4a442db16e15584dbac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
