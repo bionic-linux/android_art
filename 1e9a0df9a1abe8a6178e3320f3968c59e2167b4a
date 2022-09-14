@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3c1c60a_1269b05a",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-14T22:56:47Z",
+      "side": 1,
+      "message": "This seems to be a non-trivial change.\nAll `libart-compiler` code will always be compiled as a static lib (i.e. with ART_STATIC_LIBART_COMPILER defined)\n`libart-disassembler` will always be statically linked too.\n\nI\u0027ve tried to implement such change to see how this could work. What I see is a SIGABRT in `dex2oatd` on `art-bootclasspath-fragment` step.\nSo I\u0027d suggest implementing this improvement as a separate change.\n\nBesides, building `libart-compiler` as a static lib is not entirely new behaviour. E.g. host build of dex2oat links libart-compiler statically: https://cs.android.com/android/platform/superproject/+/master:art/dex2oat/Android.bp;l\u003d137",
+      "parentUuid": "497af88e_56333a43",
+      "range": {
+        "startLine": 497,
+        "startChar": 8,
+        "endLine": 497,
+        "endChar": 26
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a86f6b2c_44f469e9",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 7
@@ -209,6 +233,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7d66f0e5_8a0b5cfe",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-14T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129f167c_2ca6b585",
+      "range": {
+        "startLine": 6,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c1539bc0_9f03900d",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 7
@@ -253,6 +301,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "037edc2c_4fb6bd3a",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-14T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08974512_ad2fe5eb",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d32904b_130f40ff",
@@ -266,6 +338,30 @@
       "writtenOn": "2022-09-13T09:21:16Z",
       "side": 1,
       "message": "Nit: You reordered these here but not below.",
+      "range": {
+        "startLine": 564,
+        "startChar": 8,
+        "endLine": 565,
+        "endChar": 32
+      },
+      "revId": "1e9a0df9a1abe8a6178e3320f3968c59e2167b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03816282_25dd517c",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-14T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d32904b_130f40ff",
       "range": {
         "startLine": 564,
         "startChar": 8,
