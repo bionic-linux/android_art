@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59821abd_421c9673",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-09-16T10:35:49Z",
+      "side": 1,
+      "message": "Adjust to: \n```\narm64*: 4044k -\u003e 3332k (-17.6%)\n\n*spare file size on device obtained by \"ls -lsk libart-compiler.so\"\n```\nPS: You can change commit messages quickly in the gerrit UI",
+      "revId": "b1a13a9f9d6db19deb5c34df3c94b46bf0ebcb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "942b92c0_33553b2f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "So, we\u0027re growing the tail of the file while shrinking the parts that are rounded up to 2MiB anyway?",
       "parentUuid": "942b92c0_33553b2f",
+      "revId": "b1a13a9f9d6db19deb5c34df3c94b46bf0ebcb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2dd48b8_bdc6bdd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-09-16T10:35:49Z",
+      "side": 1,
+      "message": "Correct.\n\nBut it seems the apex image does support indeed sparse files.",
+      "parentUuid": "cc8b4686_da6b965c",
       "revId": "b1a13a9f9d6db19deb5c34df3c94b46bf0ebcb1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
