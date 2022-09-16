@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf2457b_62bfee5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-16T12:02:30Z",
+      "side": 1,
+      "message": "I guess this should be \"sparse\".",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "cab7a27839e308b2726b1fee5c3764ddb7d7d69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
