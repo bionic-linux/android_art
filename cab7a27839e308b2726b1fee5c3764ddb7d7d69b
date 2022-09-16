@@ -22,6 +22,30 @@
       },
       "revId": "cab7a27839e308b2726b1fee5c3764ddb7d7d69b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00f447e0_596d1598",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-16T12:03:55Z",
+      "side": 1,
+      "message": "Missed that, thanks!",
+      "parentUuid": "adf2457b_62bfee5b",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "cab7a27839e308b2726b1fee5c3764ddb7d7d69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
