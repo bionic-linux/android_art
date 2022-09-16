@@ -16,6 +16,24 @@
       "message": "Ok, I double checked.  This was a bit deeper rabbit hole then I expected.\n\nThe mini-debug-info works as expected.  The symbols moved from .symtab to mini-debug-info where they are compressed with factor of ~10x.  The growth of gnu_debugdata is negligible compared to savings, and overall the total size of ELF sections shrinks significantly as with other architectures.\n\nThe trouble is that the first 2MB of the 6.4MB are almost exclusively just alignment zeros.  With this CL there is much fewer symbols and other things, but the saved space is just replaced alignment zeros.\n\nI have tracked this down to https://android-review.googlesource.com/c/platform/art/+/1685478\n\nIt seems we allocate ~2MB of zeros on disk per so intentionally?!  Maybe let\u0027s re-evaluate the above CL?",
       "revId": "b1a13a9f9d6db19deb5c34df3c94b46bf0ebcb1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8b4686_da6b965c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-16T08:18:59Z",
+      "side": 1,
+      "message": "So, we\u0027re growing the tail of the file while shrinking the parts that are rounded up to 2MiB anyway?",
+      "parentUuid": "942b92c0_33553b2f",
+      "revId": "b1a13a9f9d6db19deb5c34df3c94b46bf0ebcb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
