@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d64b67ee_166acdb3",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-20T17:24:28Z",
+      "side": 1,
+      "message": "Yeah, I was planning on following up with you / Dmitrii / Roland on this. On the statically linking we know the situation is brittle anyway as any symbol change can break the tests if we run MTS and ART versions that don\u0027t match. And the solution to that is to make sure that MTS and ART versions always match, which statically linking also achieves.",
+      "parentUuid": "03f6b6ab_08456da4",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
