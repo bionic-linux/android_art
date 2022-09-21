@@ -22,6 +22,30 @@
       },
       "revId": "65cf8463d5eb36862d0ef23bb2a2f27567b77a3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c861e2_8b21aa74",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-09-21T21:04:14Z",
+      "side": 1,
+      "message": "I think the order change is fine. Let\u0027s see how the presubmit goes. The problem is that you are not only changing the order but also the the worst-case behavior: Before the change, if it\u0027s not on host and the directory doesn\u0027t exist, the function returns \"\". After the change, the function returns kAndroidRootDefaultPath. This may cause problems. Let\u0027s keep the worst-case behavior unchanged.\n\nassert is not appropriate here because `GetAndroidRootSafe` doesn\u0027t mean to abort if it\u0027s not on host and the directory doesn\u0027t exist.\n\nAlso, we don\u0027t want `error_msg` to be set in any happy case. It\u0027s better not to touch it at all, rather than clearing it afterwards.\n\nTherefore, I would implement this in the following way:\n\n```\nstd::string local_error_msg;\nstd::string path \u003d GetAndroidDirSafe(kAndroidRootEnvVar, kAndroidRootDefaultPath, \u0026local_error_msg);\nif (path.empty()) {\n  if (!kIsTargetBuild) {\n    // ...\n  }\n  *error_msg \u003d std::move(local_error_msg);\n  return \"\";\n}\nreturn path;\n```\n\nI haven\u0027t tested it though.",
+      "parentUuid": "3b734e98_3ed65903",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "65cf8463d5eb36862d0ef23bb2a2f27567b77a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
