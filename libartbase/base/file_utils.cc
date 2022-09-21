@@ -106,21 +106,39 @@ static std::string GetRootContainingLibartbase() {
   return "";
 }
 
+std::string GetAndroidDirSafe(const char* env_var_name, const char* default_path,
+                              std::string* error_msg) {
+  DCHECK(env_var_name);
+  DCHECK(default_path);
+  // Prefer $env_var_name if it's set.
+  const char* dir_from_env = getenv(env_var_name);
+  if (dir_from_env != nullptr) {
+    if (!OS::DirectoryExists(dir_from_env)) {
+      *error_msg =
+          StringPrintf("Failed to find %s directory %s", env_var_name, dir_from_env);
+      return "";
+    }
+    return dir_from_env;
+  }
+
+  // Try the default path.
+  if (!OS::DirectoryExists(default_path)) {
+    *error_msg =
+        StringPrintf("Failed to find the default directory %s", default_path);
+    return "";
+  }
+  return default_path;
+}
+
 std::string GetAndroidRootSafe(std::string* error_msg) {
 #ifdef _WIN32
   UNUSED(kAndroidRootEnvVar, kAndroidRootDefaultPath, GetRootContainingLibartbase);
   *error_msg = "GetAndroidRootSafe unsupported for Windows.";
   return "";
 #else
-  // Prefer ANDROID_ROOT if it's set.
-  const char* android_root_from_env = getenv(kAndroidRootEnvVar);
-  if (android_root_from_env != nullptr) {
-    if (!OS::DirectoryExists(android_root_from_env)) {
-      *error_msg =
-          StringPrintf("Failed to find %s directory %s", kAndroidRootEnvVar, android_root_from_env);
-      return "";
-    }
-    return android_root_from_env;
+  std::string path = GetAndroidDirSafe(kAndroidRootEnvVar, kAndroidRootDefaultPath, error_msg);
+  if (!path.empty()) {
+    return path;
   }
 
   // On host, libartbase is currently installed in "$ANDROID_ROOT/lib"
@@ -136,12 +154,6 @@ std::string GetAndroidRootSafe(std::string* error_msg) {
     }
   }
 
-  // Try the default path.
-  if (!OS::DirectoryExists(kAndroidRootDefaultPath)) {
-    *error_msg =
-        StringPrintf("Failed to find default Android Root directory %s", kAndroidRootDefaultPath);
-    return "";
-  }
   return kAndroidRootDefaultPath;
 #endif
 }
@@ -149,6 +161,32 @@ std::string GetAndroidRootSafe(std::string* error_msg) {
 std::string GetAndroidRoot() {
   std::string error_msg;
   std::string ret = GetAndroidRootSafe(&error_msg);
+  if (ret.empty()) {
+    LOG(FATAL) << error_msg;
+    UNREACHABLE();
+  }
+  return ret;
+}
+
+std::string GetSystemExtRootSafe(std::string* error_msg) {
+#ifdef _WIN32
+  UNUSED(kAndroidSystemExtRootEnvVar, kAndroidSystemExtRootDefaultPath);
+  *error_msg = "GetSystemExtRootSafe unsupported for Windows.";
+  return "";
+#else
+  std::string path = GetAndroidDirSafe(kAndroidSystemExtRootEnvVar, kAndroidSystemExtRootDefaultPath,
+      error_msg);
+  if (!path.empty()) {
+    return path;
+  }
+
+  return kAndroidSystemExtRootDefaultPath;
+#endif
+}
+
+std::string GetSystemExtRoot() {
+  std::string error_msg;
+  std::string ret = GetSystemExtRootSafe(&error_msg);
   if (ret.empty()) {
     LOG(FATAL) << error_msg;
     UNREACHABLE();
