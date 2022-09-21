@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b734e98_3ed65903",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-09-21T20:31:18Z",
+      "side": 1,
+      "message": "The order of the conditions is changed from the original GetAndroidRootSafe:\n\nBefore: dir from env var exists -\u003e host condition -\u003e default dir exists\nAfter:  dir from env var exists -\u003e default dir exists -\u003e host condition\n\nBut I *think* it doesn\u0027t really matter, because on the host, the default dir *shouldn\u0027t* exist.  If so, we can even convert L150 to assert, or #ifdef... (maybe as a follow up)?\n\nWe could also reset error_msg to empty, if that matters, while it won\u0027t return an empty string at this point.\n\nWDYT?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "65cf8463d5eb36862d0ef23bb2a2f27567b77a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
