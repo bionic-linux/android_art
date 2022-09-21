@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55253ea8_05361dd0",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-09-21T22:29:18Z",
+      "side": 1,
+      "message": "Looks like we can. Done.",
+      "parentUuid": "b3055718_c54f19cc",
+      "revId": "605af0dc683465cc3d167a75aa7bd215a2eea160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11dff8ee_61ac324f",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbc9280_b15f4ea5",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-09-21T22:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11dff8ee_61ac324f",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 42
+      },
+      "revId": "605af0dc683465cc3d167a75aa7bd215a2eea160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1bcbe33_273a11a1",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-09-21T21:04:14Z",
       "side": 1,
       "message": "I know you copied from above but I think this can be simplified to:\n```\nCHECK(!ret.empty()) \u003c\u003c error_msg;\n```",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "605af0dc683465cc3d167a75aa7bd215a2eea160",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5375c040_650e353a",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2022-09-21T22:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bcbe33_273a11a1",
       "range": {
         "startLine": 190,
         "startChar": 2,
