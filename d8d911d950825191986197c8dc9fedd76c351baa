@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76b9c91d_f9fbfb75",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-21T13:53:49Z",
+      "side": 1,
+      "message": "\u003eHow many extra symbols would be required to avoid this? (Not just in this gtest, but all of them.)\n\nQuite a lot:\n```\n*art::DebugFrameOpCodeWriterForAssembler*;\n*art::arm::ArmVIXLAssembler*;             \n*art::arm::ArmVIXLJNIMacroAssembler*;     \n*art::x86::X86Assembler*;                 \n*art::x86_64::X86_64Assembler*;           \n*art::x86_64::X86_64JNIMacroAssembler*;   \n*art::InstructionSimplifier*;             \n*art::HExit*;                                    \n*art::GVNOptimization*;                   \n*art::HLessThan*;                         \n*art::HAdd*;                            \n*art::HInductionVarAnalysis*;             \n*art::BoundsCheckElimination*;           \n*art::HGreaterThan*;                   \n*art::HPhi*;                              \n*art::SideEffectsAnalysis*;               \n*art::HIntConstant*;                      \n*art::HRem*;                              \n*art::HArrayGet*;                         \n```\nThis is an incomplete list, there are even more. (leading `*` is required to also export vtable symbol)\n\nThere is also an option to build a separate libart-compiler.so without version_script for tests. But I guess it doesn\u0027t solve the case of \"not testing what is actually in use\"",
+      "parentUuid": "67308c6d_67fa2bfe",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
