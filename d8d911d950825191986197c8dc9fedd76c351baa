@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67308c6d_67fa2bfe",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-09-21T10:08:27Z",
+      "side": 1,
+      "message": "As I mentioned earlier, if module and tests are out of sync, then the module may be broken but the tests still pass. That\u0027s being blind.\n\nSo I think the way to go here is to add a test that checks that they aren\u0027t out of sync. Then we can link the tests statically all we want*. I think the way to do that is to checksum the .so\u0027s at build time and check those sums in a test.\n\n*) Assuming that there can\u0027t be toolchain differences that make one work and not the other. So there\u0027s still a small risk not testing what\u0027s in the module, but it\u0027s probably acceptable at that point.",
+      "parentUuid": "bf753892_72a7edd9",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
