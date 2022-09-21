@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf753892_72a7edd9",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-21T08:36:40Z",
+      "side": 1,
+      "message": "What does `blind` mean here?",
+      "parentUuid": "fc2fc5c9_61712b43",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
