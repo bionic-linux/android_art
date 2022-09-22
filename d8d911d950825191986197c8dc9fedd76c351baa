@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "372ee64e_94a1cda8",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-09-22T14:37:53Z",
+      "side": 1,
+      "message": "\u003e Quite a lot:\n\nAs I suspected, thanks for checking.\n\n\u003e /.../ it doesn\u0027t solve the case of \"not testing what is actually in use\"\n\nCorrect.\n\nWe\u0027ll probably go with static linking and a sync check as mentioned earlier, but we need to run that past Mainline EngProd since they\u0027re heavy MTS users. It\u0027s on the agenda for a meeting next week.\n\nIn the meantime, Dmitrii, since this CL didn\u0027t get reverted in the end, can you please do a follow-up CL to address the other open comments here?",
+      "parentUuid": "76b9c91d_f9fbfb75",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
