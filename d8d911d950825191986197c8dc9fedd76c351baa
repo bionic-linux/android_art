@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90fdb39_d1daf57e",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-22T15:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79533b94_978d22e4",
+      "range": {
+        "startLine": 179,
+        "startChar": 36,
+        "endLine": 179,
+        "endChar": 40
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb4bdef_d51ab355",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-20T16:50:24Z",
       "side": 1,
       "message": "The purpose of this being a `whole_static_libs` is that it exports all its symbols to libs that depend on libart-compiler. With the version script that becomes pointless unless those symbols are exported there.\n\nCan this dependency be removed here altogether? If not, isn\u0027t it better to export those symbols to avoid linking it repeatedly? It doesn\u0027t appear to be that many symbols in this library.",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 38
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "336d8628_9d76c226",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-22T15:24:40Z",
+      "side": 1,
+      "message": "It\u0027s not entirely pointless for tests, which link libart-compiler statically. Linker version script doesn\u0027t apply in such case, so the tests see all the symbols they need.\n\nIt seems possible to export those symbols (see https://android-review.googlesource.com/c/platform/art/+/2202495/7..12/compiler/libart-compiler.map#b7 ), but we should probably discuss that with Vladimir",
+      "parentUuid": "ddb4bdef_d51ab355",
       "range": {
         "startLine": 232,
         "startChar": 4,
@@ -281,6 +329,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6be6e9f_5b0d1255",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-22T15:24:40Z",
+      "side": 1,
+      "message": "Sure, I\u0027ve just uploaded it: aosp/2227141",
+      "parentUuid": "372ee64e_94a1cda8",
+      "range": {
+        "startLine": 522,
+        "startChar": 7,
+        "endLine": 522,
+        "endChar": 26
+      },
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f89e987b_ff793aa4",
         "filename": "compiler/libart-compiler.map",
         "patchSetId": 12
@@ -292,6 +364,24 @@
       "writtenOn": "2022-09-20T16:50:24Z",
       "side": 1,
       "message": "Please add copyright blurb.",
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95771d96_31379269",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-22T15:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89e987b_ff793aa4",
       "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -309,6 +399,24 @@
       "writtenOn": "2022-09-20T16:50:24Z",
       "side": 1,
       "message": "Nit: Extra empty line.",
+      "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "061cf3f4_ef86bc2d",
+        "filename": "compiler/libart-compiler.map",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-09-22T15:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59996fe0_d857b117",
       "revId": "d8d911d950825191986197c8dc9fedd76c351baa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
