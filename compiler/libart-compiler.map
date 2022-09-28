@@ -20,6 +20,7 @@ global:
             "art::CreateTrampoline32(art::InstructionSet, art::EntryPointCallingConvention, art::ThreadOffset<(art::PointerSize)4>)";
             "art::CreateTrampoline64(art::InstructionSet, art::EntryPointCallingConvention, art::ThreadOffset<(art::PointerSize)8>)";
             "art::VerificationResults::AddRejectedClass(art::ClassReference)";
+            "art::VerificationResults::AddUncompilableClass(art::ClassReference)";
             "art::VerificationResults::AddUncompilableMethod(art::MethodReference)";
             "art::VerificationResults::IsClassRejected(art::ClassReference) const";
             "art::VerificationResults::IsUncompilableMethod(art::MethodReference) const";
