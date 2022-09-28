@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888baa4d_2ce6df26",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-28T09:43:00Z",
+      "side": 1,
+      "message": "Do you mean the \"entire CodeInfo header\"? (`reader.ReadInterleavedVarints\u003ckNumHeaders\u003e()`)",
+      "range": {
+        "startLine": 510,
+        "startChar": 18,
+        "endLine": 510,
+        "endChar": 33
+      },
+      "revId": "d9e8377d188b2ca0f71185ec3fecb241392184e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
