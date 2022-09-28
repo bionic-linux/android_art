@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb57247_1010b632",
+        "filename": "runtime/image.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-28T11:42:01Z",
+      "side": 1,
+      "message": "We usually use `StringPrintf()`.",
+      "range": {
+        "startLine": 181,
+        "startChar": 18,
+        "endLine": 181,
+        "endChar": 38
+      },
+      "revId": "55f1636d17b1083fdfbd2da2f788a34b78940969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
