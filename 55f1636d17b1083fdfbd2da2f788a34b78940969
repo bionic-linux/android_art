@@ -22,6 +22,30 @@
       },
       "revId": "55f1636d17b1083fdfbd2da2f788a34b78940969",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e1f75d_cd22ab3f",
+        "filename": "runtime/image.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-09-28T12:13:50Z",
+      "side": 1,
+      "message": "Fixed in PS2. Line 218 where I copy-pasted from cannot use `StringPrintf` because `ImageHeader::StorageMode` has a custom ostream `operator\u003c\u003c`.",
+      "parentUuid": "ddb57247_1010b632",
+      "range": {
+        "startLine": 181,
+        "startChar": 18,
+        "endLine": 181,
+        "endChar": 38
+      },
+      "revId": "55f1636d17b1083fdfbd2da2f788a34b78940969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
