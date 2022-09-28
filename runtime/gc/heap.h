@@ -1457,6 +1457,11 @@ class Heap {
   // collector_type_running_ is kCollectorTypeNone.
   size_t concurrent_start_bytes_;
 
+  // Computed with foreground-multiplier in GrowForUtilization() when run in
+  // jank non-perceptible state. On update to process state from background to
+  // foreground we set concurrent_start_bytes_ to this value.
+  size_t min_foreground_concurrent_start_bytes_ GUARDED_BY(process_state_update_lock_);
+
   // Since the heap was created, how many bytes have been freed.
   std::atomic<uint64_t> total_bytes_freed_ever_;
 
