@@ -41,6 +41,9 @@ print("Using", sys.executable, sys.version, flush=True)
 version = tuple(map(int, re.match(r"(\d*)\.(\d*)", sys.version).groups()))
 assert (version >= (3, 9)), "Python version is too old"
 
+# Put our python on the PATH so that other script invocations will use it.
+os.environ["PATH"] = os.path.dirname(sys.executable) + ":" + os.environ["PATH"]
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-j', default='1', dest='n_threads')
 # either -l/--list OR build-target is required (but not both).
