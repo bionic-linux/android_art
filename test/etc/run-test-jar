@@ -49,7 +49,8 @@ def run(cmdline: str, quiet=True, check=True, save_cmd=True) -> subprocess.Compl
       # with a deterministic placeholder so that we can do a diff from run to run.
       f.write("\n".join(k + ":" + v.replace(tmp, "<tmp>") for k, v in env.items()) + "\n\n")
       f.write(re.sub(" +", "\n", cmdline).replace(tmp, "<tmp>") + "\n\n")
-    if ART_TEST_DRY_RUN and ("dalvikvm" in cmdline or "adb shell chroot" in cmdline):
+    if (ART_TEST_DRY_RUN and "checker" not in TEST_NAME and
+        ("dalvikvm" in cmdline or "adb shell chroot" in cmdline)):
       cmdline = "true"  # We still need to run some command, so run the no-op "true" binary instead.
   if VERBOSE:
     print("$ " + cmdline + "\n")
