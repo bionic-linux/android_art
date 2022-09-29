@@ -75,13 +75,13 @@ class SigchainTest : public ::testing::Test {
   void RaiseHandled() {
       sigval value;
       value.sival_ptr = &value;
-      pthread_sigqueue(pthread_self(), SIGSEGV, value);
+      sigqueue(getpid(), SIGSEGV, value);
   }
 
   void RaiseUnhandled() {
       sigval value;
       value.sival_ptr = nullptr;
-      pthread_sigqueue(pthread_self(), SIGSEGV, value);
+      sigqueue(getpid(), SIGSEGV, value);
   }
 };
 
