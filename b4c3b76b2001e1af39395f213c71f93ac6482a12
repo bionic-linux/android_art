@@ -46,6 +46,30 @@
       },
       "revId": "b4c3b76b2001e1af39395f213c71f93ac6482a12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86302376_ddca208c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-09-29T18:37:15Z",
+      "side": 1,
+      "message": "Ok. Could you please add a comment next to `sigqueue` about it, just to make it more clear that it\u0027s intentional?",
+      "parentUuid": "7405def3_24fbb799",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "b4c3b76b2001e1af39395f213c71f93ac6482a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
