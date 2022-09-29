@@ -4582,9 +4582,14 @@ void Thread::SetStackEndForStackOverflow() {
   // Remove the stack overflow protection if is it set up.
   bool implicit_stack_check = Runtime::Current()->GetImplicitStackOverflowChecks();
   if (implicit_stack_check) {
+#if 1
+    // temporary workaround for b/249586057: mprotect fails with new clang-r468909.
+    (void) UnprotectStack();
+#else
     if (!UnprotectStack()) {
       LOG(ERROR) << "Unable to remove stack protection for stack overflow";
     }
+#endif
   }
 }
 
@@ -4638,6 +4643,11 @@ std::ostream& operator<<(std::ostream& os, const Thread& thread) {
 bool Thread::ProtectStack(bool fatal_on_error) {
   void* pregion = tlsPtr_.stack_begin - kStackOverflowProtectedSize;
   VLOG(threads) << "Protecting stack at " << pregion;
+#if 1
+  // temporary workaround for b/249586057: mprotect fails with new clang-r468909.
+  (void) mprotect(pregion, kStackOverflowProtectedSize, PROT_NONE);
+  (void) fatal_on_error;  // suppress unused warning
+#else
   if (mprotect(pregion, kStackOverflowProtectedSize, PROT_NONE) == -1) {
     if (fatal_on_error) {
       LOG(FATAL) << "Unable to create protected region in stack for implicit overflow check. "
@@ -4646,6 +4656,7 @@ bool Thread::ProtectStack(bool fatal_on_error) {
     }
     return false;
   }
+#endif
   return true;
 }
 
