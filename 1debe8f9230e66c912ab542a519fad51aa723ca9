@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2a315a5_5cae543b",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-09-29T12:38:31Z",
+      "side": 1,
+      "message": "Remember this in a local variable and use it below for the `AddUncompilableClass()` call.",
+      "range": {
+        "startLine": 1658,
+        "startChar": 6,
+        "endLine": 1658,
+        "endChar": 48
+      },
+      "revId": "1debe8f9230e66c912ab542a519fad51aa723ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "081296d9_0f9e47be",
         "filename": "dex2oat/driver/compiler_driver.cc",
         "patchSetId": 6
