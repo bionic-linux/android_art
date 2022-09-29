@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd3970a_dd4c6ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-29T18:43:02Z",
+      "side": 1,
+      "message": "I\u0027d also like Lokesh to comment. Looks like a good idea to me, though I have a couple concerns about the details. My concerns mostly also apply to the current code.",
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c5a3fd_93050524",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-29T18:43:02Z",
+      "side": 1,
+      "message": "Does this work correctly if we switch back and forth repeatedly between collections? Did this logic break when we stopped performing GCs unconditionally on moving to background? Why do we not just maintain these unconditionally?",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 45
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3894a9b9_338d4764",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-29T18:43:02Z",
+      "side": 1,
+      "message": "Is GetMaxMemory() really the right value here (and in SetIdealFootprint())? This should never be bigger than growth_limit_, right?",
+      "range": {
+        "startLine": 3741,
+        "startChar": 56,
+        "endLine": 3741,
+        "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
