@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a62564a_4cd53f47",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-29T13:25:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a315a5_5cae543b",
+      "range": {
+        "startLine": 1658,
+        "startChar": 6,
+        "endLine": 1658,
+        "endChar": 48
+      },
+      "revId": "1debe8f9230e66c912ab542a519fad51aa723ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "081296d9_0f9e47be",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-09-29T09:48:57Z",
       "side": 1,
       "message": "Just curious, why don\u0027t we support compilation of methods that need a verification at runtime? Is it just that these are not common and we don\u0027t want to support them or is there something else that prevents us from compiling them?",
+      "revId": "1debe8f9230e66c912ab542a519fad51aa723ca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "348083dd_7c3d9dc3",
+        "filename": "dex2oat/driver/compiler_driver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-09-29T13:25:21Z",
+      "side": 1,
+      "message": "Added a comment, hope this helps.",
+      "parentUuid": "081296d9_0f9e47be",
       "revId": "1debe8f9230e66c912ab542a519fad51aa723ca9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
