@@ -1,6 +1,167 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99c49a1_11569de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "...when app switches from...",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38484207_590ceae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "Start with uppercase.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bde644f_d239f9f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "switches",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748176db_d8da992e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "remove here, the next one, and the one after that.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1584ccba_30b80a66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99707f87_f8cc7c99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "replace this with \"GC sooner than desired\".",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c94633_6e794620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "replace with \u0027changes\u0027",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6cd3970a_dd4c6ab4",
@@ -43,6 +204,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1a6d77b_8809c1e7",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "I think it should be fine. Since the switching to background would lead us to schedule another GC, and that, if run, then would lower the thresholds. For the background to foreground switch, if a GC does take place in between, then it\u0027ll calculate these thresholds again. Otherwise, we are good as is. \n\nBut I don\u0027t see any benefit of resetting these thresholds here.",
+      "parentUuid": "16c5a3fd_93050524",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 45
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48897b27_f5e2dedc",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3740,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "If all the parameters to a function aren\u0027t fitting in the same line, then each of them should be in a new line. Please adjust that way.",
+      "range": {
+        "startLine": 3740,
+        "startChar": 9,
+        "endLine": 3740,
+        "endChar": 18
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3894a9b9_338d4764",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -59,6 +267,53 @@
         "startChar": 56,
         "endLine": 3741,
         "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391d814e_115e92ec",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "GetMaxMemory() is returning max of bytes-allocated and growth-limit, so seems fine to me. Unless I\u0027m misunderstanding your point.",
+      "parentUuid": "3894a9b9_338d4764",
+      "range": {
+        "startLine": 3741,
+        "startChar": 56,
+        "endLine": 3741,
+        "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ceb6d0_37a97734",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T00:42:16Z",
+      "side": 1,
+      "message": "move this above at line 1450 and remove the comment as it\u0027s exactly the same as the one at line 1446.",
+      "range": {
+        "startLine": 1460,
+        "startChar": 1,
+        "endLine": 1464,
+        "endChar": 0
       },
       "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
