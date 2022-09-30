@@ -418,6 +418,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b41c7f6_f099a4b1",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-30T22:23:29Z",
+      "side": 1,
+      "message": "I\u0027m fine with the current CL, which doesn\u0027t reset these. Otherwise I worry that if we switch to background when we\u0027ve recently collected, we might not collect again, and thus these might not get reset. Then if we switch to foreground again, we have zero values.",
+      "parentUuid": "904e4bd7_32428f72",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 45
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48897b27_f5e2dedc",
@@ -502,6 +526,30 @@
       "side": 1,
       "message": "GetMaxMemory() is returning max of bytes-allocated and growth-limit, so seems fine to me. Unless I\u0027m misunderstanding your point.",
       "parentUuid": "3894a9b9_338d4764",
+      "range": {
+        "startLine": 3741,
+        "startChar": 56,
+        "endLine": 3741,
+        "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3691910_c1996f5a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-09-30T22:23:29Z",
+      "side": 1,
+      "message": "Let\u0027s assume bytes_allocated is larger than growth_limit_, which I believe it can be. Do we really ever want to set the target footprint larger than growth_limit_? My belief is no.",
+      "parentUuid": "391d814e_115e92ec",
       "range": {
         "startLine": 3741,
         "startChar": 56,
