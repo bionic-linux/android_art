@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af7bdc14_fb89cd7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-09-30T20:55:26Z",
+      "side": 1,
+      "message": "LGTM but I would like to get Hans\u0027 approval too. So temporarily only +1 for now.",
+      "revId": "5389128815e333429ff2295bf83c76d2780ac065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
