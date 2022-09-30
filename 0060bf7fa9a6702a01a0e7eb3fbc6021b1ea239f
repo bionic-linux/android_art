@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de9d128_9bcf4e2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38484207_590ceae4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d793b845_720e0c41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99c49a1_11569de3",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bde644f_d239f9f5",
@@ -93,6 +141,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8dd5a4f_6e48f6e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bde644f_d239f9f5",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ed31fb_cd22d98a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748176db_d8da992e",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1584ccba_30b80a66",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-09-30T00:42:16Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52046727_5850a168",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1584ccba_30b80a66",
       "range": {
         "startLine": 10,
         "startChar": 43,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee006788_841e7537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99707f87_f8cc7c99",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52c94633_6e794620",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-09-30T00:42:16Z",
       "side": 1,
       "message": "replace with \u0027changes\u0027",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce74214d_846a8dfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c94633_6e794620",
       "range": {
         "startLine": 14,
         "startChar": 18,
@@ -226,6 +394,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "904e4bd7_32428f72",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Yes, resetting these thresholds to zero is not required.",
+      "parentUuid": "f1a6d77b_8809c1e7",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 45
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48897b27_f5e2dedc",
@@ -239,6 +431,30 @@
       "writtenOn": "2022-09-30T00:42:16Z",
       "side": 1,
       "message": "If all the parameters to a function aren\u0027t fitting in the same line, then each of them should be in a new line. Please adjust that way.",
+      "range": {
+        "startLine": 3740,
+        "startChar": 9,
+        "endLine": 3740,
+        "endChar": 18
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999572c0_589b8cb1",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3740,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48897b27_f5e2dedc",
       "range": {
         "startLine": 3740,
         "startChar": 9,
@@ -309,6 +525,30 @@
       "writtenOn": "2022-09-30T00:42:16Z",
       "side": 1,
       "message": "move this above at line 1450 and remove the comment as it\u0027s exactly the same as the one at line 1446.",
+      "range": {
+        "startLine": 1460,
+        "startChar": 1,
+        "endLine": 1464,
+        "endChar": 0
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6430b983_03136845",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-09-30T08:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ceb6d0_37a97734",
       "range": {
         "startLine": 1460,
         "startChar": 1,
