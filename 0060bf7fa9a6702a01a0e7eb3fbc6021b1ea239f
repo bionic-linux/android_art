@@ -584,6 +584,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "108c7234_6b00ba4a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-10-03T21:52:48Z",
+      "side": 1,
+      "message": "Let\u0027s defer to a future CL.",
+      "parentUuid": "18490b54_654b695a",
+      "range": {
+        "startLine": 3741,
+        "startChar": 56,
+        "endLine": 3741,
+        "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ceb6d0_37a97734",
