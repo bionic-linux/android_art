@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25234d36_d9de4d0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-10-03T03:09:36Z",
+      "side": 1,
+      "message": "hello, Hans\n\nI did a reabse on the patch, please +2 again.",
+      "revId": "73170491ca82e894dd9387652a00ae0d46fe87ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

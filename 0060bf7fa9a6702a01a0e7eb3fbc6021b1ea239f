@@ -562,6 +562,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18490b54_654b695a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3741,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-10-03T03:09:36Z",
+      "side": 1,
+      "message": "Yes, this is possible, but in this case concurrent_start_bytes_ will not exceed growth_limit_, it\u0027s still reasonable.\n\nWhether target_footprint can exceed growth_limit_ is still a matter for discussion, maybe in the future we can continue to trigger a full GC to avoid this.",
+      "parentUuid": "b3691910_c1996f5a",
+      "range": {
+        "startLine": 3741,
+        "startChar": 56,
+        "endLine": 3741,
+        "endChar": 70
+      },
+      "revId": "0060bf7fa9a6702a01a0e7eb3fbc6021b1ea239f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3ceb6d0_37a97734",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 4
