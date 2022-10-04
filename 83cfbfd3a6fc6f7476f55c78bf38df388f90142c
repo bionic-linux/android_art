@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b992f680_f400e4e7",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T14:13:41Z",
+      "side": 1,
+      "message": "Hmmm... I don\u0027t know.  So I tried for example `cs_CZ` to see what happens.  It broke the tests because Java printed currency in different format (but not because locale-specific data would be missing from the system).\n\nSo I think it is a feature.  It ensures the tests will pass (print expected output), even if user\u0027s locale isn\u0027t en_US\n\nHaving said that, the build bot is unhappy with something... investigating...",
+      "parentUuid": "4bec40c5_422bdb88",
+      "range": {
+        "startLine": 588,
+        "startChar": 13,
+        "endLine": 588,
+        "endChar": 24
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c467be3_e71c8325",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8ce05d_440b2d38",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T14:13:41Z",
+      "side": 1,
+      "message": "Hmmm... I would rather have separate commands so that it is possible to merge the host and target code paths (for example `run(setupapex_cmdline)` can be just guarded by `if host`.\n\nI imagine that during debugging you might be interested to re-run just the last (failing) command?\n\nOn the other hand, the whole point of this exercise is to make sure I can factor out how the commands are executed, and change the behavior so we can only record the command, and trade-fed is to execute it later.\n\nSo, yes, running this script and then executing the commands separately is the whole point.\n\nDetails to be determined.  For example, the run_cmd could be appending the commands to one uber bash file.",
+      "parentUuid": "8c467be3_e71c8325",
+      "range": {
+        "startLine": 1124,
+        "startChar": 4,
+        "endLine": 1124,
+        "endChar": 16
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ac36876_5454efa4",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-04T13:25:19Z",
       "side": 1,
       "message": "Where is the `\u0026\u0026`? Will they not execute one after another even if one command fails?",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 30
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2fbe8cf_2daf0d69",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T14:13:41Z",
+      "side": 1,
+      "message": "If any command fails, it will trigger python exception (with backtrace showing which command failed). (unless the commands have `check\u003dFalse`)",
+      "parentUuid": "3ac36876_5454efa4",
       "range": {
         "startLine": 1146,
         "startChar": 0,
