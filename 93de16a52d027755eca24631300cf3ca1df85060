@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44678f42_6db010c8",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "I think some checker tests were giving me trouble when diffing ...\n\nI think the `adb pull` maybe failed.\n\nAnyway, I guess there is no need to touch it.",
+      "parentUuid": "aebbe1f8_dd30cd98",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1365b27d_5cf52c50",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T12:52:30Z",
       "side": 1,
       "message": "Strictry speaking `test -r` also implies check for readable, something like `os.access(td_file, os.R_OK)`.",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 783,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4863cc8_03eeadba",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1365b27d_5cf52c50",
       "range": {
         "startLine": 783,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf360dff_02c682ba",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a131248_bd9b34ce",
+      "range": {
+        "startLine": 856,
+        "startChar": 13,
+        "endLine": 856,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcd76d9c_69e85f95",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-04T12:52:30Z",
       "side": 1,
       "message": "Won\u0027t something like `\\p{C}` capture this in python regex?",
+      "range": {
+        "startLine": 862,
+        "startChar": 22,
+        "endLine": 862,
+        "endChar": 33
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d132a05e_37972278",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "That does not seem like a valid python reexp.\n\nI somewhat question whether this filtering is needed at all.\n\nI took the simple path for now, and left conversion to python regex for later.",
+      "parentUuid": "dcd76d9c_69e85f95",
       "range": {
         "startLine": 862,
         "startChar": 22,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5669ec15_cd3b4027",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a3f592_cc7352f4",
+      "range": {
+        "startLine": 867,
+        "startChar": 13,
+        "endLine": 867,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7f786d_3c427739",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-04T12:52:30Z",
       "side": 1,
       "message": "Did you forget this or intentionally left for later?",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 8
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e988af36_d328be53",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 1,
+      "message": "Intentionally... I wonder if it is used/working.",
+      "parentUuid": "5c7f786d_3c427739",
       "range": {
         "startLine": 931,
         "startChar": 0,

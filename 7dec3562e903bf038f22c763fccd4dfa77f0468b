@@ -22,6 +22,30 @@
       },
       "revId": "7dec3562e903bf038f22c763fccd4dfa77f0468b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f919233b_213f657b",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-04T15:05:00Z",
+      "side": 0,
+      "message": "It seems that the `__file__` is already resolved absolute path.",
+      "parentUuid": "a0749f49_edd74929",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "7dec3562e903bf038f22c763fccd4dfa77f0468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
