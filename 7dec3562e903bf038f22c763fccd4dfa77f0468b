@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0749f49_edd74929",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 0,
+      "message": "Did you remove the symlink resolution logic?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "7dec3562e903bf038f22c763fccd4dfa77f0468b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

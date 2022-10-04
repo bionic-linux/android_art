@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebbe1f8_dd30cd98",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Can you explain why you had to add this logic?",
+      "range": {
+        "startLine": 52,
+        "startChar": 29,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1365b27d_5cf52c50",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Strictry speaking `test -r` also implies check for readable, something like `os.access(td_file, os.R_OK)`.",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 783,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a131248_bd9b34ce",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Can you use `f\"...\"` with local variables if needed? It\u0027s a bit more readable.",
+      "range": {
+        "startLine": 856,
+        "startChar": 13,
+        "endLine": 856,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd76d9c_69e85f95",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Won\u0027t something like `\\p{C}` capture this in python regex?",
+      "range": {
+        "startLine": 862,
+        "startChar": 22,
+        "endLine": 862,
+        "endChar": 33
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a3f592_cc7352f4",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Can you use `f\"...\"` with local variables if needed?",
+      "range": {
+        "startLine": 867,
+        "startChar": 13,
+        "endLine": 867,
+        "endChar": 34
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7f786d_3c427739",
+        "filename": "test/run-test",
+        "patchSetId": 3
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T12:52:30Z",
+      "side": 1,
+      "message": "Did you forget this or intentionally left for later?",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 8
+      },
+      "revId": "93de16a52d027755eca24631300cf3ca1df85060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
