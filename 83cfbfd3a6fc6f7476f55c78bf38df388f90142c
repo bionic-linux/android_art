@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bec40c5_422bdb88",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T13:25:19Z",
+      "side": 1,
+      "message": "What if the user has no such locale? E.g. they may have `en_GB.UTF-8`. I don\u0027t know if this is really an issue on glinux. But maybe get it from the user\u0027s locale.",
+      "range": {
+        "startLine": 588,
+        "startChar": 13,
+        "endLine": 588,
+        "endChar": 24
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c467be3_e71c8325",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T13:25:19Z",
+      "side": 1,
+      "message": "I find the idea of having a script with the full invocation and an easy-to-find name useful (I use it to debug test runs in a chroot environment on target). Maybe we should keep it and make host more like target?",
+      "range": {
+        "startLine": 1124,
+        "startChar": 4,
+        "endLine": 1124,
+        "endChar": 16
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac36876_5454efa4",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-10-04T13:25:19Z",
+      "side": 1,
+      "message": "Where is the `\u0026\u0026`? Will they not execute one after another even if one command fails?",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 30
+      },
+      "revId": "83cfbfd3a6fc6f7476f55c78bf38df388f90142c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
