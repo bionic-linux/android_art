@@ -16,6 +16,24 @@
       "message": "Why do we need smali? We can use Java with `build_run_test(experimental\u003d\"default-methods\")`.\n\nIf the default conflict is a problem for `javac`, we can have `Itf` and/or `OtherItf` without `bar()` in src/ and with `bar()` in src2/.",
       "revId": "aaa3274fce0e1655eaf72f346d374eec2de5f147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e67cdf9_1d499b44",
+        "filename": "test/843-default-interface/smali/SubItf.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-05T09:50:31Z",
+      "side": 1,
+      "message": "Good point! Done.",
+      "parentUuid": "287c9cf3_362fe5ed",
+      "revId": "aaa3274fce0e1655eaf72f346d374eec2de5f147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
