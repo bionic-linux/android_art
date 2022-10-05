@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e840500_4896e8d4",
+        "filename": "test/843-default-interface/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-10-05T10:03:35Z",
+      "side": 1,
+      "message": "\"when compiling `SubItf` if both superinterfaces `Itf` and `OtherItf` define a default method `bar()`, so we do not define `bar()` here.\"\n\nNote that by including `OtherItf` in Main.java, you\u0027re also introducing different access specifiers, package-private here and public in src2/. I think we should split this out to src/OtherItf.java . It is also odd to have a file in src2/ without a corresponding one in src/.",
+      "range": {
+        "startLine": 24,
+        "startChar": 25,
+        "endLine": 24,
+        "endChar": 66
+      },
+      "revId": "a3947b9c1a33bf22af02e2969d6026b4cb93e67a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
