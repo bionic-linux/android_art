@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11bd7d35_3a96b0b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-06T23:20:32Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/bionic/+/2242837 is the corresponding change, if you\u0027re interested.\n\n#undef would be an alternative.",
+      "revId": "6c25075724eb3b40a99dcfd7c30d42d8b425df53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
