@@ -106,7 +106,7 @@ class HInliner : public HOptimization {
     REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Run simple optimizations on `callee_graph`.
-  void RunOptimizations(HGraph* callee_graph,
+  bool RunOptimizations(HGraph* callee_graph,
                         const dex::CodeItem* code_item,
                         const DexCompilationUnit& dex_compilation_unit,
                         bool try_catch_inlining_allowed_for_recursive_inline)
@@ -146,6 +146,7 @@ class HInliner : public HOptimization {
   // This checks for instructions and constructs that we do not support
   // inlining, such as inlining a throw instruction into a try block.
   bool CanInlineBody(const HGraph* callee_graph,
+                     const dex::CodeItem* code_item,
                      HInvoke* invoke,
                      size_t* out_number_of_instructions,
                      bool is_speculative) const
