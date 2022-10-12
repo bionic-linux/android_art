@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d28ae85_ec6641d7",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-10-12T10:29:48Z",
+      "side": 1,
+      "message": "Probably out of scope, but why is this condition here? If odrefresh compiled a boot image successfully, but failed on system server compilation, we don\u0027t want to precompile system server?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 6,
+        "endLine": 1328,
+        "endChar": 36
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1305780_317a3c24",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-10-12T10:29:48Z",
+      "side": 1,
+      "message": "Is this a behavior change? If so, it\u0027s better to mention it in the CL description.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 6,
+        "endLine": 1329,
+        "endChar": 40
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c89e16_04bb2846",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-10-12T10:29:48Z",
+      "side": 1,
+      "message": "This preventing precompilation sounds like a bug. Is there a bug number? If so, please add a TODO with the bug number.",
+      "range": {
+        "startLine": 1333,
+        "startChar": 0,
+        "endLine": 1334,
+        "endChar": 68
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935e8ace_dc567609",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3397,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-10-12T10:29:48Z",
+      "side": 1,
+      "message": "I think this function name is also confusing, but it\u0027s probably out of the scope of this CL, so that\u0027s fine.",
+      "range": {
+        "startLine": 3397,
+        "startChar": 43,
+        "endLine": 3397,
+        "endChar": 63
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
