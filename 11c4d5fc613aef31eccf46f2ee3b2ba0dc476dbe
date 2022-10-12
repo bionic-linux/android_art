@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12422ca_a15018e5",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-12T11:11:56Z",
+      "side": 1,
+      "message": "This was for JIT zygote, there\u0027s the expectation we don\u0027t need this precompilation when we don\u0027t run JIT zygote.",
+      "parentUuid": "4d28ae85_ec6641d7",
+      "range": {
+        "startLine": 1328,
+        "startChar": 6,
+        "endLine": 1328,
+        "endChar": 36
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1305780_317a3c24",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08552371_9deaeb44",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-12T11:11:56Z",
+      "side": 1,
+      "message": "More or less, as the code is dead code anyway. But yeah, added to the commit message.",
+      "parentUuid": "b1305780_317a3c24",
+      "range": {
+        "startLine": 1329,
+        "startChar": 6,
+        "endLine": 1329,
+        "endChar": 40
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82c89e16_04bb2846",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-12T10:29:48Z",
       "side": 1,
       "message": "This preventing precompilation sounds like a bug. Is there a bug number? If so, please add a TODO with the bug number.",
+      "range": {
+        "startLine": 1333,
+        "startChar": 0,
+        "endLine": 1334,
+        "endChar": 68
+      },
+      "revId": "11c4d5fc613aef31eccf46f2ee3b2ba0dc476dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac100c92_2a8eeb5a",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-12T11:11:56Z",
+      "side": 1,
+      "message": "The bug is going to be blintz closed, so I think the comment is fine for now. This is really an edge case of doing preloading of system server class loaders.",
+      "parentUuid": "82c89e16_04bb2846",
       "range": {
         "startLine": 1333,
         "startChar": 0,
