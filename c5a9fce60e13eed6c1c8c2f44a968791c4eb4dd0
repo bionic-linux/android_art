@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332fcc34_78d54f7d",
+        "filename": "runtime/barrier_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-13T13:08:05Z",
+      "side": 1,
+      "message": "When writing a test how does one know whether to set `use_boot_image_` ? Would it make sense to add a new class beyond CommonRuntimeTest that sets this field, like `CommonRuntimeTestWithBootImage` ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "c5a9fce60e13eed6c1c8c2f44a968791c4eb4dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
