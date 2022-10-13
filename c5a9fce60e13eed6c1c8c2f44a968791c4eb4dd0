@@ -22,6 +22,30 @@
       },
       "revId": "c5a9fce60e13eed6c1c8c2f44a968791c4eb4dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb4d10c_20363c84",
+        "filename": "runtime/barrier_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-10-13T13:59:31Z",
+      "side": 1,
+      "message": "If the test does not care whether it\u0027s running with or without boot image, it should run with boot image for faster startup.\n\nWe could change the default (and introduce `CommonRuntimeTest{With,Without}BootImage`) in a follow-up CL.",
+      "parentUuid": "332fcc34_78d54f7d",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 66
+      },
+      "revId": "c5a9fce60e13eed6c1c8c2f44a968791c4eb4dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
