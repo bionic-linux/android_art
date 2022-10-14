@@ -16,6 +16,23 @@
       "message": "I just used the cherrypicker tool. Let me know if there is something else I need to do here. When I merged to android12-tests-dev I had to use DO NOT MERGE but I guess for release I don\u0027t need to.",
       "revId": "fa63c77dc56cfcb0cd6c52fa65473f4ff97c2e33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f1518e_3fa376c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-10-14T10:44:04Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think you should cherry-pick to a release branch. What\u0027s wrong with android12-tests-dev ?",
+      "revId": "fa63c77dc56cfcb0cd6c52fa65473f4ff97c2e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
