@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cf1c40_e9cb71a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-10-14T10:31:40Z",
+      "side": 1,
+      "message": "I just used the cherrypicker tool. Let me know if there is something else I need to do here. When I merged to android12-tests-dev I had to use DO NOT MERGE but I guess for release I don\u0027t need to.",
+      "revId": "fa63c77dc56cfcb0cd6c52fa65473f4ff97c2e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
