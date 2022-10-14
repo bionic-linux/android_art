@@ -33,6 +33,24 @@
       "message": "Actually, I don\u0027t think you should cherry-pick to a release branch. What\u0027s wrong with android12-tests-dev ?",
       "revId": "fa63c77dc56cfcb0cd6c52fa65473f4ff97c2e33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe182834_15ee6a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-10-14T11:17:58Z",
+      "side": 1,
+      "message": "I really don\u0027t know. I was asked to merge to aosp-android12-tests-release (https://buganizer.corp.google.com/issues/246688031#comment23). I don\u0027t understand these branches very well.\n\ntingyul@, Is it sufficient if I merge it to android12-tests-dev?",
+      "parentUuid": "78f1518e_3fa376c4",
+      "revId": "fa63c77dc56cfcb0cd6c52fa65473f4ff97c2e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
