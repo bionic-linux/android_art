@@ -43,7 +43,7 @@ def copy_sources(args, tmp, mode, srcdir):
   shutil.copytree(srcdir, dstdir)
 
   # Copy the default scripts if the test does not have a custom ones.
-  for name in ["build.py", "run", "check"]:
+  for name in ["build.py", "run"]:
     src, dst = f"art/test/etc/default-{name}", join(dstdir, name)
     if os.path.exists(dst):
       shutil.copy2(src, dstdir)  # Copy default script next to the custom script.
