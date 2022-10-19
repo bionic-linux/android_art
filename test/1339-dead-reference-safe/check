@@ -22,6 +22,4 @@
 
 # DeadReferenceSafe result differs for interpreted mode. A real failure
 # will produce an extra line anyway.
-
-diff --ignore-matching-lines="DeadReferenceSafe count:" -q $1 $2 \
-  && diff --strip-trailing-cr -q "$3" "$4" >/dev/null
+sed -i '/DeadReferenceSafe/ s/[0-9]\+/N/' "$2"
