@@ -28,3 +28,6 @@ grep -vE '^dalvikvm(32|64) E [^]]+]' "$4" \
     > "$4.tmp"
 
 ./default-check "$1" "$2.tmp" "$3" "$4.tmp"
+sed -i '/JNI_OnLoad/d' "$2"
+sed -i '/JNI_OnUnload/d' "$2"
+sed -i '/^dalvikvm(32|64) E [^]]+]/d' "$4"
