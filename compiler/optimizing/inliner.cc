@@ -58,7 +58,8 @@ static constexpr size_t kMaximumNumberOfInstructionsForSmallMethod = 3;
 
 // Limit the number of dex registers that we accumulate while inlining
 // to avoid creating large amount of nested environments.
-static constexpr size_t kMaximumNumberOfCumulatedDexRegisters = 20;
+static constexpr size_t kMaximumNumberOfCumulatedDexRegisters = 32;
+static constexpr size_t kMaximumNumberOfCumulatedDexRegistersForTryCatchInlining = 20;
 
 // Limit recursive call inlining, which do not benefit from too
 // much inlining compared to code locality.
@@ -1440,17 +1441,23 @@ bool HInliner::IsInliningSupported(const HInvoke* invoke_instruction,
           << " is not inlined because inlining try catches is disabled globally";
       return false;
     }
-    const bool inlined_into_try_catch =
-        // Direct parent is a try catch.
-        invoke_instruction->GetBlock()->GetTryCatchInformation() != nullptr ||
-        // Indirect parent is a try catch.
-        !try_catch_inlining_allowed_;
-    if (inlined_into_try_catch) {
+
+    // Current invoke in a try catch, directly or indirectly.
+    if (chain_with_try_catch_inlining_ ||
+        invoke_instruction->GetBlock()->GetTryCatchInformation() != nullptr) {
+      LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedTryCatchCallerCallee)
+          << "Method " << method->PrettyMethod()
+          << " is not inlined because it has a try catch and it would be inlined inside another"
+          << " try catch, directly or indirectly.";
+      return false;
+    }
+
+    if (!try_catch_inlining_allowed_) {
       LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedTryCatchCallee)
           << "Method " << method->PrettyMethod()
           << " is not inlined because it has a try catch and we are not supporting it for this"
-          << " particular call. This is could be because e.g. it would be inlined inside another"
-          << " try catch, we arrived here from TryInlinePolymorphicCall, etc.";
+          << " particular call. This is could be because e.g. we arrived here from"
+          << " TryInlinePolymorphicCall.";
       return false;
     }
   }
@@ -1875,7 +1882,8 @@ void HInliner::SubstituteArguments(HGraph* callee_graph,
 bool HInliner::CanInlineBody(const HGraph* callee_graph,
                              HInvoke* invoke,
                              size_t* out_number_of_instructions,
-                             bool is_speculative) const {
+                             bool is_speculative,
+                             bool try_catch_inlining) const {
   const HBasicBlock* target_block = invoke->GetBlock();
   ArtMethod* const resolved_method = callee_graph->GetArtMethod();
 
@@ -1941,8 +1949,11 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
     return false;
   }
 
-  const bool too_many_registers =
-      total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters;
+  const size_t max_regs = try_catch_inlining ?
+                              kMaximumNumberOfCumulatedDexRegistersForTryCatchInlining :
+                              kMaximumNumberOfCumulatedDexRegisters;
+  const bool too_many_registers = total_number_of_dex_registers_ > max_regs;
+
   bool needs_bss_check = false;
   const bool can_encode_in_stack_map = CanEncodeInlinedMethodInStackMap(
       *outer_compilation_unit_.GetDexFile(), resolved_method, codegen_, &needs_bss_check);
@@ -2129,18 +2140,22 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
 
   SubstituteArguments(callee_graph, invoke_instruction, receiver_type, dex_compilation_unit);
 
-  const bool try_catch_inlining_allowed_for_recursive_inline =
-      // It was allowed previously.
-      try_catch_inlining_allowed_ &&
-      // The current invoke is not in a try or a catch.
-      invoke_instruction->GetBlock()->GetTryCatchInformation() == nullptr;
-  RunOptimizations(callee_graph,
-                   code_item,
-                   dex_compilation_unit,
-                   try_catch_inlining_allowed_for_recursive_inline);
+  CodeItemDataAccessor accessor(callee_graph->GetDexFile(), code_item);
+  const bool try_catch_inlining_chain =
+      // It was in a chain previously.
+      chain_with_try_catch_inlining_ ||
+      // The current invoke is in a try or a catch.
+      invoke_instruction->GetBlock()->GetTryCatchInformation() != nullptr ||
+      // The inlined method has a try catch.
+      accessor.TriesSize() != 0;
+  RunOptimizations(callee_graph, accessor, dex_compilation_unit, try_catch_inlining_chain);
 
   size_t number_of_instructions = 0;
-  if (!CanInlineBody(callee_graph, invoke_instruction, &number_of_instructions, is_speculative)) {
+  if (!CanInlineBody(callee_graph,
+                     invoke_instruction,
+                     &number_of_instructions,
+                     is_speculative,
+                     try_catch_inlining_chain)) {
     return false;
   }
 
@@ -2174,9 +2189,9 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
 }
 
 void HInliner::RunOptimizations(HGraph* callee_graph,
-                                const dex::CodeItem* code_item,
+                                const CodeItemDataAccessor& accessor,
                                 const DexCompilationUnit& dex_compilation_unit,
-                                bool try_catch_inlining_allowed_for_recursive_inline) {
+                                bool try_catch_inlining) {
   // Note: if the outermost_graph_ is being compiled OSR, we should not run any
   // optimization that could lead to a HDeoptimize. The following optimizations do not.
   HDeadCodeElimination dce(callee_graph, inline_stats_, "dead_code_elimination$inliner");
@@ -2196,7 +2211,11 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
 
   // Bail early for pathological cases on the environment (for example recursive calls,
   // or too large environment).
-  if (total_number_of_dex_registers_ > kMaximumNumberOfCumulatedDexRegisters) {
+  const size_t max_regs = try_catch_inlining ?
+                              kMaximumNumberOfCumulatedDexRegistersForTryCatchInlining :
+                              kMaximumNumberOfCumulatedDexRegisters;
+
+  if (total_number_of_dex_registers_ > max_regs) {
     LOG_NOTE() << "Calls in " << callee_graph->GetArtMethod()->PrettyMethod()
              << " will not be inlined because the outer method has reached"
              << " its environment budget limit.";
@@ -2212,7 +2231,6 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
     return;
   }
 
-  CodeItemDataAccessor accessor(callee_graph->GetDexFile(), code_item);
   HInliner inliner(callee_graph,
                    outermost_graph_,
                    codegen_,
@@ -2223,7 +2241,8 @@ void HInliner::RunOptimizations(HGraph* callee_graph,
                    total_number_of_instructions_ + number_of_instructions,
                    this,
                    depth_ + 1,
-                   try_catch_inlining_allowed_for_recursive_inline);
+                   try_catch_inlining,
+                   try_catch_inlining_allowed_);
   inliner.Run();
 }
 

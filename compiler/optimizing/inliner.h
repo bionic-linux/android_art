@@ -43,6 +43,7 @@ class HInliner : public HOptimization {
            size_t total_number_of_instructions,
            HInliner* parent,
            size_t depth,
+           bool chain_with_try_catch_inlining,
            bool try_catch_inlining_allowed,
            const char* name = kInlinerPassName)
       : HOptimization(outer_graph, name, stats),
@@ -55,6 +56,7 @@ class HInliner : public HOptimization {
         parent_(parent),
         depth_(depth),
         inlining_budget_(0),
+        chain_with_try_catch_inlining_(chain_with_try_catch_inlining),
         try_catch_inlining_allowed_(try_catch_inlining_allowed),
         inline_stats_(nullptr) {}
 
@@ -107,9 +109,9 @@ class HInliner : public HOptimization {
 
   // Run simple optimizations on `callee_graph`.
   void RunOptimizations(HGraph* callee_graph,
-                        const dex::CodeItem* code_item,
+                        const CodeItemDataAccessor& accessor,
                         const DexCompilationUnit& dex_compilation_unit,
-                        bool try_catch_inlining_allowed_for_recursive_inline)
+                        bool try_catch_inlining_chain)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Try to recognize known simple patterns and replace invoke call with appropriate instructions.
@@ -148,7 +150,8 @@ class HInliner : public HOptimization {
   bool CanInlineBody(const HGraph* callee_graph,
                      HInvoke* invoke,
                      size_t* out_number_of_instructions,
-                     bool is_speculative) const
+                     bool is_speculative,
+                     bool try_catch_inlining) const
     REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Create a new HInstanceFieldGet.
@@ -324,6 +327,9 @@ class HInliner : public HOptimization {
 
   // The budget left for inlining, in number of instructions.
   size_t inlining_budget_;
+
+  // States if the chain of inlines contains a try catch.
+  bool chain_with_try_catch_inlining_;
 
   // States if we are allowing try catch inlining to occur at this particular instance of inlining.
   bool try_catch_inlining_allowed_;

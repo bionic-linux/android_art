@@ -239,6 +239,7 @@ ArenaVector<HOptimization*> ConstructOptimizations(
                                        /* total_number_of_instructions= */ 0,
                                        /* parent= */ nullptr,
                                        /* depth= */ 0,
+                                       /* chain_with_try_catch_inlining= */ false,
                                        /* try_catch_inlining_allowed= */ true,
                                        pass_name);
         break;
