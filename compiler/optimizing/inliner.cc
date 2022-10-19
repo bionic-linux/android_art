@@ -2150,6 +2150,13 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
   // Inline the callee graph inside the caller graph.
   const int32_t callee_instruction_counter = callee_graph->GetCurrentInstructionId();
   graph_->SetCurrentInstructionId(callee_instruction_counter);
+
+  if (callee_graph->GetArtMethod()->PrettyMethod() == "boolean java.lang.Daemons$FinalizerWatchdogDaemon.sleepUntilNeeded()") {
+    std::stringstream ss;
+    callee_graph->Dump(ss, codegen_);
+    LOG(INFO) << "Dumping graph: \n" << ss.str();
+  }
+
   *return_replacement = callee_graph->InlineInto(graph_, invoke_instruction);
   // Update our budget for other inlining attempts in `caller_graph`.
   total_number_of_instructions_ += number_of_instructions;
