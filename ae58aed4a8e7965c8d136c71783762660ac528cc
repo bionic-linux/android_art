@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e214dc_08fe328d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Yes, this post-processing will move to the end of the existing `run` function.\n\n(we could make it a separate function, but I don\u0027t think that is necessary)",
+      "parentUuid": "4b50efb8_c96493fc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11c82a6_c14c62dc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "This sed expression will make `$2` empty if it contains no \"error\" lines, while previously the script would proceed to the check if there were any lines without \"error\". I think the new logic only works if the expected standard output is empty (which may happen by accident).",
+      "range": {
+        "startLine": 23,
+        "startChar": 46,
+        "endLine": 23,
+        "endChar": 74
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c610697_545fb0b9",
+        "filename": "test/1337-gc-coverage/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Yes, the intent is to show only error lines, and check that the output is empty. (the stdout is indeed empty file)\n\nAlso, I think the `grep` was broken.  It would pass if there was any non-error line.",
+      "parentUuid": "a11c82a6_c14c62dc",
       "range": {
         "startLine": 23,
         "startChar": 46,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "878793c7_45f47861",
+        "filename": "test/1339-dead-reference-safe/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cc8d993_fcebe878",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 46
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e90337_205441ab",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "I think you can use `sed -i -e \u0027/jni_entrypoints/d\u0027 -e \u0027/jni_internal.cc/d\u0027 \"$4\"` which will spare an extra process.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241bb45e_c3681f73",
+        "filename": "test/139-register-natives/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16e90337_205441ab",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0165416d_e2a039fa",
+        "filename": "test/148-multithread-gc-annotations/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "f513d5d2_f9c037ed",
+      "range": {
+        "startLine": 23,
+        "startChar": 45,
+        "endLine": 23,
+        "endChar": 74
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cac673fa_82e361a3",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "I take it that you\u0027ve inferred the condition under which the patch is needed, so you no longer have to rerun the check.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8bb4ba_3daf96cf",
+        "filename": "test/1953-pop-frame/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Yes.  I experimented.  I hope the condition is deterministic.",
+      "parentUuid": "cac673fa_82e361a3",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c841a2_20a52331",
+        "filename": "test/2232-write-metrics-to-log/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "That is autogenerated.  I assume it is normal for tests that are excluded.",
+      "parentUuid": "aebdd261_352e2809",
+      "range": {
+        "startLine": 18,
+        "startChar": 48,
+        "endLine": 18,
+        "endChar": 66
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "493a6a6b_1bee7948",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "Maybe `grep -o \u0027ClassVerificationTotalTime\u0027 \"$4\" | uniq` would be easier to parse.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92727ff0_58fbb2c9",
+        "filename": "test/2232-write-metrics-to-log/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Hmm... that does not work-in pace.  And making it work in pace would be more messy.",
+      "parentUuid": "493a6a6b_1bee7948",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a3ba90_6217c1f1",
+        "filename": "test/2239-varhandle-perf/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "I didn\u0027t know you can do that.",
+      "parentUuid": "3fce95fb_c997fe9f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dfef667_dd679bd6",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "Suggest `sed -E -i \u0027/JNI_On(Unload|Load)/d\u0027 \"$2\"` or using `-e` to have one sed process.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c0f7a6_57b8f050",
+        "filename": "test/674-hiddenapi/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dfef667_dd679bd6",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e436defb_ee866d11",
+        "filename": "test/677-fsi/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "In this case I would keep it separate as it has it\u0027s own comment",
+      "parentUuid": "ea954a4d_cd84ceb2",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "885480cf_8eb47d60",
@@ -277,6 +541,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6df1bd1_770f3059",
+        "filename": "test/688-shared-library/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "885480cf_8eb47d60",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f00f581_2ebadac5",
@@ -290,6 +578,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 1,
       "message": "Can\u0027t you use `\\\u0027`? Also can you use `-e` to have one sed process?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "ae58aed4a8e7965c8d136c71783762660ac528cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3527d247_913d4fe6",
+        "filename": "test/980-redefine-object/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f00f581_2ebadac5",
       "range": {
         "startLine": 26,
         "startChar": 0,

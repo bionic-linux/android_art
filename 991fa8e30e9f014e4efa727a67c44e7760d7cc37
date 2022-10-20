@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02c8125_8cfcba42",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 0,
+      "message": "The test \"passed by chance\" on eng-prod (but it wasn\u0027t actually testing anything).\n\nSince I modified the stderr of the test, it does not pass by chance anymore (same as most non-trivial tests).",
+      "parentUuid": "8760bf51_4db164ef",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 5
+      },
+      "revId": "991fa8e30e9f014e4efa727a67c44e7760d7cc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcca29dc_bc6f4f42",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 0,
       "message": "Why is this removed? Did we get rid of the old devices?",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "991fa8e30e9f014e4efa727a67c44e7760d7cc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507f9135_e7c90cef",
+        "filename": "test/1963-add-to-dex-classloader-in-memory/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 0,
+      "message": "I thought it would be obsolete by now, but on second thought, it might still apply to fugu.",
+      "parentUuid": "dcca29dc_bc6f4f42",
       "range": {
         "startLine": 23,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209c9447_dad6791c",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 0,
+      "message": "I don\u0027t know",
+      "parentUuid": "8ee21812_28ccdb5e",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "991fa8e30e9f014e4efa727a67c44e7760d7cc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60d4cd16_56d3147b",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-20T15:10:48Z",
       "side": 0,
       "message": "Why is this removed?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "991fa8e30e9f014e4efa727a67c44e7760d7cc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74575f3_4d825a35",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-10-20T19:07:34Z",
+      "side": 0,
+      "message": "See above (no longer passed by chance on eng-prod)",
+      "parentUuid": "60d4cd16_56d3147b",
       "range": {
         "startLine": 104,
         "startChar": 0,
