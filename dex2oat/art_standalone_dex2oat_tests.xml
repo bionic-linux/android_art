@@ -64,6 +64,8 @@
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.GTest" >
+        <!-- ImageTest.TestImageLayout takes 2 minutes on flame_hwasan. Adding an extra minute for buffer. -->
+        <option name="native-test-timeout" value="3m" />
         <option name="native-test-device-path" value="/data/local/tmp/art_standalone_dex2oat_tests" />
         <option name="module-name" value="art_standalone_dex2oat_tests" />
         <option name="ld-library-path-32" value="/apex/com.android.art/lib" />
@@ -79,8 +81,6 @@
         <option name="mainline-module-package-name" value="com.android.art" />
     </object>
 
-    <!-- Skip on HWASan. TODO(b/230394041): Re-enable -->
-    <object type="module_controller" class="com.android.tradefed.testtype.suite.module.SkipHWASanModuleController" />
     <!-- Only run tests if the device under test is SDK version 31 (Android 12) or above. -->
     <object type="module_controller" class="com.android.tradefed.testtype.suite.module.Sdk31ModuleController" />
 </configuration>
