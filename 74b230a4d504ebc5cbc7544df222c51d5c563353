@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e26748_fbb42534",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-10-21T10:57:15Z",
+      "side": 1,
+      "message": "The code that should handle erroneous arrays is the `CanIncludeInCurrentImage()` in `compiler_driver.cc` and `AotClassLinker::CanReferenceInBootImageExtension()`. The latter checks for erroneous arrays but the former does not even call it for the primary boot image.\n\nThis workaround makes the erroneous arrays check in `AotClassLinker::CanReferenceInBootImageExtension()` just dead code.",
+      "range": {
+        "startLine": 4150,
+        "startChar": 37,
+        "endLine": 4150,
+        "endChar": 72
+      },
+      "revId": "74b230a4d504ebc5cbc7544df222c51d5c563353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
