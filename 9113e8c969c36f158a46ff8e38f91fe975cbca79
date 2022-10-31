@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000ad0aa_42235036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-10-31T14:27:55Z",
+      "side": 1,
+      "message": "It\u0027s probably better to land in internal master",
+      "revId": "9113e8c969c36f158a46ff8e38f91fe975cbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
