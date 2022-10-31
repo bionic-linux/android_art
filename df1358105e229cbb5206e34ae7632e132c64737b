@@ -16,6 +16,46 @@
       "message": "FYI this is a follow up from https://android-review.googlesource.com/c/platform/art/+/2229627 as I was unable to upload a new patchset to that CL.",
       "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e742eb_79ff48fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-10-31T17:09:44Z",
+      "side": 1,
+      "message": "Do you have any code size improvements that you saw with these extra optimizations?",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89b6d3d_756b5498",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-10-31T17:09:44Z",
+      "side": 1,
+      "message": "We usually run: constant folding, instruction simplifier, dead code elimination (in that order). WDYT about moving this before LSE for consistency? You could then remove `dead_code_elimination$after_loop_opt` and not introduce a new pass.\n\nThe dead code we could be missing would be the ones we create in LSE and CHAGuardOptimization which I wouldn\u0027t expect to impact CodeSinking negatively.",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
