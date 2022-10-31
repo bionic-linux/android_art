@@ -105,7 +105,6 @@ art_cc_library_static {
     defaults: ["libart-dex2oat-defaults"],
     shared_libs: [
         "libart-compiler",
-        "libart-dexlayout",
         "libart",
         "libartpalette",
         "libprofile",
@@ -128,7 +127,6 @@ cc_defaults {
     ],
     whole_static_libs: [
         "libart-compiler",
-        "libart-dexlayout",
         "libart-dex2oat",
     ],
 }
@@ -143,7 +141,6 @@ art_cc_library_static {
         "art_defaults",
         "libart-compiler_static_defaults",
         "libart-dex2oat_static_defaults",
-        "libart-dexlayout_static_defaults",
         "libart_static_defaults",
         "libartbase_static_defaults",
         "libdexfile_static_defaults",
@@ -159,7 +156,6 @@ art_cc_library_static {
     ],
     shared_libs: [
         "libartd-compiler",
-        "libartd-dexlayout",
         "libartd",
         "libartpalette",
         "libprofiled",
@@ -181,7 +177,6 @@ cc_defaults {
     ],
     whole_static_libs: [
         "libartd-compiler",
-        "libartd-dexlayout",
         "libartd-dex2oat",
     ],
 }
@@ -195,7 +190,6 @@ art_cc_library_static {
         "libartbased_static_defaults",
         "libartd-compiler_static_defaults",
         "libartd-dex2oat_static_defaults",
-        "libartd-dexlayout_static_defaults",
         "libartd_static_defaults",
         "libdexfiled_static_defaults",
         "libprofiled_static_defaults",
@@ -305,7 +299,6 @@ art_cc_binary {
             shared_libs: [
                 "libart",
                 "libart-compiler",
-                "libart-dexlayout",
                 "libartbase",
                 "libdexfile",
                 "libprofile",
@@ -366,7 +359,6 @@ art_cc_binary {
                 "libartbased",
                 "libartd",
                 "libartd-compiler",
-                "libartd-dexlayout",
                 "libdexfiled",
                 "libprofiled",
             ],
@@ -575,7 +567,6 @@ art_cc_test {
     ],
     shared_libs: [
         "libartbased",
-        "libartd-dexlayout",
         "liblzma",
         "libprofiled",
     ],
@@ -597,7 +588,6 @@ art_cc_test {
     ],
     data: [":generate-boot-image"],
     shared_libs: [
-        "libart-dexlayout",
         "libartbase",
         "liblzma",
         "libprofile",

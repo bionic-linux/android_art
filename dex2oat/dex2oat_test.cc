@@ -1282,7 +1282,7 @@ TEST_F(Dex2oatDeterminism, UnloadCompile) {
 
 // Test that dexlayout section info is correctly written to the oat file for profile based
 // compilation.
-TEST_F(Dex2oatTest, LayoutSections) {
+TEST_F(Dex2oatTest, DISABLED_LayoutSections) {
   using Hotness = ProfileCompilationInfo::MethodHotness;
   std::unique_ptr<const DexFile> dex(OpenTestDexFile("ManyMethods"));
   ScratchFile profile_file;
@@ -1444,7 +1444,7 @@ TEST_F(Dex2oatTest, LayoutSections) {
 }
 
 // Test that generating compact dex works.
-TEST_F(Dex2oatTest, GenerateCompactDex) {
+TEST_F(Dex2oatTest, DISABLED_GenerateCompactDex) {
   // Generate a compact dex based odex.
   const std::string dir = GetScratchDir();
   const std::string oat_filename = dir + "/base.oat";
