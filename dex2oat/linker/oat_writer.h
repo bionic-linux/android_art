@@ -601,7 +601,7 @@ class OatWriter {
   std::unique_ptr<OrderedMethodList> ordered_methods_;
 
   // Container of shared dex data.
-  std::unique_ptr<DexContainer> dex_container_;
+  static constexpr void* dex_container_ = nullptr;
 
   DISALLOW_COPY_AND_ASSIGN(OatWriter);
 };

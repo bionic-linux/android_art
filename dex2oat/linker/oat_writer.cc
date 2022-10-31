@@ -46,8 +46,6 @@
 #include "dex/standard_dex_file.h"
 #include "dex/type_lookup_table.h"
 #include "dex/verification_results.h"
-#include "dex_container.h"
-#include "dexlayout.h"
 #include "driver/compiled_method-inl.h"
 #include "driver/compiler_driver-inl.h"
 #include "driver/compiler_options.h"
@@ -3368,7 +3366,10 @@ bool OatWriter::WriteDexFiles(File* file,
     const uint8_t* raw_dex_file_shared_data_begin = nullptr;
     uint32_t shared_data_size = 0u;
     if (dex_container_ != nullptr) {
+      DCHECK(false) << "dex_container_ not nullptr";
+#if 0
       shared_data_size = dex_container_->GetDataSection()->Size();
+#endif
     } else {
       // Dex files from input vdex are represented as raw dex files and they can be
       // compact dex files. These need to specify the same shared data section if any.
@@ -3452,6 +3453,8 @@ bool OatWriter::WriteDexFiles(File* file,
       vdex_size_ = vdex_dex_shared_data_offset_;
 
       if (dex_container_ != nullptr) {
+        DCHECK(false) << "dex_container_ not nullptr";
+#if 0
         CHECK(!use_existing_vdex) << "Use existing vdex should have empty dex container";
         CHECK(compact_dex_level_ != CompactDexLevel::kCompactDexLevelNone);
         DexContainer::Section* const section = dex_container_->GetDataSection();
@@ -3459,6 +3462,7 @@ bool OatWriter::WriteDexFiles(File* file,
         memcpy(vdex_begin_ + vdex_size_, section->Begin(), shared_data_size);
         section->Clear();
         dex_container_.reset();
+#endif
       } else if (!use_existing_vdex) {
         memcpy(vdex_begin_ + vdex_size_, raw_dex_file_shared_data_begin, shared_data_size);
       }
@@ -3595,6 +3599,8 @@ bool OatWriter::LayoutDexFile(OatDexFile* oat_dex_file) {
     LOG(ERROR) << "Failed to open dex file for layout: " << error_msg;
     return false;
   }
+  DCHECK_EQ(dex_container_, nullptr) << "dex_container_ not nullptr";
+#if 0
   Options options;
   options.compact_dex_level_ = compact_dex_level_;
   options.update_checksum_ = true;
@@ -3622,6 +3628,7 @@ bool OatWriter::LayoutDexFile(OatDexFile* oat_dex_file) {
       }
     }
   }
+#endif
   CHECK_EQ(oat_dex_file->dex_file_location_checksum_, dex_file->GetLocationChecksum());
   return true;
 }

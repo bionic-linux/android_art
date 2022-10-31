@@ -56,7 +56,6 @@
 #include "dex/dex_instruction-inl.h"
 #include "dex/string_reference.h"
 #include "dex/type_lookup_table.h"
-#include "dexlayout.h"
 #include "disassembler.h"
 #include "elf/elf_builder.h"
 #include "gc/accounting/space_bitmap-inl.h"
@@ -642,6 +641,8 @@ class OatDumper {
         // checksum. If the vdex container does not contain cdex resources (`used_dexlayout` is
         // false), ExportDexFile() enforces a reproducible checksum verification.
         if (vdex_dex_file->IsCompactDexFile()) {
+          LOG(FATAL) << "Cannot deal with compact dex due to no dexlayout";
+#if 0
           Options options;
           options.compact_dex_level_ = CompactDexLevel::kCompactDexLevelNone;
           options.update_checksum_ = true;
@@ -685,6 +686,7 @@ class OatDumper {
             success = false;
             break;
           }
+#endif
         } else {
           if (!ExportDexFile(os, *oat_dex_file, vdex_dex_file.get(), /*used_dexlayout=*/ false)) {
             success = false;
