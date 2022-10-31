@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adb8dcc_cd150327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-10-31T16:55:26Z",
+      "side": 1,
+      "message": "FYI this is a follow up from https://android-review.googlesource.com/c/platform/art/+/2229627 as I was unable to upload a new patchset to that CL.",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
