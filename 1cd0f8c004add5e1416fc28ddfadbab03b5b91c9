@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511dab05_11442f67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-01T18:30:56Z",
+      "side": 1,
+      "message": "Thanks for spotting that.",
+      "parentUuid": "84d30f55_b347dc3e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a10f3042_6ddbacda",
@@ -77,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8529c85d_3d4975a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-01T18:30:56Z",
+      "side": 1,
+      "message": "Aha, but that depends on the outcome of the experiment so it may come at a later stage. I wouldn\u0027t mind adding a TODO anyway, but that code is only in internal yet, so I can\u0027t do it in this CL. In any case, I think if we decide to remove dexlayout we\u0027ll go through the uses of --compact-dex-level as part of the code cleanup.",
+      "parentUuid": "bd576eb2_45e0e1b7",
+      "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d31e88b_23d7a277",
@@ -90,6 +132,30 @@
       "writtenOn": "2022-11-01T16:36:27Z",
       "side": 1,
       "message": "Suggestion:\n\n```\n\"Overriding --compact-dex-level due to \"\n\"persist.device_config.runtime_native_boot.disable_compact_dex set to `true`\"\n```",
+      "range": {
+        "startLine": 1111,
+        "startChar": 25,
+        "endLine": 1112,
+        "endChar": 87
+      },
+      "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d4be65_06d62979",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-01T18:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d31e88b_23d7a277",
       "range": {
         "startLine": 1111,
         "startChar": 25,
