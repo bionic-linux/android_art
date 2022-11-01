@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84d30f55_b347dc3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-11-01T16:36:27Z",
+      "side": 1,
+      "message": "You can drop this, as this change is now in AOSP.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a10f3042_6ddbacda",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -50,6 +73,29 @@
       "side": 1,
       "message": "For eventually removing this line: http://cs/android-internal/art/artd/artd.cc;l\u003d1000;rcl\u003dcf29f1b011956cdbc4fa914339fb2f1df2154610",
       "parentUuid": "40a93353_07b58c84",
+      "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d31e88b_23d7a277",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-11-01T16:36:27Z",
+      "side": 1,
+      "message": "Suggestion:\n\n```\n\"Overriding --compact-dex-level due to \"\n\"persist.device_config.runtime_native_boot.disable_compact_dex set to `true`\"\n```",
+      "range": {
+        "startLine": 1111,
+        "startChar": 25,
+        "endLine": 1112,
+        "endChar": 87
+      },
       "revId": "1cd0f8c004add5e1416fc28ddfadbab03b5b91c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
