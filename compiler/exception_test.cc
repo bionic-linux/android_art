@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#include <android-base/test_utils.h>
-
 #include <memory>
 #include <type_traits>
 
