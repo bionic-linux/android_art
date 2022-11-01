@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95634693_6df41ba2",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-01T09:21:05Z",
+      "side": 1,
+      "message": "add a comment.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 86
+      },
+      "revId": "5435a9d4ffc7d9667952eb3ce6b9643ed80204ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd80ddc9_a8e2be8c",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-01T09:21:05Z",
+      "side": 1,
+      "message": "nit: line too long.",
+      "revId": "5435a9d4ffc7d9667952eb3ce6b9643ed80204ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b3a25f_9cd9142e",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-01T09:21:05Z",
+      "side": 1,
+      "message": "nit: one line",
+      "range": {
+        "startLine": 1311,
+        "startChar": 0,
+        "endLine": 1312,
+        "endChar": 58
+      },
+      "revId": "5435a9d4ffc7d9667952eb3ce6b9643ed80204ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93a57a2d_b236312f",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-01T09:21:05Z",
+      "side": 1,
+      "message": "CHECK_EQ",
+      "range": {
+        "startLine": 1486,
+        "startChar": 4,
+        "endLine": 1486,
+        "endChar": 9
+      },
+      "revId": "5435a9d4ffc7d9667952eb3ce6b9643ed80204ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ea7e92_ac0fabdb",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-01T09:21:05Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "5435a9d4ffc7d9667952eb3ce6b9643ed80204ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
