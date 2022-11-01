@@ -65,13 +65,13 @@ TEST_F(ImageTest, TestImageLayout) {
 
 TEST_F(ImageTest, ImageHeaderIsValid) {
     uint32_t image_begin = ART_BASE_ADDRESS;
-    uint32_t image_size_ = 16 * KB;
+    uint32_t image_size_ = 48 * KB;
     uint32_t image_roots = ART_BASE_ADDRESS + (1 * KB);
     uint32_t oat_checksum = 0;
-    uint32_t oat_file_begin = ART_BASE_ADDRESS + (4 * KB);  // page aligned
-    uint32_t oat_data_begin = ART_BASE_ADDRESS + (8 * KB);  // page aligned
-    uint32_t oat_data_end = ART_BASE_ADDRESS + (9 * KB);
-    uint32_t oat_file_end = ART_BASE_ADDRESS + (10 * KB);
+    uint32_t oat_file_begin = ART_BASE_ADDRESS + (16 * KB);  // page aligned
+    uint32_t oat_data_begin = ART_BASE_ADDRESS + (32 * KB);  // page aligned
+    uint32_t oat_data_end = ART_BASE_ADDRESS + (31 * KB);
+    uint32_t oat_file_end = ART_BASE_ADDRESS + (32 * KB);
     ImageSection sections[ImageHeader::kSectionCount];
     uint32_t image_reservation_size = RoundUp(oat_file_end - image_begin, kPageSize);
     ImageHeader image_header(image_reservation_size,
