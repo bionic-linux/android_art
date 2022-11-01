@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f32b742_b86db701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-01T18:36:52Z",
+      "side": 1,
+      "message": "Yes, we saw ~3kb improvement with DuckDuckGo and ~2kb improvement with Signal with no noticeable degradation in compilation time. Let me know if you\u0027d like to see the full results and I can share these with you.",
+      "parentUuid": "c0e742eb_79ff48fd",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89b6d3d_756b5498",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-10-31T17:09:44Z",
       "side": 1,
       "message": "We usually run: constant folding, instruction simplifier, dead code elimination (in that order). WDYT about moving this before LSE for consistency? You could then remove `dead_code_elimination$after_loop_opt` and not introduce a new pass.\n\nThe dead code we could be missing would be the ones we create in LSE and CHAGuardOptimization which I wouldn\u0027t expect to impact CodeSinking negatively.",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82eb909_d09aae5e",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-01T18:36:52Z",
+      "side": 1,
+      "message": "Generally I agree with the idea however I just tried this change and it has created a code size increase of 176 bytes as opposed to a ~3kb decrease, on a test apk. I have not investigated exactly why this is the case, but there seems to be an issue with this approach.\n\nLet me know if you\u0027d like me to investigate this further or if this empirical increase is enough to discount this approach.",
+      "parentUuid": "c89b6d3d_756b5498",
       "range": {
         "startLine": 679,
         "startChar": 0,
