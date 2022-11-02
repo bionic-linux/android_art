@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c55053e0_ae7999b9",
+        "filename": "test/run-test",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-02T15:57:12Z",
+      "side": 1,
+      "message": "nit: what if both of them fail?\n```\nif proc_out.returncode !\u003d 0 and proc_err.returncode !\u003d 0:\n  fail(\"stdout and stderr did not match the expected file\")\n```\nmaybe before each single if?",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 50
+      },
+      "revId": "7238f443401b0035770f6052fd24bae84507167f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
