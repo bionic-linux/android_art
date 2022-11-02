@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9662ab4c_62dee378",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-02T13:00:53Z",
+      "side": 1,
+      "message": "Probably option 2?\n\nOption 1 I don\u0027t like for the same reason as the current PS: it gives away some debuggability for simplifying the run-test code itself, which seems wrong (I\u0027ve been looking at some 900 failed tests just this morning, and I very much appreciate seeing both stdout and stderr at one glance, and even if there are no differences it is still informative to see that there aren\u0027t any).",
+      "parentUuid": "6f3ca8b3_a412632c",
+      "revId": "8a1bdcad7abad50cac50399da3ea749cd1246fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107ded0c_73871f73",
         "filename": "test/run-test",
         "patchSetId": 1
