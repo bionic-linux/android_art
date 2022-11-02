@@ -2767,16 +2767,73 @@ bool ClassLinker::FindClassInSharedLibrariesAfter(ScopedObjectAccessAlreadyRunna
   return FindClassInSharedLibrariesHelper(soa, self, descriptor, hash, class_loader, field, result);
 }
 
+namespace {
+
+// Matches exceptions caught in DexFile.defineClass.
+ALWAYS_INLINE bool MatchesDexFileCaughtExceptions(ObjPtr<mirror::Throwable> throwable,
+                                                  ClassLinker* class_linker)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  return
+      // ClassNotFoundException.
+      throwable->InstanceOf(GetClassRoot(ClassRoot::kJavaLangClassNotFoundException,
+                                         class_linker))
+      ||
+      // NoClassDefFoundError. TODO: Reconsider this. b/130746382.
+      throwable->InstanceOf(Runtime::Current()->GetPreAllocatedNoClassDefFoundError()->GetClass());
+}
+
+// Clear exceptions caught in DexFile.defineClass.
+ALWAYS_INLINE void FilterDexFileCaughtExceptions(Thread* self, ClassLinker* class_linker)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (MatchesDexFileCaughtExceptions(self->GetException(), class_linker)) {
+    self->ClearException();
+  }
+}
+
+}  // namespace
+
 bool ClassLinker::FindClassInBaseDexClassLoader(ScopedObjectAccessAlreadyRunnable& soa,
                                                 Thread* self,
                                                 const char* descriptor,
                                                 size_t hash,
                                                 Handle<mirror::ClassLoader> class_loader,
                                                 /*out*/ ObjPtr<mirror::Class>* result) {
+  ObjPtr<mirror::Class> klass = LookupClass(self, descriptor, hash, class_loader.Get());
+  if (klass != nullptr) {
+    *result = EnsureResolved(self, descriptor, klass);
+    if (UNLIKELY(*result == nullptr)) {
+      CHECK(soa.Self()->IsExceptionPending()) << descriptor;
+      return false;
+    } else {
+      DCHECK(!soa.Self()->IsExceptionPending());
+      return true;
+    }
+  }
+  return FindClassInBaseDexClassLoaderHelper(soa, self, descriptor, hash, class_loader, result);
+}
+
+bool ClassLinker::FindClassInBaseDexClassLoaderHelper(ScopedObjectAccessAlreadyRunnable& soa,
+                                                      Thread* self,
+                                                      const char* descriptor,
+                                                      size_t hash,
+                                                      Handle<mirror::ClassLoader> class_loader,
+                                                      /*out*/ ObjPtr<mirror::Class>* result) {
   // Termination case: boot class loader.
   if (IsBootClassLoader(soa, class_loader.Get())) {
-    RETURN_IF_UNRECOGNIZED_OR_FOUND_OR_EXCEPTION(
-        FindClassInBootClassLoaderClassPath(self, descriptor, hash, result), *result, self);
+    ClassPathEntry pair = FindInClassPath(descriptor, hash, boot_class_path_);
+    if (pair.second != nullptr) {
+      *result = DefineClass(self,
+                            descriptor,
+                            hash,
+                            ScopedNullHandle<mirror::ClassLoader>(),
+                            *pair.first,
+                            *pair.second);
+      if (*result == nullptr) {
+        DCHECK(self->IsExceptionPending());
+        FilterDexFileCaughtExceptions(self, this);
+        return false;
+      }
+    }
     return true;
   }
 
@@ -2817,7 +2874,10 @@ bool ClassLinker::FindClassInBaseDexClassLoader(ScopedObjectAccessAlreadyRunnabl
     //    - class loader dex files
     //    - parent
     RETURN_IF_UNRECOGNIZED_OR_FOUND_OR_EXCEPTION(
-        FindClassInBootClassLoaderClassPath(self, descriptor, hash, result), *result, self);
+        FindClassInBaseDexClassLoader(
+            soa, self, descriptor, hash, ScopedNullHandle<mirror::ClassLoader>(), result),
+        *result,
+        self);
     RETURN_IF_UNRECOGNIZED_OR_FOUND_OR_EXCEPTION(
         FindClassInSharedLibraries(soa, self, descriptor, hash, class_loader, result),
         *result,
@@ -2849,59 +2909,6 @@ bool ClassLinker::FindClassInBaseDexClassLoader(ScopedObjectAccessAlreadyRunnabl
 }
 
 #undef RETURN_IF_UNRECOGNIZED_OR_FOUND_OR_EXCEPTION
-
-namespace {
-
-// Matches exceptions caught in DexFile.defineClass.
-ALWAYS_INLINE bool MatchesDexFileCaughtExceptions(ObjPtr<mirror::Throwable> throwable,
-                                                  ClassLinker* class_linker)
-    REQUIRES_SHARED(Locks::mutator_lock_) {
-  return
-      // ClassNotFoundException.
-      throwable->InstanceOf(GetClassRoot(ClassRoot::kJavaLangClassNotFoundException,
-                                         class_linker))
-      ||
-      // NoClassDefFoundError. TODO: Reconsider this. b/130746382.
-      throwable->InstanceOf(Runtime::Current()->GetPreAllocatedNoClassDefFoundError()->GetClass());
-}
-
-// Clear exceptions caught in DexFile.defineClass.
-ALWAYS_INLINE void FilterDexFileCaughtExceptions(Thread* self, ClassLinker* class_linker)
-    REQUIRES_SHARED(Locks::mutator_lock_) {
-  if (MatchesDexFileCaughtExceptions(self->GetException(), class_linker)) {
-    self->ClearException();
-  }
-}
-
-}  // namespace
-
-// Finds the class in the boot class loader.
-// If the class is found the method returns the resolved class. Otherwise it returns null.
-bool ClassLinker::FindClassInBootClassLoaderClassPath(Thread* self,
-                                                      const char* descriptor,
-                                                      size_t hash,
-                                                      /*out*/ ObjPtr<mirror::Class>* result) {
-  ClassPathEntry pair = FindInClassPath(descriptor, hash, boot_class_path_);
-  if (pair.second != nullptr) {
-    ObjPtr<mirror::Class> klass = LookupClass(self, descriptor, hash, nullptr);
-    if (klass != nullptr) {
-      *result = EnsureResolved(self, descriptor, klass);
-    } else {
-      *result = DefineClass(self,
-                            descriptor,
-                            hash,
-                            ScopedNullHandle<mirror::ClassLoader>(),
-                            *pair.first,
-                            *pair.second);
-    }
-    if (*result == nullptr) {
-      CHECK(self->IsExceptionPending()) << descriptor;
-      FilterDexFileCaughtExceptions(self, this);
-    }
-  }
-  // The boot classloader is always a known lookup.
-  return true;
-}
 
 bool ClassLinker::FindClassInBaseDexClassLoaderClassPath(
     ScopedObjectAccessAlreadyRunnable& soa,
@@ -2960,26 +2967,6 @@ ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
     return EnsureResolved(self, descriptor, klass);
   }
   // Class is not yet loaded.
-  if (descriptor[0] != '[' && class_loader == nullptr) {
-    // Non-array class and the boot class loader, search the boot class path.
-    ClassPathEntry pair = FindInClassPath(descriptor, hash, boot_class_path_);
-    if (pair.second != nullptr) {
-      return DefineClass(self,
-                         descriptor,
-                         hash,
-                         ScopedNullHandle<mirror::ClassLoader>(),
-                         *pair.first,
-                         *pair.second);
-    } else {
-      // The boot class loader is searched ahead of the application class loader, failures are
-      // expected and will be wrapped in a ClassNotFoundException. Use the pre-allocated error to
-      // trigger the chaining with a proper stack trace.
-      ObjPtr<mirror::Throwable> pre_allocated =
-          Runtime::Current()->GetPreAllocatedNoClassDefFoundError();
-      self->SetException(pre_allocated);
-      return nullptr;
-    }
-  }
   ObjPtr<mirror::Class> result_ptr;
   bool descriptor_equals;
   if (descriptor[0] == '[') {
@@ -2990,7 +2977,7 @@ ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
   } else {
     ScopedObjectAccessUnchecked soa(self);
     bool known_hierarchy =
-        FindClassInBaseDexClassLoader(soa, self, descriptor, hash, class_loader, &result_ptr);
+        FindClassInBaseDexClassLoaderHelper(soa, self, descriptor, hash, class_loader, &result_ptr);
     if (result_ptr != nullptr) {
       // The chain was understood and we found the class. We still need to add the class to
       // the class table to protect from racy programs that can try and redefine the path list
@@ -3008,8 +2995,11 @@ ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
       // the Java-side could still succeed for racy programs if another thread is actively
       // modifying the class loader's path list.
 
-      // The runtime is not allowed to call into java from a runtime-thread so just abort.
-      if (self->IsRuntimeThread()) {
+      // - The boot class loader is searched ahead of the application class loader, failures are
+      //   expected and will be wrapped in a ClassNotFoundException. Use the pre-allocated error to
+      //   trigger the chaining with a proper stack trace.
+      // - The runtime is not allowed to call into java from a runtime-thread so just throw an exception.
+      if (class_loader == nullptr || self->IsRuntimeThread()) {
         // Oops, we can't call into java so we can't run actual class-loader code.
         // This is true for e.g. for the compiler (jit or aot).
         ObjPtr<mirror::Throwable> pre_allocated =
@@ -3071,8 +3061,6 @@ ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
         // Check the name of the returned class.
         descriptor_equals = (result_ptr != nullptr) && result_ptr->DescriptorEquals(descriptor);
       }
-    } else {
-      DCHECK(!MatchesDexFileCaughtExceptions(self->GetException(), this));
     }
   }
 
