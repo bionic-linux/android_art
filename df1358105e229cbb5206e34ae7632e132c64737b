@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbeb9705_feddeb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-02T08:33:32Z",
+      "side": 1,
+      "message": "Did you check just those two apps? Or did you test more apps and those are the ones that saw benefit. If you can share % saved that would also be a good indicator. All code saves are good to have but e.g. also we don\u0027t want to run DCE after every pass and so on.",
+      "parentUuid": "4f32b742_b86db701",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c89b6d3d_756b5498",
         "filename": "compiler/optimizing/optimizing_compiler.cc",
         "patchSetId": 1
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "Generally I agree with the idea however I just tried this change and it has created a code size increase of 176 bytes as opposed to a ~3kb decrease, on a test apk. I have not investigated exactly why this is the case, but there seems to be an issue with this approach.\n\nLet me know if you\u0027d like me to investigate this further or if this empirical increase is enough to discount this approach.",
       "parentUuid": "c89b6d3d_756b5498",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a55bce2_a1085f27",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-02T08:33:32Z",
+      "side": 1,
+      "message": "\u003e tried this change\n\nDo you mean both moving `dead_code_elimination$after_loop_opt` and removing `dead_code_elimination$after_bce`? If so:\n\nThat would mean that either:\nA) DCE is needed before `constant_folding$after_bce` or `instruction_simplifier$after_bce` so that they can be useful\nB) LSE/CHA optimizations generate code that DCE can clean up and it is useful for code sinking or `instruction_simplifier$before_codegen`\nC) both A) and B)\n\nIf you are willing to investigate you can check A) but just moving `dead_code_elimination$after_loop_opt`, and you can check B) by keeping `dead_code_elimination$after_loop_opt` where it is in this patchset and remove `dead_code_elimination$after_bce`.\n\nOnce you find something that locally works I can launch some tests in an internal test suite that we have and report the results. I\u0027d like to have a bit more broad testing before we change the passes.",
+      "parentUuid": "f82eb909_d09aae5e",
       "range": {
         "startLine": 679,
         "startChar": 0,
