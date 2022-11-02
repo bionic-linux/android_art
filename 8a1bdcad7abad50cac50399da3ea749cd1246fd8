@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f3ca8b3_a412632c",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-11-02T11:37:07Z",
+      "side": 1,
+      "message": "Hmmm... fair enough.  I see three options.\n\n1) diff stderr first, so that if both differ, it gets priority.\n\n2) keep the `check\u003dFalse` and handle it in the caller.\n\n3) merge the two calls into one bash expression.  Although i don\u0027t think there is simple way to express \"run both, and fail if either failed\" in bash.",
+      "parentUuid": "c56cef9f_7c895996",
+      "revId": "8a1bdcad7abad50cac50399da3ea749cd1246fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "107ded0c_73871f73",
         "filename": "test/run-test",
         "patchSetId": 1
