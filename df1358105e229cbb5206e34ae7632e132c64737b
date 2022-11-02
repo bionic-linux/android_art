@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38e566ed_757d1f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-02T19:52:00Z",
+      "side": 1,
+      "message": "| Did you check just those two apps?\n\nIn total 7 apps were tested (not including boot.oat). No apps showed any noticeable degradation in compile time, note that this DCE pass is only run if loop optimization is successful to try and reduce the amount of times this DCE pass is run.\n\nOf the apps tested 4 showed no change in code size while the other three had reductions of 0.0073%, 0.0040% and 0.0040% while boot-bouncycastle.oat had a reduction of 0.0091%.",
+      "parentUuid": "bbeb9705_feddeb11",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c89b6d3d_756b5498",
         "filename": "compiler/optimizing/optimizing_compiler.cc",
         "patchSetId": 1
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "\u003e tried this change\n\nDo you mean both moving `dead_code_elimination$after_loop_opt` and removing `dead_code_elimination$after_bce`? If so:\n\nThat would mean that either:\nA) DCE is needed before `constant_folding$after_bce` or `instruction_simplifier$after_bce` so that they can be useful\nB) LSE/CHA optimizations generate code that DCE can clean up and it is useful for code sinking or `instruction_simplifier$before_codegen`\nC) both A) and B)\n\nIf you are willing to investigate you can check A) but just moving `dead_code_elimination$after_loop_opt`, and you can check B) by keeping `dead_code_elimination$after_loop_opt` where it is in this patchset and remove `dead_code_elimination$after_bce`.\n\nOnce you find something that locally works I can launch some tests in an internal test suite that we have and report the results. I\u0027d like to have a bit more broad testing before we change the passes.",
       "parentUuid": "f82eb909_d09aae5e",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6abad4_7363421c",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-02T19:52:00Z",
+      "side": 1,
+      "message": "| Do you mean both moving dead_code_elimination$after_loop_opt and removing dead_code_elimination$after_bce?\n\nYes that is what I meant.\n\nI had actually already investigated A) and found that there appears to cause no difference in example apk compilation results. The only difference I could see was a few checker tests that had a few extra instructions removed hence why `dead_code_elimination$after_loop_opt` was placed before `constant_folding$after_bce` and `instruction_simplifier$after_bce` but ultimately the difference appears to be tiny.\n\nB) however is true, removing `dead_code_elimination$after_bce` resulted in a large increase of (~8kb - ~22kb) on example apks.",
+      "parentUuid": "7a55bce2_a1085f27",
       "range": {
         "startLine": 679,
         "startChar": 0,
