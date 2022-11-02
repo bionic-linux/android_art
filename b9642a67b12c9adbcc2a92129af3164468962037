@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56a411bf_58b1535d",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-02T11:29:08Z",
+      "side": 0,
+      "message": "This also gets the `tail` removed which was bothering a couple of weeks back",
+      "range": {
+        "startLine": 982,
+        "startChar": 74,
+        "endLine": 982,
+        "endChar": 89
+      },
+      "revId": "b9642a67b12c9adbcc2a92129af3164468962037",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

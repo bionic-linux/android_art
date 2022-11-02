@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c94757_66126f94",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-02T11:29:08Z",
+      "side": 1,
+      "message": "Since we don\u0027t have a `check\u003dFalse`, this means that if the stdout fails we never get to see the stderr. It is not that big a change, but I want to be sure this was intended as it seems like the `good` variable was there to make sure we print both. I added `stdout` and `stderr` to a random test as an example:\n\nBefore:\n```\n#################### info\n$ cat \"/usr/local/google/home/solanes/aosp-master-art/art/test/2243-checker-not-inline-into-throw/info.txt\" | sed \"s/^/# /g\"\n# Tests that we don\u0027t inline methods if their basic blocks end with a throw.\n#################### stdout diffs\n$ diff --strip-trailing-cr -u \"expected-stdout.txt\" \"test-stdout.txt\" | tail -n 10000\n--- expected-stdout.txt 2008-01-01 00:00:00.000000000 +0000\n+++ test-stdout.txt     2022-11-02 11:26:07.518669818 +0000\n@@ -1 +0,0 @@\n-stdout\n\\ No newline at end of file\n####################\n#################### stderr diffs\n$ diff --strip-trailing-cr -u \"expected-stderr.txt\" \"test-stderr.txt\" | tail -n 10000\n--- expected-stderr.txt 2008-01-01 00:00:00.000000000 +0000\n+++ test-stderr.txt     2022-11-02 11:26:07.518669818 +0000\n@@ -1 +0,0 @@\n-stderr\n\\ No newline at end of file\n####################\n```\n\nAfter\n```\n#################### info\n$ cat \"/usr/local/google/home/solanes/aosp-master-art/art/test/2243-checker-not-inline-into-throw/info.txt\" | sed \"s/^/# /g\"\n# Tests that we don\u0027t inline methods if their basic blocks end with a throw.\n#################### stdout diff\n$ diff --strip-trailing-cr -u \"expected-stdout.txt\" \"test-stdout.txt\"\n--- expected-stdout.txt 2008-01-01 00:00:00.000000000 +0000\n+++ test-stdout.txt     2022-11-02 11:23:12.988624748 +0000\n@@ -1 +0,0 @@\n-stdout\n\\ No newline at end of file\n\nart/test/run-test:969: 2243-checker-not-inline-into-throw FAILED: stdout did not match the expected file\n```",
+      "revId": "8a1bdcad7abad50cac50399da3ea749cd1246fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
