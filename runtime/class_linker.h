@@ -1026,6 +1026,15 @@ class ClassLinker {
                                      /*out*/ ObjPtr<mirror::Class>* result)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_);
+  // Same as above, but doesn't do a lookup in the class table first.
+  bool FindClassInBaseDexClassLoaderHelper(ScopedObjectAccessAlreadyRunnable& soa,
+                                           Thread* self,
+                                           const char* descriptor,
+                                           size_t hash,
+                                           Handle<mirror::ClassLoader> class_loader,
+                                           /*out*/ ObjPtr<mirror::Class>* result)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!Locks::dex_lock_);
 
   bool FindClassInSharedLibraries(ScopedObjectAccessAlreadyRunnable& soa,
                                   Thread* self,
@@ -1068,17 +1077,6 @@ class ClassLinker {
           size_t hash,
           Handle<mirror::ClassLoader> class_loader,
           /*out*/ ObjPtr<mirror::Class>* result)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!Locks::dex_lock_);
-
-  // Finds the class in the boot class loader.
-  // If the class is found the method updates `result`.
-  // The method always returns true, to notify to the caller the
-  // boot class loader has a known lookup.
-  bool FindClassInBootClassLoaderClassPath(Thread* self,
-                                           const char* descriptor,
-                                           size_t hash,
-                                           /*out*/ ObjPtr<mirror::Class>* result)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_);
 
