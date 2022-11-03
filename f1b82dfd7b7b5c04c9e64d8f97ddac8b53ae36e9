@@ -94,6 +94,30 @@
       },
       "revId": "f1b82dfd7b7b5c04c9e64d8f97ddac8b53ae36e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d3ca05_a26c0a49",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-03T12:51:59Z",
+      "side": 1,
+      "message": "Ah, right. Then it works the way I thought it does. I meant that the text description suggests you can pass two arguments to the same `-t` option, not that you can have multiple `-t` options each with its own argument.",
+      "parentUuid": "df4a026a_60377beb",
+      "range": {
+        "startLine": 1113,
+        "startChar": 69,
+        "endLine": 1113,
+        "endChar": 98
+      },
+      "revId": "f1b82dfd7b7b5c04c9e64d8f97ddac8b53ae36e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
