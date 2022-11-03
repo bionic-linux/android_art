@@ -121,6 +121,8 @@ $(call add-clean-step, find $(OUT_DIR) -name "*.oat" -o -name "*.odex" -o -name 
 $(call add-clean-step, find $(OUT_DIR) -name "*.oat" -o -name "*.odex" -o -name "*.art" -o -name '*.vdex' | xargs rm -f)
 $(call add-clean-step, find $(OUT_DIR) -name "*.oat" -o -name "*.odex" -o -name "*.art" -o -name '*.vdex' | xargs rm -f)
 
+$(call add-clean-step, rm -rf $(OUT_DIR))
+
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
