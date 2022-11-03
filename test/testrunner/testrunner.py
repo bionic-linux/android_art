@@ -1111,6 +1111,7 @@ def parse_option():
 
   parser = argparse.ArgumentParser(description="Runs all or a subset of the ART test suite.")
   parser.add_argument('-t', '--test', action='append', dest='tests', help='name(s) of the test(s)')
+  parser.add_argument('tests', action='extend', nargs="*", help='name(s) of the test(s)')
   global_group = parser.add_argument_group('Global options',
                                            'Options that affect all tests being run')
   global_group.add_argument('-j', type=int, dest='n_thread', help="""Number of CPUs to use.
