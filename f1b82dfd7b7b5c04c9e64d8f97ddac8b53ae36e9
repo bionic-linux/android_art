@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94cfc02_9cd0f569",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-03T12:34:05Z",
+      "side": 1,
+      "message": "This is confusing. It accepts one argument, so it should be `name of the test`. And it would also be good to have a deprecation note, something like `name of the test (deprecated; you can pass tests as positional arguments at the end without any option)`.",
+      "range": {
+        "startLine": 1113,
+        "startChar": 69,
+        "endLine": 1113,
+        "endChar": 98
+      },
+      "revId": "f1b82dfd7b7b5c04c9e64d8f97ddac8b53ae36e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
