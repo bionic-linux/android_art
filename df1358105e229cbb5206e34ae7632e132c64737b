@@ -224,6 +224,30 @@
       },
       "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac670d09_94ad1c32",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-04T16:28:13Z",
+      "side": 1,
+      "message": "I\u0027m OK with adding a few, they are not extremely expensive. But they do add up.\n\nI believe the current DCE is doing a lot of things outside actual dead code elimination. I would prefer to split these out to their own pass (CodeFlowSimplifier?), making actual DCE cheaper. Then we could have more DCE passes.",
+      "parentUuid": "245b671e_4aa688ca",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
