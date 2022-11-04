@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "53c40c99986ecf9f355a7490d63d1ac58ec5406d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e6df05_11a44aae",
+        "filename": "runtime/stack.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-04T16:33:31Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "53c40c99986ecf9f355a7490d63d1ac58ec5406d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
