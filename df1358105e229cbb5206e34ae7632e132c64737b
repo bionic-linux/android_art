@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e935cec5_ac6769f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-04T15:56:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38e566ed_757d1f91",
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89b6d3d_756b5498",
@@ -174,6 +192,30 @@
       "side": 1,
       "message": "| Do you mean both moving dead_code_elimination$after_loop_opt and removing dead_code_elimination$after_bce?\n\nYes that is what I meant.\n\nI had actually already investigated A) and found that there appears to cause no difference in example apk compilation results. The only difference I could see was a few checker tests that had a few extra instructions removed hence why `dead_code_elimination$after_loop_opt` was placed before `constant_folding$after_bce` and `instruction_simplifier$after_bce` but ultimately the difference appears to be tiny.\n\nB) however is true, removing `dead_code_elimination$after_bce` resulted in a large increase of (~8kb - ~22kb) on example apks.",
       "parentUuid": "7a55bce2_a1085f27",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245b671e_4aa688ca",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-04T15:56:47Z",
+      "side": 1,
+      "message": "Based on what you said I\u0027d be more partial to:\n1) move `dead_code_elimination$after_loop_opt` after `instruction_simplifier$after_bce` and rename it to `dead_code_elimination$after_bce` and not make it conditional. This would have consistency with the other simplifications we do: constant folding -\u003e instruction simplifier -\u003e DCE.\n2) Rename the old `dead_code_elimination$after_bce` to `dead_code_elimination$after_cha_guard_optimization`, to avoid name clashing.\n3) (optional) It would be interesting to see if `dead_code_elimination$after_cha_guard_optimization` can be conditional on LSE or CHA running.\n\nFYI I ran our test suite and the results were small but with this CL we have a 1K reduction in services.odex. Some apps saw improvements and we even saw slight regressions (e.g. compiling Docs regresses 144 bytes).\n\nvmarko@ do you have an opinion on adding more DCE passes?",
+      "parentUuid": "2b6abad4_7363421c",
       "range": {
         "startLine": 679,
         "startChar": 0,
