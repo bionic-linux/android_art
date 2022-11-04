@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0685be37_874da9b4",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-04T22:31:41Z",
+      "side": 1,
+      "message": "Needs to go outside the \"if\", right?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "4315d3cbc87822fa3029e9e1b9d128877a06e8f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
