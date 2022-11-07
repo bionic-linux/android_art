@@ -22,6 +22,30 @@
       },
       "revId": "a3749b26754136e3607fa0ba614cd941ca296b0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f7489d_9dcd4856",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2022-11-07T09:36:36Z",
+      "side": 0,
+      "message": "We still use instrumentation for nterp. So we may see 0 if there are no nterp frames and non-zero when there are nterp frames. I will add a DCHECK that the stack-\u003esize() should always be 0 once I stop using nterp in debuggable runtimes. Earlier, we used to iterate stack only when there are some frames in instrumentation stack. Now, we need to do even otherwise to set the Deoptimize bit for JITed frames.",
+      "parentUuid": "f31a038c_ba472058",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 746,
+        "endChar": 26
+      },
+      "revId": "a3749b26754136e3607fa0ba614cd941ca296b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
