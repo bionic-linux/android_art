@@ -248,6 +248,30 @@
       },
       "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd825e9_99edbc4c",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-07T17:30:59Z",
+      "side": 1,
+      "message": "Vladimír, did you want this split now (either in this patch or another) or is this something to be done in future as it would be a reasonably substantial change?",
+      "parentUuid": "ac670d09_94ad1c32",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
