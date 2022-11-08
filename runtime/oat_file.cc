@@ -609,7 +609,9 @@ bool OatFileBase::Setup(int zip_fd,
   }
 
   DCHECK_GE(static_cast<size_t>(pointer_size), alignof(GcRoot<mirror::Object>));
-  if (!IsAligned<kPageSize>(bss_begin_) ||
+  // There is no good way to make sure the library opened with dlopen on x86 is
+  // aligned to 16k. So we check the difference between begin_ and bss_begin_.
+  if ((bss_begin_ != nullptr && !IsAligned<kPageSize>(bss_begin_ - begin_)) ||
       !IsAlignedParam(bss_methods_, static_cast<size_t>(pointer_size)) ||
       !IsAlignedParam(bss_roots_, static_cast<size_t>(pointer_size)) ||
       !IsAligned<alignof(GcRoot<mirror::Object>)>(bss_end_)) {
