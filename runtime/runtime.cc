@@ -1423,7 +1423,6 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   using Opt = RuntimeArgumentMap;
   Opt runtime_options(std::move(runtime_options_in));
   ScopedTrace trace(__FUNCTION__);
-  CHECK_EQ(static_cast<size_t>(sysconf(_SC_PAGE_SIZE)), kPageSize);
 
   // Reload all the flags value (from system properties and device configs).
   ReloadAllFlags(__FUNCTION__);
