@@ -296,6 +296,30 @@
       },
       "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa2e19b_e86953a4",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-08T17:45:08Z",
+      "side": 1,
+      "message": "Done. From our testing it seems when `dead_code_elimination$after_cha_guard_optimization` is conditional on LSE, identical code size decreases are maintained while decreasing the compile time slightly. Hence I have made the pass conditional on LSE.",
+      "parentUuid": "45393fd2_9313473c",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "df1358105e229cbb5206e34ae7632e132c64737b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
