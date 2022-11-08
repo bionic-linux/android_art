@@ -103,8 +103,8 @@ func globalFlags(ctx android.LoadHookContext) ([]string, []string) {
 			"-DART_STACK_OVERFLOW_GAP_arm=16384",
 			"-DART_STACK_OVERFLOW_GAP_arm64=16384",
 			"-DART_STACK_OVERFLOW_GAP_riscv64=8192",
-			"-DART_STACK_OVERFLOW_GAP_x86=8192",
-			"-DART_STACK_OVERFLOW_GAP_x86_64=8192")
+			"-DART_STACK_OVERFLOW_GAP_x86=16384",
+			"-DART_STACK_OVERFLOW_GAP_x86_64=16384")
 	}
 
 	if ctx.Config().IsEnvTrue("ART_ENABLE_ADDRESS_SANITIZER") {
