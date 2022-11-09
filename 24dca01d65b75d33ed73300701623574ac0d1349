@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91b60ef_16895b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-09T11:34:09Z",
+      "side": 1,
+      "message": "LGTM, but why do the builds complain about `set -o pipefail`? It is documented in the bash manual: https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#The-Set-Builtin, can it be that the shell is not bash?",
+      "revId": "24dca01d65b75d33ed73300701623574ac0d1349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
