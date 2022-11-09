@@ -16,6 +16,23 @@
       "message": "Thanks Mythri.",
       "revId": "c7789e445424bbb69755963e775c9635c7245ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f75a0d_7dde0bfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-09T09:39:33Z",
+      "side": 1,
+      "message": "Vladimir, friendly ping.",
+      "revId": "c7789e445424bbb69755963e775c9635c7245ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
