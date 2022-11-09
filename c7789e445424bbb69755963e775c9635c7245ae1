@@ -33,6 +33,46 @@
       "message": "Vladimir, friendly ping.",
       "revId": "c7789e445424bbb69755963e775c9635c7245ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9831ef_518d7e73",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2911,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-09T11:11:30Z",
+      "side": 1,
+      "message": "Not filtering CNFE and NCDFE is a change in behavior.\n\nBut can `DefineClass` actually throw one of those errors if we found a matching `ClassPathEntry`?",
+      "revId": "c7789e445424bbb69755963e775c9635c7245ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2e49dd_004bf924",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5973,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-09T11:11:30Z",
+      "side": 1,
+      "message": "We should remove the `soa` argument from `IsBootClassLoader` and use `WellKnownClasses::ToClass` instead of `soa.Decode\u003c.\u003e(.)`.\n\nI\u0027ll prepare a cleanup CL.",
+      "range": {
+        "startLine": 5973,
+        "startChar": 4,
+        "endLine": 5973,
+        "endChar": 31
+      },
+      "revId": "c7789e445424bbb69755963e775c9635c7245ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
