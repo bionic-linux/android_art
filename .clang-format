@@ -32,7 +32,7 @@ AlignOperands: false
 AllowShortFunctionsOnASingleLine: Inline
 AlwaysBreakBeforeMultilineStrings: false
 ColumnLimit: 100
-CommentPragmas: NOLINT:.*
+CommentPragmas: (NOLINT|CHECK[^ ]*):.*
 ConstructorInitializerIndentWidth: 6
 ContinuationIndentWidth: 8
 IndentWidth: 4
