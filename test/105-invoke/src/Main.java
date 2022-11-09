@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+// clang-format off
+
 class Main implements InvokeInterface {
 
     int virI_I(int a) {
