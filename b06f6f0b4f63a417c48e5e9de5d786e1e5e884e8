@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef3a914_3c664b83",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-11T15:42:35Z",
+      "side": 1,
+      "message": "Yes, clang-format itself doesn\u0027t know about diffs, it\u0027s `git clang-format` that does. To try it out create a commit with some change and do `git clang-format HEAD^`.",
+      "parentUuid": "c7b94df0_fadec769",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
