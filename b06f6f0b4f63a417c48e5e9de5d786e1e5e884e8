@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "70439a54_ed41bdf2",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-11T15:49:46Z",
+      "side": 1,
+      "message": "I patched your CL, modified `art/test/2230-profile-save-hotness/src-art/Main.java`, created a new commit on top of that and ran `git clang-format HEAD^`.\n\nDepending on what I add/modify in that file, the file gets formatted with 2 spaces or 4. For example, modifying a long line gave me a 4 space line, but adding a new line only got 2 spaces. Not sure how it decided which one to use.\n\nDepending on how many tests we would need to reformat I\u0027d rather do that in one go to avoid spacing inconsistencies within files in the future.",
+      "parentUuid": "fef3a914_3c664b83",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
