@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a98de9_6adede48",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-11T15:14:19Z",
+      "side": 1,
+      "message": "Yes, I noticed that too. At first I was going for a separate .clang-format in test/ to adapt better to the style there, but then I noticed there\u0027s a mix of 2 and 4 indents so I gave up on that.\n\nclang-format should only fix the lines that change, so I think it\u0027ll effectively adapt to the 2 space indent for small changes. For larger changes I suppose it\u0027d start producing a mix of 2 and 4 spaces.\n\nBut I don\u0027t know very well how it behaves in those situations. WDYT about giving this a go and see what it does? In the worst case we\u0027ll have to figure out a way to exclude the tests directory (path exclusions aren\u0027t as simple as I thought, but it\u0027s always possible to resort to some wrapper shell script).\n\nOr else just take the plunge and reformat the 2 space indent files to comply.",
+      "parentUuid": "011ca4f4_749ab522",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
