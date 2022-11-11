@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b94df0_fadec769",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-11T15:31:45Z",
+      "side": 1,
+      "message": "I ran `clang-format -i art/test/2230-profile-save-hotness/src-art/Main.java` without any change to the test itself and it formatted the whole file. Maybe the repo hook is smart enough to know the file hasn\u0027t changed. Otherwise, we are not going to be able to submit anything before all tests have been properly formatted.\n\nMy concern about reformatting everything is that the CL would be huge and it could be easy to miss an unwanted misformat.\n\n@vmarko@google.com any thoughts on making a reformat of our .java files in art/test to comply with clang-format?",
+      "parentUuid": "e6a98de9_6adede48",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
