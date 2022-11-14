@@ -88,6 +88,24 @@
       "parentUuid": "ce10c229_7b8e2db7",
       "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6822f2f9_0fa42d40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-14T19:23:30Z",
+      "side": 1,
+      "message": "Actually, it\u0027s not used for Java at all: http://cs/android-internal/frameworks/base/PREUPLOAD.cfg;l\u003d7;rcl\u003d2d02a8b85a70468841d23783ed5a56167cbf0f51 It looks like the .clang-format file is there just for convenience when it comes to Java, not compliance, just like in art/ right now.\n\nI\u0027ll have a look if google-java-format has git CLI integration.",
+      "parentUuid": "e2b3688d_407efa2f",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
