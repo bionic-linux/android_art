@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb10d4c_e0e36b92",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-14T12:42:46Z",
+      "side": 1,
+      "message": "Find tests to process from a given shard with something like\n\n    git grep -E \u0027^  public static void main\\(String\\[\\]\u0027 -- \\\n       test/*42-*/src/Main.java | sed \u0027-es/\\/src\\/Main.java:.*//\u0027\n\nThen process indentation in their java files with\n   \n    sed -E \u0027-es/^((  )+)/\\1\\1/\u0027 --in-place \u003cfilename\u003e\n\nSomething like\n\n    for t in `\u003cfind-tests\u003e`; do find $t/ -name *.java | xargs \u003cindent\u003e; done\n\nwith the above commands inserted should take care of indentation changes.\n\n(Though this shall not work well for tests that have java files with mixed indentation.)\n\nWhen you create a commit, check for long lines with\n\n    git log -n1 -p | grep -E \u0027^\\+.{101}\u0027",
+      "parentUuid": "d95c3c29_71d63b85",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
