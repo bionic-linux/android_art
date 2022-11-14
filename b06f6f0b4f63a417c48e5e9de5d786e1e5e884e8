@@ -264,6 +264,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fec1e7_a5daf7c1",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-14T15:40:28Z",
+      "side": 1,
+      "message": "That won\u0027t deal with statement continuations correctly, e.g.\n\n```\n      System.out.println(clazz + \".\" + method_name +\n          \" doesn\u0027t have single implementation value of \" + b);\n```\n\nwill get the 2nd line indented differently compared to the previous one depending on the indentation of the whole statement. However, since Java afaik doesn\u0027t use the C++ style of aligning arguments etc with the opening parenthesis (which can easily create very deep indentation), it probably doesn\u0027t get too ugly. It\u0027d still be inconsistent though, so later clang-format runs may reformat them to some extent.\n\nThere\u0027s also the risk with multiline string literals, but given that they are fairly recent (JDK 13) it may be safe to assume no test files use them.\n\nPersonally I\u0027m fine with your approach, but I don\u0027t regard myself as the main audience of these files.\n\nI\u0027d prefer significantly less shards though, or even just one huge CL - I\u0027d only check with ignore indent diffing and rubber stamp (if it\u0027s too large for Gerrit I\u0027d download and diff locally). I don\u0027t see the point with going through the change more than that, but maybe I\u0027m missing something.",
+      "parentUuid": "7be30bde_4d237659",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
