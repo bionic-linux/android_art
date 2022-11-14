@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fca10a9_58092ec9",
+        "filename": "test/530-checker-lse/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-14T14:01:27Z",
+      "side": 1,
+      "message": "only ARM64 gets this benefit?",
+      "range": {
+        "startLine": 1846,
+        "startChar": 18,
+        "endLine": 1846,
+        "endChar": 23
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83585e3f_88ad9866",
+        "filename": "test/530-checker-lse/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-14T14:01:27Z",
+      "side": 1,
+      "message": "Is this comment still true? Or are we blocking it because of the `prevent_loop_opt`?",
+      "range": {
+        "startLine": 1935,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 73
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
