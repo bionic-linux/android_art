@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfbfb615_c125e837",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-14T09:24:47Z",
+      "side": 1,
+      "message": "Oh wow, that change is huge too (+139198, -138189). Not sure if it is worth it. A possible alternative could be to create different CLs sharded by the last two digits so that reviewing the changes is humanly doable. If enough folks in the team want to review it maybe we can spread it over some days. For example: 5 people, 20 shards each, a bot generates a CL every working day and we take ~1 months to format everything. Again, not sure it\u0027s worth it for the formatting consistency.\n\nI think we might be okay with landing the clang-format change and we can tackle art/test when we modify those files or create new ones.",
+      "parentUuid": "bc23d829_301969c9",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
