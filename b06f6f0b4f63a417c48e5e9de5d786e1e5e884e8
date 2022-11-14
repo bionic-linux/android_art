@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1992f7f5_7eee9044",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-14T09:57:03Z",
+      "side": 1,
+      "message": "Please shard the changes. I\u0027ll review with \"Ignore leading and trailing whitespace\".\n\nWhy does it remove line breaks?\n\nhttps://android-review.git.corp.google.com/c/platform/art/+/2300758/1/test/162-method-resolution/src/Test2Base.java\n\nI think the reformatting should not take `AllowShortFunctionsOnASingleLine: Inline` as a license to reformat otherwise well-formatted code. (It\u0027s \"Allow\", not \"Force\".)",
+      "parentUuid": "dfbfb615_c125e837",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
