@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb8a8dc_bbd5cd44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-11-14T16:28:47Z",
+      "side": 1,
+      "message": "Do we use clang-format for Java anywhere else? \n\nAFAIK, `google-java-format` is the standard java formatting tool, ie it\u0027s referenced in other `PREUPLOAD.cfg` files.",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
