@@ -16,6 +16,52 @@
       "message": "Thanks Vladimir, PTAL.",
       "revId": "19b07e290746f9a60537d1adbce23ddf6da13b40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3eed14c_a2a558a6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2985,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-14T09:41:07Z",
+      "side": 1,
+      "message": "Misplaced comment? There is already a comment at line 3147.",
+      "range": {
+        "startLine": 2984,
+        "startChar": 4,
+        "endLine": 2985,
+        "endChar": 39
+      },
+      "revId": "19b07e290746f9a60537d1adbce23ddf6da13b40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b8351d_89ceb1d1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-14T09:41:07Z",
+      "side": 1,
+      "message": "After re-instating the filtering in `FindClassInBootClassLoaderClassPath()`, this is always true. Just `DCHECK()` and return null.",
+      "range": {
+        "startLine": 2992,
+        "startChar": 4,
+        "endLine": 2992,
+        "endChar": 70
+      },
+      "revId": "19b07e290746f9a60537d1adbce23ddf6da13b40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
