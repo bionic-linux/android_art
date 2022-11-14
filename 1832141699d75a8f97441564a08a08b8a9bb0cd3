@@ -70,6 +70,24 @@
       "parentUuid": "f7a2d9d4_8245c539",
       "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b3688d_407efa2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-14T19:18:49Z",
+      "side": 1,
+      "message": "For me it\u0027s important to have a CLI that formats the diff only, not just editor integration.\n\n\u003e Hey, I\u0027d forgotten that we\u0027d lifted this config from frameworks/base. This has to be fine.\n\nFWIW I\u0027ve been using clang-format for a while in the frameworks code base, and with the exception of import ordering (cf. http://ag/20418625), I\u0027ve encountered no problems with it.\n\nBut TBH, it\u0027s not used for most of the Java code there, because they restrict it to a bunch of paths: http://cs/android-internal/frameworks/base/PREUPLOAD.cfg;l\u003d8-18;rcl\u003d2d02a8b85a70468841d23783ed5a56167cbf0f51 (mostly tests/ and tools/ have java files)",
+      "parentUuid": "ce10c229_7b8e2db7",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
