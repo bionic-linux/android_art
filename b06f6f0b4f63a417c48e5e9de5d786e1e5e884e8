@@ -312,6 +312,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce3e866_284eddd4",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-14T16:04:28Z",
+      "side": 1,
+      "message": "It seems that the indentation in the merged CL agrees with https://android-review.git.corp.google.com/c/platform/art/+/2300758/1/test/1916-get-set-current-frame/src/art/Test1916.java (but the multi-line `if` has line breaks at different positions).",
+      "parentUuid": "fc8e892c_ac229b79",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
