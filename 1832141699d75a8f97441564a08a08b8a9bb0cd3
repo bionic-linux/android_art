@@ -52,6 +52,24 @@
       "parentUuid": "0880c45d_8d14d37b",
       "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce10c229_7b8e2db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2022-11-14T17:03:33Z",
+      "side": 1,
+      "message": "Hey, I\u0027d forgotten that we\u0027d lifted this config from frameworks/base. This has to be fine.\n\nAssorted editors have support for g-j-f and clang-format, just checking before this flew by. Thanks.",
+      "parentUuid": "f7a2d9d4_8245c539",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
