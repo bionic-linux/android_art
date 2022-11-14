@@ -34,6 +34,24 @@
       "parentUuid": "bcb8a8dc_bbd5cd44",
       "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7a2d9d4_8245c539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-14T16:48:24Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of `google-java-format`. Maybe we should use that instead? I checked go/google-java-format, but it doesn\u0027t say what its benefits are over `clang-format`.\n\nDoes it have a command corresponding to `git clang-format`? The site only mentions `g4 fix` and `hg fix`, not git.\n\nThere are a few places where clang-format is used for java, but they\u0027re a minority: http://source/search?q\u003dclang_format%20f:PREUPLOAD.cfg%20%5C--extensions.*java\u0026sq\u003dpackage:%5Eandroid-internal$",
+      "parentUuid": "0880c45d_8d14d37b",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
