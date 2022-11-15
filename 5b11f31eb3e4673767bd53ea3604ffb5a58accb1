@@ -22,6 +22,30 @@
       },
       "revId": "5b11f31eb3e4673767bd53ea3604ffb5a58accb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f214880c_b8401b7e",
+        "filename": "test/run-test",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-11-15T16:25:18Z",
+      "side": 1,
+      "message": "So that if we run it explicitly (at the end; on pass), it no longer runs on program exit.",
+      "parentUuid": "cdded52b_d9be4469",
+      "range": {
+        "startLine": 942,
+        "startChar": 4,
+        "endLine": 942,
+        "endChar": 31
+      },
+      "revId": "5b11f31eb3e4673767bd53ea3604ffb5a58accb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
