@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7038e4eb_e4c12a06",
+        "filename": "test/530-checker-lse/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-15T15:32:26Z",
+      "side": 1,
+      "message": "The patch applies extra DCE passes to all architectures however in this specific case, some vectorization is applied in `loop_optimization` only on `ARM64` and not in `ARM` which leads to LSE only being able to optimize this case on `ARM64`.",
+      "parentUuid": "5fca10a9_58092ec9",
+      "range": {
+        "startLine": 1846,
+        "startChar": 18,
+        "endLine": 1846,
+        "endChar": 23
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83585e3f_88ad9866",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-14T14:01:27Z",
       "side": 1,
       "message": "Is this comment still true? Or are we blocking it because of the `prevent_loop_opt`?",
+      "range": {
+        "startLine": 1935,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 73
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0387286_91fd7522",
+        "filename": "test/530-checker-lse/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1952265
+      },
+      "writtenOn": "2022-11-15T15:32:26Z",
+      "side": 1,
+      "message": "Yes I believe this comment is still true. `prevent_loop_opt` is used to prevent the loop from being optimized away during `loop_optimization`. As this test is testing LSE and not `loop_optimization` we want to ignore what happened in earlier stages and ensure that if the array is accessed with a non-constant index it will not be able to remove the array allocation.\n\nThe change is needed to maintain testing coverage as `testAllocationEliminationOfArray2` previously tested this however the loop is now able to be optimized away by `dead_code_elimination$after_bce` which allows LSE to remove the array allocation.\n\nThere could be an argument that only this test, for LSE, is now needed and `testAllocationEliminationOfArray2` could now be removed (as it is partially dependant on `loop_optimization`) however we decided to keep both tests to be more cautious and further expand test coverage instead.",
+      "parentUuid": "83585e3f_88ad9866",
       "range": {
         "startLine": 1935,
         "startChar": 0,
