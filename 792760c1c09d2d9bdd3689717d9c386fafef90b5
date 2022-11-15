@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9505f67f_317b2069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-15T16:41:03Z",
+      "side": 1,
+      "message": "CL looks good to me overall. Some comments",
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e761fa9_c0f96082",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-15T16:41:03Z",
+      "side": 1,
+      "message": "nit: if this is dependent on LSE, we might be able to run this right after LSE and rename it `dead_code_elimination$after_lse`.",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 52
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fca10a9_58092ec9",
@@ -38,6 +78,30 @@
       "side": 1,
       "message": "The patch applies extra DCE passes to all architectures however in this specific case, some vectorization is applied in `loop_optimization` only on `ARM64` and not in `ARM` which leads to LSE only being able to optimize this case on `ARM64`.",
       "parentUuid": "5fca10a9_58092ec9",
+      "range": {
+        "startLine": 1846,
+        "startChar": 18,
+        "endLine": 1846,
+        "endChar": 23
+      },
+      "revId": "792760c1c09d2d9bdd3689717d9c386fafef90b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a22785_41a98e4e",
+        "filename": "test/530-checker-lse/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-15T16:41:03Z",
+      "side": 1,
+      "message": "Test is passing locally on host for me (both 32 and 64 bits). WDYT about:\n```\n  /// CHECK-START-{ARM64,X86,X86_64}: int Main.testAllocationEliminationOfArray2() load_store_elimination (before)\n  /// CHECK: NewArray\n  /// CHECK: ArraySet\n  /// CHECK: ArraySet\n  /// CHECK: ArrayGet\n\n  /// CHECK-START-{ARM64,X86,X86_64}: int Main.testAllocationEliminationOfArray2() load_store_elimination (after)\n  /// CHECK-NOT: NewArray\n  /// CHECK-NOT: ArraySet\n  /// CHECK-NOT: ArraySet\n  /// CHECK-NOT: ArrayGet\n\n  // The loop optimization doesn\u0027t happen in ARM which leads to LSE not being able to optimize this\n  // case.\n  /// CHECK-START-ARM: int Main.testAllocationEliminationOfArray2() load_store_elimination (before)\n  /// CHECK: NewArray\n  /// CHECK: ArraySet\n  /// CHECK: ArraySet\n  /// CHECK: ArrayGet\n```\n? Unless there\u0027s a good reason to avoid the other architectures, I\u0027d keep them.",
+      "parentUuid": "7038e4eb_e4c12a06",
       "range": {
         "startLine": 1846,
         "startChar": 18,
