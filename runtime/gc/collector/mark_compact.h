@@ -460,6 +460,12 @@ class MarkCompact : public GarbageCollector {
   // feature.
   bool CanCompactMovingSpaceWithMinorFault();
 
+  template <int kMode>
+  void FreeFromSpacePages(size_t cur_page_idx,
+                          size_t* last_checked_page_idx,
+                          uint8_t** last_freed_pag)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // In copy-mode of userfaultfd, we don't need to reach a 'processed' state as
   // it's given that processing thread also copies the page, thereby mapping it.
   // The order is important as we may treat them as integers.
@@ -468,7 +474,8 @@ class MarkCompact : public GarbageCollector {
     kProcessing = 1,            // Being processed by GC thread and will not be mapped
     kProcessed = 2,             // Processed but not mapped
     kProcessingAndMapping = 3,  // Being processed by GC or mutator and will be mapped
-    kProcessedAndMapping = 4    // Processed and will be mapped mapped
+    kMutatorProcessing = 4,     // Being processed by mutator thread
+    kProcessedAndMapping = 5    // Processed and will be mapped
   };
 
   // Maps processed pages (from moving space and linear-alloc) for uffd's
