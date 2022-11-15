@@ -104,9 +104,78 @@ cc_library_headers {
     ],
 }
 
+// cpp-define-generator-asm-support depends on libart_headers through "asm_defines.s"
+// This is a separate header lib to avoid circular dependency
+cc_library_headers {
+    name: "libart_generated_headers",
+    defaults: ["art_defaults"],
+    host_supported: true,
+
+    // asm_support_gen.h (used by asm_support.h) is generated with cpp-define-generator
+    generated_headers: ["cpp-define-generator-asm-support"],
+    // export our headers so the libart(d)-gtest targets can use it as well.
+    export_generated_headers: ["cpp-define-generator-asm-support"],
+
+    apex_available: [
+        "com.android.art",
+        "com.android.art.debug",
+    ],
+}
+
+// Collect all required dependencies for build targets that static link `libart`
+// Workaround for lack of static_libs transitive dependencies propagation (b/169779783)
+libart_cc_defaults {
+    name: "libart_dependencies",
+    target: {
+        android: {
+            header_libs: [
+                "libnativeloader-headers", // For dlext_namespaces.h
+            ],
+            shared_libs: [
+                "libdl_android",
+                "libstatssocket",
+                "libz", // For adler32.
+                "heapprofd_client_api",
+            ],
+            static_libs: [
+                "libstatslog_art",
+            ],
+        },
+        host: {
+            shared_libs: [
+                "libz", // For adler32.
+            ],
+        },
+    },
+    header_libs: [
+        "art_cmdlineparser_headers",
+        "cpp-define-generator-definitions",
+        "dlmalloc",
+        "jni_platform_headers",
+        "libart_generated_headers",
+        "libart_headers",
+        "libnativehelper_header_only",
+    ],
+    shared_libs: [
+        "libartpalette",
+        "libbase", // For common macros.
+        "liblog",
+        "liblz4",
+        "liblzma", // libelffile(d) dependency; must be repeated here since it's a static lib.
+        "libnativebridge",
+        "libnativeloader",
+        "libsigchain",
+        "libunwindstack",
+    ],
+    static_libs: ["libodrstatslog"],
+}
+
 libart_cc_defaults {
     name: "libart_defaults",
-    defaults: ["art_defaults"],
+    defaults: [
+        "art_defaults",
+        "libart_dependencies",
+    ],
     host_supported: true,
     srcs: [
         "app_info.cc",
@@ -413,18 +482,6 @@ libart_cc_defaults {
                 "thread_android.cc",
                 "metrics/statsd.cc",
             ],
-            header_libs: [
-                "libnativeloader-headers", // For dlext_namespaces.h
-            ],
-            shared_libs: [
-                "libdl_android",
-                "libstatssocket",
-                "libz", // For adler32.
-                "heapprofd_client_api",
-            ],
-            static_libs: [
-                "libstatslog_art",
-            ],
             generated_sources: [
                 "apex-info-list-tinyxml",
             ],
@@ -451,47 +508,21 @@ libart_cc_defaults {
                 "-fsanitize-address-use-after-return=never",
                 "-Wno-unused-command-line-argument",
             ],
-            shared_libs: [
-                "libz", // For adler32.
-            ],
         },
     },
 
     generated_sources: [
         "art_operator_srcs",
     ],
-    // asm_support_gen.h (used by asm_support.h) is generated with cpp-define-generator
-    generated_headers: ["cpp-define-generator-asm-support"],
-    // export our headers so the libart(d)-gtest targets can use it as well.
-    export_generated_headers: ["cpp-define-generator-asm-support"],
 
-    header_libs: [
-        "art_cmdlineparser_headers",
-        "cpp-define-generator-definitions",
-        "dlmalloc",
-        "jni_platform_headers",
-        "libart_headers",
-        "libnativehelper_header_only",
-    ],
     export_header_lib_headers: [
         "dlmalloc",
         "libart_headers",
+        "libart_generated_headers",
     ],
     whole_static_libs: [
         "libcpu_features",
     ],
-    shared_libs: [
-        "libartpalette",
-        "libbase", // For common macros.
-        "liblog",
-        "liblz4",
-        "liblzma", // libelffile(d) dependency; must be repeated here since it's a static lib.
-        "libnativebridge",
-        "libnativeloader",
-        "libsigchain",
-        "libunwindstack",
-    ],
-    static_libs: ["libodrstatslog"],
 
     runtime_libs: [
         // Libraries loaded at runtime. Exceptions:
