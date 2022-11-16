@@ -29,7 +29,7 @@ enum Whence {
   kSeekCurrent = SEEK_CUR,
   kSeekEnd = SEEK_END,
 };
-std::ostream& operator<<(std::ostream& os, const Whence& rhs);
+EXPORT std::ostream& operator<<(std::ostream& os, const Whence& rhs);
 
 class OutputStream {
  public:
