@@ -22,6 +22,30 @@
       },
       "revId": "0de9c1aa82822242985204dd8ca072bf9f797c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ded570a_f0078e82",
+        "filename": "libelffile/stream/output_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-16T15:22:26Z",
+      "side": 1,
+      "message": "Removed. (This was a mistake I made by going over symbols in `libart-compiler.map`.)",
+      "parentUuid": "40a5c4f4_45828afd",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "0de9c1aa82822242985204dd8ca072bf9f797c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
