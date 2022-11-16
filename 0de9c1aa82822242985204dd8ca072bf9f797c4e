@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a5c4f4_45828afd",
+        "filename": "libelffile/stream/output_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2022-11-16T15:13:51Z",
+      "side": 1,
+      "message": "Is it required? This file doesn\u0027t have `namespace art HIDDEN`",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "0de9c1aa82822242985204dd8ca072bf9f797c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
