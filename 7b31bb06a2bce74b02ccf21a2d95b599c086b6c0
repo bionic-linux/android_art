@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2ac0d9d_ad00ab25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-16T16:58:57Z",
+      "side": 1,
+      "message": "FYI the failure looks to be an open bug",
+      "revId": "7b31bb06a2bce74b02ccf21a2d95b599c086b6c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b7b2823_a7ff0636",
         "filename": "test/530-checker-lse/src/Main.java",
         "patchSetId": 3
