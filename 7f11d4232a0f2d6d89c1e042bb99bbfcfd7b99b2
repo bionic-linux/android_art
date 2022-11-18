@@ -16,6 +16,24 @@
       "message": "Yes, the reverted change is the culprit.",
       "revId": "7f11d4232a0f2d6d89c1e042bb99bbfcfd7b99b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13d7561_f6f5f1d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238610
+      },
+      "writtenOn": "2022-11-18T22:24:22Z",
+      "side": 1,
+      "message": "Thanks for confirming!",
+      "parentUuid": "03426168_f7346cca",
+      "revId": "7f11d4232a0f2d6d89c1e042bb99bbfcfd7b99b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
