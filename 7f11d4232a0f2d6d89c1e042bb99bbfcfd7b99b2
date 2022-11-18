@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03426168_f7346cca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-18T22:21:25Z",
+      "side": 1,
+      "message": "Yes, the reverted change is the culprit.",
+      "revId": "7f11d4232a0f2d6d89c1e042bb99bbfcfd7b99b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
