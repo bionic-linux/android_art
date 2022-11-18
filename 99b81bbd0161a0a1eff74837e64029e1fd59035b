@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "027d9033_3ba3565b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-11-18T12:35:18Z",
+      "side": 1,
+      "message": "Thanks Martin and Jiakai.",
+      "revId": "99b81bbd0161a0a1eff74837e64029e1fd59035b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
