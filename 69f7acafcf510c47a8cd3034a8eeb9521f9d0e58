@@ -22,6 +22,30 @@
       },
       "revId": "69f7acafcf510c47a8cd3034a8eeb9521f9d0e58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33769459_81e2b701",
+        "filename": "test/default_run.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-11-21T18:10:59Z",
+      "side": 0,
+      "message": "Is there a legitimate build setup what we want to support?\n\nI mean, for local changes, you can always set the value to \"\" in the script.\n\nI would be tempted to say that under normal circumstances missing signal_dumper binary should be a test failure as otherwise timeouts wouldn\u0027t work.",
+      "parentUuid": "4c1414ad_c7fe82bf",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 47
+      },
+      "revId": "69f7acafcf510c47a8cd3034a8eeb9521f9d0e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
