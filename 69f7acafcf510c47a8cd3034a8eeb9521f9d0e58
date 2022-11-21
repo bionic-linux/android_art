@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1414ad_c7fe82bf",
+        "filename": "test/default_run.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-21T16:56:46Z",
+      "side": 0,
+      "message": "What if signal_dumper is neither in the apex, not in system? I have a local setup where I run the tests without it (because of some build issues), but isn\u0027t it a legitimate setup in general?",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 47
+      },
+      "revId": "69f7acafcf510c47a8cd3034a8eeb9521f9d0e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
