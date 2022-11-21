@@ -22,6 +22,30 @@
       },
       "revId": "354272d7eadeb9c393312a7eba9fec55afa468b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb943180_d15850c4",
+        "filename": "test/105-invoke/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-21T18:14:38Z",
+      "side": 1,
+      "message": "It\u0027ll cause many but not all of the methods before to be reformatted as single lines (when there are changes), but sure that works too.",
+      "parentUuid": "2de7a69d_fa3cea4d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "354272d7eadeb9c393312a7eba9fec55afa468b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
