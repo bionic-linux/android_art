@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de7a69d_fa3cea4d",
+        "filename": "test/105-invoke/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-11-21T14:20:42Z",
+      "side": 1,
+      "message": "Is this necessary? Isn\u0027t a small exclusion in `Main.invoke()` enough?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "354272d7eadeb9c393312a7eba9fec55afa468b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
