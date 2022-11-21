@@ -124,6 +124,24 @@
       "tag": "mailMessageId\u003d\u003cCAAttue2-k60MmVnz4kQWWHien37jD6Zb35kzfaN7Smom922uZQ@mail.gmail.com\u003e",
       "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f64481a_a32763a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-21T14:05:14Z",
+      "side": 1,
+      "message": "I tried out `google-java-format` a bit, but I don\u0027t think it\u0027ll work for our use cases:\n\n- There\u0027s no way to instruct it to leave `/// CHECK` comments alone.\n\n- It doesn\u0027t support directives to turn off formatting in a code section. That\u0027s useful in (at least) some test files with strange code structure, such as test/088-monitor-verification/src/Main.java. This is a [conscious decision](http://go/google-java-format/faq#disable-comment) so it may be hard to convince them to add this feature.\n\n- The command to fix up a CL is much clunkier than `git -C art clang-format`:\n\n  `cd art \u0026\u0026 ${ANDROID_BUILD_TOP}/tools/repohooks/tools/google-java-format.py --fix --sort-imports --google-java-format-diff ${ANDROID_BUILD_TOP}/external/google-java-format/scripts/google-java-format-diff.py`\n\nHence I\u0027d like to stick with `clang-format` for Java files. PTAL.",
+      "parentUuid": "6822f2f9_0fa42d40",
+      "revId": "1832141699d75a8f97441564a08a08b8a9bb0cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

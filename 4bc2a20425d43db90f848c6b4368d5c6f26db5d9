@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47db188_f6ae79d7",
+        "filename": ".clang-format",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-21T14:05:14Z",
+      "side": 1,
+      "message": "Re feedback from Vladimir, I checked where line breaks should go wrt binary operators and verified that clang-format adheres to Google style for both C++ (operators before EOL: go/cstyle#Boolean_Expressions) and Java (operators start next line: http://go/java-style#s4.5.1-line-wrapping-where-to-break).",
+      "range": {
+        "startLine": 2,
+        "startChar": 14,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "4bc2a20425d43db90f848c6b4368d5c6f26db5d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

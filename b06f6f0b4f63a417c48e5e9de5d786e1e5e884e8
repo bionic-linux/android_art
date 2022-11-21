@@ -360,6 +360,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d64a5a3_9fb379c3",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-21T14:05:14Z",
+      "side": 1,
+      "message": "I\u0027ve excluded the tests directory for now.\n\nI noticed two other directories in tools/ with 2 space indent, so I created another style for that and symlinked it to local .clang-format\u0027s for them.\n\nWe could do a similar thing for run tests. It\u0027d be quite a few symlinks, but easy enough to add with a script. WDYT? If that\u0027s ok I can fix it that way in a follow-up CL.",
+      "parentUuid": "b025e1ac_4b3f80cd",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
