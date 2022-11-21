@@ -48,6 +48,7 @@ class RunTestContext:
 
   def __init__(self, tmp_dir: Path) -> None:
     self.env = Environment()
+    self.is_first_pass = True  # Some tests run several times.
 
     # Note: The expected path can be modified by the tests.
     self.expected_stdout = tmp_dir / "expected-stdout.txt"
