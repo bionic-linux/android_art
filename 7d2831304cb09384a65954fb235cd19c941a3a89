@@ -16,6 +16,24 @@
       "message": "Kousik: Are you ok with running `smali` (java assembler) on RBE?  It applies to about 20% of ART tests, so fraction of the `javac` and `d8` workload from this build target.\n\nI assume this should be ok, but want to let know just in case.",
       "revId": "7d2831304cb09384a65954fb235cd19c941a3a89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769791da_bb694520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-11-22T03:10:57Z",
+      "side": 1,
+      "message": "Yep, small number of actions that also don\u0027t take up a significant amount of time on remote-exec shouldn\u0027t be a concern.",
+      "parentUuid": "9b2cb460_9c6fd318",
+      "revId": "7d2831304cb09384a65954fb235cd19c941a3a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
