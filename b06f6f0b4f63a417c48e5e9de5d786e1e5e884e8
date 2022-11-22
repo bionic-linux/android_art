@@ -408,6 +408,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df825c6_892ecf57",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-11-22T17:12:19Z",
+      "side": 1,
+      "message": "Sorry I missed this.\n\n\u003e I\u0027ve excluded the tests directory for now.\n\nThen can we remove the clang-format off in the test files in this CL?\n\n\u003e We could do a similar thing for run tests. It\u0027d be quite a few symlinks, but easy enough to add with a script. WDYT? If that\u0027s ok I can fix it that way in a follow-up CL.\n\nWe can leave that as a follow-up CL. I think that we should have consistent spacing in tests (2, 4, whatever but consistent) so I am not too sure that having two formatters for our tests make sense. I don\u0027t want the tests to block the formatter for the rest of the code so I think we can land this CL.",
+      "parentUuid": "c13f0c4e_a691f9a3",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
