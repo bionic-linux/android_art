@@ -16,6 +16,115 @@
       "message": "please help envaluate，thanks",
       "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab11052_ab89309c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-22T21:42:09Z",
+      "side": 1,
+      "message": "If I understand correctly, this is pre-merging large objects before \"Free\"ing them, which will again merge? This is presumably driven by the MADV_DONTNEED calls in FreeListSpace::Free?\n\nHow much time do we spend in SweepLargeObjects? I\u0027d like to be convinced that (a) this is worth the additional code, and (b) there\u0027s no better alternative. This seems a bit inelegant in two ways: We coalesce in two places. And this has no effect on Free() calls from elsewhere.\n\nI wonder whether having LargeObjectSpace::FreeList handle and coalesce the madvise calls, and having all LOS deallocations use that path, might be better than colaescing objects in two places.",
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece933ba_47adfc74",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-22T21:42:09Z",
+      "side": 1,
+      "message": "I don\u0027t understand the impact of the deletion here. Why is this safe? How does it relate to the rest of the change?",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 56
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d609d1c1_df3561e3",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-22T21:42:09Z",
+      "side": 1,
+      "message": "Should presumably be std::less(a, b).",
+      "range": {
+        "startLine": 355,
+        "startChar": 9,
+        "endLine": 355,
+        "endChar": 72
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0300b3af_3ff92b9d",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-22T21:42:09Z",
+      "side": 1,
+      "message": "How/where is this called?",
+      "range": {
+        "startLine": 425,
+        "startChar": 7,
+        "endLine": 425,
+        "endChar": 31
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf19758_67b2446e",
+        "filename": "runtime/gc/space/large_object_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-22T21:42:09Z",
+      "side": 1,
+      "message": "We now seem to greatly prefer these to be in address order? That should be dcumented someplace.",
+      "range": {
+        "startLine": 197,
+        "startChar": 49,
+        "endLine": 197,
+        "endChar": 70
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
