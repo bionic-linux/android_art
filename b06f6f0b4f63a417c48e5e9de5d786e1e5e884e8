@@ -432,6 +432,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26183c1_4d156395",
+        "filename": ".clang-format",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-11-22T18:05:25Z",
+      "side": 1,
+      "message": "\u003e Then can we remove the clang-format off in the test files in this CL?\n\nI opted to leave them in since they\u0027re still useful if anyone would want to run clang-format in some way on those files - the excludes aren\u0027t dependent on the clang-format style.\n\n\u003e I think that we should have consistent spacing in tests (2, 4, whatever but consistent) so I am not too sure that having two formatters for our tests make sense.\n\nNo doubt everyone would agree that making the tests consistent would be the best, but that\u0027s a lot of work. In the meantime it\u0027s either that or leaving out tests/ altogether. Neither fixes the problem with the inconsistencies, but at least with the symlinks you\u0027d get clang-format for new tests, and it wouldn\u0027t preclude anyone from working on reformatting the 2 space indent files to gradually whittle them down and remove the symlinks.",
+      "parentUuid": "5df825c6_892ecf57",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b06f6f0b4f63a417c48e5e9de5d786e1e5e884e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a84b993b_c7212b5d",
