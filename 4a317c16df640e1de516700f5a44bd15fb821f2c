@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf8f2a7_b67b2125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-23T10:35:52Z",
+      "side": 1,
+      "message": "1. No, there is only one merge in LargeObjectSpace::FreeList, and then madvise is called in FreeListSpace::Free to release memory, and repeated merges will not occur.\n2. The running time of this function is roughly between a few tenths of a millisecond and a few milliseconds.",
+      "parentUuid": "2ab11052_ab89309c",
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ece933ba_47adfc74",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-11-22T21:42:09Z",
       "side": 1,
       "message": "I don\u0027t understand the impact of the deletion here. Why is this safe? How does it relate to the rest of the change?",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 56
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0adaf67e_10e36750",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-23T10:35:52Z",
+      "side": 1,
+      "message": "1. This is used to sort FreeBlocks, which type is std::set.\n2. The sorting can be done through the previous free memory size and address. It is not helpful to use its memory size, which will cause its size to be unable to be modified after sorting.",
+      "parentUuid": "ece933ba_47adfc74",
       "range": {
         "startLine": 353,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1327602_48e4a0cc",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-23T10:35:52Z",
+      "side": 1,
+      "message": "Modified according to your comments.",
+      "parentUuid": "d609d1c1_df3561e3",
+      "range": {
+        "startLine": 355,
+        "startChar": 9,
+        "endLine": 355,
+        "endChar": 72
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0300b3af_3ff92b9d",
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2012126d_4f221b67",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-23T10:35:52Z",
+      "side": 1,
+      "message": "This function is called in LargeObjectSpace::SweepCallback, here is just an override of this function.",
+      "parentUuid": "0300b3af_3ff92b9d",
+      "range": {
+        "startLine": 425,
+        "startChar": 7,
+        "endLine": 425,
+        "endChar": 31
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cf19758_67b2446e",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-11-22T21:42:09Z",
       "side": 1,
       "message": "We now seem to greatly prefer these to be in address order? That should be dcumented someplace.",
+      "range": {
+        "startLine": 197,
+        "startChar": 49,
+        "endLine": 197,
+        "endChar": 70
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50081711_e7dcb260",
+        "filename": "runtime/gc/space/large_object_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-23T10:35:52Z",
+      "side": 1,
+      "message": "Do you mean we need to add extra annotation?",
+      "parentUuid": "3cf19758_67b2446e",
       "range": {
         "startLine": 197,
         "startChar": 49,
