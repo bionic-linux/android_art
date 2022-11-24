@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d067fa0_e8d33ee4",
+        "filename": "test/default_run.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-11-24T11:18:11Z",
+      "side": 1,
+      "message": "Can we make it a single command with a list of things to remove? This will be a bit faster.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 79
+      },
+      "revId": "c805df0947c1f7f0563fdc14f4e668e2e67d6c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
