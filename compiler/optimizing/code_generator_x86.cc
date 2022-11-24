@@ -6040,7 +6040,14 @@ void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
     codegen_->MaybeRecordImplicitNullCheck(instruction);
   }
 
-  if (needs_write_barrier) {
+  bool use_write_barrier = true;
+  if (instruction->IsInstanceFieldSet()) {
+    use_write_barrier = !instruction->AsInstanceFieldSet()->GetIgnoreWriteBarrier();
+  } else if (instruction->IsStaticFieldSet()) {
+    use_write_barrier = !instruction->AsStaticFieldSet()->GetIgnoreWriteBarrier();
+  }
+
+  if (needs_write_barrier && use_write_barrier) {
     Register temp = locations->GetTemp(0).AsRegister<Register>();
     Register card = locations->GetTemp(1).AsRegister<Register>();
     codegen_->MarkGCCard(temp, card, base, value.AsRegister<Register>(), value_can_be_null);
@@ -6487,9 +6494,11 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      Register card = locations->GetTemp(1).AsRegister<Register>();
-      codegen_->MarkGCCard(
-          temp, card, array, value.AsRegister<Register>(), /* value_can_be_null= */ false);
+      if (!instruction->GetIgnoreWriteBarrier()) {
+        Register card = locations->GetTemp(1).AsRegister<Register>();
+        codegen_->MarkGCCard(
+            temp, card, array, value.AsRegister<Register>(), /* value_can_be_null= */ false);
+      }
 
       if (can_value_be_null) {
         DCHECK(do_store.IsLinked());

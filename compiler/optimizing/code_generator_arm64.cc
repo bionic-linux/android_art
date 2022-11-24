@@ -2269,7 +2269,14 @@ void InstructionCodeGeneratorARM64::HandleFieldSet(HInstruction* instruction,
     }
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1))) {
+  bool use_write_barrier = true;
+  if (instruction->IsInstanceFieldSet()) {
+    use_write_barrier = !instruction->AsInstanceFieldSet()->GetIgnoreWriteBarrier();
+  } else if (instruction->IsStaticFieldSet()) {
+    use_write_barrier = !instruction->AsStaticFieldSet()->GetIgnoreWriteBarrier();
+  }
+
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1)) && use_write_barrier) {
     codegen_->MarkGCCard(obj, Register(value), value_can_be_null);
   }
 
@@ -2935,7 +2942,9 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
       }
     }
 
-    codegen_->MarkGCCard(array, value.W(), /* value_can_be_null= */ false);
+    if (!instruction->GetIgnoreWriteBarrier()) {
+      codegen_->MarkGCCard(array, value.W(), /* value_can_be_null= */ false);
+    }
 
     if (can_value_be_null) {
       DCHECK(do_store.IsLinked());

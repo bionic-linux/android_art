@@ -118,6 +118,8 @@ enum class MethodCompilationStat {
   kConstructorFenceRemovedLSE,
   kConstructorFenceRemovedPFRA,
   kConstructorFenceRemovedCFRE,
+  kWBETotalSets,
+  kWBEPossibleRemovedSets,
   kBitstringTypeCheck,
   kJitOutOfMemoryForCommit,
   kFullLSEAllocationRemoved,

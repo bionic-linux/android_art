@@ -5965,7 +5965,14 @@ void InstructionCodeGeneratorARMVIXL::HandleFieldSet(HInstruction* instruction,
       UNREACHABLE();
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1))) {
+  bool use_write_barrier = true;
+  if (instruction->IsInstanceFieldSet()) {
+    use_write_barrier = !instruction->AsInstanceFieldSet()->GetIgnoreWriteBarrier();
+  } else if (instruction->IsStaticFieldSet()) {
+    use_write_barrier = !instruction->AsStaticFieldSet()->GetIgnoreWriteBarrier();
+  }
+
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1)) && use_write_barrier) {
     vixl32::Register temp = RegisterFrom(locations->GetTemp(0));
     vixl32::Register card = RegisterFrom(locations->GetTemp(1));
     codegen_->MarkGCCard(temp, card, base, RegisterFrom(value), value_can_be_null);
@@ -6917,7 +6924,9 @@ void InstructionCodeGeneratorARMVIXL::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      codegen_->MarkGCCard(temp1, temp2, array, value, /* value_can_be_null= */ false);
+      if (!instruction->GetIgnoreWriteBarrier()) {
+        codegen_->MarkGCCard(temp1, temp2, array, value, /* value_can_be_null= */ false);
+      }
 
       if (can_value_be_null) {
         DCHECK(do_store.IsReferenced());
