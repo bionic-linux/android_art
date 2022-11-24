@@ -6427,6 +6427,8 @@ class HInstanceFieldSet final : public HExpression<2> {
                     dex_file) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetPackedFlag<kFlagIsPredicatedSet>(false);
+    SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(true);
+    SetPackedFlag<kFlagAlwaysGenerateWriteBarrier>(false);
     SetRawInputAt(0, object);
     SetRawInputAt(1, value);
   }
@@ -6447,6 +6449,24 @@ class HInstanceFieldSet final : public HExpression<2> {
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
   bool GetIsPredicatedSet() const { return GetPackedFlag<kFlagIsPredicatedSet>(); }
   void SetIsPredicatedSet(bool value = true) { SetPackedFlag<kFlagIsPredicatedSet>(value); }
+  bool GetMaybeGenerateWriteBarrier() const {
+    return GetPackedFlag<kFlagMaybeGenerateWriteBarrier>();
+  }
+  void ClearMaybeGenerateWriteBarrier() {
+    DCHECK(!GetAlwaysGenerateWriteBarrier())
+        << DebugName() << " " << GetId()
+        << " we cannot ignore a write barrier that is expected to be generated.";
+    SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(false);
+  }
+  bool GetAlwaysGenerateWriteBarrier() const {
+    return GetPackedFlag<kFlagAlwaysGenerateWriteBarrier>();
+  }
+  void SetAlwaysGenerateWriteBarrier() {
+    DCHECK(GetMaybeGenerateWriteBarrier())
+        << DebugName() << " " << GetId()
+        << " we cannot guarantee to generate a write barrier that will not exist.";
+    SetPackedFlag<kFlagAlwaysGenerateWriteBarrier>(true);
+  }
 
   DECLARE_INSTRUCTION(InstanceFieldSet);
 
@@ -6456,7 +6476,9 @@ class HInstanceFieldSet final : public HExpression<2> {
  private:
   static constexpr size_t kFlagValueCanBeNull = kNumberOfGenericPackedBits;
   static constexpr size_t kFlagIsPredicatedSet = kFlagValueCanBeNull + 1;
-  static constexpr size_t kNumberOfInstanceFieldSetPackedBits = kFlagIsPredicatedSet + 1;
+  static constexpr size_t kFlagMaybeGenerateWriteBarrier = kFlagIsPredicatedSet + 1;
+  static constexpr size_t kFlagAlwaysGenerateWriteBarrier = kFlagMaybeGenerateWriteBarrier + 1;
+  static constexpr size_t kNumberOfInstanceFieldSetPackedBits = kFlagAlwaysGenerateWriteBarrier + 1;
   static_assert(kNumberOfInstanceFieldSetPackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
 
@@ -6581,6 +6603,7 @@ class HArraySet final : public HExpression<3> {
     SetPackedFlag<kFlagNeedsTypeCheck>(value->GetType() == DataType::Type::kReference);
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetPackedFlag<kFlagStaticTypeOfArrayIsObjectArray>(false);
+    SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(true);
     SetRawInputAt(0, array);
     SetRawInputAt(1, index);
     SetRawInputAt(2, value);
@@ -6620,6 +6643,10 @@ class HArraySet final : public HExpression<3> {
   bool StaticTypeOfArrayIsObjectArray() const {
     return GetPackedFlag<kFlagStaticTypeOfArrayIsObjectArray>();
   }
+  bool GetMaybeGenerateWriteBarrier() const {
+    return GetPackedFlag<kFlagMaybeGenerateWriteBarrier>();
+  }
+  void ClearMaybeGenerateWriteBarrier() { SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(false); }
 
   HInstruction* GetArray() const { return InputAt(0); }
   HInstruction* GetIndex() const { return InputAt(1); }
@@ -6668,8 +6695,9 @@ class HArraySet final : public HExpression<3> {
   // Cached information for the reference_type_info_ so that codegen
   // does not need to inspect the static type.
   static constexpr size_t kFlagStaticTypeOfArrayIsObjectArray = kFlagValueCanBeNull + 1;
-  static constexpr size_t kNumberOfArraySetPackedBits =
-      kFlagStaticTypeOfArrayIsObjectArray + 1;
+  static constexpr size_t kFlagMaybeGenerateWriteBarrier = kFlagStaticTypeOfArrayIsObjectArray + 1;
+  static constexpr size_t kFlagAlwaysGenerateWriteBarrier = kFlagMaybeGenerateWriteBarrier + 1;
+  static constexpr size_t kNumberOfArraySetPackedBits = kFlagAlwaysGenerateWriteBarrier + 1;
   static_assert(kNumberOfArraySetPackedBits <= kMaxNumberOfPackedBits, "Too many packed fields.");
   using ExpectedComponentTypeField =
       BitField<DataType::Type, kFieldExpectedComponentType, kFieldExpectedComponentTypeSize>;
@@ -7470,6 +7498,8 @@ class HStaticFieldSet final : public HExpression<2> {
                     declaring_class_def_index,
                     dex_file) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
+    SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(true);
+    SetPackedFlag<kFlagAlwaysGenerateWriteBarrier>(false);
     SetRawInputAt(0, cls);
     SetRawInputAt(1, value);
   }
@@ -7484,6 +7514,24 @@ class HStaticFieldSet final : public HExpression<2> {
   HInstruction* GetValue() const { return InputAt(1); }
   bool GetValueCanBeNull() const { return GetPackedFlag<kFlagValueCanBeNull>(); }
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
+  bool GetMaybeGenerateWriteBarrier() const {
+    return GetPackedFlag<kFlagMaybeGenerateWriteBarrier>();
+  }
+  void ClearMaybeGenerateWriteBarrier() {
+    DCHECK(!GetAlwaysGenerateWriteBarrier())
+        << DebugName() << " " << GetId()
+        << " we cannot ignore a write barrier that is expected to be generated.";
+    SetPackedFlag<kFlagMaybeGenerateWriteBarrier>(false);
+  }
+  bool GetAlwaysGenerateWriteBarrier() const {
+    return GetPackedFlag<kFlagAlwaysGenerateWriteBarrier>();
+  }
+  void SetAlwaysGenerateWriteBarrier() {
+    DCHECK(GetMaybeGenerateWriteBarrier())
+        << DebugName() << " " << GetId()
+        << " we cannot guarantee to generate a write barrier that will not exist.";
+    SetPackedFlag<kFlagAlwaysGenerateWriteBarrier>(true);
+  }
 
   DECLARE_INSTRUCTION(StaticFieldSet);
 
@@ -7492,7 +7540,9 @@ class HStaticFieldSet final : public HExpression<2> {
 
  private:
   static constexpr size_t kFlagValueCanBeNull = kNumberOfGenericPackedBits;
-  static constexpr size_t kNumberOfStaticFieldSetPackedBits = kFlagValueCanBeNull + 1;
+  static constexpr size_t kFlagMaybeGenerateWriteBarrier = kFlagValueCanBeNull + 1;
+  static constexpr size_t kFlagAlwaysGenerateWriteBarrier = kFlagMaybeGenerateWriteBarrier + 1;
+  static constexpr size_t kNumberOfStaticFieldSetPackedBits = kFlagAlwaysGenerateWriteBarrier + 1;
   static_assert(kNumberOfStaticFieldSetPackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
 

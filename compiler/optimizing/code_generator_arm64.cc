@@ -1426,12 +1426,14 @@ void CodeGeneratorARM64::AddLocationAsTemp(Location location, LocationSummary* l
   }
 }
 
-void CodeGeneratorARM64::MarkGCCard(Register object, Register value, bool value_can_be_null) {
+void CodeGeneratorARM64::MarkGCCard(Register object,
+                                    Register value,
+                                    bool write_barrier_can_be_skipped_if_null) {
   UseScratchRegisterScope temps(GetVIXLAssembler());
   Register card = temps.AcquireX();
   Register temp = temps.AcquireW();   // Index within the CardTable - 32bit.
   vixl::aarch64::Label done;
-  if (value_can_be_null) {
+  if (write_barrier_can_be_skipped_if_null) {
     __ Cbz(value, &done);
   }
   // Load the address of the card table into `card`.
@@ -1453,7 +1455,7 @@ void CodeGeneratorARM64::MarkGCCard(Register object, Register value, bool value_
   // of the card to mark; and 2. to load the `kCardDirty` value) saves a load
   // (no need to explicitly load `kCardDirty` as an immediate value).
   __ Strb(card, MemOperand(card, temp.X()));
-  if (value_can_be_null) {
+  if (write_barrier_can_be_skipped_if_null) {
     __ Bind(&done);
   }
 }
@@ -2229,7 +2231,9 @@ void LocationsBuilderARM64::HandleFieldSet(HInstruction* instruction) {
 
 void InstructionCodeGeneratorARM64::HandleFieldSet(HInstruction* instruction,
                                                    const FieldInfo& field_info,
-                                                   bool value_can_be_null) {
+                                                   bool value_can_be_null,
+                                                   bool maybe_generate_write_barrier,
+                                                   bool always_generate_write_barrier) {
   DCHECK(instruction->IsInstanceFieldSet() || instruction->IsStaticFieldSet());
   bool is_predicated =
       instruction->IsInstanceFieldSet() && instruction->AsInstanceFieldSet()->GetIsPredicatedSet();
@@ -2269,8 +2273,9 @@ void InstructionCodeGeneratorARM64::HandleFieldSet(HInstruction* instruction,
     }
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1))) {
-    codegen_->MarkGCCard(obj, Register(value), value_can_be_null);
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1)) &&
+      maybe_generate_write_barrier) {
+    codegen_->MarkGCCard(obj, Register(value), value_can_be_null && !always_generate_write_barrier);
   }
 
   if (is_predicated) {
@@ -2935,7 +2940,9 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
       }
     }
 
-    codegen_->MarkGCCard(array, value.W(), /* value_can_be_null= */ false);
+    if (instruction->GetMaybeGenerateWriteBarrier()) {
+      codegen_->MarkGCCard(array, value.W(), /* write_barrier_can_be_skipped_if_null= */ false);
+    }
 
     if (can_value_be_null) {
       DCHECK(do_store.IsLinked());
@@ -3957,7 +3964,11 @@ void LocationsBuilderARM64::VisitInstanceFieldSet(HInstanceFieldSet* instruction
 }
 
 void InstructionCodeGeneratorARM64::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetMaybeGenerateWriteBarrier(),
+                 instruction->GetAlwaysGenerateWriteBarrier());
 }
 
 // Temp is used for read barrier.
@@ -6220,7 +6231,11 @@ void LocationsBuilderARM64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
 }
 
 void InstructionCodeGeneratorARM64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetMaybeGenerateWriteBarrier(),
+                 instruction->GetAlwaysGenerateWriteBarrier());
 }
 
 void LocationsBuilderARM64::VisitStringBuilderAppend(HStringBuilderAppend* instruction) {

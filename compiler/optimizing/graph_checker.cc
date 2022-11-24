@@ -329,6 +329,21 @@ void GraphChecker::VisitDeoptimize(HDeoptimize* deopt) {
   VisitInstruction(deopt);
 }
 
+void GraphChecker::VisitStaticFieldSet(HStaticFieldSet* instruction) {
+  VisitInstruction(instruction);
+
+  if (!instruction->GetMaybeGenerateWriteBarrier() &&
+      instruction->GetAlwaysGenerateWriteBarrier()) {
+    AddError(
+        StringPrintf("%s %d has a flag mismatch: GetAlwaysGenerateWriteBarrier (%s) implies "
+                     "GetMaybeGenerateWriteBarrier (%s).",
+                     instruction->DebugName(),
+                     instruction->GetId(),
+                     instruction->GetAlwaysGenerateWriteBarrier() ? "true" : "false",
+                     instruction->GetMaybeGenerateWriteBarrier() ? "true" : "false"));
+  }
+}
+
 void GraphChecker::VisitTryBoundary(HTryBoundary* try_boundary) {
   ArrayRef<HBasicBlock* const> handlers = try_boundary->GetExceptionHandlers();
 
@@ -672,6 +687,21 @@ void GraphChecker::VisitCheckCast(HCheckCast* check) {
 
 void GraphChecker::VisitInstanceOf(HInstanceOf* instruction) {
   HandleTypeCheckInstruction(instruction);
+}
+
+void GraphChecker::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
+  VisitInstruction(instruction);
+
+  if (!instruction->GetMaybeGenerateWriteBarrier() &&
+      instruction->GetAlwaysGenerateWriteBarrier()) {
+    AddError(
+        StringPrintf("%s %d has a flag mismatch: GetAlwaysGenerateWriteBarrier (%s) implies "
+                     "GetMaybeGenerateWriteBarrier (%s).",
+                     instruction->DebugName(),
+                     instruction->GetId(),
+                     instruction->GetAlwaysGenerateWriteBarrier() ? "true" : "false",
+                     instruction->GetMaybeGenerateWriteBarrier() ? "true" : "false"));
+  }
 }
 
 void GraphChecker::HandleLoop(HBasicBlock* loop_header) {
