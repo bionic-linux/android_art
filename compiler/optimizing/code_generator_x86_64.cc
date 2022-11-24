@@ -5154,6 +5154,7 @@ void LocationsBuilderX86_64::HandleFieldSet(HInstruction* instruction,
       new (GetGraph()->GetAllocator()) LocationSummary(instruction, LocationSummary::kNoCall);
   DataType::Type field_type = field_info.GetFieldType();
   bool is_volatile = field_info.IsVolatile();
+
   bool needs_write_barrier =
       CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1));
 
@@ -5173,6 +5174,10 @@ void LocationsBuilderX86_64::HandleFieldSet(HInstruction* instruction,
       locations->SetInAt(1, Location::RegisterOrConstant(instruction->InputAt(1)));
     }
   }
+
+  // TODO(solanes): Make register use more efficient. In some cases we can use only one temp instead
+  // of two. This needs some refactoring in InstructionCodeGeneratorX86_64::HandleFieldSet. Same for
+  // other archs
   if (needs_write_barrier) {
     // Temporary registers for the write barrier.
     locations->AddTemp(Location::RequiresRegister());
@@ -5234,7 +5239,8 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
                                                     bool is_volatile,
                                                     bool is_atomic,
                                                     bool value_can_be_null,
-                                                    bool byte_swap) {
+                                                    bool byte_swap,
+                                                    bool ignore_write_barrier) {
   LocationSummary* locations = instruction->GetLocations();
   Location value = locations->InAt(value_index);
 
@@ -5352,7 +5358,8 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
     codegen_->MaybeRecordImplicitNullCheck(instruction);
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(value_index))) {
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(value_index)) &&
+      !ignore_write_barrier) {
     CpuRegister temp = locations->GetTemp(0).AsRegister<CpuRegister>();
     CpuRegister card = locations->GetTemp(extra_temp_index).AsRegister<CpuRegister>();
     codegen_->MarkGCCard(temp, card, base, value.AsRegister<CpuRegister>(), value_can_be_null);
@@ -5365,7 +5372,8 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
 
 void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
                                                     const FieldInfo& field_info,
-                                                    bool value_can_be_null) {
+                                                    bool value_can_be_null,
+                                                    bool ignore_write_barrier) {
   DCHECK(instruction->IsInstanceFieldSet() || instruction->IsStaticFieldSet());
 
   LocationSummary* locations = instruction->GetLocations();
@@ -5390,7 +5398,9 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
                  base,
                  is_volatile,
                  /*is_atomic=*/ false,
-                 value_can_be_null);
+                 value_can_be_null,
+                 /*byte_swap=*/ false,
+                 ignore_write_barrier);
 
   if (is_predicated) {
     __ Bind(&pred_is_null);
@@ -5402,7 +5412,10 @@ void LocationsBuilderX86_64::VisitInstanceFieldSet(HInstanceFieldSet* instructio
 }
 
 void InstructionCodeGeneratorX86_64::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 void LocationsBuilderX86_64::VisitPredicatedInstanceFieldGet(
@@ -5442,7 +5455,10 @@ void LocationsBuilderX86_64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
 }
 
 void InstructionCodeGeneratorX86_64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 void LocationsBuilderX86_64::VisitStringBuilderAppend(HStringBuilderAppend* instruction) {
@@ -5656,6 +5672,7 @@ void InstructionCodeGeneratorX86_64::VisitArrayGet(HArrayGet* instruction) {
 void LocationsBuilderX86_64::VisitArraySet(HArraySet* instruction) {
   DataType::Type value_type = instruction->GetComponentType();
 
+  // TODO(solanes): Registers more efficient.
   bool needs_write_barrier =
       CodeGenerator::StoreNeedsWriteBarrier(value_type, instruction->GetValue());
   bool needs_type_check = instruction->NeedsTypeCheck();
@@ -5672,6 +5689,7 @@ void LocationsBuilderX86_64::VisitArraySet(HArraySet* instruction) {
     locations->SetInAt(2, Location::RegisterOrConstant(instruction->InputAt(2)));
   }
 
+  // TODO(solanes): Refine the temp register usage. Same for other archs.
   if (needs_write_barrier) {
     // Temporary registers for the write barrier.
     locations->AddTemp(Location::RequiresRegister());  // Possibly used for ref. poisoning too.
@@ -5793,9 +5811,11 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
-      codegen_->MarkGCCard(
-          temp, card, array, value.AsRegister<CpuRegister>(), /* value_can_be_null= */ false);
+      if (!instruction->GetIgnoreWriteBarrier()) {
+        CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
+        codegen_->MarkGCCard(
+            temp, card, array, value.AsRegister<CpuRegister>(), /* value_can_be_null= */ false);
+      }
 
       if (can_value_be_null) {
         DCHECK(do_store.IsLinked());
