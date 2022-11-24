@@ -34,6 +34,11 @@
 #include "instruction_simplifier_x86_64.h"
 #endif
 
+#if defined(ART_ENABLE_CODEGEN_arm) || defined(ART_ENABLE_CODEGEN_x86) || \
+    defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
+#include "write_barrier_elimination.h"
+#endif
+
 #include "bounds_check_elimination.h"
 #include "cha_guard_optimization.h"
 #include "code_sinking.h"
@@ -118,6 +123,11 @@ const char* OptimizationPassName(OptimizationPass pass) {
 #if defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
     case OptimizationPass::kX86MemoryOperandGeneration:
       return x86::X86MemoryOperandGeneration::kX86MemoryOperandGenerationPassName;
+#endif
+#if defined(ART_ENABLE_CODEGEN_arm) || defined(ART_ENABLE_CODEGEN_x86) || \
+    defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
+    case OptimizationPass::kWriteBarrierElimination:
+      return WriteBarrierElimination::kWBEPassName;
 #endif
     case OptimizationPass::kNone:
       LOG(FATAL) << "kNone does not represent an actual pass";
@@ -267,6 +277,9 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         break;
       case OptimizationPass::kLoadStoreElimination:
         opt = new (allocator) LoadStoreElimination(graph, stats, pass_name);
+        break;
+      case OptimizationPass::kWriteBarrierElimination:
+        opt = new (allocator) WriteBarrierElimination(graph, stats, pass_name);
         break;
       case OptimizationPass::kScheduling:
         opt = new (allocator) HInstructionScheduling(

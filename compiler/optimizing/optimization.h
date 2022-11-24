@@ -101,6 +101,10 @@ enum class OptimizationPass {
 #if defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
   kX86MemoryOperandGeneration,
 #endif
+#if defined(ART_ENABLE_CODEGEN_arm) || defined(ART_ENABLE_CODEGEN_x86) || \
+    defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)
+  kWriteBarrierElimination,
+#endif
   kNone,
   kLast = kNone
 };

@@ -2229,7 +2229,8 @@ void LocationsBuilderARM64::HandleFieldSet(HInstruction* instruction) {
 
 void InstructionCodeGeneratorARM64::HandleFieldSet(HInstruction* instruction,
                                                    const FieldInfo& field_info,
-                                                   bool value_can_be_null) {
+                                                   bool value_can_be_null,
+                                                   bool ignore_write_barrier) {
   DCHECK(instruction->IsInstanceFieldSet() || instruction->IsStaticFieldSet());
   bool is_predicated =
       instruction->IsInstanceFieldSet() && instruction->AsInstanceFieldSet()->GetIsPredicatedSet();
@@ -2269,7 +2270,8 @@ void InstructionCodeGeneratorARM64::HandleFieldSet(HInstruction* instruction,
     }
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1))) {
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1)) &&
+      !ignore_write_barrier) {
     codegen_->MarkGCCard(obj, Register(value), value_can_be_null);
   }
 
@@ -2935,7 +2937,9 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
       }
     }
 
-    codegen_->MarkGCCard(array, value.W(), /* value_can_be_null= */ false);
+    if (!instruction->GetIgnoreWriteBarrier()) {
+      codegen_->MarkGCCard(array, value.W(), /* value_can_be_null= */ false);
+    }
 
     if (can_value_be_null) {
       DCHECK(do_store.IsLinked());
@@ -3957,7 +3961,10 @@ void LocationsBuilderARM64::VisitInstanceFieldSet(HInstanceFieldSet* instruction
 }
 
 void InstructionCodeGeneratorARM64::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 // Temp is used for read barrier.
@@ -6220,7 +6227,10 @@ void LocationsBuilderARM64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
 }
 
 void InstructionCodeGeneratorARM64::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 void LocationsBuilderARM64::VisitStringBuilderAppend(HStringBuilderAppend* instruction) {
