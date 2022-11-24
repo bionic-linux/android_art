@@ -5876,7 +5876,9 @@ void InstructionCodeGeneratorX86::HandleFieldGet(HInstruction* instruction,
   }
 }
 
-void LocationsBuilderX86::HandleFieldSet(HInstruction* instruction, const FieldInfo& field_info) {
+void LocationsBuilderX86::HandleFieldSet(HInstruction* instruction,
+                                         const FieldInfo& field_info,
+                                         bool ignore_write_barrier) {
   DCHECK(instruction->IsInstanceFieldSet() || instruction->IsStaticFieldSet());
 
   LocationSummary* locations =
@@ -5913,10 +5915,14 @@ void LocationsBuilderX86::HandleFieldSet(HInstruction* instruction, const FieldI
     locations->SetInAt(1, Location::RegisterOrConstant(instruction->InputAt(1)));
 
     if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1))) {
-      // Temporary registers for the write barrier.
-      locations->AddTemp(Location::RequiresRegister());  // May be used for reference poisoning too.
-      // Ensure the card is in a byte register.
-      locations->AddTemp(Location::RegisterLocation(ECX));
+      if (!ignore_write_barrier || kPoisonHeapReferences) {
+        // Used by reference poisoning or emitting write barrier.
+        locations->AddTemp(Location::RequiresRegister());
+        if (!ignore_write_barrier) {
+          // Only used when emitting a write barrier. Ensure the card is in a byte register.
+          locations->AddTemp(Location::RegisterLocation(ECX));
+        }
+      }
     }
   }
 }
@@ -5927,7 +5933,8 @@ void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
                                                  Address field_addr,
                                                  Register base,
                                                  bool is_volatile,
-                                                 bool value_can_be_null) {
+                                                 bool value_can_be_null,
+                                                 bool ignore_write_barrier) {
   LocationSummary* locations = instruction->GetLocations();
   Location value = locations->InAt(value_index);
   bool needs_write_barrier =
@@ -6040,7 +6047,7 @@ void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
     codegen_->MaybeRecordImplicitNullCheck(instruction);
   }
 
-  if (needs_write_barrier) {
+  if (needs_write_barrier && !ignore_write_barrier) {
     Register temp = locations->GetTemp(0).AsRegister<Register>();
     Register card = locations->GetTemp(1).AsRegister<Register>();
     codegen_->MarkGCCard(temp, card, base, value.AsRegister<Register>(), value_can_be_null);
@@ -6053,7 +6060,8 @@ void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
 
 void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
                                                  const FieldInfo& field_info,
-                                                 bool value_can_be_null) {
+                                                 bool value_can_be_null,
+                                                 bool ignore_write_barrier) {
   DCHECK(instruction->IsInstanceFieldSet() || instruction->IsStaticFieldSet());
 
   LocationSummary* locations = instruction->GetLocations();
@@ -6078,7 +6086,8 @@ void InstructionCodeGeneratorX86::HandleFieldSet(HInstruction* instruction,
                  field_addr,
                  base,
                  is_volatile,
-                 value_can_be_null);
+                 value_can_be_null,
+                 ignore_write_barrier);
 
   if (is_predicated) {
     __ Bind(&pred_is_null);
@@ -6094,19 +6103,25 @@ void InstructionCodeGeneratorX86::VisitStaticFieldGet(HStaticFieldGet* instructi
 }
 
 void LocationsBuilderX86::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo());
+  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetIgnoreWriteBarrier());
 }
 
 void InstructionCodeGeneratorX86::VisitStaticFieldSet(HStaticFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 void LocationsBuilderX86::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo());
+  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetIgnoreWriteBarrier());
 }
 
 void InstructionCodeGeneratorX86::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSet(instruction, instruction->GetFieldInfo(), instruction->GetValueCanBeNull());
+  HandleFieldSet(instruction,
+                 instruction->GetFieldInfo(),
+                 instruction->GetValueCanBeNull(),
+                 instruction->GetIgnoreWriteBarrier());
 }
 
 void LocationsBuilderX86::VisitPredicatedInstanceFieldGet(
@@ -6367,10 +6382,12 @@ void LocationsBuilderX86::VisitArraySet(HArraySet* instruction) {
     locations->SetInAt(2, Location::RegisterOrConstant(instruction->InputAt(2)));
   }
   if (needs_write_barrier) {
-    // Temporary registers for the write barrier.
-    locations->AddTemp(Location::RequiresRegister());  // Possibly used for ref. poisoning too.
-    // Ensure the card is in a byte register.
-    locations->AddTemp(Location::RegisterLocation(ECX));
+    // Used by reference poisoning or emitting write barrier.
+    locations->AddTemp(Location::RequiresRegister());
+    if (!instruction->GetIgnoreWriteBarrier()) {
+      // Only used when emitting a write barrier. Ensure the card is in a byte register.
+      locations->AddTemp(Location::RegisterLocation(ECX));
+    }
   }
 }
 
@@ -6487,9 +6504,11 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      Register card = locations->GetTemp(1).AsRegister<Register>();
-      codegen_->MarkGCCard(
-          temp, card, array, value.AsRegister<Register>(), /* value_can_be_null= */ false);
+      if (!instruction->GetIgnoreWriteBarrier()) {
+        Register card = locations->GetTemp(1).AsRegister<Register>();
+        codegen_->MarkGCCard(
+            temp, card, array, value.AsRegister<Register>(), /* value_can_be_null= */ false);
+      }
 
       if (can_value_be_null) {
         DCHECK(do_store.IsLinked());
