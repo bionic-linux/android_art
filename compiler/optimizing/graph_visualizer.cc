@@ -483,6 +483,8 @@ class HGraphVisualizerPrinter : public HGraphDelegateVisitor {
     StartAttributeStream("can_trigger_gc")
         << std::boolalpha << array_set->GetSideEffects().Includes(SideEffects::CanTriggerGC())
         << std::noboolalpha;
+    StartAttributeStream("ignore_write_barrier")
+        << std::boolalpha << array_set->GetIgnoreWriteBarrier() << std::noboolalpha;
   }
 
   void VisitCompare(HCompare* compare) override {
@@ -552,7 +554,12 @@ class HGraphVisualizerPrinter : public HGraphDelegateVisitor {
         iset->GetFieldInfo().GetDexFile().PrettyField(iset->GetFieldInfo().GetFieldIndex(),
                                                       /* with type */ false);
     StartAttributeStream("field_type") << iset->GetFieldType();
-    StartAttributeStream("predicated") << std::boolalpha << iset->GetIsPredicatedSet();
+    StartAttributeStream("predicated")
+        << std::boolalpha << iset->GetIsPredicatedSet() << std::noboolalpha;
+    StartAttributeStream("ignore_write_barrier")
+        << std::boolalpha << iset->GetIgnoreWriteBarrier() << std::noboolalpha;
+    StartAttributeStream("write_barrier_being_relied_on")
+        << std::boolalpha << iset->GetWriteBarrierBeingReliedOn() << std::noboolalpha;
   }
 
   void VisitStaticFieldGet(HStaticFieldGet* sget) override {
@@ -567,6 +574,10 @@ class HGraphVisualizerPrinter : public HGraphDelegateVisitor {
         sset->GetFieldInfo().GetDexFile().PrettyField(sset->GetFieldInfo().GetFieldIndex(),
                                                       /* with type */ false);
     StartAttributeStream("field_type") << sset->GetFieldType();
+    StartAttributeStream("ignore_write_barrier")
+        << std::boolalpha << sset->GetIgnoreWriteBarrier() << std::noboolalpha;
+    StartAttributeStream("write_barrier_being_relied_on")
+        << std::boolalpha << sset->GetWriteBarrierBeingReliedOn() << std::noboolalpha;
   }
 
   void VisitUnresolvedInstanceFieldGet(HUnresolvedInstanceFieldGet* field_access) override {

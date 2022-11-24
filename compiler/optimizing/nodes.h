@@ -6427,6 +6427,8 @@ class HInstanceFieldSet final : public HExpression<2> {
                     dex_file) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetPackedFlag<kFlagIsPredicatedSet>(false);
+    SetPackedFlag<kFlagIgnoreWriteBarrier>(false);
+    SetPackedFlag<kFlagWriteBarrierBeingReliedOn>(false);
     SetRawInputAt(0, object);
     SetRawInputAt(1, value);
   }
@@ -6447,6 +6449,20 @@ class HInstanceFieldSet final : public HExpression<2> {
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
   bool GetIsPredicatedSet() const { return GetPackedFlag<kFlagIsPredicatedSet>(); }
   void SetIsPredicatedSet(bool value = true) { SetPackedFlag<kFlagIsPredicatedSet>(value); }
+  bool GetIgnoreWriteBarrier() const { return GetPackedFlag<kFlagIgnoreWriteBarrier>(); }
+  void SetIgnoreWriteBarrier() {
+    DCHECK(!GetWriteBarrierBeingReliedOn())
+        << DebugName() << " " << GetId()
+        << " we cannot ignore a write barrier that another set relies on.";
+    SetPackedFlag<kFlagIgnoreWriteBarrier>(true);
+  }
+  bool GetWriteBarrierBeingReliedOn() const {
+    return GetPackedFlag<kFlagWriteBarrierBeingReliedOn>();
+  }
+  void SetWriteBarrierBeingReliedOn() {
+    DCHECK(!GetIgnoreWriteBarrier()) << " we cannot rely on an ignored write barrier";
+    SetPackedFlag<kFlagWriteBarrierBeingReliedOn>(true);
+  }
 
   DECLARE_INSTRUCTION(InstanceFieldSet);
 
@@ -6456,7 +6472,9 @@ class HInstanceFieldSet final : public HExpression<2> {
  private:
   static constexpr size_t kFlagValueCanBeNull = kNumberOfGenericPackedBits;
   static constexpr size_t kFlagIsPredicatedSet = kFlagValueCanBeNull + 1;
-  static constexpr size_t kNumberOfInstanceFieldSetPackedBits = kFlagIsPredicatedSet + 1;
+  static constexpr size_t kFlagIgnoreWriteBarrier = kFlagIsPredicatedSet + 1;
+  static constexpr size_t kFlagWriteBarrierBeingReliedOn = kFlagIgnoreWriteBarrier + 1;
+  static constexpr size_t kNumberOfInstanceFieldSetPackedBits = kFlagWriteBarrierBeingReliedOn + 1;
   static_assert(kNumberOfInstanceFieldSetPackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
 
@@ -6581,6 +6599,7 @@ class HArraySet final : public HExpression<3> {
     SetPackedFlag<kFlagNeedsTypeCheck>(value->GetType() == DataType::Type::kReference);
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetPackedFlag<kFlagStaticTypeOfArrayIsObjectArray>(false);
+    SetPackedFlag<kFlagIgnoreWriteBarrier>(false);
     SetRawInputAt(0, array);
     SetRawInputAt(1, index);
     SetRawInputAt(2, value);
@@ -6620,6 +6639,8 @@ class HArraySet final : public HExpression<3> {
   bool StaticTypeOfArrayIsObjectArray() const {
     return GetPackedFlag<kFlagStaticTypeOfArrayIsObjectArray>();
   }
+  bool GetIgnoreWriteBarrier() const { return GetPackedFlag<kFlagIgnoreWriteBarrier>(); }
+  void SetIgnoreWriteBarrier() { SetPackedFlag<kFlagIgnoreWriteBarrier>(true); }
 
   HInstruction* GetArray() const { return InputAt(0); }
   HInstruction* GetIndex() const { return InputAt(1); }
@@ -6668,8 +6689,9 @@ class HArraySet final : public HExpression<3> {
   // Cached information for the reference_type_info_ so that codegen
   // does not need to inspect the static type.
   static constexpr size_t kFlagStaticTypeOfArrayIsObjectArray = kFlagValueCanBeNull + 1;
-  static constexpr size_t kNumberOfArraySetPackedBits =
-      kFlagStaticTypeOfArrayIsObjectArray + 1;
+  static constexpr size_t kFlagIgnoreWriteBarrier = kFlagStaticTypeOfArrayIsObjectArray + 1;
+  static constexpr size_t kFlagWriteBarrierBeingReliedOn = kFlagIgnoreWriteBarrier + 1;
+  static constexpr size_t kNumberOfArraySetPackedBits = kFlagWriteBarrierBeingReliedOn + 1;
   static_assert(kNumberOfArraySetPackedBits <= kMaxNumberOfPackedBits, "Too many packed fields.");
   using ExpectedComponentTypeField =
       BitField<DataType::Type, kFieldExpectedComponentType, kFieldExpectedComponentTypeSize>;
@@ -7470,6 +7492,8 @@ class HStaticFieldSet final : public HExpression<2> {
                     declaring_class_def_index,
                     dex_file) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
+    SetPackedFlag<kFlagIgnoreWriteBarrier>(false);
+    SetPackedFlag<kFlagWriteBarrierBeingReliedOn>(false);
     SetRawInputAt(0, cls);
     SetRawInputAt(1, value);
   }
@@ -7484,6 +7508,20 @@ class HStaticFieldSet final : public HExpression<2> {
   HInstruction* GetValue() const { return InputAt(1); }
   bool GetValueCanBeNull() const { return GetPackedFlag<kFlagValueCanBeNull>(); }
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
+  bool GetIgnoreWriteBarrier() const { return GetPackedFlag<kFlagIgnoreWriteBarrier>(); }
+  void SetIgnoreWriteBarrier() {
+    DCHECK(!GetWriteBarrierBeingReliedOn())
+        << DebugName() << " " << GetId()
+        << " we cannot ignore a write barrier that another set relies on.";
+    SetPackedFlag<kFlagIgnoreWriteBarrier>(true);
+  }
+  bool GetWriteBarrierBeingReliedOn() const {
+    return GetPackedFlag<kFlagWriteBarrierBeingReliedOn>();
+  }
+  void SetWriteBarrierBeingReliedOn() {
+    DCHECK(!GetIgnoreWriteBarrier()) << " we cannot rely on an ignored write barrier";
+    SetPackedFlag<kFlagWriteBarrierBeingReliedOn>(true);
+  }
 
   DECLARE_INSTRUCTION(StaticFieldSet);
 
@@ -7492,7 +7530,9 @@ class HStaticFieldSet final : public HExpression<2> {
 
  private:
   static constexpr size_t kFlagValueCanBeNull = kNumberOfGenericPackedBits;
-  static constexpr size_t kNumberOfStaticFieldSetPackedBits = kFlagValueCanBeNull + 1;
+  static constexpr size_t kFlagIgnoreWriteBarrier = kFlagValueCanBeNull + 1;
+  static constexpr size_t kFlagWriteBarrierBeingReliedOn = kFlagIgnoreWriteBarrier + 1;
+  static constexpr size_t kNumberOfStaticFieldSetPackedBits = kFlagWriteBarrierBeingReliedOn + 1;
   static_assert(kNumberOfStaticFieldSetPackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
 

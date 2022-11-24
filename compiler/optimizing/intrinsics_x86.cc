@@ -4047,7 +4047,9 @@ static void GenerateVarHandleSet(HInvoke* invoke, CodeGeneratorX86* codegen) {
                                 Address(reference, offset, TIMES_1, 0),
                                 reference,
                                 is_volatile,
-                                /* value_can_be_null */ true);
+                                /* value_can_be_null */ true,
+                                /* ignore_write_barrier */ false,
+                                /* write_barrier_relied_on */ false);
 
   __ Bind(slow_path->GetExitLabel());
 }

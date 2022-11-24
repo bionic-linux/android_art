@@ -329,6 +329,20 @@ void GraphChecker::VisitDeoptimize(HDeoptimize* deopt) {
   VisitInstruction(deopt);
 }
 
+void GraphChecker::VisitStaticFieldSet(HStaticFieldSet* instruction) {
+  VisitInstruction(instruction);
+
+  if (instruction->GetIgnoreWriteBarrier() && instruction->GetWriteBarrierBeingReliedOn()) {
+    AddError(StringPrintf(
+        "%s %d has a flag mismatch. We cannot rely on a write barrier that we are going to ignore. "
+        "GetIgnoreWriteBarrier: %s, GetWriteBarrierBeingReliedOn: %s",
+        instruction->DebugName(),
+        instruction->GetId(),
+        instruction->GetIgnoreWriteBarrier() ? "true" : "false",
+        instruction->GetWriteBarrierBeingReliedOn() ? "true" : "false"));
+  }
+}
+
 void GraphChecker::VisitTryBoundary(HTryBoundary* try_boundary) {
   ArrayRef<HBasicBlock* const> handlers = try_boundary->GetExceptionHandlers();
 
@@ -672,6 +686,20 @@ void GraphChecker::VisitCheckCast(HCheckCast* check) {
 
 void GraphChecker::VisitInstanceOf(HInstanceOf* instruction) {
   HandleTypeCheckInstruction(instruction);
+}
+
+void GraphChecker::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
+  VisitInstruction(instruction);
+
+  if (instruction->GetIgnoreWriteBarrier() && instruction->GetWriteBarrierBeingReliedOn()) {
+    AddError(StringPrintf(
+        "%s %d has a flag mismatch. We cannot rely on a write barrier that we are going to ignore. "
+        "GetIgnoreWriteBarrier: %s, GetWriteBarrierBeingReliedOn: %s",
+        instruction->DebugName(),
+        instruction->GetId(),
+        instruction->GetIgnoreWriteBarrier() ? "true" : "false",
+        instruction->GetWriteBarrierBeingReliedOn() ? "true" : "false"));
+  }
 }
 
 void GraphChecker::HandleLoop(HBasicBlock* loop_header) {

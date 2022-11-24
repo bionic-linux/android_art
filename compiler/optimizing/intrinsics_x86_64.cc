@@ -3994,7 +3994,9 @@ static void GenerateVarHandleSet(HInvoke* invoke,
                                                    is_volatile,
                                                    is_atomic,
                                                    /*value_can_be_null=*/ true,
-                                                   byte_swap);
+                                                   byte_swap,
+                                                   /*ignore_write_barrier=*/ false,
+                                                   /*write_barrier_relied_on=*/ false);
 
   // setVolatile needs kAnyAny barrier, but HandleFieldSet takes care of that.
 
