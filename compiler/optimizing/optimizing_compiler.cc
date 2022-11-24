@@ -510,6 +510,7 @@ bool OptimizingCompiler::RunArchOptimizations(HGraph* graph,
         OptDef(OptimizationPass::kInstructionSimplifierArm),
         OptDef(OptimizationPass::kSideEffectsAnalysis),
         OptDef(OptimizationPass::kGlobalValueNumbering, "GVN$after_arch"),
+        OptDef(OptimizationPass::kWriteBarrierElimination),
         OptDef(OptimizationPass::kCriticalNativeAbiFixupArm),
         OptDef(OptimizationPass::kScheduling)
       };
@@ -526,6 +527,7 @@ bool OptimizingCompiler::RunArchOptimizations(HGraph* graph,
         OptDef(OptimizationPass::kInstructionSimplifierArm64),
         OptDef(OptimizationPass::kSideEffectsAnalysis),
         OptDef(OptimizationPass::kGlobalValueNumbering, "GVN$after_arch"),
+        OptDef(OptimizationPass::kWriteBarrierElimination),
         OptDef(OptimizationPass::kScheduling)
       };
       return RunOptimizations(graph,
@@ -541,6 +543,7 @@ bool OptimizingCompiler::RunArchOptimizations(HGraph* graph,
         OptDef(OptimizationPass::kInstructionSimplifierX86),
         OptDef(OptimizationPass::kSideEffectsAnalysis),
         OptDef(OptimizationPass::kGlobalValueNumbering, "GVN$after_arch"),
+        OptDef(OptimizationPass::kWriteBarrierElimination),
         OptDef(OptimizationPass::kPcRelativeFixupsX86),
         OptDef(OptimizationPass::kX86MemoryOperandGeneration)
       };
@@ -557,6 +560,7 @@ bool OptimizingCompiler::RunArchOptimizations(HGraph* graph,
         OptDef(OptimizationPass::kInstructionSimplifierX86_64),
         OptDef(OptimizationPass::kSideEffectsAnalysis),
         OptDef(OptimizationPass::kGlobalValueNumbering, "GVN$after_arch"),
+        OptDef(OptimizationPass::kWriteBarrierElimination),
         OptDef(OptimizationPass::kX86MemoryOperandGeneration)
       };
       return RunOptimizations(graph,
@@ -683,7 +687,7 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
            "instruction_simplifier$before_codegen"),
     // Eliminate constructor fences after code sinking to avoid
     // complicated sinking logic to split a fence with many inputs.
-    OptDef(OptimizationPass::kConstructorFenceRedundancyElimination)
+    OptDef(OptimizationPass::kConstructorFenceRedundancyElimination),
   };
   RunOptimizations(graph,
                    codegen,
