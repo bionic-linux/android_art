@@ -683,7 +683,9 @@ void OptimizingCompiler::RunOptimizations(HGraph* graph,
            "instruction_simplifier$before_codegen"),
     // Eliminate constructor fences after code sinking to avoid
     // complicated sinking logic to split a fence with many inputs.
-    OptDef(OptimizationPass::kConstructorFenceRedundancyElimination)
+    OptDef(OptimizationPass::kConstructorFenceRedundancyElimination),
+    // Eliminate write barriers.
+    OptDef(OptimizationPass::kWriteBarrierElimination)
   };
   RunOptimizations(graph,
                    codegen,
