@@ -18,6 +18,7 @@
 
 #include "arch/x86_64/jni_frame_x86_64.h"
 #include "art_method-inl.h"
+#include "base/logging.h"
 #include "class_root-inl.h"
 #include "class_table.h"
 #include "code_generator_utils.h"
@@ -5154,8 +5155,16 @@ void LocationsBuilderX86_64::HandleFieldSet(HInstruction* instruction,
       new (GetGraph()->GetAllocator()) LocationSummary(instruction, LocationSummary::kNoCall);
   DataType::Type field_type = field_info.GetFieldType();
   bool is_volatile = field_info.IsVolatile();
+
+  bool use_write_barrier = true;
+  if (instruction->IsInstanceFieldSet()) {
+    use_write_barrier = !instruction->AsInstanceFieldSet()->GetIgnoreWriteBarrier();
+  } else if (instruction->IsStaticFieldSet()) {
+    use_write_barrier = !instruction->AsStaticFieldSet()->GetIgnoreWriteBarrier();
+  }
+
   bool needs_write_barrier =
-      CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1));
+      CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(1)) && use_write_barrier;
 
   locations->SetInAt(0, Location::RequiresRegister());
   if (DataType::IsFloatingPointType(instruction->InputAt(1)->GetType())) {
@@ -5352,7 +5361,14 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
     codegen_->MaybeRecordImplicitNullCheck(instruction);
   }
 
-  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(value_index))) {
+  bool use_write_barrier = true;
+  if (instruction->IsInstanceFieldSet()) {
+    use_write_barrier = !instruction->AsInstanceFieldSet()->GetIgnoreWriteBarrier();
+  } else if (instruction->IsStaticFieldSet()) {
+    use_write_barrier = !instruction->AsStaticFieldSet()->GetIgnoreWriteBarrier();
+  }
+
+  if (CodeGenerator::StoreNeedsWriteBarrier(field_type, instruction->InputAt(value_index)) && use_write_barrier) {
     CpuRegister temp = locations->GetTemp(0).AsRegister<CpuRegister>();
     CpuRegister card = locations->GetTemp(extra_temp_index).AsRegister<CpuRegister>();
     codegen_->MarkGCCard(temp, card, base, value.AsRegister<CpuRegister>(), value_can_be_null);
@@ -5657,7 +5673,7 @@ void LocationsBuilderX86_64::VisitArraySet(HArraySet* instruction) {
   DataType::Type value_type = instruction->GetComponentType();
 
   bool needs_write_barrier =
-      CodeGenerator::StoreNeedsWriteBarrier(value_type, instruction->GetValue());
+      CodeGenerator::StoreNeedsWriteBarrier(value_type, instruction->GetValue()); // && !instruction->GetIgnoreWriteBarrier();
   bool needs_type_check = instruction->NeedsTypeCheck();
 
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(
@@ -5688,7 +5704,7 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
   DataType::Type value_type = instruction->GetComponentType();
   bool needs_type_check = instruction->NeedsTypeCheck();
   bool needs_write_barrier =
-      CodeGenerator::StoreNeedsWriteBarrier(value_type, instruction->GetValue());
+      CodeGenerator::StoreNeedsWriteBarrier(value_type, instruction->GetValue()); // && !instruction->GetIgnoreWriteBarrier();
 
   switch (value_type) {
     case DataType::Type::kBool:
@@ -5734,7 +5750,7 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
         break;
       }
 
-      DCHECK(needs_write_barrier);
+      // DCHECK_IMPLIES(!needs_write_barrier, instruction->GetIgnoreWriteBarrier());
       CpuRegister register_value = value.AsRegister<CpuRegister>();
       Location temp_loc = locations->GetTemp(0);
       CpuRegister temp = temp_loc.AsRegister<CpuRegister>();
@@ -5793,9 +5809,11 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
-      codegen_->MarkGCCard(
-          temp, card, array, value.AsRegister<CpuRegister>(), /* value_can_be_null= */ false);
+      if (!instruction->GetIgnoreWriteBarrier()) {
+        CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
+        codegen_->MarkGCCard(
+            temp, card, array, value.AsRegister<CpuRegister>(), /* value_can_be_null= */ false);
+      }
 
       if (can_value_be_null) {
         DCHECK(do_store.IsLinked());
