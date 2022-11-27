@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63715653_caa606c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-27T19:54:49Z",
+      "side": 1,
+      "message": "But FreeListSpace::Free itself merges blocks, after calling madvise. See e.g. https://cs.android.com/android/platform/superproject/+/master:art/runtime/gc/space/large_object_space.cc;l\u003d453-459.\n\nEspecially since I do not fully understand the reason the initial code sorted by size, this seems like a high risk change with very modest benefit?",
+      "parentUuid": "bcf8f2a7_b67b2125",
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ece933ba_47adfc74",
         "filename": "runtime/gc/space/large_object_space.cc",
         "patchSetId": 1
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "1. This is used to sort FreeBlocks, which type is std::set.\n2. The sorting can be done through the previous free memory size and address. It is not helpful to use its memory size, which will cause its size to be unable to be modified after sorting.",
       "parentUuid": "ece933ba_47adfc74",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 56
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4dcd543_41fa5a77",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-27T19:54:49Z",
+      "side": 1,
+      "message": "Thanks. I now understand. But doesn\u0027t this cause us to break up unnecessarily large chuncks, by no longer looking for the smallest block first, when we allocate? I don\u0027t understand the impact this has on the allocation algorithm, which worries me.",
+      "parentUuid": "0adaf67e_10e36750",
       "range": {
         "startLine": 353,
         "startChar": 2,
