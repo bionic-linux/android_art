@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34242335_b6ffb4bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-28T14:47:29Z",
+      "side": 1,
+      "message": "The code you mentioned above is to merge the previous free chunk and the current chunk to be released, which is different from this patch and does not conflict.",
+      "parentUuid": "63715653_caa606c6",
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ece933ba_47adfc74",
         "filename": "runtime/gc/space/large_object_space.cc",
         "patchSetId": 1
@@ -132,6 +150,30 @@
       "side": 1,
       "message": "Thanks. I now understand. But doesn\u0027t this cause us to break up unnecessarily large chuncks, by no longer looking for the smallest block first, when we allocate? I don\u0027t understand the impact this has on the allocation algorithm, which worries me.",
       "parentUuid": "0adaf67e_10e36750",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 56
+      },
+      "revId": "4a317c16df640e1de516700f5a44bd15fb821f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c266b5_01656072",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1963346
+      },
+      "writtenOn": "2022-11-28T14:47:29Z",
+      "side": 1,
+      "message": "Yes, when the previous free size is the same no longer look for the smallest block first.\n\nI also have this question, why should we prioritize finding the smaller size, when the previous free size is the same, what are the benefits of doing so?",
+      "parentUuid": "c4dcd543_41fa5a77",
       "range": {
         "startLine": 353,
         "startChar": 2,
