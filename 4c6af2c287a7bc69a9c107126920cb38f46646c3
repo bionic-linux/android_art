@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba6b4eb_22d3f4d4",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-11-28T08:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51e13b0_bcfe557b",
+      "range": {
+        "startLine": 1701,
+        "startChar": 43,
+        "endLine": 1701,
+        "endChar": 44
+      },
+      "revId": "4c6af2c287a7bc69a9c107126920cb38f46646c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13d88dff_cfc1f96e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-17T15:30:51Z",
       "side": 1,
       "message": "sufficient",
+      "range": {
+        "startLine": 2590,
+        "startChar": 29,
+        "endLine": 2590,
+        "endChar": 39
+      },
+      "revId": "4c6af2c287a7bc69a9c107126920cb38f46646c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be649599_db162720",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2590,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-11-28T08:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d88dff_cfc1f96e",
       "range": {
         "startLine": 2590,
         "startChar": 29,
