@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5866a276_87fb4097",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-11-29T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e5a0fec_2557cc3e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd162ba7_6b4d8281",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "270c3e34_6d5b7444",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-11-29T23:18:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd162ba7_6b4d8281",
+      "range": {
+        "startLine": 1679,
+        "startChar": 2,
+        "endLine": 1683,
+        "endChar": 10
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a7403d5_cb16a2ed",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-29T22:47:23Z",
       "side": 1,
       "message": "Don\u0027t we need this to preceed any work on this page? So it should be acquire?",
+      "range": {
+        "startLine": 2610,
+        "startChar": 61,
+        "endLine": 2610,
+        "endChar": 86
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977d40a4_1cd3408b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2022-11-29T23:18:21Z",
+      "side": 1,
+      "message": "As we discussed sometime back, syscalls (ioctl in this case) takes care of ordering. That\u0027s why used \u0027relaxed\u0027.",
+      "parentUuid": "8a7403d5_cb16a2ed",
       "range": {
         "startLine": 2610,
         "startChar": 61,
