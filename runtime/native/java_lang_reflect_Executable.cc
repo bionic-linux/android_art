@@ -19,7 +19,7 @@
 #include "android-base/stringprintf.h"
 #include "nativehelper/jni_macros.h"
 
-#include "art_method-inl.h"
+#include "art_method-alloc-inl.h"
 #include "class_root-inl.h"
 #include "dex/dex_file_annotations.h"
 #include "handle.h"
@@ -157,7 +157,7 @@ static jobjectArray Executable_getParameterAnnotationsNative(JNIEnv* env, jobjec
 static jobjectArray Executable_getParameters0(JNIEnv* env, jobject javaMethod) {
   ScopedFastNativeObjectAccess soa(env);
   Thread* self = soa.Self();
-  StackHandleScope<8> hs(self);
+  StackHandleScope<6> hs(self);
 
   Handle<mirror::Method> executable = hs.NewHandle(soa.Decode<mirror::Method>(javaMethod));
   ArtMethod* art_method = executable.Get()->GetArtMethod();
@@ -208,43 +208,27 @@ static jobjectArray Executable_getParameters0(JNIEnv* env, jobject javaMethod) {
     return nullptr;
   }
 
-  Handle<mirror::Class> parameter_class =
-      hs.NewHandle(WellKnownClasses::ToClass(WellKnownClasses::java_lang_reflect_Parameter));
-  ArtMethod* parameter_init =
-      jni::DecodeArtMethod(WellKnownClasses::java_lang_reflect_Parameter_init);
+  ArtMethod* parameter_init = WellKnownClasses::java_lang_reflect_Parameter_init;
 
   // Mutable handles used in the loop below to ensure cleanup without scaling the number of
   // handles by the number of parameters.
   MutableHandle<mirror::String> name = hs.NewHandle<mirror::String>(nullptr);
-  MutableHandle<mirror::Object> parameter = hs.NewHandle<mirror::Object>(nullptr);
 
   // Populate the Parameter[] to return.
   for (int32_t parameter_index = 0; parameter_index < names_count; parameter_index++) {
     name.Assign(names.Get()->Get(parameter_index));
     int32_t modifiers = access_flags.Get()->Get(parameter_index);
 
-    // Allocate / initialize the Parameter to add to parameter_array.
-    parameter.Assign(parameter_class->AllocObject(self));
+    // Create the Parameter to add to parameter_array.
+    ObjPtr<mirror::Object> parameter = parameter_init->NewObject<'L', 'I', 'L', 'I'>(
+        self, name, modifiers, executable, parameter_index);
     if (UNLIKELY(parameter == nullptr)) {
       self->AssertPendingOOMException();
       return nullptr;
     }
 
-    uint32_t args[5] = { PointerToLowMemUInt32(parameter.Get()),
-                         PointerToLowMemUInt32(name.Get()),
-                         static_cast<uint32_t>(modifiers),
-                         PointerToLowMemUInt32(executable.Get()),
-                         static_cast<uint32_t>(parameter_index)
-    };
-    JValue result;
-    static const char* method_signature = "VLILI";  // return + parameter types
-    parameter_init->Invoke(self, args, sizeof(args), &result, method_signature);
-    if (UNLIKELY(self->IsExceptionPending())) {
-      return nullptr;
-    }
-
     // Store the Parameter in the Parameter[].
-    parameter_array.Get()->Set(parameter_index, parameter.Get());
+    parameter_array.Get()->Set(parameter_index, parameter);
     if (UNLIKELY(self->IsExceptionPending())) {
       return nullptr;
     }
