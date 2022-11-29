@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5a0fec_2557cc3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-29T22:47:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure that\u0027s the best description. It\u0027s more like a steep climb during the collection, right?\n\nMaybe \"Reduce RSS peak during GC\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd162ba7_6b4d8281",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-29T22:47:23Z",
+      "side": 1,
+      "message": "Could we rewrite this as a for-loop? I think it would be a bit easier to follow.",
+      "range": {
+        "startLine": 1679,
+        "startChar": 2,
+        "endLine": 1683,
+        "endChar": 10
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7403d5_cb16a2ed",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-11-29T22:47:23Z",
+      "side": 1,
+      "message": "Don\u0027t we need this to preceed any work on this page? So it should be acquire?",
+      "range": {
+        "startLine": 2610,
+        "startChar": 61,
+        "endLine": 2610,
+        "endChar": 86
+      },
+      "revId": "794474f5ffbf49449b80d8ebdfecf680a35872f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
