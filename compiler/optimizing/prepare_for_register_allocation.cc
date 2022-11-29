@@ -20,7 +20,7 @@
 #include "driver/compiler_options.h"
 #include "jni/jni_internal.h"
 #include "optimizing_compiler_stats.h"
-#include "well_known_classes.h"
+#include "well_known_classes-inl.h"
 
 namespace art HIDDEN {
 
@@ -83,7 +83,7 @@ void PrepareForRegisterAllocation::VisitBoundsCheck(HBoundsCheck* check) {
   if (check->IsStringCharAt()) {
     // Add a fake environment for String.charAt() inline info as we want the exception
     // to appear as being thrown from there. Skip if we're compiling String.charAt() itself.
-    ArtMethod* char_at_method = jni::DecodeArtMethod(WellKnownClasses::java_lang_String_charAt);
+    ArtMethod* char_at_method = WellKnownClasses::java_lang_String_charAt;
     if (GetGraph()->GetArtMethod() != char_at_method) {
       ArenaAllocator* allocator = GetGraph()->GetAllocator();
       HEnvironment* environment = new (allocator) HEnvironment(allocator,

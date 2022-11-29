@@ -36,6 +36,7 @@ extern "C" void android_set_application_target_sdk_version(uint32_t version);
 #include "base/sdk_version.h"
 #include "class_linker-inl.h"
 #include "class_loader_context.h"
+#include "class_root-inl.h"
 #include "common_throws.h"
 #include "debugger.h"
 #include "dex/class_accessor-inl.h"
@@ -55,6 +56,7 @@ extern "C" void android_set_application_target_sdk_version(uint32_t version);
 #include "mirror/class-inl.h"
 #include "mirror/dex_cache-inl.h"
 #include "mirror/object-inl.h"
+#include "mirror/object_array-alloc-inl.h"
 #include "native_util.h"
 #include "nativehelper/jni_macros.h"
 #include "nativehelper/scoped_local_ref.h"
@@ -63,7 +65,6 @@ extern "C" void android_set_application_target_sdk_version(uint32_t version);
 #include "scoped_thread_state_change-inl.h"
 #include "thread.h"
 #include "thread_list.h"
-#include "well_known_classes.h"
 
 namespace art {
 
@@ -190,27 +191,29 @@ static jboolean VMRuntime_isJavaDebuggable(JNIEnv*, jobject) {
 }
 
 static jobjectArray VMRuntime_properties(JNIEnv* env, jobject) {
-  DCHECK(WellKnownClasses::java_lang_String != nullptr);
-
   const std::vector<std::string>& properties = Runtime::Current()->GetProperties();
-  ScopedLocalRef<jobjectArray> ret(env,
-                                   env->NewObjectArray(static_cast<jsize>(properties.size()),
-                                                       WellKnownClasses::java_lang_String,
-                                                       nullptr /* initial element */));
-  if (ret == nullptr) {
-    DCHECK(env->ExceptionCheck());
+  Thread* self = down_cast<JNIEnvExt*>(env)->GetSelf();
+  ScopedObjectAccess soa(self);
+  StackHandleScope<1u> hs(self);
+  Handle<mirror::ObjectArray<mirror::String>> array = hs.NewHandle(
+      mirror::ObjectArray<mirror::String>::Alloc(
+          self, GetClassRoot<mirror::ObjectArray<mirror::String>>(), properties.size()));
+  if (array == nullptr) {
+    DCHECK(self->IsExceptionPending());
     return nullptr;
   }
   for (size_t i = 0; i != properties.size(); ++i) {
-    ScopedLocalRef<jstring> str(env, env->NewStringUTF(properties[i].c_str()));
+    ObjPtr<mirror::String> str =
+        mirror::String::AllocFromModifiedUtf8(self, properties[i].c_str());
     if (str == nullptr) {
-      DCHECK(env->ExceptionCheck());
+      DCHECK(self->IsExceptionPending());
       return nullptr;
     }
-    env->SetObjectArrayElement(ret.get(), static_cast<jsize>(i), str.get());
-    DCHECK(!env->ExceptionCheck());
+    // We're initializing a newly allocated array object, so we do not need to record that under
+    // a transaction. If the transaction is aborted, the whole object shall be unreachable.
+    array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(i, str);
   }
-  return ret.release();
+  return soa.AddLocalReference<jobjectArray>(array.Get());
 }
 
 // This is for backward compatibility with dalvik which returned the

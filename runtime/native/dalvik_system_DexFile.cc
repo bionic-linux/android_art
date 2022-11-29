@@ -32,6 +32,7 @@
 #include "base/zip_archive.h"
 #include "class_linker.h"
 #include "class_loader_context.h"
+#include "class_root-inl.h"
 #include "common_throws.h"
 #include "dex/art_dex_file_loader.h"
 #include "dex/descriptors_names.h"
@@ -43,6 +44,7 @@
 #include "jni/jni_internal.h"
 #include "mirror/class_loader.h"
 #include "mirror/object-inl.h"
+#include "mirror/object_array-alloc-inl.h"
 #include "mirror/string.h"
 #include "native_util.h"
 #include "nativehelper/jni_macros.h"
@@ -53,7 +55,6 @@
 #include "oat_file_manager.h"
 #include "runtime.h"
 #include "scoped_thread_state_change-inl.h"
-#include "well_known_classes.h"
 
 namespace art {
 
@@ -508,23 +509,32 @@ static jobjectArray DexFile_getClassNameList(JNIEnv* env, jclass, jobject cookie
   }
 
   // Now create output array and copy the set into it.
-  jobjectArray result = env->NewObjectArray(descriptors.size(),
-                                            WellKnownClasses::java_lang_String,
-                                            nullptr);
-  if (result != nullptr) {
-    auto it = descriptors.begin();
-    auto it_end = descriptors.end();
-    jsize i = 0;
-    for (; it != it_end; it++, ++i) {
-      std::string descriptor(DescriptorToDot(*it));
-      ScopedLocalRef<jstring> jdescriptor(env, env->NewStringUTF(descriptor.c_str()));
-      if (jdescriptor.get() == nullptr) {
-        return nullptr;
-      }
-      env->SetObjectArrayElement(result, i, jdescriptor.get());
-    }
+  Thread* self = down_cast<JNIEnvExt*>(env)->GetSelf();
+  ScopedObjectAccess soa(self);
+  StackHandleScope<1u> hs(self);
+  Handle<mirror::ObjectArray<mirror::String>> array = hs.NewHandle(
+      mirror::ObjectArray<mirror::String>::Alloc(
+          self, GetClassRoot<mirror::ObjectArray<mirror::String>>(), descriptors.size()));
+  if (array == nullptr) {
+    DCHECK(self->IsExceptionPending());
+    return nullptr;
   }
-  return result;
+  jsize i = 0;
+  for (const char* descriptor : descriptors) {
+    std::string dot_descriptor(DescriptorToDot(descriptor));
+    ObjPtr<mirror::String> odescriptor =
+        mirror::String::AllocFromModifiedUtf8(self, dot_descriptor.c_str());
+    if (odescriptor == nullptr) {
+      DCHECK(self->IsExceptionPending());
+      return nullptr;
+    }
+    // We're initializing a newly allocated array object, so we do not need to record that under
+    // a transaction. If the transaction is aborted, the whole object shall be unreachable.
+    array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+        i, odescriptor);
+    ++i;
+  }
+  return soa.AddLocalReference<jobjectArray>(array.Get());
 }
 
 static jint GetDexOptNeeded(JNIEnv* env,
@@ -655,23 +665,38 @@ static jobjectArray DexFile_getDexFileOptimizationStatus(JNIEnv* env,
   OatFileAssistant::GetOptimizationStatus(
       filename.c_str(), target_instruction_set, &compilation_filter, &compilation_reason);
 
-  ScopedLocalRef<jstring> j_compilation_filter(env, env->NewStringUTF(compilation_filter.c_str()));
-  if (j_compilation_filter.get() == nullptr) {
+  Thread* self = down_cast<JNIEnvExt*>(env)->GetSelf();
+  ScopedObjectAccess soa(self);
+  StackHandleScope<2u> hs(self);
+  Handle<mirror::String> h_compilation_filter = hs.NewHandle(
+      mirror::String::AllocFromModifiedUtf8(self, compilation_filter.c_str()));
+  if (h_compilation_filter == nullptr) {
+    DCHECK(self->IsExceptionPending());
     return nullptr;
   }
-  ScopedLocalRef<jstring> j_compilation_reason(env, env->NewStringUTF(compilation_reason.c_str()));
-  if (j_compilation_reason.get() == nullptr) {
+  Handle<mirror::String> h_compilation_reason = hs.NewHandle(
+      mirror::String::AllocFromModifiedUtf8(self, compilation_reason.c_str()));
+  if (h_compilation_reason == nullptr) {
+    DCHECK(self->IsExceptionPending());
     return nullptr;
   }
 
   // Now create output array and copy the set into it.
-  jobjectArray result = env->NewObjectArray(2,
-                                            WellKnownClasses::java_lang_String,
-                                            nullptr);
-  env->SetObjectArrayElement(result, 0, j_compilation_filter.get());
-  env->SetObjectArrayElement(result, 1, j_compilation_reason.get());
+  ObjPtr<mirror::ObjectArray<mirror::String>> array =
+      mirror::ObjectArray<mirror::String>::Alloc(
+          self, GetClassRoot<mirror::ObjectArray<mirror::String>>(), 2);
+  if (array == nullptr) {
+    DCHECK(self->IsExceptionPending());
+    return nullptr;
+  }
+  // We're initializing a newly allocated array object, so we do not need to record that under
+  // a transaction. If the transaction is aborted, the whole object shall be unreachable.
+  array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+      0, h_compilation_filter.Get());
+  array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+      1, h_compilation_reason.Get());
 
-  return result;
+  return soa.AddLocalReference<jobjectArray>(array);
 }
 
 static jint DexFile_getDexOptNeeded(JNIEnv* env,
@@ -914,30 +939,45 @@ static jobjectArray DexFile_getDexFileOutputPaths(JNIEnv* env,
     oat_filename = best_oat_file->GetLocation();
     is_vdex_only = best_oat_file->IsBackedByVdexOnly();
   }
-  ScopedLocalRef<jstring> joatFilename(env, env->NewStringUTF(oat_filename.c_str()));
-  if (joatFilename.get() == nullptr) {
+
+  Thread* self = down_cast<JNIEnvExt*>(env)->GetSelf();
+  ScopedObjectAccess soa(self);
+  StackHandleScope<2u> hs(self);
+  Handle<mirror::String> h_oat_filename = hs.NewHandle(
+      mirror::String::AllocFromModifiedUtf8(self, oat_filename.c_str()));
+  if (h_oat_filename == nullptr) {
+    DCHECK(self->IsExceptionPending());
     return nullptr;
   }
 
   if (is_vdex_only) {
-    jobjectArray result = env->NewObjectArray(1,
-                                              WellKnownClasses::java_lang_String,
-                                              nullptr);
-    env->SetObjectArrayElement(result, 0, joatFilename.get());
-    return result;
+    ObjPtr<mirror::ObjectArray<mirror::String>> array =
+        mirror::ObjectArray<mirror::String>::Alloc(
+            self, GetClassRoot<mirror::ObjectArray<mirror::String>>(), 1);
+    // We're initializing a newly allocated array object, so we do not need to record that under
+    // a transaction. If the transaction is aborted, the whole object shall be unreachable.
+    array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+        0, h_oat_filename.Get());
+    return soa.AddLocalReference<jobjectArray>(array);
   } else {
     vdex_filename = GetVdexFilename(oat_filename);
-    ScopedLocalRef<jstring> jvdexFilename(env, env->NewStringUTF(vdex_filename.c_str()));
-    if (jvdexFilename.get() == nullptr) {
+    Handle<mirror::String> h_vdex_filename = hs.NewHandle(
+        mirror::String::AllocFromModifiedUtf8(self, vdex_filename.c_str()));
+    if (h_vdex_filename == nullptr) {
+      DCHECK(self->IsExceptionPending());
       return nullptr;
     }
 
-    jobjectArray result = env->NewObjectArray(2,
-                                              WellKnownClasses::java_lang_String,
-                                              nullptr);
-    env->SetObjectArrayElement(result, 0, jvdexFilename.get());
-    env->SetObjectArrayElement(result, 1, joatFilename.get());
-    return result;
+    ObjPtr<mirror::ObjectArray<mirror::String>> array =
+        mirror::ObjectArray<mirror::String>::Alloc(
+            self, GetClassRoot<mirror::ObjectArray<mirror::String>>(), 2);
+    // We're initializing a newly allocated array object, so we do not need to record that under
+    // a transaction. If the transaction is aborted, the whole object shall be unreachable.
+    array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+        0, h_vdex_filename.Get());
+    array->SetWithoutChecks</*kTransactionActive=*/ false, /*kCheckTransaction=*/ false>(
+        1, h_oat_filename.Get());
+    return soa.AddLocalReference<jobjectArray>(array);
   }
 }
 
