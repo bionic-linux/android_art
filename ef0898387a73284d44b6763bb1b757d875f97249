@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28351e12_b6504c26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-11-30T09:29:06Z",
+      "side": 1,
+      "message": "How did you see the issue? Could you add that in the commit message?",
+      "revId": "ef0898387a73284d44b6763bb1b757d875f97249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
