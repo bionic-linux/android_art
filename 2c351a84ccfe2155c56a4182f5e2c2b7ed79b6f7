@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64a1f57_74528672",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-12-01T15:03:07Z",
+      "side": 1,
+      "message": "I guess `[\"foo\", \"bar\"]` was the wrong syntax as matches only bots what have both `device_type\u003d\u003dfoo` *and* `device_type\u003d\u003dbar` which is never.\n\nMaybe `[\"foo|bar\"]` is correct?  At least it seems to work in the UI.  I wish there was syntax for `!foo` (not foo), but I think that does not exist?",
+      "revId": "2c351a84ccfe2155c56a4182f5e2c2b7ed79b6f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
