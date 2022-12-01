@@ -22,6 +22,30 @@
       },
       "revId": "0b163a7862f505a6385fb022cb8fc6aa495ab3db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8710560c_e4253bdb",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-01T17:34:01Z",
+      "side": 1,
+      "message": "Yes, it would handle the case but it would unnecessarily look at the `DexFile` data and `DexCache` entries and possibly evict some other type that is more expensive to look up.",
+      "parentUuid": "ae52cf2a_16f30330",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "0b163a7862f505a6385fb022cb8fc6aa495ab3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
