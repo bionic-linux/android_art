@@ -34,6 +34,24 @@
       "parentUuid": "a64a1f57_74528672",
       "revId": "2c351a84ccfe2155c56a4182f5e2c2b7ed79b6f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9ebefa_6952e989",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2022-12-01T17:30:20Z",
+      "side": 1,
+      "message": "Makes sense, I just expected \"OR\" to be default for a list rather then \"AND\".\n\nDone - `[` and `]` removed.",
+      "parentUuid": "50a92a5b_b3e70283",
+      "revId": "2c351a84ccfe2155c56a4182f5e2c2b7ed79b6f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
