@@ -16,6 +16,24 @@
       "message": "I guess `[\"foo\", \"bar\"]` was the wrong syntax as matches only bots what have both `device_type\u003d\u003dfoo` *and* `device_type\u003d\u003dbar` which is never.\n\nMaybe `[\"foo|bar\"]` is correct?  At least it seems to work in the UI.  I wish there was syntax for `!foo` (not foo), but I think that does not exist?",
       "revId": "2c351a84ccfe2155c56a4182f5e2c2b7ed79b6f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a92a5b_b3e70283",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002560
+      },
+      "writtenOn": "2022-12-01T15:48:08Z",
+      "side": 1,
+      "message": "Oh yes\n\nLong story short:\n- bots expose a list of valid values for each dimension keys.\n- task requests list the *required* values for each dimension keys (generally only one). The \"OR\" is implemented as |. Remove the [].",
+      "parentUuid": "a64a1f57_74528672",
+      "revId": "2c351a84ccfe2155c56a4182f5e2c2b7ed79b6f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
