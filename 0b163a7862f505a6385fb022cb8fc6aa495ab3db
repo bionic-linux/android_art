@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae52cf2a_16f30330",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-01T16:27:05Z",
+      "side": 1,
+      "message": "One would expect `ResolveReturnType` to handle this case. Should it?",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "0b163a7862f505a6385fb022cb8fc6aa495ab3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
