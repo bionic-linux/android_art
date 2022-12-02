@@ -18,6 +18,92 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b00bac_88bac589",
+        "filename": "compiler/optimizing/optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-02T14:54:27Z",
+      "side": 1,
+      "message": "ditto for not needing this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a54633_774632fb",
+        "filename": "compiler/optimizing/optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-02T14:54:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a9288b_e7d6223a",
+        "filename": "compiler/optimizing/optimization.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-02T14:54:27Z",
+      "side": 1,
+      "message": "You don\u0027t need this - the pass is arch independent.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779e404d_84559d00",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-02T14:54:27Z",
+      "side": 1,
+      "message": "How about just running it after RunArchOptimizations, just before PrepareForRegisterAllocation? Then you wouldn\u0027t need to list it so many times here.",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3a7792f8_1adec279",
@@ -36,6 +122,29 @@
         "startChar": 0,
         "endLine": 122,
         "endChar": 23
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd66d8c_f339c3b3",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-02T14:54:27Z",
+      "side": 1,
+      "message": "Use the side effects instead: `CanTriggerGC`.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
       },
       "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
