@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "daf38f9c_7c3697bc",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-02T15:55:14Z",
+      "side": 1,
+      "message": "If `value_can_be_null` is true, the write barrier is conditional on `value !\u003d nullptr`. If we\u0027re storing `value1` and `value2` and eliminate one of the write barriers, the other one needs to happen if `value1 !\u003d nullptr || value2 !\u003d nullptr` but we do not currently have the other value available when emitting the write barrier we kept.\n\nWe need to collect all values as extra inputs of the store and `OR` them for the write barrier check. Alternatively, we can `OR` them as we go with\n\n    Set(value1)/no-write-barrier\n    merged12 \u003d OR(value1, value2)\n    Set(value2)/no-write-barrier\n    merged123 \u003d OR(merged12, value3)\n    Set(value3)/write-barrier-if(merged123 !\u003d 0)\n\nwhere the `OR` needs to accept both references and merged values.",
+      "range": {
+        "startLine": 2275,
+        "startChar": 47,
+        "endLine": 2275,
+        "endChar": 64
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e28f109_afc88bcb",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 5693,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-02T15:55:14Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 5693,
+        "startChar": 49,
+        "endLine": 5693,
+        "endChar": 88
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61b00bac_88bac589",
         "filename": "compiler/optimizing/optimization.cc",
         "patchSetId": 8
@@ -129,6 +175,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c71b163_ac6bf589",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-02T15:55:14Z",
+      "side": 1,
+      "message": "I would prefer to ignore the write barrier for the previous instruction and emit it for this one, similar to the write barrier currently being emitted _after_ the store.\n\nThis would also play better with the need to collect all stored values for the merged null check we need as I have described elsewhere.",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dd66d8c_f339c3b3",
         "filename": "compiler/optimizing/write_barrier_elimination.cc",
         "patchSetId": 8
@@ -193,6 +256,29 @@
         "startChar": 0,
         "endLine": 129,
         "endChar": 3
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b951e41c_25d0ed16",
+        "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-02T15:55:14Z",
+      "side": 1,
+      "message": "Can we instead print an extra attribute in graph visualizer?",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 25
       },
       "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
