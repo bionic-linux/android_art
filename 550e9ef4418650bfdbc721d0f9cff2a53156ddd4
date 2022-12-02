@@ -176,6 +176,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d32fda9f_cd80c212",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-02T15:43:13Z",
+      "side": 1,
+      "message": "Previously I was using the \"throw\" which happened during type checking (which happens before the GC mark). Is that point where the \"can trigger gc\" may happen?",
+      "parentUuid": "d4352ff4_867577ab",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "840507ec_c5da5223",
         "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
         "patchSetId": 8
