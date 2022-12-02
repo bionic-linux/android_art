@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20f37685_7ddb4f6d",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-02T16:01:15Z",
+      "side": 1,
+      "message": "Sorry for the triple message but just to clarify, I am asking this because I see us clearing the \"needs_type_check\" flag but not the \"can trigger gc\" flag. If the needs type check is the only thing that can trigger a GC, we should update the GC flag when clearing the needs type check.",
+      "parentUuid": "d32fda9f_cd80c212",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b951e41c_25d0ed16",
         "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
         "patchSetId": 8
