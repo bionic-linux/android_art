@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ed9f99b_fba1838c",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-02T16:12:08Z",
+      "side": 1,
+      "message": "Yes, please, clear the side effects in `HArraySet::ClearNeedsTypeCheck()`. (Unnecessary side effects can hinder various optimizations.)\n\nMaybe we should have the `GraphChecker` enforce that `ArraySet` without type check has no side effects.",
+      "parentUuid": "20f37685_7ddb4f6d",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b951e41c_25d0ed16",
         "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
         "patchSetId": 8
