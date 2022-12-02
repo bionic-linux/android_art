@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ea76d7_df77a231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-02T09:53:45Z",
+      "side": 1,
+      "message": "Vladimir PTAL",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a7792f8_1adec279",
+        "filename": "compiler/optimizing/optimizing_compiler_stats.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-02T09:53:45Z",
+      "side": 1,
+      "message": "Emitted write barriers are `kPossibleWriteBarrier - kRemovedWriteBarrier`",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 23
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "840507ec_c5da5223",
+        "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-02T09:53:45Z",
+      "side": 1,
+      "message": "This comment should be in line 216, not here. I will update this before submitting the CL.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
