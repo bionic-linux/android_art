@@ -57,6 +57,11 @@
 #include "string_array_utils.h"
 #include "thread-current-inl.h"
 
+#ifdef ART_TARGET_ANDROID
+#include <sys/system_properties.h>
+#include <android/api-level.h>
+#endif  // ART_TARGET_ANDROID
+
 namespace art {
 
 // Should be the same as dalvik.system.DexFile.ENFORCE_READ_ONLY_JAVA_DCL
@@ -308,6 +313,51 @@ static jobject DexFile_openInMemoryDexFilesNative(JNIEnv* env,
   return CreateCookieFromOatFileManagerResult(env, dex_files, oat_file, error_msgs);
 }
 
+#ifdef ART_TARGET_ANDROID
+static bool isReadOnlyJavaDclEnforced() {
+  static bool is_at_least_u = [] {
+    const int api_level = android_get_device_api_level();
+    if (api_level > __ANDROID_API_T__) {
+      return true;
+    } else if (api_level == __ANDROID_API_T__) {
+      // Check if running U preview
+      char value[92] = { 0 };
+      if (__system_property_get("ro.build.version.preview_sdk", value) >= 0 && atoi(value) > 0) {
+        return true;
+      }
+    }
+    return false;
+  }();
+  if (is_at_least_u) {
+    // Also check target SDK to determine whether throw Exception
+    Runtime* const runtime = Runtime::Current();
+    CompatFramework& compatFramework = runtime->GetCompatFramework();
+    return compatFramework.IsChangeEnabled(kEnforceReadOnlyJavaDcl);
+  } else {
+    return false;
+  }
+}
+#else   // ART_TARGET_ANDROID
+constexpr static bool isReadOnlyJavaDclEnforced() {
+  (void) kEnforceReadOnlyJavaDcl;
+  return false;
+}
+#endif  // ART_TARGET_ANDROID
+
+static bool isReadOnlyJavaDclChecked() {
+  if (!kIsTargetAndroid) {
+    return false;
+  }
+  const int uid = getuid();
+  // The following UIDs are exempted:
+  // * Root (0): root processes always have write access to files.
+  // * System (1000): /data/app/**.apk are owned by AID_SYSTEM;
+  //   loading installed APKs in system_server is allowed.
+  // * Shell (2000): directly calling dalvikvm/app_process in ADB shell
+  //   to run JARs with CLI is allowed.
+  return uid != 0 && uid != 1000 && uid != 2000;
+}
+
 // TODO(calin): clean up the unused parameters (here and in libcore).
 static jobject DexFile_openDexFileNative(JNIEnv* env,
                                          jclass,
@@ -321,27 +371,14 @@ static jobject DexFile_openDexFileNative(JNIEnv* env,
     return nullptr;
   }
 
-  if (kIsTargetAndroid) {
-    const int uid = getuid();
-    // The following UIDs are exempted:
-    // * Root (0): root processes always have write access to files.
-    // * System (1000): /data/app/**.apk are owned by AID_SYSTEM;
-    //   loading installed APKs in system_server is allowed.
-    // * Shell (2000): directly calling dalvikvm/app_process in ADB shell
-    //   to run JARs with CLI is allowed.
-    if (uid != 0 && uid != 1000 && uid != 2000) {
-      Runtime* const runtime = Runtime::Current();
-      CompatFramework& compatFramework = runtime->GetCompatFramework();
-      if (compatFramework.IsChangeEnabled(kEnforceReadOnlyJavaDcl)) {
-        if (access(sourceName.c_str(), W_OK) == 0) {
-          LOG(ERROR) << "Attempt to load writable dex file: " << sourceName.c_str();
-          ScopedLocalRef<jclass> se(env, env->FindClass("java/lang/SecurityException"));
-          std::string message(
-              StringPrintf("Writable dex file '%s' is not allowed.", sourceName.c_str()));
-          env->ThrowNew(se.get(), message.c_str());
-          return nullptr;
-        }
-      }
+  if (isReadOnlyJavaDclChecked() && access(sourceName.c_str(), W_OK) == 0) {
+    LOG(ERROR) << "Attempt to load writable dex file: " << sourceName.c_str();
+    if (isReadOnlyJavaDclEnforced()) {
+      ScopedLocalRef<jclass> se(env, env->FindClass("java/lang/SecurityException"));
+      std::string message(
+          StringPrintf("Writable dex file '%s' is not allowed.", sourceName.c_str()));
+      env->ThrowNew(se.get(), message.c_str());
+      return nullptr;
     }
   }
 
@@ -771,6 +808,11 @@ static jboolean DexFile_isOptimizedCompilerFilter(JNIEnv* env,
   return CompilerFilter::IsAotCompilationEnabled(filter) ? JNI_TRUE : JNI_FALSE;
 }
 
+static jboolean DexFile_isReadOnlyJavaDclEnforced(JNIEnv* env ATTRIBUTE_UNUSED,
+                                                 jclass javeDexFileClass ATTRIBUTE_UNUSED) {
+  return (isReadOnlyJavaDclChecked() && isReadOnlyJavaDclEnforced()) ? JNI_TRUE : JNI_FALSE;
+}
+
 static jstring DexFile_getNonProfileGuidedCompilerFilter(JNIEnv* env,
                                                          jclass javeDexFileClass ATTRIBUTE_UNUSED,
                                                          jstring javaCompilerFilter) {
@@ -981,6 +1023,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(DexFile, isProfileGuidedCompilerFilter, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(DexFile, isVerifiedCompilerFilter, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(DexFile, isOptimizedCompilerFilter, "(Ljava/lang/String;)Z"),
+  NATIVE_METHOD(DexFile, isReadOnlyJavaDclEnforced, "()Z"),
   NATIVE_METHOD(DexFile,
                 getNonProfileGuidedCompilerFilter,
                 "(Ljava/lang/String;)Ljava/lang/String;"),
