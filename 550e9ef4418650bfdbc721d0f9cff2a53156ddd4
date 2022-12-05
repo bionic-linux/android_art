@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b90e1a_03765cf3",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 5693,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e28f109_afc88bcb",
+      "range": {
+        "startLine": 5693,
+        "startChar": 49,
+        "endLine": 5693,
+        "endChar": 88
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61b00bac_88bac589",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-12-02T14:54:27Z",
       "side": 1,
       "message": "ditto for not needing this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d9011c_fe3282bc",
+        "filename": "compiler/optimizing/optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b00bac_88bac589",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8fae45_93c1fb65",
+        "filename": "compiler/optimizing/optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a54633_774632fb",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5a9288b_e7d6223a",
@@ -133,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7d7dd1_16e98301",
+        "filename": "compiler/optimizing/optimization.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a9288b_e7d6223a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "779e404d_84559d00",
@@ -146,6 +242,24 @@
       "writtenOn": "2022-12-02T14:54:27Z",
       "side": 1,
       "message": "How about just running it after RunArchOptimizations, just before PrepareForRegisterAllocation? Then you wouldn\u0027t need to list it so many times here.",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db157d69_afd3882b",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779e404d_84559d00",
       "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -309,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb53759_6d7166e2",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Changed to using side effects.\n\nDealing with the incorrect side effects update in aosp/2327714.",
+      "parentUuid": "9ed9f99b_fba1838c",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 3
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b951e41c_25d0ed16",
@@ -332,6 +470,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b930f8_54cc7164",
+        "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b951e41c_25d0ed16",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "840507ec_c5da5223",
@@ -345,6 +507,30 @@
       "writtenOn": "2022-12-02T09:53:45Z",
       "side": 1,
       "message": "This comment should be in line 216, not here. I will update this before submitting the CL.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318ca1c2_a8c2d71a",
+        "filename": "test/2247-checker-write-barrier-elimination/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-05T16:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840507ec_c5da5223",
       "range": {
         "startLine": 211,
         "startChar": 0,
