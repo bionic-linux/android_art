@@ -293,9 +293,11 @@ art_cc_defaults {
         ":art-gtest-jars-Nested",
     ],
     header_libs: ["jni_headers"],
+    static_libs: [
+        "libziparchive",
+    ],
     shared_libs: [
         "libunwindstack",
-        "libziparchive",
     ],
 }
 
