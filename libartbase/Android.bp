@@ -113,6 +113,10 @@ cc_defaults {
             ],
         },
         windows: {
+            enabled: true,
+            shared: {
+                enabled: false,
+            },
             srcs: [
                 "base/mem_map_windows.cc",
             ],
@@ -206,20 +210,6 @@ art_cc_library {
         "com.android.art",
         "com.android.art.debug",
     ],
-
-    shared_libs: [
-        "libbase",
-        "libziparchive",
-    ],
-    export_shared_lib_headers: ["libbase"],
-    target: {
-        windows: {
-            enabled: true,
-            shared: {
-                enabled: false,
-            },
-        },
-    },
     afdo: true,
 }
 
@@ -232,19 +222,6 @@ art_cc_library {
     apex_available: [
         "com.android.art.debug",
     ],
-    shared_libs: [
-        "libbase",
-        "libziparchive",
-    ],
-    export_shared_lib_headers: ["libbase"],
-    target: {
-        windows: {
-            enabled: true,
-            shared: {
-                enabled: false,
-            },
-        },
-    },
 }
 
 art_cc_defaults {
