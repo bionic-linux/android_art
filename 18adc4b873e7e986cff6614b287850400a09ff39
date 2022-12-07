@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb18c37b_745d6b13",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-12-07T13:47:09Z",
+      "side": 1,
+      "message": "Maybe, haven\u0027t checked. In this script flags have been implemented by evaluating them directly, so I\u0027m sticking with it.",
+      "parentUuid": "b7639ac0_b1180a5c",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "18adc4b873e7e986cff6614b287850400a09ff39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc8f48a2_24f19874",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T12:37:50Z",
       "side": 1,
       "message": "The old code is using the non \"-host\" version of deapexer. Is it intentional?",
+      "range": {
+        "startLine": 78,
+        "startChar": 44,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "18adc4b873e7e986cff6614b287850400a09ff39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "453cc59f_00e56231",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-12-07T13:47:09Z",
+      "side": 1,
+      "message": "Thanks for checking. Yes, with the array I chose to align that for all the binaries. For all (or at least most) host enabled modules Soong produces a `\u003cxx\u003e-host` ninja target, so it\u0027s safe to pick that to only build the host variant.",
+      "parentUuid": "dc8f48a2_24f19874",
       "range": {
         "startLine": 78,
         "startChar": 44,
