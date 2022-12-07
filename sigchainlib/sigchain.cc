@@ -242,6 +242,8 @@ class SignalChain {
     // [2] https://lore.kernel.org/linux-arm-kernel/cover.1605235762.git.pcc@google.com/
 #if !defined(__BIONIC__)
 #define SA_RESTORER 0x04000000
+#else
+#define SA_RESTORER 0x00000000
 #endif
     kernel_supported_flags_ = SA_NOCLDSTOP | SA_NOCLDWAIT | SA_SIGINFO |
                               SA_ONSTACK | SA_RESTART | SA_NODEFER | SA_RESETHAND;

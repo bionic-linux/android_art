@@ -969,6 +969,8 @@ def default_run(ctx, args, **kwargs):
 
   if VM:
     dalvikvm_logger = "-Xuse-stderr-logger"
+  else:
+    dalvikvm_logger = ""
 
   dalvikvm_cmdline = f"{INVOKE_WITH} {GDB} {ANDROID_ART_BIN_DIR}/{DALVIKVM} \
                        {GDB_ARGS} \

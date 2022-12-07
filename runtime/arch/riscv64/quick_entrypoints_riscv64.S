@@ -3,71 +3,6 @@
 #include "interpreter/cfi_asm_support.h"
 
 
-#define ALL_ARGS_SIZE (/*a0-a7*/ 8 * 8 + /*fa0-fa7*/ 8 * 8)
-
-.macro SAVE_ALL_ARGS_INCREASE_FRAME extra_space
-    // Reserve spae for all argument registers, plus the extra space.
-    addi sp, sp, -(ALL_ARGS_SIZE + \extra_space)
-
-    // Save registers args a0-a7.
-    sd   a0, (0*8)(sp)
-    sd   a1, (1*8)(sp)
-    sd   a2, (2*8)(sp)
-    sd   a3, (3*8)(sp)
-    sd   a4, (4*8)(sp)
-    sd   a5, (5*8)(sp)
-    sd   a6, (6*8)(sp)
-    sd   a7, (7*8)(sp)
-
-    // Save registers fa0-fa7.
-    fsd  fa0, (8*8)(sp)
-    fsd  fa1, (9*8)(sp)
-    fsd  fa2, (10*8)(sp)
-    fsd  fa3, (11*8)(sp)
-    fsd  fa4, (12*8)(sp)
-    fsd  fa5, (13*8)(sp)
-    fsd  fa6, (14*8)(sp)
-    fsd  fa7, (15*8)(sp)
-.endm
-
-.macro RESTORE_ALL_ARGS_DECREASE_FRAME extra_space
-    // Restore registers args a0-a7.
-    ld   a0, (0*8)(sp)
-    ld   a1, (1*8)(sp)
-    ld   a2, (2*8)(sp)
-    ld   a3, (3*8)(sp)
-    ld   a4, (4*8)(sp)
-    ld   a5, (5*8)(sp)
-    ld   a6, (6*8)(sp)
-    ld   a7, (7*8)(sp)
-
-    // Restore registers fa0-fa7.
-    fld  fa0, (8*8)(sp)
-    fld  fa1, (9*8)(sp)
-    fld  fa2, (10*8)(sp)
-    fld  fa3, (11*8)(sp)
-    fld  fa4, (12*8)(sp)
-    fld  fa5, (13*8)(sp)
-    fld  fa6, (14*8)(sp)
-    fld  fa7, (15*8)(sp)
-
-    // Reserve spae for all argument registers, plus the extra space.
-    addi sp, sp, (ALL_ARGS_SIZE + \extra_space)
-.endm
-
-
-.macro LOAD_RUNTIME_INSTANCE reg
-/*
-#if __has_feature(hwaddress_sanitizer) && __clang_major__ >= 10
-    adrp \reg, :pg_hi21_nc:_ZN3art7Runtime9instance_E
-#else
-    adrp \reg, _ZN3art7Runtime9instance_E
-#endif
-*/
-    la \reg, _ZN3art7Runtime9instance_E
-    ld \reg, 0(\reg)
-.endm
-
 
 .macro SETUP_SAVE_REFS_AND_ARGS_FRAME_INTERNAL base
 #if (FRAME_SIZE_SAVE_REFS_AND_ARGS != 28 * 8)
@@ -509,29 +444,6 @@
     sd t0, THREAD_TOP_QUICK_FRAME_OFFSET(xSELF)
 .endm
 
-
-    /*
-     * Macro that calls through to artDeliverPendingExceptionFromCode, where the pending
-     * exception is Thread::Current()->exception_ when the runtime method frame is ready.
-     */
-.macro DELIVER_PENDING_EXCEPTION_FRAME_READY
-    mv a0, xSELF
-
-    // Point of no return.
-    jal artDeliverPendingExceptionFromCode  // artDeliverPendingExceptionFromCode(Thread*)
-    unimp  // Unreached
-.endm
-
-    /*
-     * Macro that calls through to artDeliverPendingExceptionFromCode, where the pending
-     * exception is Thread::Current()->exception_.
-     */
-.macro DELIVER_PENDING_EXCEPTION
-    SETUP_SAVE_ALL_CALLEE_SAVES_FRAME
-    DELIVER_PENDING_EXCEPTION_FRAME_READY
-.endm
-
-
 .macro RETURN_OR_DELIVER_PENDING_EXCEPTION_REG reg
     ld \reg, THREAD_EXCEPTION_OFFSET(xSELF)
     bnez \reg, 1f
@@ -851,66 +763,6 @@ ENTRY art_quick_invoke_static_stub
 END art_quick_invoke_static_stub
 
 
-    /*
-     * Jni dlsym lookup stub.
-     */
-    .extern artFindNativeMethod
-    .extern artFindNativeMethodRunnable
-ENTRY art_jni_dlsym_lookup_stub
-
-    // spill regs.
-    SAVE_ALL_ARGS_INCREASE_FRAME 2 * 8
-    sd  fp, (ALL_ARGS_SIZE + 0)(sp)
-    sd  ra, (ALL_ARGS_SIZE + 8)(sp)
-    .cfi_rel_offset fp, (ALL_ARGS_SIZE + 0)
-    .cfi_rel_offset ra, (ALL_ARGS_SIZE + 8)
-    add   fp, sp, ALL_ARGS_SIZE
-
-    mv a0, xSELF   // pass Thread::Current()
-    // Call artFindNativeMethod() for normal native and artFindNativeMethodRunnable()
-    // for @FastNative or @CriticalNative.
-    ld    t0,  THREAD_TOP_QUICK_FRAME_OFFSET(a0)          // uintptr_t tagged_quick_frame
-    li    t1,  TAGGED_JNI_SP_MASK
-    not   t1, t1
-    and   t0, t0, t1                                      // ArtMethod** sp
-    ld    t0, (t0)                                        // ArtMethod* method
-    ld    t0, ART_METHOD_ACCESS_FLAGS_OFFSET(t0)          // uint32_t access_flags
-    li    t1, (ACCESS_FLAGS_METHOD_IS_FAST_NATIVE | ACCESS_FLAGS_METHOD_IS_CRITICAL_NATIVE)
-    bne   t0, t1, .Llookup_stub_fast_or_critical_native
-    jal   artFindNativeMethod
-    j     .Llookup_stub_continue
-
-.Llookup_stub_fast_or_critical_native:
-    jal   artFindNativeMethodRunnable
-    mv    t0, a0    // store result in scratch reg.
-
-.Llookup_stub_continue:
-    // load spill regs.
-    ld    fp, (ALL_ARGS_SIZE + 0)(sp)
-    ld    ra, (ALL_ARGS_SIZE + 8)(sp)
-    .cfi_restore fp
-    .cfi_restore ra
-    RESTORE_ALL_ARGS_DECREASE_FRAME 2 * 8
-
-    beqz  t0, 1f    // is method code null ?
-    jr    t0        // if non-null, tail call to method code.
-1:
-    ret             // restore regs and return to caller to handle exception.
-END art_jni_dlsym_lookup_stub
-
-
-    /*
-     * Jni dlsym lookup stub for @CriticalNative.
-     */
-ENTRY art_jni_dlsym_lookup_critical_stub
-//    // The hidden arg holding the tagged method (bit 0 set means GenericJNI) is x15.
-//    // For Generic JNI we already have a managed frame, so we reuse the art_jni_dlsym_lookup_stub.
-//    andi t0, x15, 1
-//    beqz t0, 1f
-//    j  art_jni_dlsym_lookup_stub
-//1:
-    unimp
-END art_jni_dlsym_lookup_critical_stub
 
 
 ENTRY art_quick_imt_conflict_trampoline
@@ -928,7 +780,7 @@ ENTRY art_quick_to_interpreter_bridge
 
     // uint64_t artQuickToInterpreterBridge(mirror::ArtMethod* method, Thread* self,
     //                                      mirror::ArtMethod** sp)
-    jal artQuickToInterpreterBridge
+    call artQuickToInterpreterBridge
 
     RESTORE_SAVE_REFS_AND_ARGS_FRAME       // TODO: no need to restore arguments in this case.
 
@@ -954,7 +806,7 @@ ENTRY art_quick_generic_jni_trampoline
     mv   a0, xSELF   // Thread*
     mv   a1, fp      // SP for the managed frame.
     mv   a2, sp      // reserved area for arguments and other saved data (up to managed frame)
-    jal  artQuickGenericJniTrampoline
+    call  artQuickGenericJniTrampoline
 
     // Check for error (class init check or locking for synchronized native method can throw).
     beqz a0, .Lexception_in_native
@@ -993,7 +845,7 @@ ENTRY art_quick_generic_jni_trampoline
     mv      a1, a0     // Result (from saved).
     mv      a0, xSELF  // Thread*
     fmv.x.d a2, fa0    // fa0 will contain floating point result, but needs to go into a2
-    jal     artQuickGenericJniEndTrampoline
+    call     artQuickGenericJniEndTrampoline
 
     // Pending exceptions possible.
     ld   t0, THREAD_EXCEPTION_OFFSET(xSELF)
@@ -1016,7 +868,7 @@ ENTRY art_quick_generic_jni_trampoline
 .Lcall_method_exit_hook:
     fmv.d.x fa0, a0
     li      a4, FRAME_SIZE_SAVE_REFS_AND_ARGS
-    jal     art_quick_method_exit_hook
+    call     art_quick_method_exit_hook
     j       .Lcall_method_exit_hook_done
 
 .Lexception_in_native:
@@ -1038,7 +890,7 @@ ENTRY art_quick_method_exit_hook
     addi a2, sp, 8*39                         // integer result ptr in kSaveEverything frame
     addi a1, sp, FRAME_SIZE_SAVE_EVERYTHING   // ArtMethod**
     mv   a0, xSELF                            // Thread::Current
-    jal artMethodExitHook                     // (Thread*, ArtMethod**, gpr_res*, fpr_res*,
+    call artMethodExitHook                     // (Thread*, ArtMethod**, gpr_res*, fpr_res*,
                                               // frame_size)
 
     // Normal return.
@@ -1057,7 +909,7 @@ ENTRY art_quick_proxy_invoke_handler
     SETUP_SAVE_REFS_AND_ARGS_FRAME_WITH_METHOD_IN_A0
     mv      a2, xSELF                   // pass Thread::Current
     mv      a3, sp                      // pass SP
-    jal     artQuickProxyInvokeHandler  // (Method* proxy method, receiver, Thread*, SP)
+    call     artQuickProxyInvokeHandler  // (Method* proxy method, receiver, Thread*, SP)
     ld      a2, THREAD_EXCEPTION_OFFSET(xSELF)
     bnez    a2, .Lexception_in_proxy    // success if no exception is pending
     .cfi_remember_state
@@ -1210,14 +1062,6 @@ ENTRY art_quick_do_long_jump
 
     jr  t1
 END art_quick_do_long_jump
-
-
-
-.macro UNDEFINED name
-    ENTRY \name
-        unimp
-    END \name
-.endm
 
 UNDEFINED art_quick_alloc_array_resolved_dlmalloc
 UNDEFINED art_quick_alloc_array_resolved_dlmalloc_instrumented
@@ -1425,15 +1269,6 @@ UNDEFINED art_quick_get_char_static
 UNDEFINED art_quick_get32_static
 UNDEFINED art_quick_get64_static
 UNDEFINED art_quick_get_obj_static
-UNDEFINED art_quick_aput_obj
-UNDEFINED art_jni_method_start
-UNDEFINED art_jni_method_end
-UNDEFINED art_jni_read_barrier
-UNDEFINED art_jni_method_entry_hook
-UNDEFINED art_jni_lock_object_no_inline
-UNDEFINED art_jni_lock_object
-UNDEFINED art_jni_unlock_object_no_inline
-UNDEFINED art_jni_unlock_object
 UNDEFINED art_quick_lock_object_no_inline
 UNDEFINED art_quick_lock_object
 UNDEFINED art_quick_unlock_object_no_inline
@@ -1453,8 +1288,6 @@ UNDEFINED art_quick_throw_null_pointer_exception
 UNDEFINED art_quick_throw_stack_overflow
 UNDEFINED art_quick_throw_string_bounds
 UNDEFINED art_quick_update_inline_cache
-UNDEFINED art_jni_monitored_method_start
-UNDEFINED art_jni_monitored_method_end
 UNDEFINED art_quick_indexof
 
 
