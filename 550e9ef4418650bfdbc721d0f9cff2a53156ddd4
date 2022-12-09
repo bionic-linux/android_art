@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96a4069_fb1a9136",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2275,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-09T15:41:31Z",
+      "side": 1,
+      "message": "Added a flag that it is set when we are relying on that instruction\u0027s write barrier. In those cases, we don\u0027t do the `if (null)` runtime optimization.",
+      "parentUuid": "daf38f9c_7c3697bc",
+      "range": {
+        "startLine": 2275,
+        "startChar": 47,
+        "endLine": 2275,
+        "endChar": 64
+      },
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e28f109_afc88bcb",
@@ -300,6 +324,24 @@
       "writtenOn": "2022-12-02T15:55:14Z",
       "side": 1,
       "message": "I would prefer to ignore the write barrier for the previous instruction and emit it for this one, similar to the write barrier currently being emitted _after_ the store.\n\nThis would also play better with the need to collect all stored values for the merged null check we need as I have described elsewhere.",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3fa0967_098fd22a",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-09T15:41:31Z",
+      "side": 1,
+      "message": "Making it the first one is easier with the current implementation. I think that we can forgo that runtime optimization when we are relying on a write barrier due to another instruction.",
+      "parentUuid": "1c71b163_ac6bf589",
       "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
