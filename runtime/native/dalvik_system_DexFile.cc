@@ -366,7 +366,7 @@ static bool isReadOnlyJavaDclChecked() {
 
 // TODO(calin): clean up the unused parameters (here and in libcore).
 static jobject DexFile_openDexFileNative(JNIEnv* env,
-                                         jclass,
+                                         jclass clz,
                                          jstring javaSourceName,
                                          jstring javaOutputName ATTRIBUTE_UNUSED,
                                          jint flags ATTRIBUTE_UNUSED,
@@ -385,6 +385,9 @@ static jobject DexFile_openDexFileNative(JNIEnv* env,
           StringPrintf("Writable dex file '%s' is not allowed.", sourceName.c_str()));
       env->ThrowNew(se.get(), message.c_str());
       return nullptr;
+    } else {
+      static jmethodID mId = env->GetStaticMethodID(clz, "logRWDex", "(Ljava/lang/String;)V");
+      env->CallStaticVoidMethod(clz, mId, javaSourceName);
     }
   }
 
