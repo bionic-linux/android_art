@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efe9e551_b3e367d5",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-12T14:12:11Z",
+      "side": 1,
+      "message": "My point is, the name of the parameter doesn\u0027t really match what\u0027s happening in this method, given the write barrier isn\u0027t skipped, and the parameter is only used for knowing if we need to do a null check.",
+      "parentUuid": "e32383b5_d5da1539",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29623248_99bc208b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
