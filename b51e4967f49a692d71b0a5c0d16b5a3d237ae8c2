@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e32383b5_d5da1539",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-12T13:52:29Z",
+      "side": 1,
+      "message": "Before this CL, for values that need a write barrier we do a runtime optimization: if the stored value is null at runtime, we skip marking the GC card.\n\nIf we are eliminating write barriers we might run into a situation like:\n```\n  barrier-needed (but it is a null store)\n  barrier-eliminated (non-null store, relying on store 1 write barrier)\n  barrier-eliminated (non-null store, relying on store 1 write barrier)\n```\n\nIf do the runtime optimization as-is we will not mark the GC card in store 1 which means we don\u0027t mark it for any store but we should have. My solution is to perform the runtime optimization if:\n* the value can be null, and\n* this particular write barrier is not being relied on.\n\nI think it is a reasonable compromise as it would only affect negatively when all of the stored values are null at runtime on that particular write barrier, which is not the common case. If at least one of the stores is non-null, we should mark the GC card.\n\nAs a note, this doesn\u0027t affect compile-time-known null stores.\n\nAn alternative is to do a `if (store 1 is null || store 2 is null || store 3 is null)` check at runtime. However, that would increase code size and codebase complexity as it would mean collecting which stores are relying on which write barriers and doing more than one comparison at runtime.",
+      "parentUuid": "0858451e_72ff2772",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29623248_99bc208b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
