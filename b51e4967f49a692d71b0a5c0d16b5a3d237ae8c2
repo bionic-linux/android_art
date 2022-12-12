@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95a9b1d5_ff452dd7",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-12T14:19:52Z",
+      "side": 1,
+      "message": "Willing to bikeshed the name but I think it is fiiting since the parameter is saying whether the write barrier can be skipped or not, i.e. in those cases we allow the write barrier to be maybe be skipped.\n\nIf `write_barrier_can_be_skipped` is false, the write barrier can\u0027t be skipped (either because it is non-null, or because another store is relying on this one). If `write_barrier_can_be_skipped` is true, we can do the runtime check and maybe skip it.",
+      "parentUuid": "efe9e551_b3e367d5",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29623248_99bc208b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
