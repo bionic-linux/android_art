@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656037f2_034dc195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-12T13:36:07Z",
+      "side": 1,
+      "message": "Instead of",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0858451e_72ff2772",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-12T13:36:07Z",
+      "side": 1,
+      "message": "Maybe it\u0027s just a naming issue, but why are we doing all of this if `write_barrier_can_be_skipped` ?",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29623248_99bc208b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 6475,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-12T13:36:07Z",
+      "side": 1,
+      "message": "kFlagMaybeGenerateWriteBarrier (true by default).",
+      "range": {
+        "startLine": 6475,
+        "startChar": 26,
+        "endLine": 6475,
+        "endChar": 49
+      },
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b942ee_b2043c11",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 6476,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-12T13:36:07Z",
+      "side": 1,
+      "message": "kFlagAlwaysGenerateWriteBarrier (false by default).",
+      "range": {
+        "startLine": 6476,
+        "startChar": 26,
+        "endLine": 6476,
+        "endChar": 56
+      },
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
