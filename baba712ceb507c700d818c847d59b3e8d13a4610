@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206e736c_9ed9cb63",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2022-12-12T22:57:28Z",
+      "side": 1,
+      "message": "Doesn\u0027t this yield true if only UFFD_FEATURE_MISSING_SHMEM is available? Why does that suffice?\n\nI think our coding guidelines here require an explicit !\u003d 0.",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "baba712ceb507c700d818c847d59b3e8d13a4610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
