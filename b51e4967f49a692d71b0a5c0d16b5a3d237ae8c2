@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e255f472_c8c93f3a",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-12T18:55:54Z",
+      "side": 1,
+      "message": "Updated to `write_barrier_can_be_skipped_if_null`. A bit longer, but it is descriptive.",
+      "parentUuid": "d79565c7_c623fe00",
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29623248_99bc208b",
@@ -130,6 +148,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2691af12_0d03e634",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 6475,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-12T18:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29623248_99bc208b",
+      "range": {
+        "startLine": 6475,
+        "startChar": 26,
+        "endLine": 6475,
+        "endChar": 49
+      },
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04b942ee_b2043c11",
@@ -143,6 +185,30 @@
       "writtenOn": "2022-12-12T13:36:07Z",
       "side": 1,
       "message": "kFlagAlwaysGenerateWriteBarrier (false by default).",
+      "range": {
+        "startLine": 6476,
+        "startChar": 26,
+        "endLine": 6476,
+        "endChar": 56
+      },
+      "revId": "b51e4967f49a692d71b0a5c0d16b5a3d237ae8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0a39c1_b20d03e0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 6476,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-12T18:55:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b942ee_b2043c11",
       "range": {
         "startLine": 6476,
         "startChar": 26,
