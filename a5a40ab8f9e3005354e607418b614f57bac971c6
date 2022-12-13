@@ -34,6 +34,24 @@
       "parentUuid": "b3ee94c5_f0002872",
       "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35b287c_f62a6cdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-13T15:28:19Z",
+      "side": 1,
+      "message": "Yes, I wasn\u0027t suggesting to remove the can_be_null bit.\n\nAs the enum is only for codegen, why do you want to disambiguate on whether the optimization pass has run? The generated code should be the same no?",
+      "parentUuid": "83d4bb13_5adbd1d0",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
