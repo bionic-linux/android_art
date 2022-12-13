@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ee94c5_f0002872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-13T14:49:39Z",
+      "side": 1,
+      "message": "Actually, sorry for the back and forth, but would an enum help better the readability?\n\nenum class WriteBarrierCodegenKind {\n  kEmitNoNullCheck\n  kEmitWithNullCheck\n  kDontEmit,\n}",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
