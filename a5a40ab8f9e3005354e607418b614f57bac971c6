@@ -52,6 +52,24 @@
       "parentUuid": "83d4bb13_5adbd1d0",
       "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69da69b_bebd9789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-13T15:41:56Z",
+      "side": 1,
+      "message": "It would be the same for codegen, but for the write barrier elimination pass itself it would be nice to have the 4th enum for correctness checks. If you don\u0027t have that 4th kind, `kEmitNoNullCheck` could mean either:\n* can be eliminated in the WBE pass, or \n* shouldn\u0027t be eliminated in the WBE pass\n\nLet\u0027s say you are relying on a particular store to have a write barrier but then you change that write barrier kind to `kDontEmit`. At compile time everything would be fine but you might run into spurious failures at runtime. Adding the 4th kind would be a guarantee since you can\u0027t skip a write barrier that must happen.",
+      "parentUuid": "e35b287c_f62a6cdd",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
