@@ -16,6 +16,24 @@
       "message": "Actually, sorry for the back and forth, but would an enum help better the readability?\n\nenum class WriteBarrierCodegenKind {\n  kEmitNoNullCheck\n  kEmitWithNullCheck\n  kDontEmit,\n}",
       "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d4bb13_5adbd1d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-13T15:24:56Z",
+      "side": 1,
+      "message": "We could have that instead of `kFlagMaybeGenerateWriteBarrier` and `kFlagAlwaysGenerateWriteBarrier` but we would still need the `kFlagValueCanBeNull` as we use it in other scenarios e.g. to skip type check (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/code_generator_arm_vixl.cc;l\u003d6860;drc\u003d5eff6b3307dde2feff372decd0bc7e7e80e340da).\n\nIf we go this route, I\u0027d introduce a 4th value `kAlwaysEmit` to disambiguate between \"emit but may be eliminated by the write barrier elimination pass\" and \"emit but shouldn\u0027t be eliminated ever\". This would be useful mostly for correctness checks in the write barrier elimination pass itself.\n\nThe transition graph would be:\n\n```\nkEmitWithNullCheck ------------\n      |         |              \\\n      |         V              |\n      | ClearValueCanBeNull()  |\n      |         |              |\n      |         |              |\n      |         V              |\n      | kEmitNoNullCheck---------\u003eAlwaysEmitWriteBarrier()---\u003e kAlwaysEmit\n      |         |\n      |         /\n      |---------\n      V\n AlwaysSkipWriteBarrier()\n      |\n      V\n   kDontEmit\n```\n\n`AlwaysSkipWriteBarrier` and `AlwaysEmitWriteBarrier` would only be called in the write barrier elimination pass, and `ClearValueCanBeNull` can be called anywhere in the optimizing compiler (e.g. instruction simplifier).\n\nI\u0027m okay with implementing this but I\u0027d rather only do this big change if we all agree on it. @vmarko@google.com WDYT?",
+      "parentUuid": "b3ee94c5_f0002872",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
