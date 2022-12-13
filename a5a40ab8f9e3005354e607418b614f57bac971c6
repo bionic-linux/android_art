@@ -88,6 +88,24 @@
       "parentUuid": "f69da69b_bebd9789",
       "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cac7715_8d43acf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-13T16:04:24Z",
+      "side": 1,
+      "message": "Sure, we can keep it as a WBE-pass check only and have just 3 kinds.",
+      "parentUuid": "572da103_3ec1358d",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
