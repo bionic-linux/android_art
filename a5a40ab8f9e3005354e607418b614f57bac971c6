@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b530c04_921a2769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-16T14:21:22Z",
+      "side": 1,
+      "message": "I\u0027m fine with this and I think 3 states would be enough. Each instruction would start with `kEmitWithNullCheck` and the WBE pass could change that to `kDontEmit` or `kEmitNoNullCheck`.\n\nThe WBE pass could also look at whether the input can be null (or is a null constant) for this, so that the codegen would not have to do that. The only downside would be that `baseline` compiler which does not run WBE would always emit a conditional write barrier, even for constant null input.",
+      "parentUuid": "fb09a57b_9d1b5b25",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51192c9b_c0744bec",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 12
