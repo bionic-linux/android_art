@@ -536,34 +536,7 @@ class Instrumentation {
   bool NeedsSlowInterpreterForMethod(Thread* self, ArtMethod* method)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  // Called when an instrumented method is entered. The intended link register (lr) is saved so
-  // that returning causes a branch to the method exit stub. Generates method enter events.
-  void PushInstrumentationStackFrame(Thread* self,
-                                     ObjPtr<mirror::Object> this_object,
-                                     ArtMethod* method,
-                                     uintptr_t stack_pointer,
-                                     uintptr_t lr,
-                                     bool interpreter_entry)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
   DeoptimizationMethodType GetDeoptimizationMethodType(ArtMethod* method)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
-  // Called when an instrumented method is exited. Removes the pushed instrumentation frame
-  // returning the intended link register. Generates method exit events. The gpr_result and
-  // fpr_result pointers are pointers to the locations where the integer/pointer and floating point
-  // result values of the function are stored. Both pointers must always be valid but the values
-  // held there will only be meaningful if interpreted as the appropriate type given the function
-  // being returned from.
-  TwoWordReturn PopInstrumentationStackFrame(Thread* self,
-                                             uintptr_t* return_pc_addr,
-                                             uint64_t* gpr_result,
-                                             uint64_t* fpr_result)
-      REQUIRES_SHARED(Locks::mutator_lock_);
-
-  // Pops instrumentation frames until the specified stack_pointer from the current thread. Returns
-  // the return pc for the last instrumentation frame that's popped.
-  uintptr_t PopInstrumentationStackUntil(Thread* self, uintptr_t stack_pointer) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Call back for configure stubs.
