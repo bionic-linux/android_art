@@ -45,11 +45,10 @@ NO_RETURN static void artDeoptimizeImpl(Thread* self, DeoptimizationKind kind, b
   } else {
     exception_handler.DeoptimizeStack();
   }
-  uintptr_t return_pc = exception_handler.UpdateInstrumentationStack();
   if (exception_handler.IsFullFragmentDone()) {
     exception_handler.DoLongJump(true);
   } else {
-    exception_handler.DeoptimizePartialFragmentFixup(return_pc);
+    exception_handler.DeoptimizePartialFragmentFixup();
     // We cannot smash the caller-saves, as we need the ArtMethod in a parameter register that would
     // be caller-saved. This has the downside that we cannot track incorrect register usage down the
     // line.
