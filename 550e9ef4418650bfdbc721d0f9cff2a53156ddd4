@@ -348,6 +348,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d72d2e50_066f4d2b",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-12-16T14:09:57Z",
+      "side": 1,
+      "message": "We have decided to have unconditional write barriers instead of a merged null check.\n\nHowever, I\u0027d still prefer to emit the write barrier on the last instruction, not first. And the `current_write_barriers_` map is well suited for this as you can easily replace the \"value\" to the last instruction while clearing flags on the old instruction and setting them on the new one.",
+      "parentUuid": "c3fa0967_098fd22a",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dd66d8c_f339c3b3",
         "filename": "compiler/optimizing/write_barrier_elimination.cc",
         "patchSetId": 8
