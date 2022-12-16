@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb09a57b_9d1b5b25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2022-12-16T14:14:08Z",
+      "side": 1,
+      "message": "@vmarko@google.com what\u0027s your take on this? In short, we could change the `kFlagMaybeGenerateWriteBarrier` and `kFlagAlwaysGenerateWriteBarrier` flags for \n\n```\nenum class WriteBarrierCodegenKind {\n  kEmitNoNullCheck,\n  kEmitWithNullCheck,\n  kDontEmit\n}\n```\nplus some extra data-structure for the write barrier elimination pass itself.",
+      "parentUuid": "0cac7715_8d43acf9",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51192c9b_c0744bec",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 12
