@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!",
       "revId": "63d93a3d28575c51b52364cee0f5b03620778dca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97840623_b84978bf",
+        "filename": "test/2246-trace-stream/run.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-12-20T15:08:47Z",
+      "side": 1,
+      "message": "including",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "63d93a3d28575c51b52364cee0f5b03620778dca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
