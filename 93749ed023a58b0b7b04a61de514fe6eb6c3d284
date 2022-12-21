@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5163e0d3_ae8f59d3",
+        "filename": "test/default_run.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1975361
+      },
+      "writtenOn": "2022-12-21T13:21:47Z",
+      "side": 1,
+      "message": "This class is not available for python3.8 - which is a default version for Ubuntu 20.04; so I guess the prebuilt python3 (./prebuilts/build-tools/path/linux-x86/python3) should be used. But the \u0027lunch\u0027 doesn\u0027t add it to PATH; would it be possible to fix that?",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "93749ed023a58b0b7b04a61de514fe6eb6c3d284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
