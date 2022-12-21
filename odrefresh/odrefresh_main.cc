@@ -177,6 +177,7 @@ int InitializeConfig(int argc, char** argv, OdrConfig* config) {
 
   if (config->GetSystemServerCompilerFilter().empty()) {
     std::string filter = GetProperty("dalvik.vm.systemservercompilerfilter", "");
+    filter = GetProperty(kSystemPropertySystemServerCompilerFilterOverride, filter);
     config->SetSystemServerCompilerFilter(filter);
   }
 
