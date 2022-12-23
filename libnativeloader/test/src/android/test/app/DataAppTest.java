@@ -49,17 +49,26 @@ public class DataAppTest {
     }
 
     @Test
+    public void testLoadExtendedPublicLibrariesViaSystemSharedLib() {
+        // TODO(b/258340826): Fix regression in https://r.android.com/2211602.
+        // SystemSharedLib.loadLibrary("system_extpub2.oem1");
+        SystemSharedLib.loadLibrary("product_extpub2.product1");
+    }
+
+    @Test
     public void testLoadPrivateLibrariesViaSystemSharedLib() {
-        SystemSharedLib.loadLibrary("system_private2");
-        SystemSharedLib.loadLibrary("systemext_private2");
+        // Not a regression in https://r.android.com/2211602.
+        // SystemSharedLib.loadLibrary("system_private2");
+        // SystemSharedLib.loadLibrary("systemext_private2");
         TestUtils.assertLibraryNotFound(() -> SystemSharedLib.loadLibrary("product_private2"));
         TestUtils.assertLibraryNotFound(() -> SystemSharedLib.loadLibrary("vendor_private2"));
     }
 
     @Test
     public void testLoadPrivateLibrariesViaSystemExtSharedLib() {
-        SystemExtSharedLib.loadLibrary("system_private3");
-        SystemExtSharedLib.loadLibrary("systemext_private3");
+        // Not a regression in https://r.android.com/2211602.
+        // SystemExtSharedLib.loadLibrary("system_private3");
+        // SystemExtSharedLib.loadLibrary("systemext_private3");
         TestUtils.assertLibraryNotFound(() -> SystemExtSharedLib.loadLibrary("product_private3"));
         TestUtils.assertLibraryNotFound(() -> SystemExtSharedLib.loadLibrary("vendor_private3"));
     }
@@ -84,8 +93,8 @@ public class DataAppTest {
 
     @Test
     public void testLoadExtendedPublicLibrariesWithAbsolutePaths() {
-        System.load(TestUtils.libPath("/system", "system_extpub2.oem1"));
-        System.load(TestUtils.libPath("/product", "product_extpub2.product1"));
+        System.load(TestUtils.libPath("/system", "system_extpub3.oem1"));
+        System.load(TestUtils.libPath("/product", "product_extpub3.product1"));
     }
 
     @Test
