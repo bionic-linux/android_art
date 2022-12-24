@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e0ab45_200952d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-12-24T01:16:43Z",
+      "side": 1,
+      "message": "For reviewing purposes the patch sets modify the behaviour in phases:\n\n- PS1 extends tests without changing any functionality and without breaking anything.\n- PS2 changes the tests to catch the regression in b/258340826 and disables the tests that break.\n- PS3 has the undo that fixes the regression, but leaves some other tests disabled that were the goals to fix in b/237577392.",
+      "revId": "7e670eae8bfa3eb6e150017b51278582ee5ed02f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
