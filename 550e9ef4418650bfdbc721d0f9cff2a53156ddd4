@@ -366,6 +366,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05b75c70_040ab365",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "\u003e However, I\u0027d still prefer to emit the write barrier on the last instruction, not first. And the `current_write_barriers_` map is well suited for this as you can easily replace the \"value\" to the last instruction while clearing flags on the old instruction and setting them on the new one.\n\nFrom the GC point of view, it is the same doing it on any write. However, I don\u0027t see a benefit to doing it on the last instruction as opposed to the first one. If we do it on the first we are setting the dirty bit, and we skip doing so for the following writes as we know it is already set as dirty. If we do it on the latest write, we would be relying on the fact that the bit will be set as dirty in the future.\n\nIt also has the extra work of replacing the map\u0027s entry with the new instruction.",
+      "parentUuid": "d72d2e50_066f4d2b",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dd66d8c_f339c3b3",
         "filename": "compiler/optimizing/write_barrier_elimination.cc",
         "patchSetId": 8

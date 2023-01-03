@@ -144,6 +144,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e45dfa_a9ff11cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b530c04_921a2769",
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51192c9b_c0744bec",
@@ -157,6 +175,30 @@
       "writtenOn": "2022-12-16T14:09:57Z",
       "side": 1,
       "message": "I\u0027d prefer to keep the attribute name aligned with the flag name, namely \"always_generate_write_barrier\".",
+      "range": {
+        "startLine": 561,
+        "startChar": 26,
+        "endLine": 561,
+        "endChar": 55
+      },
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2b8084_c6ecbbbd",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51192c9b_c0744bec",
       "range": {
         "startLine": 561,
         "startChar": 26,
@@ -190,6 +232,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf29011_99a9d116",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5301acf7_c8b422d3",
+      "range": {
+        "startLine": 579,
+        "startChar": 26,
+        "endLine": 579,
+        "endChar": 55
+      },
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1c8109_5a739c6a",
@@ -213,6 +279,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38154022_c2ebce6e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 6699,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1c8109_5a739c6a",
+      "range": {
+        "startLine": 6699,
+        "startChar": 26,
+        "endLine": 6699,
+        "endChar": 57
+      },
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a5d12e_17cb9671",
@@ -226,6 +316,30 @@
       "writtenOn": "2022-12-16T14:09:57Z",
       "side": 1,
       "message": "I don\u0027t understand what you mean.\n\nThe sentence \"[...] instructions [...] are actually null, [...]\" makes no sense to me. Instructions are never null. Do you mean inputs of instructions?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 90
+      },
+      "revId": "a5a40ab8f9e3005354e607418b614f57bac971c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62375a4_1367542e",
+        "filename": "compiler/optimizing/write_barrier_elimination.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-03T18:43:39Z",
+      "side": 1,
+      "message": "Removed this TODO since we decided to have unconditional write barriers instead of a merged null check.",
+      "parentUuid": "78a5d12e_17cb9671",
       "range": {
         "startLine": 41,
         "startChar": 0,
