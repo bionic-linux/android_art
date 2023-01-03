@@ -197,7 +197,9 @@ class LocationsBuilderX86 : public HGraphVisitor {
   void HandleInvoke(HInvoke* invoke);
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* instruction);
-  void HandleFieldSet(HInstruction* instruction, const FieldInfo& field_info);
+  void HandleFieldSet(HInstruction* instruction,
+                      const FieldInfo& field_info,
+                      WriteBarrierKind write_barrier_kind);
   void HandleFieldGet(HInstruction* instruction, const FieldInfo& field_info);
   bool CpuHasAvxFeatureFlag();
   bool CpuHasAvx2FeatureFlag();
@@ -250,7 +252,8 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
                       Address field_addr,
                       Register base,
                       bool is_volatile,
-                      bool value_can_be_null);
+                      bool value_can_be_null,
+                      WriteBarrierKind write_barrier_kind);
 
  private:
   // Generate code for the given suspend check. If not null, `successor`
@@ -280,7 +283,8 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
 
   void HandleFieldSet(HInstruction* instruction,
                       const FieldInfo& field_info,
-                      bool value_can_be_null);
+                      bool value_can_be_null,
+                      WriteBarrierKind write_barrier_kind);
   void HandleFieldGet(HInstruction* instruction, const FieldInfo& field_info);
 
   // Generate a heap reference load using one register `out`:
@@ -524,7 +528,7 @@ class CodeGeneratorX86 : public CodeGenerator {
                   Register card,
                   Register object,
                   Register value,
-                  bool value_can_be_null);
+                  bool emit_null_check);
 
   void GenerateMemoryBarrier(MemBarrierKind kind);
 
