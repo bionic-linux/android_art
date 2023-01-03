@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67386ed_d28c3290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-01-03T13:27:33Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "826593fb4ad2349e334bdb8274cbaf2e3e254501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9863715_439aa1c3",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/OdrefreshHostTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-01-03T13:27:33Z",
+      "side": 1,
+      "message": "Nit: Line too long. Line 239 and 258 are also too long.",
+      "revId": "826593fb4ad2349e334bdb8274cbaf2e3e254501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
