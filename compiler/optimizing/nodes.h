@@ -6403,6 +6403,25 @@ class HPredicatedInstanceFieldGet final : public HExpression<2> {
   const FieldInfo field_info_;
 };
 
+enum class WriteBarrierKind {
+  // Emit the write barrier, with a runtime optimization which checks if the value that it is being
+  // set is null.
+  kEmitWithNullCheck,
+  // Emit the write barrier, without the runtime null check optimization. This could be set because:
+  //  A) It is a write barrier for an ArraySet (which never does the optimization)
+  //  B) We know that the input can't be null
+  //  C) This write barrier is actually several write barriers coalesced into one. Potentially we
+  //  could ask if every value is null for a runtime optimization at the cost of compile time / code
+  //  size. At the time of writing it was deemed not worth the effort.
+  kEmitNoNullCheck,
+  // Skip emitting the write barrier. This could be set because:
+  //  A) The write barrier is not needed (e.g. it is not a reference, or the value is the null
+  //  constant)
+  //  B) This write barrier was coalesced into another one so there's no need to emit it.
+  kDontEmit
+};
+std::ostream& operator<<(std::ostream& os, WriteBarrierKind rhs);
+
 class HInstanceFieldSet final : public HExpression<2> {
  public:
   HInstanceFieldSet(HInstruction* object,
@@ -6424,7 +6443,8 @@ class HInstanceFieldSet final : public HExpression<2> {
                     is_volatile,
                     field_idx,
                     declaring_class_def_index,
-                    dex_file) {
+                    dex_file),
+        write_barrier_kind_(WriteBarrierKind::kEmitWithNullCheck) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetPackedFlag<kFlagIsPredicatedSet>(false);
     SetRawInputAt(0, object);
@@ -6447,6 +6467,12 @@ class HInstanceFieldSet final : public HExpression<2> {
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
   bool GetIsPredicatedSet() const { return GetPackedFlag<kFlagIsPredicatedSet>(); }
   void SetIsPredicatedSet(bool value = true) { SetPackedFlag<kFlagIsPredicatedSet>(value); }
+  WriteBarrierKind GetWriteBarrierKind() { return write_barrier_kind_; }
+  void SetWriteBarrierKind(WriteBarrierKind kind) {
+    DCHECK(kind != WriteBarrierKind::kEmitWithNullCheck)
+        << "We shouldn't go back to the original value.";
+    write_barrier_kind_ = kind;
+  }
 
   DECLARE_INSTRUCTION(InstanceFieldSet);
 
@@ -6461,6 +6487,7 @@ class HInstanceFieldSet final : public HExpression<2> {
                 "Too many packed fields.");
 
   const FieldInfo field_info_;
+  WriteBarrierKind write_barrier_kind_;
 };
 
 class HArrayGet final : public HExpression<2> {
@@ -6576,7 +6603,9 @@ class HArraySet final : public HExpression<3> {
             DataType::Type expected_component_type,
             SideEffects side_effects,
             uint32_t dex_pc)
-      : HExpression(kArraySet, side_effects, dex_pc) {
+      : HExpression(kArraySet, side_effects, dex_pc),
+        // ArraySets never do the null check optimization.
+        write_barrier_kind_(WriteBarrierKind::kEmitNoNullCheck) {
     SetPackedField<ExpectedComponentTypeField>(expected_component_type);
     SetPackedFlag<kFlagNeedsTypeCheck>(value->GetType() == DataType::Type::kReference);
     SetPackedFlag<kFlagValueCanBeNull>(true);
@@ -6653,6 +6682,16 @@ class HArraySet final : public HExpression<3> {
                                                       : SideEffects::None();
   }
 
+  WriteBarrierKind GetWriteBarrierKind() { return write_barrier_kind_; }
+
+  void SetWriteBarrierKind(WriteBarrierKind kind) {
+    DCHECK(kind != WriteBarrierKind::kEmitNoNullCheck)
+        << "We shouldn't go back to the original value.";
+    DCHECK(kind != WriteBarrierKind::kEmitWithNullCheck)
+        << "We never do the null check optimization for ArraySets.";
+    write_barrier_kind_ = kind;
+  }
+
   DECLARE_INSTRUCTION(ArraySet);
 
  protected:
@@ -6673,6 +6712,8 @@ class HArraySet final : public HExpression<3> {
   static_assert(kNumberOfArraySetPackedBits <= kMaxNumberOfPackedBits, "Too many packed fields.");
   using ExpectedComponentTypeField =
       BitField<DataType::Type, kFieldExpectedComponentType, kFieldExpectedComponentTypeSize>;
+
+  WriteBarrierKind write_barrier_kind_;
 };
 
 class HArrayLength final : public HExpression<1> {
@@ -7468,7 +7509,8 @@ class HStaticFieldSet final : public HExpression<2> {
                     is_volatile,
                     field_idx,
                     declaring_class_def_index,
-                    dex_file) {
+                    dex_file),
+        write_barrier_kind_(WriteBarrierKind::kEmitWithNullCheck) {
     SetPackedFlag<kFlagValueCanBeNull>(true);
     SetRawInputAt(0, cls);
     SetRawInputAt(1, value);
@@ -7485,6 +7527,13 @@ class HStaticFieldSet final : public HExpression<2> {
   bool GetValueCanBeNull() const { return GetPackedFlag<kFlagValueCanBeNull>(); }
   void ClearValueCanBeNull() { SetPackedFlag<kFlagValueCanBeNull>(false); }
 
+  WriteBarrierKind GetWriteBarrierKind() { return write_barrier_kind_; }
+  void SetWriteBarrierKind(WriteBarrierKind kind) {
+    DCHECK(kind != WriteBarrierKind::kEmitWithNullCheck)
+        << "We shouldn't go back to the original value.";
+    write_barrier_kind_ = kind;
+  }
+
   DECLARE_INSTRUCTION(StaticFieldSet);
 
  protected:
@@ -7497,6 +7546,7 @@ class HStaticFieldSet final : public HExpression<2> {
                 "Too many packed fields.");
 
   const FieldInfo field_info_;
+  WriteBarrierKind write_barrier_kind_;
 };
 
 class HStringBuilderAppend final : public HVariableInputSizeInstruction {
