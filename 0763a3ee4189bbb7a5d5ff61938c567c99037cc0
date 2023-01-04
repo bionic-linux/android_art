@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e95c863_f9d99f83",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 5975,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "We also use `CodeGenerator::StoreNeedsWriteBarrier` in other places. For example here (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/code_generator_x86.cc;l\u003d6426;drc\u003d5eff6b3307dde2feff372decd0bc7e7e80e340da) we check that we need a write barrier for a reference. We also use it for knowing when to emit poisoning (https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/code_generator_arm_vixl.cc;l\u003d5895;drc\u003d5eff6b3307dde2feff372decd0bc7e7e80e340da).",
+      "parentUuid": "681b7a2c_452c32c3",
+      "range": {
+        "startLine": 5975,
+        "startChar": 6,
+        "endLine": 5975,
+        "endChar": 58
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c4596fc_f94dff79",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-04T10:17:46Z",
       "side": 1,
       "message": "Nit: add a comment why, or add `\u003c\u003c` with an error message.",
+      "range": {
+        "startLine": 6941,
+        "startChar": 0,
+        "endLine": 6941,
+        "endChar": 90
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e82f0c_18fe919f",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 6941,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c4596fc_f94dff79",
       "range": {
         "startLine": 6941,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da334982_8171e73a",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4051,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b607621_71a4ad6c",
+      "range": {
+        "startLine": 4051,
+        "startChar": 0,
+        "endLine": 4051,
+        "endChar": 70
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d776eae_f286675f",
@@ -100,6 +172,24 @@
       "writtenOn": "2023-01-04T10:17:46Z",
       "side": 1,
       "message": "ditto",
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef44022_564f7317",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3998,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d776eae_f286675f",
       "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -153,6 +243,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "af9a7b30_5442cd1b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 6411,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "Added comment explaining this.",
+      "parentUuid": "eb189975_4cbb0229",
+      "range": {
+        "startLine": 6411,
+        "startChar": 48,
+        "endLine": 6411,
+        "endChar": 81
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b9c2b15d_579642f9",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 14
@@ -164,6 +278,30 @@
       "writtenOn": "2023-01-04T08:42:43Z",
       "side": 1,
       "message": "Note: This could be stored in the packed fields to save a small amount of memory.",
+      "range": {
+        "startLine": 6490,
+        "startChar": 2,
+        "endLine": 6490,
+        "endChar": 39
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c1ec87_dc839bd5",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 6490,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-01-04T13:38:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b9c2b15d_579642f9",
       "range": {
         "startLine": 6490,
         "startChar": 2,
