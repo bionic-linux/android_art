@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a916acf_94d06f6e",
+        "filename": "libdexfile/dex/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-04T16:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a1abbe_6a73b63c",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 94
+      },
+      "revId": "7c4ab135595b9612db4b82d0d75c007527f4c2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40125eef_132415b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-04T12:23:56Z",
       "side": 1,
       "message": "Possible arithmetic overflow. I\u0027d prefer\n\n    header-\u003emap_off_ \u003e DataSize() - sizeof(MapList);\n\nand maybe also\n\n    static_assert(sizeof(MapList) \u003c\u003d sizeof(Header));\n    DCHECK_LE(DataSize(), sizeof(MapList));\n\nbecause the data size is surely at least `sizeof(Header)` at this point.",
+      "range": {
+        "startLine": 178,
+        "startChar": 32,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "7c4ab135595b9612db4b82d0d75c007527f4c2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7583ec97_25eed101",
+        "filename": "libdexfile/dex/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-04T16:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40125eef_132415b8",
       "range": {
         "startLine": 178,
         "startChar": 32,
