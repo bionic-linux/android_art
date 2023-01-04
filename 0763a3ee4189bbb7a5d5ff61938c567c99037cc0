@@ -127,6 +127,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb189975_4cbb0229",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 6411,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-04T10:32:52Z",
+      "side": 1,
+      "message": "One could argue that it always does the optimization. However, the null check is done before the type check, so we don\u0027t need to do it in `MarkGCCard()`.",
+      "parentUuid": "f8091a64_f03ce42a",
+      "range": {
+        "startLine": 6411,
+        "startChar": 48,
+        "endLine": 6411,
+        "endChar": 81
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b9c2b15d_579642f9",
