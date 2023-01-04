@@ -175,7 +175,7 @@ bool DexFile::CheckMagicAndVersion(std::string* error_msg) const {
 
 void DexFile::InitializeSectionsFromMapList() {
   const MapList* map_list = reinterpret_cast<const MapList*>(DataBegin() + header_->map_off_);
-  if (header_->map_off_ == 0 || header_->map_off_ > DataSize()) {
+  if (header_->map_off_ == 0 || header_->map_off_ + sizeof(MapList) > DataSize()) {
     // Bad offset. The dex file verifier runs after this method and will reject the file.
     return;
   }
