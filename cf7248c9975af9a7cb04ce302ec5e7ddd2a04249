@@ -46,6 +46,30 @@
       },
       "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f497947_8eb1ca37",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-04T17:05:24Z",
+      "side": 1,
+      "message": "Maybe to avoid ambiguity, say \"but the class `ReadBarrier` shall not allow...\" ?",
+      "parentUuid": "ae3f0052_b81d254e",
+      "range": {
+        "startLine": 2642,
+        "startChar": 27,
+        "endLine": 2642,
+        "endChar": 38
+      },
+      "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
