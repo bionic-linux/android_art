@@ -16,6 +16,29 @@
       "message": "FYI failures are unrelated, and have an assigned bug already.",
       "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c2b15d_579642f9",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 6490,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-04T08:42:43Z",
+      "side": 1,
+      "message": "Note: This could be stored in the packed fields to save a small amount of memory.",
+      "range": {
+        "startLine": 6490,
+        "startChar": 2,
+        "endLine": 6490,
+        "endChar": 39
+      },
+      "revId": "0763a3ee4189bbb7a5d5ff61938c567c99037cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

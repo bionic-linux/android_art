@@ -382,6 +382,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2864caa_5f4ca662",
+        "filename": "compiler/optimizing/write_barrier_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-04T08:42:43Z",
+      "side": 1,
+      "message": "While we emit the write barrier after the store for field stores, we actually emit it before the store for array stores. My original \"consistency\" argument is therefore flawed.\n\nI\u0027d still find it nicer if we emitted the write barrier on the last store but it\u0027s OK to keep as is (and save a few instructions in the compiler).",
+      "parentUuid": "05b75c70_040ab365",
+      "revId": "550e9ef4418650bfdbc721d0f9cff2a53156ddd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dd66d8c_f339c3b3",
