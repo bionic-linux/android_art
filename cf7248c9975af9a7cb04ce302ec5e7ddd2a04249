@@ -22,6 +22,30 @@
       },
       "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3f0052_b81d254e",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-04T17:01:21Z",
+      "side": 1,
+      "message": "Class `ReadBarrier` defined in `read_barrier.h`.",
+      "parentUuid": "023b2415_78b7fb09",
+      "range": {
+        "startLine": 2642,
+        "startChar": 27,
+        "endLine": 2642,
+        "endChar": 38
+      },
+      "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
