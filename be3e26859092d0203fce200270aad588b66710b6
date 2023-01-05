@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82667d37_a37562ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-01-05T21:04:40Z",
+      "side": 1,
+      "message": "Java yes, NDK no. At least not that I\u0027ve found (and apparently Soong can\u0027t find them either in my AOSP tree). Nothing here: https://cs.android.com/android/platform/superproject/+/master:prebuilts/ndk/",
+      "parentUuid": "3b5da220_f9d37d0c",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "be3e26859092d0203fce200270aad588b66710b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fc0453a1_18e93290",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-03T13:55:38Z",
       "side": 1,
       "message": "Nit: It\u0027s a bit confusing that this is called \"libsystem_private\" but is used as an extpub library as well. Something like \"libsystem_testlib\" might be more appropriate.",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "be3e26859092d0203fce200270aad588b66710b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "636cf35e_704828dd",
+        "filename": "libnativeloader/test/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-01-05T21:04:40Z",
+      "side": 1,
+      "message": "Fair point. Done.",
+      "parentUuid": "4c43f708_34819275",
       "range": {
         "startLine": 29,
         "startChar": 11,
