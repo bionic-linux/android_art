@@ -70,14 +70,14 @@ TEST_F(PaletteClientTest, Ashmem) {
 #endif
 }
 
-class PaletteClientJniTest : public art::CommonRuntimeTest {};
-
-TEST_F(PaletteClientJniTest, JniInvocation) {
+TEST_F(PaletteClientTest, JniInvocation) {
   bool enabled;
   EXPECT_EQ(PALETTE_STATUS_OK, PaletteShouldReportJniInvocations(&enabled));
 
-  JNIEnv* env = art::Thread::Current()->GetJniEnv();
-  ASSERT_NE(nullptr, env);
-  PaletteNotifyBeginJniInvocation(env);
-  PaletteNotifyEndJniInvocation(env);
+  // TODO(b/247108425): We cannot safely create a runtime here as long as libart
+  // is dynamically linked into art_standalone_libartpalette_tests, so call the
+  // functions with nullptr instead of a proper JNIEnv instance. This means that
+  // nontrivial implementations will need to check for that and do a quick return.
+  PaletteNotifyBeginJniInvocation(nullptr);
+  PaletteNotifyEndJniInvocation(nullptr);
 }
