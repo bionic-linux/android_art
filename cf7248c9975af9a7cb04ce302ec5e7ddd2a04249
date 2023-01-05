@@ -70,6 +70,30 @@
       },
       "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df73b21d_7d5338ea",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2642,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-05T11:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f497947_8eb1ca37",
+      "range": {
+        "startLine": 2642,
+        "startChar": 27,
+        "endLine": 2642,
+        "endChar": 38
+      },
+      "revId": "cf7248c9975af9a7cb04ce302ec5e7ddd2a04249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
