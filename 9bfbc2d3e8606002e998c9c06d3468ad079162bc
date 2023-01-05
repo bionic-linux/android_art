@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d925d58_aaf5a24b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-01-05T18:50:18Z",
+      "side": 1,
+      "message": "I presume that the only thing that\u0027s hot here is IsInGeneratedCode()?\n\nAre removals common enough to mess up the ordering here? If not, then this seems fine. If so, you might consider switching to a more linear data structure.",
+      "revId": "9bfbc2d3e8606002e998c9c06d3468ad079162bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
