@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5eb0b3_27c8adac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-01-09T19:58:17Z",
+      "side": 1,
+      "message": "Had to disable the test on host (see comment). PTAL.",
+      "revId": "3962633b60d5be335a0745ec4abe766ee468d903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
