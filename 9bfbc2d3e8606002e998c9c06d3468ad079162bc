@@ -16,6 +16,24 @@
       "message": "I presume that the only thing that\u0027s hot here is IsInGeneratedCode()?\n\nAre removals common enough to mess up the ordering here? If not, then this seems fine. If so, you might consider switching to a more linear data structure.",
       "revId": "9bfbc2d3e8606002e998c9c06d3468ad079162bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ceabd3_4a752f27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-09T08:26:40Z",
+      "side": 1,
+      "message": "Removal happen when unloading a class loader, so it depends on the app and should not happen during app startup.\n\nEven if those entries get reordered, we should still benefit from having them in just a few cache lines.",
+      "parentUuid": "8d925d58_aaf5a24b",
+      "revId": "9bfbc2d3e8606002e998c9c06d3468ad079162bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
