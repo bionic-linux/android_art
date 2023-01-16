@@ -85,6 +85,24 @@
       "message": "Forgot to mention, this change was required to keep thread_local_pos aligned to 8 bytes. See the check here: https://cs.android.com/android/platform/superproject/+/master:art/runtime/arch/arm/quick_entrypoints_arm.S;l\u003d1145",
       "revId": "84e75d5941d41d0e8c00a1231008ee2acb0717d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a20717_dca5bcc1",
+        "filename": "runtime/thread.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-01-16T09:53:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf7d9198_535df2d6",
+      "revId": "84e75d5941d41d0e8c00a1231008ee2acb0717d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
