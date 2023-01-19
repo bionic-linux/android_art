@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fb0951_8973ccc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-01-19T18:42:31Z",
+      "side": 1,
+      "message": "Thanks. Only +1, want rpl@ to take a look too.",
+      "revId": "e8940c871a9b8b613c4b9fda4b1a3f627a967c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
