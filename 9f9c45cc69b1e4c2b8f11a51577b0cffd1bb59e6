@@ -16,6 +16,29 @@
       "message": "PTAL. Thanks!\n\nI will also have follow up CLs to update frameworks to actually pass this flag.",
       "revId": "9f9c45cc69b1e4c2b8f11a51577b0cffd1bb59e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad7ba0b_c764b1fe",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-01-19T15:21:25Z",
+      "side": 1,
+      "message": "not for this CL, but this looks off? Why is the instance itself guarded? We could not guard it, but just guard its modifiable fields?",
+      "range": {
+        "startLine": 343,
+        "startChar": 36,
+        "endLine": 343,
+        "endChar": 67
+      },
+      "revId": "9f9c45cc69b1e4c2b8f11a51577b0cffd1bb59e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
