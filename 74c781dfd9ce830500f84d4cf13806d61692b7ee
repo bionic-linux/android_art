@@ -16,6 +16,24 @@
       "message": "it looks a bit confusing as this is a debug check, but lines 135 and 182 do actually prevent overflow of DataSize() - sizeof(MapList) and this DCHECK is unnecessary",
       "revId": "74c781dfd9ce830500f84d4cf13806d61692b7ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e6c0db_c21413d3",
+        "filename": "libdexfile/dex/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-01-20T08:16:48Z",
+      "side": 1,
+      "message": "The line 135 is in a different function which makes a local precondition `DCHECK()` justified. (The `DCHECK()` is also a form of documentation that the expression `DataSize() - sizeof(MapList)` below does not underflow.)",
+      "parentUuid": "2df520da_17f0b303",
+      "revId": "74c781dfd9ce830500f84d4cf13806d61692b7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
