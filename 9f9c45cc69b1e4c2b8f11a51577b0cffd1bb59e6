@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f07c51_36a95d4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-01-20T11:28:27Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "9f9c45cc69b1e4c2b8f11a51577b0cffd1bb59e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ad7ba0b_c764b1fe",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-01-19T15:21:25Z",
       "side": 1,
       "message": "not for this CL, but this looks off? Why is the instance itself guarded? We could not guard it, but just guard its modifiable fields?",
+      "range": {
+        "startLine": 343,
+        "startChar": 36,
+        "endLine": 343,
+        "endChar": 67
+      },
+      "revId": "9f9c45cc69b1e4c2b8f11a51577b0cffd1bb59e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ed7618_307c8b36",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-01-20T11:28:27Z",
+      "side": 1,
+      "message": "Ack. I agree. I am not sure why we need that. This trace object is created in a suspend all scope and most its fileds other than the buffer and related fields are constants. The buffer and method_map etc., use other mutexes to make sure they are updated correctly. So I am not sure we need it at all. I will work on this in a follow up CL.",
+      "parentUuid": "7ad7ba0b_c764b1fe",
       "range": {
         "startLine": 343,
         "startChar": 36,
