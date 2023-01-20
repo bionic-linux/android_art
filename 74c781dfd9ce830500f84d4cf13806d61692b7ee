@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df520da_17f0b303",
+        "filename": "libdexfile/dex/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1939440
+      },
+      "writtenOn": "2023-01-20T01:17:27Z",
+      "side": 1,
+      "message": "it looks a bit confusing as this is a debug check, but lines 135 and 182 do actually prevent overflow of DataSize() - sizeof(MapList) and this DCHECK is unnecessary",
+      "revId": "74c781dfd9ce830500f84d4cf13806d61692b7ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
