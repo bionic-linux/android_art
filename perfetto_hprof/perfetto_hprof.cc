@@ -19,6 +19,7 @@
 #include "perfetto_hprof.h"
 
 #include <fcntl.h>
+#include <fnmatch.h>
 #include <inttypes.h>
 #include <sched.h>
 #include <signal.h>
@@ -34,6 +35,7 @@
 #include <optional>
 #include <type_traits>
 
+#include "android-base/file.h"
 #include "android-base/logging.h"
 #include "android-base/properties.h"
 #include "base/fast_exit.h"
@@ -194,7 +196,7 @@ class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
     }
     // This tracing session ID matches the requesting tracing session ID, so we know heapprofd
     // has verified it targets this process.
-    enabled_ = true;
+    enabled_ = IsDumpEnabled(*cfg.get());
   }
 
   bool dump_smaps() { return dump_smaps_; }
@@ -248,6 +250,22 @@ class JavaHprofDataSource : public perfetto::DataSource<JavaHprofDataSource> {
   }
 
  private:
+  static bool IsDumpEnabled(const perfetto::protos::pbzero::JavaHprofConfig::Decoder& cfg) {
+    std::string cmdline;
+    if (!android::base::ReadFileToString("/proc/self/cmdline", &cmdline)) {
+      return false;
+    }
+    const char* argv0 = cmdline.c_str();
+
+    for (auto it = cfg.process_cmdline(); it; ++it) {
+      std::string pattern = (*it).ToStdString();
+      if (fnmatch(pattern.c_str(), argv0, FNM_NOESCAPE) == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   bool verify_session_id_ = false;
   bool enabled_ = false;
   bool dump_smaps_ = false;
