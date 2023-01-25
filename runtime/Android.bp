@@ -310,6 +310,7 @@ libart_cc_defaults {
         "arch/arm/registers_arm.cc",
         "arch/arm64/instruction_set_features_arm64.cc",
         "arch/arm64/registers_arm64.cc",
+        "arch/riscv64/instruction_set_features_riscv64.cc",
         "arch/x86/instruction_set_features_x86.cc",
         "arch/riscv64/registers_riscv64.cc",
         "arch/x86/registers_x86.cc",
