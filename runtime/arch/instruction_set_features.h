@@ -28,8 +28,10 @@ namespace art {
 
 class ArmInstructionSetFeatures;
 class Arm64InstructionSetFeatures;
+class Riscv64InstructionSetFeatures;
 class X86InstructionSetFeatures;
 class X86_64InstructionSetFeatures;
+class Riscv64InstructionSetFeatures;
 
 // Abstraction used to describe features of a different instruction sets.
 class InstructionSetFeatures {
@@ -120,6 +122,9 @@ class InstructionSetFeatures {
 
   // Down cast this Arm64InstructionFeatures.
   const Arm64InstructionSetFeatures* AsArm64InstructionSetFeatures() const;
+
+  // Down cast this Riscv64InstructionFeatures.
+  const Riscv64InstructionSetFeatures* AsRiscv64InstructionSetFeatures() const;
 
   // Down cast this X86InstructionFeatures.
   const X86InstructionSetFeatures* AsX86InstructionSetFeatures() const;
