@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe2efa6d_55e49163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2023-01-26T16:49:17Z",
+      "side": 1,
+      "message": "Hey Ryan,\n\nSo we\u0027re adding a new implementation of the globbing logic in ART for the OOM handler mode.\n\nIn the normal java_hprof data source, heapprofd executes the globbing logic, picks a pid and sends a signal to it.\n\nIt this other case, when an app goes OOM, it sets up the data source and has to check the config, so the globbing logic lives here.",
+      "revId": "0ecdb8386bd8c4aa0976398d235a84714f9807dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54e76d75_c423cf16",
         "filename": "perfetto_hprof/perfetto_hprof.cc",
         "patchSetId": 2
@@ -54,6 +71,30 @@
       "writtenOn": "2023-01-26T16:33:10Z",
       "side": 1,
       "message": "Can we replicate the same logic that we have [here](https://cs.android.com/android/platform/superproject/+/master:external/perfetto/src/profiling/common/proc_utils.cc;l\u003d251-257;drc\u003da3f29b395b773d7790968aff4fdc368a6ac0cdf6)?\n\nUnfortunately that means copying some code, but I really want to minimize the differences between this and the non-OOM path",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 63
+      },
+      "revId": "0ecdb8386bd8c4aa0976398d235a84714f9807dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68978dac_e7371e45",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2023-01-26T16:49:17Z",
+      "side": 1,
+      "message": "Discussed offline: We probably don\u0027t need the same logic because java apps will not start with \u0027/\u0027.\n\n@rsavitski@google.com what do you think?",
+      "parentUuid": "e16796c1_285077e4",
       "range": {
         "startLine": 262,
         "startChar": 0,
