@@ -103,6 +103,30 @@
       },
       "revId": "0ecdb8386bd8c4aa0976398d235a84714f9807dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ac3408_32413629",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-01-26T22:45:29Z",
+      "side": 1,
+      "message": "At a glance: yeah, I suppose let\u0027s keep it simple and do only full string comparison if this is specific to self-triggered OOM dumps.",
+      "parentUuid": "68978dac_e7371e45",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 63
+      },
+      "revId": "0ecdb8386bd8c4aa0976398d235a84714f9807dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
