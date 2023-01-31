@@ -57,6 +57,7 @@ class MethodVerifierTest : public CommonRuntimeTest {
                                                      loader,
                                                      *klass->GetClassDef(),
                                                      nullptr,
+                                                     true,
                                                      HardFailLogMode::kLogWarning,
                                                      /* api_level= */ 0u,
                                                      &error_msg);

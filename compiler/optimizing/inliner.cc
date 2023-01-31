@@ -469,9 +469,6 @@ bool HInliner::TryInline(HInvoke* invoke_instruction) {
                                       /* do_rtp= */ true);
     if (result) {
       MaybeRecordStat(stats_, MethodCompilationStat::kInlinedInvokeVirtualOrInterface);
-      if (outermost_graph_ == graph_) {
-        MaybeRecordStat(stats_, MethodCompilationStat::kInlinedLastInvokeVirtualOrInterface);
-      }
     } else {
       HInvoke* invoke_to_analyze = nullptr;
       if (TryDevirtualize(invoke_instruction, actual_method, &invoke_to_analyze)) {
@@ -1486,9 +1483,6 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
 
   LOG_SUCCESS() << method->PrettyMethod();
   MaybeRecordStat(stats_, MethodCompilationStat::kInlinedInvoke);
-  if (outermost_graph_ == graph_) {
-    MaybeRecordStat(stats_, MethodCompilationStat::kInlinedLastInvoke);
-  }
   return true;
 }
 

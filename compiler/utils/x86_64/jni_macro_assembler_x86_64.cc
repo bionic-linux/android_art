@@ -151,44 +151,35 @@ void X86_64JNIMacroAssembler::DecreaseFrameSize(size_t adjust) {
   DecreaseFrameSizeImpl(adjust, &asm_);
 }
 
-ManagedRegister X86_64JNIMacroAssembler::CoreRegisterWithSize(ManagedRegister src, size_t size) {
-  DCHECK(src.AsX86_64().IsCpuRegister());
-  DCHECK(size == 4u || size == 8u) << size;
-  return src;
-}
-
 void X86_64JNIMacroAssembler::Store(FrameOffset offs, ManagedRegister msrc, size_t size) {
-  Store(X86_64ManagedRegister::FromCpuRegister(RSP), MemberOffset(offs.Int32Value()), msrc, size);
-}
-
-void X86_64JNIMacroAssembler::Store(ManagedRegister mbase,
-                                    MemberOffset offs,
-                                    ManagedRegister msrc,
-                                    size_t size) {
-  X86_64ManagedRegister base = mbase.AsX86_64();
   X86_64ManagedRegister src = msrc.AsX86_64();
   if (src.IsNoRegister()) {
     CHECK_EQ(0u, size);
   } else if (src.IsCpuRegister()) {
     if (size == 4) {
       CHECK_EQ(4u, size);
-      __ movl(Address(base.AsCpuRegister(), offs), src.AsCpuRegister());
+      __ movl(Address(CpuRegister(RSP), offs), src.AsCpuRegister());
     } else {
       CHECK_EQ(8u, size);
-      __ movq(Address(base.AsCpuRegister(), offs), src.AsCpuRegister());
+      __ movq(Address(CpuRegister(RSP), offs), src.AsCpuRegister());
     }
+  } else if (src.IsRegisterPair()) {
+    CHECK_EQ(0u, size);
+    __ movq(Address(CpuRegister(RSP), offs), src.AsRegisterPairLow());
+    __ movq(Address(CpuRegister(RSP), FrameOffset(offs.Int32Value()+4)),
+            src.AsRegisterPairHigh());
   } else if (src.IsX87Register()) {
     if (size == 4) {
-      __ fstps(Address(base.AsCpuRegister(), offs));
+      __ fstps(Address(CpuRegister(RSP), offs));
     } else {
-      __ fstpl(Address(base.AsCpuRegister(), offs));
+      __ fstpl(Address(CpuRegister(RSP), offs));
     }
   } else {
     CHECK(src.IsXmmRegister());
     if (size == 4) {
-      __ movss(Address(base.AsCpuRegister(), offs), src.AsXmmRegister());
+      __ movss(Address(CpuRegister(RSP), offs), src.AsXmmRegister());
     } else {
-      __ movsd(Address(base.AsCpuRegister(), offs), src.AsXmmRegister());
+      __ movsd(Address(CpuRegister(RSP), offs), src.AsXmmRegister());
     }
   }
 }
@@ -227,37 +218,33 @@ void X86_64JNIMacroAssembler::StoreSpanning(FrameOffset /*dst*/,
 }
 
 void X86_64JNIMacroAssembler::Load(ManagedRegister mdest, FrameOffset src, size_t size) {
-  Load(mdest, X86_64ManagedRegister::FromCpuRegister(RSP), MemberOffset(src.Int32Value()), size);
-}
-
-void X86_64JNIMacroAssembler::Load(ManagedRegister mdest,
-                                   ManagedRegister mbase,
-                                   MemberOffset offs,
-                                   size_t size) {
   X86_64ManagedRegister dest = mdest.AsX86_64();
-  X86_64ManagedRegister base = mbase.AsX86_64();
   if (dest.IsNoRegister()) {
     CHECK_EQ(0u, size);
   } else if (dest.IsCpuRegister()) {
     if (size == 4) {
       CHECK_EQ(4u, size);
-      __ movl(dest.AsCpuRegister(), Address(base.AsCpuRegister(), offs));
+      __ movl(dest.AsCpuRegister(), Address(CpuRegister(RSP), src));
     } else {
       CHECK_EQ(8u, size);
-      __ movq(dest.AsCpuRegister(), Address(base.AsCpuRegister(), offs));
+      __ movq(dest.AsCpuRegister(), Address(CpuRegister(RSP), src));
     }
+  } else if (dest.IsRegisterPair()) {
+    CHECK_EQ(0u, size);
+    __ movq(dest.AsRegisterPairLow(), Address(CpuRegister(RSP), src));
+    __ movq(dest.AsRegisterPairHigh(), Address(CpuRegister(RSP), FrameOffset(src.Int32Value()+4)));
   } else if (dest.IsX87Register()) {
     if (size == 4) {
-      __ flds(Address(base.AsCpuRegister(), offs));
+      __ flds(Address(CpuRegister(RSP), src));
     } else {
-      __ fldl(Address(base.AsCpuRegister(), offs));
+      __ fldl(Address(CpuRegister(RSP), src));
     }
   } else {
     CHECK(dest.IsXmmRegister());
     if (size == 4) {
-      __ movss(dest.AsXmmRegister(), Address(base.AsCpuRegister(), offs));
+      __ movss(dest.AsXmmRegister(), Address(CpuRegister(RSP), src));
     } else {
-      __ movsd(dest.AsXmmRegister(), Address(base.AsCpuRegister(), offs));
+      __ movsd(dest.AsXmmRegister(), Address(CpuRegister(RSP), src));
     }
   }
 }

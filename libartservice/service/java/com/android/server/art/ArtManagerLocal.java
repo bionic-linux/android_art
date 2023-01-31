@@ -16,6 +16,8 @@
 
 package com.android.server.art;
 
+import libcore.api.CorePlatformApi;
+
 /**
  * This class provides a system API for functionality provided by the ART
  * module.

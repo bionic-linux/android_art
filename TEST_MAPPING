@@ -2,9 +2,6 @@
 {
   "mainline-presubmit": [
     {
-      "name": "ComposHostTestCases[com.google.android.art.apex]"
-    },
-    {
       "name": "art-run-test-001-HelloWorld[com.google.android.art.apex]"
     },
     {
@@ -1199,9 +1196,6 @@
     },
     {
       "name": "ArtServiceTests"
-    },
-    {
-      "name": "ComposHostTestCases"
     },
     {
       "name": "art-run-test-001-HelloWorld"

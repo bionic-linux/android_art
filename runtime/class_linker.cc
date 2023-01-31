@@ -3197,7 +3197,7 @@ ObjPtr<mirror::Class> ClassLinker::DefineClass(Thread* self,
   }
   self->AssertNoPendingException();
   CHECK(h_new_class != nullptr) << descriptor;
-  CHECK(h_new_class->IsResolved()) << descriptor << " " << h_new_class->GetStatus();
+  CHECK(h_new_class->IsResolved() && !h_new_class->IsErroneousResolved()) << descriptor;
 
   // Instrumentation may have updated entrypoints for all methods of all
   // classes. However it could not update methods of this class while we
@@ -3890,14 +3890,14 @@ void ClassLinker::RegisterDexFileLocked(const DexFile& dex_file,
   bool initialize_oat_file_data = (oat_file != nullptr) && oat_file->IsExecutable();
   JavaVMExt* const vm = self->GetJniEnv()->GetVm();
   for (auto it = dex_caches_.begin(); it != dex_caches_.end(); ) {
-    const DexCacheData& data = it->second;
+    DexCacheData data = *it;
     if (self->IsJWeakCleared(data.weak_root)) {
       vm->DeleteWeakGlobalRef(self, data.weak_root);
       it = dex_caches_.erase(it);
     } else {
       if (initialize_oat_file_data &&
-          it->first->GetOatDexFile() != nullptr &&
-          it->first->GetOatDexFile()->GetOatFile() == oat_file) {
+          it->dex_file->GetOatDexFile() != nullptr &&
+          it->dex_file->GetOatDexFile()->GetOatFile() == oat_file) {
         initialize_oat_file_data = false;  // Already initialized.
       }
       ++it;
@@ -3912,8 +3912,9 @@ void ClassLinker::RegisterDexFileLocked(const DexFile& dex_file,
   jweak dex_cache_jweak = vm->AddWeakGlobalRef(self, dex_cache);
   DexCacheData data;
   data.weak_root = dex_cache_jweak;
+  data.dex_file = dex_cache->GetDexFile();
   data.class_table = ClassTableForClassLoader(class_loader);
-  AddNativeDebugInfoForDex(self, &dex_file);
+  AddNativeDebugInfoForDex(self, data.dex_file);
   DCHECK(data.class_table != nullptr);
   // Make sure to hold the dex cache live in the class table. This case happens for the boot class
   // path dex caches without an image.
@@ -3925,8 +3926,7 @@ void ClassLinker::RegisterDexFileLocked(const DexFile& dex_file,
     // remembered sets and generational GCs.
     WriteBarrier::ForEveryFieldWrite(class_loader);
   }
-  bool inserted = dex_caches_.emplace(&dex_file, std::move(data)).second;
-  CHECK(inserted);
+  dex_caches_.push_back(data);
 }
 
 ObjPtr<mirror::DexCache> ClassLinker::DecodeDexCacheLocked(Thread* self, const DexCacheData* data) {
@@ -3940,7 +3940,7 @@ bool ClassLinker::IsSameClassLoader(
     const DexCacheData* data,
     ObjPtr<mirror::ClassLoader> class_loader) {
   CHECK(data != nullptr);
-  DCHECK_EQ(FindDexCacheDataLocked(*dex_cache->GetDexFile()), data);
+  DCHECK_EQ(dex_cache->GetDexFile(), data->dex_file);
   return data->class_table == ClassTableForClassLoader(class_loader);
 }
 
@@ -4085,14 +4085,13 @@ ObjPtr<mirror::DexCache> ClassLinker::FindDexCache(Thread* self, const DexFile& 
     return dex_cache;
   }
   // Failure, dump diagnostic and abort.
-  for (const auto& entry : dex_caches_) {
-    const DexCacheData& data = entry.second;
+  for (const DexCacheData& data : dex_caches_) {
     if (DecodeDexCacheLocked(self, &data) != nullptr) {
-      LOG(FATAL_WITHOUT_ABORT) << "Registered dex file " << entry.first->GetLocation();
+      LOG(FATAL_WITHOUT_ABORT) << "Registered dex file " << data.dex_file->GetLocation();
     }
   }
   LOG(FATAL) << "Failed to find DexCache for DexFile " << dex_file.GetLocation()
-             << " " << &dex_file;
+             << " " << &dex_file << " " << dex_cache_data->dex_file;
   UNREACHABLE();
 }
 
@@ -4100,21 +4099,29 @@ ClassTable* ClassLinker::FindClassTable(Thread* self, ObjPtr<mirror::DexCache> d
   const DexFile* dex_file = dex_cache->GetDexFile();
   DCHECK(dex_file != nullptr);
   ReaderMutexLock mu(self, *Locks::dex_lock_);
-  auto it = dex_caches_.find(dex_file);
-  if (it != dex_caches_.end()) {
-    const DexCacheData& data = it->second;
-    ObjPtr<mirror::DexCache> registered_dex_cache = DecodeDexCacheLocked(self, &data);
-    if (registered_dex_cache != nullptr) {
-      CHECK_EQ(registered_dex_cache, dex_cache) << dex_file->GetLocation();
-      return data.class_table;
+  // Search assuming unique-ness of dex file.
+  for (const DexCacheData& data : dex_caches_) {
+    // Avoid decoding (and read barriers) other unrelated dex caches.
+    if (data.dex_file == dex_file) {
+      ObjPtr<mirror::DexCache> registered_dex_cache = DecodeDexCacheLocked(self, &data);
+      if (registered_dex_cache != nullptr) {
+        CHECK_EQ(registered_dex_cache, dex_cache) << dex_file->GetLocation();
+        return data.class_table;
+      }
     }
   }
   return nullptr;
 }
 
 const ClassLinker::DexCacheData* ClassLinker::FindDexCacheDataLocked(const DexFile& dex_file) {
-  auto it = dex_caches_.find(&dex_file);
-  return it != dex_caches_.end() ? &it->second : nullptr;
+  // Search assuming unique-ness of dex file.
+  for (const DexCacheData& data : dex_caches_) {
+    // Avoid decoding (and read barriers) other unrelated dex caches.
+    if (data.dex_file == &dex_file) {
+      return &data;
+    }
+  }
+  return nullptr;
 }
 
 void ClassLinker::CreatePrimitiveClass(Thread* self,
@@ -4709,6 +4716,7 @@ verifier::FailureKind ClassLinker::PerformClassVerification(Thread* self,
                                               class_loader,
                                               *klass->GetClassDef(),
                                               runtime->GetCompilerCallbacks(),
+                                              runtime->IsAotCompiler(),
                                               log_level,
                                               Runtime::Current()->GetTargetSdkVersion(),
                                               error_msg);
@@ -7606,10 +7614,8 @@ class ClassLinker::LinkInterfaceMethodsHelper {
     if (kIsDebugBuild) {
       PointerSize pointer_size = class_linker_->GetImagePointerSize();
       // Check that there are no stale methods are in the dex cache array.
-      ObjPtr<mirror::DexCache> dex_cache = klass_->GetDexCache();
-      auto* resolved_methods = dex_cache->GetResolvedMethods();
-      size_t num_methods = dex_cache->NumResolvedMethods();
-      for (size_t i = 0; resolved_methods != nullptr && i < num_methods; ++i) {
+      auto* resolved_methods = klass_->GetDexCache()->GetResolvedMethods();
+      for (size_t i = 0, count = klass_->GetDexCache()->NumResolvedMethods(); i < count; ++i) {
         auto pair = mirror::DexCache::GetNativePair(resolved_methods, i);
         ArtMethod* m = pair.object;
         CHECK(move_table_.find(m) == move_table_.end() ||
@@ -9745,14 +9751,13 @@ void ClassLinker::DumpForSigQuit(std::ostream& os) {
     if (loader != nullptr) {
       os << "#" << class_loader_index++ << " " << loader->GetClass()->PrettyDescriptor() << ": [";
       bool saw_one_dex_file = false;
-      for (const auto& entry : dex_caches_) {
-        const DexCacheData& dex_cache = entry.second;
-        if (dex_cache.class_table == class_loader.class_table) {
+      for (const DexCacheData& dex_cache : dex_caches_) {
+        if (dex_cache.IsValid() && dex_cache.class_table == class_loader.class_table) {
           if (saw_one_dex_file) {
             os << ":";
           }
           saw_one_dex_file = true;
-          os << entry.first->GetLocation();
+          os << dex_cache.dex_file->GetLocation();
         }
       }
       os << "]";

@@ -54,7 +54,6 @@ static void InitializeArray(GcRoot<T>*) {
 
 template<typename T, size_t kMaxCacheSize>
 T* DexCache::AllocArray(MemberOffset obj_offset, MemberOffset num_offset, size_t num) {
-  ReadBarrier::AssertToSpaceInvariant(this);
   num = std::min<size_t>(num, kMaxCacheSize);
   if (num == 0) {
     return nullptr;
@@ -71,7 +70,7 @@ T* DexCache::AllocArray(MemberOffset obj_offset, MemberOffset num_offset, size_t
   array = reinterpret_cast<T*>(alloc->AllocAlign16(self, RoundUp(num * sizeof(T), 16)));
   InitializeArray(array);  // Ensure other threads see the array initialized.
   SetField32Volatile<false, false>(num_offset, num);
-  SetField64Volatile<false, false>(obj_offset, reinterpret_cast64<uint64_t>(array));
+  SetField64Volatile<false, false>(obj_offset, reinterpret_cast<uint64_t>(array));
   return array;
 }
 
@@ -387,8 +386,6 @@ inline void VisitDexCachePairs(std::atomic<DexCachePair<T>>* pairs,
                                size_t num_pairs,
                                const Visitor& visitor)
     REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_) {
-  // Check both the data pointer and count since the array might be initialized
-  // concurrently on other thread, and we might observe just one of the values.
   for (size_t i = 0; pairs != nullptr && i < num_pairs; ++i) {
     DexCachePair<T> source = pairs[i].load(std::memory_order_relaxed);
     // NOTE: We need the "template" keyword here to avoid a compilation

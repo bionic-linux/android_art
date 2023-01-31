@@ -411,20 +411,24 @@ class JniCompilerTest : public CommonCompilerTest {
     }
   };
 
-  static void JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self);
-  static void JniMethodEndSynchronizedOverride(jobject locked, Thread* self);
+  static uint32_t JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self);
+  static void JniMethodEndSynchronizedOverride(uint32_t saved_local_ref_cookie,
+                                               jobject locked,
+                                               Thread* self);
   static mirror::Object* JniMethodEndWithReferenceSynchronizedOverride(
       jobject result,
+      uint32_t saved_local_ref_cookie,
       jobject locked,
       Thread* self);
 
-  using StartSynchronizedType = void (*)(jobject, Thread*);
-  using EndSynchronizedType = void (*)(jobject, Thread*);
-  using EndWithReferenceSynchronizedType = mirror::Object* (*)(jobject, jobject, Thread*);
+  using StartSynchronizedType = uint32_t (*)(jobject, Thread*);
+  using EndSynchronizedType = void (*)(uint32_t, jobject, Thread*);
+  using EndWithReferenceSynchronizedType = mirror::Object* (*)(jobject, uint32_t, jobject, Thread*);
 
   static StartSynchronizedType jni_method_start_synchronized_original_;
   static EndSynchronizedType jni_method_end_synchronized_original_;
   static EndWithReferenceSynchronizedType jni_method_end_with_reference_synchronized_original_;
+  static uint32_t saved_local_ref_cookie_;
   static jobject locked_object_;
 
   bool check_generic_jni_;
@@ -437,24 +441,35 @@ JniCompilerTest::StartSynchronizedType JniCompilerTest::jni_method_start_synchro
 JniCompilerTest::EndSynchronizedType JniCompilerTest::jni_method_end_synchronized_original_;
 JniCompilerTest::EndWithReferenceSynchronizedType
     JniCompilerTest::jni_method_end_with_reference_synchronized_original_;
+uint32_t JniCompilerTest::saved_local_ref_cookie_;
 jobject JniCompilerTest::locked_object_;
 
-void JniCompilerTest::JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self) {
+uint32_t JniCompilerTest::JniMethodStartSynchronizedOverride(jobject to_lock, Thread* self) {
   locked_object_ = to_lock;
-  jni_method_start_synchronized_original_(to_lock, self);
+  uint32_t cookie = jni_method_start_synchronized_original_(to_lock, self);
+  saved_local_ref_cookie_ = cookie;
+  return cookie;
 }
 
-void JniCompilerTest::JniMethodEndSynchronizedOverride(jobject locked, Thread* self) {
+void JniCompilerTest::JniMethodEndSynchronizedOverride(uint32_t saved_local_ref_cookie,
+                                                       jobject locked,
+                                                       Thread* self) {
+  EXPECT_EQ(saved_local_ref_cookie_, saved_local_ref_cookie);
   EXPECT_EQ(locked_object_, locked);
-  jni_method_end_synchronized_original_(locked, self);
+  jni_method_end_synchronized_original_(saved_local_ref_cookie, locked, self);
 }
 
 mirror::Object* JniCompilerTest::JniMethodEndWithReferenceSynchronizedOverride(
     jobject result,
+    uint32_t saved_local_ref_cookie,
     jobject locked,
     Thread* self) {
+  EXPECT_EQ(saved_local_ref_cookie_, saved_local_ref_cookie);
   EXPECT_EQ(locked_object_, locked);
-  return jni_method_end_with_reference_synchronized_original_(result, locked, self);
+  return jni_method_end_with_reference_synchronized_original_(result,
+                                                              saved_local_ref_cookie,
+                                                              locked,
+                                                              self);
 }
 
 // Test the normal compiler and normal generic JNI only.

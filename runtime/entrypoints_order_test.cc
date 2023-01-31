@@ -70,7 +70,7 @@ class EntrypointsOrderTest : public CommonRuntimeTest {
     EXPECT_OFFSET_DIFFP(Thread, tls32_, daemon, throwing_OutOfMemoryError, 4);
     EXPECT_OFFSET_DIFFP(Thread, tls32_, throwing_OutOfMemoryError, no_thread_suspension, 4);
     EXPECT_OFFSET_DIFFP(Thread, tls32_, no_thread_suspension, thread_exit_check_count, 4);
-    EXPECT_OFFSET_DIFFP(Thread, tls32_, thread_exit_check_count, is_transitioning_to_runnable, 4);
+    EXPECT_OFFSET_DIFFP(Thread, tls32_, thread_exit_check_count, handling_signal_, 4);
 
     // TODO: Better connection. Take alignment into account.
     EXPECT_OFFSET_DIFF_GT3(Thread, tls32_.thread_exit_check_count, tls64_.trace_clock_base, 4,
@@ -122,6 +122,7 @@ class EntrypointsOrderTest : public CommonRuntimeTest {
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, thread_local_objects, jni_entrypoints, sizeof(size_t));
 
     // Skip across the entrypoints structures.
+    EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, mterp_current_ibase, rosalloc_runs, sizeof(void*));
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, rosalloc_runs, thread_local_alloc_stack_top,
                         sizeof(void*) * kNumRosAllocThreadLocalSizeBracketsInThread);
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, thread_local_alloc_stack_top, thread_local_alloc_stack_end,

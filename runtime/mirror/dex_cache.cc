@@ -52,12 +52,8 @@ void DexCache::Initialize(const DexFile* dex_file, ObjPtr<ClassLoader> class_loa
 
 void DexCache::VisitReflectiveTargets(ReflectiveValueVisitor* visitor) {
   bool wrote = false;
-  FieldDexCacheType* fields = GetResolvedFields();
-  size_t num_fields = NumResolvedFields();
-  // Check both the data pointer and count since the array might be initialized
-  // concurrently on other thread, and we might observe just one of the values.
-  for (size_t i = 0; fields != nullptr && i < num_fields; i++) {
-    auto pair(GetNativePair(fields, i));
+  for (size_t i = 0; i < NumResolvedFields(); i++) {
+    auto pair(GetNativePair(GetResolvedFields(), i));
     if (pair.index == FieldDexCachePair::InvalidIndexForSlot(i)) {
       continue;
     }
@@ -69,16 +65,12 @@ void DexCache::VisitReflectiveTargets(ReflectiveValueVisitor* visitor) {
       } else {
         pair.object = new_val;
       }
-      SetNativePair(fields, i, pair);
+      SetNativePair(GetResolvedFields(), i, pair);
       wrote = true;
     }
   }
-  MethodDexCacheType* methods = GetResolvedMethods();
-  size_t num_methods = NumResolvedMethods();
-  // Check both the data pointer and count since the array might be initialized
-  // concurrently on other thread, and we might observe just one of the values.
-  for (size_t i = 0; methods != nullptr && i < num_methods; i++) {
-    auto pair(GetNativePair(methods, i));
+  for (size_t i = 0; i < NumResolvedMethods(); i++) {
+    auto pair(GetNativePair(GetResolvedMethods(), i));
     if (pair.index == MethodDexCachePair::InvalidIndexForSlot(i)) {
       continue;
     }
@@ -90,7 +82,7 @@ void DexCache::VisitReflectiveTargets(ReflectiveValueVisitor* visitor) {
       } else {
         pair.object = new_val;
       }
-      SetNativePair(methods, i, pair);
+      SetNativePair(GetResolvedMethods(), i, pair);
       wrote = true;
     }
   }

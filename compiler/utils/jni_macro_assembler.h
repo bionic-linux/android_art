@@ -111,13 +111,8 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   virtual void IncreaseFrameSize(size_t adjust) = 0;
   virtual void DecreaseFrameSize(size_t adjust) = 0;
 
-  // Return the same core register but with correct size if the architecture-specific
-  // ManagedRegister has different representation for different sizes.
-  virtual ManagedRegister CoreRegisterWithSize(ManagedRegister src, size_t size) = 0;
-
   // Store routines
   virtual void Store(FrameOffset offs, ManagedRegister src, size_t size) = 0;
-  virtual void Store(ManagedRegister base, MemberOffset offs, ManagedRegister src, size_t size) = 0;
   virtual void StoreRef(FrameOffset dest, ManagedRegister src) = 0;
   virtual void StoreRawPtr(FrameOffset dest, ManagedRegister src) = 0;
 
@@ -134,7 +129,6 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
 
   // Load routines
   virtual void Load(ManagedRegister dest, FrameOffset src, size_t size) = 0;
-  virtual void Load(ManagedRegister dest, ManagedRegister base, MemberOffset offs, size_t size) = 0;
 
   virtual void LoadFromThread(ManagedRegister dest,
                               ThreadOffset<kPointerSize> src,

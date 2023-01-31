@@ -455,8 +455,10 @@ void ClassLinker::VisitKnownDexFiles(Thread* self, Visitor visitor) {
   ReaderMutexLock rmu(self, *Locks::dex_lock_);
   std::for_each(dex_caches_.begin(),
                 dex_caches_.end(),
-                [&](const auto& entry) REQUIRES(Locks::mutator_lock_) {
-                  visitor(/*dex_file=*/entry.first);
+                [&](DexCacheData& dcd) REQUIRES(Locks::mutator_lock_) {
+                  if (dcd.IsValid()) {
+                    visitor(dcd.dex_file);
+                  }
                 });
 }
 

@@ -1162,8 +1162,7 @@ std::vector<ObjPtr<mirror::DexCache>> ImageWriter::FindDexCaches(Thread* self) {
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
   ReaderMutexLock mu2(self, *Locks::dex_lock_);
   dex_caches.reserve(class_linker->GetDexCachesData().size());
-  for (const auto& entry : class_linker->GetDexCachesData()) {
-    const ClassLinker::DexCacheData& data = entry.second;
+  for (const ClassLinker::DexCacheData& data : class_linker->GetDexCachesData()) {
     if (self->IsJWeakCleared(data.weak_root)) {
       continue;
     }
@@ -1214,8 +1213,7 @@ ObjPtr<mirror::ObjectArray<mirror::Object>> ImageWriter::CollectDexCaches(Thread
   {
     ReaderMutexLock mu(self, *Locks::dex_lock_);
     // Count number of dex caches not in the boot image.
-    for (const auto& entry : class_linker->GetDexCachesData()) {
-      const ClassLinker::DexCacheData& data = entry.second;
+    for (const ClassLinker::DexCacheData& data : class_linker->GetDexCachesData()) {
       ObjPtr<mirror::DexCache> dex_cache =
           ObjPtr<mirror::DexCache>::DownCast(self->DecodeJObject(data.weak_root));
       if (dex_cache == nullptr) {
@@ -1232,10 +1230,23 @@ ObjPtr<mirror::ObjectArray<mirror::Object>> ImageWriter::CollectDexCaches(Thread
   CHECK(dex_caches != nullptr) << "Failed to allocate a dex cache array.";
   {
     ReaderMutexLock mu(self, *Locks::dex_lock_);
-    // Collect all dex caches (and sort them by registration index to make output deterministic).
-    std::map<uint64_t, ObjPtr<mirror::DexCache>> non_image_dex_caches;
-    for (const auto& entry : class_linker->GetDexCachesData()) {
-      const ClassLinker::DexCacheData& data = entry.second;
+    size_t non_image_dex_caches = 0;
+    // Re-count number of non image dex caches.
+    for (const ClassLinker::DexCacheData& data : class_linker->GetDexCachesData()) {
+      ObjPtr<mirror::DexCache> dex_cache =
+          ObjPtr<mirror::DexCache>::DownCast(self->DecodeJObject(data.weak_root));
+      if (dex_cache == nullptr) {
+        continue;
+      }
+      const DexFile* dex_file = dex_cache->GetDexFile();
+      if (IsImageDexCache(dex_cache)) {
+        non_image_dex_caches += image_dex_files.find(dex_file) != image_dex_files.end() ? 1u : 0u;
+      }
+    }
+    CHECK_EQ(dex_cache_count, non_image_dex_caches)
+        << "The number of non-image dex caches changed.";
+    size_t i = 0;
+    for (const ClassLinker::DexCacheData& data : class_linker->GetDexCachesData()) {
       ObjPtr<mirror::DexCache> dex_cache =
           ObjPtr<mirror::DexCache>::DownCast(self->DecodeJObject(data.weak_root));
       if (dex_cache == nullptr) {
@@ -1244,16 +1255,9 @@ ObjPtr<mirror::ObjectArray<mirror::Object>> ImageWriter::CollectDexCaches(Thread
       const DexFile* dex_file = dex_cache->GetDexFile();
       if (IsImageDexCache(dex_cache) &&
           image_dex_files.find(dex_file) != image_dex_files.end()) {
-        bool inserted = non_image_dex_caches.emplace(data.registration_index, dex_cache).second;
-        CHECK(inserted);
+        dex_caches->Set<false>(i, dex_cache.Ptr());
+        ++i;
       }
-    }
-    CHECK_EQ(dex_cache_count, non_image_dex_caches.size())
-        << "The number of non-image dex caches changed.";
-    // Write the dex caches to the output array (in registration order).
-    size_t i = 0;
-    for (const auto& entry : non_image_dex_caches) {
-      dex_caches->Set<false>(i++, entry.second.Ptr());
     }
   }
   return dex_caches;
@@ -2055,8 +2059,7 @@ void ImageWriter::LayoutHelper::VerifyImageBinSlotsAssigned() {
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
     Thread* self = Thread::Current();
     ReaderMutexLock mu(self, *Locks::dex_lock_);
-    for (const auto& entry : class_linker->GetDexCachesData()) {
-      const ClassLinker::DexCacheData& data = entry.second;
+    for (const ClassLinker::DexCacheData& data : class_linker->GetDexCachesData()) {
       ObjPtr<mirror::DexCache> dex_cache =
           ObjPtr<mirror::DexCache>::DownCast(self->DecodeJObject(data.weak_root));
       if (dex_cache == nullptr ||

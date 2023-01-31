@@ -162,6 +162,7 @@ class VerifierDepsTest : public CommonCompilerDriverTest {
                                            method.GetIndex(),
                                            method.GetAccessFlags(),
                                            /* can_load_classes= */ true,
+                                           /* allow_soft_failures= */ true,
                                            /* verify to dump */ false,
                                            /* allow_thread_suspension= */ true,
                                            /* api_level= */ 0));
@@ -326,7 +327,6 @@ class VerifierDepsTest : public CommonCompilerDriverTest {
 
     return decoded_deps.ValidateDependencies(soa.Self(),
                                              new_class_loader,
-                                             second_dex_files,
                                              error_msg);
   }
 

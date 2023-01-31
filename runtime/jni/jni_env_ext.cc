@@ -151,23 +151,23 @@ static size_t JNIEnvSize(size_t pointer_size) {
   return pointer_size;
 }
 
-MemberOffset JNIEnvExt::SegmentStateOffset(size_t pointer_size) {
+Offset JNIEnvExt::SegmentStateOffset(size_t pointer_size) {
   size_t locals_offset = JNIEnvSize(pointer_size) +
                          2 * pointer_size +          // Thread* self + JavaVMExt* vm.
                          4 +                         // local_ref_cookie.
                          (pointer_size - 4);         // Padding.
   size_t irt_segment_state_offset =
       IndirectReferenceTable::SegmentStateOffset(pointer_size).Int32Value();
-  return MemberOffset(locals_offset + irt_segment_state_offset);
+  return Offset(locals_offset + irt_segment_state_offset);
 }
 
-MemberOffset JNIEnvExt::LocalRefCookieOffset(size_t pointer_size) {
-  return MemberOffset(JNIEnvSize(pointer_size) +
-                      2 * pointer_size);          // Thread* self + JavaVMExt* vm
+Offset JNIEnvExt::LocalRefCookieOffset(size_t pointer_size) {
+  return Offset(JNIEnvSize(pointer_size) +
+                2 * pointer_size);          // Thread* self + JavaVMExt* vm
 }
 
-MemberOffset JNIEnvExt::SelfOffset(size_t pointer_size) {
-  return MemberOffset(JNIEnvSize(pointer_size));
+Offset JNIEnvExt::SelfOffset(size_t pointer_size) {
+  return Offset(JNIEnvSize(pointer_size));
 }
 
 // Use some defining part of the caller's frame as the identifying mark for the JNI segment.
