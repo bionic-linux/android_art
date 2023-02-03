@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e516d2_05e3fb34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-02-03T16:42:07Z",
+      "side": 1,
+      "message": "Thanks! Looks good to me but I will let Elliott +2 this one.",
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "640b7228_1082f032",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "I don\u0027t want to change the non-bionic path because I\u0027m not sure (and we don\u0027t control it) what glibc and musl do with SA_RESTORER. If it wasn\u0027t defined and we define it here in the middle of some .cc file, it might break some assumptions by those libraries in other places.\n\nI think the comment above is very old the the patches have long since landede and propgated to the android kernel, so the whole `#if !defined(__BIONIC__)` block should be removed (and the `#if defined(SA_RESTORER)` left in place), but I need to doule-check with enh@.\n\nRemoving the hack should be done in a separate clean-up CL I think.",
       "parentUuid": "640b7228_1082f032",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee5b3b2_dda10fb8",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-02-03T16:42:07Z",
+      "side": 1,
+      "message": "+1 for separate clean-up CL.",
+      "parentUuid": "570a8837_39307dd6",
       "range": {
         "startLine": 243,
         "startChar": 13,
