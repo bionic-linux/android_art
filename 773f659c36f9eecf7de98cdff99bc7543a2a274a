@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "570a8837_39307dd6",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-03T14:24:15Z",
+      "side": 1,
+      "message": "I don\u0027t want to change the non-bionic path because I\u0027m not sure (and we don\u0027t control it) what glibc and musl do with SA_RESTORER. If it wasn\u0027t defined and we define it here in the middle of some .cc file, it might break some assumptions by those libraries in other places.\n\nI think the comment above is very old the the patches have long since landede and propgated to the android kernel, so the whole `#if !defined(__BIONIC__)` block should be removed (and the `#if defined(SA_RESTORER)` left in place), but I need to doule-check with enh@.\n\nRemoving the hack should be done in a separate clean-up CL I think.",
+      "parentUuid": "640b7228_1082f032",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4330b1c2_b57a4f41",
         "filename": "sigchainlib/sigchain.cc",
         "patchSetId": 4
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "AFAIU, SA_RESTORER is always defined if it isn\u0027t bionic from the above code. If it\u0027s bionic then it may or may not be defined.",
       "parentUuid": "4330b1c2_b57a4f41",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 24
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2b80c9_4a1c80c4",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-03T14:24:15Z",
+      "side": 1,
+      "message": "Mythri is correct, previously we assumed that SA_RESTORER is always defined by bionic.\n\nInitially I tried to define it in bionic for riscv as well (aosp/2297537) but enh@ suggested that it was a bad idea: \"even on arm64, bionic doesn\u0027t use the SA_RESTORER stuff (even though it exists) and lets the kernel do its own thing. in rv64 afaik the kernel\u0027s gone a step further down this path of obsoleting and removing it\".",
+      "parentUuid": "47682ee0_9ae58208",
       "range": {
         "startLine": 272,
         "startChar": 0,
