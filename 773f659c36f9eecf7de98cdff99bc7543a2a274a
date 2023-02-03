@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640b7228_1082f032",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-02-03T13:03:17Z",
+      "side": 1,
+      "message": "Could this be reaplced with SA_RESTORER ?",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4330b1c2_b57a4f41",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-02-03T13:03:17Z",
+      "side": 1,
+      "message": "Wasn\u0027t this dead code given we were defining SA_RESTORER above?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 24
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
