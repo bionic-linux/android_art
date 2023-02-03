@@ -45,6 +45,30 @@
       },
       "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47682ee0_9ae58208",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-02-03T13:11:05Z",
+      "side": 1,
+      "message": "AFAIU, SA_RESTORER is always defined if it isn\u0027t bionic from the above code. If it\u0027s bionic then it may or may not be defined.",
+      "parentUuid": "4330b1c2_b57a4f41",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 24
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
