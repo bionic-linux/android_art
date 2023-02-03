@@ -161,6 +161,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f60ae5_528b6eb1",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-02-03T18:45:22Z",
+      "side": 1,
+      "message": "lol. thanks. i\u0027ll send an actual patch this time...",
+      "parentUuid": "4b2dbf70_cea44a5b",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4330b1c2_b57a4f41",
