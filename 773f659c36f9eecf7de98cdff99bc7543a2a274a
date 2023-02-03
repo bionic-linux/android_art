@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb80952d_e01ac442",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-02-03T16:52:54Z",
+      "side": 1,
+      "message": "\u003e but you\u0027re literally going to do that on L244 anyway... :-)\n\nTrue.\n\n\u003e this seems fine for now, and we can remove this (and maybe send a patch to musl to remove the bogus #define for riscv!) some other time.\n\nOk, let\u0027s keep the workaround for now.",
+      "parentUuid": "33e21f97_431f4b2a",
+      "range": {
+        "startLine": 243,
+        "startChar": 13,
+        "endLine": 243,
+        "endChar": 23
+      },
+      "revId": "773f659c36f9eecf7de98cdff99bc7543a2a274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4330b1c2_b57a4f41",
