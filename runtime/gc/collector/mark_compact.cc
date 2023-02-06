@@ -395,7 +395,8 @@ MarkCompact::MarkCompact(Heap* heap)
       uffd_minor_fault_supported_(false),
       use_uffd_sigbus_(IsSigbusFeatureAvailable()),
       minor_fault_initialized_(false),
-      map_linear_alloc_shared_(false) {
+      map_linear_alloc_shared_(false),
+      clamp_info_map_status_(ClampInfoStatus::kClampInfoNotDone) {
   if (kIsDebugBuild) {
     updated_roots_.reset(new std::unordered_set<void*>());
   }
@@ -572,6 +573,50 @@ void MarkCompact::AddLinearAllocSpaceData(uint8_t* begin, size_t len) {
                                          is_shared);
 }
 
+void MarkCompact::ClampGrowthLimit(size_t new_capacity) {
+  size_t old_capacity = bump_pointer_space_->Capacity();
+  new_capacity = bump_pointer_space_->ClampGrowthLimit(new_capacity);
+  if (new_capacity < old_capacity) {
+    CHECK(from_space_map_.IsValid());
+    from_space_map_.SetSize(new_capacity);
+    if (shadow_to_space_map_.IsValid() && shadow_to_space_map_.Size() > new_capacity) {
+      shadow_to_space_map_.SetSize(new_capacity);
+    }
+    live_words_bitmap_->SetBitmapSize(new_capacity);
+    clamp_info_map_status_ = ClampInfoStatus::kClampInfoPending;
+    if (thread_running_gc_ == nullptr) {
+      // This means no gc is taking place and so we can clamp 'info_map_' right
+      // away.
+      ClampInfoMap();
+    }
+  }
+}
+
+void MarkCompact::ClampInfoMap() {
+  if (UNLIKELY(clamp_info_map_status_ == ClampInfoStatus::kClampInfoPending)) {
+    size_t set_size;
+    size_t moving_space_size = bump_pointer_space_->Capacity();
+    uint8_t* p = info_map_.Begin();
+
+    chunk_info_vec_ = reinterpret_cast<uint32_t*>(p);
+    vector_length_ = moving_space_size / kOffsetChunkSize;
+    set_size = vector_length_ * sizeof(uint32_t);
+
+    first_objs_non_moving_space_ = reinterpret_cast<ObjReference*>(p + set_size);
+    set_size += heap_->GetNonMovingSpace()->Capacity() / kPageSize * sizeof(ObjReference);
+
+    first_objs_moving_space_ = reinterpret_cast<ObjReference*>(p + set_size);
+    set_size += moving_space_size / kPageSize * sizeof(ObjReference);
+
+    pre_compact_offset_moving_space_ = reinterpret_cast<uint32_t*>(p + set_size);
+    set_size += moving_space_size / kPageSize * sizeof(uint32_t);
+
+    CHECK_LT(set_size, info_map_.Size());
+    info_map_.SetSize(set_size);
+    clamp_info_map_status_ = ClampInfoStatus::kClampInfoFinished;
+  }
+}
+
 void MarkCompact::PrepareCardTableForMarking(bool clear_alloc_space_cards) {
   TimingLogger::ScopedTiming t(__FUNCTION__, GetTimings());
   accounting::CardTable* const card_table = heap_->GetCardTable();
@@ -671,6 +716,7 @@ void MarkCompact::InitializePhase() {
   // TODO: Would it suffice to read it once in the constructor, which is called
   // in zygote process?
   pointer_size_ = Runtime::Current()->GetClassLinker()->GetImagePointerSize();
+  ClampInfoMap();
 }
 
 class MarkCompact::ThreadFlipVisitor : public Closure {
@@ -4265,6 +4311,7 @@ void MarkCompact::FinishPhase() {
     DCHECK_EQ(fstat(moving_to_space_fd_, &buf), 0) << "fstat failed: " << strerror(errno);
     DCHECK_EQ(buf.st_blocks, 0u);
   }
+  ClampInfoMap();
 }
 
 }  // namespace collector
