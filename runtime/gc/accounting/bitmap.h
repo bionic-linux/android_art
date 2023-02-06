@@ -118,7 +118,7 @@ class Bitmap {
   uintptr_t* const bitmap_begin_;
 
   // Number of bits in the bitmap.
-  const size_t bitmap_size_;
+  size_t bitmap_size_;
 
  private:
   DISALLOW_IMPLICIT_CONSTRUCTORS(Bitmap);
@@ -132,6 +132,11 @@ class MemoryRangeBitmap : public Bitmap {
       const std::string& name, uintptr_t cover_begin, uintptr_t cover_end);
   static MemoryRangeBitmap* CreateFromMemMap(
       MemMap&& mem_map, uintptr_t cover_begin, size_t num_bits);
+
+  void SetBitmapSize(size_t bytes) {
+    bitmap_size_ = bytes / kAlignment;
+    mem_map_.SetSize(bitmap_size_ / sizeof(uint8_t));
+  }
 
   // Beginning of the memory range that the bitmap covers.
   ALWAYS_INLINE uintptr_t CoverBegin() const {

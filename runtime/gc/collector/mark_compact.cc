@@ -395,7 +395,8 @@ MarkCompact::MarkCompact(Heap* heap)
       uffd_minor_fault_supported_(false),
       use_uffd_sigbus_(IsSigbusFeatureAvailable()),
       minor_fault_initialized_(false),
-      map_linear_alloc_shared_(false) {
+      map_linear_alloc_shared_(false),
+      clamp_info_map_status_(kClampInfoNotDone) {
   if (kIsDebugBuild) {
     updated_roots_.reset(new std::unordered_set<void*>());
   }
@@ -570,6 +571,33 @@ void MarkCompact::AddLinearAllocSpaceData(uint8_t* begin, size_t len) {
                                          begin,
                                          begin + len,
                                          is_shared);
+}
+
+void MarkCompact::ClampGrowthLimit(size_t new_capacity) {
+  size_t old_capacity = bump_pointer_space_->Capacity();
+  new_capacity = bump_pointer_space_->ClampGrowthLimit(new_capacity);
+  if (new_capacity < old_capacity) {
+    CHECK(from_space_map_.IsValid());
+    from_space_map_.SetSize(new_capacity);
+    if (shadow_to_space_map_.IsValid()) {
+      if (shadow_to_space_map_.Size() == old_capacity) {
+        shadow_to_space_map_.SetSize(new_capacity);
+      } else {
+      }
+    }
+    live_words_bitmap_->SetBitmapSize(new_capacity);
+    clamp_info_map_status_ = kClampInfoPending;
+  }
+}
+
+void MarkCompact::ClampInfoMap() {
+  size_t moving_space_size = bump_pointer_space_->Capacity();
+  size_t chunk_info_vec_size = moving_space_size / kOffsetChunkSize;
+  size_t nr_moving_pages = moving_space_size / kPageSize;
+  size_t nr_non_moving_pages = heap->GetNonMovingSpace()->Capacity() / kPageSize;
+  info_map_.SetSize();
+
+  clamp_info_map_status_ = kClampInfoFinished;
 }
 
 void MarkCompact::PrepareCardTableForMarking(bool clear_alloc_space_cards) {

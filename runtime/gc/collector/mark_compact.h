@@ -76,6 +76,7 @@ class MarkCompact final : public GarbageCollector {
 
   void RunPhases() override REQUIRES(!Locks::mutator_lock_, !lock_);
 
+  void ClampGrowthLimit(size_t new_capacity);
   // Updated before (or in) pre-compaction pause and is accessed only in the
   // pause or during concurrent compaction. The flag is reset in next GC cycle's
   // InitializePhase(). Therefore, it's safe to update without any memory ordering.
@@ -191,6 +192,7 @@ class MarkCompact final : public GarbageCollector {
     static constexpr uint32_t kBitmapWordsPerVectorWord =
             kBitsPerVectorWord / Bitmap::kBitsPerBitmapWord;
     static_assert(IsPowerOfTwo(kBitmapWordsPerVectorWord));
+    using MemRangeBitmap::SetBitmapSize;
     static LiveWordsBitmap* Create(uintptr_t begin, uintptr_t end);
 
     // Return offset (within the indexed chunk-info) of the nth live word.
@@ -761,6 +763,9 @@ class MarkCompact final : public GarbageCollector {
   // non-zygote processes during first GC, which sets up everyting for using
   // minor-fault from next GC.
   bool map_linear_alloc_shared_;
+
+  enum class ClampInfoStatus : uint8_t { kClampInfoNotDone; kClampInfoPending; kClampInfoFinished; }
+  ClampInfoStatus clamp_info_map_status_;
 
   class FlipCallback;
   class ThreadFlipVisitor;

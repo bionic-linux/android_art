@@ -332,7 +332,7 @@ class ContinuousSpace : public Space {
   }
 
   // The beginning of the storage for fast access.
-  uint8_t* begin_;
+  const uint8_t* begin_;
 
   // Current end of the space.
   Atomic<uint8_t*> end_;
