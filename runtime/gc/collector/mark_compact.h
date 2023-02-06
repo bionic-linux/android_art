@@ -76,6 +76,7 @@ class MarkCompact final : public GarbageCollector {
 
   void RunPhases() override REQUIRES(!Locks::mutator_lock_, !lock_);
 
+  void ClampGrowthLimit(size_t new_capacity);
   // Updated before (or in) pre-compaction pause and is accessed only in the
   // pause or during concurrent compaction. The flag is reset in next GC cycle's
   // InitializePhase(). Therefore, it's safe to update without any memory ordering.
@@ -166,6 +167,13 @@ class MarkCompact final : public GarbageCollector {
     kProcessedAndMapped = 6     // Processed and mapped. For SIGBUS.
   };
 
+  // Different heap clamping states.
+  enum class ClampInfoStatus : uint8_t {
+    kClampInfoNotDone,
+    kClampInfoPending,
+    kClampInfoFinished
+  };
+
  private:
   using ObjReference = mirror::CompressedReference<mirror::Object>;
   // Number of bits (live-words) covered by a single chunk-info (below)
@@ -191,6 +199,7 @@ class MarkCompact final : public GarbageCollector {
     static constexpr uint32_t kBitmapWordsPerVectorWord =
             kBitsPerVectorWord / Bitmap::kBitsPerBitmapWord;
     static_assert(IsPowerOfTwo(kBitmapWordsPerVectorWord));
+    using MemRangeBitmap::SetBitmapSize;
     static LiveWordsBitmap* Create(uintptr_t begin, uintptr_t end);
 
     // Return offset (within the indexed chunk-info) of the nth live word.
@@ -526,6 +535,10 @@ class MarkCompact final : public GarbageCollector {
                                  uint8_t* shadow_page,
                                  Atomic<PageState>& state,
                                  bool page_touched);
+  // Called for clamping of 'info_map_', which may be clamped later if heap
+  // clamping is done while a GC is happening. 'info_map_ is clamped in the next
+  // InitializePhase() or FinishPhase() in that case.
+  void ClampInfoMap();
 
   // For checkpoints
   Barrier gc_barrier_;
@@ -761,6 +774,10 @@ class MarkCompact final : public GarbageCollector {
   // non-zygote processes during first GC, which sets up everyting for using
   // minor-fault from next GC.
   bool map_linear_alloc_shared_;
+  // Clamping statue of `info_map_`. Initialized with 'NotDone'. Once heap is
+  // clamped but info_map_ is delayed, we set it to 'Pending'. Once 'info_map_'
+  // is also clamped, then we set it to 'Finished'.
+  ClampInfoStatus clamp_info_map_status_;
 
   class FlipCallback;
   class ThreadFlipVisitor;
@@ -781,6 +798,7 @@ class MarkCompact final : public GarbageCollector {
 };
 
 std::ostream& operator<<(std::ostream& os, MarkCompact::PageState value);
+std::ostream& operator<<(std::ostream& os, MarkCompact::ClampInfoStatus value);
 
 }  // namespace collector
 }  // namespace gc
