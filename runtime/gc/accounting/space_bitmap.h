@@ -179,9 +179,9 @@ class SpaceBitmap {
   }
 
   void SetHeapSize(size_t bytes) {
-    // TODO: Un-map the end of the mem map.
     heap_limit_ = heap_begin_ + bytes;
     bitmap_size_ = OffsetToIndex(bytes) * sizeof(intptr_t);
+    mem_map_.SetSize(bitmap_size_);
     CHECK_EQ(HeapSize(), bytes);
   }
 
