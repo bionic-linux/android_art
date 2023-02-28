@@ -128,7 +128,7 @@ class MemMap {
   // 'name' will be used -- on systems that support it -- to give the mapping
   // a name.
   //
-  // On success, returns returns a valid MemMap.  On failure, returns an invalid MemMap.
+  // On success, returns a valid MemMap.  On failure, returns an invalid MemMap.
   static MemMap MapAnonymous(const char* name,
                              uint8_t* addr,
                              size_t byte_count,
@@ -188,7 +188,7 @@ class MemMap {
   // Map part of a file, taking care of non-page aligned offsets.  The
   // "start" offset is absolute, not relative.
   //
-  // On success, returns returns a valid MemMap.  On failure, returns an invalid MemMap.
+  // On success, returns a valid MemMap.  On failure, returns an invalid MemMap.
   static MemMap MapFile(size_t byte_count,
                         int prot,
                         int flags,
@@ -221,7 +221,7 @@ class MemMap {
   // This helps improve performance of the fail case since reading and printing /proc/maps takes
   // several milliseconds in the worst case.
   //
-  // On success, returns returns a valid MemMap.  On failure, returns an invalid MemMap.
+  // On success, returns a valid MemMap.  On failure, returns an invalid MemMap.
   static MemMap MapFileAtAddress(uint8_t* addr,
                                  size_t byte_count,
                                  int prot,
