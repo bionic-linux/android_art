@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fbb18b_c2a840c6",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-02-28T08:33:36Z",
+      "side": 1,
+      "message": "nit: since we are modifying this comment, can we remove the extra space? Same for the other two comments.",
+      "range": {
+        "startLine": 131,
+        "startChar": 40,
+        "endLine": 131,
+        "endChar": 42
+      },
+      "revId": "b473a1ccffe5b8cbc53e674127c6d929a325fb05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
