@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da04e076_d78bcc00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-06T16:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5392fef_69af1da5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "e54b7a64df866eb3fce1576699cd53bff63580b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ade848ae_b3339483",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-06T16:46:02Z",
       "side": 1,
       "message": "Fits on one line.",
+      "range": {
+        "startLine": 448,
+        "startChar": 2,
+        "endLine": 449,
+        "endChar": 17
+      },
+      "revId": "e54b7a64df866eb3fce1576699cd53bff63580b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a432a238_ca2a55e2",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-06T16:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade848ae_b3339483",
       "range": {
         "startLine": 448,
         "startChar": 2,
