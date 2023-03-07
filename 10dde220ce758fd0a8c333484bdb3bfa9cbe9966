@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "708c3b89_fe4fb35f",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-07T15:42:58Z",
+      "side": 1,
+      "message": "Ah yes, I\u0027ve changed the code to handle kPointerSize being different than kRuntimePointerSize.",
+      "parentUuid": "e794895c_d1e3dfb6",
+      "revId": "10dde220ce758fd0a8c333484bdb3bfa9cbe9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d1b0b16_b7753ad2",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-07T09:27:33Z",
       "side": 1,
       "message": "`dchecked_integral_cast\u003c\u003e`",
+      "range": {
+        "startLine": 389,
+        "startChar": 20,
+        "endLine": 389,
+        "endChar": 41
+      },
+      "revId": "10dde220ce758fd0a8c333484bdb3bfa9cbe9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ac4f05_7b76c82d",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-07T15:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1b0b16_b7753ad2",
       "range": {
         "startLine": 389,
         "startChar": 20,
