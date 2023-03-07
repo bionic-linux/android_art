@@ -16,6 +16,29 @@
       "message": "Thanks Vladimir, PTAL.",
       "revId": "0e4881cb3eaf1edb7ec60970dc6c83bc69892f81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3d4f8d_c58fb875",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-07T15:48:21Z",
+      "side": 1,
+      "message": "uint64_t",
+      "range": {
+        "startLine": 391,
+        "startChar": 60,
+        "endLine": 391,
+        "endChar": 69
+      },
+      "revId": "0e4881cb3eaf1edb7ec60970dc6c83bc69892f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
