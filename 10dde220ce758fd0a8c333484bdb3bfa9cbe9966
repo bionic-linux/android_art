@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e794895c_d1e3dfb6",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-07T09:27:33Z",
+      "side": 1,
+      "message": "`DCHECK(kPointerSize \u003d\u003d kRuntimePointerSize);`",
+      "revId": "10dde220ce758fd0a8c333484bdb3bfa9cbe9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1b0b16_b7753ad2",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-07T09:27:33Z",
+      "side": 1,
+      "message": "`dchecked_integral_cast\u003c\u003e`",
+      "range": {
+        "startLine": 389,
+        "startChar": 20,
+        "endLine": 389,
+        "endChar": 41
+      },
+      "revId": "10dde220ce758fd0a8c333484bdb3bfa9cbe9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
