@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c581083_55bee652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-07T15:59:45Z",
+      "side": 1,
+      "message": "Thanks! PTAL.",
+      "revId": "0e4881cb3eaf1edb7ec60970dc6c83bc69892f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b3d4f8d_c58fb875",
@@ -31,6 +48,30 @@
       "writtenOn": "2023-03-07T15:48:21Z",
       "side": 1,
       "message": "uint64_t",
+      "range": {
+        "startLine": 391,
+        "startChar": 60,
+        "endLine": 391,
+        "endChar": 69
+      },
+      "revId": "0e4881cb3eaf1edb7ec60970dc6c83bc69892f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e188beff_baa89d07",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-07T15:59:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b3d4f8d_c58fb875",
       "range": {
         "startLine": 391,
         "startChar": 60,
