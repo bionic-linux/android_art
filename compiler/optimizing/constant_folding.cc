@@ -126,6 +126,19 @@ void HConstantFoldingVisitor::VisitTypeConversion(HTypeConversion* inst) {
   if (constant != nullptr) {
     inst->ReplaceWith(constant);
     inst->GetBlock()->RemoveInstruction(inst);
+  } else if (inst->InputAt(0)->IsSelect() && inst->InputAt(0)->GetUses().HasExactlyOneElement()) {
+    // Try to remove the type conversion in Select+TypeConversion cases. We can do this if both
+    // inputs to the select are constants, and this is the only use of the select.
+    HSelect* select = inst->InputAt(0)->AsSelect();
+    HConstant* false_constant = inst->TryStaticEvaluation(select->GetFalseValue());
+    HConstant* true_constant = inst->TryStaticEvaluation(select->GetTrueValue());
+    if (false_constant != nullptr && true_constant != nullptr) {
+      HSelect* new_select = new (GetGraph()->GetAllocator())
+          HSelect(select->GetCondition(), true_constant, false_constant, select->GetDexPc());
+      select->GetBlock()->ReplaceAndRemoveInstructionWith(select, new_select);
+      inst->ReplaceWith(new_select);
+      inst->GetBlock()->RemoveInstruction(inst);
+    }
   }
 }
 

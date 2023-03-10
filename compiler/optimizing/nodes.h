@@ -6148,6 +6148,9 @@ class HTypeConversion final : public HExpression<1> {
   // containing the result.  If the input cannot be converted, return nullptr.
   HConstant* TryStaticEvaluation() const;
 
+  // Same but for `input` instead of GetInput().
+  HConstant* TryStaticEvaluation(HInstruction* input) const;
+
   DECLARE_INSTRUCTION(TypeConversion);
 
  protected:

@@ -1815,10 +1815,10 @@ void HGraphVisitor::VisitBasicBlock(HBasicBlock* block) {
   }
 }
 
-HConstant* HTypeConversion::TryStaticEvaluation() const {
-  HGraph* graph = GetBlock()->GetGraph();
-  if (GetInput()->IsIntConstant()) {
-    int32_t value = GetInput()->AsIntConstant()->GetValue();
+HConstant* HTypeConversion::TryStaticEvaluation(HInstruction* input) const {
+  HGraph* graph = input->GetBlock()->GetGraph();
+  if (input->IsIntConstant()) {
+    int32_t value = input->AsIntConstant()->GetValue();
     switch (GetResultType()) {
       case DataType::Type::kInt8:
         return graph->GetIntConstant(static_cast<int8_t>(value), GetDexPc());
@@ -1837,8 +1837,8 @@ HConstant* HTypeConversion::TryStaticEvaluation() const {
       default:
         return nullptr;
     }
-  } else if (GetInput()->IsLongConstant()) {
-    int64_t value = GetInput()->AsLongConstant()->GetValue();
+  } else if (input->IsLongConstant()) {
+    int64_t value = input->AsLongConstant()->GetValue();
     switch (GetResultType()) {
       case DataType::Type::kInt8:
         return graph->GetIntConstant(static_cast<int8_t>(value), GetDexPc());
@@ -1857,8 +1857,8 @@ HConstant* HTypeConversion::TryStaticEvaluation() const {
       default:
         return nullptr;
     }
-  } else if (GetInput()->IsFloatConstant()) {
-    float value = GetInput()->AsFloatConstant()->GetValue();
+  } else if (input->IsFloatConstant()) {
+    float value = input->AsFloatConstant()->GetValue();
     switch (GetResultType()) {
       case DataType::Type::kInt32:
         if (std::isnan(value))
@@ -1881,8 +1881,8 @@ HConstant* HTypeConversion::TryStaticEvaluation() const {
       default:
         return nullptr;
     }
-  } else if (GetInput()->IsDoubleConstant()) {
-    double value = GetInput()->AsDoubleConstant()->GetValue();
+  } else if (input->IsDoubleConstant()) {
+    double value = input->AsDoubleConstant()->GetValue();
     switch (GetResultType()) {
       case DataType::Type::kInt32:
         if (std::isnan(value))
@@ -1907,6 +1907,10 @@ HConstant* HTypeConversion::TryStaticEvaluation() const {
     }
   }
   return nullptr;
+}
+
+HConstant* HTypeConversion::TryStaticEvaluation() const {
+  return TryStaticEvaluation(GetInput());
 }
 
 HConstant* HUnaryOperation::TryStaticEvaluation() const {
