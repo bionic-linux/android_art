@@ -1,0 +1,3 @@
+Tests that we can simplify a Select + TypeConversion if:
+  * Both inputs to the Select instruction are constant, and
+  * The Select instruction is not used in another instruction
