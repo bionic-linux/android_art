@@ -172,7 +172,7 @@ class AssemblerTestBase : public testing::Test {
                 "--disassemble",
                 "--no-print-imm-hex",
                 "--no-show-raw-insn",
-                "--mattr=+D",
+                "--mattr=+D,+A",
                 "-M",
                 "no-aliases"};
       default:
