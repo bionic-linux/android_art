@@ -26,6 +26,7 @@
 #define __ GetAssembler()->
 
 namespace art {
+namespace riscv64 {
 
 struct RISCV64CpuRegisterCompare {
   bool operator()(const riscv64::XRegister& a, const riscv64::XRegister& b) const { return a < b; }
@@ -177,6 +178,189 @@ class AssemblerRISCV64Test : public AssemblerTest<riscv64::Riscv64Assembler,
   }
 
   uint32_t CreateImmediate(int64_t imm_value) override { return imm_value; }
+
+  template <typename Emit>
+  std::string RepeatInsn(size_t count, const std::string& insn, Emit&& emit) {
+    std::string result;
+    for (; count != 0u; --count) {
+      result += insn;
+      emit();
+    }
+    return result;
+  }
+
+  std::string EmitNops(size_t size) {
+    // TODO(riscv64): Support "C" Standard Extension.
+    DCHECK_ALIGNED(size, sizeof(uint32_t));
+    const size_t num_nops = size / sizeof(uint32_t);
+    return RepeatInsn(num_nops, "nop\n", [&]() { __ Nop(); });
+  }
+
+  auto GetPrintBcond() {
+    return [](const std::string& cond,
+              const std::string& opposite_cond ATTRIBUTE_UNUSED,
+              const std::string& args,
+              const std::string& target) {
+      return "b" + cond + args + ", " + target + "\n";
+    };
+  }
+
+  auto GetPrintBcondOppositeAndJ(const std::string& skip_label) {
+    return [=](const std::string& cond ATTRIBUTE_UNUSED,
+               const std::string& opposite_cond,
+               const std::string& args,
+               const std::string& target) {
+      return "b" + opposite_cond + args + ", " + skip_label + "f\n" +
+             "j " + target + "\n" +
+             skip_label + ":\n";
+    };
+  }
+
+  auto GetPrintBcondOppositeAndTail(const std::string& skip_label, const std::string& base_label) {
+    return [=](const std::string& cond ATTRIBUTE_UNUSED,
+               const std::string& opposite_cond,
+               const std::string& args,
+               const std::string& target) {
+      return "b" + opposite_cond + args + ", " + skip_label + "f\n" +
+             base_label + ":\n" +
+             "auipc t6, %pcrel_hi(" + target + ")\n" +
+             "jalr x0, %pcrel_lo(" + base_label + "b)(t6)\n" +
+             skip_label + ":\n";
+    };
+  }
+
+  // Helper function for basic tests that all branch conditions map to the correct opcodes,
+  // whether with branch expansion (a conditional branch with opposite condition over an
+  // unconditional branch) or without.
+  template <typename PrintBcond>
+  std::string EmitBcondForAllConditions(Riscv64Label* label,
+                                        const std::string& target,
+                                        PrintBcond&& print_bcond) {
+    XRegister rs = A0;
+    __ Beqz(rs, label);
+    __ Bnez(rs, label);
+    __ Blez(rs, label);
+    __ Bgez(rs, label);
+    __ Bltz(rs, label);
+    __ Bgtz(rs, label);
+    XRegister rt = A1;
+    __ Beq(rs, rt, label);
+    __ Bne(rs, rt, label);
+    __ Ble(rs, rt, label);
+    __ Bge(rs, rt, label);
+    __ Blt(rs, rt, label);
+    __ Bgt(rs, rt, label);
+    __ Bleu(rs, rt, label);
+    __ Bgeu(rs, rt, label);
+    __ Bltu(rs, rt, label);
+    __ Bgtu(rs, rt, label);
+
+    return
+        print_bcond("eq", "ne", "z a0", target) +
+        print_bcond("ne", "eq", "z a0", target) +
+        print_bcond("le", "gt", "z a0", target) +
+        print_bcond("ge", "lt", "z a0", target) +
+        print_bcond("lt", "ge", "z a0", target) +
+        print_bcond("gt", "le", "z a0", target) +
+        print_bcond("eq", "ne", " a0, a1", target) +
+        print_bcond("ne", "eq", " a0, a1", target) +
+        print_bcond("le", "gt", " a0, a1", target) +
+        print_bcond("ge", "lt", " a0, a1", target) +
+        print_bcond("lt", "ge", " a0, a1", target) +
+        print_bcond("gt", "le", " a0, a1", target) +
+        print_bcond("leu", "gtu", " a0, a1", target) +
+        print_bcond("geu", "ltu", " a0, a1", target) +
+        print_bcond("ltu", "geu", " a0, a1", target) +
+        print_bcond("gtu", "leu", " a0, a1", target);
+  }
+
+  // Test Bcond for forward branches with all conditions.
+  // The gap must be such that either all branches expand, or none does.
+  template <typename PrintBcond>
+  void TestBcondForward(const std::string& test_name,
+                        size_t gap_size,
+                        const std::string& target_label,
+                        PrintBcond&& print_bcond) {
+    Riscv64Label label;
+    std::string branches_str = EmitBcondForAllConditions(&label, target_label + "f", print_bcond);
+    std::string nops_str = EmitNops(gap_size);
+    __ Bind(&label);
+
+    std::string expected =
+        branches_str +
+        nops_str +
+        target_label + ":\n";
+    DriverStr(expected, test_name);
+  }
+
+  // Test Bcond for backward branches with all conditions.
+  // The gap must be such that either all branches expand, or none does.
+  template <typename PrintBcond>
+  void TestBcondBackward(const std::string& test_name,
+                         size_t gap_size,
+                         const std::string& target_label,
+                         PrintBcond&& print_bcond) {
+    Riscv64Label label;
+    __ Bind(&label);
+    std::string nops_str = EmitNops(gap_size);
+    std::string branches_str = EmitBcondForAllConditions(&label, target_label + "b", print_bcond);
+
+    std::string expected =
+        "1:\n" +
+        nops_str +
+        branches_str;
+    DriverStr(expected, test_name);
+  }
+
+  size_t MaxOffset13BackwardDistance() {
+    return 4 * KB;
+  }
+
+  size_t MaxOffset13ForwardDistance() {
+    // TODO(riscv64): Support "C" Standard Extension, max forward distance 4KiB - 2.
+    return 4 * KB - 4;
+  }
+
+  size_t MaxOffset21BackwardDistance() {
+    return 1 * MB;
+  }
+
+  size_t MaxOffset21ForwardDistance() {
+    // TODO(riscv64): Support "C" Standard Extension, max forward distance 1MiB - 2.
+    return 1 * MB - 4;
+  }
+
+  template <typename PrintBcond>
+  void TestBeqA0A1Forward(const std::string& test_name,
+                          size_t nops_size,
+                          const std::string& target_label,
+                          PrintBcond&& print_bcond) {
+    Riscv64Label label;
+    __ Beq(A0, A1, &label);
+    std::string nops_str = EmitNops(nops_size);
+    __ Bind(&label);
+    std::string expected =
+        print_bcond("eq", "ne", " a0, a1", target_label + "f") +
+        nops_str +
+        target_label + ":\n";
+    DriverStr(expected, test_name);
+  }
+
+  template <typename PrintBcond>
+  void TestBeqA0A1Backward(const std::string& test_name,
+                           size_t nops_size,
+                           const std::string& target_label,
+                           PrintBcond&& print_bcond) {
+    Riscv64Label label;
+    __ Bind(&label);
+    std::string nops_str = EmitNops(nops_size);
+    __ Beq(A0, A1, &label);
+    std::string expected =
+        target_label + ":\n" +
+        nops_str +
+        print_bcond("eq", "ne", " a0, a1", target_label + "b");
+    DriverStr(expected, test_name);
+  }
 
  private:
   std::vector<riscv64::XRegister*> registers_;
@@ -908,10 +1092,91 @@ TEST_F(AssemblerRISCV64Test, Jalr0) {
 }
 
 TEST_F(AssemblerRISCV64Test, Ret) {
-  GetAssembler()->Ret();
+  __ Ret();
   DriverStr("ret\n", "Ret");
+}
+
+TEST_F(AssemblerRISCV64Test, BcondForward3KiB) {
+  TestBcondForward("BcondForward3KiB", 3 * KB, "1", GetPrintBcond());
+}
+
+TEST_F(AssemblerRISCV64Test, BcondBackward3KiB) {
+  TestBcondBackward("BcondBackward3KiB", 3 * KB, "1", GetPrintBcond());
+}
+
+TEST_F(AssemblerRISCV64Test, BcondForward5KiB) {
+  TestBcondForward("BcondForward5KiB", 5 * KB, "1", GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BcondBackward5KiB) {
+  TestBcondBackward("BcondBackward5KiB", 5 * KB, "1", GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BcondForward2MiB) {
+  TestBcondForward("BcondForward2MiB", 2 * MB, "1", GetPrintBcondOppositeAndTail("2", "3"));
+}
+
+TEST_F(AssemblerRISCV64Test, BcondBackward2MiB) {
+  TestBcondBackward("BcondBackward2MiB", 2 * MB, "1", GetPrintBcondOppositeAndTail("2", "3"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13Forward) {
+  TestBeqA0A1Forward("BeqA0A1MaxOffset13Forward",
+                     MaxOffset13ForwardDistance() - /*BEQ*/ 4u,
+                     "1",
+                     GetPrintBcond());
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13Backward) {
+  TestBeqA0A1Backward("BeqA0A1MaxOffset13Forward",
+                      MaxOffset13BackwardDistance(),
+                      "1",
+                      GetPrintBcond());
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset13Forward) {
+  TestBeqA0A1Forward("BeqA0A1OverMaxOffset13Forward",
+                     MaxOffset13ForwardDistance() - /*BEQ*/ 4u + /*Exceed max*/ 4u,
+                     "1",
+                     GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset13Backward) {
+  TestBeqA0A1Backward("BeqA0A1OverMaxOffset13Forward",
+                      MaxOffset13BackwardDistance() + /*Exceed max*/ 4u,
+                      "1",
+                      GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset21Forward) {
+  TestBeqA0A1Forward("BeqA0A1MaxOffset21Forward",
+                     MaxOffset21ForwardDistance() - /*J*/ 4u,
+                     "1",
+                     GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset21Backward) {
+  TestBeqA0A1Backward("BeqA0A1MaxOffset21Backward",
+                      MaxOffset21BackwardDistance() - /*BNE*/ 4u,
+                      "1",
+                      GetPrintBcondOppositeAndJ("2"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset21Forward) {
+  TestBeqA0A1Forward("BeqA0A1OverMaxOffset21Forward",
+                     MaxOffset21ForwardDistance() - /*J*/ 4u + /*Exceed max*/ 4u,
+                     "1",
+                     GetPrintBcondOppositeAndTail("2", "3"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset21Backward) {
+  TestBeqA0A1Backward("BeqA0A1OverMaxOffset21Backward",
+                      MaxOffset21BackwardDistance() - /*BNE*/ 4u + /*Exceed max*/ 4u,
+                      "1",
+                      GetPrintBcondOppositeAndTail("2", "3"));
 }
 
 #undef __
 
+}  // namespace riscv64
 }  // namespace art

@@ -27,16 +27,45 @@ static_assert(static_cast<size_t>(kRiscv64PointerSize) == kRiscv64DoublewordSize
               "Unexpected Riscv64 pointer size.");
 static_assert(kRiscv64PointerSize == PointerSize::k64, "Unexpected Riscv64 pointer size.");
 
+// Split 32-bit offset into an `imm20` for LUI/AUIPC and
+// a signed 12-bit short offset for ADDI/JALR/etc.
+ALWAYS_INLINE static inline std::pair<uint32_t, int32_t> SplitOffset(int32_t offset) {
+  // The highest 0x800 values are out of range.
+  DCHECK_LT(offset, 0x7ffff800);
+  // Round `offset` to nearest 4KiB offset because short offset has range [-0x800, 0x800).
+  int32_t near_offset = (offset + 0x800) & ~0xfff;
+  // Calculate the short offset.
+  int32_t short_offset = offset - near_offset;
+  DCHECK(IsInt<12>(short_offset));
+  // Extract the `imm20`.
+  uint32_t imm20 = static_cast<uint32_t>(near_offset) >> 12;
+  // Return the result as a pair.
+  return std::make_pair(imm20, short_offset);
+}
+
 void Riscv64Assembler::FinalizeCode() {
+  ReserveJumpTableSpace();
+  EmitLiterals();
+  PromoteBranches();
 }
 
 void Riscv64Assembler::FinalizeInstructions(const MemoryRegion& region) {
+  EmitBranches();
+  EmitJumpTables();
   Assembler::FinalizeInstructions(region);
+  PatchCFI();
 }
 
 void Riscv64Assembler::Emit(uint32_t value) {
-  AssemblerBuffer::EnsureCapacity ensured(&buffer_);
-  buffer_.Emit<uint32_t>(value);
+  if (overwriting_) {
+    // Branches to labels are emitted into their placeholders here.
+    buffer_.Store<uint32_t>(overwrite_location_, value);
+    overwrite_location_ += sizeof(uint32_t);
+  } else {
+    // Other instructions are simply appended at the end here.
+    AssemblerBuffer::EnsureCapacity ensured(&buffer_);
+    buffer_.Emit<uint32_t>(value);
+  }
 }
 
 /////////////////////////////// RV64 VARIANTS extension ///////////////////////////////
@@ -711,7 +740,811 @@ void Riscv64Assembler::Jalr(XRegister rd, XRegister rs) { Jalr(rd, rs, 0); }
 
 void Riscv64Assembler::Ret() { Jalr(Zero, RA, 0); }
 
+void Riscv64Assembler::Beqz(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Beq(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Bnez(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Bne(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Blez(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Ble(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Bgez(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Bge(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Bltz(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Blt(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Bgtz(XRegister rs, Riscv64Label* label, bool is_bare) {
+  Bgt(rs, Zero, label, is_bare);
+}
+
+void Riscv64Assembler::Beq(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondEQ, rs, rt);
+}
+
+void Riscv64Assembler::Bne(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondNE, rs, rt);
+}
+
+void Riscv64Assembler::Ble(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondLE, rs, rt);
+}
+
+void Riscv64Assembler::Bge(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondGE, rs, rt);
+}
+
+void Riscv64Assembler::Blt(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondLT, rs, rt);
+}
+
+void Riscv64Assembler::Bgt(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondGT, rs, rt);
+}
+
+void Riscv64Assembler::Bleu(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondLEU, rs, rt);
+}
+
+void Riscv64Assembler::Bgeu(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondGEU, rs, rt);
+}
+
+void Riscv64Assembler::Bltu(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondLTU, rs, rt);
+}
+
+void Riscv64Assembler::Bgtu(XRegister rs, XRegister rt, Riscv64Label* label, bool is_bare) {
+  Bcond(label, is_bare, kCondGTU, rs, rt);
+}
+
 /////////////////////////////// RV64 MACRO Instructions END ///////////////////////////////
+
+void Riscv64Assembler::Branch::InitShortOrLong(Riscv64Assembler::Branch::OffsetBits offset_size,
+                                               Riscv64Assembler::Branch::Type short_type,
+                                               Riscv64Assembler::Branch::Type long_type,
+                                               Riscv64Assembler::Branch::Type longest_type) {
+  Riscv64Assembler::Branch::Type type = short_type;
+  if (offset_size > branch_info_[type].offset_size) {
+    type = long_type;
+    if (offset_size > branch_info_[type].offset_size) {
+      type = longest_type;
+    }
+  }
+  type_ = type;
+}
+
+void Riscv64Assembler::Branch::InitializeType(Type initial_type) {
+  OffsetBits offset_size_needed = GetOffsetSizeNeeded(location_, target_);
+
+  switch (initial_type) {
+    case kLabel:
+    case kLiteral:
+    case kLiteralUnsigned:
+    case kLiteralLong:
+      CHECK(!IsResolved());
+      type_ = initial_type;
+      break;
+    case kCall:
+      InitShortOrLong(offset_size_needed, kCall, kLongCall, kLongCall);
+      break;
+    case kCondBranch:
+      if (condition_ == kUncond) {
+        InitShortOrLong(offset_size_needed, kUncondBranch, kLongUncondBranch, kLongUncondBranch);
+      } else {
+        InitShortOrLong(offset_size_needed, kCondBranch, kCondBranch21, kLongCondBranch);
+      }
+      break;
+    case kBareCall:
+      type_ = kBareCall;
+      CHECK_LE(offset_size_needed, GetOffsetSize());
+      break;
+    case kBareCondBranch:
+      type_ = (condition_ == kUncond) ? kBareUncondBranch : kBareCondBranch;
+      CHECK_LE(offset_size_needed, GetOffsetSize());
+      break;
+    default:
+      LOG(FATAL) << "Unexpected branch type " << enum_cast<uint32_t>(initial_type);
+      UNREACHABLE();
+  }
+
+  old_type_ = type_;
+}
+
+bool Riscv64Assembler::Branch::IsNop(BranchCondition condition, XRegister lhs, XRegister rhs) {
+  switch (condition) {
+    case kCondNE:
+    case kCondLT:
+    case kCondGT:
+    case kCondLTU:
+    case kCondGTU:
+      return lhs == rhs;
+    default:
+      return false;
+  }
+}
+
+bool Riscv64Assembler::Branch::IsUncond(BranchCondition condition, XRegister lhs, XRegister rhs) {
+  switch (condition) {
+    case kUncond:
+      return true;
+    case kCondEQ:
+    case kCondGE:
+    case kCondLE:
+    case kCondLEU:
+    case kCondGEU:
+      return lhs == rhs;
+    default:
+      return false;
+  }
+}
+
+Riscv64Assembler::Branch::Branch(uint32_t location, uint32_t target, bool is_call, bool is_bare)
+    : old_location_(location),
+      location_(location),
+      target_(target),
+      lhs_reg_(Zero),
+      rhs_reg_(Zero),
+      condition_(kUncond) {
+  InitializeType(
+      (is_call ? (is_bare ? kBareCall : kCall) : (is_bare ? kBareUncondBranch : kUncondBranch)));
+}
+
+Riscv64Assembler::Branch::Branch(uint32_t location,
+                                 uint32_t target,
+                                 Riscv64Assembler::BranchCondition condition,
+                                 XRegister lhs_reg,
+                                 XRegister rhs_reg,
+                                 bool is_bare)
+    : old_location_(location),
+      location_(location),
+      target_(target),
+      lhs_reg_(lhs_reg),
+      rhs_reg_(rhs_reg),
+      condition_(condition) {
+  DCHECK_NE(condition, kUncond);
+  DCHECK(!IsNop(condition, lhs_reg, rhs_reg));
+  DCHECK(!IsUncond(condition, lhs_reg, rhs_reg));
+  InitializeType(is_bare ? kBareCondBranch : kCondBranch);
+}
+
+Riscv64Assembler::Branch::Branch(uint32_t location, XRegister dest_reg, Type label_or_literal_type)
+    : old_location_(location),
+      location_(location),
+      target_(kUnresolved),
+      lhs_reg_(dest_reg),
+      rhs_reg_(Zero),
+      condition_(kUncond) {
+  CHECK_NE(dest_reg, Zero);
+  InitializeType(label_or_literal_type);
+}
+
+Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::OppositeCondition(
+    Riscv64Assembler::BranchCondition cond) {
+  switch (cond) {
+    case kCondEQ:
+      return kCondNE;
+    case kCondNE:
+      return kCondEQ;
+    case kCondLT:
+      return kCondGE;
+    case kCondGE:
+      return kCondLT;
+    case kCondLE:
+      return kCondGT;
+    case kCondGT:
+      return kCondLE;
+    case kCondLTU:
+      return kCondGEU;
+    case kCondGEU:
+      return kCondLTU;
+    case kCondLEU:
+      return kCondGTU;
+    case kCondGTU:
+      return kCondLEU;
+    case kUncond:
+      LOG(FATAL) << "Unexpected branch condition " << enum_cast<uint32_t>(cond);
+      UNREACHABLE();
+  }
+}
+
+Riscv64Assembler::Branch::Type Riscv64Assembler::Branch::GetType() const { return type_; }
+
+Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::GetCondition() const {
+    return condition_;
+}
+
+XRegister Riscv64Assembler::Branch::GetLeftRegister() const { return lhs_reg_; }
+
+XRegister Riscv64Assembler::Branch::GetRightRegister() const { return rhs_reg_; }
+
+uint32_t Riscv64Assembler::Branch::GetTarget() const { return target_; }
+
+uint32_t Riscv64Assembler::Branch::GetLocation() const { return location_; }
+
+uint32_t Riscv64Assembler::Branch::GetOldLocation() const { return old_location_; }
+
+uint32_t Riscv64Assembler::Branch::GetLength() const { return branch_info_[type_].length; }
+
+uint32_t Riscv64Assembler::Branch::GetOldLength() const { return branch_info_[old_type_].length; }
+
+uint32_t Riscv64Assembler::Branch::GetEndLocation() const { return GetLocation() + GetLength(); }
+
+uint32_t Riscv64Assembler::Branch::GetOldEndLocation() const {
+  return GetOldLocation() + GetOldLength();
+}
+
+bool Riscv64Assembler::Branch::IsBare() const {
+  switch (type_) {
+    case kBareUncondBranch:
+    case kBareCondBranch:
+    case kBareCall:
+      return true;
+    default:
+      return false;
+  }
+}
+
+bool Riscv64Assembler::Branch::IsResolved() const { return target_ != kUnresolved; }
+
+Riscv64Assembler::Branch::OffsetBits Riscv64Assembler::Branch::GetOffsetSize() const {
+  return branch_info_[type_].offset_size;
+}
+
+Riscv64Assembler::Branch::OffsetBits Riscv64Assembler::Branch::GetOffsetSizeNeeded(
+    uint32_t location, uint32_t target) {
+  // For unresolved targets assume the shortest encoding
+  // (later it will be made longer if needed).
+  if (target == kUnresolved) {
+    return kOffset13;
+  }
+  int64_t distance = static_cast<int64_t>(target) - location;
+  if (IsInt<kOffset13>(distance)) {
+    return kOffset13;
+  } else if (IsInt<kOffset21>(distance)) {
+    return kOffset21;
+  } else {
+    return kOffset32;
+  }
+}
+
+void Riscv64Assembler::Branch::Resolve(uint32_t target) { target_ = target; }
+
+void Riscv64Assembler::Branch::Relocate(uint32_t expand_location, uint32_t delta) {
+  if (location_ > expand_location) {
+    location_ += delta;
+  }
+  if (!IsResolved()) {
+    return;  // Don't know the target yet.
+  }
+  if (target_ > expand_location) {
+    target_ += delta;
+  }
+}
+
+uint32_t Riscv64Assembler::Branch::PromoteIfNeeded() {
+  // All targets should be resolved before we start promoting branches.
+  DCHECK(IsResolved());
+  Type old_type = type_;
+  switch (type_) {
+    // Short branches (can be promoted to longer).
+    case kCondBranch: {
+      OffsetBits needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
+      if (needed_size <= GetOffsetSize()) {
+        return 0u;
+      }
+      // The offset remains the same for `kCondBranch21` for forward branches.
+      DCHECK_EQ(branch_info_[kCondBranch21].length - branch_info_[kCondBranch21].pc_offset,
+                branch_info_[kCondBranch].length - branch_info_[kCondBranch].pc_offset);
+      if (target_ <= location_) {
+        // Calculate the needed size for kCondBranch21.
+        needed_size =
+            GetOffsetSizeNeeded(location_ + branch_info_[kCondBranch21].pc_offset, target_);
+      }
+      type_ = (needed_size <= branch_info_[kCondBranch21].offset_size)
+          ? kCondBranch21
+          : kLongCondBranch;
+      break;
+    }
+    case kUncondBranch:
+      if (GetOffsetSizeNeeded(GetOffsetLocation(), target_) <= GetOffsetSize()) {
+        return 0u;
+      }
+      type_ = kLongUncondBranch;
+      break;
+    case kCall:
+      if (GetOffsetSizeNeeded(GetOffsetLocation(), target_) <= GetOffsetSize()) {
+        return 0u;
+      }
+      type_ = kLongCall;
+      break;
+    // Medium branch (can be promoted to long).
+    case kCondBranch21:
+      if (GetOffsetSizeNeeded(GetOffsetLocation(), target_) <= GetOffsetSize()) {
+        return 0u;
+      }
+      type_ = kLongCondBranch;
+      break;
+    default:
+      // Other branch types cannot be promoted.
+      DCHECK_LE(GetOffsetSizeNeeded(GetOffsetLocation(), target_), GetOffsetSize()) << type_;
+      return 0u;
+  }
+  DCHECK(type_ != old_type);
+  DCHECK_GT(branch_info_[type_].length, branch_info_[old_type].length);
+  return branch_info_[type_].length - branch_info_[old_type].length;
+}
+
+uint32_t Riscv64Assembler::Branch::GetOffsetLocation() const {
+  return location_ + branch_info_[type_].pc_offset;
+}
+
+int32_t Riscv64Assembler::Branch::GetOffset() const {
+  CHECK(IsResolved());
+  // Calculate the byte distance between instructions and also account for
+  // different PC-relative origins.
+  uint32_t offset_location = GetOffsetLocation();
+  int32_t offset = static_cast<int32_t>(target_ - offset_location);
+  DCHECK_EQ(offset, static_cast<int64_t>(target_) - static_cast<int64_t>(offset_location));
+  return offset;
+}
+
+// Note: make sure branch_info_[] and EmitBranch() are kept synchronized.
+const Riscv64Assembler::Branch::BranchInfo Riscv64Assembler::Branch::branch_info_[] = {
+    // Short branches (can be promoted to long).
+    {4, 0, Riscv64Assembler::Branch::kOffset13},  // kCondBranch
+    {4, 0, Riscv64Assembler::Branch::kOffset21},  // kUncondBranch
+    {4, 0, Riscv64Assembler::Branch::kOffset21},  // kCall
+    // Short branches (can't be promoted to long).
+    {4, 0, Riscv64Assembler::Branch::kOffset13},  // kBareCondBranch
+    {4, 0, Riscv64Assembler::Branch::kOffset21},  // kBareUncondBranch
+    {4, 0, Riscv64Assembler::Branch::kOffset21},  // kBareCall
+
+    // Medium branch.
+    {8, 4, Riscv64Assembler::Branch::kOffset21},  // kCondBranch21
+
+    // Long branches.
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLongUncondBranch
+    {12, 4, Riscv64Assembler::Branch::kOffset32},  // kLongCondBranch
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLongCall
+
+    // label.
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLabel
+    // literals.
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteral
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralUnsigned
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralLong
+};
+
+void Riscv64Assembler::EmitBcond(BranchCondition cond,
+                                 XRegister rs,
+                                 XRegister rt,
+                                 int32_t offset) {
+  switch (cond) {
+#define DEFINE_CASE(COND, cond) \
+    case kCond##COND:           \
+      B##cond(rs, rt, offset);  \
+      break;
+    DEFINE_CASE(EQ, eq)
+    DEFINE_CASE(NE, ne)
+    DEFINE_CASE(LT, lt)
+    DEFINE_CASE(GE, ge)
+    DEFINE_CASE(LE, le)
+    DEFINE_CASE(GT, gt)
+    DEFINE_CASE(LTU, ltu)
+    DEFINE_CASE(GEU, geu)
+    DEFINE_CASE(LEU, leu)
+    DEFINE_CASE(GTU, gtu)
+#undef DEFINE_CASE
+    case kUncond:
+      LOG(FATAL) << "Unexpected branch condition " << enum_cast<uint32_t>(cond);
+      UNREACHABLE();
+  }
+}
+
+void Riscv64Assembler::EmitBranch(Riscv64Assembler::Branch* branch) {
+  CHECK(overwriting_);
+  overwrite_location_ = branch->GetLocation();
+  const int32_t offset = branch->GetOffset();
+  BranchCondition condition = branch->GetCondition();
+  XRegister lhs = branch->GetLeftRegister();
+  XRegister rhs = branch->GetRightRegister();
+  switch (branch->GetType()) {
+    // Short branches.
+    case Branch::kUncondBranch:
+    case Branch::kBareUncondBranch:
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      J(offset);
+      break;
+    case Branch::kCondBranch:
+    case Branch::kBareCondBranch:
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      EmitBcond(condition, lhs, rhs, offset);
+      break;
+    case Branch::kCall:
+    case Branch::kBareCall:
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      Jal(offset);
+      break;
+
+    // Medium branch.
+    case Branch::kCondBranch21:
+      EmitBcond(Branch::OppositeCondition(condition), lhs, rhs, branch->GetLength());
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      J(offset);
+      break;
+
+    // label.
+    case Branch::kLabel: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(TMP, imm20);
+      Addi(lhs, TMP, short_offset);
+      break;
+    }
+    // literals.
+    case Branch::kLiteral: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(lhs, imm20);
+      Lw(lhs, lhs, short_offset);
+      break;
+    }
+    case Branch::kLiteralUnsigned: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(lhs, imm20);
+      Lwu(lhs, lhs, short_offset);
+      break;
+    }
+    case Branch::kLiteralLong: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(lhs, imm20);
+      Ld(lhs, lhs, short_offset);
+      break;
+    }
+
+    // Long branches.
+    case Branch::kLongUncondBranch: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(TMP, imm20);
+      Jalr(Zero, TMP, short_offset);
+      break;
+    }
+    case Branch::kLongCondBranch: {
+      // Skip over the branch instructions and continue if the Cond isn't taken.
+      EmitBcond(Branch::OppositeCondition(condition), lhs, rhs, branch->GetLength());
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(TMP, imm20);
+      Jalr(Zero, TMP, short_offset);
+      break;
+    }
+    case Branch::kLongCall: {
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      auto [imm20, short_offset] = SplitOffset(offset);
+      Auipc(RA, imm20);
+      Jalr(RA, RA, short_offset);
+      break;
+    }
+  }
+  CHECK_EQ(overwrite_location_, branch->GetEndLocation());
+  CHECK_LT(branch->GetLength(), static_cast<uint32_t>(Branch::kMaxBranchSize));
+}
+
+void Riscv64Assembler::EmitBranches() {
+  CHECK(!overwriting_);
+  // Switch from appending instructions at the end of the buffer to overwriting
+  // existing instructions (branch placeholders) in the buffer.
+  overwriting_ = true;
+  for (auto& branch : branches_) {
+    EmitBranch(&branch);
+  }
+  overwriting_ = false;
+}
+
+void Riscv64Assembler::Buncond(Riscv64Label* label, bool is_bare) {
+  uint32_t target = label->IsBound() ? GetLabelLocation(label) : Branch::kUnresolved;
+  branches_.emplace_back(buffer_.Size(), target, /* is_call= */ false, is_bare);
+  FinalizeLabeledBranch(label);
+}
+
+void Riscv64Assembler::Bcond(
+    Riscv64Label* label, bool is_bare, BranchCondition condition, XRegister lhs, XRegister rhs) {
+  // If lhs = rhs, this can be a NOP.
+  if (Branch::IsNop(condition, lhs, rhs)) {
+    return;
+  }
+  if (Branch::IsUncond(condition, lhs, rhs)) {
+    Buncond(label, is_bare);
+    return;
+  }
+  uint32_t target = label->IsBound() ? GetLabelLocation(label) : Branch::kUnresolved;
+  branches_.emplace_back(buffer_.Size(), target, condition, lhs, rhs, is_bare);
+  FinalizeLabeledBranch(label);
+}
+
+Riscv64Assembler::Branch* Riscv64Assembler::GetBranch(uint32_t branch_id) {
+  CHECK_LT(branch_id, branches_.size());
+  return &branches_[branch_id];
+}
+
+const Riscv64Assembler::Branch* Riscv64Assembler::GetBranch(uint32_t branch_id) const {
+  CHECK_LT(branch_id, branches_.size());
+  return &branches_[branch_id];
+}
+
+void Riscv64Assembler::Bind(Riscv64Label* label) {
+  CHECK(!label->IsBound());
+  uint32_t bound_pc = buffer_.Size();
+
+  // Walk the list of branches referring to and preceding this label.
+  // Store the previously unknown target addresses in them.
+  while (label->IsLinked()) {
+    uint32_t branch_id = label->Position();
+    Branch* branch = GetBranch(branch_id);
+    branch->Resolve(bound_pc);
+
+    uint32_t branch_location = branch->GetLocation();
+    // Extract the location of the previous branch in the list (walking the list backwards;
+    // the previous branch ID was stored in the space reserved for this branch).
+    uint32_t prev = buffer_.Load<uint32_t>(branch_location);
+
+    // On to the previous branch in the list...
+    label->position_ = prev;
+  }
+
+  // Now make the label object contain its own location (relative to the end of the preceding
+  // branch, if any; it will be used by the branches referring to and following this label).
+  label->prev_branch_id_plus_one_ = branches_.size();
+  if (label->prev_branch_id_plus_one_) {
+    uint32_t branch_id = label->prev_branch_id_plus_one_ - 1;
+    const Branch* branch = GetBranch(branch_id);
+    bound_pc -= branch->GetEndLocation();
+  }
+  label->BindTo(bound_pc);
+}
+
+uint32_t Riscv64Assembler::GetLabelLocation(const Riscv64Label* label) const {
+  CHECK(label->IsBound());
+  uint32_t target = label->Position();
+  if (label->prev_branch_id_plus_one_) {
+    // Get label location based on the branch preceding it.
+    uint32_t branch_id = label->prev_branch_id_plus_one_ - 1;
+    const Branch* branch = GetBranch(branch_id);
+    target += branch->GetEndLocation();
+  }
+  return target;
+}
+
+uint32_t Riscv64Assembler::GetAdjustedPosition(uint32_t old_position) {
+  // We can reconstruct the adjustment by going through all the branches from the beginning
+  // up to the old_position. Since we expect AdjustedPosition() to be called in a loop
+  // with increasing old_position, we can use the data from last AdjustedPosition() to
+  // continue where we left off and the whole loop should be O(m+n) where m is the number
+  // of positions to adjust and n is the number of branches.
+  if (old_position < last_old_position_) {
+    last_position_adjustment_ = 0;
+    last_old_position_ = 0;
+    last_branch_id_ = 0;
+  }
+  while (last_branch_id_ != branches_.size()) {
+    const Branch* branch = GetBranch(last_branch_id_);
+    if (branch->GetLocation() >= old_position + last_position_adjustment_) {
+      break;
+    }
+    last_position_adjustment_ += branch->GetLength() - branch->GetOldLength();
+    ++last_branch_id_;
+  }
+  last_old_position_ = old_position;
+  return old_position + last_position_adjustment_;
+}
+
+void Riscv64Assembler::FinalizeLabeledBranch(Riscv64Label* label) {
+  // TODO(riscv64): Support "C" Standard Extension - length may not be a multiple of 4.
+  DCHECK_ALIGNED(branches_.back().GetLength(), sizeof(uint32_t));
+  uint32_t length = branches_.back().GetLength() / sizeof(uint32_t);
+  if (!label->IsBound()) {
+    // Branch forward (to a following label), distance is unknown.
+    // The first branch forward will contain 0, serving as the terminator of
+    // the list of forward-reaching branches.
+    Emit(label->position_);
+    length--;
+    // Now make the label object point to this branch
+    // (this forms a linked list of branches preceding this label).
+    uint32_t branch_id = branches_.size() - 1;
+    label->LinkTo(branch_id);
+  }
+  // Reserve space for the branch.
+  for (; length != 0u; --length) {
+    Nop();
+  }
+}
+
+void Riscv64Assembler::ReserveJumpTableSpace() {
+  if (!jump_tables_.empty()) {
+    for (JumpTable& table : jump_tables_) {
+      Riscv64Label* label = table.GetLabel();
+      Bind(label);
+
+      // Bulk ensure capacity, as this may be large.
+      size_t orig_size = buffer_.Size();
+      size_t required_capacity = orig_size + table.GetSize();
+      if (required_capacity > buffer_.Capacity()) {
+        buffer_.ExtendCapacity(required_capacity);
+      }
+#ifndef NDEBUG
+      buffer_.has_ensured_capacity_ = true;
+#endif
+
+      // Fill the space with placeholder data as the data is not final
+      // until the branches have been promoted. And we shouldn't
+      // be moving uninitialized data during branch promotion.
+      for (size_t cnt = table.GetData().size(), i = 0; i < cnt; ++i) {
+        buffer_.Emit<uint32_t>(0x1abe1234u);
+      }
+
+#ifndef NDEBUG
+      buffer_.has_ensured_capacity_ = false;
+#endif
+    }
+  }
+}
+
+void Riscv64Assembler::PromoteBranches() {
+  // Promote short branches to long as necessary.
+  bool changed;
+  do {
+    changed = false;
+    for (auto& branch : branches_) {
+      CHECK(branch.IsResolved());
+      uint32_t delta = branch.PromoteIfNeeded();
+      // If this branch has been promoted and needs to expand in size,
+      // relocate all branches by the expansion size.
+      if (delta != 0u) {
+        changed = true;
+        uint32_t expand_location = branch.GetLocation();
+        for (auto& branch2 : branches_) {
+          branch2.Relocate(expand_location, delta);
+        }
+      }
+    }
+  } while (changed);
+
+  // Account for branch expansion by resizing the code buffer
+  // and moving the code in it to its final location.
+  size_t branch_count = branches_.size();
+  if (branch_count > 0) {
+    // Resize.
+    Branch& last_branch = branches_[branch_count - 1];
+    uint32_t size_delta = last_branch.GetEndLocation() - last_branch.GetOldEndLocation();
+    uint32_t old_size = buffer_.Size();
+    buffer_.Resize(old_size + size_delta);
+    // Mv the code residing between branch placeholders.
+    uint32_t end = old_size;
+    for (size_t i = branch_count; i > 0;) {
+      Branch& branch = branches_[--i];
+      uint32_t size = end - branch.GetOldEndLocation();
+      buffer_.Move(branch.GetEndLocation(), branch.GetOldEndLocation(), size);
+      end = branch.GetOldLocation();
+    }
+  }
+
+  // Align 64-bit literals by moving them down by 4 bytes if needed.
+  // This will reduce the PC-relative distance, which should be safe for both near and far literals.
+  if (!long_literals_.empty()) {
+    uint32_t first_literal_location = GetLabelLocation(long_literals_.front().GetLabel());
+    size_t lit_size = long_literals_.size() * sizeof(uint64_t);
+    size_t buf_size = buffer_.Size();
+    // 64-bit literals must be at the very end of the buffer.
+    CHECK_EQ(first_literal_location + lit_size, buf_size);
+    if (!IsAligned<sizeof(uint64_t)>(first_literal_location)) {
+      buffer_.Move(first_literal_location - sizeof(uint32_t), first_literal_location, lit_size);
+      // The 4 reserved bytes proved useless, reduce the buffer size.
+      buffer_.Resize(buf_size - sizeof(uint32_t));
+      // Reduce target addresses in literal and address loads by 4 bytes in order for correct
+      // offsets from PC to be generated.
+      for (auto& branch : branches_) {
+        uint32_t target = branch.GetTarget();
+        if (target >= first_literal_location) {
+          branch.Resolve(target - sizeof(uint32_t));
+        }
+      }
+      // If after this we ever call GetLabelLocation() to get the location of a 64-bit literal,
+      // we need to adjust the location of the literal's label as well.
+      for (Literal& literal : long_literals_) {
+        // Bound label's position is negative, hence incrementing it instead of decrementing.
+        literal.GetLabel()->position_ += sizeof(uint32_t);
+      }
+    }
+  }
+}
+
+void Riscv64Assembler::PatchCFI() {
+  if (cfi().NumberOfDelayedAdvancePCs() == 0u) {
+    return;
+  }
+
+  using DelayedAdvancePC = DebugFrameOpCodeWriterForAssembler::DelayedAdvancePC;
+  const auto data = cfi().ReleaseStreamAndPrepareForDelayedAdvancePC();
+  const std::vector<uint8_t>& old_stream = data.first;
+  const std::vector<DelayedAdvancePC>& advances = data.second;
+
+  // Refill our data buffer with patched opcodes.
+  cfi().ReserveCFIStream(old_stream.size() + advances.size() + 16);
+  size_t stream_pos = 0;
+  for (const DelayedAdvancePC& advance : advances) {
+    DCHECK_GE(advance.stream_pos, stream_pos);
+    // Copy old data up to the point where advance was issued.
+    cfi().AppendRawData(old_stream, stream_pos, advance.stream_pos);
+    stream_pos = advance.stream_pos;
+    // Insert the advance command with its final offset.
+    size_t final_pc = GetAdjustedPosition(advance.pc);
+    cfi().AdvancePC(final_pc);
+  }
+  // Copy the final segment if any.
+  cfi().AppendRawData(old_stream, stream_pos, old_stream.size());
+}
+
+void Riscv64Assembler::EmitJumpTables() {
+  if (!jump_tables_.empty()) {
+    CHECK(!overwriting_);
+    // Switch from appending instructions at the end of the buffer to overwriting
+    // existing instructions (here, jump tables) in the buffer.
+    overwriting_ = true;
+
+    for (JumpTable& table : jump_tables_) {
+      Riscv64Label* table_label = table.GetLabel();
+      uint32_t start = GetLabelLocation(table_label);
+      overwrite_location_ = start;
+
+      for (Riscv64Label* target : table.GetData()) {
+        CHECK_EQ(buffer_.Load<uint32_t>(overwrite_location_), 0x1abe1234u);
+        // The table will contain target addresses relative to the table start.
+        uint32_t offset = GetLabelLocation(target) - start;
+        Emit(offset);
+      }
+    }
+
+    overwriting_ = false;
+  }
+}
+
+void Riscv64Assembler::EmitLiterals() {
+  if (!literals_.empty()) {
+    for (Literal& literal : literals_) {
+      Riscv64Label* label = literal.GetLabel();
+      Bind(label);
+      AssemblerBuffer::EnsureCapacity ensured(&buffer_);
+      DCHECK_EQ(literal.GetSize(), 4u);
+      for (size_t i = 0, size = literal.GetSize(); i != size; ++i) {
+        buffer_.Emit<uint8_t>(literal.GetData()[i]);
+      }
+    }
+  }
+  if (!long_literals_.empty()) {
+    // Reserve 4 bytes for potential alignment. If after the branch promotion the 64-bit
+    // literals don't end up 8-byte-aligned, they will be moved down 4 bytes.
+    Emit(0);  // Illegal instruction.
+    for (Literal& literal : long_literals_) {
+      Riscv64Label* label = literal.GetLabel();
+      Bind(label);
+      AssemblerBuffer::EnsureCapacity ensured(&buffer_);
+      DCHECK_EQ(literal.GetSize(), 8u);
+      for (size_t i = 0, size = literal.GetSize(); i != size; ++i) {
+        buffer_.Emit<uint8_t>(literal.GetData()[i]);
+      }
+    }
+  }
+}
 
 /////////////////////////////// RV64 VARIANTS extension end ////////////
 

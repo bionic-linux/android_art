@@ -143,7 +143,12 @@ class AssemblerTestBase : public testing::Test {
     switch (isa) {
       case InstructionSet::kRiscv64:
         // TODO: Support compression (RV32C) in assembler and tests (add `c` to `-march=`).
-        return {FindTool("clang"), "--compile", "-target", "riscv64-linux-gnu", "-march=rv64imafd"};
+        return {FindTool("clang"),
+                "--compile",
+                "-target",
+                "riscv64-linux-gnu",
+                "-march=rv64imafd",
+                "-mno-relax"};
       case InstructionSet::kX86:
         return {FindTool("clang"), "--compile", "-target", "i386-linux-gnu"};
       case InstructionSet::kX86_64:
