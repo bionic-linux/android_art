@@ -22,6 +22,30 @@
       },
       "revId": "93749ed023a58b0b7b04a61de514fe6eb6c3d284",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afeb859_4f30d625",
+        "filename": "test/default_run.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-03-16T12:33:35Z",
+      "side": 1,
+      "message": "Hmmm.. I think the prebuilt should be already used (see `python3_bin` in `testrunner.py`).\n\nAlthough I have added that code after you asked the question here.",
+      "parentUuid": "5163e0d3_ae8f59d3",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "93749ed023a58b0b7b04a61de514fe6eb6c3d284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
