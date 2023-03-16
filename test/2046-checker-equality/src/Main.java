@@ -123,9 +123,8 @@ public class Main {
     }
 
     /// CHECK-START: int Main.$noinline$testEqualFloat(float) register (after)
-    /// CHECK: <<NotEqual:z\d+>> NotEqual
-    /// CHECK: <<BNot:z\d+>>     BooleanNot [<<NotEqual>>]
-    /// CHECK:                   Return [<<BNot>>]
+    /// CHECK: <<Equal:z\d+>>    Equal
+    /// CHECK:                   Return [<<Equal>>]
     private static int $noinline$testEqualFloat(float a) {
         if (a == $inline$returnValueFloat(a)) {
             return 1;
@@ -172,9 +171,8 @@ public class Main {
     }
 
     /// CHECK-START: int Main.$noinline$testEqualDouble(double) register (after)
-    /// CHECK: <<NotEqual:z\d+>> NotEqual
-    /// CHECK: <<BNot:z\d+>>     BooleanNot [<<NotEqual>>]
-    /// CHECK:                   Return [<<BNot>>]
+    /// CHECK: <<Equal:z\d+>>    Equal
+    /// CHECK:                   Return [<<Equal>>]
     private static int $noinline$testEqualDouble(double a) {
         if (a == $inline$returnValueDouble(a)) {
             return 1;
