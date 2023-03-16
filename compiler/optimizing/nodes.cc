@@ -3437,8 +3437,10 @@ HInstruction* HGraph::InsertOppositeCondition(HInstruction* cond, HInstruction* 
   ArenaAllocator* allocator = GetAllocator();
 
   if (cond->IsCondition() &&
-      !DataType::IsFloatingPointType(cond->InputAt(0)->GetType())) {
-    // Can't reverse floating point conditions.  We have to use HBooleanNot in that case.
+      (!DataType::IsFloatingPointType(cond->InputAt(0)->GetType()) ||
+       cond->AsCondition()->IsEqual() || cond->AsCondition()->IsNotEqual())) {
+    // Can't reverse floating point conditions unless they are Equal/NotEqual.  We have to use
+    // HBooleanNot in those other cases.
     HInstruction* lhs = cond->InputAt(0);
     HInstruction* rhs = cond->InputAt(1);
     HInstruction* replacement = nullptr;
