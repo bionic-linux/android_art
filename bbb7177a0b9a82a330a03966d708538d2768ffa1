@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b984cc3a_a6adc499",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-16T18:54:31Z",
+      "side": 0,
+      "message": "This test should be kept with `kExtract` replaced by `kVerify`, or we are losing coverage on this case.",
+      "range": {
+        "startLine": 1879,
+        "startChar": 0,
+        "endLine": 1898,
+        "endChar": 3
+      },
+      "revId": "bbb7177a0b9a82a330a03966d708538d2768ffa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
