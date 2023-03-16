@@ -55,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99bf60b9_de95c524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-16T19:07:17Z",
+      "side": 1,
+      "message": "ok so does that mean that now when an app is in background it is still considered jank-perceptible? I\u0027m assuming we don\u0027t freeze apps immediately when they go to background.\n\nI ask this because there are other places as well where we do things differently based on this signal.",
+      "parentUuid": "d0b85f95_e258e24c",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bffacb88_413c224c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-16T19:07:17Z",
+      "side": 1,
+      "message": "LGTM, but Hans has recently worked more closely on this front, so I\u0027ll like to have his +2.",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
@@ -90,6 +125,30 @@
       "side": 1,
       "message": "I checked this already and the usage is actually not removed and that\u0027s why I changed the comment and left the flag to clarify the usage. You can still stress the GC using this flag since it bypasses the heap threshold condition.",
       "parentUuid": "ec14f961_a387f46f",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 57
+      },
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9530d29_87d46880",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-16T19:07:17Z",
+      "side": 1,
+      "message": "thanks for conforming.",
+      "parentUuid": "0bb0444b_5f5fd016",
       "range": {
         "startLine": 187,
         "startChar": 2,
