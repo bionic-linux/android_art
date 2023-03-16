@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec6b5807_6a951ede",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-03-16T22:37:48Z",
+      "side": 1,
+      "message": "So when does an app transition to cached state? If I switch back to a previously cached app, does the first one immediately go into jank-imperceptible state, or is there a delay? It seems to me that something should provide a delay; we don\u0027t want the GC to trigger just as another app is starting.\n\nI\u0027m also concerned about whether there is a frameworks version dependency here. If we change who adds the delay, won\u0027t this \"break\" when the ART module is updated on an old release? (\"Break\" here would mean something performance-suboptimal would happen, not that it crashes.)",
+      "parentUuid": "b14ba1a9_4aa688f2",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
