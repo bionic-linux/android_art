@@ -482,6 +482,12 @@
       "name": "art-run-test-2257-checker-constant-folding-before-codegen[com.google.android.art.apex]"
     },
     {
+      "name": "art-run-test-2258-checker-valid-rti[com.google.android.art.apex]"
+    },
+    {
+      "name": "art-run-test-2259-checker-code-sinking-infinite-try-catch[com.google.android.art.apex]"
+    },
+    {
       "name": "art-run-test-300-package-override[com.google.android.art.apex]"
     },
     {
@@ -1889,6 +1895,12 @@
       "name": "art-run-test-2257-checker-constant-folding-before-codegen"
     },
     {
+      "name": "art-run-test-2258-checker-valid-rti"
+    },
+    {
+      "name": "art-run-test-2259-checker-code-sinking-infinite-try-catch"
+    },
+    {
       "name": "art-run-test-300-package-override"
     },
     {
@@ -3278,6 +3290,12 @@
     },
     {
       "name": "art-run-test-2257-checker-constant-folding-before-codegen"
+    },
+    {
+      "name": "art-run-test-2258-checker-valid-rti"
+    },
+    {
+      "name": "art-run-test-2259-checker-code-sinking-infinite-try-catch"
     },
     {
       "name": "art-run-test-300-package-override"
