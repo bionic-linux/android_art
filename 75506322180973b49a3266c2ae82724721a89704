@@ -16,6 +16,46 @@
       "message": "Please review. The 3 Presubmit failures are the same error and seem unrelated to the change.",
       "revId": "75506322180973b49a3266c2ae82724721a89704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaad2886_2d5a2d80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-16T18:00:58Z",
+      "side": 1,
+      "message": "I believe the original reason to add the 5s delay was to take care of case where user is switching between 2 (or more) apps back and forth. That issue can still arise with this CL, right?\n\nIs it not possible to pass on a signal from the framework whether the app is getting frozen?",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec14f961_a387f46f",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-16T18:00:58Z",
+      "side": 1,
+      "message": "I believe this and preceding comment should also be removed given their usage is removed. Please double check though.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 57
+      },
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
