@@ -861,9 +861,11 @@ void InstructionSimplifierVisitor::VisitBooleanNot(HBooleanNot* bool_not) {
     // Replace (!(!bool_value)) with bool_value.
     replace_with = input->InputAt(0);
   } else if (input->IsCondition() &&
-             // Don't change FP compares. The definition of compares involving
-             // NaNs forces the compares to be done as written by the user.
-             !DataType::IsFloatingPointType(input->InputAt(0)->GetType())) {
+             // Don't change FP compares which aren't Equal/NotEqual. The definition of compares
+             // involving NaNs means that e.g. `!=` and `==` are opposite but this isn't true for
+             // `<` and `>=`.
+             (!DataType::IsFloatingPointType(input->InputAt(0)->GetType()) ||
+              input->AsCondition()->IsEqual() || input->AsCondition()->IsNotEqual())) {
     // Replace condition with its opposite.
     replace_with = GetGraph()->InsertOppositeCondition(input->AsCondition(), bool_not);
   }
