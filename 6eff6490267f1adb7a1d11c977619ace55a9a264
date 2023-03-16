@@ -16,6 +16,24 @@
       "message": "This change essentially \"upgrades\" the compiler filter. It can break existing usages where the intention is to save time. Can we make \"extract\" kind of a no-op instead? (Creating files that are basically empty?)",
       "revId": "6eff6490267f1adb7a1d11c977619ace55a9a264",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc7ce07_53b667f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-16T18:03:17Z",
+      "side": 1,
+      "message": "That would create another case which I don\u0027t want for us to test.\n\nExtract shouldn\u0027t have any use cases anymore. If there are, they should be fixed on the user side.",
+      "parentUuid": "016ff0ef_7e66294f",
+      "revId": "6eff6490267f1adb7a1d11c977619ace55a9a264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
