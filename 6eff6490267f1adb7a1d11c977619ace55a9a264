@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016ff0ef_7e66294f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-16T16:32:44Z",
+      "side": 1,
+      "message": "This change essentially \"upgrades\" the compiler filter. It can break existing usages where the intention is to save time. Can we make \"extract\" kind of a no-op instead? (Creating files that are basically empty?)",
+      "revId": "6eff6490267f1adb7a1d11c977619ace55a9a264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
