@@ -1,0 +1,1 @@
+Tests that we are optimizing `var == var` and `var != var`.

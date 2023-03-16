@@ -284,8 +284,16 @@ void InstructionWithAbsorbingInputSimplifier::VisitShift(HBinaryOperation* instr
 }
 
 void InstructionWithAbsorbingInputSimplifier::VisitEqual(HEqual* instruction) {
-  if ((instruction->GetLeft()->IsNullConstant() && !instruction->GetRight()->CanBeNull()) ||
-      (instruction->GetRight()->IsNullConstant() && !instruction->GetLeft()->CanBeNull())) {
+  if (!DataType::IsFloatingPointType(instruction->GetLeft()->GetType()) &&
+      instruction->GetLeft() == instruction->GetRight()) {
+    // Replace code looking like
+    //    EQUAL lhs, lhs
+    //    CONSTANT true
+    // We don't perform this optimizations for floating types since e.g. Double.NaN != Double.NaN
+    instruction->ReplaceWith(GetGraph()->GetConstant(DataType::Type::kBool, 1));
+    instruction->GetBlock()->RemoveInstruction(instruction);
+  } else if ((instruction->GetLeft()->IsNullConstant() && !instruction->GetRight()->CanBeNull()) ||
+             (instruction->GetRight()->IsNullConstant() && !instruction->GetLeft()->CanBeNull())) {
     // Replace code looking like
     //    EQUAL lhs, null
     // where lhs cannot be null with
@@ -296,8 +304,16 @@ void InstructionWithAbsorbingInputSimplifier::VisitEqual(HEqual* instruction) {
 }
 
 void InstructionWithAbsorbingInputSimplifier::VisitNotEqual(HNotEqual* instruction) {
-  if ((instruction->GetLeft()->IsNullConstant() && !instruction->GetRight()->CanBeNull()) ||
-      (instruction->GetRight()->IsNullConstant() && !instruction->GetLeft()->CanBeNull())) {
+  if (!DataType::IsFloatingPointType(instruction->GetLeft()->GetType()) &&
+      instruction->GetLeft() == instruction->GetRight()) {
+    // Replace code looking like
+    //    NOT_EQUAL lhs, lhs
+    //    CONSTANT false
+    // We don't perform this optimizations for floating types since e.g. Double.NaN != Double.NaN
+    instruction->ReplaceWith(GetGraph()->GetConstant(DataType::Type::kBool, 0));
+    instruction->GetBlock()->RemoveInstruction(instruction);
+  } else if ((instruction->GetLeft()->IsNullConstant() && !instruction->GetRight()->CanBeNull()) ||
+             (instruction->GetRight()->IsNullConstant() && !instruction->GetLeft()->CanBeNull())) {
     // Replace code looking like
     //    NOT_EQUAL lhs, null
     // where lhs cannot be null with
