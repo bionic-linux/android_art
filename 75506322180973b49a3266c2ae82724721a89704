@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b85f95_e258e24c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-16T18:17:36Z",
+      "side": 1,
+      "message": "I have already updated the frameworks to signal here for jank non-perceptible (update state) only when the app is transitioning into cached mode which is when the GC should start happening so that it finishes before the app gets frozen. So the framework will give the correct signal and ART will simply execute the GC.",
+      "parentUuid": "aaad2886_2d5a2d80",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2023-03-16T18:00:58Z",
       "side": 1,
       "message": "I believe this and preceding comment should also be removed given their usage is removed. Please double check though.",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 57
+      },
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb0444b_5f5fd016",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-16T18:17:36Z",
+      "side": 1,
+      "message": "I checked this already and the usage is actually not removed and that\u0027s why I changed the comment and left the flag to clarify the usage. You can still stress the GC using this flag since it bypasses the heap threshold condition.",
+      "parentUuid": "ec14f961_a387f46f",
       "range": {
         "startLine": 187,
         "startChar": 2,
