@@ -88,6 +88,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef3546bb_9d6cd014",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-16T19:40:39Z",
+      "side": 1,
+      "message": "Hans, please take a look.",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14ba1a9_4aa688f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-16T19:40:39Z",
+      "side": 1,
+      "message": "Only in cached state an app is considered non-jank perceptible and it can only transition into frozen state from cached state.\n\nMy understanding from others is that this signal is no longer used in other cases and I have seen no other code using it currently.",
+      "parentUuid": "99bf60b9_de95c524",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec14f961_a387f46f",
