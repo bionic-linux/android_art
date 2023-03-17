@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abe7a613_ac109eb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-03-17T22:53:57Z",
+      "side": 1,
+      "message": "It seems to me that the core problem here is that we have an @SystemApi call, namely VMRuntime.updateProcessState(), whose semantics are seriously underdefined. \"Jank perceptible\" does not have an established definition in the Android lifecycle that I\u0027m aware of. Could you please fix that, by adding a comment in either VMRuntime.java or process_state.h? If the semantics changed over time, so that we have to deal with multiple versions in ART, we need that documented as well.\n\nOne thing that seems particularly critical here is whether updateProcessState is called around the onPause() or onStop() call, or significantly later. The current documentation, if anything, implies the former. In that case, I would think it\u0027s important that we have a delay, at least until after those methods stop running, since they may allocate. And we want to guard against immediate resumption, as Lokesh said. if this actually reflects a different, later transition, the API needs to specify that.",
+      "parentUuid": "45b6d63d_98f815a0",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
