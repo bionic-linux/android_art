@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "082c4966_d1db4965",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-17T00:01:36Z",
+      "side": 1,
+      "message": "We need to differentiate 2 things, what the frameworks does and what ART does. The frameworks is responsible for the app life cycle and hence will transition the app into cached state when it should be. GC should not be triggered after a delay when we don\u0027t know the state of the app at that time instead it should be triggered on a clear signal from the frameworks which is what we are doing here.\n\nAs for performance-suboptimal on old releases due to the framework changes, it is already suboptimal to issue a GC based on the 5s delay currently and changes have been happening in the framework including to this signal previously changing its delay. We are mindful to make sure nothing breaks but in terms of old release performance it is already suboptimal.",
+      "parentUuid": "ec6b5807_6a951ede",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
