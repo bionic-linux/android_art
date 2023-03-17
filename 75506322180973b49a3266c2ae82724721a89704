@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45b6d63d_98f815a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-17T00:58:08Z",
+      "side": 1,
+      "message": "No, I am not talking about my recent frameworks change, that is part of the solution to improve transitional GC (refer to the proposal in the bug). The suboptimal behavior is the original state, the 5s is just a guess that doesn\u0027t correlate to anything, and the frameworks changes that I am referring to have been happening for a long time, e.g. there was another 5s frameworks delay that was removed. So in older releases from performance perspective it is already suboptimal.",
+      "parentUuid": "941307fd_5d3cd894",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
