@@ -22,6 +22,30 @@
       },
       "revId": "b256accff2102b20017ca9d807f53b02d1ef18d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf7b537_7750533c",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-17T12:13:11Z",
+      "side": 1,
+      "message": "I think so, it should apply to the EXPECT_EQ.",
+      "parentUuid": "5b334435_7acda47d",
+      "range": {
+        "startLine": 526,
+        "startChar": 6,
+        "endLine": 526,
+        "endChar": 67
+      },
+      "revId": "b256accff2102b20017ca9d807f53b02d1ef18d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
