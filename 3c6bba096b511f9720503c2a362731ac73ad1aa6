@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a45fb6d_ff47f468",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "I think unsigned comparisons (Above/AboveOrEqual/Below/BelowOrEqual) are not applicable to FP types.",
+      "range": {
+        "startLine": 334,
+        "startChar": 6,
+        "endLine": 334,
+        "endChar": 71
+      },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d95971e_5c6c9dd1",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "FP operations can be simplified if they have the right `ComparisonBias`.",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 71
+      },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "722205bf_366d7b68",
         "filename": "compiler/optimizing/constant_folding.cc",
         "patchSetId": 4
@@ -19,6 +65,29 @@
         "startChar": 0,
         "endLine": 425,
         "endChar": 0
+      },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8294ef1b_5fec9099",
+        "filename": "test/2046-checker-comparison/info.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 1,
+        "startChar": 14,
+        "endLine": 1,
+        "endChar": 17
       },
       "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -43,6 +112,64 @@
         "endLine": 289,
         "endChar": 57
       },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d732b851_377ce0f8",
+        "filename": "test/2046-checker-comparison/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "Please see the \"cmpkind vAA, vBB, vCC\" operation at https://source.android.com/docs/core/runtime/dalvik-bytecode . These can be combined with \"if-testz vAA, +BBBB\" in different ways to produce the same result.\n\nIn the `builder (after)` graph, you should see `HCompare` followed by some comparison with 0. Note that both\n\n    \u003c\u003cCmp:i\\d+\u003e\u003e Compare [\u003c\u003clhs\u003e\u003e,\u003c\u003crhs\u003e\u003e] bias:LtBias\n                 GreaterThen [\u003c\u003cCmp\u003e\u003e,\u003c\u003cConst0\u003e\u003e]\n\nand\n\n    \u003c\u003cCmp:i\\d+\u003e\u003e Compare [\u003c\u003crhs\u003e\u003e,\u003c\u003clhs\u003e\u003e] bias:GtBias\n                 LessThen [\u003c\u003cCmp\u003e\u003e,\u003c\u003cConst0\u003e\u003e]\n\nare valid expressions for \"lhs \u003e rhs\". Additionally, D8 can also choose arbitrary order of the then-block and else-block, thus potentially using the opposite comparisons.\n\nThe `HCompare` gets merged to the comparison in `InstructionSimplifier`. Have a look at that code. You may want to add `HGraphVisualizerPrinter::VisitCondition()` and print the bias just like in `HGraphVisualizerPrinter::VisitCompare()`.\n\nNote that by testing for a particular instruction, we are risking test breakage for javac and D8 updates.",
+      "parentUuid": "fe50f17b_61aa3c7c",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 57
+      },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c4fc795_0783e67f",
+        "filename": "test/2046-checker-comparison/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "Odd method ordering - move this after all \"Double\" tests.",
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd231084_4cbad991",
+        "filename": "test/2046-checker-comparison/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-17T17:01:03Z",
+      "side": 1,
+      "message": "Odd method ordering - move the \"Object\" tests after \"Double\" tests.",
       "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
