@@ -161,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "941307fd_5d3cd894",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-17T00:21:49Z",
+      "side": 1,
+      "message": "Just to clarify, the suboptimal behavior that you are referring to is possibly because of the disparity due to the recent changes in frameworks that you referred to. Originally, the delay made perfect sense. It increases the likelihood of the app staying in background. Given this, I share the concern regarding ART module releases that Hans brought up.\n\nI agree with the first paragraph. But the changes in frameworks are very recent (your CL is merged 3 days ago).",
+      "parentUuid": "082c4966_d1db4965",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
