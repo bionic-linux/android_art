@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b48ed9d_83838e8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2023-03-17T22:58:31Z",
+      "side": 1,
+      "message": "the flow is\n\n1. app A is top-app, user leaves app A\n2. app A gets onStop, still oom_adj 0 until it\u0027s done with onStop or onStop times out\n3. app A becomes previous app, oom_adj 700\n4. user runs a second app, app A is demoted from previous to cached, oom_adj 900\n5. app A receives setProcessState(cached) from system_server, triggering the JANK_IMPERCEPTIBLE change here\n\nthis is as good of a signal for \"the app is actually in the background not doing anything\" as we have.",
+      "parentUuid": "abe7a613_ac109eb9",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
