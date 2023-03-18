@@ -251,6 +251,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4596bd43_15b94545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2023-03-18T01:29:37Z",
+      "side": 1,
+      "message": "if you\u0027re only switching between two apps, the two apps will alternate between the top and previous slots. in this case, any fixed delay before GC is arbitrary and will cause unnecessary GCs (potentially when the app is in the foreground). this happens a lot in T, especially when an app first starts in the background and the user switches to the app soon after the app launches.\n\nif onStop triggers background IO activity, that is likely done by the time the app hits step 5.\n\nthe flow in T would trigger JANK_IMPERCEPTIBLE once the app hit a process state less important than IMPORTANT_FOREGROUND (previous), which still waits for onStop to finish or timeout. it\u0027s still probably more correct to trigger immediately on that drop than to wait 5s.\n\nin U, because of changes to the broadcast queue and the cached state, the app is far more likely to stay in the cached state for a long time, making it a better trigger than IMPORTANT_FOREGROUND.",
+      "parentUuid": "433c4264_f1971cad",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
