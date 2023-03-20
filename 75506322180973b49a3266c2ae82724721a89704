@@ -287,6 +287,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f473a51f_46ea577c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-03-20T20:54:46Z",
+      "side": 1,
+      "message": "Yes. I have added small comments on aosp/2497300 to make it clearer.",
+      "parentUuid": "462687a5_e795fa5e",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
