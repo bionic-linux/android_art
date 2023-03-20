@@ -269,6 +269,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "462687a5_e795fa5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-03-20T19:11:19Z",
+      "side": 1,
+      "message": "Thanks! That makes sense. I uploaded aosp/2497300, so that the updateProcessState documentation better reflects that. Does that reflect everyone\u0027s understanding?",
+      "parentUuid": "4596bd43_15b94545",
+      "revId": "75506322180973b49a3266c2ae82724721a89704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec14f961_a387f46f",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
