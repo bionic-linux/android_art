@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "182c4142_7018cee1",
+        "filename": "test/2046-checker-comparison/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-03-20T10:06:04Z",
+      "side": 1,
+      "message": "I would consider the `IsFPConditionTrueIfNaN()` and `IsFPConditionFalseIfNaN()` incomplete. Feel free to add the additional cases. Then you could change the simplification to rely on these functions to make it easier to understand the code.",
+      "parentUuid": "7dc1e98a_349c4731",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 57
+      },
+      "revId": "3c6bba096b511f9720503c2a362731ac73ad1aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c4fc795_0783e67f",
         "filename": "test/2046-checker-comparison/src/Main.java",
         "patchSetId": 4
