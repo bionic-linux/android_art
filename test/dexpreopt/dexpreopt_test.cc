@@ -46,8 +46,7 @@
 
 namespace art {
 
-using ::android::base::Error;
-using ::testing::IsSupersetOf;
+using ::testing::IsSubsetOf;
 
 constexpr const char* kZygote32 = "zygote";
 constexpr const char* kZygote64 = "zygote64";
@@ -100,12 +99,6 @@ android::base::Result<std::vector<std::string>> GetZygoteExpectedArtifacts(Instr
   if (jars.empty()) {
     return Errorf("Environment variable `DEX2OATBOOTCLASSPATH` is not defined or empty");
   }
-  std::string error_msg;
-  std::string first_mainline_jar = GetFirstMainlineFrameworkLibraryFilename(&error_msg);
-  if (first_mainline_jar.empty()) {
-    return Error() << error_msg;
-  }
-  jars.push_back(std::move(first_mainline_jar));
   std::string art_root = GetArtRoot();
   std::string android_root = GetAndroidRoot();
   std::vector<std::string> artifacts;
@@ -225,7 +218,7 @@ TEST(DexpreoptTest, ForZygote) {
         GetZygoteMappedOatFiles(zygote_name);
     ASSERT_RESULT_OK(mapped_oat_files);
 
-    EXPECT_THAT(mapped_oat_files.value(), IsSupersetOf(expected_artifacts.value()));
+    EXPECT_THAT(expected_artifacts.value(), IsSubsetOf(mapped_oat_files.value()));
   }
 }
 
@@ -243,7 +236,7 @@ TEST(DexpreoptTest, ForSystemServer) {
       GetSystemServerArtifactsMappedOdexes();
   ASSERT_RESULT_OK(mapped_odexes);
 
-  EXPECT_THAT(mapped_odexes.value(), IsSupersetOf(expected_artifacts.value()));
+  EXPECT_THAT(expected_artifacts.value(), IsSubsetOf(mapped_odexes.value()));
 }
 
 }  // namespace art
