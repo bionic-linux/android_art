@@ -39,6 +39,30 @@
       },
       "revId": "183bed7b46c7b05a335c8e5a3fac1845991e3ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6402a2f3_efd0894d",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-03-21T23:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "718174ad_fbc58ffc",
+      "range": {
+        "startLine": 491,
+        "startChar": 2,
+        "endLine": 491,
+        "endChar": 22
+      },
+      "revId": "183bed7b46c7b05a335c8e5a3fac1845991e3ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
