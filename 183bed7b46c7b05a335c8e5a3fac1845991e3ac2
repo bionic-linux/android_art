@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff6610a_9a0e0618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-03-21T23:27:01Z",
+      "side": 1,
+      "message": "Basically fine, but ...",
+      "revId": "183bed7b46c7b05a335c8e5a3fac1845991e3ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "718174ad_fbc58ffc",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-03-21T23:27:01Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a runtime argument? This way we\u0027re cloning a largish function and adding compile time for what I expect is basically no performance gain?",
+      "range": {
+        "startLine": 491,
+        "startChar": 2,
+        "endLine": 491,
+        "endChar": 22
+      },
+      "revId": "183bed7b46c7b05a335c8e5a3fac1845991e3ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
