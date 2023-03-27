@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42ed8319_05af5f95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-27T12:39:52Z",
+      "side": 1,
+      "message": "This fixes a bug introduced here: https://android-review.git.corp.google.com/c/platform/art/+/2411665/5/runtime/trace.cc#b652",
+      "revId": "7d275014d986003f4dec161b1f1a6f4f73eafd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
