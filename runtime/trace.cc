@@ -790,6 +790,10 @@ void Trace::DumpBuf(uint8_t* buf, size_t buf_size, TraceClockSource clock_source
 
 void Trace::FinishTracing() {
   size_t final_offset = 0;
+  if (trace_output_mode_ != TraceOutputMode::kStreaming) {
+    final_offset = cur_offset_.load(std::memory_order_relaxed);
+  }
+
   // Compute elapsed time.
   uint64_t elapsed = GetMicroTime(GetTimestamp()) - start_time_;
 
