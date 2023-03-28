@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ac89f7b5_247bc545",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-28T15:50:32Z",
+      "side": 1,
+      "message": "Yes, I added one. I extended 2246 to also test non-streaming case. In a follow up CL I will also add other cases like different clock modes and maybe for sampling mode.",
+      "parentUuid": "023cc10e_111d5d2e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "7d275014d986003f4dec161b1f1a6f4f73eafd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42ed8319_05af5f95",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
