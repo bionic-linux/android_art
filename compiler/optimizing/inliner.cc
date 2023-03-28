@@ -18,6 +18,7 @@
 
 #include "art_method-inl.h"
 #include "base/enums.h"
+#include "base/globals.h"
 #include "base/logging.h"
 #include "builder.h"
 #include "class_linker.h"
@@ -40,6 +41,7 @@
 #include "reference_type_propagation.h"
 #include "register_allocator_linear_scan.h"
 #include "scoped_thread_state_change-inl.h"
+#include "scoped_thread_state_change.h"
 #include "sharpening.h"
 #include "ssa_builder.h"
 #include "ssa_phi_elimination.h"
@@ -170,6 +172,9 @@ bool HInliner::Run() {
   const bool honor_noinline_directives = codegen_->GetCompilerOptions().CompileArtTest();
   const bool honor_inline_directives =
       honor_noinline_directives && Runtime::Current()->IsAotCompiler();
+  
+  // Used to know if an intrinsic call is implemented for the current architecture.
+  const InstructionSet isa = codegen_->GetCompilerOptions().GetInstructionSet();
 
   // Keep a copy of all blocks when starting the visit.
   ArenaVector<HBasicBlock*> blocks = graph_->GetReversePostOrder();
@@ -182,7 +187,7 @@ bool HInliner::Run() {
       HInstruction* next = instruction->GetNext();
       HInvoke* call = instruction->AsInvoke();
       // As long as the call is not intrinsified, it is worth trying to inline.
-      if (call != nullptr && call->GetIntrinsic() == Intrinsics::kNone) {
+      if (call != nullptr && !call->IsImplementedIntrinsic(isa)) {
         if (honor_noinline_directives) {
           // Debugging case: directives in method names control or assert on inlining.
           std::string callee_name =
@@ -1271,6 +1276,10 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
   if (!invoke_instruction->IsInvokeInterface() && !invoke_instruction->IsInvokeVirtual()) {
     return false;
   }
+  // Don't try to devirtualize invokes as it breaks pattern matching from later phases.
+  if (invoke_instruction->IsIntrinsic()) {
+    return false;
+  }
 
   // Don't bother trying to call directly a default conflict method. It
   // doesn't have a proper MethodReference, but also `GetCanonicalMethod`
@@ -1344,7 +1353,8 @@ bool HInliner::TryInlineAndReplace(HInvoke* invoke_instruction,
                                    ReferenceTypeInfo receiver_type,
                                    bool do_rtp,
                                    bool is_speculative) {
-  DCHECK(!invoke_instruction->IsIntrinsic());
+  DCHECK(!invoke_instruction->IsImplementedIntrinsic(
+      codegen_->GetCompilerOptions().GetInstructionSet()));
   HInstruction* return_replacement = nullptr;
 
   if (!TryBuildAndInline(
@@ -1501,6 +1511,7 @@ bool HInliner::IsInliningEncouraged(const HInvoke* invoke_instruction,
   return true;
 }
 
+// TODO(solanes): Maybe pass down the ISA / make the ISA a member of HInliner.
 bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
                                  ArtMethod* method,
                                  ReferenceTypeInfo receiver_type,
