@@ -52,6 +52,22 @@
 #include "mirror/method_type.h"
 #include "offsets.h"
 
+#ifdef ART_ENABLE_CODEGEN_arm
+#include "unimplemented_intrinsics_arm_vixl.h"
+#endif
+
+#ifdef ART_ENABLE_CODEGEN_arm64
+#include "unimplemented_intrinsics_arm64.h"
+#endif
+
+#ifdef ART_ENABLE_CODEGEN_x86
+#include "unimplemented_intrinsics_x86.h"
+#endif
+
+#ifdef ART_ENABLE_CODEGEN_x86_64
+#include "unimplemented_intrinsics_x86_64.h"
+#endif
+
 namespace art HIDDEN {
 
 class ArenaStack;
@@ -4754,6 +4770,35 @@ class HInvoke : public HVariableInputSizeInstruction {
   }
 
   bool IsIntrinsic() const { return intrinsic_ != Intrinsics::kNone; }
+  bool IsImplementedIntrinsic(InstructionSet isa) const {
+    if (!IsIntrinsic()) {
+      return false;
+    }
+    switch (isa) {
+#ifdef ART_ENABLE_CODEGEN_arm
+      case InstructionSet::kArm:
+        return arm::unimplemented_intrinsics.find(intrinsic_) ==
+               arm::unimplemented_intrinsics.end();
+#endif
+#ifdef ART_ENABLE_CODEGEN_arm64
+      case InstructionSet::kArm64:
+        return arm64::unimplemented_intrinsics.find(intrinsic_) ==
+               arm64::unimplemented_intrinsics.end();
+#endif
+#ifdef ART_ENABLE_CODEGEN_x86
+      case InstructionSet::kX86:
+        return x86::unimplemented_intrinsics.find(intrinsic_) ==
+               x86::unimplemented_intrinsics.end();
+#endif
+#ifdef ART_ENABLE_CODEGEN_x86_64
+      case InstructionSet::kX86_64:
+        return x86_64::unimplemented_intrinsics.find(intrinsic_) ==
+               x86_64::unimplemented_intrinsics.end();
+#endif
+      default:
+        return true;
+    }
+  }
 
   ArtMethod* GetResolvedMethod() const { return resolved_method_; }
   void SetResolvedMethod(ArtMethod* method);
