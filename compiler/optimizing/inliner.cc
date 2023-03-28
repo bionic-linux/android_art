@@ -171,6 +171,9 @@ bool HInliner::Run() {
   const bool honor_inline_directives =
       honor_noinline_directives && Runtime::Current()->IsAotCompiler();
 
+  // Used to know if an intrinsic call is implemented for the current architecture.
+  const InstructionSet isa = codegen_->GetCompilerOptions().GetInstructionSet();
+
   // Keep a copy of all blocks when starting the visit.
   ArenaVector<HBasicBlock*> blocks = graph_->GetReversePostOrder();
   DCHECK(!blocks.empty());
@@ -182,7 +185,7 @@ bool HInliner::Run() {
       HInstruction* next = instruction->GetNext();
       HInvoke* call = instruction->AsInvoke();
       // As long as the call is not intrinsified, it is worth trying to inline.
-      if (call != nullptr && call->GetIntrinsic() == Intrinsics::kNone) {
+      if (call != nullptr && !call->IsImplementedIntrinsic(isa)) {
         if (honor_noinline_directives) {
           // Debugging case: directives in method names control or assert on inlining.
           std::string callee_name =
@@ -1272,6 +1275,13 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
     return false;
   }
 
+  // Don't try to devirtualize intrinsics as it breaks pattern matching from later phases.
+  // TODO(solanes): This `if` could be removed if we update optimizations like
+  // TryReplaceStringBuilderAppend.
+  if (invoke_instruction->IsIntrinsic()) {
+    return false;
+  }
+
   // Don't bother trying to call directly a default conflict method. It
   // doesn't have a proper MethodReference, but also `GetCanonicalMethod`
   // will return an actual default implementation.
@@ -1344,7 +1354,8 @@ bool HInliner::TryInlineAndReplace(HInvoke* invoke_instruction,
                                    ReferenceTypeInfo receiver_type,
                                    bool do_rtp,
                                    bool is_speculative) {
-  DCHECK(!invoke_instruction->IsIntrinsic());
+  DCHECK(!invoke_instruction->IsImplementedIntrinsic(
+      codegen_->GetCompilerOptions().GetInstructionSet()));
   HInstruction* return_replacement = nullptr;
 
   if (!TryBuildAndInline(
