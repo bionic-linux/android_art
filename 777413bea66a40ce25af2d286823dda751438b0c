@@ -16,6 +16,75 @@
       "message": "Thanks! PTAL.",
       "revId": "777413bea66a40ce25af2d286823dda751438b0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142792ad_bbfef839",
+        "filename": "test/2246-trace-stream/src/BaseTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-28T17:27:21Z",
+      "side": 1,
+      "message": "nit: add \u0027.\u0027 at the end of comments, here and others below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 35
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e7ea8c1_80229890",
+        "filename": "test/2246-trace-stream/src/BaseTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-28T17:27:21Z",
+      "side": 1,
+      "message": "here and below: Java variables should be camlCase.",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c397c01_0315a725",
+        "filename": "test/2246-trace-stream/src/NonStreamTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-28T17:27:21Z",
+      "side": 1,
+      "message": "ditto about camlCase, here and others below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 68
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
