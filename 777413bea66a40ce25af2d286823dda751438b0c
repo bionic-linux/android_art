@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e194699_bd8a1d67",
+        "filename": "test/2246-trace-stream/src/BaseTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-29T09:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142792ad_bbfef839",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 35
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e7ea8c1_80229890",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215bed6f_6df0eff4",
+        "filename": "test/2246-trace-stream/src/BaseTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-29T09:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7ea8c1_80229890",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c397c01_0315a725",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-03-28T17:27:21Z",
       "side": 1,
       "message": "ditto about camlCase, here and others below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 52,
+        "endLine": 22,
+        "endChar": 68
+      },
+      "revId": "777413bea66a40ce25af2d286823dda751438b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325bf71f_9d0ebec3",
+        "filename": "test/2246-trace-stream/src/NonStreamTraceParser.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-03-29T09:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c397c01_0315a725",
       "range": {
         "startLine": 22,
         "startChar": 52,
