@@ -22,6 +22,30 @@
       },
       "revId": "db18e88d8a9e2a45639c6fd25e91341dd3f32f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9706900_e345e4c3",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsSigningHostTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-03-30T09:12:12Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7b158327_5f974d18",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 38
+      },
+      "revId": "db18e88d8a9e2a45639c6fd25e91341dd3f32f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
