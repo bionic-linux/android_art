@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac8e37e_3d2c01e4",
+        "filename": "compiler/optimizing/unimplemented_intrinsics_arm_vixl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-03-30T16:47:13Z",
+      "side": 1,
+      "message": "Can we avoid this? Looks like a waste for a static list. In intrinsics_list, we put kInfo in it, can we do the same?",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "72b252400323065551fa166ba6047ca74324467e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
