@@ -22,6 +22,30 @@
       },
       "revId": "72b252400323065551fa166ba6047ca74324467e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a272ff_4b2a9bcd",
+        "filename": "compiler/optimizing/unimplemented_intrinsics_arm_vixl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-03-31T08:03:32Z",
+      "side": 1,
+      "message": "It\u0027s not the same as kInfo since this is arch specific.\n\nThe requirements are:\n * Arch specific (we implement certain intrinsics per arch)\n * intrinsics_\u003carch\u003e needs to know about the list since it wan\u0027t to mark them as unimplemented there\n * the inliner has to be aware of the list somehow (e.g. via the unordered_set).\n \nWhat I am thinking is that we can move the list and set to CodeGenerator\u003cArch\u003e, and make it a definition over there. In the inliner instead of asking `call-\u003eIsImplementedIntrinsic(isa)` we could do `codegen_-\u003eIsImplementedIntrinsic(call)`.  WDYT?",
+      "parentUuid": "2ac8e37e_3d2c01e4",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "72b252400323065551fa166ba6047ca74324467e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
