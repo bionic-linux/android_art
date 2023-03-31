@@ -463,6 +463,9 @@ Result<std::vector<std::string>> ParseConfig(
     // skip renderscript lib on riscv target
     if (entry.soname == "libRS.so") continue;
 #endif
+#if !defined(__aarch64__)
+    if (entry.soname == "libclang_rt.hwasan-aarch64-android.so") continue;
+#endif
 
     Result<bool> ret = filter_fn(entry);
     if (!ret.ok()) {
