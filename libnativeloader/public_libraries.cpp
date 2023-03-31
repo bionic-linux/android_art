@@ -464,6 +464,11 @@ Result<std::vector<std::string>> ParseConfig(
     if (entry.soname == "libRS.so") continue;
 #endif
 
+    /// HWASan RT is only available on arm64.
+#if !defined(__aarch64__)
+    if (entry.soname == "libclang_rt.hwasan-aarch64-android.so") continue;
+#endif
+
     Result<bool> ret = filter_fn(entry);
     if (!ret.ok()) {
       return ret.error();
