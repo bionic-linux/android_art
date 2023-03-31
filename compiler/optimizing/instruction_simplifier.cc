@@ -82,7 +82,6 @@ class InstructionSimplifierVisitor : public HGraphDelegateVisitor {
   void VisitArraySet(HArraySet* equal) override;
   void VisitTypeConversion(HTypeConversion* instruction) override;
   void VisitNullCheck(HNullCheck* instruction) override;
-  void VisitArrayLength(HArrayLength* instruction) override;
   void VisitCheckCast(HCheckCast* instruction) override;
   void VisitAbs(HAbs* instruction) override;
   void VisitAdd(HAdd* instruction) override;
@@ -1114,18 +1113,6 @@ void InstructionSimplifierVisitor::VisitIf(HIf* instruction) {
     instruction->ReplaceInput(condition->InputAt(0), 0);
     instruction->GetBlock()->SwapSuccessors();
     RecordSimplification();
-  }
-}
-
-void InstructionSimplifierVisitor::VisitArrayLength(HArrayLength* instruction) {
-  HInstruction* input = instruction->InputAt(0);
-  // If the array is a NewArray with constant size, replace the array length
-  // with the constant instruction. This helps the bounds check elimination phase.
-  if (input->IsNewArray()) {
-    input = input->AsNewArray()->GetLength();
-    if (input->IsIntConstant()) {
-      instruction->ReplaceWith(input);
-    }
   }
 }
 
