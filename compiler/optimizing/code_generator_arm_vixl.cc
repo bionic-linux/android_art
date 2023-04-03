@@ -1917,6 +1917,7 @@ CodeGeneratorARMVIXL::CodeGeneratorARMVIXL(HGraph* graph,
                     kCoreCalleeSaves.GetList(),
                     ComputeSRegisterListMask(kFpuCalleeSaves),
                     compiler_options,
+                    ReturnUnimplementedIntrinsics(),
                     stats),
       block_labels_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       jump_tables_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
@@ -10255,6 +10256,15 @@ void CodeGeneratorARMVIXL::CompileBakerReadBarrierThunk(ArmVIXLAssembler& assemb
     }
     *debug_name = oss.str();
   }
+}
+
+const std::unordered_set<Intrinsics> CodeGeneratorARMVIXL::ReturnUnimplementedIntrinsics() const {
+  const std::unordered_set<Intrinsics> unimplemented_intrinsics = {
+#define ADD_TO_SET(Name) Intrinsics::k##Name,
+      UNIMPLEMENTED_INTRINSIC_LIST_ARM(ADD_TO_SET)
+#undef ADD_TO_SET
+  };
+  return unimplemented_intrinsics;
 }
 
 #undef __
