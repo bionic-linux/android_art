@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49f213f8_53bcd13c",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T11:34:22Z",
+      "side": 1,
+      "message": "Potentially we can change this to do it for all values, not just constants. However, BCE uses the fact that we have a new array (See IsRelatedToArrayLength) so we might need to modify that pass too.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 33
+      },
+      "revId": "6f03a1665abaa37671fcead94d19f4946e7d968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
