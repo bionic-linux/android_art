@@ -946,6 +946,7 @@ CodeGeneratorARM64::CodeGeneratorARM64(HGraph* graph,
                     callee_saved_core_registers.GetList(),
                     callee_saved_fp_registers.GetList(),
                     compiler_options,
+                    ReturnUnimplementedIntrinsics(),
                     stats),
       block_labels_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       jump_tables_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
@@ -7273,6 +7274,15 @@ void CodeGeneratorARM64::CompileBakerReadBarrierThunk(Arm64Assembler& assembler,
     }
     *debug_name = oss.str();
   }
+}
+
+const std::unordered_set<Intrinsics> CodeGeneratorARM64::ReturnUnimplementedIntrinsics() const {
+  const std::unordered_set<Intrinsics> unimplemented_intrinsics = {
+#define ADD_TO_SET(Name) Intrinsics::k##Name,
+      UNIMPLEMENTED_INTRINSIC_LIST_ARM64(ADD_TO_SET)
+#undef ADD_TO_SET
+  };
+  return unimplemented_intrinsics;
 }
 
 #undef __

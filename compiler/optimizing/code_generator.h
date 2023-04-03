@@ -304,6 +304,12 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   // Returns whether we should split long moves in parallel moves.
   virtual bool ShouldSplitLongMoves() const { return false; }
 
+  // Returns true if `invoke` is an implemented intrinsic in this codegen's arch.
+  bool IsImplementedIntrinsic(HInvoke* invoke) const {
+    return invoke->IsIntrinsic() &&
+           unimplemented_intrinsics_.find(invoke->GetIntrinsic()) == unimplemented_intrinsics_.end();
+  }
+
   size_t GetNumberOfCoreCalleeSaveRegisters() const {
     return POPCOUNT(core_callee_save_mask_);
   }
@@ -749,6 +755,7 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
                 uint32_t core_callee_save_mask,
                 uint32_t fpu_callee_save_mask,
                 const CompilerOptions& compiler_options,
+                const std::unordered_set<Intrinsics>&& unimplemented_intrinsics,
                 OptimizingCompilerStats* stats);
 
   virtual HGraphVisitor* GetLocationBuilder() = 0;
@@ -892,6 +899,9 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   // held by the ArenaAllocator. This ScopedArenaAllocator is created in
   // CodeGenerator::Compile() and remains alive until the CodeGenerator is destroyed.
   std::unique_ptr<CodeGenerationData> code_generation_data_;
+
+  // Intrinsics for which we haven't handcraft code for.
+  const std::unordered_set<Intrinsics> unimplemented_intrinsics_;
 
   friend class OptimizingCFITest;
   ART_FRIEND_TEST(CodegenTest, ARM64FrameSizeSIMD);

@@ -1118,6 +1118,7 @@ CodeGeneratorX86::CodeGeneratorX86(HGraph* graph,
                         | (1 << kFakeReturnRegister),
                     0,
                     compiler_options,
+                    ReturnUnimplementedIntrinsics(),
                     stats),
       block_labels_(nullptr),
       location_builder_(graph, this),
@@ -9035,6 +9036,15 @@ bool InstructionCodeGeneratorX86::CpuHasAvxFeatureFlag() {
 }
 bool InstructionCodeGeneratorX86::CpuHasAvx2FeatureFlag() {
   return codegen_->GetInstructionSetFeatures().HasAVX2();
+}
+
+const std::unordered_set<Intrinsics> CodeGeneratorX86::ReturnUnimplementedIntrinsics() const {
+  const std::unordered_set<Intrinsics> unimplemented_intrinsics = {
+#define ADD_TO_SET(Name) Intrinsics::k##Name,
+      UNIMPLEMENTED_INTRINSIC_LIST_X86(ADD_TO_SET)
+#undef ADD_TO_SET
+  };
+  return unimplemented_intrinsics;
 }
 
 #undef __

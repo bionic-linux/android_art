@@ -1510,6 +1510,7 @@ CodeGeneratorX86_64::CodeGeneratorX86_64(HGraph* graph,
                     ComputeRegisterMask(reinterpret_cast<const int*>(kFpuCalleeSaves),
                                         arraysize(kFpuCalleeSaves)),
                     compiler_options,
+                    ReturnUnimplementedIntrinsics(),
                     stats),
       block_labels_(nullptr),
       location_builder_(graph, this),
@@ -8220,6 +8221,15 @@ bool InstructionCodeGeneratorX86_64::CpuHasAvxFeatureFlag() {
 
 bool InstructionCodeGeneratorX86_64::CpuHasAvx2FeatureFlag() {
   return codegen_->GetInstructionSetFeatures().HasAVX2();
+}
+
+const std::unordered_set<Intrinsics> CodeGeneratorX86_64::ReturnUnimplementedIntrinsics() const {
+  const std::unordered_set<Intrinsics> unimplemented_intrinsics = {
+#define ADD_TO_SET(Name) Intrinsics::k##Name,
+      UNIMPLEMENTED_INTRINSIC_LIST_X86_64(ADD_TO_SET)
+#undef ADD_TO_SET
+  };
+  return unimplemented_intrinsics;
 }
 
 #undef __
