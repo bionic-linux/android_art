@@ -304,6 +304,9 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   // Returns whether we should split long moves in parallel moves.
   virtual bool ShouldSplitLongMoves() const { return false; }
 
+  // Returns true if `invoke` is an implemented intrinsic in this codegen's arch.
+  virtual bool IsImplementedIntrinsic(HInvoke* invoke) const = 0;
+
   size_t GetNumberOfCoreCalleeSaveRegisters() const {
     return POPCOUNT(core_callee_save_mask_);
   }

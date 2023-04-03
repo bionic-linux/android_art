@@ -17,6 +17,7 @@
 #ifndef ART_COMPILER_OPTIMIZING_CODE_GENERATOR_ARM_VIXL_H_
 #define ART_COMPILER_OPTIMIZING_CODE_GENERATOR_ARM_VIXL_H_
 
+#include "base/array_ref.h"
 #include "base/enums.h"
 #include "base/macros.h"
 #include "class_root.h"
@@ -25,6 +26,7 @@
 #include "dex/string_reference.h"
 #include "dex/type_reference.h"
 #include "driver/compiler_options.h"
+#include "intrinsics_enum.h"
 #include "nodes.h"
 #include "parallel_move_resolver.h"
 #include "utils/arm/assembler_arm_vixl.h"
@@ -118,6 +120,89 @@ class CodeGeneratorARMVIXL;
 
 using VIXLInt32Literal = vixl::aarch32::Literal<int32_t>;
 using VIXLUInt32Literal = vixl::aarch32::Literal<uint32_t>;
+
+#define UNIMPLEMENTED_INTRINSIC_LIST_ARM(V)                                \
+  V(MathRoundDouble) /* Could be done by changing rounding mode, maybe? */ \
+  V(UnsafeCASLong)   /* High register pressure */                          \
+  V(SystemArrayCopyChar)                                                   \
+  V(LongDivideUnsigned)                                                    \
+  V(CRC32Update)                                                           \
+  V(CRC32UpdateBytes)                                                      \
+  V(CRC32UpdateByteBuffer)                                                 \
+  V(FP16ToFloat)                                                           \
+  V(FP16ToHalf)                                                            \
+  V(FP16Floor)                                                             \
+  V(FP16Ceil)                                                              \
+  V(FP16Rint)                                                              \
+  V(FP16Greater)                                                           \
+  V(FP16GreaterEquals)                                                     \
+  V(FP16Less)                                                              \
+  V(FP16LessEquals)                                                        \
+  V(FP16Compare)                                                           \
+  V(FP16Min)                                                               \
+  V(FP16Max)                                                               \
+  V(MathMultiplyHigh)                                                      \
+  V(StringStringIndexOf)                                                   \
+  V(StringStringIndexOfAfter)                                              \
+  V(StringBufferAppend)                                                    \
+  V(StringBufferLength)                                                    \
+  V(StringBufferToString)                                                  \
+  V(StringBuilderAppendObject)                                             \
+  V(StringBuilderAppendString)                                             \
+  V(StringBuilderAppendCharSequence)                                       \
+  V(StringBuilderAppendCharArray)                                          \
+  V(StringBuilderAppendBoolean)                                            \
+  V(StringBuilderAppendChar)                                               \
+  V(StringBuilderAppendInt)                                                \
+  V(StringBuilderAppendLong)                                               \
+  V(StringBuilderAppendFloat)                                              \
+  V(StringBuilderAppendDouble)                                             \
+  V(StringBuilderLength)                                                   \
+  V(StringBuilderToString)                                                 \
+  V(SystemArrayCopyByte)                                                   \
+  V(SystemArrayCopyInt)                                                    \
+  /* 1.8 */                                                                \
+  V(MathFmaDouble)                                                         \
+  V(MathFmaFloat)                                                          \
+  V(UnsafeGetAndAddInt)                                                    \
+  V(UnsafeGetAndAddLong)                                                   \
+  V(UnsafeGetAndSetInt)                                                    \
+  V(UnsafeGetAndSetLong)                                                   \
+  V(UnsafeGetAndSetObject)                                                 \
+  V(MethodHandleInvokeExact)                                               \
+  V(MethodHandleInvoke)                                                    \
+  /* OpenJDK 11 */                                                         \
+  V(JdkUnsafeCASLong) /* High register pressure */                         \
+  V(JdkUnsafeGetAndAddInt)                                                 \
+  V(JdkUnsafeGetAndAddLong)                                                \
+  V(JdkUnsafeGetAndSetInt)                                                 \
+  V(JdkUnsafeGetAndSetLong)                                                \
+  V(JdkUnsafeGetAndSetObject)                                              \
+  V(JdkUnsafeCompareAndSetLong)
+
+// Mark which intrinsics we don't have handcrafted code for.
+template <Intrinsics T>
+struct IsUnimplemented {
+  bool is_unimplemented = false;
+};
+
+#define TRUE_OVERRIDE(Name)                     \
+  template <>                                   \
+  struct IsUnimplemented<Intrinsics::k##Name> { \
+    bool is_unimplemented = true;               \
+  };
+UNIMPLEMENTED_INTRINSIC_LIST_ARM(TRUE_OVERRIDE)
+#undef TRUE_OVERRIDE
+
+#include "intrinsics_list.h"
+static constexpr bool kIsIntrinsicUnimplemented[] = {
+  false,  // kNone
+#define IS_UNIMPLEMENTED(Intrinsic, ...) \
+  IsUnimplemented<Intrinsics::k##Intrinsic>().is_unimplemented,
+  INTRINSICS_LIST(IS_UNIMPLEMENTED)
+#undef IS_UNIMPLEMENTED
+};
+#undef INTRINSICS_LIST
 
 class JumpTableARMVIXL : public DeletableArenaObject<kArenaAllocSwitchTable> {
  public:
@@ -565,6 +650,12 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
 
   bool NeedsTwoRegisters(DataType::Type type) const override {
     return type == DataType::Type::kFloat64 || type == DataType::Type::kInt64;
+  }
+
+  bool IsImplementedIntrinsic(HInvoke* invoke) const override {
+    return invoke->IsIntrinsic() &&
+           !ArrayRef<const bool>(
+               kIsIntrinsicUnimplemented)[static_cast<size_t>(invoke->GetIntrinsic())];
   }
 
   void ComputeSpillMask() override;
