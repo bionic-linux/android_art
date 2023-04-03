@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b7f9d1_174c76c3",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10267,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T12:33:50Z",
+      "side": 1,
+      "message": "This looks very inefficient. I\u0027d prefer a simple `const bool[]` in the `.rodata` section.\n\nWe could construct a `const bool CodeGenerator\u003cARCH\u003e::kIsUnimplementedIntrinsic[]` indexed by the `Intrinsics` value and wrap it in an `ArrayRef\u003c\u003e` for debug build bounds checking. If we define a template struct with default `value \u003d false` and explicit specializations with `value \u003d true` for the list of unimplemented intrinsics, we can generate the array using the `INTRINSICS_LIST`.\n\n(See also `HInstruction::Is##type()` for abstract `type` where we have `kLastInstructionKind` for bounds checks and `std::is_base_of\u003cBaseType, H##type\u003e::value` instead of a custom template with specializations.)",
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1dc100_ced25715",
+        "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T12:33:50Z",
+      "side": 1,
+      "message": "We should implement these intrinics and that would invalidate this test.",
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99c2ac9_b4289daa",
+        "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T12:33:50Z",
+      "side": 1,
+      "message": "on host",
+      "range": {
+        "startLine": 55,
+        "startChar": 74,
+        "endLine": 55,
+        "endChar": 87
+      },
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
