@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79fee254_b7b53237",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T15:35:31Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of virtual calls either, they are opaque thus preventing further optimizations (and they tax the branch predictor). If we pass the `ArrayRef\u003c\u003e` to the constructor, the implementation shall be faster and inlineable.",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 308,
+        "endChar": 65
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cfa0b84_c4b25905",
         "filename": "compiler/optimizing/code_generator_arm_vixl.h",
         "patchSetId": 7
@@ -43,6 +66,69 @@
         "startChar": 0,
         "endLine": 202,
         "endChar": 86
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd706c46_c665a6cc",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T15:35:31Z",
+      "side": 1,
+      "message": "Move the `IsUnimplemented\u003c\u003e` to the .cc file, maybe inside a `detail` or anonymous namespace.",
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378c947f_7a5609de",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T15:35:31Z",
+      "side": 1,
+      "message": "With the exception of destructors, there is not much point to providing virtual functions in the .h file as they cannot really be inlined across virtual dispatch anyway.\n\nBut I\u0027d rather not have the virtual call at all, see the comment in `code_generator.h`.",
+      "range": {
+        "startLine": 655,
+        "startChar": 7,
+        "endLine": 655,
+        "endChar": 29
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8914fab8_94b83123",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T15:35:31Z",
+      "side": 1,
+      "message": "This is technically unnecessary and could be replaced by a `DCHECK()`.",
+      "range": {
+        "startLine": 656,
+        "startChar": 11,
+        "endLine": 656,
+        "endChar": 32
       },
       "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"

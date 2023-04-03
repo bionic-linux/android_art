@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05b4c69_50f815e7",
+        "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T15:35:31Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1fb4f6c5_32320c17",
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a99c2ac9_b4289daa",
