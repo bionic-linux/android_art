@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd019e8_1a5b1691",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T16:58:39Z",
+      "side": 1,
+      "message": "Ack, done.",
+      "parentUuid": "79fee254_b7b53237",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 308,
+        "endChar": 65
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cfa0b84_c4b25905",
@@ -88,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3e11ab_04bfdeef",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T16:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd706c46_c665a6cc",
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "378c947f_7a5609de",
@@ -111,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece604e8_c823da4b",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T16:58:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378c947f_7a5609de",
+      "range": {
+        "startLine": 655,
+        "startChar": 7,
+        "endLine": 655,
+        "endChar": 29
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8914fab8_94b83123",
@@ -124,6 +190,30 @@
       "writtenOn": "2023-04-03T15:35:31Z",
       "side": 1,
       "message": "This is technically unnecessary and could be replaced by a `DCHECK()`.",
+      "range": {
+        "startLine": 656,
+        "startChar": 11,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d27211f4_834c21cb",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T16:58:39Z",
+      "side": 1,
+      "message": "It is not unnecessary. In the inliner we ask `is this invoke an implemented intrinsic?` There\u0027s no requirement in `IsImplementedIntrinsic` that the `invoke` parameter is an intrinsic.\n\nWe can change it and shift the responsibility to the caller. If we do that, we can make the parameter be of type `Intrinsics`.",
+      "parentUuid": "8914fab8_94b83123",
       "range": {
         "startLine": 656,
         "startChar": 11,
