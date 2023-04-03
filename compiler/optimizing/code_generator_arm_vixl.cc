@@ -20,6 +20,7 @@
 #include "arch/arm/instruction_set_features_arm.h"
 #include "arch/arm/jni_frame_arm.h"
 #include "art_method-inl.h"
+#include "base/array_ref.h"
 #include "base/bit_utils.h"
 #include "base/bit_utils_iterator.h"
 #include "class_root-inl.h"
@@ -1907,6 +1908,33 @@ vixl32::Label* CodeGeneratorARMVIXL::GetFinalLabel(HInstruction* instruction,
   return final_label;
 }
 
+namespace UnimplementedIntrinsics {
+// Mark which intrinsics we don't have handcrafted code for.
+template <Intrinsics T>
+struct IsUnimplemented {
+  bool is_unimplemented = false;
+};
+
+#define TRUE_OVERRIDE(Name)                     \
+  template <>                                   \
+  struct IsUnimplemented<Intrinsics::k##Name> { \
+    bool is_unimplemented = true;               \
+  };
+UNIMPLEMENTED_INTRINSIC_LIST_ARM(TRUE_OVERRIDE)
+#undef TRUE_OVERRIDE
+
+#include "intrinsics_list.h"
+static constexpr bool kIsUnimplemented[] = {
+  false,  // kNone
+#define IS_UNIMPLEMENTED(Intrinsic, ...) \
+  IsUnimplemented<Intrinsics::k##Intrinsic>().is_unimplemented,
+  INTRINSICS_LIST(IS_UNIMPLEMENTED)
+#undef IS_UNIMPLEMENTED
+};
+#undef INTRINSICS_LIST
+
+}  // namespace UnimplementedIntrinsics
+
 CodeGeneratorARMVIXL::CodeGeneratorARMVIXL(HGraph* graph,
                                            const CompilerOptions& compiler_options,
                                            OptimizingCompilerStats* stats)
@@ -1917,7 +1945,8 @@ CodeGeneratorARMVIXL::CodeGeneratorARMVIXL(HGraph* graph,
                     kCoreCalleeSaves.GetList(),
                     ComputeSRegisterListMask(kFpuCalleeSaves),
                     compiler_options,
-                    stats),
+                    stats,
+                    ArrayRef<const bool>(UnimplementedIntrinsics::kIsUnimplemented)),
       block_labels_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       jump_tables_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       location_builder_(graph, this),
