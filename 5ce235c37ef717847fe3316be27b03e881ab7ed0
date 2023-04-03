@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01a46b0_75d3f44a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-03T13:52:11Z",
+      "side": 1,
+      "message": "Awesome! I can imagine that this effort requires a lot of diligence and patience. Thank you for improving the product excellence of ART, Stefano!",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3e9fdf_f9a7c2b3",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-03T13:52:11Z",
+      "side": 1,
+      "message": "I remember that clang-format and cpplint have different ideas on whether there should be a space before braces, which is annoying. Are you excluding `whitespace/braces` because of that?",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74df1f9b_df0404f6",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-03T13:52:11Z",
+      "side": 1,
+      "message": "Not sure what this \"+\" is supposed to mean, but okay to keep it, as it\u0027s out of the scope of this CL",
+      "range": {
+        "startLine": 2231,
+        "startChar": 29,
+        "endLine": 2231,
+        "endChar": 30
+      },
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0a7531_b741acb6",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-03T13:52:11Z",
+      "side": 1,
+      "message": "This should be wrapped in quotes, not angle brackets, and it should be part of the large group below. However, fixing #include is out of the scope of this CL. It\u0027s up to you whether you want to fix it or leave it as is.",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 42
+      },
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635be3b9_68df52b4",
+        "filename": "runtime/oat_file_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-03T13:52:11Z",
+      "side": 1,
+      "message": "Ditto. Up to you.",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
