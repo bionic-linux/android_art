@@ -22,6 +22,92 @@
       },
       "revId": "70098e71783691362a55d24b8bdcfb2465381bc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f488b2_47ad9497",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T13:02:19Z",
+      "side": 1,
+      "message": "Add `DCHECK(inst-\u003eIsStringLength());` to the then-block.",
+      "revId": "70098e71783691362a55d24b8bdcfb2465381bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59598c6_f3778f14",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T13:02:19Z",
+      "side": 1,
+      "message": "Maybe `string_id` or `sid`?",
+      "range": {
+        "startLine": 275,
+        "startChar": 25,
+        "endLine": 275,
+        "endChar": 27
+      },
+      "revId": "70098e71783691362a55d24b8bdcfb2465381bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ce1f95_f4f8aa14",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T13:02:19Z",
+      "side": 1,
+      "message": "We could drop this condition and simplify for arbitrary length (but we would need to make sure that we do not lose some BCE optimizations), so it makes sense to keep this in `InstructionSimplifier`.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 4,
+        "endLine": 1130,
+        "endChar": 31
+      },
+      "revId": "70098e71783691362a55d24b8bdcfb2465381bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b1cec3_47e8b359",
+        "filename": "test/2047-checker-const-string-length/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-03T13:02:19Z",
+      "side": 1,
+      "message": "If \"ABCD\" makes it to libcore, this test shall break. Maybe we should use something more unique, such as the name of this test.",
+      "range": {
+        "startLine": 88,
+        "startChar": 22,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "70098e71783691362a55d24b8bdcfb2465381bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
