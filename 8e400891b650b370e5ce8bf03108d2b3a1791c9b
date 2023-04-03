@@ -22,6 +22,30 @@
       },
       "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bf24a6_698aa311",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T15:27:40Z",
+      "side": 1,
+      "message": "Ah sorry, clang-format did it and I didn\u0027t correct it.",
+      "parentUuid": "3cfa0b84_c4b25905",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 86
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
