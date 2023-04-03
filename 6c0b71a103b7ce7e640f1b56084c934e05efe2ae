@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c408b4_34a00405",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10267,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T15:14:34Z",
+      "side": 1,
+      "message": "Ack, updated to use a constexpr bool array. It is defined as `kIsIntrinsicUnimplemented` for each arch in `compiler/optimizing/code_generator_\u003carch\u003e.h`.",
+      "parentUuid": "00b7f9d1_174c76c3",
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf1dc100_ced25715",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fb4f6c5_32320c17",
+        "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T15:14:34Z",
+      "side": 1,
+      "message": "When that happens, we can update the test to use another intrinsic. Unless we have plans to make that implementation in the near future, I\u0027d be in favour of leaving the test as-is.\n\nWe would have the same issue with whichever intrinsic we choose.",
+      "parentUuid": "cf1dc100_ced25715",
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a99c2ac9_b4289daa",
         "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
         "patchSetId": 6
@@ -48,6 +84,30 @@
       "writtenOn": "2023-04-03T12:33:50Z",
       "side": 1,
       "message": "on host",
+      "range": {
+        "startLine": 55,
+        "startChar": 74,
+        "endLine": 55,
+        "endChar": 87
+      },
+      "revId": "6c0b71a103b7ce7e640f1b56084c934e05efe2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a139bda1_3a2e168a",
+        "filename": "test/2260-checker-inline-unimplemented-intrinsics/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-03T15:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a99c2ac9_b4289daa",
       "range": {
         "startLine": 55,
         "startChar": 74,
