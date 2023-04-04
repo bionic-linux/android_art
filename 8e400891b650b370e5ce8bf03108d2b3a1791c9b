@@ -222,6 +222,30 @@
       },
       "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f687866a_c1b95def",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-04-04T07:25:11Z",
+      "side": 1,
+      "message": "I got the `kIsIntrinsicUnimplemented[Intrinsics::kNone]` wrong. We would have to change it to `true` to get the correct result for `IsImplementedIntrinsic()` without the `invoke-\u003eIsIntrinsic()` check.\n\nBut feel free to keep the explicit check.",
+      "parentUuid": "d27211f4_834c21cb",
+      "range": {
+        "startLine": 656,
+        "startChar": 11,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
