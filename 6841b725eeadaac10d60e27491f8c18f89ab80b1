@@ -22,6 +22,30 @@
       },
       "revId": "6841b725eeadaac10d60e27491f8c18f89ab80b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5103571d_a488950d",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1910,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-04T09:19:07Z",
+      "side": 1,
+      "message": "Updated to `detail`.",
+      "parentUuid": "96ade401_631ccaa8",
+      "range": {
+        "startLine": 1910,
+        "startChar": 10,
+        "endLine": 1910,
+        "endChar": 33
+      },
+      "revId": "6841b725eeadaac10d60e27491f8c18f89ab80b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -246,6 +246,30 @@
       },
       "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465ac504_2907d143",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-04-04T09:19:07Z",
+      "side": 1,
+      "message": "I think `IsImplementedIntrinsic` (and `IsUnimplementedIntrinsic` if we would have it) would return `false` for `kNone` as it is a sentinel value and not a true Intrinsic. Then, Implemented/Unimplemented is only the opposite for Intrinsics which are not `kNone`.\n\nBy asking `IsIntrinsic()`, we get rid of that ambiguity and we can use the boolean operators.",
+      "parentUuid": "f687866a_c1b95def",
+      "range": {
+        "startLine": 656,
+        "startChar": 11,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "8e400891b650b370e5ce8bf03108d2b3a1791c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
