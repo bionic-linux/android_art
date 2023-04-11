@@ -16,6 +16,24 @@
       "message": "There are a lot of formatting changes on lines that don\u0027t have any other changes. Did you run clang-format on the whole file? If so, for the future I suggest `git clang-format` that runs it only on the lines that change anyway.",
       "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e76bfe_5e738133",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-04-11T11:07:10Z",
+      "side": 1,
+      "message": "I have ran clang-format as part of the pre-upload hooks, and I believe that runs on the full files there are changed in the CL, yes.",
+      "parentUuid": "39b099f4_a312649b",
+      "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [

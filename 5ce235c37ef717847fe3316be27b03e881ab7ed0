@@ -91,6 +91,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a17c18bd_d9f8e0bb",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-04-11T11:07:10Z",
+      "side": 1,
+      "message": "We can fix this in .clang-format, yes - do you like CPPLINT\u0027s approach more?",
+      "parentUuid": "4d53421c_722f3fd8",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74df1f9b_df0404f6",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 1
