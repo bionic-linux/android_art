@@ -109,6 +109,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5566aee5_325c4b7f",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-04-11T17:12:05Z",
+      "side": 1,
+      "message": "I really don\u0027t have an opinion on the format itself - all I care about is that the tools are consistent and agree with each other. I suggested changing .clang-format just because I don\u0027t know how the cpplint style is configured.",
+      "parentUuid": "a17c18bd_d9f8e0bb",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74df1f9b_df0404f6",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 1

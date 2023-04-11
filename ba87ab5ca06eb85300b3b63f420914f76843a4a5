@@ -34,6 +34,24 @@
       "parentUuid": "39b099f4_a312649b",
       "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d80a64_af4e1d15",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-04-11T17:12:05Z",
+      "side": 1,
+      "message": "Are you saying that a `git clang-format` of only the changed lines made the CL fail in the preupload hooks? I\u0027ve never seen that, but if that\u0027s the case I think we\u0027ll have to loosen up the preupload hooks. We shouldn\u0027t require files to be reformatted from head to toe.",
+      "parentUuid": "c4e76bfe_5e738133",
+      "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
