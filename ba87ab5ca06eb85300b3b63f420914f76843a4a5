@@ -70,6 +70,24 @@
       "parentUuid": "c6d80a64_af4e1d15",
       "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5272b65f_d3e29b72",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-04-12T14:03:13Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m not sure what happened there. I recall the upload hook reformatter only touched already changed lines for me, but I could be wrong.",
+      "parentUuid": "9a45816d_5f376382",
+      "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [

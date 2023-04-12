@@ -145,6 +145,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3fe4aac6_bbf637c2",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-04-12T14:03:13Z",
+      "side": 1,
+      "message": "It\u0027s the [same thing](go/cstyle#Braced_Initializer_List_Format) in the internal official C++ style guide, so that\u0027s the blessed way.\n\nThanks.",
+      "parentUuid": "b2618cd0_8c854e72",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74df1f9b_df0404f6",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 1
