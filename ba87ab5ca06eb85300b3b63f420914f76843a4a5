@@ -88,6 +88,24 @@
       "parentUuid": "9a45816d_5f376382",
       "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6ea288_3e84244b",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-04-12T14:11:05Z",
+      "side": 1,
+      "message": "I have noticed that clang-format did _not_ format some files in their entirety (e.g., `libartbase/base/file_utils_test.cc`, you can see from the diff in this CL that line 197/196 has not been formatted while line 198/197 has been formatted), so I\u0027m starting to think that clang-format runs only on the blocks of code modified in the CL, and possibly some of the formatted files have been changed involuntarily (e.g., my text editor automatically converted spaces/tabs or long lines).",
+      "parentUuid": "5272b65f_d3e29b72",
+      "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
