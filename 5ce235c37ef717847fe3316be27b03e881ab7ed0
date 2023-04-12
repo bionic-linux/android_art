@@ -127,6 +127,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b2618cd0_8c854e72",
+        "filename": "CPPLINT.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-04-12T07:41:21Z",
+      "side": 1,
+      "message": "Effectively I couldn\u0027t find any docs for CPPLINT\u0027s configuration file format, but I have found the list of filters directly in the source code: https://github.com/cpplint/cpplint/blob/develop/cpplint.py#L292-L362.\n\nI\u0027m happy to change the clang-format config file instead if we can agree that `std::string{kAndroidI18nApexDefaultPath};` is the style we want to go for (which indeed seems to be according to https://google.github.io/styleguide/cppguide.html#Braced_Initializer_List_Format).",
+      "parentUuid": "5566aee5_325c4b7f",
+      "revId": "5ce235c37ef717847fe3316be27b03e881ab7ed0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74df1f9b_df0404f6",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 1

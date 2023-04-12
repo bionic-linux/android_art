@@ -52,6 +52,24 @@
       "parentUuid": "c4e76bfe_5e738133",
       "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a45816d_5f376382",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-04-12T07:41:21Z",
+      "side": 1,
+      "message": "I haven\u0027t ran `git clang-format` at any point while working on this CL, but `clang-format` ran as part of the pre-upload hooks, and it formatted all the files I had changed in their entirety (rather than only the lines I have changed).",
+      "parentUuid": "c6d80a64_af4e1d15",
+      "revId": "ba87ab5ca06eb85300b3b63f420914f76843a4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
