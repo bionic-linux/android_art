@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd5507d_c9c622aa",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-04-14T16:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de570a80_d4e92a00",
+      "revId": "2f60bb431395ff6924558068d7ed120e39f23988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb01a7a0_15df9d9d",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-04-14T13:40:32Z",
       "side": 1,
       "message": "There\u0027s not a lot of context here. Please add a rationale. Is this a temporary fix? Why does the .so below need to be loadable from Java? What happens if it\u0027s not blocked from loading on non-aarch64? Wouldn\u0027t dlopen just fail a bit later instead?",
+      "revId": "2f60bb431395ff6924558068d7ed120e39f23988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a9503f_68c1fa7c",
+        "filename": "libnativeloader/public_libraries.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-04-14T16:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb01a7a0_15df9d9d",
       "revId": "2f60bb431395ff6924558068d7ed120e39f23988",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
