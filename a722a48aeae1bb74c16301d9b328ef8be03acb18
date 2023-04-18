@@ -16,6 +16,253 @@
       "message": "Started using these, but then realized perhaps good to review before going further.",
       "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4e264f_db40089a",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Not after aosp/2535780 which moved shadow stack register from S2 to GP.",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb7a5fd_7c0afa5c",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Is this Nterp convention? We can use FP as long as we choose some other register for frame pointer, it\u0027s not that fixed-purpose. We do not always need frame pointer (not in all the stubs I worked on). Unless it\u0027s a stric Nterp convention, I would mention that FP is used as a frame pointer sometimes, but is generally available as a callee-saved register.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90978cc_3734f26e",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Same here (move the shadow stack comment to GP, but also note that it is platform-specific and unallocatable anyway).",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261c7a91_fb37f076",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31959d9_923441ee",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "ft11",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80ccd32_150d4739",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "fa7",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977a9b47_c608265f",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "fs11",
+      "range": {
+        "startLine": 47,
+        "startChar": 23,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdef7b9_637c48f6",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "I wonder how it will play with the lack of marking register in generic JNI trampoline and other stubs I worked on. As far as I understand, MR is an optimization, but all Nterp implementations so far use it. Can Nterp work with a marking register, while the other code doesn\u0027t have it? This needs to be clarified with ngeoffray@, vmarko@ and lokeshgidra@. I CC\u0027ed you on a thread where I previously discussed these things.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9896ff_53680465",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Same concern about suspend checks, I don\u0027t support them in the so-far ported stubs.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa43c28d_775c7885",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "Do you need them? Why not just use t0-t_6 (I had to use underscore or else gerrit won\u0027t let me post this comment)? I believe scratch registers are somewhat of the ARM terminology.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb03e3c_d3731afc",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:41:55Z",
+      "side": 1,
+      "message": "I see S3 is used as frame pointer not S0, right?",
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
