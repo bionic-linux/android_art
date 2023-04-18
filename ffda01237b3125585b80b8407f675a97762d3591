@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "517a7952_8ffcbba2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:21:50Z",
+      "side": 1,
+      "message": "Nit: great to have more information than less, but for this type of change (build-only), you can drop the verbose test description and just say that `lunch aosp_riscv64-userdebug \u0026\u0026 m` (or `art/tools/buildbot-build.sh --target` instead of `m`).",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 72
+      },
+      "revId": "ffda01237b3125585b80b8407f675a97762d3591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe7e96d_7e1ed3a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:21:50Z",
+      "side": 1,
+      "message": "Thanks! I had to split them only half a year ago, it\u0027s nice to see the mess cleaned up.",
+      "revId": "ffda01237b3125585b80b8407f675a97762d3591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
