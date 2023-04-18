@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7462b978_4782b93b",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5f4e264f_db40089a",
+      "range": {
+        "startLine": 33,
+        "startChar": 48,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcb7a5fd_7c0afa5c",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-04-18T10:41:55Z",
       "side": 1,
       "message": "Is this Nterp convention? We can use FP as long as we choose some other register for frame pointer, it\u0027s not that fixed-purpose. We do not always need frame pointer (not in all the stubs I worked on). Unless it\u0027s a stric Nterp convention, I would mention that FP is used as a frame pointer sometimes, but is generally available as a callee-saved register.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b1697e_45a57083",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "That was subtle, thank you.",
+      "parentUuid": "fcb7a5fd_7c0afa5c",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d56ae267_61d0c41e",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "what do you mean by \"unallocatable\"? not familiar with it to say more about it.",
+      "parentUuid": "d90978cc_3734f26e",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "261c7a91_fb37f076",
         "filename": "runtime/interpreter/mterp/riscv64/main.S",
         "patchSetId": 1
@@ -100,6 +172,30 @@
       "writtenOn": "2023-04-18T10:41:55Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3a7797_2b087b65",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "261c7a91_fb37f076",
       "range": {
         "startLine": 41,
         "startChar": 32,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b67010d_aa25de19",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d31959d9_923441ee",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b80ccd32_150d4739",
@@ -146,6 +266,30 @@
       "writtenOn": "2023-04-18T10:41:55Z",
       "side": 1,
       "message": "fa7",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b7c8ad_e3e950f6",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b80ccd32_150d4739",
       "range": {
         "startLine": 45,
         "startChar": 20,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b27477_2aa51d1f",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "977a9b47_c608265f",
+      "range": {
+        "startLine": 47,
+        "startChar": 23,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfdef7b9_637c48f6",
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4952b8_0b3c7919",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Got it. Discussion concluded that it\u0027s easier to drop for now.",
+      "parentUuid": "dfdef7b9_637c48f6",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9896ff_53680465",
@@ -215,6 +407,30 @@
       "writtenOn": "2023-04-18T10:41:55Z",
       "side": 1,
       "message": "Same concern about suspend checks, I don\u0027t support them in the so-far ported stubs.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 43
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "575582bd_b776f78d",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5f9896ff_53680465",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -261,6 +477,48 @@
       "writtenOn": "2023-04-18T10:41:55Z",
       "side": 1,
       "message": "I see S3 is used as frame pointer not S0, right?",
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbee6e4e_fde9bbc9",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "s3 as the interpreted fp, and s0 as the native fp if needed. SG?",
+      "parentUuid": "3bb03e3c_d3731afc",
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14127d67_0b70f475",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-18T21:28:54Z",
+      "side": 1,
+      "message": "Ahhh okay. That added context helps.",
+      "parentUuid": "aa43c28d_775c7885",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 38
+      },
       "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
