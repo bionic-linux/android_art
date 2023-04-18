@@ -22,6 +22,30 @@
       },
       "revId": "8c4c8ecfbad964b54edc0c000eec599601dd52a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3bc6841_323a78bf",
+        "filename": "runtime/interpreter/mterp/arm64ng/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-18T10:11:51Z",
+      "side": 1,
+      "message": "If `.long` is 4 bytes, can we use `.4byte` instead for clarity?",
+      "parentUuid": "4ebc505e_5b97fff9",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 23
+      },
+      "revId": "8c4c8ecfbad964b54edc0c000eec599601dd52a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
