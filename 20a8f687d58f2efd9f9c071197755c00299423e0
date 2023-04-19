@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c819cc_71cd8af5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-19T10:30:46Z",
+      "side": 1,
+      "message": "Can you please CC vmarko@ on any non-trivial patches from now on? He\u0027s OOO at the moment but he may provide valuable comments after he\u0027s back from vacation (or just be aware of your your work to keep us all on the same page).",
+      "revId": "20a8f687d58f2efd9f9c071197755c00299423e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

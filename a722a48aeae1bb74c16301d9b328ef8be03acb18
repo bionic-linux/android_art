@@ -159,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96063794_1011586f",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-19T10:30:46Z",
+      "side": 1,
+      "message": "It just means that this register cannot (should not) be allocated for any general-purpose use, since GP is a platform-specific register. I got this word from some riscv documentation, I don\u0027t remember where exactly. No need to use it here.",
+      "parentUuid": "d56ae267_61d0c41e",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261c7a91_fb37f076",
@@ -519,6 +543,24 @@
         "endLine": 61,
         "endChar": 38
       },
+      "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39b5bc8_9a14000a",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-04-19T10:30:46Z",
+      "side": 1,
+      "message": "Sure, thanks for pointing out the difference.",
+      "parentUuid": "dbee6e4e_fde9bbc9",
       "revId": "a722a48aeae1bb74c16301d9b328ef8be03acb18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
