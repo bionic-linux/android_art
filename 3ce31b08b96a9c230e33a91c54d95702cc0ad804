@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae139b13_c4a9d01f",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-19T12:09:08Z",
+      "side": 1,
+      "message": "Can you replace this (and the one next line) with `positive`?",
+      "range": {
+        "startLine": 1544,
+        "startChar": 53,
+        "endLine": 1544,
+        "endChar": 56
+      },
+      "revId": "3ce31b08b96a9c230e33a91c54d95702cc0ad804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
