@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28a63a8_885da4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-04-19T02:01:54Z",
+      "side": 1,
+      "message": "Yes, this primarily cleans up the app startup case so frequency wise it only targets these cases.\n\nI am not clear which particular change you are referring to but as you said this is a good clean and correct way here.",
+      "parentUuid": "4ee0303b_0af66365",
+      "revId": "9b3f14d9d0a90ae56501c844ffebe88df6267356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f642350_659e0c73",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354b307b_20de5800",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-04-19T02:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f642350_659e0c73",
+      "range": {
+        "startLine": 1545,
+        "startChar": 48,
+        "endLine": 1545,
+        "endChar": 53
+      },
+      "revId": "9b3f14d9d0a90ae56501c844ffebe88df6267356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d28ad8_9a912c32",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-04-19T00:04:09Z",
       "side": 1,
       "message": "Ideally we should probably be using the GC number at the time we made the request, so that this gets squashed if there was an intervening GC for other reasons. Clearly that doesn\u0027t have to be in this CL.",
+      "range": {
+        "startLine": 1570,
+        "startChar": 62,
+        "endLine": 1570,
+        "endChar": 79
+      },
+      "revId": "9b3f14d9d0a90ae56501c844ffebe88df6267356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b9b4b9_575d9c85",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1651277
+      },
+      "writtenOn": "2023-04-19T02:01:54Z",
+      "side": 1,
+      "message": "I will add this to our discussions for future CLs.",
+      "parentUuid": "c8d28ad8_9a912c32",
       "range": {
         "startLine": 1570,
         "startChar": 62,
