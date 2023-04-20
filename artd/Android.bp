@@ -60,7 +60,7 @@ prebuilt_etc {
     installable: false,
 }
 
-art_cc_defaults {
+cc_defaults {
     name: "art_artd_tests_defaults",
     defaults: ["artd_defaults"],
     srcs: [
