@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95466e22_1304859d",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T15:17:00Z",
+      "side": 1,
+      "message": "As documented in odrefresh.h, `dex2oat_boot_classpath_jars_` is from the `DEX2OATBOOTCLASSPATH` environment variable. I want to keep the naming consistent to avoid confusions.\n\nChange the name of the environment variable is not easy. The environment variable is written by derive_classpath. Changing the name means making changes to the sdkext module, and it can cause compatibility issues.",
+      "parentUuid": "369aec46_445cd201",
+      "range": {
+        "startLine": 840,
+        "startChar": 19,
+        "endLine": 840,
+        "endChar": 47
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d50e4731_b2ff13df",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-21T12:31:24Z",
       "side": 1,
       "message": "Add a `\u003c\u003c` or a comment about what this would mean if it were true.",
+      "range": {
+        "startLine": 917,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 30
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26172819_b76a1db1",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T15:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d50e4731_b2ff13df",
       "range": {
         "startLine": 917,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda4f5fc_81a70b07",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T15:17:00Z",
+      "side": 1,
+      "message": "Added constants.",
+      "parentUuid": "851b4fec_b66da5f7",
+      "range": {
+        "startLine": 1713,
+        "startChar": 24,
+        "endLine": 1713,
+        "endChar": 47
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e549dbea_91f35751",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea8a315_08ad7eec",
+        "filename": "odrefresh/odrefresh.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T15:17:00Z",
+      "side": 1,
+      "message": "This is removed in the next CL. I need it in this CL to disable the logic, as described in the CL description.",
+      "parentUuid": "e549dbea_91f35751",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183f6ec7_56f9c4fb",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-04-21T12:31:24Z",
       "side": 1,
       "message": "Should you include the `InstructionSet` into `BootImages` ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 38
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0dcfc3_5cfade3a",
+        "filename": "odrefresh/odrefresh.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T15:17:00Z",
+      "side": 1,
+      "message": "I can\u0027t. `BootImages` is also used in the next CL for other purposes where ISA is irrelevant.",
+      "parentUuid": "183f6ec7_56f9c4fb",
       "range": {
         "startLine": 58,
         "startChar": 24,
