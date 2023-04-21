@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd551ae0_bc262a45",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T16:03:14Z",
+      "side": 1,
+      "message": "We always return that we want to recompile, even before this change. Then `OdrCompilationLog::ShouldAttemptCompile` will decide whether to recompile or not.",
+      "parentUuid": "c2add07d_b48b1932",
+      "range": {
+        "startLine": 1355,
+        "startChar": 0,
+        "endLine": 1355,
+        "endChar": 6
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7295fc06_2ba75ae6",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-21T15:44:22Z",
       "side": 1,
       "message": "Can this lead to a weird situation of having a /system primary image and /data mainline extension?\n\nAlso returning the opposite would seem very broken, do you want to add a CHECK that this cannot happen?",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1380,
+        "endChar": 90
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc87775f_2cf45e5c",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T16:03:14Z",
+      "side": 1,
+      "message": "Having a /system primary image and a /data mainline extension is not a weird situation. It is expected when a mainline update doesn\u0027t include ART. `OdrefreshFactoryHostTestBase::verifyOtherApexSamegradeUpdateTriggersCompilation` has verified that the runtime is happy to work in this situation.\n\nThe opposite is indeed a broken situation. This code is not possible to return that. There is a `DCHECK_IMPLIES` in `CompileBootClasspath` that asserts it never happens.",
+      "parentUuid": "7295fc06_2ba75ae6",
       "range": {
         "startLine": 1377,
         "startChar": 0,
