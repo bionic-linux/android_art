@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8128d87e_f3f02bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T18:06:35Z",
+      "side": 1,
+      "message": "Nicolas, sorry for sending you so many CLs in a day. This is the last one :)",
+      "revId": "ad908441e75ef811b70b88c45f811c0a3a2d25b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
