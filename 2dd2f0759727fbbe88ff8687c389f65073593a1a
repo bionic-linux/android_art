@@ -93,6 +93,30 @@
       },
       "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f0648c_5f217164",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T16:06:58Z",
+      "side": 1,
+      "message": "Where is the framework extension (from /system) in that logic? Do we expect it to always be here if the primary boot.art is there?",
+      "parentUuid": "cc87775f_2cf45e5c",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1380,
+        "endChar": 90
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
