@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369aec46_445cd201",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T12:31:24Z",
+      "side": 1,
+      "message": "Could we follow-up with a different naming for this?",
+      "range": {
+        "startLine": 840,
+        "startChar": 19,
+        "endLine": 840,
+        "endChar": 47
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50e4731_b2ff13df",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T12:31:24Z",
+      "side": 1,
+      "message": "Add a `\u003c\u003c` or a comment about what this would mean if it were true.",
+      "range": {
+        "startLine": 917,
+        "startChar": 0,
+        "endLine": 917,
+        "endChar": 30
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851b4fec_b66da5f7",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T12:31:24Z",
+      "side": 1,
+      "message": "nit: add a comment about the filter. Worth adding some global `static constexpr std::string kMainlineCompilerFilter, kPrimaryCompilerFilter` at the beginning of the file?",
+      "range": {
+        "startLine": 1713,
+        "startChar": 24,
+        "endLine": 1713,
+        "endChar": 47
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e549dbea_91f35751",
+        "filename": "odrefresh/odrefresh.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T12:31:24Z",
+      "side": 1,
+      "message": "Address this?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183f6ec7_56f9c4fb",
+        "filename": "odrefresh/odrefresh.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T12:31:24Z",
+      "side": 1,
+      "message": "Should you include the `InstructionSet` into `BootImages` ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 38
+      },
+      "revId": "6cf034ca991c5f225ad109e8cf801919b415b242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
