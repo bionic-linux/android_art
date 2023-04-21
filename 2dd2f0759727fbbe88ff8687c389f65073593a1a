@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2add07d_b48b1932",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T15:44:22Z",
+      "side": 1,
+      "message": "Looks like if it\u0027s the minimal boot image, we\u0027ll return that we want to recompile it now, whereas before we\u0027d skip?",
+      "range": {
+        "startLine": 1355,
+        "startChar": 0,
+        "endLine": 1355,
+        "endChar": 6
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7295fc06_2ba75ae6",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-21T15:44:22Z",
+      "side": 1,
+      "message": "Can this lead to a weird situation of having a /system primary image and /data mainline extension?\n\nAlso returning the opposite would seem very broken, do you want to add a CHECK that this cannot happen?",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1380,
+        "endChar": 90
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
