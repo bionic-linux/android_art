@@ -117,6 +117,30 @@
       },
       "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5696cec_b0bdb893",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-21T16:12:04Z",
+      "side": 1,
+      "message": "`PrimaryBootImageExist` on line 1315 checks both the primary boot image and the framework extension. If the framework extension doesn\u0027t exist, we treat it as if the primary boot image doesn\u0027t exist.",
+      "parentUuid": "01f0648c_5f217164",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1380,
+        "endChar": 90
+      },
+      "revId": "2dd2f0759727fbbe88ff8687c389f65073593a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
