@@ -16,6 +16,23 @@
       "message": "Nicolas, sorry for sending you so many CLs in a day. This is the last one :)",
       "revId": "ad908441e75ef811b70b88c45f811c0a3a2d25b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1946a9e9_b0e0fd19",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-24T09:48:27Z",
+      "side": 1,
+      "message": "Why is that not a LOG(FATAL) ? Can you add a comment when you expect this to happen?",
+      "revId": "ad908441e75ef811b70b88c45f811c0a3a2d25b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
