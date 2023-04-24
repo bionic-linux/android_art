@@ -33,6 +33,24 @@
       "message": "Why is that not a LOG(FATAL) ? Can you add a comment when you expect this to happen?",
       "revId": "ad908441e75ef811b70b88c45f811c0a3a2d25b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44a55fd_c32812cf",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-04-24T10:05:51Z",
+      "side": 1,
+      "message": "This cannot happen. Changed to LOG(FATAL).",
+      "parentUuid": "1946a9e9_b0e0fd19",
+      "revId": "ad908441e75ef811b70b88c45f811c0a3a2d25b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
