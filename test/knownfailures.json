@@ -1562,7 +1562,12 @@
     },
     {
         "tests": ["845-data-image", "846-multidex-data-image"],
-        "variant": "debuggable",
+        "variant": "debuggable | trace | stream",
         "description": ["Runtime app images are not supported with debuggable."]
+    },
+    {
+        "tests": ["2246-trace-stream"],
+	"variant": "jit-on-first-use",
+        "description": ["Test failing due to lack of support for intrinsics."]
     }
 ]
