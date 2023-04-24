@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "6ee60a19d8d0e96506654eff5a3411ec13df38b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f9df3b_22af60a9",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-24T09:57:19Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "6ee60a19d8d0e96506654eff5a3411ec13df38b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
