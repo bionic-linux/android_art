@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c76b6a_ce1ee76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-04-25T12:45:13Z",
+      "side": 1,
+      "message": "PTAL. I couldn\u0027t reproduce the NPE locally yet. Just adding more information which might help.",
+      "revId": "a4e1246486eda9689e26eb82d69890a9402c26ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
