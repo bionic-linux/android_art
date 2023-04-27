@@ -51,6 +51,24 @@
       "parentUuid": "166af33b_10ac40a6",
       "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba717106_4551160d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-27T14:41:57Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think it\u0027s a problem with runtime app images. Currently runtime app images don\u0027t have oat code right?\n\nThey don\u0027t, but they will have entrypoints to nterp. Isn\u0027t that a problem too?\n\n\u003e It\u0027s a problem with --speed which generates oat code for all methods\n\nI was assuming we would not load the image in that case. Is the debuggable being set concurrently of image loading?\n\n\u003e Also, when we initialize classes we have FixupStaticTrampolines which re-initializes the entry points.\n\nOnly for static methods, no?",
+      "parentUuid": "12a2691f_f781d1d0",
+      "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
