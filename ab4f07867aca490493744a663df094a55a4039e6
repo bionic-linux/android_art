@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16ec280_f6f61820",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-27T23:33:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068d6e84_6e491774",
+      "revId": "ab4f07867aca490493744a663df094a55a4039e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "812ffcb1_c0da8d16",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-04-27T23:21:08Z",
       "side": 1,
       "message": "This will include 32 bit codegen on arm64only, and that is already an unbundled module architecture (see build/make/target/product/module_arm64only.mk). Maybe necessary to extend the arch target selection in Soong to support it?\n\nHowever, I don\u0027t think this is a regression in this CL. Judging from line 220 in codegen.go we do exactly the same thing and compile 32 bit arm even for arm64only. I also verified that locally:\n\n```\n$ banchan com.android.art arm64only\n$ env NINJA_ARGS\u003d\"-t query out/soong/.intermediates/art/compiler/libart-compiler/android_arm64_armv8-a_shared_apex31/unstripped/libart-compiler.so\" m nothing | grep arm/assembler_arm\n    out/soong/.intermediates/art/compiler/libart-compiler/android_arm64_armv8-a_shared_apex31/obj/art/compiler/utils/arm/assembler_arm_vixl.o\n```\n\n+rpl for thoughts. I think this is an issue we\u0027ll need to tackle separately.",
+      "range": {
+        "startLine": 167,
+        "startChar": 18,
+        "endLine": 167,
+        "endChar": 77
+      },
+      "revId": "ab4f07867aca490493744a663df094a55a4039e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88f6c13_7104babf",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-04-27T23:33:37Z",
+      "side": 1,
+      "message": "yeah I did this because it was already done in the codegen code.\n\nI guess it depends on what you want to do on arm64-only. I would think that arm64-only should only need the 64-bit codegen sources, in which case we can just drop the additions of the 32 bit ones here.\n\nI\u0027m not sure if soong actually has a concept of compiling an individual module for both arm and arm64 though. So if you wanted to actually include both types on arm32+64 devices even though the module itself is only built for arm64, that would be an issue.",
+      "parentUuid": "812ffcb1_c0da8d16",
       "range": {
         "startLine": 167,
         "startChar": 18,
