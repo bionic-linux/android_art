@@ -33,6 +33,24 @@
       "message": "Is that a regression with eg runtime images?",
       "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a2691f_f781d1d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-04-27T14:36:22Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a problem with runtime app images. Currently runtime app images don\u0027t have oat code right?\n\nI noticed this when running tests with --debuggable locally. It\u0027s a problem with --speed which generates oat code for all methods. It\u0027s not a problem with boot images because we explicitly deoptimize boot image in debuggable runtimes. I don\u0027t understand the various images too well :).\n\nI don\u0027t think it\u0027s a recent regression though. Also, when we initialize classes we have FixupStaticTrampolines which re-initializes the entry points. So I guess this shouldn\u0027t be a problem in general? We have a DCHECK that checks we don\u0027t have oat code when updating the entrypoints that fails with the speed profile on multiple jvmti tests.",
+      "parentUuid": "166af33b_10ac40a6",
+      "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
