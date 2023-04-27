@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166af33b_10ac40a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-04-27T14:28:52Z",
+      "side": 1,
+      "message": "Is that a regression with eg runtime images?",
+      "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
