@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "123a61ed_6f4b1336",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-29T00:24:47Z",
+      "side": 1,
+      "message": "Ohh right. Good distinction to make. Done in 2573710",
+      "parentUuid": "4fc0b85a_93aacd78",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "4e4de6457fa7bc10e4dbd575f4b3f3f8338459b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "002ab33d_accdf3c9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-27T09:24:50Z",
       "side": 1,
       "message": "Not a return register for managed ABI: Managed code does not have a type wider than 64 bits.",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "4e4de6457fa7bc10e4dbd575f4b3f3f8338459b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003d8018_6a48f3a4",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-04-29T00:24:47Z",
+      "side": 1,
+      "message": "Should I modify the text to say \"native return: a0, a1\"?",
+      "parentUuid": "002ab33d_accdf3c9",
       "range": {
         "startLine": 38,
         "startChar": 17,
