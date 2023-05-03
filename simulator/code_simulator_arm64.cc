@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "code_simulator_arm64.h"
+#include "code_simulator_aarch64.h"
 
 #include <android-base/logging.h>
 

@@ -59,13 +59,13 @@ include $(art_path)/build/Android.cpplint.mk
 # The art-tools package depends on helpers and tools that are useful for developers. Similar
 # dependencies exist for the APEX builds for these tools (see build/apex/Android.bp).
 
-ifneq ($(HOST_OS),darwin)
+ifneq ($(HOST_OS),)
 include $(CLEAR_VARS)
 LOCAL_MODULE := art-tools
 LOCAL_LICENSE_KINDS := SPDX-license-identifier-Apache-2.0
 LOCAL_LICENSE_CONDITIONS := notice
 LOCAL_NOTICE_FILE := $(LOCAL_PATH)/NOTICE
-LOCAL_IS_HOST_MODULE := true
+LOCAL_IS_HOST_MODULE := false 
 
 ifeq (true,$(my_art_module_source_build))
 
@@ -576,7 +576,7 @@ endef
 #  $ANDROID_BUILD_TOP/prebuilts/build-tools/path/{linux-x86,darwin-x86}
 # which has a non-standard set of command-line flags.
 #
-# TODO(b/129332183): Remove this when Golem has full support for the
+: Remove this when Golem has full support for the
 # ART APEX.
 #
 # TODO(b/129332183): This approach is flawed: We mix DSOs from prebuilt APEXes
