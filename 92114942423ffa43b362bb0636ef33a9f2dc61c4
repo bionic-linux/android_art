@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "92114942423ffa43b362bb0636ef33a9f2dc61c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c459522a_373edfe0",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-04T08:59:42Z",
+      "side": 1,
+      "message": "Not for this CL but we might want an aux method that does the \n```\n  DCHECK_EQ(klass \u003d\u003d nullptr, soa.Self()-\u003eIsExceptionPending());\n  soa.Self()-\u003eClearException();\n```\nin all the places where we have it. Something like `ResolveXXXOrCleanUpException` for XXX in `{Method, Class, Field}`.",
+      "range": {
+        "startLine": 712,
+        "startChar": 34,
+        "endLine": 712,
+        "endChar": 80
+      },
+      "revId": "92114942423ffa43b362bb0636ef33a9f2dc61c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
