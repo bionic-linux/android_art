@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78337756_3084f66e",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-05T14:23:15Z",
+      "side": 1,
+      "message": "The dex_files.empty() is equivalent to oat_file is null.",
+      "parentUuid": "e9dc53e8_70944f0d",
+      "revId": "f8fa09b4d67a87f202868d1764eaf509e37e88f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ece4ce5a_7245258f",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-05-05T13:59:29Z",
       "side": 1,
       "message": "Just curious: what\u0027s our process for deprecating flags like these?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 40
+      },
+      "revId": "f8fa09b4d67a87f202868d1764eaf509e37e88f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30dbedc0_06a84031",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-05T14:23:15Z",
+      "side": 1,
+      "message": "No process really - this option is passed on previous builds, so we\u0027ll have to support it and be a no-op.",
+      "parentUuid": "ece4ce5a_7245258f",
       "range": {
         "startLine": 253,
         "startChar": 0,
