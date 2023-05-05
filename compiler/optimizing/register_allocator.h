@@ -18,9 +18,10 @@
 #define ART_COMPILER_OPTIMIZING_REGISTER_ALLOCATOR_H_
 
 #include "arch/instruction_set.h"
-#include "base/array_ref.h"
 #include "base/arena_object.h"
+#include "base/array_ref.h"
 #include "base/macros.h"
+#include "optimizing/optimizing_compiler_stats.h"
 
 namespace art HIDDEN {
 
@@ -48,7 +49,8 @@ class RegisterAllocator : public DeletableArenaObject<kArenaAllocRegisterAllocat
   static std::unique_ptr<RegisterAllocator> Create(ScopedArenaAllocator* allocator,
                                                    CodeGenerator* codegen,
                                                    const SsaLivenessAnalysis& analysis,
-                                                   Strategy strategy = kRegisterAllocatorDefault);
+                                                   Strategy strategy = kRegisterAllocatorDefault,
+                                                   OptimizingCompilerStats* stats = nullptr);
 
   virtual ~RegisterAllocator();
 

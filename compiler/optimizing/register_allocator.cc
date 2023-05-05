@@ -39,11 +39,12 @@ RegisterAllocator::RegisterAllocator(ScopedArenaAllocator* allocator,
 std::unique_ptr<RegisterAllocator> RegisterAllocator::Create(ScopedArenaAllocator* allocator,
                                                              CodeGenerator* codegen,
                                                              const SsaLivenessAnalysis& analysis,
-                                                             Strategy strategy) {
+                                                             Strategy strategy,
+                                                             OptimizingCompilerStats* stats) {
   switch (strategy) {
     case kRegisterAllocatorLinearScan:
       return std::unique_ptr<RegisterAllocator>(
-          new (allocator) RegisterAllocatorLinearScan(allocator, codegen, analysis));
+          new (allocator) RegisterAllocatorLinearScan(allocator, codegen, analysis, stats));
     case kRegisterAllocatorGraphColor:
       return std::unique_ptr<RegisterAllocator>(
           new (allocator) RegisterAllocatorGraphColor(allocator, codegen, analysis));
