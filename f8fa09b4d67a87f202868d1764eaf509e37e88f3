@@ -16,6 +16,46 @@
       "message": "Thanks Vali, PTAL.",
       "revId": "f8fa09b4d67a87f202868d1764eaf509e37e88f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9dc53e8_70944f0d",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-05T13:59:29Z",
+      "side": 1,
+      "message": "Should we also have `\u0026\u0026 oat_file !\u003d nullptr` here as we had before in line 387? Or is that condition not needed?",
+      "revId": "f8fa09b4d67a87f202868d1764eaf509e37e88f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece4ce5a_7245258f",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-05T13:59:29Z",
+      "side": 1,
+      "message": "Just curious: what\u0027s our process for deprecating flags like these?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 40
+      },
+      "revId": "f8fa09b4d67a87f202868d1764eaf509e37e88f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
