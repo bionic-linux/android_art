@@ -41,7 +41,8 @@ class RegisterAllocatorLinearScan : public RegisterAllocator {
  public:
   RegisterAllocatorLinearScan(ScopedArenaAllocator* allocator,
                               CodeGenerator* codegen,
-                              const SsaLivenessAnalysis& analysis);
+                              const SsaLivenessAnalysis& analysis,
+                              OptimizingCompilerStats* stats = nullptr);
   ~RegisterAllocatorLinearScan() override;
 
   void AllocateRegisters() override;
@@ -192,6 +193,8 @@ class RegisterAllocatorLinearScan : public RegisterAllocator {
 
   // Slots reserved for out arguments.
   size_t reserved_out_slots_;
+
+  OptimizingCompilerStats* stats_;
 
   ART_FRIEND_TEST(RegisterAllocatorTest, FreeUntil);
   ART_FRIEND_TEST(RegisterAllocatorTest, SpillInactive);

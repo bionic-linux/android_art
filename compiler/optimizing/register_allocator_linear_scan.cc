@@ -19,6 +19,7 @@
 #include <iostream>
 #include <sstream>
 
+#include "art_method.h"
 #include "base/bit_vector-inl.h"
 #include "base/enums.h"
 #include "code_generator.h"
@@ -42,7 +43,8 @@ static bool IsLowOfUnalignedPairInterval(LiveInterval* low) {
 
 RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* allocator,
                                                          CodeGenerator* codegen,
-                                                         const SsaLivenessAnalysis& liveness)
+                                                         const SsaLivenessAnalysis& liveness,
+                                                         OptimizingCompilerStats* stats)
       : RegisterAllocator(allocator, codegen, liveness),
         unhandled_core_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
         unhandled_fp_intervals_(allocator->Adapter(kArenaAllocRegisterAllocator)),
@@ -64,7 +66,8 @@ RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* a
         registers_array_(nullptr),
         blocked_core_registers_(codegen->GetBlockedCoreRegisters()),
         blocked_fp_registers_(codegen->GetBlockedFloatingPointRegisters()),
-        reserved_out_slots_(0) {
+        reserved_out_slots_(0),
+        stats_(stats) {
   temp_intervals_.reserve(4);
   int_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
   long_spill_slots_.reserve(kDefaultNumberOfSpillSlots);
@@ -81,7 +84,24 @@ RegisterAllocatorLinearScan::RegisterAllocatorLinearScan(ScopedArenaAllocator* a
   reserved_out_slots_ = ptr_size / kVRegSize + codegen->GetGraph()->GetMaximumNumberOfOutVRegs();
 }
 
-RegisterAllocatorLinearScan::~RegisterAllocatorLinearScan() {}
+RegisterAllocatorLinearScan::~RegisterAllocatorLinearScan() {
+  if (stats_ != nullptr) {
+    ArtMethod* art_method = codegen_->GetGraph()->GetArtMethod();
+    std::string name = art_method == nullptr ? "NO_NAME" : art_method->PrettyMethod();
+    // Logged as error so filtering is easy as it should be the only thing logged like this.
+    LOG(ERROR) << name << "," << int_spill_slots_.size() << "," << long_spill_slots_.size() << ","
+               << float_spill_slots_.size() << "," << double_spill_slots_.size() << ","
+               << catch_phi_spill_slots_ << "," << GetNumberOfSpillSlots();
+
+    // Also record for aggregated stats.
+    MaybeRecordStat(stats_, MethodCompilationStat::kIntSpillSlots, int_spill_slots_.size());
+    MaybeRecordStat(stats_, MethodCompilationStat::kLongSpillSlots, long_spill_slots_.size());
+    MaybeRecordStat(stats_, MethodCompilationStat::kFloatSpillSlots, float_spill_slots_.size());
+    MaybeRecordStat(stats_, MethodCompilationStat::kDoubleSpillSlots, double_spill_slots_.size());
+    MaybeRecordStat(stats_, MethodCompilationStat::kCatchPhiSpillSlots, catch_phi_spill_slots_);
+    MaybeRecordStat(stats_, MethodCompilationStat::kTotalSpillSlots, GetNumberOfSpillSlots());
+  }
+}
 
 static bool ShouldProcess(bool processing_core_registers, LiveInterval* interval) {
   if (interval == nullptr) return false;
