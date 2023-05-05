@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "624ad64a_caa7f6ec",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-05T19:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb2d78c_a179fbed",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "0122c77855ef525618d6c4a304675f123ef141d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c04cecb_b442b9e8",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-05-05T11:34:38Z",
       "side": 1,
       "message": "Nit:\n\n```\n            srcs: libart_compiler_codegen_x86 + libart_compiler_codegen_x86_64,\n```",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 79
+      },
+      "revId": "0122c77855ef525618d6c4a304675f123ef141d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0a4c3c_3f710a43",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2023-05-05T19:08:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c04cecb_b442b9e8",
       "range": {
         "startLine": 180,
         "startChar": 12,
