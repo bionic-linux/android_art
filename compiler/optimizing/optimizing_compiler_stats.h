@@ -133,8 +133,15 @@ enum class MethodCompilationStat {
   kPredicatedLoadAdded,
   kPredicatedStoreAdded,
   kDevirtualized,
+  kIntSpillSlots,
+  kLongSpillSlots,
+  kFloatSpillSlots,
+  kDoubleSpillSlots,
+  kCatchPhiSpillSlots,
+  kTotalSpillSlots,
   kLastStat
 };
+
 std::ostream& operator<<(std::ostream& os, MethodCompilationStat rhs);
 
 class OptimizingCompilerStats {

@@ -597,7 +597,7 @@ static void AllocateRegisters(HGraph* graph,
   {
     PassScope scope(RegisterAllocator::kRegisterAllocatorPassName, pass_observer);
     std::unique_ptr<RegisterAllocator> register_allocator =
-        RegisterAllocator::Create(&local_allocator, codegen, liveness, strategy);
+        RegisterAllocator::Create(&local_allocator, codegen, liveness, strategy, stats);
     register_allocator->AllocateRegisters();
   }
 }
