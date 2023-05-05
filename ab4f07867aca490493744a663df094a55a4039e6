@@ -98,6 +98,30 @@
       },
       "revId": "ab4f07867aca490493744a663df094a55a4039e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b508756_e1ab9f4b",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-05-05T11:34:38Z",
+      "side": 1,
+      "message": "I discussed this offline with Martin; this is not a regression, so LGTM.\n\nWe can discuss options on how to better handle Arm64-only ART APEX packages later.",
+      "parentUuid": "d88f6c13_7104babf",
+      "range": {
+        "startLine": 167,
+        "startChar": 18,
+        "endLine": 167,
+        "endChar": 77
+      },
+      "revId": "ab4f07867aca490493744a663df094a55a4039e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
