@@ -2026,8 +2026,10 @@ bool HInliner::CanInlineBody(const HGraph* callee_graph,
       if (current->IsUnresolvedStaticFieldGet() ||
           current->IsUnresolvedInstanceFieldGet() ||
           current->IsUnresolvedStaticFieldSet() ||
-          current->IsUnresolvedInstanceFieldSet()) {
+          current->IsUnresolvedInstanceFieldSet() ||
+          current->IsInvokeUnresolved()) {
         // Entrypoint for unresolved fields does not handle inlined frames.
+        // Unresolved invokes make runtime slower, so don't inline them.
         LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedUnresolvedEntrypoint)
             << "Method " << resolved_method->PrettyMethod()
             << " could not be inlined because it is using an unresolved"
