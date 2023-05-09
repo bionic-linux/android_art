@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c5c769_068cd4ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-05-09T19:54:57Z",
+      "side": 1,
+      "message": "IIUC, the interpreter stores the result in two distinct locations, and somebody reading either must see the initialized class pointer? Otherwise nobody else can see the new reference?\n\nI think it would also be correct to use relese stores for those stores instead. But my recent microbenchmark results suggest that release stores are terrible on A55s and not good on A53s. Though even two release stores would probably be faster on big cores than the fence. I think it\u0027s currently best to leave it as is.",
+      "revId": "b37084c94c2c5f6d82c6d7aed27c224e91063567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
