@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7572e88c_40cb4637",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2032,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-09T15:04:38Z",
+      "side": 1,
+      "message": "You can replace this with \"unresolved invokes / field accesses are expansive at runtime when decoding inlining info. So don\u0027t inline methods that have them\".",
+      "range": {
+        "startLine": 2031,
+        "startChar": 0,
+        "endLine": 2032,
+        "endChar": 72
+      },
+      "revId": "17e85f20522f71ac4b79939037e3d7caf3ac215b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
