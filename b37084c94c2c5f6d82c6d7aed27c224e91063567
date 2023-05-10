@@ -16,6 +16,24 @@
       "message": "IIUC, the interpreter stores the result in two distinct locations, and somebody reading either must see the initialized class pointer? Otherwise nobody else can see the new reference?\n\nI think it would also be correct to use relese stores for those stores instead. But my recent microbenchmark results suggest that release stores are terrible on A55s and not good on A53s. Though even two release stores would probably be faster on big cores than the fence. I think it\u0027s currently best to leave it as is.",
       "revId": "b37084c94c2c5f6d82c6d7aed27c224e91063567",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "064593b6_f81502d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-05-10T08:19:02Z",
+      "side": 1,
+      "message": "\u003e IIUC, the interpreter stores the result in two distinct locations, and somebody reading either must see the initialized class pointer? Otherwise nobody else can see the new reference?\n\nIt stores it in the shadow frame, and this should only be seen by the thread itself (just like roots in the stack for compiled code). However, it can still store the allocation to a static / instance object and that will make it visible to others.\n\n\u003e \n\u003e I think it would also be correct to use relese stores for those stores instead. But my recent microbenchmark results suggest that release stores are terrible on A55s and not good on A53s. Though even two release stores would probably be faster on big cores than the fence. I think it\u0027s currently best to leave it as is.",
+      "parentUuid": "c9c5c769_068cd4ec",
+      "revId": "b37084c94c2c5f6d82c6d7aed27c224e91063567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
