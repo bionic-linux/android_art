@@ -69,6 +69,24 @@
       "parentUuid": "12a2691f_f781d1d0",
       "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a2c340_c8adc51c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-05-10T14:31:18Z",
+      "side": 1,
+      "message": "After an offline discussion, I updated the CL to not load any images in debuggable runtimes. I still retained the updating of entrypoints though it is strictly not necessary but I think it\u0027s better this way.",
+      "parentUuid": "ba717106_4551160d",
+      "revId": "9cef86f310dded583cb9e220aef5710a10220f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

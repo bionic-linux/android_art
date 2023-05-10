@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17fafe8_2f506d79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-05-10T14:31:18Z",
+      "side": 1,
+      "message": "Thanks Nicolas! PTAL.",
+      "revId": "2fb48b654ec1f3b1b01842aea30a4222dc475d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a1ebcd_03a4f998",
+        "filename": "test/685-deoptimizeable/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-05-10T14:31:18Z",
+      "side": 1,
+      "message": "IIUC, if we don\u0027t see int[] before, then when we JIT methods in ensureAllJitCompiled that take int[] as a parameter, we bailout early because analysis fails with ambiguous array operations. I think when we allowed images, potentially we saw int[] type before. If my understanding is wrong, let me know, I will take another look.",
+      "range": {
+        "startLine": 78,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "2fb48b654ec1f3b1b01842aea30a4222dc475d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
