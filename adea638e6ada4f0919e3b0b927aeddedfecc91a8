@@ -16,6 +16,24 @@
       "message": "Thanks for making this change!\n\nFor `boolean android.app.IActivityManager$Stub.onTransact(int, android.os.Parcel, android.os.Parcel, int)` which I was investigating in my doc, I only see 12 int spill slots. This made me realize that I didn\u0027t explain myself correctly. What I\u0027m looking for is to create a metric that shows what\u0027s the ratio of instructions in a method that are just spills.\n\nI\u0027m interested in what looking at the top spilling methods (methods whose code is mostly spills) would teach us. For instance, are there coding practices that lead to more spills? Are there improvements that we could make to ART?\n\nI\u0027m going to read art/compiler/optimizing/register_allocator.h and read up more on linear scan register allocation and get back to you with more questions please.",
       "revId": "adea638e6ada4f0919e3b0b927aeddedfecc91a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94fbc7d_a575e29c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-10T11:01:13Z",
+      "side": 1,
+      "message": "What I can do is print the number of ART instructions as a CSV column too. It is not a 1:1 ratio with assembly instructions but it can give you a hint as to which methods to take a look at. Would that be useful to you? If so, patchset 4 contains that extra column with the instructions.",
+      "parentUuid": "ccae035c_b6ec247d",
+      "revId": "adea638e6ada4f0919e3b0b927aeddedfecc91a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
