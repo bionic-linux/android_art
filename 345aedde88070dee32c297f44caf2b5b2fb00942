@@ -22,6 +22,30 @@
       },
       "revId": "345aedde88070dee32c297f44caf2b5b2fb00942",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed85f46_769f585a",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-11T12:43:37Z",
+      "side": 1,
+      "message": "I\u0027d rather keep it just in case someone wants to experiment with another register allocator. (If we removed the strategy completely, we could also merge the `RegisterAllocatorLinearScan` and `RegisterAllocator`. That would make it even more difficult to experiment with a new regalloc.)\n\nIf you want to clean it up further, please reopen the bug and assign it to yourself.",
+      "parentUuid": "684c6f0d_907e237c",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "345aedde88070dee32c297f44caf2b5b2fb00942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
