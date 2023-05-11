@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684c6f0d_907e237c",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-11T12:37:41Z",
+      "side": 1,
+      "message": "Could we go one step further and just remove the strategy altogether?",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 18
+      },
+      "revId": "345aedde88070dee32c297f44caf2b5b2fb00942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
