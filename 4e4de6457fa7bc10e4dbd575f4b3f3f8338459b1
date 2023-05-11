@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7966ba_42058825",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-05-11T00:06:19Z",
+      "side": 1,
+      "message": "Removed in 2585712",
+      "parentUuid": "ccc38b2e_7cbf9b08",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "4e4de6457fa7bc10e4dbd575f4b3f3f8338459b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f7ca762_e06dbdde",
@@ -132,6 +156,30 @@
       "writtenOn": "2023-04-27T09:24:50Z",
       "side": 1,
       "message": "Not a return register for managed ABI.",
+      "range": {
+        "startLine": 45,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "4e4de6457fa7bc10e4dbd575f4b3f3f8338459b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858e75f3_c8163f0c",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-05-11T00:06:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2f7ca762_e06dbdde",
       "range": {
         "startLine": 45,
         "startChar": 18,
