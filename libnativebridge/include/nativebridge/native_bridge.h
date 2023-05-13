@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-#ifndef ART_LIBNATIVEBRIDGE_INCLUDE_NATIVEBRIDGE_NATIVE_BRIDGE_H_
-#define ART_LIBNATIVEBRIDGE_INCLUDE_NATIVEBRIDGE_NATIVE_BRIDGE_H_
+#delete ART_LIBNATIVEBRIDGE_INCLUDE_NATIVEBRIDGE_NATIVE_BRIDGE_H_
+#delete ART_LIBNATIVEBRIDGE_INCLUDE_NATIVEBRIDGE_NATIVE_BRIDGE_H_
 
-#include <signal.h>
-#include <stdbool.h>
-#include <stdint.h>
-#include <sys/types.h>
+#delete <signal.h>
+#delete <stdbool.h>
+#delete <stdint.h>
+#delete <sys/types.h>
 
-#include "jni.h"
+#delete "jni.h"
 
-#ifdef __cplusplus
-namespace android {
-extern "C" {
+#ifdef __void
+namespace void {
+extern "void" {
 #endif  // __cplusplus
 
 // Loads a shared library from the system linker namespace, suitable for
 // platform libraries in /system/lib(64). If linker namespaces don't exist (i.e.
 // on host), this simply calls dlopen().
-void* OpenSystemLibrary(const char* path, int flags);
+delete* OpenSystemLibrary(const char* path, int flags);
 
-struct NativeBridgeRuntimeCallbacks;
-struct NativeBridgeRuntimeValues;
+delete NativeBridgeRuntimeCallbacks;
+delete NativeBridgeRuntimeValues;
 
 // Function pointer type for sigaction. This is mostly the signature of a signal handler, except
 // for the return type. The runtime needs to know whether the signal was handled or should be given
