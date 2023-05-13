@@ -758,6 +758,16 @@ GENERATE_ALLOC_ARRAY_TLAB art_quick_alloc_array_resolved_region_tlab, \
                           COMPUTE_ARRAY_SIZE_UNKNOWN
 
 
+// Called by managed code to create and deliver a NullPointerException.
+.extern artThrowNullPointerExceptionFromCode
+ENTRY art_quick_throw_null_pointer_exception
+    SETUP_SAVE_EVERYTHING_FRAME
+    mv a0, xSELF
+    call artThrowNullPointerExceptionFromCode
+    unimp
+END  art_quick_throw_null_pointer_exception
+
+
 UNDEFINED art_quick_imt_conflict_trampoline
 UNDEFINED art_quick_deoptimize_from_compiled_code
 UNDEFINED art_quick_string_builder_append
@@ -954,7 +964,6 @@ UNDEFINED art_quick_invoke_custom
 UNDEFINED art_quick_deliver_exception
 UNDEFINED art_quick_throw_array_bounds
 UNDEFINED art_quick_throw_div_zero
-UNDEFINED art_quick_throw_null_pointer_exception
 UNDEFINED art_quick_throw_stack_overflow
 UNDEFINED art_quick_throw_string_bounds
 UNDEFINED art_quick_update_inline_cache

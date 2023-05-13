@@ -107,11 +107,12 @@ END \name
 .endm
 
 // Unpack code items from dex format.
-// Input: \code_item
+// Input:
+//   - \code_item: CodeItem*
 // Output:
 //   - \registers: register count
 //   - \outs: out count
-//   - \ins: in count
+//   - \ins: in count. If set to register "zero" (x0), load is skipped.
 //   - \code_item: holds instruction array on exit
 // Clobbers: t0
 .macro FETCH_CODE_ITEM_INFO code_item, registers, outs, ins
@@ -123,7 +124,9 @@ END \name
     // Unpack values from regular dex format.
     lhu \registers, CODE_ITEM_REGISTERS_SIZE_OFFSET(\code_item)
     lhu \outs, CODE_ITEM_OUTS_SIZE_OFFSET(\code_item)
+    .ifnes "\ins", "zero"
     lhu \ins, CODE_ITEM_INS_SIZE_OFFSET(\code_item)
+    .endif
     addi \code_item, \code_item, CODE_ITEM_INSNS_OFFSET
 .endm
 
@@ -139,7 +142,7 @@ END \name
 //   - \refs: pointer to obj reference array
 //   - \fp: pointer to dex register array
 //   - \regs: count of dex registers
-//   - \ins: count of in-registers
+//   - \ins: count of in-registers. If set to register "zero" (x0), load is skipped.
 //   - \old_sp: old stack pointer
 //   - sp modified
 //
@@ -193,6 +196,104 @@ END \name
     sd a0, (sp)
 .endm
 
+// Set up the stack after doing an nterp-to-nterp call.
+// Input
+//   - a0: ArtMethod*
+//   - sp
+//   - \code_item: CodeItem*
+//   - \cfi_new_refs: DWARF register number for \new_refs
+// Output
+//   - \new_refs: callee xREFS
+//   - \new_fp: callee xFP
+//   - \regs: vreg count in callee's xFP array
+//   - xPC
+// Clobbers: t0, t1, t2, \code_item
+.macro SETUP_STACK_FOR_INVOKE code_item, cfi_new_refs, new_refs, new_fp, regs
+    // Check guard page for stack overflow.
+    li t0, -STACK_OVERFLOW_RESERVED_BYTES
+    add t0, t0, sp
+    ld zero, (t0)
+
+    INCREASE_FRAME FRAME_SIZE_SAVE_ALL_CALLEE_SAVES
+    SAVE_ALL_CALLEE_SAVES
+
+    SETUP_STACK_FRAME \
+        \code_item, \cfi_new_refs, \new_refs, \new_fp, \regs, /*ins*/zero, /*old_sp*/t2
+
+    mv xPC, \code_item
+    CFI_DEFINE_DEX_PC_WITH_OFFSET(/*tmpReg*/CFI_TMP, /*dexReg*/CFI_DEX, /*dexOffset*/0)
+.endm
+
+// Input
+//   - xINST: code unit #0 from caller's old xPC, A|G|op.
+//   - xPC: new dex pc
+//   - a0: ArtMethod*
+//   - a1: instance receiver
+//   - a2: code unit #2 from invoke opcode, F|E|D|C.
+// Clobbers: t0, t1, t2, t3, t4
+.macro SETUP_NON_RANGE_ARGUMENTS_AND_EXECUTE new_refs, new_fp, regs, is_static=0
+    // op vA, vB, {vC, vD, vE, vF, vG}
+
+    // Byte A in xINST encodes arg count, 0-5.
+    srliw t0, xINST, 12  // t0 := A
+    beqz t0, 0f  // Skip arg processing.
+
+    // Set up end-of-array offset before arg-store jumps.
+    add t1, \regs, -1  // regs-1 is the last slot in the fp/regs array
+    slliw t1, t1, 2  // t1 := reverse iterator; initially byte offset to last slot
+
+    addi t0, t0, -2
+    bltz t0, 1f
+    beqz t0, 2f
+    addi t0, t0, -2
+    bltz t0, 3f
+    beqz t0, 4f
+    // t0 > 0: fall through to 5f
+5:  // G
+    slliw t0, xINST, 8
+    andi t0, t0, 0xF  // t0 := G's vreg id
+    jal t2, 6f
+4:  // F
+    srliw t0, a2, 12  // t0 := F's vreg id
+    jal t2, 6f
+3:  // E
+    srliw t0, a2, 8
+    andi t0, t0, 0xF  // t0 := E's vreg id
+    jal t2, 6f
+2:  // D
+    srliw t0, a2, 4
+    andi t0, t0, 0xF  // t0 := D's vreg id
+    jal t2, 6f
+1:  // C
+    .if \is_static
+    andi t0, a2, 0xF  // t0 := C's vreg id
+    jal t2, 6f
+    .else
+    // C's load was performed earlier and is held in a1.
+    add t4, \new_refs, t1
+    sw a1, (t4)
+    add t4, \new_fp, t1
+    sw a1, (t4)
+    .endif
+0:
+    mv xREFS, \new_refs
+    mv xFP, \new_fp
+    CFI_DEF_CFA_BREG_PLUS_UCONST CFI_REFS, -8, FRAME_SIZE_SAVE_ALL_CALLEE_SAVES
+    START_EXECUTING_INSTRUCTIONS
+    unimp  // NOTE: no fallthrough
+
+6: // loop body; assumes t0 (vreg id), t1 (offset), t2 (return) set properly
+    GET_VREG_OBJECT t3, t0
+    add t4, \new_refs, t1
+    sw t3, (t4)
+    GET_VREG t3, t0
+    add t4, \new_fp, t1
+    sw t3, (t4)
+    addi t1, t1, -4
+
+    jalr zero, t2, 0  // continue with args
+.endm
+
 .macro EXPORT_PC
     sd xPC, -16(xREFS)
 .endm
@@ -225,6 +326,13 @@ END \name
 .macro FETCH_ADVANCE_INST count
     lhu xINST, (\count*2)(xPC)  // zero in upper 48 bits
     addi xPC, xPC, (\count*2)
+.endm
+
+// Fetch a half-word unit from an offset past the current PC.
+// The offset is specified in \count units, each 2 bytes.
+// Does not advance xPC.
+.macro FETCH reg, count
+    lhu \reg, (\count*2)(xPC)
 .endm
 
 // Uses: \reg
@@ -284,7 +392,7 @@ END \name
 #if (NTERP_HOTNESS_VALUE != 0)
 #error Expected 0 for hotness value
 #endif
-    // If the counter is at zero, handle it in the runtime.
+    // If the counter is at zero (hot), handle it in the runtime.
     beqz t0, 3f
     addi t0, t0, -1
     sh t0, ART_METHOD_HOTNESS_COUNT_OFFSET(a0)
@@ -303,7 +411,7 @@ END \name
     j 2b
 .endm
 
-// Clobbers: \vreg
+// Clobbers: \reg
 // Safe if \reg == \vreg.
 .macro GET_VREG reg, vreg
     slliw \vreg, \vreg, 2  // vreg id to byte offset
@@ -320,6 +428,14 @@ END \name
     sw zero, (t0)  // not an object, null out reference
 .endm
 
+// Clobbers: \reg
+// Safe if \reg == \vreg.
+.macro GET_VREG_OBJECT reg, vreg
+    slliw \vreg, \vreg, 2  // vreg id to byte offset
+    add \vreg, xREFS, \vreg  // vreg address inside reference array
+    lw \reg, (\vreg)  // load value from vreg into \reg
+.endm
+
 // Clobbers: t0, \vreg
 .macro SET_VREG_OBJECT reg, vreg
     slliw \vreg, \vreg, 2  // vreg id to byte offset
@@ -327,6 +443,42 @@ END \name
     sw \reg, (t0)
     add t0, xREFS, \vreg
     sw \reg, (t0)  // also in reference array
+.endm
+
+// Input
+//   - a0: ArtMethod*
+// Clobbers: t0, t1
+.macro DO_ENTRY_POINT_CHECK call_compiled_code
+    la t0, ExecuteNterpImpl
+    ld t1, ART_METHOD_QUICK_CODE_OFFSET_64(a0)
+    bne t0, t1, \call_compiled_code
+.endm
+
+// Input
+//   - a0: ArtMethod*
+.macro GET_CODE_ITEM reg
+    ld \reg, ART_METHOD_DATA_OFFSET_64(a0)
+.endm
+
+// Clobbers: t0, t1
+.macro COMMON_INVOKE_NON_RANGE is_string_init, suffix
+    DO_ENTRY_POINT_CHECK .Lcall_compiled_code_\suffix
+    GET_CODE_ITEM s7 // XXX make this a macro arg?
+    call nterp_to_nterp_instance_non_range
+    j .Ldone_return_\suffix
+
+.Lcall_compiled_code_\suffix:
+    unimp
+
+.Ldone_return_\suffix:
+    // Resume execution of caller.
+    FETCH_ADVANCE_INST 3
+    GET_INST_OPCODE t0
+    GOTO_OPCODE t0
+.endm
+
+.macro COMMON_INVOKE_RANGE is_string_init, suffix
+    unimp
 .endm
 
 %def entry():
@@ -354,7 +506,7 @@ OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
     SAVE_ALL_CALLEE_SAVES
 
     ld xPC, ART_METHOD_DATA_OFFSET_64(a0)
-    SETUP_STACK_FRAME xPC, CFI_REFS, xREFS, xFP, /*reg count*/ s7, /*in count*/s8, /*old sp*/s9
+    SETUP_STACK_FRAME xPC, CFI_REFS, xREFS, xFP, /*reg count*/s7, /*in count*/s8, /*old sp*/s9
 
     beqz s8, .Lsetup_execution  // no args
     unimp
@@ -381,8 +533,46 @@ OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
 
 // Enclose all code below in a symbol (which gets printed in backtraces).
 NAME_START nterp_helper
+
+common_errNullObject:
+    EXPORT_PC
+    call art_quick_throw_null_pointer_exception
+
+NterpCommonInvokeInstance:
+    COMMON_INVOKE_NON_RANGE suffix="invokeInstance"
+
+NterpHandleStringInit:
+    COMMON_INVOKE_NON_RANGE is_string_init=1, suffix="stringInit"
+
+NterpHandleStringInitRange:
+    COMMON_INVOKE_RANGE is_string_init=1, suffix="stringInit"
+
 // This is the logical end of ExecuteNterpImpl, where the frame info applies.
 .cfi_endproc
+
+// Input:
+//   - a0: ArtMethod*
+//   - a1: instance receiver ("this" obj ptr)
+//   - a2: code unit #2 (F|E|D|C) from invoke opcode
+//   - s7: CodeItem*
+// Clobbers: t0, t1, t2, s7
+nterp_to_nterp_instance_non_range:
+    .cfi_startproc
+    SETUP_STACK_FOR_INVOKE \
+      /*code item*/s7, /*CFI for s8*/24, /*new refs=x24*/s8, /*new fp*/s9, /*regs*/ s10
+    SETUP_NON_RANGE_ARGUMENTS_AND_EXECUTE s8, s9, s10
+    .cfi_endproc
+
+nterp_to_nterp_instance_range:
+    unimp
+nterp_to_nterp_static_non_range:
+    unimp
+nterp_to_nterp_static_range:
+    unimp
+nterp_to_nterp_string_init_non_range:
+    unimp
+nterp_to_nterp_string_init_range:
+    unimp
 NAME_END nterp_helper
 
 // EndExecuteNterpImpl includes the methods after .cfi_endproc, as we want the runtime to see them
@@ -396,6 +586,7 @@ EndExecuteNterpImpl:
 // Entrypoints into runtime.
 NTERP_TRAMPOLINE nterp_allocate_object, NterpAllocateObject
 NTERP_TRAMPOLINE nterp_get_class, NterpGetClass
+NTERP_TRAMPOLINE nterp_get_method, NterpGetMethod
 NTERP_TRAMPOLINE nterp_get_static_field, NterpGetStaticField
 NTERP_TRAMPOLINE nterp_hot_method, NterpHotMethod
 
