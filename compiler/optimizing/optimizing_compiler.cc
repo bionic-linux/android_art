@@ -1255,7 +1255,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     // support calling method entry / exit hooks for critical native methods yet.
     // TODO(mythria): Add support for calling method entry / exit hooks in JITed stubs for critical
     // native methods too.
-    if (runtime->IsJavaDebuggable() && method->IsCriticalNative()) {
+    if (compiler_options.GetDebuggable() && method->IsCriticalNative()) {
       DCHECK(compiler_options.IsJitCompiler());
       return false;
     }
