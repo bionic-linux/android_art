@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd600d2a_da191831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-05-15T13:38:06Z",
+      "side": 1,
+      "message": "PTAL. Thanks!\n\nI will add a regression test in a follow up CL. It may take a bit of time to add a test and I don\u0027t want to block the fix for the test.",
+      "revId": "f81402fb2192ec97ea29efb1c5127c9056eb8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
