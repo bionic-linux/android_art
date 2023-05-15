@@ -465,8 +465,9 @@ class ProfileCompilationInfo {
 
   // Load profile information from the given file
   // If the current profile is non-empty the load will fail.
-  // If clear_if_invalid is true and the file is invalid the method clears the
-  // the file and returns true.
+  // If clear_if_invalid is true:
+  // - If the file is invalid, the method clears the file and returns true.
+  // - If the file doesn't exist, the method returns true.
   bool Load(const std::string& filename, bool clear_if_invalid);
 
   // Merge the data from another ProfileCompilationInfo into the current object. Only merges
