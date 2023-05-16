@@ -103,6 +103,24 @@
       "message": "Add a DCHECK here that `!runtime-\u003eIsJavaDebuggable()` ?",
       "revId": "f81402fb2192ec97ea29efb1c5127c9056eb8ace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb3a707_4fda74f3",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-05-16T08:39:41Z",
+      "side": 1,
+      "message": "Good point. I added a DCHECK_IMPLIES that we never JIT critical native methods in debuggable runtimes.",
+      "parentUuid": "c96ca8ec_6cba36f4",
+      "revId": "f81402fb2192ec97ea29efb1c5127c9056eb8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
