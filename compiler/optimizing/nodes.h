@@ -8393,6 +8393,52 @@ class HGraphVisitor : public ValueObject {
 
 #undef DECLARE_VISIT_INSTRUCTION
 
+  // Fast dispatch for visiting an instruction.
+  //
+  // We do a switch on the instruction kind to avoid bringing visited vtables into data cache.
+  // The switch shall use a local table for dispatch instead. This also avoids bringing
+  // `Accept()` code into instruction cache and wasting space in branch prediction cache.
+  // We force the visitor to be final, so that the `Visit##kind()` calls can be devirtualized
+  // and possibly inlined. Different cases are often redirected to the same call (expecially
+  // for `HGraphDelegateVisitor`s), further reducing instruction cache usage.
+  template <typename Visitor>
+  ALWAYS_INLINE static void DispatchVisit(Visitor& visitor, HInstruction* insn) {
+    static_assert(std::is_final_v<Visitor>);
+    // Some visitors declare their `Visit*()` functions as private, so access them via
+    // the base class. The compiler should be able to devirtualize these calls anyway.
+    HGraphVisitor& base_visitor = visitor;
+    switch(insn->GetKind()) {
+    #define DEFINE_DISPATCH_CASE(kind, super)                 \
+      case HInstruction::k##kind:                             \
+        DCHECK(insn->Is##kind());                             \
+        base_visitor.Visit##kind(down_cast<H##kind*>(insn));  \
+        break;
+    FOR_EACH_CONCRETE_INSTRUCTION(DEFINE_DISPATCH_CASE)
+    #undef DEFINE_DISPATCH_CASE
+      default:
+        LOG(FATAL) << "UNREACHABLE";
+        UNREACHABLE();
+    }
+  }
+
+  template <typename Visitor>
+  ALWAYS_INLINE static void VisitNonPhiInstructions(Visitor& visitor, HBasicBlock* block) {
+    static_assert(std::is_final_v<Visitor>);
+    for (HInstructionIterator it(block->GetInstructions()); !it.Done(); it.Advance()) {
+      DCHECK(!it.Current()->IsPhi());
+      DispatchVisit(visitor, it.Current());
+    }
+  }
+
+  template <typename Visitor>
+  ALWAYS_INLINE static void VisitPhis(Visitor& visitor, HBasicBlock* block) {
+    static_assert(std::is_final_v<Visitor>);
+    for (HInstructionIterator it(block->GetPhis()); !it.Done(); it.Advance()) {
+      DCHECK(it.Current()->IsPhi());
+      visitor.VisitPhi(it.Current()->AsPhi());
+    }
+  }
+
  protected:
   void VisitPhis(HBasicBlock* block);
   void VisitNonPhiInstructions(HBasicBlock* block);

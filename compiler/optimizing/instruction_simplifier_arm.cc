@@ -64,7 +64,7 @@ class InstructionSimplifierArmVisitor final : public HGraphVisitor {
     for (HInstructionIterator it(block->GetInstructions()); !it.Done(); it.Advance()) {
       HInstruction* instruction = it.Current();
       if (instruction->IsInBlock()) {
-        instruction->Accept(this);
+        DispatchVisit(*this, instruction);
       }
     }
   }

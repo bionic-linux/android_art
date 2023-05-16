@@ -119,7 +119,7 @@ bool HConstantFolding::Run() {
 void HConstantFoldingVisitor::VisitBasicBlock(HBasicBlock* block) {
   // Traverse this block's instructions (phis don't need to be processed) in (forward) order
   // and replace the ones that can be statically evaluated by a compile-time counterpart.
-  VisitNonPhiInstructions(block);
+  VisitNonPhiInstructions(*this, block);
 }
 
 void HConstantFoldingVisitor::VisitUnaryOperation(HUnaryOperation* inst) {
@@ -203,7 +203,7 @@ void HConstantFoldingVisitor::VisitBinaryOperation(HBinaryOperation* inst) {
     // Already replaced inside TryRemoveBinaryOperationViaSelect.
   } else {
     InstructionWithAbsorbingInputSimplifier simplifier(GetGraph());
-    inst->Accept(&simplifier);
+    DispatchVisit(simplifier, inst);
   }
 }
 

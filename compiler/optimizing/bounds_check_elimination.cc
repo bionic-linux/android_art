@@ -539,13 +539,13 @@ class BCEVisitor final : public HGraphVisitor {
     for (HInstruction* instruction = block->GetFirstPhi(); instruction != nullptr;) {
       DCHECK(instruction->IsInBlock());
       next_ = instruction->GetNext();
-      instruction->Accept(this);
+      DispatchVisit(*this, instruction);
       instruction = next_;
     }
     for (HInstruction* instruction = block->GetFirstInstruction(); instruction != nullptr;) {
       DCHECK(instruction->IsInBlock());
       next_ = instruction->GetNext();
-      instruction->Accept(this);
+      DispatchVisit(*this, instruction);
       instruction = next_;
     }
     // We should never deoptimize from an osr method, otherwise we might wrongly optimize
