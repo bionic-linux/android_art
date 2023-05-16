@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f5905f12_254d40aa",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-16T15:06:25Z",
+      "side": 1,
+      "message": "It\u0027s also necessary to work with the mutation on line 809 as I pointed in the comment below. Besides, we need the flock not only here but also [everywhere else that loads a profile](https://source.corp.google.com/search?q\u003dLockedFile%20f:libprofile%7Cprofman\u0026sq\u003dpackage:%5Eandroid-internal$). This is too complicated to put in a comment here. I\u0027d write this down in some documentation.",
+      "parentUuid": "b66d1b19_71a8f745",
+      "range": {
+        "startLine": 784,
+        "startChar": 6,
+        "endLine": 784,
+        "endChar": 16
+      },
+      "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7a4aa707_aeefb0db",
         "filename": "libprofile/profile/profile_compilation_info.h",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2023-05-16T09:24:04Z",
       "side": 1,
       "message": "Add a comment what the overall return value means?",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 58
+      },
+      "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8275f7cb_ce969120",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-16T15:06:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98199c2e_f3b098b6",
       "range": {
         "startLine": 468,
         "startChar": 0,
