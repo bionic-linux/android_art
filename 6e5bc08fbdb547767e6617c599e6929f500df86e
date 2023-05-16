@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b66d1b19_71a8f745",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-16T12:29:33Z",
+      "side": 1,
+      "message": "Not strictly in scope, but it\u0027s worth a comment that this flock is necessary to work with the legacy installd implementation in S, T, and U.",
+      "range": {
+        "startLine": 784,
+        "startChar": 6,
+        "endLine": 784,
+        "endChar": 16
+      },
+      "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4aa707_aeefb0db",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-16T12:29:33Z",
+      "side": 1,
+      "message": "The name of this flag is slightly misleading now, but I can\u0027t think of any better that isn\u0027t very long.",
+      "range": {
+        "startLine": 468,
+        "startChar": 8,
+        "endLine": 468,
+        "endChar": 24
+      },
+      "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98199c2e_f3b098b6",
         "filename": "libprofile/profile/profile_compilation_info.h",
         "patchSetId": 1
@@ -20,6 +66,23 @@
         "endLine": 470,
         "endChar": 58
       },
+      "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9e57cd_08fd10f5",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-16T12:29:33Z",
+      "side": 1,
+      "message": "Btw, the old flock based approach could have avoided this, but afaict it just didn\u0027t - the lock isn\u0027t kept between Load and Save.",
       "revId": "6e5bc08fbdb547767e6617c599e6929f500df86e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
