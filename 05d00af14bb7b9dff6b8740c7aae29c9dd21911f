@@ -22,6 +22,30 @@
       },
       "revId": "05d00af14bb7b9dff6b8740c7aae29c9dd21911f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439b9bec_d015e606",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-16T12:50:12Z",
+      "side": 1,
+      "message": "Actually, this usually happens. Framework calls this method for every APK on app startup, and there are many config split APKs, which don\u0027t have code. I changed to VLOG because I think that\u0027s more appropriate.",
+      "parentUuid": "24a9ff9c_deefeacb",
+      "range": {
+        "startLine": 2782,
+        "startChar": 8,
+        "endLine": 2782,
+        "endChar": 15
+      },
+      "revId": "05d00af14bb7b9dff6b8740c7aae29c9dd21911f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
