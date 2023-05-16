@@ -16,6 +16,23 @@
       "message": "Thanks for the review, Nicolas. Would you like Martin to take another look?",
       "revId": "64dd8c5152d4475ec944a8db78dc3ebead7e23c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e4779c_39de675d",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2765,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-05-16T13:43:32Z",
+      "side": 1,
+      "message": "I think this is weird enough to warrant a comment in the code, not just the commit message.",
+      "revId": "64dd8c5152d4475ec944a8db78dc3ebead7e23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
