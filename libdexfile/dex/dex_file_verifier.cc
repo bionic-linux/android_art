@@ -1523,8 +1523,18 @@ bool DexFileVerifier::CheckIntraClassDataItem() {
 
 bool DexFileVerifier::CheckIntraCodeItem() {
   const dex::CodeItem* code_item = reinterpret_cast<const dex::CodeItem*>(ptr_);
-  if (!CheckListSize(code_item, 1, sizeof(dex::CodeItem), "code")) {
-    return false;
+
+  // Note that for its size we don't check it using dex::CodeItem, as it will be casted to either
+  // a CompactDexFile::CodeItem or a StandardDexFile::CodeItem which have a different (bigger) size.
+  if (dex_file_->IsCompactDexFile()) {
+    if (!CheckListSize(code_item, 1, sizeof(CompactDexFile::CodeItem), "code")) {
+      return false;
+    }
+  } else {
+    DCHECK(dex_file_->IsStandardDexFile());
+    if (!CheckListSize(code_item, 1, sizeof(StandardDexFile::CodeItem), "code")) {
+      return false;
+    }
   }
 
   CodeItemDataAccessor accessor(*dex_file_, code_item);
