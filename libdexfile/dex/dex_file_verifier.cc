@@ -1525,6 +1525,18 @@ bool DexFileVerifier::CheckIntraClassDataItem() {
 
 bool DexFileVerifier::CheckIntraCodeItem() {
   const dex::CodeItem* code_item = reinterpret_cast<const dex::CodeItem*>(ptr_);
+  // Check that the code item is within bounds.
+  if (dex_file_->IsCompactDexFile()) {
+    if (ptr_ + sizeof(CompactDexFile::CodeItem) >= begin_ + size_) {
+      return false;
+    }
+  } else {
+    DCHECK(dex_file_->IsStandardDexFile());
+    if (ptr_ + sizeof(StandardDexFile::CodeItem) >= begin_ + size_) {
+      return false;
+    }
+  }
+
   if (!CheckListSize(code_item, 1, sizeof(dex::CodeItem), "code")) {
     return false;
   }
