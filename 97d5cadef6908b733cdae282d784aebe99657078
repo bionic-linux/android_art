@@ -46,6 +46,30 @@
       },
       "revId": "97d5cadef6908b733cdae282d784aebe99657078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05855918_0bcf2f1f",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-05-19T15:09:52Z",
+      "side": 1,
+      "message": "ack, removing that path.",
+      "parentUuid": "dac690d3_0ca28101",
+      "range": {
+        "startLine": 1529,
+        "startChar": 6,
+        "endLine": 1529,
+        "endChar": 35
+      },
+      "revId": "97d5cadef6908b733cdae282d784aebe99657078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
