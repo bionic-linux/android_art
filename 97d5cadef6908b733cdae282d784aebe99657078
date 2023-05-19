@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcd60c8_104cfcea",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-19T13:23:31Z",
+      "side": 1,
+      "message": "AFAIK, we\u0027re never verifying cdex.",
+      "range": {
+        "startLine": 1529,
+        "startChar": 6,
+        "endLine": 1529,
+        "endChar": 35
+      },
+      "revId": "97d5cadef6908b733cdae282d784aebe99657078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
