@@ -860,19 +860,79 @@ bool ValidateJdwpOptions(const std::string& opts) {
   return res;
 }
 
+// The format of jdwp options is a series of comma separated key=value. Parse it and return a
+// key/value map.
+static std::unordered_map<std::string, std::string> ParseJdwpOptions(const std::string& opts) {
+  std::unordered_map<std::string, std::string> parameters;
+  std::stringstream ss(opts);
+
+  // Split on ',' character
+  while (!ss.eof()) {
+    std::string w;
+    getline(ss, w, ',');
+
+    // Trim spaces
+    w.erase(std::remove_if(w.begin(), w.end(), ::isspace), w.end());
+
+    // Extract key=value
+    auto pos = w.find('=');
+
+    // Check for bad format such as no '=' or '=' at either extremity
+    if (pos == std::string::npos || w.back() == '=' || w.front() == '=') {
+      VLOG(jdwp) << "Skipping jdwp parameters '" << opts << "', token='" << w << "'";
+      continue;
+    }
+
+    // Set
+    std::string key = w.substr(0, pos);
+    std::string value = w.substr(pos + 1);
+    parameters[key] = value;
+    VLOG(jdwp) << "Found jdwp parameters '" << key << "'='" << value << "'";
+  }
+
+  return parameters;
+}
+
+std::string joinJdwpParameters(const std::unordered_map<std::string, std::string>& parameters) {
+  std::string opts;
+  for (const auto& kv : parameters) {
+    opts += kv.first + "=" + kv.second + ", ";
+  }
+
+  // Remove the trailing comma
+  if (opts.length() >= 2) {
+    opts = opts.substr(0, opts.length() - 2);
+  }
+
+  return opts;
+}
+
 std::string AdbConnectionState::MakeAgentArg() {
-  const std::string& opts = art::Runtime::Current()->GetJdwpOptions();
-  DCHECK(ValidateJdwpOptions(opts));
+  const std::string& rawOpts = art::Runtime::Current()->GetJdwpOptions();
+  DCHECK(ValidateJdwpOptions(rawOpts));
+
+  VLOG(jdwp) << "Raw jdwp options '" + rawOpts + "'";
+  auto parameters = ParseJdwpOptions(rawOpts);
+
+  // See the comment above for why we need to be server=y. Since the agent defaults to server=n
+  // we must always set it.
+  parameters["server"] = "y";
+
+  // See the comment above for why we need to be suspend=n. Since the agent defaults to
+  // suspend=y we must always set it.
+  parameters["suspend"] = "n";
+
+  if (notified_ddm_active_) {
+    parameters["ddm_already_active"] = "y";
+  } else {
+    parameters["ddm_already_active"] = "n";
+  }
+
+  parameters["transport"] = "dt_fd_forward";
+  parameters["address"] = std::to_string(remote_agent_control_sock_);
+
   // TODO Get agent_name_ from something user settable?
-  return agent_name_ + "=" + opts + (opts.empty() ? "" : ",") +
-      "ddm_already_active=" + (notified_ddm_active_ ? "y" : "n") + "," +
-      // See the comment above for why we need to be server=y. Since the agent defaults to server=n
-      // we will add it if it wasn't already present for the convenience of the user.
-      (ContainsArgument(opts, "server=y") ? "" : "server=y,") +
-      // See the comment above for why we need to be suspend=n. Since the agent defaults to
-      // suspend=y we will add it if it wasn't already present.
-      (ContainsArgument(opts, "suspend=n") ? "" : "suspend=n,") +
-      "transport=dt_fd_forward,address=" + std::to_string(remote_agent_control_sock_);
+  return agent_name_ + "=" + joinJdwpParameters(parameters);
 }
 
 void AdbConnectionState::StopDebuggerThreads() {
