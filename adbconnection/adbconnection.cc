@@ -872,7 +872,8 @@ std::string AdbConnectionState::MakeAgentArg() {
       // See the comment above for why we need to be suspend=n. Since the agent defaults to
       // suspend=y we will add it if it wasn't already present.
       (ContainsArgument(opts, "suspend=n") ? "" : "suspend=n,") +
-      "transport=dt_fd_forward,address=" + std::to_string(remote_agent_control_sock_);
+      "transport=dt_fd_forward,address=" + std::to_string(remote_agent_control_sock_) +
+      ",logfile=jdwp.log,logflags=0xFFFFFF";
 }
 
 void AdbConnectionState::StopDebuggerThreads() {
