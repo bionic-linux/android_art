@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b5db3b_a1a49a71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975361
+      },
+      "writtenOn": "2023-05-25T13:46:29Z",
+      "side": 1,
+      "message": "A reuploaded CL: https://android-review.googlesource.com/c/platform/art/+/2600335\n\nThis one can be abandoned.",
+      "revId": "ae1b9b538f82aab5e789abce328bb60f21ae2807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
