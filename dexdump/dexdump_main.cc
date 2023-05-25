@@ -45,9 +45,9 @@ static void usage() {
   LOG(ERROR) << " -c : verify checksum and exit";
   LOG(ERROR) << " -d : disassemble code sections";
   LOG(ERROR) << " -e : display exported items only";
-  LOG(ERROR) << " -f : display summary information from file header";
+  LOG(ERROR) << " -f : display dex file header";
   LOG(ERROR) << " -g : display CFG for dex";
-  LOG(ERROR) << " -h : display file header details";
+  LOG(ERROR) << " -h : display section headers";
   LOG(ERROR) << " -i : ignore checksum failures";
   LOG(ERROR) << " -j : disable dex file verification";
   LOG(ERROR) << " -l : output layout, either 'plain' or 'xml'";
@@ -84,7 +84,7 @@ int dexdumpDriver(int argc, char** argv) {
       case 'e':  // exported items only
         gOptions.exportsOnly = true;
         break;
-      case 'f':  // display outer file header
+      case 'f':  // display dex file header
         gOptions.showFileHeaders = true;
         break;
       case 'g':  // display cfg
