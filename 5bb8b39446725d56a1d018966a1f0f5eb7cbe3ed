@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81df4b3_74653753",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2756,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-05-26T00:55:40Z",
+      "side": 1,
+      "message": "This is fine, though I would be inclined to leave off memory_orders in DCHECKs like this that are rarely executed.",
+      "range": {
+        "startLine": 2756,
+        "startChar": 46,
+        "endLine": 2756,
+        "endChar": 71
+      },
+      "revId": "5bb8b39446725d56a1d018966a1f0f5eb7cbe3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
