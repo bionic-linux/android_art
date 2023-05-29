@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e6143b_4e66eca7",
+        "filename": "runtime/interpreter/mterp/riscv64/invoke.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-29T12:21:40Z",
+      "side": 1,
+      "message": "tail",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 8
+      },
+      "revId": "57a417fd78a41554f20696ce2f51339618d067a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b659df7f_8a89092d",
+        "filename": "runtime/interpreter/mterp/riscv64/invoke.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-29T12:21:40Z",
+      "side": 1,
+      "message": "tail",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "57a417fd78a41554f20696ce2f51339618d067a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf317d0_be49874d",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-29T12:21:40Z",
+      "side": 1,
+      "message": "for",
+      "range": {
+        "startLine": 214,
+        "startChar": 20,
+        "endLine": 214,
+        "endChar": 31
+      },
+      "revId": "57a417fd78a41554f20696ce2f51339618d067a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce0e573_b459810c",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-29T12:21:40Z",
+      "side": 1,
+      "message": "16-bit code units",
+      "range": {
+        "startLine": 348,
+        "startChar": 30,
+        "endLine": 348,
+        "endChar": 42
+      },
+      "revId": "57a417fd78a41554f20696ce2f51339618d067a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ea4dd2_b6b93376",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-05-29T12:21:40Z",
+      "side": 1,
+      "message": "Two more spaces.",
+      "range": {
+        "startLine": 578,
+        "startChar": 5,
+        "endLine": 578,
+        "endChar": 6
+      },
+      "revId": "57a417fd78a41554f20696ce2f51339618d067a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
