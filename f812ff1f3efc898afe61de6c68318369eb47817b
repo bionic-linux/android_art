@@ -22,6 +22,30 @@
       },
       "revId": "f812ff1f3efc898afe61de6c68318369eb47817b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4d1549_5f5e48d3",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-05-31T05:22:43Z",
+      "side": 1,
+      "message": "Ah, thank you. Took me a while to find this gadget. Hadn\u0027t realized we already used ifnc.",
+      "parentUuid": "9f4fe4c1_dcc3318f",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 25
+      },
+      "revId": "f812ff1f3efc898afe61de6c68318369eb47817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
