@@ -943,6 +943,85 @@ void Riscv64Assembler::Csrci(uint32_t csr, uint32_t uimm5) {
   Csrrci(Zero, csr, uimm5);
 }
 
+void Riscv64Assembler::Loadb(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lb(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadh(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lh(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadw(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lw(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadd(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Ld(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadbu(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lbu(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadhu(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lhu(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Loadwu(XRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  Lwu(rd, rs1, offset);
+}
+
+void Riscv64Assembler::Storeb(XRegister rs2, XRegister rs1, int32_t offset) {
+  CHECK_NE(rs2, TMP);
+  AdjustBaseAndOffset(rs1, offset);
+  Sb(rs2, rs1, offset);
+}
+
+void Riscv64Assembler::Storeh(XRegister rs2, XRegister rs1, int32_t offset) {
+  CHECK_NE(rs2, TMP);
+  AdjustBaseAndOffset(rs1, offset);
+  Sh(rs2, rs1, offset);
+}
+
+void Riscv64Assembler::Storew(XRegister rs2, XRegister rs1, int32_t offset) {
+  CHECK_NE(rs2, TMP);
+  AdjustBaseAndOffset(rs1, offset);
+  Sw(rs2, rs1, offset);
+}
+
+void Riscv64Assembler::Stored(XRegister rs2, XRegister rs1, int32_t offset) {
+  CHECK_NE(rs2, TMP);
+  AdjustBaseAndOffset(rs1, offset);
+  Sd(rs2, rs1, offset);
+}
+
+void Riscv64Assembler::FLoadw(FRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  FLw(rd, rs1, offset);
+}
+
+void Riscv64Assembler::FLoadd(FRegister rd, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  FLd(rd, rs1, offset);
+}
+
+void Riscv64Assembler::FStorew(FRegister rs2, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  FSw(rs2, rs1, offset);
+}
+
+void Riscv64Assembler::FStored(FRegister rs2, XRegister rs1, int32_t offset) {
+  AdjustBaseAndOffset(rs1, offset);
+  FSd(rs2, rs1, offset);
+}
+
 void Riscv64Assembler::LoadConst32(XRegister rd, int32_t value) {
   LoadImmediate(rd, value, /*can_use_tmp=*/ false);  // No need to use TMP for 32-bit values.
 }
@@ -1028,19 +1107,29 @@ void Riscv64Assembler::Jal(Riscv64Label* label, bool is_bare) {
   Jal(RA, label, is_bare);
 }
 
-void Riscv64Assembler::Lw(XRegister rd, Literal* literal) {
+void Riscv64Assembler::Loadw(XRegister rd, Literal* literal) {
   DCHECK_EQ(literal->GetSize(), 4u);
   LoadLiteral(literal, rd, Branch::kLiteral);
 }
 
-void Riscv64Assembler::Lwu(XRegister rd, Literal* literal) {
+void Riscv64Assembler::Loadwu(XRegister rd, Literal* literal) {
   DCHECK_EQ(literal->GetSize(), 4u);
   LoadLiteral(literal, rd, Branch::kLiteralUnsigned);
 }
 
-void Riscv64Assembler::Ld(XRegister rd, Literal* literal) {
+void Riscv64Assembler::Loadd(XRegister rd, Literal* literal) {
   DCHECK_EQ(literal->GetSize(), 8u);
   LoadLiteral(literal, rd, Branch::kLiteralLong);
+}
+
+void Riscv64Assembler::FLoadw(FRegister rd, Literal* literal) {
+  DCHECK_EQ(literal->GetSize(), 4u);
+  LoadLiteral(literal, rd, Branch::kLiteralFloat);
+}
+
+void Riscv64Assembler::FLoadd(FRegister rd, Literal* literal) {
+  DCHECK_EQ(literal->GetSize(), 8u);
+  LoadLiteral(literal, rd, Branch::kLiteralDouble);
 }
 
 /////////////////////////////// RV64 MACRO Instructions END ///////////////////////////////
@@ -1070,6 +1159,8 @@ const Riscv64Assembler::Branch::BranchInfo Riscv64Assembler::Branch::branch_info
     {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteral
     {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralUnsigned
     {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralLong
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralFloat
+    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLiteralDouble
 };
 
 void Riscv64Assembler::Branch::InitShortOrLong(Riscv64Assembler::Branch::OffsetBits offset_size,
@@ -1123,6 +1214,8 @@ void Riscv64Assembler::Branch::InitializeType(Type initial_type) {
     case kLiteral:
     case kLiteralUnsigned:
     case kLiteralLong:
+    case kLiteralFloat:
+    case kLiteralDouble:
       CHECK(!IsResolved());
       type_ = initial_type;
       break;
@@ -1168,6 +1261,7 @@ Riscv64Assembler::Branch::Branch(uint32_t location, uint32_t target, XRegister r
       target_(target),
       lhs_reg_(rd),
       rhs_reg_(Zero),
+      freg_(kNoFRegister),
       condition_(kUncond) {
   InitializeType(
       (rd != Zero ? (is_bare ? kBareCall : kCall) : (is_bare ? kBareUncondBranch : kUncondBranch)));
@@ -1184,6 +1278,7 @@ Riscv64Assembler::Branch::Branch(uint32_t location,
       target_(target),
       lhs_reg_(lhs_reg),
       rhs_reg_(rhs_reg),
+      freg_(kNoFRegister),
       condition_(condition) {
   DCHECK_NE(condition, kUncond);
   DCHECK(!IsNop(condition, lhs_reg, rhs_reg));
@@ -1200,9 +1295,24 @@ Riscv64Assembler::Branch::Branch(uint32_t location,
       target_(target),
       lhs_reg_(rd),
       rhs_reg_(Zero),
+      freg_(kNoFRegister),
       condition_(kUncond) {
   CHECK_NE(rd , Zero);
   InitializeType(label_or_literal_type);
+}
+
+Riscv64Assembler::Branch::Branch(uint32_t location,
+                                 uint32_t target,
+                                 FRegister rd,
+                                 Type literal_type)
+    : old_location_(location),
+      location_(location),
+      target_(target),
+      lhs_reg_(Zero),
+      rhs_reg_(Zero),
+      freg_(rd),
+      condition_(kUncond) {
+  InitializeType(literal_type);
 }
 
 Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::OppositeCondition(
@@ -1243,6 +1353,8 @@ Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::GetCondition() const
 XRegister Riscv64Assembler::Branch::GetLeftRegister() const { return lhs_reg_; }
 
 XRegister Riscv64Assembler::Branch::GetRightRegister() const { return rhs_reg_; }
+
+FRegister Riscv64Assembler::Branch::GetFRegister() const { return freg_; }
 
 uint32_t Riscv64Assembler::Branch::GetTarget() const { return target_; }
 
@@ -1467,6 +1579,14 @@ void Riscv64Assembler::EmitBranch(Riscv64Assembler::Branch* branch) {
     case Branch::kLiteralLong:
       emit_auipc_and_next(lhs, [&](int32_t short_offset) { Ld(lhs, lhs, short_offset); });
       break;
+    case Branch::kLiteralFloat:
+      emit_auipc_and_next(
+          TMP, [&](int32_t short_offset) { FLw(branch->GetFRegister(), TMP, short_offset); });
+      break;
+    case Branch::kLiteralDouble:
+      emit_auipc_and_next(
+          TMP, [&](int32_t short_offset) { FLd(branch->GetFRegister(), TMP, short_offset); });
+      break;
   }
   CHECK_EQ(overwrite_location_, branch->GetEndLocation());
   CHECK_LE(branch->GetLength(), static_cast<uint32_t>(Branch::kMaxBranchLength));
@@ -1527,7 +1647,10 @@ void Riscv64Assembler::Buncond(Riscv64Label* label, XRegister rd, bool is_bare) 
   FinalizeLabeledBranch(label);
 }
 
-void Riscv64Assembler::LoadLiteral(Literal* literal, XRegister rd, Branch::Type literal_type) {
+template <typename XRegisterOrFRegister>
+void Riscv64Assembler::LoadLiteral(Literal* literal,
+                                   XRegisterOrFRegister rd,
+                                   Branch::Type literal_type) {
   Riscv64Label* label = literal->GetLabel();
   DCHECK(!label->IsBound());
   branches_.emplace_back(buffer_.Size(), Branch::kUnresolved, rd, literal_type);
@@ -1818,6 +1941,48 @@ void Riscv64Assembler::EmitLiterals() {
       }
     }
   }
+}
+
+// This method is used to adjust the base register and offset pair for
+// a load/store when the offset doesn't fit into 12-bit signed integer.
+void Riscv64Assembler::AdjustBaseAndOffset(XRegister& base, int32_t& offset) {
+  CHECK_NE(base, TMP);  // The `TMP` is reserved for adjustment even if it's not needed.
+  if (IsInt<12>(offset)) {
+    return;
+  }
+
+  constexpr int32_t kHighestOffsetForSimpleAdjustment = 0xffe;
+  constexpr int32_t kPositiveOffsetSimpleAdjustmentAligned8 = 0x7f8;
+  constexpr int32_t kPositiveOffsetSimpleAdjustmentAligned4 = 0x7fc;
+  constexpr int32_t kLowestOffsetForSimpleAdjustment = -0x1000;
+  constexpr int32_t kNegativeOffsetSimpleAdjustment = -0x800;
+
+  if (offset >= 0 && offset <= kHighestOffsetForSimpleAdjustment) {
+    // Make the adjustment 8-byte aligned (0x7f8) except for offsets that cannot be reached
+    // with this adjustment, then try 4-byte alignment, then just half of the offset.
+    int32_t adjustment = IsInt<12>(offset - kPositiveOffsetSimpleAdjustmentAligned8)
+        ? kPositiveOffsetSimpleAdjustmentAligned8
+        : IsInt<12>(offset - kPositiveOffsetSimpleAdjustmentAligned4)
+            ? kPositiveOffsetSimpleAdjustmentAligned4
+            : offset / 2;
+    DCHECK(IsInt<12>(adjustment));
+    Addi(TMP, base, adjustment);
+    offset -= adjustment;
+  } else if (offset < 0 && offset >= kLowestOffsetForSimpleAdjustment) {
+    Addi(TMP, base, kNegativeOffsetSimpleAdjustment);
+    offset -= kNegativeOffsetSimpleAdjustment;
+  } else if (offset >= 0x7ffff800) {
+    // Support even large offsets outside the range supported by `SplitOffset()`.
+    LoadConst32(TMP, offset);
+    Add(TMP, TMP, base);
+    offset = 0;
+  } else {
+    auto [imm20, short_offset] = SplitOffset(offset);
+    Lui(TMP, imm20);
+    Add(TMP, TMP, base);
+    offset = short_offset;
+  }
+  base = TMP;
 }
 
 void Riscv64Assembler::LoadImmediate(XRegister rd, int64_t imm, bool can_use_tmp) {
