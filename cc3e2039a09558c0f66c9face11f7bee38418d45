@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b6193a_50b40095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T11:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b19c9e9_fc40420a",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "cc3e2039a09558c0f66c9face11f7bee38418d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa5e0f68_c52e4584",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecaa0989_129fd07c",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T11:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa5e0f68_c52e4584",
+      "range": {
+        "startLine": 175,
+        "startChar": 27,
+        "endLine": 175,
+        "endChar": 30
+      },
+      "revId": "cc3e2039a09558c0f66c9face11f7bee38418d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1120bba5_5290637e",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-01T16:36:19Z",
       "side": 1,
       "message": "Add a comment that 0x10 because fence expects 4-bit int?",
+      "range": {
+        "startLine": 864,
+        "startChar": 35,
+        "endLine": 864,
+        "endChar": 40
+      },
+      "revId": "cc3e2039a09558c0f66c9face11f7bee38418d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d122edb_1ef52b16",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T11:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1120bba5_5290637e",
       "range": {
         "startLine": 864,
         "startChar": 35,
