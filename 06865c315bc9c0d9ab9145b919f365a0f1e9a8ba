@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7755525_8c9bfde1",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6514581c_2fe8a1c1",
+      "range": {
+        "startLine": 145,
+        "startChar": 11,
+        "endLine": 145,
+        "endChar": 15
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a599ba80_a5093540",
@@ -60,6 +84,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "Please add a comment why this is needed and what effect it has on the jumps.",
+      "range": {
+        "startLine": 151,
+        "startChar": 16,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac59f05_3622b7da",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a599ba80_a5093540",
       "range": {
         "startLine": 151,
         "startChar": 16,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70213b9_9874e50d",
+        "filename": "compiler/utils/assembler_test_base.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "7ca4e755_a6769af4",
+      "range": {
+        "startLine": 175,
+        "startChar": 16,
+        "endLine": 175,
+        "endChar": 29
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f1f7039_aff6e359",
@@ -106,6 +178,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "I wonder how it passed the tests against clang previously.",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 0
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4493606_807bd5dc",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "The assembler has a fallback to compare the disassembly if the binary data does not match. And without the \"+D\" attribute, it was just comparing \"\u003cunknown\u003e\" with \"\u003cunknown\u003e\".",
+      "parentUuid": "9f1f7039_aff6e359",
       "range": {
         "startLine": 685,
         "startChar": 0,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32d475b_15ffa437",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Used a named constant with a comment.",
+      "parentUuid": "9e460550_d98a18f9",
+      "range": {
+        "startLine": 1543,
+        "startChar": 63,
+        "endLine": 1543,
+        "endChar": 65
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "223fe863_186b175e",
@@ -152,6 +272,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "Clarify what the value is when there\u0027s no preceding branch?",
+      "range": {
+        "startLine": 63,
+        "startChar": 38,
+        "endLine": 63,
+        "endChar": 87
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaf46d7_1d8e119c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Rewritten with `prev_branch_id_` and `kNoPrevBranchId`.",
+      "parentUuid": "223fe863_186b175e",
       "range": {
         "startLine": 63,
         "startChar": 38,
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9968d244_6eb98d25",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "For each label we emit the difference between the PC of that label and the PC of `JumpTable::label_` as `int32_t`.",
+      "parentUuid": "b8f8cfd6_68bfbb47",
+      "range": {
+        "startLine": 108,
+        "startChar": 58,
+        "endLine": 108,
+        "endChar": 66
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a4fab6_44c93b79",
@@ -198,6 +366,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "What exactly forces it? Pardon for my lack of C++-fu. :)",
+      "range": {
+        "startLine": 481,
+        "startChar": 2,
+        "endLine": 481,
+        "endChar": 67
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4591331_0cdf8d2a",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "The parameter is `typename Identity\u003cT\u003e::type` instead of `T`, so that `T` cannot be deduced.",
+      "parentUuid": "80a4fab6_44c93b79",
       "range": {
         "startLine": 481,
         "startChar": 2,
@@ -231,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9625e95_7f09d3bb",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "Rewritten the entire comment.",
+      "parentUuid": "3008205d_b9006375",
+      "range": {
+        "startLine": 507,
+        "startChar": 17,
+        "endLine": 507,
+        "endChar": 26
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d95796ef_e5ba33af",
@@ -244,6 +460,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "Can you also explain why they must be untested?",
+      "range": {
+        "startLine": 542,
+        "startChar": 42,
+        "endLine": 542,
+        "endChar": 50
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59703e3_e8ed1702",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "They do not have to be untested. I just didn\u0027t write tests for them as I think they should be removed instead.",
+      "parentUuid": "d95796ef_e5ba33af",
       "range": {
         "startLine": 542,
         "startChar": 42,
@@ -277,6 +517,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b56ff26_957c8ff7",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "There is no implicit conversion from integers to an enum.\n\nThere is an implicit conversion in the opposite direction which is being used here. But I\u0027d prefer to keep it as is for now. (The `Type` above is also just an `enum` instead of `enum class`.)",
+      "parentUuid": "8bdc4223_509d7c55",
+      "range": {
+        "startLine": 566,
+        "startChar": 4,
+        "endLine": 566,
+        "endChar": 8
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6155fdd6_8f94f6f4",
@@ -290,6 +554,30 @@
       "writtenOn": "2023-06-01T15:33:48Z",
       "side": 1,
       "message": "Not a TODO or TODO(riscv64) (as discussed previously)?\n\nAlso, I don\u0027t understand the comment \"it should be optimized\".",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "06865c315bc9c0d9ab9145b919f365a0f1e9a8ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42d168e_f07eeddd",
+        "filename": "runtime/arch/riscv64/registers_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-02T08:56:33Z",
+      "side": 1,
+      "message": "I rewrote the comment. Note that assembler macro instructions are unlikely to be the only users of `TMP` (and `TMP2` as I\u0027m quite certain we shall need another one for `HParallelMove`s).",
+      "parentUuid": "6155fdd6_8f94f6f4",
       "range": {
         "startLine": 71,
         "startChar": 17,
