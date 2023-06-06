@@ -21,7 +21,7 @@ import java.lang.ref.WeakReference;
 import java.math.BigInteger;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.TreeMap;
 
 /**
@@ -35,11 +35,6 @@ import java.util.TreeMap;
  * and all objects are finalized.
  */
 public class Main {
-    // TODO(b/216481630) Enable CHECK_PHANTOM_REFS. This currently occasionally reports a few
-    // PhantomReferences as not enqueued. If this report is correct, this needs to be tracked
-    // down and fixed.
-    static final boolean CHECK_PHANTOM_REFS = false;
-
     static final int MAX_LIVE_OBJS = 150;
     static final int DROP_OBJS = 50;  // Number of linked objects dropped in each batch.
     static final int MIN_LIVE_OBJS = MAX_LIVE_OBJS - DROP_OBJS;
@@ -48,7 +43,6 @@ public class Main {
     static volatile boolean pleaseStop;
 
     AtomicInteger totalFinalized = new AtomicInteger(0);
-    Object phantomRefsLock = new Object();
     int maxDropped = 0;
     int liveObjects = 0;
 
@@ -66,7 +60,7 @@ public class Main {
     // Maps from object number to Reference; Cleared references are deleted when queues are
     // processed.
     TreeMap<Integer, MyWeakReference> weakRefs = new TreeMap<>();
-    HashMap<Integer, MyPhantomReference> phantomRefs = new HashMap<>();
+    ConcurrentHashMap<Integer, MyPhantomReference> phantomRefs = new ConcurrentHashMap<>();
 
     class FinalizableObject {
         int n;
@@ -101,16 +95,14 @@ public class Main {
         }
     }
     boolean inPhantomRefs(int n) {
-        synchronized(phantomRefsLock) {
-            MyPhantomReference ref = phantomRefs.get(n);
-            if (ref == null) {
-                return false;
-            }
-            if (ref.n != n) {
-                System.out.println("phantomRef retrieval failed");
-            }
-            return true;
+        MyPhantomReference ref = phantomRefs.get(n);
+        if (ref == null) {
+            return false;
         }
+        if (ref.n != n) {
+            System.out.println("phantomRef retrieval failed");
+        }
+        return true;
     }
 
     void CheckOKToClearWeak(int num) {
@@ -197,9 +189,7 @@ public class Main {
             int me = nextAllocated++;
             listHead = new FinalizableObject(me, listHead);
             weakRefs.put(me, new MyWeakReference(listHead));
-            synchronized(phantomRefsLock) {
-                phantomRefs.put(me, new MyPhantomReference(listHead));
-            }
+            phantomRefs.put(me, new MyPhantomReference(listHead));
         }
         liveObjects += n;
     }
@@ -260,7 +250,7 @@ public class Main {
         if (!weakRefs.isEmpty()) {
             System.out.println("Weak Reference map nonempty size = " + weakRefs.size());
         }
-        if (CHECK_PHANTOM_REFS && !phantomRefs.isEmpty()) {
+        if (!phantomRefs.isEmpty()) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
