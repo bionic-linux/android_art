@@ -125,6 +125,33 @@ TEST(Arm64InstructionSetFeaturesTest, Arm64Features) {
   EXPECT_FALSE(cortex_a76_features->AsArm64InstructionSetFeatures()->HasSVE());
   EXPECT_STREQ("-a53,crc,lse,fp16,dotprod,-sve", cortex_a76_features->GetFeatureString().c_str());
   EXPECT_EQ(cortex_a76_features->AsBitmap(), 30U);
+
+  std::vector<std::string> equal_sve_support_variants = {"cortex-a510",
+                                                         "cortex-a710",
+                                                         "cortex-x2"};
+  for (auto variant : equal_sve_support_variants) {
+      std::unique_ptr<const InstructionSetFeatures> features(
+          InstructionSetFeatures::FromVariant(InstructionSet::kArm64, variant, &error_msg));
+      ASSERT_TRUE(features.get() != nullptr) << error_msg;
+      EXPECT_EQ(features->GetInstructionSet(), InstructionSet::kArm64);
+      EXPECT_TRUE(features->Equals(features.get()));
+      EXPECT_TRUE(features->HasAtLeast(arm64_features.get()));
+      EXPECT_FALSE(features->AsArm64InstructionSetFeatures()->NeedFixCortexA53_835769());
+      EXPECT_FALSE(features->AsArm64InstructionSetFeatures()->NeedFixCortexA53_843419());
+      EXPECT_TRUE(features->AsArm64InstructionSetFeatures()->HasCRC());
+      EXPECT_TRUE(features->AsArm64InstructionSetFeatures()->HasLSE());
+      EXPECT_TRUE(features->AsArm64InstructionSetFeatures()->HasFP16());
+      EXPECT_TRUE(features->AsArm64InstructionSetFeatures()->HasDotProd());
+      if (kArm64AllowSVE) {
+          EXPECT_TRUE(features->AsArm64InstructionSetFeatures()->HasSVE());
+          EXPECT_STREQ("-a53,crc,lse,fp16,dotprod,sve", features->GetFeatureString().c_str());
+          EXPECT_EQ(features->AsBitmap(), 62U);
+      } else {
+          EXPECT_FALSE(features->AsArm64InstructionSetFeatures()->HasSVE());
+          EXPECT_STREQ("-a53,crc,lse,fp16,dotprod,-sve", features->GetFeatureString().c_str());
+          EXPECT_EQ(features->AsBitmap(), 30U);
+      }
+  }
 }
 
 TEST(Arm64InstructionSetFeaturesTest, Arm64AddFeaturesFromString) {

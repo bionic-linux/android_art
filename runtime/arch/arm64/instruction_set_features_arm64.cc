@@ -29,6 +29,7 @@
 #include <android-base/strings.h>
 
 #include "base/array_ref.h"
+#include "base/globals.h"
 #include "base/stl_util.h"
 
 #include <cpu_features_macros.h>
@@ -67,15 +68,18 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
       "default",
       "generic",
       "cortex-a35",
+      "cortex-a510",
       "cortex-a53",
       "cortex-a53.a57",
       "cortex-a53.a72",
+      "cortex-a55",
       "cortex-a57",
+      "cortex-a710",
       "cortex-a72",
       "cortex-a73",
-      "cortex-a55",
       "cortex-a75",
       "cortex-a76",
+      "cortex-x2",
       "exynos-m1",
       "exynos-m2",
       "exynos-m3",
@@ -85,25 +89,40 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
   };
 
   static const char* arm64_variants_with_lse[] = {
+      "cortex-a510",
       "cortex-a55",
+      "cortex-a710",
       "cortex-a75",
       "cortex-a76",
+      "cortex-x2",
       "kryo385",
       "kryo785",
   };
 
   static const char* arm64_variants_with_fp16[] = {
+      "cortex-a510",
       "cortex-a55",
+      "cortex-a710",
       "cortex-a75",
       "cortex-a76",
+      "cortex-x2",
       "kryo385",
       "kryo785",
   };
 
   static const char* arm64_variants_with_dotprod[] = {
+      "cortex-a510",
       "cortex-a55",
+      "cortex-a710",
       "cortex-a75",
       "cortex-a76",
+      "cortex-x2",
+  };
+
+  static const char* arm64_variants_with_sve[] = {
+      "cortex-a510",
+      "cortex-a710",
+      "cortex-x2",
   };
 
   bool needs_a53_835769_fix = FindVariantInArray(arm64_variants_with_a53_835769_bug,
@@ -128,17 +147,21 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromVariant(
                                         arraysize(arm64_variants_with_dotprod),
                                         variant);
 
-  // Currently there are no cpu variants which support SVE.
-  bool has_sve = false;
+  bool has_sve = FindVariantInArray(arm64_variants_with_sve,
+                                    arraysize(arm64_variants_with_sve),
+                                    variant);
 
   if (!needs_a53_835769_fix) {
     // Check to see if this is an expected variant. `other_arm64_known_variants` contains the
     // variants which do *not* need a fix for a53 erratum 835769.
     static const char* other_arm64_known_variants[] = {
         "cortex-a35",
+        "cortex-a510",
         "cortex-a55",
+        "cortex-a710",
         "cortex-a75",
         "cortex-a76",
+        "cortex-x2",
         "exynos-m1",
         "exynos-m2",
         "exynos-m3",
@@ -262,6 +285,13 @@ Arm64FeaturesUniquePtr Arm64InstructionSetFeatures::FromHwcap() {
   has_fp16 = hwcaps & HWCAP_FPHP ? true : false;
   has_dotprod = hwcaps & HWCAP_ASIMDDP ? true : false;
   has_sve = hwcaps & HWCAP_SVE ? true : false;
+  if (has_sve) {
+    // Validate the vector length
+    size_t system_vl = Arm64InstructionSetFeatures::DetectSystemSVEVectorLength();
+    CHECK_EQ(system_vl, kArm64SVEVectorLength)
+      << "Mistmatch between the configured SVE vector length and the run-time"
+      << " detected SVE vector length.";
+  }
 #endif
 
   return Arm64FeaturesUniquePtr(new Arm64InstructionSetFeatures(needs_a53_835769_fix,
@@ -329,7 +359,8 @@ uint32_t Arm64InstructionSetFeatures::AsBitmap() const {
       | (has_lse_ ? kLSEBitField: 0)
       | (has_fp16_ ? kFP16BitField: 0)
       | (has_dotprod_ ? kDotProdBitField : 0)
-      | (has_sve_ ? kSVEBitField : 0);
+      // See GetFeatureString for explanation of the SVE feature reporting.
+      | (has_sve_ && kArm64AllowSVE ? kSVEBitField : 0);
 }
 
 std::string Arm64InstructionSetFeatures::GetFeatureString() const {
@@ -359,7 +390,9 @@ std::string Arm64InstructionSetFeatures::GetFeatureString() const {
   } else {
     result += ",-dotprod";
   }
-  if (has_sve_) {
+  // Report not just that the SVE feature is present, but that it is both
+  // present and enabled in ART.
+  if (has_sve_ && kArm64AllowSVE) {
     result += ",sve";
   } else {
     result += ",-sve";
@@ -459,6 +492,16 @@ Arm64InstructionSetFeatures::AddRuntimeDetectedFeatures(
                                       arm64_features->has_fp16_,
                                       arm64_features->has_dotprod_,
                                       arm64_features->has_sve_));
+}
+
+size_t Arm64InstructionSetFeatures::DetectSystemSVEVectorLength() {
+  std::ifstream in("/proc/sys/abi/sve_default_vector_length");
+  if (in.fail()) {
+    return 0;
+  }
+  size_t vl_bytes;
+  in >> vl_bytes;
+  return vl_bytes * kBitsPerByte;
 }
 
 }  // namespace art

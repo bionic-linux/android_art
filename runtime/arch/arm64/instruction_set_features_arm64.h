@@ -53,6 +53,12 @@ class Arm64InstructionSetFeatures final : public InstructionSetFeatures {
   // Use external cpu_features library.
   static Arm64FeaturesUniquePtr FromCpuFeatures();
 
+  // Return the system's default vector length in bits, by reading
+  // /proc/sys/abi/sve_default_vector_length which defines the vector length in
+  // bytes. Result may be used to validate that ART code-gen is for the correct
+  // SVE vector length (kArm64SVEVectorLength).
+  static size_t DetectSystemSVEVectorLength();
+
   // Return a new set of instruction set features, intersecting `this` features
   // with hardware capabilities.
   Arm64FeaturesUniquePtr IntersectWithHwcap() const;
@@ -105,8 +111,7 @@ class Arm64InstructionSetFeatures final : public InstructionSetFeatures {
   }
 
   size_t GetSVEVectorLength() const {
-    // TODO: support SVE vector length detection.
-    return kArm64DefaultSVEVectorLength;
+    return kArm64SVEVectorLength;
   }
 
   virtual ~Arm64InstructionSetFeatures() {}

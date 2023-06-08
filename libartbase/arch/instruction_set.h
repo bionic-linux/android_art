@@ -59,8 +59,8 @@ static constexpr PointerSize kRiscv64PointerSize = PointerSize::k64;
 static constexpr PointerSize kX86PointerSize = PointerSize::k32;
 static constexpr PointerSize kX86_64PointerSize = PointerSize::k64;
 
-// ARM64 default SVE vector length.
-static constexpr size_t kArm64DefaultSVEVectorLength = 256;
+// Arm64 SVE vector length.
+static constexpr size_t kArm64SVEVectorLength = 128;
 
 // Code alignment (used for the first instruction of a subroutine, such as an entrypoint).
 // This is the recommended alignment for maximum performance.
