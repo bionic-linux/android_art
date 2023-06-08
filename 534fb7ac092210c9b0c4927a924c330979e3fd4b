@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1944425_b177097d",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-06-08T11:06:20Z",
+      "side": 1,
+      "message": "`global_options.copy()`",
+      "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
