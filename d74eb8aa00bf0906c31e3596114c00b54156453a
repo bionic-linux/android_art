@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fae163_474d1c60",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac3dcfda_da0622bf",
+      "range": {
+        "startLine": 1040,
+        "startChar": 0,
+        "endLine": 1041,
+        "endChar": 61
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96c24e23_de36178b",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-08T14:33:36Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 1043,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 62
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072e2780_8dcbf2dc",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96c24e23_de36178b",
       "range": {
         "startLine": 1043,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c501c3_2f8c7f5f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "Deduplicated using a helper template function.",
+      "parentUuid": "92abc481_f8dc3a91",
+      "range": {
+        "startLine": 1065,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 60
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47c52b00_07a4f334",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-06-08T14:33:36Z",
       "side": 1,
       "message": "Some of these constants can also be deduplicated with the above if you move them to toplevel.",
+      "range": {
+        "startLine": 2002,
+        "startChar": 0,
+        "endLine": 2006,
+        "endChar": 61
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea19e269_2d55a1bd",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep these separate. Otherwise I\u0027d have to find some common names and the best I can think of right now start with `kMaxInt12`.",
+      "parentUuid": "47c52b00_07a4f334",
       "range": {
         "startLine": 2002,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ceb3c9_bc763a7c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "Added a comma here.",
+      "parentUuid": "894d43fc_2db0ea1f",
+      "range": {
+        "startLine": 639,
+        "startChar": 78,
+        "endLine": 639,
+        "endChar": 83
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48efbf80_68da7621",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-06-08T14:33:36Z",
       "side": 1,
       "message": "Perhaps it would be a bit cleaner to pass range constraints / a generic filter function to `CreateImmediateValuesBits`?",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 53
+      },
+      "revId": "d74eb8aa00bf0906c31e3596114c00b54156453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1fc3ab_529ab8ac",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-09T08:08:48Z",
+      "side": 1,
+      "message": "I\u0027d like to keep this as is for now.\n\nIt would be better to test specific values instead and that\u0027s something we really should do when we address the TODO I added to `AddConst64()` in PS5.",
+      "parentUuid": "48efbf80_68da7621",
       "range": {
         "startLine": 645,
         "startChar": 0,
