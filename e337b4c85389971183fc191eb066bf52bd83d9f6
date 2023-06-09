@@ -16,6 +16,29 @@
       "message": "This is a very dirty solution, but it scales. I can\u0027t see any simpler solution so far.",
       "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2a808b_769b3861",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-09T10:46:21Z",
+      "side": 1,
+      "message": "Can we make this a dex2oat arg instead (--cache-info-fd)? We won\u0027t pass it to the zygote, right?",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 78
+      },
+      "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
