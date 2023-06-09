@@ -39,6 +39,30 @@
       },
       "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bde868_ae93f8af",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-09T10:57:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure. The collector type is a runtime option, so maybe once day we\u0027ll find it useful to pass the cache info FD to Zygote as well. Besides, this is a very dirty solution anyway. Restricting the flag to dex2oat doesn\u0027t make it any cleaner.",
+      "parentUuid": "dc2a808b_769b3861",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 78
+      },
+      "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
