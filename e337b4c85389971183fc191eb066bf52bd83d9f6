@@ -63,6 +63,30 @@
       },
       "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a32eb2_43b02dfe",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-09T11:00:53Z",
+      "side": 1,
+      "message": "It does convey that the hack is dex2oat/odrefresh only and that a real runtime doesn\u0027t need to worry about.\n\nhowever, if you think the cache info fd will indeed eventually be used by the runtime, then sgtm.",
+      "parentUuid": "73bde868_ae93f8af",
+      "range": {
+        "startLine": 505,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 78
+      },
+      "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
