@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa60a915_822be6c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2023-06-09T23:00:54Z",
+      "side": 1,
+      "message": "I don\u0027t see how the presubmit error may be related to this CL, retrying...",
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
