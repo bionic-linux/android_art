@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d9f198_ba6be864",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-09T10:38:38Z",
+      "side": 1,
+      "message": "This is a very dirty solution, but it scales. I can\u0027t see any simpler solution so far.",
+      "revId": "e337b4c85389971183fc191eb066bf52bd83d9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
