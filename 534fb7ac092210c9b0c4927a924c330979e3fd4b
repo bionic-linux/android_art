@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff6ffaa1_a5f32e67",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-06-12T18:13:37Z",
+      "side": 1,
+      "message": "Thank you. I\u0027m preparing an updated patch.",
+      "parentUuid": "f1944425_b177097d",
+      "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46a176a2_90ae8f97",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-12T14:33:28Z",
       "side": 1,
       "message": "This shall be updated as well to \u0027args\u0027.\n\n```suggestion\n    args: The arguments to be used to invoke the script\n```",
+      "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c4703d_a545e949",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-06-12T18:13:37Z",
+      "side": 1,
+      "message": "Thank you. I\u0027m preparing an updated patch.",
+      "parentUuid": "46a176a2_90ae8f97",
       "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
