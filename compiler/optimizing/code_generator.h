@@ -29,6 +29,7 @@
 #include "base/macros.h"
 #include "base/memory_region.h"
 #include "class_root.h"
+#include "code_generation_data.h"
 #include "dex/string_reference.h"
 #include "dex/type_reference.h"
 #include "graph_visualizer.h"
@@ -852,8 +853,6 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   DisassemblyInformation* disasm_info_;
 
  private:
-  class CodeGenerationData;
-
   void InitializeCodeGenerationData();
   size_t GetStackOffsetOfSavedRegister(size_t index);
   void GenerateSlowPaths();
