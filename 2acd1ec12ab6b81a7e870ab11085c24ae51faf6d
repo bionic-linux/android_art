@@ -16,6 +16,24 @@
       "message": "Sorry for digging this out after such a long time.\n\nDoes this fix the test only, or was the behaviour broken before the call to HWASanUntag in `Contains`? Asking because if it is the latter, we need to fix this for\n\na) MTE, which will also have tagged addresses and\nb) change the HWASan detection to runtime (by using a weak symbol)",
       "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9b234f_c13c7b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-06-12T10:15:35Z",
+      "side": 1,
+      "message": "I think this matters to non-tests as well.\n\nCan we make the untag unconditional?\n\nAlthough I guess the runtime check shouldn\u0027t be too slow.\n\nSo I guess whichever is simpler code...",
+      "parentUuid": "35b4de8f_2f6808c2",
+      "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
