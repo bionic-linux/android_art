@@ -34,6 +34,24 @@
       "parentUuid": "35b4de8f_2f6808c2",
       "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9a4c38_eb1253ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-06-12T16:18:55Z",
+      "side": 1,
+      "message": "Do you know what this affects? I browsed through the code and it seemed _mostly_ related to stacktrace printing, but I\u0027m not sure.",
+      "parentUuid": "5a9b234f_c13c7b16",
+      "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
