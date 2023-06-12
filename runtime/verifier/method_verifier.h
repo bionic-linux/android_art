@@ -355,6 +355,12 @@ class MethodVerifier {
   // Link, for the method verifier root linked list.
   MethodVerifier* link_;
 
+  bool is_leaf_  = true;
+  bool has_goto_  = false;
+  bool has_loop_  = false;
+  bool has_float_or_double_  = false;
+  bool has_long_  = false;
+
   friend class art::Thread;
   friend class ClassVerifier;
   friend class VerifierDepsTest;

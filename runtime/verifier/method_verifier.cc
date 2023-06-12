@@ -1893,6 +1893,12 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyMethod() {
       PrependToLastFailMessage(prepend);
       return false;
     }
+    if (work_line_->HasFloatOrDouble(this)) {
+      has_float_or_double_ = true;
+    }
+    if (work_line_->HasLong(this)) {
+      has_long_ = true;
+    }
     /* Clear "changed" and mark as visited. */
     GetModifiableInstructionFlags(insn_idx).SetVisited();
     GetModifiableInstructionFlags(insn_idx).ClearChanged();
@@ -2495,6 +2501,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       work_line_->SetRegisterType<LockOp::kClear>(inst->VRegA_23x(), reg_types_.Integer());
       break;
     case Instruction::THROW: {
+      is_leaf_ = false;
       const RegType& res_type = work_line_->GetRegisterType(this, inst->VRegA_11x());
       if (!reg_types_.JavaLangThrowable(false).IsAssignableFrom(res_type, this)) {
         if (res_type.IsUninitializedTypes()) {
@@ -2512,11 +2519,13 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     case Instruction::GOTO:
     case Instruction::GOTO_16:
     case Instruction::GOTO_32:
+      has_goto_ = true;
       /* no effect on or use of registers */
       break;
 
     case Instruction::PACKED_SWITCH:
     case Instruction::SPARSE_SWITCH:
+      has_goto_ = true;
       /* verify that vAA is an integer, or can be converted to one */
       work_line_->VerifyRegisterType(this, inst->VRegA_31t(), reg_types_.Integer());
       break;
@@ -2563,6 +2572,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     }
     case Instruction::IF_EQ:
     case Instruction::IF_NE: {
+      has_goto_ = true;
       const RegType& reg_type1 = work_line_->GetRegisterType(this, inst->VRegA_22t());
       const RegType& reg_type2 = work_line_->GetRegisterType(this, inst->VRegB_22t());
       bool mismatch = false;
@@ -2583,6 +2593,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     case Instruction::IF_GE:
     case Instruction::IF_GT:
     case Instruction::IF_LE: {
+      has_goto_ = true;
       const RegType& reg_type1 = work_line_->GetRegisterType(this, inst->VRegA_22t());
       const RegType& reg_type2 = work_line_->GetRegisterType(this, inst->VRegB_22t());
       if (!reg_type1.IsIntegralTypes() || !reg_type2.IsIntegralTypes()) {
@@ -2593,6 +2604,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     }
     case Instruction::IF_EQZ:
     case Instruction::IF_NEZ: {
+      has_goto_ = true;
       const RegType& reg_type = work_line_->GetRegisterType(this, inst->VRegA_21t());
       if (!reg_type.IsReferenceTypes() && !reg_type.IsIntegralTypes()) {
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "type " << reg_type
@@ -2705,6 +2717,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     case Instruction::IF_GEZ:
     case Instruction::IF_GTZ:
     case Instruction::IF_LEZ: {
+      has_goto_ = true;
       const RegType& reg_type = work_line_->GetRegisterType(this, inst->VRegA_21t());
       if (!reg_type.IsIntegralTypes()) {
         Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "type " << reg_type
@@ -2852,6 +2865,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     case Instruction::INVOKE_VIRTUAL_RANGE:
     case Instruction::INVOKE_SUPER:
     case Instruction::INVOKE_SUPER_RANGE: {
+      is_leaf_ = false;
       bool is_range = (inst->Opcode() == Instruction::INVOKE_VIRTUAL_RANGE ||
                        inst->Opcode() == Instruction::INVOKE_SUPER_RANGE);
       bool is_super = (inst->Opcode() == Instruction::INVOKE_SUPER ||
@@ -2896,6 +2910,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       bool is_constructor;
       const RegType* return_type = nullptr;
       if (called_method == nullptr) {
+        is_leaf_ = false;
         uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
         const dex::MethodId& method_id = dex_file_->GetMethodId(method_idx);
         is_constructor = strcmp("<init>", dex_file_->StringDataByIdx(method_id.name_idx_)) == 0;
@@ -2904,6 +2919,12 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
         return_type_descriptor =  dex_file_->StringByTypeIdx(return_type_idx);
       } else {
         is_constructor = called_method->IsConstructor();
+        if (is_leaf_) {
+          bool object_init = is_constructor && (called_method->GetDeclaringClass()->GetSuperClass() == nullptr);
+          if (!object_init) {
+            is_leaf_ = false;
+          }
+        }
         return_type_descriptor = called_method->GetReturnTypeDescriptor();
         ObjPtr<mirror::Class> return_type_class = can_load_classes_
             ? called_method->ResolveReturnType()
@@ -2972,6 +2993,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     }
     case Instruction::INVOKE_STATIC:
     case Instruction::INVOKE_STATIC_RANGE: {
+      is_leaf_ = false;
         bool is_range = (inst->Opcode() == Instruction::INVOKE_STATIC_RANGE);
         ArtMethod* called_method = VerifyInvocationArgs(inst, METHOD_STATIC, is_range);
         const char* descriptor;
@@ -2997,6 +3019,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       break;
     case Instruction::INVOKE_INTERFACE:
     case Instruction::INVOKE_INTERFACE_RANGE: {
+      is_leaf_ = false;
       bool is_range =  (inst->Opcode() == Instruction::INVOKE_INTERFACE_RANGE);
       ArtMethod* abs_method = VerifyInvocationArgs(inst, METHOD_INTERFACE, is_range);
       if (abs_method != nullptr) {
@@ -3054,6 +3077,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     }
     case Instruction::INVOKE_POLYMORPHIC:
     case Instruction::INVOKE_POLYMORPHIC_RANGE: {
+      is_leaf_ = false;
       bool is_range = (inst->Opcode() == Instruction::INVOKE_POLYMORPHIC_RANGE);
       ArtMethod* called_method = VerifyInvocationArgs(inst, METHOD_POLYMORPHIC, is_range);
       if (called_method == nullptr) {
@@ -3087,6 +3111,7 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
     }
     case Instruction::INVOKE_CUSTOM:
     case Instruction::INVOKE_CUSTOM_RANGE: {
+      is_leaf_ = false;
       // Verify registers based on method_type in the call site.
       bool is_range = (inst->Opcode() == Instruction::INVOKE_CUSTOM_RANGE);
 
@@ -3398,6 +3423,9 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "bad branch";
       return false;
     }
+    if (branch_target <= 0) {
+      has_loop_ = true;
+    }
     DCHECK_EQ(isConditional, (opcode_flags & Instruction::kContinue) != 0);
     if (!CheckNotMoveExceptionOrMoveResult(code_item_accessor_.Insns(),
                                            work_insn_idx_ + branch_target)) {
@@ -3444,6 +3472,9 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
       /* offsets are 32-bit, and only partly endian-swapped */
       offset = switch_insns[offset_to_targets + targ * 2] |
          (static_cast<int32_t>(switch_insns[offset_to_targets + targ * 2 + 1]) << 16);
+    if (offset <= 0) {
+      has_loop_ = true;
+    }
       abs_offset = work_insn_idx_ + offset;
       DCHECK_LT(abs_offset, code_item_accessor_.InsnsSizeInCodeUnits());
       if (!CheckNotMoveExceptionOrMoveResult(code_item_accessor_.Insns(), abs_offset)) {
@@ -5160,6 +5191,10 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
                    << " (" << verifier.allocator_.ApproximatePeakBytes()
                    << "B approximate peak alloc)";
     }
+  }
+
+  if (verifier.code_item_accessor_.InsnsSizeInCodeUnits() != 0) {
+    LOG(ERROR) << "SIZE= " << verifier.code_item_accessor_.InsnsSizeInCodeUnits() << " LEAF= " << verifier.is_leaf_ << " GOTO= " << verifier.has_goto_ << " LOOP= " << verifier.has_loop_ << " FLOAT_OR_DOUBLE= " << verifier.has_float_or_double_ << " LONG= " << verifier.has_long_;
   }
   result.types = verifier.encountered_failure_types_;
   return result;

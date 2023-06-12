@@ -379,6 +379,8 @@ class RegisterLine {
       }
     }
   }
+ bool HasFloatOrDouble(MethodVerifier* verifier);
+ bool HasLong(MethodVerifier* verifier);
 
  private:
   void CopyRegToLockDepth(size_t dst, size_t src) {

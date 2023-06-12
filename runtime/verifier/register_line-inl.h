@@ -36,6 +36,27 @@ inline const RegType& RegisterLine::GetRegisterType(MethodVerifier* verifier, ui
   return verifier->GetRegTypeCache()->GetFromId(line_[vsrc]);
 }
 
+inline bool RegisterLine::HasFloatOrDouble(MethodVerifier* verifier) {
+    for (size_t idx = 0; idx < num_regs_; idx++) {
+      const RegType& reg_type = GetRegisterType(verifier, idx);
+      if (reg_type.IsFloat() || reg_type.IsDouble() || reg_type.IsDoubleLo() || reg_type.IsDoubleHi()) {
+        return true;
+      }
+    }
+    return false;
+}
+
+inline bool RegisterLine::HasLong(MethodVerifier* verifier) {
+    for (size_t idx = 0; idx < num_regs_; idx++) {
+      const RegType& reg_type = GetRegisterType(verifier, idx);
+      if (reg_type.IsLong() || reg_type.IsLongLo() || reg_type.IsLongHi()) {
+        return true;
+      }
+    }
+    return false;
+}
+
+
 template <LockOp kLockOp>
 inline void RegisterLine::SetRegisterType(uint32_t vdst, const RegType& new_type) {
   DCHECK_LT(vdst, num_regs_);
