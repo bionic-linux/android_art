@@ -52,6 +52,24 @@
       "parentUuid": "5a9b234f_c13c7b16",
       "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2f3104b_724e7736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2023-06-12T18:35:14Z",
+      "side": 1,
+      "message": "Unconditional untagging should be fast and simple.On Arm64 the top byte is either meaningless (TBI), or contains an MTE tag and/or PAC signature; none of that should be present in PC and all of them are not part of the memory address, so resetting the top byte before comparison is always correct.",
+      "parentUuid": "5e9a4c38_eb1253ce",
+      "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
