@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdec4a02_3dc49c2e",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-13T12:09:27Z",
+      "side": 1,
+      "message": "Create a `code_generation_data.cc`?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 38
+      },
+      "revId": "5683052b6a71076f6223a5a505a4017f0611bd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd82254_593605d6",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-13T12:09:27Z",
+      "side": 1,
+      "message": "Forward declaration should be enough here. The .cc file then needs the #include.",
+      "revId": "5683052b6a71076f6223a5a505a4017f0611bd8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
