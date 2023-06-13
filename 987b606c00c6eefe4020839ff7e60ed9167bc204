@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd859da4_ec1b1efb",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-13T08:40:22Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "987b606c00c6eefe4020839ff7e60ed9167bc204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be233638_bc54b7da",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-13T08:40:22Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 11,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "987b606c00c6eefe4020839ff7e60ed9167bc204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89030990_067e7646",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-13T08:40:22Z",
+      "side": 1,
+      "message": "class",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "987b606c00c6eefe4020839ff7e60ed9167bc204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f7cbd0_834c1884",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-13T08:40:22Z",
+      "side": 1,
+      "message": "Explain why is it different than the _FAST version?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 76
+      },
+      "revId": "987b606c00c6eefe4020839ff7e60ed9167bc204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
