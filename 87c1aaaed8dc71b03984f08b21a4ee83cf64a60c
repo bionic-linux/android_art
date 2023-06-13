@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c92d5d_863b0ddb",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-06-13T15:13:52Z",
+      "side": 1,
+      "message": "Might be better to write it in overflow-safe way.",
+      "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
