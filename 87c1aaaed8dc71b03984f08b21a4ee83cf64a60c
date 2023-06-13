@@ -52,6 +52,24 @@
       "parentUuid": "26704360_973c53d7",
       "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedf7bf6_d93fc52d",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-06-13T15:31:13Z",
+      "side": 1,
+      "message": "The substraction is not the same as `size_` is of type `size_t` while the other variables are `uint32_t`. Using `uint64_t` works",
+      "parentUuid": "665fa283_65080888",
+      "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
