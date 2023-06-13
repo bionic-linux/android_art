@@ -70,6 +70,24 @@
       "parentUuid": "665fa283_65080888",
       "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f94968_6e74058f",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-06-13T16:11:47Z",
+      "side": 1,
+      "message": "I was mistaken. We can do this without a cast.",
+      "parentUuid": "dedf7bf6_d93fc52d",
+      "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "2416e099b2abbc0f403ba15aa9a7ed384d1192b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bdc5f95_d57fa633",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-06-13T16:11:47Z",
+      "side": 1,
+      "message": "David suggested the same thing I tried it locally and it didn\u0027t work but that was because I was doing it wrong locally: `if (size_ - offset \u003c size) {` is correct, but `if (size_ - size \u003c offset) {` is wrong.\n\nDone.",
+      "parentUuid": "0765b62e_2f90ba6f",
+      "range": {
+        "startLine": 564,
+        "startChar": 6,
+        "endLine": 564,
+        "endChar": 57
+      },
+      "revId": "2416e099b2abbc0f403ba15aa9a7ed384d1192b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
