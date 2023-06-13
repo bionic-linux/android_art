@@ -34,6 +34,24 @@
       "parentUuid": "41c92d5d_863b0ddb",
       "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665fa283_65080888",
+        "filename": "libdexfile/dex/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-06-13T15:18:04Z",
+      "side": 1,
+      "message": "or `size_ - offset \u003c size`",
+      "parentUuid": "26704360_973c53d7",
+      "revId": "87c1aaaed8dc71b03984f08b21a4ee83cf64a60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
