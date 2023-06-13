@@ -70,6 +70,24 @@
       "parentUuid": "5e9a4c38_eb1253ce",
       "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4dbc24_372cb36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-06-13T20:08:16Z",
+      "side": 1,
+      "message": "Discussed this offline. It seems like the memory for this data gets allocated by `mspace_malloc` from dlalloc directly. This does not get tagged with HWASan or MTE, so the untag should be unnecessary. I added a check\n\n```\nCHECK(reinterpret_cast\u003cuintptr_t\u003e(p) \u003d\u003d (reinterpret_cast\u003cuintptr_t\u003e(p) \u0026 ((1ULL \u003c\u003c 56) - 1)));\n```\n\ninto `HWASanUntag` and was able to boot up a HWASan image without crashes.",
+      "parentUuid": "b2f3104b_724e7736",
+      "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
