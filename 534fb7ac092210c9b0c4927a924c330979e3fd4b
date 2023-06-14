@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "913cb3a4_47921cf9",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-06-14T14:06:33Z",
+      "side": 1,
+      "message": "The fix has been pushed at https://android-review.googlesource.com/c/platform/art/+/2626049/1..2",
+      "parentUuid": "ff6ffaa1_a5f32e67",
+      "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46a176a2_90ae8f97",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Thank you. I\u0027m preparing an updated patch.",
       "parentUuid": "46a176a2_90ae8f97",
+      "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26181be_0c2fcdd7",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-06-14T14:06:33Z",
+      "side": 1,
+      "message": "The fix has been pushed at https://android-review.googlesource.com/c/platform/art/+/2626049/1..2",
+      "parentUuid": "e6c4703d_a545e949",
       "revId": "534fb7ac092210c9b0c4927a924c330979e3fd4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
