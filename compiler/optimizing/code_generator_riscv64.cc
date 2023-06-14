@@ -780,14 +780,58 @@ void InstructionCodeGeneratorRISCV64::VisitAboveOrEqual(HAboveOrEqual* instructi
   LOG(FATAL) << "Unimplemented";
 }
 
-void LocationsBuilderRISCV64::VisitAbs(HAbs* instruction) {
-  UNUSED(instruction);
-  LOG(FATAL) << "Unimplemented";
+void LocationsBuilderRISCV64::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(abs);
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetOut(Location::RequiresRegister(), Location::kNoOutputOverlap);
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected abs type " << abs->GetResultType();
+  }
 }
 
-void InstructionCodeGeneratorRISCV64::VisitAbs(HAbs* instruction) {
-  UNUSED(instruction);
-  LOG(FATAL) << "Unimplemented";
+void InstructionCodeGeneratorRISCV64::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = abs->GetLocations();
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32: {
+      XRegister in = locations->InAt(0).AsRegister<XRegister>();
+      XRegister out = locations->Out().AsRegister<XRegister>();
+      __ Sraiw(TMP, in, 31);
+      __ Xor(out, in, TMP);
+      __ Subw(out, out, TMP);
+      break;
+    }
+    case DataType::Type::kInt64: {
+      XRegister in = locations->InAt(0).AsRegister<XRegister>();
+      XRegister out = locations->Out().AsRegister<XRegister>();
+      __ Srai(TMP, in, 63);
+      __ Xor(out, in, TMP);
+      __ Sub(out, out, TMP);
+      break;
+    }
+    case DataType::Type::kFloat32: {
+      FRegister in = locations->InAt(0).AsFpuRegister<FRegister>();
+      FRegister out = locations->Out().AsFpuRegister<FRegister>();
+      __ FAbsS(out, in);
+      break;
+    }
+    case DataType::Type::kFloat64: {
+      FRegister in = locations->InAt(0).AsFpuRegister<FRegister>();
+      FRegister out = locations->Out().AsFpuRegister<FRegister>();
+      __ FAbsD(out, in);
+      break;
+    }
+    default:
+      LOG(FATAL) << "Unexpected abs type " << abs->GetResultType();
+  }
 }
 
 void LocationsBuilderRISCV64::VisitAdd(HAdd* instruction) {
