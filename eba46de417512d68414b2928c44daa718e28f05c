@@ -33,6 +33,23 @@
       "message": "Outside my area of knowledge, sorry.",
       "revId": "eba46de417512d68414b2928c44daa718e28f05c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739d677f_6b4c2824",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-06-14T11:42:47Z",
+      "side": 1,
+      "message": "Adding Martin, who is the authority for this type of changes.",
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
