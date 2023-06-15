@@ -88,6 +88,24 @@
       "parentUuid": "b2f3104b_724e7736",
       "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ff744c_f612b0f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2023-06-15T21:27:44Z",
+      "side": 1,
+      "message": "Sent https://r.android.com/2626113 to add a DCHECK for this and fix up the  test (that did use malloc for code).",
+      "parentUuid": "4b4dbc24_372cb36c",
+      "revId": "2acd1ec12ab6b81a7e870ab11085c24ae51faf6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
