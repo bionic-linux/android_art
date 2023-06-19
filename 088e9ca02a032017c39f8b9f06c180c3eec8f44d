@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23de941_54f3b5b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-06-19T14:57:35Z",
+      "side": 1,
+      "message": "Just building ART is an insufficient test to verify this change. Could you run ART run-tests [`2232-write-metrics-to-log`](https://cs.android.com/android/platform/superproject/+/master:art/test/2232-write-metrics-to-log/) (and update the `Test:` stanza here)? Note that this test is not yet supported by TradeFed/Atest, so you\u0027ll have to use the [ART Chroot-Based On-Device Testing instructions](https://cs.android.com/android/platform/superproject/+/master:art/test/README.chroot.md) to run it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "088e9ca02a032017c39f8b9f06c180c3eec8f44d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb35ad2e_076f3c38",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-06-19T14:57:35Z",
+      "side": 1,
+      "message": "This comments needs to be updated.",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 71
+      },
+      "revId": "088e9ca02a032017c39f8b9f06c180c3eec8f44d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
