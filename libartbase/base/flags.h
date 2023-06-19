@@ -263,11 +263,12 @@ struct Flags {
 
   // The reporting spec for regular apps. An example of valid value is "S,1,2,4,*".
   // See metrics::ReportingPeriodSpec for complete docs.
-  Flag<std::string> MetricsReportingSpec{"metrics.reporting-spec", "", FlagType::kDeviceConfig};
+  Flag<std::string> MetricsReportingSpec{
+      "metrics.reporting-spec", "1,5,30,60,600", FlagType::kDeviceConfig};
 
   // The reporting spec for the system server. See MetricsReportingSpec as well.
-  Flag<std::string> MetricsReportingSpecSystemServer{"metrics.reporting-spec-server", "",
-      FlagType::kDeviceConfig};
+  Flag<std::string> MetricsReportingSpecSystemServer{
+      "metrics.reporting-spec-server", "1,10,60,3600,*", FlagType::kDeviceConfig};
 
   // The mods that should report metrics. Together with MetricsReportingNumMods, they
   // dictate what percentage of the runtime execution will report metrics.
@@ -275,10 +276,9 @@ struct Flags {
   // then the runtime session will report metrics.
   //
   // By default, the mods are 0, which means the reporting is disabled.
-  Flag<uint32_t> MetricsReportingMods{"metrics.reporting-mods", 0,
-      FlagType::kDeviceConfig};
-  Flag<uint32_t> MetricsReportingModsServer{"metrics.reporting-mods-server", 0,
-      FlagType::kDeviceConfig};
+  Flag<uint32_t> MetricsReportingMods{"metrics.reporting-mods", 2, FlagType::kDeviceConfig};
+  Flag<uint32_t> MetricsReportingModsServer{
+      "metrics.reporting-mods-server", 2, FlagType::kDeviceConfig};
 
   // See MetricsReportingMods docs.
   //
@@ -293,7 +293,7 @@ struct Flags {
   // Whether or not we should write metrics to statsd.
   // Note that the actual write is still controlled by
   // MetricsReportingMods and MetricsReportingNumMods.
-  Flag<bool> MetricsWriteToStatsd{ "metrics.write-to-statsd", false, FlagType::kDeviceConfig};
+  Flag<bool> MetricsWriteToStatsd{"metrics.write-to-statsd", true, FlagType::kDeviceConfig};
 
   // Whether or not we should write metrics to logcat.
   // Note that the actual write is still controlled by
