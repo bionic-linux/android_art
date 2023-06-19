@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5999c96_5d6c1043",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-06-19T15:34:12Z",
+      "side": 1,
+      "message": "Thanks for spotting this - I have run the test locally and updated the commit message.",
+      "parentUuid": "e23de941_54f3b5b4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "088e9ca02a032017c39f8b9f06c180c3eec8f44d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb35ad2e_076f3c38",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-19T14:57:35Z",
       "side": 1,
       "message": "This comments needs to be updated.",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 71
+      },
+      "revId": "088e9ca02a032017c39f8b9f06c180c3eec8f44d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e99f4d_d6e235ca",
+        "filename": "libartbase/base/flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-06-19T15:34:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb35ad2e_076f3c38",
       "range": {
         "startLine": 278,
         "startChar": 5,
