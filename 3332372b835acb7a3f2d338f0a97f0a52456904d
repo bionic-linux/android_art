@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ab48b2_2dd8e765",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T15:45:42Z",
+      "side": 1,
+      "message": "Isn\u0027t it fair to say that the user is completely blocked in this case (whereas during a normal app install the user can use other apps)?",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7432aa_cefa4b91",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T15:45:42Z",
+      "side": 1,
+      "message": "There\u0027s no compilation during backup, is there?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7179b58f_bbf9fdfe",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T15:45:42Z",
+      "side": 1,
+      "message": "A reader may reasonably wonder when this would happen, e.g. if it\u0027s part of a common process that they would need to watch out for. I think it\u0027s worth adding that it would only happen if there\u0027s a bug, like the wrong DM file being passed.",
+      "range": {
+        "startLine": 92,
+        "startChar": 70,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f79e02a_e1a002dc",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T15:45:42Z",
+      "side": 1,
+      "message": "Nit: This looks odd to me. I suggest just dropping it. (Same below.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1b7315_599c02d1",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T15:45:42Z",
+      "side": 1,
+      "message": "Nit: contexts",
+      "range": {
+        "startLine": 132,
+        "startChar": 54,
+        "endLine": 132,
+        "endChar": 61
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
