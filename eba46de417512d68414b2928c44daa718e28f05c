@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "298a62a6_b606d84b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T19:37:15Z",
+      "side": 1,
+      "message": "Can you please give some more detail on how we\u0027d test this with native bridge, preferably locally? It\u0027d help us retest properly if we change things in this area later. (Ideally we\u0027d have presubmits to keep us from breaking native bridge use cases, but I can imagine that\u0027s work to set up.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fa60a915_822be6c8",
@@ -48,6 +71,29 @@
       "writtenOn": "2023-06-14T11:42:47Z",
       "side": 1,
       "message": "Adding Martin, who is the authority for this type of changes.",
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4f9512_13f04635",
+        "filename": "test/art-gtests-target-standalone-cts-template.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-19T19:37:15Z",
+      "side": 1,
+      "message": "This is in a template. Can\u0027t it be used with gtests that would work with native bridge? If there was a way to add this to the specific gtests instead, without duplicating the whole template, I\u0027d prefer that. Now that it isn\u0027t I agree this is the best compromise, but this sentence seems misleading.",
+      "range": {
+        "startLine": 49,
+        "startChar": 65,
+        "endLine": 50,
+        "endChar": 70
+      },
       "revId": "eba46de417512d68414b2928c44daa718e28f05c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
