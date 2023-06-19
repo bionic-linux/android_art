@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49c32a8_f08b4a5b",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-19T17:41:07Z",
+      "side": 1,
+      "message": "The priority class can be configured by partners. I would leave it to partners to decide what is \"more latency sensitive than usual\".",
+      "parentUuid": "42ab48b2_2dd8e765",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7179b58f_bbf9fdfe",
@@ -83,6 +107,30 @@
       "writtenOn": "2023-06-19T15:45:42Z",
       "side": 1,
       "message": "Nit: This looks odd to me. I suggest just dropping it. (Same below.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d0aa50_8499c6ea",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-06-19T17:41:07Z",
+      "side": 1,
+      "message": "How do I express that this is a special case, as opposed to \"in general\"?",
+      "parentUuid": "4f79e02a_e1a002dc",
       "range": {
         "startLine": 120,
         "startChar": 0,
