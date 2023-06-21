@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4d6223_3fbca03b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2023-06-21T20:09:27Z",
+      "side": 1,
+      "message": "Replied privately in an email. Also this commit comment was misleading (my bad) in that tests **are not skipped** without native bridge, since this may have confused you. I updated the comment.",
+      "parentUuid": "298a62a6_b606d84b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fa60a915_822be6c8",
@@ -88,6 +112,30 @@
       "writtenOn": "2023-06-19T19:37:15Z",
       "side": 1,
       "message": "This is in a template. Can\u0027t it be used with gtests that would work with native bridge? If there was a way to add this to the specific gtests instead, without duplicating the whole template, I\u0027d prefer that. Now that it isn\u0027t I agree this is the best compromise, but this sentence seems misleading.",
+      "range": {
+        "startLine": 49,
+        "startChar": 65,
+        "endLine": 50,
+        "endChar": 70
+      },
+      "revId": "eba46de417512d68414b2928c44daa718e28f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325f430a_cc2e9a12",
+        "filename": "test/art-gtests-target-standalone-cts-template.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2023-06-21T20:09:27Z",
+      "side": 1,
+      "message": "Native-bridge dynamic binary translator is intended only for non-host ABI shared libraries in apps that don\u0027t provide the host ABI version (e.g. app is only compiled for ARM and host is x86). ART and all its components must always be compiled for host ABI, and never executed under binary translation.\n\nCurrently, in addition to testing x86 ART modules, these tests compile ART modules to ARM and test them on x86 chromebooks. This testing isn\u0027t helpful since this never happens in production.\n\nI\u0027m not aware of a way to disable this for individual tests without duplicating the whole XML. (I actually started by duplicating, but then figured it\u0027s too messy). If anyone then I\u0027d expect the owners to suggest how this can be better organized.\n\nSo I think disabling all tests in this template only for native-bridge case is reasonable. Native case x86-test-on-x86-host is still enabled and tested.",
+      "parentUuid": "df4f9512_13f04635",
       "range": {
         "startLine": 49,
         "startChar": 65,
