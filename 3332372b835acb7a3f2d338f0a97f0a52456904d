@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3231216a_32a6f164",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-21T08:45:47Z",
+      "side": 1,
+      "message": "Lots of stuff can be changed by partners to work in ways that are at odds with these docs, can\u0027t it? I think it provides better guidance if we make it clear what our intentions are, even if partners decide to bend them. We can still phrase it as an example rather than a normative condition: \"It\u0027s typically used when the user is entirely blocked, such as for cloud restore.\"",
+      "parentUuid": "b49c32a8_f08b4a5b",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7179b58f_bbf9fdfe",
         "filename": "libartservice/service/README.md",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "How do I express that this is a special case, as opposed to \"in general\"?",
       "parentUuid": "4f79e02a_e1a002dc",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "3332372b835acb7a3f2d338f0a97f0a52456904d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb73d35_0bb2099e",
+        "filename": "libartservice/service/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-06-21T08:45:47Z",
+      "side": 1,
+      "message": "I think the if clause in itself is enough, so simply dropping this word works just fine, or else start the sentence with the if clause (that\u0027s probably good anyway). But if you think it\u0027s necessary to put more emphasis on it then I think: \"As a special case, ...\"",
+      "parentUuid": "72d0aa50_8499c6ea",
       "range": {
         "startLine": 120,
         "startChar": 0,
