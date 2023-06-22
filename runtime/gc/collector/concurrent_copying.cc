@@ -490,18 +490,7 @@ class ConcurrentCopying::ThreadFlipVisitor : public Closure, public RootVisitor 
         << thread->GetState() << " thread " << thread << " self " << self;
     thread->SetIsGcMarkingAndUpdateEntrypoints(true);
     if (use_tlab_ && thread->HasTlab()) {
-      // We should not reuse the partially utilized TLABs revoked here as they
-      // are going to be part of from-space.
-      if (ConcurrentCopying::kEnableFromSpaceAccountingCheck) {
-        // This must come before the revoke.
-        size_t thread_local_objects = thread->GetThreadLocalObjectsAllocated();
-        concurrent_copying_->region_space_->RevokeThreadLocalBuffers(thread, /*reuse=*/ false);
-        reinterpret_cast<Atomic<size_t>*>(
-            &concurrent_copying_->from_space_num_objects_at_first_pause_)->
-                fetch_add(thread_local_objects, std::memory_order_relaxed);
-      } else {
-        concurrent_copying_->region_space_->RevokeThreadLocalBuffers(thread, /*reuse=*/ false);
-      }
+      concurrent_copying_->region_space_->RevokeThreadLocalBuffers(thread, /*reuse=*/ false);
     }
     if (kUseThreadLocalAllocationStack) {
       thread->RevokeThreadLocalAllocationStack();
@@ -588,7 +577,6 @@ class ConcurrentCopying::FlipCallback : public Closure {
     cc->SwapStacks();
     if (ConcurrentCopying::kEnableFromSpaceAccountingCheck) {
       cc->RecordLiveStackFreezeSize(self);
-      cc->from_space_num_objects_at_first_pause_ = cc->region_space_->GetObjectsAllocated();
       cc->from_space_num_bytes_at_first_pause_ = cc->region_space_->GetBytesAllocated();
     }
     cc->is_marking_ = true;
@@ -2794,10 +2782,8 @@ void ConcurrentCopying::ReclaimPhase() {
     uint64_t to_objects = objects_moved_.load(std::memory_order_relaxed) + objects_moved_gc_thread_;
     cumulative_objects_moved_ += to_objects;
     if (kEnableFromSpaceAccountingCheck) {
-      CHECK_EQ(from_space_num_objects_at_first_pause_, from_objects + unevac_from_objects);
       CHECK_EQ(from_space_num_bytes_at_first_pause_, from_bytes + unevac_from_bytes);
     }
-    CHECK_LE(to_objects, from_objects);
     // to_bytes <= from_bytes is only approximately true, because objects expand a little when
     // copying to non-moving space in near-OOM situations.
     if (from_bytes > 0) {
@@ -2811,10 +2797,9 @@ void ConcurrentCopying::ReclaimPhase() {
     {
       TimingLogger::ScopedTiming split4("ClearFromSpace", GetTimings());
       region_space_->ClearFromSpace(&cleared_bytes, &cleared_objects, /*clear_bitmap*/ !young_gen_);
-      // `cleared_bytes` and `cleared_objects` may be greater than the from space equivalents since
+      // `cleared_bytes` may be greater than the from space equivalents since
       // RegionSpace::ClearFromSpace may clear empty unevac regions.
       CHECK_GE(cleared_bytes, from_bytes);
-      CHECK_GE(cleared_objects, from_objects);
     }
     // freed_bytes could conceivably be negative if we fall back to nonmoving space and have to
     // pad to a larger size.
