@@ -1268,8 +1268,6 @@ void Heap::DumpGcPerformanceInfo(std::ostream& os) {
        << PrettySize(GetBytesFreedEver() / total_seconds) << "/s"
        << " per cpu-time: "
        << PrettySize(GetBytesFreedEver() / total_cpu_seconds) << "/s\n";
-    os << "Mean GC object throughput: "
-       << (GetObjectsFreedEver() / total_seconds) << " objects/s\n";
   }
   uint64_t total_objects_allocated = GetObjectsAllocatedEver();
   os << "Total number of allocations " << total_objects_allocated << "\n";
