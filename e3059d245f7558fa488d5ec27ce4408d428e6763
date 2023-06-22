@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78f0d22_e5ca51b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-06-22T17:45:54Z",
+      "side": 1,
+      "message": "Another reason to keep this somewhat up-to-date is that it gives readers an easy way to get a ballpark estimate of what these might be. The old values here were pretty bad.",
+      "revId": "e3059d245f7558fa488d5ec27ce4408d428e6763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
