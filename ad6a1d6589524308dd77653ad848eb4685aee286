@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e90978_a093d710",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-22T14:50:01Z",
+      "side": 1,
+      "message": "I think `long` (including `unsigned long`) is 32-bit on x86 and arm. I\u0027m surprised that the compiler does not reject the old code on these architectures.",
+      "parentUuid": "47b92516_1229e464",
+      "range": {
+        "startLine": 1524,
+        "startChar": 19,
+        "endLine": 1524,
+        "endChar": 27
+      },
+      "revId": "ad6a1d6589524308dd77653ad848eb4685aee286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40069a8d_097c32e7",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-22T12:15:31Z",
       "side": 1,
       "message": "Please add a comment here explaining what `kNativeSoftFloatAfterHardFloat` is for (arches that pass FPs in GPRs when there\u0027s no available FPRs). Or maybe add it on line 1370 above.",
+      "range": {
+        "startLine": 1532,
+        "startChar": 0,
+        "endLine": 1534,
+        "endChar": 0
+      },
+      "revId": "ad6a1d6589524308dd77653ad848eb4685aee286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8ecd38_9e6f1fce",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-22T14:50:01Z",
+      "side": 1,
+      "message": "Done (here)",
+      "parentUuid": "40069a8d_097c32e7",
       "range": {
         "startLine": 1532,
         "startChar": 0,
