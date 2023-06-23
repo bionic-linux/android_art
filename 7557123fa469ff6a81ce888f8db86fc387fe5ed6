@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1212bd_5ed0f6d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-06-23T01:08:10Z",
+      "side": 1,
+      "message": "I\u0027ve always wanted to get rid of this, but it may be more difficult than this.\n\nAFAICT, this information propagates much further, to Region::ObjectsAllocated, and from there to various other places like from_space_num_objects_at_first_pause_. I can\u0027t quite tell where they all flow. I think we should either remove those (prefereable, I think) or document them as inaccurate. Or we should compute them only on demand via instrumentation.\n\nI haven\u0027t traced through the code to see whether the VMDebug stuff sactually still relies on any of this.\n\nBased on past discussions, I\u0027m also not sure that the Android Studio team is OK with this. Even if if few people actually look at it, they may still display the information.",
+      "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
