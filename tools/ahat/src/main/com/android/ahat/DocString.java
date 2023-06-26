@@ -23,11 +23,13 @@ import java.net.URISyntaxException;
  * A class representing a small string of document content consisting of text,
  * links, images, etc.
  */
-class DocString {
+public class DocString {
   private StringBuilder mStringBuilder;
+  private int mVisibleChars;
 
   public DocString() {
     mStringBuilder = new StringBuilder();
+    mVisibleChars = 0;
   }
 
   /**
@@ -67,6 +69,7 @@ class DocString {
    */
   public DocString append(String text) {
     mStringBuilder.append(HtmlEscaper.escape(text));
+    mVisibleChars += text.length();
     return this;
   }
 
@@ -81,6 +84,7 @@ class DocString {
 
   public DocString append(DocString str) {
     mStringBuilder.append(str.html());
+    mVisibleChars += str.mVisibleChars;
     return this;
   }
 
@@ -93,6 +97,7 @@ class DocString {
     string.mStringBuilder.append("<span class=\"added\">");
     string.mStringBuilder.append(str.html());
     string.mStringBuilder.append("</span>");
+    string.mVisibleChars = str.mVisibleChars;
     return string;
   }
 
@@ -113,6 +118,7 @@ class DocString {
     string.mStringBuilder.append("<span class=\"removed\">");
     string.mStringBuilder.append(str.html());
     string.mStringBuilder.append("</span>");
+    string.mVisibleChars = str.mVisibleChars;
     return string;
   }
 
@@ -179,6 +185,7 @@ class DocString {
     mStringBuilder.append("\">");
     mStringBuilder.append(content.html());
     mStringBuilder.append("</a>");
+    mVisibleChars += content.mVisibleChars;
     return this;
   }
 
@@ -188,6 +195,7 @@ class DocString {
     mStringBuilder.append("\" src=\"");
     mStringBuilder.append(uri.toASCIIString());
     mStringBuilder.append("\" />");
+    mVisibleChars += 1;
     return this;
   }
 
@@ -197,7 +205,31 @@ class DocString {
     mStringBuilder.append("\" src=\"");
     mStringBuilder.append(uri.toASCIIString());
     mStringBuilder.append("\" />");
+    mVisibleChars += 1;
     return this;
+  }
+
+  /**
+   * Formatted DocString for displaying an internal error within Ahat.
+   * Shouldn't be shown to users under normal circumstances, but might
+   * occur if the heap dump was corrupted.
+   */
+  public static DocString internalError(Throwable e) {
+    DocString doc = new DocString();
+    doc.mStringBuilder.append("<pre>");
+    while (e != null) {
+      doc.append(e.toString());
+      for (StackTraceElement stackFrame : e.getStackTrace()) {
+        doc.append("\n  at ");
+        doc.append(stackFrame.toString());
+      }
+      e = e.getCause();
+      if (e != null) {
+        doc.append("\nCaused by: ");
+      }
+    }
+    doc.mStringBuilder.append("</pre>");
+    return doc;
   }
 
   /**
@@ -218,6 +250,11 @@ class DocString {
    */
   public static URI formattedUri(String format, Object... args) {
     return uri(String.format(format, args));
+  }
+
+  /** Return an estimate of how many visible characters are in the string. */
+  public int visibleSize() {
+    return mVisibleChars;
   }
 
   /**

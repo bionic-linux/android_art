@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * An interface for rendering a page of content to the user.
  */
-interface Doc extends AutoCloseable {
+public interface Doc extends AutoCloseable {
   /**
    * Output the title of the page.
    */
