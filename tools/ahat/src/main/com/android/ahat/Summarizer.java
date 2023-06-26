@@ -21,13 +21,14 @@ import com.android.ahat.heapdump.AhatInstance;
 import com.android.ahat.heapdump.Reachability;
 import com.android.ahat.heapdump.Site;
 import com.android.ahat.heapdump.Value;
+import com.android.ahat.knowntypes.KnownTypesRegistry;
+
 import java.net.URI;
 
 /**
  * Class for generating a DocString summary of an instance or value.
  */
-class Summarizer {
-
+public class Summarizer {
   // For string literals, we limit the number of characters we show to
   // kMaxChars in case the string is really long.
   private static int kMaxChars = 200;
@@ -70,6 +71,12 @@ class Summarizer {
     } else {
       URI objTarget = DocString.formattedUri("object?id=0x%x", inst.getId());
       formatted.appendLink(objTarget, linkText);
+    }
+
+    // Annotate known types with their values.
+    if (KnownTypesRegistry.getInstance().isKnownType(inst)) {
+      formatted.append(" ");
+      formatted.append(KnownTypesRegistry.getInstance().getHandler(inst).summarize(inst));
     }
 
     // Annotate Strings with their values.

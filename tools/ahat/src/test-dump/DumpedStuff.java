@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
+import libcore.util.NativeAllocationRegistry;
+
 import java.lang.ref.PhantomReference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import libcore.util.NativeAllocationRegistry;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 // We take a heap dump that includes a single instance of this
 // DumpedStuff class. Objects stored as fields in this class can be easily
@@ -85,6 +90,12 @@ public class DumpedStuff extends SuperDumpedStuff {
     }
 
     gcPathArray[2].right.left = gcPathArray[2].left.right;
+
+    listContainingItself.add(listContainingItself);
+
+    for (int i = 0; i < 20; i++) {
+      map.put(new Object(), new Object());
+    }
   }
 
   public static class ObjectTree {
@@ -202,6 +213,8 @@ public class DumpedStuff extends SuperDumpedStuff {
   public android.os.IBinder correctBinderProxy = new android.os.BinderProxy();
   public android.os.IBinder imposedBinderProxy = new android.os.BinderProxy();
   public android.os.IBinder carriedBinderProxy = new android.os.BinderProxy();
+  public List<Object> listContainingItself = new ArrayList<>();
+  public Map<Object, Object> map = new HashMap<>();
   Object correctBinderProxyObject = new IDumpedManager.Stub.Proxy(correctBinderProxy);
   Object impostorBinderProxyObject = new IBinderInterfaceImpostor.Stub.Proxy(imposedBinderProxy);
   Object carrierBinderProxyObject = new BinderProxyCarrier(carriedBinderProxy);

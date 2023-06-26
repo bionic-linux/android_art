@@ -25,7 +25,7 @@ import java.util.List;
  * requiring the user to explicitly request more, so users not interested in
  * more don't have to wait for everything to render.
  */
-class SubsetSelector<T> {
+public class SubsetSelector<T> {
   private static final int kIncrAmount = 1000;
   private static final int kDefaultShown = 1000;
 

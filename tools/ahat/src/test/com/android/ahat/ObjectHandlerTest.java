@@ -71,4 +71,26 @@ public class ObjectHandlerTest {
     AhatHandler handler = new ObjectHandler(dump.getAhatSnapshot());
     TestHandler.testNoCrash(handler, "http://localhost:7100/object?id=" + object.getId());
   }
+
+  @Test
+  public void noCrashListContainingSelf() throws IOException {
+    TestDump dump = TestDump.getTestDump();
+
+    AhatInstance object = dump.getDumpedAhatInstance("listContainingItself");
+    assertNotNull(object);
+
+    AhatHandler handler = new ObjectHandler(dump.getAhatSnapshot());
+    TestHandler.testNoCrash(handler, "http://localhost:7100/object?id=" + object.getId());
+  }
+
+  @Test
+  public void noCrashMap() throws IOException {
+    TestDump dump = TestDump.getTestDump();
+
+    AhatInstance object = dump.getDumpedAhatInstance("map");
+    assertNotNull(object);
+
+    AhatHandler handler = new ObjectHandler(dump.getAhatSnapshot());
+    TestHandler.testNoCrash(handler, "http://localhost:7100/object?id=" + object.getId());
+  }
 }

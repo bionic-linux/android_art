@@ -80,7 +80,7 @@ public enum Type {
    *
    * @param refSize the size of object references as specified in the heap dump
    */
-  int size(int refSize) {
+  public int size(int refSize) {
     return size == 0 ? refSize : size;
   }
 
