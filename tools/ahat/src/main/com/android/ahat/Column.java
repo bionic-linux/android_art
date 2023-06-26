@@ -19,7 +19,7 @@ package com.android.ahat;
 /**
  * Configuration of a Doc table column.
  */
-class Column {
+public class Column {
   public DocString heading;
   public Align align;
   public boolean visible;
