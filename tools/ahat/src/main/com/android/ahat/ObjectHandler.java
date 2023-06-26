@@ -29,12 +29,13 @@ import com.android.ahat.heapdump.PathElement;
 import com.android.ahat.heapdump.RootType;
 import com.android.ahat.heapdump.Site;
 import com.android.ahat.heapdump.Value;
+import com.android.ahat.knowntypes.KnownTypesRegistry;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
 
 class ObjectHandler implements AhatHandler {
 
@@ -106,6 +107,9 @@ class ObjectHandler implements AhatHandler {
       printArrayElements(doc, query, inst.asArrayInstance());
     } else if (inst.isClassObj()) {
       printClassInfo(doc, query, inst.asClassObj());
+    }
+    if (KnownTypesRegistry.getInstance().isKnownType(inst)) {
+      KnownTypesRegistry.getInstance().getHandler(inst).printDetailsSection(doc, query, inst);
     }
     printReferences(doc, query, inst);
     printDominatedObjects(doc, query, inst);

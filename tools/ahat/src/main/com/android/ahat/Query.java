@@ -24,7 +24,7 @@ import java.util.TreeMap;
 /**
  * A class for getting and modifying query parameters.
  */
-class Query {
+public class Query {
   private URI mUri;
 
   // Map from parameter name to value. If the same parameter appears multiple
