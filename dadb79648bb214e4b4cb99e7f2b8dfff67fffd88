@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16047ace_336621f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-27T09:51:49Z",
+      "side": 1,
+      "message": "I think you also should test that cuttlefish still boots (`lunch aosp_cf_riscv64_phone-userdebug \u0026\u0026 m \u0026\u0026 launch_cvd --gpu_mode\u003ddrm_virgl` (or whatever `gpu_mode` is right for cloudtop).\n\nWe should do it on all \"enable something\" commits and maybe more often than that, we do break them regularly.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cce632_b2b679dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-27T09:51:49Z",
+      "side": 1,
+      "message": "1) Can you explain why they fail, and/or why it is ok to let them fail for now?\n\n2) Can you explain why you need to pass `--cdex-none`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6213d50b_43afbdc1",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-27T09:51:49Z",
+      "side": 1,
+      "message": "Doesn\u0027t it turn on some yet unimplemented parts of the optimizing compiler, not just the the JNI compiler? I wonder how it works --- e.g. what prevents the attempts at AOT compilation and JIT compilation.\n\nNote that it is easy to limit the tests to working configurations, but we also need to ensure culltefish boots (it disables JIT via dalvikvm property in product makefiles, but I\u0027m not sure that it won\u0027t fail elsewhere).",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
