@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e5783f_37cf84ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-27T10:05:50Z",
+      "side": 1,
+      "message": "Last time I tried, `--gpu_mode\u003ddrm_virgl` terminated very quickly. While `--gpu_mode\u003dguest_swiftshader` got a bit further, it did not really boot because `surfaceflinger` aborted and caused endless `zygote` restarts.\n\nFeel free to give it a try if you have a working setup.",
+      "parentUuid": "16047ace_336621f9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5cce632_b2b679dc",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f49678e0_4f8eec98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-27T10:05:50Z",
+      "side": 1,
+      "message": "1) Some are not supposed to pass without the Optimizing compiler (004-StackWalk, 137-cfi and 661-oat-writer-layout) and some just time out.\n\n2) nterp hits `unimp` in some tests for `--cdex-fast`. We could change the nterp filter to refuse methods from cdex.",
+      "parentUuid": "f5cce632_b2b679dc",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6213d50b_43afbdc1",
         "filename": "compiler/driver/compiler_options.h",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2023-06-27T09:51:49Z",
       "side": 1,
       "message": "Doesn\u0027t it turn on some yet unimplemented parts of the optimizing compiler, not just the the JNI compiler? I wonder how it works --- e.g. what prevents the attempts at AOT compilation and JIT compilation.\n\nNote that it is easy to limit the tests to working configurations, but we also need to ensure culltefish boots (it disables JIT via dalvikvm property in product makefiles, but I\u0027m not sure that it won\u0027t fail elsewhere).",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9419bbf_2bd9a708",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-27T10:05:50Z",
+      "side": 1,
+      "message": "There\u0027s the `IsInstructionSetSupported()` in `optimizing_compiler.cc` which does not list the riscv64 yet. Oddly, it\u0027s not applied to the `JniCompile()` code path. Maybe we should fix that discrepancy but for now it allows enabling the riscv64 JNI compiler with minimal changes.\n\nI addressed the cuttlefish boot on the commit message comment.",
+      "parentUuid": "6213d50b_43afbdc1",
       "range": {
         "startLine": 118,
         "startChar": 4,
