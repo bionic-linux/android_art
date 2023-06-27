@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7dd240a_b2af00ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-06-27T12:41:08Z",
+      "side": 1,
+      "message": "I checked that all 7 failures are present before this CL.",
+      "parentUuid": "f49678e0_4f8eec98",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "dadb79648bb214e4b4cb99e7f2b8dfff67fffd88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6213d50b_43afbdc1",
