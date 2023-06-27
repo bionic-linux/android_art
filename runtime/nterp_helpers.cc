@@ -235,6 +235,9 @@ bool CanMethodUseNterp(ArtMethod* method, InstructionSet isa) {
     return false;
   }
   if (isa == InstructionSet::kRiscv64) {
+    if (method->NeedsClinitCheckBeforeCall()) {
+      return false;
+    }
     if (method->DexInstructionData().TriesSize() != 0u) {
       return false;  // Riscv64 nterp does not support exception handling yet.
     }
