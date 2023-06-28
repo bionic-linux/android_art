@@ -46,6 +46,30 @@
       },
       "revId": "b8898416e2cc0eeba04f8257826534d254b72919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2521ce8c_02277d85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-28T13:38:43Z",
+      "side": 1,
+      "message": "\u003e In either case, since we are adding strings to bss, the DCHECK must be updated to incorporate that, right?\n\nYes, this was for understanding what happened to trigger it. I think you\u0027re right that the heap parameter changes made the GC execute at different time, and that code was not exercised before.",
+      "parentUuid": "4c6cfdd4_50712e3b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "b8898416e2cc0eeba04f8257826534d254b72919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
