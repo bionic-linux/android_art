@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "1bcd9b0c353d73c62acc7bab2841d3eb4dac466d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a51058_b609b98c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-28T11:58:03Z",
+      "side": 1,
+      "message": "Build error on test_suites_x86_64_coverage looks unrelated, I\u0027d bypass presubmit in this case.",
+      "revId": "1bcd9b0c353d73c62acc7bab2841d3eb4dac466d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
