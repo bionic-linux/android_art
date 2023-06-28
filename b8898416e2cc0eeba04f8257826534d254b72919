@@ -22,6 +22,30 @@
       },
       "revId": "b8898416e2cc0eeba04f8257826534d254b72919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6cfdd4_50712e3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-06-28T13:27:13Z",
+      "side": 1,
+      "message": "CC doesn\u0027t exercise the DCHECK as it never has to rely on logging new roots. But ever since we enabled luci targets for uffd GC, I\u0027m not sure why it didn\u0027t trigger till date. Also, it should have been an issue all along on CMS as well.\n\nMaybe changing the CL that changed heap parameters helped in revealing this issue?\n\nIn either case, since we are adding strings to bss, the DCHECK must be updated to incorporate that, right?",
+      "parentUuid": "47732b10_4ef20300",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "b8898416e2cc0eeba04f8257826534d254b72919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
