@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09938502_ac75bc77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-06-28T15:44:06Z",
+      "side": 1,
+      "message": "I verified that cuttlefish boots without crashes.",
+      "revId": "503a91835488e6dfc42cee2356083d2bb670d87b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
