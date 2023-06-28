@@ -34,6 +34,24 @@
       "parentUuid": "eb1212bd_5ed0f6d2",
       "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7af475cb_baa797dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-06-28T22:34:14Z",
+      "side": 1,
+      "message": "I\u0027m concerned about leaving a bunch of broken code that we\u0027re hoping is essentially dead. For example, https://cs.android.com/android/platform/superproject/+/refs/heads/master:art/runtime/gc/space/region_space.cc;l\u003d918 and the RecordThreadLocalAllocations() function itself, looks that way to me.\n\nAnd I suspect there\u0027s significantly more such code. I think all the other GetObjectsAllocated()/GetObjectsAllocatedEver() functions are also broken. Or does some of the instrumentation reenable those?\n\nSome of this stuff is printed by DumpGcPerformanceInfo(), which will now be wrong.\n\nSo I think this CL is fine for testing. I\u0027m encouraged that ART still generally works with just this change. But I think this should either go in under a default-off compile-time flag for now, or with an attempt to clean up all the dead/broken code.\n\nI think Lokesh worked on this at some point and may be able to find more of the (minimally) affected code.",
+      "parentUuid": "5ba65453_89522395",
+      "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
