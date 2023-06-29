@@ -52,6 +52,24 @@
       "parentUuid": "5ba65453_89522395",
       "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f0678b6_ac0631d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-06-29T13:14:29Z",
+      "side": 1,
+      "message": "You rightly pointed out that there are locations in region-space and bump-pointer-space where we use the thread-local object count to update stats. And eventually these values get percolated to heap. Luckily there is no decision making based on object count but we report them in different ways as part of GC performance dump.\n\nMost likely nobody is relying on these metrics to be correct. However, it would be better either to entirely get rid of them or make thread-local object counting work in debug builds, if possible, and then have them be reported in `DumpGcPerformanceInfo` when `kIsDebugBuild` is true. I suspect that `GetObjectsAllocated()/GetObjectsAllocatedEver()` would actually result in a FPE if we don\u0027t deal with this.\n\nAlso, it\u0027s not just object allocated, but objects freed too doesn\u0027t really serve any purpose. And once we get rid of objects-allocated it wouldn\u0027t make any sense too.\n\nThe more critical requirement is for `VMDebug.startAllocCounting` which, as Nicolas mentioned, is taken care of by instrumentation and doesn\u0027t rely on thread-local counting.",
+      "parentUuid": "7af475cb_baa797dc",
+      "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
