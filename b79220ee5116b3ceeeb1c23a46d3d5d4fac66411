@@ -147,6 +147,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d8d1856_7b8b8886",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/ListHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2023-06-30T07:28:50Z",
+      "side": 1,
+      "message": "I meant as a settable property on the ListHandler. As far as I understand, although ahat is used as a tool, there might be cases where other apps integrate it as a library. For those cases it may make sense to make it more configurable to match their output medium.",
+      "parentUuid": "790ea9da_1d5918c8",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbcb6955_7860d420",
         "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/MapHandler.java",
         "patchSetId": 1
