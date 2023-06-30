@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "664b8e49fcaa16160bad22958ab4b26c54e27545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44cfb9b9_cf00c46f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-06-30T17:19:52Z",
+      "side": 1,
+      "message": "Can we open a bug to track removal of the freed objects code, etc., and mention that here?\n\nAside from that and the omission below, this looks fine to me.",
+      "revId": "664b8e49fcaa16160bad22958ab4b26c54e27545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd1de8d_4024b006",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-06-30T17:19:52Z",
+      "side": 1,
+      "message": "I think we also want to drop this.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 2,
+        "endLine": 1273,
+        "endChar": 74
+      },
+      "revId": "664b8e49fcaa16160bad22958ab4b26c54e27545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
