@@ -70,6 +70,24 @@
       "parentUuid": "7af475cb_baa797dc",
       "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2194b4b_750aec9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-30T10:43:36Z",
+      "side": 1,
+      "message": "Thank you both. After yesterday\u0027s discussion, I\u0027ve updated the CL to remove the logging of object information in the performance dumps and various verbose logs.",
+      "parentUuid": "5f0678b6_ac0631d7",
+      "revId": "7557123fa469ff6a81ce888f8db86fc387fe5ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
