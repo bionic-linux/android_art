@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "193cce28_fc14e91a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-06-30T06:58:43Z",
+      "side": 1,
+      "message": "Thanks Sorin!",
+      "parentUuid": "2aeaf9cf_43b132b7",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8284abf1_93b3d3f8",
@@ -105,6 +123,24 @@
       "writtenOn": "2023-06-29T09:48:29Z",
       "side": 1,
       "message": "Could this be configurable?",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790ea9da_1d5918c8",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/ListHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-06-30T06:58:43Z",
+      "side": 1,
+      "message": "Do you mean configurable via a URL parameter, or is there some other mechanism I should be considering?",
+      "parentUuid": "27dc856c_53083fe8",
       "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
