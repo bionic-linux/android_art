@@ -73,6 +73,30 @@
       },
       "revId": "664b8e49fcaa16160bad22958ab4b26c54e27545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e4fac4_a49eeadd",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-06-30T21:17:39Z",
+      "side": 1,
+      "message": "Done, as well as some other places I found again.",
+      "parentUuid": "fdd1de8d_4024b006",
+      "range": {
+        "startLine": 1272,
+        "startChar": 2,
+        "endLine": 1273,
+        "endChar": 74
+      },
+      "revId": "664b8e49fcaa16160bad22958ab4b26c54e27545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
