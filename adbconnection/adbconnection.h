@@ -103,8 +103,6 @@ class AdbConnectionState {
 
   std::string MakeAgentArg();
 
-  android::base::unique_fd ReadFdFromAdb();
-
   void SendAgentFds(bool require_handshake);
 
   void CloseFds();

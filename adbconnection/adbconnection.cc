@@ -483,10 +483,6 @@ void AdbConnectionState::SendAgentFds(bool require_handshake) {
   }
 }
 
-android::base::unique_fd AdbConnectionState::ReadFdFromAdb() {
-  return android::base::unique_fd(adbconnection_client_receive_jdwp_fd(control_ctx_.get()));
-}
-
 bool AdbConnectionState::SetupAdbConnection() {
   int sleep_ms = 500;
   const int sleep_max_ms = 2 * 1000;
