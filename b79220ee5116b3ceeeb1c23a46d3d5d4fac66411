@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "086535ef_c020f901",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/CollectionContentsHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8284abf1_93b3d3f8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d969cf5a_c6fa0ce1",
@@ -72,6 +96,24 @@
       "writtenOn": "2023-06-29T09:48:29Z",
       "side": 1,
       "message": "```suggestion\n/*\n * Copyright (C) 2023 The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\npackage com.android.ahat.knowntypes;\n```",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8ddb13_e1e83b31",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/KnownTypesHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d969cf5a_c6fa0ce1",
       "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -93,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1871060c_efbbdfe9",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/KnownTypesRegistry.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f3a756e_82dd5055",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "216ef2e0_eb92438e",
@@ -106,6 +166,24 @@
       "writtenOn": "2023-06-29T09:48:29Z",
       "side": 1,
       "message": "```suggestion\n/*\n * Copyright (C) 2023 The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\npackage com.android.ahat.knowntypes;\n```",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ceff5b3_14f26056",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/ListHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "216ef2e0_eb92438e",
       "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -163,6 +241,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cadbd55_bb70065a",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/ListHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d8d1856_7b8b8886",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbcb6955_7860d420",
@@ -176,6 +272,24 @@
       "writtenOn": "2023-06-29T09:48:29Z",
       "side": 1,
       "message": "```suggestion\n/*\n * Copyright (C) 2023 The Android Open Source Project\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\npackage com.android.ahat.knowntypes;\n```",
+      "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6884e5bb_f86c7e6d",
+        "filename": "tools/ahat/src/main/com/android/ahat/knowntypes/MapHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-07-03T06:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbcb6955_7860d420",
       "revId": "b79220ee5116b3ceeeb1c23a46d3d5d4fac66411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
