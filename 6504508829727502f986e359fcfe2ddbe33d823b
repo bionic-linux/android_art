@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9cb177_6008f1a9",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-06T14:00:07Z",
+      "side": 1,
+      "message": "`break;` inside the braces, and the braces on a new line",
+      "range": {
+        "startLine": 379,
+        "startChar": 5,
+        "endLine": 379,
+        "endChar": 12
+      },
+      "revId": "6504508829727502f986e359fcfe2ddbe33d823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098105b2_c3a131af",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-06T14:00:07Z",
+      "side": 1,
+      "message": "Don\u0027t we need curly braces here around lines 383-386?",
+      "revId": "6504508829727502f986e359fcfe2ddbe33d823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
