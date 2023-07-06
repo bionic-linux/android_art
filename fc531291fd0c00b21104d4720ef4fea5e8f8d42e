@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a824666c_17354be5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-06T09:43:49Z",
+      "side": 1,
+      "message": "There are several build errors e.g. with `ScratchRegisterScope`. Does this build for you?",
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
