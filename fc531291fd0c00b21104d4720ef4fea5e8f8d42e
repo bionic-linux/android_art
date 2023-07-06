@@ -16,6 +16,24 @@
       "message": "There are several build errors e.g. with `ScratchRegisterScope`. Does this build for you?",
       "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f080cd8_1c116995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-06T09:50:47Z",
+      "side": 1,
+      "message": "Probably because aosp/2646923 didn\u0027t make its way to the failing branch by then. I\u0027ll restart presubmit as Vladimir is OOO.",
+      "parentUuid": "a824666c_17354be5",
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
