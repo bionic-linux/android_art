@@ -16,6 +16,70 @@
       "message": "Roland, I think this test is excluded from MTS, so it should be safe to add DeviceWiper, but I\u0027ll appreciate it if you could double check.",
       "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b0570b_a54688e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-07-07T16:53:52Z",
+      "side": 1,
+      "message": "I was also thinking about MTS when I started to review your change. I think this test does not run in any Mainline testing configuration, so it should be safe to land this change.",
+      "parentUuid": "64124d0a_49f6606d",
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5f3bc4_4f100a1f",
+        "filename": "test/dexpreopt/art_standalone_dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-07-07T16:53:52Z",
+      "side": 1,
+      "message": "I suggest adding a comment above this line, to warn/remind that this test should not be used in a Mainline context (i.e. when a train update has been installed prior to running this test).\n\nThe fact that this test requires root access means that it cannot be run in most test suites, which is already a first safety pin.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 74
+      },
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6594eea_e4b404c9",
+        "filename": "test/dexpreopt/art_standalone_dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-07-07T16:53:52Z",
+      "side": 1,
+      "message": "I suggest removing this, as this test is not expected to run in a Mainline context.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
