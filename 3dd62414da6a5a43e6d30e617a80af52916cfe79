@@ -34,6 +34,24 @@
       "parentUuid": "1099b8de_8969d50e",
       "revId": "3dd62414da6a5a43e6d30e617a80af52916cfe79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c0f130_3922982c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T16:29:19Z",
+      "side": 1,
+      "message": "Apologies, I thought I sent those comments before but it looks like they were local drafts. I\u0027m okay with solving them in a future CL.",
+      "parentUuid": "ccff049c_c57cea09",
+      "revId": "3dd62414da6a5a43e6d30e617a80af52916cfe79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
