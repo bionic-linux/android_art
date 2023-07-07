@@ -123,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7248de_7421076d",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T16:23:08Z",
+      "side": 1,
+      "message": "I prefer to use 32-bit access on a 32-bit atomic variable.\n\nOther architectures violate this simple rule to save code size. We would not get that benefit on riscv64.",
+      "parentUuid": "d3681673_fbc5b4ad",
+      "range": {
+        "startLine": 1828,
+        "startChar": 0,
+        "endLine": 1834,
+        "endChar": 79
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33136268_f4a98c0d",
@@ -207,6 +231,30 @@
       "side": 1,
       "message": "My personal favourite for such loops is the mathematical \"approaches zero\" notation `for (size_t i \u003d arraysize(kCoreCalleeSaves); i --\u003e 0; )` ;)",
       "parentUuid": "a6685996_1b5d25e4",
+      "range": {
+        "startLine": 1906,
+        "startChar": 0,
+        "endLine": 1907,
+        "endChar": 10
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ad7448_038ad1d2",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T16:23:08Z",
+      "side": 1,
+      "message": "If we start at `size - 1`, we\u0027re essentially forced to make the loop variable signed. I don\u0027t like that.\n\nAnd as funny as the \"approaches zero\" notation is, I\u0027m avoiding the post-increment operator with very few exceptions.",
+      "parentUuid": "5ac165b9_835943aa",
       "range": {
         "startLine": 1906,
         "startChar": 0,
