@@ -75,6 +75,30 @@
       },
       "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc968d7_7cdbbacf",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T12:18:12Z",
+      "side": 1,
+      "message": "It is an implementation detail of the `ScratchRegisterScope` that the `tmp` here ends up being `TMP`. If that changes, the clobbered register could be `tmp2`.\n\nI\u0027m leaving this comment unresolved for now.",
+      "parentUuid": "33136268_f4a98c0d",
+      "range": {
+        "startLine": 1855,
+        "startChar": 62,
+        "endLine": 1855,
+        "endChar": 65
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
