@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc72b451_5728ddd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-07T20:15:04Z",
+      "side": 1,
+      "message": "Thanks for checking!",
+      "parentUuid": "e6b0570b_a54688e3",
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5f3bc4_4f100a1f",
@@ -59,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c66e025_72677896",
+        "filename": "test/dexpreopt/art_standalone_dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-07T20:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5f3bc4_4f100a1f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 74
+      },
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6594eea_e4b404c9",
@@ -72,6 +114,30 @@
       "writtenOn": "2023-07-07T16:53:52Z",
       "side": 1,
       "message": "I suggest removing this, as this test is not expected to run in a Mainline context.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b8304c_f87ca303",
+        "filename": "test/dexpreopt/art_standalone_dexpreopt_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-07T20:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6594eea_e4b404c9",
       "range": {
         "startLine": 35,
         "startChar": 0,
