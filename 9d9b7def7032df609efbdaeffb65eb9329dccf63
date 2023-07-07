@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64124d0a_49f6606d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-07T12:38:14Z",
+      "side": 1,
+      "message": "Roland, I think this test is excluded from MTS, so it should be safe to add DeviceWiper, but I\u0027ll appreciate it if you could double check.",
+      "revId": "9d9b7def7032df609efbdaeffb65eb9329dccf63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
