@@ -191,6 +191,30 @@
       },
       "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ac165b9_835943aa",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-07T14:37:15Z",
+      "side": 1,
+      "message": "My personal favourite for such loops is the mathematical \"approaches zero\" notation `for (size_t i \u003d arraysize(kCoreCalleeSaves); i --\u003e 0; )` ;)",
+      "parentUuid": "a6685996_1b5d25e4",
+      "range": {
+        "startLine": 1906,
+        "startChar": 0,
+        "endLine": 1907,
+        "endChar": 10
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
