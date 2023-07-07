@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebc045d_a28a4e09",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T06:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9cb177_6008f1a9",
+      "range": {
+        "startLine": 379,
+        "startChar": 5,
+        "endLine": 379,
+        "endChar": 12
+      },
+      "revId": "6504508829727502f986e359fcfe2ddbe33d823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "098105b2_c3a131af",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-07-06T14:00:07Z",
       "side": 1,
       "message": "Don\u0027t we need curly braces here around lines 383-386?",
+      "revId": "6504508829727502f986e359fcfe2ddbe33d823b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78beb7f_3fab19c7",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T06:30:27Z",
+      "side": 1,
+      "message": "No, we don\u0027t. We do not define any local variables here.",
+      "parentUuid": "098105b2_c3a131af",
       "revId": "6504508829727502f986e359fcfe2ddbe33d823b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
