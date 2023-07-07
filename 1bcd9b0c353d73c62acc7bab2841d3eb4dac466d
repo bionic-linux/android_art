@@ -50,6 +50,23 @@
       "message": "nudging this along",
       "revId": "1bcd9b0c353d73c62acc7bab2841d3eb4dac466d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d2a45e_76092ed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-07T10:34:47Z",
+      "side": 1,
+      "message": "Test error on test_suites_x86_64_coverage is unrelated.",
+      "revId": "1bcd9b0c353d73c62acc7bab2841d3eb4dac466d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
