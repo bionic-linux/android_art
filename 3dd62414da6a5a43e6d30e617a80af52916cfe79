@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1099b8de_8969d50e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:07:54Z",
+      "side": 1,
+      "message": "FYI there are some unresolved comments in this CL e.g. the one about the unused label",
+      "revId": "3dd62414da6a5a43e6d30e617a80af52916cfe79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

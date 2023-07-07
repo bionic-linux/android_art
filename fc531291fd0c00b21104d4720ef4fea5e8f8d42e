@@ -56,6 +56,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14297e46_8fa34d7a",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:07:54Z",
+      "side": 1,
+      "message": "We already defined this in line 144.",
+      "range": {
+        "startLine": 1739,
+        "startChar": 0,
+        "endLine": 1739,
+        "endChar": 68
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "175ae576_4f8fca9c",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:07:54Z",
+      "side": 1,
+      "message": "Unused, remove",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1786,
+        "endChar": 22
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3681673_fbc5b4ad",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:07:54Z",
+      "side": 1,
+      "message": "There are [similar defines](https://cs.android.com/android/platform/superproject/+/master:art/compiler/optimizing/code_generator.h;l\u003d72-77?q\u003d%22enum_cast%3Cuint32_t%3E(ClassStatus::kVisiblyInitialized)%22\u0026ss\u003dandroid%2Fplatform%2Fsuperproject) in code_generator.h. Why are we skipping `kBitsPerByte` for the RISC-V version? Is this related to the comment in 1836-1838?",
+      "range": {
+        "startLine": 1828,
+        "startChar": 0,
+        "endLine": 1834,
+        "endChar": 79
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33136268_f4a98c0d",
         "filename": "compiler/optimizing/code_generator_riscv64.cc",
         "patchSetId": 5
@@ -96,6 +165,29 @@
         "startChar": 62,
         "endLine": 1855,
         "endChar": 65
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6685996_1b5d25e4",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:07:54Z",
+      "side": 1,
+      "message": "WDYT about `size_t i \u003d arraysize(kCoreCalleeSaves) - 1` and insert the `--i` directly in the loop? This works as long as `arraysize(kCoreCalleeSaves)` is different than `0` which we can statically assert.\n\nSame for the other loops",
+      "range": {
+        "startLine": 1906,
+        "startChar": 0,
+        "endLine": 1907,
+        "endChar": 10
       },
       "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
