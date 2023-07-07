@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa861ae4_f1038706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2009421
+      },
+      "writtenOn": "2023-07-07T21:53:58Z",
+      "side": 1,
+      "message": "show aII owners cc IPAs",
+      "revId": "e3d55f106cb13c9a7cda477997699c0f2ac28a77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
