@@ -17,6 +17,7 @@
 <configuration description="Runs {MODULE} as root.">
     <option name="config-descriptor:metadata" key="parameter" value="not_multi_abi" />
 
+    <target_preparer class="com.android.tradefed.targetprep.DeviceWiper"/>
     <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer"/>
 
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
