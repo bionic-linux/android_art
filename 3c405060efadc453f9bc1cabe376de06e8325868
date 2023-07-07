@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5b5c83_9c0ee560",
+        "filename": "tools/dmtracedump/createtesttrace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:09:37Z",
+      "side": 0,
+      "message": "Acknowledged",
+      "parentUuid": "19f50187_a785f382",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 9
+      },
+      "revId": "3c405060efadc453f9bc1cabe376de06e8325868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a339ef66_8781dd9a",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-07T11:12:57Z",
       "side": 0,
       "message": "This one parses the method trace format but only parses the non-streaming mode, which is mostly deprecated by now. We could potentially extend this to support streaming mode. We are now moving to a more compressed format which would make this even more outdated. Though I already introduced a java parser for both streaming and non-streaming modes. I wasn\u0027t aware of this. Also, this maps the entire file in memory which isn\u0027t great for real traces which are several hundreds of MB.\n\nThis one is generating some html output, but I haven\u0027t used it or know anyone who is using it. I think it\u0027s safe to delete this one.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 3
+      },
+      "revId": "3c405060efadc453f9bc1cabe376de06e8325868",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8f4a5f_9906e372",
+        "filename": "tools/dmtracedump/tracedump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-07T14:09:37Z",
+      "side": 0,
+      "message": "Acknowledged, thanks for taking a look!",
+      "parentUuid": "a339ef66_8781dd9a",
       "range": {
         "startLine": 17,
         "startChar": 0,
