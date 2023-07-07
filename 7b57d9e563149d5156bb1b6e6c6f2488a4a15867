@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a44747c_eb051ee5",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T06:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf022d4_a35b9b7c",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 93
+      },
+      "revId": "7b57d9e563149d5156bb1b6e6c6f2488a4a15867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ab2b2e_f7925e13",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-06T13:34:27Z",
       "side": 1,
       "message": "Is `rd` here meant to be `tmp2`? Same in the comment below",
+      "range": {
+        "startLine": 470,
+        "startChar": 41,
+        "endLine": 470,
+        "endChar": 43
+      },
+      "revId": "7b57d9e563149d5156bb1b6e6c6f2488a4a15867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9572da96_40bfdf38",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-07T06:45:16Z",
+      "side": 1,
+      "message": "Done. (Original upload used `rd` in the code which may have clobbered the still neeed `rs1` because of the `kNoOutputOverlap`.)",
+      "parentUuid": "e6ab2b2e_f7925e13",
       "range": {
         "startLine": 470,
         "startChar": 41,
