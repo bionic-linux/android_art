@@ -70,6 +70,30 @@
       },
       "revId": "4681b8ecbb837628c94c31065923d8a4dcbac603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448c8aab_88fcd067",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-13T11:25:56Z",
+      "side": 1,
+      "message": "These are not my changes, so if I make no modification at all (the code is as uploaded by Lifang, just rebased on ToT), I\u0027ll happily CR+2. If I modify anything (even whitespace), I wait for another CR+2.",
+      "parentUuid": "a76511cb_c2cccc4c",
+      "range": {
+        "startLine": 807,
+        "startChar": 15,
+        "endLine": 807,
+        "endChar": 18
+      },
+      "revId": "4681b8ecbb837628c94c31065923d8a4dcbac603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
