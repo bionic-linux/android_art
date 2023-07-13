@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431f3d85_86e953e2",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2023-07-13T10:46:15Z",
+      "side": 1,
+      "message": "Can you use ScratchRegisterScope here and below?",
+      "range": {
+        "startLine": 807,
+        "startChar": 15,
+        "endLine": 807,
+        "endChar": 18
+      },
+      "revId": "4681b8ecbb837628c94c31065923d8a4dcbac603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
