@@ -77,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b6178ab_180886ad",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-13T14:23:56Z",
+      "side": 1,
+      "message": "Removed in https://android-review.googlesource.com/2655603 , including the #undef from line 1711 in this patch set.",
+      "parentUuid": "14297e46_8fa34d7a",
+      "range": {
+        "startLine": 1739,
+        "startChar": 0,
+        "endLine": 1739,
+        "endChar": 68
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "175ae576_4f8fca9c",
@@ -90,6 +114,30 @@
       "writtenOn": "2023-07-07T14:07:54Z",
       "side": 1,
       "message": "Unused, remove",
+      "range": {
+        "startLine": 1786,
+        "startChar": 0,
+        "endLine": 1786,
+        "endChar": 22
+      },
+      "revId": "fc531291fd0c00b21104d4720ef4fea5e8f8d42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0122b24_febfeb35",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-13T14:23:56Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/2655603 .",
+      "parentUuid": "175ae576_4f8fca9c",
       "range": {
         "startLine": 1786,
         "startChar": 0,
