@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f025f7_6ed933e5",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 3088,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-14T12:04:21Z",
+      "side": 1,
+      "message": "Could we do `__ Loadd(tmp, tmp, InlineCache::ClassesOffset().Int32Value());` and avoid allocating a second register? i.e. using `tmp` for both in and out.\n\nWe can always have two temp registers so it may be an unneeded optimization, but I was wondering if there are some restrictions on RISC-V that I might not be aware of.",
+      "range": {
+        "startLine": 3088,
+        "startChar": 6,
+        "endLine": 3088,
+        "endChar": 69
+      },
+      "revId": "c2439e03f5a4cbb4db2a67886de857755fe677de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d950f30e_5cc46ba7",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 3106,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-14T12:04:21Z",
+      "side": 1,
+      "message": "nit: extra new line",
+      "revId": "c2439e03f5a4cbb4db2a67886de857755fe677de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
