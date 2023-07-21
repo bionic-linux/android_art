@@ -63,7 +63,7 @@ public class CompOsTestUtils {
     public void runCompilationJobEarlyAndWait() throws Exception {
         waitForJobToBeScheduled();
 
-        assertCommandSucceeds("cmd jobscheduler run android " + JOB_ID);
+        assertCommandSucceeds("cmd jobscheduler run -f android " + JOB_ID);
         // It takes time. Just don't spam.
         TimeUnit.SECONDS.sleep(SECONDS_BEFORE_PROGRESS_CHECK);
         // The job runs asynchronously. To wait until it completes.
