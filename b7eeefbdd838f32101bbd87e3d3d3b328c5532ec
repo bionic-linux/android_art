@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff47d3ef_7d9ef09e",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsTestUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-21T15:11:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04fe1742_6ec83602",
+      "range": {
+        "startLine": 92,
+        "startChar": 37,
+        "endLine": 92,
+        "endChar": 57
+      },
+      "revId": "b7eeefbdd838f32101bbd87e3d3d3b328c5532ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0ae995_7f4114f9",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-21T14:42:17Z",
       "side": 1,
       "message": "I suggest something like `result.getExitCode() \u003d\u003d 0 ? result.getStdout().toString() : result.toString()` to make this message more readable.",
+      "range": {
+        "startLine": 112,
+        "startChar": 63,
+        "endLine": 112,
+        "endChar": 69
+      },
+      "revId": "b7eeefbdd838f32101bbd87e3d3d3b328c5532ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd167d1_f8f76806",
+        "filename": "test/odsign/test-src/com/android/tests/odsign/CompOsTestUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-21T15:11:38Z",
+      "side": 1,
+      "message": "Good thought; done.",
+      "parentUuid": "af0ae995_7f4114f9",
       "range": {
         "startLine": 112,
         "startChar": 63,
