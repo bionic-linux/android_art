@@ -28,7 +28,7 @@ class LoadStoreElimination : public HOptimization {
  public:
   // Whether or not we should attempt partial Load-store-elimination which
   // requires additional blocks and predicated instructions.
-  static constexpr bool kEnablePartialLSE = false;
+  static constexpr bool kEnablePartialLSE = true;
 
   // Controls whether to enable VLOG(compiler) logs explaining the transforms taking place.
   static constexpr bool kVerboseLoggingMode = false;
@@ -48,6 +48,8 @@ class LoadStoreElimination : public HOptimization {
   static constexpr const char* kLoadStoreEliminationPassName = "load_store_elimination";
 
  private:
+  void RunInternal(bool perform_partial_lse);
+
   DISALLOW_COPY_AND_ASSIGN(LoadStoreElimination);
 };
 
