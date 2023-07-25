@@ -8617,8 +8617,9 @@ void LocationsBuilderARMVIXL::VisitXor(HXor* instruction) {
 void LocationsBuilderARMVIXL::HandleBitwiseOperation(HBinaryOperation* instruction, Opcode opcode) {
   LocationSummary* locations =
       new (GetGraph()->GetAllocator()) LocationSummary(instruction, LocationSummary::kNoCall);
-  DCHECK(instruction->GetResultType() == DataType::Type::kInt32
-         || instruction->GetResultType() == DataType::Type::kInt64);
+  DCHECK(instruction->GetResultType() == DataType::Type::kBool ||
+         instruction->GetResultType() == DataType::Type::kInt32 ||
+         instruction->GetResultType() == DataType::Type::kInt64);
   // Note: GVN reorders commutative operations to have the constant on the right hand side.
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, ArmEncodableConstantOrRegister(instruction->InputAt(1), opcode));
@@ -8873,7 +8874,8 @@ void InstructionCodeGeneratorARMVIXL::HandleBitwiseOperation(HBinaryOperation* i
   if (second.IsConstant()) {
     uint64_t value = static_cast<uint64_t>(Int64FromConstant(second.GetConstant()));
     uint32_t value_low = Low32Bits(value);
-    if (instruction->GetResultType() == DataType::Type::kInt32) {
+    if (instruction->GetResultType() == DataType::Type::kInt32 ||
+        instruction->GetResultType() == DataType::Type::kBool) {
       vixl32::Register first_reg = InputRegisterAt(instruction, 0);
       vixl32::Register out_reg = OutputRegister(instruction);
       if (instruction->IsAnd()) {
@@ -8906,7 +8908,8 @@ void InstructionCodeGeneratorARMVIXL::HandleBitwiseOperation(HBinaryOperation* i
     return;
   }
 
-  if (instruction->GetResultType() == DataType::Type::kInt32) {
+  if (instruction->GetResultType() == DataType::Type::kInt32 ||
+      instruction->GetResultType() == DataType::Type::kBool) {
     vixl32::Register first_reg = InputRegisterAt(instruction, 0);
     vixl32::Register second_reg = InputRegisterAt(instruction, 1);
     vixl32::Register out_reg = OutputRegister(instruction);

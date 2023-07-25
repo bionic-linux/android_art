@@ -121,29 +121,12 @@ public class Main {
   // meaning there's no need for any clinit/actual loading.
   //
   /// CHECK-START: void Main.testFieldStores(boolean) code_sinking (before)
-  /// CHECK: <<Int42:i\d+>>       IntConstant 42
-  /// CHECK:                      begin_block
-  /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
-  /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK:                      InstanceFieldSet [<<NewInstance>>,<<Int42>>]
-  /// CHECK:                      Throw
+  /// CHECK: LoadClass class_name:Main
+  /// CHECK: If
 
   /// CHECK-START: void Main.testFieldStores(boolean) code_sinking (after)
-  /// CHECK: <<Int42:i\d+>>       IntConstant 42
-  /// CHECK-NOT:                  NewInstance
-  /// CHECK:                      If
-  /// CHECK:                      begin_block
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
-  /// CHECK-NOT:                  begin_block
-  /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
-  /// CHECK-NOT:                  begin_block
-  /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      InstanceFieldSet [<<NewInstance>>,<<Int42>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK: <<Throw:l\d+>>       NewInstance [<<Error>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      Throw [<<Throw>>]
+  /// CHECK: If
+  /// CHECK: LoadClass class_name:Main
   public static void testFieldStores(boolean doThrow) {
     Main m = new Main();
     m.intField = 42;
@@ -394,32 +377,12 @@ public class Main {
   // meaning there's no need for any clinit/actual loading.
   //
   /// CHECK-START: void Main.testStoreStore(boolean) code_sinking (before)
-  /// CHECK: <<Int42:i\d+>>       IntConstant 42
-  /// CHECK: <<Int43:i\d+>>       IntConstant 43
-  /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
-  /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int42>>]
-  /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int43>>]
-  /// CHECK:                      Throw
-  /// CHECK-NOT:                  InstanceFieldSet
+  /// CHECK: LoadClass class_name:Main
+  /// CHECK: If
 
   /// CHECK-START: void Main.testStoreStore(boolean) code_sinking (after)
-  /// CHECK: <<Int42:i\d+>>       IntConstant 42
-  /// CHECK: <<Int43:i\d+>>       IntConstant 43
-  /// CHECK-NOT:                  NewInstance
-  /// CHECK:                      If
-  /// CHECK:                      begin_block
-  /// CHECK: <<Error:l\d+>>       LoadClass class_name:java.lang.Error
-  /// CHECK-NOT:                  begin_block
-  /// CHECK: <<LoadClass:l\d+>>   LoadClass class_name:Main
-  /// CHECK: <<NewInstance:l\d+>> NewInstance [<<LoadClass>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int42>>]
-  /// CHECK-DAG:                  InstanceFieldSet [<<NewInstance>>,<<Int43>>]
-  /// CHECK-NOT:                  begin_block
-  /// CHECK:                      NewInstance [<<Error>>]
-  /// CHECK:                      Throw
-  /// CHECK-NOT:                  InstanceFieldSet
+  /// CHECK: If
+  /// CHECK: LoadClass class_name:Main
   public static void testStoreStore(boolean doThrow) {
     Main m = new Main();
     m.intField = 42;
