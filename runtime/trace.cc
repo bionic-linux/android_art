@@ -571,7 +571,7 @@ void Trace::Start(std::unique_ptr<File>&& trace_file_in,
   }
 }
 
-void Trace::StopTracing(bool finish_tracing, bool flush_file) {
+void Trace::StopTracing(bool flush_entries) {
   Runtime* const runtime = Runtime::Current();
   Thread* const self = Thread::Current();
   pthread_t sampling_pthread = 0U;
@@ -648,12 +648,12 @@ void Trace::StopTracing(bool finish_tracing, bool flush_file) {
   // At this point, code may read buf_ as its writers are shutdown
   // and the ScopedSuspendAll above has ensured all stores to buf_
   // are now visible.
-  if (finish_tracing) {
+  if (flush_entries) {
     the_trace->FinishTracing();
   }
   if (the_trace->trace_file_.get() != nullptr) {
     // Do not try to erase, so flush and close explicitly.
-    if (flush_file) {
+    if (flush_entries) {
       if (the_trace->trace_file_->Flush() != 0) {
         PLOG(WARNING) << "Could not flush trace file.";
       }
@@ -679,12 +679,12 @@ void Trace::FlushThreadBuffer(Thread* self) {
 
 void Trace::Abort() {
   // Do not write anything anymore.
-  StopTracing(false, false);
+  StopTracing(false);
 }
 
 void Trace::Stop() {
   // Finish writing.
-  StopTracing(true, true);
+  StopTracing(true);
 }
 
 void Trace::Shutdown() {
