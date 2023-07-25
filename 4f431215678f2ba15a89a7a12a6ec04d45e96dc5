@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36eb6715_663fd7a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-07-25T14:20:24Z",
+      "side": 1,
+      "message": "A tiny cleanup. PTAL. Thanks!",
+      "revId": "4f431215678f2ba15a89a7a12a6ec04d45e96dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
