@@ -275,6 +275,12 @@ bool LoadStoreAnalysis::Run() {
     return false;
   }
 
+  // Disable LSA with monitor operations and try catches.
+  if (lse_type_ != LoadStoreAnalysisType::kBasic &&
+      (graph_->HasMonitorOperations() || graph_->HasTryCatch())) {
+    return false;
+  }
+
   for (HBasicBlock* block : graph_->GetReversePostOrder()) {
     heap_location_collector_.VisitBasicBlock(block);
   }
@@ -289,6 +295,14 @@ bool LoadStoreAnalysis::Run() {
     heap_location_collector_.CleanUp();
     return false;
   }
+  if (lse_type_ != LoadStoreAnalysisType::kBasic && heap_location_collector_.HasVolatile()) {
+    // Don't do load/store elimination if the method has volatile field accesses with partial LSE,
+    // for now.
+    // TODO: do it right.
+    heap_location_collector_.CleanUp();
+    return false;
+  }
+
   heap_location_collector_.BuildAliasingMatrix();
   heap_location_collector_.DumpReferenceStats(stats_);
   return true;

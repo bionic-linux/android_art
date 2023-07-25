@@ -258,6 +258,7 @@ class HeapLocationCollector : public HGraphVisitor {
         heap_locations_(allocator->Adapter(kArenaAllocLSA)),
         aliasing_matrix_(allocator, kInitialAliasingMatrixBitVectorSize, true, kArenaAllocLSA),
         has_heap_stores_(false),
+        has_volatile_(false),
         lse_type_(lse_type) {
     aliasing_matrix_.ClearAllBits();
   }
@@ -354,6 +355,8 @@ class HeapLocationCollector : public HGraphVisitor {
   bool HasHeapStores() const {
     return has_heap_stores_;
   }
+
+  bool HasVolatile() const { return has_volatile_; }
 
   // Find and return the heap location index in heap_locations_.
   // NOTE: When heap locations are created, potentially aliasing/overlapping
@@ -540,6 +543,9 @@ class HeapLocationCollector : public HGraphVisitor {
   }
 
   void VisitFieldAccess(HInstruction* ref, const FieldInfo& field_info) {
+    if (field_info.IsVolatile()) {
+      has_volatile_ = true;
+    }
     DataType::Type type = field_info.GetFieldType();
     const uint16_t declaring_class_def_index = field_info.GetDeclaringClassDefIndex();
     const size_t offset = field_info.GetFieldOffset().SizeValue();
@@ -645,6 +651,7 @@ class HeapLocationCollector : public HGraphVisitor {
   ArenaBitVector aliasing_matrix_;    // aliasing info between each pair of locations.
   bool has_heap_stores_;    // If there is no heap stores, LSE acts as GVN with better
                             // alias analysis and won't be as effective.
+  bool has_volatile_;       // If there are volatile field accesses.
   LoadStoreAnalysisType lse_type_;
 
   DISALLOW_COPY_AND_ASSIGN(HeapLocationCollector);
@@ -660,10 +667,8 @@ class LoadStoreAnalysis {
                              LoadStoreAnalysisType lse_type)
       : graph_(graph),
         stats_(stats),
-        heap_location_collector_(
-            graph,
-            local_allocator,
-            ExecutionSubgraph::CanAnalyse(graph_) ? lse_type : LoadStoreAnalysisType::kBasic) {}
+        lse_type_(ExecutionSubgraph::CanAnalyse(graph_) ? lse_type : LoadStoreAnalysisType::kBasic),
+        heap_location_collector_(graph, local_allocator, lse_type_) {}
 
   const HeapLocationCollector& GetHeapLocationCollector() const {
     return heap_location_collector_;
@@ -674,6 +679,7 @@ class LoadStoreAnalysis {
  private:
   HGraph* graph_;
   OptimizingCompilerStats* stats_;
+  LoadStoreAnalysisType lse_type_;
   HeapLocationCollector heap_location_collector_;
 
   DISALLOW_COPY_AND_ASSIGN(LoadStoreAnalysis);
