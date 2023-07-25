@@ -7467,8 +7467,9 @@ void LocationsBuilderX86_64::VisitXor(HXor* instruction) { HandleBitwiseOperatio
 void LocationsBuilderX86_64::HandleBitwiseOperation(HBinaryOperation* instruction) {
   LocationSummary* locations =
       new (GetGraph()->GetAllocator()) LocationSummary(instruction, LocationSummary::kNoCall);
-  DCHECK(instruction->GetResultType() == DataType::Type::kInt32
-         || instruction->GetResultType() == DataType::Type::kInt64);
+  DCHECK(instruction->GetResultType() == DataType::Type::kBool ||
+         instruction->GetResultType() == DataType::Type::kInt32 ||
+         instruction->GetResultType() == DataType::Type::kInt64);
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::Any());
   locations->SetOut(Location::SameAsFirstInput());
@@ -7492,7 +7493,8 @@ void InstructionCodeGeneratorX86_64::HandleBitwiseOperation(HBinaryOperation* in
   Location second = locations->InAt(1);
   DCHECK(first.Equals(locations->Out()));
 
-  if (instruction->GetResultType() == DataType::Type::kInt32) {
+  if (instruction->GetResultType() == DataType::Type::kInt32 ||
+      instruction->GetResultType() == DataType::Type::kBool) {
     if (second.IsRegister()) {
       if (instruction->IsAnd()) {
         __ andl(first.AsRegister<CpuRegister>(), second.AsRegister<CpuRegister>());
