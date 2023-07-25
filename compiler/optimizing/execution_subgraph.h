@@ -37,18 +37,6 @@
 
 namespace art HIDDEN {
 
-// Helper for transforming blocks to block_ids.
-class BlockToBlockIdTransformer {
- public:
-  BlockToBlockIdTransformer(BlockToBlockIdTransformer&&) = default;
-  BlockToBlockIdTransformer(const BlockToBlockIdTransformer&) = default;
-  BlockToBlockIdTransformer() {}
-
-  inline uint32_t operator()(const HBasicBlock* b) const {
-    return b->GetBlockId();
-  }
-};
-
 // Helper for transforming block ids to blocks.
 class BlockIdToBlockTransformer {
  public:
@@ -60,15 +48,11 @@ class BlockIdToBlockTransformer {
     return graph_;
   }
 
-  inline HBasicBlock* GetBlock(uint32_t id) const {
+  inline HBasicBlock* operator()(uint32_t id) const {
     DCHECK_LT(id, graph_->GetBlocks().size()) << graph_->PrettyMethod();
     HBasicBlock* blk = graph_->GetBlocks()[id];
     DCHECK(blk != nullptr);
     return blk;
-  }
-
-  inline HBasicBlock* operator()(uint32_t id) const {
-    return GetBlock(id);
   }
 
  private:
@@ -229,17 +213,13 @@ class ExecutionSubgraph : public DeletableArenaObject<kArenaAllocLSA> {
   // are determined once and passed down for performance reasons.
   ExecutionSubgraph(HGraph* graph, ScopedArenaAllocator* allocator);
 
-  void Invalidate() {
-    valid_ = false;
-  }
-
   // A block is contained by the ExecutionSubgraph if it is reachable. This
   // means it has not been removed explicitly or via pruning/concavity removal.
   // Finalization is needed to call this function.
   // See RemoveConcavity and Prune for more information.
   bool ContainsBlock(const HBasicBlock* blk) const {
     DCHECK_IMPLIES(finalized_, !needs_prune_);
-    if (!valid_) {
+    if (!can_reach_end_block_) {
       return false;
     }
     return !unreachable_blocks_.IsBitSet(blk->GetBlockId());
@@ -263,13 +243,11 @@ class ExecutionSubgraph : public DeletableArenaObject<kArenaAllocLSA> {
 
   // Returns true if all allowed execution paths from start eventually reach the
   // graph's exit block (or diverge).
-  bool IsValid() const {
-    return valid_;
-  }
+  bool IsValid() const { return can_reach_end_block_; }
 
   ArrayRef<const ExcludedCohort> GetExcludedCohorts() const {
-    DCHECK_IMPLIES(valid_, !needs_prune_);
-    if (!valid_ || !unreachable_blocks_.IsAnyBitSet()) {
+    DCHECK_IMPLIES(IsValid(), !needs_prune_);
+    if (!IsValid() || !unreachable_blocks_.IsAnyBitSet()) {
       return ArrayRef<const ExcludedCohort>();
     } else {
       return ArrayRef<const ExcludedCohort>(*excluded_list_);
@@ -307,14 +285,8 @@ class ExecutionSubgraph : public DeletableArenaObject<kArenaAllocLSA> {
 
  private:
   std::bitset<kMaxFilterableSuccessors> GetAllowedSuccessors(const HBasicBlock* blk) const {
-    DCHECK(valid_);
+    DCHECK(can_reach_end_block_);
     return allowed_successors_[blk->GetBlockId()];
-  }
-
-  void LimitBlockSuccessors(const HBasicBlock* block,
-                            std::bitset<kMaxFilterableSuccessors> allowed) {
-    needs_prune_ = true;
-    allowed_successors_[block->GetBlockId()] &= allowed;
   }
 
   // Remove nodes which both precede and follow any exclusions. This ensures we don't need to deal
@@ -343,11 +315,12 @@ class ExecutionSubgraph : public DeletableArenaObject<kArenaAllocLSA> {
   // A list of the excluded-cohorts of this subgraph. This is only valid when
   // 'needs_prune_ == false'
   std::optional<ScopedArenaVector<ExcludedCohort>> excluded_list_;
-  // Bool to hold if there is at least one known path from the start block to
-  // the end in this graph. Used to short-circuit computation.
-  bool valid_;
-  // True if the subgraph is consistent and can be queried. Modifying the
-  // subgraph clears this and requires a prune to restore.
+  // True if there is at least one known path from the start block to the end in this graph. Used to
+  // short-circuit computation.
+  bool can_reach_end_block_;
+  // False if the subgraph is consistent and can be queried. Modifying the subgraph sets this to
+  // true and requires a prune to restore.
+  // TODO(solanes): rename to can_be_queried_ and flip the values.
   bool needs_prune_;
   // True if no more modification of the subgraph is permitted.
   bool finalized_;
