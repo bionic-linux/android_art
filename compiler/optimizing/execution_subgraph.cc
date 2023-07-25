@@ -36,10 +36,10 @@ ExecutionSubgraph::ExecutionSubgraph(HGraph* graph, ScopedArenaAllocator* alloca
                           allocator_->Adapter(kArenaAllocLSA)),
       unreachable_blocks_(
           allocator_, graph_->GetBlocks().size(), /*expandable=*/ false, kArenaAllocLSA),
-      valid_(true),
+      can_reach_end_block_(true),
       needs_prune_(false),
       finalized_(false) {
-  if (valid_) {
+  if (can_reach_end_block_) {
     DCHECK(std::all_of(graph->GetBlocks().begin(), graph->GetBlocks().end(), [](HBasicBlock* it) {
       return it == nullptr || it->GetSuccessors().size() <= kMaxFilterableSuccessors;
     }));
@@ -47,34 +47,29 @@ ExecutionSubgraph::ExecutionSubgraph(HGraph* graph, ScopedArenaAllocator* alloca
 }
 
 void ExecutionSubgraph::RemoveBlock(const HBasicBlock* to_remove) {
-  if (!valid_) {
+  if (!can_reach_end_block_) {
     return;
   }
-  uint32_t id = to_remove->GetBlockId();
-  if (unreachable_blocks_.IsBitSet(id)) {
+  uint32_t block_id = to_remove->GetBlockId();
+  if (unreachable_blocks_.IsBitSet(block_id)) {
     if (kIsDebugBuild) {
       // This isn't really needed but it's good to have this so it functions as
-      // a DCHECK that we always call Prune after removing any block.
+      // a DCHECK that we always call Prune after every RemoveBlock call.
       needs_prune_ = true;
     }
     return;
   }
-  unreachable_blocks_.SetBit(id);
+  unreachable_blocks_.SetBit(block_id);
   for (HBasicBlock* pred : to_remove->GetPredecessors()) {
-    std::bitset<kMaxFilterableSuccessors> allowed_successors {};
-    // ZipCount iterates over both the successors and the index of them at the same time.
-    for (auto [succ, i] : ZipCount(MakeIterationRange(pred->GetSuccessors()))) {
-      if (succ != to_remove) {
-        allowed_successors.set(i);
-      }
-    }
-    LimitBlockSuccessors(pred, allowed_successors);
+    size_t succ_idx = pred->GetSuccessorIndexOf(to_remove);
+    allowed_successors_[pred->GetBlockId()].reset(succ_idx);
+    needs_prune_ = true;
   }
 }
 
 // Removes sink nodes.
 void ExecutionSubgraph::Prune() {
-  if (UNLIKELY(!valid_)) {
+  if (UNLIKELY(!can_reach_end_block_)) {
     return;
   }
   needs_prune_ = false;
@@ -216,7 +211,7 @@ void ExecutionSubgraph::Prune() {
     // If we can't reach the end then there is no path through the graph without
     // hitting excluded blocks
     if (UNLIKELY(!start_reaches_end)) {
-      valid_ = false;
+      can_reach_end_block_ = false;
       return;
     }
     // Mark blocks we didn't see in the ReachesEnd flood-fill
@@ -238,7 +233,7 @@ void ExecutionSubgraph::Prune() {
 }
 
 void ExecutionSubgraph::RemoveConcavity() {
-  if (UNLIKELY(!valid_)) {
+  if (UNLIKELY(!can_reach_end_block_)) {
     return;
   }
   DCHECK(!needs_prune_);

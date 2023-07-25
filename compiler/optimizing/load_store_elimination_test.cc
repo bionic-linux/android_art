@@ -1222,8 +1222,7 @@ TEST_F(LoadStoreEliminationTest, DefaultShadowClass) {
 
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_REMOVED(new_inst);
   EXPECT_INS_REMOVED(const_fence);
@@ -1273,8 +1272,7 @@ TEST_F(LoadStoreEliminationTest, DefaultShadowMonitor) {
 
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_REMOVED(new_inst);
   EXPECT_INS_REMOVED(const_fence);
@@ -1389,9 +1387,7 @@ TEST_F(LoadStoreEliminationTest, ArrayLoopOverlap) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   // TODO Technically this is optimizable. LSE just needs to add phis to keep
   // track of the last `N` values set where `N` is how many locations we can go
@@ -1535,9 +1531,7 @@ TEST_F(LoadStoreEliminationTest, ArrayLoopOverlap2) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   // TODO Technically this is optimizable. LSE just needs to add phis to keep
   // track of the last `N` values set where `N` is how many locations we can go
@@ -1643,9 +1637,7 @@ TEST_F(LoadStoreEliminationTest, ArrayNonLoopPhi) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_REMOVED(read_1);
   EXPECT_INS_REMOVED(read_2);
@@ -1733,9 +1725,7 @@ TEST_F(LoadStoreEliminationTest, ArrayMergeDefault) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_REMOVED(read_1);
   EXPECT_INS_REMOVED(read_2);
@@ -1828,9 +1818,7 @@ TEST_F(LoadStoreEliminationTest, ArrayLoopAliasing1) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_RETAINED(cls);
   EXPECT_INS_RETAINED(array);
@@ -1927,9 +1915,7 @@ TEST_F(LoadStoreEliminationTest, ArrayLoopAliasing2) {
   // exit
   SetupExit(exit);
 
-  graph_->ClearDominanceInformation();
-  graph_->ClearLoopInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blocks);
 
   EXPECT_INS_RETAINED(cls);
   EXPECT_INS_RETAINED(array);
@@ -2158,9 +2144,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination) {
   exit->AddPhi(phi_final);
   exit->AddInstruction(return_exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   ASSERT_TRUE(IsRemoved(read_right));
   ASSERT_FALSE(IsRemoved(read_left));
@@ -2395,9 +2379,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination2) {
 
   SetupExit(exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   EXPECT_INS_REMOVED(read_bottom);
   EXPECT_INS_REMOVED(write_right);
@@ -4121,9 +4103,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination3) {
 
   SetupExit(exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   EXPECT_INS_REMOVED(read_right);
   EXPECT_INS_REMOVED(write_right);
@@ -4227,9 +4207,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination4) {
 
   SetupExit(exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   EXPECT_INS_RETAINED(write_left_pre);
   EXPECT_INS_REMOVED(read_right);
@@ -4310,9 +4288,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination5) {
 
   SetupExit(exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   EXPECT_INS_REMOVED(read_bottom);
   EXPECT_INS_REMOVED(write_right);
@@ -4400,9 +4376,7 @@ TEST_F(LoadStoreEliminationTest, PartialLoadElimination6) {
 
   SetupExit(exit);
 
-  // PerformLSE expects this to be empty.
-  graph_->ClearDominanceInformation();
-  PerformLSE();
+  PerformLSEWithPartial(blks);
 
   EXPECT_INS_REMOVED(read_bottom);
   EXPECT_INS_REMOVED(write_right);
@@ -4540,7 +4514,8 @@ TEST_F(LoadStoreEliminationTest, PartialLoadPreserved3) {
 // // DO NOT ELIMINATE
 // return obj.field;
 // EXIT
-// Disabled due to b/205813546.
+// Disabled due to b/205813546. Needs to run regular LSE with
+// LoadStoreAnalysisType::kNoPredicatedInstructions, which is unsupported at the moment.
 TEST_F(LoadStoreEliminationTest, DISABLED_PartialLoadPreserved4) {
   ScopedObjectAccess soa(Thread::Current());
   VariableSizedHandleScope vshs(soa.Self());
@@ -4729,7 +4704,8 @@ TEST_F(LoadStoreEliminationTest, PartialLoadPreserved5) {
 // EXIT
 // ELIMINATE
 // return obj.field
-// Disabled due to b/205813546.
+// Disabled due to b/205813546. Needs to run regular LSE with
+// LoadStoreAnalysisType::kNoPredicatedInstructions, which is unsupported at the moment.
 TEST_F(LoadStoreEliminationTest, DISABLED_PartialLoadPreserved6) {
   CreateGraph();
   AdjacencyListGraph blks(SetupFromAdjacencyList("entry",

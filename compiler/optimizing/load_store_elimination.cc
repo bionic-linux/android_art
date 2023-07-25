@@ -1596,9 +1596,8 @@ LSEVisitor::LSEVisitor(HGraph* graph,
       loads_and_stores_(allocator_.Adapter(kArenaAllocLSE)),
       // We may add new instructions (default values, Phis) but we're not adding loads
       // or stores, so we shall not need to resize following vector and BitVector.
-      substitute_instructions_for_loads_(graph->GetCurrentInstructionId(),
-                                         nullptr,
-                                         allocator_.Adapter(kArenaAllocLSE)),
+      substitute_instructions_for_loads_(
+          graph->GetCurrentInstructionId(), nullptr, allocator_.Adapter(kArenaAllocLSE)),
       intermediate_values_(allocator_.Adapter(kArenaAllocLSE)),
       kept_stores_(&allocator_,
                    /*start_bits=*/graph->GetCurrentInstructionId(),
@@ -1612,15 +1611,15 @@ LSEVisitor::LSEVisitor(HGraph* graph,
       store_records_(store_records_buffer_,
                      kStoreRecordsInitialBufferSize,
                      allocator_.Adapter(kArenaAllocLSE)),
-      phi_placeholder_replacements_(num_phi_placeholders_,
-                                    Value::Invalid(),
-                                    allocator_.Adapter(kArenaAllocLSE)),
+      phi_placeholder_replacements_(
+          num_phi_placeholders_, Value::Invalid(), allocator_.Adapter(kArenaAllocLSE)),
       kept_merged_unknowns_(&allocator_,
                             /*start_bits=*/num_phi_placeholders_,
                             /*expandable=*/false,
                             kArenaAllocLSE),
       singleton_new_instances_(allocator_.Adapter(kArenaAllocLSE)),
       field_infos_(heap_location_collector_.GetNumberOfHeapLocations(),
+                   nullptr,
                    allocator_.Adapter(kArenaAllocLSE)),
       current_phase_(Phase::kLoadElimination) {
   // Clear bit vectors.
@@ -3022,12 +3021,13 @@ void LSEVisitor::Run() {
   // Find stores that write the same value as is already present in the location.
   FindStoresWritingOldValues();
 
-  // 4. Replace loads and remove unnecessary stores and singleton allocations.
-  FinishFullLSE();
-
-  // 5. Move partial escapes down and fixup with PHIs.
-  current_phase_ = Phase::kPartialElimination;
-  MovePartialEscapes();
+  // 4. Run either the regular or partial LSE.
+  if (ShouldPerformPartialLSE()) {
+    current_phase_ = Phase::kPartialElimination;
+    MovePartialEscapes();
+  } else {
+    FinishFullLSE();
+  }
 }
 
 // Clear unknown loop-phi results. Here we'll be able to use partial-unknowns so we need to
@@ -3379,28 +3379,37 @@ class PartialLoadStoreEliminationHelper {
           // Already handled due to obj == obj;
           continue;
         } else if (ins->IsInstanceFieldGet()) {
-          // IFieldGet[obj] => PredicatedIFieldGet[PartialValue, obj]
-          HInstruction* new_fget = new (GetGraph()->GetAllocator()) HPredicatedInstanceFieldGet(
-              ins->AsInstanceFieldGet(),
-              GetMaterialization(ins->GetBlock()),
-              helper_->lse_->GetPartialValueAt(OriginalNewInstance(), ins));
-          MaybeRecordStat(helper_->lse_->stats_, MethodCompilationStat::kPredicatedLoadAdded);
-          ins->GetBlock()->InsertInstructionBefore(new_fget, ins);
-          if (ins->GetType() == DataType::Type::kReference) {
-            // Reference info is the same
-            new_fget->SetReferenceTypeInfoIfValid(ins->GetReferenceTypeInfo());
+          if (helper_->lse_->substitute_instructions_for_loads_[ins->GetId()] != nullptr) {
+            DCHECK(helper_->lse_->substitute_instructions_for_loads_[ins->GetId()]->IsPhi())
+                << *helper_->lse_->substitute_instructions_for_loads_[ins->GetId()]
+                << "is the substitute for " << *ins;
+            // Already have a replacement.
+          } else {
+            // IFieldGet[obj] => PredicatedIFieldGet[PartialValue, obj]
+            HInstruction* new_fget = new (GetGraph()->GetAllocator()) HPredicatedInstanceFieldGet(
+                ins->AsInstanceFieldGet(),
+                GetMaterialization(ins->GetBlock()),
+                helper_->lse_->GetPartialValueAt(OriginalNewInstance(), ins));
+            MaybeRecordStat(helper_->lse_->stats_, MethodCompilationStat::kPredicatedLoadAdded);
+            ins->GetBlock()->InsertInstructionBefore(new_fget, ins);
+            if (ins->GetType() == DataType::Type::kReference) {
+              // Reference info is the same
+              new_fget->SetReferenceTypeInfoIfValid(ins->GetReferenceTypeInfo());
+            }
+            // In this phase, substitute instructions are used only for the predicated get
+            // default values which are used only if the partial singleton did not escape,
+            // so the out value of the `new_fget` for the relevant cases is the same as
+            // the default value.
+            // TODO: Use the default value for materializing default values used by
+            // other predicated loads to avoid some unnecessary Phis. (This shall
+            // complicate the search for replacement in `ReplacementOrValue()`.)
+            helper_->lse_->substitute_instructions_for_loads_[ins->GetId()] = new_fget;
           }
-          // In this phase, substitute instructions are used only for the predicated get
-          // default values which are used only if the partial singleton did not escape,
-          // so the out value of the `new_fget` for the relevant cases is the same as
-          // the default value.
-          // TODO: Use the default value for materializing default values used by
-          // other predicated loads to avoid some unnecessary Phis. (This shall
-          // complicate the search for replacement in `ReplacementOrValue()`.)
-          DCHECK(helper_->lse_->substitute_instructions_for_loads_[ins->GetId()] == nullptr);
-          helper_->lse_->substitute_instructions_for_loads_[ins->GetId()] = new_fget;
-          ins->ReplaceWith(new_fget);
-          ins->ReplaceEnvUsesDominatedBy(ins, new_fget);
+
+          HInstruction* new_instruction =
+              helper_->lse_->substitute_instructions_for_loads_[ins->GetId()];
+          ins->ReplaceWith(new_instruction);
+          ins->ReplaceEnvUsesDominatedBy(ins, new_instruction);
           CHECK(ins->GetEnvUses().empty() && ins->GetUses().empty())
               << "Instruction: " << *ins << " uses: " << ins->GetUses()
               << ", env: " << ins->GetEnvUses();
@@ -3422,6 +3431,9 @@ class PartialLoadStoreEliminationHelper {
             ins->GetBlock()->RemoveInstruction(ins);
             continue;
           } else {
+            // TODO(solanes): Figure out if we can have two HIf instructions instead of the
+            // HOr/HAnd. If we do that, we would be adding blocks and we will need to readjust RPO.
+            // This means that the LSA might be invalidated.
             HInstruction* is_escaped = new (GetGraph()->GetAllocator())
                 HNotEqual(GetMaterialization(ins->GetBlock()), GetGraph()->GetNullConstant());
             HInstruction* combine_inst =
@@ -3460,6 +3472,9 @@ class PartialLoadStoreEliminationHelper {
           LSE_VLOG << "Replacing " << *new_instance_ << " use in " << *use.GetUser() << " with "
                    << *GetMaterialization(blk);
           to_replace.push_back({use.GetUser(), use.GetIndex()});
+        } else if (use.GetUser()->IsConstructorFence()) {
+          LSE_VLOG << "User " << *use.GetUser() << " being moved to materialization!";
+          constructor_fences.push_back({use.GetUser()->AsConstructorFence(), use.GetIndex()});
         } else if (IsPostEscape(blk)) {
           LSE_VLOG << "User " << *use.GetUser() << " after escapes!";
           // The fields + cmp are normal uses. Phi can only be here if it was
@@ -3474,9 +3489,6 @@ class PartialLoadStoreEliminationHelper {
                 << *use.GetUser() << "@" << use.GetIndex();
             to_predicate.push_back({use.GetUser(), use.GetIndex()});
           }
-        } else if (use.GetUser()->IsConstructorFence()) {
-          LSE_VLOG << "User " << *use.GetUser() << " being moved to materialization!";
-          constructor_fences.push_back({use.GetUser()->AsConstructorFence(), use.GetIndex()});
         } else {
           LSE_VLOG << "User " << *use.GetUser() << " not contained in cohort!";
           to_remove.push_back(use.GetUser());
@@ -4010,9 +4022,7 @@ class LSEVisitorWrapper : public DeletableArenaObject<kArenaAllocLSE> {
                     OptimizingCompilerStats* stats)
       : lse_visitor_(graph, heap_location_collector, perform_partial_lse, stats) {}
 
-  void Run() {
-    lse_visitor_.Run();
-  }
+  void Run() { lse_visitor_.Run(); }
 
  private:
   LSEVisitor lse_visitor_;
@@ -4024,24 +4034,6 @@ bool LoadStoreElimination::Run(bool enable_partial_lse) {
     // Skip this optimization.
     return false;
   }
-  // We need to be able to determine reachability. Clear it just to be safe but
-  // this should initially be empty.
-  graph_->ClearReachabilityInformation();
-  // This is O(blocks^3) time complexity. It means we can query reachability in
-  // O(1) though.
-  graph_->ComputeReachabilityInformation();
-  ScopedArenaAllocator allocator(graph_->GetArenaStack());
-  LoadStoreAnalysis lsa(graph_,
-                        stats_,
-                        &allocator,
-                        enable_partial_lse ? LoadStoreAnalysisType::kFull
-                                           : LoadStoreAnalysisType::kBasic);
-  lsa.Run();
-  const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
-  if (heap_location_collector.GetNumberOfHeapLocations() == 0) {
-    // No HeapLocation information from LSA, skip this optimization.
-    return false;
-  }
 
   // Currently load_store analysis can't handle predicated load/stores; specifically pairs of
   // memory operations with different predicates.
@@ -4050,10 +4042,36 @@ bool LoadStoreElimination::Run(bool enable_partial_lse) {
     return false;
   }
 
-  std::unique_ptr<LSEVisitorWrapper> lse_visitor(new (&allocator) LSEVisitorWrapper(
-      graph_, heap_location_collector, enable_partial_lse, stats_));
-  lse_visitor->Run();
+  // We always run regular LSE. If enabled, we also run partial LSE after that.
+  RunInternal(/*perform_partial_lse=*/false);
+  if (enable_partial_lse) {
+    RunInternal(/*perform_partial_lse=*/true);
+  }
+
   return true;
+}
+
+void LoadStoreElimination::RunInternal(bool perform_partial_lse) {
+  graph_->ClearReachabilityInformation();
+  // This is O(blocks^3) time complexity. It means we can query reachability in
+  // O(1) though.
+  graph_->ComputeReachabilityInformation();
+  ScopedArenaAllocator allocator(graph_->GetArenaStack());
+  LoadStoreAnalysis lsa(
+      graph_,
+      stats_,
+      &allocator,
+      perform_partial_lse ? LoadStoreAnalysisType::kFull : LoadStoreAnalysisType::kBasic);
+  lsa.Run();
+  const HeapLocationCollector& heap_location_collector = lsa.GetHeapLocationCollector();
+  if (heap_location_collector.GetNumberOfHeapLocations() == 0) {
+    // No HeapLocation information from LSA, skip this optimization.
+    return;
+  }
+
+  std::unique_ptr<LSEVisitorWrapper> lse_visitor(new (&allocator) LSEVisitorWrapper(
+      graph_, heap_location_collector, perform_partial_lse, stats_));
+  lse_visitor->Run();
 }
 
 #undef LSE_VLOG

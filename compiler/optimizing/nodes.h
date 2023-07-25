@@ -1281,7 +1281,7 @@ class HBasicBlock : public ArenaObject<kArenaAllocBasicBlock> {
     return IndexOfElement(predecessors_, predecessor);
   }
 
-  size_t GetSuccessorIndexOf(HBasicBlock* successor) const {
+  size_t GetSuccessorIndexOf(const HBasicBlock* successor) const {
     return IndexOfElement(successors_, successor);
   }
 
