@@ -2148,6 +2148,7 @@ void LocationsBuilderARM64::HandleBinaryOp(HBinaryOperation* instr) {
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(instr);
   DataType::Type type = instr->GetResultType();
   switch (type) {
+    case DataType::Type::kBool:
     case DataType::Type::kInt32:
     case DataType::Type::kInt64:
       locations->SetInAt(0, Location::RequiresRegister());
@@ -2349,6 +2350,7 @@ void InstructionCodeGeneratorARM64::HandleBinaryOp(HBinaryOperation* instr) {
   DataType::Type type = instr->GetType();
 
   switch (type) {
+    case DataType::Type::kBool:
     case DataType::Type::kInt32:
     case DataType::Type::kInt64: {
       Register dst = OutputRegister(instr);

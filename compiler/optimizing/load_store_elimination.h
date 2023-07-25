@@ -28,15 +28,18 @@ class LoadStoreElimination : public HOptimization {
  public:
   // Whether or not we should attempt partial Load-store-elimination which
   // requires additional blocks and predicated instructions.
-  static constexpr bool kEnablePartialLSE = false;
+  static constexpr bool kEnablePartialLSE = true;
 
   // Controls whether to enable VLOG(compiler) logs explaining the transforms taking place.
   static constexpr bool kVerboseLoggingMode = false;
 
   LoadStoreElimination(HGraph* graph,
+                      //  CodeGenerator* codegen,
                        OptimizingCompilerStats* stats,
                        const char* name = kLoadStoreEliminationPassName)
-      : HOptimization(graph, name, stats) {}
+      : HOptimization(graph, name, stats)
+      // codegen_(codegen)
+      {}
 
   bool Run() override {
     return Run(kEnablePartialLSE);
@@ -49,6 +52,8 @@ class LoadStoreElimination : public HOptimization {
 
  private:
   DISALLOW_COPY_AND_ASSIGN(LoadStoreElimination);
+
+  void RunInternal(bool perform_partial_lse);
 };
 
 }  // namespace art

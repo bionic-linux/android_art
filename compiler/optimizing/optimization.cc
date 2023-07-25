@@ -275,7 +275,7 @@ ArenaVector<HOptimization*> ConstructOptimizations(
         opt = new (allocator) ConstructorFenceRedundancyElimination(graph, stats, pass_name);
         break;
       case OptimizationPass::kLoadStoreElimination:
-        opt = new (allocator) LoadStoreElimination(graph, stats, pass_name);
+        opt = new (allocator) LoadStoreElimination(graph, /*codegen,*/ stats, pass_name);
         break;
       case OptimizationPass::kWriteBarrierElimination:
         opt = new (allocator) WriteBarrierElimination(graph, stats, pass_name);
