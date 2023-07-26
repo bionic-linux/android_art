@@ -16,6 +16,23 @@
       "message": "+smoreland",
       "revId": "de3b10482dafe9d9e0d881352e3054061487f845",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5deb91f_59705b1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-26T20:54:31Z",
+      "side": 1,
+      "message": "+skvadrik for OWNERS...",
+      "revId": "de3b10482dafe9d9e0d881352e3054061487f845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
