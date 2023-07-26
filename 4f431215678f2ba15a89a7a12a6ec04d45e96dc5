@@ -16,6 +16,52 @@
       "message": "A tiny cleanup. PTAL. Thanks!",
       "revId": "4f431215678f2ba15a89a7a12a6ec04d45e96dc5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94289c11_0378bc2e",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-07-26T08:52:20Z",
+      "side": 1,
+      "message": "nit: add /* foo\u003d */",
+      "range": {
+        "startLine": 682,
+        "startChar": 14,
+        "endLine": 682,
+        "endChar": 19
+      },
+      "revId": "4f431215678f2ba15a89a7a12a6ec04d45e96dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13224762_a3ec5738",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-07-26T08:52:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 687,
+        "startChar": 14,
+        "endLine": 687,
+        "endChar": 18
+      },
+      "revId": "4f431215678f2ba15a89a7a12a6ec04d45e96dc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
