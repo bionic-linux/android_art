@@ -46,6 +46,30 @@
       },
       "revId": "10731a785c3653d1c64abaaa11d9506362aca6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d7f72b_9bbc717e",
+        "filename": "compiler/optimizing/intrinsics_riscv64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-07-28T12:55:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "802800d6_7f86d3cd",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "10731a785c3653d1c64abaaa11d9506362aca6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
