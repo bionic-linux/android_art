@@ -22,6 +22,30 @@
       },
       "revId": "10731a785c3653d1c64abaaa11d9506362aca6b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "802800d6_7f86d3cd",
+        "filename": "compiler/optimizing/intrinsics_riscv64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-07-28T12:30:03Z",
+      "side": 1,
+      "message": "I decided to leave creating the .cc file for later. (This is Lifang\u0027s patch with minor changes.)",
+      "parentUuid": "b447aa45_a0dae834",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "10731a785c3653d1c64abaaa11d9506362aca6b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
