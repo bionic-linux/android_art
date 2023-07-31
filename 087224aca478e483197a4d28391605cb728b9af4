@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11578f1_61f7f0dd",
+        "filename": "oatdump/oatdump_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T16:29:21Z",
+      "side": 0,
+      "message": "Oops. Good catch!",
+      "parentUuid": "44aa894c_24e2991d",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "087224aca478e483197a4d28391605cb728b9af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e30ebcf_aac51eca",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-31T15:35:39Z",
       "side": 0,
       "message": "Ditto.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "087224aca478e483197a4d28391605cb728b9af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40689c16_c4ee897b",
+        "filename": "oatdump/oatdump_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T16:29:21Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4e30ebcf_aac51eca",
       "range": {
         "startLine": 117,
         "startChar": 2,
