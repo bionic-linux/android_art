@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a52ca7_c55a4da3",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-08-01T14:24:29Z",
+      "side": 1,
+      "message": "Can you make this method `const`?",
+      "range": {
+        "startLine": 116,
+        "startChar": 14,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "7620e3aa4d0cdb85c1573bf2969829a4e30a3004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
