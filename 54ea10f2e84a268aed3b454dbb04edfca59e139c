@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592c3451_aa4ff35d",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-08-01T12:51:14Z",
+      "side": 1,
+      "message": "Do we want to keep updating this text with e.g. `MULW`? Otherwise I\u0027d either remove it or have something like `unknown bin op`",
+      "range": {
+        "startLine": 442,
+        "startChar": 32,
+        "endLine": 442,
+        "endChar": 69
+      },
+      "revId": "54ea10f2e84a268aed3b454dbb04edfca59e139c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
