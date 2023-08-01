@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f370df_4d4873df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-01T15:05:31Z",
+      "side": 1,
+      "message": "Ugh, it\u0027s really unfortunate there\u0027s no decent templating system for these files.",
+      "revId": "be5b93a63e42efa6ea4525adc7c5570396ce0429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
