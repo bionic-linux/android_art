@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5db072_38554276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270816
+      },
+      "writtenOn": "2023-08-02T07:20:21Z",
+      "side": 1,
+      "message": "PTAL, and sorry for letting this lapse.\n\nWhile using ahat in diff mode to investigate an issue, I realized that my initial implementation was not very useful, and that a presentation closer in line to the current way arrays are presented would be much better.\n\nWhile implementing that, I realized that I didn\u0027t actually understand how the baseline stuff worked, and my initial implementation was just wrong.\n\nI\u0027ve cut out the diff stuff for now (I think this change is still useful without it), may work on it separately as time permits.",
+      "revId": "4e101459fcc8b9bea3b4cb9b6239f68825f9b9dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
