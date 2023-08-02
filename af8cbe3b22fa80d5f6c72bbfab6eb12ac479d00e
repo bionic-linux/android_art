@@ -16,6 +16,24 @@
       "message": "## Memory regression\nb/293358995 \n\nGood build (separate libart-compiler.so):\n```\n\u003e\u003e\u003e com.android.inputmethod.latin (3438) \u003c\u003c\u003c                                                              \n virtual                     shared   shared  private  private                   Anon      Shmem     File      Shared   Private    \n    size      RSS      PSS    clean    dirty    clean    dirty     swap  swapPSS HugePages PmdMapped PmdMapped Hugetlb  Hugetlb    Locked flags object   \n    6328     6328      166     6328        0        0        0        0        0         0         0      6144        0        0        0   r-x /apex/com.android.art/lib64/libart.so\n    2924      108        2      108        0        0        0        0        0         0         0         0        0        0        0   r-x /apex/com.android.art/lib64/libart-compiler.so\n```\nBad build (libart-compiler merged into libart.so):\n```\n virtual                     shared   shared  private  private                   Anon      Shmem     File      Shared   Private    \n    size      RSS      PSS    clean    dirty    clean    dirty     swap  swapPSS HugePages PmdMapped PmdMapped Hugetlb  Hugetlb    Locked flags object   \n    8912     8648      227     8648        0        0        0        0        0         0         0      8192        0        0        0   r-x /apex/com.android.art/lib64/libart.so \n```\n\nNote that libart.so .text pages are listed in the “File PmdMapped” column, while libart-compiler.so pages are not. So with libart-compiler merged into libart, instead of mapping 108 regular (4KiB) pages for libart-compiler, the process maps one additional 2MiB page from libart, which contributes significantly to RSS. But given that libart is widely shared among the processes and PSS hasn’t regressed, I would say RSS regression can be ignored.\n\n## Performance regressions\nb/293406139 (9%)\nb/293428920 (4-6%)\nb/293386378 (4-6%)\nb/293386255 (3.5%)\n\n@jdduke@google.com do you think these performance regressions are negligible?",
       "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b661fb_2160437e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-08-02T16:24:56Z",
+      "side": 1,
+      "message": "\u003e  do you think these performance regressions are negligible?\n\nI looked at a couple traces and didn\u0027t see anything obvious. I think the main thing would be to make sure we\u0027re not regressing anything *functional* as far as ART behavior (i.e., nothing is impacted in terms of ART\u0027s logic/JIT/execution), and to make sure that the lib itself is compiled with the same flags?\n\nDo we use any predefined PGO profiles or anything else like that for this target? I vaguely recall we have something for dex2oat, not sure if this change would be impacted.",
+      "parentUuid": "95427cde_8010e756",
+      "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
