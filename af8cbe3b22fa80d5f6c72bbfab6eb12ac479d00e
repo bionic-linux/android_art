@@ -52,6 +52,24 @@
       "parentUuid": "61b661fb_2160437e",
       "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cb33a3_c7f4d832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-08-04T19:16:01Z",
+      "side": 1,
+      "message": "\u003e And libart.so uses AFDO, which is not compatible with PGO: b/255683875\n\nI don\u0027t see any recent updates on b/255683875, is that something we need to escalate/prioritize? Seems worth having? Having you spoken with yikong@ about it recently?\n\n\u003e The only way to to combine AFDO and PGO at the moment is to build these libraries separately (libart-compiler.a with PGO and libart-runtime.a with AFDO) and then whole static link them into libart.so.\n\nAre there any downsides to this?\n\nThe microbenchmark regressions aren\u0027t massive, so it\u0027s not necessarily blocking, but it seems unfortunate to knowingly regress afdo/pgo benefits for the size savings.",
+      "parentUuid": "c89fe1df_1af79e76",
+      "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
