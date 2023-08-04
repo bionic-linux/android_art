@@ -16,6 +16,24 @@
       "message": "Thank you for catching the problem and fixing it! Could you update the test to test this case? Just add a few lines after [this line](https://cs.android.com/android/platform/superproject/main/+/main:art/test/odsign/test-src/com/android/tests/odsign/OdrefreshFactoryHostTestBase.java;l\u003d114;drc\u003d75a98c80f07075ba9df8e1ee28e1a30d6177a15a) to record the time in `timeMs`, rerun odrefresh, and call `mTestUtils.assertNotModifiedAfter` on the artifacts to make sure that they are not re-generated.",
       "revId": "cbf3f9dd0df9221567d80b8ee8ca5a2d6a4206fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bf7732_66092658",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2017619
+      },
+      "writtenOn": "2023-08-04T11:23:04Z",
+      "side": 1,
+      "message": "Based on your suggestion I have updated the test case",
+      "parentUuid": "cf2db2f4_b87448c3",
+      "revId": "cbf3f9dd0df9221567d80b8ee8ca5a2d6a4206fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
