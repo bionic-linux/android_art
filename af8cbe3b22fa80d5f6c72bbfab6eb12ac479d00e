@@ -34,6 +34,24 @@
       "parentUuid": "95427cde_8010e756",
       "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89fe1df_1af79e76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2023-08-04T18:21:56Z",
+      "side": 1,
+      "message": "\u003eDo we use any predefined PGO profiles or anything else like that for this target?\n\nYes, there is `dex2oat-pgo-defaults` which is used in `libart-compiler`: https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/Android.bp;l\u003d235\nAnd `libart.so` uses AFDO, which is not compatible with PGO: b/255683875\nThe only way to to combine AFDO and PGO at the moment is to build these libraries separately (`libart-compiler.a` with PGO and `libart-runtime.a` with AFDO) and then whole static link them into `libart.so`.\n\n\n\nI\u0027ve run some benchmarks without AFDO/PGO to see if this CL itself introduces any perf changes.\n\nhttp://dashboards/_0e1b06dd_a79e_4433_b625_b62e5cac004b?p\u003dBootImageProfileId:36100\nCandidate 36101 -- separate libart.so/libart-compiler.so, no AFDO/PGO\nCandidate 36102 -- merged libart.so, no AFDO/PGO\nThe difference is very small, but it looks like the merged libart variant has slightly worse app startup time.\n\nmicrobench/instr_metric/resources_perf:\nNo PGO/AFDO, separate libart.so/libart-compiler.so:\nhttps://android-build.googleplex.com/builds/abtd/run/L38200000962372758\nhttps://android-build.googleplex.com/builds/abtd/run/L48100000962374412\nhttps://android-build.googleplex.com/builds/abtd/run/L49200000962373780\ngetFont (mean): 8089 8350 8495\n\nNo PGO/AFDO, merged libart:\nhttps://android-build.googleplex.com/builds/abtd/run/L39100000962359799\nhttps://android-build.googleplex.com/builds/abtd/run/L82800000962375777\nhttps://android-build.googleplex.com/builds/abtd/run/L24500000962374026\ngetFont (mean): 8717 8568 8727\n\nOn the other hand, revert of the initial merge CL shows no performance changes in ART golem benchmarks: http://go/lem/Revision?repository\u003dart\u0026revision\u003d20027",
+      "parentUuid": "61b661fb_2160437e",
+      "revId": "af8cbe3b22fa80d5f6c72bbfab6eb12ac479d00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
