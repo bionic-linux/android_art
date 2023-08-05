@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e982050a_b0a8427f",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-08-05T01:27:22Z",
+      "side": 1,
+      "message": "we\u0027re using lowmem for other reasons. I think it\u0027s ok to call it along the lines of _disable_art_image.",
+      "range": {
+        "startLine": 73,
+        "startChar": 46,
+        "endLine": 73,
+        "endChar": 60
+      },
+      "revId": "4328019bba32619f66a79c0caa53b0bee402f977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee7c867_873bc1cb",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-08-05T01:27:22Z",
+      "side": 1,
+      "message": "Can you use `getprogname` instead?",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "4328019bba32619f66a79c0caa53b0bee402f977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a3000c0_23472d20",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
