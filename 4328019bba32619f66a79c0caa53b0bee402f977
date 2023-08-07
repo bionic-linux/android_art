@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09de99a6_147920ad",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1990625
+      },
+      "writtenOn": "2023-08-07T14:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e982050a_b0a8427f",
+      "range": {
+        "startLine": 73,
+        "startChar": 46,
+        "endLine": 73,
+        "endChar": 60
+      },
+      "revId": "4328019bba32619f66a79c0caa53b0bee402f977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee7c867_873bc1cb",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e73810dc_1d517a83",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1990625
+      },
+      "writtenOn": "2023-08-07T14:17:32Z",
+      "side": 1,
+      "message": "Couldn\u0027t find an appropriate header file. Looks like other places have to define their own, e.g. [here](https://android.googlesource.com/platform/system/libbase/+/0653276a8e772733693411e3469152bd4884555a/logging.cpp#70), since it\u0027s a BSD thing.\n\n`__progname` seems the most portable way to access this. Lmk if there\u0027s another way, happy to change to either defining our own `getprogname` or including the right header file if I missed it.",
+      "parentUuid": "cee7c867_873bc1cb",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 16
+      },
+      "revId": "4328019bba32619f66a79c0caa53b0bee402f977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a3000c0_23472d20",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-04T12:28:36Z",
       "side": 1,
       "message": "Nit: You might want to run this code after kEnableAppImage has been evaluated. \n\nE.g. if someone is to disable app image, we\u0027d want to avoid as much related computation as possible.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "4328019bba32619f66a79c0caa53b0bee402f977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8f9bad_bdf828f2",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1990625
+      },
+      "writtenOn": "2023-08-07T14:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a3000c0_23472d20",
       "range": {
         "startLine": 177,
         "startChar": 0,
