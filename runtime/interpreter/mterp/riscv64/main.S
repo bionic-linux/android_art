@@ -388,7 +388,9 @@ END \name
  */
 
 OAT_ENTRY ExecuteNterpWithClinitImpl, EndExecuteNterpWithClinitImpl
+    .cfi_startproc
     unimp
+    .cfi_endproc
 EndExecuteNterpWithClinitImpl:
 
 OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
@@ -437,6 +439,7 @@ NAME_START nterp_helper
 NAME_END nterp_helper
 
 common_errDivideByZero:
+    .cfi_startproc
     EXPORT_PC
     // Control doesn't return, but stack walking needs the return address.
     call art_quick_throw_div_zero
@@ -447,6 +450,7 @@ common_errDivideByZero:
     .type EndExecuteNterpImpl, @function
     .hidden EndExecuteNterpImpl
     .global EndExecuteNterpImpl
+    .cfi_endproc
 EndExecuteNterpImpl:
 
 // Entrypoints into runtime.
