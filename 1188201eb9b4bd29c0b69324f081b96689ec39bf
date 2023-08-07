@@ -16,6 +16,24 @@
       "message": "Do we know why the written files may differ? Is there something non-deterministic there, compared to the approach of comparing the profile information directly?",
       "revId": "1188201eb9b4bd29c0b69324f081b96689ec39bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb21495c_cc6e5526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-07T13:40:58Z",
+      "side": 1,
+      "message": "Yeah, I suspect there is some non-determinism, but I\u0027m not sure what exactly it is. TBO, I\u0027m not an expert of profiles. I just saw that the test cases below are all using `ProfileCompilationInfo::Equals`, so I think that\u0027s the correct way to compare profiles.",
+      "parentUuid": "b8c9fb10_173b22b4",
+      "revId": "1188201eb9b4bd29c0b69324f081b96689ec39bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
