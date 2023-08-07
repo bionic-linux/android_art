@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731cb9fc_26e6914d",
+        "filename": "runtime/interpreter/mterp/riscv64/main.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-08-07T19:35:15Z",
+      "side": 1,
+      "message": "On arm64, the `common_errDivideByZero` is part of the `nterp_helper`, so it does not need these. Do we want to change this for riscv64? (Or maybe just keep this as is.)",
+      "range": {
+        "startLine": 442,
+        "startChar": 4,
+        "endLine": 442,
+        "endChar": 18
+      },
+      "revId": "5c6791a2754875a0687c31c530a2c833f08745fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7f6eec_590b6979",
+        "filename": "tools/check_cfi.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-08-07T19:35:15Z",
+      "side": 1,
+      "message": "This seems to cover just the\n\n    b\u003ccond\u003ez rs1, \u003coffset\u003e\n\nalias but not\n\n    b\u003ccond\u003e rs1, rs2, \u003coffset\u003e  // Full conditional branch.\n\nAnd the JAL instruction is missing even though I would add only\n\n    j \u003coffset\u003e  // Alias for `jal x0, \u003coffset\u003e`.\n\nand exclude the full JAL with non-zero `rd` from this heuristic. Then again, arm64 above has the BL as well.",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 29
+      },
+      "revId": "5c6791a2754875a0687c31c530a2c833f08745fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
