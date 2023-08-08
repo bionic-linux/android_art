@@ -46,6 +46,30 @@
       },
       "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a9dc1b_fcfe228c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-08-08T16:01:22Z",
+      "side": 1,
+      "message": "Note that sometimes we would be iterating by `const \u0026` e.g. https://android-review.git.corp.google.com/c/platform/art/+/2697198/2/compiler/utils/x86_64/assembler_x86_64_test.cc#516\n\nFine by me either way",
+      "parentUuid": "ad408ddc_eeb885df",
+      "range": {
+        "startLine": 220,
+        "startChar": 9,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
