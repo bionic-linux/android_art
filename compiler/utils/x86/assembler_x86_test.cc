@@ -90,17 +90,8 @@ class AssemblerX86Test : public AssemblerTest<x86::X86Assembler,
     }
 
     if (registers_.size() == 0) {
-      registers_.insert(end(registers_),
-                        {
-                          new x86::Register(x86::EAX),
-                          new x86::Register(x86::EBX),
-                          new x86::Register(x86::ECX),
-                          new x86::Register(x86::EDX),
-                          new x86::Register(x86::EBP),
-                          new x86::Register(x86::ESP),
-                          new x86::Register(x86::ESI),
-                          new x86::Register(x86::EDI)
-                        });
+      registers_.assign({
+          x86::EAX, x86::EBX, x86::ECX, x86::EDX, x86::EBP, x86::ESP, x86::ESI, x86::EDI });
 
       secondary_register_names_.emplace(x86::Register(x86::EAX), "ax");
       secondary_register_names_.emplace(x86::Register(x86::EBX), "bx");
@@ -123,36 +114,25 @@ class AssemblerX86Test : public AssemblerTest<x86::X86Assembler,
     }
 
     if (fp_registers_.size() == 0) {
-      fp_registers_.insert(end(fp_registers_),
-                           {
-                             new x86::XmmRegister(x86::XMM0),
-                             new x86::XmmRegister(x86::XMM1),
-                             new x86::XmmRegister(x86::XMM2),
-                             new x86::XmmRegister(x86::XMM3),
-                             new x86::XmmRegister(x86::XMM4),
-                             new x86::XmmRegister(x86::XMM5),
-                             new x86::XmmRegister(x86::XMM6),
-                             new x86::XmmRegister(x86::XMM7)
-                           });
+      fp_registers_.assign({
+          x86::XMM0, x86::XMM1, x86::XMM2, x86::XMM3, x86::XMM4, x86::XMM5, x86::XMM6, x86::XMM7 });
     }
   }
 
   void TearDown() override {
     AssemblerTest::TearDown();
-    STLDeleteElements(&registers_);
-    STLDeleteElements(&fp_registers_);
   }
 
   std::vector<x86::Address> GetAddresses() override {
     return addresses_;
   }
 
-  std::vector<x86::Register*> GetRegisters() override {
-    return registers_;
+  ArrayRef<const x86::Register> GetRegisters() override {
+    return ArrayRef<const x86::Register>(registers_);
   }
 
-  std::vector<x86::XmmRegister*> GetFPRegisters() override {
-    return fp_registers_;
+  ArrayRef<const x86::XmmRegister> GetFPRegisters() override {
+    return ArrayRef<const x86::XmmRegister>(fp_registers_);
   }
 
   x86::Immediate CreateImmediate(int64_t imm_value) override {
@@ -173,10 +153,10 @@ class AssemblerX86Test : public AssemblerTest<x86::X86Assembler,
 
  private:
   std::vector<x86::Address> addresses_;
-  std::vector<x86::Register*> registers_;
+  std::vector<x86::Register> registers_;
   std::map<x86::Register, std::string, X86RegisterCompare> secondary_register_names_;
   std::map<x86::Register, std::string, X86RegisterCompare> tertiary_register_names_;
-  std::vector<x86::XmmRegister*> fp_registers_;
+  std::vector<x86::XmmRegister> fp_registers_;
 };
 
 class AssemblerX86AVXTest : public AssemblerX86Test {
@@ -267,28 +247,28 @@ TEST_F(AssemblerX86Test, RepeatAF) {
 TEST_F(AssemblerX86Test, PoplAllAddresses) {
   // Make sure all addressing modes combinations are tested at least once.
   std::vector<x86::Address> all_addresses;
-  for (x86::Register* base : GetRegisters()) {
+  for (x86::Register base : GetRegisters()) {
     // Base only.
-    all_addresses.push_back(x86::Address(*base, -1));
-    all_addresses.push_back(x86::Address(*base, 0));
-    all_addresses.push_back(x86::Address(*base, 1));
-    all_addresses.push_back(x86::Address(*base, 123456789));
-    for (x86::Register* index : GetRegisters()) {
-      if (*index == x86::ESP) {
+    all_addresses.push_back(x86::Address(base, -1));
+    all_addresses.push_back(x86::Address(base, 0));
+    all_addresses.push_back(x86::Address(base, 1));
+    all_addresses.push_back(x86::Address(base, 123456789));
+    for (x86::Register index : GetRegisters()) {
+      if (index == x86::ESP) {
         // Index cannot be ESP.
         continue;
-      } else if (*base == *index) {
+      } else if (base == index) {
        // Index only.
-       all_addresses.push_back(x86::Address(*index, TIMES_1, -1));
-       all_addresses.push_back(x86::Address(*index, TIMES_2, 0));
-       all_addresses.push_back(x86::Address(*index, TIMES_4, 1));
-       all_addresses.push_back(x86::Address(*index, TIMES_8, 123456789));
+       all_addresses.push_back(x86::Address(index, TIMES_1, -1));
+       all_addresses.push_back(x86::Address(index, TIMES_2, 0));
+       all_addresses.push_back(x86::Address(index, TIMES_4, 1));
+       all_addresses.push_back(x86::Address(index, TIMES_8, 123456789));
       }
       // Base and index.
-      all_addresses.push_back(x86::Address(*base, *index, TIMES_1, -1));
-      all_addresses.push_back(x86::Address(*base, *index, TIMES_2, 0));
-      all_addresses.push_back(x86::Address(*base, *index, TIMES_4, 1));
-      all_addresses.push_back(x86::Address(*base, *index, TIMES_8, 123456789));
+      all_addresses.push_back(x86::Address(base, index, TIMES_1, -1));
+      all_addresses.push_back(x86::Address(base, index, TIMES_2, 0));
+      all_addresses.push_back(x86::Address(base, index, TIMES_4, 1));
+      all_addresses.push_back(x86::Address(base, index, TIMES_8, 123456789));
     }
   }
   DriverStr(RepeatA(&x86::X86Assembler::popl, all_addresses, "popl {mem}"), "popq");
@@ -510,11 +490,11 @@ TEST_F(AssemblerX86Test, PopcntlAddress) {
 // Rorl only allows CL as the shift count.
 std::string rorl_fn(AssemblerX86Test::Base* assembler_test, x86::X86Assembler* assembler) {
   std::ostringstream str;
-  std::vector<x86::Register*> registers = assembler_test->GetRegisters();
+  ArrayRef<const x86::Register> registers = assembler_test->GetRegisters();
   x86::Register shifter(x86::ECX);
   for (auto reg : registers) {
-    assembler->rorl(*reg, shifter);
-    str << "rorl %cl, %" << assembler_test->GetRegisterName(*reg) << "\n";
+    assembler->rorl(reg, shifter);
+    str << "rorl %cl, %" << assembler_test->GetRegisterName(reg) << "\n";
   }
   return str.str();
 }
@@ -530,11 +510,11 @@ TEST_F(AssemblerX86Test, RorlImm) {
 // Roll only allows CL as the shift count.
 std::string roll_fn(AssemblerX86Test::Base* assembler_test, x86::X86Assembler* assembler) {
   std::ostringstream str;
-  std::vector<x86::Register*> registers = assembler_test->GetRegisters();
+  ArrayRef<const x86::Register> registers = assembler_test->GetRegisters();
   x86::Register shifter(x86::ECX);
   for (auto reg : registers) {
-    assembler->roll(*reg, shifter);
-    str << "roll %cl, %" << assembler_test->GetRegisterName(*reg) << "\n";
+    assembler->roll(reg, shifter);
+    str << "roll %cl, %" << assembler_test->GetRegisterName(reg) << "\n";
   }
   return str.str();
 }
@@ -1379,27 +1359,27 @@ TEST_F(AssemblerX86Test, AddressDisplaceBy) {
 
   for (int32_t disp0 : displacements) {  // initial displacement
     for (int32_t disp : displacements) {  // extra displacement
-      for (const x86::Register *reg : GetRegisters()) {
+      for (x86::Register reg : GetRegisters()) {
         // Test non-SIB addressing.
-        EXPECT_EQ(x86::Address::displace(x86::Address(*reg, disp0), disp),
-                  x86::Address(*reg, disp0 + disp));
+        EXPECT_EQ(x86::Address::displace(x86::Address(reg, disp0), disp),
+                  x86::Address(reg, disp0 + disp));
 
         // Test SIB addressing with EBP base.
-        if (*reg != x86::ESP) {
+        if (reg != x86::ESP) {
           for (ScaleFactor scale : scales) {
-            EXPECT_EQ(x86::Address::displace(x86::Address(*reg, scale, disp0), disp),
-                      x86::Address(*reg, scale, disp0 + disp));
+            EXPECT_EQ(x86::Address::displace(x86::Address(reg, scale, disp0), disp),
+                      x86::Address(reg, scale, disp0 + disp));
           }
         }
 
         // Test SIB addressing with different base.
-        for (const x86::Register *index : GetRegisters()) {
-          if (*index == x86::ESP) {
+        for (x86::Register index : GetRegisters()) {
+          if (index == x86::ESP) {
             continue;  // Skip ESP as it cannot be used with this address constructor.
           }
           for (ScaleFactor scale : scales) {
-            EXPECT_EQ(x86::Address::displace(x86::Address(*reg, *index, scale, disp0), disp),
-                      x86::Address(*reg, *index, scale, disp0 + disp));
+            EXPECT_EQ(x86::Address::displace(x86::Address(reg, index, scale, disp0), disp),
+                      x86::Address(reg, index, scale, disp0 + disp));
           }
         }
 
