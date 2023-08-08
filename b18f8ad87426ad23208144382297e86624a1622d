@@ -19,6 +19,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e64a2c_ced76dc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-08-08T14:26:54Z",
+      "side": 1,
+      "message": "The register in JAL is the destination register (`rd`) which shall hold the return address. The target is not dynamic.\n\nThere are two aliases\n\n    j offset    // jal x0, offset ; x0 is the zero register.\n    jal offset  // jal x1, offset ; x1 is the return address register RA.\n\nI\u0027m not sure if the current llvm disassembler prints these aliases, or the full JAL, so we may want to detect all of them. (In line with arm64 which also handles BL.)",
+      "parentUuid": "6ba8cd93_bfb587f6",
+      "revId": "b18f8ad87426ad23208144382297e86624a1622d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af6bb50b_c563eba2",
