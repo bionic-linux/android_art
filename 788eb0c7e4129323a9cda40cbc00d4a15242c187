@@ -70,6 +70,30 @@
       },
       "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d32dab_be55417c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-08-08T17:07:45Z",
+      "side": 1,
+      "message": "Yes, we could take `x86_64::CpuRegister` by value. It\u0027s not an `enum` itself but it encapsulates a single `enum` member. But I\u0027ll leave it as is because x86-64 is not my primary concern right now.",
+      "parentUuid": "84a9dc1b_fcfe228c",
+      "range": {
+        "startLine": 220,
+        "startChar": 9,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
