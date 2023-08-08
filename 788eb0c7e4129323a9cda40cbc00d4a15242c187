@@ -22,6 +22,30 @@
       },
       "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad408ddc_eeb885df",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-08-08T15:59:20Z",
+      "side": 1,
+      "message": "Given that an `enum XRegister` fits in a register, I don\u0027t see any reason to use a reference. (I prefer to stick to the style that does not inhibit compiler optimizations even when writing tests.)\n\nI used `auto\u0026\u0026` in other files as I didn\u0027t want to touch the code too much. In those cases, it should indeed be inferred as `const SomeRegType\u0026` because `ArrayRef\u003c\u003e::iterator::operator*()` returns a reference. (If it returned by value, `auto\u0026\u0026` would be inferred as `SomeRegType` instead.)",
+      "parentUuid": "96d5cf51_14c034b0",
+      "range": {
+        "startLine": 220,
+        "startChar": 9,
+        "endLine": 220,
+        "endChar": 18
+      },
+      "revId": "788eb0c7e4129323a9cda40cbc00d4a15242c187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
