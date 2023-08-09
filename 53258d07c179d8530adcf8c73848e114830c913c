@@ -39,6 +39,24 @@
       "message": "Nit: on this line you can add 4 spaces indentation, otherwise the reading looks a bit odd.",
       "revId": "53258d07c179d8530adcf8c73848e114830c913c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5c90bb_06597954",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-09T13:06:32Z",
+      "side": 1,
+      "message": "We\u0027ve got clang-format now to help with this.",
+      "parentUuid": "8d467ba5_81ce84fe",
+      "revId": "53258d07c179d8530adcf8c73848e114830c913c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
