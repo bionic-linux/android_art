@@ -51,6 +51,24 @@
       "message": "Friendly ping.",
       "revId": "1188201eb9b4bd29c0b69324f081b96689ec39bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda690dc_8e2dea8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-08-09T11:35:17Z",
+      "side": 1,
+      "message": "OK, let\u0027s get this change in. Could you also file a bug as a reminder to explore the existing (presumed) non-deterministic behaviour of the test before your change?",
+      "parentUuid": "bb21495c_cc6e5526",
+      "revId": "1188201eb9b4bd29c0b69324f081b96689ec39bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
