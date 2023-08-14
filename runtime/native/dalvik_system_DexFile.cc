@@ -368,8 +368,6 @@ static bool isReadOnlyJavaDclChecked() {
 static jobject DexFile_openDexFileNative(JNIEnv* env,
                                          jclass,
                                          jstring javaSourceName,
-                                         [[maybe_unused]] jstring javaOutputName,
-                                         [[maybe_unused]] jint flags,
                                          jobject class_loader,
                                          jobjectArray dex_elements) {
   ScopedUtfChars sourceName(env, javaSourceName);
@@ -1011,8 +1009,6 @@ static JNINativeMethod gMethods[] = {
     NATIVE_METHOD(DexFile,
                   openDexFileNative,
                   "(Ljava/lang/String;"
-                  "Ljava/lang/String;"
-                  "I"
                   "Ljava/lang/ClassLoader;"
                   "[Ldalvik/system/DexPathList$Element;"
                   ")Ljava/lang/Object;"),
