@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579a0a2b_60168835",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-17T14:40:39Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "e55115778c563f0ab7dc7351be8263637eca7678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64c2792_41476c52",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-17T14:40:39Z",
+      "side": 1,
+      "message": "Nit: \"libart\" in this comment is getting stale and confusing. I suggest changing it to \"this library\" to avoid that.\n\n(I see it\u0027s been copied around and gotten stale elsewhere too. I welcome if you could fix it there, although that\u0027s strictly speaking out of scope.)",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 24
+      },
+      "revId": "e55115778c563f0ab7dc7351be8263637eca7678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb41c606_f6519c46",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-17T14:40:39Z",
+      "side": 1,
+      "message": "The note about this visibility applies here too, I think. Same in \"libart\" below.",
+      "range": {
+        "startLine": 802,
+        "startChar": 8,
+        "endLine": 802,
+        "endChar": 38
+      },
+      "revId": "e55115778c563f0ab7dc7351be8263637eca7678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
