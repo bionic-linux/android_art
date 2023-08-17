@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca412a91_4d26578e",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "Renaming to bitmap_numbits would clarify things, I think.",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5d638c_6b50d008",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "What prevents this from changing out from under us?",
+      "range": {
+        "startLine": 587,
+        "startChar": 8,
+        "endLine": 587,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21807c19_6c65b29c",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "Rename to MaybeClampInfoMap, since it usually does nothing?",
+      "range": {
+        "startLine": 595,
+        "startChar": 18,
+        "endLine": 595,
+        "endChar": 30
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c4f59f_79c57dd3",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "It would be nice to unify some of this with the code that sets this in the MarcCompact constructor.",
+      "range": {
+        "startLine": 601,
+        "startChar": 4,
+        "endLine": 616,
+        "endChar": 65
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f112ad31_782719db",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "Can we say something about locking here? Do we own heap_bitmap_lock_ from Heap::ClampGrowthLimit?\n\nI guess this should hold the bump-pointer-space lock?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d911e2_65f4e65a",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a8d803_dc5aae01",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure what that means.",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a64d88f_4fbf2c51",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "don\u0027t",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188f0abd_8a65b4e6",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "Isn\u0027t this equivalent to new_capacity \u003d Size() - free_end_, which seems a bit simpler than adjusting the old value?",
+      "range": {
+        "startLine": 401,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 37
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e516a4_ecdea2b0",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-17T23:00:13Z",
+      "side": 1,
+      "message": "Why shouldn\u0027t this be kPageSize? The comment says it\u0027s one per page.",
+      "range": {
+        "startLine": 405,
+        "startChar": 68,
+        "endLine": 405,
+        "endChar": 78
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
