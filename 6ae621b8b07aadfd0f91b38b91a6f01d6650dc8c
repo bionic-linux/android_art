@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9725c97a_dde4ae41",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca412a91_4d26578e",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f5d638c_6b50d008",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-17T23:00:13Z",
       "side": 1,
       "message": "What prevents this from changing out from under us?",
+      "range": {
+        "startLine": 587,
+        "startChar": 8,
+        "endLine": 587,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7078bb_2913cea4",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "I have extended the comment with the explanation.\n\nthread_running_gc_ can change but it\u0027s safe as we hold heap_bitmap_lock_ and therefore GC-thread cannot proceed in MarkingPhase() until this thread releases the lock.",
+      "parentUuid": "9f5d638c_6b50d008",
       "range": {
         "startLine": 587,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a99259e_af3d1bc2",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21807c19_6c65b29c",
+      "range": {
+        "startLine": 595,
+        "startChar": 18,
+        "endLine": 595,
+        "endChar": 30
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57c4f59f_79c57dd3",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-17T23:00:13Z",
       "side": 1,
       "message": "It would be nice to unify some of this with the code that sets this in the MarcCompact constructor.",
+      "range": {
+        "startLine": 601,
+        "startChar": 4,
+        "endLine": 616,
+        "endChar": 65
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8f01a1_1ae47953",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c4f59f_79c57dd3",
       "range": {
         "startLine": 601,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec7b20b_2ad0471d",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Added REQUIRES for heap_bitmap_lock_. But bump-pointer-space\u0027s lock isn\u0027t required here.",
+      "parentUuid": "f112ad31_782719db",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81d911e2_65f4e65a",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-08-17T23:00:13Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45271cc_56f96c3c",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d911e2_65f4e65a",
       "range": {
         "startLine": 94,
         "startChar": 18,
@@ -185,6 +329,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9959304_53a88f39",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a64d88f_4fbf2c51",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993c3679_0e30f7d2",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Reworded the sentence.",
+      "parentUuid": "80a8d803_dc5aae01",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "188f0abd_8a65b4e6",
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38140a32_03a2ecfc",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188f0abd_8a65b4e6",
+      "range": {
+        "startLine": 401,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 37
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5e516a4_ecdea2b0",
@@ -221,6 +437,30 @@
       "writtenOn": "2023-08-17T23:00:13Z",
       "side": 1,
       "message": "Why shouldn\u0027t this be kPageSize? The comment says it\u0027s one per page.",
+      "range": {
+        "startLine": 405,
+        "startChar": 68,
+        "endLine": 405,
+        "endChar": 78
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52a8ef9_bcdf61ed",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-18T23:24:01Z",
+      "side": 1,
+      "message": "That\u0027s exactly what it is. See https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/gc/space/large_object_space.h;drc\u003d4f990714b13e0b4446305a5411648a1a9ae42a7a;l\u003d188",
+      "parentUuid": "d5e516a4_ecdea2b0",
       "range": {
         "startLine": 405,
         "startChar": 68,
