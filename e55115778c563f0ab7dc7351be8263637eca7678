@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4530a8_3b682c6f",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-18T10:14:43Z",
+      "side": 1,
+      "message": "Maybe, but we also try to avoid putting `visibility` and `apex_available` properties in defaults, for the sake of clarity. Another way to cut down the duplication is to replace all but one of the comments with \"See comment in xxx.\".",
+      "parentUuid": "1828d757_d27bf37d",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 24
+      },
+      "revId": "e55115778c563f0ab7dc7351be8263637eca7678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb41c606_f6519c46",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "This one was actually not required. Added the comment for \"libart\".",
       "parentUuid": "eb41c606_f6519c46",
+      "range": {
+        "startLine": 802,
+        "startChar": 8,
+        "endLine": 802,
+        "endChar": 38
+      },
+      "revId": "e55115778c563f0ab7dc7351be8263637eca7678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2736376a_d4b14efb",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-18T10:14:43Z",
+      "side": 1,
+      "message": "Hmm, maybe not. I think it\u0027ll strictly speaking affect the choice of stubs for the shared_libs dependencies coming from the defaults, but for a static lib I suppose they don\u0027t matter.",
+      "parentUuid": "810c00a9_d3014c0b",
       "range": {
         "startLine": 802,
         "startChar": 8,

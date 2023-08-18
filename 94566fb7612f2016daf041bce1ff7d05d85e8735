@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd308f8_95183764",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-18T10:14:43Z",
+      "side": 1,
+      "message": "Nit: Here too. But maybe not worth a separate CL.",
+      "range": {
+        "startLine": 770,
+        "startChar": 11,
+        "endLine": 770,
+        "endChar": 17
+      },
+      "revId": "94566fb7612f2016daf041bce1ff7d05d85e8735",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
