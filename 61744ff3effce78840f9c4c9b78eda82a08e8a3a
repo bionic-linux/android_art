@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ccd2fa_7d263a6e",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-08-21T14:07:01Z",
+      "side": 1,
+      "message": "What about `properties \u003d default_properties | properties` ?",
+      "revId": "61744ff3effce78840f9c4c9b78eda82a08e8a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
