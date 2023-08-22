@@ -1970,6 +1970,19 @@ DEFINE_FUNCTION art_quick_invoke_polymorphic
     RETURN_OR_DELIVER_PENDING_EXCEPTION
 END_FUNCTION art_quick_invoke_polymorphic
 
+DEFINE_FUNCTION art_quick_invoke_polymorphic_with_hidden_receiver
+                                                        // On entry: RDI := unused, RAX := receiver
+    SETUP_SAVE_REFS_AND_ARGS_FRAME                      // save callee saves
+    movq %rax, %rdi                                     // RDI := receiver
+    movq %gs:THREAD_SELF_OFFSET, %rsi                   // RSI := Thread (self)
+    movq %rsp, %rdx                                     // RDX := pass SP
+    call SYMBOL(artInvokePolymorphicWithHiddenReceiver) // invoke with (receiver, self, SP)
+                                                        // save the code pointer
+    RESTORE_SAVE_REFS_AND_ARGS_FRAME
+    movq %rax, %xmm0                               // Result is in RAX. Copy to FP result register.
+    RETURN_OR_DELIVER_PENDING_EXCEPTION
+END_FUNCTION art_quick_invoke_polymorphic_with_hidden_receiver
+
 DEFINE_FUNCTION art_quick_invoke_custom
     SETUP_SAVE_REFS_AND_ARGS_FRAME                 // save callee saves
                                                    // RDI := call_site_index
