@@ -1396,18 +1396,50 @@ bool HInstructionBuilder::BuildInvokePolymorphic(uint32_t dex_pc,
                                             &is_string_constructor);
 
   MethodReference method_reference(&graph_->GetDexFile(), method_idx);
+
+  bool is_invoke_exact =
+      static_cast<Intrinsics>(resolved_method->GetIntrinsic()) ==
+          Intrinsics::kMethodHandleInvokeExact;
+  bool can_be_virtual = number_of_arguments >= 2 &&
+      DataType::FromShorty(shorty[1]) == DataType::Type::kReference;
+  bool can_be_intrinsified = is_invoke_exact && can_be_virtual;
+  uint32_t number_of_other_inputs = can_be_intrinsified ? 1u : 0u;
+
   HInvoke* invoke = new (allocator_) HInvokePolymorphic(allocator_,
                                                         number_of_arguments,
                                                         operands.GetNumberOfOperands(),
+                                                        number_of_other_inputs,
                                                         return_type,
                                                         dex_pc,
                                                         method_reference,
                                                         resolved_method,
                                                         resolved_method_reference,
                                                         proto_idx);
+  HLoadMethodType* load_method_type = nullptr;
+  if (can_be_intrinsified) {
+    load_method_type =
+        new (allocator_) HLoadMethodType(graph_->GetCurrentMethod(),
+                                         proto_idx,
+                                         graph_->GetDexFile(),
+                                         dex_pc);
+    HSharpening::ProcessLoadMethodType(load_method_type,
+                                       code_generator_,
+                                       *dex_compilation_unit_,
+                                       graph_->GetHandleCache()->GetHandles());
+    invoke->SetRawInputAt(invoke->GetNumberOfArguments(), load_method_type);
+  }
+
   if (!HandleInvoke(invoke, operands, shorty, /* is_unresolved= */ false)) {
     return false;
   }
+
+  if (can_be_intrinsified) {
+    CHECK_NE(load_method_type, nullptr);
+    current_block_->InsertInstructionBefore(load_method_type, invoke);
+    InitializeInstruction(load_method_type);
+  }
+
+  DCHECK_IMPLIES(invoke->AsInvokePolymorphic()->CanTargetInvokeVirtual(), can_be_intrinsified);
 
   if (invoke->GetIntrinsic() != Intrinsics::kNone &&
       invoke->GetIntrinsic() != Intrinsics::kMethodHandleInvoke &&
