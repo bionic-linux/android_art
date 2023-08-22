@@ -4903,6 +4903,7 @@ class HInvokePolymorphic final : public HInvoke {
   HInvokePolymorphic(ArenaAllocator* allocator,
                      uint32_t number_of_arguments,
                      uint32_t number_of_out_vregs,
+                     uint32_t number_of_other_inputs,
                      DataType::Type return_type,
                      uint32_t dex_pc,
                      MethodReference method_reference,
@@ -4916,7 +4917,7 @@ class HInvokePolymorphic final : public HInvoke {
                 allocator,
                 number_of_arguments,
                 number_of_out_vregs,
-                /* number_of_other_inputs= */ 0u,
+                number_of_other_inputs,
                 return_type,
                 dex_pc,
                 method_reference,
@@ -4924,17 +4925,34 @@ class HInvokePolymorphic final : public HInvoke {
                 resolved_method_reference,
                 kPolymorphic,
                 /* enable_intrinsic_opt= */ true),
-        proto_idx_(proto_idx) {}
+        proto_idx_(proto_idx), load_method_type_(nullptr) {}
 
   bool IsClonable() const override { return true; }
 
   dex::ProtoIndex GetProtoIndex() { return proto_idx_; }
+
+  // Intrinsic's code checks receiver's type, which is stored in a GPR. But invoke-static
+  // can store FP number there, leading to crashes during compilation.
+  bool CanTargetInvokeVirtual() const {
+    return GetIntrinsic() == Intrinsics::kMethodHandleInvokeExact &&
+        GetNumberOfArguments() >= 2 &&
+        InputAt(1)->GetType() == DataType::Type::kReference;
+  }
+
+  HLoadMethodType* GetLoadMethodType() const { return load_method_type_; }
+
+  void SetLoadMethodType(HLoadMethodType* load_method_type) {
+    load_method_type_ = load_method_type;
+  }
 
   DECLARE_INSTRUCTION(InvokePolymorphic);
 
  protected:
   dex::ProtoIndex proto_idx_;
   DEFAULT_COPY_CONSTRUCTOR(InvokePolymorphic);
+
+ private:
+  HLoadMethodType* load_method_type_;
 };
 
 class HInvokeCustom final : public HInvoke {
