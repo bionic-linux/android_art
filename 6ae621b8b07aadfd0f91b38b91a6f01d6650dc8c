@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b583464b_3294855f",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-08-22T22:51:17Z",
+      "side": 1,
+      "message": "This still seems dubious, since it\u0027s a data race, right? Maybe we should just declare it atomic.",
+      "parentUuid": "9b7078bb_2913cea4",
+      "range": {
+        "startLine": 587,
+        "startChar": 8,
+        "endLine": 587,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21807c19_6c65b29c",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 7
