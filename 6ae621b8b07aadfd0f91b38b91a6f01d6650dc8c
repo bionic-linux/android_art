@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce201f3_212ae2fe",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-23T00:17:01Z",
+      "side": 1,
+      "message": "As discussed offline, no longer clamping GC data structures synchronously",
+      "parentUuid": "b583464b_3294855f",
+      "range": {
+        "startLine": 587,
+        "startChar": 8,
+        "endLine": 587,
+        "endChar": 26
+      },
+      "revId": "6ae621b8b07aadfd0f91b38b91a6f01d6650dc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21807c19_6c65b29c",
