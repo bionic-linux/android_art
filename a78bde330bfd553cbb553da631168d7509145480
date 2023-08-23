@@ -22,6 +22,30 @@
       },
       "revId": "a78bde330bfd553cbb553da631168d7509145480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759c8dc7_71e9b493",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-23T16:37:36Z",
+      "side": 1,
+      "message": "I\u0027m actually not liking the idea of calling this function in each GC iteration, even though we know it\u0027s needed only once.\n\nHow about I added a GC-task for clamping GC structures to HeapTaskDaemon within a GC-critical section?",
+      "parentUuid": "1ac680f5_bcf9b30d",
+      "range": {
+        "startLine": 609,
+        "startChar": 18,
+        "endLine": 609,
+        "endChar": 35
+      },
+      "revId": "a78bde330bfd553cbb553da631168d7509145480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
