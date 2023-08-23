@@ -22,6 +22,30 @@
       },
       "revId": "a990cea3849d9ace43cfe8c0cb203310675da41a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ad92bd_69117bb0",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-08-23T23:47:27Z",
+      "side": 1,
+      "message": "Yes, there are build tests. Please check git_master-art-host branch config.",
+      "parentUuid": "95bbadd6_8086a7c7",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 37
+      },
+      "revId": "a990cea3849d9ace43cfe8c0cb203310675da41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
