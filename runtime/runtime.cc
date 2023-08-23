@@ -3296,6 +3296,9 @@ class UpdateEntryPointsClassVisitor : public ClassVisitor {
         m.ClearPreCompiled();
         instrumentation_->InitializeMethodsCode(&m, /*aot_code=*/ nullptr);
       }
+
+      // Clear MemorySharedAccessFlags so the boot class methods can be JITed better.
+      m.ClearMemorySharedMethod();
     }
     return true;
   }
