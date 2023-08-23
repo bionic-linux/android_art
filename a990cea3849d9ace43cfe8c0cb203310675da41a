@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bbadd6_8086a7c7",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-23T23:26:24Z",
+      "side": 1,
+      "message": "Have you seen any references to this, or are you just being cautious?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 37
+      },
+      "revId": "a990cea3849d9ace43cfe8c0cb203310675da41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
