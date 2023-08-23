@@ -70,6 +70,30 @@
       },
       "revId": "a78bde330bfd553cbb553da631168d7509145480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "388806a1_fa79fa19",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-08-23T20:35:17Z",
+      "side": 1,
+      "message": "OK. I have made some minor changes to when we do this. PTAL at latest patch.",
+      "parentUuid": "540c8f57_2fc6ba98",
+      "range": {
+        "startLine": 609,
+        "startChar": 18,
+        "endLine": 609,
+        "endChar": 35
+      },
+      "revId": "a78bde330bfd553cbb553da631168d7509145480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
