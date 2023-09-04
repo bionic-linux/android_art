@@ -24,6 +24,7 @@ import static com.google.common.truth.Truth.assertThat;
 import com.android.tradefed.device.DeviceNotAvailableException;
 import com.android.tradefed.device.ITestDevice;
 import com.android.tradefed.invoker.TestInformation;
+import com.android.tradefed.log.LogUtil.CLog;
 import com.android.tradefed.testtype.DeviceJUnit4ClassRunner;
 import com.android.tradefed.testtype.junit4.AfterClassWithInfo;
 import com.android.tradefed.testtype.junit4.BaseHostJUnit4Test;
@@ -111,8 +112,14 @@ public class CompOsDenialHostTest extends BaseHostJUnit4Test {
                 "mv " + odex2 + " " + odex1 + " && " +
                 "mv " + temp + " " + odex2);
 
+        CLog.i("Swapped " + odex1 + " with " + odex2);
+        logDirectoryContents("Before reboot", PENDING_ARTIFACTS_DIR + "/arm64");
+
         // Expect the pending artifacts to be denied by odsign during the reboot.
         mTestUtils.reboot();
+
+        logDirectoryContents("After reboot", OdsignTestUtils.ART_APEX_DALVIK_CACHE_DIRNAME + "/arm64");
+
         expectNoCurrentFilesFromCompOs();
     }
 
@@ -142,6 +149,14 @@ public class CompOsDenialHostTest extends BaseHostJUnit4Test {
         // Expect the pending artifacts to be denied by odsign during the reboot.
         mTestUtils.reboot();
         expectNoCurrentFilesFromCompOs();
+    }
+
+    private void logDirectoryContents(String message, String directory) throws Exception {
+        CLog.i(message + ": Contents of " + directory);
+        String output = mTestUtils.assertCommandSucceeds("ls -ll " + directory);
+        for (String line : output.split("\n")) {
+            CLog.i(line);
+        }
     }
 
     private void expectNoCurrentFilesFromCompOs() throws DeviceNotAvailableException {
