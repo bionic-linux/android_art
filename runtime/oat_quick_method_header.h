@@ -17,8 +17,6 @@
 #ifndef ART_RUNTIME_OAT_QUICK_METHOD_HEADER_H_
 #define ART_RUNTIME_OAT_QUICK_METHOD_HEADER_H_
 
-#include <optional>
-
 #include "arch/instruction_set.h"
 #include "base/locks.h"
 #include "base/macros.h"
@@ -43,8 +41,6 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
   static OatQuickMethodHeader* NterpMethodHeader;
-  static ArrayRef<const uint8_t> NterpWithClinitImpl;
-  static ArrayRef<const uint8_t> NterpImpl;
 
   bool IsNterpMethodHeader() const;
 
@@ -77,17 +73,11 @@ class PACKED(4) OatQuickMethodHeader {
     return pc - reinterpret_cast<uintptr_t>(GetEntryPoint());
   }
 
-  // Check if this is hard-written assembly (i.e. inside libart.so).
-  // Returns std::nullop on Mac.
-  std::optional<bool> IsStub() const;
-
   ALWAYS_INLINE bool IsOptimized() const {
-    if (code_ == NterpWithClinitImpl.data() || code_ == NterpImpl.data()) {
-      DCHECK(IsStub().value_or(true));
-      return false;
-    }
-    DCHECK(!IsStub().value_or(false));
-    return true;
+    uintptr_t code = reinterpret_cast<uintptr_t>(code_);
+    DCHECK_NE(data_, 0u) << std::hex << code;          // Probably a padding of native code.
+    DCHECK_NE(data_, kInvalidData) << std::hex << code;  // Probably a stub or trampoline.
+    return (data_ & kIsCodeInfoMask) != 0;
   }
 
   ALWAYS_INLINE const uint8_t* GetOptimizedCodeInfoPtr() const {
@@ -107,24 +97,25 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
   ALWAYS_INLINE uint32_t GetCodeSize() const {
-    if (code_ == NterpWithClinitImpl.data()) {
-      return NterpWithClinitImpl.size();
-    }
-    if (code_ == NterpImpl.data()) {
-      return NterpImpl.size();
-    }
-    return CodeInfo::DecodeCodeSize(GetOptimizedCodeInfoPtr());
+    return LIKELY(IsOptimized())
+        ? CodeInfo::DecodeCodeSize(GetOptimizedCodeInfoPtr())
+        : (data_ & kCodeSizeMask);
   }
 
   ALWAYS_INLINE uint32_t GetCodeInfoOffset() const {
     DCHECK(IsOptimized());
-    return code_info_offset_;
+    return data_ & kCodeInfoMask;
   }
 
-  void SetCodeInfoOffset(uint32_t offset) { code_info_offset_ = offset; }
+  void SetCodeInfoOffset(uint32_t offset) {
+    data_ = kIsCodeInfoMask | offset;
+    CHECK_EQ(GetCodeInfoOffset(), offset);
+  }
 
   bool Contains(uintptr_t pc) const {
     uintptr_t code_start = reinterpret_cast<uintptr_t>(code_);
+    // We should not call `Contains` on a stub or trampoline.
+    DCHECK_NE(data_, kInvalidData) << std::hex << code_start;
 // Let's not make assumptions about other architectures.
 #if defined(__aarch64__) || defined(__riscv__) || defined(__riscv)
     // Verify that the code pointer is not tagged. Memory for code gets allocated with
@@ -196,7 +187,15 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
  private:
-  uint32_t code_info_offset_ = 0u;
+  static constexpr uint32_t kIsCodeInfoMask = 0x80000000;
+  static constexpr uint32_t kCodeInfoMask = 0x7FFFFFFF;  // If kIsCodeInfoMask is set.
+  static constexpr uint32_t kCodeSizeMask = 0x7FFFFFFF;  // If kIsCodeInfoMask is clear.
+
+  // In order to not confuse a stub with Java-generated code, we prefix each
+  // stub with a 0xFFFFFFFF marker.
+  static constexpr uint32_t kInvalidData = 0xFFFFFFFF;
+
+  uint32_t data_ = 0u;  // Combination of fields using the above masks.
   uint8_t code_[0];     // The actual method code.
 };
 

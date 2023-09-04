@@ -17,7 +17,6 @@
 #ifndef ART_RUNTIME_INTERPRETER_MTERP_NTERP_H_
 #define ART_RUNTIME_INTERPRETER_MTERP_NTERP_H_
 
-#include "base/array_ref.h"
 #include "base/globals.h"
 
 extern "C" void* artNterpAsmInstructionStart[];
@@ -34,8 +33,6 @@ bool IsNterpSupported();
 bool CanRuntimeUseNterp();
 const void* GetNterpEntryPoint();
 const void* GetNterpWithClinitEntryPoint();
-ArrayRef<const uint8_t> NterpWithClinitImpl();
-ArrayRef<const uint8_t> NterpImpl();
 
 constexpr uint16_t kNterpHotnessValue = 0;
 

@@ -202,12 +202,18 @@
     movsd \_xmmreg, VREG_ADDRESS(\_vreg)
 .endm
 
-// An assembly entry for nterp.
-.macro OAT_ENTRY name
+// An assembly entry that has a OatQuickMethodHeader prefix.
+.macro OAT_ENTRY name, end
     FUNCTION_TYPE(\name)
     ASM_HIDDEN SYMBOL(\name)
     .global SYMBOL(\name)
     .balign 16
+    // Padding of 3 * 4 bytes to get 16 bytes alignment of code entry.
+    .long 0
+    .long 0
+    .long 0
+    // OatQuickMethodHeader. Note that the top two bits must be clear.
+    .long (SYMBOL(\end) - SYMBOL(\name))
 SYMBOL(\name):
 .endm
 
@@ -1690,7 +1696,7 @@ END_FUNCTION \name
  *  rest  method parameters
  */
 
-OAT_ENTRY ExecuteNterpWithClinitImpl
+OAT_ENTRY ExecuteNterpWithClinitImpl, EndExecuteNterpWithClinitImpl
     .cfi_startproc
     // For simplicity, we don't do a read barrier here, but instead rely
     // on art_quick_resolution_trampoline to always have a suspend point before
@@ -1705,10 +1711,9 @@ OAT_ENTRY ExecuteNterpWithClinitImpl
     je ExecuteNterpImpl
     jmp art_quick_resolution_trampoline
     .cfi_endproc
-    .global SYMBOL(EndExecuteNterpWithClinitImpl)
-SYMBOL(EndExecuteNterpWithClinitImpl):
+EndExecuteNterpWithClinitImpl:
 
-OAT_ENTRY ExecuteNterpImpl
+OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
     .cfi_startproc
     .cfi_def_cfa rsp, 8
     testq %rax, -STACK_OVERFLOW_RESERVED_BYTES(%rsp)

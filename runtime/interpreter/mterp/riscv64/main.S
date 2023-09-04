@@ -61,12 +61,20 @@
 #define CFI_DEX  19  // DWARF register number for xPC  /s3/x19
 #define CFI_REFS 22  // DWARF register number for xREFS/s6/x22
 
-// An assembly entry for nterp.
-.macro OAT_ENTRY name
+// An assembly entry that has a OatQuickMethodHeader prefix.
+.macro OAT_ENTRY name, end
     .type \name, @function
     .hidden \name
     .global \name
     .balign 16
+    // Padding of 3 * 4 bytes to get 16 bytes alignment of code entry.
+    .4byte 0, 0, 0
+    // OatQuickMethodHeader `data_` field. Note that the top two bits must be clear.
+    // The calculation must be based on the current address to emit relocation data,
+    // otherwise the size calculated by the assembler could be wrong after linking.
+    // (Alternatively, we could use `.option norelax` to suppress linker optimizations.)
+1:
+    .4byte (\end - /* \name */ (1b + 4))
 \name:
 .endm
 
@@ -379,16 +387,13 @@ END \name
  *  a1-a7  method parameters
  */
 
-OAT_ENTRY ExecuteNterpWithClinitImpl
+OAT_ENTRY ExecuteNterpWithClinitImpl, EndExecuteNterpWithClinitImpl
     .cfi_startproc
     unimp
     .cfi_endproc
-    .type EndExecuteNterpWithClinitImpl, @function
-    .hidden EndExecuteNterpWithClinitImpl
-    .global EndExecuteNterpWithClinitImpl
 EndExecuteNterpWithClinitImpl:
 
-OAT_ENTRY ExecuteNterpImpl
+OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
     .cfi_startproc
 
     // Check guard page for stack overflow.

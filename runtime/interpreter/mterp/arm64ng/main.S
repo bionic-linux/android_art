@@ -246,12 +246,18 @@
     ldrsw   \reg, [xFP, \vreg, uxtw #2]
 .endm
 
-// An assembly entry for nterp.
-.macro OAT_ENTRY name
+// An assembly entry that has a OatQuickMethodHeader prefix.
+.macro OAT_ENTRY name, end
     .type \name, #function
     .hidden \name
     .global \name
     .balign 16
+    // Padding of 3 * 4 bytes to get 16 bytes alignment of code entry.
+    .long 0
+    .long 0
+    .long 0
+    // OatQuickMethodHeader. Note that the top two bits must be clear.
+    .long (\end - \name)
 \name:
 .endm
 
@@ -1606,7 +1612,7 @@ END \name
  *  rest  method parameters
  */
 
-OAT_ENTRY ExecuteNterpWithClinitImpl
+OAT_ENTRY ExecuteNterpWithClinitImpl, EndExecuteNterpWithClinitImpl
     .cfi_startproc
     // For simplicity, we don't do a read barrier here, but instead rely
     // on art_quick_resolution_trampoline to always have a suspend point before
@@ -1629,12 +1635,9 @@ OAT_ENTRY ExecuteNterpWithClinitImpl
 .Lresolution_trampoline:
     b art_quick_resolution_trampoline
     .cfi_endproc
-    .type EndExecuteNterpWithClinitImpl, #function
-    .hidden EndExecuteNterpWithClinitImpl
-    .global EndExecuteNterpWithClinitImpl
 EndExecuteNterpWithClinitImpl:
 
-OAT_ENTRY ExecuteNterpImpl
+OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
     .cfi_startproc
     sub x16, sp, #STACK_OVERFLOW_RESERVED_BYTES
     ldr wzr, [x16]
