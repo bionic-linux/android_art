@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9502c5a5_32004a0f",
+        "filename": "dex2oat/linker/image_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-06T14:22:10Z",
+      "side": 1,
+      "message": "Add space (all other args have a space after the `/*name\u003d*/` comment).",
+      "range": {
+        "startLine": 221,
+        "startChar": 42,
+        "endLine": 221,
+        "endChar": 43
+      },
+      "revId": "e3c36af2b13bab39f96ba50c99838a6a66355fa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
