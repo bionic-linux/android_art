@@ -22,6 +22,30 @@
       },
       "revId": "17830165a674f1c0bf931130736ee57beb88133a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b716e1_8244c6db",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-08T09:43:34Z",
+      "side": 1,
+      "message": "I\u0027ve added a named constant. Given that it\u0027s passed to LI and can be used in SLTI/SLTIU, all of which take a signed immediate, I made it signed.\n\nI\u0027m not changing the `enum FPClassMaskType` for now.",
+      "parentUuid": "c1302a09_6ede684b",
+      "range": {
+        "startLine": 1438,
+        "startChar": 20,
+        "endLine": 1438,
+        "endChar": 25
+      },
+      "revId": "17830165a674f1c0bf931130736ee57beb88133a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
