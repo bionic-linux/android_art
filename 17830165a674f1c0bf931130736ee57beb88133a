@@ -46,6 +46,30 @@
       },
       "revId": "17830165a674f1c0bf931130736ee57beb88133a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c018bc8_163b5310",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-09-08T09:44:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85b716e1_8244c6db",
+      "range": {
+        "startLine": 1438,
+        "startChar": 20,
+        "endLine": 1438,
+        "endChar": 25
+      },
+      "revId": "17830165a674f1c0bf931130736ee57beb88133a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
