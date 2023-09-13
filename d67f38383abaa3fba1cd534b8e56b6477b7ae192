@@ -16,6 +16,24 @@
       "message": "Line too long.",
       "revId": "d67f38383abaa3fba1cd534b8e56b6477b7ae192",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b5898c_12312b4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-09-13T23:02:45Z",
+      "side": 1,
+      "message": "Ran those lines through pyformat!",
+      "parentUuid": "2a5010e2_1f5e0e7f",
+      "revId": "d67f38383abaa3fba1cd534b8e56b6477b7ae192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
