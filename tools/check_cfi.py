@@ -149,7 +149,7 @@ Asm = collections.namedtuple("Asm", ["pc", "name", "data"])
 def get_asm(lib: pathlib.Path) -> List[Asm]:
   """ Get all ASM blocks (in dumped text-based format) """
 
-  proc = subprocess.run([args.objdump, "--disassemble", "--no-show-raw-insn", lib],
+  proc = subprocess.run([args.objdump, "--disassemble", "--no-show-raw-insn", "--disassemble-zeroes", lib],
                         encoding='utf-8',
                         capture_output=True,
                         check=True)
