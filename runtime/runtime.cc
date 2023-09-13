@@ -792,7 +792,9 @@ void Runtime::CallExitHook(jint status) {
 }
 
 void Runtime::SweepSystemWeaks(IsMarkedVisitor* visitor) {
-  GetInternTable()->SweepInternTableWeaks(visitor);
+  if (!GetHeap()->IsPerformingUffdCompaction()) {
+    GetInternTable()->SweepInternTableWeaks(visitor);
+  }
   GetMonitorList()->SweepMonitorList(visitor);
   GetJavaVM()->SweepJniWeakGlobals(visitor);
   GetHeap()->SweepAllocationRecords(visitor);
@@ -2529,8 +2531,12 @@ void Runtime::VisitConstantRoots(RootVisitor* visitor) {
 }
 
 void Runtime::VisitConcurrentRoots(RootVisitor* visitor, VisitRootFlags flags) {
-  intern_table_->VisitRoots(visitor, flags);
-  class_linker_->VisitRoots(visitor, flags);
+  if (GetHeap()->IsPerformingUffdCompaction()) {
+    class_linker_->VisitRoots(visitor, flags, /*visit_class_roots=*/false);
+  } else {
+    intern_table_->VisitRoots(visitor, flags);
+    class_linker_->VisitRoots(visitor, flags, /*visit_class_roots=*/true);
+  }
   jni_id_manager_->VisitRoots(visitor);
   heap_->VisitAllocationRecords(visitor);
   if (jit_ != nullptr) {

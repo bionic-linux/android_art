@@ -514,7 +514,7 @@ class ClassLinker {
   void VisitClassRoots(RootVisitor* visitor, VisitRootFlags flags)
       REQUIRES(!Locks::classlinker_classes_lock_, !Locks::trace_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  void VisitRoots(RootVisitor* visitor, VisitRootFlags flags)
+  void VisitRoots(RootVisitor* visitor, VisitRootFlags flags, bool visit_class_roots = true)
       REQUIRES(!Locks::dex_lock_, !Locks::classlinker_classes_lock_, !Locks::trace_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Visits all dex-files accessible by any class-loader or the BCP.
