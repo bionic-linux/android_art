@@ -27,39 +27,52 @@
 
 namespace art {
 
-TrackedArena::TrackedArena(uint8_t* start, size_t size, bool pre_zygote_fork)
+TrackedArena::TrackedArena(uint8_t* start, size_t size, bool pre_zygote_fork, bool single_object)
     : Arena(), first_obj_array_(nullptr), pre_zygote_fork_(pre_zygote_fork) {
   static_assert(ArenaAllocator::kArenaAlignment <= kPageSize,
                 "Arena should not need stronger alignment than kPageSize.");
-  DCHECK_ALIGNED(size, kPageSize);
-  DCHECK_ALIGNED(start, kPageSize);
   memory_ = start;
   size_ = size;
-  size_t arr_size = size / kPageSize;
-  first_obj_array_.reset(new uint8_t*[arr_size]);
-  std::fill_n(first_obj_array_.get(), arr_size, nullptr);
+  if (single_object) {
+    DCHECK_ALIGNED(size, kPageSize);
+    DCHECK_ALIGNED(start, kPageSize);
+    size_t arr_size = size / kPageSize;
+    first_obj_array_.reset(new uint8_t*[arr_size]);
+    std::fill_n(first_obj_array_.get(), arr_size, nullptr);
+  } else {
+    // We have only one object in this arena and it expected to consume the
+    // entire arena.
+    bytes_allocated_ = size;
+  }
+}
+
+void TrackedArena::ReleasePages() const {
+  // Userfaultfd GC uses MAP_SHARED mappings for linear-alloc and therefore
+  // MADV_DONTNEED will not free the pages from page cache. Therefore use
+  // MADV_REMOVE instead, which is meant for this purpose.
+  // Arenas allocated pre-zygote fork are private anonymous and hence must be
+  // released using MADV_DONTNEED.
+  if (!gUseUserfaultfd || pre_zygote_fork_ ||
+      (madvise(Begin(), Size(), MADV_REMOVE) == -1 && errno == EINVAL)) {
+    // MADV_REMOVE fails if invoked on anonymous mapping, which could happen
+    // if the arena is released before userfaultfd-GC starts using memfd. So
+    // use MADV_DONTNEED.
+    ZeroAndReleaseMemory(Begin(), Size());
+  }
 }
 
 void TrackedArena::Release() {
   if (bytes_allocated_ > 0) {
-    // Userfaultfd GC uses MAP_SHARED mappings for linear-alloc and therefore
-    // MADV_DONTNEED will not free the pages from page cache. Therefore use
-    // MADV_REMOVE instead, which is meant for this purpose.
-    // Arenas allocated pre-zygote fork are private anonymous and hence must be
-    // released using MADV_DONTNEED.
-    if (!gUseUserfaultfd || pre_zygote_fork_ ||
-        (madvise(Begin(), Size(), MADV_REMOVE) == -1 && errno == EINVAL)) {
-      // MADV_REMOVE fails if invoked on anonymous mapping, which could happen
-      // if the arena is released before userfaultfd-GC starts using memfd. So
-      // use MADV_DONTNEED.
-      ZeroAndReleaseMemory(Begin(), Size());
+    ReleasePages();
+    if (first_obj_array_.get() != nullptr) {
+      std::fill_n(first_obj_array_.get(), Size() / kPageSize, nullptr);
     }
-    std::fill_n(first_obj_array_.get(), Size() / kPageSize, nullptr);
     bytes_allocated_ = 0;
   }
 }
 
 void TrackedArena::SetFirstObject(uint8_t* obj_begin, uint8_t* obj_end) {
+  DCHECK(first_obj_array_.get() != nullptr);
   DCHECK_LE(static_cast<void*>(Begin()), static_cast<void*>(obj_end));
   DCHECK_LT(static_cast<void*>(obj_begin), static_cast<void*>(obj_end));
   size_t idx = static_cast<size_t>(obj_begin - Begin()) / kPageSize;
@@ -137,17 +150,59 @@ uint8_t* GcVisitedArenaPool::AddPreZygoteForkMap(size_t size) {
   return map.Begin();
 }
 
-Arena* GcVisitedArenaPool::AllocArena(size_t size) {
+uint8_t* GcVisitedArenaPool::AllocSingleObjArena(size_t size) {
+  std::lock_guard<std::mutex> lock(lock_);
+  Arena* arena;
+  DCHECK(gUseUserfaultfd);
+  // To minimize private dirty, all class-table intern-table allocations are
+  // done outside LinearAlloc range so they are untouched during GC.
+  if (pre_zygote_fork_) {
+    DCHECK(Runtime::Current()->IsZygote());
+    size = RoundUp(size, kPageSize);
+    uint8_t* begin = static_cast<uint8_t*>(malloc(size));
+    auto emplace_result = allocated_arenas_.emplace(begin,
+                                                    size,
+                                                    /*pre_zygote_fork=*/true,
+                                                    /*need_first_obj_arr=*/false);
+    arena = const_cast<TrackedArena*>(&(*emplace_result.first));
+  } else {
+    arena = AllocArena(size, /*need_first_obj_arr=*/false);
+  }
+  return arena->Begin();
+}
+
+void GcVisitedArenaPool::FreeSingleObjArena(uint8_t* addr) {
+  AllocatedArenaSet::iterator arena;
+  {
+    std::lock_guard<std::mutex> lock(lock_);
+    arena = allocated_arenas_.find(TrackedArena(addr));
+    DCHECK(arena != allocated_arenas_.end());
+  }
+  DCHECK(arena->IsSingleObjectArena());
+  // Release (madvise) outside the critical section, and before erasing from
+  // allocated_arenas_ to ensure that it doesn't get assigned elsewhere.
+  if (arena->IsPreZygoteForkArena()) {
+    free(arena->Begin());
+  } else {
+    arena->ReleasePages();
+  }
+  std::lock_guard<std::mutex> lock(lock_);
+  if (!arena->IsPreZygoteForkArena()) {
+    FreeRangeLocked(arena->Begin(), arena->Size());
+  }
+  allocated_arenas_.erase(arena);
+}
+
+Arena* GcVisitedArenaPool::AllocArena(size_t size, bool need_first_obj_arr) {
   // Return only page aligned sizes so that madvise can be leveraged.
   size = RoundUp(size, kPageSize);
-  std::lock_guard<std::mutex> lock(lock_);
-
   if (pre_zygote_fork_) {
     // The first fork out of zygote hasn't happened yet. Allocate arena in a
     // private-anonymous mapping to retain clean pages across fork.
     DCHECK(Runtime::Current()->IsZygote());
     uint8_t* addr = AddPreZygoteForkMap(size);
-    auto emplace_result = allocated_arenas_.emplace(addr, size, /*pre_zygote_fork=*/true);
+    auto emplace_result =
+        allocated_arenas_.emplace(addr, size, /*pre_zygote_fork=*/true, need_first_obj_arr);
     return const_cast<TrackedArena*>(&(*emplace_result.first));
   }
 
@@ -167,7 +222,8 @@ Arena* GcVisitedArenaPool::AllocArena(size_t size) {
     DCHECK_GE(chunk->size_, size);
     auto emplace_result = allocated_arenas_.emplace(chunk->addr_,
                                                     chunk->size_,
-                                                    /*pre_zygote_fork=*/false);
+                                                    /*pre_zygote_fork=*/false,
+                                                    need_first_obj_arr);
     DCHECK(emplace_result.second);
     free_chunks_.erase(free_chunks_iter);
     best_fit_allocs_.erase(best_fit_iter);
@@ -176,7 +232,8 @@ Arena* GcVisitedArenaPool::AllocArena(size_t size) {
   } else {
     auto emplace_result = allocated_arenas_.emplace(chunk->addr_,
                                                     size,
-                                                    /*pre_zygote_fork=*/false);
+                                                    /*pre_zygote_fork=*/false,
+                                                    need_first_obj_arr);
     DCHECK(emplace_result.second);
     // Compute next iterators for faster insert later.
     auto next_best_fit_iter = best_fit_iter;
