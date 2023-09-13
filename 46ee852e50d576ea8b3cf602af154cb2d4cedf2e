@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea30d3ab_4fec7f62",
+        "filename": "runtime/interpreter/mterp/riscv64/floating_point.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-09-13T07:08:44Z",
+      "side": 1,
+      "message": "Can remove it. The [sic] means I copy-pasted it verbatim, even though it may not make sense. Here, the 32-bit integer value 0x80000000 already has the sign bit set. So what does -0x80000000 mean?",
+      "parentUuid": "12b02bd2_5e3d7680",
+      "range": {
+        "startLine": 62,
+        "startChar": 53,
+        "endLine": 62,
+        "endChar": 58
+      },
+      "revId": "46ee852e50d576ea8b3cf602af154cb2d4cedf2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab427656_5f56a4df",
@@ -54,6 +78,24 @@
       "writtenOn": "2023-08-09T10:02:45Z",
       "side": 1,
       "message": "Can we use FDIV+FMUL+FSUB? (Or FDIV+FNMSUB? Does FNMSUB offer correct rounding?)",
+      "revId": "46ee852e50d576ea8b3cf602af154cb2d4cedf2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea85c74a_98733c9a",
+        "filename": "runtime/interpreter/mterp/riscv64/floating_point.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-09-13T07:08:44Z",
+      "side": 1,
+      "message": "I believe we can\u0027t use FNMSUB, because fused ops perform just one rounding at the end to increase fp accuracy [1], but we want the rounding to occur on the division result first.\n\nAs for rolling our own, it seems libraries receive regular performance tuning, so I\u0027d like to punt on this for now. Some examples:\nhttps://git.musl-libc.org/cgit/musl/tree/src/math/fmodf.c\nhttps://sourceware.org/git/?p\u003dglibc.git;a\u003dblob;f\u003dsysdeps/ieee754/flt-32/e_fmodf.c;h\u003d4482b8c0ac3b758bc076931b29d48bb518b4c8d2;hb\u003dcf9cf33199fdd6550920ad43f19ad8b2435fc0c6\n\n[1] https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation#Fused_multiply%E2%80%93add",
+      "parentUuid": "623b84ef_25a20160",
       "revId": "46ee852e50d576ea8b3cf602af154cb2d4cedf2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
