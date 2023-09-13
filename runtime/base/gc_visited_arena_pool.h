@@ -17,12 +17,15 @@
 #ifndef ART_RUNTIME_BASE_GC_VISITED_ARENA_POOL_H_
 #define ART_RUNTIME_BASE_GC_VISITED_ARENA_POOL_H_
 
-#include "base/casts.h"
+#include <set>
+
+#include "base/allocator.h"
 #include "base/arena_allocator.h"
+#include "base/casts.h"
 #include "base/locks.h"
 #include "base/mem_map.h"
-
-#include <set>
+#include "read_barrier_config.h"
+#include "runtime.h"
 
 namespace art {
 
@@ -34,27 +37,43 @@ class TrackedArena final : public Arena {
  public:
   // Used for searching in maps. Only arena's starting address is relevant.
   explicit TrackedArena(uint8_t* addr) : pre_zygote_fork_(false) { memory_ = addr; }
-  TrackedArena(uint8_t* start, size_t size, bool pre_zygote_fork);
+  TrackedArena(uint8_t* start, size_t size, bool pre_zygote_fork, bool single_object);
 
   template <typename PageVisitor>
   void VisitRoots(PageVisitor& visitor) const REQUIRES_SHARED(Locks::mutator_lock_) {
-    DCHECK_ALIGNED(Size(), kPageSize);
-    DCHECK_ALIGNED(Begin(), kPageSize);
-    int nr_pages = Size() / kPageSize;
+    int nr_pages = RoundUp(Size(), kPageSize) / kPageSize;
     uint8_t* page_begin = Begin();
-    for (int i = 0; i < nr_pages && first_obj_array_[i] != nullptr; i++, page_begin += kPageSize) {
-      visitor(page_begin, first_obj_array_[i]);
+    bool has_array = first_obj_array_.get() != nullptr;
+    if (has_array) {
+      DCHECK_ALIGNED(Size(), kPageSize);
+      DCHECK_ALIGNED(Begin(), kPageSize);
+    }
+    for (int i = 0; i < nr_pages; i++, page_begin += kPageSize) {
+      if (has_array) {
+        uint8_t* first = first_obj_array_[i];
+        if (first != nullptr) {
+          visitor(page_begin, first);
+        } else {
+          break;
+        }
+      } else {
+        visitor(page_begin, nullptr);
+      }
     }
   }
 
   // Return the page addr of the first page with first_obj set to nullptr.
   uint8_t* GetLastUsedByte() const REQUIRES_SHARED(Locks::mutator_lock_) {
-    DCHECK_ALIGNED(Begin(), kPageSize);
-    DCHECK_ALIGNED(End(), kPageSize);
     // Jump past bytes-allocated for arenas which are not currently being used
     // by arena-allocator. This helps in reducing loop iterations below.
     uint8_t* last_byte = AlignUp(Begin() + GetBytesAllocated(), kPageSize);
-    DCHECK_LE(last_byte, End());
+    if (first_obj_array_.get() != nullptr) {
+      DCHECK_ALIGNED(Begin(), kPageSize);
+      DCHECK_ALIGNED(End(), kPageSize);
+      DCHECK_LE(last_byte, End());
+    } else {
+      DCHECK_EQ(last_byte, End());
+    }
     for (size_t i = (last_byte - Begin()) / kPageSize;
          last_byte < End() && first_obj_array_[i] != nullptr;
          last_byte += kPageSize, i++) {
@@ -66,15 +85,24 @@ class TrackedArena final : public Arena {
   uint8_t* GetFirstObject(uint8_t* addr) const REQUIRES_SHARED(Locks::mutator_lock_) {
     DCHECK_LE(Begin(), addr);
     DCHECK_GT(End(), addr);
-    return first_obj_array_[(addr - Begin()) / kPageSize];
+    if (first_obj_array_.get() != nullptr) {
+      return first_obj_array_[(addr - Begin()) / kPageSize];
+    } else {
+      // The pages of this arena contain array of GC-roots. So we don't need
+      // first-object of any given page of the arena.
+      // Returning null helps distinguish which visitor is to be called.
+      return nullptr;
+    }
   }
 
   // Set 'obj_begin' in first_obj_array_ in every element for which it's the
   // first object.
   void SetFirstObject(uint8_t* obj_begin, uint8_t* obj_end);
 
+  void ReleasePages() const;
   void Release() override;
   bool IsPreZygoteForkArena() const { return pre_zygote_fork_; }
+  bool IsSingleObjectArena() const { return first_obj_array_.get() == nullptr; }
 
  private:
   // first_obj_array_[i] is the object that overlaps with the ith page's
@@ -101,12 +129,21 @@ class GcVisitedArenaPool final : public ArenaPool {
                               bool is_zygote = false,
                               const char* name = "LinearAlloc");
   virtual ~GcVisitedArenaPool();
-  Arena* AllocArena(size_t size) override;
+
+  Arena* AllocArena(size_t size, bool need_first_obj_arr) REQUIRES(lock_);
+  // Use by arena allocator.
+  Arena* AllocArena(size_t size) override {
+    std::lock_guard<std::mutex> lock(lock_);
+    return AllocArena(size, /*need_first_obj_arr=*/true);
+  }
   void FreeArenaChain(Arena* first) override;
   size_t GetBytesAllocated() const override;
   void ReclaimMemory() override {}
   void LockReclaimMemory() override {}
   void TrimMaps() override {}
+
+  uint8_t* AllocSingleObjArena(size_t size);
+  void FreeSingleObjArena(uint8_t* addr);
 
   bool Contains(void* ptr) {
     std::lock_guard<std::mutex> lock(lock_);
@@ -203,6 +240,7 @@ class GcVisitedArenaPool final : public ArenaPool {
       return std::less<uint8_t*>{}(a.Begin(), b.Begin());
     }
   };
+  using AllocatedArenaSet = std::set<TrackedArena, LessByArenaAddr>;
 
   // Use a std::mutex here as Arenas are second-from-the-bottom when using MemMaps, and MemMap
   // itself uses std::mutex scoped to within an allocate/free only.
@@ -213,7 +251,7 @@ class GcVisitedArenaPool final : public ArenaPool {
   // Set of allocated arenas. It's required to be able to find the arena
   // corresponding to a given address.
   // TODO: consider using HashSet, which is more memory efficient.
-  std::set<TrackedArena, LessByArenaAddr> allocated_arenas_ GUARDED_BY(lock_);
+  AllocatedArenaSet allocated_arenas_ GUARDED_BY(lock_);
   // Number of bytes allocated so far.
   size_t bytes_allocated_ GUARDED_BY(lock_);
   const char* name_;
@@ -230,6 +268,55 @@ class GcVisitedArenaPool final : public ArenaPool {
   bool pre_zygote_fork_ GUARDED_BY(lock_);
 
   DISALLOW_COPY_AND_ASSIGN(GcVisitedArenaPool);
+};
+
+// Allocator for class-table and intern-table hash-sets. It enables updating the
+// roots concurrently page-by-page.
+template <class T, AllocatorTag kTag>
+class GcRootArenaAllocator : public TrackingAllocator<T, kTag> {
+ public:
+  using value_type = typename TrackingAllocator<T, kTag>::value_type;
+  using size_type = typename TrackingAllocator<T, kTag>::size_type;
+  using difference_type = typename TrackingAllocator<T, kTag>::difference_type;
+  using pointer = typename TrackingAllocator<T, kTag>::pointer;
+  using const_pointer = typename TrackingAllocator<T, kTag>::const_pointer;
+  using reference = typename TrackingAllocator<T, kTag>::reference;
+  using const_reference = typename TrackingAllocator<T, kTag>::const_reference;
+
+  // Used internally by STL data structures.
+  template <class U>
+  explicit GcRootArenaAllocator(
+      [[maybe_unused]] const GcRootArenaAllocator<U, kTag>& alloc) noexcept {}
+  // Used internally by STL data structures.
+  GcRootArenaAllocator() noexcept : TrackingAllocator<T, kTag>() {}
+
+  // Enables an allocator for objects of one type to allocate storage for objects of another type.
+  // Used internally by STL data structures.
+  template <class U>
+  struct rebind {
+    using other = GcRootArenaAllocator<U, kTag>;
+  };
+
+  pointer allocate(size_type n, [[maybe_unused]] const_pointer hint = 0) {
+    if (!gUseUserfaultfd) {
+      return TrackingAllocator<T, kTag>::allocate(n);
+    }
+    size_t size = n * sizeof(T);
+    GcVisitedArenaPool* pool =
+        down_cast<GcVisitedArenaPool*>(Runtime::Current()->GetLinearAllocArenaPool());
+    return reinterpret_cast<pointer>(pool->AllocSingleObjArena(size));
+  }
+
+  template <typename PT>
+  void deallocate(PT p, size_type n) {
+    if (!gUseUserfaultfd) {
+      TrackingAllocator<T, kTag>::deallocate(p, n);
+      return;
+    }
+    GcVisitedArenaPool* pool =
+        down_cast<GcVisitedArenaPool*>(Runtime::Current()->GetLinearAllocArenaPool());
+    pool->FreeSingleObjArena(reinterpret_cast<uint8_t*>(p));
+  }
 };
 
 }  // namespace art
