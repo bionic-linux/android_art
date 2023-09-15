@@ -162,6 +162,7 @@ using VIXLUInt32Literal = vixl::aarch32::Literal<uint32_t>;
   /* 1.8 */                                                                \
   V(MathFmaDouble)                                                         \
   V(MathFmaFloat)                                                          \
+  V(UnsafeGetByte)                                                         \
   V(UnsafeGetAndAddInt)                                                    \
   V(UnsafeGetAndAddLong)                                                   \
   V(UnsafeGetAndSetInt)                                                    \
@@ -171,6 +172,7 @@ using VIXLUInt32Literal = vixl::aarch32::Literal<uint32_t>;
   V(MethodHandleInvoke)                                                    \
   /* OpenJDK 11 */                                                         \
   V(JdkUnsafeCASLong) /* High register pressure */                         \
+  V(JdkUnsafeGetByte)                                                      \
   V(JdkUnsafeGetAndAddInt)                                                 \
   V(JdkUnsafeGetAndAddLong)                                                \
   V(JdkUnsafeGetAndSetInt)                                                 \

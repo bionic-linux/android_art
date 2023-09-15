@@ -221,6 +221,7 @@
   V(UnsafeGetObjectVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getObjectVolatile", "(Ljava/lang/Object;J)Ljava/lang/Object;") \
   V(UnsafeGetLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getLong", "(Ljava/lang/Object;J)J") \
   V(UnsafeGetLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getLongVolatile", "(Ljava/lang/Object;J)J") \
+  V(UnsafeGetByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getByte", "(Ljava/lang/Object;J)B") \
   V(UnsafePut, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putInt", "(Ljava/lang/Object;JI)V") \
   V(UnsafePutOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putOrderedInt", "(Ljava/lang/Object;JI)V") \
   V(UnsafePutVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putIntVolatile", "(Ljava/lang/Object;JI)V") \
@@ -253,6 +254,7 @@
   V(JdkUnsafeGetLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLong", "(Ljava/lang/Object;J)J") \
   V(JdkUnsafeGetLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLongVolatile", "(Ljava/lang/Object;J)J") \
   V(JdkUnsafeGetLongAcquire, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLongAcquire", "(Ljava/lang/Object;J)J") \
+  V(JdkUnsafeGetByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getByte", "(Ljava/lang/Object;J)B") \
   V(JdkUnsafePut, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putInt", "(Ljava/lang/Object;JI)V") \
   V(JdkUnsafePutOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putOrderedInt", "(Ljava/lang/Object;JI)V") \
   V(JdkUnsafePutRelease, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putIntRelease", "(Ljava/lang/Object;JI)V") \

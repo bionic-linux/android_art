@@ -89,6 +89,7 @@ static constexpr size_t kRuntimeParameterFpuRegistersLength =
   V(StringBuilderLength)                    \
   V(StringBuilderToString)                  \
   /* 1.8 */                                 \
+  V(UnsafeGetByte)                          \
   V(UnsafeGetAndAddInt)                     \
   V(UnsafeGetAndAddLong)                    \
   V(UnsafeGetAndSetInt)                     \
@@ -97,6 +98,7 @@ static constexpr size_t kRuntimeParameterFpuRegistersLength =
   V(MethodHandleInvokeExact)                \
   V(MethodHandleInvoke)                     \
   /* OpenJDK 11 */                          \
+  V(JdkUnsafeGetByte)                       \
   V(JdkUnsafeGetAndAddInt)                  \
   V(JdkUnsafeGetAndAddLong)                 \
   V(JdkUnsafeGetAndSetInt)                  \
