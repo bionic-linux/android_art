@@ -99,6 +99,7 @@ static constexpr size_t kRuntimeParameterFpuRegistersLength =
   V(UnsafeGetObjectVolatile)                    \
   V(UnsafeGetLong)                              \
   V(UnsafeGetLongVolatile)                      \
+  V(UnsafeGetByte)                              \
   V(UnsafePut)                                  \
   V(UnsafePutOrdered)                           \
   V(UnsafePutVolatile)                          \
@@ -128,6 +129,7 @@ static constexpr size_t kRuntimeParameterFpuRegistersLength =
   V(JdkUnsafeGetLong)                           \
   V(JdkUnsafeGetLongVolatile)                   \
   V(JdkUnsafeGetLongAcquire)                    \
+  V(JdkUnsafeGetByte)                           \
   V(JdkUnsafePut)                               \
   V(JdkUnsafePutOrdered)                        \
   V(JdkUnsafePutRelease)                        \
