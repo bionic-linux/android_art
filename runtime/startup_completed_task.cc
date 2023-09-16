@@ -56,8 +56,7 @@ void StartupCompletedTask::Run(Thread* self) {
       runtime->GetAppInfo()->GetPrimaryApkOptimizationStatus(&compiler_filter, &compilation_reason);
       CompilerFilter::Filter filter;
       if (CompilerFilter::ParseCompilerFilter(compiler_filter.c_str(), &filter) &&
-          !CompilerFilter::IsAotCompilationEnabled(filter) &&
-          !runtime->GetHeap()->HasAppImageSpace()) {
+          !CompilerFilter::IsAotCompilationEnabled(filter)) {
         std::string error_msg;
         if (!RuntimeImage::WriteImageToDisk(&error_msg)) {
           LOG(DEBUG) << "Could not write temporary image to disk " << error_msg;
