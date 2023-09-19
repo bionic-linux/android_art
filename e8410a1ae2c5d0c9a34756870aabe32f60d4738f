@@ -16,6 +16,161 @@
       "message": "Hi Lokesh,\n\nObserved this change(patch set 5) causing boottime regression\n\nhttps://screenshot.googleplex.com/4VejBCfdxrRkLHu\n\nhttps://crystalball-presubmit.corp.google.com/dashboard/I06200010198899646?change_number\u003d2750892\u0026host\u003dandroid-review.googlesource.com\u0026patchset\u003d5\n\nPlease fix this regression before merging",
       "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2cb8af_cbaa94cc",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640ca3b8_b80c7e20",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "nit: add comment why pre_zygote_fork is special.",
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d330e60_58b3349e",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "has_array?",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63ab090_5a15f8a6",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "Why not returning the object?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c015b4_92b3dbfb",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3434,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "Add a comment what first_obj being null means here?",
+      "range": {
+        "startLine": 3434,
+        "startChar": 1,
+        "endLine": 3434,
+        "endChar": 41
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed8454a1_1f2d3f8d",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "Add some comments here.",
+      "range": {
+        "startLine": 795,
+        "startChar": 0,
+        "endLine": 797,
+        "endChar": 3
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6af256_c7c3c5cb",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2539,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-19T16:14:22Z",
+      "side": 1,
+      "message": "Add some comments here.",
+      "range": {
+        "startLine": 2534,
+        "startChar": 0,
+        "endLine": 2539,
+        "endChar": 3
+      },
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
