@@ -1051,10 +1051,20 @@ void InstructionSimplifierVisitor::VisitSelect(HSelect* select) {
     DataType::Type t_type = true_value->GetType();
     DataType::Type f_type = false_value->GetType();
     // Here we have a <cmp> b ? true_value : false_value.
-    // Test if both values are compatible integral types (resulting MIN/MAX/ABS
-    // type will be int or long, like the condition). Replacements are general,
-    // but assume conditions prefer constants on the right.
-    if (DataType::IsIntegralType(t_type) && DataType::Kind(t_type) == DataType::Kind(f_type)) {
+    if (cmp == kCondEQ || cmp == kCondNE) {
+      // Turns
+      // * Select[a, b, EQ(a,b)] / Select[a, b, EQ(b,a)] into a
+      // * Select[a, b, NE(a,b)] / Select[a, b, NE(b,a)] into b
+      // Note that the order in EQ/NE is irrelevant.
+      if ((a == true_value && b == false_value) || (a == false_value && b == true_value)) {
+        replace_with = cmp == kCondEQ ? false_value : true_value;
+      }
+    } else if (DataType::IsIntegralType(t_type) &&
+               DataType::Kind(t_type) == DataType::Kind(f_type)) {
+      // Test if both values are compatible integral types (resulting MIN/MAX/ABS
+      // type will be int or long, like the condition). Replacements are general,
+      // but assume conditions prefer constants on the right.
+
       // Allow a <  100 ? max(a, -100) : ..
       //    or a > -100 ? min(a,  100) : ..
       // to use min/max instead of a to detect nested min/max expressions.

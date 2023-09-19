@@ -1,0 +1,3 @@
+Tests that we turn:
+  * Select[a, b, EQ(a,b)] / Select[a, b, EQ(b,a)] into a
+  * Select[a, b, NE(a,b)] / Select[a, b, NE(b,a)] into b
