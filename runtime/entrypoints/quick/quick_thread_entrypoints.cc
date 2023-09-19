@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <iomanip>
+
 #include "callee_save_frame.h"
 #include "jit/jit.h"
 #include "runtime.h"
@@ -50,6 +52,33 @@ extern "C" void artTestSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::muta
 }
 
 extern "C" void artImplicitSuspendFromCode(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (kRuntimeISA == InstructionSet::kArm64) {
+    // Compare x0-x7 saved to `Thread` in the `SuspensionHandler` with x0-x7 spilled to the
+    // `kSaveEverything` transition frame to check for register corruption. Bug: 291839153
+    ArrayRef<uint64_t> saved_regs = self->GetSavedRegsArray();
+    ArtMethod** sp = self->GetManagedStack()->GetTopQuickFrame();
+    static constexpr size_t kCoreSpills =
+        arm64::Arm64CalleeSaveFrame::GetCoreSpills(CalleeSaveType::kSaveEverything);
+    static constexpr size_t kFrameSize =
+        arm64::Arm64CalleeSaveFrame::GetFrameSize(CalleeSaveType::kSaveEverything);
+    static constexpr size_t kX0Offset = kFrameSize - POPCOUNT(kCoreSpills) * sizeof(uint64_t);
+    uint64_t* saved_core_registers_in_frame =
+        reinterpret_cast<uint64_t*>(reinterpret_cast<uintptr_t>(sp) + (kX0Offset));
+    uint64_t diff = 0;
+    for (size_t i = 0; i != saved_regs.size(); ++i) {
+      diff |= saved_regs[i] ^ saved_core_registers_in_frame[i];
+    }
+    if (UNLIKELY(diff != 0u)) {
+      std::ostringstream oss;
+      oss << std::hex << std::setfill('0');
+      for (size_t i = 0; i != saved_regs.size(); ++i) {
+        oss << " x" << i << "=0x" << std::setw(16) << saved_regs[i]
+            << "~0x" << std::setw(16) << saved_core_registers_in_frame[i];
+      }
+      LOG(FATAL) << "Detected bug 291839153:" << oss.str();
+    }
+  }
+
   // Called when there is a pending checkpoint or suspend request.
   ScopedQuickEntrypointChecks sqec(self);
   self->CheckSuspend(/*implicit=*/ true);

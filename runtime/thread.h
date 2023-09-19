@@ -531,6 +531,10 @@ class Thread {
     return &tls64_.stats;
   }
 
+  ArrayRef<uint64_t> GetSavedRegsArray() {
+    return ArrayRef<uint64_t>(tls64_.saved_regs);
+  }
+
   bool IsStillStarting() const;
 
   bool IsExceptionPending() const {
@@ -1779,6 +1783,8 @@ class Thread {
 
   static constexpr uint32_t kMakeVisiblyInitializedCounterTriggerCount = 128;
 
+  static constexpr size_t kNumSavedRegs = 8u;
+
   /***********************************************************************************************/
   // Thread local storage. Fields are grouped by size to enable 32 <-> 64 searching to account for
   // pointer size differences. To encourage shorter encoding, more frequently used values appear
@@ -1922,12 +1928,15 @@ class Thread {
 
   struct PACKED(8) tls_64bit_sized_values {
     tls_64bit_sized_values() : trace_clock_base(0) {
+      std::fill_n(saved_regs, std::size(saved_regs), UINT64_C(0));
     }
 
     // The clock base used for tracing.
     uint64_t trace_clock_base;
 
     RuntimeStats stats;
+
+    uint64_t saved_regs[kNumSavedRegs];
   } tls64_;
 
   struct PACKED(sizeof(void*)) tls_ptr_sized_values {

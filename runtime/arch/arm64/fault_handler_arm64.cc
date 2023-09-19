@@ -116,6 +116,14 @@ bool SuspensionHandler::Action([[maybe_unused]] int sig,
   // This is a suspend check.
   VLOG(signals) << "suspend check match";
 
+  // For debugging purposes, copy x0-x7 to `Thread`.
+  Thread* self = reinterpret_cast<Thread*>(mc->regs[19]);
+  ArrayRef<uint64_t> saved_regs = self->GetSavedRegsArray();
+  DCHECK_EQ(saved_regs.size(), 8u);
+  for (size_t i = 0; i != saved_regs.size(); ++i) {
+    saved_regs[i] = mc->regs[i];
+  }
+
   // Set LR so that after the suspend check it will resume after the
   // `ldr x21, [x21,#0]` instruction that triggered the suspend check.
   mc->regs[30] = mc->pc + 4;
