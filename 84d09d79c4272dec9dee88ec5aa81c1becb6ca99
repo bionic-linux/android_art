@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad776cf7_772fce87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-09-20T17:36:42Z",
+      "side": 1,
+      "message": "I tested with `OVERRIDE_ENABLE_UFFD_GC\u003dfalse` on main to simulate UDC, where the build-time flag is turned off, but sure, I can test on UDC too. Done.",
+      "parentUuid": "7709b1c0_2c0c7a41",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "84d09d79c4272dec9dee88ec5aa81c1becb6ca99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44b8e888_05a7f2f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-09-20T16:03:17Z",
       "side": 1,
       "message": "I don\u0027t see the benefit of printing this. Maybe change the message to print all the three flags involved in the decision?",
+      "range": {
+        "startLine": 1097,
+        "startChar": 32,
+        "endLine": 1097,
+        "endChar": 52
+      },
+      "revId": "84d09d79c4272dec9dee88ec5aa81c1becb6ca99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6d70d38_b544c149",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-09-20T17:36:42Z",
+      "side": 1,
+      "message": "Good idea!",
+      "parentUuid": "44b8e888_05a7f2f7",
       "range": {
         "startLine": 1097,
         "startChar": 32,
