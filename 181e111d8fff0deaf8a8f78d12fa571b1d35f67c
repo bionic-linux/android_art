@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b5995d_0dd46566",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-20T15:29:48Z",
+      "side": 1,
+      "message": "I find this confusing. Doesn\u0027t `first_obj_array_` means the pages contains arrays of GC roots?",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "181e111d8fff0deaf8a8f78d12fa571b1d35f67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
