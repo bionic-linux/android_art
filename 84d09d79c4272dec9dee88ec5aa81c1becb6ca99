@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7709b1c0_2c0c7a41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-09-20T15:29:53Z",
+      "side": 1,
+      "message": "I\u0027d mention that this test is done on an Android UDC device.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "84d09d79c4272dec9dee88ec5aa81c1becb6ca99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
