@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589f7683_b6ca1b3a",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-20T19:50:36Z",
+      "side": 1,
+      "message": "Can we avoid this and just use `android_get_device_api_level` directly? There\u0027s already some uses in ART of the method directly.",
+      "range": {
+        "startLine": 439,
+        "startChar": 17,
+        "endLine": 439,
+        "endChar": 39
+      },
+      "revId": "69dc602eff85245b22b0bb5262713d12a754864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
