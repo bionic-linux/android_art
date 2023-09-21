@@ -46,6 +46,30 @@
       },
       "revId": "69dc602eff85245b22b0bb5262713d12a754864e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a2ca5c4_578feb61",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-09-21T11:26:02Z",
+      "side": 1,
+      "message": "The fewer the dependencies the better - it doesn\u0027t matter on the generated code, but now we\u0027ve added an extra dependency which we don\u0027t really need.",
+      "parentUuid": "effc5965_4dafae87",
+      "range": {
+        "startLine": 439,
+        "startChar": 17,
+        "endLine": 439,
+        "endChar": 39
+      },
+      "revId": "69dc602eff85245b22b0bb5262713d12a754864e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
