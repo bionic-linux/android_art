@@ -22,6 +22,30 @@
       },
       "revId": "181e111d8fff0deaf8a8f78d12fa571b1d35f67c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579e499e_bc7b9e88",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-09-21T14:29:09Z",
+      "side": 1,
+      "message": "This array is of objects that overlap with the first word of each page in the arena. Imagine an ArtMethods array starting in the middle of a page of the arena and going across multiple pages. In this case, we need to know that every page, has their first-obj starting here. This enables us to update these pages independently in userfaults.\n\nIn case of class/intern table that\u0027s not required because the object is an array of gc-roots. So for any page of the arena, we can update it without knowing where the first-obj is.",
+      "parentUuid": "56b5995d_0dd46566",
+      "range": {
+        "startLine": 91,
+        "startChar": 10,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "181e111d8fff0deaf8a8f78d12fa571b1d35f67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
