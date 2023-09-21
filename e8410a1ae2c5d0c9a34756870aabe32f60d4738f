@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9699c61f_52213447",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-09-21T16:24:24Z",
+      "side": 1,
+      "message": "The latest attempt seems to fix the regression. PTAL and confirm.",
+      "parentUuid": "e631fb3a_0e42f16f",
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b2cb8af_cbaa94cc",
         "filename": "runtime/base/gc_visited_arena_pool.cc",
         "patchSetId": 5
