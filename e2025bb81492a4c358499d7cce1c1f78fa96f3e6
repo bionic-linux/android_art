@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe7cbe6_244628d0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6354,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-09-22T07:59:04Z",
+      "side": 1,
+      "message": "Did a similar thing as lines 6309-6321 above.",
+      "revId": "e2025bb81492a4c358499d7cce1c1f78fa96f3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
