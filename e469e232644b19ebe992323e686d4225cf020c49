@@ -22,6 +22,30 @@
       },
       "revId": "e469e232644b19ebe992323e686d4225cf020c49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c927d24_8afb82c1",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-09-22T23:16:10Z",
+      "side": 0,
+      "message": "The purpose is served. I\u0027ll remove it in another CL.",
+      "parentUuid": "dfb373f1_ebe9460c",
+      "range": {
+        "startLine": 306,
+        "startChar": 10,
+        "endLine": 307,
+        "endChar": 46
+      },
+      "revId": "e469e232644b19ebe992323e686d4225cf020c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
