@@ -16,6 +16,52 @@
       "message": "Nicolas,",
       "revId": "27529281537fccda69c6ade859828691916ec83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0f855f_090d5eee",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-09-22T21:06:23Z",
+      "side": 1,
+      "message": "and intern-table",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 61
+      },
+      "revId": "27529281537fccda69c6ade859828691916ec83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0cf22d8_2399e5d9",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-09-22T21:06:23Z",
+      "side": 1,
+      "message": "What\u0027s \"it\"? I don\u0027t understand the comment.",
+      "range": {
+        "startLine": 183,
+        "startChar": 38,
+        "endLine": 183,
+        "endChar": 40
+      },
+      "revId": "27529281537fccda69c6ade859828691916ec83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
