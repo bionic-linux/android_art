@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c053baeb_820e84cf",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1682,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T12:31:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd1f9e0_e8209414",
+      "revId": "598b7dcca526153c9c929fae0891542532e0e0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f24495_7c887580",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-09-22T08:54:13Z",
       "side": 1,
       "message": "Maybe add a TODO for cleaning up these `@Deprecated(since\u003d\"12\", forRemoval\u003dtrue)` methods.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "598b7dcca526153c9c929fae0891542532e0e0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4121016_c26717de",
+        "filename": "runtime/interpreter/unstarted_runtime_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T12:31:31Z",
+      "side": 1,
+      "message": "Done. Will remove them soon.",
+      "parentUuid": "d8f24495_7c887580",
       "range": {
         "startLine": 83,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c594d6a1_3c730407",
+        "filename": "runtime/mirror/method_type.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T12:31:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c024ddb1_6242d0f7",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "598b7dcca526153c9c929fae0891542532e0e0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db2f6705_5213a8e2",
@@ -77,6 +143,24 @@
       "writtenOn": "2023-09-22T08:54:13Z",
       "side": 1,
       "message": "I prefer `jasmin/*.j` over `smali/*.smali`, assuming there is a Java bytecode corresponding to the dex `const-method-type`.\n\nIf you keep smali, you must add the test to `knownfailures.json` for RI. If you rewrite in jasmin, you need to check if the RI has the same behavior - if not, update `knownfailures.json` anyway.",
+      "revId": "598b7dcca526153c9c929fae0891542532e0e0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31910992_c2b52bef",
+        "filename": "test/2265-const-method-type-cached/smali/ReturnMethodType.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T12:31:31Z",
+      "side": 1,
+      "message": "I couldn\u0027t make jasmin work with `ldc` and `MethodType`-s. Used approach from `979-const-method-handle`.",
+      "parentUuid": "db2f6705_5213a8e2",
       "revId": "598b7dcca526153c9c929fae0891542532e0e0c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
