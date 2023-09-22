@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558b6e6e_67abbe3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261281
+      },
+      "writtenOn": "2023-09-22T06:08:23Z",
+      "side": 1,
+      "message": "On latest patch set 8 we see no regression is reported and we are good to proceed.\n\nhttps://screenshot.googleplex.com/8GVBkSB6ha5FWxc",
+      "parentUuid": "9699c61f_52213447",
+      "revId": "e8410a1ae2c5d0c9a34756870aabe32f60d4738f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b2cb8af_cbaa94cc",
