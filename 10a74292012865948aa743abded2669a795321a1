@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf462951_30aa6b89",
+        "filename": "test/2265-const-method-type-cached/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T13:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c80c01_00c06eb4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "10a74292012865948aa743abded2669a795321a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5984980_8b9030d5",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-09-22T13:02:56Z",
       "side": 1,
       "message": "Can we break this very long line?",
+      "revId": "10a74292012865948aa743abded2669a795321a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa3b2a8a_e95cafe8",
+        "filename": "test/2265-const-method-type-cached/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2023-09-22T13:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5984980_8b9030d5",
       "revId": "10a74292012865948aa743abded2669a795321a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
