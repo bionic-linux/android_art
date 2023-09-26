@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fc46d4_07fa0471",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-26T08:11:43Z",
+      "side": 1,
+      "message": "We cannot do that for float/double because we could get the wrong result for zeros or NaNs.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 6,
+        "endLine": 1057,
+        "endChar": 63
+      },
+      "revId": "c7134c2e67ba31bedca5e7cdbdcd04aae4a47ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ace6e7_eb79f5a0",
+        "filename": "test/2266-checker-select-opt/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-26T08:11:43Z",
+      "side": 1,
+      "message": "Make this a new class under `458-checker-instruct-simplification`?",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "c7134c2e67ba31bedca5e7cdbdcd04aae4a47ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
