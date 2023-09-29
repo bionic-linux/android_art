@@ -22,6 +22,30 @@
       },
       "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b94fc5_b5f67ad0",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-09-29T14:58:21Z",
+      "side": 1,
+      "message": "How is this leaking memory? Wouldn\u0027t the arena take care of deleting the elements?\n\nIn the case of the APK in the bug, we are allocating hundreds of MB. Isn\u0027t the scoped version in the stack? This would be too big for that. I tried that first and I was getting crashes",
+      "parentUuid": "1bb2c8cb_a5933367",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
