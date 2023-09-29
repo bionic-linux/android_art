@@ -587,21 +587,38 @@ void GraphChecker::VisitInstruction(HInstruction* instruction) {
   }
 
   // Ensure 'instruction' has pointers to its inputs' use entries.
-  auto&& input_records = instruction->GetInputRecords();
-  for (size_t i = 0; i < input_records.size(); ++i) {
-    const HUserRecord<HInstruction*>& input_record = input_records[i];
-    HInstruction* input = input_record.GetInstruction();
-    if ((input_record.GetBeforeUseNode() == input->GetUses().end()) ||
-        (input_record.GetUseNode() == input->GetUses().end()) ||
-        !input->GetUses().ContainsNode(*input_record.GetUseNode()) ||
-        (input_record.GetUseNode()->GetIndex() != i)) {
-      AddError(StringPrintf("Instruction %s:%d has an invalid iterator before use entry "
-                            "at input %u (%s:%d).",
-                            instruction->DebugName(),
-                            instruction->GetId(),
-                            static_cast<unsigned>(i),
-                            input->DebugName(),
-                            input->GetId()));
+  {
+    auto&& input_records = instruction->GetInputRecords();
+    for (size_t i = 0; i < input_records.size(); ++i) {
+      const HUserRecord<HInstruction*>& input_record = input_records[i];
+      HInstruction* input = input_record.GetInstruction();
+
+      // Populate bookkeeping, if needed. See comment in graph_checker.h for uses_per_instruction_.
+      auto it = uses_per_instruction_.find(input->GetId());
+      if (it == uses_per_instruction_.end()) {
+        it = uses_per_instruction_
+                 .insert({input->GetId(),
+                          ScopedArenaSet<const art::HUseListNode<art::HInstruction*>*>(
+                              allocator_.Adapter(kArenaAllocGraphChecker))})
+                 .first;
+        for (auto&& use : input->GetUses()) {
+          it->second.insert(std::addressof(use));
+        }
+      }
+
+      if ((input_record.GetBeforeUseNode() == input->GetUses().end()) ||
+          (input_record.GetUseNode() == input->GetUses().end()) ||
+          (it->second.find(std::addressof(*input_record.GetUseNode())) == it->second.end()) ||
+          (input_record.GetUseNode()->GetIndex() != i)) {
+        AddError(
+            StringPrintf("Instruction %s:%d has an invalid iterator before use entry "
+                         "at input %u (%s:%d).",
+                         instruction->DebugName(),
+                         instruction->GetId(),
+                         static_cast<unsigned>(i),
+                         input->DebugName(),
+                         input->GetId()));
+      }
     }
   }
 

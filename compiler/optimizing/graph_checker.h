@@ -22,7 +22,7 @@
 #include "base/arena_bit_vector.h"
 #include "base/bit_vector-inl.h"
 #include "base/macros.h"
-#include "base/scoped_arena_allocator.h"
+#include "base/scoped_arena_containers.h"
 #include "nodes.h"
 
 namespace art HIDDEN {
@@ -40,6 +40,7 @@ class GraphChecker : public HGraphDelegateVisitor {
       dump_prefix_(dump_prefix),
       allocator_(graph->GetArenaStack()),
       seen_ids_(&allocator_, graph->GetCurrentInstructionId(), false, kArenaAllocGraphChecker),
+      uses_per_instruction_(allocator_.Adapter(kArenaAllocGraphChecker)),
       codegen_(codegen) {
     seen_ids_.ClearAllBits();
   }
@@ -128,6 +129,12 @@ class GraphChecker : public HGraphDelegateVisitor {
   const char* const dump_prefix_;
   ScopedArenaAllocator allocator_;
   ArenaBitVector seen_ids_;
+
+  // As part of VisitInstruction, we verify that the instruction's input_record is present in the
+  // corresponding input's GetUses. If an instruction is used in many places (e.g. 200K+ uses), the
+  // linear search through GetUses is too slow. We can use bookkeeping to search in a set, instead
+  // of a list.
+  ScopedArenaSafeMap<int, ScopedArenaSet<const art::HUseListNode<art::HInstruction *> *>> uses_per_instruction_;
 
   // Used to access target information.
   CodeGenerator* codegen_;
