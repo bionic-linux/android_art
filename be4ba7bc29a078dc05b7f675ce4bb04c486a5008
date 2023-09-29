@@ -46,6 +46,30 @@
       },
       "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3763f53_2c3f5adb",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-29T16:40:22Z",
+      "side": 1,
+      "message": "We\u0027re talking about using a lot of memory for each `GraphChecker` run. 200K uses means 200K nodes, each taking 40B on 64-bit system, or 8MB in total.\n\nWe\u0027re allocating that before and after each compilation phase (currently 28 phases plus architecture-specific phases, plus `builder (after)` and the final regalloc phases) and we return the memory to the arena pool only after finishing the compilation by which time this shall easily accumulate 8MB * 70 \u003d 560MB.\n\nI call this a leak because it can cause OOM well before the memory is returned to the system.\n\nWith ScopedArena* containers, we would release the 8MB when we destroy the `GraphChecker`.",
+      "parentUuid": "94b94fc5_b5f67ad0",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
