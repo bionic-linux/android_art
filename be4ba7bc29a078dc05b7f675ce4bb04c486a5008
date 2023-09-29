@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb2c8cb_a5933367",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-09-29T14:19:38Z",
+      "side": 1,
+      "message": "`ScopedSafeArenaMap\u003cint, ScopedArenaSet\u003c...\u003e\u003e`\n\nWith the non-Scoped version, you\u0027re leaking a lot of memory.",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
