@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd88a21_521ac3f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-02T09:17:55Z",
+      "side": 1,
+      "message": "Hans, Nicolas,\n\nSince PS8 where you gave a +2 to this CL, there have been changes made related to avoiding ABA problem with arena deallocation and then reallocation. PTAL.",
+      "revId": "33f2acc1a0aba079c404f9e4d3f783c594844755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
