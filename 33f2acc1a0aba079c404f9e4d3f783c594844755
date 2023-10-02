@@ -51,6 +51,24 @@
       "parentUuid": "e3cdd8b4_334b8721",
       "revId": "33f2acc1a0aba079c404f9e4d3f783c594844755",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb597f43_bffd12b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-02T09:29:56Z",
+      "side": 1,
+      "message": "I can do that but ABA problem isn\u0027t really a problem in pre class-table world because there arenas are not freed when compaction is happening. Arenas are freed when class-loaders are unloaded, which happens before compaction pause. But class/intern table might need to expand/shrink at anytime and that triggers allocating and deallocating single-object arenas on arena-pool.",
+      "parentUuid": "b11820f8_a66bc01a",
+      "revId": "33f2acc1a0aba079c404f9e4d3f783c594844755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
