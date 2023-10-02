@@ -16,6 +16,23 @@
       "message": "Hans, Nicolas,\n\nSince PS8 where you gave a +2 to this CL, there have been changes made related to avoiding ABA problem with arena deallocation and then reallocation. PTAL.",
       "revId": "33f2acc1a0aba079c404f9e4d3f783c594844755",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3cdd8b4_334b8721",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-10-02T09:24:13Z",
+      "side": 1,
+      "message": "Would it be worth splitting this CL into one CL for the rewrite of the GcVisitedArenaPool with the ABA fix, and one CL for the class table logic?",
+      "revId": "33f2acc1a0aba079c404f9e4d3f783c594844755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
