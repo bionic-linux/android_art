@@ -70,6 +70,30 @@
       },
       "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1559c80_d729ef64",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-03T16:39:52Z",
+      "side": 1,
+      "message": "I tried using the Scoped versions but I am getting crashes. Uploaded a patchset with the changes. Will try to look into it.\n\nJust for the sake of completeness, we only run the graph checker `after` a pass, but not `before`.",
+      "parentUuid": "e3763f53_2c3f5adb",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
