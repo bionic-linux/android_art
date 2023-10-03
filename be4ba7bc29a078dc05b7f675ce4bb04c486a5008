@@ -94,6 +94,30 @@
       },
       "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6af798a_f55e131d",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-10-03T17:33:28Z",
+      "side": 1,
+      "message": "There is a local `ScopedArenaAllocator allocator` in `GraphChecker::VisitBasicBlock()` which is intended to reduce the peak allocation. While that `allocator` is on the top of the stack, we cannot do allocations on the lower `GraphChecker::allocator_`. We could remove the local `allocator` and move the local variables `sorted_predecessors` and `sorted_successors` to member variables for memory reuse. (And it seems they are not needed at the same time, so maybe we could just reuse a single member variable.)\n\nThere is another local `ScopedArenaAllocator allocator` in `GraphChecker::VisitPhi()` but I guess that one does not interfere.\n\nWe need to respect the `ScopedArenaAllocator` nesting. We really do not want a \"use-after-free\" bug.\n\n(Oh, I was confusing the graph checker with the visualizer which we do run before a pass as well if enabled.)",
+      "parentUuid": "f1559c80_d729ef64",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
