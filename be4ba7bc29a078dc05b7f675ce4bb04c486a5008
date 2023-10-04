@@ -118,6 +118,30 @@
       },
       "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efe935d_1b58b4ae",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-04T08:49:51Z",
+      "side": 1,
+      "message": "Ah, I missed that. Thanks!\n\nWe can keep the `ScopedArenaAllocator` for `sorted_predecessors` and `sorted_successors` if we use C++ scopes with curly braces.\n\nChanging to using ScopedArena allocators reduces memory from ~400MB to less than 100MB so it\u0027s definitely an improvement!",
+      "parentUuid": "e6af798a_f55e131d",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "be4ba7bc29a078dc05b7f675ce4bb04c486a5008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
