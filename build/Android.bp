@@ -38,6 +38,7 @@ art_clang_tidy_errors = [
     "bugprone-unused-return-value",
     "bugprone-use-after-move",
     "bugprone-virtual-near-miss",
+    "misc-redundant-expression",
     "misc-unused-using-decls",
     "modernize-use-bool-literals",
     "modernize-use-nullptr",

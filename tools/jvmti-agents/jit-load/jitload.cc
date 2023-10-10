@@ -29,10 +29,9 @@ namespace jitload {
 // Special env version that allows JVMTI-like access on userdebug builds.
 static constexpr jint kArtTiVersion = JVMTI_VERSION_1_2 | 0x40000000;
 
-#define CHECK_CALL_SUCCESS(c) \
-  do { \
-    auto vc = (c); \
-    CHECK(vc == JNI_OK || vc == JVMTI_ERROR_NONE) << "call " << #c  << " did not succeed\n"; \
+#define CHECK_CALL_SUCCESS(c)                                                                 \
+  do {                                                                                        \
+    CHECK((c) == JNI_OK || (c) == JVMTI_ERROR_NONE) << "call " << #c << " did not succeed\n"; \
   } while (false)
 
 static jthread GetJitThread() {

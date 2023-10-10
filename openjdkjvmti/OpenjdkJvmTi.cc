@@ -1384,11 +1384,14 @@ class JvmtiFunctions {
 };
 
 static bool IsJvmtiVersion(jint version) {
+  // NOLINTBEGIN(misc-redundant-expression)
+  // JVMTI_VERSION_1 and JVMTI_VERSION_1_0 have the same value, but are used in different checks
   return version ==  JVMTI_VERSION_1 ||
          version == JVMTI_VERSION_1_0 ||
          version == JVMTI_VERSION_1_1 ||
          version == JVMTI_VERSION_1_2 ||
          version == JVMTI_VERSION;
+  // NOLINTEND(misc-redundant-expression)
 }
 
 extern const jvmtiInterface_1 gJvmtiInterface;
