@@ -109,7 +109,7 @@ void CheckNterpAsmConstants() {
   const int width = kNterpHandlerSize;
   ptrdiff_t interp_size = reinterpret_cast<uintptr_t>(artNterpAsmInstructionEnd) -
                           reinterpret_cast<uintptr_t>(artNterpAsmInstructionStart);
-  if ((interp_size == 0) || (interp_size != (art::kNumPackedOpcodes * width))) {
+  if ((interp_size != (art::kNumPackedOpcodes * width))) {
     LOG(FATAL) << "ERROR: unexpected asm interp size " << interp_size
                << "(did an instruction handler exceed " << width << " bytes?)";
   }

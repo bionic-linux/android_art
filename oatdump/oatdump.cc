@@ -965,7 +965,7 @@ class OatDumper {
     size_t fsize = dex_file == nullptr ? oat_dex_file.FileSize() : dex_file->Size();
 
     // Some quick checks just in case
-    if (fsize == 0 || fsize < sizeof(DexFile::Header)) {
+    if (fsize < sizeof(DexFile::Header)) {
       os << "Invalid dex file\n";
       return false;
     }

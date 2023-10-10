@@ -6679,6 +6679,7 @@ void CodeGeneratorARM64::GenerateGcRootFieldLoad(
       if (fixup_label != nullptr) {
         __ bind(fixup_label);
       }
+      // NOLINTNEXTLINE - comparison needed for static_assert
       static_assert(BAKER_MARK_INTROSPECTION_GC_ROOT_LDR_OFFSET == -8,
                     "GC root LDR must be 2 instructions (8B) before the return address label.");
       __ ldr(root_reg, MemOperand(obj.X(), offset));
@@ -6722,6 +6723,7 @@ void CodeGeneratorARM64::GenerateIntrinsicCasMoveWithBakerReadBarrier(
   ExactAssemblyScope guard(GetVIXLAssembler(), 3 * vixl::aarch64::kInstructionSize);
   vixl::aarch64::Label return_address;
   __ adr(lr, &return_address);
+  // NOLINTNEXTLINE - comparison needed for static_assert
   static_assert(BAKER_MARK_INTROSPECTION_GC_ROOT_LDR_OFFSET == -8,
                 "GC root LDR must be 2 instructions (8B) before the return address label.");
   __ mov(marked_old_value, old_value);
@@ -7094,6 +7096,7 @@ static void EmitGrayCheckAndFastPath(arm64::Arm64Assembler& assembler,
   static_assert(ReadBarrier::GrayState() == 1, "Expecting gray to have value 1");
   __ Tbnz(ip0.W(), LockWord::kReadBarrierStateShift, slow_path);
   static_assert(
+      // NOLINTNEXTLINE - comparison needed for static_assert
       BAKER_MARK_INTROSPECTION_ARRAY_LDR_OFFSET == BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET,
       "Field and array LDR offsets must be the same to reuse the same code.");
   // To throw NPE, we return to the fast path; the artificial dependence below does not matter.
