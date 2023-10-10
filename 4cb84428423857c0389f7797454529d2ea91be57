@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef500b1_dce03b0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-10T16:01:55Z",
+      "side": 1,
+      "message": "It\u0027d be nice to have cherry-pick links to the internal CLs here, because that\u0027s where all the discussions are. But nvm, it\u0027d be too tedious to fix.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 52
+      },
+      "revId": "4cb84428423857c0389f7797454529d2ea91be57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
