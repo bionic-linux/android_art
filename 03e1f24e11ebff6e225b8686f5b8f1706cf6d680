@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66691482_85f0c23b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-11T17:20:53Z",
+      "side": 1,
+      "message": "One could say that any expression that is evaluable at compile time is \"redundant\", but it\u0027s a given that that\u0027s the case in a `static_assert`. I suppose it wouldn\u0027t warn if the macro was a constexpr identifier instead so it didn\u0027t look like a literal to the compiler, but cpp macro constants are after all very common, so I think it\u0027s a bit disappointing that it doesn\u0027t let it pass in this context.\n\nI\u0027m not sure this warning is a net win. There are less false positives from it than I thought it\u0027d be, but are the true positives valuable? At runtime they\u0027d be optimised away by any half decent compiler, so the question is if they bring out unintentional cases that could point at mistakes. The only two cases in this CL are the zero size comparisons in oatdump.cc and nterp.cc, and while they do seem a bit unnecessary they both look benign to me, possibly even intentional to make things extra clear.\n\nI suggest getting input from people in performance team if they see value in this or not.",
+      "parentUuid": "70d176a1_faa336f3",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ah you\u0027re right, I hadn\u0027t considered that, and it\u0027s probably the reason why the original code introduced the redundant `auto vc \u003d (c);` line - would it be better to revert this change and silence the warning, what do you think?",
       "parentUuid": "851ad5f3_fdb5cdc3",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f0473f_96c7eea9",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-11T17:20:53Z",
+      "side": 1,
+      "message": "Definitely. Making sure expressions passed to macros are evaluated only once is standard hygiene.\n\nHow come this change makes a difference? What\u0027s `c` in this case?\n\nAnd do NOLINT directives work inside macros?",
+      "parentUuid": "0dfee7c8_2c19345a",
       "range": {
         "startLine": 34,
         "startChar": 10,
