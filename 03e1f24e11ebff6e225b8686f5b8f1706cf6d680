@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70d176a1_faa336f3",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-10-11T16:26:26Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a way to switch off the warning for static asserts; I think the warning is pointing out that, after the macro substitution, the assertion is basically equivalent to `-8 \u003d\u003d -8` which is redundant - the other option would be to remove the static_assert entirely, but personally I\u0027d be more in favour of keeping it and silencing the warning.",
+      "parentUuid": "bf328946_e6af913c",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-11T15:53:41Z",
       "side": 1,
       "message": "Doesn\u0027t this create repeated evaluation?",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfee7c8_2c19345a",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-10-11T16:26:26Z",
+      "side": 1,
+      "message": "Ah you\u0027re right, I hadn\u0027t considered that, and it\u0027s probably the reason why the original code introduced the redundant `auto vc \u003d (c);` line - would it be better to revert this change and silence the warning, what do you think?",
+      "parentUuid": "851ad5f3_fdb5cdc3",
       "range": {
         "startLine": 34,
         "startChar": 10,
