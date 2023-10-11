@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf328946_e6af913c",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-11T15:53:41Z",
+      "side": 1,
+      "message": "There\u0027s no way to turn off this warning for static asserts? I\u0027m inclined to think these cases are false positives.",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851ad5f3_fdb5cdc3",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-11T15:53:41Z",
+      "side": 1,
+      "message": "Doesn\u0027t this create repeated evaluation?",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
