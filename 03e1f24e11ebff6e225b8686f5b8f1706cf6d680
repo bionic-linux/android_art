@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdf03dc5_dd69447a",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-13T10:45:59Z",
+      "side": 1,
+      "message": "That\u0027s my opinion, but I can\u0027t speak for everyone that\u0027s affected (in particular the performance team folks). Maybe ask that question in the ART Team chat, mention this CL, and see if anyone takes an interest?",
+      "parentUuid": "18c9ddc9_58197f65",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "I have found a way to make clang-tidy ignore the warning through `NOLINTBEGIN` and `NOLINTEND`, but it might have been a Phyrric victory for the reason stated in the comment above.",
       "parentUuid": "73f0473f_96c7eea9",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf40512_738b8791",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-13T10:45:59Z",
+      "side": 1,
+      "message": "Possibly, but I got curious. Does it work with those directives inside the macro definition here, or do you have to put them where the macro is used?\n\nBtw, regarding the macro hygiene, I think a lint warning for exactly this sort of double expansion would be very useful, but the linter needs to be aware of the preprocessor step then, which I suppose it isn\u0027t?",
+      "parentUuid": "02c268b1_c3a6bb72",
       "range": {
         "startLine": 34,
         "startChar": 10,
