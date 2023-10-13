@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ccfac50_431cbd0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Just some nits ...",
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea201ab_bfbea676",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Maybe just \"zygote_arena\"? It\u0027s pre-zygote-fork, not pre-zygote.",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 23
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a441cb_c09fe6fe",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Is this really better than leaking it? If we reuse the space, I guess we break even. If we don\u0027t, we\u0027ve probably just dirtied the zygote page? Maybe just add a pointer to it to a \"leaked arenas\" array, so a leak detector sees it as still in use?",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "195839cb_62a2129b",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Merge into else clause above.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5386ef_314f2eac",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Please state alignment assumptions in a comment. Possibly also DCHECK alignment assumptions where an error wouldn\u0027t fault anyway.",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1464d773_44c4889f",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Why do we need the division?",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5775f1_cf9d2ea0",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "I found the two operator() overloads with similar signatures a bit confusing, and might consider renaming at least one. But I don\u0027t feel strongly about it.",
+      "range": {
+        "startLine": 2658,
+        "startChar": 7,
+        "endLine": 2658,
+        "endChar": 17
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c963e44e_ad73f4f7",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2794,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Is this worth the code duplication? Presumably if you did the test inside code, you could avoid half of this?\n\nMaybe this is a little faster, but I\u0027m not 100% sure.",
+      "range": {
+        "startLine": 2789,
+        "startChar": 6,
+        "endLine": 2794,
+        "endChar": 77
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689b9300_e9a1684c",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2906,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "grammar?",
+      "range": {
+        "startLine": 2906,
+        "startChar": 28,
+        "endLine": 2906,
+        "endChar": 40
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc65ff77_08839960",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2911,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "Arena allocations require the mutator lock, right? So this does seem a bit redundant.\n\nDoes it make sense to acquire the lock with ExclusiveTryLock(), and crash if that fails? Presumably another thread wanting to access thee arena would need to acquire the shared mutator lock first, so any contention here would be a bug?",
+      "range": {
+        "startLine": 2910,
+        "startChar": 4,
+        "endLine": 2911,
+        "endChar": 28
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913cf48d_82dae275",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-13T21:18:02Z",
+      "side": 1,
+      "message": "IIRC, Nicolas was advocating against CHECK arguments with important side-effects, i.e. for splitting this into 2 statements. I also prefer that style, though I know we used this style a lot in the past.",
+      "range": {
+        "startLine": 2952,
+        "startChar": 14,
+        "endLine": 2952,
+        "endChar": 77
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
