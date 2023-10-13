@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c9ddc9_58197f65",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-10-13T09:10:02Z",
+      "side": 1,
+      "message": "You make a good point: going through the changes again I\u0027ve realised there are way more instances in which I\u0027m silencing the warning compared to the ones where the warning has pointed out some potential misbehaviours - so I\u0027m starting to think it might be better to abandon this change entirely and just add \"misc-redundnant-expression\" to the `art_clang_tidy_disabled` list in `build/Android.bp`, what do you think?",
+      "parentUuid": "66691482_85f0c23b",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Definitely. Making sure expressions passed to macros are evaluated only once is standard hygiene.\n\nHow come this change makes a difference? What\u0027s `c` in this case?\n\nAnd do NOLINT directives work inside macros?",
       "parentUuid": "0dfee7c8_2c19345a",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c268b1_c3a6bb72",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-10-13T09:10:02Z",
+      "side": 1,
+      "message": "I have found a way to make clang-tidy ignore the warning through `NOLINTBEGIN` and `NOLINTEND`, but it might have been a Phyrric victory for the reason stated in the comment above.",
+      "parentUuid": "73f0473f_96c7eea9",
       "range": {
         "startLine": 34,
         "startChar": 10,
