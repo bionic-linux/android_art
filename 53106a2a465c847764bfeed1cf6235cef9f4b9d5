@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f3b089_5990ce6e",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea201ab_bfbea676",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 23
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80a441cb_c09fe6fe",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-13T21:18:02Z",
       "side": 1,
       "message": "Is this really better than leaking it? If we reuse the space, I guess we break even. If we don\u0027t, we\u0027ve probably just dirtied the zygote page? Maybe just add a pointer to it to a \"leaked arenas\" array, so a leak detector sees it as still in use?",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 15
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc65e65e_7388add0",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "This function would get called when the hash-set being used by class/intern table deallocates the hash-set array. We will be deallocating a zygote-arena before first zygote-fork as afterwards we freeze snapshot on all the class/intern tables.\n\nUnfortunately I can assert that we are zygote here because of some scenarios in which aren\u0027t (like in art-tests).",
+      "parentUuid": "80a441cb_c09fe6fe",
       "range": {
         "startLine": 210,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a57da5_df43c416",
+        "filename": "runtime/base/gc_visited_arena_pool.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195839cb_62a2129b",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5386ef_314f2eac",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-10-13T21:18:02Z",
       "side": 1,
       "message": "Please state alignment assumptions in a comment. Possibly also DCHECK alignment assumptions where an error wouldn\u0027t fault anyway.",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 54
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36199938_ad7ee8d7",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c5386ef_314f2eac",
       "range": {
         "startLine": 113,
         "startChar": 36,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad457efd_0c99930a",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Arenas always start at page-aligned addresses. So, wouldn\u0027t dividing by page-size improve hash quality?",
+      "parentUuid": "1464d773_44c4889f",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec5775f1_cf9d2ea0",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 15
@@ -146,6 +266,30 @@
       "writtenOn": "2023-10-13T21:18:02Z",
       "side": 1,
       "message": "I found the two operator() overloads with similar signatures a bit confusing, and might consider renaming at least one. But I don\u0027t feel strongly about it.",
+      "range": {
+        "startLine": 2658,
+        "startChar": 7,
+        "endLine": 2658,
+        "endChar": 17
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "011ab0e0_e3a592a6",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2658,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec5775f1_cf9d2ea0",
       "range": {
         "startLine": 2658,
         "startChar": 7,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f45ae7_808ea47d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2794,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c963e44e_ad73f4f7",
+      "range": {
+        "startLine": 2789,
+        "startChar": 6,
+        "endLine": 2794,
+        "endChar": 77
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "689b9300_e9a1684c",
@@ -192,6 +360,30 @@
       "writtenOn": "2023-10-13T21:18:02Z",
       "side": 1,
       "message": "grammar?",
+      "range": {
+        "startLine": 2906,
+        "startChar": 28,
+        "endLine": 2906,
+        "endChar": 40
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b889c49b_91446135",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2906,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "689b9300_e9a1684c",
       "range": {
         "startLine": 2906,
         "startChar": 28,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a37434_d44e56a5",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2911,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Good idea. The problem is we don\u0027t have exclusive try-lock implemented for ReaderWriterMutex. Filed b/305779657",
+      "parentUuid": "dc65ff77_08839960",
+      "range": {
+        "startLine": 2910,
+        "startChar": 4,
+        "endLine": 2911,
+        "endChar": 28
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "913cf48d_82dae275",
@@ -238,6 +454,30 @@
       "writtenOn": "2023-10-13T21:18:02Z",
       "side": 1,
       "message": "IIRC, Nicolas was advocating against CHECK arguments with important side-effects, i.e. for splitting this into 2 statements. I also prefer that style, though I know we used this style a lot in the past.",
+      "range": {
+        "startLine": 2952,
+        "startChar": 14,
+        "endLine": 2952,
+        "endChar": 77
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1a2dc2_b0c2ba82",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-16T20:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913cf48d_82dae275",
       "range": {
         "startLine": 2952,
         "startChar": 14,
