@@ -277,6 +277,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22687398_00d7d70a",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-10-17T00:37:43Z",
+      "side": 1,
+      "message": "\u003e HashSet just computes the value mod the umber of buckets. Which I think means \"it depends\". Which is probably not a great answer. Probably it\u0027s safer to leave.\n\nThat\u0027s why I thought dividing (or right shifting in this case) is required. If num_buckets \u003c\u003d 4096, then wouldn\u0027t all keys map to 0th bucket?",
+      "parentUuid": "8aec256f_de162ac5",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec5775f1_cf9d2ea0",
