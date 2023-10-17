@@ -301,6 +301,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5f659c_ddced335",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-17T05:22:34Z",
+      "side": 1,
+      "message": "If the number of buckets is a power of 2, yes. If it\u0027s a prime number, we should be OK. I didn\u0027t study the code enough. Though if it\u0027s a power of 2, this whole setup seems a bit broken.",
+      "parentUuid": "22687398_00d7d70a",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec5775f1_cf9d2ea0",
