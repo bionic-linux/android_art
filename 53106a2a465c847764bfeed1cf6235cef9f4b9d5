@@ -253,6 +253,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aec256f_de162ac5",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-10-17T00:24:28Z",
+      "side": 1,
+      "message": "AFAICT, std::hash with basically equal domain and range, is really just an identity function.\n\nHashSet just computes the value mod the umber of buckets. Which I think means \"it depends\". Which is probably not a great answer. Probably it\u0027s safer to leave.",
+      "parentUuid": "ad457efd_0c99930a",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 88
+      },
+      "revId": "53106a2a465c847764bfeed1cf6235cef9f4b9d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec5775f1_cf9d2ea0",
