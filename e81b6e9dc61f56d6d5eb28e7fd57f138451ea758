@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e419114_2af3769e",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-18T08:43:49Z",
+      "side": 1,
+      "message": "It was the automatic formatting. Reverting.",
+      "parentUuid": "1ccd0e9a_b9ee9483",
+      "range": {
+        "startLine": 23,
+        "startChar": 10,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "e81b6e9dc61f56d6d5eb28e7fd57f138451ea758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3278ce3c_ef386352",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-18T07:24:05Z",
       "side": 1,
       "message": "We usually do not specify the directory for files in the same directory.",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "e81b6e9dc61f56d6d5eb28e7fd57f138451ea758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2888be14_bfb06c32",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-18T08:43:49Z",
+      "side": 1,
+      "message": "Ack, removed `optimizing/`",
+      "parentUuid": "3278ce3c_ef386352",
       "range": {
         "startLine": 31,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0406b3a_a387a622",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-18T08:43:49Z",
+      "side": 1,
+      "message": "Sure, done.",
+      "parentUuid": "55d454e0_fc4abf28",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 20
+      },
+      "revId": "e81b6e9dc61f56d6d5eb28e7fd57f138451ea758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "551cacfd_20454ca4",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-10-18T07:24:05Z",
       "side": 1,
       "message": "Is clang-tidy reformatting code that you don\u0027t need to touch?",
+      "range": {
+        "startLine": 575,
+        "startChar": 10,
+        "endLine": 575,
+        "endChar": 22
+      },
+      "revId": "e81b6e9dc61f56d6d5eb28e7fd57f138451ea758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d778edd_430b923c",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-10-18T08:43:49Z",
+      "side": 1,
+      "message": "It was the automatic formatting. Reverting.\n\nSame for other `StringPrintf(` below",
+      "parentUuid": "551cacfd_20454ca4",
       "range": {
         "startLine": 575,
         "startChar": 10,
