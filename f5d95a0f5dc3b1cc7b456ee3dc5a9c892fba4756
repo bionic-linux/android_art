@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cb2dbe_f80defa1",
+        "filename": "dex2oat/linker/image_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-10-18T07:03:00Z",
+      "side": 1,
+      "message": "I don\u0027t like to rely on getting zero-filled memory. Please, `memset()` or `fill_n()` this with zeros.",
+      "range": {
+        "startLine": 243,
+        "startChar": 36,
+        "endLine": 243,
+        "endChar": 58
+      },
+      "revId": "f5d95a0f5dc3b1cc7b456ee3dc5a9c892fba4756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
