@@ -33,6 +33,24 @@
       "message": "Should we add a TODO somewhere to revert these changes once the bug is fixed?",
       "revId": "3d2dfd506d31cecd0c5126d5c30300af8eda3d8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1405d4_43a0ab5a",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1899,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-10-19T14:56:40Z",
+      "side": 1,
+      "message": "These could be generally useful. If we repro-ed quickly, I\u0027ll consider removing it.",
+      "parentUuid": "d6156d26_1cdacb55",
+      "revId": "3d2dfd506d31cecd0c5126d5c30300af8eda3d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
