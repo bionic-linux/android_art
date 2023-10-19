@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b34e82_5492e922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-10-19T14:53:10Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "3d2dfd506d31cecd0c5126d5c30300af8eda3d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6156d26_1cdacb55",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1899,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-10-19T14:53:10Z",
+      "side": 1,
+      "message": "Should we add a TODO somewhere to revert these changes once the bug is fixed?",
+      "revId": "3d2dfd506d31cecd0c5126d5c30300af8eda3d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
