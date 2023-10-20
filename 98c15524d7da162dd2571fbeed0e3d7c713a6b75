@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22842758_21ca0237",
+        "filename": "libartservice/service/java/com/android/server/art/PrimaryDexopter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-20T18:39:21Z",
+      "side": 0,
+      "message": "I looked a little bit into the history for this:\n\n- b/72696798 mentioned here was reopened a couple of times without any new CLs, but otoh there was plenty of work in b/149098478#comment10 ff after the reopen so I presume that\u0027s the work that addressed b/72696798 too?\n\n- Regarding tests, the work on b/149098478 added 596-app-images and 597-app-images-same-classloader. Those are enough to test both cases, including isolated loading? Do we need tests on the ART Service side as well?\n\n- The tests are [disabled](https://cs.android.com/android/platform/superproject/main/+/main:art/test/knownfailures.json;l\u003d305-324;drc\u003d25a1341f6ad06e6e6344c2a83e7632b0f9a628fa) in a number of configurations, but they still run in at least some configurations on LUCI.",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 82
+      },
+      "revId": "98c15524d7da162dd2571fbeed0e3d7c713a6b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
