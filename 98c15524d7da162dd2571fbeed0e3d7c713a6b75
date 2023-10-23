@@ -46,6 +46,30 @@
       },
       "revId": "98c15524d7da162dd2571fbeed0e3d7c713a6b75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4658ece5_42d650c8",
+        "filename": "libartservice/service/java/com/android/server/art/PrimaryDexopter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-23T13:40:58Z",
+      "side": 0,
+      "message": "\u003e I believe b/72696798 is for tracking the work on the legacy dexopt implementation rather than anything on the dex2oat/runtime side.\n\nSounds reasonable. That\u0027s cool then.",
+      "parentUuid": "5b5f88c2_d18b9043",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 82
+      },
+      "revId": "98c15524d7da162dd2571fbeed0e3d7c713a6b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
