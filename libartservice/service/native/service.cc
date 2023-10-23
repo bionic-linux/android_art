@@ -78,6 +78,8 @@ Result<void> ValidateDexPath(const std::string& dex_path) {
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_android_server_art_ArtJni_validateDexPathNative(JNIEnv* env, jobject, jstring j_dex_path) {
+  LOG(ERROR) << "Hello world from JNI";
+
   std::string dex_path(GET_UTF_OR_RETURN(env, j_dex_path));
 
   if (Result<void> result = ValidateDexPath(dex_path); !result.ok()) {

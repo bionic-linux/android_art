@@ -47,6 +47,8 @@ namespace artd_chroot {
 
 namespace {
 
+using ::android::base::ConsumePrefix;
+using ::android::base::EndsWith;
 using ::android::base::Error;
 using ::android::base::Join;
 using ::android::base::Result;
@@ -54,6 +56,7 @@ using ::android::base::StringReplace;
 using ::android::fs_mgr::FstabEntry;
 using ::art::tools::CmdlineBuilder;
 using ::art::tools::GetProcMountsDescendantsOfPath;
+using ::art::tools::PathStartsWith;
 using ::ndk::ScopedAStatus;
 
 using std::literals::operator""s;  // NOLINT
@@ -80,14 +83,52 @@ Result<void> CreateDirs(const std::string& path) {
   return {};
 }
 
-Result<void> BindMountRecursive(const std::string& source, const std::string& target) {
-  OR_RETURN(CreateDirs(target));
+Result<void> BindMount(const std::string& source, const std::string& target) {
+  if (PathStartsWith(source, kChrootDir)) {
+    // Don't bind-mount repeatedly.
+    return {};
+  }
   if (mount(source.c_str(),
             target.c_str(),
             /*fs_type=*/nullptr,
-            MS_BIND | MS_REC,
+            MS_BIND,
             /*data=*/nullptr) != 0) {
-    return ErrnoErrorf("Failed to recursively bind-mount '{}' at '{}'", source, target);
+    return ErrnoErrorf("Failed to bind-mount '{}' at '{}'", source, target);
+  }
+  if (mount(/*source=*/nullptr,
+            target.c_str(),
+            /*fs_type=*/nullptr,
+            MS_SLAVE,
+            /*data=*/nullptr) != 0) {
+    return ErrnoErrorf("Failed to make mount slave for '{}'", target);
+  }
+  return {};
+}
+
+Result<void> BindMountRecursive(const std::string& source, const std::string& target) {
+  CHECK(!EndsWith(source, '/'));
+  OR_RETURN(CreateDirs(target));
+  OR_RETURN(BindMount(source, target));
+
+  // Mount and make slave one by one. Do not use MS_REC because we don't want to mount a child if
+  // the parent cannot be slave (i.e., is shared). Otherwise, unmount events will be undesirably
+  // propagated to the source. For example, if "/dev" and "/dev/pts" are mounted at "/chroot/dev"
+  // and "/chroot/dev/pts" respectively, and "/chroot/dev" is shared, then unmounting
+  // "/chroot/dev/pts" will also unmount "/dev/pts".
+  //
+  // The list is in mount order.
+  std::vector<FstabEntry> entries = OR_RETURN(GetProcMountsDescendantsOfPath(source));
+  for (const FstabEntry& entry : entries) {
+    CHECK(!EndsWith(entry.mount_point, '/'));
+    std::string_view sub_dir = entry.mount_point;
+    CHECK(ConsumePrefix(&sub_dir, source));
+    if (sub_dir.empty()) {
+      // `source` itself. Already mounted.
+      continue;
+    }
+    std::string target_sub_dir = target;
+    target_sub_dir += sub_dir;
+    OR_RETURN(BindMount(entry.mount_point, target_sub_dir));
   }
   return {};
 }
@@ -134,15 +175,6 @@ Result<void> ArtdChroot::SetUpChroot() const {
             MS_NODEV | MS_NOEXEC | MS_NOSUID,
             ART_FORMAT("mode={:#o}", kMode).c_str()) != 0) {
     return ErrnoErrorf("Failed to mount tmpfs at '{}'", kChrootDir);
-  }
-  // Prevent repeated bind-mounts when bind-mounting an ancestor of `kChrootDir` at a descendant of
-  // `kChrootDir`.
-  if (mount(/*source=*/nullptr,
-            kChrootDir,
-            /*fs_type=*/nullptr,
-            MS_UNBINDABLE,
-            /*data=*/nullptr) != 0) {
-    return ErrnoErrorf("Failed to make mount unbindable for '{}'", kChrootDir);
   }
 
   std::vector<std::string> tmp_dirs = {
@@ -231,37 +263,33 @@ Result<void> ArtdChroot::TearDownChroot() const {
     if (Exec(args.Get(), &error_msg)) {
       LOG(INFO) << "apexd returned code 0";
     } else {
-      // Maybe apexd is not executable because a previous setup/teardown failed halfway. Continue to
-      // try unmounting.
+      // Maybe apexd is not executable because a previous setup/teardown failed halfway (e.g.,
+      // /system is currently mounted but /dev is not). We do a check below to see if there is any
+      // unmounted APEXes.
       LOG(WARNING) << "Failed to run apexd: " << error_msg;
     }
   }
 
+  std::vector<FstabEntry> apex_entries =
+      OR_RETURN(GetProcMountsDescendantsOfPath(kChrootDir + "/apex"s));
+  if (!apex_entries.empty()) {
+    return Errorf("apexd didn't unmount '{}'. See logs for details", apex_entries[0].mount_point);
+  }
+
   // The list is in mount order.
   std::vector<FstabEntry> entries = OR_RETURN(GetProcMountsDescendantsOfPath(kChrootDir));
-  if (!entries.empty()) {
-    CHECK_EQ(entries[0].mount_point, kChrootDir);
-    // Don't propagate unmount events to the sources.
-    if (mount(/*source=*/nullptr,
-              kChrootDir,
-              /*fs_type=*/nullptr,
-              MS_UNBINDABLE | MS_REC,
-              /*data=*/nullptr) != 0) {
-      // We must not continue if this fails, or the unmount events will be propagated and brick the
-      // device.
-      return ErrnoErrorf("Failed to recursively make mount unbindable for '{}'", kChrootDir);
-    }
-  }
   for (auto it = entries.rbegin(); it != entries.rend(); it++) {
-    if (umount(it->mount_point.c_str()) != 0) {
-      return ErrnoErrorf("Failed to umount '{}'", it->mount_point);
+    if (umount2(it->mount_point.c_str(), UMOUNT_NOFOLLOW) != 0) {
+      return ErrnoErrorf("Failed to umount2 '{}'", it->mount_point);
     }
   }
+
   std::error_code ec;
   std::filesystem::remove_all(kChrootDir, ec);
   if (ec) {
     return Errorf("Failed to remove dir '{}': {}", kChrootDir, ec.message());
   }
+
   return {};
 }
 

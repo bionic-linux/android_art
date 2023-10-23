@@ -1292,7 +1292,7 @@ public final class ArtManagerLocal {
                 getUserManager();
                 getDexUseManager();
                 getStorageManager();
-                ArtModuleServiceInitializer.getArtModuleServiceManager();
+                GlobalInjector.getInstance().checkArtd();
             } else {
                 mPackageManagerLocal = null;
                 mConfig = null;
@@ -1314,7 +1314,7 @@ public final class ArtManagerLocal {
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         @NonNull
         public IArtd getArtd() {
-            return Utils.getArtd();
+            return GlobalInjector.getInstance().getArtd();
         }
 
         /** Returns a new {@link DexoptHelper} instance. */
@@ -1370,8 +1370,7 @@ public final class ArtManagerLocal {
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         @NonNull
         public DexUseManagerLocal getDexUseManager() {
-            return Objects.requireNonNull(
-                    LocalManagerRegistry.getManager(DexUseManagerLocal.class));
+            return GlobalInjector.getInstance().getDexUseManager();
         }
 
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)

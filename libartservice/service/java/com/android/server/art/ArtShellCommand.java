@@ -621,6 +621,10 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
                 mArtManagerLocal.getPreRebootDexoptJob().testOnlyTearDown();
                 return 0;
             }
+            case "--test": {
+                mArtManagerLocal.getPreRebootDexoptJob().test();
+                return 0;
+            }
             default:
                 pw.println("Error: Unknown option: " + opt);
                 return 1;
