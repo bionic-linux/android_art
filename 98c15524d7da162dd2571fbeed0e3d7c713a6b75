@@ -22,6 +22,30 @@
       },
       "revId": "98c15524d7da162dd2571fbeed0e3d7c713a6b75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5f88c2_d18b9043",
+        "filename": "libartservice/service/java/com/android/server/art/PrimaryDexopter.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-10-23T13:32:17Z",
+      "side": 0,
+      "message": "Thanks for digging into the history. I didn\u0027t dig into the history myself. Instead, I discussed this with the ART perf team in their team meeting. They said app images are fully supported now, and I trust them.\n\n\u003e b/72696798 mentioned here [...] I presume that\u0027s the work that addressed b/72696798 too?\n\nI believe b/72696798 is for tracking the work on the legacy dexopt implementation rather than anything on the dex2oat/runtime side. My understanding is that the support for having multiple app images on the dex2oat/runtime side was added long ago, but the logic in the legacy dexopt implementation around this has never been changed since then to enable it.\n\n\u003e Regarding tests, the work on b/149098478 added 596-app-images and 597-app-images-same-classloader. Those are enough to test both cases, including isolated loading? Do we need tests on the ART Service side as well?\n\nI believe the tests gave us good coverage for both cases. If I read them correctly, 596 covers the latter, and 597 covers the former.",
+      "parentUuid": "22842758_21ca0237",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 82
+      },
+      "revId": "98c15524d7da162dd2571fbeed0e3d7c713a6b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
