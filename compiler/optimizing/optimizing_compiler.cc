@@ -851,9 +851,13 @@ static bool CanAssembleGraphForRiscv64(HGraph* graph) {
         case HInstruction::kCheckCast:
         case HInstruction::kInstanceOf:
         case HInstruction::kBoundType:
+        case HInstruction::kClassTableGet:
+        case HInstruction::kShouldDeoptimizeFlag:
+        case HInstruction::kTypeConversion:
           break;
         default:
           // Unimplemented instruction.
+          LOG(FATAL) << "Unimplemened: " << it.Current()->DebugName();
           return false;
       }
     }
