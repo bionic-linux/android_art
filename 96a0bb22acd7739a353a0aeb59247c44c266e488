@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c036d7_40c18a95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-10-24T10:15:16Z",
+      "side": 1,
+      "message": "Note: These are `HClassTableGet`, `HShouldDeoptimizeFlag` and `TypeConversion`. (See also \"diff base PS1\".)",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "96a0bb22acd7739a353a0aeb59247c44c266e488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
