@@ -237,6 +237,30 @@
       },
       "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e70fd6c_49e17675",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-10-25T08:53:27Z",
+      "side": 1,
+      "message": "I managed to make it work within the macro itself, like this:\n\n```\n#define CHECK_CALL_SUCCESS(c) \\\n  /* NOLINTBEGIN */ \\\n  do { \\\n    auto vc \u003d (c); \\\n    CHECK(vc \u003d\u003d JNI_OK || vc \u003d\u003d JVMTI_ERROR_NONE) \u003c\u003c \"call \" \u003c\u003c #c \u003c\u003c \" did not succeed\\n\"; \\\n  } while (false) \\\n  /* NOLINTEND */\n\n```\n\nFor the second part of your question, I _think_ you have in mind something similar to the `bugprone-macro-repeated-side-effects` check: https://clang.llvm.org/extra/clang-tidy/checks/bugprone/macro-repeated-side-effects.html",
+      "parentUuid": "cdf40512_738b8791",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
