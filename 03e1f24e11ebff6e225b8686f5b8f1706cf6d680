@@ -285,6 +285,30 @@
       },
       "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5581995_b126a1ac",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-25T12:05:43Z",
+      "side": 1,
+      "message": "\u003e I think you have in mind something similar to the bugprone-macro-repeated-side-effects check\n\nYes, sounds like it. Nice. I\u0027d be in favour of enabling that check.",
+      "parentUuid": "8e70fd6c_49e17675",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
