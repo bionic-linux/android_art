@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6594972_21ac5abc",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-10-25T13:04:25Z",
+      "side": 1,
+      "message": "I personally don\u0027t see much value in this check and I agree with what Martin said above. But feel free to ask other members.",
+      "parentUuid": "25ebb0f0_517b1749",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
