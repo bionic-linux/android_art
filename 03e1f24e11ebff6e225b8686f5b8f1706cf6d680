@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25ebb0f0_517b1749",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2023-10-25T10:13:56Z",
+      "side": 1,
+      "message": "\u003e the other option would be to remove the static_assert entirely\n\nPlease keep the static assertions – they are here to make sure the generated code matches the hand-written assembly code.\n\nOne way to address these warnings would be to introduce new constants to replace these literals (see e.g. https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/gc/collector_type.h;l\u003d69-79;drc\u003d4646fc66fc85b97a03eb76819bb367181a306ca2), and use them instead of macros in static assertions. (I\u0027d suggest doing this refactoring in a separate CL.)",
+      "parentUuid": "bdf03dc5_dd69447a",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "851ad5f3_fdb5cdc3",
         "filename": "tools/jvmti-agents/jit-load/jitload.cc",
         "patchSetId": 2
