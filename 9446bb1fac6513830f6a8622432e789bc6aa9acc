@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f346c2de_7af8a991",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-10-25T18:51:31Z",
+      "side": 1,
+      "message": "Martin, PTAL. This is required so that CTS tests works in configurations that minimize debug information. Thanks!",
+      "revId": "9446bb1fac6513830f6a8622432e789bc6aa9acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
