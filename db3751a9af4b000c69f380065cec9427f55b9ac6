@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0de0241_69b26ee2",
+        "filename": "tools/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-27T13:46:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t look significantly different from the state before https://r.android.com/2805866 - it wasn\u0027t in a defaults then and it\u0027s not in a defaults now either. Was it the ..._fuzzerd module below that caused the breakage?\n\nPlease verify that this doesn\u0027t break the build that caused the revert.\n\nWhich one is that, btw? https://r.android.com/2805866 doesn\u0027t have any ticket reference so it lacks context.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "db3751a9af4b000c69f380065cec9427f55b9ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
