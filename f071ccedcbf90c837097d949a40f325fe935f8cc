@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdccc8ea_43d89d21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-10-27T10:20:51Z",
+      "side": 1,
+      "message": "`module \"libart_verify_dex_fuzzer-defaults\": depends on disabled module \"art_runtest_corpus\"`",
+      "revId": "f071ccedcbf90c837097d949a40f325fe935f8cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
