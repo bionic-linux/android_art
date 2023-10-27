@@ -22,6 +22,30 @@
       },
       "revId": "db3751a9af4b000c69f380065cec9427f55b9ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a855d115_d2cf5703",
+        "filename": "tools/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-10-27T13:51:21Z",
+      "side": 1,
+      "message": "It was missing in `art_runtest_corpus` previously, which was the original breakage.",
+      "parentUuid": "a0de0241_69b26ee2",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "db3751a9af4b000c69f380065cec9427f55b9ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
