@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3e60fd_331eaf9e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6682,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-11-01T11:58:51Z",
+      "side": 1,
+      "message": "Thanks Martin, Roland, and Vladimír for your comments - based on your input, I will revert the changes I have made in the source code, move `misc-redundant-expression` in the list of suppressed warnings, and create a follow-up CL for dealing with bugprone-macro-repeated-side-effects.",
+      "parentUuid": "a6594972_21ac5abc",
+      "range": {
+        "startLine": 6682,
+        "startChar": 9,
+        "endLine": 6682,
+        "endChar": 61
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "851ad5f3_fdb5cdc3",
@@ -325,6 +349,30 @@
       "side": 1,
       "message": "\u003e I think you have in mind something similar to the bugprone-macro-repeated-side-effects check\n\nYes, sounds like it. Nice. I\u0027d be in favour of enabling that check.",
       "parentUuid": "8e70fd6c_49e17675",
+      "range": {
+        "startLine": 34,
+        "startChar": 10,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "03e1f24e11ebff6e225b8686f5b8f1706cf6d680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ea9337_1cd1ba6d",
+        "filename": "tools/jvmti-agents/jit-load/jitload.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-11-01T11:58:51Z",
+      "side": 1,
+      "message": "Sound good - I will create a follow-up CL to enable the check and deal with violations we might already have in our codebase.",
+      "parentUuid": "a5581995_b126a1ac",
       "range": {
         "startLine": 34,
         "startChar": 10,
