@@ -1330,8 +1330,8 @@ class ClassLinker {
   // Boot class path table. Since the class loader for this is null.
   std::unique_ptr<ClassTable> boot_class_table_ GUARDED_BY(Locks::classlinker_classes_lock_);
 
-  // New class roots, only used by CMS since the GC needs to mark these in the pause.
-  std::vector<GcRoot<mirror::Class>> new_class_roots_ GUARDED_BY(Locks::classlinker_classes_lock_);
+  // New gc-roots, only used by CMS/CMC since the GC needs to mark these in the pause.
+  std::vector<GcRoot<mirror::Object>> new_roots_ GUARDED_BY(Locks::classlinker_classes_lock_);
 
   // Boot image oat files with new .bss GC roots to be visited in the pause by CMS.
   std::vector<const OatFile*> new_bss_roots_boot_oat_files_

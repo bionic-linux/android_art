@@ -1719,6 +1719,9 @@ void AppImageLoadingHelper::Update(
         VLOG(image) << "App image registers dex file " << dex_file->GetLocation();
         class_linker->RegisterDexFileLocked(*dex_file, dex_cache, class_loader.Get());
       }
+      if (class_loader.Get() == nullptr && class_linker->log_new_roots_) {
+        class_linker->new_roots_.push_back(GcRoot<mirror::Object>(dex_cache));
+      }
     }
   }
   if (number_of_dex_cache_arrays_cleared == dex_caches->GetLength()) {
@@ -2432,12 +2435,12 @@ void ClassLinker::VisitClassRoots(RootVisitor* visitor, VisitRootFlags flags) {
       }
     }
   } else if (!gUseReadBarrier && (flags & kVisitRootFlagNewRoots) != 0) {
-    for (auto& root : new_class_roots_) {
-      ObjPtr<mirror::Class> old_ref = root.Read<kWithoutReadBarrier>();
+    for (auto& root : new_roots_) {
+      ObjPtr<mirror::Object> old_ref = root.Read<kWithoutReadBarrier>();
       root.VisitRoot(visitor, RootInfo(kRootStickyClass));
-      ObjPtr<mirror::Class> new_ref = root.Read<kWithoutReadBarrier>();
+      ObjPtr<mirror::Object> new_ref = root.Read<kWithoutReadBarrier>();
       // Concurrent moving GC marked new roots through the to-space invariant.
-      CHECK_EQ(new_ref, old_ref);
+      DCHECK_EQ(new_ref, old_ref);
     }
     for (const OatFile* oat_file : new_bss_roots_boot_oat_files_) {
       for (GcRoot<mirror::Object>& root : oat_file->GetBssGcRoots()) {
@@ -2447,13 +2450,13 @@ void ClassLinker::VisitClassRoots(RootVisitor* visitor, VisitRootFlags flags) {
           root.VisitRoot(visitor, RootInfo(kRootStickyClass));
           ObjPtr<mirror::Object> new_ref = root.Read<kWithoutReadBarrier>();
           // Concurrent moving GC marked new roots through the to-space invariant.
-          CHECK_EQ(new_ref, old_ref);
+          DCHECK_EQ(new_ref, old_ref);
         }
       }
     }
   }
   if (!gUseReadBarrier && (flags & kVisitRootFlagClearRootLog) != 0) {
-    new_class_roots_.clear();
+    new_roots_.clear();
     new_bss_roots_boot_oat_files_.clear();
   }
   if (!gUseReadBarrier && (flags & kVisitRootFlagStartLoggingNewRoots) != 0) {
@@ -4055,6 +4058,10 @@ void ClassLinker::AppendToBootClassPath(Thread* self, const DexFile* dex_file) {
       AllocAndInitializeDexCache(self, *dex_file, /* class_loader= */ nullptr);
   CHECK(dex_cache != nullptr) << "Failed to allocate dex cache for " << dex_file->GetLocation();
   AppendToBootClassPath(dex_file, dex_cache);
+  WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
+  if (log_new_roots_) {
+    new_roots_.push_back(GcRoot<mirror::Object>(dex_cache));
+  }
 }
 
 void ClassLinker::AppendToBootClassPath(const DexFile* dex_file,
@@ -4280,6 +4287,12 @@ ObjPtr<mirror::DexCache> ClassLinker::RegisterDexFile(const DexFile& dex_file,
     // Since we added a strong root to the class table, do the write barrier as required for
     // remembered sets and generational GCs.
     WriteBarrier::ForEveryFieldWrite(h_class_loader.Get());
+  } else {
+    WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
+    DCHECK_EQ(table, boot_class_table_);
+    if (log_new_roots_) {
+      new_roots_.push_back(GcRoot<mirror::Object>(h_dex_cache.Get()));
+    }
   }
   VLOG(class_linker) << "Registered dex file " << dex_file.GetLocation();
   PaletteNotifyDexFileLoaded(dex_file.GetLocation().c_str());
@@ -4593,9 +4606,8 @@ ObjPtr<mirror::Class> ClassLinker::InsertClass(const char* descriptor,
     if (class_loader != nullptr) {
       // This is necessary because we need to have the card dirtied for remembered sets.
       WriteBarrier::ForEveryFieldWrite(class_loader);
-    }
-    if (log_new_roots_) {
-      new_class_roots_.push_back(GcRoot<mirror::Class>(klass));
+    } else if (log_new_roots_) {
+      new_roots_.push_back(GcRoot<mirror::Object>(klass));
     }
   }
   if (kIsDebugBuild) {
@@ -6265,14 +6277,13 @@ bool ClassLinker::LinkClass(Thread* self,
       ClassTable* const table = InsertClassTableForClassLoader(class_loader);
       const ObjPtr<mirror::Class> existing =
           table->UpdateClass(descriptor, h_new_class.Get(), ComputeModifiedUtf8Hash(descriptor));
+      CHECK_EQ(existing, klass.Get());
       if (class_loader != nullptr) {
         // We updated the class in the class table, perform the write barrier so that the GC knows
         // about the change.
         WriteBarrier::ForEveryFieldWrite(class_loader);
-      }
-      CHECK_EQ(existing, klass.Get());
-      if (log_new_roots_) {
-        new_class_roots_.push_back(GcRoot<mirror::Class>(h_new_class.Get()));
+      } else if (log_new_roots_) {
+        new_roots_.push_back(GcRoot<mirror::Object>(h_new_class.Get()));
       }
     }
 
@@ -10815,10 +10826,17 @@ void ClassLinker::InsertDexFileInToClassLoader(ObjPtr<mirror::Object> dex_file,
   WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
   ClassTable* const table = ClassTableForClassLoader(class_loader);
   DCHECK(table != nullptr);
-  if (table->InsertStrongRoot(dex_file) && class_loader != nullptr) {
-    // It was not already inserted, perform the write barrier to let the GC know the class loader's
-    // class table was modified.
-    WriteBarrier::ForEveryFieldWrite(class_loader);
+  if (table->InsertStrongRoot(dex_file)) {
+    if (class_loader != nullptr) {
+      // It was not already inserted, perform the write barrier to let the GC know
+      // the class loader's class table was modified.
+      WriteBarrier::ForEveryFieldWrite(class_loader);
+    } else {
+      DCHECK_EQ(table, boot_class_table_);
+      if (log_new_roots_) {
+        new_roots_.push_back(GcRoot<mirror::Object>(dex_file));
+      }
+    }
   }
 }
 
