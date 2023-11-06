@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42d4ee9_c93bf73d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-06T22:06:52Z",
+      "side": 1,
+      "message": "I have been working on adding a `continuous-gc` mode to testrunner.py so that we can the mode on LUCI aosp/2806913. During local testing on my workstation, I consistently reproduce this for hiddenapi related art-tests with CMS and userfaultfd-GC, as both share the same algorithm. The marking-pause finds a dex-cache in strong-roots of boot-class-table as unmarked. This CL solves the problem.",
+      "parentUuid": "56d777f9_6952ff20",
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eadb14c4_bfdbe7b7",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe67d611_e776eea0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-06T22:06:52Z",
+      "side": 1,
+      "message": "Makes sense. I\u0027ll remove from here.\n\nThe only one needed to fix the hiddenapi art-test failures was in `AppendToBootClassPath`",
+      "parentUuid": "f1f9bab4_2d0bfd31",
+      "range": {
+        "startLine": 1722,
+        "startChar": 10,
+        "endLine": 1722,
+        "endChar": 39
+      },
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c7aa455_ab58ad2c",
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ce8b6b_c9f0df66",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4064,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-06T22:06:52Z",
+      "side": 1,
+      "message": "In this case it\u0027s not possible as the write-barrier, which doesn\u0027t require classlinker_classes_lock_ is done in the RegisterDexFileLocked. But new-roots isn\u0027t logged and additing it is also not possible due to lock-ordering issue with dex-lock. So has to be done here.\n\nBut there are many other opportunities elsewhere. Done in the latest patch.",
+      "parentUuid": "5c7aa455_ab58ad2c",
+      "range": {
+        "startLine": 4061,
+        "startChar": 0,
+        "endLine": 4064,
+        "endChar": 3
+      },
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80eb1e18_a71af6da",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-11-06T14:29:32Z",
       "side": 1,
       "message": "Should the code below be guarded on this returning true ? (or do we always expect true?)",
+      "range": {
+        "startLine": 4285,
+        "startChar": 0,
+        "endLine": 4285,
+        "endChar": 45
+      },
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f2e089_1c2ac803",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4285,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-06T22:06:52Z",
+      "side": 1,
+      "message": "Possibly it\u0027s always true. But in any case making it conditional should be ok. Done.",
+      "parentUuid": "80eb1e18_a71af6da",
       "range": {
         "startLine": 4285,
         "startChar": 0,
