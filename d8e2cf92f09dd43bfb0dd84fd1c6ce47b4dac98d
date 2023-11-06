@@ -46,6 +46,30 @@
       },
       "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e675fe3_2120b44a",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3683,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-06T14:52:06Z",
+      "side": 1,
+      "message": "I am not sure I follow. The code is:\n```\nbool IsBooleanValueOrMaterializedCondition(HInstruction* cond_input) {\n  return !cond_input-\u003eIsCondition() || !cond_input-\u003eIsEmittedAtUseSite();\n}\n```\nSource: https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_utils.cc;l\u003d99-101;drc\u003d60c3258770b1ce3ce5bbdcff3c4a87c8f996b92f\n\nSo if `cond_input` is not a condition, it will return true due to `!cond_input-\u003eIsCondition()`, right?\n\n`IsBooleanValueOrMaterializedCondition ` returns true for either:\n* non-conditions, or\n* conditions not emitted at use site",
+      "parentUuid": "312718d9_761c1437",
+      "range": {
+        "startLine": 3683,
+        "startChar": 6,
+        "endLine": 3683,
+        "endChar": 53
+      },
+      "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
