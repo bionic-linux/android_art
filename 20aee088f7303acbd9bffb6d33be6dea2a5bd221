@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09c2dff_873e291b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4058,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T22:30:58Z",
+      "side": 1,
+      "message": "Call `WriteBarrierOnClassLoader(self, nullptr, dex_cache);` ?",
+      "revId": "20aee088f7303acbd9bffb6d33be6dea2a5bd221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d9c368_7312011e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4310,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T22:30:58Z",
+      "side": 1,
+      "message": "Should there be an else? At least for a comment?",
+      "revId": "20aee088f7303acbd9bffb6d33be6dea2a5bd221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bc5ef0_04fc77d1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 10834,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T22:30:58Z",
+      "side": 1,
+      "message": "ditto about the else / comment.",
+      "revId": "20aee088f7303acbd9bffb6d33be6dea2a5bd221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
