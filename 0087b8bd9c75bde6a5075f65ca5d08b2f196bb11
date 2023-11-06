@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d777f9_6952ff20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T14:29:32Z",
+      "side": 1,
+      "message": "Does this fix a bug? How did you find it?",
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eadb14c4_bfdbe7b7",
@@ -14,6 +31,75 @@
       "writtenOn": "2023-11-03T22:15:52Z",
       "side": 1,
       "message": "Makes sense to me, but I\u0027m not sufficiently familiar with the code being modified.",
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f9bab4_2d0bfd31",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T14:29:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this should happen for an app image?",
+      "range": {
+        "startLine": 1722,
+        "startChar": 10,
+        "endLine": 1722,
+        "endChar": 39
+      },
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7aa455_ab58ad2c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4064,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T14:29:32Z",
+      "side": 1,
+      "message": "nit: add a helper method:\n\n```\nstatic void WriteBarrierOnClassLoader(ObjPtr\u003cmirror::ClassLoader\u003e class_loader)\n    REQUIRES_SHARED(Locks::mutator_lock_) {\n  if (class_loader !\u003d nullptr) {\n    WriteBarrier::ForEveryFieldWrite(class_loader);\n    return;\n  }\n  WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);\n  if (log_new_roots_) {\n    new_roots_.push_back(GcRoot\u003cmirror::Object\u003e(dex_cache));\n  }\n}\n```\n\nAnd use it here, passing null?",
+      "range": {
+        "startLine": 4061,
+        "startChar": 0,
+        "endLine": 4064,
+        "endChar": 3
+      },
+      "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80eb1e18_a71af6da",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4285,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-06T14:29:32Z",
+      "side": 1,
+      "message": "Should the code below be guarded on this returning true ? (or do we always expect true?)",
+      "range": {
+        "startLine": 4285,
+        "startChar": 0,
+        "endLine": 4285,
+        "endChar": 45
+      },
       "revId": "0087b8bd9c75bde6a5075f65ca5d08b2f196bb11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
