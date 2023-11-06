@@ -22,6 +22,30 @@
       },
       "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312718d9_761c1437",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3683,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-06T14:44:33Z",
+      "side": 1,
+      "message": "The `if (IsBooleanValueOrMaterializedCondition(instruction-\u003eInputAt(0)))` condiion further above implies both `instruction-\u003eInputAt(0)-\u003eIsCondition()` and `!instruction-\u003eInputAt(0)-\u003eIsEmittedAtUseSite()`. We could move this `DCHECK()` earlier on all architectures.",
+      "parentUuid": "a74a40fa_4d7292ad",
+      "range": {
+        "startLine": 3683,
+        "startChar": 6,
+        "endLine": 3683,
+        "endChar": 53
+      },
+      "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
