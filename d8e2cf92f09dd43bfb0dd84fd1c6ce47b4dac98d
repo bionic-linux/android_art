@@ -70,6 +70,30 @@
       },
       "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b061e8c3_f47a5d38",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3683,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-06T14:57:14Z",
+      "side": 1,
+      "message": "Sorry, this time I was confused.\n\nI think this is indeed implied by the baseline compiler. The `HInstructionBuilder` creates `HCondition` followed by `HIf` for any `if*` dex instruction and there are no passes that can optimize that in the baseline compiler.",
+      "parentUuid": "8e675fe3_2120b44a",
+      "range": {
+        "startLine": 3683,
+        "startChar": 6,
+        "endLine": 3683,
+        "endChar": 53
+      },
+      "revId": "d8e2cf92f09dd43bfb0dd84fd1c6ce47b4dac98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
