@@ -22,6 +22,30 @@
       },
       "revId": "3937b95e1ecfb890fe51caf19ca565c98b602c07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914ae6f2_d90f7583",
+        "filename": "libartbase/base/metrics/metrics_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2023-11-07T11:36:37Z",
+      "side": 1,
+      "message": "Handled in aosp/2819278",
+      "parentUuid": "157f388d_958fd28a",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 7
+      },
+      "revId": "3937b95e1ecfb890fe51caf19ca565c98b602c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
