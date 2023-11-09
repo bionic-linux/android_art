@@ -19,6 +19,7 @@
 #include <algorithm>
 
 #include "dex/dex_file-inl.h"
+#include "intrinsics_enum.h"
 #include "optimizing/data_type.h"
 #include "optimizing/nodes.h"
 
@@ -47,9 +48,14 @@ class HConstantFoldingVisitor final : public HGraphDelegateVisitor {
   void VisitArrayLength(HArrayLength* inst) override;
   void VisitDivZeroCheck(HDivZeroCheck* inst) override;
   void VisitIf(HIf* inst) override;
+  void VisitInvoke(HInvoke* inst) override;
   void VisitTypeConversion(HTypeConversion* inst) override;
 
   void PropagateValue(HBasicBlock* starting_block, HInstruction* variable, HConstant* constant);
+
+  // Intrinsics simplifications
+  void SimplifyNumberOfLeadingZerosIntrinsic(HInvoke* invoke);
+  void SimplifyNumberOfTrailingZerosIntrinsic(HInvoke* invoke);
 
   // Use all optimizations without restrictions.
   bool use_all_optimizations_;
@@ -348,6 +354,96 @@ void HConstantFoldingVisitor::VisitIf(HIf* inst) {
     DCHECK_NE(other_constant, constant);
     PropagateValue(other_starting_block, variable, other_constant);
   }
+}
+
+void HConstantFoldingVisitor::VisitInvoke(HInvoke* inst) {
+  switch (inst->GetIntrinsic()) {
+    case Intrinsics::kIntegerNumberOfLeadingZeros:
+    case Intrinsics::kLongNumberOfLeadingZeros:
+      SimplifyNumberOfLeadingZerosIntrinsic(inst);
+      break;
+    case Intrinsics::kIntegerNumberOfTrailingZeros:
+    case Intrinsics::kLongNumberOfTrailingZeros:
+      SimplifyNumberOfTrailingZerosIntrinsic(inst);
+      break;
+    case Intrinsics::kIntegerRotateRight:
+    case Intrinsics::kLongRotateRight:
+    case Intrinsics::kIntegerRotateLeft:
+    case Intrinsics::kLongRotateLeft:
+    case Intrinsics::kIntegerCompare:
+    case Intrinsics::kLongCompare:
+    case Intrinsics::kIntegerSignum:
+    case Intrinsics::kLongSignum:
+    case Intrinsics::kFloatIsNaN:
+    case Intrinsics::kDoubleIsNaN:
+    case Intrinsics::kStringIsEmpty:
+    case Intrinsics::kUnsafeLoadFence:
+    case Intrinsics::kUnsafeStoreFence:
+    case Intrinsics::kUnsafeFullFence:
+    case Intrinsics::kJdkUnsafeLoadFence:
+    case Intrinsics::kJdkUnsafeStoreFence:
+    case Intrinsics::kJdkUnsafeFullFence:
+    case Intrinsics::kVarHandleFullFence:
+    case Intrinsics::kVarHandleAcquireFence:
+    case Intrinsics::kVarHandleReleaseFence:
+    case Intrinsics::kVarHandleLoadLoadFence:
+    case Intrinsics::kVarHandleStoreStoreFence:
+    case Intrinsics::kMathMinIntInt:
+    case Intrinsics::kMathMinLongLong:
+    case Intrinsics::kMathMinFloatFloat:
+    case Intrinsics::kMathMinDoubleDouble:
+    case Intrinsics::kMathMaxIntInt:
+    case Intrinsics::kMathMaxLongLong:
+    case Intrinsics::kMathMaxFloatFloat:
+    case Intrinsics::kMathMaxDoubleDouble:
+    case Intrinsics::kMathAbsInt:
+    case Intrinsics::kMathAbsLong:
+    case Intrinsics::kMathAbsFloat:
+    case Intrinsics::kMathAbsDouble:
+      // These are replaced by intermediate representation in the instruction builder.
+      LOG(FATAL) << "Unexpected " << static_cast<Intrinsics>(inst->GetIntrinsic());
+      UNREACHABLE();
+    default:
+      break;
+  }
+}
+
+void HConstantFoldingVisitor::SimplifyNumberOfLeadingZerosIntrinsic(HInvoke* inst) {
+  DCHECK(inst->GetIntrinsic() == Intrinsics::kIntegerNumberOfLeadingZeros ||
+         inst->GetIntrinsic() == Intrinsics::kLongNumberOfLeadingZeros);
+
+  if (!inst->InputAt(0)->IsConstant()) {
+    return;
+  }
+
+  uint64_t value = inst->InputAt(0)->AsConstant()->GetValueAsUint64();
+  if (inst->GetIntrinsic() == Intrinsics::kIntegerNumberOfLeadingZeros) {
+    DCHECK_EQ(value, static_cast<uint32_t>(value));
+    inst->ReplaceWith(GetGraph()->GetIntConstant(JAVASTYLE_CLZ(static_cast<uint32_t>(value))));
+  } else {
+    // Note that both the Integer and Long intrinsics return an int as a result.
+    inst->ReplaceWith(GetGraph()->GetIntConstant(JAVASTYLE_CLZ(value)));
+  }
+  inst->GetBlock()->RemoveInstruction(inst);
+}
+
+void HConstantFoldingVisitor::SimplifyNumberOfTrailingZerosIntrinsic(HInvoke* inst) {
+  DCHECK(inst->GetIntrinsic() == Intrinsics::kIntegerNumberOfTrailingZeros ||
+         inst->GetIntrinsic() == Intrinsics::kLongNumberOfTrailingZeros);
+
+  if (!inst->InputAt(0)->IsConstant()) {
+    return;
+  }
+
+  uint64_t value = inst->InputAt(0)->AsConstant()->GetValueAsUint64();
+  if (inst->GetIntrinsic() == Intrinsics::kIntegerNumberOfTrailingZeros) {
+    DCHECK_EQ(value, static_cast<uint32_t>(value));
+    inst->ReplaceWith(GetGraph()->GetIntConstant(JAVASTYLE_CTZ(static_cast<uint32_t>(value))));
+  } else {
+    // Note that both the Integer and Long intrinsics return an int as a result.
+    inst->ReplaceWith(GetGraph()->GetIntConstant(JAVASTYLE_CTZ(value)));
+  }
+  inst->GetBlock()->RemoveInstruction(inst);
 }
 
 void HConstantFoldingVisitor::VisitArrayLength(HArrayLength* inst) {
