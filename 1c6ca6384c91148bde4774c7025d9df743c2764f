@@ -46,6 +46,30 @@
       },
       "revId": "1c6ca6384c91148bde4774c7025d9df743c2764f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb567e77_6ee7eeaf",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T11:17:20Z",
+      "side": 1,
+      "message": "aosp/2826092",
+      "parentUuid": "4932c333_76bdc2e1",
+      "range": {
+        "startLine": 378,
+        "startChar": 7,
+        "endLine": 378,
+        "endChar": 23
+      },
+      "revId": "1c6ca6384c91148bde4774c7025d9df743c2764f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
