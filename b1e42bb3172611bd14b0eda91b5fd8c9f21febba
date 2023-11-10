@@ -22,6 +22,30 @@
       },
       "revId": "b1e42bb3172611bd14b0eda91b5fd8c9f21febba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a96b64_b4c83463",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T10:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9baf323_6b5d3b60",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 90
+      },
+      "revId": "b1e42bb3172611bd14b0eda91b5fd8c9f21febba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

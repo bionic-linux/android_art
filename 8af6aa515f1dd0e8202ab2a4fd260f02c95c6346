@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4d7bcb_ffe6cc50",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T10:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4231d94_d7bc4219",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 70
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62302f07_24d130eb",
@@ -202,6 +226,30 @@
       "writtenOn": "2023-11-10T09:38:23Z",
       "side": 1,
       "message": "Drop this `DCHECK()` and do a `dchecked_integral_cast\u003cint32_t\u003e` instead.",
+      "range": {
+        "startLine": 421,
+        "startChar": 4,
+        "endLine": 421,
+        "endChar": 51
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb83c25_c0639a60",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T10:00:53Z",
+      "side": 1,
+      "message": "Using HIntConstant\u0027s value now.",
+      "parentUuid": "62302f07_24d130eb",
       "range": {
         "startLine": 421,
         "startChar": 4,
@@ -235,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cc5e2d_da985f5f",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T10:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eca43bc_de0b71ce",
+      "range": {
+        "startLine": 425,
+        "startChar": 4,
+        "endLine": 425,
+        "endChar": 48
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89a207c5_f8dc4408",
@@ -248,6 +320,24 @@
       "writtenOn": "2023-11-10T09:38:23Z",
       "side": 1,
       "message": "Same comments as above.",
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6660cb_929de363",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T10:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89a207c5_f8dc4408",
       "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
