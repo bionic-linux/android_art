@@ -22,6 +22,30 @@
       },
       "revId": "1c6ca6384c91148bde4774c7025d9df743c2764f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4932c333_76bdc2e1",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-10T11:14:22Z",
+      "side": 1,
+      "message": "Will do in follow-up CL.",
+      "parentUuid": "9df98d67_ea7d8dac",
+      "range": {
+        "startLine": 378,
+        "startChar": 7,
+        "endLine": 378,
+        "endChar": 23
+      },
+      "revId": "1c6ca6384c91148bde4774c7025d9df743c2764f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
