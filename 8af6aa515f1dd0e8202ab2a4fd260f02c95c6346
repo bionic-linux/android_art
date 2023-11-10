@@ -164,6 +164,92 @@
       },
       "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4231d94_d7bc4219",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-10T09:38:23Z",
+      "side": 1,
+      "message": "As we\u0027re dealing with bytecode, I\u0027d go with a signed value here.",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 70
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62302f07_24d130eb",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-10T09:38:23Z",
+      "side": 1,
+      "message": "Drop this `DCHECK()` and do a `dchecked_integral_cast\u003cint32_t\u003e` instead.",
+      "range": {
+        "startLine": 421,
+        "startChar": 4,
+        "endLine": 421,
+        "endChar": 51
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9eca43bc_de0b71ce",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-10T09:38:23Z",
+      "side": 1,
+      "message": "Pull this shared code out of then-block and else-block. (Maybe use a ternary operator for the numeric result.)",
+      "range": {
+        "startLine": 425,
+        "startChar": 4,
+        "endLine": 425,
+        "endChar": 48
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a207c5_f8dc4408",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-10T09:38:23Z",
+      "side": 1,
+      "message": "Same comments as above.",
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
