@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d6f60b_4f555e34",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-10T09:18:12Z",
+      "side": 1,
+      "message": "Fold",
+      "range": {
+        "startLine": 57,
+        "startChar": 7,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ada387f_3cf16214",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-10T09:18:12Z",
+      "side": 1,
+      "message": "Fold",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4f5e5c_c2cda465",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-10T09:18:12Z",
+      "side": 1,
+      "message": "I\u0027d drop this, the constant folding pass isn\u0027t there to guarantee those intrinsics are dealt in the builder.",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 20
+      },
+      "revId": "8af6aa515f1dd0e8202ab2a4fd260f02c95c6346",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
