@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569a4f3a_b1d3b085",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-11-13T23:37:12Z",
+      "side": 1,
+      "message": "Do any of these functions actually do anything if you pass false?\n\nOr could you just write\n\nif (GetHeapSampler().IsEnabled()) JHPNonTlabSampleAllocation(self, obj, num_bytes)\n\nor the like, effectively moving the check up a level?",
+      "range": {
+        "startLine": 276,
+        "startChar": 58,
+        "endLine": 276,
+        "endChar": 86
+      },
+      "revId": "1f0b58cf5ee940fed0f878da8078a6d24e503016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
