@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3393e066_3dfce904",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-13T10:50:47Z",
+      "side": 1,
+      "message": "I think `3 \u003c\u003c n` would have been more interesting, especially for the lowest bit set, but this is good enough for me.",
+      "parentUuid": "fc3d5185_1f44a6b4",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 83
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a7a7b3_203c98ec",
