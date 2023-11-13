@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae35d0f7_43adda15",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-13T10:30:35Z",
+      "side": 1,
+      "message": "I think we need the \"F\" and \"D\" check also for riscv64.",
+      "range": {
+        "startLine": 4011,
+        "startChar": 56,
+        "endLine": 4011,
+        "endChar": 84
+      },
+      "revId": "e10d377e5394677719b27dfe2768ff4d8f639892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
