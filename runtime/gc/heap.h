@@ -273,7 +273,7 @@ class Heap {
                                                                   GetCurrentNonMovingAllocator(),
                                                                   pre_fence_visitor);
     // Java Heap Profiler check and sample allocation.
-    JHPCheckNonTlabSampleAllocation(self, obj, num_bytes);
+    JHPCheckNonTlabSampleAllocation(self, obj, num_bytes, GetHeapSampler().IsEnabled());
     return obj;
   }
 
@@ -908,21 +908,22 @@ class Heap {
   }
 
   void InitPerfettoJavaHeapProf();
-  int CheckPerfettoJHPEnabled();
   // In NonTlab case: Check whether we should report a sample allocation and if so report it.
   // Also update state (bytes_until_sample).
   // By calling JHPCheckNonTlabSampleAllocation from different functions for Large allocations and
   // non-moving allocations we are able to use the stack to identify these allocations separately.
   void JHPCheckNonTlabSampleAllocation(Thread* self,
                                        mirror::Object* ret,
-                                       size_t alloc_size);
+                                       size_t alloc_size,
+                                       bool jhp_enabled);
   // In Tlab case: Calculate the next tlab size (location of next sample point) and whether
   // a sample should be taken.
   size_t JHPCalculateNextTlabSize(Thread* self,
                                   size_t jhp_def_tlab_size,
                                   size_t alloc_size,
                                   bool* take_sample,
-                                  size_t* bytes_until_sample);
+                                  size_t* bytes_until_sample,
+                                  bool jhp_enabled);
   // Reduce the number of bytes to the next sample position by this adjustment.
   void AdjustSampleOffset(size_t adjustment);
 

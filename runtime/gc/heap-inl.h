@@ -291,7 +291,7 @@ inline mirror::Object* Heap::AllocLargeObject(Thread* self,
   mirror::Object* obj = AllocObjectWithAllocator<kInstrumented, false, PreFenceVisitor>
                         (self, *klass, byte_count, kAllocatorTypeLOS, pre_fence_visitor);
   // Java Heap Profiler check and sample allocation.
-  JHPCheckNonTlabSampleAllocation(self, obj, byte_count);
+  JHPCheckNonTlabSampleAllocation(self, obj, byte_count, GetHeapSampler().IsEnabled());
   return obj;
 }
 
