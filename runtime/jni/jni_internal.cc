@@ -520,8 +520,12 @@ ArtField* FindFieldJNI(const ScopedObjectAccess& soa,
                        const char* sig,
                        bool is_static) {
   StackHandleScope<2> hs(soa.Self());
+    ObjPtr<mirror::Class> klass =soa.Decode<mirror::Class>(jni_class);
+  if (klass == nullptr) {
+    return nullptr;
+  }
   Handle<mirror::Class> c(
-      hs.NewHandle(EnsureInitialized(soa.Self(), soa.Decode<mirror::Class>(jni_class))));
+      hs.NewHandle(EnsureInitialized(soa.Self(), klass)));
   if (c == nullptr) {
     return nullptr;
   }
