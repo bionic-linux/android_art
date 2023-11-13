@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287b4f79_3c401f3f",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-13T10:07:10Z",
+      "side": 1,
+      "message": "This may as well be moved inside the then-block and else-block below where you can drop the ternary operator as we already know which path we\u0027ll take.\n\nNote that `bit_utils.h` also contains `HighestOneBitValue\u003c.\u003e(.)` and `LowestOneBitValue\u003c.\u003e(.)` which we could use instead of going through `JAVASTLE_CLZ(.)`.",
+      "range": {
+        "startLine": 397,
+        "startChar": 2,
+        "endLine": 398,
+        "endChar": 98
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f3453e_6c936b83",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-13T10:07:10Z",
+      "side": 1,
+      "message": "We should have more tests with values that are not a power of two, say `3 \u003c\u003c n`.",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 83
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a7a7b3_203c98ec",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-13T10:07:10Z",
+      "side": 1,
+      "message": "Maybe these methods should also get the `$opt$` tag.",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
