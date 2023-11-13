@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fde922_4f0d6cc8",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-13T10:44:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287b4f79_3c401f3f",
+      "range": {
+        "startLine": 397,
+        "startChar": 2,
+        "endLine": 398,
+        "endChar": 98
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79f3453e_6c936b83",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3d5185_1f44a6b4",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-13T10:44:08Z",
+      "side": 1,
+      "message": "Added the power of two minus one (3, 7, etc)",
+      "parentUuid": "79f3453e_6c936b83",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 83
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a7a7b3_203c98ec",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-11-13T10:07:10Z",
       "side": 1,
       "message": "Maybe these methods should also get the `$opt$` tag.",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "5b796ca20265d03b140260921d971f0180515702",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06053e7_21b3aa33",
+        "filename": "test/2269-checker-constant-folding-instrinsics/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-13T10:44:08Z",
+      "side": 1,
+      "message": "The CHECK tags in the methods make sure they are compiled. That\u0027s how I found out that all the tests together weren\u0027t being compiled.",
+      "parentUuid": "31a7a7b3_203c98ec",
       "range": {
         "startLine": 75,
         "startChar": 8,
