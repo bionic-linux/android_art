@@ -22,6 +22,30 @@
       },
       "revId": "e10d377e5394677719b27dfe2768ff4d8f639892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880944f1_536aeeca",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-11-14T04:45:58Z",
+      "side": 1,
+      "message": "Ahh yes, the return type. THank you.",
+      "parentUuid": "ae35d0f7_43adda15",
+      "range": {
+        "startLine": 4011,
+        "startChar": 56,
+        "endLine": 4011,
+        "endChar": 84
+      },
+      "revId": "e10d377e5394677719b27dfe2768ff4d8f639892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
