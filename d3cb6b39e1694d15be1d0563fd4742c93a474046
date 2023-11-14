@@ -33,6 +33,23 @@
       "message": "Friendly ping",
       "revId": "d3cb6b39e1694d15be1d0563fd4742c93a474046",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d88c54_8201f7d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-14T16:47:32Z",
+      "side": 1,
+      "message": "Nicolas friendly ping",
+      "revId": "d3cb6b39e1694d15be1d0563fd4742c93a474046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
