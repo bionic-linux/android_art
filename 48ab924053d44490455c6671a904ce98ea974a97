@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3e33d1_be453ef9",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-15T22:56:44Z",
+      "side": 1,
+      "message": "I\u0027m not getting why not use `BUF_SIZE - 1` here?",
+      "range": {
+        "startLine": 787,
+        "startChar": 15,
+        "endLine": 787,
+        "endChar": 29
+      },
+      "revId": "48ab924053d44490455c6671a904ce98ea974a97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
