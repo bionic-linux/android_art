@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9b030e_2d5678b9",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-15T17:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3e9ab9_e1fdd900",
+      "range": {
+        "startLine": 94,
+        "startChar": 54,
+        "endLine": 94,
+        "endChar": 81
+      },
+      "revId": "d3b059a29d7d4c4d8210deb2be81f4986deb2385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa30d9d4_b9b49727",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaa4c4d_c47d31d6",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-15T17:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa30d9d4_b9b49727",
+      "range": {
+        "startLine": 107,
+        "startChar": 41,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "d3b059a29d7d4c4d8210deb2be81f4986deb2385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c182f011_b66add03",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-11-15T13:29:14Z",
       "side": 1,
       "message": "Nit: Change `DCHECK()` to `CHECK()` when already in an `if (kIsDebugBuild)` block. (Same below.)",
+      "range": {
+        "startLine": 201,
+        "startChar": 6,
+        "endLine": 201,
+        "endChar": 15
+      },
+      "revId": "d3b059a29d7d4c4d8210deb2be81f4986deb2385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa1968a_f3f7cd72",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-15T17:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c182f011_b66add03",
       "range": {
         "startLine": 201,
         "startChar": 6,
