@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c78fb8a_dbe86d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-11-15T09:22:01Z",
+      "side": 1,
+      "message": "Vladimir, friendly TH ping.",
+      "revId": "d3b059a29d7d4c4d8210deb2be81f4986deb2385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
