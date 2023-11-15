@@ -274,7 +274,10 @@ class SpaceBitmap {
 };
 
 using ContinuousSpaceBitmap = SpaceBitmap<kObjectAlignment>;
-using LargeObjectBitmap = SpaceBitmap<kLargeObjectAlignment>;
+// We pick the lowest supported page size to ensure that it's a constexpr, and
+// that we can keep bitmap accesses optimized. This is at the cost of extra
+// memory if the large object alignment is larger at runtime.
+using LargeObjectBitmap = SpaceBitmap<kMinPageSize>;
 
 template<size_t kAlignment>
 std::ostream& operator << (std::ostream& stream, const SpaceBitmap<kAlignment>& bitmap);

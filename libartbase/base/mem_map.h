@@ -181,24 +181,6 @@ class MemMap {
                         error_msg);
   }
 
-  // Request an aligned anonymous region with statically known alignment.
-  // This is a wrapper choosing between MapAnonymousAligned and MapAnonymous
-  // depends on whether MapAnonymous would guarantee the requested alignment.
-  template<size_t alignment>
-  static MemMap MapAnonymousAligned(const char* name,
-                                    size_t byte_count,
-                                    int prot,
-                                    bool low_4gb,
-                                    /*out*/std::string* error_msg) {
-    static_assert(IsPowerOfTwo(alignment));
-
-    if (alignment <= kMinPageSize) {
-      return MapAnonymous(name, byte_count, prot, low_4gb, error_msg);
-    } else {
-      return MapAnonymousAligned(name, byte_count, prot, low_4gb, alignment, error_msg);
-    }
-  }
-
   // Create placeholder for a region allocated by direct call to mmap.
   // This is useful when we do not have control over the code calling mmap,
   // but when we still want to keep track of it in the list.
