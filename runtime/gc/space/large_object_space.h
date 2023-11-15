@@ -206,13 +206,13 @@ class FreeListSpace final : public LargeObjectSpace {
   FreeListSpace(const std::string& name, MemMap&& mem_map, uint8_t* begin, uint8_t* end);
   size_t GetSlotIndexForAddress(uintptr_t address) const {
     DCHECK(Contains(reinterpret_cast<mirror::Object*>(address)));
-    return (address - reinterpret_cast<uintptr_t>(Begin())) / kLargeObjectAlignment;
+    return (address - reinterpret_cast<uintptr_t>(Begin())) / gPageSize;
   }
   size_t GetSlotIndexForAllocationInfo(const AllocationInfo* info) const;
   AllocationInfo* GetAllocationInfoForAddress(uintptr_t address);
   const AllocationInfo* GetAllocationInfoForAddress(uintptr_t address) const;
   uintptr_t GetAllocationAddressForSlot(size_t slot) const {
-    return reinterpret_cast<uintptr_t>(Begin()) + slot * kLargeObjectAlignment;
+    return reinterpret_cast<uintptr_t>(Begin()) + slot * gPageSize;
   }
   uintptr_t GetAddressForAllocationInfo(const AllocationInfo* info) const {
     return GetAllocationAddressForSlot(GetSlotIndexForAllocationInfo(info));
