@@ -22,6 +22,30 @@
       },
       "revId": "48ab924053d44490455c6671a904ce98ea974a97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb16ac67_b8ea3c8f",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-11-16T01:00:27Z",
+      "side": 1,
+      "message": "I\u0027m just trying to avoid ridiculously long log lines. The interesting information is easily in the first 150 characters.",
+      "parentUuid": "5a3e33d1_be453ef9",
+      "range": {
+        "startLine": 787,
+        "startChar": 15,
+        "endLine": 787,
+        "endChar": 29
+      },
+      "revId": "48ab924053d44490455c6671a904ce98ea974a97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
