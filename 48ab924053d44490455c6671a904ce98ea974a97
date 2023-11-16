@@ -46,6 +46,30 @@
       },
       "revId": "48ab924053d44490455c6671a904ce98ea974a97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a51a0e_613c610d",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-11-16T01:58:39Z",
+      "side": 1,
+      "message": "OK. Then please add a comment at the definition of `BUF_PRINT_SIZE` regarding the intent.",
+      "parentUuid": "fb16ac67_b8ea3c8f",
+      "range": {
+        "startLine": 787,
+        "startChar": 15,
+        "endLine": 787,
+        "endChar": 29
+      },
+      "revId": "48ab924053d44490455c6671a904ce98ea974a97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
