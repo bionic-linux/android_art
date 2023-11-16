@@ -46,6 +46,30 @@
       },
       "revId": "1f0b58cf5ee940fed0f878da8078a6d24e503016",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4e3e76_22498c35",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-11-16T16:37:14Z",
+      "side": 1,
+      "message": "Thanks! A bit longer, but easier to read, I think.",
+      "parentUuid": "f8c5d6b7_a8b77f46",
+      "range": {
+        "startLine": 276,
+        "startChar": 58,
+        "endLine": 276,
+        "endChar": 86
+      },
+      "revId": "1f0b58cf5ee940fed0f878da8078a6d24e503016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
