@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "245ed8eb_b8995b94",
+        "filename": "libarttools/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-11-17T19:34:38Z",
+      "side": 1,
+      "message": "(We may need to link this statically, but that\u0027s for another time. This is fine for now, I think.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 21
+      },
+      "revId": "556818e0616cc65efde1c2b1d3509eeced42957a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
