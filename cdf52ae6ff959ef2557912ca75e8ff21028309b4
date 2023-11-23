@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0cbcb5_2c7af7dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-23T16:37:24Z",
+      "side": 1,
+      "message": "I don\u0027t think so, they just forward args to the new ones. As long as they are inlined, we shall emit the same code anyway. (Inliner limits and `--no-inline-from\u003d` can get in the way.)",
+      "parentUuid": "575c5125_cbf87138",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "cdf52ae6ff959ef2557912ca75e8ff21028309b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2885999_3356f5c1",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-11-23T16:28:42Z",
       "side": 1,
       "message": "Bug: 202868177",
+      "revId": "cdf52ae6ff959ef2557912ca75e8ff21028309b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5eba42_29360233",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-23T16:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2885999_3356f5c1",
       "revId": "cdf52ae6ff959ef2557912ca75e8ff21028309b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
