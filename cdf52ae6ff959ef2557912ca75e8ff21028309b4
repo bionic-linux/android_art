@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575c5125_cbf87138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-23T16:28:42Z",
+      "side": 1,
+      "message": "Don\u0027t we need the old one for backwards compatibility?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "cdf52ae6ff959ef2557912ca75e8ff21028309b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2885999_3356f5c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2023-11-23T16:28:42Z",
+      "side": 1,
+      "message": "Bug: 202868177",
+      "revId": "cdf52ae6ff959ef2557912ca75e8ff21028309b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
