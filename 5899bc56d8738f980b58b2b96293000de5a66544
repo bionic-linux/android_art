@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d890f5a_b0003b68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-11-27T11:15:50Z",
+      "side": 1,
+      "message": "Hi,\n\nAs discussed previously, this is the CL that turns large object alignment back to the runtime page size on a page-agnostic build of ART, avoiding extra memory consumption on 4K systems.\n\nLet me know if you like the approach. The main thing here is that SpaceBitmap\u003c\u003e is still templated with a const value of kMinPageSize (4K). We accept that if the runtime page size is 16K, then only 1 out of every 4 bit will actually be in-use. It seems reasonable to keep things simpler, at the cost of a bit of memory.\n\nThanks,\nPierre",
+      "revId": "5899bc56d8738f980b58b2b96293000de5a66544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
