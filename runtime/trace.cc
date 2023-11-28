@@ -248,6 +248,8 @@ class TraceWriterTask final : public Task {
         thread_id_(thread_id) {}
 
   void Run(Thread* self ATTRIBUTE_UNUSED) override {
+    DCHECK(trace_writer_ != nullptr);
+    DCHECK_GE(thread_id_ + cur_offset_, 0);
     std::unordered_map<ArtMethod*, std::string> method_infos;
     {
       ScopedObjectAccess soa(Thread::Current());
