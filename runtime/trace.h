@@ -17,6 +17,9 @@
 #ifndef ART_RUNTIME_TRACE_H_
 #define ART_RUNTIME_TRACE_H_
 
+#define USE_MMAP 0
+#define USE_POOL_BUFFERS 1
+
 #include <bitset>
 #include <map>
 #include <memory>
@@ -35,6 +38,8 @@
 #include "instrumentation.h"
 #include "runtime_globals.h"
 #include "thread_pool.h"
+
+#define NUM_TRACE_BUFFERS 150
 
 namespace unix_file {
 class FdFile;
@@ -134,7 +139,7 @@ class TraceWriter {
   // required to serialize these since each method is encoded with a unique id which is assigned
   // when the method is seen for the first time in the recoreded events. So we need to serialize
   // these flushes across threads.
-  void FlushBuffer(Thread* thread, bool is_sync) REQUIRES_SHARED(Locks::mutator_lock_)
+  void FlushBuffer(Thread* thread, bool is_sync, bool release = false) REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!tracing_lock_);
 
   // This is called when the per-thread buffer is full and a new entry needs to be recorded. This
@@ -173,6 +178,11 @@ class TraceWriter {
   bool HasOverflow() { return overflow_; }
   TraceOutputMode GetOutputMode() { return trace_output_mode_; }
   size_t GetBufferSize() { return buffer_size_; }
+
+  void InitializeTraceBuffers();
+  void ReleaseTraceBuffer(int index);
+  int AcquireTraceBuffer(size_t tid);
+  uintptr_t* GetTraceBuffer(int index);
 
  private:
   // Get a 32-bit id for the method and specify if the method hasn't been seen before. If this is
@@ -275,6 +285,14 @@ class TraceWriter {
 
   // Thread pool to flush the trace entries to file.
   std::unique_ptr<ThreadPool> thread_pool_;
+
+#if USE_POOL_BUFFERS
+  std::atomic<size_t> owner_tids_[NUM_TRACE_BUFFERS];
+  uintptr_t* trace_buffer_;
+#if USE_MMAP
+  int fd_;
+#endif
+#endif
 };
 
 // Class for recording event traces. Trace data is either collected
