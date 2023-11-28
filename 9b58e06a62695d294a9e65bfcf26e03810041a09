@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab14562_5a80fbdf",
+        "filename": "compiler/optimizing/code_generator_riscv64.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-11-28T08:40:23Z",
+      "side": 1,
+      "message": "Conflict with https://android-review.googlesource.com/2849574 . One of the changes shall need a rebase. Maybe we should get this one in first and I\u0027ll update the other one to include getByte/putByte.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "9b58e06a62695d294a9e65bfcf26e03810041a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
