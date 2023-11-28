@@ -1235,12 +1235,12 @@ void InstructionCodeGeneratorARM64::GenerateMethodEntryExitHook(HInstruction* in
   // Check if there is place in the buffer to store a new entry, if no, take slow path.
   uint32_t trace_buffer_index_offset =
       Thread::TraceBufferIndexOffset<kArm64PointerSize>().Int32Value();
-  __ Ldr(index, MemOperand(tr, trace_buffer_index_offset));
-  __ Subs(index, index, kNumEntriesForWallClock);
+  __ Ldr(addr, MemOperand(tr, trace_buffer_index_offset));
+  __ Subs(index, addr, kNumEntriesForWallClock);
   __ B(lt, slow_path->GetEntryLabel());
 
   // Update the index in the `Thread`.
-  __ Str(index, MemOperand(tr, trace_buffer_index_offset));
+  __ Str(addr, MemOperand(tr, trace_buffer_index_offset));
   // Calculate the entry address in the buffer.
   // addr = base_addr + sizeof(void*) * index;
   __ Ldr(addr, MemOperand(tr, Thread::TraceBufferPtrOffset<kArm64PointerSize>().SizeValue()));
@@ -1259,7 +1259,7 @@ void InstructionCodeGeneratorARM64::GenerateMethodEntryExitHook(HInstruction* in
   }
   __ Str(tmp, MemOperand(addr, kMethodOffsetInBytes));
   // Record the timestamp.
-  __ Mrs(tmp, (SystemRegister)SYS_CNTVCT_EL0);
+  // __ Mrs(tmp, (SystemRegister)SYS_CNTVCT_EL0);
   __ Str(tmp, MemOperand(addr, kTimestampOffsetInBytes));
   __ Bind(slow_path->GetExitLabel());
 }
