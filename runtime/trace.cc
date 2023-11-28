@@ -248,12 +248,14 @@ class TraceWriterTask final : public Task {
         thread_id_(thread_id) {}
 
   void Run(Thread* self ATTRIBUTE_UNUSED) override {
-    std::unordered_map<ArtMethod*, std::string> method_infos;
+    DCHECK(trace_writer_ != nullptr);
+    DCHECK_GE(thread_id_ + cur_offset_, 0);
+    /*std::unordered_map<ArtMethod*, std::string> method_infos;
     {
       ScopedObjectAccess soa(Thread::Current());
       trace_writer_->PreProcessTraceForMethodInfos(buffer_, cur_offset_, method_infos);
     }
-    trace_writer_->FlushBuffer(buffer_, cur_offset_, thread_id_, method_infos);
+    trace_writer_->FlushBuffer(buffer_, cur_offset_, thread_id_, method_infos);*/
     delete[] buffer_;
   }
 
@@ -1192,9 +1194,9 @@ void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
   DCHECK(method_trace_entries != nullptr);
 
   if (is_sync || thread_pool_ == nullptr) {
-    std::unordered_map<ArtMethod*, std::string> method_infos;
+    /*std::unordered_map<ArtMethod*, std::string> method_infos;
     PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
-    FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
+    FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);*/
 
     // This is a synchronous flush, so no need to allocate a new buffer. This is used either
     // when the tracing has finished or in non-streaming mode.
