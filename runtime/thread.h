@@ -1352,7 +1352,7 @@ class EXPORT Thread {
 
   void ResetMethodTraceBuffer() {
     if (tlsPtr_.method_trace_buffer != nullptr) {
-      delete[] tlsPtr_.method_trace_buffer;
+      // delete[] tlsPtr_.method_trace_buffer;
     }
     tlsPtr_.method_trace_buffer = nullptr;
     tlsPtr_.method_trace_buffer_index = 0;

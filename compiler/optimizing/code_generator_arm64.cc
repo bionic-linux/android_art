@@ -1267,7 +1267,7 @@ void InstructionCodeGeneratorARM64::GenerateMethodEntryExitHook(HInstruction* in
   }
   __ Str(tmp, MemOperand(addr, kMethodOffsetInBytes));
   // Record the timestamp.
-  __ Mrs(tmp, (SystemRegister)SYS_CNTVCT_EL0);
+  // __ Mrs(tmp, (SystemRegister)SYS_CNTVCT_EL0);
   __ Str(tmp, MemOperand(addr, kTimestampOffsetInBytes));
   __ Bind(slow_path->GetExitLabel());
 }
