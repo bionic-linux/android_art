@@ -78,9 +78,13 @@ std::unique_ptr<std::vector<ArtMethod*>> Trace::temp_stack_trace_;
 // The key identifying the tracer to update instrumentation.
 static constexpr const char* kTracerInstrumentationKey = "Tracer";
 
+#define RAW_FLUSH 0
+
+#if (RAW_FLUSH == 0)
 static TraceAction DecodeTraceAction(uint32_t tmid) {
   return static_cast<TraceAction>(tmid & kTraceMethodActionMask);
 }
+#endif
 
 namespace {
 // Scaling factor to convert timestamp counter into wall clock time reported in micro seconds.
@@ -240,11 +244,15 @@ class TraceWriterTask final : public Task {
         thread_id_(thread_id) {}
 
   void Run(Thread* self ATTRIBUTE_UNUSED) override {
+    DCHECK(trace_writer_ != nullptr);
+    DCHECK_GE(thread_id_ + cur_offset_, 0);
     std::unordered_map<ArtMethod*, std::string> method_infos;
+#if (RAW_FLUSH == 0)
     {
       ScopedObjectAccess soa(Thread::Current());
       trace_writer_->PreProcessTraceForMethodInfos(buffer_, cur_offset_, method_infos);
     }
+#endif
     trace_writer_->FlushBuffer(buffer_, cur_offset_, thread_id_, method_infos);
     delete[] buffer_;
   }
@@ -732,7 +740,7 @@ TracingMode Trace::GetMethodTracingMode() {
 static constexpr size_t kMinBufSize = 18U;  // Trace header is up to 18B.
 // Size of per-thread buffer size. The value is chosen arbitrarily. This value
 // should be greater than kMinBufSize.
-static constexpr size_t kPerThreadBufSize = 512 * 1024;
+static constexpr size_t kPerThreadBufSize = 512 * 1024 * 32;
 static_assert(kPerThreadBufSize > kMinBufSize);
 
 namespace {
@@ -1181,7 +1189,9 @@ void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
 
   if (is_sync || thread_pool_ == nullptr) {
     std::unordered_map<ArtMethod*, std::string> method_infos;
+#if (RAW_FLUSH == 0)
     PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
+#endif
     FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
 
     // This is a synchronous flush, so no need to allocate a new buffer. This is used either
@@ -1204,6 +1214,22 @@ void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
   return;
 }
 
+#if (RAW_FLUSH == 2)
+void TraceWriter::FlushBuffer(uintptr_t* method_trace_entries ATTRIBUTE_UNUSED,
+                              size_t current_offset ATTRIBUTE_UNUSED,
+                              size_t tid ATTRIBUTE_UNUSED,
+                              const std::unordered_map<ArtMethod*, std::string>& method_infos ATTRIBUTE_UNUSED) {
+}
+#elif (RAW_FLUSH == 1)
+void TraceWriter::FlushBuffer(uintptr_t* method_trace_entries,
+                              size_t current_offset,
+                              size_t tid ATTRIBUTE_UNUSED,
+                              const std::unordered_map<ArtMethod*, std::string>& method_infos ATTRIBUTE_UNUSED) {
+    if (!trace_file_->WriteFully(method_trace_entries + current_offset, (kPerThreadBufSize - current_offset))) {
+      PLOG(WARNING) << "Failed streaming a tracing event.";
+    }
+}
+#else
 void TraceWriter::FlushBuffer(uintptr_t* method_trace_entries,
                               size_t current_offset,
                               size_t tid,
@@ -1285,6 +1311,7 @@ void TraceWriter::FlushBuffer(uintptr_t* method_trace_entries,
   }
   return;
 }
+#endif
 
 void Trace::LogMethodTraceEvent(Thread* thread,
                                 ArtMethod* method,
