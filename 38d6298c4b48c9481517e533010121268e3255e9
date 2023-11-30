@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6390c3e3_eb1561d8",
+        "filename": "runtime/runtime_globals.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-11-30T10:34:52Z",
+      "side": 0,
+      "message": "One thing to discuss, talking to Ruben, we were wondering if you liked having a dedicated variable for large object alignments. Otherwise this CL turns it back into `gPageSize`.\n\nWould you prefer to have a `gLargeObjectAlignment` variable? I was thinking that if such a variable was always going to be the same as `gPageSize`, it might be better not to make a distinction. Given a configuration where `gPageSize !\u003d gLargeObjectAlignment` would not be tested, I would expect over time we may end up with inconsistent use of either, which may not be an issue really.\n\nWDYT?",
+      "revId": "38d6298c4b48c9481517e533010121268e3255e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
