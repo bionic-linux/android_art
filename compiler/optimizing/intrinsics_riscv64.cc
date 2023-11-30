@@ -2329,13 +2329,13 @@ static void GenerateByteSwapAndExtract(Riscv64Assembler* assembler,
   // Also handles moving to FP registers.
   GenerateReverseBytes(assembler, rd, rs1, swap_type);
   if (shift != kNoXRegister) {
-    DCHECK_EQ(rs1, rd.AsRegister<XRegister>());
-    __ Sllw(rs1, rs1, shift);
+    XRegister rd_reg = rd.AsRegister<XRegister>();
+    __ Sllw(rd_reg, rd_reg, shift);
     if (type == DataType::Type::kUint16) {
-      __ Srliw(rs1, rs1, 16);
+      __ Srliw(rd_reg, rd_reg, 16);
     } else {
       DCHECK_EQ(type, DataType::Type::kInt16);
-      __ Sraiw(rs1, rs1, 16);
+      __ Sraiw(rd_reg, rd_reg, 16);
     }
   }
 }
@@ -2514,6 +2514,8 @@ static void GenerateVarHandleCompareAndSetOrExchange(HInvoke* invoke,
   if (return_success) {
     // Nothing to do, the result register already contains 1 on success and 0 on failure.
   } else if (byte_swap) {
+    DCHECK_IMPLIES(is_small, out.AsRegister<XRegister>() == old_value)
+        << " " << value_type << " " << out.AsRegister<XRegister>() << "!=" << old_value;
     GenerateByteSwapAndExtract(assembler, out, old_value, shift, value_type);
   } else if (is_fp) {
     codegen->MoveLocation(out, Location::RegisterLocation(old_value), value_type);
@@ -2896,6 +2898,8 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
     GenerateGetAndUpdate(
         codegen, get_and_update_op, op_type, order, tmp_ptr, arg_reg, old_value, mask, temp);
     if (byte_swap) {
+      DCHECK_IMPLIES(is_small, out.AsRegister<XRegister>() == old_value)
+          << " " << value_type << " " << out.AsRegister<XRegister>() << "!=" << old_value;
       GenerateByteSwapAndExtract(assembler, out, old_value, shift, value_type);
     } else if (is_fp) {
       codegen->MoveLocation(out, Location::RegisterLocation(old_value), value_type);
