@@ -732,7 +732,7 @@ TracingMode Trace::GetMethodTracingMode() {
 static constexpr size_t kMinBufSize = 18U;  // Trace header is up to 18B.
 // Size of per-thread buffer size. The value is chosen arbitrarily. This value
 // should be greater than kMinBufSize.
-static constexpr size_t kPerThreadBufSize = 512 * 1024;
+static constexpr size_t kPerThreadBufSize = 5 * 1024 * 1024;
 static_assert(kPerThreadBufSize > kMinBufSize);
 
 namespace {

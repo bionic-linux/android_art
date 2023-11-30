@@ -2005,7 +2005,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
 
   CHECK(class_linker_ != nullptr);
 
-  if (runtime_options.Exists(Opt::MethodTrace)) {
+  /*if (runtime_options.Exists(Opt::MethodTrace)) {
     trace_config_.reset(new TraceConfig());
     trace_config_->trace_file = runtime_options.ReleaseOrDefault(Opt::MethodTraceFile);
     trace_config_->trace_file_size = runtime_options.ReleaseOrDefault(Opt::MethodTraceFileSize);
@@ -2014,7 +2014,14 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
                                            TraceOutputMode::kStreaming :
                                            TraceOutputMode::kFile;
     trace_config_->clock_source = runtime_options.GetOrDefault(Opt::MethodTraceClock);
-  }
+  }*/
+
+  trace_config_.reset(new TraceConfig());
+  trace_config_->trace_file = "/dev/null";
+  trace_config_->trace_file_size = 1000;
+  trace_config_->trace_mode = Trace::TraceMode::kMethodTracing;
+  trace_config_->trace_output_mode = TraceOutputMode::kStreaming;
+  trace_config_->clock_source = TraceClockSource::kWall;
 
   // TODO: Remove this in a follow up CL. This isn't used anywhere.
   Trace::SetDefaultClockSource(runtime_options.GetOrDefault(Opt::ProfileClock));
