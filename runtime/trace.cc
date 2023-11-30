@@ -241,12 +241,15 @@ class TraceWriterTask final : public Task {
 
   void Run(Thread* self ATTRIBUTE_UNUSED) override {
     std::unordered_map<ArtMethod*, std::string> method_infos;
-    {
+    DCHECK_NE(buffer_, nullptr);
+    DCHECK_NE(trace_writer_, nullptr);
+    DCHECK_GT(cur_offset_ + thread_id_, 0u);
+    /*{
       ScopedObjectAccess soa(Thread::Current());
       trace_writer_->PreProcessTraceForMethodInfos(buffer_, cur_offset_, method_infos);
     }
-    trace_writer_->FlushBuffer(buffer_, cur_offset_, thread_id_, method_infos);
-    delete[] buffer_;
+    trace_writer_->FlushBuffer(buffer_, cur_offset_, thread_id_, method_infos);*/
+    // delete[] buffer_;
   }
 
  private:
@@ -1176,28 +1179,34 @@ uintptr_t* TraceWriter::PrepareBufferForNewEntries(Thread* thread) {
 void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
   uintptr_t* method_trace_entries = thread->GetMethodTraceBuffer();
   size_t* current_offset = thread->GetMethodTraceIndexPtr();
-  size_t tid = thread->GetTid();
+  // size_t tid = thread->GetTid();
   DCHECK(method_trace_entries != nullptr);
 
   if (is_sync || thread_pool_ == nullptr) {
-    std::unordered_map<ArtMethod*, std::string> method_infos;
-    PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
-    FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
+    // std::unordered_map<ArtMethod*, std::string> method_infos;
+    // PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
+    // FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
 
     // This is a synchronous flush, so no need to allocate a new buffer. This is used either
     // when the tracing has finished or in non-streaming mode.
     // Just reset the buffer pointer to the initial value, so we can reuse the same buffer.
+     if (!trace_file_->WriteFully(method_trace_entries + *current_offset, (kPerThreadBufSize - *current_offset))) {
+      PLOG(WARNING) << "Failed streaming a tracing event.";
+    }
     *current_offset = kPerThreadBufSize;
   } else {
     // The TraceWriterTask takes the ownership of the buffer and delets the buffer once the
     // entries are flushed.
-    thread_pool_->AddTask(Thread::Current(),
-                          new TraceWriterTask(this, method_trace_entries, *current_offset, tid));
+    // thread_pool_->AddTask(Thread::Current(),
+    //                      new TraceWriterTask(this, method_trace_entries, *current_offset, tid));
 
     // Create a new buffer and update the per-thread buffer so we don't have to wait for the
     // flushing to finish.
-    uintptr_t* method_trace_buffer = new uintptr_t[std::max(kMinBufSize, kPerThreadBufSize)]();
-    thread->SetMethodTraceBuffer(method_trace_buffer);
+    // uintptr_t* method_trace_buffer = new uintptr_t[std::max(kMinBufSize, kPerThreadBufSize)]();
+    // thread->SetMethodTraceBuffer(method_trace_buffer);
+    if (!trace_file_->WriteFully(method_trace_entries + *current_offset, (kPerThreadBufSize - *current_offset))) {
+      PLOG(WARNING) << "Failed streaming a tracing event.";
+    }
     *current_offset = kPerThreadBufSize;
   }
 
