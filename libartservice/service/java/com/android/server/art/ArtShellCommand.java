@@ -200,7 +200,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
         boolean forAllPackages = false;
         boolean legacyClearProfile = false;
         boolean verbose = false;
-        boolean forceMergeProfile = false;
 
         String opt;
         while ((opt = getNextOption()) != null) {
@@ -265,9 +264,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
                 case "-v":
                     verbose = true;
                     break;
-                case "--force-merge-profile":
-                    forceMergeProfile = true;
-                    break;
                 default:
                     pw.println("Error: Unknown option: " + opt);
                     return 1;
@@ -298,10 +294,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
         }
         if (force) {
             paramsBuilder.setFlags(ArtFlags.FLAG_FORCE, ArtFlags.FLAG_FORCE);
-        }
-        if (forceMergeProfile) {
-            paramsBuilder.setFlags(
-                    ArtFlags.FLAG_FORCE_MERGE_PROFILE, ArtFlags.FLAG_FORCE_MERGE_PROFILE);
         }
         if (splitArg != null) {
             if (scopeFlags != 0) {
@@ -675,8 +667,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
         pw.println("       For secondary dex files, it also clears all dexopt artifacts.");
         pw.println("       When this flag is set, all the other flags are ignored.");
         pw.println("    -v Verbose mode. This mode prints detailed results.");
-        pw.println("    --force-merge-profile Force merge profiles even if the difference between");
-        pw.println("       before and after the merge is not significant.");
         pw.println("  Scope options:");
         pw.println("    --primary-dex Dexopt primary dex files only (all APKs that are installed");
         pw.println("      as part of the package, including the base APK and all other split");
@@ -950,8 +940,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
             case ArtFlags.PASS_MAIN:
                 return reason.equals(ReasonMapping.REASON_BG_DEXOPT) ? "Dexopting apps (main pass)"
                                                                      : "Dexopting apps";
-            case ArtFlags.PASS_SUPPLEMENTARY:
-                return "Dexopting apps (supplementary pass)";
         }
         throw new IllegalArgumentException("Unknown batch dexopt pass " + pass);
     }
