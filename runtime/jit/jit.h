@@ -471,6 +471,8 @@ class Jit {
                              bool prejit)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // JIT compiler
   static JitCompilerInterface* jit_compiler_;
 
@@ -509,6 +511,10 @@ class Jit {
   // The size of the memory pointed by `fd_methods_`. Cached here to avoid
   // recomputing it.
   size_t fd_methods_size_;
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 
   // Map of hotness counters for methods which we want to share the memory
   // between the zygote and apps.

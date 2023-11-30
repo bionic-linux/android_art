@@ -52,6 +52,26 @@ struct PageSize {
   }
 };
 
+// The gPageSize variable is defined as a global static value, meaning that it is loaded
+// dynamically for all references which are separated by one or more function call, as the compiler
+// does not recognize the value as constant (unchanged after initialization), despite the const
+// attribute.
+// We therefore optimize usage of the variable as follows:
+// * For very hot functions, if the running Thread object is already locally accessed, get the
+//   const (log2) value cached in 32-bit TLS.
+// * Otherwise if there are multiple class function invocations of the same object instantiation
+//   which require a reference to the static value, instead reference a cached copy of the (log2)
+//   value as a const member variable.
+// * Otherwise if a local member variable is not possible or appropriate, but we do have an existing
+//   reference to an object that has the cached const (log2) value, we use that object's value.
+// * Otherwise, if repeat references are required by the same function and separated by one or more
+//   function calls, we store the value as a local const variable which is then reused throughout
+//   the function.
+// Note: We cache the log2 of the page size as member variables instead of the page size directly,
+// as the compiler loses knowledge that gPageSize is a power-of-two when it is cached. Therefore, to
+// maintain power-of-two optimizations we store the log2 and left-shift when needed to access the
+// page size.
+//
 static const PageSize gPageSize;
 #else
 static constexpr size_t gPageSize = kMinPageSize;

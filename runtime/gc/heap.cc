@@ -422,7 +422,8 @@ Heap::Heap(size_t initial_size,
       boot_image_spaces_(),
       boot_images_start_address_(0u),
       boot_images_size_(0u),
-      pre_oome_gc_count_(0u) {
+      pre_oome_gc_count_(0u),
+      page_size_log2_(gPageSizeLog2) {
   if (VLOG_IS_ON(heap) || VLOG_IS_ON(startup)) {
     LOG(INFO) << "Heap() entering";
   }
@@ -492,7 +493,7 @@ Heap::Heap(size_t initial_size,
   } else if (foreground_collector_type_ != kCollectorTypeCC && is_zygote) {
     heap_reservation_size = capacity_;
   }
-  heap_reservation_size = RoundUp(heap_reservation_size, gPageSize);
+  heap_reservation_size = RoundUp(heap_reservation_size, GetPageSize());
   // Load image space(s).
   std::vector<std::unique_ptr<space::ImageSpace>> boot_image_spaces;
   MemMap heap_reservation;
@@ -1026,14 +1027,15 @@ void Heap::IncrementDisableThreadFlip(Thread* self) {
 
 void Heap::EnsureObjectUserfaulted(ObjPtr<mirror::Object> obj) {
   if (gUseUserfaultfd) {
+    const size_t page_size = GetPageSize();
     // Use volatile to ensure that compiler loads from memory to trigger userfaults, if required.
     const uint8_t* start = reinterpret_cast<uint8_t*>(obj.Ptr());
-    const uint8_t* end = AlignUp(start + obj->SizeOf(), gPageSize);
+    const uint8_t* end = AlignUp(start + obj->SizeOf(), page_size);
     // The first page is already touched by SizeOf().
-    start += gPageSize;
+    start += page_size;
     while (start < end) {
       ForceRead(start);
-      start += gPageSize;
+      start += page_size;
     }
   }
 }
@@ -4516,7 +4518,8 @@ mirror::Object* Heap::AllocWithNewTLAB(Thread* self,
     // TODO: for large allocations, which are rare, maybe we should allocate
     // that object and return. There is no need to revoke the current TLAB,
     // particularly if it's mostly unutilized.
-    size_t next_tlab_size = RoundDown(alloc_size + kDefaultTLABSize, gPageSize) - alloc_size;
+    size_t next_tlab_size =
+        RoundDown(alloc_size + kDefaultTLABSize, self->GetPageSize()) - alloc_size;
     if (jhp_enabled) {
       next_tlab_size = JHPCalculateNextTlabSize(
           self, next_tlab_size, alloc_size, &take_sample, &bytes_until_sample);

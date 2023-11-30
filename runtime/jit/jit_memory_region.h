@@ -63,7 +63,8 @@ class JitMemoryRegion {
         exec_pages_(),
         non_exec_pages_(),
         data_mspace_(nullptr),
-        exec_mspace_(nullptr) {}
+        exec_mspace_(nullptr),
+        page_size_(gPageSize) {}
 
   bool Initialize(size_t initial_capacity,
                   size_t max_capacity,
@@ -276,6 +277,8 @@ class JitMemoryRegion {
 
   // The opaque mspace for allocating code.
   void* exec_mspace_ GUARDED_BY(Locks::jit_lock_);
+
+  size_t page_size_ GUARDED_BY(Locks::jit_lock_);
 
   friend class ScopedCodeCacheWrite;  // For GetUpdatableCodeMapping
   friend class TestZygoteMemory;

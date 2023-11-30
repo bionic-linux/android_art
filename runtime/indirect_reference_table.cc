@@ -85,7 +85,8 @@ IndirectReferenceTable::IndirectReferenceTable(IndirectRefKind kind)
       kind_(kind),
       top_index_(0u),
       max_entries_(0u),
-      current_num_holes_(0) {
+      current_num_holes_(0),
+      page_size_log2_(gPageSizeLog2) {
   CHECK_NE(kind, kJniTransition);
   CHECK_NE(kind, kLocal);
 }
@@ -96,7 +97,7 @@ bool IndirectReferenceTable::Initialize(size_t max_count, std::string* error_msg
   // Overflow and maximum check.
   CHECK_LE(max_count, kMaxTableSizeInBytes / sizeof(IrtEntry));
 
-  const size_t table_bytes = RoundUp(max_count * sizeof(IrtEntry), gPageSize);
+  const size_t table_bytes = RoundUp(max_count * sizeof(IrtEntry), GetPageSize());
   table_mem_map_ = NewIRTMap(table_bytes, error_msg);
   if (!table_mem_map_.IsValid()) {
     DCHECK(!error_msg->empty());
@@ -314,11 +315,11 @@ void IndirectReferenceTable::Trim() {
   ScopedTrace trace(__PRETTY_FUNCTION__);
   DCHECK(table_mem_map_.IsValid());
   const size_t top_index = Capacity();
-  uint8_t* release_start = AlignUp(reinterpret_cast<uint8_t*>(&table_[top_index]), gPageSize);
+  uint8_t* release_start = AlignUp(reinterpret_cast<uint8_t*>(&table_[top_index]), GetPageSize());
   uint8_t* release_end = static_cast<uint8_t*>(table_mem_map_.BaseEnd());
   DCHECK_GE(reinterpret_cast<uintptr_t>(release_end), reinterpret_cast<uintptr_t>(release_start));
-  DCHECK_ALIGNED_PARAM(release_end, gPageSize);
-  DCHECK_ALIGNED_PARAM(release_end - release_start, gPageSize);
+  DCHECK_ALIGNED_PARAM(release_end, GetPageSize());
+  DCHECK_ALIGNED_PARAM(release_end - release_start, GetPageSize());
   if (release_start != release_end) {
     madvise(release_start, release_end - release_start, MADV_DONTNEED);
   }

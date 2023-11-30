@@ -57,7 +57,8 @@ MallocSpace::MallocSpace(const std::string& name,
         name, std::move(mem_map), begin, end, limit, kGcRetentionPolicyAlwaysCollect),
       recent_free_pos_(0), lock_("allocation space lock", kAllocSpaceLock),
       growth_limit_(growth_limit), can_move_objects_(can_move_objects),
-      starting_size_(starting_size), initial_size_(initial_size) {
+      starting_size_(starting_size), initial_size_(initial_size),
+      page_size_log2_(gPageSizeLog2) {
   if (create_bitmaps) {
     size_t bitmap_index = bitmap_index_++;
     static const uintptr_t kGcCardSize = static_cast<uintptr_t>(accounting::CardTable::kCardSize);
@@ -140,7 +141,7 @@ void MallocSpace::RegisterRecentFree(mirror::Object* ptr) {
 }
 
 void MallocSpace::SetGrowthLimit(size_t growth_limit) {
-  growth_limit = RoundUp(growth_limit, gPageSize);
+  growth_limit = RoundUp(growth_limit, GetPageSize());
   growth_limit_ = growth_limit;
   if (Size() > growth_limit_) {
     SetEnd(begin_ + growth_limit);
@@ -183,12 +184,13 @@ ZygoteSpace* MallocSpace::CreateZygoteSpace(const char* alloc_space_name, bool l
   // alloc space so that we won't mix thread local runs from different
   // alloc spaces.
   RevokeAllThreadLocalBuffers();
-  SetEnd(reinterpret_cast<uint8_t*>(RoundUp(reinterpret_cast<uintptr_t>(End()), gPageSize)));
+  const size_t page_size = GetPageSize();
+  SetEnd(reinterpret_cast<uint8_t*>(RoundUp(reinterpret_cast<uintptr_t>(End()), page_size)));
   DCHECK_ALIGNED(begin_, accounting::CardTable::kCardSize);
   DCHECK_ALIGNED(End(), accounting::CardTable::kCardSize);
-  DCHECK_ALIGNED_PARAM(begin_, gPageSize);
-  DCHECK_ALIGNED_PARAM(End(), gPageSize);
-  size_t size = RoundUp(Size(), gPageSize);
+  DCHECK_ALIGNED_PARAM(begin_, page_size);
+  DCHECK_ALIGNED_PARAM(End(), page_size);
+  size_t size = RoundUp(Size(), page_size);
   // Trimming the heap should be done by the caller since we may have invalidated the accounting
   // stored in between objects.
   // Remaining size is for the new alloc space.
@@ -200,7 +202,7 @@ ZygoteSpace* MallocSpace::CreateZygoteSpace(const char* alloc_space_name, bool l
              << "Size " << size << "\n"
              << "GrowthLimit " << growth_limit_ << "\n"
              << "Capacity " << Capacity();
-  SetGrowthLimit(RoundUp(size, gPageSize));
+  SetGrowthLimit(RoundUp(size, page_size));
   // FIXME: Do we need reference counted pointers here?
   // Make the two spaces share the same mark bitmaps since the bitmaps span both of the spaces.
   VLOG(heap) << "Creating new AllocSpace: ";

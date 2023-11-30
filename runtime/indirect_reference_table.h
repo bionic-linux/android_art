@@ -310,6 +310,8 @@ class IndirectReferenceTable {
   /* extra debugging checks */
   bool CheckEntry(const char*, IndirectRef, uint32_t) const;
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // Mem map where we store the indirect refs.
   MemMap table_mem_map_;
   // Bottom of the stack. Do not directly access the object references
@@ -328,6 +330,10 @@ class IndirectReferenceTable {
   // Description of the algorithm is in the .cc file.
   // TODO: Consider other data structures for compact tables, e.g., free lists.
   size_t current_num_holes_;  // Number of holes in the current / top segment.
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 };
 
 }  // namespace art

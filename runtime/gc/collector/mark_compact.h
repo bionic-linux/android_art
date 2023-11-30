@@ -566,6 +566,8 @@ class MarkCompact final : public GarbageCollector {
   void UpdateClassTableClasses(Runtime* runtime, bool immune_class_table_only)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // For checkpoints
   Barrier gc_barrier_;
   // Every object inside the immune spaces is assumed to be marked.
@@ -809,6 +811,10 @@ class MarkCompact final : public GarbageCollector {
   // clamped but info_map_ is delayed, we set it to 'Pending'. Once 'info_map_'
   // is also clamped, then we set it to 'Finished'.
   ClampInfoStatus clamp_info_map_status_;
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 
   class FlipCallback;
   class ThreadFlipVisitor;

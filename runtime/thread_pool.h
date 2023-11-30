@@ -193,6 +193,8 @@ class ThreadPool {
     return started_ && !tasks_.empty();
   }
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   const std::string name_;
   Mutex task_queue_lock_;
   ConditionVariable task_queue_condition_ GUARDED_BY(task_queue_lock_);
@@ -210,6 +212,7 @@ class ThreadPool {
   size_t max_active_workers_ GUARDED_BY(task_queue_lock_);
   const bool create_peers_;
   const size_t worker_stack_size_;
+  const size_t page_size_log2_;
 
  private:
   friend class ThreadPoolWorker;

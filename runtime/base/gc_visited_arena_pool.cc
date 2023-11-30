@@ -41,16 +41,20 @@ TrackedArena::TrackedArena(uint8_t* start, size_t size, bool pre_zygote_fork, bo
     // entire arena.
     bytes_allocated_ = size;
   } else {
-    DCHECK_ALIGNED_PARAM(size, gPageSize);
-    DCHECK_ALIGNED_PARAM(start, gPageSize);
-    size_t arr_size = size / gPageSize;
+    const size_t page_size = GetPageSize();
+    DCHECK_ALIGNED_PARAM(size, page_size);
+    DCHECK_ALIGNED_PARAM(start, page_size);
+    size_t arr_size = size / page_size;
     first_obj_array_.reset(new uint8_t*[arr_size]);
     std::fill_n(first_obj_array_.get(), arr_size, nullptr);
   }
 }
 
-void TrackedArena::ReleasePages(uint8_t* begin, size_t size, bool pre_zygote_fork) {
-  DCHECK_ALIGNED_PARAM(begin, gPageSize);
+void TrackedArena::ReleasePages(uint8_t* begin,
+                                size_t size,
+                                bool pre_zygote_fork,
+                                const size_t page_size) {
+  DCHECK_ALIGNED_PARAM(begin, page_size);
   // Userfaultfd GC uses MAP_SHARED mappings for linear-alloc and therefore
   // MADV_DONTNEED will not free the pages from page cache. Therefore use
   // MADV_REMOVE instead, which is meant for this purpose.
@@ -67,9 +71,10 @@ void TrackedArena::ReleasePages(uint8_t* begin, size_t size, bool pre_zygote_for
 
 void TrackedArena::Release() {
   if (bytes_allocated_ > 0) {
-    ReleasePages(Begin(), Size(), pre_zygote_fork_);
+    const size_t page_size = GetPageSize();
+    ReleasePages(Begin(), Size(), pre_zygote_fork_, page_size);
     if (first_obj_array_.get() != nullptr) {
-      std::fill_n(first_obj_array_.get(), Size() / gPageSize, nullptr);
+      std::fill_n(first_obj_array_.get(), Size() / page_size, nullptr);
     }
     bytes_allocated_ = 0;
   }
@@ -81,15 +86,17 @@ void TrackedArena::SetFirstObject(uint8_t* obj_begin, uint8_t* obj_end) {
   DCHECK_LT(static_cast<void*>(obj_begin), static_cast<void*>(obj_end));
   GcVisitedArenaPool* arena_pool =
       static_cast<GcVisitedArenaPool*>(Runtime::Current()->GetLinearAllocArenaPool());
-  size_t idx = static_cast<size_t>(obj_begin - Begin()) / gPageSize;
-  size_t last_byte_idx = static_cast<size_t>(obj_end - 1 - Begin()) / gPageSize;
+  Thread* current = Thread::Current();
+  const size_t page_size = current->GetPageSize();
+  size_t idx = static_cast<size_t>(obj_begin - Begin()) / page_size;
+  size_t last_byte_idx = static_cast<size_t>(obj_end - 1 - Begin()) / page_size;
   // Do the update below with arena-pool's lock in shared-mode to serialize with
   // the compaction-pause wherein we acquire it exclusively. This is to ensure
   // that last-byte read there doesn't change after reading it and before
   // userfaultfd registration.
-  ReaderMutexLock rmu(Thread::Current(), arena_pool->GetLock());
+  ReaderMutexLock rmu(current, arena_pool->GetLock());
   // If the addr is at the beginning of a page, then we set it for that page too.
-  if (IsAlignedParam(obj_begin, gPageSize)) {
+  if (IsAlignedParam(obj_begin, page_size)) {
     first_obj_array_[idx] = obj_begin;
   }
   while (idx < last_byte_idx) {
@@ -210,7 +217,7 @@ void GcVisitedArenaPool::FreeSingleObjArena(uint8_t* addr) {
   if (zygote_arena) {
     free(addr);
   } else {
-    TrackedArena::ReleasePages(addr, size, /*pre_zygote_fork=*/false);
+    TrackedArena::ReleasePages(addr, size, /*pre_zygote_fork=*/false, GetPageSize());
     WriterMutexLock wmu(self, lock_);
     FreeRangeLocked(addr, size);
   }
@@ -218,7 +225,7 @@ void GcVisitedArenaPool::FreeSingleObjArena(uint8_t* addr) {
 
 Arena* GcVisitedArenaPool::AllocArena(size_t size, bool single_obj_arena) {
   // Return only page aligned sizes so that madvise can be leveraged.
-  size = RoundUp(size, gPageSize);
+  size = RoundUp(size, GetPageSize());
   if (pre_zygote_fork_) {
     // The first fork out of zygote hasn't happened yet. Allocate arena in a
     // private-anonymous mapping to retain clean pages across fork.
@@ -383,7 +390,10 @@ void GcVisitedArenaPool::FreeArenaChain(Arena* first) {
   for (auto& iter : free_ranges) {
     // No need to madvise pre-zygote-fork arenas as they will munmapped below.
     if (!std::get<2>(iter)) {
-      TrackedArena::ReleasePages(std::get<0>(iter), std::get<1>(iter), /*pre_zygote_fork=*/false);
+      TrackedArena::ReleasePages(std::get<0>(iter),
+                                 std::get<1>(iter),
+                                 /*pre_zygote_fork=*/false,
+                                 GetPageSize());
     }
   }
 

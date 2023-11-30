@@ -43,25 +43,26 @@ class TrackedArena final : public Arena {
   template <typename PageVisitor>
   void VisitRoots(PageVisitor& visitor) const REQUIRES_SHARED(Locks::mutator_lock_) {
     uint8_t* page_begin = Begin();
+    const size_t page_size = GetPageSize();
     if (first_obj_array_.get() != nullptr) {
-      DCHECK_ALIGNED_PARAM(Size(), gPageSize);
-      DCHECK_ALIGNED_PARAM(Begin(), gPageSize);
-      for (int i = 0, nr_pages = Size() / gPageSize; i < nr_pages; i++, page_begin += gPageSize) {
+      DCHECK_ALIGNED_PARAM(Size(), page_size);
+      DCHECK_ALIGNED_PARAM(Begin(), page_size);
+      for (int i = 0, nr_pages = Size() / page_size; i < nr_pages; i++, page_begin += page_size) {
         uint8_t* first = first_obj_array_[i];
         if (first != nullptr) {
-          visitor(page_begin, first, gPageSize);
+          visitor(page_begin, first, page_size);
         } else {
           break;
         }
       }
     } else {
-      size_t page_size = Size();
-      while (page_size > gPageSize) {
-        visitor(page_begin, nullptr, gPageSize);
-        page_begin += gPageSize;
-        page_size -= gPageSize;
+      size_t arena_size = Size();
+      while (arena_size > page_size) {
+        visitor(page_begin, nullptr, page_size);
+        page_begin += page_size;
+        arena_size -= page_size;
       }
-      visitor(page_begin, nullptr, page_size);
+      visitor(page_begin, nullptr, arena_size);
     }
   }
 
@@ -69,17 +70,18 @@ class TrackedArena final : public Arena {
   uint8_t* GetLastUsedByte() const REQUIRES_SHARED(Locks::mutator_lock_) {
     // Jump past bytes-allocated for arenas which are not currently being used
     // by arena-allocator. This helps in reducing loop iterations below.
-    uint8_t* last_byte = AlignUp(Begin() + GetBytesAllocated(), gPageSize);
+    const size_t page_size = GetPageSize();
+    uint8_t* last_byte = AlignUp(Begin() + GetBytesAllocated(), page_size);
     if (first_obj_array_.get() != nullptr) {
-      DCHECK_ALIGNED_PARAM(Begin(), gPageSize);
-      DCHECK_ALIGNED_PARAM(End(), gPageSize);
+      DCHECK_ALIGNED_PARAM(Begin(), page_size);
+      DCHECK_ALIGNED_PARAM(End(), page_size);
       DCHECK_LE(last_byte, End());
     } else {
       DCHECK_EQ(last_byte, End());
     }
-    for (size_t i = (last_byte - Begin()) / gPageSize;
+    for (size_t i = (last_byte - Begin()) / page_size;
          last_byte < End() && first_obj_array_[i] != nullptr;
-         last_byte += gPageSize, i++) {
+         last_byte += page_size, i++) {
       // No body.
     }
     return last_byte;
@@ -89,7 +91,7 @@ class TrackedArena final : public Arena {
     DCHECK_LE(Begin(), addr);
     DCHECK_GT(End(), addr);
     if (first_obj_array_.get() != nullptr) {
-      return first_obj_array_[(addr - Begin()) / gPageSize];
+      return first_obj_array_[(addr - Begin()) / GetPageSize()];
     } else {
       // The pages of this arena contain array of GC-roots. So we don't need
       // first-object of any given page of the arena.
@@ -114,7 +116,10 @@ class TrackedArena final : public Arena {
   // aligned.
   // TODO: Remove this once we remove the shmem (minor-fault) code in
   // userfaultfd GC and directly use ZeroAndReleaseMemory().
-  static void ReleasePages(uint8_t* begin, size_t size, bool pre_zygote_fork);
+  static void ReleasePages(uint8_t* begin,
+                           size_t size,
+                           bool pre_zygote_fork,
+                           const size_t page_size);
   void Release() override;
   bool IsPreZygoteForkArena() const { return pre_zygote_fork_; }
   bool IsSingleObjectArena() const { return first_obj_array_.get() == nullptr; }
@@ -251,9 +256,13 @@ class GcVisitedArenaPool final : public ArenaPool {
 
   class TrackedArenaHash {
    public:
+    TrackedArenaHash() : page_size_log2_(gPageSizeLog2) { }
     size_t operator()(const TrackedArena* arena) const {
-      return std::hash<size_t>{}(reinterpret_cast<uintptr_t>(arena->Begin()) / gPageSize);
+      return std::hash<size_t>{}(reinterpret_cast<uintptr_t>(arena->Begin()) /
+                                 (1u << page_size_log2_));
     }
+   private:
+    const size_t page_size_log2_;
   };
   using AllocatedArenaSet =
       HashSet<TrackedArena*, DefaultEmptyFn<TrackedArena*>, TrackedArenaHash, TrackedArenaEquals>;

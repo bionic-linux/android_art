@@ -227,7 +227,16 @@ class SmallLrtAllocator {
   void Deallocate(LrtEntry* unneeded, size_t size) REQUIRES(!lock_);
 
  private:
-  static size_t GetIndex(size_t size);
+  size_t GetIndex(size_t size);
+
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
+
+  // Number of free lists in the allocator.
+  const size_t num_lrt_slots_;
 
   // Free lists of small chunks linked through the first word.
   dchecked_vector<void*> free_lists_;
@@ -399,8 +408,8 @@ class LocalReferenceTable {
     return 1u + WhichPowerOf2(size / kSmallLrtEntries);
   }
 
-  static size_t MaxSmallTables() {
-    return NumTablesForSize(gPageSize / sizeof(LrtEntry));
+  inline size_t MaxSmallTables() {
+    return NumTablesForSize(GetPageSize() / sizeof(LrtEntry));
   }
 
   LrtEntry* GetEntry(size_t entry_index) const {
@@ -455,6 +464,8 @@ class LocalReferenceTable {
   template <typename Visitor>
   void VisitRootsInternal(Visitor&& visitor) const REQUIRES_SHARED(Locks::mutator_lock_);
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   /// semi-public - read/write by jni down calls.
   LRTSegmentState segment_state_;
 
@@ -473,6 +484,11 @@ class LocalReferenceTable {
   // As long as we have only one small table, we use `small_table_` to avoid an extra load
   // from another heap allocated location, otherwise we set it to null and use `tables_`.
   LrtEntry* small_table_;  // For optimizing the fast-path.
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
+
   dchecked_vector<LrtEntry*> tables_;
 
   // Mem maps where we store tables allocated directly with `MemMap`

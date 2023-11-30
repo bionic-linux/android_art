@@ -1314,6 +1314,8 @@ class Heap {
 
   ALWAYS_INLINE void IncrementNumberOfBytesFreedRevoke(size_t freed_bytes_revoke);
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // On switching app from background to foreground, grow the heap size
   // to incorporate foreground heap growth multiplier.
   void GrowHeapOnJankPerceptibleSwitch() REQUIRES(!process_state_update_lock_);
@@ -1750,6 +1752,10 @@ class Heap {
 
   // The number of times we initiated a GC of last resort to try to avoid an OOME.
   Atomic<uint64_t> pre_oome_gc_count_;
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 
   // An installed allocation listener.
   Atomic<AllocationListener*> alloc_listener_;

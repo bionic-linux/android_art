@@ -185,7 +185,8 @@ Jit::Jit(JitCodeCache* code_cache, JitOptions* options)
       lock_("JIT memory use lock"),
       zygote_mapping_methods_(),
       fd_methods_(-1),
-      fd_methods_size_(0) {}
+      fd_methods_size_(0),
+      page_size_log2_(gPageSizeLog2) {}
 
 std::unique_ptr<Jit> Jit::Create(JitCodeCache* code_cache, JitOptions* options) {
   jit_compiler_ = jit_create();
@@ -604,6 +605,7 @@ void Jit::NotifyZygoteCompilationDone() {
     return;
   }
 
+  const size_t page_size = GetPageSize();
   size_t offset = 0;
   for (gc::space::ImageSpace* space : Runtime::Current()->GetHeap()->GetBootImageSpaces()) {
     const ImageHeader& header = space->GetImageHeader();
@@ -612,9 +614,9 @@ void Jit::NotifyZygoteCompilationDone() {
     // within a page range. For methods that falls above or below the range,
     // the child processes will copy their contents to their private mapping
     // in `child_mapping_methods`. See `MapBootImageMethods`.
-    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), gPageSize);
+    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), page_size);
     uint8_t* page_end =
-        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), gPageSize);
+        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), page_size);
     if (page_end > page_start) {
       uint64_t capacity = page_end - page_start;
       memcpy(zygote_mapping_methods_.Begin() + offset, page_start, capacity);
@@ -671,9 +673,9 @@ void Jit::NotifyZygoteCompilationDone() {
     // within a page range. For methods that falls above or below the range,
     // the child processes will copy their contents to their private mapping
     // in `child_mapping_methods`. See `MapBootImageMethods`.
-    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), gPageSize);
+    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), page_size);
     uint8_t* page_end =
-        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), gPageSize);
+        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), page_size);
     if (page_end > page_start) {
       uint64_t capacity = page_end - page_start;
       if (memcmp(child_mapping_methods.Begin() + offset, page_start, capacity) != 0) {
@@ -699,9 +701,9 @@ void Jit::NotifyZygoteCompilationDone() {
     // within a page range. For methods that falls above or below the range,
     // the child processes will copy their contents to their private mapping
     // in `child_mapping_methods`. See `MapBootImageMethods`.
-    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), gPageSize);
+    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), page_size);
     uint8_t* page_end =
-        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), gPageSize);
+        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), page_size);
     if (page_end > page_start) {
       uint64_t capacity = page_end - page_start;
       if (mremap(child_mapping_methods.Begin() + offset,
@@ -847,11 +849,12 @@ class JitDoneCompilingProfileTask final : public SelfDeletingTask {
       : dex_files_(dex_files) {}
 
   void Run([[maybe_unused]] Thread* self) override {
+    const size_t page_size = gPageSize;
     // Madvise DONTNEED dex files now that we're done compiling methods.
     for (const DexFile* dex_file : dex_files_) {
       if (IsAddressKnownBackedByFileOrShared(dex_file->Begin())) {
-        int result = madvise(const_cast<uint8_t*>(AlignDown(dex_file->Begin(), gPageSize)),
-                             RoundUp(dex_file->Size(), gPageSize),
+        int result = madvise(const_cast<uint8_t*>(AlignDown(dex_file->Begin(), page_size)),
+                             RoundUp(dex_file->Size(), page_size),
                              MADV_DONTNEED);
         if (result == -1) {
           PLOG(WARNING) << "Madvise failed";
@@ -1099,12 +1102,13 @@ void Jit::MapBootImageMethods() {
   //         section end   -->  -----------
   //
   size_t offset = 0;
+  const size_t page_size = GetPageSize();
   for (gc::space::ImageSpace* space : Runtime::Current()->GetHeap()->GetBootImageSpaces()) {
     const ImageHeader& header = space->GetImageHeader();
     const ImageSection& section = header.GetMethodsSection();
-    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), gPageSize);
+    uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), page_size);
     uint8_t* page_end =
-        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), gPageSize);
+        AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), page_size);
     if (page_end <= page_start) {
       // Section doesn't contain one aligned entire page.
       continue;
@@ -1219,13 +1223,14 @@ void Jit::CreateThreadPool() {
 
     // Compute the total capacity required for the boot image methods.
     uint64_t total_capacity = 0;
+    const size_t page_size = GetPageSize();
     for (gc::space::ImageSpace* space : Runtime::Current()->GetHeap()->GetBootImageSpaces()) {
       const ImageHeader& header = space->GetImageHeader();
       const ImageSection& section = header.GetMethodsSection();
       // Mappings need to be at the page level.
-      uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), gPageSize);
+      uint8_t* page_start = AlignUp(header.GetImageBegin() + section.Offset(), page_size);
       uint8_t* page_end =
-          AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), gPageSize);
+          AlignDown(header.GetImageBegin() + section.Offset() + section.Size(), page_size);
       if (page_end > page_start) {
         total_capacity += (page_end - page_start);
       }

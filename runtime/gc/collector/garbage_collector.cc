@@ -103,6 +103,7 @@ uint64_t GarbageCollector::ExtractRssFromMincore(
   // mincore() is linux-specific syscall.
 #if defined(__linux__)
   using range_t = std::pair<void*, void*>;
+  const size_t page_size = heap_->GetPageSize();
   // Sort gc_ranges
   gc_ranges->sort([](const range_t& a, const range_t& b) {
     return std::less()(a.first, b.first);
@@ -124,13 +125,13 @@ uint64_t GarbageCollector::ExtractRssFromMincore(
     }
     size_t length = static_cast<uint8_t*>(it->second) - static_cast<uint8_t*>(it->first);
     // Compute max length for vector allocation later.
-    vec_len = std::max(vec_len, length / gPageSize);
+    vec_len = std::max(vec_len, length / page_size);
   }
   std::unique_ptr<unsigned char[]> vec(new unsigned char[vec_len]);
   for (const auto it : *gc_ranges) {
     size_t length = static_cast<uint8_t*>(it.second) - static_cast<uint8_t*>(it.first);
     if (mincore(it.first, length, vec.get()) == 0) {
-      for (size_t i = 0; i < length / gPageSize; i++) {
+      for (size_t i = 0; i < length / page_size; i++) {
         // Least significant bit represents residency of a page. Other bits are
         // reserved.
         rss += vec[i] & 0x1;
@@ -140,7 +141,7 @@ uint64_t GarbageCollector::ExtractRssFromMincore(
                    << ", 0x" << it.second << std::dec << ") failed: " << strerror(errno);
     }
   }
-  rss *= gPageSize;
+  rss *= page_size;
   rss_histogram_.AddValue(rss / KB);
 #endif
   return rss;

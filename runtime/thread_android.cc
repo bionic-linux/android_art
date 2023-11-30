@@ -38,9 +38,10 @@ void Thread::MadviseAwayAlternateSignalStack() {
   // Only call `madvise()` on enabled page-aligned alternate signal stack. Processes can
   // create different arbitrary alternate signal stacks and we do not want to erroneously
   // `madvise()` away pages that may hold data other than the alternate signal stack.
+  const size_t page_size = GetPageSize();
   if ((old_ss.ss_flags & SS_DISABLE) == 0 &&
-      IsAlignedParam(old_ss.ss_sp, gPageSize) &&
-      IsAlignedParam(old_ss.ss_size, gPageSize)) {
+      IsAlignedParam(old_ss.ss_sp, page_size) &&
+      IsAlignedParam(old_ss.ss_size, page_size)) {
     CHECK_EQ(old_ss.ss_flags & SS_ONSTACK, 0);
     // Note: We're testing and benchmarking ART on devices with old kernels
     // which may not support `MADV_FREE`, so we do not check the result.

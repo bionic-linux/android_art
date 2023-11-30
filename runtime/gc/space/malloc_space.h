@@ -174,6 +174,8 @@ class MallocSpace : public ContinuousMemMapAllocSpace {
     return &SweepCallback;
   }
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // Recent allocation buffer.
   static constexpr size_t kRecentFreeCount = kDebugSpaces ? (1 << 16) : 0;
   static constexpr size_t kRecentFreeMask = kRecentFreeCount - 1;
@@ -200,6 +202,10 @@ class MallocSpace : public ContinuousMemMapAllocSpace {
   // Starting and initial sized, used when you reset the space.
   const size_t starting_size_;
   const size_t initial_size_;
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 
  private:
   static void SweepCallback(size_t num_ptrs, mirror::Object** ptrs, void* arg)

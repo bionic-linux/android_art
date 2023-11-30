@@ -55,18 +55,19 @@ ThreadPoolWorker::ThreadPoolWorker(ThreadPool* thread_pool, const std::string& n
   // a guard page, so don't do anything special on Bionic libc.
   if (kUseCustomThreadPoolStack) {
     // Add an inaccessible page to catch stack overflow.
-    stack_size += gPageSize;
+    const size_t page_size = thread_pool_->GetPageSize();
+    stack_size += page_size;
     stack_ = MemMap::MapAnonymous(name.c_str(),
                                   stack_size,
                                   PROT_READ | PROT_WRITE,
                                   /*low_4gb=*/ false,
                                   &error_msg);
     CHECK(stack_.IsValid()) << error_msg;
-    CHECK_ALIGNED_PARAM(stack_.Begin(), gPageSize);
+    CHECK_ALIGNED_PARAM(stack_.Begin(), page_size);
     CheckedCall(mprotect,
                 "mprotect bottom page of thread pool worker stack",
                 stack_.Begin(),
-                gPageSize,
+                page_size,
                 PROT_NONE);
   }
   const char* reason = "new thread pool worker thread";
@@ -182,7 +183,8 @@ ThreadPool::ThreadPool(const char* name,
     creation_barier_(0),
     max_active_workers_(num_threads),
     create_peers_(create_peers),
-    worker_stack_size_(worker_stack_size) {
+    worker_stack_size_(worker_stack_size),
+    page_size_log2_(gPageSizeLog2) {
   CreateThreads();
 }
 

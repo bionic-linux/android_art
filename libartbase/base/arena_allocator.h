@@ -24,6 +24,7 @@
 #include "debug_stack.h"
 #include "dchecked_vector.h"
 #include "macros.h"
+#include "mem_map.h"
 #include "memory_tool.h"
 
 namespace art {
@@ -179,9 +180,15 @@ class ArenaAllocatorMemoryTool {
 
 class Arena {
  public:
-  Arena() : bytes_allocated_(0), memory_(nullptr), size_(0), next_(nullptr) {}
-
+  Arena()
+    : bytes_allocated_(0),
+      memory_(nullptr),
+      size_(0),
+      next_(nullptr),
+      page_size_log2_(WhichPowerOf2(MemMap::GetPageSize())) {
+  }
   virtual ~Arena() { }
+
   // Reset is for pre-use and uses memset for performance.
   void Reset();
   // Release is used inbetween uses and uses madvise for memory usage.
@@ -209,11 +216,14 @@ class Arena {
 
   Arena* Next() const { return next_; }
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1 << page_size_log2_); }
+
  protected:
   size_t bytes_allocated_;
   uint8_t* memory_;
   size_t size_;
   Arena* next_;
+  const size_t page_size_log2_;
   friend class MallocArenaPool;
   friend class MemMapArenaPool;
   friend class ArenaAllocator;
@@ -240,7 +250,11 @@ class ArenaPool {
   virtual void TrimMaps() = 0;
 
  protected:
-  ArenaPool() = default;
+  ArenaPool() : page_size_log2_(WhichPowerOf2(MemMap::GetPageSize())) {}
+
+  ALWAYS_INLINE size_t GetPageSize() const { return (1 << page_size_log2_); }
+
+  const size_t page_size_log2_;
 
  private:
   DISALLOW_COPY_AND_ASSIGN(ArenaPool);

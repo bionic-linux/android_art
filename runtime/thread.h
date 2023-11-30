@@ -61,6 +61,7 @@ template<class T> class AtomicStack;
 }  // namespace accounting
 namespace collector {
 class SemiSpace;
+class MarkCompact;
 }  // namespace collector
 }  // namespace gc
 
@@ -1484,6 +1485,8 @@ class Thread {
     return tls32_.shared_method_hotness;
   }
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << tls32_.page_size_log2_); }
+
  private:
   explicit Thread(bool daemon);
   ~Thread() REQUIRES(!Locks::mutator_lock_, !Locks::thread_suspend_count_lock_);
@@ -1809,7 +1812,8 @@ class Thread {
           make_visibly_initialized_counter(0),
           define_class_counter(0),
           num_name_readers(0),
-          shared_method_hotness(kSharedMethodHotnessThreshold)
+          shared_method_hotness(kSharedMethodHotnessThreshold),
+          page_size_log2_(static_cast<uint32_t>(gPageSizeLog2))
         {}
 
     // The state and flags field must be changed atomically so that flag values aren't lost.
@@ -1918,6 +1922,10 @@ class Thread {
     // There is a second level counter in `Jit::shared_method_counters_` to make
     // sure we at least have a few samples before compiling a method.
     uint32_t shared_method_hotness;
+
+    // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic
+    // and isn't compiler-recognised as power-of-two).
+    const uint32_t page_size_log2_;
   } tls32_;
 
   struct PACKED(8) tls_64bit_sized_values {
@@ -2176,6 +2184,11 @@ class Thread {
   // Set during execution of JNI methods that get field and method id's as part of determining if
   // the caller is allowed to access all fields and methods in the Core Platform API.
   uint32_t core_platform_api_cookie_ = 0;
+
+  // For implicit overflow checks we reserve an extra piece of memory at the bottom of the stack
+  // (lowest memory). The higher portion of the memory is protected against reads and the lower is
+  // available for use while throwing the StackOverflow exception.
+  const size_t stack_overflow_protected_size_;
 
   friend class gc::collector::SemiSpace;  // For getting stack traces.
   friend class Runtime;  // For CreatePeer.

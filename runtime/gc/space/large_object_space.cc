@@ -88,16 +88,16 @@ class MemoryToolLargeObjectMapSpace final : public LargeObjectMapSpace {
   }
 
  private:
-  static size_t MemoryToolRedZoneBytes() {
-    return gPageSize;
+  inline size_t MemoryToolRedZoneBytes() const {
+    return GetPageSize();
   }
 
-  static const mirror::Object* ObjectWithRedzone(const mirror::Object* obj) {
+  inline const mirror::Object* ObjectWithRedzone(const mirror::Object* obj) const {
     return reinterpret_cast<const mirror::Object*>(
         reinterpret_cast<uintptr_t>(obj) - MemoryToolRedZoneBytes());
   }
 
-  static mirror::Object* ObjectWithRedzone(mirror::Object* obj) {
+  inline mirror::Object* ObjectWithRedzone(mirror::Object* obj) const {
     return reinterpret_cast<mirror::Object*>(
         reinterpret_cast<uintptr_t>(obj) - MemoryToolRedZoneBytes());
   }
@@ -116,7 +116,7 @@ LargeObjectSpace::LargeObjectSpace(const std::string& name, uint8_t* begin, uint
     : DiscontinuousSpace(name, kGcRetentionPolicyAlwaysCollect),
       lock_(lock_name, kAllocSpaceLock),
       num_bytes_allocated_(0), num_objects_allocated_(0), total_bytes_allocated_(0),
-      total_objects_allocated_(0), begin_(begin), end_(end) {
+      total_objects_allocated_(0), begin_(begin), end_(end), page_size_log2_(gPageSizeLog2) {
 }
 
 

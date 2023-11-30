@@ -123,6 +123,8 @@ class LargeObjectSpace : public DiscontinuousSpace, public AllocSpace {
                             const char* lock_name);
   static void SweepCallback(size_t num_ptrs, mirror::Object** ptrs, void* arg);
 
+  ALWAYS_INLINE size_t GetPageSize() const { return (1u << page_size_log2_); }
+
   // Used to ensure mutual exclusion when the allocation spaces data structures,
   // including the allocation counters below, are being modified.
   mutable Mutex lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
@@ -142,6 +144,10 @@ class LargeObjectSpace : public DiscontinuousSpace, public AllocSpace {
   // Begin and end, may change as more large objects are allocated.
   uint8_t* begin_;
   uint8_t* end_;
+
+  // Local copy of gPageSizeLog2 maintained for performance reasons (as gPageSize can be dynamic and
+  // isn't compiler-recognised as power-of-two).
+  const size_t page_size_log2_;
 
   friend class Space;
 
