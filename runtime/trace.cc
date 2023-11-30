@@ -1176,13 +1176,13 @@ uintptr_t* TraceWriter::PrepareBufferForNewEntries(Thread* thread) {
 void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
   uintptr_t* method_trace_entries = thread->GetMethodTraceBuffer();
   size_t* current_offset = thread->GetMethodTraceIndexPtr();
-  size_t tid = thread->GetTid();
+  // size_t tid = thread->GetTid();
   DCHECK(method_trace_entries != nullptr);
 
   if (is_sync || thread_pool_ == nullptr) {
-    std::unordered_map<ArtMethod*, std::string> method_infos;
-    PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
-    FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
+    // std::unordered_map<ArtMethod*, std::string> method_infos;
+    // PreProcessTraceForMethodInfos(method_trace_entries, *current_offset, method_infos);
+    // FlushBuffer(method_trace_entries, *current_offset, tid, method_infos);
 
     // This is a synchronous flush, so no need to allocate a new buffer. This is used either
     // when the tracing has finished or in non-streaming mode.
@@ -1191,13 +1191,13 @@ void TraceWriter::FlushBuffer(Thread* thread, bool is_sync) {
   } else {
     // The TraceWriterTask takes the ownership of the buffer and delets the buffer once the
     // entries are flushed.
-    thread_pool_->AddTask(Thread::Current(),
-                          new TraceWriterTask(this, method_trace_entries, *current_offset, tid));
+    // thread_pool_->AddTask(Thread::Current(),
+    //                      new TraceWriterTask(this, method_trace_entries, *current_offset, tid));
 
     // Create a new buffer and update the per-thread buffer so we don't have to wait for the
     // flushing to finish.
-    uintptr_t* method_trace_buffer = new uintptr_t[std::max(kMinBufSize, kPerThreadBufSize)]();
-    thread->SetMethodTraceBuffer(method_trace_buffer);
+    // uintptr_t* method_trace_buffer = new uintptr_t[std::max(kMinBufSize, kPerThreadBufSize)]();
+    // thread->SetMethodTraceBuffer(method_trace_buffer);
     *current_offset = kPerThreadBufSize;
   }
 
