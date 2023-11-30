@@ -1451,8 +1451,14 @@ std::string Runtime::GetApexVersions(ArrayRef<const std::string> boot_class_path
   }
   for (const std::string_view& str : bcp_apexes) {
     auto info = apex_infos.find(str);
-    if (info == apex_infos.end() || info->second->getIsFactory()) {
+    if (info == apex_infos.end()) {
       result += '/';
+    } else if (info->second->getIsFactory()){
+      uint64_t version = info->second->hasVersionCode()
+          ? info->second->getVersionCode()
+          : info->second->getLastUpdateMillis();
+      android::base::StringAppendF(&result, "/%" PRIu64, version);
+
     } else {
       // In case lastUpdateMillis field is populated in apex-info-list.xml, we
       // prefer to use it as version scheme. If the field is missing we
