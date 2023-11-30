@@ -20,8 +20,6 @@ import static android.os.ParcelFileDescriptor.AutoCloseInputStream;
 
 import static com.android.server.art.ArtManagerLocal.SnapshotProfileException;
 import static com.android.server.art.PrimaryDexUtils.PrimaryDexInfo;
-import static com.android.server.art.ReasonMapping.BatchDexoptReason;
-import static com.android.server.art.model.ArtFlags.BatchDexoptPass;
 import static com.android.server.art.model.ArtFlags.DexoptFlags;
 import static com.android.server.art.model.ArtFlags.PriorityClassApi;
 import static com.android.server.art.model.DexoptResult.DexContainerFileDexoptResult;
@@ -68,14 +66,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -387,7 +382,8 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
             BackgroundDexoptJob.Result result = Utils.getFuture(future);
             if (result instanceof BackgroundDexoptJob.CompletedResult) {
                 var completedResult = (BackgroundDexoptJob.CompletedResult) result;
-                if (completedResult.isCancelled()) {
+                if (completedResult.dexoptResult().getFinalStatus()
+                        == DexoptResult.DEXOPT_CANCELLED) {
                     pw.println("Job cancelled. See logs for details");
                 } else {
                     pw.println("Job finished. See logs for details");
@@ -588,41 +584,20 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
                     ReasonMapping.BATCH_DEXOPT_REASONS);
             return 1;
         }
-
-        final String finalReason = reason;
-
-        // Create callbacks to print the progress.
-        Map<Integer, Consumer<OperationProgress>> progressCallbacks = new HashMap<>();
-        for (@BatchDexoptPass int pass : ArtFlags.BATCH_DEXOPT_PASSES) {
-            progressCallbacks.put(pass, progress -> {
-                pw.println(String.format(Locale.US, "%s: %d%%",
-                        getProgressMessageForBatchDexoptPass(pass, finalReason),
-                        progress.getPercentage()));
-                pw.flush();
-            });
-        }
-
+        DexoptResult result;
         ExecutorService progressCallbackExecutor = Executors.newSingleThreadExecutor();
         try (var signal = new WithCancellationSignal(pw, true /* verbose */)) {
-            Map<Integer, DexoptResult> results = mArtManagerLocal.dexoptPackages(snapshot,
-                    finalReason, signal.get(), progressCallbackExecutor, progressCallbacks);
-
+            result = mArtManagerLocal.dexoptPackages(
+                    snapshot, reason, signal.get(), progressCallbackExecutor, progress -> {
+                        pw.println(String.format("Dexopting apps: %d%%", progress.getPercentage()));
+                        pw.flush();
+                    });
             Utils.executeAndWait(progressCallbackExecutor, () -> {
-                for (@BatchDexoptPass int pass : ArtFlags.BATCH_DEXOPT_PASSES) {
-                    if (results.containsKey(pass)) {
-                        pw.println("Result of "
-                                + getProgressMessageForBatchDexoptPass(pass, finalReason)
-                                          .toLowerCase(Locale.US)
-                                + ":");
-                        printDexoptResult(
-                                pw, results.get(pass), true /* verbose */, true /* multiPackage */);
-                    }
-                }
+                printDexoptResult(pw, result, true /* verbose */, true /* multiPackage */);
             });
         } finally {
             progressCallbackExecutor.shutdown();
         }
-
         return 0;
     }
 
@@ -929,19 +904,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
             Utils.deleteIfExistsSafe(outputPath);
             throw new RuntimeException(e);
         }
-    }
-
-    @NonNull
-    private String getProgressMessageForBatchDexoptPass(
-            @BatchDexoptPass int pass, @NonNull @BatchDexoptReason String reason) {
-        switch (pass) {
-            case ArtFlags.PASS_DOWNGRADE:
-                return "Downgrading apps";
-            case ArtFlags.PASS_MAIN:
-                return reason.equals(ReasonMapping.REASON_BG_DEXOPT) ? "Dexopting apps (main pass)"
-                                                                     : "Dexopting apps";
-        }
-        throw new IllegalArgumentException("Unknown batch dexopt pass " + pass);
     }
 
     private static class WithCancellationSignal implements AutoCloseable {

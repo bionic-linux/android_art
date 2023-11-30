@@ -83,10 +83,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -466,9 +464,7 @@ public final class ArtManagerLocal {
      * @param reason determines the default list of packages and options
      * @param cancellationSignal provides the ability to cancel this operation
      * @param processCallbackExecutor the executor to call {@code progressCallback}
-     * @param progressCallbacks a mapping from an integer, in {@link ArtFlags.BatchDexoptPass}, to
-     *         the callback that is called repeatedly whenever there is an update on the progress
-     * @return a mapping from an integer, in {@link ArtFlags.BatchDexoptPass}, to the dexopt result.
+     * @param progressCallback called repeatedly whenever there is an update on the progress
      * @throws IllegalStateException if the operation encounters an error that should never happen
      *         (e.g., an internal logic error), or the callback set by {@link
      *         #setBatchDexoptStartCallback(Executor, BatchDexoptStartCallback)} provides invalid
@@ -478,12 +474,11 @@ public final class ArtManagerLocal {
      */
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @NonNull
-    public Map<Integer, DexoptResult> dexoptPackages(
-            @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
+    public DexoptResult dexoptPackages(@NonNull PackageManagerLocal.FilteredSnapshot snapshot,
             @NonNull @BatchDexoptReason String reason,
             @NonNull CancellationSignal cancellationSignal,
             @Nullable @CallbackExecutor Executor progressCallbackExecutor,
-            @Nullable Map<Integer, Consumer<OperationProgress>> progressCallbacks) {
+            @Nullable Consumer<OperationProgress> progressCallback) {
         List<String> defaultPackages =
                 Collections.unmodifiableList(getDefaultPackages(snapshot, reason));
         DexoptParams defaultDexoptParams = new DexoptParams.Builder(reason).build();
@@ -501,26 +496,17 @@ public final class ArtManagerLocal {
 
         ExecutorService dexoptExecutor =
                 Executors.newFixedThreadPool(ReasonMapping.getConcurrencyForReason(reason));
-        Map<Integer, DexoptResult> dexoptResults = new HashMap<>();
         try {
             if (reason.equals(ReasonMapping.REASON_BG_DEXOPT)) {
-                DexoptResult downgradeResult = maybeDowngradePackages(snapshot,
+                maybeDowngradePackages(snapshot,
                         new HashSet<>(params.getPackages()) /* excludedPackages */,
-                        cancellationSignal, dexoptExecutor, progressCallbackExecutor,
-                        progressCallbacks != null ? progressCallbacks.get(ArtFlags.PASS_DOWNGRADE)
-                                                  : null);
-                if (downgradeResult != null) {
-                    dexoptResults.put(ArtFlags.PASS_DOWNGRADE, downgradeResult);
-                }
+                        cancellationSignal, dexoptExecutor);
             }
             Log.i(TAG,
                     "Dexopting " + params.getPackages().size() + " packages with reason=" + reason);
-            DexoptResult mainResult = mInjector.getDexoptHelper().dexopt(snapshot,
-                    params.getPackages(), params.getDexoptParams(), cancellationSignal,
-                    dexoptExecutor, progressCallbackExecutor,
-                    progressCallbacks != null ? progressCallbacks.get(ArtFlags.PASS_MAIN) : null);
-            dexoptResults.put(ArtFlags.PASS_MAIN, mainResult);
-            return dexoptResults;
+            return mInjector.getDexoptHelper().dexopt(snapshot, params.getPackages(),
+                    params.getDexoptParams(), cancellationSignal, dexoptExecutor,
+                    progressCallbackExecutor, progressCallback);
         } finally {
             dexoptExecutor.shutdown();
         }
@@ -879,7 +865,7 @@ public final class ArtManagerLocal {
             @Nullable Consumer<OperationProgress> progressCallback) {
         try (var snapshot = mInjector.getPackageManagerLocal().withFilteredSnapshot()) {
             dexoptPackages(snapshot, bootReason, new CancellationSignal(), progressCallbackExecutor,
-                    Map.of(ArtFlags.PASS_MAIN, progressCallback));
+                    progressCallback);
         }
     }
 
@@ -1046,13 +1032,9 @@ public final class ArtManagerLocal {
     }
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-    @Nullable
-    private DexoptResult maybeDowngradePackages(
-            @NonNull PackageManagerLocal.FilteredSnapshot snapshot,
+    private void maybeDowngradePackages(@NonNull PackageManagerLocal.FilteredSnapshot snapshot,
             @NonNull Set<String> excludedPackages, @NonNull CancellationSignal cancellationSignal,
-            @NonNull Executor executor,
-            @Nullable @CallbackExecutor Executor progressCallbackExecutor,
-            @Nullable Consumer<OperationProgress> progressCallback) {
+            @NonNull Executor executor) {
         if (shouldDowngrade()) {
             List<String> packages = getDefaultPackages(snapshot, ReasonMapping.REASON_INACTIVE)
                                             .stream()
@@ -1062,15 +1044,14 @@ public final class ArtManagerLocal {
                 Log.i(TAG, "Storage is low. Downgrading " + packages.size() + " inactive packages");
                 DexoptParams params =
                         new DexoptParams.Builder(ReasonMapping.REASON_INACTIVE).build();
-                return mInjector.getDexoptHelper().dexopt(snapshot, packages, params,
-                        cancellationSignal, executor, progressCallbackExecutor, progressCallback);
+                mInjector.getDexoptHelper().dexopt(snapshot, packages, params, cancellationSignal,
+                        executor, null /* processCallbackExecutor */, null /* progressCallback */);
             } else {
                 Log.i(TAG,
                         "Storage is low, but downgrading is disabled or there's nothing to "
                                 + "downgrade");
             }
         }
-        return null;
     }
 
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
