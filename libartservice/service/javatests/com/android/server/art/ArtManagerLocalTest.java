@@ -58,7 +58,6 @@ import android.os.storage.StorageManager;
 import androidx.test.filters.SmallTest;
 
 import com.android.modules.utils.pm.PackageStateModulesUtils;
-import com.android.server.art.model.ArtFlags;
 import com.android.server.art.model.Config;
 import com.android.server.art.model.DeleteResult;
 import com.android.server.art.model.DexoptParams;
@@ -443,7 +442,7 @@ public class ArtManagerLocalTest {
     @Test
     public void testDexoptPackage() throws Exception {
         var params = new DexoptParams.Builder("install").build();
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         when(mDexoptHelper.dexopt(any(), deepEq(List.of(PKG_NAME_1)), same(params),
@@ -457,7 +456,7 @@ public class ArtManagerLocalTest {
 
     @Test
     public void testResetDexoptStatus() throws Exception {
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         when(mDexoptHelper.dexopt(
@@ -503,7 +502,7 @@ public class ArtManagerLocalTest {
 
     @Test
     public void testDexoptPackages() throws Exception {
-        var dexoptResult = DexoptResult.create();
+        var dexoptResult = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
         when(mDexUseManager.getPackageLastUsedAtMs(PKG_NAME_2)).thenReturn(CURRENT_TIME_MS);
         simulateStorageLow();
@@ -518,7 +517,7 @@ public class ArtManagerLocalTest {
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                            null /* processCallbackExecutor */, null /* processCallback */))
-                .isEqualTo(Map.of(ArtFlags.PASS_MAIN, dexoptResult));
+                .isSameInstanceAs(dexoptResult);
 
         // Nothing to downgrade.
         verify(mDexoptHelper, never())
@@ -534,7 +533,7 @@ public class ArtManagerLocalTest {
         when(mDexUseManager.getPackageLastUsedAtMs(PKG_NAME_1)).thenReturn(0l);
         simulateStorageLow();
 
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         // PKG_NAME_1 should be dexopted.
@@ -561,28 +560,25 @@ public class ArtManagerLocalTest {
         when(mDexUseManager.getPackageLastUsedAtMs(PKG_NAME_1)).thenReturn(NOT_RECENT_TIME_MS);
         simulateStorageLow();
 
-        var mainResult = DexoptResult.create();
-        var downgradeResult = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         // PKG_NAME_1 should not be dexopted.
-        doReturn(mainResult)
+        doReturn(result)
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_2)),
                         argThat(params -> params.getReason().equals("bg-dexopt")), any(), any(),
                         any(), any());
 
         // PKG_NAME_1 should be downgraded.
-        doReturn(downgradeResult)
+        doReturn(result)
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_1)),
                         argThat(params -> params.getReason().equals("inactive")), any(), any(),
                         any(), any());
 
-        assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
-                           null /* processCallbackExecutor */, null /* processCallback */))
-                .isEqualTo(Map.of(
-                        ArtFlags.PASS_DOWNGRADE, downgradeResult, ArtFlags.PASS_MAIN, mainResult));
+        mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
+                null /* processCallbackExecutor */, null /* processCallback */);
     }
 
     @Test
@@ -592,7 +588,7 @@ public class ArtManagerLocalTest {
         when(userState.getFirstInstallTimeMillis()).thenReturn(NOT_RECENT_TIME_MS);
         when(mDexUseManager.getPackageLastUsedAtMs(PKG_NAME_1)).thenReturn(NOT_RECENT_TIME_MS);
 
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         // PKG_NAME_1 should not be dexopted.
@@ -613,7 +609,7 @@ public class ArtManagerLocalTest {
 
     @Test
     public void testDexoptPackagesBootAfterMainlineUpdate() throws Exception {
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         lenient().when(mInjector.isSystemUiPackage(PKG_NAME_1)).thenReturn(true);
@@ -630,7 +626,7 @@ public class ArtManagerLocalTest {
 
     @Test
     public void testDexoptPackagesBootAfterMainlineUpdatePackagesNotFound() throws Exception {
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
         // PKG_NAME_1 is neither recently installed nor recently used.
         PackageUserState userState = mPkgState1.getStateForUser(UserHandle.of(1));
@@ -662,7 +658,7 @@ public class ArtManagerLocalTest {
         simulateStorageLow();
 
         var params = new DexoptParams.Builder("bg-dexopt").build();
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         mArtManagerLocal.setBatchDexoptStartCallback(ForkJoinPool.commonPool(),
@@ -692,7 +688,7 @@ public class ArtManagerLocalTest {
     @Test
     public void testDexoptPackagesOverrideCleared() throws Exception {
         var params = new DexoptParams.Builder("bg-dexopt").build();
-        var result = DexoptResult.create();
+        var result = mock(DexoptResult.class);
         var cancellationSignal = new CancellationSignal();
 
         mArtManagerLocal.setBatchDexoptStartCallback(ForkJoinPool.commonPool(),
@@ -708,7 +704,7 @@ public class ArtManagerLocalTest {
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                            null /* processCallbackExecutor */, null /* processCallback */))
-                .isEqualTo(Map.of(ArtFlags.PASS_MAIN, result));
+                .isSameInstanceAs(result);
     }
 
     @Test(expected = IllegalStateException.class)

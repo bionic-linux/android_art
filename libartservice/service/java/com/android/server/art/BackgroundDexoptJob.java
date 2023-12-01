@@ -17,7 +17,6 @@
 package com.android.server.art;
 
 import static com.android.server.art.ArtManagerLocal.ScheduleBackgroundDexoptJobCallback;
-import static com.android.server.art.model.ArtFlags.BatchDexoptPass;
 import static com.android.server.art.model.ArtFlags.ScheduleStatus;
 import static com.android.server.art.model.Config.Callback;
 
@@ -33,7 +32,6 @@ import android.os.CancellationSignal;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.util.Log;
-import android.util.Slog;
 
 import androidx.annotation.RequiresApi;
 
@@ -43,19 +41,14 @@ import com.android.server.LocalManagerRegistry;
 import com.android.server.art.model.ArtFlags;
 import com.android.server.art.model.Config;
 import com.android.server.art.model.DexoptResult;
-import com.android.server.art.model.OperationProgress;
 import com.android.server.pm.PackageManagerLocal;
 
 import com.google.auto.value.AutoValue;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 
 /** @hide */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -92,20 +85,15 @@ public class BackgroundDexoptJob {
     public boolean onStartJob(
             @NonNull BackgroundDexoptJobService jobService, @NonNull JobParameters params) {
         start().thenAcceptAsync(result -> {
-            try {
-                writeStats(result);
-            } catch (RuntimeException e) {
-                // Not expected. Log wtf to surface it.
-                Slog.wtf(TAG, "Failed to write stats", e);
-            }
-
+            writeStats(result);
             // This is a periodic job, where the interval is specified in the `JobInfo`. "true"
             // means to execute again in the same interval with the default retry policy, while
             // "false" means not to execute again in the same interval but to execute again in the
             // next interval.
             // This call will be ignored if `onStopJob` is called.
-            boolean wantsReschedule =
-                    result instanceof CompletedResult && ((CompletedResult) result).isCancelled();
+            boolean wantsReschedule = result instanceof CompletedResult
+                    && ((CompletedResult) result).dexoptResult().getFinalStatus()
+                            == DexoptResult.DEXOPT_CANCELLED;
             jobService.jobFinished(params, wantsReschedule);
         });
         // "true" means the job will continue running until `jobFinished` is called.
@@ -213,28 +201,12 @@ public class BackgroundDexoptJob {
 
     @NonNull
     private CompletedResult run(@NonNull CancellationSignal cancellationSignal) {
-        // Create callbacks to time each pass.
-        Map<Integer, Long> startTimeMsByPass = new HashMap<>();
-        Map<Integer, Long> durationMsByPass = new HashMap<>();
-        Map<Integer, Consumer<OperationProgress>> progressCallbacks = new HashMap<>();
-        for (@BatchDexoptPass int pass : ArtFlags.BATCH_DEXOPT_PASSES) {
-            progressCallbacks.put(pass, progress -> {
-                if (progress.getTotal() == 0) {
-                    durationMsByPass.put(pass, 0l);
-                } else if (progress.getCurrent() == 0) {
-                    startTimeMsByPass.put(pass, SystemClock.uptimeMillis());
-                } else if (progress.getCurrent() == progress.getTotal()) {
-                    durationMsByPass.put(
-                            pass, SystemClock.uptimeMillis() - startTimeMsByPass.get(pass));
-                }
-            });
-        }
-
-        Map<Integer, DexoptResult> dexoptResultByPass;
+        long startTimeMs = SystemClock.uptimeMillis();
+        DexoptResult dexoptResult;
         try (var snapshot = mInjector.getPackageManagerLocal().withFilteredSnapshot()) {
-            dexoptResultByPass = mInjector.getArtManagerLocal().dexoptPackages(snapshot,
-                    ReasonMapping.REASON_BG_DEXOPT, cancellationSignal, Runnable::run,
-                    progressCallbacks);
+            dexoptResult = mInjector.getArtManagerLocal().dexoptPackages(snapshot,
+                    ReasonMapping.REASON_BG_DEXOPT, cancellationSignal,
+                    null /* processCallbackExecutor */, null /* processCallback */);
 
             // For simplicity, we don't support cancelling the following operation in the middle.
             // This is fine because it typically takes only a few seconds.
@@ -247,7 +219,7 @@ public class BackgroundDexoptJob {
                 Log.i(TAG, String.format("Freed %d bytes", freedBytes));
             }
         }
-        return CompletedResult.create(dexoptResultByPass, durationMsByPass);
+        return CompletedResult.create(dexoptResult, SystemClock.uptimeMillis() - startTimeMs);
     }
 
     private void writeStats(@NonNull Result result) {
@@ -266,22 +238,13 @@ public class BackgroundDexoptJob {
     static class FatalErrorResult extends Result {}
 
     @AutoValue
-    @SuppressWarnings("AutoValueImmutableFields") // Can't use ImmutableMap because it's in Guava.
     static abstract class CompletedResult extends Result {
-        abstract @NonNull Map<Integer, DexoptResult> dexoptResultByPass();
-        abstract @NonNull Map<Integer, Long> durationMsByPass();
+        abstract @NonNull DexoptResult dexoptResult();
+        abstract long durationMs();
 
         @NonNull
-        static CompletedResult create(@NonNull Map<Integer, DexoptResult> dexoptResultByPass,
-                @NonNull Map<Integer, Long> durationMsByPass) {
-            return new AutoValue_BackgroundDexoptJob_CompletedResult(
-                    Collections.unmodifiableMap(dexoptResultByPass),
-                    Collections.unmodifiableMap(durationMsByPass));
-        }
-
-        public boolean isCancelled() {
-            return dexoptResultByPass().values().stream().anyMatch(
-                    result -> result.getFinalStatus() == DexoptResult.DEXOPT_CANCELLED);
+        static CompletedResult create(@NonNull DexoptResult dexoptResult, long durationMs) {
+            return new AutoValue_BackgroundDexoptJob_CompletedResult(dexoptResult, durationMs);
         }
     }
 
