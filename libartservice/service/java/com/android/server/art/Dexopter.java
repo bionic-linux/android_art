@@ -562,12 +562,9 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
             @Nullable ProfilePath referenceProfile) throws RemoteException {
         OutputProfile output = buildOutputProfile(dexInfo, false /* isPublic */);
 
-        var options = new MergeProfileOptions();
-        options.forceMerge = (mParams.getFlags() & ArtFlags.FLAG_FORCE_MERGE_PROFILE) != 0;
-
         try {
             if (mInjector.getArtd().mergeProfiles(getCurProfiles(dexInfo), referenceProfile, output,
-                        List.of(dexInfo.dexPath()), options)) {
+                        List.of(dexInfo.dexPath()), new MergeProfileOptions())) {
                 return ProfilePath.tmpProfilePath(output.profilePath);
             }
         } catch (ServiceSpecificException e) {
