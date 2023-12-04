@@ -16,18 +16,19 @@
 
 #include "jit_code_cache.h"
 
-#include <sstream>
-
 #include <android-base/logging.h>
 
+#include <sstream>
+
+#include "android-base/properties.h"
 #include "arch/context.h"
 #include "art_method-inl.h"
 #include "base/enums.h"
 #include "base/histogram-inl.h"
 #include "base/logging.h"  // For VLOG.
+#include "base/mem_map.h"
 #include "base/membarrier.h"
 #include "base/memfd.h"
-#include "base/mem_map.h"
 #include "base/quasi_atomic.h"
 #include "base/stl_util.h"
 #include "base/systrace.h"
@@ -47,8 +48,8 @@
 #include "instrumentation.h"
 #include "intern_table.h"
 #include "jit/jit.h"
-#include "jit/profiling_info.h"
 #include "jit/jit_scoped_code_cache_write.h"
+#include "jit/profiling_info.h"
 #include "linear_alloc.h"
 #include "oat_file-inl.h"
 #include "oat_quick_method_header.h"
@@ -1583,11 +1584,31 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
     // They might be incomplete and cause unnecessary deoptimizations.
     // If the inline cache is empty the compiler will generate a regular invoke virtual/interface.
     const void* entry_point = method->GetEntryPointFromQuickCompiledCode();
-    if (ContainsPc(entry_point) &&
-        CodeInfo::IsBaseline(
-            OatQuickMethodHeader::FromEntryPoint(entry_point)->GetOptimizedCodeInfoPtr())) {
+    // -2: Always skip.
+    // -1: Use optimize threshold.
+    // 0: Never skip.
+    // >0: Use given threshold.
+    int inline_cache_threshold =
+        android::base::GetIntProperty("dalvik.vm.inline-cache-threshold", -1);
+    bool should_always_skip_inline_cache = inline_cache_threshold < -1;
+    auto should_skip_inline_cache_for_baseline = [&]() {
+      if (inline_cache_threshold <= -1) {
+        return true;
+      }
+      if (inline_cache_threshold == 0) {
+        return false;
+      }
+      return static_cast<int>(ProfilingInfo::GetOptimizeThreshold() -
+                              info->GetBaselineHotnessCount()) < inline_cache_threshold;
+    };
+    if ((ContainsPc(entry_point) &&
+         CodeInfo::IsBaseline(
+             OatQuickMethodHeader::FromEntryPoint(entry_point)->GetOptimizedCodeInfoPtr()) &&
+         should_skip_inline_cache_for_baseline()) ||
+        should_always_skip_inline_cache) {
       methods.emplace_back(/*ProfileMethodInfo*/
-          MethodReference(dex_file, method->GetDexMethodIndex()), inline_caches);
+                           MethodReference(dex_file, method->GetDexMethodIndex()),
+                           inline_caches);
       continue;
     }
 
