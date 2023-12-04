@@ -1579,18 +1579,6 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
     }
     std::vector<ProfileMethodInfo::ProfileInlineCache> inline_caches;
 
-    // If the method is still baseline compiled, don't save the inline caches.
-    // They might be incomplete and cause unnecessary deoptimizations.
-    // If the inline cache is empty the compiler will generate a regular invoke virtual/interface.
-    const void* entry_point = method->GetEntryPointFromQuickCompiledCode();
-    if (ContainsPc(entry_point) &&
-        CodeInfo::IsBaseline(
-            OatQuickMethodHeader::FromEntryPoint(entry_point)->GetOptimizedCodeInfoPtr())) {
-      methods.emplace_back(/*ProfileMethodInfo*/
-          MethodReference(dex_file, method->GetDexMethodIndex()), inline_caches);
-      continue;
-    }
-
     for (size_t i = 0; i < info->number_of_inline_caches_; ++i) {
       std::vector<TypeReference> profile_classes;
       const InlineCache& cache = info->GetInlineCaches()[i];
