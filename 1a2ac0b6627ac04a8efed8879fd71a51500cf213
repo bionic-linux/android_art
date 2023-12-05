@@ -34,6 +34,24 @@
       "parentUuid": "8df475ec_3d282ab3",
       "revId": "1a2ac0b6627ac04a8efed8879fd71a51500cf213",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe683fa_3cdd1692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-05T18:25:43Z",
+      "side": 1,
+      "message": "Thanks Steven! Yeah this fell through the cracks when doing testing, I had seen this issue before, and I thought I had fixed it. But clearly I didn\u0027t run gtests properly.\n\nI tweaked the tests to make sure the semantics of MapAnonymousAligned() are respected, in that is should only be called with alignments larger than the current page size. Otherwise one should call MapAnonymous().",
+      "parentUuid": "f07308d5_b28cd3b3",
+      "revId": "1a2ac0b6627ac04a8efed8879fd71a51500cf213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
