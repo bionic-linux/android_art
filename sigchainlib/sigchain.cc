@@ -46,7 +46,7 @@
 
 #define SA_UNSUPPORTED 0x00000400
 #define SA_EXPOSE_TAGBITS 0x00000800
-
+#define SA_FREEZE_SIGACTION 0x00000010
 #include <ucontext.h>
 
 // libsigchain provides an interception layer for signal handlers, to allow ART and others to give
@@ -243,7 +243,11 @@ class ScopedHandlingSignal {
 
 class SignalChain {
  public:
-  SignalChain() : claimed_(false) {
+  SignalChain() : claimed_(false), freezed_(false) {
+  }
+
+  bool Isfreezed() {
+    return freezed_;
   }
 
   bool IsClaimed() {
@@ -347,6 +351,10 @@ class SignalChain {
       memcpy(&action_.sa_mask, &new_action->sa_mask,
              std::min(sizeof(action_.sa_mask), sizeof(new_action->sa_mask)));
     }
+    if (action_.sa_flags & SA_FREEZE_SIGACTION) {
+      freezed_ = true;
+      log("Warning: SignalChain set freezed_ true\n");
+    }
     action_.sa_flags &= kernel_supported_flags_;
   }
 
@@ -389,6 +397,7 @@ class SignalChain {
   struct sigaction action_;
 #endif
   SigchainAction special_handlers_[2];
+  bool freezed_;
 };
 
 // _NSIG is 1 greater than the highest valued signal, but signals start from 1.
@@ -520,6 +529,11 @@ static int __sigaction(int signal, const SigactionType* new_action,
   }
 
   if (chains[signal].IsClaimed()) {
+    if (chains[signal].Isfreezed()) {
+      log("Warning: chains[%d] freezed\n", signal);
+      errno = EINVAL;
+      return -2;
+    }
     SigactionType saved_action = chains[signal].GetAction<SigactionType>();
     if (new_action != nullptr) {
       chains[signal].SetAction(new_action);
@@ -566,6 +580,11 @@ extern "C" sighandler_t signal(int signo, sighandler_t handler) {
   // If this signal has been claimed as a signal chain, record the user's
   // action but don't pass it on to the kernel.
   if (chains[signo].IsClaimed()) {
+    if (chains[signo].Isfreezed()) {
+      log("Warning: chains[%d] freezed\n", signo);
+      errno = EINVAL;
+      return SIG_ERR;
+    }
     oldhandler = reinterpret_cast<sighandler_t>(
         chains[signo].GetAction<struct sigaction>().sa_handler);
     chains[signo].SetAction(&sa);
