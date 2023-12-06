@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664abf5a_6407adba",
+        "filename": "runtime/exec_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-06T17:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0f5fb8_61d4f507",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 23
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c24809ce_f957ced0",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7078d84f_9870bc10",
+        "filename": "runtime/exec_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-06T17:39:32Z",
+      "side": 1,
+      "message": "This number is passed to Java through AIDL, and Java doesn\u0027t support uint64_t, so we have to take the loss sooner or later.\n\nBesides, uint64_t doesn\u0027t make a difference in practice. int64_t can hold a time up to 292 million years.",
+      "parentUuid": "c24809ce_f957ced0",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be24a723_25dc47ab",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-12-06T16:57:31Z",
       "side": 1,
       "message": "ditto?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e3c735_9842efa1",
+        "filename": "runtime/exec_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-12-06T17:39:32Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "be24a723_25dc47ab",
       "range": {
         "startLine": 37,
         "startChar": 2,
