@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051d689c_3580c9e0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2023-12-06T15:45:16Z",
+      "side": 0,
+      "message": "We were collecting all code that hasn\u0027t executed since the last GC right? Does it make sense to wait for 3-4 GCs before we collect it and see if that works for startup. Maybe we can also trigger this collection only when the JITCodeCache size is above some threshold. \n\nI don\u0027t have any data but feels like reclaiming unused code (not just baseline but optimized too) might be good. If Jit code caches aren\u0027t big enough then maybe it isn\u0027t worth it. I am fine removing this code now though. I think for this to be effective we need to extend it to optimized code and profiling info too.",
+      "range": {
+        "startLine": 1356,
+        "startChar": 11,
+        "endLine": 1356,
+        "endChar": 36
+      },
+      "revId": "9322eb5592a33ab48f13581a01e8676fea87c082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
