@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0f5fb8_61d4f507",
+        "filename": "runtime/exec_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-12-06T16:57:31Z",
+      "side": 1,
+      "message": "Add a comment why the return false.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 23
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c24809ce_f957ced0",
+        "filename": "runtime/exec_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-12-06T16:57:31Z",
+      "side": 1,
+      "message": "uint64_t ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be24a723_25dc47ab",
+        "filename": "runtime/exec_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-12-06T16:57:31Z",
+      "side": 1,
+      "message": "ditto?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "699e40c58067e1fd8796d22dc9ebcae05fb513ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
