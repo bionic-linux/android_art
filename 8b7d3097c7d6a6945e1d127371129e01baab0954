@@ -16,6 +16,23 @@
       "message": "lgtm. Thanks!",
       "revId": "8b7d3097c7d6a6945e1d127371129e01baab0954",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75dc2e9c_8a0cad1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-12-07T09:20:13Z",
+      "side": 1,
+      "message": "Thanks Mythri.",
+      "revId": "8b7d3097c7d6a6945e1d127371129e01baab0954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

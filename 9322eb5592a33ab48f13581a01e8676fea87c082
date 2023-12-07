@@ -22,6 +22,30 @@
       },
       "revId": "9322eb5592a33ab48f13581a01e8676fea87c082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eb18c1_ec9ab6bb",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2023-12-07T09:20:13Z",
+      "side": 0,
+      "message": "\u003e We were collecting all code that hasn\u0027t executed since the last GC right? Does it make sense to wait for 3-4 GCs before we collect it and see if that works for startup. Maybe we can also trigger this collection only when the JITCodeCache size is above some threshold. \n\nPolling this liveness may be interesting, but we need to find a better heuristic as to when. In Android, it\u0027s probably only useful when we get a signal that a process becomes less important - so I don\u0027t think we should base it on Jit cache thresholds. As a next step, I plan to do more agressive GC\u0027ing of JIT code when we transition the app from jank-perceptible to non-jank-perceptible. \n\n\u003e I don\u0027t have any data but feels like reclaiming unused code (not just baseline but optimized too) might be good. If Jit code caches aren\u0027t big enough then maybe it isn\u0027t worth it. I am fine removing this code now though. I think for this to be effective we need to extend it to optimized code and profiling info too.\n\nIndeed - we currently only did it for baseline code. When I start doing GC during app transition, I\u0027ll look into including optimizing code and profiling info.",
+      "parentUuid": "051d689c_3580c9e0",
+      "range": {
+        "startLine": 1356,
+        "startChar": 11,
+        "endLine": 1356,
+        "endChar": 36
+      },
+      "revId": "9322eb5592a33ab48f13581a01e8676fea87c082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
