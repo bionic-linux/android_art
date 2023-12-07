@@ -22,6 +22,30 @@
       },
       "revId": "cd9f474e3b516d7e4ed33ad05dfc02dd47deb5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925b5b01_ee09a0f9",
+        "filename": "runtime/art_field-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2023-12-07T15:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bada174_e54f9959",
+      "range": {
+        "startLine": 430,
+        "startChar": 33,
+        "endLine": 430,
+        "endChar": 35
+      },
+      "revId": "cd9f474e3b516d7e4ed33ad05dfc02dd47deb5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
