@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bada174_e54f9959",
+        "filename": "runtime/art_field-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2023-12-07T08:55:00Z",
+      "side": 1,
+      "message": "Style: I prefer to break the line before the `?`. (And I usually also keep the indentation to 4 spaces from the start of the previous line rather that 4 spaces from the start of the condition expression.)",
+      "range": {
+        "startLine": 430,
+        "startChar": 33,
+        "endLine": 430,
+        "endChar": 35
+      },
+      "revId": "cd9f474e3b516d7e4ed33ad05dfc02dd47deb5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
