@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2359c5b4_93e29ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-12T18:37:39Z",
+      "side": 1,
+      "message": "Similarly to https://android-review.googlesource.com/c/platform/art/+/2852428/2 this is marked as work-in-progress since parts of this change (or all of it) might not be needed on top of the main set of optimizations - based on the performance data considered so far.",
+      "revId": "88ba19e0f607f703f7c4fb38a54023dee0293736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
