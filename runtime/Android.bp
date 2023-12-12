@@ -601,6 +601,10 @@ cc_defaults {
         "libart-runtime_deps",
         "libart-compiler_deps",
     ],
+    // Don't export symbols from static libs used by libart-compiler.
+    ldflags: [
+        "-Wl,--exclude-libs=libart-compiler.a",
+    ],
 }
 
 cc_defaults {
@@ -610,6 +614,10 @@ cc_defaults {
         "libart_common_defaults",
         "libartd-runtime_deps",
         "libartd-compiler_deps",
+    ],
+    // Don't export symbols from static libs used by libart-compiler.
+    ldflags: [
+        "-Wl,--exclude-libs=libartd-compiler.a",
     ],
 }
 
