@@ -22,6 +22,30 @@
       },
       "revId": "f6c3692ca420caaaaca8db539bea15be01dae766",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d0420d_66f57168",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-12-13T20:24:15Z",
+      "side": 1,
+      "message": "\u003e Could you verify that dropping a prebuilt without this into an older release does not break.\n\nGood point, but I don\u0027t see a way to do that with a reasonable effort. It entails creating a prebuilt drop [like this](http://pa/c/2680985/1), which apparently is done through [these tools](http://google3/wireless/android/gantry/build_workers/README.md), which seem to require Borg ACLs to run a Pod server. +alexcheung, do you have any ideas on how I can test prebuilts produced with this CL?\n\n\u003e FTR - you should not be dropping prebuilts from mainline release into main.\n\nWe will need to continue dropping (and using) prebuilts for (at least) host-exports due to the implementation dependency on dex2oat (but it\u0027s not me personally that will do them, if that was what you meant with \"you\").",
+      "parentUuid": "beaae7db_145c56ff",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "f6c3692ca420caaaaca8db539bea15be01dae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

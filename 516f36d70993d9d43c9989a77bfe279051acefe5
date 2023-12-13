@@ -22,6 +22,30 @@
       },
       "revId": "516f36d70993d9d43c9989a77bfe279051acefe5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33c8a80_c2613e97",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-12-13T20:24:15Z",
+      "side": 0,
+      "message": "How? I\u0027ve checked that a prebuilt SDK produced with this patch drops okhttp-norepackage as expected.",
+      "parentUuid": "a00153bb_c621bd2a",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 13
+      },
+      "revId": "516f36d70993d9d43c9989a77bfe279051acefe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
