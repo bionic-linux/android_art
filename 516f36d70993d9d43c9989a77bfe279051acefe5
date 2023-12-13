@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00153bb_c621bd2a",
+        "filename": "build/sdk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-13T18:42:19Z",
+      "side": 0,
+      "message": "This will break",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 13
+      },
+      "revId": "516f36d70993d9d43c9989a77bfe279051acefe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

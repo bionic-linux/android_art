@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beaae7db_145c56ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-13T18:42:19Z",
+      "side": 1,
+      "message": "Could you verify that dropping a prebuilt without this into an older release does not break. It should not as it should use the source version but I do not trust the build to \"just work\".\n\nFTR - you should not be dropping prebuilts from mainline release into main.",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "f6c3692ca420caaaaca8db539bea15be01dae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
