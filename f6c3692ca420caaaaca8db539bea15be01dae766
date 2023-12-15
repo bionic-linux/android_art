@@ -70,6 +70,30 @@
       },
       "revId": "f6c3692ca420caaaaca8db539bea15be01dae766",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e9907b_803c60f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2023-12-15T15:57:56Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "8ee293d1_4447e3f2",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "f6c3692ca420caaaaca8db539bea15be01dae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
