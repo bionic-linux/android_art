@@ -181,7 +181,7 @@ class ZygoteMap {
 class JitCodeCache {
  public:
   static constexpr size_t kMaxCapacity = 64 * MB;
-
+  static constexpr uint32_t kMaxGetProfiledMethodMs = 300;
   // Default initial capacity of the JIT code cache.
   static size_t GetInitialCapacity() {
     // Put the default to a very low amount for debug builds to stress the code cache

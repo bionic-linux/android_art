@@ -19,6 +19,8 @@
 #include <sstream>
 
 #include <android-base/logging.h>
+#include "android-base/strings.h"
+#include "android-base/stringprintf.h"
 
 #include "arch/context.h"
 #include "art_method-inl.h"
@@ -62,6 +64,7 @@
 
 namespace art {
 namespace jit {
+using android::base::StringPrintf;
 
 static constexpr size_t kCodeSizeLogThreshold = 50 * KB;
 static constexpr size_t kStackMapSizeLogThreshold = 50 * KB;
@@ -1566,7 +1569,13 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
   // TODO: Avoid read barriers for potentially dead methods.
   // ScopedDebugDisallowReadBarriers sddrb(self);
   MutexLock mu(self, *Locks::jit_lock_);
-  ScopedTrace trace(__FUNCTION__);
+
+  uint64_t start_time = NanoTime();
+  uint64_t deal_time_ms = 0;
+  size_t profiling_infos_size = profiling_infos_.size();
+  size_t deal_size = 0;
+  ScopedTrace trace(StringPrintf("%s(profiling_infos_size=%d)", __FUNCTION__, profiling_infos_size));
+
   for (const auto& entry : profiling_infos_) {
     ArtMethod* method = entry.first;
     ProfilingInfo* info = entry.second;
@@ -1646,7 +1655,18 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
     }
     methods.emplace_back(/*ProfileMethodInfo*/
         MethodReference(dex_file, method->GetDexMethodIndex()), inline_caches);
+
+    deal_size++;
+    deal_time_ms = NsToMs(NanoTime() - start_time);
+    if (deal_time_ms > kMaxGetProfiledMethodMs) {
+      LOG(WARNING) << "Get Profiled Methods too long, have dealt " << deal_size << " of "
+                   << profiling_infos_size << " with " << deal_time_ms << "ms, break it!";
+      break;
+    }
   }
+  deal_time_ms = NsToMs(NanoTime() - start_time);
+  VLOG(profiler) << "Get Profiled Methods spend " << deal_time_ms << "ms for deal " << deal_size
+                 << " of " << profiling_infos_size;
 }
 
 bool JitCodeCache::IsOsrCompiled(ArtMethod* method) {
