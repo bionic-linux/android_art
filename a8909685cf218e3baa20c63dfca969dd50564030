@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abbb03fb_dff20f7a",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3235,
+      "author": {
+        "id": 1889140
+      },
+      "writtenOn": "2023-12-19T20:20:56Z",
+      "side": 1,
+      "message": "should we cache GetPageSize()?",
+      "range": {
+        "startLine": 3235,
+        "startChar": 65,
+        "endLine": 3235,
+        "endChar": 86
+      },
+      "revId": "a8909685cf218e3baa20c63dfca969dd50564030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
