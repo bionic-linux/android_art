@@ -30,6 +30,7 @@
 
 #include "base/common_art_test.h"
 #include "gtest/gtest.h"
+#include "nativehelper/JniInvocation.h"                                 \
 
 namespace {
 
@@ -94,11 +95,20 @@ TEST_F(PaletteClientJniTest, JniInvocation) {
   bool enabled;
   EXPECT_EQ(PALETTE_STATUS_OK, PaletteShouldReportJniInvocations(&enabled));
 
+<<<<<<< TARGET BRANCH (ab6812 art: disable standalone cts tests for native-bridge am: debd)
   std::string boot_class_path_string =
       GetClassPathOption("-Xbootclasspath:", GetLibCoreDexFileNames());
   std::string boot_class_path_locations_string =
       GetClassPathOption("-Xbootclasspath-locations:", GetLibCoreDexLocations());
 
+=======
+  // This calls JniInvocationInit, which is necessary to load the VM. It's not
+  // public but still stable.
+  JniInvocation jni_invocation;
+  ASSERT_TRUE(jni_invocation.Init(nullptr));
+
+  JavaVMInitArgs vm_args;
+>>>>>>> SOURCE BRANCH (792482 Avoid dynamic lib dependencies on internal ART libraries in )
   JavaVMOption options[] = {
       {.optionString = boot_class_path_string.c_str(), .extraInfo = nullptr},
       {.optionString = boot_class_path_locations_string.c_str(), .extraInfo = nullptr},
