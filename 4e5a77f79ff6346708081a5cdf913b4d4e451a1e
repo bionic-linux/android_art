@@ -87,6 +87,23 @@
       "message": "(needs +2 for parent CL to run presubmit)",
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36337ec9_62d529ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-12-19T02:44:26Z",
+      "side": 1,
+      "message": "Friendly ping for review.",
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
