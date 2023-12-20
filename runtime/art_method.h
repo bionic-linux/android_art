@@ -39,7 +39,7 @@
 #include "offsets.h"
 #include "read_barrier_option.h"
 
-namespace art {
+namespace art HIDDEN {
 
 class CodeItemDataAccessor;
 class CodeItemDebugInfoAccessor;
@@ -84,7 +84,8 @@ template <char Shorty> struct HandleShortyTraits;
 template <> struct HandleShortyTraits<'L'>;
 }  // namespace detail
 
-class ArtMethod final {
+// ClassLinker::DoResolveType<art::ArtMethod*> function is exported, so it's template parameter must have EXPORT too.
+class EXPORT ArtMethod final {
  public:
   // Should the class state be checked on sensitive operations?
   DECLARE_RUNTIME_DEBUG_FLAG(kCheckDeclaringClassState);
@@ -673,8 +674,11 @@ class ArtMethod final {
                                             uint32_t name_and_signature_idx)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  void Invoke(Thread* self, uint32_t* args, uint32_t args_size, JValue* result, const char* shorty)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  void Invoke(Thread* self,
+                     uint32_t* args,
+                     uint32_t args_size,
+                     JValue* result,
+                     const char* shorty) REQUIRES_SHARED(Locks::mutator_lock_);
 
   template <char ReturnType, char... ArgType>
   typename detail::ShortyTraits<ReturnType>::Type
@@ -1025,8 +1029,7 @@ class ArtMethod final {
   // "a.b.C.m(II)V" (depending on the value of 'with_signature').
   static std::string PrettyMethod(ArtMethod* m, bool with_signature = true)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  std::string PrettyMethod(bool with_signature = true)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  std::string PrettyMethod(bool with_signature = true) REQUIRES_SHARED(Locks::mutator_lock_);
   // Returns the JNI native function name for the non-overloaded method 'm'.
   std::string JniShortName()
       REQUIRES_SHARED(Locks::mutator_lock_);

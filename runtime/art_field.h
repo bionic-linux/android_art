@@ -17,6 +17,7 @@
 #ifndef ART_RUNTIME_ART_FIELD_H_
 #define ART_RUNTIME_ART_FIELD_H_
 
+#include "base/macros.h"
 #include "dex/modifiers.h"
 #include "dex/primitive.h"
 #include "gc_root.h"
@@ -25,7 +26,7 @@
 #include "read_barrier_option.h"
 #include "verify_object.h"
 
-namespace art {
+namespace art HIDDEN {
 
 class DexFile;
 template<typename T> class LengthPrefixedArray;
@@ -239,10 +240,9 @@ class ArtField final {
 
   // Returns a human-readable signature. Something like "a.b.C.f" or
   // "int a.b.C.f" (depending on the value of 'with_type').
-  static std::string PrettyField(ArtField* f, bool with_type = true)
+  EXPORT static std::string PrettyField(ArtField* f, bool with_type = true)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  std::string PrettyField(bool with_type = true)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  EXPORT std::string PrettyField(bool with_type = true) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Returns true if a set-* instruction in the given method is allowable.
   ALWAYS_INLINE inline bool CanBeChangedBy(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -250,7 +250,7 @@ class ArtField final {
  private:
   bool IsProxyField() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  ObjPtr<mirror::Class> ProxyFindSystemClass(const char* descriptor)
+  EXPORT ObjPtr<mirror::Class> ProxyFindSystemClass(const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   GcRoot<mirror::Class> declaring_class_;
