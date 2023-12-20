@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "93a0f584_cdad1ab7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2023-12-20T03:56:31Z",
+      "side": 1,
+      "message": "We call WaitForFlipFunction from TransitionFromSuspendedTuRunnable, while still suspended. And WaitForFlipFunction basically releases all locks while waiting, I think. So I think the GC can merrily progress, running checkpoints etc. on the suspended threads\u0027s behalf. This is based on an observed test failure, and I think it all makes sense. The test explicitly runs a bunch of GCs in a row, with little in-between.",
+      "parentUuid": "57e41446_92212960",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "90d095f712b367f06758cd7bbd94d5430df2ed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fb1aca33_c340d0d5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
