@@ -22,10 +22,11 @@
 #include <vector>
 
 #include "barrier.h"
+#include "base/macros.h"
 #include "base/mem_map.h"
 #include "base/mutex.h"
 
-namespace art {
+namespace art HIDDEN {
 
 class ThreadPool;
 
@@ -115,20 +116,20 @@ class ThreadPool {
     return threads_.size();
   }
 
-  const std::vector<ThreadPoolWorker*>& GetWorkers();
+  EXPORT const std::vector<ThreadPoolWorker*>& GetWorkers();
 
   // Broadcast to the workers and tell them to empty out the work queue.
-  void StartWorkers(Thread* self) REQUIRES(!task_queue_lock_);
+  EXPORT void StartWorkers(Thread* self) REQUIRES(!task_queue_lock_);
 
   // Do not allow workers to grab any new tasks.
-  void StopWorkers(Thread* self) REQUIRES(!task_queue_lock_);
+  EXPORT void StopWorkers(Thread* self) REQUIRES(!task_queue_lock_);
 
   // Returns if the thread pool has started.
   bool HasStarted(Thread* self) REQUIRES(!task_queue_lock_);
 
   // Add a new task, the first available started worker will process it. Does not delete the task
   // after running it, it is the caller's responsibility.
-  void AddTask(Thread* self, Task* task) REQUIRES(!task_queue_lock_);
+  EXPORT void AddTask(Thread* self, Task* task) REQUIRES(!task_queue_lock_);
 
   // Remove all tasks in the queue.
   void RemoveAllTasks(Thread* self) REQUIRES(!task_queue_lock_);
@@ -138,10 +139,10 @@ class ThreadPool {
   // If create_peers is true, all worker threads will have a Java peer object. Note that if the
   // pool is asked to do work on the current thread (see Wait), a peer may not be available. Wait
   // will conservatively abort if create_peers and do_work are true.
-  ThreadPool(const char* name,
-             size_t num_threads,
-             bool create_peers = false,
-             size_t worker_stack_size = ThreadPoolWorker::kDefaultStackSize);
+  EXPORT ThreadPool(const char* name,
+                    size_t num_threads,
+                    bool create_peers = false,
+                    size_t worker_stack_size = ThreadPoolWorker::kDefaultStackSize);
   virtual ~ThreadPool();
 
   // Create the threads of this pool.
@@ -153,7 +154,7 @@ class ThreadPool {
   // Wait for all tasks currently on queue to get completed. If the pool has been stopped, only
   // wait till all already running tasks are done.
   // When the pool was created with peers for workers, do_work must not be true (see ThreadPool()).
-  void Wait(Thread* self, bool do_work, bool may_hold_locks) REQUIRES(!task_queue_lock_);
+  EXPORT void Wait(Thread* self, bool do_work, bool may_hold_locks) REQUIRES(!task_queue_lock_);
 
   size_t GetTaskCount(Thread* self) REQUIRES(!task_queue_lock_);
 

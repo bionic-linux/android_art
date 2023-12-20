@@ -25,7 +25,7 @@
 #include "base/atomic.h"
 #include "base/macros.h"
 
-namespace art {
+namespace art HIDDEN {
 
 class BaseMutex;
 class ConditionVariable;
@@ -150,7 +150,7 @@ enum LockLevel : uint8_t {
 
   kLockLevelCount  // Must come last.
 };
-std::ostream& operator<<(std::ostream& os, LockLevel rhs);
+EXPORT std::ostream& operator<<(std::ostream& os, LockLevel rhs);
 
 // For StartNoThreadSuspension and EndNoThreadSuspension.
 class CAPABILITY("role") Role {
@@ -164,7 +164,7 @@ class Uninterruptible : public Role {
 };
 
 // Global mutexes corresponding to the levels above.
-class Locks {
+class EXPORT Locks {
  public:
   static void Init();
   static void InitConditions() NO_THREAD_SAFETY_ANALYSIS;  // Condition variables.
@@ -381,7 +381,7 @@ class Locks {
 class Roles {
  public:
   // Uninterruptible means that the thread may not become suspended.
-  static Uninterruptible uninterruptible_;
+  EXPORT static Uninterruptible uninterruptible_;
 };
 
 }  // namespace art

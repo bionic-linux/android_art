@@ -46,7 +46,7 @@
 #define HAVE_TIMED_RWLOCK 0
 #endif
 
-namespace art {
+namespace art HIDDEN {
 
 class SHARED_LOCKABLE ReaderWriterMutex;
 class SHARED_LOCKABLE MutatorMutex;
@@ -172,7 +172,7 @@ class BaseMutex {
 // acquired) by a thread in suspended state. Suspending all threads does NOT prevent mutex state
 // from changing.
 std::ostream& operator<<(std::ostream& os, const Mutex& mu);
-class LOCKABLE Mutex : public BaseMutex {
+class EXPORT LOCKABLE Mutex : public BaseMutex {
  public:
   explicit Mutex(const char* name, LockLevel level = kDefaultMutexLevel, bool recursive = false);
   ~Mutex();
@@ -314,20 +314,20 @@ class LOCKABLE Mutex : public BaseMutex {
 // Exclusive | Block         | Free            | Block            | error
 // Shared(n) | Block         | error           | SharedLock(n+1)* | Shared(n-1) or Free
 // * for large values of n the SharedLock may block.
-std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
+EXPORT std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
 class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
  public:
-  explicit ReaderWriterMutex(const char* name, LockLevel level = kDefaultMutexLevel);
-  ~ReaderWriterMutex();
+  EXPORT explicit ReaderWriterMutex(const char* name, LockLevel level = kDefaultMutexLevel);
+  EXPORT ~ReaderWriterMutex();
 
   bool IsReaderWriterMutex() const override { return true; }
 
   // Block until ReaderWriterMutex is free then acquire exclusive access.
-  void ExclusiveLock(Thread* self) ACQUIRE();
+  EXPORT void ExclusiveLock(Thread* self) ACQUIRE();
   void WriterLock(Thread* self) ACQUIRE() {  ExclusiveLock(self); }
 
   // Release exclusive access.
-  void ExclusiveUnlock(Thread* self) RELEASE();
+  EXPORT void ExclusiveUnlock(Thread* self) RELEASE();
   void WriterUnlock(Thread* self) RELEASE() {  ExclusiveUnlock(self); }
 
   // Block until ReaderWriterMutex is free and acquire exclusive access. Returns true on success
@@ -366,7 +366,7 @@ class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
   }
 
   // Is the current thread a shared holder of the ReaderWriterMutex.
-  bool IsSharedHeld(const Thread* self) const;
+  EXPORT bool IsSharedHeld(const Thread* self) const;
 
   // Assert the current thread has shared access to the ReaderWriterMutex.
   ALWAYS_INLINE void AssertSharedHeld(const Thread* self) ASSERT_SHARED_CAPABILITY(this) {
@@ -403,7 +403,7 @@ class SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
  private:
 #if ART_USE_FUTEXES
   // Out-of-inline path for handling contention for a SharedLock.
-  void HandleSharedLockContention(Thread* self, int32_t cur_state);
+  EXPORT void HandleSharedLockContention(Thread* self, int32_t cur_state);
 
   // -1 implies held exclusive, >= 0: shared held by state_ many owners.
   AtomicInteger state_;
@@ -456,7 +456,7 @@ class SHARED_LOCKABLE MutatorMutex : public ReaderWriterMutex {
 
 // ConditionVariables allow threads to queue and sleep. Threads may then be resumed individually
 // (Signal) or all at once (Broadcast).
-class ConditionVariable {
+class EXPORT ConditionVariable {
  public:
   ConditionVariable(const char* name, Mutex& mutex);
   ~ConditionVariable();
