@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e41446_92212960",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-20T02:31:40Z",
+      "side": 1,
+      "message": "How is this possible? Are you referring to the rare situation where a thread doesn\u0027t get to run (due to CPU scheduling) after it resumes (at thread.cc line 1897/1918) in the ith GC and then i+1th GC adds a flip function? Otherwise, I don\u0027t see how this can happen. And even this case I\u0027m still wondering if it\u0027s possible. Because in order to be able to do the next GC, the gc-thread needs to run the callback in the pause, and wouldn\u0027t this thread, which is runnable, need to respond to the suspend-check for that?",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "90d095f712b367f06758cd7bbd94d5430df2ed97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fb1aca33_c340d0d5",
