@@ -24,7 +24,7 @@
 #include "base/macros.h"
 #include "handle.h"
 
-namespace art {
+namespace art HIDDEN {
 
 namespace dex {
 struct ClassDef;
@@ -158,7 +158,7 @@ class ReflectiveValueVisitCallback {
       REQUIRES(Locks::mutator_lock_) = 0;
 };
 
-class RuntimeCallbacks {
+class EXPORT RuntimeCallbacks {
  public:
   RuntimeCallbacks();
 
@@ -177,8 +177,7 @@ class RuntimeCallbacks {
   void ClassPrepare(Handle<mirror::Class> temp_klass, Handle<mirror::Class> klass)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  void AddRuntimeSigQuitCallback(RuntimeSigQuitCallback* cb)
-      REQUIRES(Locks::mutator_lock_);
+  void AddRuntimeSigQuitCallback(RuntimeSigQuitCallback* cb) REQUIRES(Locks::mutator_lock_);
   void RemoveRuntimeSigQuitCallback(RuntimeSigQuitCallback* cb)
       REQUIRES(Locks::mutator_lock_);
 
