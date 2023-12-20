@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f526027_75088cef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-20T06:05:01Z",
+      "side": 1,
+      "message": "This leaves a possibility that someone might think that we are setting a bit in every nibble, which means higher physical RAM consumption. Instead, IIUC, what\u0027s happening is that the first 1/4th of the bitmap will be used if the page size is 16KB.\n\nPlease correct me if I\u0027m wrong, otherwise clarify this in the statement.",
+      "range": {
+        "startLine": 15,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb6ec0e_7e1a696a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-20T06:05:01Z",
+      "side": 1,
+      "message": "I just checked that regardless of which type of large-object space we use, we always allocate bitmap for the entire 4GB of 32-bit address space. And that too for 2 bitmaps. In a different CL later I will fix it to not do so for free-list based large-object space.",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b1c38b9f_35cf77da",
