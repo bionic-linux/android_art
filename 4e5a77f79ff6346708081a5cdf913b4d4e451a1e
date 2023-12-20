@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a54f4e2_059a656e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-20T13:24:04Z",
+      "side": 1,
+      "message": "In this case yes, we are indeed setting a single bit in every nibble when the runtime page size is 16k, as the internal fixed alignment of the the space bitmap is fixed to 4k.\n\nThe reasoning was that when compared to 4k, we\u0027re not increasing memory consumption, but merely not reducing it as much as we could. And looking at the bottom line and assuming a capacity of 256M, the space bitmaps would have the following sizes if their internal alignments would match the runtime page size:\n\n  - 4k  -\u003e 8k\n  - 16k -\u003e 2k\n  \nSo in effect, with a 16k runtime page size, there wouldn\u0027t be any actual memory savings in that one will still need a full 16k page to allocate the 2k bitmaps. Although I guess we could merge the 2 bitmaps into a single mapping, I hadn\u0027t considered that.\n\nThat being said, there might be performance tradeoffs here, between keeping the bits as packed as possible, for maybe better cache locality, at the expense of adding overhead to compute where the bits are, when the alignment is no longer a constexpr.\n\nWe thought the current approach was the better way forward, favouring the simplicity of keeping kAlignment fixed in the bitmap, WDYT?",
+      "parentUuid": "2f526027_75088cef",
+      "range": {
+        "startLine": 15,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fb6ec0e_7e1a696a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2023-12-20T06:05:01Z",
       "side": 1,
       "message": "I just checked that regardless of which type of large-object space we use, we always allocate bitmap for the entire 4GB of 32-bit address space. And that too for 2 bitmaps. In a different CL later I will fix it to not do so for free-list based large-object space.",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fe48e2_de0d98e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-20T13:24:04Z",
+      "side": 1,
+      "message": "Oh yes I did notice that, and I think I even considered changing it as part of this patch, to only allocate a 4G-covering bitmap for the LargeObjectMapSpace, and make the FreeListSpace only cover the 256 range.\n\nLet me know if you would like me to do that, or if you\u0027d prefer this was a follow-up, as it\u0027s technically orthogonal and wasn\u0027t introduced by the 16k effort.\n\nTo make sure I understand, even though we allocate a bitmap to cover the whole 4G range - which translates to 128k of virtual space, for one bit per page, if my calculations are correct - we actually only touch 8k inside it when using the free-list space, by default. So in the end, we\u0027re using more virtual memory than strictly necessary. It\u0027s still good to reduce this of course.",
+      "parentUuid": "4fb6ec0e_7e1a696a",
       "range": {
         "startLine": 18,
         "startChar": 28,
