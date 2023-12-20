@@ -33,6 +33,24 @@
       "message": "If this is about build error\n```\nbuild/soong/java/dexpreopt_bootjars.go:555:10: ctx.OtherModuleHasProvider undefined (type android.BottomUpMutatorContext has no field or method OtherModuleHasProvider)\n```\n\nthen it seems like caused by aosp/2876768 which is already revert submitted.",
       "revId": "81a453e89ed03e431f153bb4f1bade4196744271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62db74d6_3555fae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-12-20T04:29:11Z",
+      "side": 1,
+      "message": "Seems like the latest build (https://ci.chromium.org/ui/p/art/builders/ci/walleye-armv8-poison-debug/3561/overview) passed, though I\u0027m not quite familiar with ART builds.",
+      "parentUuid": "51b5fadd_9784f3ab",
+      "revId": "81a453e89ed03e431f153bb4f1bade4196744271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
