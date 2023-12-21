@@ -288,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "000f8d93_5486b29a",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T19:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01323e02_5d9a137e",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 61
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd1acc1b_5b3c36b0",
@@ -469,6 +493,30 @@
       "side": 1,
       "message": "DCHECK would be really helpful. Thanks. Please add it.",
       "parentUuid": "c40aecb1_bacd8412",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ba9ec0_6cfe21f6",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T19:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea0ef89_130acdea",
       "range": {
         "startLine": 274,
         "startChar": 25,

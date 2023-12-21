@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5c713c_1bea7fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T19:16:05Z",
+      "side": 1,
+      "message": "I think I\u0027ve addressed comments, hopefully the comments make sense!\n\nThanks,\nPierre",
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
