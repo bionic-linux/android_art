@@ -405,6 +405,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57779fe_2dc4361a",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T12:53:20Z",
+      "side": 1,
+      "message": "That works too. I just want a single place that can be updated to change the alignment for large-objects.",
+      "parentUuid": "67b410a1_bc838794",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
