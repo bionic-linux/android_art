@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f1681d_9246ca41",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-21T05:02:53Z",
+      "side": 1,
+      "message": "There\u0027s a lot of these. I\u0027ll make a separate pass for this.",
+      "parentUuid": "77685e06_a9f6eedc",
+      "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0d0b81_a96542b8",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-12-20T16:50:16Z",
       "side": 1,
       "message": "Keep the `elif` and do `else: assert False, width` to check you got expected width (of the correct type)",
+      "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743ca389_c19b63d0",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-21T05:02:53Z",
+      "side": 1,
+      "message": "Similar - discrete pass to address this\nsee r.android.com/2887366",
+      "parentUuid": "8c0d0b81_a96542b8",
       "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62de6b1e_e640ee9c",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-21T05:02:53Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "26e67173_98a8a2ee",
+      "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f60d8c6_9454b6dc",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc3a946_1ea1175c",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-21T05:02:53Z",
+      "side": 1,
+      "message": "Yeah, looks like it cannot.",
+      "parentUuid": "1f60d8c6_9454b6dc",
+      "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bbf55a0_27c432d8",
@@ -82,6 +154,24 @@
       "writtenOn": "2023-12-20T16:50:16Z",
       "side": 1,
       "message": "Nit: Align",
+      "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361933c2_d8abba42",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-21T05:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbf55a0_27c432d8",
       "revId": "26f15bd52247d1b51b7066619024d5644dbf5402",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
