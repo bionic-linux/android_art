@@ -34,6 +34,24 @@
       "parentUuid": "06295d5a_705e79db",
       "revId": "60850d186bee04449c1f04038e25ac5d6eba2b93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0427a0d6_3f1d1aea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1927237
+      },
+      "writtenOn": "2023-12-21T13:42:38Z",
+      "side": 1,
+      "message": "Sorry that I didn\u0027t notice your comment. I\u0027ll take care about the merge conflict.",
+      "parentUuid": "fc3e8470_31062953",
+      "revId": "60850d186bee04449c1f04038e25ac5d6eba2b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
