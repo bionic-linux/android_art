@@ -309,6 +309,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de44452_0ef5e335",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T10:37:00Z",
+      "side": 1,
+      "message": "I see, I was actually wondering about this other here: https://android-review.googlesource.com/c/platform/art/+/2844992/comment/6390c3e3_eb1561d8/ , sorry I should have brought that comment forward.\n\nMy main worry was that we would never test a case where `gLargeObjectAlignment` is different from `gPageSize`, and so over time I feared we would end up with inconsistent use of either, and it wouldn\u0027t necessarily make 2) easier. But that was assuming we would stick with the approach in this CL in the mid/long term. If this is to be changed soon-ish, then a `gLargeObjectAlignment` variable is probably better indeed, I\u0027ll look into that.\n\nRegarding the overhead, a dedicated global variable will not be faster than accessing `gPageSize`, as Ruben as made sure `gPageSize` is cached and can be accessed without first checking if it is initialized, see https://android-review.googlesource.com/c/platform/art/+/2852448",
+      "parentUuid": "fd1acc1b_5b3c36b0",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
