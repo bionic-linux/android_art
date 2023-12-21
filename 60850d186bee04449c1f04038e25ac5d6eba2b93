@@ -16,6 +16,24 @@
       "message": "Please add a Merged-In tag with the change ID of the original CL. Otherwise there may be issues when it gets merged downstream.\n\nI also suggest mentioning that it\u0027s a cherry pick and a link to the original, even though it\u0027s from internal.",
       "revId": "60850d186bee04449c1f04038e25ac5d6eba2b93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3e8470_31062953",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-12-21T13:41:25Z",
+      "side": 1,
+      "message": "You didn\u0027t add the Merge-In tag as requested. You\u0027ll have to watch for merge conflicts now.",
+      "parentUuid": "06295d5a_705e79db",
+      "revId": "60850d186bee04449c1f04038e25ac5d6eba2b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
