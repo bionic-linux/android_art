@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765df91e_c58cf767",
+        "filename": "runtime/interpreter/mterp/riscv64/array.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2023-12-21T14:11:32Z",
+      "side": 1,
+      "message": "Nit: I would prefer to make it `is_range` or `nterp_helper`.  So that if someone greps for `nterp_filled_new_array_range` this will show up.",
+      "revId": "91a044bcf8af941bbea904ba80c96b0accdd3f7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
