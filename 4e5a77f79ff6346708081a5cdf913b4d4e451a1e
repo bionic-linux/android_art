@@ -357,6 +357,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a68244c_6ab3383a",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T10:59:48Z",
+      "side": 1,
+      "message": "It sounds good to me.\n\nI wonder if there would be a way to make sure that in the future, if somebody adds new code that depends on `gLargeObjectAlignment`, that they do *not* use `gPageSize`. I guess the best we can probably do is add a comment",
+      "parentUuid": "1e309708_8ae25c0a",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
