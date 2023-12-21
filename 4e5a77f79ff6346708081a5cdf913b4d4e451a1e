@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1276b02_6fbf8909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T04:07:57Z",
+      "side": 1,
+      "message": "While I agree that as things stand today we are not making things worse memory consumption wise, but it\u0027s not ideal.\n\nInstead of mmapping the bitmap, we could start using native allocator in cases where the bitmap size is smaller than a threshold (\u003e\u003d page-size). But that\u0027s not going to be a trivial change. I guess we\u0027ll have to do it anyway once page-size increases as then there will be a lot times that the bitmap will be smaller than a page and it wouldn\u0027t make any sense to separately mmap it.",
+      "parentUuid": "5a54f4e2_059a656e",
+      "range": {
+        "startLine": 15,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fb6ec0e_7e1a696a",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Oh yes I did notice that, and I think I even considered changing it as part of this patch, to only allocate a 4G-covering bitmap for the LargeObjectMapSpace, and make the FreeListSpace only cover the 256 range.\n\nLet me know if you would like me to do that, or if you\u0027d prefer this was a follow-up, as it\u0027s technically orthogonal and wasn\u0027t introduced by the 16k effort.\n\nTo make sure I understand, even though we allocate a bitmap to cover the whole 4G range - which translates to 128k of virtual space, for one bit per page, if my calculations are correct - we actually only touch 8k inside it when using the free-list space, by default. So in the end, we\u0027re using more virtual memory than strictly necessary. It\u0027s still good to reduce this of course.",
       "parentUuid": "4fb6ec0e_7e1a696a",
+      "range": {
+        "startLine": 18,
+        "startChar": 28,
+        "endLine": 18,
+        "endChar": 32
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14857339_1205a1c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T04:07:57Z",
+      "side": 1,
+      "message": "As you said, it\u0027s orthogonal to this CL. So a separate fix would be preferable.",
+      "parentUuid": "92fe48e2_de0d98e9",
       "range": {
         "startLine": 18,
         "startChar": 28,
@@ -196,6 +244,69 @@
       "writtenOn": "2023-12-19T02:44:26Z",
       "side": 1,
       "message": "Friendly ping for review.",
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858bf05e_31b87367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T04:07:57Z",
+      "side": 1,
+      "message": "For the changes in the gtests it would be nice if Nicolas/Hans can also take a quick look.",
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01323e02_5d9a137e",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T04:07:57Z",
+      "side": 1,
+      "message": "This comment is good. But can you please elaborate a little more, like with an example of page-size being 16K while bitmap being still 4K.",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 61
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1acc1b_5b3c36b0",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T04:07:57Z",
+      "side": 1,
+      "message": "Can you please introduce a public static const in the LargeObjectSpace class, say `gLargeObjectAlignment` and use it everywhere instead of gPageSize? This will have two benefits:\n\n1) Any overhead due to accessing gPageSize will be avoided\n2) It\u0027ll be easier to update the alignment for large-objects from one single location later when we try to fix the under-utilization of bitmap problem.\n\nAlso use this instead of gPageSize in all the collectors for checking if the alignment matches or not.",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
