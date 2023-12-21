@@ -333,6 +333,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e309708_8ae25c0a",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-21T10:47:43Z",
+      "side": 1,
+      "message": "I still think instead of percolating gPageSize as the large-object alignment everywhere, it makes sense to have a dedicated constant for large-objects.\n\nIn future, if and when we change the implementation to have, say 8KB alignment, even with 16K page-size, we would add the necessary tests for that. But having a dedicated variable, regardless, will help in capturing all the usages. With gPageSize, since it is used so much in other context as well, it would be easy to miss some of them and then get into a mess of nasty bugs.",
+      "parentUuid": "4de44452_0ef5e335",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
