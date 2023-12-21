@@ -381,6 +381,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b410a1_bc838794",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T12:43:49Z",
+      "side": 1,
+      "message": "Actually, after a bit of discussion with Ruben, I\u0027m thinking the better approach might be to have a static method rather than a static global in the class:\n\n    space::LargeObjectSpace::ObjectAlignment()\n  \nOne that would redirect to `gPageSize`\n\n    static ALWAYS_INLINE size_t ObjectAlignment() { return gPageSize; }\n\nIn general, the issues with adding a new global is that globals like `gPageSize` are subject to static initialization ordering issues. `gPageSize` implements guarantees against that, which we\u0027d have to copy over to `gLargeObjectAlignment`.\n\nAnother benefit of redirecting `LargeObjectSpace::ObjectAlignment()` to `gPageSize` is we then also inherit optimisations on `gPageSize` accesses that the follow-up patch implements.",
+      "parentUuid": "1a68244c_6ab3383a",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
