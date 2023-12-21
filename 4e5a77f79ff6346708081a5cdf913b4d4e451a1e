@@ -429,6 +429,30 @@
       },
       "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40aecb1_bacd8412",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1958325
+      },
+      "writtenOn": "2023-12-21T13:03:31Z",
+      "side": 1,
+      "message": "Great. It\u0027s worth noting though that with this patch changing the alignment won\u0027t just work, as one will also need to ensure the `mmap()` result is properly aligned, by calling `MapAnonymousAligned()` rather than `MapAnonymous()` in `FreeListSpace::Create()`. But I can add a `DCHECK` with a note, so that it becomes obvious if/when that happens.",
+      "parentUuid": "e57779fe_2dc4361a",
+      "range": {
+        "startLine": 274,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 34
+      },
+      "revId": "4e5a77f79ff6346708081a5cdf913b4d4e451a1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
