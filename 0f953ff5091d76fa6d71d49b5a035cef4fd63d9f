@@ -16,6 +16,115 @@
       "message": "I think I\u0027ve addressed comments, hopefully the comments make sense!\n\nThanks,\nPierre",
       "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43cd4a2f_5f16f4db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-22T11:40:01Z",
+      "side": 1,
+      "message": "There are just comment related fixes required.",
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ca254b_156920f9",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-22T11:40:01Z",
+      "side": 1,
+      "message": "The comment is good. Just add `TODO:` here.",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 285,
+        "endChar": 5
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3f56e7_e522f680",
+        "filename": "runtime/gc/accounting/space_bitmap_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-22T11:40:01Z",
+      "side": 1,
+      "message": "This is good for other places as well. Small nit: `large-object alignment`",
+      "range": {
+        "startLine": 44,
+        "startChar": 59,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa41711c_a35c1691",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4285,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-22T11:40:01Z",
+      "side": 1,
+      "message": "Instead say `large-object alignment`.",
+      "range": {
+        "startLine": 4285,
+        "startChar": 54,
+        "endLine": 4285,
+        "endChar": 89
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50724ce1_fad0d8eb",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2023-12-22T11:40:01Z",
+      "side": 1,
+      "message": "In comments please use something simpler like `alignment`. It\u0027s very odd to see function name.",
+      "range": {
+        "startLine": 339,
+        "startChar": 39,
+        "endLine": 339,
+        "endChar": 74
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
