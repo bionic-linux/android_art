@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f99f05_e7cecc2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-22T14:19:16Z",
+      "side": 1,
+      "message": "This patchset is duplicated as https://android-review.googlesource.com/c/platform/art/+/2890269/1",
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5ca254b_156920f9",
@@ -48,6 +65,30 @@
       "writtenOn": "2023-12-22T11:40:01Z",
       "side": 1,
       "message": "The comment is good. Just add `TODO:` here.",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 285,
+        "endChar": 5
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90e7e22_f4f6d920",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-22T14:19:16Z",
+      "side": 1,
+      "message": "Done - in the https://android-review.googlesource.com/c/platform/art/+/2890269/2",
+      "parentUuid": "b5ca254b_156920f9",
       "range": {
         "startLine": 285,
         "startChar": 3,
@@ -83,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4e5db93_8aeae7b5",
+        "filename": "runtime/gc/accounting/space_bitmap_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-22T14:19:16Z",
+      "side": 1,
+      "message": "Done - in the https://android-review.googlesource.com/c/platform/art/+/2890269/2",
+      "parentUuid": "6c3f56e7_e522f680",
+      "range": {
+        "startLine": 44,
+        "startChar": 59,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa41711c_a35c1691",
         "filename": "runtime/gc/collector/mark_compact.cc",
         "patchSetId": 7
@@ -106,6 +171,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f134ba6_6d409aed",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4285,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-22T14:19:16Z",
+      "side": 1,
+      "message": "Done - in the https://android-review.googlesource.com/c/platform/art/+/2890269/2",
+      "parentUuid": "fa41711c_a35c1691",
+      "range": {
+        "startLine": 4285,
+        "startChar": 54,
+        "endLine": 4285,
+        "endChar": 89
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50724ce1_fad0d8eb",
         "filename": "runtime/gc/space/large_object_space.cc",
         "patchSetId": 7
@@ -117,6 +206,30 @@
       "writtenOn": "2023-12-22T11:40:01Z",
       "side": 1,
       "message": "In comments please use something simpler like `alignment`. It\u0027s very odd to see function name.",
+      "range": {
+        "startLine": 339,
+        "startChar": 39,
+        "endLine": 339,
+        "endChar": 74
+      },
+      "revId": "0f953ff5091d76fa6d71d49b5a035cef4fd63d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e6f60b_e4b3574a",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1280281
+      },
+      "writtenOn": "2023-12-22T14:19:16Z",
+      "side": 1,
+      "message": "Done - in the https://android-review.googlesource.com/c/platform/art/+/2890269/2",
+      "parentUuid": "50724ce1_fad0d8eb",
       "range": {
         "startLine": 339,
         "startChar": 39,
