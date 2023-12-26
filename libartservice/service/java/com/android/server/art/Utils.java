@@ -76,6 +76,11 @@ public final class Utils {
     /** A copy of {@link android.os.Trace.TRACE_TAG_DALVIK}. */
     private static final long TRACE_TAG_DALVIK = 1L << 14;
 
+    // Best-effort cache of the artd binder ref. Repeatedly querying the ref via
+    // waitForService is expensive, but we also don't want to store a persistent ref that would
+    // leak artd. This racy weak reference minimizes query frequency while allowing GC.
+    @NonNull private static volatile WeakReference<IArtd> sArtdCache = new WeakReference<>(null);
+
     private Utils() {}
 
     /**
@@ -222,11 +227,18 @@ public final class Utils {
 
     @NonNull
     public static IArtd getArtd() {
-        IArtd artd = IArtd.Stub.asInterface(ArtModuleServiceInitializer.getArtModuleServiceManager()
-                                                    .getArtdServiceRegisterer()
-                                                    .waitForService());
+        IArtd artd = sArtdCache.get();
         if (artd == null) {
-            throw new IllegalStateException("Unable to connect to artd");
+            IArtd artd =
+                    IArtd.Stub.asInterface(ArtModuleServiceInitializer.getArtModuleServiceManager()
+                                                   .getArtdServiceRegisterer()
+                                                   .waitForService());
+            if (artd == null) {
+                throw new IllegalStateException("Unable to connect to artd");
+            }
+            // It's fine for the stored reference assignment to race, as the worst side effect
+            // might be redundant calls to waitForService.
+            sArtdCache = new WeakReference<>(artd);
         }
         return artd;
     }
