@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e98b4e_4e2f63aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2023-12-27T18:56:58Z",
+      "side": 1,
+      "message": "@jiakaiz@google.com FYI, curious for your thoughts. Not saying we should land this, as it\u0027s a bit of a hack, but for initial device setup (after logging into Play Store) this reduced the # of binder calls to fetch artd by ~100x (from ~700 to ~7). For one-off app installs and updates, it\u0027s just a ~10x reduction (those cases aren\u0027t quite as critical, but if we can reduce the costs during device setup and/or after updates, that seems worthwhile).\n\nWith local caching within a given method, we might be able to get some reasonable wins as well, without this hack. I haven\u0027t checked.",
+      "revId": "a09d4eda9b2902b8a853232b37eb69f9932eb4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
