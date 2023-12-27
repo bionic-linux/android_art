@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "039fbe67_376564c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2023-12-27T20:20:05Z",
+      "side": 1,
+      "message": "PTAL, no change in functionality",
+      "revId": "6a86aba6b3aabb1714b7f0f673c491d61148e652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
