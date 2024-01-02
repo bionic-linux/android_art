@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7723511_3c362fac",
+        "filename": "runtime/interpreter/mterp/riscv64/array.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-02T09:38:29Z",
+      "side": 1,
+      "message": "Unnecessary if we use BGEU bellow (the length from the array should not be negative). Using signed load would make the sign-extension in handlers unnecessary.",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 40
+      },
+      "revId": "f7c154f4f1faef101713a8c7e710e363a2a19e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6d9e8c_4e0864e5",
+        "filename": "runtime/interpreter/mterp/riscv64/array.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-02T09:38:29Z",
+      "side": 1,
+      "message": "We can use A0, A1 and avoid the moves for OOB.",
+      "range": {
+        "startLine": 98,
+        "startChar": 24,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "f7c154f4f1faef101713a8c7e710e363a2a19e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2d0d48_b7b917f7",
+        "filename": "runtime/interpreter/mterp/riscv64/array.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-02T09:38:29Z",
+      "side": 1,
+      "message": "The `zext` is essentially unnecessary because it\u0027s just used only to get the same data offset value using different named constants. But it\u0027s OK to keep as we do not assert that these constants have the same value.",
+      "range": {
+        "startLine": 206,
+        "startChar": 23,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "f7c154f4f1faef101713a8c7e710e363a2a19e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
