@@ -16,6 +16,24 @@
       "message": "@jiakaiz@google.com FYI, curious for your thoughts. Not saying we should land this, as it\u0027s a bit of a hack, but for initial device setup (after logging into Play Store) this reduced the # of binder calls to fetch artd by ~100x (from ~700 to ~7). For one-off app installs and updates, it\u0027s just a ~10x reduction (those cases aren\u0027t quite as critical, but if we can reduce the costs during device setup and/or after updates, that seems worthwhile).\n\nWith local caching within a given method, we might be able to get some reasonable wins as well, without this hack. I haven\u0027t checked.",
       "revId": "a09d4eda9b2902b8a853232b37eb69f9932eb4cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b3efef_4ce5b197",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-01-02T18:44:30Z",
+      "side": 1,
+      "message": "Sorry for the late reply. Because this CL was marked as WIP, it didn\u0027t reach my inbox even though I was cc\u0027ed. I just saw it listed as a pending CL in b/317221732.\n\nI appreciate your experiment. It shows that it\u0027s necessary to cache IArtd even though `notifyDexLoad` no longer uses it. In this case, I\u0027m happy to draft a CL to do the caching properly.\n\nI\u0027m curious about ~700 binder calls. Are they initiated by a single API call to ArtManagerLocal or multiple calls? Which API initiate them? Could you please share some traces? This is important because it affects our decision on whether we should debounce the release of the reference or not, and how long the debounce interval should be.\n\nLet\u0027s move the discussion to b/317221732 just in case I miss further replies on this CL.",
+      "parentUuid": "44e98b4e_4e2f63aa",
+      "revId": "a09d4eda9b2902b8a853232b37eb69f9932eb4cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
