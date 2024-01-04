@@ -44,7 +44,7 @@ bootclasspath_fragment {
     core_platform_api: {
         stub_libs: [
             // Core platform (aka. module_lib) stubs for all the non-coverage contents.
-            "art.module.public.api.stubs.module_lib",
+            "art.module.public.api.stubs.exportable.module_lib",
         ],
     },
 
