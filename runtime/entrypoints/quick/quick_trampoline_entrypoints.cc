@@ -2368,6 +2368,12 @@ extern "C" const void* GetQuickInvokeStaticStub() {
   return reinterpret_cast<const void*>(art_quick_invoke_static_stub);
 }
 
+// Return the address of quick stub code for throwing a NPE from a signal.
+extern "C" void art_quick_throw_null_pointer_exception_from_signal();
+extern "C" const void* GetQuickThrowNullPointerExceptionFromSignal() {
+  return reinterpret_cast<void*>(art_quick_throw_null_pointer_exception_from_signal);
+}
+
 // We use TwoWordReturn to optimize scalar returns. We use the hi value for code, and the lo value
 // for the method pointer.
 //

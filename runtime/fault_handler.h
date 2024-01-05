@@ -142,6 +142,23 @@ class JavaStackTraceHandler final : public FaultHandler {
   DISALLOW_COPY_AND_ASSIGN(JavaStackTraceHandler);
 };
 
+#ifdef ART_USE_SIMULATOR
+// Simulated implicit checks will need to be handled specially because they do not originate from
+// native compiled code and will need to modify the simulated context before specially returning
+// execution to the simulator, such that it can continue simulating the quick entrypoint code
+// required for that specific fault.
+
+class NullPointerHandlerSimulator final : public FaultHandler {
+ public:
+  explicit NullPointerHandlerSimulator(FaultManager* manager);
+
+  bool Action(int sig, siginfo_t* siginfo, void* context) override;
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(NullPointerHandlerSimulator);
+};
+#endif  // ART_USE_SIMULATOR
+
 // Statically allocated so the the signal handler can Get access to it.
 extern FaultManager fault_manager;
 

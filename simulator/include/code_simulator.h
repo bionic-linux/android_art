@@ -19,6 +19,7 @@
 
 #include "arch/instruction_set.h"
 #include "runtime.h"
+#include <signal.h>
 
 namespace art {
 
@@ -75,6 +76,17 @@ class CodeSimulator {
                       JValue* result,
                       const char* shorty,
                       bool isStatic) REQUIRES_SHARED(Locks::mutator_lock_) = 0;
+
+  // Get the method, return program counter and stack pointer from a signal that occured during
+  // simulation. Returns false if the signal did not occur during simulation, true otherwise.
+  virtual void TryToGetMethodAndReturnPcAndSp(siginfo_t* siginfo,
+                                              void* context,
+                                              ArtMethod** out_method,
+                                              uintptr_t* out_return_pc,
+                                              uintptr_t* out_sp,
+                                              bool* out_is_stack_overflow) = 0;
+  // Try to handle an implicit check that occured during simulation.
+  virtual bool HandleNullPointer(int sig, siginfo_t* siginfo, void* context) = 0;
 
   uint8_t* GetStackEnd() const { return stack_end_; }
   uint8_t* GetStackBegin() const  { return stack_begin_; }

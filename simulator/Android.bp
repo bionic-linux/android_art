@@ -53,7 +53,10 @@ art_cc_defaults {
         "libbase",
         "liblog",
     ],
-    cflags: ["-DVIXL_INCLUDE_SIMULATOR_AARCH64"],
+    cflags: [
+        "-DVIXL_INCLUDE_SIMULATOR_AARCH64",
+        "-DVIXL_ENABLE_IMPLICIT_CHECKS",
+    ],
 
     header_libs: [
         "jni_platform_headers",

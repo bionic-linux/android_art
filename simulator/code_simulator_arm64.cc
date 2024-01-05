@@ -20,6 +20,9 @@
 #include "arch/instruction_set.h"
 #include "base/memory_region.h"
 #include "entrypoints/quick/runtime_entrypoints_list.h"
+#include "fault_handler.h"
+
+#include <sys/ucontext.h>
 
 #include "code_simulator_container.h"
 
@@ -29,6 +32,7 @@ namespace art {
 
 extern "C" const void* GetQuickInvokeStub();
 extern "C" const void* GetQuickInvokeStaticStub();
+extern "C" const void* GetQuickThrowNullPointerExceptionFromSignal();
 
 extern "C" void artThrowArrayBoundsFromCode(int index, int length, Thread* self)
     REQUIRES_SHARED(Locks::mutator_lock_);
@@ -194,6 +198,7 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artAllocStringFromBytesFromCodeRosAlloc);
     RegisterBranchInterception(artAllocStringFromCharsFromCodeRosAlloc);
     RegisterBranchInterception(artAllocStringFromStringFromCodeRosAlloc);
+    RegisterBranchInterception(artThrowNullPointerExceptionFromSignal);
 
     // ART has a number of math entrypoints which operate on double type (see
     // quick_entrypoints_list.h, entrypoints_init_arm64.cc); we need to intercept C functions
@@ -367,6 +372,108 @@ void CodeSimulatorArm64::Invoke(ArtMethod* method,
   DCHECK_NE(quick_code, 0);
   RunFrom(quick_code);
 }
+
+#ifdef __x86_64__
+// This handler is based on the x86 and Arm64 GetMethodAndReturnPcAndSp and should remain aligned
+// with those functions.
+void CodeSimulatorArm64::TryToGetMethodAndReturnPcAndSp(siginfo_t* siginfo,
+                                                        void* context,
+                                                        ArtMethod** out_method,
+                                                        uintptr_t* out_return_pc,
+                                                        uintptr_t* out_sp,
+                                                        bool* out_is_stack_overflow) {
+  struct ucontext *uc = reinterpret_cast<struct ucontext *>(context);
+  CustomSimulator* sim = GetSimulator();
+
+  // Did the signal come from the simulator?
+  uintptr_t fault_pc = uc->uc_mcontext.gregs[REG_RIP];
+  if (!sim->IsSimulatedMemoryAccess(fault_pc)) {
+    return;
+  }
+
+  *out_sp = static_cast<uintptr_t>(sim->get_sp());
+  VLOG(signals) << "sp: " << *out_sp;
+  if (*out_sp == 0) {
+    return;
+  }
+
+  // In the case of a stack overflow, the stack is not valid and we can't
+  // get the method from the top of the stack.  However it's in x0.
+  uintptr_t* fault_addr = reinterpret_cast<uintptr_t*>(siginfo->si_addr);
+  uintptr_t* overflow_addr = reinterpret_cast<uintptr_t*>(
+      reinterpret_cast<uint8_t*>(*out_sp) - GetStackOverflowReservedBytes(InstructionSet::kArm64));
+  if (overflow_addr == fault_addr) {
+    *out_method = reinterpret_cast<ArtMethod*>(sim->ReadXRegister(0));
+    *out_is_stack_overflow = true;
+  } else {
+    // The method is at the top of the stack.
+    *out_method = *reinterpret_cast<ArtMethod**>(*out_sp);
+    *out_is_stack_overflow = false;
+  }
+
+  // Work out the return PC.  This will be the address of the instruction
+  // following the faulting ldr/str instruction.
+  VLOG(signals) << "pc: " << std::hex << reinterpret_cast<uintptr_t>(sim->ReadPc());
+
+  *out_return_pc = reinterpret_cast<uintptr_t>(sim->ReadPc()->GetNextInstruction());
+}
+
+// This handler is based on the Arm64 NullPointerHandler::Action and should remain aligned with
+// that function.
+bool CodeSimulatorArm64::HandleNullPointer(int sig ATTRIBUTE_UNUSED,
+                                           siginfo_t* siginfo,
+                                           void* context) {
+  CustomSimulator* sim = GetSimulator();
+
+  // Did the signal come from the simulator?
+  struct ucontext *uc = reinterpret_cast<struct ucontext*>(context);
+  uintptr_t fault_pc = uc->uc_mcontext.gregs[REG_RIP];
+  if (!sim->IsSimulatedMemoryAccess(fault_pc)) {
+    return false;
+  }
+
+  if (!NullPointerHandler::IsValidImplicitCheck(siginfo)) {
+    return false;
+  }
+
+  // The code that looks for the catch location needs to know the value of the PC at the point of
+  // call. For Null checks we insert a GC map that is immediately after the load/store instruction
+  // that might cause the fault.
+
+  // Push the gc map location, i.e. the "return address", to the stack and pass the fault address
+  // in LR.
+  sim->WriteSp(sim->get_sp() - sizeof(uintptr_t));
+  *reinterpret_cast<uintptr_t*>(sim->get_sp()) =
+      reinterpret_cast<uintptr_t>(sim->ReadPc()->GetNextInstruction());
+  sim->WriteLr(siginfo->si_addr);
+
+  // Return to the VIXL memory access continuation point, which is also the next instruction, after
+  // this handler.
+  uc->uc_mcontext.gregs[REG_RIP] = sim->GetSignalReturnAddress();
+  // Pass the address where we want to continue simulating.
+  uc->uc_mcontext.gregs[REG_RAX] =
+      reinterpret_cast<uintptr_t>(GetQuickThrowNullPointerExceptionFromSignal());
+
+  VLOG(signals) << "Generating null pointer exception";
+  return true;
+}
+#else
+void CodeSimulatorArm64::TryToGetMethodAndReturnPcAndSp(
+    siginfo_t* siginfo ATTRIBUTE_UNUSED,
+    void* context ATTRIBUTE_UNUSED,
+    ArtMethod** out_method ATTRIBUTE_UNUSED,
+    uintptr_t* out_return_pc ATTRIBUTE_UNUSED,
+    uintptr_t* out_sp ATTRIBUTE_UNUSED,
+    bool* out_is_stack_overflow ATTRIBUTE_UNUSED) {
+  UNREACHABLE();
+}
+
+bool CodeSimulatorArm64::HandleNullPointer(int sig ATTRIBUTE_UNUSED,
+                                           siginfo_t* siginfo ATTRIBUTE_UNUSED,
+                                           void* context ATTRIBUTE_UNUSED) {
+  UNREACHABLE();
+}
+#endif
 
 #endif
 

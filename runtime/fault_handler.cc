@@ -36,6 +36,10 @@
 #include "thread-current-inl.h"
 #include "verify_object-inl.h"
 
+#ifdef ART_USE_SIMULATOR
+#include "code_simulator.h"
+#endif
+
 namespace art {
 // Static fault manger object accessed by signal handler.
 FaultManager fault_manager;
@@ -348,9 +352,19 @@ bool FaultManager::IsInGeneratedCode(siginfo_t* siginfo, void* context, bool che
   uintptr_t sp = 0;
   bool is_stack_overflow = false;
 
+#ifdef ART_USE_SIMULATOR
+  CodeSimulator* simulator = Thread::Current()->GetSimExecutor();
+  simulator->TryToGetMethodAndReturnPcAndSp(siginfo,
+                                             context,
+                                             &method_obj,
+                                             &return_pc,
+                                             &sp,
+                                             &is_stack_overflow);
+#else
   // Get the architecture specific method address and return address.  These
   // are in architecture specific files in arch/<arch>/fault_handler_<arch>.
   GetMethodAndReturnPcAndSp(siginfo, context, &method_obj, &return_pc, &sp, &is_stack_overflow);
+#endif
 
   // If we don't have a potential method, we're outta here.
   VLOG(signals) << "potential method: " << method_obj;
@@ -466,5 +480,19 @@ bool JavaStackTraceHandler::Action(int sig ATTRIBUTE_UNUSED, siginfo_t* siginfo,
 
   return false;  // Return false since we want to propagate the fault to the main signal handler.
 }
+
+#ifdef ART_USE_SIMULATOR
+//
+// Null pointer fault handler for the simulator.
+//
+NullPointerHandlerSimulator::NullPointerHandlerSimulator(FaultManager* manager)
+    : FaultHandler(manager) {
+  manager_->AddHandler(this, /* generated_code= */ true);
+}
+
+bool NullPointerHandlerSimulator::Action(int sig, siginfo_t* info, void* context) {
+  return Thread::Current()->GetSimExecutor()->HandleNullPointer(sig, info, context);
+}
+#endif  // ART_USE_SIMULATOR
 
 }   // namespace art

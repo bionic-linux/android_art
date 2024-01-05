@@ -1782,7 +1782,11 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
       }
 
       if (implicit_null_checks_) {
+#ifdef ART_USE_SIMULATOR
+        new NullPointerHandlerSimulator(&fault_manager);
+#else
         new NullPointerHandler(&fault_manager);
+#endif
       }
 
       if (kEnableJavaStackTraceHandler) {

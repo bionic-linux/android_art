@@ -80,6 +80,14 @@ class CodeSimulatorArm64 : public CodeSimulator, public BasicCodeSimulatorArm64 
               const char* shorty,
               bool isStatic) override REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void TryToGetMethodAndReturnPcAndSp(siginfo_t* siginfo,
+                                      void* context,
+                                      ArtMethod** out_method,
+                                      uintptr_t* out_return_pc,
+                                      uintptr_t* out_sp,
+                                      bool* out_is_stack_overflow) override;
+  bool HandleNullPointer(int sig, siginfo_t* siginfo, void* context) override;
+
  private:
   CodeSimulatorArm64();
   vixl::aarch64::Simulator* CreateNewInstructionSimulator(

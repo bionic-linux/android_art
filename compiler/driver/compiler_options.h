@@ -193,12 +193,7 @@ class CompilerOptions final {
   }
 
   bool GetImplicitNullChecks() const {
-#ifdef ART_USE_RESTRICTED_MODE
-    // TODO(Simulator): support signal handling and implicit checks.
-    return false;
-#else
     return implicit_null_checks_;
-#endif  // ART_USE_RESTRICTED_MODE
   }
 
   bool GetImplicitStackOverflowChecks() const {
