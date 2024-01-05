@@ -191,6 +191,34 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artAllocStringObjectRosAlloc);
     RegisterBranchInterception(artDeoptimizeIfNeeded);
     RegisterBranchInterception(artInvokeCustom);
+    RegisterBranchInterception(artAllocStringFromBytesFromCodeRosAlloc);
+    RegisterBranchInterception(artAllocStringFromCharsFromCodeRosAlloc);
+    RegisterBranchInterception(artAllocStringFromStringFromCodeRosAlloc);
+
+    // ART has a number of math entrypoints which operate on double type (see
+    // quick_entrypoints_list.h, entrypoints_init_arm64.cc); we need to intercept C functions
+    // called from those EPs.
+    //
+    // The C library provides function implementations for both double and float, so we have
+    // to explicitly choose the type for the interception templates - double.
+    RegisterBranchInterception<double, double>(cos);
+    RegisterBranchInterception<double, double>(sin);
+    RegisterBranchInterception<double, double>(acos);
+    RegisterBranchInterception<double, double>(asin);
+    RegisterBranchInterception<double, double>(atan);
+    RegisterBranchInterception<double, double, double>(atan2);
+    RegisterBranchInterception<double, double, double>(pow);
+    RegisterBranchInterception<double, double>(cbrt);
+    RegisterBranchInterception<double, double>(cosh);
+    RegisterBranchInterception<double, double>(exp);
+    RegisterBranchInterception<double, double>(expm1);
+    RegisterBranchInterception<double, double, double>(hypot);
+    RegisterBranchInterception<double, double>(log);
+    RegisterBranchInterception<double, double>(log10);
+    RegisterBranchInterception<double, double, double>(nextafter);
+    RegisterBranchInterception<double, double>(sinh);
+    RegisterBranchInterception<double, double>(tan);
+    RegisterBranchInterception<double, double>(tanh);
 
     RegisterTwoWordReturnInterception(artInstrumentationMethodExitFromCode);
     RegisterTwoWordReturnInterception(artInvokeSuperTrampolineWithAccessCheck);

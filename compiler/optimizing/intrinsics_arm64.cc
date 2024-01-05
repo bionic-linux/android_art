@@ -159,18 +159,12 @@ class ReadBarrierSystemArrayCopySlowPathARM64 : public SlowPathCodeARM64 {
 #undef __
 
 bool IntrinsicLocationsBuilderARM64::TryDispatch(HInvoke* invoke) {
-#ifdef ART_USE_RESTRICTED_MODE
-  // TODO(Simulator): support intrinsics.
-  USE(invoke);
-  return false;
-#else
   Dispatch(invoke);
   LocationSummary* res = invoke->GetLocations();
   if (res == nullptr) {
     return false;
   }
   return res->Intrinsified();
-#endif  // ART_USE_RESTRICTED_MODE
 }
 
 #define __ masm->
@@ -701,6 +695,58 @@ void IntrinsicCodeGeneratorARM64::VisitThreadCurrentThread(HInvoke* invoke) {
   codegen_->Load(DataType::Type::kReference, WRegisterFrom(invoke->GetLocations()->Out()),
                  MemOperand(tr, Thread::PeerOffset<kArm64PointerSize>().Int32Value()));
 }
+
+#ifdef ART_USE_RESTRICTED_MODE
+// Unsafe* intrinsics are not supported in simulator mode because they use LDXR/STXR
+// for synchronization and those can't be simulated on x86 host.
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGet);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetLongVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetLongAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetObject);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetObjectVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeGetObjectAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePut);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutObject);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutObjectOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutObjectVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutObjectRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutLongOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutLongVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafePutLongRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCASInt);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCASLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCASObject);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCompareAndSetInt);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCompareAndSetLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, JdkUnsafeCompareAndSetObject);
+
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGet);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGetVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGetLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGetLongVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGetObject);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeGetObjectVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePut);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutObject);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutObjectOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutObjectVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutLongOrdered);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafePutLongVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeCASInt);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeCASLong);
+UNIMPLEMENTED_INTRINSIC(ARM64, UnsafeCASObject);
+
+# else
 
 static void GenUnsafeGet(HInvoke* invoke,
                          DataType::Type type,
@@ -1678,6 +1724,8 @@ static void GenerateGetAndUpdate(CodeGeneratorARM64* codegen,
   EmitStoreExclusive(codegen, load_store_type, ptr, store_result, new_value, use_store_release);
   __ Cbnz(store_result, &loop_label);
 }
+
+#endif  // ART_USE_RESTRICTED_MODE
 
 void IntrinsicLocationsBuilderARM64::VisitStringCompareTo(HInvoke* invoke) {
   LocationSummary* locations =
@@ -4243,6 +4291,43 @@ void IntrinsicCodeGeneratorARM64::VisitMathFmaFloat(HInvoke* invoke) {
   GenerateMathFma(invoke, codegen_);
 }
 
+#ifdef ART_USE_RESTRICTED_MODE
+// Varhandle intrinsics are not supported in simulator mode because they use LDXR/STXR
+// for synchronization and those can't be simulated on x86 host.
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGet);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetOpaque);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleSet);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleSetOpaque);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleSetRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleSetVolatile);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleCompareAndExchange);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleCompareAndExchangeAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleCompareAndExchangeRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleCompareAndSet);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleWeakCompareAndSet);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleWeakCompareAndSetAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleWeakCompareAndSetPlain);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleWeakCompareAndSetRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndSet);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndSetAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndSetRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndAdd);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndAddAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndAddRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseAnd);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseAndAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseAndRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseOr);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseOrAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseOrRelease);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseXor);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseXorAcquire);
+UNIMPLEMENTED_INTRINSIC(ARM64, VarHandleGetAndBitwiseXorRelease);
+
+#else
+
 class VarHandleSlowPathARM64 : public IntrinsicSlowPathARM64 {
  public:
   VarHandleSlowPathARM64(HInvoke* invoke, std::memory_order order)
@@ -5682,6 +5767,8 @@ void VarHandleSlowPathARM64::EmitByteArrayViewCode(CodeGenerator* codegen_in) {
   }
   __ B(GetExitLabel());
 }
+
+#endif  // ART_USE_RESTRICTED_MODE
 
 UNIMPLEMENTED_INTRINSIC(ARM64, StringStringIndexOf);
 UNIMPLEMENTED_INTRINSIC(ARM64, StringStringIndexOfAfter);
