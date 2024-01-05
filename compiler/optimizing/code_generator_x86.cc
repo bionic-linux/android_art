@@ -1316,7 +1316,10 @@ void CodeGeneratorX86::GenerateFrameEntry() {
   __ Bind(&frame_entry_label_);
   bool skip_overflow_check =
       IsLeafMethod() && !FrameNeedsStackCheck(GetFrameSize(), InstructionSet::kX86);
+#ifndef ART_USE_RESTRICTED_MODE
+  // TODO(Simulator): implement explicit stack overflow checks.
   DCHECK(GetCompilerOptions().GetImplicitStackOverflowChecks());
+#endif  // ART_USE_RESTRICTED_MODE
 
   if (!skip_overflow_check) {
     size_t reserved_bytes = GetStackOverflowReservedBytes(InstructionSet::kX86);

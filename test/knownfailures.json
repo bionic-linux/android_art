@@ -1578,13 +1578,6 @@
         "description": ["TODO: Investigate reasons for these failures of the ART simulator."]
     },
     {
-        "tests": ["107-int-math2",
-                  "018-stack-overflow",
-                  "004-SignalTest"],
-        "env_vars": {"ART_USE_SIMULATOR": "true"},
-        "description": ["TODO: Implement explicit stack overflow check for the ART simulator."]
-    },
-    {
         "tests": ["2029-contended-monitors",
                   "2042-reference-processing",
                   "2043-reference-pauses"],

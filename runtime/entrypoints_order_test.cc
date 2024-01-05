@@ -137,6 +137,7 @@ class EntrypointsOrderTest : public CommonArtTest {
                         sizeof(void*));
 #ifdef ART_USE_SIMULATOR
     EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, top_reflective_handle_scope, sim_executor, sizeof(void*));
+    EXPECT_OFFSET_DIFFP(Thread, tlsPtr_, sim_executor, sim_stack_end, sizeof(void*));
 #endif
     // The first field after tlsPtr_ is forced to a 16 byte alignment so it might have some space.
     auto offset_tlsptr_end = OFFSETOF_MEMBER(Thread, tlsPtr_) +

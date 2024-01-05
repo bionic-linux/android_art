@@ -2254,7 +2254,11 @@ void CodeGeneratorARMVIXL::MaybeIncrementHotness(bool is_frame_entry) {
 void CodeGeneratorARMVIXL::GenerateFrameEntry() {
   bool skip_overflow_check =
       IsLeafMethod() && !FrameNeedsStackCheck(GetFrameSize(), InstructionSet::kArm);
+
+#ifndef ART_USE_RESTRICTED_MODE
+  // TODO(Simulator): implement explicit stack overflow checks.
   DCHECK(GetCompilerOptions().GetImplicitStackOverflowChecks());
+#endif  // ART_USE_RESTRICTED_MODE
 
   // Check if we need to generate the clinit check. We will jump to the
   // resolution stub if the class is not initialized and the executing thread is

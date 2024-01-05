@@ -695,7 +695,12 @@ class Runtime {
   void AddCurrentRuntimeFeaturesAsDex2OatArguments(std::vector<std::string>* arg_vector) const;
 
   bool GetImplicitStackOverflowChecks() const {
+  #ifdef ART_USE_RESTRICTED_MODE
+    // TODO(simulator): support signal handling and implicit checks.
+    return false;
+  #else
     return implicit_so_checks_;
+  #endif  // ART_USE_RESTRICTED_MODE
   }
 
   bool GetImplicitSuspendChecks() const {

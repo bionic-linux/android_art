@@ -994,6 +994,8 @@ bool Thread::Init(ThreadList* thread_list, JavaVMExt* java_vm, JNIEnvExt* jni_en
 #ifdef ART_USE_SIMULATOR
   if (Runtime::SimulatorMode()) {
     CreateSimExecutor();
+    // Cache simulators's stack end in TLS - to be accessed by compiled code.
+    tlsPtr_.sim_stack_end = GetSimExecutor()->GetStackEnd();
   }
 #endif
 

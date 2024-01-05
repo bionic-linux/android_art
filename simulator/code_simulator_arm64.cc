@@ -46,6 +46,9 @@ extern "C" TwoWordReturn artInvokeSuperTrampolineWithAccessCheck(
     uint32_t method_idx, mirror::Object* this_object, Thread* self, ArtMethod** sp)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
+extern "C" void artThrowStackOverflowFromCode(Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
 namespace arm64 {
 
 BasicCodeSimulatorArm64* BasicCodeSimulatorArm64::CreateBasicCodeSimulatorArm64(size_t stack_size) {
@@ -144,6 +147,7 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artThrowNullPointerExceptionFromCode);
     RegisterBranchInterception(artThrowStringBoundsFromCode);
     RegisterBranchInterception(artDeoptimizeFromCompiledCode);
+    RegisterBranchInterception(artThrowStackOverflowFromCode);
 
     RegisterTwoWordReturnInterception(artInstrumentationMethodExitFromCode);
     RegisterTwoWordReturnInterception(artInvokeSuperTrampolineWithAccessCheck);

@@ -260,6 +260,34 @@ class DivZeroCheckSlowPathARM64 : public SlowPathCodeARM64 {
   DISALLOW_COPY_AND_ASSIGN(DivZeroCheckSlowPathARM64);
 };
 
+// A slow path for explicit stack overflow check.
+class StackOverflowCheckSlowPathARM64 : public SlowPathCodeARM64 {
+ public:
+  explicit StackOverflowCheckSlowPathARM64(HInstruction* instruction)
+      : SlowPathCodeARM64(instruction) {}
+
+  void EmitNativeCode(CodeGenerator* codegen) override {
+    CodeGeneratorARM64* arm64_codegen = down_cast<CodeGeneratorARM64*>(codegen);
+    UseScratchRegisterScope temps(arm64_codegen->GetVIXLAssembler());
+    Register temp = temps.AcquireX();
+
+    __ Bind(GetEntryLabel());
+    __ Ldr(temp, MemOperand(
+        tr, GetThreadOffset<kArm64PointerSize>(kQuickThrowStackOverflow).Int32Value()));
+    // Stack overflow handler expects LR to be preserved, so branch here instead of calling.
+    __ Br(temp);
+
+    CheckEntrypointTypes<kQuickThrowStackOverflow, void, void*>();
+  }
+
+  bool IsFatal() const override { return true; }
+
+  const char* GetDescription() const override { return "StackOverflowCheckSlowPathARM64"; }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(StackOverflowCheckSlowPathARM64);
+};
+
 class LoadClassSlowPathARM64 : public SlowPathCodeARM64 {
  public:
   LoadClassSlowPathARM64(HLoadClass* cls, HInstruction* at)
@@ -1300,17 +1328,35 @@ void CodeGeneratorARM64::GenerateFrameEntry() {
   bool do_overflow_check =
       FrameNeedsStackCheck(GetFrameSize(), InstructionSet::kArm64) || !IsLeafMethod();
   if (do_overflow_check) {
-    UseScratchRegisterScope temps(masm);
-    Register temp = temps.AcquireX();
-    DCHECK(GetCompilerOptions().GetImplicitStackOverflowChecks());
-    __ Sub(temp, sp, static_cast<int32_t>(GetStackOverflowReservedBytes(InstructionSet::kArm64)));
-    {
-      // Ensure that between load and RecordPcInfo there are no pools emitted.
-      ExactAssemblyScope eas(GetVIXLAssembler(),
-                             kInstructionSize,
-                             CodeBufferCheckScope::kExactSize);
-      __ ldr(wzr, MemOperand(temp, 0));
-      RecordPcInfo(nullptr, 0);
+    if (GetCompilerOptions().GetImplicitStackOverflowChecks()) {
+      UseScratchRegisterScope temps(masm);
+      Register temp = temps.AcquireX();
+      __ Sub(temp, sp, static_cast<int32_t>(GetStackOverflowReservedBytes(InstructionSet::kArm64)));
+      {
+        // Ensure that between load and RecordPcInfo there are no pools emitted.
+        ExactAssemblyScope eas(GetVIXLAssembler(),
+                              kInstructionSize,
+                              CodeBufferCheckScope::kExactSize);
+        __ ldr(wzr, MemOperand(temp, 0));
+        RecordPcInfo(nullptr, 0);
+      }
+    } else {
+      UseScratchRegisterScope temps(masm);
+      Register temp = temps.AcquireX();
+      StackOverflowCheckSlowPathARM64* slow_path =
+          new (GetScopedAllocator()) StackOverflowCheckSlowPathARM64(nullptr);
+
+#ifdef ART_USE_SIMULATOR
+      // Use Thread::tlsPtr_.sim_stack_end.
+      __ Ldr(temp, MemOperand(tr, Thread::SimStackEndOffset<kArm64PointerSize>().Int32Value()));
+#else
+      // Use Thread::tlsPtr_.stack_end.
+      __ Ldr(temp, MemOperand(tr, Thread::StackEndOffset<kArm64PointerSize>().Int32Value()));
+#endif  // ART_USE_SIMULATOR
+      __ Cmp(sp, temp);
+
+      AddSlowPath(slow_path);
+      __ B(lo, slow_path->GetEntryLabel());
     }
   }
 

@@ -257,6 +257,12 @@ class Thread {
 
 #ifdef ART_USE_SIMULATOR
   CodeSimulator* GetSimExecutor() const;
+
+  template<PointerSize pointer_size>
+  static constexpr ThreadOffset<pointer_size> SimStackEndOffset() {
+    return ThreadOffsetFromTlsPtr<pointer_size>(
+        OFFSETOF_MEMBER(tls_ptr_sized_values, sim_stack_end));
+  }
 #endif
 
   // On a runnable thread, check for pending thread suspension request and handle if pending.
@@ -1963,7 +1969,8 @@ class Thread {
                                async_exception(nullptr),
 #ifdef ART_USE_SIMULATOR
                                top_reflective_handle_scope(nullptr),
-                               sim_executor(nullptr) {
+                               sim_executor(nullptr),
+                               sim_stack_end(nullptr) {
 #else
                                top_reflective_handle_scope(nullptr) {
 #endif
@@ -2133,6 +2140,9 @@ class Thread {
     // Each thread has its own simulator executor with a full sim CPU context: registers,
     // stack, etc.
     CodeSimulator* sim_executor;
+    // Same semantics as for stack_end (see the diagram near class Thread), but for simulator's
+    // stack.
+    uint8_t* sim_stack_end;
 #endif
   } tlsPtr_;
 
