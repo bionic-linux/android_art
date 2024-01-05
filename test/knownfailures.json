@@ -1566,17 +1566,27 @@
     {
         "tests": ["044-proxy",
                   "046-reflect",
+                  "064-field-access",
                   "151-OpenFileLimit",
                   "178-app-image-native-method",
                   "1914-get-local-instance",
                   "1939-proxy-frames",
                   "1945-proxy-method-arguments",
-                  "693-vdex-inmem-loader-evict"],
+                  "693-vdex-inmem-loader-evict",
+                  "800-smali"],
         "env_vars": {"ART_USE_SIMULATOR": "true"},
         "description": ["TODO: Investigate reasons for these failures of the ART simulator."]
     },
     {
-        "tests": ["2042-reference-processing",
+        "tests": ["107-int-math2",
+                  "018-stack-overflow",
+                  "004-SignalTest"],
+        "env_vars": {"ART_USE_SIMULATOR": "true"},
+        "description": ["TODO: Implement explicit stack overflow check for the ART simulator."]
+    },
+    {
+        "tests": ["2029-contended-monitors",
+                  "2042-reference-processing",
                   "2043-reference-pauses"],
         "env_vars": {"ART_USE_SIMULATOR": "true"},
         "description": ["Intermittent timeout failures on the ART simulator due to the overheads",

@@ -10,4 +10,5 @@ Exception caught: java.lang.RuntimeException: Thrown from JNI thrown
 LoopWithAllocations passed
 AllocObject passed
 ClassCastException caught as expected
+Exception caught: java.lang.NullPointerException: Attempt to read from null array
 passed

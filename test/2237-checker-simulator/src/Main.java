@@ -54,7 +54,7 @@ public class Main {
   public Main() {
   }
 
-  public static void $compile$noline$plainLoop(int[] a) {
+  public static void $compile$noinline$plainLoop(int[] a) {
     for (int i = 0; i < LENGTH; i++) {
       a[i] += i;
     }
@@ -260,12 +260,23 @@ public class Main {
     }
   }
 
+  // Passes a null as an array and expects an exception; null check is implemented via
+  // Equal+Deoptimize thus we actually do deoptimization and then throw an exception
+  // from interpreter.
+  public static void testDeopt() {
+    try {
+      $compile$noinline$plainLoop(null);
+    } catch (NullPointerException e) {
+      System.out.println("Exception caught: " + e.toString());
+    }
+  }
+
   public static void main(String[] args) throws Exception {
     System.loadLibrary(args[0]);
     Main obj = new Main();
 
     int[] arr = new int[LENGTH];
-    obj.$compile$noline$plainLoop(arr);
+    obj.$compile$noinline$plainLoop(arr);
 
     int val = obj.$compile$noinline$shellForSimpleFunction();
     System.out.println("SimpleFunction value: " + val);
@@ -281,6 +292,8 @@ public class Main {
     testAllocObject();
 
     testInstanceOf();
+
+    testDeopt();
 
     System.out.println("passed");
   }

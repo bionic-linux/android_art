@@ -30,6 +30,22 @@ namespace art {
 extern "C" const void* GetQuickInvokeStub();
 extern "C" const void* GetQuickInvokeStaticStub();
 
+extern "C" void artThrowArrayBoundsFromCode(int index, int length, Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
+extern "C" void artThrowNullPointerExceptionFromCode(Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
+extern "C" void artThrowStringBoundsFromCode(int index, int length, Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
+extern "C" void artDeoptimizeFromCompiledCode(DeoptimizationKind kind, Thread* self)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
+extern "C" TwoWordReturn artInvokeSuperTrampolineWithAccessCheck(
+    uint32_t method_idx, mirror::Object* this_object, Thread* self, ArtMethod** sp)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+
 namespace arm64 {
 
 BasicCodeSimulatorArm64* BasicCodeSimulatorArm64::CreateBasicCodeSimulatorArm64(size_t stack_size) {
@@ -62,6 +78,13 @@ void BasicCodeSimulatorArm64::InitInstructionSimulator(size_t stack_size) {
   SimStack::Allocated stack = stack_builder.Allocate();
 
   simulator_.reset(CreateNewInstructionSimulator(std::move(stack)));
+
+  // VIXL simulator will print a warning by default if it gets an instruction with any special
+  // behavior in terms of memory model - not only those with exclusive access.
+  //
+  // TODO: Update this once the behavior is resolved in VIXL.
+  simulator_->SilenceExclusiveAccessWarning();
+
   if (VLOG_IS_ON(simulator)) {
     simulator_->SetColouredTrace(true);
     simulator_->SetTraceParameters(LOG_DISASM | LOG_WRITE | LOG_REGS);
@@ -117,8 +140,13 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artResolveTypeFromCode);
     RegisterBranchInterception(artThrowClassCastExceptionForObject);
     RegisterBranchInterception(artInstanceOfFromCode);
+    RegisterBranchInterception(artThrowArrayBoundsFromCode);
+    RegisterBranchInterception(artThrowNullPointerExceptionFromCode);
+    RegisterBranchInterception(artThrowStringBoundsFromCode);
+    RegisterBranchInterception(artDeoptimizeFromCompiledCode);
 
     RegisterTwoWordReturnInterception(artInstrumentationMethodExitFromCode);
+    RegisterTwoWordReturnInterception(artInvokeSuperTrampolineWithAccessCheck);
 
     RegisterBranchInterception(artArm64SimulatorGenericJNIPlaceholder,
                                [this](uint64_t addr ATTRIBUTE_UNUSED)
