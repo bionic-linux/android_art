@@ -815,6 +815,7 @@ void MarkCompact::RunPhases() {
 
   FinishPhase();
   thread_running_gc_ = nullptr;
+  GetHeap()->PostGcVerification(this);
 }
 
 void MarkCompact::InitMovingSpaceFirstObjects(const size_t vec_len) {
