@@ -63,6 +63,7 @@
 #include "dex/dex_file_types.h"
 #include "entrypoints/entrypoint_utils.h"
 #include "entrypoints/quick/quick_alloc_entrypoints.h"
+#include "entrypoints/quick/runtime_entrypoints_list.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/accounting/heap_bitmap-inl.h"
 #include "gc/allocator/rosalloc.h"
@@ -132,8 +133,6 @@ namespace art HIDDEN {
 
 using android::base::StringAppendV;
 using android::base::StringPrintf;
-
-extern "C" Context* artDeoptimize(Thread* self, bool skip_method_exit_callbacks);
 
 bool Thread::is_started_ = false;
 pthread_key_t Thread::pthread_key_self_;
