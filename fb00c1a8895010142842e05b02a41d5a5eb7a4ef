@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3ce0a7_5b7b6559",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-05T15:13:20Z",
+      "side": 1,
+      "message": "Should we introduce the `PROTECTED` attribute in this CL and use it instead of all the `EXPORT` attributes that we\u0027re adding here?",
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14666d6a_55739b65",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-05T15:13:20Z",
+      "side": 1,
+      "message": "Why is this needed? Is it used by some inlined `LinearAlloc` function in `dex2oat`?\n\n(Same question for `AllocSingleObjArena` and `FreeSingleObjArena` below.)",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fbb46e_2b78dc42",
+        "filename": "runtime/base/locks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-05T15:13:20Z",
+      "side": 1,
+      "message": "I guess this one (and maybe some other functions) could be hidden but given the number of `Mutex`es we need to export, I\u0027m fine with exporting the entire class.",
+      "range": {
+        "startLine": 169,
+        "startChar": 14,
+        "endLine": 169,
+        "endChar": 28
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f35cb81_97ed2167",
+        "filename": "runtime/base/locks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-05T15:13:20Z",
+      "side": 1,
+      "message": "Why do we need to export this static analysis annotation?",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 383,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3722425d_0eaf5681",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-05T15:13:20Z",
+      "side": 1,
+      "message": "Should we export the entire class? (There are just a few functions that are neither exported nor inline.)",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
