@@ -30,27 +30,59 @@ using namespace vixl::aarch64;  // NOLINT(build/namespaces)
 
 namespace art {
 
+namespace jit {
+class OsrData;
+}
+
 extern "C" const void* GetQuickInvokeStub();
 extern "C" const void* GetQuickInvokeStaticStub();
 extern "C" const void* GetQuickThrowNullPointerExceptionFromSignal();
 
-extern "C" void artThrowArrayBoundsFromCode(int index, int length, Thread* self)
+extern "C" const char* NterpGetShorty(ArtMethod* method)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" const char* NterpGetShortyFromMethodId(ArtMethod* caller, uint32_t method_index)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" const char* NterpGetShortyFromInvokePolymorphic(ArtMethod* caller, uint16_t* dex_pc_ptr)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" const char* NterpGetShortyFromInvokeCustom(ArtMethod* caller, uint16_t* dex_pc_ptr)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
-extern "C" void artThrowNullPointerExceptionFromCode(Thread* self)
+FLATTEN
+extern "C" size_t NterpGetMethod(Thread* self, ArtMethod* caller, const uint16_t* dex_pc_ptr)
     REQUIRES_SHARED(Locks::mutator_lock_);
-
-extern "C" void artThrowStringBoundsFromCode(int index, int length, Thread* self)
+extern "C" size_t NterpGetStaticField(Thread* self,
+                                      ArtMethod* caller,
+                                      const uint16_t* dex_pc_ptr,
+                                      size_t resolve_field_type)  // Resolve if not zero
     REQUIRES_SHARED(Locks::mutator_lock_);
-
-extern "C" void artDeoptimizeFromCompiledCode(DeoptimizationKind kind, Thread* self)
+extern "C" uint32_t NterpGetInstanceFieldOffset(Thread* self,
+                                                ArtMethod* caller,
+                                                const uint16_t* dex_pc_ptr,
+                                                size_t resolve_field_type)  // Resolve if not zero
     REQUIRES_SHARED(Locks::mutator_lock_);
-
-extern "C" TwoWordReturn artInvokeSuperTrampolineWithAccessCheck(
-    uint32_t method_idx, mirror::Object* this_object, Thread* self, ArtMethod** sp)
+extern "C" mirror::Object* NterpGetClass(Thread* self, ArtMethod* caller, uint16_t* dex_pc_ptr)
     REQUIRES_SHARED(Locks::mutator_lock_);
-
-extern "C" void artThrowStackOverflowFromCode(Thread* self)
+extern "C" mirror::Object* NterpAllocateObject(Thread* self,
+                                               ArtMethod* caller,
+                                               uint16_t* dex_pc_ptr)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" mirror::Object* NterpLoadObject(Thread* self, ArtMethod* caller, uint16_t* dex_pc_ptr)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" mirror::Object* NterpFilledNewArray(Thread* self,
+                                               ArtMethod* caller,
+                                               uint32_t* registers,
+                                               uint16_t* dex_pc_ptr)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" mirror::Object* NterpFilledNewArrayRange(Thread* self,
+                                                    ArtMethod* caller,
+                                                    uint32_t* registers,
+                                                    uint16_t* dex_pc_ptr)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" jit::OsrData* NterpHotMethod(ArtMethod* method, uint16_t* dex_pc_ptr, uint32_t* vregs)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" ssize_t NterpDoPackedSwitch(const uint16_t* switchData, int32_t testVal)
+    REQUIRES_SHARED(Locks::mutator_lock_);
+extern "C" ssize_t NterpDoSparseSwitch(const uint16_t* switchData, int32_t testVal)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 namespace arm64 {
@@ -165,6 +197,7 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artStringBuilderAppend);
     RegisterBranchInterception(fmodf);
     RegisterBranchInterception(fmod);
+    RegisterBranchInterception(free);
     RegisterBranchInterception(artAllocArrayFromCodeResolvedRosAllocInstrumented);
     RegisterBranchInterception(artAllocObjectFromCodeInitializedRosAllocInstrumented);
     RegisterBranchInterception(artAllocObjectFromCodeWithChecksRosAllocInstrumented);
@@ -199,6 +232,11 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception(artAllocStringFromCharsFromCodeRosAlloc);
     RegisterBranchInterception(artAllocStringFromStringFromCodeRosAlloc);
     RegisterBranchInterception(artThrowNullPointerExceptionFromSignal);
+    RegisterBranchInterception(artDeoptimize);
+    RegisterBranchInterception(artReadBarrierMark);
+    RegisterBranchInterception(artHandleFillArrayDataFromCode);
+    RegisterBranchInterception(artIsAssignableFromCode);
+    RegisterBranchInterception(artThrowArrayStoreException);
 
     // ART has a number of math entrypoints which operate on double type (see
     // quick_entrypoints_list.h, entrypoints_init_arm64.cc); we need to intercept C functions
@@ -224,6 +262,23 @@ class CustomSimulator final: public Simulator {
     RegisterBranchInterception<double, double>(sinh);
     RegisterBranchInterception<double, double>(tan);
     RegisterBranchInterception<double, double>(tanh);
+
+    // Nterp methods.
+    RegisterBranchInterception(NterpGetShorty);
+    RegisterBranchInterception(NterpGetShortyFromMethodId);
+    RegisterBranchInterception(NterpGetShortyFromInvokePolymorphic);
+    RegisterBranchInterception(NterpGetShortyFromInvokeCustom);
+    RegisterBranchInterception(NterpGetMethod);
+    RegisterBranchInterception(NterpGetStaticField);
+    RegisterBranchInterception(NterpGetInstanceFieldOffset);
+    RegisterBranchInterception(NterpGetClass);
+    RegisterBranchInterception(NterpAllocateObject);
+    RegisterBranchInterception(NterpLoadObject);
+    RegisterBranchInterception(NterpFilledNewArray);
+    RegisterBranchInterception(NterpFilledNewArrayRange);
+    RegisterBranchInterception(NterpHotMethod);
+    RegisterBranchInterception(NterpDoPackedSwitch);
+    RegisterBranchInterception(NterpDoSparseSwitch);
 
     RegisterTwoWordReturnInterception(artInstrumentationMethodExitFromCode);
     RegisterTwoWordReturnInterception(artInvokeSuperTrampolineWithAccessCheck);

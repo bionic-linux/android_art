@@ -40,7 +40,15 @@ constexpr uint16_t kNterpHotnessValue = 0;
 constexpr size_t kNterpMaxFrame = 3 * KB;
 
 // The maximum size for each nterp opcode handler.
+
+#ifdef ART_USE_RESTRICTED_MODE
+// In restricted mode we use special macros (e.g. CALL_SYMBOL) to access symbols from
+// .S files. Those macros emit multiple instructions; that makes the nterp handlers exceed the
+// original size.
+constexpr size_t kNterpHandlerSize = 256;
+#else
 constexpr size_t kNterpHandlerSize = 128;
+#endif  // ART_USE_RESTRICTED_MODE
 
 }  // namespace interpreter
 }  // namespace art

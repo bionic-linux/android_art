@@ -84,12 +84,21 @@ reloc_addr\@:
     br xIP0
 .endm
 
-// Branch to a symbol if register is not equal to zero (e.g: "cbz reg, symbol").
+// Branch to a symbol if register is equal to zero (e.g: "cbz reg, symbol").
 .macro BRANCH_SYMBOL_CBZ reg, symbol
     cbnz \reg, .Lbranch_not_zero\@
     BRANCH_SYMBOL \symbol
 
 .Lbranch_not_zero\@:
+    nop
+.endm
+
+// Branch to a symbol if register is not equal to zero (e.g: "cbnz reg, symbol").
+.macro BRANCH_SYMBOL_CBNZ reg, symbol
+    cbz \reg, .Lbranch_zero\@
+    BRANCH_SYMBOL \symbol
+
+.Lbranch_zero\@:
     nop
 .endm
 
@@ -102,7 +111,7 @@ reloc_addr\@:
     nop
 .endm
 
-// Branch to a symbol if not equal (e.g: "b.eq symbol").
+// Branch to a symbol if equal (e.g: "b.eq symbol").
 .macro BRANCH_SYMBOL_EQ symbol
     b.ne .Lbranch_not_equal\@
     BRANCH_SYMBOL \symbol
@@ -110,6 +119,16 @@ reloc_addr\@:
 .Lbranch_not_equal\@:
     nop
 .endm
+
+// Branch to a symbol if higher or same (unsigned) (e.g: "b.hs symbol").
+.macro BRANCH_SYMBOL_HS symbol
+    b.lo .Lbranch_lower\@
+    BRANCH_SYMBOL \symbol
+
+.Lbranch_lower\@:
+    nop
+.endm
+
 #else
 .macro LOAD_PC_REL_ADDRESS reg, symbol
     adr \reg, \symbol
@@ -127,6 +146,10 @@ reloc_addr\@:
     cbz \reg, \symbol
 .endm
 
+.macro BRANCH_SYMBOL_CBNZ reg, symbol
+    cbnz \reg, \symbol
+.endm
+
 .macro BRANCH_SYMBOL_NE symbol
     b.ne \symbol
 .endm
@@ -134,6 +157,11 @@ reloc_addr\@:
 .macro BRANCH_SYMBOL_EQ symbol
     b.eq \symbol
 .endm
+
+.macro BRANCH_SYMBOL_HS symbol
+    b.hs \symbol
+.endm
+
 #endif    // ART_USE_RESTRICTED_MODE
 
 .macro CFI_EXPRESSION_BREG n, b, offset

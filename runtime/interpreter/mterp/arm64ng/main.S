@@ -270,11 +270,11 @@
 .macro NTERP_TRAMPOLINE name, helper
 ENTRY \name
   SETUP_SAVE_REFS_ONLY_FRAME
-  bl \helper
+  CALL_SYMBOL \helper
   RESTORE_SAVE_REFS_ONLY_FRAME
   REFRESH_MARKING_REGISTER
   ldr xIP0, [xSELF, # THREAD_EXCEPTION_OFFSET]   // Get exception field.
-  cbnz xIP0, nterp_deliver_pending_exception
+  BRANCH_SYMBOL_CBNZ xIP0, nterp_deliver_pending_exception
   ret
 END \name
 .endm
@@ -443,7 +443,7 @@ END \name
 4:
     mov x1, xzr
     mov x2, xFP
-    bl nterp_hot_method
+    CALL_SYMBOL nterp_hot_method
     b 2b
 .endm
 
@@ -666,17 +666,17 @@ END \name
    .if \is_polymorphic
    ldr x0, [sp, #16]
    mov x1, xPC
-   bl NterpGetShortyFromInvokePolymorphic
+   CALL_SYMBOL NterpGetShortyFromInvokePolymorphic
    .elseif \is_custom
    ldr x0, [sp, #16]
    mov x1, xPC
-   bl NterpGetShortyFromInvokeCustom
+   CALL_SYMBOL NterpGetShortyFromInvokeCustom
    .elseif \is_interface
    ldr x0, [sp, #16]
    FETCH w1, 1
-   bl NterpGetShortyFromMethodId
+   CALL_SYMBOL NterpGetShortyFromMethodId
    .else
-   bl NterpGetShorty
+   CALL_SYMBOL NterpGetShorty
    .endif
    mov \dest, x0
    ldp x0, x1, [sp], #16
@@ -690,9 +690,9 @@ END \name
    .if \is_interface
    ldr x0, [sp, #32]
    FETCH w1, 1
-   bl NterpGetShortyFromMethodId
+   CALL_SYMBOL NterpGetShortyFromMethodId
    .else
-   bl NterpGetShorty
+   CALL_SYMBOL NterpGetShorty
    .endif
    mov \dest, x0
    ldr w2, [sp, #16]
@@ -708,7 +708,7 @@ END \name
 
 .macro DO_ENTRY_POINT_CHECK call_compiled_code
    // On entry, the method is x0, the instance is x1
-   adr x2, ExecuteNterpImpl
+   LOAD_PC_REL_ADDRESS x2, ExecuteNterpImpl
    ldr x3, [x0, #ART_METHOD_QUICK_CODE_OFFSET_64]
    cmp x2, x3
    b.ne  \call_compiled_code
@@ -1020,9 +1020,9 @@ END \name
    LOOP_OVER_SHORTY_LOADING_GPRS x5, w5, x11, x9, x10, .Lgpr_setup_finished_\suffix
 .Lgpr_setup_finished_\suffix:
    .if \is_polymorphic
-   bl art_quick_invoke_polymorphic
+   CALL_SYMBOL art_quick_invoke_polymorphic
    .elseif \is_custom
-   bl art_quick_invoke_custom
+   CALL_SYMBOL art_quick_invoke_custom
    .else
       .if \is_interface
       // Setup hidden argument.
@@ -1375,9 +1375,9 @@ END \name
    LOOP_RANGE_OVER_INTs x9, w10, w11, .Lgpr_setup_finished_range_\suffix
 .Lgpr_setup_finished_range_\suffix:
    .if \is_polymorphic
-   bl art_quick_invoke_polymorphic
+   CALL_SYMBOL art_quick_invoke_polymorphic
    .elseif \is_custom
-   bl art_quick_invoke_custom
+   CALL_SYMBOL art_quick_invoke_custom
    .else
       .if \is_interface
       // Setup hidden argument.
@@ -1580,7 +1580,7 @@ END \name
     tst wip, #THREAD_SUSPEND_OR_CHECKPOINT_REQUEST
     b.eq \continue_label
     EXPORT_PC
-    bl    art_quick_test_suspend
+    CALL_SYMBOL    art_quick_test_suspend
 .endm
 
 %def entry():
@@ -1599,20 +1599,20 @@ OAT_ENTRY ExecuteNterpWithClinitImpl, EndExecuteNterpWithClinitImpl
     ldr wip, [x0, #ART_METHOD_DECLARING_CLASS_OFFSET]
     ldrb wip2, [ip, #MIRROR_CLASS_IS_VISIBLY_INITIALIZED_OFFSET]
     cmp ip2, #MIRROR_CLASS_IS_VISIBLY_INITIALIZED_VALUE
-    b.hs ExecuteNterpImpl
+    BRANCH_SYMBOL_HS ExecuteNterpImpl
     cmp ip2, #MIRROR_CLASS_IS_INITIALIZED_VALUE
     b.lo .Linitializing_check
     dmb ish
-    b ExecuteNterpImpl
+    BRANCH_SYMBOL ExecuteNterpImpl
 .Linitializing_check:
     cmp ip2, #MIRROR_CLASS_IS_INITIALIZING_VALUE
     b.lo .Lresolution_trampoline
     ldr wip2, [ip, #MIRROR_CLASS_CLINIT_THREAD_ID_OFFSET]
     ldr wip, [xSELF, #THREAD_TID_OFFSET]
     cmp wip, wip2
-    b.eq ExecuteNterpImpl
+    BRANCH_SYMBOL_EQ ExecuteNterpImpl
 .Lresolution_trampoline:
-    b art_quick_resolution_trampoline
+    BRANCH_SYMBOL art_quick_resolution_trampoline
 EndExecuteNterpWithClinitImpl:
 
 OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
@@ -1661,7 +1661,7 @@ OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
 .Lsetup_with_shorty:
     // TODO: Get shorty in a better way and remove below
     SPILL_ALL_ARGUMENTS
-    bl NterpGetShorty
+    CALL_SYMBOL NterpGetShorty
     // Save shorty in callee-save xIBASE.
     mov xIBASE, x0
     RESTORE_ALL_ARGUMENTS
@@ -1703,24 +1703,32 @@ OAT_ENTRY ExecuteNterpImpl, EndExecuteNterpImpl
     CFI_DEFINE_DEX_PC_WITH_OFFSET(CFI_TMP, CFI_DEX, 0)
 
     // Set rIBASE
-    adr xIBASE, artNterpAsmInstructionStart
+    LOAD_PC_REL_ADDRESS xIBASE, artNterpAsmInstructionStart
     /* start executing the instruction at xPC */
     START_EXECUTING_INSTRUCTIONS
     /* NOTE: no fallthrough */
     // cfi info continues, and covers the whole nterp implementation.
     SIZE ExecuteNterpImpl
 
-%def opcode_pre():
-
-%def fetch_from_thread_cache(dest_reg, miss_label):
+.macro FETCH_FROM_THREAD_CACHE_IMPL dest_reg
    // Fetch some information from the thread cache.
    // Uses ip and ip2 as temporaries.
    add      ip, xSELF, #THREAD_INTERPRETER_CACHE_OFFSET       // cache address
    ubfx     ip2, xPC, #2, #THREAD_INTERPRETER_CACHE_SIZE_LOG2  // entry index
    add      ip, ip, ip2, lsl #4            // entry address within the cache
-   ldp      ip, ${dest_reg}, [ip]          // entry key (pc) and value (offset)
+   ldp      ip, \dest_reg, [ip]            // entry key (pc) and value (offset)
    cmp      ip, xPC
+.endm
+
+%def opcode_pre():
+
+%def fetch_from_thread_cache(dest_reg, miss_label):
+   FETCH_FROM_THREAD_CACHE_IMPL ${dest_reg}
    b.ne     ${miss_label}
+
+%def fetch_from_thread_cache_with_symbol(dest_reg, miss_symbol):
+   FETCH_FROM_THREAD_CACHE_IMPL ${dest_reg}
+   BRANCH_SYMBOL_NE     ${miss_symbol}
 
 %def footer():
 /*
@@ -1739,18 +1747,18 @@ NAME_START nterp_helper
 // as the assembler compiled each interpreter separately.
 common_errDivideByZero:
     EXPORT_PC
-    bl art_quick_throw_div_zero
+    CALL_SYMBOL art_quick_throw_div_zero
 
 // Expect index in w1, length in w3.
 common_errArrayIndex:
     EXPORT_PC
     mov x0, x1
     mov x1, x3
-    bl art_quick_throw_array_bounds
+    CALL_SYMBOL art_quick_throw_array_bounds
 
 common_errNullObject:
     EXPORT_PC
-    bl art_quick_throw_null_pointer_exception
+    CALL_SYMBOL art_quick_throw_null_pointer_exception
 
 NterpCommonInvokeStatic:
     COMMON_INVOKE_NON_RANGE is_static=1, suffix="invokeStatic"
@@ -1793,7 +1801,7 @@ NterpHandleHotnessOverflow:
 1:
     mov x1, xPC
     mov x2, xFP
-    bl nterp_hot_method
+    CALL_SYMBOL nterp_hot_method
     cbnz x0, 3f
 2:
     FETCH wINST, 0                      // load wINST
@@ -1849,7 +1857,7 @@ NterpHandleHotnessOverflow:
     ldr xFP, [x0, #OSR_DATA_NATIVE_PC]
 
     // Free the memory holding OSR Data.
-    bl free
+    CALL_SYMBOL NterpFree
 
     // Jump to the compiled code.
     br xFP

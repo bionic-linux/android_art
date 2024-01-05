@@ -59,10 +59,10 @@
    mov x0, xSELF
    ldr x1, [sp]
    mov x2, xPC
-   bl $helper
+   CALL_SYMBOL $helper
    b 1b
 3:
-   bl art_quick_read_barrier_mark_reg00
+   CALL_SYMBOL art_quick_read_barrier_mark_reg00
    b 1b
 
 %def op_const_class():
@@ -135,7 +135,12 @@
     EXPORT_PC
     lsr      w2, wINST, #8               // w2<- AA
     GET_VREG w0, w2
-    bl art_quick_lock_object
+#ifdef ART_USE_RESTRICTED_MODE
+    // See a comment in quick_default_init_entrypoints.h, related to art_quick_lock_object.
+    CALL_SYMBOL art_quick_lock_object_no_inline
+#else
+    CALL_SYMBOL art_quick_lock_object
+#endif  // ART_USE_RESTRICTED_MODE
     FETCH_ADVANCE_INST 1
     GET_INST_OPCODE ip                   // extract opcode from rINST
     GOTO_OPCODE ip                       // jump to next instruction
@@ -152,7 +157,12 @@
     EXPORT_PC
     lsr      w2, wINST, #8               // w2<- AA
     GET_VREG w0, w2
-    bl art_quick_unlock_object
+#ifdef ART_USE_RESTRICTED_MODE
+    // See a comment in quick_default_init_entrypoints.h, related to art_quick_unlock_object.
+    CALL_SYMBOL art_quick_unlock_object_no_inline
+#else
+    CALL_SYMBOL art_quick_unlock_object
+#endif  // ART_USE_RESTRICTED_MODE
     FETCH_ADVANCE_INST 1
     GET_INST_OPCODE ip                   // extract opcode from rINST
     GOTO_OPCODE ip                       // jump to next instruction

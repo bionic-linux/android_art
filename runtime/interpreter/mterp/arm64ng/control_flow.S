@@ -131,7 +131,7 @@
     orr     x0, x0, x1, lsl #16         // x0<- ssssssssBBBBbbbb
     GET_VREG w1, w3                     // w1<- vAA
     add     x0, xPC, x0, lsl #1         // x0<- PC + ssssssssBBBBbbbb*2
-    bl      $func                       // w0<- code-unit branch offset
+    CALL_SYMBOL      $func              // w0<- code-unit branch offset
     sxtw    xINST, w0
     BRANCH
 
@@ -184,5 +184,5 @@
   lsr      w2, wINST, #8               // r2<- AA
   GET_VREG w0, w2                      // r0<- vAA (exception object)
   mov x1, xSELF
-  bl art_quick_deliver_exception
+  CALL_SYMBOL art_quick_deliver_exception
   brk 0

@@ -80,6 +80,7 @@ enum class DeoptimizationKind;
       mirror::Object* value,                                                                      \
       Thread* self)                                                                               \
                                                                                                   \
+  V(artDeoptimize, REQUIRES_SHARED(Locks::mutator_lock_), void, Thread* self)                     \
   V(artDeoptimizeIfNeeded, REQUIRES_SHARED(Locks::mutator_lock_), int,                            \
       Thread* self,                                                                               \
       uintptr_t result,                                                                           \

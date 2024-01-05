@@ -28,7 +28,7 @@
     SET_VREG_OBJECT w2, w9              // vAA<- w2
     GOTO_OPCODE x10                     // jump to next instruction
 2:
-    bl art_quick_read_barrier_mark_reg02
+    CALL_SYMBOL art_quick_read_barrier_mark_reg02
     b 1b
     .else
     $load   w2, [x0, #$data_offset]     // w2<- vBB[vCC]
@@ -85,7 +85,7 @@
     .if $wide
     $store  x2, [x0, #$data_offset]     // vBB[vCC]<- x2
     .elseif $is_object
-    bl art_quick_aput_obj
+    CALL_SYMBOL art_quick_aput_obj
     .else
     $store  w2, [x0, #$data_offset]     // vBB[vCC]<- w2
     .endif
@@ -133,7 +133,7 @@
     orr     x0, x0, x1, lsl #16         // x0<- ssssssssBBBBbbbb
     GET_VREG w1, w3                     // w1<- vAA (array object)
     add     x0, xPC, x0, lsl #1         // x0<- PC + ssssssssBBBBbbbb*2 (array data off.)
-    bl      art_quick_handle_fill_data
+    CALL_SYMBOL      art_quick_handle_fill_data
     FETCH_ADVANCE_INST 3                // advance rPC, load rINST
     GET_INST_OPCODE ip                  // extract opcode from rINST
     GOTO_OPCODE ip                      // jump to next instruction
@@ -151,7 +151,7 @@
     ldr     x1, [sp]
     mov     x2, xFP
     mov     x3, xPC
-    bl      $helper
+    CALL_SYMBOL      $helper
     FETCH_ADVANCE_INST 3                // advance rPC, load rINST
     GET_INST_OPCODE ip                  // extract opcode from rINST
     GOTO_OPCODE ip                      // jump to next instruction
@@ -179,8 +179,8 @@
    mov x0, xSELF
    ldr x1, [sp, 0]
    mov x2, xPC
-   bl nterp_get_class
+   CALL_SYMBOL nterp_get_class
    b 1b
 3:
-   bl art_quick_read_barrier_mark_reg00
+   CALL_SYMBOL art_quick_read_barrier_mark_reg00
    b 1b

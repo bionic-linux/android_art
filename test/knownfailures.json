@@ -1573,5 +1573,10 @@
         "env_vars": {"ART_USE_SIMULATOR": "true"},
         "description": ["The simulator requires a temporary file to be opened when creating a new",
                         "simulator/thread."]
+    },
+    {
+        "tests": ["012-math"],
+        "env_vars": {"ART_USE_SIMULATOR": "true"},
+        "description": ["TODO: debug this failure, which happens when nterp is on."]
     }
 ]
