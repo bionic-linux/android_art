@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "02093d80_763461d8",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2024-01-05T22:11:14Z",
+      "side": 1,
+      "message": "`libopenjdkvmti` uses `LinearAlloc::Alloc` https://cs.android.com/android/platform/superproject/main/+/main:art/openjdkjvmti/ti_redefine.cc;l\u003d312\nWhich then calls to `SetFirstObject`.\n\nAllocSingleObjArena is used in `art::linker::ImageWriter::CalculateNewObjectOffsets` and `CopyAndFixupNativeData` through `GcRootArenaAllocator`.",
+      "parentUuid": "14666d6a_55739b65",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "29fbb46e_2b78dc42",
@@ -89,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ef3d654_7152ea41",
+        "filename": "runtime/base/locks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2024-01-05T22:11:14Z",
+      "side": 1,
+      "message": "In `libarttest`:\nhttps://cs.android.com/android/platform/superproject/main/+/main:art/test/1985-structural-redefine-stack-scope/stack_scope.cc;l\u003d61\n`Alloc` eventually calls to: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/gc/heap-inl.h;l\u003d69",
+      "parentUuid": "4f35cb81_97ed2167",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 383,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3722425d_0eaf5681",
         "filename": "runtime/base/mutex.h",
         "patchSetId": 1
@@ -100,6 +148,30 @@
       "writtenOn": "2024-01-05T15:13:20Z",
       "side": 1,
       "message": "Should we export the entire class? (There are just a few functions that are neither exported nor inline.)",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022daebf_8ca4fa9e",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2024-01-05T22:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3722425d_0eaf5681",
       "range": {
         "startLine": 322,
         "startChar": 0,
