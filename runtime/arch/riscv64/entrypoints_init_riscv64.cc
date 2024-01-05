@@ -18,6 +18,7 @@
 
 #include "entrypoints/quick/quick_default_init_entrypoints.h"
 #include "entrypoints/quick/quick_entrypoints.h"
+#include "entrypoints/quick/runtime_entrypoints_list.h"
 
 namespace art HIDDEN {
 
