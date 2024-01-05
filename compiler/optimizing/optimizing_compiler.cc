@@ -744,69 +744,6 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
   return compiled_method;
 }
 
-#ifdef ART_USE_RESTRICTED_MODE
-
-// This class acts as a filter and enables gradual enablement of ART Simulator work - we
-// compile (and hence simulate) only limited types of methods.
-class CompilationFilterForRestrictedMode : public HGraphDelegateVisitor {
- public:
-  explicit CompilationFilterForRestrictedMode(HGraph* graph)
-      : HGraphDelegateVisitor(graph),
-        has_unsupported_instructions_(false) {}
-
-  // Returns true if the graph contains instructions which are not currently supported in
-  // the Restricted mode.
-  bool GraphRejected() const { return has_unsupported_instructions_; }
-
- private:
-  // All the instrucitons will execute the following delegate visitor unless they are specifically
-  // supported by concrete visitors below.
-  void VisitInstruction(HInstruction* instruction) override {
-    LocationSummary* locations = instruction->GetLocations();
-    if (locations != nullptr) {
-      // Reject: kCallOnMainOnly and kCallOnMainAndSlowPath.
-      // Allow:  kNoCall and kCallOnSlowPath.
-      if (locations->WillCall()) {
-        RejectGraph();
-      }
-    }
-  }
-
-  //
-  // Concrete visitors; they do nothing inside hence allowing the instructions types.
-  //
-
-  void VisitSuspendCheck(HSuspendCheck*) override {}
-  void VisitDeoptimize(HDeoptimize*) override {}
-  void VisitInvokeVirtual(HInvokeVirtual*) override {}
-  void VisitInvokeStaticOrDirect(HInvokeStaticOrDirect*) override {}
-
-  void RejectGraph() {
-    has_unsupported_instructions_ = true;
-  }
-
-  bool has_unsupported_instructions_;
-};
-
-// Returns whether an ArtMethod, specified by a name, should be compiled. Used in "Restricted"
-// mode.
-//
-// In "Restricted" mode, the simulator will execute only those methods which are compiled; thus
-// this is going to be an effective filter for methods to be simulated.
-//
-// TODO(Simulator): compile and simulate all the methods as in regular host mode.
-bool ShouldMethodBeCompiled(HGraph* graph, const std::string& method_name) {
-  if (method_name.find("$compile$") != std::string::npos) {
-    return true;
-  }
-
-  CompilationFilterForRestrictedMode filter_visitor(graph);
-  filter_visitor.VisitReversePostOrder();
-
-  return !filter_visitor.GraphRejected();
-}
-#endif  // ART_USE_RESTRICTED_MODE
-
 CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
                                               ArenaStack* arena_stack,
                                               CodeVectorAllocator* code_allocator,
@@ -971,13 +908,6 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
                     &pass_observer,
                     regalloc_strategy,
                     compilation_stats_.get());
-#ifdef ART_USE_RESTRICTED_MODE
-  // TODO(Simulator): support and compile all methods.
-  std::string method_name = dex_file.PrettyMethod(method_idx);
-  if (!ShouldMethodBeCompiled(graph, method_name)) {
-    return nullptr;
-  }
-#endif  // ART_USE_RESTRICTED_MODE
 
   codegen->Compile(code_allocator);
   pass_observer.DumpDisassembly();
@@ -1177,8 +1107,6 @@ CompiledMethod* OptimizingCompiler::Compile(const dex::CodeItem* code_item,
     }
   }
 
-  // TODO(Simulator): Check for $opt in method name and that such method is compiled.
-#ifndef ART_USE_RESTRICTED_MODE
   if (kIsDebugBuild &&
       compiler_options.CompileArtTest() &&
       IsInstructionSetSupported(compiler_options.GetInstructionSet())) {
@@ -1190,7 +1118,6 @@ CompiledMethod* OptimizingCompiler::Compile(const dex::CodeItem* code_item,
     bool shouldCompile = method_name.find("$opt$") != std::string::npos;
     DCHECK_IMPLIES(compiled_method == nullptr, !shouldCompile) << "Didn't compile " << method_name;
   }
-#endif  // #ifndef ART_USE_RESTRICTED_MODE
 
   return compiled_method;
 }

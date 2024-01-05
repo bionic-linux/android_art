@@ -1569,11 +1569,11 @@
                   "064-field-access",
                   "151-OpenFileLimit",
                   "178-app-image-native-method",
+                  "693-vdex-inmem-loader-evict",
+                  "800-smali",
                   "1914-get-local-instance",
                   "1939-proxy-frames",
-                  "1945-proxy-method-arguments",
-                  "693-vdex-inmem-loader-evict",
-                  "800-smali"],
+                  "1945-proxy-method-arguments"],
         "env_vars": {"ART_USE_SIMULATOR": "true"},
         "description": ["TODO: Investigate reasons for these failures of the ART simulator."]
     },
@@ -1584,5 +1584,10 @@
         "env_vars": {"ART_USE_SIMULATOR": "true"},
         "description": ["Intermittent timeout failures on the ART simulator due to the overheads",
                         "in simulation."]
+    },
+    {
+        "tests": ["137-cfi"],
+        "env_vars": {"ART_USE_SIMULATOR": "true"},
+        "description": ["Simulator does not currently support cfi relocations."]
     }
 ]
