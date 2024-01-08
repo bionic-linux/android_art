@@ -219,6 +219,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79ba2b1_20b651f9",
+        "filename": "runtime/base/locks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2024-01-08T14:47:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d0e5dc79_7a384859",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 383,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3722425d_0eaf5681",
