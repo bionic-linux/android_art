@@ -42,51 +42,49 @@ public class Main {
             // This method is below the inline cache threshold.
             Method method1 = Main.class.getDeclaredMethod("$noinline$method1", Base.class);
             ensureJitBaselineCompiled(method1);
-            // The baseline code doesn't update the inline cache if we are marking. Force a GC now
-            // so that GC will unlikely take place during the method calls below.
-            Runtime.getRuntime().gc();
-            $noinline$method1(derived1);
-            for (int i = 0; i < 2998; i++) {
-                $noinline$method1(derived2);
+            try (ScopedAssertNoGc noGc = new ScopedAssertNoGc()) {
+                $noinline$method1(derived1);
+                for (int i = 0; i < 2998; i++) {
+                    $noinline$method1(derived2);
+                }
             }
             checkMethodHasNoInlineCache(file, method1);
 
             // This method is right on the inline cache threshold.
             Method method2 = Main.class.getDeclaredMethod("$noinline$method2", Base.class);
             ensureJitBaselineCompiled(method2);
-            // The baseline code doesn't update the inline cache if we are marking. Force a GC now
-            // so that GC will unlikely take place during the method calls below.
-            Runtime.getRuntime().gc();
-            $noinline$method2(derived1);
-            for (int i = 0; i < 2999; i++) {
-                $noinline$method2(derived2);
+            try (ScopedAssertNoGc noGc = new ScopedAssertNoGc()) {
+                $noinline$method2(derived1);
+                for (int i = 0; i < 2999; i++) {
+                    $noinline$method2(derived2);
+                }
             }
             checkMethodHasInlineCache(file, method2, Derived1.class, Derived2.class);
 
             // This method is above the inline cache threshold.
             Method method3 = Main.class.getDeclaredMethod("$noinline$method3", Base.class);
             ensureJitBaselineCompiled(method3);
-            // The baseline code doesn't update the inline cache if we are marking. Force a GC now
-            // so that GC will unlikely take place during the method calls below.
-            Runtime.getRuntime().gc();
-            for (int i = 0; i < 10000; i++) {
-                $noinline$method3(derived1);
-            }
-            for (int i = 0; i < 10000; i++) {
-                $noinline$method3(derived2);
+            try (ScopedAssertNoGc noGc = new ScopedAssertNoGc()) {
+                for (int i = 0; i < 10000; i++) {
+                    $noinline$method3(derived1);
+                }
+                for (int i = 0; i < 10000; i++) {
+                    $noinline$method3(derived2);
+                }
             }
             checkMethodHasInlineCache(file, method3, Derived1.class, Derived2.class);
 
             // This method is above the JIT threshold.
             Method method4 = Main.class.getDeclaredMethod("$noinline$method4", Base.class);
             ensureJitBaselineCompiled(method4);
-            // The baseline code doesn't update the inline cache if we are marking. Force a GC now
-            // so that GC will unlikely take place during the method calls below.
-            Runtime.getRuntime().gc();
-            $noinline$method4(derived1);
-            $noinline$method4(derived2);
+            try (ScopedAssertNoGc noGc = new ScopedAssertNoGc()) {
+                $noinline$method4(derived1);
+                $noinline$method4(derived2);
+            }
             ensureMethodJitCompiled(method4);
             checkMethodHasInlineCache(file, method4, Derived1.class, Derived2.class);
+        } catch (ScopedAssertNoGc.NoGcAssertionFailure e) {
+            // This should rarely happen. When it happens, just skip the test.
         } finally {
             if (file != null) {
                 file.delete();
@@ -197,4 +195,39 @@ public class Main {
                     null, packageName, curProfile, refProfile, codePaths, codePathsType);
         }
     }
+
+    // This scope is intended to guard code that doesn't expect GC to take place. Because we can't
+    // really prevent GC in Java code (calling a native method that enters a GCCriticalSection will
+    // cause the runtime to hang forever when transitioning from native back to Java), this is a
+    // workaround that forces a GC at the beginning so that GC will unlikely take place within the
+    // scope. If a GC still takes place within the scope, this will throw NoGcAssertionFailure.
+    //
+    // The baseline code doesn't update the inline cache if we are marking, so we use this scope to
+    // guard calls to virtual methods for which we want inline cache to be updated.
+    private static class ScopedAssertNoGc implements AutoCloseable {
+        private final int mLastGcNum;
+
+        public ScopedAssertNoGc() {
+            System.gc();
+            mLastGcNum = getCurrentGcNum();
+        }
+
+        @Override
+        public void close() throws NoGcAssertionFailure {
+            int currentGcNum = getCurrentGcNum();
+            if (currentGcNum != mLastGcNum) {
+                throw new NoGcAssertionFailure(
+                        String.format("GC happened within the scope (before: %d, after: %d)",
+                                mLastGcNum, currentGcNum));
+            }
+        }
+
+        public static class NoGcAssertionFailure extends Exception {
+            public NoGcAssertionFailure(String message) {
+                super(message);
+            }
+        }
+    }
+
+    public static native int getCurrentGcNum();
 }

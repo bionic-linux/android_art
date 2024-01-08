@@ -566,4 +566,12 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_hasInlineCacheInProfile(
   return JNI_FALSE;
 }
 
+extern "C" JNIEXPORT jint JNICALL Java_Main_getCurrentGcNum(JNIEnv* env, jclass) {
+  // Prevent any new GC before getting the current GC num.
+  ScopedObjectAccess soa(env);
+  gc::Heap* heap = Runtime::Current()->GetHeap();
+  heap->WaitForGcToComplete(gc::kGcCauseJitCodeCache, Thread::Current());
+  return heap->GetCurrentGcNum();
+}
+
 }  // namespace art
