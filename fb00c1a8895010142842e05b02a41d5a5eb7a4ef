@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7c439de5_b5df3388",
+        "filename": "runtime/base/gc_visited_arena_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-08T09:10:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "02093d80_763461d8",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "29fbb46e_2b78dc42",
         "filename": "runtime/base/locks.h",
         "patchSetId": 1
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "In `libarttest`:\nhttps://cs.android.com/android/platform/superproject/main/+/main:art/test/1985-structural-redefine-stack-scope/stack_scope.cc;l\u003d61\n`Alloc` eventually calls to: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/gc/heap-inl.h;l\u003d69",
       "parentUuid": "4f35cb81_97ed2167",
+      "range": {
+        "startLine": 383,
+        "startChar": 2,
+        "endLine": 383,
+        "endChar": 8
+      },
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0e5dc79_7a384859",
+        "filename": "runtime/base/locks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-08T09:10:22Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we need to export something that\u0027s used only for compile-time static analysis. But maybe we just need to accept that as a fact, acknowledge and move on.",
+      "parentUuid": "2ef3d654_7152ea41",
       "range": {
         "startLine": 383,
         "startChar": 2,
