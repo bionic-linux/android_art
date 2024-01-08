@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59bc0c6a_8cefb877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963262
+      },
+      "writtenOn": "2024-01-08T14:24:47Z",
+      "side": 1,
+      "message": "There is an example of `protected` visibility in http://aosp/2859955 (see `Runtime::instance_`), it requires some additional macros logic.\n\nI was thinking about alternatives, one of them is to add `-Wl,-Bsymbolic` linker flag to `libart`. That should provide the same benefit as `protected` while not requiring any changes in the macros.",
+      "parentUuid": "5d3ce0a7_5b7b6559",
+      "revId": "fb00c1a8895010142842e05b02a41d5a5eb7a4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14666d6a_55739b65",
         "filename": "runtime/base/gc_visited_arena_pool.h",
         "patchSetId": 1
