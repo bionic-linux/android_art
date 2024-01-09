@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a599a00_c7d2164b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004333
+      },
+      "writtenOn": "2024-01-09T22:22:03Z",
+      "side": 1,
+      "message": "This CL has caused a regression which is detailed in: b/319255249 A revert will be made.",
+      "revId": "3d10d9399776f36955bdcd7d75a5e0fe8648d020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
