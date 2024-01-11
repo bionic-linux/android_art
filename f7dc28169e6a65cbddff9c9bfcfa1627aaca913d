@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24964ea_bae0250c",
+        "filename": "test/2271-profile-inline-cache/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-01-11T13:19:58Z",
+      "side": 1,
+      "message": "Can we try again instead of skipping?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 68
+      },
+      "revId": "f7dc28169e6a65cbddff9c9bfcfa1627aaca913d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
