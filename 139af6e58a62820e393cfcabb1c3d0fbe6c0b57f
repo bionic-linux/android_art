@@ -16,6 +16,24 @@
       "message": "Do we need to check here that `temp1 \u003d temp1-\u003ecomponent_type_` is not null via `Cbz`? Or are we guaranteed that it is non-null?",
       "revId": "139af6e58a62820e393cfcabb1c3d0fbe6c0b57f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c278668_1ca53c2d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-16T13:06:06Z",
+      "side": 1,
+      "message": "Destination is non-primitive array in this code path (see `DCHECK()` above)`, so the component type is known to be non-null.",
+      "parentUuid": "30a04812_68774e4e",
+      "revId": "139af6e58a62820e393cfcabb1c3d0fbe6c0b57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
