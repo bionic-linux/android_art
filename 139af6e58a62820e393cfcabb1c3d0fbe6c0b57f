@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a04812_68774e4e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3250,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-16T10:59:08Z",
+      "side": 1,
+      "message": "Do we need to check here that `temp1 \u003d temp1-\u003ecomponent_type_` is not null via `Cbz`? Or are we guaranteed that it is non-null?",
+      "revId": "139af6e58a62820e393cfcabb1c3d0fbe6c0b57f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
