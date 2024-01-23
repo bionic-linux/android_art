@@ -110,6 +110,30 @@
       },
       "revId": "501ede92044c065a225bd05347449790b8f941c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319df7c2_e01613ec",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T08:52:35Z",
+      "side": 1,
+      "message": "I see, they indeed call it a \"release\", so we can use that term when talking about executing bytecode. (It is, however, inconsistent with the use of \"release\" in C++.)",
+      "parentUuid": "bdca66bc_a24328cc",
+      "range": {
+        "startLine": 251,
+        "startChar": 35,
+        "endLine": 251,
+        "endChar": 43
+      },
+      "revId": "501ede92044c065a225bd05347449790b8f941c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
