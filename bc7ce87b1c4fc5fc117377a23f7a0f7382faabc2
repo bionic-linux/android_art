@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853dff69_1e28e2c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-23T01:16:58Z",
+      "side": 1,
+      "message": "This CL batches the small suggested fixes together. PTAL.",
+      "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
