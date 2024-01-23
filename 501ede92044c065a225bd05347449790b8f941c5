@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0d1b2c_af453867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-23T01:17:43Z",
+      "side": 1,
+      "message": "post-review fix in r.android.com/2923297",
+      "revId": "501ede92044c065a225bd05347449790b8f941c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40ed4669_68b4159a",
@@ -24,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c81a7b_201d78ba",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-23T01:17:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "40ed4669_68b4159a",
+      "range": {
+        "startLine": 211,
+        "startChar": 25,
+        "endLine": 211,
+        "endChar": 35
+      },
+      "revId": "501ede92044c065a225bd05347449790b8f941c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c804fff0_fc2176e0",
@@ -37,6 +78,30 @@
       "writtenOn": "2024-01-02T08:33:55Z",
       "side": 1,
       "message": "Actually, volatile operations are sequentially consistent. (Maybe we should have a helper function `store_seq_cst` that implicitly documents the semantics in the name and can be used to share the code across handlers.)",
+      "range": {
+        "startLine": 251,
+        "startChar": 35,
+        "endLine": 251,
+        "endChar": 43
+      },
+      "revId": "501ede92044c065a225bd05347449790b8f941c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdca66bc_a24328cc",
+        "filename": "runtime/interpreter/mterp/riscv64/object.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-23T01:17:43Z",
+      "side": 1,
+      "message": "Yes, and here, \"release\" is used in the sense of the volatile write being \"the source of a synchronizes-with edge\" in\nhttps://docs.oracle.com/javase/specs/jls/se21/html/jls-17.html#jls-17.4.4\nIs that okay?",
+      "parentUuid": "c804fff0_fc2176e0",
       "range": {
         "startLine": 251,
         "startChar": 35,
