@@ -16,6 +16,29 @@
       "message": "This CL batches the small suggested fixes together. PTAL.",
       "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d44437f_c08f3391",
+        "filename": "runtime/interpreter/mterp/riscv64/other.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T09:03:22Z",
+      "side": 1,
+      "message": "I prefer a semicolon.\n\n(I see you prefer to explicitly differentiate the object and non-object code path for the sake of the comments even though `get_vreg(\"t1\", \"t1\", is_wide\u003dis_wide, is_unsigned\u003dis_object)` would do the job.)",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
