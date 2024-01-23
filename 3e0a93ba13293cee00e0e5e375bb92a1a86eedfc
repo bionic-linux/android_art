@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d139a6_a12f7a3f",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T13:17:16Z",
+      "side": 1,
+      "message": "This allows both r-values and l-values to be passed without an extra copy. It has to do with the subtle rules on reference composition and this is what I use by default.",
+      "parentUuid": "b017bef1_565d29c2",
+      "range": {
+        "startLine": 33,
+        "startChar": 77,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "3e0a93ba13293cee00e0e5e375bb92a1a86eedfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5393ec75_516a4673",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-01-23T12:09:04Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "3e0a93ba13293cee00e0e5e375bb92a1a86eedfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaec37bb_5d5c2703",
+        "filename": "compiler/optimizing/register_allocator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T13:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5393ec75_516a4673",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba89fd09_7a9a1767",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T13:17:16Z",
+      "side": 1,
+      "message": "Done. I\u0027ll probably refactor this to reduce code duplication when I add `RegisterType::kVectorRegister` needed by riscv64.",
+      "parentUuid": "43024335_e0f0f9d5",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "3e0a93ba13293cee00e0e5e375bb92a1a86eedfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fa6a07e_14c247ac",
@@ -100,6 +172,24 @@
       "writtenOn": "2024-01-23T12:09:04Z",
       "side": 1,
       "message": "ditto, or referece above.",
+      "revId": "3e0a93ba13293cee00e0e5e375bb92a1a86eedfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65462961_906bfa1b",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-23T13:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa6a07e_14c247ac",
       "revId": "3e0a93ba13293cee00e0e5e375bb92a1a86eedfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
