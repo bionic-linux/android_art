@@ -1210,7 +1210,7 @@ jstring JavaVMExt::GetLibrarySearchPath(JNIEnv* env, jobject class_loader) {
 
 // JNI Invocation interface.
 
-extern "C" EXPORT jint JNI_CreateJavaVM(JavaVM** p_vm, JNIEnv** p_env, void* vm_args) {
+extern "C" LIBART_PROTECTED jint JNI_CreateJavaVM(JavaVM** p_vm, JNIEnv** p_env, void* vm_args) {
   ScopedTrace trace(__FUNCTION__);
   const JavaVMInitArgs* args = static_cast<JavaVMInitArgs*>(vm_args);
   if (JavaVMExt::IsBadJniVersion(args->version)) {
@@ -1252,7 +1252,7 @@ extern "C" EXPORT jint JNI_CreateJavaVM(JavaVM** p_vm, JNIEnv** p_env, void* vm_
   return JNI_OK;
 }
 
-extern "C" EXPORT jint JNI_GetCreatedJavaVMs(JavaVM** vms_buf, jsize buf_len, jsize* vm_count) {
+extern "C" LIBART_PROTECTED jint JNI_GetCreatedJavaVMs(JavaVM** vms_buf, jsize buf_len, jsize* vm_count) {
   Runtime* runtime = Runtime::Current();
   if (runtime == nullptr || buf_len == 0) {
     *vm_count = 0;
@@ -1264,7 +1264,7 @@ extern "C" EXPORT jint JNI_GetCreatedJavaVMs(JavaVM** vms_buf, jsize buf_len, js
 }
 
 // Historically unsupported.
-extern "C" EXPORT jint JNI_GetDefaultJavaVMInitArgs(void* /*vm_args*/) {
+extern "C" LIBART_PROTECTED jint JNI_GetDefaultJavaVMInitArgs(void* /*vm_args*/) {
   return JNI_ERR;
 }
 

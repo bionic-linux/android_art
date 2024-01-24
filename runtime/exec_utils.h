@@ -76,7 +76,7 @@ struct ExecResult {
 // These spawn child processes using the environment as it was set when the single instance
 // of the runtime (Runtime::Current()) was started.  If no instance of the runtime was started, it
 // will use the current environment settings.
-class EXPORT ExecUtils {
+class LIBART_PROTECTED ExecUtils {
  public:
   virtual ~ExecUtils() = default;
 

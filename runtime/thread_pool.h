@@ -116,13 +116,13 @@ class AbstractThreadPool {
     return threads_.size();
   }
 
-  EXPORT const std::vector<ThreadPoolWorker*>& GetWorkers();
+  LIBART_PROTECTED const std::vector<ThreadPoolWorker*>& GetWorkers();
 
   // Broadcast to the workers and tell them to empty out the work queue.
-  EXPORT void StartWorkers(Thread* self) REQUIRES(!task_queue_lock_);
+  LIBART_PROTECTED void StartWorkers(Thread* self) REQUIRES(!task_queue_lock_);
 
   // Do not allow workers to grab any new tasks.
-  EXPORT void StopWorkers(Thread* self) REQUIRES(!task_queue_lock_);
+  LIBART_PROTECTED void StopWorkers(Thread* self) REQUIRES(!task_queue_lock_);
 
   // Returns if the thread pool has started.
   bool HasStarted(Thread* self) REQUIRES(!task_queue_lock_);
@@ -137,7 +137,7 @@ class AbstractThreadPool {
   virtual size_t GetTaskCount(Thread* self) REQUIRES(!task_queue_lock_) = 0;
 
   // Create the threads of this pool.
-  EXPORT void CreateThreads();
+  LIBART_PROTECTED void CreateThreads();
 
   // Stops and deletes all threads in this pool.
   void DeleteThreads();
@@ -145,7 +145,7 @@ class AbstractThreadPool {
   // Wait for all tasks currently on queue to get completed. If the pool has been stopped, only
   // wait till all already running tasks are done.
   // When the pool was created with peers for workers, do_work must not be true (see ThreadPool()).
-  EXPORT void Wait(Thread* self, bool do_work, bool may_hold_locks) REQUIRES(!task_queue_lock_);
+  LIBART_PROTECTED void Wait(Thread* self, bool do_work, bool may_hold_locks) REQUIRES(!task_queue_lock_);
 
   // Returns the total amount of workers waited for tasks.
   uint64_t GetWaitTime() const {
@@ -183,7 +183,7 @@ class AbstractThreadPool {
 
   virtual bool HasOutstandingTasks() const REQUIRES(task_queue_lock_) = 0;
 
-  EXPORT AbstractThreadPool(const char* name,
+  LIBART_PROTECTED AbstractThreadPool(const char* name,
                             size_t num_threads,
                             bool create_peers,
                             size_t worker_stack_size);
@@ -211,7 +211,7 @@ class AbstractThreadPool {
   DISALLOW_COPY_AND_ASSIGN(AbstractThreadPool);
 };
 
-class EXPORT ThreadPool : public AbstractThreadPool {
+class LIBART_PROTECTED ThreadPool : public AbstractThreadPool {
  public:
   // Create a named thread pool with the given number of threads.
   //

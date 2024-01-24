@@ -129,7 +129,7 @@ class PACKED(8) ImageHeader {
   };
 
   ImageHeader() {}
-  EXPORT ImageHeader(uint32_t image_reservation_size,
+  LIBART_PROTECTED ImageHeader(uint32_t image_reservation_size,
                      uint32_t component_count,
                      uint32_t image_begin,
                      uint32_t image_size,
@@ -146,8 +146,8 @@ class PACKED(8) ImageHeader {
                      uint32_t boot_image_checksum,
                      uint32_t pointer_size);
 
-  EXPORT bool IsValid() const;
-  EXPORT const char* GetMagic() const;
+  LIBART_PROTECTED bool IsValid() const;
+  LIBART_PROTECTED const char* GetMagic() const;
 
   uint32_t GetImageReservationSize() const {
     return image_reservation_size_;
@@ -199,7 +199,7 @@ class PACKED(8) ImageHeader {
     return reinterpret_cast<uint8_t*>(oat_file_end_);
   }
 
-  EXPORT PointerSize GetPointerSize() const;
+  LIBART_PROTECTED PointerSize GetPointerSize() const;
 
   uint32_t GetPointerSizeUnchecked() const {
     return pointer_size_;
@@ -281,9 +281,9 @@ class PACKED(8) ImageHeader {
     return kImageRootsMax;
   }
 
-  EXPORT ArtMethod* GetImageMethod(ImageMethod index) const;
+  LIBART_PROTECTED ArtMethod* GetImageMethod(ImageMethod index) const;
 
-  EXPORT static const char* GetImageSectionName(ImageSections index);
+  LIBART_PROTECTED static const char* GetImageSectionName(ImageSections index);
 
   ImageSection& GetImageSection(ImageSections index) {
     DCHECK_LT(static_cast<size_t>(index), kSectionCount);
@@ -370,13 +370,13 @@ class PACKED(8) ImageHeader {
     return data_size_;
   }
 
-  EXPORT bool IsAppImage() const;
+  LIBART_PROTECTED bool IsAppImage() const;
 
-  EXPORT uint32_t GetImageSpaceCount() const;
+  LIBART_PROTECTED uint32_t GetImageSpaceCount() const;
 
   // Visit mirror::Objects in the section starting at base.
   // TODO: Delete base parameter if it is always equal to GetImageBegin.
-  EXPORT void VisitObjects(ObjectVisitor* visitor, uint8_t* base, PointerSize pointer_size) const
+  LIBART_PROTECTED void VisitObjects(ObjectVisitor* visitor, uint8_t* base, PointerSize pointer_size) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Visit ArtMethods in the section starting at base. Includes runtime methods.
@@ -423,7 +423,7 @@ class PACKED(8) ImageHeader {
 
   // Helper for writing `data` and `bitmap_data` into `image_file`, following
   // the information stored in this header and passed as arguments.
-  EXPORT bool WriteData(const ImageFileGuard& image_file,
+  LIBART_PROTECTED bool WriteData(const ImageFileGuard& image_file,
                         const uint8_t* data,
                         const uint8_t* bitmap_data,
                         ImageHeader::StorageMode image_storage_mode,
@@ -590,10 +590,10 @@ using AppImageReferenceOffsetInfo = std::pair<uint32_t, uint32_t>;
 
 std::ostream& operator<<(std::ostream& os, ImageHeader::ImageMethod method);
 std::ostream& operator<<(std::ostream& os, ImageHeader::ImageRoot root);
-EXPORT std::ostream& operator<<(std::ostream& os, ImageHeader::ImageSections section);
-EXPORT std::ostream& operator<<(std::ostream& os, ImageHeader::StorageMode mode);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, ImageHeader::ImageSections section);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, ImageHeader::StorageMode mode);
 
-EXPORT std::ostream& operator<<(std::ostream& os, const ImageSection& section);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, const ImageSection& section);
 
 // Wrapper over LZ4_decompress_safe() that checks if return value is negative. See b/242914915.
 bool LZ4_decompress_safe_checked(const char* source,

@@ -39,7 +39,7 @@
 
 namespace art HIDDEN {
 
-EXPORT bool KernelSupportsUffd();
+LIBART_PROTECTED bool KernelSupportsUffd();
 
 namespace mirror {
 class DexCache;

@@ -48,7 +48,7 @@ namespace interpreter {
 
 class UnstartedRuntime {
  public:
-  EXPORT static void Initialize();
+  LIBART_PROTECTED static void Initialize();
 
   // For testing. When we destroy the Runtime and create a new one,
   // we need to reinitialize maps with new `ArtMethod*` keys.

@@ -105,31 +105,31 @@ class MANAGED ClassExt : public Object {
 
   // Used to manually initialize the ext-ids arrays for the ClassExt associated
   // with the Class<ClassExt>. This simplifies the id allocation path.
-  EXPORT void SetIdsArraysForClassExtExtData(ObjPtr<Object> marker)
+  LIBART_PROTECTED void SetIdsArraysForClassExtExtData(ObjPtr<Object> marker)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT void SetOriginalDexFile(ObjPtr<Object> bytes) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SetOriginalDexFile(ObjPtr<Object> bytes) REQUIRES_SHARED(Locks::mutator_lock_);
 
   uint16_t GetPreRedefineClassDefIndex() REQUIRES_SHARED(Locks::mutator_lock_) {
     return static_cast<uint16_t>(
         GetField32(OFFSET_OF_OBJECT_MEMBER(ClassExt, pre_redefine_class_def_index_)));
   }
 
-  EXPORT void SetPreRedefineClassDefIndex(uint16_t index) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SetPreRedefineClassDefIndex(uint16_t index) REQUIRES_SHARED(Locks::mutator_lock_);
 
   const DexFile* GetPreRedefineDexFile() REQUIRES_SHARED(Locks::mutator_lock_) {
     return reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
         GetField64(OFFSET_OF_OBJECT_MEMBER(ClassExt, pre_redefine_dex_file_ptr_))));
   }
 
-  EXPORT void SetPreRedefineDexFile(const DexFile* dex_file) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SetPreRedefineDexFile(const DexFile* dex_file) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT void SetObsoleteArrays(ObjPtr<PointerArray> methods,
+  LIBART_PROTECTED void SetObsoleteArrays(ObjPtr<PointerArray> methods,
                                 ObjPtr<ObjectArray<DexCache>> dex_caches)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Extend the obsolete arrays by the given amount.
-  EXPORT static bool ExtendObsoleteArrays(Handle<ClassExt> h_this, Thread* self, uint32_t increase)
+  LIBART_PROTECTED static bool ExtendObsoleteArrays(Handle<ClassExt> h_this, Thread* self, uint32_t increase)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   template<ReadBarrierOption kReadBarrierOption = kWithReadBarrier,
@@ -159,7 +159,7 @@ class MANAGED ClassExt : public Object {
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
            ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
   ObjPtr<Class> GetObsoleteClass() REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT void SetObsoleteClass(ObjPtr<Class> classes) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SetObsoleteClass(ObjPtr<Class> classes) REQUIRES_SHARED(Locks::mutator_lock_);
 
   template<ReadBarrierOption kReadBarrierOption = kWithReadBarrier, typename Visitor>
   inline void VisitJFieldIDs(Visitor v) REQUIRES_SHARED(Locks::mutator_lock_);

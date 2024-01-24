@@ -60,7 +60,7 @@ class ALIGNED(16) InterpreterCache {
   }
 
   // Clear the whole cache. It requires the owning thread for DCHECKs.
-  EXPORT void Clear(Thread* owning_thread);
+  LIBART_PROTECTED void Clear(Thread* owning_thread);
 
   ALWAYS_INLINE bool Get(Thread* self, const void* key, /* out */ size_t* value);
 

@@ -62,7 +62,7 @@ bool operator!=(ObjPtr<mirror::Class> lhs, const ClassFromMember<MemberType, kMe
 
 // Various classes used in JNI. We cache them so we don't have to keep looking them up.
 
-struct EXPORT WellKnownClasses {
+struct LIBART_PROTECTED WellKnownClasses {
  public:
   // Run before native methods are registered.
   static void Init(JNIEnv* env);

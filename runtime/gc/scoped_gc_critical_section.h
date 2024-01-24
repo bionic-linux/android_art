@@ -36,10 +36,10 @@ class GCCriticalSection {
   ~GCCriticalSection() {}
 
   // Starts a GCCriticalSection. Returns the previous no-suspension reason.
-  EXPORT const char* Enter(GcCause cause, CollectorType type) ACQUIRE(Roles::uninterruptible_);
+  LIBART_PROTECTED const char* Enter(GcCause cause, CollectorType type) ACQUIRE(Roles::uninterruptible_);
 
   // Ends a GCCriticalSection. Takes the old no-suspension reason.
-  EXPORT void Exit(const char* old_reason) RELEASE(Roles::uninterruptible_);
+  LIBART_PROTECTED void Exit(const char* old_reason) RELEASE(Roles::uninterruptible_);
 
  private:
   Thread* const self_;
@@ -51,9 +51,9 @@ class GCCriticalSection {
 // suspended.
 class ScopedGCCriticalSection {
  public:
-  EXPORT ScopedGCCriticalSection(Thread* self, GcCause cause, CollectorType collector_type)
+  LIBART_PROTECTED ScopedGCCriticalSection(Thread* self, GcCause cause, CollectorType collector_type)
       ACQUIRE(Roles::uninterruptible_);
-  EXPORT ~ScopedGCCriticalSection() RELEASE(Roles::uninterruptible_);
+  LIBART_PROTECTED ~ScopedGCCriticalSection() RELEASE(Roles::uninterruptible_);
 
  private:
   GCCriticalSection critical_section_;
