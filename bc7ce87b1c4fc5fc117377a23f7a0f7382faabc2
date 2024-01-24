@@ -39,6 +39,30 @@
       },
       "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b63206_7961733e",
+        "filename": "runtime/interpreter/mterp/riscv64/other.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-24T05:03:09Z",
+      "side": 1,
+      "message": "Both choices are un-stylish! Seems to recommend colon.\nhttps://developers.google.com/style/colons#colons-within-sentences\n\n\u003d\u003d\nI think it\u0027s worth the readability to keep the paths separate - same generated code but quicker mental analysis.",
+      "parentUuid": "3d44437f_c08f3391",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
