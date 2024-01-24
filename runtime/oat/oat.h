@@ -41,7 +41,7 @@ enum class StubType {
 };
 std::ostream& operator<<(std::ostream& stream, StubType stub_type);
 
-class EXPORT PACKED(4) OatHeader {
+class LIBART_PROTECTED PACKED(4) OatHeader {
  public:
   static constexpr std::array<uint8_t, 4> kOatMagic { { 'o', 'a', 't', '\n' } };
   // Last oat version changed reason: store resolved MethodType-s in .bss.

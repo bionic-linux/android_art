@@ -317,7 +317,7 @@ class Jit {
   // Create JIT itself.
   static std::unique_ptr<Jit> Create(JitCodeCache* code_cache, JitOptions* options);
 
-  EXPORT bool CompileMethod(ArtMethod* method,
+  LIBART_PROTECTED bool CompileMethod(ArtMethod* method,
                             Thread* self,
                             CompilationKind compilation_kind,
                             bool prejit) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -381,7 +381,7 @@ class Jit {
   }
 
   // Wait until there is no more pending compilation tasks.
-  EXPORT void WaitForCompilationToFinish(Thread* self);
+  LIBART_PROTECTED void WaitForCompilationToFinish(Thread* self);
 
   // Profiling methods.
   void MethodEntered(Thread* thread, ArtMethod* method)
@@ -422,7 +422,7 @@ class Jit {
   void DumpTypeInfoForLoadedTypes(ClassLinker* linker);
 
   // Return whether we should try to JIT compiled code as soon as an ArtMethod is invoked.
-  EXPORT bool JitAtFirstUse();
+  LIBART_PROTECTED bool JitAtFirstUse();
 
   // Return whether we can invoke JIT code for `method`.
   bool CanInvokeCompiledCode(ArtMethod* method);
@@ -448,16 +448,16 @@ class Jit {
   }
 
   // Stop the JIT by waiting for all current compilations and enqueued compilations to finish.
-  EXPORT void Stop();
+  LIBART_PROTECTED void Stop();
 
   // Start JIT threads.
-  EXPORT void Start();
+  LIBART_PROTECTED void Start();
 
   // Transition to a child state.
-  EXPORT void PostForkChildAction(bool is_system_server, bool is_zygote);
+  LIBART_PROTECTED void PostForkChildAction(bool is_system_server, bool is_zygote);
 
   // Prepare for forking.
-  EXPORT void PreZygoteFork();
+  LIBART_PROTECTED void PreZygoteFork();
 
   // Adjust state after forking.
   void PostZygoteFork();
@@ -514,9 +514,9 @@ class Jit {
   // class path methods.
   void NotifyZygoteCompilationDone();
 
-  EXPORT void EnqueueOptimizedCompilation(ArtMethod* method, Thread* self);
+  LIBART_PROTECTED void EnqueueOptimizedCompilation(ArtMethod* method, Thread* self);
 
-  EXPORT void MaybeEnqueueCompilation(ArtMethod* method, Thread* self)
+  LIBART_PROTECTED void MaybeEnqueueCompilation(ArtMethod* method, Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
@@ -550,7 +550,7 @@ class Jit {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // JIT compiler
-  EXPORT static JitCompilerInterface* jit_compiler_;
+  LIBART_PROTECTED static JitCompilerInterface* jit_compiler_;
 
   // JIT resources owned by runtime.
   jit::JitCodeCache* const code_cache_;
@@ -598,7 +598,7 @@ class Jit {
 };
 
 // Helper class to stop the JIT for a given scope. This will wait for the JIT to quiesce.
-class EXPORT ScopedJitSuspend {
+class LIBART_PROTECTED ScopedJitSuspend {
  public:
   ScopedJitSuspend();
   ~ScopedJitSuspend();

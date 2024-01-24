@@ -40,7 +40,7 @@ class Object;
 class String;
 }  // namespace mirror
 
-class EXPORT ArtField final {
+class LIBART_PROTECTED ArtField final {
  public:
   // Visit declaring classes of all the art-fields in 'array' that reside
   // in [start_boundary, end_boundary).

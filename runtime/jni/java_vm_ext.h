@@ -103,7 +103,7 @@ class JavaVMExt : public JavaVM {
    * Returns 'true' on success. On failure, sets 'error_msg' to a
    * human-readable description of the error.
    */
-  EXPORT bool LoadNativeLibrary(JNIEnv* env,
+  LIBART_PROTECTED bool LoadNativeLibrary(JNIEnv* env,
                                 const std::string& path,
                                 jobject class_loader,
                                 jclass caller_class,
@@ -139,7 +139,7 @@ class JavaVMExt : public JavaVM {
 
   bool SetCheckJniEnabled(bool enabled);
 
-  EXPORT void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_)
+  LIBART_PROTECTED void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::jni_globals_lock_);
 
   void DisallowNewWeakGlobals()
@@ -151,15 +151,15 @@ class JavaVMExt : public JavaVM {
   void BroadcastForNewWeakGlobals()
       REQUIRES(!Locks::jni_weak_globals_lock_);
 
-  EXPORT jobject AddGlobalRef(Thread* self, ObjPtr<mirror::Object> obj)
+  LIBART_PROTECTED jobject AddGlobalRef(Thread* self, ObjPtr<mirror::Object> obj)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Locks::jni_globals_lock_);
 
-  EXPORT jweak AddWeakGlobalRef(Thread* self, ObjPtr<mirror::Object> obj)
+  LIBART_PROTECTED jweak AddWeakGlobalRef(Thread* self, ObjPtr<mirror::Object> obj)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Locks::jni_weak_globals_lock_);
 
-  EXPORT void DeleteGlobalRef(Thread* self, jobject obj) REQUIRES(!Locks::jni_globals_lock_);
+  LIBART_PROTECTED void DeleteGlobalRef(Thread* self, jobject obj) REQUIRES(!Locks::jni_globals_lock_);
 
-  EXPORT void DeleteWeakGlobalRef(Thread* self, jweak obj) REQUIRES(!Locks::jni_weak_globals_lock_);
+  LIBART_PROTECTED void DeleteWeakGlobalRef(Thread* self, jweak obj) REQUIRES(!Locks::jni_weak_globals_lock_);
 
   void SweepJniWeakGlobals(IsMarkedVisitor* visitor)
       REQUIRES_SHARED(Locks::mutator_lock_)
@@ -212,7 +212,7 @@ class JavaVMExt : public JavaVM {
   jint HandleGetEnv(/*out*/void** env, jint version)
       REQUIRES(!env_hooks_lock_);
 
-  EXPORT void AddEnvironmentHook(GetEnvHook hook) REQUIRES(!env_hooks_lock_);
+  LIBART_PROTECTED void AddEnvironmentHook(GetEnvHook hook) REQUIRES(!env_hooks_lock_);
 
   static bool IsBadJniVersion(int version);
 

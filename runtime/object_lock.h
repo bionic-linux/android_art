@@ -28,9 +28,9 @@ class Thread;
 template <typename T>
 class ObjectLock {
  public:
-  EXPORT ObjectLock(Thread* self, Handle<T> object) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED ObjectLock(Thread* self, Handle<T> object) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT ~ObjectLock() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED ~ObjectLock() REQUIRES_SHARED(Locks::mutator_lock_);
 
   void WaitIgnoringInterrupts() REQUIRES_SHARED(Locks::mutator_lock_);
 

@@ -301,12 +301,12 @@ class MANAGED DexCache final : public Object {
                                      DexCachePair<Object>* pairs_end)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT void Initialize(const DexFile* dex_file, ObjPtr<ClassLoader> class_loader)
+  LIBART_PROTECTED void Initialize(const DexFile* dex_file, ObjPtr<ClassLoader> class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::dex_lock_);
 
   // Zero all array references.
   // WARNING: This does not free the memory since it is in LinearAlloc.
-  EXPORT void ResetNativeArrays() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void ResetNativeArrays() REQUIRES_SHARED(Locks::mutator_lock_);
 
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
            ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
@@ -368,7 +368,7 @@ class MANAGED DexCache final : public Object {
     SetFieldPtr<false>(OFFSET_OF_OBJECT_MEMBER(DexCache, dex_file_), dex_file);
   }
 
-  EXPORT void SetLocation(ObjPtr<String> location) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SetLocation(ObjPtr<String> location) REQUIRES_SHARED(Locks::mutator_lock_);
 
   void VisitReflectiveTargets(ReflectiveValueVisitor* visitor) REQUIRES(Locks::mutator_lock_);
 

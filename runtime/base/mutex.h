@@ -173,7 +173,7 @@ class BaseMutex {
 // acquired) by a thread in suspended state. Suspending all threads does NOT prevent mutex state
 // from changing.
 std::ostream& operator<<(std::ostream& os, const Mutex& mu);
-class EXPORT LOCKABLE Mutex : public BaseMutex {
+class LIBART_PROTECTED LOCKABLE Mutex : public BaseMutex {
  public:
   explicit Mutex(const char* name, LockLevel level = kDefaultMutexLevel, bool recursive = false);
   ~Mutex();
@@ -318,8 +318,8 @@ class EXPORT LOCKABLE Mutex : public BaseMutex {
 // Exclusive | Block         | Free            | Block            | error
 // Shared(n) | Block         | error           | SharedLock(n+1)* | Shared(n-1) or Free
 // * for large values of n the SharedLock may block.
-EXPORT std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
-class EXPORT SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, const ReaderWriterMutex& mu);
+class LIBART_PROTECTED SHARED_LOCKABLE ReaderWriterMutex : public BaseMutex {
  public:
   explicit ReaderWriterMutex(const char* name, LockLevel level = kDefaultMutexLevel);
   ~ReaderWriterMutex();
@@ -460,7 +460,7 @@ class SHARED_LOCKABLE MutatorMutex : public ReaderWriterMutex {
 
 // ConditionVariables allow threads to queue and sleep. Threads may then be resumed individually
 // (Signal) or all at once (Broadcast).
-class EXPORT ConditionVariable {
+class LIBART_PROTECTED ConditionVariable {
  public:
   ConditionVariable(const char* name, Mutex& mutex);
   ~ConditionVariable();

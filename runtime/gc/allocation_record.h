@@ -216,7 +216,7 @@ class AllocRecordObjectMap {
 
   // Caller needs to check that it is enabled before calling since we read the stack trace before
   // checking the enabled boolean.
-  EXPORT void RecordAllocation(Thread* self, ObjPtr<mirror::Object>* obj, size_t byte_count)
+  LIBART_PROTECTED void RecordAllocation(Thread* self, ObjPtr<mirror::Object>* obj, size_t byte_count)
       REQUIRES(!Locks::alloc_tracker_lock_) REQUIRES_SHARED(Locks::mutator_lock_);
 
   static void SetAllocTrackingEnabled(bool enabled) REQUIRES(!Locks::alloc_tracker_lock_);

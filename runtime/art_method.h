@@ -84,7 +84,7 @@ template <char Shorty> struct HandleShortyTraits;
 template <> struct HandleShortyTraits<'L'>;
 }  // namespace detail
 
-class EXPORT ArtMethod final {
+class LIBART_PROTECTED ArtMethod final {
  public:
   // Should the class state be checked on sensitive operations?
   DECLARE_RUNTIME_DEBUG_FLAG(kCheckDeclaringClassState);

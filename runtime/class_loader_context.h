@@ -36,7 +36,7 @@ class DexFile;
 class OatFile;
 
 // Utility class which holds the class loader context used during compilation/verification.
-class EXPORT ClassLoaderContext {
+class LIBART_PROTECTED ClassLoaderContext {
  public:
   enum class VerificationResult {
     kVerifies,
