@@ -128,15 +128,15 @@ class MANAGED Array : public Object {
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   ALWAYS_INLINE bool CheckIsValidIndex(int32_t index) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT static ObjPtr<Array> CopyOf(Handle<Array> h_this, Thread* self, int32_t new_length)
+  LIBART_PROTECTED static ObjPtr<Array> CopyOf(Handle<Array> h_this, Thread* self, int32_t new_length)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
 
  protected:
-  EXPORT void ThrowArrayStoreException(ObjPtr<Object> object) REQUIRES_SHARED(Locks::mutator_lock_)
+  LIBART_PROTECTED void ThrowArrayStoreException(ObjPtr<Object> object) REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Roles::uninterruptible_);
 
  private:
-  EXPORT void ThrowArrayIndexOutOfBoundsException(int32_t index)
+  LIBART_PROTECTED void ThrowArrayIndexOutOfBoundsException(int32_t index)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // The number of array elements.
@@ -163,10 +163,10 @@ class MANAGED PrimitiveArray : public Array {
 
   using ElementType = T;
 
-  EXPORT static ObjPtr<PrimitiveArray<T>> Alloc(Thread* self, size_t length)
+  LIBART_PROTECTED static ObjPtr<PrimitiveArray<T>> Alloc(Thread* self, size_t length)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
 
-  EXPORT static ObjPtr<PrimitiveArray<T>> AllocateAndFill(Thread* self,
+  LIBART_PROTECTED static ObjPtr<PrimitiveArray<T>> AllocateAndFill(Thread* self,
                                                           const T* data,
                                                           size_t length)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
@@ -213,7 +213,7 @@ class MANAGED PrimitiveArray : public Array {
    * smaller than element size copies). Arguments are assumed to be within the bounds of the array
    * and the arrays non-null.
    */
-  EXPORT void Memcpy(int32_t dst_pos, ObjPtr<PrimitiveArray<T>> src, int32_t src_pos, int32_t count)
+  LIBART_PROTECTED void Memcpy(int32_t dst_pos, ObjPtr<PrimitiveArray<T>> src, int32_t src_pos, int32_t count)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:

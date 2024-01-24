@@ -38,8 +38,8 @@ namespace art HIDDEN {
 
 class Dbg {
  public:
-  EXPORT static void SetJdwpAllowed(bool allowed);
-  EXPORT static bool IsJdwpAllowed();
+  LIBART_PROTECTED static void SetJdwpAllowed(bool allowed);
+  LIBART_PROTECTED static bool IsJdwpAllowed();
 
   // Invoked by the GC in case we need to keep DDMS informed.
   static void GcDidFinish() REQUIRES(!Locks::mutator_lock_);
@@ -83,14 +83,14 @@ class Dbg {
       REQUIRES_SHARED(Locks::mutator_lock_);
   static void DdmSetThreadNotification(bool enable)
       REQUIRES(!Locks::thread_list_lock_);
-  EXPORT static bool DdmHandleChunk(JNIEnv* env,
+  LIBART_PROTECTED static bool DdmHandleChunk(JNIEnv* env,
                                     uint32_t type,
                                     const ArrayRef<const jbyte>& data,
                                     /*out*/ uint32_t* out_type,
                                     /*out*/ std::vector<uint8_t>* out_data);
 
-  EXPORT static void DdmConnected() REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT static void DdmDisconnected() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED static void DdmConnected() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED static void DdmDisconnected() REQUIRES_SHARED(Locks::mutator_lock_);
 
   /*
    * Allocation tracking support.

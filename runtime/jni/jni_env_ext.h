@@ -66,8 +66,8 @@ class JNIEnvExt : public JNIEnv {
   void UpdateLocal(IndirectRef iref, ObjPtr<mirror::Object> obj)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT jobject NewLocalRef(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT void DeleteLocalRef(jobject obj) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED jobject NewLocalRef(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void DeleteLocalRef(jobject obj) REQUIRES_SHARED(Locks::mutator_lock_);
 
   void TrimLocals() REQUIRES_SHARED(Locks::mutator_lock_) {
     locals_.Trim();
@@ -135,12 +135,12 @@ class JNIEnvExt : public JNIEnv {
   // to all threads.
   // Note: JNI function table overrides are sensitive to the order of operations wrt/ CheckJNI.
   //       After overriding the JNI function table, CheckJNI toggling is ignored.
-  EXPORT static void SetTableOverride(const JNINativeInterface* table_override)
+  LIBART_PROTECTED static void SetTableOverride(const JNINativeInterface* table_override)
       REQUIRES(!Locks::thread_list_lock_, !Locks::jni_function_table_lock_);
 
   // Return either the regular, or the CheckJNI function table. Will return table_override_ instead
   // if it is not null.
-  EXPORT static const JNINativeInterface* GetFunctionTable(bool check_jni)
+  LIBART_PROTECTED static const JNINativeInterface* GetFunctionTable(bool check_jni)
       REQUIRES(Locks::jni_function_table_lock_);
 
   static void ResetFunctionTable()

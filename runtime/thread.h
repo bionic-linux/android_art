@@ -255,7 +255,7 @@ static constexpr size_t kSharedMethodHotnessThreshold = 0x1fff;
 // if the thread makes a call out to a native function (through JNI), that native function
 // might only have 4K of memory (if the SP is adjacent to stack_end).
 
-class EXPORT Thread {
+class LIBART_PROTECTED Thread {
  public:
   static const size_t kStackOverflowImplicitCheckSize;
   static constexpr bool kVerifyStack = kIsDebugBuild;
@@ -2470,9 +2470,9 @@ class ThreadLifecycleCallback {
 // Store an exception from the thread and suppress it for the duration of this object.
 class ScopedExceptionStorage {
  public:
-  EXPORT explicit ScopedExceptionStorage(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED explicit ScopedExceptionStorage(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
   void SuppressOldException(const char* message = "") REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT ~ScopedExceptionStorage() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED ~ScopedExceptionStorage() REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
   Thread* self_;
@@ -2480,7 +2480,7 @@ class ScopedExceptionStorage {
   MutableHandle<mirror::Throwable> excp_;
 };
 
-EXPORT std::ostream& operator<<(std::ostream& os, const Thread& thread);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, const Thread& thread);
 std::ostream& operator<<(std::ostream& os, StackedShadowFrameType thread);
 
 }  // namespace art

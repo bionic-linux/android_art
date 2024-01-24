@@ -45,7 +45,7 @@ class SpaceBitmap {
 
   // Initialize a space bitmap so that it points to a bitmap large enough to cover a heap at
   // heap_begin of heap_capacity bytes, where objects are guaranteed to be kAlignment-aligned.
-  EXPORT static SpaceBitmap Create(const std::string& name,
+  LIBART_PROTECTED static SpaceBitmap Create(const std::string& name,
                                    uint8_t* heap_begin,
                                    size_t heap_capacity);
 
@@ -57,7 +57,7 @@ class SpaceBitmap {
                                       uint8_t* heap_begin,
                                       size_t heap_capacity);
 
-  EXPORT ~SpaceBitmap();
+  LIBART_PROTECTED ~SpaceBitmap();
 
   // Return the bitmap word index corresponding to memory offset (relative to
   // `HeapBegin()`) `offset`.

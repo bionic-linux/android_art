@@ -46,7 +46,7 @@ class Verification {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Don't use ObjPtr for things that might not be aligned like the invalid reference.
-  EXPORT void LogHeapCorruption(ObjPtr<mirror::Object> holder,
+  LIBART_PROTECTED void LogHeapCorruption(ObjPtr<mirror::Object> holder,
                                 MemberOffset offset,
                                 mirror::Object* ref,
                                 bool fatal) const REQUIRES_SHARED(Locks::mutator_lock_);
@@ -69,7 +69,7 @@ class Verification {
 
   // Find the first path to the target from the root set. Should be called while paused since
   // visiting roots is not safe otherwise.
-  EXPORT std::string FirstPathFromRootSet(ObjPtr<mirror::Object> target) const
+  LIBART_PROTECTED std::string FirstPathFromRootSet(ObjPtr<mirror::Object> target) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Does not check alignment, used by DumpRAMAroundAddress.

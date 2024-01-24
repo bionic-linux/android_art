@@ -55,7 +55,7 @@ class MANAGED MethodType : public Object {
  public:
   MIRROR_CLASS("Ljava/lang/invoke/MethodType;");
 
-  EXPORT static ObjPtr<MethodType> Create(Thread* self,
+  LIBART_PROTECTED static ObjPtr<MethodType> Create(Thread* self,
                                           Handle<Class> return_type,
                                           Handle<ObjectArray<Class>> param_types)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);

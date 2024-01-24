@@ -73,11 +73,11 @@ class Monitor {
   static void Init(uint32_t lock_profiling_threshold, uint32_t stack_dump_lock_profiling_threshold);
 
   // Return the thread id of the lock owner or 0 when there is no owner.
-  EXPORT static uint32_t GetLockOwnerThreadId(ObjPtr<mirror::Object> obj)
+  LIBART_PROTECTED static uint32_t GetLockOwnerThreadId(ObjPtr<mirror::Object> obj)
       NO_THREAD_SAFETY_ANALYSIS;  // TODO: Reading lock owner without holding lock is racy.
 
   // NO_THREAD_SAFETY_ANALYSIS for mon->Lock.
-  EXPORT static ObjPtr<mirror::Object> MonitorEnter(Thread* thread,
+  LIBART_PROTECTED static ObjPtr<mirror::Object> MonitorEnter(Thread* thread,
                                                     ObjPtr<mirror::Object> obj,
                                                     bool trylock)
       EXCLUSIVE_LOCK_FUNCTION(obj.Ptr())
@@ -86,7 +86,7 @@ class Monitor {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // NO_THREAD_SAFETY_ANALYSIS for mon->Unlock.
-  EXPORT static bool MonitorExit(Thread* thread, ObjPtr<mirror::Object> obj)
+  LIBART_PROTECTED static bool MonitorExit(Thread* thread, ObjPtr<mirror::Object> obj)
       NO_THREAD_SAFETY_ANALYSIS
       REQUIRES(!Roles::uninterruptible_)
       REQUIRES_SHARED(Locks::mutator_lock_)
@@ -103,7 +103,7 @@ class Monitor {
 
   // Object.wait().  Also called for class init.
   // NO_THREAD_SAFETY_ANALYSIS for mon->Wait.
-  EXPORT static void Wait(Thread* self,
+  LIBART_PROTECTED static void Wait(Thread* self,
                           ObjPtr<mirror::Object> obj,
                           int64_t ms,
                           int32_t ns,
@@ -118,14 +118,14 @@ class Monitor {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Used to implement JDWP's ThreadReference.CurrentContendedMonitor.
-  EXPORT static ObjPtr<mirror::Object> GetContendedMonitor(Thread* thread)
+  LIBART_PROTECTED static ObjPtr<mirror::Object> GetContendedMonitor(Thread* thread)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Calls 'callback' once for each lock held in the single stack frame represented by
   // the current state of 'stack_visitor'.
   // The abort_on_failure flag allows to not die when the state of the runtime is unorderly. This
   // is necessary when we have already aborted but want to dump the stack as much as we can.
-  EXPORT static void VisitLocks(StackVisitor* stack_visitor,
+  LIBART_PROTECTED static void VisitLocks(StackVisitor* stack_visitor,
                                 void (*callback)(ObjPtr<mirror::Object>, void*),
                                 void* callback_context,
                                 bool abort_on_failure = true) REQUIRES_SHARED(Locks::mutator_lock_);
@@ -162,7 +162,7 @@ class Monitor {
   // Not exclusive because ImageWriter calls this during a Heap::VisitObjects() that
   // does not allow a thread suspension in the middle. TODO: maybe make this exclusive.
   // NO_THREAD_SAFETY_ANALYSIS for monitor->monitor_lock_.
-  EXPORT static bool Deflate(Thread* self, ObjPtr<mirror::Object> obj)
+  LIBART_PROTECTED static bool Deflate(Thread* self, ObjPtr<mirror::Object> obj)
       REQUIRES_SHARED(Locks::mutator_lock_) NO_THREAD_SAFETY_ANALYSIS;
 
 #ifndef __LP64__
@@ -451,7 +451,7 @@ class MonitorList {
   void BroadcastForNewMonitors() REQUIRES(!monitor_list_lock_);
   // Returns how many monitors were deflated.
   size_t DeflateMonitors() REQUIRES(!monitor_list_lock_) REQUIRES(Locks::mutator_lock_);
-  EXPORT size_t Size() REQUIRES(!monitor_list_lock_);
+  LIBART_PROTECTED size_t Size() REQUIRES(!monitor_list_lock_);
 
   using Monitors = std::list<Monitor*, TrackingAllocator<Monitor*, kAllocatorTagMonitorList>>;
 
@@ -477,7 +477,7 @@ class MonitorInfo {
   MonitorInfo() : owner_(nullptr), entry_count_(0) {}
   MonitorInfo(const MonitorInfo&) = default;
   MonitorInfo& operator=(const MonitorInfo&) = default;
-  EXPORT explicit MonitorInfo(ObjPtr<mirror::Object> o) REQUIRES(Locks::mutator_lock_);
+  LIBART_PROTECTED explicit MonitorInfo(ObjPtr<mirror::Object> o) REQUIRES(Locks::mutator_lock_);
 
   Thread* owner_;
   size_t entry_count_;

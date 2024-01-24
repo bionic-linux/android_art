@@ -40,18 +40,18 @@ class LOCKABLE Mutex;
 // TODO: Maybe give this a better name.
 class Barrier {
  public:
-  enum EXPORT LockHandling {
+  enum LIBART_PROTECTED LockHandling {
     kAllowHoldingLocks,
     kDisallowHoldingLocks,
   };
 
   // If verify_count_on_shutdown is true, the destructor verifies that the count is zero in the
   // destructor. This means that all expected threads went through the barrier.
-  EXPORT explicit Barrier(int count, bool verify_count_on_shutdown = true);
-  EXPORT virtual ~Barrier();
+  LIBART_PROTECTED explicit Barrier(int count, bool verify_count_on_shutdown = true);
+  LIBART_PROTECTED virtual ~Barrier();
 
   // Pass through the barrier, decrement the count but do not block.
-  EXPORT void Pass(Thread* self) REQUIRES(!GetLock());
+  LIBART_PROTECTED void Pass(Thread* self) REQUIRES(!GetLock());
   // Increment the barrier but do not block. The caller should ensure that it
   // decrements/passes it eventually.
   void IncrementNoWait(Thread* self) REQUIRES(!GetLock());
@@ -68,7 +68,7 @@ class Barrier {
   // Increment the count by delta, wait on condition while count is non zero.  If LockHandling is
   // kAllowHoldingLocks we will not check that all locks are released when waiting.
   template <Barrier::LockHandling locks = kDisallowHoldingLocks>
-  EXPORT void Increment(Thread* self, int delta) REQUIRES(!GetLock());
+  LIBART_PROTECTED void Increment(Thread* self, int delta) REQUIRES(!GetLock());
 
   // Increment the count by delta, wait on condition while count is non zero, with a timeout.
   // Returns true if time out occurred.
