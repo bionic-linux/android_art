@@ -63,6 +63,30 @@
       },
       "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206e9ce6_bdc61528",
+        "filename": "runtime/interpreter/mterp/riscv64/other.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-01-24T07:56:45Z",
+      "side": 1,
+      "message": "I haven\u0027t read that style guide before but my style apparently follows the fourth bullet in https://developers.google.com/style/capitalization#capitalization-and-colons to use a capital letter after \"Note:\".",
+      "parentUuid": "d9b63206_7961733e",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "bc7ce87b1c4fc5fc117377a23f7a0f7382faabc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
