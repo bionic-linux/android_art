@@ -268,7 +268,7 @@ class LocalReferenceTable {
 
   // Add a new entry. The `obj` must be a valid non-null object reference. This function
   // will return null if an error happened (with an appropriate error message set).
-  EXPORT IndirectRef Add(ObjPtr<mirror::Object> obj, std::string* error_msg)
+  LIBART_PROTECTED IndirectRef Add(ObjPtr<mirror::Object> obj, std::string* error_msg)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Given an `IndirectRef` in the table, return the `Object` it refers to.
@@ -324,7 +324,7 @@ class LocalReferenceTable {
   // without recovering holes. Thus this is a conservative estimate.
   size_t FreeCapacity() const;
 
-  EXPORT void VisitRoots(RootVisitor* visitor, const RootInfo& root_info)
+  LIBART_PROTECTED void VisitRoots(RootVisitor* visitor, const RootInfo& root_info)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   LRTSegmentState PushFrame() {

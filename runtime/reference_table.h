@@ -55,7 +55,7 @@ class ReferenceTable {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::alloc_tracker_lock_);
 
-  EXPORT void VisitRoots(RootVisitor* visitor, const RootInfo& root_info)
+  LIBART_PROTECTED void VisitRoots(RootVisitor* visitor, const RootInfo& root_info)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:

@@ -62,7 +62,7 @@ struct RuntimeArgumentMapKey : VariantMapKey<TValue> {
 //    map.Set(RuntimeArgumentMap::HeapTargetUtilization, 5.0);
 //    double *target_utilization = map.Get(RuntimeArgumentMap);
 //
-struct EXPORT RuntimeArgumentMap : VariantMap<RuntimeArgumentMap, RuntimeArgumentMapKey> {
+struct LIBART_PROTECTED RuntimeArgumentMap : VariantMap<RuntimeArgumentMap, RuntimeArgumentMapKey> {
   // This 'using' line is necessary to inherit the variadic constructor.
   using VariantMap<RuntimeArgumentMap, RuntimeArgumentMapKey>::VariantMap;
 

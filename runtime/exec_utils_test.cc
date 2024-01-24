@@ -142,7 +142,7 @@ TEST_P(ExecUtilsTest, ExecError) {
 }
 
 TEST_P(ExecUtilsTest, EnvSnapshotAdditionsAreNotVisible) {
-  static constexpr const char* kModifiedVariable = "EXEC_SHOULD_NOT_EXPORT_THIS";
+  static constexpr const char* kModifiedVariable = "EXEC_SHOULD_NOT_LIBART_PROTECTED_THIS";
   static constexpr int kOverwrite = 1;
   // Set an variable in the current environment.
   EXPECT_EQ(setenv(kModifiedVariable, "NEVER", kOverwrite), 0);

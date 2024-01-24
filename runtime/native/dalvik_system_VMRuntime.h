@@ -25,7 +25,7 @@ namespace art HIDDEN {
 
 // TODO(260881207): should be HIDDEN, but some apps fail to launch
 // (e.g. b/319255249)
-EXPORT void register_dalvik_system_VMRuntime(JNIEnv* env);
+LIBART_PROTECTED void register_dalvik_system_VMRuntime(JNIEnv* env);
 
 }  // namespace art
 

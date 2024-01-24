@@ -87,8 +87,8 @@ constexpr bool gUseUserfaultfd = true;
 constexpr bool gUseUserfaultfd = false;
 #endif
 #else
-EXPORT extern const bool gUseReadBarrier;
-EXPORT extern const bool gUseUserfaultfd;
+LIBART_PROTECTED extern const bool gUseReadBarrier;
+LIBART_PROTECTED extern const bool gUseUserfaultfd;
 #endif
 #endif
 

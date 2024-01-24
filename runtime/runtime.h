@@ -127,16 +127,16 @@ using RuntimeOptions = std::vector<std::pair<std::string, const void*>>;
 class Runtime {
  public:
   // Parse raw runtime options.
-  EXPORT static bool ParseOptions(const RuntimeOptions& raw_options,
+  LIBART_PROTECTED static bool ParseOptions(const RuntimeOptions& raw_options,
                                   bool ignore_unrecognized,
                                   RuntimeArgumentMap* runtime_options);
 
   // Creates and initializes a new runtime.
-  EXPORT static bool Create(RuntimeArgumentMap&& runtime_options)
+  LIBART_PROTECTED static bool Create(RuntimeArgumentMap&& runtime_options)
       SHARED_TRYLOCK_FUNCTION(true, Locks::mutator_lock_);
 
   // Creates and initializes a new runtime.
-  EXPORT static bool Create(const RuntimeOptions& raw_options, bool ignore_unrecognized)
+  LIBART_PROTECTED static bool Create(const RuntimeOptions& raw_options, bool ignore_unrecognized)
       SHARED_TRYLOCK_FUNCTION(true, Locks::mutator_lock_);
 
   enum class RuntimeDebugState {
@@ -245,7 +245,7 @@ class Runtime {
   // Starts a runtime, which may cause threads to be started and code to run.
   bool Start() UNLOCK_FUNCTION(Locks::mutator_lock_);
 
-  EXPORT bool IsShuttingDown(Thread* self);
+  LIBART_PROTECTED bool IsShuttingDown(Thread* self);
   bool IsShuttingDownLocked() const REQUIRES(Locks::runtime_shutdown_lock_) {
     return shutting_down_.load(std::memory_order_relaxed);
   }
@@ -264,7 +264,7 @@ class Runtime {
     threads_being_born_++;
   }
 
-  EXPORT void EndThreadBirth() REQUIRES(Locks::runtime_shutdown_lock_);
+  LIBART_PROTECTED void EndThreadBirth() REQUIRES(Locks::runtime_shutdown_lock_);
 
   bool IsStarted() const {
     return started_;
@@ -274,7 +274,7 @@ class Runtime {
     return finished_starting_;
   }
 
-  EXPORT void RunRootClinits(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void RunRootClinits(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
 
   static Runtime* Current() {
     return instance_;
@@ -293,25 +293,25 @@ class Runtime {
 
   // Aborts semi-cleanly. Used in the implementation of LOG(FATAL), which most
   // callers should prefer.
-  NO_RETURN EXPORT static void Abort(const char* msg) REQUIRES(!Locks::abort_lock_);
+  NO_RETURN LIBART_PROTECTED static void Abort(const char* msg) REQUIRES(!Locks::abort_lock_);
 
   // Returns the "main" ThreadGroup, used when attaching user threads.
   jobject GetMainThreadGroup() const;
 
   // Returns the "system" ThreadGroup, used when attaching our internal threads.
-  EXPORT jobject GetSystemThreadGroup() const;
+  LIBART_PROTECTED jobject GetSystemThreadGroup() const;
 
   // Returns the system ClassLoader which represents the CLASSPATH.
-  EXPORT jobject GetSystemClassLoader() const;
+  LIBART_PROTECTED jobject GetSystemClassLoader() const;
 
   // Attaches the calling native thread to the runtime.
-  EXPORT bool AttachCurrentThread(const char* thread_name,
+  LIBART_PROTECTED bool AttachCurrentThread(const char* thread_name,
                                   bool as_daemon,
                                   jobject thread_group,
                                   bool create_peer,
                                   bool should_run_callbacks = true);
 
-  EXPORT void CallExitHook(jint status);
+  LIBART_PROTECTED void CallExitHook(jint status);
 
   // Detaches the current native thread from the runtime.
   void DetachCurrentThread(bool should_run_callbacks = true) REQUIRES(!Locks::mutator_lock_);
@@ -323,7 +323,7 @@ class Runtime {
   void DumpForSigQuit(std::ostream& os);
   void DumpLockHolders(std::ostream& os);
 
-  EXPORT ~Runtime();
+  LIBART_PROTECTED ~Runtime();
 
   const std::vector<std::string>& GetBootClassPath() const {
     return boot_class_path_;
@@ -336,25 +336,25 @@ class Runtime {
   }
 
   // Dynamically adds an element to boot class path.
-  EXPORT void AppendToBootClassPath(
+  LIBART_PROTECTED void AppendToBootClassPath(
       const std::string& filename,
       const std::string& location,
       const std::vector<std::unique_ptr<const art::DexFile>>& dex_files);
 
   // Same as above, but takes raw pointers.
-  EXPORT void AppendToBootClassPath(const std::string& filename,
+  LIBART_PROTECTED void AppendToBootClassPath(const std::string& filename,
                                     const std::string& location,
                                     const std::vector<const art::DexFile*>& dex_files);
 
   // Same as above, but also takes a dex cache for each dex file.
-  EXPORT void AppendToBootClassPath(
+  LIBART_PROTECTED void AppendToBootClassPath(
       const std::string& filename,
       const std::string& location,
       const std::vector<std::pair<const art::DexFile*, ObjPtr<mirror::DexCache>>>&
           dex_files_and_cache);
 
   // Dynamically adds an element to boot class path and takes ownership of the dex files.
-  EXPORT void AddExtraBootDexFiles(const std::string& filename,
+  LIBART_PROTECTED void AddExtraBootDexFiles(const std::string& filename,
                                    const std::string& location,
                                    std::vector<std::unique_ptr<const art::DexFile>>&& dex_files);
 
@@ -429,14 +429,14 @@ class Runtime {
   // Get the special object used to mark a cleared JNI weak global.
   mirror::Object* GetClearedJniWeakGlobal() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenThrowingException()
+  LIBART_PROTECTED mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenThrowingException()
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenThrowingOOME()
+  LIBART_PROTECTED mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenThrowingOOME()
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenHandlingStackOverflow()
+  LIBART_PROTECTED mirror::Throwable* GetPreAllocatedOutOfMemoryErrorWhenHandlingStackOverflow()
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT mirror::Throwable* GetPreAllocatedNoClassDefFoundError()
+  LIBART_PROTECTED mirror::Throwable* GetPreAllocatedNoClassDefFoundError()
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   const std::vector<std::string>& GetProperties() const {
@@ -464,13 +464,13 @@ class Runtime {
 
   // Visit all the roots. If only_dirty is true then non-dirty roots won't be visited. If
   // clean_dirty is true then dirty roots will be marked as non-dirty after visiting.
-  EXPORT void VisitRoots(RootVisitor* visitor, VisitRootFlags flags = kVisitRootFlagAllRoots)
+  LIBART_PROTECTED void VisitRoots(RootVisitor* visitor, VisitRootFlags flags = kVisitRootFlagAllRoots)
       REQUIRES(!Locks::classlinker_classes_lock_, !Locks::trace_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Visit image roots, only used for hprof since the GC uses the image space mod union table
   // instead.
-  EXPORT void VisitImageRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void VisitImageRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Visit all of the roots we can safely visit concurrently.
   void VisitConcurrentRoots(RootVisitor* visitor,
@@ -487,11 +487,11 @@ class Runtime {
 
   // Sweep system weaks, the system weak is deleted if the visitor return null. Otherwise, the
   // system weak is updated to be the visitor's returned value.
-  EXPORT void SweepSystemWeaks(IsMarkedVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void SweepSystemWeaks(IsMarkedVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Walk all reflective objects and visit their targets as well as any method/fields held by the
   // runtime threads that are marked as being reflective.
-  EXPORT void VisitReflectiveTargets(ReflectiveValueVisitor* visitor)
+  LIBART_PROTECTED void VisitReflectiveTargets(ReflectiveValueVisitor* visitor)
       REQUIRES(Locks::mutator_lock_);
   // Helper for visiting reflective targets with lambdas for both field and method reflective
   // targets.
@@ -563,13 +563,13 @@ class Runtime {
     return instruction_set_;
   }
 
-  EXPORT void SetInstructionSet(InstructionSet instruction_set);
+  LIBART_PROTECTED void SetInstructionSet(InstructionSet instruction_set);
   void ClearInstructionSet();
 
-  EXPORT void SetCalleeSaveMethod(ArtMethod* method, CalleeSaveType type);
+  LIBART_PROTECTED void SetCalleeSaveMethod(ArtMethod* method, CalleeSaveType type);
   void ClearCalleeSaveMethods();
 
-  EXPORT ArtMethod* CreateCalleeSaveMethod() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED ArtMethod* CreateCalleeSaveMethod() REQUIRES_SHARED(Locks::mutator_lock_);
 
   uint64_t GetStat(int kind);
 
@@ -600,7 +600,7 @@ class Runtime {
   }
 
   // Returns true if JIT compilations are enabled. GetJit() will be not null in this case.
-  EXPORT bool UseJitCompilation() const;
+  LIBART_PROTECTED bool UseJitCompilation() const;
 
   void PreZygoteFork();
   void PostZygoteFork();
@@ -627,12 +627,12 @@ class Runtime {
                        int32_t code_type);
 
   // Transaction support.
-  EXPORT bool IsActiveTransaction() const;
+  LIBART_PROTECTED bool IsActiveTransaction() const;
   // EnterTransactionMode may suspend.
-  EXPORT void EnterTransactionMode(bool strict, mirror::Class* root)
+  LIBART_PROTECTED void EnterTransactionMode(bool strict, mirror::Class* root)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT void ExitTransactionMode();
-  EXPORT void RollbackAllTransactions() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED void ExitTransactionMode();
+  LIBART_PROTECTED void RollbackAllTransactions() REQUIRES_SHARED(Locks::mutator_lock_);
   // Transaction rollback and exit transaction are always done together, it's convenience to
   // do them in one function.
   void RollbackAndExitTransactionMode() REQUIRES_SHARED(Locks::mutator_lock_);
@@ -662,7 +662,7 @@ class Runtime {
                              MemberOffset field_offset,
                              int16_t value,
                              bool is_volatile);
-  EXPORT void RecordWriteField32(mirror::Object* obj,
+  LIBART_PROTECTED void RecordWriteField32(mirror::Object* obj,
                                  MemberOffset field_offset,
                                  uint32_t value,
                                  bool is_volatile);
@@ -670,11 +670,11 @@ class Runtime {
                           MemberOffset field_offset,
                           uint64_t value,
                           bool is_volatile);
-  EXPORT void RecordWriteFieldReference(mirror::Object* obj,
+  LIBART_PROTECTED void RecordWriteFieldReference(mirror::Object* obj,
                                         MemberOffset field_offset,
                                         ObjPtr<mirror::Object> value,
                                         bool is_volatile) REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT void RecordWriteArray(mirror::Array* array, size_t index, uint64_t value)
+  LIBART_PROTECTED void RecordWriteArray(mirror::Array* array, size_t index, uint64_t value)
       REQUIRES_SHARED(Locks::mutator_lock_);
   void RecordStrongStringInsertion(ObjPtr<mirror::String> s)
       REQUIRES(Locks::intern_table_lock_);
@@ -707,7 +707,7 @@ class Runtime {
 
   void DisableVerifier();
   bool IsVerificationEnabled() const;
-  EXPORT bool IsVerificationSoftFail() const;
+  LIBART_PROTECTED bool IsVerificationSoftFail() const;
 
   void SetHiddenApiEnforcementPolicy(hiddenapi::EnforcementPolicy policy) {
     hidden_api_policy_ = policy;
@@ -827,7 +827,7 @@ class Runtime {
     return jit_arena_pool_.get();
   }
 
-  EXPORT void ReclaimArenaPoolMemory();
+  LIBART_PROTECTED void ReclaimArenaPoolMemory();
 
   LinearAlloc* GetLinearAlloc() {
     return linear_alloc_.get();
@@ -866,10 +866,10 @@ class Runtime {
     return is_profileable_;
   }
 
-  EXPORT void SetRuntimeDebugState(RuntimeDebugState state);
+  LIBART_PROTECTED void SetRuntimeDebugState(RuntimeDebugState state);
 
   // Deoptimize the boot image, called for Java debuggable apps.
-  EXPORT void DeoptimizeBootImage() REQUIRES(Locks::mutator_lock_);
+  LIBART_PROTECTED void DeoptimizeBootImage() REQUIRES(Locks::mutator_lock_);
 
   bool IsNativeDebuggable() const {
     return is_native_debuggable_;
@@ -906,7 +906,7 @@ class Runtime {
   void SetSentinel(ObjPtr<mirror::Object> sentinel) REQUIRES_SHARED(Locks::mutator_lock_);
   // For testing purpose only.
   // TODO: Remove this when this is no longer needed (b/116087961).
-  EXPORT GcRoot<mirror::Object> GetSentinel() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED GcRoot<mirror::Object> GetSentinel() REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Use a sentinel for marking entries in a table that have been cleared.
   // This helps diagnosing in case code tries to wrongly access such
@@ -916,7 +916,7 @@ class Runtime {
   }
 
   // Create a normal LinearAlloc or low 4gb version if we are 64 bit AOT compiler.
-  EXPORT LinearAlloc* CreateLinearAlloc();
+  LIBART_PROTECTED LinearAlloc* CreateLinearAlloc();
   // Setup linear-alloc allocators to stop using the current arena so that the
   // next allocations, which would be after zygote fork, happens in userfaultfd
   // visited space.
@@ -943,7 +943,7 @@ class Runtime {
     return dump_native_stack_on_sig_quit_;
   }
 
-  EXPORT void UpdateProcessState(ProcessState process_state);
+  LIBART_PROTECTED void UpdateProcessState(ProcessState process_state);
 
   // Returns true if we currently care about long mutator pause.
   bool InJankPerceptibleProcessState() const {
@@ -962,7 +962,7 @@ class Runtime {
 
   // Returns if the code can be deoptimized asynchronously. Code may be compiled with some
   // optimization that makes it impossible to deoptimize.
-  EXPORT bool IsAsyncDeoptimizeable(ArtMethod* method, uintptr_t code) const
+  LIBART_PROTECTED bool IsAsyncDeoptimizeable(ArtMethod* method, uintptr_t code) const
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Returns a saved copy of the environment (getenv/setenv values).
@@ -971,16 +971,16 @@ class Runtime {
     return env_snapshot_.GetSnapshot();
   }
 
-  EXPORT void AddSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
-  EXPORT void RemoveSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
+  LIBART_PROTECTED void AddSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
+  LIBART_PROTECTED void RemoveSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
 
-  EXPORT void AttachAgent(JNIEnv* env, const std::string& agent_arg, jobject class_loader);
+  LIBART_PROTECTED void AttachAgent(JNIEnv* env, const std::string& agent_arg, jobject class_loader);
 
   const std::list<std::unique_ptr<ti::Agent>>& GetAgents() const {
     return agents_;
   }
 
-  EXPORT RuntimeCallbacks* GetRuntimeCallbacks();
+  LIBART_PROTECTED RuntimeCallbacks* GetRuntimeCallbacks();
 
   bool HasLoadedPlugins() const {
     return !plugins_.empty();
@@ -1043,7 +1043,7 @@ class Runtime {
 
   // Changes the JniIdType to the given type. Only allowed if CanSetJniIdType(). All threads must be
   // suspended to call this function.
-  EXPORT void SetJniIdType(JniIdType t);
+  LIBART_PROTECTED void SetJniIdType(JniIdType t);
 
   uint32_t GetVerifierLoggingThresholdMs() const {
     return verifier_logging_threshold_ms_;
@@ -1085,7 +1085,7 @@ class Runtime {
 
   // Reset the startup completed status so that we can call NotifyStartupCompleted again. Should
   // only be used for testing.
-  EXPORT void ResetStartupCompleted();
+  LIBART_PROTECTED void ResetStartupCompleted();
 
   // Notify the runtime that application startup is considered completed. Only has effect for the
   // first call. Returns whether this was the first call.
@@ -1096,7 +1096,7 @@ class Runtime {
   void NotifyDexFileLoaded();
 
   // Return true if startup is already completed.
-  EXPORT bool GetStartupCompleted() const;
+  LIBART_PROTECTED bool GetStartupCompleted() const;
 
   bool IsVerifierMissingKThrowFatal() const {
     return verifier_missing_kthrow_fatal_;
@@ -1234,7 +1234,7 @@ class Runtime {
 
   void AppendToBootClassPath(const std::string& filename, const std::string& location);
 
-  // Don't use EXPORT ("default" visibility), because quick_entrypoints_x86.o
+  // Don't use LIBART_PROTECTED ("default" visibility), because quick_entrypoints_x86.o
   // refers to this symbol and it can't link with R_386_PC32 relocation.
   // A pointer to the active runtime or null.
   LIBART_PROTECTED static Runtime* instance_;

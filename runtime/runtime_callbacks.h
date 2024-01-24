@@ -158,7 +158,7 @@ class ReflectiveValueVisitCallback {
       REQUIRES(Locks::mutator_lock_) = 0;
 };
 
-class EXPORT RuntimeCallbacks {
+class LIBART_PROTECTED RuntimeCallbacks {
  public:
   RuntimeCallbacks();
 

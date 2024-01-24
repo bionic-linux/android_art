@@ -22,7 +22,7 @@
 
 namespace art HIDDEN {
 
-EXPORT void InitializeIntrinsics() REQUIRES_SHARED(Locks::mutator_lock_);
+LIBART_PROTECTED void InitializeIntrinsics() REQUIRES_SHARED(Locks::mutator_lock_);
 
 }  // namespace art
 

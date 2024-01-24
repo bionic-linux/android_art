@@ -167,7 +167,7 @@ class StackMap : public BitTableAccessor<8> {
     return native_pc;
   }
 
-  EXPORT void Dump(VariableIndentationOutputStream* vios,
+  LIBART_PROTECTED void Dump(VariableIndentationOutputStream* vios,
                    const CodeInfo& code_info,
                    uint32_t code_offset,
                    InstructionSet instruction_set) const;
@@ -288,8 +288,8 @@ class MethodInfo : public BitTableAccessor<3> {
 class CodeInfo {
  public:
   ALWAYS_INLINE CodeInfo() {}
-  EXPORT ALWAYS_INLINE explicit CodeInfo(const uint8_t* data, size_t* num_read_bits = nullptr);
-  EXPORT ALWAYS_INLINE explicit CodeInfo(const OatQuickMethodHeader* header);
+  LIBART_PROTECTED ALWAYS_INLINE explicit CodeInfo(const uint8_t* data, size_t* num_read_bits = nullptr);
+  LIBART_PROTECTED ALWAYS_INLINE explicit CodeInfo(const OatQuickMethodHeader* header);
 
   // The following methods decode only part of the data.
   static CodeInfo DecodeGcMasksOnly(const OatQuickMethodHeader* header);
@@ -468,18 +468,18 @@ class CodeInfo {
     return stack_maps_.GetInvalidRow();
   }
 
-  EXPORT StackMap GetStackMapForNativePcOffset(uintptr_t pc,
+  LIBART_PROTECTED StackMap GetStackMapForNativePcOffset(uintptr_t pc,
                                                InstructionSet isa = kRuntimeISA) const;
 
   // Dump this CodeInfo object on `vios`.
   // `code_offset` is the (absolute) native PC of the compiled method.
-  EXPORT void Dump(VariableIndentationOutputStream* vios,
+  LIBART_PROTECTED void Dump(VariableIndentationOutputStream* vios,
                    uint32_t code_offset,
                    bool verbose,
                    InstructionSet instruction_set) const;
 
   // Accumulate code info size statistics into the given Stats tree.
-  EXPORT static void CollectSizeStats(const uint8_t* code_info, /*out*/ Stats& parent);
+  LIBART_PROTECTED static void CollectSizeStats(const uint8_t* code_info, /*out*/ Stats& parent);
 
   template <uint32_t kFlag>
   ALWAYS_INLINE static bool HasFlag(const uint8_t* code_info_data) {
@@ -521,7 +521,7 @@ class CodeInfo {
 
  private:
   // Scan backward to determine dex register locations at given stack map.
-  EXPORT void DecodeDexRegisterMap(uint32_t stack_map_index,
+  LIBART_PROTECTED void DecodeDexRegisterMap(uint32_t stack_map_index,
                                    uint32_t first_dex_register,
                                    /*out*/ DexRegisterMap* map) const;
 

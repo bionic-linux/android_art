@@ -128,7 +128,7 @@ enum class ClassStatus : uint8_t {
   kLast = kVisiblyInitialized
 };
 
-EXPORT std::ostream& operator<<(std::ostream& os, ClassStatus rhs);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, ClassStatus rhs);
 
 }  // namespace art
 

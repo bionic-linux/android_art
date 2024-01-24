@@ -98,7 +98,7 @@ enum ReflectionSourceType {
   kSourceDexCacheResolvedField,
   kSourceMiscInternal,
 };
-EXPORT std::ostream& operator<<(std::ostream& os, ReflectionSourceType type);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, ReflectionSourceType type);
 
 class ReflectionSourceInfo : public ValueObject {
  public:
@@ -123,7 +123,7 @@ inline std::ostream& operator<<(std::ostream& os, const ReflectionSourceInfo& in
   return os;
 }
 
-class EXPORT ReflectiveHandleScopeSourceInfo : public ReflectionSourceInfo {
+class LIBART_PROTECTED ReflectiveHandleScopeSourceInfo : public ReflectionSourceInfo {
  public:
   explicit ReflectiveHandleScopeSourceInfo(BaseReflectiveHandleScope* source)
       : ReflectionSourceInfo(kSourceThreadHandleScope), source_(source) {}

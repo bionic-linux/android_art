@@ -32,7 +32,7 @@ class RuntimeImage {
   //
   // If any of the arguments is a valid glob (a pattern that contains '**' or those documented in
   // glob(7)), returns a valid glob.
-  EXPORT static std::string GetRuntimeImagePath(const std::string& app_data_dir,
+  LIBART_PROTECTED static std::string GetRuntimeImagePath(const std::string& app_data_dir,
                                                 const std::string& dex_location,
                                                 const std::string& isa);
 
@@ -44,7 +44,7 @@ class RuntimeImage {
   //
   // If the argument is a valid glob (a pattern that contains '**' or those documented in glob(7)),
   // returns a valid glob.
-  EXPORT static std::string GetRuntimeImageDir(const std::string& app_data_dir);
+  LIBART_PROTECTED static std::string GetRuntimeImageDir(const std::string& app_data_dir);
 };
 
 }  // namespace art

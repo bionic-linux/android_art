@@ -158,7 +158,7 @@ class AllocatorVisitor {
       REQUIRES_SHARED(Locks::classlinker_classes_lock_, Locks::mutator_lock_) = 0;
 };
 
-class EXPORT ClassLinker {
+class LIBART_PROTECTED ClassLinker {
  public:
   static constexpr bool kAppImageMayContainStrings = true;
 

@@ -35,15 +35,15 @@ union JValue;
 class ScopedObjectAccessAlreadyRunnable;
 class ShadowFrame;
 
-EXPORT ObjPtr<mirror::Object> BoxPrimitive(Primitive::Type src_class, const JValue& value)
+LIBART_PROTECTED ObjPtr<mirror::Object> BoxPrimitive(Primitive::Type src_class, const JValue& value)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
-EXPORT bool UnboxPrimitiveForField(ObjPtr<mirror::Object> o,
+LIBART_PROTECTED bool UnboxPrimitiveForField(ObjPtr<mirror::Object> o,
                                    ObjPtr<mirror::Class> dst_class,
                                    ArtField* f,
                                    JValue* unboxed_value) REQUIRES_SHARED(Locks::mutator_lock_);
 
-EXPORT bool UnboxPrimitiveForResult(ObjPtr<mirror::Object> o,
+LIBART_PROTECTED bool UnboxPrimitiveForResult(ObjPtr<mirror::Object> o,
                                     ObjPtr<mirror::Class> dst_class,
                                     JValue* unboxed_value) REQUIRES_SHARED(Locks::mutator_lock_);
 

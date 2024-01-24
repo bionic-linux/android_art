@@ -97,7 +97,7 @@ class PcToRegisterLineTable {
 // The verifier
 class MethodVerifier {
  public:
-  EXPORT static MethodVerifier* VerifyMethodAndDump(Thread* self,
+  LIBART_PROTECTED static MethodVerifier* VerifyMethodAndDump(Thread* self,
                                                     VariableIndentationOutputStream* vios,
                                                     uint32_t method_idx,
                                                     const DexFile* dex_file,
@@ -111,7 +111,7 @@ class MethodVerifier {
 
   // Calculates the type information at the given `dex_pc`.
   // No classes will be loaded.
-  EXPORT static MethodVerifier* CalculateVerificationInfo(Thread* self,
+  LIBART_PROTECTED static MethodVerifier* CalculateVerificationInfo(Thread* self,
                                                           ArtMethod* method,
                                                           Handle<mirror::DexCache> dex_cache,
                                                           Handle<mirror::ClassLoader> class_loader,
