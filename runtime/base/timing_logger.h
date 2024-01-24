@@ -153,19 +153,19 @@ class TimingLogger {
     friend class TimingLogger;
   };
 
-  EXPORT TimingLogger(const char* name,
+  LIBART_PROTECTED TimingLogger(const char* name,
                       bool precise,
                       bool verbose,
                       TimingKind kind = TimingKind::kMonotonic);
-  EXPORT ~TimingLogger();
+  LIBART_PROTECTED ~TimingLogger();
   // Verify that all open timings have related closed timings.
   void Verify();
   // Clears current timings and labels.
   void Reset();
   // Starts a timing.
-  EXPORT void StartTiming(const char* new_split_label);
+  LIBART_PROTECTED void StartTiming(const char* new_split_label);
   // Ends the current timing.
-  EXPORT void EndTiming();
+  LIBART_PROTECTED void EndTiming();
   // End the current timing and start a new timing. Usage not recommended.
   void NewTiming(const char* new_split_label) {
     EndTiming();
@@ -175,7 +175,7 @@ class TimingLogger {
   uint64_t GetTotalNs() const;
   // Find the index of a timing by name.
   size_t FindTimingIndex(const char* name, size_t start_idx) const;
-  EXPORT void Dump(std::ostream& os, const char* indent_string = "  ") const;
+  LIBART_PROTECTED void Dump(std::ostream& os, const char* indent_string = "  ") const;
 
   // Scoped timing splits that can be nested and composed with the explicit split
   // starts and ends.

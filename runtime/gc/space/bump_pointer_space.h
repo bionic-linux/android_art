@@ -39,7 +39,7 @@ namespace space {
 
 // A bump pointer space allocates by incrementing a pointer, it doesn't provide a free
 // implementation as its intended to be evacuated.
-class EXPORT BumpPointerSpace final : public ContinuousMemMapAllocSpace {
+class LIBART_PROTECTED BumpPointerSpace final : public ContinuousMemMapAllocSpace {
  public:
   using WalkCallback = void (*)(void *, void *, int, void *);
 

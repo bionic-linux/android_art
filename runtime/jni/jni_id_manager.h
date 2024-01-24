@@ -50,15 +50,15 @@ class JniIdManager {
 
   void Init(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT ArtMethod* DecodeMethodId(jmethodID method) REQUIRES(!Locks::jni_id_lock_);
-  EXPORT ArtField* DecodeFieldId(jfieldID field) REQUIRES(!Locks::jni_id_lock_);
-  EXPORT jmethodID EncodeMethodId(ReflectiveHandle<ArtMethod> method) REQUIRES(!Locks::jni_id_lock_)
+  LIBART_PROTECTED ArtMethod* DecodeMethodId(jmethodID method) REQUIRES(!Locks::jni_id_lock_);
+  LIBART_PROTECTED ArtField* DecodeFieldId(jfieldID field) REQUIRES(!Locks::jni_id_lock_);
+  LIBART_PROTECTED jmethodID EncodeMethodId(ReflectiveHandle<ArtMethod> method) REQUIRES(!Locks::jni_id_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT jmethodID EncodeMethodId(ArtMethod* method) REQUIRES(!Locks::jni_id_lock_)
+  LIBART_PROTECTED jmethodID EncodeMethodId(ArtMethod* method) REQUIRES(!Locks::jni_id_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT jfieldID EncodeFieldId(ReflectiveHandle<ArtField> field) REQUIRES(!Locks::jni_id_lock_)
+  LIBART_PROTECTED jfieldID EncodeFieldId(ReflectiveHandle<ArtField> field) REQUIRES(!Locks::jni_id_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
-  EXPORT jfieldID EncodeFieldId(ArtField* field) REQUIRES(!Locks::jni_id_lock_)
+  LIBART_PROTECTED jfieldID EncodeFieldId(ArtField* field) REQUIRES(!Locks::jni_id_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   void VisitReflectiveTargets(ReflectiveValueVisitor* rvv)
@@ -66,7 +66,7 @@ class JniIdManager {
 
   void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  EXPORT ObjPtr<mirror::Object> GetPointerMarker() REQUIRES_SHARED(Locks::mutator_lock_);
+  LIBART_PROTECTED ObjPtr<mirror::Object> GetPointerMarker() REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
   template <typename ArtType>
@@ -113,7 +113,7 @@ class JniIdManager {
 // This is required since normally we need to be able to allocate to encode new ids. This should
 // only be used when absolutely required, for example to invoke user-callbacks during heap walking
 // or similar.
-class EXPORT ScopedEnableSuspendAllJniIdQueries {
+class LIBART_PROTECTED ScopedEnableSuspendAllJniIdQueries {
  public:
   ScopedEnableSuspendAllJniIdQueries() REQUIRES_SHARED(Locks::mutator_lock_);
   ~ScopedEnableSuspendAllJniIdQueries() REQUIRES_SHARED(Locks::mutator_lock_);

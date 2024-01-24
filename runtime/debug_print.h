@@ -25,7 +25,7 @@
 
 namespace art HIDDEN {
 
-EXPORT std::string DescribeSpace(ObjPtr<mirror::Class> klass)
+LIBART_PROTECTED std::string DescribeSpace(ObjPtr<mirror::Class> klass)
     REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;
 std::string DescribeLoaders(ObjPtr<mirror::ClassLoader> loader, const char* class_descriptor)
     REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;

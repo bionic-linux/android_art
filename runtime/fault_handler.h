@@ -56,8 +56,8 @@ class FaultManager {
   bool HandleSigbusFault(int sig, siginfo_t* info, void* context);
 
   // Added handlers are owned by the fault handler and will be freed on Shutdown().
-  EXPORT void AddHandler(FaultHandler* handler, bool generated_code);
-  EXPORT void RemoveHandler(FaultHandler* handler);
+  LIBART_PROTECTED void AddHandler(FaultHandler* handler, bool generated_code);
+  LIBART_PROTECTED void RemoveHandler(FaultHandler* handler);
 
   void AddGeneratedCodeRange(const void* start, size_t size);
   void RemoveGeneratedCodeRange(const void* start, size_t size)
@@ -121,7 +121,7 @@ class FaultManager {
 
 class FaultHandler {
  public:
-  EXPORT explicit FaultHandler(FaultManager* manager);
+  LIBART_PROTECTED explicit FaultHandler(FaultManager* manager);
   virtual ~FaultHandler() {}
   FaultManager* GetFaultManager() {
     return manager_;
@@ -197,7 +197,7 @@ class JavaStackTraceHandler final : public FaultHandler {
 };
 
 // Statically allocated so the the signal handler can Get access to it.
-EXPORT extern FaultManager fault_manager;
+LIBART_PROTECTED extern FaultManager fault_manager;
 
 }  // namespace art
 #endif  // ART_RUNTIME_FAULT_HANDLER_H_

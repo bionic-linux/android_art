@@ -60,7 +60,7 @@ class OatFileAssistantContext {
 
   // Constructs OatFileAssistantContext from runtime options. Does not fetch information on
   // construction. Information will be fetched from disk when needed.
-  EXPORT explicit OatFileAssistantContext(std::unique_ptr<RuntimeOptions> runtime_options);
+  LIBART_PROTECTED explicit OatFileAssistantContext(std::unique_ptr<RuntimeOptions> runtime_options);
   // Constructs OatFileAssistantContext from a runtime instance. Fetches as much information as
   // possible from the runtime. The rest information will be fetched from disk when needed.
   explicit OatFileAssistantContext(Runtime* runtime);
@@ -68,9 +68,9 @@ class OatFileAssistantContext {
   const RuntimeOptions& GetRuntimeOptions() const;
   // Fetches all information that hasn't been fetched from disk and caches it. All operations will
   // be read-only after a successful call to this function.
-  EXPORT bool FetchAll(std::string* error_msg);
+  LIBART_PROTECTED bool FetchAll(std::string* error_msg);
   // Returns information about the boot image of the given instruction set.
-  EXPORT const std::vector<BootImageInfo>& GetBootImageInfoList(InstructionSet isa);
+  LIBART_PROTECTED const std::vector<BootImageInfo>& GetBootImageInfoList(InstructionSet isa);
   // Returns the checksums of the dex files in the BCP jar at the given index, or nullptr on error.
   // The format of each checksum is "/<checksum_in_8_digit_hex>".
   const std::vector<std::string>* GetBcpChecksums(size_t bcp_index, std::string* error_msg);

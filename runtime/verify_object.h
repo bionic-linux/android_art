@@ -36,7 +36,7 @@ enum VerifyObjectMode {
   kVerifyObjectModeAll  // Check heap accesses thoroughly.
 };
 
-enum EXPORT VerifyObjectFlags {
+enum LIBART_PROTECTED VerifyObjectFlags {
   kVerifyNone = 0x0,
   // Verify self when we are doing an operation.
   kVerifyThis = 0x1,

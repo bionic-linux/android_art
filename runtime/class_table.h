@@ -153,7 +153,7 @@ class ClassTable {
                            ClassDescriptorEquals,
                            GcRootArenaAllocator<TableSlot, kAllocatorTagClassTable>>;
 
-  EXPORT ClassTable();
+  LIBART_PROTECTED ClassTable();
 
   // Freeze the current class tables by allocating a new table and never updating or modifying the
   // existing table. This helps prevents dirty pages after caused by inserting after zygote fork.
@@ -172,7 +172,7 @@ class ClassTable {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Returns the number of classes in previous snapshots no matter the defining loader.
-  EXPORT size_t NumReferencedZygoteClasses() const
+  LIBART_PROTECTED size_t NumReferencedZygoteClasses() const
       REQUIRES(!lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -252,7 +252,7 @@ class ClassTable {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Read a table from ptr and put it at the front of the class set.
-  EXPORT size_t ReadFromMemory(uint8_t* ptr)
+  LIBART_PROTECTED size_t ReadFromMemory(uint8_t* ptr)
       REQUIRES(!lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 

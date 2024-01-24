@@ -149,7 +149,7 @@ enum LockLevel : uint8_t {
 
   kLockLevelCount  // Must come last.
 };
-EXPORT std::ostream& operator<<(std::ostream& os, LockLevel rhs);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, LockLevel rhs);
 
 // For StartNoThreadSuspension and EndNoThreadSuspension.
 class CAPABILITY("role") Role {
@@ -163,7 +163,7 @@ class Uninterruptible : public Role {
 };
 
 // Global mutexes corresponding to the levels above.
-class EXPORT Locks {
+class LIBART_PROTECTED Locks {
  public:
   static void Init();
   static void InitConditions() NO_THREAD_SAFETY_ANALYSIS;  // Condition variables.
@@ -380,7 +380,7 @@ class EXPORT Locks {
 class Roles {
  public:
   // Uninterruptible means that the thread may not become suspended.
-  EXPORT static Uninterruptible uninterruptible_;
+  LIBART_PROTECTED static Uninterruptible uninterruptible_;
 };
 
 }  // namespace art
