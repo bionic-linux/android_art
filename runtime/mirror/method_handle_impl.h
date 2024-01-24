@@ -118,7 +118,7 @@ class MANAGED MethodHandleImpl : public MethodHandle {
  public:
   MIRROR_CLASS("Ljava/lang/invoke/MethodHandleImpl;");
 
-  EXPORT static ObjPtr<mirror::MethodHandleImpl> Create(Thread* const self,
+  LIBART_PROTECTED static ObjPtr<mirror::MethodHandleImpl> Create(Thread* const self,
                                                         uintptr_t art_field_or_method,
                                                         MethodHandle::Kind kind,
                                                         Handle<MethodType> method_type)

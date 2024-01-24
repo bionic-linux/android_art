@@ -86,7 +86,7 @@ class DexRegisterLocation {
   friend class DexRegisterMap;  // Allow creation of uninitialized array of locations.
 };
 
-EXPORT std::ostream& operator<<(std::ostream& stream, DexRegisterLocation::Kind kind);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& stream, DexRegisterLocation::Kind kind);
 std::ostream& operator<<(std::ostream& stream, const DexRegisterLocation& reg);
 
 }  // namespace art

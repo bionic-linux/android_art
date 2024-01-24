@@ -102,7 +102,7 @@ class TrackedArena final : public Arena {
 
   // Set 'obj_begin' in first_obj_array_ in every element for which it's the
   // first object.
-  EXPORT void SetFirstObject(uint8_t* obj_begin, uint8_t* obj_end);
+  LIBART_PROTECTED void SetFirstObject(uint8_t* obj_begin, uint8_t* obj_end);
   // Setup the arena for deferred deletion.
   void SetupForDeferredDeletion(TrackedArena* next_arena) {
     DCHECK(next_arena == nullptr || next_arena->waiting_for_deletion_);
@@ -160,8 +160,8 @@ class GcVisitedArenaPool final : public ArenaPool {
   void LockReclaimMemory() override {}
   void TrimMaps() override {}
 
-  EXPORT uint8_t* AllocSingleObjArena(size_t size) REQUIRES(!lock_);
-  EXPORT void FreeSingleObjArena(uint8_t* addr) REQUIRES(!lock_);
+  LIBART_PROTECTED uint8_t* AllocSingleObjArena(size_t size) REQUIRES(!lock_);
+  LIBART_PROTECTED void FreeSingleObjArena(uint8_t* addr) REQUIRES(!lock_);
 
   bool Contains(void* ptr) REQUIRES(!lock_) {
     ReaderMutexLock rmu(Thread::Current(), lock_);

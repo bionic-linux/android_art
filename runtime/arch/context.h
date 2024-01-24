@@ -31,7 +31,7 @@ class QuickMethodFrameInfo;
 class Context {
  public:
   // Creates a context for the running architecture
-  EXPORT static Context* Create();
+  LIBART_PROTECTED static Context* Create();
 
   virtual ~Context() {}
 

@@ -99,7 +99,7 @@ class BranchCache {
 class ProfilingInfo {
  public:
   // Create a ProfilingInfo for 'method'.
-  EXPORT static ProfilingInfo* Create(Thread* self,
+  LIBART_PROTECTED static ProfilingInfo* Create(Thread* self,
                                       ArtMethod* method,
                                       const std::vector<uint32_t>& inline_cache_entries)
       REQUIRES_SHARED(Locks::mutator_lock_);

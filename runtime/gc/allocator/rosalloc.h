@@ -501,7 +501,7 @@ class RosAlloc {
   // The numbers of pages that are used for runs for each size bracket.
   static size_t numOfPages[kNumOfSizeBrackets];
   // The numbers of slots of the runs for each size bracket.
-  EXPORT static size_t numOfSlots[kNumOfSizeBrackets];
+  LIBART_PROTECTED static size_t numOfSlots[kNumOfSizeBrackets];
   // The header sizes in bytes of the runs for each size bracket.
   static size_t headerSizes[kNumOfSizeBrackets];
 
@@ -784,7 +784,7 @@ class RosAlloc {
   size_t FreePages(Thread* self, void* ptr, bool already_zero) REQUIRES(lock_);
 
   // Allocate/free a run slot.
-  EXPORT void* AllocFromRun(Thread* self,
+  LIBART_PROTECTED void* AllocFromRun(Thread* self,
                             size_t size,
                             size_t* bytes_allocated,
                             size_t* usable_size,
@@ -811,7 +811,7 @@ class RosAlloc {
   size_t FreeInternal(Thread* self, void* ptr) REQUIRES(!lock_);
 
   // Allocates large objects.
-  EXPORT void* AllocLargeObject(Thread* self,
+  LIBART_PROTECTED void* AllocLargeObject(Thread* self,
                                 size_t size,
                                 size_t* bytes_allocated,
                                 size_t* usable_size,

@@ -43,10 +43,10 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
   static OatQuickMethodHeader* NterpMethodHeader;
-  EXPORT static ArrayRef<const uint8_t> NterpWithClinitImpl;
-  EXPORT static ArrayRef<const uint8_t> NterpImpl;
+  LIBART_PROTECTED static ArrayRef<const uint8_t> NterpWithClinitImpl;
+  LIBART_PROTECTED static ArrayRef<const uint8_t> NterpImpl;
 
-  EXPORT bool IsNterpMethodHeader() const;
+  LIBART_PROTECTED bool IsNterpMethodHeader() const;
 
   static bool IsNterpPc(uintptr_t pc) {
     return OatQuickMethodHeader::NterpMethodHeader != nullptr &&
@@ -176,7 +176,7 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
   // For non-catch handlers. Only used in test code.
-  EXPORT uintptr_t ToNativeQuickPc(ArtMethod* method,
+  LIBART_PROTECTED uintptr_t ToNativeQuickPc(ArtMethod* method,
                                    const uint32_t dex_pc,
                                    bool abort_on_failure = true) const;
 

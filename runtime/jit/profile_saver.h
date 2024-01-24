@@ -53,7 +53,7 @@ class ProfileSaver {
   static void NotifyJitActivity() REQUIRES(!Locks::profiler_lock_, !instance_->wait_lock_);
 
   // For testing or manual purposes (SIGUSR1).
-  EXPORT static void ForceProcessProfiles() REQUIRES(!Locks::profiler_lock_, !Locks::mutator_lock_);
+  LIBART_PROTECTED static void ForceProcessProfiles() REQUIRES(!Locks::profiler_lock_, !Locks::mutator_lock_);
 
   // Notify that startup has completed.
   static void NotifyStartupCompleted() REQUIRES(!Locks::profiler_lock_, !instance_->wait_lock_);
