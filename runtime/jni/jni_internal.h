@@ -34,7 +34,7 @@ class ArtMethod;
 class ScopedObjectAccess;
 
 const JNINativeInterface* GetJniNativeInterface();
-EXPORT const JNINativeInterface* GetRuntimeShutdownNativeInterface();
+LIBART_PROTECTED const JNINativeInterface* GetRuntimeShutdownNativeInterface();
 
 int ThrowNewException(JNIEnv* env, jclass exception_class, const char* msg, jobject cause);
 

@@ -162,7 +162,7 @@ class OatFileAssistant {
   //
   // runtime_options should be provided with all the required fields filled if the caller intends to
   // use OatFileAssistant without a runtime.
-  EXPORT OatFileAssistant(const char* dex_location,
+  LIBART_PROTECTED OatFileAssistant(const char* dex_location,
                           const InstructionSet isa,
                           ClassLoaderContext* context,
                           bool load_executable,
@@ -172,7 +172,7 @@ class OatFileAssistant {
   // Similar to this(const char*, const InstructionSet, bool), however, if a valid zip_fd is
   // provided, vdex, oat, and zip files will be read from vdex_fd, oat_fd and zip_fd respectively.
   // Otherwise, dex_location will be used to construct necessary filenames.
-  EXPORT OatFileAssistant(const char* dex_location,
+  LIBART_PROTECTED OatFileAssistant(const char* dex_location,
                           const InstructionSet isa,
                           ClassLoaderContext* context,
                           bool load_executable,
@@ -186,7 +186,7 @@ class OatFileAssistant {
   // strings. Returns the created instance and ClassLoaderContext on success, or returns nullptr and
   // outputs an error message if it fails to parse the input strings.
   // The returned ClassLoaderContext must live at least as long as the OatFileAssistant.
-  EXPORT static std::unique_ptr<OatFileAssistant> Create(
+  LIBART_PROTECTED static std::unique_ptr<OatFileAssistant> Create(
       const std::string& filename,
       const std::string& isa_str,
       const std::optional<std::string>& context_str,
@@ -198,7 +198,7 @@ class OatFileAssistant {
 
   // Returns true if the dex location refers to an element of the boot class
   // path.
-  EXPORT bool IsInBootClassPath();
+  LIBART_PROTECTED bool IsInBootClassPath();
 
   // Return what action needs to be taken to produce up-to-date code for this
   // dex location. If "downgrade" is set to false, it verifies if the current
@@ -216,13 +216,13 @@ class OatFileAssistant {
   // the oat file in the odex location.
   //
   // Deprecated. Use the other overload.
-  EXPORT int GetDexOptNeeded(CompilerFilter::Filter target_compiler_filter,
+  LIBART_PROTECTED int GetDexOptNeeded(CompilerFilter::Filter target_compiler_filter,
                              bool profile_changed = false,
                              bool downgrade = false);
 
   // Returns true if dexopt needs to be performed with respect to the given target compilation
   // filter and dexopt trigger. Also returns the status of the current oat file and/or vdex file.
-  EXPORT bool GetDexOptNeeded(CompilerFilter::Filter target_compiler_filter,
+  LIBART_PROTECTED bool GetDexOptNeeded(CompilerFilter::Filter target_compiler_filter,
                               const DexOptTrigger dexopt_trigger,
                               /*out*/ DexOptStatus* dexopt_status);
 
@@ -255,7 +255,7 @@ class OatFileAssistant {
   // This method will try to mimic the runtime effect of loading the dex file.
   // For example, if there is no usable oat file, the compiler filter will be set
   // to "run-from-apk".
-  EXPORT void GetOptimizationStatus(std::string* out_odex_location,
+  LIBART_PROTECTED void GetOptimizationStatus(std::string* out_odex_location,
                                     std::string* out_compilation_filter,
                                     std::string* out_compilation_reason,
                                     std::string* out_odex_status,
@@ -289,7 +289,7 @@ class OatFileAssistant {
                            std::vector<std::unique_ptr<const DexFile>>* out_dex_files);
 
   // Returns whether this is an apk/zip wit a classes.dex entry, or nullopt if an error occurred.
-  EXPORT std::optional<bool> HasDexFiles(std::string* error_msg);
+  LIBART_PROTECTED std::optional<bool> HasDexFiles(std::string* error_msg);
 
   // If the dex file has been installed with a compiled oat file alongside
   // it, the compiled oat file will have the extension .odex, and is referred
@@ -318,7 +318,7 @@ class OatFileAssistant {
   // Returns false on error, in which case error_msg describes the error and
   // odex_filename is not changed.
   // Neither odex_filename nor error_msg may be null.
-  EXPORT static bool DexLocationToOdexFilename(const std::string& location,
+  LIBART_PROTECTED static bool DexLocationToOdexFilename(const std::string& location,
                                                InstructionSet isa,
                                                std::string* odex_filename,
                                                std::string* error_msg);
@@ -339,7 +339,7 @@ class OatFileAssistant {
   // Same as above, but also takes `deny_art_apex_data_files` from input.
   //
   // Calling this function does not require an active runtime.
-  EXPORT static bool DexLocationToOatFilename(const std::string& location,
+  LIBART_PROTECTED static bool DexLocationToOatFilename(const std::string& location,
                                               InstructionSet isa,
                                               bool deny_art_apex_data_files,
                                               std::string* oat_filename,
@@ -358,12 +358,12 @@ class OatFileAssistant {
 
   // Returns true if a filename (given as basename) is a name of a vdex for
   // anonymous dex file(s) created by AnonymousDexVdexLocation.
-  EXPORT static bool IsAnonymousVdexBasename(const std::string& basename);
+  LIBART_PROTECTED static bool IsAnonymousVdexBasename(const std::string& basename);
 
   bool ClassLoaderContextIsOkay(const OatFile& oat_file) const;
 
   // Validates the boot class path checksum of an OatFile.
-  EXPORT bool ValidateBootClassPathChecksums(const OatFile& oat_file);
+  LIBART_PROTECTED bool ValidateBootClassPathChecksums(const OatFile& oat_file);
 
   // Validates the given bootclasspath and bootclasspath checksums found in an oat header.
   static bool ValidateBootClassPathChecksums(OatFileAssistantContext* ofa_context,

@@ -56,7 +56,7 @@ class ClassVerifier {
  public:
   // The main entrypoint for class verification. During AOT, `klass` can be
   // null.
-  EXPORT static FailureKind VerifyClass(Thread* self,
+  LIBART_PROTECTED static FailureKind VerifyClass(Thread* self,
                                         VerifierDeps* verifier_deps,
                                         const DexFile* dex_file,
                                         Handle<mirror::Class> klass,

@@ -943,7 +943,7 @@ class GetQuickReferenceArgumentAtVisitor final : public QuickArgumentVisitor {
 
 // Returning reference argument at position `arg_pos` in Quick stack frame at address `sp`.
 // NOTE: Only used for testing purposes.
-EXPORT extern "C" StackReference<mirror::Object>* artQuickGetProxyReferenceArgumentAt(
+LIBART_PROTECTED extern "C" StackReference<mirror::Object>* artQuickGetProxyReferenceArgumentAt(
     size_t arg_pos, ArtMethod** sp) REQUIRES_SHARED(Locks::mutator_lock_) {
   ArtMethod* proxy_method = *sp;
   ArtMethod* non_proxy_method = proxy_method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
