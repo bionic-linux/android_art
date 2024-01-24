@@ -75,7 +75,7 @@ static constexpr bool kCheckFieldAssignments = false;
 static constexpr uint32_t kObjectHeaderSize = 8;
 
 // C++ mirror of java.lang.Object
-class EXPORT MANAGED LOCKABLE Object {
+class LIBART_PROTECTED MANAGED LOCKABLE Object {
  public:
   MIRROR_CLASS("Ljava/lang/Object;");
 

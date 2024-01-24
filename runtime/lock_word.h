@@ -319,7 +319,7 @@ class LockWord {
   // The encoded value holding all the state.
   uint32_t value_;
 };
-EXPORT std::ostream& operator<<(std::ostream& os, LockWord::LockState code);
+LIBART_PROTECTED std::ostream& operator<<(std::ostream& os, LockWord::LockState code);
 
 }  // namespace art
 

@@ -64,21 +64,21 @@ class ThreadList {
   void DumpForSigQuit(std::ostream& os)
       REQUIRES(!Locks::thread_list_lock_, !Locks::mutator_lock_);
   // For thread suspend timeout dumps.
-  EXPORT void Dump(std::ostream& os, bool dump_native_stack = true)
+  LIBART_PROTECTED void Dump(std::ostream& os, bool dump_native_stack = true)
       REQUIRES(!Locks::thread_list_lock_, !Locks::thread_suspend_count_lock_);
   pid_t GetLockOwner();  // For SignalCatcher.
 
   // Thread suspension support.
-  EXPORT void ResumeAll()
+  LIBART_PROTECTED void ResumeAll()
       REQUIRES(!Locks::thread_list_lock_, !Locks::thread_suspend_count_lock_)
       UNLOCK_FUNCTION(Locks::mutator_lock_);
-  EXPORT bool Resume(Thread* thread, SuspendReason reason = SuspendReason::kInternal)
+  LIBART_PROTECTED bool Resume(Thread* thread, SuspendReason reason = SuspendReason::kInternal)
       REQUIRES(!Locks::thread_suspend_count_lock_) WARN_UNUSED;
 
   // Suspends all other threads and gets exclusive access to the mutator lock.
   // If long_suspend is true, then other threads who try to suspend will never timeout.
   // long_suspend is currenly used for hprof since large heaps take a long time.
-  EXPORT void SuspendAll(const char* cause, bool long_suspend = false)
+  LIBART_PROTECTED void SuspendAll(const char* cause, bool long_suspend = false)
       EXCLUSIVE_LOCK_FUNCTION(Locks::mutator_lock_)
       REQUIRES(!Locks::thread_list_lock_,
                !Locks::thread_suspend_count_lock_,
@@ -86,7 +86,7 @@ class ThreadList {
 
   // Suspend a thread using a peer, typically used by the debugger. Returns the thread on success,
   // else null. The peer is used to identify the thread to avoid races with the thread terminating.
-  EXPORT Thread* SuspendThreadByPeer(jobject peer, SuspendReason reason)
+  LIBART_PROTECTED Thread* SuspendThreadByPeer(jobject peer, SuspendReason reason)
       REQUIRES(!Locks::mutator_lock_,
                !Locks::thread_list_lock_,
                !Locks::thread_suspend_count_lock_);
@@ -101,7 +101,7 @@ class ThreadList {
                !Locks::thread_suspend_count_lock_);
 
   // Find an existing thread (or self) by its thread id (not tid).
-  EXPORT Thread* FindThreadByThreadId(uint32_t thread_id) REQUIRES(Locks::thread_list_lock_);
+  LIBART_PROTECTED Thread* FindThreadByThreadId(uint32_t thread_id) REQUIRES(Locks::thread_list_lock_);
 
   // Find an existing thread (or self) by its tid (not thread id).
   Thread* FindThreadByTid(int tid) REQUIRES(Locks::thread_list_lock_);
@@ -121,7 +121,7 @@ class ThreadList {
   // lock (see mutator_gc_coord.md) then, since the checkpoint code may not acquire or release the
   // mutator lock, the checkpoint will have no way to access Java data.
   // TODO: Is it possible to just require the mutator lock here?
-  EXPORT size_t RunCheckpoint(Closure* checkpoint_function,
+  LIBART_PROTECTED size_t RunCheckpoint(Closure* checkpoint_function,
                        Closure* callback = nullptr,
                        bool allow_lock_checking = true)
       REQUIRES(!Locks::thread_list_lock_, !Locks::thread_suspend_count_lock_);
@@ -157,7 +157,7 @@ class ThreadList {
                !Locks::thread_suspend_count_lock_);
 
   // Iterates over all the threads.
-  EXPORT void ForEach(void (*callback)(Thread*, void*), void* context)
+  LIBART_PROTECTED void ForEach(void (*callback)(Thread*, void*), void* context)
       REQUIRES(Locks::thread_list_lock_);
 
   template<typename CallBack>
@@ -191,7 +191,7 @@ class ThreadList {
 
   void VisitReflectiveTargets(ReflectiveValueVisitor* visitor) const REQUIRES(Locks::mutator_lock_);
 
-  EXPORT void SweepInterpreterCaches(IsMarkedVisitor* visitor) const
+  LIBART_PROTECTED void SweepInterpreterCaches(IsMarkedVisitor* visitor) const
       REQUIRES(Locks::mutator_lock_, !Locks::thread_list_lock_);
 
   // Return a copy of the thread list.
@@ -283,13 +283,13 @@ class ThreadList {
 // Helper for suspending all threads and getting exclusive access to the mutator lock.
 class ScopedSuspendAll : public ValueObject {
  public:
-  EXPORT explicit ScopedSuspendAll(const char* cause, bool long_suspend = false)
+  LIBART_PROTECTED explicit ScopedSuspendAll(const char* cause, bool long_suspend = false)
      EXCLUSIVE_LOCK_FUNCTION(Locks::mutator_lock_)
      REQUIRES(!Locks::thread_list_lock_,
               !Locks::thread_suspend_count_lock_,
               !Locks::mutator_lock_);
   // No REQUIRES(mutator_lock_) since the unlock function already asserts this.
-  EXPORT ~ScopedSuspendAll()
+  LIBART_PROTECTED ~ScopedSuspendAll()
       REQUIRES(!Locks::thread_list_lock_, !Locks::thread_suspend_count_lock_)
       UNLOCK_FUNCTION(Locks::mutator_lock_);
 };

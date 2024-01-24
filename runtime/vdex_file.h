@@ -101,7 +101,7 @@ class VdexFile {
 
   struct VdexFileHeader {
    public:
-    EXPORT explicit VdexFileHeader(bool has_dex_section);
+    LIBART_PROTECTED explicit VdexFileHeader(bool has_dex_section);
 
     const char* GetMagic() const { return reinterpret_cast<const char*>(magic_); }
     const char* GetVdexVersion() const {
@@ -110,8 +110,8 @@ class VdexFile {
     uint32_t GetNumberOfSections() const {
       return number_of_sections_;
     }
-    EXPORT bool IsMagicValid() const;
-    EXPORT bool IsVdexVersionValid() const;
+    LIBART_PROTECTED bool IsMagicValid() const;
+    LIBART_PROTECTED bool IsVdexVersionValid() const;
     bool IsValid() const {
       return IsMagicValid() && IsVdexVersionValid();
     }
@@ -187,7 +187,7 @@ class VdexFile {
 
   // Returns nullptr if the vdex file cannot be opened or is not valid.
   // The mmap_* parameters can be left empty (nullptr/0/false) to allocate at random address.
-  EXPORT static std::unique_ptr<VdexFile> OpenAtAddress(uint8_t* mmap_addr,
+  LIBART_PROTECTED static std::unique_ptr<VdexFile> OpenAtAddress(uint8_t* mmap_addr,
                                                         size_t mmap_size,
                                                         bool mmap_reuse,
                                                         const std::string& vdex_filename,
@@ -197,7 +197,7 @@ class VdexFile {
 
   // Returns nullptr if the vdex file cannot be opened or is not valid.
   // The mmap_* parameters can be left empty (nullptr/0/false) to allocate at random address.
-  EXPORT static std::unique_ptr<VdexFile> OpenAtAddress(uint8_t* mmap_addr,
+  LIBART_PROTECTED static std::unique_ptr<VdexFile> OpenAtAddress(uint8_t* mmap_addr,
                                                         size_t mmap_size,
                                                         bool mmap_reuse,
                                                         int file_fd,
@@ -239,7 +239,7 @@ class VdexFile {
                          error_msg);
   }
 
-  EXPORT static std::unique_ptr<VdexFile> OpenFromDm(const std::string& filename,
+  LIBART_PROTECTED static std::unique_ptr<VdexFile> OpenFromDm(const std::string& filename,
                                                      const ZipArchive& archive);
 
   const uint8_t* Begin() const { return mmap_.Begin(); }
@@ -267,7 +267,7 @@ class VdexFile {
   // the first dex file is returned. If `cursor` is not null, it must point to a dex
   // file and this method returns the next dex file if there is one, or null if there
   // is none.
-  EXPORT const uint8_t* GetNextDexFileData(const uint8_t* cursor, uint32_t dex_file_index) const;
+  LIBART_PROTECTED const uint8_t* GetNextDexFileData(const uint8_t* cursor, uint32_t dex_file_index) const;
 
   const uint8_t* GetNextTypeLookupTableData(const uint8_t* cursor, uint32_t dex_file_index) const;
 
@@ -278,7 +278,7 @@ class VdexFile {
   }
 
   // Open all the dex files contained in this vdex file.
-  EXPORT bool OpenAllDexFiles(std::vector<std::unique_ptr<const DexFile>>* dex_files,
+  LIBART_PROTECTED bool OpenAllDexFiles(std::vector<std::unique_ptr<const DexFile>>* dex_files,
                               std::string* error_msg) const;
 
   // Writes a vdex into `path` and returns true on success.

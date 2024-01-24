@@ -70,7 +70,7 @@ size_t GetJitMiniDebugInfoMemUsage() REQUIRES_SHARED(Locks::jit_lock_);
 // Get the lock which protects the native debug info.
 // Used only in tests to unwind while the JIT thread is running.
 // TODO: Unwinding should be race-free. Remove this.
-EXPORT Mutex* GetNativeDebugInfoLock();
+LIBART_PROTECTED Mutex* GetNativeDebugInfoLock();
 
 // Call given callback for every non-zygote symbol.
 // The callback parameters are (address, size, name).

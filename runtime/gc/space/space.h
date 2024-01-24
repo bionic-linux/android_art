@@ -77,7 +77,7 @@ enum SpaceType {
 std::ostream& operator<<(std::ostream& os, SpaceType space_type);
 
 // A space contains memory allocated for managed objects.
-class EXPORT Space {
+class LIBART_PROTECTED Space {
  public:
   // Dump space. Also key method for C++ vtables.
   virtual void Dump(std::ostream& os) const;
