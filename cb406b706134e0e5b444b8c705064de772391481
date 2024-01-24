@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f416a9_6e1fda3e",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-24T13:50:31Z",
+      "side": 1,
+      "message": "Would it be worth it to create a static `GetRegisterMask` with extra parameters and deduplicate the code?",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "cb406b706134e0e5b444b8c705064de772391481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feaadf32_b873d332",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-24T13:50:31Z",
+      "side": 1,
+      "message": "nit: I think this can be a DCHECK. If it\u0027s null, we are going to have a nullptr deref next line anyway",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 11
+      },
+      "revId": "cb406b706134e0e5b444b8c705064de772391481",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
