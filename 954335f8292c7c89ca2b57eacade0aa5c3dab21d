@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "920121a5_8660375d",
+        "filename": "runtime/interpreter/mterp/riscv64/control_flow.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-25T18:59:54Z",
+      "side": 1,
+      "message": "!!! yes",
+      "parentUuid": "2adb319f_a685149d",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 16
+      },
+      "revId": "954335f8292c7c89ca2b57eacade0aa5c3dab21d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541a2439_66076ff1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-01-25T09:30:23Z",
       "side": 1,
       "message": "We could define a python variable\n\n    %  type \u003d \"d\" if is_double else \"s\"\n\nand use it to write the FLE/FLT just once. (Inspired by your `op_const_string`.)",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "954335f8292c7c89ca2b57eacade0aa5c3dab21d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f535594_b0544e31",
+        "filename": "runtime/interpreter/mterp/riscv64/floating_point.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1998570
+      },
+      "writtenOn": "2024-01-25T18:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541a2439_66076ff1",
       "range": {
         "startLine": 22,
         "startChar": 3,
