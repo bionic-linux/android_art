@@ -31,7 +31,7 @@ class CFREVisitor final : public HGraphVisitor {
       : HGraphVisitor(graph),
         scoped_allocator_(graph->GetArenaStack()),
         candidate_fences_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
-        candidate_fence_targets_(scoped_allocator_.Adapter(kArenaAllocCFRE)),
+        candidate_fence_targets_(std::nullopt),
         stats_(stats) {}
 
   void VisitBasicBlock(HBasicBlock* block) override {
@@ -46,8 +46,18 @@ class CFREVisitor final : public HGraphVisitor {
   void VisitConstructorFence(HConstructorFence* constructor_fence) override {
     candidate_fences_.push_back(constructor_fence);
 
+    if (!candidate_fence_targets_.has_value()) {
+      // Small pre-allocated initial buffer avoids initializing a large buffer
+      // until it's really needed.
+      static constexpr size_t kInitialBufferSize = 16;
+      HInstruction** initial_buffer =
+         scoped_allocator_.AllocArray<HInstruction*>(kInitialBufferSize, kArenaAllocCFRE);
+      candidate_fence_targets_.emplace(
+          initial_buffer, kInitialBufferSize, scoped_allocator_.Adapter(kArenaAllocCFRE));
+    }
+
     for (size_t input_idx = 0; input_idx < constructor_fence->InputCount(); ++input_idx) {
-      candidate_fence_targets_.insert(constructor_fence->InputAt(input_idx));
+      candidate_fence_targets_->insert(constructor_fence->InputAt(input_idx));
     }
   }
 
@@ -152,6 +162,11 @@ class CFREVisitor final : public HGraphVisitor {
   }
 
   void VisitSetLocation([[maybe_unused]] HInstruction* inst, HInstruction* store_input) {
+    if (candidate_fences_.empty()) {
+      // There is no need to look at inputs if there are no candidate fence targets.
+      DCHECK_IMPLIES(candidate_fence_targets_.has_value(), candidate_fence_targets_->empty());
+      return;
+    }
     // An object is considered "published" if it's stored onto the heap.
     // Sidenote: A later "LSE" pass can still remove the fence if it proves the
     // object doesn't actually escape.
@@ -163,8 +178,13 @@ class CFREVisitor final : public HGraphVisitor {
   }
 
   bool HasInterestingPublishTargetAsInput(HInstruction* inst) {
-    for (size_t input_count = 0; input_count < inst->InputCount(); ++input_count) {
-      if (IsInterestingPublishTarget(inst->InputAt(input_count))) {
+    if (candidate_fences_.empty()) {
+      // There is no need to look at inputs if there are no candidate fence targets.
+      DCHECK_IMPLIES(candidate_fence_targets_.has_value(), candidate_fence_targets_->empty());
+      return false;
+    }
+    for (HInstruction* input : inst->GetInputs()) {
+      if (IsInterestingPublishTarget(input)) {
         return true;
       }
     }
@@ -182,10 +202,13 @@ class CFREVisitor final : public HGraphVisitor {
     }
 
     // The merge target is always the "last" candidate fence.
-    HConstructorFence* merge_target = candidate_fences_[candidate_fences_.size() - 1];
+    HConstructorFence* merge_target = candidate_fences_.back();
+    candidate_fences_.pop_back();
 
     for (HConstructorFence* fence : candidate_fences_) {
-      MaybeMerge(merge_target, fence);
+      DCHECK_NE(merge_target, fence);
+      merge_target->Merge(fence);
+      MaybeRecordStat(stats_, MethodCompilationStat::kConstructorFenceRemovedCFRE);
     }
 
     if (kCfreLogFenceInputCount) {
@@ -198,25 +221,15 @@ class CFREVisitor final : public HGraphVisitor {
     // there is no benefit to this extra complexity unless we also reordered
     // the stores to come later.
     candidate_fences_.clear();
-    candidate_fence_targets_.clear();
+    DCHECK(candidate_fence_targets_.has_value());
+    candidate_fence_targets_->clear();
   }
 
   // A publishing 'store' is only interesting if the value being stored
   // is one of the fence `targets` in `candidate_fences`.
   bool IsInterestingPublishTarget(HInstruction* store_input) const {
-    return candidate_fence_targets_.find(store_input) != candidate_fence_targets_.end();
-  }
-
-  void MaybeMerge(HConstructorFence* target, HConstructorFence* src) {
-    if (target == src) {
-      return;  // Don't merge a fence into itself.
-      // This is mostly for stats-purposes, we don't want to count merge(x,x)
-      // as removing a fence because it's a no-op.
-    }
-
-    target->Merge(src);
-
-    MaybeRecordStat(stats_, MethodCompilationStat::kConstructorFenceRemovedCFRE);
+    DCHECK(candidate_fence_targets_.has_value());
+    return candidate_fence_targets_->find(store_input) != candidate_fence_targets_->end();
   }
 
   // Phase-local heap memory allocator for CFRE optimizer.
@@ -232,7 +245,7 @@ class CFREVisitor final : public HGraphVisitor {
 
   // Stores a set of the fence targets, to allow faster lookup of whether
   // a detected publish is a target of one of the candidate fences.
-  ScopedArenaHashSet<HInstruction*> candidate_fence_targets_;
+  std::optional<ScopedArenaHashSet<HInstruction*>> candidate_fence_targets_;
 
   // Used to record stats about the optimization.
   OptimizingCompilerStats* const stats_;
