@@ -1,0 +1,526 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be772696_7bd9be07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Why 16? The arm64 one (https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/intrinsics_arm64.cc;l\u003d2956;drc\u003dd76551c7229060a3fe11258b490a11f4ee91e9f8) copies 8 bytes at a time. Did you see an improvement of using 16 over 8?",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eae5d0e_7602ec24",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "In https://android-review.googlesource.com/c/platform/art/+/2869995 Vladimir created [CreateSystemArrayCopyLocationSummary](https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator.cc;l\u003d1766;drc\u003d890ce315ed051fac4e8235f81628198c9da97476). Can we reuse that code?\n\nGiven that other architectures also don\u0027t use it (e.g. IntrinsicCodeGeneratorARM64::VisitSystemArrayCopyChar), it might be fine to not use that code and do a refactor later on all archs. Vladimir, thoughts?",
+      "range": {
+        "startLine": 1787,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 61
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fb4caa_ad795c48",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "suggestion: GenerateUnsignedLoad",
+      "range": {
+        "startLine": 1838,
+        "startChar": 12,
+        "endLine": 1838,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35189857_e0603078",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "suggestion: remove (same below). The reasoning is that the `LOG(FATAL)` will produce enough information with the stack trace to show where it is coming from.",
+      "range": {
+        "startLine": 1854,
+        "startChar": 41,
+        "endLine": 1854,
+        "endChar": 55
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236dc0b6_16cadcc3",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "suggestion: GenerateStore",
+      "range": {
+        "startLine": 1858,
+        "startChar": 12,
+        "endLine": 1858,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa2e77f_c4c9c414",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "If you use the `CreateSystemArrayCopyLocationSummary` I mentioned above, you would be able to use `DestinationIsSource`, `SourceIsNotNull`, and `DestinationIsNotNull` e.g.\n\n```\nSystemArrayCopyOptimizations optimizations(invoke);\n\nif (!optimizations.GetSourceIsNotNull()) {\n  // Bail out if the source is null.\n  __ Beqz(src, slow_path-\u003eGetEntryLabel());\n}\n```\n\nwhich makes the code generation better. If we don\u0027t end up using `SystemArrayCopyOptimizations` in this CL, please disregard this comment.",
+      "range": {
+        "startLine": 1893,
+        "startChar": 0,
+        "endLine": 1902,
+        "endChar": 0
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff299f3d_c63d8206",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "`/*length_is_array_length\u003d*/` Same below",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe4b0dd_c0b31663",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "nit: missing `.` at the end of the comment",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a4e7efb_d6a5f0d6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Should this be `Or`?",
+      "range": {
+        "startLine": 1945,
+        "startChar": 5,
+        "endLine": 1945,
+        "endChar": 8
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c831fefe_5add94a1",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Add `DCHECK_EQ(16 % element_size, 0);`",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348f05dd_addd045f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "elements",
+      "range": {
+        "startLine": 1955,
+        "startChar": 57,
+        "endLine": 1955,
+        "endChar": 67
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e87f1ae_154399af",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "elements",
+      "range": {
+        "startLine": 1957,
+        "startChar": 61,
+        "endLine": 1957,
+        "endChar": 71
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ac5284_84a86782",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "You didn\u0027t use `unroll_threshold`",
+      "range": {
+        "startLine": 1960,
+        "startChar": 74,
+        "endLine": 1961,
+        "endChar": 23
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c5bf92_46d3babf",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Maybe add `constexpr bytes_copied_per_iteration \u003d 16;` We could use that instead of `element_size * elements_per_block` below.",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27cc01f_3201cc1c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "This could be confusing (`tmp`, `temp`, and `length_tmp`). Could we do `XRegister length_tmp \u003d temps.AllocateXRegister();` and use `temp` instead of `tmp`?",
+      "range": {
+        "startLine": 1980,
+        "startChar": 0,
+        "endLine": 1981,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7546093e_500c9769",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "If we end up using `temp` instead of `tmp`, please rename to `tmp2`",
+      "range": {
+        "startLine": 1985,
+        "startChar": 14,
+        "endLine": 1985,
+        "endChar": 18
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fad40b_dcd77a3f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Bgez? In line 2027 you are already subtracting `elements_per_block`\n\nSame for `emitTailLoop`",
+      "range": {
+        "startLine": 1995,
+        "startChar": 7,
+        "endLine": 1995,
+        "endChar": 11
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dedde694_db61841c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2026,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "`unroll_threshold`, if you want to use it",
+      "range": {
+        "startLine": 2026,
+        "startChar": 27,
+        "endLine": 2026,
+        "endChar": 45
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b131e82b_1a641c46",
+        "filename": "test/011-array-copy2/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Please remove file. This .bp is used for MTS testing which requires the test to be merged and working for a couple of weeks. The .bp will get generated once we see that the test is stable.",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb60daf_be801257",
+        "filename": "test/011-array-copy2/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Is this the intended description?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408768eb_c28fb8d0",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "```\n  public static void assertEquals(int expected, int actual) {\n    if (expected !\u003d actual) {\n      throw new Error(\"Expected \" + expected + \", got \" + actual);\n    }\n  }\n```\n(but with byte type) would print more information in the case of a failure",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f2af09_785d1a03",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "createArrayOfZeroes",
+      "range": {
+        "startLine": 33,
+        "startChar": 29,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3033095_843a18e0",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "createIncrementedArray",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acff9c16_f83d490f",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-01-31T17:00:51Z",
+      "side": 1,
+      "message": "Move these lines and `checkIncrementedArray` inside of `test1` (which doesn\u0027t need to take parameters and can have a return type of void).\n\nSuggestion name it `$noinline$test1`\n\nSame for other tests.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
