@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938e96be_c8c80a49",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1809,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-01T14:11:57Z",
+      "side": 1,
+      "message": "why the `size_t` cast? We could just use the `int` from `GetId` right? Is this to check that the id is not `-1`?",
+      "range": {
+        "startLine": 1809,
+        "startChar": 29,
+        "endLine": 1809,
+        "endChar": 35
+      },
+      "revId": "b7c82aa9c6affdbb47fa67309df93e0779253f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
