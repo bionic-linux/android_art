@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5d25b2b_2ca2489a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-02-01T16:29:41Z",
+      "side": 1,
+      "message": "Yes, we\u0027ve saw improvement in OpenJDK https://github.com/openjdk/jdk/pull/11058\nYes, it copies by 32 bytes for iteration, but it requires addition registers.\nI guess improvement should be for 16 as well.",
+      "parentUuid": "be772696_7bd9be07",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0eae5d0e_7602ec24",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -198,6 +222,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f23e0919_a76ee752",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-02-01T16:29:41Z",
+      "side": 1,
+      "message": "Yes, should be `Or`, my mistake",
+      "parentUuid": "2a4e7efb_d6a5f0d6",
+      "range": {
+        "startLine": 1945,
+        "startChar": 5,
+        "endLine": 1945,
+        "endChar": 8
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c831fefe_5add94a1",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -358,6 +406,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "Bgez? In line 2027 you are already subtracting `elements_per_block`\n\nSame for `emitTailLoop`",
+      "range": {
+        "startLine": 1995,
+        "startChar": 7,
+        "endLine": 1995,
+        "endChar": 11
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1797cc_ba8b1405",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-02-01T16:29:41Z",
+      "side": 1,
+      "message": "Hm. Looks so.\nThank you!",
+      "parentUuid": "b0fad40b_dcd77a3f",
       "range": {
         "startLine": 1995,
         "startChar": 7,
