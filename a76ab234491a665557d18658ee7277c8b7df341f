@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a247ccf_91c50103",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-01T17:00:19Z",
+      "side": 1,
+      "message": "PS5 is a rebase across https://android-review.googlesource.com/2907515 , the reported conflict was only because that CLs changed two consecutive lines.",
+      "revId": "a76ab234491a665557d18658ee7277c8b7df341f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
