@@ -22,6 +22,30 @@
       },
       "revId": "b7c82aa9c6affdbb47fa67309df93e0779253f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4881666_90444ec4",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1809,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-01T16:25:00Z",
+      "side": 1,
+      "message": "With current compiler flags, comparing signed and unsigned values produces an error, so this is necessary to compile.",
+      "parentUuid": "938e96be_c8c80a49",
+      "range": {
+        "startLine": 1809,
+        "startChar": 29,
+        "endLine": 1809,
+        "endChar": 35
+      },
+      "revId": "b7c82aa9c6affdbb47fa67309df93e0779253f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
