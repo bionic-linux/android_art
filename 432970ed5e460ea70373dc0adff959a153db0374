@@ -270,6 +270,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcd3ad09_3da6c43c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-02-02T09:32:37Z",
+      "side": 1,
+      "message": "I haven\u0027t upload patchset yet\nWaiting feedback of Vladimir",
+      "parentUuid": "ca63e787_b6fb847e",
+      "range": {
+        "startLine": 1945,
+        "startChar": 5,
+        "endLine": 1945,
+        "endChar": 8
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c831fefe_5add94a1",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
