@@ -1559,15 +1559,20 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method,
       if (status == ClassStatus::kInitialized) {
         // Request visible initialization but do not block to allow compiling other methods.
         // Hopefully, this will complete by the time the method becomes hot again.
+        bool jitAtFirstUse = Runtime::Current()->GetJITOptions()->GetOptimizeThreshold() == 0u;
         Runtime::Current()->GetClassLinker()->MakeInitializedClassesVisiblyInitialized(
-            self, /*wait=*/ false);
+            self, /*wait=*/ jitAtFirstUse);
+        status = method->GetDeclaringClass()
+                ->GetStatus<kDefaultVerifyFlags, /*kWithSynchronizationBarrier=*/ false>();
       }
-      VLOG(jit) << "Not compiling "
-                << method->PrettyMethod()
-                << " because it has the resolution stub";
-      // Give it a new chance to be hot.
-      ClearMethodCounter(method, /*was_warm=*/ false);
-      return false;
+      if (status != ClassStatus::kVisiblyInitialized) {
+        VLOG(jit) << "Not compiling "
+                  << method->PrettyMethod()
+                  << " because it has the resolution stub";
+        // Give it a new chance to be hot.
+        ClearMethodCounter(method, /*was_warm=*/ false);
+        return false;
+      }
     }
   }
 
