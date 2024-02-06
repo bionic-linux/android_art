@@ -588,7 +588,7 @@ void HDeadCodeElimination::ConnectSuccessiveBlocks() {
   }
 }
 
-struct HDeadCodeElimination::TryBelongingInformation {
+struct HDeadCodeElimination::TryBelongingInformation : public ArenaObject<kArenaAllocDCE> {
   TryBelongingInformation(HGraph* graph, ScopedArenaAllocator* allocator)
       : blocks_in_try(allocator, graph->GetBlocks().size(), /*expandable=*/false, kArenaAllocDCE),
         coalesced_try_entries(
@@ -702,16 +702,17 @@ bool HDeadCodeElimination::RemoveUnneededTries() {
   ScopedArenaAllocator allocator(graph_->GetArenaStack());
 
   // Collect which blocks are part of which try.
-  ScopedArenaUnorderedMap<HBasicBlock*, TryBelongingInformation> tries(
+  ScopedArenaUnorderedMap<HBasicBlock*, TryBelongingInformation*> tries(
       allocator.Adapter(kArenaAllocDCE));
   for (HBasicBlock* block : graph_->GetReversePostOrderSkipEntryBlock()) {
     if (block->IsTryBlock()) {
       HBasicBlock* key = block->GetTryCatchInformation()->GetTryEntry().GetBlock();
       auto it = tries.find(key);
       if (it == tries.end()) {
-        it = tries.insert({key, TryBelongingInformation(graph_, &allocator)}).first;
+        it =
+            tries.insert({key, new (&allocator) TryBelongingInformation(graph_, &allocator)}).first;
       }
-      it->second.blocks_in_try.SetBit(block->GetBlockId());
+      it->second->blocks_in_try.SetBit(block->GetBlockId());
     }
   }
 
@@ -727,12 +728,13 @@ bool HDeadCodeElimination::RemoveUnneededTries() {
       if (try_boundary->HasSameExceptionHandlersAs(*other_try_boundary)) {
         // Merge the entries as they are really the same one.
         // Block merging.
-        it->second.blocks_in_try.Union(&other_it->second.blocks_in_try);
+        it->second->blocks_in_try.Union(&other_it->second->blocks_in_try);
 
         // Add the coalesced try entry to update it too.
-        it->second.coalesced_try_entries.SetBit(other_block->GetBlockId());
+        it->second->coalesced_try_entries.SetBit(other_block->GetBlockId());
 
-        // Erase the other entry.
+        // Erase the other entry. Note that even though we called `new` on TryBelongingInformation,
+        // there's no need to call `delete` since TryBelongingInformation is an ArenaObject.
         other_it = tries.erase(other_it);
       } else {
         other_it++;
@@ -745,9 +747,9 @@ bool HDeadCodeElimination::RemoveUnneededTries() {
 
   // Check which tries contain throwing instructions.
   for (const auto& entry : tries) {
-    if (CanPerformTryRemoval(entry.second)) {
+    if (CanPerformTryRemoval(*entry.second)) {
       ++removed_tries;
-      RemoveTry(entry.first, entry.second, &any_block_in_loop);
+      RemoveTry(entry.first, *entry.second, &any_block_in_loop);
     }
   }
 
