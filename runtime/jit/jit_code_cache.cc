@@ -1562,12 +1562,16 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method,
         Runtime::Current()->GetClassLinker()->MakeInitializedClassesVisiblyInitialized(
             self, /*wait=*/ false);
       }
-      VLOG(jit) << "Not compiling "
-                << method->PrettyMethod()
-                << " because it has the resolution stub";
-      // Give it a new chance to be hot.
-      ClearMethodCounter(method, /*was_warm=*/ false);
-      return false;
+      bool jitAtFirstUse = Runtime::Current()->GetJITOptions()->GetOptimizeThreshold() == 0u;
+      // In `JitAtFirstUse` mode method should be compiled if class initialized
+      if (status != ClassStatus::kInitialized || !jitAtFirstUse) {
+        VLOG(jit) << "Not compiling "
+                  << method->PrettyMethod()
+                  << " because it has the resolution stub";
+        // Give it a new chance to be hot.
+        ClearMethodCounter(method, /*was_warm=*/ false);
+        return false;
+      }
     }
   }
 
