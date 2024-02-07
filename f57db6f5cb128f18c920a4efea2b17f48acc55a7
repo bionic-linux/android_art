@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd81aa5_65c37b59",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T12:23:47Z",
+      "side": 1,
+      "message": "Should pass `/*prejit\u003d*/ true` from `Jit::Methodentered()` to `ComileMethod()`? (And maybe also request `MakeInitializedClassesVisiblyInitialized()` there?)",
+      "range": {
+        "startLine": 1551,
+        "startChar": 47,
+        "endLine": 1551,
+        "endChar": 53
+      },
+      "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
