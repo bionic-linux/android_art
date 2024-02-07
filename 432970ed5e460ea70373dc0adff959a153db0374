@@ -50,6 +50,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "566667f9_3b5b9e4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "We should eventually have an implementation with the Vector extension, so I don\u0027t really care if it\u0027s 8 or 16 for now.",
+      "parentUuid": "e5d25b2b_2ca2489a",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0968d96d_f136ba69",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "This is referencing `char` but we\u0027re using it for `byte` and `int` as well. Maybe the basic threshold constant should be in bytes and we can calculate and use the actual threshold in elements.",
+      "range": {
+        "startLine": 1783,
+        "startChar": 46,
+        "endLine": 1783,
+        "endChar": 50
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0eae5d0e_7602ec24",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -61,6 +108,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "In https://android-review.googlesource.com/c/platform/art/+/2869995 Vladimir created [CreateSystemArrayCopyLocationSummary](https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator.cc;l\u003d1766;drc\u003d890ce315ed051fac4e8235f81628198c9da97476). Can we reuse that code?\n\nGiven that other architectures also don\u0027t use it (e.g. IntrinsicCodeGeneratorARM64::VisitSystemArrayCopyChar), it might be fine to not use that code and do a refactor later on all archs. Vladimir, thoughts?",
+      "range": {
+        "startLine": 1787,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 61
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c3cdbe_412a2873",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "That CL merely updated the `CodeGenerator::CreateSystemArrayCopyLocationSummary()` so that it can be widely reused.\n\nI\u0027ll eventually get to clean this copy-pasted mess for all architectures, so I don\u0027t really care if we have another copy-pasted chunk for riscv64. (I\u0027ll probably add intrinsics for other primitive types at the same time.)",
+      "parentUuid": "0eae5d0e_7602ec24",
       "range": {
         "startLine": 1787,
         "startChar": 0,
@@ -142,6 +213,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b36f00e9_6f74e572",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "Do not pass the `asssembler`, get it from the `codegen`.",
+      "range": {
+        "startLine": 1879,
+        "startChar": 37,
+        "endLine": 1879,
+        "endChar": 64
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2aa2e77f_c4c9c414",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -165,6 +259,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de3383ad_20b81da7",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "Note that using `CreateSystemArrayCopyLocationSummary()` is not a prerequisite for using `SystemArrayCopyOptimizations`.\n\nWe could have the same checks as we have for the reference array copy. But I can do that cleanup later.",
+      "parentUuid": "2aa2e77f_c4c9c414",
+      "range": {
+        "startLine": 1893,
+        "startChar": 0,
+        "endLine": 1902,
+        "endChar": 0
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f375e88b_e35ac594",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "`\u003e\u003d`",
+      "range": {
+        "startLine": 1907,
+        "startChar": 23,
+        "endLine": 1907,
+        "endChar": 24
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff299f3d_c63d8206",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -176,6 +317,29 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "`/*length_is_array_length\u003d*/` Same below",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e80bba8_a7288696",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "Is this `Zero`? (Unlike arm64, the riscv64 `GenSystemArrayCopyAddresses()` shall actually generate a useless `add`/`sh1add`/`sh2add`.)",
+      "range": {
+        "startLine": 1941,
+        "startChar": 87,
+        "endLine": 1941,
+        "endChar": 98
+      },
       "revId": "432970ed5e460ea70373dc0adff959a153db0374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -294,6 +458,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c06f4ab_2f55918c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "I would drop this check and rely on support for unaligned loads/stores.\n\nWe currently have the data offset 12 for arrays (except for long/double which is not supported by this intrinsic yet). So, position 0 would send the code to the slow path and we would use the intrinsic code below rarely.",
+      "range": {
+        "startLine": 1947,
+        "startChar": 2,
+        "endLine": 1947,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c831fefe_5add94a1",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -305,6 +492,24 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "Add `DCHECK_EQ(16 % element_size, 0);`",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f145be_f6bef90e",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "That `DCHECK()` would be better placed before the expression `16 / element_size`.",
+      "parentUuid": "c831fefe_5add94a1",
       "revId": "432970ed5e460ea70373dc0adff959a153db0374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -420,6 +625,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a13a165c_45713bc8",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "This should define its own `ScratchRegisterScope temps` to avoid explicit `FreeXRegister()`. The variable `loop1` should be a local variable (`loop`?). I don\u0027t see why we allocate `tmp` above, we could also have that as a local variable here.\n\nStyle: `emit_head_loop`.",
+      "range": {
+        "startLine": 1983,
+        "startChar": 7,
+        "endLine": 1983,
+        "endChar": 19
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3182b243_0b250e16",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "Unnecessary. The `AllocateXRegister()` already checks that there is an available register.",
+      "range": {
+        "startLine": 1984,
+        "startChar": 4,
+        "endLine": 1984,
+        "endChar": 47
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7546093e_500c9769",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -490,6 +741,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "466eeb40_21b03e1f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "`emit_tail_loop`, local `ScratchRegisterScope`, `tmp` and `loop`.",
+      "range": {
+        "startLine": 2000,
+        "startChar": 7,
+        "endLine": 2000,
+        "endChar": 19
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d022cdb9_5338fb06",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "`emit_unrolled_tail_loop`, local `ScratchRegisterScope` and `tmp`.\n\nDrop top-level const from `tail_length`.",
+      "range": {
+        "startLine": 2010,
+        "startChar": 7,
+        "endLine": 2010,
+        "endChar": 27
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dedde694_db61841c",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
@@ -507,6 +804,23 @@
         "endLine": 2026,
         "endChar": 45
       },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c643386_5d0c9720",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "Move `tail_loop` declaration here.",
       "revId": "432970ed5e460ea70373dc0adff959a153db0374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -615,6 +929,29 @@
         "startChar": 29,
         "endLine": 38,
         "endChar": 40
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d53c11_7f0babb2",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-07T15:29:18Z",
+      "side": 1,
+      "message": "I think we should add the prefix `$noinline$` to these test functions.",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 32
       },
       "revId": "432970ed5e460ea70373dc0adff959a153db0374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
