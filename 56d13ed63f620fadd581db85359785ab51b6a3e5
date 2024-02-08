@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a598c09c_aed071e8",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2445,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-08T14:26:49Z",
+      "side": 1,
+      "message": "This is an unnecessary virtual call that effectively checks the instruction kind just like the other checks around, from `IsSuspendCheck()` to `IsConstructorFence()`. We could try to merge these checks to a boolean load from an array, similar to the `HInstruction::Is##type()` for abstract instructions. (Preferably in another CL.) The remaining virtual call `CanThrow()` could be moved to the end.",
+      "range": {
+        "startLine": 2445,
+        "startChar": 9,
+        "endLine": 2445,
+        "endChar": 24
+      },
+      "revId": "56d13ed63f620fadd581db85359785ab51b6a3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
