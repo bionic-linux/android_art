@@ -22,6 +22,30 @@
       },
       "revId": "56d13ed63f620fadd581db85359785ab51b6a3e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9425d191_4d1a3be4",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2445,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-08T15:39:22Z",
+      "side": 1,
+      "message": "Ack, something to clean up in a follow-up CL.\n\nMoved `CanThrow` to the end. Since I am modifying the CL, I can also move `IsControlFlow` to the end for the time being.",
+      "parentUuid": "a598c09c_aed071e8",
+      "range": {
+        "startLine": 2445,
+        "startChar": 9,
+        "endLine": 2445,
+        "endChar": 24
+      },
+      "revId": "56d13ed63f620fadd581db85359785ab51b6a3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
