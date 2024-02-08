@@ -70,6 +70,30 @@
       },
       "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a37f66_aafb3c42",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-08T09:00:41Z",
+      "side": 1,
+      "message": "Either that, or just change the test itself to call `makeVisiblyInitialized()`. See `git grep makeVisiblyInitialized test/`.",
+      "parentUuid": "1ce7a676_38904f3d",
+      "range": {
+        "startLine": 1551,
+        "startChar": 47,
+        "endLine": 1551,
+        "endChar": 53
+      },
+      "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
