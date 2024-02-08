@@ -94,6 +94,30 @@
       },
       "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc53c9e0_7bc29397",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-02-08T09:27:54Z",
+      "side": 1,
+      "message": "Added `wait \u003d true` in case of JitAtFirstUse",
+      "parentUuid": "39a37f66_aafb3c42",
+      "range": {
+        "startLine": 1551,
+        "startChar": 47,
+        "endLine": 1551,
+        "endChar": 53
+      },
+      "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
