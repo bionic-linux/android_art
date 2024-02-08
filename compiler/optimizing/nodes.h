@@ -2440,18 +2440,26 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
   bool IsRemovable() const {
     return
         !DoesAnyWrite() &&
-        !CanThrow() &&
         !IsSuspendCheck() &&
-        !IsControlFlow() &&
         !IsNop() &&
         !IsParameterValue() &&
         // If we added an explicit barrier then we should keep it.
         !IsMemoryBarrier() &&
-        !IsConstructorFence();
+        !IsConstructorFence() &&
+        // TODO(solanes): Turn this virtual call into something similar to
+        // HInstruction::Is##type().
+        !IsControlFlow() &&
+        !CanThrow();
   }
 
   bool IsDeadAndRemovable() const {
-    return IsRemovable() && !HasUses();
+    return !HasUses() && IsRemovable();
+  }
+
+  bool IsPhiDeadAndRemovable() const {
+    DCHECK(IsPhi());
+    DCHECK(IsRemovable()) << " phis are always removable";
+    return !HasUses();
   }
 
   // Does this instruction dominate `other_instruction`?
