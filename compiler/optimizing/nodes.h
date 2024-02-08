@@ -2451,7 +2451,13 @@ class HInstruction : public ArenaObject<kArenaAllocInstruction> {
   }
 
   bool IsDeadAndRemovable() const {
-    return IsRemovable() && !HasUses();
+    return !HasUses() && IsRemovable();
+  }
+
+  bool IsPhiDeadAndRemovable() const {
+    DCHECK(IsPhi());
+    DCHECK(IsRemovable()) << " phis are always removable";
+    return !HasUses();
   }
 
   // Does this instruction dominate `other_instruction`?
