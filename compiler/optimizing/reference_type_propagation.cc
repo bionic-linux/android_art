@@ -279,7 +279,7 @@ static void BoundTypeForClassCheck(HInstruction* check) {
     ScopedObjectAccess soa(Thread::Current());
     ArtField* field = GetClassRoot<mirror::Object>()->GetInstanceField(0);
     DCHECK_EQ(std::string(field->GetName()), "shadow$_klass_");
-    if (field_get->GetFieldInfo().GetField() != field) {
+    if (field_get->AsInstanceFieldGet()->GetFieldInfo().GetField() != field) {
       return;
     }
   }
