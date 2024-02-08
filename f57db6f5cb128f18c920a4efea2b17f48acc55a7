@@ -22,6 +22,30 @@
       },
       "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a35f5f_efa55f9c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-08T08:17:16Z",
+      "side": 1,
+      "message": "Actually, the only way to make this reliable is to call `MakeInitializedClassesVisiblyInitialized()` with `/*wait\u003d*/ true`. Otherwise there\u0027s a (tiny) chance that the compilation completes before we run the checkpoint and mark the class visibly initialized - the code would enter interpreter but OSR would never happen.",
+      "parentUuid": "2fd81aa5_65c37b59",
+      "range": {
+        "startLine": 1551,
+        "startChar": 47,
+        "endLine": 1551,
+        "endChar": 53
+      },
+      "revId": "f57db6f5cb128f18c920a4efea2b17f48acc55a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
