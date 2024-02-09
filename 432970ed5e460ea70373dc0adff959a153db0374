@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b0e33d1_8b6abc11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-02-09T11:57:08Z",
+      "side": 1,
+      "message": "BTW vectors is quite tricky thing on RISC-V. We made investigation for various scenarios on Lichee Pi and found that e.g. the same arraycopy based on common scalar registers is faster than vector based implementation for small arrays. But if arryas are big vectore based implementation is better.\nSetupping vector pipeline is expensive on RISC-V at least on current implementations.\n\nI\u0027ll share more details in RISC-V mailing list.",
+      "parentUuid": "566667f9_3b5b9e4b",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0968d96d_f136ba69",
         "filename": "compiler/optimizing/intrinsics_riscv64.cc",
         "patchSetId": 2
