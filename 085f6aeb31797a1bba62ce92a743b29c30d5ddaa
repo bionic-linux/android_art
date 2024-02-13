@@ -70,6 +70,30 @@
       },
       "revId": "085f6aeb31797a1bba62ce92a743b29c30d5ddaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76f31b2_c9305ff5",
+        "filename": "compiler/optimizing/scheduler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-13T15:28:31Z",
+      "side": 1,
+      "message": "The `FOR_EACH_CONCRETE_INSTRUCTION_{ARM,ARM64}` macros are supposed to take two-argument macros (even though they are currently empty) in line with the other `FOR_EACH_*` macros from `nodes.h`. So, it would be inconsistent for the `FOR_EACH_SCHEDULED_*` macros to take a one-argument macro and then use both with the same `SCHEDULABLE_CASE`. Maybe it would work with `...` but I\u0027ll keep the current CL as is.",
+      "parentUuid": "1cd8317d_4182e39d",
+      "range": {
+        "startLine": 1269,
+        "startChar": 31,
+        "endLine": 1269,
+        "endChar": 37
+      },
+      "revId": "085f6aeb31797a1bba62ce92a743b29c30d5ddaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
