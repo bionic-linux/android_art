@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97291889_72e8e541",
+        "filename": "compiler/optimizing/scheduler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-13T09:46:22Z",
+      "side": 1,
+      "message": "I know this was here before, but could we remove all `unused` from `SCHEDULABLE_CASE`, `FOR_EACH_SCHEDULED_SHARED_INSTRUCTION`, and others? Might be better to do in a follow-up since e.g. `FOR_EACH_CONCRETE_INSTRUCTION_ARM` is used in codegen too. I took a look at the uses and in every use, the second parameter looks unused.",
+      "range": {
+        "startLine": 1269,
+        "startChar": 31,
+        "endLine": 1269,
+        "endChar": 37
+      },
+      "revId": "085f6aeb31797a1bba62ce92a743b29c30d5ddaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
