@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b62c002_9309cc0f",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-14T14:04:42Z",
+      "side": 1,
+      "message": "Is this change intended? I don\u0027t see how this CL would affect this particular include",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "15d0273b26e65ef1c2ff7f402af5e98852f3121e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
