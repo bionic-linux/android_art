@@ -76,7 +76,7 @@ class DexCache;
 class Field;
 class IfTable;
 class Method;
-template <typename T> struct PACKED(8) DexCachePair;
+template <typename T> struct DexCachePair;
 
 using StringDexCachePair = DexCachePair<String>;
 using StringDexCacheType = std::atomic<StringDexCachePair>;
