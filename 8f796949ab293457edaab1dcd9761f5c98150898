@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "8f796949ab293457edaab1dcd9761f5c98150898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aece999_de7b8fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-02-14T16:53:05Z",
+      "side": 1,
+      "message": "I\u0027m a bit concerned about performance implications here, though the problem isn\u0027t specific to this CL. AFAICT, AllowThreadSuspension basically uncoditionally calls MadviseAwayAlternateSignalStack, which seems kind of heavyweight for this path. Adding Vladimir.",
+      "revId": "8f796949ab293457edaab1dcd9761f5c98150898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
