@@ -22,6 +22,30 @@
       },
       "revId": "15d0273b26e65ef1c2ff7f402af5e98852f3121e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff96d4a1_9197a1e0",
+        "filename": "runtime/gc/verification.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-14T16:17:18Z",
+      "side": 1,
+      "message": "This is now required to compile `verification.cc`, given the #include cleanup in `art_method-inl.h`. (Previously `verification.cc` -\u003e `object-refvisitor-inl.h` -\u003e `class-refvisitor-inl.h` -\u003e `class_ext-inl.h` -\u003e `art_method-inl.h` -\u003e `jit.h` -\u003e `android-base/unique_fd.h`.)",
+      "parentUuid": "4b62c002_9309cc0f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "15d0273b26e65ef1c2ff7f402af5e98852f3121e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
