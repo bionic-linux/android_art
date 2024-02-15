@@ -33,6 +33,24 @@
       "message": "I\u0027m a bit concerned about performance implications here, though the problem isn\u0027t specific to this CL. AFAICT, AllowThreadSuspension basically uncoditionally calls MadviseAwayAlternateSignalStack, which seems kind of heavyweight for this path. Adding Vladimir.",
       "revId": "8f796949ab293457edaab1dcd9761f5c98150898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434776e6_99a7507a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-02-15T12:53:01Z",
+      "side": 1,
+      "message": "Actually, AllowThreadSuspension implicitly passes false to the `implicit` flag, which means we won\u0027t madvise away the alternate stack.\n\nThe copying of a class is already heavy weight, I think the suspend check shouldn\u0027t be too much of an overhead here.",
+      "parentUuid": "3aece999_de7b8fcf",
+      "revId": "8f796949ab293457edaab1dcd9761f5c98150898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
