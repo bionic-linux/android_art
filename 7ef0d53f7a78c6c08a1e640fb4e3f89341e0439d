@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b064e2b_7d62150c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-16T14:21:04Z",
+      "side": 1,
+      "message": "I collected data with and without this change for the dex2oat command from http://b/181943478#comment145 and I did not see any change beyond noise; before: 0.309%, after: 0.303% (ignoring two \"after\" runs when dex2oat took a suspiciously long time and the RemoveUnneededTries sample fractions were actually worse at 0.319% and 0.327%).",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "7ef0d53f7a78c6c08a1e640fb4e3f89341e0439d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
