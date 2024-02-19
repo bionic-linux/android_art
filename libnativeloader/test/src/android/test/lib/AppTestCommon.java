@@ -65,8 +65,15 @@ public abstract class AppTestCommon {
             });
         }
 
-        TestUtils.assertLibraryInaccessible(
-                () -> { SystemSharedLib.load(TestUtils.libPath("/product", "product_private7")); });
+        if (TestUtils.productAppsAreShared() && isSharedSystemApp()) {
+            // If product apps are shared then the product partition is included
+            // in system, so this works for shared system apps.
+            SystemSharedLib.load(TestUtils.libPath("/product", "product_private7"));
+        } else {
+            TestUtils.assertLibraryInaccessible(() -> {
+                SystemSharedLib.load(TestUtils.libPath("/product", "product_private7"));
+            });
+        }
 
         TestUtils.assertLibraryInaccessible(
                 () -> { SystemSharedLib.load(TestUtils.libPath("/vendor", "vendor_private7")); });
@@ -87,9 +94,15 @@ public abstract class AppTestCommon {
             });
         }
 
-        TestUtils.assertLibraryInaccessible(() -> {
+        if (TestUtils.productAppsAreShared() && isSharedSystemApp()) {
+            // If product apps are shared then the product partition is included
+            // in system, so this works for shared system apps.
             SystemExtSharedLib.load(TestUtils.libPath("/product", "product_private8"));
-        });
+        } else {
+            TestUtils.assertLibraryInaccessible(() -> {
+                SystemExtSharedLib.load(TestUtils.libPath("/product", "product_private8"));
+            });
+        }
 
         TestUtils.assertLibraryInaccessible(() -> {
             SystemExtSharedLib.load(TestUtils.libPath("/vendor", "vendor_private8"));
@@ -98,6 +111,13 @@ public abstract class AppTestCommon {
 
     @Test
     public void testLoadPrivateLibrariesViaProductSharedLibWithAbsolutePaths() {
+        if (TestUtils.productAppsAreShared()) {
+            // ProductSharedLib will be loaded in a shared namespace in this
+            // case, so the load failures expected below won't work. This is a
+            // fringe case on devices where the VNDK predates S, so just skip.
+            return;
+        }
+
         if (isSharedSystemApp()) {
             ProductSharedLib.load(TestUtils.libPath("/system", "system_private9"));
             ProductSharedLib.load(TestUtils.libPath("/system_ext", "systemext_private9"));
@@ -136,9 +156,15 @@ public abstract class AppTestCommon {
             });
         }
 
-        TestUtils.assertLibraryInaccessible(() -> {
+        if (TestUtils.productAppsAreShared() && isSharedSystemApp()) {
+            // If product apps are shared then the product partition is included
+            // in system, so this works for shared system apps.
             VendorSharedLib.load(TestUtils.libPath("/product", "product_private10"));
-        });
+        } else {
+            TestUtils.assertLibraryInaccessible(() -> {
+                VendorSharedLib.load(TestUtils.libPath("/product", "product_private10"));
+            });
+        }
 
         if (!isSharedSystemApp()) {
             VendorSharedLib.load(TestUtils.libPath("/vendor", "vendor_private10"));
