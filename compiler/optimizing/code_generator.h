@@ -384,10 +384,13 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   bool EmitNonBakerReadBarrier() const;
   ReadBarrierOption GetCompilerReadBarrierOption() const;
 
-  // Returns true if we should check the GC card for consistency purposes.
-  bool ShouldCheckGCCard(DataType::Type type,
-                         HInstruction* value,
-                         WriteBarrierKind write_barrier_kind) const;
+  // Return true if we should check the GC card depending on the debug mode and GC kind.
+  bool ShouldCheckGCCard() const;
+
+  // Returns true if we should check the GC card for eliminated write barriers.
+  bool ShouldCheckGCCardForEliminatedWriteBarrier(DataType::Type type,
+                                                  HInstruction* value,
+                                                  WriteBarrierKind write_barrier_kind) const;
 
   // Get the ScopedArenaAllocator used for codegen memory allocation.
   ScopedArenaAllocator* GetScopedAllocator();

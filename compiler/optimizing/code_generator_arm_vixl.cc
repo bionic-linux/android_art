@@ -5941,8 +5941,8 @@ void LocationsBuilderARMVIXL::HandleFieldSet(HInstruction* instruction,
       && !codegen_->GetInstructionSetFeatures().HasAtomicLdrdAndStrd();
   bool needs_write_barrier =
       codegen_->StoreNeedsWriteBarrier(field_type, instruction->InputAt(1), write_barrier_kind);
-  bool check_gc_card =
-      codegen_->ShouldCheckGCCard(field_type, instruction->InputAt(1), write_barrier_kind);
+  bool check_gc_card = codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+      field_type, instruction->InputAt(1), write_barrier_kind);
 
   // Temporary registers for the write barrier.
   // TODO: consider renaming StoreNeedsWriteBarrier to StoreNeedsGCMark.
@@ -6086,7 +6086,8 @@ void InstructionCodeGeneratorARMVIXL::HandleFieldSet(HInstruction* instruction,
         base,
         RegisterFrom(value),
         value_can_be_null && write_barrier_kind == WriteBarrierKind::kEmitNotBeingReliedOn);
-  } else if (codegen_->ShouldCheckGCCard(field_type, instruction->InputAt(1), write_barrier_kind)) {
+  } else if (codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+                 field_type, instruction->InputAt(1), write_barrier_kind)) {
     vixl32::Register temp = RegisterFrom(locations->GetTemp(0));
     vixl32::Register card = RegisterFrom(locations->GetTemp(1));
     codegen_->CheckGCCardIsValid(temp, card, base);
@@ -6845,8 +6846,8 @@ void LocationsBuilderARMVIXL::VisitArraySet(HArraySet* instruction) {
   const WriteBarrierKind write_barrier_kind = instruction->GetWriteBarrierKind();
   bool needs_write_barrier =
       codegen_->StoreNeedsWriteBarrier(value_type, instruction->GetValue(), write_barrier_kind);
-  bool check_gc_card =
-      codegen_->ShouldCheckGCCard(value_type, instruction->GetValue(), write_barrier_kind);
+  bool check_gc_card = codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+      value_type, instruction->GetValue(), write_barrier_kind);
 
   bool needs_type_check = instruction->NeedsTypeCheck();
 
@@ -6960,10 +6961,20 @@ void InstructionCodeGeneratorARMVIXL::VisitArraySet(HArraySet* instruction) {
         break;
       }
 
-      bool can_value_be_null = instruction->GetValueCanBeNull();
+      const bool can_value_be_null = instruction->GetValueCanBeNull();
+      // The WriteBarrierKind::kEmitNotBeingReliedOn case is able to skip the write barrier when its
+      // value is null (without an extra CompareAndBranchIfZero since we already checked if the
+      // value is null for the type check).
+      const bool skip_marking_gc_card =
+          can_value_be_null && write_barrier_kind == WriteBarrierKind::kEmitNotBeingReliedOn;
       vixl32::Label do_store;
+      vixl32::Label skip_writing_card;
       if (can_value_be_null) {
-        __ CompareAndBranchIfZero(value, &do_store, /* is_far_target= */ false);
+        if (skip_marking_gc_card) {
+          __ CompareAndBranchIfZero(value, &skip_writing_card, /* is_far_target= */ false);
+        } else {
+          __ CompareAndBranchIfZero(value, &do_store, /* is_far_target= */ false);
+        }
       }
 
       SlowPathCodeARMVIXL* slow_path = nullptr;
@@ -7023,21 +7034,32 @@ void InstructionCodeGeneratorARMVIXL::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      if (can_value_be_null) {
+      if (can_value_be_null && !skip_marking_gc_card) {
         DCHECK(do_store.IsReferenced());
         __ Bind(&do_store);
       }
 
       if (needs_write_barrier) {
-        // TODO(solanes): The WriteBarrierKind::kEmitNotBeingReliedOn case should be able to skip
-        // this write barrier when its value is null (without an extra CompareAndBranchIfZero since
-        // we already checked if the value is null for the type check). This will be done as a
-        // follow-up since it is a runtime optimization that needs extra care.
         vixl32::Register temp1 = RegisterFrom(locations->GetTemp(0));
         vixl32::Register temp2 = RegisterFrom(locations->GetTemp(1));
         codegen_->MarkGCCard(temp1, temp2, array);
-      } else if (codegen_->ShouldCheckGCCard(
-                     value_type, instruction->GetValue(), write_barrier_kind)) {
+      }
+
+      if (skip_marking_gc_card) {
+        DCHECK(skip_writing_card.IsReferenced());
+        __ Bind(&skip_writing_card);
+      }
+
+      const bool check_for_eliminated_write_barriers =
+          codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+              value_type, instruction->GetValue(), write_barrier_kind);
+      // Note that this case might not skip marking the GC card at runtime. In that case, checking
+      // it is correct but unnecessary. Given we only do this for some debug builds, it is fine.
+      const bool check_for_maybe_skipped_write_barriers =
+          codegen_->ShouldCheckGCCard() && skip_marking_gc_card;
+      const bool check_gc_card =
+          check_for_eliminated_write_barriers || check_for_maybe_skipped_write_barriers;
+      if (check_gc_card) {
         vixl32::Register temp1 = RegisterFrom(locations->GetTemp(0));
         vixl32::Register temp2 = RegisterFrom(locations->GetTemp(1));
         codegen_->CheckGCCardIsValid(temp1, temp2, array);

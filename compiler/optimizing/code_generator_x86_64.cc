@@ -5332,8 +5332,8 @@ void LocationsBuilderX86_64::HandleFieldSet(HInstruction* instruction,
   bool is_volatile = field_info.IsVolatile();
   bool needs_write_barrier =
       codegen_->StoreNeedsWriteBarrier(field_type, instruction->InputAt(1), write_barrier_kind);
-  bool check_gc_card =
-      codegen_->ShouldCheckGCCard(field_type, instruction->InputAt(1), write_barrier_kind);
+  bool check_gc_card = codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+      field_type, instruction->InputAt(1), write_barrier_kind);
 
   locations->SetInAt(0, Location::RequiresRegister());
   if (DataType::IsFloatingPointType(instruction->InputAt(1)->GetType())) {
@@ -5555,7 +5555,7 @@ void InstructionCodeGeneratorX86_64::HandleFieldSet(HInstruction* instruction,
           value.AsRegister<CpuRegister>(),
           value_can_be_null && write_barrier_kind == WriteBarrierKind::kEmitNotBeingReliedOn);
     }
-  } else if (codegen_->ShouldCheckGCCard(
+  } else if (codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
                  field_type, instruction->InputAt(value_index), write_barrier_kind)) {
     DCHECK_NE(extra_temp_index, 0u);
     DCHECK(value.IsRegister());
@@ -5846,8 +5846,8 @@ void LocationsBuilderX86_64::VisitArraySet(HArraySet* instruction) {
   WriteBarrierKind write_barrier_kind = instruction->GetWriteBarrierKind();
   bool needs_write_barrier =
       codegen_->StoreNeedsWriteBarrier(value_type, instruction->GetValue(), write_barrier_kind);
-  bool check_gc_card =
-      codegen_->ShouldCheckGCCard(value_type, instruction->GetValue(), write_barrier_kind);
+  bool check_gc_card = codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+      value_type, instruction->GetValue(), write_barrier_kind);
   bool needs_type_check = instruction->NeedsTypeCheck();
 
   LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(
@@ -5939,11 +5939,21 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
       }
 
       CpuRegister register_value = value.AsRegister<CpuRegister>();
-      bool can_value_be_null = instruction->GetValueCanBeNull();
+      const bool can_value_be_null = instruction->GetValueCanBeNull();
+      // The WriteBarrierKind::kEmitNotBeingReliedOn case is able to skip the write barrier when its
+      // value is null (without an extra CompareAndBranchIfZero since we already checked if the
+      // value is null for the type check).
+      const bool skip_marking_gc_card =
+          can_value_be_null && write_barrier_kind == WriteBarrierKind::kEmitNotBeingReliedOn;
       NearLabel do_store;
+      NearLabel skip_writing_card;
       if (can_value_be_null) {
         __ testl(register_value, register_value);
-        __ j(kEqual, &do_store);
+        if (skip_marking_gc_card) {
+          __ j(kEqual, &skip_writing_card);
+        } else {
+          __ j(kEqual, &do_store);
+        }
       }
 
       SlowPathCode* slow_path = nullptr;
@@ -5994,21 +6004,32 @@ void InstructionCodeGeneratorX86_64::VisitArraySet(HArraySet* instruction) {
         }
       }
 
-      if (can_value_be_null) {
+      if (can_value_be_null && !skip_marking_gc_card) {
         DCHECK(do_store.IsLinked());
         __ Bind(&do_store);
       }
 
       if (needs_write_barrier) {
-        // TODO(solanes): The WriteBarrierKind::kEmitNotBeingReliedOn case should be able to skip
-        // this write barrier when its value is null (without an extra testl since we already
-        // checked if the value is null for the type check). This will be done as a follow-up since
-        // it is a runtime optimization that needs extra care.
         CpuRegister temp = locations->GetTemp(0).AsRegister<CpuRegister>();
         CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
         codegen_->MarkGCCard(temp, card, array);
-      } else if (codegen_->ShouldCheckGCCard(
-                     value_type, instruction->GetValue(), write_barrier_kind)) {
+      }
+
+      if (skip_marking_gc_card) {
+        DCHECK(skip_writing_card.IsLinked());
+        __ Bind(&skip_writing_card);
+      }
+
+      const bool check_for_eliminated_write_barriers =
+          codegen_->ShouldCheckGCCardForEliminatedWriteBarrier(
+              value_type, instruction->GetValue(), write_barrier_kind);
+      // Note that this case might not skip marking the GC card at runtime. In that case, checking
+      // it is correct but unnecessary. Given we only do this for some debug builds, it is fine.
+      const bool check_for_maybe_skipped_write_barriers =
+          codegen_->ShouldCheckGCCard() && skip_marking_gc_card;
+      const bool check_gc_card =
+          check_for_eliminated_write_barriers || check_for_maybe_skipped_write_barriers;
+      if (check_gc_card) {
         CpuRegister temp = locations->GetTemp(0).AsRegister<CpuRegister>();
         CpuRegister card = locations->GetTemp(1).AsRegister<CpuRegister>();
         codegen_->CheckGCCardIsValid(temp, card, array);
