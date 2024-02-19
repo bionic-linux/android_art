@@ -22,6 +22,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static org.junit.Assert.assertThrows;
 
 import android.os.Build;
+import android.os.SystemProperties;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
@@ -45,6 +46,13 @@ public final class TestUtils {
     // partition, which got supported in T.
     public static boolean skipPublicProductLibTests() {
         return Build.VERSION.SDK_INT < 33; // TIRAMISU
+    }
+
+    // True if apps in product partitions get shared library namespaces, so we
+    // cannot test that libs in system and system_ext get blocked.
+    public static boolean productAppsAreShared() {
+        return Build.VERSION.SDK_INT <= 34 && // UPSIDE_DOWN_CAKE
+                SystemProperties.get("ro.product.vndk.version").isEmpty();
     }
 
     // Test that private libs are present, as a safeguard so that the dlopen

@@ -102,7 +102,7 @@ java_library {
 
 java_library {
     name: "loadlibrarytest_testlib",
-    sdk_version: "31",
+    sdk_version: "system_31",
     static_libs: [
         "androidx.test.ext.junit",
         "androidx.test.ext.truth",
