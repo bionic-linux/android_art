@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba0ca86_b64aa29e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-19T17:01:17Z",
+      "side": 1,
+      "message": "Note: The `Dex2oatImageTest.TestExtension` running concurrently pushed the `ImageTest.TestDefaultMethods` to time out in my local testing. (Previously finished in 1151s, just below the 1200s timeout.)",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 19
+      },
+      "revId": "933ebb23f9c78515a5f5fc757a3a0f1eeba7bbb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
