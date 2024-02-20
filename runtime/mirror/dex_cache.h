@@ -92,7 +92,7 @@ template <typename T> struct alignas(8) DexCachePair {
 
 template <typename T> struct alignas(2 * __SIZEOF_POINTER__) NativeDexCachePair {
   T* object;
-  size_t index;
+  uint32_t index;
   // This is similar to DexCachePair except that we're storing a native pointer
   // instead of a GC root. See DexCachePair for the details.
   NativeDexCachePair(T* object, uint32_t index)
@@ -152,7 +152,7 @@ template <typename T, size_t size> class NativeDexCachePairArray {
                      size_t idx,
                      NativeDexCachePair<T> pair) {
     auto* array = reinterpret_cast<AtomicPair<uintptr_t>*>(pair_array);
-    AtomicPair<uintptr_t> v(pair.index, reinterpret_cast<size_t>(pair.object));
+    AtomicPair<uintptr_t> v(pair.index, reinterpret_cast<uintptr_t>(pair.object));
     AtomicPairStoreRelease(&array[idx], v);
   }
 
