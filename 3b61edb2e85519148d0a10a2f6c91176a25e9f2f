@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74de7197_70d8bd14",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-20T15:05:26Z",
+      "side": 1,
+      "message": "Actually, we do want to increase alignment to 8 to avoid the `object` and `index` ending up on different cache lines. We achieve that by arena allocations which always have alignment 8 but it would be nice to still have the alignment documented here.\n\nMaybe we should just modernize this to `alignas(8)`. Similar for `NativeDexCachePair` with 2*pointer_size alignment.\n\nThe macro `PACKED` actually adds two attributes, `__aligned__(x)` and `__packed__`. The latter is really useless for the `DexCachePair`.",
+      "range": {
+        "startLine": 56,
+        "startChar": 28,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "3b61edb2e85519148d0a10a2f6c91176a25e9f2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d41f67_e64ed190",
+        "filename": "runtime/thread.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-20T15:05:26Z",
+      "side": 1,
+      "message": "The `alignas(4)` would serve as a check that we do not add any members with higher nutural alignment. For that check to be active, the `__packed__` attribute should be removed. Similar below.",
+      "range": {
+        "startLine": 1949,
+        "startChar": 8,
+        "endLine": 1949,
+        "endChar": 9
+      },
+      "revId": "3b61edb2e85519148d0a10a2f6c91176a25e9f2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
