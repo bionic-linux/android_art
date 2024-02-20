@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af3af94_35834ce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-20T13:49:28Z",
+      "side": 1,
+      "message": "After talking about it with David, could be better to keep the ALIGNED to make the CL a no-op",
+      "revId": "34d83833dce0445f64cb8dcdcf8314fafa48067f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
