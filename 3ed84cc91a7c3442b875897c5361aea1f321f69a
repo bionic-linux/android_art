@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8800d2fb_200600f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-02-20T23:59:56Z",
+      "side": 1,
+      "message": "PTAL - had to do more work for S on sargo, and also changed the conditions to make them as clear as possible.",
+      "revId": "3ed84cc91a7c3442b875897c5361aea1f321f69a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0d25e2_e65022be",
+        "filename": "libnativeloader/test/src/android/test/lib/AppTestCommon.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-02-20T23:59:56Z",
+      "side": 1,
+      "message": "@justinyun@google.com, just wanted to check if this is correct for how it worked when the product partition was built for the VNDK in R? And /product/lib(64) was part of the system namespace as well?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 69
+      },
+      "revId": "3ed84cc91a7c3442b875897c5361aea1f321f69a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
