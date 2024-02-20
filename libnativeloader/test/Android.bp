@@ -184,6 +184,16 @@ android_test_helper_app {
     srcs: ["src/android/test/app/DataAppTest.java"],
 }
 
+// A normal app installed in /data with a target SDK level that adds
+// /system/lib(64) to java.library.path.
+android_test_helper_app {
+    name: "loadlibrarytest_data_app_sdk35",
+    defaults: ["loadlibrarytest_app_defaults"],
+    target_sdk_version: "35",
+    manifest: "loadlibrarytest_data_app_sdk35_manifest.xml",
+    srcs: ["src/android/test/app/DataAppTest.java"],
+}
+
 java_test_host {
     name: "libnativeloader_e2e_tests",
     srcs: ["src/android/test/hostside/*.java"],
@@ -203,6 +213,7 @@ java_test_host {
         ":loadlibrarytest_product_app",
         ":loadlibrarytest_vendor_app",
         ":loadlibrarytest_data_app",
+        ":loadlibrarytest_data_app_sdk35",
     ],
     test_config: "libnativeloader_e2e_tests.xml",
     test_suites: [

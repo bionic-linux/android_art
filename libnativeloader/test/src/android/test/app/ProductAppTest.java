@@ -72,8 +72,10 @@ public class ProductAppTest extends AppTestCommon {
 
     @Test
     public void testLoadPrivateLibrariesViaSystemSharedLib() {
-        if (TestUtils.productAppsAreShared() || TestUtils.canLoadPrivateLibsFromSamePartition()) {
-            // TODO(b/186729817): These loads work in the
+        if (TestUtils.productAppsAreShared()
+                || (TestUtils.hasSystemLibInJavaLibraryPath()
+                        && TestUtils.canLoadPrivateLibsFromSamePartition())) {
+            // These loads work on older target SDK versions in the
             // canLoadPrivateLibsFromSamePartition case because the findLibrary
             // call in loadLibrary0 in Runtime.java searches the system libs and
             // converts them to absolute paths.
@@ -96,8 +98,10 @@ public class ProductAppTest extends AppTestCommon {
 
     @Test
     public void testLoadPrivateLibrariesViaSystemExtSharedLib() {
-        if (TestUtils.productAppsAreShared() || TestUtils.canLoadPrivateLibsFromSamePartition()) {
-            // TODO(b/186729817): These loads work in the
+        if (TestUtils.productAppsAreShared()
+                || (TestUtils.hasSystemLibInJavaLibraryPath()
+                        && TestUtils.canLoadPrivateLibsFromSamePartition())) {
+            // These loads work on older target SDK versions in the
             // canLoadPrivateLibsFromSamePartition case because the findLibrary
             // call in loadLibrary0 in Runtime.java searches the system libs and
             // converts them to absolute paths.

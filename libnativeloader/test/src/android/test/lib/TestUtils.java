@@ -23,6 +23,7 @@ import static org.junit.Assert.assertThrows;
 
 import android.os.SystemProperties;
 
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.android.modules.utils.build.SdkLevel;
@@ -59,6 +60,13 @@ public final class TestUtils {
     // able to load private native libs in the same partition.
     public static boolean canLoadPrivateLibsFromSamePartition() {
         return SdkLevel.isAtLeastV();
+    }
+
+    // True if the target SDK level is one where java.library.path gets
+    // initialized with system search paths by default.
+    public static boolean hasSystemLibInJavaLibraryPath() {
+        return ApplicationProvider.getApplicationContext().getApplicationInfo().targetSdkVersion
+                <= 35;
     }
 
     // Test that private libs are present, as a safeguard so that the dlopen

@@ -82,7 +82,7 @@ public class LibnativeloaderTest extends BaseHostJUnit4Test {
 
         // "Install" apps in various partitions through plain adb push followed by a soft reboot. We
         // need them in these locations to test library loading restrictions, so for all except
-        // loadlibrarytest_data_app we cannot use ITestDevice.installPackage for it since it only
+        // the data partition apps we cannot use ITestDevice.installPackage for it since it only
         // installs in /data.
 
         // For testSystemPrivApp
@@ -102,8 +102,9 @@ public class LibnativeloaderTest extends BaseHostJUnit4Test {
 
         ctx.softReboot();
 
-        // For testDataApp. Install this the normal way after the system server restart.
+        // For testDataApp*. Install these the normal way after the system server restart.
         ctx.installPackage("loadlibrarytest_data_app");
+        ctx.installPackage("loadlibrarytest_data_app_sdk35");
 
         testInfo.properties().put(CLEANUP_PATHS_KEY, ctx.mCleanup.getPathList());
     }
@@ -151,6 +152,11 @@ public class LibnativeloaderTest extends BaseHostJUnit4Test {
     @Test
     public void testDataApp() throws Exception {
         runTests("android.test.app.data", "android.test.app.DataAppTest");
+    }
+
+    @Test
+    public void testDataAppSdk35() throws Exception {
+        runTests("android.test.app.data_sdk35", "android.test.app.DataAppTest");
     }
 
     private void runTests(String pkgName, String testClassName) throws Exception {
