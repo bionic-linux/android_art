@@ -39,8 +39,9 @@ public abstract class AppTestCommon {
     // Returns true when system private native libs are accessible directly from
     // the app classloader namespace.
     private boolean systemPrivateLibsAccessibleFromAppNamespace() {
-        // Currently it only works from system apps. It also works from product
-        // apps on old versions where they were treated like system apps.
+        // It works from system apps with shared namespaces (isBundledApp in
+        // LoadedApk.java), and also from product apps on old versions where
+        // they were treated like system apps.
         return getAppLocation() == AppLocation.SYSTEM
                 || (getAppLocation() == AppLocation.PRODUCT && TestUtils.productAppsAreShared());
     }
