@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35dc4e7_92d2c8c7",
+        "filename": "libnativeloader/test/src/android/test/lib/TestUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2024-02-21T05:00:53Z",
+      "side": 1,
+      "message": "We removed ro.product.vndk.version from 24Q1 which is still U.\nI think it is safe to set this as `isAtLeastU()` because the product VNDK was mandatory from R launching devices.\n```suggestion\n        return !SdkLevel.isAtLeastU() \u0026\u0026 SystemProperties.get(\"ro.product.vndk.version\").isEmpty();\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "864e1d444e6d0e921bb397993dffaea3463fabc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
