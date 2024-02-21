@@ -46,6 +46,30 @@
       },
       "revId": "7ef0d53f7a78c6c08a1e640fb4e3f89341e0439d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e08fa0b_633af0fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-21T10:23:09Z",
+      "side": 1,
+      "message": "This may be just noise.\n\nI took 4 profiles before and 4 after (I wanted 3 but in both cases the third run took ~1s longer, so I took another one):\nBefore: 0.324%, 0.319%, 0.278%, 0.297%.\nAfter: 0.297%, 0.271%, 0.276%, 0.317%.\nFor a statistically significant result, we\u0027d have to take a lot of samples.\n\nI\u0027d rather not submit something that trades memory usage for unproven performance gain. (Or even small proven gain for a particular device.)",
+      "parentUuid": "2aea22f4_dd8f3941",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "7ef0d53f7a78c6c08a1e640fb4e3f89341e0439d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
