@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fd43ab_9c1a1f37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-02-21T19:46:26Z",
+      "side": 1,
+      "message": "This passes now. The presubmit run fails on another sargo problem, which I\u0027m addressing in https://r.android.com/2971994. Submitting.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 72
+      },
+      "revId": "20ea541896276fce938cd036b203dad4a45639dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
