@@ -70,6 +70,30 @@
       },
       "revId": "7ef0d53f7a78c6c08a1e640fb4e3f89341e0439d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a83e763_d85383b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-21T15:31:12Z",
+      "side": 1,
+      "message": "Ack, abandoning CL",
+      "parentUuid": "6e08fa0b_633af0fb",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "7ef0d53f7a78c6c08a1e640fb4e3f89341e0439d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
