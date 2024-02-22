@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d795f588_848039b5",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2217,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-22T15:15:13Z",
+      "side": 1,
+      "message": "There\u0027s no `CBeq` (https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/utils/riscv64/assembler_riscv64.h;l\u003d544-545;drc\u003dfddd6a4c78ff8bee410e4e07a500e2495ee43dcf). Do we need to suppress here?",
+      "range": {
+        "startLine": 2217,
+        "startChar": 2,
+        "endLine": 2217,
+        "endChar": 31
+      },
+      "revId": "065bac4566ad734de54f858777b30fe1790df9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405f8081_8ab25ac4",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-22T15:15:13Z",
+      "side": 1,
+      "message": "Do these `TODO` affect now that compressed is the default?",
+      "range": {
+        "startLine": 2229,
+        "startChar": 2,
+        "endLine": 2229,
+        "endChar": 75
+      },
+      "revId": "065bac4566ad734de54f858777b30fe1790df9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
