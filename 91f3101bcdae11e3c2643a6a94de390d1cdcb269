@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389080b0_5146f395",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-22T15:22:45Z",
+      "side": 1,
+      "message": "It is a performance improvement. Tip of tree without this CL, we do a null check in the type check and then always mark the GC card as dirty. We can improve in two ways:\n1) Do the null check again and then maybe dirty mark the GC card, or\n2) Use the knowledge from the previous null check to skip dirtying the GC card.\n\nAdded more info in the description to be more clear",
+      "parentUuid": "5790ac56_d6563bce",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "91f3101bcdae11e3c2643a6a94de390d1cdcb269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "467ac327_5a5dcfdb",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83f437d_c67e86de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-22T15:22:45Z",
+      "side": 1,
+      "message": "Reworded",
+      "parentUuid": "467ac327_5a5dcfdb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "91f3101bcdae11e3c2643a6a94de390d1cdcb269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c67419_e9741146",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-02-22T10:17:42Z",
       "side": 1,
       "message": "executing?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "91f3101bcdae11e3c2643a6a94de390d1cdcb269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d90b4ce4_1927ef93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-22T15:22:45Z",
+      "side": 1,
+      "message": "Reworded",
+      "parentUuid": "a8c67419_e9741146",
       "range": {
         "startLine": 11,
         "startChar": 0,
