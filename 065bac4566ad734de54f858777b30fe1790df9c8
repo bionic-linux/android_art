@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cdcdde_53432b8b",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2217,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-22T16:53:51Z",
+      "side": 1,
+      "message": "We\u0027re testing with all registers, including the `Zero` register, so the assembler can use the `c.beqz` for some of these instructions. We do not yet auto-forward to `CBeqz()`.",
+      "parentUuid": "d795f588_848039b5",
+      "range": {
+        "startLine": 2217,
+        "startChar": 2,
+        "endLine": 2217,
+        "endChar": 31
+      },
+      "revId": "065bac4566ad734de54f858777b30fe1790df9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "405f8081_8ab25ac4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-22T15:15:13Z",
       "side": 1,
       "message": "Do these `TODO` affect now that compressed is the default?",
+      "range": {
+        "startLine": 2229,
+        "startChar": 2,
+        "endLine": 2229,
+        "endChar": 75
+      },
+      "revId": "065bac4566ad734de54f858777b30fe1790df9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa64ad79_c981a612",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-22T16:53:51Z",
+      "side": 1,
+      "message": "We should update these tests but I don\u0027t want to update it in this CL.",
+      "parentUuid": "405f8081_8ab25ac4",
       "range": {
         "startLine": 2229,
         "startChar": 2,
