@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29664c6_057db1ab",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-02-22T09:30:49Z",
+      "side": 1,
+      "message": "This will read odd. make it uintptr_t ?",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "98748075e2f70e64bb0b7726c26a88f77209698b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
