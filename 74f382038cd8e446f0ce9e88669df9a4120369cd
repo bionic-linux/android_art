@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5771470_d441c030",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-23T16:13:43Z",
+      "side": 1,
+      "message": "Well, the API does use `uint32_t` already, but you can propagate it down to the field.",
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
