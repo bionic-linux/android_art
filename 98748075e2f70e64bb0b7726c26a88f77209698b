@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41bdc554_47ee3e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-23T14:14:54Z",
+      "side": 1,
+      "message": "So should we use `size_t` instead of `uint32_t` for the indexes in the other methods? It is inconsistent otherwise",
+      "parentUuid": "b6f31ebf_92839352",
+      "revId": "98748075e2f70e64bb0b7726c26a88f77209698b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29664c6_057db1ab",
         "filename": "runtime/mirror/dex_cache.h",
         "patchSetId": 1
