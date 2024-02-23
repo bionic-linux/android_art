@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6c3327_90a6b2c7",
+        "filename": "tools/libcore_gcstress_debug_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-02-23T17:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ec5223_bda9587f",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "a3e100ab326747d2cbc022c8e3d692c5ab404f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4632eb69_40233355",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-23T17:07:40Z",
       "side": 1,
       "message": "I think this stray comma make this file invalid as per the JSON format.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "a3e100ab326747d2cbc022c8e3d692c5ab404f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b3a9b4_bb6d4db6",
+        "filename": "tools/libcore_gcstress_debug_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-02-23T17:26:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4632eb69_40233355",
       "range": {
         "startLine": 91,
         "startChar": 1,
