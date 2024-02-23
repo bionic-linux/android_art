@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4306843_8d3f44b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-23T14:28:41Z",
+      "side": 1,
+      "message": "The indices from dex are `uint32_t` by spec, so I would rather keep it.\n\nBut I would also rather keep `size_t` here since otherwise you will shrink the PACKED struct and odd things might happen.",
+      "parentUuid": "41bdc554_47ee3e80",
+      "revId": "98748075e2f70e64bb0b7726c26a88f77209698b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29664c6_057db1ab",
         "filename": "runtime/mirror/dex_cache.h",
         "patchSetId": 1
