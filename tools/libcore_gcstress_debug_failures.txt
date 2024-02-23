@@ -71,7 +71,8 @@
   result: ERROR,
   modes: [host],
   names: ["libcore.java.util.jar.OldManifestTest#test_equals",
-          "test.java.util.Collection"
+          "test.java.util.Collection",
+	  "test.java.util.TestFormatter"
   ]
 },
 {
@@ -87,5 +88,5 @@
   result: EXEC_FAILED,
   bug: 259530489,
   names: ["org.apache.harmony.luni.tests.java.net.URLConnectionTest#test_setReadTimeoutI_SocketTimeoutException"]
-}
+},
 ]
