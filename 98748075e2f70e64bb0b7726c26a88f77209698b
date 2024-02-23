@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f31ebf_92839352",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-23T13:17:22Z",
+      "side": 1,
+      "message": "I am guessing if `sizeof(size_t) \u003c sizeof(void*)` we will have bigger problems and we will audit large part of the code.\n\nThat aside, even if that was smaller, `size_t` is intended to index things, so it is appropriate to use it for the index field.",
+      "revId": "98748075e2f70e64bb0b7726c26a88f77209698b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b29664c6_057db1ab",
