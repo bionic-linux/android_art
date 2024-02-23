@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87993a47_502e5844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-23T14:30:55Z",
+      "side": 1,
+      "message": "The struct is not `PACKED` anymore, only `alignas`. Just rebased on top of main to show it.",
+      "parentUuid": "c4306843_8d3f44b2",
+      "revId": "98748075e2f70e64bb0b7726c26a88f77209698b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29664c6_057db1ab",
         "filename": "runtime/mirror/dex_cache.h",
         "patchSetId": 1
