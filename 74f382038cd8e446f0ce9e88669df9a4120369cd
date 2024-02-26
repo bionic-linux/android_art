@@ -16,6 +16,47 @@
       "message": "Well, the API does use `uint32_t` already, but you can propagate it down to the field.",
       "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182c5a72_ca75a932",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-26T09:39:23Z",
+      "side": 1,
+      "message": "I\u0027m not following. Isn\u0027t that what I did when I changed `size_t index` into `uint32_t index`?",
+      "parentUuid": "c5771470_d441c030",
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51181d6d_64136cf4",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-26T09:39:23Z",
+      "side": 1,
+      "message": "I think this one and the other one that I changed below should be `static_cast` instead of `reinterpret_cast`",
+      "range": {
+        "startLine": 155,
+        "startChar": 40,
+        "endLine": 155,
+        "endChar": 56
+      },
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
