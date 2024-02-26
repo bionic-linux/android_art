@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fba949_c85bd450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-26T14:28:25Z",
+      "side": 1,
+      "message": "I don\u0027t really have opinion either way.\nI think it is unnecessary, but also no harm done.",
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5771470_d441c030",
@@ -38,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7e68922_3f458a6a",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-26T14:28:25Z",
+      "side": 1,
+      "message": "Yes.  I meant, you could also change the Set/GetNativePair args.",
+      "parentUuid": "182c5a72_ca75a932",
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046b8716_fc997525",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-26T14:28:25Z",
+      "side": 1,
+      "message": "We also cast between NativeDexCachePair and AtomicPair, both of which are pointer-sized tuple.  I would rather keep NativeDexCachePair obviously pointer sized.\n\nBut `index` is index into array, so `size_t` seems appropriate.",
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51181d6d_64136cf4",
         "filename": "runtime/mirror/dex_cache.h",
         "patchSetId": 2
@@ -49,6 +101,30 @@
       "writtenOn": "2024-02-26T09:39:23Z",
       "side": 1,
       "message": "I think this one and the other one that I changed below should be `static_cast` instead of `reinterpret_cast`",
+      "range": {
+        "startLine": 155,
+        "startChar": 40,
+        "endLine": 155,
+        "endChar": 56
+      },
+      "revId": "74f382038cd8e446f0ce9e88669df9a4120369cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59098e8e_e75472f6",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-02-26T14:28:25Z",
+      "side": 1,
+      "message": "I believe ptr to int must be reinterpret_cast",
+      "parentUuid": "51181d6d_64136cf4",
       "range": {
         "startLine": 155,
         "startChar": 40,
