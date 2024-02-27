@@ -397,6 +397,10 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
         DexoptOptions dexoptOptions = new DexoptOptions();
         dexoptOptions.compilationReason = mParams.getReason();
         dexoptOptions.targetSdkVersion = mPkg.getTargetSdkVersion();
+        //todo:provide different highest frequencies to art/dex2oat
+        //according to various scenarios such as install/background dex2oat
+        //the max frequency when do dex2oat
+        dexoptOptions.maxCpuFreq = 638;
         dexoptOptions.debuggable = mPkg.isDebuggable() || isAlwaysDebuggable();
         // Generating a meaningful app image needs a profile to determine what to include in the
         // image. Otherwise, the app image will be nearly empty.

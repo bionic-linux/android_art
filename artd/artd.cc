@@ -1132,7 +1132,7 @@ ndk::ScopedAStatus Artd::dexopt(
   AddBootImageFlags(args);
   AddCompilerConfigFlags(
       in_instructionSet, in_compilerFilter, in_priorityClass, in_dexoptOptions, args);
-  AddPerfConfigFlags(in_priorityClass, art_exec_args, args);
+  AddPerfConfigFlags(in_priorityClass, art_exec_args, in_dexoptOptions, args);
 
   // For being surfaced in crash reports on crashes.
   args.Add("--comments=%s", in_dexoptOptions.comments);
@@ -1517,6 +1517,7 @@ void Artd::AddCompilerConfigFlags(const std::string& instruction_set,
 
 void Artd::AddPerfConfigFlags(PriorityClass priority_class,
                               /*out*/ CmdlineBuilder& art_exec_args,
+                              const DexoptOptions& dexopt_options,
                               /*out*/ CmdlineBuilder& dex2oat_args) {
   // CPU set and number of threads.
   std::string default_cpu_set_prop = "dalvik.vm.dex2oat-cpu-set";
@@ -1537,7 +1538,7 @@ void Artd::AddPerfConfigFlags(PriorityClass priority_class,
     threads = props_->GetOrEmpty(default_threads_prop);
   }
   dex2oat_args.AddIfNonEmpty("--cpu-set=%s", cpu_set).AddIfNonEmpty("-j%s", threads);
-
+  dex2oat_args.Add("--cpu-freq=%d", dexopt_options.maxCpuFreq);
   if (priority_class < PriorityClass::BOOT) {
     art_exec_args
         .Add(priority_class <= PriorityClass::BACKGROUND ? "--set-task-profile=Dex2OatBackground" :

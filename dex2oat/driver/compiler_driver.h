@@ -39,6 +39,7 @@
 #include "driver/compiled_method_storage.h"
 #include "thread_pool.h"
 #include "utils/atomic_dex_ref_map.h"
+#include <perf_util.h>
 
 namespace art {
 
@@ -100,6 +101,7 @@ class CompilerDriver {
   // Initialize and destroy thread pools. This is exposed because we do not want
   // to do this twice, for PreCompile() and CompileAll().
   void InitializeThreadPools();
+  void InitializeThreadPoolsAndSetMaxFreq(int max_freq);
   void FreeThreadPools();
 
   void PreCompile(jobject class_loader,
@@ -323,6 +325,9 @@ class CompilerDriver {
   // A thread pool that can (potentially) run tasks in parallel.
   size_t parallel_thread_count_;
   std::unique_ptr<ThreadPool> parallel_thread_pool_;
+
+  //the cpu frequency of dex2oat
+  int cpu_freq_;
 
   // A thread pool that guarantees running single-threaded on the main thread.
   std::unique_ptr<ThreadPool> single_thread_pool_;

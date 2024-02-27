@@ -333,6 +333,10 @@ Parser CreateDex2oatArgumentParser() {
                     "list of cpus. Eg: --cpu-set=0,1,2,3")
           .WithMetavar("<set>")
           .IntoKey(M::CpuSet)
+      .Define("--cpu-freq=_")
+          .WithType<int>()
+          .WithHelp("Set the cpu frequency of dex2oat")
+          .IntoKey(M::CpuFreq)
       .Define("--android-root=_")
           .WithType<std::string>()
           .WithHelp("Used to locate libraries for portable linking.\n"

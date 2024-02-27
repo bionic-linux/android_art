@@ -33,6 +33,8 @@ parcelable DexoptOptions {
     @utf8InCpp String compilationReason;
     /** -Xtarget-sdk-version */
     int targetSdkVersion;
+    /** -Max-cpu-freq */
+    int maxCpuFreq;
     /** --debuggable */
     boolean debuggable;
     /** --app-image-fd */

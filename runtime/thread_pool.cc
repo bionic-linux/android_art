@@ -22,7 +22,7 @@
 #include <sys/time.h>
 
 #include <pthread.h>
-
+#include <perf_util.h>
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 
@@ -139,6 +139,13 @@ void* ThreadPoolWorker::Callback(void* arg) {
       worker->thread_pool_->create_peers_,
       /* should_run_callbacks= */ false));
   worker->thread_ = Thread::Current();
+  //set cpu max frequence of dex2oat child threads
+  int max_freq = worker->thread_pool_->max_freq_;
+  if(max_freq != 0){
+    pid_t tid = syscall(SYS_gettid);
+    PLOG(ERROR) << "wuyun callback set cpuFreq to :  tid" << tid<<"  man_freq"<<max_freq;
+    gc::collector::PerfUtil::setUclampMax(tid,max_freq);
+  }
   // Mark thread pool workers as runtime-threads.
   worker->thread_->SetIsRuntimeThread(true);
   // Do work until its time to shut down.
@@ -193,6 +200,26 @@ AbstractThreadPool::AbstractThreadPool(const char* name,
     total_wait_time_(0),
     creation_barier_(0),
     max_active_workers_(num_threads),
+    create_peers_(create_peers),
+    worker_stack_size_(worker_stack_size) {}
+
+AbstractThreadPool::AbstractThreadPool(const char* name,
+                                       size_t num_threads,
+                                       int max_freq,
+                                       bool create_peers,
+                                       size_t worker_stack_size)
+  : name_(name),
+    task_queue_lock_("task queue lock", kGenericBottomLock),
+    task_queue_condition_("task queue condition", task_queue_lock_),
+    completion_condition_("task completion condition", task_queue_lock_),
+    started_(false),
+    shutting_down_(false),
+    waiting_count_(0),
+    start_time_(0),
+    total_wait_time_(0),
+    creation_barier_(0),
+    max_active_workers_(num_threads),
+    max_freq_(max_freq),
     create_peers_(create_peers),
     worker_stack_size_(worker_stack_size) {}
 

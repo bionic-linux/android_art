@@ -2808,6 +2808,17 @@ void CompilerDriver::InitializeThreadPools() {
   single_thread_pool_.reset(ThreadPool::Create("Single-threaded Compiler driver thread pool", 0));
 }
 
+void CompilerDriver::InitializeThreadPoolsAndSetMaxFreq(int max_freq) {
+  //set cpu max frequence of dex2oat thread
+  pid_t tid = syscall(SYS_gettid);
+  gc::collector::PerfUtil::setUclampMax(tid,max_freq);
+  size_t parallel_count = parallel_thread_count_ > 0 ? parallel_thread_count_ - 1 : 0;
+  parallel_thread_pool_.reset(
+      ThreadPool::Create("Compiler driver thread pool", parallel_count, max_freq));
+  single_thread_pool_.reset(
+      ThreadPool::Create("Single-threaded Compiler driver thread pool", 0, max_freq));
+}
+
 void CompilerDriver::FreeThreadPools() {
   parallel_thread_pool_.reset();
   single_thread_pool_.reset();

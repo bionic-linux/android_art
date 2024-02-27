@@ -188,6 +188,12 @@ class AbstractThreadPool {
                             bool create_peers,
                             size_t worker_stack_size);
 
+  EXPORT AbstractThreadPool(const char* name,
+                            size_t num_threads,
+                            int max_freq,
+                            bool create_peers,
+                            size_t worker_stack_size);
+
   const std::string name_;
   Mutex task_queue_lock_;
   ConditionVariable task_queue_condition_ GUARDED_BY(task_queue_lock_);
@@ -202,6 +208,7 @@ class AbstractThreadPool {
   uint64_t total_wait_time_;
   Barrier creation_barier_;
   size_t max_active_workers_ GUARDED_BY(task_queue_lock_);
+  int max_freq_;
   const bool create_peers_;
   const size_t worker_stack_size_;
 
@@ -227,6 +234,16 @@ class EXPORT ThreadPool : public AbstractThreadPool {
     return pool;
   }
 
+  static ThreadPool* Create(const char* name,
+                            size_t num_threads,
+                            int max_freq,
+                            bool create_peers = false,
+                            size_t worker_stack_size = ThreadPoolWorker::kDefaultStackSize) {
+    ThreadPool* pool = new ThreadPool(name, num_threads, max_freq, create_peers, worker_stack_size);
+    pool->CreateThreads();
+    return pool;
+  }
+
   void AddTask(Thread* self, Task* task) REQUIRES(!task_queue_lock_) override;
   size_t GetTaskCount(Thread* self) REQUIRES(!task_queue_lock_) override;
   void RemoveAllTasks(Thread* self) REQUIRES(!task_queue_lock_) override;
@@ -244,6 +261,12 @@ class EXPORT ThreadPool : public AbstractThreadPool {
              bool create_peers,
              size_t worker_stack_size)
       : AbstractThreadPool(name, num_threads, create_peers, worker_stack_size) {}
+  ThreadPool(const char* name,
+             size_t num_threads,
+             int max_freq,
+             bool create_peers,
+             size_t worker_stack_size)
+      : AbstractThreadPool(name, num_threads, max_freq, create_peers, worker_stack_size) {}
 
  private:
   std::deque<Task*> tasks_ GUARDED_BY(task_queue_lock_);
