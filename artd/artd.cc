@@ -1536,8 +1536,9 @@ void Artd::AddPerfConfigFlags(PriorityClass priority_class,
     cpu_set = props_->GetOrEmpty(default_cpu_set_prop);
     threads = props_->GetOrEmpty(default_threads_prop);
   }
+  std::string cpu_freq = props_->GetOrEmpty("ro.vendor.dex2oat-aggressive-cpu-freq");
   dex2oat_args.AddIfNonEmpty("--cpu-set=%s", cpu_set).AddIfNonEmpty("-j%s", threads);
-
+  dex2oat_args.AddIfNonEmpty("--cpu-freq=%s", cpu_freq);
   if (priority_class < PriorityClass::BOOT) {
     art_exec_args
         .Add(priority_class <= PriorityClass::BACKGROUND ? "--set-task-profile=Dex2OatBackground" :

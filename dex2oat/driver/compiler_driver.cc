@@ -2803,9 +2803,11 @@ std::string CompilerDriver::GetMemoryUsageString(bool extended) const {
 
 void CompilerDriver::InitializeThreadPools() {
   size_t parallel_count = parallel_thread_count_ > 0 ? parallel_thread_count_ - 1 : 0;
-  parallel_thread_pool_.reset(
-      ThreadPool::Create("Compiler driver thread pool", parallel_count));
-  single_thread_pool_.reset(ThreadPool::Create("Single-threaded Compiler driver thread pool", 0));
+  ThreadPool* pool = new ThreadPool("Compiler driver thread pool", parallel_count);
+  parallel_thread_pool_.reset(pool);
+  pool->SetFreq();
+  single_thread_pool_.reset(new ThreadPool("Single-threaded Compiler driver thread pool", 0));
+
 }
 
 void CompilerDriver::FreeThreadPools() {

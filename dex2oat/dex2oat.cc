@@ -28,6 +28,7 @@
 #include <memory>
 #include <sstream>
 #include <string>
+#include <perf_util.h>
 #include <type_traits>
 #include <vector>
 
@@ -850,7 +851,10 @@ class Dex2Oat final {
     if (!cpu_set_.empty()) {
       SetCpuAffinity(cpu_set_);
     }
-
+    if (cpu_freq_ !=0) {
+      LOG(INFO) << "Running dex2oat: getcpu freq" << cpu_freq_;
+      gc::collector::PerfUtil::setUclampMax(getpid());
+    }
     if (compiler_options_->inline_max_code_units_ == CompilerOptions::kUnsetInlineMaxCodeUnits) {
       compiler_options_->inline_max_code_units_ = CompilerOptions::kDefaultInlineMaxCodeUnits;
     }
@@ -1087,6 +1091,7 @@ class Dex2Oat final {
     AssignIfExists(args, M::WatchdogTimeout, &parser_options->watch_dog_timeout_in_ms);
     AssignIfExists(args, M::Threads, &thread_count_);
     AssignIfExists(args, M::CpuSet, &cpu_set_);
+    AssignIfExists(args, M::CpuFreq, &cpu_freq_);
     AssignIfExists(args, M::Passes, &passes_to_run_filename_);
     AssignIfExists(args, M::BootImage, &parser_options->boot_image_filename);
     AssignIfExists(args, M::AndroidRoot, &android_root_);
@@ -2930,6 +2935,7 @@ class Dex2Oat final {
 
   size_t thread_count_;
   std::vector<int32_t> cpu_set_;
+  int cpu_freq_;
   uint64_t start_ns_;
   uint64_t start_cputime_ns_;
   std::unique_ptr<WatchDog> watchdog_;

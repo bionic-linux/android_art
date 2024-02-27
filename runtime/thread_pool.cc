@@ -20,9 +20,9 @@
 #include <sys/mman.h>
 #include <sys/resource.h>
 #include <sys/time.h>
-
+#include <thread>
 #include <pthread.h>
-
+#include <perf_util.h>
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 
@@ -80,6 +80,13 @@ ThreadPoolWorker::ThreadPoolWorker(AbstractThreadPool* thread_pool,
   }
   CHECK_PTHREAD_CALL(pthread_create, (&pthread_, &attr, &Callback, this), reason);
   CHECK_PTHREAD_CALL(pthread_attr_destroy, (&attr), reason);
+}
+
+void ThreadPoolWorker::SetFreq() {
+  pid_t tid = syscall(SYS_gettid);
+  PLOG(ERROR) << "wuyun to setpriority to :" << tid;
+  //todo : get tid and send to PerfUtil;
+  // gc::collector::PerfUtil::setUclampMax(pthread_gettid_np(pthread_));
 }
 
 ThreadPoolWorker::~ThreadPoolWorker() {
@@ -215,6 +222,12 @@ void AbstractThreadPool::CreateThreads() {
 
 void AbstractThreadPool::WaitForWorkersToBeCreated() {
   creation_barier_.Increment(Thread::Current(), 0);
+}
+
+void ThreadPool::SetFreq() {
+  for (ThreadPoolWorker* worker : threads_) {
+    worker->SetFreq();
+  }
 }
 
 const std::vector<ThreadPoolWorker*>& AbstractThreadPool::GetWorkers() {

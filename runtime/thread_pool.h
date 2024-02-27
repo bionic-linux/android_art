@@ -87,6 +87,8 @@ class ThreadPoolWorker {
   // Set the "nice" priority for this worker.
   void SetPthreadPriority(int priority);
 
+  // Set frequency for threads.
+  void SetFreq();
   // Get the "nice" priority for this worker.
   int GetPthreadPriority();
 
@@ -139,6 +141,8 @@ class AbstractThreadPool {
   // Create the threads of this pool.
   EXPORT void CreateThreads();
 
+  // Set frequency for threads.
+  void SetFreq();
   // Stops and deletes all threads in this pool.
   void DeleteThreads();
 
