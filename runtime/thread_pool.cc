@@ -20,9 +20,8 @@
 #include <sys/mman.h>
 #include <sys/resource.h>
 #include <sys/time.h>
-
 #include <pthread.h>
-
+#include <perf_util.h>
 #include <android-base/logging.h>
 #include <android-base/stringprintf.h>
 
@@ -82,6 +81,10 @@ ThreadPoolWorker::ThreadPoolWorker(AbstractThreadPool* thread_pool,
   CHECK_PTHREAD_CALL(pthread_attr_destroy, (&attr), reason);
 }
 
+void ThreadPoolWorker::SetFreq(int threadId,int cpuFreq) {
+  gc::collector::PerfUtil::setUclampMax(threadId,cpuFreq);
+}
+
 ThreadPoolWorker::~ThreadPoolWorker() {
   CHECK_PTHREAD_CALL(pthread_join, (pthread_, nullptr), "thread pool worker shutdown");
 }
@@ -139,6 +142,13 @@ void* ThreadPoolWorker::Callback(void* arg) {
       worker->thread_pool_->create_peers_,
       /* should_run_callbacks= */ false));
   worker->thread_ = Thread::Current();
+  //setFreq for this thread
+  int32_t cpu_freq = android::base::GetIntProperty<int32_t>(
+                     "ro.vendor.dex2oat-aggressive-cpu-freq", 0);
+  if(cpu_freq != 0){
+    pid_t tid = syscall(SYS_gettid);
+    worker->SetFreq(tid,cpu_freq);
+  }
   // Mark thread pool workers as runtime-threads.
   worker->thread_->SetIsRuntimeThread(true);
   // Do work until its time to shut down.
@@ -215,6 +225,10 @@ void AbstractThreadPool::CreateThreads() {
 
 void AbstractThreadPool::WaitForWorkersToBeCreated() {
   creation_barier_.Increment(Thread::Current(), 0);
+}
+
+void ThreadPool::SetFreq(int threadId,int cpuFreq) {
+  gc::collector::PerfUtil::setUclampMax(threadId,cpuFreq);
 }
 
 const std::vector<ThreadPoolWorker*>& AbstractThreadPool::GetWorkers() {

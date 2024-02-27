@@ -88,6 +88,7 @@
 #include "verifier/verifier_deps.h"
 #include "verifier/verifier_enums.h"
 #include "well_known_classes-inl.h"
+#include "android-base/properties.h"
 
 namespace art {
 
@@ -2803,9 +2804,16 @@ std::string CompilerDriver::GetMemoryUsageString(bool extended) const {
 
 void CompilerDriver::InitializeThreadPools() {
   size_t parallel_count = parallel_thread_count_ > 0 ? parallel_thread_count_ - 1 : 0;
-  parallel_thread_pool_.reset(
-      ThreadPool::Create("Compiler driver thread pool", parallel_count));
-  single_thread_pool_.reset(ThreadPool::Create("Single-threaded Compiler driver thread pool", 0));
+  ThreadPool* pool = new ThreadPool("Compiler driver thread pool", parallel_count);
+  parallel_thread_pool_.reset(pool);
+  int32_t cpu_freq = android::base::GetIntProperty<int32_t>(
+          "ro.vendor.dex2oat-aggressive-cpu-freq", 0);
+  if(cpu_freq != 0){
+    pid_t tid = syscall(SYS_gettid);
+    pool->SetFreq(tid,cpu_freq);
+  }
+  single_thread_pool_.reset(new ThreadPool("Single-threaded Compiler driver thread pool", 0));
+
 }
 
 void CompilerDriver::FreeThreadPools() {

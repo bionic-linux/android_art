@@ -25,6 +25,7 @@
 #include "base/macros.h"
 #include "base/mem_map.h"
 #include "base/mutex.h"
+#include "android-base/properties.h"
 
 namespace art HIDDEN {
 
@@ -87,6 +88,9 @@ class ThreadPoolWorker {
   // Set the "nice" priority for this worker.
   void SetPthreadPriority(int priority);
 
+  // Set frequency for threads.
+  void SetFreq(int threadId,int cpuFreq);
+
   // Get the "nice" priority for this worker.
   int GetPthreadPriority();
 
@@ -138,6 +142,9 @@ class AbstractThreadPool {
 
   // Create the threads of this pool.
   EXPORT void CreateThreads();
+
+  // Set frequency for threads.
+  void SetFreq(int threadId,int cpuFreq);
 
   // Stops and deletes all threads in this pool.
   void DeleteThreads();
