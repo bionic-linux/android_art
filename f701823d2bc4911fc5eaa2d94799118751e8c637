@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2707051_50dbed5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-02-28T14:57:42Z",
+      "side": 1,
+      "message": "I\u0027m unsure about the implications of changing non-test libraries in this branch just to fix a test. If you can contain this to the test then it\u0027d be easier to review.\n\nIf the problem is to keep https://r.android.com/2981551 from merging into main and other downstream branches, I don\u0027t see a problem with avoiding that with the same Merged-In as in this CL.",
+      "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
