@@ -93,6 +93,30 @@
       },
       "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90edf68_1a0cda0d",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-29T15:25:04Z",
+      "side": 1,
+      "message": "Done: https://android-review.googlesource.com/2984732 .",
+      "parentUuid": "3968c404_109b4b98",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
