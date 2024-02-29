@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b042c2_13df072e",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-29T12:44:26Z",
+      "side": 1,
+      "message": "Shall do.\n\n(I cannot leave this comment unresolved until then because gerrit now refuses to submit CLs with unresolved comments unless the commit message explicitly says \"Unsolved-Comment-Reason:\".)",
+      "parentUuid": "35588fa5_8037e5e5",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0f4b123_02d3ceb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-29T11:56:04Z",
       "side": 1,
       "message": "nit: Could we use the `$inline$` here?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3968c404_109b4b98",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-29T12:44:26Z",
+      "side": 1,
+      "message": "Shall do in a follow-up.",
+      "parentUuid": "e0f4b123_02d3ceb1",
       "range": {
         "startLine": 20,
         "startChar": 0,
