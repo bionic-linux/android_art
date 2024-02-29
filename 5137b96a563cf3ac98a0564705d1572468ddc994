@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36324df3_491715db",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-29T15:26:18Z",
+      "side": 1,
+      "message": "Done: https://android-review.googlesource.com/2984732 .",
+      "parentUuid": "42b042c2_13df072e",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0f4b123_02d3ceb1",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Done: https://android-review.googlesource.com/2984732 .",
       "parentUuid": "3968c404_109b4b98",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2028d297_02a8373c",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-02-29T15:26:18Z",
+      "side": 1,
+      "message": "Sorry, not done yet. This was the wrong \"shall do\" comment.",
+      "parentUuid": "a90edf68_1a0cda0d",
       "range": {
         "startLine": 20,
         "startChar": 0,
