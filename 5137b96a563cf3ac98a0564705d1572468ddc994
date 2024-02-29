@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35588fa5_8037e5e5",
+        "filename": "compiler/dex/inline_method_analyser.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-29T11:56:04Z",
+      "side": 1,
+      "message": "These and lines 482-485 are obsolete. Let\u0027s remove them in a follow-up CL",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 43
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f4b123_02d3ceb1",
+        "filename": "test/569-checker-pattern-replacement/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-02-29T11:56:04Z",
+      "side": 1,
+      "message": "nit: Could we use the `$inline$` here?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 90
+      },
+      "revId": "5137b96a563cf3ac98a0564705d1572468ddc994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
