@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e438785c_d84dc7cd",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-04T20:28:48Z",
+      "side": 1,
+      "message": "Regardless of json output vs. not - we\u0027d probably want to assert against an entire line.  I\u0027m not sure if following the pattern with `expected_prefixes` pattern is appropriate.  Should I build some separate mechanism to assert against the entire output if our new flag is passed?",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 47
+      },
+      "revId": "9d5913755f5c7fc1beae1937c8c5ad5c67504a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
