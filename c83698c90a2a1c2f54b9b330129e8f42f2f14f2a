@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf80260_bfc5a1f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-04T19:05:18Z",
+      "side": 1,
+      "message": "After speaking with yutingtseng@google.com, we will likely just print the code offset and output of `dex_file-\u003ePrettyMethod(dex_method_idx, true);` (which includes the return type and the parameters). We don\u0027t even necessarily need json, so it could just look like this (one line per method):\n\n`method\u003dcom.android.server.pm.Settings.dumpKackagesLPr(java.io.PrintWriter, java.lang.String, android.util.ArraySet, com.android.server.pm.Dumpstate, boolean) offset\u003d0x0052af0`\n\nUnless, of course, someone from ART prefers JSON (or some other structured format).\n\nWould change the flag name in that case to `\u003cinsert your ideas here\u003e` :)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 229
+      },
+      "revId": "c83698c90a2a1c2f54b9b330129e8f42f2f14f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f6d90d_75ece9db",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-04T19:05:18Z",
+      "side": 1,
+      "message": "This got added by the formatter hook. Should I remove this whitespace change?",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 88
+      },
+      "revId": "c83698c90a2a1c2f54b9b330129e8f42f2f14f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53244527_d55e0223",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3267,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-04T19:05:18Z",
+      "side": 1,
+      "message": "Note to self: this option should probably be mutually exclusive with some others. Should we handle that?",
+      "range": {
+        "startLine": 3267,
+        "startChar": 6,
+        "endLine": 3267,
+        "endChar": 34
+      },
+      "revId": "c83698c90a2a1c2f54b9b330129e8f42f2f14f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
