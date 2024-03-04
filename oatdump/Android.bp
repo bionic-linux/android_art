@@ -31,6 +31,7 @@ cc_defaults {
     header_libs: [
         "art_cmdlineparser_headers",
     ],
+    static_libs: ["libjsoncpp"],
 }
 
 // Collect all the static defaults and build a host-only static library, which
