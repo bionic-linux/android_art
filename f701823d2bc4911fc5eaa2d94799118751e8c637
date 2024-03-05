@@ -34,6 +34,24 @@
       "parentUuid": "e2707051_50dbed5e",
       "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "700361cc_cdc32c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-03-05T20:50:55Z",
+      "side": 1,
+      "message": "It\u0027s not the number of CLs that makes me apprehensive, but that they change the non-test code. We\u0027re effectively backporting VIC changes to UDC here. Granted it\u0027s in a test-only branch, but I\u0027m unsure if confusion may arise from it still.\n\nI\u0027ve been looking into why libnativeloader is statically linked into this test, and I think it\u0027s wrong (b/327407752, discussion on https://r.android.com/2570071). My current plan is to take the test out of CTS (on main), and possibly introduce a subset of it into CTS again, but then making sure that it links libnativeloader dynamically and only calls the exported stable APIs in the map.txt file.\n\nIn either case that means the tests depending on public_libraries.cpp will disappear from CTS. I\u0027d like to hear your thoughts on that, i.e. if these tests are useful in CTS, and what exactly they should test in that case (since it\u0027s not testing libnativeloader.so).\n\nIf you agree it\u0027s correct to take them out of CTS then I\u0027d suggest doing that here too, i.e. add them to cts/tools/cts-tradefed/res/config/cts-known-failures.xml.",
+      "parentUuid": "4d7c5f95_0f6a41f7",
+      "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
