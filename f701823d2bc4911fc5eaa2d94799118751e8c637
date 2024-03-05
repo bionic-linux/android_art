@@ -16,6 +16,24 @@
       "message": "I\u0027m unsure about the implications of changing non-test libraries in this branch just to fix a test. If you can contain this to the test then it\u0027d be easier to review.\n\nIf the problem is to keep https://r.android.com/2981551 from merging into main and other downstream branches, I don\u0027t see a problem with avoiding that with the same Merged-In as in this CL.",
       "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7c5f95_0f6a41f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-05T01:44:20Z",
+      "side": 1,
+      "message": "I tried to make one commit for test update only, but found out that we need most of changes from this topic anyway, because test relies on logic to find and load library list files (such as vndksp_libraries_vendor) from the same source code where test is built, rather than source code for device image.  I can make one commit, but it would just look like squash of changes from this topic. WDYT?",
+      "parentUuid": "e2707051_50dbed5e",
+      "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
