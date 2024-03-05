@@ -22,6 +22,30 @@
       },
       "revId": "9d5913755f5c7fc1beae1937c8c5ad5c67504a99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015e6d42_0c5530b4",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-03-05T11:37:07Z",
+      "side": 1,
+      "message": "Yes, I was thinking the same too. I think the current implementation works but I guess is a bit different from the rest of the tests that are only checking for header names instead of the actual content.\n\nMaybe we can have an split expected_prefixes to expected_headers and expected_content and that would make it clear. Since this is only a test, I am also okay if we do that as a cleanup later.",
+      "parentUuid": "e438785c_d84dc7cd",
+      "range": {
+        "startLine": 210,
+        "startChar": 6,
+        "endLine": 210,
+        "endChar": 47
+      },
+      "revId": "9d5913755f5c7fc1beae1937c8c5ad5c67504a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
