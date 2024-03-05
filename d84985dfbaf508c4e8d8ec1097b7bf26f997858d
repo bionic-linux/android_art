@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c788f82_bedbcf9d",
+        "filename": "artd/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-05T14:45:46Z",
+      "side": 1,
+      "message": "Yes, for reading the fields from FstabEntry. Strictly speaking, we only need a header, but libfstab doesn\u0027t export a header lib.",
+      "parentUuid": "f16acad7_c79dcc57",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fd9f6fa_3fba3ef0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-02-05T21:00:07Z",
       "side": 1,
       "message": "Can\u0027t this be deleted too, along with the android-base/strings.h include above?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6c0cfc_46e24b50",
+        "filename": "artd/path_utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-05T14:45:46Z",
+      "side": 1,
+      "message": "Yes, thank you for spotting this!",
+      "parentUuid": "0fd9f6fa_3fba3ef0",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4bff0dd6_aa063435",
+        "filename": "libarttools/tools.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-05T14:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83656d25_1d3da808",
+      "range": {
+        "startLine": 138,
+        "startChar": 32,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "20bba850_ed365d31",
         "filename": "libarttools/tools.cc",
         "patchSetId": 8
@@ -83,6 +155,30 @@
       "writtenOn": "2024-02-05T21:00:07Z",
       "side": 1,
       "message": "This has some overhead - another option is to use a function template instead, cf. go/totw/114. However, this is hardly hot code, so completely optional.",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7cab12_25d7e994",
+        "filename": "libarttools/tools.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-05T14:45:46Z",
+      "side": 1,
+      "message": "It may not have overhead in practice after compiler optimization (https://godbolt.org/z/WzqP3oad3). Anyway, I changed it to `function_ref`: an equivalent of what\u0027s recommended by go/totw/191, to avoid relying on the compiler optimization.",
+      "parentUuid": "20bba850_ed365d31",
       "range": {
         "startLine": 139,
         "startChar": 10,
@@ -129,6 +225,24 @@
       "writtenOn": "2024-02-05T21:00:07Z",
       "side": 1,
       "message": "Since tools/binder_utils.h is a header-only library, we don\u0027t have a .cc file where it\u0027s tested for completeness, i.e. by being the first include. One option is to just do that here, no other tests necessary (and tools/tools.h is still first tools.cc).\n\nI suppose what\u0027d make that complicated is to make clang-format accept it. Another variant is to add an otherwise empty `binder_utils_test.cc` to `art_libarttools_tests_defaults`, but I don\u0027t remember offhand if the toolchain is ok with empty translation units.",
+      "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9915eb06_8dad9860",
+        "filename": "libarttools/tools_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-05T14:45:46Z",
+      "side": 1,
+      "message": "Discussed offline. The goal is to ensure that binder_utils.h is self-sufficient. I created `binder_utils_test.cc`. However, since we don\u0027t have a host implementation of `libbinder_ndk` on `master-art`, adding it to `art_libarttools_tests_defaults` will make the build fail. Instead, I added it to `art_standalone_libarttools_tests`, which is for target only.",
+      "parentUuid": "eab6c6ac_ee562e44",
       "revId": "d84985dfbaf508c4e8d8ec1097b7bf26f997858d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
