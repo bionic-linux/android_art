@@ -70,6 +70,24 @@
       "parentUuid": "700361cc_cdc32c52",
       "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b185b046_7e7bad41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-03-06T14:34:05Z",
+      "side": 1,
+      "message": "\u003e as long as we do not want partners to alter libnativeloader behaviour.\n\nThey can\u0027t - it\u0027s in the ART module. The value with a CTS test that dynamically links it is that it ensures coverage for the ART exported APIs. However, since we haven\u0027t seen any regressions in API coverage during the last year when the test has been defunct due to the static linking, I conclude we get coverage anyway - most of the functions get called soon enough when loading just about anything.\n\n\u003e I think we should duplicate some logics (such as where to find txt files) from libnativeloader into test, so it does not depend on the libnativeloader itself, and test code can be updated by itself. However, if we do so, those changes should be introduced in the main branch, not here.\n\nAgree on all the above. Then I\u0027ll move this test out of CTS on main and file a ticket about adding one that looks for the txt files. Regarding this set of CLs I suppose they\u0027re fine afterall and that no-one builds platform images from this branch.",
+      "parentUuid": "972341f6_a358de1d",
+      "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
