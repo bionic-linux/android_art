@@ -52,6 +52,24 @@
       "parentUuid": "4d7c5f95_0f6a41f7",
       "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972341f6_a358de1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2024-03-06T04:40:47Z",
+      "side": 1,
+      "message": "I don\u0027t think we should remove this test from CTS, as long as we do not want partners to alter libnativeloader behaviour. \nI think we should duplicate some logics (such as where to find txt files) from libnativeloader into test, so it does not depend on the libnativeloader itself, and test code can be updated by itself. However, if we do so, those changes should be introduced in the main branch, not here.",
+      "parentUuid": "700361cc_cdc32c52",
+      "revId": "f701823d2bc4911fc5eaa2d94799118751e8c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
