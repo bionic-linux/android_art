@@ -15,7 +15,19 @@
  */
 
 public class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello, world!");
-  }
+    public static void run() throws Exception {
+        Class<?> clClass = Class.forName("dalvik.system.DelegateLastClassLoader");
+        ClassLoader classLoader =
+                (ClassLoader) clClass.getConstructor(String.class, ClassLoader.class)
+                        .newInstance(System.getenv("DEX_LOCATION") + "/001-HelloWorld-ex.jar",
+                                Main.class.getClassLoader() /* parent */);
+        Class<?> fooClass = classLoader.loadClass("Foo");
+        fooClass.getConstructor().newInstance();
+    }
+
+    public static void main(String[] args) throws Exception {
+        run();
+        Runtime.getRuntime().gc();
+        Runtime.getRuntime().runFinalization();
+    }
 }
