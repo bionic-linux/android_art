@@ -938,4 +938,20 @@ ALWAYS_INLINE static inline void DoGetAccessFlagsHelper(ArtMethod* method)
         method->GetDeclaringClass<kReadBarrierOption>()->IsErroneous());
 }
 
+void ArtMethod::SetEntryPointFromQuickCompiledCodePtrSize(
+    const void* entry_point_from_quick_compiled_code, PointerSize pointer_size) {
+  const void* current_entry_point = GetEntryPointFromQuickCompiledCodePtrSize(pointer_size);
+  if (current_entry_point == entry_point_from_quick_compiled_code) {
+    return;
+  }
+  jit::Jit* jit = Runtime::Current()->GetJit();
+  SetNativePointer(EntryPointFromQuickCompiledCodeOffset(pointer_size),
+                   entry_point_from_quick_compiled_code,
+                   pointer_size);
+  if (jit != nullptr &&
+      jit->GetCodeCache()->ContainsPc(current_entry_point)) {
+    jit->GetCodeCache()->AddZombieCode(this, current_entry_point);
+  }
+}
+
 }  // namespace art

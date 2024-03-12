@@ -955,7 +955,9 @@ class RuntimeImageHelper {
       const OatFile* oat_file = image_spaces[0]->GetOatFile();
       DCHECK(oat_file != nullptr);
       const OatHeader& header = oat_file->GetOatHeader();
-      copy->SetEntryPointFromQuickCompiledCode(header.GetOatAddress(stub));
+      copy->SetNativePointer(ArtMethod::EntryPointFromQuickCompiledCodeOffset(kRuntimePointerSize),
+                             header.GetOatAddress(stub),
+                             kRuntimePointerSize);
 
       if (method->IsNative()) {
         StubType stub_type = method->IsCriticalNative()
