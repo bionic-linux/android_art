@@ -766,11 +766,7 @@ class EXPORT ArtMethod final {
   }
   ALWAYS_INLINE void SetEntryPointFromQuickCompiledCodePtrSize(
       const void* entry_point_from_quick_compiled_code, PointerSize pointer_size)
-      REQUIRES_SHARED(Locks::mutator_lock_) {
-    SetNativePointer(EntryPointFromQuickCompiledCodeOffset(pointer_size),
-                     entry_point_from_quick_compiled_code,
-                     pointer_size);
-  }
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   static constexpr MemberOffset DataOffset(PointerSize pointer_size) {
     return MemberOffset(PtrSizedFieldsOffset(pointer_size) + OFFSETOF_MEMBER(
