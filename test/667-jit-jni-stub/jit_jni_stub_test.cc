@@ -41,7 +41,7 @@ void Java_Main_jitGc(JNIEnv*, jclass) {
   jit::JitCodeCache* cache = Runtime::Current()->GetJit()->GetCodeCache();
   ScopedObjectAccess soa(Thread::Current());
   cache->InvalidateAllCompiledCode();
-  cache->GarbageCollectCache(Thread::Current());
+  cache->DoCollection(soa.Self(), /* force= */ true);
 }
 
 extern "C" JNIEXPORT

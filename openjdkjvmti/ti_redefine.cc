@@ -2546,6 +2546,7 @@ void Redefiner::ClassRedefinition::UpdateMethods(art::ObjPtr<art::mirror::Class>
   const art::DexFile& old_dex_file = mclass->GetDexFile();
   // Update methods.
   for (art::ArtMethod& method : mclass->GetDeclaredMethods(image_pointer_size)) {
+    method.CopyFrom(&method, image_pointer_size);
     const art::dex::StringId* new_name_id = dex_file_->FindStringId(method.GetName());
     art::dex::TypeIndex method_return_idx =
         dex_file_->GetIndexForTypeId(*dex_file_->FindTypeId(method.GetReturnTypeDescriptor()));
