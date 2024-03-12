@@ -2875,6 +2875,10 @@ collector::GcType Heap::CollectGarbageInternal(collector::GcType gc_type,
                                 << static_cast<size_t>(collector_type_)
                                 << " and gc_type=" << gc_type;
     collector->Run(gc_cause, clear_soft_references || runtime->IsZygote());
+    jit::Jit* jit = runtime->GetJit();
+    if (jit != nullptr) {
+      jit->GetCodeCache()->DoCollection(self, /* force= */ false);
+    }
     IncrementFreedEver();
     RequestTrim(self);
     // Collect cleared references.
