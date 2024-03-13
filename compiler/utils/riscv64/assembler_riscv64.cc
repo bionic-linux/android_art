@@ -68,6 +68,15 @@ void Riscv64Assembler::FinalizeCode() {
 // LUI/AUIPC (RV32I, with sign-extension on RV64I), opcode = 0x17, 0x37
 
 void Riscv64Assembler::Lui(XRegister rd, uint32_t imm20) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    int32_t simm = static_cast<int32_t>(imm20);
+    if (rd != Zero && rd != SP && IsImmCLuiEncodable(imm20)) {
+      // lui rd, nzimm[17:12] -> c.lui rd, nzimm18
+      CLui(rd, imm20);
+      return;
+    }
+  }
+
   EmitU(imm20, rd, 0x37);
 }
 
@@ -173,6 +182,35 @@ void Riscv64Assembler::Sd(XRegister rs2, XRegister rs1, int32_t offset) {
 // IMM ALU instructions (RV32I): opcode = 0x13, funct3 from 0x0 ~ 0x7
 
 void Riscv64Assembler::Addi(XRegister rd, XRegister rs1, int32_t imm12) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd != Zero) {
+      if (rs1 == Zero && IsInt<6>(imm12)) {
+        // addi rd, Zero, imm6 -> c.li rd, imm6
+        CLi(rd, imm12);
+        return;
+      } else if (rd == rs1 && IsInt<6>(imm12) && imm12 != 0) {
+        // addi rd, rd, nzimm[5:0] -> c.addi rd, nzimm
+        CAddi(rd, imm12);
+        return;
+      } else if (rd == rs1 && rd == SP && imm12 != 0 && IsInt<10>(imm12) && IsAligned<16>(imm12)) {
+        // addi x2, x2, nzimm[9:4] -> c.addi16sp nzimm
+        CAddi16Sp(imm12);
+        return;
+      } else if (IsShortReg(rd) && rs1 == SP && imm12 != 0 && IsUint<10>(imm12) &&
+                 IsAligned<4>(imm12)) {
+        // addi rd', x2, nzuimm[9:2] -> c.addi4spn rd', nzuimm
+        CAddi4Spn(rd, static_cast<uint32_t>(imm12));
+        return;
+      } else if (rs1 != Zero && imm12 == 0) {
+        CMv(rd, rs1);
+        return;
+      }
+    } else if (rd == rs1 && imm12 == 0) {
+      CNop();
+      return;
+    }
+  }
+
   EmitI(imm12, rs1, 0x0, rd, 0x13);
 }
 
@@ -193,34 +231,104 @@ void Riscv64Assembler::Ori(XRegister rd, XRegister rs1, int32_t imm12) {
 }
 
 void Riscv64Assembler::Andi(XRegister rd, XRegister rs1, int32_t imm12) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && IsShortReg(rd) && IsInt<6>(imm12)) {
+      // andi rd', rd', imm[5:0] -> c.andi rd', imm
+      CAndi(rd, imm12);
+      return;
+    }
+  }
+
   EmitI(imm12, rs1, 0x7, rd, 0x13);
 }
 
 // 0x1 Split: 0x0(6b) + imm12(6b)
 void Riscv64Assembler::Slli(XRegister rd, XRegister rs1, int32_t shamt) {
   CHECK_LT(static_cast<uint32_t>(shamt), 64u);
+
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && rd != Zero && shamt != 0) {
+      // slli rd, rd, shamt[5:0] -> c.slli rd, shamt
+      CSlli(rd, shamt);
+      return;
+    }
+  }
+
   EmitI6(0x0, shamt, rs1, 0x1, rd, 0x13);
 }
 
 // 0x5 Split: 0x0(6b) + imm12(6b)
 void Riscv64Assembler::Srli(XRegister rd, XRegister rs1, int32_t shamt) {
   CHECK_LT(static_cast<uint32_t>(shamt), 64u);
+
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && IsShortReg(rd) && shamt != 0) {
+      // srli rd, rd, shamt[5:0] -> c.srli rd, shamt
+      CSrli(rd, shamt);
+      return;
+    }
+  }
+
   EmitI6(0x0, shamt, rs1, 0x5, rd, 0x13);
 }
 
 // 0x5 Split: 0x10(6b) + imm12(6b)
 void Riscv64Assembler::Srai(XRegister rd, XRegister rs1, int32_t shamt) {
   CHECK_LT(static_cast<uint32_t>(shamt), 64u);
+
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && IsShortReg(rd) && shamt != 0) {
+      // srai rd, rd, shamt[5:0] -> c.srai rd, shamt
+      CSrai(rd, shamt);
+      return;
+    }
+  }
+
   EmitI6(0x10, shamt, rs1, 0x5, rd, 0x13);
 }
 
 // ALU instructions (RV32I): opcode = 0x33, funct3 from 0x0 ~ 0x7
 
 void Riscv64Assembler::Add(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd != Zero && (rs1 != Zero || rs2 != Zero)) {
+      if (rs1 == Zero || rs2 == Zero) {
+        // add rd, x0, rs2 -> c.mv rd, rs2
+        if (rs1 == Zero) {
+          DCHECK_NE(rs2, Zero);
+          CMv(rd, rs2);
+          return;
+        } else {
+          DCHECK_NE(rs1, Zero);
+          CMv(rd, rs1);
+          return;
+        }
+      } else if (rd == rs1 || rd == rs2) {
+        // add rd, rd, rs2 -> c.add rd, rs2
+        if (rd == rs1) {
+          DCHECK_NE(rs2, Zero);
+          CAdd(rd, rs2);
+          return;
+        } else {
+          DCHECK_NE(rs1, Zero);
+          CAdd(rd, rs1);
+          return;
+        }
+      }
+    }
+  }
+
   EmitR(0x0, rs2, rs1, 0x0, rd, 0x33);
 }
 
 void Riscv64Assembler::Sub(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && IsShortReg(rd) && IsShortReg(rs2)) {
+      CSub(rd, rs2);
+      return;
+    }
+  }
+
   EmitR(0x20, rs2, rs1, 0x0, rd, 0x33);
 }
 
@@ -233,14 +341,50 @@ void Riscv64Assembler::Sltu(XRegister rd, XRegister rs1, XRegister rs2) {
 }
 
 void Riscv64Assembler::Xor(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (IsShortReg(rd)) {
+      if (rd == rs1 && IsShortReg(rs2)) {
+        CXor(rd, rs2);
+        return;
+      } else if (rd == rs2 && IsShortReg(rs1)) {
+        CXor(rd, rs1);
+        return;
+      }
+    }
+  }
+
   EmitR(0x0, rs2, rs1, 0x04, rd, 0x33);
 }
 
 void Riscv64Assembler::Or(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (IsShortReg(rd)) {
+      if (rd == rs1 && IsShortReg(rs2)) {
+        COr(rd, rs2);
+        return;
+      } else if (rd == rs2 && IsShortReg(rs1)) {
+        COr(rd, rs1);
+        return;
+      }
+    }
+  }
+
   EmitR(0x0, rs2, rs1, 0x06, rd, 0x33);
 }
 
 void Riscv64Assembler::And(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (IsShortReg(rd)) {
+      if (rd == rs1 && IsShortReg(rs2)) {
+        CAnd(rd, rs2);
+        return;
+      } else if (rd == rs2 && IsShortReg(rs1)) {
+        CAnd(rd, rs1);
+        return;
+      }
+    }
+  }
+
   EmitR(0x0, rs2, rs1, 0x07, rd, 0x33);
 }
 
@@ -259,6 +403,20 @@ void Riscv64Assembler::Sra(XRegister rd, XRegister rs1, XRegister rs2) {
 // 32bit Imm ALU instructions (RV64I): opcode = 0x1b, funct3 from 0x0, 0x1, 0x5
 
 void Riscv64Assembler::Addiw(XRegister rd, XRegister rs1, int32_t imm12) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd != Zero && IsInt<6>(imm12)) {
+      if (rd == rs1) {
+        // addiw rd, rd, imm[5:0] -> c.addiw rd, imm
+        CAddiw(rd, imm12);
+        return;
+      } else if (rs1 == Zero) {
+        // addiw rd, Zero, imm[5:0] -> c.li rd, imm
+        CLi(rd, imm12);
+        return;
+      }
+    }
+  }
+
   EmitI(imm12, rs1, 0x0, rd, 0x1b);
 }
 
@@ -280,10 +438,28 @@ void Riscv64Assembler::Sraiw(XRegister rd, XRegister rs1, int32_t shamt) {
 // 32bit ALU instructions (RV64I): opcode = 0x3b, funct3 from 0x0 ~ 0x7
 
 void Riscv64Assembler::Addw(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (IsShortReg(rd)) {
+      if (rd == rs1 && IsShortReg(rs2)) {
+        CAddw(rd, rs2);
+        return;
+      } else if (rd == rs2 && IsShortReg(rs1)) {
+        CAddw(rd, rs1);
+        return;
+      }
+    }
+  }
+
   EmitR(0x0, rs2, rs1, 0x0, rd, 0x3b);
 }
 
 void Riscv64Assembler::Subw(XRegister rd, XRegister rs1, XRegister rs2) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rd == rs1 && IsShortReg(rd) && IsShortReg(rs2)) {
+      CSubw(rd, rs2);
+      return;
+    }
+  }
   EmitR(0x20, rs2, rs1, 0x0, rd, 0x3b);
 }
 
@@ -337,6 +513,19 @@ void Riscv64Assembler::FenceI() {
 
 void Riscv64Assembler::Mul(XRegister rd, XRegister rs1, XRegister rs2) {
   AssertExtensionsEnabled(Riscv64Extension::kM);
+
+  if (IsExtensionEnabled(Riscv64Extension::kZcb)) {
+    if (IsShortReg(rd)) {
+      if (rd == rs1 && IsShortReg(rs2)) {
+        CMul(rd, rs2);
+        return;
+      } else if (rd == rs2 && IsShortReg(rs1)) {
+        CMul(rd, rs1);
+        return;
+      }
+    }
+  }
+
   EmitR(0x1, rs2, rs1, 0x0, rd, 0x33);
 }
 
@@ -5772,7 +5961,16 @@ void Riscv64Assembler::Li(XRegister rd, int64_t imm) {
 
 void Riscv64Assembler::Mv(XRegister rd, XRegister rs) { Addi(rd, rs, 0); }
 
-void Riscv64Assembler::Not(XRegister rd, XRegister rs) { Xori(rd, rs, -1); }
+void Riscv64Assembler::Not(XRegister rd, XRegister rs) {
+  if (IsExtensionEnabled(Riscv64Extension::kZcb)) {
+    if (rd == rs && IsShortReg(rd)) {
+      CNot(rd);
+      return;
+    }
+  }
+
+  Xori(rd, rs, -1);
+}
 
 void Riscv64Assembler::Neg(XRegister rd, XRegister rs) { Sub(rd, Zero, rs); }
 
