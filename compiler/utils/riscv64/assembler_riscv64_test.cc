@@ -2298,6 +2298,7 @@ TEST_F(AssemblerRISCV64Test, Bgeu) {
 }
 
 TEST_F(AssemblerRISCV64Test, Lb) {
+  ScopedCSuppression scs(this);
   // Note: There is no 16-bit instruction for `Lb()`.
   DriverStr(RepeatRRIb(&Riscv64Assembler::Lb, -12, "lb {reg1}, {imm}({reg2})"), "Lb");
 }
@@ -2307,9 +2308,18 @@ TEST_F(AssemblerRISCV64Test, Lh) {
   DriverStr(RepeatRRIb(&Riscv64Assembler::Lh, -12, "lh {reg1}, {imm}({reg2})"), "Lh");
 }
 
+TEST_F(AssemblerRISCV64Test, Lh_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Lh, /*imm_bits=*/-12, "lh {reg1}, {imm}({reg2})"), "Lh");
+}
+
 TEST_F(AssemblerRISCV64Test, Lw) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatRRIb(&Riscv64Assembler::Lw, -12, "lw {reg1}, {imm}({reg2})"), "Lw");
+}
+
+TEST_F(AssemblerRISCV64Test, Lw_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Lw, /*imm_bits=*/-12, "lw {reg1}, {imm}({reg2})"),
+            "Lw_C");
 }
 
 TEST_F(AssemblerRISCV64Test, Ld) {
@@ -2317,14 +2327,29 @@ TEST_F(AssemblerRISCV64Test, Ld) {
   DriverStr(RepeatRRIb(&Riscv64Assembler::Ld, -12, "ld {reg1}, {imm}({reg2})"), "Ld");
 }
 
+TEST_F(AssemblerRISCV64Test, Ld_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Ld, /*imm_bits=*/-12, "ld {reg1}, {imm}({reg2})"),
+            "Ld_C");
+}
+
 TEST_F(AssemblerRISCV64Test, Lbu) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatRRIb(&Riscv64Assembler::Lbu, -12, "lbu {reg1}, {imm}({reg2})"), "Lbu");
 }
 
+TEST_F(AssemblerRISCV64Test, Lbu_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Lbu, /*imm_bits=*/-12, "lbu {reg1}, {imm}({reg2})"),
+            "Lbu_C");
+}
+
 TEST_F(AssemblerRISCV64Test, Lhu) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatRRIb(&Riscv64Assembler::Lhu, -12, "lhu {reg1}, {imm}({reg2})"), "Lhu");
+}
+
+TEST_F(AssemblerRISCV64Test, Lhu_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Lhu, /*imm_bits=*/-12, "lhu {reg1}, {imm}({reg2})"),
+            "Lhu_C");
 }
 
 TEST_F(AssemblerRISCV64Test, Lwu) {
@@ -2337,9 +2362,19 @@ TEST_F(AssemblerRISCV64Test, Sb) {
   DriverStr(RepeatRRIb(&Riscv64Assembler::Sb, -12, "sb {reg1}, {imm}({reg2})"), "Sb");
 }
 
+TEST_F(AssemblerRISCV64Test, Sb_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Sb, /*imm_bits=*/-12, "sb {reg1}, {imm}({reg2})"),
+            "Sb_C");
+}
+
 TEST_F(AssemblerRISCV64Test, Sh) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatRRIb(&Riscv64Assembler::Sh, -12, "sh {reg1}, {imm}({reg2})"), "Sh");
+}
+
+TEST_F(AssemblerRISCV64Test, Sh_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Sh, /*imm_bits=*/-12, "sh {reg1}, {imm}({reg2})"),
+            "Sh_C");
 }
 
 TEST_F(AssemblerRISCV64Test, Sw) {
@@ -2347,9 +2382,17 @@ TEST_F(AssemblerRISCV64Test, Sw) {
   DriverStr(RepeatRRIb(&Riscv64Assembler::Sw, -12, "sw {reg1}, {imm}({reg2})"), "Sw");
 }
 
+TEST_F(AssemblerRISCV64Test, Sw_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Sw, -12, "sw {reg1}, {imm}({reg2})"), "Sw_C");
+}
+
 TEST_F(AssemblerRISCV64Test, Sd) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatRRIb(&Riscv64Assembler::Sd, -12, "sd {reg1}, {imm}({reg2})"), "Sd");
+}
+
+TEST_F(AssemblerRISCV64Test, Sd_C) {
+  DriverStr(RepeatRRIb(&Riscv64Assembler::Sd, -12, "sd {reg1}, {imm}({reg2})"), "Sd_C");
 }
 
 TEST_F(AssemblerRISCV64Test, Addi) {
@@ -2792,7 +2835,12 @@ TEST_F(AssemblerRISCV64Test, FLw) {
 
 TEST_F(AssemblerRISCV64Test, FLd) {
   ScopedCSuppression scs(this);
-  DriverStr(RepeatFRIb(&Riscv64Assembler::FLd, -12, "fld {reg1}, {imm}({reg2})"), "FLw");
+  DriverStr(RepeatFRIb(&Riscv64Assembler::FLd, -12, "fld {reg1}, {imm}({reg2})"), "FLd");
+}
+
+TEST_F(AssemblerRISCV64Test, FLd_C) {
+  DriverStr(RepeatFRIb(&Riscv64Assembler::FLd, /*imm_bits=*/-12, "fld {reg1}, {imm}({reg2})"),
+            "FLd_C");
 }
 
 TEST_F(AssemblerRISCV64Test, FSw) {
@@ -2803,6 +2851,11 @@ TEST_F(AssemblerRISCV64Test, FSw) {
 TEST_F(AssemblerRISCV64Test, FSd) {
   ScopedCSuppression scs(this);
   DriverStr(RepeatFRIb(&Riscv64Assembler::FSd, 2, "fsd {reg1}, {imm}({reg2})"), "FSd");
+}
+
+TEST_F(AssemblerRISCV64Test, FSd_C) {
+  DriverStr(RepeatFRIb(&Riscv64Assembler::FSd, /*imm_bits=*/-12, "fsd {reg1}, {imm}({reg2})"),
+            "FSd_C");
 }
 
 TEST_F(AssemblerRISCV64Test, FMAddS) {
