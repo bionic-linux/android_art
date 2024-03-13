@@ -2586,6 +2586,11 @@ TEST_F(AssemblerRISCV64Test, Ebreak) {
   DriverStr("ebreak\n", "Ebreak");
 }
 
+TEST_F(AssemblerRISCV64Test, Ebreak_C) {
+  __ Ebreak();
+  DriverStr("ebreak\n", "Ebreak_C");
+}
+
 TEST_F(AssemblerRISCV64Test, Fence) {
   auto get_fence_type_string = [](uint32_t fence_type) {
     CHECK_LE(fence_type, 0xfu);
@@ -8741,6 +8746,11 @@ TEST_F(AssemblerRISCV64Test, Unimp) {
   ScopedCSuppression scs(this);
   __ Unimp();
   DriverStr("unimp\n", "Unimp");
+}
+
+TEST_F(AssemblerRISCV64Test, Unimp_C) {
+  __ Unimp();
+  DriverStr("unimp\n", "Unimp_C");
 }
 
 TEST_F(AssemblerRISCV64Test, LoadLabelAddress) {
