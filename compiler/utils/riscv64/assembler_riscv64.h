@@ -246,8 +246,14 @@ class Riscv64Assembler final : public Assembler {
   size_t CodeSize() const override { return Assembler::CodeSize(); }
   DebugFrameOpCodeWriterForAssembler& cfi() { return Assembler::cfi(); }
 
-  bool IsExtensionEnabled(Riscv64Extension ext) {
+  bool IsExtensionEnabled(Riscv64Extension ext) const {
     return (enabled_extensions_ & Riscv64ExtensionBit(ext)) != 0u;
+  }
+
+  bool IsCompressedInstructionsEnabled() const {
+    return IsExtensionEnabled(Riscv64Extension::kZca) ||
+           IsExtensionEnabled(Riscv64Extension::kZcb) ||
+           IsExtensionEnabled(Riscv64Extension::kZcd);
   }
 
   // According to "The RISC-V Instruction Set Manual"
