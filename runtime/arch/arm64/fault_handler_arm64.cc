@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#include "fault_handler.h"
-
 #include <sys/ucontext.h>
 
 #include "arch/instruction_set.h"
@@ -24,6 +22,8 @@
 #include "base/logging.h"  // For VLOG.
 #include "base/macros.h"
 #include "base/pointer_size.h"
+#include "fault_handler.h"
+#include "oat/oat_quick_method_header.h"
 #include "registers_arm64.h"
 #include "runtime_globals.h"
 #include "thread-current-inl.h"
@@ -105,6 +105,11 @@ bool SuspensionHandler::Action([[maybe_unused]] int sig,
 
   ucontext_t* uc = reinterpret_cast<ucontext_t*>(context);
   mcontext_t* mc = reinterpret_cast<mcontext_t*>(&uc->uc_mcontext);
+
+  if (OatQuickMethodHeader::IsNterpPc(mc->pc)) {
+    // Interpreter does not do suspend check through the exception handler
+    return false;
+  }
 
   uint32_t inst = *reinterpret_cast<uint32_t*>(mc->pc);
   VLOG(signals) << "checking suspend; inst: " << std::hex << inst << " checkinst: " << checkinst;
