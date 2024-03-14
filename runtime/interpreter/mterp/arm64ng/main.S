@@ -1550,6 +1550,8 @@ END \name
     b \if_not_hot
 .endm
 
+// We don't use implicit suspendcheck in nterp because it wouldn't work
+// with execute-only mapped binaries with the current implementation.
 .macro DO_SUSPEND_CHECK continue_label
     ldr wip, [xSELF, #THREAD_FLAGS_OFFSET]
     tst wip, #THREAD_SUSPEND_OR_CHECKPOINT_REQUEST
