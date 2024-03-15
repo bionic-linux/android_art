@@ -16,6 +16,24 @@
       "message": "Hi Nicolas,\n\nObserved this change(patch set 2) is causing launcher regression\n\nhttps://screenshot.googleplex.com/uZPfpsgb4o643PE\n\nhttps://crystalball-presubmit.corp.google.com/dashboard/I60600010255454471?host\u003dandroid-review.googlesource.com\u0026change_number\u003d3000786\u0026patchset\u003d2\n\nPlease fix this regression before merging.",
       "revId": "5a5f903949659e883a61195354fcaf33424f054c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981eb4d3_2f571bd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1261281
+      },
+      "writtenOn": "2024-03-15T16:36:44Z",
+      "side": 1,
+      "message": "On the latest patch set 5 we see no regression - https://screenshot.googleplex.com/BBC6XwadpHpFLhb",
+      "parentUuid": "b37edf70_3e72aaf7",
+      "revId": "5a5f903949659e883a61195354fcaf33424f054c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
