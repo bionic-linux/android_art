@@ -33,6 +33,24 @@
       "message": "My personal preference would be the JSON version.\n\nI would be also ok with the string just being created manually instead of importing the json library.  But if the linker properly strips the unused parts of the library, it shouldn\u0027t matter either.  Is there measure code size difference?",
       "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c5bbd8_220af385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-18T20:24:01Z",
+      "side": 1,
+      "message": "re: code size: `m oatdump \u0026\u0026 ls -l --block-size\u003dK $(which oatdump)`\n```\nAfter : 75981K\nBefore: 75674K\nDiff. :   307K\n```\n\nLMK...",
+      "parentUuid": "70224a18_622fca25",
+      "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
