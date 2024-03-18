@@ -16,6 +16,29 @@
       "message": "This set of commits is re-implemented changes from here https://android-review.googlesource.com/c/platform/art/+/2939941\n\nPlease take a look",
       "revId": "6441ecc8acff5b156853566b24d358aa1ca29d14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8921435a_d031063e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2854,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-03-18T16:01:22Z",
+      "side": 1,
+      "message": "unused here and in follow up CLs?",
+      "range": {
+        "startLine": 2854,
+        "startChar": 6,
+        "endLine": 2854,
+        "endChar": 28
+      },
+      "revId": "6441ecc8acff5b156853566b24d358aa1ca29d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
