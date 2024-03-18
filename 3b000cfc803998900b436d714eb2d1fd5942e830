@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524ba872_4d9a2259",
+        "filename": "compiler/utils/riscv64/jni_macro_assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T09:05:05Z",
+      "side": 1,
+      "message": "We could have a `no_compression_` member in the `JniMacroAssemblerRiscv64Test` instead of disabling in individual tests. That would require a single `friend` declaration instead of the long list.`\n\nBut since we already have a change that reverts this bit, I\u0027m fine with merging this as is. (Without even renaming to `no_compression` to fit the ART style.)",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "3b000cfc803998900b436d714eb2d1fd5942e830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
