@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0a1b42_768a0472",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "`automatically`",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d778446_fe7e2b2f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "I think this comment is unnecessary. I also find the subscripts (`[17:12]` and `18`) confusing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 6,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3b6f38_7e118b2c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Unnecessary, this comment says the same thing as the code itself. Do you see any value in these comments?",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5fde423_a63fcc3a",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Reorder this case before the `imm12 !\u003d 0` cases. Remove the `imm12 !\u003d 0` from those cases. (I guess the `CAddi4Spn()` check shall fit on one line.)",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 7
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925197ab_aba623e4",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "The code here could be reorganized as\n\n    if (rs1 \u003d\u003d Zero) {\n      ...\n    } else if (rs2 \u003d\u003d Zero) {\n      ...\n    } else if (rd \u003d\u003d rs1) {\n      ...\n    } else if (rd \u003d\u003d rs2) {\n      ...\n    }",
+      "range": {
+        "startLine": 295,
+        "startChar": 6,
+        "endLine": 295,
+        "endChar": 39
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a09217a5_64899497",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Add a blank line? (Or remove blank lines from other functions for consistency.)",
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bccdf0_165df89e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "I\u0027d prefer the default \"Lui\" test to have C enabled and come first. The other test should be \"Lui_WithoutC\" and come second. Similar for other tests. (Just to be consistent with the pre-existing `Zext*` and `Sext*` tests.)",
+      "range": {
+        "startLine": 2248,
+        "startChar": 29,
+        "endLine": 2248,
+        "endChar": 34
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd197de_bb2c48be",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7998,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Can you add this test, please?",
+      "range": {
+        "startLine": 7998,
+        "startChar": 19,
+        "endLine": 7998,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387b96ee_f61f03dc",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8013,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 8013,
+        "startChar": 19,
+        "endLine": 8013,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0c1a0f_53fe1798",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8037,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Why are you adding this test? Zbb does not affect the `ZextB()` instruction.",
+      "range": {
+        "startLine": 8037,
+        "startChar": 29,
+        "endLine": 8037,
+        "endChar": 49
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d07fe3e_4b93405f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8051,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "Can you add this test, please?",
+      "range": {
+        "startLine": 8051,
+        "startChar": 19,
+        "endLine": 8051,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3caa7ea9_acaeee62",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8066,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 8066,
+        "startChar": 19,
+        "endLine": 8066,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3eb04f_9b755fef",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8694,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-18T17:18:50Z",
+      "side": 1,
+      "message": "This should be removed and the `Riscv64Assembler::EmitBranch()` should prevent the use of `c.addi` for `case Branch::kLabel`. (Otherwise we\u0027ll emit 2 bytes instead of 4, leaving the other 2 bytes with whatever they held before.)",
+      "range": {
+        "startLine": 8694,
+        "startChar": 2,
+        "endLine": 8694,
+        "endChar": 31
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
