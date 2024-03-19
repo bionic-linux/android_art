@@ -157,6 +157,24 @@
       "message": "An alternative I thought was to always do `codegen_-\u003eCheckGCCardIsValid(temp1, temp2, array);` if `codegen_-\u003eCanCheckGCCard() ` is true. This would make debug builds slower (as it would run even when we just marked the GC card) but it would simplify the logic here.\n\narm32, x86, x86_64 would benefit more from this than arm64/riscv64 (where the logic is simpler)",
       "revId": "91f3101bcdae11e3c2643a6a94de390d1cdcb269",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "673d252c_d85e4390",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 7064,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-03-19T17:13:38Z",
+      "side": 1,
+      "message": "Obsolete comment",
+      "parentUuid": "aff7c559_59b87690",
+      "revId": "91f3101bcdae11e3c2643a6a94de390d1cdcb269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
