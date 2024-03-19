@@ -33,6 +33,75 @@
       "message": "Friendly ping",
       "revId": "3321d7353ace93ccd0f4f36ec10094824f5bcd1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38713772_f7d624da",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-03-19T10:51:18Z",
+      "side": 1,
+      "message": "I find the `Can` misleading. Keep it `Should`?",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 21
+      },
+      "revId": "3321d7353ace93ccd0f4f36ec10094824f5bcd1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdb9867_842b5bc2",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-03-19T10:51:18Z",
+      "side": 1,
+      "message": "`ShouldCheckGCCardForEliminatedWriteBarrier` ?",
+      "range": {
+        "startLine": 391,
+        "startChar": 7,
+        "endLine": 391,
+        "endChar": 47
+      },
+      "revId": "3321d7353ace93ccd0f4f36ec10094824f5bcd1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb3cd52_a22a49ab",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6966,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-03-19T10:51:18Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 6965,
+        "startChar": 0,
+        "endLine": 6966,
+        "endChar": 93
+      },
+      "revId": "3321d7353ace93ccd0f4f36ec10094824f5bcd1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
