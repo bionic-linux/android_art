@@ -118,6 +118,30 @@
       },
       "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05684be_e891230c",
+        "filename": "compiler/utils/riscv64/jni_macro_assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T08:57:23Z",
+      "side": 0,
+      "message": "I think the `ScopedNoCInstructions` shall be useful to address my comments about preventing `Riscv64Assembler::EmitBranch()` from emitting 16-bit instructions. On the other hand, `ScopedUseCInstructions` shall probably be dead code.",
+      "parentUuid": "f3b63344_d35dc65a",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
