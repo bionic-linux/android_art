@@ -462,6 +462,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d30fd326_d2e0f90e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7998,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:40:24Z",
+      "side": 1,
+      "message": "The `SextB_WithoutZbb` would test `SextB()` emitting `slli + c.srai` or `c.slli + c.srai` when the destination is a short reg. Clang does the same for `sext.b a1, a2` and `sext.b a1, a1` when provided with `-march` with \"C\" without \"Zbb\".",
+      "parentUuid": "3ec8dc28_9c6bd7e8",
+      "range": {
+        "startLine": 7998,
+        "startChar": 19,
+        "endLine": 7998,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "387b96ee_f61f03dc",
         "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
         "patchSetId": 2
