@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7591a6c_dfb988ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0a1b42_768a0472",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d778446_fe7e2b2f",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "I think this comment is unnecessary. I also find the subscripts (`[17:12]` and `18`) confusing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 6,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ebf334_785b3793",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d778446_fe7e2b2f",
       "range": {
         "startLine": 74,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4063e6ed_8438c3e4",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Drop",
+      "parentUuid": "5e3b6f38_7e118b2c",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ec117b5_ad83634e",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-19T08:36:21Z",
       "side": 1,
       "message": "One comment that would be valueable: We\u0027re testing against clang\u0027s assembler and therefore if both `c.addi` and `c.addi16sp` are viable, we use the `c.addi` just like clang.",
+      "range": {
+        "startLine": 196,
+        "startChar": 40,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700db930_7e11b1c9",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec117b5_ad83634e",
       "range": {
         "startLine": 196,
         "startChar": 40,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf3eef6_d15b5b6b",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Unfortunately `CAddi4Spn` does not fit into one line, it has complex condition on its `imm` operand",
+      "parentUuid": "f5fde423_a63fcc3a",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 7
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "925197ab_aba623e4",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "The code here could be reorganized as\n\n    if (rs1 \u003d\u003d Zero) {\n      ...\n    } else if (rs2 \u003d\u003d Zero) {\n      ...\n    } else if (rd \u003d\u003d rs1) {\n      ...\n    } else if (rd \u003d\u003d rs2) {\n      ...\n    }",
+      "range": {
+        "startLine": 295,
+        "startChar": 6,
+        "endLine": 295,
+        "endChar": 39
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd34e97b_ca33bbd5",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925197ab_aba623e4",
       "range": {
         "startLine": 295,
         "startChar": 6,
@@ -156,6 +300,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1983c0_17cf1622",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09217a5_64899497",
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9bccdf0_165df89e",
@@ -179,6 +341,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfab26ef_b7508e51",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9bccdf0_165df89e",
+      "range": {
+        "startLine": 2248,
+        "startChar": 29,
+        "endLine": 2248,
+        "endChar": 34
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd197de_bb2c48be",
@@ -192,6 +378,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "Can you add this test, please?",
+      "range": {
+        "startLine": 7998,
+        "startChar": 19,
+        "endLine": 7998,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029a3dcb_595ede2e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7998,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Clang unfortunately does not auto-forward those instruction into single \"C\" instruction. Should be added in this case?",
+      "parentUuid": "7cd197de_bb2c48be",
       "range": {
         "startLine": 7998,
         "startChar": 19,
@@ -238,6 +448,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "Why are you adding this test? Zbb does not affect the `ZextB()` instruction.",
+      "range": {
+        "startLine": 8037,
+        "startChar": 29,
+        "endLine": 8037,
+        "endChar": 49
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c5d7a1_22d6abb4",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8037,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Indeed, drop test",
+      "parentUuid": "9a0c1a0f_53fe1798",
       "range": {
         "startLine": 8037,
         "startChar": 29,
@@ -307,6 +541,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "This should be removed and the `Riscv64Assembler::EmitBranch()` should prevent the use of `c.addi` for `case Branch::kLabel`. (Otherwise we\u0027ll emit 2 bytes instead of 4, leaving the other 2 bytes with whatever they held before.)",
+      "range": {
+        "startLine": 8694,
+        "startChar": 2,
+        "endLine": 8694,
+        "endChar": 31
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665ae0a2_36e973bb",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8694,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T11:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3eb04f_9b755fef",
       "range": {
         "startLine": 8694,
         "startChar": 2,
