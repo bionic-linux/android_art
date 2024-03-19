@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ec117b5_ad83634e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T08:36:21Z",
+      "side": 1,
+      "message": "One comment that would be valueable: We\u0027re testing against clang\u0027s assembler and therefore if both `c.addi` and `c.addi16sp` are viable, we use the `c.addi` just like clang.",
+      "range": {
+        "startLine": 196,
+        "startChar": 40,
+        "endLine": 196,
+        "endChar": 48
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5fde423_a63fcc3a",
         "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
         "patchSetId": 2
