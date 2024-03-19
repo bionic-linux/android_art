@@ -166,6 +166,30 @@
       },
       "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40586d55_97037393",
+        "filename": "compiler/utils/riscv64/jni_macro_assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-19T09:12:53Z",
+      "side": 0,
+      "message": "Actually `ScopedNoCInstructions` is already used in branch emitter",
+      "parentUuid": "92d44bea_bda64721",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
