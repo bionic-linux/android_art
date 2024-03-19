@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc51fb4c_0535e341",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7059,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T15:22:16Z",
+      "side": 1,
+      "message": "If the value was null, the `!clean || !self-\u003eis_gc_marking` check can fail below. Or did you intend to `__ Bind(\u0026skip_writing_card);` after the `CheckGCCardIsValid()`?",
+      "range": {
+        "startLine": 7059,
+        "startChar": 10,
+        "endLine": 7059,
+        "endChar": 63
+      },
+      "revId": "98be9f62b7611c3007e6ff83beea29f3010e037b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
