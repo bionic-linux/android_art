@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d83e76_dad4283f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5959,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "This should be moved to `Xori()` with the additional condition `imm \u003d\u003d -1`. The `Xori` test should be changed to test negative immediates as well.",
+      "range": {
+        "startLine": 5954,
+        "startChar": 2,
+        "endLine": 5959,
+        "endChar": 3
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfe8f51_0c313917",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6879,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Add `ScopedNoCInstructions` for the `Nop()`s below.",
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7565c795_b021879d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2249,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "We\u0027re missing a `/*imm_bits\u003d*/` here.",
+      "range": {
+        "startLine": 2249,
+        "startChar": 45,
+        "endLine": 2249,
+        "endChar": 46
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05476dff_7793f0ac",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7960,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Replace this test with `Nop` and `Nop_WithoutC` tests, use `nop` instead of `addi zero, zero, 0` in both.",
+      "range": {
+        "startLine": 7956,
+        "startChar": 0,
+        "endLine": 7960,
+        "endChar": 1
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8f67c2_69476a4e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7980,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Test against `not {reg1}, {reg2}` instead. Same in the `Not` test above.",
+      "range": {
+        "startLine": 7980,
+        "startChar": 46,
+        "endLine": 7980,
+        "endChar": 69
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

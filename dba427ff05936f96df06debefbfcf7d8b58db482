@@ -236,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "381deccd_b4ec93f4",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "The ordering I suggested would work. For `imm \u003d\u003d 0 \u0026\u0026 rs1 \u003d\u003d Zero`, we would have tried to match the other cases but they would not match anyway. Nevertheless, PS3 is good and requires less elaborate reasoning.",
+      "parentUuid": "aaf3eef6_d15b5b6b",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 207,
+        "endChar": 7
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "925197ab_aba623e4",
@@ -412,6 +436,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec8dc28_9c6bd7e8",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7998,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Leave this as is. I\u0027ll have a look later.",
+      "parentUuid": "029a3dcb_595ede2e",
+      "range": {
+        "startLine": 7998,
+        "startChar": 19,
+        "endLine": 7998,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387b96ee_f61f03dc",
@@ -425,6 +473,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 8013,
+        "startChar": 19,
+        "endLine": 8013,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb67ecb_d1a25d00",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8013,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Marking as resolved, see above.",
+      "parentUuid": "387b96ee_f61f03dc",
       "range": {
         "startLine": 8013,
         "startChar": 19,
@@ -505,6 +577,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9213f5f0_91ae318e",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8051,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Marking as resolved, see above.",
+      "parentUuid": "9d07fe3e_4b93405f",
+      "range": {
+        "startLine": 8051,
+        "startChar": 19,
+        "endLine": 8051,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3caa7ea9_acaeee62",
@@ -518,6 +614,30 @@
       "writtenOn": "2024-03-18T17:18:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 8066,
+        "startChar": 19,
+        "endLine": 8066,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55a3b9b_18d469c9",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8066,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T14:30:47Z",
+      "side": 1,
+      "message": "Marking as resolved, see above.",
+      "parentUuid": "3caa7ea9_acaeee62",
       "range": {
         "startLine": 8066,
         "startChar": 19,
