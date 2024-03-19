@@ -94,6 +94,30 @@
       },
       "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b63344_d35dc65a",
+        "filename": "compiler/utils/riscv64/jni_macro_assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-03-19T08:54:09Z",
+      "side": 0,
+      "message": "I\u0027d prefer to remove dead code. It may not be useful again, and even if it is useful in the future it has a chance to bit rot.",
+      "parentUuid": "ec6bc4e2_4e50f53a",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
