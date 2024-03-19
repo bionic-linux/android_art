@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857cfa49_9b109655",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6516,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-19T15:27:13Z",
+      "side": 1,
+      "message": "It\u0027s odd to see `if (...) { ...; return; } ...` in `Ebreak()` and `if (...) { ... } else { ... }` here but both are valid styles.",
+      "revId": "86d1e560fa57fcc9257b4e3ff9a9d0b87ddef7bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
