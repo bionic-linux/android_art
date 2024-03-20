@@ -22,6 +22,30 @@
       },
       "revId": "5b4e4af3c9e6639cdb8e36f03277f721beca769c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d27f7c77_d3c4182d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 6931,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4913db_a75d4d69",
+      "range": {
+        "startLine": 6931,
+        "startChar": 6,
+        "endLine": 6931,
+        "endChar": 49
+      },
+      "revId": "5b4e4af3c9e6639cdb8e36f03277f721beca769c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
