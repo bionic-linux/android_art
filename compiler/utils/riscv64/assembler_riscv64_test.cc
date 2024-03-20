@@ -337,9 +337,11 @@ class AssemblerRISCV64Test : public AssemblerTest<Riscv64Assembler,
   }
 
   std::string EmitNops(size_t size) {
-    // TODO(riscv64): Support "C" Standard Extension.
-    DCHECK_ALIGNED(size, sizeof(uint32_t));
-    const size_t num_nops = size / sizeof(uint32_t);
+    const size_t nopSize = GetAssembler()->IsExtensionEnabled(Riscv64Extension::kZca) ?
+                               sizeof(uint16_t) :
+                               sizeof(uint32_t);
+    DCHECK(IsAlignedParam(size, nopSize));
+    const size_t num_nops = size / nopSize;
     return RepeatInsn(num_nops, "nop\n", [&]() { __ Nop(); });
   }
 
@@ -475,6 +477,25 @@ class AssemblerRISCV64Test : public AssemblerTest<Riscv64Assembler,
     };
   }
 
+  auto GetPrintBcondOpposite() {
+    return [=]([[maybe_unused]] const std::string& cond,
+               const std::string& opposite_cond,
+               const std::string& args,
+               const std::string& target) {
+      return "b" + opposite_cond + args + ", " + target + "\n";
+    };
+  }
+
+  auto GetPrintBcondAndJ(const std::string& skip_label) {
+    return [=](const std::string& cond,
+               [[maybe_unused]] const std::string& opposite_cond,
+               const std::string& args,
+               const std::string& target) {
+      return "b" + cond + args + ", " + skip_label + "f\n" + "j " + target + "\n" + skip_label +
+             ":\n";
+    };
+  }
+
   auto GetPrintBcondOppositeAndJ(const std::string& skip_label) {
     return [=]([[maybe_unused]] const std::string& cond,
                const std::string& opposite_cond,
@@ -583,30 +604,31 @@ class AssemblerRISCV64Test : public AssemblerTest<Riscv64Assembler,
     return 4 * KB;
   }
 
-  size_t MaxOffset13ForwardDistance() {
-    // TODO(riscv64): Support "C" Standard Extension, max forward distance 4KiB - 2.
-    return 4 * KB - 4;
-  }
+  size_t MaxOffset13ForwardDistance() { return 4 * KB - 4; }
+
+  size_t MaxOffset9ForwardDistance() { return KB / 4 - 2; }
+
+  size_t MaxOffset9BackwardDistance() { return KB / 4; }
 
   size_t MaxOffset21BackwardDistance() {
     return 1 * MB;
   }
 
-  size_t MaxOffset21ForwardDistance() {
-    // TODO(riscv64): Support "C" Standard Extension, max forward distance 1MiB - 2.
-    return 1 * MB - 4;
-  }
+  size_t MaxOffset21ForwardDistance() { return 1 * MB - 4; }
 
   template <typename PrintBcond>
-  void TestBeqA0A1Forward(const std::string& test_name,
+  void TestBxxA0XXForward(const std::string& test_name,
+                          void (Riscv64Assembler::*f)(XRegister, XRegister, Riscv64Label*, bool),
                           size_t nops_size,
                           const std::string& target_label,
                           PrintBcond&& print_bcond,
+                          XRegister reg,
                           bool is_bare = false) {
     std::string expected;
     Riscv64Label label;
-    __ Beq(A0, A1, &label, is_bare);
-    expected += print_bcond("eq", "ne", " a0, a1", target_label + "f");
+    (GetAssembler()->*f)(A0, reg, &label, is_bare);
+    std::string args = " a0, " + GetRegisterName(reg);
+    expected += print_bcond("eq", "ne", args, target_label + "f");
     expected += EmitNops(nops_size);
     __ Bind(&label);
     expected += target_label + ":\n";
@@ -614,18 +636,21 @@ class AssemblerRISCV64Test : public AssemblerTest<Riscv64Assembler,
   }
 
   template <typename PrintBcond>
-  void TestBeqA0A1Backward(const std::string& test_name,
+  void TestBxxA0XXBackward(const std::string& test_name,
+                           void (Riscv64Assembler::*f)(XRegister, XRegister, Riscv64Label*, bool),
                            size_t nops_size,
                            const std::string& target_label,
                            PrintBcond&& print_bcond,
+                           XRegister reg,
                            bool is_bare = false) {
     std::string expected;
     Riscv64Label label;
     __ Bind(&label);
     expected += target_label + ":\n";
     expected += EmitNops(nops_size);
-    __ Beq(A0, A1, &label, is_bare);
-    expected += print_bcond("eq", "ne", " a0, a1", target_label + "b");
+    (GetAssembler()->*f)(A0, reg, &label, is_bare);
+    std::string args = " a0, " + GetRegisterName(reg);
+    expected += print_bcond("eq", "ne", args, target_label + "b");
     DriverStr(expected, test_name);
   }
 
@@ -2304,21 +2329,25 @@ TEST_F(AssemblerRISCV64Test, Bne) {
 }
 
 TEST_F(AssemblerRISCV64Test, Blt) {
+  ScopedCSuppression scs(this);
   // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Blt, -11, 2, "blt {reg1}, {reg2}, {imm}\n"), "Blt");
 }
 
 TEST_F(AssemblerRISCV64Test, Bge) {
+  ScopedCSuppression scs(this);
   // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bge, -11, 2, "bge {reg1}, {reg2}, {imm}\n"), "Bge");
 }
 
 TEST_F(AssemblerRISCV64Test, Bltu) {
+  ScopedCSuppression scs(this);
   // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bltu, -11, 2, "bltu {reg1}, {reg2}, {imm}\n"), "Bltu");
 }
 
 TEST_F(AssemblerRISCV64Test, Bgeu) {
+  ScopedCSuppression scs(this);
   // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bgeu, -11, 2, "bgeu {reg1}, {reg2}, {imm}\n"), "Bgeu");
 }
@@ -8220,86 +8249,91 @@ TEST_F(AssemblerRISCV64Test, FNegD) {
 
 TEST_F(AssemblerRISCV64Test, Beqz) {
   ScopedCSuppression scs(this);
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Beqz, -11, 2, "beq {reg}, zero, {imm}\n"), "Beqz");
 }
 
 TEST_F(AssemblerRISCV64Test, Bnez) {
   ScopedCSuppression scs(this);
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Bnez, -11, 2, "bne {reg}, zero, {imm}\n"), "Bnez");
 }
 
 TEST_F(AssemblerRISCV64Test, Blez) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Blez, -11, 2, "bge zero, {reg}, {imm}\n"), "Blez");
 }
 
 TEST_F(AssemblerRISCV64Test, Bgez) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Bgez, -11, 2, "bge {reg}, zero, {imm}\n"), "Bgez");
 }
 
 TEST_F(AssemblerRISCV64Test, Bltz) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Bltz, -11, 2, "blt {reg}, zero, {imm}\n"), "Bltz");
 }
 
 TEST_F(AssemblerRISCV64Test, Bgtz) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRIbS(&Riscv64Assembler::Bgtz, -11, 2, "blt zero, {reg}, {imm}\n"), "Bgtz");
 }
 
 TEST_F(AssemblerRISCV64Test, Bgt) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bgt, -11, 2, "blt {reg2}, {reg1}, {imm}\n"), "Bgt");
 }
 
 TEST_F(AssemblerRISCV64Test, Ble) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Ble, -11, 2, "bge {reg2}, {reg1}, {imm}\n"), "Bge");
 }
 
 TEST_F(AssemblerRISCV64Test, Bgtu) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bgtu, -11, 2, "bltu {reg2}, {reg1}, {imm}\n"), "Bgtu");
 }
 
 TEST_F(AssemblerRISCV64Test, Bleu) {
-  // TODO(riscv64): Change "-11, 2" to "-12, 1" for "C" Standard Extension.
   DriverStr(RepeatRRIbS(&Riscv64Assembler::Bleu, -11, 2, "bgeu {reg2}, {reg1}, {imm}\n"), "Bgeu");
 }
 
 TEST_F(AssemblerRISCV64Test, J) {
   ScopedCSuppression scs(this);
-  // TODO(riscv64): Change "-19, 2" to "-20, 1" for "C" Standard Extension.
   DriverStr(RepeatIbS<int32_t>(&Riscv64Assembler::J, -19, 2, "j {imm}\n"), "J");
 }
 
 TEST_F(AssemblerRISCV64Test, JalRA) {
-  // TODO(riscv64): Change "-19, 2" to "-20, 1" for "C" Standard Extension.
   DriverStr(RepeatIbS<int32_t>(&Riscv64Assembler::Jal, -19, 2, "jal {imm}\n"), "JalRA");
 }
 
 TEST_F(AssemblerRISCV64Test, Jr) {
-  ScopedCSuppression scs(this);
   DriverStr(RepeatR(&Riscv64Assembler::Jr, "jr {reg}\n"), "Jr");
 }
 
-TEST_F(AssemblerRISCV64Test, JalrRA) {
+TEST_F(AssemblerRISCV64Test, Jr_WithoutC) {
   ScopedCSuppression scs(this);
+  DriverStr(RepeatR(&Riscv64Assembler::Jr, "jr {reg}\n"), "Jr_WithoutC");
+}
+
+TEST_F(AssemblerRISCV64Test, JalrRA) {
   DriverStr(RepeatR(&Riscv64Assembler::Jalr, "jalr {reg}\n"), "JalrRA");
 }
 
-TEST_F(AssemblerRISCV64Test, Jalr0) {
+TEST_F(AssemblerRISCV64Test, JalrRA_WithoutC) {
   ScopedCSuppression scs(this);
+  DriverStr(RepeatR(&Riscv64Assembler::Jalr, "jalr {reg}\n"), "JalrRA_WithoutC");
+}
+
+TEST_F(AssemblerRISCV64Test, Jalr0) {
   DriverStr(RepeatRR(&Riscv64Assembler::Jalr, "jalr {reg1}, {reg2}\n"), "Jalr0");
 }
 
-TEST_F(AssemblerRISCV64Test, Ret) {
+TEST_F(AssemblerRISCV64Test, Jalr0_WithoutC) {
   ScopedCSuppression scs(this);
+  DriverStr(RepeatRR(&Riscv64Assembler::Jalr, "jalr {reg1}, {reg2}\n"), "Jalr0_WithoutC");
+}
+
+TEST_F(AssemblerRISCV64Test, Ret) {
   __ Ret();
   DriverStr("ret\n", "Ret");
+}
+
+TEST_F(AssemblerRISCV64Test, Ret_WithoutC) {
+  ScopedCSuppression scs(this);
+  __ Ret();
+  DriverStr("ret\n", "Ret_WithoutC");
 }
 
 TEST_F(AssemblerRISCV64Test, RdCycle) {
@@ -8421,86 +8455,223 @@ TEST_F(AssemblerRISCV64Test, BcondBackward2MiB) {
   TestBcondBackward("BcondBackward2MiB", 2 * MB, "1", GetPrintBcondOppositeAndTail("2", "3"));
 }
 
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset9ForwardCompressed) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset9ForwardCompressed",
+                     &Riscv64Assembler::Beq,
+                     MaxOffset9ForwardDistance() - /*C.BEQZ*/ 2u,
+                     "1",
+                     GetPrintBcond(),
+                     Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset13ForwardCompressed) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset13ForwardCompressed",
+                     &Riscv64Assembler::Beq,
+                     MaxOffset13ForwardDistance() - /*C.BEQZ*/ 2u,
+                     "1",
+                     GetPrintBcond(),
+                     Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BneA0X0MaxOffset9ForwardOppositeCompressed) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset9ForwardOppositeCompressed",
+                     &Riscv64Assembler::Bne,
+                     MaxOffset9ForwardDistance() - /*C.BNEZ*/ 2u,
+                     "1",
+                     GetPrintBcondOpposite(),
+                     Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, Bne0X0MaxOffset13ForwardCompressed) {
+  TestBxxA0XXForward("BneA0X0MaxOffset13ForwardCompressed",
+                     &Riscv64Assembler::Bne,
+                     MaxOffset13ForwardDistance() - /*C.BbeZ*/ 2u,
+                     "1",
+                     GetPrintBcondOpposite(),
+                     Zero);
+}
+
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13Forward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Forward("BeqA0A1MaxOffset13Forward",
+  TestBxxA0XXForward("BeqA0A1MaxOffset13Forward",
+                     &Riscv64Assembler::Beq,
                      MaxOffset13ForwardDistance() - /*BEQ*/ 4u,
                      "1",
-                     GetPrintBcond());
+                     GetPrintBcond(),
+                     A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13ForwardBare) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Forward("BeqA0A1MaxOffset13ForwardBare",
+  TestBxxA0XXForward("BeqA0A1MaxOffset13ForwardBare",
+                     &Riscv64Assembler::Beq,
                      MaxOffset13ForwardDistance() - /*BEQ*/ 4u,
                      "1",
                      GetPrintBcond(),
-                      /*is_bare=*/ true);
+                     A1,
+                     /*is_bare=*/true);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset9BackwardCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset9BackwardCompressed",
+                      &Riscv64Assembler::Beq,
+                      MaxOffset9BackwardDistance() - /*C.BEQZ*/ 2u,
+                      "1",
+                      GetPrintBcond(),
+                      Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset13BackwardCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset13BackwardCompressed",
+                      &Riscv64Assembler::Beq,
+                      MaxOffset13ForwardDistance() - /*BEQ*/ 4u,
+                      "1",
+                      GetPrintBcond(),
+                      Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset9BackwardOppositeCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset9BackwardOppositeCompressed",
+                      &Riscv64Assembler::Bne,
+                      MaxOffset9BackwardDistance() - /*C.BNEZ*/ 2u,
+                      "1",
+                      GetPrintBcondOpposite(),
+                      Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset13BackwardOppositeCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset13BackwardOppositeCompressed",
+                      &Riscv64Assembler::Bne,
+                      MaxOffset13ForwardDistance() - /*BNE*/ 4u,
+                      "1",
+                      GetPrintBcondOpposite(),
+                      Zero);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13Backward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Backward("BeqA0A1MaxOffset13Forward",
+  TestBxxA0XXBackward("BeqA0A1MaxOffset13Forward",
+                      &Riscv64Assembler::Beq,
                       MaxOffset13BackwardDistance(),
                       "1",
-                      GetPrintBcond());
+                      GetPrintBcond(),
+                      A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset13BackwardBare) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Backward("BeqA0A1MaxOffset13ForwardBare",
+  TestBxxA0XXBackward("BeqA0A1MaxOffset13ForwardBare",
+                      &Riscv64Assembler::Beq,
                       MaxOffset13BackwardDistance(),
                       "1",
                       GetPrintBcond(),
-                      /*is_bare=*/ true);
+                      A1,
+                      /*is_bare=*/true);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset13Forward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Forward("BeqA0A1OverMaxOffset13Forward",
+  TestBxxA0XXForward("BeqA0A1OverMaxOffset13Forward",
+                     &Riscv64Assembler::Beq,
                      MaxOffset13ForwardDistance() - /*BEQ*/ 4u + /*Exceed max*/ 4u,
                      "1",
-                     GetPrintBcondOppositeAndJ("2"));
+                     GetPrintBcondOppositeAndJ("2"),
+                     A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset13Backward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Backward("BeqA0A1OverMaxOffset13Forward",
+  TestBxxA0XXBackward("BeqA0A1OverMaxOffset13Forward",
+                      &Riscv64Assembler::Beq,
                       MaxOffset13BackwardDistance() + /*Exceed max*/ 4u,
                       "1",
-                      GetPrintBcondOppositeAndJ("2"));
+                      GetPrintBcondOppositeAndJ("2"),
+                      A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset21Forward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Forward("BeqA0A1MaxOffset21Forward",
+  TestBxxA0XXForward("BeqA0A1MaxOffset21Forward",
+                     &Riscv64Assembler::Beq,
                      MaxOffset21ForwardDistance() - /*J*/ 4u,
                      "1",
-                     GetPrintBcondOppositeAndJ("2"));
+                     GetPrintBcondOppositeAndJ("2"),
+                     A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1MaxOffset21Backward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Backward("BeqA0A1MaxOffset21Backward",
+  TestBxxA0XXBackward("BeqA0A1MaxOffset21Backward",
+                      &Riscv64Assembler::Beq,
                       MaxOffset21BackwardDistance() - /*BNE*/ 4u,
                       "1",
-                      GetPrintBcondOppositeAndJ("2"));
+                      GetPrintBcondOppositeAndJ("2"),
+                      A1);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset21BackwardCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset21BackwardCompressed",
+                      &Riscv64Assembler::Beq,
+                      MaxOffset21BackwardDistance() - /*BNE*/ 4u,
+                      "1",
+                      GetPrintBcondOppositeAndJ("2"),
+                      Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset21BackwardNeCompressed) {
+  TestBxxA0XXBackward("BeqA0X0MaxOffset21BackwardNeCompressed",
+                      &Riscv64Assembler::Bne,
+                      MaxOffset21BackwardDistance() - /*BNE*/ 4u,
+                      "1",
+                      GetPrintBcondAndJ("2"),
+                      Zero);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset21Forward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Forward("BeqA0A1OverMaxOffset21Forward",
+  TestBxxA0XXForward("BeqA0A1OverMaxOffset21Forward",
+                     &Riscv64Assembler::Beq,
                      MaxOffset21ForwardDistance() - /*J*/ 4u + /*Exceed max*/ 4u,
                      "1",
-                     GetPrintBcondOppositeAndTail("2", "3"));
+                     GetPrintBcondOppositeAndTail("2", "3"),
+                     A1);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1OverMaxOffset21Backward) {
   ScopedCSuppression scs(this);
-  TestBeqA0A1Backward("BeqA0A1OverMaxOffset21Backward",
+  TestBxxA0XXBackward("BeqA0A1OverMaxOffset21Backward",
+                      &Riscv64Assembler::Beq,
                       MaxOffset21BackwardDistance() - /*BNE*/ 4u + /*Exceed max*/ 4u,
                       "1",
-                      GetPrintBcondOppositeAndTail("2", "3"));
+                      GetPrintBcondOppositeAndTail("2", "3"),
+                      A1);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset21ForwardCompressed) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset21ForwardCompressed",
+                     &Riscv64Assembler::Beq,
+                     MaxOffset21ForwardDistance() - /*BNE*/ 2u,
+                     "1",
+                     GetPrintBcondOppositeAndJ("2"),
+                     Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset21ForwardNeCompressed) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset21ForwardNeCompressed",
+                     &Riscv64Assembler::Bne,
+                     MaxOffset21ForwardDistance() - /*BNE*/ 2u,
+                     "1",
+                     GetPrintBcondAndJ("2"),
+                     Zero);
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0X0MaxOffset21ForwardNeCompressedNotCompressable) {
+  TestBxxA0XXForward("BeqA0X0MaxOffset21ForwardNeCompressedNotCompressable",
+                     &Riscv64Assembler::Bne,
+                     MaxOffset21ForwardDistance() - /*BNE*/ 50u,
+                     "1",
+                     GetPrintBcondAndJ("2"),
+                     A2);
 }
 
 TEST_F(AssemblerRISCV64Test, BeqA0A1AlmostCascade) {
@@ -8508,10 +8679,20 @@ TEST_F(AssemblerRISCV64Test, BeqA0A1AlmostCascade) {
   TestBeqA0A1MaybeCascade("BeqA0A1AlmostCascade", /*cascade=*/ false, GetPrintBcond());
 }
 
+TEST_F(AssemblerRISCV64Test, BeqA0A1AlmostCascadeWithCompression) {
+  TestBeqA0A1MaybeCascade(
+      "BeqA0A1AlmostCascadeWithCompression", /*cascade=*/false, GetPrintBcond());
+}
+
 TEST_F(AssemblerRISCV64Test, BeqA0A1Cascade) {
   ScopedCSuppression scs(this);
   TestBeqA0A1MaybeCascade(
       "BeqA0A1AlmostCascade", /*cascade=*/ true, GetPrintBcondOppositeAndJ("1"));
+}
+
+TEST_F(AssemblerRISCV64Test, BeqA0A1CascadeWithCompression) {
+  TestBeqA0A1MaybeCascade(
+      "BeqA0A1AlmostCascadeWithCompression", /*cascade=*/true, GetPrintBcondOppositeAndJ("1"));
 }
 
 TEST_F(AssemblerRISCV64Test, BcondElimination) {
@@ -8583,9 +8764,22 @@ TEST_F(AssemblerRISCV64Test, JForward3KiB) {
   TestBuncondForward("JForward3KiB", 3 * KB, "1", GetEmitJ(), GetPrintJ());
 }
 
+TEST_F(AssemblerRISCV64Test, JForward3KiBWithCompression) {
+  TestBuncondForward("JForward3KiBWithCompression", 3 * KB, "1", GetEmitJ(), GetPrintJ());
+}
+
+TEST_F(AssemblerRISCV64Test, JForward2KiBCompressed) {
+  TestBuncondForward("JForward2KiBCompressed", 2 * KB - 4, "1", GetEmitJ(), GetPrintJ());
+}
+
 TEST_F(AssemblerRISCV64Test, JForward3KiBBare) {
   ScopedCSuppression scs(this);
   TestBuncondForward("JForward3KiB", 3 * KB, "1", GetEmitJ(/*is_bare=*/ true), GetPrintJ());
+}
+
+TEST_F(AssemblerRISCV64Test, JForward2KiBBareCompressed) {
+  TestBuncondForward(
+      "JForward2KiBBareCompressed", 2 * KB - 4, "1", GetEmitJ(/*is_bare=*/true), GetPrintJ());
 }
 
 TEST_F(AssemblerRISCV64Test, JBackward3KiB) {
@@ -8593,9 +8787,22 @@ TEST_F(AssemblerRISCV64Test, JBackward3KiB) {
   TestBuncondBackward("JBackward3KiB", 3 * KB, "1", GetEmitJ(), GetPrintJ());
 }
 
+TEST_F(AssemblerRISCV64Test, JBackward3KiBWithCompression) {
+  TestBuncondBackward("JBackward3KiBWithCompression", 3 * KB, "1", GetEmitJ(), GetPrintJ());
+}
+
+TEST_F(AssemblerRISCV64Test, JBackward2KiBCompressed) {
+  TestBuncondBackward("JBackward2KiBCompressed", 2 * KB, "1", GetEmitJ(), GetPrintJ());
+}
+
 TEST_F(AssemblerRISCV64Test, JBackward3KiBBare) {
   ScopedCSuppression scs(this);
   TestBuncondBackward("JBackward3KiB", 3 * KB, "1", GetEmitJ(/*is_bare=*/ true), GetPrintJ());
+}
+
+TEST_F(AssemblerRISCV64Test, JBackward2KiBBareCompressed) {
+  TestBuncondBackward(
+      "JBackward2KiBBareCompressed", 2 * KB, "1", GetEmitJ(/*is_bare=*/true), GetPrintJ());
 }
 
 TEST_F(AssemblerRISCV64Test, JForward2MiB) {

@@ -6213,13 +6213,45 @@ void Riscv64Assembler::J(int32_t offset) { Jal(Zero, offset); }
 
 void Riscv64Assembler::Jal(int32_t offset) { Jal(RA, offset); }
 
-void Riscv64Assembler::Jr(XRegister rs) { Jalr(Zero, rs, 0); }
+void Riscv64Assembler::Jr(XRegister rs) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rs != Zero) {
+      CJr(rs);
+      return;
+    }
+  }
 
-void Riscv64Assembler::Jalr(XRegister rs) { Jalr(RA, rs, 0); }
+  Jalr(Zero, rs, 0);
+}
 
-void Riscv64Assembler::Jalr(XRegister rd, XRegister rs) { Jalr(rd, rs, 0); }
+void Riscv64Assembler::Jalr(XRegister rs) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rs != Zero) {
+      CJalr(rs);
+      return;
+    }
+  }
 
-void Riscv64Assembler::Ret() { Jalr(Zero, RA, 0); }
+  Jalr(RA, rs, 0);
+}
+
+void Riscv64Assembler::Jalr(XRegister rd, XRegister rs) {
+  if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+    if (rs != Zero) {
+      if (rd == RA) {
+        CJalr(rs);
+        return;
+      } else if (rd == Zero) {
+        CJr(rs);
+        return;
+      }
+    }
+  }
+
+  Jalr(rd, rs, 0);
+}
+
+void Riscv64Assembler::Ret() { Jalr(Zero, RA); }
 
 void Riscv64Assembler::RdCycle(XRegister rd) {
   Csrrs(rd, 0xc00, Zero);
@@ -6506,6 +6538,13 @@ void Riscv64Assembler::Unimp() {
 /////////////////////////////// RV64 MACRO Instructions END ///////////////////////////////
 
 const Riscv64Assembler::Branch::BranchInfo Riscv64Assembler::Branch::branch_info_[] = {
+    // Compressed branches (can be promoted to longer)
+    {2, 0, Riscv64Assembler::Branch::kOffset9},   // kCondCBranch
+    {2, 0, Riscv64Assembler::Branch::kOffset12},  // kUncondCBranch
+    // Compressed branches (can't be promoted to longer)
+    {2, 0, Riscv64Assembler::Branch::kOffset9},   // kBareCondCBranch
+    {2, 0, Riscv64Assembler::Branch::kOffset12},  // kBareUncondCBranch
+
     // Short branches (can be promoted to longer).
     {4, 0, Riscv64Assembler::Branch::kOffset13},  // kCondBranch
     {4, 0, Riscv64Assembler::Branch::kOffset21},  // kUncondBranch
@@ -6515,13 +6554,14 @@ const Riscv64Assembler::Branch::BranchInfo Riscv64Assembler::Branch::branch_info
     {4, 0, Riscv64Assembler::Branch::kOffset21},  // kBareUncondBranch
     {4, 0, Riscv64Assembler::Branch::kOffset21},  // kBareCall
 
-    // Medium branch.
+    // Medium branches.
+    {6, 2, Riscv64Assembler::Branch::kOffset21},  // kCondCBranch21
     {8, 4, Riscv64Assembler::Branch::kOffset21},  // kCondBranch21
 
     // Long branches.
     {12, 4, Riscv64Assembler::Branch::kOffset32},  // kLongCondBranch
-    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLongUncondBranch
-    {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLongCall
+    {8, 0, Riscv64Assembler::Branch::kOffset32},   // kLongUncondBranch
+    {8, 0, Riscv64Assembler::Branch::kOffset32},   // kLongCall
 
     // label.
     {8, 0, Riscv64Assembler::Branch::kOffset32},  // kLabel
@@ -6548,10 +6588,50 @@ void Riscv64Assembler::Branch::InitShortOrLong(Riscv64Assembler::Branch::OffsetB
   type_ = type;
 }
 
+void Riscv64Assembler::Branch::InitShortOrLong(Riscv64Assembler::Branch::OffsetBits offset_size,
+                                               Riscv64Assembler::Branch::Type compressed_type,
+                                               Riscv64Assembler::Branch::Type short_type,
+                                               Riscv64Assembler::Branch::Type long_type,
+                                               Riscv64Assembler::Branch::Type longest_type) {
+  Riscv64Assembler::Branch::Type type = compressed_type;
+  if (offset_size > branch_info_[type].offset_size) {
+    type = short_type;
+    if (offset_size > branch_info_[type].offset_size) {
+      type = long_type;
+      if (offset_size > branch_info_[type].offset_size) {
+        type = longest_type;
+      }
+    }
+  }
+  type_ = type;
+}
+
 void Riscv64Assembler::Branch::InitializeType(Type initial_type) {
   OffsetBits offset_size_needed = GetOffsetSizeNeeded(location_, target_);
 
   switch (initial_type) {
+    case kCondCBranch:
+      CHECK(IsCompressableCondition());
+      if (condition_ != kUncond) {
+        InitShortOrLong(
+            offset_size_needed, kCondCBranch, kCondBranch, kCondCBranch21, kLongCondBranch);
+        break;
+      }
+      FALLTHROUGH_INTENDED;
+    case kUncondCBranch:
+      InitShortOrLong(offset_size_needed, kUncondCBranch, kUncondBranch, kLongUncondBranch);
+      break;
+    case kBareCondCBranch:
+      if (condition_ != kUncond) {
+        type_ = kBareCondCBranch;
+        CHECK_LE(offset_size_needed, GetOffsetSize());
+        break;
+      }
+      FALLTHROUGH_INTENDED;
+    case kBareUncondCBranch:
+      type_ = kBareUncondCBranch;
+      CHECK_LE(offset_size_needed, GetOffsetSize());
+      break;
     case kCondBranch:
       if (condition_ != kUncond) {
         InitShortOrLong(offset_size_needed, kCondBranch, kCondBranch21, kLongCondBranch);
@@ -6626,7 +6706,21 @@ bool Riscv64Assembler::Branch::IsUncond(BranchCondition condition, XRegister lhs
   }
 }
 
-Riscv64Assembler::Branch::Branch(uint32_t location, uint32_t target, XRegister rd, bool is_bare)
+bool Riscv64Assembler::Branch::IsCompressed(Type type) {
+  switch (type) {
+    case kCondCBranch:
+    case kUncondCBranch:
+    case kBareCondCBranch:
+    case kBareUncondCBranch:
+    case kCondCBranch21:
+      return true;
+    default:
+      return false;
+  }
+}
+
+Riscv64Assembler::Branch::Branch(
+    uint32_t location, uint32_t target, XRegister rd, bool is_bare, bool compressionAllowed)
     : old_location_(location),
       location_(location),
       target_(target),
@@ -6634,8 +6728,10 @@ Riscv64Assembler::Branch::Branch(uint32_t location, uint32_t target, XRegister r
       rhs_reg_(Zero),
       freg_(kNoFRegister),
       condition_(kUncond) {
-  InitializeType(
-      (rd != Zero ? (is_bare ? kBareCall : kCall) : (is_bare ? kBareUncondBranch : kUncondBranch)));
+  InitializeType((rd != Zero ?
+                      (is_bare ? kBareCall : kCall) :
+                      (is_bare ? (compressionAllowed ? kBareUncondCBranch : kBareUncondBranch) :
+                                 (compressionAllowed ? kUncondCBranch : kUncondBranch))));
 }
 
 Riscv64Assembler::Branch::Branch(uint32_t location,
@@ -6643,7 +6739,8 @@ Riscv64Assembler::Branch::Branch(uint32_t location,
                                  Riscv64Assembler::BranchCondition condition,
                                  XRegister lhs_reg,
                                  XRegister rhs_reg,
-                                 bool is_bare)
+                                 bool is_bare,
+                                 bool compressionAllowed)
     : old_location_(location),
       location_(location),
       target_(target),
@@ -6654,7 +6751,10 @@ Riscv64Assembler::Branch::Branch(uint32_t location,
   DCHECK_NE(condition, kUncond);
   DCHECK(!IsNop(condition, lhs_reg, rhs_reg));
   DCHECK(!IsUncond(condition, lhs_reg, rhs_reg));
-  InitializeType(is_bare ? kBareCondBranch : kCondBranch);
+  if (!IsCompressableCondition())
+    compressionAllowed = false;
+  InitializeType(is_bare ? (compressionAllowed ? kBareCondCBranch : kBareCondBranch) :
+                           (compressionAllowed ? kCondCBranch : kCondBranch));
 }
 
 Riscv64Assembler::Branch::Branch(uint32_t location,
@@ -6717,6 +6817,8 @@ Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::OppositeCondition(
 
 Riscv64Assembler::Branch::Type Riscv64Assembler::Branch::GetType() const { return type_; }
 
+Riscv64Assembler::Branch::Type Riscv64Assembler::Branch::GetOldType() const { return old_type_; }
+
 Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::GetCondition() const {
     return condition_;
 }
@@ -6724,6 +6826,14 @@ Riscv64Assembler::BranchCondition Riscv64Assembler::Branch::GetCondition() const
 XRegister Riscv64Assembler::Branch::GetLeftRegister() const { return lhs_reg_; }
 
 XRegister Riscv64Assembler::Branch::GetRightRegister() const { return rhs_reg_; }
+
+XRegister Riscv64Assembler::Branch::GetNonZeroRegister() const {
+  DCHECK(GetLeftRegister() == Zero || GetRightRegister() == Zero)
+      << "Either register has to be Zero register";
+  DCHECK(GetLeftRegister() != Zero || GetRightRegister() != Zero)
+      << "Either register has to be non-Zero register";
+  return GetLeftRegister() == Zero ? GetRightRegister() : GetLeftRegister();
+}
 
 FRegister Riscv64Assembler::Branch::GetFRegister() const { return freg_; }
 
@@ -6756,6 +6866,11 @@ bool Riscv64Assembler::Branch::IsBare() const {
 
 bool Riscv64Assembler::Branch::IsResolved() const { return target_ != kUnresolved; }
 
+bool Riscv64Assembler::Branch::IsCompressableCondition() const {
+  return (condition_ == kCondEQ || condition_ == kCondNE) &&
+         ((lhs_reg_ == Zero && IsShortReg(rhs_reg_)) || (rhs_reg_ == Zero && IsShortReg(lhs_reg_)));
+}
+
 Riscv64Assembler::Branch::OffsetBits Riscv64Assembler::Branch::GetOffsetSize() const {
   return branch_info_[type_].offset_size;
 }
@@ -6765,10 +6880,15 @@ Riscv64Assembler::Branch::OffsetBits Riscv64Assembler::Branch::GetOffsetSizeNeed
   // For unresolved targets assume the shortest encoding
   // (later it will be made longer if needed).
   if (target == kUnresolved) {
-    return kOffset13;
+    return kOffset9;
   }
   int64_t distance = static_cast<int64_t>(target) - location;
-  if (IsInt<kOffset13>(distance)) {
+
+  if (IsInt<kOffset9>(distance)) {
+    return kOffset9;
+  } else if (IsInt<kOffset12>(distance)) {
+    return kOffset12;
+  } else if (IsInt<kOffset13>(distance)) {
     return kOffset13;
   } else if (IsInt<kOffset21>(distance)) {
     return kOffset21;
@@ -6794,24 +6914,48 @@ uint32_t Riscv64Assembler::Branch::PromoteIfNeeded() {
   // All targets should be resolved before we start promoting branches.
   DCHECK(IsResolved());
   Type old_type = type_;
+  OffsetBits needed_size;
   switch (type_) {
-    // Short branches (can be promoted to longer).
-    case kCondBranch: {
-      OffsetBits needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
+    // Compressed branches (can be promoted to longer)
+    case kUncondCBranch:
+      needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
       if (needed_size <= GetOffsetSize()) {
         return 0u;
       }
-      // The offset remains the same for `kCondBranch21` for forward branches.
-      DCHECK_EQ(branch_info_[kCondBranch21].length - branch_info_[kCondBranch21].pc_offset,
+
+      type_ = needed_size <= branch_info_[kUncondBranch].offset_size ? kUncondBranch :
+                                                                       kLongUncondBranch;
+      break;
+    case kCondCBranch:
+      CHECK(IsCompressableCondition());
+      needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
+      if (needed_size <= GetOffsetSize()) {
+        return 0u;
+      }
+
+      if (needed_size <= branch_info_[kCondBranch].offset_size) {
+        type_ = kCondBranch;
+        break;
+      }
+      FALLTHROUGH_INTENDED;
+    // Short branches (can be promoted to longer).
+    case kCondBranch: {
+      needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
+
+      if (needed_size <= GetOffsetSize()) {
+        return 0u;
+      }
+
+      Type cond21Type = old_type == kCondCBranch ? kCondCBranch21 : kCondBranch21;
+
+      // The offset remains the same for `kCond[C]Branch21` for forward branches.
+      DCHECK_EQ(branch_info_[cond21Type].length - branch_info_[cond21Type].pc_offset,
                 branch_info_[kCondBranch].length - branch_info_[kCondBranch].pc_offset);
       if (target_ <= location_) {
         // Calculate the needed size for kCondBranch21.
-        needed_size =
-            GetOffsetSizeNeeded(location_ + branch_info_[kCondBranch21].pc_offset, target_);
+        needed_size = GetOffsetSizeNeeded(location_ + branch_info_[cond21Type].pc_offset, target_);
       }
-      type_ = (needed_size <= branch_info_[kCondBranch21].offset_size)
-          ? kCondBranch21
-          : kLongCondBranch;
+      type_ = (needed_size <= branch_info_[cond21Type].offset_size) ? cond21Type : kLongCondBranch;
       break;
     }
     case kUncondBranch:
@@ -6827,15 +6971,20 @@ uint32_t Riscv64Assembler::Branch::PromoteIfNeeded() {
       type_ = kLongCall;
       break;
     // Medium branch (can be promoted to long).
+    case kCondCBranch21:
+      CHECK(IsCompressableCondition());
+      FALLTHROUGH_INTENDED;
     case kCondBranch21:
-      if (GetOffsetSizeNeeded(GetOffsetLocation(), target_) <= GetOffsetSize()) {
+      needed_size = GetOffsetSizeNeeded(GetOffsetLocation(), target_);
+      if (needed_size <= GetOffsetSize()) {
         return 0u;
       }
       type_ = kLongCondBranch;
       break;
     default:
       // Other branch types cannot be promoted.
-      DCHECK_LE(GetOffsetSizeNeeded(GetOffsetLocation(), target_), GetOffsetSize()) << type_;
+      DCHECK_LE(GetOffsetSizeNeeded(GetOffsetLocation(), target_), GetOffsetSize())
+          << static_cast<uint32_t>(type_);
       return 0u;
   }
   DCHECK(type_ != old_type);
@@ -6890,9 +7039,10 @@ void Riscv64Assembler::EmitBranch(Riscv64Assembler::Branch* branch) {
   BranchCondition condition = branch->GetCondition();
   XRegister lhs = branch->GetLeftRegister();
   XRegister rhs = branch->GetRightRegister();
+  // Disable Compressed emitter explicitly and enable where it is needed
+  ScopedNoCInstructions no_compression(this);
 
   auto emit_auipc_and_next = [&](XRegister reg, auto next) {
-    ScopedNoCInstructions no_compression(this);
     CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
     auto [imm20, short_offset] = SplitOffset(offset);
     Auipc(reg, imm20);
@@ -6900,6 +7050,26 @@ void Riscv64Assembler::EmitBranch(Riscv64Assembler::Branch* branch) {
   };
 
   switch (branch->GetType()) {
+    // Compressed branches
+    case Branch::kCondCBranch:
+    case Branch::kBareCondCBranch: {
+      ScopedUseCInstructions use_compression(this);
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      CHECK(branch->IsCompressableCondition());
+      if (condition == kCondEQ) {
+        CBeqz(branch->GetNonZeroRegister(), offset);
+      } else {
+        CBnez(branch->GetNonZeroRegister(), offset);
+      }
+      break;
+    }
+    case Branch::kUncondCBranch:
+    case Branch::kBareUncondCBranch: {
+      ScopedUseCInstructions use_compression(this);
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      CJ(offset);
+      break;
+    }
     // Short branches.
     case Branch::kUncondBranch:
     case Branch::kBareUncondBranch:
@@ -6924,7 +7094,18 @@ void Riscv64Assembler::EmitBranch(Riscv64Assembler::Branch* branch) {
       CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
       J(offset);
       break;
-
+    case Branch::kCondCBranch21: {
+      CHECK(branch->IsCompressableCondition());
+      ScopedUseCInstructions use_compression(this);
+      if (Branch::OppositeCondition(condition) == kCondEQ) {
+        CBeqz(branch->GetNonZeroRegister(), branch->GetLength());
+      } else {
+        CBnez(branch->GetNonZeroRegister(), branch->GetLength());
+      }
+      CHECK_EQ(overwrite_location_, branch->GetOffsetLocation());
+      J(offset);
+      break;
+    }
     // Long branches.
     case Branch::kLongCondBranch:
       EmitBcond(Branch::OppositeCondition(condition), lhs, rhs, branch->GetLength());
@@ -6976,15 +7157,21 @@ void Riscv64Assembler::EmitBranches() {
 }
 
 void Riscv64Assembler::FinalizeLabeledBranch(Riscv64Label* label) {
-  DCHECK_ALIGNED(branches_.back().GetLength(), sizeof(uint32_t));
-  uint32_t length = branches_.back().GetLength() / sizeof(uint32_t);
-  ScopedNoCInstructions no_compression(this);
-
+  const uint32_t alignment =
+      IsCompressedInstructionsEnabled() ? sizeof(uint16_t) : sizeof(uint32_t);
+  DCHECK(IsAlignedParam(branches_.back().GetLength(), alignment));
+  uint32_t branchLength = branches_.back().GetLength();
+  uint32_t length = branchLength / alignment;
   if (!label->IsBound()) {
     // Branch forward (to a following label), distance is unknown.
     // The first branch forward will contain 0, serving as the terminator of
     // the list of forward-reaching branches.
-    Emit32(label->position_);
+    if (IsExtensionEnabled(Riscv64Extension::kZca)) {
+      // Hope ~65k branches would be enough
+      Emit16(label->position_);
+    } else {
+      Emit32(label->position_);
+    }
     length--;
     // Now make the label object point to this branch
     // (this forms a linked list of branches preceding this label).
@@ -6993,7 +7180,11 @@ void Riscv64Assembler::FinalizeLabeledBranch(Riscv64Label* label) {
   }
   // Reserve space for the branch.
   for (; length != 0u; --length) {
-    Nop();
+    if (alignment == sizeof(uint16_t)) {
+      Emit16(0);
+    } else {
+      Emit32(0);
+    }
   }
 }
 
@@ -7010,13 +7201,20 @@ void Riscv64Assembler::Bcond(
   }
 
   uint32_t target = label->IsBound() ? GetLabelLocation(label) : Branch::kUnresolved;
-  branches_.emplace_back(buffer_.Size(), target, condition, lhs, rhs, is_bare);
+  branches_.emplace_back(buffer_.Size(),
+                         target,
+                         condition,
+                         lhs,
+                         rhs,
+                         is_bare,
+                         IsExtensionEnabled(Riscv64Extension::kZca));
   FinalizeLabeledBranch(label);
 }
 
 void Riscv64Assembler::Buncond(Riscv64Label* label, XRegister rd, bool is_bare) {
   uint32_t target = label->IsBound() ? GetLabelLocation(label) : Branch::kUnresolved;
-  branches_.emplace_back(buffer_.Size(), target, rd, is_bare);
+  branches_.emplace_back(
+      buffer_.Size(), target, rd, is_bare, IsExtensionEnabled(Riscv64Extension::kZca));
   FinalizeLabeledBranch(label);
 }
 
@@ -7054,7 +7252,9 @@ void Riscv64Assembler::Bind(Riscv64Label* label) {
     uint32_t branch_location = branch->GetLocation();
     // Extract the location of the previous branch in the list (walking the list backwards;
     // the previous branch ID was stored in the space reserved for this branch).
-    uint32_t prev = buffer_.Load<uint32_t>(branch_location);
+    uint32_t prev = IsExtensionEnabled(Riscv64Extension::kZca) ?
+                        static_cast<uint32_t>(buffer_.Load<uint16_t>(branch_location)) :
+                        buffer_.Load<uint32_t>(branch_location);
 
     // On to the previous branch in the list...
     label->position_ = prev;
