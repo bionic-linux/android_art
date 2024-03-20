@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc15f62c_fbfaf7cc",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7960,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Pardon me, missed. Done\n\nAlso add Nop test with enabled \"C\"",
+      "parentUuid": "380d6b9d_1c18a63f",
+      "range": {
+        "startLine": 7956,
+        "startChar": 0,
+        "endLine": 7960,
+        "endChar": 1
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb8f67c2_69476a4e",

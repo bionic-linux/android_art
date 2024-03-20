@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af42a00_44a60e5d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ef22da_aaeceaa9",
+      "range": {
+        "startLine": 253,
+        "startChar": 7,
+        "endLine": 253,
+        "endChar": 38
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68c9e77_7b1a2700",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-03-20T13:39:06Z",
       "side": 1,
       "message": "`-12` or `/*imm_bits\u003d*/-12`",
+      "range": {
+        "startLine": 2400,
+        "startChar": 48,
+        "endLine": 2400,
+        "endChar": 51
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22e78c0_742aea05",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2400,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a68c9e77_7b1a2700",
       "range": {
         "startLine": 2400,
         "startChar": 48,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc3c39f_3e9873ba",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2405,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c0f350_c576e7ce",
+      "range": {
+        "startLine": 2405,
+        "startChar": 48,
+        "endLine": 2405,
+        "endChar": 51
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f27c327f_9a587d9b",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-03-20T13:39:06Z",
       "side": 1,
       "message": "Test against `sext.b {reg1}, {reg2}`. It should pass against the latest clang from prebuilts/.",
+      "range": {
+        "startLine": 8030,
+        "startChar": 42,
+        "endLine": 8030,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bc16c53_4880e86a",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8030,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f27c327f_9a587d9b",
       "range": {
         "startLine": 8030,
         "startChar": 42,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3564c9b_e320947f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8051,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5443204_93542d3d",
+      "range": {
+        "startLine": 8051,
+        "startChar": 42,
+        "endLine": 8051,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ebd17d4_7a73c5b8",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b856514b_1b84abd6",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8090,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ebd17d4_7a73c5b8",
+      "range": {
+        "startLine": 8090,
+        "startChar": 42,
+        "endLine": 8090,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5f0718a_e783add8",
@@ -152,6 +296,30 @@
       "writtenOn": "2024-03-20T13:39:06Z",
       "side": 1,
       "message": "Test against `zext.w {reg1}, {reg2}`.",
+      "range": {
+        "startLine": 8111,
+        "startChar": 42,
+        "endLine": 8111,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d36d73_ce67efb7",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8111,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T20:09:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f0718a_e783add8",
       "range": {
         "startLine": 8111,
         "startChar": 42,
