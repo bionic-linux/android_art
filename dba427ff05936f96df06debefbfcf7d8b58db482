@@ -484,6 +484,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e0034a_e3540fc6",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7998,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d30fd326_d2e0f90e",
+      "range": {
+        "startLine": 7998,
+        "startChar": 19,
+        "endLine": 7998,
+        "endChar": 35
+      },
+      "revId": "dba427ff05936f96df06debefbfcf7d8b58db482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387b96ee_f61f03dc",

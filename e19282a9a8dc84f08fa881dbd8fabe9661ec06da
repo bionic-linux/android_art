@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4829ac08_2542b2e2",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5959,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d83e76_dad4283f",
+      "range": {
+        "startLine": 5954,
+        "startChar": 2,
+        "endLine": 5959,
+        "endChar": 3
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adfe8f51_0c313917",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "427952e8_80c79a5b",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6879,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adfe8f51_0c313917",
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7565c795_b021879d",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-03-19T14:30:47Z",
       "side": 1,
       "message": "We\u0027re missing a `/*imm_bits\u003d*/` here.",
+      "range": {
+        "startLine": 2249,
+        "startChar": 45,
+        "endLine": 2249,
+        "endChar": 46
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85401f97_38fbc61d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2249,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7565c795_b021879d",
       "range": {
         "startLine": 2249,
         "startChar": 45,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42aa2b48_9d71a3fc",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7960,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05476dff_7793f0ac",
+      "range": {
+        "startLine": 7956,
+        "startChar": 0,
+        "endLine": 7960,
+        "endChar": 1
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb8f67c2_69476a4e",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-03-19T14:30:47Z",
       "side": 1,
       "message": "Test against `not {reg1}, {reg2}` instead. Same in the `Not` test above.",
+      "range": {
+        "startLine": 7980,
+        "startChar": 46,
+        "endLine": 7980,
+        "endChar": 69
+      },
+      "revId": "e19282a9a8dc84f08fa881dbd8fabe9661ec06da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac88847_69481931",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7980,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-20T12:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb8f67c2_69476a4e",
       "range": {
         "startLine": 7980,
         "startChar": 46,
