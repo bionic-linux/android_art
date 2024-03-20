@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4913db_a75d4d69",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 6931,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:42:01Z",
+      "side": 1,
+      "message": "This is unnecessary with the `ScopedNoCInstructions` in `emit_auipc_and_next` being applied to `next()`.",
+      "range": {
+        "startLine": 6931,
+        "startChar": 6,
+        "endLine": 6931,
+        "endChar": 49
+      },
+      "revId": "5b4e4af3c9e6639cdb8e36f03277f721beca769c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
