@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ef22da_aaeceaa9",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "Remove - unused in this CL.",
+      "range": {
+        "startLine": 253,
+        "startChar": 7,
+        "endLine": 253,
+        "endChar": 38
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68c9e77_7b1a2700",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2400,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "`-12` or `/*imm_bits\u003d*/-12`",
+      "range": {
+        "startLine": 2400,
+        "startChar": 48,
+        "endLine": 2400,
+        "endChar": 51
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c0f350_c576e7ce",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2405,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2405,
+        "startChar": 48,
+        "endLine": 2405,
+        "endChar": 51
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27c327f_9a587d9b",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8030,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "Test against `sext.b {reg1}, {reg2}`. It should pass against the latest clang from prebuilts/.",
+      "range": {
+        "startLine": 8030,
+        "startChar": 42,
+        "endLine": 8030,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5443204_93542d3d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8051,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "Test against `sext.h {reg1}, {reg2}`.",
+      "range": {
+        "startLine": 8051,
+        "startChar": 42,
+        "endLine": 8051,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebd17d4_7a73c5b8",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8090,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "Test against `zext.h {reg1}, {reg2}`.",
+      "range": {
+        "startLine": 8090,
+        "startChar": 42,
+        "endLine": 8090,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f0718a_e783add8",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 8111,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-20T13:39:06Z",
+      "side": 1,
+      "message": "Test against `zext.w {reg1}, {reg2}`.",
+      "range": {
+        "startLine": 8111,
+        "startChar": 42,
+        "endLine": 8111,
+        "endChar": 90
+      },
+      "revId": "4b468650ce762fd3de760b8688a390f17328bd80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
