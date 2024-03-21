@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5fdb4f_2f8103e6",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-03-21T14:19:45Z",
+      "side": 1,
+      "message": "nit: `/*imm_bits\u003d*/-12` here and others. There\u0027s a couple missing and the file in inconsistent. Can be done in a follow-up.",
+      "range": {
+        "startLine": 2412,
+        "startChar": 46,
+        "endLine": 2412,
+        "endChar": 49
+      },
+      "revId": "4fc613d880432ec3a2a4b5c00710cafb0ffa3716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
