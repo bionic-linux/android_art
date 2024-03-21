@@ -101,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "501b9cc0_df9b2958",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-21T13:47:58Z",
+      "side": 1,
+      "message": "\u003e The line 297 is asking for rs1 !\u003d Zero || rs2 !\u003d Zero. Is that conversion happening some place else?\n\nI see. No, there no such conversion at all. I have checked a variant when for that case `c.li rd, 0` is emitted and seems like clang does not support that replacement.\n\nI could add a TODO there and fix once that case is supported in clang.",
+      "parentUuid": "e05f6581_ef4c16b1",
+      "revId": "6215419bfe6365905a79a438a2bd769fc584d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85aa870e_34e2c315",
