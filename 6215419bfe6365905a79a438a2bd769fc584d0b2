@@ -83,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05f6581_ef4c16b1",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-03-21T12:58:47Z",
+      "side": 1,
+      "message": "\u003e \u003e Also, why are we not converting the case of Add(rd, zero, zero)?\n\u003e \n\u003e It\u0027s going to be converted into `cmv(rd, zero)`. Do you have some other conversion in mind? \n\nThe line 297 is asking for `rs1 !\u003d Zero || rs2 !\u003d Zero`. Is that conversion happening some place else?\n\n\u003e \n\u003e \u003e could turn into a shift\n\u003e \n\u003e I was thinking we should follow the clang conversion rules for testing purposes.\n\nAck, maybe a comment would be nice explaining why we don\u0027t optimize it.",
+      "parentUuid": "3b78fc87_f0483796",
+      "revId": "6215419bfe6365905a79a438a2bd769fc584d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85aa870e_34e2c315",
