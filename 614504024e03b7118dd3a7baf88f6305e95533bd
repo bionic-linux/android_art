@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5026dede_13bac512",
+        "filename": "libelffile/elf/elf_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-03-21T20:40:54Z",
+      "side": 1,
+      "message": "(fyi, i\u0027m working on getting these upstreamed to musl, so it\u0027ll be a long time before we can remove these. but i\u0027ll keep churning through the rest, specifically so i can find any issues like that :-) fwiw, only ELF_ST_BIND() looks remotely interesting --- one of our libcs has a cast to unsigned that the others [and this] don\u0027t.)",
+      "revId": "614504024e03b7118dd3a7baf88f6305e95533bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
