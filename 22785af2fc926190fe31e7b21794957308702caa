@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ad5106_fea4f079",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6691,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-03-21T12:56:45Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 6688,
+        "startChar": 8,
+        "endLine": 6691,
+        "endChar": 62
+      },
+      "revId": "22785af2fc926190fe31e7b21794957308702caa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
