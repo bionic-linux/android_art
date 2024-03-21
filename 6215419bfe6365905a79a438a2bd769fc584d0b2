@@ -139,6 +139,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "78e06f4a_4b6a40c8",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-21T14:18:14Z",
+      "side": 1,
+      "message": "FYI: I add the comment in this commit https://android-review.googlesource.com/c/platform/art/+/3008267/1",
+      "parentUuid": "ea14e487_68a7a2cf",
+      "revId": "6215419bfe6365905a79a438a2bd769fc584d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "85aa870e_34e2c315",
         "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
         "patchSetId": 7
