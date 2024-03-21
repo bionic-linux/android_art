@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f576d75_28eb2353",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-21T12:04:52Z",
+      "side": 1,
+      "message": "Added https://android-review.googlesource.com/c/platform/art/+/3008266/2",
+      "parentUuid": "f37ca166_d0dcac9e",
+      "range": {
+        "startLine": 196,
+        "startChar": 33,
+        "endLine": 196,
+        "endChar": 50
+      },
+      "revId": "6215419bfe6365905a79a438a2bd769fc584d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "747aab7a_4ab59e45",
