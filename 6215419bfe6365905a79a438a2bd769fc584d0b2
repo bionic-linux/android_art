@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b78fc87_f0483796",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-03-21T11:35:58Z",
+      "side": 1,
+      "message": "\u003e Also, why are we not converting the case of Add(rd, zero, zero)?\n\nIt\u0027s going to be converted into `cmv(rd, zero)`. Do you have some other conversion in mind? \n\n\u003e could turn into a shift\n\nI was thinking we should follow the clang conversion rules for testing purposes.",
+      "parentUuid": "747aab7a_4ab59e45",
+      "revId": "6215419bfe6365905a79a438a2bd769fc584d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85aa870e_34e2c315",
