@@ -51,6 +51,24 @@
       "parentUuid": "70224a18_622fca25",
       "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f462fc6f_451c6acc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-03-27T23:54:33Z",
+      "side": 1,
+      "message": "300KB sounds a lot to us and concerns us because oatdump is shipped with the ART module to Android devices, where storage is always insufficient. However, it looks like you are measuring the size increase of the host oatdump, which we don\u0027t worry about. Could you please measure the size increase of the target oatdump? Bloat Buster shows that the increase is only 28KB?\n\nIf the size increase is \u003e100KB, then I really suggest finding an alternative. You may consider:\n\n1. Protobuf (Proto lite) (I can\u0027t find any doc about Proto lite for Android platform development, but you can find some examples in the source tree)\n2. XML (tinyxml)\n3. Plain text\n\nAdding @mast@google.com as he has more concerns about code size increase than I do.",
+      "parentUuid": "c4c5bbd8_220af385",
+      "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
