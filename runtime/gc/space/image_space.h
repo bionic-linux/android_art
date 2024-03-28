@@ -406,10 +406,10 @@ class ImageSpace : public MemMapSpace {
     }
 
     std::string GetBcpComponentPath(size_t bcp_index) {
-      DCHECK_LE(bcp_index, boot_class_path_.size());
-      size_t bcp_slash_pos = boot_class_path_[bcp_index].rfind('/');
+      DCHECK_LE(bcp_index, boot_class_path_locations_.size());
+      size_t bcp_slash_pos = boot_class_path_locations_[bcp_index].rfind('/');
       DCHECK_NE(bcp_slash_pos, std::string::npos);
-      return boot_class_path_[bcp_index].substr(0u, bcp_slash_pos + 1u);
+      return boot_class_path_locations_[bcp_index].substr(0u, bcp_slash_pos + 1u);
     }
 
     bool VerifyImageLocation(ArrayRef<const std::string> components,
