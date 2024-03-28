@@ -69,6 +69,24 @@
       "parentUuid": "c4c5bbd8_220af385",
       "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d6a0e6_c944e6fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-03-28T18:58:36Z",
+      "side": 1,
+      "message": "Doing the same for a target product: `ls -l $(gettop)/out/target/product/raven/apex/com.android.art/bin/oatdump`\n```\nBefore: 295360\nAfter : 316936\nDiff. :  21576\n```\nIf ~20-30k is acceptable, I have a slight preference towards merging this.  If not, I have a slight preference for protobuf over xml or plaintext.  But we are happy to work with whatever the ART team suggests.",
+      "parentUuid": "f462fc6f_451c6acc",
+      "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
