@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce4d36d_91985e6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "I can\u0027t find any testing of the filters. I guess it\u0027s been ok as long as this tool only has been a debug helper, but since it looks like you want to use it as a dependable API it may be in your interest to ensure tests cover your intended use cases.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67c61c89_5699b983",
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "I personally think it\u0027s fine, but Martin would like to take another look and decide, so I\u0027ll leave it to him.",
       "parentUuid": "67c61c89_5699b983",
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290bbedd_f22e6659",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "28 KB isn\u0027t the end of the world, but since it\u0027s this simple I wonder if we can just stick to a plain old printf for now - it\u0027s easy to replace it with a proper json formatter if requirements increase. `PrettyMethod` can\u0027t output quotes, can it?\n\nBut if you want to extend the json to an array (apropos another comment) then we may be going past the threshold where string concat adhocery becomes intolerable (I\u0027m thinking in particular of json\u0027s annoying handling of commas).\n\nAlso, just to check, do you need this on device?",
+      "parentUuid": "c9e287e3_0661b1ae",
       "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -107,6 +148,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ff78f81_2ab56793",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "I\u0027m aware this is largely copied code, but I think the ship has sailed for this. Just drop it. (Same below.)",
+      "range": {
+        "startLine": 745,
+        "startChar": 8,
+        "endLine": 745,
+        "endChar": 30
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fe44d22_82c7ebac",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 8
@@ -147,6 +211,69 @@
         "endLine": 773,
         "endChar": 23
       },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a246f3d_93d76ea5",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "You want a series of separate json messages when more than one method match, not a single json message with an array?",
+      "range": {
+        "startLine": 773,
+        "startChar": 10,
+        "endLine": 773,
+        "endChar": 47
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78707a73_ee2f10e8",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "Please document.",
+      "range": {
+        "startLine": 3317,
+        "startChar": 14,
+        "endLine": 3317,
+        "endChar": 22
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81093d2_fddb38aa",
+        "filename": "oatdump/oatdump_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-02T21:46:28Z",
+      "side": 1,
+      "message": "Test multiple methods matching?",
       "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
