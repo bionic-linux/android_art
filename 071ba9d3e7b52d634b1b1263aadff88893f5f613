@@ -16,6 +16,52 @@
       "message": "Hi, please review diff in PS1 and PS3. Thank you",
       "revId": "071ba9d3e7b52d634b1b1263aadff88893f5f613",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35ebbc0_3f7ddd77",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3647,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-02T23:54:05Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this (also?) go into the function description in the .h file?",
+      "range": {
+        "startLine": 3645,
+        "startChar": 17,
+        "endLine": 3647,
+        "endChar": 22
+      },
+      "revId": "071ba9d3e7b52d634b1b1263aadff88893f5f613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed624d1_dd53527b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3649,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-02T23:54:05Z",
+      "side": 1,
+      "message": "I understand this is unlikely. If we do hit this case, how much will it affect memory use? My concern is that this might introduce significant measurement noise for any metrics that might be sensitive to that. If that\u0027s really an issue, is it worth figuring out here how many pages are really affected? It doesn\u0027t sound that expensive?",
+      "range": {
+        "startLine": 3649,
+        "startChar": 10,
+        "endLine": 3649,
+        "endChar": 29
+      },
+      "revId": "071ba9d3e7b52d634b1b1263aadff88893f5f613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
