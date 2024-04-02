@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de87788e_081bae3e",
+        "filename": "runtime/gc/space/image_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-02T15:02:08Z",
+      "side": 1,
+      "message": "Rename the function as well.",
+      "range": {
+        "startLine": 408,
+        "startChar": 31,
+        "endLine": 408,
+        "endChar": 35
+      },
+      "revId": "a8d5ce40f6e4d22a129810eb3e5f56d2fe8f3a43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
