@@ -16,6 +16,139 @@
       "message": "I guess the 28k to include JSON library for the printing is ok?\n\n(the alternative would to ignore the JSON library, and just crate the same string with printf)",
       "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e287e3_0661b1ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "I personally think it\u0027s fine, but Martin would like to take another look and decide, so I\u0027ll leave it to him.",
+      "parentUuid": "67c61c89_5699b983",
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10db3782_4c78cabd",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "We generally use angle brackets for only system headers, and use double quotes for anything else.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "211efc51_812845b2",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "Use foreach?",
+      "range": {
+        "startLine": 732,
+        "startChar": 9,
+        "endLine": 732,
+        "endChar": 53
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d79417c_cd71ae77",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s a good idea to be so lenient on this. Could you fail the dump in this case?",
+      "range": {
+        "startLine": 741,
+        "startChar": 8,
+        "endLine": 741,
+        "endChar": 16
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe44d22_82c7ebac",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "The [comment](https://cs.android.com/android/platform/superproject/main/+/main:external/jsoncpp/include/json/writer.h;l\u003d164;drc\u003d13412bb94816e57e3a2de1018c65192f5b1a7261) says this is deprecated and you should use StreamWriterBuilder.",
+      "range": {
+        "startLine": 772,
+        "startChar": 10,
+        "endLine": 772,
+        "endChar": 26
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c08116_96339197",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like you need indentation for json. Just use `os` here?",
+      "range": {
+        "startLine": 773,
+        "startChar": 10,
+        "endLine": 773,
+        "endChar": 23
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5236a225_fd88bf78",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-02T15:21:14Z",
+      "side": 1,
+      "message": "It\u0027s fine. We want the code to conform to the formatter hook sooner or later.",
+      "parentUuid": "38f6d90d_75ece9db",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 88
+      },
+      "revId": "c83698c90a2a1c2f54b9b330129e8f42f2f14f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53244527_d55e0223",
