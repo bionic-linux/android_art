@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11422c60_6c4cc52f",
+        "filename": "dexopt_chroot_setup/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Typo: \"because\"",
+      "range": {
+        "startLine": 62,
+        "startChar": 54,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640d485e_e1561b1e",
+        "filename": "dexopt_chroot_setup/art_standalone_dexopt_chroot_setup_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "A thought here is that there\u0027s no need to use template expansions in this file. Otoh, keeping it as a template makes it easier to diff against the templates in art/test. So overall I\u0027m on the fence - it\u0027s ok either way.",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72d709e_6ee6c65f",
+        "filename": "dexopt_chroot_setup/art_standalone_dexopt_chroot_setup_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "I\u0027ve noticed the [`test.extra_test_config`](https://cs.android.com/android/platform/superproject/main/+/main:build/soong/cc/test.go;l\u003d55;drc\u003daa39480d2107fff4c42e321616436b0b0b718cde) argument in Soong. It\u0027s not clear to me how it works, but I wonder if it can be used to add this without duplicating the template. IDK - optional.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 92
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7da29a_87e54090",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "go/cstyle#Operator_Overloading says don\u0027t use this (and I agree - I like to see the plain old dumb casts where they\u0027re needed).\n\nA suggestion is to use an inline function instead to make it `ChrootSubdir(\"/apex\")` etc.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ecfc23_8587e13a",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Make an AIDL constant out of this prefix too?",
+      "range": {
+        "startLine": 81,
+        "startChar": 42,
+        "endLine": 81,
+        "endChar": 64
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9a3068_0073eb65",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Please make it more descriptive by including the use case. `kChrootDefaultMode`?\n```suggestion\nconstexpr mode_t kChrootDefaultMode \u003d 0755;\n```",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc92ba3c_e43195f6",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Can\u0027t this be an assertion instead?\n```suggestion\n  CHECK(!PathStartsWith(source, DexoptChrootSetup::CHROOT_DIR));\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfaa3338_ce763b23",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t follow. First off, from mount(2) I get that these mount properties are scoped to the parent mount, not processes. Secondly, doesn\u0027t sharing only come into play if we bind mount the same directory to several locations inside the chroot?\n\nOr put differently, what would break if we simply mounted everything with `MS_BIND|MS_REC` followed by changing it to slave with `MS_SLAVE|MS_REC`?",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53b021a_26aee0a9",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "Why is this a constant reference? E.g. `/proc/filesystems` below isn\u0027t. IMO there\u0027s benefit in clarity by just using the literal straight away, unless e.g. there\u0027s some connection with code elsewhere that the constant can codify.",
+      "range": {
+        "startLine": 183,
+        "startChar": 31,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6d70c9_b17d93ae",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "While this is nice to not hardcode filesystems, it does mean that we count on that _any_ filesystem behaves correctly when given a block device with the wrong fstype. That\u0027s a bit of an unknown because we don\u0027t know what strange things OEMs may add support for. There could also be some filesystem that\u0027s happy to mount e.g. ext2 volumes but then doesn\u0027t behave fully like the real `ext2`.\n\nPlease order the list in `GetSupportedFilesystems` so that it starts with the known (and likely) candidates `ext2` and `erofs`.",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 70
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49e2d9d_6617eabd",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-04T19:24:50Z",
+      "side": 1,
+      "message": "When can it be `EBUSY`? According to mount(2) that can only happen if the mount point is already taken or if we\u0027re remounting, but the former would be a programming error and the latter can\u0027t happen since there\u0027s no `MS_REMOUNT` flag.",
+      "range": {
+        "startLine": 223,
+        "startChar": 80,
+        "endLine": 223,
+        "endChar": 85
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
