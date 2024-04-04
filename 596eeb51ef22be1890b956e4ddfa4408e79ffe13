@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aaea254_70e855bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-04-04T18:47:13Z",
+      "side": 1,
+      "message": "Maybe mention here that we now rely on ART\u0027s top-level `OWNERS` file for these paths (`libnativebridge/*`, `libnativeloader/*`)? (It\u0027s not directly visible if you only look at the changes in this CL.)",
+      "revId": "596eeb51ef22be1890b956e4ddfa4408e79ffe13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "034422b0_0f823eba",
