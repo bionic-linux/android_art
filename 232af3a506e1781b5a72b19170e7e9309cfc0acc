@@ -22,6 +22,30 @@
       },
       "revId": "232af3a506e1781b5a72b19170e7e9309cfc0acc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59cb4b99_c82dd428",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 0,
+      "message": "It\u0027s not \"left out\". It doesn\u0027t exist. Why there is no such test is explained in `dexopt_chroot_setup/Android.bp`.",
+      "parentUuid": "7da97fc3_eef58325",
+      "range": {
+        "startLine": 350,
+        "startChar": 4,
+        "endLine": 350,
+        "endChar": 36
+      },
+      "revId": "232af3a506e1781b5a72b19170e7e9309cfc0acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

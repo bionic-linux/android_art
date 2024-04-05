@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "48305cdb_a15eddb4",
+        "filename": "dexopt_chroot_setup/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11422c60_6c4cc52f",
+      "range": {
+        "startLine": 62,
+        "startChar": 54,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "640d485e_e1561b1e",
         "filename": "dexopt_chroot_setup/art_standalone_dexopt_chroot_setup_tests.xml",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "A thought here is that there\u0027s no need to use template expansions in this file. Otoh, keeping it as a template makes it easier to diff against the templates in art/test. So overall I\u0027m on the fence - it\u0027s ok either way.",
+      "range": {
+        "startLine": 17,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa17936_21ca16b6",
+        "filename": "dexopt_chroot_setup/art_standalone_dexopt_chroot_setup_tests.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "I think the benefit is that it\u0027s easier to copy-paste the contents among different tests.",
+      "parentUuid": "640d485e_e1561b1e",
       "range": {
         "startLine": 17,
         "startChar": 33,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6773c86a_943d64af",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7da29a_87e54090",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17ecfc23_8587e13a",
@@ -106,6 +178,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Make an AIDL constant out of this prefix too?",
+      "range": {
+        "startLine": 81,
+        "startChar": 42,
+        "endLine": 81,
+        "endChar": 64
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5a3715_b3bacad9",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17ecfc23_8587e13a",
       "range": {
         "startLine": 81,
         "startChar": 42,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29129f18_b0993712",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9a3068_0073eb65",
+      "range": {
+        "startLine": 83,
+        "startChar": 17,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc92ba3c_e43195f6",
@@ -152,6 +272,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Can\u0027t this be an assertion instead?\n```suggestion\n  CHECK(!PathStartsWith(source, DexoptChrootSetup::CHROOT_DIR));\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dce546e_aea43a2d",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc92ba3c_e43195f6",
       "range": {
         "startLine": 117,
         "startChar": 0,
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32b7394_8f0655bf",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "\u003e First off, from mount(2) I get that these mount properties are scoped to the parent mount, not processes. Secondly, doesn\u0027t sharing only come into play if we bind mount the same directory to several locations inside the chroot?\n\nsystem_server has a separate mount namespace. We must mount shared so that the files can be seen there. Note that we need to classload the new service-art.jar there.\n\n\u003e Or put differently, what would break if we simply mounted everything with MS_BIND|MS_REC followed by changing it to slave with MS_SLAVE|MS_REC?\n\nFirst, we don\u0027t use `MS_REC`, and the reason is stated on line 159-163. Second, if we do `MS_BIND` and `MS_SLAVE` for each mount point, we will get the propagation type of \"slave\" rather than \"slave+shared\", so system_server won\u0027t be able to see the files.",
+      "parentUuid": "cfaa3338_ce763b23",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53b021a_26aee0a9",
@@ -198,6 +366,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Why is this a constant reference? E.g. `/proc/filesystems` below isn\u0027t. IMO there\u0027s benefit in clarity by just using the literal straight away, unless e.g. there\u0027s some connection with code elsewhere that the constant can codify.",
+      "range": {
+        "startLine": 183,
+        "startChar": 31,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e891ac_4b4128d0",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53b021a_26aee0a9",
       "range": {
         "startLine": 183,
         "startChar": 31,
@@ -231,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "385c4ebc_32a68684",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "As I said in the design doc, this is following toybox\u0027s implementation of the `mount -t auto` command (https://cs.android.com/android/platform/superproject/main/+/main:external/toybox/toys/lsb/mount.c;l\u003d196-269;drc\u003d138378640fd1a6207a51eca384de683393312372).\n\nIf there was a weird filesystem that behaves like you said, then it would be a big problem: the mount command wouldn\u0027t work.",
+      "parentUuid": "ef6d70c9_b17d93ae",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 70
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b49e2d9d_6617eabd",
@@ -244,6 +460,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "When can it be `EBUSY`? According to mount(2) that can only happen if the mount point is already taken or if we\u0027re remounting, but the former would be a programming error and the latter can\u0027t happen since there\u0027s no `MS_REMOUNT` flag.",
+      "range": {
+        "startLine": 223,
+        "startChar": 80,
+        "endLine": 223,
+        "endChar": 85
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b935df9b_cf754622",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "First, this is following toybox\u0027s implementation (https://cs.android.com/android/platform/superproject/main/+/main:external/toybox/toys/lsb/mount.c;l\u003d264;drc\u003d138378640fd1a6207a51eca384de683393312372).\n\nSecond, in practice, when mounting a block device with a wrong filesystem type, if the device is also mounted elsewhere, I got `EBUSY`, and if the device is not mounted elsewhere, I got `EINVAL`, though I can\u0027t find docs about this behavior. Note that a block device is allowed to be mounted at multiple mount points, and mounting it at multiple mount points with the right filesystem type results in a success rather than `EBUSY`.",
+      "parentUuid": "b49e2d9d_6617eabd",
       "range": {
         "startLine": 223,
         "startChar": 80,

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10e1b0d_82a7c3fa",
+        "filename": "dexopt_chroot_setup/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b94094_14ff5eb3",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 29
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad49e23_84c405f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Suggest `log_name` to make it more obvious that this is only used for logging purposes.",
+      "range": {
+        "startLine": 86,
+        "startChar": 34,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead9bbd2_8112457a",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad49e23_84c405f7",
       "range": {
         "startLine": 86,
         "startChar": 34,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ab4873_e65fc226",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4892b396_fc811dc4",
+      "range": {
+        "startLine": 245,
+        "startChar": 30,
+        "endLine": 245,
+        "endChar": 34
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09dfe4d8_66cda1a2",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "We don\u0027t need to restorecon [/tmp/pre_reboot_dexopt](https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/file_contexts;l\u003d914;drc\u003dc5401edfb4d65686275a3471e38cefbc1913a70f) itself?",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 36
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb444b67_3c7db130",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "We don\u0027t. `/mnt/pre_reboot_dexopt` is [prepared by init](https://cs.android.com/android/platform/superproject/main/+/main:system/core/rootdir/init.rc;l\u003d308;drc\u003d6ec79b5605cfc0ac80f6d24e4fd367f8aa0e9e76), and init [takes care of the secontext](https://cs.android.com/android/platform/superproject/main/+/main:system/core/init/util.cpp;l\u003d248-250;drc\u003d74219b69bd32942b481c04f1d85c79ca5a5a434a).\n\nBut thanks for bring this up. I realized that we never need to recursively create dirs, and if we did, we would run into problems with secontext on parent dirs.",
+      "parentUuid": "09dfe4d8_66cda1a2",
       "range": {
         "startLine": 279,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eebc904_ab263f9b",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Neither `std::vector` nor `std::string` supports `constexpr`. If we want `constexpr`, we will use something like `const char*[]`, but then we need to convert each `const char*` to an `std::string` to concatenate it with `\"/\"`, so it will be kind of moot (and the compiler seems to never optimize the concatenation, even though both operands are statically known). To eliminate the concatenation, we will have to hardcode the concatenated strings as well. In conclusion, if we really want to be efficient, we\u0027ll have something like\n\n```\n    constexpr std::tuple\u003cconst char*, const char*\u003e additional_system_partitions[] \u003d {\n        {\"system_ext\", \"/system_ext\"},\n        {\"vendor\", \"/vendor\"},\n        {\"product\", \"/product\"},\n    };\n```\n\nBut since this code is not performance-sensitive, I\u0027d like to trade performance for simplicity.",
+      "parentUuid": "937f2166_458bae19",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 26
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "477a8d3e_5f70f39c",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "For clarity please wrap this (and elsewhere) in a function `IsOtaUpdate`.\n```suggestion\n  if (!IsOtaUpdate(ota_slot)) {  // Mainline update\n```",
+      "range": {
+        "startLine": 288,
+        "startChar": 7,
+        "endLine": 288,
+        "endChar": 27
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd4e1e8_240476cf",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477a8d3e_5f70f39c",
       "range": {
         "startLine": 288,
         "startChar": 7,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8266dc59_796383ec",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Oops, it\u0027s always true. (It can\u0027t be always false. If if was always false, I would get a crash but I didn\u0027t. :)\n\nFixed.",
+      "parentUuid": "5dd7aea0_e8d0e47c",
+      "range": {
+        "startLine": 294,
+        "startChar": 10,
+        "endLine": 294,
+        "endChar": 62
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7361f162_323f9ca0",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Please point to the init file that makes this work.\n```suggestion\n    // Run `snapshotctl map` through init to map block devices. We can\u0027t run it ourselves because it\n    // requires the UID to be 0. See `init.snapshotctl.map` in `init.rc`.\n```",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfeae98f_b0580538",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7361f162_323f9ca0",
       "range": {
         "startLine": 296,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a9b00e_ad1bcf03",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4698c30_4d645b1d",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 53
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a84ed6_18742a9d",
@@ -221,6 +437,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Solder on and try to do our own unmounts (and delete of `CHROOT_DIR`, provided they succeed) before reporting this? If we fail to clean up the chroot it may stay broken until reboot.",
+      "range": {
+        "startLine": 385,
+        "startChar": 6,
+        "endLine": 385,
+        "endChar": 19
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "853eb2c2_83fd401e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "If apexd fails to unmount apexes, I don\u0027t think we can unmount others because the loop devices backing the apex mount points are in `/\u003cCHROOT_DIR\u003e/dev`, and the apexes backing the loop devices can be in `/\u003cCHROOT_DIR\u003e/system`.",
+      "parentUuid": "f6a84ed6_18742a9d",
       "range": {
         "startLine": 385,
         "startChar": 6,
@@ -277,6 +517,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e5d16d3_ceefdfd3",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "I actually considered that but I couldn\u0027t figure out an easy way to do it.",
+      "parentUuid": "a021c6af_8b3fea83",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9faebc_f2750b9c",
@@ -290,6 +554,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "There\u0027s a small but nonzero risk of a race if the device kicks off a real pre-reboot dexopt while the test runs. Can we prevent that somehow?",
+      "range": {
+        "startLine": 65,
+        "startChar": 41,
+        "endLine": 65,
+        "endChar": 70
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdbb13a_f012594b",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Since the chance is very low, I\u0027m skipping the test in this case.",
+      "parentUuid": "0e9faebc_f2750b9c",
       "range": {
         "startLine": 65,
         "startChar": 41,
@@ -323,6 +611,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc3c053_e03e6d0f",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d3bb7c_a15175e7",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 54
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a101849e_a3c99f3f",
@@ -336,6 +648,30 @@
       "writtenOn": "2024-04-04T19:24:50Z",
       "side": 1,
       "message": "Please also test that `tearDown` is idempotent.",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54db9228_a134e244",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-05T18:26:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a101849e_a3c99f3f",
       "range": {
         "startLine": 93,
         "startChar": 5,
