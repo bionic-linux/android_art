@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22df66a4_b5e370e1",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3647,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-04-06T20:07:10Z",
+      "side": 1,
+      "message": "No relevant anymore.",
+      "parentUuid": "c35ebbc0_3f7ddd77",
+      "range": {
+        "startLine": 3645,
+        "startChar": 17,
+        "endLine": 3647,
+        "endChar": 22
+      },
+      "revId": "071ba9d3e7b52d634b1b1263aadff88893f5f613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ed624d1_dd53527b",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-04-02T23:54:05Z",
       "side": 1,
       "message": "I understand this is unlikely. If we do hit this case, how much will it affect memory use? My concern is that this might introduce significant measurement noise for any metrics that might be sensitive to that. If that\u0027s really an issue, is it worth figuring out here how many pages are really affected? It doesn\u0027t sound that expensive?",
+      "range": {
+        "startLine": 3649,
+        "startChar": 10,
+        "endLine": 3649,
+        "endChar": 29
+      },
+      "revId": "071ba9d3e7b52d634b1b1263aadff88893f5f613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592320e5_75c522e9",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3649,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-04-06T20:07:10Z",
+      "side": 1,
+      "message": "Your comment made me realize, that the gc-thread can just wait for the pages that are being mapped by mutator(s) in the same range are done and then we can madvise. Kindly see the change in PS4.",
+      "parentUuid": "3ed624d1_dd53527b",
       "range": {
         "startLine": 3649,
         "startChar": 10,
