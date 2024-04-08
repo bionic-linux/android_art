@@ -213,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f7ccb5_067d04aa",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d3462e_825190a9",
+      "range": {
+        "startLine": 279,
+        "startChar": 2,
+        "endLine": 279,
+        "endChar": 36
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "937f2166_458bae19",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Ok. I thought they did support `constexpr`, but that\u0027s a C++ 20 feature.",
       "parentUuid": "2eebc904_ab263f9b",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 26
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f09eada_45af9a04",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": "Ah, interesting.",
+      "parentUuid": "7855a4ad_86b0f96a",
       "range": {
         "startLine": 282,
         "startChar": 2,
@@ -392,6 +440,30 @@
       "side": 1,
       "message": "(Ah yes, the reviewer may also be checking if the author is paying attention. :)",
       "parentUuid": "8266dc59_796383ec",
+      "range": {
+        "startLine": 294,
+        "startChar": 10,
+        "endLine": 294,
+        "endChar": 62
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b975d8_a9fe3543",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": ":)",
+      "parentUuid": "7e1326a9_6b36f4dd",
       "range": {
         "startLine": 294,
         "startChar": 10,
@@ -569,6 +641,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a438bda3_ed689345",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": "Do you mean we unmount the apexes ourselves? I tried that and it messed up a lot of things. It looks like apexd is doing something smart that we don\u0027t do here.",
+      "parentUuid": "587d37ed_4843e4ac",
+      "range": {
+        "startLine": 385,
+        "startChar": 6,
+        "endLine": 385,
+        "endChar": 19
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c1c0fc67_b452771c",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 3
@@ -661,6 +757,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a219652b_7f9288b1",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c1ceeeb_3d9511a0",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 69
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9faebc_f2750b9c",
@@ -722,6 +842,30 @@
       "side": 1,
       "message": "Thanks, but that check doesn\u0027t fully solve the problem. It\u0027s better than nothing, but it\u0027s worth a comment there that test flakes due to this can happen.",
       "parentUuid": "abdbb13a_f012594b",
+      "range": {
+        "startLine": 65,
+        "startChar": 41,
+        "endLine": 65,
+        "endChar": 70
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d047e92a_b4e7d2e6",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-08T19:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ae8e1a_26091acf",
       "range": {
         "startLine": 65,
         "startChar": 41,
