@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d120cf_f87bd21a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3788,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-08T13:12:29Z",
+      "side": 1,
+      "message": "nit: the `D` is not necessary",
+      "range": {
+        "startLine": 3788,
+        "startChar": 8,
+        "endLine": 3788,
+        "endChar": 9
+      },
+      "revId": "8458ddac114a22a54050ca0a4a112e7310cb856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3edf11e5_afec08fe",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-08T13:12:29Z",
+      "side": 1,
+      "message": "non-blocking: is there a reason to forward declare them and define them in the .cc?",
+      "range": {
+        "startLine": 923,
+        "startChar": 0,
+        "endLine": 929,
+        "endChar": 35
+      },
+      "revId": "8458ddac114a22a54050ca0a4a112e7310cb856b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
