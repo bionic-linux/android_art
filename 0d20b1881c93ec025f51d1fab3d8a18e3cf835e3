@@ -16,6 +16,23 @@
       "message": "Thanks! This one needs a rebase as well.",
       "revId": "0d20b1881c93ec025f51d1fab3d8a18e3cf835e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10563b3_da0d6337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-04-08T15:10:21Z",
+      "side": 1,
+      "message": "Is it possible to write a regression test for this?",
+      "revId": "0d20b1881c93ec025f51d1fab3d8a18e3cf835e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
