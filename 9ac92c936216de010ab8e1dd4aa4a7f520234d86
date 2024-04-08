@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4fd976_a3e92b3f",
+        "filename": "dexopt_chroot_setup/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-08T17:18:04Z",
+      "side": 1,
+      "message": "Hmm, I thought standalone gtests could also be run through the old school `m test-art-target-gtest`, but that may no longer be the case. Then this is perhaps a bit moot.",
+      "range": {
+        "startLine": 63,
+        "startChar": 43,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878b6e71_70a3f3f4",
+        "filename": "dexopt_chroot_setup/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-08T17:18:04Z",
+      "side": 1,
+      "message": "\"Created by `dexopt_chroot_setup`, and only exists for the duration of the Pre-reboot Dexopt.\"\n```suggestion\nmount point of the `system` image. Created by `dexopt_chroot_setup`, and only\nexists for the duration of the Pre-reboot Dexopt.\n```",
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440514a3_6e30a9f6",
+        "filename": "dexopt_chroot_setup/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-08T17:18:04Z",
+      "side": 1,
+      "message": "Please mention that these are read-write mounts.\n```suggestion\nRead-write mounts of the corresponding directories outside of chroot.\n\nSame as the corresponding directories outside of chroot.\n```",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d7dacb_deb92c55",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-08T17:18:04Z",
+      "side": 1,
+      "message": "Nice.\n\nIs it possible to check writable mounts too?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

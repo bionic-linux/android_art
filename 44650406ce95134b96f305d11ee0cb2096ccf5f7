@@ -355,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e74430ab_6237735e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-08T17:18:04Z",
+      "side": 1,
+      "message": "\u003e system_server has a separate mount namespace.\n\nAha. Which two mount namespaces are we talking about here? Where do they get set up?\n\n\u003e We must mount shared so that the files can be seen there.\n\nDo you need a shared mount for that? I interpret mount(2) that shared mounts are only relevant to how mount and unmount events are propagated, not file access. So do we mount and unmount things inside the chroot that need to be propagated outside of it?\n\n\u003e First, we don\u0027t use MS_REC, and the reason is stated on line 159-163.\n\n(I saw that, but it\u0027s just a consequence of the shared mounts so it\u0027s besides question.)",
+      "parentUuid": "b32b7394_8f0655bf",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c53b021a_26aee0a9",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 2
