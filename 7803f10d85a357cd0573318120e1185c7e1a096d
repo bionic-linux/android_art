@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2424b045_072f2ab9",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3648,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-09T15:32:58Z",
+      "side": 1,
+      "message": "This needs to be or\u0027ed with the old value, right?",
+      "range": {
+        "startLine": 3648,
+        "startChar": 8,
+        "endLine": 3648,
+        "endChar": 31
+      },
+      "revId": "7803f10d85a357cd0573318120e1185c7e1a096d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
