@@ -56,8 +56,8 @@ struct MethodReferenceValueComparator {
     // Compare the class descriptors first.
     const dex::MethodId& mid1 = mr1.GetMethodId();
     const dex::MethodId& mid2 = mr2.GetMethodId();
-    int descriptor_diff = strcmp(mr1.dex_file->StringByTypeIdx(mid1.class_idx_),
-                                 mr2.dex_file->StringByTypeIdx(mid2.class_idx_));
+    int descriptor_diff = strcmp(mr1.dex_file->GetTypeDescriptor(mid1.class_idx_),
+                                 mr2.dex_file->GetTypeDescriptor(mid2.class_idx_));
     if (descriptor_diff != 0) {
       return descriptor_diff < 0;
     }

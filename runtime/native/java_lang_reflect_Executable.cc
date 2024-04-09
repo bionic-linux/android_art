@@ -283,13 +283,13 @@ static jint Executable_compareMethodParametersInternal(JNIEnv* env,
     const dex::TypeId& rhs = other_method->GetDexFile()->GetTypeId(
         other_list->GetTypeItem(i).type_idx_);
 
-    uint32_t lhs_len, rhs_len;
-    const char* lhs_data = this_method->GetDexFile()->StringDataAndUtf16LengthByIdx(
-        lhs.descriptor_idx_, &lhs_len);
-    const char* rhs_data = other_method->GetDexFile()->StringDataAndUtf16LengthByIdx(
-        rhs.descriptor_idx_, &rhs_len);
+    const std::string_view lhs_data = this_method->GetDexFile()->GetTypeDescriptorView(lhs);
+    const std::string_view rhs_data = other_method->GetDexFile()->GetTypeDescriptorView(rhs);
 
-    int cmp = strcmp(lhs_data, rhs_data);
+    // Note: `std::string_view::compare()` uses lexicographical comparison and treats the `char`
+    // as unsigned; for Modified-UTF-8 without embedded nulls this is consistent with the
+    // `CompareModifiedUtf8ToModifiedUtf8AsUtf16CodePointValues()` ordering.
+    int cmp = lhs_data.compare(rhs_data);
     if (cmp != 0) {
       return (cmp < 0) ? -1 : 1;
     }
