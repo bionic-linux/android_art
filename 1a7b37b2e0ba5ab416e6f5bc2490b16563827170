@@ -22,6 +22,30 @@
       },
       "revId": "1a7b37b2e0ba5ab416e6f5bc2490b16563827170",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5a2c07_50bb852e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-09T13:36:09Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a way to do it. I tried `#ifdef HWADDRESS_SANITIZER` but it didn\u0027t work on presubmit because presubmit takes the test from a normal test_suites build that doesn\u0027t have this #define (https://screenshot.googleplex.com/8a3SP2kBov4SJwu).",
+      "parentUuid": "7943ae16_26868527",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "1a7b37b2e0ba5ab416e6f5bc2490b16563827170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

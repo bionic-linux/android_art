@@ -199,6 +199,30 @@
       },
       "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03db014e_a4b3bf5c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-09T13:36:09Z",
+      "side": 1,
+      "message": "Ah, okay. Done.",
+      "parentUuid": "452c9278_18a2d9ee",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

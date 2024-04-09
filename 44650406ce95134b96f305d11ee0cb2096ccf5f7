@@ -425,6 +425,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b3d5f6_6b1bdc63",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-09T13:36:09Z",
+      "side": 1,
+      "message": "It\u0027s the only reason for now, but I think it\u0027s worth it. This approach is probably the safest as why it is safe has been discussed in the design doc and reviewed. Otherwise, we\u0027ll have to copy the jar to somewhere else and then worry about the security implications and so on.",
+      "parentUuid": "734a7b21_a55946c4",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53b021a_26aee0a9",
