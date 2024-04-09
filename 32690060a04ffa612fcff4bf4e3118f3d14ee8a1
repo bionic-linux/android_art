@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de52aff4_6a0f868b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-04-09T09:47:11Z",
+      "side": 1,
+      "message": "Folks do you have any plan to review this change some day? :)",
+      "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
