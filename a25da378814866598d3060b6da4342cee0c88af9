@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b62467_8b5a0db4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-09T00:43:48Z",
+      "side": 1,
+      "message": "I like the approach, but one more question ,,,",
+      "revId": "a25da378814866598d3060b6da4342cee0c88af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04835b82_f24c517b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3669,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-09T00:43:48Z",
+      "side": 1,
+      "message": "Everything should be in at least kProcessed state, right? And we haven\u0027t mapped it yet. But won\u0027this also unnecessarily get set if a mutator has alreaady set a page to kProcessedAndMapped? And is that sufficiently infrequent not to negate the value of the test?",
+      "range": {
+        "startLine": 3669,
+        "startChar": 7,
+        "endLine": 3669,
+        "endChar": 29
+      },
+      "revId": "a25da378814866598d3060b6da4342cee0c88af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
