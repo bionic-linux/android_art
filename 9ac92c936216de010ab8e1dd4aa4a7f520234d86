@@ -175,6 +175,30 @@
       },
       "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452c9278_18a2d9ee",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-09T10:59:19Z",
+      "side": 1,
+      "message": "I mean testing that they are writable.",
+      "parentUuid": "100d3283_58659cdf",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "9ac92c936216de010ab8e1dd4aa4a7f520234d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

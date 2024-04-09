@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7943ae16_26868527",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-09T10:59:19Z",
+      "side": 1,
+      "message": "So I gather this was \"fixed\" by removing it from TEST_MAPPING instead. In a way it\u0027s nicer if such exceptions are present in the tests themselves, but nvm.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "1a7b37b2e0ba5ab416e6f5bc2490b16563827170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
