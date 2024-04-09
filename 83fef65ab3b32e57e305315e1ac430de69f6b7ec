@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a1de597e_051ee832",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Ack - if it\u0027s ok to merge this - I\u0027ll file a bug in our uprobestats backlog to add tests, since we depend on oatdump.",
+      "parentUuid": "cce4d36d_91985e6e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67c61c89_5699b983",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -79,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fffaea31_e5d96549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "We do need it on device.  Currently we assume each line in the output is an individually formatted json object.  That CL is [here](ag/26659005).\n\nI\u0027m fine with that, so going to go with hand formatted JSON for now.  LMK if anyone disagrees.",
+      "parentUuid": "290bbedd_f22e6659",
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10db3782_4c78cabd",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 8
@@ -90,6 +132,30 @@
       "writtenOn": "2024-04-02T15:21:14Z",
       "side": 1,
       "message": "We generally use angle brackets for only system headers, and use double quotes for anything else.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19ff04d_86f33bdd",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10db3782_4c78cabd",
       "range": {
         "startLine": 17,
         "startChar": 9,
@@ -123,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff53195_b5e1c856",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "211efc51_812845b2",
+      "range": {
+        "startLine": 732,
+        "startChar": 9,
+        "endLine": 732,
+        "endChar": 53
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d79417c_cd71ae77",
@@ -136,6 +226,30 @@
       "writtenOn": "2024-04-02T15:21:14Z",
       "side": 1,
       "message": "I\u0027m not sure if it\u0027s a good idea to be so lenient on this. Could you fail the dump in this case?",
+      "range": {
+        "startLine": 741,
+        "startChar": 8,
+        "endLine": 741,
+        "endChar": 16
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565862f0_6cd28aa5",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d79417c_cd71ae77",
       "range": {
         "startLine": 741,
         "startChar": 8,
@@ -169,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "899b1ea0_e18abcbc",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff78f81_2ab56793",
+      "range": {
+        "startLine": 745,
+        "startChar": 8,
+        "endLine": 745,
+        "endChar": 30
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe44d22_82c7ebac",
@@ -182,6 +320,30 @@
       "writtenOn": "2024-04-02T15:21:14Z",
       "side": 1,
       "message": "The [comment](https://cs.android.com/android/platform/superproject/main/+/main:external/jsoncpp/include/json/writer.h;l\u003d164;drc\u003d13412bb94816e57e3a2de1018c65192f5b1a7261) says this is deprecated and you should use StreamWriterBuilder.",
+      "range": {
+        "startLine": 772,
+        "startChar": 10,
+        "endLine": 772,
+        "endChar": 26
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fabaaf9_5b656c74",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "removed the json lib dependency",
+      "parentUuid": "4fe44d22_82c7ebac",
       "range": {
         "startLine": 772,
         "startChar": 10,
@@ -238,6 +400,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d9aa98_8302b6dc",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "I\u0027m happy with this, and I don\u0027t think it\u0027s too crazy (for example, JSON based logging frameworks do this).  See other comment and LMK if you disagree.",
+      "parentUuid": "5a246f3d_93d76ea5",
+      "range": {
+        "startLine": 773,
+        "startChar": 10,
+        "endLine": 773,
+        "endChar": 47
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ea32b5_37707d3b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7c08116_96339197",
+      "range": {
+        "startLine": 773,
+        "startChar": 10,
+        "endLine": 773,
+        "endChar": 23
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78707a73_ee2f10e8",
@@ -261,6 +471,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3539a6fc_390f6594",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78707a73_ee2f10e8",
+      "range": {
+        "startLine": 3317,
+        "startChar": 14,
+        "endLine": 3317,
+        "endChar": 22
+      },
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d81093d2_fddb38aa",
@@ -274,6 +508,24 @@
       "writtenOn": "2024-04-02T21:46:28Z",
       "side": 1,
       "message": "Test multiple methods matching?",
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8576cc_8b6de3c1",
+        "filename": "oatdump/oatdump_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Ack - per other comment - test cleanup bug b/333544639",
+      "parentUuid": "d81093d2_fddb38aa",
       "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

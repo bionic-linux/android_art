@@ -87,6 +87,24 @@
       "parentUuid": "f462fc6f_451c6acc",
       "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1779dec2_9deb0f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-04-09T17:18:32Z",
+      "side": 1,
+      "message": "Closing the comment - hand formatted the json for now.",
+      "parentUuid": "72d6a0e6_c944e6fd",
+      "revId": "dd1ddf3dc698e290ea45844d9ba32be86e540d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
