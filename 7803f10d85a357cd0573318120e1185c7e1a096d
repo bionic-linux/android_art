@@ -22,6 +22,30 @@
       },
       "revId": "7803f10d85a357cd0573318120e1185c7e1a096d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1b7976_2d934f48",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3648,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-04-09T15:55:43Z",
+      "side": 1,
+      "message": "Sorry for missing it. Fixed.",
+      "parentUuid": "2424b045_072f2ab9",
+      "range": {
+        "startLine": 3648,
+        "startChar": 8,
+        "endLine": 3648,
+        "endChar": 31
+      },
+      "revId": "7803f10d85a357cd0573318120e1185c7e1a096d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
