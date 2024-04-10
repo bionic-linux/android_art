@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d33f722a_b6d7e599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T19:10:06Z",
+      "side": 1,
+      "message": "I\u0027ll +2, but as discussed offline please investigate the bloat a bit more.",
+      "revId": "a444283fa7d1d5ca25657ecd60788271775ae610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b74b604_1fca7979",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 10
@@ -85,6 +102,30 @@
       "side": 1,
       "message": "I\u0027m sure this works. `\u003d\u003d` does proper string comparison when either operand is an `std::string`/`std::string_view`. In this particular case, one operand is from `filesystems` and it\u0027s an `std::string`.",
       "parentUuid": "768dc3e1_ea11f9d1",
+      "range": {
+        "startLine": 252,
+        "startChar": 64,
+        "endLine": 252,
+        "endChar": 77
+      },
+      "revId": "a444283fa7d1d5ca25657ecd60788271775ae610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78769c9a_c966c42e",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T19:10:06Z",
+      "side": 1,
+      "message": "Ah, yes one is `std::string`. I looked at the wrong line.",
+      "parentUuid": "ab1fb73f_6b2cde23",
       "range": {
         "startLine": 252,
         "startChar": 64,
