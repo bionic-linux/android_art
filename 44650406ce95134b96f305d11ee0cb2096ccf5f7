@@ -451,6 +451,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72704dfa_e337d7c2",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "All right. I agree it\u0027s better to accept local complexity in a few functions here over global complexity in dealing with a copy in a special place.\n\nIt\u0027s still not clear to me how this code works, unfortunately. I\u0027m a bit thick and need to see quite a few more steps to properly connect the dots, so I just started writing the docs I\u0027d like to read:\n\n```\n  // system_server has a different mount namespace from init, and it uses slave\n  // mounts. E.g:\n  //\n  //    a: init mount ns: shared(1):          /foo\n  //    b: SS mount ns:   slave(1),shared(2): /foo\n  //\n  // We create our chroot setup in the init namespace but also want it to appear\n  // inside the system_server one, since we need to access some files in it from\n  // system_server (in particular service-art.jar).\n  //\n  // Hence we want the mount propagation type to be \"slave+shared\": Slave of the\n  // init namespace so that unmounts in the chroot doesn\u0027t affect the rest of\n  // the system, while at the same time shared inside the system_server\n  // namespace so that it gets the same mounts recursively in the chroot tree.\n  // This can be achieved in 4 steps:\n  //\n  // 1. Bind-mount /foo at a temp mount point /mnt/pre_reboot_dexopt/mount_tmp\n  //    (under shared(1) in the init mount ns).\n  //    a: init mount ns: shared(1):          /foo\n  //    c: init mount ns: shared(1):          /mnt/pre_reboot_dexopt/mount_tmp\n  //    b: SS mount ns:   slave(1),shared(2): /foo\n  //    d: SS mount ns:   slave(1),shared(2): /mnt/pre_reboot_dexopt/mount_tmp\n  //\n  // 2. Make the temp mount point slave (introducing a new peer group shared(3)\n  //    with only one member so far).\n  //    a: init mount ns: shared(1):          /foo\n  //    c: init mount ns: slave(1),shared(3): /mnt/pre_reboot_dexopt/mount_tmp\n  //    b: SS mount ns:   slave(1),shared(2): /foo\n  //    d: SS mount ns:   slave(1),shared(2): /mnt/pre_reboot_dexopt/mount_tmp\n  //\n  // 3. Bind-mount the temp mount point at /mnt/pre_reboot_dexopt/chroot/foo\n  //    (under shared(1) in the init mount ns).\n  //    a: init mount ns: shared(1):          /foo\n  //    c: init mount ns: slave(1),shared(3): /mnt/pre_reboot_dexopt/mount_tmp\n  //    e: init mount ns: slave(1),shared(3): /mnt/pre_reboot_dexopt/chroot/foo\n  //    b: SS mount ns:   slave(1),shared(2): /foo\n  //    d: SS mount ns:   slave(1),shared(2): /mnt/pre_reboot_dexopt/mount_tmp\n  //    f: SS mount ns:   slave(1),shared(2): /mnt/pre_reboot_dexopt/chroot/foo\n  //\n  // 4. Unmount the temp mount point.\n  //    a: init mount ns: shared(1):          /foo\n  //    e: init mount ns: slave(1),shared(3): /mnt/pre_reboot_dexopt/chroot/foo\n  //    b: SS mount ns:   slave(1),shared(2): /foo\n  //    f: SS mount ns:   slave(1),shared(2): /mnt/pre_reboot_dexopt/chroot/foo\n```\n\nThat\u0027s as far as I got, because I still don\u0027t understand how the situation after step 4 works. If another mount happens at /mnt/pre_reboot_dexopt/chroot/foo/bar, which is under (e), it\u0027s not clear how it gets into (f). It would if shared(3) actually is the same peer group as shared(2), but I don\u0027t follow how that\u0027d happen in step 2. Are they the same peer group when you run it?\n\n(Btw, I intentionally ignored the syntax for the propagation types as described in mount_namespaces(7), because it really doesn\u0027t help understanding that a slave relation is designated by `master:X`.)",
+      "parentUuid": "82b3d5f6_6b1bdc63",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c53b021a_26aee0a9",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 2
@@ -545,6 +569,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5931ea5b_5b993a34",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "[Sorry, this comment thread got lost for a while.]\n\nWhat toybox does is only relevant if it\u0027s actually used on a regular basis on any device so that OEMs would unavoidably encounter it. E.g. if there are standard startup scripts that use `-t auto` to mount stuff. Do they do that? I couldn\u0027t find anything.",
+      "parentUuid": "385c4ebc_32a68684",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 70
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b49e2d9d_6617eabd",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 2
@@ -580,6 +628,30 @@
       "side": 1,
       "message": "First, this is following toybox\u0027s implementation (https://cs.android.com/android/platform/superproject/main/+/main:external/toybox/toys/lsb/mount.c;l\u003d264;drc\u003d138378640fd1a6207a51eca384de683393312372).\n\nSecond, in practice, when mounting a block device with a wrong filesystem type, if the device is also mounted elsewhere, I got `EBUSY`, and if the device is not mounted elsewhere, I got `EINVAL`, though I can\u0027t find docs about this behavior. Note that a block device is allowed to be mounted at multiple mount points, and mounting it at multiple mount points with the right filesystem type results in a success rather than `EBUSY`.",
       "parentUuid": "b49e2d9d_6617eabd",
+      "range": {
+        "startLine": 223,
+        "startChar": 80,
+        "endLine": 223,
+        "endChar": 85
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6a38ee_76f73c21",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "[Got lost too.] Thanks, that\u0027s not at all obvious; worth mentioning in the comment (that it can happen if it\u0027s already mounted - what toybox does is less interesting). I suppose it particularly applies to read-only filesystem images already mounted somewhere.",
+      "parentUuid": "b935df9b_cf754622",
       "range": {
         "startLine": 223,
         "startChar": 80,

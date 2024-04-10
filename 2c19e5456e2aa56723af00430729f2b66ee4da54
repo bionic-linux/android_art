@@ -665,6 +665,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f31a5298_4f4dbd0c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "That was my thought, yes. One difference I can see is that unmount order matters, and we don\u0027t have logic for that in the way apexd does. This is fine then - it\u0027s not worth the risk of error spam just on the off chance that we may occasionally succeed in doing something that apexd failed to do.",
+      "parentUuid": "a438bda3_ed689345",
+      "range": {
+        "startLine": 385,
+        "startChar": 6,
+        "endLine": 385,
+        "endChar": 19
+      },
+      "revId": "2c19e5456e2aa56723af00430729f2b66ee4da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c1c0fc67_b452771c",
         "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
         "patchSetId": 3

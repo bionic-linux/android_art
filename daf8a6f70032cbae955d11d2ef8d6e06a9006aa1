@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a32076_db5884e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "Please add `BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dpreexisting terminology` so we don\u0027t have to wade through a gazillion lint warnings.",
+      "revId": "daf8a6f70032cbae955d11d2ef8d6e06a9006aa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4406576_4ff346ed",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T00:21:46Z",
+      "side": 1,
+      "message": "Do I understand correctly that this is out of worry that if the process fails in the middle we can get stuck in a bad state where we\u0027re unable to unmount the child safely?",
+      "range": {
+        "startLine": 159,
+        "startChar": 95,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "daf8a6f70032cbae955d11d2ef8d6e06a9006aa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
