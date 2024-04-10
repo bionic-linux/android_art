@@ -87,6 +87,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f99363a8_645a42ac",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T10:51:51Z",
+      "side": 1,
+      "message": "Looks like we don\u0027t want to use recursive mutexes: https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/base/mutex.h;l\u003d170;\n\nSo that\u0027s not an option.",
+      "parentUuid": "57e0477a_ff51809f",
+      "range": {
+        "startLine": 1172,
+        "startChar": 8,
+        "endLine": 1172,
+        "endChar": 24
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed550d5_7118b145",
