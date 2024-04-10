@@ -139,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff5f271d_6a196147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T16:45:17Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve been busy.\n\nI spoke to rpl@ and we do have more questions about this. In particular, why use a CLI interface to begin with? The usual approach is to add API\u0027s in some .so and export it with a .map.txt so it gets stubs in the SDK. That has the benefit of having good tools to verify ABI stability, test coverage, etc. It may be more work initially, but like I mentioned with the filter argument tests, assuming you want a stable interface you can depend on, it\u0027s probably in your interest.\n\nI don\u0027t want to block you, so I\u0027ll +2 here, now that the json dependency is gone. However be aware that this is more of best-effort support, since a) oatdump is just a debug tool, and b) it has very spotty test coverage.\n\nI should mention that it\u0027s not a given that we\u0027ll continue shipping oatdump with the module. I\u0027ll try to keep this dependency in mind if we decide to look into dropping it, but it may slip through the cracks. An API in a .map.txt file certainly won\u0027t.",
+      "parentUuid": "18e59ee5_0519ab1b",
+      "revId": "83fef65ab3b32e57e305315e1ac430de69f6b7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10db3782_4c78cabd",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 8
