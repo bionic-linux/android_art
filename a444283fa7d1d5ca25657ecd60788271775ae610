@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96ece81_f0dbe13b",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-10T17:46:38Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "7b74b604_1fca7979",
+      "range": {
+        "startLine": 140,
+        "startChar": 26,
+        "endLine": 140,
+        "endChar": 35
+      },
+      "revId": "a444283fa7d1d5ca25657ecd60788271775ae610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "768dc3e1_ea11f9d1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-10T17:23:35Z",
       "side": 1,
       "message": "Are you sure this works? `std::find` will compare elements with \u003d\u003d, and since they\u0027re `const char*` that\u0027s just an address compare, I think.\n\n(This function could use some unit tests, but I\u0027ll leave that up to you, depending on how much faff there is to mock the /proc/filesystems read.)",
+      "range": {
+        "startLine": 252,
+        "startChar": 64,
+        "endLine": 252,
+        "endChar": 77
+      },
+      "revId": "a444283fa7d1d5ca25657ecd60788271775ae610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1fb73f_6b2cde23",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-10T17:46:38Z",
+      "side": 1,
+      "message": "I\u0027m sure this works. `\u003d\u003d` does proper string comparison when either operand is an `std::string`/`std::string_view`. In this particular case, one operand is from `filesystems` and it\u0027s an `std::string`.",
+      "parentUuid": "768dc3e1_ea11f9d1",
       "range": {
         "startLine": 252,
         "startChar": 64,
