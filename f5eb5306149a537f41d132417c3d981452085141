@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73e6e76_0ec25d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T12:00:54Z",
+      "side": 1,
+      "message": "I think we need to include a larger include file where as earlier we declared only a couple of methods. Though I think that is okay. lgtm from my side.",
+      "revId": "f5eb5306149a537f41d132417c3d981452085141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14c83dd_e190a9f0",
+        "filename": "runtime/entrypoints/quick/quick_string_builder_append_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T12:00:54Z",
+      "side": 1,
+      "message": "Usually annotations are added at the declaration. Any reason we are adding it here?",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "f5eb5306149a537f41d132417c3d981452085141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70de62ba_c4b12e34",
+        "filename": "runtime/entrypoints/quick/runtime_entrypoints_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T12:00:54Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \" i.e:\" -- should it be \" i.e.:\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \" i.e:\" -- should it be \" i.e.:\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "f5eb5306149a537f41d132417c3d981452085141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
