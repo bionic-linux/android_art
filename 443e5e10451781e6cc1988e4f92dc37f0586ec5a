@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ba473a_19dfc7d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "Thanks Nicolas!",
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a462f876_906b9c61",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "map can move to earlier line.",
+      "range": {
+        "startLine": 346,
+        "startChar": 11,
+        "endLine": 346,
+        "endChar": 15
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be63d615_9da2d8b7",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "Indentation",
+      "range": {
+        "startLine": 1120,
+        "startChar": 12,
+        "endLine": 1120,
+        "endChar": 38
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e0477a_ff51809f",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "IIUC, this happens only when we update the method from compiled code to compiled code (for ex: baseline -\u003e optimized) from JitCodeCache::Commit? \n\nDo we use any recursive locks in ART? If yes, does making jit_lock_ recursive a possibility here?",
+      "range": {
+        "startLine": 1172,
+        "startChar": 8,
+        "endLine": 1172,
+        "endChar": 24
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed550d5_7118b145",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "code entry in the zombie code that is not marked?",
+      "range": {
+        "startLine": 1292,
+        "startChar": 50,
+        "endLine": 1292,
+        "endChar": 66
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d64336_b89c64ac",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "Why is this needed? Maybe we can add a comment about this one.",
+      "range": {
+        "startLine": 424,
+        "startChar": 62,
+        "endLine": 424,
+        "endChar": 87
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dce0448_ea64805f",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "This is always called from the background thread now right? Should we add annotation that we don\u0027t hold mutator_lock here?",
+      "range": {
+        "startLine": 426,
+        "startChar": 14,
+        "endLine": 426,
+        "endChar": 26
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3ccf20_0abcc573",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 1,
+      "message": "during",
+      "range": {
+        "startLine": 567,
+        "startChar": 26,
+        "endLine": 567,
+        "endChar": 32
+      },
+      "revId": "443e5e10451781e6cc1988e4f92dc37f0586ec5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

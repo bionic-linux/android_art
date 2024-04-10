@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6538d387_461cf424",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-10T09:48:09Z",
+      "side": 0,
+      "message": "IIUC we are dropping this because we no longer hold a mutator_lock here? If that\u0027s the case should we add the annotation to the method?",
+      "range": {
+        "startLine": 1096,
+        "startChar": 2,
+        "endLine": 1096,
+        "endChar": 60
+      },
+      "revId": "5f80711ebc1510811b4f3aa6c748106a26b78d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
