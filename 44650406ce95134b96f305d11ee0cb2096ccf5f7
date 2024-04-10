@@ -497,6 +497,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bf87e3_bafb4230",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-10T17:23:35Z",
+      "side": 1,
+      "message": "Thanks! Now I can almost follow it.",
+      "parentUuid": "c840004c_cb8e1384",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53b021a_26aee0a9",
