@@ -473,6 +473,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c840004c_cb8e1384",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-10T13:10:42Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "72704dfa_e337d7c2",
+      "range": {
+        "startLine": 121,
+        "startChar": 74,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53b021a_26aee0a9",
@@ -591,6 +615,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f78de7b_d6560762",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-10T13:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5931ea5b_5b993a34",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 70
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b49e2d9d_6617eabd",
@@ -652,6 +700,30 @@
       "side": 1,
       "message": "[Got lost too.] Thanks, that\u0027s not at all obvious; worth mentioning in the comment (that it can happen if it\u0027s already mounted - what toybox does is less interesting). I suppose it particularly applies to read-only filesystem images already mounted somewhere.",
       "parentUuid": "b935df9b_cf754622",
+      "range": {
+        "startLine": 223,
+        "startChar": 80,
+        "endLine": 223,
+        "endChar": 85
+      },
+      "revId": "44650406ce95134b96f305d11ee0cb2096ccf5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6c92b0_f18ec218",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-10T13:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6a38ee_76f73c21",
       "range": {
         "startLine": 223,
         "startChar": 80,
