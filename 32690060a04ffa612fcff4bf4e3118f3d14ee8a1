@@ -16,6 +16,93 @@
       "message": "Folks do you have any plan to review this change some day? :)",
       "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2daee337_7aff55f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "Yes, I still have a tab open in Chrome as a TODO item.\n\nBut I decided to write a part of this myself as https://android-review.googlesource.com/3037572 rather than going back and forth on this CL. Once that\u0027s merged, please rebase and reduce this CL to the branches that need the fixup.",
+      "parentUuid": "de52aff4_6a0f868b",
+      "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e4f66d_5d13d225",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "We could move the \"next\" link for the singly-linked list directly to `class Branch`. (This could be done in a standalone cleanup change.)",
+      "range": {
+        "startLine": 7179,
+        "startChar": 6,
+        "endLine": 7179,
+        "endChar": 43
+      },
+      "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7aa17be_1e65e469",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "Using \"C\" loads for literals would be very complicated, so I don\u0027t think we should do it. And branches really deal only with \"Zca\", so this helper function seems to be unnecessary.",
+      "range": {
+        "startLine": 255,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 53
+      },
+      "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481abd14_6ce523e9",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "We could store the entire `uint32_t enabled_extensions_` when we construct the branch but I do not anticipate using anything other than \"Zba\" for this.",
+      "range": {
+        "startLine": 2014,
+        "startChar": 75,
+        "endLine": 2014,
+        "endChar": 98
+      },
+      "revId": "32690060a04ffa612fcff4bf4e3118f3d14ee8a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

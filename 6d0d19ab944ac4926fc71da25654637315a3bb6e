@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d04358_5b4f7cc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "6d0d19ab944ac4926fc71da25654637315a3bb6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae0f8c6_7a7bd555",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 7163,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-11T15:09:28Z",
+      "side": 1,
+      "message": "There\u0027s only one use. We should avoid this variable and \"inline\" the code.",
+      "range": {
+        "startLine": 7163,
+        "startChar": 11,
+        "endLine": 7163,
+        "endChar": 23
+      },
+      "revId": "6d0d19ab944ac4926fc71da25654637315a3bb6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
