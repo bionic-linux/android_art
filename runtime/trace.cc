@@ -62,6 +62,33 @@ struct MethodTraceRecord {
 
 using android::base::StringPrintf;
 
+#if defined(__arm__)
+// On ARM 32 bit, we don't always have access to the timestamp counters from user space on older
+// kernels on some processors. There is no easy way to check if it is safe to read the timestamp
+// counters. There is HWCAP_EVTSTRM which is set when generic timer is available but not
+// necessarily from the user space. Kernel disables access to generic timer when there are known
+// problems on the target CPUs. See b/289178149 for more discussion.
+//
+// There are two known errata related to the user space access for 32-bit processes:
+// 1. 858921: https://github.com/torvalds/linux/blob/master/arch/arm64/kernel/cpu_errata.c#L527
+// 2. 1418040: https://github.com/torvalds/linux/blob/master/arch/arm64/kernel/cpu_errata.c#L314
+//
+// The following kernel patches are required to safely access CNTVCT on cores that are impacted by
+// the above mentioned errata:
+// 32a3e635fb0e arm64: compat: Add CNTFRQ trap handler
+// 50de013d22e4 arm64: compat: Add CNTVCT trap handler
+// 2a8905e18c55 arm64: compat: Add cp15_32 and cp15_64 handler arrays
+// 1f1c014035a8 arm64: compat: Add condition code checks and IT advance
+// 70c63cdfd6ee arm64: compat: Add separate CP15 trapping hook
+// bd7ac140b82f arm64: Add decoding macros for CP15_32 and CP15_64 traps
+//
+// All these patches are a part of v4.20-rc1. So on kernels beyond 4.20 it should be safe to access
+// timestamp counters. Prior to that accessing timestamp counters could cause problems on some of
+// the cores. Since it is involved to accurately check for the CPU type, we gate the availability of
+// these counters on the kernel version.
+static const bool gCntvctSupportedArm32 = IsKernelVersionAtLeast(4, 20);
+#endif
+
 static constexpr size_t TraceActionBits = MinimumBitsToStore(
     static_cast<size_t>(kTraceMethodActionMask));
 static constexpr uint8_t kOpNewMethod = 1U;
@@ -115,14 +142,16 @@ double tsc_to_microsec_scaling_factor = -1.0;
 uint64_t GetTimestamp() {
   uint64_t t = 0;
 #if defined(__arm__)
-  // On ARM 32 bit, we don't always have access to the timestamp counters from user space. There is
-  // no easy way to check if it is safe to read the timestamp counters. There is HWCAP_EVTSTRM which
-  // is set when generic timer is available but not necessarily from the user space. Kernel disables
-  // access to generic timer when there are known problems on the target CPUs. Sometimes access is
-  // disabled only for 32-bit processes even when 64-bit processes can accesses the timer from user
-  // space. These are not reflected in the HWCAP_EVTSTRM capability.So just fallback to
-  // clock_gettime on these processes. See b/289178149 for more discussion.
-  t = MicroTime();
+  // On ARM 32 bit, we don't always have access to the timestamp counters from user space. See
+  // gCntvctSupportedArm32 for more details.
+  if (gCntvctSupportedArm32) {
+    // See Architecture Reference Manual ARMv7-A and ARMv7-R edition section B4.1.34
+    // Q and R specify that they should be written to lower and upper halves of 64-bit value.
+    // See: https://llvm.org/docs/LangRef.html#asm-template-argument-modifiers
+    asm volatile("mrrc p15, 1, %Q0, %R0, c14" : "=r"(t));
+  } else {
+    t = MicroTime();
+  }
 #elif defined(__aarch64__)
   // See Arm Architecture Registers  Armv8 section System Registers
   asm volatile("mrs %0, cntvct_el0" : "=r"(t));
@@ -205,9 +234,17 @@ void InitializeTimestampCounters() {
   }
 
 #if defined(__arm__)
-  // On ARM 32 bit, we don't always have access to the timestamp counters from
-  // user space. Seem comment in GetTimestamp for more details.
-  tsc_to_microsec_scaling_factor = 1.0;
+  // On ARM 32 bit, we don't always have access to the timestamp counters from user space. See
+  // gCntvctSupportedArm32 for more details.
+  if (gCntvctSupportedArm32) {
+    tsc_to_microsec_scaling_factor = 1.0;
+  } else {
+    double seconds_to_microseconds = 1000 * 1000;
+    uint64_t freq = 0;
+    // See Architecture Reference Manual ARMv7-A and ARMv7-R edition section B4.1.21
+    asm volatile("mrc p15, 0, %0, c14, c0, 0" : "=r"(freq));
+    tsc_to_microsec_scaling_factor = seconds_to_microseconds / static_cast<double>(freq);
+  }
 #elif defined(__aarch64__)
   double seconds_to_microseconds = 1000 * 1000;
   uint64_t freq = 0;
@@ -699,9 +736,9 @@ void Trace::Start(std::unique_ptr<File>&& trace_file_in,
         // support them.
         bool is_fast_trace = !UseThreadCpuClock(the_trace_->GetClockSource());
 #if defined(__arm__)
-        // On ARM 32 bit, we don't always have access to the timestamp counters from
-        // user space. Seem comment in GetTimestamp for more details.
-        is_fast_trace = false;
+        // On ARM 32 bit, we don't always have access to the timestamp counters from user space. See
+        // gCntvctSupportedArm32 for more details.
+        is_fast_trace = gCntvctSupportedArm32;
 #endif
         // Add ClassLoadCallback to record methods on class load.
         runtime->GetRuntimeCallbacks()->AddClassLoadCallback(the_trace_);
@@ -766,9 +803,9 @@ void Trace::StopTracing(bool flush_entries) {
       // them.
       bool is_fast_trace = !UseThreadCpuClock(the_trace_->GetClockSource());
 #if defined(__arm__)
-        // On ARM 32 bit, we don't always have access to the timestamp counters from
-        // user space. Seem comment in GetTimestamp for more details.
-        is_fast_trace = false;
+        // On ARM 32 bit, we don't always have access to the timestamp counters from user space. See
+        // gCntvctSupportedArm32 for more details.
+        is_fast_trace = gCntvctSupportedArm32;
 #endif
         runtime->GetRuntimeCallbacks()->RemoveClassLoadCallback(the_trace_);
         runtime->GetInstrumentation()->RemoveListener(
