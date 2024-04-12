@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e83c90_632199c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-12T13:18:04Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf2c6a7_746988df",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-12T13:18:04Z",
+      "side": 1,
+      "message": "Will, Looking at the blame list for errata, looks like kryo cores were added here:\nhttps://github.com/torvalds/linux/commit/a9e821b89daa55cc940c546b124101939d3f0451\n\nand the erratum itself was handled here:\nhttps://github.com/torvalds/linux/commit/a5325089bd05a7b0259cc4038479d36308edbda2\n\nDo we need those patches as well or are the following patches (especially the 50de013d22e4 arm64: compat: Add CNTVCT trap handler) sufficient. My understanding is that they are sufficient since we now have a trap hanlder but wanted to check with you to be sure. Thanks!",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
