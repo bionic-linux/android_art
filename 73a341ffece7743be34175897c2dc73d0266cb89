@@ -63,6 +63,30 @@
       },
       "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e171ab48_8b6cacd1",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-04-15T14:14:48Z",
+      "side": 1,
+      "message": "Thanks Will! I will keep the version check at 4.20 which has all the patches to implement the trapping mechanism.",
+      "parentUuid": "17ae26b3_2dce34b6",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
