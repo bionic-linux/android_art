@@ -39,6 +39,30 @@
       },
       "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ae26b3_2dce34b6",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1572468
+      },
+      "writtenOn": "2024-04-15T13:08:11Z",
+      "side": 1,
+      "message": "For the errata workarounds, you\u0027ll need the logic to detect the errata and enable the trapping mechanism. However, I bet this won\u0027t be the last time hardware gets this wrong, so trying to detect that based on the kernel version feels futile to me. It\u0027s probably better to assume that the vendor has backported workarounds for their CPUs where they are needed.",
+      "parentUuid": "3bf2c6a7_746988df",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "73a341ffece7743be34175897c2dc73d0266cb89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
