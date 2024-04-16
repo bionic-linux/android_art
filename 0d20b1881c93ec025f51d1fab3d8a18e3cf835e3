@@ -33,6 +33,24 @@
       "message": "Is it possible to write a regression test for this?",
       "revId": "0d20b1881c93ec025f51d1fab3d8a18e3cf835e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b543d91_c3f41ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-04-16T09:01:39Z",
+      "side": 1,
+      "message": "I think it would be very difficult to write a regression test for this. The reason being is that native toolchains (tested with prebuilt Clang) will always use an instruction that will zero extend to put the return value into the return register, e.g: `mov w0, VALUE/REG` will zero extend the upper 32 (`x` register) bits.\n\nOn the other hand this is easy to reproduce and test using the simulator as that will always poison return registers when calling [`Simulator::RuntimeCallNonVoid()`](https://cs.android.com/android/platform/superproject/main/+/main:external/vixl/src/aarch64/simulator-aarch64.h;drc\u003dd48909dd0ac62197edb75d26ed50927e4384a199;l\u003d2663) for handling calls to native ISA functions. See the comment for [`Simulator::WriteGenericOperand()`](https://cs.android.com/android/platform/superproject/main/+/main:external/vixl/src/aarch64/simulator-aarch64.h;drc\u003d3d19fbcc09b1b44928639b06cd0b88f735cd988d;l\u003d1854) to see how and why this is done.",
+      "parentUuid": "a10563b3_da0d6337",
+      "revId": "0d20b1881c93ec025f51d1fab3d8a18e3cf835e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
