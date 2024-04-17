@@ -31,7 +31,7 @@ INSTANTIATE_TEST_SUITE_P(DynamicOrStatic,
 
 TEST_P(OatDumpTest, TestNoDumpVmap) {
   TEST_DISABLED_FOR_RISCV64();
-  TEST_DISABLED_FOR_ARM_AND_ARM64();
+//  TEST_DISABLED_FOR_ARM_AND_ARM64();
   std::string error_msg;
   ASSERT_TRUE(Exec(GetParam(),
                    kArgImage | kArgBcp | kArgIsa,
@@ -41,7 +41,7 @@ TEST_P(OatDumpTest, TestNoDumpVmap) {
 
 TEST_P(OatDumpTest, TestNoDisassemble) {
   TEST_DISABLED_FOR_RISCV64();
-  TEST_DISABLED_FOR_ARM_AND_ARM64();
+//  TEST_DISABLED_FOR_ARM_AND_ARM64();
   std::string error_msg;
   ASSERT_TRUE(Exec(GetParam(),
                    kArgImage | kArgBcp | kArgIsa,
@@ -51,7 +51,7 @@ TEST_P(OatDumpTest, TestNoDisassemble) {
 
 TEST_P(OatDumpTest, TestListClasses) {
   TEST_DISABLED_FOR_RISCV64();
-  TEST_DISABLED_FOR_ARM_AND_ARM64();
+//  TEST_DISABLED_FOR_ARM_AND_ARM64();
   std::string error_msg;
   ASSERT_TRUE(Exec(
       GetParam(), kArgImage | kArgBcp | kArgIsa, {"--list-classes"}, kExpectImage | kExpectOat));
@@ -59,7 +59,7 @@ TEST_P(OatDumpTest, TestListClasses) {
 
 TEST_P(OatDumpTest, TestListMethods) {
   TEST_DISABLED_FOR_RISCV64();
-  TEST_DISABLED_FOR_ARM_AND_ARM64();
+//  TEST_DISABLED_FOR_ARM_AND_ARM64();
   std::string error_msg;
   ASSERT_TRUE(Exec(
       GetParam(), kArgImage | kArgBcp | kArgIsa, {"--list-methods"}, kExpectImage | kExpectOat));
@@ -70,7 +70,7 @@ TEST_P(OatDumpTest, TestSymbolize) {
     TEST_DISABLED_FOR_TARGET();  // Can not write files inside the apex directory.
   } else {
     TEST_DISABLED_FOR_RISCV64();
-    TEST_DISABLED_FOR_ARM_AND_ARM64();
+//    TEST_DISABLED_FOR_ARM_AND_ARM64();
   }
   std::string error_msg;
   ASSERT_TRUE(Exec(GetParam(), kArgSymbolize, {}, /*expects=*/0));
@@ -79,7 +79,7 @@ TEST_P(OatDumpTest, TestSymbolize) {
 TEST_P(OatDumpTest, TestExportDex) {
   if (GetParam() == Flavor::kStatic) {
     TEST_DISABLED_FOR_RISCV64();
-    TEST_DISABLED_FOR_ARM_AND_ARM64();
+//    TEST_DISABLED_FOR_ARM_AND_ARM64();
   }
   std::string error_msg;
   ASSERT_TRUE(GenerateAppOdexFile(GetParam()));
@@ -101,7 +101,7 @@ TEST_P(OatDumpTest, TestExportDex) {
 
 TEST_P(OatDumpTest, TestMethodAndOffsetOnly) {
   TEST_DISABLED_FOR_RISCV64();
-  TEST_DISABLED_FOR_ARM_AND_ARM64();
+//  TEST_DISABLED_FOR_ARM_AND_ARM64();
   std::string error_msg;
   ASSERT_TRUE(Exec(GetParam(),
                    kArgOatBcp | kArgDexBcp | kArgMethodAndOffsetAsJson,
