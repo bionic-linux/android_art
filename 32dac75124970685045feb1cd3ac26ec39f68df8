@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6b2b76_41960e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-17T17:57:48Z",
+      "side": 1,
+      "message": "Martin, I would like to delete the disable mechanism in art/ to help me with some cleanup in make/soong. WDYT about this idea?",
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
