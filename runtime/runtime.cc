@@ -773,13 +773,17 @@ static void WaitUntilSingleThreaded() {
   static_assert(BUF_SIZE > BUF_PRINT_SIZE);
   char buf[BUF_SIZE];
   ssize_t bytes_read = -1;
-  for (size_t tries = 0; tries < kNumTries; ++tries) {
+  auto read_buf = [&buf, &bytes_read]() {
     int stat_fd = open("/proc/self/stat", O_RDONLY | O_CLOEXEC);
     CHECK(stat_fd >= 0) << strerror(errno);
     bytes_read = TEMP_FAILURE_RETRY(read(stat_fd, buf, BUF_SIZE));
     CHECK(bytes_read >= 0) << strerror(errno);
     int ret = close(stat_fd);
-    DCHECK(ret == 0) << strerror(errno);
+    CHECK(ret == 0) << strerror(errno);
+  };
+
+  for (size_t tries = 0; tries < kNumTries; ++tries) {
+    read_buf();
     ssize_t pos = 0;
     while (pos < bytes_read && buf[pos++] != ')') {}
     ++pos;
@@ -800,8 +804,13 @@ static void WaitUntilSingleThreaded() {
     usleep(1000);
   }
   buf[std::min(BUF_PRINT_SIZE, bytes_read)] = '\0';  // Truncate buf before printing.
-  LOG(FATAL) << "Failed to reach single-threaded state: bytes_read = " << bytes_read
-             << " stat contents = \"" << buf << "...\"";
+  LOG(ERROR) << "Not single threaded: bytes_read = " << bytes_read << " stat contents = \"" << buf
+             << "...\"";
+  LOG(ERROR) << "Other threads' abbreviated stats: " << GetOtherThreadOsStats();
+  read_buf();
+  LOG(ERROR) << "After re-read: bytes_read = " << bytes_read << " stat contents = \"" << buf
+             << "...\"";
+  LOG(FATAL) << "Failed to reach single-threaded state";
 #else  // Not Linux; shouldn't matter, but this has a high probability of working slowly.
   usleep(20'000);
 #endif
