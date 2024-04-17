@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5134d158_465a5ebe",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-17T13:26:58Z",
+      "side": 1,
+      "message": "Maybe we can clarify that this is optional but recommended?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aede008_9de11e4c",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-17T13:26:58Z",
+      "side": 1,
+      "message": "Should we be using `32` in some cases? I guess it is fine (in the same way we are running `$COMPILER_EXPLORER_DIR/compilers/dex2oat-local/x86_64/bin/dex2oat64` below)",
+      "range": {
+        "startLine": 100,
+        "startChar": 47,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61462e30_dc999f78",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-17T13:26:58Z",
+      "side": 1,
+      "message": "When running this command I have been seeing\n```\nelf_debug_loc_writer.h:248 Unexpected register location: Kind\u003c3\u003e (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)\n```\nlocally. Have you bumped into that?",
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da308267_f8a4e67a",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-04-17T13:26:58Z",
+      "side": 1,
+      "message": "Thanks for this! prebuild + run-only is definitely faster",
+      "range": {
+        "startLine": 120,
+        "startChar": 52,
+        "endLine": 120,
+        "endChar": 65
+      },
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
