@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "407f9a60_8264e724",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-17T17:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5134d158_465a5ebe",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aede008_9de11e4c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdebc42_249408d6",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-17T17:44:58Z",
+      "side": 1,
+      "message": "This is a host tool and I assume all host machines support 64 bit, so there is no need for `32`.",
+      "parentUuid": "2aede008_9de11e4c",
+      "range": {
+        "startLine": 100,
+        "startChar": 47,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61462e30_dc999f78",
@@ -60,6 +108,24 @@
       "writtenOn": "2024-04-17T13:26:58Z",
       "side": 1,
       "message": "When running this command I have been seeing\n```\nelf_debug_loc_writer.h:248 Unexpected register location: Kind\u003c3\u003e (This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)\n```\nlocally. Have you bumped into that?",
+      "revId": "0d24919a3483f2a7447742e311091188b67d094a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba214fc8_93a23448",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-17T17:44:58Z",
+      "side": 1,
+      "message": "Yes, but I don\u0027t think there is anything wrong with the command. It\u0027s likely a dex2oat issue. Do you mind filing a bug for this?",
+      "parentUuid": "61462e30_dc999f78",
       "revId": "0d24919a3483f2a7447742e311091188b67d094a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
