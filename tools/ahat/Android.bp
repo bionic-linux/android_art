@@ -32,6 +32,8 @@ java_binary_host {
     manifest: "etc/ahat.mf",
     java_resources: ["etc/style.css"],
     javacflags: ["-Xdoclint:all/protected"],
+    // Use a relaxed version to allow distribution against older runtimes.
+    java_version: "11",
 }
 
 // --- ahat-test-dump.jar --------------
