@@ -22,6 +22,30 @@
       },
       "revId": "48ba776bf6350e6f73aa406a077cb1cc7f0889a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858714fe_fd254991",
+        "filename": "tools/compiler-explorer/compiler-explorer.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-04-18T10:44:37Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "4cbb2a22_0e81e04b",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "48ba776bf6350e6f73aa406a077cb1cc7f0889a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
