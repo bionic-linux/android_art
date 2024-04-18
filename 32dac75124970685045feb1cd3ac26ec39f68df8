@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa1afd4_4e62ba11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-18T17:49:21Z",
+      "side": 1,
+      "message": "Correct. The prebuilts interfere with the source build (even if they aren\u0027t stale, if I remember correctly).\n\nI\u0027d like to refresh myself on the status and how this will work. I see the prebuilt SDKs use\n\n```\n    use_source_config_var: {\n        config_namespace: \"art_module\",\n        var_name: \"source_build\",\n    },\n```\n\nwhich now means they\u0027re never enabled in ordinary builds? In any cases where do get enabled, how do we deal with the sources? I\u0027m thinking e.g. of partners integrating preload zips. (Happy with a pointer to some doc so you don\u0027t need to rehash stuff for me.)",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e429c87_fb8448b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-18T17:49:21Z",
+      "side": 1,
+      "message": "Typo: \"APEX\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f6b2b76_41960e96",
@@ -14,6 +60,29 @@
       "writtenOn": "2024-04-17T17:57:48Z",
       "side": 1,
       "message": "Martin, I would like to delete the disable mechanism in art/ to help me with some cleanup in make/soong. WDYT about this idea?",
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb99b5e_b8dfb398",
+        "filename": "build/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-18T17:49:21Z",
+      "side": 1,
+      "message": "These defaults ought to be removed altogether, but I think it\u0027s fair for you to leave that to us. Still, can you please file a ticket about it (ART Mainline component) and add a TODO comment here?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 1
+      },
       "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
