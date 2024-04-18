@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e819abce_40de1250",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-18T19:33:00Z",
+      "side": 1,
+      "message": "\u003e which now means they\u0027re never enabled in ordinary builds?\n\nCorrect, the current plan for trunk stable main development is to always use the source apis to prevent staleness issues like b/315974566\n\n\u003e In any cases where do get enabled, how do we deal with the sources?\n\nCorrect, partners will likely need to enable the module sdk. I believe they should not run into any issues since the sources of `art/` is not on the critical path of `droid`. partners likely never run `checkbuild`.\n\nfwiw, I ran the following command in `partner-v-aml-prebuilt-dev` to approximate a minimal `checkbuild`, and got an error both before/after this CL\n```\n$ mmma art\n[ 48% 12912/26548] //prebuilts/module_sdk/art/current/sdk:prebuilt_apache-xml for prebuilts                                                                                                                                                                                     \nFAILED: out/soong/.intermediates/prebuilts/module_sdk/art/current/sdk/prebuilt_apache-xml/android_common/combined/apache-xml.jar                                                                                                                                                \nout/host/linux-x86/bin/merge_zips --ignore-duplicates -j -stripFile module-info.class out/soong/.intermediates/prebuilts/module_sdk/art/current/sdk/prebuilt_apache-xml/android_common/combined/apache-xml.jar prebuilts/module_sdk/art/current/sdk/java_boot_libs/snapshot/jars/are/invalid/apache-xml.jar\nmerge_zips.go:784: prebuilts/module_sdk/art/current/sdk/java_boot_libs/snapshot/jars/are/invalid/apache-xml.jar: zip: not a valid zip file\n```\n\nThe following command OTOH works both before/after this CL***\n```\n$ SOONG_SKIP_APPSET_SDK_CHECK\u003dtrue m \n# SOONG_SKIP_APPSET_SDK_CHECK is also used by our postsubmit partner CI targets\n```\n\nMartin, would you have a specific workflow/build command in mind that needs to be tested?\n\n\n----------------------------------------------------\n*** for the most part. I had to add the following to [allowed-deps.txt](https://paste.googleplex.com/5108343646978048) since the source aosp apex is no longer disabled and has its deps rewritten to the prebuilt module sdk",
+      "parentUuid": "4fa1afd4_4e62ba11",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e429c87_fb8448b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2024-04-18T17:49:21Z",
       "side": 1,
       "message": "Typo: \"APEX\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6c1a29_0fd7555b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-18T19:33:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e429c87_fb8448b4",
       "range": {
         "startLine": 15,
         "startChar": 39,
@@ -77,6 +125,30 @@
       "writtenOn": "2024-04-18T17:49:21Z",
       "side": 1,
       "message": "These defaults ought to be removed altogether, but I think it\u0027s fair for you to leave that to us. Still, can you please file a ticket about it (ART Mainline component) and add a TODO comment here?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 1
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2993c239_16cd7075",
+        "filename": "build/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-18T19:33:00Z",
+      "side": 1,
+      "message": "Would we still need the defaults to disable art soong modules based on os (e.g. windows, darwin)?",
+      "parentUuid": "cdb99b5e_b8dfb398",
       "range": {
         "startLine": 370,
         "startChar": 0,
