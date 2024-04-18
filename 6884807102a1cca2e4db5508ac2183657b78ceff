@@ -342,6 +342,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a645d8_cfae4ab0",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 6996,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-04-18T11:36:39Z",
+      "side": 1,
+      "message": "Re-think again and seems like the answer is yes -- it\u0027s safe since the promotion itself does not decrease size of branch. It just tries to use a shorter version if possible.",
+      "parentUuid": "0e65af8b_6a38bcd1",
+      "range": {
+        "startLine": 6996,
+        "startChar": 24,
+        "endLine": 6996,
+        "endChar": 48
+      },
+      "revId": "6884807102a1cca2e4db5508ac2183657b78ceff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78d378f_050fc70e",
