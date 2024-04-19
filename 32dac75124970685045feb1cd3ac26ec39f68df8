@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b583e2_a74d1299",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-04-19T18:08:36Z",
+      "side": 1,
+      "message": "\u003e Interestingly, we do not have a gsi product in that workspace with x86_64 (we have an arm and arm64). \n\nI think my previous comment does not make much sense, since we are trying to identify the path to a host tool and not a device tool. So `gsi_partner_arm` is also a legit produdct to run this test on. \n\nI have verified that there is a path to the prebuilt host tool even after this change\n```\n# v aml workspace\n$ lunch gsi_partner_arm-ap31-userdebug\n$ env NINJA_ARGS\u003d\"-t path dex2oat-host prebuilts/module_sdk/art/current/host-exports/x86_64/bin/dex2oat64\" m nothing\n# path is reported\n```",
+      "parentUuid": "34425dc5_301ef045",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e429c87_fb8448b4",
