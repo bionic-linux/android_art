@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ba305d_56700841",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-19T16:54:15Z",
+      "side": 1,
+      "message": "I was talking about ReadFileToString(StringPrintf ...)) which allocates more memory, etc. But I think I will just delete the comment instead of explaining that; it\u0027s not critical.",
+      "parentUuid": "68b3969f_2db0c613",
+      "range": {
+        "startLine": 370,
+        "startChar": 51,
+        "endLine": 370,
+        "endChar": 61
+      },
+      "revId": "ffcb068bc9a0668228a5b6dfc59c17ee0f1ec0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a69120c1_27da80ac",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0014ca85_4cde531a",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-19T16:54:15Z",
+      "side": 1,
+      "message": "Emprically, maybe not, since Treehuggers Windows build somehow worked, and this only gets called on linux? But yes, I will add that.",
+      "parentUuid": "a69120c1_27da80ac",
+      "range": {
+        "startLine": 394,
+        "startChar": 2,
+        "endLine": 394,
+        "endChar": 40
+      },
+      "revId": "ffcb068bc9a0668228a5b6dfc59c17ee0f1ec0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22f182f7_4d900150",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-04-18T18:02:29Z",
       "side": 1,
       "message": "Can\u0027t we use `GetOsThreadStatQuick` in place of this?",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 783,
+        "endChar": 4
+      },
+      "revId": "ffcb068bc9a0668228a5b6dfc59c17ee0f1ec0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac82b93_9e404571",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-04-19T16:54:15Z",
+      "side": 1,
+      "message": "Sort of. I didn\u0027t want the extra copy into a std::string here, but I refactored that functin to also make it useful here.",
+      "parentUuid": "22f182f7_4d900150",
       "range": {
         "startLine": 776,
         "startChar": 1,
