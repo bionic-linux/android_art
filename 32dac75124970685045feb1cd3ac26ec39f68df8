@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1274fa64_8fdd5f06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-19T18:15:32Z",
+      "side": 1,
+      "message": "Great, thanks Spandan.",
+      "parentUuid": "94b583e2_a74d1299",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e429c87_fb8448b4",
