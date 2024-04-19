@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf0f1b5_d5354c84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-19T15:45:13Z",
+      "side": 1,
+      "message": "Thank you, sounds good. As long as there aren\u0027t graph inconsistencies that make Soong error out.\n\nOne thing that may be worth checking in a build that uses prebuilts is that both the module and the host-exports SDK are prebuilt. E.g. these two commands should both find a path:\n\n```\n$ env NINJA_ARGS\u003d\"-t path com.google.android.art vendor/unbundled_google/modules/ArtGooglePrebuilt/com.google.android.art.apks\" m nothing\n$ env NINJA_ARGS\u003d\"-t path dex2oat-host prebuilts/module_sdk/art/current/host-exports/x86_64/bin/dex2oat64\" m nothing\n```\n\nIt\u0027s interesting in a situation where `next` is on prebuilts (which it currently isn\u0027t, but I noticed `ap2a` is) with otherwise source SDKs.\n\n\u003e merge_zips.go:784: prebuilts/module_sdk/art/current/sdk/java_boot_libs/snapshot/jars/are/invalid/apache-xml.jar: zip: not a valid zip file\n\nIIRC that\u0027s a sign of a bootclasspath fragment inconsistency. paulduffin@ would know better.",
+      "parentUuid": "e819abce_40de1250",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e429c87_fb8448b4",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Would we still need the defaults to disable art soong modules based on os (e.g. windows, darwin)?",
       "parentUuid": "cdb99b5e_b8dfb398",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 1
+      },
+      "revId": "32dac75124970685045feb1cd3ac26ec39f68df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4783c0_55a86c94",
+        "filename": "build/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-19T15:45:13Z",
+      "side": 1,
+      "message": "No, these defaults shouldn\u0027t have any effect in that regard. There\u0027s just windows in them, and that\u0027s only because of how Soong overrides flags (cf the comment on line 385-386).",
+      "parentUuid": "2993c239_16cd7075",
       "range": {
         "startLine": 370,
         "startChar": 0,
