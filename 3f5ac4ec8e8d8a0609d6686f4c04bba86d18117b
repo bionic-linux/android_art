@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c50e4577_b3622304",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 7390,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "We should respect the flags that were used when calling the branch function. The `compression_allowed` should be stored in a field of the `class Branch` during construction.",
+      "range": {
+        "startLine": 7390,
+        "startChar": 7,
+        "endLine": 7390,
+        "endChar": 26
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f184c024_7d21fed8",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "With \"C\" enabled, this should really be `4 * KB - 2`. And we should probably define `MaxOffset13ForwardDistance_WithoutC()` that returns `4 * KB - 4` and use that for appropriate `*_WithoutC` tests.",
+      "range": {
+        "startLine": 607,
+        "startChar": 47,
+        "endLine": 607,
+        "endChar": 57
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410b7d1a_2d68518f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "Move this before `MaxOffset13BackwardDistance()`, first `Backward` then `Forward` (in line with pre-existing ordering).",
+      "range": {
+        "startLine": 609,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 56
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2a54e3_46120087",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "Similar to `MaxOffset13ForwardDistance()` above.",
+      "range": {
+        "startLine": 617,
+        "startChar": 47,
+        "endLine": 617,
+        "endChar": 57
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef8e952_e9ee9c8d",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "Rename to `TestBcondA0RegForward`. Add arguments `const std::string\u0026 cond` and `const std::string\u0026 opposite_cond` instead of hard-coding \"eq\" and \"ne\" below - the caller should pass strings matching the provided `f`.\n\nThen you should get rid of the `GetPrintBcondOpposite()` and `GetPrintBcondAndJ()`. (I was pretty confused when I was reading those as to why we may need them. Here I can see that the current code needs them because it\u0027s passing mismatched `f` and `cond`/`opposite_cond`.)",
+      "range": {
+        "startLine": 620,
+        "startChar": 7,
+        "endLine": 620,
+        "endChar": 25
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4324c7aa_dcb53497",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "Similar to `TestBxxA0XXForward()` above.",
+      "range": {
+        "startLine": 639,
+        "startChar": 7,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab806a56_8c8b9836",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 8555,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "I\u0027d prefer `Zero` instead of `X0`.\n\nI would also drop the `Compressed` from the name as that\u0027s supposed to be the default. We have the suffix `_WithoutC` for tests that suppress \"C\" and we should add that suffix to existing branch tests when creating their counterparts with \"C\" enabled.",
+      "range": {
+        "startLine": 8555,
+        "startChar": 34,
+        "endLine": 8555,
+        "endChar": 36
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e232ea_c8647041",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 8558,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-04-24T12:44:38Z",
+      "side": 1,
+      "message": "Add a `BeqA0X0OverMaxOffset9Forward` test with additional ` + /*Exceed max*/ 2u`.",
+      "range": {
+        "startLine": 8558,
+        "startChar": 21,
+        "endLine": 8558,
+        "endChar": 65
+      },
+      "revId": "3f5ac4ec8e8d8a0609d6686f4c04bba86d18117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
