@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ecaf0a_242fdd61",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "This is a bit fragile. A better approach would be to overload `MoveAllOrAbandon` with a wrapper that takes `std::string` in its arguments, converts them to `std::string_view`s and calls into the other one. The overhead is about the same anyway.",
+      "range": {
+        "startLine": 1379,
+        "startChar": 0,
+        "endLine": 1381,
+        "endChar": 58
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea5ae7e_d2c182de",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "One could argue it\u0027d be more natural to pass in artifacts and profiles with the pre-reboot flags set here, because the sources are the staged files. I don\u0027t feel strongly about it though - the important bit is that there\u0027s no ambiguity and that\u0027s already the case here.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 4,
+        "endLine": 1387,
+        "endChar": 62
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b23c221_5de75aef",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "At first I thought we ought to log if this fails, also considering that successful moves are logged at the INFO level below. This failing could e.g. indicate a bug where paths become systematically wrong.\n\nHowever as I mention for `commitPreRebootStagedFiles` in ArtManagerLocal.java it seems this can get called for many more packages than what the dexopt job processed, so perhaps it\u0027d get too noisy?\n\nIf so it may be worth pointing out somewhere on the native side or in the aidl file that this API is intended to be called for a superset of the packages that we actually expect to have staged files, so missing files are expected.",
+      "range": {
+        "startLine": 1397,
+        "startChar": 8,
+        "endLine": 1397,
+        "endChar": 55
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37af8dfc_5a5b9855",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "Nit: Empty line here.",
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e6a732_dc7109e5",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "The goal is to ensure OAT files and profiles stay in sync, right? A couple of things then:\n\n1.  Only do this if we\u0027re moving the corresponding OAT file into place above, i.e. if the check on `src_artifacts-\u003eoat_path` succeeds.\n2.  Remove `dst_profile` if `src_profile` doesn\u0027t exist.\n\nI can imagine #1 is somewhat messy since you\u0027d need to correlate profile and artifact paths. If so, I think it\u0027s ok to skip it since it\u0027s a rare situation and it\u0027s fairly benign if they get out of sync. But it\u0027s worth a comment that the gap exists.",
+      "range": {
+        "startLine": 1421,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 5
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68574cea_39f5db44",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "Can this be protected? My thought is to make it more clear that the external entry point is in `DexUseManagerLocal`, not here.",
+      "range": {
+        "startLine": 893,
+        "startChar": 4,
+        "endLine": 893,
+        "endChar": 10
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d416358a_7e44dfea",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "Can you please add some rationale for why the commit is split for primary and secondary dex\u0027es?\n\nAlso consider replacing these two flags with a single flag or enum that tells when it\u0027s called (instead of what it should do). That way the logic for what it does when is concentrated here.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 12,
+        "endLine": 1100,
+        "endChar": 52
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becc8811_9a548b00",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "It looks like the approach here is to somewhat bluntly just try to move staged files for all packages, regardless whether they were part of the dexopt job or not. That\u0027s worth pointing out; it can e.g. affect what\u0027s considered errors and WAI.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 17,
+        "endLine": 1102,
+        "endChar": 77
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ac27b7_b582fa82",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "Not sure how to interpret this word here. Should it be \"somewhat\"?",
+      "range": {
+        "startLine": 1123,
+        "startChar": 57,
+        "endLine": 1123,
+        "endChar": 64
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b910d13_3de94275",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "How strict is this requirement? I thought it was just about avoiding losing some profile data, and if so the requirement is fairly loose. I.e. it\u0027s unfortunate - but not fatal - if one is committed and the other is not, and we only try to do it at approximately the same time but not really atomically (which I think would require flocks or similar, both in artd and in the runtime). Or have I missed something?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 23,
+        "endLine": 1125,
+        "endChar": 51
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96a24f5_aba40992",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "Another benefit with this is that it limits the size of the binder arguments. I haven\u0027t found any guidelines around that from binder side, but regardless I think it\u0027s good to avoid since it could lead to spikes with high memory pressure.\n\nSo perhaps extend this with \"and to limit binder call size\"?\n```suggestion\n                    // the package level just for simplicity and to limit the size of the binder\n                    // arguments.\n```",
+      "range": {
+        "startLine": 1126,
+        "startChar": 41,
+        "endLine": 1126,
+        "endChar": 60
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be47811b_fcc40499",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-04-30T19:51:38Z",
+      "side": 1,
+      "message": "(Hm, looks like layer inversion, but not much we can do about it now.)",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
