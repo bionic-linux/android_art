@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "39994b40_08de8239",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T17:53:12Z",
+      "side": 1,
+      "message": "Yes, I entertained that thought too, but let\u0027s not worry about cases that don\u0027t exist. And if we would get a few extra string copies it\u0027s probably not a big deal in this code. I wouldn\u0027t mind if the string_view variant was scrapped altogether, even. But this is fine now.",
+      "parentUuid": "e6f7b71f_3de4466e",
+      "range": {
+        "startLine": 1379,
+        "startChar": 0,
+        "endLine": 1381,
+        "endChar": 58
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3ea5ae7e_d2c182de",
         "filename": "artd/artd.cc",
         "patchSetId": 16
@@ -226,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f01d57e_801109db",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T17:53:12Z",
+      "side": 1,
+      "message": "Hmm, the fact that this is called with potentially staged files rather than files that we actually expect to be staged muddies the waters here as well. It forces us to pay attention to more use cases and rely on assumptions that aren\u0027t expressed in the code. But I suppose this is ultimately covered by the passus in the AIDL comment now.\n\nTo put one more thought on the table, would it be at all possible to do early (non-error) returns when files are missing? If that\u0027s the case then this nuance would disappear. But I guess it\u0027d mean having to fix the java side to make one call per split? I.e. we may dexopt different splits in the same package in different ways? Or can we get missing files even for a single correctly dexopted split, e.g. from unsupported ABIs?",
+      "parentUuid": "081694b6_d0aced82",
+      "range": {
+        "startLine": 1421,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 5
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68574cea_39f5db44",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 16
@@ -367,6 +415,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6318fb7c_d490b2e6",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T17:53:12Z",
+      "side": 1,
+      "message": "That the API allows for it doesn\u0027t make it obvious that this loop is intentionally using it that way, so please add a comment here to say that.",
+      "parentUuid": "014ff07e_8908bb43",
+      "range": {
+        "startLine": 1102,
+        "startChar": 17,
+        "endLine": 1102,
+        "endChar": 77
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77ac27b7_b582fa82",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 16
@@ -461,6 +533,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aff91aac_dd16fa18",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T17:53:12Z",
+      "side": 1,
+      "message": "I see, but atomicity means more than that - it also implies that an in-between state, where one file is in place and the other isn\u0027t, cannot be observed, and that\u0027s not true here (and it\u0027s why I mentioned flock). Rather, what we have here are (non-atomic) transactions.\n\nThey do become effectively atomic because - I think - no \"observing\" can happen during this call. Iow, we assume no profman in a background dexopt job will run concurrently with this. But for the purposes of this discussion it may be enough to use \"transactional\" instead of \"atomic\".\n\nI think it\u0027s also well worth putting down what the bad state we need to avoid is and why, even though that adds a bit to the comment. It\u0027s not at all obvious.",
+      "parentUuid": "56609adc_76e6c444",
+      "range": {
+        "startLine": 1125,
+        "startChar": 23,
+        "endLine": 1125,
+        "endChar": 51
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e96a24f5_aba40992",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 16
@@ -496,6 +592,30 @@
       "side": 1,
       "message": "I don\u0027t get it. This approach actually increases the binder call size rather than reducing it because `artifacts` and `profiles` contain data for all splits of the same package.\n\nIn contrast, if we committed at the split level instead, we could call `commitPreRebootStagedFiles` for each split, meaning `artifacts` and `profiles` would only contain data for one split.\n\nHowever, I prefer not to worry about the binder call size until we get a crash from the field.",
       "parentUuid": "e96a24f5_aba40992",
+      "range": {
+        "startLine": 1126,
+        "startChar": 41,
+        "endLine": 1126,
+        "endChar": 60
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f3218f_d635a692",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T17:53:12Z",
+      "side": 1,
+      "message": "Oh, I interpreted it from the opposite direction, i.e. that the alternative would be a single call for _all_ the staged files. I guess I could\u0027ve read it a bit more carefully.\n\n\u003e However, I prefer not to worry about the binder call size until we get a crash from the field.\n\nSide point, but I suspect a problem with large binder calls, in particular in system_server, would have to get pretty bad before we\u0027d see it through crashes. We\u0027re already doing them in the GC, and I\u0027m not overly confident about that. Otoh there it\u0027s in unattended mode so it doesn\u0027t matter that much as long as the GC finishes.",
+      "parentUuid": "6d294eb5_8d0c5a9f",
       "range": {
         "startLine": 1126,
         "startChar": 41,
