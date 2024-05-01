@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "df7015d4_e5d71904",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "`dexoptPackages` picks packages for `REASON_PRE_REBOOT_DEXOPT` in exactly the same way as it does for `REASON_BG_DEXOPT`, which is covered by [this test](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java;l\u003d558;drc\u003d75d4422b08058ba92dfdeebc1bbe1f89d591b721), so it\u0027s not very interesting to test it.",
+      "parentUuid": "6ada48a7_09707bd1",
+      "revId": "9f1939d0b444ad8319c18457847f2b3216ede391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4e475d2e_6e05dc20",
         "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
         "patchSetId": 18
@@ -31,6 +49,30 @@
       "writtenOn": "2024-05-01T17:53:12Z",
       "side": 1,
       "message": "Just checking, the reason you added this test is because of the lenient `registerReceiver` mock in `SetUp`?",
+      "range": {
+        "startLine": 1393,
+        "startChar": 8,
+        "endLine": 1393,
+        "endChar": 65
+      },
+      "revId": "9f1939d0b444ad8319c18457847f2b3216ede391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f34d025_a9d37960",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "Not sure I get the question. I want to check that we don\u0027t register a ACTION_BOOT_COMPLETE receiver when there is no need for it (i.e., `onBoot` not called).",
+      "parentUuid": "4e475d2e_6e05dc20",
       "range": {
         "startLine": 1393,
         "startChar": 8,

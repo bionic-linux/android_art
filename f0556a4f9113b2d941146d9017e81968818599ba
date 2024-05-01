@@ -272,6 +272,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3eb5eda_3071e037",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "\u003e would it be at all possible to do early (non-error) returns when files are missing?\n\nWhich files can be missing? If you are talking about oat files, they can\u0027t be missing when the profile exists, as explained in the previous reply.",
+      "parentUuid": "6f01d57e_801109db",
+      "range": {
+        "startLine": 1421,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 5
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68574cea_39f5db44",
@@ -437,6 +461,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3f07dc_c865066e",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6318fb7c_d490b2e6",
+      "range": {
+        "startLine": 1102,
+        "startChar": 17,
+        "endLine": 1102,
+        "endChar": 77
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77ac27b7_b582fa82",
@@ -555,6 +603,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1120bb_a9b10306",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff91aac_dd16fa18",
+      "range": {
+        "startLine": 1125,
+        "startChar": 23,
+        "endLine": 1125,
+        "endChar": 51
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96a24f5_aba40992",
@@ -616,6 +688,30 @@
       "side": 1,
       "message": "Oh, I interpreted it from the opposite direction, i.e. that the alternative would be a single call for _all_ the staged files. I guess I could\u0027ve read it a bit more carefully.\n\n\u003e However, I prefer not to worry about the binder call size until we get a crash from the field.\n\nSide point, but I suspect a problem with large binder calls, in particular in system_server, would have to get pretty bad before we\u0027d see it through crashes. We\u0027re already doing them in the GC, and I\u0027m not overly confident about that. Otoh there it\u0027s in unattended mode so it doesn\u0027t matter that much as long as the GC finishes.",
       "parentUuid": "6d294eb5_8d0c5a9f",
+      "range": {
+        "startLine": 1126,
+        "startChar": 41,
+        "endLine": 1126,
+        "endChar": 60
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01bad0f7_5e00b229",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-01T18:47:09Z",
+      "side": 1,
+      "message": "The current size limit is 1MB (http://go/android-reference/android/os/TransactionTooLargeException), so I think it\u0027s large enough for this call.",
+      "parentUuid": "23f3218f_d635a692",
       "range": {
         "startLine": 1126,
         "startChar": 41,
