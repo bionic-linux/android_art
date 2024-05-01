@@ -748,6 +748,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "43db3717_ddf305eb",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T19:16:50Z",
+      "side": 1,
+      "message": "Interesting, thanks.\n\nI\u0027m not worried about this call either, but the `cleanup` call in the GC is another matter.",
+      "parentUuid": "01bad0f7_5e00b229",
+      "range": {
+        "startLine": 1126,
+        "startChar": 41,
+        "endLine": 1126,
+        "endChar": 60
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "be47811b_fcc40499",
         "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
         "patchSetId": 16
