@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "033dca2c_a17c6091",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T19:14:02Z",
+      "side": 1,
+      "message": "It may be in case it doesn\u0027t stay that way, but ok.",
+      "parentUuid": "df7015d4_e5d71904",
+      "revId": "9f1939d0b444ad8319c18457847f2b3216ede391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4e475d2e_6e05dc20",
         "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
         "patchSetId": 18
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Not sure I get the question. I want to check that we don\u0027t register a ACTION_BOOT_COMPLETE receiver when there is no need for it (i.e., `onBoot` not called).",
       "parentUuid": "4e475d2e_6e05dc20",
+      "range": {
+        "startLine": 1393,
+        "startChar": 8,
+        "endLine": 1393,
+        "endChar": 65
+      },
+      "revId": "9f1939d0b444ad8319c18457847f2b3216ede391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0453d4_fc8be387",
+        "filename": "libartservice/service/javatests/com/android/server/art/ArtManagerLocalTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T19:14:02Z",
+      "side": 1,
+      "message": "What I was getting at, the lenient mock necessitates this verify?\n\nGranted, even without it the test as a whole would still need the systemReady call. Bad choice of word there.",
+      "parentUuid": "9f34d025_a9d37960",
       "range": {
         "startLine": 1393,
         "startChar": 8,

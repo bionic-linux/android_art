@@ -298,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0806cec_b86e962c",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-01T19:14:02Z",
+      "side": 1,
+      "message": "I\u0027m talking about files in the `OS::FileExists` checks that don\u0027t handle both cases, i.e. the OAT and profile file checks. If this function can return doing nothing when called for a package/split that hasn\u0027t actually been staged then it\u0027s easier to reason about. How granular calls need to be for that approach to work (per-package, per-split, or something else) isn\u0027t clear to me, hence the other questions.",
+      "parentUuid": "d3eb5eda_3071e037",
+      "range": {
+        "startLine": 1421,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 5
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68574cea_39f5db44",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 16
