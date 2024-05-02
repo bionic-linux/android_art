@@ -320,6 +320,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64899498_9bb5f1cd",
+        "filename": "artd/artd.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-02T09:47:43Z",
+      "side": 1,
+      "message": "Discussed offline. This approach is difficult to get working, even on the per-split level. We would e.g. need to know the compiler filter to determine which files are supposed to be present.",
+      "parentUuid": "b0806cec_b86e962c",
+      "range": {
+        "startLine": 1421,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 5
+      },
+      "revId": "f0556a4f9113b2d941146d9017e81968818599ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68574cea_39f5db44",
