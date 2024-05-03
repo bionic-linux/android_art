@@ -400,7 +400,9 @@ public class Parser {
 
                   Site site = sites.get(stackSerialNumber);
                   AhatClassObj classObj = classById.get(classId);
-                  AhatClassInstance obj = new AhatClassInstance(objectId);
+                  AhatClassInstance obj = classObj.isSubClassOf("android.graphics.Bitmap")
+                      ? new AhatBitmapInstance(objectId)
+                      : new AhatClassInstance(objectId);
                   obj.initialize(heaps.getCurrentHeap(), site, classObj);
                   obj.setTemporaryUserData(data);
                   instances.add(obj);
