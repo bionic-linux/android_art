@@ -17,9 +17,13 @@
 package com.android.ahat.heapdump;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -28,6 +32,9 @@ import java.util.Set;
 public class AhatBitmapInstance extends AhatClassInstance {
 
   private static BitmapDumpData bitmapDumpData = null;
+  private static Map<BitmapInfo, ArrayList<AhatBitmapInstance>> sInstances = null;
+
+  private BitmapInfo mBitmapInfo;
 
   AhatBitmapInstance(long id) {
     super(id);
@@ -101,6 +108,27 @@ public class AhatBitmapInstance extends AhatClassInstance {
      * these instances shall *not* be counted
      */
     instances.removeIf(i -> { return bitmapDumpData.referenced.contains(i.getId()); });
+
+    /* build the map for all the bitmap instances with its BitmapInfo as key
+     * this would be used to identify duplicated bitmaps
+     */
+    sInstances = new HashMap<BitmapInfo, ArrayList<AhatBitmapInstance>>();
+    for (AhatInstance obj : instances) {
+      AhatBitmapInstance bmp = obj.asBitmapInstance();
+      if (bmp == null) {
+        continue;
+      }
+      BitmapInfo bmi = bmp.getBitmapInfo();
+      if (bmi == null) {
+        continue;
+      }
+      ArrayList<AhatBitmapInstance> list = sInstances.get(bmi);
+      if (list == null) {
+        list = new ArrayList<AhatBitmapInstance>();
+        sInstances.put(bmi, list);
+      }
+      list.add(bmp);
+    }
     return true;
   }
 
@@ -141,17 +169,64 @@ public class AhatBitmapInstance extends AhatClassInstance {
     return result;
   }
 
+  /**
+   * find duplicated bitmap instances
+   *
+   * @return A list of duplicated bitmaps (the same duplication stored in a sub-list)
+   */
+  public static List<List<AhatBitmapInstance>> findDuplicates() {
+    if (sInstances != null) {
+      List<List<AhatBitmapInstance>> result = new ArrayList<>();
+      for (Map.Entry<BitmapInfo, ArrayList<AhatBitmapInstance>> entry : sInstances.entrySet()) {
+        List<AhatBitmapInstance> list = entry.getValue();
+        if (list != null && list.size() > 1) {
+          result.add(list);
+        }
+      }
+      // sort by size in descend order
+      if (result.size() > 1) {
+        result.sort((List<AhatBitmapInstance> l1, List<AhatBitmapInstance> l2) -> {
+          return l2.get(0).getSize().compareTo(l1.get(0).getSize());
+        });
+      }
+      return result;
+    }
+    return null;
+  }
+
   private static class BitmapInfo {
     public final int width;
     public final int height;
     public final int format;
     public final byte[] buffer;
+    public final int bufferHash;
 
     public BitmapInfo(int width, int height, int format, byte[] buffer) {
       this.width = width;
       this.height = height;
       this.format = format;
       this.buffer = buffer;
+      bufferHash = Arrays.hashCode(buffer);
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(width, height, format, bufferHash);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof BitmapInfo)) {
+        return false;
+      }
+      BitmapInfo other = (BitmapInfo)o;
+      return (this.width == other.width)
+          && (this.height == other.height)
+          && (this.format == other.format)
+          && (this.bufferHash == other.bufferHash);
     }
   }
 
@@ -160,6 +235,10 @@ public class AhatBitmapInstance extends AhatClassInstance {
    * info is available.
    */
   private BitmapInfo getBitmapInfo() {
+    if (mBitmapInfo != null) {
+      return mBitmapInfo;
+    }
+
     if (!isInstanceOfClass("android.graphics.Bitmap")) {
       return null;
     }
@@ -200,7 +279,8 @@ public class AhatBitmapInstance extends AhatClassInstance {
       return null;
     }
 
-    return new BitmapInfo(width, height, bitmapDumpData.format, buffer);
+    mBitmapInfo = new BitmapInfo(width, height, bitmapDumpData.format, buffer);
+    return mBitmapInfo;
   }
 
   /**
