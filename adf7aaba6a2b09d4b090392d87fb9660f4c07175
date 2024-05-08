@@ -16,6 +16,93 @@
       "message": "PTAL. Thanks!",
       "revId": "adf7aaba6a2b09d4b090392d87fb9660f4c07175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b726aee6_178e6d1f",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-08T10:25:06Z",
+      "side": 1,
+      "message": "enough",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 30
+      },
+      "revId": "adf7aaba6a2b09d4b090392d87fb9660f4c07175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64414f4_475e2040",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-08T10:25:06Z",
+      "side": 1,
+      "message": "Add a comment what `offset` is about.",
+      "range": {
+        "startLine": 199,
+        "startChar": 66,
+        "endLine": 199,
+        "endChar": 80
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dff1c53e_81187096",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/trace.h",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 199,
+                "endChar": 0
+              },
+              "replacement": "  // `buffer` is the buffer to write the method info to. `offset` is the offset in the buffer to\n  // write the method info.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "adf7aaba6a2b09d4b090392d87fb9660f4c07175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96e953e_d28e6919",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-08T10:25:06Z",
+      "side": 1,
+      "message": "Looks like this can be null? Add a comment about behavior then.",
+      "range": {
+        "startLine": 199,
+        "startChar": 48,
+        "endLine": 199,
+        "endChar": 65
+      },
+      "revId": "adf7aaba6a2b09d4b090392d87fb9660f4c07175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
