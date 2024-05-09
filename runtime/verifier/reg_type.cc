@@ -55,27 +55,17 @@ std::ostream& operator<<(std::ostream& os, RegType::Kind kind) {
   return os << kind_name;
 }
 
-PrimitiveType::PrimitiveType(Handle<mirror::Class> klass,
-                             const std::string_view& descriptor,
-                             uint16_t cache_id,
-                             Kind kind)
-    : RegType(klass, descriptor, cache_id, kind) {
-  CHECK(klass != nullptr);
+PrimitiveType::PrimitiveType(const std::string_view& descriptor, uint16_t cache_id, Kind kind)
+    : RegType(Handle<mirror::Class>(), descriptor, cache_id, kind) {
   CHECK(!descriptor.empty());
 }
 
-Cat1Type::Cat1Type(Handle<mirror::Class> klass,
-                   const std::string_view& descriptor,
-                   uint16_t cache_id,
-                   Kind kind)
-    : PrimitiveType(klass, descriptor, cache_id, kind) {
+Cat1Type::Cat1Type(const std::string_view& descriptor, uint16_t cache_id, Kind kind)
+    : PrimitiveType(descriptor, cache_id, kind) {
 }
 
-Cat2Type::Cat2Type(Handle<mirror::Class> klass,
-                   const std::string_view& descriptor,
-                   uint16_t cache_id,
-                   Kind kind)
-    : PrimitiveType(klass, descriptor, cache_id, kind) {
+Cat2Type::Cat2Type(const std::string_view& descriptor, uint16_t cache_id, Kind kind)
+    : PrimitiveType(descriptor, cache_id, kind) {
 }
 
 std::string PreciseConstantType::Dump() const {
@@ -728,11 +718,19 @@ const RegType& RegType::Merge(const RegType& incoming_type,
 }
 
 void RegType::CheckInvariants() const {
-  if (IsConstant() || IsConstantLo() || IsConstantHi()) {
+  if (IsUndefined() ||
+      IsConflict() ||
+      IsNull() ||
+      IsConstant() ||
+      IsConstantLo() ||
+      IsConstantHi()) {
     CHECK(descriptor_.empty()) << *this;
-    CHECK(klass_.IsNull()) << *this;
-  }
-  if (!klass_.IsNull()) {
+    CHECK(klass_.GetReference() == nullptr) << *this;
+  } else if (klass_.GetReference() == nullptr) {
+    // We use an invalid handle for undefined, conflict, null, constant and primitive types
+    // because we do not actually need the class. All but primitive types are checked above.
+    CHECK_EQ(descriptor_.length(), 1u) << *this;
+  } else if (!klass_.IsNull()) {
     CHECK(!descriptor_.empty()) << *this;
     std::string temp;
     CHECK_EQ(descriptor_, klass_->GetDescriptor(&temp)) << *this;
@@ -756,8 +754,7 @@ UnresolvedMergedReferenceType::UnresolvedMergedReferenceType(const RegType& reso
                                                              const BitVector& unresolved,
                                                              const RegTypeCache* reg_type_cache,
                                                              uint16_t cache_id)
-    : UnresolvedType(
-          reg_type_cache->GetNullHandle(), "", cache_id, Kind::kUnresolvedMergedReference),
+    : UnresolvedType("", cache_id, Kind::kUnresolvedMergedReference),
       reg_type_cache_(reg_type_cache),
       resolved_part_(resolved),
       unresolved_types_(unresolved, false, unresolved.GetAllocator()) {
