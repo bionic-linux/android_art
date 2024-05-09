@@ -32,16 +32,17 @@
 #include <crt_externs.h>  // for _NSGetEnviron
 #endif
 
+#include <string.h>
+
 #include <cstdio>
 #include <cstdlib>
 #include <limits>
-#include <string.h>
 #include <thread>
 #include <unordered_set>
 #include <vector>
 
+#include "android-base/properties.h"
 #include "android-base/strings.h"
-
 #include "arch/arm/registers_arm.h"
 #include "arch/arm64/registers_arm64.h"
 #include "arch/context.h"
@@ -75,8 +76,8 @@
 #include "debugger.h"
 #include "dex/art_dex_file_loader.h"
 #include "dex/dex_file_loader.h"
-#include "entrypoints/runtime_asm_entrypoints.h"
 #include "entrypoints/entrypoint_utils-inl.h"
+#include "entrypoints/runtime_asm_entrypoints.h"
 #include "experimental_flags.h"
 #include "fault_handler.h"
 #include "gc/accounting/card_table-inl.h"
@@ -116,8 +117,8 @@
 #include "mirror/throwable.h"
 #include "mirror/var_handle.h"
 #include "monitor.h"
-#include "native/dalvik_system_DexFile.h"
 #include "native/dalvik_system_BaseDexClassLoader.h"
+#include "native/dalvik_system_DexFile.h"
 #include "native/dalvik_system_VMDebug.h"
 #include "native/dalvik_system_VMRuntime.h"
 #include "native/dalvik_system_VMStack.h"
@@ -143,12 +144,12 @@
 #include "native/java_lang_reflect_Parameter.h"
 #include "native/java_lang_reflect_Proxy.h"
 #include "native/java_util_concurrent_atomic_AtomicLong.h"
+#include "native/jdk_internal_misc_Unsafe.h"
 #include "native/libcore_io_Memory.h"
 #include "native/libcore_util_CharsetUtils.h"
 #include "native/org_apache_harmony_dalvik_ddmc_DdmServer.h"
 #include "native/org_apache_harmony_dalvik_ddmc_DdmVmInternal.h"
 #include "native/sun_misc_Unsafe.h"
-#include "native/jdk_internal_misc_Unsafe.h"
 #include "native_bridge_art_interface.h"
 #include "native_stack_dump.h"
 #include "nativehelper/scoped_local_ref.h"
@@ -1657,7 +1658,15 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
 
   monitor_list_ = new MonitorList;
   monitor_pool_ = MonitorPool::Create();
-  thread_list_ = new ThreadList(runtime_options.GetOrDefault(Opt::ThreadSuspendTimeout));
+
+  auto suspend_timeout_opt = runtime_options.GetOptional(Opt::ThreadSuspendTimeout);
+  uint64_t suspend_timeout_ns =
+      suspend_timeout_opt.has_value() ?
+          suspend_timeout_opt.value().GetNanoseconds() :
+          ThreadList::kDefaultThreadSuspendTimeout *
+              android::base::GetIntProperty("ro.hw_timeout_multiplier", 1);
+  thread_list_ = new ThreadList(suspend_timeout_ns);
+
   intern_table_ = new InternTable;
 
   monitor_timeout_enable_ = runtime_options.GetOrDefault(Opt::MonitorTimeoutEnable);
