@@ -1,0 +1,65 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebfdd2f_739a32af",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-10T12:54:48Z",
+      "side": 1,
+      "message": "Any reason why you can\u0027t use Guava in this tool? This method seems like a job for `Multimaps.index()`",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f4d155e1_6d94e35d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+              "range": {
+                "startLine": 19,
+                "startChar": 0,
+                "endLine": 19,
+                "endChar": 0
+              },
+              "replacement": "import com.google.common.collect.ArrayListMultimap;\nimport com.google.common.collect.ListMultimap;\nimport com.google.common.collect.Multimaps;\n"
+            },
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+              "range": {
+                "startLine": 115,
+                "startChar": 0,
+                "endLine": 132,
+                "endChar": 0
+              },
+              "replacement": "    sInstances \u003d Multimaps.index(instances, i -\u003e i.asBitmapInstance().getBitmapInfo());\n"
+            },
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+              "range": {
+                "startLine": 180,
+                "startChar": 0,
+                "endLine": 182,
+                "endChar": 0
+              },
+              "replacement": "      for (List\u003cAhatBitmapInstance\u003e list : sInstances.asMap().values()) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5a43cbfad5eb4d3a91bf81808c3f91e6be1290b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
