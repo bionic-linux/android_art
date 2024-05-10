@@ -1,0 +1,111 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8107aef1_14ca2599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-10T12:48:57Z",
+      "side": 1,
+      "message": "I\u0027m not an expert in there area. I\u0027d love to see significantly more tests but +1 for OWNERS.",
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4b7d96_e887b781",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-10T12:48:57Z",
+      "side": 1,
+      "message": "No tests?  There\u0027s some non-trivial methods in here....",
+      "fixSuggestions": [
+        {
+          "fixId": "924f8158_45aa277e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+              "range": {
+                "startLine": 258,
+                "startChar": 0,
+                "endLine": 259,
+                "endChar": 0
+              },
+              "replacement": "   * This is relevant for instances of android.graphics.Bitmap.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b3b0bd_9f7740eb",
+        "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-10T12:48:57Z",
+      "side": 1,
+      "message": "For completeness these should also all be testing `isBitmapInstance()`, plus at least one test where the object *is* a bitmap.",
+      "fixSuggestions": [
+        {
+          "fixId": "cb056a4e_29670c64",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+              "range": {
+                "startLine": 363,
+                "startChar": 0,
+                "endLine": 363,
+                "endChar": 0
+              },
+              "replacement": "    assertFalse(obj.isBitmapInstance());\n"
+            },
+            {
+              "path": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+              "range": {
+                "startLine": 370,
+                "startChar": 0,
+                "endLine": 370,
+                "endChar": 0
+              },
+              "replacement": "    assertFalse(obj.isBitmapInstance());\n"
+            },
+            {
+              "path": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+              "range": {
+                "startLine": 377,
+                "startChar": 0,
+                "endLine": 377,
+                "endChar": 0
+              },
+              "replacement": "    assertFalse(obj.isBitmapInstance());\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
