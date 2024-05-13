@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a66be7_84a77f36",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-05-13T20:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874d2e9a_dfbe053b",
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f35b3bf4_18c669c6",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3f8f49_1db02e43",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-05-13T20:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35b3bf4_18c669c6",
+      "range": {
+        "startLine": 1516,
+        "startChar": 47,
+        "endLine": 1516,
+        "endChar": 65
+      },
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3194240_263a254c",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-13T11:40:05Z",
       "side": 1,
       "message": "I prefer breaking the line before the `?`/`:`.",
+      "range": {
+        "startLine": 1518,
+        "startChar": 41,
+        "endLine": 1518,
+        "endChar": 42
+      },
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458dcbac_7f26d553",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-05-13T20:17:07Z",
+      "side": 1,
+      "message": "clang-format seems to strongly disagree and chenges it back. Left it as is.",
+      "parentUuid": "d3194240_263a254c",
       "range": {
         "startLine": 1518,
         "startChar": 41,
@@ -111,6 +177,30 @@
           ]
         }
       ],
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704efe7f_2ba201bb",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-05-13T20:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea1361e_39480d88",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 42
+      },
       "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
