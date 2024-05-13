@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "023d1491_b6620392",
+        "filename": "tools/ahat/src/main/com/android/ahat/OverviewHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-13T20:19:00Z",
+      "side": 1,
+      "message": "True - I\u0027ll check out Multimaps and add tests.",
+      "parentUuid": "bfdeda62_aaa70d38",
+      "range": {
+        "startLine": 85,
+        "startChar": 15,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "5a43cbfad5eb4d3a91bf81808c3f91e6be1290b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cebfdd2f_739a32af",
         "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
         "patchSetId": 6
@@ -81,6 +105,30 @@
           ]
         }
       ],
+      "revId": "5a43cbfad5eb4d3a91bf81808c3f91e6be1290b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b14d18_6cce546f",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-13T20:19:00Z",
+      "side": 1,
+      "message": "@prb@google.com - no reason except that I was originally thinking of minimizing the usage of packages other than the standard java ones - I\u0027ll check it out and update.",
+      "parentUuid": "cebfdd2f_739a32af",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 12
+      },
       "revId": "5a43cbfad5eb4d3a91bf81808c3f91e6be1290b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
