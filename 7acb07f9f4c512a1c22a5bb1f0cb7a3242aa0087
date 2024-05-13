@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874d2e9a_dfbe053b",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-13T11:40:05Z",
+      "side": 1,
+      "message": "I think the blank line has been here on purpose, to separate #includes from outside `art/`. Is clang-format removing it?\n\nShould we change the above #includes to `\u003candroid-base/...\u003e`?",
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35b3bf4_18c669c6",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-13T11:40:05Z",
+      "side": 1,
+      "message": "`const`?",
+      "range": {
+        "startLine": 1516,
+        "startChar": 47,
+        "endLine": 1516,
+        "endChar": 65
+      },
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3194240_263a254c",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-13T11:40:05Z",
+      "side": 1,
+      "message": "I prefer breaking the line before the `?`/`:`.",
+      "range": {
+        "startLine": 1518,
+        "startChar": 41,
+        "endLine": 1518,
+        "endChar": 42
+      },
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea1361e_39480d88",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-13T11:40:05Z",
+      "side": 1,
+      "message": "Change to `\u003cnativehelper/...\u003e` to avoid mixing them with ART includes?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8aac931a_93a88bbc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_list.cc",
+              "range": {
+                "startLine": 48,
+                "startChar": 0,
+                "endLine": 50,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "runtime/thread_list.cc",
+              "range": {
+                "startLine": 57,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": "#include \u003cnativehelper/scoped_local_ref.h\u003e\n#include \u003cnativehelper/scoped_utf_chars.h\u003e\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
