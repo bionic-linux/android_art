@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7920567_bab320e6",
+        "filename": "runtime/entrypoints/quick/quick_string_builder_append_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-13T16:08:51Z",
+      "side": 1,
+      "message": "Prior to this patch there was a mixed scheme where annotations were added to the declaration and/or definition. This patch aims to unify this scheme to always include annotations on both the declaration **and** definition.\n\nI thought it would be useful to use a consistent scheme so I\u0027d be happy to make changes if you would prefer an alternative scheme, e.g: using annotations only on declarations.",
+      "parentUuid": "f14c83dd_e190a9f0",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 42
+      },
+      "revId": "f5eb5306149a537f41d132417c3d981452085141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70de62ba_c4b12e34",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-04-10T12:00:54Z",
       "side": 1,
       "message": "Please fix this ERROR reported by Common Typos: Common typo found: \" i.e:\" -- should it be \" i.e.:\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \" i.e:\" -- should it be \" i.e.:\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 46,
+        "startChar": 29,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "f5eb5306149a537f41d132417c3d981452085141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccb0070_a9253b53",
+        "filename": "runtime/entrypoints/quick/runtime_entrypoints_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-13T16:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70de62ba_c4b12e34",
       "range": {
         "startLine": 46,
         "startChar": 29,
