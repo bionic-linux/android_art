@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "583a6f81_5bb96389",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-13T20:19:41Z",
+      "side": 1,
+      "message": "true - let me add tests.",
+      "parentUuid": "9c4b7d96_e887b781",
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93b3b0bd_9f7740eb",
         "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
         "patchSetId": 5
@@ -104,6 +122,24 @@
           ]
         }
       ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95744420_898ebc90",
+        "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-13T20:19:41Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "93b3b0bd_9f7740eb",
       "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
