@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54c4e83_7412e0cf",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-05-13T20:31:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `thread`?",
+      "range": {
+        "startLine": 718,
+        "startChar": 28,
+        "endLine": 718,
+        "endChar": 35
+      },
+      "revId": "50be6b9e62512a668f3da5ad02f7caf29b9663b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
