@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9a4665_8067dc8e",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-14T06:31:03Z",
+      "side": 1,
+      "message": "Ack.\n\nI disagree with clang-format on several things but the ternary operator formatting is the least important of them.",
+      "parentUuid": "458dcbac_7f26d553",
+      "range": {
+        "startLine": 1518,
+        "startChar": 41,
+        "endLine": 1518,
+        "endChar": 42
+      },
+      "revId": "7acb07f9f4c512a1c22a5bb1f0cb7a3242aa0087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea1361e_39480d88",
