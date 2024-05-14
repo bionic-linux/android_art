@@ -73,6 +73,196 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "390f2ed6_2079bd01",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "289edbdf_977e187a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "  protected Integer getIntField(String fieldName, Integer def) {\n"
+            },
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+              "range": {
+                "startLine": 91,
+                "startChar": 0,
+                "endLine": 92,
+                "endChar": 0
+              },
+              "replacement": "  protected Long getLongField(String fieldName, Long def) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b6bba3_5955c1fb",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c2902d_2176f19f",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d189870f_15e58a1e",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1735ac0f_d2d36394",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "Isn\u0027t this as `asBitmapInstance()`?",
+      "fixSuggestions": [
+        {
+          "fixId": "b642b78b_e0218496",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+              "range": {
+                "startLine": 224,
+                "startChar": 0,
+                "endLine": 225,
+                "endChar": 0
+              },
+              "replacement": "    return asBitmapInstance();\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2623a141_406f03a7",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-05-14T12:05:36Z",
+      "side": 1,
+      "message": "nit: This might be better in a static factory method in `AhatClassInstance`.",
+      "fixSuggestions": [
+        {
+          "fixId": "95af499a_7d08d6bc",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+              "range": {
+                "startLine": 403,
+                "startChar": 0,
+                "endLine": 406,
+                "endChar": 0
+              },
+              "replacement": "                  AhatClassInstance obj \u003d AhatClassInstance.create(classObj, objectId);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93b3b0bd_9f7740eb",
         "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
         "patchSetId": 5
