@@ -284,6 +284,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17897b0e_815f1ece",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 6964,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-05-15T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9039789f_095fab1e",
+      "range": {
+        "startLine": 6964,
+        "startChar": 2,
+        "endLine": 6964,
+        "endChar": 25
+      },
+      "revId": "6884807102a1cca2e4db5508ac2183657b78ceff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb606c65_92b4e3c7",
@@ -569,6 +593,30 @@
       "side": 1,
       "message": "What about\n\n        if (condition \u003d\u003d kCondNE) {\n          DCHECK_EQ(Branch::OppositeCondition(condition), kCondEQ);\n          CBeqz(branch-\u003eGetNonZeroRegister(), branch-\u003eGetLength());\n        } else {\n          DCHECK_EQ(Branch::OppositeCondition(condition), kCondNE);\n          CBnez(branch-\u003eGetNonZeroRegister(), branch-\u003eGetLength());\n        }\n\nThis way the opposite condition in the `DCHECK()` matches the emitted instruction.",
       "parentUuid": "ce45d694_d40a6476",
+      "range": {
+        "startLine": 7147,
+        "startChar": 10,
+        "endLine": 7147,
+        "endChar": 57
+      },
+      "revId": "6884807102a1cca2e4db5508ac2183657b78ceff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6347022_ca6913b3",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 7147,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-05-15T15:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8aae31_6ed99c75",
       "range": {
         "startLine": 7147,
         "startChar": 10,
