@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad12ce3_c8f4cbe6",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "I added one separate CL for test coverage.",
+      "parentUuid": "583a6f81_5bb96389",
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "390f2ed6_2079bd01",
@@ -122,6 +140,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebec9e6_4751c1bf",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "390f2ed6_2079bd01",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b6bba3_5955c1fb",
@@ -135,6 +177,30 @@
       "writtenOn": "2024-05-14T12:05:36Z",
       "side": 1,
       "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f0a748_6309488c",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a7b6bba3_5955c1fb",
       "range": {
         "startLine": 91,
         "startChar": 2,
@@ -168,6 +234,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8747d72c_1d67781e",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "52c2902d_2176f19f",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d189870f_15e58a1e",
@@ -181,6 +271,30 @@
       "writtenOn": "2024-05-14T12:05:36Z",
       "side": 1,
       "message": "Better to keep as protected.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9d32eb_74c91eb6",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "d189870f_15e58a1e",
       "range": {
         "startLine": 134,
         "startChar": 2,
@@ -226,6 +340,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af84e9e5_1f318bd2",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "1735ac0f_d2d36394",
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2623a141_406f03a7",
@@ -257,6 +389,24 @@
           ]
         }
       ],
+      "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d674381_787c20c9",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-16T19:56:20Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2623a141_406f03a7",
       "revId": "35c81940d688e2855ab971ea239a6fea09cdcfb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
