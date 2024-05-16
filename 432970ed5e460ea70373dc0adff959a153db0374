@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d45ce1_4fd436ff",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-05-16T15:49:03Z",
+      "side": 1,
+      "message": "`CreateSystemArrayCopyLocationSummary()` disable of using intrinsic for primitive arrays, while this change is made for it. So I had to use this logic for locations.",
+      "parentUuid": "b8c3cdbe_412a2873",
+      "range": {
+        "startLine": 1787,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 61
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18fb4caa_ad795c48",
