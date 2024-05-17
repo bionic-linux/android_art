@@ -16,6 +16,144 @@
       "message": "Sorry for delaying, updated CL after review",
       "revId": "6e864609357703f340edd5b7690fbc95600ae275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e049e1a_f5972ae8",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2070,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 2069,
+        "startChar": 2,
+        "endLine": 2070,
+        "endChar": 103
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ffe670_e2b8c7c7",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2099,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Reorder and use `bytes_copied_per_iteration` in the `DCHECK_EQ()`.",
+      "range": {
+        "startLine": 2098,
+        "startChar": 2,
+        "endLine": 2099,
+        "endChar": 52
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf6bf8e_5c57f2e5",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Remove the top-level `const`.",
+      "range": {
+        "startLine": 2132,
+        "startChar": 37,
+        "endLine": 2132,
+        "endChar": 42
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28dbb884_062466d8",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "The code is the same as `$noinline$test4()`, except that the `size` is explicitly replaced with `127`. Is there any reason to duplicate a test? (The CFG shall be essentially identical.)",
+      "range": {
+        "startLine": 79,
+        "startChar": 29,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf504da_e8c87be0",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Duplicates `$noinline$test4()`.",
+      "range": {
+        "startLine": 243,
+        "startChar": 29,
+        "endLine": 243,
+        "endChar": 46
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29206fc3_b8b8817e",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Duplicates `$noinline$test4()`.",
+      "range": {
+        "startLine": 407,
+        "startChar": 28,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "6e864609357703f340edd5b7690fbc95600ae275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b240939_3cfd103c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "0968d96d_f136ba69",
+      "range": {
+        "startLine": 1783,
+        "startChar": 46,
+        "endLine": 1783,
+        "endChar": 50
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eae5d0e_7602ec24",
@@ -213,6 +237,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ac6fbb_fd274f77",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "18fb4caa_ad795c48",
+      "range": {
+        "startLine": 1838,
+        "startChar": 12,
+        "endLine": 1838,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35189857_e0603078",
@@ -259,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba18d7bb_0af1914f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "236dc0b6_16cadcc3",
+      "range": {
+        "startLine": 1858,
+        "startChar": 12,
+        "endLine": 1858,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b36f00e9_6f74e572",
@@ -272,6 +344,30 @@
       "writtenOn": "2024-02-07T15:29:18Z",
       "side": 1,
       "message": "Do not pass the `asssembler`, get it from the `codegen`.",
+      "range": {
+        "startLine": 1879,
+        "startChar": 37,
+        "endLine": 1879,
+        "endChar": 64
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1866851e_0e12471b",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "b36f00e9_6f74e572",
       "range": {
         "startLine": 1879,
         "startChar": 37,
@@ -329,6 +425,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4e7dc5_558326ea",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "de3383ad_20b81da7",
+      "range": {
+        "startLine": 1893,
+        "startChar": 0,
+        "endLine": 1902,
+        "endChar": 0
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f375e88b_e35ac594",
@@ -342,6 +462,30 @@
       "writtenOn": "2024-02-07T15:29:18Z",
       "side": 1,
       "message": "`\u003e\u003d`",
+      "range": {
+        "startLine": 1907,
+        "startChar": 23,
+        "endLine": 1907,
+        "endChar": 24
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27a7eef_4e0964a8",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "f375e88b_e35ac594",
       "range": {
         "startLine": 1907,
         "startChar": 23,
@@ -369,6 +513,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbd8a09_c4322f7e",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "ff299f3d_c63d8206",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e80bba8_a7288696",
@@ -392,6 +554,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fc9fcc_8d85c4a6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "2e80bba8_a7288696",
+      "range": {
+        "startLine": 1941,
+        "startChar": 87,
+        "endLine": 1941,
+        "endChar": 98
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe4b0dd_c0b31663",
@@ -405,6 +591,24 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "nit: missing `.` at the end of the comment",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb4dd2d_c858f893",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Removed in PS4.",
+      "parentUuid": "4fe4b0dd_c0b31663",
       "revId": "432970ed5e460ea70373dc0adff959a153db0374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -504,6 +708,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0687a1ee_8c4426bd",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Removed in PS4.",
+      "parentUuid": "bcd3ad09_3da6c43c",
+      "range": {
+        "startLine": 1945,
+        "startChar": 5,
+        "endLine": 1945,
+        "endChar": 8
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c06f4ab_2f55918c",
@@ -517,6 +745,30 @@
       "writtenOn": "2024-02-07T15:29:18Z",
       "side": 1,
       "message": "I would drop this check and rely on support for unaligned loads/stores.\n\nWe currently have the data offset 12 for arrays (except for long/double which is not supported by this intrinsic yet). So, position 0 would send the code to the slow path and we would use the intrinsic code below rarely.",
+      "range": {
+        "startLine": 1947,
+        "startChar": 2,
+        "endLine": 1947,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbb86d8_9892208f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done (removed) in PS4.",
+      "parentUuid": "3c06f4ab_2f55918c",
       "range": {
         "startLine": 1947,
         "startChar": 2,
@@ -562,6 +814,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "426be770_848c79a7",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "28f145be_f6bef90e",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "348f05dd_addd045f",
@@ -575,6 +845,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "elements",
+      "range": {
+        "startLine": 1955,
+        "startChar": 57,
+        "endLine": 1955,
+        "endChar": 67
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e11ef32_093dfe4a",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "348f05dd_addd045f",
       "range": {
         "startLine": 1955,
         "startChar": 57,
@@ -608,6 +902,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc6a1d6_6121b4a1",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "3e87f1ae_154399af",
+      "range": {
+        "startLine": 1957,
+        "startChar": 61,
+        "endLine": 1957,
+        "endChar": 71
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ac5284_84a86782",
@@ -621,6 +939,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "You didn\u0027t use `unroll_threshold`",
+      "range": {
+        "startLine": 1960,
+        "startChar": 74,
+        "endLine": 1961,
+        "endChar": 23
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac08eb6d_bc0ea27f",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1961,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Comment removed in PS4.",
+      "parentUuid": "30ac5284_84a86782",
       "range": {
         "startLine": 1960,
         "startChar": 74,
@@ -648,6 +990,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb3a14b_5e5513f6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "34c5bf92_46d3babf",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a27cc01f_3201cc1c",
@@ -661,6 +1021,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "This could be confusing (`tmp`, `temp`, and `length_tmp`). Could we do `XRegister length_tmp \u003d temps.AllocateXRegister();` and use `temp` instead of `tmp`?",
+      "range": {
+        "startLine": 1980,
+        "startChar": 0,
+        "endLine": 1981,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27531537_6a07a049",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "a27cc01f_3201cc1c",
       "range": {
         "startLine": 1980,
         "startChar": 0,
@@ -694,6 +1078,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "340be9c9_9708f5e3",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4. (But `tmp` is not a local variable, it\u0027s now the variable that used to be `temp` and was renamed to `tmp`.)",
+      "parentUuid": "a13a165c_45713bc8",
+      "range": {
+        "startLine": 1983,
+        "startChar": 7,
+        "endLine": 1983,
+        "endChar": 19
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3182b243_0b250e16",
@@ -717,6 +1125,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44de13fb_402ac21d",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Removed in PS4.",
+      "parentUuid": "3182b243_0b250e16",
+      "range": {
+        "startLine": 1984,
+        "startChar": 4,
+        "endLine": 1984,
+        "endChar": 47
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7546093e_500c9769",
@@ -730,6 +1162,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "If we end up using `temp` instead of `tmp`, please rename to `tmp2`",
+      "range": {
+        "startLine": 1985,
+        "startChar": 14,
+        "endLine": 1985,
+        "endChar": 18
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb0c299_a8e42fe7",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Obsolete in PS4 due to other changes.",
+      "parentUuid": "7546093e_500c9769",
       "range": {
         "startLine": 1985,
         "startChar": 14,
@@ -787,6 +1243,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d875f359_8e821306",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "1f1797cc_ba8b1405",
+      "range": {
+        "startLine": 1995,
+        "startChar": 7,
+        "endLine": 1995,
+        "endChar": 11
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "466eeb40_21b03e1f",
@@ -810,6 +1290,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6651394b_999517db",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "The `ScratchRegisterScope` and `tmp` parts of the comment are obsolete due to other changes, the rest was done in PS4.",
+      "parentUuid": "466eeb40_21b03e1f",
+      "range": {
+        "startLine": 2000,
+        "startChar": 7,
+        "endLine": 2000,
+        "endChar": 19
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d022cdb9_5338fb06",
@@ -823,6 +1327,30 @@
       "writtenOn": "2024-02-07T15:29:18Z",
       "side": 1,
       "message": "`emit_unrolled_tail_loop`, local `ScratchRegisterScope` and `tmp`.\n\nDrop top-level const from `tail_length`.",
+      "range": {
+        "startLine": 2010,
+        "startChar": 7,
+        "endLine": 2010,
+        "endChar": 27
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedae458_7a6870e6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2010,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Partially obsolete, partially done in PS4. I\u0027ll re-post the outstanding part on PS4.",
+      "parentUuid": "d022cdb9_5338fb06",
       "range": {
         "startLine": 2010,
         "startChar": 7,
@@ -873,6 +1401,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0918c7b7_4b45dab5",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "7c643386_5d0c9720",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b131e82b_1a641c46",
@@ -890,6 +1436,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d31bf24_40e13832",
+        "filename": "test/011-array-copy2/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "b131e82b_1a641c46",
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fb60daf_be801257",
@@ -903,6 +1467,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "Is this the intended description?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 33
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bc3a88d_7d0253dd",
+        "filename": "test/011-array-copy2/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Replaced with new text in PS4.",
+      "parentUuid": "2fb60daf_be801257",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -959,6 +1547,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0296014d_55e1f159",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "f0f2af09_785d1a03",
+      "range": {
+        "startLine": 33,
+        "startChar": 29,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3033095_843a18e0",
@@ -995,6 +1607,30 @@
       "writtenOn": "2024-02-07T15:29:18Z",
       "side": 1,
       "message": "I think we should add the prefix `$noinline$` to these test functions.",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0b422f_27d7b69a",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-17T08:31:27Z",
+      "side": 1,
+      "message": "Done in PS4.",
+      "parentUuid": "83d53c11_7f0babb2",
       "range": {
         "startLine": 50,
         "startChar": 27,
