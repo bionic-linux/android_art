@@ -16,6 +16,88 @@
       "message": "Mythri, Vladimir, PTAL at: https://android-review.git.corp.google.com/c/platform/art/+/3085185/2..5/runtime/art_method.cc (the rest of the changes have been reviewed on the previous commits).",
       "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8fcdc6_bc37ba4d",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-05-17T13:41:16Z",
+      "side": 1,
+      "message": "nit: JIT code twice",
+      "range": {
+        "startLine": 939,
+        "startChar": 62,
+        "endLine": 939,
+        "endChar": 76
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "938641e0_94328ebd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/art_method.cc",
+              "range": {
+                "startLine": 939,
+                "startChar": 0,
+                "endLine": 940,
+                "endChar": 0
+              },
+              "replacement": "  // Do an atomic exchange to avoid potentially unregistering JIT code twice.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d7560d_e3a01883",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-05-17T13:41:16Z",
+      "side": 1,
+      "message": "IIUC, we are doing an atomic exchange here, so we don\u0027t put the old_value into the zombie code twice right? This is otherwise not a problem because if we are simultaneously trying to update the method\u0027s entry point.\n\nIf we only want to avoid putting the code twice into zombie code, can\u0027t we just check before inserting into the zombie code list? I was wondering if there are other situations where there can be a problem. For example, if we are updating the JIT code with JIT code and we end up adding the new JITed code to the zombie code. I guess this isn\u0027t possible since we hold a jit_lock_ when updating entrypoints to the newly JITed code. I am not sure if there are other cases we are missing and checking before inserting makes it safer.",
+      "range": {
+        "startLine": 943,
+        "startChar": 2,
+        "endLine": 945,
+        "endChar": 43
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "050eedd9_59d938ab",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/art_method.cc",
+              "range": {
+                "startLine": 943,
+                "startChar": 0,
+                "endLine": 943,
+                "endChar": 0
+              },
+              "replacement": "  // We do an atomic exchange to avoid potentially unregistering twice JIT code.\n  // We don\u0027t need to worry about the case where the old value is the same as the new value\n  // because the JIT code cache will not add the same code twice.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
