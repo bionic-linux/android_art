@@ -170,6 +170,30 @@
       },
       "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "488ca5f3_fffa51db",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-20T16:04:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7303c9d5_f30410c2",
+      "range": {
+        "startLine": 943,
+        "startChar": 2,
+        "endLine": 945,
+        "endChar": 43
+      },
+      "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
