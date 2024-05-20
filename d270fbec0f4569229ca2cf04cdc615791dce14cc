@@ -1,0 +1,137 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93b7e29_b02fd767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-20T23:52:35Z",
+      "side": 1,
+      "message": "I thought this was adequately addressed by running it through JobScheduler, so just a matter of deleting the CLI command which bypassed that.\n\nHiding `start` from the outside is a good thing though.\n\nMoving the cancel/reschedule logic into the job itself with `onUpdateReady` looks nicer too.\n\nBut isn\u0027t that enough?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22c67ab_bf4d21ba",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-20T23:52:35Z",
+      "side": 1,
+      "message": "Why do we need an unbounded queue?\n\nIt looks like the old job is always cancelled when a new one gets scheduled. Can\u0027t the cancellation be blocking so that we avoid this queue, the more complicated cancellation logic, and possibly `mSerializedExecutor` altogether?\n\nIf the cancellation must be non-blocking then this queue ought to be limited to a single entry which gets overwritten by new requests.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 92
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5764ad76_ee54209c",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-20T23:52:35Z",
+      "side": 1,
+      "message": "Just to check, the reason you use this and not `Executors.newSingleThreadExecutor` is because the latter keeps the thread running?",
+      "range": {
+        "startLine": 76,
+        "startChar": 16,
+        "endLine": 77,
+        "endChar": 73
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861059ae_a5ebdc90",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-20T23:52:35Z",
+      "side": 1,
+      "message": "Side note, if an OTA is already staged and this is `null`, we should rerun the dexopt job for the OTA slot, right? If so please address in another CL (or perhaps you already got one I haven\u0027t looked at yet).",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c8a1ec_985ef37c",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-20T23:52:35Z",
+      "side": 1,
+      "message": "\"The future returns\"",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 15
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "4d9d455e_8fc01241",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+              "range": {
+                "startLine": 199,
+                "startChar": 0,
+                "endLine": 200,
+                "endChar": 0
+              },
+              "replacement": "    /** The future returns true if the job is cancelled by the job scheduler. */\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
