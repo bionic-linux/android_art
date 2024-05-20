@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "359092ca_a46dc6cd",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-20T09:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa8fcdc6_bc37ba4d",
+      "range": {
+        "startLine": 939,
+        "startChar": 62,
+        "endLine": 939,
+        "endChar": 76
+      },
+      "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5d7560d_e3a01883",
@@ -96,6 +120,30 @@
           ]
         }
       ],
+      "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6af16f_21420b8e",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-05-20T09:41:36Z",
+      "side": 1,
+      "message": "There\u0027s a race with the GC, if the GC has already processed the first entry (and therefore removed it from the set), and then a mutator adds it again (because of scheduling).\n\nSo we have to atomically exchange to ensure only one thread sees the old JIT code.",
+      "parentUuid": "b5d7560d_e3a01883",
+      "range": {
+        "startLine": 943,
+        "startChar": 2,
+        "endLine": 945,
+        "endChar": 43
+      },
       "revId": "42daa604adfecff771b87578e95891e58b2ddb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
