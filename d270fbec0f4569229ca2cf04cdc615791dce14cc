@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0949d9e5_499ff467",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-21T13:17:20Z",
+      "side": 1,
+      "message": "\u003e Our onStopJob method is non-blocking. The job scheduler may think that our job exits immediately upon cancellation and may not realize that our job needs time to exit.\n\nDoes it have to be non-blocking? If `cancel` is always blocking then we don\u0027t need to worry about the state where `mRunningJob` is still set but the job is cancelling.\n\nIt doesn\u0027t matter if JobScheduler calls `onStopJob` in fire-and-forget mode in that case - if `onStartJob` calls `start` again while the cancellation is still ongoing it\u0027ll just wait on the synchronisation lock.\n\nIow, if we can just stick to the invariant that `mRunningJob !\u003d null` means it\u0027s running and not cancelled then it\u0027ll all be a lot simpler, and that\u0027s actually not tied to JobScheduler keeping things serialised.\n\nThe stats proto mutations can be entirely within the the same synchronisation scope too, i.e. either done on the job thread or within `this` synchronised blocks. So e.g. the `delete` (or `reset`) call would be in the blocking `cancel` rather than in `onUpdateReady`.",
+      "parentUuid": "29e8aa05_d0fc1a60",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f22c67ab_bf4d21ba",
         "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
         "patchSetId": 2
