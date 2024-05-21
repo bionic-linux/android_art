@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e8aa05_d0fc1a60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-21T10:23:56Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s enough. \n\n1. Our `onStopJob` method is non-blocking. The job scheduler may think that our job exits immediately upon cancellation and may not realize that our job needs time to exit.\n2. Even if we make `onStopJob` blocking, the job scheduler still doesn\u0027t seem to respect that. Based on my local experiment, as soon as the job scheduler calls `onStopJob`, the job is gone from the job scheduler\u0027s perspective. I didn\u0027t dig too much into the job scheduler implementation, so I can\u0027t tell if it may call `onStartJob` while `onStopJob` hasn\u0027t finished. As long as this is not documented, I think we\u0027d better not make any assumptions, and handle the potentially possible case on our side.\n3. There are many other state mutations that we want to serialize among job runs. The proto write operation introduced in the next CL is one instance. When we add a CTS test that tests `setUp` and `tearDown`, which is out of the control of the job scheduler, we need to serialize it too. This CL is more about paving the way for future changes rather than solving existing problems.",
+      "parentUuid": "c93b7e29_b02fd767",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22c67ab_bf4d21ba",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-05-20T23:52:35Z",
       "side": 1,
       "message": "Why do we need an unbounded queue?\n\nIt looks like the old job is always cancelled when a new one gets scheduled. Can\u0027t the cancellation be blocking so that we avoid this queue, the more complicated cancellation logic, and possibly `mSerializedExecutor` altogether?\n\nIf the cancellation must be non-blocking then this queue ought to be limited to a single entry which gets overwritten by new requests.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 92
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "987fe04b_cc794235",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-21T10:23:56Z",
+      "side": 1,
+      "message": "Most of the things are explained in my reply to another comment. To directly answer your questions:\n\n\u003e Why do we need an unbounded queue?\n\nThere are many other state mutations that we want to serialize among job runs.\n\n\u003e It looks like the old job is always cancelled when a new one gets scheduled. Can\u0027t the cancellation be blocking so that we avoid this queue, the more complicated cancellation logic, and possibly mSerializedExecutor altogether?\n\nAs explained, I don\u0027t expect the job scheduler to respect a blocking `onStopJob`.\n\n\u003e If the cancellation must be non-blocking then this queue ought to be limited to a single entry which gets overwritten by new requests.\n\nYes, we may make this queue smarter so that it\u0027s unbounded for other state mutations such as proto writes while bound for job requests. However, I think the change that we get multiple job requests in the queue is very low, so this change is nice-to-have. We can come back to this later, but given the tight timeframe,  let\u0027s keep this queue simple for now, just to solve the immediate problem with telemetry and CTS.",
+      "parentUuid": "f22c67ab_bf4d21ba",
       "range": {
         "startLine": 68,
         "startChar": 4,
@@ -72,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6b33b36a_88c7b8c9",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-21T10:23:56Z",
+      "side": 1,
+      "message": "That\u0027s right.",
+      "parentUuid": "5764ad76_ee54209c",
+      "range": {
+        "startLine": 76,
+        "startChar": 16,
+        "endLine": 77,
+        "endChar": 73
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "861059ae_a5ebdc90",
         "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2024-05-20T23:52:35Z",
       "side": 1,
       "message": "Side note, if an OTA is already staged and this is `null`, we should rerun the dexopt job for the OTA slot, right? If so please address in another CL (or perhaps you already got one I haven\u0027t looked at yet).",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8859d5d6_c48dd2b5",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-21T10:23:56Z",
+      "side": 1,
+      "message": "It\u0027s actually the opposite. It\u0027s already the case that, if an OTA is already staged and this is `null`, we rerun the dexopt job for the OTA slot. What we should do is not to rerun it, because the Mainline update is technically a no-op, explained [here](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java;l\u003d217-219;drc\u003dc847b2411b4a99eb469336751d6ab1ce7bbbc127).\n\nThat change is also a nice-to-have one. For now, we just always rerun for simplicity, which wastes some CPU cycles but doesn\u0027t hurt.",
+      "parentUuid": "861059ae_a5ebdc90",
       "range": {
         "startLine": 144,
         "startChar": 22,
@@ -130,6 +226,30 @@
           ]
         }
       ],
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1b4bd1_8df036fb",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-21T10:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c8a1ec_985ef37c",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 15
+      },
       "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
