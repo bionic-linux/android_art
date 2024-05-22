@@ -39,6 +39,8 @@ parser.add_argument('--host', action='store_true', dest='host', help='test on bu
 parser.add_argument('--help-runner', action='store_true', dest='help_runner', help='show help for optional run test arguments')
 options, unknown = parser.parse_known_args()
 
+# DO NOT SUBMIT: TESTING ONLY
+
 if options.run_test or options.help_runner or not options.gtest:
   testrunner = os.path.join('./', ANDROID_BUILD_TOP, TEST_RUNNER)
   run_test_args = []
