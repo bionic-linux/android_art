@@ -110,6 +110,30 @@
       },
       "revId": "430f1a51a63f34d4af5f583b878b36a5945da9d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2dc6f0_b5d738e1",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-23T17:19:47Z",
+      "side": 1,
+      "message": "Well, with e.g. virtual filesystems it\u0027s not so clear cut anymore, if it\u0027s not explicitly documented somewhere. I think my point still stands, but it\u0027s unrelated to this CL.",
+      "parentUuid": "79fa993c_bdedadb9",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 81
+      },
+      "revId": "430f1a51a63f34d4af5f583b878b36a5945da9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

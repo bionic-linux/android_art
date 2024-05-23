@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f9aaef_6d9c615d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-23T17:19:47Z",
+      "side": 1,
+      "message": "Sure, in the interest of time let\u0027s go with this. But I\u0027d really find it easier to reason about a solution where we use the \"this\" lock and a condition variable to implement blocking cancellation, so please look into that and discuss the problems. On the grounds that this is temporary I haven\u0027t done a full analysis of it.",
+      "parentUuid": "90b6f365_6e54a98f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22c67ab_bf4d21ba",
@@ -299,6 +323,30 @@
       "side": 1,
       "message": "Nikita who was the owner of apexd said this.",
       "parentUuid": "31e8512d_dc647d59",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3283f671_02ed2849",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-23T17:19:47Z",
+      "side": 1,
+      "message": "Ok. That means it may change. But it\u0027s good that we err on the side of not relying on that and rerun the job, we should keep it that way. I\u0027d argue we better drop that passus in the comment, but it\u0027s for another time.",
+      "parentUuid": "d8145a67_5eae4e09",
       "range": {
         "startLine": 144,
         "startChar": 22,
