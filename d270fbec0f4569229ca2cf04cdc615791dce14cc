@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b6f365_6e54a98f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-23T16:23:56Z",
+      "side": 1,
+      "message": "Discussed offline again. I tried to get the idea of using a lock work, but it\u0027s too complicated. Let\u0027s come back to this later.",
+      "parentUuid": "e37a9d72_53989c8f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f22c67ab_bf4d21ba",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "\u003e It\u0027s already the case that, if an OTA is already staged and this is null, we rerun the dexopt job for the OTA slot.\n\nThat\u0027s exactly what I meant, actually. I missed looking inside `updateOtaSlot`, LGTM.\n\nAs for:\n\n```\n// ... When there are both a pending\n// OTA update and a pending Mainline update, the system discards the Mainline update on the\n// reboot.\n```\n\nWhere did you get that from? I thought the Mainline update would be staged on the data partition, so on reboot it\u0027d both switch slot and finalise the Mainline update.",
       "parentUuid": "8859d5d6_c48dd2b5",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "d270fbec0f4569229ca2cf04cdc615791dce14cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8145a67_5eae4e09",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-05-23T16:23:56Z",
+      "side": 1,
+      "message": "Nikita who was the owner of apexd said this.",
+      "parentUuid": "31e8512d_dc647d59",
       "range": {
         "startLine": 144,
         "startChar": 22,
