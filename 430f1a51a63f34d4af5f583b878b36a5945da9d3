@@ -16,6 +16,52 @@
       "message": "Friendly ping.",
       "revId": "430f1a51a63f34d4af5f583b878b36a5945da9d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf4a2e8_6a43d2f3",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-23T14:56:50Z",
+      "side": 1,
+      "message": "Side issue, but this looks wrong too.",
+      "range": {
+        "startLine": 255,
+        "startChar": 43,
+        "endLine": 255,
+        "endChar": 51
+      },
+      "revId": "430f1a51a63f34d4af5f583b878b36a5945da9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935c5a27_b131f7bf",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-05-23T14:56:50Z",
+      "side": 1,
+      "message": "Another side issue I should\u0027ve asked about earlier, but is this guaranteed by some update_engine docs?\n\nI wonder if we may be better off not assuming this, because it looks like making that assumption doesn\u0027t buy us much. We only care about that our job gets run for slot that\u0027ll get used after reboot.",
+      "range": {
+        "startLine": 257,
+        "startChar": 11,
+        "endLine": 257,
+        "endChar": 81
+      },
+      "revId": "430f1a51a63f34d4af5f583b878b36a5945da9d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
