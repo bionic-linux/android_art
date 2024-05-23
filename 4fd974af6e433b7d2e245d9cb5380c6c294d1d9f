@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0aee41a_414b5bdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-23T07:43:18Z",
+      "side": 1,
+      "message": "Is it possible to ignore/override Presubmit-Verified in this case? I would rather have these patches merged separately and rebasing the whole patch chain will take too long (the rebase would be too old by the time it\u0027s finished).",
+      "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
