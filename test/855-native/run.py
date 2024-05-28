@@ -16,5 +16,7 @@
 
 # Pass no prebuild to not have an oat file for the test. If there is an oat
 # file, the runtime doesn't hit the crash.
+# Disable error logs in case we run with the tracing mode which will write an
+# error log that a trace is already running.
 def run(ctx, args):
-  ctx.default_run(args, prebuild=False)
+  ctx.default_run(args, prebuild=False, android_log_tags="*:f")
