@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "debf25f1_c8e469ba",
+        "filename": "test/855-native/run.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-05-28T14:00:13Z",
+      "side": 1,
+      "message": "we could maybe stop any ongoing tracing before starting one. Something like:\n```\nif (VMDebug.getMethodTracingMode() !\u003d 0) {\n  VMDebug.stopMethodTracing();\n}\nVMDebug.startMethodTracing(tempFile.getPath(), 0, 0, false, 0);\n```",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "ed0b81eecd18b7d3e01eaac33c10bd6df46a9083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
