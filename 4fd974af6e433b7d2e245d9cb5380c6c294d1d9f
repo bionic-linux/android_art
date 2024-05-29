@@ -88,6 +88,24 @@
       "parentUuid": "95086478_b8c23acf",
       "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0c2450_1eb93120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-05-29T10:50:52Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t notice earlier but I guess the problem is that all the CLs in the relation chain belong to the same Topic \"ART simulator\". The name is a bit confusing but the idea behind topic is that all changes in the same topic are submitted together. So we should drop \"Art simulator\" topic from these changes. I guess what you want to use is hashtag to group them all under simulator changes but not submit them together. You can see the hashtag if we click \"Show All\" on the left. It will be below Topic when you click Show All. You can add a \"Art Simulator\" as a hashtag.",
+      "parentUuid": "be872b75_4fef94de",
+      "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
