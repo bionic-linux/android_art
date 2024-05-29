@@ -70,6 +70,24 @@
       "parentUuid": "447a3013_99bc6895",
       "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be872b75_4fef94de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-29T10:27:25Z",
+      "side": 1,
+      "message": "Interesting, I didn\u0027t know about the Gerrit rebase option. I\u0027ve now done that for both patches but I\u0027m not sure if its worked. Could you re-run the presubmit? If it still doesn\u0027t work then I could resubmit these two patches with different change-ids although that would duplicate them which obviously isn\u0027t ideal. I\u0027m also happy for you to try anything on your end if that may help too.\n\nI might keep the base patch for now as it will make it easier for me to test and submit the patches that haven\u0027t yet been rebased.",
+      "parentUuid": "95086478_b8c23acf",
+      "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
