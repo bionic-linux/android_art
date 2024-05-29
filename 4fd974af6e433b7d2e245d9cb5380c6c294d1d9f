@@ -34,6 +34,24 @@
       "parentUuid": "d0aee41a_414b5bdc",
       "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447a3013_99bc6895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-29T08:28:15Z",
+      "side": 1,
+      "message": "Thanks, I think we\u0027ve resolved this by adding [an additional patch](https://android-review.googlesource.com/c/platform/art/+/3105760) to break apart the newly rebased patches (i.e: [this](https://android-review.googlesource.com/c/platform/art/+/2901288/4) and the [previous patch](https://android-review.googlesource.com/c/platform/art/+/2680017/6?usp\u003drelated-change)) and the older patches that are waiting for code review approval.\n\nCould you re-run the presubmit for [this](https://android-review.googlesource.com/c/platform/art/+/2901288/4) and the [previous exception delivery patch](https://android-review.googlesource.com/c/platform/art/+/2680017/6?usp\u003drelated-change) please?",
+      "parentUuid": "21a8d345_c9818c07",
+      "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
