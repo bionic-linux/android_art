@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913804cb_5ae6bd95",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-29T10:20:44Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think count provides much value here now you moved away from arrays, and so all the fields could be initialised directly (and final) apart from format.",
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e4e6cf_270df249",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-29T10:20:44Z",
+      "side": 1,
+      "message": "This will work, but the whole point of using Multimaps is you can leverage all of the functionality in Guava.\n\nSo the first part of this (find duplicates) would reduce to something like\n```\nMultimap duplicates \u003d Multimaps.filter(bitmapDumpData.instances, k -\u003e bitmapDumpData.instances.get(k).size() \u003e 1);\n```\n\nThe second part you can get for free by using a Multimap which has a defined ordering e.g. a TreeMap. Teeny bit more complex to build as you\u0027ll need to pass in a custom key comparator to https://guava.dev/releases/23.0/api/docs/com/google/common/collect/TreeMultimap.html#create-java.util.Comparator-java.util.Comparator-",
+      "range": {
+        "startLine": 177,
+        "startChar": 47,
+        "endLine": 177,
+        "endChar": 61
+      },
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e9c923_a901121f",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2024-05-29T10:20:44Z",
+      "side": 1,
+      "message": "Should never be null for a multimap",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
