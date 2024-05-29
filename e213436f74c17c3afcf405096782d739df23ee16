@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d469192a_a514b22d",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-29T18:23:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "913804cb_5ae6bd95",
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13e4e6cf_270df249",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "360e4981_62b9656f",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-29T18:23:57Z",
+      "side": 1,
+      "message": "Agree, and this looks a lot more structural. I\u0027ll take some time and have a follow up improvement change to address this. Thanks Pete!",
+      "parentUuid": "13e4e6cf_270df249",
+      "range": {
+        "startLine": 177,
+        "startChar": 47,
+        "endLine": 177,
+        "endChar": 61
+      },
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2e9c923_a901121f",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-05-29T10:20:44Z",
       "side": 1,
       "message": "Should never be null for a multimap",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 46
+      },
+      "revId": "e213436f74c17c3afcf405096782d739df23ee16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e94763_0404609b",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatBitmapInstance.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-05-29T18:23:57Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "a2e9c923_a901121f",
       "range": {
         "startLine": 182,
         "startChar": 0,
