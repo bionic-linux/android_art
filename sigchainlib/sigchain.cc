@@ -570,6 +570,9 @@ static int __sigaction(int signal, const SigactionType* new_action,
   if (chains[signal].IsClaimed()) {
     SigactionType saved_action = chains[signal].GetAction<SigactionType>();
     if (new_action != nullptr) {
+      if (signal == SIGBUS) {
+        LogError("Setting SIGBUS, which already has special handler registered");
+      }
       chains[signal].SetAction(new_action);
     }
     if (old_action != nullptr) {
@@ -578,6 +581,9 @@ static int __sigaction(int signal, const SigactionType* new_action,
     return 0;
   }
 
+  if (signal == SIGBUS) {
+    LogError("Setting SIGBUS, which doesn't have special handler registered");
+  }
   // Will only get here if the signal chain has not been claimed.  We want
   // to pass the sigaction on to the kernel via the real sigaction in libc.
   return linked(signal, new_action, old_action);
