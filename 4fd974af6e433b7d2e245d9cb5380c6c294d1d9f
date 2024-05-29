@@ -52,6 +52,24 @@
       "parentUuid": "21a8d345_c9818c07",
       "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95086478_b8c23acf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-05-29T09:09:58Z",
+      "side": 1,
+      "message": "Looks like this and the exception delivery patch are still a part of the relation chain. Presubmit is throwing errors\n```\nPresubmit: This change, or one of the changes it depends on, has a merge conflict. Please rebase your changes and fix any merge conflicts.\n\n\u003d\u003d\u003d Conflict changes in this run \u003d\u003d\u003d\n\nChange 3088445, Change 3083706, Change 3016879, Change 2901298, Change 2901297, Change 2901296, Change 2901295, Change 2901294, Change 2901293, Change 2901291, Change 2680029, Change 2680028, Change 2680027, Change 2680026, Change 2680025, Change 2680024, Change 2680022, Change 2680021, Change 2680020, Change 2680019, Change 2680018, Change 2901290, Change 3016878, Change 3105760\n```\n\nI think we can try rebasing the exception delivery patch on the top of the main branch. You can try the rebase option on the right and choose ``Rebase on top of the main branch (breaks relation chain)``. I am happy to give it a go and see if there are any merge conflicts if rebase doesn\u0027t work for you.\n\nI am not sure we need a base patch. When I have a relation chain and want to submit the patches individually, I rebase the one (usually the lowest on the chain) I want to submit on the main branch, submit it and then rebase the relation chain on top of main branch which would include the patches we already submitted (basically the base patch you have now). I am fine having a base patch too, whatever is easier for you.",
+      "parentUuid": "447a3013_99bc6895",
+      "revId": "4fd974af6e433b7d2e245d9cb5380c6c294d1d9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
