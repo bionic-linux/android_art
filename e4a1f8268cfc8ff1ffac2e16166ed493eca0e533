@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4758f732_683c8773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-05-30T09:14:01Z",
+      "side": 1,
+      "message": "I\u0027m assuming it\u0027s okay to use this autosubmit vote if the patch has \"Ready to submit\"? I\u0027m hoping it saves you from needing to come back to the patch to hit the submit button.",
+      "revId": "e4a1f8268cfc8ff1ffac2e16166ed493eca0e533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
