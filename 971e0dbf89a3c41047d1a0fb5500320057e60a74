@@ -214,6 +214,30 @@
       },
       "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d5ac2c_f173fc57",
+        "filename": "compiler/utils/riscv64/jni_macro_assembler_riscv64_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-05-31T11:39:44Z",
+      "side": 0,
+      "message": "Upd: The rest of chain is merged and mentioned class `ScopedNoCInstructions` is used at least in `Riscv64Assembler::EmitBranch` (compiler/utils/riscv64/assembler_riscv64.cc:7079)",
+      "parentUuid": "c9d56fe8_9ca38d81",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 23
+      },
+      "revId": "971e0dbf89a3c41047d1a0fb5500320057e60a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
