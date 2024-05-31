@@ -16,6 +16,75 @@
       "message": "Folks, could please take a look :)",
       "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60aa1fb_2e194803",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 6775,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T09:17:12Z",
+      "side": 1,
+      "message": "Move to initializer list (`compression_allowed_(compression_allowed \u0026\u0026 IsCompressableCondition())`) and update the code below to use `compression_allowed_`.\n\nDone in https://android-review.googlesource.com/3106912 .",
+      "range": {
+        "startLine": 6772,
+        "startChar": 2,
+        "endLine": 6775,
+        "endChar": 45
+      },
+      "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52bd4563_bace663a",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T09:17:12Z",
+      "side": 1,
+      "message": "Move before `next_branch_id_` to reduce alignment padding. (`BranchCondition` and `Type` have underlying type `uint8_t`, so there\u0027s space for this after the `old_type`.)\n\nDone in https://android-review.googlesource.com/3106912 .",
+      "range": {
+        "startLine": 2111,
+        "startChar": 4,
+        "endLine": 2111,
+        "endChar": 30
+      },
+      "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6e8278_e6d5c00c",
+        "filename": "compiler/utils/riscv64/assembler_riscv64_test.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 8643,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T09:17:12Z",
+      "side": 1,
+      "message": "Test called \"Beq\" and \"Backward\" is using `Bne` and `Forward`.\n\nThese and similar inconsistencies shall be fixed by https://android-review.googlesource.com/3106912 .",
+      "range": {
+        "startLine": 8641,
+        "startChar": 25,
+        "endLine": 8643,
+        "endChar": 53
+      },
+      "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
