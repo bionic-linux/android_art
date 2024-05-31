@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f7f7b37b_983b2128",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 6622,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T10:34:35Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/3106912 PS3 (with `std::initializer_list\u003c\u003e`).",
+      "parentUuid": "bed751ff_92b14e40",
+      "range": {
+        "startLine": 6592,
+        "startChar": 0,
+        "endLine": 6622,
+        "endChar": 1
+      },
+      "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a60aa1fb_2e194803",
         "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
         "patchSetId": 22
@@ -77,6 +101,30 @@
       "writtenOn": "2024-05-31T10:09:32Z",
       "side": 1,
       "message": "Missing the new bare branches\n```\n      kBareCondCBranch,\n      kBareUncondCBranch,\n```\n\nFine to do in a follow-up since `IsBare()` is never used but we mustn\u0027t forget",
+      "range": {
+        "startLine": 6884,
+        "startChar": 0,
+        "endLine": 6887,
+        "endChar": 0
+      },
+      "revId": "78e25399295a84290c6cd9f06133ce48efdf0cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1f4965_ef81a285",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 6887,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T10:34:35Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/3106912 PS3.",
+      "parentUuid": "c65e37c1_2d4064fc",
       "range": {
         "startLine": 6884,
         "startChar": 0,
