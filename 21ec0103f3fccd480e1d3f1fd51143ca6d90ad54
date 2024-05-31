@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ab9080_e89b8b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-05-31T13:24:54Z",
+      "side": 1,
+      "message": "We must wait for the previous CL to propagate to internal branches before retrying the presubmit checks.",
+      "revId": "21ec0103f3fccd480e1d3f1fd51143ca6d90ad54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
