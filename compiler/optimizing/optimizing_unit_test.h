@@ -641,6 +641,32 @@ class OptimizingUnitTestHelper {
     return vec_store;
   }
 
+  HVecPredSetAll* MakeVecPredSetAll(HBasicBlock* block,
+                                    HInstruction* input,
+                                    DataType::Type packed_type,
+                                    size_t vector_length = kDefaultVectorLength,
+                                    uint32_t dex_pc = kNoDexPc) {
+    HVecPredSetAll* predicate = new (GetAllocator()) HVecPredSetAll(
+        GetAllocator(), input, packed_type, vector_length, dex_pc);
+    AddOrInsertInstruction(block, predicate);
+    return predicate;
+  }
+
+  HVecReplicateScalar* MakeVecReplicateScalar(HBasicBlock* block,
+                                              HInstruction* scalar,
+                                              DataType::Type packed_type,
+                                              size_t vector_length = kDefaultVectorLength,
+                                              HVecPredSetOperation* predicate = nullptr,
+                                              uint32_t dex_pc = kNoDexPc) {
+    HVecReplicateScalar* vec_replicate_scalar = new (GetAllocator()) HVecReplicateScalar(
+        GetAllocator(), scalar, packed_type, vector_length, dex_pc);
+    AddOrInsertInstruction(block, vec_replicate_scalar);
+    if (predicate != nullptr) {
+      vec_replicate_scalar->SetMergingGoverningPredicate(predicate);
+    }
+    return vec_replicate_scalar;
+  }
+
   HVecPredToBoolean* MakeVecPredToBoolean(HBasicBlock* block,
                                           HInstruction* input,
                                           DataType::Type packed_type,
@@ -721,6 +747,27 @@ class OptimizingUnitTestHelper {
                             uint32_t dex_pc = kNoDexPc) {
     HCondition* condition = graph_->CreateCondition(cond, first, second, dex_pc);
     AddOrInsertInstruction(block, condition);
+    return condition;
+  }
+
+  HVecCondition* MakeVecCondition(HBasicBlock* block,
+                                  IfCondition cond,
+                                  HInstruction* first,
+                                  HInstruction* second,
+                                  DataType::Type packed_type,
+                                  size_t vector_length = kDefaultVectorLength,
+                                  HVecPredSetOperation* predicate = nullptr,
+                                  uint32_t dex_pc = kNoDexPc) {
+    HVecCondition* condition = graph_->CreateVecCondition(cond,
+                                                          first,
+                                                          second,
+                                                          packed_type,
+                                                          vector_length,
+                                                          dex_pc);
+    AddOrInsertInstruction(block, condition);
+    if (predicate != nullptr) {
+      condition->SetMergingGoverningPredicate(predicate);
+    }
     return condition;
   }
 

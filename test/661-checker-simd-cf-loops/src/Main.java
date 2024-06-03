@@ -59,7 +59,7 @@ public class Main {
   ///     CHECK-DAG: <<LoopP:j\d+>>   VecPredWhile [<<Phi>>,{{i\d+}}]                       loop:<<Loop>>      outer_loop:none
   //
   ///     CHECK-DAG: <<Load1:d\d+>>   VecLoad [<<Arr:l\d+>>,<<Phi>>,<<LoopP>>]              loop:<<Loop>>      outer_loop:none
-  ///     CHECK-DAG: <<Cond:j\d+>>    VecCondition [<<Load1>>,<<Vec100>>,<<LoopP>>]         loop:<<Loop>>      outer_loop:none
+  ///     CHECK-DAG: <<Cond:j\d+>>    VecEqual [<<Load1>>,<<Vec100>>,<<LoopP>>]             loop:<<Loop>>      outer_loop:none
   ///     CHECK-DAG: <<CondR:j\d+>>   VecPredNot [<<Cond>>,<<LoopP>>]                       loop:<<Loop>>      outer_loop:none
   ///     CHECK-DAG: <<AddT:d\d+>>    VecAdd [<<Load1>>,<<Vec99>>,<<CondR>>]                loop:<<Loop>>      outer_loop:none
   ///     CHECK-DAG: <<StT:d\d+>>     VecStore [<<Arr>>,<<Phi>>,<<AddT>>,<<CondR>>]         loop:<<Loop>>      outer_loop:none
@@ -289,18 +289,103 @@ public class Main {
   // Test condition types.
   //
 
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleBelow(int[]) loop_optimization (after)
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleEqual(int[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: VecLoad
   //
   /// CHECK-FI:
   //
-  // TODO: Support other conditions.
-  public static void $compile$noinline$SimpleBelow(int[] x) {
+  // Check equals case.
+  public static void $compile$noinline$SimpleEqual(int[] x) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      int val = x[i];
+      if (val == MAGIC_VALUE_C) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleNotEqual(int[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-DAG: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check not equals case.
+  public static void $compile$noinline$SimpleNotEqual(int[] x) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      int val = x[i];
+      if (val != MAGIC_VALUE_C) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleLessThan(int[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-DAG: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check less than case.
+  public static void $compile$noinline$SimpleLessThan(int[] x) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       int val = x[i];
       if (val < MAGIC_VALUE_C) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleLessThanOrEqual(int[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-DAG: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check less than or equals case.
+  public static void $compile$noinline$SimpleLessThanOrEqual(int[] x) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      int val = x[i];
+      if (val <= MAGIC_VALUE_C) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleGreaterThan(int[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-DAG: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check greater than case.
+  public static void $compile$noinline$SimpleGreaterThan(int[] x) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      int val = x[i];
+      if (val > MAGIC_VALUE_C) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleGreaterThanOrEqual(int[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-DAG: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check greater than or equals case.
+  public static void $compile$noinline$SimpleGreaterThanOrEqual(int[] x) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      int val = x[i];
+      if (val >= MAGIC_VALUE_C) {
         x[i] += MAGIC_ADD_CONST;
       }
     }
@@ -451,6 +536,42 @@ public class Main {
   }
 
   //
+  // Non-condition if statements.
+  //
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SingleBoolean(int[], boolean) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-NOT: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check that single boolean if statements cannot be vectorized.
+  public static void $compile$noinline$SingleBoolean(int[] x, boolean y) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      if (y) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$InstanceOf(int[], java.lang.Object) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-NOT: VecLoad
+  //
+  /// CHECK-FI:
+  //
+  // Check that control flow without a condition cannot be vectorized.
+  public static void $compile$noinline$InstanceOf(int[] x, Object y) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      if (y instanceof Main) {
+        x[i] += MAGIC_ADD_CONST;
+      }
+    }
+  }
+
+  //
   // Main driver.
   //
 
@@ -513,8 +634,28 @@ public class Main {
 
     // Conditions.
     initIntArray(intArray);
-    $compile$noinline$SimpleBelow(intArray);
+    $compile$noinline$SimpleEqual(intArray);
+    expectIntEquals(18864, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    $compile$noinline$SimpleNotEqual(intArray);
     expectIntEquals(23121, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    $compile$noinline$SimpleLessThan(intArray);
+    expectIntEquals(23121, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    $compile$noinline$SimpleLessThanOrEqual(intArray);
+    expectIntEquals(27279, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    $compile$noinline$SimpleGreaterThan(intArray);
+    expectIntEquals(14706, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    $compile$noinline$SimpleGreaterThanOrEqual(intArray);
+    expectIntEquals(18864, IntArraySum(intArray));
 
     // Idioms.
     initIntArray(intArray);
@@ -551,6 +692,16 @@ public class Main {
     initIntArray(intArray);
     $compile$noinline$BrokenInduction(intArray);
     expectIntEquals(18963, IntArraySum(intArray));
+
+    // Non-condition if statements.
+    initIntArray(intArray);
+    $compile$noinline$SingleBoolean(intArray, true);
+    expectIntEquals(27279, IntArraySum(intArray));
+
+    initIntArray(intArray);
+    Main instance = new Main();
+    $compile$noinline$InstanceOf(intArray, instance);
+    expectIntEquals(27279, IntArraySum(intArray));
 
     System.out.println("passed");
   }
