@@ -575,6 +575,14 @@ class InstructionCodeGeneratorARM64Sve : public InstructionCodeGeneratorARM64 {
       return vixl::aarch64::p2;
     }
   }
+
+  // Generate a vector comparison instruction based on the IfCondition.
+  void GenerateIntegerVecComparison(const vixl::aarch64::PRegisterWithLaneSize& pd,
+                                    const vixl::aarch64::PRegisterZ& pg,
+                                    const vixl::aarch64::ZRegister& zn,
+                                    const vixl::aarch64::ZRegister& zm,
+                                    IfCondition cond);
+  void HandleVecCondition(HVecCondition* instruction);
 };
 
 class LocationsBuilderARM64Sve : public LocationsBuilderARM64 {
@@ -588,6 +596,8 @@ class LocationsBuilderARM64Sve : public LocationsBuilderARM64 {
   FOR_EACH_CONCRETE_INSTRUCTION_VECTOR_COMMON(DECLARE_VISIT_INSTRUCTION)
 
 #undef DECLARE_VISIT_INSTRUCTION
+ private:
+  void HandleVecCondition(HVecCondition* instruction);
 };
 
 class ParallelMoveResolverARM64 : public ParallelMoveResolverNoSwap {

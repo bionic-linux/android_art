@@ -3362,6 +3362,79 @@ HCondition* HGraph::CreateCondition(IfCondition cond,
   }
 }
 
+HVecCondition* HGraph::CreateVecCondition(IfCondition cond,
+                                          HInstruction* lhs,
+                                          HInstruction* rhs,
+                                          DataType::Type packed_type,
+                                          size_t vector_length,
+                                          uint32_t dex_pc) {
+  ArenaAllocator* allocator = GetAllocator();
+  switch (cond) {
+    case kCondEQ: return new (allocator) HVecEqual(allocator,
+                                                   lhs,
+                                                   rhs,
+                                                   packed_type,
+                                                   vector_length,
+                                                   dex_pc);
+    case kCondNE: return new (allocator) HVecNotEqual(allocator,
+                                                      lhs,
+                                                      rhs,
+                                                      packed_type,
+                                                      vector_length,
+                                                      dex_pc);
+    case kCondLT: return new (allocator) HVecLessThan(allocator,
+                                                      lhs,
+                                                      rhs,
+                                                      packed_type,
+                                                      vector_length,
+                                                      dex_pc);
+    case kCondLE: return new (allocator) HVecLessThanOrEqual(allocator,
+                                                             lhs,
+                                                             rhs,
+                                                             packed_type,
+                                                             vector_length,
+                                                             dex_pc);
+    case kCondGT: return new (allocator) HVecGreaterThan(allocator,
+                                                         lhs,
+                                                         rhs,
+                                                         packed_type,
+                                                         vector_length,
+                                                         dex_pc);
+    case kCondGE: return new (allocator) HVecGreaterThanOrEqual(allocator,
+                                                                lhs,
+                                                                rhs,
+                                                                packed_type,
+                                                                vector_length,
+                                                                dex_pc);
+    case kCondB:  return new (allocator) HVecBelow(allocator,
+                                                   lhs,
+                                                   rhs,
+                                                   packed_type,
+                                                   vector_length,
+                                                   dex_pc);
+    case kCondBE: return new (allocator) HVecBelowOrEqual(allocator,
+                                                          lhs,
+                                                          rhs,
+                                                          packed_type,
+                                                          vector_length,
+                                                          dex_pc);
+    case kCondA:  return new (allocator) HVecAbove(allocator,
+                                                   lhs,
+                                                   rhs,
+                                                   packed_type,
+                                                   vector_length,
+                                                   dex_pc);
+    case kCondAE: return new (allocator) HVecAboveOrEqual(allocator,
+                                                          lhs,
+                                                          rhs,
+                                                          packed_type,
+                                                          vector_length,
+                                                          dex_pc);
+  }
+  LOG(FATAL) << "Unexpected condition " << cond;
+  UNREACHABLE();
+}
+
 std::ostream& operator<<(std::ostream& os, const MoveOperands& rhs) {
   os << "["
      << " source=" << rhs.GetSource()
