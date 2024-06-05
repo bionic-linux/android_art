@@ -503,6 +503,12 @@
       "name": "art-run-test-2269-checker-constant-folding-instrinsics[com.google.android.art.apex]"
     },
     {
+      "name": "art-run-test-2274-checker-bitwise-gvn[com.google.android.art.apex]"
+    },
+    {
+      "name": "art-run-test-2275-pthread-name[com.google.android.art.apex]"
+    },
+    {
       "name": "art-run-test-300-package-override[com.google.android.art.apex]"
     },
     {
@@ -669,6 +675,9 @@
     },
     {
       "name": "art-run-test-456-baseline-array-set[com.google.android.art.apex]"
+    },
+    {
+      "name": "art-run-test-458-checker-riscv64-shift-add[com.google.android.art.apex]"
     },
     {
       "name": "art-run-test-458-long-to-fpu[com.google.android.art.apex]"
@@ -1378,6 +1387,9 @@
       "name": "art_standalone_dexlist_tests[com.google.android.art.apex]"
     },
     {
+      "name": "art_standalone_dexopt_chroot_setup_tests[com.google.android.art.apex]"
+    },
+    {
       "name": "art_standalone_dexoptanalyzer_tests[com.google.android.art.apex]"
     },
     {
@@ -1946,6 +1958,12 @@
       "name": "art-run-test-2269-checker-constant-folding-instrinsics"
     },
     {
+      "name": "art-run-test-2274-checker-bitwise-gvn"
+    },
+    {
+      "name": "art-run-test-2275-pthread-name"
+    },
+    {
       "name": "art-run-test-300-package-override"
     },
     {
@@ -2112,6 +2130,9 @@
     },
     {
       "name": "art-run-test-456-baseline-array-set"
+    },
+    {
+      "name": "art-run-test-458-checker-riscv64-shift-add"
     },
     {
       "name": "art-run-test-458-long-to-fpu"
@@ -3379,6 +3400,12 @@
       "name": "art-run-test-2269-checker-constant-folding-instrinsics"
     },
     {
+      "name": "art-run-test-2274-checker-bitwise-gvn"
+    },
+    {
+      "name": "art-run-test-2275-pthread-name"
+    },
+    {
       "name": "art-run-test-300-package-override"
     },
     {
@@ -3545,6 +3572,9 @@
     },
     {
       "name": "art-run-test-456-baseline-array-set"
+    },
+    {
+      "name": "art-run-test-458-checker-riscv64-shift-add"
     },
     {
       "name": "art-run-test-458-long-to-fpu"
