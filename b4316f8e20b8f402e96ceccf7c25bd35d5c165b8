@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4de4b90_12cdc570",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-07T16:24:26Z",
+      "side": 1,
+      "message": "Noticed that this was an unused leftover now. Removed that and did a few other small simplifications in PS6. The CR vote is still intact.",
+      "range": {
+        "startLine": 357,
+        "startChar": 6,
+        "endLine": 357,
+        "endChar": 45
+      },
+      "revId": "b4316f8e20b8f402e96ceccf7c25bd35d5c165b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
