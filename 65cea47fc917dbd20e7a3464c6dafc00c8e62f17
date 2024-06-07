@@ -22,6 +22,30 @@
       },
       "revId": "65cea47fc917dbd20e7a3464c6dafc00c8e62f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89746a2c_30099e1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-06-07T17:05:41Z",
+      "side": 1,
+      "message": "Seconded – unless you want to use an APEX based on the Release ART APEX? (When the Debug ART APEX is the active ART Module on device, we use the debug ART artifacts, i.e. `libartd.so`).",
+      "parentUuid": "c82dda08_982c9034",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "65cea47fc917dbd20e7a3464c6dafc00c8e62f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
