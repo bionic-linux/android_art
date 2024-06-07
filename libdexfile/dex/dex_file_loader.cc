@@ -23,6 +23,7 @@
 
 #include "android-base/stringprintf.h"
 #include "base/bit_utils.h"
+#include "base/casts.h"
 #include "base/file_magic.h"
 #include "base/mem_map.h"
 #include "base/os.h"
@@ -30,7 +31,6 @@
 #include "base/systrace.h"
 #include "base/unix_file/fd_file.h"
 #include "base/zip_archive.h"
-#include "compact_dex_file.h"
 #include "dex_file.h"
 #include "dex_file_verifier.h"
 #include "standard_dex_file.h"
@@ -131,16 +131,12 @@ bool DexFileLoader::IsMagicValid(uint32_t magic) {
 }
 
 bool DexFileLoader::IsMagicValid(const uint8_t* magic) {
-  return StandardDexFile::IsMagicValid(magic) ||
-      CompactDexFile::IsMagicValid(magic);
+  return StandardDexFile::IsMagicValid(magic);
 }
 
 bool DexFileLoader::IsVersionAndMagicValid(const uint8_t* magic) {
   if (StandardDexFile::IsMagicValid(magic)) {
     return StandardDexFile::IsVersionValid(magic);
-  }
-  if (CompactDexFile::IsMagicValid(magic)) {
-    return CompactDexFile::IsVersionValid(magic);
   }
   return false;
 }
@@ -474,9 +470,6 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(std::shared_ptr<DexFileContai
   if (size >= sizeof(StandardDexFile::Header) && StandardDexFile::IsMagicValid(base)) {
     uint32_t checksum = location_checksum.value_or(header->checksum_);
     dex_file.reset(new StandardDexFile(base, location, checksum, oat_dex_file, container));
-  } else if (size >= sizeof(CompactDexFile::Header) && CompactDexFile::IsMagicValid(base)) {
-    uint32_t checksum = location_checksum.value_or(header->checksum_);
-    dex_file.reset(new CompactDexFile(base, location, checksum, oat_dex_file, container));
   } else {
     *error_msg = StringPrintf("Invalid or truncated dex file '%s'", location.c_str());
   }
@@ -489,8 +482,7 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(std::shared_ptr<DexFileContai
     dex_file.reset();
     return nullptr;
   }
-  // NB: Dex verifier does not understand the compact dex format.
-  if (verify && !dex_file->IsCompactDexFile()) {
+  if (verify) {
     DEXFILE_SCOPED_TRACE(std::string("Verify dex file ") + location);
     if (!dex::Verify(dex_file.get(), location.c_str(), verify_checksum, error_msg)) {
       if (error_code != nullptr) {
@@ -584,10 +576,6 @@ bool DexFileLoader::OpenFromZipEntry(const ZipArchive& zip_archive,
                                                          error_msg,
                                                          error_code);
     if (dex_file == nullptr) {
-      return false;
-    }
-    if (dex_file->IsCompactDexFile()) {
-      *error_msg = StringPrintf("Can not open compact dex file from zip '%s'", location.c_str());
       return false;
     }
     CHECK(dex_file->IsReadOnly()) << multidex_location;

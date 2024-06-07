@@ -908,6 +908,7 @@ const char* ArtMethod::GetRuntimeMethodName() {
 
 void ArtMethod::SetCodeItem(const dex::CodeItem* code_item, bool is_compact_dex_code_item) {
   DCHECK(HasCodeItem());
+  DCHECK(!is_compact_dex_code_item);
   // We mark the lowest bit for the interpreter to know whether it's executing a
   // method in a compact or standard dex file.
   uintptr_t data =

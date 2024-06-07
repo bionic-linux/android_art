@@ -2316,7 +2316,7 @@ bool ClassLinker::AddImageSpace(gc::space::ImageSpace* space,
       if (method.HasCodeItem()) {
         const dex::CodeItem* code_item = method.GetDexFile()->GetCodeItem(
             reinterpret_cast32<uint32_t>(method.GetDataPtrSize(image_pointer_size_)));
-        method.SetCodeItem(code_item, method.GetDexFile()->IsCompactDexFile());
+        method.SetCodeItem(code_item, false);
         // The hotness counter may have changed since we compiled the image, so
         // reset it with the runtime value.
         method.ResetCounter(hotness_threshold);
@@ -4174,7 +4174,7 @@ void ClassLinker::LoadMethod(const DexFile& dex_file,
     if (Runtime::Current()->IsAotCompiler()) {
       dst->SetDataPtrSize(reinterpret_cast32<void*>(code_item_offset), image_pointer_size_);
     } else {
-      dst->SetCodeItem(dex_file.GetCodeItem(code_item_offset), dex_file.IsCompactDexFile());
+      dst->SetCodeItem(dex_file.GetCodeItem(code_item_offset), false);
     }
   }
 
@@ -5226,8 +5226,7 @@ void ClassLinker::ResolveMethodExceptionHandlerTypes(ArtMethod* method) {
   CHECK(method->GetDexFile()->IsInDataSection(handlers_ptr))
       << method->PrettyMethod()
       << "@" << method->GetDexFile()->GetLocation()
-      << "@" << reinterpret_cast<const void*>(handlers_ptr)
-      << " is_compact_dex=" << method->GetDexFile()->IsCompactDexFile();
+      << "@" << reinterpret_cast<const void*>(handlers_ptr);
 
   uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
   for (uint32_t idx = 0; idx < handlers_size; idx++) {
