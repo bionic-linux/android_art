@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e8b7e8_aafa3933",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-06-07T13:45:01Z",
+      "side": 1,
+      "message": "Suggestion: Use `continue` to skip iteration early.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 25
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5e5ce99c_5152cf9d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "build/apex/art_apex_test.py",
+              "range": {
+                "startLine": 350,
+                "startChar": 0,
+                "endLine": 355,
+                "endChar": 0
+              },
+              "replacement": "        if name in (\u0027.\u0027, \u0027..\u0027):\n          continue\n        path \u003d os.path.join(dir_path, name)\n        paths.append(path)\n        if fsobj.is_dir:\n          recurse(path)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e1ed073eaf75b26639a7532f5371f3205ca7b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acaf157_6b0519a8",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-06-07T13:45:01Z",
+      "side": 1,
+      "message": "Would a call to `super` with no arguments work (here and below)?",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "6352e58b_ea939691",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "build/apex/art_apex_test.py",
+              "range": {
+                "startLine": 392,
+                "startChar": 0,
+                "endLine": 393,
+                "endChar": 0
+              },
+              "replacement": "    super().__init__(provider)\n"
+            },
+            {
+              "path": "build/apex/art_apex_test.py",
+              "range": {
+                "startLine": 419,
+                "startChar": 0,
+                "endLine": 420,
+                "endChar": 0
+              },
+              "replacement": "    super().__init__(provider)\n"
+            },
+            {
+              "path": "build/apex/art_apex_test.py",
+              "range": {
+                "startLine": 447,
+                "startChar": 0,
+                "endLine": 448,
+                "endChar": 0
+              },
+              "replacement": "    super().__init__(provider)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e1ed073eaf75b26639a7532f5371f3205ca7b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac24a04b_a67ba93c",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-06-07T13:45:01Z",
+      "side": 1,
+      "message": "Suggestion: Use singular form.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 4,
+        "endLine": 1029,
+        "endChar": 18
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0726ee3b_9e6c1405",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "build/apex/art_apex_test.py",
+              "range": {
+                "startLine": 1029,
+                "startChar": 0,
+                "endLine": 1030,
+                "endChar": 0
+              },
+              "replacement": "  # This checker must be last.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "e1ed073eaf75b26639a7532f5371f3205ca7b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
