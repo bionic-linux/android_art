@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93369daf_bf15f172",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2024-06-07T05:24:09Z",
+      "side": 1,
+      "message": "CTS tests are required to not use private APIs.",
+      "revId": "1ae7c1ad33db73cb4515a8a36062b7a65405f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
