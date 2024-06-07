@@ -351,8 +351,7 @@ class OatWriter::OatDexFile {
 OatWriter::OatWriter(const CompilerOptions& compiler_options,
                      const VerificationResults* verification_results,
                      TimingLogger* timings,
-                     ProfileCompilationInfo* info,
-                     CompactDexLevel compact_dex_level)
+                     ProfileCompilationInfo* info)
     : write_state_(WriteState::kAddingDexFileSources),
       timings_(timings),
       compiler_driver_(nullptr),
@@ -390,8 +389,7 @@ OatWriter::OatWriter(const CompilerOptions& compiler_options,
       oat_data_offset_(0u),
       oat_header_(nullptr),
       relative_patcher_(nullptr),
-      profile_compilation_info_(info),
-      compact_dex_level_(compact_dex_level) {}
+      profile_compilation_info_(info) {}
 
 static bool ValidateDexFileHeader(const uint8_t* raw_header, const char* location) {
   const bool valid_standard_dex_magic = DexFileLoader::IsMagicValid(raw_header);
@@ -3296,30 +3294,8 @@ bool OatWriter::WriteDexFiles(File* file,
     }
   }
 
-  // Compact dex reader/writer does not understand dex containers,
-  // which is ok since dex containers replace compat-dex.
-  for (OatDexFile& oat_dex_file : oat_dex_files_) {
-    const DexFile* dex_file = oat_dex_file.GetDexFile();
-    if (dex_file->HasDexContainer()) {
-      compact_dex_level_ = CompactDexLevel::kCompactDexLevelNone;
-    }
-  }
-
   if (extract_dex_files_into_vdex_) {
     vdex_dex_files_offset_ = vdex_size_;
-
-    // Perform dexlayout if compact dex is enabled. Also see
-    // Dex2Oat::DoDexLayoutOptimizations.
-    if (compact_dex_level_ != CompactDexLevel::kCompactDexLevelNone) {
-      for (OatDexFile& oat_dex_file : oat_dex_files_) {
-        // use_existing_vdex should not be used with compact dex and layout.
-        CHECK(!use_existing_vdex)
-            << "We should never update the input vdex when doing dexlayout or compact dex";
-        if (!LayoutDexFile(&oat_dex_file)) {
-          return false;
-        }
-      }
-    }
 
     // Calculate the total size after the dex files.
     size_t vdex_size_with_dex_files = vdex_size_;
@@ -3443,15 +3419,7 @@ bool OatWriter::WriteDexFiles(File* file,
       size_dex_file_alignment_ += vdex_dex_shared_data_offset_ - vdex_size_;
       vdex_size_ = vdex_dex_shared_data_offset_;
 
-      if (dex_container_ != nullptr) {
-        CHECK(!use_existing_vdex) << "Use existing vdex should have empty dex container";
-        CHECK(compact_dex_level_ != CompactDexLevel::kCompactDexLevelNone);
-        DexContainer::Section* const section = dex_container_->GetDataSection();
-        DCHECK_EQ(shared_data_size, section->Size());
-        memcpy(vdex_begin_ + vdex_size_, section->Begin(), shared_data_size);
-        section->Clear();
-        dex_container_.reset();
-      } else if (!use_existing_vdex) {
+      if (!use_existing_vdex) {
         memcpy(vdex_begin_ + vdex_size_, raw_dex_file_shared_data_begin, shared_data_size);
       }
       vdex_size_ += shared_data_size;
@@ -3501,7 +3469,6 @@ bool OatWriter::LayoutDexFile(OatDexFile* oat_dex_file) {
   std::string location(oat_dex_file->GetLocation());
   std::unique_ptr<const DexFile>& dex_file = oat_dex_file->dex_file_;
   Options options;
-  options.compact_dex_level_ = compact_dex_level_;
   options.update_checksum_ = true;
   DexLayout dex_layout(options, profile_compilation_info_, /*file*/ nullptr, /*header*/ nullptr);
   {

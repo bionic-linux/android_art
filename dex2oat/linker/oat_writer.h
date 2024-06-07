@@ -29,7 +29,6 @@
 #include "base/mem_map.h"
 #include "base/safe_map.h"
 #include "debug/debug_info.h"
-#include "dex/compact_dex_level.h"
 #include "dex/method_reference.h"
 #include "dex/string_reference.h"
 #include "dex/proto_reference.h"
@@ -119,8 +118,7 @@ class OatWriter {
   OatWriter(const CompilerOptions& compiler_options,
             const VerificationResults* verification_results,
             TimingLogger* timings,
-            ProfileCompilationInfo* info,
-            CompactDexLevel compact_dex_level);
+            ProfileCompilationInfo* info);
 
   // To produce a valid oat file, the user must first add sources with any combination of
   //   - AddDexFileSource(),
@@ -591,9 +589,6 @@ class OatWriter {
 
   // Profile info used to generate new layout of files.
   ProfileCompilationInfo* profile_compilation_info_;
-
-  // Compact dex level that is generated.
-  CompactDexLevel compact_dex_level_;
 
   using OrderedMethodList = std::vector<OrderedMethodData>;
 
