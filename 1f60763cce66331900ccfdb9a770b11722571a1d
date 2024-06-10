@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "881dfd88_f3ae8d0d",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-10T17:03:44Z",
+      "side": 1,
+      "message": "Also remove all the test variants for cdex? https://cs.android.com/android/platform/superproject/main/+/main:art/test/testrunner/testrunner.py;l\u003d239;drc\u003d7a490b995aa96270220862f486c40d1ff8bdd728",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ea601bac_392f2f0d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/testrunner/target_config.py",
+              "range": {
+                "startLine": 163,
+                "startChar": 0,
+                "endLine": 165,
+                "endChar": 0
+              },
+              "replacement": "                      \u0027--optimizing\u0027],\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f60763cce66331900ccfdb9a770b11722571a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
