@@ -22,6 +22,30 @@
       },
       "revId": "6b6032a4fcd6c378ce200da0ead8614075e69dd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3ec095_e0a3a907",
+        "filename": "dex2oat/linker/oat_writer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-10T17:45:28Z",
+      "side": 0,
+      "message": "Thanks for checking. I\u0027m pretty sure it isn\u0027t since it becomes unreferenced as a result of the code removed in this CL. I also checked the references in CodeSearch and the only writes are from [here](https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/linker/oat_writer.cc;l\u003d3453;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16) and [here](https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/linker/oat_writer.cc;l\u003d3512,3526;drc\u003dd5137445c0d4067406cb3e38aade5507ff2fcd16), which get deleted.",
+      "parentUuid": "db64b6f1_30876953",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 47
+      },
+      "revId": "6b6032a4fcd6c378ce200da0ead8614075e69dd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

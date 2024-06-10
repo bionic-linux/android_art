@@ -40,6 +40,30 @@
       ],
       "revId": "1f60763cce66331900ccfdb9a770b11722571a1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b14f80_3903a613",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-10T17:45:28Z",
+      "side": 1,
+      "message": "Good point. This ties in with cleaning up the LUCI \"recipe\" for cdex. I\u0027ll address that in a separate CL.",
+      "parentUuid": "881dfd88_f3ae8d0d",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "1f60763cce66331900ccfdb9a770b11722571a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
