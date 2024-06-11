@@ -16,6 +16,24 @@
       "message": "and the exact same test failure here?!",
       "revId": "62227603a050942cfb9a9b9e32baa292abb62abf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3f7dca_ec24db1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-11T15:46:16Z",
+      "side": 1,
+      "message": "Use BypassPresubmit+1 and reference bug 346510164.",
+      "parentUuid": "cd73447a_29068819",
+      "revId": "62227603a050942cfb9a9b9e32baa292abb62abf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
