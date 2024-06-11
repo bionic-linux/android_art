@@ -121,6 +121,11 @@ inline void GcRootArray<T>::Set(uint32_t index, T* value) {
   entries_[index].store(root, std::memory_order_relaxed);
 }
 
+//template <typename T>
+//inline void NativeArray<T>::Set(uint32_t index, T* value) {
+ // entries_[index].store(value, std::memory_order_relaxed);
+//}
+
 template <typename T>
 inline T* GcRootArray<T>::Get(uint32_t index) {
   return entries_[index].load(std::memory_order_relaxed).Read();
