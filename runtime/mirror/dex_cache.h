@@ -389,8 +389,10 @@ class MANAGED DexCache final : public Object {
   // Returns whether we should allocate a full array given the number of elements.
   // Note: update the image version in image.cc if changing this method.
   static bool ShouldAllocateFullArray(size_t number_of_elements, size_t dex_cache_size) {
-    return number_of_elements <= dex_cache_size;
+    return ((true)) || (number_of_elements <= dex_cache_size);
   }
+
+  void ReclaimMemory() REQUIRES_SHARED(Locks::mutator_lock_);
 
 
 // NOLINTBEGIN(bugprone-macro-parentheses)
