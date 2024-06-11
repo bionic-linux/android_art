@@ -22,6 +22,30 @@
       },
       "revId": "af56e53270b3f4b2f2c61dc8a2f6ebeb8e3479b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67127c39_6bc6c7b0",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-11T12:51:14Z",
+      "side": 1,
+      "message": "Yes, it\u0027ll come in a later CL.",
+      "parentUuid": "af6deaf3_510cf219",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 35
+      },
+      "revId": "af56e53270b3f4b2f2c61dc8a2f6ebeb8e3479b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
