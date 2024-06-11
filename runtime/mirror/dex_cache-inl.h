@@ -117,8 +117,15 @@ inline void NativeDexCachePair<T>::Initialize(std::atomic<NativeDexCachePair<T>>
 
 template <typename T>
 inline void GcRootArray<T>::Set(uint32_t index, T* value) {
+  if (Runtime::Current()->GetStartupCompleted()) return;
   GcRoot<T> root(value);
   entries_[index].store(root, std::memory_order_relaxed);
+}
+
+template <typename T>
+inline void NativeArray<T>::Set(uint32_t index, T* value) {
+  if (Runtime::Current()->GetStartupCompleted()) return;
+  entries_[index].store(value, std::memory_order_relaxed);
 }
 
 template <typename T>

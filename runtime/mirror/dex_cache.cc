@@ -255,5 +255,25 @@ void DexCache::SetResolvedType(dex::TypeIndex type_idx, ObjPtr<Class> resolved) 
   }
 }
 
+static void ReclaimMemoryInternal(uint64_t address, size_t size) {
+  if (address == 0u || size <= MemMap::GetPageSize()) {
+    return;
+  }
+  uint8_t* const mem_begin = reinterpret_cast<uint8_t*>(address);
+  uint8_t* const mem_end = reinterpret_cast<uint8_t*>(address + size);
+  uint8_t* const page_begin = AlignUp(mem_begin, MemMap::GetPageSize());
+  uint8_t* const page_end = AlignDown(mem_end, MemMap::GetPageSize());
+  bool res = madvise(page_begin, page_end - page_begin, MADV_DONTNEED);
+  CHECK_NE(res, -1) << "madvise failed";
+}
+
+void DexCache::ReclaimMemory() {
+  ReclaimMemoryInternal(resolved_fields_array_, NumResolvedFieldsArray() * sizeof(ArtField*));
+  ReclaimMemoryInternal(resolved_method_types_array_, NumResolvedMethodTypesArray() * sizeof(GcRoot<mirror::MethodType>));
+  ReclaimMemoryInternal(resolved_methods_array_, NumResolvedMethodsArray() * sizeof(ArtMethod*));
+  ReclaimMemoryInternal(resolved_types_array_, NumResolvedTypesArray() * sizeof(GcRoot<mirror::Class>));
+  ReclaimMemoryInternal(strings_array_, NumStringsArray() * sizeof(GcRoot<mirror::String>));
+}
+
 }  // namespace mirror
 }  // namespace art

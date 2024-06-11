@@ -34,8 +34,7 @@
 namespace art HIDDEN {
 
 const uint8_t ImageHeader::kImageMagic[] = { 'a', 'r', 't', '\n' };
-// Last change: Add unsignedRemainder intrinsics.
-const uint8_t ImageHeader::kImageVersion[] = { '1', '1', '1', '\0' };
+const uint8_t ImageHeader::kImageVersion[] = { '1', '1', '2', '\0' };
 
 ImageHeader::ImageHeader(uint32_t image_reservation_size,
                          uint32_t component_count,
