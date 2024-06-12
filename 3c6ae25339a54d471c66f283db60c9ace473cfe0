@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4efd629_9a11f4f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-12T12:27:06Z",
+      "side": 1,
+      "message": "Pirama, I think this CL addressed your problem. Adding the shared lib back probably doesn\u0027t change much in practice, because it\u0027s evidently pulled in through some other dependency somewhere, but it is a (now dynamic) dependency of libunwindstack, so it should be present here.",
+      "range": {
+        "startLine": 11,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 92
+      },
+      "revId": "3c6ae25339a54d471c66f283db60c9ace473cfe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
