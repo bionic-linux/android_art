@@ -93,6 +93,30 @@
       },
       "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fca87c_084e67e7",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootStatsReporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-13T14:06:31Z",
+      "side": 1,
+      "message": "\u003e First of all, the methods above can be called multiple times in normal cases\n\nOk, so we cannot check for the non-existence of the file in those methods.\n\nThat still leaves the other direction - with a `delete` at the start we would at least not risk picking up some leftover file from an earlier run. That\u0027d be more explicit than relying on one of the methods above overwriting it.",
+      "parentUuid": "04221c71_b343fef1",
+      "range": {
+        "startLine": 103,
+        "startChar": 46,
+        "endLine": 103,
+        "endChar": 52
+      },
+      "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
