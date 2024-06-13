@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "61d523b4_92aa40d1",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-13T14:51:59Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s unfortunate. I\u0027m not very impressed by `ReentrantReadWriteLock`, really. For instance:\n\n\u003e If a reader tries to acquire the write lock it will never succeed.\n\nThat means it\u0027s entirely possible it deadlocks in that situation, which is not exactly reassuring. I can\u0027t find anything to contradict that interpretation in the docs. 😞\n\nIt\u0027s not for you to reimplement a sane locking primitive here, so I\u0027m not blocking this. But I\u0027m decidedly disappointed with the JDK.",
+      "parentUuid": "c15c75e5_fad6f19a",
+      "range": {
+        "startLine": 142,
+        "startChar": 21,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "fce2068ad5e0e75bf128cc547ac57968ead4458d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce24e893_6b7a712d",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
