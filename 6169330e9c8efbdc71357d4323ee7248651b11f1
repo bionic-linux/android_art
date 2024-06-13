@@ -117,6 +117,30 @@
       },
       "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ed0656_e4b0ff8e",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootStatsReporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-13T14:11:41Z",
+      "side": 1,
+      "message": "Discussed offline. Actually, we do call `delete` when we get a new update.",
+      "parentUuid": "23fca87c_084e67e7",
+      "range": {
+        "startLine": 103,
+        "startChar": 46,
+        "endLine": 103,
+        "endChar": 52
+      },
+      "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
