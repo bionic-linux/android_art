@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c15c75e5_fad6f19a",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-13T14:04:16Z",
+      "side": 1,
+      "message": "Good question! I do want a non-reentrant lock, but I couldn\u0027t find any in the Java API, and I didn\u0027t want to implement my own. So, unfortunately, I have to use the reentrant lock.",
+      "parentUuid": "7d7a9218_b5744d93",
+      "range": {
+        "startLine": 142,
+        "startChar": 21,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "fce2068ad5e0e75bf128cc547ac57968ead4458d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce24e893_6b7a712d",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-13T13:36:10Z",
       "side": 1,
       "message": "I was expecting the recommended pattern to be either `synchronized(mCleanupLock.readLock()) { ... }` or some `AutoCloseable` wrapper, but apparently neither is a thing?",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 45
+      },
+      "revId": "fce2068ad5e0e75bf128cc547ac57968ead4458d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edaef8d_fb920708",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-13T14:04:16Z",
+      "side": 1,
+      "message": "`synchronized` doesn\u0027t work with locks. It locks the lock object, not the lock. I learned this from a bug with a lock in the package manager (ag/27658054).\n\nI also looked for an `AutoCloseable` wrapper, but there isn\u0027t any in the Java API. The package manager team implemented their own wrapper in ag/27658054, but I think it\u0027s an overkill for our use case because we only use this lock in 3 places.",
+      "parentUuid": "ce24e893_6b7a712d",
       "range": {
         "startLine": 381,
         "startChar": 0,
