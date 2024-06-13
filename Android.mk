@@ -18,6 +18,8 @@ LOCAL_PATH := $(call my-dir)
 
 art_path := $(LOCAL_PATH)
 
+include $(art_path)/tools/veridex/Android.mk
+
 ########################################################################
 # clean-oat rules
 #
