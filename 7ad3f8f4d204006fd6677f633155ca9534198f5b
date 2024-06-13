@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e24250a_94665fff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-13T15:00:12Z",
+      "side": 1,
+      "message": "This CL caused an ODR to reappear: http://g/art-team/DdNTGvOmnDs/LsN97Lh-AAAJ I\u0027m looking into it; I don\u0027t think removing this dependency is the right way to fix it.",
+      "revId": "7ad3f8f4d204006fd6677f633155ca9534198f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
