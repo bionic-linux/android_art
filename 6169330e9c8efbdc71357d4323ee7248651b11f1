@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2db21a84_48c2bcce",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootStatsReporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-13T13:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b3f7f5_784edca8",
+      "range": {
+        "startLine": 97,
+        "startChar": 43,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "294f81d1_1756f524",
         "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootStatsReporter.java",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-13T13:10:17Z",
       "side": 1,
       "message": "There\u0027s a somewhat fragile implicit contract here that some methods (those above) are supposed to be called exactly once at the start of the job, while others loads an existing state file and are only to be called later on.\n\nCan we add some checks to ensure that contract is adhered to? I\u0027m thinking something like starting with a `delete` call, so we know the file doesn\u0027t exist and `load` will fail if neither of the methods above have been called. And then also have a check in those methods that no file exists already to catch the complementing case.\n\nThat\u0027s better off in a separate CL though.",
+      "range": {
+        "startLine": 103,
+        "startChar": 46,
+        "endLine": 103,
+        "endChar": 52
+      },
+      "revId": "6169330e9c8efbdc71357d4323ee7248651b11f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04221c71_b343fef1",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootStatsReporter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-06-13T13:57:28Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. I think it\u0027s hard to enforce anything here.\n\nFirst of all, the methods above can be called multiple times in normal cases (think about the case where a device gets a Mainline update followed by an OTA update).\n\nSecondly, because we have made this class stateless, the state now can only be found in the file, and IO exceptions can happen. If we can\u0027t load the file in this method, it could be that an IO exception happened when `recordJobScheduled` was called. Therefore, we can\u0027t add checks based on the assumptions on the state.",
+      "parentUuid": "294f81d1_1756f524",
       "range": {
         "startLine": 103,
         "startChar": 46,
