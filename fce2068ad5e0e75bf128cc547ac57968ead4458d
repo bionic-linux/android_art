@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7a9218_b5744d93",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-13T13:36:10Z",
+      "side": 1,
+      "message": "Reentrant locks are inherently riskier than non-reentrant locks because locking order becomes harder to reason about. Why does it need to be reentrant? Is it possible to avoid by locking around each `dexopt` call instead? I figure the temporary files don\u0027t live longer than each such call anyway.",
+      "range": {
+        "startLine": 142,
+        "startChar": 21,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "fce2068ad5e0e75bf128cc547ac57968ead4458d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce24e893_6b7a712d",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-13T13:36:10Z",
+      "side": 1,
+      "message": "I was expecting the recommended pattern to be either `synchronized(mCleanupLock.readLock()) { ... }` or some `AutoCloseable` wrapper, but apparently neither is a thing?",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 45
+      },
+      "revId": "fce2068ad5e0e75bf128cc547ac57968ead4458d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
