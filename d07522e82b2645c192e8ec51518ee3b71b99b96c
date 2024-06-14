@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e3dba5_5b279d97",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-14T12:30:11Z",
+      "side": 1,
+      "message": "Add `--version`.",
+      "range": {
+        "startLine": 1010,
+        "startChar": 36,
+        "endLine": 1010,
+        "endChar": 37
+      },
+      "revId": "d07522e82b2645c192e8ec51518ee3b71b99b96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
