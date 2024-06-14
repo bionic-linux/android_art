@@ -94,11 +94,9 @@ public class Main {
   /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleBoolean(boolean[], boolean[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: VecLoad
   //
   /// CHECK-FI:
-  //
-  // TODO: Support extra condition types and boolean comparisons.
   public static void $compile$noinline$SimpleBoolean(boolean[] x, boolean[] y) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       boolean val = x[i];
@@ -185,11 +183,9 @@ public class Main {
   /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleLong(long[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: VecLoad
   //
   /// CHECK-FI:
-  //
-  // TODO: Support long comparisons.
   public static void $compile$noinline$SimpleLong(long[] x) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       long val = x[i];
@@ -202,11 +198,9 @@ public class Main {
   /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleFloat(float[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: VecLoad
   //
   /// CHECK-FI:
-  //
-  // TODO: Support FP comparisons.
   public static void $compile$noinline$SimpleFloat(float[] x) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       float val = x[i];
@@ -219,16 +213,30 @@ public class Main {
   /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleDouble(double[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: VecLoad
   //
   /// CHECK-FI:
-  //
-  // TODO: Support FP comparisons.
   public static void $compile$noinline$SimpleDouble(double[] x) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       double val = x[i];
       if (val != 10.0) {
         x[i] += 99.1;
+      }
+    }
+  }
+
+  /// CHECK-START-ARM64: void Main.$compile$noinline$DifferentTypes(byte[], short[]) loop_optimization (after)
+  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  //
+  ///     CHECK-NOT: VecLoad
+  //
+  /// CHECK-FI:
+  // Loops with different types cannot be implicitly widened during vectorization.
+  public static void $compile$noinline$DifferentTypes(byte[] x, short[] y) {
+    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
+      byte val = x[i];
+      if (val != y[i]) {
+        x[i] += y[i];
       }
     }
   }
@@ -618,6 +626,11 @@ public class Main {
     initDoubleArray(doubleArray);
     $compile$noinline$SimpleDouble(doubleArray);
     expectDoubleEquals(23129.5, DoubleArraySum(doubleArray));
+
+    initByteArray(byteArray);
+    initShortArray(shortArray);
+    $compile$noinline$DifferentTypes(byteArray, shortArray);
+    expectIntEquals(-31, ByteArraySum(byteArray));
 
     // Narrowing types.
     initByteArray(byteArray);

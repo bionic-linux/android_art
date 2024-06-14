@@ -196,15 +196,20 @@ class PredicatedSimdLoopOptimizationTest : public LoopOptimizationTestBase {
 
   // Replace the input of diamond_hif_ with a new condition of the given types. Return false if the
   // condition could not be created.
-  void ReplaceIfCondition(DataType::Type l_type,
+  bool ReplaceIfCondition(DataType::Type l_type,
                           DataType::Type r_type,
                           HBasicBlock* condition_block,
                           IfCondition cond) {
+    if (IsUnsignedFloatingPointCondition(l_type, cond)) {
+      return false;
+    }
+
     AddArraySetToLoop(l_type);
     HInstruction* l_param = MakeParam(l_type);
     HInstruction* r_param = MakeParam(r_type);
     HCondition* condition = MakeCondition(condition_block, cond, l_param, r_param);
     diamond_hif_->ReplaceInput(condition, 0);
+    return true;
   }
 
   // Is loop optimization able to vectorize predicated code?
@@ -446,20 +451,42 @@ TEST_F(PredicatedSimdLoopOptimizationTest, VectorizeCondition##Name##CondType) {
   if (!IsPredicatedVectorizationSupported()) {                                                  \
     GTEST_SKIP() << "Predicated SIMD is not enabled.";                                          \
   }                                                                                             \
-  ReplaceIfCondition(DataType::Type::k##CondType,                                               \
-                     DataType::Type::k##CondType,                                               \
-                     diamond_top_,                                                              \
-                     kCond##Name);                                                              \
+  if (!ReplaceIfCondition(DataType::Type::k##CondType,                                          \
+                          DataType::Type::k##CondType,                                          \
+                          diamond_top_,                                                         \
+                          kCond##Name)) {                                                       \
+    return;                                                                                     \
+  }                                                                                             \
   PerformAnalysis(/*run_checker=*/ true);                                                       \
   EXPECT_TRUE(graph_->HasPredicatedSIMD());                                                     \
 }
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Bool)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Uint8)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int8)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Uint16)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int16)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int32)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int64)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Float32)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Float64)
 #undef DEFINE_CONDITION_TESTS
 #undef FOR_EACH_CONDITION_INSTRUCTION
+
+TEST_F(PredicatedSimdLoopOptimizationTest, DifferentFPTypes) {
+  if (!IsPredicatedVectorizationSupported()) {
+    GTEST_SKIP() << "Predicated SIMD is not enabled.";
+  }
+
+  EXPECT_TRUE(ReplaceIfCondition(DataType::Type::kFloat32,
+                                 DataType::Type::kFloat64,
+                                 diamond_top_,
+                                 kCondEQ));
+
+  // The graph checker will fail if the inputs of a condition have different floating point types.
+  PerformAnalysis(/*run_checker=*/ false);
+  EXPECT_FALSE(graph_->HasPredicatedSIMD());
+}
+
 #endif  // ART_ENABLE_CODEGEN_arm64
 
 }  // namespace art
