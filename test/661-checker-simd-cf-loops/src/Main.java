@@ -91,144 +91,64 @@ public class Main {
   // Test various types.
   //
 
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleBoolean(boolean[], boolean[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleFloat(float[]) loop_optimization (before)
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: <<C0:i\d+>>      IntConstant 0                                                           loop:none
+  ///     CHECK-DAG: <<C99:f\d+>>     FloatConstant 99                                                        loop:none
+  ///     CHECK-DAG: <<C100:f\d+>>    FloatConstant 100                                                       loop:none
   //
-  /// CHECK-FI:
+  ///     CHECK-DAG: <<Phi:i\d+>>     Phi [<<C0>>,{{i\d+}}]                                                   loop:<<Loop:B\d+>>
+  ///     CHECK-DAG: <<Load:f\d+>>    ArrayGet [<<Arr:l\d+>>,<<Phi>>]                                         loop:<<Loop>>
+  ///     CHECK-DAG: <<Cond:z\d+>>    LessThanOrEqual [<<Load>>,<<C100>>]                                     loop:<<Loop>>
+  ///     CHECK-DAG:                  If [<<Cond>>]                                                           loop:<<Loop>>
   //
-  // TODO: Support extra condition types and boolean comparisons.
-  public static void $compile$noinline$SimpleBoolean(boolean[] x, boolean[] y) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      boolean val = x[i];
-      if (val != y[i]) {
-        x[i] |= y[i];
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleByte(byte[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
+  ///     CHECK-DAG: <<Add:f\d+>>     Add [<<Load>>,<<C99>>]                                                  loop:<<Loop>>
+  ///     CHECK-DAG:                  ArraySet [<<Arr>>,<<Phi>>,<<Add>>]                                      loop:<<Loop>>
   //
-  ///     CHECK-DAG: VecLoad
-  //
-  /// CHECK-FI:
-  public static void $compile$noinline$SimpleByte(byte[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      byte val = x[i];
-      if (val != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleUByte(byte[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
-  //
-  ///     CHECK-DAG: VecLoad
-  //
-  /// CHECK-FI:
-  public static void $compile$noinline$SimpleUByte(byte[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      if ((x[i] & 0xFF) != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleShort(short[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
-  //
-  ///     CHECK-DAG: VecLoad
-  //
-  /// CHECK-FI:
-  public static void $compile$noinline$SimpleShort(short[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      short val = x[i];
-      if (val != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleChar(char[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
-  //
-  ///     CHECK-DAG: VecLoad
-  //
-  /// CHECK-FI:
-  public static void $compile$noinline$SimpleChar(char[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      char val = x[i];
-      if (val != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleInt(int[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
-  //
-  ///     CHECK-DAG: VecLoad
-  //
-  /// CHECK-FI:
-  public static void $compile$noinline$SimpleInt(int[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      int val = x[i];
-      if (val != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleLong(long[]) loop_optimization (after)
-  /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
-  //
-  ///     CHECK-NOT: VecLoad
-  //
-  /// CHECK-FI:
-  //
-  // TODO: Support long comparisons.
-  public static void $compile$noinline$SimpleLong(long[] x) {
-    for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      long val = x[i];
-      if (val != MAGIC_VALUE_C) {
-        x[i] += MAGIC_ADD_CONST;
-      }
-    }
-  }
-
   /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleFloat(float[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
-  ///     CHECK-NOT: VecLoad
+  ///     CHECK-DAG: <<C0:i\d+>>      IntConstant 0                                                             loop:none
+  ///     CHECK-DAG: <<C99:f\d+>>     FloatConstant 99                                                          loop:none
+  ///     CHECK-DAG: <<C100:f\d+>>    FloatConstant 100                                                         loop:none
+  //
+  ///     CHECK-DAG: <<Vec99:d\d+>>   VecReplicateScalar [<<C99>>,{{j\d+}}]              packed_type:Float32    loop:none
+  ///     CHECK-DAG: <<Vec100:d\d+>>  VecReplicateScalar [<<C100>>,{{j\d+}}]             packed_type:Float32    loop:none
+  //
+  ///     CHECK-DAG: <<Phi:i\d+>>     Phi [<<C0>>,{{i\d+}}]                                                     loop:<<Loop:B\d+>>
+  ///     CHECK-DAG: <<LoopP:j\d+>>   VecPredWhile [<<Phi>>,{{i\d+}}]                                           loop:<<Loop>>
+  //
+  ///     CHECK-DAG: <<Load:d\d+>>    VecLoad [<<Arr:l\d+>>,<<Phi>>,<<LoopP>>]           packed_type:Float32    loop:<<Loop>>
+  ///     CHECK-DAG: <<Cond:j\d+>>    VecLessThanOrEqual [<<Load>>,<<Vec100>>,<<LoopP>>] packed_type:Float32    loop:<<Loop>>
+  ///     CHECK-DAG: <<CondR:j\d+>>   VecPredNot [<<Cond>>,<<LoopP>>]                    packed_type:Float32    loop:<<Loop>>
+  ///     CHECK-DAG: <<Add:d\d+>>     VecAdd [<<Load>>,<<Vec99>>,<<CondR>>]
+  ///     CHECK-DAG:                  VecStore [<<Arr>>,<<Phi>>,<<Add>>,<<CondR>>]       packed_type:Float32    loop:<<Loop>>
   //
   /// CHECK-FI:
   //
-  // TODO: Support FP comparisons.
+  // Example of a floating point type being vectorized. See loop_optimization_test.cc and
+  // codegen_test.cc for full testing of vector types.
   public static void $compile$noinline$SimpleFloat(float[] x) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
       float val = x[i];
-      if (val > 10.0f) {
-        x[i] += 99.1f;
+      if (val > MAGIC_FLOAT_VALUE_C) {
+        x[i] += MAGIC_FLOAT_ADD_CONST;
       }
     }
   }
 
-  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleDouble(double[]) loop_optimization (after)
+  /// CHECK-START-ARM64: void Main.$compile$noinline$DifferentTypes(byte[], short[]) loop_optimization (after)
   /// CHECK-IF:     hasIsaFeature("sve") and os.environ.get('ART_FORCE_TRY_PREDICATED_SIMD') == 'true'
   //
   ///     CHECK-NOT: VecLoad
   //
   /// CHECK-FI:
-  //
-  // TODO: Support FP comparisons.
-  public static void $compile$noinline$SimpleDouble(double[] x) {
+  // Loops with different types cannot be implicitly widened during vectorization.
+  public static void $compile$noinline$DifferentTypes(byte[] x, short[] y) {
     for (int i = 0; i < USED_ARRAY_LENGTH; i++) {
-      double val = x[i];
-      if (val != 10.0) {
-        x[i] += 99.1;
+      byte val = x[i];
+      if (val != y[i]) {
+        x[i] += y[i];
       }
     }
   }
@@ -526,42 +446,14 @@ public class Main {
     expectIntEquals(USED_ARRAY_LENGTH, final_ind_value);
 
     // Types.
-    initBooleanArray(booleanArray);
-    booleanArray2[12] = true;
-    $compile$noinline$SimpleBoolean(booleanArray, booleanArray2);
-    expectIntEquals(86, BooleanArraySum(booleanArray));
-
-    initByteArray(byteArray);
-    $compile$noinline$SimpleByte(byteArray);
-    expectIntEquals(-64, ByteArraySum(byteArray));
-
-    initByteArray(byteArray);
-    $compile$noinline$SimpleUByte(byteArray);
-    expectIntEquals(-64, ByteArraySum(byteArray));
-
-    initShortArray(shortArray);
-    $compile$noinline$SimpleShort(shortArray);
-    expectIntEquals(23121, ShortArraySum(shortArray));
-
-    initCharArray(charArray);
-    $compile$noinline$SimpleChar(charArray);
-    expectIntEquals(23121, CharArraySum(charArray));
-
-    initIntArray(intArray);
-    $compile$noinline$SimpleInt(intArray);
-    expectIntEquals(23121, IntArraySum(intArray));
-
-    initLongArray(longArray);
-    $compile$noinline$SimpleLong(longArray);
-    expectLongEquals(23121, LongArraySum(longArray));
-
     initFloatArray(floatArray);
     $compile$noinline$SimpleFloat(floatArray);
-    expectFloatEquals(18868.2f, FloatArraySum(floatArray));
+    expectFloatEquals(14706.0f, FloatArraySum(floatArray));
 
-    initDoubleArray(doubleArray);
-    $compile$noinline$SimpleDouble(doubleArray);
-    expectDoubleEquals(23129.5, DoubleArraySum(doubleArray));
+    initByteArray(byteArray);
+    initShortArray(shortArray);
+    $compile$noinline$DifferentTypes(byteArray, shortArray);
+    expectIntEquals(-31, ByteArraySum(byteArray));
 
     // Narrowing types.
     initByteArray(byteArray);
