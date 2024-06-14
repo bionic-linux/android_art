@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594c9a13_7a6f291a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-14T14:43:28Z",
+      "side": 1,
+      "message": "PTAL, turns out I need to do some refactorings to solve this properly.",
+      "revId": "d9fcd7f130c8dcf32dea30b8261f52506ac37acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
