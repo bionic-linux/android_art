@@ -582,6 +582,11 @@ class InstructionCodeGeneratorARM64Sve : public InstructionCodeGeneratorARM64 {
                                     const vixl::aarch64::ZRegister& zn,
                                     const vixl::aarch64::ZRegister& zm,
                                     IfCondition cond);
+  void GenerateFloatingPointVecComparison(const vixl::aarch64::PRegisterWithLaneSize& pd,
+                                          const vixl::aarch64::PRegisterZ& pg,
+                                          const vixl::aarch64::ZRegister& zn,
+                                          const vixl::aarch64::ZRegister& zm,
+                                          IfCondition cond);
   void HandleVecCondition(HVecCondition* instruction);
 };
 
