@@ -433,6 +433,9 @@ TEST_F(PredicatedSimdLoopOptimizationTest, VectorizeCondition##Name##CondType) {
   if (!IsPredicatedVectorizationSupported()) {                                                  \
     GTEST_SKIP() << "Predicated SIMD is not enabled.";                                          \
   }                                                                                             \
+  if (IsUnsignedFloatingPointCondition(DataType::Type::k##CondType, kCond##Name)) {             \
+    return;                                                                                     \
+  }                                                                                             \
   AddArraySetToLoop(DataType::Type::k##CondType);                                               \
   HInstruction* l_param = MakeParam(DataType::Type::k##CondType);                               \
   HInstruction* r_param = MakeParam(DataType::Type::k##CondType);                               \
@@ -441,13 +444,34 @@ TEST_F(PredicatedSimdLoopOptimizationTest, VectorizeCondition##Name##CondType) {
   PerformAnalysis(/*run_checker=*/ true);                                                       \
   EXPECT_TRUE(graph_->HasPredicatedSIMD());                                                     \
 }
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Bool)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Uint8)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int8)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Uint16)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int16)
 FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int32)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Int64)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Float32)
+FOR_EACH_CONDITION_INSTRUCTION(DEFINE_CONDITION_TESTS, Float64)
 #undef DEFINE_CONDITION_TESTS
 #undef FOR_EACH_CONDITION_INSTRUCTION
+
+TEST_F(PredicatedSimdLoopOptimizationTest, DifferentFPTypes) {
+  if (!IsPredicatedVectorizationSupported()) {
+    GTEST_SKIP() << "Predicated SIMD is not enabled.";
+  }
+
+  AddArraySetToLoop(DataType::Type::kFloat32);
+  HInstruction* l_param = MakeParam(DataType::Type::kFloat32);
+  HInstruction* r_param = MakeParam(DataType::Type::kFloat64);
+  HCondition* condition = MakeCondition(diamond_top_, kCondEQ, l_param, r_param);
+  diamond_hif_->ReplaceInput(condition, 0);
+
+  // The graph checker will fail if the inputs of a condition have different floating point types.
+  PerformAnalysis(/*run_checker=*/ false);
+  EXPECT_FALSE(graph_->HasPredicatedSIMD());
+}
+
 #endif  // ART_ENABLE_CODEGEN_arm64
 
 }  // namespace art

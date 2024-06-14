@@ -1487,6 +1487,8 @@ class HVecCondition : public HVecPredSetOperation {
     DCHECK(!left->IsVecPredSetOperation());
     DCHECK(right->IsVecOperation());
     DCHECK(!right->IsVecPredSetOperation());
+    DCHECK(HasConsistentPackedTypes(left, packed_type));
+    DCHECK(HasConsistentPackedTypes(right, packed_type));
     SetRawInputAt(0, left);
     SetRawInputAt(1, right);
   }
@@ -1652,7 +1654,10 @@ class HVecBelow final : public HVecCondition {
             DataType::Type packed_type,
             size_t vector_length,
             uint32_t dex_pc = kNoDexPc)
-      : HVecCondition(kVecBelow, allocator, left, right, packed_type, vector_length, dex_pc) {}
+      : HVecCondition(kVecBelow, allocator, left, right, packed_type, vector_length, dex_pc) {
+    // Floating point types are not supported for unsigned conditions.
+    DCHECK(!DataType::IsFloatingPointType(packed_type));
+  }
 
   DECLARE_INSTRUCTION(VecBelow);
 
@@ -1679,7 +1684,10 @@ class HVecBelowOrEqual final : public HVecCondition {
                       right,
                       packed_type,
                       vector_length,
-                      dex_pc) {}
+                      dex_pc) {
+    // Floating point types are not supported for unsigned conditions.
+    DCHECK(!DataType::IsFloatingPointType(packed_type));
+  }
 
   DECLARE_INSTRUCTION(VecBelowOrEqual);
 
@@ -1700,7 +1708,10 @@ class HVecAbove final : public HVecCondition {
             DataType::Type packed_type,
             size_t vector_length,
             uint32_t dex_pc = kNoDexPc)
-      : HVecCondition(kVecAbove, allocator, left, right, packed_type, vector_length, dex_pc) {}
+      : HVecCondition(kVecAbove, allocator, left, right, packed_type, vector_length, dex_pc) {
+    // Floating point types are not supported for unsigned conditions.
+    DCHECK(!DataType::IsFloatingPointType(packed_type));
+  }
 
   DECLARE_INSTRUCTION(VecAbove);
 
@@ -1727,7 +1738,10 @@ class HVecAboveOrEqual final : public HVecCondition {
                       right,
                       packed_type,
                       vector_length,
-                      dex_pc) {}
+                      dex_pc) {
+    // Floating point types are not supported for unsigned conditions.
+    DCHECK(!DataType::IsFloatingPointType(packed_type));
+  }
 
   DECLARE_INSTRUCTION(VecAboveOrEqual);
 

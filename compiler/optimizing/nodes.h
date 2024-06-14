@@ -135,6 +135,13 @@ enum IfCondition {
   kCondLast = kCondAE,
 };
 
+// Return true if the type is floating-point and the condition is unsigned. Floating-point values
+// are never unsigned so the unsigned conditions are not required.
+inline bool IsUnsignedFloatingPointCondition(DataType::Type type, IfCondition cond) {
+  return DataType::IsFloatingPointType(type) && (cond == kCondB || cond == kCondBE ||
+                                                 cond == kCondA || cond == kCondAE);
+}
+
 enum GraphAnalysisResult {
   kAnalysisSkipped,
   kAnalysisInvalidBytecode,

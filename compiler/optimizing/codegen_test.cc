@@ -908,21 +908,52 @@ void CodegenTest::TestVectorComparison(IfCondition condition,
                                        int64_t rhs_value,
                                        DataType::Type type,
                                        CodeGenerator* codegen) {
+  // Unsigned conditions with floating point types are not supported.
+  if (IsUnsignedFloatingPointCondition(type, condition)) {
+    return;
+  }
+
   HBasicBlock* block = entry_block_->GetSingleSuccessor();
 
   size_t vector_length = codegen->GetSIMDRegisterWidth() / DataType::Size(type);
+
+  HInstruction* const_lhs = nullptr;
+  HInstruction* const_rhs = nullptr;
+  switch (type) {
+    case DataType::Type::kBool:
+    case DataType::Type::kUint8:
+    case DataType::Type::kInt8:
+    case DataType::Type::kUint16:
+    case DataType::Type::kInt16:
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      const_lhs = graph_->GetIntConstant(lhs_value);
+      const_rhs = graph_->GetIntConstant(rhs_value);
+      break;
+    case DataType::Type::kFloat32:
+      const_lhs = graph_->GetFloatConstant(static_cast<float>(lhs_value));
+      const_rhs = graph_->GetFloatConstant(static_cast<float>(rhs_value));
+      break;
+    case DataType::Type::kFloat64:
+      const_lhs = graph_->GetDoubleConstant(static_cast<double>(lhs_value));
+      const_rhs = graph_->GetDoubleConstant(static_cast<double>(rhs_value));
+      break;
+    default:
+      LOG(FATAL) << "Unsupported SIMD type: " << type;
+      UNREACHABLE();
+  }
 
   HVecPredSetAll* predicate = MakeVecPredSetAll(block,
                                                 graph_->GetIntConstant(1),
                                                 type,
                                                 vector_length);
   HVecReplicateScalar* op1 = MakeVecReplicateScalar(block,
-                                                    graph_->GetConstant(type, lhs_value),
+                                                    const_lhs,
                                                     type,
                                                     vector_length,
                                                     predicate);
   HVecReplicateScalar* op2 = MakeVecReplicateScalar(block,
-                                                    graph_->GetConstant(type, rhs_value),
+                                                    const_rhs,
                                                     type,
                                                     vector_length,
                                                     predicate);
@@ -933,6 +964,8 @@ void CodegenTest::TestVectorComparison(IfCondition condition,
                                                type,
                                                vector_length,
                                                predicate);
+
+  // Return a boolean result from the condition flags.
   HInstruction* boolean_return = MakeVecPredToBoolean(block, comparison, type, vector_length);
   MakeReturn(block, boolean_return);
 
@@ -968,11 +1001,15 @@ TEST_F(CodegenTest, ComparisonsVector##CondType) {                              
     }                                                                                            \
   }                                                                                              \
 }
+DEFINE_CONDITION_TESTS(Bool)
 DEFINE_CONDITION_TESTS(Uint8)
 DEFINE_CONDITION_TESTS(Int8)
 DEFINE_CONDITION_TESTS(Uint16)
 DEFINE_CONDITION_TESTS(Int16)
 DEFINE_CONDITION_TESTS(Int32)
+DEFINE_CONDITION_TESTS(Int64)
+DEFINE_CONDITION_TESTS(Float32)
+DEFINE_CONDITION_TESTS(Float64)
 #undef DEFINE_CONDITION_TESTS
 
 #endif
