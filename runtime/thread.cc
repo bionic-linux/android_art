@@ -133,6 +133,8 @@ namespace art HIDDEN {
 using android::base::StringAppendV;
 using android::base::StringPrintf;
 
+static constexpr bool kEnableProfile = true;
+
 bool Thread::is_started_ = false;
 pthread_key_t Thread::pthread_key_self_;
 ConditionVariable* Thread::resume_cond_ = nullptr;
@@ -993,6 +995,12 @@ bool Thread::Init(ThreadList* thread_list, JavaVMExt* java_vm, JNIEnvExt* jni_en
       LOG(ERROR) << "Failed to create JNIEnvExt: " << error_msg;
       return false;
     }
+  }
+
+  if (kEnableProfile
+      && (tls32_.thin_lock_thread_id == ThreadList::kMainThreadId)) {
+    tlsPtr_.method_trace_buffer = trace_buffer;
+    tlsPtr_.method_trace_buffer_curr_entry = trace_buffer + (kAlwaysOnTraceBufSize - 1);
   }
 
   ScopedTrace trace3("ThreadList::Register");
@@ -2656,7 +2664,11 @@ void Thread::Destroy(bool should_run_callbacks) {
     Runtime::Current()->GetHeap()->RevokeThreadLocalBuffers(this);
 
     if (UNLIKELY(self->GetMethodTraceBuffer() != nullptr)) {
-      Trace::FlushThreadBuffer(self);
+      if (kEnableProfile) {
+        self->SetMethodTraceBuffer(nullptr, 0);
+      } else {
+        Trace::FlushThreadBuffer(self);
+      }
     }
   }
   // Mark-stack revocation must be performed at the very end. No
