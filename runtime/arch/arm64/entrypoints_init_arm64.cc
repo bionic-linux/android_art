@@ -200,12 +200,12 @@ void InitEntryPoints(JniEntryPoints* jpoints,
   qpoints->SetReadBarrierSlow(artReadBarrierSlow);
   qpoints->SetReadBarrierForRootSlow(artReadBarrierForRootSlow);
 
-  if (art_flags::always_enable_profile_code()) {
-    // These are used for always-on-tracing, currently only supported on arm64
-    // devices.
-    qpoints->SetRecordEntryTraceEvent(art_quick_record_entry_trace_event);
-    qpoints->SetRecordExitTraceEvent(art_quick_record_exit_trace_event);
-  }
+  // if (art_flags::always_enable_profile_code()) {
+  // These are used for always-on-tracing, currently only supported on arm64
+  // devices.
+  qpoints->SetRecordEntryTraceEvent(art_quick_record_entry_trace_event);
+  qpoints->SetRecordExitTraceEvent(art_quick_record_exit_trace_event);
+  // }
 }
 
 }  // namespace art

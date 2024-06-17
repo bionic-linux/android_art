@@ -821,6 +821,7 @@ class ReadBarrierForRootSlowPathARM64 : public SlowPathCodeARM64 {
   DISALLOW_COPY_AND_ASSIGN(ReadBarrierForRootSlowPathARM64);
 };
 
+static constexpr bool kCallBuiltinCode = false;
 class TracingMethodEntryExitHooksSlowPathARM64 : public SlowPathCodeARM64 {
  public:
   explicit TracingMethodEntryExitHooksSlowPathARM64(bool is_method_entry)
@@ -832,9 +833,30 @@ class TracingMethodEntryExitHooksSlowPathARM64 : public SlowPathCodeARM64 {
     CodeGeneratorARM64* arm64_codegen = down_cast<CodeGeneratorARM64*>(codegen);
     vixl::aarch64::Label call;
     __ Bind(GetEntryLabel());
-    uint32_t entrypoint_offset = GetThreadOffset<kArm64PointerSize>(entry_point).Int32Value();
-    __ Ldr(lr, MemOperand(tr, entrypoint_offset));
-    __ Blr(lr);
+    if (kCallBuiltinCode) {
+      uint32_t entrypoint_offset = GetThreadOffset<kArm64PointerSize>(entry_point).Int32Value();
+      __ Ldr(lr, MemOperand(tr, entrypoint_offset));
+      __ Blr(lr);
+    } else {
+      Register addr = vixl::aarch64::x16;
+      Register index = vixl::aarch64::x17;
+      size_t trace_buffer_index_addr = Thread::TraceBufferCurrPtrOffset<kArm64PointerSize>().SizeValue();
+      vixl::aarch64::Label update_entry;
+      __ Ldr(index, MemOperand(tr, trace_buffer_index_addr));
+      __ Cmp(index, addr);
+      __ B(gt, &update_entry);
+      __ ComputeAddress(index, MemOperand(addr, (kAlwaysOnTraceBufSize - 1) << TIMES_8));
+      __ Bind(&update_entry);
+      if (is_method_entry_) {
+        __ Str(kArtMethodRegister, MemOperand(index, -8, PostIndex));
+      } else {
+        __ Mrs(addr, (SystemRegister)SYS_CNTVCT_EL0);
+        __ Orr(addr, addr, Operand(1));
+        // __ Mov(addr, 1);
+        __ Str(addr, MemOperand(index, -8, PostIndex));
+      }
+      __ Str(index, MemOperand(tr, Thread::TraceBufferCurrPtrOffset<kArm64PointerSize>().SizeValue()));
+    }
     __ B(GetExitLabel());
   }
 
@@ -1320,9 +1342,9 @@ void InstructionCodeGeneratorARM64::VisitMethodEntryHook(HMethodEntryHook* instr
 }
 
 void CodeGeneratorARM64::MaybeRecordTraceEvent(bool is_method_entry) {
-  if (!art_flags::always_enable_profile_code()) {
-    return;
-  }
+  // if (!art_flags::always_enable_profile_code()) {
+  //  return;
+  // }
 
   MacroAssembler* masm = GetVIXLAssembler();
   UseScratchRegisterScope temps(masm);
