@@ -2397,6 +2397,9 @@ class EXPORT Thread {
   // the caller is allowed to access all fields and methods in the Core Platform API.
   uint32_t core_platform_api_cookie_ = 0;
 
+  // TODO(mythria): Change this later
+  uintptr_t trace_buffer[2048 + 1];
+
   friend class gc::collector::SemiSpace;  // For getting stack traces.
   friend class Runtime;  // For CreatePeer.
   friend class QuickExceptionHandler;  // For dumping the stack.
