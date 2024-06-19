@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6630995c_2df8f9ec",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T16:16:07Z",
+      "side": 1,
+      "message": "Indentation: +2 spaces.",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "c2d000a0e178dfbf234fc78d79e3ba9f902fe74a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019f6ef9_ba798c0c",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T16:16:07Z",
+      "side": 1,
+      "message": "Indentation: +2 spaces.",
+      "range": {
+        "startLine": 183,
+        "startChar": 12,
+        "endLine": 183,
+        "endChar": 14
+      },
+      "revId": "c2d000a0e178dfbf234fc78d79e3ba9f902fe74a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8779591_bc99a435",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T16:16:07Z",
+      "side": 1,
+      "message": "Indentation: +2 spaces.",
+      "range": {
+        "startLine": 337,
+        "startChar": 12,
+        "endLine": 337,
+        "endChar": 14
+      },
+      "revId": "c2d000a0e178dfbf234fc78d79e3ba9f902fe74a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
