@@ -308,6 +308,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cd5af96_4a24e577",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-06-19T15:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35189857_e0603078",
+      "range": {
+        "startLine": 1854,
+        "startChar": 41,
+        "endLine": 1854,
+        "endChar": 55
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "236dc0b6_16cadcc3",
@@ -1572,6 +1596,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f0f737_b0874533",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-06-19T15:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408768eb_c28fb8d0",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0f2af09_785d1a03",
@@ -1632,6 +1680,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "createIncrementedArray",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38866939_e638ab6e",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3163676
+      },
+      "writtenOn": "2024-06-19T15:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3033095_843a18e0",
       "range": {
         "startLine": 38,
         "startChar": 29,
