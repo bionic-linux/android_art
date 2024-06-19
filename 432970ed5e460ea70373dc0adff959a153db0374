@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d51af62_56572137",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T07:01:13Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "2b0e33d1_8b6abc11",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0968d96d_f136ba69",
@@ -1384,6 +1408,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f9e99d_20d0fe05",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2026,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T07:01:13Z",
+      "side": 1,
+      "message": "Comment with `unroll_threshold` was removed in PS4.",
+      "parentUuid": "dedde694_db61841c",
+      "range": {
+        "startLine": 2026,
+        "startChar": 27,
+        "endLine": 2026,
+        "endChar": 45
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c643386_5d0c9720",
@@ -1654,6 +1702,30 @@
       "writtenOn": "2024-01-31T17:00:51Z",
       "side": 1,
       "message": "Move these lines and `checkIncrementedArray` inside of `test1` (which doesn\u0027t need to take parameters and can have a return type of void).\n\nSuggestion name it `$noinline$test1`\n\nSame for other tests.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "432970ed5e460ea70373dc0adff959a153db0374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dd78ae_76e91ba6",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-19T07:01:13Z",
+      "side": 1,
+      "message": "There are other tests that construct the array inside the test function, so keeping the arrays as parameters for this test is actually good as it tests a slightly different case.\n\nI don\u0027t think having a `checkIncrementedArray` inside the test method is very interesting. If you want such a test, please re-post on the latest patch set.\n\nMethods have been renamed. I\u0027m marking this comment as resolved.",
+      "parentUuid": "acff9c16_f83d490f",
       "range": {
         "startLine": 153,
         "startChar": 0,
