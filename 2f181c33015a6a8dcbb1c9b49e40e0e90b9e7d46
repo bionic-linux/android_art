@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed6a9a11_fc00c1c1",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-20T07:58:56Z",
+      "side": 1,
+      "message": "Are these supposed to be of type `byte`?",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "04c89ffe_00fd0a03",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/011-array-copy2/src/Main.java",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "        public static void assertEquals(byte expected, byte actual) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2f181c33015a6a8dcbb1c9b49e40e0e90b9e7d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1d93aa_2334e2e1",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-20T07:58:56Z",
+      "side": 1,
+      "message": "nit: double new line. Same for other classes",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "2f181c33015a6a8dcbb1c9b49e40e0e90b9e7d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae619d60_6aed50f5",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-20T07:58:56Z",
+      "side": 1,
+      "message": "Same as `byte` above but for `char`",
+      "range": {
+        "startLine": 181,
+        "startChar": 40,
+        "endLine": 181,
+        "endChar": 64
+      },
+      "revId": "2f181c33015a6a8dcbb1c9b49e40e0e90b9e7d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
