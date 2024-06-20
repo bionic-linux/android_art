@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5619030e_75474346",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-20T08:27:08Z",
+      "side": 1,
+      "message": "Obsolete comment.",
+      "parentUuid": "ed6a9a11_fc00c1c1",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "2f181c33015a6a8dcbb1c9b49e40e0e90b9e7d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec1d93aa_2334e2e1",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Can we keep these as `int`? I\u0027d prefer numeric values instead of odd characters if this fails.",
       "parentUuid": "ae619d60_6aed50f5",
+      "range": {
+        "startLine": 181,
+        "startChar": 40,
+        "endLine": 181,
+        "endChar": 64
+      },
+      "revId": "2f181c33015a6a8dcbb1c9b49e40e0e90b9e7d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2124b6_d2669945",
+        "filename": "test/011-array-copy2/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-06-20T08:27:08Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7ecb6dbe_f29131ef",
       "range": {
         "startLine": 181,
         "startChar": 40,
