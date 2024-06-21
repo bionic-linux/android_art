@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "93d7a800a16f630281fc7fe75f6e70c19e4ceb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f13770_34c9f2de",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-06-21T08:59:20Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "93d7a800a16f630281fc7fe75f6e70c19e4ceb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
