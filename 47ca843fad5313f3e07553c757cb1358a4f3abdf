@@ -70,6 +70,30 @@
       },
       "revId": "47ca843fad5313f3e07553c757cb1358a4f3abdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c41d83d_048b96eb",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-21T08:47:24Z",
+      "side": 1,
+      "message": "I\u0027m not keen on leaving `ImageWriter` and `OatWriter` to use the slow function that checks for JIT but it keeps the CL smaller.",
+      "parentUuid": "8c52895a_ae08829d",
+      "range": {
+        "startLine": 1422,
+        "startChar": 14,
+        "endLine": 1422,
+        "endChar": 48
+      },
+      "revId": "47ca843fad5313f3e07553c757cb1358a4f3abdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
