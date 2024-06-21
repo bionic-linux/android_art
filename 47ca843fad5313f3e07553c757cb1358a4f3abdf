@@ -46,6 +46,30 @@
       },
       "revId": "47ca843fad5313f3e07553c757cb1358a4f3abdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c52895a_ae08829d",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-06-21T08:35:19Z",
+      "side": 1,
+      "message": "(I\u0027ll do this in a follow-up CL to avoid this CL being too big for a cherry-pick)/",
+      "parentUuid": "d21459fa_ad357bb3",
+      "range": {
+        "startLine": 1422,
+        "startChar": 14,
+        "endLine": 1422,
+        "endChar": 48
+      },
+      "revId": "47ca843fad5313f3e07553c757cb1358a4f3abdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
