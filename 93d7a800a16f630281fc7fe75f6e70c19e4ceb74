@@ -33,6 +33,24 @@
       "message": "line too long",
       "revId": "93d7a800a16f630281fc7fe75f6e70c19e4ceb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ca7fe1_0f2b4095",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-06-21T17:22:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f13770_34c9f2de",
+      "revId": "93d7a800a16f630281fc7fe75f6e70c19e4ceb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
