@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adbb47f2_8cafa9ca",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-21T07:23:06Z",
+      "side": 1,
+      "message": "This was previously just setting a pointer. You\u0027ve hooked into that to do some extra work for JIT and this invalidates assumptions made by many of its callers. In addition to `ImageSpace` here, you should also update `ImageWriter` and `OatWriter`. (There may be no JIT in `dex2oat` but these uses really just want to set a pointer.)\n\nI\u0027d prefer to revert `SetEntryPointFromQuickCompiledCode()` to simply set the pointer. You should define a different function that reflects the JIT update in its name and use it where appropriate.",
+      "range": {
+        "startLine": 1422,
+        "startChar": 14,
+        "endLine": 1422,
+        "endChar": 48
+      },
+      "revId": "47ca843fad5313f3e07553c757cb1358a4f3abdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
