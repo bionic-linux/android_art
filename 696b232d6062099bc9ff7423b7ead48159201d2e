@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2d8711_4df7c374",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-24T15:28:44Z",
+      "side": 1,
+      "message": "Can you please provide more context, preferably here or else in the ticket?\n\nNormally a reason for using this is to build on `master-art` where only a subset of all projects are available, but in this case the problem occurred on `main` so the issue is something else. For future reference it\u0027s really helpful to understand exactly why we need it, e.g. to know what we need to retest in case we\u0027re changing it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
