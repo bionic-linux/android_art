@@ -46,6 +46,30 @@
       },
       "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e7092d_d5e33035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-06-24T17:39:10Z",
+      "side": 1,
+      "message": "Thanks. The branch it happened on is also useful context, as is a link to a CI error (for as long as the logs stay around).\n\nSince it\u0027s temporary please add a TODO(b/xxx) comment in the script pointing at the ticket, to signal that investigation is still ongoing.",
+      "parentUuid": "3156f7f3_207db1bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
