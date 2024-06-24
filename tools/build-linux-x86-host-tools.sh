@@ -38,7 +38,7 @@ HOST_BINARIES=(
 
 # Build statically linked musl binaries for linux-x86 hosts without the
 # standard glibc implementation.
-build/soong/soong_ui.bash --make-mode USE_HOST_MUSL=true BUILD_HOST_static=true ${HOST_BINARIES[*]}
+build/soong/soong_ui.bash --make-mode ALLOW_MISSING_DEPENDENCIES=true USE_HOST_MUSL=true BUILD_HOST_static=true ${HOST_BINARIES[*]}
 # Zip these binaries in a temporary file
 prebuilts/build-tools/linux-x86/bin/soong_zip -o "${DIST_DIR}/temp-host-tools.zip" \
   -j ${HOST_BINARIES[*]/#/-f }
