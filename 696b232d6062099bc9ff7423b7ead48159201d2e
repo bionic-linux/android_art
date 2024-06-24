@@ -22,6 +22,30 @@
       },
       "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3156f7f3_207db1bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1980056
+      },
+      "writtenOn": "2024-06-24T17:19:49Z",
+      "side": 1,
+      "message": "Thanks for the review. \n\nThis should be a temporary change. More rationale at http://b/349070246#comment2",
+      "parentUuid": "6d2d8711_4df7c374",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
