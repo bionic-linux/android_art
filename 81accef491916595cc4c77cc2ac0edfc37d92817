@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8cf79f0_23ace5d8",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-06-25T18:31:02Z",
+      "side": 1,
+      "message": "I\u0027m a bit suspicious of \"relaxed\" here and especially below. But I\u0027m not sure. Do we know that the class is visibly initialized before we put it in the cache? Is it guaranteed that it is visible to a FindArrayClass caller?",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ada16df_0ff74bcf",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -31,6 +54,30 @@
       "writtenOn": "2024-06-25T11:35:15Z",
       "side": 1,
       "message": "Hans, memory_order_relaxed would be sufficient here right? It doesn\u0027t matter the order of stores and loads as long as each entry is updated atomically right?",
+      "range": {
+        "startLine": 647,
+        "startChar": 69,
+        "endLine": 647,
+        "endChar": 94
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "add9c8cc_5688c153",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-06-25T18:31:02Z",
+      "side": 1,
+      "message": "In initialization code for a reasonably used class, relaxed should always be OK. For clearing entries here, I think it\u0027s also fine.",
+      "parentUuid": "4ada16df_0ff74bcf",
       "range": {
         "startLine": 647,
         "startChar": 69,
