@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41fa0620_3985988d",
+        "filename": "libartbase/base/utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-25T18:03:50Z",
+      "side": 1,
+      "message": "given",
+      "range": {
+        "startLine": 72,
+        "startChar": 32,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "e057d80fde8e54f96a7aa95d329f7d77a67ead2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab40548_3ad54555",
+        "filename": "test/2275-pthread-name/native_getname.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2024-06-25T18:03:50Z",
+      "side": 1,
+      "message": "ret",
+      "range": {
+        "startLine": 36,
+        "startChar": 64,
+        "endLine": 36,
+        "endChar": 69
+      },
+      "revId": "e057d80fde8e54f96a7aa95d329f7d77a67ead2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
