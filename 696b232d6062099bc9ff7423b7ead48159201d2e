@@ -70,6 +70,30 @@
       },
       "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ea902c_efbefc9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1980056
+      },
+      "writtenOn": "2024-06-25T10:31:05Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. I have added a TODO comment in the script and recorded CI error and branch on the bug.",
+      "parentUuid": "49e7092d_d5e33035",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "696b232d6062099bc9ff7423b7ead48159201d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
