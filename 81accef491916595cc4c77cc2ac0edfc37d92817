@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9d7b9c_19e74152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-06-25T11:35:15Z",
+      "side": 1,
+      "message": "Hans, could you PTAL. Thanks!",
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ada16df_0ff74bcf",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-06-25T11:35:15Z",
+      "side": 1,
+      "message": "Hans, memory_order_relaxed would be sufficient here right? It doesn\u0027t matter the order of stores and loads as long as each entry is updated atomically right?",
+      "range": {
+        "startLine": 647,
+        "startChar": 69,
+        "endLine": 647,
+        "endChar": 94
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
