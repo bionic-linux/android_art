@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c989f3_ae3f9224",
+        "filename": "runtime/jit/jit_code_cache-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:04:58Z",
+      "side": 1,
+      "message": "`for (const void* code_ptr : code_ptrs)`",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 64
+      },
+      "revId": "8434ecb6efdddb0a51bbc69293c7fbc16427e7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ea2be5_84e24e2a",
+        "filename": "runtime/jit/jit_code_cache-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:04:58Z",
+      "side": 1,
+      "message": "Indentation: +1 space.",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "8434ecb6efdddb0a51bbc69293c7fbc16427e7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02eadcdc_f687f24b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:04:58Z",
+      "side": 1,
+      "message": "Use `RemoveElement()` from `stl_util.h`. It `DCHECK()`s that the element was there.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 10,
+        "endLine": 1176,
+        "endChar": 82
+      },
+      "revId": "8434ecb6efdddb0a51bbc69293c7fbc16427e7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27cfa91c_db373827",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:04:58Z",
+      "side": 1,
+      "message": "Use `code_ptrs_it` to avoid repeating the lookup.",
+      "range": {
+        "startLine": 1179,
+        "startChar": 44,
+        "endLine": 1179,
+        "endChar": 50
+      },
+      "revId": "8434ecb6efdddb0a51bbc69293c7fbc16427e7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4795f4bb_2b01149f",
+        "filename": "test/979-const-method-handle/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:04:58Z",
+      "side": 1,
+      "message": "Is this intended to go back to 12000?",
+      "range": {
+        "startLine": 32,
+        "startChar": 50,
+        "endLine": 32,
+        "endChar": 55
+      },
+      "revId": "8434ecb6efdddb0a51bbc69293c7fbc16427e7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
