@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6511920_322d4d80",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T12:56:26Z",
+      "side": 1,
+      "message": "Does this even work?\n\nThe `/*wait\u003d*/ true` requires the thread to be in suspended state, so this should actually crash for `--jit-on-first-use`. We would need a `ScopedThreadStateChange stsc(Thread::Current(), art::ThreadState::kNative);`. And I\u0027m leaning towards simply changing the test to call `makeVisiblyInitialized()`.",
+      "range": {
+        "startLine": 1565,
+        "startChar": 28,
+        "endLine": 1565,
+        "endChar": 41
+      },
+      "revId": "dc692c7c01ef62e4694ab6046838c5dbe5f80bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
