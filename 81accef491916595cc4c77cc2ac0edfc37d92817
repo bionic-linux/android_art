@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf1b5d1_39a707ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-06-26T11:13:47Z",
+      "side": 1,
+      "message": "Nicolas, could you take a look at comment in class_linker-inl.h. Thanks!",
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cf79f0_23ace5d8",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-06-25T18:31:02Z",
       "side": 1,
       "message": "I\u0027m a bit suspicious of \"relaxed\" here and especially below. But I\u0027m not sure. Do we know that the class is visibly initialized before we put it in the cache? Is it guaranteed that it is visible to a FindArrayClass caller?",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58778d86_33eb5ea1",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-06-26T11:13:47Z",
+      "side": 1,
+      "message": "I am not 100% sure on this one but as far as I understand we only ensure that the class is resolved before putting it into the class_table_. In the line 61, where we store, we only do a FindClass which ensures that the class is resolved. We don\u0027t do anything beyond ensuring that it is resolved. So, I don\u0027t think we guarantee that the class is visibly initialized.\n\n+Nicolas to confirm this.\n\nDoes having non-visibly initialized classes in the cache a problem? I can change it to more stricter semantics. I don\u0027t understand the issue fully though. My understanding was that as long as we ensure each entry is updated atomically, it is okay if other threads see them in a different order.",
+      "parentUuid": "f8cf79f0_23ace5d8",
       "range": {
         "startLine": 47,
         "startChar": 45,
