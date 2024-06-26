@@ -22,6 +22,30 @@
       },
       "revId": "ff70bc3b629f40a730e4f7d9e0c74681c81e4310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7af00d_c3607bca",
+        "filename": "test/2275-pthread-name/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-06-26T18:19:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aadcf3ab_17277f5b",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "ff70bc3b629f40a730e4f7d9e0c74681c81e4310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
