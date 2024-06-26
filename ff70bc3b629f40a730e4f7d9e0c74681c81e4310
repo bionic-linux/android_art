@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aadcf3ab_17277f5b",
+        "filename": "test/2275-pthread-name/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-06-26T11:45:26Z",
+      "side": 1,
+      "message": "Do we want these constant fields to have uppercase names?",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "ff70bc3b629f40a730e4f7d9e0c74681c81e4310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
