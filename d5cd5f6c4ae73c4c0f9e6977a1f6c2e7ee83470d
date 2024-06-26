@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6fda86_1755ff37",
+        "filename": "runtime/jit/jit_code_cache-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-06-26T18:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd1f02e4_f1c712c2",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "d5cd5f6c4ae73c4c0f9e6977a1f6c2e7ee83470d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "354ce959_6e10c602",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0383ffcc_1cd16a4e",
+        "filename": "runtime/jit/jit_code_cache-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-06-26T18:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354ce959_6e10c602",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "d5cd5f6c4ae73c4c0f9e6977a1f6c2e7ee83470d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bcb3ffa_7060c85e",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-06-26T16:32:01Z",
       "side": 1,
       "message": "This shouldn\u0027t happen AFAIK. Given the entry has already been visited, the content should be the same.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 42
+      },
+      "revId": "d5cd5f6c4ae73c4c0f9e6977a1f6c2e7ee83470d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e67b7a_f2634bd2",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-06-26T18:28:53Z",
+      "side": 1,
+      "message": "Right. I removed this else branch as it seems that there no work to do and checks are done in `VisitRootTables`.",
+      "parentUuid": "6bcb3ffa_7060c85e",
       "range": {
         "startLine": 457,
         "startChar": 0,
