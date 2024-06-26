@@ -94,6 +94,30 @@
       },
       "revId": "65cea47fc917dbd20e7a3464c6dafc00c8e62f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d96a77d_d9265cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-06-26T10:34:34Z",
+      "side": 1,
+      "message": "Sorry for the late response; this looks good to me.",
+      "parentUuid": "3b889d21_d7c8679d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "65cea47fc917dbd20e7a3464c6dafc00c8e62f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
