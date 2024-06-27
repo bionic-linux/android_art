@@ -30,6 +30,7 @@ namespace x86_64 {
 
 // Use a local definition to prevent copying mistakes.
 static constexpr size_t kX86_64WordSize = static_cast<size_t>(kX86_64PointerSize);
+static constexpr size_t kX86_64LiteralBitSize = kX86_64WordSize * 8u;
 
 // Some x86_64 instructions require a register to be available as temp.
 static constexpr Register TMP = R11;
@@ -419,6 +420,8 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   size_t GetWordSize() const override {
     return kX86_64WordSize;
   }
+
+  size_t GetMaxLiteralBitSize() const override { return kX86_64LiteralBitSize; }
 
   size_t GetSlowPathFPWidth() const override {
     return GetGraph()->HasSIMD()

@@ -226,6 +226,8 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   virtual const Assembler& GetAssembler() const = 0;
   virtual size_t GetWordSize() const = 0;
 
+  virtual size_t GetMaxLiteralBitSize() const = 0;
+
   // Returns whether the target supports predicated SIMD instructions.
   virtual bool SupportsPredicatedSIMD() const { return false; }
 

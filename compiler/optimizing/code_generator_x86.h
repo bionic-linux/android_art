@@ -32,6 +32,7 @@ namespace x86 {
 
 // Use a local definition to prevent copying mistakes.
 static constexpr size_t kX86WordSize = static_cast<size_t>(kX86PointerSize);
+static constexpr size_t kX86LiteralBitSize = kX86WordSize * 8u;
 
 class CodeGeneratorX86;
 
@@ -441,6 +442,8 @@ class CodeGeneratorX86 : public CodeGenerator {
   size_t GetWordSize() const override {
     return kX86WordSize;
   }
+
+  size_t GetMaxLiteralBitSize() const override { return kX86LiteralBitSize; }
 
   size_t GetSlowPathFPWidth() const override {
     return GetGraph()->HasSIMD()

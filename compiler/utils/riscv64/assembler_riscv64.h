@@ -40,6 +40,7 @@ static constexpr size_t kRiscv64HalfwordSize = 2;
 static constexpr size_t kRiscv64WordSize = 4;
 static constexpr size_t kRiscv64DoublewordSize = 8;
 static constexpr size_t kRiscv64FloatRegSizeInBytes = 8;
+static constexpr size_t kRiscv64MaxLiteralBitSize = 12;
 
 // The `Riscv64Extension` enumeration is used for restricting the instructions that the assembler
 // can use. Some restrictions are checked only in debug mode (for example load and store

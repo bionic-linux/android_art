@@ -51,6 +51,7 @@ class CodeGeneratorARM64;
 
 // Use a local definition to prevent copying mistakes.
 static constexpr size_t kArm64WordSize = static_cast<size_t>(kArm64PointerSize);
+static constexpr size_t kArm64MaxLiteralBitSize = 16u;
 
 // This constant is used as an approximate margin when emission of veneer and literal pools
 // must be blocked.
@@ -631,6 +632,8 @@ class CodeGeneratorARM64 : public CodeGenerator {
   size_t GetWordSize() const override {
     return kArm64WordSize;
   }
+
+  size_t GetMaxLiteralBitSize() const override { return kArm64MaxLiteralBitSize; }
 
   bool SupportsPredicatedSIMD() const override { return ShouldUseSVE(); }
 

@@ -554,6 +554,8 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
     return static_cast<size_t>(kArmPointerSize);
   }
 
+  size_t GetMaxLiteralBitSize() const override { return 16u; }
+
   size_t GetCalleePreservedFPWidth() const override {
     return vixl::aarch32::kSRegSizeInBytes;
   }

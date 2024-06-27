@@ -431,6 +431,8 @@ class CodeGeneratorRISCV64 : public CodeGenerator {
     return kRiscv64DoublewordSize;
   }
 
+  size_t GetMaxLiteralBitSize() const override { return kRiscv64MaxLiteralBitSize; }
+
   bool SupportsPredicatedSIMD() const override {
     // TODO(riscv64): Check the vector extension.
     return false;
