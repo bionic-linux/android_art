@@ -860,6 +860,7 @@ art_cc_library {
             },
         },
     },
+    whole_program_vtables: true,
 }
 
 art_cc_library {
