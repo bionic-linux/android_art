@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0607734a_a6760348",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-06-27T11:28:05Z",
+      "side": 1,
+      "message": "I think so, thanks.\n\nWould class unloading be the most reliable way to test that behaviour?",
+      "parentUuid": "7580993e_cd148052",
+      "range": {
+        "startLine": 439,
+        "startChar": 8,
+        "endLine": 440,
+        "endChar": 25
+      },
+      "revId": "f88fef90d62f9d02ca8fca7a5877af802a65a85e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17e4defa_eaca226b",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2024-06-27T09:27:20Z",
       "side": 1,
       "message": "Indentation: -1 space.",
+      "range": {
+        "startLine": 453,
+        "startChar": 23,
+        "endLine": 453,
+        "endChar": 24
+      },
+      "revId": "f88fef90d62f9d02ca8fca7a5877af802a65a85e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f672f12_5320e21b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-06-27T11:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17e4defa_eaca226b",
       "range": {
         "startLine": 453,
         "startChar": 23,
