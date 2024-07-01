@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0885c734_170b86a5",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-07-01T22:25:50Z",
+      "side": 1,
+      "message": "Adding Vladimir, since I think he is familiar with how the class status is set. I don\u0027t understand how this works, especially for array classes.\nHow hot is this code? If it\u0027s not terribly hot, just using acquire/release seems unlikely to slow this down measurably on modern hardware, at least on ARM and x86. And it would at least avoid a possibly complicated explanation.",
+      "parentUuid": "58778d86_33eb5ea1",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ada16df_0ff74bcf",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
