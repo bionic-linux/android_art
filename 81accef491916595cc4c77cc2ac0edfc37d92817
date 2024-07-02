@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b5afdf_b7b59e2a",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-07-02T20:29:28Z",
+      "side": 1,
+      "message": "SGTM. We\u0027ll also see if thee are any complaints about performance regressions. I would expect not.\n\nIf we do go back to relaxed here, we should add a comment to explain why that\u0027s OK.",
+      "parentUuid": "680f69f7_6028936f",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ada16df_0ff74bcf",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
