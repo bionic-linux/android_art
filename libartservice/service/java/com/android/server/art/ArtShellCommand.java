@@ -650,10 +650,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
     }
 
     private int handleOnOtaStaged(@NonNull PrintWriter pw) {
-        if (!SdkLevel.isAtLeastV()) {
-            pw.println("Error: Unsupported command 'on-ota-staged'");
-            return 1;
-        }
 
         int uid = Binder.getCallingUid();
         if (uid != Process.ROOT_UID) {
@@ -689,11 +685,6 @@ public final class ArtShellCommand extends BasicShellCommandHandler {
     }
 
     private int handlePrDexoptJob(@NonNull PrintWriter pw) {
-        if (!SdkLevel.isAtLeastV()) {
-            pw.println("Error: Unsupported command 'pr-dexopt-job'");
-            return 1;
-        }
-
         String mode = null;
         String otaSlot = null;
 
