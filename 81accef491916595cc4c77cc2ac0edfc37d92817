@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "680f69f7_6028936f",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-02T11:50:20Z",
+      "side": 1,
+      "message": "Thanks Hans! I updated it to use acquire-release. I don\u0027t know think this code is very hot but I am not familiar with this code. \n\nVladimir is OOO for at least two weeks I think. Should we land this with acquire-release and update it later with Vladimir\u0027s inputs?",
+      "parentUuid": "0885c734_170b86a5",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ada16df_0ff74bcf",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "In initialization code for a reasonably used class, relaxed should always be OK. For clearing entries here, I think it\u0027s also fine.",
       "parentUuid": "4ada16df_0ff74bcf",
+      "range": {
+        "startLine": 647,
+        "startChar": 69,
+        "endLine": 647,
+        "endChar": 94
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a78ba63_ef712275",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-02T11:50:20Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "add9c8cc_5688c153",
       "range": {
         "startLine": 647,
         "startChar": 69,
