@@ -22,6 +22,30 @@
       },
       "revId": "1a4c027ffd924c46c4afd6832506e96054475967",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d145ff_c31d97ad",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-04T15:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee41d91_403b8231",
+      "range": {
+        "startLine": 1585,
+        "startChar": 39,
+        "endLine": 1585,
+        "endChar": 54
+      },
+      "revId": "1a4c027ffd924c46c4afd6832506e96054475967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
