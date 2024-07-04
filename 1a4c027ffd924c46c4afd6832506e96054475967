@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee41d91_403b8231",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1585,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-04T13:09:20Z",
+      "side": 1,
+      "message": "I suggest putting the comment on the macro definition instead, to make it more visible. The macro name could then reflect the reason rather than the condition, e.g. `TEST_DISABLED_FOR_SHELL_WITHOUT_MEMFD_ACCESS`. Or else add a macro like that in this file that just wraps `TEST_DISABLED_FOR_USER_BUILD`, to keep the latter generic.\n\nAlso, providing a (versioned) link to https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/shell.te;l\u003d221;drc\u003d3335a04676d400bda57d42d4af0ef4b1d311de21 could be useful for context.",
+      "range": {
+        "startLine": 1585,
+        "startChar": 39,
+        "endLine": 1585,
+        "endChar": 54
+      },
+      "revId": "1a4c027ffd924c46c4afd6832506e96054475967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
