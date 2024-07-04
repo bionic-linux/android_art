@@ -1581,6 +1581,10 @@ TEST_F(ArtdTest, copyAndRewriteProfileException) {
 }
 
 TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileSuccess) {
+  // User build is missing the SELinux permission for the test process (run as `shell`) to reopen
+  // the memfd that it creates itself. Here and below.
+  TEST_DISABLED_FOR_USER_BUILD();
+
   CreateZipWithSingleEntry(dex_file_, "assets/art-profile/baseline.prof", "valid_profile");
 
   EXPECT_CALL(
@@ -1610,6 +1614,8 @@ TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileSuccess) {
 
 // The input is a plain dex file.
 TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNoProfilePlainDex) {
+  TEST_DISABLED_FOR_USER_BUILD();
+
   constexpr const char* kDexMagic = "dex\n";
   CreateFile(dex_file_, kDexMagic + "dex_code"s);
 
@@ -1622,6 +1628,8 @@ TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNoProfilePlainDex) {
 
 // The input is neither a zip nor a plain dex file.
 TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNotZipNotDex) {
+  TEST_DISABLED_FOR_USER_BUILD();
+
   CreateFile(dex_file_, "wrong_format");
 
   auto [status, dst] = OR_FAIL(RunCopyAndRewriteEmbeddedProfile</*kExpectOk=*/false>());
@@ -1635,6 +1643,8 @@ TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNotZipNotDex) {
 
 // The input is a zip file without a profile entry.
 TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNoProfileZipNoEntry) {
+  TEST_DISABLED_FOR_USER_BUILD();
+
   CreateZipWithSingleEntry(dex_file_, "classes.dex", "dex_code");
 
   auto [result, dst] = OR_FAIL(RunCopyAndRewriteEmbeddedProfile());
@@ -1646,6 +1656,8 @@ TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileNoProfileZipNoEntry) {
 
 // The input is a zip file with a profile entry that doesn't match itself.
 TEST_F(ArtdTest, copyAndRewriteEmbeddedProfileBadProfileNoMatch) {
+  TEST_DISABLED_FOR_USER_BUILD();
+
   CreateZipWithSingleEntry(dex_file_, "assets/art-profile/baseline.prof", "no_match");
 
   EXPECT_CALL(*mock_exec_utils_, DoExecAndReturnCode(_, _, _))
@@ -2929,6 +2941,8 @@ TEST_F(ArtdPreRebootTest, copyAndRewriteProfile) {
 }
 
 TEST_F(ArtdPreRebootTest, copyAndRewriteEmbeddedProfile) {
+  TEST_DISABLED_FOR_USER_BUILD();
+
   CreateZipWithSingleEntry(dex_file_, "assets/art-profile/baseline.prof", "valid_profile");
 
   EXPECT_CALL(*mock_exec_utils_, DoExecAndReturnCode)
