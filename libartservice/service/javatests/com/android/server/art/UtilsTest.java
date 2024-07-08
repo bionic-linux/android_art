@@ -33,6 +33,7 @@ import com.android.server.art.Utils;
 import com.android.server.art.testing.StaticMockitoRule;
 import com.android.server.pm.pkg.PackageState;
 
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -202,5 +203,13 @@ public class UtilsTest {
     public void testExecuteAndWaitPropagatesException() {
         Executor executor = ForkJoinPool.commonPool();
         Utils.executeAndWait(executor, () -> { throw new IllegalArgumentException(); });
+    }
+
+    @Test
+    public void testIsM202409RampEnabled() {
+        boolean b = Utils.isM202409RampEnabled();
+        // The flag value depends on the release configurations. Don't assert the value until
+        // the flag is turned on in all configurations.
+        Assume.assumeTrue(b);
     }
 }
