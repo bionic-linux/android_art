@@ -41,6 +41,7 @@ import android.util.SparseArray;
 
 import androidx.annotation.RequiresApi;
 
+import com.android.art.flags.Flags;
 import com.android.modules.utils.build.SdkLevel;
 import com.android.modules.utils.pm.PackageStateModulesUtils;
 import com.android.server.art.model.DexoptParams;
@@ -562,5 +563,9 @@ public final class Utils {
     @FunctionalInterface
     private interface ProfileInitializer {
         CopyAndRewriteProfileResult get() throws RemoteException;
+    }
+
+    public static boolean isM202409RampEnabled() {
+        return Flags.m202409Ramp();
     }
 }
