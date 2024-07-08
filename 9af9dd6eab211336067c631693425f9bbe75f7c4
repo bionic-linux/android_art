@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e06e755_fc61b16b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "Thanks! Some comments below",
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe92cdd2_1a87cf0f",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5801,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "No need to change it since the rest of the methods are the same but FYI we prefer ATTRIBUTE_UNUSED e.g. `HVecEqual* instruction ATTRIBUTE_UNUSED` in the function signature",
+      "range": {
+        "startLine": 5801,
+        "startChar": 2,
+        "endLine": 5801,
+        "endChar": 22
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b7184e_6523d704",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "Not needed since you implemented them all right? If anyone adds more cases then they would get an error at compile time",
+      "range": {
+        "startLine": 1246,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 12
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd665dc_300876a1",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "Line too long",
+      "range": {
+        "startLine": 1577,
+        "startChar": 0,
+        "endLine": 1577,
+        "endChar": 104
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecfaca12_34548811",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "Line too long",
+      "range": {
+        "startLine": 1621,
+        "startChar": 0,
+        "endLine": 1621,
+        "endChar": 107
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb0fe7d1_d57724a2",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1709,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "Line too long",
+      "range": {
+        "startLine": 1709,
+        "startChar": 0,
+        "endLine": 1709,
+        "endChar": 101
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b294d95_dd1d5867",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T15:51:22Z",
+      "side": 1,
+      "message": "For completeness, can you add the unsigned below/above cases too? Doing `Integer.compareUnsigned` with \u003d\u003d/!\u003d 1/-1 should do the trick I think",
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
