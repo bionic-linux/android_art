@@ -22,6 +22,30 @@
       },
       "revId": "801c4c9d8c55be2bd8ee9c3dcc6c20ab0cf4c5f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e544d0_80b5f35d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-07-08T10:55:56Z",
+      "side": 1,
+      "message": "No, x64 doesn\u0027t have that restriction.",
+      "parentUuid": "a53a50d5_8ee7f90d",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "801c4c9d8c55be2bd8ee9c3dcc6c20ab0cf4c5f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
