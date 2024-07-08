@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da7fab7_96215825",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T16:19:30Z",
+      "side": 1,
+      "message": "Suggestion: Change to ` \" \u003c\u003c cond;` so we have some extra info",
+      "range": {
+        "startLine": 1278,
+        "startChar": 45,
+        "endLine": 1278,
+        "endChar": 47
+      },
+      "revId": "d0cad6e0a65447892597aed35dedc360442b9d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc66783a_ee30359b",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-08T16:19:30Z",
+      "side": 1,
+      "message": "Is this hitting the `IsNarrowerOperands` case?\n\nCan we add tests explicitly testing that path? e.g. int/short",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "d0cad6e0a65447892597aed35dedc360442b9d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
