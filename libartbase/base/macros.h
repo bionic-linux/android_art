@@ -116,9 +116,9 @@ template<typename T> ART_FRIEND_TEST(test_set_name, individual_test)
 // exported symbols and eliminates the need to check debug build configurations
 // when changing the exported symbols.
 #ifdef NDEBUG
-#define HIDDEN __attribute__((visibility("hidden")))
-#define PROTECTED __attribute__((visibility("protected")))
-#define EXPORT __attribute__((visibility("default")))
+#define HIDDEN
+#define PROTECTED
+#define EXPORT
 #else
 #define HIDDEN
 #define PROTECTED
