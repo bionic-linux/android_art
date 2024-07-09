@@ -154,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "843ca1d0_97f24b19",
+        "filename": "runtime/class_linker-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-09T17:41:53Z",
+      "side": 1,
+      "message": "We had an offline discussion and the summary is:\n1. The array caches were mostly added to avoid string allocations (https://android-review.git.corp.google.com/c/platform/art/+/83329), so maybe it isn\u0027t a big problem to use acquire-release here.\n2. Acquire-release is safer and usually has very little overhead on modern hardware\n3. It is not entirely sure if we guarantee that the classes are visibly initialized at the point of putting them into the cache. For primitive arrays it is true but for others it seems like we don\u0027t.\n4. Even if they are visibly initialized ideally we would ideally need a acquire load but in most practical cases it might not be a problem.\n\nSince it is safer to use acquire release and may not be expensive here we are going with acquire release for now. Thanks for the discussion Hans!",
+      "parentUuid": "64b5afdf_b7b59e2a",
+      "range": {
+        "startLine": 47,
+        "startChar": 45,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "81accef491916595cc4c77cc2ac0edfc37d92817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ada16df_0ff74bcf",
