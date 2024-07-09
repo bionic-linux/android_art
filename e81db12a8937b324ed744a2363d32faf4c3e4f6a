@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9657ac09_7927dd4d",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-09T15:32:14Z",
+      "side": 1,
+      "message": "What do we lose by setting this to \"none\"?\n\nCould you please add an exportable flag and see if the platform can read it?",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81009c07_93154d61",
+        "filename": "libartservice/service/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-09T15:32:14Z",
+      "side": 1,
+      "message": "I know the flags are now in bootclasspath, but I\u0027d like to keep the flag lib in `static_libs` to allow r8 shrinking. Is it possible?",
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5970bd5_5c108134",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-09T15:32:14Z",
+      "side": 1,
+      "message": "Thanks for checking that it works. I think we can remove this now.",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 5
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "20b0bd78_dea3d3d8",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Utils.java",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/Utils.java",
+              "range": {
+                "startLine": 567,
+                "startChar": 0,
+                "endLine": 571,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
