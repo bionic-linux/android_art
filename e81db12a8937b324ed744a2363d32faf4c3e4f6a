@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "286128b7_66ec67bb",
+        "filename": "libartservice/service/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-10T13:58:42Z",
+      "side": 1,
+      "message": "`cts/hostsidetests/appcompat/strictjavapackages/src/android/compat/sjp/cts/StrictJavaPackagesTest.java` checks `no duplicate class files are present on BOOTCLASSPATH and SYSTEMSERVERCLASSPATH.`.",
+      "parentUuid": "1bc73058_1963f625",
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5970bd5_5c108134",
         "filename": "libartservice/service/java/com/android/server/art/Utils.java",
         "patchSetId": 4
