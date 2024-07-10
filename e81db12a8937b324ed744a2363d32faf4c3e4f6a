@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e6eaa69_93b44be3",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-10T10:27:29Z",
+      "side": 1,
+      "message": "According to go/android-flag-containers#exported-mode, I think that the platform needs to use a new separate `java_aconfig_library` with `mode: \"exported\",`? That new `java_aconfig_library` can be compiled with `core_current`  / `current` because it\u0027s not used by ART / libcore.",
+      "parentUuid": "9657ac09_7927dd4d",
+      "range": {
+        "startLine": 48,
+        "startChar": 18,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81009c07_93154d61",
         "filename": "libartservice/service/Android.bp",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2024-07-09T15:32:14Z",
       "side": 1,
       "message": "I know the flags are now in bootclasspath, but I\u0027d like to keep the flag lib in `static_libs` to allow r8 shrinking. Is it possible?",
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77740acd_c1accdec",
+        "filename": "libartservice/service/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-10T10:27:29Z",
+      "side": 1,
+      "message": "But wouldn\u0027t it result in duplicate `Flags` class definitions if the class definition exists in both bootclasspath and service-art? \n\nWhat r8 shrinking do you expect ? I have a look at the generated service-art .dexjar file before this change. If I add a usage of a flag, the generated service-art .dexjar still invokes `Flags.m202409Ramp()` instead of `return true` or `return false` directly. I am not sure if R8 shrinking is enabled correctly, e.g. `-userdebug` build though.\n```\n02d7e0:                                        |[02d7e0] com.android.server.art.Utils.isM202409RampEnabled:()Z\n02d7f0: 7100 7600 0000                         |0000: invoke-static {}, Lcom/android/art/flags/Flags;.m202409Ramp:()Z // method@0076\n02d7f6: 1200                                   |0003: const/4 v0, #int 0 // #0\n02d7f8: 0f00                                   |0004: return v0\n```",
+      "parentUuid": "81009c07_93154d61",
       "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +130,30 @@
           ]
         }
       ],
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4811914d_d1674813",
+        "filename": "libartservice/service/java/com/android/server/art/Utils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-10T10:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5970bd5_5c108134",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 5
+      },
       "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
