@@ -197,6 +197,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354d725b_995dd5d6",
+        "filename": "libartservice/service/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-10T14:40:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure what change you are going to make to the proguard files. I was just worried that optimizing based on dynamic libs can cause correctness issues. If you are sure your proguard file change won\u0027t cause correctness issues in any case, I\u0027m all for it.",
+      "parentUuid": "1bc73058_1963f625",
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5970bd5_5c108134",
