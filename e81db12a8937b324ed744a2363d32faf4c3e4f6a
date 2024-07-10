@@ -125,6 +125,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fede43f_195a5005",
+        "filename": "libartservice/service/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-10T13:38:59Z",
+      "side": 1,
+      "message": "Ah. Interesting. Before this change, R8 removes the branch, and generates the following dex codes, but still invoke-static `m202409Ramp()`, because R8 seems to think that it has a side effect.\n\n```\n02e114: 7100 7600 0000                         |0000: invoke-static {}, Lcom/android/art/flags/Flags;.m202409Ramp:()Z // method@0076\n02e11a: 1a00 d801                              |0003: const-string v0, \"123\" // string@01d8\n02e11e: 1a01 d901                              |0005: const-string v1, \"456\" // string@01d9\n02e122: 7120 6600 1000                         |0007: invoke-static {v0, v1}, Landroid/util/Log;.e:(Ljava/lang/String;Ljava/lang/String;)I // method@0066\n02e128: 0e00                                   |000a: return-void\n```\n\nAfter this change, it keeps the branching.\n\nHowever, I have a new patch set, which make R8 remove the branching even if it uses put the aconfig-lib into `libs`, not `static-libs`. But it requires a change in `frameworks/libs/modules-utils/java/aconfig_proguard.flags`. I think that we should track this optimization separately. I will upload the patchset for reference.",
+      "parentUuid": "a405bea6_36e47ef5",
+      "revId": "e81db12a8937b324ed744a2363d32faf4c3e4f6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5970bd5_5c108134",
