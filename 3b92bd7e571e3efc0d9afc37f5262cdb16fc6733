@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "206e6563_b2a3a7f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-11T14:46:54Z",
+      "side": 1,
+      "message": "https://r.android.com/3164238",
+      "parentUuid": "7859ab46_18e104e0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b687454c_cbdcde71",
@@ -85,6 +109,30 @@
       "writtenOn": "2024-07-11T13:33:23Z",
       "side": 1,
       "message": "Why not `__subpackages__` here? Within the module I think it\u0027s better to be permissive by default and only restrict when there\u0027s specific reason to.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dfa5faf_e7c90e6c",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-11T14:46:54Z",
+      "side": 1,
+      "message": "https://r.android.com/c/3164239/1",
+      "parentUuid": "b687454c_cbdcde71",
       "range": {
         "startLine": 21,
         "startChar": 8,
