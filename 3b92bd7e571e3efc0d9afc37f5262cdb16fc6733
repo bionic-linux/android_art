@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7fc98d_739f318a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-11T10:28:02Z",
+      "side": 1,
+      "message": "So the reason I asked it to be added in https://r.android.com/3152776 is for use in places like run tests that we may run on host. Isn\u0027t it necessary for that?\n\nBtw, I\u0027d like to be kept in the loop for flag support CLs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
