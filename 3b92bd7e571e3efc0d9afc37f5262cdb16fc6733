@@ -22,6 +22,30 @@
       },
       "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82105846_4c0b72e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-07-11T10:39:08Z",
+      "side": 1,
+      "message": "I think that `host` may have various meanings here. Are you trying to run tests on top of libcore or OpenJDK ?\n\nI think that `host_supported: true` here means running on top of OpenJDK, and it should be possible by using a different sdk_version for the host target. If the goal is to run on top of libcore and ART on a Linux box, I suspect that it may already be supported if LUCI host targets are not broken.",
+      "parentUuid": "5d7fc98d_739f318a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
