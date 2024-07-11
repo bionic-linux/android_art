@@ -46,6 +46,53 @@
       },
       "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7859ab46_18e104e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-11T13:33:23Z",
+      "side": 1,
+      "message": "We also have run tests on host on git_master-art-host.\n\nIf they work without this then there\u0027s no problem. As discussed offline, it\u0027d be good to have a run test that tests a flag. You said you\u0027d look into adding one to test the v-apis flag, right?",
+      "parentUuid": "82105846_4c0b72e2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b687454c_cbdcde71",
+        "filename": "build/flags/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-11T13:33:23Z",
+      "side": 1,
+      "message": "Why not `__subpackages__` here? Within the module I think it\u0027s better to be permissive by default and only restrict when there\u0027s specific reason to.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "3b92bd7e571e3efc0d9afc37f5262cdb16fc6733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
