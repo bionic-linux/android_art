@@ -50,6 +50,7 @@
 #include "string_array_utils.h"
 #include "thread-inl.h"
 #include "trace.h"
+#include "trace_profile.h"
 
 namespace art HIDDEN {
 
@@ -151,6 +152,23 @@ static jint VMDebug_getMethodTracingMode(JNIEnv*, jclass) {
 
 static void VMDebug_stopMethodTracing(JNIEnv*, jclass) {
   Trace::Stop();
+}
+
+static void VMDebug_stopProfileImpl(JNIEnv*, jclass) {
+  TraceProfiler::Stop();
+}
+
+static void VMDebug_dumpProfileImpl(JNIEnv* env, jclass, jstring javaProfileFileName) {
+  ScopedUtfChars profileFileName(env, javaProfileFileName);
+  if (profileFileName.c_str() == nullptr) {
+    LOG(ERROR) << "Filename not provided, ignoring the request to dump profile";
+    return;
+  }
+  TraceProfiler::Dump(profileFileName.c_str());
+}
+
+static void VMDebug_startProfileImpl(JNIEnv*, jclass) {
+  TraceProfiler::Start();
 }
 
 static jboolean VMDebug_isDebuggerConnected(JNIEnv*, jclass) {
@@ -593,6 +611,9 @@ static JNINativeMethod gMethods[] = {
     NATIVE_METHOD(VMDebug, addApplication, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(VMDebug, removeApplication, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(VMDebug, setUserId, "(I)V"),
+    NATIVE_METHOD(VMDebug, startProfileImpl, "()V"),
+    NATIVE_METHOD(VMDebug, stopProfileImpl, "()V"),
+    NATIVE_METHOD(VMDebug, dumpProfileImpl, "(Ljava/lang/String;)V"),
 };
 
 void register_dalvik_system_VMDebug(JNIEnv* env) {
