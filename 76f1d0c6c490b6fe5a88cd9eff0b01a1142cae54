@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9200b7_5c20f4be",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-16T21:29:34Z",
+      "side": 1,
+      "message": "I think I need a refresher on shared libraries. I thought they\u0027re (always?) in partition-global locations like \u003cpartition\u003e/framework and not really owned by any package. So:\n\n1. Isn\u0027t it possible to detect them by path prefix alone?\n\n2. If that\u0027s not a good idea, then how common is it that a package loads another package\u0027s shared library dependency? Iow, isn\u0027t it enough to do this check only for the loading package?",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
