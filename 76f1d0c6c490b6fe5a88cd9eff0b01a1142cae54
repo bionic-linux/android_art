@@ -16,6 +16,24 @@
       "message": "I think I need a refresher on shared libraries. I thought they\u0027re (always?) in partition-global locations like \u003cpartition\u003e/framework and not really owned by any package. So:\n\n1. Isn\u0027t it possible to detect them by path prefix alone?\n\n2. If that\u0027s not a good idea, then how common is it that a package loads another package\u0027s shared library dependency? Iow, isn\u0027t it enough to do this check only for the loading package?",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f955e844_c52d4279",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-16T22:14:58Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t it possible to detect them by path prefix alone?\n\nNo. First, there are two types of shared libraries: apk and jar. The former is like a normal package, located in `/system/app`, etc. if it\u0027s preinstalled, or `/data/app/...` if it\u0027s updated. The latter can be at any location, specified by xml files at `/system/etc/permissions`.\n\n\u003e If that\u0027s not a good idea, then how common is it that a package loads another package\u0027s shared library dependency? Iow, isn\u0027t it enough to do this check only for the loading package?\n\nIf a package loads another package\u0027s primary dex file, then the owning package\u0027s shared libraries are also loaded because they are in the primary dex file\u0027s class loader.",
+      "parentUuid": "ec9200b7_5c20f4be",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
