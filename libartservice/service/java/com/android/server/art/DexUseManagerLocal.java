@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.SharedLibraryInfo;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Environment;
@@ -52,6 +53,7 @@ import com.android.server.pm.PackageManagerLocal;
 import com.android.server.pm.pkg.AndroidPackage;
 import com.android.server.pm.pkg.AndroidPackageSplit;
 import com.android.server.pm.pkg.PackageState;
+import com.android.server.pm.pkg.SharedLibrary;
 
 import com.google.auto.value.AutoValue;
 
@@ -514,6 +516,11 @@ public class DexUseManagerLocal {
         if (isOwningPackageForPrimaryDex(pkgState, dexPath)) {
             return new FindResult(TYPE_PRIMARY, pkgState.getPackageName());
         }
+        FindResult result =
+                checkForSharedLibraries(pkgState.getSharedLibraryDependencies(), dexPath);
+        if (result != null) {
+            return result;
+        }
         synchronized (mLock) {
             if (isOwningPackageForSecondaryDexLocked(pkgState, dexPath)) {
                 return new FindResult(TYPE_SECONDARY, pkgState.getPackageName());
@@ -553,6 +560,29 @@ public class DexUseManagerLocal {
             }
         }
         return false;
+    }
+
+    @Nullable
+    private static FindResult checkForSharedLibraries(
+            @NonNull List<SharedLibrary> libraries, @NonNull String dexPath) {
+        for (SharedLibrary library : libraries) {
+            if (library.isNative()) {
+                continue;
+            }
+            if (dexPath.equals(library.getPath())) {
+                if (library.getType() == SharedLibraryInfo.TYPE_BUILTIN) {
+                    // Shared libraries are considered used by other apps anyway. No need to record
+                    // them.
+                    return new FindResult(TYPE_DONT_RECORD, null);
+                }
+                return new FindResult(TYPE_PRIMARY, library.getPackageName());
+            }
+            FindResult result = checkForSharedLibraries(library.getDependencies(), dexPath);
+            if (result != null) {
+                return result;
+            }
+        }
+        return null;
     }
 
     @Nullable
