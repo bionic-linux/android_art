@@ -22,6 +22,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073f2b09_40b0b261",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-17T21:15:52Z",
+      "side": 1,
+      "message": "As I said in the CL description, this is not supposed to be a semantic change. Before this change, because an apk shared library is just like a normal package, we find the shared library package during the iteration over the package list. After this change, we return earlier for it since we can get the package name in this way.\n\nThis only thing I\u0027m not 100% sure is that the package name we get here is exactly the same as the one we get during the iteration. Thus, I took your suggestion to split this change to a separate CL.",
+      "parentUuid": "9c028d69_33c9b3dd",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -52,6 +52,24 @@
       "parentUuid": "f955e844_c52d4279",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e1b848_d478a4d2",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-17T21:15:52Z",
+      "side": 1,
+      "message": "I feel the same unfortunate as you do that we will probably recheck the same shared libraries used by many apps over and over again, but I don\u0027t see a better way either. I think PackageManager must be maintaining a data structure of all shared libs because I\u0027ve seen it printing all shared libs in dumpsys, but I just can\u0027t find an API that returns this information.\n\nHowever, the reason I added this early return is not for the other case that you commented. Instead, it\u0027s for avoiding the penalty of cache miss. If we just ignore them and instead rely on the cache, since jar libraries don\u0027t have package names, we won\u0027t record them in the cache and we\u0027ll get a cache miss every time.",
+      "parentUuid": "37669f1a_c811d585",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
