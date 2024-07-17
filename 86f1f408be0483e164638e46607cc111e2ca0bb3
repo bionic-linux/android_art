@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c028d69_33c9b3dd",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-17T19:09:12Z",
+      "side": 1,
+      "message": "This is a semantic change compared to before this CL chain, isn\u0027t it?\n\nBefore this did we just ignore notifications on shared libs, which meant they typically didn\u0027t get dexopted (unless they\u0027re also a regular primary or secondary dex)?\n\nIf that\u0027s correct then I guess this is a good thing, but the description isn\u0027t accurate. It also merits a test.",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -34,6 +34,24 @@
       "parentUuid": "ec9200b7_5c20f4be",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37669f1a_c811d585",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-17T19:09:12Z",
+      "side": 1,
+      "message": "Ok, but when it\u0027s not a shared library this will recheck the same shared libraries used by many apps over and over again, which is a bit of a pity.\n\nIf it wasn\u0027t for the other case I\u0027ve added a comment on below, I\u0027d argue it\u0027s better to just ignore the shared libs and instead rely on the cache to speed up the non-recording of the popular ones.\n\nAs it is I can\u0027t think of a way to improve this appreciably (can\u0027t find any hint that PackageManager even maintains a data structure of all shared libs).",
+      "parentUuid": "f955e844_c52d4279",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
