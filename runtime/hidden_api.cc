@@ -250,15 +250,16 @@ enum AccessContextFlags {
   kAccessDenied = 1 << 1,
 };
 
-MemberSignature::MemberSignature(ArtField* field) {
+MemberSignature::MemberSignature(ObjPtr<mirror::Class> declaring_class, ArtField* field) {
   // Note: `ArtField::GetDeclaringClassDescriptor()` does not support proxy classes.
   class_name_ = field->GetDeclaringClass()->GetDescriptor(&tmp_);
   member_name_ = field->GetNameView();
-  type_signature_ = field->GetTypeDescriptorView();
+  type_signature_ = field->GetTypeDescriptorView(declaring_class);
   type_ = kField;
 }
 
-MemberSignature::MemberSignature(ArtMethod* method) {
+MemberSignature::MemberSignature([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                 ArtMethod* method) {
   DCHECK(method == method->GetInterfaceMethodIfProxy(kRuntimePointerSize))
       << "Caller should have replaced proxy method with interface method";
   class_name_ = method->GetDeclaringClassDescriptorView();
@@ -284,6 +285,14 @@ MemberSignature::MemberSignature(const ClassAccessor::Method& method) {
   type_signature_ = dex_file.GetMethodSignature(method_id).ToString();
   type_ = kMethod;
 }
+
+MemberSignature::MemberSignature([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                 const ClassAccessor::Field& field)
+    : MemberSignature(field) {}
+
+MemberSignature::MemberSignature([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                 const ClassAccessor::Method& method)
+    : MemberSignature(method) {}
 
 inline std::vector<const char*> MemberSignature::GetSignatureParts() const {
   if (type_ == kField) {
@@ -533,7 +542,7 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_) {
     uint16_t class_def_idx = ext->GetPreRedefineClassDefIndex();
     DCHECK_NE(class_def_idx, DexFile::kDexNoIndex16);
     const dex::ClassDef& original_class_def = original_dex->GetClassDef(class_def_idx);
-    MemberSignature member_signature(member);
+    MemberSignature member_signature(declaring_class, member);
     auto fn_visit = [&](const AccessorType& dex_member) {
       MemberSignature cur_signature(dex_member);
       if (member_signature.MemberNameAndTypeMatch(cur_signature)) {
@@ -545,12 +554,13 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_) {
   }
 
   CHECK(flags.IsValid()) << "Could not find hiddenapi flags for "
-                         << Dumpable<MemberSignature>(MemberSignature(member));
+                         << Dumpable<MemberSignature>(MemberSignature(declaring_class, member));
   return flags.GetDexFlags();
 }
 
 template <typename T>
 bool HandleCorePlatformApiViolation(T* member,
+                                    ObjPtr<mirror::Class> declaring_class,
                                     const AccessContext& caller_context,
                                     AccessMethod access_method,
                                     EnforcementPolicy policy) {
@@ -559,8 +569,8 @@ bool HandleCorePlatformApiViolation(T* member,
 
   if (access_method != AccessMethod::kNone) {
     LOG(WARNING) << "Core platform API violation: "
-                 << Dumpable<MemberSignature>(MemberSignature(member)) << " from " << caller_context
-                 << " using " << access_method;
+                 << Dumpable<MemberSignature>(MemberSignature(declaring_class, member)) << " from "
+                 << caller_context << " using " << access_method;
 
     // If policy is set to just warn, add kAccCorePlatformApi to access flags of
     // `member` to avoid reporting the violation again next time.
@@ -574,7 +584,10 @@ bool HandleCorePlatformApiViolation(T* member,
 }
 
 template <typename T>
-bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod access_method) {
+bool ShouldDenyAccessToMemberImpl(T* member,
+                                  ObjPtr<mirror::Class> declaring_class,
+                                  ApiList api_list,
+                                  AccessMethod access_method) {
   DCHECK(member != nullptr);
   Runtime* runtime = Runtime::Current();
   CompatFramework& compatFramework = runtime->GetCompatFramework();
@@ -583,7 +596,7 @@ bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod acce
   DCHECK(hiddenApiPolicy != EnforcementPolicy::kDisabled)
       << "Should never enter this function when access checks are completely disabled";
 
-  MemberSignature member_signature(member);
+  MemberSignature member_signature(declaring_class, member);
 
   // Check for an exemption first. Exempted APIs are treated as SDK.
   if (member_signature.DoesPrefixMatchAny(runtime->GetHiddenApiExemptions())) {
@@ -657,17 +670,21 @@ bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod acce
 template uint32_t GetDexFlags<ArtField>(ArtField* member);
 template uint32_t GetDexFlags<ArtMethod>(ArtMethod* member);
 template bool HandleCorePlatformApiViolation(ArtField* member,
+                                             ObjPtr<mirror::Class> declaring_class,
                                              const AccessContext& caller_context,
                                              AccessMethod access_method,
                                              EnforcementPolicy policy);
 template bool HandleCorePlatformApiViolation(ArtMethod* member,
+                                             ObjPtr<mirror::Class> declaring_class,
                                              const AccessContext& caller_context,
                                              AccessMethod access_method,
                                              EnforcementPolicy policy);
 template bool ShouldDenyAccessToMemberImpl<ArtField>(ArtField* member,
+                                                     ObjPtr<mirror::Class> declaring_class,
                                                      ApiList api_list,
                                                      AccessMethod access_method);
 template bool ShouldDenyAccessToMemberImpl<ArtMethod>(ArtMethod* member,
+                                                      ObjPtr<mirror::Class> declaring_class,
                                                       ApiList api_list,
                                                       AccessMethod access_method);
 }  // namespace detail
@@ -690,7 +707,8 @@ bool ShouldDenyAccessToMember(T* member,
   Runtime* runtime = Runtime::Current();
   if (UNLIKELY(runtime->IsAotCompiler())) {
     if (member->GetDeclaringClass()->IsBootStrapClassLoaded() &&
-        runtime->GetClassLinker()->DenyAccessBasedOnPublicSdk(member)) {
+        runtime->GetClassLinker()->DenyAccessBasedOnPublicSdk(member->GetDeclaringClass(),
+                                                              member)) {
       return true;
     }
   }
@@ -742,7 +760,9 @@ bool ShouldDenyAccessToMember(T* member,
       DCHECK(api_list.IsValid());
 
       // Member is hidden and caller is not exempted. Enter slow path.
-      return detail::ShouldDenyAccessToMemberImpl(member, api_list, access_method);
+      // TODO: remove GetDeclaringClass
+      return detail::ShouldDenyAccessToMemberImpl(
+          member, member->GetDeclaringClass(), api_list, access_method);
     }
 
     case Domain::kPlatform: {
@@ -765,7 +785,9 @@ bool ShouldDenyAccessToMember(T* member,
       // Access checks are not disabled, report the violation.
       // This may also add kAccCorePlatformApi to the access flags of `member`
       // so as to not warn again on next access.
-      return detail::HandleCorePlatformApiViolation(member, caller_context, access_method, policy);
+      // TODO: remove GetDeclaringClass
+      return detail::HandleCorePlatformApiViolation(
+          member, member->GetDeclaringClass(), caller_context, access_method, policy);
     }
 
     case Domain::kCorePlatform: {

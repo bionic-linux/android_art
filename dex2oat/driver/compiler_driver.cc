@@ -1184,13 +1184,15 @@ static void AddClassLoaderClasses(/* out */ HashSet<std::string>* image_classes)
   // Well known classes have been loaded and shall be added to image classes
   // by the `RecordImageClassesVisitor`. However, there are fields with array
   // types which we need to add to the image classes explicitly.
-  ArtField* class_loader_array_fields[] = {
-      WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoaders,
+  std::pair<ObjPtr<mirror::Class>, ArtField*> class_loader_array_fields[] = {
+      {WellKnownClasses::dalvik_system_BaseDexClassLoader.Get(),
+       WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoaders},
       // BaseDexClassLoader.sharedLibraryLoadersAfter has the same array type as above.
-      WellKnownClasses::dalvik_system_DexPathList_dexElements,
+      {WellKnownClasses::dalvik_system_DexPathList.Get(),
+       WellKnownClasses::dalvik_system_DexPathList_dexElements},
   };
-  for (ArtField* field : class_loader_array_fields) {
-    const char* field_type_descriptor = field->GetTypeDescriptor();
+  for (auto [declaring_class, field] : class_loader_array_fields) {
+    const char* field_type_descriptor = field->GetTypeDescriptor(declaring_class);
     DCHECK_EQ(field_type_descriptor[0], '[');
     image_classes->insert(field_type_descriptor);
   }
@@ -1216,18 +1218,26 @@ static void VerifyClassLoaderClassesAreImageClasses(/* out */ HashSet<std::strin
     std::string_view descriptor = klass->GetDescriptor(&temp);
     CHECK(image_classes->find(descriptor) != image_classes->end());
   }
-  ArtField* class_loader_fields[] = {
-      WellKnownClasses::dalvik_system_BaseDexClassLoader_pathList,
-      WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoaders,
-      WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoadersAfter,
-      WellKnownClasses::dalvik_system_DexFile_cookie,
-      WellKnownClasses::dalvik_system_DexFile_fileName,
-      WellKnownClasses::dalvik_system_DexPathList_dexElements,
-      WellKnownClasses::dalvik_system_DexPathList__Element_dexFile,
-      WellKnownClasses::java_lang_ClassLoader_parent,
+  std::pair<ObjPtr<mirror::Class>, ArtField*> class_loader_fields[] = {
+      {WellKnownClasses::dalvik_system_BaseDexClassLoader.Get(),
+       WellKnownClasses::dalvik_system_BaseDexClassLoader_pathList},
+      {WellKnownClasses::dalvik_system_BaseDexClassLoader.Get(),
+       WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoaders},
+      {WellKnownClasses::dalvik_system_BaseDexClassLoader.Get(),
+       WellKnownClasses::dalvik_system_BaseDexClassLoader_sharedLibraryLoadersAfter},
+      {WellKnownClasses::dalvik_system_DexFile.Get(),
+       WellKnownClasses::dalvik_system_DexFile_cookie},
+      {WellKnownClasses::dalvik_system_DexFile.Get(),
+       WellKnownClasses::dalvik_system_DexFile_fileName},
+      {WellKnownClasses::dalvik_system_DexPathList.Get(),
+       WellKnownClasses::dalvik_system_DexPathList_dexElements},
+      {WellKnownClasses::dalvik_system_DexPathList__Element.Get(),
+       WellKnownClasses::dalvik_system_DexPathList__Element_dexFile},
+      {WellKnownClasses::java_lang_ClassLoader.Get(),
+       WellKnownClasses::java_lang_ClassLoader_parent},
   };
-  for (ArtField* field : class_loader_fields) {
-    std::string_view field_type_descriptor = field->GetTypeDescriptor();
+  for (auto [declaring_class, field] : class_loader_fields) {
+    std::string_view field_type_descriptor = field->GetTypeDescriptor(declaring_class);
     CHECK(image_classes->find(field_type_descriptor) != image_classes->end());
   }
 }

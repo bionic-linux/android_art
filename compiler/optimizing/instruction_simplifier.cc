@@ -3311,6 +3311,7 @@ bool InstructionSimplifierVisitor::CanUseKnownImageVarHandle(HInvoke* invoke) {
       expected_var_handle_class = GetClassRoot<mirror::FieldVarHandle>();
       break;
   }
+  // TODO: remove GetDeclaringClass
   ObjPtr<mirror::Object> var_handle_object = field->GetObject(declaring_class);
   if (var_handle_object == nullptr || var_handle_object->GetClass() != expected_var_handle_class) {
     return false;

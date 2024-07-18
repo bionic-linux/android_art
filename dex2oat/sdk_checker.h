@@ -53,13 +53,16 @@ class SdkChecker {
   // NOTE: This is an expensive check as it searches the dex files for the necessary type
   // and string ids. This is OK because the functionality here is indended to be used
   // only in AOT verification.
-  bool ShouldDenyAccess(ArtMethod* art_method) const REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDenyAccess(ObjPtr<mirror::Class> declaring_class, ArtMethod* art_method) const
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Similar to ShouldDenyAccess(ArtMethod* art_method).
-  bool ShouldDenyAccess(ArtField* art_field) const REQUIRES_SHARED(Locks::mutator_lock_);
+  bool ShouldDenyAccess(ObjPtr<mirror::Class> declaring_class, ArtField* art_field) const
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Similar to ShouldDenyAccess(ArtMethod* art_method).
-  bool ShouldDenyAccess(std::string_view type_descriptor) const;
+  bool ShouldDenyAccess(ObjPtr<mirror::Class> declaring_class,
+                        std::string_view type_descriptor) const;
 
   // Enabled/Disable the checks.
   void SetEnabled(bool enabled) { enabled_ = enabled; }

@@ -1237,8 +1237,8 @@ void Thread::InitPeer(ObjPtr<mirror::Object> peer,
                       ObjPtr<mirror::Object> thread_group,
                       ObjPtr<mirror::String> thread_name,
                       jint thread_priority) {
-  WellKnownClasses::java_lang_Thread_daemon->SetBoolean<kTransactionActive>(peer,
-      static_cast<uint8_t>(as_daemon ? 1u : 0u));
+  WellKnownClasses::java_lang_Thread_daemon->SetBoolean<kTransactionActive>(
+      peer, static_cast<uint8_t>(as_daemon ? 1u : 0u));
   WellKnownClasses::java_lang_Thread_group->SetObject<kTransactionActive>(peer, thread_group);
   WellKnownClasses::java_lang_Thread_name->SetObject<kTransactionActive>(peer, thread_name);
   WellKnownClasses::java_lang_Thread_priority->SetInt<kTransactionActive>(peer, thread_priority);

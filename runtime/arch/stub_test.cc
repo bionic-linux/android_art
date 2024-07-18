@@ -1566,7 +1566,7 @@ static void TestFields(Thread* self, StubTest* test, Primitive::Type test_type) 
 
   // Static fields.
   for (ArtField& f : c->GetSFields()) {
-    Primitive::Type type = f.GetTypeAsPrimitiveType();
+    Primitive::Type type = f.GetTypeAsPrimitiveType(c.Get());
     if (test_type != type) {
      continue;
     }
@@ -1591,7 +1591,7 @@ static void TestFields(Thread* self, StubTest* test, Primitive::Type test_type) 
         break;
       case Primitive::Type::kPrimNot:
         // Don't try array.
-        if (f.GetTypeDescriptor()[0] != '[') {
+        if (f.GetTypeDescriptor(c.Get())[0] != '[') {
           GetSetObjStatic(&f, self, m, test);
         }
         break;
@@ -1602,7 +1602,7 @@ static void TestFields(Thread* self, StubTest* test, Primitive::Type test_type) 
 
   // Instance fields.
   for (ArtField& f : c->GetIFields()) {
-    Primitive::Type type = f.GetTypeAsPrimitiveType();
+    Primitive::Type type = f.GetTypeAsPrimitiveType(c.Get());
     if (test_type != type) {
       continue;
     }
@@ -1627,7 +1627,7 @@ static void TestFields(Thread* self, StubTest* test, Primitive::Type test_type) 
         break;
       case Primitive::Type::kPrimNot:
         // Don't try array.
-        if (f.GetTypeDescriptor()[0] != '[') {
+        if (f.GetTypeDescriptor(c.Get())[0] != '[') {
           GetSetObjInstance(&obj, &f, self, m, test);
         }
         break;

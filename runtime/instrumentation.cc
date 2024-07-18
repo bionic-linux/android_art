@@ -81,7 +81,8 @@ void InstrumentationListener::FieldWritten(Thread* thread,
                                            uint32_t dex_pc,
                                            ArtField* field,
                                            Handle<mirror::Object> field_value) {
-  DCHECK(!field->IsPrimitiveType());
+  // TODO: remove GetDeclaringClass
+  DCHECK(!field->IsPrimitiveType(field->GetDeclaringClass()));
   JValue v;
   v.SetL(field_value.Get());
   FieldWritten(thread, this_object, method, dex_pc, field, v);
@@ -1605,7 +1606,8 @@ void Instrumentation::FieldWriteEventImpl(Thread* thread,
   Thread* self = Thread::Current();
   StackHandleScope<2> hs(self);
   Handle<mirror::Object> thiz(hs.NewHandle(this_object));
-  if (field->IsPrimitiveType()) {
+  // TODO: remove GetDeclaringClass
+  if (field->IsPrimitiveType(field->GetDeclaringClass())) {
     for (InstrumentationListener* listener : field_write_listeners_) {
       if (listener != nullptr) {
         listener->FieldWritten(thread, thiz, method, dex_pc, field, field_value);

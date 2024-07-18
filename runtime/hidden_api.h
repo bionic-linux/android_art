@@ -187,8 +187,16 @@ class MemberSignature {
   inline std::vector<const char*> GetSignatureParts() const;
 
  public:
-  explicit MemberSignature(ArtField* field) REQUIRES_SHARED(Locks::mutator_lock_);
-  explicit MemberSignature(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_);
+  // TODO: all c-tors must have 2 args, because they are used in a template function.
+  explicit MemberSignature(ObjPtr<mirror::Class> declaring_class, ArtField* field)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  explicit MemberSignature(ObjPtr<mirror::Class> declaring_class, ArtMethod* method)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  explicit MemberSignature(ObjPtr<mirror::Class> declaring_class,
+                           const ClassAccessor::Field& field);
+  explicit MemberSignature(ObjPtr<mirror::Class> declaring_class,
+                           const ClassAccessor::Method& method);
+
   explicit MemberSignature(const ClassAccessor::Field& field);
   explicit MemberSignature(const ClassAccessor::Method& method);
 
@@ -222,16 +230,18 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_);
 
 // Handler of detected core platform API violations. Returns true if access to
 // `member` should be denied.
-template<typename T>
+template <typename T>
 bool HandleCorePlatformApiViolation(T* member,
+                                    ObjPtr<mirror::Class> declaring_class,
                                     const AccessContext& caller_context,
                                     AccessMethod access_method,
-                                    EnforcementPolicy policy)
-    REQUIRES_SHARED(Locks::mutator_lock_);
+                                    EnforcementPolicy policy) REQUIRES_SHARED(Locks::mutator_lock_);
 
-template<typename T>
-bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod access_method)
-    REQUIRES_SHARED(Locks::mutator_lock_);
+template <typename T>
+bool ShouldDenyAccessToMemberImpl(T* member,
+                                  ObjPtr<mirror::Class> declaring_class,
+                                  ApiList api_list,
+                                  AccessMethod access_method) REQUIRES_SHARED(Locks::mutator_lock_);
 
 inline ArtField* GetInterfaceMemberIfProxy(ArtField* field) { return field; }
 

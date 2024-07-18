@@ -1824,18 +1824,20 @@ HInstanceFieldGet* HInliner::CreateInstanceFieldGet(uint32_t field_index,
   ArtField* resolved_field =
       class_linker->LookupResolvedField(field_index, referrer, /* is_static= */ false);
   DCHECK(resolved_field != nullptr);
-  HInstanceFieldGet* iget = new (graph_->GetAllocator()) HInstanceFieldGet(
-      obj,
-      resolved_field,
-      DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
-      resolved_field->GetOffset(),
-      resolved_field->IsVolatile(),
-      field_index,
-      resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
-      *referrer->GetDexFile(),
-      // Read barrier generates a runtime call in slow path and we need a valid
-      // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
-      /* dex_pc= */ 0);
+  // TODO: remove GetDeclaringClass
+  ObjPtr<mirror::Class> declaring_class = resolved_field->GetDeclaringClass();
+  HInstanceFieldGet* iget = new (graph_->GetAllocator())
+      HInstanceFieldGet(obj,
+                        resolved_field,
+                        DataType::FromShorty(resolved_field->GetTypeDescriptor(declaring_class)[0]),
+                        resolved_field->GetOffset(),
+                        resolved_field->IsVolatile(),
+                        field_index,
+                        resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
+                        *referrer->GetDexFile(),
+                        // Read barrier generates a runtime call in slow path and we need a valid
+                        // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
+                        /* dex_pc= */ 0);
   if (iget->GetType() == DataType::Type::kReference) {
     // Use the same dex_cache that we used for field lookup as the hint_dex_cache.
     Handle<mirror::DexCache> dex_cache =
@@ -1863,19 +1865,21 @@ HInstanceFieldSet* HInliner::CreateInstanceFieldSet(uint32_t field_index,
     DCHECK(referrer->IsConstructor());
     *is_final = resolved_field->IsFinal();
   }
-  HInstanceFieldSet* iput = new (graph_->GetAllocator()) HInstanceFieldSet(
-      obj,
-      value,
-      resolved_field,
-      DataType::FromShorty(resolved_field->GetTypeDescriptor()[0]),
-      resolved_field->GetOffset(),
-      resolved_field->IsVolatile(),
-      field_index,
-      resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
-      *referrer->GetDexFile(),
-      // Read barrier generates a runtime call in slow path and we need a valid
-      // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
-      /* dex_pc= */ 0);
+  // TODO: remove GetDeclaringClass
+  ObjPtr<mirror::Class> declaring_class = resolved_field->GetDeclaringClass();
+  HInstanceFieldSet* iput = new (graph_->GetAllocator())
+      HInstanceFieldSet(obj,
+                        value,
+                        resolved_field,
+                        DataType::FromShorty(resolved_field->GetTypeDescriptor(declaring_class)[0]),
+                        resolved_field->GetOffset(),
+                        resolved_field->IsVolatile(),
+                        field_index,
+                        resolved_field->GetDeclaringClass()->GetDexClassDefIndex(),
+                        *referrer->GetDexFile(),
+                        // Read barrier generates a runtime call in slow path and we need a valid
+                        // dex pc for the associated stack map. 0 is bogus but valid. Bug: 26854537.
+                        /* dex_pc= */ 0);
   return iput;
 }
 

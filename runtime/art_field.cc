@@ -34,7 +34,7 @@ namespace art HIDDEN {
 void ArtField::SetOffset(MemberOffset num_bytes) {
   DCHECK(GetDeclaringClass()->IsLoaded() || GetDeclaringClass()->IsErroneous());
   DCHECK_ALIGNED_PARAM(num_bytes.Uint32Value(),
-                       Primitive::ComponentSize(GetTypeAsPrimitiveType()));
+                       Primitive::ComponentSize(GetTypeAsPrimitiveType(GetDeclaringClass())));
   // Not called within a transaction.
   offset_ = num_bytes.Uint32Value();
 }
@@ -57,7 +57,7 @@ std::string ArtField::PrettyField(ArtField* f, bool with_type) {
 std::string ArtField::PrettyField(bool with_type) {
   std::string result;
   if (with_type) {
-    result += PrettyDescriptor(GetTypeDescriptor());
+    result += PrettyDescriptor(GetTypeDescriptor(GetDeclaringClass()));
     result += ' ';
   }
   // Note: `GetDeclaringClassDescriptor()` does not support proxy classes.

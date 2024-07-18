@@ -219,22 +219,33 @@ class EXPORT ArtField final {
   // Resolves / returns the name from the dex cache.
   ObjPtr<mirror::String> ResolveNameString() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const char* GetTypeDescriptor() REQUIRES_SHARED(Locks::mutator_lock_);
-  std::string_view GetTypeDescriptorView() REQUIRES_SHARED(Locks::mutator_lock_);
+  const char* GetTypeDescriptor(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  std::string_view GetTypeDescriptorView(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
-  Primitive::Type GetTypeAsPrimitiveType() REQUIRES_SHARED(Locks::mutator_lock_);
+  Primitive::Type GetTypeAsPrimitiveType(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
-  bool IsPrimitiveType() REQUIRES_SHARED(Locks::mutator_lock_);
+  bool IsPrimitiveType(ObjPtr<mirror::Class> declaring_class) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  ObjPtr<mirror::Class> LookupResolvedType() REQUIRES_SHARED(Locks::mutator_lock_);
-  ObjPtr<mirror::Class> ResolveType() REQUIRES_SHARED(Locks::mutator_lock_);
+  ObjPtr<mirror::Class> LookupResolvedType(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+  ObjPtr<mirror::Class> ResolveType(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
-  size_t FieldSize() REQUIRES_SHARED(Locks::mutator_lock_);
+  size_t FieldSize(ObjPtr<mirror::Class> declaring_class) REQUIRES_SHARED(Locks::mutator_lock_);
 
   template <ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
   ObjPtr<mirror::DexCache> GetDexCache() REQUIRES_SHARED(Locks::mutator_lock_);
 
+  template <ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
+  static ObjPtr<mirror::DexCache> GetDexCache(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   const DexFile* GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
+  const DexFile* GetDexFile(ObjPtr<mirror::Class> declaring_class)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   const char* GetDeclaringClassDescriptor() REQUIRES_SHARED(Locks::mutator_lock_);
   std::string_view GetDeclaringClassDescriptorView() REQUIRES_SHARED(Locks::mutator_lock_);

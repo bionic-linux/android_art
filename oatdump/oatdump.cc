@@ -2002,10 +2002,12 @@ class ImageDumper {
     }
   }
 
-  static void PrintField(std::ostream& os, ArtField* field, ObjPtr<mirror::Object> obj)
-      REQUIRES_SHARED(Locks::mutator_lock_) {
+  static void PrintField(std::ostream& os,
+                         ObjPtr<mirror::Class> declaring_class,
+                         ArtField* field,
+                         ObjPtr<mirror::Object> obj) REQUIRES_SHARED(Locks::mutator_lock_) {
     os << StringPrintf("%s: ", field->GetName());
-    switch (field->GetTypeAsPrimitiveType()) {
+    switch (field->GetTypeAsPrimitiveType(declaring_class)) {
       case Primitive::kPrimLong:
         os << StringPrintf("%" PRId64 " (0x%" PRIx64 ")\n", field->Get64(obj), field->Get64(obj));
         break;
@@ -2036,22 +2038,23 @@ class ImageDumper {
         // to cause class loading.
         ObjPtr<mirror::Object> value = field->GetObj(obj);
         if (value == nullptr) {
-          os << StringPrintf("null   %s\n", PrettyDescriptor(field->GetTypeDescriptor()).c_str());
+          os << StringPrintf("null   %s\n",
+                             PrettyDescriptor(field->GetTypeDescriptor(declaring_class)).c_str());
         } else {
           // Grab the field type without causing resolution.
-          ObjPtr<mirror::Class> field_type = field->LookupResolvedType();
+          ObjPtr<mirror::Class> field_type = field->LookupResolvedType(declaring_class);
           if (field_type != nullptr) {
             PrettyObjectValue(os, field_type, value);
           } else {
             os << StringPrintf("%p   %s\n",
                                value.Ptr(),
-                               PrettyDescriptor(field->GetTypeDescriptor()).c_str());
+                               PrettyDescriptor(field->GetTypeDescriptor(declaring_class)).c_str());
           }
         }
         break;
       }
       default:
-        os << "unexpected field type: " << field->GetTypeDescriptor() << "\n";
+        os << "unexpected field type: " << field->GetTypeDescriptor(declaring_class) << "\n";
         break;
     }
   }
@@ -2063,7 +2066,7 @@ class ImageDumper {
       DumpFields(os, obj, super);
     }
     for (ArtField& field : klass->GetIFields()) {
-      PrintField(os, &field, obj);
+      PrintField(os, klass, &field, obj);
     }
   }
 
@@ -2181,7 +2184,7 @@ class ImageDumper {
         os << "STATICS:\n";
         ScopedIndentation indent2(&vios_);
         for (ArtField& field : klass->GetSFields()) {
-          PrintField(os, &field, field.GetDeclaringClass());
+          PrintField(os, klass, &field, field.GetDeclaringClass());
         }
       }
     }

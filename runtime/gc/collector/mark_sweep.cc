@@ -455,26 +455,19 @@ class MarkSweep::MarkObjectSlowPath {
       if (holder_ != nullptr) {
         size_t holder_size = holder_->SizeOf();
         ArtField* field = holder_->FindFieldByOffset(offset_);
-        oss << "Field info: "
-            << " holder=" << holder_
-            << " holder is "
-            << (mark_sweep_->GetHeap()->IsLiveObjectLocked(holder_)
-                ? "alive" : "dead")
-            << " holder_size=" << holder_size
-            << " holder_type=" << holder_->PrettyTypeOf()
+        oss << "Field info: " << " holder=" << holder_ << " holder is "
+            << (mark_sweep_->GetHeap()->IsLiveObjectLocked(holder_) ? "alive" : "dead")
+            << " holder_size=" << holder_size << " holder_type=" << holder_->PrettyTypeOf()
             << " offset=" << offset_.Uint32Value()
-            << " field=" << (field != nullptr ? field->GetName() : "nullptr")
-            << " field_type="
-            << (field != nullptr ? field->GetTypeDescriptor() : "")
+            << " field=" << (field != nullptr ? field->GetName() : "nullptr") << " field_type="
+            << (field != nullptr ? field->GetTypeDescriptor(field->GetDeclaringClass()) : "")
             << " first_ref_field_offset="
-            << (holder_->IsClass()
-                ? holder_->AsClass()->GetFirstReferenceStaticFieldOffset(
-                    kRuntimePointerSize)
-                : holder_->GetClass()->GetFirstReferenceInstanceFieldOffset())
+            << (holder_->IsClass() ?
+                    holder_->AsClass()->GetFirstReferenceStaticFieldOffset(kRuntimePointerSize) :
+                    holder_->GetClass()->GetFirstReferenceInstanceFieldOffset())
             << " num_of_ref_fields="
-            << (holder_->IsClass()
-                ? holder_->AsClass()->NumReferenceStaticFields()
-                : holder_->GetClass()->NumReferenceInstanceFields())
+            << (holder_->IsClass() ? holder_->AsClass()->NumReferenceStaticFields() :
+                                     holder_->GetClass()->NumReferenceInstanceFields())
             << std::endl;
         // Print the memory content of the holder.
         for (size_t i = 0; i < holder_size / sizeof(uint32_t); ++i) {

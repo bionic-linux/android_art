@@ -36,6 +36,7 @@ inline ArtField* FindFieldFast(uint32_t field_idx,
     REQUIRES(!Roles::uninterruptible_)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ScopedAssertNoThreadSuspension ants(__FUNCTION__);
+  // TODO: return declaring_class + ArtField here
   ArtField* resolved_field = referrer->GetDexCache()->GetResolvedField(field_idx);
   if (UNLIKELY(resolved_field == nullptr)) {
     return nullptr;
@@ -62,7 +63,7 @@ inline ArtField* FindFieldFast(uint32_t field_idx,
     // Illegal access.
     return nullptr;
   }
-  if (should_resolve_type && resolved_field->LookupResolvedType() == nullptr) {
+  if (should_resolve_type && resolved_field->LookupResolvedType(fields_class) == nullptr) {
     return nullptr;
   }
   return resolved_field;

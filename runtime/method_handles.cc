@@ -625,7 +625,8 @@ bool MethodHandleFieldAccess(Thread* self,
   StackHandleScope<1> hs(self);
   const mirror::MethodHandle::Kind handle_kind = method_handle->GetHandleKind();
   ArtField* field = method_handle->GetTargetField();
-  Primitive::Type field_type = field->GetTypeAsPrimitiveType();
+  // TODO: remove GetDeclaringClass
+  Primitive::Type field_type = field->GetTypeAsPrimitiveType(field->GetDeclaringClass());
   switch (handle_kind) {
     case mirror::MethodHandle::kInstanceGet: {
       size_t obj_reg = operands->GetOperand(0);

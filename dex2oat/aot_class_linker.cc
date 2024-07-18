@@ -240,14 +240,18 @@ const SdkChecker* AotClassLinker::GetSdkChecker() const {
   return sdk_checker_.get();
 }
 
-bool AotClassLinker::DenyAccessBasedOnPublicSdk(ArtMethod* art_method) const {
-  return sdk_checker_ != nullptr && sdk_checker_->ShouldDenyAccess(art_method);
+bool AotClassLinker::DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                                ArtMethod* art_method) const {
+  return sdk_checker_ != nullptr && sdk_checker_->ShouldDenyAccess(declaring_class, art_method);
 }
-bool AotClassLinker::DenyAccessBasedOnPublicSdk(ArtField* art_field) const {
-  return sdk_checker_ != nullptr && sdk_checker_->ShouldDenyAccess(art_field);
+bool AotClassLinker::DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                                ArtField* art_field) const {
+  return sdk_checker_ != nullptr && sdk_checker_->ShouldDenyAccess(declaring_class, art_field);
 }
-bool AotClassLinker::DenyAccessBasedOnPublicSdk(std::string_view type_descriptor) const {
-  return sdk_checker_ != nullptr && sdk_checker_->ShouldDenyAccess(type_descriptor);
+bool AotClassLinker::DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                                std::string_view type_descriptor) const {
+  return sdk_checker_ != nullptr &&
+         sdk_checker_->ShouldDenyAccess(declaring_class, type_descriptor);
 }
 
 void AotClassLinker::SetEnablePublicSdkChecks(bool enabled) {

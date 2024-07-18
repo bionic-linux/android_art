@@ -246,7 +246,10 @@ ALWAYS_INLINE bool DoFieldPutCommon(Thread* self,
           HandleWrapperObjPtr<mirror::Object> h_reg(hs.NewHandleWrapper(&reg));
           HandleWrapperObjPtr<mirror::Object> h_obj(hs.NewHandleWrapper(&obj));
           ReflectiveHandleWrapper<ArtField> fh(rhs.NewReflectiveHandleWrapper(&field));
-          field_class = field->ResolveType();
+
+          // TODO: remove GetDeclaringClass
+          ObjPtr<mirror::Class> declaring_class = field->GetDeclaringClass();
+          field_class = field->ResolveType(declaring_class);
         }
         // ArtField::ResolveType() may fail as evidenced with a dexing bug (b/78788577).
         if (UNLIKELY(field_class.IsNull())) {

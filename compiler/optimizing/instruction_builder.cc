@@ -2302,7 +2302,8 @@ ArtField* HInstructionBuilder::ResolveField(uint16_t field_idx, bool is_static, 
     // Note: We do not need to resolve the field type for `get` opcodes.
     StackArtFieldHandleScope<1> rhs(soa.Self());
     ReflectiveHandle<ArtField> resolved_field_handle(rhs.NewHandle(resolved_field));
-    if (resolved_field->ResolveType().IsNull()) {
+    // TODO: remove GetDeclaringClass
+    if (resolved_field->ResolveType(resolved_field->GetDeclaringClass()).IsNull()) {
       // ArtField::ResolveType() may fail as evidenced with a dexing bug (b/78788577).
       soa.Self()->ClearException();
       return nullptr;  // Failure

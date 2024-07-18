@@ -308,13 +308,15 @@ HashMap<mirror::Object*, uint32_t> MatchDirtyObjectPaths(
           REQUIRES_SHARED(Locks::mutator_lock_) {
             mirror::Object* next_obj = nullptr;
             ReferenceFieldVisitor::VisitFunc visit_func =
-                [&](mirror::Object& ref_obj, ArtField& ref_field)
-                    REQUIRES_SHARED(Locks::mutator_lock_) {
-                      if (ref_field.GetName() == ref_info.name &&
-                          ref_field.GetTypeDescriptor() == ref_info.type) {
-                        next_obj = &ref_obj;
-                      }
-                    };
+                [&](mirror::Object& ref_obj,
+                    ArtField& ref_field) REQUIRES_SHARED(Locks::mutator_lock_) {
+                  // TODO: remove GetDeclaringClass
+                  if (ref_field.GetName() == ref_info.name &&
+                      ref_field.GetTypeDescriptor(
+                          ref_field.GetDeclaringClass<kWithoutReadBarrier>()) == ref_info.type) {
+                    next_obj = &ref_obj;
+                  }
+                };
             ReferenceFieldVisitor visitor(visit_func);
             cur_obj->VisitReferences</*kVisitNativeRoots=*/false, kVerifyNone, kWithoutReadBarrier>(
                 visitor, visitor);

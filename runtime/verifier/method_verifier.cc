@@ -4702,10 +4702,12 @@ void MethodVerifier<kVerifierDebug>::VerifyISFieldAccess(const Instruction* inst
       }
     }
 
+    // TODO: remove GetDeclaringClass
     ObjPtr<mirror::Class> field_type_class =
-        CanLoadClasses() ? field->ResolveType() : field->LookupResolvedType();
+        CanLoadClasses() ? field->ResolveType(field->GetDeclaringClass()) :
+                           field->LookupResolvedType(field->GetDeclaringClass());
     if (field_type_class != nullptr) {
-      field_type = &FromClass(field->GetTypeDescriptor(),
+      field_type = &FromClass(field->GetTypeDescriptor(field->GetDeclaringClass()),
                               field_type_class,
                               field_type_class->CannotBeAssignedFromOtherTypes());
     } else {

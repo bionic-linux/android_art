@@ -272,7 +272,8 @@ ALWAYS_INLINE static bool ShouldDenyAccessToMember(
 // possible there will be a pending exception if the instrumentation happens to throw one.
 static void NotifySetObjectField(ArtField* field, jobject obj, jobject jval)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  DCHECK_EQ(field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
+  // TODO: remove GetDeclaringClass
+  DCHECK_EQ(field->GetTypeAsPrimitiveType(field->GetDeclaringClass()), Primitive::kPrimNot);
   instrumentation::Instrumentation* instrumentation = Runtime::Current()->GetInstrumentation();
   if (UNLIKELY(instrumentation->HasFieldWriteListeners())) {
     Thread* self = Thread::Current();
@@ -299,7 +300,8 @@ static void NotifySetObjectField(ArtField* field, jobject obj, jobject jval)
 
 static void NotifySetPrimitiveField(ArtField* field, jobject obj, JValue val)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  DCHECK_NE(field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
+  // TODO: remove GetDeclaringClass
+  DCHECK_NE(field->GetTypeAsPrimitiveType(field->GetDeclaringClass()), Primitive::kPrimNot);
   instrumentation::Instrumentation* instrumentation = Runtime::Current()->GetInstrumentation();
   if (UNLIKELY(instrumentation->HasFieldWriteListeners())) {
     Thread* self = Thread::Current();

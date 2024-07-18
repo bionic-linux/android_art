@@ -868,7 +868,9 @@ class JvmtiMethodTraceListener final : public art::instrumentation::Instrumentat
       ScopedLocalRef<jobject> fklass(jnienv,
                                      AddLocalRef<jobject>(jnienv,
                                                           field->GetDeclaringClass().Ptr()));
-      char type_char = art::Primitive::Descriptor(field->GetTypeAsPrimitiveType())[0];
+      // TODO: remove GetDeclaringClass
+      char type_char =
+          art::Primitive::Descriptor(field->GetTypeAsPrimitiveType(field->GetDeclaringClass()))[0];
       jvalue val;
       // 64bit integer is the largest value in the union so we should be fine simply copying it into
       // the union.

@@ -1155,6 +1155,8 @@ class EXPORT MANAGED Class final : public Object {
   ArtField* FindDeclaredStaticField(ObjPtr<DexCache> dex_cache, uint32_t dex_field_idx)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  bool IsDeclaringClass(ArtField* field) REQUIRES_SHARED(Locks::mutator_lock_);
+
   ObjPtr<mirror::ObjectArray<mirror::Field>> GetDeclaredFields(Thread* self,
                                                                bool public_only,
                                                                bool force_resolve)

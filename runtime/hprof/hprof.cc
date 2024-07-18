@@ -1214,7 +1214,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
   size_t class_static_fields_size = 0;
   for (ArtField& class_static_field : klass->GetSFields()) {
     size_t size = 0;
-    SignatureToBasicTypeAndSize(class_static_field.GetTypeDescriptor(), &size);
+    SignatureToBasicTypeAndSize(class_static_field.GetTypeDescriptor(klass), &size);
     class_static_fields_size += size;
   }
 
@@ -1335,12 +1335,13 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
   // Helper lambda to emit the given static field. The second argument name_fn will be called to
   // generate the name to emit. This can be used to emit something else than the field's actual
   // name.
-  auto static_field_writer = [&](ArtField& field, auto name_fn)
-      REQUIRES_SHARED(Locks::mutator_lock_) {
+  auto static_field_writer = [&](ArtField& field,
+                                 ObjPtr<mirror::Class> declaring_class,
+                                 auto name_fn) REQUIRES_SHARED(Locks::mutator_lock_) {
     __ AddStringId(LookupStringId(name_fn(field)));
 
     size_t size;
-    HprofBasicType t = SignatureToBasicTypeAndSize(field.GetTypeDescriptor(), &size);
+    HprofBasicType t = SignatureToBasicTypeAndSize(field.GetTypeDescriptor(declaring_class), &size);
     __ AddU1(t);
     switch (t) {
       case hprof_basic_byte:
@@ -1374,10 +1375,11 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
       return std::string("$class$") + field.GetName();
     };
     for (ArtField& class_instance_field : class_class->GetIFields()) {
-      static_field_writer(class_instance_field, class_instance_field_name_fn);
+      static_field_writer(class_instance_field, class_class, class_instance_field_name_fn);
     }
     for (ArtField& object_instance_field : class_class->GetSuperClass()->GetIFields()) {
-      static_field_writer(object_instance_field, class_instance_field_name_fn);
+      static_field_writer(
+          object_instance_field, class_class->GetSuperClass(), class_instance_field_name_fn);
     }
   }
 
@@ -1386,7 +1388,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
       return field.GetName();
     };
     for (ArtField& class_static_field : klass->GetSFields()) {
-      static_field_writer(class_static_field, class_static_field_name_fn);
+      static_field_writer(class_static_field, klass, class_static_field_name_fn);
     }
   }
 
@@ -1403,7 +1405,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
   for (int i = 0; i < iFieldCount; ++i) {
     ArtField* f = klass->GetInstanceField(i);
     __ AddStringId(LookupStringId(f->GetName()));
-    HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(), nullptr);
+    HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(klass), nullptr);
     __ AddU1(t);
   }
   // Add native value character array for strings / byte array for compressed strings.
@@ -1491,7 +1493,7 @@ void Hprof::DumpHeapInstanceObject(mirror::Object* obj,
     for (size_t i = 0; i < instance_fields; ++i) {
       ArtField* f = klass->GetInstanceField(i);
       size_t size;
-      HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(), &size);
+      HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(klass), &size);
       switch (t) {
       case hprof_basic_byte:
         __ AddU1(f->GetByte(obj));

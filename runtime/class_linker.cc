@@ -1099,25 +1099,30 @@ void ClassLinker::FinishInit(Thread* self) {
   Handle<mirror::Class> java_lang_ref_FinalizerReference =
       hs.NewHandle(FindSystemClass(self, "Ljava/lang/ref/FinalizerReference;"));
 
+  // TODO: check declaring_class
   ArtField* pendingNext = java_lang_ref_Reference->GetInstanceField(0);
   CHECK_STREQ(pendingNext->GetName(), "pendingNext");
-  CHECK_STREQ(pendingNext->GetTypeDescriptor(), "Ljava/lang/ref/Reference;");
+  CHECK_STREQ(pendingNext->GetTypeDescriptor(java_lang_ref_Reference.Get()),
+              "Ljava/lang/ref/Reference;");
 
   ArtField* queue = java_lang_ref_Reference->GetInstanceField(1);
   CHECK_STREQ(queue->GetName(), "queue");
-  CHECK_STREQ(queue->GetTypeDescriptor(), "Ljava/lang/ref/ReferenceQueue;");
+  CHECK_STREQ(queue->GetTypeDescriptor(java_lang_ref_Reference.Get()),
+              "Ljava/lang/ref/ReferenceQueue;");
 
   ArtField* queueNext = java_lang_ref_Reference->GetInstanceField(2);
   CHECK_STREQ(queueNext->GetName(), "queueNext");
-  CHECK_STREQ(queueNext->GetTypeDescriptor(), "Ljava/lang/ref/Reference;");
+  CHECK_STREQ(queueNext->GetTypeDescriptor(java_lang_ref_Reference.Get()),
+              "Ljava/lang/ref/Reference;");
 
   ArtField* referent = java_lang_ref_Reference->GetInstanceField(3);
   CHECK_STREQ(referent->GetName(), "referent");
-  CHECK_STREQ(referent->GetTypeDescriptor(), "Ljava/lang/Object;");
+  CHECK_STREQ(referent->GetTypeDescriptor(java_lang_ref_Reference.Get()), "Ljava/lang/Object;");
 
   ArtField* zombie = java_lang_ref_FinalizerReference->GetInstanceField(2);
   CHECK_STREQ(zombie->GetName(), "zombie");
-  CHECK_STREQ(zombie->GetTypeDescriptor(), "Ljava/lang/Object;");
+  CHECK_STREQ(zombie->GetTypeDescriptor(java_lang_ref_FinalizerReference.Get()),
+              "Ljava/lang/Object;");
 
   // ensure all class_roots_ are initialized
   for (size_t i = 0; i < static_cast<size_t>(ClassRoot::kMax); i++) {
@@ -3479,9 +3484,9 @@ ObjPtr<mirror::Class> ClassLinker::DefineClass(Thread* self,
   //
   // NOTE that we only do the checks for the boot classpath APIs. Anything else, like the app
   // classpath is not checked.
-  if (class_loader == nullptr &&
-      Runtime::Current()->IsAotCompiler() &&
-      DenyAccessBasedOnPublicSdk(descriptor)) {
+  if (class_loader == nullptr && Runtime::Current()->IsAotCompiler() &&
+      // TODO: klass may be null?
+      DenyAccessBasedOnPublicSdk(klass.Get(), descriptor)) {
     ObjPtr<mirror::Throwable> pre_allocated =
         Runtime::Current()->GetPreAllocatedNoClassDefFoundError();
     self->SetException(pre_allocated);
@@ -9101,7 +9106,9 @@ class ClassLinker::LinkFieldsHelper {
   static FieldTypeOrder FieldTypeOrderFromFirstDescriptorCharacter(char first_char);
 
   template <size_t kSize>
-  static MemberOffset AssignFieldOffset(ArtField* field, MemberOffset field_offset)
+  static MemberOffset AssignFieldOffset(ObjPtr<mirror::Class> declaring_class,
+                                        ArtField* field,
+                                        MemberOffset field_offset)
       REQUIRES_SHARED(Locks::mutator_lock_);
 };
 
@@ -9253,11 +9260,10 @@ class ClassLinker::LinkFieldsHelper::FieldGaps {
 };
 
 template <size_t kSize>
-ALWAYS_INLINE
-MemberOffset ClassLinker::LinkFieldsHelper::AssignFieldOffset(ArtField* field,
-                                                              MemberOffset field_offset) {
+ALWAYS_INLINE MemberOffset ClassLinker::LinkFieldsHelper::AssignFieldOffset(
+    ObjPtr<mirror::Class> declaring_class, ArtField* field, MemberOffset field_offset) {
   DCHECK_ALIGNED(field_offset.Uint32Value(), kSize);
-  DCHECK_EQ(Primitive::ComponentSize(field->GetTypeAsPrimitiveType()), kSize);
+  DCHECK_EQ(Primitive::ComponentSize(field->GetTypeAsPrimitiveType(declaring_class)), kSize);
   field->SetOffset(field_offset);
   return MemberOffset(field_offset.Uint32Value() + kSize);
 }
@@ -9328,7 +9334,8 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
   DCHECK_LE(num_fields, 1u << 16);
   for (size_t i = 0; i != num_fields; ++i) {
     ArtField* field = &fields->At(i);
-    const char* descriptor = field->GetTypeDescriptor();
+    // TODO: check that declaring_class is correct.
+    const char* descriptor = field->GetTypeDescriptor(klass.Get());
     FieldTypeOrder field_type_order = FieldTypeOrderFromFirstDescriptorCharacter(descriptor[0]);
     uint16_t field_index = dchecked_integral_cast<uint16_t>(i);
     // Insert references to the start, other fields to the end.
@@ -9347,11 +9354,12 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
   DCHECK(std::is_sorted(
       sorted_fields.begin(),
       sorted_fields.begin() + num_reference_fields,
-      [fields](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
+      [fields, &klass](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
         ArtField* lhs_field = &fields->At(lhs.field_index);
         ArtField* rhs_field = &fields->At(rhs.field_index);
-        CHECK_EQ(lhs_field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
-        CHECK_EQ(rhs_field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
+        // TODO: check that declaring_class is correct.
+        CHECK_EQ(lhs_field->GetTypeAsPrimitiveType(klass.Get()), Primitive::kPrimNot);
+        CHECK_EQ(rhs_field->GetTypeAsPrimitiveType(klass.Get()), Primitive::kPrimNot);
         CHECK_EQ(lhs_field->GetDexFieldIndex() < rhs_field->GetDexFieldIndex(),
                  lhs.field_index < rhs.field_index);
         return lhs_field->GetDexFieldIndex() < rhs_field->GetDexFieldIndex();
@@ -9360,11 +9368,12 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
   DCHECK(std::is_sorted(
       sorted_fields.begin() + primitive_fields_start,
       sorted_fields.end(),
-      [fields](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
+      [fields, &klass](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
         ArtField* lhs_field = &fields->At(lhs.field_index);
         ArtField* rhs_field = &fields->At(rhs.field_index);
-        CHECK_NE(lhs_field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
-        CHECK_NE(rhs_field->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
+        // TODO: check that declaring_class is correct.
+        CHECK_NE(lhs_field->GetTypeAsPrimitiveType(klass.Get()), Primitive::kPrimNot);
+        CHECK_NE(rhs_field->GetTypeAsPrimitiveType(klass.Get()), Primitive::kPrimNot);
         CHECK_EQ(lhs_field->GetDexFieldIndex() > rhs_field->GetDexFieldIndex(),
                  lhs.field_index > rhs.field_index);
         return lhs.field_index > rhs.field_index;
@@ -9383,12 +9392,13 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
   DCHECK(std::is_sorted(
       sorted_fields.begin() + primitive_fields_start,
       sorted_fields.end(),
-      [fields](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
+      [fields, &klass](const auto& lhs, const auto& rhs) REQUIRES_SHARED(Locks::mutator_lock_) {
         ArtField* lhs_field = &fields->At(lhs.field_index);
         ArtField* rhs_field = &fields->At(rhs.field_index);
-        Primitive::Type lhs_type = lhs_field->GetTypeAsPrimitiveType();
+        // TODO: check that declaring_class is correct.
+        Primitive::Type lhs_type = lhs_field->GetTypeAsPrimitiveType(klass.Get());
         CHECK_NE(lhs_type, Primitive::kPrimNot);
-        Primitive::Type rhs_type = rhs_field->GetTypeAsPrimitiveType();
+        Primitive::Type rhs_type = rhs_field->GetTypeAsPrimitiveType(klass.Get());
         CHECK_NE(rhs_type, Primitive::kPrimNot);
         if (lhs_type != rhs_type) {
           size_t lhs_size = Primitive::ComponentSize(lhs_type);
@@ -9407,7 +9417,7 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
     field_offset = field_gaps.AlignFieldOffset<kReferenceSize>(field_offset);
     for (; index != num_reference_fields; ++index) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      field_offset = AssignFieldOffset<kReferenceSize>(field, field_offset);
+      field_offset = AssignFieldOffset<kReferenceSize>(klass.Get(), field, field_offset);
     }
   }
   // Process 64-bit fields.
@@ -9417,7 +9427,7 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
     while (index != num_fields &&
            sorted_fields[index].field_type_order <= FieldTypeOrder::kLast64BitType) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      field_offset = AssignFieldOffset<8u>(field, field_offset);
+      field_offset = AssignFieldOffset<8u>(klass.Get(), field, field_offset);
       ++index;
     }
   }
@@ -9427,14 +9437,15 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
     field_offset = field_gaps.AlignFieldOffset<4u>(field_offset);
     if (field_gaps.HasGap<4u>()) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      AssignFieldOffset<4u>(field, field_gaps.ReleaseGap<4u>());  // Ignore return value.
+      AssignFieldOffset<4u>(
+          klass.Get(), field, field_gaps.ReleaseGap<4u>());  // Ignore return value.
       ++index;
       DCHECK(!field_gaps.HasGap<4u>());  // There can be only one gap for a 32-bit field.
     }
     while (index != num_fields &&
            sorted_fields[index].field_type_order <= FieldTypeOrder::kLast32BitType) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      field_offset = AssignFieldOffset<4u>(field, field_offset);
+      field_offset = AssignFieldOffset<4u>(klass.Get(), field, field_offset);
       ++index;
     }
   }
@@ -9446,24 +9457,25 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
            sorted_fields[index].field_type_order <= FieldTypeOrder::kLast16BitType &&
            field_gaps.HasGap<2u>()) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      AssignFieldOffset<2u>(field, field_gaps.ReleaseGap<2u>());  // Ignore return value.
+      AssignFieldOffset<2u>(
+          klass.Get(), field, field_gaps.ReleaseGap<2u>());  // Ignore return value.
       ++index;
     }
     while (index != num_fields &&
            sorted_fields[index].field_type_order <= FieldTypeOrder::kLast16BitType) {
       ArtField* field = &fields->At(sorted_fields[index].field_index);
-      field_offset = AssignFieldOffset<2u>(field, field_offset);
+      field_offset = AssignFieldOffset<2u>(klass.Get(), field, field_offset);
       ++index;
     }
   }
   // Process 8-bit fields.
   for (; index != num_fields && field_gaps.HasGap<1u>(); ++index) {
     ArtField* field = &fields->At(sorted_fields[index].field_index);
-    AssignFieldOffset<1u>(field, field_gaps.ReleaseGap<1u>());  // Ignore return value.
+    AssignFieldOffset<1u>(klass.Get(), field, field_gaps.ReleaseGap<1u>());  // Ignore return value.
   }
   for (; index != num_fields; ++index) {
     ArtField* field = &fields->At(sorted_fields[index].field_index);
-    field_offset = AssignFieldOffset<1u>(field, field_offset);
+    field_offset = AssignFieldOffset<1u>(klass.Get(), field, field_offset);
   }
 
   self->EndAssertNoThreadSuspension(old_no_suspend_cause);
@@ -9546,7 +9558,8 @@ bool ClassLinker::LinkFieldsHelper::LinkFields(ClassLinker* class_linker,
         // but it's valid Java/dex bytecode and for example proguard can generate such bytecode.
         DCHECK_LE(strcmp(prev_field->GetName(), field->GetName()), 0);
       }
-      Primitive::Type type = field->GetTypeAsPrimitiveType();
+      // TODO: check that declaring_class is correct.
+      Primitive::Type type = field->GetTypeAsPrimitiveType(klass.Get());
       bool is_primitive = type != Primitive::kPrimNot;
       if (klass->DescriptorEquals("Ljava/lang/ref/Reference;") &&
           strcmp("referent", field->GetName()) == 0) {
@@ -10362,25 +10375,27 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForField(
 
   Handle<mirror::Class> constructor_class;
   Handle<mirror::Class> return_type;
+  // TODO: remove GetDeclaringClass
+  ObjPtr<mirror::Class> declaring_class = target_field->GetDeclaringClass();
   switch (handle_type) {
     case DexFile::MethodHandleType::kStaticPut: {
-      method_params->Set(0, target_field->ResolveType());
+      method_params->Set(0, target_field->ResolveType(declaring_class));
       return_type = hs.NewHandle(GetClassRoot(ClassRoot::kPrimitiveVoid, this));
       break;
     }
     case DexFile::MethodHandleType::kStaticGet: {
-      return_type = hs.NewHandle(target_field->ResolveType());
+      return_type = hs.NewHandle(target_field->ResolveType(declaring_class));
       break;
     }
     case DexFile::MethodHandleType::kInstancePut: {
       method_params->Set(0, target_field->GetDeclaringClass());
-      method_params->Set(1, target_field->ResolveType());
+      method_params->Set(1, target_field->ResolveType(declaring_class));
       return_type = hs.NewHandle(GetClassRoot(ClassRoot::kPrimitiveVoid, this));
       break;
     }
     case DexFile::MethodHandleType::kInstanceGet: {
       method_params->Set(0, target_field->GetDeclaringClass());
-      return_type = hs.NewHandle(target_field->ResolveType());
+      return_type = hs.NewHandle(target_field->ResolveType(declaring_class));
       break;
     }
     case DexFile::MethodHandleType::kInvokeStatic:
@@ -10776,8 +10791,11 @@ ObjPtr<mirror::ClassLoader> ClassLinker::CreateWellKnownClassLoader(
   StackHandleScope<5> hs(self);
 
   ArtField* dex_elements_field = WellKnownClasses::dalvik_system_DexPathList_dexElements;
+  ObjPtr<mirror::Class> dex_elements_declaring_class =
+      WellKnownClasses::dalvik_system_DexPathList.Get();
 
-  Handle<mirror::Class> dex_elements_class(hs.NewHandle(dex_elements_field->ResolveType()));
+  Handle<mirror::Class> dex_elements_class(
+      hs.NewHandle(dex_elements_field->ResolveType(dex_elements_declaring_class)));
   DCHECK(dex_elements_class != nullptr);
   DCHECK(dex_elements_class->IsArrayClass());
   Handle<mirror::ObjectArray<mirror::Object>> h_dex_elements(hs.NewHandle(
@@ -10791,10 +10809,15 @@ ObjPtr<mirror::ClassLoader> ClassLinker::CreateWellKnownClassLoader(
   DCHECK_EQ(h_dex_element_class.Get(), element_file_field->GetDeclaringClass());
 
   ArtField* cookie_field = WellKnownClasses::dalvik_system_DexFile_cookie;
-  DCHECK_EQ(cookie_field->GetDeclaringClass(), element_file_field->LookupResolvedType());
+  ObjPtr<mirror::Class> dex_file_class = WellKnownClasses::dalvik_system_DexFile.Get();
+  // TODO: remove GetDeclaringClass
+  DCHECK_EQ(cookie_field->GetDeclaringClass(),
+            element_file_field->LookupResolvedType(h_dex_element_class.Get()));
 
   ArtField* file_name_field = WellKnownClasses::dalvik_system_DexFile_fileName;
-  DCHECK_EQ(file_name_field->GetDeclaringClass(), element_file_field->LookupResolvedType());
+  // TODO: remove GetDeclaringClass
+  DCHECK_EQ(file_name_field->GetDeclaringClass(),
+            element_file_field->LookupResolvedType(h_dex_element_class.Get()));
 
   // Fill the elements array.
   int32_t index = 0;
@@ -11131,14 +11154,16 @@ ObjPtr<mirror::ClassLoader> ClassLinker::GetHoldingClassLoaderOfCopiedMethod(Thr
       Runtime::Current()->GetJavaVM()->DecodeWeakGlobalAsStrong(result));
 }
 
-bool ClassLinker::DenyAccessBasedOnPublicSdk([[maybe_unused]] ArtMethod* art_method) const
+bool ClassLinker::DenyAccessBasedOnPublicSdk([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                             [[maybe_unused]] ArtMethod* art_method) const
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // Should not be called on ClassLinker, only on AotClassLinker that overrides this.
   LOG(FATAL) << "UNREACHABLE";
   UNREACHABLE();
 }
 
-bool ClassLinker::DenyAccessBasedOnPublicSdk([[maybe_unused]] ArtField* art_field) const
+bool ClassLinker::DenyAccessBasedOnPublicSdk([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                             [[maybe_unused]] ArtField* art_field) const
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // Should not be called on ClassLinker, only on AotClassLinker that overrides this.
   LOG(FATAL) << "UNREACHABLE";
@@ -11146,6 +11171,7 @@ bool ClassLinker::DenyAccessBasedOnPublicSdk([[maybe_unused]] ArtField* art_fiel
 }
 
 bool ClassLinker::DenyAccessBasedOnPublicSdk(
+    [[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
     [[maybe_unused]] std::string_view type_descriptor) const {
   // Should not be called on ClassLinker, only on AotClassLinker that overrides this.
   LOG(FATAL) << "UNREACHABLE";

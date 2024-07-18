@@ -51,7 +51,7 @@ class VarHandleTest : public CommonRuntimeTest {
     StackHandleScope<4> hs(self);
     Handle<FieldVarHandle> fvh = hs.NewHandle(
         ObjPtr<FieldVarHandle>::DownCast(GetClassRoot<FieldVarHandle>()->AllocObject(self)));
-    Handle<Class> var_type = hs.NewHandle(art_field->ResolveType());
+    Handle<Class> var_type = hs.NewHandle(art_field->ResolveType(art_field->GetDeclaringClass()));
 
     if (art_field->IsStatic()) {
       InitializeVarHandle(fvh.Get(), var_type, access_modes_bit_mask);
