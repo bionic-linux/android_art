@@ -42,7 +42,8 @@ SdkChecker* SdkChecker::Create(const std::string& public_sdk, std::string* error
   return sdk_checker.release();
 }
 
-bool SdkChecker::ShouldDenyAccess(ArtMethod* art_method) const {
+bool SdkChecker::ShouldDenyAccess([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                  ArtMethod* art_method) const {
   if (!enabled_) {
     return false;
   }
@@ -88,14 +89,15 @@ bool SdkChecker::ShouldDenyAccess(ArtMethod* art_method) const {
   return !found;
 }
 
-bool SdkChecker::ShouldDenyAccess(ArtField* art_field) const {
+bool SdkChecker::ShouldDenyAccess(ObjPtr<mirror::Class> declaring_class,
+                                  ArtField* art_field) const {
   if (!enabled_) {
     return false;
   }
 
   std::string_view declaring_class_descriptor = art_field->GetDeclaringClassDescriptorView();
   const char* name = art_field->GetName();
-  std::string_view type_descriptor = art_field->GetTypeDescriptorView();
+  std::string_view type_descriptor = art_field->GetTypeDescriptorView(declaring_class);
 
   bool found = false;
   for (const std::unique_ptr<const DexFile>& dex_file : sdk_dex_files_) {
@@ -127,7 +129,8 @@ bool SdkChecker::ShouldDenyAccess(ArtField* art_field) const {
   return !found;
 }
 
-bool SdkChecker::ShouldDenyAccess(std::string_view descriptor) const {
+bool SdkChecker::ShouldDenyAccess([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                  std::string_view descriptor) const {
   if (!enabled_) {
     return false;
   }

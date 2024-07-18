@@ -255,7 +255,7 @@ class ClassLinkerTest : public CommonRuntimeTest {
     EXPECT_TRUE(field != nullptr);
     EXPECT_OBJ_PTR_EQ(klass, field->GetDeclaringClass());
     EXPECT_TRUE(field->GetName() != nullptr);
-    EXPECT_TRUE(field->ResolveType() != nullptr);
+    EXPECT_TRUE(field->ResolveType(klass) != nullptr);
   }
 
   void AssertClass(const std::string& descriptor, Handle<mirror::Class> klass)
@@ -365,9 +365,9 @@ class ClassLinkerTest : public CommonRuntimeTest {
     MemberOffset current_ref_offset = start_ref_offset;
     for (size_t i = 0; i < klass->NumInstanceFields(); i++) {
       ArtField* field = klass->GetInstanceField(i);
-      ObjPtr<mirror::Class> field_type = field->ResolveType();
+      ObjPtr<mirror::Class> field_type = field->ResolveType(klass.Get());
       ASSERT_TRUE(field_type != nullptr);
-      if (!field->IsPrimitiveType()) {
+      if (!field->IsPrimitiveType(klass.Get())) {
         ASSERT_TRUE(!field_type->IsPrimitive());
         ASSERT_EQ(current_ref_offset.Uint32Value(), field->GetOffset().Uint32Value());
         if (current_ref_offset.Uint32Value() == end_ref_offset.Uint32Value()) {
@@ -1196,47 +1196,47 @@ TEST_F(ClassLinkerTest, StaticFields) {
   EXPECT_EQ(9U, statics->NumStaticFields());
 
   ArtField* s0 = statics->FindStaticField("s0", "Z");
-  EXPECT_EQ(s0->GetTypeAsPrimitiveType(), Primitive::kPrimBoolean);
+  EXPECT_EQ(s0->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimBoolean);
   EXPECT_EQ(true, s0->GetBoolean(statics.Get()));
   s0->SetBoolean<false>(statics.Get(), false);
 
   ArtField* s1 = statics->FindStaticField("s1", "B");
-  EXPECT_EQ(s1->GetTypeAsPrimitiveType(), Primitive::kPrimByte);
+  EXPECT_EQ(s1->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimByte);
   EXPECT_EQ(5, s1->GetByte(statics.Get()));
   s1->SetByte<false>(statics.Get(), 6);
 
   ArtField* s2 = statics->FindStaticField("s2", "C");
-  EXPECT_EQ(s2->GetTypeAsPrimitiveType(), Primitive::kPrimChar);
+  EXPECT_EQ(s2->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimChar);
   EXPECT_EQ('a', s2->GetChar(statics.Get()));
   s2->SetChar<false>(statics.Get(), 'b');
 
   ArtField* s3 = statics->FindStaticField("s3", "S");
-  EXPECT_EQ(s3->GetTypeAsPrimitiveType(), Primitive::kPrimShort);
+  EXPECT_EQ(s3->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimShort);
   EXPECT_EQ(-536, s3->GetShort(statics.Get()));
   s3->SetShort<false>(statics.Get(), -535);
 
   ArtField* s4 = statics->FindStaticField("s4", "I");
-  EXPECT_EQ(s4->GetTypeAsPrimitiveType(), Primitive::kPrimInt);
+  EXPECT_EQ(s4->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimInt);
   EXPECT_EQ(2000000000, s4->GetInt(statics.Get()));
   s4->SetInt<false>(statics.Get(), 2000000001);
 
   ArtField* s5 = statics->FindStaticField("s5", "J");
-  EXPECT_EQ(s5->GetTypeAsPrimitiveType(), Primitive::kPrimLong);
+  EXPECT_EQ(s5->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimLong);
   EXPECT_EQ(0x1234567890abcdefLL, s5->GetLong(statics.Get()));
   s5->SetLong<false>(statics.Get(), INT64_C(0x34567890abcdef12));
 
   ArtField* s6 = statics->FindStaticField("s6", "F");
-  EXPECT_EQ(s6->GetTypeAsPrimitiveType(), Primitive::kPrimFloat);
+  EXPECT_EQ(s6->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimFloat);
   EXPECT_DOUBLE_EQ(0.5, s6->GetFloat(statics.Get()));
   s6->SetFloat<false>(statics.Get(), 0.75);
 
   ArtField* s7 = statics->FindStaticField("s7", "D");
-  EXPECT_EQ(s7->GetTypeAsPrimitiveType(), Primitive::kPrimDouble);
+  EXPECT_EQ(s7->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimDouble);
   EXPECT_DOUBLE_EQ(16777217.0, s7->GetDouble(statics.Get()));
   s7->SetDouble<false>(statics.Get(), 16777219);
 
   ArtField* s8 = statics->FindStaticField("s8", "Ljava/lang/String;");
-  EXPECT_EQ(s8->GetTypeAsPrimitiveType(), Primitive::kPrimNot);
+  EXPECT_EQ(s8->GetTypeAsPrimitiveType(statics.Get()), Primitive::kPrimNot);
   EXPECT_TRUE(s8->GetObject(statics.Get())->AsString()->Equals("android"));
   ObjPtr<mirror::String> str_value = mirror::String::AllocFromModifiedUtf8(soa.Self(), "robot");
   s8->SetObject<false>(s8->GetDeclaringClass(), str_value);

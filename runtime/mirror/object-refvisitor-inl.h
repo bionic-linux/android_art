@@ -120,8 +120,8 @@ inline void Object::VisitReferences(const Visitor& visitor,
     return;
   }
 
-  LOG(FATAL) << "Unexpected class flags: " << std::hex << class_flags
-            << " for " << klass->PrettyClass();
+  LOG(FATAL) << "Unexpected class flags: " << std::hex << class_flags;
+  //<< " for " << klass->PrettyClass();
 }
 
 // Could be called with from-space address of the object as we access klass and

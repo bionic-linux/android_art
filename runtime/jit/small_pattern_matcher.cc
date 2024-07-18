@@ -381,7 +381,8 @@ const void* SmallPatternMatcher::TryMatch(ArtMethod* method) REQUIRES_SHARED(Loc
           if (offset > 64) {
             return nullptr;
           }
-          field_type = field->GetTypeAsPrimitiveType();
+          // TODO: remove GetDeclaringClass
+          field_type = field->GetTypeAsPrimitiveType(field->GetDeclaringClass());
           is_final = field->IsFinal();
           break;
         }

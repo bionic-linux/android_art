@@ -381,7 +381,8 @@ class ScopedCheck {
       return false;
     }
     ObjPtr<mirror::Class> c = o->GetClass();
-    if (c->FindInstanceField(f->GetName(), f->GetTypeDescriptor()) == nullptr) {
+    if (c->FindInstanceField(f->GetName(), f->GetTypeDescriptor(f->GetDeclaringClass())) ==
+        nullptr) {
       AbortF("jfieldID %s not valid for an object of class %s",
              f->PrettyField().c_str(), o->PrettyTypeOf().c_str());
       return false;
@@ -787,11 +788,12 @@ class ScopedCheck {
              field->IsStatic() ? "static" : "non-static", field->PrettyField().c_str(), fid);
       return false;
     }
-    if (type != field->GetTypeAsPrimitiveType()) {
+    if (type != field->GetTypeAsPrimitiveType(field->GetDeclaringClass())) {
       AbortF("attempt to access field %s of type %s with the wrong type %s: %p",
              field->PrettyField().c_str(),
-             PrettyDescriptor(field->GetTypeDescriptor()).c_str(),
-             PrettyDescriptor(type).c_str(), fid);
+             PrettyDescriptor(field->GetTypeDescriptor(field->GetDeclaringClass())).c_str(),
+             PrettyDescriptor(type).c_str(),
+             fid);
       return false;
     }
     if (is_static) {

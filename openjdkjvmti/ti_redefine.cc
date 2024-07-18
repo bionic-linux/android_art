@@ -2592,7 +2592,8 @@ void Redefiner::ClassRedefinition::UpdateFields(art::ObjPtr<art::mirror::Class> 
       const art::dex::TypeId* new_declaring_id =
           dex_file_->FindTypeId(field.GetDeclaringClassDescriptorView());
       const art::dex::StringId* new_name_id = dex_file_->FindStringId(field.GetName());
-      const art::dex::TypeId* new_type_id = dex_file_->FindTypeId(field.GetTypeDescriptorView());
+      const art::dex::TypeId* new_type_id =
+          dex_file_->FindTypeId(field.GetTypeDescriptorView(mclass));
       CHECK(new_name_id != nullptr && new_type_id != nullptr && new_declaring_id != nullptr);
       const art::dex::FieldId* new_field_id =
           dex_file_->FindFieldId(*new_declaring_id, *new_name_id, *new_type_id);
@@ -2611,10 +2612,12 @@ void Redefiner::ClassRedefinition::CollectNewFieldAndMethodMappings(
   for (auto [new_cls, old_cls] :
        art::ZipLeft(data.GetNewClasses()->Iterate(), data.GetOldClasses()->Iterate())) {
     for (art::ArtField& f : old_cls->GetSFields()) {
-      (*field_map)[&f] = new_cls->FindDeclaredStaticField(f.GetName(), f.GetTypeDescriptor());
+      (*field_map)[&f] =
+          new_cls->FindDeclaredStaticField(f.GetName(), f.GetTypeDescriptor(old_cls));
     }
     for (art::ArtField& f : old_cls->GetIFields()) {
-      (*field_map)[&f] = new_cls->FindDeclaredInstanceField(f.GetName(), f.GetTypeDescriptor());
+      (*field_map)[&f] =
+          new_cls->FindDeclaredInstanceField(f.GetName(), f.GetTypeDescriptor(old_cls));
     }
     auto new_methods = new_cls->GetMethods(art::kRuntimePointerSize);
     for (art::ArtMethod& m : old_cls->GetMethods(art::kRuntimePointerSize)) {
@@ -2633,12 +2636,13 @@ void Redefiner::ClassRedefinition::CollectNewFieldAndMethodMappings(
   }
 }
 
-static void CopyField(art::ObjPtr<art::mirror::Object> target,
+static void CopyField(art::ObjPtr<art::mirror::Class> declaring_class,
+                      art::ObjPtr<art::mirror::Object> target,
                       art::ArtField* new_field,
                       art::ObjPtr<art::mirror::Object> source,
                       art::ArtField& old_field) REQUIRES(art::Locks::mutator_lock_) {
-  art::Primitive::Type ftype = old_field.GetTypeAsPrimitiveType();
-  CHECK_EQ(ftype, new_field->GetTypeAsPrimitiveType())
+  art::Primitive::Type ftype = old_field.GetTypeAsPrimitiveType(declaring_class);
+  CHECK_EQ(ftype, new_field->GetTypeAsPrimitiveType(declaring_class))
       << old_field.PrettyField() << " vs " << new_field->PrettyField();
   if (ftype == art::Primitive::kPrimNot) {
     new_field->SetObject<false>(target, old_field.GetObject(source));
@@ -2675,11 +2679,12 @@ static void CopyFields(bool is_static,
       << "Should not be overriding object class fields. Target: " << target_class->PrettyClass()
       << " Source: " << source_class->PrettyClass();
   for (art::ArtField& f : (is_static ? source_class->GetSFields() : source_class->GetIFields())) {
-    art::ArtField* new_field =
-        (is_static ? target_class->FindDeclaredStaticField(f.GetName(), f.GetTypeDescriptor())
-                   : target_class->FindDeclaredInstanceField(f.GetName(), f.GetTypeDescriptor()));
+    art::ArtField* new_field = (is_static ? target_class->FindDeclaredStaticField(
+                                                f.GetName(), f.GetTypeDescriptor(source_class)) :
+                                            target_class->FindDeclaredInstanceField(
+                                                f.GetName(), f.GetTypeDescriptor(source_class)));
     CHECK(new_field != nullptr) << "could not find new version of " << f.PrettyField();
-    CopyField(target, new_field, source, f);
+    CopyField(source_class, target, new_field, source, f);
   }
   if (!is_static && !target_class->GetSuperClass()->IsObjectClass()) {
     CopyFields(
@@ -2687,9 +2692,10 @@ static void CopyFields(bool is_static,
   }
 }
 
-static void ClearField(art::ObjPtr<art::mirror::Object> target, art::ArtField& field)
-    REQUIRES(art::Locks::mutator_lock_) {
-  art::Primitive::Type ftype = field.GetTypeAsPrimitiveType();
+static void ClearField(art::ObjPtr<art::mirror::Class> declaring_class,
+                       art::ObjPtr<art::mirror::Object> target,
+                       art::ArtField& field) REQUIRES(art::Locks::mutator_lock_) {
+  art::Primitive::Type ftype = field.GetTypeAsPrimitiveType(declaring_class);
   if (ftype == art::Primitive::kPrimNot) {
     field.SetObject<false>(target, nullptr);
   } else {
@@ -2721,7 +2727,7 @@ static void ClearFields(bool is_static,
     REQUIRES(art::Locks::mutator_lock_) {
   DCHECK(!target_class->IsObjectClass());
   for (art::ArtField& f : (is_static ? target_class->GetSFields() : target_class->GetIFields())) {
-    ClearField(target, f);
+    ClearField(target_class, target, f);
   }
   if (!is_static && !target_class->GetSuperClass()->IsObjectClass()) {
     ClearFields(is_static, target, target_class->GetSuperClass());
@@ -2860,10 +2866,11 @@ void Redefiner::ClassRedefinition::UpdateClassStructurally(const RedefinitionDat
                                 }) != direct_methods.end();
           });
     } else {
-      auto pred = [&](art::ArtField& f) REQUIRES(art::Locks::mutator_lock_) {
+      auto pred = [&](art::ObjPtr<art::mirror::Class> declaring_class,
+                      art::ArtField& f) REQUIRES(art::Locks::mutator_lock_) {
         return std::string_view(f.GetName()) == std::string_view(field_or_method->GetName()) &&
-               std::string_view(f.GetTypeDescriptor()) ==
-                   std::string_view(field_or_method->GetTypeDescriptor());
+               std::string_view(f.GetTypeDescriptor(declaring_class)) ==
+                   std::string_view(field_or_method->GetTypeDescriptor(declaring_class));
       };
       if (field_or_method->IsStatic()) {
         return std::any_of(
@@ -2871,7 +2878,9 @@ void Redefiner::ClassRedefinition::UpdateClassStructurally(const RedefinitionDat
             replacement_classes_iter.end(),
             [&](art::ObjPtr<art::mirror::Class> cand) REQUIRES(art::Locks::mutator_lock_) {
               auto sfields = cand->GetSFields();
-              return std::find_if(sfields.begin(), sfields.end(), pred) != sfields.end();
+              auto cur_pred = [&](art::ArtField& f)
+                                  REQUIRES(art::Locks::mutator_lock_) { return pred(cand, f); };
+              return std::find_if(sfields.begin(), sfields.end(), cur_pred) != sfields.end();
             });
       } else {
         return std::any_of(
@@ -2879,7 +2888,9 @@ void Redefiner::ClassRedefinition::UpdateClassStructurally(const RedefinitionDat
             replacement_classes_iter.end(),
             [&](art::ObjPtr<art::mirror::Class> cand) REQUIRES(art::Locks::mutator_lock_) {
               auto ifields = cand->GetIFields();
-              return std::find_if(ifields.begin(), ifields.end(), pred) != ifields.end();
+              auto cur_pred = [&](art::ArtField& f)
+                                  REQUIRES(art::Locks::mutator_lock_) { return pred(cand, f); };
+              return std::find_if(ifields.begin(), ifields.end(), cur_pred) != ifields.end();
             });
       }
     }

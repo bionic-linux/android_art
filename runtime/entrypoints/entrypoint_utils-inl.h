@@ -420,7 +420,9 @@ inline ArtField* ResolveFieldWithAccessChecks(Thread* self,
   if (resolve_field_type != 0u) {
     StackArtFieldHandleScope<1> rhs(self);
     ReflectiveHandle<ArtField> field_handle(rhs.NewHandle(resolved_field));
-    if (resolved_field->ResolveType().IsNull()) {
+    // TODO: remove GetDeclaringClass
+    ObjPtr<mirror::Class> declaring_class = resolved_field->GetDeclaringClass();
+    if (resolved_field->ResolveType(declaring_class).IsNull()) {
       DCHECK(self->IsExceptionPending());
       return nullptr;
     }

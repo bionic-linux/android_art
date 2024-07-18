@@ -353,7 +353,7 @@ class FieldVisitor {
     // Now visit fields for the current klass.
 
     for (auto& static_field : klass->GetSFields()) {
-      if (static_field.IsPrimitiveType()) {
+      if (static_field.IsPrimitiveType(klass)) {
         if (static_prim_visitor(obj,
                                 klass,
                                 static_field,
@@ -374,7 +374,7 @@ class FieldVisitor {
     }
 
     for (auto& instance_field : klass->GetIFields()) {
-      if (instance_field.IsPrimitiveType()) {
+      if (instance_field.IsPrimitiveType(klass)) {
         if (instance_prim_visitor(obj,
                                   klass,
                                   instance_field,
@@ -555,7 +555,7 @@ class ReportPrimitiveField {
                                            size_t field_index,
                                            ReportPrimitiveField* user_data)
       REQUIRES_SHARED(art::Locks::mutator_lock_) {
-    art::Primitive::Type art_prim_type = field.GetTypeAsPrimitiveType();
+    art::Primitive::Type art_prim_type = field.GetTypeAsPrimitiveType(klass);
     jvmtiPrimitiveType prim_type =
         static_cast<jvmtiPrimitiveType>(art::Primitive::Descriptor(art_prim_type)[0]);
     DCHECK(prim_type == JVMTI_PRIMITIVE_TYPE_BOOLEAN ||

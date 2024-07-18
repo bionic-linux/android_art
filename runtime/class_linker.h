@@ -884,13 +884,16 @@ class ClassLinker {
       REQUIRES(!Locks::dex_lock_, !Roles::uninterruptible_);
 
   // Verifies if the method is accessible according to the SdkChecker (if installed).
-  virtual bool DenyAccessBasedOnPublicSdk(ArtMethod* art_method) const
+  virtual bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                          ArtMethod* art_method) const
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Verifies if the field is accessible according to the SdkChecker (if installed).
-  virtual bool DenyAccessBasedOnPublicSdk(ArtField* art_field) const
+  virtual bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                          ArtField* art_field) const
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Verifies if the descriptor is accessible according to the SdkChecker (if installed).
-  virtual bool DenyAccessBasedOnPublicSdk(std::string_view type_descriptor) const;
+  virtual bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                          std::string_view type_descriptor) const;
   // Enable or disable public sdk checks.
   virtual void SetEnablePublicSdkChecks(bool enabled);
 

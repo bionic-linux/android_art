@@ -59,7 +59,8 @@ ObjPtr<mirror::Field> Field::CreateFromArtField(Thread* self,
                                                 bool force_resolve) {
   StackHandleScope<2> hs(self);
   // Try to resolve type before allocating since this is a thread suspension point.
-  Handle<mirror::Class> type = hs.NewHandle(field->ResolveType());
+  // TODO: remove GetDeclaringClass
+  Handle<mirror::Class> type = hs.NewHandle(field->ResolveType(field->GetDeclaringClass()));
 
   if (type == nullptr) {
     DCHECK(self->IsExceptionPending());

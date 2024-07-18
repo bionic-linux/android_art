@@ -47,13 +47,16 @@ class AotClassLinker : public ClassLinker {
   const SdkChecker* GetSdkChecker() const;
 
   // Verifies if the method is accessible according to the SdkChecker (if installed).
-  bool DenyAccessBasedOnPublicSdk(ArtMethod* art_method) const override
+  bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                  ArtMethod* art_method) const override
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Verifies if the field is accessible according to the SdkChecker (if installed).
-  bool DenyAccessBasedOnPublicSdk(ArtField* art_field) const override
+  bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                  ArtField* art_field) const override
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Verifies if the descriptor is accessible according to the SdkChecker (if installed).
-  bool DenyAccessBasedOnPublicSdk(std::string_view type_descriptor) const override;
+  bool DenyAccessBasedOnPublicSdk(ObjPtr<mirror::Class> declaring_class,
+                                  std::string_view type_descriptor) const override;
   // Enable or disable public sdk checks.
   void SetEnablePublicSdkChecks(bool enabled) override;
 

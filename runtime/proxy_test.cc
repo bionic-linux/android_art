@@ -113,21 +113,21 @@ TEST_F(ProxyTest, ProxyFieldHelper) {
   // Test "Class[] interfaces" field.
   ArtField* field = &static_fields->At(0);
   EXPECT_STREQ("interfaces", field->GetName());
-  EXPECT_STREQ("[Ljava/lang/Class;", field->GetTypeDescriptor());
-  EXPECT_EQ("[Ljava/lang/Class;", field->GetTypeDescriptorView());
-  EXPECT_OBJ_PTR_EQ(interfacesFieldClass.Get(), field->ResolveType());
+  EXPECT_STREQ("[Ljava/lang/Class;", field->GetTypeDescriptor(field->GetDeclaringClass()));
+  EXPECT_EQ("[Ljava/lang/Class;", field->GetTypeDescriptorView(field->GetDeclaringClass()));
+  EXPECT_OBJ_PTR_EQ(interfacesFieldClass.Get(), field->ResolveType(field->GetDeclaringClass()));
   std::string temp;
   EXPECT_STREQ("L$Proxy1234;", field->GetDeclaringClass()->GetDescriptor(&temp));
-  EXPECT_FALSE(field->IsPrimitiveType());
+  EXPECT_FALSE(field->IsPrimitiveType(field->GetDeclaringClass()));
 
   // Test "Class[][] throws" field.
   field = &static_fields->At(1);
   EXPECT_STREQ("throws", field->GetName());
-  EXPECT_STREQ("[[Ljava/lang/Class;", field->GetTypeDescriptor());
-  EXPECT_EQ("[[Ljava/lang/Class;", field->GetTypeDescriptorView());
-  EXPECT_OBJ_PTR_EQ(throwsFieldClass.Get(), field->ResolveType());
+  EXPECT_STREQ("[[Ljava/lang/Class;", field->GetTypeDescriptor(field->GetDeclaringClass()));
+  EXPECT_EQ("[[Ljava/lang/Class;", field->GetTypeDescriptorView(field->GetDeclaringClass()));
+  EXPECT_OBJ_PTR_EQ(throwsFieldClass.Get(), field->ResolveType(field->GetDeclaringClass()));
   EXPECT_STREQ("L$Proxy1234;", field->GetDeclaringClass()->GetDescriptor(&temp));
-  EXPECT_FALSE(field->IsPrimitiveType());
+  EXPECT_FALSE(field->IsPrimitiveType(field->GetDeclaringClass()));
 }
 
 // Creates two proxy classes and check the art/mirror fields of their static fields.

@@ -113,7 +113,7 @@ static std::string GetClassDescriptor(mirror::Class* klass)
 static std::string PrettyFieldValue(ArtField* field, mirror::Object* object)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   std::ostringstream oss;
-  switch (field->GetTypeAsPrimitiveType()) {
+  switch (field->GetTypeAsPrimitiveType(field->GetDeclaringClass())) {
     case Primitive::kPrimNot: {
       oss << object->GetFieldObject<mirror::Object, kVerifyNone, kWithoutReadBarrier>(
           field->GetOffset());
@@ -503,7 +503,9 @@ ParentMap CalculateParentMap(const std::vector<const ImageHeader*>& image_header
         [&](mirror::Object& ref_obj, ArtField& ref_field) REQUIRES_SHARED(Locks::mutator_lock_) {
           if (parent_map.count(&ref_obj) == 0) {
             std::string path =
-                ART_FORMAT("{}:{}", ref_field.GetName(), ref_field.GetTypeDescriptor());
+                ART_FORMAT("{}:{}",
+                           ref_field.GetName(),
+                           ref_field.GetTypeDescriptor(ref_field.GetDeclaringClass()));
             parent_map[&ref_obj] = ParentInfo{parent_obj, path};
             next.push_back(&ref_obj);
           }

@@ -383,7 +383,8 @@ class ElfCompilationUnitWriter {
           ArtField* field = type->GetInstanceField(i);
           info_.StartTag(DW_TAG_member);
           WriteName(field->GetName());
-          WriteLazyType(field->GetTypeDescriptor());
+          // TODO: check declaring_class
+          WriteLazyType(field->GetTypeDescriptor(type));
           info_.WriteUdata(DW_AT_data_member_location, field->GetOffset().Uint32Value());
           uint32_t access_flags = field->GetAccessFlags();
           if (access_flags & kAccPublic) {

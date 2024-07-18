@@ -47,15 +47,18 @@ class NoopCompilerCallbacks final : public CompilerCallbacks {
     explicit PermissiveClassLinker(InternTable* intern_table)
         : ClassLinker(intern_table, /*fast_class_not_found_exceptions=*/ false) {}
 
-    bool DenyAccessBasedOnPublicSdk([[maybe_unused]] ArtMethod* art_method) const override
+    bool DenyAccessBasedOnPublicSdk([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                    [[maybe_unused]] ArtMethod* art_method) const override
         REQUIRES_SHARED(Locks::mutator_lock_) {
       return false;
     }
-    bool DenyAccessBasedOnPublicSdk([[maybe_unused]] ArtField* art_field) const override
+    bool DenyAccessBasedOnPublicSdk([[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
+                                    [[maybe_unused]] ArtField* art_field) const override
         REQUIRES_SHARED(Locks::mutator_lock_) {
       return false;
     }
     bool DenyAccessBasedOnPublicSdk(
+        [[maybe_unused]] ObjPtr<mirror::Class> declaring_class,
         [[maybe_unused]] std::string_view type_descriptor) const override {
       return false;
     }

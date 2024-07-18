@@ -160,7 +160,8 @@ jvmtiError FieldUtil::GetFieldName(jvmtiEnv* env,
 
   JvmtiUniquePtr<char[]> signature_copy;
   if (signature_ptr != nullptr) {
-    const char* sig = art_field->GetTypeDescriptor();
+    // TODO: remove GetDeclaringClass
+    const char* sig = art_field->GetTypeDescriptor(art_field->GetDeclaringClass());
     jvmtiError ret;
     signature_copy = CopyString(env, sig, &ret);
     if (signature_copy == nullptr) {

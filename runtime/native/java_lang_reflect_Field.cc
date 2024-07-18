@@ -374,7 +374,8 @@ static void Field_set(JNIEnv* env, jobject javaField, jobject javaObj, jobject j
     return;
   }
   ObjPtr<mirror::Class> field_type;
-  const char* field_type_descriptor = f->GetArtField()->GetTypeDescriptor();
+  const char* field_type_descriptor =
+      f->GetArtField()->GetTypeDescriptor(f->GetArtField()->GetDeclaringClass());
   Primitive::Type field_prim_type = Primitive::GetType(field_type_descriptor[0]);
   if (field_prim_type == Primitive::kPrimNot) {
     field_type = f->GetType();

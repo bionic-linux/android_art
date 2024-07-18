@@ -1033,6 +1033,7 @@ ArtMethod* Class::FindClassInitializer(PointerSize pointer_size) {
 }
 
 static std::tuple<bool, ArtField*> FindFieldByNameAndType(const DexFile& dex_file,
+                                                          ObjPtr<mirror::Class> declaring_class,
                                                           LengthPrefixedArray<ArtField>* fields,
                                                           std::string_view name,
                                                           std::string_view type)
@@ -1073,7 +1074,7 @@ static std::tuple<bool, ArtField*> FindFieldByNameAndType(const DexFile& dex_fil
   if (kIsDebugBuild) {
     ArtField* found = nullptr;
     for (ArtField& field : MakeIterationRangeFromLengthPrefixedArray(fields)) {
-      if (name == field.GetName() && type == field.GetTypeDescriptor()) {
+      if (name == field.GetName() && type == field.GetTypeDescriptor(declaring_class)) {
         found = &field;
         break;
       }
@@ -1098,7 +1099,7 @@ ArtField* Class::FindDeclaredInstanceField(std::string_view name, std::string_vi
     return nullptr;
   }
   DCHECK(!IsProxyClass());
-  auto [success, field] = FindFieldByNameAndType(GetDexFile(), ifields, name, type);
+  auto [success, field] = FindFieldByNameAndType(GetDexFile(), this, ifields, name, type);
   DCHECK_EQ(success, field != nullptr);
   return field;
 }
@@ -1138,9 +1139,9 @@ ArtField* Class::FindDeclaredStaticField(std::string_view name, std::string_view
     // the same artificial fields created by the `ClassLinker`.
     DCHECK_EQ(sfields->size(), 2u);
     DCHECK_EQ(strcmp(sfields->At(0).GetName(), "interfaces"), 0);
-    DCHECK_EQ(strcmp(sfields->At(0).GetTypeDescriptor(), "[Ljava/lang/Class;"), 0);
+    DCHECK_EQ(strcmp(sfields->At(0).GetTypeDescriptor(this), "[Ljava/lang/Class;"), 0);
     DCHECK_EQ(strcmp(sfields->At(1).GetName(), "throws"), 0);
-    DCHECK_EQ(strcmp(sfields->At(1).GetTypeDescriptor(), "[[Ljava/lang/Class;"), 0);
+    DCHECK_EQ(strcmp(sfields->At(1).GetTypeDescriptor(this), "[[Ljava/lang/Class;"), 0);
     if (name == "interfaces") {
       return (type == "[Ljava/lang/Class;") ? &sfields->At(0) : nullptr;
     } else if (name == "throws") {
@@ -1149,7 +1150,7 @@ ArtField* Class::FindDeclaredStaticField(std::string_view name, std::string_view
       return nullptr;
     }
   }
-  auto [success, field] = FindFieldByNameAndType(GetDexFile(), sfields, name, type);
+  auto [success, field] = FindFieldByNameAndType(GetDexFile(), this, sfields, name, type);
   DCHECK_EQ(success, field != nullptr);
   return field;
 }
@@ -1163,6 +1164,19 @@ ArtField* Class::FindDeclaredStaticField(ObjPtr<DexCache> dex_cache, uint32_t de
     }
   }
   return nullptr;
+}
+
+bool Class::IsDeclaringClass(ArtField* field) {
+  auto pointer_in_range_fn = [](ArtField* begin, ArtField* end, ArtField* ptr) {
+    return std::less_equal()(begin, ptr) && std::less()(ptr, end);
+  };
+  LengthPrefixedArray<ArtField>* fields = nullptr;
+  if (field->IsStatic()) {
+    fields = GetSFieldsPtr();
+  } else {
+    fields = GetIFieldsPtr();
+  }
+  return pointer_in_range_fn(fields->begin().operator->(), fields->end().operator->(), field);
 }
 
 ObjPtr<mirror::ObjectArray<mirror::Field>> Class::GetDeclaredFields(
@@ -1337,14 +1351,14 @@ ArtField* FindFieldImpl(ObjPtr<mirror::Class> klass,
     ensure_name_and_type_initialized();
     const DexFile& k_dex_file = *k_dex_cache->GetDexFile();
     if (kSearchInstanceFields && k->GetIFieldsPtr() != nullptr) {
-      auto [success, field] = FindFieldByNameAndType(k_dex_file, k->GetIFieldsPtr(), name, type);
+      auto [success, field] = FindFieldByNameAndType(k_dex_file, k, k->GetIFieldsPtr(), name, type);
       DCHECK_EQ(success, field != nullptr);
       if (success) {
         return {true, field};
       }
     }
     if (kSearchStaticFields && k->GetSFieldsPtr() != nullptr) {
-      auto [success, field] = FindFieldByNameAndType(k_dex_file, k->GetSFieldsPtr(), name, type);
+      auto [success, field] = FindFieldByNameAndType(k_dex_file, k, k->GetSFieldsPtr(), name, type);
       DCHECK_EQ(success, field != nullptr);
       if (success) {
         return {true, field};

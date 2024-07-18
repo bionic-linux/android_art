@@ -1214,7 +1214,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
   size_t class_static_fields_size = 0;
   for (ArtField& class_static_field : klass->GetSFields()) {
     size_t size = 0;
-    SignatureToBasicTypeAndSize(class_static_field.GetTypeDescriptor(), &size);
+    SignatureToBasicTypeAndSize(class_static_field.GetTypeDescriptor(klass), &size);
     class_static_fields_size += size;
   }
 
@@ -1340,7 +1340,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
     __ AddStringId(LookupStringId(name_fn(field)));
 
     size_t size;
-    HprofBasicType t = SignatureToBasicTypeAndSize(field.GetTypeDescriptor(), &size);
+    HprofBasicType t = SignatureToBasicTypeAndSize(field.GetTypeDescriptor(klass), &size);
     __ AddU1(t);
     switch (t) {
       case hprof_basic_byte:
@@ -1403,7 +1403,7 @@ void Hprof::DumpHeapClass(mirror::Class* klass) {
   for (int i = 0; i < iFieldCount; ++i) {
     ArtField* f = klass->GetInstanceField(i);
     __ AddStringId(LookupStringId(f->GetName()));
-    HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(), nullptr);
+    HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(klass), nullptr);
     __ AddU1(t);
   }
   // Add native value character array for strings / byte array for compressed strings.
@@ -1491,7 +1491,7 @@ void Hprof::DumpHeapInstanceObject(mirror::Object* obj,
     for (size_t i = 0; i < instance_fields; ++i) {
       ArtField* f = klass->GetInstanceField(i);
       size_t size;
-      HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(), &size);
+      HprofBasicType t = SignatureToBasicTypeAndSize(f->GetTypeDescriptor(klass), &size);
       switch (t) {
       case hprof_basic_byte:
         __ AddU1(f->GetByte(obj));

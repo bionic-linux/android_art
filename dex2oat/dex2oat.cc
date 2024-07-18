@@ -488,6 +488,7 @@ class ThreadLocalHashOverride {
     ScopedObjectAccess soa(hs_->Self());
     if (old_field_value_ != nullptr) {
       // Allow the overriding object to be collected.
+      // TODO: check that declaring_class is correct
       field_->SetObject</*kTransactionActive=*/ false>(klass_.Get(), old_field_value_.Get());
     }
     hs_.reset();  // While holding the mutator lock.
