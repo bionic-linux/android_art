@@ -70,6 +70,24 @@
       "parentUuid": "37669f1a_c811d585",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9614a052_78da7a74",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-18T15:11:09Z",
+      "side": 1,
+      "message": "\u003e since jar libraries don\u0027t have package names, we won\u0027t record them in the cache and we\u0027ll get a cache miss every time\n\nBut now with the cache changed to use the dex paths as keys, isn\u0027t it possible?",
+      "parentUuid": "28e1b848_d478a4d2",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

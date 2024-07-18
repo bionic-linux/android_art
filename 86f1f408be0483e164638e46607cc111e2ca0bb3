@@ -46,6 +46,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f29e607_8abe08cd",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-18T15:11:09Z",
+      "side": 1,
+      "message": "\u003e Before this change, because an apk shared library is just like a normal package, we find the shared library package during the iteration over the package list.\n\nOh, I see. Why is it that this will return earlier? Is it because a shared lib used by many packages will be visited from the first of those packages?\n\nIn any case, as mentioned above I hope we can cache them now and then this won\u0027t be necessary. (But it\u0027s still good to have in a separate CL.)",
+      "parentUuid": "073f2b09_40b0b261",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
