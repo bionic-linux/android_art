@@ -88,6 +88,24 @@
       "parentUuid": "28e1b848_d478a4d2",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0435ba96_2a6dd3c0",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-19T10:40:45Z",
+      "side": 1,
+      "message": "I still don\u0027t see how it\u0027s possible. After the change, we still need a package name in order to call `checkForPackage`. If we don\u0027t call it, we may hurt correctness.",
+      "parentUuid": "9614a052_78da7a74",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -70,6 +70,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3fd70f_4daab018",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-19T10:40:45Z",
+      "side": 1,
+      "message": "\u003e Why is it that this will return earlier? Is it because a shared lib used by many packages will be visited from the first of those packages?\n\nIt\u0027s because the reason why we load the library in the first place is because we are loading a commonly used package that uses this library as a dependency.",
+      "parentUuid": "7f29e607_8abe08cd",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
