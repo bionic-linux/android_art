@@ -94,6 +94,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cce6bc5_fd0c52ef",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-19T15:00:30Z",
+      "side": 1,
+      "message": "So basically this trades presumed faster lookups of common shared libs for more work overall for other files. It\u0027s not really obvious that\u0027s a net win. If we can\u0027t make the cache work as discussed above then it\u0027d be good to see how much this gives on top of the cache, i.e. \"(1) + (2) + **(4)**\" vs \"(1) + (2) + (3) + (4)\" in http://b/328673771#comment5.",
+      "parentUuid": "ce3fd70f_4daab018",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

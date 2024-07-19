@@ -106,6 +106,24 @@
       "parentUuid": "9614a052_78da7a74",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd94cdd_a0a9f800",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-19T15:00:30Z",
+      "side": 1,
+      "message": "But didn\u0027t you say we still find the shared library as a normal package sooner or later? Which libraries is it that we don\u0027t get package names for?\n\nIf they\u0027re in read-only partitions we don\u0027t need to recheck them anyway, so wouldn\u0027t we get pretty far by just matching well known system partition prefixes like /system(_ext), /product, and /vendor?\n\nNote you can provide a package in the `TYPE_DONT_RECORD` return on line 559, to recheck non-existence within existing package directories.",
+      "parentUuid": "0435ba96_2a6dd3c0",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
