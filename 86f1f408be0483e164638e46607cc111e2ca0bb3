@@ -118,6 +118,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f997d43_dace2909",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-19T15:08:29Z",
+      "side": 1,
+      "message": "\u003e this trades presumed faster lookups of common shared libs\n\nMy mistake, that should be \"this trades caching of common shared libs /.../\", and I  can agree that ought to be beneficial if the ideas above don\u0027t work. Numbers would still be nice, but in that case I wouldn\u0027t give that much confidence to a single app test like in http://b/328673771#comment5, so nvm.",
+      "parentUuid": "5cce6bc5_fd0c52ef",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
