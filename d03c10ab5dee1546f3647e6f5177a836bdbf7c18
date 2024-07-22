@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6687db0b_74077ddf",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1317851
+      },
+      "writtenOn": "2024-07-22T07:31:09Z",
+      "side": 1,
+      "message": "enabled default settings is true. I am not sure if we can skip this in select statement.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "d03c10ab5dee1546f3647e6f5177a836bdbf7c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
