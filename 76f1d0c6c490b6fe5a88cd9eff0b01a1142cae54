@@ -124,6 +124,24 @@
       "parentUuid": "0435ba96_2a6dd3c0",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3e4f48_46f149d9",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-23T14:37:09Z",
+      "side": 1,
+      "message": "\u003e But didn\u0027t you say we still find the shared library as a normal package sooner or later?\n\nI said there are two types of shared libraries: apk and jar. Only the former have package names, and the latter don\u0027t belong to any packages.\n\n\u003e If they\u0027re in read-only partitions we don\u0027t need to recheck them anyway, so wouldn\u0027t we get pretty far by just matching well known system partition prefixes like /system(_ext), /product, and /vendor?\n\nOnly jar libraries are always on read-only partitions; apk libraries are on /data once they are updated.\n\nIf we didn\u0027t check for shared libraries at all, how would we get a result that we could cache? For jar libraries, we wouldn\u0027t get any result after going through all packages because they don\u0027t belong to any packages. Do you mean we cache the results being \"not found\" for dex files on read-only partitions? This adds even more complexity on top of the complexity that we already have, and it\u0027s bad for peace of mind because it\u0027s unclear to me whether results for dex files on read-only partitions can even change or not.\n\nTaking a step back, this added check won\u0027t bring much cost. Most of the shared libraries have only one dex file and has no dependencies, so checking one is as trivial as a single string comparison on the dex path (that\u0027s why I didn\u0027t even add a HashSet for checked libraries, as a key lookup by the library name, which involves hashCode() and equals() may be even more expensive than the string comparison). In practice, the cost isn\u0027t measurable. The test app has two files (file (3) and (4) in http://b/328673771#comment4) that belong to other packages. When there is no LRU cache, finding the owning package for them needs iteration over all packages, which involves this added check, and as you can see, this check doesn\u0027t introduce a noticeable regression ((1) + (2) + (3) compared to (1) + (2) in http://b/328673771#comment5).",
+      "parentUuid": "9cd94cdd_a0a9f800",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

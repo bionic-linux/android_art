@@ -142,6 +142,30 @@
       },
       "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36822ee5_c0e11086",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-23T14:37:09Z",
+      "side": 1,
+      "message": "This line is for apk libraries. If you agree with me that we need to check for jar libraries anyway, which are handled by the `if` branch above, we get this early return for apk libraries almost for free.",
+      "parentUuid": "1f997d43_dace2909",
+      "range": {
+        "startLine": 578,
+        "startChar": 16,
+        "endLine": 578,
+        "endChar": 78
+      },
+      "revId": "86f1f408be0483e164638e46607cc111e2ca0bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
