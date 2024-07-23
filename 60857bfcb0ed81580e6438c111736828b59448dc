@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8ebdddd_88bb505d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933440
+      },
+      "writtenOn": "2024-07-23T07:10:42Z",
+      "side": 1,
+      "message": "The size of the element should be sizeof(ArtMethod*), not sizeof(ArtMethod)",
+      "revId": "60857bfcb0ed81580e6438c111736828b59448dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
