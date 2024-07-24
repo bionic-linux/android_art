@@ -48,6 +48,8 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -207,6 +209,32 @@ public class PreRebootDexoptJob implements ArtServiceJobInterface {
     /** @see #cancelAnyLocked */
     public synchronized void cancelAny() {
         cancelAnyLocked();
+    }
+
+    /** Cleans up chroot if it exists. Only expected to be called on system server startup. */
+    public synchronized void maybeCleanUpChrootAsyncForStartup() {
+        // We only get here when there was a system server restart (probably due to a crash). In
+        // this case, it's possible that a previous Pre-reboot Dexopt job didn't end normally and
+        // left over a chroot, so we need to clean it up.
+        // We use a new thread instead of any known thread / thread pool because we want to clean up
+        // the chroot as soon as possible if there is really one, to unblock update_engine (if there
+        // is an OTA), and we don't want the cleanup to block other things that use known threads /
+        // thread pools.
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        mCancellationSignal = new CancellationSignal();
+        mRunningJob = new CompletableFuture().runAsync(() -> {
+            try {
+                mInjector.getPreRebootDriver().maybeCleanUpChroot();
+            } finally {
+                synchronized (this) {
+                    mRunningJob = null;
+                    mCancellationSignal = null;
+                    this.notifyAll();
+                }
+            }
+        }, executor);
+        this.notifyAll();
+        executor.shutdown();
     }
 
     @VisibleForTesting

@@ -159,6 +159,7 @@ public final class ArtManagerLocal {
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public ArtManagerLocal(@NonNull Context context) {
         mInjector = new Injector(this, context);
+        maybeCleanUpChrootAsyncForStartup();
     }
 
     /** @hide */
@@ -1371,6 +1372,13 @@ public final class ArtManagerLocal {
         } catch (IOException | RemoteException e) {
             throw new SnapshotProfileException(e);
         }
+    }
+
+    private void maybeCleanUpChrootAsyncForStartup() {
+        if (!SdkLevel.isAtLeastV() || !mInjector.getPreRebootDexoptJob().hasStarted()) {
+            return;
+        }
+        mInjector.getPreRebootDexoptJob().maybeCleanUpChrootAsyncForStartup();
     }
 
     /** @hide */
