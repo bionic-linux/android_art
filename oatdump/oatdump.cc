@@ -45,6 +45,7 @@
 #include "base/file_utils.h"
 #include "base/indenter.h"
 #include "base/os.h"
+#include "base/read_file.h"
 #include "base/safe_map.h"
 #include "base/stats-inl.h"
 #include "base/stl_util.h"
@@ -2745,7 +2746,8 @@ class IMTDumper {
                       const std::string& imt_file,
                       Handle<mirror::ClassLoader> h_class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    std::vector<std::string> lines = ReadCommentedInputFromFile(imt_file);
+    std::vector<std::string> lines;
+    ReadCommentedInputFromFile(imt_file.c_str(), /* post-process */ nullptr, &lines);
     std::unordered_set<std::string> prepared;
 
     for (const std::string& line : lines) {
@@ -3078,32 +3080,6 @@ class IMTDumper {
         }
       }
     }
-  }
-
-  // Read lines from the given stream, dropping comments and empty lines
-  static std::vector<std::string> ReadCommentedInputStream(std::istream& in_stream) {
-    std::vector<std::string> output;
-    while (in_stream.good()) {
-      std::string dot;
-      std::getline(in_stream, dot);
-      if (dot.starts_with("#") || dot.empty()) {
-        continue;
-      }
-      output.push_back(dot);
-    }
-    return output;
-  }
-
-  // Read lines from the given file, dropping comments and empty lines.
-  static std::vector<std::string> ReadCommentedInputFromFile(const std::string& input_filename) {
-    std::unique_ptr<std::ifstream> input_file(new std::ifstream(input_filename, std::ifstream::in));
-    if (input_file.get() == nullptr) {
-      LOG(ERROR) << "Failed to open input file " << input_filename;
-      return std::vector<std::string>();
-    }
-    std::vector<std::string> result = ReadCommentedInputStream(*input_file);
-    input_file->close();
-    return result;
   }
 
   // Prepare a class, i.e., ensure it has a filled IMT. Will do so recursively for superclasses,

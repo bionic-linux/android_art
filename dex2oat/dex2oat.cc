@@ -59,6 +59,7 @@
 #include "base/memory_tool.h"
 #include "base/mutex.h"
 #include "base/os.h"
+#include "base/read_file.h"
 #include "base/scoped_flock.h"
 #include "base/stl_util.h"
 #include "base/time_utils.h"
@@ -2791,76 +2792,6 @@ class Dex2Oat final {
     image_writer_.reset();
 
     return true;
-  }
-
-  template <typename T>
-  static bool ReadCommentedInputFromFile(
-      const char* input_filename, std::function<std::string(const char*)>* process, T* output) {
-    auto input_file = std::unique_ptr<FILE, decltype(&fclose)>{fopen(input_filename, "re"), fclose};
-    if (!input_file) {
-      LOG(ERROR) << "Failed to open input file " << input_filename;
-      return false;
-    }
-    ReadCommentedInputStream<T>(input_file.get(), process, output);
-    return true;
-  }
-
-  template <typename T>
-  static bool ReadCommentedInputFromFd(
-      int input_fd, std::function<std::string(const char*)>* process, T* output) {
-    auto input_file = std::unique_ptr<FILE, decltype(&fclose)>{fdopen(input_fd, "r"), fclose};
-    if (!input_file) {
-      LOG(ERROR) << "Failed to re-open input fd from /prof/self/fd/" << input_fd;
-      return false;
-    }
-    ReadCommentedInputStream<T>(input_file.get(), process, output);
-    return true;
-  }
-
-  // Read lines from the given file, dropping comments and empty lines. Post-process each line with
-  // the given function.
-  template <typename T>
-  static std::unique_ptr<T> ReadCommentedInputFromFile(
-      const char* input_filename, std::function<std::string(const char*)>* process) {
-    std::unique_ptr<T> output(new T());
-    ReadCommentedInputFromFile(input_filename, process, output.get());
-    return output;
-  }
-
-  // Read lines from the given fd, dropping comments and empty lines. Post-process each line with
-  // the given function.
-  template <typename T>
-  static std::unique_ptr<T> ReadCommentedInputFromFd(
-      int input_fd, std::function<std::string(const char*)>* process) {
-    std::unique_ptr<T> output(new T());
-    ReadCommentedInputFromFd(input_fd, process, output.get());
-    return output;
-  }
-
-  // Read lines from the given stream, dropping comments and empty lines. Post-process each line
-  // with the given function.
-  template <typename T> static void ReadCommentedInputStream(
-      std::FILE* in_stream,
-      std::function<std::string(const char*)>* process,
-      T* output) {
-    char* line = nullptr;
-    size_t line_alloc = 0;
-    ssize_t len = 0;
-    while ((len = getline(&line, &line_alloc, in_stream)) > 0) {
-      if (line[0] == '\0' || line[0] == '#' || line[0] == '\n') {
-        continue;
-      }
-      if (line[len - 1] == '\n') {
-        line[len - 1] = '\0';
-      }
-      if (process != nullptr) {
-        std::string descriptor((*process)(line));
-        output->insert(output->end(), descriptor);
-      } else {
-        output->insert(output->end(), line);
-      }
-    }
-    free(line);
   }
 
   void LogCompletionTime() {

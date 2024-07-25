@@ -40,6 +40,7 @@
 #include "base/dumpable.h"
 #include "base/logging.h"  // For InitLogging.
 #include "base/mem_map.h"
+#include "base/read_file.h"
 #include "base/scoped_flock.h"
 #include "base/stl_util.h"
 #include "base/time_utils.h"
@@ -1022,45 +1023,6 @@ class ProfMan final {
 
   bool ShouldOnlyDumpClassesAndMethods() {
     return dump_classes_and_methods_;
-  }
-
-  // Read lines from the given file, dropping comments and empty lines. Post-process each line with
-  // the given function.
-  template <typename T>
-  static T* ReadCommentedInputFromFile(
-      const char* input_filename, std::function<std::string(const char*)>* process) {
-    std::unique_ptr<std::ifstream> input_file(new std::ifstream(input_filename, std::ifstream::in));
-    if (input_file.get() == nullptr) {
-      LOG(ERROR) << "Failed to open input file " << input_filename;
-      return nullptr;
-    }
-    std::unique_ptr<T> result(
-        ReadCommentedInputStream<T>(*input_file, process));
-    input_file->close();
-    return result.release();
-  }
-
-  // Read lines from the given stream, dropping comments and empty lines. Post-process each line
-  // with the given function.
-  template <typename T>
-  static T* ReadCommentedInputStream(
-      std::istream& in_stream,
-      std::function<std::string(const char*)>* process) {
-    std::unique_ptr<T> output(new T());
-    while (in_stream.good()) {
-      std::string dot;
-      std::getline(in_stream, dot);
-      if (dot.starts_with("#") || dot.empty()) {
-        continue;
-      }
-      if (process != nullptr) {
-        std::string descriptor((*process)(dot.c_str()));
-        output->insert(output->end(), descriptor);
-      } else {
-        output->insert(output->end(), dot);
-      }
-    }
-    return output.release();
   }
 
   // Find class definition for a descriptor.
