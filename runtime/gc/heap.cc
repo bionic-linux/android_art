@@ -377,11 +377,10 @@ Heap::Heap(size_t initial_size,
        * verification is enabled, we limit the size of allocation stacks to speed up their
        * searching.
        */
-      max_allocation_stack_size_(kGCALotMode
-          ? kGcAlotAllocationStackSize
-          : (kVerifyObjectSupport > kVerifyObjectModeFast)
-              ? kVerifyObjectAllocationStackSize
-              : kDefaultAllocationStackSize),
+      max_allocation_stack_size_(kGCALotMode ? kGcAlotAllocationStackSize :
+                                 (kVerifyObjectSupport > kVerifyObjectModeFast) ?
+                                               kVerifyObjectAllocationStackSize :
+                                               kDefaultAllocationStackSize),
       current_allocator_(kAllocatorTypeDlMalloc),
       current_non_moving_allocator_(kAllocatorTypeNonMoving),
       bump_pointer_space_(nullptr),
@@ -432,7 +431,8 @@ Heap::Heap(size_t initial_size,
       boot_image_spaces_(),
       boot_images_start_address_(0u),
       boot_images_size_(0u),
-      pre_oome_gc_count_(0u) {
+      pre_oome_gc_count_(0u),
+      non_movable_zygote_objects_() {
   if (VLOG_IS_ON(heap) || VLOG_IS_ON(startup)) {
     LOG(INFO) << "Heap() entering";
   }
@@ -2386,6 +2386,10 @@ class ZygoteCompactingCollector final : public collector::SemiSpace {
       // Add the bin consisting of the end of the previous object to the start of the current object.
       AddBin(bin_size, prev);
       prev = object_addr + RoundUp(obj->SizeOf<kDefaultVerifyFlags>(), kObjectAlignment);
+      if (!obj->IsClass()) {
+        gc::Heap* heap = Runtime::Current()->GetHeap();
+        heap->AddNonMovableZygoteObject(obj);
+      }
     };
     bin_live_bitmap_->Walk(visitor);
     // Add the last bin which spans after the last object to the end of the space.
@@ -2519,6 +2523,18 @@ void Heap::PreZygoteFork() {
   // there.
   non_moving_space_->GetMemMap()->Protect(PROT_READ | PROT_WRITE);
   const bool same_space = non_moving_space_ == main_space_;
+  // We create the ZygoteSpace by performing a semi-space collection to copy the main allocation
+  // space into what was the non-moving space. We do so by ignoring and overwriting the meta-
+  // information from the non-moving (dlmalloc) space. An initial pass identifies unused sections
+  // of the heap that we usually try to copy into first. We copy any remaining objects past the
+  // previous end of the old non-moving space. Eeverything up to the last allocated object in the
+  // old non-moving space then becomes ZygoteSpace. Everything after that becomes the new
+  // non-moving space.
+  // There is a subtlety here in that Object.clone() treats objects allocated as non-movable
+  // differently from other objects, and this ZygoteSpace creation process doesn't automatically
+  // preserve that distinction. Thus we must explicitly track this in non_movable_zygote_objects_.
+  // Otherwise we have to treat the entire ZygoteSpace as non-movable, which could cause some
+  // weird programming styles to eventually render most of the heap non-movable.
   if (kCompactZygote) {
     // Temporarily disable rosalloc verification because the zygote
     // compaction will mess up the rosalloc internal metadata.
@@ -2547,6 +2563,11 @@ void Heap::PreZygoteFork() {
     zygote_collector.SetToSpace(&target_space);
     zygote_collector.SetSwapSemiSpaces(false);
     zygote_collector.Run(kGcCauseCollectorTransition, false);
+    if (kIsDebugBuild) {
+      uint32_t num_nonmovable = non_movable_zygote_objects_.size();
+      LOG(VERBOSE) << "Number of bits set in non_movable_zygote_objects_ = " << num_nonmovable;
+      CHECK_LT(num_nonmovable, 1000u) << " Too many nonmovable zygote objects?";
+    }
     if (reset_main_space) {
       main_space_->GetMemMap()->Protect(PROT_READ | PROT_WRITE);
       madvise(main_space_->Begin(), main_space_->Capacity(), MADV_DONTNEED);
@@ -3734,6 +3755,18 @@ void Heap::SetIdealFootprint(size_t target_footprint) {
     target_footprint = GetMaxMemory();
   }
   target_footprint_.store(target_footprint, std::memory_order_relaxed);
+}
+
+bool Heap::IsInNonMovableSpace(ObjPtr<mirror::Object> obj) const {
+  space::Space* space = FindContinuousSpaceFromObject(obj.Ptr(), true);
+  if (space != nullptr) {
+    return space == non_moving_space_ ||
+           (space == zygote_space_ &&
+            non_movable_zygote_objects_.contains(
+                mirror::CompressedReference<mirror::Object>::FromMirrorPtr(obj.Ptr())
+                    .AsVRegValue()));
+  }
+  return false;
 }
 
 bool Heap::IsMovableObject(ObjPtr<mirror::Object> obj) const {

@@ -149,6 +149,7 @@ class Heap {
   static constexpr size_t kDefaultTLABSize = 32 * KB;
   static constexpr double kDefaultTargetUtilization = 0.6;
   static constexpr double kDefaultHeapGrowthMultiplier = 2.0;
+  static constexpr uint32_t kNonMovableBVSize = 512;
   // Primitive arrays larger than this size are put in the large object space.
   // TODO: Preliminary experiments suggest this value might be not optimal.
   //       This might benefit from further investigation.
@@ -383,7 +384,13 @@ class Heap {
                           bool sorted = false)
       REQUIRES_SHARED(Locks::heap_bitmap_lock_, Locks::mutator_lock_);
 
-  // Returns true if there is any chance that the object (obj) will move.
+  // Returns true if the object was specifically allocated as non-moving. Returns false for a
+  // zygote or image space object, since those do not contain objects allocated as non-moving.
+  EXPORT bool IsInNonMovableSpace(ObjPtr<mirror::Object> obj) const
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Returns true if there is any chance that the object (obj) will move. Returns false for
+  // zygote or image space.
   bool IsMovableObject(ObjPtr<mirror::Object> obj) const REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Enables us to compacting GC until objects are released.
@@ -1027,6 +1034,12 @@ class Heap {
     return size < pud_size ? pmd_size : pud_size;
   }
 
+  // Add a reference to the set of preexisting zygote nonmovable objects.
+  void AddNonMovableZygoteObject(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_) {
+    non_movable_zygote_objects_.insert(
+        mirror::CompressedReference<mirror::Object>::FromMirrorPtr(obj).AsVRegValue());
+  }
+
  private:
   class ConcurrentGCTask;
   class CollectorTransitionTask;
@@ -1345,7 +1358,7 @@ class Heap {
   std::vector<space::AllocSpace*> alloc_spaces_;
 
   // A space where non-movable objects are allocated, when compaction is enabled it contains
-  // Classes, ArtMethods, ArtFields, and non moving objects.
+  // Classes, and non moving objects.
   space::MallocSpace* non_moving_space_;
 
   // Space which we use for the kAllocatorTypeROSAlloc.
@@ -1758,6 +1771,10 @@ class Heap {
   Atomic<GcPauseListener*> gc_pause_listener_;
 
   std::unique_ptr<Verification> verification_;
+
+  // Non-class immovable objects allocated before we created zygote space.
+  // TODO: We may need a smaller data structure. Unfortunately, HashSets minimum size is too big.
+  std::set<uint32_t> non_movable_zygote_objects_;
 
   friend class CollectorTransitionTask;
   friend class collector::GarbageCollector;
