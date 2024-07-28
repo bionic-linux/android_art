@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255efe31_a8972838",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-28T16:58:09Z",
+      "side": 1,
+      "message": "`onStartJob` is called by the job scheduler and is only called after the job is scheduled (i.e., after `onUpdateReady` is called). `onUpdateReady` has `cancelAnyLocked`.",
+      "parentUuid": "69a21229_cd8b091e",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "a599c768fd109645f662175e3ffb38b672c3b8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f6c764_74b7893c",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6ca74d_e0922be6",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-28T16:58:09Z",
+      "side": 1,
+      "message": "I think it\u0027s quite obvious that we don\u0027t want to block the caller. What I mean here is that we don\u0027t want to block other things that use known threads / thread pools. Updated the comment to clarify this.",
+      "parentUuid": "21f6c764_74b7893c",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "a599c768fd109645f662175e3ffb38b672c3b8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb4d3f25_140fa7f8",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-07-26T22:09:53Z",
       "side": 1,
       "message": "\"leftover chroot\", to be slightly more precise?",
+      "range": {
+        "startLine": 173,
+        "startChar": 40,
+        "endLine": 173,
+        "endChar": 46
+      },
+      "revId": "a599c768fd109645f662175e3ffb38b672c3b8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f411df3f_71f6c03c",
+        "filename": "libartservice/service/java/com/android/server/art/prereboot/PreRebootDriver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-28T16:58:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4d3f25_140fa7f8",
       "range": {
         "startLine": 173,
         "startChar": 40,
