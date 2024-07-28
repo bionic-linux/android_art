@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "146999c9_4ef76ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3545049
+      },
+      "writtenOn": "2024-07-28T19:03:48Z",
+      "side": 1,
+      "message": "Hugu",
+      "revId": "5c0a5fc26ae299ef7c2a1d45ba129763c7ca8a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
