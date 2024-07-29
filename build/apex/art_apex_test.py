@@ -794,6 +794,7 @@ class TestingTargetChecker:
 
     # Fuzzer cases
     self._checker.check_art_test_data('fuzzer_corpus.zip')
+    self._checker.check_art_test_data('class_fuzzer_corpus.zip')
 
 
 class NoSuperfluousFilesChecker:
