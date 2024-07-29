@@ -982,6 +982,7 @@ art_cc_defaults {
     data: [
         ":art-gtest-jars-AllFields",
         ":art-gtest-jars-DexFuzzerFolder",
+        ":art-gtest-jars-ClassDexFuzzerFolder",
         ":art-gtest-jars-ErroneousA",
         ":art-gtest-jars-ErroneousB",
         ":art-gtest-jars-ErroneousInit",
