@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6213cdbe_1ce08121",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-29T11:41:03Z",
+      "side": 1,
+      "message": "Ok, so it should be safe as long as we\u0027re guaranteed that nothing precedes the call to `maybeCleanUpChrootAsyncForStartup`.\n\nIt\u0027s out of scope here, but I don\u0027t see how this deals with a call to `onUpdateReadyStartNow` between `onUpdateReady` and this method.",
+      "parentUuid": "255efe31_a8972838",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "a599c768fd109645f662175e3ffb38b672c3b8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21f6c764_74b7893c",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think it\u0027s quite obvious that we don\u0027t want to block the caller. What I mean here is that we don\u0027t want to block other things that use known threads / thread pools. Updated the comment to clarify this.",
       "parentUuid": "21f6c764_74b7893c",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 221,
+        "endChar": 38
+      },
+      "revId": "a599c768fd109645f662175e3ffb38b672c3b8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31bcbd24_36eae8ec",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-29T11:41:03Z",
+      "side": 1,
+      "message": "But we use `mRunningJob` explicitly to block other dexopt jobs until this is done. That seems at odds with the claim to not block anything else, so please clarify this aspect, including that the cancellation signal intentionally has no effect so that `cancelAnyLocked` is forced to wait for completion.\n\n\"Any known thread / thread pool\" can be more concrete to avoid misunderstandings. I gather it refers to the common ForkJoinPool here, which by default is limited to the [number of CPUs](https://cs.android.com/android/platform/superproject/main/+/main:libcore/ojluni/src/main/java/java/util/concurrent/ForkJoinPool.java;l\u003d2567;drc\u003d19c03defe4df642ce996a81cdc387db7e6cc833d). So it\u0027s pretty small and I agree we shouldn\u0027t use it.\n\nFurthermore, that means it\u0027s only fit for CPU-bound tasks, and since the dexopt job thread spends almost all its time sitting in blocking binder calls I don\u0027t think we should use it in `startLocked` either. It\u0027s out of scope here, but what do you think about changing that to a different executor?",
+      "parentUuid": "aa6ca74d_e0922be6",
       "range": {
         "startLine": 220,
         "startChar": 11,

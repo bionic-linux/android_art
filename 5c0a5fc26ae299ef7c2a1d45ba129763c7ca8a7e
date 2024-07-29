@@ -16,6 +16,29 @@
       "message": "Hugu",
       "revId": "5c0a5fc26ae299ef7c2a1d45ba129763c7ca8a7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa1e44b_47cb9e30",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-29T11:41:03Z",
+      "side": 1,
+      "message": "This is only safe if it\u0027s certain that this method is called before any of the other public entry points in this class. That\u0027s a bit fragile when it happens in the call chain via `mInjector.getPreRebootDexoptJob()` in ArtManagerLocal.\n\nIt\u0027d be easier to convince oneself of correctness if this is called from the constructor in this class instead. Alternatively it\u0027d be good to have an assertion in `cancelAnyLocked` to make sure that method isn\u0027t called before this. It\u0027s ok to do in a follow-up CL if you prefer.",
+      "range": {
+        "startLine": 214,
+        "startChar": 39,
+        "endLine": 214,
+        "endChar": 91
+      },
+      "revId": "5c0a5fc26ae299ef7c2a1d45ba129763c7ca8a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
