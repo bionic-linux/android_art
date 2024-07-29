@@ -22,6 +22,30 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b78889b_3c73e8cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3544930
+      },
+      "writtenOn": "2024-07-29T22:16:24Z",
+      "side": 1,
+      "message": "Hi, Santiago! Sorry for the delay, I decided to double check. \nHere it\u0027s my draft of microbenchmark (obviously no warm-up is needed, but it was written in general). Benchmarking on VisionFive2.\n```\nimport java.lang.Runnable;\n\nclass Main {\n    private static final int workloadSize \u003d 8 * 1024;\n    private static final int warmupIters \u003d 30000;\n    private static final int warmup2Iters \u003d 100;\n    private static final int benchIters \u003d 50000;\n\n    private static void MeasureTime(String mark, int iter, B f) {\n        long start \u003d System.nanoTime();\n        double r \u003d 0;\n        for (int i \u003d 0; i \u003c iter; ++i) {\n            r +\u003d f.run();\n        }\n        long end \u003d System.nanoTime();\n\n        long taken \u003d end - start;\n        long taken_ms \u003d taken / (1000 * 1000);\n        long per_iter \u003d taken / iter;\n        double per_iter_mcs \u003d (double)per_iter / (1000.0);\n        double per_operation \u003d (double)per_iter / workloadSize;\n\n        System.out.printf(\"\u0027%s\u0027 total \u003d %d ms  iter \u003d %.2f mcs  op \u003d %.2f ns\\n\", mark, taken_ms, per_iter_mcs, per_operation);\n    }\n\n    interface B {\n        double run();\n    }\n\n    static class CopySignDoubleRunner implements B {\n        @Override\n        public double run() {\n            double double81 \u003d 81.0d, doubleNegative12 \u003d -12.0d, result \u003d 0;\n            for (int i \u003d 0; i \u003c workloadSize; ++i) {\n                result \u003d Math.copySign(double81, doubleNegative12 - result);\n            }\n\n            return result;\n        }\n    }\n\n    static class CopySignFloatRunner implements B {\n        @Override\n        public double run() {\n            float float1 \u003d 1.0f, floatNegative99 \u003d -99.0f, result \u003d 0;\n            for (int i \u003d 0; i \u003c workloadSize; ++i) {\n                result \u003d Math.copySign(floatNegative99, float1 - result);\n            }\n            return result;\n        }\n    }\n\n    static class SignumDoubleRunner implements B {\n        @Override\n        public double run() {\n            double x \u003d 0.1d;\n            double result \u003d 0;\n            for (int i \u003d 0; i \u003c workloadSize; ++i) {\n                result \u003d Math.signum(x - result);\n            }\n            return result;\n        }\n    }\n\n    static class SignumFloatRunner implements B {\n        @Override\n        public double run() {\n            float x \u003d 0.9f;\n            float result \u003d 0;\n            for (long i \u003d 0; i \u003c workloadSize; ++i) {\n                result \u003d Math.signum(x - result);\n            }\n            return (double)result;\n        }\n    }\n\n    public static void main(String[] args) {\n        { // double copySign\n          MeasureTime(\"warmup (double copySign):\", warmupIters, new CopySignDoubleRunner());\n          MeasureTime(\"bench (double copySign):\", benchIters, new CopySignDoubleRunner());\n        }\n\n        { // float copySign\n          MeasureTime(\"warmup (float copySign):\", warmupIters, new CopySignFloatRunner());\n          MeasureTime(\"bench (float copySign):\", benchIters, new CopySignFloatRunner());\n        }\n\n        { // double signum\n          MeasureTime(\"warmup (double signum):\", warmupIters, new SignumDoubleRunner());\n          MeasureTime(\"bench (double signum):\", benchIters, new SignumDoubleRunner());\n        }\n\n        { // float signum\n          MeasureTime(\"warmup (float signum):\", warmupIters, new SignumFloatRunner());\n          MeasureTime(\"bench (float signum):\", benchIters, new SignumFloatRunner());\n        }\n\n    }\n}\n```",
+      "parentUuid": "fe2e43e5_667b3863",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
