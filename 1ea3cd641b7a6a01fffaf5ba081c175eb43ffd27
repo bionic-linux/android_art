@@ -22,6 +22,30 @@
       },
       "revId": "1ea3cd641b7a6a01fffaf5ba081c175eb43ffd27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45609b2_ec2b965d",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-29T16:33:27Z",
+      "side": 1,
+      "message": "I think it doesn\u0027t hurt. Someone may change this class, so it\u0027s better to warn them.",
+      "parentUuid": "31c866a3_84d077f1",
+      "range": {
+        "startLine": 230,
+        "startChar": 44,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "1ea3cd641b7a6a01fffaf5ba081c175eb43ffd27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
