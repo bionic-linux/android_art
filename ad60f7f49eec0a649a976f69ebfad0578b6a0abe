@@ -1,0 +1,103 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baecefc5_999cfe60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-29T16:37:30Z",
+      "side": 1,
+      "message": "Thanks! lgtm but please wait for Santiago\u0027s review too.",
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea1a5fd_b780d050",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-29T16:37:30Z",
+      "side": 1,
+      "message": "Maybe reword it to say located in the data directory within the directory of the fuzzer\u0027s binary.",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dc673b9e_f14f0fdd",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "  // The jar files are located in the data directory within the directory\n  // of the fuzzer\u0027s binary.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b3a7403_a70a1aee",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-29T16:37:30Z",
+      "side": 1,
+      "message": "Is this intended or left over from debugging?",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 65
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c302d446_16560256",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
