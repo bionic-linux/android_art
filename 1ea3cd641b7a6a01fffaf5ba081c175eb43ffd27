@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c866a3_84d077f1",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-07-29T15:01:45Z",
+      "side": 1,
+      "message": "Nit: Now that it\u0027s a class-internal affair this passus can perhaps be dropped?",
+      "range": {
+        "startLine": 230,
+        "startChar": 44,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "1ea3cd641b7a6a01fffaf5ba081c175eb43ffd27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
