@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "709358ae_87d1ab6a",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-07-29T20:38:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "c15e894e_6d24d473",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "0b79ce40795565d939200477fda0f7c82c9369ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "842e1d98_4b694fb1",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-26T15:23:29Z",
       "side": 1,
       "message": "```suggestion\nstruct RuntimeArgumentMap;\n\n[[maybe_unused]] static jlong VMRuntime_getFullGcCount(JNIEnv* env, jclass klass);\n\nnamespace metrics {\n```",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "0b79ce40795565d939200477fda0f7c82c9369ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb3af5e_9578c6da",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-07-29T20:38:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "842e1d98_4b694fb1",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f456c299_a654a8a9",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-07-29T20:38:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "18f2f69a_665459eb",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 30
+      },
+      "revId": "0b79ce40795565d939200477fda0f7c82c9369ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a7d20ca_51fd0462",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb1c4cb_dc89d1c8",
+        "filename": "libartbase/base/metrics/metrics.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-07-29T20:38:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6a7d20ca_51fd0462",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 2
+      },
+      "revId": "0b79ce40795565d939200477fda0f7c82c9369ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e679e876_8346048d",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-07-26T15:23:29Z",
       "side": 1,
       "message": "```suggestion\nstatic jlong VMRuntime_getFullGcCount([[maybe_unused]] JNIEnv* env, [[maybe_unused]] jclass klass) {\n```",
+      "range": {
+        "startLine": 539,
+        "startChar": 38,
+        "endLine": 539,
+        "endChar": 87
+      },
+      "revId": "0b79ce40795565d939200477fda0f7c82c9369ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae83bd2_daabfb20",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-07-29T20:38:38Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "e679e876_8346048d",
       "range": {
         "startLine": 539,
         "startChar": 38,
