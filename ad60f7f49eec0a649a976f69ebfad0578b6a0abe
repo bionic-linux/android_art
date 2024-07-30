@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8f3394_7b463bd3",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-07-30T12:10:03Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "eea1a5fd_b780d050",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b3a7403_a70a1aee",
@@ -113,6 +137,30 @@
       "writtenOn": "2024-07-30T08:13:00Z",
       "side": 1,
       "message": "If this is intended as a temporary measure, please add a comment saying so",
+      "parentUuid": "8b3a7403_a70a1aee",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 65
+      },
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97dd28c0_e56c7b45",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-07-30T12:10:03Z",
+      "side": 1,
+      "message": "I left it for debugging in case it will still get the wrong path after we merge it.",
       "parentUuid": "8b3a7403_a70a1aee",
       "range": {
         "startLine": 42,
