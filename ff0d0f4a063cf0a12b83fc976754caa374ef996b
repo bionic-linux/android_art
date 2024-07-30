@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5d6fcb_818e0207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-30T12:45:33Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "ff0d0f4a063cf0a12b83fc976754caa374ef996b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567d86a6_37b58e7e",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-30T12:45:33Z",
+      "side": 1,
+      "message": "minor nit: We typically try to fill the line (I think current limit is 100 or you can use 80 if that\u0027s what rest of the file follows) before moving to the next line.",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "54f42920_760bcbed",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": "  // The jar files are located in the data directory within the directory of the\n  // fuzzer\u0027s binary.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ff0d0f4a063cf0a12b83fc976754caa374ef996b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
