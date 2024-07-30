@@ -98,6 +98,30 @@
       ],
       "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e3e279_35b0026c",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-30T08:13:00Z",
+      "side": 1,
+      "message": "If this is intended as a temporary measure, please add a comment saying so",
+      "parentUuid": "8b3a7403_a70a1aee",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 65
+      },
+      "revId": "ad60f7f49eec0a649a976f69ebfad0578b6a0abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
