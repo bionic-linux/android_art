@@ -16,6 +16,23 @@
       "message": "Thanks for the reviews on the patch chain all!",
       "revId": "1f65a66c31f7815b28249cc16bc3b28c8493c3bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96de3893_52cda040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-30T13:31:03Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1f65a66c31f7815b28249cc16bc3b28c8493c3bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
