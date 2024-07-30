@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e22102a_dc5566c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-07-30T19:57:20Z",
+      "side": 1,
+      "message": "We should also test on all arches, as this only runs the tests on arm64 / x86_64. Unfortunately riscv64 tests are broken at the moment. I\u0027m happy to +1 if someone ran riscv64 tests before and observed them passing, otherwise we should wait until they are fixed, or alternatively run them in an old tree (the breakage probably happened in the last few weeks).",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "c76d30ed9ac2a7bb519bebd21db8e7c5adc1c40b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "156346b3_1c33ecc3",
