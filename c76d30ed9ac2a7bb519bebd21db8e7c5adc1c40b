@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da93a04_ba348a76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-07-31T08:55:56Z",
+      "side": 1,
+      "message": "I don\u0027t have the same level of knowledge about ART as Vladimir does, so I\u0027m a bit scared of submitting riscv64 changes without any testing at all. I\u0027m actively working on fixing riscv64 testing now. Give me a couple of days to try and fix it, and if I do not succeed I will +2 since Mythri and Vladimir think the code looks ok, and I don\u0027t want to block simulator work even more.\n\nThe process for riscv64 testing should be as easy as testing on cuttlefish using ART chroot-based testing: https://cs.android.com/android/platform/superproject/+/master:art/test/README.chroot.md.\n\n1. In AOSP tree:\n```\n. build/envsetup.sh\nlunch lunch aosp_cf_riscv64_phone-trunk_staging-eng\nm -j$(nproc)\nlaunch_cvd\n```\n\n2. In master-art tree:\n```\n. build/envsetup.sh\nexport SOONG_ALLOW_MISSING_DEPENDENCIES\u003dtrue\nexport BUILD_BROKEN_DISABLE_BAZEL\u003dtrue\nlunch riscv64-trunk_staging-eng\nart/tools/buildbot-build.sh\nunset ART_TEST_ANDROID_ROOT\nunset CUSTOM_TARGET_LINKER\nunset ART_TEST_ANDROID_ART_ROOT\nunset ART_TEST_ANDROID_RUNTIME_ROOT\nunset ART_TEST_ANDROID_I18N_ROOT\nunset ART_TEST_ANDROID_TZDATA_ROOT\nexport ANDROID_SERIAL\u003d0.0.0.0:6520\nexport ART_TEST_CHROOT\u003d/data/local/art-test-chroot\nart/tools/buildbot-cleanup-device.sh\nart/tools/buildbot-setup-device.sh\nart/tools/buildbot-sync.sh\nart/test.py -j8 -r --target --verbose --ndebug --64 --optimizing\n# ... run other tests\n```\n\nUnfortunately, this is broken at the moment.\n\nThere\u0027s also VM-based approach which I find faster and easier to debug, but it\u0027s blocked on the same things as cuttlefish.",
+      "parentUuid": "05712555_5e1b507a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "c76d30ed9ac2a7bb519bebd21db8e7c5adc1c40b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "156346b3_1c33ecc3",
