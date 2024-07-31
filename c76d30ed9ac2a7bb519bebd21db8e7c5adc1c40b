@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "05712555_5e1b507a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-07-31T08:33:08Z",
+      "side": 1,
+      "message": "The last time I spoke to Vladimir about testing riscv64 I understood that the process was quite extensive (lots of cherry picked patches) therefore as long as the changes mirrored those on other arches the patch would be okay without this testing. Do you know if this is still the case or have things changed , or did I misunderstand originally?",
+      "parentUuid": "1e22102a_dc5566c7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "c76d30ed9ac2a7bb519bebd21db8e7c5adc1c40b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "156346b3_1c33ecc3",
