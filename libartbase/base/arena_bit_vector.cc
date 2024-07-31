@@ -35,6 +35,7 @@ class ArenaBitVectorAllocatorKindImpl<false> {
   ArenaAllocKind Kind() { return kArenaAllocGrowableBitMap; }
 };
 
+// Add some comments.
 template <bool kCount>
 class ArenaBitVectorAllocatorKindImpl {
  public:
