@@ -70,6 +70,30 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeec2a5f_dee5b189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-07-31T08:06:03Z",
+      "side": 1,
+      "message": "Thanks for the information. Have you seen this being useful for any apps? or a particular workflow?\n\nI am asking because we try to avoid making intrinsics unless there\u0027s a reason to do it. When we create intrinsics, we take power away from the compiler by hand-creating code, not allowing the compiler to inline these methods, etc. The more intrinsics we have, the less efficient the compiler is.\n\nThere\u0027s also the fact that currently we have a limited possible amount of intrinsics. We have space for 12 more and this CL would use 4 out of that 12.",
+      "parentUuid": "2e6942aa_18d37ad9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
