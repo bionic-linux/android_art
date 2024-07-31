@@ -1,0 +1,791 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511dd47e_f4c34d30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Could you mention the exact commandline flag for normal profiles and the flag for boot image profiles?",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 107
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30741424_650e4c40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Could you please put the results in http://gpaste/ and provide a link here?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 362
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d8718fd_e33c69df",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Move into the anonymous namespace starting from line 135 so that it doesn\u0027t leak to anywhere else.\n\nAlso, I think keeping the same name `MethodHotness` improves readability.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c5826e_f1f1ef61",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3040,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Can we add `\u003d default` to `profile_compilation_info.h` line 1102 and get rid of this? https://en.cppreference.com/w/cpp/language/copy_constructor",
+      "range": {
+        "startLine": 3036,
+        "startChar": 0,
+        "endLine": 3040,
+        "endChar": 1
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e71748_a91495a1",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "[`FindOrAdd`](https://cs.android.com/android/platform/superproject/main/+/main:art/libartbase/base/safe_map.h;l\u003d168;drc\u003d554d48465f31b0e073f2c53a09ed9851f8b3e692)",
+      "range": {
+        "startLine": 3074,
+        "startChar": 4,
+        "endLine": 3078,
+        "endChar": 5
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db85cb7_ae38aa25",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3160,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "No need for this. The for loop will do nothing if `other` is empty.",
+      "range": {
+        "startLine": 3158,
+        "startChar": 0,
+        "endLine": 3160,
+        "endChar": 3
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a62cb8_69f1694d",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3161,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "`const auto\u0026`, to avoid copying.",
+      "range": {
+        "startLine": 3161,
+        "startChar": 7,
+        "endLine": 3161,
+        "endChar": 17
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d521c4d_45206832",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Same here. `FindOrAdd`.",
+      "range": {
+        "startLine": 3166,
+        "startChar": 4,
+        "endLine": 3170,
+        "endChar": 5
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83a65f7_ee542323",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3177,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Use `const \u0026` to avoid copying, unless you use `TypeReference`, which is trivial to copy.",
+      "range": {
+        "startLine": 3177,
+        "startChar": 9,
+        "endLine": 3177,
+        "endChar": 20
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44c84b9_c3cf22ae",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Do we have to store strings here? Can we store `TypeReference` instead? Example: https://cs.android.com/android/platform/superproject/main/+/main:art/profman/profile_assistant_test.cc;l\u003d46;drc\u003defb735f4d5a2f04550e33e8aa9485f906018fe4e",
+      "range": {
+        "startLine": 1098,
+        "startChar": 6,
+        "endLine": 1098,
+        "endChar": 37
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e2a51a_64cc530d",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "into where?",
+      "range": {
+        "startLine": 1120,
+        "startChar": 54,
+        "endLine": 1120,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a4ecb799_8454b860",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1120,
+                "startChar": 0,
+                "endLine": 1122,
+                "endChar": 0
+              },
+              "replacement": "    // Extracts inline cache info for the given method into the `inline_cache`\n    // field. Note that this will collapse all ICs with the same receiver type.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab8ec694_083a4a44",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Do you intend to make a copy? Or this can be `const SafeMap\u003cstd::string, InlineCacheInfo\u003e\u0026`?",
+      "range": {
+        "startLine": 1130,
+        "startChar": 4,
+        "endLine": 1130,
+        "endChar": 41
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "209cc456_af783bb0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1130,
+                "startChar": 0,
+                "endLine": 1131,
+                "endChar": 0
+              },
+              "replacement": "    const SafeMap\u003cstd::string, InlineCacheInfo\u003e\u0026 GetInlineCache() const {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a176602_737ac0a3",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Same here. Do we have to store strings? Or we can store `TypeReference`? Example: https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/linker/oat_writer.h;l\u003d471;drc\u003defb735f4d5a2f04550e33e8aa9485f906018fe4e",
+      "range": {
+        "startLine": 1140,
+        "startChar": 35,
+        "endLine": 1140,
+        "endChar": 36
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c45b5a_0844fc1a",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "\"inline_caches\", and add trailing `_`.",
+      "range": {
+        "startLine": 1141,
+        "startChar": 54,
+        "endLine": 1141,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a2fc1ba5_c0568846",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1131,
+                "startChar": 0,
+                "endLine": 1132,
+                "endChar": 0
+              },
+              "replacement": "      return inline_caches_;\n"
+            },
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1141,
+                "startChar": 0,
+                "endLine": 1142,
+                "endChar": 0
+              },
+              "replacement": "    SafeMap\u003cstd::string, InlineCacheInfo\u003e inline_caches_;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3f3a73_84a3b706",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "049b86de_7e67daad",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.cc",
+              "range": {
+                "startLine": 2,
+                "startChar": 0,
+                "endLine": 3,
+                "endChar": 0
+              },
+              "replacement": " * Copyright (C) 2024 The Android Open Source Project\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c0ad03_e9e13b22",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Are all these needed?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a71ac1_1f41714e",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Use `const \u0026` to avoid copying, unless you use `TypeReference`, which is trivial to copy.",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "a1351ab8_e472dd97",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.cc",
+              "range": {
+                "startLine": 53,
+                "startChar": 0,
+                "endLine": 54,
+                "endChar": 0
+              },
+              "replacement": "      for (const std::string\u0026 cls : inline_cache_data.classes_) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fbbb64_bf02b085",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2134c5ff_0b8c47c0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 2,
+                "startChar": 0,
+                "endLine": 3,
+                "endChar": 0
+              },
+              "replacement": " * Copyright (C) 2024 The Android Open Source Project\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14f8372_62df3723",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "`static`s here are redundant. https://stackoverflow.com/q/45987571",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "65d7a610_41b6b54f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 24,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "constexpr char kProfileParsingInlineChacheSep \u003d \u0027+\u0027;\nconstexpr char kProfileParsingInlineChacheTargetSep \u003d \u0027]\u0027;\nconst char kMissingTypesMarker[] \u003d\n"
+            },
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "const char kMegamorphicTypesMarker[] \u003d\n"
+            },
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 31,
+                "endChar": 0
+              },
+              "replacement": "constexpr char kProfileParsingTypeSep \u003d \u0027,\u0027;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7f6c6d1_a3338698",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "`constexpr char kMissingTypesMarker[]` or `constexpr const char* kMissingTypesMarker`",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f01713b4_b8f6faae",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": "static constexpr char kMissingTypesMarker[] \u003d\n"
+            },
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": "static constexpr char kMegamorphicTypesMarker[] \u003d\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218447d6_8e5da584",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "No need for NOLINT because you are using a char array rather than the wrong std::string.",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2dadb2f5_181e4a1b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 27,
+                "startChar": 0,
+                "endLine": 28,
+                "endChar": 0
+              },
+              "replacement": "    \"missing_types\";\n"
+            },
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 29,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "    \"megamorphic_types\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7061e517_75301d32",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "No `using` in headers. go/totw/119",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "fb5e12b4_53d64714",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 34,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 39,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "    const SafeMap\u003cstd::string,\n                  FlattenProfileData::ItemMetadata::InlineCacheInfo\u003e\u0026\n        inline_cache);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008c88d5_d780e17c",
+        "filename": "profman/profman.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-07-31T14:14:28Z",
+      "side": 1,
+      "message": "Redundant `{}`.",
+      "range": {
+        "startLine": 835,
+        "startChar": 52,
+        "endLine": 835,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "319de732_3803bfb5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/profman.cc",
+              "range": {
+                "startLine": 835,
+                "startChar": 0,
+                "endLine": 836,
+                "endChar": 0
+              },
+              "replacement": "          FlattenProfileData::ItemMetadata metadata;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
