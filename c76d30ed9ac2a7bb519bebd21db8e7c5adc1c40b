@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41affee_b7271ef1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-07-31T09:47:34Z",
+      "side": 1,
+      "message": "Thanks Ulya! Just to clarify, Vladimir looked only at ARM (32/64 bit) changes. If we are unable to run the tests, then maybe we can all take take another look at riscv to see it matches other archs.",
+      "parentUuid": "2da93a04_ba348a76",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "c76d30ed9ac2a7bb519bebd21db8e7c5adc1c40b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "156346b3_1c33ecc3",
