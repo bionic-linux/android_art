@@ -22,9 +22,6 @@ package com.android.server.art;
  *
  * @hide
  */
-interface IArtdCancellationSignal {
-    oneway void cancel();
-
-    /** For artd internal type-checking. DO NOT USE. */
-    long getType();
+parcelable IArtdCancellationSignal {
+    long token;
 }

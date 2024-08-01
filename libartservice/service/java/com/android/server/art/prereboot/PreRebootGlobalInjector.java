@@ -95,7 +95,7 @@ public class PreRebootGlobalInjector extends GlobalInjector {
             IArtdCancellationSignal artdCancellationSignal = artd.createCancellationSignal();
             cancellationSignal.setOnCancelListener(() -> {
                 try {
-                    artdCancellationSignal.cancel();
+                    artd.cancel(artdCancellationSignal);
                 } catch (RemoteException e) {
                     AsLog.e("An error occurred when sending a cancellation signal", e);
                 }

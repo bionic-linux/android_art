@@ -261,7 +261,7 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                                 mInjector.getArtd().createCancellationSignal();
                         mCancellationSignal.setOnCancelListener(() -> {
                             try {
-                                artdCancellationSignal.cancel();
+                                mInjector.getArtd().cancel(artdCancellationSignal);
                             } catch (RemoteException e) {
                                 AsLog.e("An error occurred when sending a cancellation signal", e);
                             }

@@ -290,21 +290,6 @@ Result<FileVisibility> GetFileVisibility(const std::string& file) {
              FileVisibility::NOT_OTHER_READABLE;
 }
 
-Result<ArtdCancellationSignal*> ToArtdCancellationSignal(IArtdCancellationSignal* input) {
-  if (input == nullptr) {
-    return Error() << "Cancellation signal must not be nullptr";
-  }
-  // We cannot use `dynamic_cast` because ART code is compiled with `-fno-rtti`, so we have to check
-  // the magic number.
-  int64_t type;
-  if (!input->getType(&type).isOk() ||
-      type != reinterpret_cast<intptr_t>(kArtdCancellationSignalType)) {
-    // The cancellation signal must be created by `Artd::createCancellationSignal`.
-    return Error() << "Invalid cancellation signal type";
-  }
-  return static_cast<ArtdCancellationSignal*>(input);
-}
-
 Result<void> CopyFile(const std::string& src_path, const NewFile& dst_file) {
   std::string content;
   if (!ReadFileToString(src_path, &content)) {
@@ -981,19 +966,18 @@ ndk::ScopedAStatus Artd::getDexoptNeeded(const std::string& in_dexFile,
   return ScopedAStatus::ok();
 }
 
-ndk::ScopedAStatus Artd::dexopt(
-    const OutputArtifacts& in_outputArtifacts,
-    const std::string& in_dexFile,
-    const std::string& in_instructionSet,
-    const std::optional<std::string>& in_classLoaderContext,
-    const std::string& in_compilerFilter,
-    const std::optional<ProfilePath>& in_profile,
-    const std::optional<VdexPath>& in_inputVdex,
-    const std::optional<DexMetadataPath>& in_dmFile,
-    PriorityClass in_priorityClass,
-    const DexoptOptions& in_dexoptOptions,
-    const std::shared_ptr<IArtdCancellationSignal>& in_cancellationSignal,
-    ArtdDexoptResult* _aidl_return) {
+ndk::ScopedAStatus Artd::dexopt(const OutputArtifacts& in_outputArtifacts,
+                                const std::string& in_dexFile,
+                                const std::string& in_instructionSet,
+                                const std::optional<std::string>& in_classLoaderContext,
+                                const std::string& in_compilerFilter,
+                                const std::optional<ProfilePath>& in_profile,
+                                const std::optional<VdexPath>& in_inputVdex,
+                                const std::optional<DexMetadataPath>& in_dmFile,
+                                PriorityClass in_priorityClass,
+                                const DexoptOptions& in_dexoptOptions,
+                                const IArtdCancellationSignal& in_cancellationSignal,
+                                ArtdDexoptResult* _aidl_return) {
   _aidl_return->cancelled = false;
 
   RETURN_FATAL_IF_PRE_REBOOT_MISMATCH(options_, in_outputArtifacts, "outputArtifacts");
@@ -1005,8 +989,7 @@ ndk::ScopedAStatus Artd::dexopt(
       in_profile.has_value() ?
           std::make_optional(OR_RETURN_FATAL(BuildProfileOrDmPath(in_profile.value()))) :
           std::nullopt;
-  ArtdCancellationSignal* cancellation_signal =
-      OR_RETURN_FATAL(ToArtdCancellationSignal(in_cancellationSignal.get()));
+  ArtdCancellationSignal* cancellation_signal = GetCancellationSignal(in_cancellationSignal);
 
   std::unique_ptr<ClassLoaderContext> context = nullptr;
   if (in_classLoaderContext.has_value()) {
@@ -1172,11 +1155,14 @@ ndk::ScopedAStatus Artd::dexopt(
 
   ProcessStat stat;
   Result<int> result = ExecAndReturnCode(
-      art_exec_args.Get(), kLongTimeoutSec, cancellation_signal->CreateExecCallbacks(), &stat);
+      art_exec_args.Get(),
+      kLongTimeoutSec,
+      cancellation_signal != nullptr ? cancellation_signal->CreateExecCallbacks() : ExecCallbacks(),
+      &stat);
   _aidl_return->wallTimeMs = stat.wall_time_ms;
   _aidl_return->cpuTimeMs = stat.cpu_time_ms;
   if (!result.ok()) {
-    if (cancellation_signal->IsCancelled()) {
+    if (cancellation_signal != nullptr && cancellation_signal->IsCancelled()) {
       _aidl_return->cancelled = true;
       return ScopedAStatus::ok();
     }
@@ -1205,7 +1191,7 @@ ndk::ScopedAStatus Artd::dexopt(
   return ScopedAStatus::ok();
 }
 
-ScopedAStatus ArtdCancellationSignal::cancel() {
+ScopedAStatus ArtdCancellationSignal::Cancel() {
   std::lock_guard<std::mutex> lock(mu_);
   is_cancelled_ = true;
   for (pid_t pid : pids_) {
@@ -1213,11 +1199,6 @@ ScopedAStatus ArtdCancellationSignal::cancel() {
     int res = kill_(-pid, SIGKILL);
     DCHECK_EQ(res, 0);
   }
-  return ScopedAStatus::ok();
-}
-
-ScopedAStatus ArtdCancellationSignal::getType(int64_t* _aidl_return) {
-  *_aidl_return = reinterpret_cast<intptr_t>(kArtdCancellationSignalType);
   return ScopedAStatus::ok();
 }
 
@@ -1247,10 +1228,31 @@ bool ArtdCancellationSignal::IsCancelled() {
   return is_cancelled_;
 }
 
-ScopedAStatus Artd::createCancellationSignal(
-    std::shared_ptr<IArtdCancellationSignal>* _aidl_return) {
-  *_aidl_return = ndk::SharedRefBase::make<ArtdCancellationSignal>(kill_);
+ScopedAStatus Artd::createCancellationSignal(IArtdCancellationSignal* _aidl_return) {
+  auto signal = std::make_unique<ArtdCancellationSignal>(kill_);
+  _aidl_return->token = static_cast<int64_t>(reinterpret_cast<intptr_t>(signal.get()));
+  std::lock_guard<std::mutex> lock(cancellation_signals_mu_);
+  cancellation_signals_[_aidl_return->token] = std::move(signal);
   return ScopedAStatus::ok();
+}
+
+ScopedAStatus Artd::cancel(
+    const aidl::com::android::server::art::IArtdCancellationSignal& in_cancellationSignal) {
+  ArtdCancellationSignal* signal = GetCancellationSignal(in_cancellationSignal);
+  if (signal == nullptr) {
+    return ScopedAStatus::ok();
+  }
+  return signal->Cancel();
+}
+
+ArtdCancellationSignal* Artd::GetCancellationSignal(
+    const aidl::com::android::server::art::IArtdCancellationSignal& cancellation_signal) {
+  std::lock_guard<std::mutex> lock(cancellation_signals_mu_);
+  auto it = cancellation_signals_.find(cancellation_signal.token);
+  if (it != cancellation_signals_.end()) {
+    return it->second.get();
+  }
+  return nullptr;
 }
 
 ScopedAStatus Artd::cleanup(const std::vector<ProfilePath>& in_profilesToKeep,
@@ -1756,7 +1758,7 @@ Result<void> Artd::BindMount(const std::string& source, const std::string& targe
 }
 
 ScopedAStatus Artd::preRebootInit(
-    const std::shared_ptr<IArtdCancellationSignal>& in_cancellationSignal, bool* _aidl_return) {
+    const std::optional<IArtdCancellationSignal>& in_cancellationSignal, bool* _aidl_return) {
   RETURN_FATAL_IF_NOT_PRE_REBOOT(options_);
 
   std::string tmp_dir = pre_reboot_tmp_dir_.value_or(kDefaultPreRebootTmpDir);
@@ -1789,8 +1791,11 @@ ScopedAStatus Artd::preRebootInit(
   if (!preparation_done) {
     OR_RETURN_NON_FATAL(BindMountNewDir(art_apex_data_dir, GetArtApexData()));
     OR_RETURN_NON_FATAL(BindMountNewDir(odrefresh_dir, "/data/misc/odrefresh"));
+    if (!in_cancellationSignal.has_value()) {
+      return Fatal("Cancallation token must be provided on the first call to preRebootInit");
+    }
     ArtdCancellationSignal* cancellation_signal =
-        OR_RETURN_FATAL(ToArtdCancellationSignal(in_cancellationSignal.get()));
+        GetCancellationSignal(in_cancellationSignal.value());
     if (!OR_RETURN_NON_FATAL(PreRebootInitBootImages(cancellation_signal))) {
       *_aidl_return = false;
       return ScopedAStatus::ok();
@@ -1887,10 +1892,13 @@ Result<bool> Artd::PreRebootInitBootImages(ArtdCancellationSignal* cancellation_
 
   LOG(INFO) << "Running odrefresh: " << Join(args.Get(), /*separator=*/" ");
 
-  Result<int> result =
-      ExecAndReturnCode(args.Get(), kLongTimeoutSec, cancellation_signal->CreateExecCallbacks());
+  Result<int> result = ExecAndReturnCode(args.Get(),
+                                         kLongTimeoutSec,
+                                         cancellation_signal != nullptr ?
+                                             cancellation_signal->CreateExecCallbacks() :
+                                             ExecCallbacks());
   if (!result.ok()) {
-    if (cancellation_signal->IsCancelled()) {
+    if (cancellation_signal != nullptr && cancellation_signal->IsCancelled()) {
       return false;
     }
     return Errorf("Failed to run odrefresh: {}", result.error().message());

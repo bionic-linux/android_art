@@ -34,7 +34,6 @@
 #include <vector>
 
 #include "aidl/com/android/server/art/BnArtd.h"
-#include "aidl/com/android/server/art/BnArtdCancellationSignal.h"
 #include "android-base/result.h"
 #include "android-base/thread_annotations.h"
 #include "android/binder_auto_utils.h"
@@ -60,15 +59,12 @@ struct Options {
   bool is_pre_reboot = false;
 };
 
-class ArtdCancellationSignal : public aidl::com::android::server::art::BnArtdCancellationSignal {
+class ArtdCancellationSignal {
  public:
   explicit ArtdCancellationSignal(std::function<int(pid_t, int)> kill_func)
       : kill_(std::move(kill_func)) {}
 
-  ndk::ScopedAStatus cancel() override;
-
-  ndk::ScopedAStatus getType(int64_t* _aidl_return) override;
-
+  ndk::ScopedAStatus Cancel();
   // Returns callbacks to be provided to `ExecUtils`, to register/unregister the process with this
   // cancellation signal.
   ExecCallbacks CreateExecCallbacks();
@@ -189,13 +185,14 @@ class Artd : public aidl::com::android::server::art::BnArtd {
       const std::optional<aidl::com::android::server::art::DexMetadataPath>& in_dmFile,
       aidl::com::android::server::art::PriorityClass in_priorityClass,
       const aidl::com::android::server::art::DexoptOptions& in_dexoptOptions,
-      const std::shared_ptr<aidl::com::android::server::art::IArtdCancellationSignal>&
-          in_cancellationSignal,
+      const aidl::com::android::server::art::IArtdCancellationSignal& in_cancellationSignal,
       aidl::com::android::server::art::ArtdDexoptResult* _aidl_return) override;
 
   ndk::ScopedAStatus createCancellationSignal(
-      std::shared_ptr<aidl::com::android::server::art::IArtdCancellationSignal>* _aidl_return)
-      override;
+      aidl::com::android::server::art::IArtdCancellationSignal* _aidl_return) override;
+
+  ndk::ScopedAStatus cancel(const aidl::com::android::server::art::IArtdCancellationSignal&
+                                in_cancellationSignal) override;
 
   ndk::ScopedAStatus cleanup(
       const std::vector<aidl::com::android::server::art::ProfilePath>& in_profilesToKeep,
@@ -238,7 +235,7 @@ class Artd : public aidl::com::android::server::art::BnArtd {
                                                       bool* _aidl_return) override;
 
   ndk::ScopedAStatus preRebootInit(
-      const std::shared_ptr<aidl::com::android::server::art::IArtdCancellationSignal>&
+      const std::optional<aidl::com::android::server::art::IArtdCancellationSignal>&
           in_cancellationSignal,
       bool* _aidl_return) override;
 
@@ -315,6 +312,9 @@ class Artd : public aidl::com::android::server::art::BnArtd {
   android::base::Result<void> PreRebootInitDeriveClasspath(const std::string& path);
   android::base::Result<bool> PreRebootInitBootImages(ArtdCancellationSignal* cancellation_signal);
 
+  ArtdCancellationSignal* GetCancellationSignal(
+      const aidl::com::android::server::art::IArtdCancellationSignal& cancellation_signal);
+
   std::mutex cache_mu_;
   std::optional<std::vector<std::string>> cached_boot_image_locations_ GUARDED_BY(cache_mu_);
   std::optional<std::vector<std::string>> cached_boot_class_path_ GUARDED_BY(cache_mu_);
@@ -324,6 +324,10 @@ class Artd : public aidl::com::android::server::art::BnArtd {
 
   std::mutex ofa_context_mu_;
   std::unique_ptr<OatFileAssistantContext> ofa_context_ GUARDED_BY(ofa_context_mu_);
+
+  std::mutex cancellation_signals_mu_;
+  std::unordered_map<int64_t, std::unique_ptr<ArtdCancellationSignal>> cancellation_signals_
+      GUARDED_BY(cancellation_signals_mu_);
 
   const Options options_;
   const std::unique_ptr<art::tools::SystemProperties> props_;

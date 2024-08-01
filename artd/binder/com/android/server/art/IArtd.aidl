@@ -173,6 +173,8 @@ interface IArtd {
      */
     com.android.server.art.IArtdCancellationSignal createCancellationSignal();
 
+    void cancel(in com.android.server.art.IArtdCancellationSignal cancellationSignal);
+
     /**
      * Deletes all files that are managed by artd, except those specified in the arguments. Returns
      * the size of the freed space, in bytes.
