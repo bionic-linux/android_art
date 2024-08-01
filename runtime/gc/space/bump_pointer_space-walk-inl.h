@@ -34,6 +34,7 @@ inline void BumpPointerSpace::Walk(Visitor&& visitor) {
   uint8_t* pos = Begin();
   uint8_t* end = End();
   uint8_t* main_end = pos;
+  size_t black_dense_size;
   std::unique_ptr<std::vector<size_t>> block_sizes_copy;
   // Internal indirection w/ NO_THREAD_SAFETY_ANALYSIS. Optimally, we'd like to have an annotation
   // like
@@ -64,6 +65,16 @@ inline void BumpPointerSpace::Walk(Visitor&& visitor) {
     } else {
       block_sizes_copy.reset(new std::vector<size_t>(block_sizes_.begin(), block_sizes_.end()));
     }
+
+    black_dense_size = black_dense_region_size_;
+  }
+
+  // black_dense_region_size_ will be non-zero only in case of moving-space of CMC GC.
+  if (black_dense_size > 0) {
+    GetMarkBitmap()->VisitMarkedRange(reinterpret_cast<uintptr_t>(pos),
+                                      reinterpret_cast<uintptr_t>(pos + black_dense_size),
+                                      visitor);
+    pos += black_dense_size;
   }
   // Walk all of the objects in the main block first.
   while (pos < main_end) {
