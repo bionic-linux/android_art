@@ -247,6 +247,7 @@ class LocationsBuilderX86 : public HGraphVisitor {
   void HandleInvoke(HInvoke* invoke);
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* instruction);
+  void HandleRotate(HBinaryOperation* instruction);
   void HandleFieldSet(HInstruction* instruction,
                       const FieldInfo& field_info,
                       WriteBarrierKind write_barrier_kind);
@@ -321,6 +322,7 @@ class InstructionCodeGeneratorX86 : public InstructionCodeGenerator {
   void GenerateRemFP(HRem* rem);
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* instruction);
+  void HandleRotate(HBinaryOperation* instruction);
   void GenerateShlLong(const Location& loc, Register shifter);
   void GenerateShrLong(const Location& loc, Register shifter);
   void GenerateUShrLong(const Location& loc, Register shifter);
