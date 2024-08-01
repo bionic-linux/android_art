@@ -1,0 +1,293 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3f7412_823a1906",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "\"in check_bitmap\"\n\nThe check feels a bit backwards, so I think it\u0027s important to ber explicit.",
+      "range": {
+        "startLine": 811,
+        "startChar": 28,
+        "endLine": 811,
+        "endChar": 33
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "940af7e6_c4bffd30",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/mirror/class-inl.h",
+              "range": {
+                "startLine": 811,
+                "startChar": 0,
+                "endLine": 812,
+                "endChar": 0
+              },
+              "replacement": "    // Confirm that all the bits that ought to be set in check_bitmap are set.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d409e7_e4bdf1e8",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "redundant",
+      "range": {
+        "startLine": 827,
+        "startChar": 23,
+        "endLine": 827,
+        "endChar": 31
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e214fb26_277c423e",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "Somewhat orthogonal to this CL, but this seems like stuff we should only be doing for kIsDebugBuild.",
+      "range": {
+        "startLine": 456,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 31
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ae16886_73e573cc",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "\"reference fields added by this class\"? I was initially confused by the current statement.",
+      "range": {
+        "startLine": 1637,
+        "startChar": 18,
+        "endLine": 1637,
+        "endChar": 55
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024e7d41_5c351165",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "Can we not ensure that the superclass is already set up when we start, and start by copying the bitmap from there? That seems both simpler, and should avoid traversing more than one superclass. If you do that, ignore the other minor comments here.\n\nIf you keep this logic, this code would be easier to read if you state the loop invariants here by defining what the overflow* variables represent in associated comments.",
+      "range": {
+        "startLine": 1656,
+        "startChar": 4,
+        "endLine": 1656,
+        "endChar": 18
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4321e433_1767e683",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "Please move to the end of the loop body.",
+      "range": {
+        "startLine": 1662,
+        "startChar": 13,
+        "endLine": 1662,
+        "endChar": 29
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4e5bc8_64231124",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "if (super_class \u003d\u003d nullptr) { break; } ...",
+      "range": {
+        "startLine": 1701,
+        "startChar": 6,
+        "endLine": 1701,
+        "endChar": 35
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2603431_f2ae59b2",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "This sounds like you\u0027re effectively throwing away a bit here, by not using the other 31 bits if that bit is set. But I think you\u0027re actually storing the size in this word in that case, right? Please state that in the comment here.",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 75
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6c40bb_dd6cfabb",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "I believe this should always go on the definition, not declaration. And it needs an explanatory comment. Not that we\u0027re currently consistent about either.",
+      "range": {
+        "startLine": 1456,
+        "startChar": 68,
+        "endLine": 1456,
+        "endChar": 93
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f25ce5_84aaa8fa",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "Please fix the comment here to clarify that this excludes superclasses.",
+      "range": {
+        "startLine": 1572,
+        "startChar": 2,
+        "endLine": 1572,
+        "endChar": 52
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f4180333_0c418d56",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/mirror/class.h",
+              "range": {
+                "startLine": 1572,
+                "startChar": 0,
+                "endLine": 1573,
+                "endChar": 0
+              },
+              "replacement": "  // Number of instance fields that are object refs. Does not count fields in any super classes.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41aebf2c_d6f27407",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-01T20:13:03Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 865,
+        "startChar": 28,
+        "endLine": 865,
+        "endChar": 53
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
