@@ -26,6 +26,7 @@ extern "C" void android_set_application_target_sdk_version(uint32_t version);
 #include <limits.h>
 #include "nativehelper/scoped_utf_chars.h"
 
+#include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 
@@ -536,6 +537,14 @@ static jobject VMRuntime_getBaseApkOptimizationInfo(JNIEnv* env, [[maybe_unused]
   return env->NewObject(cls.get(), ctor, j_compiler_filter.get(), j_compilation_reason.get());
 }
 
+static jboolean VMRuntime_getBooleanAndroidSystemProperty(JNIEnv* env,
+                                                          jclass,
+                                                          jstring jprop_name,
+                                                          jboolean jdef) {
+  ScopedUtfChars prop_name(env, jprop_name);
+  return android::base::GetBooleanProperty(prop_name.c_str(), jdef);
+}
+
 static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(VMRuntime, addressOf, "(Ljava/lang/Object;)J"),
   NATIVE_METHOD(VMRuntime, bootClassPath, "()Ljava/lang/String;"),
@@ -587,6 +596,8 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, isValidClassLoaderContext, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(VMRuntime, getBaseApkOptimizationInfo,
       "()Ldalvik/system/DexFile$OptimizationInfo;"),
+  NATIVE_METHOD(VMRuntime, getBooleanAndroidSystemProperty,
+      "(Ljava/lang/String;Z)Z"),
 };
 
 void register_dalvik_system_VMRuntime(JNIEnv* env) {
