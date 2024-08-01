@@ -115,10 +115,16 @@ implementation_libs=(
   "libdebugstore_cxx" # Needed by "libartpalette-system".
   "libbinder"
   "libbinder_ndk"
+  "libapexsupport" # Needed by "libbinder".
   "libcutils"
   "libutils"
   "libvndksupport"
 )
+
+# TODO: move "libapexsupport" to common libs once all arches are updated.
+if [[ $TARGET_ARCH = "riscv64" ]]; then
+    implementation_libs+=("libapexsupport") # Needed by "libbinder".
+fi
 
 if [ -d frameworks/base ]; then
   # In full manifest branches, build the implementation libraries from source
