@@ -115,6 +115,7 @@ implementation_libs=(
   "libdebugstore_cxx" # Needed by "libartpalette-system".
   "libbinder"
   "libbinder_ndk"
+  "libapexsupport" # Needed by "libbinder".
   "libcutils"
   "libutils"
   "libvndksupport"
