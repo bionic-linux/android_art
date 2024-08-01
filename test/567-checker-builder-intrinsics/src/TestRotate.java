@@ -19,8 +19,7 @@ public class TestRotate {
   /// CHECK-START: int TestRotate.rotateLeftByte(byte, int) builder (after)
   /// CHECK:         <<ArgVal:b\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftByte(byte, int) builder (after)
@@ -30,11 +29,14 @@ public class TestRotate {
     return Integer.rotateLeft(value, distance);
   }
 
+  private static int $noinline$rotateLeftByte(byte value, int distance) {
+    return Integer.rotateLeft(value, distance);
+  }
+
   /// CHECK-START: int TestRotate.rotateLeftShort(short, int) builder (after)
   /// CHECK:         <<ArgVal:s\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftShort(short, int) builder (after)
@@ -44,11 +46,14 @@ public class TestRotate {
     return Integer.rotateLeft(value, distance);
   }
 
+  private static int $noinline$rotateLeftShort(short value, int distance) {
+    return Integer.rotateLeft(value, distance);
+  }
+
   /// CHECK-START: int TestRotate.rotateLeftChar(char, int) builder (after)
   /// CHECK:         <<ArgVal:c\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftChar(char, int) builder (after)
@@ -58,11 +63,14 @@ public class TestRotate {
     return Integer.rotateLeft(value, distance);
   }
 
+  private static int $noinline$rotateLeftChar(char value, int distance) {
+    return Integer.rotateLeft(value, distance);
+  }
+
   /// CHECK-START: int TestRotate.rotateLeftInt(int, int) builder (after)
   /// CHECK:         <<ArgVal:i\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftInt(int, int) builder (after)
@@ -72,11 +80,34 @@ public class TestRotate {
     return Integer.rotateLeft(value, distance);
   }
 
+  /// CHECK-START-ARM64: int TestRotate.$noinline$rotateLeftInt(int, int) disassembly (after)
+  /// CHECK:                           neg {{w\d+}}, {{w\d+}}
+  /// CHECK:                           ror {{w\d+}}, {{w\d+}}, {{w\d+}}
+
+  private static int $noinline$rotateLeftInt(int value, int distance) {
+    return Integer.rotateLeft(value, distance);
+  }
+
+  /// CHECK-START: int TestRotate.$noinline$rotateLeftIntConstant(int) builder (after)
+  /// CHECK:         <<ArgVal:i\d+>>   ParameterValue
+  /// CHECK:         <<Constant:i\d+>> IntConstant 31
+  /// CHECK-DAG:     <<Result:i\d+>>   Rol [<<ArgVal>>,<<Constant>>]
+  /// CHECK-DAG:                       Return [<<Result>>]
+
+  /// CHECK-START-ARM64: int TestRotate.$noinline$rotateLeftIntConstant(int) disassembly (after)
+  /// CHECK:                           ror {{w\d+}}, {{w\d+}}, #1
+
+  /// CHECK-START-RISCV64: int TestRotate.$noinline$rotateLeftIntConstant(int) disassembly (after)
+  /// CHECK:                           roriw {{a\d+}}, {{a\d+}}, 1
+
+  private static int $noinline$rotateLeftIntConstant(int value) {
+    return Integer.rotateLeft(value, 31);
+  }
+
   /// CHECK-START: long TestRotate.rotateLeftLong(long, int) builder (after)
   /// CHECK:         <<ArgVal:j\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:j\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:j\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: long TestRotate.rotateLeftLong(long, int) builder (after)
@@ -84,6 +115,33 @@ public class TestRotate {
 
   private static long rotateLeftLong(long value, int distance) {
     return Long.rotateLeft(value, distance);
+  }
+
+  /// CHECK-START-ARM64: long TestRotate.$noinline$rotateLeftLong(long, int) disassembly (after)
+  /// CHECK:                           neg {{x\d+}}, {{x\d+}}
+  /// CHECK:                           ror {{x\d+}}, {{x\d+}}, {{x\d+}}
+
+  /// CHECK-START-RISCV64: long TestRotate.$noinline$rotateLeftLong(long, int) disassembly (after)
+  /// CHECK:                           rol {{a\d+}}, {{a\d+}}, {{a\d+}}
+
+  private static long $noinline$rotateLeftLong(long value, int distance) {
+    return Long.rotateLeft(value, distance);
+  }
+
+  /// CHECK-START: long TestRotate.$noinline$rotateLeftLongConstant(long) builder (after)
+  /// CHECK:         <<ArgVal:j\d+>>   ParameterValue
+  /// CHECK:         <<Constant:i\d+>> IntConstant 63
+  /// CHECK-DAG:     <<Result:j\d+>>   Rol [<<ArgVal>>,<<Constant>>]
+  /// CHECK-DAG:                       Return [<<Result>>]
+
+  /// CHECK-START-ARM64: long TestRotate.$noinline$rotateLeftLongConstant(long) disassembly (after)
+  /// CHECK:                           ror {{x\d+}}, {{x\d+}}, #1
+
+  /// CHECK-START-RISCV64: long TestRotate.$noinline$rotateLeftLongConstant(long) disassembly (after)
+  /// CHECK:                           rori {{a\d+}}, {{a\d+}}, 1
+
+  private static long $noinline$rotateLeftLongConstant(long value) {
+    return Long.rotateLeft(value, 63);
   }
 
   /// CHECK-START: int TestRotate.rotateRightByte(byte, int) builder (after)
@@ -155,14 +213,17 @@ public class TestRotate {
   /// CHECK-START: int TestRotate.rotateLeftIntWithByteDistance(int, byte) builder (after)
   /// CHECK:         <<ArgVal:i\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:b\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftIntWithByteDistance(int, byte) builder (after)
   /// CHECK-NOT:                      InvokeStaticOrDirect
 
   private static int rotateLeftIntWithByteDistance(int value, byte distance) {
+    return Integer.rotateLeft(value, distance);
+  }
+
+  private static int $noinline$rotateLeftIntWithByteDistance(int value, byte distance) {
     return Integer.rotateLeft(value, distance);
   }
 
@@ -185,8 +246,7 @@ public class TestRotate {
   /// CHECK-DAG:     <<Zero:i\d+>>    IntConstant 0
   /// CHECK-DAG:     <<One:i\d+>>     IntConstant 1
   /// CHECK-DAG:     <<Val:i\d+>>     Phi [<<One>>,<<Zero>>]
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<Val>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<Val>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftBoolean(boolean, int) builder (after)
@@ -198,8 +258,7 @@ public class TestRotate {
   /// CHECK-DAG:     <<Zero:i\d+>>    IntConstant 0
   /// CHECK-DAG:     <<One:i\d+>>     IntConstant 1
   /// CHECK-DAG:     <<SelVal:i\d+>>  Select [<<Zero>>,<<One>>,<<ArgVal>>]
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<SelVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<SelVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftBoolean(boolean, int) select_generator (after)
@@ -208,8 +267,7 @@ public class TestRotate {
   /// CHECK-START: int TestRotate.rotateLeftBoolean(boolean, int) instruction_simplifier$before_codegen (after)
   /// CHECK:         <<ArgVal:z\d+>>  ParameterValue
   /// CHECK:         <<ArgDist:i\d+>> ParameterValue
-  /// CHECK-DAG:     <<NegDist:i\d+>> Neg [<<ArgDist>>]
-  /// CHECK-DAG:     <<Result:i\d+>>  Ror [<<ArgVal>>,<<NegDist>>]
+  /// CHECK-DAG:     <<Result:i\d+>>  Rol [<<ArgVal>>,<<ArgDist>>]
   /// CHECK-DAG:                      Return [<<Result>>]
 
   /// CHECK-START: int TestRotate.rotateLeftBoolean(boolean, int) instruction_simplifier$before_codegen (after)
@@ -227,11 +285,26 @@ public class TestRotate {
     return Integer.rotateLeft(src, distance);
   }
 
+  private static int $noinline$rotateLeftBoolean(boolean value, int distance) {
+    // Note: D8 would replace the ternary expression `value ? 1 : 0` with `value`
+    // but explicit `if` is preserved.
+    int src;
+    if (value) {
+      src = 1;
+    } else {
+      src = 0;
+    }
+    return Integer.rotateLeft(src, distance);
+  }
+
   public static void testRotateLeftBoolean() {
     for (int i = 0; i < 40; i++) {  // overshoot a bit
       int j = i & 31;
       expectEqualsInt(0, rotateLeftBoolean(false, i));
       expectEqualsInt(1 << j, rotateLeftBoolean(true, i));
+
+      expectEqualsInt(0, $noinline$rotateLeftBoolean(false, i));
+      expectEqualsInt(1 << j, $noinline$rotateLeftBoolean(true, i));
     }
   }
 
@@ -244,12 +317,27 @@ public class TestRotate {
     expectEqualsInt(0xFFFFFE07, rotateLeftByte((byte)0x81, 2));
     expectEqualsInt(0x00000120, rotateLeftByte((byte)0x12, 4));
     expectEqualsInt(0xFFFF9AFF, rotateLeftByte((byte)0x9A, 8));
+
+    expectEqualsInt(0x00000001, $noinline$rotateLeftByte((byte)0x01, 0));
+    expectEqualsInt(0x00000002, $noinline$rotateLeftByte((byte)0x01, 1));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftByte((byte)0x01, 31));
+    expectEqualsInt(0x00000001, $noinline$rotateLeftByte((byte)0x01, 32));  // overshoot
+    expectEqualsInt(0xFFFFFF03, $noinline$rotateLeftByte((byte)0x81, 1));
+    expectEqualsInt(0xFFFFFE07, $noinline$rotateLeftByte((byte)0x81, 2));
+    expectEqualsInt(0x00000120, $noinline$rotateLeftByte((byte)0x12, 4));
+    expectEqualsInt(0xFFFF9AFF, $noinline$rotateLeftByte((byte)0x9A, 8));
+
     for (int i = 0; i < 40; i++) {  // overshoot a bit
       int j = i & 31;
       expectEqualsInt(0x00000000, rotateLeftByte((byte)0x0000, i));
       expectEqualsInt(0xFFFFFFFF, rotateLeftByte((byte)0xFFFF, i));
       expectEqualsInt((1 << j), rotateLeftByte((byte)0x0001, i));
       expectEqualsInt((0x12 << j) | (0x12 >>> -j), rotateLeftByte((byte)0x12, i));
+
+      expectEqualsInt(0x00000000, $noinline$rotateLeftByte((byte)0x0000, i));
+      expectEqualsInt(0xFFFFFFFF, $noinline$rotateLeftByte((byte)0xFFFF, i));
+      expectEqualsInt((1 << j), $noinline$rotateLeftByte((byte)0x0001, i));
+      expectEqualsInt((0x12 << j) | (0x12 >>> -j), $noinline$rotateLeftByte((byte)0x12, i));
     }
   }
 
@@ -262,12 +350,27 @@ public class TestRotate {
     expectEqualsInt(0xFFFE0007, rotateLeftShort((short)0x8001, 2));
     expectEqualsInt(0x00012340, rotateLeftShort((short)0x1234, 4));
     expectEqualsInt(0xFF9ABCFF, rotateLeftShort((short)0x9ABC, 8));
+
+    expectEqualsInt(0x00000001, $noinline$rotateLeftShort((short)0x0001, 0));
+    expectEqualsInt(0x00000002, $noinline$rotateLeftShort((short)0x0001, 1));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftShort((short)0x0001, 31));
+    expectEqualsInt(0x00000001, $noinline$rotateLeftShort((short)0x0001, 32));  // overshoot
+    expectEqualsInt(0xFFFF0003, $noinline$rotateLeftShort((short)0x8001, 1));
+    expectEqualsInt(0xFFFE0007, $noinline$rotateLeftShort((short)0x8001, 2));
+    expectEqualsInt(0x00012340, $noinline$rotateLeftShort((short)0x1234, 4));
+    expectEqualsInt(0xFF9ABCFF, $noinline$rotateLeftShort((short)0x9ABC, 8));
+
     for (int i = 0; i < 40; i++) {  // overshoot a bit
       int j = i & 31;
       expectEqualsInt(0x00000000, rotateLeftShort((short)0x0000, i));
       expectEqualsInt(0xFFFFFFFF, rotateLeftShort((short)0xFFFF, i));
       expectEqualsInt((1 << j), rotateLeftShort((short)0x0001, i));
       expectEqualsInt((0x1234 << j) | (0x1234 >>> -j), rotateLeftShort((short)0x1234, i));
+
+      expectEqualsInt(0x00000000, $noinline$rotateLeftShort((short)0x0000, i));
+      expectEqualsInt(0xFFFFFFFF, $noinline$rotateLeftShort((short)0xFFFF, i));
+      expectEqualsInt((1 << j), $noinline$rotateLeftShort((short)0x0001, i));
+      expectEqualsInt((0x1234 << j) | (0x1234 >>> -j), $noinline$rotateLeftShort((short)0x1234, i));
     }
   }
 
@@ -281,11 +384,26 @@ public class TestRotate {
     expectEqualsInt(0x00012340, rotateLeftChar((char)0x1234, 4));
     expectEqualsInt(0x009ABC00, rotateLeftChar((char)0x9ABC, 8));
     expectEqualsInt(0x00FF0000, rotateLeftChar((char)0xFF00, 8));
+
+    expectEqualsInt(0x00000001, $noinline$rotateLeftChar((char)0x0001, 0));
+    expectEqualsInt(0x00000002, $noinline$rotateLeftChar((char)0x0001, 1));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftChar((char)0x0001, 31));
+    expectEqualsInt(0x00000001, $noinline$rotateLeftChar((char)0x0001, 32));  // overshoot
+    expectEqualsInt(0x00010002, $noinline$rotateLeftChar((char)0x8001, 1));
+    expectEqualsInt(0x00020004, $noinline$rotateLeftChar((char)0x8001, 2));
+    expectEqualsInt(0x00012340, $noinline$rotateLeftChar((char)0x1234, 4));
+    expectEqualsInt(0x009ABC00, $noinline$rotateLeftChar((char)0x9ABC, 8));
+    expectEqualsInt(0x00FF0000, $noinline$rotateLeftChar((char)0xFF00, 8));
+
     for (int i = 0; i < 40; i++) {  // overshoot a bit
       int j = i & 31;
       expectEqualsInt(0x00000000, rotateLeftChar((char)0x0000, i));
       expectEqualsInt((1 << j), rotateLeftChar((char)0x0001, i));
       expectEqualsInt((0x1234 << j) | (0x1234 >>> -j), rotateLeftChar((char)0x1234, i));
+
+      expectEqualsInt(0x00000000, $noinline$rotateLeftChar((char)0x0000, i));
+      expectEqualsInt((1 << j), $noinline$rotateLeftChar((char)0x0001, i));
+      expectEqualsInt((0x1234 << j) | (0x1234 >>> -j), $noinline$rotateLeftChar((char)0x1234, i));
     }
   }
 
@@ -298,12 +416,28 @@ public class TestRotate {
     expectEqualsInt(0x00000006, rotateLeftInt(0x80000001, 2));
     expectEqualsInt(0x23456781, rotateLeftInt(0x12345678, 4));
     expectEqualsInt(0xBCDEF09A, rotateLeftInt(0x9ABCDEF0, 8));
+
+    expectEqualsInt(0x00000001, $noinline$rotateLeftInt(0x00000001, 0));
+    expectEqualsInt(0x00000002, $noinline$rotateLeftInt(0x00000001, 1));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftInt(0x00000001, 31));
+    expectEqualsInt(0x00000001, $noinline$rotateLeftInt(0x00000001, 32));  // overshoot
+    expectEqualsInt(0x00000003, $noinline$rotateLeftInt(0x80000001, 1));
+    expectEqualsInt(0x00000006, $noinline$rotateLeftInt(0x80000001, 2));
+    expectEqualsInt(0x23456781, $noinline$rotateLeftInt(0x12345678, 4));
+    expectEqualsInt(0xBCDEF09A, $noinline$rotateLeftInt(0x9ABCDEF0, 8));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftIntConstant(0x00000001));
+
     for (int i = 0; i < 40; i++) {  // overshoot a bit
       int j = i & 31;
       expectEqualsInt(0x00000000, rotateLeftInt(0x00000000, i));
       expectEqualsInt(0xFFFFFFFF, rotateLeftInt(0xFFFFFFFF, i));
       expectEqualsInt(1 << j, rotateLeftInt(0x00000001, i));
       expectEqualsInt((0x12345678 << j) | (0x12345678 >>> -j), rotateLeftInt(0x12345678, i));
+
+      expectEqualsInt(0x00000000, $noinline$rotateLeftInt(0x00000000, i));
+      expectEqualsInt(0xFFFFFFFF, $noinline$rotateLeftInt(0xFFFFFFFF, i));
+      expectEqualsInt(1 << j, $noinline$rotateLeftInt(0x00000001, i));
+      expectEqualsInt((0x12345678 << j) | (0x12345678 >>> -j), $noinline$rotateLeftInt(0x12345678, i));
     }
   }
 
@@ -311,11 +445,21 @@ public class TestRotate {
     expectEqualsLong(0x0000000000000001L, rotateLeftLong(0x0000000000000001L, 0));
     expectEqualsLong(0x0000000000000002L, rotateLeftLong(0x0000000000000001L, 1));
     expectEqualsLong(0x8000000000000000L, rotateLeftLong(0x0000000000000001L, 63));
+    expectEqualsLong(0x8000000000000000L, $noinline$rotateLeftLongConstant(0x0000000000000001L));
     expectEqualsLong(0x0000000000000001L, rotateLeftLong(0x0000000000000001L, 64));  // overshoot
     expectEqualsLong(0x0000000000000003L, rotateLeftLong(0x8000000000000001L, 1));
     expectEqualsLong(0x0000000000000006L, rotateLeftLong(0x8000000000000001L, 2));
     expectEqualsLong(0x23456789ABCDEF01L, rotateLeftLong(0x123456789ABCDEF0L, 4));
     expectEqualsLong(0x3456789ABCDEF012L, rotateLeftLong(0x123456789ABCDEF0L, 8));
+
+    expectEqualsLong(0x0000000000000001L, $noinline$rotateLeftLong(0x0000000000000001L, 0));
+    expectEqualsLong(0x0000000000000002L, $noinline$rotateLeftLong(0x0000000000000001L, 1));
+    expectEqualsLong(0x8000000000000000L, $noinline$rotateLeftLong(0x0000000000000001L, 63));
+    expectEqualsLong(0x0000000000000001L, $noinline$rotateLeftLong(0x0000000000000001L, 64));  // overshoot
+    expectEqualsLong(0x0000000000000003L, $noinline$rotateLeftLong(0x8000000000000001L, 1));
+    expectEqualsLong(0x0000000000000006L, $noinline$rotateLeftLong(0x8000000000000001L, 2));
+    expectEqualsLong(0x23456789ABCDEF01L, $noinline$rotateLeftLong(0x123456789ABCDEF0L, 4));
+    expectEqualsLong(0x3456789ABCDEF012L, $noinline$rotateLeftLong(0x123456789ABCDEF0L, 8));
     for (int i = 0; i < 70; i++) {  // overshoot a bit
       int j = i & 63;
       expectEqualsLong(0x0000000000000000L, rotateLeftLong(0x0000000000000000L, i));
@@ -323,6 +467,12 @@ public class TestRotate {
       expectEqualsLong(1L << j, rotateLeftLong(0x0000000000000001, i));
       expectEqualsLong((0x123456789ABCDEF0L << j) | (0x123456789ABCDEF0L >>> -j),
                        rotateLeftLong(0x123456789ABCDEF0L, i));
+
+      expectEqualsLong(0x0000000000000000L, $noinline$rotateLeftLong(0x0000000000000000L, i));
+      expectEqualsLong(0xFFFFFFFFFFFFFFFFL, $noinline$rotateLeftLong(0xFFFFFFFFFFFFFFFFL, i));
+      expectEqualsLong(1L << j, $noinline$rotateLeftLong(0x0000000000000001, i));
+      expectEqualsLong((0x123456789ABCDEF0L << j) | (0x123456789ABCDEF0L >>> -j),
+                       $noinline$rotateLeftLong(0x123456789ABCDEF0L, i));
     }
   }
 
@@ -479,6 +629,16 @@ public class TestRotate {
     expectEqualsInt(0x00000006, rotateLeftIntWithByteDistance(0x80000001, (byte)2));
     expectEqualsInt(0x23456781, rotateLeftIntWithByteDistance(0x12345678, (byte)4));
     expectEqualsInt(0xBCDEF09A, rotateLeftIntWithByteDistance(0x9ABCDEF0, (byte)8));
+
+    expectEqualsInt(0x00000001, $noinline$rotateLeftIntWithByteDistance(0x00000001, (byte)0));
+    expectEqualsInt(0x00000002, $noinline$rotateLeftIntWithByteDistance(0x00000001, (byte)1));
+    expectEqualsInt(0x80000000, $noinline$rotateLeftIntWithByteDistance(0x00000001, (byte)31));
+    expectEqualsInt(0x00000001, $noinline$rotateLeftIntWithByteDistance(0x00000001, (byte)32));  // overshoot
+    expectEqualsInt(0x00000003, $noinline$rotateLeftIntWithByteDistance(0x80000001, (byte)1));
+    expectEqualsInt(0x00000006, $noinline$rotateLeftIntWithByteDistance(0x80000001, (byte)2));
+    expectEqualsInt(0x23456781, $noinline$rotateLeftIntWithByteDistance(0x12345678, (byte)4));
+    expectEqualsInt(0xBCDEF09A, $noinline$rotateLeftIntWithByteDistance(0x9ABCDEF0, (byte)8));
+
     for (byte i = 0; i < 40; i++) {  // overshoot a bit
       byte j = (byte)(i & 31);
       expectEqualsInt(0x00000000, rotateLeftIntWithByteDistance(0x00000000, i));
@@ -486,6 +646,12 @@ public class TestRotate {
       expectEqualsInt(1 << j, rotateLeftIntWithByteDistance(0x00000001, i));
       expectEqualsInt((0x12345678 << j) | (0x12345678 >>> -j),
                       rotateLeftIntWithByteDistance(0x12345678, i));
+
+      expectEqualsInt(0x00000000, $noinline$rotateLeftIntWithByteDistance(0x00000000, i));
+      expectEqualsInt(0xFFFFFFFF, $noinline$rotateLeftIntWithByteDistance(0xFFFFFFFF, i));
+      expectEqualsInt(1 << j, $noinline$rotateLeftIntWithByteDistance(0x00000001, i));
+      expectEqualsInt((0x12345678 << j) | (0x12345678 >>> -j),
+                      $noinline$rotateLeftIntWithByteDistance(0x12345678, i));
     }
   }
 

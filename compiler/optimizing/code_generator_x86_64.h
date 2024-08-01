@@ -243,6 +243,7 @@ class LocationsBuilderX86_64 : public HGraphVisitor {
   void HandleBitwiseOperation(HBinaryOperation* operation);
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* operation);
+  void HandleRotate(HBinaryOperation* rotate);
   void HandleFieldSet(HInstruction* instruction,
                       const FieldInfo& field_info,
                       WriteBarrierKind write_barrier_kind);
@@ -316,6 +317,7 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
   void GenerateDivRemIntegral(HBinaryOperation* instruction);
   void HandleCondition(HCondition* condition);
   void HandleShift(HBinaryOperation* operation);
+  void HandleRotate(HBinaryOperation* rotate);
 
   void HandleFieldSet(HInstruction* instruction,
                       const FieldInfo& field_info,
