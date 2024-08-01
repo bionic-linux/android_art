@@ -16,6 +16,24 @@
       "message": "Still lgtm on this one. I can +2 this once this is rebased.",
       "revId": "2c12d2ed80c9168c5eb141e5fe392dba4b8b67eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd15ef3_cbcb7768",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-08-01T08:35:48Z",
+      "side": 1,
+      "message": "Thanks, now rebased.",
+      "parentUuid": "1cd202b2_c30b6fd7",
+      "revId": "2c12d2ed80c9168c5eb141e5fe392dba4b8b67eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
