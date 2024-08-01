@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd1b016_ded3be10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-08-01T08:32:32Z",
+      "side": 1,
+      "message": "Blocked on updating prebuilts for all arches.",
+      "revId": "c9bde67a48ef547548967b12e3ca48b7e528a9c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
