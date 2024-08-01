@@ -16,8 +16,12 @@
 
 #include <stdlib.h>
 
+#include <memory>
+#include <string>
+
 #include "android-base/logging.h"
 #include "android-base/macros.h"
+#include "android-base/strings.h"
 #include "android/binder_interface_utils.h"
 #include "android/binder_process.h"
 #include "artd.h"
@@ -25,6 +29,8 @@
 namespace art {
 namespace artd {
 namespace {
+
+using ::android::base::ConsumePrefix;
 
 constexpr int kErrorUsage = 100;
 
@@ -40,6 +46,12 @@ Options ParseOptions(int argc, char** argv) {
     std::string_view arg = argv[i];
     if (arg == "--pre-reboot") {
       options.is_pre_reboot = true;
+    } else if (arg == "--pre-reboot-wrapper") {
+      options.is_pre_reboot_wrapper = true;
+    } else if (ConsumePrefix(&arg, "--in-fd=")) {
+      options.in_fd = std::stoi(std::string(arg));
+    } else if (ConsumePrefix(&arg, "--out-fd=")) {
+      options.out_fd = std::stoi(std::string(arg));
     } else {
       ParseError("Unknown option " + std::string(arg));
     }
@@ -55,20 +67,35 @@ int main([[maybe_unused]] int argc, char* argv[]) {
   android::base::InitLogging(argv);
 
   art::artd::Options options = art::artd::ParseOptions(argc, argv);
-  if (options.is_pre_reboot) {
+
+  if (options.is_pre_reboot_wrapper) {
+    android::base::SetDefaultTag("artd_pre_reboot_wrapper");
+    auto artd_wrapper = ndk::SharedRefBase::make<art::artd::ArtdPreRebootWrapper>();
+    LOG(INFO) << "Starting artd wrapper";
+    android::base::Result<void> ret = artd_wrapper->Start();
+    if (!ret.ok()) {
+      LOG(ERROR) << "artd wrapper failed: " << ret.error();
+      exit(1);
+    }
+  } else if (options.is_pre_reboot) {
     android::base::SetDefaultTag("artd_pre_reboot");
+    auto artd = ndk::SharedRefBase::make<art::artd::Artd>(std::move(options));
+    LOG(INFO) << "Starting artd_pre_reboot";
+    android::base::Result<void> ret = artd->StartRawBinder();
+    if (!ret.ok()) {
+      LOG(ERROR) << "artd_pre_reboot failed: " << ret.error();
+      exit(1);
+    }
+  } else {
+    auto artd = ndk::SharedRefBase::make<art::artd::Artd>(std::move(options));
+    LOG(INFO) << "Starting artd";
+    android::base::Result<void> ret = artd->Start();
+    if (!ret.ok()) {
+      LOG(ERROR) << "Unable to start artd: " << ret.error();
+      exit(1);
+    }
+    ABinderProcess_joinThreadPool();
   }
-
-  auto artd = ndk::SharedRefBase::make<art::artd::Artd>(std::move(options));
-
-  LOG(INFO) << "Starting artd";
-
-  if (auto ret = artd->Start(); !ret.ok()) {
-    LOG(ERROR) << "Unable to start artd: " << ret.error();
-    exit(1);
-  }
-
-  ABinderProcess_joinThreadPool();
 
   LOG(INFO) << "artd shutting down";
 

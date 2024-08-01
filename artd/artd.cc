@@ -37,6 +37,7 @@
 #include <optional>
 #include <ostream>
 #include <regex>
+#include <sstream>
 #include <string>
 #include <string_view>
 #include <system_error>
@@ -55,10 +56,14 @@
 #include "android-base/result.h"
 #include "android-base/scopeguard.h"
 #include "android-base/strings.h"
+#include "android-base/unique_fd.h"
 #include "android/binder_auto_utils.h"
+#include "android/binder_ibinder.h"
 #include "android/binder_interface_utils.h"
 #include "android/binder_manager.h"
+#include "android/binder_parcel.h"
 #include "android/binder_process.h"
+#include "android/binder_status.h"
 #include "base/compiler_filter.h"
 #include "base/file_magic.h"
 #include "base/file_utils.h"
@@ -68,6 +73,7 @@
 #include "base/mem_map.h"
 #include "base/memfd.h"
 #include "base/os.h"
+#include "base/unix_file/fd_file.h"
 #include "base/zip_archive.h"
 #include "cmdline_types.h"
 #include "dex/dex_file_loader.h"
@@ -101,6 +107,7 @@ using ::aidl::com::android::server::art::FileVisibility;
 using ::aidl::com::android::server::art::FsPermission;
 using ::aidl::com::android::server::art::GetDexoptNeededResult;
 using ::aidl::com::android::server::art::GetDexoptStatusResult;
+using ::aidl::com::android::server::art::IArtd;
 using ::aidl::com::android::server::art::IArtdCancellationSignal;
 using ::aidl::com::android::server::art::MergeProfileOptions;
 using ::aidl::com::android::server::art::OutputArtifacts;
@@ -120,6 +127,7 @@ using ::android::base::Result;
 using ::android::base::Split;
 using ::android::base::Tokenize;
 using ::android::base::Trim;
+using ::android::base::unique_fd;
 using ::android::base::WriteStringToFd;
 using ::android::base::WriteStringToFile;
 using ::android::fs_mgr::FstabEntry;
@@ -449,6 +457,18 @@ Result<File> ExtractEmbeddedProfileToFd(const std::string& dex_path) {
   }
 
   return memfd_readonly;
+}
+
+std::string FormatBuffer(const std::vector<uint8_t>& buffer) {
+  std::stringstream str;
+  str << std::hex << std::setfill('0');
+  for (size_t i = 0; i < buffer.size(); i++) {
+    if (i > 0) {
+      str << ' ';
+    }
+    str << std::setw(2) << static_cast<int>(buffer[i]);
+  }
+  return "[" + str.str() + "]";
 }
 
 class FdLogger {
@@ -1500,6 +1520,76 @@ Result<void> Artd::Start() {
   return {};
 }
 
+Result<void> Artd::StartRawBinder() {
+  OR_RETURN(SetLogVerbosity());
+  MemMap::Init();
+
+  ndk::SpAIBinder binder = this->asBinder();
+  if (binder == nullptr) {
+    return Errorf("Failed to start raw binder");
+  }
+
+  File in_fd(options_.in_fd, /*check_usage=*/false);
+  File out_fd(options_.out_fd, /*check_usage=*/false);
+
+  if (__builtin_available(android 33, *)) {
+    transaction_code_t code;
+    while (in_fd.ReadFully(&code, sizeof(code))) {
+      size_t in_size;
+      if (!in_fd.ReadFully(&in_size, sizeof(in_size))) {
+        return ErrnoErrorf("Failed to read");
+      }
+
+      std::vector<uint8_t> in_buffer(in_size);
+      if (!in_fd.ReadFully(in_buffer.data(), in_size)) {
+        return ErrnoErrorf("Failed to read");
+      }
+
+      LOG(INFO) << "code=" << code << ", in=" << FormatBuffer(in_buffer);
+
+      AParcel* in_parcel;
+      binder_status_t status = AIBinder_prepareTransaction(binder.get(), &in_parcel);
+      if (status != STATUS_OK) {
+        return Errorf("Failed to AIBinder_prepareTransaction: {}", status);
+      }
+      auto in_cleanup = make_scope_guard([&] { AParcel_delete(in_parcel); });
+      status = AParcel_unmarshal(in_parcel, in_buffer.data(), in_size);
+      if (status != STATUS_OK) {
+        return Errorf("Failed to unmarshal: {}", status);
+      }
+
+      AParcel* out_parcel;
+      in_cleanup.Disable();
+      status = AIBinder_transact(binder.get(), code, &in_parcel, &out_parcel, /*flags=*/0);
+      if (status != STATUS_OK) {
+        return Errorf("Failed to transact: {}", status);
+      }
+      auto out_cleanup = make_scope_guard([&] { AParcel_delete(out_parcel); });
+
+      size_t out_size = AParcel_getDataSize(out_parcel);
+      std::vector<uint8_t> out_buffer(out_size);
+      status = AParcel_marshal(out_parcel, out_buffer.data(), /*start=*/0, out_size);
+      if (status != STATUS_OK) {
+        return Errorf("Failed to marshal: {}", status);
+      }
+
+      LOG(INFO) << "out=" << FormatBuffer(out_buffer);
+
+      if (!out_fd.WriteFully(&out_size, sizeof(out_size))) {
+        return ErrnoErrorf("Failed to write");
+      }
+      if (!out_fd.WriteFully(out_buffer.data(), out_size)) {
+        return ErrnoErrorf("Failed to write");
+      }
+    }
+    if (errno != 0) {
+      return ErrnoErrorf("Failed to read");
+    }
+  }
+
+  return {};
+}
+
 Result<OatFileAssistantContext*> Artd::GetOatFileAssistantContext() {
   std::lock_guard<std::mutex> lock(ofa_context_mu_);
 
@@ -1969,6 +2059,102 @@ Result<BuildSystemProperties> BuildSystemProperties::Create(const std::string& f
 std::string BuildSystemProperties::GetProperty(const std::string& key) const {
   auto it = system_properties_.find(key);
   return it != system_properties_.end() ? it->second : "";
+}
+
+Result<void> ArtdPreRebootWrapper::Start() {
+  ScopedAStatus status = ScopedAStatus::fromStatus(
+      AServiceManager_registerLazyService(this->asBinder().get(), kPreRebootServiceName));
+  if (!status.isOk()) {
+    return Error() << status.getDescription();
+  }
+
+  unique_fd in_read, in_write, out_read, out_write;
+  if (!android::base::Pipe(&in_read, &in_write, /*flags=*/0)) {
+    return ErrnoErrorf("Failed to pipe");
+  }
+  if (!android::base::Pipe(&out_read, &out_write, /*flags=*/0)) {
+    return ErrnoErrorf("Failed to pipe");
+  }
+  in_fd_.Reset(in_write.release(), /*check_usage=*/false);
+  out_fd_.Reset(out_read.release(), /*check_usage=*/false);
+  LOG(ERROR) << "pipes ready";
+  ABinderProcess_setThreadPoolMaxThreadCount(1);
+  ABinderProcess_startThreadPool();
+
+  CmdlineBuilder args;
+  args.Add(OR_RETURN(BuildArtBinPath("art_exec")))
+      .Add("--chroot=/mnt/pre_reboot_dexopt/chroot")
+      .Add("--process-name-suffix=Pre-reboot Dexopt chroot")
+      .Add(ART_FORMAT("--keep-fds={}:{}", in_read.get(), out_write.get()))
+      .Add("--")
+      .Add("/apex/com.android.art/bin/artd")
+      .Add("--pre-reboot")
+      .Add("--in-fd=%d", in_read.get())
+      .Add("--out-fd=%d", out_write.get());
+  std::string error_msg;
+  if (!Exec(args.Get(), &error_msg)) {
+    return Errorf("Failed to run artd in chroot: {}", error_msg);
+  }
+
+  return {};
+}
+
+ndk::SpAIBinder ArtdPreRebootWrapper::createBinder() {
+  static AIBinder_Class* binder_class =
+      ndk::ICInterface::defineClass(IArtd::descriptor, onTransact);
+  AIBinder* binder = AIBinder_new(binder_class, static_cast<void*>(this));
+  return ndk::SpAIBinder(binder);
+}
+
+binder_status_t ArtdPreRebootWrapper::onTransact(AIBinder* _aidl_binder,
+                                                 transaction_code_t _aidl_code,
+                                                 const AParcel* _aidl_in,
+                                                 AParcel* _aidl_out) {
+  std::shared_ptr<ArtdPreRebootWrapper> instance =
+      std::static_pointer_cast<ArtdPreRebootWrapper>(ndk::ICInterface::asInterface(_aidl_binder));
+  binder_status_t status = STATUS_UNKNOWN_TRANSACTION;
+  if (__builtin_available(android 33, *)) {
+    size_t in_size = AParcel_getDataSize(_aidl_in);
+    std::vector<uint8_t> in_buffer(in_size);
+
+    status = AParcel_marshal(_aidl_in, in_buffer.data(), /*start=*/0, in_size);
+    if (status != STATUS_OK) {
+      LOG(ERROR) << "Failed to marshal: " << status;
+      return status;
+    }
+    LOG(INFO) << "code=" << _aidl_code << ", in=" << FormatBuffer(in_buffer);
+    if (!instance->in_fd_.WriteFully(&_aidl_code, sizeof(_aidl_code))) {
+      PLOG(ERROR) << "Failed to write";
+      return STATUS_FAILED_TRANSACTION;
+    }
+    if (!instance->in_fd_.WriteFully(&in_size, sizeof(in_size))) {
+      PLOG(ERROR) << "Failed to write";
+      return STATUS_FAILED_TRANSACTION;
+    }
+    if (!instance->in_fd_.WriteFully(in_buffer.data(), in_size)) {
+      PLOG(ERROR) << "Failed to write";
+      return STATUS_FAILED_TRANSACTION;
+    }
+
+    size_t out_size;
+    if (!instance->out_fd_.ReadFully(&out_size, sizeof(out_size))) {
+      PLOG(ERROR) << "Failed to read";
+      return STATUS_FAILED_TRANSACTION;
+    }
+    std::vector<uint8_t> out_buffer(out_size);
+    if (!instance->out_fd_.ReadFully(out_buffer.data(), out_size)) {
+      PLOG(ERROR) << "Failed to read";
+      return STATUS_FAILED_TRANSACTION;
+    }
+    LOG(INFO) << "out=" << FormatBuffer(out_buffer);
+
+    status = AParcel_unmarshal(_aidl_out, out_buffer.data(), out_size);
+    if (status != STATUS_OK) {
+      LOG(ERROR) << "Failed to AParcel_unmarshal: " << status;
+      return status;
+    }
+  }
+  return status;
 }
 
 }  // namespace artd

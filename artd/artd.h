@@ -34,6 +34,7 @@
 #include <vector>
 
 #include "aidl/com/android/server/art/BnArtd.h"
+#include "aidl/com/android/server/art/IArtd.h"
 #include "android-base/result.h"
 #include "android-base/thread_annotations.h"
 #include "android/binder_auto_utils.h"
@@ -57,6 +58,9 @@ struct Options {
   // If true, this artd instance is for Pre-reboot Dexopt. It runs in a chroot environment that is
   // set up by dexopt_chroot_setup.
   bool is_pre_reboot = false;
+  bool is_pre_reboot_wrapper = false;
+  int in_fd;
+  int out_fd;
 };
 
 class ArtdCancellationSignal {
@@ -248,6 +252,8 @@ class Artd : public aidl::com::android::server::art::BnArtd {
 
   android::base::Result<void> Start();
 
+  android::base::Result<void> StartRawBinder();
+
  private:
   android::base::Result<OatFileAssistantContext*> GetOatFileAssistantContext()
       EXCLUDES(ofa_context_mu_);
@@ -363,6 +369,24 @@ class BuildSystemProperties : public tools::SystemProperties {
       : system_properties_(std::move(system_properties)) {}
 
   const std::unordered_map<std::string, std::string> system_properties_;
+};
+
+class ArtdPreRebootWrapper
+    : public ndk::BnCInterface<aidl::com::android::server::art::IArtdDefault> {
+ public:
+  static binder_status_t onTransact(AIBinder* _aidl_binder,
+                                    transaction_code_t _aidl_code,
+                                    const AParcel* _aidl_in,
+                                    AParcel* _aidl_out);
+
+  android::base::Result<void> Start();
+
+ protected:
+  ndk::SpAIBinder createBinder() override;
+
+ private:
+  File in_fd_;
+  File out_fd_;
 };
 
 }  // namespace artd
