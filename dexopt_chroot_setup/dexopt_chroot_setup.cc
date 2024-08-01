@@ -124,11 +124,13 @@ Result<void> CreateDir(const std::string& path) {
 
 Result<void> Unmount(const std::string& target) {
   if (umount2(target.c_str(), UMOUNT_NOFOLLOW) == 0) {
+    LOG(INFO) << ART_FORMAT("Unmounted '{}'", target);
     return {};
   }
   LOG(WARNING) << ART_FORMAT(
       "Failed to umount2 '{}': {}. Retrying with MNT_DETACH", target, strerror(errno));
   if (umount2(target.c_str(), UMOUNT_NOFOLLOW | MNT_DETACH) == 0) {
+    LOG(INFO) << ART_FORMAT("Unmounted '{}'", target);
     return {};
   }
   return ErrnoErrorf("Failed to umount2 '{}'", target);
@@ -506,10 +508,22 @@ Result<void> DexoptChrootSetup::InitChroot() const {
       .Add("/linkerconfig");
   OR_RETURN(Run("linkerconfig", args.Get()));
 
+  OR_RETURN(BindMount("/system/lib", PathInChroot("/system/lib")));
+  if (OS::DirectoryExists("/system/lib64")) {
+    OR_RETURN(BindMount("/system/lib64", PathInChroot("/system/lib64")));
+  }
+
   return {};
 }
 
 Result<void> DexoptChrootSetup::TearDownChroot() const {
+  if (!OR_RETURN(GetProcMountsDescendantsOfPath(PathInChroot("/system/lib64"))).empty()) {
+    OR_RETURN(Unmount(PathInChroot("/system/lib64")));
+  }
+  if (!OR_RETURN(GetProcMountsDescendantsOfPath(PathInChroot("/system/lib"))).empty()) {
+    OR_RETURN(Unmount(PathInChroot("/system/lib")));
+  }
+
   std::vector<FstabEntry> apex_entries =
       OR_RETURN(GetProcMountsDescendantsOfPath(PathInChroot("/apex")));
   // If there is only one entry, it's /apex itself.
@@ -538,7 +552,6 @@ Result<void> DexoptChrootSetup::TearDownChroot() const {
   std::vector<FstabEntry> entries = OR_RETURN(GetProcMountsDescendantsOfPath(CHROOT_DIR));
   for (auto it = entries.rbegin(); it != entries.rend(); it++) {
     OR_RETURN(Unmount(it->mount_point));
-    LOG(INFO) << ART_FORMAT("Unmounted '{}'", it->mount_point);
   }
 
   std::error_code ec;
