@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8d858c0e_a7b29d5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-01T14:13:10Z",
+      "side": 1,
+      "message": "It seems we need to update prebuilts after https://android-review.git.corp.google.com/3187639 to unblock riscv64 testing on cuttlefish.\n\nI\u0027m not afraid to break riscv64 while we do not have continuous testing. The code builds and LTGM. I\u0027m marking this comment as resolved in order to submit the CL.",
+      "parentUuid": "85831d6f_53794ec1",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "c76d30ed9ac2a7bb519bebd21db8e7c5adc1c40b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "156346b3_1c33ecc3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
