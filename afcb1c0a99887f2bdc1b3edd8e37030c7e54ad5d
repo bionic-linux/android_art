@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5941a3a5_8f3a9da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-01T12:38:45Z",
+      "side": 1,
+      "message": "Hi Chris,\n\nHere\u0027s the failure:\n\nFAILED: out/soong/.intermediates/art/runtime/libart-runtime/android_riscv64_static_afdo-libart_apex31/obj/art/runtime/arch/riscv64/entrypoints_init_riscv64.o\n...t/soong/.intermediates/art/runtime/libart-runtime/android_riscv64_static_afdo-libart_apex31/obj/art/runtime/arch/riscv64/entrypoints_init_riscv64.o art/runtime/arch/riscv64/entrypoints_init_riscv64.cc\nart/runtime/arch/riscv64/entrypoints_init_riscv64.cc:151:31: error: use of undeclared identifier \u0027artReadBarrierSlow\u0027\n  151 |   qpoints-\u003eSetReadBarrierSlow(artReadBarrierSlow);\n      |                               ^\nart/runtime/arch/riscv64/entrypoints_init_riscv64.cc:152:38: error: use of undeclared identifier \u0027artReadBarrierForRootSlow\u0027\n  152 |   qpoints-\u003eSetReadBarrierForRootSlow(artReadBarrierForRootSlow);\n      |                                      ^\n2 errors generated.",
+      "revId": "afcb1c0a99887f2bdc1b3edd8e37030c7e54ad5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
