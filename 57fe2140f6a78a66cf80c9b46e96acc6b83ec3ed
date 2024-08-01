@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde553d2_dbeec3e0",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-01T08:23:06Z",
+      "side": 1,
+      "message": "This is a hack that prevents us from visiting removed instructions. But it also means that we shall stop iterating over the instructions in the block and miss any subsequent simplifications.\n\nIt would be preferable to get back to doing the simplification in `VisitAdd()` instead of `VisitShl()`. Doing the simplification in `VisitAdd()` can remove the next instruction already recorded in `HInstructionIterator::next_` and hit this hack.\n\nTest case:\n\n    long x \u003d (a \u003c\u003c 1) + b;\n    long y \u003d (c \u003c\u003c 1) + d;\n    return x ^ y;",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "57fe2140f6a78a66cf80c9b46e96acc6b83ec3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52fbf358_979fb6d4",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-01T08:23:06Z",
+      "side": 1,
+      "message": "You\u0027re relying on the previous passes to optimize away the case `distance \u003d\u003d 0`. If they do not, the `HRiscv64ShiftAdd` constructor shall fail the `DCHECK_GE()`.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "57fe2140f6a78a66cf80c9b46e96acc6b83ec3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
