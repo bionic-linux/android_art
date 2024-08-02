@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b98e06_c46097b0",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-02T14:53:44Z",
+      "side": 1,
+      "message": "The whole function checks whether bypassing should apply, so I don\u0027t think it has to be very granular. In this implementation, the early return only happens if neither of those libraries exist.",
+      "parentUuid": "29c7f3e1_1b3efb9c",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 56
+      },
+      "revId": "b71d834d96670a5c3de95d5505d39853e559edcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d3217f1_f7b865f4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-02T14:41:00Z",
       "side": 1,
       "message": "Would loading `libbase.so` twice be OK? (I guess so, but I haven\u0027t tried.)",
+      "range": {
+        "startLine": 344,
+        "startChar": 6,
+        "endLine": 344,
+        "endChar": 73
+      },
+      "revId": "b71d834d96670a5c3de95d5505d39853e559edcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beebac2c_51845435",
+        "filename": "libnativeloader/native_loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-02T14:53:44Z",
+      "side": 1,
+      "message": "I wondered the same, but I don\u0027t have a good way to test it.\n\nAccording to [this java doc](https://docs.oracle.com/javase/7/docs/api/java/lang/Runtime.html#loadLibrary%28java.lang.String%29):\n\n\u003e If this method is called more than once with the same library name, the second and subsequent calls are ignored.\n\nSo, at the very least, there is no Java specification that says loading the same library should be considered as an error, so there won\u0027t be anything in our code that deliberately throws an error just for conforming the Java spec.\n\nHowever, there is still a risk that the implementation may not support loading the same library twice on the native level. I think we can only find it out by creating a respin with this change and giving it to the tester. In any case, this change won\u0027t make things worse because a device that has both libraries couldn\u0027t boot anyway.",
+      "parentUuid": "1d3217f1_f7b865f4",
       "range": {
         "startLine": 344,
         "startChar": 6,
