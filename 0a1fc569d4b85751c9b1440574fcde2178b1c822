@@ -16,6 +16,24 @@
       "message": "Would we have missed this with the new -Wdeprecated-declarations from aosp/3206490?",
       "revId": "0a1fc569d4b85751c9b1440574fcde2178b1c822",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0ec01d_9d531105",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-02T10:07:33Z",
+      "side": 1,
+      "message": "This is a different warning, `-Wdeprecated-this-capture`. Additionally, aosp/3206490 only disabled warnings for VIXL includes as we restore the warnings afterwards with `#pragma GCC diagnostic pop`.",
+      "parentUuid": "84ca75a5_117ebf34",
+      "revId": "0a1fc569d4b85751c9b1440574fcde2178b1c822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
