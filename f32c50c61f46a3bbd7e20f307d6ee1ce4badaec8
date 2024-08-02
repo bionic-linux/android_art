@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e418a8f1_b6f250a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2024-08-02T15:01:15Z",
+      "side": 1,
+      "message": "Hi Mythri, could you please have a look at this change? I\u0027ve gotten to the bottom of why ahat wasn\u0027t working with heap dumps made from JDK 21 - they seem to provide double entries for some classes, but with different object ID. Only one of those entries is valid. Thank you!",
+      "revId": "f32c50c61f46a3bbd7e20f307d6ee1ce4badaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
