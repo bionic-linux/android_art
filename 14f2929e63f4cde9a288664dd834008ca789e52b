@@ -94,6 +94,30 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50fa281_ee5395e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3544930
+      },
+      "writtenOn": "2024-08-02T08:55:49Z",
+      "side": 1,
+      "message": "The most frequent usecases are signals processing and math statistics but I also found possible usage for games on stackoverflow and request to add intrinsics for MSVS (unfortunately end usecase is not clear). These methods were added to java.lang.Math by JDK-4406429, JDK-4633024 (1) as recommended by IEEE 754 (2). That shows interest to these methods and gaining enough votes.\nCould you please explain how max amount of intrinsics is calculated? I\u0027d like to think whether it is possible to take somehow 2 instead of 4 by combining implementations. Is there a way to enable/disable intrinsics to tune for special usecase? For example, in java intrinsics can be controled via command line options.\n\n(1) https://bugs.openjdk.org/browse/JDK-4406429\n    https://bugs.openjdk.org/browse/JDK-4633024\n(2) https://math.nist.gov/javanumerics/reports/jgfnwg-01.html",
+      "parentUuid": "aeec2a5f_dee5b189",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
