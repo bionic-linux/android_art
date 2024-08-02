@@ -22,6 +22,30 @@
       },
       "revId": "7b7b1aafbc8884742ef3873b3cf9654b216d5197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e9fd20_6dcfefc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-02T10:00:19Z",
+      "side": 1,
+      "message": "VIXL is using the deprecated `std::iterator`.\n\nIf you have previously built ART, just `touch art/compiler/utils/arm64/assembler_arm64.h` and rebuild to see the warnings.",
+      "parentUuid": "e7c597f0_f9632838",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "7b7b1aafbc8884742ef3873b3cf9654b216d5197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
