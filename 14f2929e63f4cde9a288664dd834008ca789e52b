@@ -118,6 +118,53 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc1ceb6_3253a0cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T16:05:11Z",
+      "side": 1,
+      "message": "We\u0027ll need to deal with the growing number of intrinsics sooner or later, so I do not consider that important for this change.",
+      "parentUuid": "aeec2a5f_dee5b189",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58754d8c_92a012f6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5530,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T16:05:11Z",
+      "side": 1,
+      "message": "Use of macros is discouraged. Please rewrite the code similarly to the `MathRound{Float,Double}` intrinsics.",
+      "range": {
+        "startLine": 5530,
+        "startChar": 1,
+        "endLine": 5530,
+        "endChar": 7
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
