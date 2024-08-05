@@ -16,6 +16,466 @@
       "message": "Folks could you please take a look?",
       "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e385471_c90c7fde",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "These `lhs` and `rhs` values stored in the new instruction shall be immediately replaced by the `left-\u003eAsCompare()-\u003eInputAt({0, 1})` by the caller (except if we return the `true`/`false` constant). We could pass the `left-\u003eAsCompare()` as an additional argument and use its inputs here to avoid the subsequent overwriting. We would then restructure the caller code as\n\n    // We have decided to fold the HCompare into the HCondition. Transfer the information.\n    if (DataType::IsUnsignedType(left-\u003eAsCompare()-\u003eGetComparisonType())) {\n      DCHECK_EQ(condition-\u003eGetBias(), ComparisonBias::kNoBias);\n      HInstruction* replacement \u003d CreateUnsignedConditionReplacement(\n          block-\u003eGetGraph()-\u003eGetAllocator(), condition, left-\u003eAsCompare());\n      block-\u003eReplaceAndRemoveInstructionWith(condition, replacement);\n    } else {\n      // Transfer the bias.\n      condition-\u003eSetBias(left-\u003eAsCompare()-\u003eGetBias());\n      // Replace the operands of the HCondition.\n      condition-\u003eReplaceInput(left-\u003eInputAt(0), 0);\n      condition-\u003eReplaceInput(left-\u003eInputAt(1), 1);\n    }",
+      "range": {
+        "startLine": 1800,
+        "startChar": 2,
+        "endLine": 1801,
+        "endChar": 39
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5243d1_f6d6441c",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "We should add some additional `DCHECK()s` here, for example:\n\n    DCHECK(cond-\u003eInputAt(1)-\u003eIsIntConstant());\n    DCHECK_EQ(cond-\u003eInputAt(1)-\u003eAsIntConstant()-\u003eGetValue(), 0);",
+      "range": {
+        "startLine": 1802,
+        "startChar": 0,
+        "endLine": 1802,
+        "endChar": 2
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed6a2d9_ab7b2b62",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Remove the suffix `u`, the parameter type is signed (`int64_t`).",
+      "range": {
+        "startLine": 1817,
+        "startChar": 68,
+        "endLine": 1817,
+        "endChar": 69
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0016cdff_5fc2e16b",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1820,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1820,
+        "startChar": 12,
+        "endLine": 1820,
+        "endChar": 19
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1302d79_cb521349",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1826,
+        "startChar": 12,
+        "endLine": 1826,
+        "endChar": 19
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ebedc4_ef62155d",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Remove the suffix `u`, the parameter type is signed (`int64_t`).",
+      "range": {
+        "startLine": 1835,
+        "startChar": 68,
+        "endLine": 1835,
+        "endChar": 69
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15d1fdf_f2dd5b1e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Style: End the comment with a period. (But maybe this comment could be removed. I\u0027d prefer to have the \"We have decided...\" comment here as suggested in the `CreateUnsignedConditionReplacement()`.)",
+      "range": {
+        "startLine": 1903,
+        "startChar": 91,
+        "endLine": 1903,
+        "endChar": 92
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b07ec0_20ab8b27",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Style: `condition_node`, `compare_type`. (Moot if this is restructured as suggested in `CreateUnsignedConditionReplacement()`.)",
+      "range": {
+        "startLine": 1904,
+        "startChar": 16,
+        "endLine": 1905,
+        "endChar": 28
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a6aefd_a3774aa5",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "This crashes on x86-64 with\n\n    dex2oatd64: bit_utils.h:260 Check failed: N \u003c BitSizeOf\u003cT\u003e() (N\u003d64, BitSizeOf\u003cT\u003e()\u003d32)\n\nI\u0027d prefer to remove this condition completely. But we need to guard from flipping between signed and unsigned compare `kMaxSamePositionSimplifications` times. We should not simplify if both inputs are constant.",
+      "range": {
+        "startLine": 1943,
+        "startChar": 13,
+        "endLine": 1943,
+        "endChar": 47
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f95239_8268a1cd",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "I haven\u0027t seen this one crash but I find it suspicious and I would prefer to see this condition removed.",
+      "range": {
+        "startLine": 1950,
+        "startChar": 13,
+        "endLine": 1950,
+        "endChar": 47
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae680ce4_947633b7",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of this particular check but there is already a pre-existing one, so you\u0027re just following an existing pattern.",
+      "range": {
+        "startLine": 1969,
+        "startChar": 8,
+        "endLine": 1969,
+        "endChar": 52
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf82d38f_b3ce473b",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 2026,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Style: `compare_left`.",
+      "range": {
+        "startLine": 2026,
+        "startChar": 16,
+        "endLine": 2026,
+        "endChar": 27
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea6b961_b0565f3e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 2032,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Style: `compare_right`.",
+      "range": {
+        "startLine": 2032,
+        "startChar": 16,
+        "endLine": 2032,
+        "endChar": 28
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8fc803_206a75c8",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4547,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Indentation should be 4 spaces, not 6.\n\nMy preferred style:\n\n    Type var \u003d cond\n        ? then_value\n        : else_value;\n\n(But we\u0027re using other styles in ART as well. Also, clang-tidy may try to rewrite the code for you when you `repo upload` without `--no-verify`.)",
+      "range": {
+        "startLine": 4545,
+        "startChar": 71,
+        "endLine": 4547,
+        "endChar": 48
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470109b5_8e313503",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4553,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4551,
+        "startChar": 71,
+        "endLine": 4553,
+        "endChar": 48
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c856d18_4160f093",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4569,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Add the attribute `comparison_type` to the graph visualizer.",
+      "range": {
+        "startLine": 4569,
+        "startChar": 17,
+        "endLine": 4569,
+        "endChar": 34
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86ef3ad_63c662b0",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Style: Add space after comma. (Same many times below.)",
+      "range": {
+        "startLine": 371,
+        "startChar": 36,
+        "endLine": 371,
+        "endChar": 37
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50673f69_712a84d7",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Unused.",
+      "range": {
+        "startLine": 403,
+        "startChar": 4,
+        "endLine": 403,
+        "endChar": 32
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a19628_1efe000f",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "Does `BT` mean \"below than\" similar to \"less than\"?\nI\u0027d prefer simple `B` (instead of `BT`) for \"below\" and `A` (instead of `AT`) for \"above\".",
+      "range": {
+        "startLine": 455,
+        "startChar": 67,
+        "endLine": 455,
+        "endChar": 69
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3f043d_fa047177",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T15:50:44Z",
+      "side": 1,
+      "message": "I think we need to hide this zero (and similar zeros for the tests below) from `inliner` and `constant_folding$after_inlining` passes to test the edge cases. Otherwise the `Below(., 0)` shall be turned into `false` either by the constant folding in the `inliner` which runs after `HInliner::SubstituteArguments()`, or in the `constant_folding$after_inlining` pass.\n\nBut finding a pattern that simplifies to 0 after surviving the constant folding can be quite difficult. Maybe we could abuse the `HEqual`+`HSelect` created in `InstructionSimplifierVisitor::SimplifyStringIndexOf()` and let the constant folding turn the `HEqual` to `true`.\n\nAs this is not a \"checker\" test, this cannot actually be verified. Maybe we should move the new tests to some \"checker\" test and add appropriate `CHECK` statements.",
+      "range": {
+        "startLine": 457,
+        "startChar": 37,
+        "endLine": 457,
+        "endChar": 38
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
