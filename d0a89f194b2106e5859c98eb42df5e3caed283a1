@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b630663_b5332ee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Added, it is only for boot-image-profile `--generate-boot-image-profile` otherwise it should be a normal profile",
+      "parentUuid": "511dd47e_f4c34d30",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 107
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30741424_650e4c40",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Could you please put the results in http://gpaste/ and provide a link here?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 362
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cacc291_6eef64b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30741424_650e4c40",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb20b51_74e35232",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "I guess we could just remove it, since I need it only in one place at `ExtractInlineCacheInfo` function",
+      "parentUuid": "9d8718fd_e33c69df",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45c5826e_f1f1ef61",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Can we add `\u003d default` to `profile_compilation_info.h` line 1102 and get rid of this? https://en.cppreference.com/w/cpp/language/copy_constructor",
+      "range": {
+        "startLine": 3036,
+        "startChar": 0,
+        "endLine": 3040,
+        "endChar": 1
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03af4f01_eb7dbbcc",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3040,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t know it before!",
+      "parentUuid": "45c5826e_f1f1ef61",
       "range": {
         "startLine": 3036,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f071c266_6ac0274f",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e71748_a91495a1",
+      "range": {
+        "startLine": 3074,
+        "startChar": 4,
+        "endLine": 3078,
+        "endChar": 5
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db85cb7_ae38aa25",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "No need for this. The for loop will do nothing if `other` is empty.",
+      "range": {
+        "startLine": 3158,
+        "startChar": 0,
+        "endLine": 3160,
+        "endChar": 3
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bf76f2_e6467e68",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3160,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db85cb7_ae38aa25",
       "range": {
         "startLine": 3158,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0617fde6_928338c7",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3161,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0a62cb8_69f1694d",
+      "range": {
+        "startLine": 3161,
+        "startChar": 7,
+        "endLine": 3161,
+        "endChar": 17
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d521c4d_45206832",
@@ -175,6 +343,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Same here. `FindOrAdd`.",
+      "range": {
+        "startLine": 3166,
+        "startChar": 4,
+        "endLine": 3170,
+        "endChar": 5
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70aeff31_e077b0d8",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d521c4d_45206832",
       "range": {
         "startLine": 3166,
         "startChar": 4,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15eeadca_21ec994b",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3177,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83a65f7_ee542323",
+      "range": {
+        "startLine": 3177,
+        "startChar": 9,
+        "endLine": 3177,
+        "endChar": 20
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c44c84b9_c3cf22ae",
@@ -221,6 +437,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Do we have to store strings here? Can we store `TypeReference` instead? Example: https://cs.android.com/android/platform/superproject/main/+/main:art/profman/profile_assistant_test.cc;l\u003d46;drc\u003defb735f4d5a2f04550e33e8aa9485f906018fe4e",
+      "range": {
+        "startLine": 1098,
+        "startChar": 6,
+        "endLine": 1098,
+        "endChar": 37
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9459c6ed_e699980b",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Yes, I think we could keep the `TypeReference`",
+      "parentUuid": "c44c84b9_c3cf22ae",
       "range": {
         "startLine": 1098,
         "startChar": 6,
@@ -272,6 +512,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13efc546_5b922112",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e2a51a_64cc530d",
+      "range": {
+        "startLine": 1120,
+        "startChar": 54,
+        "endLine": 1120,
+        "endChar": 55
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab8ec694_083a4a44",
@@ -313,6 +577,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32de6233_72ca19f9",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "returning a reference should be better here",
+      "parentUuid": "ab8ec694_083a4a44",
+      "range": {
+        "startLine": 1130,
+        "startChar": 4,
+        "endLine": 1130,
+        "endChar": 41
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a176602_737ac0a3",
@@ -326,6 +614,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Same here. Do we have to store strings? Or we can store `TypeReference`? Example: https://cs.android.com/android/platform/superproject/main/+/main:art/dex2oat/linker/oat_writer.h;l\u003d471;drc\u003defb735f4d5a2f04550e33e8aa9485f906018fe4e",
+      "range": {
+        "startLine": 1140,
+        "startChar": 35,
+        "endLine": 1140,
+        "endChar": 36
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc1fa01_735d2b80",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Yes, I think we could keep the `TypeReference`, but we need to pass the `ProfileCompilationInfo` for the combined profiles to be able to map correctly",
+      "parentUuid": "5a176602_737ac0a3",
       "range": {
         "startLine": 1140,
         "startChar": 35,
@@ -387,6 +699,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96e8b75_3a98aba0",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c45b5a_0844fc1a",
+      "range": {
+        "startLine": 1141,
+        "startChar": 54,
+        "endLine": 1141,
+        "endChar": 55
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e3f3a73_84a3b706",
@@ -428,6 +764,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1242054b_03177245",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "4e3f3a73_84a3b706",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c0ad03_e9e13b22",
@@ -441,6 +801,30 @@
       "writtenOn": "2024-07-31T14:14:28Z",
       "side": 1,
       "message": "Are all these needed?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f1d747_5df44269",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "I think no, cleaned",
+      "parentUuid": "03c0ad03_e9e13b22",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -492,6 +876,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3d6c4f_39fcef2e",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "f1a71ac1_1f41714e",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61fbbb64_bf02b085",
@@ -529,6 +937,30 @@
           ]
         }
       ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8a2def_ef471548",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61fbbb64_bf02b085",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
       "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -594,6 +1026,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6af4cdb_320ec32a",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d14f8372_62df3723",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7f6c6d1_a3338698",
@@ -641,6 +1097,30 @@
           ]
         }
       ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73904dce_79f353b6",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f6c6d1_a3338698",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 39
+      },
       "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -696,6 +1176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "545496d9_18affda6",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "218447d6_8e5da584",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7061e517_75301d32",
@@ -747,6 +1251,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25d7226f_a50f0acc",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7061e517_75301d32",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "008c88d5_d780e17c",
@@ -784,6 +1312,30 @@
           ]
         }
       ],
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f606f231_de0a12ef",
+        "filename": "profman/profman.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-05T20:37:39Z",
+      "side": 1,
+      "message": "Fix applied.",
+      "parentUuid": "008c88d5_d780e17c",
+      "range": {
+        "startLine": 835,
+        "startChar": 52,
+        "endLine": 835,
+        "endChar": 54
+      },
       "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
