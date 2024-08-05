@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f537777_6adabaa0",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T10:18:12Z",
+      "side": 1,
+      "message": "We need it to get correct backtrace in the unlikely case that the PC is right at the `POP_ARG esp`.\n\nSame goes for the CFI_DEF_CFA below for the unlikely case that the PC is at the `ret` instruction.",
+      "parentUuid": "b70a33df_956a23a7",
+      "range": {
+        "startLine": 689,
+        "startChar": 4,
+        "endLine": 689,
+        "endChar": 65
+      },
+      "revId": "07cfc4774ffa52c4586ffd318a37a943ea42ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd11e5bf_82c5d42c",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-05T09:48:00Z",
       "side": 1,
       "message": "Is testq better than cmpq for checking against 0 or is it a convention we follow?",
+      "range": {
+        "startLine": 768,
+        "startChar": 2,
+        "endLine": 768,
+        "endChar": 18
+      },
+      "revId": "07cfc4774ffa52c4586ffd318a37a943ea42ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fcc0db2_d745eb87",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-05T10:18:12Z",
+      "side": 1,
+      "message": "I guess the convention is based on the code size - `testq` is one byte shorter. And while bitwise AND is a simpler operation than subtraction, I don\u0027t think it makes any performance or power draw difference for x86 CPUs (other than the possible effects of the code being shorter and differently aligned).",
+      "parentUuid": "fd11e5bf_82c5d42c",
       "range": {
         "startLine": 768,
         "startChar": 2,
