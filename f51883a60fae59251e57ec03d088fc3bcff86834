@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a7fa5be_849a7cd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-05T12:15:49Z",
+      "side": 1,
+      "message": "Thanks Hans! Changes in ti_heap look good to me. I haven\u0027t looked at other parts. I will let Lokesh review them.",
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10485fd_e011e62d",
+        "filename": "openjdkjvmti/ti_heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-05T12:15:49Z",
+      "side": 1,
+      "message": "Seems reasonable to me. HeapExtensions isn\u0027t a part of the standard. This is introduced by us in the context of structural redefinition to support general object replacement (aosp/1077933). I am not sure where exactly these are being used but it seems reasonable to return an error for non-movable objects.",
+      "range": {
+        "startLine": 1919,
+        "startChar": 2,
+        "endLine": 1919,
+        "endChar": 85
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
