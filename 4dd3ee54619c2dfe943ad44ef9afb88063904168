@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1288d7e_51fc8e81",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3f7412_823a1906",
+      "range": {
+        "startLine": 811,
+        "startChar": 28,
+        "endLine": 811,
+        "endChar": 33
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26d409e7_e4bdf1e8",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-08-01T20:13:03Z",
       "side": 1,
       "message": "redundant",
+      "range": {
+        "startLine": 827,
+        "startChar": 23,
+        "endLine": 827,
+        "endChar": 31
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02675a40_c2c752af",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d409e7_e4bdf1e8",
       "range": {
         "startLine": 827,
         "startChar": 23,
@@ -88,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcf912e_02a71acb",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Thanks for catching that. It was indeed supposed to be in kIsDebugBuild. I had temporarily kept it out for testing.",
+      "parentUuid": "e214fb26_277c423e",
+      "range": {
+        "startLine": 456,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 31
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ae16886_73e573cc",
@@ -101,6 +173,30 @@
       "writtenOn": "2024-08-01T20:13:03Z",
       "side": 1,
       "message": "\"reference fields added by this class\"? I was initially confused by the current statement.",
+      "range": {
+        "startLine": 1637,
+        "startChar": 18,
+        "endLine": 1637,
+        "endChar": 55
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b1e761_b54204d5",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ae16886_73e573cc",
       "range": {
         "startLine": 1637,
         "startChar": 18,
@@ -134,6 +230,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7286222a_bb0fd7fe",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Added a TODO for simplifying as per our discussion.\n\nAdded comments around overflow* variables.",
+      "parentUuid": "024e7d41_5c351165",
+      "range": {
+        "startLine": 1656,
+        "startChar": 4,
+        "endLine": 1656,
+        "endChar": 18
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4321e433_1767e683",
@@ -147,6 +267,30 @@
       "writtenOn": "2024-08-01T20:13:03Z",
       "side": 1,
       "message": "Please move to the end of the loop body.",
+      "range": {
+        "startLine": 1662,
+        "startChar": 13,
+        "endLine": 1662,
+        "endChar": 29
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a851440a_50d22e41",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4321e433_1767e683",
       "range": {
         "startLine": 1662,
         "startChar": 13,
@@ -180,6 +324,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44e05a4_641fc716",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c4e5bc8_64231124",
+      "range": {
+        "startLine": 1701,
+        "startChar": 6,
+        "endLine": 1701,
+        "endChar": 35
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2603431_f2ae59b2",
@@ -203,6 +371,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff36bcb_34b60de2",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2603431_f2ae59b2",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 75
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e6c40bb_dd6cfabb",
@@ -216,6 +408,30 @@
       "writtenOn": "2024-08-01T20:13:03Z",
       "side": 1,
       "message": "I believe this should always go on the definition, not declaration. And it needs an explanatory comment. Not that we\u0027re currently consistent about either.",
+      "range": {
+        "startLine": 1456,
+        "startChar": 68,
+        "endLine": 1456,
+        "endChar": 93
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b906ce14_4e3b4b95",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "I have mostly seen it (like REQURES_SHARED) on declaration. Added a comment.",
+      "parentUuid": "7e6c40bb_dd6cfabb",
       "range": {
         "startLine": 1456,
         "startChar": 68,
@@ -267,6 +483,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a792a18b_0238ef6d",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f25ce5_84aaa8fa",
+      "range": {
+        "startLine": 1572,
+        "startChar": 2,
+        "endLine": 1572,
+        "endChar": 52
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41aebf2c_d6f27407",
@@ -280,6 +520,30 @@
       "writtenOn": "2024-08-01T20:13:03Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 865,
+        "startChar": 28,
+        "endLine": 865,
+        "endChar": 53
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186dcdb3_9a05fc89",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-05T23:24:22Z",
+      "side": 1,
+      "message": "Added a comment. Basically sometimes the visitor needs heap_bitmap_lock_ in shared/exclusive mode. Same is the case for mutator_lock_ as well.",
+      "parentUuid": "41aebf2c_d6f27407",
       "range": {
         "startLine": 865,
         "startChar": 28,
