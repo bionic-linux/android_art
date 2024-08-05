@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6917f4_6f89cec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-05T09:48:00Z",
+      "side": 1,
+      "message": "Thanks! lgtm a couple of questions more for my understanding.",
+      "revId": "07cfc4774ffa52c4586ffd318a37a943ea42ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70a33df_956a23a7",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-05T09:48:00Z",
+      "side": 1,
+      "message": "Just curious, do we need this? Since we are anyway doing CFI_DEF_CFA just after we pop esp.",
+      "range": {
+        "startLine": 689,
+        "startChar": 4,
+        "endLine": 689,
+        "endChar": 65
+      },
+      "revId": "07cfc4774ffa52c4586ffd318a37a943ea42ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd11e5bf_82c5d42c",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-05T09:48:00Z",
+      "side": 1,
+      "message": "Is testq better than cmpq for checking against 0 or is it a convention we follow?",
+      "range": {
+        "startLine": 768,
+        "startChar": 2,
+        "endLine": 768,
+        "endChar": 18
+      },
+      "revId": "07cfc4774ffa52c4586ffd318a37a943ea42ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
