@@ -67,16 +67,8 @@ class InductionVarRangeTest : public OptimizingUnitTest {
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
     // Two parameters.
-    x_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                              dex::TypeIndex(0),
-                                              0,
-                                              DataType::Type::kInt32);
-    entry_block_->AddInstruction(x_);
-    y_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                              dex::TypeIndex(0),
-                                              0,
-                                              DataType::Type::kInt32);
-    entry_block_->AddInstruction(y_);
+    x_ = MakeParam(DataType::Type::kInt32);
+    y_ = MakeParam(DataType::Type::kInt32);
     // Set arbitrary range analysis hint while testing private methods.
     SetHint(x_);
   }
@@ -115,8 +107,8 @@ class InductionVarRangeTest : public OptimizingUnitTest {
     loop_body_->AddInstruction(increment_);  // i += s
     phi->AddInput(increment_);
     loop_body_->AddInstruction(new (GetAllocator()) HGoto());
-    return_block->AddInstruction(new (GetAllocator()) HReturnVoid());
-    exit_block_->AddInstruction(new (GetAllocator()) HExit());
+    MakeReturnVoid(return_block);
+    MakeExit(exit_block_);
   }
 
   /** Constructs SSA and performs induction variable analysis. */

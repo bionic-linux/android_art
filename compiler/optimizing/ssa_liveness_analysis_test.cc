@@ -58,14 +58,11 @@ class SsaLivenessAnalysisTest : public OptimizingUnitTest {
 };
 
 TEST_F(SsaLivenessAnalysisTest, TestReturnArg) {
-  HInstruction* arg = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);
-  entry_->AddInstruction(arg);
+  HInstruction* arg = MakeParam(DataType::Type::kInt32);
 
   HBasicBlock* block = CreateSuccessor(entry_);
-  HInstruction* ret = new (GetAllocator()) HReturn(arg);
-  block->AddInstruction(ret);
-  block->AddInstruction(new (GetAllocator()) HExit());
+  MakeReturn(block, arg);
+  MakeExit(block);
 
   graph_->BuildDominatorTree();
   SsaLivenessAnalysis ssa_analysis(graph_, codegen_.get(), GetScopedAllocator());
@@ -78,20 +75,12 @@ TEST_F(SsaLivenessAnalysisTest, TestReturnArg) {
 }
 
 TEST_F(SsaLivenessAnalysisTest, TestAput) {
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
-  HInstruction* value = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
-  HInstruction* extra_arg1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
-  HInstruction* extra_arg2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
+  HInstruction* array = MakeParam(DataType::Type::kReference);
+  HInstruction* index = MakeParam(DataType::Type::kInt32);
+  HInstruction* value = MakeParam(DataType::Type::kInt32);
+  HInstruction* extra_arg1 = MakeParam(DataType::Type::kInt32);
+  HInstruction* extra_arg2 = MakeParam(DataType::Type::kReference);
   HInstruction* const args[] = { array, index, value, extra_arg1, extra_arg2 };
-  for (HInstruction* insn : args) {
-    entry_->AddInstruction(insn);
-  }
 
   HBasicBlock* block = CreateSuccessor(entry_);
   HInstruction* null_check = new (GetAllocator()) HNullCheck(array, 0);
@@ -147,20 +136,12 @@ TEST_F(SsaLivenessAnalysisTest, TestAput) {
 }
 
 TEST_F(SsaLivenessAnalysisTest, TestDeoptimize) {
-  HInstruction* array = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  HInstruction* index = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(1), 1, DataType::Type::kInt32);
-  HInstruction* value = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(2), 2, DataType::Type::kInt32);
-  HInstruction* extra_arg1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(3), 3, DataType::Type::kInt32);
-  HInstruction* extra_arg2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(4), 4, DataType::Type::kReference);
+  HInstruction* array = MakeParam(DataType::Type::kReference);
+  HInstruction* index = MakeParam(DataType::Type::kInt32);
+  HInstruction* value = MakeParam(DataType::Type::kInt32);
+  HInstruction* extra_arg1 = MakeParam(DataType::Type::kInt32);
+  HInstruction* extra_arg2 = MakeParam(DataType::Type::kReference);
   HInstruction* const args[] = { array, index, value, extra_arg1, extra_arg2 };
-  for (HInstruction* insn : args) {
-    entry_->AddInstruction(insn);
-  }
 
   HBasicBlock* block = CreateSuccessor(entry_);
   HInstruction* null_check = new (GetAllocator()) HNullCheck(array, 0);

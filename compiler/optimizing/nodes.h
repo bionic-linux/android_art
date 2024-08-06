@@ -4173,8 +4173,7 @@ class HEqual final : public HCondition {
 
 class HNotEqual final : public HCondition {
  public:
-  HNotEqual(HInstruction* first, HInstruction* second,
-            uint32_t dex_pc = kNoDexPc)
+  HNotEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kNotEqual, first, second, dex_pc) {
   }
 
@@ -4219,8 +4218,7 @@ class HNotEqual final : public HCondition {
 
 class HLessThan final : public HCondition {
  public:
-  HLessThan(HInstruction* first, HInstruction* second,
-            uint32_t dex_pc = kNoDexPc)
+  HLessThan(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThan, first, second, dex_pc) {
   }
 
@@ -4259,8 +4257,7 @@ class HLessThan final : public HCondition {
 
 class HLessThanOrEqual final : public HCondition {
  public:
-  HLessThanOrEqual(HInstruction* first, HInstruction* second,
-                   uint32_t dex_pc = kNoDexPc)
+  HLessThanOrEqual(HInstruction* first, HInstruction* second, uint32_t dex_pc = kNoDexPc)
       : HCondition(kLessThanOrEqual, first, second, dex_pc) {
   }
 
