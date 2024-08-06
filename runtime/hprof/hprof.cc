@@ -883,9 +883,9 @@ class Hprof : public SingleRootVisitor {
   size_t total_objects_with_stack_trace_ = 0u;
 
   HprofStringId next_string_id_ = 0x400000;
-  SafeMap<std::string, HprofStringId> strings_;
+  std::unordered_map<std::string, HprofStringId> strings_;
   HprofClassSerialNumber next_class_serial_number_ = 1;
-  SafeMap<mirror::Class*, HprofClassSerialNumber> classes_;
+  std::unordered_map<mirror::Class*, HprofClassSerialNumber> classes_;
 
   std::unordered_map<const gc::AllocRecordStackTrace*, HprofStackTraceSerialNumber,
                      gc::HashAllocRecordTypesPtr<gc::AllocRecordStackTrace>,
