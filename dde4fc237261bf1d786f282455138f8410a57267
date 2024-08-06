@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cb1691_bd9f748a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-08-06T07:07:31Z",
+      "side": 1,
+      "message": "Bypassing presubmit as only a comment has changed since the last presubmit-verified +2.",
+      "revId": "dde4fc237261bf1d786f282455138f8410a57267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
