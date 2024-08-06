@@ -68,12 +68,8 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
-  entry->AddInstruction(parameter1);
-  entry->AddInstruction(parameter2);
+  HInstruction* parameter1 = MakeParam(DataType::Type::kReference);  // array
+  HInstruction* parameter2 = MakeParam(DataType::Type::kInt32);  // i
 
   HInstruction* constant_1 = graph_->GetIntConstant(1);
   HInstruction* constant_0 = graph_->GetIntConstant(0);
@@ -141,7 +137,7 @@ TEST_F(BoundsCheckEliminationTest, NarrowingRangeArrayBoundsElimination) {
   block2->AddSuccessor(exit);
   block4->AddSuccessor(exit);
   block5->AddSuccessor(exit);
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
 
   block1->AddSuccessor(block3);  // True successor
   block1->AddSuccessor(block2);  // False successor
@@ -165,12 +161,8 @@ TEST_F(BoundsCheckEliminationTest, OverflowArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
-  entry->AddInstruction(parameter1);
-  entry->AddInstruction(parameter2);
+  HInstruction* parameter1 = MakeParam(DataType::Type::kReference);  // array
+  HInstruction* parameter2 = MakeParam(DataType::Type::kInt32);  // i
 
   HInstruction* constant_1 = graph_->GetIntConstant(1);
   HInstruction* constant_0 = graph_->GetIntConstant(0);
@@ -209,7 +201,7 @@ TEST_F(BoundsCheckEliminationTest, OverflowArrayBoundsElimination) {
 
   HBasicBlock* exit = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(exit);
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
   block1->AddSuccessor(exit);    // true successor
   block1->AddSuccessor(block2);  // false successor
   block2->AddSuccessor(exit);    // true successor
@@ -230,12 +222,8 @@ TEST_F(BoundsCheckEliminationTest, UnderflowArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter1 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);  // array
-  HInstruction* parameter2 = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kInt32);  // i
-  entry->AddInstruction(parameter1);
-  entry->AddInstruction(parameter2);
+  HInstruction* parameter1 = MakeParam(DataType::Type::kReference);  // array
+  HInstruction* parameter2 = MakeParam(DataType::Type::kInt32);  // i
 
   HInstruction* constant_1 = graph_->GetIntConstant(1);
   HInstruction* constant_0 = graph_->GetIntConstant(0);
@@ -276,7 +264,7 @@ TEST_F(BoundsCheckEliminationTest, UnderflowArrayBoundsElimination) {
 
   HBasicBlock* exit = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(exit);
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
   block1->AddSuccessor(exit);    // true successor
   block1->AddSuccessor(block2);  // false successor
   block2->AddSuccessor(exit);    // true successor
@@ -295,9 +283,7 @@ TEST_F(BoundsCheckEliminationTest, ConstantArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  entry->AddInstruction(parameter);
+  HInstruction* parameter = MakeParam(DataType::Type::kReference);
 
   HInstruction* constant_5 = graph_->GetIntConstant(5);
   HInstruction* constant_4 = graph_->GetIntConstant(4);
@@ -346,7 +332,7 @@ TEST_F(BoundsCheckEliminationTest, ConstantArrayBoundsElimination) {
   HBasicBlock* exit = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(exit);
   block->AddSuccessor(exit);
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
 
   RunBCE();
 
@@ -794,9 +780,7 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
   HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(entry);
   graph_->SetEntryBlock(entry);
-  HInstruction* parameter = new (GetAllocator()) HParameterValue(
-      graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference);
-  entry->AddInstruction(parameter);
+  HInstruction* parameter = MakeParam(DataType::Type::kReference);
 
   HInstruction* constant_0 = graph_->GetIntConstant(0);
   HInstruction* constant_minus_1 = graph_->GetIntConstant(-1);
@@ -809,7 +793,7 @@ TEST_F(BoundsCheckEliminationTest, BubbleSortArrayBoundsElimination) {
 
   HBasicBlock* exit = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(exit);
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
 
   HBasicBlock* outer_header = new (GetAllocator()) HBasicBlock(graph_);
   graph_->AddBlock(outer_header);
@@ -1095,7 +1079,7 @@ TEST_F(BoundsCheckEliminationTest, ModArrayBoundsElimination) {
   phi->AddInput(add);
   //////////////////////////////////////////////////////////////////////////////////
 
-  exit->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit);
 
   RunBCE();
 

@@ -64,13 +64,9 @@ class LoopOptimizationTest : public OptimizingUnitTest {
     graph_->AddBlock(exit_block_);
     graph_->SetEntryBlock(entry_block_);
     graph_->SetExitBlock(exit_block_);
-    parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                      dex::TypeIndex(0),
-                                                      0,
-                                                      DataType::Type::kInt32);
-    entry_block_->AddInstruction(parameter_);
-    return_block_->AddInstruction(new (GetAllocator()) HReturnVoid());
-    exit_block_->AddInstruction(new (GetAllocator()) HExit());
+    parameter_ = MakeParam(DataType::Type::kInt32);
+    MakeReturnVoid(return_block_);
+    MakeExit(exit_block_);
     entry_block_->AddSuccessor(return_block_);
     return_block_->AddSuccessor(exit_block_);
   }
@@ -85,9 +81,9 @@ class LoopOptimizationTest : public OptimizingUnitTest {
     position->ReplaceSuccessor(successor, header);
     header->AddSuccessor(body);
     header->AddSuccessor(successor);
-    header->AddInstruction(new (GetAllocator()) HIf(parameter_));
+    MakeIf(header, parameter_);
     body->AddSuccessor(header);
-    body->AddInstruction(new (GetAllocator()) HGoto());
+    MakeGoto(body);
     return header;
   }
 

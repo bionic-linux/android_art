@@ -306,11 +306,6 @@ class OptimizingUnitTestHelper {
     exit_block_->AddInstruction(new (GetAllocator()) HExit());
   }
 
-  void AddParameter(HInstruction* parameter) {
-    entry_block_->AddInstruction(parameter);
-    parameters_.push_back(parameter);
-  }
-
   HBasicBlock* AddNewBlock() {
     HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph_);
     graph_->AddBlock(block);
@@ -391,64 +386,136 @@ class OptimizingUnitTestHelper {
     OptimizingUnitTestHelper::ManuallyBuildEnvFor(ins, &current_locals);
   }
 
-  HLoadClass* MakeClassLoad(std::optional<dex::TypeIndex> ti = std::nullopt,
+  HLoadClass* MakeLoadClass(HBasicBlock* block,
+                            std::optional<dex::TypeIndex> ti = std::nullopt,
                             std::optional<Handle<mirror::Class>> klass = std::nullopt) {
-    return new (GetAllocator()) HLoadClass(graph_->GetCurrentMethod(),
-                                           ti ? *ti : dex::TypeIndex(class_idx_++),
-                                           graph_->GetDexFile(),
-                                           /* klass= */ klass ? *klass : null_klass_,
-                                           /* is_referrers_class= */ false,
-                                           /* dex_pc= */ 0,
-                                           /* needs_access_check= */ false);
+    HLoadClass* load_class = new (GetAllocator()) HLoadClass(
+        graph_->GetCurrentMethod(),
+        ti ? *ti : dex::TypeIndex(class_idx_++),
+        graph_->GetDexFile(),
+        /* klass= */ klass ? *klass : null_klass_,
+        /* is_referrers_class= */ false,
+        /* dex_pc= */ 0,
+        /* needs_access_check= */ false);
+    block->AddInstruction(load_class);
+    return load_class;
   }
 
-  HNewInstance* MakeNewInstance(HInstruction* cls, uint32_t dex_pc = 0u) {
+  HNewInstance* MakeNewInstance(HBasicBlock* block, HInstruction* cls, uint32_t dex_pc = kNoDexPc) {
     EXPECT_TRUE(cls->IsLoadClass() || cls->IsClinitCheck()) << *cls;
     HLoadClass* load =
         cls->IsLoadClass() ? cls->AsLoadClass() : cls->AsClinitCheck()->GetLoadClass();
-    return new (GetAllocator()) HNewInstance(cls,
-                                             dex_pc,
-                                             load->GetTypeIndex(),
-                                             graph_->GetDexFile(),
-                                             /* finalizable= */ false,
-                                             QuickEntrypointEnum::kQuickAllocObjectInitialized);
+    HNewInstance* new_instance = new (GetAllocator()) HNewInstance(
+        cls,
+        dex_pc,
+        load->GetTypeIndex(),
+        graph_->GetDexFile(),
+        /* finalizable= */ false,
+        QuickEntrypointEnum::kQuickAllocObjectInitialized);
+    block->AddInstruction(new_instance);
+    return new_instance;
   }
 
-  HInstanceFieldSet* MakeIFieldSet(HInstruction* inst,
+  HInstanceFieldSet* MakeIFieldSet(HBasicBlock* block,
+                                   HInstruction* inst,
                                    HInstruction* data,
                                    MemberOffset off,
-                                   uint32_t dex_pc = 0u) {
-    return new (GetAllocator()) HInstanceFieldSet(inst,
-                                                  data,
-                                                  /* field= */ nullptr,
-                                                  /* field_type= */ data->GetType(),
-                                                  /* field_offset= */ off,
-                                                  /* is_volatile= */ false,
-                                                  /* field_idx= */ 0,
-                                                  /* declaring_class_def_index= */ 0,
-                                                  graph_->GetDexFile(),
-                                                  dex_pc);
+                                   uint32_t dex_pc = kNoDexPc) {
+    CHECK(data != nullptr);
+    return MakeIFieldSet(block, inst, data, data->GetType(), off, dex_pc);
   }
 
-  HInstanceFieldGet* MakeIFieldGet(HInstruction* inst,
+  HInstanceFieldSet* MakeIFieldSet(HBasicBlock* block,
+                                   HInstruction* inst,
+                                   HInstruction* data,
+                                   DataType::Type field_type,
+                                   MemberOffset off,
+                                   uint32_t dex_pc = kNoDexPc) {
+    HInstanceFieldSet* ifield_set = new (GetAllocator()) HInstanceFieldSet(
+        inst,
+        data,
+        /* field= */ nullptr,
+        field_type,
+        /* field_offset= */ off,
+        /* is_volatile= */ false,
+        kUnknownFieldIndex,
+        kUnknownClassDefIndex,
+        graph_->GetDexFile(),
+        dex_pc);
+    block->AddInstruction(ifield_set);
+    return ifield_set;
+  }
+
+  HInstanceFieldGet* MakeIFieldGet(HBasicBlock* block,
+                                   HInstruction* inst,
                                    DataType::Type type,
                                    MemberOffset off,
-                                   uint32_t dex_pc = 0u) {
-    return new (GetAllocator()) HInstanceFieldGet(inst,
-                                                  /* field= */ nullptr,
-                                                  /* field_type= */ type,
-                                                  /* field_offset= */ off,
-                                                  /* is_volatile= */ false,
-                                                  /* field_idx= */ 0,
-                                                  /* declaring_class_def_index= */ 0,
-                                                  graph_->GetDexFile(),
-                                                  dex_pc);
+                                   uint32_t dex_pc = kNoDexPc) {
+    HInstanceFieldGet* ifield_get = new (GetAllocator()) HInstanceFieldGet(
+        inst,
+        /* field= */ nullptr,
+        /* field_type= */ type,
+        /* field_offset= */ off,
+        /* is_volatile= */ false,
+        kUnknownFieldIndex,
+        kUnknownClassDefIndex,
+        graph_->GetDexFile(),
+        dex_pc);
+    block->AddInstruction(ifield_get);
+    return ifield_get;
   }
 
-  HInvokeStaticOrDirect* MakeInvoke(DataType::Type return_type,
-                                    const std::vector<HInstruction*>& args) {
+  HNewArray* MakeNewArray(HBasicBlock* block,
+                          HInstruction* cls,
+                          HInstruction* length,
+                          size_t component_size_shift = DataType::SizeShift(DataType::Type::kInt32),
+                          uint32_t dex_pc = kNoDexPc) {
+    HNewArray* new_array =
+        new (GetAllocator()) HNewArray(cls, length, dex_pc, component_size_shift);
+    block->AddInstruction(new_array);
+    return new_array;
+  }
+
+  HArraySet* MakeArraySet(HBasicBlock* block,
+                          HInstruction* array,
+                          HInstruction* index,
+                          HInstruction* value,
+                          DataType::Type type,
+                          uint32_t dex_pc = kNoDexPc) {
+    HArraySet* array_set = new (GetAllocator()) HArraySet(array, index, value, type, dex_pc);
+    block->AddInstruction(array_set);
+    return array_set;
+  }
+
+  HArrayGet* MakeArrayGet(HBasicBlock* block,
+                          HInstruction* array,
+                          HInstruction* index,
+                          DataType::Type type,
+                          uint32_t dex_pc = kNoDexPc) {
+    HArrayGet* array_get = new (GetAllocator()) HArrayGet(array, index, type, dex_pc);
+    block->AddInstruction(array_get);
+    return array_get;
+  }
+
+  HVecStore* MakeVecStore(HBasicBlock* block,
+                          HInstruction* base,
+                          HInstruction* index,
+                          HInstruction* value,
+                          DataType::Type packed_type,
+                          size_t vector_length = 4,
+                          uint32_t dex_pc = kNoDexPc) {
+    SideEffects side_effects = SideEffects::ArrayWriteOfType(packed_type);
+    HVecStore* vec_store = new (GetAllocator()) HVecStore(
+        GetAllocator(), base, index, value, packed_type, side_effects, vector_length, dex_pc);
+    block->AddInstruction(vec_store);
+    return vec_store;
+  }
+
+  HInvokeStaticOrDirect* MakeInvokeStatic(HBasicBlock* block,
+                                          DataType::Type return_type,
+                                          const std::vector<HInstruction*>& args) {
     MethodReference method_reference{/* file= */ &graph_->GetDexFile(), /* index= */ method_idx_++};
-    HInvokeStaticOrDirect* res = new (GetAllocator())
+    HInvokeStaticOrDirect* invoke = new (GetAllocator())
         HInvokeStaticOrDirect(GetAllocator(),
                               args.size(),
                               return_type,
@@ -461,23 +528,87 @@ class OptimizingUnitTestHelper {
                               HInvokeStaticOrDirect::ClinitCheckRequirement::kNone,
                               !graph_->IsDebuggable());
     for (auto [ins, idx] : ZipCount(MakeIterationRange(args))) {
-      res->SetRawInputAt(idx, ins);
+      invoke->SetRawInputAt(idx, ins);
     }
-    return res;
+    block->AddInstruction(invoke);
+    return invoke;
   }
 
-  HPhi* MakePhi(const std::vector<HInstruction*>& ins) {
+  HAdd* MakeAdd(HBasicBlock* block,
+                DataType::Type result_type,
+                HInstruction* left,
+                HInstruction* right,
+                uint32_t dex_pc = kNoDexPc) {
+    HAdd* add = new (GetAllocator()) HAdd(result_type, left, right, dex_pc);
+    block->AddInstruction(add);
+    return add;
+  }
+
+  HSub* MakeSub(HBasicBlock* block,
+                DataType::Type result_type,
+                HInstruction* left,
+                HInstruction* right,
+                uint32_t dex_pc = kNoDexPc) {
+    HSub* sub = new (GetAllocator()) HSub(result_type, left, right, dex_pc);
+    block->AddInstruction(sub);
+    return sub;
+  }
+
+  HSuspendCheck* MakeSuspendCheck(HBasicBlock* block, uint32_t dex_pc = kNoDexPc) {
+    HSuspendCheck* suspend_check = new (GetAllocator()) HSuspendCheck(dex_pc);
+    block->AddInstruction(suspend_check);
+    return suspend_check;
+  }
+
+  template <typename Type>
+  Type* MakeCondition(HBasicBlock* block,
+                      HInstruction* first,
+                      HInstruction* second,
+                      uint32_t dex_pc = kNoDexPc) {
+    Type* condition = new (GetAllocator()) Type(first, second, dex_pc);
+    block->AddInstruction(condition);
+    return condition;
+  }
+
+  HIf* MakeIf(HBasicBlock* block, HInstruction* cond, uint32_t dex_pc = kNoDexPc) {
+    HIf* if_insn = new (GetAllocator()) HIf(cond, dex_pc);
+    block->AddInstruction(if_insn);
+    return if_insn;
+  }
+
+  HGoto* MakeGoto(HBasicBlock* block, uint32_t dex_pc = kNoDexPc) {
+    HGoto* goto_insn = new (GetAllocator()) HGoto(dex_pc);
+    block->AddInstruction(goto_insn);
+    return goto_insn;
+  }
+
+  HReturnVoid* MakeReturnVoid(HBasicBlock* block, uint32_t dex_pc = kNoDexPc) {
+    HReturnVoid* return_void = new (GetAllocator()) HReturnVoid(dex_pc);
+    block->AddInstruction(return_void);
+    return return_void;
+  }
+
+  HReturn* MakeReturn(HBasicBlock* block, HInstruction* value, uint32_t dex_pc = kNoDexPc) {
+    HReturn* return_insn = new (GetAllocator()) HReturn(value, dex_pc);
+    block->AddInstruction(return_insn);
+    return return_insn;
+  }
+
+  HPhi* MakePhi(HBasicBlock* block, const std::vector<HInstruction*>& ins) {
     EXPECT_GE(ins.size(), 2u) << "Phi requires at least 2 inputs";
     HPhi* phi =
         new (GetAllocator()) HPhi(GetAllocator(), kNoRegNumber, ins.size(), ins[0]->GetType());
     for (auto [i, idx] : ZipCount(MakeIterationRange(ins))) {
       phi->SetRawInputAt(idx, i);
     }
+    block->AddPhi(phi);
     return phi;
   }
 
-  void SetupExit(HBasicBlock* exit) {
-    exit->AddInstruction(new (GetAllocator()) HExit());
+  HExit* MakeExit(HBasicBlock* exit_block) {
+    HExit* exit = new (GetAllocator()) HExit();
+    exit_block->AddInstruction(exit);
+    return exit;
   }
 
   dex::TypeIndex DefaultTypeIndexForType(DataType::Type type) {
@@ -508,7 +639,7 @@ class OptimizingUnitTestHelper {
     }
   }
 
-  // Creates a parameter. The instruction is automatically added to the entry-block
+  // Creates a parameter. The instruction is automatically added to the entry-block.
   HParameterValue* MakeParam(DataType::Type type, std::optional<dex::TypeIndex> ti = std::nullopt) {
     HParameterValue* val = new (GetAllocator()) HParameterValue(
         graph_->GetDexFile(), ti ? *ti : DefaultTypeIndexForType(type), param_count_++, type);
@@ -531,8 +662,6 @@ class OptimizingUnitTestHelper {
   HBasicBlock* entry_block_;
   HBasicBlock* return_block_;
   HBasicBlock* exit_block_;
-
-  std::vector<HInstruction*> parameters_;
 
   size_t param_count_ = 0;
   size_t class_idx_ = 42;

@@ -74,18 +74,14 @@ class LICMTest : public OptimizingUnitTest {
     return_->AddSuccessor(exit_);
 
     // Provide boiler-plate instructions.
-    parameter_ = new (GetAllocator()) HParameterValue(graph_->GetDexFile(),
-                                                      dex::TypeIndex(0),
-                                                      0,
-                                                      DataType::Type::kReference);
-    entry_->AddInstruction(parameter_);
+    parameter_ = MakeParam(DataType::Type::kReference);
     int_constant_ = graph_->GetIntConstant(42);
     float_constant_ = graph_->GetFloatConstant(42.0f);
-    loop_preheader_->AddInstruction(new (GetAllocator()) HGoto());
-    loop_header_->AddInstruction(new (GetAllocator()) HIf(parameter_));
-    loop_body_->AddInstruction(new (GetAllocator()) HGoto());
-    return_->AddInstruction(new (GetAllocator()) HReturnVoid());
-    exit_->AddInstruction(new (GetAllocator()) HExit());
+    MakeGoto(loop_preheader_);
+    MakeIf(loop_header_, parameter_);
+    MakeGoto(loop_body_);
+    MakeReturnVoid(return_);
+    MakeExit(exit_);
   }
 
   // Performs LICM optimizations (after proper set up).

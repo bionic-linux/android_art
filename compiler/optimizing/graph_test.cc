@@ -70,8 +70,7 @@ HBasicBlock* GraphTest::CreateReturnBlock(HGraph* graph) {
 HBasicBlock* GraphTest::CreateExitBlock(HGraph* graph) {
   HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(block);
-  HInstruction* exit_instr = new (GetAllocator()) HExit();
-  block->AddInstruction(exit_instr);
+  MakeExit(block);
   return block;
 }
 

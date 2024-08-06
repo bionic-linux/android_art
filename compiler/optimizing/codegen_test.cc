@@ -441,9 +441,9 @@ TEST_F(CodegenTest, NonMaterializedCondition) {
     then_block->AddSuccessor(exit_block);
     else_block->AddSuccessor(exit_block);
 
-    exit_block->AddInstruction(new (GetAllocator()) HExit());
-    then_block->AddInstruction(new (GetAllocator()) HReturn(constant0));
-    else_block->AddInstruction(new (GetAllocator()) HReturn(constant1));
+    MakeExit(exit_block);
+    MakeReturn(then_block, constant0);
+    MakeReturn(else_block, constant1);
 
     ASSERT_FALSE(equal->IsEmittedAtUseSite());
     graph->BuildDominatorTree();
@@ -484,7 +484,7 @@ TEST_F(CodegenTest, MaterializedCondition1) {
       graph->AddBlock(code_block);
       HBasicBlock* exit_block = new (GetAllocator()) HBasicBlock(graph);
       graph->AddBlock(exit_block);
-      exit_block->AddInstruction(new (GetAllocator()) HExit());
+      MakeExit(exit_block);
 
       entry_block->AddSuccessor(code_block);
       code_block->AddSuccessor(exit_block);
@@ -538,7 +538,7 @@ TEST_F(CodegenTest, MaterializedCondition2) {
       graph->AddBlock(if_false_block);
       HBasicBlock* exit_block = new (GetAllocator()) HBasicBlock(graph);
       graph->AddBlock(exit_block);
-      exit_block->AddInstruction(new (GetAllocator()) HExit());
+      MakeExit(exit_block);
 
       graph->SetEntryBlock(entry_block);
       entry_block->AddSuccessor(if_block);
@@ -618,7 +618,7 @@ void CodegenTest::TestComparison(IfCondition condition,
   HBasicBlock* exit_block = new (GetAllocator()) HBasicBlock(graph);
   graph->AddBlock(exit_block);
   graph->SetExitBlock(exit_block);
-  exit_block->AddInstruction(new (GetAllocator()) HExit());
+  MakeExit(exit_block);
 
   entry_block->AddSuccessor(block);
   block->AddSuccessor(exit_block);
@@ -681,7 +681,7 @@ void CodegenTest::TestComparison(IfCondition condition,
       break;
   }
   block->AddInstruction(comparison);
-  block->AddInstruction(new (GetAllocator()) HReturn(comparison));
+  MakeReturn(block, comparison);
 
   graph->BuildDominatorTree();
   std::unique_ptr<CompilerOptions> compiler_options =

@@ -92,9 +92,7 @@ class InductionVarAnalysisTest : public OptimizingUnitTest {
     graph_->SetExitBlock(exit_);
 
     // Provide entry and exit instructions.
-    parameter_ = new (GetAllocator()) HParameterValue(
-        graph_->GetDexFile(), dex::TypeIndex(0), 0, DataType::Type::kReference, true);
-    entry_->AddInstruction(parameter_);
+    parameter_ = MakeParam(DataType::Type::kReference);
     constant0_ = graph_->GetIntConstant(0);
     constant1_ = graph_->GetIntConstant(1);
     constant2_ = graph_->GetIntConstant(2);
@@ -102,23 +100,21 @@ class InductionVarAnalysisTest : public OptimizingUnitTest {
     constant100_ = graph_->GetIntConstant(100);
     constantm1_ = graph_->GetIntConstant(-1);
     float_constant0_ = graph_->GetFloatConstant(0.0f);
-    return_->AddInstruction(new (GetAllocator()) HReturnVoid());
-    exit_->AddInstruction(new (GetAllocator()) HExit());
+    MakeReturnVoid(return_);
+    MakeExit(exit_);
 
     // Provide loop instructions.
     for (int d = 0; d < n; d++) {
-      basic_[d] = new (GetAllocator()) HPhi(GetAllocator(), d, 0, DataType::Type::kInt32);
-      loop_preheader_[d]->AddInstruction(new (GetAllocator()) HGoto());
-      loop_header_[d]->AddPhi(basic_[d]);
-      HInstruction* compare = new (GetAllocator()) HLessThan(basic_[d], constant100_);
-      loop_header_[d]->AddInstruction(compare);
-      loop_header_[d]->AddInstruction(new (GetAllocator()) HIf(compare));
-      increment_[d] = new (GetAllocator()) HAdd(DataType::Type::kInt32, basic_[d], constant1_);
-      loop_body_[d]->AddInstruction(increment_[d]);
-      loop_body_[d]->AddInstruction(new (GetAllocator()) HGoto());
+      MakeGoto(loop_preheader_[d]);
 
-      basic_[d]->AddInput(constant0_);
-      basic_[d]->AddInput(increment_[d]);
+      basic_[d] = MakePhi(loop_header_[d], {constant0_, /* placeholder */ constant0_});
+      HInstruction* compare = MakeCondition<HLessThan>(loop_header_[d], basic_[d], constant100_);
+      MakeIf(loop_header_[d], compare);
+
+      increment_[d] = MakeAdd(loop_body_[d], DataType::Type::kInt32, basic_[d], constant1_);
+      MakeGoto(loop_body_[d]);
+
+      basic_[d]->ReplaceInput(increment_[d], 1u);  // Update back-edge input.
     }
   }
 
