@@ -165,6 +165,30 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105d56a5_0f41c6f9",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5530,
+      "author": {
+        "id": 3544930
+      },
+      "writtenOn": "2024-08-06T16:46:22Z",
+      "side": 1,
+      "message": "Thanks! Rewrote similarly to MathRound{Float,Double}.\nReran the test and the above benchmark.\nBenchmarking results are almost the same:\n\u0027bench (double copySign):\u0027 total \u003d 3282 ms  iter \u003d 65.66 mcs  op \u003d 8.01 ns\n\u0027bench (float copySign):\u0027  total \u003d 2736 ms  iter \u003d 54.74 mcs  op \u003d 6.68 ns\n\u0027bench (double signum):\u0027   total \u003d 5196 ms  iter \u003d 103.93 mcs  op \u003d 12.69 ns\n\u0027bench (float signum):\u0027    total \u003d 4649 ms  iter \u003d 92.99 mcs  op \u003d 11.35 ns",
+      "parentUuid": "58754d8c_92a012f6",
+      "range": {
+        "startLine": 5530,
+        "startChar": 1,
+        "endLine": 5530,
+        "endChar": 7
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
