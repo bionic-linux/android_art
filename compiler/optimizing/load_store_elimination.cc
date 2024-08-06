@@ -1365,7 +1365,6 @@ void LSEVisitor::PrepareLoopRecords(HBasicBlock* block) {
     heap_values.resize(num_heap_locations,
                        {/*value=*/Value::Unknown(), /*stored_by=*/Value::Unknown()});
     // Also keep the stores before the loop header, including in blocks that were not visited yet.
-    bool is_osr = GetGraph()->IsCompilingOsr();
     for (size_t idx = 0u; idx != num_heap_locations; ++idx) {
       KeepStores(Value::ForLoopPhiPlaceholder(GetPhiPlaceholder(block->GetBlockId(), idx)));
     }
@@ -2011,7 +2010,7 @@ bool LSEVisitor::MaterializeLoopPhis(ArrayRef<const size_t> phi_placeholder_inde
       HInstruction* phi = phi_it.Current();
       DCHECK_EQ(phi->InputCount(), predecessors.size());
       ArrayRef<HUserRecord<HInstruction*>> phi_inputs = phi->GetInputRecords();
-      auto cmp = [=](const HUserRecord<HInstruction*>& lhs, HBasicBlock* rhs) {
+      auto cmp = [=, this](const HUserRecord<HInstruction*>& lhs, HBasicBlock* rhs) {
         Value value = ReplacementOrValue(heap_values_for_[rhs->GetBlockId()][idx].value);
         if (value.NeedsPhi()) {
           DCHECK(value.GetPhiPlaceholder() == phi_placeholder);
