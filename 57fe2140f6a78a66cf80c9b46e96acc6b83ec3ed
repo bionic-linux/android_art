@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b8dece3_63facc5f",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-06T10:20:17Z",
+      "side": 1,
+      "message": "@vmarko@google.com this test case passed locally for me. I implemented the simplification in `VisitShl()` borrowing ideas from `InstructionSimplifierArm64`",
+      "parentUuid": "bde553d2_dbeec3e0",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "57fe2140f6a78a66cf80c9b46e96acc6b83ec3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52fbf358_979fb6d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-01T08:23:06Z",
       "side": 1,
       "message": "You\u0027re relying on the previous passes to optimize away the case `distance \u003d\u003d 0`. If they do not, the `HRiscv64ShiftAdd` constructor shall fail the `DCHECK_GE()`.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "57fe2140f6a78a66cf80c9b46e96acc6b83ec3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf138ba7_cad602f4",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-06T10:20:17Z",
+      "side": 1,
+      "message": "@vmarko@google.com I understand, thank you. I\u0027m sorry. I will fix this.",
+      "parentUuid": "52fbf358_979fb6d4",
       "range": {
         "startLine": 60,
         "startChar": 8,
