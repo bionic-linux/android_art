@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa9149f_a6f19f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-06T15:10:56Z",
+      "side": 1,
+      "message": "Makes sense to me. Thanks!\nMy only concern is that I believe std::unordered_map alsoo does not have such a great reputation for efficiency in easy cases like this, though it\u0027s clearly a better choice than a tree-based map. Does anybody know how it compares in space use? Is there a third better option?",
+      "revId": "0ff59f67d2fffd79902abed6a0ef38b65448f6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
