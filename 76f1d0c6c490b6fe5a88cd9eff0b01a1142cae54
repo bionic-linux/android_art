@@ -142,6 +142,24 @@
       "parentUuid": "9cd94cdd_a0a9f800",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fc8e4b_48629834",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-07T21:40:56Z",
+      "side": 1,
+      "message": "My suggestion is to let the normal package check find the shared libs in APKs, and then check well-known read-only partition prefixes for jars (where it\u0027s safe to cache that they\u0027re not found). Would that leave a (significant) gap for shared libs in other places?\n\nThe recursive function can multiply with a potentially large number of packages, so its performance can be highly variable and is hard to predict. I remain unconvinced of the real-world behaviour from your limited experiments - OEMs may have shared libs with larger dependency trees, and it may change over time as well.\n\nAs for complexity, my suggestions seems simpler code-wise since the recursive function disappears. Then there\u0027s:\n\n\u003e it\u0027s bad for peace of mind because it\u0027s unclear to me whether results for dex files on read-only partitions can even change or not.\n\nTo me it\u0027s pretty clear they can\u0027t - they\u0027re read-only afterall. Am I missing something? Well, there\u0027s the exception of remounting, and that\u0027s somewhat unfortunate but it\u0027s afterall a dev-only corner case.\n\nEven so, if we want to play safe there as well it\u0027s possible to deal with by stat\u0027ing the dex path both before entering it into the cache, and when the cached entry is used. Maybe with that approach it\u0027s not even necessary to check read-only partition prefixes?",
+      "parentUuid": "ae3e4f48_46f149d9",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
