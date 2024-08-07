@@ -20,13 +20,13 @@
 #include <set>
 
 #include "android-base/file.h"
-#include "base/unix_file/fd_file.h"
 #include "dex/class_accessor-inl.h"
 #include "dex/descriptors_names.h"
 #include "dex/dex_file-inl.h"
 #include "dex/method_reference.h"
 #include "dex/type_reference.h"
 #include "profile/profile_compilation_info.h"
+#include "inline_cache_format_util.h"
 
 namespace art {
 
@@ -82,6 +82,7 @@ static std::string GetPackageUseString(const FlattenProfileData::ItemMetadata& m
 
 // Converts a method representation to its final profile format.
 static std::string MethodToProfileFormat(
+    const ProfileCompilationInfo& profile_info,
     const std::string& method,
     const FlattenProfileData::ItemMetadata& metadata,
     bool output_package_use) {
@@ -100,7 +101,8 @@ static std::string MethodToProfileFormat(
     extra = kPackageUseDelim + GetPackageUseString(metadata);
   }
 
-  return flags_string + method + extra;
+  std::string inline_cache_string = GetInlineCacheLine(profile_info, metadata.GetInlineCache());
+  return flags_string + method + extra + inline_cache_string;
 }
 
 // Converts a class representation to its final profile or preloaded classes format.
@@ -209,12 +211,14 @@ bool GenerateBootImageProfile(
   bool generate_preloaded_classes = !preloaded_classes_out_path.empty();
 
   std::unique_ptr<FlattenProfileData> flattend_data(new FlattenProfileData());
+  ProfileCompilationInfo allProfiles(/*for_boot_image=*/ true);
   for (const std::string& profile_file : profile_files) {
     ProfileCompilationInfo profile(/*for_boot_image=*/ true);
     if (!profile.Load(profile_file, /*clear_if_invalid=*/ false)) {
       LOG(ERROR) << "Profile is not a valid: " << profile_file;
       return false;
     }
+    allProfiles.MergeWith(profile);
     std::unique_ptr<FlattenProfileData> currentData = profile.ExtractProfileData(dex_files);
     flattend_data->MergeData(*currentData);
   }
@@ -265,7 +269,7 @@ bool GenerateBootImageProfile(
         + "\n";
   }
   for (const auto& it : profile_methods) {
-    profile_content += MethodToProfileFormat(it.first, it.second, options.append_package_use_list)
+    profile_content += MethodToProfileFormat(allProfiles, it.first, it.second, options.append_package_use_list)
         + "\n";
   }
 
