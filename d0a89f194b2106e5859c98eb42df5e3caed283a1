@@ -378,6 +378,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "245ab14b_3da5a5c0",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3161,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "Oops, missed the `\u0026`",
+      "parentUuid": "5dc0fd84_52246985",
+      "range": {
+        "startLine": 3161,
+        "startChar": 7,
+        "endLine": 3161,
+        "endChar": 17
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d521c4d_45206832",
@@ -496,6 +520,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ff8917_c590d898",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3177,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f77644c_61d4dc39",
+      "range": {
+        "startLine": 3177,
+        "startChar": 9,
+        "endLine": 3177,
+        "endChar": 20
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c44c84b9_c3cf22ae",
@@ -557,6 +605,30 @@
       "side": 1,
       "message": "If you use `TypeReference`, you need to use `TypeReferenceValueComparator`, as the example shows.",
       "parentUuid": "9459c6ed_e699980b",
+      "range": {
+        "startLine": 1098,
+        "startChar": 6,
+        "endLine": 1098,
+        "endChar": 37
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4c0836_06837470",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "I missed it. Thanks.",
+      "parentUuid": "82ab81ea_edabc65f",
       "range": {
         "startLine": 1098,
         "startChar": 6,
@@ -721,6 +793,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23f288d_34124da0",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32351bf7_4e978f86",
+      "range": {
+        "startLine": 1130,
+        "startChar": 4,
+        "endLine": 1130,
+        "endChar": 41
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a176602_737ac0a3",
@@ -782,6 +878,30 @@
       "side": 1,
       "message": "If you use `TypeReference`, you need to use `TypeReferenceValueComparator`, as the example shows.",
       "parentUuid": "3bc1fa01_735d2b80",
+      "range": {
+        "startLine": 1140,
+        "startChar": 35,
+        "endLine": 1140,
+        "endChar": 36
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5c5d18_52b8992a",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7513fd51_d32a235e",
       "range": {
         "startLine": 1140,
         "startChar": 35,
@@ -1058,6 +1178,30 @@
       "side": 1,
       "message": "Same here, don\u0027t use `const \u0026` because `TypeReference` is trivial to copy.",
       "parentUuid": "bf3d6c4f_39fcef2e",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 22
+      },
+      "revId": "d0a89f194b2106e5859c98eb42df5e3caed283a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65244c01_59b78d34",
+        "filename": "profman/inline_cache_format_util.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T16:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef7abffa_da08ce5c",
       "range": {
         "startLine": 53,
         "startChar": 11,
