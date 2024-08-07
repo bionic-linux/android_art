@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bef194a_b7eb2587",
+        "filename": "runtime/exec_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-07T22:13:03Z",
+      "side": 0,
+      "message": "Another approach here could be to keep using this, and just record the time before the exec with the same clock and pass it to `GetStat`. That\u0027d avoid relying on the unclear semantics of `starttime`, and it\u0027d also give a time that doesn\u0027t advance when suspended, which seems better.\n\nBut I don\u0027t know when Android \"suspends\" in the sense clock_gettime(2) talks about. Since you reproduced this locally, how did you produce a suspension?",
+      "range": {
+        "startLine": 345,
+        "startChar": 20,
+        "endLine": 345,
+        "endChar": 35
+      },
+      "revId": "20cb02cf71f7e02d128ca2cd1d857f38a65f3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
