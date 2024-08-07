@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c82db35_d865f885",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3036,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Do I understand it correctly that this can be calculated from `dex_file-\u003eGetMethodId(method_idx)` (i.e., using the next two arguments)? If so, can we drop this parameter?",
+      "range": {
+        "startLine": 3036,
+        "startChar": 4,
+        "endLine": 3036,
+        "endChar": 28
+      },
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e65cf40_0df0107a",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3065,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Nit: line too long.",
+      "fixSuggestions": [
+        {
+          "fixId": "0d45bd9a_c60c0e75",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.cc",
+              "range": {
+                "startLine": 3065,
+                "startChar": 0,
+                "endLine": 3066,
+                "endChar": 0
+              },
+              "replacement": "    InlineCacheInfo\u0026 val \u003d inline_cache_.FindOrAdd(\n        TypeReference(dex_file, target.class_idx_))-\u003esecond;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45721038_5e20f3b5",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Nit: line too long.",
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4133004_55aa7421",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Nit: line too long.",
+      "fixSuggestions": [
+        {
+          "fixId": "c4eabf2d_c7dcb55b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1128,
+                "startChar": 0,
+                "endLine": 1129,
+                "endChar": 0
+              },
+              "replacement": "    void MergeInlineCacheInfo(\n        const SafeMap\u003cTypeReference, InlineCacheInfo, TypeReferenceValueComparator\u003e\u0026 other);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65ef20d8_bc8dff10",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Nit: line too long.",
+      "fixSuggestions": [
+        {
+          "fixId": "1dbcab09_d5231c42",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libprofile/profile/profile_compilation_info.h",
+              "range": {
+                "startLine": 1130,
+                "startChar": 0,
+                "endLine": 1131,
+                "endChar": 0
+              },
+              "replacement": "    const SafeMap\u003cTypeReference, InlineCacheInfo, TypeReferenceValueComparator\u003e\u0026\n        GetInlineCache() const {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5767f54_482b6020",
+        "filename": "profman/boot_image_profile.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Nit: snake_case",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "da767040_382dacb5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/boot_image_profile.cc",
+              "range": {
+                "startLine": 214,
+                "startChar": 0,
+                "endLine": 215,
+                "endChar": 0
+              },
+              "replacement": "  ProfileCompilationInfo all_profiles(/*for_boot_image\u003d*/ true);\n"
+            },
+            {
+              "path": "profman/boot_image_profile.cc",
+              "range": {
+                "startLine": 221,
+                "startChar": 0,
+                "endLine": 222,
+                "endChar": 0
+              },
+              "replacement": "    all_profiles.MergeWith(profile);\n"
+            },
+            {
+              "path": "profman/boot_image_profile.cc",
+              "range": {
+                "startLine": 272,
+                "startChar": 0,
+                "endLine": 273,
+                "endChar": 0
+              },
+              "replacement": "    profile_content +\u003d MethodToProfileFormat(all_profiles, it.first, it.second, options.append_package_use_list)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc97b0b5_3cebb938",
+        "filename": "profman/boot_image_profile.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T16:31:49Z",
+      "side": 1,
+      "message": "Is `allProfiles` only for obtaining the type descriptor from the type reference? If so, can we use the `BootImageRepresentation` function like the one on line 252 and get rid of `allProfiles`?",
+      "range": {
+        "startLine": 272,
+        "startChar": 45,
+        "endLine": 272,
+        "endChar": 56
+      },
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
