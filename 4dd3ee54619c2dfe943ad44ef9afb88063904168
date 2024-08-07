@@ -444,6 +444,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "503e0340_6f21855e",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-07T22:01:51Z",
+      "side": 1,
+      "message": "I looked it up. https://clang.llvm.org/docs/ThreadSafetyAnalysis.html says:\n\n\"Unlike the other attributes, NO_THREAD_SAFETY_ANALYSIS is not part of the interface of a function, and should thus be placed on the function definition (in the .cc or .cpp file) rather than on the function declaration (in the header).\"\n\nPlease don\u0027t introduce new violations of that. I agree we already have some. I think it\u0027s confusing for precisely the reason given here.\n\nCan we replace the \"which are required ...\" clause with \"requirements for these vary depending on the visitor\"? Or the equivalent of that in the implementation comment. If NO_THREAD_SAFETY_ANALYSIS is moved, I think we only need the comment there.",
+      "parentUuid": "b906ce14_4e3b4b95",
+      "range": {
+        "startLine": 1456,
+        "startChar": 68,
+        "endLine": 1456,
+        "endChar": 93
+      },
+      "revId": "4dd3ee54619c2dfe943ad44ef9afb88063904168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61f25ce5_84aaa8fa",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 30

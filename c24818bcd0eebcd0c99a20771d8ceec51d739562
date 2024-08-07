@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58612cbb_a69a67f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-07T22:01:51Z",
+      "side": 1,
+      "message": "I still think we should move the NO_THREAD_SAFETY_ANALYIS. And eventually get rid of other uses on declarations. O.w. LGTM.",
+      "revId": "c24818bcd0eebcd0c99a20771d8ceec51d739562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
