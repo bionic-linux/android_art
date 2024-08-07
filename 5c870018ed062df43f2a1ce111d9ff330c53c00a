@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d9d6d8_7506cf1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-07T17:09:47Z",
+      "side": 1,
+      "message": "Related to https://android-review.googlesource.com/c/platform/art/+/3160722",
+      "revId": "5c870018ed062df43f2a1ce111d9ff330c53c00a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
