@@ -341,6 +341,27 @@ public class Main {
     return (a << 1) + (a << 1);
   }
 
+  /// CHECK-START-RISCV64: long Main.$noinline$longTwoIndependentShiftAdds(long, long, long, long) instruction_simplifier_riscv64 (before)
+  /// CHECK:          <<A:j\d+>>         ParameterValue
+  /// CHECK:          <<B:j\d+>>         ParameterValue
+  /// CHECK:          <<C:j\d+>>         ParameterValue
+  /// CHECK:          <<D:j\d+>>         ParameterValue
+  /// CHECK:          <<One:i\d+>>       IntConstant 1
+  /// CHECK:          <<ShA:j\d+>>       Shl [<<A>>,<<One>>]
+  /// CHECK:          <<AddA:j\d+>>      Add [<<B>>,<<ShA>>]
+  /// CHECK:          <<ShC:j\d+>>       Shl [<<C>>,<<One>>]
+  /// CHECK:          <<AddC:j\d+>>      Add [<<D>>,<<ShC>>]
+
+  /// CHECK-START-RISCV64: long Main.$noinline$longTwoIndependentShiftAdds(long, long, long, long) instruction_simplifier_riscv64 (after)
+  /// CHECK-DAG:                         Riscv64ShiftAdd
+  /// CHECK-DAG:                         Riscv64ShiftAdd
+
+  public static long $noinline$longTwoIndependentShiftAdds(long a, long b, long c, long d) {
+    long x = (a << 1) + b;
+    long y = (c << 1) + d;
+    return x ^ y;
+  }
+
   public static void main(String[] args) {
     assertIntEquals(0, $noinline$intRiscvShift1Add(0, 0));
 
