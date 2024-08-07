@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce1351a_199f9718",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-07T21:12:30Z",
+      "side": 1,
+      "message": "Currently the documentation is in go/soong-selects. I still need to move it to build/soong/README.md.",
+      "parentUuid": "91d09626_7c41ff3c",
+      "range": {
+        "startLine": 290,
+        "startChar": 8,
+        "endLine": 290,
+        "endChar": 22
+      },
+      "revId": "488a95a99e365e706b875295bea937d6dcf31f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "456011ad_99996c3e",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "692edd83_ec8a4853",
+        "filename": "build/boot/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-07T21:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "456011ad_99996c3e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 84
+      },
+      "revId": "488a95a99e365e706b875295bea937d6dcf31f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d513325_297ec6c6",
@@ -77,6 +125,30 @@
       "writtenOn": "2024-08-07T20:30:01Z",
       "side": 1,
       "message": "```suggestion\n            // In both cases, use core platform (aka. module_lib) stubs for all the non-coverage\n            // contents.\n```",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "488a95a99e365e706b875295bea937d6dcf31f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6782c88b_12cf9153",
+        "filename": "build/boot/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-07T21:12:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d513325_297ec6c6",
       "range": {
         "startLine": 32,
         "startChar": 12,
