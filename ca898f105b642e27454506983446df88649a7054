@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10177cfc_be60e0a3",
+        "filename": "profman/inline_cache_format_util.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-07T14:25:19Z",
+      "side": 1,
+      "message": "`TypeReferenceValueComparator`.\n\nAnd please check everywhere and make sure you don\u0027t miss it whenever you use a set or a map.",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8cc32c27_c3a19f13",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "profman/inline_cache_format_util.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "    const SafeMap\u003cTypeReference, FlattenProfileData::ItemMetadata::InlineCacheInfo,\n                  TypeReferenceValueComparator\u003e\u0026 inline_cache);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ca898f105b642e27454506983446df88649a7054",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
