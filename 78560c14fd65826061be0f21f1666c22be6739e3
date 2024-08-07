@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a40471a_ada9879c",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5529,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Rename to `GenMathSignum` to keep consistent naming in this file.",
+      "range": {
+        "startLine": 5529,
+        "startChar": 5,
+        "endLine": 5529,
+        "endChar": 17
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4103b776_97b40e77",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5584,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "`GetnMathCopySign`",
+      "range": {
+        "startLine": 5584,
+        "startChar": 5,
+        "endLine": 5584,
+        "endChar": 19
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "386a726b_7c8e2434",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Should we add a corresponding negative number below?",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca74d0ee_cd191901",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "`Float.NEGATIVE_INFINITY`",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1e2bf5_91bfcd4b",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Is this a negative NaN? Can you add a comment?",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 41
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23002137_597d031b",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Add negative below?",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741c0d71_e6164ae1",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "`Double.NEGATIVE_INFINITY`",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92fb6ce_af552240",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Negative NaN?",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 53
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

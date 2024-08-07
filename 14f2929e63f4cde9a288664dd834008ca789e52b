@@ -189,6 +189,30 @@
       },
       "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ced3651_c12673a4",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5530,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-07T14:30:11Z",
+      "side": 1,
+      "message": "Done in PS2.",
+      "parentUuid": "105d56a5_0f41c6f9",
+      "range": {
+        "startLine": 5530,
+        "startChar": 1,
+        "endLine": 5530,
+        "endChar": 7
+      },
+      "revId": "14f2929e63f4cde9a288664dd834008ca789e52b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
