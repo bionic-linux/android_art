@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0ba3ca_fa363b83",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3036,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "yes, I think we can drive it from the other two parameters",
+      "parentUuid": "2c82db35_d865f885",
+      "range": {
+        "startLine": 3036,
+        "startChar": 4,
+        "endLine": 3036,
+        "endChar": 28
+      },
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e65cf40_0df0107a",
@@ -59,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7b1bab_5e8dce81",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3065,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e65cf40_0df0107a",
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45721038_5e20f3b5",
@@ -72,6 +114,24 @@
       "writtenOn": "2024-08-07T16:31:49Z",
       "side": 1,
       "message": "Nit: line too long.",
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c03c4906_140850c3",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 3144,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45721038_5e20f3b5",
       "revId": "502a51d34b6178815baea59c672aeae048250306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -111,6 +171,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1d70fe_819e974f",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4133004_55aa7421",
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65ef20d8_bc8dff10",
@@ -142,6 +220,24 @@
           ]
         }
       ],
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fd025b_d0a8fcbd",
+        "filename": "libprofile/profile/profile_compilation_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65ef20d8_bc8dff10",
       "revId": "502a51d34b6178815baea59c672aeae048250306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -207,6 +303,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ecadfb_48a28bc1",
+        "filename": "profman/boot_image_profile.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5767f54_482b6020",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc97b0b5_3cebb938",
@@ -220,6 +340,30 @@
       "writtenOn": "2024-08-07T16:31:49Z",
       "side": 1,
       "message": "Is `allProfiles` only for obtaining the type descriptor from the type reference? If so, can we use the `BootImageRepresentation` function like the one on line 252 and get rid of `allProfiles`?",
+      "range": {
+        "startLine": 272,
+        "startChar": 45,
+        "endLine": 272,
+        "endChar": 56
+      },
+      "revId": "502a51d34b6178815baea59c672aeae048250306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d99fc38_c0c4e2a1",
+        "filename": "profman/boot_image_profile.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-07T21:06:30Z",
+      "side": 1,
+      "message": "The original code was using the [ProfileCompilationInfo.GetTypeDescriptor](http://aosc/art/libprofile/profile/profile_compilation_info.h?l\u003d677) which was a bit complex than just calling the `DexFile.GetTypeDescriptor`, so that I preferred to follow the same logic.",
+      "parentUuid": "cc97b0b5_3cebb938",
       "range": {
         "startLine": 272,
         "startChar": 45,
