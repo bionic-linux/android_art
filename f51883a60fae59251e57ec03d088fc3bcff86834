@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c2e7a7_a9125bdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "ImageSpace would",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a7fa5be_849a7cd5",
@@ -37,6 +60,185 @@
         "endLine": 1919,
         "endChar": 85
       },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bfa43b0_a247128f",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "Minor point: can we move it outside visitor and then capture it to avoid indirection and global load.",
+      "range": {
+        "startLine": 2390,
+        "startChar": 8,
+        "endLine": 2390,
+        "endChar": 55
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d63e472a_15850d5a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/heap.cc",
+              "range": {
+                "startLine": 2394,
+                "startChar": 0,
+                "endLine": 2394,
+                "endChar": 0
+              },
+              "replacement": "    gc::Heap* heap \u003d Runtime::Current()-\u003eGetHeap();\n"
+            },
+            {
+              "path": "runtime/gc/heap.cc",
+              "range": {
+                "startLine": 2439,
+                "startChar": 0,
+                "endLine": 2441,
+                "endChar": 0
+              },
+              "replacement": "      GetHeap()-\u003eGetNonMovingSpace()-\u003eGetLiveBitmap()-\u003eSet(forward_address);\n      GetHeap()-\u003eGetNonMovingSpace()-\u003eGetMarkBitmap()-\u003eSet(forward_address);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265d7a8c_a22a1955",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "Are you sure we want to be so strong? I think a strong error is better but we should let the execution continue.",
+      "range": {
+        "startLine": 2572,
+        "startChar": 4,
+        "endLine": 2572,
+        "endChar": 13
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5b27f665_e289f796",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/heap.cc",
+              "range": {
+                "startLine": 2572,
+                "startChar": 0,
+                "endLine": 2573,
+                "endChar": 0
+              },
+              "replacement": "    DCHECK_LT(num_nonmovable, 10000u) \u003c\u003c \" Too many nonmovable zygote objects?\";\n"
+            }
+          ]
+        }
+      ],
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567346ca_e86ff499",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3764,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "Can\u0027t we directly check in non-moving-space and zygote-space rather than trying to find the space containing the object?\n\n```\nif (non_moving_space_-\u003eContains(obj)) {\n  return true;\nelse if (zygote_space_-\u003eContains(obj)) {\n  return ...\n}\nreturn false;\n```",
+      "range": {
+        "startLine": 3764,
+        "startChar": 24,
+        "endLine": 3764,
+        "endChar": 53
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3e077c_ceb27df5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3778,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "Again, seems like we can avoid iterating over all the spaces.",
+      "range": {
+        "startLine": 3778,
+        "startChar": 24,
+        "endLine": 3778,
+        "endChar": 53
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f37fe4_7407cf31",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-07T19:44:04Z",
+      "side": 1,
+      "message": "Can\u0027t we make it mirror::CompressedReference or ObjectReference type? That way if in future move to 64-bit references, there would be one less place to take care of 😊",
+      "range": {
+        "startLine": 1790,
+        "startChar": 11,
+        "endLine": 1790,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "bed72fb9_fdf12172",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/heap.h",
+              "range": {
+                "startLine": 1790,
+                "startChar": 0,
+                "endLine": 1791,
+                "endChar": 0
+              },
+              "replacement": "   std::set\u003cmirror::CompressedReference\u003cmirror::Object\u003e\u003e non_movable_zygote_objects_;\n"
+            }
+          ]
+        }
+      ],
       "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
