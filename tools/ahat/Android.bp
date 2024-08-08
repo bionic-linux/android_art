@@ -58,3 +58,153 @@ java_test_helper_library {
     name: "ahat-ri-test-dump",
     srcs: ["src/ri-test-dump/**/*.java"],
 }
+
+cc_genrule {
+    name: "gen_test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    srcs: [
+        ":art-script", // out/host/srcs/bin/art
+        ":dalvikvm", // out/host/srcs/bin/dalvikvm -> dalvikvm64
+        ":ahat-test-dump", // ahat-test-dump.jar
+        // To align with the content of the `art-script`, the following paths need to be hardcoded.
+        ":core-oj", // out/host/srcs/apex/com.android.art/javalib/core-oj.jar
+        ":core-libart", // out/host/srcs/apex/com.android.art/javalib/core-libart.jar
+        ":okhttp", // out/host/srcs/apex/com.android.art/javalib/okhttp.jar
+        ":bouncycastle", // out/host/srcs/apex/com.android.art/javalib/bouncycastle.jar
+        ":apache-xml", // out/host/srcs/apex/com.android.art/javalib/apache-xml.jar
+        ":core-icu4j-host", // out/host/srcs/apex/com.android.i18n/javalib/core-icu4j.jar
+        ":conscrypt-host", // out/host/srcs/apex/com.android.conscrypt/javalib/conscrypt.jar
+        ":icudt75l.dat", // out/host/srcs/com.android.i18n/etc/icu/icudt75l.dat
+        // `dalvikvm` requires the following shared libraries to run properly.
+        ":libandroidio",
+        ":libartpalette",
+        ":libdt_socket",
+        ":libjavacore",
+        ":libnativebridge",
+        ":libopenjdkjvm",
+        ":libsigchain",
+        ":libartbased",
+        ":libart",
+        ":libexpat", // libexpat-host.so
+        ":libjavacrypto",
+        ":libnativehelper",
+        ":libopenjdkjvmtid",
+        ":libsqlite",
+        ":libartbase",
+        ":libbase",
+        ":libicui18n", // libicui18n-host.so
+        ":libjdwp",
+        ":libnativeloader",
+        ":libopenjdkjvmti",
+        ":libunwindstack",
+        ":libartd-disassembler",
+        ":libc++",
+        ":libicu_jni",
+        ":liblog",
+        ":libnpt",
+        ":libopenjdk",
+        ":libxml2",
+        ":libart-disassembler",
+        ":libdexfiled",
+        ":libicu",
+        ":liblz4",
+        ":libopenjdkd",
+        ":libprofiled",
+        ":libz", // libz-host.so
+        ":libartd",
+        ":libdexfile",
+        ":libicuuc", // libicuuc-host.so
+        ":liblzma",
+        ":libopenjdkjvmd",
+        ":libprofile",
+        ":libziparchive",
+    ],
+    out: [
+        "test-dump.hprof",
+    ],
+    compile_multilib: "first",
+    cmd: "mkdir -p $(genDir)/host/srcs/bin &&" +
+        "cp $(location :art-script) $(genDir)/host/srcs/bin/art &&" +
+        "cp $(location :dalvikvm) $(genDir)/host/srcs/bin/dalvikvm &&" +
+        "cp $(location :dalvikvm) $(genDir)/host/srcs/bin/dalvikvm64 &&" +
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :core-oj) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :core-libart) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :okhttp) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :bouncycastle) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :apache-xml) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.i18n/javalib &&" +
+        "cp $(location :core-icu4j-host) $(genDir)/host/srcs/apex/com.android.i18n/javalib/core-icu4j.jar &&" +
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.conscrypt/javalib &&" +
+        "cp $(location :conscrypt-host) $(genDir)/host/srcs/apex/com.android.conscrypt/javalib/conscrypt.jar &&" +
+        "mkdir -p $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :icudt75l.dat) $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :libandroidio) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libartpalette) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libdt_socket) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libjavacore) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libnativebridge) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdkjvm) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libsigchain) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libartbased) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libart) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libexpat) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libjavacrypto) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libnativehelper) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdkjvmtid) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libsqlite) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libartbase) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libbase) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libicui18n) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libjdwp) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libnativeloader) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdkjvmti) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libunwindstack) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libartd-disassembler) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libc++) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libicu_jni) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :liblog) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libnpt) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdk) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libxml2) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libart-disassembler) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libdexfiled) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libicu) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :liblz4) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdkd) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libprofiled) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libz) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libartd) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libdexfile) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libicuuc) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :liblzma) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libopenjdkjvmd) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libprofile) $(genDir)/host/srcs/bin/ &&" +
+        "cp $(location :libziparchive) $(genDir)/host/srcs/bin/ &&" +
+        "mkdir -p $(genDir)/host/test-dump-android_data &&" +
+        "ANDROID_DATA=$(genDir)/host/test-dump-android_data $(genDir)/host/srcs/bin/art --no-compile -d --64 -cp " +
+        "$(location :ahat-test-dump) Main $(out)",
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        windows: {
+            enabled: false,
+        },
+    },
+}
+
+// TODO: Remove this after `ahat-tests` is fully converted to Android.bp
+// This `cc_prebuilt_object` is only for providing the install path of "test-dump.hprof" to the original Android.mk,
+// and to verify that the converted content of "test-dump.hprof" is correct.
+// It can be deleted after `ahat-tests` is fully converted to Android.bp.
+cc_prebuilt_object {
+    name: "test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    compile_multilib: "first",
+    srcs: [
+        ":gen_test-dump.hprof",
+    ],
+}
