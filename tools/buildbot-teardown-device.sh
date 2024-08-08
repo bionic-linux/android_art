@@ -112,6 +112,10 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
     # Remove /proc from chroot.
     remove_filesystem_from_chroot proc proc true
 
+    # Remove /system/lib{,64} from chroot.
+    remove_filesystem_from_chroot system/lib '\S*' false
+    remove_filesystem_from_chroot system/lib64 '\S*' false
+
     # Remove /etc from chroot.
     adb shell rm -f "$ART_TEST_CHROOT/etc"
     adb shell rm -rf "$ART_TEST_CHROOT/system/etc"

@@ -38,12 +38,18 @@ fi
 # Sync relevant product directories
 # ---------------------------------
 
+sdk_level="$(adb shell getprop ro.build.version.sdk || echo 0)"
+
 (
   cd $ANDROID_PRODUCT_OUT
   for dir in system/* linkerconfig data; do
     [ -d $dir ] || continue
     if [ $dir == system/apex ]; then
       # We sync the APEXes later.
+      continue
+    fi
+    if [[ $dir == system/lib || $dir == system/lib64 ]] && (( $sdk_level >= 31 )); then
+      # We bind-mount libs later.
       continue
     fi
     msginfo "Syncing $dir directory..."
@@ -55,6 +61,16 @@ fi
     fi
   done
 )
+
+if (( $sdk_level >= 31 )); then
+  for dir in system/lib system/lib64; do
+    if adb shell test -d $dir; then
+      msginfo "Bind-mounting $dir directory..."
+      adb shell mkdir -p "$ART_TEST_CHROOT/$dir"
+      adb shell mount --bind $dir "$ART_TEST_CHROOT/$dir"
+    fi
+  done
+fi
 
 # Overwrite the default public.libraries.txt file with a smaller one that
 # contains only the public libraries pushed to the chroot directory.
