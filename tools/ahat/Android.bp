@@ -58,3 +58,140 @@ java_test_helper_library {
     name: "ahat-ri-test-dump",
     srcs: ["src/ri-test-dump/**/*.java"],
 }
+
+cc_genrule {
+    name: "test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    srcs: [
+        ":art-script", // out/host/srcs/bin/art
+        ":dalvikvm", // out/host/srcs/bin/dalvikvm -> dalvikvm64
+        ":ahat-test-dump", // ahat-test-dump.jar
+        ":core-oj", // out/host/srcs/apex/com.android.art/javalib/core-oj.jar
+        ":core-libart", // out/host/srcs/apex/com.android.art/javalib/core-libart.jar
+        ":okhttp", // out/host/srcs/apex/com.android.art/javalib/okhttp.jar
+        ":bouncycastle", // out/host/srcs/apex/com.android.art/javalib/bouncycastle.jar
+        ":apache-xml", // out/host/srcs/apex/com.android.art/javalib/apache-xml.jar
+        ":core-icu4j-host", // out/host/srcs/apex/com.android.i18n/javalib/core-icu4j.jar
+        ":conscrypt-host", // out/host/srcs/apex/com.android.conscrypt/javalib/conscrypt.jar
+        ":icudt75l.dat", // out/host/srcs/com.android.i18n/etc/icu/icudt75l.dat
+        ":libandroidio", // libandroidio.so
+        ":libartpalette", // libartpalette.so
+        ":libdt_socket", // libdt_socket.so
+        ":libjavacore", // libjavacore.so
+        ":libnativebridge", // libnativebridge.so
+        ":libopenjdkjvm", // libopenjdkjvm.so
+        ":libsigchain", // libsigchain.so
+        ":libartbased", // libartbased.so
+        ":libart", //
+        ":libexpat", // libexpat-host.so
+        ":libjavacrypto", //
+        ":libnativehelper", //
+        ":libopenjdkjvmtid", //
+        ":libsqlite", //
+        ":libartbase", //
+        ":libbase", //
+        ":libicui18n", // libicui18n-host.so
+        ":libjdwp", //
+        ":libnativeloader", //
+        ":libopenjdkjvmti", //
+        ":libunwindstack", //
+        ":libartd-disassembler", //
+        ":libc++", //
+        ":libicu_jni", //
+        ":liblog", //
+        ":libnpt", //
+        ":libopenjdk", //
+        ":libxml2", //
+        ":libart-disassembler", //
+        ":libdexfiled",
+        ":libicu",
+        ":liblz4",
+        ":libopenjdkd",
+        ":libprofiled",
+        ":libz", // libz-host.so
+        ":libartd",
+        ":libdexfile",
+        ":libicuuc", // libicuuc-host.so
+        ":liblzma",
+        ":libopenjdkjvmd",
+        ":libprofile",
+        ":libziparchive",
+    ],
+    out: [
+        "test-dump.hprof",
+    ],
+    compile_multilib: "first",
+    cmd: "mkdir -p $(genDir)/host/src/bin &&" +
+        "cp $(location :art-script) $(genDir)/host/src/bin/art &&" +
+        "cp $(location :dalvikvm) $(genDir)/host/src/bin/dalvikvm &&" +
+        "cp $(location :dalvikvm) $(genDir)/host/src/bin/dalvikvm64 &&" +
+        "mkdir -p $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "cp $(location :core-oj) $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "cp $(location :core-libart) $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "cp $(location :okhttp) $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "cp $(location :bouncycastle) $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "cp $(location :apache-xml) $(genDir)/host/src/apex/com.android.art/javalib &&" +
+        "mkdir -p $(genDir)/host/src/apex/com.android.i18n/javalib &&" +
+        "cp $(location :core-icu4j-host) $(genDir)/host/src/apex/com.android.i18n/javalib/core-icu4j.jar &&" +
+        "mkdir -p $(genDir)/host/src/apex/com.android.conscrypt/javalib &&" +
+        "cp $(location :conscrypt-host) $(genDir)/host/src/apex/com.android.conscrypt/javalib/conscrypt.jar &&" +
+        "mkdir -p $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :icudt75l.dat) $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :libandroidio) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libartpalette) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libdt_socket) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libjavacore) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libnativebridge) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdkjvm) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libsigchain) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libartbased) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libart) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libexpat) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libjavacrypto) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libnativehelper) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdkjvmtid) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libsqlite) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libartbase) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libbase) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libicui18n) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libjdwp) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libnativeloader) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdkjvmti) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libunwindstack) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libartd-disassembler) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libc++) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libicu_jni) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :liblog) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libnpt) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdk) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libxml2) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libart-disassembler) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libdexfiled) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libicu) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :liblz4) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdkd) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libprofiled) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libz) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libartd) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libdexfile) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libicuuc) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :liblzma) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libopenjdkjvmd) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libprofile) $(genDir)/host/src/bin/ &&" +
+        "cp $(location :libziparchive) $(genDir)/host/src/bin/ &&" +
+        "mkdir -p $(genDir)/host/test-dump-android_data &&" +
+        "ANDROID_DATA=$(genDir)/host/test-dump-android_data $(genDir)/host/src/bin/art -no-compile -d --64 -cp " +
+        "$(location :ahat-test-dump) Main $(out)",
+    target: {
+        host: {
+            enabled: true,
+        },
+        darwin: {
+            enabled: false,
+        },
+        windows: {
+            enabled: false,
+        },
+    },
+}
