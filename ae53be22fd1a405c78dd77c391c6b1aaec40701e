@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc4d1b9_77c1f3df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975620
+      },
+      "writtenOn": "2024-08-08T09:01:38Z",
+      "side": 1,
+      "message": "Hi. It looks like there were some infra issues with the presubmit run. Perhaps it could be re-triggered?",
+      "revId": "ae53be22fd1a405c78dd77c391c6b1aaec40701e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
