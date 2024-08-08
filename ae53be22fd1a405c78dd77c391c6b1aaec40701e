@@ -16,6 +16,23 @@
       "message": "Hi. It looks like there were some infra issues with the presubmit run. Perhaps it could be re-triggered?",
       "revId": "ae53be22fd1a405c78dd77c391c6b1aaec40701e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5712e2c_a70fa126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1975620
+      },
+      "writtenOn": "2024-08-08T11:44:12Z",
+      "side": 1,
+      "message": "Oh, maybe there is an actual issue - though I wasn\u0027t expecting this minor change to impact valid test strings. Perhaps you could share the failing strings at some point, thanks!",
+      "revId": "ae53be22fd1a405c78dd77c391c6b1aaec40701e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
