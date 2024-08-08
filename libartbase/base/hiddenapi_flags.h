@@ -263,11 +263,48 @@ class ApiList {
   bool operator<(const ApiList& other) const { return dex_flags_ < other.dex_flags_; }
   bool operator>(const ApiList& other) const { return dex_flags_ > other.dex_flags_; }
 
+  // In order to correctly handle flagged changes from Unsupported to the Sdk, where both will be
+  // set when the flag is enabled, consider Sdk to take precedence over any form of unsupported.
+  // Note, this is not necessary in the inverse direction, because API flagging does not currently
+  // support API removal. Moving from the blocklist to unsupported is also a case we don't have to
+  // consider.
+  // If this is true, the conflict resolves to Value::kSdk.
+  static bool is_conflicting_flags_acceptable(Value x, Value y) {
+    if (x != Value::kSdk && y != Value::kSdk)
+      return false;
+    if (x == Value::kSdk && y == Value::kSdk)
+      return true;
+    switch (x) {
+      case Value::kUnsupported:
+      case Value::kMaxTargetO:
+      case Value::kMaxTargetP:
+      case Value::kMaxTargetQ:
+      case Value::kMaxTargetR:
+      case Value::kMaxTargetS:
+        return true;
+      default:
+        break;
+    }
+    switch (y) {
+      case Value::kUnsupported:
+      case Value::kMaxTargetO:
+      case Value::kMaxTargetP:
+      case Value::kMaxTargetQ:
+      case Value::kMaxTargetR:
+      case Value::kMaxTargetS:
+        return true;
+      default:
+        break;
+    }
+    return false;
+  }
+
   // Returns true if combining this ApiList with `other` will succeed.
   bool CanCombineWith(const ApiList& other) const {
     const Value val1 = GetValue();
     const Value val2 = other.GetValue();
-    return (val1 == val2) || (val1 == Value::kInvalid) || (val2 == Value::kInvalid);
+    return (val1 == val2) || (val1 == Value::kInvalid) || (val2 == Value::kInvalid) ||
+           is_conflicting_flags_acceptable(val1, val2);
   }
 
   // Combine two ApiList instances.
@@ -285,6 +322,8 @@ class ApiList {
       return ApiList(val2, domain_apis);
     } else if (val2 == Value::kInvalid) {
       return ApiList(val1, domain_apis);
+    } else if (is_conflicting_flags_acceptable(val1, val2)) {
+      return ApiList(Value::kSdk, domain_apis);
     } else {
       LOG(FATAL) << "Invalid combination of values " << Dumpable(ApiList(val1))
           << " and " << Dumpable(ApiList(val2));
