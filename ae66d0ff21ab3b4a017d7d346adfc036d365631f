@@ -16,6 +16,29 @@
       "message": "Thanks! The test passed.",
       "revId": "ae66d0ff21ab3b4a017d7d346adfc036d365631f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fd66f1_8a925019",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "I find the indentation for the `testCases` a bit odd but reasonable.",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "ae66d0ff21ab3b4a017d7d346adfc036d365631f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c48f07c_f7c772a6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5529,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "8f064f10_1ae83ffa",
+      "range": {
+        "startLine": 5529,
+        "startChar": 5,
+        "endLine": 5529,
+        "endChar": 17
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4103b776_97b40e77",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "renamed.",
       "parentUuid": "4103b776_97b40e77",
+      "range": {
+        "startLine": 5584,
+        "startChar": 5,
+        "endLine": 5584,
+        "endChar": 19
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e75b8c6_bec13804",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5584,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "39cb2750_ee967b11",
       "range": {
         "startLine": 5584,
         "startChar": 5,
@@ -142,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d093f9e_46c5ba58",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "a28f8629_8502234e",
+      "range": {
+        "startLine": 41,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca74d0ee_cd191901",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "-Float.POSITIVE_INFINITY replaced with Float.NEGATIVE_INFINITY.",
       "parentUuid": "ca74d0ee_cd191901",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7fce66e_2b435928",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "49b3e7b3_13d90e92",
       "range": {
         "startLine": 46,
         "startChar": 8,
@@ -236,6 +332,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8af0ba_8385786c",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "61019649_945e17a1",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 41
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23002137_597d031b",
@@ -273,6 +393,30 @@
       "side": 1,
       "message": "-0x1.ffffffffffffeP+1023 added.",
       "parentUuid": "23002137_597d031b",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b886266_5539b75e",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "af55884c_9468e5e7",
       "range": {
         "startLine": 101,
         "startChar": 9,
@@ -330,6 +474,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85af2dce_b81bdf31",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "9f86f428_e61a3dbc",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 33
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c92fb6ce_af552240",
@@ -367,6 +535,30 @@
       "side": 1,
       "message": "left a comment.",
       "parentUuid": "c92fb6ce_af552240",
+      "range": {
+        "startLine": 115,
+        "startChar": 9,
+        "endLine": 115,
+        "endChar": 53
+      },
+      "revId": "78560c14fd65826061be0f21f1666c22be6739e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca0c228_7e0d3443",
+        "filename": "test/057-math-intrinsics/src/CopySignTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-08T07:44:03Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "92e43f2e_4f53396f",
       "range": {
         "startLine": 115,
         "startChar": 9,
