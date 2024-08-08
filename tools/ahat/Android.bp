@@ -58,3 +58,41 @@ java_test_helper_library {
     name: "ahat-ri-test-dump",
     srcs: ["src/ri-test-dump/**/*.java"],
 }
+
+cc_genrule {
+    name: "test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    srcs: [
+        ":art-script",
+        ":ahat-test-dump",
+        ":core-oj",
+        ":core-libart",
+        ":okhttp",
+        ":bouncycastle",
+        ":apache-xml",
+        ":core-icu4j-host",
+        ":conscrypt-host",
+        ":dalvikvm",
+    ],
+    out: [
+        "test-dump.hprof",
+    ],
+    compile_multilib: "first",
+    cmd: "mkdir -p $(genDir)/test-dump-android_data &&" +
+        "mkdir -p $(genDir)/apex/com.android.art/javalib &&" +
+        "cp $(location :core-oj) $(genDir)/apex/com.android.art/javalib &&" +
+        "cp $(location :core-libart) $(genDir)/apex/com.android.art/javalib &&" +
+        "cp $(location :okhttp) $(genDir)/apex/com.android.art/javalib &&" +
+        "cp $(location :bouncycastle) $(genDir)/apex/com.android.art/javalib &&" +
+        "cp $(location :apache-xml) $(genDir)/apex/com.android.art/javalib &&" +
+        "mkdir -p $(genDir)/apex/com.android.i18n/javalib &&" +
+        "cp $(location :core-icu4j-host) $(genDir)/apex/com.android.i18n/javalib/core-icu4j.jar &&" +
+        "mkdir -p $(genDir)/apex/com.android.conscrypt/javalib &&" +
+        "cp $(location :conscrypt-host) $(genDir)/apex/com.android.conscrypt/javalib/conscrypt.jar &&" +
+        "mkdir -p $(genDir)/bin &&" +
+        "cp $(location :art-script) $(genDir)/bin/art &&" +
+        "cp $(location :dalvikvm) $(genDir)/bin/dalvikvm &&" +
+        "ANDROID_DATA=$(genDir)/test-dump-android_data $(genDir)/bin/art -no-compile -d --64 -cp " +
+        "$(location :ahat-test-dump) Main $(out)",
+}
