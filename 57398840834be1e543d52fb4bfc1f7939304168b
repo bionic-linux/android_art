@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47078221_d40716a4",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-09T14:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b15b1d_98b9179c",
+      "range": {
+        "startLine": 94,
+        "startChar": 37,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3b146d4_c654606f",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-09T13:44:33Z",
       "side": 1,
       "message": "Nit: Is the extra logging so bothersome in this case that it\u0027s worth a flag?",
+      "range": {
+        "startLine": 217,
+        "startChar": 53,
+        "endLine": 217,
+        "endChar": 70
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b53ac1e_2f312380",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-09T14:03:22Z",
+      "side": 1,
+      "message": "Yes, without the flag, it logs on every bind-mount.",
+      "parentUuid": "c3b146d4_c654606f",
       "range": {
         "startLine": 217,
         "startChar": 53,
@@ -100,6 +148,54 @@
       "writtenOn": "2024-08-09T13:44:33Z",
       "side": 1,
       "message": "Typo: \"we\"",
+      "range": {
+        "startLine": 540,
+        "startChar": 81,
+        "endLine": 540,
+        "endChar": 83
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1474114f_e08b7a4f",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-09T14:03:22Z",
+      "side": 1,
+      "message": "Thanks. I checked the build system code and found that symlink is not a thing for updatable modules, even if they are bundled. https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d1844;drc\u003defb735f4d5a2f04550e33e8aa9485f906018fe4e\n\nI do see symlinks on non-updatable modules such as com.android.i18n, but we are not using them, so it\u0027s fine.",
+      "parentUuid": "013ade34_e1bbf1ca",
+      "range": {
+        "startLine": 540,
+        "startChar": 27,
+        "endLine": 540,
+        "endChar": 50
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "562b67dc_912d3ace",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-09T14:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0511094_1cc73976",
       "range": {
         "startLine": 540,
         "startChar": 81,
