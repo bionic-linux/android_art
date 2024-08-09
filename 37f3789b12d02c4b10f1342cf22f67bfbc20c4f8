@@ -87,6 +87,24 @@
       "parentUuid": "493b17bd_b6c94683",
       "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2d8a3e_4228963c",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-08-09T10:38:00Z",
+      "side": 1,
+      "message": "I did not see Mark\u0027s comment before posting mine. He has a point about the errors.  I would still like to see the duplicated code removed.",
+      "parentUuid": "b6fe8f4c_9b057717",
+      "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
