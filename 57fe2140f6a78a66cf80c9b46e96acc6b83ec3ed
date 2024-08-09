@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e731b31_b6793d76",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T10:48:07Z",
+      "side": 1,
+      "message": "I investigated and I found out that this actually works but in a very wrong way.\n\nIt\u0027s almost a \"use-after-free\" except that we\u0027re not actually freeing instructions removed from their blocks, so we\u0027re able to use their `next_` links to reach subsequent live instructions.\n\nThere is also a very similar issue with the loop `for (const HUseListNode\u003cHInstruction*\u003e\u0026 use : shl-\u003eGetUses())` where we internally keep an iterator pointing to a `HUseListNode\u003cHInstruction*\u003e` while we remove the node from the container. But despite being effectively dead, the node retains the link in the `IntrusiveForwardListNode\u003cHUseListNode\u003cT\u003e\u003e` and we use it to reach the next node.\n\nI prefer to have a well-defined lifetime of all objects and I did work around the \"uses\" issue in https://android-review.googlesource.com/c/platform/art/+/213273/8/compiler/optimizing/instruction_simplifier_arm64.cc#174 .\n\nBut I see it as a pre-existing issue, so feel free to acknowledge and move on.",
+      "parentUuid": "8b8dece3_63facc5f",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "57fe2140f6a78a66cf80c9b46e96acc6b83ec3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52fbf358_979fb6d4",
         "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
         "patchSetId": 4
