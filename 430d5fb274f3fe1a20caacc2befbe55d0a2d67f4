@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee39f9a_edec9c5f",
+        "filename": "build/flags/art-flags.aconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T11:02:22Z",
+      "side": 1,
+      "message": "I suggest using `art_performance` instead. That may e.g. make the lists of approvers in Gantry more tailored for you.",
+      "range": {
+        "startLine": 31,
+        "startChar": 14,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "430d5fb274f3fe1a20caacc2befbe55d0a2d67f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
