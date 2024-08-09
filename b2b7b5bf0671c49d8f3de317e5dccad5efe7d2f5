@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbacf508_568e6063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T16:09:19Z",
+      "side": 1,
+      "message": "Nice cleanup!",
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d64da83_62628d3b",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T16:09:19Z",
+      "side": 1,
+      "message": "I guess this is one of the drawbacks of using MakePhi here. We expect to have at least two elements, but one of them doesn\u0027t really exist at this time.",
+      "range": {
+        "startLine": 313,
+        "startChar": 54,
+        "endLine": 313,
+        "endChar": 70
+      },
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e50bb84_5a25564a",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T16:09:19Z",
+      "side": 1,
+      "message": "I know these comments are from before your CL but not sure if we should update them (in another CL). They are sort of misleading since e.g. `IfCondition cond` can change the `\u003c` into `\u003c\u003d`, but on the other hand are useful to quickly glance and understand what it is supposed to be doing. Maybe it should be better if we update them with the different possibilities of code generation.",
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d311aab_394db258",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T16:09:19Z",
+      "side": 1,
+      "message": "Should this be else + DCHECK like the others? Fine to do it in a follow-up too",
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4050a814_daad32ac",
+        "filename": "compiler/optimizing/register_allocator_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T16:09:19Z",
+      "side": 1,
+      "message": "Non-blocking: it shouldn\u0027t have an underscore",
+      "range": {
+        "startLine": 474,
+        "startChar": 15,
+        "endLine": 474,
+        "endChar": 20
+      },
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
