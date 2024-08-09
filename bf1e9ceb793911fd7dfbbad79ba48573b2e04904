@@ -16,6 +16,23 @@
       "message": "on ab/build-tools we\u0027re seeing:\n\n```\nart/libartbase/base/metrics/metrics.h:34:10: fatal error: \u0027jni.h\u0027 file not found\n   34 | #include \"jni.h\"\n      |          ^~~~~~~\n```\n\ncould we get a revert / fix?",
       "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47aca664_9e023168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-09T21:03:00Z",
+      "side": 1,
+      "message": "Eric also uploaded aosp/3211822. But that doesn\u0027t seem to be ready, and I have no idea whether it suffices. Cole - If you understand the failing build environment better, please chime in as to whether that\u0027s likely to work. Or will it just turn a compile error into a link error?",
+      "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
