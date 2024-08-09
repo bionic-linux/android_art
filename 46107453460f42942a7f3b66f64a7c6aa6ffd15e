@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44ebec1_d881f304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-09T16:42:12Z",
+      "side": 1,
+      "message": "I remember from discussions with Kun that having an MCTS test also part of MTS was recommended, but I don\u0027t recall this was mandatory; has this changed recently?",
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af600ed_1b4e8746",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-09T16:42:12Z",
+      "side": 1,
+      "message": "This test is both part of CTS (see https://android-review.git.corp.google.com/c/platform/art/+/3212003/1/dex2oat/Android.bp#573) and ART MTS via `art_standalone_gtest_defaults` (https://android-review.git.corp.google.com/c/platform/art/+/3212003/1/test/Android.bp#367), so I don\u0027t think it should be removed from ART MCTS.\n\nI think the problem here is that it is not part of the ART MTS definition (https://cs.android.com/android/platform/superproject/main/+/main:test/mts/tools/mts-tradefed/res/config/mts-art-tests-list-user-shard-03.xml); I can take a look at that.",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
