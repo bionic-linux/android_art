@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12d3f82_63d81792",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T18:38:11Z",
+      "side": 1,
+      "message": "This test is shallow and `art_standalone_dex2oat_tests` is much better. It was added only because the other one can\u0027t be used in (M)CTS, so do we need it here where that one is enabled? It also generates a boot image all over again.",
+      "range": {
+        "startLine": 257,
+        "startChar": 5,
+        "endLine": 257,
+        "endChar": 37
+      },
+      "revId": "671acf8c8ea779003d04b2b7104822cec78caca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
