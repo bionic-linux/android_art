@@ -281,6 +281,30 @@
       },
       "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28c48a7_8fe68c02",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T15:30:10Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "002eb3ca_93dca9ff",
+      "range": {
+        "startLine": 513,
+        "startChar": 11,
+        "endLine": 513,
+        "endChar": 36
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
