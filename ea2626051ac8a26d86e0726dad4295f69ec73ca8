@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95dd741e_18260d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "The CL overall is fine, thanks! Some comments",
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296dffcc_9cba627b",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "Do we need this if you are creating the runtime on your own and are registering/unregistering the dex files manually?",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52368c15_2f14fd2e",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "Not sure if the name is appropriate. We want to verify the DEX file\u0027s classes.\n\nMaybe this one could be `ClassVerification` and the other one `DexFileVerification`?",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abaf68f2_128dfcf2",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "I think `Failed for` on its own is fine, the error message will provide enough context e.g. the name of the failing test `VerifyCorpusClassDexFiles`.",
+      "range": {
+        "startLine": 158,
+        "startChar": 46,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71dadba_fd15a057",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "I am not sure the name is descriptive enough. Suggestion: `archive_filename`.\n\nRight now there\u0027s an assumption that the archive starts with `/`. Either:\nA) Keep that assumption, adding a comment and an ASSERT statement, or\nB) Remove that assumption and add the `/` in this function. If you do that, please rename the variable so it is clear it is the filename",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f6d8ce_d3b1920e",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "use `std::function` e.g. `std::function\u003cvoid(const uint8_t*, size_t, const std::string\u0026, bool)\u003e verify_corpus`.\n\nThis method also verifies one particular file, not the corpus. Perhaps a name like `verify_file` would be more fitting.\n\nNote the `snake_case` for the variable name.",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 94
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042d3711_b4c5afbf",
+        "filename": "tools/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T07:44:55Z",
+      "side": 1,
+      "message": "`dex_fuzzer_corpus` for consistency and to differentiate from `class_fuzzer_corpus`?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 11,
+        "endLine": 1328,
+        "endChar": 24
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
