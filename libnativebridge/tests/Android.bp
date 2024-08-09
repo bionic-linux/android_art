@@ -102,21 +102,11 @@ cc_test {
     name: "libnativebridge-tests",
     defaults: [
         "art_defaults",
-        "art_test_internal_library_defaults",
+        "art_standalone_test_defaults",
     ],
 
-    target: {
-        linux: {
-            cflags: [
-                // gtest issue
-                "-Wno-used-but-marked-unused",
-                "-Wno-deprecated",
-                "-Wno-missing-noreturn",
-            ],
-        },
-    },
-
     isolated: true,
+    test_config: "libnativebridge-tests.xml",
 
     srcs: [
         "NativeBridgeTest.cpp",
@@ -144,10 +134,12 @@ cc_test {
         "NativeBridge7CriticalNative_test.cpp",
     ],
 
-    shared_libs: [
+    static_libs: [
         "libbase",
-        "liblog",
         "libnativebridge",
+    ],
+    shared_libs: [
+        "liblog",
         "libnativebridge6prezygotefork",
         "libnativebridge7criticalnative",
 
@@ -172,6 +164,20 @@ cc_test {
         "libnativebridge6prezygotefork",
         "libnativebridge7criticalnative",
     ],
+
+    target: {
+        linux: {
+            cflags: [
+                // gtest issue
+                "-Wno-used-but-marked-unused",
+                "-Wno-deprecated",
+                "-Wno-missing-noreturn",
+            ],
+        },
+        android: {
+            shared_libs: ["libdl_android"], // libnativebridge dependency
+        },
+    },
 
     test_suites: [
         "general-tests",
