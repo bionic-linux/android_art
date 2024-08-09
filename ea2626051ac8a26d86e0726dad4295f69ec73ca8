@@ -18,6 +18,69 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc43f04_216d3962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "Thanks Ioana! A few comments. Please feel free to submit once santiago +2s it.",
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc69295_ad7b510b",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "class_verification_fuzzer_corpus?",
+      "range": {
+        "startLine": 797,
+        "startChar": 39,
+        "endLine": 797,
+        "endChar": 58
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba6497f_86880b97",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "ClassVerificationFuzzerFolder / VerifiedDexFuzzerFolder?",
+      "range": {
+        "startLine": 985,
+        "startChar": 25,
+        "endLine": 985,
+        "endChar": 33
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "296dffcc_9cba627b",
@@ -59,6 +122,75 @@
         "startChar": 14,
         "endLine": 82,
         "endChar": 32
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe50d9be_6698f8a4",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "Is this because we don\u0027t handle data being nullptr? Should we handle that case? I guess we don\u0027t want to return here because we want to test cases where size is 0 right?",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 23
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612bf5cf_4750d3e0",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "Does it make sense to create these handles inside the for loop? I think if we create it within the loop then those don\u0027t need to be Mutablehandles either.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8476736_9de278b1",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "Maybe a comment on why we need GC here.",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 73
       },
       "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -112,6 +244,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2a0ccb4_470f7287",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "I prefer option B though fine with A too.",
+      "parentUuid": "e71dadba_fd15a057",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46f6d8ce_d3b1920e",
         "filename": "runtime/fuzzer_corpus_test.cc",
         "patchSetId": 4
@@ -128,6 +284,29 @@
         "startChar": 24,
         "endLine": 163,
         "endChar": 94
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc1b9d1_6872fa02",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-09T11:08:19Z",
+      "side": 1,
+      "message": "maybe use is_valid_dex_file here and rename success in the VerifyCorpus too?",
+      "range": {
+        "startLine": 198,
+        "startChar": 76,
+        "endLine": 198,
+        "endChar": 92
       },
       "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
