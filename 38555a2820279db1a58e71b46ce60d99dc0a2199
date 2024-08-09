@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdad5afb_30d6e39a",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T10:39:00Z",
+      "side": 1,
+      "message": "A new and less verbose way of specifying conditionals has been added to Soong with the `select()` construct. Can you please try that instead? See https://r.android.com/3207637 for a usage example.",
+      "range": {
+        "startLine": 617,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 6
+      },
+      "revId": "38555a2820279db1a58e71b46ce60d99dc0a2199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
