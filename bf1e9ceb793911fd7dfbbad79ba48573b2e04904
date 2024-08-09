@@ -33,6 +33,24 @@
       "message": "Eric also uploaded aosp/3211822. But that doesn\u0027t seem to be ready, and I have no idea whether it suffices. Cole - If you understand the failing build environment better, please chime in as to whether that\u0027s likely to work. Or will it just turn a compile error into a link error?",
       "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f410ab09_a1b9e9a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-09T21:12:47Z",
+      "side": 1,
+      "message": "Eric tested that cl with abtd but it gets the same error. I\u0027m not sure why the build is different on build-tools that would cause this.",
+      "parentUuid": "47aca664_9e023168",
+      "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
