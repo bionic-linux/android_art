@@ -5,6 +5,7 @@ package {
     default_applicable_licenses: ["art_license"],
 }
 
+
 license {
     name: "art_license",
     visibility: [":__subpackages__"],
