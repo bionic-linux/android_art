@@ -27,11 +27,11 @@
 #include <thread>
 #include <vector>
 
+#include <jni.h>
 #include "android-base/logging.h"
 #include "base/bit_utils.h"
 #include "base/macros.h"
 #include "base/time_utils.h"
-#include "jni.h"
 #include "tinyxml2.h"
 
 #pragma clang diagnostic push
