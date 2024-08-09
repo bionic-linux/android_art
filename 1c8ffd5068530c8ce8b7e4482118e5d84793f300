@@ -441,6 +441,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "073df0d8_daa67954",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "The new `if (compare_left-\u003eIsConstant() \u0026\u0026 compare_right-\u003eIsConstant())` check in the caller is exactly what I had in mind.",
+      "parentUuid": "122af40a_94957ac0",
+      "range": {
+        "startLine": 1943,
+        "startChar": 13,
+        "endLine": 1943,
+        "endChar": 47
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68f95239_8268a1cd",
@@ -478,6 +502,30 @@
       "side": 1,
       "message": "This optimization is intended to simplify cases like\n`Compare(Add(x, MIN_VALUE), Const_C1, sign)` into `Compare(x, Const_C2, !sign)` if possible by dropping extra `Add`.\nThe condition is to filter out those constants which after simplification cannot fit into instruction literal part as is and requires an extra register. Maybe I am too paranoid.\n\nI could drop this particular condition because the described case seemed to be quite rare.",
       "parentUuid": "68f95239_8268a1cd",
+      "range": {
+        "startLine": 1950,
+        "startChar": 13,
+        "endLine": 1950,
+        "endChar": 47
+      },
+      "revId": "1c8ffd5068530c8ce8b7e4482118e5d84793f300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a691bb7e_1d487833",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "I think it\u0027s sometimes better to materialize constants and we do not have the necessary information here to evaluate the costs. (And AARCH32 can embed high constants, so this checking the number of bits was imprecise anyway.)",
+      "parentUuid": "d1d5f6fb_13026115",
       "range": {
         "startLine": 1950,
         "startChar": 13,

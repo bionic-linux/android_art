@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3efa9445_9fabce28",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "Optional: Move these before the `DCHECK()`s that use them, or \"inline\" these expressions to their uses.",
+      "range": {
+        "startLine": 1801,
+        "startChar": 2,
+        "endLine": 1802,
+        "endChar": 44
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1b39f8_0ad4262d",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "`lhs_cond \u003d\u003d compare`",
+      "range": {
+        "startLine": 1807,
+        "startChar": 9,
+        "endLine": 1807,
+        "endChar": 30
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9318753_efe1274a",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "Optional: This variable has only one use, so we can \"inline\" the expression (without exceeding the 100-character per line limit).",
+      "range": {
+        "startLine": 1913,
+        "startChar": 17,
+        "endLine": 1913,
+        "endChar": 29
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690a5f17_d51d9e8a",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "I\u0027d prefer to move this comment before of the `if`. I think it\u0027s applicable to the then-block if we interpret the words \"transfer the information\" broadly.",
+      "range": {
+        "startLine": 1926,
+        "startChar": 4,
+        "endLine": 1926,
+        "endChar": 90
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d990164_0f0fb61f",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "range": {
+        "startLine": 512,
+        "startChar": 2,
+        "endLine": 512,
+        "endChar": 4
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66855a72_2f7b5067",
+        "filename": "test/2275-integral-unsigned-arithmetic/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T11:57:34Z",
+      "side": 1,
+      "message": "Note: This hidden zero is not exposed at the right time.\n\nThe simplifier during inlining shall create a `HEqual+Select`, the constant folding after inlining shall replace the `Equal` with `true`, and the simplifier after inlining shall replace the `Select` with `0`. But the `HTypeConversion` shall remain here until the next constant folding which not only replaces it with `0L` but it also replaces `Below(., 0L)` and `AboveOrEqual(., 0L)` with constants, so we do not test all the relevant cases.\n\nBut I think that testing those cases for `int` is enough.",
+      "range": {
+        "startLine": 513,
+        "startChar": 11,
+        "endLine": 513,
+        "endChar": 36
+      },
+      "revId": "b48ea2cb6b6938fc21bd81f735dacff19876c5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
