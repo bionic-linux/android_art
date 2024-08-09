@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5ab3b3_780d6c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2024-08-09T02:51:39Z",
+      "side": 1,
+      "message": "on ab/build-tools we\u0027re seeing:\n\n```\nart/libartbase/base/metrics/metrics.h:34:10: fatal error: \u0027jni.h\u0027 file not found\n   34 | #include \"jni.h\"\n      |          ^~~~~~~\n```\n\ncould we get a revert / fix?",
+      "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
