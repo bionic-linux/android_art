@@ -16,6 +16,29 @@
       "message": "Related to https://android-review.googlesource.com/c/platform/art/+/3160722",
       "revId": "5c870018ed062df43f2a1ce111d9ff330c53c00a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d4ae40_8d2ea04e",
+        "filename": "compiler/optimizing/instruction_simplifier_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-09T10:26:51Z",
+      "side": 1,
+      "message": "This should be `\u003c\u003d 0` or `\u003c 1`.\n\nBut let\u0027s use https://android-review.googlesource.com/3213778 instead where I added a gtest for this.",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "5c870018ed062df43f2a1ce111d9ff330c53c00a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
