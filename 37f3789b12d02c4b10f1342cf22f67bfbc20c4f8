@@ -69,6 +69,24 @@
       "parentUuid": "493b17bd_b6c94683",
       "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fe8f4c_9b057717",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2024-08-09T10:35:36Z",
+      "side": 1,
+      "message": "Duplicating the check should be avoided. Instead of trying to compare in both directions in one method how about just doing one direction and calling it twice with the parameters swapped, e.g.\n```\n    ...\n    } else if (is_conflicting_flags_acceptable(val1, val2)) {\n      return ApiList(Value::kSdk, domain_apis);\n    } else if (is_conflicting_flags_acceptable(val2, val1)) {\n      return ApiList(Value::kSdk, domain_apis);\n    ...\n```\n\nAs to how to handle new `kMaxTarget*` I don\u0027t think this enumerated check of all the acceptable values is particularly bad or good. The alternative approach is to list the unacceptable values which is not fundamentally any different.\n\nI would say pick the approach that keeps the change simpler to reason about and smaller.",
+      "parentUuid": "493b17bd_b6c94683",
+      "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
