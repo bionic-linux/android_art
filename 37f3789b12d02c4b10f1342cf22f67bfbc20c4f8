@@ -51,6 +51,24 @@
       "parentUuid": "1fd9bd3e_9279e2ff",
       "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1dc9a4_3e77ca00",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1826738
+      },
+      "writtenOn": "2024-08-09T10:22:53Z",
+      "side": 1,
+      "message": "Sg, I guess worst case with your approach is that there is a false-positive error, which is better than a false-negative error.",
+      "parentUuid": "493b17bd_b6c94683",
+      "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
