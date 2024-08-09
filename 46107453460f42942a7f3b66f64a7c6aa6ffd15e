@@ -39,6 +39,30 @@
       },
       "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7598dea1_1a7096c9",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-09T18:24:58Z",
+      "side": 1,
+      "message": "\u003e I think the problem here is that it is not part of the ART MTS definition (https://cs.android.com/android/platform/superproject/main/+/main:test/mts/tools/mts-tradefed/res/config/mts-art-tests-list-user-shard-03.xml); I can take a look at that.\n\nUploaded a topic here: https://android-review.git.corp.google.com/q/topic:%22add-art_standalone_dex2oat_cts_tests-to-art-mts%22.",
+      "parentUuid": "0af600ed_1b4e8746",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
