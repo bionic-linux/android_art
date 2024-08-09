@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d2bbb7_83595b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T13:44:33Z",
+      "side": 1,
+      "message": "LGTM, just a couple nitpicks.",
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b15b1d_98b9179c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T13:44:33Z",
+      "side": 1,
+      "message": "Nit: Maybe something like `kExternalLibDirs` to be a little more specific?",
+      "range": {
+        "startLine": 94,
+        "startChar": 37,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b146d4_c654606f",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T13:44:33Z",
+      "side": 1,
+      "message": "Nit: Is the extra logging so bothersome in this case that it\u0027s worth a flag?",
+      "range": {
+        "startLine": 217,
+        "startChar": 53,
+        "endLine": 217,
+        "endChar": 70
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013ade34_e1bbf1ca",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T13:44:33Z",
+      "side": 1,
+      "message": "FTR, there\u0027s another potential problem: We may link binaries and libs in modules in the OTA image against the old system libs, and they\u0027re built bundled there (i.e. with a lunch target rather than a banchan `module_\u003carch\u003e` one) so it\u0027s an unsupported combination.\n\nThat\u0027s unlikely to be a problem in practice on GMS devices, because they\u0027ll typically have more recent modules in /data which are built unbundled and hence should work fine. It\u0027s more likely to fail in tests, since the lab devices typically don\u0027t update Mainline modules before testing the OTA.",
+      "range": {
+        "startLine": 540,
+        "startChar": 27,
+        "endLine": 540,
+        "endChar": 50
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0511094_1cc73976",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T13:44:33Z",
+      "side": 1,
+      "message": "Typo: \"we\"",
+      "range": {
+        "startLine": 540,
+        "startChar": 81,
+        "endLine": 540,
+        "endChar": 83
+      },
+      "revId": "57398840834be1e543d52fb4bfc1f7939304168b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
