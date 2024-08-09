@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366e59b2_c26d4e9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-09T17:13:29Z",
+      "side": 1,
+      "message": "Just curious, what\u0027s the problem with using `TypeReference`? Looks like `FlattenProfileData` uses `TypeReference` already for `class_metadata_`. Why doesn\u0027t `TypeReference` work for inline caches?\n\nWill using the `BootImageRepresentation` function like the one on `boot_image_profile.cc` line 252 help address the problem?",
+      "revId": "c65cfad09f4fc1feda9dcd31c9c271a94f3c66fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
