@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "155695be_6601d732",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5531,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-09T09:10:29Z",
+      "side": 1,
+      "message": "Suggestion: Add `DCHECK(locations-\u003eInAt(0).Equals(locations-\u003eOut()));` since you are relying on that, and it is not clear from the context of this particular method",
+      "revId": "ae66d0ff21ab3b4a017d7d346adfc036d365631f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "89fd66f1_8a925019",
