@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "8a04433d9ee0a2f45d6e095c123d85a86d73dfa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756d74b7_2f2fe569",
+        "filename": "build/flags/art-flags.aconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-09T12:22:28Z",
+      "side": 1,
+      "message": "Thanks. The flag has already been created under ART Mainline in Gantry, so we\u0027ll see if this dtrt and creates it under ART Performance instead.",
+      "revId": "8a04433d9ee0a2f45d6e095c123d85a86d73dfa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
