@@ -2919,6 +2919,9 @@
       "name": "art_standalone_sigchain_tests[com.google.android.art.apex]"
     },
     {
+      "name": "CtsLibcoreTestCases[com.android.art.apex]"
+    },
+    {
       "name": "libnativebridge-tests[com.google.android.art.apex]"
     },
     {
