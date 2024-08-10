@@ -16,6 +16,24 @@
       "message": "Just curious, what\u0027s the problem with using `TypeReference`? Looks like `FlattenProfileData` uses `TypeReference` already for `class_metadata_`. Why doesn\u0027t `TypeReference` work for inline caches?\n\nWill using the `BootImageRepresentation` function like the one on `boot_image_profile.cc` line 252 help address the problem?",
       "revId": "c65cfad09f4fc1feda9dcd31c9c271a94f3c66fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed44a320_e4bfca4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965996
+      },
+      "writtenOn": "2024-08-10T03:17:16Z",
+      "side": 1,
+      "message": "So it fails at https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/libprofile/profile/profile_compilation_info.cc;l\u003d693 which is the inline cache `type-id` is outside the `dex_file-\u003eNumTypeIds()` range, I guess it could be related to the logic at https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/libprofile/profile/profile_compilation_info.h;l\u003d683\n\nI have also tried `BootImageRepresentation` but it didn\u0027t help since sometimes the type-id is outside the range of the `NumTypeIds`.\n\nI think it is no harm to keep the `classes_` as `std::string` and avoid having this extra `all_profiles`",
+      "parentUuid": "366e59b2_c26d4e9b",
+      "revId": "c65cfad09f4fc1feda9dcd31c9c271a94f3c66fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
