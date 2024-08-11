@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa0b9cc6_6aa04113",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5531,
+      "author": {
+        "id": 3544930
+      },
+      "writtenOn": "2024-08-11T14:58:40Z",
+      "side": 1,
+      "message": "Added. Thanks for the suggestion!",
+      "parentUuid": "155695be_6601d732",
+      "revId": "ae66d0ff21ab3b4a017d7d346adfc036d365631f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "89fd66f1_8a925019",
