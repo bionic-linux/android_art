@@ -63,6 +63,30 @@
       },
       "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae1e021_2c3ceb34",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1927237
+      },
+      "writtenOn": "2024-08-11T16:52:31Z",
+      "side": 1,
+      "message": "Hi Rolan, that\u0027s true, the test is not on MTS art test plan, could you update when you added the test to the test plan? Thanks!",
+      "parentUuid": "7598dea1_1a7096c9",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
