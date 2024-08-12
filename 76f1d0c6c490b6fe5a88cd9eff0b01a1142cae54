@@ -160,6 +160,24 @@
       "parentUuid": "ae3e4f48_46f149d9",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24906bf_dcb636e5",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-12T14:58:12Z",
+      "side": 1,
+      "message": "Note that \"not found\" here means not found as an app or a shared library from the package manager\u0027s perspective. Files on readonly partitions cannot change, but it\u0027s unclear to me whether the package manager can change its mind not. Consider the following case:\n\n1. Initially, the package manager doesn\u0027t recognize an apk on a readonly partition.\n2. The apk is somehow loaded by app A.\n3. We cannot find the apk in the snapshot provided by the package manager. Since the apk is on a readonly partition, we think it\u0027s a shared library jar (assuming we don\u0027t have assumptions on the file extension), and therefore we put `\u003capk-path, null\u003e` in the cache.\n4. At some point, the package manager starts to recognize the apk as part of a preinstalled app.\n5. The apk is loaded by app B as an app.\n6. We get `null` from the cache, and we have no way to verify the cached value because there is no package name in it, so we just return `null`. This is a wrong result.\n\nBesides, I\u0027m not a fan of keeping a hardcoded list of readonly partitions.\n\nIf your concern is that the cost can multiply with a potentially large number of packages, I just limited the check to the loading package and the cached packages. With this approach, the only gap left is that we\u0027ll have to complete the full loop when looking up a shared library of an unpopular shared app, which is acceptable to me.",
+      "parentUuid": "86fc8e4b_48629834",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
