@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0a81bc_2fb0f1ba",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af86266_7fcf1614",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 1
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c72ccab_28551c80",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df95b40_b89b305e",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done. I think it\u0027s good to log an error. I will also log an error in other methods in a followup CL. It shouldn\u0027t break anything but I will just do it in a followup CL.",
+      "parentUuid": "2c72ccab_28551c80",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6e045b_877923b0",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-08-12T08:24:23Z",
       "side": 1,
       "message": "This can be the new `Trace::IsTracingEnabledLocked()`",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 29
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0145fe21_51bc0e34",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6e045b_877923b0",
       "range": {
         "startLine": 801,
         "startChar": 8,
@@ -110,6 +176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccced2bd_89f2168e",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06b4834_d0619474",
+      "range": {
+        "startLine": 807,
+        "startChar": 4,
+        "endLine": 807,
+        "endChar": 69
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0c7e28_228673c6",
@@ -123,6 +213,30 @@
       "writtenOn": "2024-08-12T08:24:23Z",
       "side": 1,
       "message": "Not sure what the style is here regarding indentation to show that the variable is the three lines",
+      "range": {
+        "startLine": 842,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 58
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5fd2d8_9d3b5704",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done. Not sure. I just retained the earlier formatting and clang-format didn\u0027t complain either way.",
+      "parentUuid": "ec0c7e28_228673c6",
       "range": {
         "startLine": 842,
         "startChar": 0,
@@ -156,6 +270,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7985e9d7_77d2c0a6",
+        "filename": "runtime/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1b9ac9_fa5631fc",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 51
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a731abbd_8e9f541e",
@@ -169,6 +307,30 @@
       "writtenOn": "2024-08-12T08:24:23Z",
       "side": 1,
       "message": "I am not sure about how they are used, but the `*buf++` could mean an OOB access if we are not careful.\nIf it is too complicated to guard against, we can also solve it in a follow-up CL as these are just moved from trace.cc.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 1
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cfef9c2_3eed1ca9",
+        "filename": "runtime/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Acknowledged. I think we don\u0027t know the buffer size here. Also these are performance sensitive. I added a TODO. I will see if we can add some checks at least as DCHECKs.",
+      "parentUuid": "a731abbd_8e9f541e",
       "range": {
         "startLine": 142,
         "startChar": 0,
@@ -202,6 +364,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "298b5276_90b40700",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done. Yes good point about sizeof(uintptr_t).",
+      "parentUuid": "6c9a8d19_9709ec5a",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023f1e62_9e7b706f",
@@ -215,6 +401,30 @@
       "writtenOn": "2024-08-12T08:24:23Z",
       "side": 1,
       "message": "Above we are using `kMinBufSizeForEncodedData \u003d kAlwaysOnTraceBufSize * 8` but here we are creating a buffer of `kMinBufSizeForEncodedData \u003d kAlwaysOnTraceBufSize * sizeof(uintptr_t)`. For 32-bits this would be half the size",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05907550_71475ba2",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done. Fixed now with your earlier suggestion of sizeof(uintptr_t).",
+      "parentUuid": "023f1e62_9e7b706f",
       "range": {
         "startLine": 65,
         "startChar": 0,
@@ -242,6 +452,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de9c6ae_4f1341e1",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705e5478_e3893faf",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ee848d7_b4acf7df",
@@ -259,6 +487,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7325ac_64096652",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done. Good catch!",
+      "parentUuid": "0ee848d7_b4acf7df",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "317b5135_115412c3",
@@ -272,6 +518,24 @@
       "writtenOn": "2024-08-12T08:24:23Z",
       "side": 1,
       "message": "nit: the other comments have a full stop at the end",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e01f96_60e0c360",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317b5135_115412c3",
       "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
