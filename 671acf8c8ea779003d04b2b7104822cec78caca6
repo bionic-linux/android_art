@@ -46,6 +46,30 @@
       },
       "revId": "671acf8c8ea779003d04b2b7104822cec78caca6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458ac8e0_40b63fb8",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-12T10:10:55Z",
+      "side": 1,
+      "message": "All right. Then I assume the plan is to never run both MTS and MCTS in the same configurations.",
+      "parentUuid": "e4190c3b_a5de5ebe",
+      "range": {
+        "startLine": 257,
+        "startChar": 5,
+        "endLine": 257,
+        "endChar": 37
+      },
+      "revId": "671acf8c8ea779003d04b2b7104822cec78caca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
