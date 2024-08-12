@@ -255,6 +255,7 @@ class MarkCompact final : public GarbageCollector {
                                              + from_space_slide_diff_);
   }
 
+  bool IsOnAllocStack(mirror::Object* ref) REQUIRES_SHARED(Locks::mutator_lock_);
   // Verifies that that given object reference refers to a valid object.
   // Otherwise fataly dumps logs, including those from callback.
   template <typename Callback>
