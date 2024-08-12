@@ -22,6 +22,30 @@
       },
       "revId": "c457f89a57bccb07bb428e20dcf34c53a907c968",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb00a5cb_48dbebd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-12T11:34:12Z",
+      "side": 1,
+      "message": "It\u0027s still relevant, as it explains why we don\u0027t use it.",
+      "parentUuid": "82892a73_55f6502f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "c457f89a57bccb07bb428e20dcf34c53a907c968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
