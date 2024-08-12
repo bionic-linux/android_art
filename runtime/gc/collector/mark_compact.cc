@@ -4041,7 +4041,9 @@ mirror::Object* MarkCompact::IsMarked(mirror::Object* obj) {
     }
     return (is_black || moving_space_bitmap_->Test(obj)) ? obj : nullptr;
   } else if (non_moving_space_bitmap_->HasAddress(obj)) {
-    return non_moving_space_bitmap_->Test(obj) ? obj : nullptr;
+    if (non_moving_space_bitmap_->Test(obj)) {
+      return obj;
+    }
   } else if (immune_spaces_.ContainsObject(obj)) {
     return obj;
   } else {
@@ -4051,7 +4053,9 @@ mirror::Object* MarkCompact::IsMarked(mirror::Object* obj) {
     accounting::LargeObjectBitmap* los_bitmap = heap_->GetLargeObjectsSpace()->GetMarkBitmap();
     if (los_bitmap->HasAddress(obj)) {
       DCHECK(IsAlignedParam(obj, space::LargeObjectSpace::ObjectAlignment()));
-      return los_bitmap->Test(obj) ? obj : nullptr;
+      if (los_bitmap->Test(obj)) {
+        return obj;
+      }
     } else {
       // The given obj is not in any of the known spaces, so return null. This could
       // happen for instance in interpreter caches wherein a concurrent updation
@@ -4061,6 +4065,7 @@ mirror::Object* MarkCompact::IsMarked(mirror::Object* obj) {
       return nullptr;
     }
   }
+  return IsOnAllocStack(obj) ? obj : nullptr;
 }
 
 bool MarkCompact::IsNullOrMarkedHeapReference(mirror::HeapReference<mirror::Object>* obj,

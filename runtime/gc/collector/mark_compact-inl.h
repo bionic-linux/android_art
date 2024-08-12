@@ -192,6 +192,11 @@ uint32_t MarkCompact::LiveWordsBitmap<kAlignment>::FindNthLiveWordOffset(size_t 
   UNREACHABLE();
 }
 
+inline bool MarkCompact::IsOnAllocStack(mirror::Object* ref) {
+  accounting::ObjectStack* stack = heap_->GetAllocationStack();
+  return stack->Contains(ref);
+}
+
 inline void MarkCompact::UpdateRef(mirror::Object* obj,
                                    MemberOffset offset,
                                    uint8_t* begin,
