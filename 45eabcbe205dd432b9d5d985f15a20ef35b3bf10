@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6609000_43d77388",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-12T10:58:14Z",
+      "side": 1,
+      "message": "I can\u0027t see the test history somehow. It\u0027s a bit unlikely this caused the problem though. The error was: \"insonMetricsServer_deploy: Service could not bind to ports after 5 retries\"",
+      "revId": "45eabcbe205dd432b9d5d985f15a20ef35b3bf10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
