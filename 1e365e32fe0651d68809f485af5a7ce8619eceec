@@ -70,6 +70,30 @@
       ],
       "revId": "1e365e32fe0651d68809f485af5a7ce8619eceec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bcd3b7_20fe0572",
+        "filename": "test/standalone_test_lib_check.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-12T14:36:00Z",
+      "side": 1,
+      "message": "\u003e art::ContainsElement\n\nDone.\n\n\u003e You can change kAllowedDynamicLibDeps to an std::array\n\nI prefer it this way to not have to maintain the array length.",
+      "parentUuid": "e479f4dd_dabddc11",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 97
+      },
+      "revId": "1e365e32fe0651d68809f485af5a7ce8619eceec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
