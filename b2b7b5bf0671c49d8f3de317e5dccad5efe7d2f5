@@ -138,6 +138,30 @@
       },
       "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ec35e6_c0456641",
+        "filename": "compiler/optimizing/register_allocator_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T13:14:10Z",
+      "side": 1,
+      "message": "Ah, makes sense. Not for this CL but maybe in these cases we should rename those to `else_block` or something like that, as variables ending with an `_` have a different connotation for us",
+      "parentUuid": "ee84c9c6_436a4b31",
+      "range": {
+        "startLine": 474,
+        "startChar": 15,
+        "endLine": 474,
+        "endChar": 20
+      },
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
