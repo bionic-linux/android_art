@@ -16,6 +16,24 @@
       "message": "Was this not needed?",
       "revId": "010414cb2be41b31c8e25e157d350c0f827acab1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a588413_1d248626",
+        "filename": "compiler/optimizing/scheduler_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T13:05:28Z",
+      "side": 0,
+      "message": "When I added the `block1` (to align with the other test) without actually connecting it properly, I found out that this was actually making the test fail due to removing dead code. It\u0027s odd that `BuildDominatorTree()` is doing DCE.",
+      "parentUuid": "514129d5_f9a3c4ef",
+      "revId": "010414cb2be41b31c8e25e157d350c0f827acab1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

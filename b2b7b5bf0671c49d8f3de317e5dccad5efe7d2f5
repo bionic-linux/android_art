@@ -75,6 +75,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7760a11_dd9b9938",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T13:05:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d311aab_394db258",
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4050a814_daad32ac",
@@ -88,6 +106,30 @@
       "writtenOn": "2024-08-09T16:09:19Z",
       "side": 1,
       "message": "Non-blocking: it shouldn\u0027t have an underscore",
+      "range": {
+        "startLine": 474,
+        "startChar": 15,
+        "endLine": 474,
+        "endChar": 20
+      },
+      "revId": "b2b7b5bf0671c49d8f3de317e5dccad5efe7d2f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee84c9c6_436a4b31",
+        "filename": "compiler/optimizing/register_allocator_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T13:05:28Z",
+      "side": 1,
+      "message": "We cannot do that, `else` is a keyword. (The surprising thing is the discrepancy that `else` is a keyword and `then` isn\u0027t.)",
+      "parentUuid": "4050a814_daad32ac",
       "range": {
         "startLine": 474,
         "startChar": 15,
