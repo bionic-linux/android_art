@@ -16,6 +16,29 @@
       "message": "Thanks Santiago!",
       "revId": "6abfd81f9d7efe817d5e37a78258a52eeeeaca8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2681f3_41bfd1fd",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T10:52:46Z",
+      "side": 1,
+      "message": "nit: the `()` are not needed",
+      "range": {
+        "startLine": 807,
+        "startChar": 30,
+        "endLine": 807,
+        "endChar": 31
+      },
+      "revId": "6abfd81f9d7efe817d5e37a78258a52eeeeaca8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
