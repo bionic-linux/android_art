@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dc7af75_45021c12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-12T12:23:31Z",
+      "side": 1,
+      "message": "CC @kunniu@google.com for visibility.",
+      "parentUuid": "c44ebec1_d881f304",
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0af600ed_1b4e8746",
         "filename": "dex2oat/Android.bp",
         "patchSetId": 1
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "Hi Rolan, that\u0027s true, the test is not on MTS art test plan, could you update when you added the test to the test plan? Thanks!",
       "parentUuid": "7598dea1_1a7096c9",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10b36f0_078a1dbf",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-12T12:23:31Z",
+      "side": 1,
+      "message": "I just merged the above [topic](https://android-review.git.corp.google.com/q/topic:%22add-art_standalone_dex2oat_cts_tests-to-art-mts%22), so the test module `art_standalone_dex2oat_cts_tests` is now part of the ART MTS test plan.",
+      "parentUuid": "4ae1e021_2c3ceb34",
       "range": {
         "startLine": 572,
         "startChar": 4,
