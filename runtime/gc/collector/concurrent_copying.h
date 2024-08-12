@@ -484,11 +484,6 @@ class ConcurrentCopying : public GarbageCollector {
   // ObjPtr since the GC may transition to suspended and runnable between phases.
   mirror::Class* java_lang_Object_;
 
-  // Sweep array free buffer, used to sweep the spaces based on an array more
-  // efficiently, by recording dead objects to be freed in batches (see
-  // ConcurrentCopying::SweepArray).
-  MemMap sweep_array_free_buffer_mem_map_;
-
   // Use signed because after_gc may be larger than before_gc.
   int64_t num_bytes_allocated_before_gc_;
 
