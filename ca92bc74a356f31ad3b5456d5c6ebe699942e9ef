@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "25edaa4e_7bf1988a",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2577,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2024-08-12T11:59:08Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/art/+/3214177",
+      "parentUuid": "e81c3afc_8624e70c",
+      "range": {
+        "startLine": 2577,
+        "startChar": 28,
+        "endLine": 2577,
+        "endChar": 29
+      },
+      "revId": "ca92bc74a356f31ad3b5456d5c6ebe699942e9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a17dcc22_374c182d",
         "filename": "runtime/jni/jni_internal.cc",
         "patchSetId": 6
@@ -61,6 +85,30 @@
       "writtenOn": "2024-08-01T10:46:57Z",
       "side": 1,
       "message": "Note: This could have been fixed by adding a `ScopedThreadSuspension sts(soa.Self(), ThreadState::kNative);` to `IsClassLoaderNamespaceNativelyBridged()` instead of splitting the `ScopedObjectAccess` in the caller.",
+      "range": {
+        "startLine": 2935,
+        "startChar": 17,
+        "endLine": 2935,
+        "endChar": 55
+      },
+      "revId": "ca92bc74a356f31ad3b5456d5c6ebe699942e9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8f43f7_552b13b4",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2935,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2024-08-12T11:59:08Z",
+      "side": 1,
+      "message": "I can address this as well - seems like a more elegant solution... I would probably do this in RegisterNatives (introducing a block there).",
+      "parentUuid": "a17dcc22_374c182d",
       "range": {
         "startLine": 2935,
         "startChar": 17,
