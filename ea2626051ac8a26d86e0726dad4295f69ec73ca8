@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd3e7a2_f5267ce3",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc69295_ad7b510b",
+      "range": {
+        "startLine": 797,
+        "startChar": 39,
+        "endLine": 797,
+        "endChar": 58
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ba6497f_86880b97",
@@ -71,6 +95,30 @@
       "writtenOn": "2024-08-09T11:08:19Z",
       "side": 1,
       "message": "ClassVerificationFuzzerFolder / VerifiedDexFuzzerFolder?",
+      "range": {
+        "startLine": 985,
+        "startChar": 25,
+        "endLine": 985,
+        "endChar": 33
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7342bbe5_57f6ed5e",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba6497f_86880b97",
       "range": {
         "startLine": 985,
         "startChar": 25,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35657ee8_95b681ec",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "I am not creating the runtime on my own since I am not doing what was in LLVMFuzzerInitialize at the class verification fuzzer. (I am not adding RuntimeOptions and calling Runtime::Create). I am registering/unregistering the dex files manually because in the method_verifier_test.cc, which I used as an example, they were calling the FindSystemClass that was searching  the  boot_class_path_ and in our case it couldn\u0027t find anything.",
+      "parentUuid": "296dffcc_9cba627b",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52368c15_2f14fd2e",
@@ -117,6 +189,30 @@
       "writtenOn": "2024-08-09T07:44:55Z",
       "side": 1,
       "message": "Not sure if the name is appropriate. We want to verify the DEX file\u0027s classes.\n\nMaybe this one could be `ClassVerification` and the other one `DexFileVerification`?",
+      "range": {
+        "startLine": 82,
+        "startChar": 14,
+        "endLine": 82,
+        "endChar": 32
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271ac0af_190e1645",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52368c15_2f14fd2e",
       "range": {
         "startLine": 82,
         "startChar": 14,
@@ -150,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb5c215_df479e89",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "The case was used in the DexFileVerification test because the dex verification fuzzer\u0027s corpus had an empty dex file and the test is using that corpus. \nThe class verification fuzzer\u0027s corpus doesn\u0027t contain that file, but we will keep this check in the test to make it more robust.",
+      "parentUuid": "fe50d9be_6698f8a4",
+      "range": {
+        "startLine": 92,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 23
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "612bf5cf_4750d3e0",
@@ -163,6 +283,30 @@
       "writtenOn": "2024-08-09T11:08:19Z",
       "side": 1,
       "message": "Does it make sense to create these handles inside the for loop? I think if we create it within the loop then those don\u0027t need to be Mutablehandles either.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 59
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a171c966_988aca24",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "612bf5cf_4750d3e0",
       "range": {
         "startLine": 121,
         "startChar": 5,
@@ -196,6 +340,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7689ae3_59ac9c76",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "We need this for the class loaders. Otherwise we got this error: Attempt to register dex file with multiple class loaders.",
+      "parentUuid": "b8476736_9de278b1",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 73
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abaf68f2_128dfcf2",
@@ -209,6 +377,30 @@
       "writtenOn": "2024-08-09T07:44:55Z",
       "side": 1,
       "message": "I think `Failed for` on its own is fine, the error message will provide enough context e.g. the name of the failing test `VerifyCorpusClassDexFiles`.",
+      "range": {
+        "startLine": 158,
+        "startChar": 46,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6220f74a_e0c3f30c",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abaf68f2_128dfcf2",
       "range": {
         "startLine": 158,
         "startChar": 46,
@@ -266,6 +458,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfa72e7c_bd09c57f",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a0ccb4_470f7287",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 50
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46f6d8ce_d3b1920e",
@@ -279,6 +495,30 @@
       "writtenOn": "2024-08-09T07:44:55Z",
       "side": 1,
       "message": "use `std::function` e.g. `std::function\u003cvoid(const uint8_t*, size_t, const std::string\u0026, bool)\u003e verify_corpus`.\n\nThis method also verifies one particular file, not the corpus. Perhaps a name like `verify_file` would be more fitting.\n\nNote the `snake_case` for the variable name.",
+      "range": {
+        "startLine": 163,
+        "startChar": 24,
+        "endLine": 163,
+        "endChar": 94
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f32838_19ef82ae",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f6d8ce_d3b1920e",
       "range": {
         "startLine": 163,
         "startChar": 24,
@@ -312,6 +552,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2cec3f_e07ba9eb",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc1b9d1_6872fa02",
+      "range": {
+        "startLine": 198,
+        "startChar": 76,
+        "endLine": 198,
+        "endChar": 92
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042d3711_b4c5afbf",
@@ -325,6 +589,30 @@
       "writtenOn": "2024-08-09T07:44:55Z",
       "side": 1,
       "message": "`dex_fuzzer_corpus` for consistency and to differentiate from `class_fuzzer_corpus`?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 11,
+        "endLine": 1328,
+        "endChar": 24
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a558ee4_6c9e8f49",
+        "filename": "tools/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1328,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-12T13:33:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042d3711_b4c5afbf",
       "range": {
         "startLine": 1328,
         "startChar": 11,
