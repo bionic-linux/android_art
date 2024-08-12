@@ -45,8 +45,17 @@ namespace gc {
 
 class Heap;
 
-namespace collector {
+namespace accounting {
+template <typename T>
+class AtomicStack;
+using ObjectStack = AtomicStack<mirror::Object>;
+}  // namespace accounting
 
+namespace space {
+class ContinuousSpace;
+}  // namespace space
+
+namespace collector {
 class GarbageCollector : public RootVisitor, public IsMarkedVisitor, public MarkObjectVisitor {
  public:
   class SCOPED_LOCKABLE ScopedPause {
@@ -150,6 +159,11 @@ class GarbageCollector : public RootVisitor, public IsMarkedVisitor, public Mark
   virtual void RunPhases() REQUIRES(!Locks::mutator_lock_) = 0;
   // Revoke all the thread-local buffers.
   virtual void RevokeAllThreadLocalBuffers() = 0;
+  // Sweep only pointers within an array from the given spaces. WARNING: Trashes objects.
+  void SweepArray(accounting::ObjectStack* allocations,
+                  bool swap_bitmaps,
+                  std::vector<space::ContinuousSpace*>* sweep_spaces)
+      REQUIRES(Locks::heap_bitmap_lock_) REQUIRES_SHARED(Locks::mutator_lock_);
 
   static constexpr size_t kPauseBucketSize = 500;
   static constexpr size_t kPauseBucketCount = 32;
