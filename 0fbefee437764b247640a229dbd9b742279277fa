@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "911b507b_68dd0d37",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2961,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T14:43:16Z",
+      "side": 1,
+      "message": "Addded a comment.",
+      "parentUuid": "bce097bd_645c4b93",
+      "revId": "0fbefee437764b247640a229dbd9b742279277fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "281ece24_b4ce43bf",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2170f8f_ed0fee1b",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T14:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281ece24_b4ce43bf",
+      "range": {
+        "startLine": 251,
+        "startChar": 62,
+        "endLine": 251,
+        "endChar": 83
+      },
+      "revId": "0fbefee437764b247640a229dbd9b742279277fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b487545_ac6f5a4a",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-08-12T13:12:17Z",
       "side": 1,
       "message": "Suggestion: This could use `std::max` e.g:\n```\n    if (instruction-\u003eIsInvoke()) {\n      reserved_out_slots_ \u003d std::max(reserved_out_slots_,\n                                     instruction-\u003eAsInvoke()-\u003eGetNumberOfOutVRegs());\n    } else if (instruction-\u003eIsStringBuilderAppend()) {\n      reserved_out_slots_ \u003d std::max(reserved_out_slots_,\n                                     instruction-\u003eAsStringBuilderAppend()-\u003eGetNumberOfOutVRegs());\n    }\n```\n\nFine to keep as-is, if you prefer.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 5
+      },
+      "revId": "0fbefee437764b247640a229dbd9b742279277fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cacd90f_e7db616a",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-12T14:43:16Z",
+      "side": 1,
+      "message": "Let\u0027s go with the `std::max()`.",
+      "parentUuid": "4b487545_ac6f5a4a",
       "range": {
         "startLine": 252,
         "startChar": 0,
