@@ -105,6 +105,24 @@
       "parentUuid": "b6fe8f4c_9b057717",
       "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd84146_e78e56c4",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2024-08-12T21:23:04Z",
+      "side": 1,
+      "message": "I didn\u0027t want the call-sites to require calling the function twice, but I pulled the common code into a lambda.",
+      "parentUuid": "7d2d8a3e_4228963c",
+      "revId": "37f3789b12d02c4b10f1342cf22f67bfbc20c4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
