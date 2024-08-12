@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf7c928_32d4763f",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4033,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-12T23:53:30Z",
+      "side": 1,
+      "message": "I think we always want this to be inlined, right? I would either mark it as such, or manually inline it, since that arguably simplifies the code here.",
+      "range": {
+        "startLine": 4030,
+        "startChar": 0,
+        "endLine": 4033,
+        "endChar": 1
+      },
+      "revId": "8b0bbe6e0a59b0935bbc8f4f5eed119ca8855ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
