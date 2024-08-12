@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "574e1611_81c3c72d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-12T14:38:27Z",
+      "side": 1,
+      "message": "This turned out to be unnecessary with PS2 of https://r.android.com/3213686, but it\u0027s a good thing to have anyway.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "eb6177ec1524badcd30373f8af9b88aadf4196ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
