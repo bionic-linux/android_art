@@ -578,6 +578,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf601714_72ef84b0",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T13:44:20Z",
+      "side": 1,
+      "message": "The second part (`rename success in the VerifyCorpus too`) wasn\u0027t done",
+      "parentUuid": "3c2cec3f_e07ba9eb",
+      "range": {
+        "startLine": 198,
+        "startChar": 76,
+        "endLine": 198,
+        "endChar": 92
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "042d3711_b4c5afbf",
         "filename": "tools/fuzzer/Android.bp",
         "patchSetId": 4

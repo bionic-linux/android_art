@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19810820_46de26a6",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T13:44:20Z",
+      "side": 1,
+      "message": "Please add explicit `{}`",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7b6614eb_a5fe1853",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/fuzzer_corpus_test.cc",
+              "range": {
+                "startLine": 149,
+                "startChar": 0,
+                "endLine": 150,
+                "endChar": 0
+              },
+              "replacement": "        if (failure !\u003d verifier::FailureKind::kNoFailure) {\n"
+            },
+            {
+              "path": "runtime/fuzzer_corpus_test.cc",
+              "range": {
+                "startLine": 151,
+                "startChar": 0,
+                "endLine": 151,
+                "endChar": 0
+              },
+              "replacement": "        }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bc6953_4462d950",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T13:44:20Z",
+      "side": 1,
+      "message": "Can you explain a bit more why?",
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b87184e_aad2b71e",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T13:44:20Z",
+      "side": 1,
+      "message": "nit: In this case we are testing for class verification. The DEX file itself is valid, but we are failing class verification.\n\nMaybe rename to something like `passed_class_verification`?",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 31
+      },
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
