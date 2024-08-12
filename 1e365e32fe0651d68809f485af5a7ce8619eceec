@@ -1,0 +1,75 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e479f4dd_dabddc11",
+        "filename": "test/standalone_test_lib_check.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-12T11:12:06Z",
+      "side": 1,
+      "message": "art::ContainsElement\n\nYou can change kAllowedDynamicLibDeps to an `std::array` to also allow `art::ContainsElement` there, but that\u0027s optional.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 97
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "66179edc_75eb6bc6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/standalone_test_lib_check.cc",
+              "range": {
+                "startLine": 30,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "#include \"android-base/logging.h\"\n"
+            },
+            {
+              "path": "test/standalone_test_lib_check.cc",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 63,
+                "endChar": 0
+              },
+              "replacement": "constexpr std::array\u003cconst char*, 12\u003e kAllowedDynamicLibDeps \u003d {\n"
+            },
+            {
+              "path": "test/standalone_test_lib_check.cc",
+              "range": {
+                "startLine": 171,
+                "startChar": 0,
+                "endLine": 174,
+                "endChar": 0
+              },
+              "replacement": "    if (art::ContainsElement(kAllowedDynamicLibDeps, dyn_lib_dep)) {\n"
+            },
+            {
+              "path": "test/standalone_test_lib_check.cc",
+              "range": {
+                "startLine": 176,
+                "startChar": 0,
+                "endLine": 177,
+                "endChar": 0
+              },
+              "replacement": "    if (art::ContainsElement(test_libs, dyn_lib_dep)) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1e365e32fe0651d68809f485af5a7ce8619eceec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
