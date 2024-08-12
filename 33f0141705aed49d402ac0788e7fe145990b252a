@@ -1,0 +1,279 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af86266_7fcf1614",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "nit: the others seem to be using spaces, not tabs",
+      "range": {
+        "startLine": 786,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 1
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c72ccab_28551c80",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Should we log an error? Or this is an expected scenario?\nI see that other methods like `VMDebug_startMethodTracingFilename` are doing the same silent return so this may be okay",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6e045b_877923b0",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "This can be the new `Trace::IsTracingEnabledLocked()`",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 29
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae99400_5e21c7c2",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "I like this cleanup 👍",
+      "range": {
+        "startLine": 803,
+        "startChar": 0,
+        "endLine": 804,
+        "endChar": 5
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06b4834_d0619474",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Suggestion: this could be replaced with\n`const bool is_trace_formatv2 \u003d GetTraceFormatVersionFromFlags(flags) \u003d\u003d Trace::kFormatV2;`\nor something like that, as it is the only way it is used.\n\nFeel free to keep as-is too",
+      "range": {
+        "startLine": 807,
+        "startChar": 4,
+        "endLine": 807,
+        "endChar": 69
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0c7e28_228673c6",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Not sure what the style is here regarding indentation to show that the variable is the three lines",
+      "range": {
+        "startLine": 842,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 58
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1b9ac9_fa5631fc",
+        "filename": "runtime/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "`constexpr`",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 51
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a731abbd_8e9f541e",
+        "filename": "runtime/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "I am not sure about how they are used, but the `*buf++` could mean an OOB access if we are not careful.\nIf it is too complicated to guard against, we can also solve it in a follow-up CL as these are just moved from trace.cc.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 1
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9a8d19_9709ec5a",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Is there a way to static_assert this? e.g. defining something like `static constexpr kMaxBitsForEncoding \u003d 8` and then asserting that it is true.\n\nShould this be `* sizeof(uintptr_t)`? See related comment below",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023f1e62_9e7b706f",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Above we are using `kMinBufSizeForEncodedData \u003d kAlwaysOnTraceBufSize * 8` but here we are creating a buffer of `kMinBufSizeForEncodedData \u003d kAlwaysOnTraceBufSize * sizeof(uintptr_t)`. For 32-bits this would be half the size",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705e5478_e3893faf",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Should we define this as a constant in the .h file like `kAlwaysOnTraceBufSize`? Given that we are doing `buffer[0] \u003d kEntryHeaderV2;` below, should `header_size` be `sizeof(kEntryHeaderV2)`?",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee848d7_b4acf7df",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "Always 0. Did you forget to do `prev_method_action_encoding  \u003d method_action_encoding;` in the loop?\n\nAlso, `method_action_encoding` is `uintptr_t` but this is `uint64_t` which are not the same for 32-bits",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317b5135_115412c3",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-12T08:24:23Z",
+      "side": 1,
+      "message": "nit: the other comments have a full stop at the end",
+      "revId": "33f0141705aed49d402ac0788e7fe145990b252a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
