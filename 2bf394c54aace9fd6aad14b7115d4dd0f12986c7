@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4071b794_3ededd91",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-13T15:49:05Z",
+      "side": 1,
+      "message": "Replacing with the same instruction kind means that we can just take the \"else\" branch in the caller (just update the `if` condition).",
+      "range": {
+        "startLine": 1842,
+        "startChar": 4,
+        "endLine": 1845,
+        "endChar": 67
+      },
+      "revId": "2bf394c54aace9fd6aad14b7115d4dd0f12986c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
