@@ -45,6 +45,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         System.loadLibrary(args[0]);
 
+        checkMappings();
+
         // Fetch priorities from the main thread to know what to compare against.
         int javaPriority = Thread.currentThread().getPriority();
         initialPlatformPriority = getThreadPlatformPriority();
@@ -59,6 +61,20 @@ public class Main {
         t1.setPriority(Thread.MAX_PRIORITY);
         prioritySet.countDown();
         t1.join();
+    }
+
+    public static void checkMappings() {
+        for (int p = Thread.MIN_PRIORITY; p <= Thread.MAX_PRIORITY; ++p) {
+            int niceness = Thread.nicenessForPriority(p);
+            if (p > Thread.MIN_PRIORITY &&  Thread.nicenessForPriority(p - 1) <= niceness) {
+                throw new Error("Niceness not monotonic at " + p);
+            }
+            int mapped_p = Thread.priorityForNiceness(Thread.nicenessForPriority(p));
+            if (mapped_p != p) {
+                throw new Error(p + " mapped to: " + Thread.nicenessForPriority(p) +
+                        " which mapped back to " + mapped_p);
+            }
+        }
     }
 
     private static native int getThreadPlatformPriority();

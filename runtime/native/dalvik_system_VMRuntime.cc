@@ -420,21 +420,13 @@ static jstring VMRuntime_getCurrentInstructionSet(JNIEnv* env, jclass) {
   return env->NewStringUTF(GetInstructionSetString(kRuntimeISA));
 }
 
-static void VMRuntime_setSystemDaemonThreadPriority([[maybe_unused]] JNIEnv* env,
-                                                    [[maybe_unused]] jclass klass) {
-#ifdef ART_TARGET_ANDROID
-  Thread* self = Thread::Current();
-  DCHECK(self != nullptr);
-  pid_t tid = self->GetTid();
+static int VMRuntime_getSystemDaemonNiceness() {
   // We use a priority lower than the default for the system daemon threads (eg HeapTaskDaemon) to
-  // avoid jank due to CPU contentions between GC and other UI-related threads. b/36631902.
+  // avoid jank due to CPU contention between GC and other UI-related threads. b/36631902.
   // We may use a native priority that doesn't have a corresponding java.lang.Thread-level priority.
-  static constexpr int kSystemDaemonNiceValue = 4;  // priority 124
-  if (setpriority(PRIO_PROCESS, tid, kSystemDaemonNiceValue) != 0) {
-    PLOG(INFO) << *self << " setpriority(PRIO_PROCESS, " << tid << ", "
-               << kSystemDaemonNiceValue << ") failed";
-  }
-#endif
+  static int systemDaemonNiceValue =
+      (6 * Thread::PriorityToNiceness(5) + 4 * Thread::PriorityToNiceness(4) + 5) / 10;
+  return systemDaemonNiceValue;
 }
 
 static void VMRuntime_setDedupeHiddenApiWarnings([[maybe_unused]] JNIEnv* env,
@@ -542,57 +534,58 @@ static jlong VMRuntime_getFullGcCount([[maybe_unused]] JNIEnv* env, [[maybe_unus
 }
 
 static JNINativeMethod gMethods[] = {
-  FAST_NATIVE_METHOD(VMRuntime, addressOf, "(Ljava/lang/Object;)J"),
-  NATIVE_METHOD(VMRuntime, bootClassPath, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, clampGrowthLimit, "()V"),
-  NATIVE_METHOD(VMRuntime, classPath, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, clearGrowthLimit, "()V"),
-  NATIVE_METHOD(VMRuntime, setHiddenApiExemptions, "([Ljava/lang/String;)V"),
-  NATIVE_METHOD(VMRuntime, setHiddenApiAccessLogSamplingRate, "(I)V"),
-  NATIVE_METHOD(VMRuntime, getTargetHeapUtilization, "()F"),
-  FAST_NATIVE_METHOD(VMRuntime, isNativeDebuggable, "()Z"),
-  NATIVE_METHOD(VMRuntime, isJavaDebuggable, "()Z"),
-  NATIVE_METHOD(VMRuntime, nativeSetTargetHeapUtilization, "(F)V"),
-  FAST_NATIVE_METHOD(VMRuntime, newNonMovableArray, "(Ljava/lang/Class;I)Ljava/lang/Object;"),
-  FAST_NATIVE_METHOD(VMRuntime, newUnpaddedArray, "(Ljava/lang/Class;I)Ljava/lang/Object;"),
-  NATIVE_METHOD(VMRuntime, properties, "()[Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, getSdkVersionNative, "(I)I"),
-  NATIVE_METHOD(VMRuntime, setTargetSdkVersionNative, "(I)V"),
-  NATIVE_METHOD(VMRuntime, setDisabledCompatChangesNative, "([J)V"),
-  NATIVE_METHOD(VMRuntime, registerNativeAllocation, "(J)V"),
-  NATIVE_METHOD(VMRuntime, registerNativeFree, "(J)V"),
-  NATIVE_METHOD(VMRuntime, getNotifyNativeInterval, "()I"),
-  NATIVE_METHOD(VMRuntime, getFinalizerTimeoutMs, "()J"),
-  NATIVE_METHOD(VMRuntime, notifyNativeAllocationsInternal, "()V"),
-  NATIVE_METHOD(VMRuntime, notifyStartupCompleted, "()V"),
-  NATIVE_METHOD(VMRuntime, registerSensitiveThread, "()V"),
-  NATIVE_METHOD(VMRuntime, requestConcurrentGC, "()V"),
-  NATIVE_METHOD(VMRuntime, requestHeapTrim, "()V"),
-  NATIVE_METHOD(VMRuntime, runHeapTasks, "()V"),
-  NATIVE_METHOD(VMRuntime, updateProcessState, "(I)V"),
-  NATIVE_METHOD(VMRuntime, startHeapTaskProcessor, "()V"),
-  NATIVE_METHOD(VMRuntime, stopHeapTaskProcessor, "()V"),
-  NATIVE_METHOD(VMRuntime, trimHeap, "()V"),
-  NATIVE_METHOD(VMRuntime, vmVersion, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, vmLibrary, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, vmInstructionSet, "()Ljava/lang/String;"),
-  FAST_NATIVE_METHOD(VMRuntime, is64Bit, "()Z"),
-  FAST_NATIVE_METHOD(VMRuntime, isCheckJniEnabled, "()Z"),
-  NATIVE_METHOD(VMRuntime, preloadDexCaches, "()V"),
-  NATIVE_METHOD(VMRuntime, registerAppInfo,
-      "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)V"),
-  NATIVE_METHOD(VMRuntime, isBootClassPathOnDisk, "(Ljava/lang/String;)Z"),
-  NATIVE_METHOD(VMRuntime, getCurrentInstructionSet, "()Ljava/lang/String;"),
-  NATIVE_METHOD(VMRuntime, setSystemDaemonThreadPriority, "()V"),
-  NATIVE_METHOD(VMRuntime, setDedupeHiddenApiWarnings, "(Z)V"),
-  NATIVE_METHOD(VMRuntime, setProcessPackageName, "(Ljava/lang/String;)V"),
-  NATIVE_METHOD(VMRuntime, setProcessDataDirectory, "(Ljava/lang/String;)V"),
-  NATIVE_METHOD(VMRuntime, bootCompleted, "()V"),
-  NATIVE_METHOD(VMRuntime, resetJitCounters, "()V"),
-  NATIVE_METHOD(VMRuntime, isValidClassLoaderContext, "(Ljava/lang/String;)Z"),
-  NATIVE_METHOD(VMRuntime, getBaseApkOptimizationInfo,
-      "()Ldalvik/system/DexFile$OptimizationInfo;"),
-  NATIVE_METHOD(VMRuntime, getFullGcCount, "()J"),
+    FAST_NATIVE_METHOD(VMRuntime, addressOf, "(Ljava/lang/Object;)J"),
+    NATIVE_METHOD(VMRuntime, bootClassPath, "()Ljava/lang/String;"),
+    NATIVE_METHOD(VMRuntime, clampGrowthLimit, "()V"),
+    NATIVE_METHOD(VMRuntime, classPath, "()Ljava/lang/String;"),
+    NATIVE_METHOD(VMRuntime, clearGrowthLimit, "()V"),
+    NATIVE_METHOD(VMRuntime, setHiddenApiExemptions, "([Ljava/lang/String;)V"),
+    NATIVE_METHOD(VMRuntime, setHiddenApiAccessLogSamplingRate, "(I)V"),
+    NATIVE_METHOD(VMRuntime, getTargetHeapUtilization, "()F"),
+    FAST_NATIVE_METHOD(VMRuntime, isNativeDebuggable, "()Z"),
+    NATIVE_METHOD(VMRuntime, isJavaDebuggable, "()Z"),
+    NATIVE_METHOD(VMRuntime, nativeSetTargetHeapUtilization, "(F)V"),
+    FAST_NATIVE_METHOD(VMRuntime, newNonMovableArray, "(Ljava/lang/Class;I)Ljava/lang/Object;"),
+    FAST_NATIVE_METHOD(VMRuntime, newUnpaddedArray, "(Ljava/lang/Class;I)Ljava/lang/Object;"),
+    NATIVE_METHOD(VMRuntime, properties, "()[Ljava/lang/String;"),
+    NATIVE_METHOD(VMRuntime, getSdkVersionNative, "(I)I"),
+    NATIVE_METHOD(VMRuntime, setTargetSdkVersionNative, "(I)V"),
+    NATIVE_METHOD(VMRuntime, setDisabledCompatChangesNative, "([J)V"),
+    NATIVE_METHOD(VMRuntime, registerNativeAllocation, "(J)V"),
+    NATIVE_METHOD(VMRuntime, registerNativeFree, "(J)V"),
+    NATIVE_METHOD(VMRuntime, getNotifyNativeInterval, "()I"),
+    NATIVE_METHOD(VMRuntime, getFinalizerTimeoutMs, "()J"),
+    NATIVE_METHOD(VMRuntime, notifyNativeAllocationsInternal, "()V"),
+    NATIVE_METHOD(VMRuntime, notifyStartupCompleted, "()V"),
+    NATIVE_METHOD(VMRuntime, registerSensitiveThread, "()V"),
+    NATIVE_METHOD(VMRuntime, requestConcurrentGC, "()V"),
+    NATIVE_METHOD(VMRuntime, requestHeapTrim, "()V"),
+    NATIVE_METHOD(VMRuntime, runHeapTasks, "()V"),
+    NATIVE_METHOD(VMRuntime, updateProcessState, "(I)V"),
+    NATIVE_METHOD(VMRuntime, startHeapTaskProcessor, "()V"),
+    NATIVE_METHOD(VMRuntime, stopHeapTaskProcessor, "()V"),
+    NATIVE_METHOD(VMRuntime, trimHeap, "()V"),
+    NATIVE_METHOD(VMRuntime, vmVersion, "()Ljava/lang/String;"),
+    NATIVE_METHOD(VMRuntime, vmLibrary, "()Ljava/lang/String;"),
+    NATIVE_METHOD(VMRuntime, vmInstructionSet, "()Ljava/lang/String;"),
+    FAST_NATIVE_METHOD(VMRuntime, is64Bit, "()Z"),
+    FAST_NATIVE_METHOD(VMRuntime, isCheckJniEnabled, "()Z"),
+    NATIVE_METHOD(VMRuntime, preloadDexCaches, "()V"),
+    NATIVE_METHOD(VMRuntime,
+                  registerAppInfo,
+                  "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;I)V"),
+    NATIVE_METHOD(VMRuntime, isBootClassPathOnDisk, "(Ljava/lang/String;)Z"),
+    NATIVE_METHOD(VMRuntime, getCurrentInstructionSet, "()Ljava/lang/String;"),
+    CRITICAL_NATIVE_METHOD(VMRuntime, getSystemDaemonNiceness, "()I"),
+    NATIVE_METHOD(VMRuntime, setDedupeHiddenApiWarnings, "(Z)V"),
+    NATIVE_METHOD(VMRuntime, setProcessPackageName, "(Ljava/lang/String;)V"),
+    NATIVE_METHOD(VMRuntime, setProcessDataDirectory, "(Ljava/lang/String;)V"),
+    NATIVE_METHOD(VMRuntime, bootCompleted, "()V"),
+    NATIVE_METHOD(VMRuntime, resetJitCounters, "()V"),
+    NATIVE_METHOD(VMRuntime, isValidClassLoaderContext, "(Ljava/lang/String;)Z"),
+    NATIVE_METHOD(
+        VMRuntime, getBaseApkOptimizationInfo, "()Ldalvik/system/DexFile$OptimizationInfo;"),
+    NATIVE_METHOD(VMRuntime, getFullGcCount, "()J"),
 };
 
 void register_dalvik_system_VMRuntime(JNIEnv* env) {

@@ -1492,10 +1492,12 @@ static void* RunPollingThread(void* arg) {
       /* create_peer= */ false);
   CHECK(thread_attached);
 
-  if (getpriority(PRIO_PROCESS, 0 /* this thread */) == 0) {
+  if (getpriority(PRIO_PROCESS, 0 /* this thread */) ==
+      Thread::PriorityToNiceness(kNormThreadPriority)) {
     // Slightly reduce thread priority, mostly so the suspend logic notices that we're
     // not a high priority thread, and can time out more slowly. May fail on host.
-    (void)setpriority(PRIO_PROCESS, 0 /* this thread */, 1);
+    (void)setpriority(
+        PRIO_PROCESS, 0 /* this thread */, Thread::PriorityToNiceness(kNormThreadPriority) + 1);
   } else {
     PLOG(ERROR) << "Unexpected BootImagePollingThread priority: " << getpriority(PRIO_PROCESS, 0);
   }
