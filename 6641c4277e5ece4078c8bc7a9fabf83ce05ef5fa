@@ -33,6 +33,29 @@
       "message": "FYI there\u0027s a revert button in Gerrit in the top right that when clicked creates the revert for you. You can then land your changes on top and it\u0027s easier to see the difference between one CL and the other. This makes it easier for us to review since we can take a look at the delta faster\n\nSee r.android.com/3218235/1..2 to see what I mean",
       "revId": "6641c4277e5ece4078c8bc7a9fabf83ce05ef5fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234b4d33_c0250bdd",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-13T16:05:37Z",
+      "side": 1,
+      "message": "I\u0027d prefer to take the \"else\" branch in the caller as I mentioned in the comment on the revert. That should yield smaller code (code generated for new-expression tends to be larger than a few checks) and lower memory usage (reusing the existing instruction).",
+      "range": {
+        "startLine": 1842,
+        "startChar": 4,
+        "endLine": 1845,
+        "endChar": 67
+      },
+      "revId": "6641c4277e5ece4078c8bc7a9fabf83ce05ef5fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
