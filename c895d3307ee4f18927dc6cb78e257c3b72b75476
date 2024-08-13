@@ -1,0 +1,137 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f7252e_8f12d8b1",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T08:33:06Z",
+      "side": 1,
+      "message": "Can this be a private method in FuzzerCorpusTest?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4739a909_515a2c6b",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T08:33:06Z",
+      "side": 1,
+      "message": "Suggestion: Just `Manages`.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8e36c8cb_ae9c7bf5",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/fuzzer_corpus_test.cc",
+              "range": {
+                "startLine": 44,
+                "startChar": 0,
+                "endLine": 45,
+                "endChar": 0
+              },
+              "replacement": "// Manages the ZipArchiveHandle liveness.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b497afbc_56dc05ea",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T08:33:06Z",
+      "side": 1,
+      "message": "Maybe we can move this to line 199 and do it once for both verification cases. This would also make it future-proof for other tests. WDYT?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e331fc42_9eb489df",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T08:33:06Z",
+      "side": 1,
+      "message": "I think this part happens during DeleteGlobalRef + GC. The registration does happen manually in line 40",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81875dba_83f12fd1",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T08:33:06Z",
+      "side": 1,
+      "message": "nit: missing `\u003d` like in line 139.\n\nWe are also missing it in the fuzzer, but let\u0027s not change that file in this CL",
+      "range": {
+        "startLine": 159,
+        "startChar": 63,
+        "endLine": 159,
+        "endChar": 64
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
