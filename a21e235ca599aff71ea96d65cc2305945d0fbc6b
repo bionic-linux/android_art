@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "099ea79f_2cf1be71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-13T16:07:22Z",
+      "side": 1,
+      "message": "This is ready for review but there shall be a conflict with https://android-review.googlesource.com/3218195 that I\u0027ll need to resolve.",
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
