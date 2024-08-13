@@ -604,12 +604,33 @@ class EXPORT Thread {
   bool HoldsLock(ObjPtr<mirror::Object> object) const REQUIRES_SHARED(Locks::mutator_lock_);
 
   /*
-   * Changes the priority of this thread to match that of the java.lang.Thread object.
+   * Set native thread niceness to match the given Java priority. Only used from
+   * jvmti. Otherwise we represent priority as Linux niceness internally.
    *
    * We map a priority value from 1-10 to Linux "nice" values, where lower
    * numbers indicate higher priority.
+   *
+   * Return 0 on success, or errno.
    */
-  void SetNativePriority(int newPriority);
+  int SetNativePriority(int newPriority) REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(Locks::thread_list_lock_);
+
+  /*
+   * Same thing, but niceness is supplied directly.
+   *
+   * Return 0 on success, or errno.
+   */
+  int SetNativeNiceness(int newNiceness) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  /*
+   * Convert Java priority to Posix niceness using palette information.
+   */
+  static int PriorityToNiceness(int priority) { return GetPriorityMap()[priority]; }
+
+  /*
+   * Convert Posix niceness to the closest Java priority using palette information.
+   */
+  static int NicenessToPriority(int niceness);
 
   /*
    * Returns the priority of this thread by querying the system.
@@ -1887,6 +1908,8 @@ class EXPORT Thread {
   void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
   static bool IsAotCompiler();
+
+  static int* GetPriorityMap();
 
   void SetCachedThreadName(const char* name);
 
