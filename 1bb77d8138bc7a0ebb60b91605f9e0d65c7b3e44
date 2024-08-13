@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca7ff56_92a8ae24",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T16:23:58Z",
+      "side": 1,
+      "message": "style: within a class first public, then private",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbdf63e0_08c8c954",
         "filename": "runtime/fuzzer_corpus_test.cc",
         "patchSetId": 8
@@ -31,6 +54,30 @@
       "writtenOn": "2024-08-13T16:18:40Z",
       "side": 1,
       "message": "Just for my understanding, If we have an API to unregister dex files then we don\u0027t need the explicit GC is it?\n\nMaybe rephrase this to Do a GC to unregister the dex files.",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 56
+      },
+      "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71163918_a18c4aa1",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T16:23:58Z",
+      "side": 1,
+      "message": "I was hoping the DeleteGlobalRef was enough to unregister the DEX file we manually registered but it seems we need to do a GC to clear the references too. Maybe we can do something better, and it is something that Ioana will be looking at it in the future.\n\nI agree that the comment can be rephrased to be more clear.",
+      "parentUuid": "fbdf63e0_08c8c954",
       "range": {
         "startLine": 147,
         "startChar": 7,
