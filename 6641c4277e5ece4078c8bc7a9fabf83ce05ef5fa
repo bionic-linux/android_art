@@ -16,6 +16,23 @@
       "message": "Folks, I fixed HEquals/HNotEquals cases, added missed tests.\nPlease take a look one more time",
       "revId": "6641c4277e5ece4078c8bc7a9fabf83ce05ef5fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986788f5_aa718cba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T15:26:34Z",
+      "side": 1,
+      "message": "FYI there\u0027s a revert button in Gerrit in the top right that when clicked creates the revert for you. You can then land your changes on top and it\u0027s easier to see the difference between one CL and the other. This makes it easier for us to review since we can take a look at the delta faster\n\nSee r.android.com/3218235/1..2 to see what I mean",
+      "revId": "6641c4277e5ece4078c8bc7a9fabf83ce05ef5fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
