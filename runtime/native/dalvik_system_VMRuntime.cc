@@ -434,10 +434,10 @@ static void VMRuntime_setSystemDaemonThreadPriority([[maybe_unused]] JNIEnv* env
   DCHECK(self != nullptr);
   pid_t tid = self->GetTid();
   // We use a priority lower than the default for the system daemon threads (eg HeapTaskDaemon) to
-  // avoid jank due to CPU contentions between GC and other UI-related threads. b/36631902.
+  // avoid jank due to CPU contention between GC and other UI-related threads. b/36631902.
   // We may use a native priority that doesn't have a corresponding java.lang.Thread-level priority.
-  static constexpr int kSystemDaemonNiceValue = 4;  // priority 124
-  if (setpriority(PRIO_PROCESS, tid, kSystemDaemonNiceValue) != 0) {
+  static int systemDaemonNiceValue = (3 * priorityToNiceness(5) + 2 * priorityToNiceness(4)) / 5;
+  if (setpriority(PRIO_PROCESS, tid, systemDaemonNiceValue) != 0) {
     PLOG(INFO) << *self << " setpriority(PRIO_PROCESS, " << tid << ", "
                << kSystemDaemonNiceValue << ") failed";
   }
