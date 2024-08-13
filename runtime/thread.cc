@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <sys/resource.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 #include <algorithm>
 #include <atomic>
@@ -35,9 +36,6 @@
 #include "android-base/file.h"
 #include "android-base/stringprintf.h"
 #include "android-base/strings.h"
-
-#include "unwindstack/AndroidUnwinder.h"
-
 #include "arch/context-inl.h"
 #include "arch/context.h"
 #include "art_field-inl.h"
@@ -105,12 +103,13 @@
 #include "runtime-inl.h"
 #include "runtime.h"
 #include "runtime_callbacks.h"
-#include "scoped_thread_state_change-inl.h"
 #include "scoped_disable_public_sdk_checker.h"
+#include "scoped_thread_state_change-inl.h"
 #include "stack.h"
 #include "thread-inl.h"
 #include "thread_list.h"
 #include "trace.h"
+#include "unwindstack/AndroidUnwinder.h"
 #include "verify_object.h"
 #include "well_known_classes-inl.h"
 
@@ -641,8 +640,8 @@ void* Thread::CreateCallback(void* arg) {
     self->DeleteJPeer(self->GetJniEnv());
     self->SetThreadName(self->GetThreadName()->ToModifiedUtf8().c_str());
 
-    ArtField* priorityField = WellKnownClasses::java_lang_Thread_priority;
-    self->SetNativePriority(priorityField->GetInt(self->tlsPtr_.opeer));
+    ArtField* nicenessField = WellKnownClasses::java_lang_Thread_priority;
+    self->SetNativeNiceness(nicenessField->GetInt(self->tlsPtr_.opeer));
 
     runtime->GetRuntimeCallbacks()->ThreadStart(self);
 
@@ -4855,16 +4854,101 @@ void Thread::ClearAllInterpreterCaches() {
   Runtime::Current()->GetThreadList()->RunCheckpoint(&closure);
 }
 
-void Thread::SetNativePriority(int new_priority) {
-  palette_status_t status = PaletteSchedSetPriority(GetTid(), new_priority);
-  CHECK(status == PALETTE_STATUS_OK || status == PALETTE_STATUS_CHECK_ERRNO);
+static_assert(kMinThreadPriority >= 0);
+
+static int priorityMap[kMaxThreadPriority + 1];
+static std::once_flag priorityMapInitialized;
+static bool canSetPriority = true;
+
+// Return an int array result, so that result[i] is the native priority, really
+// "niceness" corresponding to Java priority i. result[0] is unused.
+int* Thread::GetPriorityMap() {
+  std::call_once(priorityMapInitialized, [&pm = priorityMap]() {
+    pm[0] = 0;
+    bool success = (PaletteGetPriorityMapping(priorityMap + kMinThreadPriority,
+                                              kMinThreadPriority,
+                                              kMaxThreadPriority - kMinThreadPriority + 1) ==
+                    PALETTE_STATUS_OK);
+    if (!success) {
+      // Discover the map the hard way.
+      pid_t me = gettid();
+      bool map_consistent;
+      errno = 0;
+      int orig_niceness = getpriority(PRIO_PROCESS, static_cast<id_t>(me));
+      CHECK(orig_niceness != -1 || errno == 0);
+      do {
+        map_consistent = true;
+        for (int p = kMinThreadPriority; p <= kMaxThreadPriority; ++p) {
+          int ret = PaletteSchedSetPriority(me, p);
+          if (ret == PALETTE_STATUS_OK) {
+            errno = 0;
+            pm[p] = getpriority(PRIO_PROCESS, static_cast<id_t>(me));
+            CHECK(pm[p] != -1 || errno == 0);
+            LOG(INFO) << "Niceness[" << p << "] = " << pm[p];
+#ifdef ART_TARGET_ANDROID
+            // The map should be strictly monotonically decreasing.
+            if (p > kMinThreadPriority && pm[p] >= pm[p - 1]) {
+              // Maybe somebody else mucked with our priority? Start over.
+              map_consistent = false;
+              break;
+            }
+#endif
+          } else {
+            canSetPriority = false;
+            LOG(WARNING) << "Cannot set priority to " << p;
+            // Fake the map with something plausible.
+            pm[p] = pm[p - 1] - 1;
+          }
+        }
+      } while (!map_consistent);
+      int ret = setpriority(PRIO_PROCESS, static_cast<id_t>(me), orig_niceness);
+      CHECK(ret == 0);
+    }
+  });
+  return priorityMap;
+}
+
+// Many niceness values don't correspond to a priority. Find and return a close one.
+int Thread::NicenessToPriority(int niceness) {
+  int* pm = GetPriorityMap();
+  int* bound = std::lower_bound(pm + kMinThreadPriority,
+                                pm + kMaxThreadPriority + 1,
+                                niceness,
+                                std::greater() /* niceness decreases */);
+  if (bound > pm + kMaxThreadPriority) {
+    return kMaxThreadPriority;
+  }
+  if (bound == pm + kMinThreadPriority) {
+    return kMinThreadPriority;
+  }
+  // The closest is either bound[0] or bound[-1].
+  DCHECK_LE(bound[0], niceness);
+  DCHECK_GT(bound[-1], niceness);
+  return static_cast<int>((niceness - bound[0] > bound[-1] - niceness) ? bound - pm - 1 :
+                                                                         bound - pm);
+}
+
+int Thread::SetNativeNiceness(int niceness) {
+  int ret = setpriority(PRIO_PROCESS, static_cast<id_t>(GetTid()), niceness);
+  if (ret == 0) {
+    return 0;
+  }
+  LOG(WARNING) << "Cannot set niceness to " << niceness;
+  return errno;
+}
+
+int Thread::SetNativePriority(int new_priority) {
+  if (canSetPriority) {
+    return SetNativeNiceness(PriorityToNiceness(new_priority));
+  }
+  return ENODATA;  // No priority mapping available.
 }
 
 int Thread::GetNativePriority() const {
-  int priority = 0;
-  palette_status_t status = PaletteSchedGetPriority(GetTid(), &priority);
-  CHECK(status == PALETTE_STATUS_OK || status == PALETTE_STATUS_CHECK_ERRNO);
-  return priority;
+  errno = 0;
+  int niceness = getpriority(PRIO_PROCESS, static_cast<id_t>(GetTid()));
+  CHECK(niceness != -1 || errno == 0);
+  return NicenessToPriority(niceness);
 }
 
 void Thread::AbortInThis(const std::string& message) {

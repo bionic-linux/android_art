@@ -92,6 +92,13 @@
   /*                 up to max_size characters. */                                            \
   /* @return PALETTE_STATUS_OK if the call succeeded. */                                      \
   /*          PALETTE_STATUS_INVALID_ARGUMENT if the pointer is a nullptr or max_size is 0 */ \
-  M(PaletteDebugStoreGetString, char* result, size_t max_size)
+  M(PaletteDebugStoreGetString, char* result, size_t max_size)                                \
+                                                                                              \
+  /* Retrieve nice values corresponding to managed thread priorities. */                      \
+  /* The npriorities nice values corresponding to managed priorities starting at */           \
+  /* managed_start_priority are copied into the result array. To retrieve all priority */     \
+  /* mappings, use managed_start_priority = 1, npriorities = 10, and a result array with */   \
+  /* 10 int-size slots. */                                                                    \
+  M(PaletteGetPriorityMapping, int* result, int32_t managed_start_priority, size_t npriorities)
 
 #endif  // ART_LIBARTPALETTE_INCLUDE_PALETTE_PALETTE_METHOD_LIST_H_

@@ -153,3 +153,16 @@ palette_status_t PaletteDebugStoreGetString([[maybe_unused]] char* result,
                                             [[maybe_unused]] size_t max_size) {
   return PALETTE_STATUS_OK;
 }
+
+palette_status_t PaletteGetPriorityMapping(int* result,
+                                           int32_t managed_min_priority,
+                                           size_t npriorities) {
+  if (managed_min_priority < 1 || managed_min_priority + npriorities > 11) {
+    return PALETTE_STATUS_INVALID_ARGUMENT;
+  }
+  size_t ri = 0;
+  for (int32_t i = managed_min_priority; ri < npriorities && i <= 10; ++i, ++ri) {
+    result[ri] = 0;
+  }
+  return PALETTE_STATUS_OK;
+}

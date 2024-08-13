@@ -261,4 +261,12 @@ palette_status_t PaletteDebugStoreGetString(char* result, size_t max_size) {
   return m(result, max_size);
 }
 
+palette_status_t PaletteGetPriorityMapping(int* result,
+                                           int32_t managed_start_priority,
+                                           size_t npriorities) {
+  PaletteDebugStoreGetStringMethod m =
+      PaletteLoader::Instance().GetPaletteGetPriorityMappingMethod();
+  return m(result, managed_start_priority, npriorities);
+}
+
 }  // extern "C"

@@ -56,4 +56,5 @@ LIBARTPALETTE_4 { # introduced=36
   global:
     # --- VERSION 04 API ---
     PaletteDebugStoreGetString; # apex
+    PaletteGetPriorityMapping; # systemapi
 } LIBARTPALETTE_3;
