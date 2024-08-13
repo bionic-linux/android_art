@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e37d553a_a2f73971",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T15:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f7252e_8f12d8b1",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4739a909_515a2c6b",
@@ -65,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c911bc25_43686a9a",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T15:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4739a909_515a2c6b",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b497afbc_56dc05ea",
@@ -78,6 +126,30 @@
       "writtenOn": "2024-08-13T08:33:06Z",
       "side": 1,
       "message": "Maybe we can move this to line 199 and do it once for both verification cases. This would also make it future-proof for other tests. WDYT?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8dcc841_6101483e",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T15:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b497afbc_56dc05ea",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -111,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88463575_e083eb91",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T15:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e331fc42_9eb489df",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 49
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81875dba_83f12fd1",
@@ -124,6 +220,30 @@
       "writtenOn": "2024-08-13T08:33:06Z",
       "side": 1,
       "message": "nit: missing `\u003d` like in line 139.\n\nWe are also missing it in the fuzzer, but let\u0027s not change that file in this CL",
+      "range": {
+        "startLine": 159,
+        "startChar": 63,
+        "endLine": 159,
+        "endChar": 64
+      },
+      "revId": "c895d3307ee4f18927dc6cb78e257c3b72b75476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9674b659_07c0d42d",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T15:58:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81875dba_83f12fd1",
       "range": {
         "startLine": 159,
         "startChar": 63,
