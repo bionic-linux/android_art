@@ -16,6 +16,23 @@
       "message": "Is there a good reason to remove all these tests, rather than disabling the failing one? (For example, insufficient isolation from the system installed on the test device?)",
       "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753456cb_da8bc825",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-13T20:53:32Z",
+      "side": 1,
+      "message": "Create a topic with a CL that deletes the prebuilts in `prebuilts/runtime/mainline/platform/impl` that we should no longer need with this? That shows the impact better and ought to provide somewhat better testing.",
+      "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
