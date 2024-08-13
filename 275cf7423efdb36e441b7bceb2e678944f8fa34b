@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb361bd_dc2a4c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-08-13T10:07:04Z",
+      "side": 1,
+      "message": "Folks, could you please point me what tests failed?",
+      "revId": "275cf7423efdb36e441b7bceb2e678944f8fa34b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
