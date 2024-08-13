@@ -624,6 +624,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f0c621_4d1eaaae",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-13T16:18:40Z",
+      "side": 1,
+      "message": "I think it looks good now. If you prefer you could rename expected_success to should_pass_class_verification but I am fine either way.",
+      "parentUuid": "d9e1934f_2bafb4ac",
+      "range": {
+        "startLine": 198,
+        "startChar": 76,
+        "endLine": 198,
+        "endChar": 92
+      },
+      "revId": "ea2626051ac8a26d86e0726dad4295f69ec73ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "042d3711_b4c5afbf",

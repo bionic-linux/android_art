@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5ee814_80a1e2f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-13T16:18:40Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbdf63e0_08c8c954",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-13T16:18:40Z",
+      "side": 1,
+      "message": "Just for my understanding, If we have an API to unregister dex files then we don\u0027t need the explicit GC is it?\n\nMaybe rephrase this to Do a GC to unregister the dex files.",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 56
+      },
+      "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
