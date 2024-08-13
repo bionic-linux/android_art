@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91658d9a_0cbab35b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3190653
+      },
+      "writtenOn": "2024-08-13T14:39:39Z",
+      "side": 1,
+      "message": "Folks, I fixed HEquals/HNotEquals cases, added missed tests.\nPlease take a look one more time",
+      "revId": "6641c4277e5ece4078c8bc7a9fabf83ce05ef5fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
