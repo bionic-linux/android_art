@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0389b830_7b6fba7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-13T15:56:37Z",
+      "side": 1,
+      "message": "Is there a good reason to remove all these tests, rather than disabling the failing one? (For example, insufficient isolation from the system installed on the test device?)",
+      "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
