@@ -52,6 +52,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f56dba_291599c2",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T00:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19810820_46de26a6",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44bc6953_4462d950",
@@ -69,6 +93,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9b8155_a7a73c3b",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T00:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44bc6953_4462d950",
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b87184e_aad2b71e",
@@ -82,6 +124,30 @@
       "writtenOn": "2024-08-12T13:44:20Z",
       "side": 1,
       "message": "nit: In this case we are testing for class verification. The DEX file itself is valid, but we are failing class verification.\n\nMaybe rename to something like `passed_class_verification`?",
+      "range": {
+        "startLine": 159,
+        "startChar": 14,
+        "endLine": 159,
+        "endChar": 31
+      },
+      "revId": "1ca44c844f36d5ed4d7bd1f2e68952b88a04157e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f86e261f_bbfaa5cc",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-13T00:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b87184e_aad2b71e",
       "range": {
         "startLine": 159,
         "startChar": 14,
