@@ -22,6 +22,30 @@
       },
       "revId": "8b0bbe6e0a59b0935bbc8f4f5eed119ca8855ee9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c757612_adf84078",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4033,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-13T00:04:07Z",
+      "side": 1,
+      "message": "Done. I\u0027m keeping the function as it is expected to be needed in generational CMC implementation.",
+      "parentUuid": "ddf7c928_32d4763f",
+      "range": {
+        "startLine": 4030,
+        "startChar": 0,
+        "endLine": 4033,
+        "endChar": 1
+      },
+      "revId": "8b0bbe6e0a59b0935bbc8f4f5eed119ca8855ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
