@@ -710,7 +710,6 @@ class TestingTargetChecker:
       self._checker.check_dir(arch_dir)
 
     # Check ART test binaries.
-    self._checker.check_art_test_executable('art_artd_tests', MULTILIB_FIRST)
     self._checker.check_art_test_executable('art_cmdline_tests')
     self._checker.check_art_test_executable('art_compiler_tests')
     self._checker.check_art_test_executable('art_dex2oat_tests')
@@ -722,13 +721,10 @@ class TestingTargetChecker:
     self._checker.check_art_test_executable('art_imgdiag_tests')
     self._checker.check_art_test_executable('art_libartbase_tests')
     self._checker.check_art_test_executable('art_libartpalette_tests')
-    self._checker.check_art_test_executable('art_libartservice_tests', MULTILIB_FIRST)
-    self._checker.check_art_test_executable('art_libarttools_tests', MULTILIB_FIRST)
     self._checker.check_art_test_executable('art_libdexfile_support_tests')
     self._checker.check_art_test_executable('art_libdexfile_tests')
     self._checker.check_art_test_executable('art_libprofile_tests')
     self._checker.check_art_test_executable('art_oatdump_tests')
-    self._checker.check_art_test_executable('art_odrefresh_tests', MULTILIB_FIRST)
     self._checker.check_art_test_executable('art_profman_tests')
     self._checker.check_art_test_executable('art_runtime_tests')
     self._checker.check_art_test_executable('art_sigchain_tests')
