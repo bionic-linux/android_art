@@ -22,6 +22,30 @@
       },
       "revId": "2bf394c54aace9fd6aad14b7115d4dd0f12986c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "680fe23b_ed66fbf9",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-13T15:51:11Z",
+      "side": 1,
+      "message": "FYI this was to show Roman how we usually do reverts since it\u0027s easier to review. Let\u0027s have the conversation in his CL r.android.com/3218195 since he created the changes",
+      "parentUuid": "4071b794_3ededd91",
+      "range": {
+        "startLine": 1842,
+        "startChar": 4,
+        "endLine": 1845,
+        "endChar": 67
+      },
+      "revId": "2bf394c54aace9fd6aad14b7115d4dd0f12986c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
