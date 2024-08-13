@@ -16,6 +16,24 @@
       "message": "Folks, could you please point me what tests failed?",
       "revId": "275cf7423efdb36e441b7bceb2e678944f8fa34b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30acd457_b7fcd25e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-13T10:20:08Z",
+      "side": 1,
+      "message": "I thought the commit message would be sufficient. But if you need more...\n\n`dex2oat` crashed for some internal build with stack trace\n\n    [...]\n    native:    art/compiler/optimizing/instruction_simplifier.cc:1843\n    [...]\n    native:    art/compiler/optimizing/instruction_simplifier.cc:1913\n    [...]\n\nand abort message\n\n    F dex2oatd: instruction_simplifier.cc:1843 Unknown ConditionType Equal\n\nLooking at the code, it\u0027s obvious that we tried to simplify `HCompare(unsigned)+HEqual(., 0)` but the same crash would happen for `HCompare(unsigned)+HNotEqual(., 0)` with minor change in the abort message.\n\nTo fix this, I think we should replace\n\n    if (DataType::IsUnsignedType(left-\u003eAsCompare()-\u003eGetComparisonType())) {\n\nwith\n\n    if (DataType::IsUnsignedType(left-\u003eAsCompare()-\u003eGetComparisonType()) \u0026\u0026\n        !condition-\u003eIsEqual() \u0026\u0026\n        !condition-\u003eIsNotEqual()) {\n\nbut I\u0027d appreciate some additional tests for this case. (Both `HEqual` and `HNotEqual` can take the else branch because the signed/unsigned comparison type does not matter for equality.)",
+      "parentUuid": "1bb361bd_dc2a4c0f",
+      "revId": "275cf7423efdb36e441b7bceb2e678944f8fa34b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
