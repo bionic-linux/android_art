@@ -1169,6 +1169,19 @@ ObjPtr<mirror::Object> Monitor::MonitorEnter(Thread* self,
           // Contention.
           contention_count++;
           Runtime* runtime = Runtime::Current();
+          if (contention_count == 3) {
+            // We've waited for a little while. Check to make sure we do not have real-time
+            // priority before continuing; with real-time priority, we would probably just yield to
+            // ourselves. Do not do this earlier, since sched_getscheduler() takes a significant
+            // amount of time.
+            int scheduler = sched_getscheduler(0) & ~SCHED_RESET_ON_FORK;
+            if (scheduler == SCHED_FIFO || scheduler == SCHED_RR) {
+              // Retry once more after sleeping.
+              usleep(10);
+              contention_count += 1000;
+              continue;
+            }
+          }
           if (contention_count
               <= kExtraSpinIters + runtime->GetMaxSpinsBeforeThinLockInflation()) {
             // TODO: Consider switching the thread state to kWaitingForLockInflation when we are
