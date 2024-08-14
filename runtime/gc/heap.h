@@ -274,11 +274,10 @@ class Heap {
                !*backtrace_lock_,
                !process_state_update_lock_,
                !Roles::uninterruptible_) {
-    mirror::Object* obj = AllocObjectWithAllocator<kInstrumented>(self,
-                                                                  klass,
-                                                                  num_bytes,
-                                                                  GetCurrentNonMovingAllocator(),
-                                                                  pre_fence_visitor);
+    // Do not use LOS for nonmovable objects, so we can tell whether objects were allocated
+    // nonmovable.
+    mirror::Object* obj = AllocObjectWithAllocator<kInstrumented, /*kCheckLargeObject=*/false>(
+        self, klass, num_bytes, GetCurrentNonMovingAllocator(), pre_fence_visitor);
     // Java Heap Profiler check and sample allocation.
     if (GetHeapSampler().IsEnabled()) {
       JHPCheckNonTlabSampleAllocation(self, obj, num_bytes);
@@ -1111,8 +1110,6 @@ class Heap {
         collector_type == kCollectorTypeCMCBackground ||
         collector_type == kCollectorTypeHomogeneousSpaceCompact;
   }
-  bool ShouldAllocLargeObject(ObjPtr<mirror::Class> c, size_t byte_count) const
-      REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Checks whether we should garbage collect:
   ALWAYS_INLINE bool ShouldConcurrentGCForJava(size_t new_num_bytes_allocated);
