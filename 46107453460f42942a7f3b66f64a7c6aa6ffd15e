@@ -153,6 +153,30 @@
       },
       "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a01781_e4ccf944",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-14T17:26:31Z",
+      "side": 1,
+      "message": "Yes, I think it should be fine to amend this CL to revert the changes in this file (`dex2oat/Android.bp`) only, then submit the CL.\n\n(I\u0027ll work on bringing all relevant ART CTS tests to both ART MTS and MCTS in the future.)",
+      "parentUuid": "049f0a74_51b14f96",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
