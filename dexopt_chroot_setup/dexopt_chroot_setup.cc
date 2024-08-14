@@ -89,6 +89,8 @@ const NoDestructor<std::string> kOtaSlotFile(std::string(DexoptChrootSetup::PRE_
                                              "/ota_slot");
 const NoDestructor<std::string> kSnapshotMappedFile(
     std::string(DexoptChrootSetup::PRE_REBOOT_DEXOPT_DIR) + "/snapshot_mapped");
+const NoDestructor<std::string> kOverlayDir(std::string(DexoptChrootSetup::PRE_REBOOT_DEXOPT_DIR) +
+                                            "/overlay");
 constexpr mode_t kChrootDefaultMode = 0755;
 constexpr std::chrono::milliseconds kSnapshotCtlTimeout = std::chrono::seconds(60);
 constexpr std::array<const char*, 4> kExternalLibDirs = {
@@ -142,6 +144,18 @@ Result<void> Unmount(const std::string& target, bool logging = true) {
     return {};
   }
   return ErrnoErrorf("Failed to umount2 '{}'", target);
+}
+
+Result<void> BindMountDirect(const std::string& source, const std::string& target) {
+  if (mount(source.c_str(),
+            target.c_str(),
+            /*fs_type=*/nullptr,
+            MS_BIND,
+            /*data=*/nullptr) != 0) {
+    return ErrnoErrorf("Failed to bind-mount '{}' at '{}'", source, target);
+  }
+  LOG(INFO) << ART_FORMAT("Bind-mounted '{}' at '{}'", source, target);
+  return {};
 }
 
 Result<void> BindMount(const std::string& source, const std::string& target) {
@@ -402,6 +416,10 @@ ScopedAStatus DexoptChrootSetup::tearDown(bool in_allowConcurrent) {
   }
   std::lock_guard<std::mutex> lock(mu_, std::adopt_lock);
 
+  if (!WaitForProperty("dalvik.vm.tear-down-go", "true")) {
+    return NonFatal("WaitForProperty failed");
+  }
+
   OR_RETURN_NON_FATAL(TearDownChroot());
   return ScopedAStatus::ok();
 }
@@ -547,6 +565,15 @@ Result<void> DexoptChrootSetup::InitChroot() const {
   // environment, which is potentially problematic. If we start to see problems, we should consider
   // generating a more correct linker config in a more complex way.
   if (IsOtaUpdate(ota_slot)) {
+    OR_RETURN(CreateDir(*kOverlayDir));
+    // OR_RETURN(MountTmpfs(*kOverlayDir, "u:object_r:system_file:s0"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/upper"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/upper/system"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/upper/system_ext"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/work"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/work/system"));
+    OR_RETURN(CreateDir(*kOverlayDir + "/work/system_ext"));
+
     std::vector<const char*> existing_lib_dirs;
     std::copy_if(kExternalLibDirs.begin(),
                  kExternalLibDirs.end(),
@@ -557,18 +584,34 @@ Result<void> DexoptChrootSetup::InitChroot() const {
                     android::base::Join(kExternalLibDirs, "', '"));
     }
 
-    // We should bind-mount all existing lib dirs or none of them. Try the first one to decide what
-    // to do next.
-    Result<void> result = BindMount(existing_lib_dirs[0], PathInChroot(existing_lib_dirs[0]));
-    if (result.ok()) {
-      for (size_t i = 1; i < existing_lib_dirs.size(); i++) {
-        OR_RETURN(BindMount(existing_lib_dirs[i], PathInChroot(existing_lib_dirs[i])));
-      }
-    } else if (result.error().code() == EACCES) {
-      // We don't have the permission to do so on V. We'll have to use new libs.
-      LOG(WARNING) << result.error().message();
-    } else {
-      return result;
+    for (const char* lib_dir : existing_lib_dirs) {
+      OR_RETURN(CreateDir(*kOverlayDir + "/upper" + lib_dir));
+      OR_RETURN(BindMountDirect(lib_dir, *kOverlayDir + "/upper" + lib_dir));
+    }
+
+    if (mount("overlay",
+              PathInChroot("/system").c_str(),
+              "overlay",
+              0,
+              ART_FORMAT("lowerdir={}/system,upperdir={}/upper/system,workdir={}/work/system",
+                         CHROOT_DIR,
+                         *kOverlayDir,
+                         *kOverlayDir)
+                  .c_str()) != 0) {
+      return ErrnoErrorf("Failed to create overlay for /system");
+    }
+
+    if (mount("overlay",
+              PathInChroot("/system_ext").c_str(),
+              "overlay",
+              0,
+              ART_FORMAT(
+                  "lowerdir={}/system_ext,upperdir={}/upper/system_ext,workdir={}/work/system_ext",
+                  CHROOT_DIR,
+                  *kOverlayDir,
+                  *kOverlayDir)
+                  .c_str()) != 0) {
+      return ErrnoErrorf("Failed to create overlay for /system_ext");
     }
   }
 
@@ -578,11 +621,10 @@ Result<void> DexoptChrootSetup::InitChroot() const {
 Result<void> DexoptChrootSetup::TearDownChroot() const {
   // Make sure we have unmounted old platform library directories before running apexd, as apexd
   // expects new libraries.
-  std::vector<FstabEntry> entries = OR_RETURN(GetProcMountsDescendantsOfPath(CHROOT_DIR));
+  std::vector<FstabEntry> entries =
+      OR_RETURN(GetProcMountsDescendantsOfPath(*kOverlayDir + "/upper"));
   for (const FstabEntry entry : entries) {
-    if (ContainsElement(kExternalLibDirs, entry.mount_point.substr(strlen(CHROOT_DIR)))) {
-      OR_RETURN(Unmount(entry.mount_point));
-    }
+    OR_RETURN(Unmount(entry.mount_point));
   }
 
   std::vector<FstabEntry> apex_entries =
@@ -622,6 +664,11 @@ Result<void> DexoptChrootSetup::TearDownChroot() const {
   }
   if (removed > 0) {
     LOG(INFO) << ART_FORMAT("Removed '{}'", CHROOT_DIR);
+  }
+
+  std::filesystem::remove_all(*kOverlayDir, ec);
+  if (ec) {
+    return Errorf("Failed to remove dir '{}': {}", *kOverlayDir, ec.message());
   }
 
   if (!OR_RETURN(GetProcMountsDescendantsOfPath(*kBindMountTmpDir)).empty()) {
