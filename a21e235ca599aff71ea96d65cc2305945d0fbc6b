@@ -16,6 +16,103 @@
       "message": "This is ready for review but there shall be a conflict with https://android-review.googlesource.com/3218195 that I\u0027ll need to resolve.",
       "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2e7c07_589892ab",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-14T09:40:18Z",
+      "side": 1,
+      "message": "Suggestion: Something like `The instruction is inserted in the graph, if it\u0027s not a constant.`?\n\nWe are trying to say that the `InsertOppositeCondition` inserts the instruction.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 19
+      },
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3d67eb_9db1a5a4",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-14T09:40:18Z",
+      "side": 1,
+      "message": "nit: we have this comment already in the method declaration. I think we can remove it from here",
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238c97d7_b75b5490",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-14T09:40:18Z",
+      "side": 1,
+      "message": "Double space",
+      "range": {
+        "startLine": 909,
+        "startChar": 47,
+        "endLine": 909,
+        "endChar": 49
+      },
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debbfc96_c92e0907",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-14T09:40:18Z",
+      "side": 1,
+      "message": "This might bump into b/270660613. This is just moving the code so just FYI",
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb20c7d_fe2cf7fa",
+        "filename": "compiler/optimizing/instruction_simplifier_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-14T09:40:18Z",
+      "side": 1,
+      "message": "Oh, nice trick! I used to dump graphs to std::stringstream and then I was printing that.",
+      "revId": "a21e235ca599aff71ea96d65cc2305945d0fbc6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
