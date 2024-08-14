@@ -86,6 +86,30 @@
       },
       "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3ca211_bf136ec3",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-08-14T02:53:09Z",
+      "side": 1,
+      "message": "Ya makes sense. I think deleting only deletes the global reference and then we need a GC to free up all unreachable objects. Ya tuning the the number of times we GC is a good idea. Leaving it open for updating the comment.",
+      "parentUuid": "71163918_a18c4aa1",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 56
+      },
+      "revId": "1bb77d8138bc7a0ebb60b91605f9e0d65c7b3e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
