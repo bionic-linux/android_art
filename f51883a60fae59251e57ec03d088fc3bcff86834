@@ -252,6 +252,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6f99bd_2009da37",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-14T18:02:35Z",
+      "side": 1,
+      "message": "Makes sense. Thanks for explaining.",
+      "parentUuid": "9c894462_c2ac35cb",
+      "range": {
+        "startLine": 2572,
+        "startChar": 4,
+        "endLine": 2572,
+        "endChar": 13
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "567346ca_e86ff499",
