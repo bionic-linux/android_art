@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8fc9a343_d3467c92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T23:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b047df0_29813b50",
+      "range": {
+        "startLine": 26,
+        "startChar": 42,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4958e8fc_e4c9a5c6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c13304_df50a5ec",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T23:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d02c666e_fe007300",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 3
+      },
+      "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "436e4ca5_b9b38a38",
@@ -118,6 +166,30 @@
           ]
         }
       ],
+      "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0534a6f_6b724cfa",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T23:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436e4ca5_b9b38a38",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 68
+      },
       "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -163,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c349cd1_7afc1ab6",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T23:27:22Z",
+      "side": 1,
+      "message": "The thread may not yet have observed the suspension request, after becoming runnable again. IsSuspended checks the actual thread state. I expanded the comment, though not quite in accordance with the AI suggestion.",
+      "parentUuid": "51eafc07_eefe6090",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 49
+      },
+      "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4656553a_922a966b",
@@ -200,6 +296,30 @@
           ]
         }
       ],
+      "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dfa538_934b3d8c",
+        "filename": "runtime/thread_list.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T23:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4656553a_922a966b",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 54
+      },
       "revId": "146e61a5556a88ad7daad09156d2d93bb0db07fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
