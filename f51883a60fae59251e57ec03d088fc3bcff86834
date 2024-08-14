@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f54e7c5b_9ed815f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51c2e7a7_a9125bdf",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8a7fa5be_849a7cd5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-05T12:15:49Z",
       "side": 1,
       "message": "Seems reasonable to me. HeapExtensions isn\u0027t a part of the standard. This is introduced by us in the context of structural redefinition to support general object replacement (aosp/1077933). I am not sure where exactly these are being used but it seems reasonable to return an error for non-movable objects.",
+      "range": {
+        "startLine": 1919,
+        "startChar": 2,
+        "endLine": 1919,
+        "endChar": 85
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccfaaf0_2c1e94b5",
+        "filename": "openjdkjvmti/ti_heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b10485fd_e011e62d",
       "range": {
         "startLine": 1919,
         "startChar": 2,
@@ -115,6 +163,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb05c2d_320f82cd",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Done. Also moved the mutex acquisition to where it seemed to make more sense.",
+      "parentUuid": "4bfa43b0_a247128f",
+      "range": {
+        "startLine": 2390,
+        "startChar": 8,
+        "endLine": 2390,
+        "endChar": 55
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "265d7a8c_a22a1955",
@@ -156,6 +228,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c894462_c2ac35cb",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2572,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "I do think I want it this way for testing. We\u0027re currently at around 2% of that value for a normal boot. If we ever pass 1000, I want to know about it. And my impression is that nobody really pays attention to anything weaker than a crash. This does need to be a DCHECK; we don\u0027t wwant this to cause a production crash. If we introduce a test that makes this fail, we\u0027ll have to revisit. If this routinely approaches 1000 at some point, we need to fix the data structure; it would be taking too much space.",
+      "parentUuid": "265d7a8c_a22a1955",
+      "range": {
+        "startLine": 2572,
+        "startChar": 4,
+        "endLine": 2572,
+        "endChar": 13
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "567346ca_e86ff499",
@@ -179,6 +275,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ffbff54_8ed52849",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3764,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Good point. I think this evolved from something more complicated. Done.",
+      "parentUuid": "567346ca_e86ff499",
+      "range": {
+        "startLine": 3764,
+        "startChar": 24,
+        "endLine": 3764,
+        "endChar": 53
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d3e077c_ceb27df5",
@@ -192,6 +312,30 @@
       "writtenOn": "2024-08-07T19:44:04Z",
       "side": 1,
       "message": "Again, seems like we can avoid iterating over all the spaces.",
+      "range": {
+        "startLine": 3778,
+        "startChar": 24,
+        "endLine": 3778,
+        "endChar": 53
+      },
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ed8272_2ae95eb2",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3778,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3e077c_ceb27df5",
       "range": {
         "startLine": 3778,
         "startChar": 24,
@@ -239,6 +383,30 @@
           ]
         }
       ],
+      "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2376074_aa2675bf",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-14T00:57:43Z",
+      "side": 1,
+      "message": "Done, though it\u0027s a bit messy because we need to pass in a comparator. But probably still a win.\n\nI wouldn\u0027t expect us to move to 64-bit references soon. Real compressed references and a 4GB heap should work for a while, and are probably significantly cheaper. But it doesn\u0027t hurt to plan ahead.",
+      "parentUuid": "e0f37fe4_7407cf31",
+      "range": {
+        "startLine": 1790,
+        "startChar": 11,
+        "endLine": 1790,
+        "endChar": 19
+      },
       "revId": "f51883a60fae59251e57ec03d088fc3bcff86834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
