@@ -22,6 +22,30 @@
       },
       "revId": "936ada167f4e2a51b583aaa245dd3f88b4880eea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c134c4_266274fc",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-14T09:56:48Z",
+      "side": 0,
+      "message": "For `art_odrefresh_tests`, none, but the points in http://go/fixing-art-chroot-tests also apply to it (odrefresh communicates with the platform (`BOOTCLASSPATH` from `derive_classpath`, `/apex/apex-info-list.xml` from `apexd`, etc. and isn\u0027t really benefited from chroot isolation)",
+      "parentUuid": "1c1bc0f9_7c6a0fd2",
+      "range": {
+        "startLine": 366,
+        "startChar": 5,
+        "endLine": 366,
+        "endChar": 24
+      },
+      "revId": "936ada167f4e2a51b583aaa245dd3f88b4880eea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

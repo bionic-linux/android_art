@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "067b3cbf_a9f68e79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-14T09:56:48Z",
+      "side": 1,
+      "message": "Thanks for bringing this up. The decision was made based on the discussion in http://go/fixing-art-chroot-tests. TL;DR, the isolation provided by chroot tests mainly benefits runtime/compiler tests, but ART Service / odrefresh tests aren\u0027t really benefited from it.",
+      "parentUuid": "0389b830_7b6fba7f",
+      "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "753456cb_da8bc825",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-13T20:53:32Z",
       "side": 1,
       "message": "Create a topic with a CL that deletes the prebuilts in `prebuilts/runtime/mainline/platform/impl` that we should no longer need with this? That shows the impact better and ought to provide somewhat better testing.",
+      "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba8047a_4ba840d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-14T09:56:48Z",
+      "side": 1,
+      "message": "Unfortunately, we can\u0027t remove any of those dependencies. Please see the dependency graph in b/357802879#comment8 for why we still depend on them.",
+      "parentUuid": "753456cb_da8bc825",
       "revId": "e6dc42e8badaa5d9efcc26ba9903132bc7be90d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
