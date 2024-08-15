@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce33bca_8549836f",
+        "filename": "tools/buildbot-vm.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-15T15:38:43Z",
+      "side": 1,
+      "message": "I can\u0027t review this bit, so I\u0027m just rubber stamping it.",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "b457e398059972afd6987ecfd42784f41bc5400d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
