@@ -48,13 +48,8 @@ std::string GetDexFileName(const std::string& jar_name) {
 std::vector<std::string> GetLibCoreDexFileNames() {
   std::vector<std::string> result;
   const std::vector<std::string> modules = {
-      "core-oj",
-      "core-libart",
-      "okhttp",
-      "bouncycastle",
-      "apache-xml",
-      // TODO: We would like to enable core-icu4j and conscrypt in the future
-      // "core-icu4j",
+      "core-oj", "core-libart", "okhttp", "bouncycastle", "apache-xml", "core-icu4j",
+      // TODO: We would like to enable conscrypt in the future
       // "conscrypt",
   };
   result.reserve(modules.size());
