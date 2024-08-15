@@ -424,7 +424,7 @@ TEST_F(CodegenTest, NonMaterializedCondition) {
     entry->AddSuccessor(first_block);
     HIntConstant* constant0 = graph->GetIntConstant(0);
     HIntConstant* constant1 = graph->GetIntConstant(1);
-    HEqual* equal = MakeCondition<HEqual>(first_block, constant0, constant0);
+    HInstruction* equal = MakeCondition(first_block, kCondEQ, constant0, constant0);
     MakeIf(first_block, equal);
 
     HBasicBlock* then_block = new (GetAllocator()) HBasicBlock(graph);
@@ -491,7 +491,7 @@ TEST_F(CodegenTest, MaterializedCondition1) {
 
       HIntConstant* cst_lhs = graph->GetIntConstant(lhs[i]);
       HIntConstant* cst_rhs = graph->GetIntConstant(rhs[i]);
-      HInstruction* cmp_lt = MakeCondition<HLessThan>(code_block, cst_lhs, cst_rhs);
+      HInstruction* cmp_lt = MakeCondition(code_block, kCondLT, cst_lhs, cst_rhs);
       MakeReturn(code_block, cmp_lt);
 
       graph->BuildDominatorTree();
@@ -547,7 +547,7 @@ TEST_F(CodegenTest, MaterializedCondition2) {
 
       HIntConstant* cst_lhs = graph->GetIntConstant(lhs[i]);
       HIntConstant* cst_rhs = graph->GetIntConstant(rhs[i]);
-      HInstruction* cmp_lt = MakeCondition<HLessThan>(if_block, cst_lhs, cst_rhs);
+      HInstruction* cmp_lt = MakeCondition(if_block, kCondLT, cst_lhs, cst_rhs);
       // We insert a fake instruction to separate the HIf from the HLessThan
       // and force the materialization of the condition.
       HInstruction* force_materialization =
@@ -628,52 +628,42 @@ void CodegenTest::TestComparison(IfCondition condition,
     op2 = graph->GetLongConstant(j);
   }
 
-  HInstruction* comparison = nullptr;
   bool expected_result = false;
   const uint64_t x = i;
   const uint64_t y = j;
   switch (condition) {
     case kCondEQ:
-      comparison = MakeCondition<HEqual>(block, op1, op2);
       expected_result = (i == j);
       break;
     case kCondNE:
-      comparison = MakeCondition<HNotEqual>(block, op1, op2);
       expected_result = (i != j);
       break;
     case kCondLT:
-      comparison = MakeCondition<HLessThan>(block, op1, op2);
       expected_result = (i < j);
       break;
     case kCondLE:
-      comparison = MakeCondition<HLessThanOrEqual>(block, op1, op2);
       expected_result = (i <= j);
       break;
     case kCondGT:
-      comparison = MakeCondition<HGreaterThan>(block, op1, op2);
       expected_result = (i > j);
       break;
     case kCondGE:
-      comparison = MakeCondition<HGreaterThanOrEqual>(block, op1, op2);
       expected_result = (i >= j);
       break;
     case kCondB:
-      comparison = MakeCondition<HBelow>(block, op1, op2);
       expected_result = (x < y);
       break;
     case kCondBE:
-      comparison = MakeCondition<HBelowOrEqual>(block, op1, op2);
       expected_result = (x <= y);
       break;
     case kCondA:
-      comparison = MakeCondition<HAbove>(block, op1, op2);
       expected_result = (x > y);
       break;
     case kCondAE:
-      comparison = MakeCondition<HAboveOrEqual>(block, op1, op2);
       expected_result = (x >= y);
       break;
   }
+  HInstruction* comparison = MakeCondition(block, condition, op1, op2);
   MakeReturn(block, comparison);
 
   graph->BuildDominatorTree();
