@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77150793_1800f8f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1927237
+      },
+      "writtenOn": "2024-08-15T04:29:16Z",
+      "side": 1,
+      "message": "Hi Roland, this should be",
+      "parentUuid": "2dc7af75_45021c12",
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0af600ed_1b4e8746",
         "filename": "dex2oat/Android.bp",
         "patchSetId": 1
@@ -169,6 +187,30 @@
       "side": 1,
       "message": "Yes, I think it should be fine to amend this CL to revert the changes in this file (`dex2oat/Android.bp`) only, then submit the CL.\n\n(I\u0027ll work on bringing all relevant ART CTS tests to both ART MTS and MCTS in the future.)",
       "parentUuid": "049f0a74_51b14f96",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999fce90_0378b372",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1927237
+      },
+      "writtenOn": "2024-08-15T04:29:16Z",
+      "side": 1,
+      "message": "Hi Roland, I think I also need to add mts-art to dex2oat/Android.bp right? Thanks",
+      "parentUuid": "d0a01781_e4ccf944",
       "range": {
         "startLine": 572,
         "startChar": 4,
