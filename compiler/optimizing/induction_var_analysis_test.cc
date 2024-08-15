@@ -51,16 +51,13 @@ class InductionVarAnalysisTest : public OptimizingUnitTest {
   // Builds single for-loop at depth d.
   void BuildForLoop(int d, int n) {
     ASSERT_LT(d, n);
-    loop_preheader_[d] = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(loop_preheader_[d]);
-    loop_header_[d] = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(loop_header_[d]);
+    loop_preheader_[d] = AddNewBlock();
+    loop_header_[d] = AddNewBlock();
     loop_preheader_[d]->AddSuccessor(loop_header_[d]);
     if (d < (n - 1)) {
       BuildForLoop(d + 1, n);
     }
-    loop_body_[d] = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(loop_body_[d]);
+    loop_body_[d] = AddNewBlock();
     loop_body_[d]->AddSuccessor(loop_header_[d]);
     if (d < (n - 1)) {
       loop_header_[d]->AddSuccessor(loop_preheader_[d + 1]);
@@ -78,13 +75,10 @@ class InductionVarAnalysisTest : public OptimizingUnitTest {
     graph_->SetNumberOfVRegs(n + 3);
 
     // Build basic blocks with entry, nested loop, exit.
-    entry_ = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(entry_);
+    entry_ = AddNewBlock();
     BuildForLoop(0, n);
-    return_ = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(return_);
-    exit_ = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(exit_);
+    return_ = AddNewBlock();
+    exit_ = AddNewBlock();
     entry_->AddSuccessor(loop_preheader_[0]);
     loop_header_[0]->AddSuccessor(return_);
     return_->AddSuccessor(exit_);
@@ -107,25 +101,20 @@ class InductionVarAnalysisTest : public OptimizingUnitTest {
     for (int d = 0; d < n; d++) {
       MakeGoto(loop_preheader_[d]);
 
-      basic_[d] = MakePhi(loop_header_[d], {constant0_, /* placeholder */ constant0_});
+      std::tie(basic_[d], increment_[d]) =
+          MakeLinearLoopVar(loop_header_[d], loop_body_[d], constant0_, constant1_);
       HInstruction* compare = MakeCondition<HLessThan>(loop_header_[d], basic_[d], constant100_);
       MakeIf(loop_header_[d], compare);
 
-      increment_[d] = MakeBinOp<HAdd>(loop_body_[d], DataType::Type::kInt32, basic_[d], constant1_);
       MakeGoto(loop_body_[d]);
-
-      basic_[d]->ReplaceInput(increment_[d], 1u);  // Update back-edge input.
     }
   }
 
   // Builds if-statement at depth d.
   HPhi* BuildIf(int d, HBasicBlock** ifT, HBasicBlock** ifF) {
-    HBasicBlock* cond = new (GetAllocator()) HBasicBlock(graph_);
-    HBasicBlock* ifTrue = new (GetAllocator()) HBasicBlock(graph_);
-    HBasicBlock* ifFalse = new (GetAllocator()) HBasicBlock(graph_);
-    graph_->AddBlock(cond);
-    graph_->AddBlock(ifTrue);
-    graph_->AddBlock(ifFalse);
+    HBasicBlock* cond = AddNewBlock();
+    HBasicBlock* ifTrue = AddNewBlock();
+    HBasicBlock* ifFalse = AddNewBlock();
     // Conditional split.
     loop_header_[d]->ReplaceSuccessor(loop_body_[d], cond);
     cond->AddSuccessor(ifTrue);
