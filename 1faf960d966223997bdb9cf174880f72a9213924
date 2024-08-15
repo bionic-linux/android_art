@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06dee60_7e7a9a8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "I made it through PrepareForCompaction. I think some smallish algorithmic changes are still needed, so I\u0027ll wait for a response before continuing.",
+      "revId": "1faf960d966223997bdb9cf174880f72a9213924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

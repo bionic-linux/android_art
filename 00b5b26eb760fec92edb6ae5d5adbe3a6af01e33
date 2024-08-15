@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8707ee8d_ead705bb",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "Aside from the discussions about using the last such index instead, which can be deferred, I think it would make sense to add a simple loop to skip backwards over sparse chunks at the end. As is, this has the annoying property that if you have completely full pages followed by completely empty pages at the beginning, some of the completely empty ones will be labelled as black dense. That might not be rare.\n\nYou\u0027re also kind-of abusing find_if here by incrementing counters in the lambda. I don\u0027t think the spec technically guarantees that the lambda is invoked on array elements in order. I could think of some vectorization attempts that might break this. I would use an old-fashioned loop instead.",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 29
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5a626e_00c570fe",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "This is an std::map on classes. So you can just start at the correct place, right? Which might actuallly make the suggested fix below perform reasonably.",
+      "range": {
+        "startLine": 995,
+        "startChar": 5,
+        "endLine": 995,
+        "endChar": 84
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a1c469_c5bd766d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "This looks unsafe to me. A class that was previously \u003c black_dense_end_ might no longer be. How big are these maps? We may just have to restart after we find something spanning the current end?",
+      "range": {
+        "startLine": 1005,
+        "startChar": 4,
+        "endLine": 1005,
+        "endChar": 66
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

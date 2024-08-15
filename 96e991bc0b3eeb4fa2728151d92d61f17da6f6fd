@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d272bfb5_79079fab",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "Define what it means? E.g. \"A region which is more than kBlackDenseRegionThreshold percent live does not need to be compacted.\"",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 87
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32160242_0f2b816a",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "Aside: Is this still accurate?",
+      "range": {
+        "startLine": 123,
+        "startChar": 46,
+        "endLine": 124,
+        "endChar": 45
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cda608e_05019d30",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "Should be a DCHECK?",
+      "range": {
+        "startLine": 711,
+        "startChar": 2,
+        "endLine": 711,
+        "endChar": 10
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73ddbcf_d1c2e934",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 803,
+        "startChar": 29,
+        "endLine": 803,
+        "endChar": 35
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5e363c_a40d8c9d",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-15T22:30:35Z",
+      "side": 1,
+      "message": "This is presumably still OK?",
+      "range": {
+        "startLine": 757,
+        "startChar": 2,
+        "endLine": 758,
+        "endChar": 72
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
