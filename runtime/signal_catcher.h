@@ -49,7 +49,8 @@ class SignalCatcher {
   static void* Run(void* arg) NO_THREAD_SAFETY_ANALYSIS;
 
   void HandleSigUsr1();
-  void Output(const std::string& s);
+  // Exported due to b/359970258.
+  EXPORT void Output(const std::string& s);
   void SetHaltFlag(bool new_value) REQUIRES(!lock_);
   bool ShouldHalt() REQUIRES(!lock_);
   int WaitForSignal(Thread* self, SignalSet& signals) REQUIRES(!lock_);
