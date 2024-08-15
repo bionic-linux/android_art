@@ -51,6 +51,24 @@
       "parentUuid": "47aca664_9e023168",
       "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56aaedd5_64aa3d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1850729
+      },
+      "writtenOn": "2024-08-15T19:21:04Z",
+      "side": 1,
+      "message": "Talked with Cole offline, and this got fixed in aosp/3213511.",
+      "parentUuid": "2e5ab3b3_780d6c89",
+      "revId": "bf1e9ceb793911fd7dfbbad79ba48573b2e04904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
