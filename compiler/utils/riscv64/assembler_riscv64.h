@@ -637,6 +637,16 @@ class Riscv64Assembler final : public Assembler {
   void ZbbSextH(XRegister rd, XRegister rs1);
   void ZbbZextH(XRegister rd, XRegister rs1);
 
+  // "Zbs" Standard Extension, opcode = 0x13, or 0x33, funct3 and funct7 varies.
+  void Bclr(XRegister rd, XRegister rs1, XRegister rs2);
+  void Bclri(XRegister rd, XRegister rs1, int32_t shamt);
+  void Bext(XRegister rd, XRegister rs1, XRegister rs2);
+  void Bexti(XRegister rd, XRegister rs1, int32_t shamt);
+  void Binv(XRegister rd, XRegister rs1, XRegister rs2);
+  void Binvi(XRegister rd, XRegister rs1, int32_t shamt);
+  void Bset(XRegister rd, XRegister rs1, XRegister rs2);
+  void Bseti(XRegister rd, XRegister rs1, int32_t shamt);
+
   ////////////////////////////// RISC-V Vector Instructions  START ///////////////////////////////
   enum class LengthMultiplier : uint32_t {
     kM1Over8 = 0b101,
