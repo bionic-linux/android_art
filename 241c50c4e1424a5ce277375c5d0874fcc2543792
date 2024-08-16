@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3764d307_89e69d59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-16T21:40:23Z",
+      "side": 1,
+      "message": "I\u0027m still +2 as in \"this is a clear improvement\". But I\u0027m not sure whether this fully fixes the bug, or merely copies a 98% solution from CC. Please follow up.",
+      "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9092c645_860cc018",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-16T21:40:23Z",
+      "side": 1,
+      "message": "Presumably this was copied from CC, out of an abundance of caution? It makes no sense to me.\n\nCan we claim that Heap::allocation_stack_ is GUARDED_BY(Locks::heap_bitmap_lock_)? What protects us from calling Contains() on the stack while it\u0027s being updated?\n\nIt seems that we need this as an urgent bug fix. Could you upload another CL that clarifies mutual exclusion here, also for CC? If there is a data race, we should try to fix it.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 54
+      },
+      "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
