@@ -504,7 +504,7 @@ void WellKnownClasses::InitFieldsAndMethodsOnly(JNIEnv* env) {
       hs.NewHandle(FindSystemClass(class_linker, self, "Llibcore/util/EmptyArray;"));
   Handle<mirror::Class> o_a_h_d_c =
       hs.NewHandle(FindSystemClass(class_linker, self, "Lorg/apache/harmony/dalvik/ddmc/Chunk;"));
-  Handle<mirror::Class> o_a_h_d_d_ds =
+  Handle<mirror::Class>     o_a_h_d_d_ds =
       hs.NewHandle(FindSystemClass(class_linker, self, "Lorg/apache/harmony/dalvik/ddmc/DdmServer;"));
 
   ScopedAssertNoThreadSuspension sants(__FUNCTION__);
