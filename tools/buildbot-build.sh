@@ -110,14 +110,8 @@ fi
 
 implementation_libs=(
   "heapprofd_client_api"
-  "libandroid_runtime_lazy"
   "libartpalette-system"
   "libdebugstore_cxx" # Needed by "libartpalette-system".
-  "libbinder"
-  "libbinder_ndk"
-  "libcutils"
-  "libutils"
-  "libvndksupport"
 )
 
 # riscv64 has a newer version of libbinder which depends on libapexsupport.
@@ -142,7 +136,6 @@ apexes=(
   "com.android.i18n"
   "com.android.runtime"
   "com.android.tzdata"
-  "com.android.os.statsd"
 )
 
 make_command="build/soong/soong_ui.bash --make-mode $j_arg $extra_args $showcommands $common_targets"
@@ -181,6 +174,8 @@ if [[ $build_target == "yes" ]]; then
   make_command+=" deapexer"
   # Needed to generate the primary boot image for testing.
   make_command+=" generate-boot-image"
+  # Needed to generate protobuf files.
+  make_command+=" aprotoc"
   # Build/install the required APEXes.
   make_command+=" ${apexes[*]}"
   make_command+=" ${specific_targets}"
@@ -229,21 +224,63 @@ if [[ $build_target == "yes" ]]; then
     fi
   done
 
+  if [[ $TARGET_ARCH = arm* ]]; then
+    arch32=arm
+    arch64=arm64
+  elif [[ $TARGET_ARCH = riscv64 ]]; then
+    arch32=none # there is no 32-bit arch for RISC-V
+    arch64=riscv64
+  else
+    arch32=x86
+    arch64=x86_64
+  fi
+
+  # Construct a fake statsd apex from stubs.
+  statsd_root="$ANDROID_PRODUCT_OUT/apex/com.android.os.statsd"
+  statsd_stub_libs=(
+    "libstatspull"
+    "libstatssocket"
+  )
+
+  for so in ${statsd_stub_libs[@]}; do
+    if [ $arch32 != none ]; then
+      dir="$statsd_root/lib"
+      cmd="mkdir -p $dir && cp -p prebuilts/module_sdk/StatsD/current/$arch32/lib/${so}.so $dir/${so}.so"
+      msginfo "Executing" "$cmd"
+      eval "$cmd"
+    fi
+    if [ $arch64 != none ]; then
+      dir="$statsd_root/lib64"
+      cmd="mkdir -p $dir && cp -p prebuilts/module_sdk/StatsD/current/$arch64/lib/${so}.so $dir/${so}.so"
+      msginfo "Executing" "$cmd"
+      eval "$cmd"
+    fi
+  done
+
+  msginfo "Encoding" "$statsd_root/apex_manifest.pb"
+
+  aprotoc \
+    --encode=apex.proto.ApexManifest \
+    system/apex/proto/apex_manifest.proto \
+    > "$statsd_root/apex_manifest.pb" \
+    <<EOF
+name: "com.android.os.statsd"
+version: 990091000
+provideNativeLibs: "libstatspull.so"
+provideNativeLibs: "libstatssocket.so"
+EOF
+
+  rm -rf "$ANDROID_PRODUCT_OUT/system/apex/com.android.os.statsd"
+  mkdir -p "$ANDROID_PRODUCT_OUT/system/apex/com.android.os.statsd"
+  cp -r "$statsd_root" "$ANDROID_PRODUCT_OUT/system/apex"
+
+  apexes+=("com.android.os.statsd")
+
   # Replace stub libraries with implementation libraries: because we do chroot
   # testing, we need to install an implementation of the libraries (and cannot
   # rely on the one already installed on the device, if the device is post R and
   # has it).
   if [ -d prebuilts/runtime/mainline/platform/impl -a ! -d frameworks/base ]; then
-    if [[ $TARGET_ARCH = arm* ]]; then
-      arch32=arm
-      arch64=arm64
-    elif [[ $TARGET_ARCH = riscv64 ]]; then
-      arch32=none # there is no 32-bit arch for RISC-V
-      arch64=riscv64
-    else
-      arch32=x86
-      arch64=x86_64
-    fi
     for so in ${implementation_libs[@]}; do
       if [ -d "$ANDROID_PRODUCT_OUT/system/lib" -a $arch32 != none ]; then
         cmd="cp -p prebuilts/runtime/mainline/platform/impl/$arch32/${so}.so $ANDROID_PRODUCT_OUT/system/lib/${so}.so"
