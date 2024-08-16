@@ -1,0 +1,342 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9a56b5_5ca22d0e",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Suggestion: define this as a variable and give it a descriptive name. It can be used in line 1418",
+      "range": {
+        "startLine": 1405,
+        "startChar": 36,
+        "endLine": 1405,
+        "endChar": 69
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b339c95_c5f41d54",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "I am not too fond of having this variable exist for all `HInvokePolymorphic`. WDYT about appending the instruction here too? That way we can get rid of the class member.\n\nSimilarly with the code from 1418-1429",
+      "range": {
+        "startLine": 1916,
+        "startChar": 36,
+        "endLine": 1916,
+        "endChar": 53
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad249ff_c28e29bf",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 4100,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Can you add a comment like `// Don\u0027t emit intrinsic code for MethodHandleInvokeExact because ...`?",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06d76c6_c3c5c689",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 4116,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Nit: Move this one up to line 4110 so that we have `0, 1...invoke-\u003eGetNumberOfArguments()-1, invoke-\u003eGetNumberOfArguments()` in order",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee485791_7f97d032",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 4172,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "I think this and line 4176 can be `constexpr`",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81177174_df833f5a",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 40
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Can you explain the `hidden` aspect? From a quick glance this and `art_quick_invoke_polymorphic` are the same except the receiver is RSI/RAX on entry",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af879d20_fbd601e4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "constexpr? alternatively inline it in 2517",
+      "range": {
+        "startLine": 2488,
+        "startChar": 2,
+        "endLine": 2488,
+        "endChar": 14
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97953755_b970a13d",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 2492,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Reword suggestion:\n```We set `is_static` as true in `RememberForGcArgumentVisitor` since we use custom calling convention. The receiver (MethodHandle) object is not passed as a first argument, so shorty and arguments allocation looks as-if it was static.```\n\nHere you talk about, but this would be the same for `invoke` right?",
+      "range": {
+        "startLine": 2490,
+        "startChar": 0,
+        "endLine": 2492,
+        "endChar": 72
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3e1d78_ee222051",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 2523,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "nit: `()` not needed",
+      "range": {
+        "startLine": 2523,
+        "startChar": 24,
+        "endLine": 2523,
+        "endChar": 25
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7e780e_adb5f316",
+        "filename": "test/2277-methodhandle-invokeexact/info.txt",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Missing newline",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a83c20_607b1595",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "sytle: add $noinline$ to the tests",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d00463ff_967b355f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 30,
+                "endChar": 0
+              },
+              "replacement": "      $noinline$testNoArgsCalls();\n      $noinline$testMethodHandleFromOtherDex();\n"
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 31,
+                "startChar": 0,
+                "endLine": 32,
+                "endChar": 0
+              },
+              "replacement": "      $noinline$testWithArgs();\n"
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 35,
+                "endChar": 0
+              },
+              "replacement": "    private static void $noinline$testMethodHandleFromOtherDex() throws Throwable {\n"
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": "    private static void $noinline$testNoArgsCalls() throws Throwable {\n"
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 86,
+                "startChar": 0,
+                "endLine": 87,
+                "endChar": 0
+              },
+              "replacement": "    private static void $noinline$testWithArgs() throws Throwable {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb66bc6_98ce8c85",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "Not sure I understand this error. If we hit the fail, does it mean that the `mh.type() is (Optional)Object, but callsite is (Optional)V`? Or is that valid when we go into the catch?",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dafc6620_56a6618f",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "nit: `B.privateReturnInt` to have consistent style",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 46
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86da7da_9012845c",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T12:43:41Z",
+      "side": 1,
+      "message": "line too long, same below",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
