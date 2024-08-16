@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38fcb03b_5b500636",
+        "filename": "compiler/optimizing/gvn_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T15:54:18Z",
+      "side": 1,
+      "message": "If this is common enough, then maybe we can add a boolean parameter to `CreateWhileLoop` that would do the swap.",
+      "range": {
+        "startLine": 87,
+        "startChar": 37,
+        "endLine": 87,
+        "endChar": 79
+      },
+      "revId": "f2c2856080ff5f5e8343eb5875995ca4fc45e446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
