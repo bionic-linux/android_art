@@ -84,13 +84,6 @@
 #endif  // __NR_userfaultfd
 #endif  // __BIONIC__
 
-// See aosp/2996596 for where these values came from.
-#ifndef UFFDIO_COPY_MODE_MMAP_TRYLOCK
-#define UFFDIO_COPY_MODE_MMAP_TRYLOCK (static_cast<uint64_t>(1) << 63)
-#endif
-#ifndef UFFDIO_ZEROPAGE_MODE_MMAP_TRYLOCK
-#define UFFDIO_ZEROPAGE_MODE_MMAP_TRYLOCK (static_cast<uint64_t>(1) << 63)
-#endif
 #ifdef ART_TARGET_ANDROID
 namespace {
 
@@ -117,8 +110,6 @@ static bool HaveMremapDontunmap() {
     return false;
   }
 }
-
-static bool gUffdSupportsMmapTrylock = false;
 // We require MREMAP_DONTUNMAP functionality of the mremap syscall, which was
 // introduced in 5.13 kernel version. But it was backported to GKI kernels.
 static bool gHaveMremapDontunmap = IsKernelVersionAtLeast(5, 13) || HaveMremapDontunmap();
@@ -151,37 +142,6 @@ bool KernelSupportsUffd() {
       struct uffdio_api api = {.api = UFFD_API, .features = 0, .ioctls = 0};
       CHECK_EQ(ioctl(fd, UFFDIO_API, &api), 0) << "ioctl_userfaultfd : API:" << strerror(errno);
       gUffdFeatures = api.features;
-      // MMAP_TRYLOCK is available only in 5.10 and 5.15 GKI kernels. The higher
-      // versions will have per-vma locks. The lower ones don't support
-      // userfaultfd.
-      if (kIsTargetAndroid && !IsKernelVersionAtLeast(5, 16)) {
-        // Check if MMAP_TRYLOCK feature is supported
-        const size_t page_size = GetPageSizeSlow();
-        void* mem =
-            mmap(nullptr, page_size, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
-        CHECK_NE(mem, MAP_FAILED) << " errno: " << errno;
-
-        struct uffdio_zeropage uffd_zeropage;
-        uffd_zeropage.mode = UFFDIO_ZEROPAGE_MODE_MMAP_TRYLOCK;
-        uffd_zeropage.range.start = reinterpret_cast<uintptr_t>(mem);
-        uffd_zeropage.range.len = page_size;
-        uffd_zeropage.zeropage = 0;
-        // The ioctl will definitely fail as mem is not registered with uffd.
-        CHECK_EQ(ioctl(fd, UFFDIO_ZEROPAGE, &uffd_zeropage), -1);
-        // uffd ioctls return EINVAL for several reasons. We make sure with
-        // (proper alignment of 'mem' and 'len') that, before updating
-        // uffd_zeropage.zeropage (with error), it fails with EINVAL only if
-        // `trylock` isn't available.
-        if (uffd_zeropage.zeropage == 0 && errno == EINVAL) {
-          LOG(INFO) << "MMAP_TRYLOCK is not supported in uffd addr:" << mem
-                    << " page-size:" << page_size;
-        } else {
-          gUffdSupportsMmapTrylock = true;
-          LOG(INFO) << "MMAP_TRYLOCK is supported in uffd errno:" << errno << " addr:" << mem
-                    << " size:" << page_size;
-        }
-        munmap(mem, page_size);
-      }
       close(fd);
       // Minimum we need is sigbus feature for using userfaultfd.
       return (api.features & kUffdFeaturesForSigbus) == kUffdFeaturesForSigbus;
@@ -2004,7 +1964,7 @@ void MarkCompact::MapProcessedPages(uint8_t* to_space_start,
                                     Atomic<PageState>* state_arr,
                                     size_t arr_idx,
                                     size_t arr_len) {
-  CHECK(minor_fault_initialized_);
+  DCHECK(minor_fault_initialized_);
   DCHECK_LT(arr_idx, arr_len);
   DCHECK_ALIGNED_PARAM(to_space_start, gPageSize);
   // Claim all the contiguous pages, which are ready to be mapped, and then do
@@ -2097,128 +2057,61 @@ void MarkCompact::MapProcessedPages(uint8_t* to_space_start,
   }
 }
 
-template <uint32_t kYieldMax = 5, uint64_t kSleepUs = 10>
-static void BackOff(uint32_t i) {
-  // TODO: Consider adding x86 PAUSE and/or ARM YIELD here.
-  if (i <= kYieldMax) {
-    sched_yield();
-  } else {
-    // nanosleep is not in the async-signal-safe list, but bionic implements it
-    // with a pure system call, so it should be fine.
-    NanoSleep(kSleepUs * 1000 * (i - kYieldMax));
-  }
-}
-
-size_t MarkCompact::ZeropageIoctl(void* addr,
-                                  size_t length,
-                                  bool tolerate_eexist,
-                                  bool tolerate_enoent) {
-  int32_t backoff_count = -1;
-  int32_t max_backoff = 10;  // max native priority.
+void MarkCompact::ZeropageIoctl(void* addr,
+                                size_t length,
+                                bool tolerate_eexist,
+                                bool tolerate_enoent) {
   struct uffdio_zeropage uffd_zeropage;
   DCHECK(IsAlignedParam(addr, gPageSize));
   uffd_zeropage.range.start = reinterpret_cast<uintptr_t>(addr);
   uffd_zeropage.range.len = length;
-  uffd_zeropage.mode = gUffdSupportsMmapTrylock ? UFFDIO_ZEROPAGE_MODE_MMAP_TRYLOCK : 0;
-  while (true) {
-    uffd_zeropage.zeropage = 0;
+  uffd_zeropage.mode = 0;
+  while (length > 0) {
     int ret = ioctl(uffd_, UFFDIO_ZEROPAGE, &uffd_zeropage);
     if (ret == 0) {
       DCHECK_EQ(uffd_zeropage.zeropage, static_cast<ssize_t>(length));
-      return length;
+      break;
     } else if (errno == EAGAIN) {
-      if (uffd_zeropage.zeropage > 0) {
-        // Contention was observed after acquiring mmap_lock. But the first page
-        // is already done, which is what we care about.
-        DCHECK(IsAlignedParam(uffd_zeropage.zeropage, gPageSize));
-        DCHECK_GE(uffd_zeropage.zeropage, static_cast<ssize_t>(gPageSize));
-        return uffd_zeropage.zeropage;
-      } else if (uffd_zeropage.zeropage < 0) {
-        // mmap_read_trylock() failed due to contention. Back-off and retry.
-        DCHECK_EQ(uffd_zeropage.zeropage, -EAGAIN);
-        if (backoff_count == -1) {
-          int prio = Thread::Current()->GetNativePriority();
-          DCHECK(prio > 0 && prio <= 10) << prio;
-          max_backoff -= prio;
-          backoff_count = 0;
-        }
-        if (backoff_count < max_backoff) {
-          // Using 3 to align 'normal' priority threads with sleep.
-          BackOff</*kYieldMax=*/3, /*kSleepUs=*/1000>(backoff_count++);
-        } else {
-          uffd_zeropage.mode = 0;
-        }
-      }
-    } else if (tolerate_eexist && errno == EEXIST) {
-      // Ioctl returns the number of bytes it mapped. The page on which EEXIST occurred
-      // wouldn't be included in it.
-      return uffd_zeropage.zeropage > 0 ? uffd_zeropage.zeropage + gPageSize : gPageSize;
+      // Ioctl aborted due to mmap_lock contention. Adjust the values and try
+      // again.
+      DCHECK_GE(uffd_zeropage.zeropage, static_cast<ssize_t>(gPageSize));
+      length -= uffd_zeropage.zeropage;
+      uffd_zeropage.range.len = length;
+      uffd_zeropage.range.start += uffd_zeropage.zeropage;
     } else {
-      CHECK(tolerate_enoent && errno == ENOENT)
+      DCHECK_EQ(uffd_zeropage.zeropage, -errno);
+      CHECK((tolerate_enoent && errno == ENOENT) || (tolerate_eexist && errno == EEXIST))
           << "ioctl_userfaultfd: zeropage failed: " << strerror(errno) << ". addr:" << addr;
-      return 0;
+      break;
     }
   }
 }
 
-size_t MarkCompact::CopyIoctl(void* dst, void* buffer, size_t length, bool return_on_contention) {
-  int32_t backoff_count = -1;
-  int32_t max_backoff = 10;  // max native priority.
+void MarkCompact::CopyIoctl(void* dst, void* buffer, size_t length) {
   struct uffdio_copy uffd_copy;
-  uffd_copy.mode = gUffdSupportsMmapTrylock ? UFFDIO_COPY_MODE_MMAP_TRYLOCK : 0;
   uffd_copy.src = reinterpret_cast<uintptr_t>(buffer);
   uffd_copy.dst = reinterpret_cast<uintptr_t>(dst);
   uffd_copy.len = length;
-  uffd_copy.copy = 0;
-  while (true) {
+  uffd_copy.mode = 0;
+  while (length > 0) {
     int ret = ioctl(uffd_, UFFDIO_COPY, &uffd_copy);
     if (ret == 0) {
       DCHECK_EQ(uffd_copy.copy, static_cast<ssize_t>(length));
       break;
     } else if (errno == EAGAIN) {
-      // Contention observed.
-      DCHECK_NE(uffd_copy.copy, 0);
-      if (uffd_copy.copy > 0) {
-        // Contention was observed after acquiring mmap_lock.
-        DCHECK(IsAlignedParam(uffd_copy.copy, gPageSize));
-        DCHECK_GE(uffd_copy.copy, static_cast<ssize_t>(gPageSize));
-        break;
-      } else {
-        // mmap_read_trylock() failed due to contention.
-        DCHECK_EQ(uffd_copy.copy, -EAGAIN);
-        uffd_copy.copy = 0;
-        if (return_on_contention) {
-          break;
-        }
-      }
-      if (backoff_count == -1) {
-        int prio = Thread::Current()->GetNativePriority();
-        DCHECK(prio > 0 && prio <= 10) << prio;
-        max_backoff -= prio;
-        backoff_count = 0;
-      }
-      if (backoff_count < max_backoff) {
-        // Using 3 to align 'normal' priority threads with sleep.
-        BackOff</*kYieldMax=*/3, /*kSleepUs=*/1000>(backoff_count++);
-      } else {
-        uffd_copy.mode = 0;
-      }
-    } else if (errno == EEXIST) {
-      DCHECK_NE(uffd_copy.copy, 0);
-      if (uffd_copy.copy < 0) {
-        uffd_copy.copy = 0;
-      }
-      // Ioctl returns the number of bytes it mapped. The page on which EEXIST occurred
-      // wouldn't be included in it.
-      uffd_copy.copy += gPageSize;
-      break;
+      // Ioctl aborted due to mmap_lock contention. Adjust the values and try
+      // again.
+      DCHECK_GE(uffd_copy.copy, static_cast<ssize_t>(gPageSize));
+      length -= uffd_copy.copy;
+      uffd_copy.len = length;
+      uffd_copy.src += uffd_copy.copy;
+      uffd_copy.dst += uffd_copy.copy;
     } else {
       DCHECK_EQ(uffd_copy.copy, -errno);
       LOG(FATAL) << "ioctl_userfaultfd: copy failed: " << strerror(errno) << ". src:" << buffer
                  << " dst:" << dst;
     }
   }
-  return uffd_copy.copy;
 }
 
 template <int kMode, typename CompactionFn>
@@ -2241,7 +2134,7 @@ bool MarkCompact::DoPageCompactionWithStateChange(size_t page_idx,
     func();
     if (kMode == kCopyMode) {
       if (map_immediately) {
-        CopyIoctl(to_space_page, page, gPageSize, /*return_on_contention=*/false);
+        CopyIoctl(to_space_page, page, gPageSize);
         // Store is sufficient as no other thread could modify the status at this
         // point. Relaxed order is sufficient as the ioctl will act as a fence.
         moving_pages_status_[page_idx].store(static_cast<uint8_t>(PageState::kProcessedAndMapped),
@@ -2278,6 +2171,18 @@ bool MarkCompact::DoPageCompactionWithStateChange(size_t page_idx,
   }
 }
 
+static void BackOff(uint32_t i) {
+  static constexpr uint32_t kYieldMax = 5;
+  // TODO: Consider adding x86 PAUSE and/or ARM YIELD here.
+  if (i <= kYieldMax) {
+    sched_yield();
+  } else {
+    // nanosleep is not in the async-signal-safe list, but bionic implements it
+    // with a pure system call, so it should be fine.
+    NanoSleep(10000ull * (i - kYieldMax));
+  }
+}
+
 bool MarkCompact::FreeFromSpacePages(size_t cur_page_idx, int mode, size_t end_idx_for_mapping) {
   // Thanks to sliding compaction, bump-pointer allocations, and reverse
   // compaction (see CompactMovingSpace) the logic here is pretty simple: find
@@ -2288,7 +2193,8 @@ bool MarkCompact::FreeFromSpacePages(size_t cur_page_idx, int mode, size_t end_i
   // Find the to-space page up to which the corresponding from-space pages can be
   // freed.
   for (; idx > cur_page_idx; idx--) {
-    PageState state = GetMovingPageState(idx - 1);
+    PageState state = static_cast<PageState>(
+        static_cast<uint8_t>(moving_pages_status_[idx - 1].load(std::memory_order_acquire)));
     if (state == PageState::kMutatorProcessing) {
       // Some mutator is working on the page.
       break;
@@ -2387,41 +2293,43 @@ bool MarkCompact::FreeFromSpacePages(size_t cur_page_idx, int mode, size_t end_i
     // lower than the reclaim range.
     break;
   }
-  bool all_mapped = mode == kFallbackMode;
+  bool ret = mode == kFallbackMode;
   ssize_t size = last_reclaimed_page_ - reclaim_begin;
   if (size > kMinFromSpaceMadviseSize) {
     // Map all the pages in the range.
     if (mode == kCopyMode && cur_page_idx < end_idx_for_mapping) {
-      if (MapMovingSpacePages(cur_page_idx,
-                              end_idx_for_mapping,
-                              /*from_ioctl=*/false,
-                              /*return_on_contention=*/true) ==
-          end_idx_for_mapping - cur_page_idx) {
-        all_mapped = true;
+      size_t len = MapMovingSpacePages(cur_page_idx, end_idx_for_mapping);
+      // The pages that were not mapped by gc-thread have to be completed
+      // before we madvise them. So wait for their status to change to 'mapped'.
+      // The wait is expected to be short as the read state indicates that
+      // another thread is actively working on mapping the page.
+      for (size_t i = cur_page_idx + DivideByPageSize(len); i < end_idx_for_mapping; i++) {
+        PageState state = static_cast<PageState>(
+            static_cast<uint8_t>(moving_pages_status_[i].load(std::memory_order_relaxed)));
+        uint32_t backoff_count = 0;
+        while (state != PageState::kProcessedAndMapped) {
+          BackOff(backoff_count++);
+          state = static_cast<PageState>(
+              static_cast<uint8_t>(moving_pages_status_[i].load(std::memory_order_relaxed)));
+        }
       }
-    } else {
-      // This for the black-allocations pages so that madvise is not missed.
-      all_mapped = true;
+      ret = true;
     }
-    // If not all pages are mapped, then take it as a hint that mmap_lock is
-    // contended and hence don't madvise as that also needs the same lock.
-    if (all_mapped) {
-      // Retain a few pages for subsequent compactions.
-      const ssize_t gBufferPages = 4 * gPageSize;
-      DCHECK_LT(gBufferPages, kMinFromSpaceMadviseSize);
-      size -= gBufferPages;
-      uint8_t* addr = last_reclaimed_page_ - size;
-      int behavior = minor_fault_initialized_ ? MADV_REMOVE : MADV_DONTNEED;
-      CHECK_EQ(madvise(addr + from_space_slide_diff_, size, behavior), 0)
-          << "madvise of from-space failed: " << strerror(errno);
-      last_reclaimed_page_ = addr;
-      cur_reclaimable_page_ = addr;
-    }
+    // Retain a few pages for subsequent compactions.
+    const ssize_t gBufferPages = 4 * gPageSize;
+    DCHECK_LT(gBufferPages, kMinFromSpaceMadviseSize);
+    size -= gBufferPages;
+    uint8_t* addr = last_reclaimed_page_ - size;
+    int behavior = minor_fault_initialized_ ? MADV_REMOVE : MADV_DONTNEED;
+    CHECK_EQ(madvise(addr + from_space_slide_diff_, size, behavior), 0)
+        << "madvise of from-space failed: " << strerror(errno);
+    last_reclaimed_page_ = addr;
+    cur_reclaimable_page_ = addr;
   }
   CHECK_LE(reclaim_begin, last_reclaimable_page_);
   last_reclaimable_page_ = reclaim_begin;
   last_checked_reclaim_page_idx_ = idx;
-  return all_mapped;
+  return ret;
 }
 
 void MarkCompact::UpdateClassAfterObjMap() {
@@ -2544,10 +2452,9 @@ void MarkCompact::CompactMovingSpace(uint8_t* page) {
           CompactPage(first_obj, pre_compact_offset_moving_space_[idx], page, kMode == kCopyMode);
         });
     if (kMode == kCopyMode && (!success || page == reserve_page) && end_idx_for_mapping - idx > 1) {
-      // map the pages in the following address as they can't be mapped with the
-      // pages yet-to-be-compacted as their src-side pages won't be contiguous.
-      MapMovingSpacePages(
-          idx + 1, end_idx_for_mapping, /*from_fault=*/false, /*return_on_contention=*/true);
+      // map the pages in the following pages as they can't be mapped with
+      // the subsequent pages as their src-side pages won't be contiguous.
+      MapMovingSpacePages(idx + 1, end_idx_for_mapping);
     }
     if (FreeFromSpacePages(idx, kMode, end_idx_for_mapping)) {
       end_idx_for_mapping = idx;
@@ -2555,80 +2462,49 @@ void MarkCompact::CompactMovingSpace(uint8_t* page) {
   }
   // map one last time to finish anything left.
   if (kMode == kCopyMode && end_idx_for_mapping > 0) {
-    MapMovingSpacePages(
-        idx, end_idx_for_mapping, /*from_fault=*/false, /*return_on_contention=*/false);
+    MapMovingSpacePages(idx, end_idx_for_mapping);
   }
   DCHECK_EQ(to_space_end, bump_pointer_space_->Begin());
 }
 
-size_t MarkCompact::MapMovingSpacePages(size_t start_idx,
-                                        size_t arr_len,
-                                        bool from_fault,
-                                        bool return_on_contention) {
-  DCHECK_LT(start_idx, arr_len);
-  size_t arr_idx = start_idx;
-  bool wait_for_unmapped = false;
-  while (arr_idx < arr_len) {
-    size_t map_count = 0;
-    uint32_t cur_state = moving_pages_status_[arr_idx].load(std::memory_order_acquire);
-    // Find a contiguous range that can be mapped with single ioctl.
-    for (size_t i = arr_idx; i < arr_len; i++, map_count++) {
-      uint32_t s = moving_pages_status_[i].load(std::memory_order_acquire);
-      if (GetPageStateFromWord(s) != PageState::kProcessed) {
-        break;
-      }
-      DCHECK_EQ((cur_state & ~kPageStateMask) + (i - arr_idx) * gPageSize, s & ~kPageStateMask);
+size_t MarkCompact::MapMovingSpacePages(size_t arr_idx, size_t arr_len) {
+  // Claim all the contiguous pages, which are ready to be mapped, and then do
+  // so in a single ioctl. This helps avoid the overhead of invoking syscall
+  // several times and also maps the already-processed pages, avoiding
+  // unnecessary faults on them.
+  DCHECK_LT(arr_idx, arr_len);
+  uint32_t cur_state = moving_pages_status_[arr_idx].load(std::memory_order_relaxed);
+  if ((cur_state & kPageStateMask) != static_cast<uint8_t>(PageState::kProcessed)) {
+    return 0;
+  }
+  uint32_t from_space_offset = cur_state & ~kPageStateMask;
+  uint8_t* to_space_start = moving_space_begin_ + arr_idx * gPageSize;
+  uint8_t* from_space_start = from_space_begin_ + from_space_offset;
+  DCHECK_ALIGNED_PARAM(to_space_start, gPageSize);
+  DCHECK_ALIGNED_PARAM(from_space_start, gPageSize);
+  size_t length = 0;
+  for (size_t i = arr_idx; i < arr_len; length += gPageSize, from_space_offset += gPageSize, i++) {
+    uint8_t desired_state = static_cast<uint8_t>(PageState::kProcessedAndMapping);
+    cur_state = moving_pages_status_[i].load(std::memory_order_relaxed);
+    // We need to guarantee that we don't end up sucsessfully marking a later
+    // page 'mapping' and then fail to mark an earlier page. To guarantee that
+    // we use acq_rel order.
+    if ((cur_state & kPageStateMask) != static_cast<uint8_t>(PageState::kProcessed) ||
+        !moving_pages_status_[i].compare_exchange_strong(
+            cur_state, desired_state, std::memory_order_acq_rel)) {
+      break;
     }
-
-    if (map_count == 0) {
-      if (from_fault) {
-        bool mapped = GetPageStateFromWord(cur_state) == PageState::kProcessedAndMapped;
-        return mapped ? 1 : 0;
-      }
-      // Skip the pages that this thread cannot map.
-      for (; arr_idx < arr_len; arr_idx++) {
-        PageState s = GetMovingPageState(arr_idx);
-        if (s == PageState::kProcessed) {
-          break;
-        } else if (s != PageState::kProcessedAndMapped) {
-          wait_for_unmapped = true;
-        }
-      }
-    } else {
-      uint32_t from_space_offset = cur_state & ~kPageStateMask;
-      uint8_t* to_space_start = moving_space_begin_ + arr_idx * gPageSize;
-      uint8_t* from_space_start = from_space_begin_ + from_space_offset;
-      DCHECK_ALIGNED_PARAM(to_space_start, gPageSize);
-      DCHECK_ALIGNED_PARAM(from_space_start, gPageSize);
-      size_t mapped_len =
-          CopyIoctl(to_space_start, from_space_start, map_count * gPageSize, return_on_contention);
-      for (size_t l = 0; l < mapped_len; l += gPageSize, arr_idx++) {
-        // Store is sufficient as anyone storing is doing it with the same value.
-        moving_pages_status_[arr_idx].store(static_cast<uint8_t>(PageState::kProcessedAndMapped),
-                                            std::memory_order_release);
-      }
-      if (from_fault) {
-        return DivideByPageSize(mapped_len);
-      }
-      // We can return from COPY ioctl with a smaller length also if a page
-      // was found to be already mapped. But that doesn't count as contention.
-      if (return_on_contention && DivideByPageSize(mapped_len) < map_count && errno != EEXIST) {
-        return arr_idx - start_idx;
-      }
+    DCHECK_EQ(from_space_offset, cur_state & ~kPageStateMask);
+  }
+  if (length > 0) {
+    CopyIoctl(to_space_start, from_space_start, length);
+    for (size_t i = arr_idx; length > 0; length -= gPageSize, i++) {
+      // Store is sufficient as there are no other threads updating status of these pages.
+      moving_pages_status_[i].store(static_cast<uint8_t>(PageState::kProcessedAndMapped),
+                                    std::memory_order_release);
     }
   }
-  if (wait_for_unmapped) {
-    for (size_t i = start_idx; i < arr_len; i++) {
-      PageState s = GetMovingPageState(i);
-      DCHECK_GT(s, PageState::kProcessed);
-      uint32_t backoff_count = 0;
-      while (s != PageState::kProcessedAndMapped) {
-        BackOff(backoff_count++);
-        s = GetMovingPageState(i);
-      }
-    }
-  }
-  return arr_len - start_idx;
+  return length;
 }
 
 void MarkCompact::UpdateNonMovingPage(mirror::Object* first, uint8_t* page) {
@@ -3633,15 +3509,19 @@ void MarkCompact::ConcurrentlyProcessMovingPage(uint8_t* fault_page,
     size_t end_idx = page_idx + DivideByPageSize(end - fault_page);
     size_t length = 0;
     for (size_t idx = page_idx; idx < end_idx; idx++, length += gPageSize) {
-      uint32_t cur_state = moving_pages_status_[idx].load(std::memory_order_acquire);
-      if (cur_state != static_cast<uint8_t>(PageState::kUnprocessed)) {
-        DCHECK_EQ(cur_state, static_cast<uint8_t>(PageState::kProcessedAndMapped));
+      // We should never have a case where two workers are trying to install a
+      // zeropage in this range as we synchronize using moving_pages_status_[page_idx].
+      uint32_t expected_state = static_cast<uint8_t>(PageState::kUnprocessed);
+      if (!moving_pages_status_[idx].compare_exchange_strong(
+              expected_state,
+              static_cast<uint8_t>(PageState::kProcessedAndMapping),
+              std::memory_order_acq_rel)) {
+        DCHECK_GE(expected_state, static_cast<uint8_t>(PageState::kProcessedAndMapping));
         break;
       }
     }
     if (length > 0) {
-      length =
-          ZeropageIoctl(fault_page, length, /*tolerate_eexist=*/true, /*tolerate_enoent=*/true);
+      ZeropageIoctl(fault_page, length, /*tolerate_eexist=*/false, /*tolerate_enoent=*/true);
       for (size_t len = 0, idx = page_idx; len < length; idx++, len += gPageSize) {
         moving_pages_status_[idx].store(static_cast<uint8_t>(PageState::kProcessedAndMapped),
                                         std::memory_order_release);
@@ -3655,7 +3535,7 @@ void MarkCompact::ConcurrentlyProcessMovingPage(uint8_t* fault_page,
   uint32_t backoff_count = 0;
   PageState state;
   while (true) {
-    state = GetPageStateFromWord(raw_state);
+    state = static_cast<PageState>(static_cast<uint8_t>(raw_state));
     if (state == PageState::kProcessing || state == PageState::kMutatorProcessing ||
         state == PageState::kProcessingAndMapping || state == PageState::kProcessedAndMapping) {
       if (!use_uffd_sigbus_) {
@@ -3727,7 +3607,7 @@ void MarkCompact::ConcurrentlyProcessMovingPage(uint8_t* fault_page,
         moving_pages_status_[page_idx].store(static_cast<uint8_t>(PageState::kProcessedAndMapping),
                                              std::memory_order_release);
         if (kMode == kCopyMode) {
-          CopyIoctl(fault_page, buf, gPageSize, /*return_on_contention=*/false);
+          CopyIoctl(fault_page, buf, gPageSize);
           // Store is sufficient as no other thread modifies the status at this stage.
           moving_pages_status_[page_idx].store(static_cast<uint8_t>(PageState::kProcessedAndMapped),
                                                std::memory_order_release);
@@ -3737,16 +3617,13 @@ void MarkCompact::ConcurrentlyProcessMovingPage(uint8_t* fault_page,
           UNREACHABLE();
         }
       }
-      state = GetPageStateFromWord(raw_state);
+      state = static_cast<PageState>(static_cast<uint8_t>(raw_state));
       if (state == PageState::kProcessed) {
         size_t arr_len = moving_first_objs_count_ + black_page_count_;
         // The page is processed but not mapped. We should map it. The release
         // order used in MapMovingSpacePages will ensure that the increment to
         // moving_compaction_in_progress is done first.
-        if (MapMovingSpacePages(page_idx,
-                                arr_len,
-                                /*from_fault=*/true,
-                                /*return_on_contention=*/false) > 0) {
+        if (MapMovingSpacePages(page_idx, arr_len) >= gPageSize) {
           break;
         }
         raw_state = moving_pages_status_[page_idx].load(std::memory_order_acquire);
@@ -3770,16 +3647,19 @@ bool MarkCompact::MapUpdatedLinearAllocPages(uint8_t* start_page,
   uint8_t* end_page = start_page + length;
   while (start_page < end_page) {
     size_t map_len = 0;
-    // Find a contiguous range of pages that we can map in single ioctl.
-    for (Atomic<PageState>* cur_state = state;
-         map_len < length && cur_state->load(std::memory_order_acquire) == PageState::kProcessed;
+    // Claim a contiguous range of pages that we can map.
+    for (Atomic<PageState>* cur_state = state; map_len < length;
          map_len += gPageSize, cur_state++) {
-      // No body.
+      PageState expected_state = PageState::kProcessed;
+      if (!cur_state->compare_exchange_strong(
+              expected_state, PageState::kProcessedAndMapping, std::memory_order_acq_rel)) {
+        break;
+      }
     }
-
     if (map_len == 0) {
       if (single_ioctl) {
-        return state->load(std::memory_order_relaxed) == PageState::kProcessedAndMapped;
+        // Didn't map anything.
+        return false;
       }
       // Skip all the pages that this thread can't map.
       while (length > 0) {
@@ -3797,18 +3677,12 @@ bool MarkCompact::MapUpdatedLinearAllocPages(uint8_t* start_page,
         start_page += gPageSize;
       }
     } else {
-      map_len = CopyIoctl(start_page,
-                          start_shadow_page,
-                          map_len,
-                          /*return_on_contention=*/false);
-      DCHECK_NE(map_len, 0u);
+      CopyIoctl(start_page, start_shadow_page, map_len);
       if (use_uffd_sigbus_) {
         // Declare that the pages are ready to be accessed. Store is sufficient
-        // as any thread will be storing the same value.
+        // as no other thread can modify the status of this page at this point.
         for (size_t l = 0; l < map_len; l += gPageSize, state++) {
-          PageState s = state->load(std::memory_order_relaxed);
-          DCHECK(s == PageState::kProcessed || s == PageState::kProcessedAndMapped)
-              << "state:" << s;
+          DCHECK_EQ(state->load(std::memory_order_relaxed), PageState::kProcessedAndMapping);
           state->store(PageState::kProcessedAndMapped, std::memory_order_release);
         }
       } else {
