@@ -51,6 +51,7 @@
 #include "base/macros.h"
 #include "base/os.h"
 #include "base/stl_util.h"
+#include "base/utils.h"
 #include "exec_utils.h"
 #include "fstab/fstab.h"
 #include "tools/binder_utils.h"
@@ -142,6 +143,18 @@ Result<void> Unmount(const std::string& target, bool logging = true) {
     return {};
   }
   return ErrnoErrorf("Failed to umount2 '{}'", target);
+}
+
+Result<void> BindMountDirect(const std::string& source, const std::string& target) {
+  if (mount(source.c_str(),
+            target.c_str(),
+            /*fs_type=*/nullptr,
+            MS_BIND,
+            /*data=*/nullptr) != 0) {
+    return ErrnoErrorf("Failed to bind-mount '{}' at '{}'", source, target);
+  }
+  LOG(INFO) << ART_FORMAT("Bind-mounted '{}' at '{}'", source, target);
+  return {};
 }
 
 Result<void> BindMount(const std::string& source, const std::string& target) {
@@ -565,8 +578,69 @@ Result<void> DexoptChrootSetup::InitChroot() const {
         OR_RETURN(BindMount(existing_lib_dirs[i], PathInChroot(existing_lib_dirs[i])));
       }
     } else if (result.error().code() == EACCES) {
-      // We don't have the permission to do so on V. We'll have to use new libs.
+      // We don't have the permission to do so on V. Fall back to bind-mounting elsewhere.
       LOG(WARNING) << result.error().message();
+
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env")));
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env/system")));
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env/system_ext")));
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env/apex")));
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env/apex/com.android.art")));
+      OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env/apex/com.android.art/bin")));
+      OR_RETURN(BindMountDirect(PathInChroot("/apex/com.android.art/bin"),
+                                PathInChroot("/mnt/compat_env/apex/com.android.art/bin")));
+      for (const char* lib_dir : existing_lib_dirs) {
+        OR_RETURN(CreateDir(PathInChroot("/mnt/compat_env") + lib_dir));
+        OR_RETURN(BindMountDirect(lib_dir, PathInChroot("/mnt/compat_env") + lib_dir));
+      }
+
+      std::string art_linker_config_content;
+      if (!ReadFileToString(PathInChroot("/linkerconfig/com.android.art/ld.config.txt"),
+                            &art_linker_config_content)) {
+        return ErrnoErrorf("Failed to read ART linker config");
+      }
+
+      std::string compat_section;
+      bool is_in_art_section = false;
+
+      std::vector<std::string_view> art_linker_config_lines;
+      art::Split(art_linker_config_content, '\n', &art_linker_config_lines);
+      for (std::string_view line : art_linker_config_lines) {
+        if (!is_in_art_section && line == "[com.android.art]") {
+          is_in_art_section = true;
+        } else if (is_in_art_section && line.starts_with('[')) {
+          is_in_art_section = false;
+        }
+
+        if (is_in_art_section) {
+          if (line == "[com.android.art]") {
+            compat_section += "[com.android.art.compat]\n";
+          } else if (line == "namespace.system.search.paths = /system/${LIB}") {
+            compat_section += "namespace.system.search.paths = /mnt/compat_env/system/${LIB}\n";
+          } else if (line == "namespace.system.search.paths += /system_ext/${LIB}") {
+            compat_section +=
+                "namespace.system.search.paths += /mnt/compat_env/system_ext/${LIB}\n";
+          } else {
+            compat_section += line;
+            compat_section += '\n';
+          }
+        }
+      }
+
+      std::string global_linker_config_content;
+      if (!ReadFileToString(PathInChroot("/linkerconfig/ld.config.txt"),
+                            &global_linker_config_content)) {
+        return ErrnoErrorf("Failed to read global linker config");
+      }
+
+      if (!WriteStringToFile(
+              "dir.com.android.art.compat = /mnt/compat_env/apex/com.android.art/bin\n" +
+                  global_linker_config_content + compat_section,
+              PathInChroot("/linkerconfig/ld.config.txt"))) {
+        return ErrnoErrorf("Failed to write global linker config");
+      }
+
+      LOG(INFO) << "Patched " << PathInChroot("/linkerconfig/ld.config.txt");
     } else {
       return result;
     }
