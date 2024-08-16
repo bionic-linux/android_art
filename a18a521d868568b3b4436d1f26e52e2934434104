@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9709618e_1c9eb8cd",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-16T07:19:20Z",
+      "side": 0,
+      "message": "style: keep one per line",
+      "fixSuggestions": [
+        {
+          "fixId": "a62f9d6e_3ab2154f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+              "range": {
+                "startLine": 51,
+                "startChar": 0,
+                "endLine": 52,
+                "endChar": 0
+              },
+              "replacement": "      \"core-oj\",\n      \"core-libart\",\n      \"okhttp\",\n      \"bouncycastle\",\n      \"apache-xml\",\n      \"core-icu4j\",\n"
+            }
+          ]
+        }
+      ],
+      "revId": "a18a521d868568b3b4436d1f26e52e2934434104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
