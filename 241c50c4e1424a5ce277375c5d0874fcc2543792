@@ -63,6 +63,30 @@
       },
       "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24567bcd_20488042",
+        "filename": "runtime/gc/collector/mark_compact-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-16T22:11:33Z",
+      "side": 1,
+      "message": "Thanks. Frankly, the crash that I was observing on treehugger was due to absence of `marking_done_` check. But I agree, that we need to clarify the mutual exclusion here.",
+      "parentUuid": "6fbcff27_138867f6",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 54
+      },
+      "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
