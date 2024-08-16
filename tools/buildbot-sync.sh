@@ -40,7 +40,7 @@ fi
 
 (
   cd $ANDROID_PRODUCT_OUT
-  for dir in system/* linkerconfig data; do
+  for dir in system/* linkerconfig data apex/com.android.os.statsd; do
     [ -d $dir ] || continue
     if [ $dir == system/apex ]; then
       # We sync the APEXes later.
@@ -126,7 +126,6 @@ activate_apex com.android.i18n
 activate_apex com.android.runtime
 activate_apex com.android.tzdata
 activate_apex com.android.conscrypt
-activate_apex com.android.os.statsd
 
 # Generate primary boot images on device for testing.
 for b in {32,64}; do
