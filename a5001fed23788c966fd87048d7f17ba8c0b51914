@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afcd611_183b270d",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-17T18:08:01Z",
+      "side": 0,
+      "message": "Lokesh - Do you understand this comment? It made no sense to me, so I deleted it for now.",
+      "range": {
+        "startLine": 438,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 52
+      },
+      "revId": "a5001fed23788c966fd87048d7f17ba8c0b51914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
