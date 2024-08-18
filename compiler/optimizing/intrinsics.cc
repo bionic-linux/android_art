@@ -218,7 +218,7 @@ void IntrinsicVisitor::AssertNonMovableStringClass() {
   if (kIsDebugBuild) {
     ScopedObjectAccess soa(Thread::Current());
     ObjPtr<mirror::Class> string_class = GetClassRoot<mirror::String>();
-    CHECK(!art::Runtime::Current()->GetHeap()->IsMovableObject(string_class));
+    CHECK(!art::Runtime::Current()->GetHeap()->ObjectMayMove(string_class));
   }
 }
 
@@ -254,6 +254,7 @@ void InsertFpToIntegralIntrinsic(HInvokeStaticOrDirect* invoke, size_t input_ind
   HInvokeStaticOrDirect* new_input = new (allocator) HInvokeStaticOrDirect(
       allocator,
       /*number_of_arguments=*/ 1u,
+      /*number_of_out_vregs=*/ is_double ? 2u : 1u,
       converted_type,
       invoke->GetDexPc(),
       /*method_reference=*/ MethodReference(nullptr, dex::kDexNoIndex),

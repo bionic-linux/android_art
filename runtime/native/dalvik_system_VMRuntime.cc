@@ -116,11 +116,11 @@ static jobject VMRuntime_newNonMovableArray(JNIEnv* env, jobject, jclass javaEle
     return nullptr;
   }
   gc::AllocatorType allocator = runtime->GetHeap()->GetCurrentNonMovingAllocator();
-  ObjPtr<mirror::Array> result = mirror::Array::Alloc(soa.Self(),
-                                                      array_class,
-                                                      length,
-                                                      array_class->GetComponentSizeShift(),
-                                                      allocator);
+  // To keep these allocations distinguishable, do not fall back to LargeObjectsSpace:
+  ObjPtr<mirror::Array> result = mirror::Array::Alloc</* kIsInstrumented= */ true,
+                                                      /* kfillUsable= */ false,
+                                                      /* kCheckLargeObject= */ false>(
+      soa.Self(), array_class, length, array_class->GetComponentSizeShift(), allocator);
   return soa.AddLocalReference<jobject>(result);
 }
 
@@ -167,10 +167,11 @@ static jlong VMRuntime_addressOf(JNIEnv* env, jobject, jobject javaArray) {
     ThrowIllegalArgumentException("not a primitive array");
     return 0;
   }
-  if (Runtime::Current()->GetHeap()->IsMovableObject(array)) {
+  if (!Runtime::Current()->GetHeap()->IsNonMovable(array)) {
     ThrowRuntimeException("Trying to get address of movable array object");
     return 0;
   }
+  DCHECK(!Runtime::Current()->GetHeap()->ObjectMayMove(array));
   return reinterpret_cast<uintptr_t>(array->GetRawData(array->GetClass()->GetComponentSize(), 0));
 }
 
@@ -536,6 +537,11 @@ static jobject VMRuntime_getBaseApkOptimizationInfo(JNIEnv* env, [[maybe_unused]
   return env->NewObject(cls.get(), ctor, j_compiler_filter.get(), j_compilation_reason.get());
 }
 
+static jlong VMRuntime_getFullGcCount([[maybe_unused]] JNIEnv* env, [[maybe_unused]] jclass klass) {
+  metrics::ArtMetrics* metrics = GetMetrics();
+  return metrics->FullGcCount()->Value();
+}
+
 static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(VMRuntime, addressOf, "(Ljava/lang/Object;)J"),
   NATIVE_METHOD(VMRuntime, bootClassPath, "()Ljava/lang/String;"),
@@ -587,6 +593,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, isValidClassLoaderContext, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(VMRuntime, getBaseApkOptimizationInfo,
       "()Ldalvik/system/DexFile$OptimizationInfo;"),
+  NATIVE_METHOD(VMRuntime, getFullGcCount, "()J"),
 };
 
 void register_dalvik_system_VMRuntime(JNIEnv* env) {
