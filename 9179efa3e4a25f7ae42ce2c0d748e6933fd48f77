@@ -33,6 +33,52 @@
       "message": "Ok",
       "revId": "9179efa3e4a25f7ae42ce2c0d748e6933fd48f77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54087e13_eee8f0c2",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 43
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T10:43:09Z",
+      "side": 1,
+      "message": "Isn\u0027t this a DCHECK_EQ?",
+      "range": {
+        "startLine": 1444,
+        "startChar": 2,
+        "endLine": 1444,
+        "endChar": 16
+      },
+      "revId": "9179efa3e4a25f7ae42ce2c0d748e6933fd48f77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eea61ba_edfa3074",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 43
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T10:43:09Z",
+      "side": 1,
+      "message": "suggestion: add `the`",
+      "range": {
+        "startLine": 1975,
+        "startChar": 54,
+        "endLine": 1975,
+        "endChar": 55
+      },
+      "revId": "9179efa3e4a25f7ae42ce2c0d748e6933fd48f77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

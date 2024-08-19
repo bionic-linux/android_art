@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44e143d1_6fcbb113",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T10:43:09Z",
+      "side": 1,
+      "message": "Can\u0027t the work (which is now in lines 1420-1432 and 1438-1442) be done as part of `SetupInvokeArguments`? I think it fits better there since we are creating this to be the argument for the invoke",
+      "parentUuid": "d1fba0a6_5884aa3e",
+      "range": {
+        "startLine": 1916,
+        "startChar": 36,
+        "endLine": 1916,
+        "endChar": 53
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ad249ff_c28e29bf",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 40
@@ -329,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "896c29c7_6d333307",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 2492,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T10:43:09Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "0f33c21d_8417082b",
+      "range": {
+        "startLine": 2490,
+        "startChar": 0,
+        "endLine": 2492,
+        "endChar": 72
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f3e1d78_ee222051",
@@ -547,6 +595,24 @@
       "side": 1,
       "message": "`fail` here means \"we should not reach this line\". `mh`\u0027s target is `Optional::get` method, which returns `Object`. But on line 42 it is invoked as `mh.invokeExact(nonEmpty);` as if method\u0027s return type is `void`, which does not match `Optional::get`, which has return type. `invokeExact` has to throw \n`WrongMethodTypeException` here.",
       "parentUuid": "edb66bc6_98ce8c85",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebaaed16_4e21a6cd",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T10:43:09Z",
+      "side": 1,
+      "message": "But let\u0027s say we make a change, introduce a bug, and we reach it. The message we will get is `mh.type() is (Optional)Object, but callsite is (Optional)V`. But this isn\u0027t what happened if we hit the `fail`, right?\n\nIn my mind if I see `fail(\"mh.type() is (Optional)Object, but callsite is (Optional)V\");` I\u0027d think that `mh.type() is (Optional)Object, but callsite is (Optional)V` was the cause of the failure.\n\nMy point is that maybe we want to do something like ```fail(\"Unreachable: mh.type() and callsites should have different signatures (`(Optional)Object` and `(Optional)V` respectively) and trigger a `WrongMethodTypeException` ``` or something like that.",
+      "parentUuid": "c72dace2_c01e8816",
       "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
