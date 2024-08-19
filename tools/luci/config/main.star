@@ -233,9 +233,13 @@ def add_builder(name,
       product = "riscv64"
 
     dimensions = {"os": "Android" if mode == "target" else "Linux"}
-    if mode == "target" and not cc:
-      # userfault-GC configurations must be run on Pixel 6.
-      dimensions |= {"device_type": "oriole"}
+    if mode == "target":
+      if not cc:
+        # run userfault-GC on recent Android since it needs recent kernel features.
+        dimensions |= {"device_os": "A"}
+      else:
+        # run all other configurations on Android S since it is the oldest we support.
+        dimensions |= {"device_os": "S"}
 
     testrunner_args = ['--verbose', '--host'] if mode == 'host' else ['--target', '--verbose']
     testrunner_args += ['--debug'] if debug else ['--ndebug']
