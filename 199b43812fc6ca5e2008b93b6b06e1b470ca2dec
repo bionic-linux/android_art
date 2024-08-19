@@ -641,6 +641,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "057249e1_12fc4f9b",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-19T13:10:18Z",
+      "side": 1,
+      "message": "Renamed into `unreachable` to make it cleaner.\n\nThis is a junit idiom: go/java-testing/exceptions#legacy. Thought it would be easier that writing `assertThrows`.",
+      "parentUuid": "ebaaed16_4e21a6cd",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dafc6620_56a6618f",
