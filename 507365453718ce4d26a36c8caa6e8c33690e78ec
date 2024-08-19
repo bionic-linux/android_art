@@ -46,6 +46,30 @@
       },
       "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da75d867_3976c325",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-19T17:39:22Z",
+      "side": 1,
+      "message": "\"Pin\" means replacing it with a fixed version, which I suppose would be `B`, when that bump has happened.\n\nBut you\u0027re saying we have control of the devices and would naturally update this file whenever we flash new builds, then?",
+      "parentUuid": "d0a390d6_b1fa78f4",
+      "range": {
+        "startLine": 239,
+        "startChar": 36,
+        "endLine": 239,
+        "endChar": 39
+      },
+      "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
