@@ -679,6 +679,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "903f1c23_0c363de8",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-19T14:20:53Z",
+      "side": 1,
+      "message": "Changed message to \n```\nUnexpectedly reached this point, but shouldn\u0027t: mh.type() is (Optional)Object, but callsite is (Optional)V\n```",
+      "parentUuid": "e72e849f_dc2cbaf3",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dafc6620_56a6618f",
         "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
         "patchSetId": 40
