@@ -70,6 +70,30 @@
       },
       "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d943315b_aabe1ec5",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-08-19T17:42:11Z",
+      "side": 1,
+      "message": "Yes, if we flash the devices to `B` we also need to update this file.  However, we have to manually flash them, it will not happen on its own.  (and as long as `A` suffices for gc testing, and there is no other issue, I don\u0027t intend to update them to `B`)",
+      "parentUuid": "da75d867_3976c325",
+      "range": {
+        "startLine": 239,
+        "startChar": 36,
+        "endLine": 239,
+        "endChar": 39
+      },
+      "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
