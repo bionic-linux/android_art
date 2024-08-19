@@ -661,6 +661,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e72e849f_dc2cbaf3",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 40
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-19T13:34:14Z",
+      "side": 1,
+      "message": "To clarify, I am not talking about the try catch itself. We have other tests that do things like that e.g. https://cs.android.com/android/platform/superproject/main/+/main:art/test/958-methodhandle-stackframe/src-art/Main.java;l\u003d109-113;drc\u003d8671f589c914f6ec03a386fb610b93007bb07e8a. Taking that link as an example we have `Call to invoke unexpectedly succeeded` as the message. So if it arrives at the fail/unreachable line it will print `Call to invoke unexpectedly succeeded` since that\u0027s what happened.\n\nIn your case, if it arrives at fail/unreachable it will print the reason why it shouldn\u0027t have happened.",
+      "parentUuid": "057249e1_12fc4f9b",
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dafc6620_56a6618f",
         "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
         "patchSetId": 40
