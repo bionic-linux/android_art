@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82106133_c1e74703",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 40
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-19T12:39:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "44e143d1_6fcbb113",
+      "range": {
+        "startLine": 1916,
+        "startChar": 36,
+        "endLine": 1916,
+        "endChar": 53
+      },
+      "revId": "199b43812fc6ca5e2008b93b6b06e1b470ca2dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad249ff_c28e29bf",
