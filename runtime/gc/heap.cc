@@ -1106,9 +1106,7 @@ void Heap::GrowHeapOnJankPerceptibleSwitch() {
   MutexLock mu(Thread::Current(), process_state_update_lock_);
   size_t orig_target_footprint = target_footprint_.load(std::memory_order_relaxed);
   if (orig_target_footprint < min_foreground_target_footprint_) {
-    target_footprint_.compare_exchange_strong(orig_target_footprint,
-                                              min_foreground_target_footprint_,
-                                              std::memory_order_relaxed);
+    TryIncreaseTargetFootprint(min_foreground_target_footprint_);
   }
   if (IsGcConcurrent() && concurrent_start_bytes_ < min_foreground_concurrent_start_bytes_) {
     concurrent_start_bytes_ = min_foreground_concurrent_start_bytes_;
@@ -3734,6 +3732,24 @@ void Heap::SetIdealFootprint(size_t target_footprint) {
     target_footprint = GetMaxMemory();
   }
   target_footprint_.store(target_footprint, std::memory_order_relaxed);
+  ATraceIntegerValue("Target peak heap size (KB)", target_footprint / KB);
+}
+
+bool Heap::TryIncreaseTargetFootprint(size_t target) {
+  size_t orig_target_footprint;
+  while (true) {
+    orig_target_footprint = target_footprint_.load(std::memory_order_relaxed);
+    if (UNLIKELY(target <= orig_target_footprint)) {
+      return false;
+    }
+    if (target_footprint_.compare_exchange_weak(
+            orig_target_footprint, target, std::memory_order_relaxed)) {
+      break;
+    }
+  }
+  VlogHeapGrowth(orig_target_footprint, target, target - orig_target_footprint);
+  ATraceIntegerValue("Target peak heap size (KB)", target / KB);
+  return true;
 }
 
 bool Heap::IsMovableObject(ObjPtr<mirror::Object> obj) const {
@@ -3919,6 +3935,7 @@ void Heap::ClearGrowthLimit() {
   if (target_footprint_.load(std::memory_order_relaxed) == growth_limit_
       && growth_limit_ < capacity_) {
     target_footprint_.store(capacity_, std::memory_order_relaxed);
+    ATraceIntegerValue("Target peak heap size (KB)", capacity_ / KB);
     SetDefaultConcurrentStartBytes();
   }
   growth_limit_ = capacity_;
@@ -4729,6 +4746,7 @@ class Heap::ReduceTargetFootprintTask : public HeapTask {
       if (target_footprint > new_target_sz_) {
         if (heap->target_footprint_.CompareAndSetStrongRelaxed(target_footprint, new_target_sz_)) {
           heap->SetDefaultConcurrentStartBytesLocked();
+          ATraceIntegerValue("Target peak heap size (KB)", new_target_sz_ / KB);
         }
       }
     }
