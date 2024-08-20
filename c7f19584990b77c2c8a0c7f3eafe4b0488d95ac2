@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00200c6a_85bd8333",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-20T14:17:57Z",
+      "side": 1,
+      "message": "As Martin suggested on https://android-review.git.corp.google.com/c/platform/build/+/3232722, maybe also mention Bug 360150490 here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "c7f19584990b77c2c8a0c7f3eafe4b0488d95ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
