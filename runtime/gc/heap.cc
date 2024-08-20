@@ -3734,6 +3734,7 @@ void Heap::SetIdealFootprint(size_t target_footprint) {
     target_footprint = GetMaxMemory();
   }
   target_footprint_.store(target_footprint, std::memory_order_relaxed);
+  ATraceIntegerValue("Target peak heap size (KB)", target_footprint / KB);
 }
 
 bool Heap::IsMovableObject(ObjPtr<mirror::Object> obj) const {
