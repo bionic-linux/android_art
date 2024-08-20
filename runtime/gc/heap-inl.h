@@ -464,6 +464,7 @@ inline bool Heap::IsOutOfMemoryOnAllocation([[maybe_unused]] AllocatorType alloc
         if (target_footprint_.compare_exchange_weak(/*inout ref*/old_target, new_footprint,
                                                     std::memory_order_relaxed)) {
           VlogHeapGrowth(old_target, new_footprint, alloc_size);
+          ATraceIntegerValue("Target peak heap size (KB)", new_footprint / KB);
           return false;
         }  // else try again.
       } else {
