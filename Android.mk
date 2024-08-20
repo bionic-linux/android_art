@@ -247,31 +247,6 @@ endif
 # "include $(BUILD_...)".
 LOCAL_PATH := $(art_path)
 
-####################################################################################################
-# Fake packages to ensure generation of libopenjdkd when one builds with mm/mmm/mmma.
-#
-# The library is required for starting a runtime in debug mode, but libartd does not depend on it
-# (dependency cycle otherwise).
-#
-# Note: * As the package is phony to create a dependency the package name is irrelevant.
-#       * We make MULTILIB explicit to "both," just to state here that we want both libraries on
-#         64-bit systems, even if it is the default.
-
-# ART on the host.
-ifneq ($(HOST_OS),darwin)
-ifeq ($(ART_BUILD_HOST_DEBUG),true)
-include $(CLEAR_VARS)
-LOCAL_MODULE := art-libartd-libopenjdkd-host-dependency
-LOCAL_LICENSE_KINDS := SPDX-license-identifier-Apache-2.0
-LOCAL_LICENSE_CONDITIONS := notice
-LOCAL_NOTICE_FILE := $(LOCAL_PATH)/NOTICE
-LOCAL_MULTILIB := both
-LOCAL_REQUIRED_MODULES := libopenjdkd
-LOCAL_IS_HOST_MODULE := true
-include $(BUILD_PHONY_PACKAGE)
-endif
-endif # HOST_OS != darwin
-
 ########################################################################
 # "m build-art" for quick minimal build
 .PHONY: build-art
@@ -498,15 +473,25 @@ standalone-apex-files: deapexer \
 
 .PHONY: build-art-target-golem
 
+ART_TARGET_PLATFORM_LIBS := \
+  libcutils \
+  libprocessgroup \
+  libprocinfo \
+  libselinux \
+  libtombstoned_client \
+  libz \
+
 ART_TARGET_PLATFORM_DEPENDENCIES := \
   $(TARGET_OUT)/etc/public.libraries.txt \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libcutils.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/liblz4.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libprocessgroup.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libprocinfo.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libselinux.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libtombstoned_client.so \
-  $(TARGET_OUT_SHARED_LIBRARIES)/libz.so \
+  $(foreach lib,$(ART_TARGET_PLATFORM_LIBS), $(TARGET_OUT_SHARED_LIBRARIES)/$(lib).so)
+ifdef TARGET_2ND_ARCH
+ART_TARGET_PLATFORM_DEPENDENCIES += \
+  $(foreach lib,$(ART_TARGET_PLATFORM_LIBS), $(2ND_TARGET_OUT_SHARED_LIBRARIES)/$(lib).so)
+endif
+
+# Despite `liblz4` being included in the ART apex, Golem benchmarks need another one in /system/ .
+ART_TARGET_PLATFORM_DEPENDENCIES_GOLEM= \
+  $(TARGET_OUT_SHARED_LIBRARIES)/liblz4.so
 
 # Also include libartbenchmark, we always include it when running golem.
 # libstdc++ is needed when building for ART_TARGET_LINUX.
@@ -516,6 +501,7 @@ build-art-target-golem: $(RELEASE_ART_APEX) com.android.runtime $(CONSCRYPT_APEX
                         $(TARGET_OUT_EXECUTABLES)/art \
                         $(TARGET_OUT_EXECUTABLES)/dex2oat_wrapper \
                         $(ART_TARGET_PLATFORM_DEPENDENCIES) \
+                        $(ART_TARGET_PLATFORM_DEPENDENCIES_GOLEM) \
                         $(ART_TARGET_SHARED_LIBRARY_BENCHMARK) \
                         $(TARGET_OUT_SHARED_LIBRARIES)/libgolemtiagent.so \
                         standalone-apex-files
@@ -554,11 +540,14 @@ build-art-host-tests: build-art-host-gtests build-art-host-run-tests
 
 .PHONY: build-art-target-gtests build-art-target-run-tests build-art-target-tests
 
-build-art-target-gtests: build-art-target $(ART_TEST_TARGET_GTEST_DEPENDENCIES)
+build-art-target-gtests: build-art-target \
+                         $(ART_TEST_TARGET_GTEST_DEPENDENCIES) \
+                         $(ART_TARGET_PLATFORM_DEPENDENCIES)
 
 build-art-target-run-tests: build-art-target \
                             $(TEST_ART_RUN_TEST_DEPENDENCIES) \
                             $(ART_TEST_TARGET_RUN_TEST_DEPENDENCIES) \
+                            $(ART_TARGET_PLATFORM_DEPENDENCIES) \
                             art-run-test-target-data
 
 build-art-target-tests: build-art-target-gtests build-art-target-run-tests

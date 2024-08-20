@@ -120,6 +120,11 @@ implementation_libs=(
   "libvndksupport"
 )
 
+# riscv64 has a newer version of libbinder which depends on libapexsupport.
+if [[ $TARGET_ARCH = "riscv64" ]]; then
+    implementation_libs+=("libapexsupport") # Needed by "libbinder".
+fi
+
 if [ -d frameworks/base ]; then
   # In full manifest branches, build the implementation libraries from source
   # instead of using prebuilts.
@@ -176,8 +181,6 @@ if [[ $build_target == "yes" ]]; then
   make_command+=" deapexer"
   # Needed to generate the primary boot image for testing.
   make_command+=" generate-boot-image"
-  # Data file needed by the `ArtExecTest.SetTaskProfiles` test.
-  make_command+=" task_profiles.json"
   # Build/install the required APEXes.
   make_command+=" ${apexes[*]}"
   make_command+=" ${specific_targets}"
