@@ -131,6 +131,8 @@ static constexpr bool kUseRosAlloc = true;
 // If true, use thread-local allocation stack.
 static constexpr bool kUseThreadLocalAllocationStack = true;
 
+const char* TRACE_TARGET_PEAK_HEAP_SIZE = "Target peak heap size (KB)";
+
 class Heap {
  public:
   // How much we grow the TLAB if we can do it.
@@ -476,6 +478,8 @@ class Heap {
   // Set target ideal heap utilization ratio, implements
   // dalvik.system.VMRuntime.setTargetHeapUtilization.
   void SetTargetHeapUtilization(float target);
+
+  void TryIncreaseTargetFootprint(size_t target);
 
   // For the alloc space, sets the maximum number of bytes that the heap is allowed to allocate
   // from the system. Doesn't allow the space to exceed its growth limit.

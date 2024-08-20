@@ -22,6 +22,7 @@
 #include "allocation_listener.h"
 #include "base/quasi_atomic.h"
 #include "base/time_utils.h"
+#include "base/systrace.h"
 #include "gc/accounting/atomic_stack.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/allocation_record.h"
@@ -446,29 +447,25 @@ inline bool Heap::IsOutOfMemoryOnAllocation([[maybe_unused]] AllocatorType alloc
                                             size_t alloc_size,
                                             bool grow) {
   size_t old_target = target_footprint_.load(std::memory_order_relaxed);
-  while (true) {
-    size_t old_allocated = num_bytes_allocated_.load(std::memory_order_relaxed);
-    size_t new_footprint = old_allocated + alloc_size;
-    // Tests against heap limits are inherently approximate, since multiple allocations may
-    // race, and this is not atomic with the allocation.
-    if (UNLIKELY(new_footprint <= old_target)) {
-      return false;
-    } else if (UNLIKELY(new_footprint > growth_limit_)) {
-      return true;
-    }
-    // We are between target_footprint_ and growth_limit_ .
-    if (IsGcConcurrent()) {
-      return false;
-    } else {
-      if (grow) {
-        if (target_footprint_.compare_exchange_weak(/*inout ref*/old_target, new_footprint,
-                                                    std::memory_order_relaxed)) {
-          VlogHeapGrowth(old_target, new_footprint, alloc_size);
-          return false;
-        }  // else try again.
-      } else {
-        return true;
+  size_t old_allocated = num_bytes_allocated_.load(std::memory_order_relaxed);
+  size_t new_footprint = old_allocated + alloc_size;
+  // Tests against heap limits are inherently approximate, since multiple allocations may
+  // race, and this is not atomic with the allocation.
+  if (UNLIKELY(new_footprint <= old_target)) {
+    return false;
+  } else if (UNLIKELY(new_footprint > growth_limit_)) {
+    return true;
+  }
+  // We are between target_footprint_ and growth_limit_ .
+  if (IsGcConcurrent()) {
+    return false;
+  } else {
+    if (grow) {
+      if (TryIncreaseTargetFootprint(new_footprint)) {
+        return false;
       }
+    } else {
+      return true;
     }
   }
 }
