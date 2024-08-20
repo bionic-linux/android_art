@@ -477,6 +477,10 @@ class Heap {
   // dalvik.system.VMRuntime.setTargetHeapUtilization.
   void SetTargetHeapUtilization(float target);
 
+  // Attempts to increase target footprint to the provided target value
+  // returns true if it was succesfull, false otherwise.
+  bool TryIncreaseTargetFootprint(size_t target);
+
   // For the alloc space, sets the maximum number of bytes that the heap is allowed to allocate
   // from the system. Doesn't allow the space to exceed its growth limit.
   // Set while we hold gc_complete_lock or collector_type_running_ != kCollectorTypeNone.
