@@ -103,6 +103,7 @@ cc_defaults {
     ],
     shared_libs: [
         "libbase",
+        "libartpalette",
     ],
 }
 

@@ -22,6 +22,7 @@
 #include "allocation_listener.h"
 #include "base/quasi_atomic.h"
 #include "base/time_utils.h"
+#include "base/systrace.h"
 #include "gc/accounting/atomic_stack.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/allocation_record.h"
@@ -464,6 +465,7 @@ inline bool Heap::IsOutOfMemoryOnAllocation([[maybe_unused]] AllocatorType alloc
         if (target_footprint_.compare_exchange_weak(/*inout ref*/old_target, new_footprint,
                                                     std::memory_order_relaxed)) {
           VlogHeapGrowth(old_target, new_footprint, alloc_size);
+          ATraceIntegerValue("Target peak heap size (KB)", new_footprint / KB);
           return false;
         }  // else try again.
       } else {
