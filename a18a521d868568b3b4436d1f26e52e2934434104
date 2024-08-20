@@ -34,6 +34,24 @@
       ],
       "revId": "a18a521d868568b3b4436d1f26e52e2934434104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97e0f98_a4303b23",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-08-20T14:04:28Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9709618e_1c9eb8cd",
+      "revId": "a18a521d868568b3b4436d1f26e52e2934434104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
