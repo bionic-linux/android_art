@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80ac6c0_485a5c4a",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-21T20:20:28Z",
+      "side": 1,
+      "message": "Why not just use one list for these right away?",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 42
+      },
+      "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
