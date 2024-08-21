@@ -16,6 +16,29 @@
       "message": "+Hans since lokesh is OOO",
       "revId": "59a6a100f45049881ee31230641894e093f4dbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c111fd8_7900531c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3737,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-21T00:16:46Z",
+      "side": 1,
+      "message": "This is the peak heap size (i.e. heap size just before we actually reclaim memory) that we aim for. I would use a description like \"Target peak heap size (KB)\". The actual heap size at which we trigger a new GC during normal operation is concurrent_start_bytes_ . But I would go with the target_footprint_ .",
+      "range": {
+        "startLine": 3737,
+        "startChar": 2,
+        "endLine": 3737,
+        "endChar": 67
+      },
+      "revId": "59a6a100f45049881ee31230641894e093f4dbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
