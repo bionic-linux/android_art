@@ -178,6 +178,24 @@
       "parentUuid": "86fc8e4b_48629834",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838646e4_e25e8010",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-21T13:02:46Z",
+      "side": 1,
+      "message": "If we don\u0027t find the package in step #3, PackageManager would need to return an incomplete snapshot, wouldn\u0027t it? `UnfilteredSnapshot.getPackageStates` clearly says it returns _all_ packages on the device, so if that happens it\u0027s plain buggy.\n\nSo I\u0027m still unconvinced about that, but I reckon another variant of step #3 and #4 is if a system package gets updated, or conversely an update is uninstalled. In such cases the APK path for the package can change between the read-only partition and the update on the data partition, can\u0027t it? Then we could indeed get into the situation you described. We\u0027d need an API that returns the paths in both partitions, but I suppose the list of splits is only for the version in use.\n\nIf that argument is correct then my suggestion won\u0027t work (without more PackageManager APIs). I\u0027ll leave this unresolved to let you confirm, but if so it\u0027s fine as-is.",
+      "parentUuid": "a24906bf_dcb636e5",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
