@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346a7bc5_b286d888",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Unnecessary cast.",
+      "range": {
+        "startLine": 1401,
+        "startChar": 6,
+        "endLine": 1401,
+        "endChar": 30
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f553369_2c7ba7a7",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Why not `invoke-\u003eAsInvokePolymorphic()-\u003eCanTargetInvokeVirtual()`?",
+      "range": {
+        "startLine": 1912,
+        "startChar": 31,
+        "endLine": 1912,
+        "endChar": 64
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502ff03f_788a244b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Isn\u0027t RDI already marked as clobbered in the fast-path? So why not clobber it in the slow-path as well by passing this argument in RDI instead of RAX?",
+      "range": {
+        "startLine": 162,
+        "startChar": 24,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1f046c_6c86b687",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4115,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "We could allocate this to `calling_convention.GetMethodLocation()` (RDI) to avoid the move in the slow-path. (This would require allocating an extra temp instead but the number of allocated registers would be the same because RDI is already marked as a temp below.) OTOH, this could be detrimental to loops that use the fast-path with a loop-invariant `MethodHandle` as the register allocator would have to move the value to RDI on every iteration, effectively having the move in the fast-path instead.",
+      "range": {
+        "startLine": 4115,
+        "startChar": 24,
+        "endLine": 4115,
+        "endChar": 52
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9867a23b_f417af4e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Store this in a local variable. (Out of loop and reused below.)",
+      "range": {
+        "startLine": 4117,
+        "startChar": 27,
+        "endLine": 4117,
+        "endChar": 57
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dafd4097_32b84235",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "If we clobber an input register, we also need to explicitly mark it as temp, otherwise the register allocator treats it as preserved and it may be wrongly reused for subsequent instructions. This could be detrimental to some loops, similar to what\u0027s explained in the comment at line 4115.\n\nTherefore I\u0027d prefer to remove this TODO.",
+      "range": {
+        "startLine": 4124,
+        "startChar": 24,
+        "endLine": 4124,
+        "endChar": 66
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efff29d0_2d04ca5e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4131,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "If `IntrinsicLocationsBuilderX86_64` didn\u0027t create intrinsic locations, `IntrinsicLocationsBuilderX86_64` shall not be called. This can be either removed or changed to a `DCHECK()`.",
+      "range": {
+        "startLine": 4131,
+        "startChar": 2,
+        "endLine": 4131,
+        "endChar": 64
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9ea98e_891edd62",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4159,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Too many verbs.",
+      "range": {
+        "startLine": 4159,
+        "startChar": 23,
+        "endLine": 4159,
+        "endChar": 44
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137c2042_74acb2a8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Is this check needed? Is it possible to construct a `MethodHandle` with `MethodHandle::Kind::kInvokeVirtual` and static or private method?",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a98c30_6056ac10",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "This comment seems misplaced (related to usage of this function, not to the information it provides - the API) and slightly misleading (arbitrary integers can cause the same issues as FP numbers).\n\nI don\u0027t think we need the comment in any caller, so I\u0027d say we can simply remove it.",
+      "range": {
+        "startLine": 4935,
+        "startChar": 2,
+        "endLine": 4936,
+        "endChar": 70
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed96081_f117a542",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 47
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "The \"hidden arguments\" for invoke-interface and direct calls to @CriticalNative are never used in the fast cases (no IMT conflict, native implementation already registered), so I\u0027m not sure we should call this \"hidden\" as it implies more similarity than there is. But I don\u0027t have a better name right now, so it\u0027s OK to keep.\n\nThis is also mildly related to the fact that we can pass the argument in RDI (see comment in the new intrinsic slow path) and not use the \"hidden argument register\" RAX.\n\nMaybe it would make sense to shift the arguments to `art_quick_invoke_polymorphic` by one to avoid the unused argument and we would not need a new entrypoint at all. But that would be best done is a separate change. Creating a parent for this change would be perfect but doing it as a cleanup later is OK.",
+      "range": {
+        "startLine": 1980,
+        "startChar": 50,
+        "endLine": 1980,
+        "endChar": 56
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1db653f3_2f38c5c3",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 47
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Missing exception handling. (Same in the old `art_quick_invoke_polymorphic`.)",
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469ba72d_d0f1022a",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "This function appears to do a significant amount of work. But so does the `artInvokePolymorphic()`. Therefore I guess this should not really slow down the non-virtual `invokeExact` cases, right?",
+      "range": {
+        "startLine": 2467,
+        "startChar": 20,
+        "endLine": 2467,
+        "endChar": 58
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04cc2ab_50024d80",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Dead code. (Though one could argue that it prevents misuse below. So, keep it if you want.)",
+      "range": {
+        "startLine": 2500,
+        "startChar": 2,
+        "endLine": 2500,
+        "endChar": 25
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b6ee4a_1e630089",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2538,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "`Get()`",
+      "range": {
+        "startLine": 2538,
+        "startChar": 51,
+        "endLine": 2538,
+        "endChar": 80
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a244077_47cf176d",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2552,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this `Handle\u003c\u003e`. The `raw_receiver` is known to be a `mirror::MethodHandle*`, so it should be either directly typed as such, or `down_cast\u003c\u003e` when creating the `receiver_handle`.",
+      "range": {
+        "startLine": 2551,
+        "startChar": 2,
+        "endLine": 2552,
+        "endChar": 70
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd780f17_db768118",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2553,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Why do we resolve the method if we know it\u0027s going to be `WellKnownClasses::java_lang_invoke_MethodHandle_invokeExact`?",
+      "range": {
+        "startLine": 2553,
+        "startChar": 2,
+        "endLine": 2553,
+        "endChar": 61
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1cd0813_5f399231",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 47
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "Nit: Delete blank line.",
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5c7655_d807209e",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 47
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-21T15:11:40Z",
+      "side": 1,
+      "message": "The `long sum(...)` methods with odd number of arguments are unused.",
+      "range": {
+        "startLine": 346,
+        "startChar": 15,
+        "endLine": 346,
+        "endChar": 48
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
