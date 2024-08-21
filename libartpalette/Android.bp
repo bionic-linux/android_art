@@ -112,6 +112,21 @@ art_cc_library {
     ],
 }
 
+art_cc_library {
+    name: "libartpalette_fake",
+    srcs: ["system/palette_fake.cc"],
+    export_include_dirs: ["include"],
+    header_libs: [
+        "jni_headers",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+    ],
+    compile_multilib: "both",
+    visibility: ["//visibility:private"],
+}
+
 art_cc_defaults {
     name: "art_libartpalette_tests_defaults",
     srcs: ["apex/palette_test.cc"],
@@ -122,7 +137,7 @@ art_cc_defaults {
     },
 }
 
-// Version of ART gtest `art_libartpalette_tests` bundled with the ART APEX on target.
+// Version of ART gtest `art_libartpalette_tests` for host.
 // TODO(b/192274705): Remove this module when the migration to standalone ART gtests is complete.
 art_cc_test {
     name: "art_libartpalette_tests",
@@ -131,6 +146,7 @@ art_cc_test {
         "art_libartpalette_tests_defaults",
     ],
     host_supported: true,
+    device_supported: false,
 }
 
 // Standalone version of ART gtest `art_libartpalette_tests`, not bundled with the ART APEX on
