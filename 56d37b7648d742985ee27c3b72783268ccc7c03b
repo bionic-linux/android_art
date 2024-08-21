@@ -39,6 +39,30 @@
       },
       "revId": "56d37b7648d742985ee27c3b72783268ccc7c03b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b07ff9_75154e2b",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-21T13:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f033630_97dd694b",
+      "range": {
+        "startLine": 535,
+        "startChar": 59,
+        "endLine": 535,
+        "endChar": 64
+      },
+      "revId": "56d37b7648d742985ee27c3b72783268ccc7c03b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

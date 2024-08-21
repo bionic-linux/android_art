@@ -196,6 +196,24 @@
       "parentUuid": "a24906bf_dcb636e5",
       "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8803f1_8bac5aaa",
+        "filename": "libartservice/service/java/com/android/server/art/DexUseManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-21T13:42:26Z",
+      "side": 1,
+      "message": "\u003e another variant of step #3 and #4 is if a system package gets updated, or conversely an update is uninstalled. In such cases the APK path for the package can change between the read-only partition and the update on the data partition, can\u0027t it?\n\nWhat you said is exactly a concrete example of what I meant by \"we cannot find the apk in the snapshot provided by the package manager\".\n\nAnother example could be that, one day, package manager may have a new feature that allows the user to \"hide\" a pre-installed package as if there is no such package and \"unhide\" it later.\n\nThe API doc only says \"returns a map of all PackageStates on the device\", while I\u0027m not confident that \"all PackageStates\" \u003d\u003d \"all apks\".",
+      "parentUuid": "838646e4_e25e8010",
+      "revId": "76f1d0c6c490b6fe5a88cd9eff0b01a1142cae54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
