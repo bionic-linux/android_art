@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf6eb00_d7054931",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-21T15:47:56Z",
+      "side": 1,
+      "message": "typo: `352721437`?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4871d7a8_d53aa4b5",
+        "filename": "build/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-21T15:47:56Z",
+      "side": 1,
+      "message": "nit: full stop at the end",
+      "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64921bb1_a06a8e5c",
+        "filename": "build/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-21T15:47:56Z",
+      "side": 1,
+      "message": "nit: This is already in `art/build` so it could be named `conscrypt-fuzzer` to keep it in line with `conscrypt-host`. I don\u0027t have strong opinions either way.",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 35
+      },
+      "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a30da2_ef9f95e7",
+        "filename": "build/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-21T15:47:56Z",
+      "side": 1,
+      "message": "Do we need these ones? Maybe Jiakai knows",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 27
+      },
+      "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
