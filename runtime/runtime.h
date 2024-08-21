@@ -1132,6 +1132,8 @@ class Runtime {
     }
   }
 
+  bool AreMetricsInitialized() { return metrics_reporter_.get(); }
+
  private:
   static void InitPlatformSignalHandlers();
 

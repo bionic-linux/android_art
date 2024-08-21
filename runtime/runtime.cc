@@ -2112,7 +2112,12 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // Class-roots are setup, we can now finish initializing the JniIdManager.
   GetJniIdManager()->Init(self);
 
-  InitMetrics();
+  // Initialize metrics only for the Zygote process or
+  // if explicitly enabled via command line argument
+  if (is_zygote_ || gFlags.MetricsForceEnable.GetValue()) {
+    LOG(INFO) << "Initializing metrics";
+    InitMetrics();
+  }
 
   // Runtime initialization is largely done now.
   // We load plugins first since that can modify the runtime state slightly.
