@@ -16,6 +16,29 @@
       "message": "Code LGTM, with the comment addressed",
       "revId": "c52b853b9e10df8242aa8950872fbe03098ef5df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed5e414_a771de9e",
+        "filename": "build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T09:34:09Z",
+      "side": 1,
+      "message": "Something like \"conscrypt-for-fuzzer\" sounds a little bit better, as this library itself is not a fuzzer.",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 27
+      },
+      "revId": "c52b853b9e10df8242aa8950872fbe03098ef5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

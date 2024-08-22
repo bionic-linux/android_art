@@ -151,6 +151,30 @@
       },
       "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b214d1_ea356285",
+        "filename": "build/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T09:34:09Z",
+      "side": 1,
+      "message": "SDK and system modules are for compiling .java source files, so you don\u0027t need them for compiling a class jar into a dex jar. It\u0027s good to make them \"none\".",
+      "parentUuid": "b3a30da2_ef9f95e7",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 27
+      },
+      "revId": "464de2ad23a6d9cb255e8976fdd81930349094a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
