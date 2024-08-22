@@ -150,6 +150,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a0935b_1eb9e581",
+        "filename": "test/567-checker-builder-intrinsics/src/TestRotate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-22T16:35:29Z",
+      "side": 1,
+      "message": "The `$noinline` tests check the code generation of this intrinsic but the inlined tests check the compile-time `Evaluate`ations (constant folding computes the result).\n\nConstants (instead of parameters) come to `Rol` (which is a `BinaryOperation`) after `Inliner`.\n\nThat\u0027s why I have added such tests.",
+      "parentUuid": "b1a2954a_62f48ce8",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c560d70_736ba721",
@@ -186,6 +210,24 @@
       "writtenOn": "2024-08-22T13:47:10Z",
       "side": 1,
       "message": "Line too long",
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9918587b_fd6efa06",
+        "filename": "test/567-checker-builder-intrinsics/src/TestRotate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-22T16:35:29Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll fix. What is the limit for the tests written in Java?",
+      "parentUuid": "c6bd4dbd_87f419e0",
       "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
