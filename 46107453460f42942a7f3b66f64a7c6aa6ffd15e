@@ -219,6 +219,30 @@
       },
       "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e6180f_49f15f62",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-22T18:28:27Z",
+      "side": 1,
+      "message": "Right, `art_standalone_dex2oat_cts_tests` should be both in `mts-art` and `mcts-art`. Thanks!",
+      "parentUuid": "999fce90_0378b372",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 16
+      },
+      "revId": "46107453460f42942a7f3b66f64a7c6aa6ffd15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
