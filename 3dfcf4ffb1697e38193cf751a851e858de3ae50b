@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e402394a_db694b81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T15:27:20Z",
+      "side": 1,
+      "message": "That\u0027s a good question. In short, it\u0027s the intended behavior.\n\nThe filtering on the default packages is mainly for bg-dexopt, to avoid storage thrashing. During bg-dexopt, if we applied a condition on the filtering, to make it only filter out inactive apps when the storage is not low, then the following thrashing would occur:\n\n1. The free space is low.\n2. A bg-dexopt run downgrades inactive apps and hence makes the free space not low.\n3. Another bg-dexopt run dexopts all apps, including inactive apps, which makes the free space low again.\n4. 2 and 3 can repeat forever and the outcome will never converge.\n\nTherefore, when implementing app downgrading, unconditionally filtering out inactive apps for bg-dexopt is a must.\n\nThis has a potential side-effect for OTA, but the side-effect is almost none in practice:\n\n1. For existing apps, they have been dexopted before (on the first boot or later), so they will be in the \"verify\" state after an OTA even if they are not dexopted again (note that vdex files are usable across OTAs).\n\n2. For apps newly introduced by the OTA, so the last active time will be the package scanning time (https://android.googlesource.com/platform/frameworks/base/+/cbd2f357c2186c00232e393b986ac3585c6222f5), so they will be dexopted on the first boot after the OTA.\n\nWe could limit the filtering to bg-dexopt, but given that there is almost no side-effect on OTA, we chose avoid an extra condition for simplicity.",
+      "parentUuid": "a016cf3c_71820849",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17d0647f_982c5357",
