@@ -63,6 +63,30 @@
       },
       "revId": "c52b853b9e10df8242aa8950872fbe03098ef5df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721f9ec5_361f87b6",
+        "filename": "build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T10:01:26Z",
+      "side": 1,
+      "message": "Alright, I don\u0027t have a strong opinion. Feel free to ignore me.",
+      "parentUuid": "77f92d4b_653d0181",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 27
+      },
+      "revId": "c52b853b9e10df8242aa8950872fbe03098ef5df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
