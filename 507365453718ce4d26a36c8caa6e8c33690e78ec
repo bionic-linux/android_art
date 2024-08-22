@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "934e8534_ae83d9f8",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-22T14:51:13Z",
+      "side": 1,
+      "message": "Without the explanation from the [discussion below](https://android-review.git.corp.google.com/c/platform/art/+/3228683/comment/6080fc60_0ce356f1/) between Martin and David, the comment here was unclear to me in its current form. Could you add some details to clarify the rationale, e.g. something like:\n\n```\n        # Request devices running Android 24Q3 (`AP1A` builds) for\n        # (`userfaultfd`-based) Concurrent Mark-Compact GC configurations.\n        # Currently (as of 2024-08-22), the only devices within the device pool\n        # allocated to ART that are running `AP1A` builds are Pixel 6 devices\n        # (all other device types are running older Android versions), which are\n        # also the only device model supporting `userfaultfd` among that pool.\n```\n\n?",
+      "range": {
+        "startLine": 238,
+        "startChar": 27,
+        "endLine": 238,
+        "endChar": 82
+      },
+      "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6080fc60_0ce356f1",
         "filename": "tools/luci/config/main.star",
         "patchSetId": 1
