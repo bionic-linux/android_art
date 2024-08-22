@@ -22,6 +22,30 @@
       },
       "revId": "550d69b890fd575c2ed26c821dc26c3cade23b02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab84d04e_2c87b751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T14:34:44Z",
+      "side": 1,
+      "message": "\u003e Well, I guess it depends on what one means with \"self-contained\"\n\n\"Self-contained\" here means only testing odrefresh\u0027s own logic and does not talk to the platform.\n\n\u003e If we\u0027ve taken art_odrefresh_test out of the testing APEX like you wanted in https://r.android.com/3216190, this wouldn\u0027t be necessary, right? If the test and code gets more complex because of the chroot then it may be fair to take it out instead.\n\nThat\u0027s right, but it\u0027s good to make unit test self-contained even if it wasn\u0027t for chroot test.",
+      "parentUuid": "26808b7f_f684e4d5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "550d69b890fd575c2ed26c821dc26c3cade23b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
