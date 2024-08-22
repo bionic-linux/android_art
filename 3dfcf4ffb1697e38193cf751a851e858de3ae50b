@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a016cf3c_71820849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2001312
+      },
+      "writtenOn": "2024-08-22T14:32:17Z",
+      "side": 1,
+      "message": "Hi, thanks for the detailed response.\n\nThe PackageManager commit you pointed out addresses the issue this CL attempted to resolve so there\u0027s no need to merge my CL and I\u0027ll abandon it. I do have a question about the \"app downgrading\" implementation. What seems to me to be downgrading happens only when bg-dexopt takes place and \"inactive\" packages get dexopted with the configured inactive compiler filter. That change, however, seems to also make it so that in the case of an OTA, for example, \"inactive\" packages won\u0027t get dexopted again. Is that the intended behavior? I can see how that makes sense but I\u0027m curious if that is intended or not.",
+      "parentUuid": "e3c5fd5e_9bd5b7e2",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17d0647f_982c5357",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
