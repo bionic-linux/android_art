@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1a5fcb3_58a16fbb",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "`GetIntrinsic()` returns `uint32_t`, but `kMethodHandleInvokeExact` is `Intrinsics`. Can they be compared w/o casting?",
+      "parentUuid": "346a7bc5_b286d888",
+      "range": {
+        "startLine": 1401,
+        "startChar": 6,
+        "endLine": 1401,
+        "endChar": 30
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f553369_2c7ba7a7",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 47
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "Why not `invoke-\u003eAsInvokePolymorphic()-\u003eCanTargetInvokeVirtual()`?",
+      "range": {
+        "startLine": 1912,
+        "startChar": 31,
+        "endLine": 1912,
+        "endChar": 64
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68de0a3d_5b4a2d36",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f553369_2c7ba7a7",
       "range": {
         "startLine": 1912,
         "startChar": 31,
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "Isn\u0027t RDI already marked as clobbered in the fast-path? So why not clobber it in the slow-path as well by passing this argument in RDI instead of RAX?",
+      "range": {
+        "startLine": 162,
+        "startChar": 24,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6077d6d5_d7f61644",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "502ff03f_788a244b",
       "range": {
         "startLine": 162,
         "startChar": 24,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d01d5d_77d498dd",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4117,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9867a23b_f417af4e",
+      "range": {
+        "startLine": 4117,
+        "startChar": 27,
+        "endLine": 4117,
+        "endChar": 57
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dafd4097_32b84235",
@@ -129,6 +225,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "If we clobber an input register, we also need to explicitly mark it as temp, otherwise the register allocator treats it as preserved and it may be wrongly reused for subsequent instructions. This could be detrimental to some loops, similar to what\u0027s explained in the comment at line 4115.\n\nTherefore I\u0027d prefer to remove this TODO.",
+      "range": {
+        "startLine": 4124,
+        "startChar": 24,
+        "endLine": 4124,
+        "endChar": 66
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "103de3bb_5815cd12",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dafd4097_32b84235",
       "range": {
         "startLine": 4124,
         "startChar": 24,
@@ -162,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c38caf9_a0c5e99c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4131,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efff29d0_2d04ca5e",
+      "range": {
+        "startLine": 4131,
+        "startChar": 2,
+        "endLine": 4131,
+        "endChar": 64
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f9ea98e_891edd62",
@@ -175,6 +319,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "Too many verbs.",
+      "range": {
+        "startLine": 4159,
+        "startChar": 23,
+        "endLine": 4159,
+        "endChar": 44
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2d12a4_dec523a3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4159,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "parentUuid": "2f9ea98e_891edd62",
       "range": {
         "startLine": 4159,
         "startChar": 23,
@@ -210,6 +378,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32932605_92a39117",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "It can\u0027t be static, but current implementation of `findVirtual` always returns `MethodHandle` whose kind is `INVOKE_VIRTUAL`. So it can be `INVOKE_DIRECT` if `privateLookupIn` was used.\n\nAlso current implementation treats `INVOKE_INTERFACE` and `INVOKE_VIRTUAL` as identical (`GenerateSubTypeObjectCheckNoReadBarrier` catches that). \n\nI\u0027ll prepare a fix for that. Let me know if you think it should be landed first.\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:libcore/ojluni/src/main/java/java/lang/invoke/MethodHandles.java;l\u003d995;drc\u003dfb2b448fba40322d5b578a35db99ed3b328e5f08",
+      "parentUuid": "137c2042_74acb2a8",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a98c30_6056ac10",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 47
@@ -221,6 +413,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "This comment seems misplaced (related to usage of this function, not to the information it provides - the API) and slightly misleading (arbitrary integers can cause the same issues as FP numbers).\n\nI don\u0027t think we need the comment in any caller, so I\u0027d say we can simply remove it.",
+      "range": {
+        "startLine": 4935,
+        "startChar": 2,
+        "endLine": 4936,
+        "endChar": 70
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b04e69_87351517",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a98c30_6056ac10",
       "range": {
         "startLine": 4935,
         "startChar": 2,
@@ -273,6 +489,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7389af94_ea33c6d5",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 47
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Do you mean something different from `RETURN_OR_DELIVER_PENDING_EXCEPTION`?",
+      "parentUuid": "1db653f3_2f38c5c3",
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "469ba72d_d0f1022a",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 47
@@ -284,6 +518,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "This function appears to do a significant amount of work. But so does the `artInvokePolymorphic()`. Therefore I guess this should not really slow down the non-virtual `invokeExact` cases, right?",
+      "range": {
+        "startLine": 2467,
+        "startChar": 20,
+        "endLine": 2467,
+        "endChar": 58
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae062648_b8b3cd16",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Yeah, it is basically copy of `artInvokePolymorphic`, but w/o `VarHandle` branches and special logic around `RememberForGcArgumentVisitor` and `BuildQuickShadowFrameVisitor`.",
+      "parentUuid": "469ba72d_d0f1022a",
       "range": {
         "startLine": 2467,
         "startChar": 20,
@@ -317,6 +575,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "961042be_df8220ea",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f04cc2ab_50024d80",
+      "range": {
+        "startLine": 2500,
+        "startChar": 2,
+        "endLine": 2500,
+        "endChar": 25
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b6ee4a_1e630089",
@@ -330,6 +612,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "`Get()`",
+      "range": {
+        "startLine": 2538,
+        "startChar": 51,
+        "endLine": 2538,
+        "endChar": 80
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c6f4b4_b85ee5ad",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2538,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b6ee4a_1e630089",
       "range": {
         "startLine": 2538,
         "startChar": 51,
@@ -363,6 +669,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b1517b_5d76782f",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2552,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a244077_47cf176d",
+      "range": {
+        "startLine": 2551,
+        "startChar": 2,
+        "endLine": 2552,
+        "endChar": 70
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd780f17_db768118",
@@ -376,6 +706,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "Why do we resolve the method if we know it\u0027s going to be `WellKnownClasses::java_lang_invoke_MethodHandle_invokeExact`?",
+      "range": {
+        "startLine": 2553,
+        "startChar": 2,
+        "endLine": 2553,
+        "endChar": 61
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4189e1b_fce37325",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2553,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Nope, done.",
+      "parentUuid": "fd780f17_db768118",
       "range": {
         "startLine": 2553,
         "startChar": 2,
@@ -403,6 +757,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b075306_5579bd52",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 47
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1cd0813_5f399231",
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5c7655_d807209e",
@@ -416,6 +788,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "The `long sum(...)` methods with odd number of arguments are unused.",
+      "range": {
+        "startLine": 346,
+        "startChar": 15,
+        "endLine": 346,
+        "endChar": 48
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec58f9d8_61804ac5",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 47
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-22T14:33:47Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ee5c7655_d807209e",
       "range": {
         "startLine": 346,
         "startChar": 15,
