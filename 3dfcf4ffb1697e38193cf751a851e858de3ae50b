@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3c5fd5e_9bd5b7e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-22T09:57:59Z",
+      "side": 1,
+      "message": "Hi Rashid, thank you for the contribution!\n\nThis issue has been fixed on the package manager side in the latest Android version (Android 16) by commit https://android.googlesource.com/platform/frameworks/base/+/cbd2f357c2186c00232e393b986ac3585c6222f5.\n\nYour change will be useful only if an OEM preloads a recent Mainline train that contains it onto an Android 15 (which doesn\u0027t have the commit package manager above), but as of today, major OEMs have already released their Android 15 release, so if I understand it correctly, the number of OEMs who will find this change useful is very limited.\n\nI agree with your analysis and your change, and I appreciate that, but please let us know if there is still a need to merge this change given the package manager commit above.",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17d0647f_982c5357",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
