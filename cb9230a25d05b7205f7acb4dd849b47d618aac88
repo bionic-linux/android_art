@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa216c2_cdf4e8bb",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "What about putting this in `art/test/` rather than `art/build/testing/`, to keep it together with (most of) the other test stuff? (Just a bikeshedding opinion, so optional.)",
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b038de_349c41be",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "Style nit: We usually don\u0027t include the type for native defaults.",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d908591_23f0ec54",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "I suggest adding a comment to make it clear what this is for, so that people searching for `com.android.os.statsd` (including StatsD team themselves) don\u0027t get confused by it.",
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb651bde_a141de79",
+        "filename": "build/testing/art_fake_com.android.os.statsd/apex_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "Does the name of the APEX need to be identical to the original? As long as the names of the libraries are the same, I\u0027d hope linkerconfig sets up the right links regardless what the APEX is called. If it works to use something like `art_fake_com.android.os.statsd` here it\u0027d be less confusing, and perhaps you don\u0027t need the `override_apex_name` logic in buildbot-build.sh either.\n\nIf not, it\u0027s probably best to add a comment here too to say that it\u0027s just a fake, because there\u0027s nothing else in this file that shows it.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37570db_fb76047f",
+        "filename": "build/testing/art_fake_com.android.os.statsd/apex_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "Normally Soong should determine this from the `apex` dependencies, so it shouldn\u0027t be necessary. That doesn\u0027t work here? If so, please add a comment.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8188eeb_5962ae45",
+        "filename": "build/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T15:51:40Z",
+      "side": 1,
+      "message": "Suggest using a macro to expand the fakes.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
