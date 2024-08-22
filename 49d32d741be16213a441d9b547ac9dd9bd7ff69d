@@ -22,6 +22,30 @@
       },
       "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d6a457_e03c346f",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-22T15:26:30Z",
+      "side": 1,
+      "message": "These tests are owned and maintained by different people, so I thought it\u0027d be good to keep them explicitly in different lists. I could have used comments instead, but independent, self-descriptive containers seemed a better approach to me. What do you think?",
+      "parentUuid": "b80ac6c0_485a5c4a",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 42
+      },
+      "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
