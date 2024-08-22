@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c985d146_cb691ecd",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-22T15:17:47Z",
+      "side": 1,
+      "message": "Ah, art_method\u0027s `GetIntrinsic()` returns uint32 and then we cast it every time, as opposed to HInvoke\u0027s `GetIntrinsic()` that returns the enum class. That could be a cleanup to be done in the future",
+      "parentUuid": "b1a5fcb3_58a16fbb",
+      "range": {
+        "startLine": 1401,
+        "startChar": 6,
+        "endLine": 1401,
+        "endChar": 30
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f553369_2c7ba7a7",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 47
