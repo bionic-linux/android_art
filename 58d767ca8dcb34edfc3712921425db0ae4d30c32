@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "792a9c8a_d92b9a44",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 3575424
+      },
+      "writtenOn": "2024-08-22T14:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec1f6c02_09b385b9",
+      "range": {
+        "startLine": 1736,
+        "startChar": 2,
+        "endLine": 1736,
+        "endChar": 26
+      },
+      "revId": "58d767ca8dcb34edfc3712921425db0ae4d30c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6efbd54_091c065f",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-22T11:46:08Z",
       "side": 1,
       "message": "Please remove.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "58d767ca8dcb34edfc3712921425db0ae4d30c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a236512_2f1a3d19",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 3575424
+      },
+      "writtenOn": "2024-08-22T14:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6efbd54_091c065f",
       "range": {
         "startLine": 60,
         "startChar": 7,
