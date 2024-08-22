@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26808b7f_f684e4d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-22T14:29:15Z",
+      "side": 1,
+      "message": "Well, I guess it depends on what one means with \"self-contained\" - from an API perspective it\u0027s fine because libselinux has a stable API.\n\nIf we\u0027ve taken art_odrefresh_test out of the testing APEX like you wanted in https://r.android.com/3216190, this wouldn\u0027t be necessary, right? If the test and code gets more complex because of the chroot then it may be fair to take it out instead.\n\nOtoh, this change makes it a bit more consistent by handling both setfilecon and restorecon the same way, so there\u0027s that too.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "550d69b890fd575c2ed26c821dc26c3cade23b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
