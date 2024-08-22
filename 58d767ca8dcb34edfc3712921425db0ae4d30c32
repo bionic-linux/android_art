@@ -16,6 +16,52 @@
       "message": "Hi folks, I implement Zbs extension inassembler, could you please take a look",
       "revId": "58d767ca8dcb34edfc3712921425db0ae4d30c32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec1f6c02_09b385b9",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:46:08Z",
+      "side": 1,
+      "message": "Please remove. This checks for `shamt` in the range [-32, 31] but we want [0, 63] which is checked in the previous line. Same 3x below.\n\n(Did you forget to run the tests you wrote? Try `m test-art-host-gtest`.)",
+      "range": {
+        "startLine": 1736,
+        "startChar": 2,
+        "endLine": 1736,
+        "endChar": 26
+      },
+      "revId": "58d767ca8dcb34edfc3712921425db0ae4d30c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6efbd54_091c065f",
+        "filename": "compiler/utils/riscv64/assembler_riscv64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:46:08Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "58d767ca8dcb34edfc3712921425db0ae4d30c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
