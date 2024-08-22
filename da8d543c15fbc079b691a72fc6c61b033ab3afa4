@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b77c07_5e03b48a",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:49:33Z",
+      "side": 1,
+      "message": "All these need `!narrow`.",
+      "range": {
+        "startLine": 744,
+        "startChar": 9,
+        "endLine": 749,
+        "endChar": 19
+      },
+      "revId": "da8d543c15fbc079b691a72fc6c61b033ab3afa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "031b1f5a_7e50aa3e",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:49:33Z",
+      "side": 1,
+      "message": "`0x48000000u` (`0x24u \u003c\u003c 25`)",
+      "range": {
+        "startLine": 798,
+        "startChar": 26,
+        "endLine": 798,
+        "endChar": 37
+      },
+      "revId": "da8d543c15fbc079b691a72fc6c61b033ab3afa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f826ef86_f24cca8c",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:49:33Z",
+      "side": 1,
+      "message": "`0x68000000u`",
+      "range": {
+        "startLine": 800,
+        "startChar": 26,
+        "endLine": 800,
+        "endChar": 37
+      },
+      "revId": "da8d543c15fbc079b691a72fc6c61b033ab3afa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef39670_884d15d1",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:49:33Z",
+      "side": 1,
+      "message": "`0x28000000u`",
+      "range": {
+        "startLine": 802,
+        "startChar": 26,
+        "endLine": 802,
+        "endChar": 37
+      },
+      "revId": "da8d543c15fbc079b691a72fc6c61b033ab3afa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83ac676_51a41c92",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-22T11:49:33Z",
+      "side": 1,
+      "message": "All these need `!narrow`.",
+      "revId": "da8d543c15fbc079b691a72fc6c61b033ab3afa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
