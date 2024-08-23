@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6508cf87_e1332186",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 3575424
+      },
+      "writtenOn": "2024-08-23T10:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb90afc2_5e940b18",
+      "range": {
+        "startLine": 744,
+        "startChar": 64,
+        "endLine": 744,
+        "endChar": 66
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1814b963_59e74962",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 3575424
+      },
+      "writtenOn": "2024-08-23T10:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c140cc6_fb291df0",
+      "range": {
+        "startLine": 744,
+        "startChar": 84,
+        "endLine": 744,
+        "endChar": 89
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8a5fc78b_19e6f30a",
         "filename": "disassembler/disassembler_riscv64.cc",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2024-08-23T08:34:55Z",
       "side": 1,
       "message": "Same style comment here about 1 and 5 regarding the 0x.",
+      "range": {
+        "startLine": 799,
+        "startChar": 33,
+        "endLine": 799,
+        "endChar": 37
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f14cc73_d5ebec7c",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 3575424
+      },
+      "writtenOn": "2024-08-23T10:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a91198_04439edd",
       "range": {
         "startLine": 799,
         "startChar": 33,
