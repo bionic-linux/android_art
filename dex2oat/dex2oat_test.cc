@@ -1019,21 +1019,6 @@ TEST_F(Dex2oatWatchdogTest, TestWatchdogTrigger) {
   RunTest(false, {"--watchdog-timeout=10"});
 }
 
-class Dex2oatReturnCodeTest : public Dex2oatTest {
- protected:
-  Result<int> RunTest(const std::vector<std::string>& extra_args = {}) {
-    std::string dex_location = GetScratchDir() + "/Dex2OatSwapTest.jar";
-    std::string odex_location = GetOdexDir() + "/Dex2OatSwapTest.odex";
-
-    Copy(GetTestDexFileName(), dex_location);
-
-    return GenerateOdexForTestWithStatus(
-        {dex_location}, odex_location, CompilerFilter::kSpeed, extra_args);
-  }
-
-  std::string GetTestDexFileName() { return GetDexSrc1(); }
-};
-
 class Dex2oatClassLoaderContextTest : public Dex2oatTest {
  protected:
   void RunTest(const char* class_loader_context,
