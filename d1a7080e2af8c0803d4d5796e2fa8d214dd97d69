@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b63691c_9727f262",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Sorry, I confused an `ArtMethod*` with `HInvoke*`. The `HInvoke::GetInstrinsic()` returns `Intrinsics` but the `resolved_method` is an `ArtMethod*`, so the cast is necessary here.",
+      "parentUuid": "b1a5fcb3_58a16fbb",
+      "range": {
+        "startLine": 1401,
+        "startChar": 6,
+        "endLine": 1401,
+        "endChar": 30
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f553369_2c7ba7a7",
@@ -426,6 +450,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e63007e7_fc42f2b7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Pleas add a comment about static, private and interface methods before the `MethodHandle::Kind::kInvokeVirtual` check.\n\nFor invoke-interface you could add another short comment before subtype check.\n\nIIUC, when the `MethodHandles.findVirtual()` is called with an interface class (and finds an interfce method), we\u0027re still constructing a `MethodHandle` with the type `MethodHandle.INVOKE_VIRTUAL` even though there is a `MethodHandle.INVOKE_INTERFACE`. Wouldn\u0027t fixing this diverge from the RI? Is such divergence worth it?",
+      "parentUuid": "32932605_92a39117",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a98c30_6056ac10",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 47
@@ -529,6 +577,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d8dfb7_39649ce2",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 47
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Sorry, I missed that. Somehow I expected the exception handling right after the call and I didn\u0027t see it at the end of the function.",
+      "parentUuid": "7389af94_ea33c6d5",
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "469ba72d_d0f1022a",
@@ -566,6 +632,30 @@
       "side": 1,
       "message": "Yeah, it is basically copy of `artInvokePolymorphic`, but w/o `VarHandle` branches and special logic around `RememberForGcArgumentVisitor` and `BuildQuickShadowFrameVisitor`.",
       "parentUuid": "469ba72d_d0f1022a",
+      "range": {
+        "startLine": 2467,
+        "startChar": 20,
+        "endLine": 2467,
+        "endChar": 58
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d201dd_d80179a5",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 2467,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ae062648_b8b3cd16",
       "range": {
         "startLine": 2467,
         "startChar": 20,

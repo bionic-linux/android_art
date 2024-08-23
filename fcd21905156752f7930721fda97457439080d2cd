@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8e98e5_80057d79",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4113,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Typos: s/RSI/RDI/, s/need/needed/.",
+      "range": {
+        "startLine": 4112,
+        "startChar": 5,
+        "endLine": 4113,
+        "endChar": 24
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe73e52_9c45de8b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4114,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "I previously wrote that this also requires explicitly marking the register as a temporary. But I now think that this is not actually needed because that register shall be blocked by the `if (will_call)` code path in `RegisterAllocatorLinearScan::ProcessInstruction()`.",
+      "range": {
+        "startLine": 4114,
+        "startChar": 24,
+        "endLine": 4114,
+        "endChar": 62
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c328aab5_a98ebc34",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4125,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "This comment is now obsolete.",
+      "range": {
+        "startLine": 4125,
+        "startChar": 2,
+        "endLine": 4125,
+        "endChar": 65
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7b5dfd_8f7827b4",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4126,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Nit: We can add two temps with a single call `locations-\u003eAddRegisterTemps(2)`.",
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d46d87d_7f66489c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4166,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Add a comment about skipping virtual dispatch for private methods.",
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6f5d6f_50d22315",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4168,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "This extra move in the fast-path makes me think that we should allocate the `method_handle` in a different register after all, and move it to RDI in the slow path, so that we can work with the `method` in RDI. (This would also benefit certain loops as mentioned in another comment on PS47. And it would clean up the odd naming, see the comment below.)",
+      "range": {
+        "startLine": 4168,
+        "startChar": 2,
+        "endLine": 4168,
+        "endChar": 33
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e084dbd_55e18a89",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 4181,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "Note: The naming of variables is a bit odd with the new register allocation. In the end we\u0027re putting the method pointer to the `method_handle` register and not the `method` register.",
+      "range": {
+        "startLine": 4181,
+        "startChar": 10,
+        "endLine": 4181,
+        "endChar": 23
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95eb1845_24f9dd7a",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 48
+      },
+      "lineNbr": 2491,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T11:51:51Z",
+      "side": 1,
+      "message": "This is now unused.",
+      "range": {
+        "startLine": 2491,
+        "startChar": 24,
+        "endLine": 2491,
+        "endChar": 39
+      },
+      "revId": "fcd21905156752f7930721fda97457439080d2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
