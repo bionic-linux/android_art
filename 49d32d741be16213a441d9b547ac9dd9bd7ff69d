@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8370a7a4_16945203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T14:36:09Z",
+      "side": 1,
+      "message": "Thanks Martin.",
+      "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b80ac6c0_485a5c4a",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "It seems redundant to me. Firstly it ought to be obvious for anyone in ART/Libcore teams who owns them, and secondly I\u0027m not sure the ownership of the tests themselves matters in this context (we in Mainline team manage them here anyway, because they\u0027re all ART module tests). I wouldn\u0027t bother with comments either, actually.\n\n`other_cts_libcore_tests_shard_tests` made sense before this, but that was because it classified the tests that went into this shard, not because the test ownership is important in its own right here.",
       "parentUuid": "d5d6a457_e03c346f",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 42
+      },
+      "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d1ab19_b0c1a9ab",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T14:36:09Z",
+      "side": 1,
+      "message": "Thanks for sharing your input here. I agree that test ownership is trivial within our team, but I\u0027m also thinking about other teams, especially when they read the code here through Code Search or want to make contributions. I may revisit this in the future.",
+      "parentUuid": "cdb7495e_aa8a58b9",
       "range": {
         "startLine": 1039,
         "startChar": 0,
