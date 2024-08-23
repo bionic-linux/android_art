@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc2c4a3_3c794eb6",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "Moved to `art/test/testing/`. I want to keep `testing` because this is for testing, not a test.",
+      "parentUuid": "5aa216c2_cdf4e8bb",
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61b038de_349c41be",
@@ -31,6 +49,30 @@
       "writtenOn": "2024-08-22T15:51:40Z",
       "side": 1,
       "message": "Style nit: We usually don\u0027t include the type for native defaults.",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5307702_c170280d",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "I know, but omitting \"cc\" here makes it look like the defaults for the apex.\n\nAlternatively, if you can suggest a better name to disconnect it from the apex, I can drop \"cc\".",
+      "parentUuid": "61b038de_349c41be",
       "range": {
         "startLine": 22,
         "startChar": 42,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adc15f6_1cbe623a",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d908591_23f0ec54",
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb651bde_a141de79",
@@ -71,6 +131,30 @@
       "writtenOn": "2024-08-22T15:51:40Z",
       "side": 1,
       "message": "Does the name of the APEX need to be identical to the original? As long as the names of the libraries are the same, I\u0027d hope linkerconfig sets up the right links regardless what the APEX is called. If it works to use something like `art_fake_com.android.os.statsd` here it\u0027d be less confusing, and perhaps you don\u0027t need the `override_apex_name` logic in buildbot-build.sh either.\n\nIf not, it\u0027s probably best to add a comment here too to say that it\u0027s just a fake, because there\u0027s nothing else in this file that shows it.",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8406876_78496608",
+        "filename": "build/testing/art_fake_com.android.os.statsd/apex_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "This name determines the folder name of the module under `/apex`. I could potentially use `art_fake_com.android.os.statsd` and avoid `override_apex_name`, but I\u0027d like to use the real name to make the testing environment closer to the real environment.\n\nThis is also consistent with how we treat `com.android.art.testing`, which uses the real module name `com.android.art` from `manifest-art-debug.json`.\n\nAdded a comment.",
+      "parentUuid": "fb651bde_a141de79",
       "range": {
         "startLine": 2,
         "startChar": 2,
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "006e1032_81dd49bc",
+        "filename": "build/testing/art_fake_com.android.os.statsd/apex_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "Good to know this is not needed! Removed.",
+      "parentUuid": "e37570db_fb76047f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8188eeb_5962ae45",
@@ -117,6 +225,30 @@
       "writtenOn": "2024-08-22T15:51:40Z",
       "side": 1,
       "message": "Suggest using a macro to expand the fakes.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 1
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b5deb9_ffd6163c",
+        "filename": "build/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8188eeb_5962ae45",
       "range": {
         "startLine": 21,
         "startChar": 0,

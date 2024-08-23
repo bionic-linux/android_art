@@ -16,6 +16,24 @@
       "message": "Please test on riscv64 too (cf. step 2.2 in prebuilts/runtime/mainline/README_riscv64.md).",
       "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed502c6d_1bc44aef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:39:51Z",
+      "side": 1,
+      "message": "Tested the build script. I can\u0027t actually boot a VM because my machine doesn\u0027t support nested virtualization.",
+      "parentUuid": "35599382_2decd3c3",
+      "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
