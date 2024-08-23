@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c39aa1_f4d6ef60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-23T16:27:15Z",
+      "side": 1,
+      "message": "This is to test an OTA before https://r.android.com/3196705 went in? It\u0027s worth pointing that out.",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "c4a2459cb19dcb4618fb2f286bac790e471f048e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45991bc_fec4272a",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-23T16:27:15Z",
+      "side": 1,
+      "message": "This should have been bumped in https://r.android.com/3204552? Please explain the bump in the CL description.",
+      "range": {
+        "startLine": 734,
+        "startChar": 27,
+        "endLine": 734,
+        "endChar": 28
+      },
+      "revId": "c4a2459cb19dcb4618fb2f286bac790e471f048e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
