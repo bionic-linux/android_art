@@ -33,6 +33,7 @@
 #include <string>
 #include <string_view>
 #include <system_error>
+#include <tuple>
 #include <vector>
 
 #include "aidl/com/android/server/art/BnDexoptChrootSetup.h"
@@ -64,6 +65,7 @@ namespace {
 
 using ::android::base::ConsumePrefix;
 using ::android::base::Error;
+using ::android::base::GetProperty;
 using ::android::base::Join;
 using ::android::base::make_scope_guard;
 using ::android::base::NoDestructor;
@@ -430,11 +432,25 @@ Result<void> DexoptChrootSetup::SetUpChroot(const std::optional<std::string>& ot
   OR_RETURN(CreateDir(CHROOT_DIR));
   LOG(INFO) << ART_FORMAT("Created '{}'", CHROOT_DIR);
 
-  std::vector<std::string> additional_system_partitions = {
-      "system_ext",
-      "vendor",
-      "product",
+  std::vector<std::tuple<std::string, std::string, bool>> additional_system_partitions = {
+      {"system_ext", "/system_ext", /*is_optional=*/true},
+      {"vendor", "/vendor", /*is_optional=*/true},
+      {"product", "/product", /*is_optional=*/true},
   };
+
+  std::string partitions_from_sysprop =
+      GetProperty(kAdditionalPartitionsSysprop, /*default_value=*/"");
+  std::vector<std::string_view> partitions_from_sysprop_entries;
+  art::Split(partitions_from_sysprop, ',', &partitions_from_sysprop_entries);
+  for (std::string_view entry : partitions_from_sysprop_entries) {
+    std::vector<std::string_view> pair;
+    art::Split(entry, ':', &pair);
+    if (pair.size() != 2 || pair[0].empty() || pair[1].empty() || !pair[1].starts_with('/')) {
+      return Errorf("Malformed entry in '{}': '{}'", kAdditionalPartitionsSysprop, entry);
+    }
+    additional_system_partitions.emplace_back(
+        std::string(pair[0]), std::string(pair[1]), /*is_optional=*/false);
+  }
 
   if (!IsOtaUpdate(ota_slot)) {  // Mainline update
     OR_RETURN(BindMount("/", CHROOT_DIR));
@@ -443,11 +459,11 @@ Result<void> DexoptChrootSetup::SetUpChroot(const std::optional<std::string>& ot
     // "/system", so we need to bind-mount "/system" to handle this case. On devices where readonly
     // partitions are not remounted, bind-mounting "/system" doesn't hurt.
     OR_RETURN(BindMount("/system", PathInChroot("/system")));
-    for (const std::string& partition : additional_system_partitions) {
+    for (const auto& [partition, mount_point, is_optional] : additional_system_partitions) {
       // Some additional partitions are optional, but that's okay. The root filesystem (mounted at
       // `/`) has empty directories for additional partitions. If additional partitions don't exist,
       // we'll just be bind-mounting empty directories.
-      OR_RETURN(BindMount("/" + partition, PathInChroot("/" + partition)));
+      OR_RETURN(BindMount(mount_point, PathInChroot(mount_point)));
     }
   } else {
     CHECK(ota_slot.value() == "_a" || ota_slot.value() == "_b");
@@ -477,10 +493,9 @@ Result<void> DexoptChrootSetup::SetUpChroot(const std::optional<std::string>& ot
       OR_RETURN(BindMount("/postinstall", CHROOT_DIR));
     }
 
-    for (const std::string& partition : additional_system_partitions) {
-      OR_RETURN(Mount(GetBlockDeviceName(partition, ota_slot.value()),
-                      PathInChroot("/" + partition),
-                      /*is_optional=*/true));
+    for (const auto& [partition, mount_point, is_optional] : additional_system_partitions) {
+      OR_RETURN(Mount(
+          GetBlockDeviceName(partition, ota_slot.value()), PathInChroot(mount_point), is_optional));
     }
   }
 
