@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997c70cf_6c771e48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T09:38:07Z",
+      "side": 1,
+      "message": "Multiple major OEMs are waiting for this fix, so please prioritize the review, thanks!",
+      "revId": "b09f4f57a372431da1f416d6c1d85978b26cf4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
