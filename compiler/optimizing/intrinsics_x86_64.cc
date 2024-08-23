@@ -2806,8 +2806,7 @@ void IntrinsicLocationsBuilderX86_64::VisitLongReverse(HInvoke* invoke) {
       new (allocator_) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetOut(Location::SameAsFirstInput());
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
+  locations->AddRegisterTemps(2);
 }
 
 static void SwapBits64(CpuRegister reg, CpuRegister temp, CpuRegister temp_mask,
@@ -4236,8 +4235,7 @@ static void CreateVarHandleCompareAndSetOrExchangeLocations(HInvoke* invoke,
     locations->SetInAt(new_value_index, Location::RequiresRegister());
     if (expected_type == DataType::Type::kReference) {
       // Need two temporaries for MarkGCCard.
-      locations->AddTemp(Location::RequiresRegister());
-      locations->AddTemp(Location::RequiresRegister());
+      locations->AddRegisterTemps(2);
       if (codegen->EmitReadBarrier()) {
         // Need three temporaries for GenerateReferenceLoadWithBakerReadBarrier.
         DCHECK(kUseBakerReadBarrier);
@@ -4384,8 +4382,7 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86_
     locations->SetInAt(new_value_index, Location::RegisterLocation(RAX));
     if (type == DataType::Type::kReference) {
       // Need two temporaries for MarkGCCard.
-      locations->AddTemp(Location::RequiresRegister());
-      locations->AddTemp(Location::RequiresRegister());
+      locations->AddRegisterTemps(2);
       if (codegen->EmitReadBarrier()) {
         // Need a third temporary for GenerateReferenceLoadWithBakerReadBarrier.
         DCHECK(kUseBakerReadBarrier);
@@ -4678,8 +4675,7 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
       // case we need two temporary registers: one to hold value instead of RAX (which may get
       // clobbered by repeated CMPXCHG) and one for performing the operation. At compile time we
       // cannot distinguish this case from arrays or native-endian byte array views.
-      locations->AddTemp(Location::RequiresRegister());
-      locations->AddTemp(Location::RequiresRegister());
+      locations->AddRegisterTemps(2);
     }
   }
 }
