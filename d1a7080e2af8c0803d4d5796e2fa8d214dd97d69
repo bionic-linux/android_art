@@ -522,6 +522,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7413d1e6_f7a6ebeb",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-23T15:15:33Z",
+      "side": 1,
+      "message": "I think everything that `getInstanceMethod` [1] might return is covered.\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:libcore/ojluni/src/main/java/java/lang/invoke/MethodHandles.java;l\u003d971;drc\u003dfb2b448fba40322d5b578a35db99ed3b328e5f08",
+      "parentUuid": "6a1e3ce7_475d5917",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a98c30_6056ac10",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 47
