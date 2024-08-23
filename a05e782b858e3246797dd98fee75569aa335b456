@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c05970_db90e0ca",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T12:00:13Z",
+      "side": 1,
+      "message": "I don\u0027t remember why I defined the `high_bits` instead of `funct7 \u003d insn32 \u003e\u003e 25`. Maybe we can change that but that should be a separate change.",
+      "parentUuid": "8a5fc78b_19e6f30a",
+      "range": {
+        "startLine": 798,
+        "startChar": 24,
+        "endLine": 798,
+        "endChar": 48
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a91198_04439edd",
