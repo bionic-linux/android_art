@@ -27,6 +27,9 @@
 namespace art {
 namespace dexopt_chroot_setup {
 
+constexpr const char* kAdditionalPartitionsSysprop =
+    "dalvik.vm.pr_dexopt_additional_system_partitions";
+
 // A service that sets up the chroot environment for Pre-reboot Dexopt.
 class DexoptChrootSetup : public aidl::com::android::server::art::BnDexoptChrootSetup {
  public:
