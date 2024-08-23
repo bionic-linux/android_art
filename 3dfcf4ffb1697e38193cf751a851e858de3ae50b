@@ -105,6 +105,24 @@
       "message": "Based on my understanding of the purpose of the app downgrading feature I wonder if we need to expand this to include REASON_BOOT_AFTER_OTA and REASON_PRE_REBOOT_DEXOPT as it seems like if the updates contain new apps currently those will be treated as \"inactive\" and not dexopted as a result of the filtering in the default case below.",
       "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c950628_06cc2754",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 2001312
+      },
+      "writtenOn": "2024-08-23T20:57:55Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "17d0647f_982c5357",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
