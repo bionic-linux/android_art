@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7d85c86_a30c02ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2001312
+      },
+      "writtenOn": "2024-08-23T18:42:01Z",
+      "side": 1,
+      "message": "@jiakaiz@google.com, after looking at the PackageManager CL you linked and testing this on main trunk_staging I don\u0027t think that CL fully addresses the problem.\n\nThat CL sets firstInstallTime based on System.currentTimeMillis() which reads from the system/CLOCK_REALTIME and at that point CLOCK_REALTIME usually has the value that the kernel sets it to based on what it reads from the RTC as a result of CONFIG_RTC_HCTOSYS being enabled in GKI kernels. If the RTC hasn\u0027t been set before, e.g. during a prior boot when the time has been adjusted correctly, then System.currentTimeMillis() can be a really old time. Also, some OEMs don\u0027t have RTCs that support writes so they update CLOCK_REALTIME via their own user-space timeservice but this can happen after firstIntallTime has been set on scanned packages. Later, AlarmManagerService can end up adjusting CLOCK_REALTIME based on ro.build.date.utc if it detects that the current system/CLOCK_REALTIME is in the past and so System.currentTimeMillis() will return a time after this when first-boot dexopt occurs and if pm.dexopt.downgrade_after_inactive_days is set this can result in the same problem I submitted this CL to address.\n\nI see no downside to this CL and I think it\u0027s required for full correctness of first-boot dexopt behavior so I\u0027m curious to hear what you think. If you think it\u0027s ok I can update the commit message and test if necessary.",
+      "parentUuid": "6aa26518_97aeec30",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17d0647f_982c5357",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
