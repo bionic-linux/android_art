@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c8c7a0_898017e6",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 50
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T14:57:58Z",
+      "side": 1,
+      "message": "We can change this to RDI and revert the entrypoint to the PS48 version.",
+      "range": {
+        "startLine": 162,
+        "startChar": 24,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "73e70b1c8d77b19550aad86e5dcbaae53d767d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
