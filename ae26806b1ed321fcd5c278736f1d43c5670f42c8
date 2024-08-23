@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d7711d_a9556860",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T11:28:58Z",
+      "side": 1,
+      "message": "Nit: Full stop at end of comment.",
+      "range": {
+        "startLine": 2115,
+        "startChar": 0,
+        "endLine": 2116,
+        "endChar": 52
+      },
+      "revId": "ae26806b1ed321fcd5c278736f1d43c5670f42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16841be_74dc5fb0",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T11:28:58Z",
+      "side": 1,
+      "message": "Suggestion: \"Initializing ART runtime metrics\" (to make it unambiguous in logcat outputs and easier to grep).",
+      "range": {
+        "startLine": 2118,
+        "startChar": 17,
+        "endLine": 2118,
+        "endChar": 39
+      },
+      "revId": "ae26806b1ed321fcd5c278736f1d43c5670f42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
