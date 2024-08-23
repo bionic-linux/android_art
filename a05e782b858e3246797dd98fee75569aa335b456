@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb90afc2_5e940b18",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:34:55Z",
+      "side": 1,
+      "message": "nit/style: 0x1u and 0x5u are the same as 1u and 5u, which is what other `if` cases use.",
+      "range": {
+        "startLine": 744,
+        "startChar": 64,
+        "endLine": 744,
+        "endChar": 66
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c140cc6_fb291df0",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:34:55Z",
+      "side": 1,
+      "message": "`BEXTI`?",
+      "range": {
+        "startLine": 744,
+        "startChar": 84,
+        "endLine": 744,
+        "endChar": 89
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5fc78b_19e6f30a",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:34:55Z",
+      "side": 1,
+      "message": "Not for this CL, but for better reading we might want to change this to something like `high_bits \u003d\u003d (0x24u \u003c\u003c kHighBitsShift)` where `kHighBitsShift` is a `constexpr` of 25.\n\nIf we wanted to be extra sure, we could define a constexpr method that static_asserts that the number to be shifted fits in 7 bits too",
+      "range": {
+        "startLine": 798,
+        "startChar": 24,
+        "endLine": 798,
+        "endChar": 48
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a91198_04439edd",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:34:55Z",
+      "side": 1,
+      "message": "Same style comment here about 1 and 5 regarding the 0x.",
+      "range": {
+        "startLine": 799,
+        "startChar": 33,
+        "endLine": 799,
+        "endChar": 37
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
