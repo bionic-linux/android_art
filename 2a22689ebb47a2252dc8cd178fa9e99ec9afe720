@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2874341b_5a533253",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-23T12:38:09Z",
+      "side": 1,
+      "message": "@solanes@google.com No. GVN is able to eliminate the double `Rol` as well. `GVN` relies on `HInstruction::Equals` which is defined for all instructions. I checked your test after this change and I got:\n```\nneg w16, w2\nror w0, w1, w16\nror w0, w1, w16\n```",
+      "parentUuid": "6e529995_f6adc509",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "791ec3df_6f5fa250",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
