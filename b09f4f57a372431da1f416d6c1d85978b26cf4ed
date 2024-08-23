@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b7649541_2183ae16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T15:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40f1b390_b62cd53c",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "b09f4f57a372431da1f416d6c1d85978b26cf4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "997c70cf_6c771e48",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91312192_b71047f8",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T15:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ee1222_26fe3ea5",
+      "revId": "b09f4f57a372431da1f416d6c1d85978b26cf4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a7318dc_da58a997",
@@ -71,6 +113,30 @@
       "writtenOn": "2024-08-23T14:10:54Z",
       "side": 1,
       "message": "This parsing is a bit fragile, in particular for the `\u003d` vs `+\u003d` tokens. OEMs may have customisations that affect these lines. A more robust approach is to regex_replace `([\u003d:] ?)/(system(?:_ext)?/\\$\\{LIB})` with `$1/mnt/compat_env/$2`, on the premise that _any_ path to system libs should be rewritten to the compat location. (Although it\u0027s not absolutely certain that\u0027s the correct thing to do in all situations, it is consistent with the bind mount approach done for non-VIC.)\n\nAlso, if we fail to do any substitution in the compat section then it\u0027s clear it won\u0027t work. It\u0027d be good to detect that and bail out.\n\nMaybe also log the rewritten lines on the `DEBUG` level.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 97
+      },
+      "revId": "b09f4f57a372431da1f416d6c1d85978b26cf4ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e940e27b_648915ee",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T15:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7318dc_da58a997",
       "range": {
         "startLine": 397,
         "startChar": 0,
