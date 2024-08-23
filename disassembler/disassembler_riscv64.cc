@@ -826,7 +826,7 @@ void DisassemblerRiscv64::Printer::Print32BinOp(uint32_t insn32) {
       static const char* const kZbbMinMaxOpcodes[] = { "min", "minu", "max", "maxu" };
       DCHECK(kZbbMinMaxOpcodes[funct3 - 4u] != nullptr);
       os_ << kZbbMinMaxOpcodes[funct3 - 4u];
-    } else if (high_bits == 0x60000000u && (funct3 == /*ROL*/ 1u || funct3 == /*ROL*/ 5u)) {
+    } else if (high_bits == 0x60000000u && (funct3 == /*ROL*/ 1u || funct3 == /*ROR*/ 5u)) {
       os_ << (funct3 == /*ROL*/ 1u ? "rol" : "ror");
     } else if (!narrow || (funct3 == /*ADD*/ 0u || funct3 == /*SLL*/ 1u || funct3 == /*SRL*/ 5u)) {
       static const char* const kOpcodes[] = {
