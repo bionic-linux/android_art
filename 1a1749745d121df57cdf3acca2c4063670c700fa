@@ -16,6 +16,24 @@
       "message": "missing new line at the end",
       "revId": "1a1749745d121df57cdf3acca2c4063670c700fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bcb7e8_aaff1759",
+        "filename": "test/2277-methodhandle-invokeexact/build.py",
+        "patchSetId": 51
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-23T17:21:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b41b7359_8d51a176",
+      "revId": "1a1749745d121df57cdf3acca2c4063670c700fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
