@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ccfad5f_3030b2ff",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T11:16:38Z",
+      "side": 1,
+      "message": "Suggestion: Sort this list of functions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9094cd_4432a9f3",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatssocket.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-23T11:16:38Z",
+      "side": 1,
+      "message": "Suggestion: Sort this list of functions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
