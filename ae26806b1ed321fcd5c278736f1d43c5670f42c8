@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a02fb4_d72be0fa",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2116,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-08-23T11:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40d7711d_a9556860",
+      "range": {
+        "startLine": 2115,
+        "startChar": 0,
+        "endLine": 2116,
+        "endChar": 52
+      },
+      "revId": "ae26806b1ed321fcd5c278736f1d43c5670f42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f16841be_74dc5fb0",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-23T11:28:58Z",
       "side": 1,
       "message": "Suggestion: \"Initializing ART runtime metrics\" (to make it unambiguous in logcat outputs and easier to grep).",
+      "range": {
+        "startLine": 2118,
+        "startChar": 17,
+        "endLine": 2118,
+        "endChar": 39
+      },
+      "revId": "ae26806b1ed321fcd5c278736f1d43c5670f42c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f34af18_a1e503a1",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-08-23T11:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f16841be_74dc5fb0",
       "range": {
         "startLine": 2118,
         "startChar": 17,
