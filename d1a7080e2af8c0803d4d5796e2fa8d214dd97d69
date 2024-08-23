@@ -498,6 +498,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a1e3ce7_475d5917",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-23T15:00:11Z",
+      "side": 1,
+      "message": "You added a test for a private method in an interface. Is there anything left to do for this comment thread?",
+      "parentUuid": "16deb34d_cfa7d7c8",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a98c30_6056ac10",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 47
