@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41b7359_8d51a176",
+        "filename": "test/2277-methodhandle-invokeexact/build.py",
+        "patchSetId": 51
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T15:20:18Z",
+      "side": 1,
+      "message": "missing new line at the end",
+      "revId": "1a1749745d121df57cdf3acca2c4063670c700fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
