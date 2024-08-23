@@ -194,6 +194,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20895d0d_030b2a4e",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5134,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-23T13:34:31Z",
+      "side": 1,
+      "message": "We need to save second register for further uses:\n```\nint dist \u003d GetDistance();\nint res1 \u003d Integer.rotateLeft(a, dist);\nint res2 \u003d Integer.rotateLeft(b, dist);\n```",
+      "parentUuid": "b607b26d_8c44d4bd",
+      "range": {
+        "startLine": 5131,
+        "startChar": 0,
+        "endLine": 5134,
+        "endChar": 26
+      },
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcba05b5_69e04700",
