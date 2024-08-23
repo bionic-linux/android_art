@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a37b057_e5222db5",
+        "filename": "compiler/optimizing/code_generator_riscv64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2332,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-23T13:07:36Z",
+      "side": 1,
+      "message": "The formatting hook did it. Ok, I\u0027ll fix it.",
+      "parentUuid": "e75e7d7a_2e2043d7",
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b755f19_dbe75196",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
