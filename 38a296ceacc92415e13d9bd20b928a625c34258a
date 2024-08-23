@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1d0369_dd05120b",
+        "filename": "libartbase/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T10:50:16Z",
+      "side": 1,
+      "message": "Add to `not_windows`?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "38a296ceacc92415e13d9bd20b928a625c34258a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
