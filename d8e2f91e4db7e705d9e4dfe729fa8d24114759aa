@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05b1acb2_3e13b514",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T09:15:22Z",
+      "side": 1,
+      "message": "Nit: IsZygote()",
+      "range": {
+        "startLine": 2117,
+        "startChar": 6,
+        "endLine": 2117,
+        "endChar": 16
+      },
+      "revId": "d8e2f91e4db7e705d9e4dfe729fa8d24114759aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c7b2a48_cf7e9b85",
         "filename": "runtime/runtime.h",
         "patchSetId": 1
@@ -20,6 +43,47 @@
         "endLine": 1135,
         "endChar": 32
       },
+      "revId": "d8e2f91e4db7e705d9e4dfe729fa8d24114759aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae946f6_ec58cda0",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T09:15:22Z",
+      "side": 1,
+      "message": "`!\u003d nullptr`, to make it explicit.",
+      "range": {
+        "startLine": 1135,
+        "startChar": 57,
+        "endLine": 1135,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52ad7e2a_bd27d478",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/runtime.h",
+              "range": {
+                "startLine": 1135,
+                "startChar": 0,
+                "endLine": 1136,
+                "endChar": 0
+              },
+              "replacement": "  bool AreMetricsInitialized() { return metrics_reporter_ !\u003d nullptr; }\n"
+            }
+          ]
+        }
+      ],
       "revId": "d8e2f91e4db7e705d9e4dfe729fa8d24114759aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
