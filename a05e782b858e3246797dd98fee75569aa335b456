@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c97bf0db_7fb363f2",
+        "filename": "disassembler/disassembler_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T12:48:17Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "03c05970_db90e0ca",
+      "range": {
+        "startLine": 798,
+        "startChar": 24,
+        "endLine": 798,
+        "endChar": 48
+      },
+      "revId": "a05e782b858e3246797dd98fee75569aa335b456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a91198_04439edd",
