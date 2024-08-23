@@ -22,6 +22,30 @@
       },
       "revId": "38a296ceacc92415e13d9bd20b928a625c34258a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c307d32_95f85ff4",
+        "filename": "libartbase/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-23T14:13:30Z",
+      "side": 1,
+      "message": "It\u0027d need to go into `android` as well, as was the case before this CL. I opted to express it this way to keep the settings related to the TODO more contained.",
+      "parentUuid": "fc1d0369_dd05120b",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "38a296ceacc92415e13d9bd20b928a625c34258a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
