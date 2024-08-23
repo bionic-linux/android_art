@@ -176,6 +176,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea66a1f5_4c20d7d3",
+        "filename": "test/567-checker-builder-intrinsics/src/TestRotate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:04:29Z",
+      "side": 1,
+      "message": "If that\u0027s the intention, please use `$inline$` in the other ones and add a comment explaining why we want both cases. Without the `$inline$`, we might not inline those and we wouldn\u0027t be testing what you want to test.",
+      "parentUuid": "86a0935b_1eb9e581",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c560d70_736ba721",
         "filename": "test/567-checker-builder-intrinsics/src/TestRotate.java",
         "patchSetId": 1
@@ -228,6 +252,24 @@
       "side": 1,
       "message": "Ok, I\u0027ll fix. What is the limit for the tests written in Java?",
       "parentUuid": "c6bd4dbd_87f419e0",
+      "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6472d948_f6f304bd",
+        "filename": "test/567-checker-builder-intrinsics/src/TestRotate.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-23T08:04:29Z",
+      "side": 1,
+      "message": "100 chars. You can see the word wrapping in the gerrit UI",
+      "parentUuid": "9918587b_fd6efa06",
       "revId": "2a22689ebb47a2252dc8cd178fa9e99ec9afe720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
