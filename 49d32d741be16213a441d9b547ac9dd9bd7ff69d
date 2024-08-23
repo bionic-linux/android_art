@@ -111,6 +111,30 @@
       },
       "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49faf0c_d47a2e71",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-23T14:46:08Z",
+      "side": 1,
+      "message": "Well, the second reason is the main one - anyone who needs to find the owner would look in the directories where the tests are defined, not here.",
+      "parentUuid": "13d1ab19_b0c1a9ab",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 42
+      },
+      "revId": "49d32d741be16213a441d9b547ac9dd9bd7ff69d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
