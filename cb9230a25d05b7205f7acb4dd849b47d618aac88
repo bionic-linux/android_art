@@ -212,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f579c5_b30b5eff",
+        "filename": "build/testing/art_fake_com.android.os.statsd/apex_manifest.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T11:01:23Z",
+      "side": 1,
+      "message": "In fact, this is needed. Soong only adds `provideNativeLibs` for libraries that have stubs (see https://cs.android.com/android/platform/superproject/main/+/main:build/soong/apex/apex.go;l\u003d2007;drc\u003d828ac71890d4a5947e926600bb605cb5233af51a), while I omitted stubs for simplicity.\n\nAdded `provideNativeLibs` back.",
+      "parentUuid": "006e1032_81dd49bc",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8188eeb_5962ae45",
