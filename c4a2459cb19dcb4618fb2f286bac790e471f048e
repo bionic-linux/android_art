@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfa049e_a7db63d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T16:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c39aa1_f4d6ef60",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "c4a2459cb19dcb4618fb2f286bac790e471f048e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f45991bc_fec4272a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-23T16:27:15Z",
       "side": 1,
       "message": "This should have been bumped in https://r.android.com/3204552? Please explain the bump in the CL description.",
+      "range": {
+        "startLine": 734,
+        "startChar": 27,
+        "endLine": 734,
+        "endChar": 28
+      },
+      "revId": "c4a2459cb19dcb4618fb2f286bac790e471f048e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec666e10_3d6cedff",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-23T16:38:38Z",
+      "side": 1,
+      "message": "No, this should be bumped in this CL, as it\u0027s only safe to enable Pre-reboot Dexopt for OTA from AP3A after this change. Updated the CL description.",
+      "parentUuid": "f45991bc_fec4272a",
       "range": {
         "startLine": 734,
         "startChar": 27,
