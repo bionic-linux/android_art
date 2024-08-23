@@ -474,6 +474,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16deb34d_cfa7d7c8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 47
+      },
+      "lineNbr": 4161,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-23T14:29:43Z",
+      "side": 1,
+      "message": "The RI actually does `refc.isInterface()` [1] check. There are also private methods in interfaces, so we might need more sophisticated checks (AFAIU they\u0027re considered as direct methods).\n\n\n[1] https://github.com/openjdk/jdk/blob/60c9b5cd9f18830f0fb1aea6cb3dc43af3908cc5/src/java.base/share/classes/java/lang/invoke/MethodHandles.java#L2739",
+      "parentUuid": "e63007e7_fc42f2b7",
+      "range": {
+        "startLine": 4160,
+        "startChar": 2,
+        "endLine": 4161,
+        "endChar": 46
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32a98c30_6056ac10",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 47
@@ -532,6 +556,30 @@
       "writtenOn": "2024-08-21T15:11:40Z",
       "side": 1,
       "message": "The \"hidden arguments\" for invoke-interface and direct calls to @CriticalNative are never used in the fast cases (no IMT conflict, native implementation already registered), so I\u0027m not sure we should call this \"hidden\" as it implies more similarity than there is. But I don\u0027t have a better name right now, so it\u0027s OK to keep.\n\nThis is also mildly related to the fact that we can pass the argument in RDI (see comment in the new intrinsic slow path) and not use the \"hidden argument register\" RAX.\n\nMaybe it would make sense to shift the arguments to `art_quick_invoke_polymorphic` by one to avoid the unused argument and we would not need a new entrypoint at all. But that would be best done is a separate change. Creating a parent for this change would be perfect but doing it as a cleanup later is OK.",
+      "range": {
+        "startLine": 1980,
+        "startChar": 50,
+        "endLine": 1980,
+        "endChar": 56
+      },
+      "revId": "d1a7080e2af8c0803d4d5796e2fa8d214dd97d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480cb14f_ea195971",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 47
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-23T14:29:43Z",
+      "side": 1,
+      "message": "\u003e Maybe it would make sense to shift the arguments to art_quick_invoke_polymorphic by one to avoid the unused argument and we would not need a new entrypoint at all\n\nIt might also affect `VarHandle` intrinsics and I guess will affect all platforms as `artInvokePolymorphic` is common for all of them. I will do it in a follow-up CL.",
+      "parentUuid": "9ed96081_f117a542",
       "range": {
         "startLine": 1980,
         "startChar": 50,
