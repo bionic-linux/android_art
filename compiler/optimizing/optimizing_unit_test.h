@@ -342,6 +342,53 @@ class OptimizingUnitTestHelper {
     return {if_block, then_block, else_block};
   }
 
+  // Insert "pre-header", "loop-header" and "loop-body" blocks before a given `loop_exit` block
+  // and connect them in a `while (...) { ... }` loop pattern. Return the new blocks.
+  // Adds `HGoto` to the "pre-header" and "loop-body" blocks but leaves the "loop-header" block
+  // empty, leaving the construction of an appropriate condition and `HIf` to the caller.
+  // Note: The `loop_exit` shall be the "then" successor of the "loop-header". If the `loop_exit`
+  // is needed as the "else" successor, use `HBlock::SwapSuccessors()` to adjust the order.
+  std::tuple<HBasicBlock*, HBasicBlock*, HBasicBlock*> CreateWhileLoop(HBasicBlock* loop_exit) {
+    HBasicBlock* pre_header = AddNewBlock();
+    HBasicBlock* loop_header = AddNewBlock();
+    HBasicBlock* loop_body = AddNewBlock();
+
+    HBasicBlock* predecessor = loop_exit->GetSinglePredecessor();
+    predecessor->ReplaceSuccessor(loop_exit, pre_header);
+
+    pre_header->AddSuccessor(loop_header);
+    loop_header->AddSuccessor(loop_exit);  // true successor
+    loop_header->AddSuccessor(loop_body);  // false successor
+    loop_body->AddSuccessor(loop_header);
+
+    MakeGoto(pre_header);
+    MakeGoto(loop_body);
+
+    return {pre_header, loop_header, loop_body};
+  }
+
+  // Insert "pre-header" and "loop" blocks before a given `loop_exit` block and connect them in a
+  // `do { ... } while (...);` loop pattern. Return the new blocks. Adds `HGoto` to the "pre-header"
+  // block but leaves the "loop" block empty, leaving the construction of an appropriate condition
+  // and `HIf` to the caller.
+  // Note: The `loop_exit` shall be the "then" successor of the "loop". If the `loop_exit`
+  // is needed as the "else" successor, use `HBlock::SwapSuccessors()` to adjust the order.
+  std::tuple<HBasicBlock*, HBasicBlock*> CreateDoWhileLoop(HBasicBlock* loop_exit) {
+    HBasicBlock* pre_header = AddNewBlock();
+    HBasicBlock* loop = AddNewBlock();
+
+    HBasicBlock* predecessor = loop_exit->GetSinglePredecessor();
+    predecessor->ReplaceSuccessor(loop_exit, pre_header);
+
+    pre_header->AddSuccessor(loop);
+    loop->AddSuccessor(loop_exit);  // true successor
+    loop->AddSuccessor(loop);  // fakse successor
+
+    MakeGoto(pre_header);
+
+    return {pre_header, loop};
+  }
+
   HBasicBlock* AddNewBlock() {
     HBasicBlock* block = new (GetAllocator()) HBasicBlock(graph_);
     graph_->AddBlock(block);
@@ -578,13 +625,9 @@ class OptimizingUnitTestHelper {
                                           const std::vector<HInstruction*>& args,
                                           uint32_t dex_pc = kNoDexPc) {
     MethodReference method_reference{/* file= */ &graph_->GetDexFile(), /* index= */ method_idx_++};
-    size_t num_64bit_args = std::count_if(args.begin(), args.end(), [](HInstruction* insn) {
-      return DataType::Is64BitType(insn->GetType());
-    });
     HInvokeStaticOrDirect* invoke = new (GetAllocator())
         HInvokeStaticOrDirect(GetAllocator(),
                               args.size(),
-                              /* number_of_out_vregs= */ args.size() + num_64bit_args,
                               return_type,
                               dex_pc,
                               method_reference,
@@ -613,15 +656,24 @@ class OptimizingUnitTestHelper {
     return insn;
   }
 
-  template <typename Type>
-  Type* MakeCondition(HBasicBlock* block,
-                      HInstruction* first,
-                      HInstruction* second,
-                      uint32_t dex_pc = kNoDexPc) {
-    static_assert(std::is_base_of_v<HCondition, Type>);
-    Type* condition = new (GetAllocator()) Type(first, second, dex_pc);
+  HCondition* MakeCondition(HBasicBlock* block,
+                            IfCondition cond,
+                            HInstruction* first,
+                            HInstruction* second,
+                            uint32_t dex_pc = kNoDexPc) {
+    HCondition* condition = graph_->CreateCondition(cond, first, second, dex_pc);
     AddOrInsertInstruction(block, condition);
     return condition;
+  }
+
+  HSelect* MakeSelect(HBasicBlock* block,
+                      HInstruction* condition,
+                      HInstruction* true_value,
+                      HInstruction* false_value,
+                      uint32_t dex_pc = kNoDexPc) {
+    HSelect* select = new (GetAllocator()) HSelect(condition, true_value, false_value, dex_pc);
+    AddOrInsertInstruction(block, select);
+    return select;
   }
 
   HSuspendCheck* MakeSuspendCheck(HBasicBlock* block, uint32_t dex_pc = kNoDexPc) {
@@ -671,13 +723,32 @@ class OptimizingUnitTestHelper {
 
   HPhi* MakePhi(HBasicBlock* block, const std::vector<HInstruction*>& ins) {
     EXPECT_GE(ins.size(), 2u) << "Phi requires at least 2 inputs";
-    HPhi* phi =
-        new (GetAllocator()) HPhi(GetAllocator(), kNoRegNumber, ins.size(), ins[0]->GetType());
+    DataType::Type type = DataType::Kind(ins[0]->GetType());
+    HPhi* phi = new (GetAllocator()) HPhi(GetAllocator(), kNoRegNumber, ins.size(), type);
     for (auto [i, idx] : ZipCount(MakeIterationRange(ins))) {
       phi->SetRawInputAt(idx, i);
     }
     block->AddPhi(phi);
     return phi;
+  }
+
+  std::tuple<HPhi*, HAdd*> MakeLinearLoopVar(HBasicBlock* header,
+                                             HBasicBlock* body,
+                                             int32_t initial,
+                                             int32_t increment) {
+    HInstruction* initial_const = graph_->GetIntConstant(initial);
+    HInstruction* increment_const = graph_->GetIntConstant(increment);
+    return MakeLinearLoopVar(header, body, initial_const, increment_const);
+  }
+
+  std::tuple<HPhi*, HAdd*> MakeLinearLoopVar(HBasicBlock* header,
+                                             HBasicBlock* body,
+                                             HInstruction* initial,
+                                             HInstruction* increment) {
+    HPhi* phi = MakePhi(header, {initial, /* placeholder */ initial});
+    HAdd* add = MakeBinOp<HAdd>(body, phi->GetType(), phi, increment);
+    phi->ReplaceInput(add, 1u);  // Update back-edge input.
+    return {phi, add};
   }
 
   dex::TypeIndex DefaultTypeIndexForType(DataType::Type type) {
