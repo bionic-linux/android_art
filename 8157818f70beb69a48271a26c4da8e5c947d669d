@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab26ecf_55792e7c",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T14:18:14Z",
+      "side": 1,
+      "message": "Looks like a copy-pasted comment from the previous test which is using vector instructions.\n\nFixed.",
+      "parentUuid": "3c7e2efe_5fb9c4f5",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 37
+      },
+      "revId": "8157818f70beb69a48271a26c4da8e5c947d669d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c64a288b_c338f977",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-27T12:04:53Z",
       "side": 1,
       "message": "FYI in the previous files (lexicographically speaking) you didn\u0027t add this comment e.g. `load_store_elimination_test.cc` line 1125. Not sure if you want to replicate it in the other calls or not",
+      "range": {
+        "startLine": 150,
+        "startChar": 60,
+        "endLine": 150,
+        "endChar": 68
+      },
+      "revId": "8157818f70beb69a48271a26c4da8e5c947d669d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "074027bb_8e4e60e1",
+        "filename": "compiler/optimizing/nodes_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T14:18:14Z",
+      "side": 1,
+      "message": "Done (only a few places in LSE tests; a few other calls pass `common_env`).",
+      "parentUuid": "c64a288b_c338f977",
       "range": {
         "startLine": 150,
         "startChar": 60,
