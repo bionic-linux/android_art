@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577af17d_bfa85c78",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 53
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T10:44:47Z",
+      "side": 1,
+      "message": "typo: doesn\u0027t",
+      "range": {
+        "startLine": 1975,
+        "startChar": 79,
+        "endLine": 1975,
+        "endChar": 85
+      },
+      "revId": "451bfc73eed9818371aeb4baac91f5977ae34bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
