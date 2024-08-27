@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80e0c20_59b0dc52",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "AFAICT, both versions correctly express the same in a slightly different way. And I\u0027d prefer to keep the shorter version to avoid breaking the line at the 100-character limit.",
+      "parentUuid": "44ae1f63_1a3e7a3a",
+      "range": {
+        "startLine": 102,
+        "startChar": 64,
+        "endLine": 102,
+        "endChar": 65
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93809d76_6314ae00",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-27T12:59:49Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5c7a10_a423f626",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep this version for consistency with the previous line.",
+      "parentUuid": "93809d76_6314ae00",
       "range": {
         "startLine": 103,
         "startChar": 44,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6116972a_948b7b88",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "Done (weakened the explicit `CHECK` to an implicit `DCHECK`).",
+      "parentUuid": "41345cba_d84055ee",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 44
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e563f2a6_a61f24cb",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-08-27T12:59:49Z",
       "side": 1,
       "message": "Can we eliminate `read-\u003ewrite` through an Invoke?",
+      "range": {
+        "startLine": 1423,
+        "startChar": 2,
+        "endLine": 1423,
+        "endChar": 36
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ece928c_b8b284c6",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "This is checking that we eliminated a `HInstanceFieldGet` from the sequence `HNewInstance, HInstanceFieldGet, HInvokeStaticOrDirect`. The invoke is too late to have any effect.",
+      "parentUuid": "e563f2a6_a61f24cb",
       "range": {
         "startLine": 1423,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7cb69ca_a482e13a",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47ab88d_91821769",
+      "range": {
+        "startLine": 1550,
+        "startChar": 62,
+        "endLine": 1550,
+        "endChar": 98
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e150d811_764e09c1",
@@ -129,6 +249,30 @@
       "writtenOn": "2024-08-27T12:59:49Z",
       "side": 1,
       "message": "Same Q here",
+      "range": {
+        "startLine": 1606,
+        "startChar": 62,
+        "endLine": 1606,
+        "endChar": 98
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f9097c_46dd07fe",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T15:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e150d811_764e09c1",
       "range": {
         "startLine": 1606,
         "startChar": 62,
