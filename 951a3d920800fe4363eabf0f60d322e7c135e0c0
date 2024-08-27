@@ -22,6 +22,30 @@
       },
       "revId": "951a3d920800fe4363eabf0f60d322e7c135e0c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9424837_eb1ec995",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2611,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-08-27T16:18:58Z",
+      "side": 0,
+      "message": "I find it unnecessary, given that the last thing in `UpdateValueRecordForStoreElimination()` is to replace non-loop Phi placeholder with a loop Phi placeholder. Buy I could add that right after the `UpdateValueRecordForStoreElimination()` if you want.",
+      "parentUuid": "4146a63b_dcab0f0e",
+      "range": {
+        "startLine": 2611,
+        "startChar": 6,
+        "endLine": 2611,
+        "endChar": 58
+      },
+      "revId": "951a3d920800fe4363eabf0f60d322e7c135e0c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
