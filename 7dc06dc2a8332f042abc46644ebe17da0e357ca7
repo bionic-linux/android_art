@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9226da7_352d7577",
+        "filename": "libartbase/base/common_art_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-27T12:46:08Z",
+      "side": 1,
+      "message": "Nit: `WIFEXITED(result.status_code) !\u003d 0` (I think we try to follow this explicit style everywhere in ART.)",
+      "range": {
+        "startLine": 678,
+        "startChar": 6,
+        "endLine": 678,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "648cfbb7_c32610f9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartbase/base/common_art_test.cc",
+              "range": {
+                "startLine": 678,
+                "startChar": 0,
+                "endLine": 679,
+                "endChar": 0
+              },
+              "replacement": "  if (WIFEXITED(result.status_code) !\u003d 0 \u0026\u0026 WEXITSTATUS(result.status_code) \u003d\u003d kPostForkFailure) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7dc06dc2a8332f042abc46644ebe17da0e357ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
