@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a62d7c6_391d4643",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 4144,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c26ce03_93cb8455",
+      "range": {
+        "startLine": 4144,
+        "startChar": 20,
+        "endLine": 4144,
+        "endChar": 24
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5223974c_92127033",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-27T07:57:05Z",
       "side": 1,
       "message": "suggestion: add `the`",
+      "range": {
+        "startLine": 4145,
+        "startChar": 69,
+        "endLine": 4145,
+        "endChar": 70
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe21de6_681ad5a8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 4145,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5223974c_92127033",
       "range": {
         "startLine": 4145,
         "startChar": 69,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecea2a8_405470fd",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 52
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f67ff3d_5d22ec72",
+      "range": {
+        "startLine": 1975,
+        "startChar": 79,
+        "endLine": 1975,
+        "endChar": 89
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e2cebe9_7c2f5e98",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-08-27T07:57:05Z",
       "side": 1,
       "message": "Suggestion: `Pretend the method is static, see the gc_visitor comment above.`",
+      "range": {
+        "startLine": 2534,
+        "startChar": 0,
+        "endLine": 2534,
+        "endChar": 54
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a3c558_ca6c2dc5",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2534,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2cebe9_7c2f5e98",
       "range": {
         "startLine": 2534,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "787f1004_e9a282d2",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2550,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Don\u0027t think so, removed.",
+      "parentUuid": "57e877ac_42c3d82c",
+      "range": {
+        "startLine": 2548,
+        "startChar": 0,
+        "endLine": 2550,
+        "endChar": 0
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a689000f_c66fd0a8",
@@ -146,6 +266,30 @@
       "writtenOn": "2024-08-27T07:57:05Z",
       "side": 1,
       "message": "nit: `()` not needed here",
+      "range": {
+        "startLine": 2564,
+        "startChar": 16,
+        "endLine": 2564,
+        "endChar": 17
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13f2a45_4d1cbdc2",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T08:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a689000f_c66fd0a8",
       "range": {
         "startLine": 2564,
         "startChar": 16,
