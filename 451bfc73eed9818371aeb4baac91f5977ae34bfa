@@ -22,6 +22,30 @@
       },
       "revId": "451bfc73eed9818371aeb4baac91f5977ae34bfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47c4388f_7221bc90",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 53
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-27T10:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "577af17d_bfa85c78",
+      "range": {
+        "startLine": 1975,
+        "startChar": 79,
+        "endLine": 1975,
+        "endChar": 85
+      },
+      "revId": "451bfc73eed9818371aeb4baac91f5977ae34bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
