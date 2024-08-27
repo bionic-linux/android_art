@@ -472,6 +472,7 @@ class OptimizingUnitTestHelper {
   HLoadClass* MakeLoadClass(HBasicBlock* block,
                             std::optional<dex::TypeIndex> ti = std::nullopt,
                             std::optional<Handle<mirror::Class>> klass = std::nullopt,
+                            std::initializer_list<HInstruction*> env = {},
                             uint32_t dex_pc = kNoDexPc) {
     HLoadClass* load_class = new (GetAllocator()) HLoadClass(
         graph_->GetCurrentMethod(),
@@ -482,10 +483,14 @@ class OptimizingUnitTestHelper {
         dex_pc,
         /* needs_access_check= */ false);
     AddOrInsertInstruction(block, load_class);
+    ManuallyBuildEnvFor(load_class, env);
     return load_class;
   }
 
-  HNewInstance* MakeNewInstance(HBasicBlock* block, HInstruction* cls, uint32_t dex_pc = kNoDexPc) {
+  HNewInstance* MakeNewInstance(HBasicBlock* block,
+                                HInstruction* cls,
+                                std::initializer_list<HInstruction*> env = {},
+                                uint32_t dex_pc = kNoDexPc) {
     EXPECT_TRUE(cls->IsLoadClass() || cls->IsClinitCheck()) << *cls;
     HLoadClass* load =
         cls->IsLoadClass() ? cls->AsLoadClass() : cls->AsClinitCheck()->GetLoadClass();
@@ -497,6 +502,7 @@ class OptimizingUnitTestHelper {
         /* finalizable= */ false,
         QuickEntrypointEnum::kQuickAllocObjectInitialized);
     AddOrInsertInstruction(block, new_instance);
+    ManuallyBuildEnvFor(new_instance, env);
     return new_instance;
   }
 
@@ -553,11 +559,22 @@ class OptimizingUnitTestHelper {
                           HInstruction* cls,
                           HInstruction* length,
                           size_t component_size_shift = DataType::SizeShift(DataType::Type::kInt32),
+                          std::initializer_list<HInstruction*> env = {},
                           uint32_t dex_pc = kNoDexPc) {
     HNewArray* new_array =
         new (GetAllocator()) HNewArray(cls, length, dex_pc, component_size_shift);
     AddOrInsertInstruction(block, new_array);
+    ManuallyBuildEnvFor(new_array, env);
     return new_array;
+  }
+
+  HArraySet* MakeArraySet(HBasicBlock* block,
+                          HInstruction* array,
+                          HInstruction* index,
+                          HInstruction* value,
+                          uint32_t dex_pc = kNoDexPc) {
+    CHECK(value != nullptr);
+    return MakeArraySet(block, array, index, value, value->GetType(), dex_pc);
   }
 
   HArraySet* MakeArraySet(HBasicBlock* block,
@@ -591,18 +608,22 @@ class OptimizingUnitTestHelper {
 
   HNullCheck* MakeNullCheck(HBasicBlock* block,
                             HInstruction* value,
+                            std::initializer_list<HInstruction*> env = {},
                             uint32_t dex_pc = kNoDexPc) {
     HNullCheck* null_check = new (GetAllocator()) HNullCheck(value, dex_pc);
     AddOrInsertInstruction(block, null_check);
+    ManuallyBuildEnvFor(null_check, env);
     return null_check;
   }
 
   HBoundsCheck* MakeBoundsCheck(HBasicBlock* block,
                                 HInstruction* index,
                                 HInstruction* length,
+                                std::initializer_list<HInstruction*> env = {},
                                 uint32_t dex_pc = kNoDexPc) {
     HBoundsCheck* bounds_check = new (GetAllocator()) HBoundsCheck(index, length, dex_pc);
     AddOrInsertInstruction(block, bounds_check);
+    ManuallyBuildEnvFor(bounds_check, env);
     return bounds_check;
   }
 
@@ -623,15 +644,12 @@ class OptimizingUnitTestHelper {
   HInvokeStaticOrDirect* MakeInvokeStatic(HBasicBlock* block,
                                           DataType::Type return_type,
                                           const std::vector<HInstruction*>& args,
+                                          std::initializer_list<HInstruction*> env = {},
                                           uint32_t dex_pc = kNoDexPc) {
     MethodReference method_reference{/* file= */ &graph_->GetDexFile(), /* index= */ method_idx_++};
-    size_t num_64bit_args = std::count_if(args.begin(), args.end(), [](HInstruction* insn) {
-      return DataType::Is64BitType(insn->GetType());
-    });
     HInvokeStaticOrDirect* invoke = new (GetAllocator())
         HInvokeStaticOrDirect(GetAllocator(),
                               args.size(),
-                              /* number_of_out_vregs= */ args.size() + num_64bit_args,
                               return_type,
                               dex_pc,
                               method_reference,
@@ -645,6 +663,7 @@ class OptimizingUnitTestHelper {
       invoke->SetRawInputAt(idx, ins);
     }
     AddOrInsertInstruction(block, invoke);
+    ManuallyBuildEnvFor(invoke, env);
     return invoke;
   }
 
@@ -660,20 +679,32 @@ class OptimizingUnitTestHelper {
     return insn;
   }
 
-  template <typename Type>
-  Type* MakeCondition(HBasicBlock* block,
-                      HInstruction* first,
-                      HInstruction* second,
-                      uint32_t dex_pc = kNoDexPc) {
-    static_assert(std::is_base_of_v<HCondition, Type>);
-    Type* condition = new (GetAllocator()) Type(first, second, dex_pc);
+  HCondition* MakeCondition(HBasicBlock* block,
+                            IfCondition cond,
+                            HInstruction* first,
+                            HInstruction* second,
+                            uint32_t dex_pc = kNoDexPc) {
+    HCondition* condition = graph_->CreateCondition(cond, first, second, dex_pc);
     AddOrInsertInstruction(block, condition);
     return condition;
   }
 
-  HSuspendCheck* MakeSuspendCheck(HBasicBlock* block, uint32_t dex_pc = kNoDexPc) {
+  HSelect* MakeSelect(HBasicBlock* block,
+                      HInstruction* condition,
+                      HInstruction* true_value,
+                      HInstruction* false_value,
+                      uint32_t dex_pc = kNoDexPc) {
+    HSelect* select = new (GetAllocator()) HSelect(condition, true_value, false_value, dex_pc);
+    AddOrInsertInstruction(block, select);
+    return select;
+  }
+
+  HSuspendCheck* MakeSuspendCheck(HBasicBlock* block,
+                                  std::initializer_list<HInstruction*> env = {},
+                                  uint32_t dex_pc = kNoDexPc) {
     HSuspendCheck* suspend_check = new (GetAllocator()) HSuspendCheck(dex_pc);
     AddOrInsertInstruction(block, suspend_check);
+    ManuallyBuildEnvFor(suspend_check, env);
     return suspend_check;
   }
 

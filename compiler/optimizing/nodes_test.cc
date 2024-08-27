@@ -143,34 +143,16 @@ TEST_F(NodeTest, ClearDominanceThenLoopInformation) {
  * and environment lists.
  */
 TEST_F(NodeTest, RemoveInstruction) {
-  HGraph* graph = CreateGraph();
-  HBasicBlock* entry = new (GetAllocator()) HBasicBlock(graph);
-  graph->AddBlock(entry);
-  graph->SetEntryBlock(entry);
+  HBasicBlock* main = InitEntryMainExitGraphWithReturnVoid();
+
   HInstruction* parameter = MakeParam(DataType::Type::kReference);
-  MakeGoto(entry);
 
-  HBasicBlock* first_block = new (GetAllocator()) HBasicBlock(graph);
-  graph->AddBlock(first_block);
-  entry->AddSuccessor(first_block);
-  HInstruction* null_check = MakeNullCheck(first_block, parameter);
-  MakeReturnVoid(first_block);
-
-  HBasicBlock* exit_block = new (GetAllocator()) HBasicBlock(graph);
-  graph->AddBlock(exit_block);
-  first_block->AddSuccessor(exit_block);
-  MakeExit(exit_block);
-
-  HEnvironment* environment = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, null_check);
-  null_check->SetRawEnvironment(environment);
-  environment->SetRawEnvAt(0, parameter);
-  parameter->AddEnvUseAt(null_check->GetEnvironment(), 0);
+  HInstruction* null_check = MakeNullCheck(main, parameter, /*env=*/ {parameter});
 
   ASSERT_TRUE(parameter->HasEnvironmentUses());
   ASSERT_TRUE(parameter->HasUses());
 
-  first_block->RemoveInstruction(null_check);
+  main->RemoveInstruction(null_check);
 
   ASSERT_FALSE(parameter->HasEnvironmentUses());
   ASSERT_FALSE(parameter->HasUses());
@@ -221,38 +203,31 @@ TEST_F(NodeTest, ParentEnvironment) {
   graph->AddBlock(entry);
   graph->SetEntryBlock(entry);
   HInstruction* parameter1 = MakeParam(DataType::Type::kReference);
-  HInstruction* with_environment = MakeNullCheck(entry, parameter1);
+  HInstruction* with_environment = MakeNullCheck(entry, parameter1, /*env=*/ {parameter1});
   MakeExit(entry);
 
   ASSERT_TRUE(parameter1->HasUses());
   ASSERT_TRUE(parameter1->GetUses().HasExactlyOneElement());
-
-  HEnvironment* environment = new (GetAllocator()) HEnvironment(
-      GetAllocator(), 1, graph->GetArtMethod(), 0, with_environment);
-  HInstruction* const array[] = { parameter1 };
-
-  environment->CopyFrom(ArrayRef<HInstruction* const>(array));
-  with_environment->SetRawEnvironment(environment);
 
   ASSERT_TRUE(parameter1->HasEnvironmentUses());
   ASSERT_TRUE(parameter1->GetEnvUses().HasExactlyOneElement());
 
   HEnvironment* parent1 = new (GetAllocator()) HEnvironment(
       GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
-  parent1->CopyFrom(ArrayRef<HInstruction* const>(array));
+  parent1->CopyFrom(ArrayRef<HInstruction* const>(&parameter1, 1u));
 
   ASSERT_EQ(parameter1->GetEnvUses().SizeSlow(), 2u);
 
   HEnvironment* parent2 = new (GetAllocator()) HEnvironment(
       GetAllocator(), 1, graph->GetArtMethod(), 0, nullptr);
-  parent2->CopyFrom(ArrayRef<HInstruction* const>(array));
+  parent2->CopyFrom(ArrayRef<HInstruction* const>(&parameter1, 1u));
   parent1->SetAndCopyParentChain(GetAllocator(), parent2);
 
   // One use for parent2, and one other use for the new parent of parent1.
   ASSERT_EQ(parameter1->GetEnvUses().SizeSlow(), 4u);
 
   // We have copied the parent chain. So we now have two more uses.
-  environment->SetAndCopyParentChain(GetAllocator(), parent1);
+  with_environment->GetEnvironment()->SetAndCopyParentChain(GetAllocator(), parent1);
   ASSERT_EQ(parameter1->GetEnvUses().SizeSlow(), 6u);
 }
 
