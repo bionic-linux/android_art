@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ae1f63_1a3e7a3a",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "missing `it\u0027s`?",
+      "range": {
+        "startLine": 102,
+        "startChar": 64,
+        "endLine": 102,
+        "endChar": 65
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93809d76_6314ae00",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41345cba_d84055ee",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "Alternative: do `-\u003eAsSuspendCheck()` and update line 249 with `HSuspendCheck* suspend_check_`",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 44
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e563f2a6_a61f24cb",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "Can we eliminate `read-\u003ewrite` through an Invoke?",
+      "range": {
+        "startLine": 1423,
+        "startChar": 2,
+        "endLine": 1423,
+        "endChar": 36
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47ab88d_91821769",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "This works because we are using Int32 and smaller right? Can we DCHECK something like `DCHECK(DataType::IsTypeConversionImplicit(field_type, DataType::Type::kInt32));`?",
+      "range": {
+        "startLine": 1550,
+        "startChar": 62,
+        "endLine": 1550,
+        "endChar": 98
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e150d811_764e09c1",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:59:49Z",
+      "side": 1,
+      "message": "Same Q here",
+      "range": {
+        "startLine": 1606,
+        "startChar": 62,
+        "endLine": 1606,
+        "endChar": 98
+      },
+      "revId": "5280a97e80176e5ab2b1db4e3d0459d7969bca7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
