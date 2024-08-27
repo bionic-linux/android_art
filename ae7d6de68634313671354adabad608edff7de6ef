@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25bab9f_76c381e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 52
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "Thanks! I did a final pass. Feel free to ignore the suggestions if you think that the original comment is clearer",
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c26ce03_93cb8455",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 4144,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "typo: `that\u0027s`",
+      "range": {
+        "startLine": 4144,
+        "startChar": 20,
+        "endLine": 4144,
+        "endChar": 24
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5223974c_92127033",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 4145,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "suggestion: add `the`",
+      "range": {
+        "startLine": 4145,
+        "startChar": 69,
+        "endLine": 4145,
+        "endChar": 70
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f67ff3d_5d22ec72",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 52
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "Suggestion: `doesn\u0027t start`",
+      "range": {
+        "startLine": 1975,
+        "startChar": 79,
+        "endLine": 1975,
+        "endChar": 89
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2cebe9_7c2f5e98",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2534,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "Suggestion: `Pretend the method is static, see the gc_visitor comment above.`",
+      "range": {
+        "startLine": 2534,
+        "startChar": 0,
+        "endLine": 2534,
+        "endChar": 54
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e877ac_42c3d82c",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2550,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "Is this comment still relevant?",
+      "range": {
+        "startLine": 2548,
+        "startChar": 0,
+        "endLine": 2550,
+        "endChar": 0
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a689000f_c66fd0a8",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 52
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T07:57:05Z",
+      "side": 1,
+      "message": "nit: `()` not needed here",
+      "range": {
+        "startLine": 2564,
+        "startChar": 16,
+        "endLine": 2564,
+        "endChar": 17
+      },
+      "revId": "ae7d6de68634313671354adabad608edff7de6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
