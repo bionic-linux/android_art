@@ -56,6 +56,30 @@
       },
       "revId": "7c4135c1ee0e2d9442c7dac9a405b475084cf9a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "122d1588_f2978508",
+        "filename": "tools/ahat/src/test/com/android/ahat/NativeAllocationTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2024-08-27T17:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800c6695_a945a0b6",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 51
+      },
+      "revId": "7c4135c1ee0e2d9442c7dac9a405b475084cf9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
