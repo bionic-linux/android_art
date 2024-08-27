@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7e2efe_5fb9c4f5",
+        "filename": "compiler/optimizing/load_store_elimination_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:04:53Z",
+      "side": 1,
+      "message": "Why does this comment and below talk about `a[i,... i + 3]` when we are just changing `i` (or `i+1`)?",
+      "range": {
+        "startLine": 537,
+        "startChar": 5,
+        "endLine": 537,
+        "endChar": 37
+      },
+      "revId": "8157818f70beb69a48271a26c4da8e5c947d669d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64a288b_c338f977",
+        "filename": "compiler/optimizing/nodes_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-27T12:04:53Z",
+      "side": 1,
+      "message": "FYI in the previous files (lexicographically speaking) you didn\u0027t add this comment e.g. `load_store_elimination_test.cc` line 1125. Not sure if you want to replicate it in the other calls or not",
+      "range": {
+        "startLine": 150,
+        "startChar": 60,
+        "endLine": 150,
+        "endChar": 68
+      },
+      "revId": "8157818f70beb69a48271a26c4da8e5c947d669d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
