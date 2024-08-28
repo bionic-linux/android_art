@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b60c3c80_1d34f42c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T17:39:09Z",
+      "side": 1,
+      "message": "Rashid, we were just back from a bank holiday. Sorry for the late reply.\n\nYour reasoning makes sense to me. Please put an explanation in the code comment, briefly mentioning what you said, and I\u0027ll approve this change.",
+      "parentUuid": "f7d85c86_a30c02ce",
+      "revId": "3dfcf4ffb1697e38193cf751a851e858de3ae50b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17d0647f_982c5357",
         "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
         "patchSetId": 1
