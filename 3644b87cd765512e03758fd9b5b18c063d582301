@@ -16,6 +16,149 @@
       "message": "@solanes@google.com please take a look.",
       "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "467be7d0_665012c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "I am not too fond of waiting until `InstructionSimplifierArm(64)` to unfold since we might be making the compiler\u0027s life more difficult by hiding the Neg+Ror until that late in the pipeline. The good thing is that GVN runs after that.",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0631a116_0dd44738",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2454,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "Unreachable",
+      "range": {
+        "startLine": 2439,
+        "startChar": 0,
+        "endLine": 2454,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17c5c91_3b18410d",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6437,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "This is now unreachable since we should have changed it into neg+ror. Same for arm32",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee48248e_a84471f4",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "style:\n```\n  HBasicBlock* block \u003d rol-\u003eGetBlock();\n  HGraph* graph \u003d block-\u003eGetGraph();\n  ArenaAllocator* allocator \u003d graph-\u003eGetAllocator();\n```",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 41
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371bcf9f_b49dc5ac",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "style: `const` not needed",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6835482_6f6489ed",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "This can be moved to line 333 (changing `ror` into `rol`) and we can get rid of `HNeg* neg \u003d nullptr;` above.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 3
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1704ec9e_f547c6e4",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-28T08:46:08Z",
+      "side": 1,
+      "message": "Add a comment explaining this method.",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
