@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6debecd_2280a028",
+        "filename": "test/2233-metrics-background-thread/run.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T09:44:28Z",
+      "side": 1,
+      "message": "Don\u0027t you need \"-Xmetrics-write-to-logcat:true\" here to avoid calling into statsd? Otherwise, won\u0027t it crash?",
+      "fixSuggestions": [
+        {
+          "fixId": "70bf69c3_edf5130d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2233-metrics-background-thread/run.py",
+              "range": {
+                "startLine": 21,
+                "startChar": 0,
+                "endLine": 22,
+                "endChar": 0
+              },
+              "replacement": "    runtime_option\u003d[\"-Xmetrics-force-enable:true\", \"-Xmetrics-reporting-mods:100\", \"-Xmetrics-write-to-logcat:true\",]\n"
+            }
+          ]
+        }
+      ],
+      "revId": "0c348c93aeb2fa39fd37384c0637e2f61c16cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
