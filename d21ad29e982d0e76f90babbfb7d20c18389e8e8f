@@ -22,6 +22,30 @@
       },
       "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c77872a_bf9c90cc",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-28T16:23:13Z",
+      "side": 0,
+      "message": "Not entirely. As far as I can remember, the Testing ART APEX (`com.android.art.testing`) is used in three workflows:\n\n1. testing using ART\u0027s original test harness (documented in https://cs.android.com/android/platform/superproject/main/+/main:art/test/README.chroot.md);\n2. execution of ART gtests against a Testing ART APEX deployed in a `chroot` environment, via TradeFed (module `ArtGtestsTargetChroot`);\n3. execution of ART gtests against an installed Testing ART APEX, via TradeFed (module `ArtGtestsTargetInstallApex`).",
+      "parentUuid": "f9a9d55f_d357f0e5",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 30
+      },
+      "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
