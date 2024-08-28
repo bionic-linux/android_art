@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a19788_362d853e",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-28T23:23:01Z",
+      "side": 0,
+      "message": "Where did these go?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
