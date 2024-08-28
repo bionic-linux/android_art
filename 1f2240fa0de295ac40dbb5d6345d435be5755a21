@@ -42,6 +42,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82867fc7_a8ef2a40",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "It\u0027s pretty obvious when reading the message what it is, so I don\u0027t think there\u0027s much room for confusion. And a separator is good for readability.",
+      "parentUuid": "62af0e19_4ca7b348",
+      "range": {
+        "startLine": 69,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbbd14c2_b8aab4df",
@@ -55,6 +79,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "I\u0027d put the error reason at the end after a colon, to keep consistent with other error messages.",
+      "range": {
+        "startLine": 73,
+        "startChar": 54,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698c6179_919b1ea1",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Here too I favour readability - the command line can be long so it\u0027s good to have the short info collected at the front.",
+      "parentUuid": "dbbd14c2_b8aab4df",
       "range": {
         "startLine": 73,
         "startChar": 54,
@@ -106,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66dd6caa_bfa1440c",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Not sure it\u0027s worth the bother, but more importantly formatting like that can lose information, e.g. `WCOREDUMP`. Switched to hexadecimal to make it easier to pick out the fields though.",
+      "parentUuid": "e6c65513_5c6b1c1b",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd7e7137_b21ba770",
@@ -119,6 +191,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "Consider ErrnoErrorf since you have changed the return value to a Result?",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e6d80b_39825416",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "It gets a bit verbose, but ok.",
+      "parentUuid": "dd7e7137_b21ba770",
       "range": {
         "startLine": 90,
         "startChar": 6,
@@ -152,6 +248,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe527cb_d11dce47",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done. (Just noticed that FlushClose logs errors but doesn\u0027t bother to log errno with them. But that\u0027s for another time.)",
+      "parentUuid": "a3e83b73_9fb62acd",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 14
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c42ed4_8917b67f",
@@ -165,6 +285,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "Optional: It might be easier to understand to use OR_RETURN above rather than reusing the same return statement for both success and error.",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9b115f_8c031365",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Yes, thanks.",
+      "parentUuid": "64c42ed4_8917b67f",
       "range": {
         "startLine": 110,
         "startChar": 11,
@@ -198,6 +342,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67cea2ab_a7ae1acc",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "It should work - see [here](https://cs.android.com/android/platform/superproject/main/+/main:external/googletest/googletest/include/gtest/gtest-assertion-result.h;l\u003d76;drc\u003df10e11fb27301fba21caa71030bb5024e67aa135). I guess there\u0027s magic in the gtest macros to do special stuff for these objects.",
+      "parentUuid": "e5386d89_9d45edc2",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b24e61ac_f9430fe9",
@@ -211,6 +379,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1197,
+        "startChar": 14,
+        "endLine": 1197,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce77dac_a3c6f8e9",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "b24e61ac_f9430fe9",
       "range": {
         "startLine": 1197,
         "startChar": 14,
@@ -244,6 +436,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48c363b_aa698f3f",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dee1ee09_74a87b30",
+      "range": {
+        "startLine": 1213,
+        "startChar": 14,
+        "endLine": 1213,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5dd95a_793be44d",
@@ -257,6 +473,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1249,
+        "startChar": 14,
+        "endLine": 1249,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8348716_e35d4e06",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5dd95a_793be44d",
       "range": {
         "startLine": 1249,
         "startChar": 14,
@@ -290,6 +530,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30310790_05f1993b",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2b0f23_9b92e172",
+      "range": {
+        "startLine": 1312,
+        "startChar": 0,
+        "endLine": 1319,
+        "endChar": 23
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4956548d_94c549d1",
@@ -303,6 +567,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "EXPECT_THAT(..., HasValue(1))?",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1332,
+        "endChar": 23
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d749068_f56f8e87",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4956548d_94c549d1",
       "range": {
         "startLine": 1325,
         "startChar": 0,
@@ -336,6 +624,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b38feb_8e35728b",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6075d0c3_a230ccea",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3246c25d_b1efb162",
@@ -349,6 +661,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "EXPECT_THAT(..., HasValue(Ne(0))?",
+      "range": {
+        "startLine": 1558,
+        "startChar": 0,
+        "endLine": 1562,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bab429c_a5e20f72",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3246c25d_b1efb162",
       "range": {
         "startLine": 1558,
         "startChar": 0,
@@ -382,6 +718,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "725c600d_2204600b",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a26f229a_62a15850",
+      "range": {
+        "startLine": 1564,
+        "startChar": 0,
+        "endLine": 1568,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86ac56fe_649b9f94",
@@ -395,6 +755,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "HasError(HasSubstr(\"dex2oat didn\u0027t terminate normally ...\")?",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1963,
+        "endChar": 15
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92191d84_c2ddaece",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Or `Not(HasValue(0))` perhaps, nobody knows. This test is disabled and I can\u0027t see any actual implementation of the `--crash-on-linkage-violation` flag. Since I can\u0027t test it I\u0027ll just leave it like this. This ought to be cleaned up, but I won\u0027t do that here.",
+      "parentUuid": "86ac56fe_649b9f94",
       "range": {
         "startLine": 1963,
         "startChar": 6,
@@ -428,6 +812,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14c3d42_0f383467",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba863dbb_25d3f09a",
+      "range": {
+        "startLine": 1969,
+        "startChar": 14,
+        "endLine": 1969,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0543f314_c12d9617",
@@ -451,6 +859,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b413650_e2cfa7f3",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0543f314_c12d9617",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "871097ca_7729a0c7",
@@ -464,6 +896,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "OR_ASSERT_FAIL",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 62
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcadd96_40f908ef",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "871097ca_7729a0c7",
       "range": {
         "startLine": 159,
         "startChar": 2,
@@ -515,6 +971,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d31cd06_234e3e7f",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f222685_341a713f",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 63
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d28459d7_cae71e38",
@@ -528,6 +1008,30 @@
       "writtenOn": "2024-08-28T12:07:56Z",
       "side": 1,
       "message": "Same as above.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 5
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a0cfac_9a4c083d",
+        "filename": "runtime/dex2oat_environment_test.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:32:08Z",
+      "side": 1,
+      "message": "Changed to hexadecimal only.",
+      "parentUuid": "d28459d7_cae71e38",
       "range": {
         "startLine": 245,
         "startChar": 0,
