@@ -6,26 +6,6 @@
  * You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#include <stdlib.h>
-
-#include "android-base/logging.h"
-#include "android-base/macros.h"
-#include "android/binder_interface_utils.h"
-#include "android/binder_process.h"
-#include "artd.h"
-
-namespace art {
-namespace artd {
-namespace {
-
 constexpr int kErrorUsage = 100;
 
 [[noreturn]] void ParseError(const std::string& error_msg) {
