@@ -1,0 +1,541 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62af0e19_4ca7b348",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "I would avoid this colon because I feel like a colon in an error message is usually leading the reason of the error (e.g., `ErrnoErrorf` appends `: strerror(errno)` to the error message).",
+      "range": {
+        "startLine": 69,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ff3ce6e0_45fc394e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dex2oat/dex2oat_cts_test.cc",
+              "range": {
+                "startLine": 69,
+                "startChar": 0,
+                "endLine": 70,
+                "endChar": 0
+              },
+              "replacement": "      return ErrnoErrorf(\"Failed to finish dex2oat invocation {}\", android::base::Join(argv, \" \"));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbd14c2_b8aab4df",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "I\u0027d put the error reason at the end after a colon, to keep consistent with other error messages.",
+      "range": {
+        "startLine": 73,
+        "startChar": 54,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c65513_5c6b1c1b",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Format the error reason better to help improve debuggability?",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f11c041d_b04464bf",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dex2oat/dex2oat_cts_test.cc",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "      return Errorf(\"dex2oat didn\u0027t terminate normally ({} \u003d {}): {}\",\n                    WIFSIGNALED(res.status_code) ? \"signal\" : \"exit code\",\n                    WIFSIGNALED(res.status_code) ? WTERMSIG(res.status_code) : WEXITSTATUS(res.status_code),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7e7137_b21ba770",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Consider ErrnoErrorf since you have changed the return value to a Result?",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e83b73_9fb62acd",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Consider Errorf?",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 14
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c42ed4_8917b67f",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Optional: It might be easier to understand to use OR_RETURN above rather than reusing the same return statement for both success and error.",
+      "range": {
+        "startLine": 110,
+        "startChar": 11,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5386d89_9d45edc2",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Looks like the consumers cast this to a boolean. Is that a correct usage of `AssertionResult`? And does that print helpful error messages?\n\nAlternatively, return `Result\u003cvoid\u003e` here and use `OR_ASSERT_FAIL` and the consumer side.",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b24e61ac_f9430fe9",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1197,
+        "startChar": 14,
+        "endLine": 1197,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee1ee09_74a87b30",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1213,
+        "startChar": 14,
+        "endLine": 1213,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5dd95a_793be44d",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1249,
+        "startChar": 14,
+        "endLine": 1249,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2b0f23_9b92e172",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "EXPECT_THAT(..., HasValue(1))?",
+      "range": {
+        "startLine": 1312,
+        "startChar": 0,
+        "endLine": 1319,
+        "endChar": 23
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4956548d_94c549d1",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "EXPECT_THAT(..., HasValue(1))?",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1332,
+        "endChar": 23
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6075d0c3_a230ccea",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "EXPECT_THAT(..., HasValue(Ne(0))?",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3246c25d_b1efb162",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "EXPECT_THAT(..., HasValue(Ne(0))?",
+      "range": {
+        "startLine": 1558,
+        "startChar": 0,
+        "endLine": 1562,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26f229a_62a15850",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "EXPECT_THAT(..., HasValue(Ne(0))?",
+      "range": {
+        "startLine": 1564,
+        "startChar": 0,
+        "endLine": 1568,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ac56fe_649b9f94",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "HasError(HasSubstr(\"dex2oat didn\u0027t terminate normally ...\")?",
+      "range": {
+        "startLine": 1963,
+        "startChar": 6,
+        "endLine": 1963,
+        "endChar": 15
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba863dbb_25d3f09a",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "HasValue(0)?",
+      "range": {
+        "startLine": 1969,
+        "startChar": 14,
+        "endLine": 1969,
+        "endChar": 18
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0543f314_c12d9617",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "OR_RETURN",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "871097ca_7729a0c7",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "OR_ASSERT_FAIL",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 62
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f222685_341a713f",
+        "filename": "dex2oat/dex2oat_vdex_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "OR_ASSERT_FAIL",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 63
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "667afedd_9a73d952",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "dex2oat/dex2oat_vdex_test.cc",
+              "range": {
+                "startLine": 190,
+                "startChar": 0,
+                "endLine": 192,
+                "endChar": 0
+              },
+              "replacement": "  OR_ASSERT_FAIL(res \u003d GetVerifierDeps(GetVdex(dex_file), dex_file.get()));\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28459d7_cae71e38",
+        "filename": "runtime/dex2oat_environment_test.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T12:07:56Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 5
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
