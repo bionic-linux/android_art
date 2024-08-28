@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f696d8b_8c41009c",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-28T18:13:32Z",
+      "side": 1,
+      "message": "I would try it without that. I think the missing runFinalization() calls are the problem.",
+      "parentUuid": "c65e08bd_c24b581b",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40889d14_e7a13d7d",
         "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
         "patchSetId": 1
@@ -96,6 +120,30 @@
           ]
         }
       ],
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d27f46c_8baf7459",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-28T18:13:32Z",
+      "side": 1,
+      "message": "A small number of iterations (maybe 3) of\n\nSystem.gc(); System.runFinalization();\n\nwould be better. Otherwise, there\u0027s probably some risk of running lots of GCs, but not getting around to actually running the cleanup code afterwards.",
+      "parentUuid": "40889d14_e7a13d7d",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
