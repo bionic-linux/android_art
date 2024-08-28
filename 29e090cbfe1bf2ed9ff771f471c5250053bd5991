@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02743270_cbc17d3c",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T15:29:10Z",
+      "side": 1,
+      "message": "I don\u0027t know if the list of partitions can change during an OTA update, so let\u0027s assume it can.\n\n1. If a partition is deleted, we can tolerate this by making the mount optional.\n2. If a partition is added, there is not much we can do. If the added partition only contains apps, then we can\u0027t dexopt those apps anyway because we are relying on the package list provided by the old system, which doesn\u0027t contain those apps. If the added partition contains native libraries that are essential for `artd`, `dex2oat`, etc., then missing them will cause Pre-reboot Dexopt to fail, but this case should be fairly rare.",
+      "parentUuid": "997ebe74_d615f6c8",
+      "range": {
+        "startLine": 542,
+        "startChar": 6,
+        "endLine": 542,
+        "endChar": 46
+      },
+      "revId": "29e090cbfe1bf2ed9ff771f471c5250053bd5991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fe8be06_fa3f47b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-28T14:05:46Z",
       "side": 1,
       "message": "Is it certain that there are no parallel test runs on the device?",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "29e090cbfe1bf2ed9ff771f471c5250053bd5991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f29bbcc_47c549ae",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T15:29:10Z",
+      "side": 1,
+      "message": "This is not a new problem. Since this test mutates the global state, running it in parallel with another Pre-reboot Dexopt test makes both fail anyway. Line 81-83 does a check to prevent this from happening on a best-effort basis.",
+      "parentUuid": "3fe8be06_fa3f47b4",
       "range": {
         "startLine": 96,
         "startChar": 16,
