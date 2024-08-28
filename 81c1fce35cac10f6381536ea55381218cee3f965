@@ -39,6 +39,30 @@
       },
       "revId": "81c1fce35cac10f6381536ea55381218cee3f965",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c360b8_c10fddb6",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3737,
+      "author": {
+        "id": 1562839
+      },
+      "writtenOn": "2024-08-28T21:07:51Z",
+      "side": 1,
+      "message": "Good catch, added it to those areas and also noticed one in `IsOutOfMemoryOnAllocation` hopefully I didn\u0027t miss out any, ptal and let me know if it looks good now.",
+      "parentUuid": "cc4c6f0a_f7a1a0f8",
+      "range": {
+        "startLine": 3737,
+        "startChar": 2,
+        "endLine": 3737,
+        "endChar": 74
+      },
+      "revId": "81c1fce35cac10f6381536ea55381218cee3f965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
