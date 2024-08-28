@@ -70,8 +70,9 @@ public class Main {
     }
 
     private static void doUnload() {
-        for (int i = 0; i < 5; ++i) {
-            Runtime.getRuntime().gc();
+        for (int i = 0; i < 3; ++i) {
+            System.gc();
+            System.runFinalization();
         }
     }
 }
