@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a516e95_b052b9be",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T01:38:59Z",
+      "side": 1,
+      "message": "(If this test works for host it should in principle work the same way in the chroot, but that doesn\u0027t mean it\u0027s necessary to go there. Actually I rather wonder if it brings enough value on host.)",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "9ca487987bd20f70251c91fe17ee51d7b65e4801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

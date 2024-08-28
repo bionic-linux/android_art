@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a9d55f_d357f0e5",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T01:38:59Z",
+      "side": 0,
+      "message": "Is the testing APEX solely for chroot testing? @rpl@google.com",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 30
+      },
+      "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecf980d_ca6f6888",
+        "filename": "libartpalette/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T01:38:59Z",
+      "side": 1,
+      "message": "Suggest repurposing libartpalette_defaults for sharing between libartpalette and this, because that defaults seems pointless right now.\n\nAlso, why not use art_defaults here?",
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69124ce2_f2ee8c85",
+        "filename": "libartpalette/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T01:38:59Z",
+      "side": 1,
+      "message": "If you delete these two, doesn\u0027t it become a matter of simply copying `libartpalette_fake.so` to `libartpalette-system.so` instead? Is this better for some reason?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 75
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ce8b15_4f5a08b3",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T01:38:59Z",
+      "side": 1,
+      "message": "Instead of copying here, would it work to symlink? The benefit with that is that it\u0027s more obvious it\u0027s a fake when someone just looks around in the chroot. It\u0027s not a biggie but could be nice if it\u0027s no extra hassle.",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 11
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
