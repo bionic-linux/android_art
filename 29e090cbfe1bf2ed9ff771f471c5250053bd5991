@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997ebe74_d615f6c8",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T14:05:46Z",
+      "side": 1,
+      "message": "There\u0027s an edge case here if the property changes value in an OTA update. I think it\u0027s ok to fail then, but the problem may not be obvious. I\u0027m not sure what we can do to improve that, but it could be worth mentioning in the SAC docs.",
+      "range": {
+        "startLine": 542,
+        "startChar": 6,
+        "endLine": 542,
+        "endChar": 46
+      },
+      "revId": "29e090cbfe1bf2ed9ff771f471c5250053bd5991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe8be06_fa3f47b4",
+        "filename": "dexopt_chroot_setup/dexopt_chroot_setup_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T14:05:46Z",
+      "side": 1,
+      "message": "Is it certain that there are no parallel test runs on the device?",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "29e090cbfe1bf2ed9ff771f471c5250053bd5991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
