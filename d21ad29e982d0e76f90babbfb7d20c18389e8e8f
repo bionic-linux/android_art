@@ -46,6 +46,30 @@
       },
       "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5ea637_88157b2e",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T16:34:33Z",
+      "side": 0,
+      "message": "Thanks for the details, Roland!\n\nMy understanding is that:\n- Both (1) and (2) are chroot testing, where it makes sense to remove `art_libartpalette_tests`.\n- (3) is for local testing only and is [not continuously run](https://android-build.corp.google.com/test_hub/search/?filter\u003dcurrentlyFailing\u0026invfilter\u003dunhealthyInvocations\u0026invfilter\u003dstaleInvocations\u0026query\u003dmodule%3AArtGtestsTargetInstallApex). I think it\u0027s fine to remove `art_libartpalette_tests` from it, unless someone is against it.\n\nMartin, WDYT?",
+      "parentUuid": "9c77872a_bf9c90cc",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 30
+      },
+      "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
