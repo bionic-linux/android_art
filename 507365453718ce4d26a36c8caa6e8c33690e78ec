@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a950752_8a914ca0",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-08-28T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934e8534_ae83d9f8",
+      "range": {
+        "startLine": 238,
+        "startChar": 27,
+        "endLine": 238,
+        "endChar": 82
+      },
+      "revId": "507365453718ce4d26a36c8caa6e8c33690e78ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6080fc60_0ce356f1",
