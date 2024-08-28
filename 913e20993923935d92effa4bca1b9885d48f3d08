@@ -1,0 +1,103 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8ed8bd_a6cacf31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-28T17:37:02Z",
+      "side": 1,
+      "message": "Adding Hans to take a look.",
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65e08bd_c24b581b",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-28T17:37:02Z",
+      "side": 1,
+      "message": "Maybe adding a small wait before this might solve the issue?",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "717d3e17_9d0f45e6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 65,
+                "endChar": 0
+              },
+              "replacement": "        // Wait for the JIT to finish compiling the method.\n        Thread.sleep(1000);\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40889d14_e7a13d7d",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-28T17:37:02Z",
+      "side": 1,
+      "message": "To me it seems like even 5 should have been sufficient. Are you sure there\u0027s nothing else wrong going on?",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "248ecbc4_0bea0893",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": "        for (int i \u003d 0; i \u003c 5; ++i) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
