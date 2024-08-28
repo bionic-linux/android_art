@@ -52,6 +52,24 @@
       "parentUuid": "a6debecd_2280a028",
       "revId": "0c348c93aeb2fa39fd37384c0637e2f61c16cfcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2c31e1_45f17fbe",
+        "filename": "test/2233-metrics-background-thread/run.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:02:34Z",
+      "side": 1,
+      "message": "SGTM. If `-Xmetrics-write-to-stats:false` is necessary, please add it to test 2232 too.",
+      "parentUuid": "06fec7d9_7b0a5065",
+      "revId": "0c348c93aeb2fa39fd37384c0637e2f61c16cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
