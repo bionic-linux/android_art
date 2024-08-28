@@ -66,6 +66,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c29019_aded4b88",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T18:46:38Z",
+      "side": 1,
+      "message": "Actually, ErrnoErrorf will add another colon. That makes this look a bit silly. I changed to a different way to provide separators.",
+      "parentUuid": "82867fc7_a8ef2a40",
+      "range": {
+        "startLine": 69,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbbd14c2_b8aab4df",
