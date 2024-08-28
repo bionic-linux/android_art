@@ -16,6 +16,29 @@
       "message": "Is there anything else to do here, or does it look good to land ?",
       "revId": "81c1fce35cac10f6381536ea55381218cee3f965",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4c6f0a_f7a1a0f8",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3737,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-28T00:29:08Z",
+      "side": 1,
+      "message": "Apologies, but I just noticed that this is also set in ClearGrowthLimit(), and in a couple of other places via compare_exchange:\n\nReduceTargetFoorprintTask::Run() and Heap::GrowHeapOnJankPerceptibleSwitch() .",
+      "range": {
+        "startLine": 3737,
+        "startChar": 2,
+        "endLine": 3737,
+        "endChar": 74
+      },
+      "revId": "81c1fce35cac10f6381536ea55381218cee3f965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
