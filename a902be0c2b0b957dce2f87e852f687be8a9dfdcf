@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c57f07b3_aa2629dc",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T12:34:02Z",
+      "side": 1,
+      "message": "Perhaps extend the message to `\"Call to fake \" #method_name`, in case the stack trace isn\u0027t available or helpful?",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ccfad5f_3030b2ff",
         "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
         "patchSetId": 5
