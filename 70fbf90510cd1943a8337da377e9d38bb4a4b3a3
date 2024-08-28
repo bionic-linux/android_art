@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf92f90_9035b5b5",
+        "filename": "libartpalette/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:54:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fecf980d_ca6f6888",
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69124ce2_f2ee8c85",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8f0b0f_c51ed6e0",
+        "filename": "libartpalette/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:54:09Z",
+      "side": 1,
+      "message": "`stem` determines the `SONAME` entry in the ELF header, so it must match the `NEEDED` entries of the consumers. Without `stem`, I got crashes from the bionic dynamic linker saying library not found.",
+      "parentUuid": "69124ce2_f2ee8c85",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 75
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ce8b15_4f5a08b3",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-08-28T01:38:59Z",
       "side": 1,
       "message": "Instead of copying here, would it work to symlink? The benefit with that is that it\u0027s more obvious it\u0027s a fake when someone just looks around in the chroot. It\u0027s not a biggie but could be nice if it\u0027s no extra hassle.",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 11
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c4c010_11c1b940",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:54:09Z",
+      "side": 1,
+      "message": "Symlinking doesn\u0027t work because `/system/${LIB}/art_fake` is not in `permitted.paths` and I can\u0027t find a way to add it (I tried adding `permittedPaths: /system/${LIB}/art_fake` to `$linkerconfig_root/system/etc/linker.config.pb`, but `linkerconfig` ignored it, which is expected because `permittedPaths` is only for APEX according to [system/linkerconfig/README.md](https://cs.android.com/android/platform/superproject/main/+/main:system/linkerconfig/README.md))",
+      "parentUuid": "48ce8b15_4f5a08b3",
       "range": {
         "startLine": 215,
         "startChar": 9,
