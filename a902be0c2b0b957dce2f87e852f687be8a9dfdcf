@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6044e3d5_5e2f767b",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T11:15:00Z",
+      "side": 1,
+      "message": "+1 to rpl@ - this order is less obvious so it\u0027s more likely that new methods get added in the wrong places. But not that it really matters that much.",
+      "parentUuid": "c75a5c50_43323bb8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb9094cd_4432a9f3",

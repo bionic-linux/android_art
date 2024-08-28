@@ -34,6 +34,24 @@
       "parentUuid": "35599382_2decd3c3",
       "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ba38f9_1f9e59ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-28T11:15:00Z",
+      "side": 1,
+      "message": "Yes, building was all I asked for, thanks.",
+      "parentUuid": "ed502c6d_1bc44aef",
+      "revId": "d21ad29e982d0e76f90babbfb7d20c18389e8e8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
