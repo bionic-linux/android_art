@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36fd39f0_f19fd515",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:01:20Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I think this is good enough for now because code-searching `\\\"Fake!\\\"` will yield quite good results.",
+      "parentUuid": "c57f07b3_aa2629dc",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ccfad5f_3030b2ff",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "+1 to rpl@ - this order is less obvious so it\u0027s more likely that new methods get added in the wrong places. But not that it really matters that much.",
       "parentUuid": "c75a5c50_43323bb8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "a902be0c2b0b957dce2f87e852f687be8a9dfdcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1f908d_73d726a9",
+        "filename": "test/testing/art_fake_com.android.os.statsd/libstatspull.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:01:20Z",
+      "side": 1,
+      "message": "I really feel keeping the original order is better for maintainability. With the same order, a reader can easily check this file against libstatspull.map.txt to validate that they are in sync. It would be much harder if the orders were different. I understanding is that new methods are supposed to be added at the end instead of being inserted, as people do with libstatspull.map.txt, so I don\u0027t think it\u0027s \"the wrong places\".",
+      "parentUuid": "6044e3d5_5e2f767b",
       "range": {
         "startLine": 27,
         "startChar": 0,

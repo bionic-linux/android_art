@@ -125,6 +125,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8faa4592_aa2c010b",
+        "filename": "build/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-28T13:01:20Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion.",
+      "parentUuid": "1051ee2e_33cdfa5e",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "cb9230a25d05b7205f7acb4dd849b47d618aac88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d908591_23f0ec54",
