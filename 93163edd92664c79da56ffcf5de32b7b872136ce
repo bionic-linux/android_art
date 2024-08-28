@@ -1,0 +1,616 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d9af799_f9ef31fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 55
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42eea42d_bd7af795",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "Can you add comments about all these lines?",
+      "range": {
+        "startLine": 1397,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 66
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d09ebc_93786c6a",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "ditto: please add a comment what\u0027s happening below.",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d934e949_10ba30d5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "maybe say what it does instead of does not.",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4ef472_bb2dded5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "no need?",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 10
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53dc9e9c_8e295597",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4125,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to put this?",
+      "range": {
+        "startLine": 4124,
+        "startChar": 0,
+        "endLine": 4125,
+        "endChar": 61
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5dfc13e_81db8835",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4143,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": ", the underlying method can still be and interface or a direct method.",
+      "range": {
+        "startLine": 4143,
+        "startChar": 36,
+        "endLine": 4143,
+        "endChar": 50
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a96b8a_516e0d1f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4145,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "`the subtype check *below* will fail` ?",
+      "range": {
+        "startLine": 4145,
+        "startChar": 88,
+        "endLine": 4145,
+        "endChar": 92
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e67294af_c79b0916",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/intrinsics_x86_64.cc",
+              "range": {
+                "startLine": 4147,
+                "startChar": 0,
+                "endLine": 4147,
+                "endChar": 0
+              },
+              "replacement": "  // TODO(b/297147201): check whether it can be more precise and what d8/r8 can produce.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb32dac_5cd2f06e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4157,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "explicitly use `kMethodRegisterArgument`, with a comment that it\u0027s the hidden argument.",
+      "range": {
+        "startLine": 4157,
+        "startChar": 23,
+        "endLine": 4157,
+        "endChar": 71
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c18019_bb570c48",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4159,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "Get",
+      "range": {
+        "startLine": 4159,
+        "startChar": 5,
+        "endLine": 4159,
+        "endChar": 9
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4f4651_bbcd5f27",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4167,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "Comment on why `no read barrier` is ok.",
+      "range": {
+        "startLine": 4167,
+        "startChar": 2,
+        "endLine": 4167,
+        "endChar": 41
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a417c4_121e2302",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "nit: add comments.",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce8bd7b_f0535235",
+        "filename": "test/2277-methodhandle-invokeexact/src-multidex/Multi.java",
+        "patchSetId": 55
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "Could you avoid printing and programmatically say what you expect instead?",
+      "fixSuggestions": [
+        {
+          "fixId": "fec15912_3221a22b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2277-methodhandle-invokeexact/src-multidex/Multi.java",
+              "range": {
+                "startLine": 32,
+                "startChar": 0,
+                "endLine": 33,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aacda550_3dd162b1",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 55
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-28T22:01:21Z",
+      "side": 1,
+      "message": "ditto about avoiding printing here and below.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "1efdc482_70fcb02d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 38,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 50,
+                "startChar": 0,
+                "endLine": 51,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 52,
+                "startChar": 0,
+                "endLine": 53,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 62,
+                "startChar": 0,
+                "endLine": 64,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 68,
+                "startChar": 0,
+                "endLine": 69,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 70,
+                "startChar": 0,
+                "endLine": 71,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 75,
+                "startChar": 0,
+                "endLine": 78,
+                "endChar": 0
+              },
+              "replacement": "      } catch (RuntimeException e) {}\n"
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 86,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 90,
+                "startChar": 0,
+                "endLine": 91,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 93,
+                "startChar": 0,
+                "endLine": 94,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 96,
+                "startChar": 0,
+                "endLine": 97,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 99,
+                "startChar": 0,
+                "endLine": 100,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 102,
+                "startChar": 0,
+                "endLine": 103,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 111,
+                "startChar": 0,
+                "endLine": 112,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 117,
+                "startChar": 0,
+                "endLine": 118,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 121,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 254,
+                "startChar": 0,
+                "endLine": 255,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 269,
+                "startChar": 0,
+                "endLine": 270,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "test/2277-methodhandle-invokeexact/src/Main.java",
+              "range": {
+                "startLine": 278,
+                "startChar": 0,
+                "endLine": 279,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
