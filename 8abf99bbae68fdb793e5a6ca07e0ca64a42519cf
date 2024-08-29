@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5f975a_be131e6d",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T18:05:15Z",
+      "side": 1,
+      "message": "Not a major issue but why not only check for `primitive or string` as the threshold check has already happened above?",
+      "range": {
+        "startLine": 105,
+        "startChar": 10,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f5d97a5d_89f74d57",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/heap-inl.h",
+              "range": {
+                "startLine": 105,
+                "startChar": 0,
+                "endLine": 106,
+                "endChar": 0
+              },
+              "replacement": "      if (klass-\u003eIsPrimitiveArray() || klass-\u003eIsStringClass()) {\n"
+            },
+            {
+              "path": "runtime/gc/heap-inl.h",
+              "range": {
+                "startLine": 446,
+                "startChar": 0,
+                "endLine": 452,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "8abf99bbae68fdb793e5a6ca07e0ca64a42519cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
