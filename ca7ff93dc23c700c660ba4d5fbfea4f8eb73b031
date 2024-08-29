@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "441c3e70_bf163341",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T00:41:00Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Removed the declarations in specific GC header files as all of them include this header file.",
+      "parentUuid": "a73c583c_0d4d06f8",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 26
+      },
+      "revId": "ca7ff93dc23c700c660ba4d5fbfea4f8eb73b031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fddb613_5215166d",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-08-28T23:23:01Z",
       "side": 1,
       "message": "Can we make this more correct and precise? Maybe \"Deallocate unamrked objects referenced by \u0027allocations\u0027 that reside either in the given ContinuousSpaces or in LargeObjectsSpace\"?\n\nActually \u0027allocations\u0027 seems like a weird parameter name. \u0027object_list\u0027?",
+      "range": {
+        "startLine": 162,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 89
+      },
+      "revId": "ca7ff93dc23c700c660ba4d5fbfea4f8eb73b031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa1edca_2f8ab3ee",
+        "filename": "runtime/gc/collector/garbage_collector.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T00:41:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fddb613_5215166d",
       "range": {
         "startLine": 162,
         "startChar": 2,

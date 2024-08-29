@@ -22,6 +22,30 @@
       },
       "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78407739_f923e8e6",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T00:41:00Z",
+      "side": 0,
+      "message": "In SweepArray(). To save on allocating yet another vma for this, I\u0027m doing malloc allocation in the function. In case allocation fails then we free one object at a time.",
+      "parentUuid": "e8a19788_362d853e",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "241c50c4e1424a5ce277375c5d0874fcc2543792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
