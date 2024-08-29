@@ -145,10 +145,13 @@ class ReadBarrierSystemArrayCopySlowPathX86_64 : public SlowPathCode {
   DISALLOW_COPY_AND_ASSIGN(ReadBarrierSystemArrayCopySlowPathX86_64);
 };
 
-// invoke-polymorphic's slow-path which does not move arguments.
+// In MethodHandle.invokeExact intrinsic arguments are rearranged to match target method call.
+// IntrinsicSlowPath will try to restore original order. Instead, we call
+// art_quick_invoke_polymorphic_with_hidden_receiver which expects that modified order and only
+// needs MethodHandle object to be passed in RDI register.
 class InvokePolymorphicSlowPathX86_64 : public SlowPathCode {
  public:
-  explicit InvokePolymorphicSlowPathX86_64(HInstruction* instruction, CpuRegister method_handle)
+  InvokePolymorphicSlowPathX86_64(HInstruction* instruction, CpuRegister method_handle)
       : SlowPathCode(instruction), method_handle_(method_handle) {
     DCHECK(instruction->IsInvokePolymorphic());
   }
@@ -4139,9 +4142,10 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
   Address method_handle_kind = Address(method_handle, mirror::MethodHandle::HandleKindOffset());
 
   // If it is not InvokeVirtual then go to slow path.
-  // Even if MethodHandle's kind is kInvokeVirtual underlying method still can be an interface or
-  // direct method (that's what current `MethodHandles$Lookup.findVirtual` is doing). We don't check
-  // whether `method` is an interface method explicitly: in that case the subtype check will fail.
+  // Even if MethodHandle's kind is kInvokeVirtual, the underlying method can still be an interface
+  // or a direct method (that's what current `MethodHandles$Lookup.findVirtual` is doing). We don't
+  // check whether `method` is an interface method explicitly: in that case the subtype check below
+  // will fail.
   // TODO(b/297147201): check whether it can be more precise and what d8/r8 can produce.
   __ cmpl(method_handle_kind, Immediate(mirror::MethodHandle::Kind::kInvokeVirtual));
   __ j(kNotEqual, slow_path->GetEntryLabel());
@@ -4155,7 +4159,7 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
 
   CpuRegister method = locations->GetTemp(0).AsRegister<CpuRegister>();
 
-  // Find method to call.
+  // Get method to call.
   __ movq(method, Address(method_handle, mirror::MethodHandle::ArtFieldOrMethodOffset()));
 
   CpuRegister receiver = locations->InAt(1).AsRegister<CpuRegister>();
@@ -4163,6 +4167,7 @@ void IntrinsicCodeGeneratorX86_64::VisitMethodHandleInvokeExact(HInvoke* invoke)
   // Using vtable_index register as temporary in subtype check. It will be overridden later.
   // If `method` is an interface method this check will fail.
   CpuRegister vtable_index = locations->GetTemp(1).AsRegister<CpuRegister>();
+  // We deliberately avoid the read barrier, letting the slow path handle the false negatives.
   GenerateSubTypeObjectCheckNoReadBarrier(codegen_,
                                           slow_path,
                                           receiver,
