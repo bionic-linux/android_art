@@ -16,6 +16,47 @@
       "message": "Thanks!",
       "revId": "da1b711d7a7504ba9ae0e7bf8b4777069c37456a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9d5521_513641dc",
+        "filename": "test/default_run.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-29T15:37:55Z",
+      "side": 1,
+      "message": "Nit: Full stop at end of comment.",
+      "range": {
+        "startLine": 715,
+        "startChar": 51,
+        "endLine": 715,
+        "endChar": 56
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c2256798_de1dad9b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/default_run.py",
+              "range": {
+                "startLine": 715,
+                "startChar": 0,
+                "endLine": 716,
+                "endChar": 0
+              },
+              "replacement": "  # Disable metrics reporting to StatsD for chroot tests.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "da1b711d7a7504ba9ae0e7bf8b4777069c37456a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
