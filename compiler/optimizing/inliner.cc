@@ -1343,6 +1343,12 @@ bool HInliner::TryDevirtualize(HInvoke* invoke_instruction,
     return false;
   }
 
+  // Don't devirtualize to an intrinsic invalid after the builder phase.
+  if (method->IsIntrinsic() &&
+      !IsValidIntrinsicAfterBuilder(static_cast<Intrinsics>(method->GetIntrinsic()))) {
+    return false;
+  }
+
   // Don't bother trying to call directly a default conflict method. It
   // doesn't have a proper MethodReference, but also `GetCanonicalMethod`
   // will return an actual default implementation.
