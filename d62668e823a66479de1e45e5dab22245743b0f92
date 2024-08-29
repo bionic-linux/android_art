@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1292e29_571dd72d",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-29T18:42:01Z",
+      "side": 1,
+      "message": "Sounds reasonable; changed in PS2. I\u0027ll amend other paths in a separate CL.",
+      "parentUuid": "55fe249a_69c8e0e3",
+      "range": {
+        "startLine": 458,
+        "startChar": 52,
+        "endLine": 458,
+        "endChar": 96
+      },
+      "revId": "d62668e823a66479de1e45e5dab22245743b0f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42a1618d_8e9ad605",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-29T17:00:02Z",
       "side": 1,
       "message": "Nit: Just `\\d+`? It doesn\u0027t look like we need to be this restrictive.",
+      "range": {
+        "startLine": 471,
+        "startChar": 39,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "d62668e823a66479de1e45e5dab22245743b0f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35983b6b_4119fd68",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-29T18:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a1618d_8e9ad605",
       "range": {
         "startLine": 471,
         "startChar": 39,
