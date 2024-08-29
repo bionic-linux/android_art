@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b7c346_60caae9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-08-29T13:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa953bcd_36c72914",
+      "revId": "8dfd2467973af1e103accca6a8ec4ec330ab738b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d421411_49630c26",
@@ -31,6 +49,24 @@
       "writtenOn": "2024-08-29T13:18:47Z",
       "side": 1,
       "message": "Use `CHROOT` defined on line 251.",
+      "revId": "8dfd2467973af1e103accca6a8ec4ec330ab738b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "576a0ba9_affa4379",
+        "filename": "test/default_run.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-08-29T13:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d421411_49630c26",
       "revId": "8dfd2467973af1e103accca6a8ec4ec330ab738b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
