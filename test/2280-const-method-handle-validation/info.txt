@@ -1,0 +1,1 @@
+Ensuring that invalid const-method-type instructions are not created.
