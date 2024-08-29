@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89d8a14_9b8cd1fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 55
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Fixes are in aosp/3247494.",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42eea42d_bd7af795",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-08-28T22:01:21Z",
       "side": 1,
       "message": "Can you add comments about all these lines?",
+      "range": {
+        "startLine": 1397,
+        "startChar": 0,
+        "endLine": 1402,
+        "endChar": 66
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab37b7d1_61d253b5",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42eea42d_bd7af795",
       "range": {
         "startLine": 1397,
         "startChar": 0,
@@ -58,6 +99,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfdd9a86_c7ee92b4",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d09ebc_93786c6a",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d934e949_10ba30d5",
@@ -81,6 +140,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "510a07de_9cbef59c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d934e949_10ba30d5",
+      "range": {
+        "startLine": 148,
+        "startChar": 34,
+        "endLine": 148,
+        "endChar": 64
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4ef472_bb2dded5",
@@ -94,6 +177,30 @@
       "writtenOn": "2024-08-28T22:01:21Z",
       "side": 1,
       "message": "no need?",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 10
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ae46d1_e4a7fd7d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4ef472_bb2dded5",
       "range": {
         "startLine": 151,
         "startChar": 2,
@@ -174,6 +281,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c20910_ee7f4b42",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4143,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5dfc13e_81db8835",
+      "range": {
+        "startLine": 4143,
+        "startChar": 36,
+        "endLine": 4143,
+        "endChar": 50
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a96b8a_516e0d1f",
@@ -215,6 +346,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74a2936_0be31e2f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4145,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a96b8a_516e0d1f",
+      "range": {
+        "startLine": 4145,
+        "startChar": 88,
+        "endLine": 4145,
+        "endChar": 92
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb32dac_5cd2f06e",
@@ -228,6 +383,30 @@
       "writtenOn": "2024-08-28T22:01:21Z",
       "side": 1,
       "message": "explicitly use `kMethodRegisterArgument`, with a comment that it\u0027s the hidden argument.",
+      "range": {
+        "startLine": 4157,
+        "startChar": 23,
+        "endLine": 4157,
+        "endChar": 71
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b34273_4b9e5835",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4157,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "But this is about following regular calling convention and passing `method` in RDI. Isn\u0027t \"hidden argument\" only relevant in `InvokePolymorphicSlowPathX86_64` context?",
+      "parentUuid": "efb32dac_5cd2f06e",
       "range": {
         "startLine": 4157,
         "startChar": 23,
@@ -261,6 +440,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0e608e_eb4ae53e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4159,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c18019_bb570c48",
+      "range": {
+        "startLine": 4159,
+        "startChar": 5,
+        "endLine": 4159,
+        "endChar": 9
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a4f4651_bbcd5f27",
@@ -284,6 +487,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ffc2f7a_2598d3cc",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4167,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a4f4651_bbcd5f27",
+      "range": {
+        "startLine": 4167,
+        "startChar": 2,
+        "endLine": 4167,
+        "endChar": 41
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7a417c4_121e2302",
@@ -297,6 +524,24 @@
       "writtenOn": "2024-08-28T22:01:21Z",
       "side": 1,
       "message": "nit: add comments.",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6321d84_7264279f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Is it needed given comments at call sites?",
+      "parentUuid": "e7a417c4_121e2302",
       "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -332,6 +577,24 @@
           ]
         }
       ],
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8119a40_d20ef83e",
+        "filename": "test/2277-methodhandle-invokeexact/src-multidex/Multi.java",
+        "patchSetId": 55
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce8bd7b_f0535235",
       "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -633,6 +896,30 @@
           ]
         }
       ],
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9b1c2c_39ea9398",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 55
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T09:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aacda550_3dd162b1",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 12
+      },
       "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
