@@ -250,6 +250,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7258ecdd_7e11c422",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T18:10:28Z",
+      "side": 1,
+      "message": "Well, I\u0027d say I rank goals roughly like this (as far as the issues raised here are concerned):\n\n1. Information content\n2. Readability\n3. Consistency",
+      "parentUuid": "6b39d952_675bf54f",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd7e7137_b21ba770",
@@ -311,6 +335,30 @@
       "side": 1,
       "message": "OS::CreateEmptyFile seems to preserve the errno set by the underlying syscall, so ErrnoErrorf is better, but up to you.",
       "parentUuid": "89e6d80b_39825416",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc35d9c_f312eec6",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T18:10:28Z",
+      "side": 1,
+      "message": "Ah I missed that, thanks.",
+      "parentUuid": "2d2bf05a_75b7e2dc",
       "range": {
         "startLine": 90,
         "startChar": 6,
@@ -792,6 +840,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62aaf9dc_ce64f947",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T18:10:28Z",
+      "side": 1,
+      "message": "Good point.",
+      "parentUuid": "30a691f4_a6aae912",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3246c25d_b1efb162",
@@ -863,6 +935,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8404b78c_2ba82c79",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T18:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d136156d_9ecde699",
+      "range": {
+        "startLine": 1558,
+        "startChar": 0,
+        "endLine": 1562,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a26f229a_62a15850",
@@ -924,6 +1020,30 @@
       "side": 1,
       "message": "Ditto.",
       "parentUuid": "725c600d_2204600b",
+      "range": {
+        "startLine": 1564,
+        "startChar": 0,
+        "endLine": 1568,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f43016_3bb52283",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T18:10:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fbf1a8_9b0d607d",
       "range": {
         "startLine": 1564,
         "startChar": 0,
