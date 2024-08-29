@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55fe249a_69c8e0e3",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T17:00:02Z",
+      "side": 1,
+      "message": "Can this be `\"cts/hostsidetests/jvmti/run-tests\"` instead? A tangible benefit with that is that it\u0027s more likely to show up when searching for the path in CS, and it may very well be a relevant search hit. (Same goes for the path two lines up, although it\u0027s strictly speaking out of scope.)",
+      "range": {
+        "startLine": 458,
+        "startChar": 52,
+        "endLine": 458,
+        "endChar": 96
+      },
+      "revId": "d62668e823a66479de1e45e5dab22245743b0f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a1618d_8e9ad605",
+        "filename": "test/utils/regen-test-files",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T17:00:02Z",
+      "side": 1,
+      "message": "Nit: Just `\\d+`? It doesn\u0027t look like we need to be this restrictive.",
+      "range": {
+        "startLine": 471,
+        "startChar": 39,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "d62668e823a66479de1e45e5dab22245743b0f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
