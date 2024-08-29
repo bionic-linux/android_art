@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be65e953_ab0e04d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T05:41:13Z",
+      "side": 1,
+      "message": "@solanes@google.com please take a look.",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0631a116_0dd44738",
@@ -75,6 +92,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "108e15c6_62c9b6d9",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6437,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T05:41:13Z",
+      "side": 1,
+      "message": "What about `Baseline` compilation? As far as I know it does not call `InstructionSimplifierArm`.",
+      "parentUuid": "f17c5c91_3b18410d",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee48248e_a84471f4",
@@ -111,6 +146,30 @@
       "writtenOn": "2024-08-28T08:46:08Z",
       "side": 1,
       "message": "style: `const` not needed",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a802fb69_9cb98d5c",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T05:41:13Z",
+      "side": 1,
+      "message": "Why? We only call `GetValue() const` then.",
+      "parentUuid": "371bcf9f_b49dc5ac",
       "range": {
         "startLine": 327,
         "startChar": 4,
