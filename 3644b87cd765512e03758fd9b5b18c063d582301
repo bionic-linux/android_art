@@ -175,6 +175,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9998fad2_368b5cbc",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T22:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee48248e_a84471f4",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 41
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "371bcf9f_b49dc5ac",
@@ -246,6 +270,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57f883f_eb82106a",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T22:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91342b81_98491a04",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6835482_6f6489ed",
@@ -269,6 +317,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "810c1040_e8114983",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T22:31:58Z",
+      "side": 1,
+      "message": "I think it can\u0027t be moved there because a cursor instruction (`ror` here) should be inside block\u0027s `HInstructionList` but it\u0027s not (`ror` is just created with no block specified).",
+      "parentUuid": "b6835482_6f6489ed",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 3
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1704ec9e_f547c6e4",
@@ -282,6 +354,24 @@
       "writtenOn": "2024-08-28T08:46:08Z",
       "side": 1,
       "message": "Add a comment explaining this method.",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f27502_4e17e507",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-29T22:31:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1704ec9e_f547c6e4",
       "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
