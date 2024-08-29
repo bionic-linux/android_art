@@ -146,6 +146,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5e3f68_5ee1325f",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-08-29T13:50:27Z",
+      "side": 1,
+      "message": "Thanks, done.\n\nDo you why it works for `141-class-unload`, but not this test [1]? Can `MethodType` instances referenced from `JitCodeCache` cause these failures?\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/test/141-class-unload/src/Main.java;l\u003d102;drc\u003df65b1c4e254b3fcd262ed6f26420d4d13b127709",
+      "parentUuid": "3d27f46c_8baf7459",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
