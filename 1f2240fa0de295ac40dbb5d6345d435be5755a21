@@ -90,6 +90,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf27b3e_6086adea",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "50c29019_aded4b88",
+      "range": {
+        "startLine": 69,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbbd14c2_b8aab4df",
@@ -202,6 +226,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b39d952_675bf54f",
+        "filename": "dex2oat/dex2oat_cts_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "I thought you might favor readability here as well, but okay :)",
+      "parentUuid": "66dd6caa_bfa1440c",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd7e7137_b21ba770",
@@ -239,6 +287,30 @@
       "side": 1,
       "message": "It gets a bit verbose, but ok.",
       "parentUuid": "dd7e7137_b21ba770",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2bf05a_75b7e2dc",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "OS::CreateEmptyFile seems to preserve the errno set by the underlying syscall, so ErrnoErrorf is better, but up to you.",
+      "parentUuid": "89e6d80b_39825416",
       "range": {
         "startLine": 90,
         "startChar": 6,
@@ -380,6 +452,30 @@
       "side": 1,
       "message": "It should work - see [here](https://cs.android.com/android/platform/superproject/main/+/main:external/googletest/googletest/include/gtest/gtest-assertion-result.h;l\u003d76;drc\u003df10e11fb27301fba21caa71030bb5024e67aa135). I guess there\u0027s magic in the gtest macros to do special stuff for these objects.",
       "parentUuid": "e5386d89_9d45edc2",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31dcbc1d_2f9165a8",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "Good to know!",
+      "parentUuid": "67cea2ab_a7ae1acc",
       "range": {
         "startLine": 133,
         "startChar": 2,
@@ -674,6 +770,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30a691f4_a6aae912",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "I don\u0027t think we expect dex2oat to crash here, so HasValue(Ne(0)) might be better.",
+      "parentUuid": "45b38feb_8e35728b",
+      "range": {
+        "startLine": 1510,
+        "startChar": 0,
+        "endLine": 1512,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3246c25d_b1efb162",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 8
@@ -721,6 +841,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d136156d_9ecde699",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "0bab429c_a5e20f72",
+      "range": {
+        "startLine": 1558,
+        "startChar": 0,
+        "endLine": 1562,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a26f229a_62a15850",
         "filename": "dex2oat/dex2oat_test.cc",
         "patchSetId": 8
@@ -756,6 +900,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a26f229a_62a15850",
+      "range": {
+        "startLine": 1564,
+        "startChar": 0,
+        "endLine": 1568,
+        "endChar": 41
+      },
+      "revId": "1f2240fa0de295ac40dbb5d6345d435be5755a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fbf1a8_9b0d607d",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T15:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "725c600d_2204600b",
       "range": {
         "startLine": 1564,
         "startChar": 0,
