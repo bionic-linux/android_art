@@ -227,6 +227,7 @@ def default_run(ctx, args, **kwargs):
   ANDROID_DATA = os.environ.get("ANDROID_DATA")
   ANDROID_HOST_OUT = os.environ["ANDROID_HOST_OUT"]
   ANDROID_LOG_TAGS = os.environ.get("ANDROID_LOG_TAGS", "")
+  ART_TEST_CHROOT = os.environ.get("ART_TEST_CHROOT")
   ART_TIME_OUT_MULTIPLIER = int(os.environ.get("ART_TIME_OUT_MULTIPLIER", 1))
   DEX2OAT = os.environ.get("DEX2OAT", "")
   DEX_LOCATION = os.environ["DEX_LOCATION"]
@@ -711,6 +712,10 @@ def default_run(ctx, args, **kwargs):
     # linker configuration file (`/apex/com.android.art/etc/ld.config.txt`) for
     # these binaries.
     ANDROID_ART_BIN_DIR = f"{ANDROID_ART_ROOT}/bin"
+
+  # Disable metrics reporting to StatsD for chroot tests
+  if ART_TEST_CHROOT:
+    FLAGS += " -Xmetrics-write-to-statsd:false"
 
   profman_cmdline = "true"
   dex2oat_cmdline = "true"
