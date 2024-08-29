@@ -1075,7 +1075,8 @@
           "2251-checker-irreducible-loop-do-not-inline",
           "2264-throwing-systemcleaner",
           "2267-class-implements-itself",
-          "2276-const-method-type-gc-cleanup"
+          "2276-const-method-type-gc-cleanup",
+          "2280-const-method-handle-validation"
         ],
         "variant": "jvm",
         "bug": "b/73888836",
