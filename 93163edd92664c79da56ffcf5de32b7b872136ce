@@ -260,6 +260,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d56b31ad_1ed8724d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4125,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:11:33Z",
+      "side": 1,
+      "message": "The location says we are doing an invoke, so the register allocator knows that the kArtMethodRegister will be used.",
+      "parentUuid": "e6bab0b5_22e02dcd",
+      "range": {
+        "startLine": 4124,
+        "startChar": 0,
+        "endLine": 4125,
+        "endChar": 61
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5dfc13e_81db8835",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 55
@@ -419,6 +443,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7e7b2da_d78bc2d7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 55
+      },
+      "lineNbr": 4157,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:11:33Z",
+      "side": 1,
+      "message": "Sorry yeah, don\u0027t mention it\u0027s the hidden argument here (but do it line 162). Still, you should use kArtMethodRegister instead of a temp.",
+      "parentUuid": "a6b34273_4b9e5835",
+      "range": {
+        "startLine": 4157,
+        "startChar": 23,
+        "endLine": 4157,
+        "endChar": 71
+      },
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53c18019_bb570c48",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 55
@@ -542,6 +590,24 @@
       "side": 1,
       "message": "Is it needed given comments at call sites?",
       "parentUuid": "e7a417c4_121e2302",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a9302a8_24b89f25",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:11:33Z",
+      "side": 1,
+      "message": "Yeah, something that says \"whether we can do a direct invocation of the method handle\".\n\nBy the way, you say `invokevirtual` here, but can\u0027t the method also be private? Should you be more general in the name and call it \"CanCallDirectly\" or something like this?",
+      "parentUuid": "b6321d84_7264279f",
       "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
