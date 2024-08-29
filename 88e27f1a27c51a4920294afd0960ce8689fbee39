@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0d2c1d_efa48eb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T17:02:19Z",
+      "side": 1,
+      "message": "I don\u0027t find a lot of docs for how to go about this, e.g. if some automation come along and delete the flag values in various release configs, or if one is supposed to do that first. I guess we\u0027ll see.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "88e27f1a27c51a4920294afd0960ce8689fbee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
