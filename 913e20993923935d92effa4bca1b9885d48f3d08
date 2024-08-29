@@ -170,6 +170,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "717b261d_355e753f",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-29T18:16:00Z",
+      "side": 1,
+      "message": "Great point. Looking at this more closely, I don\u0027t think we\u0027re really looking at the right issue here. Since we\u0027re only waiting for the WeakReference to be cleared, not enqueued, a single GC should probably take care of it. I think we actually clear the WeakReferences before we return from the explicit GC call. And since it\u0027s a WeakReference, not a PhantomReference, there should be no issue with finalizers possibly referring to it.\n\nI wonder if the real issue here is that we somehow end up with a copy of the loader reference in a dex virtual register, so that the GC still considers it live. The usual workround seems to be to put the first half od callDoWork() in a separate $noinline$ method, so that the entire frame goes away before the call to do Unload().\n\nI don\u0027t fully understand why this is non-repeatable. That was more consistent with the original theory. I would keep the current change (which makes more sense than collecting that many times anyway), and create a separate method, and see if that fixes this.\n\nMaybe Santiago has a better ide why we might occasionally keep the load reference, but not consistently?\n\nNote that setting loader to null is a dead assignment to a local, which might be getting optimized out?",
+      "parentUuid": "4a5e3f68_5ee1325f",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
