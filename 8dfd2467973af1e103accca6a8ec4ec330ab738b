@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa953bcd_36c72914",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T13:18:47Z",
+      "side": 1,
+      "message": "Please remove the flag from individual tests: https://cs.android.com/search?q\u003d%22metrics-write-to-statsd:false%22%20f:art%2Ftest\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain",
+      "revId": "8dfd2467973af1e103accca6a8ec4ec330ab738b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d421411_49630c26",
+        "filename": "test/default_run.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-08-29T13:18:47Z",
+      "side": 1,
+      "message": "Use `CHROOT` defined on line 251.",
+      "revId": "8dfd2467973af1e103accca6a8ec4ec330ab738b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
