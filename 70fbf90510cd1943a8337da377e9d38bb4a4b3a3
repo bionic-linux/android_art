@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "449c437d_762854fd",
+        "filename": "libartpalette/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T11:56:12Z",
+      "side": 1,
+      "message": "Aha, I see.",
+      "parentUuid": "ef8f0b0f_c51ed6e0",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 75
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ce8b15_4f5a08b3",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "Symlinking doesn\u0027t work because `/system/${LIB}/art_fake` is not in `permitted.paths` and I can\u0027t find a way to add it (I tried adding `permittedPaths: /system/${LIB}/art_fake` to `$linkerconfig_root/system/etc/linker.config.pb`, but `linkerconfig` ignored it, which is expected because `permittedPaths` is only for APEX according to [system/linkerconfig/README.md](https://cs.android.com/android/platform/superproject/main/+/main:system/linkerconfig/README.md))",
       "parentUuid": "48ce8b15_4f5a08b3",
+      "range": {
+        "startLine": 215,
+        "startChar": 9,
+        "endLine": 215,
+        "endChar": 11
+      },
+      "revId": "70fbf90510cd1943a8337da377e9d38bb4a4b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d3e1a0_6c2780e7",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-08-29T11:56:12Z",
+      "side": 1,
+      "message": "Fair enough, thanks for checking.",
+      "parentUuid": "e2c4c010_11c1b940",
       "range": {
         "startLine": 215,
         "startChar": 9,
