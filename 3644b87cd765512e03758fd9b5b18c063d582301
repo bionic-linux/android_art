@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd10a0a6_8655e183",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2454,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-29T13:59:17Z",
+      "side": 1,
+      "message": "Reachable for a particular baseline case, see other message.",
+      "parentUuid": "0631a116_0dd44738",
+      "range": {
+        "startLine": 2439,
+        "startChar": 0,
+        "endLine": 2454,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f17c5c91_3b18410d",
@@ -106,6 +130,24 @@
       "side": 1,
       "message": "What about `Baseline` compilation? As far as I know it does not call `InstructionSimplifierArm`.",
       "parentUuid": "f17c5c91_3b18410d",
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b91f4d_2cd85fed",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6437,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-29T13:59:17Z",
+      "side": 1,
+      "message": "Regular baseline calls the arch optimizations, but there\u0027s this case https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/optimizing_compiler.cc;l\u003d917-920;drc\u003d623a4456a0e5d2525e8aa180a82c581767ece8fd which is currently disabled.",
+      "parentUuid": "108e15c6_62c9b6d9",
       "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -170,6 +212,30 @@
       "side": 1,
       "message": "Why? We only call `GetValue() const` then.",
       "parentUuid": "371bcf9f_b49dc5ac",
+      "range": {
+        "startLine": 327,
+        "startChar": 4,
+        "endLine": 327,
+        "endChar": 9
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91342b81_98491a04",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-29T13:59:17Z",
+      "side": 1,
+      "message": "We don\u0027t add it since it is not needed e.g. https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/graph_visualizer.cc;l\u003d380-382;drc\u003d7effb7fac7a1ea037277b0fef1ac1121c3f56f93\n\nIf you want, you can combine both lines like so `int32_t value \u003d rol-\u003eGetRight()-\u003eAsIntConstant()-\u003eGetValue();`",
+      "parentUuid": "a802fb69_9cb98d5c",
       "range": {
         "startLine": 327,
         "startChar": 4,
