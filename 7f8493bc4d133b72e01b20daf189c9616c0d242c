@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca9b70d_b1d9294d",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1903,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:06:51Z",
+      "side": 1,
+      "message": "corresponding",
+      "range": {
+        "startLine": 1903,
+        "startChar": 61,
+        "endLine": 1903,
+        "endChar": 73
+      },
+      "revId": "7f8493bc4d133b72e01b20daf189c9616c0d242c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8846241_72204263",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:06:51Z",
+      "side": 1,
+      "message": "How about:\n\nThe MethodHandle.invokeExact intrinsic sets up arguments to match the target method call. If we need to go to the slow path, we call art_quick_invoke_polymorphic_with_hidden_receiver which will put the MethodHandle object in RDI (in place of the actual ArtMethod). The runtime will expect the method handle to be the first argument.",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 94
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c079c0c0_c96d17a2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/intrinsics_x86_64.cc",
+              "range": {
+                "startLine": 148,
+                "startChar": 0,
+                "endLine": 152,
+                "endChar": 0
+              },
+              "replacement": "// The MethodHandle.invokeExact intrinsic sets up arguments to match the target\n// method call. If we need to go to the slow path, we call\n// art_quick_invoke_polymorphic_with_hidden_receiver which expects that\n// modified order and only needs MethodHandle object to be passed in RDI register.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7f8493bc4d133b72e01b20daf189c9616c0d242c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4b421e_0a1fb8e0",
+        "filename": "test/2277-methodhandle-invokeexact/expected-stdout.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-29T18:06:51Z",
+      "side": 1,
+      "message": "Could you avoid those as well?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 24
+      },
+      "revId": "7f8493bc4d133b72e01b20daf189c9616c0d242c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
