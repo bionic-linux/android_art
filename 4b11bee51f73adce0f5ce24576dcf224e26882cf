@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2e6ded_37b99904",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T21:06:59Z",
+      "side": 1,
+      "message": "allocate",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "4b11bee51f73adce0f5ce24576dcf224e26882cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb30fd2_9eaaa8f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T21:06:59Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 16,
+        "startChar": 52,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "4b11bee51f73adce0f5ce24576dcf224e26882cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b12435_d20c1389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T21:06:59Z",
+      "side": 1,
+      "message": "Minor comment mistakes otherwise looks good.",
+      "revId": "4b11bee51f73adce0f5ce24576dcf224e26882cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ff9196_a056e4bf",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3785,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-08-29T21:06:59Z",
+      "side": 1,
+      "message": "FromMirrorPtr",
+      "range": {
+        "startLine": 3785,
+        "startChar": 5,
+        "endLine": 3785,
+        "endChar": 17
+      },
+      "revId": "4b11bee51f73adce0f5ce24576dcf224e26882cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
