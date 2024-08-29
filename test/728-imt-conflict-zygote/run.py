@@ -16,4 +16,4 @@
 
 
 def run(ctx, args):
-  ctx.default_run(args, zygote=True)
+  ctx.default_run(args, zygote=True, runtime_option=["-Xmetrics-write-to-statsd:false"])

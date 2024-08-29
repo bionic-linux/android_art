@@ -23,6 +23,9 @@ def run(ctx, args):
   ctx.default_run(
       args,
       runtime_option=[
-          "-Xopaque-jni-ids:true", "-Xzygote", "-Xjitinitialsize:64M"
+          "-Xopaque-jni-ids:true",
+          "-Xzygote",
+          "-Xjitinitialsize:64M",
+          "-Xmetrics-write-to-statsd:false",
       ],
       add_libdir_argument=True)
