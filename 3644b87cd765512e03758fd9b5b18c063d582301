@@ -365,6 +365,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41eae930_8e05dd80",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-08-30T11:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9575f6d_a4b6fd88",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 3
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1704ec9e_f547c6e4",
