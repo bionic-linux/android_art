@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13e6dd1_c7fb61c1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-30T08:15:51Z",
+      "side": 1,
+      "message": "You can have a check here for an early return like\n```\nif(type !\u003d DataType::Type::kReference || IsZeroBitPattern(invoke-\u003eInputAt(kValueIndex))) {\n  // No need to poison or mark the GC card.\n  return;\n}\n```\n\nwhich should make the rest of the code simpler.",
+      "revId": "29bc807f59256d3605d30270aa19fb88fab915c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
