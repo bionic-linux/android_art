@@ -680,6 +680,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39b7be8f_5c57794e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 55
+      },
+      "lineNbr": 4941,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-08-30T16:52:54Z",
+      "side": 1,
+      "message": "Maybe `IsTargetMethodKnown` then?",
+      "parentUuid": "c1f44d80_4bca9220",
+      "revId": "93163edd92664c79da56ffcf5de32b7b872136ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ce8bd7b_f0535235",
         "filename": "test/2277-methodhandle-invokeexact/src-multidex/Multi.java",
         "patchSetId": 55
