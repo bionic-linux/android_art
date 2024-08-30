@@ -46,6 +46,30 @@
       },
       "revId": "a5001fed23788c966fd87048d7f17ba8c0b51914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08fda43_a2d8b5cc",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-30T00:14:25Z",
+      "side": 0,
+      "message": "Thanks. Deletion seems appropriate.",
+      "parentUuid": "77a52ccf_dcfff7d3",
+      "range": {
+        "startLine": 438,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 52
+      },
+      "revId": "a5001fed23788c966fd87048d7f17ba8c0b51914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
