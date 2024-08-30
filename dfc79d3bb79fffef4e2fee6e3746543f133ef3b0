@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afff215a_c5395a43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-08-30T17:46:17Z",
+      "side": 1,
+      "message": "The kernel log seems to end with some hwasan failures. Seems unrelated to this CL.",
+      "revId": "dfc79d3bb79fffef4e2fee6e3746543f133ef3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
