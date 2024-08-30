@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69008a6a_ff44895c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-30T14:52:05Z",
+      "side": 1,
+      "message": "Anton, our presubmit found errors on x86 (32 bits). They can be reproed locally by running:\n`art/test/testrunner/testrunner.py --host --32 --optimizing -b -t 082-inline-execute` and\n`art/test/testrunner/testrunner.py --host --32 --optimizing -b -t 567-checker-builder-intrinsics`\n\nCan you take a look at those?",
+      "revId": "ef76f1edf0a26396eaa3311d3fac55620e999143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
