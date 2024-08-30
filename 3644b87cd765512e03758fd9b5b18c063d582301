@@ -343,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9575f6d_a4b6fd88",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-08-30T08:33:54Z",
+      "side": 1,
+      "message": "My point is that instead of\n```\nneg \u003d new (allocator) HNeg(DataType::Type::kInt32, rol-\u003eGetRight());\n```\nwe can have\n\n```\nHNeg* neg \u003d new (allocator) HNeg(DataType::Type::kInt32, rol-\u003eGetRight());\nblock-\u003eInsertInstructionBefore(neg, rol);\n```\n\nNote `rol` in `InsertInstructionBefore`.\n\nIn this way, the `neg` is nicely scoped and we don\u0027t need `HNeg* neg \u003d nullptr;` or `if (neg)` later on.",
+      "parentUuid": "810c1040_e8114983",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 3
+      },
+      "revId": "3644b87cd765512e03758fd9b5b18c063d582301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1704ec9e_f547c6e4",
         "filename": "compiler/optimizing/instruction_simplifier_shared.h",
         "patchSetId": 2
