@@ -22,6 +22,30 @@
       },
       "revId": "88e27f1a27c51a4920294afd0960ce8689fbee39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328f1778_9ef4fd97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-08-30T18:27:22Z",
+      "side": 1,
+      "message": "Looking at yaqs/4495547903720292352 and b/322355059, the official instructions seem to be at go/android-flags-guidelines#how-to-delete-a-flag.\n\nAs none of the deprecated flags were exported, it seems fine to delete them.",
+      "parentUuid": "4a0d2c1d_efa48eb8",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "88e27f1a27c51a4920294afd0960ce8689fbee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
