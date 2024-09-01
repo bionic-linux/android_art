@@ -16,6 +16,24 @@
       "message": "Anton, our presubmit found errors on x86 (32 bits). They can be reproed locally by running:\n`art/test/testrunner/testrunner.py --host --32 --optimizing -b -t 082-inline-execute` and\n`art/test/testrunner/testrunner.py --host --32 --optimizing -b -t 567-checker-builder-intrinsics`\n\nCan you take a look at those?",
       "revId": "ef76f1edf0a26396eaa3311d3fac55620e999143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7961d17b_94d5767a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-01T23:23:07Z",
+      "side": 1,
+      "message": "Yes. I have fixed it. I added `InstructionSimplifierX86` and removed codegen for x86(32 bits).",
+      "parentUuid": "69008a6a_ff44895c",
+      "revId": "ef76f1edf0a26396eaa3311d3fac55620e999143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
