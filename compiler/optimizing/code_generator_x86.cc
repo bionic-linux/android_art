@@ -5052,6 +5052,10 @@ void InstructionCodeGeneratorX86::GenerateUShrLong(const Location& loc, Register
   __ Bind(&done);
 }
 
+void LocationsBuilderX86::VisitRol([[maybe_unused]] HRol* instruction) {
+  LOG(FATAL) << "Unreachable";
+}
+
 void LocationsBuilderX86::VisitRor(HRor* ror) {
   LocationSummary* locations =
       new (GetGraph()->GetAllocator()) LocationSummary(ror, LocationSummary::kNoCall);
@@ -5071,6 +5075,10 @@ void LocationsBuilderX86::VisitRor(HRor* ror) {
       LOG(FATAL) << "Unexpected operation type " << ror->GetResultType();
       UNREACHABLE();
   }
+}
+
+void InstructionCodeGeneratorX86::VisitRol([[maybe_unused]] HRol* rol) {
+  LOG(FATAL) << "Unreachable";
 }
 
 void InstructionCodeGeneratorX86::VisitRor(HRor* ror) {
