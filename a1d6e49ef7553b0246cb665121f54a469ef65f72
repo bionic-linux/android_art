@@ -52,6 +52,24 @@
       "parentUuid": "b2e54938_2f72c1a5",
       "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3eb798_64b40b06",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-02T10:21:45Z",
+      "side": 1,
+      "message": "@solanes@google.com I ran `dex2oat` with `--baseline` and I saw that `InstructionSimplifierX86` passed and transformed `Rol` to `Neg+Ror`, no crash happened.",
+      "parentUuid": "e5dce90f_4ca60702",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
