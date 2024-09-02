@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044e44fb_63124025",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-02T18:20:58Z",
+      "side": 1,
+      "message": "Could you also mention Bug 150126287 for tracking?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684f6bd1_aa492e48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-02T18:20:58Z",
+      "side": 1,
+      "message": "Just to be sure, I think it would be useful to run Libcore tests and JDWP tests, which used to rely on `libnetd_client`:\n\n```\nart/tools/run-libcore-tests.sh --mode\u003ddevice\nart/tools/run-libjdwp-tests.sh --mode\u003ddevice\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
