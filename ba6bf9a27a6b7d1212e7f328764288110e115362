@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42412fa9_3afc8f91",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-02T10:08:48Z",
+      "side": 1,
+      "message": "Ideally, we should make this parameter more specific: whether it expects a signal or an exit code, and which signal / exit code it expects, but that\u0027s for another day.",
+      "range": {
+        "startLine": 145,
+        "startChar": 43,
+        "endLine": 145,
+        "endChar": 57
+      },
+      "revId": "ba6bf9a27a6b7d1212e7f328764288110e115362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c89e0db_3e64ba02",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-02T10:08:48Z",
+      "side": 1,
+      "message": "As you are here, change all these into the format of `/*param\u003d*/value` (add `\u003d`, remove space)?",
+      "revId": "ba6bf9a27a6b7d1212e7f328764288110e115362",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
