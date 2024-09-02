@@ -156,10 +156,6 @@ if [[ $build_target == "yes" ]]; then
   test $skip_run_tests_build == "yes" || make_command+=" build-art-target-run-tests"
   make_command+=" debuggerd sh su toybox"
   make_command+=" libartpalette_fake art_fake_heapprofd_client_api"
-  # Indirect dependencies in the platform.
-  # These are built to go into system/lib(64) to be part of the system linker
-  # namespace.
-  make_command+=" libnetd_client-target libtombstoned_client"
   # Stubs for other APEX SDKs, for use by vogar. Referenced from DEVICE_JARS in
   # external/vogar/src/vogar/ModeId.java.
   # Note these go into out/target/common/obj/JAVA_LIBRARIES which isn't removed
