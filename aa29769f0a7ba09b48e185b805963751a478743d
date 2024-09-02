@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f9f5c4_39f200f4",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-02T09:20:22Z",
+      "side": 1,
+      "message": "Thanks. Should we somehow guarantee HInvoke.isIntrinsic \u003d\u003d ArtMethod.isIntrinsic to avoid the confusion?",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 81
+      },
+      "revId": "aa29769f0a7ba09b48e185b805963751a478743d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
