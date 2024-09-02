@@ -16,6 +16,23 @@
       "message": "Typo fix so it\u0027s fine to ignore the SLO lint error",
       "revId": "a02e119a4eebf1e727b1b0705c80b97b9ea7e6ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178fa3db_e9eefe9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-02T08:30:39Z",
+      "side": 1,
+      "message": "Wow, how these typos spread!",
+      "revId": "a02e119a4eebf1e727b1b0705c80b97b9ea7e6ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
