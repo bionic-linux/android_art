@@ -34,6 +34,24 @@
       "parentUuid": "0ee06003_35d95b1a",
       "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5dce90f_4ca60702",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-02T09:30:19Z",
+      "side": 1,
+      "message": "But in the baseline case we saw, we will hit the `LocationsBuilderX86::VisitRol` and crash won\u0027t we?",
+      "parentUuid": "b2e54938_2f72c1a5",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
