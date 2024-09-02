@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee06003_35d95b1a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-02T08:21:09Z",
+      "side": 1,
+      "message": "Why is this unreachable? Doesn\u0027t it have the same reasoning for keeping it that we had for Arm?",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
