@@ -45,6 +45,29 @@
       },
       "revId": "1ae7827c1041565db54871404d2b351dbe1df373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a703141_3e8d62fe",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-02T08:29:54Z",
+      "side": 1,
+      "message": "Add a comment why the invoke is not marked as intrinsic, but the method is.",
+      "range": {
+        "startLine": 1347,
+        "startChar": 1,
+        "endLine": 1347,
+        "endChar": 30
+      },
+      "revId": "1ae7827c1041565db54871404d2b351dbe1df373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
