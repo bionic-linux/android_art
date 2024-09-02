@@ -46,6 +46,30 @@
       },
       "revId": "aa29769f0a7ba09b48e185b805963751a478743d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6fd5325_d46f7aa6",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-02T09:39:55Z",
+      "side": 1,
+      "message": "Oh right, I thought it was the artmethod from the invoke.",
+      "parentUuid": "f16b748c_253a6068",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 81
+      },
+      "revId": "aa29769f0a7ba09b48e185b805963751a478743d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
