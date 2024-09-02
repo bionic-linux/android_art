@@ -22,6 +22,30 @@
       },
       "revId": "aa29769f0a7ba09b48e185b805963751a478743d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16b748c_253a6068",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-02T09:37:08Z",
+      "side": 1,
+      "message": "The issue with that would be that the same HInvoke can be potentially devirtualized into different ArtMethods depending on the context. The ArtMethod we have here is coming from [FindVirtualOrInterfaceTarget](https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/inliner.cc;l\u003d504;drc\u003d434a327234f74eed3ef4072314d2e2bdb73e4dda) which may not the same as the [ArtMethod inside of the invoke ](https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/nodes.h;l\u003d4866;drc\u003d93163edd92664c79da56ffcf5de32b7b872136ce)",
+      "parentUuid": "93f9f5c4_39f200f4",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1348,
+        "endChar": 81
+      },
+      "revId": "aa29769f0a7ba09b48e185b805963751a478743d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
