@@ -88,6 +88,24 @@
       "parentUuid": "4a3eb798_64b40b06",
       "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169ba0ae_e57df724",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-02T16:13:39Z",
+      "side": 1,
+      "message": "@solanes@google.com you said that this particular case of `compilation_kind \u003d\u003d CompilationKind::kBaseline \u0026\u0026 compiler_options.ProfileBranches()` is currently disabled. Moreover you commented that it is unreachable for ARM which makes me consider that `profile-branches` is enough specific so we can rely on it is disabled.",
+      "parentUuid": "0ea80319_a5c7685b",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
