@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1acd97ab_0edb0fb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-02T18:52:21Z",
+      "side": 1,
+      "message": "It didn\u0027t work in that case, as the description for https://r.android.com/1850458 explains (the mix of sources and prebuilts there was still nonsense, but that\u0027s another matter).",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "044e44fb_63124025",
@@ -42,6 +65,29 @@
         "startChar": 5,
         "endLine": 16,
         "endChar": 32
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fda0b79_fb676588",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-02T18:52:21Z",
+      "side": 1,
+      "message": "Please also test the `--skip-run-tests-build` case in https://r.android.com/1850458. That\u0027s why those dependencies got added.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
       },
       "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
