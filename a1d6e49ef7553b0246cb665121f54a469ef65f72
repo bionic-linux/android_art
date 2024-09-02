@@ -16,6 +16,24 @@
       "message": "Why is this unreachable? Doesn\u0027t it have the same reasoning for keeping it that we had for Arm?",
       "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e54938_2f72c1a5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-02T09:20:17Z",
+      "side": 1,
+      "message": "@solanes@google.com Yes it has but I faced with a little problem implementing x86(32 bits) code generation and didn\u0027t know immediately how to solve it. I decided to make only `InstructionSimplifierX86` to transform `Rol` -\u003e `Neg+Ror`.",
+      "parentUuid": "0ee06003_35d95b1a",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
