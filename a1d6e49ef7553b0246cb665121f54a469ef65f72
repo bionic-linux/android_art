@@ -70,6 +70,24 @@
       "parentUuid": "e5dce90f_4ca60702",
       "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea80319_a5c7685b",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5056,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-02T12:18:59Z",
+      "side": 1,
+      "message": "Did you run it with the `--profile-branches` compiler flag? https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/driver/compiler_options_map-inl.h;l\u003d194-196;drc\u003d366d14f6457edfa12491de15dcad02859f6f2b7a\n\nThis is where the arch specific optimizations will not run.\nhttps://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/optimizing_compiler.cc;l\u003d917-920;drc\u003d623a4456a0e5d2525e8aa180a82c581767ece8fd",
+      "parentUuid": "4a3eb798_64b40b06",
+      "revId": "a1d6e49ef7553b0246cb665121f54a469ef65f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
