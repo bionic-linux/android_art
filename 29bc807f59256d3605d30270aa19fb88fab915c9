@@ -34,6 +34,24 @@
       "parentUuid": "f13e6dd1_c7fb61c1",
       "revId": "29bc807f59256d3605d30270aa19fb88fab915c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3232d8f6_d2d14a2b",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-02T08:09:22Z",
+      "side": 1,
+      "message": "My bad, not sure why I skipped over those lines",
+      "parentUuid": "2369dbe3_88402a9e",
+      "revId": "29bc807f59256d3605d30270aa19fb88fab915c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
