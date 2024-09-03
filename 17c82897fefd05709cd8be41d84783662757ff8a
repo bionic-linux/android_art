@@ -34,6 +34,24 @@
       "parentUuid": "afbe6d65_f719c30d",
       "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7632df2_07e11701",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3615173
+      },
+      "writtenOn": "2024-09-03T18:31:54Z",
+      "side": 1,
+      "message": "I think it\u0027s needed. Could you send me a led build that was successfully triggered without it? I want to see what account was it used.\n\nFor the old setting, if it\u0027s only added for led uses, then yes it\u0027s OK to remove it now.",
+      "parentUuid": "c912414f_1eac3636",
+      "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
