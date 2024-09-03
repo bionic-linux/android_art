@@ -46,6 +46,30 @@
       },
       "revId": "5d7e504d1b5cfe25b5f169e8966dd15d5cb6c3e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d7c41f_5fae901d",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-03T15:10:37Z",
+      "side": 1,
+      "message": "But x86 has rotate left instructions like `roll`. Arm32/64 are the only archs that don\u0027t, right?",
+      "parentUuid": "d966e57b_21e16ef4",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "5d7e504d1b5cfe25b5f169e8966dd15d5cb6c3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
