@@ -94,6 +94,30 @@
       },
       "revId": "5d7e504d1b5cfe25b5f169e8966dd15d5cb6c3e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5423a52f_9df0339e",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-03T16:25:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2a891909_cdc2fc1d",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "5d7e504d1b5cfe25b5f169e8966dd15d5cb6c3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f14bc0_81b824ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-03T16:25:28Z",
+      "side": 1,
+      "message": "As well as Int64 for x86",
+      "revId": "e6858bf9a3a8b0abbd5ebbc73a9b4b7a4a84c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
