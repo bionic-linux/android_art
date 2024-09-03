@@ -16,6 +16,24 @@
       "message": "I assume you\u0027d want to include `project-art-admins` here as well, based on [the old setting](https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/tools/luci/config/main.star;l\u003d89-93)",
       "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c912414f_1eac3636",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-03T18:23:46Z",
+      "side": 1,
+      "message": "I was wondering about that, but it seems to work as-is now.  So it is needed?\n\nAlso, should I delete the old setting above?",
+      "parentUuid": "afbe6d65_f719c30d",
+      "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
