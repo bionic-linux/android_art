@@ -52,6 +52,24 @@
       "parentUuid": "c912414f_1eac3636",
       "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e1c5d7_080f6ca4",
+        "filename": "tools/luci/config/main.star",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3615173
+      },
+      "writtenOn": "2024-09-03T18:43:07Z",
+      "side": 1,
+      "message": "Oh `project-art-admins` has `role/buildbucket.owner` permissions at `@root`, which includes `role/buildbucket.creator` already, so you don\u0027t need to add it here.\n\nOn the other hand, I\u0027m not sure if you need to grant `art-ci-builder@chops-service-accounts.iam.gserviceaccount.com` the creator and triggerer permissions. It\u0027s useful only if you have one builder schedules child builds and you want to test that with led.",
+      "parentUuid": "b7632df2_07e11701",
+      "revId": "17c82897fefd05709cd8be41d84783662757ff8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
