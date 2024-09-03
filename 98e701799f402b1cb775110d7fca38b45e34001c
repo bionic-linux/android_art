@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c55e72_70ac0514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-03T13:38:40Z",
+      "side": 1,
+      "message": "Aha, okay, now I see why it was needed.",
+      "parentUuid": "1acd97ab_0edb0fb5",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "044e44fb_63124025",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-02T18:20:58Z",
       "side": 1,
       "message": "Could you also mention Bug 150126287 for tracking?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c2addc_6b4dec94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-03T13:38:40Z",
+      "side": 1,
+      "message": "Ack. I\u0027m keeping `libnetd_client` now.",
+      "parentUuid": "044e44fb_63124025",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a45887_c4c0ad56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-03T13:38:40Z",
+      "side": 1,
+      "message": "Thanks for pointing this out! It turns out that `libnetd_client` is still needed.",
+      "parentUuid": "684f6bd1_aa492e48",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fda0b79_fb676588",
@@ -83,6 +155,30 @@
       "writtenOn": "2024-09-02T18:52:21Z",
       "side": 1,
       "message": "Please also test the `--skip-run-tests-build` case in https://r.android.com/1850458. That\u0027s why those dependencies got added.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "98e701799f402b1cb775110d7fca38b45e34001c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8904f0e0_60b4cab1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-03T13:38:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fda0b79_fb676588",
       "range": {
         "startLine": 17,
         "startChar": 0,
