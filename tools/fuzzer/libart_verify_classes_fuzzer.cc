@@ -32,8 +32,28 @@
 #include "verifier/class_verifier.h"
 #include "well_known_classes.h"
 
+namespace art {
+
+// Global variable to call the GC once every 8000 iterations.
+int counter = 0;
+int no_resets = 0;
 // Global variable to signal LSAN that we are not leaking memory.
 uint8_t* allocated_signal_stack = nullptr;
+
+// A class to be friends with ClassLinker and access the internal FindDexCacheDataLocked method.
+class VerifyClassesFuzzerHelper {
+ public:
+  static const art::ClassLinker::DexCacheData* GetDexCacheData(art::Runtime* runtime,
+                                                               const art::DexFile* dex_file)
+      REQUIRES_SHARED(art::Locks::mutator_lock_) {
+    art::Thread* self = art::Thread::Current();
+    art::ReaderMutexLock mu(self, *art::Locks::dex_lock_);
+    art::ClassLinker* class_linker = runtime->GetClassLinker();
+    const art::ClassLinker::DexCacheData* old_data =
+        class_linker->FindDexCacheDataLocked(*dex_file);
+    return old_data;
+  }
+};
 
 std::string GetDexFileName(const std::string& jar_name) {
   // The jar files are located in the data directory within the directory of the fuzzer's binary.
@@ -81,6 +101,8 @@ jobject RegisterDexFileAndGetClassLoader(art::Runtime* runtime, art::StandardDex
 extern "C" int LLVMFuzzerInitialize([[maybe_unused]] int* argc, [[maybe_unused]] char*** argv) {
   // Set logging to error and above to avoid warnings about unexpected checksums.
   android::base::SetMinimumLogSeverity(android::base::ERROR);
+
+  LOG(ERROR) << "  CALL Initialize " << counter << std::this_thread::get_id();
 
   // Create runtime.
   art::RuntimeOptions options;
@@ -186,11 +208,27 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     }
   }
 
+  counter++;
+  // LOG(ERROR) << "  Counter " << counter <<  " for id "<< std::this_thread::get_id();
+
+  art::VerifyClassesFuzzerHelper helper;
+  const art::ClassLinker::DexCacheData* dex_cache_data = helper.GetDexCacheData(runtime, &dex_file);
+
+  soa.Env()->GetVm()->DeleteWeakGlobalRef(soa.Self(), dex_cache_data->weak_root);
+
+  class_linker->RemoveDexFromCaches(dex_file);
+
   // Delete global ref and unload class loader to free RAM.
   soa.Env()->GetVm()->DeleteGlobalRef(soa.Self(), class_loader);
-  // TODO: Can we run this less frequently? e.g. once every 100 iterations. If this leads to
-  // OOM errors, maybe combine with a conditional collection if the memory used is more than X.
-  runtime->GetHeap()->CollectGarbage(/* clear_soft_references */ true);
+
+  if (counter == 5000) {
+    LOG(ERROR) << "GC  " << counter;
+    runtime->GetHeap()->CollectGarbage(/* clear_soft_references */ true);
+    counter = 0;
+    no_resets++;
+    LOG(ERROR) << "Number calls " << no_resets;
+  }
 
   return 0;
 }
+}  // namespace art
