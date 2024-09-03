@@ -102,6 +102,27 @@ luci.binding(
 luci.realm(name = "pools/ci")
 luci.bucket(name = "ci")
 
+# Shadow bucket is needed for LED.
+luci.bucket(
+    name = "ci.shadow",
+    shadows = "ci",
+    bindings = [
+        luci.binding(
+            roles = "role/buildbucket.creator",
+            users = ["art-ci-builder@chops-service-accounts.iam.gserviceaccount.com"],
+        ),
+        luci.binding(
+            roles = "role/buildbucket.triggerer",
+            users = ["art-ci-builder@chops-service-accounts.iam.gserviceaccount.com"],
+        ),
+    ],
+    constraints = luci.bucket_constraints(
+        pools = ["luci.art.ci"],
+        service_accounts = ["art-ci-builder@chops-service-accounts.iam.gserviceaccount.com"],
+    ),
+    dynamic = True,
+)
+
 luci.notifier_template(
     name = "default",
     body = io.read_file("luci-notify.template"),
@@ -247,6 +268,10 @@ def add_builder(name,
         # Other than the `AP1A` builds above, all other devices are flashed to `SP2A`.
         # This avoids allocating `userfaultfd` devices for tests that don't need it.
         dimensions |= {"device_os": "S"}
+    elif mode == "host":
+      dimensions |= {"os": "Ubuntu-20"}
+    elif mode == "qemu":
+      dimensions |= {"os": "Ubuntu-22"}
 
     testrunner_args = ['--verbose', '--host'] if mode == 'host' else ['--target', '--verbose']
     testrunner_args += ['--debug'] if debug else ['--ndebug']
