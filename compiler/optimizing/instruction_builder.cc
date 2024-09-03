@@ -2159,12 +2159,8 @@ bool HInstructionBuilder::BuildInstanceFieldAccess(const Instruction& instructio
     HInstruction* field_set = nullptr;
     if (resolved_field == nullptr) {
       MaybeRecordStat(compilation_stats_,
-                      MethodCompilationStat::kUnresolvedField);
-      field_set = new (allocator_) HUnresolvedInstanceFieldSet(object,
-                                                               value,
-                                                               field_type,
-                                                               field_index,
-                                                               dex_pc);
+                      MethodCompilationStat::kUnresolvedFieldSet);
+      return false;
     } else {
       uint16_t class_def_index = resolved_field->GetDeclaringClass()->GetDexClassDefIndex();
       field_set = new (allocator_) HInstanceFieldSet(object,
@@ -2183,11 +2179,8 @@ bool HInstructionBuilder::BuildInstanceFieldAccess(const Instruction& instructio
     HInstruction* field_get = nullptr;
     if (resolved_field == nullptr) {
       MaybeRecordStat(compilation_stats_,
-                      MethodCompilationStat::kUnresolvedField);
-      field_get = new (allocator_) HUnresolvedInstanceFieldGet(object,
-                                                               field_type,
-                                                               field_index,
-                                                               dex_pc);
+                      MethodCompilationStat::kUnresolvedFieldGet);
+      return false;
     } else {
       uint16_t class_def_index = resolved_field->GetDeclaringClass()->GetDexClassDefIndex();
       field_get = new (allocator_) HInstanceFieldGet(object,
@@ -2211,16 +2204,15 @@ void HInstructionBuilder::BuildUnresolvedStaticFieldAccess(const Instruction& in
                                                            uint32_t dex_pc,
                                                            bool is_put,
                                                            DataType::Type field_type) {
-  uint32_t source_or_dest_reg = instruction.VRegA_21c();
-  uint16_t field_index = instruction.VRegB_21c();
-
+  UNUSED(instruction);
+  UNUSED(dex_pc);
+  UNUSED(field_type);
   if (is_put) {
-    HInstruction* value = LoadLocal(source_or_dest_reg, field_type);
-    AppendInstruction(
-        new (allocator_) HUnresolvedStaticFieldSet(value, field_type, field_index, dex_pc));
+    MaybeRecordStat(compilation_stats_,
+                      MethodCompilationStat::kUnresolvedStaticFieldSet);
   } else {
-    AppendInstruction(new (allocator_) HUnresolvedStaticFieldGet(field_type, field_index, dex_pc));
-    UpdateLocal(source_or_dest_reg, current_block_->GetLastInstruction());
+    MaybeRecordStat(compilation_stats_,
+                      MethodCompilationStat::kUnresolvedStaticFieldGet);
   }
 }
 
@@ -2305,7 +2297,7 @@ ArtField* HInstructionBuilder::ResolveField(uint16_t field_idx, bool is_static, 
   return resolved_field;
 }
 
-void HInstructionBuilder::BuildStaticFieldAccess(const Instruction& instruction,
+bool HInstructionBuilder::BuildStaticFieldAccess(const Instruction& instruction,
                                                  uint32_t dex_pc,
                                                  bool is_put) {
   uint32_t source_or_dest_reg = instruction.VRegA_21c();
@@ -2315,11 +2307,9 @@ void HInstructionBuilder::BuildStaticFieldAccess(const Instruction& instruction,
   ArtField* resolved_field = ResolveField(field_index, /* is_static= */ true, is_put);
 
   if (resolved_field == nullptr) {
-    MaybeRecordStat(compilation_stats_,
-                    MethodCompilationStat::kUnresolvedField);
     DataType::Type field_type = GetFieldAccessType(*dex_file_, field_index);
     BuildUnresolvedStaticFieldAccess(instruction, dex_pc, is_put, field_type);
-    return;
+    return false;
   }
 
   DataType::Type field_type = GetFieldAccessType(*dex_file_, field_index);
@@ -2338,7 +2328,7 @@ void HInstructionBuilder::BuildStaticFieldAccess(const Instruction& instruction,
     MaybeRecordStat(compilation_stats_,
                     MethodCompilationStat::kUnresolvedFieldNotAFastAccess);
     BuildUnresolvedStaticFieldAccess(instruction, dex_pc, is_put, field_type);
-    return;
+    return false;
   }
 
   HInstruction* cls = constant;
@@ -2374,6 +2364,8 @@ void HInstructionBuilder::BuildStaticFieldAccess(const Instruction& instruction,
                                                        dex_pc));
     UpdateLocal(source_or_dest_reg, current_block_->GetLastInstruction());
   }
+
+  return true;
 }
 
 void HInstructionBuilder::BuildCheckedDivRem(uint16_t out_vreg,
@@ -3721,7 +3713,9 @@ bool HInstructionBuilder::ProcessDexInstruction(const Instruction& instruction, 
     case Instruction::SGET_BYTE:
     case Instruction::SGET_CHAR:
     case Instruction::SGET_SHORT: {
-      BuildStaticFieldAccess(instruction, dex_pc, /* is_put= */ false);
+      if (!BuildStaticFieldAccess(instruction, dex_pc, /* is_put= */ false)) {
+        return false;
+      }
       break;
     }
 
@@ -3732,7 +3726,9 @@ bool HInstructionBuilder::ProcessDexInstruction(const Instruction& instruction, 
     case Instruction::SPUT_BYTE:
     case Instruction::SPUT_CHAR:
     case Instruction::SPUT_SHORT: {
-      BuildStaticFieldAccess(instruction, dex_pc, /* is_put= */ true);
+      if (!BuildStaticFieldAccess(instruction, dex_pc, /* is_put= */ true)) {
+        return false;
+      }
       break;
     }
 
