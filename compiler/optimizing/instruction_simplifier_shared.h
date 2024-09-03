@@ -77,6 +77,13 @@ bool TryExtractVecArrayAccessAddress(HVecMemoryOperation* access, HInstruction* 
 //   Add(c, Sub(b, a))
 bool TryReplaceSubSubWithSubAdd(HSub* last_sub);
 
+// Replace
+//   ROL dest, a, distance
+// with
+//   NEG neg, distance
+//   ROR dest, a, neg
+void UnfoldRotateLeft(HRol* rol);
+
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_INSTRUCTION_SIMPLIFIER_SHARED_H_
