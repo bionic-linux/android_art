@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a57d91_06da63ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-09-03T12:39:13Z",
+      "side": 1,
+      "message": "Verified gBoard is no longer crashing with this revert.",
+      "revId": "ac9cc853f327df240a691cb6ee76ab43a49e33f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
