@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26827d26_76f3b38a",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-03T13:52:11Z",
+      "side": 1,
+      "message": "Side note, this API isn\u0027t stable, so we\u0027re cutting corners by building it from source - it ought to be prebuilt as long as bionic is. However that\u0027s not new, so no action needed.",
+      "range": {
+        "startLine": 163,
+        "startChar": 18,
+        "endLine": 163,
+        "endChar": 39
+      },
+      "revId": "47f1c137dc2c578d0db370f9070c4acc09a273a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
