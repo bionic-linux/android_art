@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10c2caa_99d746ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-04T17:36:03Z",
+      "side": 1,
+      "message": "Looks good to me.\n\nMy only concern is that the recent submission of aosp/3225387 ostensibly caused a bunch of performance regressions, such as b/363315030 . This really only added logging code to a rarely exercised path in AllocObjectWithAllocator. Increasingly, my only explanation is that the inlined allocation code has gotten too large, and things are not getting compiled as well anymore. You\u0027re doing something similar in alloc-inl.h, which may confuse things more.",
+      "revId": "59d7c385bab7f8f9556fe9acd805d37494cc4b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
