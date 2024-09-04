@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c2f353_750d71ad",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-04T15:27:17Z",
+      "side": 1,
+      "message": "Example prints\n`E dex2oatd: nodes.cc:1080 Method byte[] com.android.org.bouncycastle.asn1.ASN1Object.getEncoded() has instruction v8 InvokeVirtual [l0,l5] dex_pc:5 block:B1 dex_file_index:174 method_name:com.android.org.bouncycastle.asn1.ASN1Object.encodeTo always_throws:false method_index:11 intrinsic:None loop:none which matches the pattern`\n`E dex2oatd: nodes.cc:1080 Method com.android.org.bouncycastle.asn1.ASN1Primitive com.android.org.bouncycastle.asn1.ASN1Primitive.fromByteArray(byte[]) has instruction l7 LoadClass dex_pc:0 block:B1 load_kind:BootImageLinkTimePcRelative in_image:true class_name:com.android.org.bouncycastle.asn1.ASN1InputStream gen_clinit_check:false needs_access_check:false loop:none klass:unresolved which matches the pattern`",
+      "revId": "32d83fbd134e17c0833d6cc38239001ebda625bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
