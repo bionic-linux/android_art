@@ -22,6 +22,30 @@
       },
       "revId": "89c352d079e1cf557b6361669861d6b2745ec2b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "909d259a_b885c14f",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2490,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-04T12:12:12Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "eba287f7_30221703",
+      "range": {
+        "startLine": 2445,
+        "startChar": 1,
+        "endLine": 2490,
+        "endChar": 3
+      },
+      "revId": "89c352d079e1cf557b6361669861d6b2745ec2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
