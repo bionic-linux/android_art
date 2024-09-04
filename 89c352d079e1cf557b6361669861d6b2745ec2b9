@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba287f7_30221703",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2490,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-04T10:30:11Z",
+      "side": 1,
+      "message": "Can\u0027t you share this logic with what\u0027s already in the interpreter?",
+      "range": {
+        "startLine": 2445,
+        "startChar": 1,
+        "endLine": 2490,
+        "endChar": 3
+      },
+      "revId": "89c352d079e1cf557b6361669861d6b2745ec2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
