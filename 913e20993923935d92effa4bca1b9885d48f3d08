@@ -218,6 +218,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce83688f_833fc54e",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-04T13:18:06Z",
+      "side": 1,
+      "message": "I wrote this comment yesterday but I forgot to click send, whoops. Sending it now\n\n\u003e Maybe Santiago has a better ide why we might occasionally keep the load reference, but not consistently?\n\u003e\n\u003e Note that setting loader to null is a dead assignment to a local, which might be getting optimized out?\n\nIt would be nice to be able to take a look at the compiled code to be able to see what\u0027s going on.\n\nI left some comments in the CL that originally added this test (aosp/3145296).\n\n\u003e I rewrote it in the same way as 141-class-unload is done (and made some fixes).\n\nI noticed that tests e.g. 141- would do `Runtime.getRuntime().gc();` and not the `System.gc()` + `System.runFinalization()`. I also noticed that 661- was stopping and restarting the JIT https://cs.android.com/android/platform/superproject/main/+/main:art/test/661-classloader-allocator/src/Main.java;l\u003d24-34;drc\u003d48b40cc97377fe67657b9936ad19395c4218b489 Not sure which alternative is the best, just wanted to point it out.",
+      "parentUuid": "717b261d_355e753f",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
