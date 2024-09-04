@@ -20,6 +20,8 @@
 #include <functional>
 #include <optional>
 
+#include "android-base/macros.h"
+#include "android-base/strings.h"
 #include "art_method-inl.h"
 #include "base/arena_allocator.h"
 #include "base/arena_bit_vector.h"
@@ -1058,6 +1060,30 @@ static void Add(HInstructionList* instruction_list,
 
 void HBasicBlock::AddInstruction(HInstruction* instruction) {
   Add(&instructions_, this, instruction);
+  if (UNLIKELY(instruction->IsInvoke() || instruction->IsLoadClass())) {
+    std::string str;
+    if (instruction->IsInvoke()) {
+      static constexpr bool kWithSignature = false;
+      HInvoke* invoke = instruction->AsInvoke();
+      ArtMethod* method = invoke->GetResolvedMethod();
+      ScopedObjectAccess soa(Thread::Current());
+      str = method == nullptr ? invoke->GetMethodReference().PrettyMethod(kWithSignature) :
+                                     method->PrettyMethod(kWithSignature);
+    } else {
+      HLoadClass* load_class = instruction->AsLoadClass();
+      str = load_class->GetDexFile().PrettyType(load_class->GetTypeIndex());
+    }
+
+    std::string pattern = "com.android.org.bouncycastle";
+    if (UNLIKELY(android::base::StartsWith(str, pattern))) {
+      ScopedObjectAccess soa(Thread::Current());
+      LOG(ERROR) << "Method "
+                 << (GetGraph() != nullptr && GetGraph()->GetArtMethod() != nullptr ?
+                         GetGraph()->GetArtMethod()->PrettyMethod() :
+                         "NO_NAME")
+                 << " has instruction " << *instruction << " which matches the pattern";
+    }
+  }
 }
 
 void HBasicBlock::AddPhi(HPhi* phi) {

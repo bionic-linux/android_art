@@ -75,14 +75,14 @@ bool HGraphBuilder::SkipCompilation() {
     return false;
   }
 
-  const uint32_t code_units = code_item_accessor_.InsnsSizeInCodeUnits();
-  if (compiler_options.IsHugeMethod(code_units)) {
-    VLOG(compiler) << "Skip compilation of huge method "
-                   << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex())
-                   << ": " << code_units << " code units";
-    MaybeRecordStat(compilation_stats_, MethodCompilationStat::kNotCompiledHugeMethod);
-    return true;
-  }
+  // const uint32_t code_units = code_item_accessor_.InsnsSizeInCodeUnits();
+  // if (compiler_options.IsHugeMethod(code_units)) {
+  //   VLOG(compiler) << "Skip compilation of huge method "
+  //                  << dex_file_->PrettyMethod(dex_compilation_unit_->GetDexMethodIndex())
+  //                  << ": " << code_units << " code units";
+  //   MaybeRecordStat(compilation_stats_, MethodCompilationStat::kNotCompiledHugeMethod);
+  //   return true;
+  // }
 
   return false;
 }
