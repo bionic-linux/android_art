@@ -254,6 +254,7 @@ $$(gtest_output): NAME := $$(gtest_rule)
 ifeq (,$(SANITIZE_HOST))
 $$(gtest_output): $$(gtest_exe) $$(gtest_deps)
 	$(hide) ($$(call ART_TEST_SKIP,$$(NAME)) && \
+		setarch -verbose --addr-no-randomize \
 		timeout --foreground -k 120s 2400s $(HOST_OUT_EXECUTABLES)/signal_dumper -s 15 \
 			$$< --gtest_output=xml:$$@ && \
 		$$(call ART_TEST_PASSED,$$(NAME))) || $$(call ART_TEST_FAILED,$$(NAME))
