@@ -42,12 +42,14 @@
 #include "interpreter/shadow_frame-inl.h"
 #include "jit/jit.h"
 #include "jit/jit_code_cache.h"
+#include "handle_scope.h"
 #include "linear_alloc.h"
 #include "method_handles.h"
 #include "mirror/class-inl.h"
 #include "mirror/dex_cache-inl.h"
 #include "mirror/method.h"
 #include "mirror/method_handle_impl.h"
+#include "mirror/method_type-inl.h"
 #include "mirror/object-inl.h"
 #include "mirror/object_array-inl.h"
 #include "mirror/var_handle.h"
@@ -2370,7 +2372,7 @@ extern "C" uint64_t artInvokePolymorphic(mirror::Object* raw_receiver, Thread* s
   gc_visitor.VisitArguments();
 
   // Wrap raw_receiver in a Handle for safety.
-  StackHandleScope<3> hs(self);
+  StackHandleScope<4> hs(self);
   Handle<mirror::Object> receiver_handle(hs.NewHandle(raw_receiver));
   raw_receiver = nullptr;
   self->EndAssertNoThreadSuspension(old_cause);
@@ -2379,14 +2381,6 @@ extern "C" uint64_t artInvokePolymorphic(mirror::Object* raw_receiver, Thread* s
   ClassLinker* linker = Runtime::Current()->GetClassLinker();
   ArtMethod* resolved_method = linker->ResolveMethod<ClassLinker::ResolveMode::kCheckICCEAndIAE>(
       self, inst.VRegB(), caller_method, kVirtual);
-
-  Handle<mirror::MethodType> method_type(
-      hs.NewHandle(linker->ResolveMethodType(self, proto_idx, caller_method)));
-  if (UNLIKELY(method_type.IsNull())) {
-    // This implies we couldn't resolve one or more types in this method handle.
-    CHECK(self->IsExceptionPending());
-    return 0UL;
-  }
 
   DCHECK_EQ(ArtMethod::NumArgRegisters(shorty) + 1u, (uint32_t)inst.VRegA());
   DCHECK_EQ(resolved_method->IsStatic(), kMethodIsStatic);
@@ -2420,6 +2414,14 @@ extern "C" uint64_t artInvokePolymorphic(mirror::Object* raw_receiver, Thread* s
   JValue result;
   bool success = false;
   if (resolved_method->GetDeclaringClass() == GetClassRoot<mirror::MethodHandle>(linker)) {
+    Handle<mirror::MethodType> method_type(
+        hs.NewHandle(linker->ResolveMethodType(self, proto_idx, caller_method)));
+    if (UNLIKELY(method_type.IsNull())) {
+      // This implies we couldn't resolve one or more types in this method handle.
+      CHECK(self->IsExceptionPending());
+      return 0UL;
+    }
+
     Handle<mirror::MethodHandle> method_handle(hs.NewHandle(
         ObjPtr<mirror::MethodHandle>::DownCast(receiver_handle.Get())));
     if (intrinsic == Intrinsics::kMethodHandleInvokeExact) {
@@ -2440,18 +2442,51 @@ extern "C" uint64_t artInvokePolymorphic(mirror::Object* raw_receiver, Thread* s
                                    &result);
     }
   } else {
-    DCHECK_EQ(GetClassRoot<mirror::VarHandle>(linker), resolved_method->GetDeclaringClass());
-    Handle<mirror::VarHandle> var_handle(hs.NewHandle(
-        ObjPtr<mirror::VarHandle>::DownCast(receiver_handle.Get())));
-    mirror::VarHandle::AccessMode access_mode =
-        mirror::VarHandle::GetAccessModeByIntrinsic(intrinsic);
-    success = VarHandleInvokeAccessor(self,
-                                      *shadow_frame,
-                                      var_handle,
-                                      method_type,
-                                      access_mode,
-                                      &operands,
-                                      &result);
+    ArtField* field = WellKnownClasses::java_util_concurrent_ThreadLocalRandom_seeder;
+    if (LIKELY(field->GetDeclaringClass<kWithoutReadBarrier>()->IsVisiblyInitialized()) ||
+        field->GetDeclaringClass()->IsInitialized()) {
+      Handle<mirror::MethodType> method_type(
+          hs.NewHandle(linker->ResolveMethodType(self, proto_idx, caller_method)));
+
+      if (LIKELY(method_type != nullptr)) {
+        DCHECK_EQ(GetClassRoot<mirror::VarHandle>(linker), resolved_method->GetDeclaringClass());
+        Handle<mirror::VarHandle> var_handle(hs.NewHandle(
+            ObjPtr<mirror::VarHandle>::DownCast(receiver_handle.Get())));
+        mirror::VarHandle::AccessMode access_mode =
+            mirror::VarHandle::GetAccessModeByIntrinsic(intrinsic);
+        success = VarHandleInvokeAccessor(self,
+                                          *shadow_frame,
+                                          var_handle,
+                                          method_type,
+                                          access_mode,
+                                          &operands,
+                                          &result);
+      }
+    } else {
+      VariableSizedHandleScope callsite_type_hs(self);
+      mirror::RawMethodType callsite_type(&callsite_type_hs);
+      Handle<mirror::DexCache> dex_cache = hs.NewHandle(caller_method->GetDexCache());
+      Handle<mirror::ClassLoader> class_loader = hs.NewHandle(caller_method->GetClassLoader());
+
+      if (linker->ResolveMethodType(self,
+                                    proto_idx,
+                                    dex_cache,
+                                    class_loader,
+                                    callsite_type)) {
+        Handle<mirror::VarHandle> var_handle(hs.NewHandle(
+            ObjPtr<mirror::VarHandle>::DownCast(receiver_handle.Get())));
+        mirror::VarHandle::AccessMode access_mode =
+            mirror::VarHandle::GetAccessModeByIntrinsic(intrinsic);
+
+        success = VarHandleInvokeAccessor(self,
+                                          *shadow_frame,
+                                          var_handle,
+                                          callsite_type,
+                                          access_mode,
+                                          &operands,
+                                          &result);
+      }
+    }
   }
 
   DCHECK(success || self->IsExceptionPending());
