@@ -194,6 +194,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597eed1b_4e0939fe",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-04T13:00:00Z",
+      "side": 1,
+      "message": "I rewrote it in the same way as `141-class-unload` is done (and made some fixes).",
+      "parentUuid": "717b261d_355e753f",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
