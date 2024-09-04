@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74975672_6b6a74fc",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8707ee8d_ead705bb",
+      "range": {
+        "startLine": 985,
+        "startChar": 4,
+        "endLine": 985,
+        "endChar": 29
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e5a626e_00c570fe",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55fdf1b7_03ed181a",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5a626e_00c570fe",
+      "range": {
+        "startLine": 995,
+        "startChar": 5,
+        "endLine": 995,
+        "endChar": 84
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94a1c469_c5bd766d",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-08-15T22:30:35Z",
       "side": 1,
       "message": "This looks unsafe to me. A class that was previously \u003c black_dense_end_ might no longer be. How big are these maps? We may just have to restart after we find something spanning the current end?",
+      "range": {
+        "startLine": 1005,
+        "startChar": 4,
+        "endLine": 1005,
+        "endChar": 66
+      },
+      "revId": "00b5b26eb760fec92edb6ae5d5adbe3a6af01e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2790beb_ca4a1696",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Thanks for catching this. Fixed.",
+      "parentUuid": "94a1c469_c5bd766d",
       "range": {
         "startLine": 1005,
         "startChar": 4,

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "023fa7b2_c04ae022",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d272bfb5_79079fab",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 87
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32160242_0f2b816a",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-08-15T22:30:35Z",
       "side": 1,
       "message": "Aside: Is this still accurate?",
+      "range": {
+        "startLine": 123,
+        "startChar": 46,
+        "endLine": 124,
+        "endChar": 45
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ecc8fc_30f3b55b",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32160242_0f2b816a",
       "range": {
         "startLine": 123,
         "startChar": 46,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b37c9df_86245fcb",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cda608e_05019d30",
+      "range": {
+        "startLine": 711,
+        "startChar": 2,
+        "endLine": 711,
+        "endChar": 10
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b73ddbcf_d1c2e934",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0648018_c51de050",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73ddbcf_d1c2e934",
+      "range": {
+        "startLine": 803,
+        "startChar": 29,
+        "endLine": 803,
+        "endChar": 35
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e5e363c_a40d8c9d",
@@ -106,6 +202,30 @@
       "writtenOn": "2024-08-15T22:30:35Z",
       "side": 1,
       "message": "This is presumably still OK?",
+      "range": {
+        "startLine": 757,
+        "startChar": 2,
+        "endLine": 758,
+        "endChar": 72
+      },
+      "revId": "96e991bc0b3eeb4fa2728151d92d61f17da6f6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5e2072_0892ef71",
+        "filename": "runtime/gc/collector/mark_compact.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-04T23:24:55Z",
+      "side": 1,
+      "message": "Certainly! It\u0027s the diff between the heap-space (to-space), and the temp-space that has the mremapped pages on (from-space).",
+      "parentUuid": "1e5e363c_a40d8c9d",
       "range": {
         "startLine": 757,
         "startChar": 2,
