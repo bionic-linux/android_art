@@ -1963,9 +1963,7 @@ static void CreateSystemArrayCopyLocations(HInvoke* invoke, DataType::Type type)
   locations->SetInAt(3, LocationForSystemArrayCopyInput(invoke->InputAt(3)));
   locations->SetInAt(4, LocationForSystemArrayCopyInput(invoke->InputAt(4)));
 
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
+  locations->AddRegisterTemps(3);
 }
 
 void IntrinsicLocationsBuilderRISCV64::VisitSystemArrayCopyByte(HInvoke* invoke) {
@@ -3110,9 +3108,7 @@ void IntrinsicLocationsBuilderRISCV64::VisitStringCompareTo(HInvoke* invoke) {
                                        kIntrinsified);
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
+  locations->AddRegisterTemps(3);
   // Need temporary registers for String compression's feature.
   if (mirror::kUseStringCompression) {
     locations->AddTemp(Location::RequiresRegister());
@@ -5357,9 +5353,7 @@ void IntrinsicLocationsBuilderRISCV64::VisitStringGetCharsNoCheck(HInvoke* invok
   locations->SetInAt(3, Location::RequiresRegister());
   locations->SetInAt(4, Location::RequiresRegister());
 
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
-  locations->AddTemp(Location::RequiresRegister());
+  locations->AddRegisterTemps(3);
 }
 
 void IntrinsicCodeGeneratorRISCV64::VisitStringGetCharsNoCheck(HInvoke* invoke) {
@@ -5524,6 +5518,92 @@ void IntrinsicCodeGeneratorRISCV64::VisitStringGetCharsNoCheck(HInvoke* invoke) 
   }
 
   __ Bind(&done);
+}
+
+void GenMathSignum(CodeGeneratorRISCV64* codegen, HInvoke* invoke, DataType::Type type) {
+  LocationSummary* locations = invoke->GetLocations();
+  DCHECK(locations->InAt(0).Equals(locations->Out()));
+  FRegister in = locations->InAt(0).AsFpuRegister<FRegister>();
+  Riscv64Assembler* assembler = codegen->GetAssembler();
+  ScratchRegisterScope srs(assembler);
+  XRegister tmp = srs.AllocateXRegister();
+  FRegister ftmp = srs.AllocateFRegister();
+  Riscv64Label done;
+
+  if (type == DataType::Type::kFloat64) {
+    // 0x3FF0000000000000L = 1.0
+    __ Li(tmp, 0x3FF0000000000000L);
+    __ FMvDX(ftmp, tmp);
+    __ FClassD(tmp, in);
+  } else {
+    // 0x3f800000 = 1.0f
+    __ Li(tmp, 0x3F800000);
+    __ FMvWX(ftmp, tmp);
+    __ FClassS(tmp, in);
+  }
+
+  __ Andi(tmp, tmp, kPositiveZero | kNegativeZero | kSignalingNaN | kQuietNaN);
+  __ Bnez(tmp, &done);
+
+  if (type == DataType::Type::kFloat64) {
+    __ FSgnjD(in, ftmp, in);
+  } else {
+    __ FSgnjS(in, ftmp, in);
+  }
+
+  __ Bind(&done);
+}
+
+void IntrinsicLocationsBuilderRISCV64::VisitMathSignumDouble(HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator_) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresFpuRegister());
+  locations->SetOut(Location::SameAsFirstInput());
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitMathSignumDouble(HInvoke* invoke) {
+  GenMathSignum(codegen_, invoke, DataType::Type::kFloat64);
+}
+
+void IntrinsicLocationsBuilderRISCV64::VisitMathSignumFloat(HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator_) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresFpuRegister());
+  locations->SetOut(Location::SameAsFirstInput());
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitMathSignumFloat(HInvoke* invoke) {
+  GenMathSignum(codegen_, invoke, DataType::Type::kFloat32);
+}
+
+void GenMathCopySign(CodeGeneratorRISCV64* codegen, HInvoke* invoke, DataType::Type type) {
+  Riscv64Assembler* assembler = codegen->GetAssembler();
+  LocationSummary* locations = invoke->GetLocations();
+  FRegister in0 = locations->InAt(0).AsFpuRegister<FRegister>();
+  FRegister in1 = locations->InAt(1).AsFpuRegister<FRegister>();
+  FRegister out = locations->Out().AsFpuRegister<FRegister>();
+
+  if (type == DataType::Type::kFloat64) {
+    __ FSgnjD(out, in0, in1);
+  } else {
+    __ FSgnjS(out, in0, in1);
+  }
+}
+
+void IntrinsicLocationsBuilderRISCV64::VisitMathCopySignDouble(HInvoke* invoke) {
+  CreateFPFPToFPCallLocations(allocator_, invoke);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitMathCopySignDouble(HInvoke* invoke) {
+  GenMathCopySign(codegen_, invoke, DataType::Type::kFloat64);
+}
+
+void IntrinsicLocationsBuilderRISCV64::VisitMathCopySignFloat(HInvoke* invoke) {
+  CreateFPFPToFPCallLocations(allocator_, invoke);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitMathCopySignFloat(HInvoke* invoke) {
+  GenMathCopySign(codegen_, invoke, DataType::Type::kFloat32);
 }
 
 #define MARK_UNIMPLEMENTED(Name) UNIMPLEMENTED_INTRINSIC(RISCV64, Name)
