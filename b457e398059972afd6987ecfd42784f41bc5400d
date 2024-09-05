@@ -22,6 +22,30 @@
       },
       "revId": "b457e398059972afd6987ecfd42784f41bc5400d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c6cd39_885852b1",
+        "filename": "tools/buildbot-vm.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-05T08:00:24Z",
+      "side": 1,
+      "message": "This is copied from cuttlefish qemu invocation (obtained with strace).",
+      "parentUuid": "4ce33bca_8549836f",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "b457e398059972afd6987ecfd42784f41bc5400d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
