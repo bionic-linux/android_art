@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf2c98f_94bd7c1d",
+        "filename": "test/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-05T15:33:06Z",
+      "side": 1,
+      "message": "Sorry for the late comment, but shouldn\u0027t this be `apex_test`? (See other others uses in ART Blueprint files.)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "b943ce4866a16d9eb8954ea086d84c6d6a578703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
