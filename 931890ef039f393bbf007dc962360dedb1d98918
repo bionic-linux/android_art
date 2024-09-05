@@ -16,6 +16,23 @@
       "message": "Please see ag/29187414 for the original change. Since this is AOSP first so I cherrypicked it to AOSP and will abandon ag/29187414 once this CL is in.",
       "revId": "931890ef039f393bbf007dc962360dedb1d98918",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab294da6_3cab32bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-05T20:55:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the implications here, and this would be the first such relaxation. Which may be fine. Adding Nicolas.",
+      "revId": "931890ef039f393bbf007dc962360dedb1d98918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
