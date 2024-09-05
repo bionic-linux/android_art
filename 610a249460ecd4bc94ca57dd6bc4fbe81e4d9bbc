@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79890d6c_f37dd8f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-05T10:12:34Z",
+      "side": 1,
+      "message": "Martin, could you please provide the second CR vote?",
+      "revId": "610a249460ecd4bc94ca57dd6bc4fbe81e4d9bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
