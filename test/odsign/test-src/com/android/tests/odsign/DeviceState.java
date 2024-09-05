@@ -236,17 +236,45 @@ public class DeviceState {
         mTestUtils.assertCommandSucceeds(String.format("restorecon '%s'", remotePath));
     }
 
+    /**
+     * Pushes the file to a temporary location and bind-mount it at the given path. This is useful
+     * when the path is readonly.
+     */
+    private void pushAndBindMount(File localFile, String remotePath, String fileContext)
+            throws Exception {
+        String tempFile = "/data/local/tmp/odsign_e2e_tests_" + UUID.randomUUID() + ".tmp";
+        assertThat(mTestInfo.getDevice().pushFile(localFile, tempFile)).isTrue();
+        mTempFiles.add(tempFile);
+
+        // If the path has already been bind-mounted by this method before, unmount it first.
+        if (mMountPoints.contains(remotePath)) {
+            mTestUtils.assertCommandSucceeds(String.format("umount '%s'", remotePath));
+            mMountPoints.remove(remotePath);
+        }
+
+        mTestUtils.assertCommandSucceeds(String.format("chcon %s %s", fileContext, tempFile));
+        mTestUtils.assertCommandSucceeds(
+                String.format("mount --bind '%s' '%s'", tempFile, remotePath));
+        mMountPoints.add(remotePath);
+    }
+
+    private String getFileContext(String remotePath) throws Exception {
+        return mTestUtils.assertCommandSucceeds(String.format("stat -c %%C %s", remotePath));
+    }
+
     /** A helper class for mutating an XML file. */
     private class XmlMutator implements AutoCloseable {
         private final Document mDocument;
         private final String mRemoteXmlFile;
         private final File mLocalFile;
+        private final String mFileContext;
 
         public XmlMutator(String remoteXmlFile) throws Exception {
             // Load the XML file.
             mRemoteXmlFile = remoteXmlFile;
             mLocalFile = mTestInfo.getDevice().pullFile(remoteXmlFile);
             assertThat(mLocalFile).isNotNull();
+            mFileContext = getFileContext(mRemoteXmlFile);
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             mDocument = builder.parse(mLocalFile);
         }
@@ -256,7 +284,7 @@ public class DeviceState {
             // Save the XML file.
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.transform(new DOMSource(mDocument), new StreamResult(mLocalFile));
-            pushAndBindMount(mLocalFile, mRemoteXmlFile);
+            pushAndBindMount(mLocalFile, mRemoteXmlFile, mFileContext);
         }
 
         /** Returns a mutable XML document. */
