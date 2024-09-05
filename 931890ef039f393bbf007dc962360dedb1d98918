@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17dd62a_5f2c4acb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-09-05T19:59:55Z",
+      "side": 1,
+      "message": "Please see ag/29187414 for the original change. Since this is AOSP first so I cherrypicked it to AOSP and will abandon ag/29187414 once this CL is in.",
+      "revId": "931890ef039f393bbf007dc962360dedb1d98918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
