@@ -292,7 +292,14 @@ def add_builder(name,
         "testrunner_args": testrunner_args,
     }
 
-    is_fyi = (name == "qemu-riscv64-ndebug")
+    is_fyi = False
+    if mode == "qemu":
+      if "build_only" in name:
+        properties["manifest_branch"] = "main"  # Full tree.
+        is_fyi = True  # Hide from console.
+        dimensions |= {"cores": "16"}
+      else:
+        dimensions |= {"cores": "8"}
 
     ci_builder(name,
                category="|".join(short_name.split("-")[:-1]),
@@ -324,5 +331,6 @@ add_builder("host-x86_64-non-gen-cc", 'host', 'x86', 64, debug=True, gen_cc=Fals
 add_builder("host-x86_64-ndebug", 'host', 'x86', 64)
 add_builder("host-x86_64-poison-debug", 'host', 'x86', 64, debug=True, heap_poisoning=True)
 add_builder("qemu-armv8-ndebug", 'qemu', 'arm', 64)
+add_builder("qemu-armv8-ndebug-build_only", 'qemu', 'arm', 64)
 add_builder("qemu-riscv64-ndebug", 'qemu', 'riscv', 64)
 add_builder("qemu-riscv64-ndebug-build_only", 'qemu', 'riscv', 64)
