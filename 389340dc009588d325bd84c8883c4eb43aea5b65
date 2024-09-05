@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee88ce0_3e49449b",
+        "filename": "tools/buildbot-vm.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-05T08:48:21Z",
+      "side": 1,
+      "message": "I think have added this line before.  Delete it?",
+      "revId": "389340dc009588d325bd84c8883c4eb43aea5b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
