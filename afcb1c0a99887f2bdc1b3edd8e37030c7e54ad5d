@@ -34,6 +34,24 @@
       "parentUuid": "5941a3a5_8f3a9da6",
       "revId": "afcb1c0a99887f2bdc1b3edd8e37030c7e54ad5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b30c8e8_11bff062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-05T09:42:51Z",
+      "side": 1,
+      "message": "I think the fix was in PS7 but the failure is from PS6. There\u0027s a merge conflict now, so I cannot run another presubmit. Could you please rebase this so we can trigger a presubmit run again and check if it is fixed in PS7.",
+      "parentUuid": "49ab664b_232ed0ff",
+      "revId": "afcb1c0a99887f2bdc1b3edd8e37030c7e54ad5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
