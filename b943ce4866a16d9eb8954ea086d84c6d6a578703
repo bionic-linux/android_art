@@ -22,6 +22,30 @@
       },
       "revId": "b943ce4866a16d9eb8954ea086d84c6d6a578703",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30c9cac_9f7d4bb5",
+        "filename": "test/testing/art_fake_com.android.os.statsd/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-05T15:44:41Z",
+      "side": 1,
+      "message": "Oh, cool. Didn\u0027t know I have this option. I\u0027ll make the change later.",
+      "parentUuid": "fbf2c98f_94bd7c1d",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 4
+      },
+      "revId": "b943ce4866a16d9eb8954ea086d84c6d6a578703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
