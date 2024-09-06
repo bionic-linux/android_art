@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "292a8600_dd71585d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "The new code due to following comment makes reverse iterator relevant 😊",
+      "parentUuid": "7057014b_a3bc3fee",
+      "range": {
+        "startLine": 1002,
+        "startChar": 6,
+        "endLine": 1004,
+        "endChar": 20
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90bf0e8a_e37b5d41",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-06T00:53:39Z",
       "side": 1,
       "message": "You\u0027re computing the average density for the tail end of the heap, right? I don\u0027t think you want that. If you have 100 full pages followed by many empty pages, you\u0027ll initially stop somewhere around page 118, but then back up to near the beginning again. You want to stop at page 100, as soon as you see a single page that\u0027s over threshold. So I think the code can actually be simpler; the test should just be *iter * 100 \u003e\u003d \u003cpage size\u003e * kBlackDenseRegionThreshold.\n\nThere are probably cases in which that isn\u0027t optimal. But AFAICT, the current code backs up way too far. And my only suggestion was to back up past obviously low density/empty pages. I don\u0027t think optimality is necessary; this was intended as a hack to avoid doing something obviously bad, like not compacting empty pages at the end.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 5,
+        "endLine": 1006,
+        "endChar": 33
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30125cda_f50196da",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. I fully agree, we should check on individual page if they meet the threshold. Fixed and simplified the code using `find_if`",
+      "parentUuid": "90bf0e8a_e37b5d41",
       "range": {
         "startLine": 1005,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ec3941_dff8255d",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "object-before-class scenarios only happen because the thread initializing the class might have its TLAB `after` another thread which allocates object of that class. Therefore, in practice I don\u0027t think the distance between the first object and its class can be large. I think it\u0027s very unlikely that we end up at beginning of the heap during this loop because we can never have a GC cycle separating the object allocated before its class.\n\nAs of now classes which are not in boot/app images are in movable space.",
+      "parentUuid": "5bdca813_66415489",
+      "range": {
+        "startLine": 1026,
+        "startChar": 6,
+        "endLine": 1027,
+        "endChar": 93
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f651191_ab68b189",
@@ -100,6 +172,30 @@
       "writtenOn": "2024-09-06T00:53:39Z",
       "side": 1,
       "message": "Is this still open?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 4,
+        "endLine": 1037,
+        "endChar": 77
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c930e9_a21612fd",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f651191_ab68b189",
       "range": {
         "startLine": 1036,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a3a88f_804bc13e",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "We actually need exclusive_scan because ith entry is supposed to contain sum of `[0, i)`",
+      "parentUuid": "9c51d192_73031e8c",
+      "range": {
+        "startLine": 1059,
+        "startChar": 4,
+        "endLine": 1059,
+        "endChar": 50
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "433eb84a_1fee08f4",
@@ -146,6 +266,30 @@
       "writtenOn": "2024-09-06T00:53:39Z",
       "side": 1,
       "message": "Is this a meaningful optimization, or does it make sense to always take the else path?",
+      "range": {
+        "startLine": 4232,
+        "startChar": 4,
+        "endLine": 4232,
+        "endChar": 34
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac199fc_f39f8ffb",
+        "filename": "runtime/gc/collector/mark_compact.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4232,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "Clear() directly calls madvise() on entire vma, whereas ClearRange() first ensures that unaligned begin/end are memsetted and then aligned pages are madvised. No other difference.",
+      "parentUuid": "433eb84a_1fee08f4",
       "range": {
         "startLine": 4232,
         "startChar": 4,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32cfd11_94232d78",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be67981_8ae02935",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb350420_88c8fd3e",
@@ -192,6 +360,30 @@
       "writtenOn": "2024-09-06T00:53:39Z",
       "side": 1,
       "message": "Since it\u0027s CMC-specific, does it belong here?\nThat\u0027s presumably because Walk() cares?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "7bf0243d8d2047b30c2bf42504fe515bbc4c7aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2795dc_1b687536",
+        "filename": "runtime/gc/space/bump_pointer_space.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-06T22:15:13Z",
+      "side": 1,
+      "message": "Yeah, basically due to Walk(). I also thought that since it\u0027s a bump-pointer space, in future any other GC might also want to have the black-dense region concept in this space.",
+      "parentUuid": "bb350420_88c8fd3e",
       "range": {
         "startLine": 198,
         "startChar": 2,
