@@ -33,6 +33,23 @@
       "message": "I\u0027m not sure I understand the implications here, and this would be the first such relaxation. Which may be fine. Adding Nicolas.",
       "revId": "931890ef039f393bbf007dc962360dedb1d98918",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7686ac_787a07bc",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-06T08:53:59Z",
+      "side": 1,
+      "message": "Maybe just  `//tools/vendor:__subpackages__`, but I\u0027ll let Martin confirm what he prefers.",
+      "revId": "931890ef039f393bbf007dc962360dedb1d98918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
