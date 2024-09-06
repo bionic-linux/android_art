@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f49cf5_c26bc782",
+        "filename": "libnativebridge/include/nativebridge/native_bridge.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-06T16:23:48Z",
+      "side": 1,
+      "message": "Suggestion: Deprecated.",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 305,
+        "endChar": 20
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ddfdb464_9f4c798d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libnativebridge/include/nativebridge/native_bridge.h",
+              "range": {
+                "startLine": 305,
+                "startChar": 0,
+                "endLine": 306,
+                "endChar": 0
+              },
+              "replacement": "  // Deprecated.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "1f782110b602d8870564e05b8670d6302f306f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02294a88_80dd6030",
+        "filename": "libnativebridge/tests/NativeBridge3InitAnonymousNamespace_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-06T16:23:48Z",
+      "side": 1,
+      "message": "Should this file be deleted as part of this CL too?",
+      "revId": "1f782110b602d8870564e05b8670d6302f306f14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
