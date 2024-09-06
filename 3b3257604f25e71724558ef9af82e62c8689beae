@@ -46,6 +46,23 @@
       },
       "revId": "3b3257604f25e71724558ef9af82e62c8689beae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250c8edf_7b57b0f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-06T09:21:54Z",
+      "side": 1,
+      "message": "(note that is QEMU only, and will stay QEMU only)",
+      "revId": "3b3257604f25e71724558ef9af82e62c8689beae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
