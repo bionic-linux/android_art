@@ -33,6 +33,47 @@
       "message": "@ngeoffray@google.com PTAL",
       "revId": "bb64d46d7b920af803746261bb0f7e508128754f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28f9f86_b49e4854",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-06T14:19:45Z",
+      "side": 1,
+      "message": "Add a comment why this is better.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "59779cb6_7639278f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/instruction_simplifier_shared.h",
+              "range": {
+                "startLine": 85,
+                "startChar": 0,
+                "endLine": 85,
+                "endChar": 0
+              },
+              "replacement": "//\n// This is better because the ROR instruction is a single cycle on ARM64,\n// whereas the ROL instruction is a 4-cycle sequence.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bb64d46d7b920af803746261bb0f7e508128754f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
