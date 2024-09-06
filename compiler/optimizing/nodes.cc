@@ -3450,7 +3450,7 @@ static inline IntrinsicExceptions GetExceptionsIntrinsic(Intrinsics i) {
 
 void HInvoke::SetResolvedMethod(ArtMethod* method, bool enable_intrinsic_opt) {
   if (method != nullptr && method->IsIntrinsic() && enable_intrinsic_opt) {
-    Intrinsics intrinsic = method->GetIntrinsic();
+    Intrinsics intrinsic = static_cast<Intrinsics>(method->GetIntrinsic());
     SetIntrinsic(intrinsic,
                  NeedsEnvironmentIntrinsic(intrinsic),
                  GetSideEffectsIntrinsic(intrinsic),
