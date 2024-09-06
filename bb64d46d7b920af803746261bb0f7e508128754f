@@ -16,6 +16,23 @@
       "message": "Nicolas PTAL",
       "revId": "bb64d46d7b920af803746261bb0f7e508128754f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "977c7892_12332309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-06T12:11:45Z",
+      "side": 1,
+      "message": "@ngeoffray@google.com PTAL",
+      "revId": "bb64d46d7b920af803746261bb0f7e508128754f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
