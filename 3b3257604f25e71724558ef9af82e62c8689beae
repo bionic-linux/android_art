@@ -22,6 +22,30 @@
       },
       "revId": "3b3257604f25e71724558ef9af82e62c8689beae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fed86b7_f5527df4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-06T09:12:11Z",
+      "side": 1,
+      "message": "I will see if the full-tree build speed acceptable.  If it is ok, I plan to keep this CL.\n\nThe \"intermediate\" more means that this not the full solution yet.  Specifically, this just changes the manifest, so this will not even measure the increased build time yet.",
+      "parentUuid": "c64eb730_86ebde33",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "3b3257604f25e71724558ef9af82e62c8689beae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
