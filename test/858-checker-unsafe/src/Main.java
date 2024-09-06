@@ -47,6 +47,13 @@ public class Main {
     unsafe.putInt(object, 38, 12);
   }
 
+  /// CHECK-START-ARM64: void Main.testGet() disassembly (after)
+  /// CHECK:                  ldur w{{[0-9]+}}, [x{{[0-9]+}}, #38]
+  private static void testGet() {
+    int[] object = new int[42];
+    unsafe.getInt(object, 38);
+  }
+
   /// CHECK-START: int Main.testArrayBaseOffsetObject() instruction_simplifier (after)
   /// CHECK:                  IntConstant 12
   private static int testArrayBaseOffsetObject() {
