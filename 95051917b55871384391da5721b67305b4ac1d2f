@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a1721e_f72f89ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-06T11:47:43Z",
+      "side": 1,
+      "message": "Code LGTM but we need to update the image version since we are adding intrinsics https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/image.cc;l\u003d38;drc\u003d93163edd92664c79da56ffcf5de32b7b872136ce",
+      "revId": "95051917b55871384391da5721b67305b4ac1d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
