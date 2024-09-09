@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4e6ba0_aefb35b0",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-09T13:05:13Z",
+      "side": 1,
+      "message": "Is this to not do the check in `CreateUnsafeGetLocations` again? Can we DCHECK that the `locations-\u003eGetTempCount()` is equal to the number we expect?\n\nBasically, we would want something like\n`DCHECK_EQ(locations-\u003eGetTempCount() !\u003d 0, is_volatile || ...);`",
+      "range": {
+        "startLine": 726,
+        "startChar": 11,
+        "endLine": 726,
+        "endChar": 41
+      },
+      "revId": "e8cd1b0678f02672001e1a2914b433d5f9425713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b855c194_7108d736",
+        "filename": "test/858-checker-unsafe/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-09T13:05:13Z",
+      "side": 1,
+      "message": "Can we add a case with a LongConstant not in range too?\n\nAlso, these tests are not called. Maybe we can do a put/get and then check that we have the correct value?",
+      "revId": "e8cd1b0678f02672001e1a2914b433d5f9425713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
