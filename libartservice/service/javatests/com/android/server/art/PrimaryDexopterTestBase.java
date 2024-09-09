@@ -46,6 +46,7 @@ import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class PrimaryDexopterTestBase {
     protected static final String PKG_NAME = "com.example.foo";
@@ -65,6 +66,7 @@ public class PrimaryDexopterTestBase {
     @Mock protected DexUseManagerLocal mDexUseManager;
     @Mock protected StorageManager mStorageManager;
     @Mock protected DexMetadataHelper.Injector mDexMetadataHelperInjector;
+    @Mock protected ThreadPoolExecutor mStatsdReporterExecutor;
     protected PackageState mPkgState;
     protected AndroidPackage mPkg;
     protected PackageUserState mPkgUserStateNotInstalled;

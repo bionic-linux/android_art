@@ -527,7 +527,7 @@ public class ArtManagerLocalTest {
         var cancellationSignal = new CancellationSignal();
 
         when(mDexoptHelper.dexopt(any(), deepEq(List.of(PKG_NAME_1)), same(params),
-                     same(cancellationSignal), any()))
+                     same(cancellationSignal), any(), any()))
                 .thenReturn(result);
 
         assertThat(
@@ -540,8 +540,8 @@ public class ArtManagerLocalTest {
         var result = DexoptResult.create();
         var cancellationSignal = new CancellationSignal();
 
-        when(mDexoptHelper.dexopt(
-                     any(), deepEq(List.of(PKG_NAME_1)), any(), same(cancellationSignal), any()))
+        when(mDexoptHelper.dexopt(any(), deepEq(List.of(PKG_NAME_1)), any(),
+                     same(cancellationSignal), any(), any()))
                 .thenReturn(result);
 
         assertThat(mArtManagerLocal.resetDexoptStatus(mSnapshot, PKG_NAME_1, cancellationSignal))
@@ -594,7 +594,7 @@ public class ArtManagerLocalTest {
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_2, PKG_NAME_1)),
                         argThat(params -> params.getReason().equals("bg-dexopt")),
-                        same(cancellationSignal), any(), any(), any());
+                        same(cancellationSignal), any(), any(), any(), any());
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                            null /* processCallbackExecutor */, null /* processCallback */))
@@ -603,7 +603,7 @@ public class ArtManagerLocalTest {
         // Nothing to downgrade.
         verify(mDexoptHelper, never())
                 .dexopt(any(), any(), argThat(params -> params.getReason().equals("inactive")),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
     }
 
     @Test
@@ -622,7 +622,7 @@ public class ArtManagerLocalTest {
                 .when(mDexoptHelper)
                 .dexopt(any(), inAnyOrder(PKG_NAME_1, PKG_NAME_2),
                         argThat(params -> params.getReason().equals("bg-dexopt")), any(), any(),
-                        any(), any());
+                        any(), any(), any());
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                 null /* processCallbackExecutor */, null /* processCallback */);
@@ -630,7 +630,7 @@ public class ArtManagerLocalTest {
         // PKG_NAME_1 should not be downgraded.
         verify(mDexoptHelper, never())
                 .dexopt(any(), any(), argThat(params -> params.getReason().equals("inactive")),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
     }
 
     @Test
@@ -650,14 +650,14 @@ public class ArtManagerLocalTest {
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_2)),
                         argThat(params -> params.getReason().equals("bg-dexopt")), any(), any(),
-                        any(), any());
+                        any(), any(), any());
 
         // PKG_NAME_1 should be downgraded.
         doReturn(downgradeResult)
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_1)),
                         argThat(params -> params.getReason().equals("inactive")), any(), any(),
-                        any(), any());
+                        any(), any(), any());
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                            null /* processCallbackExecutor */, null /* processCallback */))
@@ -680,7 +680,7 @@ public class ArtManagerLocalTest {
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_2)),
                         argThat(params -> params.getReason().equals("bg-dexopt")), any(), any(),
-                        any(), any());
+                        any(), any(), any());
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                 null /* processCallbackExecutor */, null /* processCallback */);
@@ -688,7 +688,7 @@ public class ArtManagerLocalTest {
         // PKG_NAME_1 should not be downgraded because the storage is not low.
         verify(mDexoptHelper, never())
                 .dexopt(any(), any(), argThat(params -> params.getReason().equals("inactive")),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
     }
 
     @Test
@@ -706,7 +706,7 @@ public class ArtManagerLocalTest {
                 .when(mDexoptHelper)
                 .dexopt(any(), inAnyOrder(PKG_NAME_1, PKG_NAME_2),
                         argThat(params -> params.getReason().equals("first-boot")), any(), any(),
-                        any(), any());
+                        any(), any(), any());
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "first-boot", cancellationSignal,
                 null /* processCallbackExecutor */, null /* processCallback */);
@@ -721,8 +721,8 @@ public class ArtManagerLocalTest {
         lenient().when(mInjector.isLauncherPackage(PKG_NAME_2)).thenReturn(true);
 
         // It should dexopt the system UI and the launcher.
-        when(mDexoptHelper.dexopt(
-                     any(), inAnyOrder(PKG_NAME_1, PKG_NAME_2), any(), any(), any(), any(), any()))
+        when(mDexoptHelper.dexopt(any(), inAnyOrder(PKG_NAME_1, PKG_NAME_2), any(), any(), any(),
+                     any(), any(), any()))
                 .thenReturn(result);
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "boot-after-mainline-update", cancellationSignal,
@@ -742,7 +742,8 @@ public class ArtManagerLocalTest {
         simulateStorageLow();
 
         // It should dexopt the system UI and the launcher, but they are not found.
-        when(mDexoptHelper.dexopt(any(), deepEq(List.of()), any(), any(), any(), any(), any()))
+        when(mDexoptHelper.dexopt(
+                     any(), deepEq(List.of()), any(), any(), any(), any(), any(), any()))
                 .thenReturn(result);
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "boot-after-mainline-update", cancellationSignal,
@@ -751,7 +752,7 @@ public class ArtManagerLocalTest {
         // It should never downgrade apps, even if the storage is low.
         verify(mDexoptHelper, never())
                 .dexopt(any(), any(), argThat(params -> params.getReason().equals("inactive")),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
     }
 
     @Test
@@ -778,7 +779,7 @@ public class ArtManagerLocalTest {
         doReturn(result)
                 .when(mDexoptHelper)
                 .dexopt(any(), deepEq(List.of(PKG_NAME_1)), same(params), any(), any(), any(),
-                        any());
+                        any(), any());
 
         mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                 null /* processCallbackExecutor */, null /* processCallback */);
@@ -787,7 +788,7 @@ public class ArtManagerLocalTest {
         // not downgrade PKG_NAME_2 either because it's not an inactive package.
         verify(mDexoptHelper, never())
                 .dexopt(any(), any(), argThat(params2 -> params2.getReason().equals("inactive")),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
     }
 
     @Test
@@ -804,7 +805,7 @@ public class ArtManagerLocalTest {
 
         // It should use the default package list and params.
         when(mDexoptHelper.dexopt(any(), inAnyOrder(PKG_NAME_1, PKG_NAME_2), not(same(params)),
-                     same(cancellationSignal), any(), any(), any()))
+                     same(cancellationSignal), any(), any(), any(), any()))
                 .thenReturn(result);
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
@@ -843,7 +844,7 @@ public class ArtManagerLocalTest {
                                 -> params.getReason().equals("bg-dexopt")
                                         && (params.getFlags() & ArtFlags.FLAG_FORCE_MERGE_PROFILE)
                                                 == 0),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
 
         // The supplementary pass.
         doReturn(supplementaryResult)
@@ -853,7 +854,7 @@ public class ArtManagerLocalTest {
                                 -> params.getReason().equals("bg-dexopt")
                                         && (params.getFlags() & ArtFlags.FLAG_FORCE_MERGE_PROFILE)
                                                 != 0),
-                        any(), any(), any(), any());
+                        any(), any(), any(), any(), any());
 
         assertThat(mArtManagerLocal.dexoptPackages(mSnapshot, "bg-dexopt", cancellationSignal,
                            null /* processCallbackExecutor */, null /* processCallback */))
@@ -1148,7 +1149,7 @@ public class ArtManagerLocalTest {
 
         when(mDexoptHelper.dexopt(any(), any(),
                      argThat(params -> params.getReason().equals(ReasonMapping.REASON_FIRST_BOOT)),
-                     any(), any(), same(progressCallbackExecutor), same(progressCallback)))
+                     any(), any(), same(progressCallbackExecutor), same(progressCallback), any()))
                 .thenReturn(DexoptResult.create());
 
         mArtManagerLocal.onBoot(
@@ -1159,7 +1160,7 @@ public class ArtManagerLocalTest {
     public void testOnBootNoProgressCallback() throws Exception {
         when(mDexoptHelper.dexopt(any(), any(),
                      argThat(params -> params.getReason().equals(ReasonMapping.REASON_FIRST_BOOT)),
-                     any(), any(), isNull(), isNull()))
+                     any(), any(), isNull(), isNull(), any()))
                 .thenReturn(DexoptResult.create());
 
         mArtManagerLocal.onBoot(ReasonMapping.REASON_FIRST_BOOT,

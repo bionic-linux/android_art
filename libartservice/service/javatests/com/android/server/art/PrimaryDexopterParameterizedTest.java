@@ -286,8 +286,8 @@ public class PrimaryDexopterParameterizedTest extends PrimaryDexopterTestBase {
                                 ArtFlags.FLAG_FORCE_COMPILER_FILTER)
                         .build();
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
     }
 
     @Test

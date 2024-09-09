@@ -26,10 +26,8 @@ import static com.android.server.art.model.ArtFlags.DexoptFlags;
 import static com.android.server.art.model.Config.Callback;
 import static com.android.server.art.model.DexoptResult.DexContainerFileDexoptResult;
 
-import android.R;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
@@ -39,8 +37,6 @@ import android.os.ServiceSpecificException;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
-import android.text.TextUtils;
-import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
@@ -64,6 +60,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** @hide */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -78,14 +77,19 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
     @NonNull protected final DexoptParams mParams;
     @NonNull protected final CancellationSignal mCancellationSignal;
 
+    // Used to report dex2oat metrics asynchronously to StatsD
+    @NonNull private final ThreadPoolExecutor mStatsdReporterExecutor;
+
     protected Dexopter(@NonNull Injector injector, @NonNull PackageState pkgState,
             @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
-            @NonNull CancellationSignal cancellationSignal) {
+            @NonNull CancellationSignal cancellationSignal,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
         mInjector = injector;
         mPkgState = pkgState;
         mPkg = pkg;
         mParams = params;
         mCancellationSignal = cancellationSignal;
+        mStatsdReporterExecutor = statsdReporterExecutor;
     }
 
     /**
@@ -193,6 +197,9 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                     long cpuTimeMs = 0;
                     long sizeBytes = 0;
                     long sizeBeforeBytes = 0;
+                    int resultStatus = 0;
+                    int resultExitCode = 0;
+                    int resultSignal = 0;
                     @DexoptResult.DexoptResultExtendedStatusFlags int extendedStatusFlags = 0;
                     try {
                         var target = DexoptTarget.<DexInfoType>builder()
@@ -276,6 +283,7 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                         cpuTimeMs = dexoptResult.cpuTimeMs;
                         sizeBytes = dexoptResult.sizeBytes;
                         sizeBeforeBytes = dexoptResult.sizeBeforeBytes;
+                        resultStatus = 1; // exited
 
                         if (status == DexoptResult.DEXOPT_CANCELLED) {
                             return results;
@@ -288,6 +296,18 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                                         dexInfo.classLoaderContext()),
                                 e);
                         status = DexoptResult.DEXOPT_FAILED;
+
+                        if (e.getMessage() != null) {
+                            // Parse status, exit code and signal from the dex2oat error message
+                            Pattern pattern = Pattern.compile(
+                                    "\\[status=(\\d+),exit_code=(\\d+),signal=(\\d+)]");
+                            Matcher matcher = pattern.matcher(e.getMessage());
+                            if (matcher.matches()) {
+                                resultStatus = Integer.parseInt(matcher.group(1));
+                                resultExitCode = Integer.parseInt(matcher.group(2));
+                                resultSignal = Integer.parseInt(matcher.group(3));
+                            }
+                        }
                     } finally {
                         if (!externalProfileErrors.isEmpty()) {
                             extendedStatusFlags |= DexoptResult.EXTENDED_BAD_EXTERNAL_PROFILE;
@@ -306,6 +326,22 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                         // Make sure artd does not leak even if the caller holds
                         // `mCancellationSignal` forever.
                         mCancellationSignal.setOnCancelListener(null);
+
+                        // Variables used in lambda needs to be effectively final
+                        String finalCompilerFilter = compilerFilter;
+                        int finalResultStatus = resultStatus;
+                        int finalResultExitCode = resultExitCode;
+                        int finalResultSignal = resultSignal;
+                        long finalSizeBytes = sizeBytes;
+                        long finalWallTimeMs = wallTimeMs;
+                        mStatsdReporterExecutor.execute(
+                                ()
+                                        -> Dex2OatStatsReporter.report(mPkgState.getAppId(),
+                                                finalCompilerFilter, mParams.getReason(),
+                                                dmInfo.type(), dexInfo, abi.isa(),
+                                                finalResultStatus, finalResultExitCode,
+                                                finalResultSignal, finalSizeBytes,
+                                                finalWallTimeMs));
                     }
                 }
 
