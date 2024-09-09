@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a9235c_b46fce5d",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-09T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252ba7f4_ef7c4a67",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "0c6064ba9f46d168e309755cda14570bd5185bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6546e9e_415d0444",
@@ -54,6 +78,24 @@
       "writtenOn": "2024-09-09T12:49:38Z",
       "side": 1,
       "message": "Add `to give it a chance to deduplicate the instructions, if it\u0027s able.`.",
+      "revId": "0c6064ba9f46d168e309755cda14570bd5185bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292e7e6b_43d835b2",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-09T13:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6546e9e_415d0444",
       "revId": "0c6064ba9f46d168e309755cda14570bd5185bd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
