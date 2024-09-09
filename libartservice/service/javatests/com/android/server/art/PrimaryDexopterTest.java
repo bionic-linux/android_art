@@ -150,8 +150,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                 .when(mArtd.getDexFileVisibility(mSplit0DexPath))
                 .thenReturn(FileVisibility.OTHER_READABLE);
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         mUsedProfiles = new ArrayList<>();
         mUsedEmbeddedProfiles = new ArrayList<>();
@@ -408,8 +408,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                                 .setFlags(ArtFlags.FLAG_FORCE_MERGE_PROFILE,
                                         ArtFlags.FLAG_FORCE_MERGE_PROFILE)
                                 .build();
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         setPackageInstalledForUserIds(0, 2);
 
@@ -755,8 +755,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                         .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX | ArtFlags.FLAG_FOR_SINGLE_SPLIT)
                         .setSplitName(null)
                         .build();
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         verifyStatusAllOk(results);
@@ -777,8 +777,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                         .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX | ArtFlags.FLAG_FOR_SINGLE_SPLIT)
                         .setSplitName("split_0")
                         .build();
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         verifyStatusAllOk(results);
@@ -800,8 +800,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                         .setCompilerFilter("speed-profile")
                         .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX | ArtFlags.FLAG_SKIP_IF_STORAGE_LOW)
                         .build();
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         assertThat(results.get(0).getStatus()).isEqualTo(DexoptResult.DEXOPT_PERFORMED);
@@ -838,8 +838,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                                 .setCompilerFilter("speed-profile")
                                 .setFlags(ArtFlags.FLAG_FOR_PRIMARY_DEX)
                                 .build();
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         assertThat(results.get(0).getStatus()).isEqualTo(DexoptResult.DEXOPT_SKIPPED);
@@ -866,8 +866,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
         doReturn(FileVisibility.NOT_FOUND).when(mArtd).getDexFileVisibility(mDexPath);
         doReturn(FileVisibility.NOT_FOUND).when(mArtd).getDexFileVisibility(mSplit0DexPath);
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         assertThat(results).hasSize(0);
@@ -879,8 +879,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
         doReturn(FileVisibility.OTHER_READABLE).when(mArtd).getDexFileVisibility(mDexPath);
         doReturn(FileVisibility.NOT_FOUND).when(mArtd).getDexFileVisibility(mSplit0DexPath);
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         assertThat(results).hasSize(2);
@@ -898,8 +898,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                      mDexPath, "arm", false /* isInDalvikCache */))))
                 .thenReturn(FileVisibility.OTHER_READABLE);
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         // Only the one at index 1 is skipped.
@@ -939,8 +939,8 @@ public class PrimaryDexopterTest extends PrimaryDexopterTestBase {
                                 mDexPath, "arm", false /* isInDalvikCache */))))
                 .thenReturn(FileVisibility.OTHER_READABLE);
 
-        mPrimaryDexopter =
-                new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mPrimaryDexopter = new PrimaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
 
         List<DexContainerFileDexoptResult> results = mPrimaryDexopter.dexopt();
         assertThat(results).hasSize(4);

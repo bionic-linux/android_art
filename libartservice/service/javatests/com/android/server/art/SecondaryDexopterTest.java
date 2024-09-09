@@ -61,6 +61,7 @@ import org.mockito.Mock;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.function.Function;
 
 @SmallTest
@@ -108,6 +109,7 @@ public class SecondaryDexopterTest {
     @Mock private IArtd mArtd;
     @Mock private DexUseManagerLocal mDexUseManager;
     @Mock private DexMetadataHelper.Injector mDexMetadataHelperInjector;
+    @Mock private ThreadPoolExecutor mStatsdReporterExecutor;
     private PackageState mPkgState;
     private AndroidPackage mPkg;
     private CancellationSignal mCancellationSignal;
@@ -167,8 +169,8 @@ public class SecondaryDexopterTest {
                 .when(mArtd.createCancellationSignal())
                 .thenReturn(mock(IArtdCancellationSignal.class));
 
-        mSecondaryDexopter = new SecondaryDexopter(
-                mInjector, mPkgState, mPkg, mDexoptParams, mCancellationSignal);
+        mSecondaryDexopter = new SecondaryDexopter(mInjector, mPkgState, mPkg, mDexoptParams,
+                mCancellationSignal, mStatsdReporterExecutor);
     }
 
     @Test
