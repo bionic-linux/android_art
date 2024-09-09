@@ -102,6 +102,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
@@ -140,6 +142,13 @@ public final class ArtManagerLocal {
     // should acquire a read lock.
     @NonNull private ReentrantReadWriteLock mCleanupLock = new ReentrantReadWriteLock();
 
+    // A separate thread for reporting dex2oat metrics to StatsD `mRunningJob`.
+    @NonNull
+    private final ThreadPoolExecutor mStatsdReporterExecutor = new ThreadPoolExecutor(
+            /* corePoolSize= */ 1,
+            /* maximumPoolSize= */ 1,
+            /* keepTimeAlive= */ 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+
     @Deprecated
     public ArtManagerLocal() {
         mInjector = new Injector();
@@ -164,6 +173,7 @@ public final class ArtManagerLocal {
     @VisibleForTesting
     public ArtManagerLocal(@NonNull Injector injector) {
         mInjector = injector;
+        mStatsdReporterExecutor.allowsCoreThreadTimeOut();
     }
 
     /**
@@ -375,8 +385,8 @@ public final class ArtManagerLocal {
             @NonNull CancellationSignal cancellationSignal) {
         mCleanupLock.readLock().lock();
         try (var pin = mInjector.createArtdPin()) {
-            return mInjector.getDexoptHelper().dexopt(
-                    snapshot, List.of(packageName), params, cancellationSignal, Runnable::run);
+            return mInjector.getDexoptHelper().dexopt(snapshot, List.of(packageName), params,
+                    cancellationSignal, Runnable::run, mStatsdReporterExecutor);
         } finally {
             mCleanupLock.readLock().unlock();
         }
@@ -504,7 +514,8 @@ public final class ArtManagerLocal {
             DexoptResult mainResult = mInjector.getDexoptHelper().dexopt(snapshot,
                     params.getPackages(), params.getDexoptParams(), cancellationSignal,
                     dexoptExecutor, progressCallbackExecutor,
-                    progressCallbacks != null ? progressCallbacks.get(ArtFlags.PASS_MAIN) : null);
+                    progressCallbacks != null ? progressCallbacks.get(ArtFlags.PASS_MAIN) : null,
+                    mStatsdReporterExecutor);
             dexoptResults.put(ArtFlags.PASS_MAIN, mainResult);
             if (reason.equals(ReasonMapping.REASON_BG_DEXOPT)) {
                 DexoptResult supplementaryResult = maybeDexoptPackagesSupplementaryPass(snapshot,
@@ -1205,7 +1216,8 @@ public final class ArtManagerLocal {
                 DexoptParams params =
                         new DexoptParams.Builder(ReasonMapping.REASON_INACTIVE).build();
                 return mInjector.getDexoptHelper().dexopt(snapshot, packages, params,
-                        cancellationSignal, executor, progressCallbackExecutor, progressCallback);
+                        cancellationSignal, executor, progressCallbackExecutor, progressCallback,
+                        mStatsdReporterExecutor);
             } else {
                 AsLog.i("Storage is low, but downgrading is disabled or there's nothing to "
                         + "downgrade");
@@ -1263,7 +1275,8 @@ public final class ArtManagerLocal {
         AsLog.i("Dexopting " + packageNames.size()
                 + " packages with reason=" + dexoptParams.getReason() + " (supplementary pass)");
         return mInjector.getDexoptHelper().dexopt(snapshot, packageNames, dexoptParams,
-                cancellationSignal, dexoptExecutor, progressCallbackExecutor, progressCallback);
+                cancellationSignal, dexoptExecutor, progressCallbackExecutor, progressCallback,
+                mStatsdReporterExecutor);
     }
 
     /** Returns the list of packages to process for the given reason. */

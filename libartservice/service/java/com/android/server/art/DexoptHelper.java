@@ -54,6 +54,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
@@ -87,9 +88,11 @@ public class DexoptHelper {
     @NonNull
     public DexoptResult dexopt(@NonNull PackageManagerLocal.FilteredSnapshot snapshot,
             @NonNull List<String> packageNames, @NonNull DexoptParams params,
-            @NonNull CancellationSignal cancellationSignal, @NonNull Executor dexoptExecutor) {
+            @NonNull CancellationSignal cancellationSignal, @NonNull Executor dexoptExecutor,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
         return dexopt(snapshot, packageNames, params, cancellationSignal, dexoptExecutor,
-                null /* progressCallbackExecutor */, null /* progressCallback */);
+                null /* progressCallbackExecutor */, null /* progressCallback */,
+                statsdReporterExecutor);
     }
 
     /**
@@ -101,12 +104,13 @@ public class DexoptHelper {
             @NonNull List<String> packageNames, @NonNull DexoptParams params,
             @NonNull CancellationSignal cancellationSignal, @NonNull Executor dexoptExecutor,
             @Nullable Executor progressCallbackExecutor,
-            @Nullable Consumer<OperationProgress> progressCallback) {
+            @Nullable Consumer<OperationProgress> progressCallback,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
         return dexoptPackages(
                 getPackageStates(snapshot, packageNames,
                         (params.getFlags() & ArtFlags.FLAG_SHOULD_INCLUDE_DEPENDENCIES) != 0),
                 params, cancellationSignal, dexoptExecutor, progressCallbackExecutor,
-                progressCallback);
+                progressCallback, statsdReporterExecutor);
     }
 
     /**
@@ -117,7 +121,8 @@ public class DexoptHelper {
     private DexoptResult dexoptPackages(@NonNull List<PackageState> pkgStates,
             @NonNull DexoptParams params, @NonNull CancellationSignal cancellationSignal,
             @NonNull Executor dexoptExecutor, @Nullable Executor progressCallbackExecutor,
-            @Nullable Consumer<OperationProgress> progressCallback) {
+            @Nullable Consumer<OperationProgress> progressCallback,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
         // TODO(jiakaiz): Find out whether this is still needed.
         long identityToken = Binder.clearCallingIdentity();
 
@@ -148,7 +153,8 @@ public class DexoptHelper {
                         PrimaryDexUtils.getDexInfoBySplitName(pkg, params.getSplitName());
                     }
                     try {
-                        return dexoptPackage(pkgState, pkg, params, childCancellationSignal);
+                        return dexoptPackage(pkgState, pkg, params, childCancellationSignal,
+                                statsdReporterExecutor);
                     } catch (RuntimeException e) {
                         AsLog.wtf("Unexpected package-level exception during dexopt", e);
                         return PackageDexoptResult.create(pkgState.getPackageName(),
@@ -218,7 +224,8 @@ public class DexoptHelper {
     @NonNull
     private PackageDexoptResult dexoptPackage(@NonNull PackageState pkgState,
             @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
-            @NonNull CancellationSignal cancellationSignal) {
+            @NonNull CancellationSignal cancellationSignal,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
         List<DexContainerFileDexoptResult> results = new ArrayList<>();
         Function<Integer, PackageDexoptResult> createResult = (packageLevelStatus)
                 -> PackageDexoptResult.create(
@@ -234,9 +241,10 @@ public class DexoptHelper {
                     return createResult.apply(DexoptResult.DEXOPT_CANCELLED);
                 }
 
-                results.addAll(
-                        mInjector.getPrimaryDexopter(pkgState, pkg, params, cancellationSignal)
-                                .dexopt());
+                results.addAll(mInjector
+                                       .getPrimaryDexopter(pkgState, pkg, params,
+                                               cancellationSignal, statsdReporterExecutor)
+                                       .dexopt());
             }
 
             if (((params.getFlags() & ArtFlags.FLAG_FOR_SECONDARY_DEX) != 0)
@@ -245,9 +253,10 @@ public class DexoptHelper {
                     return createResult.apply(DexoptResult.DEXOPT_CANCELLED);
                 }
 
-                results.addAll(
-                        mInjector.getSecondaryDexopter(pkgState, pkg, params, cancellationSignal)
-                                .dexopt());
+                results.addAll(mInjector
+                                       .getSecondaryDexopter(pkgState, pkg, params,
+                                               cancellationSignal, statsdReporterExecutor)
+                                       .dexopt());
             }
         } catch (RemoteException e) {
             Utils.logArtdException(e);
@@ -337,17 +346,19 @@ public class DexoptHelper {
         @NonNull
         PrimaryDexopter getPrimaryDexopter(@NonNull PackageState pkgState,
                 @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
-                @NonNull CancellationSignal cancellationSignal) {
-            return new PrimaryDexopter(
-                    mContext, mConfig, pkgState, pkg, params, cancellationSignal);
+                @NonNull CancellationSignal cancellationSignal,
+                @NonNull ThreadPoolExecutor statsdReporterExecutor) {
+            return new PrimaryDexopter(mContext, mConfig, pkgState, pkg, params, cancellationSignal,
+                    statsdReporterExecutor);
         }
 
         @NonNull
         SecondaryDexopter getSecondaryDexopter(@NonNull PackageState pkgState,
                 @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
-                @NonNull CancellationSignal cancellationSignal) {
-            return new SecondaryDexopter(
-                    mContext, mConfig, pkgState, pkg, params, cancellationSignal);
+                @NonNull CancellationSignal cancellationSignal,
+                @NonNull ThreadPoolExecutor statsdReporterExecutor) {
+            return new SecondaryDexopter(mContext, mConfig, pkgState, pkg, params,
+                    cancellationSignal, statsdReporterExecutor);
         }
 
         @NonNull

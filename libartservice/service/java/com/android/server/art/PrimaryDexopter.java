@@ -51,6 +51,7 @@ import com.google.auto.value.AutoValue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /** @hide */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -59,15 +60,18 @@ public class PrimaryDexopter extends Dexopter<DetailedPrimaryDexInfo> {
 
     public PrimaryDexopter(@NonNull Context context, @NonNull Config config,
             @NonNull PackageState pkgState, @NonNull AndroidPackage pkg,
-            @NonNull DexoptParams params, @NonNull CancellationSignal cancellationSignal) {
-        this(new Injector(context, config), pkgState, pkg, params, cancellationSignal);
+            @NonNull DexoptParams params, @NonNull CancellationSignal cancellationSignal,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
+        this(new Injector(context, config), pkgState, pkg, params, cancellationSignal,
+                statsdReporterExecutor);
     }
 
     @VisibleForTesting
     public PrimaryDexopter(@NonNull Injector injector, @NonNull PackageState pkgState,
             @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
-            @NonNull CancellationSignal cancellationSignal) {
-        super(injector, pkgState, pkg, params, cancellationSignal);
+            @NonNull CancellationSignal cancellationSignal,
+            @NonNull ThreadPoolExecutor statsdReporterExecutor) {
+        super(injector, pkgState, pkg, params, cancellationSignal, statsdReporterExecutor);
 
         if (pkgState.getAppId() < 0) {
             mSharedGid = Process.SYSTEM_UID;
