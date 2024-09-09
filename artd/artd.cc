@@ -1171,22 +1171,27 @@ ndk::ScopedAStatus Artd::dexopt(
             << "\nOpened FDs: " << fd_logger;
 
   ProcessStat stat;
-  Result<int> result = ExecAndReturnCode(
-      art_exec_args.Get(), kLongTimeoutSec, cancellation_signal->CreateExecCallbacks(), &stat);
+  std::string error_msg;
+  ExecResult result = exec_utils_->ExecAndReturnResult(art_exec_args.Get(),
+                                                       kLongTimeoutSec,
+                                                       cancellation_signal->CreateExecCallbacks(),
+                                                       /*new_process_group=*/true,
+                                                       &stat,
+                                                       &error_msg);
   _aidl_return->wallTimeMs = stat.wall_time_ms;
   _aidl_return->cpuTimeMs = stat.cpu_time_ms;
-  if (!result.ok()) {
-    if (cancellation_signal->IsCancelled()) {
-      _aidl_return->cancelled = true;
-      return ScopedAStatus::ok();
-    }
-    return NonFatal("Failed to run dex2oat: " + result.error().message());
+  _aidl_return->status = result.status;
+  _aidl_return->exitCode = result.exit_code;
+  _aidl_return->signal = result.signal;
+
+  if (result.status != ExecResult::kExited && cancellation_signal->IsCancelled()) {
+    _aidl_return->cancelled = true;
+    return ScopedAStatus::ok();
   }
 
-  LOG(INFO) << ART_FORMAT("dex2oat returned code {}", result.value());
-
-  if (result.value() != 0) {
-    return NonFatal(ART_FORMAT("dex2oat returned an unexpected code: {}", result.value()));
+  LOG(INFO) << ART_FORMAT("dex2oat returned code {}", result.exit_code);
+  if (result.exit_code != 0) {
+    return NonFatal(ART_FORMAT("Failed to run dex2oat: {}", error_msg));
   }
 
   int64_t size_bytes = 0;
