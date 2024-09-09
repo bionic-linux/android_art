@@ -45,4 +45,16 @@ parcelable ArtdDexoptResult {
      * run.
      */
     long sizeBeforeBytes;
+    /**
+    * When dexopt fails, the NonFatal status includes an error message containing a substring
+    * formatted as: [status=%STATUS%,exit_code=%EXIT_CODE%,signal=%SIGNAL%]
+    * where %STATUS% is the integer value of the corresponding ExecResult.Status enumeration,
+    * %EXIT_CODE% is the exit code for the dex2oat process and set only when %STATUS% is set to
+    * ExecResult::kExited (-1 otherwsie), and %SIGNAL% is the signal that interrupted the dex2oat
+    * process and set only when %STATUS% is ExecResult::kSignaled (0 otherwise).
+    *
+    * The purpose of this format is to share information about the dex2oat run result with the
+    * ArtService code in Java that orchestrates the dexopt process, so that it can be reported to
+    * StatsD.
+    */
 }
