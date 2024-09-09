@@ -136,6 +136,8 @@ using std::literals::operator""s;  // NOLINT
 // (https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/shell.te;l=221;drc=3335a04676d400bda57d42d4af0ef4b1d311de21).
 #define TEST_DISABLED_FOR_SHELL_WITHOUT_MEMFD_ACCESS() TEST_DISABLED_FOR_USER_BUILD()
 
+#define EXIT_CODE_FAILED 31
+
 ScopeGuard<std::function<void()>> ScopedSetLogger(android::base::LogFunction&& logger) {
   android::base::LogFunction old_logger = android::base::SetLogger(std::move(logger));
   return make_scope_guard([old_logger = std::move(old_logger)]() mutable {
@@ -314,7 +316,7 @@ class MockExecUtils : public ExecUtils {
     if (code.ok()) {
       return {.status = ExecResult::kExited, .exit_code = code.value()};
     }
-    return {.status = ExecResult::kUnknown};
+    return {.status = ExecResult::kUnknown, .exit_code = EXIT_CODE_FAILED};
   }
 
   MOCK_METHOD(Result<int>,
@@ -443,9 +445,7 @@ class ArtdTest : public CommonArtTest {
                                               cancellation_signal,
                                               &aidl_return);
     ASSERT_THAT(status, std::move(status_matcher)) << status.getMessage();
-    if (status.isOk()) {
-      ASSERT_THAT(aidl_return, std::move(aidl_return_matcher));
-    }
+    ASSERT_THAT(aidl_return, std::move(aidl_return_matcher));
   }
 
   template <bool kExpectOk>
@@ -726,7 +726,10 @@ TEST_F(ArtdTest, dexopt) {
             Field(&ArtdDexoptResult::cpuTimeMs, 400),
             Field(&ArtdDexoptResult::sizeBytes, strlen("art") + strlen("oat") + strlen("vdex")),
             Field(&ArtdDexoptResult::sizeBeforeBytes,
-                  strlen("old_art") + strlen("old_oat") + strlen("old_vdex"))));
+                  strlen("old_art") + strlen("old_oat") + strlen("old_vdex")),
+            Field(&ArtdDexoptResult::status, ExecResult::kExited),
+            Field(&ArtdDexoptResult::exitCode, 0),
+            Field(&ArtdDexoptResult::signal, 0)));
 
   CheckContent(scratch_path_ + "/a/oat/arm64/b.odex", "oat");
   CheckContent(scratch_path_ + "/a/oat/arm64/b.vdex", "vdex");
@@ -1115,12 +1118,16 @@ TEST_F(ArtdTest, dexoptAllResourceControlBackground) {
 
 TEST_F(ArtdTest, dexoptFailed) {
   dexopt_options_.generateAppImage = true;
+  int exitCode = 1;
   EXPECT_CALL(*mock_exec_utils_, DoExecAndReturnCode(_, _, _))
       .WillOnce(DoAll(WithArg<0>(WriteToFdFlag("--oat-fd=", "new_oat")),
                       WithArg<0>(WriteToFdFlag("--output-vdex-fd=", "new_vdex")),
                       WithArg<0>(WriteToFdFlag("--app-image-fd=", "new_art")),
-                      Return(1)));
-  RunDexopt(EX_SERVICE_SPECIFIC);
+                      Return(exitCode)));
+  RunDexopt(EX_SERVICE_SPECIFIC,
+            AllOf(Field(&ArtdDexoptResult::status, ExecResult::kExited),
+                  Field(&ArtdDexoptResult::exitCode, exitCode),
+                  Field(&ArtdDexoptResult::signal, 0)));
 
   CheckContent(scratch_path_ + "/a/oat/arm64/b.odex", "old_oat");
   CheckContent(scratch_path_ + "/a/oat/arm64/b.vdex", "old_vdex");
@@ -1203,7 +1210,12 @@ TEST_F(ArtdTest, dexoptCancelledDuringDex2oat) {
     std::unique_lock<std::mutex> lock(mu);
     // Step 1.
     t = std::thread([&] {
-      RunDexopt(EX_NONE, Field(&ArtdDexoptResult::cancelled, true), cancellation_signal);
+      RunDexopt(EX_NONE,
+                AllOf(Field(&ArtdDexoptResult::cancelled, true),
+                      Field(&ArtdDexoptResult::status, ExecResult::kUnknown),
+                      Field(&ArtdDexoptResult::exitCode, EXIT_CODE_FAILED),
+                      Field(&ArtdDexoptResult::signal, 0)),
+                cancellation_signal);
     });
     EXPECT_EQ(process_started_cv.wait_for(lock, kTimeout), std::cv_status::no_timeout);
     // Step 3.

@@ -45,4 +45,10 @@ parcelable ArtdDexoptResult {
      * run.
      */
     long sizeBeforeBytes;
+    /** The exit status for the dex2oat invocation. */
+    int status;
+    /** The exit code for the dex2oat invocation, if status is 1 (exited), or -1. */
+    int exitCode;
+    /** The signal that terminated the process, if status is 2 (signaled), or 0. */
+    int signal;
 }
