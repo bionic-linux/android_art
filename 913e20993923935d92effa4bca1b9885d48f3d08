@@ -242,6 +242,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d75d498_75ac9b88",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-09T15:18:31Z",
+      "side": 1,
+      "message": "\u003e I noticed that tests e.g. 141- would do Runtime.getRuntime().gc(); and not the System.gc() + System.runFinalization().\n\nThanks, that was unintentional.\n\nThis test unloads class. Will stopping/restart JIT make any difference here?\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:libcore/ojluni/src/main/java/java/lang/System.java;l\u003d1603;drc\u003db4ad9827cceaf1daada4846f8a2840c92ffac0c2",
+      "parentUuid": "ce83688f_833fc54e",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
