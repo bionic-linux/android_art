@@ -26,10 +26,8 @@ import static com.android.server.art.model.ArtFlags.DexoptFlags;
 import static com.android.server.art.model.Config.Callback;
 import static com.android.server.art.model.DexoptResult.DexContainerFileDexoptResult;
 
-import android.R;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
@@ -39,8 +37,6 @@ import android.os.ServiceSpecificException;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.os.storage.StorageManager;
-import android.text.TextUtils;
-import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
@@ -64,6 +60,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /** @hide */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -78,6 +77,9 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
     @NonNull protected final DexoptParams mParams;
     @NonNull protected final CancellationSignal mCancellationSignal;
 
+    // Used to report dex2oat metrics asynchronously to StatsD
+    @NonNull private final ThreadPoolExecutor mExecutor;
+
     protected Dexopter(@NonNull Injector injector, @NonNull PackageState pkgState,
             @NonNull AndroidPackage pkg, @NonNull DexoptParams params,
             @NonNull CancellationSignal cancellationSignal) {
@@ -86,6 +88,7 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
         mPkg = pkg;
         mParams = params;
         mCancellationSignal = cancellationSignal;
+        mExecutor = new ThreadPoolExecutor(1, 1, 60, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
     }
 
     /**
@@ -193,6 +196,9 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                     long cpuTimeMs = 0;
                     long sizeBytes = 0;
                     long sizeBeforeBytes = 0;
+                    int resultStatus = 0;
+                    int resultExitCode = 0;
+                    int resultSignal = 0;
                     @DexoptResult.DexoptResultExtendedStatusFlags int extendedStatusFlags = 0;
                     try {
                         var target = DexoptTarget.<DexInfoType>builder()
@@ -276,6 +282,9 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                         cpuTimeMs = dexoptResult.cpuTimeMs;
                         sizeBytes = dexoptResult.sizeBytes;
                         sizeBeforeBytes = dexoptResult.sizeBeforeBytes;
+                        resultStatus = dexoptResult.status;
+                        resultExitCode = dexoptResult.exitCode;
+                        resultSignal = dexoptResult.signal;
 
                         if (status == DexoptResult.DEXOPT_CANCELLED) {
                             return results;
@@ -306,6 +315,11 @@ public abstract class Dexopter<DexInfoType extends DetailedDexInfo> {
                         // Make sure artd does not leak even if the caller holds
                         // `mCancellationSignal` forever.
                         mCancellationSignal.setOnCancelListener(null);
+
+                        mExecutor.execute(new ReportMetricsTask(mPkgState.getAppId(),
+                                compilerFilter, mParams.getReason(), dmInfo.type(), dexInfo,
+                                abi.isa(), resultStatus, resultExitCode, resultSignal, sizeBytes,
+                                wallTimeMs));
                     }
                 }
 
