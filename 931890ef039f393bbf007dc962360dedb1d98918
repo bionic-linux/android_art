@@ -50,6 +50,24 @@
       "message": "Maybe just  `//tools/vendor:__subpackages__`, but I\u0027ll let Martin confirm what he prefers.",
       "revId": "931890ef039f393bbf007dc962360dedb1d98918",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295ca118_ee2c25d6",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-09T15:17:21Z",
+      "side": 1,
+      "message": "The goal is to remove dex2oats in favour of the ordinary dex2oat binary. Hence it\u0027s good to keep the visibility as restricted as it can be.",
+      "parentUuid": "ff7686ac_787a07bc",
+      "revId": "931890ef039f393bbf007dc962360dedb1d98918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
