@@ -344,13 +344,17 @@ MemMap MemMap::MapAnonymous(const char* name,
   // We need to store and potentially set an error number for pretty printing of errors
   int saved_errno = 0;
 
-  void* actual = MapInternal(addr,
-                             page_aligned_byte_count,
-                             prot,
-                             flags,
-                             fd.get(),
-                             0,
-                             low_4gb);
+  void* actual = nullptr;
+
+  // Newer host linux kerners seem to ignore the address hint, so make it a firm request.
+  if (!kIsTargetBuild && (flags & MAP_FIXED) == 0 && addr != nullptr) {
+    const int MAP_FIXED_NOREPLACE = 0x100000;
+    actual = MapInternal(
+        addr, page_aligned_byte_count, prot, flags | MAP_FIXED_NOREPLACE, fd.get(), 0, low_4gb);
+  }
+  if (actual == nullptr || actual == MAP_FAILED) {
+    actual = MapInternal(addr, page_aligned_byte_count, prot, flags, fd.get(), 0, low_4gb);
+  }
   saved_errno = errno;
 
   if (actual == MAP_FAILED) {
