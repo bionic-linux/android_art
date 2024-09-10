@@ -1,0 +1,658 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46655082_91d4cf3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Please also update the comment in `art/runtime/exec_utils.h` on `struct ExecResult` and the comment in `art/odrefresh/odr_metrics_record.h` on `kExecResultNotRun` with the new location of the enum.",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ec20d4_662f7a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86cccf7f_f8ee017a",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Sorry, I just realized that this doesn\u0027t work. When the native method returns `NonFatal`, it\u0027s turned into a `ServiceSpecificException` on the Java side and caught in the `catch` block, where there is no access to `_aidl_return`.\n\nYou may consider returning `ScopedAStatus::ok()` and adding one more field to `ArtdDexoptResult` to hold the error message. On the Java side, treat the result with an error message in the same way as a `ServiceSpecificException` (log an error and set the status to `DEXOPT_FAILED`).",
+      "range": {
+        "startLine": 1183,
+        "startChar": 0,
+        "endLine": 1185,
+        "endChar": 39
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5ebf80_052a6e36",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "It looks like the behavior has changed. Please keep the same behavior as before.",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 3
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da685a72_49b85d48",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "`exit_code` is not an interesting field to test when `status` is not `kExited` (it should always be -1). You probably want to change `MOCK_METHOD(Result\u003cint\u003e, DoExecAndReturnCode, ...)` to something like `MOCK_METHOD(ExecResult, DoExecAndReturnResult, ...)`. Then you can return an `ExecResult` with a signal in a test and check that the aidl return value contains the right signal number.\n\nTo avoid repeating the verbose `{.status \u003d ExecResult::kExited, .exit_code \u003d 0}` everywhere, you can create a helper function to return it.",
+      "range": {
+        "startLine": 319,
+        "startChar": 44,
+        "endLine": 319,
+        "endChar": 73
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542a93aa_f6d13d3b",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "constexpr int kExitCode",
+      "range": {
+        "startLine": 1121,
+        "startChar": 2,
+        "endLine": 1121,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "8fc9237a_86edf817",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "artd/artd_test.cc",
+              "range": {
+                "startLine": 1121,
+                "startChar": 0,
+                "endLine": 1122,
+                "endChar": 0
+              },
+              "replacement": "  constexpr int kExitCode \u003d 1;\n"
+            },
+            {
+              "path": "artd/artd_test.cc",
+              "range": {
+                "startLine": 1126,
+                "startChar": 0,
+                "endLine": 1127,
+                "endChar": 0
+              },
+              "replacement": "                      Return(kExitCode)));\n"
+            },
+            {
+              "path": "artd/artd_test.cc",
+              "range": {
+                "startLine": 1129,
+                "startChar": 0,
+                "endLine": 1130,
+                "endChar": 0
+              },
+              "replacement": "                   Field(\u0026ArtdDexoptResult::exitCode, kExitCode),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7c2462_957b41d0",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "I think it will be better to define a enum on the AIDL side to hold this value, and do the native enum -\u003e AIDL enum -\u003e proto enum conversion, but that\u0027s probably too much code.\n\nThat\u0027s said, I\u0027m fine with this field being a plain int for now. Please add a comment that this field holds a value of the `ExecResultStatus` enum and is for stats reporting only, since we just pass it to statsd in Java and don\u0027t interpret it ourselves. If we ever want to interpret it, we should define a proper enum instead.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912ce781_7b3d64a1",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "It looks inefficient to create a ThreadPoolExecutor for every Dexopter instance. Can we put a ThreadPoolExecutor in a common place to share it among all Dexopter instances?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae9a97a_a6f30a0f",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Please add argument comments.",
+      "range": {
+        "startLine": 91,
+        "startChar": 43,
+        "endLine": 91,
+        "endChar": 98
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb50e2b_6e118aff",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Please call `allowsCoreThreadTimeOut` to allow the thread to be recycled. ([Example](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java;l\u003d122;drc\u003d6979528e6e74677ca39932ce2712cce8e5ca32c2))",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480d4177_bf20940c",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Is it possible to report a different ExecResultStatus value when dex2oat is cancelled?",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe6b303_6c0ca788",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Please add @NonNull or @Nullable annotations to object parameters.",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcdee696_0408b8a7",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "If you make this class something like `Dex2oatStatsReporter` and only expose a public static method that reports the stats (no `Runnable` interface), you will be able to use a lambda to call the method in `mExecutor.execute`, and you won\u0027t need all those class member fields.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e026a9ae_89c86461",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "[These](https://cs.android.com/android/platform/superproject/main/+/main:art/libartbase/base/compiler_filter.h;l\u003d34;drc\u003d6f6758f5d8516f9193459d6019e5dfb9fa762746) are all the compiler filters we support. Others like \"error\", \"run-from-apk\", etc. are not.",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 99
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5826692_0ee84366",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Use constant strings from [ReasonMapping](https://cs.android.com/android/platform/superproject/main/+/main:art/libartservice/service/java/com/android/server/art/ReasonMapping.java;l\u003d46;drc\u003d6f6758f5d8516f9193459d6019e5dfb9fa762746)?\n\nThose are the canonical reasons for dex2oat. Others like \"error\", \"vdex\", etc. are not.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 99
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f2da84fb_4b2b8dc9",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 23,
+                "startChar": 0,
+                "endLine": 23,
+                "endChar": 0
+              },
+              "replacement": "import com.android.server.art.ArtMetricsLogger.ReasonMapping;\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 109,
+                "startChar": 0,
+                "endLine": 110,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.ERROR -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 111,
+                "startChar": 0,
+                "endLine": 112,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.FIRST_BOOT -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 114,
+                "startChar": 0,
+                "endLine": 115,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.BOOT_AFTER_OTA -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 117,
+                "startChar": 0,
+                "endLine": 118,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.POST_BOOT -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 120,
+                "startChar": 0,
+                "endLine": 121,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 123,
+                "startChar": 0,
+                "endLine": 124,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_FAST -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 126,
+                "startChar": 0,
+                "endLine": 127,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_BULK -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 129,
+                "startChar": 0,
+                "endLine": 130,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_BULK_SECONDARY -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 132,
+                "startChar": 0,
+                "endLine": 133,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_BULK_DOWNGRADED -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 135,
+                "startChar": 0,
+                "endLine": 136,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_BULK_SECONDARY_DOWNGRADED -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 138,
+                "startChar": 0,
+                "endLine": 139,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.BG_DEXOPT -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 141,
+                "startChar": 0,
+                "endLine": 142,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.AB_OTA -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 144,
+                "startChar": 0,
+                "endLine": 145,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INACTIVE -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 147,
+                "startChar": 0,
+                "endLine": 148,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.SHARED -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 150,
+                "startChar": 0,
+                "endLine": 151,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.INSTALL_WITH_DEX_METADATA -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 153,
+                "startChar": 0,
+                "endLine": 154,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.PREBUILT -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 156,
+                "startChar": 0,
+                "endLine": 157,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.CMDLINE -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 159,
+                "startChar": 0,
+                "endLine": 160,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.VDEX -\u003e\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+              "range": {
+                "startLine": 161,
+                "startChar": 0,
+                "endLine": 162,
+                "endChar": 0
+              },
+              "replacement": "            case ReasonMapping.BOOT_AFTER_MAINLINE_UPDATE -\u003e\n"
+            }
+          ]
+        }
+      ],
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312e2bec_f2f51cbc",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Is it possible to put these two cases into one statement?",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 100
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0adf031e_ff066bf9",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "Will this be a good place to use Guarded Patterns? https://medium.com/@javatechie/the-evolution-of-switch-statement-from-java-7-to-java-17-4b5eee8d29b7#:~:text\u003dinteger%20%E2%80%9D%20is%20returned%20.-,Gaurded%20Patterns,-%3A",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39229888_9110aa98",
+        "filename": "libartservice/service/java/com/android/server/art/model/DexMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-10T15:44:35Z",
+      "side": 1,
+      "message": "The class is not an API. Do you need this line?\n\nHere and below.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 76
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "5d919e04_3771af35",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/model/DexMetadata.java",
+              "range": {
+                "startLine": 26,
+                "startChar": 0,
+                "endLine": 27,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
