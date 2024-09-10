@@ -22,6 +22,30 @@
       },
       "revId": "adfe3627d4b9ad120943c3f434e0d1187336d2af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86756356_427db738",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-10T22:18:25Z",
+      "side": 1,
+      "message": "Good idea!  (I couldn\u0027t figure out how to ensure it is defined on all builds, but this the in-place definitely less hacky and more grepable)\n\nI verified the #ifdef path gets hit on some builds.",
+      "parentUuid": "f7a39da2_868bcdee",
+      "range": {
+        "startLine": 351,
+        "startChar": 18,
+        "endLine": 351,
+        "endChar": 36
+      },
+      "revId": "adfe3627d4b9ad120943c3f434e0d1187336d2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
