@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e4120783_c8316373",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5898ca9d_b0447bc4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "211f8f0c_f2c19b0c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a240a1_949b9411",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "I updated it to LowOverheadTrace after review comments from Victor on the other CL in this topic. Should I change TraceProfile class to LowOverheadTrace as well?",
+      "parentUuid": "3510ceab_d156701f",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6943d20b_1dd8a839",
         "filename": "runtime/trace.h",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2024-08-28T20:39:07Z",
       "side": 1,
       "message": "`tracing` (for consistency with line 127)",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 40
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322a9145_b7d2c79d",
+        "filename": "runtime/trace.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6943d20b_1dd8a839",
       "range": {
         "startLine": 133,
         "startChar": 35,
@@ -128,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04aa21db_491854ad",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c1cc44_40379bab",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 57
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642da215_d73ad50d",
@@ -169,6 +265,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8bca18_ac73d9c2",
+        "filename": "runtime/trace_profile.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642da215_d73ad50d",
+      "range": {
+        "startLine": 184,
+        "startChar": 12,
+        "endLine": 184,
+        "endChar": 38
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f525795a_684b0f9e",
@@ -204,6 +324,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36acb78b_40e2cd58",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f525795a_684b0f9e",
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a3804a_a1ee8348",
@@ -235,6 +373,24 @@
           ]
         }
       ],
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfd5ac9_81eed783",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a3804a_a1ee8348",
       "revId": "550394d2864233d855be29907a657973c4e80939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -276,6 +432,30 @@
           ]
         }
       ],
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d61d85_6710ea2e",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:32:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bec1991_463e36d8",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 32
+      },
       "revId": "550394d2864233d855be29907a657973c4e80939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
