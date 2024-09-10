@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b707c1d4_c36ad967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:46:54Z",
+      "side": 1,
+      "message": "Thanks Ioana!",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7d0f7b9_2f8cec08",
@@ -77,6 +94,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "315b6d42_f74a5888",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:46:54Z",
+      "side": 1,
+      "message": "Could you expand this comment to include why we need to remove the weak root.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59b5dcda_757b0445",
         "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
         "patchSetId": 6
@@ -111,6 +151,29 @@
       "writtenOn": "2024-09-10T08:32:01Z",
       "side": 1,
       "message": "* Move upwards near the counter definition and rename to something that includes `gc` in its name e.g. `kMaxSkipGCIterations`.\n* `()` are not needed\n* style: `constexpr` variables start with `k` and use `camelCase`",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9e9d0c_9541774e",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T08:46:54Z",
+      "side": 1,
+      "message": "Do we know why we need more frequent GCs on host? It might be good to add a comment since we usually expect the opposite.",
+      "range": {
+        "startLine": 221,
+        "startChar": 41,
+        "endLine": 221,
+        "endChar": 71
+      },
       "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
