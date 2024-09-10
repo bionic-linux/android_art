@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3911d6fa_8913f243",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T16:22:50Z",
+      "side": 1,
+      "message": "I lost CR votes due to the file removal. PTAL, thanks.",
+      "revId": "a410f40bf7be7f2026c5f6eef860e58c5540403f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
