@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54128e9e_c5d2b062",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-10T13:59:11Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "56a240a1_949b9411",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "550394d2864233d855be29907a657973c4e80939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6943d20b_1dd8a839",
