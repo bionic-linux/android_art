@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "961265b9_4ba16121",
+        "filename": "libartservice/service/api/system-server-lint-baseline.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-09-10T12:51:10Z",
+      "side": 0,
+      "message": "The APIs have been made into API 35. The cleanup makes sense to me. \n\nhttps://cs.android.com/android/platform/superproject/main/+/main:prebuilts/sdk/35/system-server/api/service-art.txt",
+      "revId": "2c814207a1cf1e5f45d898a2257527c58e8979d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
