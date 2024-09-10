@@ -16,6 +16,152 @@
       "message": "Thanks Nicolas, PTAL.",
       "revId": "9964802b801f4c489eb0cdb808f21638aa735144",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb495256_680c3099",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-10T09:42:04Z",
+      "side": 1,
+      "message": "nit: add a comment why you need to do this.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 34
+      },
+      "revId": "9964802b801f4c489eb0cdb808f21638aa735144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f933f8d9_c7351192",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-10T09:42:04Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2af95858_668ced32",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/trace_profile.h",
+              "range": {
+                "startLine": 34,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "// This class implements the low-overhead tracing. This feature is available only\n// when always_enable_profile_code is enabled which is a build time flag. When\n// this flag is enabled, AOT and JITed code has ability to record events on each\n// method execution. When a profile is started, method entry / exit events are\n// recorded in a per-thread circular buffer. When requested the recorded events\n// in the buffer are dumped into a file. The buffers are released when the\n// profile is stopped.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9964802b801f4c489eb0cdb808f21638aa735144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1e93ae_37d7cc6e",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-10T09:42:04Z",
+      "side": 1,
+      "message": "can you reference where that flag is defined?",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "ba6de570_3180dfd2",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/trace_profile.h",
+              "range": {
+                "startLine": 35,
+                "startChar": 0,
+                "endLine": 40,
+                "endChar": 0
+              },
+              "replacement": "// always_enable_profile_code is enabled which is a build time flag (defined in\n// art/build_defs.bzl). When this flag is enabled, AOT and JITed code has ability to record events\n// on each method execution. When a profile is started, method entry / exit events are recorded in a\n// per-thread circular buffer. When requested the recorded events in the buffer are dumped into a\n// file. The buffers are released when the profile is stopped.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9964802b801f4c489eb0cdb808f21638aa735144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f20afdc_9ca0c0a8",
+        "filename": "runtime/trace_profile.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-10T09:42:04Z",
+      "side": 1,
+      "message": "can?",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b54d4da7_0919300b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/trace_profile.h",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "// and JITed code can record events on each method execution. When a profile is started,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9964802b801f4c489eb0cdb808f21638aa735144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
