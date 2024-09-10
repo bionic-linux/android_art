@@ -16,6 +16,23 @@
       "message": "+android-ndk-api-council+reviews@google.com for NDK-API-Review. This CL only changes comments, but they reflect a change in how the NDK API is checked.",
       "revId": "de1baadc584bb51df702ce9d351d77b28ba7d078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76210fcd_5fef0950",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T16:29:14Z",
+      "side": 1,
+      "message": "Thanks for the quick review.",
+      "revId": "de1baadc584bb51df702ce9d351d77b28ba7d078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
