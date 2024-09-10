@@ -36,7 +36,6 @@ import static com.android.server.art.model.DexoptStatus.DexContainerFileDexoptSt
 import android.annotation.CallbackExecutor;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
-import android.annotation.SuppressLint;
 import android.annotation.SystemApi;
 import android.annotation.SystemService;
 import android.app.job.JobInfo;
@@ -940,7 +939,6 @@ public final class ArtManagerLocal {
      *         the directory beneath /apex, e.g., {@code com.android.art} (not the <b>package
      *         names</b>, e.g., {@code com.google.android.art}).
      */
-    @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public void onApexStaged(@NonNull String[] stagedApexModuleNames) {
         mInjector.getPreRebootDexoptJob().onUpdateReady(null /* otaSlot */);
@@ -987,7 +985,6 @@ public final class ArtManagerLocal {
      * @throws IllegalStateException if the operation encounters an error that should never happen
      *         (e.g., an internal logic error).
      */
-    @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @NonNull
     public ArtManagedFileStats getArtManagedFileStats(
@@ -1038,7 +1035,6 @@ public final class ArtManagerLocal {
      * Overrides the compiler filter of a package. The callback is called whenever a package is
      * going to be dexopted. This method is thread-safe.
      */
-    @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public void setAdjustCompilerFilterCallback(@NonNull @CallbackExecutor Executor executor,
             @NonNull AdjustCompilerFilterCallback callback) {
@@ -1050,7 +1046,6 @@ public final class ArtManagerLocal {
      * #setAdjustCompilerFilterCallback(Executor, AdjustCompilerFilterCallback)}. This
      * method is thread-safe.
      */
-    @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public void clearAdjustCompilerFilterCallback() {
         mInjector.getConfig().clearAdjustCompilerFilterCallback();
@@ -1293,6 +1288,13 @@ public final class ArtManagerLocal {
                 packages = filterAndSortByLastActiveTime(
                         packages, false /* keepRecent */, false /* descending */);
                 break;
+            case ReasonMapping.REASON_FIRST_BOOT:
+                // Don't filter the default package list and no need to sort
+                // as in some cases the system time can advance during bootup
+                // after package installation and cause filtering to exclude
+                // all packages when pm.dexopt.downgrade_after_inactive_days
+                // is set. See aosp/3237478 for more details.
+                break;
             default:
                 // Actually, the sorting is only needed for background dexopt, but we do it for all
                 // cases for simplicity.
@@ -1441,7 +1443,6 @@ public final class ArtManagerLocal {
     }
 
     /** @hide */
-    @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
     @SystemApi(client = SystemApi.Client.SYSTEM_SERVER)
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public interface AdjustCompilerFilterCallback {
@@ -1485,7 +1486,6 @@ public final class ArtManagerLocal {
          * @return the compiler filter after adjustment. This will be the input to step 5 described
          *         above
          */
-        @SuppressLint("UnflaggedApi") // Flag support for mainline is not available.
         @NonNull
         String onAdjustCompilerFilter(@NonNull String packageName,
                 @NonNull String originalCompilerFilter, @NonNull String reason);

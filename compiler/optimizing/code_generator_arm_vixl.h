@@ -166,12 +166,14 @@ using VIXLUInt32Literal = vixl::aarch32::Literal<uint32_t>;
   V(StringBuilderToString)                                                 \
   V(SystemArrayCopyByte)                                                   \
   V(SystemArrayCopyInt)                                                    \
+  V(UnsafeArrayBaseOffset)                                                 \
   /* 1.8 */                                                                \
   V(MathFmaDouble)                                                         \
   V(MathFmaFloat)                                                          \
   V(MethodHandleInvokeExact)                                               \
   V(MethodHandleInvoke)                                                    \
   /* OpenJDK 11 */                                                         \
+  V(JdkUnsafeArrayBaseOffset)                                              \
   V(JdkUnsafeCASLong) /* High register pressure */                         \
   V(JdkUnsafeCompareAndSetLong)
 
@@ -388,13 +390,12 @@ class LocationsBuilderARMVIXL : public HGraphVisitor {
   void HandleInvoke(HInvoke* invoke);
   void HandleBitwiseOperation(HBinaryOperation* operation, Opcode opcode);
   void HandleCondition(HCondition* condition);
-  void HandleIntegerRotate(LocationSummary* locations);
-  void HandleLongRotate(LocationSummary* locations);
   void HandleShift(HBinaryOperation* operation);
   void HandleFieldSet(HInstruction* instruction,
                       const FieldInfo& field_info,
                       WriteBarrierKind write_barrier_kind);
   void HandleFieldGet(HInstruction* instruction, const FieldInfo& field_info);
+  void HandleRotate(HBinaryOperation* rotate);
 
   Location ArithmeticZeroOrFpuRegister(HInstruction* input);
   Location ArmEncodableConstantOrRegister(HInstruction* constant, Opcode opcode);
@@ -444,8 +445,9 @@ class InstructionCodeGeneratorARMVIXL : public InstructionCodeGenerator {
   void GenerateAddLongConst(Location out, Location first, uint64_t value);
   void HandleBitwiseOperation(HBinaryOperation* operation);
   void HandleCondition(HCondition* condition);
-  void HandleIntegerRotate(HRor* ror);
-  void HandleLongRotate(HRor* ror);
+  void HandleIntegerRotate(HBinaryOperation* rotate);
+  void HandleLongRotate(HBinaryOperation* rotate);
+  void HandleRotate(HBinaryOperation* rotate);
   void HandleShift(HBinaryOperation* operation);
 
   void GenerateWideAtomicStore(vixl::aarch32::Register addr,
