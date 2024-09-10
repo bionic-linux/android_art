@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7de3e909_1d031011",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-09-10T04:58:52Z",
+      "side": 1,
+      "message": "`art-script` is just a `shell script`, its dependencies are not explicitly defined. \nThese shared libraries are used by `dalvikvm`, as `dalvikvm` does not use only `static` libraries. Because `genrule` is in `sandbox` mode, the required `shared` libraries must be copied into the `sandbox` environment for execution. \n\n@ccross Regarding this issue, to your knowledge, are there any other solutions besides copying them into the `genrule` sandbox?",
+      "parentUuid": "3ee18fab_a62c644c",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-09T14:57:50Z",
       "side": 1,
       "message": "What\u0027s the reason for using this directory (as opposed to the normal install directories for host artifacts, e.g `out/host/linux-x86/bin`)?",
+      "range": {
+        "startLine": 153,
+        "startChar": 28,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b9f834_4fb00b98",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-09-10T04:58:52Z",
+      "side": 1,
+      "message": "In reality, there isn\u0027t a specific reason, this just lists out the minimal directory structure required by the `art-script` shell.\n\nFor `art-script`, the essentials are:\n\n1. A subdirectory of `host` or `target`\n```\n  ANDROID_ROOT_MINUS_PWD\u003d\"${ANDROID_ROOT#$PWD/}\"  # For example: out/host/linux-x86\n  if [[ \"$ANDROID_ROOT_MINUS_PWD\" \u003d\u003d */host/* ]]; then\n    DEX2OAT_BCP\u003d\"$(get_boot_class_path $ANDROID_ROOT)\"\n    DEX2OAT_BCP_LOCS\u003d\"$(get_boot_class_path $ANDROID_ROOT_MINUS_PWD)\"\n  elif [[ \"$ANDROID_ROOT_MINUS_PWD\" \u003d\u003d */target/* ]]; then\n    DEX2OAT_BCP\u003d\"$(get_boot_class_path $ANDROID_ROOT)\"\n    DEX2OAT_BCP_LOCS\u003d\"$(get_boot_class_path)\"\n  else\n    echo \"Can not determine whether are running on host or target\"\n    exit 1\n```\n\n2. LD path must include `lib` or `lib64`\n```\nfunction find_libdir() {\n  # Get the actual file, $1 is the ART_BINARY_PATH and may be a symbolic link.\n  # Use realpath instead of readlink because Android does not have a readlink.\n  if [[ \"$(realpath \"$1\")\" \u003d\u003d *dalvikvm64 ]]; then\n    echo \"lib64\"\n  else\n    echo \"lib\"\n  fi\n}\n```\n\nTherefore, we simply copy the files from srcs to `host/srcs`, and the libraries to `host/srcs/lib` (or `/lib64`).",
+      "parentUuid": "85ad3d2a_b684bbec",
       "range": {
         "startLine": 153,
         "startChar": 28,
