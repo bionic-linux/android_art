@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d378cb1_8d7f12d1",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-10T14:26:57Z",
+      "side": 1,
+      "message": "\u003e art-script is just a shell script, its dependencies are not explicitly defined.\n\nIt depends on dalvikvm (and dex2oat) through `required` [here](https://cs.android.com/android/platform/superproject/main/+/main:art/tools/Android.bp;l\u003d58-59;drc\u003ddf673f5bbf81bc154d696e10de3119027659bc10).\n\nI\u0027m not that acquainted with the sandbox mode, but I reckon Soong ought to use those dependencies (together with `tools` in the genrule) to pull the host build with all its dependencies into the sandbox.",
+      "parentUuid": "7de3e909_1d031011",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
