@@ -3564,10 +3564,19 @@ void MarkCompact::ProcessLinearAlloc() {
 
       arena->VisitRoots(visitor);
     }
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+    // If we are not in minor-fault mode and if no other thread was found to be
+    // processing any pages in this arena, then we can madvise the shadow size.
+    // Otherwise, we will double the memory use for linear-alloc.
+    if (!minor_fault_initialized_ && !others_processing) {
+      ZeroAndReleasePages(arena_begin + diff, arena_size);
+    }
+=======
   }
   if (unmapped_range_end > unmapped_range_start) {
     // Map remaining pages.
     map_pages();
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
   }
 }
 
@@ -3616,6 +3625,19 @@ void MarkCompact::CompactionPhase() {
       count = sigbus_in_progress_count_[idx].load(std::memory_order_acquire);
       count &= ~kSigbusCounterCompactionDoneMask;
     }
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+  } else {
+    DCHECK(IsAligned<kPageSize>(conc_compaction_termination_page_));
+    // We will only iterate once if gKernelHasFaultRetry is true.
+    do {
+      // madvise the page so that we can get userfaults on it.
+      ZeroAndReleasePages(conc_compaction_termination_page_, kPageSize);
+      // The following load triggers 'special' userfaults. When received by the
+      // thread-pool workers, they will exit out of the compaction task. This fault
+      // happens because we madvised the page.
+      ForceRead(conc_compaction_termination_page_);
+    } while (thread_pool_counter_ > 0);
+=======
   };
   // Set compaction-done bit in the first counter to indicate that gc-thread
   // is done compacting and mutators should stop incrementing this counter.
@@ -3629,6 +3651,7 @@ void MarkCompact::CompactionPhase() {
   size_t used_size = (moving_first_objs_count_ + black_page_count_) * gPageSize;
   if (used_size > 0) {
     UnregisterUffd(bump_pointer_space_->Begin(), used_size);
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
   }
   // Unregister linear-alloc spaces
   for (auto& data : linear_alloc_spaces_data_) {
@@ -4213,9 +4236,28 @@ void MarkCompact::FinishPhase() {
   GetCurrentIteration()->SetScannedBytes(bytes_scanned_);
   bool is_zygote = Runtime::Current()->IsZygote();
   compacting_ = false;
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+  minor_fault_initialized_ = !is_zygote && uffd_minor_fault_supported_;
+  // Madvise compaction buffers. When using threaded implementation, skip the first page,
+  // which is used by the gc-thread for the next iteration. Otherwise, we get into a
+  // deadlock due to userfault on it in the next iteration. This page is not consuming any
+  // physical memory because we already madvised it above and then we triggered a read
+  // userfault, which maps a special zero-page.
+  if (use_uffd_sigbus_ || !minor_fault_initialized_ || !shadow_to_space_map_.IsValid() ||
+      shadow_to_space_map_.Size() < (moving_first_objs_count_ + black_page_count_) * kPageSize) {
+    size_t adjustment = use_uffd_sigbus_ ? 0 : kPageSize;
+    ZeroAndReleasePages(compaction_buffers_map_.Begin() + adjustment,
+                        compaction_buffers_map_.Size() - adjustment);
+  } else if (shadow_to_space_map_.Size() == bump_pointer_space_->Capacity()) {
+    // Now that we are going to use minor-faults from next GC cycle, we can
+    // unmap the buffers used by worker threads.
+    compaction_buffers_map_.SetSize(kPageSize);
+  }
+=======
   marking_done_ = false;
 
   ZeroAndReleaseMemory(compaction_buffers_map_.Begin(), compaction_buffers_map_.Size());
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
   info_map_.MadviseDontNeedAndZero();
   live_words_bitmap_->ClearBitmap();
   if (moving_space_begin_ == black_dense_end_) {

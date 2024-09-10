@@ -849,9 +849,20 @@ void MemMap::ReleaseReservedMemory(size_t byte_count) {
   }
 }
 
-void MemMap::FillWithZero(bool release_eagerly) {
-  if (base_begin_ != nullptr && base_size_ != 0) {
-    ZeroMemory(base_begin_, base_size_, release_eagerly);
+void MemMap::MadviseDontNeedAndZero() {
+  if (base_begin_ != nullptr || base_size_ != 0) {
+    if (!kMadviseZeroes) {
+      memset(base_begin_, 0, base_size_);
+    }
+#ifdef _WIN32
+    // It is benign not to madvise away the pages here.
+    PLOG(WARNING) << "MemMap::MadviseDontNeedAndZero does not madvise on Windows.";
+#else
+    int result = madvise(base_begin_, base_size_, MADV_DONTNEED);
+    if (result == -1) {
+      PLOG(WARNING) << "madvise failed";
+    }
+#endif
   }
 }
 
@@ -1259,6 +1270,9 @@ void MemMap::TryReadable() {
   }
 }
 
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+void ZeroAndReleasePages(void* address, size_t length) {
+=======
 static void inline RawClearMemory(uint8_t* begin, uint8_t* end) {
   std::fill(begin, end, 0);
 }
@@ -1283,6 +1297,7 @@ static inline void ClearMemory(uint8_t* page_begin, size_t size, bool resident, 
 #endif  // __linux__
 
 void ZeroMemory(void* address, size_t length, bool release_eagerly) {
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
   if (length == 0) {
     return;
   }
@@ -1292,18 +1307,22 @@ void ZeroMemory(void* address, size_t length, bool release_eagerly) {
   uint8_t* const page_end = AlignDown(mem_end, MemMap::GetPageSize());
   if (!kMadviseZeroes || page_begin >= page_end) {
     // No possible area to madvise.
-    RawClearMemory(mem_begin, mem_end);
-    return;
-  }
-  // Spans one or more pages.
-  DCHECK_LE(mem_begin, page_begin);
-  DCHECK_LE(page_begin, page_end);
-  DCHECK_LE(page_end, mem_end);
+    std::fill(mem_begin, mem_end, 0);
+  } else {
+    // Spans one or more pages.
+    DCHECK_LE(mem_begin, page_begin);
+    DCHECK_LE(page_begin, page_end);
+    DCHECK_LE(page_end, mem_end);
+    std::fill(mem_begin, page_begin, 0);
 #ifdef _WIN32
-  UNUSED(release_eagerly);
-  LOG(WARNING) << "ZeroMemory does not madvise on Windows.";
-  RawClearMemory(mem_begin, mem_end);
+    LOG(WARNING) << "ZeroAndReleasePages does not madvise on Windows.";
 #else
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+    CHECK_NE(madvise(page_begin, page_end - page_begin, MADV_DONTNEED), -1) << "madvise failed";
+#endif
+    std::fill(page_end, mem_end, 0);
+  }
+=======
   RawClearMemory(mem_begin, page_begin);
   RawClearMemory(page_end, mem_end);
 // mincore() is linux-specific syscall.
@@ -1342,6 +1361,7 @@ void ZeroMemory(void* address, size_t length, bool release_eagerly) {
   bool res = madvise(page_begin, page_end - page_begin, MADV_DONTNEED);
   CHECK_NE(res, -1) << "madvise failed";
 #endif  // _WIN32
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
 }
 
 void MemMap::AlignBy(size_t alignment, bool align_both_ends) {

@@ -152,8 +152,6 @@ class GarbageCollector : public RootVisitor, public IsMarkedVisitor, public Mark
     return is_transaction_active_;
   }
 
-  bool ShouldEagerlyReleaseMemoryToOS() const;
-
  protected:
   // Run all of the GC phases.
   virtual void RunPhases() REQUIRES(!Locks::mutator_lock_) = 0;

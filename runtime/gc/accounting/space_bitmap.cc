@@ -148,11 +148,9 @@ std::string SpaceBitmap<kAlignment>::DumpMemAround(mirror::Object* obj) const {
 }
 
 template<size_t kAlignment>
-void SpaceBitmap<kAlignment>::Clear(bool release_eagerly) {
+void SpaceBitmap<kAlignment>::Clear() {
   if (bitmap_begin_ != nullptr) {
-    // We currently always eagerly release the memory to the OS.
-    static constexpr bool kAlwaysEagerlyReleaseBitmapMemory = true;
-    mem_map_.FillWithZero(kAlwaysEagerlyReleaseBitmapMemory || release_eagerly);
+    mem_map_.MadviseDontNeedAndZero();
   }
 }
 
@@ -172,8 +170,13 @@ void SpaceBitmap<kAlignment>::ClearRange(const mirror::Object* begin, const mirr
   // Bitmap word boundaries.
   const uintptr_t start_index = OffsetToIndex(begin_offset);
   const uintptr_t end_index = OffsetToIndex(end_offset);
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+  ZeroAndReleasePages(reinterpret_cast<uint8_t*>(&bitmap_begin_[start_index]),
+                      (end_index - start_index) * sizeof(*bitmap_begin_));
+=======
   ZeroAndReleaseMemory(reinterpret_cast<uint8_t*>(&bitmap_begin_[start_index]),
                        (end_index - start_index) * sizeof(*bitmap_begin_));
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
 }
 
 template<size_t kAlignment>

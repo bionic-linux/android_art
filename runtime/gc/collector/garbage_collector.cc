@@ -442,6 +442,8 @@ const Iteration* GarbageCollector::GetCurrentIteration() const {
   return heap_->GetCurrentGcIteration();
 }
 
+<<<<<<< PATCH SET (f47c87 Revert "Reland "Use memset/madv_free instead of dontneed in )
+=======
 bool GarbageCollector::ShouldEagerlyReleaseMemoryToOS() const {
   Runtime* runtime = Runtime::Current();
   // Zygote isn't a memory heavy process, we should always instantly release memory to the OS.
@@ -459,6 +461,7 @@ bool GarbageCollector::ShouldEagerlyReleaseMemoryToOS() const {
   return !runtime->InJankPerceptibleProcessState();
 }
 
+>>>>>>> BASE      (e83264 Restrict exported symbols from libnative{loader,bridge} lazy)
 void GarbageCollector::RecordFree(const ObjectBytePair& freed) {
   GetCurrentIteration()->freed_.Add(freed);
   heap_->RecordFree(freed.objects, freed.bytes);
