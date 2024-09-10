@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a3d15f_87090cb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "Should we change the ART gtest in the same manner for consistency?",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d0f7b9_2f8cec08",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "This namespace is only needed for `VerifyClassesFuzzerHelper` right? Or do we need it for the whole fuzzer?",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dde333_a27d5a94",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "Add a comment that this counter is not shared among the fuzzer jobs, if many are scheduled with the `jobs` flag.\n\nAlso explain that we increase the counter only for the cases in which the DEX files pass DEX file verification, which would be the cases where we would be running the GC",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8a0d6b_d5449452",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "Change for a more descriptive name to include `gc` in its name e.g. `skipped_gc_iterations`",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b5dcda_757b0445",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "The call could be `art::VerifyClassesFuzzerHelper::GetDexCacheData`. It is a static method and we don\u0027t need to instantiate a variable",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c549aa7e_da25513d",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-10T08:32:01Z",
+      "side": 1,
+      "message": "* Move upwards near the counter definition and rename to something that includes `gc` in its name e.g. `kMaxSkipGCIterations`.\n* `()` are not needed\n* style: `constexpr` variables start with `k` and use `camelCase`",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
