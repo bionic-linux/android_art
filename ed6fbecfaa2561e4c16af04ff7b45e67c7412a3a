@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b5b382_72927225",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-11T17:15:51Z",
+      "side": 1,
+      "message": "But didn\u0027t you say we have a DCHECK or a CHECK that will be hit if we pick a random address? Wouldn\u0027t it better to fail right away instead?",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 93
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "2bb9bcf1_b2adad87",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartbase/base/mem_map.cc",
+              "range": {
+                "startLine": 354,
+                "startChar": 0,
+                "endLine": 356,
+                "endChar": 0
+              },
+              "replacement": "    actual \u003d MapInternal(addr, page_aligned_byte_count, prot,\n                         flags | MAP_FIXED_NOREPLACE, fd.get(), 0, low_4gb);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ed6fbecfaa2561e4c16af04ff7b45e67c7412a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
