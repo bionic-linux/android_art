@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c9b3c4_96b213b6",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-11T09:27:24Z",
+      "side": 1,
+      "message": "Use `std::unique_ptr`?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 54
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "127a3a70_274d27aa",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/thread_list.cc",
+              "range": {
+                "startLine": 354,
+                "startChar": 0,
+                "endLine": 355,
+                "endChar": 0
+              },
+              "replacement": "  std::unique_ptr\u003cThreadExitFlag[]\u003e tefs_ptr(\n      new ThreadExitFlag[remaining_threads.size()]);\n  tefs \u003d tefs_ptr.get();\n"
+            },
+            {
+              "path": "runtime/thread_list.cc",
+              "range": {
+                "startLine": 466,
+                "startChar": 0,
+                "endLine": 467,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "b602b6e057d23d3550e9900b6bd7207ed1fcbf44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
