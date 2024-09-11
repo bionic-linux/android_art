@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "650eeb83_5f4c3b53",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-11T12:51:17Z",
+      "side": 1,
+      "message": "Sorry to hear of all the problems. It seems to be a combination of both lack of support and plain bugs. Then the outcome is that the build system doesn\u0027t support this use case very well? In the corresponding .mk file we didn\u0027t need to maintain this duplicate set of transitive dependencies, so it seems Soong needs more work to achieve feature parity.\n\nI\u0027d rather avoid this approach since it incurs significant tech debt. This also only converts the `AHAT_TEST_DUMP_HPROF` rule from the .mk file, and there are a further two more or less similar rules for `AHAT_TEST_DUMP_BASE_HPROF` and `AHAT_RI_TEST_DUMP_HPROF` that may end up the same way, and that\u0027s just in this directory.\n\nWe can discuss going forward with something along these lines as a temporary workaround, but before that I\u0027d like to know a bit better what the path forward is and have a timeline for a proper solution.",
+      "parentUuid": "6a4c3b50_8ab9dc04",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
