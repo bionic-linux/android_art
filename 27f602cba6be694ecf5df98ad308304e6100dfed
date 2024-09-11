@@ -22,6 +22,30 @@
       },
       "revId": "27f602cba6be694ecf5df98ad308304e6100dfed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdde4fd8_61246fb3",
+        "filename": "runtime/var_handles.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-11T16:43:35Z",
+      "side": 1,
+      "message": "Thank you! Just sent aosp/3259858.",
+      "parentUuid": "367a50ad_4f7b4a92",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "27f602cba6be694ecf5df98ad308304e6100dfed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
