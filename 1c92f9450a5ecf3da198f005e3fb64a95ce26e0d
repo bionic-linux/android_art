@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25b82d7b_9e86b0e9",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-09-11T01:46:00Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:build/soong/android/androidmk.go;drc\u003d4301e29a02937b1ef1b50e7660ee33205bc33d9c;l\u003d536, soong just gives the required modules list to the packaging logic in make.",
+      "parentUuid": "c68cc649_e55dba3a",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
