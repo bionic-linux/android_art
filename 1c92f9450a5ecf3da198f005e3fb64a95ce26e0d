@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c68cc649_e55dba3a",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2024-09-11T01:36:23Z",
+      "side": 1,
+      "message": "Property \"required\" is confusing and misleading sometimes. It doesn\u0027t work like what you mentioned. It is used by make(not soong) to make sure a required module is installed with the module requires it. So it is used in packaging but not in building, and soong doesn\u0027t uses it like property tools or srcs in genrule modules and required modules are not available in the sandbox if they are not explicitly listed in srcs.",
+      "parentUuid": "5d378cb1_8d7f12d1",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
