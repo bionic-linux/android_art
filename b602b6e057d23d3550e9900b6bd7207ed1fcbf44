@@ -50,6 +50,30 @@
       ],
       "revId": "b602b6e057d23d3550e9900b6bd7207ed1fcbf44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b4d92e_15ec7f77",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-11T20:35:07Z",
+      "side": 1,
+      "message": "Good point, though I don\u0027t like the AI suggested fix. I\u0027ll upload a separate CL, given that this one fixed the urgent issue.",
+      "parentUuid": "13c9b3c4_96b213b6",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 54
+      },
+      "revId": "b602b6e057d23d3550e9900b6bd7207ed1fcbf44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
