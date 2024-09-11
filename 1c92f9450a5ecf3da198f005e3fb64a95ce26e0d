@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "957a2e90_43afeded",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-09-11T08:25:55Z",
+      "side": 1,
+      "message": "There are two reasons for setting `dalvikvm` as `srcs` instead of `tools`:\n\n1. I\u0027m not sure if successfully setting `dalvikvm` as tools would solve this issue, but currently, setting `dalvikvm` as `tools` results in an error under any circumstances.\ne.g. (`copy dalvikvm`)\n```\ncc_genrule {\n    name: \"use_art_cc_binary_as_tools\",\n    host_supported: true,\n    tools: [\"dalvikvm\"],\n    out: [\"my_out\"],\n    cmd: \"cp $(location dalvikvm) \u003e $(out)\",\n}   \n```\ne.g. (`run dalvikvm --help`)\n```\ncc_genrule {\n    name: \"use_art_cc_binary_as_tools\",\n    host_supported: true,\n    tools: [\"dalvikvm\"],\n    out: [\"my_out\"],\n    cmd: \"$(location dalvikvm) --help \u0026\u003e $(out)\",\n}     \n```\nError Message: \nhttps://paste.googleplex.com/6496777642704896\n```\ninternal error: panic in GenerateBuildActions for module \"use_art_cc_binary_as_tools\" variant \"linux_glibc_x86_64\"\nruntime error: invalid memory address or nil pointer dereference\n```\n\n\n2. The program must be started by the `art script`, and the `art script` restricts `the path` where `dalvikvm` can be executed. Therefore, `dalvikvm` must be copied to the specified path first.",
+      "parentUuid": "25b82d7b_9e86b0e9",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
