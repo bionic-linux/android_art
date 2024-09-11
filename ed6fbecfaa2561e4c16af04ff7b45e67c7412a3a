@@ -1,6 +1,41 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "185242a7_ad34e681",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-11T17:40:49Z",
+      "side": 1,
+      "message": "We have DCHECK in place to ensure we user `MAP_FIXED` correctly (i.e. overwrite existing map that we own).",
+      "fixSuggestions": [
+        {
+          "fixId": "a8c53fd1_7608709b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartbase/base/mem_map.cc",
+              "range": {
+                "startLine": 332,
+                "startChar": 0,
+                "endLine": 333,
+                "endChar": 0
+              },
+              "replacement": "    DCHECK(ContainedWithinExistingMap(addr, byte_count, error_msg))\n        \u003c\u003c \"addr\u003d\" \u003c\u003c addr \u003c\u003c \" byte_count\u003d\" \u003c\u003c byte_count \u003c\u003c \" error_msg\u003d\" \u003c\u003c *error_msg;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "ed6fbecfaa2561e4c16af04ff7b45e67c7412a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b5b382_72927225",
@@ -38,6 +73,30 @@
           ]
         }
       ],
+      "revId": "ed6fbecfaa2561e4c16af04ff7b45e67c7412a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc6ae48_3194a096",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-11T17:40:49Z",
+      "side": 1,
+      "message": "...but don\u0027t have a check here to ensure the hint was obeyed.\n\nHowever, the callers may report an error instead.  I am not sure if that is always the case though.\n\nIf I add DCHECK here, at least some tests fail (some of which MemMap tests), so presumably we do allow the random behavior.\n\nIs it still a valid question whether we should enforce it here (i.e. `MapAnonymous` would either successfully succeed allocating at `addr` or fail otherwise).  However that is question for another CL either way.\n\nAlso, there the try-4GB allocator, but I don\u0027t think it relies on this code path.\n\nThe opposite question is whether we should allow such speculative fixed address allocation.  Maybe we don\u0027t even need the feature and it just leftover from pre-PIC days.",
+      "parentUuid": "f5b5b382_72927225",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 93
+      },
       "revId": "ed6fbecfaa2561e4c16af04ff7b45e67c7412a3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
