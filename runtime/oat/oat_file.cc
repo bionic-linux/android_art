@@ -17,27 +17,17 @@
 #include "oat_file.h"
 
 #include <dlfcn.h>
-
-#ifndef __APPLE__
-#include <link.h>  // for dl_iterate_phdr.
-#endif
+#include <sys/stat.h>
 #include <unistd.h>
 
+#include <cstdint>
 #include <cstdlib>
 #include <cstring>
 #include <sstream>
 #include <type_traits>
-#include <sys/stat.h>
 
-// dlopen_ext support from bionic.
-#ifdef ART_TARGET_ANDROID
-#include "android/dlext.h"
-#include "nativeloader/dlext_namespaces.h"
-#endif
-
-#include <android-base/logging.h>
+#include "android-base/logging.h"
 #include "android-base/stringprintf.h"
-
 #include "arch/instruction_set_features.h"
 #include "art_method.h"
 #include "base/bit_vector.h"
@@ -61,9 +51,9 @@
 #include "dex/utf-inl.h"
 #include "elf/elf_utils.h"
 #include "elf_file.h"
-#include "gc_root.h"
 #include "gc/heap.h"
 #include "gc/space/image_space.h"
+#include "gc_root.h"
 #include "mirror/class.h"
 #include "mirror/object-inl.h"
 #include "oat.h"
@@ -72,6 +62,16 @@
 #include "runtime-inl.h"
 #include "vdex_file.h"
 #include "verifier/verifier_deps.h"
+
+#ifndef __APPLE__
+#include <link.h>  // for dl_iterate_phdr.
+#endif
+
+// dlopen_ext support from bionic.
+#ifdef ART_TARGET_ANDROID
+#include "android/dlext.h"
+#include "nativeloader/dlext_namespaces.h"
+#endif
 
 namespace art HIDDEN {
 
@@ -1170,6 +1170,16 @@ class DlOpenOatFile final : public OatFileBase {
   // Ask the linker where it mmaped the file and notify our mmap wrapper of the regions.
   void PreSetup(const std::string& elf_filename) override;
 
+  const uint8_t* ElfBegin() const override {
+    if (!cached_elf_begin_.has_value()) {
+      Dl_info info;
+      CHECK_NE(dladdr(Begin(), &info), 0)
+          << StringPrintf("Failed to dladdr '%s': %s", GetLocation().c_str(), strerror(errno));
+      cached_elf_begin_ = reinterpret_cast<const uint8_t*>(info.dli_fbase);
+    }
+    return cached_elf_begin_.value();
+  }
+
  private:
   bool Dlopen(const std::string& elf_filename,
               /*inout*/MemMap* reservation,  // Where to load if not null.
@@ -1196,6 +1206,8 @@ class DlOpenOatFile final : public OatFileBase {
   // The number of shared objects the linker told us about before loading. Used to
   // (optimistically) optimize the PreSetup stage (see comment there).
   size_t shared_objects_before_;
+
+  mutable std::optional<const uint8_t*> cached_elf_begin_;
 
   DISALLOW_COPY_AND_ASSIGN(DlOpenOatFile);
 };
@@ -1601,6 +1613,8 @@ class ElfOatFile final : public OatFileBase {
 
   void PreSetup([[maybe_unused]] const std::string& elf_filename) override {}
 
+  const uint8_t* ElfBegin() const override { return elf_file_->GetBaseAddress(); }
+
  private:
   bool ElfFileOpen(File* file,
                    bool writable,
@@ -1887,6 +1901,8 @@ class OatFileBackedByVdex final : public OatFileBase {
     *error_msg = "Unsupported";
     return nullptr;
   }
+
+  const uint8_t* ElfBegin() const override { return nullptr; }
 
  private:
   std::unique_ptr<OatHeader> oat_header_;
