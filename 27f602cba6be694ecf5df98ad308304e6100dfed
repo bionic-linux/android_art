@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367a50ad_4f7b4a92",
+        "filename": "runtime/var_handles.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2024-09-11T12:44:19Z",
+      "side": 1,
+      "message": "Please, reorder.\n\nThe `caller_method` belongs together with the `callsite_type`. And I\u0027d prefer to have the `var_handle` before these two for consistency with the other two overloads.",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "27f602cba6be694ecf5df98ad308304e6100dfed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
