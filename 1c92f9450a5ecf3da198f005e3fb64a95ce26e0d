@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38805036_b4b2441f",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-11T14:00:23Z",
+      "side": 1,
+      "message": "Btw, there\u0027s been some discussion recently about this hprof generation being problematic because it isn\u0027t deterministic - see http://b/308685435#comment15 for a summary. Hence it\u0027s possible all this needs to be reworked anyway, and it may be wise to just postpone the `ahat-tests` conversion for a while. However no one on ART team has time set aside for such a refactoring, so who can take that on is an open question.",
+      "parentUuid": "650eeb83_5f4c3b53",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
