@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3197557d_4f4f045a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-11T09:10:06Z",
+      "side": 1,
+      "message": "@anton.romanov@syntacore.com, we are seeing `rolw` here i.e. `rolw a0, a1, a2`. Did you see `rol` locally?\n\nAs an FYI, there could be other errors. This was the first one it encountered.",
+      "range": {
+        "startLine": 14,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "0769aa3cdcedb9541f4a67777a7d85a2bddb1c71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
