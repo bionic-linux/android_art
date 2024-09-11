@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3570d203_32934511",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "I will add the change for the ART gtest in another CL.",
+      "parentUuid": "f9a3d15f_87090cb9",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b707c1d4_c36ad967",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -69,6 +87,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70333dd6_e34c7be1",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "We only need it for the VerifyClassesFuzzerHelper.",
+      "parentUuid": "c7d0f7b9_2f8cec08",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95dde333_a27d5a94",
@@ -86,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7729e667_e591783f",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95dde333_a27d5a94",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb8a0d6b_d5449452",
@@ -99,6 +153,30 @@
       "writtenOn": "2024-09-10T08:32:01Z",
       "side": 1,
       "message": "Change for a more descriptive name to include `gc` in its name e.g. `skipped_gc_iterations`",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72105d4_666b1199",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8a0d6b_d5449452",
       "range": {
         "startLine": 38,
         "startChar": 4,
@@ -132,6 +210,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6eb4d6b_222989e3",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315b6d42_f74a5888",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 80
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59b5dcda_757b0445",
@@ -145,6 +247,30 @@
       "writtenOn": "2024-09-10T08:32:01Z",
       "side": 1,
       "message": "The call could be `art::VerifyClassesFuzzerHelper::GetDexCacheData`. It is a static method and we don\u0027t need to instantiate a variable",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 0
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c316c40_8b842061",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b5dcda_757b0445",
       "range": {
         "startLine": 211,
         "startChar": 0,
@@ -185,6 +311,48 @@
       "writtenOn": "2024-09-10T08:46:54Z",
       "side": 1,
       "message": "Do we know why we need more frequent GCs on host? It might be good to add a comment since we usually expect the opposite.",
+      "range": {
+        "startLine": 221,
+        "startChar": 41,
+        "endLine": 221,
+        "endChar": 71
+      },
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff7cbb2_3ded7099",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c549aa7e_da25513d",
+      "revId": "fc38b8c606a04a55a7de414fe39ed4a083b6aa91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9fa8d56_202c457e",
+        "filename": "tools/fuzzer/libart_verify_classes_fuzzer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-11T15:25:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9e9d0c_9541774e",
       "range": {
         "startLine": 221,
         "startChar": 41,
