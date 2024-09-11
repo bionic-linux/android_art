@@ -38,6 +38,8 @@ class FakeOatFile : public OatFile {
     begin_ = begin;
     end_ = end;
   }
+
+  const uint8_t* ElfBegin() const override { return nullptr; }
 };
 
 class FakeImageSpace : public space::ImageSpace {
