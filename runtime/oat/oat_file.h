@@ -361,6 +361,21 @@ class OatFile {
     return DexEnd() - DexBegin();
   }
 
+  // The base address of the ELF file, if the oat file is backed by an ELF file, or nullptr
+  // otherwise.
+  virtual const uint8_t* ElfBegin() const = 0;
+
+  // The offset between the base address of the ELF file and the begin of the oat file, if the oat
+  // file is backed by an ELF file, or 0 otherwise.
+  size_t OatOffset() const {
+    const uint8_t* elf_begin = ElfBegin();
+    if (elf_begin == nullptr) {
+      return 0;
+    }
+    DCHECK_GE(Begin(), elf_begin);
+    return reinterpret_cast<size_t>(Begin()) - reinterpret_cast<size_t>(elf_begin);
+  }
+
   EXPORT const uint8_t* Begin() const;
   EXPORT const uint8_t* End() const;
 
