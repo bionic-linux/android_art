@@ -16,6 +16,23 @@
       "message": "Sorry for my fault. I fixed it.",
       "revId": "4548db4dbe690b9fa1b20e2debfdc83cb3680334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c90cf65_40eeb9c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-11T14:27:15Z",
+      "side": 1,
+      "message": "FYI there\u0027s a revert button in Gerrit in the top right that when clicked creates the revert for you. If you click it for r.android.com/3259841 you can then land your changes on top and it\u0027s easier to see the difference between one CL and the fix. This makes it easier for us to review since we can take a look at the delta faster.\n\nSee r.android.com/3218235/1..2 to see what I mean for when this happened in another CL",
+      "revId": "4548db4dbe690b9fa1b20e2debfdc83cb3680334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
