@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a4c3b50_8ab9dc04",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-09-11T09:17:40Z",
+      "side": 1,
+      "message": "Verification shows that setting **`dalvikvm`** as a `tools` still doesn\u0027t resolve the issue of it requiring related shared libraries.\n\nVerification steps:    \n\nStep 1: Remove `\"symlink_preferred_arch: true\"` from `dalvikvm` to address the null pointer issue when setting `dalvikvm` as a `tools`.\n\nStep 2: Set `dalvikvm` as a `tool` and remove the dalvikvm-related `shared libraries` in aosp/3213216.\n\nStep 3: The following error occurs during execution:   \n\nE JniInvocation: Failed to dlopen **`libart.so`**:     \n**`libart.so`**: cannot open **shared object file**: No such file or directory    \nFailed to initialize JNI invocation API from (null)    \n**Segmentation fault**",
+      "parentUuid": "957a2e90_43afeded",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "1c92f9450a5ecf3da198f005e3fb64a95ce26e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85ad3d2a_b684bbec",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 22
