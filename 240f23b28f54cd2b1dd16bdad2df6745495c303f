@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de02998_b4957195",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-11T09:28:52Z",
+      "side": 1,
+      "message": "Could we merge this logic with what\u0027s already in mark_compact.cc (and have it in mem_map.h maybe?)",
+      "fixSuggestions": [
+        {
+          "fixId": "2d04135a_38711ba0",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartbase/base/mem_map.cc",
+              "range": {
+                "startLine": 351,
+                "startChar": 0,
+                "endLine": 355,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libartbase/base/mem_map.cc",
+              "range": {
+                "startLine": 356,
+                "startChar": 0,
+                "endLine": 357,
+                "endChar": 0
+              },
+              "replacement": "        addr, page_aligned_byte_count, prot, flags | MAP_FIXED_NOREPLACE, fd.get(), 0, low_4gb);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "240f23b28f54cd2b1dd16bdad2df6745495c303f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
