@@ -855,6 +855,8 @@ art_cc_library {
         "test_broken_com.android.art",
     ],
     afdo: true,
+    bolt: true,
+    boltFlags: ["--skip-funcs=ExecuteNterpImpl/1"],
     target: {
         android: {
             lto: {
