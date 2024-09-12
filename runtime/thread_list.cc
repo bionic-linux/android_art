@@ -768,15 +768,29 @@ std::optional<std::string> ThreadList::WaitForSuspendBarrier(AtomicInteger* barr
 #endif
   uint64_t timeout_ns =
       attempt_of_4 == 0 ? thread_suspend_timeout_ns_ : thread_suspend_timeout_ns_ / 4;
-  if (attempt_of_4 != 1 && getpriority(PRIO_PROCESS, 0 /* this thread */) > 0) {
-    // We're a low priority thread, and thus have a longer ANR timeout. Double the suspend
-    // timeout. To avoid the getpriority system call in the common case, we fail to double the
-    // first of 4 waits, but then triple the third one to compensate.
-    if (attempt_of_4 == 3) {
-      timeout_ns *= 3;
-    } else {
-      timeout_ns *= 2;
+  if (attempt_of_4 != 1) {
+    uint64_t wait_multiplier = 1;
+    static constexpr uint64_t kStartupMinutes = 10;
+    static constexpr uint64_t kStartupNanos = kStartupMinutes * 60 * 1'000'000'000;
+    uint64_t nanos_at_start = Runtime::Current()->NanosAtStart();
+    // TODO: RequestSynchronousCheckpoint routinely passes attempt_of_4 = 0. Can
+    // we avoid the NanoTime() and getpriority() calls?
+    if (NanoTime() - nanos_at_start < kStartupNanos) {
+      // We may still be starting up, the device is very busy, and janky behavior may be better
+      // tolerated.  Risks generating ANRs instead. Empirically, we otherwise risk timeouts,
+      // especially when waiting for a low priority thread.
+      wait_multiplier = 4;
+    } else if (getpriority(PRIO_PROCESS, 0 /* this thread */) > 0) {
+      // We're a low priority thread, and thus have a longer ANR timeout. Increase the suspend
+      // timeout.
+      wait_multiplier = 3;
     }
+    // To avoid the system calls in the common case, we fail to increase the first of 4 waits, but
+    // then compensate for the third one.
+    if (attempt_of_4 == 3) {
+      wait_multiplier = 2 * wait_multiplier - 1;
+    }
+    timeout_ns *= wait_multiplier;
   }
   bool collect_state = (t != 0 && (attempt_of_4 == 0 || attempt_of_4 == 4));
   int32_t cur_val = barrier->load(std::memory_order_acquire);
