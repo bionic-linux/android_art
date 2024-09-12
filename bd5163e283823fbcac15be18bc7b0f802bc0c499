@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab77a48_a60d7a88",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-12T22:28:55Z",
+      "side": 1,
+      "message": "The CL looks good to me. I\u0027m just assuming that you have checked the this will be at the beginning of the property and on kernels lower than 5.5",
+      "range": {
+        "startLine": 451,
+        "startChar": 31,
+        "endLine": 451,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "f2edc115_fb74aae7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc/collector/garbage_collector.cc",
+              "range": {
+                "startLine": 451,
+                "startChar": 0,
+                "endLine": 452,
+                "endChar": 0
+              },
+              "replacement": "  return property.starts_with(\"HONOR\") \u0026\u0026 !IsKernelVersionAtLeast(5, 5, 0);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "bd5163e283823fbcac15be18bc7b0f802bc0c499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
