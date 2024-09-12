@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7891842_cd843364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-12T08:04:25Z",
+      "side": 1,
+      "message": "nit: your \"revert\" here is actually the reland. In here we write things like \"updated CHECKer test to use rolw instead of rol\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "c4a190d608d391bb77363abef642a56973c9e7ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023f9340_ae76438d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-12T08:04:25Z",
+      "side": 1,
+      "message": "Thanks for the reupload! This is now easy to review as we can see it is a 1-line change",
+      "revId": "c4a190d608d391bb77363abef642a56973c9e7ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
