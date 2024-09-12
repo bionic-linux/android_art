@@ -139,6 +139,8 @@ static_assert(sizeof(AtomicInteger) == sizeof(int32_t), "Weird AtomicInteger siz
 static_assert(alignof(AtomicInteger) == alignof(int32_t),
               "AtomicInteger alignment differs from that of underlyingtype");
 static_assert(sizeof(Atomic<int64_t>) == sizeof(int64_t), "Weird Atomic<int64> size");
+static_assert(std::atomic<int32_t>::is_always_lock_free);
+static_assert(std::atomic<int64_t>::is_always_lock_free);
 
 // Assert the alignment of 64-bit integers is 64-bit. This isn't true on certain 32-bit
 // architectures (e.g. x86-32) but we know that 64-bit integers here are arranged to be 8-byte

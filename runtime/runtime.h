@@ -213,6 +213,12 @@ class Runtime {
     is_primary_zygote_ = false;
   }
 
+  // Return the nanoTime() value when this Runtime instance started. That may have been in a
+  // zygote ancestor, rather than this process.
+  uint64_t NanosAtStart() {
+    return nanos_at_start_;
+  }
+
   bool IsExplicitGcDisabled() const {
     return is_explicit_gc_disabled_;
   }
@@ -1544,6 +1550,9 @@ class Runtime {
 
   // Called on out of memory error
   void (*out_of_memory_error_hook_)();
+
+  // NanoTime() when we were constructed.
+  uint64_t nanos_at_start_;
 
   metrics::ArtMetrics metrics_;
   std::unique_ptr<metrics::MetricsReporter> metrics_reporter_;
