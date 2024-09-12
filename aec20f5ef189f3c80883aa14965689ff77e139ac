@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc979d70_4b95abf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-12T17:05:30Z",
+      "side": 1,
+      "message": "Currently this does not appear to address the root cause of the bug for which it was designed. It would probably still reduce suspend failures, at the expense of not properly reporting user-visible thread \"suspension\" issues.",
+      "revId": "aec20f5ef189f3c80883aa14965689ff77e139ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
