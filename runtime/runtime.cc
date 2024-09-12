@@ -154,7 +154,6 @@
 #include "native_stack_dump.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "nterp_helpers.h"
-#include "oat/aot_class_linker.h"
 #include "oat/elf_file.h"
 #include "oat/image-inl.h"
 #include "oat/oat.h"
@@ -1257,13 +1256,11 @@ void Runtime::InitNonZygoteOrPostFork(
     }
   }
 
-  // We only used the runtime thread pool for loading app images. However the
-  // speed up that this brings in theory isn't there in practice b/328173302.
-  static constexpr bool kUseRuntimeThreadPool = false;
-  // Create the thread pools.
+  // Create the thread pool for loading app images.
   // Avoid creating the runtime thread pool for system server since it will not be used and would
   // waste memory.
-  if (!is_system_server && kUseRuntimeThreadPool) {
+  if (!is_system_server &&
+      android::base::GetBoolProperty("dalvik.vm.parallel-image-loading", false)) {
     ScopedTrace timing("CreateThreadPool");
     constexpr size_t kStackSize = 64 * KB;
     constexpr size_t kMaxRuntimeWorkers = 4u;
@@ -1956,7 +1953,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   CHECK_GE(GetHeap()->GetContinuousSpaces().size(), 1U);
 
   if (UNLIKELY(IsAotCompiler())) {
-    class_linker_ = new AotClassLinker(intern_table_);
+    class_linker_ = compiler_callbacks_->CreateAotClassLinker(intern_table_);
   } else {
     class_linker_ = new ClassLinker(
         intern_table_,
@@ -3490,6 +3487,15 @@ void Runtime::AddExtraBootDexFiles(const std::string& filename,
     }
   }
   GetClassLinker()->AddExtraBootDexFiles(Thread::Current(), std::move(dex_files));
+}
+
+void Runtime::DCheckNoTransactionCheckAllowed() {
+  if (kIsDebugBuild) {
+    Thread* self = Thread::Current();
+    if (self != nullptr) {
+      self->AssertNoTransactionCheckAllowed();
+    }
+  }
 }
 
 }  // namespace art

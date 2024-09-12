@@ -243,7 +243,8 @@
     },
     {
         "tests": ["087-gc-after-link",
-                  "141-class-unload"],
+                  "141-class-unload",
+                  "2276-const-method-type-gc-cleanup"],
         "variant": "trace | stream"
     },
     {
@@ -644,18 +645,6 @@
         "description": "ASAN runs out of memory due to huge allocations.",
         "variant": "target",
         "env_vars": {"SANITIZE_TARGET": "hwaddress"}
-    },
-    {
-        "tests": "202-thread-oome",
-        "description": "ASAN aborts when large thread stacks are requested.",
-        "variant": "host",
-        "env_vars": {"SANITIZE_HOST": "address"}
-    },
-    {
-        "tests": "202-thread-oome",
-        "description": "ASAN aborts when large thread stacks are requested.",
-        "variant": "target",
-        "env_vars": {"SANITIZE_TARGET": "address"}
     },
     {
         "tests": [
@@ -1085,11 +1074,17 @@
           "2245-checker-smali-instance-of-comparison",
           "2251-checker-irreducible-loop-do-not-inline",
           "2264-throwing-systemcleaner",
-          "2267-class-implements-itself"
+          "2267-class-implements-itself",
+          "2276-const-method-type-gc-cleanup"
         ],
         "variant": "jvm",
         "bug": "b/73888836",
         "description": ["Failing on RI. Needs further investigating. Some of these use smali."]
+    },
+    {
+        "tests": ["2275-pthread-name"],
+        "variant": "jvm",
+        "description": ["ART specific. We try harder to set pthread thread name."]
     },
     {
         "tests": ["2042-reference-processing",
@@ -1239,7 +1234,8 @@
                   "2261-badcleaner-in-systemcleaner",
                   "2263-method-trace-jit",
                   "2270-mh-internal-hiddenapi-use",
-                  "2271-profile-inline-cache"],
+                  "2271-profile-inline-cache",
+                  "2279-aconfig-flags"],
         "variant": "jvm",
         "description": ["Doesn't run on RI."]
     },

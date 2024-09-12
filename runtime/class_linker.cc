@@ -138,6 +138,7 @@
 #include "nterp_helpers-inl.h"
 #include "nterp_helpers.h"
 #include "oat/image-inl.h"
+#include "oat/jni_stub_hash_map-inl.h"
 #include "oat/oat.h"
 #include "oat/oat_file-inl.h"
 #include "oat/oat_file.h"
@@ -147,13 +148,13 @@
 #include "profile/profile_compilation_info.h"
 #include "runtime.h"
 #include "runtime_callbacks.h"
+#include "scoped_assert_no_transaction_checks.h"
 #include "scoped_thread_state_change-inl.h"
 #include "startup_completed_task.h"
 #include "thread-inl.h"
 #include "thread.h"
 #include "thread_list.h"
 #include "trace.h"
-#include "transaction.h"
 #include "vdex_file.h"
 #include "verifier/class_verifier.h"
 #include "verifier/verifier_deps.h"
@@ -409,6 +410,14 @@ void ClassLinker::ForceClassInitialized(Thread* self, Handle<mirror::Class> klas
   MakeInitializedClassesVisiblyInitialized(self, /*wait=*/true);
 }
 
+const void* ClassLinker::FindBootJniStub(ArtMethod* method) {
+  return FindBootJniStub(JniStubKey(method));
+}
+
+const void* ClassLinker::FindBootJniStub(uint32_t flags, std::string_view shorty) {
+  return FindBootJniStub(JniStubKey(flags, shorty));
+}
+
 const void* ClassLinker::FindBootJniStub(JniStubKey key) {
   auto it = boot_image_jni_stubs_.find(key);
   if (it == boot_image_jni_stubs_.end()) {
@@ -634,7 +643,9 @@ ClassLinker::ClassLinker(InternTable* intern_table, bool fast_class_not_found_ex
   CHECK(intern_table_ != nullptr);
   static_assert(kFindArrayCacheSize == arraysize(find_array_class_cache_),
                 "Array cache size wrong.");
-  std::fill_n(find_array_class_cache_, kFindArrayCacheSize, GcRoot<mirror::Class>(nullptr));
+  for (size_t i = 0; i < kFindArrayCacheSize; i++) {
+    find_array_class_cache_[i].store(GcRoot<mirror::Class>(nullptr), std::memory_order_relaxed);
+  }
 }
 
 void ClassLinker::CheckSystemClass(Thread* self, Handle<mirror::Class> c1, const char* descriptor) {
@@ -4650,7 +4661,7 @@ ObjPtr<mirror::Class> ClassLinker::CreateArrayClass(Thread* self,
   auto visitor = [this, array_class_size, component_type](ObjPtr<mirror::Object> obj,
                                                           size_t usable_size)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    ScopedAssertNoNewTransactionRecords sanntr("CreateArrayClass");
+    ScopedAssertNoTransactionChecks santc("CreateArrayClass");
     mirror::Class::InitializeClassVisitor init_class(array_class_size);
     init_class(obj, usable_size);
     ObjPtr<mirror::Class> klass = ObjPtr<mirror::Class>::DownCast(obj);
@@ -8731,12 +8742,9 @@ bool ClassLinker::LinkMethodsHelper<kPointerSize>::FindCopiedMethodsForInterface
       size_t hash = ComputeMethodHash(interface_method);
       auto it1 = declared_virtual_signatures.FindWithHash(interface_method, hash);
       if (it1 != declared_virtual_signatures.end()) {
-        ArtMethod* virtual_method = klass->GetVirtualMethodDuringLinking(*it1, kPointerSize);
-        if (!virtual_method->IsAbstract() && !virtual_method->IsPublic()) {
-          sants.reset();
-          ThrowIllegalAccessErrorForImplementingMethod(klass, virtual_method, interface_method);
-          return false;
-        }
+        // Virtual methods in interfaces are always public.
+        // This is checked by the `DexFileVerifier`.
+        DCHECK(klass->GetVirtualMethodDuringLinking(*it1, kPointerSize)->IsPublic());
         continue;  // This default method is masked by a method declared in this interface.
       }
 
@@ -10921,7 +10929,9 @@ jobject ClassLinker::CreatePathClassLoader(Thread* self,
 }
 
 void ClassLinker::DropFindArrayClassCache() {
-  std::fill_n(find_array_class_cache_, kFindArrayCacheSize, GcRoot<mirror::Class>(nullptr));
+  for (size_t i = 0; i < kFindArrayCacheSize; i++) {
+    find_array_class_cache_[i].store(GcRoot<mirror::Class>(nullptr), std::memory_order_relaxed);
+  }
   find_array_class_cache_next_victim_ = 0;
 }
 
@@ -11329,6 +11339,12 @@ bool ClassLinker::IsTransactionAborted() const {
 
 void ClassLinker::VisitTransactionRoots([[maybe_unused]] RootVisitor* visitor) {
   // Nothing to do for normal `ClassLinker`, only `AotClassLinker` handles transactions.
+}
+
+const void* ClassLinker::GetTransactionalInterpreter() {
+  // Should not be called on ClassLinker, only on AotClassLinker that overrides this.
+  LOG(FATAL) << "UNREACHABLE";
+  UNREACHABLE();
 }
 
 void ClassLinker::RemoveDexFromCaches(const DexFile& dex_file) {

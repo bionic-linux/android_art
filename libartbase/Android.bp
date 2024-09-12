@@ -88,6 +88,18 @@ cc_defaults {
                 "libcap",
             ],
         },
+        linux: {
+            // TODO(b/350967139): Move art-aconfig-flags-lib to the top level
+            // when aconfig supports darwin and windows. Until then it's harder
+            // to use flags in code that needs to build for them, e.g.
+            // libartbase, libdexfile, and dexdump.
+            static_libs: [
+                "art-aconfig-flags-lib",
+            ],
+            export_static_lib_headers: [
+                "art-aconfig-flags-lib",
+            ],
+        },
         not_windows: {
             srcs: [
                 "base/globals_unix.cc",

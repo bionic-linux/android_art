@@ -957,8 +957,8 @@ bool Thread::Init(ThreadList* thread_list, JavaVMExt* java_vm, JNIEnvExt* jni_en
   // thread hasn't been through here already...
   CHECK(Thread::Current() == nullptr);
 
-  // Set pthread_self_ ahead of pthread_setspecific, that makes Thread::Current function, this
-  // avoids pthread_self_ ever being invalid when discovered from Thread::Current().
+  // Set pthread_self ahead of pthread_setspecific, that makes Thread::Current function, this
+  // avoids pthread_self ever being invalid when discovered from Thread::Current().
   tlsPtr_.pthread_self = pthread_self();
   CHECK(is_started_);
 
@@ -1266,8 +1266,14 @@ void Thread::SetCachedThreadName(const char* name) {
 }
 
 void Thread::SetThreadName(const char* name) {
+  DCHECK(this == Thread::Current() || IsSuspended());  // O.w. `this` may disappear.
   SetCachedThreadName(name);
-  ::art::SetThreadName(name);
+  if (!IsStillStarting() || this == Thread::Current()) {
+    // The RI is documented to do this only in the this == self case, which would avoid the
+    // IsStillStarting() issue below. We instead use a best effort approach.
+    ::art::SetThreadName(tlsPtr_.pthread_self /* Not necessarily current thread! */, name);
+  }  // O.w. this will normally be set when we finish starting. We can rarely fail to set the
+     // pthread name. See TODO in IsStillStarting().
   Dbg::DdmSendThreadNotification(this, CHUNK_TYPE("THNM"));
 }
 
@@ -2540,6 +2546,13 @@ bool Thread::IsStillStarting() const {
   // assigned fairly early on, and needs to be.
   // It turns out that the last thing to change is the thread name; that's a good proxy for "has
   // this thread _ever_ entered kRunnable".
+  // TODO: I believe that SetThreadName(), ThreadGroup::GetThreads() and many jvmti functions can
+  // call this while the thread is in the process of starting. Thus we appear to have data races
+  // here on opeer and jpeer, and our result may be obsolete by the time we return. Aside from the
+  // data races, it is not immediately clear whether clients are robust against this behavior.  It
+  // may make sense to acquire a per-thread lock during the transition, and have this function
+  // REQUIRE that. `runtime_shutdown_lock_` might almost work, but is global and currently not
+  // held long enough.
   return (tlsPtr_.jpeer == nullptr && tlsPtr_.opeer == nullptr) ||
       (tlsPtr_.name.load() == kThreadNameDuringStartup);
 }
@@ -2695,7 +2708,7 @@ Thread::~Thread() {
   SetCachedThreadName(nullptr);  // Deallocate name.
   delete tlsPtr_.deps_or_stack_trace_sample.stack_trace_sample;
 
-  CHECK_EQ(tlsPtr_.method_trace_buffer, nullptr);
+  CHECK_EQ(tlsPtr_.method_trace_buffer, nullptr) << Trace::GetDebugInformation();
 
   Runtime::Current()->GetHeap()->AssertThreadLocalBuffersAreRevoked(this);
 
@@ -3070,7 +3083,8 @@ class BuildInternalStackTraceVisitor : public StackVisitor {
   DISALLOW_COPY_AND_ASSIGN(BuildInternalStackTraceVisitor);
 };
 
-jobject Thread::CreateInternalStackTrace(const ScopedObjectAccessAlreadyRunnable& soa) const {
+ObjPtr<mirror::ObjectArray<mirror::Object>> Thread::CreateInternalStackTrace(
+    const ScopedObjectAccessAlreadyRunnable& soa) const {
   // Compute depth of stack, save frames if possible to avoid needing to recompute many.
   constexpr size_t kMaxSavedFrames = 256;
   std::unique_ptr<ArtMethodDexPcPair[]> saved_frames(new ArtMethodDexPcPair[kMaxSavedFrames]);
@@ -3107,7 +3121,7 @@ jobject Thread::CreateInternalStackTrace(const ScopedObjectAccessAlreadyRunnable
       CHECK(method != nullptr);
     }
   }
-  return soa.AddLocalReference<jobject>(trace);
+  return trace;
 }
 
 bool Thread::IsExceptionThrownByCurrentMethod(ObjPtr<mirror::Throwable> exception) const {
@@ -3660,9 +3674,9 @@ void Thread::ThrowNewWrappedException(const char* exception_class_descriptor,
     if (cause.get() != nullptr) {
       exception->SetCause(DecodeJObject(cause.get())->AsThrowable());
     }
-    ScopedLocalRef<jobject> trace(GetJniEnv(), CreateInternalStackTrace(soa));
-    if (trace.get() != nullptr) {
-      exception->SetStackState(DecodeJObject(trace.get()).Ptr());
+    ObjPtr<mirror::ObjectArray<mirror::Object>> trace = CreateInternalStackTrace(soa);
+    if (trace != nullptr) {
+      exception->SetStackState(trace.Ptr());
     }
     SetException(exception.Get());
   } else {

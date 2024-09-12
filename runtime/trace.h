@@ -172,6 +172,11 @@ class TraceWriter {
   uintptr_t* PrepareBufferForNewEntries(Thread* thread) REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!trace_writer_lock_);
 
+  // Creates a summary packet which includes some meta information like number of events, clock
+  // overhead, trace version in human readable form. This is used to dump the summary at the end
+  // of tracing..
+  std::string CreateSummary(int flags) REQUIRES(!trace_writer_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_);
   // Flushes all per-thread buffer and also write a summary entry.
   void FinishTracing(int flags, bool flush_entries) REQUIRES(!trace_writer_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -293,12 +298,8 @@ class TraceWriter {
 
   // Encodes the header for the events block. This assumes that there is enough space reserved to
   // encode the entry.
-  void EncodeEventBlockHeader(uint8_t* ptr,
-                              uint32_t thread_id,
-                              uint64_t method_index,
-                              uint32_t init_thread_clock_time,
-                              uint32_t init_wall_clock_time,
-                              uint16_t num_records) REQUIRES(trace_writer_lock_);
+  void EncodeEventBlockHeader(uint8_t* ptr, uint32_t thread_id, uint32_t num_records)
+      REQUIRES(trace_writer_lock_);
 
   // Ensures there is sufficient space in the buffer to record the requested_size. If there is not
   // enough sufficient space the current contents of the buffer are written to the file and
@@ -406,6 +407,9 @@ class Trace final : public instrumentation::InstrumentationListener, public Clas
     kMethodTracing,
     kSampling
   };
+
+  // Temporary code for debugging b/342768977
+  static std::string GetDebugInformation();
 
   static void SetDefaultClockSource(TraceClockSource clock_source);
 

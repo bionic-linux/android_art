@@ -39,12 +39,14 @@
 #endif  // __arm__
 #endif
 
-#include "android-base/parseint.h"
-#include "android-base/properties.h"
-#include "android-base/scopeguard.h"
-#include "android-base/stringprintf.h"
-#include "android-base/strings.h"
-#include "android-base/unique_fd.h"
+#include <android-base/parseint.h>
+#include <android-base/properties.h>
+#include <android-base/scopeguard.h>
+#include <android-base/stringprintf.h>
+#include <android-base/strings.h>
+#include <android-base/unique_fd.h>
+
+#include "aot_class_linker.h"
 #include "arch/instruction_set_features.h"
 #include "art_method-inl.h"
 #include "base/callee_save_type.h"
@@ -95,7 +97,6 @@
 #include "mirror/class_loader.h"
 #include "mirror/object-inl.h"
 #include "mirror/object_array-inl.h"
-#include "oat/aot_class_linker.h"
 #include "oat/elf_file.h"
 #include "oat/oat.h"
 #include "oat/oat_file.h"
@@ -667,6 +668,11 @@ class Dex2Oat final {
     if (app_image_fd_ != -1 || !app_image_file_name_.empty()) {
       if (compiler_options_->IsBootImage() || compiler_options_->IsBootImageExtension()) {
         Usage("Can't have both (--image or --image-fd) and (--app-image-fd or --app-image-file)");
+      }
+      if (profile_files_.empty() && profile_file_fds_.empty()) {
+        LOG(WARNING) << "Generating an app image without a profile. This will result in an app "
+                        "image with no classes. Did you forget to add the profile with either "
+                        "--profile-file-fd or --profile-file?";
       }
       compiler_options_->image_type_ = CompilerOptions::ImageType::kAppImage;
     }

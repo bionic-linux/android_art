@@ -35,6 +35,7 @@
 #include "lock_word.h"
 #include "mirror/array-inl.h"
 #include "mirror/class-inl.h"
+#include "mirror/method_type.h"
 #include "mirror/object_reference.h"
 #include "mirror/var_handle.h"
 #include "optimizing/nodes.h"
@@ -1628,6 +1629,7 @@ CodeGeneratorX86_64::CodeGeneratorX86_64(HGraph* graph,
       boot_image_other_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       jit_string_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       jit_class_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
+      jit_method_type_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       fixups_to_jump_tables_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)) {
   AddAllocatedRegister(Location::RegisterLocation(kFakeReturnRegister));
 }
@@ -1693,28 +1695,29 @@ void InstructionCodeGeneratorX86_64::GenerateMethodEntryExitHook(HInstruction* i
   __ j(kGreater, slow_path->GetEntryLabel());
 
   // Check if there is place in the buffer for a new entry, if no, take slow path.
-  CpuRegister index = locations->GetTemp(0).AsRegister<CpuRegister>();
-  CpuRegister entry_addr = CpuRegister(TMP);
-  uint64_t trace_buffer_index_offset =
-      Thread::TraceBufferIndexOffset<kX86_64PointerSize>().SizeValue();
-  __ gs()->movq(CpuRegister(index),
-                Address::Absolute(trace_buffer_index_offset, /* no_rip= */ true));
-  __ subq(CpuRegister(index), Immediate(kNumEntriesForWallClock));
+  CpuRegister init_entry = locations->GetTemp(0).AsRegister<CpuRegister>();
+  // Use a register that is different from RAX and RDX. RDTSC returns result in RAX and RDX and we
+  // use curr entry to store the result into the buffer.
+  CpuRegister curr_entry = CpuRegister(TMP);
+  DCHECK(curr_entry.AsRegister() != RAX);
+  DCHECK(curr_entry.AsRegister() != RDX);
+  uint64_t trace_buffer_curr_entry_offset =
+      Thread::TraceBufferCurrPtrOffset<kX86_64PointerSize>().SizeValue();
+  __ gs()->movq(CpuRegister(curr_entry),
+                Address::Absolute(trace_buffer_curr_entry_offset, /* no_rip= */ true));
+  __ subq(CpuRegister(curr_entry), Immediate(kNumEntriesForWallClock * sizeof(void*)));
+  __ gs()->movq(init_entry,
+                Address::Absolute(Thread::TraceBufferPtrOffset<kX86_64PointerSize>().SizeValue(),
+                                  /* no_rip= */ true));
+  __ cmpq(curr_entry, init_entry);
   __ j(kLess, slow_path->GetEntryLabel());
 
   // Update the index in the `Thread`.
-  __ gs()->movq(Address::Absolute(trace_buffer_index_offset, /* no_rip= */ true),
-                CpuRegister(index));
-  // Calculate the entry address in the buffer.
-  // entry_addr = base_addr + sizeof(void*) * index
-  __ gs()->movq(entry_addr,
-                Address::Absolute(Thread::TraceBufferPtrOffset<kX86_64PointerSize>().SizeValue(),
-                                  /* no_rip= */ true));
-  __ leaq(CpuRegister(entry_addr),
-          Address(CpuRegister(entry_addr), CpuRegister(index), TIMES_8, 0));
+  __ gs()->movq(Address::Absolute(trace_buffer_curr_entry_offset, /* no_rip= */ true),
+                CpuRegister(curr_entry));
 
   // Record method pointer and action.
-  CpuRegister method = index;
+  CpuRegister method = init_entry;
   __ movq(CpuRegister(method), Address(CpuRegister(RSP), kCurrentMethodStackOffset));
   // Use last two bits to encode trace method action. For MethodEntry it is 0
   // so no need to set the bits since they are 0 already.
@@ -1724,12 +1727,12 @@ void InstructionCodeGeneratorX86_64::GenerateMethodEntryExitHook(HInstruction* i
     static_assert(enum_cast<int32_t>(TraceAction::kTraceMethodExit) == 1);
     __ orq(method, Immediate(enum_cast<int32_t>(TraceAction::kTraceMethodExit)));
   }
-  __ movq(Address(entry_addr, kMethodOffsetInBytes), CpuRegister(method));
+  __ movq(Address(curr_entry, kMethodOffsetInBytes), CpuRegister(method));
   // Get the timestamp. rdtsc returns timestamp in RAX + RDX even in 64-bit architectures.
   __ rdtsc();
   __ shlq(CpuRegister(RDX), Immediate(32));
   __ orq(CpuRegister(RAX), CpuRegister(RDX));
-  __ movq(Address(entry_addr, kTimestampOffsetInBytes), CpuRegister(RAX));
+  __ movq(Address(curr_entry, kTimestampOffsetInBytes), CpuRegister(RAX));
   __ Bind(slow_path->GetExitLabel());
 }
 
@@ -6824,20 +6827,31 @@ void InstructionCodeGeneratorX86_64::VisitLoadMethodHandle(HLoadMethodHandle* lo
   codegen_->GenerateLoadMethodHandleRuntimeCall(load);
 }
 
+Label* CodeGeneratorX86_64::NewJitRootMethodTypePatch(const DexFile& dex_file,
+                                                      dex::ProtoIndex proto_index,
+                                                      Handle<mirror::MethodType> handle) {
+  ReserveJitMethodTypeRoot(ProtoReference(&dex_file, proto_index), handle);
+  // Add a patch entry and return the label.
+  jit_method_type_patches_.emplace_back(&dex_file, proto_index.index_);
+  PatchInfo<Label>* info = &jit_method_type_patches_.back();
+  return &info->label;
+}
+
 void LocationsBuilderX86_64::VisitLoadMethodType(HLoadMethodType* load) {
   LocationSummary* locations =
       new (GetGraph()->GetAllocator()) LocationSummary(load, LocationSummary::kCallOnSlowPath);
   if (load->GetLoadKind() == HLoadMethodType::LoadKind::kRuntimeCall) {
-      Location location = Location::RegisterLocation(RAX);
-      CodeGenerator::CreateLoadMethodTypeRuntimeCallLocationSummary(load, location, location);
+    Location location = Location::RegisterLocation(RAX);
+    CodeGenerator::CreateLoadMethodTypeRuntimeCallLocationSummary(load, location, location);
   } else {
-    DCHECK_EQ(load->GetLoadKind(), HLoadMethodType::LoadKind::kBssEntry);
     locations->SetOut(Location::RequiresRegister());
-    if (codegen_->EmitNonBakerReadBarrier()) {
-      // For non-Baker read barrier we have a temp-clobbering call.
-    } else {
-      // Rely on the pResolveMethodType to save everything.
-      locations->SetCustomSlowPathCallerSaves(OneRegInReferenceOutSaveEverythingCallerSaves());
+    if (load->GetLoadKind() == HLoadMethodType::LoadKind::kBssEntry) {
+      if (codegen_->EmitNonBakerReadBarrier()) {
+        // For non-Baker read barrier we have a temp-clobbering call.
+      } else {
+        // Rely on the pResolveMethodType to save everything.
+        locations->SetCustomSlowPathCallerSaves(OneRegInReferenceOutSaveEverythingCallerSaves());
+      }
     }
   }
 }
@@ -6862,6 +6876,17 @@ void InstructionCodeGeneratorX86_64::VisitLoadMethodType(HLoadMethodType* load) 
       __ testl(out, out);
       __ j(kEqual, slow_path->GetEntryLabel());
       __ Bind(slow_path->GetExitLabel());
+      return;
+    }
+    case HLoadMethodType::LoadKind::kJitTableAddress: {
+      Address address = Address::Absolute(CodeGeneratorX86_64::kPlaceholder32BitOffset,
+                                          /* no_rip= */ true);
+      Handle<mirror::MethodType> method_type = load->GetMethodType();
+      DCHECK(method_type != nullptr);
+      Label* fixup_label = codegen_->NewJitRootMethodTypePatch(
+          load->GetDexFile(), load->GetProtoIndex(), method_type);
+      GenerateGcRootFieldLoad(
+          load, out_loc, address, fixup_label, codegen_->GetCompilerReadBarrierOption());
       return;
     }
     default:
@@ -8541,6 +8566,12 @@ void CodeGeneratorX86_64::EmitJitRootPatches(uint8_t* code, const uint8_t* roots
   for (const PatchInfo<Label>& info : jit_class_patches_) {
     TypeReference type_reference(info.target_dex_file, dex::TypeIndex(info.offset_or_index));
     uint64_t index_in_table = GetJitClassRootIndex(type_reference);
+    PatchJitRootUse(code, roots_data, info, index_in_table);
+  }
+
+  for (const PatchInfo<Label>& info : jit_method_type_patches_) {
+    ProtoReference proto_reference(info.target_dex_file, dex::ProtoIndex(info.offset_or_index));
+    uint64_t index_in_table = GetJitMethodTypeRootIndex(proto_reference);
     PatchJitRootUse(code, roots_data, info, index_in_table);
   }
 }
