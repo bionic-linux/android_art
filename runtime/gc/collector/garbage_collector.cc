@@ -20,7 +20,8 @@
 
 #include "garbage_collector.h"
 
-#include "android-base/stringprintf.h"
+#include <android-base/stringprintf.h>
+#include <android-base/properties.h>
 
 #include "base/dumpable.h"
 #include "base/histogram-inl.h"
@@ -442,6 +443,17 @@ const Iteration* GarbageCollector::GetCurrentIteration() const {
   return heap_->GetCurrentGcIteration();
 }
 
+static bool PreferEagerlyRelease() {
+#if defined(__linux__)
+  // Devices containing changes that behave differently when memory is not eagerly
+  // released. b/365506465
+  std::string property = android::base::GetProperty("ro.product.build.fingerprint", "");
+  return property.starts_with("HONOR") && !IsKernelVersionAtLeast(5, 5);
+#else
+  return false;
+#endif
+}
+
 bool GarbageCollector::ShouldEagerlyReleaseMemoryToOS() const {
   Runtime* runtime = Runtime::Current();
   // Zygote isn't a memory heavy process, we should always instantly release memory to the OS.
@@ -453,6 +465,11 @@ bool GarbageCollector::ShouldEagerlyReleaseMemoryToOS() const {
     // Our behavior with explicit GCs is to always release any available memory.
     return true;
   }
+  static bool prefer_eagerly_release = PreferEagerlyRelease();
+  if (prefer_eagerly_release) {
+    return true;
+  }
+
   // Keep on the memory if the app is in foreground. If it is in background or
   // goes into the background (see invocation with cause kGcCauseCollectorTransition),
   // release the memory.
