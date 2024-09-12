@@ -16,6 +16,24 @@
       "message": "@solanes@google.com @ngeoffray@google.com PTAL.",
       "revId": "1c91bc8a68a43ea4f965b366cec0165314bbc798",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b56ee97_4931c3f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-12T10:34:37Z",
+      "side": 1,
+      "message": "Thanks! FYI for the next time, you can also change the commit message from the gerrit UI using the EDIT button in the lower right corner. This has the advantage of keeping the `Presubmit-Verified+2`",
+      "parentUuid": "e96489ff_3883a9fa",
+      "revId": "1c91bc8a68a43ea4f965b366cec0165314bbc798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
