@@ -40,6 +40,7 @@
 #include "android-base/properties.h"
 #include "android-base/strings.h"
 #include "base/file_utils.h"
+#include "base/logging.h"
 #include "base/memfd.h"
 #include "base/quasi_atomic.h"
 #include "base/systrace.h"
@@ -2950,9 +2951,12 @@ void MarkCompact::KernelPrepareRangeForUffd(uint8_t* to_addr, uint8_t* from_addr
   }
 
   void* ret = mremap(to_addr, map_size, map_size, mremap_flags, from_addr);
-  CHECK_EQ(ret, static_cast<void*>(from_addr))
-      << "mremap to move pages failed: " << strerror(errno)
-      << ". space-addr=" << reinterpret_cast<void*>(to_addr) << " size=" << PrettySize(map_size);
+  if (ret != static_cast<void*>(from_addr)) {
+    LOG(ERROR) << "mremap to move pages failed: " << strerror(errno)
+               << ". space-addr=" << reinterpret_cast<void*>(to_addr)
+               << " size=" << PrettySize(map_size);
+    PrintFileToLog("/proc/self/smaps", android::base::LogSeverity::FATAL);
+  }
 
   if (!gHaveMremapDontunmap) {
     // Without MREMAP_DONTUNMAP the source mapping is unmapped by mremap. So mmap
