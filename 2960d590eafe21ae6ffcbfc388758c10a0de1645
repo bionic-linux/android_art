@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "448ca651_5d7e2767",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "I removed the three fields from the AIDL response and included them in the error message when failing - assuming that if we end up in the happy case on the Java side we report `status\u003dEXITED`, `exitCode\u003d0` and `signal\u003d0`.",
+      "parentUuid": "86cccf7f_f8ee017a",
+      "range": {
+        "startLine": 1183,
+        "startChar": 0,
+        "endLine": 1185,
+        "endChar": 39
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c5ebf80_052a6e36",
         "filename": "artd/artd.cc",
         "patchSetId": 6
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75c42fe9_1744d0c0",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "I think the behavior is roughly the same as before - the only bit that has changed is merging the cases when `!result.ok()` and `result.value() !\u003d 0`, but in both cases we were returning a `NonFatal` and so we are doing in the new version of this code, would you agree?",
+      "parentUuid": "5c5ebf80_052a6e36",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 3
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da685a72_49b85d48",
         "filename": "artd/artd_test.cc",
         "patchSetId": 6
@@ -94,6 +142,30 @@
       "writtenOn": "2024-09-10T15:44:35Z",
       "side": 1,
       "message": "`exit_code` is not an interesting field to test when `status` is not `kExited` (it should always be -1). You probably want to change `MOCK_METHOD(Result\u003cint\u003e, DoExecAndReturnCode, ...)` to something like `MOCK_METHOD(ExecResult, DoExecAndReturnResult, ...)`. Then you can return an `ExecResult` with a signal in a test and check that the aidl return value contains the right signal number.\n\nTo avoid repeating the verbose `{.status \u003d ExecResult::kExited, .exit_code \u003d 0}` everywhere, you can create a helper function to return it.",
+      "range": {
+        "startLine": 319,
+        "startChar": 44,
+        "endLine": 319,
+        "endChar": 73
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0d482f_df1c4377",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Given that the AIDL result no longer contains the status/exit code/signal, I have changed the case where `code.ok()` is false to have status `kSignaled` and signal `SIGKILL`.",
+      "parentUuid": "da685a72_49b85d48",
       "range": {
         "startLine": 319,
         "startChar": 44,
@@ -165,6 +237,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a85001b_d92c9731",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "542a93aa_f6d13d3b",
+      "range": {
+        "startLine": 1121,
+        "startChar": 2,
+        "endLine": 1121,
+        "endChar": 14
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7c2462_957b41d0",
@@ -190,6 +286,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27c1303e_7df25d91",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "This comment is now obsolete, as the new PS removed these three fields from the AIDL message.",
+      "parentUuid": "7b7c2462_957b41d0",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "912ce781_7b3d64a1",
         "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
         "patchSetId": 6
@@ -201,6 +321,30 @@
       "writtenOn": "2024-09-10T15:44:35Z",
       "side": 1,
       "message": "It looks inefficient to create a ThreadPoolExecutor for every Dexopter instance. Can we put a ThreadPoolExecutor in a common place to share it among all Dexopter instances?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85553b4_acc9a6c6",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "I created an instance of ThreadPoolExecutor in ArtManagerLocal and propagated it through all methods that needed it - let me know whether this is the most appropriate place to put it.",
+      "parentUuid": "912ce781_7b3d64a1",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -251,6 +395,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a9fb39d_367b8f88",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb50e2b_6e118aff",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b4410a_3e2f097b",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae9a97a_a6f30a0f",
+      "range": {
+        "startLine": 91,
+        "startChar": 43,
+        "endLine": 91,
+        "endChar": 98
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480d4177_bf20940c",
@@ -276,6 +462,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c05c45f1_1ff2451f",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Shall we reuse `EXEC_RESULT_STATUS_NOT_RUN` for this purpose, or would it be better to add a new value to the `ExecResultStatus` enum?",
+      "parentUuid": "480d4177_bf20940c",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebe6b303_6c0ca788",
         "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
         "patchSetId": 6
@@ -287,6 +497,24 @@
       "writtenOn": "2024-09-10T15:44:35Z",
       "side": 1,
       "message": "Please add @NonNull or @Nullable annotations to object parameters.",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c821c1a_60038dfa",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebe6b303_6c0ca788",
       "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -316,6 +544,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "679dee30_fceca947",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "I had gone with the Runnable interface rather than the lambda solution because variables used in lambdas need to be \"effectively final\" and many of these arguments aren\u0027t (because they are initialised to 0 before the try-catch-finally block and reassigned inside it) - I made the change anyway to discuss which solution we like better by seeing how it fits in the code.",
+      "parentUuid": "bcdee696_0408b8a7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e026a9ae_89c86461",
         "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
         "patchSetId": 6
@@ -327,6 +579,30 @@
       "writtenOn": "2024-09-10T15:44:35Z",
       "side": 1,
       "message": "[These](https://cs.android.com/android/platform/superproject/main/+/main:art/libartbase/base/compiler_filter.h;l\u003d34;drc\u003d6f6758f5d8516f9193459d6019e5dfb9fa762746) are all the compiler filters we support. Others like \"error\", \"run-from-apk\", etc. are not.",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 103,
+        "endChar": 99
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e077c11_e511d556",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e026a9ae_89c86461",
       "range": {
         "startLine": 71,
         "startChar": 12,
@@ -568,6 +844,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c238d63_3c1ec315",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5826692_0ee84366",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 99
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312e2bec_f2f51cbc",
@@ -593,6 +893,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30348958_3eb935cd",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "We can do that by reverting back to the pre-Java 17 switch statement - for the Java 17 switch statement with return we could delete the `DexMetadata.TYPE_UNKNOWN` case and let the `default` case handle it, but the `cpplint` complains about not all values for `DexMetadata.Type` being handled.",
+      "parentUuid": "312e2bec_f2f51cbc",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 100
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0adf031e_ff066bf9",
         "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
         "patchSetId": 6
@@ -604,6 +928,30 @@
       "writtenOn": "2024-09-10T15:44:35Z",
       "side": 1,
       "message": "Will this be a good place to use Guarded Patterns? https://medium.com/@javatechie/the-evolution-of-switch-statement-from-java-7-to-java-17-4b5eee8d29b7#:~:text\u003dinteger%20%E2%80%9D%20is%20returned%20.-,Gaurded%20Patterns,-%3A",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f92023_581e06b9",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "Apparently pattern matching is not enabled in Java 17:\n```\nart/libartservice/service/java/com/android/server/art/ReportMetricsTask.java:175: error: patterns in switch statements are not supported in -source 17\n            case PrimaryDexUtils.PrimaryDexInfo primaryDexInfo -\u003e primaryDexInfo.splitName() \u003d\u003d null\n```",
+      "parentUuid": "0adf031e_ff066bf9",
       "range": {
         "startLine": 202,
         "startChar": 8,
@@ -651,6 +999,30 @@
           ]
         }
       ],
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3f7591_543fe15e",
+        "filename": "libartservice/service/java/com/android/server/art/model/DexMetadata.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-12T17:04:09Z",
+      "side": 1,
+      "message": "You are right, they are not needed - I had added them as I was seeing errors in compilation in previous iterations for this class, but then the class changed but the @SuppressLint stayed.",
+      "parentUuid": "39229888_9110aa98",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 76
+      },
       "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
