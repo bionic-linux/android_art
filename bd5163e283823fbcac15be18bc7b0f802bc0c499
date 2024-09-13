@@ -40,6 +40,30 @@
       ],
       "revId": "bd5163e283823fbcac15be18bc7b0f802bc0c499",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418f7f84_9110c026",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 2001315
+      },
+      "writtenOn": "2024-09-13T02:22:27Z",
+      "side": 1,
+      "message": "here are different prop in phones,\nHNCLK-Q:/ $ getprop|grep fingerprint\n[init.svc.fingerprint_log]: [running]\n[init.svc.fingerprint_nolog]: [stopped]\n[msc.fingerprint.powerfingerdestorydelay]: [1000]\n[ro.bootimage.build.fingerprint]: [qti/bengal/bengal:11/RKQ1.211103.002/root202310200105:user/release-keys]\n[ro.build.fingerprint]: [unknown]\n[ro.build.version.preview_sdk_fingerprint]: [REL]\n[ro.odm.build.fingerprint]: [HONOR/CLK-LX3/HNCLK-Q_CLK-L33:13/HONORCLK-L33/7.2.0.112SP51C900E112preload format error.:user/release-keys]\n[ro.product.build.fingerprint]: [Honor/system_ext_qcom/system_ext_qcom:13/TP1A.220624.014/root10200322:user/release-keys]\n[ro.product.fingerprintName]: [HONOR-Z225]\n[ro.system.build.fingerprint]: [Honor/magic/magic:13/TP1A.220624.014/root10200317:user/release-keys]\n[ro.system_ext.build.fingerprint]: [Honor/system_ext_qcom/system_ext_qcom:13/TP1A.220624.014/root10200322:user/release-keys]\n[ro.vendor.build.fingerprint]: [qti/bengal/bengal:11/RKQ1.211103.002/root202310200105:user/release-keys]\n[sys.fingerprint.deviceId]: [0]",
+      "parentUuid": "eab77a48_a60d7a88",
+      "range": {
+        "startLine": 451,
+        "startChar": 31,
+        "endLine": 451,
+        "endChar": 36
+      },
+      "revId": "bd5163e283823fbcac15be18bc7b0f802bc0c499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
