@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718d60be_33eea465",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-13T16:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fb9bc2_4f0647a2",
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eaea2c_e4fca16b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-13T16:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbc7d586_3eda679e",
+      "range": {
+        "startLine": 1769,
+        "startChar": 36,
+        "endLine": 1769,
+        "endChar": 37
+      },
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58830f3b_d44a0d16",
@@ -82,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec3f1f9_8c95269b",
+        "filename": "runtime/oat/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-13T16:14:38Z",
+      "side": 1,
+      "message": "Returning the error message instead.",
+      "parentUuid": "58830f3b_d44a0d16",
+      "range": {
+        "startLine": 1176,
+        "startChar": 6,
+        "endLine": 1176,
+        "endChar": 14
+      },
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eee5b467_ea6e4d5e",
@@ -95,6 +161,30 @@
       "writtenOn": "2024-09-13T09:36:03Z",
       "side": 1,
       "message": "Could we change the logic so the caller caches this instead? And then rename `ElfBegin` to `ComputeElfBegin` to notify it could be expansive.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 58
+      },
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e11b9b_dd3241b3",
+        "filename": "runtime/oat/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-13T16:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eee5b467_ea6e4d5e",
       "range": {
         "startLine": 1210,
         "startChar": 0,
