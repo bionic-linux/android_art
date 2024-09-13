@@ -34,6 +34,24 @@
       "parentUuid": "e96489ff_3883a9fa",
       "revId": "1c91bc8a68a43ea4f965b366cec0165314bbc798",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf7c4f02_bd1dc8f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3270422
+      },
+      "writtenOn": "2024-09-13T09:14:52Z",
+      "side": 1,
+      "message": "Thanks for the advice! @ngeoffray@google.com sorry I didn\u0027t edit the commit message using the UI - your verify lost.",
+      "parentUuid": "0b56ee97_4931c3f9",
+      "revId": "1c91bc8a68a43ea4f965b366cec0165314bbc798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
