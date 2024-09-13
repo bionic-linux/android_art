@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6e30b6d5_256adc19",
+        "filename": "runtime/dex/dex_file_annotations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-13T10:17:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc9e149_5742f7d7",
+      "range": {
+        "startLine": 207,
+        "startChar": 18,
+        "endLine": 207,
+        "endChar": 19
+      },
+      "revId": "9d4d48253b252433e20386a7d2b661481215389f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4a967c3d_7f405169",
         "filename": "runtime/dex/dex_file_annotations.h",
         "patchSetId": 2
@@ -125,6 +149,30 @@
           ]
         }
       ],
+      "revId": "9d4d48253b252433e20386a7d2b661481215389f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da7c0648_d278a04d",
+        "filename": "runtime/dex/dex_file_annotations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-13T10:17:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714fcd82_0e093c2e",
+      "range": {
+        "startLine": 214,
+        "startChar": 35,
+        "endLine": 214,
+        "endChar": 36
+      },
       "revId": "9d4d48253b252433e20386a7d2b661481215389f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
