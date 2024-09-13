@@ -24,6 +24,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc9e149_5742f7d7",
+        "filename": "runtime/dex/dex_file_annotations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:31:39Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 207,
+        "startChar": 18,
+        "endLine": 207,
+        "endChar": 19
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7f20bc89_e8619648",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/dex/dex_file_annotations.h",
+              "range": {
+                "startLine": 207,
+                "startChar": 0,
+                "endLine": 208,
+                "endChar": 0
+              },
+              "replacement": "  bool HasError() const { return has_error_; }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "9d4d48253b252433e20386a7d2b661481215389f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4a967c3d_7f405169",
@@ -43,6 +84,47 @@
         "endLine": 210,
         "endChar": 57
       },
+      "revId": "9d4d48253b252433e20386a7d2b661481215389f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "714fcd82_0e093c2e",
+        "filename": "runtime/dex/dex_file_annotations.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:31:39Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 214,
+        "startChar": 35,
+        "endLine": 214,
+        "endChar": 36
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "0b463183_78b58e34",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/dex/dex_file_annotations.h",
+              "range": {
+                "startLine": 214,
+                "startChar": 0,
+                "endLine": 215,
+                "endChar": 0
+              },
+              "replacement": "  const std::string\u0026 GetErrorMsg() const { return error_msg_; }\n"
+            }
+          ]
+        }
+      ],
       "revId": "9d4d48253b252433e20386a7d2b661481215389f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
