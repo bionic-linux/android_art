@@ -1,0 +1,108 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc7d586_3eda679e",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:36:03Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1769,
+        "startChar": 36,
+        "endLine": 1769,
+        "endChar": 37
+      },
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fb9bc2_4f0647a2",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:36:03Z",
+      "side": 1,
+      "message": "nit: add a comment.",
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58830f3b_d44a0d16",
+        "filename": "runtime/oat/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:36:03Z",
+      "side": 1,
+      "message": "CHECKs coud eventually be replaced with DCHECKs, so move the expression out of the check and store it in a variable, which you can CHECK just after.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 6,
+        "endLine": 1176,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c53b08b1_653c3b8b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/oat/oat_file.cc",
+              "range": {
+                "startLine": 1175,
+                "startChar": 0,
+                "endLine": 1177,
+                "endChar": 0
+              },
+              "replacement": "      int dladdr_result \u003d dladdr(Begin(), \u0026info);\n      CHECK_NE(dladdr_result, 0)\n"
+            }
+          ]
+        }
+      ],
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee5b467_ea6e4d5e",
+        "filename": "runtime/oat/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-13T09:36:03Z",
+      "side": 1,
+      "message": "Could we change the logic so the caller caches this instead? And then rename `ElfBegin` to `ComputeElfBegin` to notify it could be expansive.",
+      "range": {
+        "startLine": 1210,
+        "startChar": 0,
+        "endLine": 1210,
+        "endChar": 58
+      },
+      "revId": "4c756f6e0c6b6c13a49d1b7c385d3df1a1a1b2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
