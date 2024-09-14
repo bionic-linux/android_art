@@ -632,13 +632,48 @@ class OptimizingUnitTestHelper {
                           HInstruction* index,
                           HInstruction* value,
                           DataType::Type packed_type,
-                          size_t vector_length = 4,
+                          size_t vector_length = kDefaultVectorLength,
                           uint32_t dex_pc = kNoDexPc) {
     SideEffects side_effects = SideEffects::ArrayWriteOfType(packed_type);
     HVecStore* vec_store = new (GetAllocator()) HVecStore(
         GetAllocator(), base, index, value, packed_type, side_effects, vector_length, dex_pc);
     AddOrInsertInstruction(block, vec_store);
     return vec_store;
+  }
+
+  HVecPredToBoolean* MakeVecPredToBoolean(HBasicBlock* block,
+                                          HInstruction* input,
+                                          DataType::Type packed_type,
+                                          size_t vector_length = kDefaultVectorLength,
+                                          uint32_t dex_pc = kNoDexPc) {
+    HVecPredToBoolean* vec_pred_to_boolean = new (GetAllocator()) HVecPredToBoolean(
+        GetAllocator(),
+        input,
+        HVecPredToBoolean::PCondKind::kNFirst,
+        packed_type,
+        vector_length,
+        dex_pc);
+    AddOrInsertInstruction(block, vec_pred_to_boolean);
+    return vec_pred_to_boolean;
+  }
+
+  HVecPredWhile* MakeVecPredWhile(HBasicBlock* block,
+                                  HInstruction* left,
+                                  HInstruction* right,
+                                  HVecPredWhile::CondKind cond,
+                                  DataType::Type packed_type,
+                                  size_t vector_length = kDefaultVectorLength,
+                                  uint32_t dex_pc = kNoDexPc) {
+    HVecPredWhile* vec_pred_while = new (GetAllocator()) HVecPredWhile(
+        GetAllocator(),
+        left,
+        right,
+        cond,
+        packed_type,
+        vector_length,
+        dex_pc);
+    AddOrInsertInstruction(block, vec_pred_while);
+    return vec_pred_while;
   }
 
   HInvokeStaticOrDirect* MakeInvokeStatic(HBasicBlock* block,
@@ -831,6 +866,10 @@ class OptimizingUnitTestHelper {
   size_t param_count_ = 0;
   size_t class_idx_ = 42;
   uint32_t method_idx_ = 100;
+
+  // The default vector length to use for vector instructions, in bytes.
+  static constexpr size_t kDefaultVectorLength =
+      (kArm64DefaultSVEVectorLength / kBitsPerByte) / DataType::Size(DataType::Type::kInt32);
 
   ScopedNullHandle<mirror::Class> null_klass_;
 };
