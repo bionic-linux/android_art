@@ -186,7 +186,7 @@ class CommonCompilerTestImpl::OneCompiledMethodStorage final : public CompiledCo
 };
 
 std::unique_ptr<CompilerOptions> CommonCompilerTestImpl::CreateCompilerOptions(
-    InstructionSet instruction_set, const std::string& variant) {
+    InstructionSet instruction_set, const std::string& variant, const std::string& feature_list) {
   std::unique_ptr<CompilerOptions> compiler_options = std::make_unique<CompilerOptions>();
   compiler_options->emit_read_barrier_ = gUseReadBarrier;
   compiler_options->instruction_set_ = instruction_set;
@@ -194,6 +194,12 @@ std::unique_ptr<CompilerOptions> CommonCompilerTestImpl::CreateCompilerOptions(
   compiler_options->instruction_set_features_ =
       InstructionSetFeatures::FromVariant(instruction_set, variant, &error_msg);
   CHECK(compiler_options->instruction_set_features_ != nullptr) << error_msg;
+  if (!feature_list.empty()) {
+    compiler_options->instruction_set_features_ =
+        compiler_options->instruction_set_features_->AddFeaturesFromString(feature_list,
+                                                                           &error_msg);
+    CHECK_NE(compiler_options->instruction_set_features_, nullptr) << error_msg;
+  }
   return compiler_options;
 }
 
