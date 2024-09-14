@@ -34,6 +34,7 @@ inline void BumpPointerSpace::Walk(Visitor&& visitor) {
   uint8_t* pos = Begin();
   uint8_t* end = End();
   uint8_t* main_end = pos;
+  size_t black_dense_size;
   std::unique_ptr<std::vector<size_t>> block_sizes_copy;
   // Internal indirection w/ NO_THREAD_SAFETY_ANALYSIS. Optimally, we'd like to have an annotation
   // like
@@ -64,6 +65,30 @@ inline void BumpPointerSpace::Walk(Visitor&& visitor) {
     } else {
       block_sizes_copy.reset(new std::vector<size_t>(block_sizes_.begin(), block_sizes_.end()));
     }
+
+    black_dense_size = black_dense_region_size_;
+  }
+
+  // black_dense_region_size_ will be non-zero only in case of moving-space of CMC GC.
+  if (black_dense_size > 0) {
+    // Objects are not packed in this case, and therefore the bitmap is needed
+    // to walk this part of the space.
+    // Remember the last object visited using bitmap to be able to fetch its size.
+    mirror::Object* last_obj = nullptr;
+    auto return_obj_visit = [&](mirror::Object* obj) NO_THREAD_SAFETY_ANALYSIS {
+      visitor(obj);
+      last_obj = obj;
+    };
+    GetMarkBitmap()->VisitMarkedRange(reinterpret_cast<uintptr_t>(pos),
+                                      reinterpret_cast<uintptr_t>(pos + black_dense_size),
+                                      return_obj_visit);
+    pos += black_dense_size;
+    if (last_obj != nullptr) {
+      // If the last object visited using bitmap was large enough to go past the
+      // black-dense region, then we need to adjust for that to be able to visit
+      // objects one after the other below.
+      pos = std::max(pos, reinterpret_cast<uint8_t*>(GetNextObject(last_obj)));
+    }
   }
   // Walk all of the objects in the main block first.
   while (pos < main_end) {
@@ -82,6 +107,20 @@ inline void BumpPointerSpace::Walk(Visitor&& visitor) {
   // Walk the other blocks (currently only TLABs).
   if (block_sizes_copy != nullptr) {
     for (size_t block_size : *block_sizes_copy) {
+      // Skip blocks which are already visited as part of black-dense region.
+      main_end += block_size;
+      if (main_end <= pos) {
+        DCHECK_GT(black_dense_size, 0u);
+        continue;
+      }
+      // Adjust 'block_size' in case 'pos' is in the middle of the block, which
+      // is only possible with the first unskipped block and when black-dense
+      // region existed.
+      if (UNLIKELY(static_cast<ssize_t>(block_size) > main_end - pos)) {
+        DCHECK_GT(black_dense_size, 0u);
+        block_size -= main_end - pos;
+      }
+
       mirror::Object* obj = reinterpret_cast<mirror::Object*>(pos);
       const mirror::Object* end_obj = reinterpret_cast<const mirror::Object*>(pos + block_size);
       CHECK_LE(reinterpret_cast<const uint8_t*>(end_obj), End());
