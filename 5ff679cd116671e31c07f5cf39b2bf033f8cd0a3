@@ -22,6 +22,30 @@
       },
       "revId": "5ff679cd116671e31c07f5cf39b2bf033f8cd0a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55cb14cf_fe49123b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T08:52:29Z",
+      "side": 1,
+      "message": "Unfortunately I can\u0027t. I initialize the disassembler with `elf_begin`, which is obtained from `ComputeElfBegin` above.",
+      "parentUuid": "d2d5e98e_b74ae06c",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 82
+      },
+      "revId": "5ff679cd116671e31c07f5cf39b2bf033f8cd0a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
