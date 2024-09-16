@@ -27,8 +27,8 @@
 #include "entrypoints/quick/quick_entrypoints.h"
 #include "entrypoints/quick/quick_entrypoints_enum.h"
 #include "heap_poisoning.h"
-#include "intrinsics.h"
 #include "intrinsic_objects.h"
+#include "intrinsics.h"
 #include "intrinsics_utils.h"
 #include "lock_word.h"
 #include "mirror/array-inl.h"
@@ -36,6 +36,7 @@
 #include "mirror/reference.h"
 #include "mirror/string.h"
 #include "optimizing/code_generator.h"
+#include "optimizing/data_type.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread-current-inl.h"
 #include "utils/x86_64/assembler_x86_64.h"
@@ -2633,7 +2634,11 @@ static void CreateUnsafeGetAndUpdateLocations(ArenaAllocator* allocator,
   // Use the same register for both the output and the new value or addend
   // to take advantage of XCHG or XADD. Arbitrarily pick RAX.
   locations->SetInAt(3, Location::RegisterLocation(RAX));
-  locations->SetOut(Location::RegisterLocation(RAX));
+  // Only set the `out` register if it's needed. In the void case we can still use RAX in the
+  // same manner as it is used an as `in` register.
+  if (invoke->GetType() != DataType::Type::kVoid) {
+    locations->SetOut(Location::RegisterLocation(RAX));
+  }
 }
 
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetAndAddInt(HInvoke* invoke) {
@@ -2697,7 +2702,10 @@ static void GenUnsafeGetAndUpdate(HInvoke* invoke,
   X86_64Assembler* assembler = down_cast<X86_64Assembler*>(codegen->GetAssembler());
   LocationSummary* locations = invoke->GetLocations();
 
-  CpuRegister out = locations->Out().AsRegister<CpuRegister>();       // Result.
+  const bool non_void = invoke->GetType() != DataType::Type::kVoid;
+  Location rax_loc = Location::RegisterLocation(RAX);
+  DCHECK_IMPLIES(non_void, locations->Out().Equals(rax_loc));
+  CpuRegister out = rax_loc.AsRegister<CpuRegister>();                // Result.
   CpuRegister base = locations->InAt(1).AsRegister<CpuRegister>();    // Object pointer.
   CpuRegister offset = locations->InAt(2).AsRegister<CpuRegister>();  // Long offset.
   DCHECK_EQ(out, locations->InAt(3).AsRegister<CpuRegister>());       // New value or addend.
@@ -2748,8 +2756,10 @@ static void GenUnsafeGetAndUpdate(HInvoke* invoke,
       __ movl(temp1, out);
       __ PoisonHeapReference(temp1);
       __ xchgl(temp1, field_address);
-      __ UnpoisonHeapReference(temp1);
-      __ movl(out, temp1);
+      if (non_void) {
+        __ UnpoisonHeapReference(temp1);
+        __ movl(out, temp1);
+      }
     } else {
       __ xchgl(out, field_address);
     }
@@ -4501,21 +4511,30 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86_
 
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   uint32_t new_value_index = number_of_arguments - 1;
-  DataType::Type type = invoke->GetType();
-  DCHECK_EQ(type, GetDataTypeFromShorty(invoke, new_value_index));
+  DataType::Type value_type = GetDataTypeFromShorty(invoke, new_value_index);
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
 
   LocationSummary* locations = CreateVarHandleCommonLocations(invoke);
 
-  if (DataType::IsFloatingPointType(type)) {
-    locations->SetOut(Location::RequiresFpuRegister());
+  if (DataType::IsFloatingPointType(value_type)) {
+    // Only set the `out` register if it's needed. In the void case we don't use `out`.
+    if (non_void) {
+      locations->SetOut(Location::RequiresFpuRegister());
+    }
     // A temporary is needed to load the new floating-point value into a register for XCHG.
     locations->AddTemp(Location::RequiresRegister());
   } else {
-    // Use the same register for both the new value and output to take advantage of XCHG.
-    // It doesn't have to be RAX, but we need to choose some to make sure it's the same.
-    locations->SetOut(Location::RegisterLocation(RAX));
+    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
+    // same manner as it is used an as `in` register.
+    if (non_void) {
+      // Use the same register for both the new value and output to take advantage of XCHG.
+      // It doesn't have to be RAX, but we need to choose some to make sure it's the same.
+      locations->SetOut(Location::RegisterLocation(RAX));
+    }
     locations->SetInAt(new_value_index, Location::RegisterLocation(RAX));
-    if (type == DataType::Type::kReference) {
+    if (value_type == DataType::Type::kReference) {
       // Need two temporaries for MarkGCCard.
       locations->AddRegisterTemps(2);
       if (codegen->EmitReadBarrier()) {
@@ -4538,6 +4557,9 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke,
   LocationSummary* locations = invoke->GetLocations();
   Location out = locations->Out();
   uint32_t temp_count = locations->GetTempCount();
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == type);
 
   if (DataType::IsFloatingPointType(type)) {
     // `getAndSet` for floating-point types: move the new FP value into a register, atomically
@@ -4557,7 +4579,9 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke,
     if (byte_swap) {
       codegen->GetInstructionCodegen()->Bswap(temp, bswap_type);
     }
-    __ movd(out.AsFpuRegister<XmmRegister>(), temp.AsRegister<CpuRegister>(), is64bit);
+    if (non_void) {
+      __ movd(out.AsFpuRegister<XmmRegister>(), temp.AsRegister<CpuRegister>(), is64bit);
+    }
   } else if (type == DataType::Type::kReference) {
     // `getAndSet` for references: load reference and atomically exchange it with the field.
     // Output register is the same as the one holding new value, so no need to move the result.
@@ -4580,15 +4604,17 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke,
     }
     codegen->MarkGCCard(temp1, temp2, ref);
 
-    DCHECK_EQ(valreg, out.AsRegister<CpuRegister>());
+    DCHECK_IMPLIES(non_void, valreg == out.AsRegister<CpuRegister>());
     if (kPoisonHeapReferences) {
       // Use a temp to avoid poisoning base of the field address, which might happen if `valreg` is
       // the same as `target.object` (for code like `vh.getAndSet(obj, obj)`).
       __ movl(temp1, valreg);
       __ PoisonHeapReference(temp1);
       __ xchgl(temp1, field_addr);
-      __ UnpoisonHeapReference(temp1);
-      __ movl(valreg, temp1);
+      if (non_void) {
+        __ UnpoisonHeapReference(temp1);
+        __ movl(valreg, temp1);
+      }
     } else {
       __ xchgl(valreg, field_addr);
     }
@@ -4599,24 +4625,32 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke,
       codegen->GetInstructionCodegen()->Bswap(value, type);
     }
     CpuRegister valreg = value.AsRegister<CpuRegister>();
-    DCHECK_EQ(valreg, out.AsRegister<CpuRegister>());
+    DCHECK_IMPLIES(non_void, valreg == out.AsRegister<CpuRegister>());
     switch (type) {
       case DataType::Type::kBool:
       case DataType::Type::kUint8:
         __ xchgb(valreg, field_addr);
-        __ movzxb(valreg, valreg);
+        if (non_void) {
+          __ movzxb(valreg, valreg);
+        }
         break;
       case DataType::Type::kInt8:
         __ xchgb(valreg, field_addr);
-        __ movsxb(valreg, valreg);
+        if (non_void) {
+          __ movsxb(valreg, valreg);
+        }
         break;
       case DataType::Type::kUint16:
         __ xchgw(valreg, field_addr);
-        __ movzxw(valreg, valreg);
+        if (non_void) {
+          __ movzxw(valreg, valreg);
+        }
         break;
       case DataType::Type::kInt16:
         __ xchgw(valreg, field_addr);
-        __ movsxw(valreg, valreg);
+        if (non_void) {
+          __ movsxw(valreg, valreg);
+        }
         break;
       case DataType::Type::kInt32:
       case DataType::Type::kUint32:
@@ -4643,23 +4677,32 @@ static void CreateVarHandleGetAndBitwiseOpLocations(HInvoke* invoke, CodeGenerat
 
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   uint32_t new_value_index = number_of_arguments - 1;
-  DataType::Type type = invoke->GetType();
-  DCHECK_EQ(type, GetDataTypeFromShorty(invoke, new_value_index));
+  DataType::Type value_type = GetDataTypeFromShorty(invoke, new_value_index);
+  DataType::Type return_type = invoke->GetType();
+  DCHECK_IMPLIES(return_type != DataType::Type::kVoid, return_type == value_type);
 
   LocationSummary* locations = CreateVarHandleCommonLocations(invoke);
 
-  DCHECK_NE(DataType::Type::kReference, type);
-  DCHECK(!DataType::IsFloatingPointType(type));
+  DCHECK_NE(DataType::Type::kReference, value_type);
+  DCHECK(!DataType::IsFloatingPointType(value_type));
 
+  // Output is in RAX to accommodate CMPXCHG. It is also used as a temporary.
+  if (return_type != DataType::Type::kVoid) {
+    locations->SetOut(Location::RegisterLocation(RAX));
+  } else {
+    // Used as a temporary, even when we are not outputting it so reserve it. This has to be
+    // requested before the other temporary since there's variable number of temp registers and the
+    // other temp register is expected to be the last one.
+    locations->AddTemp(Location::RegisterLocation(RAX));
+  }
   // A temporary to compute the bitwise operation on the old and the new values.
   locations->AddTemp(Location::RequiresRegister());
   // We need value to be either in a register, or a 32-bit constant (as there are no arithmetic
   // instructions that accept 64-bit immediate on x86_64).
-  locations->SetInAt(new_value_index, DataType::Is64BitType(type)
-      ? Location::RequiresRegister()
-      : Location::RegisterOrConstant(invoke->InputAt(new_value_index)));
-  // Output is in RAX to accommodate CMPXCHG. It is also used as a temporary.
-  locations->SetOut(Location::RegisterLocation(RAX));
+  locations->SetInAt(new_value_index,
+                     DataType::Is64BitType(value_type) ?
+                         Location::RequiresRegister() :
+                         Location::RegisterOrConstant(invoke->InputAt(new_value_index)));
 }
 
 static void GenerateVarHandleGetAndOp(HInvoke* invoke,
@@ -4671,8 +4714,9 @@ static void GenerateVarHandleGetAndOp(HInvoke* invoke,
                                       bool byte_swap) {
   X86_64Assembler* assembler = codegen->GetAssembler();
   LocationSummary* locations = invoke->GetLocations();
-  Location temp_loc = locations->GetTemp(locations->GetTempCount() - 1);
-  Location rax_loc = locations->Out();
+  Location temp_loc = locations->GetTemp(locations->GetTempCount() - 1u);
+  Location rax_loc = Location::RegisterLocation(RAX);
+  DCHECK_IMPLIES(invoke->GetType() != DataType::Type::kVoid, locations->Out().Equals(rax_loc));
   CpuRegister temp = temp_loc.AsRegister<CpuRegister>();
   CpuRegister rax = rax_loc.AsRegister<CpuRegister>();
   DCHECK_EQ(rax.AsRegister(), RAX);
@@ -4782,13 +4826,18 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
 
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   uint32_t new_value_index = number_of_arguments - 1;
-  DataType::Type type = invoke->GetType();
-  DCHECK_EQ(type, GetDataTypeFromShorty(invoke, new_value_index));
+  DataType::Type value_type = GetDataTypeFromShorty(invoke, new_value_index);
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
 
   LocationSummary* locations = CreateVarHandleCommonLocations(invoke);
 
-  if (DataType::IsFloatingPointType(type)) {
-    locations->SetOut(Location::RequiresFpuRegister());
+  if (DataType::IsFloatingPointType(value_type)) {
+    // Only set the `out` register if it's needed. In the void case we don't use `out`
+    if (non_void) {
+      locations->SetOut(Location::RequiresFpuRegister());
+    }
     // Require that the new FP value is in a register (and not a constant) for ADDSS/ADDSD.
     locations->SetInAt(new_value_index, Location::RequiresFpuRegister());
     // CMPXCHG clobbers RAX.
@@ -4798,11 +4847,15 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86_
     // A temporary to hold the new value for CMPXCHG.
     locations->AddTemp(Location::RequiresRegister());
   } else {
-    DCHECK_NE(type, DataType::Type::kReference);
-    // Use the same register for both the new value and output to take advantage of XADD.
-    // It should be RAX, because the byte-swapping path of GenerateVarHandleGetAndAdd falls
-    // back to GenerateVarHandleGetAndOp that expects out in RAX.
-    locations->SetOut(Location::RegisterLocation(RAX));
+    DCHECK_NE(value_type, DataType::Type::kReference);
+    // Only set the `out` register if it's needed. In the void case we can still use RAX in the
+    // same manner as it is used an as `in` register.
+    if (non_void) {
+      // Use the same register for both the new value and output to take advantage of XADD.
+      // It should be RAX, because the byte-swapping path of GenerateVarHandleGetAndAdd falls
+      // back to GenerateVarHandleGetAndOp that expects out in RAX.
+      locations->SetOut(Location::RegisterLocation(RAX));
+    }
     locations->SetInAt(new_value_index, Location::RegisterLocation(RAX));
     if (GetExpectedVarHandleCoordinatesCount(invoke) == 2) {
       // For byte array views with non-native endianness we need extra BSWAP operations, so we
@@ -4825,6 +4878,10 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke,
   LocationSummary* locations = invoke->GetLocations();
   Location out = locations->Out();
   uint32_t temp_count = locations->GetTempCount();
+
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == type);
 
   if (DataType::IsFloatingPointType(type)) {
     if (byte_swap) {
@@ -4888,7 +4945,9 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke,
     if (byte_swap) {
       codegen->GetInstructionCodegen()->Bswap(rax_loc, bswap_type);
     }
-    __ movd(out.AsFpuRegister<XmmRegister>(), CpuRegister(RAX), is64bit);
+    if (non_void) {
+      __ movd(out.AsFpuRegister<XmmRegister>(), CpuRegister(RAX), is64bit);
+    }
   } else {
     if (byte_swap) {
       // We cannot use XADD since we need to byte-swap the old value when reading it from memory,
@@ -4905,24 +4964,32 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke,
       // the old value to the field. Output register is the same as the one holding new value. Do
       // sign extend / zero extend as needed.
       CpuRegister valreg = value.AsRegister<CpuRegister>();
-      DCHECK_EQ(valreg, out.AsRegister<CpuRegister>());
+      DCHECK_IMPLIES(non_void, valreg == out.AsRegister<CpuRegister>());
       switch (type) {
         case DataType::Type::kBool:
         case DataType::Type::kUint8:
           __ LockXaddb(field_addr, valreg);
-          __ movzxb(valreg, valreg);
+          if (non_void) {
+            __ movzxb(valreg, valreg);
+          }
           break;
         case DataType::Type::kInt8:
           __ LockXaddb(field_addr, valreg);
-          __ movsxb(valreg, valreg);
+          if (non_void) {
+            __ movsxb(valreg, valreg);
+          }
           break;
         case DataType::Type::kUint16:
           __ LockXaddw(field_addr, valreg);
-          __ movzxw(valreg, valreg);
+          if (non_void) {
+            __ movzxw(valreg, valreg);
+          }
           break;
         case DataType::Type::kInt16:
           __ LockXaddw(field_addr, valreg);
-          __ movsxw(valreg, valreg);
+          if (non_void) {
+            __ movsxw(valreg, valreg);
+          }
           break;
         case DataType::Type::kInt32:
         case DataType::Type::kUint32:
@@ -4953,7 +5020,7 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
 
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   Location value = locations->InAt(number_of_arguments - 1);
-  DataType::Type type = invoke->GetType();
+  DataType::Type type = GetDataTypeFromShorty(invoke, number_of_arguments - 1);
 
   VarHandleSlowPathX86_64* slow_path = nullptr;
   VarHandleTarget target = GetVarHandleTarget(invoke);
@@ -5211,7 +5278,7 @@ void VarHandleSlowPathX86_64::EmitByteArrayViewCode(CodeGeneratorX86_64* codegen
   CpuRegister varhandle = locations->InAt(0).AsRegister<CpuRegister>();
   CpuRegister object = locations->InAt(1).AsRegister<CpuRegister>();
   CpuRegister index = locations->InAt(2).AsRegister<CpuRegister>();
-  CpuRegister temp = locations->GetTemp(locations->GetTempCount() - 1).AsRegister<CpuRegister>();
+  CpuRegister temp = locations->GetTemp(locations->GetTempCount() - 1u).AsRegister<CpuRegister>();
 
   MemberOffset class_offset = mirror::Object::ClassOffset();
   MemberOffset array_length_offset = mirror::Array::LengthOffset();
