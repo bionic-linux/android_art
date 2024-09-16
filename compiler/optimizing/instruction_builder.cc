@@ -36,6 +36,7 @@
 #include "jit/profiling_info.h"
 #include "mirror/dex_cache.h"
 #include "oat/oat_file.h"
+#include "optimizing/data_type.h"
 #include "optimizing_compiler_stats.h"
 #include "reflective_handle_scope-inl.h"
 #include "scoped_thread_state_change-inl.h"
@@ -1357,7 +1358,7 @@ static void DecideVarHandleIntrinsic(HInvoke* invoke) {
         optimizations.SetDoNotIntrinsify();
         return;
       }
-      if (value_type != return_type) {
+      if (value_type != return_type && return_type != DataType::Type::kVoid) {
         optimizations.SetDoNotIntrinsify();
         return;
       }
