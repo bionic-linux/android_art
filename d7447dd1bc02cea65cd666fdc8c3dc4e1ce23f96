@@ -22,6 +22,30 @@
       },
       "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e189df_75485ff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-16T09:27:26Z",
+      "side": 1,
+      "message": "\u003e You mean the users of FindVirtualMethodForInterface may give wrong inputs?\n\nI think they do: adding similar DCHECK `FindVirtualMethodForInterface` leads to crashes in `800-smali` and `069-field-type`. \n\nDo you think `FindVirtualMethodForVirtual` and `FindVirtualMethodForSuper` should also return `null` when input is invalid? Callers seem to check result for nullness.",
+      "parentUuid": "6a5a823f_435da423",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
