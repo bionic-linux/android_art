@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19498fea_d6deff16",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T10:14:09Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "448ca651_5d7e2767",
+      "range": {
+        "startLine": 1183,
+        "startChar": 0,
+        "endLine": 1185,
+        "endChar": 39
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c5ebf80_052a6e36",
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "I think the behavior is roughly the same as before - the only bit that has changed is merging the cases when `!result.ok()` and `result.value() !\u003d 0`, but in both cases we were returning a `NonFatal` and so we are doing in the new version of this code, would you agree?",
       "parentUuid": "5c5ebf80_052a6e36",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 3
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8cf296c_4211e089",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T10:14:09Z",
+      "side": 1,
+      "message": "1. If dex2oat was terminated by a signal:\n\n  Before: Does not log \"dex2oat returned code \u003ccode\u003e\".\n\n  After: Logs \"dex2oat returned code \u003ccode\u003e\".\n  \n  This will be confusing because dex2oat didn\u0027t actually return any code.\n\n2. If dex2oat exited with a non-zero code:\n\n  Before: Returns \"dex2oat returned an unexpected code: \u003ccode\u003e\".\n  \n  After: Returns \"Failed to run dex2oat: \u003cmessage\u003e\".\n  \n  This is problematic because there isn\u0027t an error message in this case. Besides, it will also be confusing because dex2oat actually exited, meaning it was not failed to run.\n  \nI suggest exactly keeping the behavior (no logging in case 1 and no \"Failed to run dex2oat\" in case 2), and only appending `[status\u003d{},exit_code\u003d{},signal\u003d{}]` in both cases.",
+      "parentUuid": "75c42fe9_1744d0c0",
       "range": {
         "startLine": 1192,
         "startChar": 0,
@@ -310,6 +358,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6df6838_cbceed61",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T10:14:09Z",
+      "side": 1,
+      "message": "Please add a comment about the parsable part in the non-fatal error message, including the format, the purpose, and that the status field is not interpretable.",
+      "parentUuid": "27c1303e_7df25d91",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "912ce781_7b3d64a1",
         "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
         "patchSetId": 6
@@ -474,6 +546,30 @@
       "side": 1,
       "message": "Shall we reuse `EXEC_RESULT_STATUS_NOT_RUN` for this purpose, or would it be better to add a new value to the `ExecResultStatus` enum?",
       "parentUuid": "480d4177_bf20940c",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd96486_95dfaf7c",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T10:14:09Z",
+      "side": 1,
+      "message": "It\u0027s better to add a new value.",
+      "parentUuid": "c05c45f1_1ff2451f",
       "range": {
         "startLine": 279,
         "startChar": 33,
