@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a3b8ff5_7a22a39c",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-16T10:27:02Z",
+      "side": 1,
+      "message": "Partners have custom compilation reasons, and we don\u0027t want to drop data with custom compilation reasons during processing. Is data with the `UNKNOWN` value displayable? If not, let\u0027s add another value (e.g., `OTHER`) for custom compilation reasons.",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "559c9a8d_0e928106",
         "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
         "patchSetId": 9
