@@ -34,6 +34,7 @@
 #include "mirror/reference.h"
 #include "mirror/string.h"
 #include "mirror/var_handle.h"
+#include "optimizing/data_type.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread-current-inl.h"
 #include "utils/x86/assembler_x86.h"
@@ -2489,6 +2490,7 @@ void CreateUnsafeGetAndUpdateLocations(ArenaAllocator* allocator,
     locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
   }
   locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  const bool non_void = invoke->GetType() != DataType::Type::kVoid;
   if (type == DataType::Type::kInt64) {
     // Explicitly allocate all registers.
     locations->SetInAt(1, Location::RegisterLocation(EBP));
@@ -2502,14 +2504,23 @@ void CreateUnsafeGetAndUpdateLocations(ArenaAllocator* allocator,
       locations->SetInAt(2, Location::RegisterPairLocation(ESI, EDI));
       locations->SetInAt(3, Location::RegisterPairLocation(EBX, ECX));
     }
-    locations->SetOut(Location::RegisterPairLocation(EAX, EDX), Location::kOutputOverlap);
+    if (non_void) {
+      locations->SetOut(Location::RegisterPairLocation(EAX, EDX), Location::kOutputOverlap);
+    } else {
+      locations->AddTemp(Location::RegisterLocation(EAX));
+      locations->AddTemp(Location::RegisterLocation(EDX));
+    }
   } else {
     locations->SetInAt(1, Location::RequiresRegister());
     locations->SetInAt(2, Location::RequiresRegister());
     // Use the same register for both the output and the new value or addend
     // to take advantage of XCHG or XADD. Arbitrarily pick EAX.
     locations->SetInAt(3, Location::RegisterLocation(EAX));
-    locations->SetOut(Location::RegisterLocation(EAX));
+    // Only set the `out` register if it's needed. In the void case we can still use EAX in the
+    // same manner as it is used an as `in` register.
+    if (non_void) {
+      locations->SetOut(Location::RegisterLocation(EAX));
+    }
   }
 }
 
@@ -2573,14 +2584,19 @@ static void GenUnsafeGetAndUpdate(HInvoke* invoke,
   X86Assembler* assembler = down_cast<X86Assembler*>(codegen->GetAssembler());
   LocationSummary* locations = invoke->GetLocations();
 
-  Location out = locations->Out();                            // Result.
+  const bool non_void = invoke->GetType() != DataType::Type::kVoid;
+  // Result.
+  Location result = non_void ?
+                        locations->Out() :
+                        (type == DataType::Type::kInt64 ? Location::RegisterPairLocation(EAX, EDX) :
+                                                          Location::RegisterLocation(EAX));
   Register base = locations->InAt(1).AsRegister<Register>();  // Object pointer.
   Location offset = locations->InAt(2);                       // Long offset.
   Location arg = locations->InAt(3);                          // New value or addend.
 
   if (type == DataType::Type::kInt32) {
-    DCHECK(out.Equals(arg));
-    Register out_reg = out.AsRegister<Register>();
+    DCHECK(result.Equals(arg));
+    Register out_reg = result.AsRegister<Register>();
     Address field_address(base, offset.AsRegisterPairLow<Register>(), TIMES_1, 0);
     if (get_and_update_op == GetAndUpdateOp::kAdd) {
       __ LockXaddl(field_address, out_reg);
@@ -2621,7 +2637,7 @@ static void GenUnsafeGetAndUpdate(HInvoke* invoke,
   } else {
     DCHECK_EQ(type, DataType::Type::kReference);
     DCHECK(get_and_update_op == GetAndUpdateOp::kSet);
-    Register out_reg = out.AsRegister<Register>();
+    Register out_reg = result.AsRegister<Register>();
     Address field_address(base, offset.AsRegisterPairLow<Register>(), TIMES_1, 0);
     Register temp1 = locations->GetTemp(0).AsRegister<Register>();
     Register temp2 = locations->GetTemp(1).AsRegister<Register>();
@@ -2650,8 +2666,10 @@ static void GenUnsafeGetAndUpdate(HInvoke* invoke,
       __ movl(temp1, out_reg);
       __ PoisonHeapReference(temp1);
       __ xchgl(temp1, field_address);
-      __ UnpoisonHeapReference(temp1);
-      __ movl(out_reg, temp1);
+      if (non_void) {
+        __ UnpoisonHeapReference(temp1);
+        __ movl(out_reg, temp1);
+      }
     } else {
       __ xchgl(out_reg, field_address);
     }
@@ -4240,6 +4258,9 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86*
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   uint32_t value_index = number_of_arguments - 1;
   DataType::Type value_type = GetDataTypeFromShorty(invoke, value_index);
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
 
   if (DataType::Is64BitType(value_type)) {
     // We avoid the case of an Int64/Float64 value because we would need to place it in a register
@@ -4266,10 +4287,17 @@ static void CreateVarHandleGetAndSetLocations(HInvoke* invoke, CodeGeneratorX86*
   if (value_type == DataType::Type::kFloat32) {
     locations->AddTemp(Location::RegisterLocation(EAX));
     locations->SetInAt(value_index, Location::FpuRegisterOrConstant(invoke->InputAt(value_index)));
-    locations->SetOut(Location::RequiresFpuRegister());
+    // Only set the `out` register if it's needed. In the void case, we will not use `out`.
+    if (non_void) {
+      locations->SetOut(Location::RequiresFpuRegister());
+    }
   } else {
     locations->SetInAt(value_index, Location::RegisterLocation(EAX));
-    locations->SetOut(Location::RegisterLocation(EAX));
+    // Only set the `out` register if it's needed. In the void case we can still use EAX in the
+    // same manner as it is used an as `in` register.
+    if (non_void) {
+      locations->SetOut(Location::RegisterLocation(EAX));
+    }
   }
 }
 
@@ -4307,24 +4335,36 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke, CodeGeneratorX86* codege
   // fields the object is in a separate register, it is safe to use the first temporary register.
   temp = expected_coordinates_count == 1u ? temp : locations->GetTemp(3).AsRegister<Register>();
   // No need for a lock prefix. `xchg` has an implicit lock when it is used with an address.
+
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
   switch (value_type) {
     case DataType::Type::kBool:
       __ xchgb(value.AsRegister<ByteRegister>(), field_addr);
-      __ movzxb(locations->Out().AsRegister<Register>(),
-                locations->Out().AsRegister<ByteRegister>());
+      if (non_void) {
+        __ movzxb(locations->Out().AsRegister<Register>(),
+                  locations->Out().AsRegister<ByteRegister>());
+      }
       break;
     case DataType::Type::kInt8:
       __ xchgb(value.AsRegister<ByteRegister>(), field_addr);
-      __ movsxb(locations->Out().AsRegister<Register>(),
-                locations->Out().AsRegister<ByteRegister>());
+      if (non_void) {
+        __ movsxb(locations->Out().AsRegister<Register>(),
+                  locations->Out().AsRegister<ByteRegister>());
+      }
       break;
     case DataType::Type::kUint16:
       __ xchgw(value.AsRegister<Register>(), field_addr);
-      __ movzxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      if (non_void) {
+        __ movzxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      }
       break;
     case DataType::Type::kInt16:
       __ xchgw(value.AsRegister<Register>(), field_addr);
-      __ movsxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      if (non_void) {
+        __ movsxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      }
       break;
     case DataType::Type::kInt32:
       __ xchgl(value.AsRegister<Register>(), field_addr);
@@ -4332,7 +4372,9 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke, CodeGeneratorX86* codege
     case DataType::Type::kFloat32:
       codegen->Move32(Location::RegisterLocation(EAX), value);
       __ xchgl(EAX, field_addr);
-      __ movd(locations->Out().AsFpuRegister<XmmRegister>(), EAX);
+      if (non_void) {
+        __ movd(locations->Out().AsFpuRegister<XmmRegister>(), EAX);
+      }
       break;
     case DataType::Type::kReference: {
       if (codegen->EmitBakerReadBarrier()) {
@@ -4353,10 +4395,13 @@ static void GenerateVarHandleGetAndSet(HInvoke* invoke, CodeGeneratorX86* codege
         __ movl(temp, value.AsRegister<Register>());
         __ PoisonHeapReference(temp);
         __ xchgl(temp, field_addr);
-        __ UnpoisonHeapReference(temp);
-        __ movl(locations->Out().AsRegister<Register>(), temp);
+        if (non_void) {
+          __ UnpoisonHeapReference(temp);
+          __ movl(locations->Out().AsRegister<Register>(), temp);
+        }
       } else {
-        __ xchgl(locations->Out().AsRegister<Register>(), field_addr);
+        DCHECK_IMPLIES(non_void, locations->Out().Equals(Location::RegisterLocation(EAX)));
+        __ xchgl(Location::RegisterLocation(EAX).AsRegister<Register>(), field_addr);
       }
       break;
     }
@@ -4615,15 +4660,26 @@ static void CreateVarHandleGetAndAddLocations(HInvoke* invoke, CodeGeneratorX86*
     locations->AddTemp(Location::RequiresRegister());
   }
 
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
+
   if (DataType::IsFloatingPointType(value_type)) {
     locations->AddTemp(Location::RequiresFpuRegister());
     locations->AddTemp(Location::RegisterLocation(EAX));
     locations->SetInAt(value_index, Location::RequiresFpuRegister());
-    locations->SetOut(Location::RequiresFpuRegister());
+    // Only set the `out` register if it's needed. In the void case, we do not use `out`.
+    if (non_void) {
+      locations->SetOut(Location::RequiresFpuRegister());
+    }
   } else {
     // xadd updates the register argument with the old value. ByteRegister required for xaddb.
     locations->SetInAt(value_index, Location::RegisterLocation(EAX));
-    locations->SetOut(Location::RegisterLocation(EAX));
+    // Only set the `out` register if it's needed. In the void case we can still use EAX in the
+    // same manner as it is used an as `in` register.
+    if (non_void) {
+      locations->SetOut(Location::RegisterLocation(EAX));
+    }
   }
 }
 
@@ -4637,7 +4693,9 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke, CodeGeneratorX86* codege
   uint32_t number_of_arguments = invoke->GetNumberOfArguments();
   uint32_t value_index = number_of_arguments - 1;
   DataType::Type type = GetDataTypeFromShorty(invoke, value_index);
-  DCHECK_EQ(type, invoke->GetType());
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == type);
   Location value_loc = locations->InAt(value_index);
   Register temp = locations->GetTemp(0).AsRegister<Register>();
   SlowPathCode* slow_path = new (codegen->GetScopedAllocator()) IntrinsicSlowPathX86(invoke);
@@ -4659,16 +4717,22 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke, CodeGeneratorX86* codege
   switch (type) {
     case DataType::Type::kInt8:
       __ LockXaddb(field_addr, value_loc.AsRegister<ByteRegister>());
-      __ movsxb(locations->Out().AsRegister<Register>(),
-                locations->Out().AsRegister<ByteRegister>());
+      if (non_void) {
+        __ movsxb(locations->Out().AsRegister<Register>(),
+                  locations->Out().AsRegister<ByteRegister>());
+      }
       break;
     case DataType::Type::kInt16:
       __ LockXaddw(field_addr, value_loc.AsRegister<Register>());
-      __ movsxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      if (non_void) {
+        __ movsxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      }
       break;
     case DataType::Type::kUint16:
       __ LockXaddw(field_addr, value_loc.AsRegister<Register>());
-      __ movzxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      if (non_void) {
+        __ movzxw(locations->Out().AsRegister<Register>(), locations->Out().AsRegister<Register>());
+      }
       break;
     case DataType::Type::kInt32:
       __ LockXaddl(field_addr, value_loc.AsRegister<Register>());
@@ -4693,8 +4757,10 @@ static void GenerateVarHandleGetAndAdd(HInvoke* invoke, CodeGeneratorX86* codege
                                 temp);
       __ j(kNotZero, &try_again);
 
-      // The old value is present in EAX.
-      codegen->Move32(locations->Out(), eax);
+      if (non_void) {
+        // The old value is present in EAX.
+        codegen->Move32(locations->Out(), eax);
+      }
       break;
     }
     default:
@@ -4742,7 +4808,8 @@ static void CreateVarHandleGetAndBitwiseOpLocations(HInvoke* invoke, CodeGenerat
 
   // The last argument should be the value we intend to set.
   uint32_t value_index = invoke->GetNumberOfArguments() - 1;
-  if (DataType::Is64BitType(GetDataTypeFromShorty(invoke, value_index))) {
+  DataType::Type value_type = GetDataTypeFromShorty(invoke, value_index);
+  if (DataType::Is64BitType(value_type)) {
     // We avoid the case of an Int64 value because we would need to place it in a register pair.
     // If the slow path is taken, the ParallelMove might fail to move the pair according to the
     // X86DexCallingConvention in case of an overlap (e.g., move the 64 bit value from
@@ -4767,7 +4834,18 @@ static void CreateVarHandleGetAndBitwiseOpLocations(HInvoke* invoke, CodeGenerat
   }
 
   locations->SetInAt(value_index, Location::RegisterOrConstant(invoke->InputAt(value_index)));
-  locations->SetOut(Location::RegisterLocation(EAX));
+
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == value_type);
+  if (non_void) {
+    locations->SetOut(Location::RegisterLocation(EAX));
+  } else {
+    // Used as a temporary, even when we are not outputting it so reserve it. This has to be
+    // requested before the other temporary since there's variable number of temp registers and the
+    // other temp register is expected to be the last one.
+    locations->AddTemp(Location::RegisterLocation(EAX));
+  }
 }
 
 static void GenerateBitwiseOp(HInvoke* invoke,
@@ -4807,7 +4885,9 @@ static void GenerateVarHandleGetAndBitwiseOp(HInvoke* invoke, CodeGeneratorX86* 
   LocationSummary* locations = invoke->GetLocations();
   uint32_t value_index = invoke->GetNumberOfArguments() - 1;
   DataType::Type type = GetDataTypeFromShorty(invoke, value_index);
-  DCHECK_EQ(type, invoke->GetType());
+  DataType::Type return_type = invoke->GetType();
+  const bool non_void = return_type != DataType::Type::kVoid;
+  DCHECK_IMPLIES(non_void, return_type == type);
   Register temp = locations->GetTemp(0).AsRegister<Register>();
   SlowPathCode* slow_path = new (codegen->GetScopedAllocator()) IntrinsicSlowPathX86(invoke);
   codegen->AddSlowPath(slow_path);
@@ -4826,8 +4906,9 @@ static void GenerateVarHandleGetAndBitwiseOp(HInvoke* invoke, CodeGeneratorX86* 
   DCHECK_NE(temp, reference);
   Address field_addr(reference, offset, TIMES_1, 0);
 
-  Register out = locations->Out().AsRegister<Register>();
-  DCHECK_EQ(out, EAX);
+  Location eax_loc = Location::RegisterLocation(EAX);
+  Register eax = eax_loc.AsRegister<Register>();
+  DCHECK_IMPLIES(non_void, locations->Out().Equals(eax_loc));
 
   if (invoke->GetIntrinsic() == Intrinsics::kVarHandleGetAndBitwiseOrRelease ||
       invoke->GetIntrinsic() == Intrinsics::kVarHandleGetAndBitwiseXorRelease ||
@@ -4838,12 +4919,12 @@ static void GenerateVarHandleGetAndBitwiseOp(HInvoke* invoke, CodeGeneratorX86* 
   NearLabel try_again;
   __ Bind(&try_again);
   // Place the expected value in EAX for cmpxchg
-  codegen->LoadFromMemoryNoBarrier(type, locations->Out(), field_addr);
+  codegen->LoadFromMemoryNoBarrier(type, eax_loc, field_addr);
   codegen->Move32(locations->GetTemp(0), locations->InAt(value_index));
-  GenerateBitwiseOp(invoke, codegen, temp, out);
+  GenerateBitwiseOp(invoke, codegen, temp, eax);
   GenPrimitiveLockedCmpxchg(type,
                             codegen,
-                            /* expected_value= */ locations->Out(),
+                            /* expected_value= */ eax_loc,
                             /* new_value= */ locations->GetTemp(0),
                             reference,
                             offset);
