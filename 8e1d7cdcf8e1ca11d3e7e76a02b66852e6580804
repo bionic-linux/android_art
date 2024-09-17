@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62410756_ff7fd842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-17T10:09:30Z",
+      "side": 1,
+      "message": "Thanks Santiago!",
+      "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de2249e3_1c504d29",
@@ -31,6 +48,30 @@
       "writtenOn": "2024-09-17T09:33:37Z",
       "side": 1,
       "message": "Does that mean they are not according to the dex spec? What do we usually do if the file is not according to the spec?",
+      "range": {
+        "startLine": 473,
+        "startChar": 9,
+        "endLine": 473,
+        "endChar": 47
+      },
+      "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0d8899_659f5c40",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-17T10:09:30Z",
+      "side": 1,
+      "message": "Had an offline discussion. This isn\u0027t violating the spec. The spec isn\u0027t quite clear about this but these annotations aren\u0027t meaningful here and are unexpected. We used to log an error even before the CL but this CL makes the error even more explicit rather than the generic unknown dex annotation. When called from VisitEncodedValue we get a nice error message. But given this is called from other places maybe we can just log another error here.",
+      "parentUuid": "de2249e3_1c504d29",
       "range": {
         "startLine": 473,
         "startChar": 9,
