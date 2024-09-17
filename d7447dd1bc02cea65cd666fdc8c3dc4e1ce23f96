@@ -94,6 +94,30 @@
       },
       "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466033f5_c57caf6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-17T09:26:08Z",
+      "side": 1,
+      "message": "If this is happening, looks like you can craft a test case where this is crashing invoking the wrong method?",
+      "parentUuid": "41925676_22850df5",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
