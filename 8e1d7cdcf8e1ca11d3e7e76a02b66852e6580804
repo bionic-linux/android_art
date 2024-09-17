@@ -80,6 +80,30 @@
       },
       "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad2b53f_d99ed5d2",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-17T14:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0d8899_659f5c40",
+      "range": {
+        "startLine": 473,
+        "startChar": 9,
+        "endLine": 473,
+        "endChar": 47
+      },
+      "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
