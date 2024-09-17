@@ -16,6 +16,29 @@
       "message": "Friendly ping",
       "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2249e3_1c504d29",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-17T09:33:37Z",
+      "side": 1,
+      "message": "Does that mean they are not according to the dex spec? What do we usually do if the file is not according to the spec?",
+      "range": {
+        "startLine": 473,
+        "startChar": 9,
+        "endLine": 473,
+        "endChar": 47
+      },
+      "revId": "8e1d7cdcf8e1ca11d3e7e76a02b66852e6580804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
