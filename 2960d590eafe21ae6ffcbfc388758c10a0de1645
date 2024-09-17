@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "923fa5b9_5b28e69a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46655082_91d4cf3d",
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "49ec20d4_662f7a36",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "1. If dex2oat was terminated by a signal:\n\n  Before: Does not log \"dex2oat returned code \u003ccode\u003e\".\n\n  After: Logs \"dex2oat returned code \u003ccode\u003e\".\n  \n  This will be confusing because dex2oat didn\u0027t actually return any code.\n\n2. If dex2oat exited with a non-zero code:\n\n  Before: Returns \"dex2oat returned an unexpected code: \u003ccode\u003e\".\n  \n  After: Returns \"Failed to run dex2oat: \u003cmessage\u003e\".\n  \n  This is problematic because there isn\u0027t an error message in this case. Besides, it will also be confusing because dex2oat actually exited, meaning it was not failed to run.\n  \nI suggest exactly keeping the behavior (no logging in case 1 and no \"Failed to run dex2oat\" in case 2), and only appending `[status\u003d{},exit_code\u003d{},signal\u003d{}]` in both cases.",
       "parentUuid": "75c42fe9_1744d0c0",
+      "range": {
+        "startLine": 1192,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 3
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0f0167_e51cd2f4",
+        "filename": "artd/artd.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cf296c_4211e089",
       "range": {
         "startLine": 1192,
         "startChar": 0,
@@ -427,6 +469,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a436f3d_58aa3343",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Moved the ThreadPoolExecutor inside the Injector as stated in another comment.",
+      "parentUuid": "f85553b4_acc9a6c6",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 56
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ae9a97a_a6f30a0f",
@@ -570,6 +636,30 @@
       "side": 1,
       "message": "It\u0027s better to add a new value.",
       "parentUuid": "c05c45f1_1ff2451f",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ae9bcb_4808556f",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd96486_95dfaf7c",
       "range": {
         "startLine": 279,
         "startChar": 33,

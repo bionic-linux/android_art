@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4702e874_d0c3171c",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8f2890_ac6c723e",
+      "range": {
+        "startLine": 1129,
+        "startChar": 19,
+        "endLine": 1129,
+        "endChar": 43
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1700a4c2_83eff968",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7e6b03_85d92677",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1700a4c2_83eff968",
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33d9811c_5ba2b1c6",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-09-16T10:14:09Z",
       "side": 1,
       "message": "Will it be a good idea to put it in `Injector`?",
+      "range": {
+        "startLine": 147,
+        "startChar": 37,
+        "endLine": 147,
+        "endChar": 60
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8232fa65_36458b98",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d9811c_5ba2b1c6",
       "range": {
         "startLine": 147,
         "startChar": 37,
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39605bc_2aae118b",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00aea29_269fc121",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 33
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac56b89a_b3e0d438",
@@ -100,6 +190,30 @@
       "writtenOn": "2024-09-16T10:14:09Z",
       "side": 1,
       "message": "If you put this in `Injector`, you can construct DexoptHelper with it within `Injector`, rather than having to pass it here.",
+      "range": {
+        "startLine": 389,
+        "startChar": 55,
+        "endLine": 389,
+        "endChar": 78
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a2f876d_80e26b0f",
+        "filename": "libartservice/service/java/com/android/server/art/ArtManagerLocal.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac56b89a_b3e0d438",
       "range": {
         "startLine": 389,
         "startChar": 55,
@@ -156,6 +270,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2940aeae_9e2e3f79",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559c9a8d_0e928106",
+      "range": {
+        "startLine": 81,
+        "startChar": 46,
+        "endLine": 81,
+        "endChar": 69
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05b9c11e_e2fd9932",
@@ -179,6 +317,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c767aeef_9f3c427f",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05b9c11e_e2fd9932",
+      "range": {
+        "startLine": 200,
+        "startChar": 24,
+        "endLine": 200,
+        "endChar": 36
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5712395_dc360737",
@@ -192,6 +354,30 @@
       "writtenOn": "2024-09-16T10:14:09Z",
       "side": 1,
       "message": "As these three fields are usually set altogether, what about defining a record in Dex2OatStatsReporter to hold all three fields so that they can be set at once?",
+      "range": {
+        "startLine": 200,
+        "startChar": 20,
+        "endLine": 202,
+        "endChar": 41
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff1ff65d_f963356c",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5712395_dc360737",
       "range": {
         "startLine": 200,
         "startChar": 20,
@@ -243,6 +429,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b0d0fb_377e3fcd",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc4ba3b_c443b630",
+      "range": {
+        "startLine": 300,
+        "startChar": 28,
+        "endLine": 300,
+        "endChar": 50
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba87db1_339e7f47",
@@ -280,6 +490,30 @@
           ]
         }
       ],
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361a0930_1e3865b8",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba87db1_339e7f47",
+      "range": {
+        "startLine": 330,
+        "startChar": 80,
+        "endLine": 330,
+        "endChar": 81
+      },
       "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -335,6 +569,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e5688c_a558920d",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6adb6fe4_53d48bbb",
+      "range": {
+        "startLine": 331,
+        "startChar": 24,
+        "endLine": 331,
+        "endChar": 68
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110996f3_f1f4501e",
@@ -348,6 +606,30 @@
       "writtenOn": "2024-09-16T10:14:09Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 58
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "551b3944_e6e888b1",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-17T15:09:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110996f3_f1f4501e",
       "range": {
         "startLine": 335,
         "startChar": 0,
