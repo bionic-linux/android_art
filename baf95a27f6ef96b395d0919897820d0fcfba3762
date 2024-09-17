@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a18910ba_960e7e6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-17T18:51:12Z",
+      "side": 1,
+      "message": "General feedback: I wonder if it would be possible to use `locations-\u003eSetOut()` and the company for void methods instead of special-casing them. It would simplify the code a lot. Temp reg allocation in intrinsics is a fragile part of the code which relies on cross-function conventions (request a temporary here under some complex condition ... get it there, make sure the condition is the same) - we should try to simplify it.\n\nI spent a lot of time on b/305868663; it was temporarily put on hold to priorituze riscv64 work, but it\u0027s still relevant.",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1138d046_320165b2",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -36,6 +53,98 @@
         "startChar": 0,
         "endLine": 1361,
         "endChar": 78
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7392487_bd3be26c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-17T18:51:12Z",
+      "side": 1,
+      "message": "It\u0027s a very minor thing, but I find it a bit hard to unwind the inversions in \"methods that don\u0027t return a value\" and \"non_void\", it would be easier to read for me if the comment said \"void methods\" instead (using the same word as the name in the code). Generally I think the fewer inversions the better, but here we cannot use `void` for a name as it\u0027s a keyword.",
+      "range": {
+        "startLine": 1766,
+        "startChar": 2,
+        "endLine": 1766,
+        "endChar": 78
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611b6282_8461e24c",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-17T18:51:12Z",
+      "side": 1,
+      "message": "Nit: I\u0027d shorten this a bit, e.g. `temps_that_mimic_out`, but up to you.",
+      "range": {
+        "startLine": 5263,
+        "startChar": 9,
+        "endLine": 5263,
+        "endChar": 38
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c653351b_49337465",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5270,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-17T18:51:12Z",
+      "side": 1,
+      "message": "Nit: add a local var for this?",
+      "range": {
+        "startLine": 5270,
+        "startChar": 30,
+        "endLine": 5270,
+        "endChar": 55
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b71371_be6ed84d",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5353,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-17T18:51:12Z",
+      "side": 1,
+      "message": "This comment needs to be updated after `out` has been replaced with `result`.",
+      "range": {
+        "startLine": 5353,
+        "startChar": 57,
+        "endLine": 5353,
+        "endChar": 62
       },
       "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
