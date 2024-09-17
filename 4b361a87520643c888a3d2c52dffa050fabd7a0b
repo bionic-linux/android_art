@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c227180_b8c3bb54",
+        "filename": "test/659-unpadded-array/src-art/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1975361
+      },
+      "writtenOn": "2024-09-17T12:16:56Z",
+      "side": 1,
+      "message": "We\u0027ve recently spotted that this function\u0027s code might be optimized out (singleton array which doesn\u0027t escape) if we introduced some changes to the LSE pass position.\n\nCurrently the code below is still there, but it might be worth checking whether the test will work as intended if optimized further.",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4b361a87520643c888a3d2c52dffa050fabd7a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
