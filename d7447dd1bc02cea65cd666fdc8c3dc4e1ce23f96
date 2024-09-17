@@ -118,6 +118,30 @@
       },
       "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a7c138_f374656a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-17T09:40:49Z",
+      "side": 1,
+      "message": "I don\u0027t think so: `FindVirtualMethodForInterface` expects `method` either to be defined in an interface or `java.lang.Object` method. In interface case it has\n```\nif (iftable-\u003eGetInterface(i) \u003d\u003d declaring_class) {\n```\ncheck. So if `method` is defined in a wrong class, `FindVirtualMethodForInterface` returns null.\n\nOr did you mean `FindVirtualMethodForVirtual`?",
+      "parentUuid": "466033f5_c57caf6f",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
