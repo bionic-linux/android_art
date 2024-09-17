@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1138d046_320165b2",
+        "filename": "compiler/optimizing/instruction_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-17T16:48:59Z",
+      "side": 1,
+      "message": "This is the main change. As a result of this, we need to also update the intrinsics to consider the `return_type` being `void`",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1361,
+        "endChar": 78
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
