@@ -58,6 +58,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19dbc1d_c80526ae",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "Similar comments as in intrinsics_arm_vixl.c",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a7392487_bd3be26c",
@@ -76,6 +93,121 @@
         "startChar": 2,
         "endLine": 1766,
         "endChar": 78
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc72c1e_854331ad",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3876,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "invert and call this `is_void`.",
+      "range": {
+        "startLine": 3876,
+        "startChar": 13,
+        "endLine": 3876,
+        "endChar": 21
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328cd6c6_e73015b0",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "Looks like you can drop this, and just always ask for a temp.",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb9f312_c213fd14",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5181,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "can you add some comments here? It\u0027s unclear why you\u0027re looking at the shorty and not the invoke\u0027s type.",
+      "range": {
+        "startLine": 5179,
+        "startChar": 0,
+        "endLine": 5181,
+        "endChar": 71
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ccbce4_93f0e25f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5234,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "avoid double negatives.",
+      "range": {
+        "startLine": 5234,
+        "startChar": 0,
+        "endLine": 5234,
+        "endChar": 18
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4adee3d_ba27eecd",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5260,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "invert, call this `is_void`.",
+      "range": {
+        "startLine": 5260,
+        "startChar": 13,
+        "endLine": 5260,
+        "endChar": 21
       },
       "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -146,6 +278,57 @@
         "endLine": 5353,
         "endChar": 62
       },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a152ed7_989e7ab6",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2948,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "Same comments as the other archs.",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcb8697_f4a9b440",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "Same comment, change to `is_void`.",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8665ca50_f32f218e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:31:26Z",
+      "side": 1,
+      "message": "Change to `is_void`.",
       "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
