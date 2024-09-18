@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb0d242_9dc05b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "Thanks for the review and sorry for the delay in responding to this. We have spent a significant time improving the testing for these patches.",
+      "revId": "21b35bc10d3319c8d0bd4df2dad9a78f8caffc94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

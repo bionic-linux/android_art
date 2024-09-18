@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05352fc_a79d65d0",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "I don\u0027t think that removing this log would be expected as there are cases similar to this in other parts of the compiler such as [here](https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator_arm64.cc;drc\u003d1793c0985d065dd00c0c6ab16af5244f25c4080b;l\u003d122) which also implements all enumerations. I\u0027d like to keep this consistent with other cases if possible.\n\nI\u0027ve also improved the log message here to be a bit clearer.",
+      "parentUuid": "28b7184e_6523d704",
+      "range": {
+        "startLine": 1246,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 12
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd665dc_300876a1",
@@ -77,6 +101,30 @@
       "writtenOn": "2024-07-08T15:51:22Z",
       "side": 1,
       "message": "Line too long",
+      "range": {
+        "startLine": 1577,
+        "startChar": 0,
+        "endLine": 1577,
+        "endChar": 104
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b672296_c76ea23e",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd665dc_300876a1",
       "range": {
         "startLine": 1577,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0171ca08_532fe2a7",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecfaca12_34548811",
+      "range": {
+        "startLine": 1621,
+        "startChar": 0,
+        "endLine": 1621,
+        "endChar": 107
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb0fe7d1_d57724a2",
@@ -133,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcb7de3_30e7ef4b",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1709,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb0fe7d1_d57724a2",
+      "range": {
+        "startLine": 1709,
+        "startChar": 0,
+        "endLine": 1709,
+        "endChar": 101
+      },
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b294d95_dd1d5867",
@@ -146,6 +242,24 @@
       "writtenOn": "2024-07-08T15:51:22Z",
       "side": 1,
       "message": "For completeness, can you add the unsigned below/above cases too? Doing `Integer.compareUnsigned` with \u003d\u003d/!\u003d 1/-1 should do the trick I think",
+      "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d672fab_f52d97de",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:19Z",
+      "side": 1,
+      "message": "I don\u0027t think there is currently a way to make below/above conditions in if statements. `if (Integer.compareUnsigned \u003d\u003d 1)` creates a `HCompare` node which is used by a `HNotEqual` node. Having searched the compiler I also can\u0027t find anything that would generate e.g: a `HBelow` node from a Java condition.\n\nInstead I have added gtest\u0027s to test all combinations of conditions and types for both codegen and loop optimization.",
+      "parentUuid": "4b294d95_dd1d5867",
       "revId": "9af9dd6eab211336067c631693425f9bbe75f7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
