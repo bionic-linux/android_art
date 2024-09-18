@@ -450,6 +450,7 @@ MarkCompact::MarkCompact(Heap* heap)
       uffd_(kFdUnused),
       sigbus_in_progress_count_{kSigbusCounterCompactionDoneMask, kSigbusCounterCompactionDoneMask},
       compacting_(false),
+      young_gen_(false),
       marking_done_(false),
       uffd_initialized_(false),
       clamp_info_map_status_(ClampInfoStatus::kClampInfoNotDone) {
@@ -610,7 +611,7 @@ void MarkCompact::MaybeClampGcStructures() {
   }
 }
 
-void MarkCompact::PrepareCardTableForMarking(bool clear_alloc_space_cards) {
+void MarkCompact::PrepareForMarking(bool pre_marking) {
   TimingLogger::ScopedTiming t(__FUNCTION__, GetTimings());
   accounting::CardTable* const card_table = heap_->GetCardTable();
   // immune_spaces_ is emptied in InitializePhase() before marking starts. This
@@ -618,8 +619,10 @@ void MarkCompact::PrepareCardTableForMarking(bool clear_alloc_space_cards) {
   // once per GC cycle. And when it's done (below), all the immune spaces are
   // added to it. We can never have partially filled immune_spaces_.
   bool update_immune_spaces = immune_spaces_.IsEmpty();
+  DCHECK_IMPLIES(!pre_marking, !update_immune_spaces);
   // Mark all of the spaces we never collect as immune.
   for (const auto& space : GetHeap()->GetContinuousSpaces()) {
+    bool update_card_table = false;
     if (space->GetGcRetentionPolicy() == space::kGcRetentionPolicyNeverCollect ||
         space->GetGcRetentionPolicy() == space::kGcRetentionPolicyFullCollect) {
       CHECK(space->IsZygoteSpace() || space->IsImageSpace());
@@ -642,29 +645,60 @@ void MarkCompact::PrepareCardTableForMarking(bool clear_alloc_space_cards) {
             },
             /* card modified visitor */ VoidFunctor());
       }
-    } else if (clear_alloc_space_cards) {
+    } else if (pre_marking) {
       CHECK(!space->IsZygoteSpace());
       CHECK(!space->IsImageSpace());
-      // The card-table corresponding to bump-pointer and non-moving space can
-      // be cleared, because we are going to traverse all the reachable objects
-      // in these spaces. This card-table will eventually be used to track
-      // mutations while concurrent marking is going on.
-      card_table->ClearCardRange(space->Begin(), space->Limit());
+      if (young_gen_) {
+        update_card_table = true;
+      } else {
+        // The card-table corresponding to bump-pointer and non-moving space can
+        // be cleared, because we are going to traverse all the reachable objects
+        // in these spaces. This card-table will eventually be used to track
+        // mutations while concurrent marking is going on.
+        card_table->ClearCardRange(space->Begin(), space->Limit());
+        if (space == bump_pointer_space_) {
+          moving_space_bitmap_->Clear();
+        }
+      }
       if (space != bump_pointer_space_) {
         CHECK_EQ(space, heap_->GetNonMovingSpace());
+        if (young_gen_) {
+          space->AsContinuousMemMapAllocSpace()->BindLiveToMarkBitmap();
+        }
         non_moving_space_ = space;
         non_moving_space_bitmap_ = space->GetMarkBitmap();
       }
     } else {
-      card_table->ModifyCardsAtomic(
-          space->Begin(),
-          space->End(),
+      update_card_table = true;
+    }
+
+    if (update_card_table) {
+      static_assert(gc::accounting::CardTable::kCardDirty - 1 ==
+                    gc::accounting::CardTable::kCardAged);
+      static_assert(gc::accounting::CardTable::kCardAged - 1 ==
+                    gc::accounting::CardTable::kCardAged2);
+      // TODO (young_gen_): add comment
+      auto card_visitor = (pre_marking || !young_gen_) ?
           [](uint8_t card) {
             return (card == gc::accounting::CardTable::kCardDirty) ?
                        gc::accounting::CardTable::kCardAged :
                        gc::accounting::CardTable::kCardClean;
-          },
-          /* card modified visitor */ VoidFunctor());
+          } :
+          [](uint8_t card) {
+            DCHECK(card != gc::accounting::CardTable::kCardAged2);
+            return (card == gc::accounting::CardTable::kCardClean) ?
+                       gc::accounting::CardTable::kCardClean :
+                       card - 1;
+          };
+
+      card_table->ModifyCardsAtomic(
+          space->Begin(), space->End(), card_visitor, /*card modified visitor=*/VoidFunctor());
+    }
+  }
+  if (pre_marking && young_gen_) {
+    for (const auto& space : GetHeap()->GetDiscontinuousSpaces()) {
+      CHECK(space->IsLargeObjectSpace());
+      space->AsLargeObjectSpace()->CopyLiveToMarked();
     }
   }
 }
@@ -707,10 +741,9 @@ void MarkCompact::InitializePhase() {
   DCHECK_EQ(moving_space_begin_, bump_pointer_space_->Begin());
   from_space_slide_diff_ = from_space_begin_ - moving_space_begin_;
   moving_space_end_ = bump_pointer_space_->Limit();
-  if (black_dense_end_ > moving_space_begin_) {
-    moving_space_bitmap_->Clear();
+  if (!young_gen_) {
+    black_dense_end_ = moving_space_begin_;
   }
-  black_dense_end_ = moving_space_begin_;
   // TODO: Would it suffice to read it once in the constructor, which is called
   // in zygote process?
   pointer_size_ = Runtime::Current()->GetClassLinker()->GetImagePointerSize();
@@ -969,7 +1002,9 @@ bool MarkCompact::PrepareForCompaction() {
 
   size_t black_dense_idx = 0;
   GcCause gc_cause = GetCurrentIteration()->GetGcCause();
-  if (gc_cause != kGcCauseExplicit && gc_cause != kGcCauseCollectorTransition &&
+  if (young_gen_) {
+    // TODO (young_gen_): add comment
+  } else if (gc_cause != kGcCauseExplicit && gc_cause != kGcCauseCollectorTransition &&
       !GetCurrentIteration()->GetClearSoftReferences()) {
     size_t live_bytes = 0, total_bytes = 0;
     size_t aligned_vec_len = RoundUp(vector_len, chunk_info_per_page);
@@ -1191,30 +1226,50 @@ void MarkCompact::ProcessReferences(Thread* self) {
   GetHeap()->GetReferenceProcessor()->ProcessReferences(self, GetTimings());
 }
 
+void MarkCompact::SweepArray(accounting::ObjectStack* obj_arr, bool swap_bitmaps) {
+  TimingLogger::ScopedTiming t("SweepArray", GetTimings());
+  std::vector<space::ContinuousSpace*> sweep_spaces;
+  for (space::ContinuousSpace* space : heap_->GetContinuousSpaces()) {
+    if (!space->IsAllocSpace() ||
+        space == bump_pointer_space_ ||
+        immune_spaces_.ContainsSpace(space) ||
+        space->GetLiveBitmap() == nullptr) {
+      continue;
+    }
+    sweep_spaces.push_back(space);
+  }
+  GarbageCollector::SweepArray(obj_arr, swap_bitmaps, &sweep_spaces);
+}
+
 void MarkCompact::Sweep(bool swap_bitmaps) {
   TimingLogger::ScopedTiming t(__FUNCTION__, GetTimings());
-  // Ensure that nobody inserted objects in the live stack after we swapped the
-  // stacks.
-  CHECK_GE(live_stack_freeze_size_, GetHeap()->GetLiveStack()->Size());
-  {
-    TimingLogger::ScopedTiming t2("MarkAllocStackAsLive", GetTimings());
-    // Mark everything allocated since the last GC as live so that we can sweep
-    // concurrently, knowing that new allocations won't be marked as live.
-    accounting::ObjectStack* live_stack = heap_->GetLiveStack();
-    heap_->MarkAllocStackAsLive(live_stack);
-    live_stack->Reset();
-    DCHECK(mark_stack_->IsEmpty());
-  }
-  for (const auto& space : GetHeap()->GetContinuousSpaces()) {
-    if (space->IsContinuousMemMapAllocSpace() && space != bump_pointer_space_ &&
-        !immune_spaces_.ContainsSpace(space)) {
-      space::ContinuousMemMapAllocSpace* alloc_space = space->AsContinuousMemMapAllocSpace();
-      DCHECK(!alloc_space->IsZygoteSpace());
-      TimingLogger::ScopedTiming split("SweepMallocSpace", GetTimings());
-      RecordFree(alloc_space->Sweep(swap_bitmaps));
+  if (young_gen_) {
+    // Only sweep objects on the live stack.
+    SweepArray(heap_->GetLiveStack(), /*swap_bitmaps=*/false);
+  } else {
+    // Ensure that nobody inserted objects in the live stack after we swapped the
+    // stacks.
+    CHECK_GE(live_stack_freeze_size_, GetHeap()->GetLiveStack()->Size());
+    {
+      TimingLogger::ScopedTiming t2("MarkAllocStackAsLive", GetTimings());
+      // Mark everything allocated since the last GC as live so that we can sweep
+      // concurrently, knowing that new allocations won't be marked as live.
+      accounting::ObjectStack* live_stack = heap_->GetLiveStack();
+      heap_->MarkAllocStackAsLive(live_stack);
+      live_stack->Reset();
+      DCHECK(mark_stack_->IsEmpty());
     }
+    for (const auto& space : GetHeap()->GetContinuousSpaces()) {
+      if (space->IsContinuousMemMapAllocSpace() && space != bump_pointer_space_ &&
+          !immune_spaces_.ContainsSpace(space)) {
+        space::ContinuousMemMapAllocSpace* alloc_space = space->AsContinuousMemMapAllocSpace();
+        DCHECK(!alloc_space->IsZygoteSpace());
+        TimingLogger::ScopedTiming split("SweepMallocSpace", GetTimings());
+        RecordFree(alloc_space->Sweep(swap_bitmaps));
+      }
+    }
+    SweepLargeObjects(swap_bitmaps);
   }
-  SweepLargeObjects(swap_bitmaps);
 }
 
 void MarkCompact::SweepLargeObjects(bool swap_bitmaps) {
@@ -2274,50 +2329,68 @@ void MarkCompact::UpdateNonMovingPage(mirror::Object* first,
                                       ptrdiff_t from_space_diff,
                                       accounting::ContinuousSpaceBitmap* bitmap) {
   DCHECK_LT(reinterpret_cast<uint8_t*>(first), page + gPageSize);
+  mirror::Object* curr_obj = first;
+  uint8_t* from_page = page + from_space_diff;
+  uint8_t* from_page_end = from_page + gPageSize;
+  uintptr_t scan_begin = std::max(reinterpret_cast<uintptr_t>(first) + mirror::kObjectHeaderSize,
+                                  reinterpret_cast<uintptr_t>(page));
   // For every object found in the page, visit the previous object. This ensures
   // that we can visit without checking page-end boundary.
   // Call VisitRefsForCompaction with from-space read-barrier as the klass object and
   // super-class loads require it.
   // TODO: Set kVisitNativeRoots to false once we implement concurrent
   // compaction
-  mirror::Object* curr_obj = first;
-  uint8_t* from_page = page + from_space_diff;
-  uint8_t* from_page_end = from_page + gPageSize;
-  bitmap->VisitMarkedRange(
-      reinterpret_cast<uintptr_t>(first) + mirror::kObjectHeaderSize,
-      reinterpret_cast<uintptr_t>(page + gPageSize),
-      [&](mirror::Object* next_obj) {
-        mirror::Object* from_obj = reinterpret_cast<mirror::Object*>(
-            reinterpret_cast<uint8_t*>(curr_obj) + from_space_diff);
-        if (reinterpret_cast<uint8_t*>(curr_obj) < page) {
-          RefsUpdateVisitor</*kCheckBegin*/ true, /*kCheckEnd*/ false> visitor(
-              this, from_obj, from_page, from_page_end);
-          MemberOffset begin_offset(page - reinterpret_cast<uint8_t*>(curr_obj));
-          // Native roots shouldn't be visited as they are done when this
-          // object's beginning was visited in the preceding page.
-          from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false, /*kVisitNativeRoots*/ false>(
-              visitor, begin_offset, MemberOffset(-1));
-        } else {
-          RefsUpdateVisitor</*kCheckBegin*/ false, /*kCheckEnd*/ false> visitor(
-              this, from_obj, from_page, from_page_end);
-          from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false>(
-              visitor, MemberOffset(0), MemberOffset(-1));
-        }
-        curr_obj = next_obj;
-      });
+  auto visitor = [&](mirror::Object* next_obj) {
+    if (curr_obj != nullptr) {
+      mirror::Object* from_obj = reinterpret_cast<mirror::Object*>(
+          reinterpret_cast<uint8_t*>(curr_obj) + from_space_diff);
+      if (reinterpret_cast<uint8_t*>(curr_obj) < page) {
+        RefsUpdateVisitor</*kCheckBegin*/ true, /*kCheckEnd*/ false> visitor(
+            this, from_obj, from_page, from_page_end);
+        MemberOffset begin_offset(page - reinterpret_cast<uint8_t*>(curr_obj));
+        // Native roots shouldn't be visited as they are done when this
+        // object's beginning was visited in the preceding page.
+        from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false, /*kVisitNativeRoots*/ false>(
+            visitor, begin_offset, MemberOffset(-1));
+      } else {
+        RefsUpdateVisitor</*kCheckBegin*/ false, /*kCheckEnd*/ false> visitor(
+            this, from_obj, from_page, from_page_end);
+        from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false>(
+            visitor, MemberOffset(0), MemberOffset(-1));
+      }
+    }
+    curr_obj = next_obj;
+  };
 
-  mirror::Object* from_obj =
-      reinterpret_cast<mirror::Object*>(reinterpret_cast<uint8_t*>(curr_obj) + from_space_diff);
-  MemberOffset end_offset(page + gPageSize - reinterpret_cast<uint8_t*>(curr_obj));
-  if (reinterpret_cast<uint8_t*>(curr_obj) < page) {
-    RefsUpdateVisitor</*kCheckBegin*/ true, /*kCheckEnd*/ true> visitor(
-        this, from_obj, from_page, from_page_end);
-    from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false, /*kVisitNativeRoots*/ false>(
-        visitor, MemberOffset(page - reinterpret_cast<uint8_t*>(curr_obj)), end_offset);
+  if (young_gen_) {
+    accounting::CardTable* card_table = heap_->GetCardTable();
+    if (card_table->IsClean(first) || !bitmap->Test(first)) {
+      curr_obj = nullptr;
+    }
+    card_table->Scan</*kClearCard=*/false>(bitmap,
+                                           scan_begin,
+                                           reinterpret_cast<uintptr_t>(page + gPageSize),
+                                           visitor,
+                                           accounting::CardTable::kCardAged2);
   } else {
-    RefsUpdateVisitor</*kCheckBegin*/ false, /*kCheckEnd*/ true> visitor(
-        this, from_obj, from_page, from_page_end);
-    from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false>(visitor, MemberOffset(0), end_offset);
+    bitmap->VisitMarkedRange(scan_begin, reinterpret_cast<uintptr_t>(page + gPageSize), visitor);
+  }
+
+  if (curr_obj != nullptr) {
+    mirror::Object* from_obj =
+        reinterpret_cast<mirror::Object*>(reinterpret_cast<uint8_t*>(curr_obj) + from_space_diff);
+    MemberOffset end_offset(page + gPageSize - reinterpret_cast<uint8_t*>(curr_obj));
+    if (reinterpret_cast<uint8_t*>(curr_obj) < page) {
+      RefsUpdateVisitor</*kCheckBegin*/ true, /*kCheckEnd*/ true> visitor(
+          this, from_obj, from_page, from_page_end);
+      from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false, /*kVisitNativeRoots*/ false>(
+          visitor, MemberOffset(page - reinterpret_cast<uint8_t*>(curr_obj)), end_offset);
+    } else {
+      RefsUpdateVisitor</*kCheckBegin*/ false, /*kCheckEnd*/ true> visitor(
+          this, from_obj, from_page, from_page_end);
+      from_obj->VisitRefsForCompaction</*kFetchObjSize*/ false>(
+          visitor, MemberOffset(0), end_offset);
+    }
   }
 }
 
@@ -2933,7 +3006,8 @@ void MarkCompact::CompactionPause() {
 
     int32_t freed_bytes = black_objs_slide_diff_;
     bump_pointer_space_->RecordFree(freed_objects_, freed_bytes);
-    RecordFree(ObjectBytePair(freed_objects_, freed_bytes));
+    GarbageCollector* gc = young_gen_ ? young_cmc_gc_ : this;
+    gc->RecordFree(ObjectBytePair(freed_objects_, freed_bytes));
   } else {
     DCHECK_EQ(compaction_buffer_counter_.load(std::memory_order_relaxed), 1);
   }
@@ -3597,7 +3671,8 @@ void MarkCompact::CompactionPhase() {
   {
     int32_t freed_bytes = black_objs_slide_diff_;
     bump_pointer_space_->RecordFree(freed_objects_, freed_bytes);
-    RecordFree(ObjectBytePair(freed_objects_, freed_bytes));
+    GarbageCollector* gc = young_gen_ ? young_cmc_gc_ : this;
+    gc->RecordFree(ObjectBytePair(freed_objects_, freed_bytes));
   }
 
   CompactMovingSpace<kCopyMode>(compaction_buffers_map_.Begin());
@@ -3851,12 +3926,25 @@ void MarkCompact::ScanDirtyObjects(bool paused, uint8_t minimum_age) {
       name = paused ? "(Paused)ScanGrayZygoteSpaceObjects" : "ScanGrayZygoteSpaceObjects";
       break;
     case space::kGcRetentionPolicyAlwaysCollect:
+      DCHECK(space == bump_pointer_space_ || space == non_moving_space_);
       name = paused ? "(Paused)ScanGrayAllocSpaceObjects" : "ScanGrayAllocSpaceObjects";
       break;
     }
     TimingLogger::ScopedTiming t(name, GetTimings());
-    card_table->Scan</*kClearCard*/ false>(
-        space->GetMarkBitmap(), space->Begin(), space->End(), ScanObjectVisitor(this), minimum_age);
+    auto mod_visitor = (paused && young_gen_ &&
+                        space->GetGcRetentionPolicy() == space::kGcRetentionPolicyAlwaysCollect) ?
+        [](uint8_t* card, uint8_t cur_val) {
+          DCHECK_EQ(cur_val, accounting::CardTable::kCardDirty);
+          *card = accounting::CardTable::kCardAged;
+        } :
+        VoidFunctor();
+
+    card_table->Scan</*kClearCard=*/false>(space->GetMarkBitmap(),
+                                           space->Begin(),
+                                           space->End(),
+                                           ScanObjectVisitor(this),
+                                           minimum_age,
+                                           mod_visitor);
   }
 }
 
@@ -3883,7 +3971,7 @@ void MarkCompact::PreCleanCards() {
   // Age the card-table before thread stack scanning checkpoint in MarkRoots()
   // as it ensures that there are no in-progress write barriers which started
   // prior to aging the card-table.
-  PrepareCardTableForMarking(/*clear_alloc_space_cards*/ false);
+  PrepareForMarking(/*pre_marking=*/false);
   MarkRoots(static_cast<VisitRootFlags>(kVisitRootFlagClearRootLog | kVisitRootFlagNewRoots));
   RecursiveMarkDirtyObjects(/*paused*/ false, accounting::CardTable::kCardDirty - 1);
 }
@@ -3905,7 +3993,7 @@ void MarkCompact::MarkingPhase() {
   DCHECK_EQ(thread_running_gc_, Thread::Current());
   WriterMutexLock mu(thread_running_gc_, *Locks::heap_bitmap_lock_);
   MaybeClampGcStructures();
-  PrepareCardTableForMarking(/*clear_alloc_space_cards*/ true);
+  PrepareForMarking(/*pre_marking=*/true);
   MarkZygoteLargeObjects();
   MarkRoots(
         static_cast<VisitRootFlags>(kVisitRootFlagAllRoots | kVisitRootFlagStartLoggingNewRoots));
@@ -4059,6 +4147,8 @@ inline bool MarkCompact::MarkObjectNonNullNoPush(mirror::Object* obj,
   // We expect most of the referenes to be in bump-pointer space, so try that
   // first to keep the cost of this function minimal.
   if (LIKELY(HasAddress(obj))) {
+    // TODO (young_gen_): add an optimization to see if obj is in old-gen then
+    // just return without accessing bitmap
     return kParallel ? !moving_space_bitmap_->AtomicTestAndSet(obj)
                      : !moving_space_bitmap_->Set(obj);
   } else if (non_moving_space_bitmap_->HasAddress(obj)) {
