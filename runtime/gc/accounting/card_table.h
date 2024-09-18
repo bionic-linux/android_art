@@ -21,6 +21,7 @@
 
 #include "base/locks.h"
 #include "base/mem_map.h"
+#include "base/utils.h"
 #include "runtime_globals.h"
 
 namespace art HIDDEN {
@@ -51,6 +52,8 @@ class CardTable {
   static constexpr uint8_t kCardClean = 0x0;
   static constexpr uint8_t kCardDirty = 0x70;
   static constexpr uint8_t kCardAged = kCardDirty - 1;
+  // Currently only used by CMC.
+  static constexpr uint8_t kCardAged2 = kCardAged - 1;
 
   static CardTable* Create(const uint8_t* heap_begin, size_t heap_capacity);
   ~CardTable();
@@ -114,16 +117,30 @@ class CardTable {
                          const Visitor& visitor,
                          const ModifiedVisitor& modified);
 
-  // For every dirty at least minumum age between begin and end invoke the visitor with the
-  // specified argument. Returns how many cards the visitor was run on.
+  // For every dirty (at least minimum age) card between begin and end invoke
+  // bitmap's VisitMarkedRange() to invoke 'visitor' on every object in the
+  // card. Calls 'mod_visitor' for each such card in case the caller wants to
+  // modify the value. Returns how many cards the visitor was run on.
+  // NOTE: 'scan_begin' and 'scan_end' are aligned to card-size so 'visitor' may
+  // get called on object(s) outside [scan_begin, scan_end).
+  template <bool kClearCard, typename Visitor, typename ModifyVisitor>
+  size_t Scan(SpaceBitmap<kObjectAlignment>* bitmap,
+              uint8_t* scan_begin,
+              uint8_t* scan_end,
+              const Visitor& visitor,
+              const ModifyVisitor& mod_visitor,
+              const uint8_t minimum_age) REQUIRES(Locks::heap_bitmap_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   template <bool kClearCard, typename Visitor>
   size_t Scan(SpaceBitmap<kObjectAlignment>* bitmap,
               uint8_t* scan_begin,
               uint8_t* scan_end,
               const Visitor& visitor,
-              const uint8_t minimum_age = kCardDirty)
-      REQUIRES(Locks::heap_bitmap_lock_)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+              const uint8_t minimum_age = kCardDirty) REQUIRES(Locks::heap_bitmap_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    return Scan<kClearCard>(bitmap, scan_begin, scan_end, visitor, VoidFunctor(), minimum_age);
+  }
 
   // Assertion used to check the given address is covered by the card table
   void CheckAddrIsInCardTable(const uint8_t* addr) const;
@@ -169,7 +186,8 @@ class CardTable {
 class AgeCardVisitor {
  public:
   uint8_t operator()(uint8_t card) const {
-    return (card == accounting::CardTable::kCardDirty) ? card - 1 : 0;
+    return (card == accounting::CardTable::kCardDirty) ? accounting::CardTable::kCardAged
+                                                       : accounting::CardTable::kCardClean;
   }
 };
 
