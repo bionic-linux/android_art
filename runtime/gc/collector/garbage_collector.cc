@@ -344,7 +344,7 @@ void GarbageCollector::SweepArray(accounting::ObjectStack* allocations,
             freed.bytes += alloc_space->Free(self, obj);
           }
         }
-      } else {
+      } else if (obj != nullptr) {
         (out++)->Assign(obj);
       }
     }
