@@ -166,6 +166,30 @@
       },
       "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2242be_c93f9816",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-18T11:21:57Z",
+      "side": 1,
+      "message": "I am not sure how to interpret current comment [1]\n\n```\n  // Given a method implemented by this class but potentially from a super class, return the\n  // specific implementation method for this class.\n```\n\nCurrent implementation already has argument validation [2] so I added more.\n\n\u003e You want the callers to check that they don\u0027t pass unrelated methods/classes ?\n\nWe can\u0027t enforce that. Should these methods just return null for unrelated methods?\n\n[1] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/mirror/class.h;l\u003d915;drc\u003d6f40f3867459b66ec315dd4f70f4474171065aab\n\n[2] https://source.corp.google.com/h/android/platform/superproject/main/+/main:art/runtime/mirror/class-inl.h;l\u003d598;drc\u003d75e123b2850ac20123351341d7b23400fed229af",
+      "parentUuid": "1de859bb_c202f7b2",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
