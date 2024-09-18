@@ -278,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f10e1af_d59d80b0",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T16:07:52Z",
+      "side": 1,
+      "message": "If we do that, then we would have an extra move from the temp to `out`. If we do it in this manner, we can save that operation and store the result directly in `out`.",
+      "parentUuid": "4cd7a5d4_bda092db",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb9f312_c213fd14",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 3
