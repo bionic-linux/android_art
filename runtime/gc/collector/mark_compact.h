@@ -25,6 +25,7 @@
 
 #include "barrier.h"
 #include "base/atomic.h"
+#include "base/bit_vector.h"
 #include "base/gc_visited_arena_pool.h"
 #include "base/macros.h"
 #include "base/mutex.h"
@@ -148,6 +149,10 @@ class MarkCompact final : public GarbageCollector {
   // Add linear-alloc space data when a new space is added to
   // GcVisitedArenaPool, which mostly happens only once.
   void AddLinearAllocSpaceData(uint8_t* begin, size_t len);
+
+  // Called by Heap::PreZygoteFork() to clear mark-bitmap of the moving-space
+  // (as it's empty) and reset generational heap markers.
+  void PreZygoteFork();
 
   // In copy-mode of userfaultfd, we don't need to reach a 'processed' state as
   // it's given that processing thread also copies the page, thereby mapping it.
@@ -275,10 +280,10 @@ class MarkCompact final : public GarbageCollector {
       REQUIRES(!Locks::heap_bitmap_lock_);
   // Update the reference at given offset in the given object with post-compact
   // address. [begin, end) is moving-space range.
-  ALWAYS_INLINE void UpdateRef(mirror::Object* obj,
-                               MemberOffset offset,
-                               uint8_t* begin,
-                               uint8_t* end) REQUIRES_SHARED(Locks::mutator_lock_);
+  ALWAYS_INLINE mirror::Object* UpdateRef(mirror::Object* obj,
+                                          MemberOffset offset,
+                                          uint8_t* begin,
+                                          uint8_t* end) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Verify that the gc-root is updated only once. Returns false if the update
   // shouldn't be done.
@@ -288,15 +293,15 @@ class MarkCompact final : public GarbageCollector {
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Update the given root with post-compact address. [begin, end) is
   // moving-space range.
-  ALWAYS_INLINE void UpdateRoot(mirror::CompressedReference<mirror::Object>* root,
-                                uint8_t* begin,
-                                uint8_t* end,
-                                const RootInfo& info = RootInfo(RootType::kRootUnknown))
+  ALWAYS_INLINE mirror::Object* UpdateRoot(mirror::CompressedReference<mirror::Object>* root,
+                                           uint8_t* begin,
+                                           uint8_t* end,
+                                           const RootInfo& info = RootInfo(RootType::kRootUnknown))
       REQUIRES_SHARED(Locks::mutator_lock_);
-  ALWAYS_INLINE void UpdateRoot(mirror::Object** root,
-                                uint8_t* begin,
-                                uint8_t* end,
-                                const RootInfo& info = RootInfo(RootType::kRootUnknown))
+  ALWAYS_INLINE mirror::Object* UpdateRoot(mirror::Object** root,
+                                           uint8_t* begin,
+                                           uint8_t* end,
+                                           const RootInfo& info = RootInfo(RootType::kRootUnknown))
       REQUIRES_SHARED(Locks::mutator_lock_);
   // Given the pre-compact address, the function returns the post-compact
   // address of the given object. [begin, end) is moving-space range.
@@ -316,10 +321,11 @@ class MarkCompact final : public GarbageCollector {
   // GC cycle.
   ALWAYS_INLINE mirror::Object* PostCompactBlackObjAddr(mirror::Object* old_ref) const
       REQUIRES_SHARED(Locks::mutator_lock_);
+  // TODO (young_gen_): update the comment
   // Clears (for alloc spaces in the beginning of marking phase) or ages the
   // card table. Also, identifies immune spaces and mark bitmap.
-  void PrepareCardTableForMarking(bool clear_alloc_space_cards)
-      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_);
+  void PrepareForMarking(bool pre_marking) REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(Locks::heap_bitmap_lock_);
 
   // Perform one last round of marking, identifying roots from dirty cards
   // during a stop-the-world (STW) pause.
@@ -340,8 +346,12 @@ class MarkCompact final : public GarbageCollector {
   // Then update the references within the copied objects. The boundary objects are
   // partially updated such that only the references that lie in the page are updated.
   // This is necessary to avoid cascading userfaults.
-  void CompactPage(mirror::Object* obj, uint32_t offset, uint8_t* addr, bool needs_memset_zero)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+  template <bool kSetupForGenerational>
+  void CompactPage(mirror::Object* obj,
+                   uint32_t offset,
+                   uint8_t* addr,
+                   uint8_t* to_space_addr,
+                   bool needs_memset_zero) REQUIRES_SHARED(Locks::mutator_lock_);
   // Compact the bump-pointer space. Pass page that should be used as buffer for
   // userfaultfd.
   template <int kMode>
@@ -359,11 +369,12 @@ class MarkCompact final : public GarbageCollector {
 
   // Update all the objects in the given non-moving page. 'first' object
   // could have started in some preceding page.
+  template <bool kSetupForGenerational>
   void UpdateNonMovingPage(mirror::Object* first,
                            uint8_t* page,
                            ptrdiff_t from_space_diff,
                            accounting::ContinuousSpaceBitmap* bitmap)
-      REQUIRES_SHARED(Locks::mutator_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_) NO_THREAD_SAFETY_ANALYSIS;
   // Update all the references in the non-moving space.
   void UpdateNonMovingSpace() REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -595,6 +606,12 @@ class MarkCompact final : public GarbageCollector {
   void UpdateClassTableClasses(Runtime* runtime, bool immune_class_table_only)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void SweepArray(accounting::ObjectStack* obj_arr, bool swap_bitmaps)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_);
+
+  void SetBitForMidToOldPromotion(uint8_t* obj);
+  void ScanOldGenObjects() REQUIRES(Locks::heap_bitmap_lock_) REQUIRES_SHARED(Locks::mutator_lock_);
+
   // For checkpoints
   Barrier gc_barrier_;
   // Every object inside the immune spaces is assumed to be marked.
@@ -668,6 +685,13 @@ class MarkCompact final : public GarbageCollector {
   // either at the pair whose class is lower than the first page to be freed, or at the
   // pair whose object is not yet compacted.
   ClassAfterObjectMap::const_reverse_iterator class_after_obj_iter_;
+
+  // Bit-vector to store bits for objects which are promoted from mid-gen to
+  // old-gen during compaction. Later in FinishPhase() it's copied into
+  // mark-bitmap of moving-space.
+  std::unique_ptr<BitVector> mid_to_old_promo_bit_vec_;
+  GarbageCollector* young_cmc_gc_;
+
   // Used by FreeFromSpacePages() for maintaining markers in the moving space for
   // how far the pages have been reclaimed (madvised) and checked.
   //
@@ -745,7 +769,11 @@ class MarkCompact final : public GarbageCollector {
   // Otherwise, set to a page-aligned address such that [moving_space_begin_,
   // black_dense_end_) is considered to be densely populated with reachable
   // objects and hence is not compacted.
-  uint8_t* black_dense_end_;
+  union {
+    uint8_t* black_dense_end_;
+    uint8_t* old_gen_end_;
+  };
+  uint8_t* mid_gen_end_;
   // moving-space's end pointer at the marking pause. All allocations beyond
   // this will be considered black in the current GC cycle. Aligned up to page
   // size.
@@ -791,6 +819,9 @@ class MarkCompact final : public GarbageCollector {
   std::atomic<uint16_t> compaction_buffer_counter_;
   // True while compacting.
   bool compacting_;
+  // Set to true when doing young gen collection.
+  bool young_gen_;
+  const bool use_generational_;
   // Set to true in MarkingPause() to indicate when allocation_stack_ should be
   // checked in IsMarked() for black allocations.
   bool marking_done_;
@@ -813,7 +844,8 @@ class MarkCompact final : public GarbageCollector {
   template <size_t kBufferSize>
   class ThreadRootsVisitor;
   class RefFieldsVisitor;
-  template <bool kCheckBegin, bool kCheckEnd> class RefsUpdateVisitor;
+  template <bool kCheckBegin, bool kCheckEnd, bool kDirtyOldToMid = false>
+  class RefsUpdateVisitor;
   class ArenaPoolPageUpdater;
   class ClassLoaderRootsUpdater;
   class LinearAllocPageUpdater;
