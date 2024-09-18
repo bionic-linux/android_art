@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fc9cd3_39e88b06",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T16:55:14Z",
+      "side": 1,
+      "message": "As the aidl interface is a bridge between artd and Java, what we want here is things that make sense on both sides. Therefore, please avoid mentioning `ExecResult` here, as it\u0027s only on the native side. Instead, please mention the statsd proto enum.\n\nHere and below.",
+      "range": {
+        "startLine": 51,
+        "startChar": 63,
+        "endLine": 51,
+        "endChar": 80
+      },
+      "revId": "9878f794e98cc6b4663a90d36a8a2559e83f2395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952ff145_8477ddd7",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T16:55:14Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t mean to put it here 😂. I was thinking putting it on the `dexopt` method in `IArtd.aidl`, as that\u0027s where the exception is thrown.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "9878f794e98cc6b4663a90d36a8a2559e83f2395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
