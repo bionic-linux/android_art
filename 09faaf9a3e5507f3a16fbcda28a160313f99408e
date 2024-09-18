@@ -16,6 +16,29 @@
       "message": "Please review the PS1-\u003ePS2 diff.",
       "revId": "09faaf9a3e5507f3a16fbcda28a160313f99408e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d978c8ca_ccafabc7",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-18T00:42:13Z",
+      "side": 1,
+      "message": "I found this confusing, since the meaning of main_end and especially pos seems to change over time. Is there a reason to update pos here at all? Without that pos is just the end of the black-dense region, and you\u0027re growing the main segment.",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 21
+      },
+      "revId": "09faaf9a3e5507f3a16fbcda28a160313f99408e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
