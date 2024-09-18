@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a95585a_6c184dbe",
+        "filename": "libdexfile/dex/dex_file.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-18T12:54:03Z",
+      "side": 0,
+      "message": "I\u0027ve removed these because they\u0027d only return hardcoded constants. It may be worth retaining them in a different form though - if we want to allow for another \"internal\" dex format in the future then the checks on them could be worth keeping. For that they could be recast to `IsInternalDexFile` and `IsStandardDexFile` instead. @dsrbecky@google.com, WDYT?",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 3
+      },
+      "revId": "d6ac15bca794a732a3e076680aed21a5b6e58a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b7590b_92ad4a21",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-18T12:54:03Z",
+      "side": 0,
+      "message": "Dropping this makes `ADexFile_create` reject cdex files with `ADEXFILE_ERROR_INVALID_HEADER`, which causes some simpleperf tests to [fail](http://android-build/test_investigate/invocation/I58800010317282283/test/TR68329447776166796/?blocking\u003dblocking\u0026status\u003dnone), which is due to `testdata/base.vdex` containing cdex.\n\n@yabinc@google.com, you added it [here](https://r.android.com/664058). Is the intention to test cdex?\n\nDo we have any compat considerations to take into account that require us to continue supporting cdex files to some extent? The ART runtime can no longer load them to actually execute anything.",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
