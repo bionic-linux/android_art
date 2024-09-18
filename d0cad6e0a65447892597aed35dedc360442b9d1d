@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a447d0_c39475c2",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da7fab7_96215825",
+      "range": {
+        "startLine": 1278,
+        "startChar": 45,
+        "endLine": 1278,
+        "endChar": 47
+      },
+      "revId": "d0cad6e0a65447892597aed35dedc360442b9d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc66783a_ee30359b",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-07-08T16:19:30Z",
       "side": 1,
       "message": "Is this hitting the `IsNarrowerOperands` case?\n\nCan we add tests explicitly testing that path? e.g. int/short",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "d0cad6e0a65447892597aed35dedc360442b9d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6152bdfb_29a8562c",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T14:27:26Z",
+      "side": 1,
+      "message": "No as all of these \"Simple\u003ctype\u003e\" tests, test comparisons of the same type against each other. For example: in this case `MAGIC_VALUE_C` is constructed as a `LongConstant`. Note: there are already corresponding cases for `SimpleInt`, `SimpleShort`, etc...\n\n`IsNarrowerOperands` is a complicated function that we don\u0027t have great knowledge on and is under-tested. Because of this I have kept the usage of `IsNarrowerOperands` the same as before and have only expanded vectorization for the simple cases where both operands are of the exact same type. We are aware that this testing is lacking and have ambitions to expand unit testing via gtests in the future however I don\u0027t see this as in scope for this patch.",
+      "parentUuid": "fc66783a_ee30359b",
       "range": {
         "startLine": 192,
         "startChar": 0,
