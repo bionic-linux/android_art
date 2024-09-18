@@ -319,6 +319,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c95ef40_ec5480c7",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T14:50:58Z",
+      "side": 1,
+      "message": "In theory yes, although UNKNOWN does not show up in any of the dashboards I\u0027ve looked at - I will double check whether it starts to show up once we start seeing dex2oat data coming in.",
+      "parentUuid": "3ee68ce5_cb87af0f",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "559c9a8d_0e928106",

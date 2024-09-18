@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c83ebf_b42ad631",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T14:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc31fc00_df4d4dd7",
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59bb6eb9_6f3a75a8",
@@ -67,6 +85,24 @@
           ]
         }
       ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b4d2a9_063e0768",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T14:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59bb6eb9_6f3a75a8",
       "revId": "490ae8518f55f710929935711745ba3316b36de0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -106,6 +142,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "180c778a_b4b9d9cb",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T14:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb60450_3d0b2354",
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d196d1_a74f53a4",
@@ -137,6 +191,24 @@
           ]
         }
       ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8fa9f22_f68365fe",
+        "filename": "libartservice/service/java/com/android/server/art/SecondaryDexopter.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T14:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d196d1_a74f53a4",
       "revId": "490ae8518f55f710929935711745ba3316b36de0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
