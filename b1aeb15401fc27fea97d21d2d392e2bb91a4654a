@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94efbfdb_e894f6d6",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 0,
+      "message": "Thank you for the cleanup!",
+      "revId": "b1aeb15401fc27fea97d21d2d392e2bb91a4654a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

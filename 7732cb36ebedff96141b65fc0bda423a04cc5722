@@ -1,0 +1,436 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28a0ade_efb9a248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Good job!",
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4377339_183e98ca",
+        "filename": "artd/artd.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "result.exit_code",
+      "range": {
+        "startLine": 1200,
+        "startChar": 65,
+        "endLine": 1200,
+        "endChar": 74
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4244b04_eb3b507b",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Can be simplified to `Return(Error())`.\n\nWe use a lambda only if there are more things to do.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 72,
+        "endLine": 1120,
+        "endChar": 3
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd108e99_5f1a3cbc",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "This comment needs update. This class is no longer a runnable, and the \"asynchronous\" part is not in this class",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 70
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c6a56802_0873e648",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+              "range": {
+                "startLine": 28,
+                "startChar": 0,
+                "endLine": 29,
+                "endChar": 0
+              },
+              "replacement": " * A class to report dex2oat metrics to StatsD.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799a43ac_65618778",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "@NonNull",
+      "range": {
+        "startLine": 36,
+        "startChar": 67,
+        "endLine": 36,
+        "endChar": 80
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "b8f7cbe7_7023290a",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+              "range": {
+                "startLine": 36,
+                "startChar": 0,
+                "endLine": 37,
+                "endChar": 0
+              },
+              "replacement": "            @NonNull DetailedDexInfo dexInfo, @NonNull String isa, @NonNull Dex2OatResult result,\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6394ec2_6a070d7b",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Let\u0027s cast to int after doing the division, to reduce the chance of data loss",
+      "range": {
+        "startLine": 42,
+        "startChar": 69,
+        "endLine": 42,
+        "endChar": 89
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "dac74e7a_1a34c484",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+              "range": {
+                "startLine": 42,
+                "startChar": 0,
+                "endLine": 43,
+                "endChar": 0
+              },
+              "replacement": "                result.status, result.exitCode, result.signal, (int) (artifactsSize / 1024),\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eaee107_05e45f4a",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "X86_64.",
+      "range": {
+        "startLine": 127,
+        "startChar": 80,
+        "endLine": 127,
+        "endChar": 83
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "52e3eee5_6aa6ac72",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+              "range": {
+                "startLine": 127,
+                "startChar": 0,
+                "endLine": 128,
+                "endChar": 0
+              },
+              "replacement": "            case \"x86_64\" -\u003e ArtStatsLog.ART_DATUM_DELTA_REPORTED__ISA__ART_ISA_X86_64;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f28eec_29f1ac55",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Please add argument comments.",
+      "range": {
+        "startLine": 167,
+        "startChar": 20,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5052cf_cd4d36e7",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "I suggest using `Executor`, in case we use a different type of executor in the future.\n\nHere and in other places",
+      "range": {
+        "startLine": 328,
+        "startChar": 31,
+        "endLine": 328,
+        "endChar": 49
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "53e29f89_de5f9b7e",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 74,
+                "startChar": 0,
+                "endLine": 75,
+                "endChar": 0
+              },
+              "replacement": "            @NonNull Executor reporterExecutor) {\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 328,
+                "startChar": 0,
+                "endLine": 329,
+                "endChar": 0
+              },
+              "replacement": "        @NonNull private final Executor mReporterExecutor;\n"
+            },
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 331,
+                "startChar": 0,
+                "endLine": 332,
+                "endChar": 0
+              },
+              "replacement": "                @NonNull Executor reporterExecutor) {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce84350_0be6d509",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Use `-?\\\\d+` to avoid exception on Integer.parseInt",
+      "range": {
+        "startLine": 297,
+        "startChar": 60,
+        "endLine": 297,
+        "endChar": 62
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "38ea9203_39fa639b",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dexopter.java",
+              "range": {
+                "startLine": 297,
+                "startChar": 0,
+                "endLine": 298,
+                "endChar": 0
+              },
+              "replacement": "                                Pattern.compile(\"\\\\[status\u003d(-?\\\\d+),exit_code\u003d(-?\\\\d+),signal\u003d(-?\"\n                                        + \"\\\\d+)]\");\n"
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e717a27_bfe41ec6",
+        "filename": "libartservice/service/javatests/com/android/server/art/DexoptHelperTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "No longer needed?",
+      "fixSuggestions": [
+        {
+          "fixId": "0e60adab_61630d61",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/DexoptHelperTest.java",
+              "range": {
+                "startLine": 73,
+                "startChar": 0,
+                "endLine": 74,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae4a27d_1cc22ccd",
+        "filename": "libartservice/service/javatests/com/android/server/art/PrimaryDexopterParameterizedTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Do you need this, since the method is already mocked in the base class?",
+      "fixSuggestions": [
+        {
+          "fixId": "854c4881_8adeb43f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/javatests/com/android/server/art/PrimaryDexopterParameterizedTest.java",
+              "range": {
+                "startLine": 232,
+                "startChar": 0,
+                "endLine": 233,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

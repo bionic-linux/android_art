@@ -266,6 +266,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d298af_251a257e",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "4b0d482f_df1c4377",
+      "range": {
+        "startLine": 319,
+        "startChar": 44,
+        "endLine": 319,
+        "endChar": 73
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "542a93aa_f6d13d3b",
@@ -412,6 +436,30 @@
       "side": 1,
       "message": "Please add a comment about the parsable part in the non-fatal error message, including the format, the purpose, and that the status field is not interpretable.",
       "parentUuid": "27c1303e_7df25d91",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f48917a_97e3282a",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "I thought about this again. Actually, the statsd enum is accessible in Java, right? In this case, it is interpretable. You can say the value of the status field is one of the values in the status enum.",
+      "parentUuid": "e6df6838_cbceed61",
       "range": {
         "startLine": 48,
         "startChar": 4,
@@ -742,6 +790,30 @@
       "side": 1,
       "message": "I had gone with the Runnable interface rather than the lambda solution because variables used in lambdas need to be \"effectively final\" and many of these arguments aren\u0027t (because they are initialised to 0 before the try-catch-finally block and reassigned inside it) - I made the change anyway to discuss which solution we like better by seeing how it fits in the code.",
       "parentUuid": "bcdee696_0408b8a7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964dad69_f6582529",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Looks like it\u0027s not too much of a pain now.",
+      "parentUuid": "679dee30_fceca947",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -1101,6 +1173,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da51c07_f609fcd3",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Ah, okay, don\u0027t bother then.",
+      "parentUuid": "30348958_3eb935cd",
+      "range": {
+        "startLine": 194,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 100
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0adf031e_ff066bf9",
@@ -1138,6 +1234,30 @@
       "side": 1,
       "message": "Apparently pattern matching is not enabled in Java 17:\n```\nart/libartservice/service/java/com/android/server/art/ReportMetricsTask.java:175: error: patterns in switch statements are not supported in -source 17\n            case PrimaryDexUtils.PrimaryDexInfo primaryDexInfo -\u003e primaryDexInfo.splitName() \u003d\u003d null\n```",
       "parentUuid": "0adf031e_ff066bf9",
+      "range": {
+        "startLine": 202,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77834262_640ee8c5",
+        "filename": "libartservice/service/java/com/android/server/art/ReportMetricsTask.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T10:24:20Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "28f92023_581e06b9",
       "range": {
         "startLine": 202,
         "startChar": 8,
