@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b2b6f27_fecf8b96",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T16:36:01Z",
+      "side": 1,
+      "message": "Can\u0027t you use `out` for the last operation?",
+      "parentUuid": "7f10e1af_d59d80b0",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb9f312_c213fd14",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 3
