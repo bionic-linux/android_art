@@ -22,6 +22,30 @@
       },
       "revId": "e00fe2bd071cbb414e98d6c6d486cee70f23b83a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4adf0889_74e52a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-18T16:41:52Z",
+      "side": 1,
+      "message": "This fixes a design issue with the code generation because, despite it\u0027s name, `VecPredToBoolean` set a boolean value in a scalar register by reading the condition flags **and not** a predicate register as it\u0027s supposed to. This was never exposed as a bug in ART because the auto-vectorizer would always generate `VecPredWhile` (which sets **both** the condition flags and a predicate register) and `VecPredToBoolean` next to each other.\n\nBecause of this, it was not possible to create a run-test however there is a regression test in `codegen_test.cc`. Note also that this change is further tested in https://android-review.googlesource.com/c/platform/art/+/3160798/2 because the codegen tests for floating point conditions (which **only** set the predicate and not the condition flags) use `VecPredToBoolean`.",
+      "parentUuid": "b52d6744_05db02f9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "e00fe2bd071cbb414e98d6c6d486cee70f23b83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
