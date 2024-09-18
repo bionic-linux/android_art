@@ -254,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cd7a5d4_bda092db",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T15:47:35Z",
+      "side": 1,
+      "message": "You do, but if you say it doesn\u0027t overlap (which is the default AFAIR), then the register allocator can/should be able to optimize the registers given. So my suggestion is to always ask for a temp, and then an out if the return type is not void.",
+      "parentUuid": "450404b9_ae5bc934",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb9f312_c213fd14",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 3
