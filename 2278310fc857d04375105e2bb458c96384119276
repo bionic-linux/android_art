@@ -22,6 +22,30 @@
       },
       "revId": "2278310fc857d04375105e2bb458c96384119276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87eaadb_b3bcb2ad",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3522173
+      },
+      "writtenOn": "2024-09-18T13:59:27Z",
+      "side": 1,
+      "message": "We had an offline discussion and the code can be shared in the future.",
+      "parentUuid": "2687d15c_8aec84d5",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "2278310fc857d04375105e2bb458c96384119276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
