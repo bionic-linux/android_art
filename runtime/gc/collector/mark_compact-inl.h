@@ -201,10 +201,10 @@ inline bool MarkCompact::IsOnAllocStack(mirror::Object* ref) {
   return stack->Contains(ref);
 }
 
-inline void MarkCompact::UpdateRef(mirror::Object* obj,
-                                   MemberOffset offset,
-                                   uint8_t* begin,
-                                   uint8_t* end) {
+inline mirror::Object* MarkCompact::UpdateRef(mirror::Object* obj,
+                                              MemberOffset offset,
+                                              uint8_t* begin,
+                                              uint8_t* end) {
   mirror::Object* old_ref = obj->GetFieldObject<
       mirror::Object, kVerifyNone, kWithoutReadBarrier, /*kIsVolatile*/false>(offset);
   if (kIsDebugBuild) {
@@ -240,6 +240,7 @@ inline void MarkCompact::UpdateRef(mirror::Object* obj,
             offset,
             new_ref);
   }
+  return new_ref;
 }
 
 inline bool MarkCompact::VerifyRootSingleUpdate(void* root,
@@ -287,10 +288,10 @@ inline bool MarkCompact::VerifyRootSingleUpdate(void* root,
   return true;
 }
 
-inline void MarkCompact::UpdateRoot(mirror::CompressedReference<mirror::Object>* root,
-                                    uint8_t* begin,
-                                    uint8_t* end,
-                                    const RootInfo& info) {
+inline mirror::Object* MarkCompact::UpdateRoot(mirror::CompressedReference<mirror::Object>* root,
+                                               uint8_t* begin,
+                                               uint8_t* end,
+                                               const RootInfo& info) {
   DCHECK(!root->IsNull());
   mirror::Object* old_ref = root->AsMirrorPtr();
   if (VerifyRootSingleUpdate(root, old_ref, info)) {
@@ -298,20 +299,24 @@ inline void MarkCompact::UpdateRoot(mirror::CompressedReference<mirror::Object>*
     if (old_ref != new_ref) {
       root->Assign(new_ref);
     }
+    return new_ref;
   }
+  return nullptr;
 }
 
-inline void MarkCompact::UpdateRoot(mirror::Object** root,
-                                    uint8_t* begin,
-                                    uint8_t* end,
-                                    const RootInfo& info) {
+inline mirror::Object* MarkCompact::UpdateRoot(mirror::Object** root,
+                                               uint8_t* begin,
+                                               uint8_t* end,
+                                               const RootInfo& info) {
   mirror::Object* old_ref = *root;
   if (VerifyRootSingleUpdate(root, old_ref, info)) {
     mirror::Object* new_ref = PostCompactAddress(old_ref, begin, end);
     if (old_ref != new_ref) {
       *root = new_ref;
     }
+    return new_ref;
   }
+  return nullptr;
 }
 
 template <size_t kAlignment>
