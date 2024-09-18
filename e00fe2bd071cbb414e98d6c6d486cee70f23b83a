@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52d6744_05db02f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T15:53:33Z",
+      "side": 1,
+      "message": "So this is fixing a bug? Can you write a regression test?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "e00fe2bd071cbb414e98d6c6d486cee70f23b83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
