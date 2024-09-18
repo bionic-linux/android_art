@@ -190,6 +190,30 @@
       },
       "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ee7c5f_867c3ae5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T15:51:22Z",
+      "side": 1,
+      "message": "Oh wait, you say it crashes for `FindVirtualMethodForInterface` but you add checks on `FindVirtualMethodForVirtual` and `FindVirtualMethodForSuper`. Why you do you mention these crashes then?\n\nThe DCHECK you added makes sense given the line later uses the vtable offset.",
+      "parentUuid": "8f2242be_c93f9816",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "d7447dd1bc02cea65cd666fdc8c3dc4e1ce23f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
