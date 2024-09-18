@@ -290,6 +290,30 @@
       },
       "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eeeb374_f2ac038d",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-18T13:31:14Z",
+      "side": 1,
+      "message": "\u003e You left the System.runFinalization. Was that intentional?\n\nYes, it was.",
+      "parentUuid": "eb7348cb_a4d9df5a",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
