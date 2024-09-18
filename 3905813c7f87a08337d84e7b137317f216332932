@@ -22,6 +22,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583e0280_bee66916",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2024-09-18T16:05:23Z",
+      "side": 0,
+      "message": "Yes, simpleperf releases static executables in Android NDK and Studio, which can run on older Android versions. I want to keep its ability to collect Java symbols on somewhat old Android versions (at most back to Q). What\u0027s the oldest Android version are supposed to stop using cdex?",
+      "parentUuid": "86b7590b_92ad4a21",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
