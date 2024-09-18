@@ -90,6 +90,8 @@ public class PreRebootDexoptJob implements ArtServiceJobInterface {
     /**
      * Offloads `onStartJob` and `onStopJob` calls from the main thread while keeping the execution
      * order as the main thread does.
+     * Also offloads `onUpdateReady` calls from the package manager thread. We reuse this executor
+     * just for simplicity. The execution order does not matter.
      */
     @NonNull
     private final ThreadPoolExecutor mSerializedExecutor =
@@ -181,7 +183,13 @@ public class PreRebootDexoptJob implements ArtServiceJobInterface {
      * @param otaSlot The slot that contains the OTA update, "_a" or "_b", or null for a Mainline
      *         update.
      */
-    public synchronized @ScheduleStatus int onUpdateReady(@Nullable String otaSlot) {
+    public synchronized CompletableFuture<Integer> onUpdateReady(@Nullable String otaSlot) {
+        return new CompletableFuture().supplyAsync(
+                () -> onUpdateReadyImpl(otaSlot), mSerializedExecutor);
+    }
+
+    @VisibleForTesting
+    public synchronized @ScheduleStatus int onUpdateReadyImpl(@Nullable String otaSlot) {
         cancelAnyLocked();
         resetLocked();
         updateOtaSlotLocked(otaSlot);
