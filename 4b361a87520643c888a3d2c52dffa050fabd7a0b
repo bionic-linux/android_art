@@ -22,6 +22,30 @@
       },
       "revId": "4b361a87520643c888a3d2c52dffa050fabd7a0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded52cbf_ab40c65b",
+        "filename": "test/659-unpadded-array/src-art/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-18T09:20:51Z",
+      "side": 1,
+      "message": "Maybe then change this code to store the allocation in a static?",
+      "parentUuid": "9c227180_b8c3bb54",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4b361a87520643c888a3d2c52dffa050fabd7a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
