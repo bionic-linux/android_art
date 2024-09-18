@@ -2598,6 +2598,9 @@ void Heap::PreZygoteFork() NO_THREAD_SAFETY_ANALYSIS /* TODO: Why? */ {
         region_space_->GetMarkBitmap()->Clear();
       } else {
         bump_pointer_space_->GetMemMap()->Protect(PROT_READ | PROT_WRITE);
+        if (gUseUserfaultfd && use_generational_cc_) {
+          MarkCompactCollector()->PreZygoteFork();
+        }
       }
     }
     if (temp_space_ != nullptr) {
