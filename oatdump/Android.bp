@@ -207,6 +207,7 @@ art_cc_defaults {
                 "dex2oatd",
                 "dex2oatds",
                 "dexdump",
+                "dex_bootjars_host",
                 "oatdumpd",
                 "oatdumpds",
             ],
