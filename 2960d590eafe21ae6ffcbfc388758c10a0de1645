@@ -496,6 +496,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41fd471e_f5b8d533",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "That\u0027s right. The comment would now apply to the string. It should still be written in the aidl file, as it\u0027s where the contract is defined.",
+      "parentUuid": "78a6cf30_54c480a3",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "2960d590eafe21ae6ffcbfc388758c10a0de1645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "912ce781_7b3d64a1",
         "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
         "patchSetId": 6

@@ -295,6 +295,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee68ce5_cb87af0f",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "Ah, so `UNSPECIFIED` is 0, while `UNKNOWN` is a proper value like any other values? Then it\u0027s fine. I just wanted to avoid using 0, as it\u0027s supposed to be a value with no semantics AFAIUI.",
+      "parentUuid": "2d0d1847_d4393877",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "559c9a8d_0e928106",

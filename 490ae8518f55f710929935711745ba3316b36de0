@@ -1,0 +1,144 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc31fc00_df4d4dd7",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "No longer used?",
+      "fixSuggestions": [
+        {
+          "fixId": "7000111c_1afd05a6",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 56,
+                "startChar": 0,
+                "endLine": 57,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bb6eb9_6f3a75a8",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "Super nit: Is this change proposed by clang-format? If not, I prefer the previous style.",
+      "fixSuggestions": [
+        {
+          "fixId": "81e38aa1_cb17196f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+              "range": {
+                "startLine": 92,
+                "startChar": 0,
+                "endLine": 94,
+                "endChar": 0
+              },
+              "replacement": "                null /* progressCallbackExecutor */, null /* progressCallback */);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb60450_3d0b2354",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "No longer used?",
+      "fixSuggestions": [
+        {
+          "fixId": "35401946_0475b864",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/Dexopter.java",
+              "range": {
+                "startLine": 65,
+                "startChar": 0,
+                "endLine": 66,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d196d1_a74f53a4",
+        "filename": "libartservice/service/java/com/android/server/art/SecondaryDexopter.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T13:14:01Z",
+      "side": 1,
+      "message": "No longer used?",
+      "fixSuggestions": [
+        {
+          "fixId": "1b6151be_a24ce4ff",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/SecondaryDexopter.java",
+              "range": {
+                "startLine": 40,
+                "startChar": 0,
+                "endLine": 41,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "490ae8518f55f710929935711745ba3316b36de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
