@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "474a18d3_92b84016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "We cannot use `out` for `kVoid` methods, it fails with this CHECK if I try to do it https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/code_generator.cc;l\u003d121-123;drc\u003d434a327234f74eed3ef4072314d2e2bdb73e4dda",
+      "parentUuid": "a18910ba_960e7e6d",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1138d046_320165b2",
         "filename": "compiler/optimizing/instruction_builder.cc",
         "patchSetId": 3
@@ -77,6 +95,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9db188b1_3427bfb4",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19dbc1d_c80526ae",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a7392487_bd3be26c",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -88,6 +124,30 @@
       "writtenOn": "2024-09-17T18:51:12Z",
       "side": 1,
       "message": "It\u0027s a very minor thing, but I find it a bit hard to unwind the inversions in \"methods that don\u0027t return a value\" and \"non_void\", it would be easier to read for me if the comment said \"void methods\" instead (using the same word as the name in the code). Generally I think the fewer inversions the better, but here we cannot use `void` for a name as it\u0027s a keyword.",
+      "range": {
+        "startLine": 1766,
+        "startChar": 2,
+        "endLine": 1766,
+        "endChar": 78
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ded7c3f_1d7e8398",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done, changed to `is_void`",
+      "parentUuid": "a7392487_bd3be26c",
       "range": {
         "startLine": 1766,
         "startChar": 2,
@@ -111,6 +171,30 @@
       "writtenOn": "2024-09-18T09:31:26Z",
       "side": 1,
       "message": "invert and call this `is_void`.",
+      "range": {
+        "startLine": 3876,
+        "startChar": 13,
+        "endLine": 3876,
+        "endChar": 21
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f365ae_bba02912",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3876,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dc72c1e_854331ad",
       "range": {
         "startLine": 3876,
         "startChar": 13,
@@ -146,6 +230,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "450404b9_ae5bc934",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Don\u0027t we need to set `out` correctly for non void methods? https://cs.android.com/android/platform/superproject/main/+/main:art/compiler/optimizing/ssa_liveness_analysis.cc;l\u003d115-119;drc\u003dcde6497d286337de2ed21c71c85157e2745b742b",
+      "parentUuid": "328cd6c6_e73015b0",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb9f312_c213fd14",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 3
@@ -157,6 +265,30 @@
       "writtenOn": "2024-09-18T09:31:26Z",
       "side": 1,
       "message": "can you add some comments here? It\u0027s unclear why you\u0027re looking at the shorty and not the invoke\u0027s type.",
+      "range": {
+        "startLine": 5179,
+        "startChar": 0,
+        "endLine": 5181,
+        "endChar": 71
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9421830_5032fbe6",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5181,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done here and in the other places",
+      "parentUuid": "beb9f312_c213fd14",
       "range": {
         "startLine": 5179,
         "startChar": 0,
@@ -180,6 +312,30 @@
       "writtenOn": "2024-09-18T09:31:26Z",
       "side": 1,
       "message": "avoid double negatives.",
+      "range": {
+        "startLine": 5234,
+        "startChar": 0,
+        "endLine": 5234,
+        "endChar": 18
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c83548_fbb8f256",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5234,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ccbce4_93f0e25f",
       "range": {
         "startLine": 5234,
         "startChar": 0,
@@ -215,6 +371,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da83196b_c6b45777",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5260,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4adee3d_ba27eecd",
+      "range": {
+        "startLine": 5260,
+        "startChar": 13,
+        "endLine": 5260,
+        "endChar": 21
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "611b6282_8461e24c",
         "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
         "patchSetId": 3
@@ -226,6 +406,30 @@
       "writtenOn": "2024-09-17T18:51:12Z",
       "side": 1,
       "message": "Nit: I\u0027d shorten this a bit, e.g. `temps_that_mimic_out`, but up to you.",
+      "range": {
+        "startLine": 5263,
+        "startChar": 9,
+        "endLine": 5263,
+        "endChar": 38
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7729d792_523d506f",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5263,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "611b6282_8461e24c",
       "range": {
         "startLine": 5263,
         "startChar": 9,
@@ -259,6 +463,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1b9346_0390d8b3",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5270,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c653351b_49337465",
+      "range": {
+        "startLine": 5270,
+        "startChar": 30,
+        "endLine": 5270,
+        "endChar": 55
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78b71371_be6ed84d",
@@ -272,6 +500,30 @@
       "writtenOn": "2024-09-17T18:51:12Z",
       "side": 1,
       "message": "This comment needs to be updated after `out` has been replaced with `result`.",
+      "range": {
+        "startLine": 5353,
+        "startChar": 57,
+        "endLine": 5353,
+        "endChar": 62
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a17d6f_c9faf81d",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5353,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b71371_be6ed84d",
       "range": {
         "startLine": 5353,
         "startChar": 57,
@@ -299,6 +551,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42c73e6_b6289542",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2948,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a152ed7_989e7ab6",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfcb8697_f4a9b440",
@@ -316,6 +586,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8f89a4_2b3d5c19",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcb8697_f4a9b440",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8665ca50_f32f218e",
@@ -329,6 +617,24 @@
       "writtenOn": "2024-09-18T09:31:26Z",
       "side": 1,
       "message": "Change to `is_void`.",
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3a3ed5_3ce79b9c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-18T11:03:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8665ca50_f32f218e",
       "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
