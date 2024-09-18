@@ -96,7 +96,7 @@ endif
 
 test-art-host-run-test-dependencies : \
       $(ART_TEST_HOST_RUN_TEST_DEPENDENCIES) $(TEST_ART_RUN_TEST_DEPENDENCIES) \
-      $(HOST_BOOT_IMAGE_JARS) $(HOST_BOOT_IMAGE) $(2ND_HOST_BOOT_IMAGE)
+      $(HOST_BOOT_IMAGE_JARS)
 .PHONY: test-art-host-run-test-dependencies
 test-art-run-test-dependencies : test-art-host-run-test-dependencies
 
