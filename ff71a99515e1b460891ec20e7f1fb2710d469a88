@@ -22,6 +22,30 @@
       },
       "revId": "ff71a99515e1b460891ec20e7f1fb2710d469a88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79629a27_ed1f889c",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-18T11:31:30Z",
+      "side": 0,
+      "message": "You are right! Put the comment back.",
+      "parentUuid": "4292c79e_9bad4f24",
+      "range": {
+        "startLine": 426,
+        "startChar": 53,
+        "endLine": 426,
+        "endChar": 78
+      },
+      "revId": "ff71a99515e1b460891ec20e7f1fb2710d469a88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
