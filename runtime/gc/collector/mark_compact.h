@@ -316,9 +316,10 @@ class MarkCompact final : public GarbageCollector {
   // GC cycle.
   ALWAYS_INLINE mirror::Object* PostCompactBlackObjAddr(mirror::Object* old_ref) const
       REQUIRES_SHARED(Locks::mutator_lock_);
+  // TODO (young_gen_): update the comment
   // Clears (for alloc spaces in the beginning of marking phase) or ages the
   // card table. Also, identifies immune spaces and mark bitmap.
-  void PrepareCardTableForMarking(bool clear_alloc_space_cards)
+  void PrepareForMarking(bool pre_marking)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_);
 
   // Perform one last round of marking, identifying roots from dirty cards
@@ -595,6 +596,9 @@ class MarkCompact final : public GarbageCollector {
   void UpdateClassTableClasses(Runtime* runtime, bool immune_class_table_only)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void SweepArray(accounting::ObjectStack* obj_arr, bool swap_bitmaps)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_);
+
   // For checkpoints
   Barrier gc_barrier_;
   // Every object inside the immune spaces is assumed to be marked.
@@ -791,6 +795,8 @@ class MarkCompact final : public GarbageCollector {
   std::atomic<uint16_t> compaction_buffer_counter_;
   // True while compacting.
   bool compacting_;
+  // Set to true when doing young gen collection.
+  bool young_gen_;
   // Set to true in MarkingPause() to indicate when allocation_stack_ should be
   // checked in IsMarked() for black allocations.
   bool marking_done_;
