@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2687d15c_8aec84d5",
+        "filename": "runtime/fuzzer_corpus_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1894735
+      },
+      "writtenOn": "2024-09-18T08:45:50Z",
+      "side": 1,
+      "message": "This seems to be duplicate of what is already there in tools/fuzzer/libart_verify_classes_fuzzer.cc. Is there a way to share this code?\n\nMaybe not for this CL, but is there a way to directly call LLVMFuzzerTestOneInput from the  ClassVerification. I think ClassVerification is doing most of what LLVMFuzzerTestOneInput is doing. I am not sure about dependencies between tools and runtime but it will be nice if we can call the code in tools/fuzzer directly.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "2278310fc857d04375105e2bb458c96384119276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
