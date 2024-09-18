@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa069ee_320630ef",
+        "filename": "artd/artd.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Thanks for spotting this!",
+      "parentUuid": "c4377339_183e98ca",
+      "range": {
+        "startLine": 1200,
+        "startChar": 65,
+        "endLine": 1200,
+        "endChar": 74
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4244b04_eb3b507b",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-18T10:24:20Z",
       "side": 1,
       "message": "Can be simplified to `Return(Error())`.\n\nWe use a lambda only if there are more things to do.",
+      "range": {
+        "startLine": 1118,
+        "startChar": 72,
+        "endLine": 1120,
+        "endChar": 3
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffc674c_8dcf4b09",
+        "filename": "artd/artd_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "It looks like that won\u0027t work because the copy constructor for Error is explicitly deleted (see https://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/result.h;l\u003d263;drc\u003dd0aeaf64e7f860b0233496fc88098be74165b03b) - if you have another potential solution for this issue I\u0027d be glad to implement it.",
+      "parentUuid": "d4244b04_eb3b507b",
       "range": {
         "startLine": 1118,
         "startChar": 72,
@@ -105,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ec18a5_960ef868",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd108e99_5f1a3cbc",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 70
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "799a43ac_65618778",
@@ -142,6 +214,30 @@
           ]
         }
       ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ad1c84_bfd42bb9",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799a43ac_65618778",
+      "range": {
+        "startLine": 36,
+        "startChar": 67,
+        "endLine": 36,
+        "endChar": 80
+      },
       "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -187,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35109cd5_2d158746",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6394ec2_6a070d7b",
+      "range": {
+        "startLine": 42,
+        "startChar": 69,
+        "endLine": 42,
+        "endChar": 89
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eaee107_05e45f4a",
@@ -228,6 +348,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78d7975_fa7f8246",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Thanks for spotting this!",
+      "parentUuid": "8eaee107_05e45f4a",
+      "range": {
+        "startLine": 127,
+        "startChar": 80,
+        "endLine": 127,
+        "endChar": 83
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f28eec_29f1ac55",
@@ -241,6 +385,30 @@
       "writtenOn": "2024-09-18T10:24:20Z",
       "side": 1,
       "message": "Please add argument comments.",
+      "range": {
+        "startLine": 167,
+        "startChar": 20,
+        "endLine": 167,
+        "endChar": 26
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65716aca_bc7fa917",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f28eec_29f1ac55",
       "range": {
         "startLine": 167,
         "startChar": 20,
@@ -322,6 +490,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a95f13_2ef66bb9",
+        "filename": "libartservice/service/java/com/android/server/art/DexoptHelper.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5052cf_cd4d36e7",
+      "range": {
+        "startLine": 328,
+        "startChar": 31,
+        "endLine": 328,
+        "endChar": 49
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ce84350_0be6d509",
@@ -363,6 +555,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f49a10_318931c3",
+        "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ce84350_0be6d509",
+      "range": {
+        "startLine": 297,
+        "startChar": 60,
+        "endLine": 297,
+        "endChar": 62
+      },
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e717a27_bfe41ec6",
@@ -398,6 +614,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3d504c_ba6e6d3a",
+        "filename": "libartservice/service/javatests/com/android/server/art/DexoptHelperTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e717a27_bfe41ec6",
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ae4a27d_1cc22ccd",
@@ -429,6 +663,24 @@
           ]
         }
       ],
+      "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71434b39_97ca08b3",
+        "filename": "libartservice/service/javatests/com/android/server/art/PrimaryDexopterParameterizedTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae4a27d_1cc22ccd",
       "revId": "7732cb36ebedff96141b65fc0bda423a04cc5722",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

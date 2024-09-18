@@ -273,6 +273,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d0d1847_d4393877",
+        "filename": "libartservice/service/java/com/android/server/art/Dex2OatStatsReporter.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-18T12:50:42Z",
+      "side": 1,
+      "message": "That\u0027s a bit of an edge case - usually UNKNOWN is the enum value that catches the values that have not been initialised, but for the ArtCompilationReason we have [ART_COMPILATION_REASON_UNSPECIFIED](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/proto_logging/stats/enums/art/common_enums.proto;l\u003d33;drc\u003d4851888a58f36d424b7727261aa9bb84966c0ccc) for that purpose, so we might be able to repurpose this to represent custom compilation reasons from OEMs and display it, what do you think?",
+      "parentUuid": "7a3b8ff5_7a22a39c",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 99
+      },
+      "revId": "0328ab6f62c30fd844ba8b1fa01662fd5c52128a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "559c9a8d_0e928106",
         "filename": "libartservice/service/java/com/android/server/art/Dexopter.java",
         "patchSetId": 9
