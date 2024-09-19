@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "239b6120_247636d6",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T13:10:23Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "88a8ed72_69d60d08",
+      "range": {
+        "startLine": 186,
+        "startChar": 24,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "57a4d5ebf5b0b8592804f0dd6aed6759cf06c793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8644200a_1301b9ef",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T13:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6145e070_23a87ee9",
+      "revId": "57a4d5ebf5b0b8592804f0dd6aed6759cf06c793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c58b215_cc277dd2",
@@ -54,6 +96,30 @@
       "writtenOn": "2024-09-19T13:01:49Z",
       "side": 1,
       "message": "Nit: This bears a clarification now.",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 20
+      },
+      "revId": "57a4d5ebf5b0b8592804f0dd6aed6759cf06c793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573ba167_c03fe3a8",
+        "filename": "libartservice/service/java/com/android/server/art/PreRebootDexoptJob.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T13:10:23Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "0c58b215_cc277dd2",
       "range": {
         "startLine": 201,
         "startChar": 15,
