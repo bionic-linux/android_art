@@ -35,6 +35,11 @@ art_cc_binary {
         "liblog",
         "libnativehelper",
     ],
+    runtime_libs: [
+        "libart",
+        "libicu_jni",
+        "libopenjdk",
+    ],
     header_libs: [
         "art_libartbase_headers", // For base/fast_exit.h
     ],
@@ -64,7 +69,6 @@ art_cc_binary {
     },
 
     // Create symlink for the primary version target.
-    symlink_preferred_arch: true,
     apex_available: [
         "com.android.art",
         "com.android.art.debug",
