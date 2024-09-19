@@ -124,7 +124,8 @@ class MANAGED MethodHandleImpl : public MethodHandle {
   EXPORT static ObjPtr<mirror::MethodHandleImpl> Create(Thread* const self,
                                                         uintptr_t art_field_or_method,
                                                         MethodHandle::Kind kind,
-                                                        Handle<MethodType> method_type)
+                                                        Handle<MethodType> method_type,
+                                                        Handle<Class> target_class)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
 
  private:
@@ -132,7 +133,12 @@ class MANAGED MethodHandleImpl : public MethodHandle {
     return MemberOffset(OFFSETOF_MEMBER(MethodHandleImpl, info_));
   }
 
+  static MemberOffset TargetClassOffset() {
+    return MemberOffset(OFFSETOF_MEMBER(MethodHandleImpl, target_class_));
+  }
+
   HeapReference<mirror::Object> info_;  // Unused by the runtime.
+  HeapReference<mirror::Class> target_class_;  // Unused by the runtime.
 
   friend struct art::MethodHandleImplOffsets;  // for verifying offset information
   DISALLOW_IMPLICIT_CONSTRUCTORS(MethodHandleImpl);
