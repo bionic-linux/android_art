@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8e2e7e_b92a8536",
+        "filename": "runtime/thread_pool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-19T18:21:56Z",
+      "side": 1,
+      "message": "Please also remove the volatile qualifiers here. They look equally useless to me.",
+      "range": {
+        "startLine": 195,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "4b05379d4dd09fadd9f9ad2a73cbcaf4b93725b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
