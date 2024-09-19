@@ -33,6 +33,23 @@
       "message": "Nicolas, could you please provide the 2nd approval?",
       "revId": "1a36fec2cf5e8773dd399c62e5622584bfba6ad1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8620ab_6c75be81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T13:40:06Z",
+      "side": 1,
+      "message": "Don\u0027t worry about the Presubmit failure. It\u0027s due to an existing issue unrelated to your change.",
+      "revId": "1a36fec2cf5e8773dd399c62e5622584bfba6ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
