@@ -46,6 +46,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66f4f4e_16d6016f",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-19T22:10:36Z",
+      "side": 0,
+      "message": "We dropped the runtime support in VIC, or more precisely in the M-2024-03 Mainline rollout.\n\nSo then I take it you want us to keep everything unwind-related around for quite some time then? That\u0027s probably most of the stuff I was hoping to clean up here.\n\nWhat\u0027s the user journey when the static NDK binary reads vdex files containing cdex? Is it on host or device?",
+      "parentUuid": "583e0280_bee66916",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
