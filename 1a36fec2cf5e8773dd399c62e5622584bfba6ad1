@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6d5c57_46484ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3257532
+      },
+      "writtenOn": "2024-09-19T12:11:44Z",
+      "side": 1,
+      "message": "Thank you for your comments. I\u0027ve addressed them in the latest patch.",
+      "revId": "1a36fec2cf5e8773dd399c62e5622584bfba6ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
