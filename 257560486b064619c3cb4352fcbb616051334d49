@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad2c88c_94ee4638",
+        "filename": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-19T12:35:19Z",
+      "side": 1,
+      "message": "This creates a new dependency between this thread and the mSerializedExecutor pool. It\u0027s probably ok but it\u0027s one more moving part that we don\u0027t really need here. What about just calling `onUpdateReadyImpl` instead? It\u0027s an internal API so \"exposing\" another method doesn\u0027t seem like a big deal.",
+      "range": {
+        "startLine": 820,
+        "startChar": 19,
+        "endLine": 820,
+        "endChar": 99
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "247570b4_52052d59",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "libartservice/service/java/com/android/server/art/ArtShellCommand.java",
+              "range": {
+                "startLine": 820,
+                "startChar": 0,
+                "endLine": 821,
+                "endChar": 0
+              },
+              "replacement": "        int code \u003d mArtManagerLocal.getPreRebootDexoptJob().onUpdateReady(otaSlot);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "257560486b064619c3cb4352fcbb616051334d49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
