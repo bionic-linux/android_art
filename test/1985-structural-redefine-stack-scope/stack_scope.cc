@@ -46,7 +46,7 @@ extern "C" JNICALL jobject JNIEXPORT Java_Main_NativeFieldScopeCheck(JNIEnv* env
   jclass runnable_klass = env->FindClass("java/lang/Runnable");
   jmethodID run = env->GetMethodID(runnable_klass, "run", "()V");
   ScopedObjectAccess soa(Thread::Current());
-  StackHandleScope<4> hs(soa.Self());
+  StackHandleScope<5> hs(soa.Self());
   StackArtFieldHandleScope<1> fhs(soa.Self());
   StackArtFieldHandleScope<1> bhs(soa.Self());
   ReflectiveHandle<ArtField> rf(fhs.NewHandle(jni::DecodeArtField(fid)));
@@ -70,7 +70,8 @@ extern "C" JNICALL jobject JNIEXPORT Java_Main_NativeFieldScopeCheck(JNIEnv* env
                                        reinterpret_cast<uintptr_t>(rf.Get()),
                                        (rf->IsStatic() ? mirror::MethodHandle::Kind::kStaticGet
                                                        : mirror::MethodHandle::Kind::kInstanceGet),
-                                       mt)));
+                                       mt,
+                                       hs.NewHandle(rf->GetDeclaringClass()))));
   CHECK_EQ(rf.Get(), bf.Get()) << "rf: " << rf->PrettyField() << " bf: " << bf->PrettyField();
   // TODO Modify this to work for when run doesn't cause a change.
   CHECK_NE(pre_ptr, rf.Get()) << "pre_ptr: " << pre_ptr->PrettyField()

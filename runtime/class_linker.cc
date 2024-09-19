@@ -10347,7 +10347,7 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForField(
     return nullptr;
   }
 
-  StackHandleScope<4> hs(self);
+  StackHandleScope<5> hs(self);
   ObjPtr<mirror::Class> array_of_class = GetClassRoot<mirror::ObjectArray<mirror::Class>>(this);
   Handle<mirror::ObjectArray<mirror::Class>> method_params(hs.NewHandle(
       mirror::ObjectArray<mirror::Class>::Alloc(self, array_of_class, num_params)));
@@ -10408,7 +10408,11 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForField(
   }
 
   uintptr_t target = reinterpret_cast<uintptr_t>(target_field);
-  return mirror::MethodHandleImpl::Create(self, target, kind, method_type);
+  return mirror::MethodHandleImpl::Create(self,
+                                          target,
+                                          kind,
+                                          method_type,
+                                          hs.NewHandle(target_field->GetDeclaringClass()));
 }
 
 ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
@@ -10527,7 +10531,7 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
   target_method->GetShorty(&shorty_length);
   int32_t num_params = static_cast<int32_t>(shorty_length + receiver_count - 1);
 
-  StackHandleScope<5> hs(self);
+  StackHandleScope<6> hs(self);
   ObjPtr<mirror::Class> array_of_class = GetClassRoot<mirror::ObjectArray<mirror::Class>>(this);
   Handle<mirror::ObjectArray<mirror::Class>> method_params(hs.NewHandle(
       mirror::ObjectArray<mirror::Class>::Alloc(self, array_of_class, num_params)));
@@ -10585,7 +10589,11 @@ ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandleForMethod(
   }
 
   uintptr_t target = reinterpret_cast<uintptr_t>(target_method);
-  return mirror::MethodHandleImpl::Create(self, target, kind, method_type);
+  return mirror::MethodHandleImpl::Create(self,
+                                          target,
+                                          kind,
+                                          method_type,
+                                          hs.NewHandle(target_method->GetDeclaringClass()));
 }
 
 ObjPtr<mirror::MethodHandle> ClassLinker::ResolveMethodHandle(Thread* self,
