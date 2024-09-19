@@ -21,8 +21,6 @@
 
 #include <sstream>
 
-#include "nativehelper/jni_macros.h"
-
 #include "base/file_utils.h"
 #include "base/histogram-inl.h"
 #include "base/time_utils.h"
@@ -30,6 +28,8 @@
 #include "class_root-inl.h"
 #include "common_throws.h"
 #include "debugger.h"
+#include "dex/class_accessor-inl.h"
+#include "dex/descriptors_names.h"
 #include "gc/space/bump_pointer_space.h"
 #include "gc/space/dlmalloc_space.h"
 #include "gc/space/large_object_space.h"
@@ -44,6 +44,7 @@
 #include "mirror/class.h"
 #include "mirror/object_array-alloc-inl.h"
 #include "native_util.h"
+#include "nativehelper/jni_macros.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "nativehelper/scoped_utf_chars.h"
 #include "scoped_fast_native_object_access-inl.h"
@@ -310,6 +311,50 @@ static jlong VMDebug_countInstancesOfClass(JNIEnv* env,
   uint64_t count = 0;
   heap->CountInstances(classes, countAssignable, &count);
   return count;
+}
+
+static jobject VMDebug_locateJavaMethodNative(JNIEnv* env,
+                                              jclass,
+                                              jclass javaClass,
+                                              jstring jmethodDot) {
+  LOG(ERROR) << "##HB## " << "made it to native";
+  ScopedObjectAccess soa(env);
+  // Caller's responsibility to do GC if desired.
+  ObjPtr<mirror::Class> c = soa.Decode<mirror::Class>(javaClass);
+  if (c == nullptr) {
+    return NULL;
+  }
+  LOG(ERROR) << "##HB## " << "got a mirror";
+
+  auto class_def = c->GetClassDef();
+  auto dex_file = &c->GetDexFile();
+
+  std::string methodDot;
+  {
+    ScopedUtfChars chars(env, jmethodDot);
+    if (env->ExceptionCheck()) {
+      return NULL;
+    }
+    methodDot = chars.c_str();
+  }
+
+  auto accessor = ClassAccessor(*dex_file, *class_def);
+  for (const ClassAccessor::Method& method : accessor.GetMethods()) {
+    uint32_t dex_method_idx = method.GetIndex();
+    std::string pretty_method = dex_file->PrettyMethod(dex_method_idx, true);
+    if (pretty_method.find(methodDot) == std::string::npos) {
+      continue;
+    } else {
+      auto odexPath = env->NewStringUTF(dex_file->GetLocation().c_str());
+      auto odexOffset = -1;  // TODO: get the right offset
+      auto methodOffset = method.GetCodeItemOffset();
+      jclass clazz = env->FindClass("dalvik/system/VMDebug$JavaMethodLocation");
+      jmethodID constructorID = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;II)V");
+      return env->NewObject(clazz, constructorID, odexPath, odexOffset, methodOffset);
+    }
+  }
+  LOG(ERROR) << "##HB## " << "never found one";
+  return NULL;
 }
 
 static jlongArray VMDebug_countInstancesOfClasses(JNIEnv* env,
@@ -638,6 +683,10 @@ static JNINativeMethod gMethods[] = {
     NATIVE_METHOD(VMDebug, stopLowOverheadTraceImpl, "()V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceImpl, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceFdImpl, "(I)V"),
+    NATIVE_METHOD(
+        VMDebug,
+        locateJavaMethodNative,
+        "(Ljava/lang/Class;Ljava/lang/String;)Ldalvik/system/VMDebug$JavaMethodLocation;"),
 };
 
 void register_dalvik_system_VMDebug(JNIEnv* env) {
