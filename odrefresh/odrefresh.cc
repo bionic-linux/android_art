@@ -1044,10 +1044,13 @@ WARN_UNUSED bool OnDeviceRefresh::CheckSystemPropertiesAreDefault() const {
   const OdrSystemProperties& system_properties = config_.GetSystemProperties();
 
   for (const SystemPropertyConfig& system_property_config : *kSystemProperties.get()) {
-    std::string property = system_properties.GetOrEmpty(system_property_config.name);
-    DCHECK_NE(property, "");
+    // Note that the `kSytemPropertySystemServerCompilerFilterOverride` property has an empty
+    // default value, so we use the `GetPropertyOrNull` method and check against nullptr
+    const char* property = system_properties.GetPropertyOrNull(system_property_config.name);
+    DCHECK_NE(property, nullptr) << "Property " << system_property_config.name
+                                 << " does not exist in system properties map!";
 
-    if (property != system_property_config.default_value) {
+    if (std::string(property) != system_property_config.default_value) {
       LOG(INFO) << "System property " << system_property_config.name << " has a non-default value ("
                 << property << ").";
       return false;
