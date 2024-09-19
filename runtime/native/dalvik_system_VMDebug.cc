@@ -21,15 +21,15 @@
 
 #include <sstream>
 
-#include "nativehelper/jni_macros.h"
-
 #include "base/file_utils.h"
 #include "base/histogram-inl.h"
 #include "base/time_utils.h"
 #include "class_linker.h"
+#include "class_loader_utils.h"
 #include "class_root-inl.h"
 #include "common_throws.h"
 #include "debugger.h"
+#include "dex/descriptors_names.h"
 #include "gc/space/bump_pointer_space.h"
 #include "gc/space/dlmalloc_space.h"
 #include "gc/space/large_object_space.h"
@@ -44,6 +44,7 @@
 #include "mirror/class.h"
 #include "mirror/object_array-alloc-inl.h"
 #include "native_util.h"
+#include "nativehelper/jni_macros.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "nativehelper/scoped_utf_chars.h"
 #include "scoped_fast_native_object_access-inl.h"
@@ -310,6 +311,70 @@ static jlong VMDebug_countInstancesOfClass(JNIEnv* env,
   uint64_t count = 0;
   heap->CountInstances(classes, countAssignable, &count);
   return count;
+}
+
+static jobject VMDebug_locateJavaMethod(
+    JNIEnv* env, jclass, jobject classLoader, jstring jclassDot, jstring jmethodDot) {
+  ScopedObjectAccess soa(env);
+  VariableSizedHandleScope hs(soa.Self());
+  Handle<mirror::ClassLoader> loader(hs.NewHandle(soa.Decode<mirror::ClassLoader>(classLoader)));
+
+  std::string classDot;
+  {
+    ScopedUtfChars chars(env, jclassDot);
+    if (env->ExceptionCheck()) {
+      return NULL;
+    }
+    classDot = chars.c_str();
+  }
+
+  std::string classDescriptor = DotToDescriptor(classDot.c_str());
+  auto hash = ComputeModifiedUtf8Hash(classDescriptor);
+
+  std::string methodDot;
+  {
+    ScopedUtfChars chars(env, jmethodDot);
+    if (env->ExceptionCheck()) {
+      return NULL;
+    }
+    methodDot = chars.c_str();
+  }
+
+  // TODO: chop off method portion, DotToDescriptor and pass that to FindClassDef
+
+  const DexFile* dex_file = nullptr;
+  const dex::ClassDef* class_def = nullptr;
+  auto find_class_def = [&](const DexFile* cp_dex_file) REQUIRES_SHARED(Locks::mutator_lock_) {
+    const dex::ClassDef* cp_class_def =
+        OatDexFile::FindClassDef(*cp_dex_file, classDescriptor, hash);
+    if (cp_class_def != nullptr) {
+      dex_file = cp_dex_file;
+      class_def = cp_class_def;
+      return false;  // Found a class definition, stop visit.
+    }
+    return true;  // Continue with the next DexFile.
+  };
+  VisitClassLoaderDexFiles(soa.Self(), loader, find_class_def);
+
+  if (dex_file == nullptr || class_def == nullptr)
+    return NULL;
+
+  auto accessor = ClassAccessor(*dex_file, *class_def);
+  for (const ClassAccessor::Method& method : accessor.GetMethods()) {
+    uint32_t dex_method_idx = method.GetIndex();
+    std::string pretty_method = dex_file->PrettyMethod(dex_method_idx, true);
+    if (pretty_method.find(classDot + methodDot) == std::string::npos) {
+      continue;
+    } else {
+      auto odexPath = env->NewStringUTF(dex_file->GetLocation().c_str());
+      auto odexOffset = dex_file->GetHeader().HeaderOffset();
+      auto methodOffset = method.GetCodeItemOffset();
+      jclass clazz = env->FindClass("com/android/JavaMethodLocation");
+      jmethodID constructorID = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;II)V");
+      return env->NewObject(clazz, constructorID, odexPath, odexOffset, methodOffset);
+    }
+  }
+  return NULL;
 }
 
 static jlongArray VMDebug_countInstancesOfClasses(JNIEnv* env,
@@ -638,6 +703,10 @@ static JNINativeMethod gMethods[] = {
     NATIVE_METHOD(VMDebug, stopLowOverheadTraceImpl, "()V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceImpl, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceFdImpl, "(I)V"),
+    NATIVE_METHOD(VMDebug,
+                  locateJavaMethod,
+                  "(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/String;)Lcom/android/"
+                  "JavaMethodLocation;"),
 };
 
 void register_dalvik_system_VMDebug(JNIEnv* env) {
