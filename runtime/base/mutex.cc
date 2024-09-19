@@ -106,10 +106,10 @@ static void BackOff(uint32_t i) {
   if (i <= kSpinMax) {
     // TODO: Esp. in very latency-sensitive cases, consider replacing this with an explicit
     // test-and-test-and-set loop in the caller.  Possibly skip entirely on a uniprocessor.
-    volatile uint32_t x = 0;
+    std::atomic<uint32_t> x = 0;
     const uint32_t spin_count = 10 * i;
     for (uint32_t spin = 0; spin < spin_count; ++spin) {
-      ++x;  // Volatile; hence should not be optimized away.
+      ++x;  // Atomic; hence should not be optimized away.
     }
     // TODO: Consider adding x86 PAUSE and/or ARM YIELD here.
   } else if (i <= kYieldMax) {
