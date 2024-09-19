@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63a4cab_68187b7a",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-19T09:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29fc9cd3_39e88b06",
+      "range": {
+        "startLine": 51,
+        "startChar": 63,
+        "endLine": 51,
+        "endChar": 80
+      },
+      "revId": "9878f794e98cc6b4663a90d36a8a2559e83f2395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "952ff145_8477ddd7",
@@ -37,6 +61,30 @@
       "writtenOn": "2024-09-18T16:55:14Z",
       "side": 1,
       "message": "Sorry, I didn\u0027t mean to put it here 😂. I was thinking putting it on the `dexopt` method in `IArtd.aidl`, as that\u0027s where the exception is thrown.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 6
+      },
+      "revId": "9878f794e98cc6b4663a90d36a8a2559e83f2395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2791f78e_9aa31c4c",
+        "filename": "artd/binder/com/android/server/art/ArtdDexoptResult.aidl",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1948615
+      },
+      "writtenOn": "2024-09-19T09:13:48Z",
+      "side": 1,
+      "message": "A-ha, that makes sense 😊 Moved the message there.",
+      "parentUuid": "952ff145_8477ddd7",
       "range": {
         "startLine": 48,
         "startChar": 0,
