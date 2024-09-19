@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beeeafa5_26736e37",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-19T05:30:15Z",
+      "side": 0,
+      "message": "Is there no left-over in this mapping at the end which needs to unmapped?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 24,
+        "endLine": 1076,
+        "endChar": 29
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "c3919c27_09ecdae4",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/jit/jit.cc",
+              "range": {
+                "startLine": 1073,
+                "startChar": 0,
+                "endLine": 1073,
+                "endChar": 0
+              },
+              "replacement": "\n  // Unmap the shared memory.\n  if (munmap(zygote_mapping_methods_.Begin(), zygote_mapping_methods_.Size()) !\u003d 0) {\n    PLOG(WARNING) \u003c\u003c \"Failed to unmap boot image methods\";\n  }\n"
+            }
+          ]
+        }
+      ],
+      "revId": "d0bc68e1f40259230329e6709c72af187f72144c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
