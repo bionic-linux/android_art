@@ -21,8 +21,6 @@
 
 #include <sstream>
 
-#include "nativehelper/jni_macros.h"
-
 #include "base/file_utils.h"
 #include "base/histogram-inl.h"
 #include "base/time_utils.h"
@@ -30,6 +28,8 @@
 #include "class_root-inl.h"
 #include "common_throws.h"
 #include "debugger.h"
+#include "dex/class_accessor-inl.h"
+#include "dex/descriptors_names.h"
 #include "gc/space/bump_pointer_space.h"
 #include "gc/space/dlmalloc_space.h"
 #include "gc/space/large_object_space.h"
@@ -42,10 +42,13 @@
 #include "mirror/array-alloc-inl.h"
 #include "mirror/array-inl.h"
 #include "mirror/class.h"
+#include "mirror/executable-inl.h"
 #include "mirror/object_array-alloc-inl.h"
 #include "native_util.h"
+#include "nativehelper/jni_macros.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "nativehelper/scoped_utf_chars.h"
+#include "oat/oat_quick_method_header.h"
 #include "scoped_fast_native_object_access-inl.h"
 #include "string_array_utils.h"
 #include "thread-inl.h"
@@ -310,6 +313,44 @@ static jlong VMDebug_countInstancesOfClass(JNIEnv* env,
   uint64_t count = 0;
   heap->CountInstances(classes, countAssignable, &count);
   return count;
+}
+
+static jobject VMDebug_locateJavaMethodNative(JNIEnv* env, jclass, jobject javaMethod) {
+  ScopedObjectAccess soa(env);
+  ObjPtr<mirror::Executable> m = soa.Decode<mirror::Executable>(javaMethod);
+  if (m == nullptr) {
+    LOG(ERROR) << "Could not find method";
+    return nullptr;
+  }
+
+  ObjPtr<mirror::Class> c = m->GetDeclaringClass();
+  if (c == nullptr) {
+    LOG(ERROR) << "Could not find class";
+    return nullptr;
+  }
+
+  auto dexFile = &c->GetDexFile();
+  auto oatDexFile = dexFile->GetOatDexFile();
+  auto oatFile = oatDexFile->GetOatFile();
+  auto odexPath = env->NewStringUTF(oatFile->GetLocation().c_str());
+
+  auto artMethod = m->GetArtMethod();
+  const uint64_t* oatMethodQuickCode =
+      reinterpret_cast<const uint64_t*>(artMethod->GetOatMethodQuickCode(kRuntimePointerSize));
+
+  auto odexOffset = -1;  // TODO: get the offset of the odex itself like from proc/<pid>/map
+
+  std::string errorMsg;
+  const uint8_t* elfBegin = oatFile->ComputeElfBegin(&errorMsg);
+  DCHECK_NE(elfBegin, nullptr) << errorMsg;
+  DCHECK_GE(oatDexFile->GetOatFile()->Begin(), elfBegin);
+  auto methodOffset = oatMethodQuickCode == 0 ?
+                          0 :
+                          oatMethodQuickCode - reinterpret_cast<const uint64_t*>(elfBegin);
+
+  jclass clazz = env->FindClass("dalvik/system/VMDebug$JavaMethodLocation");
+  jmethodID constructorID = env->GetMethodID(clazz, "<init>", "(Ljava/lang/String;II)V");
+  return env->NewObject(clazz, constructorID, odexPath, odexOffset, methodOffset);
 }
 
 static jlongArray VMDebug_countInstancesOfClasses(JNIEnv* env,
@@ -638,6 +679,9 @@ static JNINativeMethod gMethods[] = {
     NATIVE_METHOD(VMDebug, stopLowOverheadTraceImpl, "()V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceImpl, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(VMDebug, dumpLowOverheadTraceFdImpl, "(I)V"),
+    NATIVE_METHOD(VMDebug,
+                  locateJavaMethodNative,
+                  "(Ljava/lang/reflect/Method;)Ldalvik/system/VMDebug$JavaMethodLocation;"),
 };
 
 void register_dalvik_system_VMDebug(JNIEnv* env) {
