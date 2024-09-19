@@ -51,6 +51,11 @@ art_cc_binary {
             // TODO(b/183102427): this seems to help asan on host, but libsgichain should
             // really be in shared_libs.
             whole_static_libs: ["libsigchain"],
+            runtime_libs: [
+                "libart",
+                "libicu_jni",
+                "libopenjdk",
+            ],
         },
     },
 
@@ -64,7 +69,6 @@ art_cc_binary {
     },
 
     // Create symlink for the primary version target.
-    symlink_preferred_arch: true,
     apex_available: [
         "com.android.art",
         "com.android.art.debug",
