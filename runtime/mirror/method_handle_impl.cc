@@ -45,12 +45,15 @@ void MethodHandle::Initialize(uintptr_t art_field_or_method,
 ObjPtr<mirror::MethodHandleImpl> MethodHandleImpl::Create(Thread* const self,
                                                           uintptr_t art_field_or_method,
                                                           MethodHandle::Kind kind,
-                                                          Handle<MethodType> method_type)
+                                                          Handle<MethodType> method_type,
+                                                          Handle<Class> target_class)
     REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_) {
   StackHandleScope<1> hs(self);
   Handle<mirror::MethodHandleImpl> mh(hs.NewHandle(ObjPtr<MethodHandleImpl>::DownCast(
       GetClassRoot<MethodHandleImpl>()->AllocObject(self))));
   mh->Initialize(art_field_or_method, kind, method_type);
+  mh->SetFieldObject<false>(InfoOffset(), nullptr);
+  mh->SetFieldObject<false>(TargetClassOffset(), target_class.Get());
   return mh.Get();
 }
 
