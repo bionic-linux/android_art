@@ -65,3 +65,130 @@ cc_library_shared {
     header_libs: ["jni_headers"],
     host_supported: true,
 }
+
+HOST_PREFER_MULTIPLE = select(soong_config_variable("art_module", "host_prefer_32_bit"), {
+    true: "32",
+    default: "64",
+})
+
+// According to the script content in art/tools/art,
+// LIBDIR is set to "lib" for 32-bit and "lib64" for 64-bit.
+HOST_PREFER_LIB_MULTIPLE = select(soong_config_variable("art_module", "host_prefer_32_bit"), {
+    true: "",
+    default: "64",
+})
+
+cc_genrule {
+    name: "gen_test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    tools: ["dalvikvm"],
+    srcs: [
+        // Part 1: Main executables
+        ":ahat-test-dump", // ahat-test-dump.jar
+        ":art-script", // out/host/srcs/bin/art
+        // dalvikvm: out/host/srcs/bin/dalvikvm -> dalvikvm64
+
+        // Part 2: Hardcoded library dependencies
+        ":apache-xml", // out/host/srcs/apex/com.android.art/javalib/apache-xml.jar
+        ":apex_icu.dat", // out/host/srcs/com.android.i18n/etc/icu/icudt75l.dat
+        ":bouncycastle", // out/host/srcs/apex/com.android.art/javalib/bouncycastle.jar
+        ":conscrypt-host", // out/host/srcs/apex/com.android.conscrypt/javalib/conscrypt.jar
+        ":core-icu4j-host", // out/host/srcs/apex/com.android.i18n/javalib/core-icu4j.jar
+        ":core-libart", // out/host/srcs/apex/com.android.art/javalib/core-libart.jar
+        ":core-oj", // out/host/srcs/apex/com.android.art/javalib/core-oj.jar
+        ":okhttp", // out/host/srcs/apex/com.android.art/javalib/okhttp.jar
+
+        // Part 3: JNI library
+        ":libahat-test-jni", // out/host/srcs/lib64/libahat-test-jni.so
+    ],
+    out: [
+        "test-dump.hprof",
+    ],
+    compile_multilib: "first",
+    // According to the script in art/tools/art, the `host` subdirectory is necessary.
+    cmd: "mkdir -p $(genDir)/host/srcs/bin &&" +
+        // Part 1: Main executables
+        "cp $(location :ahat-test-dump) $(genDir)/host/srcs/bin/ahat-test-dump.jar &&" +
+        "cp $(location :art-script) $(genDir)/host/srcs/bin/art &&" +
+        "cp $(location dalvikvm) $(genDir)/host/srcs/bin/dalvikvm" + HOST_PREFER_MULTIPLE + " &&" +
+        "ln -s $(genDir)/host/srcs/bin/dalvikvm" + HOST_PREFER_MULTIPLE + " $(genDir)/host/srcs/bin/dalvikvm &&" +
+
+        // Part 2: Hardcoded library dependencies
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :apache-xml) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "mkdir -p $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :apex_icu.dat) $(genDir)/host/srcs/com.android.i18n/etc/icu &&" +
+        "cp $(location :bouncycastle) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.conscrypt/javalib &&" +
+        "cp $(location :conscrypt-host) $(genDir)/host/srcs/apex/com.android.conscrypt/javalib/conscrypt.jar &&" +
+        "mkdir -p $(genDir)/host/srcs/apex/com.android.i18n/javalib &&" +
+        "cp $(location :core-icu4j-host) $(genDir)/host/srcs/apex/com.android.i18n/javalib/core-icu4j.jar &&" +
+        "cp $(location :core-libart) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :core-oj) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+        "cp $(location :okhttp) $(genDir)/host/srcs/apex/com.android.art/javalib &&" +
+
+        // Part 3: JNI library
+        "mkdir -p $(genDir)/host/srcs/lib" + HOST_PREFER_LIB_MULTIPLE + " &&" +
+        "cp $(location :libahat-test-jni) $(genDir)/host/srcs/lib" + HOST_PREFER_LIB_MULTIPLE + " &&" +
+
+        // Part 4: runtime libraries of `dalvikvm`
+        "cp tools/out/lib" + HOST_PREFER_LIB_MULTIPLE + "/* $(genDir)/host/srcs/lib" + HOST_PREFER_LIB_MULTIPLE + " &&" +
+
+        // Generate command
+        "mkdir -p $(genDir)/host/test-dump-android_data &&" +
+        "ANDROID_DATA=$(genDir)/host/test-dump-android_data $(genDir)/host/srcs/bin/art " +
+        " --no-compile -d --" + HOST_PREFER_MULTIPLE +
+        " -cp $(location :ahat-test-dump) Main $(out)",
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        windows: {
+            enabled: false,
+        },
+    },
+    required: ["dalvikvm_link"],
+}
+
+// TODO: Remove this after `ahat-tests` is fully converted to Android.bp
+// This `cc_prebuilt_object` is only for providing the install path of "test-dump.hprof"
+// to the original Android.mk, and to verify that the converted content of
+// "test-dump.hprof" is correct. It can be deleted after `ahat-tests` is fully
+// converted to Android.bp.
+cc_prebuilt_object {
+    name: "test-dump.hprof",
+    host_supported: true,
+    device_supported: false,
+    compile_multilib: "first",
+    srcs: [
+        ":gen_test-dump.hprof",
+    ],
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        windows: {
+            enabled: false,
+        },
+    },
+    enabled: select(soong_config_variable("ANDROID", "EMMA_INSTRUMENT"), {
+        true: false,
+        default: true,
+    }),
+}
+
+sh_binary {
+    name: "dalvikvm_link",
+    host_supported: true,
+    src: ":gen_dalvikvm_sh",
+    filename_from_src: true,
+}
+
+genrule {
+    name: "gen_dalvikvm_sh",
+    out: ["dalvikvm"],
+    cmd: "echo '#!/bin/bash' > $(out) && " +
+        "echo 'bash $$(dirname \"$$0\")/dalvikvm64' >> $(out)",
+}
