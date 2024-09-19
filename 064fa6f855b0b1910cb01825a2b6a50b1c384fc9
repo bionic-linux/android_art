@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1263817e_af5932b5",
+        "filename": "odrefresh/odr_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T09:59:14Z",
+      "side": 1,
+      "message": "Let\u0027s return `const std::string*`, as std::string is easier to use by callers. For example, when doing the string comparison on the caller side, you can avoid the std::string() constructor, which involves copying.\n\nAlternatively, return `std::optional\u003cstd::string\u003e`, in which case you use `std::nullopt` instead of `nullptr` to represent the value being non-existent.\n\nUp to you.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "d284a3e6_bd84c130",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "odrefresh/odr_config.h",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "  const std::string* GetPropertyOrNull(const std::string\u0026 key) const {\n"
+            },
+            {
+              "path": "odrefresh/odr_config.h",
+              "range": {
+                "startLine": 110,
+                "startChar": 0,
+                "endLine": 111,
+                "endChar": 0
+              },
+              "replacement": "    return it !\u003d system_properties_-\u003eend() ? \u0026it-\u003esecond : nullptr;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "064fa6f855b0b1910cb01825a2b6a50b1c384fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc7bd030_9845f272",
+        "filename": "odrefresh/odr_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T09:59:14Z",
+      "side": 1,
+      "message": "As the base class exposes public methods like \"Get\" and \"GetOrEmpty\", it\u0027s better to name this method \"GetOrNull\" to keep the consistency. You were probably thinking of \"GetProperty\", but that\u0027s a protected method, meaning it\u0027s not on the API surface.",
+      "range": {
+        "startLine": 108,
+        "startChar": 14,
+        "endLine": 108,
+        "endChar": 31
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "7c8ddfff_a84c7563",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "odrefresh/odr_config.h",
+              "range": {
+                "startLine": 108,
+                "startChar": 0,
+                "endLine": 109,
+                "endChar": 0
+              },
+              "replacement": "  const char* GetOrNull(const std::string\u0026 key) const {\n"
+            }
+          ]
+        }
+      ],
+      "revId": "064fa6f855b0b1910cb01825a2b6a50b1c384fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e1a951_db06c5ad",
+        "filename": "odrefresh/odrefresh.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T09:59:14Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"Sytem\" -- should it be \"System\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"Sytem\" -- should it be \"System\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1047,
+        "startChar": 23,
+        "endLine": 1047,
+        "endChar": 28
+      },
+      "revId": "064fa6f855b0b1910cb01825a2b6a50b1c384fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
