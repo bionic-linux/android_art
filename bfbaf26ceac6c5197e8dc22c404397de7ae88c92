@@ -33,6 +33,24 @@
       "message": "Not sure if we need this to be atomic since it is guarded by task_queue_lock_",
       "revId": "bfbaf26ceac6c5197e8dc22c404397de7ae88c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "702a4401_2fd316e2",
+        "filename": "runtime/thread_pool.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-19T16:38:08Z",
+      "side": 1,
+      "message": "I think that since this is guarded by a mutex, then maybe we can get rid of the volatile keyword",
+      "parentUuid": "34daa9b0_acb41b3f",
+      "revId": "bfbaf26ceac6c5197e8dc22c404397de7ae88c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
