@@ -778,7 +778,7 @@ struct MethodHandleOffsets : public CheckOffsets<mirror::MethodHandle> {
 struct MethodHandleImplOffsets : public CheckOffsets<mirror::MethodHandleImpl> {
   MethodHandleImplOffsets() : CheckOffsets<mirror::MethodHandleImpl>(
       false, "Ljava/lang/invoke/MethodHandleImpl;") {
-    addOffset(OFFSETOF_MEMBER(mirror::MethodHandleImpl, info_), "info");
+    addOffset(OFFSETOF_MEMBER(mirror::MethodHandleImpl, holder_), "holder");
   }
 };
 
