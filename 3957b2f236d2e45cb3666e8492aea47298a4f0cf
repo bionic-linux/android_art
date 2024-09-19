@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b81dffe0_e7808a83",
+        "filename": "compiler/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-09-19T12:08:54Z",
+      "side": 1,
+      "message": "Can we call it \"art_boot_images\"?",
+      "range": {
+        "startLine": 545,
+        "startChar": 24,
+        "endLine": 545,
+        "endChar": 41
+      },
+      "revId": "3957b2f236d2e45cb3666e8492aea47298a4f0cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
