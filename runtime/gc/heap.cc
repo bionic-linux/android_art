@@ -4727,6 +4727,27 @@ void Heap::PostForkChildAction(Thread* self) {
                               new TriggerPostForkCCGcTask(post_fork_gc_time, starting_gc_num));
 }
 
+void Heap::AvoidGCAction(Thread* self, size_t timeout) {
+  if (collector_type_ == kCollectorTypeCC) {
+    if (target_footprint_ != growth_limit_) {
+      // If max_allowed_footprint_ set already to growth_limit_,
+      // don't need to increase temporarily max_allowed_footprint_ again.
+      LOG(INFO) << "Called appReStart to increase max_allowed_footprint_";
+      // Set target_footprint_ to the largest allowed value.
+      SetIdealFootprint(growth_limit_);
+      // Set concurrent_start_bytes_ to half of the heap size.
+      size_t target_footprint = target_footprint_.load(std::memory_order_relaxed);
+      concurrent_start_bytes_ = std::max(target_footprint / 2, GetBytesAllocated());
+
+      uint32_t starting_gc_num = GetCurrentGcNum();
+      uint64_t post_fork_gc_time = NanoTime() + MsToNs(timeout);
+      GetTaskProcessor()->AddTask(
+          self, new TriggerPostForkCCGcTask(post_fork_gc_time, starting_gc_num));
+    }
+  }
+}
+
+
 void Heap::VisitReflectiveTargets(ReflectiveValueVisitor *visit) {
   VisitObjectsPaused([&visit](mirror::Object* ref) NO_THREAD_SAFETY_ANALYSIS {
     art::ObjPtr<mirror::Class> klass(ref->GetClass());

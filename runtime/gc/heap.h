@@ -420,6 +420,8 @@ class Heap {
   // which will never be used. Used to implement dalvik.system.VMRuntime.clampGrowthLimit.
   void ClampGrowthLimit() REQUIRES(!Locks::heap_bitmap_lock_);
 
+  void AvoidGCAction(Thread* self, size_t timeout);
+
   // Target ideal heap utilization ratio, implements
   // dalvik.system.VMRuntime.getTargetHeapUtilization.
   double GetTargetHeapUtilization() const {
