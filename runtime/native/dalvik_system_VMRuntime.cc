@@ -182,6 +182,10 @@ static void VMRuntime_clampGrowthLimit(JNIEnv*, jobject) {
   Runtime::Current()->GetHeap()->ClampGrowthLimit();
 }
 
+static void VMRuntime_avoidGCAction(JNIEnv* env, jobject) {
+  Runtime::Current()->GetHeap()->AvoidGCAction(Thread::ForEnv(env));
+}
+
 static jboolean VMRuntime_isNativeDebuggable(JNIEnv*, jobject) {
   return Runtime::Current()->IsNativeDebuggable();
 }
@@ -586,6 +590,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMRuntime, isValidClassLoaderContext, "(Ljava/lang/String;)Z"),
   NATIVE_METHOD(VMRuntime, getBaseApkOptimizationInfo,
       "()Ldalvik/system/DexFile$OptimizationInfo;"),
+  NATIVE_METHOD(VMRuntime, avoidGCAction, "()V"),
 };
 
 void register_dalvik_system_VMRuntime(JNIEnv* env) {
