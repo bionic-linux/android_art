@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a17544_a0e20f04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-20T17:14:59Z",
+      "side": 1,
+      "message": "I saw a couple more \"volatile\" which were as well guarded by a lock",
+      "revId": "91e3e91d0118a173228a95ec530e3fa827699714",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
