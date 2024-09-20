@@ -2558,7 +2558,7 @@ ENTRY art_quick_record_entry_trace_event
     // checking if we need to call this method. This will be still valid here.
     cmp xIP1, xIP0
     bhs .Lupdate_entry
-    mov xIP1, #TRACE_BUFFER_SIZE
+    mov xIP1, #LOW_OVERHEAD_TRACE_BUFFER_SIZE
     add xIP1, xIP0, xIP1
 .Lupdate_entry:
     str x0, [xIP1]
@@ -2573,7 +2573,7 @@ ENTRY art_quick_record_exit_trace_event
     // checking if we need to call this method. This will be still valid here.
     cmp xIP1, xIP0
     bhs .Lupdate_entry_exit
-    mov xIP1, #TRACE_BUFFER_SIZE
+    mov xIP1, #LOW_OVERHEAD_TRACE_BUFFER_SIZE
     add xIP1, xIP0, xIP1
 .Lupdate_entry_exit:
     mov xIP0, #1

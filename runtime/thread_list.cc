@@ -51,6 +51,7 @@
 #include "scoped_thread_state_change-inl.h"
 #include "thread.h"
 #include "trace.h"
+#include "trace_profile.h"
 #include "unwindstack/AndroidUnwinder.h"
 #include "well_known_classes.h"
 
@@ -1553,6 +1554,10 @@ void ThreadList::Unregister(Thread* self, bool should_run_callbacks) {
   // of just releasing the buffer here.
   if (UNLIKELY(self->GetMethodTraceBuffer() != nullptr)) {
     Trace::ReleaseThreadBuffer(self);
+  }
+
+  if (UNLIKELY(self->GetLowOverheadMethodTraceBuffer() != nullptr)) {
+    TraceProfiler::ReleaseThreadBuffer(self);
   }
   CHECK_EQ(self->GetMethodTraceBuffer(), nullptr) << Trace::GetDebugInformation();
   delete self;

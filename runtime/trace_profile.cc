@@ -36,15 +36,16 @@ namespace art HIDDEN {
 static constexpr size_t kMaxBytesPerTraceEntry = sizeof(uintptr_t);
 
 // We don't handle buffer overflows when processing the raw trace entries. We have a maximum of
-// kAlwaysOnTraceBufSize raw entries and we need a maximum of kMaxBytesPerTraceEntry to encode
+// kLowOverheadTraceBufSize raw entries and we need a maximum of kMaxBytesPerTraceEntry to encode
 // each entry. To avoid overflow, we ensure that there are at least kMinBufSizeForEncodedData
 // bytes free space in the buffer.
-static constexpr size_t kMinBufSizeForEncodedData = kAlwaysOnTraceBufSize * kMaxBytesPerTraceEntry;
+static constexpr size_t kMinBufSizeForEncodedData =
+    kLowOverheadTraceBufSize * kMaxBytesPerTraceEntry;
 
 // TODO(mythria): 10 is a randomly chosen value. Tune it if required.
 static constexpr size_t kBufSizeForEncodedData = kMinBufSizeForEncodedData * 10;
 
-static constexpr size_t kAlwaysOnTraceHeaderSize = 8;
+static constexpr size_t kLowOverheadTraceHeaderSize = 8;
 
 bool TraceProfiler::profile_in_progress_ = false;
 
@@ -71,9 +72,9 @@ void TraceProfiler::Start() {
   ScopedSuspendAll ssa(__FUNCTION__);
   MutexLock tl(self, *Locks::thread_list_lock_);
   for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
-    auto buffer = new uintptr_t[kAlwaysOnTraceBufSize];
-    memset(buffer, 0, kAlwaysOnTraceBufSize * sizeof(uintptr_t));
-    thread->SetMethodTraceBuffer(buffer, kAlwaysOnTraceBufSize);
+    auto buffer = new uintptr_t[kLowOverheadTraceBufSize];
+    memset(buffer, 0, kLowOverheadTraceBufSize * sizeof(uintptr_t));
+    thread->SetLowOverheadMethodTraceBuffer(buffer, kLowOverheadTraceBufSize);
   }
 }
 
@@ -93,10 +94,10 @@ void TraceProfiler::Stop() {
   ScopedSuspendAll ssa(__FUNCTION__);
   MutexLock tl(self, *Locks::thread_list_lock_);
   for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
-    auto buffer = thread->GetMethodTraceBuffer();
+    auto buffer = thread->GetLowOverheadMethodTraceBuffer();
     if (buffer != nullptr) {
       delete[] buffer;
-      thread->SetMethodTraceBuffer(/* buffer= */ nullptr, /* offset= */ 0);
+      thread->SetLowOverheadMethodTraceBuffer(/* buffer= */ nullptr, /* offset= */ 0);
     }
   }
 
@@ -108,11 +109,11 @@ uint8_t* TraceProfiler::DumpBuffer(uint32_t thread_id,
                                    uint8_t* buffer,
                                    std::unordered_set<ArtMethod*>& methods) {
   // Encode header at the end once we compute the number of records.
-  uint8_t* curr_buffer_ptr = buffer + kAlwaysOnTraceHeaderSize;
+  uint8_t* curr_buffer_ptr = buffer + kLowOverheadTraceHeaderSize;
 
   int num_records = 0;
   uintptr_t prev_method_action_encoding = 0;
-  for (size_t i = 0; i < kAlwaysOnTraceBufSize; i++) {
+  for (size_t i = 0; i < kLowOverheadTraceBufSize; i++) {
     uintptr_t method_action_encoding = method_trace_entries[num_records];
     // 0 value indicates the rest of the entries are empty.
     if (method_action_encoding == 0) {
@@ -177,7 +178,7 @@ void TraceProfiler::Dump(std::unique_ptr<File>&& trace_file) {
   uint8_t* buffer_ptr = new uint8_t[kBufSizeForEncodedData];
   uint8_t* curr_buffer_ptr = buffer_ptr;
   for (Thread* thread : Runtime::Current()->GetThreadList()->GetList()) {
-    auto method_trace_entries = thread->GetMethodTraceBuffer();
+    auto method_trace_entries = thread->GetLowOverheadMethodTraceBuffer();
     if (method_trace_entries == nullptr) {
       continue;
     }
@@ -194,14 +195,27 @@ void TraceProfiler::Dump(std::unique_ptr<File>&& trace_file) {
     // Reset the buffer and continue profiling. We need to set the buffer to
     // zeroes, since we use a circular buffer and detect empty entries by
     // checking for zeroes.
-    memset(method_trace_entries, 0, kAlwaysOnTraceBufSize * sizeof(uintptr_t));
+    memset(method_trace_entries, 0, kLowOverheadTraceBufSize * sizeof(uintptr_t));
     // Reset the current pointer.
-    thread->SetMethodTraceBufferCurrentEntry(kAlwaysOnTraceBufSize);
+    thread->SetMethodTraceBufferCurrentEntry(kLowOverheadTraceBufSize);
   }
 }
 
 bool TraceProfiler::IsTraceProfileInProgress() {
   return profile_in_progress_;
+}
+
+void TraceProfiler::ReleaseThreadBuffer(Thread* self) {
+  MutexLock mu(self, *Locks::trace_lock_);
+  if (!IsTraceProfileInProgress()) {
+    DCHECK_EQ(self->GetLowOverheadMethodTraceBuffer(), nullptr);
+    return;
+  }
+  // TODO(mythria): Maybe it's good to cache these and dump them when requested. For now just
+  // relese the buffer when a thread is exiting.
+  auto buffer = self->GetLowOverheadMethodTraceBuffer();
+  delete[] buffer;
+  self->SetLowOverheadMethodTraceBuffer(nullptr, 0);
 }
 
 }  // namespace art

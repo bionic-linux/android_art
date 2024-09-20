@@ -1326,7 +1326,8 @@ void CodeGeneratorARM64::MaybeRecordTraceEvent(bool is_method_entry) {
       new (GetScopedAllocator()) TracingMethodEntryExitHooksSlowPathARM64(is_method_entry);
   AddSlowPath(slow_path);
 
-  __ Ldr(addr, MemOperand(tr, Thread::TraceBufferPtrOffset<kArm64PointerSize>().SizeValue()));
+  __ Ldr(addr,
+         MemOperand(tr, Thread::LowOverheadTraceBufferPtrOffset<kArm64PointerSize>().SizeValue()));
   __ Cbnz(addr, slow_path->GetEntryLabel());
   __ Bind(slow_path->GetExitLabel());
 }

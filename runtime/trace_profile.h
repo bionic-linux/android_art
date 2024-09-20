@@ -29,7 +29,7 @@ class ArtMethod;
 
 // TODO(mythria): A randomly chosen value. Tune it later based on the number of
 // entries required in the buffer.
-static constexpr size_t kAlwaysOnTraceBufSize = 2048;
+static constexpr size_t kLowOverheadTraceBufSize = 2048;
 
 // This class implements low-overhead tracing. This feature is available only when
 // always_enable_profile_code is enabled which is a build time flag defined in
@@ -48,6 +48,9 @@ class TraceProfiler {
   // Dumps the recorded events in the buffer from all threads in the specified file.
   static void Dump(int fd);
   static void Dump(const char* trace_filename);
+
+  // Called when thread is exiting to release the allocated buffer.
+  static void ReleaseThreadBuffer(Thread* self);
 
   static bool IsTraceProfileInProgress() REQUIRES(Locks::trace_lock_);
 
