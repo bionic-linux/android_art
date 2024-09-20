@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ef4c8d_b8237881",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-20T08:51:12Z",
+      "side": 1,
+      "message": "additional",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "34ba11d0_92f94836",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "runtime/gc_configuration.md",
+              "range": {
+                "startLine": 47,
+                "startChar": 0,
+                "endLine": 48,
+                "endChar": 0
+              },
+              "replacement": "their heap growth even at the expense of additional GC cost. That could be used to justify\n"
+            }
+          ]
+        }
+      ],
+      "revId": "5917651ffe0d361d3dca1a613c138e542311b037",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
