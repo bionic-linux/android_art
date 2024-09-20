@@ -32,6 +32,25 @@ public class Main {
       $noinline$testMethodHandleFromOtherDex();
       Multi.$noinline$testMHFromMain(OPTIONAL_GET);
       $noinline$testWithArgs();
+      $noinline$nullchecks();
+    }
+
+    private static void $noinline$nullchecks() throws Throwable {
+      try {
+        VOID_METHOD.invokeExact((A) null);
+        unreachable("Receiver is null, should throw NPE");
+      } catch (NullPointerException ignored) {}
+
+      try {
+        VOID_METHOD.invokeExact((Main) null);
+        unreachable("Should throw WMTE: input is of wrong type");
+      } catch (WrongMethodTypeException ignored) {}
+
+      try {
+        MethodHandle mh = null;
+        mh.invokeExact();
+        unreachable("MethodHandle object is null, should throw NPE");
+      } catch (NullPointerException expected) {}
     }
 
     private static void $noinline$testMethodHandleFromOtherDex() throws Throwable {
