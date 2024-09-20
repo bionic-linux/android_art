@@ -70,6 +70,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0194e6d6_7722387c",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2024-09-20T13:00:55Z",
+      "side": 0,
+      "message": "I wonder if we could move the compact_dex subclass into simpleperf (and possibly remove large part of it).\n\nAlternatively, I wonder what is the minimal code needed to get method names from both standard and compact dex (i.e. make that part of simpleperf independent of ART code base).",
+      "parentUuid": "e66f4f4e_16d6016f",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
