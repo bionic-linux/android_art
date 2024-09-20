@@ -1108,6 +1108,12 @@ class EXPORT Thread {
         OFFSETOF_MEMBER(tls_ptr_sized_values, method_trace_buffer));
   }
 
+  template <PointerSize pointer_size>
+  static constexpr ThreadOffset<pointer_size> LowOverheadTraceBufferPtrOffset() {
+    return ThreadOffsetFromTlsPtr<pointer_size>(
+        OFFSETOF_MEMBER(tls_ptr_sized_values, low_overhead_method_trace_buffer));
+  }
+
   // Size of stack less any space reserved for stack overflow
   size_t GetStackSize() const {
     return tlsPtr_.stack_size - (tlsPtr_.stack_end - tlsPtr_.stack_begin);
@@ -1362,6 +1368,8 @@ class EXPORT Thread {
 
   uintptr_t* GetMethodTraceBuffer() { return tlsPtr_.method_trace_buffer; }
 
+  uintptr_t* GetLowOverheadMethodTraceBuffer() { return tlsPtr_.low_overhead_method_trace_buffer; }
+
   uintptr_t** GetTraceBufferCurrEntryPtr() { return &tlsPtr_.method_trace_buffer_curr_entry; }
 
   void SetMethodTraceBuffer(uintptr_t* buffer, int init_index) {
@@ -1369,12 +1377,21 @@ class EXPORT Thread {
     SetMethodTraceBufferCurrentEntry(init_index);
   }
 
+  void SetLowOverheadMethodTraceBuffer(uintptr_t* buffer, int init_index) {
+    tlsPtr_.low_overhead_method_trace_buffer = buffer;
+    SetMethodTraceBufferCurrentEntry(init_index);
+  }
+
   void SetMethodTraceBufferCurrentEntry(int index) {
     uintptr_t* buffer = tlsPtr_.method_trace_buffer;
     if (buffer == nullptr) {
+      buffer = tlsPtr_.low_overhead_method_trace_buffer;
+    } else {
+      DCHECK_EQ(tlsPtr_.low_overhead_method_trace_buffer, nullptr);
+    }
+    if (buffer == nullptr) {
       tlsPtr_.method_trace_buffer_curr_entry = nullptr;
     } else {
-      DCHECK(buffer != nullptr);
       tlsPtr_.method_trace_buffer_curr_entry = buffer + index;
     }
   }
@@ -2158,6 +2175,7 @@ class EXPORT Thread {
                                async_exception(nullptr),
                                top_reflective_handle_scope(nullptr),
                                method_trace_buffer(nullptr),
+                               low_overhead_method_trace_buffer(nullptr),
                                method_trace_buffer_curr_entry(nullptr),
                                thread_exit_flags(nullptr),
                                last_no_thread_suspension_cause(nullptr),
@@ -2329,6 +2347,9 @@ class EXPORT Thread {
 
     // Pointer to a thread-local buffer for method tracing.
     uintptr_t* method_trace_buffer;
+
+    // Pointer to a thread-local buffer for the low overhead method tracing.
+    uintptr_t* low_overhead_method_trace_buffer;
 
     // Pointer to the current entry in the buffer.
     uintptr_t* method_trace_buffer_curr_entry;
