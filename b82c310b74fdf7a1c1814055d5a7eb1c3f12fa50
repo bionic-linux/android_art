@@ -22,6 +22,30 @@
       },
       "revId": "b82c310b74fdf7a1c1814055d5a7eb1c3f12fa50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45e688e_c577e248",
+        "filename": "test/2277-methodhandle-invokeexact/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-20T13:15:59Z",
+      "side": 1,
+      "message": "Yeah, it should be `expected`. Thanks, updated.",
+      "parentUuid": "6a102155_fd3eaeb0",
+      "range": {
+        "startLine": 42,
+        "startChar": 36,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "b82c310b74fdf7a1c1814055d5a7eb1c3f12fa50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
