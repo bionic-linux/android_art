@@ -16,6 +16,29 @@
       "message": "At a naive glance, this might be a suspect for b/368661421",
       "revId": "a303efff1731e5b7e9574a4e54701515a4c16d41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "498ce2c9_9c6ebe63",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-09-20T21:45:34Z",
+      "side": 1,
+      "message": "In `art/libartbase/base/mem_map.cc` I see:\n\n```\nMemMap MemMap::MapFileAtAddress(uint8_t* expected_ptr,\n                                size_t byte_count,\n                                int prot,\n                                int flags,\n                                int fd,\n                                off_t start,\n                                bool low_4gb,\n                                const char* filename,\n                                bool reuse,\n                                /*inout*/MemMap* reservation,\n                                /*out*/std::string* error_msg) {\n[...]\n  if (reuse) {\n    // reuse means it is okay that it overlaps an existing page mapping.\n    // Only use this if you actually made the page reservation yourself.\n    CHECK(expected_ptr !\u003d nullptr);\n```\n\nIt looks like we\u0027re always sending `expected_ptr` as `nullptr` here.  So if `reuse` is `true`, this is going to trigger the check.\n\nMy naive reading is that we have an issue here.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 39
+      },
+      "revId": "a303efff1731e5b7e9574a4e54701515a4c16d41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
