@@ -106,6 +106,7 @@ cc_test {
     ],
 
     isolated: true,
+    test_config: "libnativebridge-tests.xml",
 
     srcs: [
         "NativeBridgeTest.cpp",

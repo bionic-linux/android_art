@@ -24,13 +24,19 @@
     <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer" />
     <target_preparer class="com.android.tradefed.targetprep.DisableSELinuxTargetPreparer" />
 
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="true" />
-        <option name="push" value="{MODULE}->/data/local/tmp/{MODULE}" />
+        <option name="push" value="{MODULE}->/data/local/tmp/{MODULE}/{MODULE}" />
+        <option name="append-bitness" value="true" />
+    </target_preparer>
+
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
+        <option name="cleanup" value="true" />
+        <option name="push" value="art-gtest-jars-Main.jar->/data/local/tmp/{MODULE}/art-gtest-jars-Main.jar" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.GTest" >
-        <option name="native-test-device-path" value="/data/local/tmp" />
+        <option name="native-test-device-path" value="/data/local/tmp/{MODULE}" />
         <option name="module-name" value="{MODULE}" />
     </test>
 
