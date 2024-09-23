@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e942181_56185495",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2024-09-23T13:09:50Z",
+      "side": 1,
+      "message": "I don\u0027t know this code, so this is a naive drive-by.  But it looks like it\u0027s illegal to call this method with `reuse` set to `false`.  So why not remove the `reuse` argument to make it impossible for a caller to call this method the wrong way?",
+      "revId": "4b3faf133b43124cc61ec99ddbee0c579eef9411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
