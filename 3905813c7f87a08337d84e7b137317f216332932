@@ -118,6 +118,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c3cb26_de4a0f8a",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-23T17:25:08Z",
+      "side": 0,
+      "message": "On S+ it\u0027d be better to load libdexfile.so on device and use its stable ABI, because that\u0027s guaranteed to be in sync with the vdex\u0027es. If you need to be compatible with R- (i.e. before it had a stable ABI) then it\u0027d require keeping cdex compat around, either in ART or in simpleperf.\n\nThe benefit of linking against libdexfile.so on device is that it\u0027ll keep working regardless what we do in the future. If we fork off a cdex-aware lib somewhere then sooner or later it\u0027ll need to live alongside a new lib that supports the latest dex features, and you\u0027ll have to include both (or more) versions into simpleperf and call into the right one depending on the platform version.\n\nLinking libdexfile dynamically means changing the binary to not be entirely static, so it has implications.",
+      "parentUuid": "07dae7d4_76346dc0",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
