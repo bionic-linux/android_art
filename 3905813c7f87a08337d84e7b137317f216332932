@@ -142,6 +142,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5f7e3e_b5501ede",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2024-09-23T17:47:02Z",
+      "side": 0,
+      "message": "The support of cdex doesn\u0027t need to kept forever, but I want to keep the ability of profiling on at least 2-3 years old devices.\nI guess it would be pretty hard to build a non-static simpleperf binary in AOSP and run it on older Android versions. Especially considering both simpleperf and libdexfile.so link a bunch of other libraries.",
+      "parentUuid": "d6c3cb26_de4a0f8a",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
