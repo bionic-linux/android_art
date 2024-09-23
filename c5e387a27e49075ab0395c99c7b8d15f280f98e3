@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7915080_606a0b87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-23T16:39:24Z",
+      "side": 1,
+      "message": "Mention that the implementation makes it still go to slow path.",
+      "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
