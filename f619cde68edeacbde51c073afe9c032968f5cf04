@@ -83,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b560b0_323826e8",
+        "filename": "test/2280-const-method-handle-validation/info.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T17:50:21Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "6a173e8c_de4b4632",
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d96a32_334072a3",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b7d96a32_334072a3",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193d3c0d_7c1ac7b8",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodHandle.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T17:50:21Z",
+      "side": 1,
+      "message": "Not done. Did you forget to upload a patchset?",
+      "parentUuid": "23035368_5a0b0c90",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -308,6 +350,30 @@
       "side": 1,
       "message": "These tests are run against both ART and the RI. And here we currently diverge: the RI throws CFE, we throw ICCE.",
       "parentUuid": "c29744e8_19d4be31",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 64
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f356144_79f6867b",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T17:50:21Z",
+      "side": 1,
+      "message": "Ack, maybe we should try to not diverge but that\u0027s for another CL",
+      "parentUuid": "0d9d0ad0_2a802451",
       "range": {
         "startLine": 96,
         "startChar": 17,
