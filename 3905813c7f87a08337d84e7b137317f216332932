@@ -94,6 +94,30 @@
       },
       "revId": "3905813c7f87a08337d84e7b137317f216332932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dae7d4_76346dc0",
+        "filename": "libdexfile/external/dex_file_ext.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2024-09-23T16:58:29Z",
+      "side": 0,
+      "message": "The user journey is: user (can be Android Studio) adb pushes simpleperf static binary on device, then collects samples for an app. At the end of collection, simpleperf static binary reads vdex files containing cdex for symbols touched by the samples, and puts symbols in the recording file. The symbol reading happens on device.\nI am also happy of keeping the code reading symbols from cdex files in simpleperf, if you really want to clean it up in ART.",
+      "parentUuid": "0194e6d6_7722387c",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "3905813c7f87a08337d84e7b137317f216332932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
