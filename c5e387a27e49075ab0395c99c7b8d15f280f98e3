@@ -34,6 +34,47 @@
       "parentUuid": "c7915080_606a0b87",
       "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e93ec54_3365504b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-23T16:47:09Z",
+      "side": 1,
+      "message": "Ah right, sorry I missed that, your comment in the code confused me.",
+      "parentUuid": "1aebdfbf_22597ed5",
+      "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9a2632_ad77b514",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-23T16:47:09Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 4148,
+        "startChar": 0,
+        "endLine": 4148,
+        "endChar": 55
+      },
+      "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
