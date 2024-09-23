@@ -40,6 +40,30 @@
       ],
       "revId": "5917651ffe0d361d3dca1a613c138e542311b037",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1a9e27_21ff1131",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-23T22:15:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ef4c8d_b8237881",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "5917651ffe0d361d3dca1a613c138e542311b037",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
