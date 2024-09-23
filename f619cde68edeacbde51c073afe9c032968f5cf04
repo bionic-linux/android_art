@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c28179f_79cfbe82",
+        "filename": "test/2280-const-method-handle-validation/info.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "nit: `Ensure` or `Ensures`",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b141e953_758f13d4",
+        "filename": "test/2280-const-method-handle-validation/info.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "Do the tests do this? Or are they ensuring that we throw when an incompatibility happens?",
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d96a32_334072a3",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodHandle.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6626a01_f7671048",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodType.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ea3c59_8e51ce8d",
+        "filename": "test/2280-const-method-handle-validation/src-util/transformer/ConstantTransformer.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78573edf_c72b04ea",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "Are these tests you are planning on working in the future?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29744e8_19d4be31",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T16:51:05Z",
+      "side": 1,
+      "message": "Why do you sometimes catch two errors? Is the error we are supposed to catch not deterministic?",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 64
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
