@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a61306e_770c3cb7",
+        "filename": "test/2280-const-method-handle-validation/info.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c28179f_79cfbe82",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 8
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a173e8c_de4b4632",
+        "filename": "test/2280-const-method-handle-validation/info.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "I planned this CL as a first iteration and checks are done when we only create `MethodHandle` objects. Ideally (following JVMS and the RI) certain check should be done at class loading time.\nI think not having invalid `MethodHandle` object is a good first step and in follow-up CLs I will might move some of these checks elsewhere if you (the ART team) agrees.",
+      "parentUuid": "b141e953_758f13d4",
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d96a32_334072a3",
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23035368_5a0b0c90",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodHandle.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d96a32_334072a3",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6626a01_f7671048",
@@ -77,6 +143,30 @@
       "writtenOn": "2024-09-23T16:51:05Z",
       "side": 1,
       "message": "2024",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec086c5_928ea930",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodType.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6626a01_f7671048",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -112,6 +202,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7a64e25_d718fec3",
+        "filename": "test/2280-const-method-handle-validation/src-util/transformer/ConstantTransformer.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ea3c59_8e51ce8d",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "78573edf_c72b04ea",
         "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
         "patchSetId": 12
@@ -123,6 +237,30 @@
       "writtenOn": "2024-09-23T16:51:05Z",
       "side": 1,
       "message": "Are these tests you are planning on working in the future?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d2c667_b638d320",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "Yep. This CL is too big already and fixing these will make it even more complicated.",
+      "parentUuid": "78573edf_c72b04ea",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -146,6 +284,30 @@
       "writtenOn": "2024-09-23T16:51:05Z",
       "side": 1,
       "message": "Why do you sometimes catch two errors? Is the error we are supposed to catch not deterministic?",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 64
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9d0ad0_2a802451",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:15:41Z",
+      "side": 1,
+      "message": "These tests are run against both ART and the RI. And here we currently diverge: the RI throws CFE, we throw ICCE.",
+      "parentUuid": "c29744e8_19d4be31",
       "range": {
         "startLine": 96,
         "startChar": 17,
