@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1c36d8_5c14c096",
+        "filename": "test/2276-const-method-type-gc-cleanup/src-art/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T07:18:02Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "6be01466_7fea53e1",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "913e20993923935d92effa4bca1b9885d48f3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40889d14_e7a13d7d",
