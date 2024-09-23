@@ -22,6 +22,30 @@
       },
       "revId": "210e7acdcbfeb21006ae5c5d587204b395e6e4a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8f1b0c_df6c53f8",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3912,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-23T11:45:37Z",
+      "side": 1,
+      "message": "Renamed to `out_or_temp`, and added a comment explaining it.",
+      "parentUuid": "555399be_c0b2ab51",
+      "range": {
+        "startLine": 3912,
+        "startChar": 0,
+        "endLine": 3912,
+        "endChar": 11
+      },
+      "revId": "210e7acdcbfeb21006ae5c5d587204b395e6e4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
