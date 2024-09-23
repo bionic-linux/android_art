@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adc3941_8e0d0d63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:00:45Z",
+      "side": 1,
+      "message": "Sorry, fixed that.",
+      "parentUuid": "6e93ec54_3365504b",
+      "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d9a2632_ad77b514",
@@ -67,6 +85,30 @@
       "writtenOn": "2024-09-23T16:47:09Z",
       "side": 1,
       "message": "Update comment.",
+      "range": {
+        "startLine": 4148,
+        "startChar": 0,
+        "endLine": 4148,
+        "endChar": 55
+      },
+      "revId": "c5e387a27e49075ab0395c99c7b8d15f280f98e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54e6968_6ff8eb8e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:00:45Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "3d9a2632_ad77b514",
       "range": {
         "startLine": 4148,
         "startChar": 0,
