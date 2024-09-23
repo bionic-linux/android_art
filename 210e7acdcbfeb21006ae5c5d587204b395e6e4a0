@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555399be_c0b2ab51",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3912,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-23T09:57:24Z",
+      "side": 1,
+      "message": "Drop this comment or explicitly say that for void it\u0027s just a temporary. Maybe rename the variable to `result_or_temp` ?",
+      "range": {
+        "startLine": 3912,
+        "startChar": 0,
+        "endLine": 3912,
+        "endChar": 11
+      },
+      "revId": "210e7acdcbfeb21006ae5c5d587204b395e6e4a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
