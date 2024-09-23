@@ -174,6 +174,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49bc1398_f28f5b7b",
+        "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodHandle.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:59:49Z",
+      "side": 1,
+      "message": "Yeah, exactly, sorry. Now it is there.",
+      "parentUuid": "193d3c0d_7c1ac7b8",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6626a01_f7671048",
         "filename": "test/2280-const-method-handle-validation/src-util/annotations/ConstantMethodType.java",
         "patchSetId": 12
@@ -374,6 +398,30 @@
       "side": 1,
       "message": "Ack, maybe we should try to not diverge but that\u0027s for another CL",
       "parentUuid": "0d9d0ad0_2a802451",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 64
+      },
+      "revId": "f619cde68edeacbde51c073afe9c032968f5cf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e371f0c_78b6d1a3",
+        "filename": "test/2280-const-method-handle-validation/src/InvokeSpecial.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1793992
+      },
+      "writtenOn": "2024-09-23T17:59:49Z",
+      "side": 1,
+      "message": "\u003e try to not diverge\n\nNot sure if diverge is the right term here. Prior to this change that would either create wrong MH, or will create such that invoking on it will lead to runtime crush. I haven\u0027t tried to work with a MH targeting class initializer, but it does not sound like a good idea.\n\nNow instead of that, divergence is that we throw ICCE when invalid instruction is invoked instead of throwing CFE during class load. We will get there eventually :)",
+      "parentUuid": "1f356144_79f6867b",
       "range": {
         "startLine": 96,
         "startChar": 17,
