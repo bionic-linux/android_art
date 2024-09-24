@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c0ef09_f7f1eda7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-09-24T13:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "558f0527_3a6f4a94",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12cb118c_e8c0ca8f",
@@ -54,6 +78,42 @@
       "writtenOn": "2024-09-24T12:58:23Z",
       "side": 1,
       "message": "Could you add some context here? E.g. why this change is needed (and possibly a bug number).",
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a905947_18376035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-09-24T13:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12cb118c_e8c0ca8f",
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ee754b_8657a1cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-09-24T13:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "213d9caf_b883181a",
       "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -118,6 +178,30 @@
       "side": 1,
       "message": "(Already raised by Martin; closing.)",
       "parentUuid": "7aaad7ee_c3306e3e",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 54
+      },
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c30818_8024cebb",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1882770
+      },
+      "writtenOn": "2024-09-24T13:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f22676_56ae423b",
       "range": {
         "startLine": 504,
         "startChar": 0,
