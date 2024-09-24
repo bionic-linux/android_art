@@ -51,6 +51,24 @@
       "parentUuid": "06894c2e_86ea4919",
       "revId": "d6669face7bb4067813be65eb53d06cd820f6a19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d70485_ae6b9351",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-24T09:58:20Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve rebased to fix the conflict (there were no changes to the patch itself).",
+      "parentUuid": "e9d13443_19791a7d",
+      "revId": "d6669face7bb4067813be65eb53d06cd820f6a19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
