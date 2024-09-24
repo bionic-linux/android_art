@@ -16,6 +16,24 @@
       "message": "I think you need to check real device boots, or maybe this function isn\u0027t called often on high-prio tests",
       "revId": "6d99e1d6abad59f4c2827715b4caab4c89417965",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbce2d8_b35d417d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-24T16:20:22Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "901d3222_93f22458",
+      "revId": "6d99e1d6abad59f4c2827715b4caab4c89417965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
