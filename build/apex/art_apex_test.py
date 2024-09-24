@@ -505,6 +505,7 @@ class ReleaseChecker:
     self._checker.check_optional_file('etc/flag.map')
     self._checker.check_optional_file('etc/flag.val')
     self._checker.check_optional_file('etc/package.map')
+    self._checker.check_optional_file('etc/flag.info')
 
     # Check binaries for ART.
     self._checker.check_executable('dexdump')
