@@ -372,6 +372,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df21a775_df382179",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3878,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-24T16:28:04Z",
+      "side": 1,
+      "message": "Resolving to merge",
+      "parentUuid": "db5b9e51_699ad7c4",
+      "range": {
+        "startLine": 3878,
+        "startChar": 52,
+        "endLine": 3878,
+        "endChar": 76
+      },
+      "revId": "baf95a27f6ef96b395d0919897820d0fcfba3762",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beb9f312_c213fd14",
