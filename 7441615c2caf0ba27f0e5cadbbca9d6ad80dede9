@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "558f0527_3a6f4a94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-24T12:58:23Z",
+      "side": 1,
+      "message": "This is a bit vague; I\u0027d suggest something like this:\n\n\"Verify the presence of `flag.info` in ART APEXes.\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cb118c_e8c0ca8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-24T12:58:23Z",
+      "side": 1,
+      "message": "Can you also add here (and verify):\n\n```\nTest: art/build/apex/art_apex_test.py\n```\n\n?",
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213d9caf_b883181a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-24T12:58:23Z",
+      "side": 1,
+      "message": "Could you add some context here? E.g. why this change is needed (and possibly a bug number).",
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7f22676_56ae423b",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
@@ -14,6 +71,29 @@
       "writtenOn": "2024-09-24T12:52:46Z",
       "side": 1,
       "message": "Nit: Please keep in sorted order.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 54
+      },
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aaad7ee_c3306e3e",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-09-24T12:58:23Z",
+      "side": 1,
+      "message": "Please keep this list sorted.",
       "range": {
         "startLine": 504,
         "startChar": 0,
