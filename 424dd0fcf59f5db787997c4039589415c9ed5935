@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "424dd0fcf59f5db787997c4039589415c9ed5935",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305c10a7_4d256e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-24T11:07:36Z",
+      "side": 1,
+      "message": "As discussed, let\u0027s see if we can avoid adding a new field to the Thread structure.",
+      "revId": "424dd0fcf59f5db787997c4039589415c9ed5935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
