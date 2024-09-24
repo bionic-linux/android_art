@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f22676_56ae423b",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-24T12:52:46Z",
+      "side": 1,
+      "message": "Nit: Please keep in sorted order.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 54
+      },
+      "revId": "7441615c2caf0ba27f0e5cadbbca9d6ad80dede9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
