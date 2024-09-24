@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e312d00c_ba33f8c6",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-09-24T19:50:05Z",
+      "side": 1,
+      "message": "\u0027then\u0027?",
+      "range": {
+        "startLine": 21,
+        "startChar": 86,
+        "endLine": 21,
+        "endChar": 89
+      },
+      "revId": "33b29ec5c2ec94795cc9b4ac410548e7198fc875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a31103_da13f6a9",
+        "filename": "runtime/gc_configuration.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2024-09-24T19:50:05Z",
+      "side": 1,
+      "message": "Something funny here. I can\u0027t parse the sentence.",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "33b29ec5c2ec94795cc9b4ac410548e7198fc875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
