@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbf2ccf_c786ce19",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-25T21:50:09Z",
+      "side": 1,
+      "message": "I think the new code will be more clearer. please take a look.",
+      "parentUuid": "58b0634d_2ba9cb54",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "0cd1e291288ed8ef734e47a909002d7c19b1ecdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df460c3_584b0317",
@@ -54,6 +78,30 @@
       "writtenOn": "2024-09-25T18:27:42Z",
       "side": 1,
       "message": "main_end no longer seems to have a meaningful value after this? That may not matter, but I find it confusing.",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "0cd1e291288ed8ef734e47a909002d7c19b1ecdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f5a0fb1_6b9d4458",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2024-09-25T21:50:09Z",
+      "side": 1,
+      "message": "No longer updating main_end in the new code. PTAL.",
+      "parentUuid": "9df460c3_584b0317",
       "range": {
         "startLine": 121,
         "startChar": 8,
