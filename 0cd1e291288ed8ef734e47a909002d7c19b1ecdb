@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "833d4a6b_517625ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-25T18:27:42Z",
+      "side": 1,
+      "message": "It\u0027s probably correct as is, but I find it confusing. Possibly because I missed something.",
+      "revId": "0cd1e291288ed8ef734e47a909002d7c19b1ecdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b0634d_2ba9cb54",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-25T18:27:42Z",
+      "side": 1,
+      "message": "Would it be correct to change this to\n\nif (main_end + block_size \u003c\u003d pos) {\n  main_end +\u003d block_size;\n\ninstead of doing the increment (speculatively?) up front. You might then have to also adjust main_end below. So it\u0027s slightly longer code, but I find it much clearer, since I think I understand what main_end means then. Also see the comment below.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "0cd1e291288ed8ef734e47a909002d7c19b1ecdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df460c3_584b0317",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-25T18:27:42Z",
+      "side": 1,
+      "message": "main_end no longer seems to have a meaningful value after this? That may not matter, but I find it confusing.",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "0cd1e291288ed8ef734e47a909002d7c19b1ecdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
