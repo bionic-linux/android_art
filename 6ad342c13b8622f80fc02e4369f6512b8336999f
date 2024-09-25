@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4a8f47_65656eea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-25T21:00:06Z",
+      "side": 1,
+      "message": "Can you please also test an individual gtest, e.g. `m test-art-host-gtest-art_compiler_tests` (after installclean)?",
+      "revId": "6ad342c13b8622f80fc02e4369f6512b8336999f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
