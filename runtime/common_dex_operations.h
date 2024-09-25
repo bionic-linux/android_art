@@ -110,7 +110,7 @@ inline void DCheckStaticState(Thread* self, T* entity) REQUIRES_SHARED(Locks::mu
     if (entity->IsStatic()) {
       klass->AssertInitializedOrInitializingInThread(self);
     } else {
-      CHECK(klass->IsInitializing() || klass->IsErroneousResolved());
+      CHECK(klass->IsInitializing() || klass->IsErroneousResolved()) << klass->PrettyClass();
     }
   }
 }
