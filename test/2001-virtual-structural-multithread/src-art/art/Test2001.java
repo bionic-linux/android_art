@@ -176,8 +176,16 @@ public class Test2001 {
 
     public void run() {
       delay.countDown();
+      InMemoryDexClassLoader loader = new InMemoryDexClassLoader(
+                  ByteBuffer.wrap(SUB_DEX_BYTES), Test2001.class.getClassLoader());
       while (!finish && results.size() < TASK_COUNT_LIMIT) {
-        Supplier<String> t = mkTransform();
+        // Supplier<String> t = mkTransform();
+        Supplier<String> t;
+        try {
+          t = (Supplier<String>)(loader.loadClass("art.SubTransform").newInstance());
+        } catch (Exception e) {
+          t = () -> { return e.toString(); };
+        }
         results.add(t.get());
       }
     }
