@@ -15,6 +15,7 @@
 # limitations under the License.
 
 set -e
+set -x
 
 if [[ $1 = -h ]]; then
   cat <<EOF
