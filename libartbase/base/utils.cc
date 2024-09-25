@@ -377,11 +377,9 @@ std::string GetProcessStatus(const char* key) {
 
 size_t GetOsThreadStat(pid_t tid, char* buf, size_t len) {
 #if defined(__linux__)
-  static constexpr int NAME_BUF_SIZE = 60;
+  static constexpr int NAME_BUF_SIZE = 50;
   char file_name_buf[NAME_BUF_SIZE];
-  // We don't use just /proc/<pid>/stat since, in spite of some documentation to the contrary,
-  // those report utime and stime values for the whole process, not just the thread.
-  snprintf(file_name_buf, NAME_BUF_SIZE, "/proc/%d/task/%d/stat", getpid(), tid);
+  snprintf(file_name_buf, NAME_BUF_SIZE, "/proc/%d/stat", tid);
   int stat_fd = open(file_name_buf, O_RDONLY | O_CLOEXEC);
   if (stat_fd >= 0) {
     ssize_t bytes_read = TEMP_FAILURE_RETRY(read(stat_fd, buf, len));
@@ -400,7 +398,7 @@ size_t GetOsThreadStat(pid_t tid, char* buf, size_t len) {
 }
 
 std::string GetOsThreadStatQuick(pid_t tid) {
-  static constexpr int BUF_SIZE = 100;
+  static constexpr int BUF_SIZE = 90;
   char buf[BUF_SIZE];
 #if defined(__linux__)
   if (GetOsThreadStat(tid, buf, BUF_SIZE) == 0) {
