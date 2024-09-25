@@ -27,6 +27,7 @@
 #include <initializer_list>
 #include <limits>
 #include <locale>
+#include <time.h>
 
 #include "art_method-inl.h"
 #include "base/casts.h"
@@ -755,6 +756,47 @@ void UnstartedRuntime::UnstartedConstructorNewInstance0(
   }
 }
 
+void UnstartedRuntime::UnstartedJNIExecutableGetParameterTypesInternal(
+    Thread* self, ArtMethod*, mirror::Object* receiver, uint32_t*, JValue* result) {
+  StackHandleScope<3> hs(self);
+  ScopedObjectAccessUnchecked soa(self);
+  Handle<mirror::Executable> executable(hs.NewHandle(
+      reinterpret_cast<mirror::Executable*>(receiver)));
+  if (executable == nullptr) {
+    AbortTransactionOrFail(self, "Receiver can't be null in GetParameterTypesInternal");
+  }
+
+  ArtMethod* method = executable->GetArtMethod();
+  const dex::TypeList* params = method->GetParameterTypeList();
+  if (params == nullptr) {
+    result->SetL(nullptr);
+    return;
+  }
+
+  const uint32_t num_params = params->Size();
+
+  ObjPtr<mirror::Class> class_array_class = GetClassRoot<mirror::ObjectArray<mirror::Class>>();
+  Handle<mirror::ObjectArray<mirror::Class>> ptypes = hs.NewHandle(
+      mirror::ObjectArray<mirror::Class>::Alloc(soa.Self(), class_array_class, num_params));
+  if (ptypes.IsNull()) {
+    AbortTransactionOrFail(self, "Could not allocate array of mirror::Class");
+    return;
+  }
+
+  MutableHandle<mirror::Class> param(hs.NewHandle<mirror::Class>(nullptr));
+  for (uint32_t i = 0; i < num_params; ++i) {
+    const dex::TypeIndex type_idx = params->GetTypeItem(i).type_idx_;
+    param.Assign(Runtime::Current()->GetClassLinker()->ResolveType(type_idx, method));
+    if (param.Get() == nullptr) {
+      AbortTransactionOrFail(self, "Could not resolve type");
+      return;
+    }
+    ptypes->SetWithoutChecks<false>(i, param.Get());
+  }
+
+  result->SetL(ptypes.Get());
+}
+
 void UnstartedRuntime::UnstartedVmClassLoaderFindLoadedClass(
     Thread* self, ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
   ObjPtr<mirror::String> class_name = shadow_frame->GetVRegReference(arg_offset + 1)->AsString();
@@ -1044,6 +1086,12 @@ void UnstartedRuntime::UnstartedSystemGetProperty(
 void UnstartedRuntime::UnstartedSystemGetPropertyWithDefault(
     Thread* self, ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
   GetSystemProperty(self, shadow_frame, result, arg_offset, true);
+}
+
+void UnstartedRuntime::UnstartedSystemNanoTime(Thread*, ShadowFrame*, JValue* result, size_t) {
+  struct timespec now;
+  clock_gettime(CLOCK_MONOTONIC, &now);
+  result->SetJ(now.tv_sec * 1000000000LL + now.tv_nsec);
 }
 
 static std::string GetImmediateCaller(ShadowFrame* shadow_frame)
