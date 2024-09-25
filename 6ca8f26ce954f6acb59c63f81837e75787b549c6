@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f42c600_1e685a0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-25T08:19:49Z",
+      "side": 1,
+      "message": "Bypassing presubmit as this is a revert.",
+      "revId": "6ca8f26ce954f6acb59c63f81837e75787b549c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
