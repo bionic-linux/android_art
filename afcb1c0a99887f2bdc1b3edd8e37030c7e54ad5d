@@ -52,6 +52,24 @@
       "parentUuid": "49ab664b_232ed0ff",
       "revId": "afcb1c0a99887f2bdc1b3edd8e37030c7e54ad5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d641cd_a2c802e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-09-25T10:32:59Z",
+      "side": 1,
+      "message": "Patch has been rebased so should be ready for another pre-submit run.",
+      "parentUuid": "7b30c8e8_11bff062",
+      "revId": "afcb1c0a99887f2bdc1b3edd8e37030c7e54ad5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
