@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cde8ae9_554ebf4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-09-25T17:46:16Z",
+      "side": 1,
+      "message": "https://ci.chromium.org/ui/p/art/builders/ci.shadow/qemu-riscv64-ndebug/3/overview",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
