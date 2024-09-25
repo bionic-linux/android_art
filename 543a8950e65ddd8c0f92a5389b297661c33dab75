@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92882e12_d131dc98",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-25T23:26:45Z",
+      "side": 1,
+      "message": "This can result in a zero blocksize, right? Is that OK?",
+      "range": {
+        "startLine": 118,
+        "startChar": 10,
+        "endLine": 118,
+        "endChar": 49
+      },
+      "revId": "543a8950e65ddd8c0f92a5389b297661c33dab75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
