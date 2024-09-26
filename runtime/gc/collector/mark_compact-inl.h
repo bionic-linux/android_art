@@ -20,7 +20,6 @@
 #include "gc/space/bump_pointer_space.h"
 #include "mark_compact.h"
 #include "mirror/object-inl.h"
-#include "thread-inl.h"
 
 namespace art HIDDEN {
 namespace gc {
@@ -257,11 +256,8 @@ inline bool MarkCompact::VerifyRootSingleUpdate(void* root,
     }
     Thread* self = Thread::Current();
     if (UNLIKELY(stack_low_addr == nullptr)) {
-      // TODO(Simulator): Test that this should not operate on the simulated stack when the
-      // simulator supports mark compact.
-      stack_low_addr = self->GetStackEnd<kNativeStackType>();
-      stack_high_addr = reinterpret_cast<char*>(stack_low_addr)
-                        + self->GetUsableStackSize<kNativeStackType>();
+      stack_low_addr = self->GetStackEnd();
+      stack_high_addr = reinterpret_cast<char*>(stack_low_addr) + self->GetStackSize();
     }
     if (std::less<void*>{}(root, stack_low_addr) || std::greater<void*>{}(root, stack_high_addr)) {
       bool inserted;
