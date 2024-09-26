@@ -362,38 +362,6 @@ art_gtests_first = [
     "art_odrefresh_tests",
 ]
 
-// "Testing" version of the ART APEX module (containing both release
-// and debug variants, additional tools, and ART gtests), for testing
-// purposes only.
-apex_test {
-    name: "com.android.art.testing",
-    defaults: ["com.android.art-devel-defaults"],
-    file_contexts: ":com.android.art.debug-file_contexts",
-    certificate: ":com.android.art.certificate",
-    tests: art_gtests,
-    binaries: ["signal_dumper"], // Need signal_dumper for run-tests.
-    // Mark this test APEX as non-updatable, as its contains
-    // additional files (used only for testing) that would not pass
-    // dependency checks performed on updatable APEXes (see
-    // go/apex-allowed-deps-error).
-    updatable: false,
-    // Because this APEX is non-updatable, some of its native shared
-    // libraries (implicitly added as dependencies) are eligible to
-    // the symlink optimization. As we want this APEX to be
-    // self-contained (for testing purposes), we want to package
-    // these dependencies in this APEX, instead of symbolic links to
-    // their counterparts on the `system` partition, which may not
-    // even exist, as in the case of `libbacktrace` (see b/232790938
-    // and b/233357459). Marking this APEX as "future updatable"
-    // disables all symlink optimizations for it.
-    future_updatable: true,
-    multilib: {
-        first: {
-            tests: art_gtests_first,
-        },
-    },
-}
-
 python_binary_host {
     name: "art-apex-tester",
     srcs: ["art_apex_test.py"],
@@ -466,24 +434,6 @@ cc_prebuilt_binary {
     name: "art-check-debug-apex-gen-fakebin",
     defaults: ["art-check-apex-gen-fakebin-defaults"],
     srcs: [":art-check-debug-apex-gen"],
-}
-
-genrule {
-    name: "art-check-testing-apex-gen",
-    defaults: ["art-check-apex-gen-defaults"],
-    srcs: [":com.android.art.testing"],
-    cmd: art_check_apex_gen_stem +
-        " --flavor testing" +
-        " $(in)" +
-        " && touch $(out)" +
-        " && chmod a+x $(out)",
-    out: ["art-check-testing-apex-gen.unused"],
-}
-
-cc_prebuilt_binary {
-    name: "art-check-testing-apex-gen-fakebin",
-    defaults: ["art-check-apex-gen-fakebin-defaults"],
-    srcs: [":art-check-testing-apex-gen"],
 }
 
 linker_config {

@@ -46,7 +46,7 @@ else
 TARGET_CORE_IMG_DEX_LOCATIONS := $(foreach jar,$(TARGET_CORE_IMG_JARS),$(ART_TEST_ANDROID_ROOT)/$(jar).jar)
 endif
 HOST_CORE_IMG_DEX_FILES   := $(foreach jar,$(HOST_CORE_IMG_JARS),  $(call intermediates-dir-for,JAVA_LIBRARIES,$(jar),t,COMMON)/javalib.jar)
-TARGET_CORE_IMG_DEX_FILES := $(foreach jar,$(TARGET_CORE_IMG_JARS),$(call intermediates-dir-for,JAVA_LIBRARIES,$(jar).com.android.art.testing, ,COMMON)/javalib.jar)
+TARGET_CORE_IMG_DEX_FILES := $(foreach jar,$(TARGET_CORE_IMG_JARS),$(call intermediates-dir-for,JAVA_LIBRARIES,$(jar).com.android.art.debug, ,COMMON)/javalib.jar)
 
 # Also copy the jar files next to host boot.art image.
 # `dexpreopt_bootjars.go` uses a single source of input regardless of variants, so we should use the
@@ -69,7 +69,7 @@ HOST_CORE_IMG_OUTS += $(HOST_BOOT_IMAGE_JARS)
 
 HOST_TEST_CORE_JARS := $(addsuffix -hostdex,$(CORE_IMG_JARS) core-icu4j conscrypt)
 ART_HOST_DEX_DEPENDENCIES := $(foreach jar,$(HOST_TEST_CORE_JARS),$(HOST_OUT_JAVA_LIBRARIES)/$(jar).jar)
-ART_TARGET_DEX_DEPENDENCIES := com.android.art.testing com.android.conscrypt com.android.i18n
+ART_TARGET_DEX_DEPENDENCIES := com.android.art.debug com.android.conscrypt com.android.i18n
 
 ART_CORE_SHARED_LIBRARIES := libjavacore libopenjdk libopenjdkjvm libopenjdkjvmti libjdwp
 ART_CORE_SHARED_DEBUG_LIBRARIES := libopenjdkd libopenjdkjvmd libopenjdkjvmtid
@@ -126,8 +126,6 @@ RELEASE_ART_APEX := com.android.art
 # Debug ART APEX, included by default in "userdebug" and "eng"
 # builds and used in ART device benchmarking.
 DEBUG_ART_APEX := com.android.art.debug
-# Testing ART APEX, used in ART device testing.
-TESTING_ART_APEX := com.android.art.testing
 
 RUNTIME_APEX := com.android.runtime
 CONSCRYPT_APEX := com.android.conscrypt

@@ -61,7 +61,7 @@ if [[ $TARGET_ARCH = "riscv64" && ! ( -d frameworks/base ) ]]; then
 fi
 
 java_libraries_dir=${out_dir}/target/common/obj/JAVA_LIBRARIES
-common_targets="vogar core-tests core-ojtests apache-harmony-jdwp-tests-hostdex jsr166-tests mockito-target desugar"
+common_targets="vogar core-tests core-ojtests apache-harmony-jdwp-tests-hostdex jsr166-tests mockito-target"
 # These build targets have different names on device and host.
 specific_targets="libjavacoretests libwrapagentproperties libwrapagentpropertiesd"
 build_host="no"
@@ -120,7 +120,7 @@ else
 fi
 
 apexes=(
-  "com.android.art.testing"
+  "com.android.art.debug"
   "com.android.conscrypt"
   "com.android.i18n"
   "com.android.runtime"
@@ -129,7 +129,7 @@ apexes=(
 )
 
 override_apex_name() {
-  if [[ $1 == "com.android.art.testing" ]]; then
+  if [[ $1 == "com.android.art.debug" ]]; then
     echo "com.android.art"
   elif [[ $1 == "art_fake_com.android.os.statsd" ]]; then
     echo "com.android.os.statsd"
@@ -251,7 +251,7 @@ if [[ $build_target == "yes" ]]; then
   # system image.
   target_out_unstripped="$ANDROID_PRODUCT_OUT/symbols"
   link_name="$target_out_unstripped/apex/com.android.art"
-  link_command="mkdir -p $(dirname "$link_name") && ln -sf com.android.art.testing \"$link_name\""
+  link_command="mkdir -p $(dirname "$link_name") && ln -sf com.android.art.debug \"$link_name\""
   msginfo "Executing" "$link_command"
   eval "$link_command"
 
