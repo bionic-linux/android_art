@@ -4818,7 +4818,7 @@ static void GenerateVarHandleGetAndUpdate(HInvoke* invoke,
     // we do not update the `next_temp` if it's otherwise unused after the address calculation.
     CHECK_EQ(arg_index, 1u);
     CHECK_EQ(next_temp, 1u);
-    CHECK_EQ(locations->GetTempCount(), 2u);
+    CHECK_EQ(locations->GetTempCount(), 2u + extra_temp_registers);
   }
 }
 
