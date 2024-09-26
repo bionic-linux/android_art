@@ -121,7 +121,7 @@ activate_apex() {
 }
 
 # "Activate" the required APEX modules.
-activate_apex com.android.art.testing com.android.art
+activate_apex com.android.art.debug com.android.art
 activate_apex com.android.i18n
 activate_apex com.android.runtime
 activate_apex com.android.tzdata
