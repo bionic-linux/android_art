@@ -16,6 +16,24 @@
       "message": "I don\u0027t know this code, so this is a naive drive-by.  But it looks like it\u0027s illegal to call this method with `reuse` set to `false`.  So why not remove the `reuse` argument to make it impossible for a caller to call this method the wrong way?",
       "revId": "4b3faf133b43124cc61ec99ddbee0c579eef9411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5b6338_e4ccbc3b",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2024-09-26T14:34:45Z",
+      "side": 1,
+      "message": "Thank, I\u0027m adjusting the expectations in MapFileAtAddress instead.",
+      "parentUuid": "7e942181_56185495",
+      "revId": "4b3faf133b43124cc61ec99ddbee0c579eef9411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
