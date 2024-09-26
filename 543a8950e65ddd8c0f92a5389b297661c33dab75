@@ -46,6 +46,30 @@
       },
       "revId": "543a8950e65ddd8c0f92a5389b297661c33dab75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a98165_fa6c9839",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2024-09-26T00:31:43Z",
+      "side": 1,
+      "message": "Yes. I somehow missed the second test.",
+      "parentUuid": "b78618c0_8d27de01",
+      "range": {
+        "startLine": 118,
+        "startChar": 10,
+        "endLine": 118,
+        "endChar": 49
+      },
+      "revId": "543a8950e65ddd8c0f92a5389b297661c33dab75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
