@@ -1047,8 +1047,6 @@ def art_apex_test_default(test_parser):
   configs = [
     {'name': 'com.android.art.capex',         'flavor': FLAVOR_RELEASE, 'host': False},
     {'name': 'com.android.art.debug.capex',   'flavor': FLAVOR_DEBUG,   'host': False},
-    # Note: The Testing ART APEX is not a Compressed APEX.
-    {'name': 'com.android.art.testing.apex',  'flavor': FLAVOR_TESTING, 'host': False},
   ]
 
   for config in configs:
