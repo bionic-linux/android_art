@@ -157,3 +157,11 @@ systemserverclasspath_fragment {
         "com.android.art.debug",
     ],
 }
+
+prebuilt_etc {
+    name: "preloaded-classes-art",
+    src: "preloaded-classes",
+    filename: "preloaded-classes-art",
+    no_full_install: true,
+    visibility: ["//device/google/cuttlefish/system_image"],
+}
