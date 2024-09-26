@@ -160,7 +160,6 @@ if [ ${#apex_modules[@]} -eq 0 ]; then
   apex_modules=(
     "com.android.art"
     "com.android.art.debug"
-    "com.android.art.testing"
   )
 fi
 
@@ -188,8 +187,7 @@ for apex_module in ${apex_modules[@]}; do
   art_apex_test_args="--tmpdir $work_dir"
   test_only_args=""
   art_apex_test_args="$art_apex_test_args $device_bitness_arg"
-  # Note: The Testing ART APEX is never built as a Compressed APEX.
-  if [[ "$PRODUCT_COMPRESSED_APEX" = true && $apex_module != *.testing ]]; then
+  if [[ "$PRODUCT_COMPRESSED_APEX" = true ]]; then
     apex_path="$PRODUCT_OUT/system/apex/${apex_module}.capex"
   else
     apex_path="$PRODUCT_OUT/system/apex/${apex_module}.apex"
@@ -201,7 +199,6 @@ for apex_module in ${apex_modules[@]}; do
   fi
   case $apex_module in
     (*.debug)   test_only_args="--flavor debug";;
-    (*.testing) test_only_args="--flavor testing";;
     (*)         test_only_args="--flavor release";;
   esac
   say "APEX package path: $apex_path"

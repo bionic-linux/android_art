@@ -1328,54 +1328,6 @@ java_library {
     min_sdk_version: "S",
 }
 
-art_cc_test {
-    name: "ArtGtestsTargetInstallApex",
-    data: [
-        // We need the ART testing apex, which contains all gtest binaries.
-        // Note that due to build system and linker constraints the gtests must be in the apex.
-        ":com.android.art.testing",
-    ],
-    // It seems that only device-tests build can create a valid apex.
-    test_suites: [
-        "device-tests",
-        "mts-art",
-    ],
-    test_config: "art-gtests-target-install-apex.xml",
-
-    // Support multilib variants (using different suffix per sub-architecture), which is needed on
-    // build targets with secondary architectures, as the MTS test suite packaging logic flattens
-    // all test artifacts into a single `testcases` directory.
-    compile_multilib: "both",
-    multilib: {
-        lib32: {
-            suffix: "32",
-        },
-        lib64: {
-            suffix: "64",
-        },
-    },
-    test_for: [
-        "com.android.art",
-        "com.android.art.debug",
-    ],
-}
-
-art_cc_test {
-    name: "ArtGtestsTargetChroot",
-    data: [
-        // We need the ART testing apex, which contains all gtest binaries.
-        // Note that due to build system and linker constraints the gtests must be in the apex.
-        ":com.android.art.testing",
-        ":generate-boot-image",
-    ],
-    test_suites: ["general-tests"],
-    test_config: "art-gtests-target-chroot.xml",
-    test_for: [
-        "com.android.art",
-        "com.android.art.debug",
-    ],
-}
-
 csuite_test {
     name: "csuite-app-compile-launch",
     test_config_template: "csuite-app-compile-launch.xml",
