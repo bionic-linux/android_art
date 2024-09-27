@@ -696,23 +696,13 @@ void ThrowSecurityException(const char* fmt, ...) {
 
 // Stack overflow.
 
-template <StackType stack_type>
 void ThrowStackOverflowError(Thread* self) {
-  if (self->IsHandlingStackOverflow<stack_type>()) {
+  if (self->IsHandlingStackOverflow()) {
     LOG(ERROR) << "Recursive stack overflow.";
     // We don't fail here because SetStackEndForStackOverflow will print better diagnostics.
   }
 
-  // Allow space on the stack for constructor to execute.
-  self->SetStackEndForStackOverflow<stack_type>();
-
-  // Remove the stack overflow protection if it is set up.
-  bool implicit_stack_check = Runtime::Current()->GetImplicitStackOverflowChecks();
-  if (implicit_stack_check) {
-    if (!self->UnprotectStack<stack_type>()) {
-      LOG(ERROR) << "Unable to remove stack protection for stack overflow";
-    }
-  }
+  self->SetStackEndForStackOverflow();  // Allow space on the stack for constructor to execute.
 
   // Avoid running Java code for exception initialization.
   // TODO: Checks to make this a bit less brittle.
@@ -723,7 +713,7 @@ void ThrowStackOverflowError(Thread* self) {
   //       with larger stack sizes (e.g., ASAN).
   auto create_and_throw = [self]() REQUIRES_SHARED(Locks::mutator_lock_) NO_INLINE {
     std::string msg("stack size ");
-    msg += PrettySize(self->GetUsableStackSize<stack_type>());
+    msg += PrettySize(self->GetStackSize());
 
     ScopedObjectAccessUnchecked soa(self);
     StackHandleScope<1u> hs(self);
@@ -801,16 +791,13 @@ void ThrowStackOverflowError(Thread* self) {
   create_and_throw();
   CHECK(self->IsExceptionPending());
 
-  self->ResetDefaultStackEnd<stack_type>();  // Return to default stack size.
+  self->ResetDefaultStackEnd();  // Return to default stack size.
 
   // And restore protection if implicit checks are on.
-  if (implicit_stack_check) {
-    self->ProtectStack<stack_type>();
+  if (Runtime::Current()->GetImplicitStackOverflowChecks()) {
+    self->ProtectStack();
   }
 }
-
-// Explicit instantiations to keep this definition separate to the declaration.
-template void ThrowStackOverflowError<StackType::kHardware>(Thread* self);
 
 // StringIndexOutOfBoundsException
 
