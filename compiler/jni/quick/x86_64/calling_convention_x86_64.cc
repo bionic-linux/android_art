@@ -255,12 +255,15 @@ size_t X86_64JniCallingConvention::OutFrameSize() const {
 ArrayRef<const ManagedRegister> X86_64JniCallingConvention::CalleeSaveRegisters() const {
   if (UNLIKELY(IsCriticalNative())) {
     DCHECK(!UseTailCall());
-    static_assert(std::size(kCalleeSaveRegisters) > std::size(kNativeCalleeSaveRegisters));
-    // TODO: Change to static_assert; std::equal should be constexpr since C++20.
-    DCHECK(std::equal(kCalleeSaveRegisters,
-                      kCalleeSaveRegisters + std::size(kNativeCalleeSaveRegisters),
-                      kNativeCalleeSaveRegisters,
-                      [](ManagedRegister lhs, ManagedRegister rhs) { return lhs.Equals(rhs); }));
+    static_assert(std::size(kCalleeSaveRegisters) > std::size(kNativeCalleeSaveRegisters),
+                  "kCalleeSaveRegisters must be larger than kNativeCalleeSaveRegisters");
+
+    static_assert(
+        std::equal(kCalleeSaveRegisters,
+                   kCalleeSaveRegisters + std::size(kNativeCalleeSaveRegisters),
+                   kNativeCalleeSaveRegisters,
+                   [](ManagedRegister lhs, ManagedRegister rhs) { return lhs.Equals(rhs); }),
+        "First elements of kCalleeSaveRegisters must match kNativeCalleeSaveRegisters");
     return ArrayRef<const ManagedRegister>(kCalleeSaveRegisters).SubArray(
         /*pos=*/ std::size(kNativeCalleeSaveRegisters));
   } else {
