@@ -195,7 +195,7 @@ class AbstractThreadPool {
   volatile bool started_ GUARDED_BY(task_queue_lock_);
   volatile bool shutting_down_ GUARDED_BY(task_queue_lock_);
   // How many worker threads are waiting on the condition.
-  volatile size_t waiting_count_ GUARDED_BY(task_queue_lock_);
+  size_t waiting_count_ GUARDED_BY(task_queue_lock_);
   std::vector<ThreadPoolWorker*> threads_;
   // Work balance detection.
   uint64_t start_time_ GUARDED_BY(task_queue_lock_);
