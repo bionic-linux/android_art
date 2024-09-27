@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0279c15f_119a689e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2024-09-27T13:44:18Z",
+      "side": 1,
+      "message": "Islam, presubmit passes. It looks like that there isn\u0027t merge conflict with the internal main.",
+      "revId": "caf96ebf8da00669f2d6ed893d6a41dd1dd008dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
