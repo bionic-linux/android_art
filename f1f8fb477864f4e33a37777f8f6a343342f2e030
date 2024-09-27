@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f6a4742_65050d42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2024-09-27T08:04:41Z",
+      "side": 1,
+      "message": "Ok, thanks. I\u0027ll reopen this comment so you have a reminder to go through the code after rebase. Please close it before the CL is ready to submit.",
+      "parentUuid": "355b8b8f_789809af",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "f1f8fb477864f4e33a37777f8f6a343342f2e030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b4fa424_5b9e6f95",
         "filename": "libartbase/arch/instruction_set.h",
         "patchSetId": 5
