@@ -922,8 +922,29 @@ static void CreateUnsafePutLocations(ArenaAllocator* allocator, HInvoke* invoke)
   }
 }
 
+static void CreateUnsafePutAbsoluteLocations(ArenaAllocator* allocator, HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  static constexpr int kOffsetIndex = 1;
+  static constexpr int kValueIndex = 2;
+  // Unused receiver.
+  locations->SetInAt(0, Location::NoLocation());
+  // The offset.
+  locations->SetInAt(
+      kOffsetIndex, Location::RegisterOrConstant(invoke->InputAt(kOffsetIndex)));
+  // The value.
+  if (IsZeroBitPattern(invoke->InputAt(kValueIndex))) {
+    locations->SetInAt(kValueIndex, Location::ConstantLocation(invoke->InputAt(kValueIndex)));
+  } else {
+    locations->SetInAt(kValueIndex, Location::RequiresRegister());
+  }
+}
+
 void IntrinsicLocationsBuilderARM64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+void IntrinsicLocationsBuilderARM64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 void IntrinsicLocationsBuilderARM64::VisitUnsafePutOrdered(HInvoke* invoke) {
   VisitJdkUnsafePutOrdered(invoke);
@@ -955,6 +976,9 @@ void IntrinsicLocationsBuilderARM64::VisitUnsafePutByte(HInvoke* invoke) {
 
 void IntrinsicLocationsBuilderARM64::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateUnsafePutLocations(allocator_, invoke);
+}
+void IntrinsicLocationsBuilderARM64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateUnsafePutAbsoluteLocations(allocator_, invoke);
 }
 void IntrinsicLocationsBuilderARM64::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
   CreateUnsafePutLocations(allocator_, invoke);
@@ -997,15 +1021,13 @@ static void GenUnsafePut(HInvoke* invoke,
                          DataType::Type type,
                          bool is_volatile,
                          bool is_ordered,
-                         CodeGeneratorARM64* codegen) {
-  LocationSummary* locations = invoke->GetLocations();
+                         CodeGeneratorARM64* codegen,
+                         Register base,
+                         Location offset,
+                         CPURegister value,
+                         HInstruction* value_instruction) {
   MacroAssembler* masm = codegen->GetVIXLAssembler();
 
-  static constexpr int kOffsetIndex = 2;
-  static constexpr int kValueIndex = 3;
-  Register base = WRegisterFrom(locations->InAt(1));    // Object pointer.
-  Location offset = locations->InAt(kOffsetIndex);       // Long offset.
-  CPURegister value = InputCPURegisterOrZeroRegAt(invoke, kValueIndex);
   CPURegister source = value;
   MemOperand mem_op;
   if (offset.IsConstant()) {
@@ -1021,7 +1043,7 @@ static void GenUnsafePut(HInvoke* invoke,
 
     if (kPoisonHeapReferences &&
         type == DataType::Type::kReference &&
-        !IsZeroBitPattern(invoke->InputAt(kValueIndex))) {
+        !IsZeroBitPattern(value_instruction)) {
       DCHECK(value.IsW());
       Register temp = temps.AcquireW();
       __ Mov(temp.W(), value.W());
@@ -1036,14 +1058,51 @@ static void GenUnsafePut(HInvoke* invoke,
     }
   }
 
-  if (type == DataType::Type::kReference && !IsZeroBitPattern(invoke->InputAt(kValueIndex))) {
+  if (type == DataType::Type::kReference && !IsZeroBitPattern(value_instruction)) {
     bool value_can_be_null = true;  // TODO: Worth finding out this information?
     codegen->MaybeMarkGCCard(base, Register(source), value_can_be_null);
   }
 }
 
+static void GenUnsafePut(HInvoke* invoke,
+                         DataType::Type type,
+                         bool is_volatile,
+                         bool is_ordered,
+                         CodeGeneratorARM64* codegen) {
+  LocationSummary* locations = invoke->GetLocations();
+
+  static constexpr int kOffsetIndex = 2;
+  static constexpr int kValueIndex = 3;
+  Register base = WRegisterFrom(locations->InAt(1));    // Object pointer.
+  Location offset = locations->InAt(kOffsetIndex);      // Long offset.
+  CPURegister value = InputCPURegisterOrZeroRegAt(invoke, kValueIndex);
+  HInstruction* value_instruction = invoke->InputAt(kValueIndex);
+  GenUnsafePut(
+      invoke, type, is_volatile, is_ordered, codegen, base, offset, value, value_instruction);
+}
+
+static void GenUnsafePutAbsolute(HInvoke* invoke,
+                                 DataType::Type type,
+                                 bool is_volatile,
+                                 bool is_ordered,
+                                 CodeGeneratorARM64* codegen) {
+  LocationSummary* locations = invoke->GetLocations();
+
+  static constexpr int kOffsetIndex = 1;
+  static constexpr int kValueIndex = 2;
+  Register base = WRegisterFrom(locations->InAt(0));    // Object pointer.
+  Location offset = locations->InAt(kOffsetIndex);      // Long offset.
+  CPURegister value = InputCPURegisterOrZeroRegAt(invoke, kValueIndex);
+  HInstruction* value_instruction = invoke->InputAt(kValueIndex);
+  GenUnsafePut(
+      invoke, type, is_volatile, is_ordered, codegen, base, offset, value, value_instruction);
+}
+
 void IntrinsicCodeGeneratorARM64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+void IntrinsicCodeGeneratorARM64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 void IntrinsicCodeGeneratorARM64::VisitUnsafePutOrdered(HInvoke* invoke) {
   VisitJdkUnsafePutOrdered(invoke);
@@ -1079,6 +1138,13 @@ void IntrinsicCodeGeneratorARM64::VisitJdkUnsafePut(HInvoke* invoke) {
                /*is_volatile=*/ false,
                /*is_ordered=*/ false,
                codegen_);
+}
+void IntrinsicCodeGeneratorARM64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke,
+                       DataType::Type::kInt32,
+                       /*is_volatile=*/ false,
+                       /*is_ordered=*/ false,
+                       codegen_);
 }
 void IntrinsicCodeGeneratorARM64::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
   GenUnsafePut(invoke,
