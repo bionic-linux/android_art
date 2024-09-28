@@ -1879,6 +1879,31 @@ void IntrinsicCodeGeneratorX86::VisitJdkUnsafeGetByte(HInvoke* invoke) {
   GenUnsafeGet(invoke, DataType::Type::kInt8, /*is_volatile=*/ false, codegen_);
 }
 
+static void CreateIntIntIntToVoidPlusTempsLocations(ArenaAllocator* allocator,
+                                                    DataType::Type type,
+                                                    HInvoke* invoke,
+                                                    bool is_volatile) {
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresRegister());
+  locations->SetInAt(1, Location::RequiresRegister());
+  if (type == DataType::Type::kInt8 || type == DataType::Type::kUint8) {
+    // Ensure the value is in a byte register
+    locations->SetInAt(2, Location::ByteRegisterOrConstant(EAX, invoke->InputAt(3)));
+  } else {
+    locations->SetInAt(2, Location::RequiresRegister());
+  }
+  if (type == DataType::Type::kReference) {
+    // Need temp registers for card-marking.
+    locations->AddTemp(Location::RequiresRegister());  // Possibly used for reference poisoning too.
+    // Ensure the value is in a byte register.
+    locations->AddTemp(Location::RegisterLocation(ECX));
+  } else if (type == DataType::Type::kInt64 && is_volatile) {
+    locations->AddTemp(Location::RequiresFpuRegister());
+    locations->AddTemp(Location::RequiresFpuRegister());
+  }
+}
+
 static void CreateIntIntIntIntToVoidPlusTempsLocations(ArenaAllocator* allocator,
                                                        DataType::Type type,
                                                        HInvoke* invoke,
@@ -1907,6 +1932,9 @@ static void CreateIntIntIntIntToVoidPlusTempsLocations(ArenaAllocator* allocator
 
 void IntrinsicLocationsBuilderX86::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+void IntrinsicLocationsBuilderX86::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 void IntrinsicLocationsBuilderX86::VisitUnsafePutOrdered(HInvoke* invoke) {
   VisitJdkUnsafePutOrdered(invoke);
@@ -1939,6 +1967,10 @@ void IntrinsicLocationsBuilderX86::VisitUnsafePutByte(HInvoke* invoke) {
 void IntrinsicLocationsBuilderX86::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateIntIntIntIntToVoidPlusTempsLocations(
       allocator_, DataType::Type::kInt32, invoke, /*is_volatile=*/ false);
+}
+void IntrinsicLocationsBuilderX86::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateIntIntIntToVoidPlusTempsLocations(
+      allocator_, DataType::Type::kInt64, invoke, /*is_volatile=*/ false);
 }
 void IntrinsicLocationsBuilderX86::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
   CreateIntIntIntIntToVoidPlusTempsLocations(
@@ -1994,11 +2026,11 @@ void IntrinsicLocationsBuilderX86::VisitJdkUnsafePutByte(HInvoke* invoke) {
 static void GenUnsafePut(LocationSummary* locations,
                          DataType::Type type,
                          bool is_volatile,
-                         CodeGeneratorX86* codegen) {
+                         CodeGeneratorX86* codegen,
+                         Register base,
+                         Register offset,
+                         Location value_loc) {
   X86Assembler* assembler = down_cast<X86Assembler*>(codegen->GetAssembler());
-  Register base = locations->InAt(1).AsRegister<Register>();
-  Register offset = locations->InAt(2).AsRegisterPairLow<Register>();
-  Location value_loc = locations->InAt(3);
 
   if (type == DataType::Type::kInt64) {
     Register value_lo = value_loc.AsRegisterPairLow<Register>();
@@ -2045,6 +2077,26 @@ static void GenUnsafePut(LocationSummary* locations,
   }
 }
 
+static void GenUnsafePut(LocationSummary* locations,
+                         DataType::Type type,
+                         bool is_volatile,
+                         CodeGeneratorX86* codegen) {
+  Register base = locations->InAt(1).AsRegister<Register>();
+  Register offset = locations->InAt(2).AsRegisterPairLow<Register>();
+  Location value_loc = locations->InAt(3);
+  GenUnsafePut(locations, type, is_volatile, codegen, base, offset, value_loc);
+}
+
+static void GenUnsafePutAbsolute(LocationSummary* locations,
+                                 DataType::Type type,
+                                 bool is_volatile,
+                                 CodeGeneratorX86* codegen) {
+  Register base = locations->InAt(0).AsRegister<Register>();
+  Register offset = locations->InAt(1).AsRegisterPairLow<Register>();
+  Location value_loc = locations->InAt(2);
+  GenUnsafePut(locations, type, is_volatile, codegen, base, offset, value_loc);
+}
+
 void IntrinsicCodeGeneratorX86::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
 }
@@ -2078,6 +2130,9 @@ void IntrinsicCodeGeneratorX86::VisitUnsafePutByte(HInvoke* invoke) {
 
 void IntrinsicCodeGeneratorX86::VisitJdkUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke->GetLocations(), DataType::Type::kInt32, /*is_volatile=*/ false, codegen_);
+}
+void IntrinsicCodeGeneratorX86::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke->GetLocations(), DataType::Type::kInt32, /*is_volatile=*/ false, codegen_);
 }
 void IntrinsicCodeGeneratorX86::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
   GenUnsafePut(invoke->GetLocations(), DataType::Type::kInt32, /*is_volatile=*/ false, codegen_);
