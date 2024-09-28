@@ -32,6 +32,7 @@
 #include "mirror/reference.h"
 #include "mirror/string-inl.h"
 #include "optimizing/data_type.h"
+#include "optimizing/locations.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread-current-inl.h"
 #include "well_known_classes.h"
@@ -2956,18 +2957,10 @@ static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
   }
 }
 
-static void CreateUnsafePutLocations(HInvoke* invoke,
-                                     CodeGeneratorARMVIXL* codegen,
-                                     DataType::Type type,
-                                     bool atomic) {
-  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
-  LocationSummary* locations =
-      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
-  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
-  locations->SetInAt(1, Location::RequiresRegister());
-  locations->SetInAt(2, Location::RequiresRegister());
-  locations->SetInAt(3, Location::RequiresRegister());
-
+static void CreateUnsafePutTempLocations(CodeGeneratorARMVIXL* codegen,
+                                         DataType::Type type,
+                                         bool atomic,
+                                         LocationSummary* locations) {
   if (type == DataType::Type::kInt64) {
     // Potentially need temps for ldrexd-strexd loop.
     if (Use64BitExclusiveLoadStore(atomic, codegen)) {
@@ -2980,17 +2973,42 @@ static void CreateUnsafePutLocations(HInvoke* invoke,
   }
 }
 
-static void GenUnsafePut(HInvoke* invoke,
-                         DataType::Type type,
+static void CreateUnsafePutLocations(HInvoke* invoke,
+                                     CodeGeneratorARMVIXL* codegen,
+                                     DataType::Type type,
+                                     bool atomic) {
+  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+  locations->SetInAt(3, Location::RequiresRegister());
+  CreateUnsafePutTempLocations(codegen, type, atomic, locations);
+}
+
+static void CreateUnsafePutAbsoluteLocations(HInvoke* invoke,
+                                     CodeGeneratorARMVIXL* codegen,
+                                     DataType::Type type,
+                                     bool atomic) {
+  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresRegister());
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+  CreateUnsafePutTempLocations(codegen, type, atomic, locations);
+}
+
+static void GenUnsafePut(DataType::Type type,
                          std::memory_order order,
                          bool atomic,
-                         CodeGeneratorARMVIXL* codegen) {
+                         CodeGeneratorARMVIXL* codegen,
+                         LocationSummary* locations,
+                         vixl32::Register base,
+                         vixl32::Register offset,
+                         Location value) {
   ArmVIXLAssembler* assembler = codegen->GetAssembler();
-
-  LocationSummary* locations = invoke->GetLocations();
-  vixl32::Register base = RegisterFrom(locations->InAt(1));       // Object pointer.
-  vixl32::Register offset = LowRegisterFrom(locations->InAt(2));  // Long offset, lo part only.
-  Location value = locations->InAt(3);
   Location maybe_temp = Location::NoLocation();
   Location maybe_temp2 = Location::NoLocation();
   if (type == DataType::Type::kInt64 && Use64BitExclusiveLoadStore(atomic, codegen)) {
@@ -3018,12 +3036,44 @@ static void GenUnsafePut(HInvoke* invoke,
   }
 }
 
+static void GenUnsafePut(HInvoke* invoke,
+                         DataType::Type type,
+                         std::memory_order order,
+                         bool atomic,
+                         CodeGeneratorARMVIXL* codegen) {
+  LocationSummary* locations = invoke->GetLocations();
+  GenUnsafePut(type, order, atomic, codegen, locations,
+               RegisterFrom(locations->InAt(1)),     // Object pointer.
+               LowRegisterFrom(locations->InAt(2)),  // Long offset, lo part only.
+               locations->InAt(3));
+}
+
+static void GenUnsafePutAbsolute(HInvoke* invoke,
+                         DataType::Type type,
+                         std::memory_order order,
+                         bool atomic,
+                         CodeGeneratorARMVIXL* codegen) {
+  LocationSummary* locations = invoke->GetLocations();
+  GenUnsafePut(type, order, atomic, codegen, locations,
+               RegisterFrom(locations->InAt(0)),     // Object pointer.
+               LowRegisterFrom(locations->InAt(1)),  // Long offset, lo part only.
+               locations->InAt(3));
+}
+
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
 }
 
+void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
+}
+
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+
+void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutOrdered(HInvoke* invoke) {
@@ -3101,8 +3151,20 @@ void IntrinsicLocationsBuilderARMVIXL::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
 }
 
+void IntrinsicLocationsBuilderARMVIXL::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateUnsafePutAbsoluteLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
+}
+
 void IntrinsicCodeGeneratorARMVIXL::VisitJdkUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke,
+               DataType::Type::kInt32,
+               std::memory_order_relaxed,
+               /*atomic=*/ false,
+               codegen_);
+}
+
+void IntrinsicCodeGeneratorARMVIXL::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke,
                DataType::Type::kInt32,
                std::memory_order_relaxed,
                /*atomic=*/ false,
