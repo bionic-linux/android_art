@@ -2531,15 +2531,37 @@ static void CreateUnsafePutLocations(ArenaAllocator* allocator, HInvoke* invoke)
   }
 }
 
-static void GenUnsafePut(HInvoke* invoke,
-                         CodeGeneratorRISCV64* codegen,
+static void CreateUnsafePutLocations(ArenaAllocator* allocator, HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+  locations->SetInAt(3, Location::RequiresRegister());
+  if (kPoisonHeapReferences && invoke->InputAt(3)->GetType() == DataType::Type::kReference) {
+    locations->AddTemp(Location::RequiresRegister());
+  }
+}
+
+static void CreateUnsafePutAbsoluteLocations(ArenaAllocator* allocator, HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::RequiresRegister());
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+  if (kPoisonHeapReferences && invoke->InputAt(2)->GetType() == DataType::Type::kReference) {
+    locations->AddTemp(Location::RequiresRegister());
+  }
+}
+
+static void GenUnsafePut(CodeGeneratorRISCV64* codegen,
                          std::memory_order order,
-                         DataType::Type type) {
+                         DataType::Type type,
+                         LocationSummary* locations,
+                         XRegister base,
+                         XRegister offset,
+                         Location value) {
   Riscv64Assembler* assembler = codegen->GetAssembler();
-  LocationSummary* locations = invoke->GetLocations();
-  XRegister base = locations->InAt(1).AsRegister<XRegister>();    // Object pointer.
-  XRegister offset = locations->InAt(2).AsRegister<XRegister>();  // Long offset.
-  Location value = locations->InAt(3);
 
   {
     // We use a block to end the scratch scope before the write barrier, thus
@@ -2559,12 +2581,42 @@ static void GenUnsafePut(HInvoke* invoke,
   }
 }
 
+static void GenUnsafePut(HInvoke* invoke,
+                         CodeGeneratorRISCV64* codegen,
+                         std::memory_order order,
+                         DataType::Type type) {
+  LocationSummary* locations = invoke->GetLocations();
+  XRegister base = locations->InAt(1).AsRegister<XRegister>();    // Object pointer.
+  XRegister offset = locations->InAt(2).AsRegister<XRegister>();  // Long offset.
+  Location value = locations->InAt(3);
+  GenUnsafePut(codegen, order, type, locations, base, offset, value);
+}
+
+static void GenUnsafePutAbsolute(HInvoke* invoke,
+                         CodeGeneratorRISCV64* codegen,
+                         std::memory_order order,
+                         DataType::Type type) {
+  LocationSummary* locations = invoke->GetLocations();
+  XRegister base = locations->InAt(0).AsRegister<XRegister>();    // Object pointer.
+  XRegister offset = locations->InAt(1).AsRegister<XRegister>();  // Long offset.
+  Location value = locations->InAt(2);
+  GenUnsafePut(codegen, order, type, locations, base, offset, value);
+}
+
 void IntrinsicLocationsBuilderRISCV64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
 }
 
+void IntrinsicLocationsBuilderRISCV64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
+}
+
 void IntrinsicCodeGeneratorRISCV64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 
 void IntrinsicLocationsBuilderRISCV64::VisitUnsafePutOrdered(HInvoke* invoke) {
@@ -2643,8 +2695,16 @@ void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateUnsafePutLocations(allocator_, invoke);
 }
 
+void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateUnsafePutAbsoluteLocations(allocator_, invoke);
+}
+
 void IntrinsicCodeGeneratorRISCV64::VisitJdkUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke, codegen_, std::memory_order_relaxed, DataType::Type::kInt32);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke, codegen_, std::memory_order_relaxed, DataType::Type::kInt32);
 }
 
 void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
