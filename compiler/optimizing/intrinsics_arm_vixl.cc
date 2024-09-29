@@ -2869,38 +2869,15 @@ void IntrinsicCodeGeneratorARMVIXL::VisitJdkUnsafeGetByte(HInvoke* invoke) {
       invoke, codegen_, DataType::Type::kInt8, std::memory_order_relaxed, /*atomic=*/ false);
 }
 
-static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
-                                 DataType::Type type,
-                                 std::memory_order order,
-                                 bool atomic,
-                                 vixl32::Register base,
-                                 vixl32::Register offset,
-                                 Location value,
-                                 Location maybe_temp,
-                                 Location maybe_temp2,
-                                 Location maybe_temp3) {
-  bool seq_cst_barrier = (order == std::memory_order_seq_cst);
-  bool release_barrier = seq_cst_barrier || (order == std::memory_order_release);
-  DCHECK(release_barrier || order == std::memory_order_relaxed);
-  DCHECK(atomic || order == std::memory_order_relaxed);
-
-  ArmVIXLAssembler* assembler = codegen->GetAssembler();
-  if (release_barrier) {
-    codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyStore);
-  }
-  UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
-  if (kPoisonHeapReferences && type == DataType::Type::kReference) {
-    vixl32::Register temp = temps.Acquire();
-    __ Mov(temp, RegisterFrom(value));
-    assembler->PoisonHeapReference(temp);
-    value = LocationFrom(temp);
-  }
-  MemOperand address = offset.IsValid() ? MemOperand(base, offset) : MemOperand(base);
-  if (offset.IsValid() && (DataType::Is64BitType(type) || type == DataType::Type::kFloat32)) {
-    const vixl32::Register temp_reg = temps.Acquire();
-    __ Add(temp_reg, base, offset);
-    address = MemOperand(temp_reg);
-  }
+static void GenerateIntrinsicSetStore(CodeGeneratorARMVIXL* codegen,
+                                      ArmVIXLAssembler* assembler,
+                                      DataType::Type type,
+                                      bool atomic,
+                                      vixl32::MemOperand address,
+                                      Location value,
+                                      Location maybe_temp,
+                                      Location maybe_temp2,
+                                      Location maybe_temp3) {
   switch (type) {
     case DataType::Type::kBool:
     case DataType::Type::kInt8:
@@ -2951,8 +2928,106 @@ static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
       LOG(FATAL) << "Unexpected type " << type;
       UNREACHABLE();
   }
+}
+
+static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
+                                 DataType::Type type,
+                                 std::memory_order order,
+                                 bool atomic,
+                                 vixl32::Register address,
+                                 Location value,
+                                 Location maybe_temp,
+                                 Location maybe_temp2,
+                                 Location maybe_temp3) {
+  bool seq_cst_barrier = (order == std::memory_order_seq_cst);
+  bool release_barrier = seq_cst_barrier || (order == std::memory_order_release);
+  DCHECK(release_barrier || order == std::memory_order_relaxed);
+  DCHECK(atomic || order == std::memory_order_relaxed);
+
+  ArmVIXLAssembler* assembler = codegen->GetAssembler();
+  if (release_barrier) {
+    codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyStore);
+  }
+  UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
+  if (kPoisonHeapReferences && type == DataType::Type::kReference) {
+    vixl32::Register temp = temps.Acquire();
+    __ Mov(temp, RegisterFrom(value));
+    assembler->PoisonHeapReference(temp);
+    value = LocationFrom(temp);
+  }
+  GenerateIntrinsicSetStore(codegen,
+                            assembler,
+                            type,
+                            atomic,
+                            MemOperand(address),
+                            value,
+                            maybe_temp,
+                            maybe_temp2,
+                            maybe_temp3);
   if (seq_cst_barrier) {
     codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyAny);
+  }
+}
+
+static void GenerateIntrinsicSet(CodeGeneratorARMVIXL* codegen,
+                                 DataType::Type type,
+                                 std::memory_order order,
+                                 bool atomic,
+                                 vixl32::Register base,
+                                 vixl32::Register offset,
+                                 Location value,
+                                 Location maybe_temp,
+                                 Location maybe_temp2,
+                                 Location maybe_temp3) {
+  bool seq_cst_barrier = (order == std::memory_order_seq_cst);
+  bool release_barrier = seq_cst_barrier || (order == std::memory_order_release);
+  DCHECK(release_barrier || order == std::memory_order_relaxed);
+  DCHECK(atomic || order == std::memory_order_relaxed);
+
+  ArmVIXLAssembler* assembler = codegen->GetAssembler();
+  if (release_barrier) {
+    codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyStore);
+  }
+  UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
+  if (kPoisonHeapReferences && type == DataType::Type::kReference) {
+    vixl32::Register temp = temps.Acquire();
+    __ Mov(temp, RegisterFrom(value));
+    assembler->PoisonHeapReference(temp);
+    value = LocationFrom(temp);
+  }
+  MemOperand address = offset.IsValid() ? MemOperand(base, offset) : MemOperand(base);
+  if (offset.IsValid() && (DataType::Is64BitType(type) || type == DataType::Type::kFloat32)) {
+    const vixl32::Register temp_reg = temps.Acquire();
+    __ Add(temp_reg, base, offset);
+    address = MemOperand(temp_reg);
+  }
+  GenerateIntrinsicSetStore(codegen,
+                            assembler,
+                            type,
+                            atomic,
+                            address,
+                            value,
+                            maybe_temp,
+                            maybe_temp2,
+                            maybe_temp3);
+  if (seq_cst_barrier) {
+    codegen->GenerateMemoryBarrier(MemBarrierKind::kAnyAny);
+  }
+}
+
+static void CreateUnsafePutTempLocations(CodeGeneratorARMVIXL* codegen,
+                                         DataType::Type type,
+                                         bool atomic,
+                                         LocationSummary* locations) {
+  if (type == DataType::Type::kInt64) {
+    // Potentially need temps for ldrexd-strexd loop.
+    if (Use64BitExclusiveLoadStore(atomic, codegen)) {
+      locations->AddTemp(Location::RequiresRegister());  // Temp_lo.
+      locations->AddTemp(Location::RequiresRegister());  // Temp_hi.
+    }
+  } else if (type == DataType::Type::kReference) {
+    // Temp for card-marking.
+    locations->AddTemp(Location::RequiresRegister());  // Temp.
   }
 }
 
@@ -2967,17 +3042,20 @@ static void CreateUnsafePutLocations(HInvoke* invoke,
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
   locations->SetInAt(3, Location::RequiresRegister());
+  CreateUnsafePutTempLocations(codegen, type, atomic, locations);
+}
 
-  if (type == DataType::Type::kInt64) {
-    // Potentially need temps for ldrexd-strexd loop.
-    if (Use64BitExclusiveLoadStore(atomic, codegen)) {
-      locations->AddTemp(Location::RequiresRegister());  // Temp_lo.
-      locations->AddTemp(Location::RequiresRegister());  // Temp_hi.
-    }
-  } else if (type == DataType::Type::kReference) {
-    // Temp for card-marking.
-    locations->AddTemp(Location::RequiresRegister());  // Temp.
-  }
+static void CreateUnsafePutAbsoluteLocations(HInvoke* invoke,
+                                     CodeGeneratorARMVIXL* codegen,
+                                     DataType::Type type,
+                                     bool atomic) {
+  ArenaAllocator* allocator = invoke->GetBlock()->GetGraph()->GetAllocator();
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+  CreateUnsafePutTempLocations(codegen, type, atomic, locations);
 }
 
 static void GenUnsafePut(HInvoke* invoke,
@@ -3018,12 +3096,56 @@ static void GenUnsafePut(HInvoke* invoke,
   }
 }
 
+static void GenUnsafePutAbsolute(HInvoke* invoke,
+                                 DataType::Type type,
+                                 std::memory_order order,
+                                 bool atomic,
+                                 CodeGeneratorARMVIXL* codegen) {
+  ArmVIXLAssembler* assembler = codegen->GetAssembler();
+
+  LocationSummary* locations = invoke->GetLocations();
+  vixl32::Register address = LowRegisterFrom(locations->InAt(1));  // Long offset, lo part only.
+  Location value = locations->InAt(2);
+  Location maybe_temp = Location::NoLocation();
+  Location maybe_temp2 = Location::NoLocation();
+  if (type == DataType::Type::kInt64 && Use64BitExclusiveLoadStore(atomic, codegen)) {
+    maybe_temp = locations->GetTemp(0);
+    maybe_temp2 = locations->GetTemp(1);
+  }
+
+  GenerateIntrinsicSet(codegen,
+                       type,
+                       order,
+                       atomic,
+                       address,
+                       value,
+                       maybe_temp,
+                       maybe_temp2,
+                       /*maybe_temp3=*/ Location::NoLocation());
+
+  if (type == DataType::Type::kReference) {
+    vixl32::Register temp = RegisterFrom(locations->GetTemp(0));
+    UseScratchRegisterScope temps(assembler->GetVIXLAssembler());
+    vixl32::Register card = temps.Acquire();
+    bool value_can_be_null = true;  // TODO: Worth finding out this information?
+    codegen->MaybeMarkGCCard(temp, card, address, RegisterFrom(value), value_can_be_null);
+  }
+}
+
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
 }
 
+void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
+}
+
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+
+void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafePutOrdered(HInvoke* invoke) {
@@ -3101,8 +3223,20 @@ void IntrinsicLocationsBuilderARMVIXL::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateUnsafePutLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
 }
 
+void IntrinsicLocationsBuilderARMVIXL::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateUnsafePutAbsoluteLocations(invoke, codegen_, DataType::Type::kInt32, /*atomic=*/ false);
+}
+
 void IntrinsicCodeGeneratorARMVIXL::VisitJdkUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke,
+               DataType::Type::kInt32,
+               std::memory_order_relaxed,
+               /*atomic=*/ false,
+               codegen_);
+}
+
+void IntrinsicCodeGeneratorARMVIXL::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke,
                DataType::Type::kInt32,
                std::memory_order_relaxed,
                /*atomic=*/ false,

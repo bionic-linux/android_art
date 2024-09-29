@@ -363,6 +363,7 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kJdkUnsafeGetReference:
       case Intrinsics::kJdkUnsafePutLong:
       case Intrinsics::kJdkUnsafePut:
+      case Intrinsics::kJdkUnsafePutAbsolute:
       case Intrinsics::kJdkUnsafePutReference:
       case Intrinsics::kJdkUnsafePutByte:
         return 0u;
@@ -385,6 +386,7 @@ ALWAYS_INLINE inline uint32_t GetRuntimeFlags(ArtMethod* method)
       case Intrinsics::kUnsafeGetObject:
       case Intrinsics::kUnsafePutLong:
       case Intrinsics::kUnsafePut:
+      case Intrinsics::kUnsafePutAbsolute:
       case Intrinsics::kUnsafePutObject:
       case Intrinsics::kUnsafePutByte:
         return kAccCorePlatformApi;
