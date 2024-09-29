@@ -2531,6 +2531,14 @@ static void CreateUnsafePutLocations(ArenaAllocator* allocator, HInvoke* invoke)
   }
 }
 
+static void CreateUnsafePutAbsoluteLocations(ArenaAllocator* allocator, HInvoke* invoke) {
+  LocationSummary* locations =
+      new (allocator) LocationSummary(invoke, LocationSummary::kNoCall, kIntrinsified);
+  locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
+  locations->SetInAt(1, Location::RequiresRegister());
+  locations->SetInAt(2, Location::RequiresRegister());
+}
+
 static void GenUnsafePut(HInvoke* invoke,
                          CodeGeneratorRISCV64* codegen,
                          std::memory_order order,
@@ -2559,12 +2567,37 @@ static void GenUnsafePut(HInvoke* invoke,
   }
 }
 
+static void GenUnsafePutAbsolute(HInvoke* invoke,
+                                 CodeGeneratorRISCV64* codegen,
+                                 std::memory_order order,
+                                 DataType::Type type) {
+  Riscv64Assembler* assembler = codegen->GetAssembler();
+  LocationSummary* locations = invoke->GetLocations();
+  XRegister address = locations->InAt(1).AsRegister<XRegister>();
+  Location value = locations->InAt(2);
+
+  GenerateSet(codegen, order, value, address, /*offset=*/ 0, type);
+
+  if (type == DataType::Type::kReference) {
+    bool value_can_be_null = true;  // TODO: Worth finding out this information?
+    codegen->MaybeMarkGCCard(address, value.AsRegister<XRegister>(), value_can_be_null);
+  }
+}
+
 void IntrinsicLocationsBuilderRISCV64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
 }
 
+void IntrinsicLocationsBuilderRISCV64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
+}
+
 void IntrinsicCodeGeneratorRISCV64::VisitUnsafePut(HInvoke* invoke) {
   VisitJdkUnsafePut(invoke);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitUnsafePutAbsolute(HInvoke* invoke) {
+  VisitJdkUnsafePutAbsolute(invoke);
 }
 
 void IntrinsicLocationsBuilderRISCV64::VisitUnsafePutOrdered(HInvoke* invoke) {
@@ -2643,8 +2676,16 @@ void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePut(HInvoke* invoke) {
   CreateUnsafePutLocations(allocator_, invoke);
 }
 
+void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  CreateUnsafePutAbsoluteLocations(allocator_, invoke);
+}
+
 void IntrinsicCodeGeneratorRISCV64::VisitJdkUnsafePut(HInvoke* invoke) {
   GenUnsafePut(invoke, codegen_, std::memory_order_relaxed, DataType::Type::kInt32);
+}
+
+void IntrinsicCodeGeneratorRISCV64::VisitJdkUnsafePutAbsolute(HInvoke* invoke) {
+  GenUnsafePutAbsolute(invoke, codegen_, std::memory_order_relaxed, DataType::Type::kInt32);
 }
 
 void IntrinsicLocationsBuilderRISCV64::VisitJdkUnsafePutOrdered(HInvoke* invoke) {
