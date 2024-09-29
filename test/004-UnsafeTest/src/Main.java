@@ -120,6 +120,11 @@ public class Main {
     check(t.intVar, intValue, "Unsafe.putInt(Object, long, int)");
     check(unsafe.getInt(t, intOffset), intValue, "Unsafe.getInt(Object, long)");
 
+    intValue += 1;
+    unsafe.putInt(t, intOffset, intValue);
+    check(t.intVar, intValue, "Unsafe.putInt(long, int)");
+    check(unsafe.getInt(t, intOffset), intValue, "Unsafe.getInt(Object, long)");
+
     long longValue = 1234567887654321L;
     Field longField = TestClass.class.getDeclaredField("longVar");
     long longOffset = unsafe.objectFieldOffset(longField);
