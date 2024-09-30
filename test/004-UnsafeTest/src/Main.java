@@ -15,6 +15,7 @@
  */
 
 import java.lang.reflect.Field;
+import java.nio.DirectByteBuffer;
 import sun.misc.Unsafe;
 
 public class Main {
@@ -258,6 +259,20 @@ public class Main {
     check(unsafe.getObjectVolatile(tv, volatileObjectOffset),
           objectValue,
           "Unsafe.getObjectVolatile(Object, long)");
+  }
+
+  private static void testGetAndPutAbsoluteAddress(Unsafe unsafe) throws NoSuchFieldException {
+    ByteBuffer buffer = ByteBuffer.allocateDirect(16);
+    long address = ((DirectByteBuffer) buffer).address();
+
+    unsafe.putByte(address, 17);
+    check(unsafe.getByte(address), 17, "Unsafe.getByte(long)");
+
+    unsafe.putInt(address, 0xDEADBEEF);
+    check(unsafe.getInt(address), 0xDEADBEEF, "Unsafe.getInt(long)");
+
+    unsafe.putLong(address, 0xFEEDFACEDECAFBADL);
+    check(unsafe.getInt(address), 0xFEEDFACEDECAFBADL, "Unsafe.getLong(long)");
   }
 
   // Regression test for "copyMemory" operations hitting a DCHECK() for float/double arrays.
