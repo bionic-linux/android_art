@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a250dfc_5793f06a",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-30T16:50:06Z",
+      "side": 1,
+      "message": "This dependency list is much shorter now, thank you. Still, these Java transitive dependencies for `dalvikvm` should preferably not be here either.\n\nReally, the problem is that the `dalvikvm` Soong module is woefully incomplete and lacks many of the dependencies actually required to launch a functional VM, and that has been worked around by having that logic in .mk rules and scripts instead. This looks like another workaround which may be the practical way forward, but before we go this route I\u0027d like to understand exactly where the issue is with properly supporting this binary and what it\u0027d take to get there without too much extra tech debt.\n\nContinuing the discussion on https://r.android.com/3213216, I gather adding these as `required` dependencies in `dalvikvm` (possibly just for host) doesn\u0027t work, but why doesn\u0027t it? I thought it\u0027s supposed to ensure the required things get installed (in `$(HOST_OUT)` in this case) so they can be used from there. Doesn\u0027t the sandbox have access to `$(HOST_OUT)`?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6733ecc6_a0646f58",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-09-30T16:50:06Z",
+      "side": 1,
+      "message": "I still wonder why it\u0027s necessary to do all the copying to this directory. Doesn\u0027t Soong generate install rules for host tools and their dependencies into `$(HOST_OUT)` so it\u0027d be possible to run the `art` script from there? (It does have \"host\" in it, as to your point on https://r.android.com/3213216 that the script looks for.)",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
