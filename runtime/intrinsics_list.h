@@ -239,22 +239,28 @@
   V(UnsafeCASLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "compareAndSwapLong", "(Ljava/lang/Object;JJJ)Z") \
   V(UnsafeCASObject, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "compareAndSwapObject", "(Ljava/lang/Object;JLjava/lang/Object;Ljava/lang/Object;)Z") \
   V(UnsafeGet, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getInt", "(Ljava/lang/Object;J)I") \
+  V(UnsafeGetAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getInt", "(J)I") \
   V(UnsafeGetVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getIntVolatile", "(Ljava/lang/Object;J)I") \
   V(UnsafeGetObject, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getObject", "(Ljava/lang/Object;J)Ljava/lang/Object;") \
   V(UnsafeGetObjectVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getObjectVolatile", "(Ljava/lang/Object;J)Ljava/lang/Object;") \
   V(UnsafeGetLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getLong", "(Ljava/lang/Object;J)J") \
+  V(UnsafeGetLongAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getLong", "(J)J") \
   V(UnsafeGetLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getLongVolatile", "(Ljava/lang/Object;J)J") \
   V(UnsafeGetByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getByte", "(Ljava/lang/Object;J)B") \
+  V(UnsafeGetByteAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getByte", "(J)B") \
   V(UnsafePut, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putInt", "(Ljava/lang/Object;JI)V") \
+  V(UnsafePutAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putInt", "(JI)V") \
   V(UnsafePutOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putOrderedInt", "(Ljava/lang/Object;JI)V") \
   V(UnsafePutVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putIntVolatile", "(Ljava/lang/Object;JI)V") \
   V(UnsafePutObject, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putObject", "(Ljava/lang/Object;JLjava/lang/Object;)V") \
   V(UnsafePutObjectOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putOrderedObject", "(Ljava/lang/Object;JLjava/lang/Object;)V") \
   V(UnsafePutObjectVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putObjectVolatile", "(Ljava/lang/Object;JLjava/lang/Object;)V") \
   V(UnsafePutLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putLong", "(Ljava/lang/Object;JJ)V") \
+  V(UnsafePutLongAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putLong", "(JJ)V") \
   V(UnsafePutLongOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putOrderedLong", "(Ljava/lang/Object;JJ)V") \
   V(UnsafePutLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putLongVolatile", "(Ljava/lang/Object;JJ)V") \
   V(UnsafePutByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putByte", "(Ljava/lang/Object;JB)V") \
+  V(UnsafePutByteAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "putByte", "(JB)V") \
   V(UnsafeGetAndAddInt, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getAndAddInt", "(Ljava/lang/Object;JI)I") \
   V(UnsafeGetAndAddLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getAndAddLong", "(Ljava/lang/Object;JJ)J") \
   V(UnsafeGetAndSetInt, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Lsun/misc/Unsafe;", "getAndSetInt", "(Ljava/lang/Object;JI)I") \
@@ -274,10 +280,13 @@
   V(JdkUnsafeGetReferenceVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getReferenceVolatile", "(Ljava/lang/Object;J)Ljava/lang/Object;") \
   V(JdkUnsafeGetReferenceAcquire, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getReferenceAcquire", "(Ljava/lang/Object;J)Ljava/lang/Object;") \
   V(JdkUnsafeGetLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLong", "(Ljava/lang/Object;J)J") \
+  V(JdkUnsafeGetLongAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLong", "(J)J") \
   V(JdkUnsafeGetLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLongVolatile", "(Ljava/lang/Object;J)J") \
   V(JdkUnsafeGetLongAcquire, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getLongAcquire", "(Ljava/lang/Object;J)J") \
   V(JdkUnsafeGetByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getByte", "(Ljava/lang/Object;J)B") \
+  V(JdkUnsafeGetByteAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getByte", "(J)B") \
   V(JdkUnsafePut, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putInt", "(Ljava/lang/Object;JI)V") \
+  V(JdkUnsafePutAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putInt", "(JI)V") \
   V(JdkUnsafePutOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putOrderedInt", "(Ljava/lang/Object;JI)V") \
   V(JdkUnsafePutRelease, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putIntRelease", "(Ljava/lang/Object;JI)V") \
   V(JdkUnsafePutVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putIntVolatile", "(Ljava/lang/Object;JI)V") \
@@ -286,10 +295,12 @@
   V(JdkUnsafePutReferenceVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putReferenceVolatile", "(Ljava/lang/Object;JLjava/lang/Object;)V") \
   V(JdkUnsafePutReferenceRelease, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putReferenceRelease", "(Ljava/lang/Object;JLjava/lang/Object;)V") \
   V(JdkUnsafePutLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putLong", "(Ljava/lang/Object;JJ)V") \
+  V(JdkUnsafePutLongAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putLong", "(JJ)V") \
   V(JdkUnsafePutLongOrdered, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putOrderedLong", "(Ljava/lang/Object;JJ)V") \
   V(JdkUnsafePutLongVolatile, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putLongVolatile", "(Ljava/lang/Object;JJ)V") \
   V(JdkUnsafePutLongRelease, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putLongRelease", "(Ljava/lang/Object;JJ)V") \
   V(JdkUnsafePutByte, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putByte", "(Ljava/lang/Object;JB)V") \
+  V(JdkUnsafePutByteAbsolute, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "putByte", "(JB)V") \
   V(JdkUnsafeGetAndAddInt, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getAndAddInt", "(Ljava/lang/Object;JI)I") \
   V(JdkUnsafeGetAndAddLong, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getAndAddLong", "(Ljava/lang/Object;JJ)J") \
   V(JdkUnsafeGetAndSetInt, kVirtual, kNeedsEnvironment, kAllSideEffects, kCanThrow, "Ljdk/internal/misc/Unsafe;", "getAndSetInt", "(Ljava/lang/Object;JI)I") \
