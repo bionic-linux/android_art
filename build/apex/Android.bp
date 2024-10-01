@@ -130,16 +130,11 @@ apex_defaults {
             binaries: [
                 "art_boot",
                 "art_exec",
-                "artd",
                 "dexdump",
                 "dexlist",
-                "dexopt_chroot_setup",
                 "dexoptanalyzer",
                 "oatdump",
                 "profman",
-            ],
-            jni_libs: [
-                "libartservice",
             ],
         },
     },
@@ -177,11 +172,31 @@ apex_defaults {
     },
 }
 
+// The ART Service components, which we cannot build and test on master-art due
+// to libbinder (and potentially other platform) dependencies.
+apex_defaults {
+    name: "com.android.art-service-defaults",
+    multilib: {
+        first: {
+            binaries: [
+                "artd",
+                "dexopt_chroot_setup",
+            ],
+            jni_libs: [
+                "libartservice",
+            ],
+        },
+    },
+}
+
 // "Broken" test APEX, only used for testing, including module
 // `libart-broken` instead of `libart`.
 apex_test {
     name: "test_broken_com.android.art",
-    defaults: ["com.android.art-base-defaults"],
+    defaults: [
+        "com.android.art-base-defaults",
+        "com.android.art-service-defaults",
+    ],
     manifest: "test_apex_manifest.json",
     file_contexts: ":com.android.art-file_contexts",
     installable: false,
@@ -193,7 +208,10 @@ apex_test {
 
 apex_test {
     name: "test_jitzygote_com.android.art",
-    defaults: ["com.android.art-base-defaults"],
+    defaults: [
+        "com.android.art-base-defaults",
+        "com.android.art-service-defaults",
+    ],
     manifest: "test_apex_manifest.json",
     file_contexts: ":com.android.art-file_contexts",
     installable: false,
@@ -210,7 +228,10 @@ apex_test {
 // Used to collect dirty-image-objects.
 apex_test {
     name: "test_imgdiag_com.android.art",
-    defaults: ["com.android.art-base-defaults"],
+    defaults: [
+        "com.android.art-base-defaults",
+        "com.android.art-service-defaults",
+    ],
     manifest: "test_apex_manifest.json",
     file_contexts: ":com.android.art-file_contexts",
     installable: false,
@@ -231,7 +252,10 @@ apex_test {
 // storage-constrained devices in userdebug and eng builds.
 apex {
     name: "com.android.art",
-    defaults: ["com.android.art-base-defaults"],
+    defaults: [
+        "com.android.art-base-defaults",
+        "com.android.art-service-defaults",
+    ],
 
     native_shared_libs: ["libart"],
     multilib: {
@@ -251,7 +275,10 @@ apex {
 // eng build.
 apex {
     name: "com.android.art.debug",
-    defaults: ["com.android.art-devel-defaults"],
+    defaults: [
+        "com.android.art-devel-defaults",
+        "com.android.art-service-defaults",
+    ],
     // Use a different manifest for this APEX (which has no prebuilts and is
     // thus always built from sources), with a high version number that ensures
     // that these packages can be installed on virtually all Android dessert
@@ -337,8 +364,6 @@ apex_test {
     multilib: {
         first: {
             tests: art_gtests_first,
-            binaries: ["odrefresh"],
-            jni_libs: ["libartserviced"],
         },
     },
 }
