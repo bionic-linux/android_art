@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a01484_37b0092d",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-01T13:07:39Z",
+      "side": 1,
+      "message": "I\u0027m curious why.",
+      "range": {
+        "startLine": 135,
+        "startChar": 61,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "960e1226407b0ba8570b37de804a63cf18e3ad41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
