@@ -69,6 +69,30 @@
       },
       "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f246bef6_5ee7cf0e",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-10-01T07:36:51Z",
+      "side": 1,
+      "message": "As mentioned above, `genrule` runs in a `sandbox` environment and cannot access `$(HOST_OUT)`.\n\nWe could certainly execute `mkdir -p $(genDir)/out/host/linux-x86/bin` to mirror the original directory structure of `$(HOST_OUT)`.\n\nHowever, `art-script` itself only requires the subdirectory to contain `\"host\"` or `\"target\"` (https://android-review.git.corp.google.com/c/platform/art/+/3213216/22/tools/ahat/Android.bp#153), so we only created the `host` subdirectory.\n\nhttps://source.corp.google.com/h/android/platform/superproject/main/+/main:art/tools/art;l\u003d600?q\u003d%22Can%20not%20determine%20whether%20are%20running%20on%20host%20or%20target%22\u0026sq\u003dgit:android%2F%2F%2Fmain@main",
+      "parentUuid": "6733ecc6_a0646f58",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
