@@ -93,6 +93,30 @@
       },
       "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1afdee7a_2310e7af",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-10-01T07:52:02Z",
+      "side": 1,
+      "message": "`genrule` operates in a sandbox to ensure build reproducibility and security. Allowing access to `$(HOST_OUT)` would break this isolation, leading to unpredictable builds and potential errors due to implicit dependencies on files that may change. It\u0027s crucial for `genrule` to explicitly declare its inputs to maintain a controlled and reliable build environment.",
+      "parentUuid": "f246bef6_5ee7cf0e",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 38
+      },
+      "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
