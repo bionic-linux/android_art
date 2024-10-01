@@ -22,6 +22,30 @@
       },
       "revId": "960e1226407b0ba8570b37de804a63cf18e3ad41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa9148e0_c2c30d6d",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-01T13:33:38Z",
+      "side": 1,
+      "message": "Part of the reason is that libopenjdk itself isn\u0027t a `runtime_lib` dependency. The rest of the reason I reckon is due to implementation quirks in `apex` vs `apex_test` in Soong, but I haven\u0027t looked deeper into that.",
+      "parentUuid": "79a01484_37b0092d",
+      "range": {
+        "startLine": 135,
+        "startChar": 61,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "960e1226407b0ba8570b37de804a63cf18e3ad41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
