@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dcd3996_93dc6b95",
+        "filename": "tools/ahat/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2024-10-01T03:26:31Z",
+      "side": 1,
+      "message": "1. Actually, the issue may not lie with `dalvikvm` itself, but rather with `art-script`. This is because `dalvikvm` is `not` directly usable; it\u0027s invoked through the `art-script` shell script, which contains all the logic and dependencies. The reason for `hardcoding` these library paths is also due to limitations within `art-script`.\n\nUsing `shell scripts` for execution isn\u0027t ideal due to several factors: lack of encapsulation, poor portability, difficulty in maintenance, and debugging challenges.\n\nThe best approach would be converting `art-script` to `Python` and encapsulating all dependencies and logic within it, as demonstrated in aosp/3113120. \ne.g.\n```\npython_binary_host {\n    name: \"appcompat\",\n    srcs: [\"appcompat.py\"],\n    data: [\n        \":veridex\",\n        \":platform-bootclasspath{hiddenapi-flags.csv}\",\n        \":org.apache.http.legacy-stubs.zip\",\n        \":system-stubs.zip\",\n    ],\n    version: {\n        py3: {\n            embedded_launcher: true,\n        },\n    },\n}\n```\n\nHowever, the sheer size of `art-script` and the unknown extent of `CI` and `tests` relying on it pose difficulties for this conversion.\n\n2. Yes, sandbox mode does prevent access to `$(HOST_OUT)`. It enhances reproducibility, security, and portability by restricting access to declared inputs, network, and environment variables. This ensures consistent builds and prevents unauthorized actions. This isolation also facilitates distributed builds and compatibility with systems like `Bazel`.",
+      "parentUuid": "2a250dfc_5793f06a",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 75
+      },
+      "revId": "b29f7bf4588ef44b851346b3b0b640c504bc59a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6733ecc6_a0646f58",
         "filename": "tools/ahat/Android.bp",
         "patchSetId": 5
