@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ca8dea_0d5ac944",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "Not sure I understand this paragraph. Is this how it used to be before this CL? If so, I think it can be removed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7543440f_524e867d",
@@ -14,6 +37,127 @@
       "writtenOn": "2024-10-01T13:13:52Z",
       "side": 1,
       "message": "Polite ping for review",
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344a3049_d663f1a0",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "nit: maybe call it `extra_features` or something like this? It is adding the features and not overriding the previous ones right?",
+      "range": {
+        "startLine": 189,
+        "startChar": 83,
+        "endLine": 189,
+        "endChar": 95
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c4364d_ca02f426",
+        "filename": "compiler/common_compiler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "`const std::optional\u003cstd::string\u003e\u0026 feature_list \u003d std::nullopt);`? I think it would help to signal that this are optional extra features",
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1e5a45_db1a9e63",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "Not sure I like the name (e.g. having `ARM64` as a prefix) but it is consistent with `ARM64ReturnLocation` above so it\u0027s fine to keep",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d494a73_5736839a",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "The `AsVecPredSetOperation` will do `IsVecPredSetOperation` inside so this DCHECK is not needed.\nThe one that doesn\u0027t do this check is `AsXXXOrNull`",
+      "fixSuggestions": [
+        {
+          "fixId": "baa58526_2c4b5135",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+              "range": {
+                "startLine": 1339,
+                "startChar": 0,
+                "endLine": 1340,
+                "endChar": 0
+              },
+              "replacement": ""
+            }
+          ]
+        }
+      ],
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70508ba_db28f75f",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:48:39Z",
+      "side": 1,
+      "message": "nit: remove these words to avoid the double `example`",
+      "range": {
+        "startLine": 869,
+        "startChar": 75,
+        "endLine": 870,
+        "endChar": 21
+      },
       "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
