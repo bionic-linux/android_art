@@ -1,0 +1,394 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a623f4a_7611956a",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "nit: the parenthesis are not needed",
+      "range": {
+        "startLine": 606,
+        "startChar": 13,
+        "endLine": 606,
+        "endChar": 14
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "e9eaadba_9bd9c01d",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 606,
+                "startChar": 0,
+                "endLine": 607,
+                "endChar": 0
+              },
+              "replacement": "      return lhs \u003d\u003d rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 608,
+                "startChar": 0,
+                "endLine": 609,
+                "endChar": 0
+              },
+              "replacement": "      return lhs !\u003d rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 610,
+                "startChar": 0,
+                "endLine": 611,
+                "endChar": 0
+              },
+              "replacement": "      return lhs \u003c rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 612,
+                "startChar": 0,
+                "endLine": 613,
+                "endChar": 0
+              },
+              "replacement": "      return lhs \u003c\u003d rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 614,
+                "startChar": 0,
+                "endLine": 615,
+                "endChar": 0
+              },
+              "replacement": "      return lhs \u003e rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 616,
+                "startChar": 0,
+                "endLine": 617,
+                "endChar": 0
+              },
+              "replacement": "      return lhs \u003e\u003d rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 618,
+                "startChar": 0,
+                "endLine": 619,
+                "endChar": 0
+              },
+              "replacement": "      return unsigned_lhs \u003c unsigned_rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 620,
+                "startChar": 0,
+                "endLine": 621,
+                "endChar": 0
+              },
+              "replacement": "      return unsigned_lhs \u003c\u003d unsigned_rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 622,
+                "startChar": 0,
+                "endLine": 623,
+                "endChar": 0
+              },
+              "replacement": "      return unsigned_lhs \u003e unsigned_rhs;\n"
+            },
+            {
+              "path": "compiler/optimizing/codegen_test.cc",
+              "range": {
+                "startLine": 624,
+                "startChar": 0,
+                "endLine": 625,
+                "endChar": 0
+              },
+              "replacement": "      return unsigned_lhs \u003e\u003d unsigned_rhs;\n"
+            }
+          ]
+        }
+      ],
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e85a0d4_4e9afc19",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "Could we do this before the loops only once? Not sure if You want a new `TestCodeGeneratorARM64` every time.",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 970,
+        "endChar": 11
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa44f56a_dd9d77e7",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "We may want to also run it before `iva_-\u003eRun();` for consistency checks. It would alert you if you are constructing the graph in a bad manner, and you\u0027d know that loop optimization wasn\u0027t the cause for failures",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b597cd1f_ae79837c",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "Obsolete? The method is void.",
+      "range": {
+        "startLine": 197,
+        "startChar": 80,
+        "endLine": 198,
+        "endChar": 36
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fafb7d6_934c3a13",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "nit: outer `()` not needed",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 12
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af72cd3_9b6b589a",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3435,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "Not needed if you define all of them, and I\u0027d prefer it without `default` so that we get a compile-time error",
+      "range": {
+        "startLine": 3433,
+        "startChar": 0,
+        "endLine": 3435,
+        "endChar": 20
+      },
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b369467_de8864cb",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "suggestion: move this one upwards closer to other VecPred methods.",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915b85fe_9c908394",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1646,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "You might want to clarify that this one and below are unsigned comparisons. e.g. something like `, using unsigned comparison`",
+      "fixSuggestions": [
+        {
+          "fixId": "fea98b87_4a872705",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 1646,
+                "startChar": 0,
+                "endLine": 1647,
+                "endChar": 0
+              },
+              "replacement": "// Instruction to check if one unsigned vector input is less than the other,\n// using unsigned comparison.\n"
+            },
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 1667,
+                "startChar": 0,
+                "endLine": 1668,
+                "endChar": 0
+              },
+              "replacement": "// Instruction to check if one unsigned vector input is less than or equal to the other,\n// using unsigned comparison.\n"
+            },
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 1694,
+                "startChar": 0,
+                "endLine": 1695,
+                "endChar": 0
+              },
+              "replacement": "// Instruction to check if one unsigned vector input is greater than the other,\n// using unsigned comparison.\n"
+            },
+            {
+              "path": "compiler/optimizing/nodes_vector.h",
+              "range": {
+                "startLine": 1715,
+                "startChar": 0,
+                "endLine": 1716,
+                "endChar": 0
+              },
+              "replacement": "// Instruction to check if one unsigned vector input is greater than or equal to the other,\n// using unsigned comparison.\n"
+            }
+          ]
+        }
+      ],
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2668776_05d0ec5a",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "Can you add ones for Below, BelowOrEqual, Above, AboveOrEqual? Maybe `Integer.compareUnsigned(val, MAGIC_VALUE_C)` is enough to trigger those\n\nPS: The AI added tests but I didn\u0027t run those to make sure the `expectIntEquals` are the correct ones. I\u0027d be curious if it got them right.",
+      "fixSuggestions": [
+        {
+          "fixId": "f3c26d1d_8fd4d90f",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "test/661-checker-simd-cf-loops/src/Main.java",
+              "range": {
+                "startLine": 394,
+                "startChar": 0,
+                "endLine": 394,
+                "endChar": 0
+              },
+              "replacement": "  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleBelow(int[]) loop_optimization (after)\n  /// CHECK-IF:     hasIsaFeature(\"sve\") and os.environ.get(\u0027ART_FORCE_TRY_PREDICATED_SIMD\u0027) \u003d\u003d \u0027true\u0027\n  //\n  ///     CHECK-DAG: VecLoad\n  //\n  /// CHECK-FI:\n  //\n  // Check below case.\n  public static void $compile$noinline$SimpleBelow(int[] x) {\n    for (int i \u003d 0; i \u003c USED_ARRAY_LENGTH; i++) {\n      int val \u003d x[i];\n      if (Integer.compareUnsigned(val, MAGIC_VALUE_C) \u003c 0) {\n        x[i] +\u003d MAGIC_ADD_CONST;\n      }\n    }\n  }\n\n  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleBelowOrEqual(int[]) loop_optimization (after)\n  /// CHECK-IF:     hasIsaFeature(\"sve\") and os.environ.get(\u0027ART_FORCE_TRY_PREDICATED_SIMD\u0027) \u003d\u003d \u0027true\u0027\n  //\n  ///     CHECK-DAG: VecLoad\n  //\n  /// CHECK-FI:\n  //\n  // Check below or equals case.\n  public static void $compile$noinline$SimpleBelowOrEqual(int[] x) {\n    for (int i \u003d 0; i \u003c USED_ARRAY_LENGTH; i++) {\n      int val \u003d x[i];\n      if (Integer.compareUnsigned(val, MAGIC_VALUE_C) \u003c\u003d 0) {\n        x[i] +\u003d MAGIC_ADD_CONST;\n      }\n    }\n  }\n\n  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleAbove(int[]) loop_optimization (after)\n  /// CHECK-IF:     hasIsaFeature(\"sve\") and os.environ.get(\u0027ART_FORCE_TRY_PREDICATED_SIMD\u0027) \u003d\u003d \u0027true\u0027\n  //\n  ///     CHECK-DAG: VecLoad\n  //\n  /// CHECK-FI:\n  //\n  // Check above case.\n  public static void $compile$noinline$SimpleAbove(int[] x) {\n    for (int i \u003d 0; i \u003c USED_ARRAY_LENGTH; i++) {\n      int val \u003d x[i];\n      if (Integer.compareUnsigned(val, MAGIC_VALUE_C) \u003e 0) {\n        x[i] +\u003d MAGIC_ADD_CONST;\n      }\n    }\n  }\n\n  /// CHECK-START-ARM64: void Main.$compile$noinline$SimpleAboveOrEqual(int[]) loop_optimization (after)\n  /// CHECK-IF:     hasIsaFeature(\"sve\") and os.environ.get(\u0027ART_FORCE_TRY_PREDICATED_SIMD\u0027) \u003d\u003d \u0027true\u0027\n  //\n  ///     CHECK-DAG: VecLoad\n  //\n  /// CHECK-FI:\n  //\n  // Check above or equals case.\n  public static void $compile$noinline$SimpleAboveOrEqual(int[] x) {\n    for (int i \u003d 0; i \u003c USED_ARRAY_LENGTH; i++) {\n      int val \u003d x[i];\n      if (Integer.compareUnsigned(val, MAGIC_VALUE_C) \u003e\u003d 0) {\n        x[i] +\u003d MAGIC_ADD_CONST;\n      }\n    }\n  }\n\n"
+            },
+            {
+              "path": "test/661-checker-simd-cf-loops/src/Main.java",
+              "range": {
+                "startLine": 660,
+                "startChar": 0,
+                "endLine": 660,
+                "endChar": 0
+              },
+              "replacement": "    initIntArray(intArray);\n    $compile$noinline$SimpleBelow(intArray);\n    expectIntEquals(23121, IntArraySum(intArray));\n\n    initIntArray(intArray);\n    $compile$noinline$SimpleBelowOrEqual(intArray);\n    expectIntEquals(27279, IntArraySum(intArray));\n\n    initIntArray(intArray);\n    $compile$noinline$SimpleAbove(intArray);\n    expectIntEquals(14706, IntArraySum(intArray));\n\n    initIntArray(intArray);\n    $compile$noinline$SimpleAboveOrEqual(intArray);\n    expectIntEquals(18864, IntArraySum(intArray));\n\n"
+            }
+          ]
+        }
+      ],
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c8c258_379f81bf",
+        "filename": "test/661-checker-simd-cf-loops/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T16:05:21Z",
+      "side": 1,
+      "message": "Are these ones not supported yet but will be in the future?",
+      "revId": "75529141415f93d6d21a6d607e84570944998527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
