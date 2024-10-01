@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a60608d_ca4b8446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-01T11:14:22Z",
+      "side": 1,
+      "message": "Note: this patch is used by later patches (e.g: https://android-review.googlesource.com/c/platform/art/+/3271776/1..2) when we introduce gtests with specific ISA features set. This allows them to skip running the generated code on hardware if the ISA feature needed is not available on hardware.",
+      "revId": "281c0175decf30ace646e4a2e827bb71a02ccb81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
