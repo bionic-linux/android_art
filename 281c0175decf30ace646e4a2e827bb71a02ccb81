@@ -16,6 +16,47 @@
       "message": "Note: this patch is used by later patches (e.g: https://android-review.googlesource.com/c/platform/art/+/3271776/1..2) when we introduce gtests with specific ISA features set. This allows them to skip running the generated code on hardware if the ISA feature needed is not available on hardware.",
       "revId": "281c0175decf30ace646e4a2e827bb71a02ccb81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdc12f2_d46cde28",
+        "filename": "compiler/optimizing/codegen_test_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-01T13:50:59Z",
+      "side": 1,
+      "message": "nit: the parenthesis are not needed (can be fixed in another CL too)",
+      "range": {
+        "startLine": 182,
+        "startChar": 9,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "fixSuggestions": [
+        {
+          "fixId": "282474bc_c421a6b7",
+          "description": "prompt_to_edit API",
+          "replacements": [
+            {
+              "path": "compiler/optimizing/codegen_test_utils.h",
+              "range": {
+                "startLine": 182,
+                "startChar": 0,
+                "endLine": 184,
+                "endChar": 0
+              },
+              "replacement": "  return DoesHardwareSupportISA(codegen.GetInstructionSet())\n      \u0026\u0026 InstructionSetFeatures::FromHwcap()-\u003eHasAtLeast(isa_features);\n"
+            }
+          ]
+        }
+      ],
+      "revId": "281c0175decf30ace646e4a2e827bb71a02ccb81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
