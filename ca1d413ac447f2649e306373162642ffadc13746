@@ -16,6 +16,24 @@
       "message": "To get information about the odex file, you need `ArtMethod`, not `ClassAccessor::Method`.\n\nYou can pass a `java.lang.reflect.Method` object from the Java code (see my comment in aosp/3280271). The `java.lang.reflect.Method` object is a `java.lang.reflect.Executable` object, so you can use `mirror::Executable` to access it and call [`GetArtMethod`](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/mirror/executable.h;l\u003d39;drc\u003d48dd86efcb221f80bb4558e5f6be400f5e49dcb5) to obtain the `ArtMethod` object.\n\nAlternatively, use `mirror::Class::Find*Method` methods to  obtain the `ArtMethod` object.\n\nFrom `ArtMethod`, you can call `GetOatMethodQuickCode` to get the pointer to the compiled method.\n\nI\u0027m not sure what\u0027s the best way to find the oat file from there. AFAIK, `OatFileManager` keeps track of [all open oat files](https://cs.android.com/android/platform/superproject/main/+/main:art/runtime/oat/oat_file_manager.h;l\u003d164;drc\u003d689cca840843eeced3206da16e475856de953360), so you can probably iterate over all oat files and find the one that the compiled method falls into.",
       "revId": "ca1d413ac447f2649e306373162642ffadc13746",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02e6d9f_ea535331",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1944206
+      },
+      "writtenOn": "2024-10-02T16:53:12Z",
+      "side": 1,
+      "message": "All of the print statements should make the struggle I\u0027m having obvious 😊\n\nSo far, I\u0027ve been able to get the *vdex* file, but not the *odex*, via `mirror::Executable-\u003eGetDeclaringClass-\u003eGetDexFile()-\u003eGetOatDexFile()-\u003eGetOatFile()-\u003eGetLocation()`. I still haven\u0027t found a method on any of those classes that returns `/system/framework/oat/arm64/services.odex`, which is the file we ultimately need to pass to [bpfPerfEventOpen](https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/modules/UprobeStats/src/UprobeStats.cpp;l\u003d244;drc\u003d756add70cdc5770bda97b968b4f6acaa971c6132).\n\nI haven\u0027t gotten any closer to the code offset.  Do you have any pointers on how I would get there once I obtain the compiled method from `GetOatMethodQuickCode`?",
+      "parentUuid": "fa6c0bb7_e83a1a88",
+      "revId": "ca1d413ac447f2649e306373162642ffadc13746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
