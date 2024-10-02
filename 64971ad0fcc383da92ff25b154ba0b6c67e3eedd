@@ -33,6 +33,24 @@
       "message": "`test-art-host-gtest-art_libartbase*` unfortunately fails with these changes. Marking this as WIP till I debug those tests.",
       "revId": "64971ad0fcc383da92ff25b154ba0b6c67e3eedd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5d7264_7396fa87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2024-10-02T21:49:36Z",
+      "side": 1,
+      "message": "Good point! I think we need to flag this behavior using a build flag, and turn it off in `next` builds.\n\nI will add the flagging in the companion CL in soong (https://r.android.com/3288083) such that the dexpreopt files of `/system_ext` apex system server jars will be \n- installed to /system_ext if flag is on (trunk_staging, ...)\n- installed to /system if flag is off (next)\n\nI think such flagging is not strictly necessary for `libartbase` though. Would you prefer that we add this flagging to `libartbase` as well?",
+      "parentUuid": "7bdc8719_f6a44845",
+      "revId": "64971ad0fcc383da92ff25b154ba0b6c67e3eedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
