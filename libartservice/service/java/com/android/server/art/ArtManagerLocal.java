@@ -20,7 +20,6 @@ import static com.android.server.art.ArtFileManager.ProfileLists;
 import static com.android.server.art.ArtFileManager.UsableArtifactLists;
 import static com.android.server.art.ArtFileManager.WritableArtifactLists;
 import static com.android.server.art.DexMetadataHelper.DexMetadataInfo;
-import static com.android.server.art.DexUseManagerLocal.SecondaryDexInfo;
 import static com.android.server.art.PrimaryDexUtils.DetailedPrimaryDexInfo;
 import static com.android.server.art.PrimaryDexUtils.PrimaryDexInfo;
 import static com.android.server.art.ProfilePath.WritableProfilePath;
@@ -102,6 +101,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.function.Consumer;
@@ -880,6 +881,7 @@ public final class ArtManagerLocal {
     public void onBoot(@NonNull @BootReason String bootReason,
             @Nullable @CallbackExecutor Executor progressCallbackExecutor,
             @Nullable Consumer<OperationProgress> progressCallback) {
+        AsLog.d("onBoot: reason=" + bootReason);
         try (var snapshot = mInjector.getPackageManagerLocal().withFilteredSnapshot()) {
             if ((bootReason.equals(ReasonMapping.REASON_BOOT_AFTER_OTA)
                         || bootReason.equals(ReasonMapping.REASON_BOOT_AFTER_MAINLINE_UPDATE))
@@ -909,10 +911,13 @@ public final class ArtManagerLocal {
      */
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     void systemReady() {
+        AsLog.d("systemReady: mShouldCommitPreRebootStagedFiles="
+                + mShouldCommitPreRebootStagedFiles);
         if (mShouldCommitPreRebootStagedFiles) {
             mInjector.getContext().registerReceiver(new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
+                    AsLog.d("systemReady.onReceive");
                     context.unregisterReceiver(this);
                     if (!SdkLevel.isAtLeastV()) {
                         throw new IllegalStateException("Broadcast receiver unexpectedly called");
@@ -922,6 +927,8 @@ public final class ArtManagerLocal {
                     }
                     mStatsAfterRebootSession.reportAsync();
                     mStatsAfterRebootSession = null;
+                    // OtaPreRebootDexoptTest looks for this log message.
+                    AsLog.d("Pre-reboot staged files committed");
                 }
             }, new IntentFilter(Intent.ACTION_BOOT_COMPLETED));
         }
@@ -941,6 +948,7 @@ public final class ArtManagerLocal {
      */
     @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     public void onApexStaged(@NonNull String[] stagedApexModuleNames) {
+        AsLog.d("onApexStaged");
         mInjector.getPreRebootDexoptJob().onUpdateReady(null /* otaSlot */);
     }
 
@@ -1125,6 +1133,10 @@ public final class ArtManagerLocal {
                 if (!Utils.canDexoptPackage(pkgState, null /* appHibernationManager */)) {
                     continue;
                 }
+
+                AsLog.d("commitPreRebootStagedFiles " + (forSecondary ? "secondary" : "primary")
+                        + " for " + pkgState.getPackageName());
+
                 AndroidPackage pkg = Utils.getPackageOrThrow(pkgState);
                 var options = ArtFileManager.Options.builder()
                                       .setForPrimaryDex(!forSecondary)
@@ -1521,6 +1533,7 @@ public final class ArtManagerLocal {
         @Nullable private final Context mContext;
         @Nullable private final PackageManagerLocal mPackageManagerLocal;
         @Nullable private final Config mConfig;
+        @Nullable private final ThreadPoolExecutor mReporterExecutor;
         @Nullable private BackgroundDexoptJob mBgDexoptJob = null;
         @Nullable private PreRebootDexoptJob mPrDexoptJob = null;
 
@@ -1531,6 +1544,7 @@ public final class ArtManagerLocal {
             mContext = null;
             mPackageManagerLocal = null;
             mConfig = null;
+            mReporterExecutor = null;
         }
 
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -1541,6 +1555,10 @@ public final class ArtManagerLocal {
             mPackageManagerLocal = Objects.requireNonNull(
                     LocalManagerRegistry.getManager(PackageManagerLocal.class));
             mConfig = new Config();
+            mReporterExecutor =
+                    new ThreadPoolExecutor(1 /* corePoolSize */, 1 /* maximumPoolSize */,
+                            60 /* keepTimeAlive */, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+            mReporterExecutor.allowsCoreThreadTimeOut();
 
             // Call the getters for the dependencies that aren't optional, to ensure correct
             // initialization order.
@@ -1587,13 +1605,19 @@ public final class ArtManagerLocal {
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         @NonNull
         public DexoptHelper getDexoptHelper() {
-            return new DexoptHelper(getContext(), getConfig());
+            return new DexoptHelper(getContext(), getConfig(), getReporterExecutor());
         }
 
         @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
         @NonNull
         public Config getConfig() {
             return mConfig;
+        }
+
+        @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+        @NonNull
+        public Executor getReporterExecutor() {
+            return mReporterExecutor;
         }
 
         /** Returns the registered {@link AppHibernationManager} instance. */
