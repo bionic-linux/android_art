@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c35c8e1_48dbf13d",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-02T19:10:42Z",
+      "side": 1,
+      "message": "Not \"below\" but [here](https://cs.android.com/android/platform/superproject/main/+/main:art/build/boot/Android.bp;l\u003d42;drc\u003d4106d8ef0a95affe76724bd06cc615c47b9c8665)? Or I misunderstood it?",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12dd38ce_1efb5b40",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-02T19:10:42Z",
+      "side": 1,
+      "message": "Chroot testing is [using the ART testing apex](https://cs.android.com/android/platform/superproject/main/+/main:art/tools/buildbot-build.sh;l\u003d123;drc\u003df423eb169237cfc523c9ff9d2a3959373611c1a2) now, so there is no more `/system` hack there. According to [this comment](https://cs.android.com/android/platform/superproject/main/+/main:art/Android.mk;l\u003d417;drc\u003de463f5d235388bf8e97e768e5d906963866b7891), `standalone-apex-files` is only used by Golem now. Please update this comment.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b093c7_3fdce217",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-02T19:10:42Z",
+      "side": 1,
+      "message": "I thought the testing apex is only used by chroot testing. Is the testing apex ever supposed to be installed through `adb install`? If not, then we don\u0027t need this.\n\nI understand that you\u0027d like to keep this CL a noop one, so this is just a note.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 40
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
