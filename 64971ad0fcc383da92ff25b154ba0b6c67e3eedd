@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdc8719_f6a44845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-02T20:36:22Z",
+      "side": 1,
+      "message": "One caveat you have to consider is that the `next` release config uses a prebuilt ART module, which won\u0027t contain the change that you are making. Please find a way to keep dexpreopt working there.",
+      "revId": "64971ad0fcc383da92ff25b154ba0b6c67e3eedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
