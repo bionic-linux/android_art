@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3918f613_fc836dc3",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-03T14:34:36Z",
+      "side": 1,
+      "message": "I think it refers to the reference on line 67. Clarified.",
+      "parentUuid": "4c35c8e1_48dbf13d",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12dd38ce_1efb5b40",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f579767c_e85e8817",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-03T14:34:36Z",
+      "side": 1,
+      "message": "Done. I removed the TODO because the ticket is closed saying essentially that it\u0027s as good as it\u0027ll get in this regard.",
+      "parentUuid": "12dd38ce_1efb5b40",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00b093c7_3fdce217",
@@ -60,6 +108,30 @@
       "writtenOn": "2024-10-02T19:10:42Z",
       "side": 1,
       "message": "I thought the testing apex is only used by chroot testing. Is the testing apex ever supposed to be installed through `adb install`? If not, then we don\u0027t need this.\n\nI understand that you\u0027d like to keep this CL a noop one, so this is just a note.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 40
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1001467_d0757b42",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-03T14:34:36Z",
+      "side": 1,
+      "message": "It\u0027s sideloaded by ArtGtestsTargetInstallApex: https://cs.android.com/android/platform/superproject/main/+/main:art/test/art-gtests-target-install-apex.xml;l\u003d20-22;drc\u003d78d86b5810d1e39b078a1b18d42c3ed556328a64\n\nThat test is documented in art/test/README.atest.md but I\u0027m not sure it\u0027s used anywhere - it doesn\u0027t run in CI according to [go/ath](http://android-build/test_hub/search/?filter\u003d\u0026invfilter\u003dunhealthyInvocations\u0026invfilter\u003dstaleInvocations\u0026query\u003dmodule%3AArtGtestsTargetInstallApex). Maybe we can clean it up and remove this, but otoh it doesn\u0027t hurt in case someone happens to sideload the testing APEX, does it?",
+      "parentUuid": "00b093c7_3fdce217",
       "range": {
         "startLine": 312,
         "startChar": 0,
