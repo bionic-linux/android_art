@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -118,6 +119,11 @@ TEST_F(ImgDiagTest, DISABLED_ImageDiffPidSelf) {
   // Invoke 'img_diag' against the current process.
   // This should succeed because we have a runtime and so it should
   // be able to map in the boot.art and do a diff for it.
+
+  const char* on_vm = getenv("ART_TEST_ON_VM");
+  if (on_vm != nullptr && std::strcmp("true", on_vm) == 0) {
+    GTEST_SKIP();  // not allowed to read /proc/kpagestats on VM (in the same way as on host)
+  }
 
   // Run imgdiag --image-diff-pid=$(self pid) and wait until it's done with a 0 exit code.
   std::string error_msg;
