@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c68cc014_351a3e7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-03T12:26:33Z",
+      "side": 1,
+      "message": "Yes this is what was previously happening. I\u0027ve reworded this instead of removing it entirely as I think the context is still useful to understand why the change is being made.",
+      "parentUuid": "c3ca8dea_0d5ac944",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7543440f_524e867d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6361392_27539690",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-03T12:26:33Z",
+      "side": 1,
+      "message": "This adds (or subtracts if \"-\" is used) features to the set of features retrieved `FromVariant()`. It could override technically override features from `FromVariant()` although we don\u0027t use it in that way. Regardless, I still think `extra_features` is a good name because these features are added (or subtracted) in addition to the features from the variant.",
+      "parentUuid": "344a3049_d663f1a0",
+      "range": {
+        "startLine": 189,
+        "startChar": 83,
+        "endLine": 189,
+        "endChar": 95
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75c4364d_ca02f426",
@@ -77,6 +125,24 @@
       "writtenOn": "2024-10-01T13:48:39Z",
       "side": 1,
       "message": "`const std::optional\u003cstd::string\u003e\u0026 feature_list \u003d std::nullopt);`? I think it would help to signal that this are optional extra features",
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227b8879_5b30b198",
+        "filename": "compiler/common_compiler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-03T12:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75c4364d_ca02f426",
       "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -139,6 +205,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff9c1b0_25792189",
+        "filename": "compiler/optimizing/code_generator_vector_arm64_sve.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-03T12:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d494a73_5736839a",
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70508ba_db28f75f",
@@ -152,6 +236,30 @@
       "writtenOn": "2024-10-01T13:48:39Z",
       "side": 1,
       "message": "nit: remove these words to avoid the double `example`",
+      "range": {
+        "startLine": 869,
+        "startChar": 75,
+        "endLine": 870,
+        "endChar": 21
+      },
+      "revId": "4c092dc9c0aa5c4c3d7fc4099533c1ed807e8a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a41ad24_1a8d5095",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1989777
+      },
+      "writtenOn": "2024-10-03T12:26:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70508ba_db28f75f",
       "range": {
         "startLine": 869,
         "startChar": 75,
