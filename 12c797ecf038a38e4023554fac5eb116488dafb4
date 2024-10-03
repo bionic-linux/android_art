@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78674717_1bd39544",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-03T16:44:29Z",
+      "side": 1,
+      "message": "Ah, I see.",
+      "parentUuid": "3918f613_fc836dc3",
+      "range": {
+        "startLine": 26,
+        "startChar": 43,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12dd38ce_1efb5b40",
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92ec12ee_fa0817e4",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-03T16:44:29Z",
+      "side": 1,
+      "message": "// Note: ~ART on-device chroot-based testing and~ benchmarking is not yet using\n// the ART APEX, meaning that copies of some of these libraries have to be\n// installed in `/system` for ~the ART Buildbot~ **benchmarking** set-up to work properly. This is\n// done by the `standalone-apex-files` Make phony target, used by Golem (see\n// `art/Android.mk`). If you add libraries to this list, you may have to also\n// add them to `PRIVATE_ART_APEX_DEPENDENCY_LIBS` in `art/Android.mk`.",
+      "parentUuid": "f579767c_e85e8817",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00b093c7_3fdce217",
         "filename": "build/apex/Android.bp",
         "patchSetId": 5
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "It\u0027s sideloaded by ArtGtestsTargetInstallApex: https://cs.android.com/android/platform/superproject/main/+/main:art/test/art-gtests-target-install-apex.xml;l\u003d20-22;drc\u003d78d86b5810d1e39b078a1b18d42c3ed556328a64\n\nThat test is documented in art/test/README.atest.md but I\u0027m not sure it\u0027s used anywhere - it doesn\u0027t run in CI according to [go/ath](http://android-build/test_hub/search/?filter\u003d\u0026invfilter\u003dunhealthyInvocations\u0026invfilter\u003dstaleInvocations\u0026query\u003dmodule%3AArtGtestsTargetInstallApex). Maybe we can clean it up and remove this, but otoh it doesn\u0027t hurt in case someone happens to sideload the testing APEX, does it?",
       "parentUuid": "00b093c7_3fdce217",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 40
+      },
+      "revId": "12c797ecf038a38e4023554fac5eb116488dafb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611da6f3_4675c381",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2024-10-03T16:44:29Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "f1001467_d0757b42",
       "range": {
         "startLine": 312,
         "startChar": 0,
