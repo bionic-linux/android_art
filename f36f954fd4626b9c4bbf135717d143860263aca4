@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aafa559_5d1925fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-03T17:14:08Z",
+      "side": 1,
+      "message": "Nice!",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "f36f954fd4626b9c4bbf135717d143860263aca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc438da_28f788f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2024-10-03T17:14:08Z",
+      "side": 1,
+      "message": "Could you also add (and try):\n\n```\nTest: atest art-apex-update-rollback\n```\n\n?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "f36f954fd4626b9c4bbf135717d143860263aca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
