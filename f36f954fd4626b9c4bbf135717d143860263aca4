@@ -45,6 +45,30 @@
       },
       "revId": "f36f954fd4626b9c4bbf135717d143860263aca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1ad95e_c476109e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2024-10-03T19:25:35Z",
+      "side": 1,
+      "message": "Moving the CL locally from master-art to a full tree for an `atest` run is unfortunately prohibitively cumbersome, so I did a Forrest run here: http://android-build/abtd/run/L67000030006843662/",
+      "parentUuid": "dcc438da_28f788f3",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "f36f954fd4626b9c4bbf135717d143860263aca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
