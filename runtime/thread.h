@@ -1416,6 +1416,11 @@ class EXPORT Thread {
     SetMethodTraceBufferCurrentEntry(init_index);
   }
 
+  void SetLowOverheadMethodTraceBuffer(int init_index) {
+    tlsPtr_.method_trace_buffer = trace_buffer;
+    SetMethodTraceBufferCurrentEntry(init_index);
+  }
+
   void SetMethodTraceBufferCurrentEntry(int index) {
     uintptr_t* buffer = tlsPtr_.method_trace_buffer;
     if (buffer == nullptr) {
@@ -2470,6 +2475,9 @@ class EXPORT Thread {
   // Set during execution of JNI methods that get field and method id's as part of determining if
   // the caller is allowed to access all fields and methods in the Core Platform API.
   uint32_t core_platform_api_cookie_ = 0;
+
+  // TODO(mythria): Change this later
+  uintptr_t trace_buffer[2048];
 
   friend class gc::collector::SemiSpace;  // For getting stack traces.
   friend class Runtime;  // For CreatePeer.
