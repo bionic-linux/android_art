@@ -48,6 +48,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58fd537a_f20aa799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Comments after submissions addressed in aosp/3291448",
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63b2d822_5bc0f100",
@@ -61,6 +78,30 @@
       "writtenOn": "2024-10-04T08:41:05Z",
       "side": 1,
       "message": "The `CreateVarHandleCommonLocations()` call creates a `LocationSummary` indicating that the invoke shall be intrinsified, so it must be after the check whether to intrinsify.\n\nMove the `locations` and `old_temp_count` definitions to their old position after the non-Baker RB check.",
+      "range": {
+        "startLine": 5440,
+        "startChar": 31,
+        "endLine": 5440,
+        "endChar": 61
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28861381_eab3a3e9",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5440,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Nice catch! Done",
+      "parentUuid": "63b2d822_5bc0f100",
       "range": {
         "startLine": 5440,
         "startChar": 31,
@@ -94,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36404516_63e38272",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6688fc6b_6b813d94",
+      "range": {
+        "startLine": 4469,
+        "startChar": 31,
+        "endLine": 4469,
+        "endChar": 61
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16538305_80dcd25f",
@@ -111,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfe7335_66d8c9d9",
+        "filename": "compiler/optimizing/intrinsics_riscv64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4470,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16538305_80dcd25f",
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7581be_75b72c08",
@@ -124,6 +207,30 @@
       "writtenOn": "2024-10-04T08:41:05Z",
       "side": 1,
       "message": "But it shall be clobbered, so we must make sure the register allocator shall not consider it unclobbered and reuse it for another instruction. Please add EAX as an explicit temp.",
+      "range": {
+        "startLine": 2520,
+        "startChar": 22,
+        "endLine": 2520,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e32487e_f5bfbb8b",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2520,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8b7581be_75b72c08",
       "range": {
         "startLine": 2520,
         "startChar": 22,
@@ -157,6 +264,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dada2c62_9f3543bc",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4299,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done.\n\nI\u0027m optimizing it because D8 generates it (https://godbolt.org/z/M8z5c4r45). We might be able to update it to just a set in our pipeline too.",
+      "parentUuid": "e799a01d_9ad4de0f",
+      "range": {
+        "startLine": 4299,
+        "startChar": 27,
+        "endLine": 4299,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "686cca9d_0c11a829",
@@ -170,6 +301,30 @@
       "writtenOn": "2024-10-04T08:41:05Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 4683,
+        "startChar": 22,
+        "endLine": 4683,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a23bd03_8bf7d776",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4683,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "686cca9d_0c11a829",
       "range": {
         "startLine": 4683,
         "startChar": 22,
@@ -203,6 +358,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3d7593_193dc62e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2638,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce5124df_73ae7202",
+      "range": {
+        "startLine": 2638,
+        "startChar": 20,
+        "endLine": 2638,
+        "endChar": 50
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4254a50_bcc1a0fa",
@@ -216,6 +395,30 @@
       "writtenOn": "2024-10-04T08:41:05Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 4520,
+        "startChar": 22,
+        "endLine": 4520,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95fbb37_ebf338e7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4520,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4254a50_bcc1a0fa",
       "range": {
         "startLine": 4520,
         "startChar": 22,
@@ -249,6 +452,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3663b4e_93037cf1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4845,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa880f56_6892bc40",
+      "range": {
+        "startLine": 4845,
+        "startChar": 22,
+        "endLine": 4845,
+        "endChar": 52
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2b2c386_804d6f64",
@@ -262,6 +489,30 @@
       "writtenOn": "2024-10-04T08:41:05Z",
       "side": 1,
       "message": "when the return value is ignored by the `VarHandle` call specifying a `void` return type.\n\n(Or add tests where the return value is not ignored.)",
+      "range": {
+        "startLine": 1,
+        "startChar": 37,
+        "endLine": 1,
+        "endChar": 72
+      },
+      "revId": "bb2fb09b7d4618e4e4319835e1a8e3c1eb1506ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6cd4b5_4942fca9",
+        "filename": "test/859-checker-var-handles-intrinsics/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889741
+      },
+      "writtenOn": "2024-10-04T13:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b2c386_804d6f64",
       "range": {
         "startLine": 1,
         "startChar": 37,
